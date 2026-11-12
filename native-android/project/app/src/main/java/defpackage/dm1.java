@@ -1,6 +1,5 @@
 package defpackage;
 
-import java.util.AbstractList;
 import java.util.ListIterator;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -12,339 +11,397 @@ public final class dm1 implements ListIterator, x32 {
     public int q;
     public final Object r;
 
-    public dm1(rh4 rh4Var, int i) {
+    public dm1(rh4 r2, int r3) {
         this.n = 3;
-        this.r = rh4Var;
-        this.o = i - 1;
+        this.r = r2;
+        this.o = r3 - 1;
         this.p = -1;
-        this.q = rr2.H(rh4Var);
+        this.q = rr2.H(r2);
     }
 
     public void a() {
-        if (((AbstractList) ((pb2) this.r).r).modCount == this.q) {
-            return;
-        }
+        if (qb2.d(((pb2) this.r).r) != this.q) goto L5;
+        return;
+    L5:
         kf2.c();
     }
 
     @Override // java.util.ListIterator
-    public final void add(Object obj) {
-        int i = this.n;
-        Object obj2 = this.r;
-        switch (i) {
-            case 0:
-                throw new UnsupportedOperationException("Operation is not supported for read-only collection");
-            case 1:
-                a();
-                pb2 pb2Var = (pb2) obj2;
-                int i2 = this.o;
-                this.o = i2 + 1;
-                pb2Var.add(i2, obj);
-                this.p = -1;
-                this.q = ((AbstractList) pb2Var).modCount;
-                return;
-            case 2:
-                b();
-                qb2 qb2Var = (qb2) obj2;
-                int i3 = this.o;
-                this.o = i3 + 1;
-                qb2Var.add(i3, obj);
-                this.p = -1;
-                this.q = ((AbstractList) qb2Var).modCount;
-                return;
-            default:
-                c();
-                rh4 rh4Var = (rh4) obj2;
-                rh4Var.add(this.o + 1, obj);
-                this.p = -1;
-                this.o++;
-                this.q = rr2.H(rh4Var);
-                return;
-        }
+    public final void add(Object r5) {
+        int r0 = this.n;
+        Object r2 = this.r;
+        switch(r0) {
+            case 0: goto L11;
+            case 1: goto L8;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        c();
+        rh4 r3 = (rh4) r2;
+        r3.add(this.o + 1, r5);
+        this.p = -1;
+        this.o++;
+        this.q = rr2.H(r3);
+        return;
+    L6:
+        b();
+        qb2 r4 = (qb2) r2;
+        int r1 = this.o;
+        this.o = r1 + 1;
+        r4.add(r1, r5);
+        this.p = -1;
+        this.q = qb2.d(r4);
+        return;
+    L8:
+        a();
+        pb2 r6 = (pb2) r2;
+        int r7 = this.o;
+        this.o = r7 + 1;
+        r6.add(r7, r5);
+        this.p = -1;
+        this.q = pb2.d(r6);
+        return;
+    L11:
+        throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     public void b() {
-        if (((AbstractList) ((qb2) this.r)).modCount == this.q) {
-            return;
-        }
+        if (qb2.d((qb2) this.r) != this.q) goto L5;
+        return;
+    L5:
         kf2.c();
     }
 
     public void c() {
-        if (rr2.H((rh4) this.r) == this.q) {
-            return;
-        }
+        if (rr2.H((rh4) this.r) != this.q) goto L5;
+        return;
+    L5:
         kf2.c();
     }
 
     @Override // java.util.ListIterator, java.util.Iterator
     public final boolean hasNext() {
-        int i = this.n;
-        Object obj = this.r;
-        switch (i) {
-            case 0:
-                return this.o < this.q;
-            case 1:
-                return this.o < ((pb2) obj).p;
-            case 2:
-                return this.o < ((qb2) obj).o;
-            default:
-                return this.o < ((rh4) obj).size() - 1;
-        }
+        int r0 = this.n;
+        Object r1 = this.r;
+        switch(r0) {
+            case 0: goto L17;
+            case 1: goto L13;
+            case 2: goto L9;
+            default: goto L5;
+        };
+    L5:
+        if (this.o < (((rh4) r1).size() - 1)) goto L7;
+        return false;
+    L7:
+        return true;
+    L9:
+        if (this.o < ((qb2) r1).o) goto L11;
+        return false;
+    L11:
+        return true;
+    L13:
+        if (this.o < ((pb2) r1).p) goto L15;
+        return false;
+    L15:
+        return true;
+    L17:
+        if (this.o < this.q) goto L19;
+        return false;
+    L19:
+        return true;
     }
 
     @Override // java.util.ListIterator
     public final boolean hasPrevious() {
-        switch (this.n) {
-            case 0:
-                return this.o > this.p;
-            case 1:
-                return this.o > 0;
-            case 2:
-                return this.o > 0;
-            default:
-                return this.o >= 0;
-        }
+        switch(this.n) {
+            case 0: goto L20;
+            case 1: goto L15;
+            case 2: goto L10;
+            default: goto L5;
+        };
+    L5:
+        if (this.o < 0) goto L7;
+        return true;
+    L7:
+        return false;
+    L10:
+        if (this.o <= 0) goto L12;
+        return true;
+    L12:
+        return false;
+    L15:
+        if (this.o <= 0) goto L17;
+        return true;
+    L17:
+        return false;
+    L20:
+        if (this.o <= this.p) goto L22;
+        return true;
+    L22:
+        return false;
     }
 
     @Override // java.util.ListIterator, java.util.Iterator
     public final Object next() {
-        int i = this.n;
-        Object obj = this.r;
-        switch (i) {
-            case 0:
-                q03 q03Var = ((fm1) obj).n;
-                int i2 = this.o;
-                this.o = i2 + 1;
-                Object objF = q03Var.f(i2);
-                objF.getClass();
-                return (cx2) objF;
-            case 1:
-                a();
-                int i3 = this.o;
-                pb2 pb2Var = (pb2) obj;
-                if (i3 >= pb2Var.p) {
-                    tb4.k();
-                    return null;
-                }
-                this.o = i3 + 1;
-                this.p = i3;
-                return pb2Var.n[pb2Var.o + i3];
-            case 2:
-                b();
-                int i4 = this.o;
-                qb2 qb2Var = (qb2) obj;
-                if (i4 >= qb2Var.o) {
-                    tb4.k();
-                    return null;
-                }
-                this.o = i4 + 1;
-                this.p = i4;
-                return qb2Var.n[i4];
-            default:
-                c();
-                int i5 = this.o + 1;
-                this.p = i5;
-                rh4 rh4Var = (rh4) obj;
-                rr2.d(i5, rh4Var.size());
-                Object obj2 = rh4Var.get(i5);
-                this.o = i5;
-                return obj2;
-        }
+        int r0 = this.n;
+        Object r2 = this.r;
+        switch(r0) {
+            case 0: goto L16;
+            case 1: goto L11;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        c();
+        int r1 = this.o + 1;
+        this.p = r1;
+        rh4 r3 = (rh4) r2;
+        rr2.d(r1, r3.size());
+        Object r4 = r3.get(r1);
+        this.o = r1;
+        return r4;
+    L6:
+        b();
+        int r5 = this.o;
+        qb2 r6 = (qb2) r2;
+        if (r5 >= r6.o) goto L9;
+        this.o = r5 + 1;
+        this.p = r5;
+        return r6.n[r5];
+    L9:
+        tb4.k();
+        return null;
+    L11:
+        a();
+        int r7 = this.o;
+        pb2 r8 = (pb2) r2;
+        if (r7 >= r8.p) goto L14;
+        this.o = r7 + 1;
+        this.p = r7;
+        return r8.n[r8.o + r7];
+    L14:
+        tb4.k();
+        return null;
+    L16:
+        q03 r9 = ((fm1) r2).n;
+        int r10 = this.o;
+        this.o = r10 + 1;
+        Object r11 = r9.f(r10);
+        r11.getClass();
+        return (cx2) r11;
     }
 
     @Override // java.util.ListIterator
     public final int nextIndex() {
-        switch (this.n) {
-            case 0:
-                return this.o - this.p;
-            case 1:
-                return this.o;
-            case 2:
-                return this.o;
-            default:
-                return this.o + 1;
-        }
+        switch(this.n) {
+            case 0: goto L11;
+            case 1: goto L9;
+            case 2: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return this.o + 1;
+    L7:
+        return this.o;
+    L9:
+        return this.o;
+    L11:
+        return this.o - this.p;
     }
 
     @Override // java.util.ListIterator
     public final Object previous() {
-        int i = this.n;
-        Object obj = this.r;
-        switch (i) {
-            case 0:
-                q03 q03Var = ((fm1) obj).n;
-                int i2 = this.o - 1;
-                this.o = i2;
-                Object objF = q03Var.f(i2);
-                objF.getClass();
-                return (cx2) objF;
-            case 1:
-                a();
-                int i3 = this.o;
-                if (i3 <= 0) {
-                    tb4.k();
-                    return null;
-                }
-                int i4 = i3 - 1;
-                this.o = i4;
-                this.p = i4;
-                pb2 pb2Var = (pb2) obj;
-                return pb2Var.n[pb2Var.o + i4];
-            case 2:
-                b();
-                int i5 = this.o;
-                if (i5 <= 0) {
-                    tb4.k();
-                    return null;
-                }
-                int i6 = i5 - 1;
-                this.o = i6;
-                this.p = i6;
-                return ((qb2) obj).n[i6];
-            default:
-                c();
-                rh4 rh4Var = (rh4) obj;
-                rr2.d(this.o, rh4Var.size());
-                int i7 = this.o;
-                this.p = i7;
-                Object obj2 = rh4Var.get(i7);
-                this.o--;
-                return obj2;
-        }
+        int r0 = this.n;
+        Object r2 = this.r;
+        switch(r0) {
+            case 0: goto L16;
+            case 1: goto L11;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        c();
+        rh4 r3 = (rh4) r2;
+        rr2.d(this.o, r3.size());
+        int r1 = this.o;
+        this.p = r1;
+        Object r4 = r3.get(r1);
+        this.o--;
+        return r4;
+    L6:
+        b();
+        int r5 = this.o;
+        if (r5 <= 0) goto L9;
+        int r6 = r5 - 1;
+        this.o = r6;
+        this.p = r6;
+        return ((qb2) r2).n[r6];
+    L9:
+        tb4.k();
+        return null;
+    L11:
+        a();
+        int r7 = this.o;
+        if (r7 <= 0) goto L14;
+        int r8 = r7 - 1;
+        this.o = r8;
+        this.p = r8;
+        pb2 r9 = (pb2) r2;
+        return r9.n[r9.o + r8];
+    L14:
+        tb4.k();
+        return null;
+    L16:
+        q03 r10 = ((fm1) r2).n;
+        int r11 = this.o - 1;
+        this.o = r11;
+        Object r12 = r10.f(r11);
+        r12.getClass();
+        return (cx2) r12;
     }
 
     @Override // java.util.ListIterator
     public final int previousIndex() {
-        int i;
-        switch (this.n) {
-            case 0:
-                return (this.o - this.p) - 1;
-            case 1:
-                i = this.o;
-                break;
-            case 2:
-                i = this.o;
-                break;
-            default:
-                return this.o;
-        }
-        return i - 1;
+        switch(this.n) {
+            case 0: goto L11;
+            case 1: goto L9;
+            case 2: goto L6;
+            default: goto L5;
+        };
+    L6:
+        int r1 = this.o;
+    L8:
+        return r1 - 1;
+    L9:
+        r1 = this.o;
+        goto L8
+    L5:
+        return this.o;
+    L11:
+        return (this.o - this.p) - 1;
     }
 
     @Override // java.util.ListIterator, java.util.Iterator
     public final void remove() {
-        int i = this.n;
-        Object obj = this.r;
-        switch (i) {
-            case 0:
-                throw new UnsupportedOperationException("Operation is not supported for read-only collection");
-            case 1:
-                pb2 pb2Var = (pb2) obj;
-                a();
-                int i2 = this.p;
-                if (i2 == -1) {
-                    kf2.o("Call next() or previous() before removing element from the iterator.");
-                    return;
-                }
-                pb2Var.b(i2);
-                this.o = this.p;
-                this.p = -1;
-                this.q = ((AbstractList) pb2Var).modCount;
-                return;
-            case 2:
-                qb2 qb2Var = (qb2) obj;
-                b();
-                int i3 = this.p;
-                if (i3 == -1) {
-                    kf2.o("Call next() or previous() before removing element from the iterator.");
-                    return;
-                }
-                qb2Var.b(i3);
-                this.o = this.p;
-                this.p = -1;
-                this.q = ((AbstractList) qb2Var).modCount;
-                return;
-            default:
-                c();
-                rh4 rh4Var = (rh4) obj;
-                rh4Var.remove(this.p);
-                this.o--;
-                this.p = -1;
-                this.q = rr2.H(rh4Var);
-                return;
-        }
+        int r0 = this.n;
+        Object r3 = this.r;
+        switch(r0) {
+            case 0: goto L17;
+            case 1: goto L11;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        c();
+        rh4 r4 = (rh4) r3;
+        r4.remove(this.p);
+        this.o--;
+        this.p = -1;
+        this.q = rr2.H(r4);
+        return;
+    L6:
+        qb2 r5 = (qb2) r3;
+        b();
+        int r1 = this.p;
+        if (r1 == (-1)) goto L9;
+        r5.b(r1);
+        this.o = this.p;
+        this.p = -1;
+        this.q = qb2.d(r5);
+        return;
+    L9:
+        kf2.o("Call next() or previous() before removing element from the iterator.");
+        return;
+    L11:
+        pb2 r6 = (pb2) r3;
+        a();
+        int r2 = this.p;
+        if (r2 == (-1)) goto L14;
+        r6.b(r2);
+        this.o = this.p;
+        this.p = -1;
+        this.q = pb2.d(r6);
+        return;
+    L14:
+        kf2.o("Call next() or previous() before removing element from the iterator.");
+        return;
+    L17:
+        throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.ListIterator
-    public final void set(Object obj) {
-        int i = this.n;
-        Object obj2 = this.r;
-        switch (i) {
-            case 0:
-                throw new UnsupportedOperationException("Operation is not supported for read-only collection");
-            case 1:
-                a();
-                int i2 = this.p;
-                if (i2 != -1) {
-                    ((pb2) obj2).set(i2, obj);
-                    return;
-                } else {
-                    kf2.o("Call next() or previous() before replacing element from the iterator.");
-                    return;
-                }
-            case 2:
-                b();
-                int i3 = this.p;
-                if (i3 != -1) {
-                    ((qb2) obj2).set(i3, obj);
-                    return;
-                } else {
-                    kf2.o("Call next() or previous() before replacing element from the iterator.");
-                    return;
-                }
-            default:
-                rh4 rh4Var = (rh4) obj2;
-                c();
-                int i4 = this.p;
-                if (i4 < 0) {
-                    kf2.o("Cannot call set before the first call to next() or previous() or immediately after a call to add() or remove()");
-                    return;
-                } else {
-                    rh4Var.set(i4, obj);
-                    this.q = rr2.H(rh4Var);
-                    return;
-                }
-        }
+    public final void set(Object r5) {
+        int r0 = this.n;
+        Object r3 = this.r;
+        switch(r0) {
+            case 0: goto L20;
+            case 1: goto L14;
+            case 2: goto L9;
+            default: goto L4;
+        };
+    L4:
+        rh4 r4 = (rh4) r3;
+        c();
+        int r1 = this.p;
+        if (r1 < 0) goto L7;
+        r4.set(r1, r5);
+        this.q = rr2.H(r4);
+        return;
+    L7:
+        kf2.o("Cannot call set before the first call to next() or previous() or immediately after a call to add() or remove()");
+        return;
+    L9:
+        b();
+        int r6 = this.p;
+        if (r6 == (-1)) goto L12;
+        ((qb2) r3).set(r6, r5);
+        return;
+    L12:
+        kf2.o("Call next() or previous() before replacing element from the iterator.");
+        return;
+    L14:
+        a();
+        int r7 = this.p;
+        if (r7 == (-1)) goto L17;
+        ((pb2) r3).set(r7, r5);
+        return;
+    L17:
+        kf2.o("Call next() or previous() before replacing element from the iterator.");
+        return;
+    L20:
+        throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
-    public dm1(qb2 qb2Var, int i) {
+    public dm1(qb2 r2, int r3) {
         this.n = 2;
-        this.r = qb2Var;
-        this.o = i;
+        this.r = r2;
+        this.o = r3;
         this.p = -1;
-        this.q = ((AbstractList) qb2Var).modCount;
+        this.q = qb2.d(r2);
     }
 
-    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
-    public dm1(fm1 fm1Var, int i, int i2) {
-        this(fm1Var, (i2 & 1) != 0 ? 0 : i, 0, fm1Var.n.b);
+    public dm1(fm1 r2, int r3, int r4) {
         this.n = 0;
+        if ((r4 & 1) == 0) goto L5;
+        r3 = 0;
+    L5:
+        this(r2, r3, 0, r2.n.b);
     }
 
-    public dm1(fm1 fm1Var, int i, int i2, int i3) {
+    public dm1(fm1 r2, int r3, int r4, int r5) {
         this.n = 0;
-        this.r = fm1Var;
-        this.o = i;
-        this.p = i2;
-        this.q = i3;
+        this.r = r2;
+        this.o = r3;
+        this.p = r4;
+        this.q = r5;
     }
 
-    public dm1(pb2 pb2Var, int i) {
+    public dm1(pb2 r2, int r3) {
         this.n = 1;
-        this.r = pb2Var;
-        this.o = i;
+        this.r = r2;
+        this.o = r3;
         this.p = -1;
-        this.q = ((AbstractList) pb2Var).modCount;
+        this.q = pb2.d(r2);
     }
 }

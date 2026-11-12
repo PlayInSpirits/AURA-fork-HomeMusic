@@ -13,68 +13,80 @@ public final class b01 extends rz0 implements Runnable {
     public final WeakReference n;
     public final WeakReference o;
 
-    public b01(TextView textView, c01 c01Var) {
-        this.n = new WeakReference(textView);
-        this.o = new WeakReference(c01Var);
+    public b01(TextView r2, c01 r3) {
+        this.n = new WeakReference(r2);
+        this.o = new WeakReference(r3);
     }
 
     @Override // defpackage.rz0
     public final void b() {
-        Handler handler;
-        TextView textView = (TextView) this.n.get();
-        if (textView == null || (handler = textView.getHandler()) == null) {
-            return;
-        }
-        handler.post(this);
+        TextView r0 = (TextView) this.n.get();
+        if (r0 == null) goto L10;
+        Handler r1 = r0.getHandler();
+        if (r1 == null) goto L9;
+        r1.post(this);
+        return;
+    L9:
+        return;
     }
 
     @Override // java.lang.Runnable
-    public final void run() throws Throwable {
-        InputFilter[] filters;
-        int length;
-        TextView textView = (TextView) this.n.get();
-        InputFilter inputFilter = (InputFilter) this.o.get();
-        if (inputFilter == null || textView == null || (filters = textView.getFilters()) == null) {
-            return;
-        }
-        for (InputFilter inputFilter2 : filters) {
-            if (inputFilter2 == inputFilter) {
-                if (textView.isAttachedToWindow()) {
-                    CharSequence text = textView.getText();
-                    tz0 tz0VarA = tz0.a();
-                    if (text == null) {
-                        length = 0;
-                    } else {
-                        tz0VarA.getClass();
-                        length = text.length();
-                    }
-                    CharSequence charSequenceF = tz0VarA.f(0, length, 0, text);
-                    if (text == charSequenceF) {
-                        return;
-                    }
-                    int selectionStart = Selection.getSelectionStart(charSequenceF);
-                    int selectionEnd = Selection.getSelectionEnd(charSequenceF);
-                    textView.setText(charSequenceF);
-                    if (charSequenceF instanceof Spannable) {
-                        Spannable spannable = (Spannable) charSequenceF;
-                        if (selectionStart >= 0 && selectionEnd >= 0) {
-                            Selection.setSelection(spannable, selectionStart, selectionEnd);
-                            return;
-                        } else if (selectionStart >= 0) {
-                            Selection.setSelection(spannable, selectionStart);
-                            return;
-                        } else {
-                            if (selectionEnd >= 0) {
-                                Selection.setSelection(spannable, selectionEnd);
-                                return;
-                            }
-                            return;
-                        }
-                    }
-                    return;
-                }
-                return;
-            }
-        }
+    public final void run() {
+        TextView r0 = (TextView) this.n.get();
+        InputFilter r5 = (InputFilter) this.o.get();
+        if (r5 == null) goto L37;
+        if (r0 == null) goto L43;
+        InputFilter[] r1 = r0.getFilters();
+        if (r1 == null) goto L44;
+        int r3 = 0;
+    L11:
+        if (r3 >= r1.length) goto L46;
+        if (r1[r3] == r5) goto L15;
+        r3 = r3 + 1;
+        goto L11
+    L15:
+        if (r0.isAttachedToWindow() == false) goto L40;
+        CharSequence r6 = r0.getText();
+        tz0 r2 = tz0.a();
+        if (r6 != null) goto L19;
+        int r4 = 0;
+    L20:
+        CharSequence r7 = r2.f(0, r4, 0, r6);
+        if (r6 == r7) goto L45;
+        int r8 = Selection.getSelectionStart(r7);
+        int r9 = Selection.getSelectionEnd(r7);
+        r0.setText(r7);
+        if ((r7 instanceof Spannable) == false) goto L41;
+        Spannable r10 = (Spannable) r7;
+        if (r8 < 0) goto L30;
+        if (r9 < 0) goto L30;
+        Selection.setSelection(r10, r8, r9);
+        return;
+    L30:
+        if (r8 < 0) goto L33;
+        Selection.setSelection(r10, r8);
+        return;
+    L33:
+        if (r9 < 0) goto L42;
+        Selection.setSelection(r10, r9);
+        return;
+    L42:
+        return;
+    L41:
+        return;
+    L45:
+        return;
+    L19:
+        r2.getClass();
+        r4 = r6.length();
+        goto L20
+    L40:
+        return;
+    L46:
+        return;
+    L44:
+        return;
+    L43:
+        return;
     }
 }

@@ -12,19 +12,21 @@ public abstract class q1 extends u1 implements Serializable {
     public final transient Map r;
     public transient int s;
 
-    public q1(Map map) {
-        rr2.l(map.isEmpty());
-        this.r = map;
+    public q1(Map r2) {
+        rr2.l(r2.isEmpty());
+        this.r = r2;
     }
 
     @Override // defpackage.qz2
     public final void clear() {
-        Map map = this.r;
-        Iterator it = map.values().iterator();
-        while (it.hasNext()) {
-            ((Collection) it.next()).clear();
-        }
-        map.clear();
+        Map r0 = this.r;
+        Iterator r1 = r0.values().iterator();
+    L4:
+        if (r1.hasNext() == false) goto L6;
+        ((Collection) r1.next()).clear();
+        goto L4
+    L6:
+        r0.clear();
         this.s = 0;
     }
 
@@ -35,7 +37,10 @@ public abstract class q1 extends u1 implements Serializable {
 
     @Override // defpackage.u1
     public final Collection f() {
-        return this instanceof nl1 ? new t1(0, this) : new s1(0, this);
+        if ((this instanceof nl1) == false) goto L7;
+        return new t1(0, this);
+    L7:
+        return new s1(0, this);
     }
 
     @Override // defpackage.u1
@@ -44,12 +49,12 @@ public abstract class q1 extends u1 implements Serializable {
     }
 
     @Override // defpackage.qz2
-    public Collection get(Object obj) {
-        Collection collectionI = (Collection) this.r.get(obj);
-        if (collectionI == null) {
-            collectionI = i();
-        }
-        return k(obj, collectionI);
+    public Collection get(Object r2) {
+        Collection r0 = (Collection) this.r.get(r2);
+        if (r0 != null) goto L6;
+        r0 = i();
+    L6:
+        return k(r2, r0);
     }
 
     @Override // defpackage.u1
@@ -59,26 +64,26 @@ public abstract class q1 extends u1 implements Serializable {
 
     public abstract Collection i();
 
-    public boolean j(Object obj, Object obj2) {
-        Map map = this.r;
-        Collection collection = (Collection) map.get(obj);
-        if (collection != null) {
-            if (!collection.add(obj2)) {
-                return false;
-            }
-            this.s++;
-            return true;
-        }
-        Collection collectionI = i();
-        if (!collectionI.add(obj2)) {
-            throw new AssertionError("New Collection violated the Collection spec");
-        }
+    public boolean j(Object r4, Object r5) {
+        Map r0 = this.r;
+        Collection r1 = (Collection) r0.get(r4);
+        if (r1 != null) goto L11;
+        Collection r2 = i();
+        if (r2.add(r5) == false) goto L9;
         this.s++;
-        map.put(obj, collectionI);
+        r0.put(r4, r2);
         return true;
+    L9:
+        throw new AssertionError("New Collection violated the Collection spec");
+    L11:
+        if (r1.add(r5) == false) goto L14;
+        this.s++;
+        return true;
+    L14:
+        return false;
     }
 
-    public abstract Collection k(Object obj, Collection collection);
+    public abstract Collection k(Object r1, Collection r2);
 
     @Override // defpackage.qz2
     public final int size() {

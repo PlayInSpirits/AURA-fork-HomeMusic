@@ -9,8 +9,8 @@ import android.graphics.drawable.VectorDrawable;
 public final class y35 extends Drawable.ConstantState {
     public final Drawable.ConstantState a;
 
-    public y35(Drawable.ConstantState constantState) {
-        this.a = constantState;
+    public y35(Drawable.ConstantState r1) {
+        this.a = r1;
     }
 
     @Override // android.graphics.drawable.Drawable.ConstantState
@@ -25,22 +25,22 @@ public final class y35 extends Drawable.ConstantState {
 
     @Override // android.graphics.drawable.Drawable.ConstantState
     public final Drawable newDrawable() {
-        z35 z35Var = new z35();
-        z35Var.n = (VectorDrawable) this.a.newDrawable();
-        return z35Var;
+        z35 r0 = new z35();
+        r0.n = (VectorDrawable) this.a.newDrawable();
+        return r0;
     }
 
     @Override // android.graphics.drawable.Drawable.ConstantState
-    public final Drawable newDrawable(Resources resources) {
-        z35 z35Var = new z35();
-        z35Var.n = (VectorDrawable) this.a.newDrawable(resources);
-        return z35Var;
+    public final Drawable newDrawable(Resources r2) {
+        z35 r0 = new z35();
+        r0.n = (VectorDrawable) this.a.newDrawable(r2);
+        return r0;
     }
 
     @Override // android.graphics.drawable.Drawable.ConstantState
-    public final Drawable newDrawable(Resources resources, Resources.Theme theme) {
-        z35 z35Var = new z35();
-        z35Var.n = (VectorDrawable) this.a.newDrawable(resources, theme);
-        return z35Var;
+    public final Drawable newDrawable(Resources r2, Resources.Theme r3) {
+        z35 r0 = new z35();
+        r0.n = (VectorDrawable) this.a.newDrawable(r2, r3);
+        return r0;
     }
 }

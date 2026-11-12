@@ -14,41 +14,41 @@ public interface r55 {
 
     void d();
 
-    void e(float f);
+    void e(float r1);
 
     void f();
 
-    void g(tb1 tb1Var, long j, int i, List list);
+    void g(tb1 r1, long r2, int r4, List r5);
 
-    void h(long j);
+    void h(long r1);
 
     void i();
 
-    void j(int i);
+    void j(int r1);
 
     void k();
 
-    void l(kk2 kk2Var);
+    void l(kk2 r1);
 
-    boolean m(long j, lk2 lk2Var);
+    boolean m(long r1, lk2 r3);
 
-    boolean n(tb1 tb1Var);
+    boolean n(tb1 r1);
 
-    void o(boolean z);
+    void o(boolean r1);
 
-    void p(List list);
+    void p(List r1);
 
-    void q(long j, long j2);
+    void q(long r1, long r3);
 
-    void r(boolean z);
+    void r(boolean r1);
 
-    boolean s(boolean z);
+    boolean s(boolean r1);
 
-    void t(c55 c55Var);
+    void t(c55 r1);
 
     void u();
 
-    void v(Surface surface, pf4 pf4Var);
+    void v(Surface r1, pf4 r2);
 
     boolean w();
 

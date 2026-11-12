@@ -8,30 +8,30 @@ import kotlinx.coroutines.JobCancellationException;
 public final class rq3 extends c0 implements y00, y94 {
     public final aw s;
 
-    public rq3(ne0 ne0Var, aw awVar) {
-        super(ne0Var, true);
-        this.s = awVar;
+    public rq3(ne0 r2, aw r3) {
+        super(r2, true);
+        this.s = r3;
     }
 
     @Override // defpackage.y94
-    public final Object a(vd0 vd0Var, Object obj) {
-        return this.s.a(vd0Var, obj);
+    public final Object a(vd0 r1, Object r2) {
+        return this.s.a(r1, r2);
     }
 
     @Override // defpackage.y94
-    public final Object d(Object obj) {
-        return this.s.d(obj);
+    public final Object d(Object r1) {
+        return this.s.d(r1);
     }
 
     @Override // defpackage.a32, defpackage.s22
-    public final void f(CancellationException cancellationException) {
-        if (isCancelled()) {
-            return;
-        }
-        if (cancellationException == null) {
-            cancellationException = new JobCancellationException(x(), null, this);
-        }
-        p(cancellationException);
+    public final void f(CancellationException r3) {
+        if (isCancelled() == false) goto L5;
+        return;
+    L5:
+        if (r3 != null) goto L7;
+        r3 = new JobCancellationException(x(), null, this);
+    L7:
+        p(r3);
     }
 
     @Override // defpackage.y00
@@ -40,42 +40,45 @@ public final class rq3 extends c0 implements y00, y94 {
     }
 
     @Override // defpackage.y00
-    public final Object h(ep4 ep4Var) {
-        aw awVar = this.s;
-        awVar.getClass();
-        return aw.H(awVar, ep4Var);
+    public final Object h(ep4 r1) {
+        aw r0 = this.s;
+        r0.getClass();
+        return aw.H(r0, r1);
     }
 
     @Override // defpackage.y00
-    public final Object i(c60 c60Var) {
-        aw awVar = this.s;
-        awVar.getClass();
-        return aw.I(awVar, c60Var);
+    public final Object i(c60 r1) {
+        aw r0 = this.s;
+        r0.getClass();
+        return aw.I(r0, r1);
     }
 
     @Override // defpackage.y00
     public final xv iterator() {
-        aw awVar = this.s;
-        awVar.getClass();
-        return new xv(awVar);
+        aw r1 = this.s;
+        r1.getClass();
+        return new xv(r1);
     }
 
     @Override // defpackage.c0
-    public final void j0(Throwable th, boolean z) {
-        if (this.s.l(th, false) || z) {
-            return;
-        }
-        uc5.s(this.r, th);
+    public final void j0(Throwable r3, boolean r4) {
+        if (this.s.l(r3, false) == true) goto L7;
+        if (r4 == true) goto L8;
+        uc5.s(this.r, r3);
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.c0
-    public final void k0(Object obj) {
+    public final void k0(Object r1) {
+        j15 r2 = (j15) r1;
         this.s.j(null);
     }
 
     @Override // defpackage.a32
-    public final void p(CancellationException cancellationException) {
-        this.s.l(cancellationException, true);
-        o(cancellationException);
+    public final void p(CancellationException r3) {
+        this.s.l(r3, true);
+        o(r3);
     }
 }

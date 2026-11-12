@@ -7,8 +7,8 @@ import android.view.WindowInsets;
 public class db5 extends cb5 {
     public vz1 r;
 
-    public db5(pb5 pb5Var, WindowInsets windowInsets) {
-        super(pb5Var, windowInsets);
+    public db5(pb5 r1, WindowInsets r2) {
+        super(r1, r2);
         this.r = null;
     }
 
@@ -24,10 +24,10 @@ public class db5 extends cb5 {
 
     @Override // defpackage.mb5
     public final vz1 k() {
-        if (this.r == null) {
-            WindowInsets windowInsets = this.c;
-            this.r = vz1.b(windowInsets.getStableInsetLeft(), windowInsets.getStableInsetTop(), windowInsets.getStableInsetRight(), windowInsets.getStableInsetBottom());
-        }
+        if (this.r != null) goto L6;
+        WindowInsets r0 = this.c;
+        this.r = vz1.b(r0.getStableInsetLeft(), r0.getStableInsetTop(), r0.getStableInsetRight(), r0.getStableInsetBottom());
+    L6:
         return this.r;
     }
 
@@ -37,7 +37,7 @@ public class db5 extends cb5 {
     }
 
     @Override // defpackage.mb5
-    public void x(vz1 vz1Var) {
-        this.r = vz1Var;
+    public void x(vz1 r1) {
+        this.r = r1;
     }
 }

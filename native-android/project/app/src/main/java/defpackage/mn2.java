@@ -7,29 +7,31 @@ public final /* synthetic */ class mn2 implements Runnable {
     public final /* synthetic */ lb4 o;
     public final /* synthetic */ ic2 p;
 
-    public /* synthetic */ mn2(lb4 lb4Var, ic2 ic2Var, int i) {
-        this.n = i;
-        this.o = lb4Var;
-        this.p = ic2Var;
+    public /* synthetic */ mn2(lb4 r1, ic2 r2, int r3) {
+        this.n = r3;
+        this.o = r1;
+        this.p = r2;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        switch (this.n) {
-            case 0:
-                lb4 lb4Var = this.o;
-                ic2 ic2Var = this.p;
-                if (lb4Var.n instanceof f0) {
-                    ic2Var.cancel(false);
-                }
-                break;
-            default:
-                lb4 lb4Var2 = this.o;
-                ic2 ic2Var2 = this.p;
-                if (lb4Var2.n instanceof f0) {
-                    ic2Var2.cancel(false);
-                }
-                break;
-        }
+        switch(this.n) {
+            case 0: goto L8;
+            default: goto L4;
+        };
+    L4:
+        lb4 r0 = this.o;
+        ic2 r2 = this.p;
+        if ((r0.n instanceof f0) == false) goto L12;
+        r2.cancel(false);
+        return;
+    L12:
+        return;
+    L8:
+        lb4 r1 = this.o;
+        ic2 r3 = this.p;
+        if ((r1.n instanceof f0) == false) goto L13;
+        r3.cancel(false);
+        return;
     }
 }

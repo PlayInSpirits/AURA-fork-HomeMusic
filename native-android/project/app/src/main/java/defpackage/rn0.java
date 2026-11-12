@@ -6,6 +6,6 @@ import android.media.MediaFormat;
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class rn0 implements c55 {
     @Override // defpackage.c55
-    public final void d(long j, long j2, tb1 tb1Var, MediaFormat mediaFormat) {
+    public final void d(long r1, long r3, tb1 r5, MediaFormat r6) {
     }
 }

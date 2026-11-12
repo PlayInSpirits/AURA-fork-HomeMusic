@@ -8,9 +8,9 @@ public final class f01 implements e01 {
     public final /* synthetic */ int n;
     public final String o;
 
-    public /* synthetic */ f01(int i, String str) {
-        this.n = i;
-        this.o = str;
+    public /* synthetic */ f01(int r1, String r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // defpackage.e01
@@ -19,20 +19,22 @@ public final class f01 implements e01 {
     }
 
     @Override // defpackage.e01
-    public boolean b(CharSequence charSequence, int i, int i2, k05 k05Var) {
-        if (!TextUtils.equals(charSequence.subSequence(i, i2), this.o)) {
-            return true;
-        }
-        k05Var.c = (k05Var.c & 3) | 4;
+    public boolean b(CharSequence r1, int r2, int r3, k05 r4) {
+        if (TextUtils.equals(r1.subSequence(r2, r3), this.o) == false) goto L6;
+        r4.c = (r4.c & 3) | 4;
         return false;
+    L6:
+        return true;
     }
 
     public String toString() {
-        switch (this.n) {
-            case 1:
-                return "<" + this.o + '>';
-            default:
-                return super.toString();
-        }
+        switch(this.n) {
+            case 1: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return super.toString();
+    L7:
+        return "<" + this.o + '>';
     }
 }

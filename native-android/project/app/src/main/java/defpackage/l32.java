@@ -1,14 +1,11 @@
 package defpackage;
 
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import com.google.gson.stream.MalformedJsonException;
 import java.io.Closeable;
 import java.io.EOFException;
-import java.io.IOException;
 import java.io.Reader;
 import java.util.Arrays;
 import java.util.Objects;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -16,1473 +13,1407 @@ public class l32 implements Closeable {
     public String[] A;
     public int[] B;
     public final Reader n;
+    public boolean o;
+    public final char[] p;
+    public int q;
+    public int r;
+    public int s;
+    public int t;
+    public int u;
     public long v;
     public int w;
     public String x;
     public int[] y;
-    public boolean o = false;
-    public final char[] p = new char[1024];
-    public int q = 0;
-    public int r = 0;
-    public int s = 0;
-    public int t = 0;
-    public int u = 0;
-    public int z = 1;
+    public int z;
 
     static {
         fz0.i0 = new fz0(28);
     }
 
-    public l32(Reader reader) {
-        int[] iArr = new int[32];
-        this.y = iArr;
-        iArr[0] = 6;
+    public l32(Reader r5) {
+        this.o = false;
+        this.p = new char[1024];
+        this.q = 0;
+        this.r = 0;
+        this.s = 0;
+        this.t = 0;
+        this.u = 0;
+        int[] r2 = new int[32];
+        this.y = r2;
+        this.z = 1;
+        r2[0] = 6;
         this.A = new String[32];
         this.B = new int[32];
-        Objects.requireNonNull(reader, "in == null");
-        this.n = reader;
+        Objects.requireNonNull(r5, "in == null");
+        this.n = r5;
     }
 
-    public final String F(boolean z) {
-        StringBuilder sb = new StringBuilder("$");
-        int i = 0;
-        while (true) {
-            int i2 = this.z;
-            if (i >= i2) {
-                return sb.toString();
-            }
-            int i3 = this.y[i];
-            if (i3 == 1 || i3 == 2) {
-                int i4 = this.B[i];
-                if (z && i4 > 0 && i == i2 - 1) {
-                    i4--;
-                }
-                sb.append('[');
-                sb.append(i4);
-                sb.append(']');
-            } else if (i3 == 3 || i3 == 4 || i3 == 5) {
-                sb.append('.');
-                String str = this.A[i];
-                if (str != null) {
-                    sb.append(str);
-                }
-            }
-            i++;
-        }
+    public final String F(boolean r6) {
+        StringBuilder r0 = new StringBuilder("$");
+        int r1 = 0;
+    L3:
+        int r2 = this.z;
+        if (r1 >= r2) goto L28;
+        int r3 = this.y[r1];
+        if (r3 != 1) goto L8;
+    L19:
+        int r4 = this.B[r1];
+        if (r6 == false) goto L25;
+        if (r4 <= 0) goto L25;
+        if (r1 != (r2 - 1)) goto L25;
+        r4 = r4 - 1;
+    L25:
+        r0.append('[');
+        r0.append(r4);
+        r0.append(']');
+    L26:
+        r1 = r1 + 1;
+        goto L3
+    L8:
+        if (r3 == 2) goto L19;
+        if (r3 != 3) goto L12;
+    L16:
+        r0.append('.');
+        String r5 = this.A[r1];
+        if (r5 == null) goto L26;
+        r0.append(r5);
+        goto L26
+    L12:
+        if (r3 == 4) goto L16;
+        if (r3 == 5) goto L16;
+    L28:
+        return r0.toString();
     }
 
     public String H() {
         return F(true);
     }
 
-    public boolean J() throws IOException {
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        return (iN == 2 || iN == 4 || iN == 17) ? false : true;
+    public boolean J() {
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 2) goto L8;
+        return false;
+    L8:
+        if (r0 != 4) goto L10;
+        return false;
+    L10:
+        if (r0 == 17) goto L16;
+        return true;
+    L16:
+        return false;
     }
 
-    public final boolean K(char c) throws MalformedJsonException {
-        if (c == '\t' || c == '\n' || c == '\f' || c == '\r' || c == ' ') {
-            return false;
-        }
-        if (c != '#') {
-            if (c == ',') {
-                return false;
-            }
-            if (c != '/' && c != '=') {
-                if (c == '{' || c == '}' || c == ':') {
-                    return false;
-                }
-                if (c != ';') {
-                    switch (c) {
-                        case '[':
-                        case ']':
-                            return false;
-                        case '\\':
-                            break;
-                        default:
-                            return true;
-                    }
-                }
-            }
-        }
+    public final boolean K(char r2) {
+        if (r2 != '\t') goto L5;
+        return false;
+    L5:
+        if (r2 != '\n') goto L7;
+        return false;
+    L7:
+        if (r2 != '\f') goto L9;
+        return false;
+    L9:
+        if (r2 != '\r') goto L11;
+        return false;
+    L11:
+        if (r2 != ' ') goto L13;
+        return false;
+    L13:
+        if (r2 != '#') goto L15;
+    L31:
         j();
+        return false;
+    L15:
+        if (r2 != ',') goto L17;
+        return false;
+    L17:
+        if (r2 == '/') goto L31;
+        if (r2 == '=') goto L31;
+        if (r2 != '{') goto L23;
+        return false;
+    L23:
+        if (r2 != '}') goto L25;
+        return false;
+    L25:
+        if (r2 != ':') goto L27;
+        return false;
+    L27:
+        if (r2 == ';') goto L31;
+        switch(r2) {
+            case 91: goto L43;
+            case 92: goto L31;
+            case 93: goto L43;
+            default: goto L29;
+        };
+    L29:
+        return true;
+    L43:
         return false;
     }
 
     final String M() {
-        StringBuilder sbT = b11.t(" at line ", " column ", this.s + 1, (this.q - this.t) + 1, " path ");
-        sbT.append(v());
-        return sbT.toString();
+        StringBuilder r0 = b11.t(" at line ", " column ", this.s + 1, (this.q - this.t) + 1, " path ");
+        r0.append(v());
+        return r0.toString();
     }
 
-    public boolean R() throws IOException {
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        if (iN == 5) {
-            this.u = 0;
-            int[] iArr = this.B;
-            int i = this.z - 1;
-            iArr[i] = iArr[i] + 1;
-            return true;
-        }
-        if (iN != 6) {
-            er1.j(b11.x(e0()), M(), "Expected a boolean but was ");
-            return false;
-        }
+    public boolean R() {
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 5) goto L10;
         this.u = 0;
-        int[] iArr2 = this.B;
-        int i2 = this.z - 1;
-        iArr2[i2] = iArr2[i2] + 1;
+        int[] r1 = this.B;
+        int r4 = this.z - 1;
+        r1[r4] = r1[r4] + 1;
+        return true;
+    L10:
+        if (r0 != 6) goto L13;
+        this.u = 0;
+        int[] r2 = this.B;
+        int r5 = this.z - 1;
+        r2[r5] = r2[r5] + 1;
+        return false;
+    L13:
+        er1.j(b11.x(e0()), M(), "Expected a boolean but was ");
         return false;
     }
 
-    public double T() throws IOException {
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        if (iN == 15) {
-            this.u = 0;
-            int[] iArr = this.B;
-            int i = this.z - 1;
-            iArr[i] = iArr[i] + 1;
-            return this.v;
-        }
-        if (iN == 16) {
-            this.x = new String(this.p, this.q, this.w);
-            this.q += this.w;
-        } else if (iN == 8 || iN == 9) {
-            this.x = b0(iN == 8 ? '\'' : '\"');
-        } else if (iN == 10) {
-            this.x = d0();
-        } else if (iN != 11) {
-            er1.j(b11.x(e0()), M(), "Expected a double but was ");
-            return 0.0d;
-        }
+    public double T() {
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 15) goto L10;
+        this.u = 0;
+        int[] r1 = this.B;
+        int r2 = this.z - 1;
+        r1[r2] = r1[r2] + 1;
+        return this.v;
+    L10:
+        if (r0 != 16) goto L13;
+        this.x = new String(this.p, this.q, this.w);
+        this.q += this.w;
+    L28:
         this.u = 11;
-        double d = Double.parseDouble(this.x);
-        if (!this.o && (Double.isNaN(d) || Double.isInfinite(d))) {
-            throw new MalformedJsonException("JSON forbids NaN and infinities: " + d + M());
-        }
+        double r3 = Double.parseDouble(this.x);
+        if (this.o == false) goto L31;
+    L37:
         this.x = null;
         this.u = 0;
-        int[] iArr2 = this.B;
-        int i2 = this.z - 1;
-        iArr2[i2] = iArr2[i2] + 1;
-        return d;
+        int[] r4 = this.B;
+        int r6 = this.z - 1;
+        r4[r6] = r4[r6] + 1;
+        return r3;
+    L31:
+        if (Double.isNaN(r3) == true) goto L36;
+        if (Double.isInfinite(r3) == false) goto L37;
+    L36:
+        throw new MalformedJsonException("JSON forbids NaN and infinities: " + r3 + M());
+    L13:
+        if (r0 != 8) goto L15;
+    L24:
+        if (r0 != 8) goto L26;
+        char r5 = '\'';
+    L27:
+        this.x = b0(r5);
+        goto L28
+    L26:
+        r5 = '\"';
+        goto L27
+    L15:
+        if (r0 == 9) goto L24;
+        if (r0 != 10) goto L20;
+        this.x = d0();
+        goto L28
+    L20:
+        if (r0 == 11) goto L28;
+        er1.j(b11.x(e0()), M(), "Expected a double but was ");
+        return 0.0d;
     }
 
-    public int W() throws IOException {
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        if (iN == 15) {
-            long j = this.v;
-            int i = (int) j;
-            if (j == i) {
-                this.u = 0;
-                int[] iArr = this.B;
-                int i2 = this.z - 1;
-                iArr[i2] = iArr[i2] + 1;
-                return i;
-            }
-            throw new NumberFormatException("Expected an int but was " + this.v + M());
-        }
-        if (iN == 16) {
-            this.x = new String(this.p, this.q, this.w);
-            this.q += this.w;
-        } else {
-            if (iN != 8 && iN != 9 && iN != 10) {
-                er1.j(b11.x(e0()), M(), "Expected an int but was ");
-                return 0;
-            }
-            if (iN == 10) {
-                this.x = d0();
-            } else {
-                this.x = b0(iN == 8 ? '\'' : '\"');
-            }
-            try {
-                int i3 = Integer.parseInt(this.x);
-                this.u = 0;
-                int[] iArr2 = this.B;
-                int i4 = this.z - 1;
-                iArr2[i4] = iArr2[i4] + 1;
-                return i3;
-            } catch (NumberFormatException unused) {
-            }
-        }
+    public int W() {
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 15) goto L14;
+        long r1 = this.v;
+        int r4 = (int) r1;
+        if (r1 != r4) goto L12;
+        this.u = 0;
+        int[] r2 = this.B;
+        int r7 = this.z - 1;
+        r2[r7] = r2[r7] + 1;
+        return r4;
+    L12:
+        throw new NumberFormatException("Expected an int but was " + this.v + M());
+    L14:
+        if (r0 != 16) goto L17;
+        this.x = new String(this.p, this.q, this.w);
+        this.q += this.w;
+    L32:
         this.u = 11;
-        double d = Double.parseDouble(this.x);
-        int i5 = (int) d;
-        if (i5 == d) {
-            this.x = null;
-            this.u = 0;
-            int[] iArr3 = this.B;
-            int i6 = this.z - 1;
-            iArr3[i6] = iArr3[i6] + 1;
-            return i5;
-        }
+        double r3 = Double.parseDouble(this.x);
+        int r5 = (int) r3;
+        if (r5 != r3) goto L37;
+        this.x = null;
+        this.u = 0;
+        int[] r6 = this.B;
+        int r8 = this.z - 1;
+        r6[r8] = r6[r8] + 1;
+        return r5;
+    L37:
         throw new NumberFormatException("Expected an int but was " + this.x + M());
+    L17:
+        if (r0 != 8) goto L19;
+    L24:
+        if (r0 != 10) goto L26;
+        this.x = d0();
+    L39:
+        int r9 = Integer.parseInt(this.x);     // Catch: NumberFormatException -> L38
+        this.u = 0;     // Catch: NumberFormatException -> L38
+        int[] r10 = this.B;     // Catch: NumberFormatException -> L38
+        int r11 = this.z - 1;     // Catch: NumberFormatException -> L38
+        r10[r11] = r10[r11] + 1;     // Catch: NumberFormatException -> L38
+        return r9;
+    L26:
+        if (r0 != 8) goto L28;
+        char r12 = '\'';
+    L29:
+        this.x = b0(r12);
+        goto L39
+    L28:
+        r12 = '\"';
+        goto L29
+    L19:
+        if (r0 == 9) goto L24;
+        if (r0 == 10) goto L24;
+        er1.j(b11.x(e0()), M(), "Expected an int but was ");
+        return 0;
     }
 
-    public long X() throws IOException {
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        if (iN == 15) {
-            this.u = 0;
-            int[] iArr = this.B;
-            int i = this.z - 1;
-            iArr[i] = iArr[i] + 1;
-            return this.v;
-        }
-        if (iN == 16) {
-            this.x = new String(this.p, this.q, this.w);
-            this.q += this.w;
-        } else {
-            if (iN != 8 && iN != 9 && iN != 10) {
-                er1.j(b11.x(e0()), M(), "Expected a long but was ");
-                return 0L;
-            }
-            if (iN == 10) {
-                this.x = d0();
-            } else {
-                this.x = b0(iN == 8 ? '\'' : '\"');
-            }
-            try {
-                long j = Long.parseLong(this.x);
-                this.u = 0;
-                int[] iArr2 = this.B;
-                int i2 = this.z - 1;
-                iArr2[i2] = iArr2[i2] + 1;
-                return j;
-            } catch (NumberFormatException unused) {
-            }
-        }
+    public long X() {
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 15) goto L10;
+        this.u = 0;
+        int[] r1 = this.B;
+        int r2 = this.z - 1;
+        r1[r2] = r1[r2] + 1;
+        return this.v;
+    L10:
+        if (r0 != 16) goto L13;
+        this.x = new String(this.p, this.q, this.w);
+        this.q += this.w;
+    L28:
         this.u = 11;
-        double d = Double.parseDouble(this.x);
-        long j2 = (long) d;
-        if (j2 == d) {
-            this.x = null;
-            this.u = 0;
-            int[] iArr3 = this.B;
-            int i3 = this.z - 1;
-            iArr3[i3] = iArr3[i3] + 1;
-            return j2;
-        }
+        double r3 = Double.parseDouble(this.x);
+        long r4 = (long) r3;
+        if (r4 != r3) goto L33;
+        this.x = null;
+        this.u = 0;
+        int[] r5 = this.B;
+        int r8 = this.z - 1;
+        r5[r8] = r5[r8] + 1;
+        return r4;
+    L33:
         throw new NumberFormatException("Expected a long but was " + this.x + M());
+    L13:
+        if (r0 != 8) goto L15;
+    L20:
+        if (r0 != 10) goto L22;
+        this.x = d0();
+    L35:
+        long r6 = Long.parseLong(this.x);     // Catch: NumberFormatException -> L34
+        this.u = 0;     // Catch: NumberFormatException -> L34
+        int[] r7 = this.B;     // Catch: NumberFormatException -> L34
+        int r9 = this.z - 1;     // Catch: NumberFormatException -> L34
+        r7[r9] = r7[r9] + 1;     // Catch: NumberFormatException -> L34
+        return r6;
+    L22:
+        if (r0 != 8) goto L24;
+        char r10 = '\'';
+    L25:
+        this.x = b0(r10);
+        goto L35
+    L24:
+        r10 = '\"';
+        goto L25
+    L15:
+        if (r0 == 9) goto L20;
+        if (r0 == 10) goto L20;
+        er1.j(b11.x(e0()), M(), "Expected a long but was ");
+        return 0;
     }
 
-    public String Y() throws IOException {
-        String strB0;
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        if (iN == 14) {
-            strB0 = d0();
-        } else if (iN == 12) {
-            strB0 = b0('\'');
-        } else {
-            if (iN != 13) {
-                er1.j(b11.x(e0()), M(), "Expected a name but was ");
-                return null;
-            }
-            strB0 = b0('\"');
-        }
+    public String Y() {
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 14) goto L9;
+        String r1 = d0();
+    L14:
         this.u = 0;
-        this.A[this.z - 1] = strB0;
-        return strB0;
+        this.A[this.z - 1] = r1;
+        return r1;
+    L9:
+        if (r0 != 12) goto L12;
+        r1 = b0('\'');
+        goto L14
+    L12:
+        if (r0 != 13) goto L16;
+        r1 = b0('\"');
+        goto L14
+    L16:
+        er1.j(b11.x(e0()), M(), "Expected a name but was ");
+        return null;
     }
 
-    public final int Z(boolean z) throws IOException {
-        int i = this.q;
-        int i2 = this.r;
-        while (true) {
-            if (i == i2) {
-                this.q = i;
-                if (!u(1)) {
-                    if (z) {
-                        throw new EOFException("End of input".concat(M()));
-                    }
-                    return -1;
-                }
-                i = this.q;
-                i2 = this.r;
-            }
-            int i3 = i + 1;
-            char[] cArr = this.p;
-            char c = cArr[i];
-            if (c == '\n') {
-                this.s++;
-                this.t = i3;
-            } else if (c != ' ' && c != '\r' && c != '\t') {
-                if (c == '/') {
-                    this.q = i3;
-                    if (i3 == i2) {
-                        this.q = i;
-                        boolean zU = u(2);
-                        this.q++;
-                        if (!zU) {
-                        }
-                        return c;
-                    }
-                    j();
-                    int i4 = this.q;
-                    char c2 = cArr[i4];
-                    if (c2 == '*') {
-                        this.q = i4 + 1;
-                        while (true) {
-                            if (this.q + 2 > this.r && !u(2)) {
-                                l0("Unterminated comment");
-                                throw null;
-                            }
-                            int i5 = this.q;
-                            if (cArr[i5] != '\n') {
-                                int i6 = 0;
-                                while (true) {
-                                    int i7 = this.q;
-                                    if (i6 >= 2) {
-                                        i = i7 + 2;
-                                        i2 = this.r;
-                                        break;
-                                    }
-                                    if (cArr[i7 + i6] != "*/".charAt(i6)) {
-                                        break;
-                                    }
-                                    i6++;
-                                }
-                            } else {
-                                this.s++;
-                                this.t = i5 + 1;
-                            }
-                            this.q++;
-                        }
-                    } else {
-                        if (c2 != '/') {
-                            return c;
-                        }
-                        this.q = i4 + 1;
-                        i0();
-                        i = this.q;
-                        i2 = this.r;
-                    }
-                } else {
-                    if (c != '#') {
-                        this.q = i3;
-                        return c;
-                    }
-                    this.q = i3;
-                    j();
-                    i0();
-                    i = this.q;
-                    i2 = this.r;
-                }
-            }
-            i = i3;
-        }
+    public final int Z(boolean r10) {
+        int r0 = this.q;
+        int r1 = this.r;
+    L4:
+        if (r0 != r1) goto L13;
+        this.q = r0;
+        if (u(1) == false) goto L7;
+        r0 = this.q;
+        r1 = this.r;
+        goto L13
+    L7:
+        if (r10 == true) goto L11;
+        return -1;
+    L11:
+        throw new EOFException("End of input".concat(M()));
+    L13:
+        int r3 = r0 + 1;
+        char[] r4 = this.p;
+        char r5 = r4[r0];
+        if (r5 == '\n') goto L15;
+        if (r5 == ' ') goto L59;
+        if (r5 == '\r') goto L59;
+        if (r5 == '\t') goto L59;
+        if (r5 == '/') goto L25;
+        if (r5 != '#') goto L57;
+        this.q = r3;
+        j();
+        i0();
+        r0 = this.q;
+        r1 = this.r;
+        goto L4
+    L57:
+        this.q = r3;
+        return r5;
+    L25:
+        this.q = r3;
+        if (r3 != r1) goto L30;
+        this.q = r0;
+        boolean r2 = u(2);
+        this.q++;
+        if (r2 == true) goto L30;
+    L33:
+        return r5;
+    L30:
+        j();
+        int r6 = this.q;
+        char r7 = r4[r6];
+        if (r7 != '*') goto L32;
+        this.q = r6 + 1;
+    L37:
+        if ((this.q + 2) > this.r) goto L39;
+    L43:
+        int r8 = this.q;
+        if (r4[r8] != '\n') goto L46;
+        this.s++;
+        this.t = r8 + 1;
+    L51:
+        this.q++;
+        goto L37
+    L46:
+        int r9 = 0;
+    L47:
+        int r11 = this.q;
+        if (r9 >= 2) goto L53;
+        if (r4[r11 + r9] != "*/".charAt(r9)) goto L51;
+        r9 = r9 + 1;
+        goto L47
+    L53:
+        r0 = r11 + 2;
+        r1 = this.r;
+        goto L4
+    L39:
+        if (u(2) == true) goto L43;
+        l0("Unterminated comment");
+        throw null;
+    L32:
+        if (r7 != '/') goto L33;
+        this.q = r6 + 1;
+        i0();
+        r0 = this.q;
+        r1 = this.r;
+    L59:
+        r0 = r3;
+        goto L4
+    L15:
+        this.s++;
+        this.t = r3;
+        goto L59
     }
 
-    public void a0() throws IOException {
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        if (iN != 7) {
-            er1.j(b11.x(e0()), M(), "Expected null but was ");
-            return;
-        }
+    public void a0() {
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 7) goto L9;
         this.u = 0;
-        int[] iArr = this.B;
-        int i = this.z - 1;
-        iArr[i] = iArr[i] + 1;
+        int[] r1 = this.B;
+        int r2 = this.z - 1;
+        r1[r2] = r1[r2] + 1;
+        return;
+    L9:
+        er1.j(b11.x(e0()), M(), "Expected null but was ");
     }
 
-    public void b() throws IOException {
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        if (iN != 3) {
-            er1.j(b11.x(e0()), M(), "Expected BEGIN_ARRAY but was ");
-            return;
-        }
+    public void b() {
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 3) goto L9;
         f0(1);
         this.B[this.z - 1] = 0;
         this.u = 0;
+        return;
+    L9:
+        er1.j(b11.x(e0()), M(), "Expected BEGIN_ARRAY but was ");
     }
 
-    public final String b0(char c) throws MalformedJsonException {
-        int i;
-        char[] cArr;
-        StringBuilder sb = null;
-        do {
-            int i2 = this.q;
-            int i3 = this.r;
-            while (true) {
-                int i4 = i3;
-                i = i2;
-                while (true) {
-                    cArr = this.p;
-                    if (i2 < i4) {
-                        int i5 = i2 + 1;
-                        char c2 = cArr[i2];
-                        if (c2 == c) {
-                            this.q = i5;
-                            int i6 = (i5 - i) - 1;
-                            if (sb == null) {
-                                return new String(cArr, i, i6);
-                            }
-                            sb.append(cArr, i, i6);
-                            return sb.toString();
-                        }
-                        if (c2 == '\\') {
-                            this.q = i5;
-                            int i7 = i5 - i;
-                            int i8 = i7 - 1;
-                            if (sb == null) {
-                                sb = new StringBuilder(Math.max(i7 * 2, 16));
-                            }
-                            sb.append(cArr, i, i8);
-                            sb.append(g0());
-                            i2 = this.q;
-                            i3 = this.r;
-                        } else {
-                            if (c2 == '\n') {
-                                this.s++;
-                                this.t = i5;
-                            }
-                            i2 = i5;
-                        }
-                    }
-                }
-            }
-            if (sb == null) {
-                sb = new StringBuilder(Math.max((i2 - i) * 2, 16));
-            }
-            sb.append(cArr, i, i2 - i);
-            this.q = i2;
-        } while (u(1));
+    public final String b0(char r11) {
+        StringBuilder r1 = null;
+    L3:
+        int r2 = this.q;
+        int r3 = this.r;
+    L4:
+        int r4 = r3;
+        int r5 = r2;
+    L5:
+        char[] r7 = this.p;
+        if (r2 >= r4) goto L25;
+        int r8 = r2 + 1;
+        char r6 = r7[r2];
+        if (r6 == r11) goto L9;
+        if (r6 == '\\') goto L17;
+        if (r6 != '\n') goto L24;
+        this.s++;
+        this.t = r8;
+    L24:
+        r2 = r8;
+        goto L5
+    L17:
+        this.q = r8;
+        int r9 = r8 - r5;
+        int r10 = r9 - 1;
+        if (r1 != null) goto L20;
+        r1 = new StringBuilder(Math.max(r9 * 2, 16));
+    L20:
+        r1.append(r7, r5, r10);
+        r1.append(g0());
+        r2 = this.q;
+        r3 = this.r;
+        goto L4
+    L9:
+        this.q = r8;
+        int r12 = (r8 - r5) - 1;
+        if (r1 == null) goto L12;
+        r1.append(r7, r5, r12);
+        return r1.toString();
+    L12:
+        return new String(r7, r5, r12);
+    L25:
+        if (r1 != null) goto L27;
+        r1 = new StringBuilder(Math.max((r2 - r5) * 2, 16));
+    L27:
+        r1.append(r7, r5, r2 - r5);
+        this.q = r2;
+        if (u(1) == true) goto L3;
         l0("Unterminated string");
         throw null;
     }
 
     public String c0() {
-        String str;
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        if (iN == 10) {
-            str = d0();
-        } else if (iN == 8) {
-            str = b0('\'');
-        } else if (iN == 9) {
-            str = b0('\"');
-        } else if (iN == 11) {
-            str = this.x;
-            this.x = null;
-        } else if (iN == 15) {
-            str = Long.toString(this.v);
-        } else {
-            if (iN != 16) {
-                er1.j(b11.x(e0()), M(), "Expected a string but was ");
-                return null;
-            }
-            str = new String(this.p, this.q, this.w);
-            this.q += this.w;
-        }
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 10) goto L9;
+        String r1 = d0();
+    L23:
         this.u = 0;
-        int[] iArr = this.B;
-        int i = this.z - 1;
-        iArr[i] = iArr[i] + 1;
-        return str;
+        int[] r2 = this.B;
+        int r4 = this.z - 1;
+        r2[r4] = r2[r4] + 1;
+        return r1;
+    L9:
+        if (r0 != 8) goto L12;
+        r1 = b0('\'');
+        goto L23
+    L12:
+        if (r0 != 9) goto L15;
+        r1 = b0('\"');
+        goto L23
+    L15:
+        if (r0 != 11) goto L18;
+        r1 = this.x;
+        this.x = null;
+        goto L23
+    L18:
+        if (r0 != 15) goto L21;
+        r1 = Long.toString(this.v);
+        goto L23
+    L21:
+        if (r0 != 16) goto L25;
+        r1 = new String(this.p, this.q, this.w);
+        this.q += this.w;
+        goto L23
+    L25:
+        er1.j(b11.x(e0()), M(), "Expected a string but was ");
+        return null;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
-    public void close() throws IOException {
+    public void close() {
         this.u = 0;
         this.y[0] = 8;
         this.z = 1;
         this.n.close();
     }
 
-    /* JADX WARN: Failed to find 'out' block for switch in B:32:0x0042. Please report as an issue. */
-    public final String d0() throws MalformedJsonException {
-        String string;
-        StringBuilder sb = null;
-        int i = 0;
-        while (true) {
-            int i2 = 0;
-            while (true) {
-                int i3 = this.q + i2;
-                int i4 = this.r;
-                char[] cArr = this.p;
-                if (i3 < i4) {
-                    char c = cArr[i3];
-                    if (c != '\t' && c != '\n' && c != '\f' && c != '\r' && c != ' ') {
-                        if (c != '#') {
-                            if (c != ',') {
-                                if (c != '/' && c != '=') {
-                                    if (c != '{' && c != '}' && c != ':') {
-                                        if (c != ';') {
-                                            switch (c) {
-                                                case '[':
-                                                case ']':
-                                                    break;
-                                                case '\\':
-                                                    break;
-                                                default:
-                                                    i2++;
-                                                    break;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        j();
-                    }
-                    i = i2;
-                } else if (i2 >= cArr.length) {
-                    if (sb == null) {
-                        sb = new StringBuilder(Math.max(i2, 16));
-                    }
-                    sb.append(cArr, this.q, i2);
-                    this.q += i2;
-                    if (!u(1)) {
-                    }
-                } else if (!u(i2 + 1)) {
-                    i = i2;
-                }
-                int i5 = this.q;
-                if (sb == null) {
-                    string = new String(cArr, i5, i);
-                } else {
-                    sb.append(cArr, i5, i);
-                    string = sb.toString();
-                }
-                this.q += i;
-                return string;
-            }
-        }
+    public final String d0() {
+        StringBuilder r0 = null;
+        int r1 = 0;
+    L3:
+        int r2 = 0;
+    L4:
+        int r3 = this.q + r2;
+        int r4 = this.r;
+        char[] r5 = this.p;
+        if (r3 < r4) goto L6;
+        if (r2 >= r5.length) goto L41;
+        if (u(r2 + 1) == true) goto L4;
+    L40:
+        r1 = r2;
+    L45:
+        int r6 = this.q;
+        if (r0 != null) goto L48;
+        String r7 = new String(r5, r6, r1);
+    L49:
+        this.q += r1;
+        return r7;
+    L48:
+        r0.append(r5, r6, r1);
+        r7 = r0.toString();
+        goto L49
+    L41:
+        if (r0 != null) goto L43;
+        r0 = new StringBuilder(Math.max(r2, 16));
+    L43:
+        r0.append(r5, this.q, r2);
+        this.q += r2;
+        if (u(1) == true) goto L3;
+    L6:
+        char r8 = r5[r3];
+        if (r8 == '\t') goto L40;
+        if (r8 == '\n') goto L40;
+        if (r8 == '\f') goto L40;
+        if (r8 == '\r') goto L40;
+        if (r8 == ' ') goto L40;
+        if (r8 == '#') goto L34;
+        if (r8 == ',') goto L40;
+        if (r8 == '/') goto L34;
+        if (r8 == '=') goto L34;
+        if (r8 == '{') goto L40;
+        if (r8 == '}') goto L40;
+        if (r8 == ':') goto L40;
+        if (r8 == ';') goto L34;
+        switch(r8) {
+            case 91: goto L40;
+            case 92: goto L34;
+            case 93: goto L40;
+            default: goto L33;
+        };
+    L33:
+        r2 = r2 + 1;
+    L34:
+        j();
+        goto L40
     }
 
     public int e0() {
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        switch (iN) {
-            case 1:
-                return 3;
-            case 2:
-                return 4;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                return 1;
-            case 4:
-                return 2;
-            case 5:
-            case 6:
-                return 8;
-            case 7:
-                return 9;
-            case 8:
-            case 9:
-            case 10:
-            case 11:
-                return 6;
-            case 12:
-            case 13:
-            case 14:
-                return 5;
-            case 15:
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                return 7;
-            case 17:
-                return 10;
-            default:
-                throw new AssertionError();
-        }
+        int r0 = this.u;
+        if (r0 != 0) goto L5;
+        r0 = n();
+    L5:
+        switch(r0) {
+            case 1: goto L26;
+            case 2: goto L24;
+            case 3: goto L22;
+            case 4: goto L20;
+            case 5: goto L18;
+            case 6: goto L18;
+            case 7: goto L16;
+            case 8: goto L14;
+            case 9: goto L14;
+            case 10: goto L14;
+            case 11: goto L14;
+            case 12: goto L12;
+            case 13: goto L12;
+            case 14: goto L12;
+            case 15: goto L10;
+            case 16: goto L10;
+            case 17: goto L8;
+            default: goto L7;
+        };
+    L8:
+        return 10;
+    L10:
+        return 7;
+    L12:
+        return 5;
+    L14:
+        return 6;
+    L16:
+        return 9;
+    L18:
+        return 8;
+    L20:
+        return 2;
+    L22:
+        return 1;
+    L24:
+        return 4;
+    L26:
+        return 3;
+    L7:
+        throw new AssertionError();
     }
 
-    public void f() throws IOException {
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        if (iN != 1) {
-            er1.j(b11.x(e0()), M(), "Expected BEGIN_OBJECT but was ");
-        } else {
-            f0(3);
-            this.u = 0;
-        }
+    public void f() {
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 1) goto L9;
+        f0(3);
+        this.u = 0;
+        return;
+    L9:
+        er1.j(b11.x(e0()), M(), "Expected BEGIN_OBJECT but was ");
     }
 
-    public final void f0(int i) {
-        int i2 = this.z;
-        int[] iArr = this.y;
-        if (i2 == iArr.length) {
-            int i3 = i2 * 2;
-            this.y = Arrays.copyOf(iArr, i3);
-            this.B = Arrays.copyOf(this.B, i3);
-            this.A = (String[]) Arrays.copyOf(this.A, i3);
-        }
-        int[] iArr2 = this.y;
-        int i4 = this.z;
-        this.z = i4 + 1;
-        iArr2[i4] = i;
+    public final void f0(int r4) {
+        int r0 = this.z;
+        int[] r1 = this.y;
+        if (r0 != r1.length) goto L5;
+        int r2 = r0 * 2;
+        this.y = Arrays.copyOf(r1, r2);
+        this.B = Arrays.copyOf(this.B, r2);
+        this.A = (String[]) Arrays.copyOf(this.A, r2);
+    L5:
+        int[] r3 = this.y;
+        int r5 = this.z;
+        this.z = r5 + 1;
+        r3[r5] = r4;
     }
 
-    public final char g0() throws MalformedJsonException {
-        int i;
-        if (this.q == this.r && !u(1)) {
-            l0("Unterminated escape sequence");
-            throw null;
-        }
-        int i2 = this.q;
-        int i3 = i2 + 1;
-        this.q = i3;
-        char[] cArr = this.p;
-        char c = cArr[i2];
-        if (c == '\n') {
-            this.s++;
-            this.t = i3;
-            return c;
-        }
-        if (c == '\"' || c == '\'' || c == '/' || c == '\\') {
-            return c;
-        }
-        if (c == 'b') {
-            return '\b';
-        }
-        if (c == 'f') {
-            return '\f';
-        }
-        if (c == 'n') {
-            return '\n';
-        }
-        if (c == 'r') {
-            return '\r';
-        }
-        if (c == 't') {
-            return '\t';
-        }
-        if (c != 'u') {
-            l0("Invalid escape sequence");
-            throw null;
-        }
-        if (i2 + 5 > this.r && !u(4)) {
-            l0("Unterminated escape sequence");
-            throw null;
-        }
-        int i4 = this.q;
-        int i5 = i4 + 4;
-        char c2 = 0;
-        while (i4 < i5) {
-            char c3 = cArr[i4];
-            char c4 = (char) (c2 << 4);
-            if (c3 >= '0' && c3 <= '9') {
-                i = c3 - '0';
-            } else if (c3 >= 'a' && c3 <= 'f') {
-                i = c3 - 'W';
-            } else {
-                if (c3 < 'A' || c3 > 'F') {
-                    throw new NumberFormatException("\\u".concat(new String(cArr, this.q, 4)));
-                }
-                i = c3 - '7';
-            }
-            c2 = (char) (i + c4);
-            i4++;
-        }
+    public final char g0() {
+        if (this.q == this.r) goto L5;
+    L9:
+        int r0 = this.q;
+        int r1 = r0 + 1;
+        this.q = r1;
+        char[] r5 = this.p;
+        char r6 = r5[r0];
+        if (r6 != '\n') goto L12;
+        this.s++;
+        this.t = r1;
+        return r6;
+    L12:
+        if (r6 != '\"') goto L14;
+    L71:
+        return r6;
+    L14:
+        if (r6 == '\'') goto L71;
+        if (r6 == '/') goto L71;
+        if (r6 == '\\') goto L71;
+        if (r6 != 'b') goto L22;
+        return '\b';
+    L22:
+        if (r6 != 'f') goto L24;
+        return '\f';
+    L24:
+        if (r6 != 'n') goto L26;
+        return '\n';
+    L26:
+        if (r6 != 'r') goto L28;
+        return '\r';
+    L28:
+        if (r6 != 't') goto L30;
+        return '\t';
+    L30:
+        if (r6 == 'u') goto L32;
+        l0("Invalid escape sequence");
+        throw null;
+    L32:
+        if ((r0 + 5) > this.r) goto L34;
+    L38:
+        int r2 = this.q;
+        int r3 = r2 + 4;
+        char r4 = 0;
+    L39:
+        if (r2 >= r3) goto L58;
+        char r7 = r5[r2];
+        char r8 = (char) (r4 << 4);
+        if (r7 < '0') goto L47;
+        if (r7 > '9') goto L47;
+        int r9 = r7 - '0';
+    L45:
+        r4 = (char) (r9 + r8);
+        r2 = r2 + 1;
+    L47:
+        if (r7 < 'a') goto L51;
+        if (r7 > 'f') goto L51;
+        r9 = r7 - 'W';
+    L51:
+        if (r7 < 'A') goto L57;
+        if (r7 > 'F') goto L57;
+        r9 = r7 - '7';
+    L57:
+        throw new NumberFormatException("\\u".concat(new String(r5, this.q, 4)));
+    L58:
         this.q += 4;
-        return c2;
+        return r4;
+    L34:
+        if (u(4) == true) goto L38;
+        l0("Unterminated escape sequence");
+        throw null;
+    L5:
+        if (u(1) == true) goto L9;
+        l0("Unterminated escape sequence");
+        throw null;
     }
 
-    public final void h0(char c) throws MalformedJsonException {
-        do {
-            int i = this.q;
-            int i2 = this.r;
-            while (i < i2) {
-                int i3 = i + 1;
-                char c2 = this.p[i];
-                if (c2 == c) {
-                    this.q = i3;
-                    return;
-                }
-                if (c2 == '\\') {
-                    this.q = i3;
-                    g0();
-                    i = this.q;
-                    i2 = this.r;
-                } else {
-                    if (c2 == '\n') {
-                        this.s++;
-                        this.t = i3;
-                    }
-                    i = i3;
-                }
-            }
-            this.q = i;
-        } while (u(1));
+    public final void h0(char r6) {
+    L2:
+        int r0 = this.q;
+        int r1 = this.r;
+    L4:
+        if (r0 >= r1) goto L16;
+        int r3 = r0 + 1;
+        char r2 = this.p[r0];
+        if (r2 == r6) goto L7;
+        if (r2 == '\\') goto L11;
+        if (r2 != '\n') goto L15;
+        this.s++;
+        this.t = r3;
+    L15:
+        r0 = r3;
+        goto L4
+    L11:
+        this.q = r3;
+        g0();
+        r0 = this.q;
+        r1 = this.r;
+        goto L4
+    L7:
+        this.q = r3;
+        return;
+    L16:
+        this.q = r0;
+        if (u(1) == true) goto L2;
         l0("Unterminated string");
         throw null;
     }
 
     public final void i0() {
-        char c;
-        do {
-            if (this.q >= this.r && !u(1)) {
-                return;
-            }
-            int i = this.q;
-            int i2 = i + 1;
-            this.q = i2;
-            c = this.p[i];
-            if (c == '\n') {
-                this.s++;
-                this.t = i2;
-                return;
-            }
-        } while (c != '\r');
+    L3:
+        if (this.q >= this.r) goto L5;
+    L6:
+        int r0 = this.q;
+        int r1 = r0 + 1;
+        this.q = r1;
+        char r2 = this.p[r0];
+        if (r2 == '\n') goto L8;
+        if (r2 != '\r') goto L3;
+        return;
+    L8:
+        this.s++;
+        this.t = r1;
+        return;
+    L5:
+        if (u(1) == true) goto L6;
     }
 
-    public final void j() throws MalformedJsonException {
-        if (this.o) {
-            return;
-        }
+    public final void j() {
+        if (this.o == false) goto L5;
+        return;
+    L5:
         l0("Use JsonReader.setLenient(true) to accept malformed JSON");
         throw null;
     }
 
-    public final void j0() throws MalformedJsonException {
-        do {
-            int i = 0;
-            while (true) {
-                int i2 = this.q + i;
-                if (i2 < this.r) {
-                    char c = this.p[i2];
-                    if (c != '\t' && c != '\n' && c != '\f' && c != '\r' && c != ' ') {
-                        if (c != '#') {
-                            if (c != ',') {
-                                if (c != '/' && c != '=') {
-                                    if (c != '{' && c != '}' && c != ':') {
-                                        if (c != ';') {
-                                            switch (c) {
-                                                case '[':
-                                                case ']':
-                                                    break;
-                                                case '\\':
-                                                    break;
-                                                default:
-                                                    i++;
-                                                    break;
-                                            }
-                                            return;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        j();
-                    }
-                    this.q += i;
-                    return;
-                }
-                this.q = i2;
-            }
-        } while (u(1));
-    }
-
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    public void k0() throws IOException {
-        int i = 0;
-        do {
-            int iN = this.u;
-            if (iN == 0) {
-                iN = n();
-            }
-            switch (iN) {
-                case 1:
-                    f0(3);
-                    i++;
-                    this.u = 0;
-                    break;
-                case 2:
-                    if (i == 0) {
-                        this.A[this.z - 1] = null;
-                    }
-                    this.z--;
-                    i--;
-                    this.u = 0;
-                    break;
-                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                    f0(1);
-                    i++;
-                    this.u = 0;
-                    break;
-                case 4:
-                    this.z--;
-                    i--;
-                    this.u = 0;
-                    break;
-                case 5:
-                case 6:
-                case 7:
-                case 11:
-                case 15:
-                default:
-                    this.u = 0;
-                    break;
-                case 8:
-                    h0('\'');
-                    this.u = 0;
-                    break;
-                case 9:
-                    h0('\"');
-                    this.u = 0;
-                    break;
-                case 10:
-                    j0();
-                    this.u = 0;
-                    break;
-                case 12:
-                    h0('\'');
-                    if (i == 0) {
-                        this.A[this.z - 1] = "<skipped>";
-                    }
-                    this.u = 0;
-                    break;
-                case 13:
-                    h0('\"');
-                    if (i == 0) {
-                        this.A[this.z - 1] = "<skipped>";
-                    }
-                    this.u = 0;
-                    break;
-                case 14:
-                    j0();
-                    if (i == 0) {
-                        this.A[this.z - 1] = "<skipped>";
-                    }
-                    this.u = 0;
-                    break;
-                case WaveRetry.MAX_FAILURES /* 16 */:
-                    this.q += this.w;
-                    this.u = 0;
-                    break;
-                case 17:
-                    break;
-            }
-            return;
-        } while (i > 0);
-        int[] iArr = this.B;
-        int i2 = this.z - 1;
-        iArr[i2] = iArr[i2] + 1;
-    }
-
-    public final void l0(String str) throws MalformedJsonException {
-        throw new MalformedJsonException(str.concat(M()));
-    }
-
-    /* JADX WARN: Code duplicated, block: B:115:0x017b A[RETURN] */
-    /* JADX WARN: Code duplicated, block: B:116:0x017c  */
-    /* JADX WARN: Code duplicated, block: B:119:0x018d  */
-    /* JADX WARN: Code duplicated, block: B:122:0x0193  */
-    /* JADX WARN: Code duplicated, block: B:126:0x01a0  */
-    /* JADX WARN: Code duplicated, block: B:127:0x01a4 A[PHI: r1 r10
-  0x01a4: PHI (r1v56 int) = (r1v55 int), (r1v72 int) binds: [B:118:0x018b, B:126:0x01a0] A[DONT_GENERATE, DONT_INLINE]
-  0x01a4: PHI (r10v11 int) = (r10v10 int), (r10v12 int) binds: [B:118:0x018b, B:126:0x01a0] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:129:0x01ac  */
-    /* JADX WARN: Code duplicated, block: B:131:0x01b0  */
-    /* JADX WARN: Code duplicated, block: B:172:0x021e  */
-    /* JADX WARN: Code duplicated, block: B:173:0x0220  */
-    /* JADX WARN: Code duplicated, block: B:186:0x0243 A[DONT_INVERT, PHI: r8
-  0x0243: PHI (r8v20 char) = (r8v19 char), (r8v21 char) binds: [B:171:0x021c, B:177:0x0229] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:187:0x0245  */
-    /* JADX WARN: Code duplicated, block: B:200:0x0261  */
-    /* JADX WARN: Code duplicated, block: B:202:0x0264  */
-    /* JADX WARN: Code duplicated, block: B:205:0x0269 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:209:0x0275 A[RETURN] */
-    /* JADX WARN: Code duplicated, block: B:210:0x0276  */
-    /* JADX WARN: Code duplicated, block: B:212:0x0280  */
-    /* JADX WARN: Code duplicated, block: B:214:0x0288  */
-    /* JADX WARN: Code duplicated, block: B:276:0x0190 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:277:0x0190 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:278:0x019b A[SYNTHETIC] */
-    public final int n() throws IOException {
-        int iZ;
-        int i;
-        String str;
-        String str2;
-        int i2;
-        int i3;
-        char c;
-        int i4;
-        int i5;
-        boolean z;
-        int i6;
-        char c2;
-        char c3;
-        int i7;
-        char c4;
-        int[] iArr = this.y;
-        boolean z2 = true;
-        int i8 = this.z - 1;
-        int i9 = iArr[i8];
-        char[] cArr = this.p;
-        if (i9 == 1) {
-            iArr[i8] = 2;
-        } else if (i9 == 2) {
-            int iZ2 = Z(true);
-            if (iZ2 != 44) {
-                if (iZ2 != 59) {
-                    if (iZ2 == 93) {
-                        this.u = 4;
-                        return 4;
-                    }
-                    l0("Unterminated array");
-                    throw null;
-                }
-                j();
-            }
-        } else {
-            if (i9 == 3 || i9 == 5) {
-                iArr[i8] = 4;
-                if (i9 == 5 && (iZ = Z(true)) != 44) {
-                    if (iZ != 59) {
-                        if (iZ == 125) {
-                            this.u = 2;
-                            return 2;
-                        }
-                        l0("Unterminated object");
-                        throw null;
-                    }
-                    j();
-                }
-                int iZ3 = Z(true);
-                if (iZ3 == 34) {
-                    this.u = 13;
-                    return 13;
-                }
-                if (iZ3 == 39) {
-                    j();
-                    this.u = 12;
-                    return 12;
-                }
-                if (iZ3 == 125) {
-                    if (i9 != 5) {
-                        this.u = 2;
-                        return 2;
-                    }
-                    l0("Expected name");
-                    throw null;
-                }
-                j();
-                this.q--;
-                if (K((char) iZ3)) {
-                    this.u = 14;
-                    return 14;
-                }
-                l0("Expected name");
-                throw null;
-            }
-            if (i9 == 4) {
-                iArr[i8] = 5;
-                int iZ4 = Z(true);
-                if (iZ4 != 58) {
-                    if (iZ4 != 61) {
-                        l0("Expected ':'");
-                        throw null;
-                    }
-                    j();
-                    if (this.q < this.r || u(1)) {
-                        int i10 = this.q;
-                        if (cArr[i10] == '>') {
-                            this.q = i10 + 1;
-                        }
-                    }
-                }
-            } else if (i9 == 6) {
-                if (this.o) {
-                    Z(true);
-                    int i11 = this.q;
-                    this.q = i11 - 1;
-                    if (i11 + 4 <= this.r || u(5)) {
-                        int i12 = this.q;
-                        if (cArr[i12] == ')' && cArr[i12 + 1] == ']' && cArr[i12 + 2] == '}' && cArr[i12 + 3] == '\'' && cArr[i12 + 4] == '\n') {
-                            this.q = i12 + 5;
-                        }
-                    }
-                }
-                this.y[this.z - 1] = 7;
-            } else if (i9 == 7) {
-                if (Z(false) == -1) {
-                    this.u = 17;
-                    return 17;
-                }
-                j();
-                this.q--;
-            } else if (i9 == 8) {
-                kf2.o("JsonReader is closed");
-                return 0;
-            }
-        }
-        int iZ5 = Z(true);
-        if (iZ5 == 34) {
-            this.u = 9;
-            return 9;
-        }
-        if (iZ5 == 39) {
-            j();
-            this.u = 8;
-            return 8;
-        }
-        if (iZ5 == 44 || iZ5 == 59) {
-            i = 1;
-        } else {
-            if (iZ5 == 91) {
-                this.u = 3;
-                return 3;
-            }
-            if (iZ5 != 93) {
-                if (iZ5 == 123) {
-                    this.u = 1;
-                    return 1;
-                }
-                int i13 = this.q - 1;
-                this.q = i13;
-                char c5 = cArr[i13];
-                if (c5 == 't' || c5 == 'T') {
-                    str = "true";
-                    str2 = "TRUE";
-                    i2 = 5;
-                } else {
-                    if (c5 != 'f' && c5 != 'F') {
-                        if (c5 != 'n' && c5 != 'N') {
-                            i3 = 0;
-                            break;
-                        }
-                        str = "null";
-                        str2 = "NULL";
-                        i2 = 7;
-                        if (i3 != 0) {
-                            return i3;
-                        }
-                        i4 = this.q;
-                        i5 = this.r;
-                        z = true;
-                        i6 = 0;
-                        long j = 0;
-                        boolean z3 = false;
-                        c2 = 0;
-                        while (true) {
-                            if (i4 + i6 != i5) {
-                                c3 = cArr[i4 + i6];
-                                if (c3 != '+') {
-                                    if (c3 != 'E' || c3 == 'e') {
-                                        if (c2 != 2 || c2 == 4) {
-                                            c2 = 5;
-                                            i6++;
-                                            z2 = true;
-                                        }
-                                    } else if (c3 == '-') {
-                                        if (c2 == 0) {
-                                            z3 = true;
-                                            c2 = 1;
-                                        } else {
-                                            if (c2 != 5) {
-                                            }
-                                            c2 = 6;
-                                        }
-                                        i6++;
-                                        z2 = true;
-                                    } else if (c3 != '.') {
-                                        if (c3 >= '0' && c3 <= '9') {
-                                            if (c2 == z2 || c2 == 0) {
-                                                j = -(c3 - '0');
-                                                c2 = 2;
-                                            } else if (c2 != 2) {
-                                                long j2 = j;
-                                                if (c2 == 3) {
-                                                    j = j2;
-                                                    c2 = 4;
-                                                } else if (c2 == 5 || c2 == 6) {
-                                                    j = j2;
-                                                    c2 = 7;
-                                                } else {
-                                                    j = j2;
-                                                }
-                                            } else if (j != 0) {
-                                                long j3 = j;
-                                                long j4 = (10 * j) - ((long) (c3 - '0'));
-                                                z &= j3 > -922337203685477580L || (j3 == -922337203685477580L && j4 < j3);
-                                                j = j4;
-                                            }
-                                            i6++;
-                                            z2 = true;
-                                        } else if (!K(c3)) {
-                                            c4 = 2;
-                                            if (c2 != 2) {
-                                                if (c2 != c4 || c2 == 4 || c2 == 7) {
-                                                    this.w = i6;
-                                                    i7 = 16;
-                                                    this.u = 16;
-                                                }
-                                            } else if (z || ((j == Long.MIN_VALUE && !z3) || (j == 0 && z3))) {
-                                                c4 = 2;
-                                                if (c2 != c4) {
-                                                }
-                                                this.w = i6;
-                                                i7 = 16;
-                                                this.u = 16;
-                                            } else {
-                                                long j5 = j;
-                                                if (!z3) {
-                                                    j5 = -j5;
-                                                }
-                                                this.v = j5;
-                                                this.q += i6;
-                                                i7 = 15;
-                                                this.u = 15;
-                                            }
-                                        }
-                                    } else if (c2 == 2) {
-                                        c2 = 3;
-                                        i6++;
-                                        z2 = true;
-                                    }
-                                    if (i7 != 0) {
-                                        return i7;
-                                    }
-                                    if (K(cArr[this.q])) {
-                                        l0("Expected value");
-                                        throw null;
-                                    }
-                                    j();
-                                    this.u = 10;
-                                    return 10;
-                                }
-                                if (c2 != 5) {
-                                }
-                                c2 = 6;
-                                i6++;
-                                z2 = true;
-                            } else if (i6 != cArr.length) {
-                                if (!u(i6 + 1)) {
-                                    i4 = this.q;
-                                    i5 = this.r;
-                                    c3 = cArr[i4 + i6];
-                                    if (c3 != '+') {
-                                        if (c3 != 'E') {
-                                            if (c2 != 2) {
-                                            }
-                                            c2 = 5;
-                                            i6++;
-                                            z2 = true;
-                                        } else {
-                                            if (c2 != 2) {
-                                            }
-                                            c2 = 5;
-                                            i6++;
-                                            z2 = true;
-                                        }
-                                        if (i7 != 0) {
-                                            return i7;
-                                        }
-                                        if (K(cArr[this.q])) {
-                                            l0("Expected value");
-                                            throw null;
-                                        }
-                                        j();
-                                        this.u = 10;
-                                        return 10;
-                                    }
-                                    if (c2 != 5) {
-                                    }
-                                    c2 = 6;
-                                    i6++;
-                                    z2 = true;
-                                }
-                                c4 = 2;
-                                if (c2 != 2) {
-                                    if (c2 != c4) {
-                                    }
-                                    this.w = i6;
-                                    i7 = 16;
-                                    this.u = 16;
-                                } else {
-                                    if (z) {
-                                    }
-                                    c4 = 2;
-                                    if (c2 != c4) {
-                                    }
-                                    this.w = i6;
-                                    i7 = 16;
-                                    this.u = 16;
-                                }
-                                if (i7 != 0) {
-                                    return i7;
-                                }
-                                if (K(cArr[this.q])) {
-                                    l0("Expected value");
-                                    throw null;
-                                }
-                                j();
-                                this.u = 10;
-                                return 10;
-                            }
-                            i7 = 0;
-                            if (i7 != 0) {
-                                return i7;
-                            }
-                            if (K(cArr[this.q])) {
-                                l0("Expected value");
-                                throw null;
-                            }
-                            j();
-                            this.u = 10;
-                            return 10;
-                        }
-                    }
-                    str = "false";
-                    str2 = "FALSE";
-                    i2 = 6;
-                }
-                int length = str.length();
-                int i14 = 1;
-                while (true) {
-                    int i15 = this.q;
-                    int i16 = this.r;
-                    if (i14 >= length) {
-                        if ((i15 + length >= i16 && !u(length + 1)) || !K(cArr[this.q + length])) {
-                            this.q += length;
-                            this.u = i2;
-                            i3 = i2;
-                            break;
-                        }
-                        break;
-                    }
-                    if ((i15 + i14 < i16 || u(i14 + 1)) && ((c = cArr[this.q + i14]) == str.charAt(i14) || c == str2.charAt(i14))) {
-                        i14++;
-                    }
-                    i3 = 0;
-                    break;
-                }
-                if (i3 != 0) {
-                    return i3;
-                }
-                i4 = this.q;
-                i5 = this.r;
-                z = true;
-                i6 = 0;
-                long j6 = 0;
-                boolean z4 = false;
-                c2 = 0;
-                while (true) {
-                    if (i4 + i6 != i5) {
-                        c3 = cArr[i4 + i6];
-                        if (c3 != '+') {
-                            if (c3 != 'E') {
-                                if (c2 != 2) {
-                                }
-                                c2 = 5;
-                                i6++;
-                                z2 = true;
-                            } else {
-                                if (c2 != 2) {
-                                }
-                                c2 = 5;
-                                i6++;
-                                z2 = true;
-                            }
-                            if (i7 != 0) {
-                                return i7;
-                            }
-                            if (K(cArr[this.q])) {
-                                l0("Expected value");
-                                throw null;
-                            }
-                            j();
-                            this.u = 10;
-                            return 10;
-                        }
-                        if (c2 != 5) {
-                        }
-                        c2 = 6;
-                        i6++;
-                        z2 = true;
-                    } else if (i6 != cArr.length) {
-                        if (!u(i6 + 1)) {
-                            i4 = this.q;
-                            i5 = this.r;
-                            c3 = cArr[i4 + i6];
-                            if (c3 != '+') {
-                                if (c3 != 'E') {
-                                    if (c2 != 2) {
-                                    }
-                                    c2 = 5;
-                                    i6++;
-                                    z2 = true;
-                                } else {
-                                    if (c2 != 2) {
-                                    }
-                                    c2 = 5;
-                                    i6++;
-                                    z2 = true;
-                                }
-                                if (i7 != 0) {
-                                    return i7;
-                                }
-                                if (K(cArr[this.q])) {
-                                    l0("Expected value");
-                                    throw null;
-                                }
-                                j();
-                                this.u = 10;
-                                return 10;
-                            }
-                            if (c2 != 5) {
-                            }
-                            c2 = 6;
-                            i6++;
-                            z2 = true;
-                        }
-                        c4 = 2;
-                        if (c2 != 2) {
-                            if (c2 != c4) {
-                            }
-                            this.w = i6;
-                            i7 = 16;
-                            this.u = 16;
-                        } else {
-                            if (z) {
-                            }
-                            c4 = 2;
-                            if (c2 != c4) {
-                            }
-                            this.w = i6;
-                            i7 = 16;
-                            this.u = 16;
-                        }
-                        if (i7 != 0) {
-                            return i7;
-                        }
-                        if (K(cArr[this.q])) {
-                            l0("Expected value");
-                            throw null;
-                        }
-                        j();
-                        this.u = 10;
-                        return 10;
-                    }
-                    i7 = 0;
-                    if (i7 != 0) {
-                        return i7;
-                    }
-                    if (K(cArr[this.q])) {
-                        l0("Expected value");
-                        throw null;
-                    }
-                    j();
-                    this.u = 10;
-                    return 10;
-                }
-            }
-            i = 1;
-            if (i9 == 1) {
-                this.u = 4;
-                return 4;
-            }
-        }
-        if (i9 != i && i9 != 2) {
-            l0("Unexpected value");
-            throw null;
-        }
+    public final void j0() {
+    L2:
+        int r0 = 0;
+    L3:
+        int r1 = this.q + r0;
+        if (r1 >= this.r) goto L36;
+        char r2 = this.p[r1];
+        if (r2 == '\t') goto L34;
+        if (r2 == '\n') goto L34;
+        if (r2 == '\f') goto L34;
+        if (r2 == '\r') goto L34;
+        if (r2 == ' ') goto L34;
+        if (r2 == '#') goto L33;
+        if (r2 == ',') goto L34;
+        if (r2 == '/') goto L33;
+        if (r2 == '=') goto L33;
+        if (r2 == '{') goto L34;
+        if (r2 == '}') goto L34;
+        if (r2 == ':') goto L34;
+        if (r2 == ';') goto L33;
+        switch(r2) {
+            case 91: goto L34;
+            case 92: goto L33;
+            case 93: goto L34;
+            default: goto L32;
+        };
+    L32:
+        r0 = r0 + 1;
+    L33:
         j();
-        this.q -= i;
+    L34:
+        this.q += r0;
+        return;
+    L36:
+        this.q = r1;
+        if (u(1) == true) goto L2;
+    }
+
+    public void k0() {
+        int r1 = 0;
+    L3:
+        int r2 = this.u;
+        if (r2 != 0) goto L7;
+        r2 = n();
+    L7:
+        switch(r2) {
+            case 1: goto L30;
+            case 2: goto L27;
+            case 3: goto L25;
+            case 4: goto L23;
+            case 5: goto L31;
+            case 6: goto L31;
+            case 7: goto L31;
+            case 8: goto L22;
+            case 9: goto L21;
+            case 10: goto L20;
+            case 11: goto L31;
+            case 12: goto L17;
+            case 13: goto L14;
+            case 14: goto L11;
+            case 15: goto L31;
+            case 16: goto L10;
+            case 17: goto L9;
+            default: goto L31;
+        };
+    L10:
+        this.q += this.w;
+        goto L31
+    L11:
+        j0();
+        if (r1 != 0) goto L31;
+        this.A[this.z - 1] = "<skipped>";
+        goto L31
+    L14:
+        h0('\"');
+        if (r1 != 0) goto L31;
+        this.A[this.z - 1] = "<skipped>";
+        goto L31
+    L17:
+        h0('\'');
+        if (r1 != 0) goto L31;
+        this.A[this.z - 1] = "<skipped>";
+        goto L31
+    L20:
+        j0();
+        goto L31
+    L21:
+        h0('\"');
+        goto L31
+    L22:
+        h0('\'');
+        goto L31
+    L23:
+        this.z--;
+    L24:
+        r1 = r1 - 1;
+        goto L31
+    L25:
+        f0(1);
+    L26:
+        r1 = r1 + 1;
+        goto L31
+    L27:
+        if (r1 != 0) goto L29;
+        this.A[this.z - 1] = null;
+    L29:
+        this.z--;
+        goto L24
+    L30:
+        f0(3);
+    L31:
+        this.u = 0;
+        if (r1 > 0) goto L3;
+        int[] r0 = this.B;
+        int r7 = this.z - 1;
+        r0[r7] = r0[r7] + 1;
+        return;
+    }
+
+    public final void l0(String r2) {
+        throw new MalformedJsonException(r2.concat(M()));
+    }
+
+    public final int n() {
+        int[] r1 = this.y;
+        boolean r3 = true;
+        int r2 = this.z - 1;
+        int r4 = r1[r2];
+        char[] r6 = this.p;
+        if (r4 != 1) goto L5;
+        r1[r2] = 2;
+    L63:
+        int r5 = Z(true);
+        if (r5 == 34) goto L235;
+        if (r5 == 39) goto L233;
+        if (r5 == 44) goto L224;
+        if (r5 == 59) goto L224;
+        if (r5 == 91) goto L222;
+        if (r5 != 93) goto L72;
+        int r8 = 1;
+        if (r4 != 1) goto L225;
+        this.u = 4;
+        return 4;
+    L225:
+        if (r4 != r8) goto L227;
+    L231:
+        j();
+        this.q -= r8;
         this.u = 7;
         return 7;
+    L227:
+        if (r4 == 2) goto L231;
+        l0("Unexpected value");
+        throw null;
+    L72:
+        if (r5 == 123) goto L216;
+        int r7 = this.q - 1;
+        this.q = r7;
+        char r9 = r6[r7];
+        if (r9 != 't') goto L76;
+    L91:
+        String r10 = "true";
+        String r11 = "TRUE";
+        int r12 = 5;
+    L92:
+        int r13 = r10.length();
+        int r14 = 1;
+    L93:
+        int r15 = this.q;
+        int r16 = this.r;
+        if (r14 >= r13) goto L107;
+        if ((r15 + r14) >= r16) goto L98;
+    L100:
+        char r17 = r6[this.q + r14];
+        if (r17 == r10.charAt(r14)) goto L105;
+        if (r17 == r11.charAt(r14)) goto L105;
+    L88:
+        int r18 = 0;
+    L114:
+        if (r18 == 0) goto L116;
+        return r18;
+    L116:
+        int r19 = this.q;
+        int r110 = this.r;
+        boolean r111 = true;
+        int r20 = 0;
+        long r21 = 0;
+        boolean r22 = false;
+        char r112 = 0;
+    L118:
+        if ((r19 + r20) == r110) goto L120;
+    L127:
+        char r113 = r6[r19 + r20];
+        if (r113 != '+') goto L130;
+        if (r112 != 5) goto L121;
+    L199:
+        r112 = 6;
+    L207:
+        r20 = r20 + 1;
+        r3 = true;
+    L121:
+        int r23 = 0;
+    L208:
+        if (r23 == 0) goto L211;
+        return r23;
+    L211:
+        if (K(r6[this.q]) == false) goto L214;
+        j();
+        this.u = 10;
+        return 10;
+    L214:
+        l0("Expected value");
+        throw null;
+    L130:
+        if (r113 == 'E') goto L201;
+        if (r113 == 'e') goto L201;
+        if (r113 == '-') goto L196;
+        if (r113 == '.') goto L193;
+        if (r113 < '0') goto L169;
+        if (r113 > '9') goto L169;
+        if (r112 == r3) goto L167;
+        if (r112 == 0) goto L167;
+        if (r112 == 2) goto L148;
+        long r24 = r21;
+        if (r112 != 3) goto L162;
+        r21 = r24;
+        r112 = 4;
+        goto L207
+    L162:
+        if (r112 == 5) goto L166;
+        if (r112 == 6) goto L166;
+        r21 = r24;
+    L166:
+        r21 = r24;
+        r112 = 7;
+        goto L207
+    L148:
+        if (r21 == 0) goto L121;
+        long r25 = r21;
+        long r26 = (10 * r21) - ((long) (r113 - '0'));
+        if (r25 > (-922337203685477580L)) goto L157;
+        if (r25 == (-922337203685477580L)) goto L154;
+    L156:
+        boolean r27 = false;
+    L158:
+        r111 = r111 & r27;
+        r21 = r26;
+        goto L207
+    L154:
+        if (r26 >= r25) goto L156;
+    L157:
+        r27 = true;
+    L167:
+        r21 = -(r113 - '0');
+        r112 = 2;
+    L169:
+        if (K(r113) == true) goto L121;
+    L125:
+        char r28 = 2;
+        if (r112 != 2) goto L186;
+        if (r111 == true) goto L174;
+    L177:
+        r28 = 2;
+        goto L186
+    L174:
+        if (r21 != Long.MIN_VALUE) goto L179;
+        if (r22 == false) goto L177;
+    L179:
+        if (r21 != 0) goto L181;
+        if (r22 == true) goto L177;
+    L181:
+        long r29 = r21;
+        if (r22 == true) goto L185;
+        r29 = -r29;
+    L185:
+        this.v = r29;
+        this.q += r20;
+        r23 = 15;
+        this.u = 15;
+    L186:
+        if (r112 != r28) goto L188;
+    L191:
+        this.w = r20;
+        r23 = 16;
+        this.u = 16;
+        goto L208
+    L188:
+        if (r112 == 4) goto L191;
+        if (r112 != 7) goto L121;
+    L193:
+        if (r112 != 2) goto L121;
+        r112 = 3;
+        goto L207
+    L196:
+        if (r112 != 0) goto L198;
+        r22 = true;
+        r112 = 1;
+        goto L207
+    L198:
+        if (r112 != 5) goto L121;
+    L201:
+        if (r112 != 2) goto L203;
+    L204:
+        r112 = 5;
+        goto L207
+    L203:
+        if (r112 != 4) goto L121;
+    L120:
+        if (r20 == r6.length) goto L121;
+        if (u(r20 + 1) == false) goto L125;
+        r19 = this.q;
+        r110 = this.r;
+    L105:
+        r14 = r14 + 1;
+        goto L93
+    L98:
+        if (u(r14 + 1) == true) goto L100;
+    L107:
+        if ((r15 + r13) < r16) goto L111;
+        if (u(r13 + 1) == true) goto L111;
+    L113:
+        this.q += r13;
+        this.u = r12;
+        r18 = r12;
+    L111:
+        if (K(r6[this.q + r13]) == false) goto L113;
+    L76:
+        if (r9 == 'T') goto L91;
+        if (r9 != 'f') goto L81;
+    L90:
+        r10 = "false";
+        r11 = "FALSE";
+        r12 = 6;
+        goto L92
+    L81:
+        if (r9 == 'F') goto L90;
+        if (r9 != 'n') goto L86;
+    L89:
+        r10 = "null";
+        r11 = "NULL";
+        r12 = 7;
+        goto L92
+    L86:
+        if (r9 != 'N') goto L88;
+    L216:
+        this.u = 1;
+        return 1;
+    L222:
+        this.u = 3;
+        return 3;
+    L224:
+        r8 = 1;
+        goto L225
+    L233:
+        j();
+        this.u = 8;
+        return 8;
+    L235:
+        this.u = 9;
+        return 9;
+    L5:
+        if (r4 != 2) goto L16;
+        int r30 = Z(true);
+        if (r30 == 44) goto L63;
+        if (r30 == 59) goto L14;
+        if (r30 != 93) goto L12;
+        this.u = 4;
+        return 4;
+    L12:
+        l0("Unterminated array");
+        throw null;
+    L14:
+        j();
+        goto L63
+    L16:
+        if (r4 == 3) goto L239;
+        if (r4 == 5) goto L239;
+        if (r4 != 4) goto L33;
+        r1[r2] = 5;
+        int r31 = Z(true);
+        if (r31 == 58) goto L63;
+        if (r31 != 61) goto L31;
+        j();
+        if (this.q >= this.r) goto L27;
+    L28:
+        int r32 = this.q;
+        if (r6[r32] != '>') goto L63;
+        this.q = r32 + 1;
+        goto L63
+    L27:
+        if (u(1) == false) goto L63;
+    L31:
+        l0("Expected ':'");
+        throw null;
+    L33:
+        if (r4 != 6) goto L55;
+        if (this.o == false) goto L53;
+        Z(true);
+        int r33 = this.q;
+        this.q = r33 - 1;
+        if ((r33 + 4) > this.r) goto L39;
+    L41:
+        int r34 = this.q;
+        if (r6[r34] != ')') goto L53;
+        if (r6[r34 + 1] != ']') goto L53;
+        if (r6[r34 + 2] != '}') goto L53;
+        if (r6[r34 + 3] != '\'') goto L53;
+        if (r6[r34 + 4] != '\n') goto L53;
+        this.q = r34 + 5;
+        goto L53
+    L39:
+        if (u(5) == true) goto L41;
+    L53:
+        this.y[this.z - 1] = 7;
+        goto L63
+    L55:
+        if (r4 != 7) goto L62;
+        if (Z(false) != (-1)) goto L60;
+        this.u = 17;
+        return 17;
+    L60:
+        j();
+        this.q--;
+        goto L63
+    L62:
+        if (r4 != 8) goto L63;
+        kf2.o("JsonReader is closed");
+        return 0;
+    L239:
+        r1[r2] = 4;
+        if (r4 != 5) goto L250;
+        int r35 = Z(true);
+        if (r35 == 44) goto L250;
+        if (r35 == 59) goto L249;
+        if (r35 != 125) goto L247;
+        this.u = 2;
+        return 2;
+    L247:
+        l0("Unterminated object");
+        throw null;
+    L249:
+        j();
+    L250:
+        int r36 = Z(true);
+        if (r36 == 34) goto L268;
+        if (r36 != 39) goto L254;
+        j();
+        this.u = 12;
+        return 12;
+    L254:
+        if (r36 == 125) goto L261;
+        j();
+        this.q--;
+        if (K((char) r36) == false) goto L259;
+        this.u = 14;
+        return 14;
+    L259:
+        l0("Expected name");
+        throw null;
+    L261:
+        if (r4 == 5) goto L264;
+        this.u = 2;
+        return 2;
+    L264:
+        l0("Expected name");
+        throw null;
+    L268:
+        this.u = 13;
+        return 13;
     }
 
-    public void q() throws IOException {
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        if (iN != 4) {
-            er1.j(b11.x(e0()), M(), "Expected END_ARRAY but was ");
-            return;
-        }
-        int i = this.z;
-        this.z = i - 1;
-        int[] iArr = this.B;
-        int i2 = i - 2;
-        iArr[i2] = iArr[i2] + 1;
+    public void q() {
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 4) goto L9;
+        int r1 = this.z;
+        this.z = r1 - 1;
+        int[] r2 = this.B;
+        int r3 = r1 - 2;
+        r2[r3] = r2[r3] + 1;
         this.u = 0;
+        return;
+    L9:
+        er1.j(b11.x(e0()), M(), "Expected END_ARRAY but was ");
     }
 
-    public void s() throws IOException {
-        int iN = this.u;
-        if (iN == 0) {
-            iN = n();
-        }
-        if (iN != 2) {
-            er1.j(b11.x(e0()), M(), "Expected END_OBJECT but was ");
-            return;
-        }
-        int i = this.z;
-        int i2 = i - 1;
-        this.z = i2;
-        this.A[i2] = null;
-        int[] iArr = this.B;
-        int i3 = i - 2;
-        iArr[i3] = iArr[i3] + 1;
+    public void s() {
+        int r0 = this.u;
+        if (r0 != 0) goto L6;
+        r0 = n();
+    L6:
+        if (r0 != 2) goto L9;
+        int r1 = this.z;
+        int r2 = r1 - 1;
+        this.z = r2;
+        this.A[r2] = null;
+        int[] r3 = this.B;
+        int r4 = r1 - 2;
+        r3[r4] = r3[r4] + 1;
         this.u = 0;
+        return;
+    L9:
+        er1.j(b11.x(e0()), M(), "Expected END_OBJECT but was ");
     }
 
     public String toString() {
         return getClass().getSimpleName().concat(M());
     }
 
-    public final boolean u(int i) throws IOException {
-        int i2;
-        int i3;
-        int i4 = this.t;
-        int i5 = this.q;
-        this.t = i4 - i5;
-        int i6 = this.r;
-        char[] cArr = this.p;
-        if (i6 != i5) {
-            int i7 = i6 - i5;
-            this.r = i7;
-            System.arraycopy(cArr, i5, cArr, 0, i7);
-        } else {
-            this.r = 0;
-        }
+    public final boolean u(int r8) {
+        int r0 = this.t;
+        int r1 = this.q;
+        this.t = r0 - r1;
+        int r2 = this.r;
+        char[] r3 = this.p;
+        if (r2 == r1) goto L5;
+        int r4 = r2 - r1;
+        this.r = r4;
+        System.arraycopy(r3, r1, r3, 0, r4);
+    L6:
         this.q = 0;
-        do {
-            int i8 = this.r;
-            int i9 = this.n.read(cArr, i8, cArr.length - i8);
-            if (i9 == -1) {
-                return false;
-            }
-            i2 = this.r + i9;
-            this.r = i2;
-            if (this.s == 0 && (i3 = this.t) == 0 && i2 > 0 && cArr[0] == 65279) {
-                this.q++;
-                this.t = i3 + 1;
-                i++;
-            }
-        } while (i2 < i);
+    L7:
+        int r5 = this.r;
+        int r6 = this.n.read(r3, r5, r3.length - r5);
+        if (r6 == (-1)) goto L19;
+        int r7 = this.r + r6;
+        this.r = r7;
+        if (this.s != 0) goto L17;
+        int r9 = this.t;
+        if (r9 != 0) goto L17;
+        if (r7 <= 0) goto L17;
+        if (r3[0] != 65279) goto L17;
+        this.q++;
+        this.t = r9 + 1;
+        r8 = r8 + 1;
+    L17:
+        if (r7 < r8) goto L7;
         return true;
+    L19:
+        return false;
+    L5:
+        this.r = 0;
+        goto L6
     }
 
     public String v() {

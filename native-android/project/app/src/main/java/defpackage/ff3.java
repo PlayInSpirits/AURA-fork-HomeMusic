@@ -6,10 +6,11 @@ import java.util.Set;
 /* JADX INFO: loaded from: classes.dex */
 public final class ff3 implements vy3 {
     public final Set n;
-    public final f13 o = new f13(new wg1[16]);
+    public final f13 o;
 
-    public ff3(Set set) {
-        this.n = set;
+    public ff3(Set r2) {
+        this.n = r2;
+        this.o = new f13(new wg1[16]);
     }
 
     @Override // defpackage.vy3
@@ -22,13 +23,16 @@ public final class ff3 implements vy3 {
 
     @Override // defpackage.vy3
     public final void d() {
-        f13 f13Var = this.o;
-        Object[] objArr = f13Var.n;
-        int i = f13Var.p;
-        for (int i2 = 0; i2 < i; i2++) {
-            vy3 vy3Var = ((wg1) objArr[i2]).a;
-            this.n.remove(vy3Var);
-            vy3Var.d();
-        }
+        f13 r0 = this.o;
+        Object[] r1 = r0.n;
+        int r2 = r0.p;
+        int r3 = 0;
+    L3:
+        if (r3 >= r2) goto L5;
+        vy3 r4 = ((wg1) r1[r3]).a;
+        this.n.remove(r4);
+        r4.d();
+        r3 = r3 + 1;
+        goto L3
     }
 }

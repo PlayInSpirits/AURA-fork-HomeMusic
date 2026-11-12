@@ -13,192 +13,195 @@ public final class xo4 extends zo4 {
     public byte[][] u;
     public Cursor v;
 
-    public static void n(Cursor cursor, int i) {
-        if (i < 0 || i >= cursor.getColumnCount()) {
-            h12.P(25, "column index out of range");
-            throw null;
-        }
+    public static void n(Cursor r0, int r1) {
+        if (r1 >= 0) goto L4;
+    L6:
+        h12.P(25, "column index out of range");
+        throw null;
+    L4:
+        if (r1 >= r0.getColumnCount()) goto L6;
     }
 
     @Override // defpackage.z34
-    public final String D(int i) {
+    public final String D(int r1) {
         b();
-        Cursor cursorQ = q();
-        n(cursorQ, i);
-        String string = cursorQ.getString(i);
-        string.getClass();
-        return string;
+        Cursor r0 = q();
+        n(r0, r1);
+        String r2 = r0.getString(r1);
+        r2.getClass();
+        return r2;
     }
 
     @Override // defpackage.z34
     public final boolean O() {
         b();
         j();
-        Cursor cursor = this.v;
-        if (cursor != null) {
-            return cursor.moveToNext();
-        }
+        Cursor r0 = this.v;
+        if (r0 != null) goto L5;
         kf2.o("Required value was null.");
         return false;
+    L5:
+        return r0.moveToNext();
     }
 
     @Override // defpackage.z34
-    public final void c(int i, long j) {
+    public final void c(int r3, long r4) {
         b();
-        f(1, i);
-        this.q[i] = 1;
-        this.r[i] = j;
+        f(1, r3);
+        this.q[r3] = 1;
+        this.r[r3] = r4;
     }
 
     @Override // java.lang.AutoCloseable
     public final void close() {
-        if (!this.p) {
-            b();
-            this.q = new int[0];
-            this.r = new long[0];
-            this.s = new double[0];
-            this.t = new String[0];
-            this.u = new byte[0][];
-            reset();
-        }
+        if (this.p == true) goto L5;
+        b();
+        this.q = new int[0];
+        this.r = new long[0];
+        this.s = new double[0];
+        this.t = new String[0];
+        this.u = new byte[0][];
+        reset();
+    L5:
         this.p = true;
     }
 
     @Override // defpackage.z34
-    public final void d(double d, int i) {
+    public final void d(double r3, int r5) {
         b();
-        f(2, i);
-        this.q[i] = 2;
-        this.s[i] = d;
+        f(2, r5);
+        this.q[r5] = 2;
+        this.s[r5] = r3;
     }
 
     @Override // defpackage.z34
-    public final void e(int i) {
+    public final void e(int r2) {
         b();
-        f(5, i);
-        this.q[i] = 5;
+        f(5, r2);
+        this.q[r2] = 5;
     }
 
-    public final void f(int i, int i2) {
-        int i3 = i2 + 1;
-        int[] iArr = this.q;
-        if (iArr.length < i3) {
-            this.q = Arrays.copyOf(iArr, i3);
-        }
-        if (i == 1) {
-            long[] jArr = this.r;
-            if (jArr.length < i3) {
-                this.r = Arrays.copyOf(jArr, i3);
-                return;
-            }
-            return;
-        }
-        if (i == 2) {
-            double[] dArr = this.s;
-            if (dArr.length < i3) {
-                this.s = Arrays.copyOf(dArr, i3);
-                return;
-            }
-            return;
-        }
-        if (i == 3) {
-            String[] strArr = this.t;
-            if (strArr.length < i3) {
-                this.t = (String[]) Arrays.copyOf(strArr, i3);
-                return;
-            }
-            return;
-        }
-        if (i != 4) {
-            return;
-        }
-        byte[][] bArr = this.u;
-        if (bArr.length < i3) {
-            this.u = (byte[][]) Arrays.copyOf(bArr, i3);
-        }
+    public final void f(int r4, int r5) {
+        int r6 = r5 + 1;
+        int[] r1 = this.q;
+        if (r1.length >= r6) goto L5;
+        this.q = Arrays.copyOf(r1, r6);
+    L5:
+        if (r4 != 1) goto L7;
+        long[] r7 = this.r;
+        if (r7.length >= r6) goto L32;
+        this.r = Arrays.copyOf(r7, r6);
+        return;
+    L32:
+        return;
+    L7:
+        if (r4 != 2) goto L9;
+        double[] r8 = this.s;
+        if (r8.length >= r6) goto L31;
+        this.s = Arrays.copyOf(r8, r6);
+        return;
+    L31:
+        return;
+    L9:
+        if (r4 != 3) goto L11;
+        String[] r9 = this.t;
+        if (r9.length >= r6) goto L30;
+        this.t = (String[]) Arrays.copyOf(r9, r6);
+        return;
+    L30:
+        return;
+    L11:
+        if (r4 != 4) goto L33;
+        byte[][] r10 = this.u;
+        if (r10.length >= r6) goto L29;
+        this.u = (byte[][]) Arrays.copyOf(r10, r6);
+        return;
+    L29:
+        return;
     }
 
     @Override // defpackage.z34
     public final int getColumnCount() {
         b();
         j();
-        Cursor cursor = this.v;
-        if (cursor != null) {
-            return cursor.getColumnCount();
-        }
+        Cursor r0 = this.v;
+        if (r0 != null) goto L5;
         return 0;
+    L5:
+        return r0.getColumnCount();
     }
 
     @Override // defpackage.z34
-    public final String getColumnName(int i) {
+    public final String getColumnName(int r1) {
         b();
         j();
-        Cursor cursor = this.v;
-        if (cursor == null) {
-            kf2.o("Required value was null.");
-            return null;
-        }
-        n(cursor, i);
-        String columnName = cursor.getColumnName(i);
-        columnName.getClass();
-        return columnName;
+        Cursor r0 = this.v;
+        if (r0 == null) goto L6;
+        n(r0, r1);
+        String r2 = r0.getColumnName(r1);
+        r2.getClass();
+        return r2;
+    L6:
+        kf2.o("Required value was null.");
+        return null;
     }
 
     @Override // defpackage.z34
-    public final double getDouble(int i) {
+    public final double getDouble(int r1) {
         b();
-        Cursor cursorQ = q();
-        n(cursorQ, i);
-        return cursorQ.getDouble(i);
+        Cursor r0 = q();
+        n(r0, r1);
+        return r0.getDouble(r1);
     }
 
     @Override // defpackage.z34
-    public final long getLong(int i) {
+    public final long getLong(int r1) {
         b();
-        Cursor cursorQ = q();
-        n(cursorQ, i);
-        return cursorQ.getLong(i);
+        Cursor r0 = q();
+        n(r0, r1);
+        return r0.getLong(r1);
     }
 
     @Override // defpackage.z34
-    public final boolean isNull(int i) {
+    public final boolean isNull(int r1) {
         b();
-        Cursor cursorQ = q();
-        n(cursorQ, i);
-        return cursorQ.isNull(i);
+        Cursor r0 = q();
+        n(r0, r1);
+        return r0.isNull(r1);
     }
 
     public final void j() {
-        if (this.v == null) {
-            this.v = this.n.F(new rm2(22, this));
-        }
+        if (this.v != null) goto L6;
+        rm2 r0 = new rm2(22, this);
+        this.v = this.n.F(r0);
+        return;
     }
 
     public final Cursor q() {
-        Cursor cursor = this.v;
-        if (cursor != null) {
-            return cursor;
-        }
+        Cursor r1 = this.v;
+        if (r1 == null) goto L5;
+        return r1;
+    L5:
         h12.P(21, "no row");
         throw null;
     }
 
     @Override // defpackage.z34
-    public final void r(int i, String str) {
-        str.getClass();
+    public final void r(int r3, String r4) {
+        r4.getClass();
         b();
-        f(3, i);
-        this.q[i] = 3;
-        this.t[i] = str;
+        f(3, r3);
+        this.q[r3] = 3;
+        this.t[r3] = r4;
     }
 
     @Override // defpackage.z34
     public final void reset() {
         b();
-        Cursor cursor = this.v;
-        if (cursor != null) {
-            cursor.close();
-        }
+        Cursor r0 = this.v;
+        if (r0 == null) goto L5;
+        r0.close();
+    L5:
         this.v = null;
     }
 }

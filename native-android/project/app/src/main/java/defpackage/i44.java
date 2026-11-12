@@ -9,133 +9,147 @@ import java.util.WeakHashMap;
 public final class i44 implements Iterable {
     public f44 n;
     public f44 o;
-    public final WeakHashMap p = new WeakHashMap();
-    public int q = 0;
+    public final WeakHashMap p;
+    public int q;
 
-    public final Object a(Object obj, Object obj2) {
-        f44 f44Var = this.n;
-        while (f44Var != null && !f44Var.n.equals(obj)) {
-            f44Var = f44Var.p;
-        }
-        if (f44Var != null) {
-            return f44Var.o;
-        }
-        f44 f44Var2 = new f44(obj, obj2);
+    public i44() {
+        this.p = new WeakHashMap();
+        this.q = 0;
+    }
+
+    public final Object a(Object r3, Object r4) {
+        f44 r0 = this.n;
+    L3:
+        if (r0 == null) goto L8;
+        if (r0.n.equals(r3) == true) goto L8;
+        r0 = r0.p;
+    L8:
+        if (r0 != null) goto L10;
+        f44 r1 = new f44(r3, r4);
         this.q++;
-        f44 f44Var3 = this.o;
-        if (f44Var3 == null) {
-            this.n = f44Var2;
-            this.o = f44Var2;
-            return null;
-        }
-        f44Var3.p = f44Var2;
-        f44Var2.q = f44Var3;
-        this.o = f44Var2;
+        f44 r5 = this.o;
+        if (r5 != null) goto L14;
+        this.n = r1;
+        this.o = r1;
         return null;
+    L14:
+        r5.p = r1;
+        r1.q = r5;
+        this.o = r1;
+        return null;
+    L10:
+        return r0.o;
     }
 
-    public final Object b(Object obj) {
-        f44 f44Var = this.n;
-        while (f44Var != null && !f44Var.n.equals(obj)) {
-            f44Var = f44Var.p;
-        }
-        if (f44Var == null) {
-            return null;
-        }
+    public final Object b(Object r4) {
+        f44 r0 = this.n;
+    L3:
+        if (r0 == null) goto L9;
+        if (r0.n.equals(r4) == true) goto L9;
+        r0 = r0.p;
+    L9:
+        if (r0 != null) goto L11;
+        return null;
+    L11:
         this.q--;
-        WeakHashMap weakHashMap = this.p;
-        if (!weakHashMap.isEmpty()) {
-            Iterator it = weakHashMap.keySet().iterator();
-            while (it.hasNext()) {
-                ((h44) it.next()).a(f44Var);
-            }
-        }
-        f44 f44Var2 = f44Var.q;
-        f44 f44Var3 = f44Var.p;
-        if (f44Var2 != null) {
-            f44Var2.p = f44Var3;
-        } else {
-            this.n = f44Var3;
-        }
-        f44 f44Var4 = f44Var.p;
-        if (f44Var4 != null) {
-            f44Var4.q = f44Var2;
-        } else {
-            this.o = f44Var2;
-        }
-        f44Var.p = null;
-        f44Var.q = null;
-        return f44Var.o;
+        WeakHashMap r1 = this.p;
+        if (r1.isEmpty() == true) goto L17;
+        Iterator r2 = r1.keySet().iterator();
+    L15:
+        if (r2.hasNext() == false) goto L17;
+        ((h44) r2.next()).a(r0);
+    L17:
+        f44 r3 = r0.q;
+        f44 r5 = r0.p;
+        if (r3 == null) goto L20;
+        r3.p = r5;
+    L21:
+        f44 r6 = r0.p;
+        if (r6 == null) goto L24;
+        r6.q = r3;
+    L25:
+        r0.p = null;
+        r0.q = null;
+        return r0.o;
+    L24:
+        this.o = r3;
+        goto L25
+    L20:
+        this.n = r5;
+        goto L21
     }
 
-    public final boolean equals(Object obj) {
-        e44 e44Var;
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof i44)) {
-            return false;
-        }
-        i44 i44Var = (i44) obj;
-        if (this.q != i44Var.q) {
-            return false;
-        }
-        Iterator it = iterator();
-        Iterator it2 = i44Var.iterator();
-        while (true) {
-            e44Var = (e44) it;
-            if (!e44Var.hasNext()) {
-                break;
-            }
-            e44 e44Var2 = (e44) it2;
-            if (!e44Var2.hasNext()) {
-                break;
-            }
-            Map.Entry entry = (Map.Entry) e44Var.next();
-            Object next = e44Var2.next();
-            if ((entry == null && next != null) || (entry != null && !entry.equals(next))) {
-                return false;
-            }
-        }
-        return (e44Var.hasNext() || ((e44) it2).hasNext()) ? false : true;
+    public final boolean equals(Object r6) {
+        if (r6 != this) goto L6;
+        return true;
+    L6:
+        if ((r6 instanceof i44) == true) goto L8;
+        return false;
+    L8:
+        i44 r7 = (i44) r6;
+        if (this.q == r7.q) goto L11;
+        return false;
+    L11:
+        Iterator r5 = iterator();
+        Iterator r8 = r7.iterator();
+    L12:
+        e44 r1 = (e44) r5;
+        if (r1.hasNext() == false) goto L24;
+        e44 r3 = (e44) r8;
+        if (r3.hasNext() == false) goto L24;
+        Map.Entry r2 = (Map.Entry) r1.next();
+        Object r4 = r3.next();
+        if (r2 != null) goto L19;
+        if (r4 == null) goto L19;
+    L22:
+        return false;
+    L19:
+        if (r2 == null) goto L12;
+        if (r2.equals(r4) == true) goto L12;
+    L24:
+        if (r1.hasNext() == false) goto L26;
+    L28:
+        return false;
+    L26:
+        if (((e44) r8).hasNext() == true) goto L28;
+        return true;
     }
 
     public final int hashCode() {
-        Iterator it = iterator();
-        int iHashCode = 0;
-        while (true) {
-            e44 e44Var = (e44) it;
-            if (!e44Var.hasNext()) {
-                return iHashCode;
-            }
-            iHashCode += ((Map.Entry) e44Var.next()).hashCode();
-        }
+        Iterator r3 = iterator();
+        int r0 = 0;
+    L3:
+        e44 r1 = (e44) r3;
+        if (r1.hasNext() == false) goto L6;
+        r0 = r0 + ((Map.Entry) r1.next()).hashCode();
+        goto L3
+    L6:
+        return r0;
     }
 
     @Override // java.lang.Iterable
     public final Iterator iterator() {
-        f44 f44Var = this.n;
-        f44 f44Var2 = this.o;
-        e44 e44Var = new e44();
-        e44Var.n = f44Var2;
-        e44Var.o = f44Var;
-        this.p.put(e44Var, Boolean.FALSE);
-        return e44Var;
+        f44 r1 = this.n;
+        f44 r2 = this.o;
+        e44 r0 = new e44();
+        r0.n = r2;
+        r0.o = r1;
+        this.p.put(r0, Boolean.FALSE);
+        return r0;
     }
 
     public final String toString() {
-        StringBuilder sb = new StringBuilder("[");
-        Iterator it = iterator();
-        while (true) {
-            e44 e44Var = (e44) it;
-            if (!e44Var.hasNext()) {
-                sb.append("]");
-                return sb.toString();
-            }
-            sb.append(((Map.Entry) e44Var.next()).toString());
-            if (e44Var.hasNext()) {
-                sb.append(", ");
-            }
-        }
+        StringBuilder r0 = new StringBuilder("[");
+        Iterator r3 = iterator();
+    L3:
+        e44 r1 = (e44) r3;
+        if (r1.hasNext() == false) goto L8;
+        r0.append(((Map.Entry) r1.next()).toString());
+        if (r1.hasNext() == false) goto L3;
+        r0.append(", ");
+        goto L3
+    L8:
+        r0.append("]");
+        return r0.toString();
     }
 }

@@ -9,9 +9,9 @@ public final class if4 implements m84 {
     }
 
     @Override // defpackage.m84
-    public final l84 e(long j) {
-        o84 o84Var = new o84(j, 0L);
-        return new l84(o84Var, o84Var);
+    public final l84 e(long r4) {
+        o84 r0 = new o84(r4, 0);
+        return new l84(r0, r0);
     }
 
     @Override // defpackage.m84

@@ -8,14 +8,14 @@ public abstract class nn0 {
     public final int p;
     public final tb1 q;
 
-    public nn0(int i, sv4 sv4Var, int i2) {
-        this.n = i;
-        this.o = sv4Var;
-        this.p = i2;
-        this.q = sv4Var.d[i2];
+    public nn0(int r1, sv4 r2, int r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r2.d[r3];
     }
 
     public abstract int a();
 
-    public abstract boolean b(nn0 nn0Var);
+    public abstract boolean b(nn0 r1);
 }

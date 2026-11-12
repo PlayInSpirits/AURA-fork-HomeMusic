@@ -13,10 +13,10 @@ public final class jv extends ko {
     }
 
     @Override // defpackage.ko
-    public final void b(Throwable th) {
-        cz czVar = this.a;
-        if (czVar != null) {
-            czVar.resumeWith(kb4.o(th));
-        }
+    public final void b(Throwable r1) {
+        cz r0 = this.a;
+        if (r0 == null) goto L6;
+        r0.resumeWith(kb4.o(r1));
+        return;
     }
 }

@@ -10,8 +10,8 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class sv4 {
-    public static final String f;
-    public static final String g;
+    public static final String f = null;
+    public static final String g = null;
     public final int a;
     public final String b;
     public final int c;
@@ -19,183 +19,221 @@ public final class sv4 {
     public int e;
 
     static {
-        String str = f35.a;
+        String r0 = f35.a;
         f = Integer.toString(0, 36);
         g = Integer.toString(1, 36);
     }
 
-    public sv4(String str, tb1... tb1VarArr) {
-        rr2.l(tb1VarArr.length > 0);
-        this.b = str;
-        this.d = tb1VarArr;
-        this.a = tb1VarArr.length;
-        String str2 = tb1VarArr[0].n;
-        this.c = TextUtils.isEmpty(str2) ? lw2.h(tb1VarArr[0].m) : lw2.h(str2);
-        String str3 = tb1VarArr[0].d;
-        str3 = (str3 == null || str3.equals("und")) ? "" : str3;
-        int i = tb1VarArr[0].f | 16384;
-        for (int i2 = 1; i2 < tb1VarArr.length; i2++) {
-            String str4 = tb1VarArr[i2].d;
-            if (!str3.equals((str4 == null || str4.equals("und")) ? "" : str4)) {
-                c("languages", tb1VarArr[0].d, tb1VarArr[i2].d, i2);
-                return;
-            } else {
-                if (i != (tb1VarArr[i2].f | 16384)) {
-                    c("role flags", Integer.toBinaryString(tb1VarArr[0].f), Integer.toBinaryString(tb1VarArr[i2].f), i2);
-                    return;
-                }
-            }
-        }
+    public sv4(String r7, tb1... r8) {
+        int r1 = 1;
+        if (r8.length <= 0) goto L5;
+        boolean r0 = true;
+    L6:
+        rr2.l(r0);
+        this.b = r7;
+        this.d = r8;
+        this.a = r8.length;
+        String r9 = r8[0].n;
+        if (TextUtils.isEmpty(r9) == false) goto L9;
+        int r10 = lw2.h(r8[0].m);
+    L10:
+        this.c = r10;
+        String r6 = r8[0].d;
+        if (r6 != null) goto L13;
+    L14:
+        r6 = "";
+    L15:
+        int r3 = r8[0].f | 16384;
+    L17:
+        if (r1 >= r8.length) goto L32;
+        String r4 = r8[r1].d;
+        if (r4 != null) goto L21;
+    L22:
+        r4 = "";
+    L24:
+        if (r6.equals(r4) == false) goto L25;
+        if (r3 != (r8[r1].f | 16384)) goto L29;
+        r1 = r1 + 1;
+        goto L17
+    L29:
+        c("role flags", Integer.toBinaryString(r8[0].f), Integer.toBinaryString(r8[r1].f), r1);
+        return;
+    L25:
+        c("languages", r8[0].d, r8[r1].d, r1);
+        return;
+    L21:
+        if (r4.equals("und") == false) goto L24;
+    L32:
+        return;
+    L13:
+        if (r6.equals("und") == false) goto L15;
+    L9:
+        r10 = lw2.h(r9);
+        goto L10
+    L5:
+        r0 = false;
+        goto L6
     }
 
-    public static sv4 a(Bundle bundle) {
-        gy3 gy3VarF;
-        ArrayList parcelableArrayList = bundle.getParcelableArrayList(f);
-        if (parcelableArrayList == null) {
-            vw1 vw1Var = yw1.o;
-            gy3VarF = gy3.r;
-        } else {
-            gy3VarF = hw.f(new tb4(9), parcelableArrayList);
-        }
-        return new sv4(bundle.getString(g, ""), (tb1[]) gy3VarF.toArray(new tb1[0]));
+    public static sv4 a(Bundle r3) {
+        ArrayList r0 = r3.getParcelableArrayList(f);
+        if (r0 != null) goto L5;
+        vw1 r1 = yw1.o;
+        gy3 r2 = gy3.r;
+    L7:
+        return new sv4(r3.getString(g, ""), (tb1[]) r2.toArray(new tb1[0]));
+    L5:
+        r2 = hw.f(new tb4(9), r0);
+        goto L7
     }
 
-    public static void c(String str, String str2, String str3, int i) {
-        StringBuilder sbU = b11.u("Different ", str, " combined in one TrackGroup: '", str2, "' (track 0) and '");
-        sbU.append(str3);
-        sbU.append("' (track ");
-        sbU.append(i);
-        sbU.append(")");
-        l93.G("TrackGroup", "", new IllegalStateException(sbU.toString()));
+    public static void c(String r4, String r5, String r6, int r7) {
+        StringBuilder r8 = b11.u("Different ", r4, " combined in one TrackGroup: '", r5, "' (track 0) and '");
+        r8.append(r6);
+        r8.append("' (track ");
+        r8.append(r7);
+        r8.append(")");
+        l93.G("TrackGroup", "", new IllegalStateException(r8.toString()));
     }
 
-    public final int b(tb1 tb1Var) {
-        int i = 0;
-        while (true) {
-            tb1[] tb1VarArr = this.d;
-            if (i >= tb1VarArr.length) {
-                return -1;
-            }
-            if (tb1Var == tb1VarArr[i]) {
-                return i;
-            }
-            i++;
-        }
+    public final int b(tb1 r4) {
+        int r0 = 0;
+    L3:
+        tb1[] r1 = this.d;
+        if (r0 >= r1.length) goto L9;
+        if (r4 == r1[r0]) goto L7;
+        r0 = r0 + 1;
+        goto L3
+    L7:
+        return r0;
+    L9:
+        return -1;
     }
 
     public final Bundle d() {
-        Bundle bundle = new Bundle();
-        tb1[] tb1VarArr = this.d;
-        ArrayList<? extends Parcelable> arrayList = new ArrayList<>(tb1VarArr.length);
-        int length = tb1VarArr.length;
-        int i = 0;
-        while (i < length) {
-            tb1 tb1Var = tb1VarArr[i];
-            List list = tb1Var.q;
-            Bundle bundle2 = new Bundle();
-            bundle2.putString(tb1.R, tb1Var.a);
-            bundle2.putString(tb1.S, tb1Var.b);
-            String str = tb1.w0;
-            yw1 yw1Var = tb1Var.c;
-            ArrayList<? extends Parcelable> arrayList2 = new ArrayList<>(yw1Var.size());
-            int size = yw1Var.size();
-            int i2 = 0;
-            while (i2 < size) {
-                Object obj = yw1Var.get(i2);
-                i2++;
-                o42 o42Var = (o42) obj;
-                o42Var.getClass();
-                Bundle bundle3 = new Bundle();
-                tb1[] tb1VarArr2 = tb1VarArr;
-                String str2 = o42Var.a;
-                int i3 = length;
-                if (str2 != null) {
-                    bundle3.putString(o42.c, str2);
-                }
-                bundle3.putString(o42.d, o42Var.b);
-                arrayList2.add(bundle3);
-                tb1VarArr = tb1VarArr2;
-                length = i3;
-            }
-            tb1[] tb1VarArr3 = tb1VarArr;
-            int i4 = length;
-            bundle2.putParcelableArrayList(str, arrayList2);
-            bundle2.putString(tb1.T, tb1Var.d);
-            bundle2.putInt(tb1.U, tb1Var.e);
-            bundle2.putInt(tb1.V, tb1Var.f);
-            int i5 = tb1Var.g;
-            if (i5 != tb1.Q.g) {
-                bundle2.putInt(tb1.x0, i5);
-            }
-            bundle2.putInt(tb1.W, tb1Var.h);
-            bundle2.putInt(tb1.X, tb1Var.i);
-            bundle2.putString(tb1.Y, tb1Var.k);
-            bundle2.putString(tb1.Z, tb1Var.m);
-            bundle2.putString(tb1.a0, tb1Var.n);
-            bundle2.putInt(tb1.b0, tb1Var.o);
-            for (int i6 = 0; i6 < list.size(); i6++) {
-                bundle2.putByteArray(tb1.c0 + "_" + Integer.toString(i6, 36), (byte[]) list.get(i6));
-            }
-            bundle2.putParcelable(tb1.d0, tb1Var.r);
-            bundle2.putLong(tb1.e0, tb1Var.s);
-            bundle2.putInt(tb1.f0, tb1Var.u);
-            bundle2.putInt(tb1.g0, tb1Var.v);
-            bundle2.putInt(tb1.z0, tb1Var.w);
-            bundle2.putInt(tb1.A0, tb1Var.x);
-            bundle2.putFloat(tb1.h0, tb1Var.y);
-            bundle2.putInt(tb1.i0, tb1Var.z);
-            bundle2.putFloat(tb1.j0, tb1Var.A);
-            bundle2.putByteArray(tb1.k0, tb1Var.B);
-            bundle2.putInt(tb1.l0, tb1Var.C);
-            c50 c50Var = tb1Var.D;
-            if (c50Var != null) {
-                String str3 = tb1.m0;
-                Bundle bundle4 = new Bundle();
-                bundle4.putInt(c50.i, c50Var.a);
-                bundle4.putInt(c50.j, c50Var.b);
-                bundle4.putInt(c50.k, c50Var.c);
-                bundle4.putByteArray(c50.l, c50Var.d);
-                bundle4.putInt(c50.m, c50Var.e);
-                bundle4.putInt(c50.n, c50Var.f);
-                bundle2.putBundle(str3, bundle4);
-            }
-            bundle2.putInt(tb1.y0, tb1Var.E);
-            bundle2.putInt(tb1.n0, tb1Var.F);
-            bundle2.putInt(tb1.o0, tb1Var.G);
-            bundle2.putInt(tb1.p0, tb1Var.H);
-            bundle2.putInt(tb1.q0, tb1Var.I);
-            bundle2.putInt(tb1.r0, tb1Var.J);
-            bundle2.putInt(tb1.s0, tb1Var.K);
-            bundle2.putInt(tb1.u0, tb1Var.M);
-            bundle2.putInt(tb1.v0, tb1Var.N);
-            bundle2.putInt(tb1.t0, tb1Var.O);
-            arrayList.add(bundle2);
-            i++;
-            tb1VarArr = tb1VarArr3;
-            length = i4;
-        }
-        bundle.putParcelableArrayList(f, arrayList);
-        bundle.putString(g, this.b);
-        return bundle;
+        Bundle r1 = new Bundle();
+        tb1[] r3 = this.d;
+        ArrayList<? extends Parcelable> r2 = new ArrayList(r3.length);
+        int r4 = r3.length;
+        int r6 = 0;
+    L3:
+        if (r6 >= r4) goto L21;
+        tb1 r7 = r3[r6];
+        List r8 = r7.q;
+        Bundle r9 = new Bundle();
+        r9.putString(tb1.R, r7.a);
+        r9.putString(tb1.S, r7.b);
+        String r10 = tb1.w0;
+        yw1 r11 = r7.c;
+        ArrayList<? extends Parcelable> r12 = new ArrayList(r11.size());
+        int r13 = r11.size();
+        int r14 = 0;
+    L5:
+        if (r14 >= r13) goto L10;
+        Object r15 = r11.get(r14);
+        r14 = r14 + 1;
+        o42 r16 = (o42) r15;
+        r16.getClass();
+        Bundle r5 = new Bundle();
+        tb1[] r17 = r3;
+        String r18 = r16.a;
+        int r19 = r4;
+        if (r18 == null) goto L9;
+        r5.putString(o42.c, r18);
+    L9:
+        r5.putString(o42.d, r16.b);
+        r12.add(r5);
+        r3 = r17;
+        r4 = r19;
+        goto L5
+    L10:
+        tb1[] r110 = r3;
+        int r111 = r4;
+        r9.putParcelableArrayList(r10, r12);
+        r9.putString(tb1.T, r7.d);
+        r9.putInt(tb1.U, r7.e);
+        r9.putInt(tb1.V, r7.f);
+        int r20 = r7.g;
+        if (r20 == tb1.Q.g) goto L13;
+        r9.putInt(tb1.x0, r20);
+    L13:
+        r9.putInt(tb1.W, r7.h);
+        r9.putInt(tb1.X, r7.i);
+        r9.putString(tb1.Y, r7.k);
+        r9.putString(tb1.Z, r7.m);
+        r9.putString(tb1.a0, r7.n);
+        r9.putInt(tb1.b0, r7.o);
+        int r21 = 0;
+    L15:
+        if (r21 >= r8.size()) goto L17;
+        r9.putByteArray(tb1.c0 + "_" + Integer.toString(r21, 36), (byte[]) r8.get(r21));
+        r21 = r21 + 1;
+        goto L15
+    L17:
+        r9.putParcelable(tb1.d0, r7.r);
+        r9.putLong(tb1.e0, r7.s);
+        r9.putInt(tb1.f0, r7.u);
+        r9.putInt(tb1.g0, r7.v);
+        r9.putInt(tb1.z0, r7.w);
+        r9.putInt(tb1.A0, r7.x);
+        r9.putFloat(tb1.h0, r7.y);
+        r9.putInt(tb1.i0, r7.z);
+        r9.putFloat(tb1.j0, r7.A);
+        r9.putByteArray(tb1.k0, r7.B);
+        r9.putInt(tb1.l0, r7.C);
+        c50 r22 = r7.D;
+        if (r22 == null) goto L20;
+        String r23 = tb1.m0;
+        Bundle r24 = new Bundle();
+        r24.putInt(c50.i, r22.a);
+        r24.putInt(c50.j, r22.b);
+        r24.putInt(c50.k, r22.c);
+        r24.putByteArray(c50.l, r22.d);
+        r24.putInt(c50.m, r22.e);
+        r24.putInt(c50.n, r22.f);
+        r9.putBundle(r23, r24);
+    L20:
+        r9.putInt(tb1.y0, r7.E);
+        r9.putInt(tb1.n0, r7.F);
+        r9.putInt(tb1.o0, r7.G);
+        r9.putInt(tb1.p0, r7.H);
+        r9.putInt(tb1.q0, r7.I);
+        r9.putInt(tb1.r0, r7.J);
+        r9.putInt(tb1.s0, r7.K);
+        r9.putInt(tb1.u0, r7.M);
+        r9.putInt(tb1.v0, r7.N);
+        r9.putInt(tb1.t0, r7.O);
+        r2.add(r9);
+        r6 = r6 + 1;
+        r3 = r110;
+        r4 = r111;
+        goto L3
+    L21:
+        r1.putParcelableArrayList(f, r2);
+        r1.putString(g, this.b);
+        return r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj != null && sv4.class == obj.getClass()) {
-            sv4 sv4Var = (sv4) obj;
-            if (this.b.equals(sv4Var.b) && Arrays.equals(this.d, sv4Var.d)) {
-                return true;
-            }
-        }
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if (r5 != null) goto L8;
+    L15:
         return false;
+    L8:
+        if (sv4.class != r5.getClass()) goto L15;
+        sv4 r6 = (sv4) r5;
+        if (this.b.equals(r6.b) == false) goto L15;
+        if (Arrays.equals(this.d, r6.d) == false) goto L15;
+        return true;
     }
 
     public final int hashCode() {
-        if (this.e == 0) {
-            this.e = Arrays.hashCode(this.d) + f34.e(this.b, 527, 31);
-        }
+        if (this.e != 0) goto L6;
+        int r0 = f34.e(this.b, 527, 31);
+        this.e = Arrays.hashCode(this.d) + r0;
+    L6:
         return this.e;
     }
 

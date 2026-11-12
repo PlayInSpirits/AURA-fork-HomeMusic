@@ -12,445 +12,489 @@ public final class p03 {
     public int e;
     public int f;
 
-    public p03(int i) {
+    public p03(int r2) {
         this.a = v54.a;
         this.b = su3.c;
         this.c = m02.a;
-        if (i >= 0) {
-            e(v54.d(i));
-        } else {
-            kf2.n("Capacity must be a positive value.");
-            throw null;
-        }
+        if (r2 < 0) goto L5;
+        boolean r0 = true;
+    L6:
+        if (r0 == false) goto L9;
+        e(v54.d(r2));
+        return;
+    L9:
+        kf2.n("Capacity must be a positive value.");
+        throw null;
+    L5:
+        r0 = false;
+        goto L6
     }
 
     public final void a() {
         this.e = 0;
-        long[] jArr = this.a;
-        if (jArr != v54.a) {
-            ti.g0(jArr, -9187201950435737472L);
-            long[] jArr2 = this.a;
-            int i = this.d;
-            int i2 = i >> 3;
-            long j = 255 << ((i & 7) << 3);
-            jArr2[i2] = (jArr2[i2] & (~j)) | j;
-        }
-        ti.f0(0, this.d, null, this.b);
+        long[] r1 = this.a;
+        if (r1 == v54.a) goto L5;
+        ti.g0(r1, -9187201950435737472L);
+        long[] r2 = this.a;
+        int r3 = this.d;
+        int r4 = r3 >> 3;
+        long r6 = 255 << ((r3 & 7) << 3);
+        r2[r4] = (r2[r4] & (~r6)) | r6;
+    L5:
+        Object[] r5 = this.b;
+        ti.f0(0, this.d, null, r5);
         this.f = v54.a(this.d) - this.e;
     }
 
-    public final int b(int i) {
-        int i2 = this.d;
-        int i3 = i & i2;
-        int i4 = 0;
-        while (true) {
-            long[] jArr = this.a;
-            int i5 = i3 >> 3;
-            int i6 = (i3 & 7) << 3;
-            long j = ((jArr[i5 + 1] << (64 - i6)) & ((-i6) >> 63)) | (jArr[i5] >>> i6);
-            long j2 = j & ((~j) << 7) & (-9187201950435737472L);
-            if (j2 != 0) {
-                return (i3 + (Long.numberOfTrailingZeros(j2) >> 3)) & i2;
-            }
-            i4 += 8;
-            i3 = (i3 + i4) & i2;
-        }
+    public final int b(int r10) {
+        int r0 = this.d;
+        int r11 = r10 & r0;
+        int r1 = 0;
+    L3:
+        long[] r2 = this.a;
+        int r3 = r11 >> 3;
+        int r4 = (r11 & 7) << 3;
+        long r5 = ((r2[r3 + 1] << (64 - r4)) & ((-r4) >> 63)) | (r2[r3] >>> r4);
+        long r6 = (r5 & ((~r5) << 7)) & (-9187201950435737472L);
+        if (r6 != 0) goto L6;
+        r1 = r1 + 8;
+        r11 = (r11 + r1) & r0;
+        goto L3
+    L6:
+        return (r11 + (Long.numberOfTrailingZeros(r6) >> 3)) & r0;
     }
 
-    public final int c(Object obj) {
-        long j;
-        long j2;
-        long j3;
-        long[] jArr;
-        Object[] objArr;
-        int i = -862048943;
-        int iHashCode = (obj != null ? obj.hashCode() : 0) * (-862048943);
-        int i2 = iHashCode ^ (iHashCode << 16);
-        int i3 = i2 >>> 7;
-        int i4 = i2 & 127;
-        int i5 = this.d;
-        int i6 = i3 & i5;
-        int i7 = 0;
-        while (true) {
-            long[] jArr2 = this.a;
-            int i8 = i6 >> 3;
-            int i9 = (i6 & 7) << 3;
-            long j4 = ((jArr2[i8 + 1] << (64 - i9)) & ((-i9) >> 63)) | (jArr2[i8] >>> i9);
-            long j5 = i4;
-            int i10 = i4;
-            long j6 = j4 ^ (j5 * 72340172838076673L);
-            long j7 = (~j6) & (j6 - 72340172838076673L) & (-9187201950435737472L);
-            while (j7 != 0) {
-                int iNumberOfTrailingZeros = (i6 + (Long.numberOfTrailingZeros(j7) >> 3)) & i5;
-                int i11 = i;
-                if (h12.c(this.b[iNumberOfTrailingZeros], obj)) {
-                    return iNumberOfTrailingZeros;
-                }
-                j7 &= j7 - 1;
-                i = i11;
-            }
-            int i12 = i;
-            if ((((~j4) << 6) & j4 & (-9187201950435737472L)) != 0) {
-                int iB = b(i3);
-                long j8 = 255;
-                if (this.f != 0 || ((this.a[iB >> 3] >> ((iB & 7) << 3)) & 255) == 254) {
-                    j = 255;
-                    j2 = j5;
-                    j3 = 128;
-                } else {
-                    int i13 = this.d;
-                    if (i13 > 8) {
-                        int i14 = 8;
-                        if (Long.compare((((long) this.e) * 32) ^ Long.MIN_VALUE, (((long) i13) * 25) ^ Long.MIN_VALUE) <= 0) {
-                            long[] jArr3 = this.a;
-                            int i15 = this.d;
-                            Object[] objArr2 = this.b;
-                            int[] iArr = this.c;
-                            j3 = 128;
-                            int i16 = (i15 + 7) >> 3;
-                            int i17 = 0;
-                            while (i17 < i16) {
-                                long j9 = j8;
-                                long j10 = jArr3[i17] & (-9187201950435737472L);
-                                jArr3[i17] = (-72340172838076674L) & ((~j10) + (j10 >>> 7));
-                                i17++;
-                                i14 = i14;
-                                j5 = j5;
-                                j8 = j9;
-                            }
-                            j = j8;
-                            j2 = j5;
-                            int i18 = i14;
-                            int iJ0 = ti.j0(jArr3);
-                            int i19 = iJ0 - 1;
-                            long j11 = 72057594037927935L;
-                            jArr3[i19] = (jArr3[i19] & 72057594037927935L) | (-72057594037927936L);
-                            jArr3[iJ0] = jArr3[0];
-                            int i20 = 0;
-                            while (i20 != i15) {
-                                int i21 = i20 >> 3;
-                                int i22 = (i20 & 7) << 3;
-                                long j12 = (jArr3[i21] >> i22) & j;
-                                if (j12 != 128 && j12 == 254) {
-                                    Object obj2 = objArr2[i20];
-                                    int iHashCode2 = (obj2 != null ? obj2.hashCode() : 0) * i12;
-                                    int i23 = iHashCode2 ^ (iHashCode2 << 16);
-                                    int i24 = i23 >>> 7;
-                                    int iB2 = b(i24);
-                                    int i25 = i24 & i15;
-                                    long j13 = j11;
-                                    if (((iB2 - i25) & i15) / 8 == ((i20 - i25) & i15) / i18) {
-                                        jArr3[i21] = (((long) (i23 & 127)) << i22) | (jArr3[i21] & (~(j << i22)));
-                                        jArr3[jArr3.length - 1] = (jArr3[0] & j13) | Long.MIN_VALUE;
-                                        i20++;
-                                        j11 = j13;
-                                        i18 = i18;
-                                    } else {
-                                        int i26 = i18;
-                                        int i27 = iB2 >> 3;
-                                        long j14 = jArr3[i27];
-                                        int i28 = (iB2 & 7) << 3;
-                                        if (((j14 >> i28) & j) == 128) {
-                                            objArr = objArr2;
-                                            jArr3[i27] = ((~(j << i28)) & j14) | (((long) (i23 & 127)) << i28);
-                                            jArr3[i21] = (jArr3[i21] & (~(j << i22))) | (128 << i22);
-                                            objArr[iB2] = objArr[i20];
-                                            objArr[i20] = null;
-                                            iArr[iB2] = iArr[i20];
-                                            iArr[i20] = 0;
-                                        } else {
-                                            objArr = objArr2;
-                                            jArr3[i27] = (((long) (i23 & 127)) << i28) | ((~(j << i28)) & j14);
-                                            Object obj3 = objArr[iB2];
-                                            objArr[iB2] = objArr[i20];
-                                            objArr[i20] = obj3;
-                                            int i29 = iArr[iB2];
-                                            iArr[iB2] = iArr[i20];
-                                            iArr[i20] = i29;
-                                            i20--;
-                                        }
-                                        jArr3[jArr3.length - 1] = (jArr3[0] & j13) | Long.MIN_VALUE;
-                                        i20++;
-                                        i15 = i15;
-                                        j11 = j13;
-                                        i18 = i26;
-                                        objArr2 = objArr;
-                                    }
-                                } else {
-                                    i20++;
-                                }
-                            }
-                            this.f = v54.a(this.d) - this.e;
-                        }
-                        iB = b(i3);
-                    }
-                    j = 255;
-                    j2 = j5;
-                    j3 = 128;
-                    int iB3 = v54.b(this.d);
-                    long[] jArr4 = this.a;
-                    Object[] objArr3 = this.b;
-                    int[] iArr2 = this.c;
-                    int i30 = this.d;
-                    e(iB3);
-                    long[] jArr5 = this.a;
-                    Object[] objArr4 = this.b;
-                    int[] iArr3 = this.c;
-                    int i31 = this.d;
-                    int i32 = 0;
-                    while (i32 < i30) {
-                        if (((jArr4[i32 >> 3] >> ((i32 & 7) << 3)) & 255) < 128) {
-                            Object obj4 = objArr3[i32];
-                            int iHashCode3 = (obj4 != null ? obj4.hashCode() : 0) * i12;
-                            int i33 = iHashCode3 ^ (iHashCode3 << 16);
-                            int iB4 = b(i33 >>> 7);
-                            jArr = jArr5;
-                            long j15 = i33 & 127;
-                            int i34 = iB4 >> 3;
-                            int i35 = (iB4 & 7) << 3;
-                            long j16 = (jArr[i34] & (~(255 << i35))) | (j15 << i35);
-                            jArr[i34] = j16;
-                            jArr[(((iB4 - 7) & i31) + (i31 & 7)) >> 3] = j16;
-                            objArr4[iB4] = obj4;
-                            iArr3[iB4] = iArr2[i32];
-                        } else {
-                            jArr = jArr5;
-                        }
-                        i32++;
-                        jArr4 = jArr4;
-                        jArr5 = jArr;
-                    }
-                    iB = b(i3);
-                }
-                this.e++;
-                int i36 = this.f;
-                long[] jArr6 = this.a;
-                int i37 = iB >> 3;
-                long j17 = jArr6[i37];
-                int i38 = (iB & 7) << 3;
-                this.f = i36 - (((j17 >> i38) & j) == j3 ? 1 : 0);
-                int i39 = this.d;
-                long j18 = (j17 & (~(j << i38))) | (j2 << i38);
-                jArr6[i37] = j18;
-                jArr6[(((iB - 7) & i39) + (i39 & 7)) >> 3] = j18;
-                return ~iB;
-            }
-            i7 += 8;
-            i6 = (i6 + i7) & i5;
-            i4 = i10;
-            i = i12;
-        }
-    }
-
-    public final int d(Object obj) {
-        int i = 0;
-        int iHashCode = (obj != null ? obj.hashCode() : 0) * (-862048943);
-        int i2 = iHashCode ^ (iHashCode << 16);
-        int i3 = i2 & 127;
-        int i4 = this.d;
-        int i5 = i2 >>> 7;
-        while (true) {
-            int i6 = i5 & i4;
-            long[] jArr = this.a;
-            int i7 = i6 >> 3;
-            int i8 = (i6 & 7) << 3;
-            long j = ((jArr[i7 + 1] << (64 - i8)) & ((-i8) >> 63)) | (jArr[i7] >>> i8);
-            long j2 = (((long) i3) * 72340172838076673L) ^ j;
-            for (long j3 = (~j2) & (j2 - 72340172838076673L) & (-9187201950435737472L); j3 != 0; j3 &= j3 - 1) {
-                int iNumberOfTrailingZeros = ((Long.numberOfTrailingZeros(j3) >> 3) + i6) & i4;
-                if (h12.c(this.b[iNumberOfTrailingZeros], obj)) {
-                    return iNumberOfTrailingZeros;
-                }
-            }
-            if ((j & ((~j) << 6) & (-9187201950435737472L)) != 0) {
-                return -1;
-            }
-            i += 8;
-            i5 = i6 + i;
-        }
-    }
-
-    public final void e(int i) {
-        long[] jArr;
-        int iMax = i > 0 ? Math.max(7, v54.c(i)) : 0;
-        this.d = iMax;
-        if (iMax == 0) {
-            jArr = v54.a;
-        } else {
-            int i2 = ((iMax + 15) & (-8)) >> 3;
-            long[] jArr2 = new long[i2];
-            Arrays.fill(jArr2, 0, i2, -9187201950435737472L);
-            jArr = jArr2;
-        }
-        this.a = jArr;
-        int i3 = iMax >> 3;
-        long j = 255 << ((iMax & 7) << 3);
-        jArr[i3] = (jArr[i3] & (~j)) | j;
+    public final int c(Object r36) {
+        if (r36 == null) goto L5;
+        int r3 = r36.hashCode();
+    L6:
+        int r4 = -862048943;
+        int r5 = r3 * (-862048943);
+        int r6 = r5 ^ (r5 << 16);
+        int r7 = r6 >>> 7;
+        int r8 = r6 & 127;
+        int r9 = this.d;
+        int r10 = r7 & r9;
+        int r11 = 0;
+    L7:
+        long[] r12 = this.a;
+        int r13 = r10 >> 3;
+        int r14 = (r10 & 7) << 3;
+        long r15 = ((r12[r13 + 1] << (64 - r14)) & ((-r14) >> 63)) | (r12[r13] >>> r14);
+        long r16 = r8;
+        int r19 = r8;
+        int r17 = 0;
+        long r2 = r15 ^ (r16 * 72340172838076673L);
+        long r18 = ((~r2) & (r2 - 72340172838076673L)) & (-9187201950435737472L);
+    L9:
+        if (r18 == 0) goto L14;
+        int r110 = (r10 + (Long.numberOfTrailingZeros(r18) >> 3)) & r9;
+        int r20 = r4;
+        if (h12.c(this.b[r110], r36) == true) goto L12;
+        r18 = r18 & (r18 - 1);
+        r4 = r20;
+        goto L9
+    L12:
+        return r110;
+    L14:
+        int r21 = r4;
+        if (((((~r15) << 6) & r15) & (-9187201950435737472L)) != 0) goto L16;
+        r11 = r11 + 8;
+        r10 = (r10 + r11) & r9;
+        r8 = r19;
+        r4 = r21;
+        goto L7
+    L16:
+        int r1 = b(r7);
+        long r22 = 255;
+        if (this.f == 0) goto L19;
+    L20:
+        long r27 = 255;
+        long r25 = r16;
+        long r23 = 128;
+    L63:
+        this.e++;
+        int r24 = this.f;
+        long[] r26 = this.a;
+        int r28 = r1 >> 3;
+        long r29 = r26[r28];
+        int r30 = (r1 & 7) << 3;
+        if (((r29 >> r30) & r27) != r23) goto L66;
+        r17 = 1;
+    L66:
+        this.f = r24 - r17;
+        int r0 = this.d;
+        long r31 = (r29 & (~(r27 << r30))) | (r25 << r30);
+        r26[r28] = r31;
+        r26[(((r1 - 7) & r0) + (r0 & 7)) >> 3] = r31;
+        return ~r1;
+    L19:
+        if (((this.a[r1 >> 3] >> ((r1 & 7) << 3)) & 255) == 254) goto L20;
+        int r32 = this.d;
+        if (r32 <= 8) goto L49;
+        int r111 = 8;
+        if (Long.compare((((long) this.e) * 32) ^ Long.MIN_VALUE, (((long) r32) * 25) ^ Long.MIN_VALUE) > 0) goto L49;
+        long[] r33 = this.a;
+        int r34 = this.d;
+        Object[] r35 = this.b;
+        int[] r37 = this.c;
+        r23 = 128;
+        int r38 = (r34 + 7) >> 3;
+        int r39 = 0;
+    L26:
+        if (r39 >= r38) goto L28;
+        long r210 = r22;
+        long r40 = r33[r39] & (-9187201950435737472L);
+        r33[r39] = (-72340172838076674L) & ((~r40) + (r40 >>> 7));
+        r39 = r39 + 1;
+        r111 = r111;
+        r16 = r16;
+        r22 = r210;
+        goto L26
+    L28:
+        r27 = r22;
+        r25 = r16;
+        int r112 = r111;
+        int r41 = ti.j0(r33);
+        int r42 = r41 - 1;
+        long r113 = 72057594037927935L;
+        r33[r42] = (r33[r42] & 72057594037927935L) | (-72057594037927936L);
+        r33[r41] = r33[0];
+        int r43 = 0;
+    L29:
+        if (r43 == r34) goto L48;
+        int r44 = r43 >> 3;
+        int r114 = (r43 & 7) << 3;
+        long r45 = (r33[r44] >> r114) & r27;
+        if (r45 == 128) goto L32;
+        if (r45 != 254) goto L32;
+        Object r46 = r35[r43];
+        if (r46 == null) goto L39;
+        int r47 = r46.hashCode();
+    L40:
+        int r48 = r47 * r21;
+        int r49 = r48 ^ (r48 << 16);
+        int r50 = r49 >>> 7;
+        int r115 = b(r50);
+        int r51 = r50 & r34;
+        long r211 = r113;
+        if ((((r115 - r51) & r34) / 8) == (((r43 - r51) & r34) / r112)) goto L42;
+        int r310 = r112;
+        int r52 = r115 >> 3;
+        long r116 = r33[r52];
+        int r117 = (r115 & 7) << 3;
+        if (((r116 >> r117) & r27) != 128) goto L46;
+        Object[] r311 = r35;
+        r33[r52] = ((~(r27 << r117)) & r116) | (((long) (r49 & 127)) << r117);
+        r33[r44] = (r33[r44] & (~(r27 << r114))) | (128 << r114);
+        r311[r115] = r311[r43];
+        r311[r43] = null;
+        r37[r115] = r37[r43];
+        r37[r43] = 0;
+    L47:
+        r33[r33.length - 1] = (r33[0] & r211) | Long.MIN_VALUE;
+        r43 = r43 + 1;
+        r34 = r34;
+        r113 = r211;
+        r112 = r310;
+        r35 = r311;
+        goto L29
+    L46:
+        r311 = r35;
+        r33[r52] = (((long) (r49 & 127)) << r117) | ((~(r27 << r117)) & r116);
+        Object r53 = r311[r115];
+        r311[r115] = r311[r43];
+        r311[r43] = r53;
+        int r54 = r37[r115];
+        r37[r115] = r37[r43];
+        r37[r43] = r54;
+        r43 = r43 - 1;
+        goto L47
+    L42:
+        r33[r44] = (((long) (r49 & 127)) << r114) | (r33[r44] & (~(r27 << r114)));
+        r33[r33.length - 1] = (r33[0] & r211) | Long.MIN_VALUE;
+        r43 = r43 + 1;
+        r113 = r211;
+        r112 = r112;
+        goto L29
+    L39:
+        r47 = 0;
+    L32:
+        r43 = r43 + 1;
+        goto L29
+    L48:
         this.f = v54.a(this.d) - this.e;
-        this.b = new Object[iMax];
-        this.c = new int[iMax];
+    L62:
+        r1 = b(r7);
+    L49:
+        r27 = 255;
+        r25 = r16;
+        r23 = 128;
+        int r55 = v54.b(this.d);
+        long[] r56 = this.a;
+        Object[] r57 = this.b;
+        int[] r58 = this.c;
+        int r59 = this.d;
+        e(r55);
+        long[] r60 = this.a;
+        Object[] r61 = this.b;
+        int[] r62 = this.c;
+        int r63 = this.d;
+        int r118 = 0;
+    L52:
+        if (r118 >= r59) goto L62;
+        if (((r56[r118 >> 3] >> ((r118 & 7) << 3)) & 255) >= 128) goto L60;
+        Object r119 = r57[r118];
+        if (r119 == null) goto L58;
+        int r120 = r119.hashCode();
+    L59:
+        int r121 = r120 * r21;
+        int r122 = r121 ^ (r121 << 16);
+        int r123 = b(r122 >>> 7);
+        long[] r124 = r60;
+        long r64 = r122 & 127;
+        int r125 = r123 >> 3;
+        int r126 = (r123 & 7) << 3;
+        long r65 = (r124[r125] & (~(255 << r126))) | (r64 << r126);
+        r124[r125] = r65;
+        r124[(((r123 - 7) & r63) + (r63 & 7)) >> 3] = r65;
+        r61[r123] = r119;
+        r62[r123] = r58[r118];
+    L61:
+        r118 = r118 + 1;
+        r56 = r56;
+        r60 = r124;
+        goto L52
+    L58:
+        r120 = 0;
+        goto L59
+    L60:
+        r124 = r60;
+        goto L61
+    L5:
+        r3 = 0;
+        goto L6
     }
 
-    /* JADX WARN: Code duplicated, block: B:27:0x0062 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:28:0x0064 A[LOOP:0: B:14:0x0023->B:28:0x0064, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:33:0x0067 A[SYNTHETIC] */
-    public final boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof p03)) {
-            return false;
-        }
-        p03 p03Var = (p03) obj;
-        if (p03Var.e != this.e) {
-            return false;
-        }
-        Object[] objArr = this.b;
-        int[] iArr = this.c;
-        long[] jArr = this.a;
-        int length = jArr.length - 2;
-        if (length >= 0) {
-            int i = 0;
-            loop0: while (true) {
-                long j = jArr[i];
-                if ((((~j) << 7) & j & (-9187201950435737472L)) != -9187201950435737472L) {
-                    int i2 = 8 - ((~(i - length)) >>> 31);
-                    for (int i3 = 0; i3 < i2; i3++) {
-                        if ((255 & j) < 128) {
-                            int i4 = (i << 3) + i3;
-                            Object obj2 = objArr[i4];
-                            int i5 = iArr[i4];
-                            int iD = p03Var.d(obj2);
-                            if (iD < 0 || i5 != p03Var.c[iD]) {
-                                break loop0;
-                            }
-                        }
-                        j >>= 8;
-                    }
-                    if (i2 == 8) {
-                        if (i != length) {
-                            i++;
-                        }
-                    }
-                } else if (i != length) {
-                    i++;
-                }
-            }
-            return false;
-        }
+    public final int d(Object r14) {
+        int r0 = 0;
+        if (r14 == null) goto L5;
+        int r1 = r14.hashCode();
+    L6:
+        int r2 = r1 * (-862048943);
+        int r3 = r2 ^ (r2 << 16);
+        int r4 = r3 & 127;
+        int r5 = this.d;
+        int r6 = r3 >>> 7;
+    L7:
+        int r7 = r6 & r5;
+        long[] r8 = this.a;
+        int r9 = r7 >> 3;
+        int r10 = (r7 & 7) << 3;
+        long r11 = ((r8[r9 + 1] << (64 - r10)) & ((-r10) >> 63)) | (r8[r9] >>> r10);
+        long r12 = (((long) r4) * 72340172838076673L) ^ r11;
+        long r13 = ((~r12) & (r12 - 72340172838076673L)) & (-9187201950435737472L);
+    L9:
+        if (r13 == 0) goto L15;
+        int r15 = ((Long.numberOfTrailingZeros(r13) >> 3) + r7) & r5;
+        if (h12.c(this.b[r15], r14) == true) goto L12;
+        r13 = r13 & (r13 - 1);
+        goto L9
+    L12:
+        return r15;
+    L15:
+        if (((r11 & ((~r11) << 6)) & (-9187201950435737472L)) != 0) goto L16;
+        r0 = r0 + 8;
+        r6 = r7 + r0;
+        goto L7
+    L16:
+        return -1;
+    L5:
+        r1 = 0;
+        goto L6
+    }
+
+    public final void e(int r10) {
+        if (r10 <= 0) goto L5;
+        int r11 = Math.max(7, v54.c(r10));
+    L6:
+        this.d = r11;
+        if (r11 != 0) goto L9;
+        long[] r0 = v54.a;
+    L10:
+        this.a = r0;
+        int r1 = r11 >> 3;
+        long r5 = 255 << ((r11 & 7) << 3);
+        r0[r1] = (r0[r1] & (~r5)) | r5;
+        this.f = v54.a(this.d) - this.e;
+        this.b = new Object[r11];
+        this.c = new int[r11];
+        return;
+    L9:
+        int r2 = ((r11 + 15) & (-8)) >> 3;
+        long[] r3 = new long[r2];
+        Arrays.fill(r3, 0, r2, -9187201950435737472L);
+        r0 = r3;
+        goto L10
+    L5:
+        r11 = 0;
+        goto L6
+    }
+
+    public final boolean equals(Object r18) {
+        if (r18 != this) goto L6;
+        return true;
+    L6:
+        if ((r18 instanceof p03) == true) goto L8;
+        return false;
+    L8:
+        p03 r1 = (p03) r18;
+        if (r1.e == this.e) goto L11;
+        return false;
+    L11:
+        Object[] r3 = this.b;
+        int[] r5 = this.c;
+        long[] r0 = this.a;
+        int r6 = r0.length - 2;
+        if (r6 < 0) goto L29;
+        int r7 = 0;
+    L14:
+        long r8 = r0[r7];
+        if (((((~r8) << 7) & r8) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L27;
+        int r10 = 8 - ((~(r7 - r6)) >>> 31);
+        int r12 = 0;
+    L17:
+        if (r12 >= r10) goto L26;
+        if ((255 & r8) >= 128) goto L25;
+        int r13 = (r7 << 3) + r12;
+        Object r14 = r3[r13];
+        int r15 = r5[r13];
+        int r16 = r1.d(r14);
+        if (r16 < 0) goto L24;
+        if (r15 == r1.c[r16]) goto L25;
+    L24:
+        return false;
+    L25:
+        r8 = r8 >> 8;
+        r12 = r12 + 1;
+        goto L17
+    L26:
+        if (r10 != 8) goto L29;
+    L27:
+        if (r7 == r6) goto L29;
+        r7 = r7 + 1;
+    L29:
         return true;
     }
 
-    public final void f(int i) {
+    public final void f(int r9) {
         this.e--;
-        long[] jArr = this.a;
-        int i2 = this.d;
-        int i3 = i >> 3;
-        int i4 = (i & 7) << 3;
-        long j = (jArr[i3] & (~(255 << i4))) | (254 << i4);
-        jArr[i3] = j;
-        jArr[(((i - 7) & i2) + (i2 & 7)) >> 3] = j;
-        this.b[i] = null;
+        long[] r0 = this.a;
+        int r1 = this.d;
+        int r2 = r9 >> 3;
+        int r3 = (r9 & 7) << 3;
+        long r4 = (r0[r2] & (~(255 << r3))) | (254 << r3);
+        r0[r2] = r4;
+        r0[(((r9 - 7) & r1) + (r1 & 7)) >> 3] = r4;
+        this.b[r9] = null;
     }
 
-    public final void g(int i, Object obj) {
-        int iC = c(obj);
-        if (iC < 0) {
-            iC = ~iC;
-        }
-        this.b[iC] = obj;
-        this.c[iC] = i;
+    public final void g(int r3, Object r4) {
+        int r0 = c(r4);
+        if (r0 >= 0) goto L5;
+        r0 = ~r0;
+    L5:
+        this.b[r0] = r4;
+        this.c[r0] = r3;
     }
 
     public final int hashCode() {
-        Object[] objArr = this.b;
-        int[] iArr = this.c;
-        long[] jArr = this.a;
-        int length = jArr.length - 2;
-        if (length < 0) {
-            return 0;
-        }
-        int i = 0;
-        int iHashCode = 0;
-        while (true) {
-            long j = jArr[i];
-            if ((((~j) << 7) & j & (-9187201950435737472L)) != -9187201950435737472L) {
-                int i2 = 8 - ((~(i - length)) >>> 31);
-                for (int i3 = 0; i3 < i2; i3++) {
-                    if ((255 & j) < 128) {
-                        int i4 = (i << 3) + i3;
-                        Object obj = objArr[i4];
-                        iHashCode += Integer.hashCode(iArr[i4]) ^ (obj != null ? obj.hashCode() : 0);
-                    }
-                    j >>= 8;
-                }
-                if (i2 != 8) {
-                    return iHashCode;
-                }
-            }
-            if (i == length) {
-                return iHashCode;
-            }
-            i++;
-        }
+        Object[] r0 = this.b;
+        int[] r1 = this.c;
+        long[] r15 = this.a;
+        int r2 = r15.length - 2;
+        if (r2 < 0) goto L23;
+        int r4 = 0;
+        int r5 = 0;
+    L5:
+        long r6 = r15[r4];
+        if (((((~r6) << 7) & r6) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L20;
+        int r8 = 8 - ((~(r4 - r2)) >>> 31);
+        int r10 = 0;
+    L8:
+        if (r10 >= r8) goto L17;
+        if ((255 & r6) >= 128) goto L16;
+        int r11 = (r4 << 3) + r10;
+        Object r12 = r0[r11];
+        int r13 = r1[r11];
+        if (r12 == null) goto L14;
+        int r14 = r12.hashCode();
+    L15:
+        r5 = r5 + (Integer.hashCode(r13) ^ r14);
+        goto L16
+    L14:
+        r14 = 0;
+    L16:
+        r6 = r6 >> 8;
+        r10 = r10 + 1;
+        goto L8
+    L17:
+        if (r8 == 8) goto L20;
+        return r5;
+    L20:
+        if (r4 == r2) goto L22;
+        r4 = r4 + 1;
+        goto L5
+    L22:
+        return r5;
+    L23:
+        return 0;
     }
 
-    /* JADX WARN: Code duplicated, block: B:23:0x006a A[DONT_INVERT, PHI: r8
-  0x006a: PHI (r8v2 int) = (r8v1 int), (r8v3 int) binds: [B:10:0x002c, B:22:0x0068] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:24:0x006c A[LOOP:0: B:9:0x001e->B:24:0x006c, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:28:0x006f A[EDGE_INSN: B:28:0x006f->B:25:0x006f BREAK  A[LOOP:0: B:9:0x001e->B:24:0x006c], SYNTHETIC] */
     public final String toString() {
-        if (this.e == 0) {
-            return "{}";
-        }
-        StringBuilder sb = new StringBuilder("{");
-        Object[] objArr = this.b;
-        int[] iArr = this.c;
-        long[] jArr = this.a;
-        int length = jArr.length - 2;
-        if (length >= 0) {
-            int i = 0;
-            int i2 = 0;
-            while (true) {
-                long j = jArr[i];
-                if ((((~j) << 7) & j & (-9187201950435737472L)) == -9187201950435737472L) {
-                    if (i != length) {
-                        break;
-                        break;
-                    }
-                    i++;
-                } else {
-                    int i3 = 8 - ((~(i - length)) >>> 31);
-                    for (int i4 = 0; i4 < i3; i4++) {
-                        if ((255 & j) < 128) {
-                            int i5 = (i << 3) + i4;
-                            Object obj = objArr[i5];
-                            int i6 = iArr[i5];
-                            if (obj == this) {
-                                obj = "(this)";
-                            }
-                            sb.append(obj);
-                            sb.append("=");
-                            sb.append(i6);
-                            i2++;
-                            if (i2 < this.e) {
-                                sb.append(", ");
-                            }
-                        }
-                        j >>= 8;
-                    }
-                    if (i3 != 8) {
-                        break;
-                    }
-                    if (i != length) {
-                        break;
-                    }
-                    i++;
-                }
-            }
-        }
-        sb.append('}');
-        return sb.toString();
+        if (this.e != 0) goto L6;
+        return "{}";
+    L6:
+        StringBuilder r1 = new StringBuilder("{");
+        Object[] r2 = this.b;
+        int[] r3 = this.c;
+        long[] r4 = this.a;
+        int r5 = r4.length - 2;
+        if (r5 < 0) goto L25;
+        int r7 = 0;
+        int r8 = 0;
+    L9:
+        long r9 = r4[r7];
+        if (((((~r9) << 7) & r9) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L23;
+        int r11 = 8 - ((~(r7 - r5)) >>> 31);
+        int r13 = 0;
+    L12:
+        if (r13 >= r11) goto L22;
+        if ((255 & r9) >= 128) goto L21;
+        int r14 = (r7 << 3) + r13;
+        Object r15 = r2[r14];
+        int r16 = r3[r14];
+        if (r15 != this) goto L18;
+        r15 = "(this)";
+    L18:
+        r1.append(r15);
+        r1.append("=");
+        r1.append(r16);
+        r8 = r8 + 1;
+        if (r8 >= this.e) goto L21;
+        r1.append(", ");
+    L21:
+        r9 = r9 >> 8;
+        r13 = r13 + 1;
+        goto L12
+    L22:
+        if (r11 != 8) goto L25;
+    L23:
+        if (r7 == r5) goto L25;
+        r7 = r7 + 1;
+    L25:
+        r1.append('}');
+        return r1.toString();
     }
 
     public /* synthetic */ p03() {

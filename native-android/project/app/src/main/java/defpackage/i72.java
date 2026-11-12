@@ -13,14 +13,14 @@ public final class i72 implements vi2 {
     public final /* synthetic */ o72 f;
     public final /* synthetic */ if1 g;
 
-    public i72(int i, int i2, Map map, if1 if1Var, j72 j72Var, o72 o72Var, if1 if1Var2) {
-        this.a = i;
-        this.b = i2;
-        this.c = map;
-        this.d = if1Var;
-        this.e = j72Var;
-        this.f = o72Var;
-        this.g = if1Var2;
+    public i72(int r1, int r2, Map r3, if1 r4, j72 r5, o72 r6, if1 r7) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
     }
 
     @Override // defpackage.vi2
@@ -35,15 +35,16 @@ public final class i72 implements vi2 {
 
     @Override // defpackage.vi2
     public final void c() {
-        hz1 hz1Var;
-        c72 c72Var = this.f.n;
-        boolean zK = this.e.K();
-        if1 if1Var = this.g;
-        if (!zK || (hz1Var = ((iz1) c72Var.Q.d).o0) == null) {
-            if1Var.invoke(((iz1) c72Var.Q.d).C);
-        } else {
-            if1Var.invoke(hz1Var.C);
-        }
+        c72 r0 = this.f.n;
+        boolean r1 = this.e.K();
+        if1 r2 = this.g;
+        if (r1 == false) goto L8;
+        hz1 r3 = ((iz1) r0.Q.d).o0;
+        if (r3 == null) goto L8;
+        r2.invoke(r3.C);
+        return;
+    L8:
+        r2.invoke(((iz1) r0.Q.d).C);
     }
 
     @Override // defpackage.vi2

@@ -1,30 +1,30 @@
 package defpackage;
 
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
-
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class uv3 implements bi {
-    public final h03 n = new h03();
-    public final q03 o = new q03();
+    public final h03 n;
+    public final q03 o;
     public final Object p;
 
-    public uv3(Object obj) {
-        this.p = obj;
+    public uv3(Object r2) {
+        this.n = new h03();
+        this.o = new q03();
+        this.p = r2;
     }
 
     @Override // defpackage.bi
-    public final void a(int i, Object obj) {
-        h03 h03Var = this.n;
-        h03Var.a(5);
-        h03Var.a(i);
-        this.o.a(obj);
+    public final void a(int r3, Object r4) {
+        h03 r1 = this.n;
+        r1.a(5);
+        r1.a(r3);
+        this.o.a(r4);
     }
 
     @Override // defpackage.bi
-    public final void b(Object obj) {
+    public final void b(Object r3) {
         this.n.a(1);
-        this.o.a(obj);
+        this.o.a(r3);
     }
 
     @Override // defpackage.bi
@@ -33,131 +33,126 @@ public final class uv3 implements bi {
     }
 
     @Override // defpackage.bi
-    public final void d(int i, int i2, int i3) {
-        h03 h03Var = this.n;
-        h03Var.a(3);
-        h03Var.a(i);
-        h03Var.a(i2);
-        h03Var.a(i3);
+    public final void d(int r2, int r3, int r4) {
+        h03 r1 = this.n;
+        r1.a(3);
+        r1.a(r2);
+        r1.a(r3);
+        r1.a(r4);
     }
 
     @Override // defpackage.bi
-    public final void e(int i, int i2) {
-        h03 h03Var = this.n;
-        h03Var.a(2);
-        h03Var.a(i);
-        h03Var.a(i2);
+    public final void e(int r2, int r3) {
+        h03 r1 = this.n;
+        r1.a(2);
+        r1.a(r2);
+        r1.a(r3);
     }
 
-    public final void f(d15 d15Var, uy3 uy3Var) {
-        Exception exc;
-        h03 h03Var = this.n;
-        int i = h03Var.b;
-        q03 q03Var = new q03();
-        int i2 = 0;
-        int i3 = 0;
-        while (true) {
-            q03 q03Var2 = this.o;
-            if (i2 >= i) {
-                if (i3 != q03Var2.b) {
-                    l80.a("Applier operation size mismatch");
-                }
-                q03Var2.d();
-                h03Var.b = 0;
-                d15Var.i();
-                return;
-            }
-            int i4 = i2 + 1;
-            try {
-                try {
-                    switch (h03Var.b(i2)) {
-                        case 0:
-                            d15Var.g();
-                            i2 = i4;
-                            break;
-                        case 1:
-                            int i5 = i3 + 1;
-                            d15Var.b(q03Var2.f(i3));
-                            i3 = i5;
-                            i2 = i4;
-                            break;
-                        case 2:
-                            int i6 = i2 + 2;
-                            i2 += 3;
-                            d15Var.e(h03Var.b(i4), h03Var.b(i6));
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            int i7 = i2 + 2;
-                            try {
-                                int i8 = i2 + 3;
-                                try {
-                                    i2 += 4;
-                                    d15Var.d(h03Var.b(i4), h03Var.b(i7), h03Var.b(i8));
-                                } catch (Exception e) {
-                                    exc = e;
-                                    i2 = i8;
-                                }
-                            } catch (Exception e2) {
-                                exc = e2;
-                                i2 = i7;
-                            }
-                            break;
-                        case 4:
-                            d15Var.f();
-                            i2 = i4;
-                            break;
-                        case 5:
-                            i2 += 2;
-                            int i9 = i3 + 1;
-                            d15Var.a(h03Var.b(i4), q03Var2.f(i3));
-                            i3 = i9;
-                            break;
-                        case 6:
-                            i2 += 2;
-                            try {
-                                h03Var.b(i4);
-                                int i10 = i3 + 1;
-                                i3 = i10;
-                            } catch (Exception e3) {
-                                exc = e3;
-                            }
-                            break;
-                        case 7:
-                            int i11 = i3 + 1;
-                            Object objF = q03Var2.f(i3);
-                            objF.getClass();
-                            jz4.j(2, objF);
-                            i3 += 2;
-                            d15Var.m((wf1) objF, q03Var2.f(i11));
-                            i2 = i4;
-                            break;
-                        case 8:
-                            Object obj = d15Var.p;
-                            if (obj instanceof u70) {
-                                u70 u70Var = (u70) obj;
-                                if (uy3Var.f.j(u70Var)) {
-                                    u70Var.b();
-                                }
-                            }
-                            q03Var.a(obj);
-                            d15Var.c();
-                            i2 = i4;
-                            break;
-                        default:
-                            i2 = i4;
-                            break;
-                    }
-                } catch (Throwable th) {
-                    d15Var.i();
-                    throw th;
-                }
-            } catch (Exception e4) {
-                exc = e4;
-                i2 = i4;
-            }
-            exc = e3;
-            throw new w70(q03Var2, q03Var, h03Var, i2 - 1, exc);
-        }
+    public final void f(d15 r11, uy3 r12) {
+        h03 r3 = this.n;
+        int r0 = r3.b;
+        q03 r2 = new q03();
+        int r4 = 0;
+        int r5 = 0;
+    L3:
+        q03 r1 = this.o;
+        if (r4 >= r0) goto L51;
+        int r7 = r4 + 1;
+        switch(r3.b(r4)) {
+            case 0: goto L48;
+            case 1: goto L46;
+            case 2: goto L41;
+            case 3: goto L30;
+            case 4: goto L28;
+            case 5: goto L26;
+            case 6: goto L22;
+            case 7: goto L20;
+            case 8: goto L9;
+            default: goto L21;
+        };     // Catch: Throwable -> L15 Exception -> L17
+    L22:
+        r4 = r4 + 2;
+        r3.b(r7);     // Catch: Throwable -> L15 Exception -> L24
+        int r8 = r5 + 1;     // Catch: Throwable -> L15 Exception -> L24
+        c72 r6 = (c72) r1.f(r5);     // Catch: Throwable -> L15 Exception -> L24
+        r5 = r8;
+    L24:
+        e = move-exception;
+        Exception r9 = e;
+    L58:
+        throw new w70(r1, r2, r3, r4 - 1, r9);     // Catch: Throwable -> L15
+    L26:
+        r4 = r4 + 2;     // Catch: Throwable -> L15 Exception -> L24
+        int r10 = r5 + 1;     // Catch: Throwable -> L15 Exception -> L24
+        r11.a(r3.b(r7), r1.f(r5));     // Catch: Throwable -> L15 Exception -> L24
+        r5 = r10;
+        goto L3
+    L30:
+        int r13 = r4 + 2;
+        int r14 = r4 + 3;
+        r4 = r4 + 4;
+        r11.d(r3.b(r7), r3.b(r13), r3.b(r14));     // Catch: Throwable -> L15 Exception -> L24
+    L37:
+        e = move-exception;
+        r9 = e;
+        r4 = r14;
+    L39:
+        e = move-exception;
+        r9 = e;
+        r4 = r13;
+        goto L58
+    L41:
+        int r15 = r4 + 2;
+        r4 = r4 + 3;
+        r11.e(r3.b(r7), r3.b(r15));     // Catch: Throwable -> L15 Exception -> L24
+    L21:
+        r4 = r7;
+        goto L3
+    L9:
+        Object r16 = r11.p;     // Catch: Throwable -> L15 Exception -> L17
+        if ((r16 instanceof u70) == false) goto L19;
+        u70 r17 = (u70) r16;     // Catch: Throwable -> L15 Exception -> L17
+        if (r12.f.j(r17) == false) goto L19;
+        r17.b();     // Catch: Throwable -> L15 Exception -> L17
+    L19:
+        r2.a(r16);     // Catch: Throwable -> L15 Exception -> L17
+        r11.c();     // Catch: Throwable -> L15 Exception -> L17
+        goto L21
+    L20:
+        int r18 = r5 + 1;     // Catch: Throwable -> L15 Exception -> L17
+        Object r19 = r1.f(r5);     // Catch: Throwable -> L15 Exception -> L17
+        r19.getClass();     // Catch: Throwable -> L15 Exception -> L17
+        jz4.j(2, r19);     // Catch: Throwable -> L15 Exception -> L17
+        r5 = r5 + 2;     // Catch: Throwable -> L15 Exception -> L17
+        r11.m((wf1) r19, r1.f(r18));     // Catch: Throwable -> L15 Exception -> L17
+        goto L21
+    L28:
+        r11.f();     // Catch: Throwable -> L15 Exception -> L17
+        goto L21
+    L46:
+        int r20 = r5 + 1;
+        r11.b(r1.f(r5));     // Catch: Throwable -> L15 Exception -> L17
+        r5 = r20;
+        goto L21
+    L48:
+        r11.g();     // Catch: Throwable -> L15 Exception -> L17
+    L15:
+        th = move-exception;
+        r11.i();
+        throw th;
+    L17:
+        e = move-exception;
+        r9 = e;
+        r4 = r7;
+        goto L58
+    L51:
+        if (r5 == r1.b) goto L54;
+        l80.a("Applier operation size mismatch");     // Catch: Throwable -> L15 Exception -> L24
+    L54:
+        r1.d();     // Catch: Throwable -> L15 Exception -> L24
+        r3.b = 0;     // Catch: Throwable -> L15 Exception -> L24
+        r11.i();
     }
 
     @Override // defpackage.bi
@@ -166,11 +161,11 @@ public final class uv3 implements bi {
     }
 
     @Override // defpackage.bi
-    public final void h(int i, Object obj) {
-        h03 h03Var = this.n;
-        h03Var.a(6);
-        h03Var.a(i);
-        this.o.a(obj);
+    public final void h(int r3, Object r4) {
+        h03 r1 = this.n;
+        r1.a(6);
+        r1.a(r3);
+        this.o.a(r4);
     }
 
     @Override // defpackage.bi
@@ -179,10 +174,10 @@ public final class uv3 implements bi {
     }
 
     @Override // defpackage.bi
-    public final void m(wf1 wf1Var, Object obj) {
+    public final void m(wf1 r3, Object r4) {
         this.n.a(7);
-        q03 q03Var = this.o;
-        q03Var.a(wf1Var);
-        q03Var.a(obj);
+        q03 r2 = this.o;
+        r2.a(r3);
+        r2.a(r4);
     }
 }

@@ -7,22 +7,24 @@ import com.google.android.material.internal.CheckableImageButton;
 public final class vg0 extends h11 {
     public final /* synthetic */ int e;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ vg0(g11 g11Var, int i) {
-        super(g11Var);
-        this.e = i;
+    public /* synthetic */ vg0(g11 r1, int r2) {
+        this.e = r2;
+        super(r1);
     }
 
     @Override // defpackage.h11
     public void q() {
-        switch (this.e) {
-            case 0:
-                g11 g11Var = this.b;
-                g11Var.B = null;
-                CheckableImageButton checkableImageButton = g11Var.t;
-                checkableImageButton.setOnLongClickListener(null);
-                au0.R(checkableImageButton, null);
-                break;
-        }
+        switch(this.e) {
+            case 0: goto L5;
+            default: goto L4;
+        };
+    L4:
+        return;
+    L5:
+        g11 r1 = this.b;
+        r1.B = null;
+        CheckableImageButton r2 = r1.t;
+        r2.setOnLongClickListener(null);
+        au0.R(r2, null);
     }
 }

@@ -8,8 +8,8 @@ public final class o23 {
     public final int a;
     public final Bundle b;
 
-    public o23(int i, Bundle bundle) {
-        this.a = i;
-        this.b = bundle;
+    public o23(int r1, Bundle r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

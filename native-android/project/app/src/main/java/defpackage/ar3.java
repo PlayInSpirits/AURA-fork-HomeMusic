@@ -6,29 +6,31 @@ public final /* synthetic */ class ar3 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ hr3 o;
 
-    public /* synthetic */ ar3(hr3 hr3Var, int i) {
-        this.n = i;
-        this.o = hr3Var;
+    public /* synthetic */ ar3(hr3 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        hr3 hr3Var = this.o;
-        switch (i) {
-            case 0:
-                hr3Var.X = true;
-                break;
-            case 1:
-                hr3Var.A();
-                break;
-            default:
-                if (!hr3Var.d0) {
-                    mo2 mo2Var = hr3Var.F;
-                    mo2Var.getClass();
-                    mo2Var.j(hr3Var);
-                }
-                break;
-        }
+        int r0 = this.n;
+        hr3 r1 = this.o;
+        switch(r0) {
+            case 0: goto L10;
+            case 1: goto L8;
+            default: goto L5;
+        };
+    L8:
+        r1.A();
+        return;
+    L10:
+        r1.X = true;
+        return;
+    L5:
+        if (r1.d0 == true) goto L12;
+        mo2 r2 = r1.F;
+        r2.getClass();
+        r2.j(r1);
+        return;
     }
 }

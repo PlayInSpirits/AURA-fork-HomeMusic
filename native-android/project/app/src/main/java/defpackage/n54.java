@@ -1,215 +1,304 @@
 package defpackage;
 
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class n54 implements wf1 {
     public final /* synthetic */ int n;
 
-    public /* synthetic */ n54(int i) {
-        this.n = i;
+    public /* synthetic */ n54(int r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        je jeVar;
-        Object objA;
-        switch (this.n) {
-            case 0:
-                return Integer.valueOf(((du1) obj2).a);
-            case 1:
-                return Integer.valueOf(((eb1) obj2).a);
-            case 2:
-                return Integer.valueOf(((fb1) obj2).a);
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                bt4 bt4Var = (bt4) obj2;
-                return bt4Var != null ? bt4.a(bt4Var.a, bt4.c) : false ? Boolean.FALSE : gb.d(Float.valueOf(bt4.c(bt4Var.a)), s54.a(new ct4(bt4.b(bt4Var.a)), s54.w, (t44) obj));
-            case 4:
-                gb2 gb2Var = (gb2) obj2;
-                return gb.d(gb2Var.a, s54.a(gb2Var.b, s54.i, (t44) obj));
-            case 5:
-                long j = ((ct4) obj2).a;
-                if (ct4.a(j, 8589934592L)) {
-                    return 0;
-                }
-                if (ct4.a(j, 4294967296L)) {
-                    return 1;
-                }
-                return Boolean.FALSE;
-            case 6:
-                g83 g83Var = (g83) obj2;
-                return g83Var != null ? g83.b(g83Var.a, 9205357640488583168L) : false ? Boolean.FALSE : gb.d(Float.valueOf(Float.intBitsToFloat((int) (g83Var.a >> 32))), Float.valueOf(Float.intBitsToFloat((int) (g83Var.a & 4294967295L))));
-            case 7:
-                t44 t44Var = (t44) obj;
-                ge geVar = (ge) obj2;
-                Object obj3 = geVar.a;
-                if (obj3 instanceof sd3) {
-                    jeVar = je.n;
-                } else if (obj3 instanceof ij4) {
-                    jeVar = je.o;
-                } else if (obj3 instanceof p45) {
-                    jeVar = je.p;
-                } else if (obj3 instanceof v25) {
-                    jeVar = je.q;
-                } else if (obj3 instanceof hb2) {
-                    jeVar = je.r;
-                } else if (obj3 instanceof gb2) {
-                    jeVar = je.s;
-                } else {
-                    if (!(obj3 instanceof om4)) {
-                        throw new UnsupportedOperationException();
-                    }
-                    jeVar = je.t;
-                }
-                switch (jeVar.ordinal()) {
-                    case 0:
-                        obj3.getClass();
-                        objA = s54.a((sd3) obj3, s54.g, t44Var);
-                        break;
-                    case 1:
-                        obj3.getClass();
-                        objA = s54.a((ij4) obj3, s54.h, t44Var);
-                        break;
-                    case 2:
-                        obj3.getClass();
-                        objA = s54.a((p45) obj3, s54.c, t44Var);
-                        break;
-                    case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                        obj3.getClass();
-                        objA = s54.a((v25) obj3, s54.d, t44Var);
-                        break;
-                    case 4:
-                        obj3.getClass();
-                        objA = s54.a((hb2) obj3, s54.e, t44Var);
-                        break;
-                    case 5:
-                        obj3.getClass();
-                        objA = s54.a((gb2) obj3, s54.f, t44Var);
-                        break;
-                    case 6:
-                        obj3.getClass();
-                        objA = ((om4) obj3).a;
-                        break;
-                    default:
-                        er1.n();
-                        return null;
-                }
-                return gb.d(jeVar, objA, Integer.valueOf(geVar.b), Integer.valueOf(geVar.c), geVar.d);
-            case 8:
-                t44 t44Var2 = (t44) obj;
-                List list = ((vd2) obj2).n;
-                ArrayList arrayList = new ArrayList(list.size());
-                int size = list.size();
-                for (int i = 0; i < size; i++) {
-                    arrayList.add(s54.a((ud2) list.get(i), s54.z, t44Var2));
-                }
-                return arrayList;
-            case 9:
-                return ((ud2) obj2).a.toLanguageTag();
-            case 10:
-                t44 t44Var3 = (t44) obj;
-                ra2 ra2Var = (ra2) obj2;
-                return gb.d(s54.a(new oa2(ra2Var.a), s54.B, t44Var3), s54.a(new qa2(ra2Var.b), s54.C, t44Var3), s54.a(new pa2(ra2Var.c), s54.D, t44Var3));
-            case 11:
-                return Float.valueOf(((oa2) obj2).a);
-            case 12:
-                return Integer.valueOf(((qa2) obj2).a);
-            case 13:
-                return Integer.valueOf(((pa2) obj2).a);
-            case 14:
-                return ((p45) obj2).a;
-            case 15:
-                t44 t44Var4 = (t44) obj;
-                sd3 sd3Var = (sd3) obj2;
-                Object objA2 = s54.a(new mr4(sd3Var.a), s54.q, t44Var4);
-                Object objA3 = s54.a(new ur4(sd3Var.b), s54.r, t44Var4);
-                Object objA4 = s54.a(new bt4(sd3Var.c), s54.v, t44Var4);
-                cs4 cs4Var = sd3Var.d;
-                cs4 cs4Var2 = cs4.c;
-                Object objA5 = s54.a(cs4Var, s54.l, t44Var4);
-                Object objA6 = s54.a(sd3Var.e, t54.a, t44Var4);
-                ra2 ra2Var2 = sd3Var.f;
-                ra2 ra2Var3 = ra2.d;
-                return gb.d(objA2, objA3, objA4, objA5, objA6, s54.a(ra2Var2, s54.A, t44Var4), s54.a(new ma2(sd3Var.g), t54.c, t44Var4), s54.a(new du1(sd3Var.h), s54.s, t44Var4), s54.a(sd3Var.i, t54.d, t44Var4));
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                return ((v25) obj2).a;
-            case 17:
-                t44 t44Var5 = (t44) obj;
-                ij4 ij4Var = (ij4) obj2;
-                x40 x40Var = new x40(ij4Var.a.c());
-                r54 r54Var = s54.p;
-                Object objA7 = s54.a(x40Var, r54Var, t44Var5);
-                bt4 bt4Var2 = new bt4(ij4Var.b);
-                r54 r54Var2 = s54.v;
-                Object objA8 = s54.a(bt4Var2, r54Var2, t44Var5);
-                gb1 gb1Var = ij4Var.c;
-                gb1 gb1Var2 = gb1.o;
-                Object objA9 = s54.a(gb1Var, s54.m, t44Var5);
-                Object objA10 = s54.a(ij4Var.d, s54.t, t44Var5);
-                Object objA11 = s54.a(ij4Var.e, s54.u, t44Var5);
-                String str = ij4Var.g;
-                Object objA12 = s54.a(new bt4(ij4Var.h), r54Var2, t44Var5);
-                Object objA13 = s54.a(ij4Var.i, s54.n, t44Var5);
-                Object objA14 = s54.a(ij4Var.j, s54.k, t44Var5);
-                vd2 vd2Var = ij4Var.k;
-                vd2 vd2Var2 = vd2.p;
-                Object objA15 = s54.a(vd2Var, s54.y, t44Var5);
-                Object objA16 = s54.a(new x40(ij4Var.l), r54Var, t44Var5);
-                Object objA17 = s54.a(ij4Var.m, s54.j, t44Var5);
-                xb4 xb4Var = ij4Var.n;
-                xb4 xb4Var2 = xb4.d;
-                return gb.d(objA7, objA8, objA9, objA10, objA11, -1, str, objA12, objA13, objA14, objA15, objA16, objA17, s54.a(xb4Var, s54.o, t44Var5));
-            case 18:
-                t44 t44Var6 = (t44) obj;
-                os4 os4Var = (os4) obj2;
-                ij4 ij4Var2 = os4Var.a;
-                xc5 xc5Var = s54.h;
-                return gb.d(s54.a(ij4Var2, xc5Var, t44Var6), s54.a(os4Var.b, xc5Var, t44Var6), s54.a(os4Var.c, xc5Var, t44Var6), s54.a(os4Var.d, xc5Var, t44Var6));
-            case 19:
-                zg3 zg3Var = (zg3) obj2;
-                Boolean boolValueOf = Boolean.valueOf(zg3Var.a);
-                xc5 xc5Var2 = s54.a;
-                return gb.d(boolValueOf, s54.a(new h01(zg3Var.b), t54.b, (t44) obj));
-            case 20:
-                return Integer.valueOf(((h01) obj2).a);
-            case 21:
-                return Integer.valueOf(((ma2) obj2).a);
-            case 22:
-                qs4 qs4Var = (qs4) obj2;
-                return gb.d(s54.a(new ps4(qs4Var.a), t54.e, (t44) obj), Boolean.valueOf(qs4Var.b));
-            case 23:
-                return Integer.valueOf(((ps4) obj2).a);
-            case 24:
-                Collection collection = (List) obj;
-                List list2 = (List) obj2;
-                if (collection == null) {
-                    collection = u01.n;
-                }
-                return q40.G0(collection, list2);
-            case 25:
-                List list3 = (List) obj;
-                List list4 = (List) obj2;
-                if (list3 == null) {
-                    return list4;
-                }
-                ArrayList arrayList2 = new ArrayList(list3);
-                arrayList2.addAll(list4);
-                return arrayList2;
-            case 26:
-                Float f = (Float) obj;
-                ((Float) obj2).floatValue();
-                return f;
-            case 27:
-                return (m24) obj;
-            case 28:
-                return (String) obj;
-            default:
-                return (j15) obj;
-        }
+    public final Object invoke(Object r20, Object r21) {
+        boolean r1 = false;
+        int r2 = 0;
+        boolean r3 = false;
+        switch(this.n) {
+            case 0: goto L120;
+            case 1: goto L118;
+            case 2: goto L116;
+            case 3: goto L108;
+            case 4: goto L106;
+            case 5: goto L98;
+            case 6: goto L90;
+            case 7: goto L55;
+            case 8: goto L51;
+            case 9: goto L49;
+            case 10: goto L47;
+            case 11: goto L45;
+            case 12: goto L43;
+            case 13: goto L41;
+            case 14: goto L39;
+            case 15: goto L37;
+            case 16: goto L35;
+            case 17: goto L33;
+            case 18: goto L31;
+            case 19: goto L29;
+            case 20: goto L27;
+            case 21: goto L25;
+            case 22: goto L23;
+            case 23: goto L21;
+            case 24: goto L16;
+            case 25: goto L12;
+            case 26: goto L10;
+            case 27: goto L8;
+            case 28: goto L6;
+            default: goto L4;
+        };
+    L4:
+        j15 r4 = (j15) r21;
+        return (j15) r20;
+    L6:
+        String r5 = (String) r21;
+        return (String) r20;
+    L8:
+        m24 r6 = (m24) r21;
+        return (m24) r20;
+    L10:
+        Float r0 = (Float) r20;
+        ((Float) r21).floatValue();
+        return r0;
+    L12:
+        List r7 = (List) r20;
+        List r8 = (List) r21;
+        if (r7 == null) goto L123;
+        ArrayList r9 = new ArrayList(r7);
+        r9.addAll(r8);
+        return r9;
+    L123:
+        return r8;
+    L16:
+        Collection r10 = (List) r20;
+        List r11 = (List) r21;
+        if (r10 != null) goto L20;
+        r10 = u01.n;
+    L20:
+        return q40.G0(r10, r11);
+    L21:
+        t44 r12 = (t44) r20;
+        return Integer.valueOf(((ps4) r21).a);
+    L23:
+        qs4 r13 = (qs4) r21;
+        ps4 r14 = new ps4(r13.a);
+        xc5 r15 = t54.e;
+        return gb.d(new Object[]{s54.a(r14, r15, (t44) r20), Boolean.valueOf(r13.b)});
+    L25:
+        t44 r16 = (t44) r20;
+        return Integer.valueOf(((ma2) r21).a);
+    L27:
+        t44 r17 = (t44) r20;
+        return Integer.valueOf(((h01) r21).a);
+    L29:
+        zg3 r18 = (zg3) r21;
+        Boolean r19 = Boolean.valueOf(r18.a);
+        xc5 r22 = s54.a;
+        h01 r23 = new h01(r18.b);
+        xc5 r24 = t54.b;
+        return gb.d(new Object[]{r19, s54.a(r23, r24, (t44) r20)});
+    L31:
+        t44 r25 = (t44) r20;
+        os4 r26 = (os4) r21;
+        ij4 r27 = r26.a;
+        xc5 r28 = s54.h;
+        return gb.d(new Object[]{s54.a(r27, r28, r25), s54.a(r26.b, r28, r25), s54.a(r26.c, r28, r25), s54.a(r26.d, r28, r25)});
+    L33:
+        t44 r29 = (t44) r20;
+        ij4 r30 = (ij4) r21;
+        x40 r31 = new x40(r30.a.c());
+        r54 r32 = s54.p;
+        Object r33 = s54.a(r31, r32, r29);
+        bt4 r34 = new bt4(r30.b);
+        r54 r35 = s54.v;
+        Object r36 = s54.a(r34, r35, r29);
+        gb1 r37 = r30.c;
+        gb1 r38 = gb1.o;
+        Object r39 = s54.a(r37, s54.m, r29);
+        Object r40 = s54.a(r30.d, s54.t, r29);
+        Object r41 = s54.a(r30.e, s54.u, r29);
+        String r110 = r30.g;
+        Object r111 = s54.a(new bt4(r30.h), r35, r29);
+        Object r112 = s54.a(r30.i, s54.n, r29);
+        Object r113 = s54.a(r30.j, s54.k, r29);
+        vd2 r42 = r30.k;
+        vd2 r43 = vd2.p;
+        Object r114 = s54.a(r42, s54.y, r29);
+        Object r115 = s54.a(new x40(r30.l), r32, r29);
+        Object r116 = s54.a(r30.m, s54.j, r29);
+        xb4 r44 = r30.n;
+        xb4 r45 = xb4.d;
+        return gb.d(new Object[]{r33, r36, r39, r40, r41, -1, r110, r111, r112, r113, r114, r115, r116, s54.a(r44, s54.o, r29)});
+    L35:
+        t44 r46 = (t44) r20;
+        return ((v25) r21).a;
+    L37:
+        t44 r47 = (t44) r20;
+        sd3 r48 = (sd3) r21;
+        Object r49 = s54.a(new mr4(r48.a), s54.q, r47);
+        Object r50 = s54.a(new ur4(r48.b), s54.r, r47);
+        Object r51 = s54.a(new bt4(r48.c), s54.v, r47);
+        cs4 r52 = r48.d;
+        cs4 r53 = cs4.c;
+        Object r54 = s54.a(r52, s54.l, r47);
+        Object r55 = s54.a(r48.e, t54.a, r47);
+        ra2 r56 = r48.f;
+        ra2 r57 = ra2.d;
+        return gb.d(new Object[]{r49, r50, r51, r54, r55, s54.a(r56, s54.A, r47), s54.a(new ma2(r48.g), t54.c, r47), s54.a(new du1(r48.h), s54.s, r47), s54.a(r48.i, t54.d, r47)});
+    L39:
+        t44 r58 = (t44) r20;
+        return ((p45) r21).a;
+    L41:
+        t44 r59 = (t44) r20;
+        return Integer.valueOf(((pa2) r21).a);
+    L43:
+        t44 r60 = (t44) r20;
+        return Integer.valueOf(((qa2) r21).a);
+    L45:
+        t44 r61 = (t44) r20;
+        return Float.valueOf(((oa2) r21).a);
+    L47:
+        t44 r62 = (t44) r20;
+        ra2 r63 = (ra2) r21;
+        return gb.d(new Object[]{s54.a(new oa2(r63.a), s54.B, r62), s54.a(new qa2(r63.b), s54.C, r62), s54.a(new pa2(r63.c), s54.D, r62)});
+    L49:
+        t44 r64 = (t44) r20;
+        return ((ud2) r21).a.toLanguageTag();
+    L51:
+        t44 r65 = (t44) r20;
+        List r66 = ((vd2) r21).n;
+        ArrayList r67 = new ArrayList(r66.size());
+        int r68 = r66.size();
+    L52:
+        if (r2 >= r68) goto L54;
+        r67.add(s54.a((ud2) r66.get(r2), s54.z, r65));
+        r2 = r2 + 1;
+        goto L52
+    L54:
+        return r67;
+    L55:
+        t44 r69 = (t44) r20;
+        ge r70 = (ge) r21;
+        Object r71 = r70.a;
+        if ((r71 instanceof sd3) == false) goto L59;
+        je r72 = je.n;
+    L77:
+        switch(r72.ordinal()) {
+            case 0: goto L85;
+            case 1: goto L84;
+            case 2: goto L83;
+            case 3: goto L82;
+            case 4: goto L81;
+            case 5: goto L80;
+            case 6: goto L79;
+            default: goto L78;
+        };
+    L78:
+        er1.n();
+        return null;
+    L79:
+        r71.getClass();
+        Object r73 = ((om4) r71).a;
+    L87:
+        return gb.d(new Object[]{r72, r73, Integer.valueOf(r70.b), Integer.valueOf(r70.c), r70.d});
+    L80:
+        r71.getClass();
+        r73 = s54.a((gb2) r71, s54.f, r69);
+        goto L87
+    L81:
+        r71.getClass();
+        r73 = s54.a((hb2) r71, s54.e, r69);
+        goto L87
+    L82:
+        r71.getClass();
+        r73 = s54.a((v25) r71, s54.d, r69);
+        goto L87
+    L83:
+        r71.getClass();
+        r73 = s54.a((p45) r71, s54.c, r69);
+        goto L87
+    L84:
+        r71.getClass();
+        r73 = s54.a((ij4) r71, s54.h, r69);
+        goto L87
+    L85:
+        r71.getClass();
+        r73 = s54.a((sd3) r71, s54.g, r69);
+        goto L87
+    L59:
+        if ((r71 instanceof ij4) == false) goto L62;
+        r72 = je.o;
+        goto L77
+    L62:
+        if ((r71 instanceof p45) == false) goto L65;
+        r72 = je.p;
+        goto L77
+    L65:
+        if ((r71 instanceof v25) == false) goto L68;
+        r72 = je.q;
+        goto L77
+    L68:
+        if ((r71 instanceof hb2) == false) goto L71;
+        r72 = je.r;
+        goto L77
+    L71:
+        if ((r71 instanceof gb2) == false) goto L74;
+        r72 = je.s;
+        goto L77
+    L74:
+        if ((r71 instanceof om4) == false) goto L89;
+        r72 = je.t;
+        goto L77
+    L89:
+        throw new UnsupportedOperationException();
+    L90:
+        t44 r74 = (t44) r20;
+        g83 r75 = (g83) r21;
+        if (r75 == null) goto L94;
+        r3 = g83.b(r75.a, 9205357640488583168L);
+    L94:
+        if (r3 == false) goto L97;
+        return Boolean.FALSE;
+    L97:
+        return gb.d(new Float[]{Float.valueOf(Float.intBitsToFloat((int) (r75.a >> 32))), Float.valueOf(Float.intBitsToFloat((int) (r75.a & 4294967295L)))});
+    L98:
+        t44 r76 = (t44) r20;
+        long r77 = ((ct4) r21).a;
+        if (ct4.a(r77, 8589934592L) == false) goto L102;
+        return 0;
+    L102:
+        if (ct4.a(r77, 4294967296L) == false) goto L105;
+        return 1;
+    L105:
+        return Boolean.FALSE;
+    L106:
+        gb2 r78 = (gb2) r21;
+        String r79 = r78.a;
+        os4 r80 = r78.b;
+        xc5 r81 = s54.i;
+        return gb.d(new Object[]{r79, s54.a(r80, r81, (t44) r20)});
+    L108:
+        t44 r82 = (t44) r20;
+        bt4 r83 = (bt4) r21;
+        long r84 = bt4.c;
+        if (r83 == null) goto L112;
+        r1 = bt4.a(r83.a, r84);
+    L112:
+        if (r1 == false) goto L115;
+        return Boolean.FALSE;
+    L115:
+        return gb.d(new Object[]{Float.valueOf(bt4.c(r83.a)), s54.a(new ct4(bt4.b(r83.a)), s54.w, r82)});
+    L116:
+        t44 r85 = (t44) r20;
+        return Integer.valueOf(((fb1) r21).a);
+    L118:
+        t44 r86 = (t44) r20;
+        return Integer.valueOf(((eb1) r21).a);
+    L120:
+        t44 r87 = (t44) r20;
+        return Integer.valueOf(((du1) r21).a);
     }
 }

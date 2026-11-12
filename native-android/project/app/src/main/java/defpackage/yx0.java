@@ -6,15 +6,16 @@ public final class yx0 {
     public float a;
     public float b;
 
-    public z71 a(float f) {
-        double dB = b(f);
-        double d = a81.a;
-        double d2 = d - 1.0d;
-        return new z71(f, (float) (Math.exp((d / d2) * dB) * ((double) (this.a * this.b))), (long) (Math.exp(dB / d2) * 1000.0d));
+    public z71 a(float r10) {
+        double r0 = b(r10);
+        double r2 = a81.a;
+        double r4 = r2 - 1.0d;
+        return new z71(r10, (float) (Math.exp((r2 / r4) * r0) * (this.a * this.b)), (long) (Math.exp(r0 / r4) * 1000.0d));
     }
 
-    public double b(float f) {
-        float[] fArr = yb.a;
-        return Math.log(((double) (Math.abs(f) * 0.35f)) / ((double) (this.a * this.b)));
+    public double b(float r3) {
+        float[] r0 = yb.a;
+        float r1 = this.a * this.b;
+        return Math.log(((double) (Math.abs(r3) * 0.35f)) / ((double) r1));
     }
 }

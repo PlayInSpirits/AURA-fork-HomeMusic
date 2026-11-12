@@ -12,10 +12,10 @@ public final class i implements u75 {
     public boolean b;
     public Object c;
 
-    public i(MessageDigest messageDigest, int i) {
+    public i(MessageDigest r3, int r4) {
         ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN);
-        this.c = messageDigest;
-        this.a = i;
+        this.c = r3;
+        this.a = r4;
     }
 
     @Override // defpackage.u75
@@ -25,17 +25,17 @@ public final class i implements u75 {
 
     @Override // defpackage.u75
     public void b() {
-        super/*android.view.View*/.setVisibility(0);
+        ActionBarContextView.a((ActionBarContextView) this.c);
         this.b = false;
     }
 
     @Override // defpackage.u75
     public void c() {
-        if (this.b) {
-            return;
-        }
-        ActionBarContextView actionBarContextView = (ActionBarContextView) this.c;
-        actionBarContextView.s = null;
-        super/*android.view.View*/.setVisibility(this.a);
+        if (this.b == false) goto L5;
+        return;
+    L5:
+        ActionBarContextView r0 = (ActionBarContextView) this.c;
+        r0.s = null;
+        ActionBarContextView.b(r0, this.a);
     }
 }

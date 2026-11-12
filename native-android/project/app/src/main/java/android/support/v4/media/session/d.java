@@ -7,12 +7,12 @@ import android.os.Parcelable;
 /* JADX INFO: loaded from: classes.dex */
 public final class d implements Parcelable.Creator {
     @Override // android.os.Parcelable.Creator
-    public final Object createFromParcel(Parcel parcel) {
-        return new PlaybackStateCompat.CustomAction(parcel);
+    public final Object createFromParcel(Parcel r1) {
+        return new PlaybackStateCompat.CustomAction(r1);
     }
 
     @Override // android.os.Parcelable.Creator
-    public final Object[] newArray(int i) {
-        return new PlaybackStateCompat.CustomAction[i];
+    public final Object[] newArray(int r1) {
+        return new PlaybackStateCompat.CustomAction[r1];
     }
 }

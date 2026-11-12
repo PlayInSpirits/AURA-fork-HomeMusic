@@ -8,54 +8,65 @@ import java.util.Objects;
 public final /* synthetic */ class km2 implements lm2, yr2 {
     public final /* synthetic */ mi3 n;
 
-    public /* synthetic */ km2(mi3 mi3Var) {
-        this.n = mi3Var;
+    public /* synthetic */ km2(mi3 r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.lm2
-    public void c(bm2 bm2Var) {
-        boolean z;
-        boolean z2;
-        if (bm2Var.Y()) {
-            mi3 mi3Var = bm2Var.y;
-            mi3 mi3Var2 = this.n;
-            if (Objects.equals(mi3Var, mi3Var2)) {
-                return;
-            }
-            bm2Var.y = mi3Var2;
-            mi3 mi3Var3 = bm2Var.z;
-            mi3 mi3VarY0 = bm2.Y0(bm2Var.x, mi3Var2);
-            bm2Var.z = mi3VarY0;
-            if (mi3VarY0.equals(mi3Var3)) {
-                z = false;
-                z2 = false;
-            } else {
-                gy3 gy3Var = bm2Var.u;
-                gy3 gy3Var2 = bm2Var.v;
-                gy3 gy3VarU1 = bm2.u1(bm2Var.t, bm2Var.s, bm2Var.w, bm2Var.z, bm2Var.I);
-                bm2Var.u = gy3VarU1;
-                bm2Var.v = bm2.t1(gy3VarU1, bm2Var.s, bm2Var.I, bm2Var.w, bm2Var.z);
-                z = !bm2Var.u.equals(gy3Var);
-                z2 = !bm2Var.v.equals(gy3Var2);
-                bm2Var.i.f(13, new cl2(bm2Var, 2));
-            }
-            if (z2) {
-                sk2 sk2VarF1 = bm2Var.f1();
-                sk2VarF1.getClass();
-                rr2.w(Looper.myLooper() == sk2VarF1.f.getLooper());
-                sk2VarF1.e.getClass();
-            }
-            if (z) {
-                sk2 sk2VarF2 = bm2Var.f1();
-                sk2VarF2.getClass();
-                rr2.w(Looper.myLooper() == sk2VarF2.f.getLooper());
-                sk2VarF2.e.u();
-            }
-        }
+    public void c(bm2 r9) {
+        if (r9.Y() == false) goto L26;
+        mi3 r0 = r9.y;
+        mi3 r8 = this.n;
+        if (Objects.equals(r0, r8) == true) goto L27;
+        r9.y = r8;
+        mi3 r1 = r9.z;
+        mi3 r10 = bm2.Y0(r9.x, r8);
+        r9.z = r10;
+        boolean r11 = r10.equals(r1);
+        boolean r2 = true;
+        if (r11 == true) goto L11;
+        gy3 r12 = r9.u;
+        gy3 r3 = r9.v;
+        gy3 r4 = bm2.u1(r9.t, r9.s, r9.w, r9.z, r9.I);
+        r9.u = r4;
+        r9.v = bm2.t1(r4, r9.s, r9.I, r9.w, r9.z);
+        boolean r13 = !r9.u.equals(r12);
+        boolean r5 = !r9.v.equals(r3);
+        r9.i.f(13, new cl2(r9, 2));
+    L12:
+        if (r5 == false) goto L18;
+        sk2 r6 = r9.f1();
+        r6.getClass();
+        if (Looper.myLooper() != r6.f.getLooper()) goto L16;
+        boolean r7 = true;
+    L17:
+        rr2.w(r7);
+        r6.e.getClass();
+        goto L18
+    L16:
+        r7 = false;
+    L18:
+        if (r13 == false) goto L25;
+        sk2 r14 = r9.f1();
+        r14.getClass();
+        if (Looper.myLooper() == r14.f.getLooper()) goto L23;
+        r2 = false;
+    L23:
+        rr2.w(r2);
+        r14.e.u();
+        return;
+    L25:
+        return;
+    L11:
+        r13 = false;
+        r5 = false;
+        goto L12
+    L27:
+        return;
     }
 
     @Override // defpackage.yr2
-    public void f(er2 er2Var, int i) {
-        er2Var.t(i, this.n);
+    public void f(er2 r1, int r2) {
+        r1.t(r2, this.n);
     }
 }

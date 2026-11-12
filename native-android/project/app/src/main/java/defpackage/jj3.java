@@ -17,11 +17,11 @@ public final class jj3 extends dw3 {
     public final Drawable[] s;
     public final /* synthetic */ PlayerControlView t;
 
-    public jj3(PlayerControlView playerControlView, String[] strArr, Drawable[] drawableArr) {
-        this.t = playerControlView;
-        this.q = strArr;
-        this.r = new String[strArr.length];
-        this.s = drawableArr;
+    public jj3(PlayerControlView r1, String[] r2, Drawable[] r3) {
+        this.t = r1;
+        this.q = r2;
+        this.r = new String[r2.length];
+        this.s = r3;
     }
 
     @Override // defpackage.dw3
@@ -30,52 +30,63 @@ public final class jj3 extends dw3 {
     }
 
     @Override // defpackage.dw3
-    public final long b(int i) {
-        return i;
+    public final long b(int r1) {
+        return r1;
     }
 
     @Override // defpackage.dw3
-    public final void g(cx3 cx3Var, int i) {
-        ij3 ij3Var = (ij3) cx3Var;
-        boolean zP = p(i);
-        View view = ij3Var.a;
-        if (zP) {
-            view.setLayoutParams(new nw3(-1, -2));
-        } else {
-            view.setLayoutParams(new nw3(0, 0));
-        }
-        ij3Var.u.setText(this.q[i]);
-        String str = this.r[i];
-        TextView textView = ij3Var.v;
-        if (str == null) {
-            textView.setVisibility(8);
-        } else {
-            textView.setText(str);
-        }
-        Drawable drawable = this.s[i];
-        ImageView imageView = ij3Var.w;
-        if (drawable == null) {
-            imageView.setVisibility(8);
-        } else {
-            imageView.setImageDrawable(drawable);
-        }
+    public final void g(cx3 r5, int r6) {
+        ij3 r7 = (ij3) r5;
+        boolean r0 = p(r6);
+        View r1 = r7.a;
+        if (r0 == false) goto L5;
+        r1.setLayoutParams(new nw3(-1, -2));
+    L6:
+        r7.u.setText(this.q[r6]);
+        String r2 = this.r[r6];
+        TextView r3 = r7.v;
+        if (r2 != null) goto L9;
+        r3.setVisibility(8);
+    L10:
+        Drawable r4 = this.s[r6];
+        ImageView r8 = r7.w;
+        if (r4 != null) goto L14;
+        r8.setVisibility(8);
+        return;
+    L14:
+        r8.setImageDrawable(r4);
+        return;
+    L9:
+        r3.setText(r2);
+        goto L10
+    L5:
+        r1.setLayoutParams(new nw3(0, 0));
+        goto L6
     }
 
     @Override // defpackage.dw3
-    public final cx3 i(ViewGroup viewGroup, int i) {
-        PlayerControlView playerControlView = this.t;
-        return new ij3(playerControlView, LayoutInflater.from(playerControlView.getContext()).inflate(R.layout.exo_styled_settings_list_item, viewGroup, false));
+    public final cx3 i(ViewGroup r3, int r4) {
+        PlayerControlView r2 = this.t;
+        return new ij3(r2, LayoutInflater.from(r2.getContext()).inflate(R.layout.exo_styled_settings_list_item, r3, false));
     }
 
-    public final boolean p(int i) {
-        PlayerControlView playerControlView = this.t;
-        qi3 qi3Var = playerControlView.D0;
-        if (qi3Var == null) {
-            return false;
-        }
-        if (i != 0) {
-            return i != 1 || (qi3Var.S0(30) && playerControlView.D0.S0(29));
-        }
-        return qi3Var.S0(13);
+    public final boolean p(int r3) {
+        PlayerControlView r2 = this.t;
+        qi3 r0 = r2.D0;
+        if (r0 == null) goto L19;
+        if (r3 == 0) goto L17;
+        if (r3 == 1) goto L10;
+    L13:
+        return true;
+    L10:
+        if (r0.S0(30) == true) goto L12;
+        return false;
+    L12:
+        if (r2.D0.S0(29) == true) goto L13;
+        return false;
+    L17:
+        return r0.S0(13);
+    L19:
+        return false;
     }
 }

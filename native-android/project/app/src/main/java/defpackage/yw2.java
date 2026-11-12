@@ -6,8 +6,8 @@ public final class yw2 {
     public final qk a;
     public final Object[] b;
 
-    public yw2(qk qkVar, Object... objArr) {
-        this.a = qkVar;
-        this.b = objArr;
+    public yw2(qk r1, Object... r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

@@ -5,7 +5,7 @@ package defpackage;
 public final class nd5 extends pd5 {
     public final nc2 a;
 
-    public nd5(nc2 nc2Var) {
-        this.a = nc2Var;
+    public nd5(nc2 r1) {
+        this.a = r1;
     }
 }

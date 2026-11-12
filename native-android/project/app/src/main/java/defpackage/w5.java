@@ -10,53 +10,52 @@ public final class w5 extends r5 {
     public final /* synthetic */ String c;
     public final /* synthetic */ su3 d;
 
-    public /* synthetic */ w5(j70 j70Var, String str, su3 su3Var, int i) {
-        this.a = i;
-        this.b = j70Var;
-        this.c = str;
-        this.d = su3Var;
+    public /* synthetic */ w5(j70 r1, String r2, su3 r3, int r4) {
+        this.a = r4;
+        this.b = r1;
+        this.c = r2;
+        this.d = r3;
     }
 
     @Override // defpackage.r5
-    public final void a(Object obj) {
-        int i = this.a;
-        su3 su3Var = this.d;
-        String str = this.c;
-        j70 j70Var = this.b;
-        switch (i) {
-            case 0:
-                ArrayList arrayList = j70Var.d;
-                Object obj2 = j70Var.b.get(str);
-                if (obj2 == null) {
-                    nz2.p("Attempting to launch an unregistered ActivityResultLauncher with contract ", su3Var, " and input ", obj, ". You must ensure the ActivityResultLauncher is registered before calling launch().");
-                    return;
-                }
-                int iIntValue = ((Number) obj2).intValue();
-                arrayList.add(str);
-                try {
-                    j70Var.b(iIntValue, su3Var, obj);
-                    return;
-                } catch (Exception e) {
-                    arrayList.remove(str);
-                    throw e;
-                }
-            default:
-                ArrayList arrayList2 = j70Var.d;
-                Object obj3 = j70Var.b.get(str);
-                if (obj3 == null) {
-                    nz2.p("Attempting to launch an unregistered ActivityResultLauncher with contract ", su3Var, " and input ", obj, ". You must ensure the ActivityResultLauncher is registered before calling launch().");
-                    return;
-                }
-                int iIntValue2 = ((Number) obj3).intValue();
-                arrayList2.add(str);
-                try {
-                    j70Var.b(iIntValue2, su3Var, obj);
-                    return;
-                } catch (Exception e2) {
-                    arrayList2.remove(str);
-                    throw e2;
-                }
-        }
+    public final void a(Object r8) {
+        int r0 = this.a;
+        su3 r4 = this.d;
+        String r5 = this.c;
+        j70 r7 = this.b;
+        switch(r0) {
+            case 0: goto L14;
+            default: goto L4;
+        };
+    L4:
+        ArrayList r1 = r7.d;
+        Object r6 = r7.b.get(r5);
+        if (r6 == null) goto L12;
+        int r2 = ((Number) r6).intValue();
+        r1.add(r5);
+        r7.b(r2, r4, r8);     // Catch: Exception -> L9
+        return;
+    L9:
+        e = move-exception;
+        r1.remove(r5);
+        throw e;
+    L12:
+        nz2.p("Attempting to launch an unregistered ActivityResultLauncher with contract ", r4, " and input ", r8, ". You must ensure the ActivityResultLauncher is registered before calling launch().");
+        return;
+    L14:
+        ArrayList r3 = r7.d;
+        Object r9 = r7.b.get(r5);
+        if (r9 == null) goto L22;
+        int r10 = ((Number) r9).intValue();
+        r3.add(r5);
+        r7.b(r10, r4, r8);     // Catch: Exception -> L19
+        return;
+    L19:
+        e = move-exception;
+        r3.remove(r5);
+        throw e;
+    L22:
+        nz2.p("Attempting to launch an unregistered ActivityResultLauncher with contract ", r4, " and input ", r8, ". You must ensure the ActivityResultLauncher is registered before calling launch().");
     }
 
     public void b() {

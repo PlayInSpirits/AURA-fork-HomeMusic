@@ -8,31 +8,32 @@ public final class qh0 implements f42 {
     public final f42 b;
     public final f42 c;
 
-    public qh0(f42 f42Var, f42 f42Var2) {
-        this.b = f42Var;
-        this.c = f42Var2;
+    public qh0(f42 r1, f42 r2) {
+        this.b = r1;
+        this.c = r2;
     }
 
     @Override // defpackage.f42
-    public final void b(MessageDigest messageDigest) {
-        this.b.b(messageDigest);
-        this.c.b(messageDigest);
+    public final void b(MessageDigest r2) {
+        this.b.b(r2);
+        this.c.b(r2);
     }
 
     @Override // defpackage.f42
-    public final boolean equals(Object obj) {
-        if (obj instanceof qh0) {
-            qh0 qh0Var = (qh0) obj;
-            if (this.b.equals(qh0Var.b) && this.c.equals(qh0Var.c)) {
-                return true;
-            }
-        }
+    public final boolean equals(Object r4) {
+        if ((r4 instanceof qh0) == false) goto L10;
+        qh0 r5 = (qh0) r4;
+        if (this.b.equals(r5.b) == false) goto L10;
+        if (this.c.equals(r5.c) == false) goto L10;
+        return true;
+    L10:
         return false;
     }
 
     @Override // defpackage.f42
     public final int hashCode() {
-        return this.c.hashCode() + (this.b.hashCode() * 31);
+        int r0 = this.b.hashCode() * 31;
+        return this.c.hashCode() + r0;
     }
 
     public final String toString() {

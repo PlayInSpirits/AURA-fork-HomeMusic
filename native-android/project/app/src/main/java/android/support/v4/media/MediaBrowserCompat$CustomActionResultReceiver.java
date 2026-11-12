@@ -7,6 +7,6 @@ import defpackage.v14;
 /* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$CustomActionResultReceiver extends v14 {
     @Override // defpackage.v14
-    public final void a(int i, Bundle bundle) {
+    public final void a(int r1, Bundle r2) {
     }
 }

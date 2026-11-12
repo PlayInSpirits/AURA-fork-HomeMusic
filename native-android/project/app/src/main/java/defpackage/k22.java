@@ -3,22 +3,20 @@ package defpackage;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
-/* JADX WARN: Unknown enum class pattern. Please report as an issue! */
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
-public final class k22 implements Iterator {
-    public static final k22 n;
-    public static final /* synthetic */ k22[] o;
+public final enum k22 extends Enum implements Iterator {
+    public static final k22 n = null;
+    public static final /* synthetic */ k22[] o = null;
 
     static {
-        k22 k22Var = new k22("INSTANCE", 0);
-        n = k22Var;
-        o = new k22[]{k22Var};
+        k22 r0 = new k22("INSTANCE", 0);
+        n = r0;
+        o = new k22[]{r0};
     }
 
-    public static k22 valueOf(String str) {
-        return (k22) Enum.valueOf(k22.class, str);
+    public static k22 valueOf(String r1) {
+        return (k22) Enum.valueOf(k22.class, r1);
     }
 
     public static k22[] values() {

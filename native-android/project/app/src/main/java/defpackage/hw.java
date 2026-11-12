@@ -23,7 +23,6 @@ import io.sigpipe.jbsdiff.InvalidHeaderException;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -45,181 +44,212 @@ import java.util.logging.Logger;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class hw {
-    public static final f01 b;
-    public static final f01 c;
-    public static final p61 e;
-    public static final p61[] f;
+    public static final int[] a = null;
+    public static final f01 b = null;
+    public static final f01 c = null;
+    public static final StackTraceElement[] d = null;
+    public static final p61 e = null;
+    public static final p61[] f = null;
     public static WebView g;
     public static MutableContextWrapper h;
     public static String i;
-    public static final int[] a = {2002, 2000, 1920, 1601, 1600, 1001, 1000, 960, 800, 800, 480, 400, 400, 2048};
-    public static final StackTraceElement[] d = new StackTraceElement[0];
 
     static {
-        int i2 = 1;
-        b = new f01(i2, "REMOVED_TASK");
-        c = new f01(i2, "CLOSED_EMPTY");
-        p61 p61Var = new p61("CLIENT_TELEMETRY", 1L);
-        e = p61Var;
-        f = new p61[]{p61Var};
+        a = new int[]{2002, 2000, 1920, 1601, 1600, 1001, 1000, 960, 800, 800, 480, 400, 400, 2048};
+        int r1 = 1;
+        b = new f01(r1, "REMOVED_TASK");
+        c = new f01(r1, "CLOSED_EMPTY");
+        d = new StackTraceElement[0];
+        p61 r0 = new p61("CLIENT_TELEMETRY", 1);
+        e = r0;
+        f = new p61[]{r0};
     }
 
-    public static ue1 C(String str) throws ProtocolException {
-        int i2;
-        String strSubstring;
-        boolean zK0 = xm4.k0(str, "HTTP/1.", false);
-        pr3 pr3Var = pr3.p;
-        pr3 pr3Var2 = pr3.q;
-        if (zK0) {
-            i2 = 9;
-            if (str.length() < 9 || str.charAt(8) != ' ') {
-                throw new ProtocolException("Unexpected status line: ".concat(str));
-            }
-            int iCharAt = str.charAt(7) - '0';
-            if (iCharAt != 0) {
-                if (iCharAt != 1) {
-                    throw new ProtocolException("Unexpected status line: ".concat(str));
-                }
-                pr3Var = pr3Var2;
-            }
-        } else if (xm4.k0(str, "ICY ", false)) {
-            i2 = 4;
-        } else {
-            if (!xm4.k0(str, "SOURCETABLE ", false)) {
-                throw new ProtocolException("Unexpected status line: ".concat(str));
-            }
-            i2 = 12;
-            pr3Var = pr3Var2;
-        }
-        int i3 = i2 + 3;
-        if (str.length() < i3) {
-            throw new ProtocolException("Unexpected status line: ".concat(str));
-        }
-        Integer numL0 = xm4.l0(str.substring(i2, i3));
-        if (numL0 == null) {
-            throw new ProtocolException("Unexpected status line: ".concat(str));
-        }
-        int iIntValue = numL0.intValue();
-        if (str.length() <= i3) {
-            strSubstring = "";
-        } else {
-            if (str.charAt(i3) != ' ') {
-                throw new ProtocolException("Unexpected status line: ".concat(str));
-            }
-            strSubstring = str.substring(i2 + 4);
-        }
-        return new ue1(iIntValue, 17, pr3Var, strSubstring);
+    public static ue1 C(String r8) {
+        boolean r0 = xm4.k0(r8, "HTTP/1.", false);
+        pr3 r2 = pr3.p;
+        pr3 r3 = pr3.q;
+        if (r0 == false) goto L18;
+        int r1 = 9;
+        if (r8.length() < 9) goto L16;
+        if (r8.charAt(8) != ' ') goto L16;
+        int r4 = r8.charAt(7) - '0';
+        if (r4 != 0) goto L11;
+    L24:
+        int r5 = r1 + 3;
+        if (r8.length() < r5) goto L41;
+        Integer r6 = xm4.l0(r8.substring(r1, r5));
+        if (r6 == null) goto L39;
+        int r7 = r6.intValue();
+        if (r8.length() > r5) goto L31;
+        String r9 = "";
+    L37:
+        return new ue1(r7, 17, r2, r9);
+    L31:
+        if (r8.charAt(r5) != ' ') goto L34;
+        r9 = r8.substring(r1 + 4);
+        goto L37
+    L34:
+        throw new ProtocolException("Unexpected status line: ".concat(r8));
+    L39:
+        throw new ProtocolException("Unexpected status line: ".concat(r8));
+    L41:
+        throw new ProtocolException("Unexpected status line: ".concat(r8));
+    L11:
+        if (r4 != 1) goto L14;
+    L23:
+        r2 = r3;
+        goto L24
+    L14:
+        throw new ProtocolException("Unexpected status line: ".concat(r8));
+    L16:
+        throw new ProtocolException("Unexpected status line: ".concat(r8));
+    L18:
+        if (xm4.k0(r8, "ICY ", false) == false) goto L21;
+        r1 = 4;
+        goto L24
+    L21:
+        if (xm4.k0(r8, "SOURCETABLE ", false) == false) goto L43;
+        r1 = 12;
+        goto L23
+    L43:
+        throw new ProtocolException("Unexpected status line: ".concat(r8));
     }
 
-    /* JADX WARN: Code duplicated, block: B:40:0x0083  */
-    /* JADX WARN: Code duplicated, block: B:44:0x008b  */
-    /* JADX WARN: Code duplicated, block: B:47:0x0090  */
-    public static v2 D(h00 h00Var) {
-        int i2;
-        int i3;
-        int i4 = h00Var.i(16);
-        int i5 = h00Var.i(16);
-        if (i5 == 65535) {
-            i5 = h00Var.i(24);
-            i2 = 7;
-        } else {
-            i2 = 4;
-        }
-        int i6 = i5 + i2;
-        if (i4 == 44097) {
-            i6 += 2;
-        }
-        if (h00Var.i(2) == 3) {
-            do {
-                h00Var.i(2);
-            } while (h00Var.h());
-        }
-        int i7 = h00Var.i(10);
-        if (h00Var.h() && h00Var.i(3) > 0) {
-            h00Var.t(2);
-        }
-        int i8 = h00Var.h() ? 48000 : 44100;
-        int i9 = h00Var.i(4);
-        int[] iArr = a;
-        if (i8 == 44100 && i9 == 13) {
-            i3 = iArr[i9];
-        } else if (i8 != 48000 || i9 >= 14) {
-            i3 = 0;
-        } else {
-            int i10 = iArr[i9];
-            int i11 = i7 % 5;
-            if (i11 == 1) {
-                if (i9 != 3 || i9 == 8) {
-                    i3 = i10 + 1;
-                } else {
-                    i3 = i10;
-                }
-            } else if (i11 != 2) {
-                if (i11 == 3) {
-                    if (i9 != 3) {
-                    }
-                    i3 = i10 + 1;
-                } else if (i11 == 4 && (i9 == 3 || i9 == 8 || i9 == 11)) {
-                    i3 = i10 + 1;
-                } else {
-                    i3 = i10;
-                }
-            } else if (i9 == 8 || i9 == 11) {
-                i3 = i10 + 1;
-            } else {
-                i3 = i10;
-            }
-        }
-        return new v2(i8, i6, i3);
+    public static v2 D(h00 r9) {
+        int r1 = r9.i(16);
+        int r0 = r9.i(16);
+        if (r0 != 65535) goto L5;
+        r0 = r9.i(24);
+        int r2 = 7;
+    L6:
+        int r3 = r0 + r2;
+        if (r1 != 44097) goto L10;
+        r3 = r3 + 2;
+    L10:
+        if (r9.i(2) != 3) goto L13;
+    L11:
+        r9.i(2);
+        if (r9.h() == true) goto L11;
+    L13:
+        int r4 = r9.i(10);
+        if (r9.h() == false) goto L19;
+        if (r9.i(3) <= 0) goto L19;
+        r9.t(2);
+    L19:
+        if (r9.h() == false) goto L21;
+        int r5 = 48000;
+    L22:
+        int r10 = r9.i(4);
+        int[] r8 = a;
+        if (r5 == 44100) goto L25;
+    L27:
+        if (r5 == 48000) goto L29;
+    L48:
+        int r11 = 0;
+    L50:
+        return new v2(r5, r3, r11);
+    L29:
+        if (r10 >= 14) goto L48;
+        int r6 = r8[r10];
+        int r7 = r4 % 5;
+        if (r7 != 1) goto L33;
+    L44:
+        if (r10 != 3) goto L45;
+    L40:
+        r11 = r6 + 1;
+        goto L50
+    L45:
+        if (r10 == 8) goto L40;
+    L47:
+        r11 = r6;
+        goto L50
+    L33:
+        if (r7 == 2) goto L41;
+        if (r7 == 3) goto L44;
+        if (r7 != 4) goto L47;
+        if (r10 == 3) goto L40;
+        if (r10 == 8) goto L40;
+        if (r10 != 11) goto L47;
+    L41:
+        if (r10 == 8) goto L40;
+        if (r10 != 11) goto L47;
+    L25:
+        if (r10 != 13) goto L27;
+        r11 = r8[r10];
+        goto L50
+    L21:
+        r5 = 44100;
+        goto L22
+    L5:
+        r2 = 4;
+        goto L6
     }
 
-    public static void E(h00 h00Var, u2 u2Var) throws ParserException {
-        int i2 = h00Var.i(5);
-        h00Var.t(2);
-        if (h00Var.h()) {
-            h00Var.t(5);
-        }
-        if (i2 >= 7 && i2 <= 10) {
-            h00Var.s();
-        }
-        if (h00Var.h()) {
-            int i3 = h00Var.i(3);
-            if (u2Var.b == -1 && i2 >= 0 && i2 <= 15 && (i3 == 0 || i3 == 1)) {
-                u2Var.b = i2;
-            }
-            if (h00Var.h()) {
-                M(h00Var);
-            }
-        }
+    public static void E(h00 r4, u2 r5) {
+        int r1 = r4.i(5);
+        r4.t(2);
+        if (r4.h() == false) goto L6;
+        r4.t(5);
+    L6:
+        if (r1 < 7) goto L11;
+        if (r1 > 10) goto L11;
+        r4.s();
+    L11:
+        if (r4.h() == false) goto L25;
+        int r0 = r4.i(3);
+        if (r5.b != (-1)) goto L22;
+        if (r1 < 0) goto L22;
+        if (r1 > 15) goto L22;
+        if (r0 != 0) goto L19;
+    L20:
+        r5.b = r1;
+        goto L22
+    L19:
+        if (r0 == 1) goto L20;
+    L22:
+        if (r4.h() == false) goto L26;
+        M(r4);
+        return;
+    L26:
+        return;
     }
 
-    public static void F(h00 h00Var, u2 u2Var) throws ParserException {
-        h00Var.t(2);
-        boolean zH = h00Var.h();
-        int i2 = h00Var.i(8);
-        for (int i3 = 0; i3 < i2; i3++) {
-            h00Var.t(2);
-            if (h00Var.h()) {
-                h00Var.t(5);
-            }
-            if (zH) {
-                h00Var.t(24);
-            } else {
-                if (h00Var.h()) {
-                    if (!h00Var.h()) {
-                        h00Var.t(4);
-                    }
-                    u2Var.c = h00Var.i(6) + 1;
-                }
-                h00Var.t(4);
-            }
-        }
-        if (h00Var.h()) {
-            h00Var.t(3);
-            if (h00Var.h()) {
-                M(h00Var);
-            }
-        }
+    public static void F(h00 r6, u2 r7) {
+        r6.t(2);
+        boolean r1 = r6.h();
+        int r2 = r6.i(8);
+        int r3 = 0;
+    L3:
+        if (r3 >= r2) goto L18;
+        r6.t(2);
+        if (r6.h() == false) goto L7;
+        r6.t(5);
+    L7:
+        if (r1 == false) goto L10;
+        r6.t(24);
+    L16:
+        r3 = r3 + 1;
+        goto L3
+    L10:
+        if (r6.h() == true) goto L12;
+    L15:
+        r6.t(4);
+        goto L16
+    L12:
+        if (r6.h() == true) goto L14;
+        r6.t(4);
+    L14:
+        r7.c = r6.i(6) + 1;
+        goto L15
+    L18:
+        if (r6.h() == false) goto L26;
+        r6.t(3);
+        if (r6.h() == false) goto L27;
+        M(r6);
+        return;
+    L27:
+        return;
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -233,373 +263,416 @@ public abstract class hw {
     /* JADX WARN: Type inference failed for: r7v0, types: [java.io.ByteArrayInputStream, java.io.InputStream] */
     /* JADX WARN: Type inference failed for: r7v1, types: [java.io.InputStream] */
     /* JADX WARN: Type inference failed for: r7v2, types: [i90, java.io.InputStream] */
-    public static void G(byte[] bArr, byte[] bArr2, FileOutputStream fileOutputStream) throws IOException, InvalidHeaderException {
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bArr2);
-        DataInputStream dataInputStream = new DataInputStream(byteArrayInputStream);
-        byte[] bArr3 = new byte[8];
-        dataInputStream.read(bArr3);
-        if (!new String(bArr3).equals("BSDIFF40")) {
-            throw new InvalidHeaderException("Header missing magic number");
-        }
-        int iE = vr1.E(dataInputStream);
-        int iE2 = vr1.E(dataInputStream);
-        int iE3 = vr1.E(dataInputStream);
-        if (iE < 0) {
-            throw new InvalidHeaderException(iE, "control block length");
-        }
-        if (iE2 < 0) {
-            throw new InvalidHeaderException(iE2, "diff block length");
-        }
-        if (iE3 < 0) {
-            throw new InvalidHeaderException(iE3, "output file length");
-        }
-        byteArrayInputStream.close();
-        ?? byteArrayInputStream2 = new ByteArrayInputStream(bArr2);
-        ?? byteArrayInputStream3 = new ByteArrayInputStream(bArr2);
-        ?? byteArrayInputStream4 = new ByteArrayInputStream(bArr2);
-        try {
-            byteArrayInputStream2.skip(32L);
-            int i2 = iE + 32;
-            byteArrayInputStream3.skip(i2);
-            byteArrayInputStream4.skip(i2 + iE2);
-            ?? k90Var = new k90();
-            byteArrayInputStream2 = k90Var.a(byteArrayInputStream2);
-            byteArrayInputStream3 = k90Var.a(byteArrayInputStream3);
-            byteArrayInputStream4 = k90Var.a(byteArrayInputStream4);
-            byte[] bArr4 = new byte[iE3];
-            int i3 = 0;
-            int i4 = 0;
-            while (i3 < iE3) {
-                int iE4 = vr1.E(byteArrayInputStream2);
-                int iE5 = vr1.E(byteArrayInputStream2);
-                int iE6 = vr1.E(byteArrayInputStream2);
-                H(byteArrayInputStream3, bArr4, i3, iE4);
-                for (int i5 = 0; i5 < iE4; i5++) {
-                    int i6 = i4 + i5;
-                    if (i6 >= 0 && i6 < bArr.length) {
-                        int i7 = i3 + i5;
-                        bArr4[i7] = (byte) (bArr4[i7] + bArr[i6]);
-                    }
-                }
-                int i8 = i3 + iE4;
-                H(byteArrayInputStream4, bArr4, i8, iE5);
-                i3 = i8 + iE5;
-                i4 = i4 + iE4 + iE6;
-            }
-            fileOutputStream.write(bArr4);
-        } finally {
-            byteArrayInputStream2.close();
-            byteArrayInputStream3.close();
-            byteArrayInputStream4.close();
-        }
+    public static void G(byte[] r16, byte[] r17, FileOutputStream r18) {
+        ByteArrayInputStream r2 = new ByteArrayInputStream(r17);
+        DataInputStream r3 = new DataInputStream(r2);
+        byte[] r4 = new byte[8];
+        r3.read(r4);
+        if (new String(r4).equals("BSDIFF40") == false) goto L34;
+        int r5 = vr1.E(r3);
+        int r6 = vr1.E(r3);
+        int r7 = vr1.E(r3);
+        if (r5 < 0) goto L32;
+        if (r6 < 0) goto L30;
+        if (r7 < 0) goto L28;
+        r2.close();
+        ?? r8 = new ByteArrayInputStream(r17);
+        ?? r9 = new ByteArrayInputStream(r17);
+        ?? r10 = new ByteArrayInputStream(r17);
+        r8.skip(32);     // Catch: Throwable -> L18
+        int r11 = r5 + 32;     // Catch: Throwable -> L18
+        r9.skip(r11);     // Catch: Throwable -> L18
+        r10.skip(r11 + r6);     // Catch: Throwable -> L18
+        ?? r1 = new k90();     // Catch: Throwable -> L18
+        r8 = r1.a(r8);     // Catch: Throwable -> L18
+        r9 = r1.a(r9);     // Catch: Throwable -> L18
+        r10 = r1.a(r10);     // Catch: Throwable -> L18
+        byte[] r12 = new byte[r7];     // Catch: Throwable -> L18
+        int r13 = 0;
+        int r14 = 0;
+    L10:
+        if (r13 >= r7) goto L22;
+        int r15 = vr1.E(r8);     // Catch: Throwable -> L18
+        int r19 = vr1.E(r8);     // Catch: Throwable -> L18
+        int r110 = vr1.E(r8);     // Catch: Throwable -> L18
+        H(r9, r12, r13, r15);     // Catch: Throwable -> L18
+        int r111 = 0;
+    L12:
+        if (r111 >= r15) goto L21;
+        int r112 = r14 + r111;     // Catch: Throwable -> L18
+        if (r112 < 0) goto L20;
+        if (r112 >= r16.length) goto L20;
+        int r113 = r13 + r111;     // Catch: Throwable -> L18
+        r12[r113] = (byte) (r12[r113] + r16[r112]);     // Catch: Throwable -> L18
+    L20:
+        r111 = r111 + 1;     // Catch: Throwable -> L18
+        goto L12
+    L21:
+        int r20 = r13 + r15;     // Catch: Throwable -> L18
+        H(r10, r12, r20, r19);     // Catch: Throwable -> L18
+        r13 = r20 + r19;     // Catch: Throwable -> L18
+        r14 = (r14 + r15) + r110;     // Catch: Throwable -> L18
+        goto L10
+    L22:
+        r18.write(r12);     // Catch: Throwable -> L18
+        r8.close();
+        r9.close();
+        r10.close();
+        return;
+    L18:
+        th = move-exception;
+        r8.close();
+        r9.close();
+        r10.close();
+        throw th;
+    L28:
+        throw new InvalidHeaderException(r7, "output file length");
+    L30:
+        throw new InvalidHeaderException(r6, "diff block length");
+    L32:
+        throw new InvalidHeaderException(r5, "control block length");
+    L34:
+        throw new InvalidHeaderException("Header missing magic number");
     }
 
-    public static void H(i90 i90Var, byte[] bArr, int i2, int i3) throws IOException {
-        int i4;
-        if (i3 != 0 && (i4 = i90Var.read(bArr, i2, i3)) < i3) {
-            mj0.i(xa3.e(i3, i4, "Corrupt patch; bytes expected = ", " bytes read = "));
-        }
+    public static void H(i90 r0, byte[] r1, int r2, int r3) {
+        if (r3 == 0) goto L9;
+        int r4 = r0.read(r1, r2, r3);
+        if (r4 < r3) goto L7;
+        return;
+    L7:
+        mj0.i(xa3.e(r3, r4, "Corrupt patch; bytes expected = ", " bytes read = "));
+        return;
     }
 
-    public static final Object I(Object obj) {
-        return obj instanceof a70 ? kb4.o(((a70) obj).a) : obj;
+    public static final Object I(Object r1) {
+        if ((r1 instanceof a70) == true) goto L5;
+        return r1;
+    L5:
+        return kb4.o(((a70) r1).a);
     }
 
-    public static final void L(float[] fArr, Matrix matrix) {
-        matrix.getValues(fArr);
-        float f2 = fArr[0];
-        float f3 = fArr[1];
-        float f4 = fArr[2];
-        float f5 = fArr[3];
-        float f6 = fArr[4];
-        float f7 = fArr[5];
-        float f8 = fArr[6];
-        float f9 = fArr[7];
-        float f10 = fArr[8];
-        fArr[0] = f2;
-        fArr[1] = f5;
-        fArr[2] = 0.0f;
-        fArr[3] = f8;
-        fArr[4] = f3;
-        fArr[5] = f6;
-        fArr[6] = 0.0f;
-        fArr[7] = f9;
-        fArr[8] = 0.0f;
-        fArr[9] = 0.0f;
-        fArr[10] = 1.0f;
-        fArr[11] = 0.0f;
-        fArr[12] = f4;
-        fArr[13] = f7;
-        fArr[14] = 0.0f;
-        fArr[15] = f10;
+    public static final void L(float[] r19, Matrix r20) {
+        r20.getValues(r19);
+        float r2 = r19[0];
+        float r4 = r19[1];
+        float r6 = r19[2];
+        float r8 = r19[3];
+        float r10 = r19[4];
+        float r12 = r19[5];
+        float r14 = r19[6];
+        float r16 = r19[7];
+        float r18 = r19[8];
+        r19[0] = r2;
+        r19[1] = r8;
+        r19[2] = 0.0f;
+        r19[3] = r14;
+        r19[4] = r4;
+        r19[5] = r10;
+        r19[6] = 0.0f;
+        r19[7] = r16;
+        r19[8] = 0.0f;
+        r19[9] = 0.0f;
+        r19[10] = 1.0f;
+        r19[11] = 0.0f;
+        r19[12] = r6;
+        r19[13] = r12;
+        r19[14] = 0.0f;
+        r19[15] = r18;
     }
 
-    public static void M(h00 h00Var) throws ParserException {
-        int i2 = h00Var.i(6);
-        if (i2 < 2 || i2 > 42) {
-            throw ParserException.c(String.format("Invalid language tag bytes number: %d. Must be between 2 and 42.", Integer.valueOf(i2)));
-        }
-        h00Var.t(i2 * 8);
+    public static void M(h00 r2) {
+        int r0 = r2.i(6);
+        if (r0 < 2) goto L9;
+        if (r0 > 42) goto L9;
+        r2.t(r0 * 8);
+        return;
+    L9:
+        throw ParserException.c(String.format("Invalid language tag bytes number: %d. Must be between 2 and 42.", new Object[]{Integer.valueOf(r0)}));
     }
 
-    public static ArrayList N(Collection collection, eg1 eg1Var) {
-        ArrayList arrayList = new ArrayList(collection.size());
-        Iterator it = collection.iterator();
-        while (it.hasNext()) {
-            arrayList.add((Bundle) eg1Var.mo77apply(it.next()));
-        }
-        return arrayList;
+    public static ArrayList N(Collection r2, eg1 r3) {
+        ArrayList r0 = new ArrayList(r2.size());
+        Iterator r4 = r2.iterator();
+    L4:
+        if (r4.hasNext() == false) goto L6;
+        r0.add((Bundle) r3.mo77apply(r4.next()));
+        goto L4
+    L6:
+        return r0;
     }
 
-    public static p2 O(ic2 ic2Var, eg1 eg1Var) {
-        p2 p2Var = new p2();
-        ic2Var.getClass();
-        p2Var.u = ic2Var;
-        p2Var.v = eg1Var;
-        ic2Var.f(p2Var, gq0.n);
-        return p2Var;
+    public static p2 O(ic2 r1, eg1 r2) {
+        p2 r0 = new p2();
+        r1.getClass();
+        r0.u = r1;
+        r0.v = r2;
+        r1.f(r0, gq0.n);
+        return r0;
     }
 
-    public static AbstractList P(eg1 eg1Var, List list) {
-        return list instanceof RandomAccess ? new vc2(eg1Var, list) : new wc2(eg1Var, list);
+    public static AbstractList P(eg1 r1, List r2) {
+        if ((r2 instanceof RandomAccess) == false) goto L7;
+        return new vc2(r1, r2);
+    L7:
+        return new wc2(r1, r2);
     }
 
-    public static String S(String str, Object... objArr) {
-        int length;
-        int length2;
-        int iIndexOf;
-        String strH;
-        int i2 = 0;
-        int i3 = 0;
-        while (true) {
-            length = objArr.length;
-            if (i3 >= length) {
-                break;
-            }
-            Object obj = objArr[i3];
-            if (obj == null) {
-                strH = "null";
-            } else {
-                try {
-                    strH = obj.toString();
-                } catch (Exception e2) {
-                    String strO = b11.o(obj.getClass().getName(), "@", Integer.toHexString(System.identityHashCode(obj)));
-                    Logger.getLogger("com.google.common.base.Strings").logp(Level.WARNING, "com.google.common.base.Strings", "lenientToString", "Exception during lenientFormat for ".concat(strO), (Throwable) e2);
-                    strH = f34.h("<", strO, " threw ", e2.getClass().getName(), ">");
-                }
-            }
-            objArr[i3] = strH;
-            i3++;
-        }
-        StringBuilder sb = new StringBuilder(str.length() + (length * 16));
-        int i4 = 0;
-        while (true) {
-            length2 = objArr.length;
-            if (i2 >= length2 || (iIndexOf = str.indexOf("%s", i4)) == -1) {
-                break;
-            }
-            sb.append((CharSequence) str, i4, iIndexOf);
-            sb.append(objArr[i2]);
-            i2++;
-            i4 = iIndexOf + 2;
-        }
-        sb.append((CharSequence) str, i4, str.length());
-        if (i2 < length2) {
-            sb.append(" [");
-            sb.append(objArr[i2]);
-            for (int i5 = i2 + 1; i5 < objArr.length; i5++) {
-                sb.append(", ");
-                sb.append(objArr[i5]);
-            }
-            sb.append(']');
-        }
-        return sb.toString();
+    public static String S(String r10, Object... r11) {
+        int r1 = 0;
+        int r2 = 0;
+    L3:
+        int r0 = r11.length;
+        if (r2 >= r0) goto L13;
+        Object r3 = r11[r2];
+        if (r3 != null) goto L29;
+        String r4 = "null";
+    L12:
+        r11[r2] = r4;
+        r2 = r2 + 1;
+        goto L3
+    L29:
+        r4 = r3.toString();     // Catch: Exception -> L10
+    L10:
+        e = move-exception;
+        String r5 = b11.o(r3.getClass().getName(), "@", Integer.toHexString(System.identityHashCode(r3)));
+        Logger.getLogger("com.google.common.base.Strings").logp(Level.WARNING, "com.google.common.base.Strings", "lenientToString", "Exception during lenientFormat for ".concat(r5), e);
+        r4 = f34.h("<", r5, " threw ", e.getClass().getName(), ">");
+        goto L12
+    L13:
+        StringBuilder r6 = new StringBuilder(r10.length() + (r0 * 16));
+        int r7 = 0;
+    L14:
+        int r8 = r11.length;
+        if (r1 >= r8) goto L20;
+        int r9 = r10.indexOf("%s", r7);
+        if (r9 == (-1)) goto L20;
+        r6.append(r10, r7, r9);
+        r6.append(r11[r1]);
+        r1 = r1 + 1;
+        r7 = r9 + 2;
+    L20:
+        r6.append(r10, r7, r10.length());
+        if (r1 >= r8) goto L28;
+        r6.append(" [");
+        int r12 = r1 + 1;
+        r6.append(r11[r1]);
+    L24:
+        if (r12 >= r11.length) goto L26;
+        r6.append(", ");
+        r6.append(r11[r12]);
+        r12 = r12 + 1;
+        goto L24
+    L26:
+        r6.append(']');
+    L28:
+        return r6.toString();
     }
 
-    /* JADX WARN: Code duplicated, block: B:35:0x0063 A[LOOP:0: B:4:0x000d->B:35:0x0063, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:43:0x0066 A[EDGE_INSN: B:43:0x0066->B:36:0x0066 BREAK  A[LOOP:0: B:4:0x000d->B:35:0x0063], SYNTHETIC] */
-    public static final i94 a(c72 c72Var, boolean z) {
-        cx2 cx2Var = (cx2) c72Var.Q.g;
-        eo0 eo0Var = null;
-        if ((cx2Var.q & 8) != 0) {
-            loop0: while (cx2Var != null) {
-                if ((cx2Var.p & 8) == 0) {
-                    if ((cx2Var.q & 8) != 0) {
-                        break;
-                        break;
-                    }
-                    cx2Var = cx2Var.s;
-                } else {
-                    cx2 cx2VarC = cx2Var;
-                    f13 f13Var = null;
-                    while (cx2VarC != null) {
-                        if (cx2VarC instanceof g94) {
-                            eo0Var = cx2VarC;
-                            break loop0;
-                        }
-                        if ((cx2VarC.p & 8) != 0 && (cx2VarC instanceof fo0)) {
-                            int i2 = 0;
-                            for (cx2 cx2Var2 = ((fo0) cx2VarC).C; cx2Var2 != null; cx2Var2 = cx2Var2.s) {
-                                if ((cx2Var2.p & 8) != 0) {
-                                    i2++;
-                                    if (i2 == 1) {
-                                        cx2VarC = cx2Var2;
-                                    } else {
-                                        if (f13Var == null) {
-                                            f13Var = new f13(new cx2[16]);
-                                        }
-                                        if (cx2VarC != null) {
-                                            f13Var.b(cx2VarC);
-                                            cx2VarC = null;
-                                        }
-                                        f13Var.b(cx2Var2);
-                                    }
-                                }
-                            }
-                            if (i2 == 1) {
-                            }
-                        }
-                        cx2VarC = j51.c(f13Var);
-                    }
-                    if ((cx2Var.q & 8) != 0) {
-                        break;
-                    }
-                    cx2Var = cx2Var.s;
-                }
-            }
-        }
-        eo0Var.getClass();
-        cx2 cx2Var3 = ((cx2) ((g94) eo0Var)).n;
-        e94 e94VarV = c72Var.v();
-        if (e94VarV == null) {
-            e94VarV = new e94();
-        }
-        return new i94(cx2Var3, z, c72Var, e94VarV);
+    public static final i94 a(c72 r8, boolean r9) {
+        cx2 r0 = (cx2) r8.Q.g;
+        eo0 r2 = null;
+        if ((r0.q & 8) == 0) goto L36;
+    L4:
+        if (r0 == null) goto L36;
+        if ((r0.p & 8) == 0) goto L34;
+        cx2 r1 = r0;
+        f13 r3 = null;
+    L8:
+        if (r1 == null) goto L34;
+        if ((r1 instanceof g94) == true) goto L11;
+        if ((r1.p & 8) == 0) goto L32;
+        if ((r1 instanceof fo0) == false) goto L32;
+        cx2 r4 = ((fo0) r1).C;
+        int r5 = 0;
+    L18:
+        if (r4 == null) goto L30;
+        if ((r4.p & 8) == 0) goto L29;
+        r5 = r5 + 1;
+        if (r5 != 1) goto L24;
+        r1 = r4;
+        goto L29
+    L24:
+        if (r3 != null) goto L26;
+        r3 = new f13(new cx2[16]);
+    L26:
+        if (r1 == null) goto L28;
+        r3.b(r1);
+        r1 = null;
+    L28:
+        r3.b(r4);
+    L29:
+        r4 = r4.s;
+        goto L18
+    L30:
+        if (r5 == 1) goto L8;
+    L32:
+        r1 = j51.c(r3);
+        goto L8
+    L11:
+        r2 = r1;
+    L34:
+        if ((r0.q & 8) == 0) goto L36;
+        r0 = r0.s;
+    L36:
+        r2.getClass();
+        cx2 r6 = ((cx2) ((g94) r2)).n;
+        e94 r7 = r8.v();
+        if (r7 != null) goto L40;
+        r7 = new e94();
+    L40:
+        return new i94(r6, r9, r8, r7);
     }
 
-    public static void b(ic2 ic2Var, kg1 kg1Var, Executor executor) {
-        ic2Var.f(new lg1(0, ic2Var, kg1Var), executor);
+    public static void b(ic2 r2, kg1 r3, Executor r4) {
+        r2.f(new lg1(0, r2, r3), r4);
     }
 
-    public static void c(Activity activity) {
-        activity.getClass();
-        WebView webView = g;
-        if (webView == null) {
-            return;
-        }
-        boolean z = (activity.getResources().getConfiguration().uiMode & 48) != 32;
-        int iS = g12.s(activity, R.attr.colorSurface, -16777216);
-        webView.setBackgroundColor(iS);
-        webView.evaluateJavascript("window.hmApplyTheme && window.hmApplyTheme(" + z + ", '" + String.format("#%06X", Arrays.copyOf(new Object[]{Integer.valueOf(iS & 16777215)}, 1)) + "');", null);
+    public static void c(Activity r5) {
+        r5.getClass();
+        WebView r0 = g;
+        if (r0 != null) goto L6;
+        return;
+    L6:
+        if ((r5.getResources().getConfiguration().uiMode & 48) == 32) goto L8;
+        boolean r1 = true;
+    L9:
+        int r6 = g12.s(r5, R.attr.colorSurface, -16777216);
+        r0.setBackgroundColor(r6);
+        r0.evaluateJavascript("window.hmApplyTheme && window.hmApplyTheme(" + r1 + ", '" + String.format("#%06X", Arrays.copyOf(new Object[]{Integer.valueOf(r6 & 16777215)}, 1)) + "');", null);
+        return;
+    L8:
+        r1 = false;
+        goto L9
     }
 
-    public static gy3 f(eg1 eg1Var, List list) {
-        uw1 uw1VarJ = yw1.j();
-        for (int i2 = 0; i2 < list.size(); i2++) {
-            Bundle bundle = (Bundle) list.get(i2);
-            bundle.getClass();
-            uw1VarJ.c(eg1Var.mo77apply(bundle));
-        }
-        return uw1VarJ.f();
+    public static gy3 f(eg1 r3, List r4) {
+        uw1 r0 = yw1.j();
+        int r1 = 0;
+    L4:
+        if (r1 >= r4.size()) goto L7;
+        Bundle r2 = (Bundle) r4.get(r1);
+        r2.getClass();
+        r0.c(r3.mo77apply(r2));
+        r1 = r1 + 1;
+        goto L4
+    L7:
+        return r0.f();
     }
 
-    public static void g(int i2, be3 be3Var) {
-        be3Var.K(7);
-        byte[] bArr = be3Var.a;
-        bArr[0] = -84;
-        bArr[1] = 64;
-        bArr[2] = -1;
-        bArr[3] = -1;
-        bArr[4] = (byte) ((i2 >> 16) & 255);
-        bArr[5] = (byte) ((i2 >> 8) & 255);
-        bArr[6] = (byte) (i2 & 255);
+    public static void g(int r2, be3 r3) {
+        r3.K(7);
+        byte[] r4 = r3.a;
+        r4[0] = -84;
+        r4[1] = 64;
+        r4[2] = -1;
+        r4[3] = -1;
+        r4[4] = (byte) ((r2 >> 16) & 255);
+        r4[5] = (byte) ((r2 >> 8) & 255);
+        r4[6] = (byte) (r2 & 255);
     }
 
-    public static Object j(Future future) {
-        Object obj;
-        if (!future.isDone()) {
-            kf2.o(gh0.s("Future was expected to be done: %s", future));
-            return null;
-        }
-        boolean z = false;
-        while (true) {
-            try {
-                obj = future.get();
-                break;
-            } catch (InterruptedException unused) {
-                z = true;
-            } catch (Throwable th) {
-                if (z) {
-                    Thread.currentThread().interrupt();
-                }
-                throw th;
-            }
-        }
-        if (z) {
-            Thread.currentThread().interrupt();
-        }
-        return obj;
-    }
-
-    public static Object l(String str, Bundle bundle) {
-        if (Build.VERSION.SDK_INT >= 34) {
-            return q3.b(str, bundle);
-        }
-        Parcelable parcelable = bundle.getParcelable(str);
-        if (o5.class.isInstance(parcelable)) {
-            return parcelable;
-        }
+    public static Object j(Future r1) {
+        if (r1.isDone() == false) goto L14;
+        boolean r0 = false;
+    L16:
+        Object r2 = r1.get();     // Catch: Throwable -> L9 InterruptedException -> L13
+    L6:
+        if (r0 == false) goto L8;
+        Thread.currentThread().interrupt();
+    L8:
+        return r2;
+    L13:
+        r0 = true;
+    L9:
+        th = move-exception;
+        if (r0 == false) goto L12;
+        Thread.currentThread().interrupt();
+    L12:
+        throw th;
+    L14:
+        kf2.o(gh0.s("Future was expected to be done: %s", new Object[]{r1}));
         return null;
     }
 
-    public static final int n(KeyEvent keyEvent) {
-        int action = keyEvent.getAction();
-        if (action != 0) {
-            return action != 1 ? 0 : 1;
-        }
+    public static Object l(String r2, Bundle r3) {
+        if (Build.VERSION.SDK_INT >= 34) goto L5;
+        Parcelable r4 = r3.getParcelable(r2);
+        if (o5.class.isInstance(r4) == false) goto L9;
+        return r4;
+    L9:
+        return null;
+    L5:
+        return q3.b(r2, r3);
+    }
+
+    public static final int n(KeyEvent r1) {
+        int r2 = r1.getAction();
+        if (r2 != 0) goto L5;
         return 2;
+    L5:
+        if (r2 == 1) goto L8;
+        return 0;
+    L8:
+        return 1;
     }
 
-    public static String q(long j) {
-        return a35.b("yMMMd", Locale.getDefault()).format(new Date(j));
+    public static String q(long r2) {
+        return a35.b("yMMMd", Locale.getDefault()).format(new Date(r2));
     }
 
-    public static boolean s(Uri uri) {
-        return uri != null && "content".equals(uri.getScheme()) && "media".equals(uri.getAuthority());
+    public static boolean s(Uri r2) {
+        if (r2 != null) goto L4;
+        return false;
+    L4:
+        if ("content".equals(r2.getScheme()) == true) goto L6;
+        return false;
+    L6:
+        if ("media".equals(r2.getAuthority()) == false) goto L12;
+        return true;
+    L12:
+        return false;
     }
 
     public static boolean t() {
-        Network activeNetwork;
-        NetworkCapabilities networkCapabilities;
-        ConnectivityManager connectivityManager = (ConnectivityManager) App.a().getSystemService("connectivity");
-        return connectivityManager == null || (activeNetwork = connectivityManager.getActiveNetwork()) == null || (networkCapabilities = connectivityManager.getNetworkCapabilities(activeNetwork)) == null || !networkCapabilities.hasCapability(12) || !networkCapabilities.hasCapability(16);
+        ConnectivityManager r0 = (ConnectivityManager) App.a().getSystemService("connectivity");
+        if (r0 == null) goto L15;
+        Network r2 = r0.getActiveNetwork();
+        if (r2 == null) goto L15;
+        NetworkCapabilities r1 = r0.getNetworkCapabilities(r2);
+        if (r1 == null) goto L15;
+        if (r1.hasCapability(12) == false) goto L15;
+        if (r1.hasCapability(16) == false) goto L15;
+        return false;
+    L15:
+        return true;
     }
 
-    public abstract void A(View view, int i2, int i3);
+    public abstract void A(View r1, int r2, int r3);
 
-    public abstract void B(View view, float f2, float f3);
+    public abstract void B(View r1, float r2, float r3);
 
-    public abstract void J(boolean z);
+    public abstract void J(boolean r1);
 
-    public abstract void K(boolean z);
+    public abstract void K(boolean r1);
 
-    public abstract boolean Q(View view, int i2);
+    public abstract boolean Q(View r1, int r2);
 
-    public abstract TransformationMethod R(TransformationMethod transformationMethod);
+    public abstract TransformationMethod R(TransformationMethod r1);
 
-    public abstract int d(View view, int i2);
+    public abstract int d(View r1, int r2);
 
-    public abstract int e(View view, int i2);
+    public abstract int e(View r1, int r2);
 
-    public abstract Method h(Class cls, Field field);
+    public abstract Method h(Class r1, Field r2);
 
-    public abstract Constructor i(Class cls);
+    public abstract Constructor i(Class r1);
 
-    public abstract InputFilter[] k(InputFilter[] inputFilterArr);
+    public abstract InputFilter[] k(InputFilter[] r1);
 
-    public abstract String[] m(Class cls);
+    public abstract String[] m(Class r1);
 
-    public int o(View view) {
+    public int o(View r1) {
         return 0;
     }
 
@@ -609,9 +682,9 @@ public abstract class hw {
 
     public abstract boolean r();
 
-    public abstract boolean u(Class cls);
+    public abstract boolean u(Class r1);
 
-    public void v(int i2, int i3) {
+    public void v(int r1, int r2) {
     }
 
     public void w() {
@@ -619,8 +692,8 @@ public abstract class hw {
 
     public abstract Rect x();
 
-    public void y(View view, int i2) {
+    public void y(View r1, int r2) {
     }
 
-    public abstract void z(int i2);
+    public abstract void z(int r1);
 }

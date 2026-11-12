@@ -17,6 +17,9 @@ public final class HubAuthOptions {
     @ka4("music_url")
     private String musicUrl;
 
+    public HubAuthOptions() {
+    }
+
     public final boolean getEmailSignup() {
         return this.emailSignup;
     }
@@ -33,19 +36,19 @@ public final class HubAuthOptions {
         return this.musicUrl;
     }
 
-    public final void setEmailSignup(boolean z) {
-        this.emailSignup = z;
+    public final void setEmailSignup(boolean r1) {
+        this.emailSignup = r1;
     }
 
-    public final void setGoogleClientId(String str) {
-        this.googleClientId = str;
+    public final void setGoogleClientId(String r1) {
+        this.googleClientId = r1;
     }
 
-    public final void setInvites(boolean z) {
-        this.invites = z;
+    public final void setInvites(boolean r1) {
+        this.invites = r1;
     }
 
-    public final void setMusicUrl(String str) {
-        this.musicUrl = str;
+    public final void setMusicUrl(String r1) {
+        this.musicUrl = r1;
     }
 }

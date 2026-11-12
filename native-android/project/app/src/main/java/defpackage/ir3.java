@@ -4,16 +4,16 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class ir3 extends bc1 {
     @Override // defpackage.bc1, defpackage.cu4
-    public final zt4 f(int i, zt4 zt4Var, boolean z) {
-        super.f(i, zt4Var, z);
-        zt4Var.f = true;
-        return zt4Var;
+    public final zt4 f(int r1, zt4 r2, boolean r3) {
+        super.f(r1, r2, r3);
+        r2.f = true;
+        return r2;
     }
 
     @Override // defpackage.bc1, defpackage.cu4
-    public final bu4 m(int i, bu4 bu4Var, long j) {
-        super.m(i, bu4Var, j);
-        bu4Var.j = true;
-        return bu4Var;
+    public final bu4 m(int r1, bu4 r2, long r3) {
+        super.m(r1, r2, r3);
+        r2.j = true;
+        return r2;
     }
 }

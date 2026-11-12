@@ -12,278 +12,269 @@ import java.util.regex.Pattern;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class nn4 implements zn4 {
-    public static final Pattern q = Pattern.compile("\\s*((?:(\\d+):)?(\\d+):(\\d+)(?:,(\\d{3}))?)\\s*-->\\s*((?:(\\d+):)?(\\d+):(\\d+)(?:,(\\d{3}))?)\\s*");
-    public static final Pattern r = Pattern.compile("\\{\\\\.*?\\}");
-    public final StringBuilder n = new StringBuilder();
-    public final ArrayList o = new ArrayList();
-    public final be3 p = new be3();
+    public static final Pattern q = null;
+    public static final Pattern r = null;
+    public final StringBuilder n;
+    public final ArrayList o;
+    public final be3 p;
 
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    /* JADX WARN: Code duplicated, block: B:25:0x0070  */
-    /* JADX WARN: Code duplicated, block: B:29:0x007d  */
-    /* JADX WARN: Code duplicated, block: B:30:0x007f  */
-    /* JADX WARN: Code duplicated, block: B:42:0x009c  */
-    /* JADX WARN: Code duplicated, block: B:54:0x00c1  */
-    /* JADX WARN: Code duplicated, block: B:55:0x00c3  */
-    public static ig0 a(Spanned spanned, String str) {
-        int i;
-        int i2;
-        float f;
-        if (str == null) {
-            return new ig0(spanned, null, null, null, -3.4028235E38f, Integer.MIN_VALUE, Integer.MIN_VALUE, -3.4028235E38f, Integer.MIN_VALUE, Integer.MIN_VALUE, -3.4028235E38f, -3.4028235E38f, -3.4028235E38f, false, -16777216, Integer.MIN_VALUE, 0.0f, 0);
-        }
-        switch (str.hashCode()) {
-            case -685620710:
-                if (!str.equals("{\\an1}")) {
-                    i = 1;
-                } else {
-                    i = 0;
-                }
-                break;
-            case -685620679:
-                str.equals("{\\an2}");
-                i = 1;
-                break;
-            case -685620648:
-                if (!str.equals("{\\an3}")) {
-                    i = 1;
-                } else {
-                    i = 2;
-                }
-                break;
-            case -685620617:
-                if (!str.equals("{\\an4}")) {
-                    i = 1;
-                } else {
-                    i = 0;
-                }
-                break;
-            case -685620586:
-                str.equals("{\\an5}");
-                i = 1;
-                break;
-            case -685620555:
-                if (!str.equals("{\\an6}")) {
-                    i = 1;
-                } else {
-                    i = 2;
-                }
-                break;
-            case -685620524:
-                if (!str.equals("{\\an7}")) {
-                    i = 1;
-                } else {
-                    i = 0;
-                }
-                break;
-            case -685620493:
-                str.equals("{\\an8}");
-                i = 1;
-                break;
-            case -685620462:
-                if (!str.equals("{\\an9}")) {
-                    i = 1;
-                } else {
-                    i = 2;
-                }
-                break;
-            default:
-                i = 1;
-                break;
-        }
-        switch (str.hashCode()) {
-            case -685620710:
-                if (!str.equals("{\\an1}")) {
-                    i2 = 1;
-                } else {
-                    i2 = 2;
-                }
-                break;
-            case -685620679:
-                if (!str.equals("{\\an2}")) {
-                    i2 = 1;
-                } else {
-                    i2 = 2;
-                }
-                break;
-            case -685620648:
-                if (!str.equals("{\\an3}")) {
-                    i2 = 1;
-                } else {
-                    i2 = 2;
-                }
-                break;
-            case -685620617:
-                str.equals("{\\an4}");
-                i2 = 1;
-                break;
-            case -685620586:
-                str.equals("{\\an5}");
-                i2 = 1;
-                break;
-            case -685620555:
-                str.equals("{\\an6}");
-                i2 = 1;
-                break;
-            case -685620524:
-                if (!str.equals("{\\an7}")) {
-                    i2 = 1;
-                } else {
-                    i2 = 0;
-                }
-                break;
-            case -685620493:
-                if (!str.equals("{\\an8}")) {
-                    i2 = 1;
-                } else {
-                    i2 = 0;
-                }
-                break;
-            case -685620462:
-                if (!str.equals("{\\an9}")) {
-                    i2 = 1;
-                } else {
-                    i2 = 0;
-                }
-                break;
-            default:
-                i2 = 1;
-                break;
-        }
-        float f2 = 0.92f;
-        if (i == 0) {
-            f = 0.08f;
-        } else if (i == 1) {
-            f = 0.5f;
-        } else {
-            if (i != 2) {
-                nz2.c();
-                return null;
-            }
-            f = 0.92f;
-        }
-        if (i2 == 0) {
-            f2 = 0.08f;
-        } else if (i2 == 1) {
-            f2 = 0.5f;
-        } else if (i2 != 2) {
-            nz2.c();
-            return null;
-        }
-        return new ig0(spanned, null, null, null, f2, 0, i2, f, i, Integer.MIN_VALUE, -3.4028235E38f, -3.4028235E38f, -3.4028235E38f, false, -16777216, Integer.MIN_VALUE, 0.0f, 0);
+    static {
+        q = Pattern.compile("\\s*((?:(\\d+):)?(\\d+):(\\d+)(?:,(\\d{3}))?)\\s*-->\\s*((?:(\\d+):)?(\\d+):(\\d+)(?:,(\\d{3}))?)\\s*");
+        r = Pattern.compile("\\{\\\\.*?\\}");
     }
 
-    public static long d(Matcher matcher, int i) {
-        String strGroup = matcher.group(i + 1);
-        long j = strGroup != null ? Long.parseLong(strGroup) * 3600000 : 0L;
-        String strGroup2 = matcher.group(i + 2);
-        strGroup2.getClass();
-        long j2 = (Long.parseLong(strGroup2) * 60000) + j;
-        String strGroup3 = matcher.group(i + 3);
-        strGroup3.getClass();
-        long j3 = (Long.parseLong(strGroup3) * 1000) + j2;
-        String strGroup4 = matcher.group(i + 4);
-        if (strGroup4 != null) {
-            j3 += Long.parseLong(strGroup4);
-        }
-        return j3 * 1000;
+    public nn4() {
+        this.n = new StringBuilder();
+        this.o = new ArrayList();
+        this.p = new be3();
+    }
+
+    public static ig0 a(Spanned r21, String r22) {
+        if (r22 != null) goto L7;
+        return new ig0(r21, null, null, null, -3.4028235E38f, Integer.MIN_VALUE, Integer.MIN_VALUE, -3.4028235E38f, Integer.MIN_VALUE, Integer.MIN_VALUE, -3.4028235E38f, -3.4028235E38f, -3.4028235E38f, false, -16777216, Integer.MIN_VALUE, 0.0f, 0);
+    L7:
+        switch(r22.hashCode()) {
+            case -685620710: goto L28;
+            case -685620679: goto L26;
+            case -685620648: goto L24;
+            case -685620617: goto L21;
+            case -685620586: goto L19;
+            case -685620555: goto L17;
+            case -685620524: goto L14;
+            case -685620493: goto L12;
+            case -685620462: goto L10;
+            default: goto L30;
+        };
+    L12:
+        r22.equals("{\\an8}");
+        goto L30
+    L19:
+        r22.equals("{\\an5}");
+        goto L30
+    L26:
+        r22.equals("{\\an2}");
+    L30:
+        int r1 = 1;
+    L32:
+        switch(r22.hashCode()) {
+            case -685620710: goto L53;
+            case -685620679: goto L50;
+            case -685620648: goto L47;
+            case -685620617: goto L45;
+            case -685620586: goto L44;
+            case -685620555: goto L43;
+            case -685620524: goto L41;
+            case -685620493: goto L38;
+            case -685620462: goto L35;
+            default: goto L55;
+        };
+    L43:
+        r22.equals("{\\an6}");
+        goto L55
+    L44:
+        r22.equals("{\\an5}");
+        goto L55
+    L45:
+        r22.equals("{\\an4}");
+    L55:
+        int r3 = 1;
+    L56:
+        float r5 = 0.92f;
+        if (r1 == 0) goto L64;
+        if (r1 == 1) goto L63;
+        if (r1 != 2) goto L61;
+        float r9 = 0.92f;
+    L65:
+        if (r3 == 0) goto L72;
+        if (r3 == 1) goto L71;
+        if (r3 == 2) goto L74;
+        nz2.c();
+        return null;
+    L74:
+        return new ig0(r21, null, null, null, r5, 0, r3, r9, r1, Integer.MIN_VALUE, -3.4028235E38f, -3.4028235E38f, -3.4028235E38f, false, -16777216, Integer.MIN_VALUE, 0.0f, 0);
+    L71:
+        r5 = 0.5f;
+        goto L74
+    L72:
+        r5 = 0.08f;
+        goto L74
+    L61:
+        nz2.c();
+        return null;
+    L63:
+        r9 = 0.5f;
+        goto L65
+    L64:
+        r9 = 0.08f;
+        goto L65
+    L35:
+        if (r22.equals("{\\an9}") == false) goto L55;
+    L42:
+        r3 = 0;
+        goto L56
+    L38:
+        if (r22.equals("{\\an8}") == false) goto L55;
+    L41:
+        if (r22.equals("{\\an7}") == false) goto L55;
+    L47:
+        if (r22.equals("{\\an3}") == false) goto L55;
+    L54:
+        r3 = 2;
+        goto L56
+    L50:
+        if (r22.equals("{\\an2}") == false) goto L55;
+    L53:
+        if (r22.equals("{\\an1}") == false) goto L55;
+    L10:
+        if (r22.equals("{\\an9}") == false) goto L30;
+    L25:
+        r1 = 2;
+        goto L32
+    L14:
+        if (r22.equals("{\\an7}") == false) goto L30;
+    L29:
+        r1 = 0;
+        goto L32
+    L17:
+        if (r22.equals("{\\an6}") == false) goto L30;
+    L21:
+        if (r22.equals("{\\an4}") == false) goto L30;
+    L24:
+        if (r22.equals("{\\an3}") == false) goto L30;
+    L28:
+        if (r22.equals("{\\an1}") == false) goto L30;
+        goto L29
+    }
+
+    public static long d(Matcher r6, int r7) {
+        String r0 = r6.group(r7 + 1);
+        if (r0 == null) goto L5;
+        long r1 = Long.parseLong(r0) * 3600000;
+    L6:
+        String r2 = r6.group(r7 + 2);
+        r2.getClass();
+        long r3 = (Long.parseLong(r2) * 60000) + r1;
+        String r4 = r6.group(r7 + 3);
+        r4.getClass();
+        long r5 = (Long.parseLong(r4) * 1000) + r3;
+        String r8 = r6.group(r7 + 4);
+        if (r8 == null) goto L10;
+        r5 = r5 + Long.parseLong(r8);
+    L10:
+        return r5 * 1000;
+    L5:
+        r1 = 0;
+        goto L6
     }
 
     @Override // defpackage.zn4
-    public final void c(byte[] bArr, int i, int i2, yn4 yn4Var, wc0 wc0Var) {
-        String str;
-        nn4 nn4Var = this;
-        long j = yn4Var.b;
-        be3 be3Var = nn4Var.p;
-        be3Var.L(i + i2, bArr);
-        be3Var.N(i);
-        Charset charsetJ = be3Var.J();
-        if (charsetJ == null) {
-            charsetJ = StandardCharsets.UTF_8;
-        }
-        long j2 = -9223372036854775807L;
-        ArrayList arrayList = (j == -9223372036854775807L || !yn4Var.a) ? null : new ArrayList();
-        while (true) {
-            String strN = be3Var.n(charsetJ);
-            if (strN == null) {
-                break;
-            }
-            if (!strN.isEmpty()) {
-                try {
-                    Integer.parseInt(strN);
-                    String strN2 = be3Var.n(charsetJ);
-                    if (strN2 == null) {
-                        l93.q0("SubripParser", "Unexpected end");
-                        break;
-                    }
-                    Matcher matcher = q.matcher(strN2);
-                    if (matcher.matches()) {
-                        long jD = d(matcher, 1);
-                        long jD2 = d(matcher, 6);
-                        StringBuilder sb = nn4Var.n;
-                        sb.setLength(0);
-                        long j3 = j2;
-                        ArrayList arrayList2 = nn4Var.o;
-                        arrayList2.clear();
-                        for (String strN3 = be3Var.n(charsetJ); !TextUtils.isEmpty(strN3); strN3 = be3Var.n(charsetJ)) {
-                            if (sb.length() > 0) {
-                                sb.append("<br>");
-                            }
-                            String strTrim = strN3.trim();
-                            StringBuilder sb2 = new StringBuilder(strTrim);
-                            Matcher matcher2 = r.matcher(strTrim);
-                            int i3 = 0;
-                            while (matcher2.find()) {
-                                String strGroup = matcher2.group();
-                                arrayList2.add(strGroup);
-                                int iStart = matcher2.start() - i3;
-                                int length = strGroup.length();
-                                sb2.replace(iStart, iStart + length, "");
-                                i3 += length;
-                                j = j;
-                            }
-                            sb.append(sb2.toString());
-                        }
-                        long j4 = j;
-                        Spanned spannedFromHtml = Html.fromHtml(sb.toString());
-                        int i4 = 0;
-                        while (true) {
-                            if (i4 >= arrayList2.size()) {
-                                str = null;
-                                break;
-                            }
-                            str = (String) arrayList2.get(i4);
-                            if (str.matches("\\{\\\\an[1-9]\\}")) {
-                                break;
-                            } else {
-                                i4++;
-                            }
-                        }
-                        if (j4 == j3 || jD2 >= j4) {
-                            wc0Var.accept(new lg0(jD, jD2 - jD, yw1.o(a(spannedFromHtml, str))));
-                        } else if (arrayList != null) {
-                            arrayList.add(new lg0(jD, jD2 - jD, yw1.o(a(spannedFromHtml, str))));
-                        }
-                        nn4Var = this;
-                        j2 = j3;
-                        j = j4;
-                    } else {
-                        l93.q0("SubripParser", "Skipping invalid timing: ".concat(strN2));
-                        nn4Var = this;
-                    }
-                } catch (NumberFormatException unused) {
-                    l93.q0("SubripParser", "Skipping invalid index: ".concat(strN));
-                }
-            }
-        }
-        if (arrayList != null) {
-            int size = arrayList.size();
-            int i5 = 0;
-            while (i5 < size) {
-                Object obj = arrayList.get(i5);
-                i5++;
-                wc0Var.accept((lg0) obj);
-            }
-        }
+    public final void c(byte[] r23, int r24, int r25, yn4 r26, wc0 r27) {
+        nn4 r0 = this;
+        long r4 = r26.b;
+        be3 r8 = r0.p;
+        r8.L(r24 + r25, r23);
+        r8.N(r24);
+        Charset r1 = r8.J();
+        if (r1 != null) goto L6;
+        r1 = StandardCharsets.UTF_8;
+    L6:
+        long r9 = -9223372036854775807L;
+        if (r4 != (-9223372036854775807L)) goto L9;
+    L11:
+        ArrayList r2 = null;
+    L12:
+        String r7 = r8.n(r1);
+        if (r7 == null) goto L54;
+        if (r7.isEmpty() == true) goto L12;
+        Integer.parseInt(r7);     // Catch: NumberFormatException -> L53
+        String r10 = r8.n(r1);
+        if (r10 == null) goto L20;
+        Matcher r13 = q.matcher(r10);
+        if (r13.matches() == true) goto L23;
+        l93.q0("SubripParser", "Skipping invalid timing: ".concat(r10));
+    L52:
+        r0 = this;
+        goto L12
+    L23:
+        long r15 = d(r13, 1);
+        long r14 = d(r13, 6);
+        StringBuilder r11 = r0.n;
+        r11.setLength(0);
+        long r28 = r9;
+        ArrayList r12 = r0.o;
+        r12.clear();
+        String r16 = r8.n(r1);
+    L25:
+        if (TextUtils.isEmpty(r16) == true) goto L34;
+        if (r11.length() <= 0) goto L29;
+        r11.append("<br>");
+    L29:
+        String r17 = r16.trim();
+        StringBuilder r18 = new StringBuilder(r17);
+        Matcher r19 = r.matcher(r17);
+        int r110 = 0;
+    L31:
+        if (r19.find() == false) goto L33;
+        String r3 = r19.group();
+        r12.add(r3);
+        int r5 = r19.start() - r110;
+        int r111 = r3.length();
+        long r20 = r4;
+        r18.replace(r5, r5 + r111, "");
+        r110 = r110 + r111;
+        r4 = r20;
+        goto L31
+    L33:
+        r11.append(r18.toString());
+        r16 = r8.n(r1);
+        goto L25
+    L34:
+        long r21 = r4;
+        Spanned r6 = Html.fromHtml(r11.toString());
+        int r112 = 0;
+    L36:
+        if (r112 >= r12.size()) goto L41;
+        String r22 = (String) r12.get(r112);
+        if (r22.matches("\\{\\\\an[1-9]\\}") == true) goto L43;
+        r112 = r112 + 1;
+    L43:
+        if (r21 == r28) goto L49;
+        if (r14 >= r21) goto L49;
+        if (r2 == null) goto L50;
+        long r113 = r14 - r15;
+        r2.add(new lg0(r15, r113, yw1.o(a(r6, r22))));
+    L50:
+        r0 = this;
+        r9 = r28;
+        r4 = r21;
+    L49:
+        long r114 = r14 - r15;
+        r27.accept(new lg0(r15, r114, yw1.o(a(r6, r22))));
+        goto L50
+    L41:
+        r22 = null;
+        goto L43
+    L20:
+        l93.q0("SubripParser", "Unexpected end");
+    L53:
+        l93.q0("SubripParser", "Skipping invalid index: ".concat(r7));
+    L54:
+        if (r2 == null) goto L58;
+        int r29 = r2.size();
+        int r115 = 0;
+    L56:
+        if (r115 >= r29) goto L75;
+        Object r30 = r2.get(r115);
+        r115 = r115 + 1;
+        r27.accept((lg0) r30);
+        goto L56
+    L75:
+        return;
+    L58:
+        return;
+    L9:
+        if (r26.a == false) goto L11;
+        r2 = new ArrayList();
+        goto L12
     }
 }

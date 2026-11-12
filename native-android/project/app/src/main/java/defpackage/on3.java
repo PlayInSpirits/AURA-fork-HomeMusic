@@ -24,54 +24,65 @@ public final class on3 {
     public boolean p;
     public on3 q;
 
-    public on3(long j, long j2, long j3, boolean z, float f, long j4, long j5, boolean z2, boolean z3, int i, long j6, float f2, long j7) {
-        this.a = j;
-        this.b = j2;
-        this.c = j3;
-        this.d = z;
-        this.e = f;
-        this.f = j4;
-        this.g = j5;
-        this.h = z2;
-        this.i = i;
-        this.j = j6;
-        this.k = f2;
-        this.l = j7;
-        this.n = 0L;
-        this.o = z3;
-        this.p = z3;
+    public on3(long r1, long r3, long r5, boolean r7, float r8, long r9, long r11, boolean r13, boolean r14, int r15, long r16, float r18, long r19) {
+        this.a = r1;
+        this.b = r3;
+        this.c = r5;
+        this.d = r7;
+        this.e = r8;
+        this.f = r9;
+        this.g = r11;
+        this.h = r13;
+        this.i = r15;
+        this.j = r16;
+        this.k = r18;
+        this.l = r19;
+        this.n = 0;
+        this.o = r14;
+        this.p = r14;
     }
 
     public final void a() {
-        on3 on3Var = this.q;
-        if (on3Var == null) {
-            this.o = true;
-            this.p = true;
-        } else if (on3Var != null) {
-            on3Var.a();
-        }
+        on3 r0 = this.q;
+        if (r0 != null) goto L6;
+        this.o = true;
+        this.p = true;
+        return;
+    L6:
+        if (r0 == null) goto L9;
+        r0.a();
+        return;
     }
 
     public final List b() {
-        ArrayList arrayList = this.m;
-        return arrayList == null ? u01.n : arrayList;
+        ArrayList r0 = this.m;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        return u01.n;
     }
 
     public final boolean c() {
-        on3 on3Var = this.q;
-        if (on3Var != null) {
-            return on3Var.c();
-        }
-        return this.o || this.p;
+        on3 r0 = this.q;
+        if (r0 == null) goto L7;
+        return r0.c();
+    L7:
+        if (this.o == false) goto L9;
+        return true;
+    L9:
+        if (this.p == true) goto L15;
+        return false;
+    L15:
+        return true;
     }
 
     public final String toString() {
         return "PointerInputChange(id=" + vr1.H(this.a) + ", uptimeMillis=" + this.b + ", position=" + g83.g(this.c) + ", pressed=" + this.d + ", pressure=" + this.e + ", previousUptimeMillis=" + this.f + ", previousPosition=" + g83.g(this.g) + ", previousPressed=" + this.h + ", isConsumed=" + c() + ", type=" + un3.a(this.i) + ", historical=" + b() + ", scrollDelta=" + g83.g(this.j) + ", scaleFactor=" + this.k + ", panOffset=" + g83.g(this.l) + ")";
     }
 
-    public on3(long j, long j2, long j3, boolean z, float f, long j4, long j5, boolean z2, int i, ArrayList arrayList, long j6, float f2, long j7, long j8) {
-        this(j, j2, j3, z, f, j4, j5, z2, false, i, j6, f2, j7);
-        this.m = arrayList;
-        this.n = j8;
+    public on3(long r22, long r24, long r26, boolean r28, float r29, long r30, long r32, boolean r34, int r35, ArrayList r36, long r37, float r39, long r40, long r42) {
+        this(r22, r24, r26, r28, r29, r30, r32, r34, false, r35, r37, r39, r40);
+        this.m = r36;
+        this.n = r42;
     }
 }

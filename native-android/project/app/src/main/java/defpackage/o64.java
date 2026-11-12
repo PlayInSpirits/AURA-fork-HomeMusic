@@ -8,11 +8,11 @@ import androidx.core.widget.NestedScrollView;
 public final class o64 {
     public final n64 a;
 
-    public o64(NestedScrollView nestedScrollView) {
-        if (Build.VERSION.SDK_INT >= 35) {
-            this.a = new m64(nestedScrollView);
-        } else {
-            this.a = new hh3(23);
-        }
+    public o64(NestedScrollView r3) {
+        if (Build.VERSION.SDK_INT < 35) goto L6;
+        this.a = new m64(r3);
+        return;
+    L6:
+        this.a = new hh3(23);
     }
 }

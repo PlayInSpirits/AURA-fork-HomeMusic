@@ -6,24 +6,32 @@ public final class o40 {
     public final int a;
     public final int b;
 
-    public o40(int i, int i2) {
-        this.a = i;
-        this.b = i2;
+    public o40(int r1, int r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof o40)) {
-            return false;
-        }
-        o40 o40Var = (o40) obj;
-        return this.a == o40Var.a && this.b == o40Var.b;
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if ((r5 instanceof o40) == true) goto L8;
+        return false;
+    L8:
+        o40 r6 = (o40) r5;
+        int r1 = r6.a;
+        if (this.a == r1) goto L12;
+        return false;
+    L12:
+        if (this.b == r6.b) goto L14;
+        return false;
+    L14:
+        return true;
     }
 
     public final int hashCode() {
-        return Integer.hashCode(this.b) + (Integer.hashCode(this.a) * 31);
+        int r0 = Integer.hashCode(this.a) * 31;
+        return Integer.hashCode(this.b) + r0;
     }
 
     public final String toString() {

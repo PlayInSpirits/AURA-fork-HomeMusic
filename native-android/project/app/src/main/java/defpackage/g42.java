@@ -3,21 +3,21 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class g42 {
-    public static final long a;
-    public static final long b;
-    public static final long c;
-    public static final long d;
-    public static final long e;
-    public static final long f;
-    public static final long g;
-    public static final long h;
-    public static final long i;
-    public static final long j;
-    public static final long k;
-    public static final long l;
-    public static final long m;
-    public static final long n;
-    public static final long o;
+    public static final long a = 0;
+    public static final long b = 0;
+    public static final long c = 0;
+    public static final long d = 0;
+    public static final long e = 0;
+    public static final long f = 0;
+    public static final long g = 0;
+    public static final long h = 0;
+    public static final long i = 0;
+    public static final long j = 0;
+    public static final long k = 0;
+    public static final long l = 0;
+    public static final long m = 0;
+    public static final long n = 0;
+    public static final long o = 0;
     public static final /* synthetic */ int p = 0;
 
     static {
@@ -109,7 +109,10 @@ public abstract class g42 {
         fh0.a(-1000000010);
     }
 
-    public static final boolean a(long j2, long j3) {
-        return j2 == j3;
+    public static final boolean a(long r0, long r2) {
+        if (r0 != r2) goto L6;
+        return true;
+    L6:
+        return false;
     }
 }

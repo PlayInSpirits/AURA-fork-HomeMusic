@@ -32,27 +32,27 @@ public final class y12 {
     public final TextView t;
     public final ImageView u;
 
-    public y12(ConstraintLayout constraintLayout, View view, View view2, View view3, ConstraintLayout constraintLayout2, TextView textView, ImageView imageView, ImageView imageView2, ImageView imageView3, ImageView imageView4, ImageView imageView5, LinearLayout linearLayout, ConstraintLayout constraintLayout3, FrameLayout frameLayout, FrameLayout frameLayout2, TextView textView2, TextView textView3, ImageView imageView6, ImageView imageView7, TextView textView4, ImageView imageView8) {
-        this.a = constraintLayout;
-        this.b = view;
-        this.c = view2;
-        this.d = view3;
-        this.e = constraintLayout2;
-        this.f = textView;
-        this.g = imageView;
-        this.h = imageView2;
-        this.i = imageView3;
-        this.j = imageView4;
-        this.k = imageView5;
-        this.l = linearLayout;
-        this.m = constraintLayout3;
-        this.n = frameLayout;
-        this.o = frameLayout2;
-        this.p = textView2;
-        this.q = textView3;
-        this.r = imageView6;
-        this.s = imageView7;
-        this.t = textView4;
-        this.u = imageView8;
+    public y12(ConstraintLayout r1, View r2, View r3, View r4, ConstraintLayout r5, TextView r6, ImageView r7, ImageView r8, ImageView r9, ImageView r10, ImageView r11, LinearLayout r12, ConstraintLayout r13, FrameLayout r14, FrameLayout r15, TextView r16, TextView r17, ImageView r18, ImageView r19, TextView r20, ImageView r21) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
+        this.j = r10;
+        this.k = r11;
+        this.l = r12;
+        this.m = r13;
+        this.n = r14;
+        this.o = r15;
+        this.p = r16;
+        this.q = r17;
+        this.r = r18;
+        this.s = r19;
+        this.t = r20;
+        this.u = r21;
     }
 }

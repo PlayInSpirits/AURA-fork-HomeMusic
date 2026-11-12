@@ -11,11 +11,14 @@ public final class MusicFolders {
     @ka4("musicFolder")
     private List<MusicFolder> musicFolders;
 
+    public MusicFolders() {
+    }
+
     public final List<MusicFolder> getMusicFolders() {
         return this.musicFolders;
     }
 
-    public final void setMusicFolders(List<MusicFolder> list) {
-        this.musicFolders = list;
+    public final void setMusicFolders(List<MusicFolder> r1) {
+        this.musicFolders = r1;
     }
 }

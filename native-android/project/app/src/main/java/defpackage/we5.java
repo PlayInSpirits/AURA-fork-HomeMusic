@@ -8,11 +8,11 @@ public final class we5 extends tz3 {
     public final /* synthetic */ byte[] c;
     public final /* synthetic */ int d;
 
-    public we5(hu2 hu2Var, byte[] bArr, int i, int i2) {
-        this.a = hu2Var;
-        this.b = i;
-        this.c = bArr;
-        this.d = i2;
+    public we5(hu2 r1, byte[] r2, int r3, int r4) {
+        this.a = r1;
+        this.b = r3;
+        this.c = r2;
+        this.d = r4;
     }
 
     @Override // defpackage.tz3
@@ -26,8 +26,10 @@ public final class we5 extends tz3 {
     }
 
     @Override // defpackage.tz3
-    public final void writeTo(ew ewVar) {
-        ewVar.getClass();
-        ewVar.write(this.c, this.d, this.b);
+    public final void writeTo(ew r3) {
+        r3.getClass();
+        int r0 = this.d;
+        int r1 = this.b;
+        r3.write(this.c, r0, r1);
     }
 }

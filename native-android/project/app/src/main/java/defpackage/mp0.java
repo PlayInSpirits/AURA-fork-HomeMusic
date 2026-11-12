@@ -8,16 +8,16 @@ import android.content.DialogInterface;
 public final class mp0 implements DialogInterface.OnDismissListener {
     public final /* synthetic */ pp0 n;
 
-    public mp0(pp0 pp0Var) {
-        this.n = pp0Var;
+    public mp0(pp0 r1) {
+        this.n = r1;
     }
 
     @Override // android.content.DialogInterface.OnDismissListener
-    public final void onDismiss(DialogInterface dialogInterface) {
-        pp0 pp0Var = this.n;
-        Dialog dialog = pp0Var.w0;
-        if (dialog != null) {
-            pp0Var.onDismiss(dialog);
-        }
+    public final void onDismiss(DialogInterface r1) {
+        pp0 r0 = this.n;
+        Dialog r2 = r0.w0;
+        if (r2 == null) goto L6;
+        r0.onDismiss(r2);
+        return;
     }
 }

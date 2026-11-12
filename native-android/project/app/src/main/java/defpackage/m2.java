@@ -11,87 +11,91 @@ public abstract class m2 {
     public on4 q;
 
     public final n2 d() {
-        n2 n2VarE;
-        on4 on4Var;
-        synchronized (this) {
-            try {
-                n2[] n2VarArrF = this.n;
-                if (n2VarArrF == null) {
-                    n2VarArrF = f();
-                    this.n = n2VarArrF;
-                } else if (this.o >= n2VarArrF.length) {
-                    Object[] objArrCopyOf = Arrays.copyOf(n2VarArrF, n2VarArrF.length * 2);
-                    this.n = (n2[]) objArrCopyOf;
-                    n2VarArrF = (n2[]) objArrCopyOf;
-                }
-                int i = this.p;
-                do {
-                    n2VarE = n2VarArrF[i];
-                    if (n2VarE == null) {
-                        n2VarE = e();
-                        n2VarArrF[i] = n2VarE;
-                    }
-                    i++;
-                    if (i >= n2VarArrF.length) {
-                        i = 0;
-                    }
-                } while (!n2VarE.a(this));
-                this.p = i;
-                this.o++;
-                on4Var = this.q;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        if (on4Var != null) {
-            on4Var.w(1);
-        }
-        return n2VarE;
+        monitor-enter(this);
+        n2[] r0 = this.n;     // Catch: Throwable -> L6
+        if (r0 != null) goto L9;
+        r0 = f();     // Catch: Throwable -> L6
+        this.n = r0;     // Catch: Throwable -> L6
+    L11:
+        int r1 = this.p;     // Catch: Throwable -> L6
+    L12:
+        n2 r2 = r0[r1];     // Catch: Throwable -> L6
+        if (r2 != null) goto L15;
+        r2 = e();     // Catch: Throwable -> L6
+        r0[r1] = r2;     // Catch: Throwable -> L6
+    L15:
+        r1 = r1 + 1;     // Catch: Throwable -> L6
+        if (r1 < r0.length) goto L19;
+        r1 = 0;
+    L19:
+        if (r2.a(this) == false) goto L12;
+        this.p = r1;     // Catch: Throwable -> L6
+        this.o++;     // Catch: Throwable -> L6
+        on4 r3 = this.q;     // Catch: Throwable -> L6
+        monitor-exit(this);
+        if (r3 == null) goto L24;
+        r3.w(1);
+    L24:
+        return r2;
+    L9:
+        if (this.o < r0.length) goto L11;
+        Object[] r4 = Arrays.copyOf(r0, r0.length * 2);     // Catch: Throwable -> L6
+        this.n = (n2[]) r4;     // Catch: Throwable -> L6
+        r0 = (n2[]) r4;     // Catch: Throwable -> L6
+    L6:
+        th = move-exception;
+        throw th;
     }
 
     public abstract n2 e();
 
     public abstract n2[] f();
 
-    public final void g(n2 n2Var) {
-        on4 on4Var;
-        int i;
-        vd0[] vd0VarArrB;
-        synchronized (this) {
-            try {
-                int i2 = this.o - 1;
-                this.o = i2;
-                on4Var = this.q;
-                if (i2 == 0) {
-                    this.p = 0;
-                }
-                n2Var.getClass();
-                vd0VarArrB = n2Var.b(this);
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        for (vd0 vd0Var : vd0VarArrB) {
-            if (vd0Var != null) {
-                vd0Var.resumeWith(j15.a);
-            }
-        }
-        if (on4Var != null) {
-            on4Var.w(-1);
-        }
+    public final void g(n2 r6) {
+        monitor-enter(this);
+        int r0 = this.o - 1;     // Catch: Throwable -> L6
+        this.o = r0;     // Catch: Throwable -> L6
+        on4 r2 = this.q;     // Catch: Throwable -> L6
+        int r3 = 0;
+        if (r0 != 0) goto L8;
+        this.p = 0;     // Catch: Throwable -> L6
+    L8:
+        r6.getClass();     // Catch: Throwable -> L6
+        vd0[] r7 = r6.b(this);     // Catch: Throwable -> L6
+        monitor-exit(this);
+        int r5 = r7.length;
+    L11:
+        if (r3 >= r5) goto L16;
+        vd0 r1 = r7[r3];
+        if (r1 == null) goto L15;
+        r1.resumeWith(j15.a);
+    L15:
+        r3 = r3 + 1;
+        goto L11
+    L16:
+        if (r2 == null) goto L26;
+        r2.w(-1);
+        return;
+    L26:
+        return;
+    L6:
+        th = move-exception;
+        throw th;
     }
 
     public final on4 h() {
-        on4 on4Var;
-        synchronized (this) {
-            on4Var = this.q;
-            if (on4Var == null) {
-                int i = this.o;
-                on4Var = new on4(1, Integer.MAX_VALUE, wv.o);
-                on4Var.q(Integer.valueOf(i));
-                this.q = on4Var;
-            }
-        }
-        return on4Var;
+        monitor-enter(this);
+        on4 r0 = this.q;     // Catch: Throwable -> L7
+        if (r0 != null) goto L9;
+        int r1 = this.o;     // Catch: Throwable -> L7
+        r0 = new on4(1, Integer.MAX_VALUE, wv.o);     // Catch: Throwable -> L7
+        r0.q(Integer.valueOf(r1));     // Catch: Throwable -> L7
+        this.q = r0;     // Catch: Throwable -> L7
+    L9:
+        monitor-exit(this);
+        return r0;
+    L7:
+        th = move-exception;
+        throw th;
     }
 }

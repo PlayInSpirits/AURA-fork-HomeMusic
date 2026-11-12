@@ -11,11 +11,11 @@ public final class gj4 implements Iterator, x32 {
     public final int q;
     public int r;
 
-    public gj4(ig4 ig4Var, int i, tg1 tg1Var, e35 e35Var) {
-        this.n = ig4Var;
-        this.o = i;
-        this.p = e35Var;
-        this.q = ig4Var.u;
+    public gj4(ig4 r1, int r2, tg1 r3, e35 r4) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r4;
+        this.q = r1.u;
     }
 
     @Override // java.util.Iterator

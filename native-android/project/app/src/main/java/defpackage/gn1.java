@@ -7,5 +7,5 @@ import android.net.Uri;
 public interface gn1 {
     void a();
 
-    boolean b(Uri uri, x7 x7Var, boolean z);
+    boolean b(Uri r1, x7 r2, boolean r3);
 }

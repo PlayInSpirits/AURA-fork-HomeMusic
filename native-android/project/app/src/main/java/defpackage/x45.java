@@ -8,8 +8,8 @@ import java.nio.ByteBuffer;
 public final class x45 extends MediaDataSource {
     public final /* synthetic */ ByteBuffer n;
 
-    public x45(ByteBuffer byteBuffer) {
-        this.n = byteBuffer;
+    public x45(ByteBuffer r1) {
+        this.n = r1;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
@@ -22,14 +22,14 @@ public final class x45 extends MediaDataSource {
     }
 
     @Override // android.media.MediaDataSource
-    public final int readAt(long j, byte[] bArr, int i, int i2) {
-        ByteBuffer byteBuffer = this.n;
-        if (j >= byteBuffer.limit()) {
-            return -1;
-        }
-        byteBuffer.position((int) j);
-        int iMin = Math.min(i2, byteBuffer.remaining());
-        byteBuffer.get(bArr, i, iMin);
-        return iMin;
+    public final int readAt(long r3, byte[] r5, int r6, int r7) {
+        ByteBuffer r2 = this.n;
+        if (r3 < r2.limit()) goto L6;
+        return -1;
+    L6:
+        r2.position((int) r3);
+        int r4 = Math.min(r7, r2.remaining());
+        r2.get(r5, r6, r4);
+        return r4;
     }
 }

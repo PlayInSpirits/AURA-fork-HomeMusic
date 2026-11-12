@@ -16,6 +16,9 @@ public final class SmartOut {
     private String sessionId;
     private String title;
 
+    public SmartOut() {
+    }
+
     public final String getContext() {
         return this.context;
     }
@@ -40,27 +43,27 @@ public final class SmartOut {
         return this.title;
     }
 
-    public final void setContext(String str) {
-        this.context = str;
+    public final void setContext(String r1) {
+        this.context = r1;
     }
 
-    public final void setOwn(List<String> list) {
-        this.own = list;
+    public final void setOwn(List<String> r1) {
+        this.own = r1;
     }
 
-    public final void setPending(boolean z) {
-        this.pending = z;
+    public final void setPending(boolean r1) {
+        this.pending = r1;
     }
 
-    public final void setRecs(List<SmartRec> list) {
-        this.recs = list;
+    public final void setRecs(List<SmartRec> r1) {
+        this.recs = r1;
     }
 
-    public final void setSessionId(String str) {
-        this.sessionId = str;
+    public final void setSessionId(String r1) {
+        this.sessionId = r1;
     }
 
-    public final void setTitle(String str) {
-        this.title = str;
+    public final void setTitle(String r1) {
+        this.title = r1;
     }
 }

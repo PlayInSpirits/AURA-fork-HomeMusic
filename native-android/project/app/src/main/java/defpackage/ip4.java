@@ -13,19 +13,20 @@ public final class ip4 extends cx2 implements sn3, oo0, rn3 {
     public Object C;
     public PointerInputEventHandler D;
     public sk4 E;
-    public kn3 F = gp4.a;
+    public kn3 F;
     public final f13 G;
     public final f13 H;
     public final f13 I;
     public kn3 J;
 
-    public ip4(Object obj, Object obj2, PointerInputEventHandler pointerInputEventHandler) {
-        this.B = obj;
-        this.C = obj2;
-        this.D = pointerInputEventHandler;
-        f13 f13Var = new f13(new hp4[16]);
-        this.G = f13Var;
-        this.H = f13Var;
+    public ip4(Object r1, Object r2, PointerInputEventHandler r3) {
+        this.B = r1;
+        this.C = r2;
+        this.D = r3;
+        this.F = gp4.a;
+        f13 r4 = new f13(new hp4[16]);
+        this.G = r4;
+        this.H = r4;
         this.I = new f13(new hp4[16]);
     }
 
@@ -55,122 +56,129 @@ public final class ip4 extends cx2 implements sn3, oo0, rn3 {
     }
 
     @Override // defpackage.rn3
-    public final void n(kn3 kn3Var, ln3 ln3Var, long j) {
-        if (ln3Var == ln3.n) {
-            this.F = kn3Var;
-        }
-        vd0 vd0Var = null;
-        if (this.E == null) {
-            this.E = fu.G(e0(), null, ze0.q, new ac0(this, vd0Var, 7), 1);
-        }
-        q0(kn3Var, ln3Var);
-        List list = kn3Var.a;
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            if (!gi1.i((on3) list.get(i))) {
-                this.J = kn3Var;
-            }
-        }
-        kn3Var = null;
-        this.J = kn3Var;
+    public final void n(kn3 r4, ln3 r5, long r6) {
+        if (r5 != ln3.n) goto L5;
+        this.F = r4;
+    L5:
+        vd0 r7 = null;
+        if (this.E != null) goto L8;
+        this.E = fu.G(e0(), null, ze0.q, new ac0(this, r7, 7), 1);
+    L8:
+        q0(r4, r5);
+        List r8 = r4.a;
+        int r9 = r8.size();
+        int r0 = 0;
+    L9:
+        if (r0 >= r9) goto L14;
+        if (gi1.i((on3) r8.get(r0)) == false) goto L15;
+        r0 = r0 + 1;
+    L15:
+        this.J = r4;
+        return;
+    L14:
+        r4 = null;
+        goto L15
     }
 
-    /* JADX WARN: Code duplicated, block: B:28:0x004c A[Catch: all -> 0x0021, TryCatch #0 {all -> 0x0021, blocks: (B:6:0x000d, B:13:0x001b, B:14:0x0020, B:17:0x0023, B:20:0x002f, B:22:0x0037, B:24:0x003b, B:25:0x0040, B:26:0x0043, B:28:0x004c, B:30:0x0054, B:32:0x0058), top: B:41:0x000d }] */
-    public final void q0(kn3 kn3Var, ln3 ln3Var) {
-        Object[] objArr;
-        int i;
-        int i2;
-        hp4 hp4Var;
-        cz czVar;
-        cz czVar2;
-        synchronized (this.H) {
-            f13 f13Var = this.I;
-            f13Var.c(f13Var.p, this.G);
-        }
-        try {
-            int iOrdinal = ln3Var.ordinal();
-            if (iOrdinal == 0) {
-                f13 f13Var2 = this.I;
-                objArr = f13Var2.n;
-                i = f13Var2.p;
-                for (i2 = 0; i2 < i; i2++) {
-                    hp4Var = (hp4) objArr[i2];
-                    if (ln3Var != hp4Var.q && (czVar = hp4Var.p) != null) {
-                        hp4Var.p = null;
-                        czVar.resumeWith(kn3Var);
-                    }
-                }
-            } else if (iOrdinal == 1) {
-                f13 f13Var3 = this.I;
-                int i3 = f13Var3.p - 1;
-                Object[] objArr2 = f13Var3.n;
-                if (i3 < objArr2.length) {
-                    while (i3 >= 0) {
-                        hp4 hp4Var2 = (hp4) objArr2[i3];
-                        if (ln3Var == hp4Var2.q && (czVar2 = hp4Var2.p) != null) {
-                            hp4Var2.p = null;
-                            czVar2.resumeWith(kn3Var);
-                        }
-                        i3--;
-                    }
-                }
-            } else {
-                if (iOrdinal != 2) {
-                    throw new NoWhenBranchMatchedException();
-                }
-                f13 f13Var4 = this.I;
-                objArr = f13Var4.n;
-                i = f13Var4.p;
-                while (i2 < i) {
-                    hp4Var = (hp4) objArr[i2];
-                    if (ln3Var != hp4Var.q) {
-                    }
-                }
-            }
-            this.I.g();
-        } catch (Throwable th) {
-            this.I.g();
-            throw th;
-        }
+    public final void q0(kn3 r7, ln3 r8) {
+        f13 r0 = this.H;
+        monitor-enter(r0);
+        f13 r1 = this.I;     // Catch: Throwable -> L38
+        r1.c(r1.p, this.G);     // Catch: Throwable -> L38
+        monitor-exit(r0);
+        int r2 = r8.ordinal();     // Catch: Throwable -> L15
+        if (r2 != 0) goto L9;
+    L26:
+        f13 r3 = this.I;     // Catch: Throwable -> L15
+        Object[] r4 = r3.n;     // Catch: Throwable -> L15
+        int r5 = r3.p;     // Catch: Throwable -> L15
+        int r6 = 0;
+    L27:
+        if (r6 >= r5) goto L34;
+        hp4 r9 = (hp4) r4[r6];     // Catch: Throwable -> L15
+        if (r8 != r9.q) goto L33;
+        cz r10 = r9.p;     // Catch: Throwable -> L15
+        if (r10 == null) goto L33;
+        r9.p = null;     // Catch: Throwable -> L15
+        r10.resumeWith(r7);     // Catch: Throwable -> L15
+    L33:
+        r6 = r6 + 1;
+    L34:
+        this.I.g();
+        return;
+    L9:
+        if (r2 != 1) goto L11;
+        f13 r11 = this.I;     // Catch: Throwable -> L15
+        int r12 = r11.p - 1;     // Catch: Throwable -> L15
+        Object[] r13 = r11.n;     // Catch: Throwable -> L15
+        if (r12 >= r13.length) goto L34;
+    L19:
+        if (r12 < 0) goto L34;
+        hp4 r14 = (hp4) r13[r12];     // Catch: Throwable -> L15
+        if (r8 != r14.q) goto L25;
+        cz r15 = r14.p;     // Catch: Throwable -> L15
+        if (r15 == null) goto L25;
+        r14.p = null;     // Catch: Throwable -> L15
+        r15.resumeWith(r7);     // Catch: Throwable -> L15
+    L25:
+        r12 = r12 - 1;     // Catch: Throwable -> L15
+        goto L19
+    L11:
+        if (r2 == 2) goto L26;
+        throw new NoWhenBranchMatchedException();     // Catch: Throwable -> L15
+    L15:
+        th = move-exception;
+        this.I.g();
+        throw th;
+    L38:
+        th = move-exception;
+        throw th;
     }
 
     public final void r0() {
-        sk4 sk4Var = this.E;
-        if (sk4Var != null) {
-            sk4Var.p(new PointerInputResetException());
-            this.E = null;
-        }
+        sk4 r0 = this.E;
+        if (r0 == null) goto L6;
+        r0.p(new PointerInputResetException());
+        this.E = null;
+        return;
     }
 
     @Override // defpackage.rn3
     public final void t() {
-        kn3 kn3Var = this.J;
-        if (kn3Var == null) {
-            return;
-        }
-        List list = kn3Var.a;
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            if (((on3) list.get(i)).d) {
-                ArrayList arrayList = new ArrayList(list.size());
-                int size2 = list.size();
-                for (int i2 = 0; i2 < size2; i2++) {
-                    on3 on3Var = (on3) list.get(i2);
-                    long j = on3Var.a;
-                    long j2 = on3Var.c;
-                    long j3 = on3Var.b;
-                    float f = on3Var.e;
-                    boolean z = on3Var.d;
-                    arrayList.add(new on3(j, j3, j2, false, f, j3, j2, z, z, on3Var.i, 0L, 1.0f, 0L));
-                }
-                kn3 kn3Var2 = new kn3(arrayList, null);
-                this.F = kn3Var2;
-                q0(kn3Var2, ln3.n);
-                q0(kn3Var2, ln3.o);
-                q0(kn3Var2, ln3.p);
-                this.J = null;
-                return;
-            }
-        }
+        kn3 r1 = this.J;
+        if (r1 == null) goto L15;
+        List r2 = r1.a;
+        int r3 = r2.size();
+        int r4 = 0;
+        int r5 = 0;
+    L6:
+        if (r5 >= r3) goto L19;
+        if (((on3) r2.get(r5)).d == true) goto L9;
+        r5 = r5 + 1;
+        goto L6
+    L9:
+        ArrayList r6 = new ArrayList(r2.size());
+        int r7 = r2.size();
+    L10:
+        if (r4 >= r7) goto L12;
+        on3 r8 = (on3) r2.get(r4);
+        long r9 = r8.a;
+        long r11 = r8.c;
+        long r10 = r8.b;
+        float r14 = r8.e;
+        boolean r12 = r8.d;
+        r6.add(new on3(r9, r10, r11, false, r14, r10, r11, r12, r12, r8.i, 0, 1.0f, 0));
+        r4 = r4 + 1;
+        goto L10
+    L12:
+        kn3 r13 = new kn3(r6, null);
+        this.F = r13;
+        q0(r13, ln3.n);
+        q0(r13, ln3.o);
+        q0(r13, ln3.p);
+        this.J = null;
+        return;
+    L19:
+        return;
     }
 }

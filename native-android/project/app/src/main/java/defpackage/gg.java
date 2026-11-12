@@ -5,7 +5,7 @@ package defpackage;
 public final class gg {
     public final /* synthetic */ hg a;
 
-    public gg(hg hgVar) {
-        this.a = hgVar;
+    public gg(hg r1) {
+        this.a = r1;
     }
 }

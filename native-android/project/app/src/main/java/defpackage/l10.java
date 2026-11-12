@@ -12,28 +12,50 @@ public final class l10 extends nv1 {
     public final long f;
     public final nv1[] g;
 
-    public l10(String str, int i, int i2, long j, long j2, nv1[] nv1VarArr) {
+    public l10(String r2, int r3, int r4, long r5, long r7, nv1[] r9) {
         super("CHAP");
-        this.b = str;
-        this.c = i;
-        this.d = i2;
-        this.e = j;
-        this.f = j2;
-        this.g = nv1VarArr;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r7;
+        this.g = r9;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || l10.class != obj.getClass()) {
-            return false;
-        }
-        l10 l10Var = (l10) obj;
-        return this.c == l10Var.c && this.d == l10Var.d && this.e == l10Var.e && this.f == l10Var.f && this.b.equals(l10Var.b) && Arrays.equals(this.g, l10Var.g);
+    public final boolean equals(Object r5) {
+        if (this == r5) goto L24;
+        if (r5 != null) goto L6;
+        return false;
+    L6:
+        if (l10.class != r5.getClass()) goto L31;
+        l10 r6 = (l10) r5;
+        if (this.c == r6.c) goto L11;
+        return false;
+    L11:
+        if (this.d == r6.d) goto L13;
+        return false;
+    L13:
+        if (this.e == r6.e) goto L15;
+        return false;
+    L15:
+        if (this.f == r6.f) goto L17;
+        return false;
+    L17:
+        if (this.b.equals(r6.b) == true) goto L19;
+        return false;
+    L19:
+        if (Arrays.equals(this.g, r6.g) == false) goto L30;
+        return true;
+    L30:
+        return false;
+    L31:
+        return false;
+    L24:
+        return true;
     }
 
     public final int hashCode() {
-        return this.b.hashCode() + ((((((((527 + this.c) * 31) + this.d) * 31) + ((int) this.e)) * 31) + ((int) this.f)) * 31);
+        int r0 = (((((((527 + this.c) * 31) + this.d) * 31) + ((int) this.e)) * 31) + ((int) this.f)) * 31;
+        return this.b.hashCode() + r0;
     }
 }

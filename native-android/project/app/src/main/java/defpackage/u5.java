@@ -6,8 +6,8 @@ public final class u5 {
     public final p5 a;
     public final su3 b;
 
-    public u5(p5 p5Var, su3 su3Var) {
-        this.a = p5Var;
-        this.b = su3Var;
+    public u5(p5 r1, su3 r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

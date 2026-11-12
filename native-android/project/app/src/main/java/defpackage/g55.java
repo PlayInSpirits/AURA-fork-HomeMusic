@@ -8,12 +8,14 @@ import android.view.Choreographer;
 public abstract class g55 implements DisplayManager.DisplayListener {
     public final Choreographer n;
     public final DisplayManager o;
-    public volatile long p = -9223372036854775807L;
-    public volatile long q = -9223372036854775807L;
+    public volatile long p;
+    public volatile long q;
 
-    public g55(Choreographer choreographer, DisplayManager displayManager) {
-        this.n = choreographer;
-        this.o = displayManager;
+    public g55(Choreographer r1, DisplayManager r2) {
+        this.n = r1;
+        this.o = r2;
+        this.p = -9223372036854775807L;
+        this.q = -9223372036854775807L;
     }
 
     public abstract void a();
@@ -21,10 +23,10 @@ public abstract class g55 implements DisplayManager.DisplayListener {
     public abstract void b();
 
     @Override // android.hardware.display.DisplayManager.DisplayListener
-    public final void onDisplayAdded(int i) {
+    public final void onDisplayAdded(int r1) {
     }
 
     @Override // android.hardware.display.DisplayManager.DisplayListener
-    public final void onDisplayRemoved(int i) {
+    public final void onDisplayRemoved(int r1) {
     }
 }

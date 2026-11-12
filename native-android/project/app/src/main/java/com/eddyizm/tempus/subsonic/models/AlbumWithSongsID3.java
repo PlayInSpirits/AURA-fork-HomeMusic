@@ -12,14 +12,18 @@ import java.util.List;
 /* JADX INFO: loaded from: classes.dex */
 public final class AlbumWithSongsID3 extends AlbumID3 implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<AlbumWithSongsID3> CREATOR = new w4(3);
+    public static final Parcelable.Creator<AlbumWithSongsID3> CREATOR = null;
 
     @ka4("song")
     private List<? extends Child> songs;
 
-    public AlbumWithSongsID3(List<? extends Child> list) {
+    static {
+        CREATOR = new w4(3);
+    }
+
+    public AlbumWithSongsID3(List<? extends Child> r30) {
         super(null, null, null, null, null, null, null, null, null, null, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 67108863, null);
-        this.songs = list;
+        this.songs = r30;
     }
 
     @Override // com.eddyizm.tempus.subsonic.models.AlbumID3, android.os.Parcelable
@@ -31,24 +35,25 @@ public final class AlbumWithSongsID3 extends AlbumID3 implements Parcelable {
         return this.songs;
     }
 
-    public final void setSongs(List<? extends Child> list) {
-        this.songs = list;
+    public final void setSongs(List<? extends Child> r1) {
+        this.songs = r1;
     }
 
     @Override // com.eddyizm.tempus.subsonic.models.AlbumID3, android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        parcel.getClass();
-        List<? extends Child> list = this.songs;
-        if (list == null) {
-            parcel.writeInt(0);
-            return;
-        }
-        parcel.writeInt(1);
-        parcel.writeInt(list.size());
-        Iterator<? extends Child> it = list.iterator();
-        while (it.hasNext()) {
-            parcel.writeParcelable(it.next(), i);
-        }
+    public final void writeToParcel(Parcel r2, int r3) {
+        r2.getClass();
+        List<? extends Child> r1 = this.songs;
+        if (r1 != null) goto L6;
+        r2.writeInt(0);
+        return;
+    L6:
+        r2.writeInt(1);
+        r2.writeInt(r1.size());
+        Iterator<? extends Child> r4 = r1.iterator();
+    L8:
+        if (r4.hasNext() == false) goto L10;
+        r2.writeParcelable(r4.next(), r3);
+        goto L8
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -56,7 +61,10 @@ public final class AlbumWithSongsID3 extends AlbumID3 implements Parcelable {
         this(null, 1, 0 == true ? 1 : 0);
     }
 
-    public /* synthetic */ AlbumWithSongsID3(List list, int i, xj0 xj0Var) {
-        this((i & 1) != 0 ? null : list);
+    public /* synthetic */ AlbumWithSongsID3(List r1, int r2, xj0 r3) {
+        if ((r2 & 1) == 0) goto L5;
+        r1 = null;
+    L5:
+        this(r1);
     }
 }

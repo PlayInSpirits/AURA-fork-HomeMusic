@@ -5,18 +5,18 @@ package defpackage;
 public final class a92 extends sk4 {
     public final vd0 s;
 
-    public a92(ne0 ne0Var, wf1 wf1Var) {
-        super(ne0Var, false);
-        this.s = ya4.i(this, this, wf1Var);
+    public a92(ne0 r2, wf1 r3) {
+        super(r2, false);
+        this.s = ya4.i(this, this, r3);
     }
 
     @Override // defpackage.a32
     public final void Y() {
-        try {
-            uc5.T(ya4.x(this.s), j15.a);
-        } catch (Throwable th) {
-            resumeWith(new s14(th));
-            throw th;
-        }
+        uc5.T(ya4.x(this.s), j15.a);     // Catch: Throwable -> L5
+        return;
+    L5:
+        th = move-exception;
+        resumeWith(new s14(th));
+        throw th;
     }
 }

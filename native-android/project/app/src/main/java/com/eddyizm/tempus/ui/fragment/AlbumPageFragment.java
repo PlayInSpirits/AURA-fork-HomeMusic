@@ -29,7 +29,6 @@ import com.eddyizm.tempus.interfaces.ClickCallback;
 import com.eddyizm.tempus.service.MediaService;
 import com.eddyizm.tempus.subsonic.models.AlbumID3;
 import com.eddyizm.tempus.ui.activity.MainActivity;
-import com.eddyizm.tempus.ui.fragment.AlbumPageFragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import defpackage.a0;
@@ -57,6 +56,7 @@ import defpackage.gp3;
 import defpackage.hu3;
 import defpackage.i30;
 import defpackage.k03;
+import defpackage.k8;
 import defpackage.kc1;
 import defpackage.kf2;
 import defpackage.kx3;
@@ -81,7 +81,6 @@ import defpackage.v23;
 import defpackage.x7;
 import defpackage.xc5;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -98,541 +97,201 @@ public class AlbumPageFragment extends kc1 implements ClickCallback {
     public k03 r0;
     public g8 s0;
 
+    public AlbumPageFragment() {
+    }
+
     @Override // defpackage.kc1
-    public final void F(Bundle bundle) {
-        super.F(bundle);
+    public final void F(Bundle r1) {
+        super.F(r1);
         d0();
     }
 
     @Override // defpackage.kc1
-    public final void G(Menu menu, MenuInflater menuInflater) {
-        menuInflater.inflate(R.menu.album_page_menu, menu);
+    public final void G(Menu r1, MenuInflater r2) {
+        r2.inflate(R.menu.album_page_menu, r1);
     }
 
-    /* JADX WARN: Code duplicated, block: B:85:0x038e A[PHI: r5
-  0x038e: PHI (r5v8 int) = 
-  (r5v7 int)
-  (r5v9 int)
-  (r5v10 int)
-  (r5v11 int)
-  (r5v12 int)
-  (r5v13 int)
-  (r5v14 int)
-  (r5v15 int)
-  (r5v16 int)
-  (r5v17 int)
-  (r5v18 int)
-  (r5v19 int)
-  (r5v20 int)
- binds: [B:13:0x0064, B:15:0x0070, B:17:0x007c, B:19:0x0088, B:21:0x0093, B:23:0x009f, B:25:0x00ab, B:27:0x00b8, B:29:0x00c5, B:31:0x00d2, B:33:0x00df, B:35:0x00ea, B:37:0x00f3] A[DONT_GENERATE, DONT_INLINE]] */
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        v23 v23Var;
-        v23 v23Var2;
-        this.m0 = (MainActivity) e();
-        final int i = 0;
-        View viewInflate = layoutInflater.inflate(R.layout.fragment_album_page, viewGroup, false);
-        int i2 = R.id.album_artist_label;
-        TextView textView = (TextView) uo.s(viewInflate, R.id.album_artist_label);
-        if (textView != null) {
-            i2 = R.id.album_bio_label;
-            if (((TextView) uo.s(viewInflate, R.id.album_bio_label)) != null) {
-                i2 = R.id.album_cover_image_view;
-                ImageView imageView = (ImageView) uo.s(viewInflate, R.id.album_cover_image_view);
-                if (imageView != null) {
-                    i2 = R.id.album_detail_view;
-                    ConstraintLayout constraintLayout = (ConstraintLayout) uo.s(viewInflate, R.id.album_detail_view);
-                    if (constraintLayout != null) {
-                        i2 = R.id.album_genres_textview;
-                        TextView textView2 = (TextView) uo.s(viewInflate, R.id.album_genres_textview);
-                        if (textView2 != null) {
-                            int i3 = R.id.album_info_sector;
-                            if (((ConstraintLayout) uo.s(viewInflate, R.id.album_info_sector)) != null) {
-                                i3 = R.id.album_name_label;
-                                TextView textView3 = (TextView) uo.s(viewInflate, R.id.album_name_label);
-                                if (textView3 != null) {
-                                    i3 = R.id.album_notes_textview;
-                                    TextView textView4 = (TextView) uo.s(viewInflate, R.id.album_notes_textview);
-                                    if (textView4 != null) {
-                                        i3 = R.id.album_other_info_button;
-                                        FrameLayout frameLayout = (FrameLayout) uo.s(viewInflate, R.id.album_other_info_button);
-                                        if (frameLayout != null) {
-                                            i3 = R.id.album_page_button_layout;
-                                            if (((LinearLayout) uo.s(viewInflate, R.id.album_page_button_layout)) != null) {
-                                                i3 = R.id.album_page_play_button;
-                                                Button button = (Button) uo.s(viewInflate, R.id.album_page_play_button);
-                                                if (button != null) {
-                                                    i3 = R.id.album_page_shuffle_button;
-                                                    Button button2 = (Button) uo.s(viewInflate, R.id.album_page_shuffle_button);
-                                                    if (button2 != null) {
-                                                        i3 = R.id.album_release_year_label;
-                                                        TextView textView5 = (TextView) uo.s(viewInflate, R.id.album_release_year_label);
-                                                        if (textView5 != null) {
-                                                            i3 = R.id.album_release_years_textview;
-                                                            TextView textView6 = (TextView) uo.s(viewInflate, R.id.album_release_years_textview);
-                                                            if (textView6 != null) {
-                                                                i3 = R.id.album_song_count_duration_textview;
-                                                                TextView textView7 = (TextView) uo.s(viewInflate, R.id.album_song_count_duration_textview);
-                                                                if (textView7 != null) {
-                                                                    i3 = R.id.anim_toolbar;
-                                                                    MaterialToolbar materialToolbar = (MaterialToolbar) uo.s(viewInflate, R.id.anim_toolbar);
-                                                                    if (materialToolbar != null) {
-                                                                        i3 = R.id.app_bar_layout;
-                                                                        if (((AppBarLayout) uo.s(viewInflate, R.id.app_bar_layout)) != null) {
-                                                                            i3 = R.id.bottom_button_divider;
-                                                                            View viewS = uo.s(viewInflate, R.id.bottom_button_divider);
-                                                                            if (viewS == null) {
-                                                                                i2 = i3;
-                                                                            } else if (((ToggleButton) uo.s(viewInflate, R.id.button_favorite)) != null) {
-                                                                                int i4 = R.id.song_recycler_view;
-                                                                                RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate, R.id.song_recycler_view);
-                                                                                if (recyclerView != null) {
-                                                                                    i4 = R.id.upper_button_divider;
-                                                                                    View viewS2 = uo.s(viewInflate, R.id.upper_button_divider);
-                                                                                    if (viewS2 != null) {
-                                                                                        LinearLayout linearLayout = (LinearLayout) viewInflate;
-                                                                                        this.l0 = new pc1(linearLayout, textView, imageView, constraintLayout, textView2, textView3, textView4, frameLayout, button, button2, textView5, textView6, textView7, materialToolbar, viewS, recyclerView, viewS2);
-                                                                                        nc1 nc1VarX = X();
-                                                                                        e75 e75VarD = nc1VarX.d();
-                                                                                        b75 b75VarR = gh0.r(nc1VarX);
-                                                                                        bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
-                                                                                        i30 i30VarA = kx3.a(n8.class);
-                                                                                        String strB = i30VarA.b();
-                                                                                        if (strB == null) {
-                                                                                            kf2.n("Local and anonymous classes can not be ViewModels");
-                                                                                            return null;
-                                                                                        }
-                                                                                        this.n0 = (n8) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-                                                                                        nc1 nc1VarX2 = X();
-                                                                                        e75 e75VarD2 = nc1VarX2.d();
-                                                                                        b75 b75VarR2 = gh0.r(nc1VarX2);
-                                                                                        bq4 bq4Var2 = new bq4(e75VarD2, b75VarR2, b11.e(nc1VarX2, b75VarR2));
-                                                                                        i30 i30VarA2 = kx3.a(li3.class);
-                                                                                        String strB2 = i30VarA2.b();
-                                                                                        if (strB2 == null) {
-                                                                                            kf2.n("Local and anonymous classes can not be ViewModels");
-                                                                                            return null;
-                                                                                        }
-                                                                                        this.o0 = (li3) bq4Var2.l(i30VarA2, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB2));
-                                                                                        Bundle bundle2 = this.s;
-                                                                                        if (bundle2 == null) {
-                                                                                            Log.e("AlbumPageFragment", "Arguments are null after process restoration.");
-                                                                                            MainActivity mainActivity = this.m0;
-                                                                                            if (mainActivity != null && (v23Var2 = mainActivity.T) != null) {
-                                                                                                v23Var2.o();
-                                                                                                return linearLayout;
-                                                                                            }
-                                                                                        } else {
-                                                                                            AlbumID3 albumID3 = (AlbumID3) bundle2.getParcelable("ALBUM_OBJECT");
-                                                                                            if (albumID3 != null) {
-                                                                                                n8 n8Var = this.n0;
-                                                                                                le1 le1VarV = v();
-                                                                                                n8Var.getClass();
-                                                                                                n8Var.f = albumID3.getId();
-                                                                                                n8Var.h.i(albumID3);
-                                                                                                n8Var.g = albumID3.getArtistId();
-                                                                                                rv2 rv2Var = n8Var.c;
-                                                                                                String str = n8Var.f;
-                                                                                                rv2Var.getClass();
-                                                                                                n8Var.i = rv2.l(str);
-                                                                                                final int i5 = 2;
-                                                                                                rv2.j(albumID3.getId()).e(le1VarV, new d8(i5, n8Var));
-                                                                                                ToggleButton toggleButton = (ToggleButton) linearLayout.findViewById(R.id.button_favorite);
-                                                                                                final int i6 = 1;
-                                                                                                toggleButton.setChecked(n61.f(2, albumID3.getId(), albumID3.getStarred() != null));
-                                                                                                final int i7 = 3;
-                                                                                                toggleButton.setOnClickListener(new View.OnClickListener(this) { // from class: k8
-                                                                                                    public final /* synthetic */ AlbumPageFragment o;
-
-                                                                                                    {
-                                                                                                        this.o = this;
-                                                                                                    }
-
-                                                                                                    @Override // android.view.View.OnClickListener
-                                                                                                    public final void onClick(View view) {
-                                                                                                        int i8 = i7;
-                                                                                                        AlbumPageFragment albumPageFragment = this.o;
-                                                                                                        switch (i8) {
-                                                                                                            case 0:
-                                                                                                                albumPageFragment.m0.T.o();
-                                                                                                                break;
-                                                                                                            case 1:
-                                                                                                                int visibility = albumPageFragment.l0.a.getVisibility();
-                                                                                                                pc1 pc1Var = albumPageFragment.l0;
-                                                                                                                if (visibility == 8) {
-                                                                                                                    pc1Var.a.setVisibility(0);
-                                                                                                                    albumPageFragment.l0.e.setMaxLines(Integer.MAX_VALUE);
-                                                                                                                } else if (pc1Var.a.getVisibility() == 0) {
-                                                                                                                    albumPageFragment.l0.a.setVisibility(8);
-                                                                                                                    albumPageFragment.l0.e.setMaxLines(2);
-                                                                                                                }
-                                                                                                                break;
-                                                                                                            case 2:
-                                                                                                                albumPageFragment.i0();
-                                                                                                                n8 n8Var2 = albumPageFragment.n0;
-                                                                                                                pa paVar = n8Var2.d;
-                                                                                                                String str2 = n8Var2.g;
-                                                                                                                paVar.getClass();
-                                                                                                                k03 k03Var = new k03();
-                                                                                                                App.f(false).c().i(str2).enqueue(new p8(k03Var, 1));
-                                                                                                                albumPageFragment.r0 = k03Var;
-                                                                                                                albumPageFragment.s0 = new g8(albumPageFragment, 5);
-                                                                                                                k03Var.e(albumPageFragment.v(), albumPageFragment.s0);
-                                                                                                                break;
-                                                                                                            default:
-                                                                                                                n8 n8Var3 = albumPageFragment.n0;
-                                                                                                                d34 d34Var = n8Var3.e;
-                                                                                                                k03 k03Var2 = n8Var3.h;
-                                                                                                                AlbumID3 albumID4 = (AlbumID3) k03Var2.d();
-                                                                                                                if (albumID4 != null) {
-                                                                                                                    if (!n61.f(2, albumID4.getId(), albumID4.getStarred() != null)) {
-                                                                                                                        if (!hw.t()) {
-                                                                                                                            String id = albumID4.getId();
-                                                                                                                            m8 m8Var = new m8(n8Var3, albumID4, 1);
-                                                                                                                            d34Var.getClass();
-                                                                                                                            d34.I(null, id, null, m8Var);
-                                                                                                                            albumID4.setStarred(new Date());
-                                                                                                                            k03Var2.i(albumID4);
-                                                                                                                        } else {
-                                                                                                                            d34Var.J(null, albumID4.getId(), true, null);
-                                                                                                                            albumID4.setStarred(new Date());
-                                                                                                                            k03Var2.i(albumID4);
-                                                                                                                        }
-                                                                                                                    } else if (!hw.t()) {
-                                                                                                                        String id2 = albumID4.getId();
-                                                                                                                        m8 m8Var2 = new m8(n8Var3, albumID4, 0);
-                                                                                                                        d34Var.getClass();
-                                                                                                                        d34.K(null, id2, null, m8Var2);
-                                                                                                                        albumID4.setStarred(null);
-                                                                                                                        k03Var2.i(albumID4);
-                                                                                                                    } else {
-                                                                                                                        d34Var.J(null, albumID4.getId(), false, null);
-                                                                                                                        albumID4.setStarred(null);
-                                                                                                                        k03Var2.i(albumID4);
-                                                                                                                    }
-                                                                                                                    break;
-                                                                                                                }
-                                                                                                                break;
-                                                                                                        }
-                                                                                                    }
-                                                                                                });
-                                                                                                this.n0.h.e(v(), new d8(i6, toggleButton));
-                                                                                                this.m0.o((MaterialToolbar) this.l0.n);
-                                                                                                if (this.m0.n() != null) {
-                                                                                                    this.m0.n().f0(true);
-                                                                                                    this.m0.n().g0();
-                                                                                                }
-                                                                                                this.n0.h.e(v(), new g8(this, 7));
-                                                                                                ((MaterialToolbar) this.l0.n).setNavigationOnClickListener(new View.OnClickListener(this) { // from class: k8
-                                                                                                    public final /* synthetic */ AlbumPageFragment o;
-
-                                                                                                    {
-                                                                                                        this.o = this;
-                                                                                                    }
-
-                                                                                                    @Override // android.view.View.OnClickListener
-                                                                                                    public final void onClick(View view) {
-                                                                                                        int i8 = i;
-                                                                                                        AlbumPageFragment albumPageFragment = this.o;
-                                                                                                        switch (i8) {
-                                                                                                            case 0:
-                                                                                                                albumPageFragment.m0.T.o();
-                                                                                                                break;
-                                                                                                            case 1:
-                                                                                                                int visibility = albumPageFragment.l0.a.getVisibility();
-                                                                                                                pc1 pc1Var = albumPageFragment.l0;
-                                                                                                                if (visibility == 8) {
-                                                                                                                    pc1Var.a.setVisibility(0);
-                                                                                                                    albumPageFragment.l0.e.setMaxLines(Integer.MAX_VALUE);
-                                                                                                                } else if (pc1Var.a.getVisibility() == 0) {
-                                                                                                                    albumPageFragment.l0.a.setVisibility(8);
-                                                                                                                    albumPageFragment.l0.e.setMaxLines(2);
-                                                                                                                }
-                                                                                                                break;
-                                                                                                            case 2:
-                                                                                                                albumPageFragment.i0();
-                                                                                                                n8 n8Var2 = albumPageFragment.n0;
-                                                                                                                pa paVar = n8Var2.d;
-                                                                                                                String str2 = n8Var2.g;
-                                                                                                                paVar.getClass();
-                                                                                                                k03 k03Var = new k03();
-                                                                                                                App.f(false).c().i(str2).enqueue(new p8(k03Var, 1));
-                                                                                                                albumPageFragment.r0 = k03Var;
-                                                                                                                albumPageFragment.s0 = new g8(albumPageFragment, 5);
-                                                                                                                k03Var.e(albumPageFragment.v(), albumPageFragment.s0);
-                                                                                                                break;
-                                                                                                            default:
-                                                                                                                n8 n8Var3 = albumPageFragment.n0;
-                                                                                                                d34 d34Var = n8Var3.e;
-                                                                                                                k03 k03Var2 = n8Var3.h;
-                                                                                                                AlbumID3 albumID4 = (AlbumID3) k03Var2.d();
-                                                                                                                if (albumID4 != null) {
-                                                                                                                    if (!n61.f(2, albumID4.getId(), albumID4.getStarred() != null)) {
-                                                                                                                        if (!hw.t()) {
-                                                                                                                            String id = albumID4.getId();
-                                                                                                                            m8 m8Var = new m8(n8Var3, albumID4, 1);
-                                                                                                                            d34Var.getClass();
-                                                                                                                            d34.I(null, id, null, m8Var);
-                                                                                                                            albumID4.setStarred(new Date());
-                                                                                                                            k03Var2.i(albumID4);
-                                                                                                                        } else {
-                                                                                                                            d34Var.J(null, albumID4.getId(), true, null);
-                                                                                                                            albumID4.setStarred(new Date());
-                                                                                                                            k03Var2.i(albumID4);
-                                                                                                                        }
-                                                                                                                    } else if (!hw.t()) {
-                                                                                                                        String id2 = albumID4.getId();
-                                                                                                                        m8 m8Var2 = new m8(n8Var3, albumID4, 0);
-                                                                                                                        d34Var.getClass();
-                                                                                                                        d34.K(null, id2, null, m8Var2);
-                                                                                                                        albumID4.setStarred(null);
-                                                                                                                        k03Var2.i(albumID4);
-                                                                                                                    } else {
-                                                                                                                        d34Var.J(null, albumID4.getId(), false, null);
-                                                                                                                        albumID4.setStarred(null);
-                                                                                                                        k03Var2.i(albumID4);
-                                                                                                                    }
-                                                                                                                    break;
-                                                                                                                }
-                                                                                                                break;
-                                                                                                        }
-                                                                                                    }
-                                                                                                });
-                                                                                                Drawable overflowIcon = ((MaterialToolbar) this.l0.n).getOverflowIcon();
-                                                                                                Objects.requireNonNull(overflowIcon);
-                                                                                                overflowIcon.setTint(Z().getResources().getColor(R.color.titleTextColor, null));
-                                                                                                ((FrameLayout) this.l0.k).setOnClickListener(new View.OnClickListener(this) { // from class: k8
-                                                                                                    public final /* synthetic */ AlbumPageFragment o;
-
-                                                                                                    {
-                                                                                                        this.o = this;
-                                                                                                    }
-
-                                                                                                    @Override // android.view.View.OnClickListener
-                                                                                                    public final void onClick(View view) {
-                                                                                                        int i8 = i6;
-                                                                                                        AlbumPageFragment albumPageFragment = this.o;
-                                                                                                        switch (i8) {
-                                                                                                            case 0:
-                                                                                                                albumPageFragment.m0.T.o();
-                                                                                                                break;
-                                                                                                            case 1:
-                                                                                                                int visibility = albumPageFragment.l0.a.getVisibility();
-                                                                                                                pc1 pc1Var = albumPageFragment.l0;
-                                                                                                                if (visibility == 8) {
-                                                                                                                    pc1Var.a.setVisibility(0);
-                                                                                                                    albumPageFragment.l0.e.setMaxLines(Integer.MAX_VALUE);
-                                                                                                                } else if (pc1Var.a.getVisibility() == 0) {
-                                                                                                                    albumPageFragment.l0.a.setVisibility(8);
-                                                                                                                    albumPageFragment.l0.e.setMaxLines(2);
-                                                                                                                }
-                                                                                                                break;
-                                                                                                            case 2:
-                                                                                                                albumPageFragment.i0();
-                                                                                                                n8 n8Var2 = albumPageFragment.n0;
-                                                                                                                pa paVar = n8Var2.d;
-                                                                                                                String str2 = n8Var2.g;
-                                                                                                                paVar.getClass();
-                                                                                                                k03 k03Var = new k03();
-                                                                                                                App.f(false).c().i(str2).enqueue(new p8(k03Var, 1));
-                                                                                                                albumPageFragment.r0 = k03Var;
-                                                                                                                albumPageFragment.s0 = new g8(albumPageFragment, 5);
-                                                                                                                k03Var.e(albumPageFragment.v(), albumPageFragment.s0);
-                                                                                                                break;
-                                                                                                            default:
-                                                                                                                n8 n8Var3 = albumPageFragment.n0;
-                                                                                                                d34 d34Var = n8Var3.e;
-                                                                                                                k03 k03Var2 = n8Var3.h;
-                                                                                                                AlbumID3 albumID4 = (AlbumID3) k03Var2.d();
-                                                                                                                if (albumID4 != null) {
-                                                                                                                    if (!n61.f(2, albumID4.getId(), albumID4.getStarred() != null)) {
-                                                                                                                        if (!hw.t()) {
-                                                                                                                            String id = albumID4.getId();
-                                                                                                                            m8 m8Var = new m8(n8Var3, albumID4, 1);
-                                                                                                                            d34Var.getClass();
-                                                                                                                            d34.I(null, id, null, m8Var);
-                                                                                                                            albumID4.setStarred(new Date());
-                                                                                                                            k03Var2.i(albumID4);
-                                                                                                                        } else {
-                                                                                                                            d34Var.J(null, albumID4.getId(), true, null);
-                                                                                                                            albumID4.setStarred(new Date());
-                                                                                                                            k03Var2.i(albumID4);
-                                                                                                                        }
-                                                                                                                    } else if (!hw.t()) {
-                                                                                                                        String id2 = albumID4.getId();
-                                                                                                                        m8 m8Var2 = new m8(n8Var3, albumID4, 0);
-                                                                                                                        d34Var.getClass();
-                                                                                                                        d34.K(null, id2, null, m8Var2);
-                                                                                                                        albumID4.setStarred(null);
-                                                                                                                        k03Var2.i(albumID4);
-                                                                                                                    } else {
-                                                                                                                        d34Var.J(null, albumID4.getId(), false, null);
-                                                                                                                        albumID4.setStarred(null);
-                                                                                                                        k03Var2.i(albumID4);
-                                                                                                                    }
-                                                                                                                    break;
-                                                                                                                }
-                                                                                                                break;
-                                                                                                        }
-                                                                                                    }
-                                                                                                });
-                                                                                                App.b().getClass();
-                                                                                                if (App.c().getBoolean("album_detail", false)) {
-                                                                                                    this.l0.a.setVisibility(0);
-                                                                                                }
-                                                                                                this.l0.c.setOnClickListener(new View.OnClickListener(this) { // from class: k8
-                                                                                                    public final /* synthetic */ AlbumPageFragment o;
-
-                                                                                                    {
-                                                                                                        this.o = this;
-                                                                                                    }
-
-                                                                                                    @Override // android.view.View.OnClickListener
-                                                                                                    public final void onClick(View view) {
-                                                                                                        int i8 = i5;
-                                                                                                        AlbumPageFragment albumPageFragment = this.o;
-                                                                                                        switch (i8) {
-                                                                                                            case 0:
-                                                                                                                albumPageFragment.m0.T.o();
-                                                                                                                break;
-                                                                                                            case 1:
-                                                                                                                int visibility = albumPageFragment.l0.a.getVisibility();
-                                                                                                                pc1 pc1Var = albumPageFragment.l0;
-                                                                                                                if (visibility == 8) {
-                                                                                                                    pc1Var.a.setVisibility(0);
-                                                                                                                    albumPageFragment.l0.e.setMaxLines(Integer.MAX_VALUE);
-                                                                                                                } else if (pc1Var.a.getVisibility() == 0) {
-                                                                                                                    albumPageFragment.l0.a.setVisibility(8);
-                                                                                                                    albumPageFragment.l0.e.setMaxLines(2);
-                                                                                                                }
-                                                                                                                break;
-                                                                                                            case 2:
-                                                                                                                albumPageFragment.i0();
-                                                                                                                n8 n8Var2 = albumPageFragment.n0;
-                                                                                                                pa paVar = n8Var2.d;
-                                                                                                                String str2 = n8Var2.g;
-                                                                                                                paVar.getClass();
-                                                                                                                k03 k03Var = new k03();
-                                                                                                                App.f(false).c().i(str2).enqueue(new p8(k03Var, 1));
-                                                                                                                albumPageFragment.r0 = k03Var;
-                                                                                                                albumPageFragment.s0 = new g8(albumPageFragment, 5);
-                                                                                                                k03Var.e(albumPageFragment.v(), albumPageFragment.s0);
-                                                                                                                break;
-                                                                                                            default:
-                                                                                                                n8 n8Var3 = albumPageFragment.n0;
-                                                                                                                d34 d34Var = n8Var3.e;
-                                                                                                                k03 k03Var2 = n8Var3.h;
-                                                                                                                AlbumID3 albumID4 = (AlbumID3) k03Var2.d();
-                                                                                                                if (albumID4 != null) {
-                                                                                                                    if (!n61.f(2, albumID4.getId(), albumID4.getStarred() != null)) {
-                                                                                                                        if (!hw.t()) {
-                                                                                                                            String id = albumID4.getId();
-                                                                                                                            m8 m8Var = new m8(n8Var3, albumID4, 1);
-                                                                                                                            d34Var.getClass();
-                                                                                                                            d34.I(null, id, null, m8Var);
-                                                                                                                            albumID4.setStarred(new Date());
-                                                                                                                            k03Var2.i(albumID4);
-                                                                                                                        } else {
-                                                                                                                            d34Var.J(null, albumID4.getId(), true, null);
-                                                                                                                            albumID4.setStarred(new Date());
-                                                                                                                            k03Var2.i(albumID4);
-                                                                                                                        }
-                                                                                                                    } else if (!hw.t()) {
-                                                                                                                        String id2 = albumID4.getId();
-                                                                                                                        m8 m8Var2 = new m8(n8Var3, albumID4, 0);
-                                                                                                                        d34Var.getClass();
-                                                                                                                        d34.K(null, id2, null, m8Var2);
-                                                                                                                        albumID4.setStarred(null);
-                                                                                                                        k03Var2.i(albumID4);
-                                                                                                                    } else {
-                                                                                                                        d34Var.J(null, albumID4.getId(), false, null);
-                                                                                                                        albumID4.setStarred(null);
-                                                                                                                        k03Var2.i(albumID4);
-                                                                                                                    }
-                                                                                                                    break;
-                                                                                                                }
-                                                                                                                break;
-                                                                                                        }
-                                                                                                    }
-                                                                                                });
-                                                                                                n8 n8Var2 = this.n0;
-                                                                                                rv2 rv2Var2 = n8Var2.c;
-                                                                                                String str2 = n8Var2.f;
-                                                                                                rv2Var2.getClass();
-                                                                                                k03 k03Var = new k03();
-                                                                                                gp3 gp3VarC = App.f(false).c();
-                                                                                                gp3VarC.getClass();
-                                                                                                Log.d("BrowsingClient", "getAlbumInfo2()");
-                                                                                                ((ov) gp3VarC.p).d(((pn4) gp3VarC.o).f(), str2).enqueue(new q8(k03Var, i));
-                                                                                                k03Var.e(v(), new g8(this, i6));
-                                                                                                this.n0.i.e(v(), new g8(this, i5));
-                                                                                                this.n0.h.e(v(), new g8(this, 8));
-                                                                                                RecyclerView recyclerView2 = (RecyclerView) this.l0.q;
-                                                                                                Z();
-                                                                                                recyclerView2.setLayoutManager(new LinearLayoutManager(1));
-                                                                                                ((RecyclerView) this.l0.q).setHasFixedSize(true);
-                                                                                                ((RecyclerView) this.l0.q).setClipToPadding(false);
-                                                                                                ((RecyclerView) this.l0.q).post(new a0(i7, this));
-                                                                                                if (((LinearLayout) this.l0.b).findViewById(R.id.album_info_scroll_view) != null) {
-                                                                                                    ((RecyclerView) this.l0.q).j(new l8((NestedScrollView) ((LinearLayout) this.l0.b).findViewById(R.id.album_info_scroll_view), 0));
-                                                                                                }
-                                                                                                this.n0.h.e(v(), new g8(this, 6));
-                                                                                                return linearLayout;
-                                                                                            }
-                                                                                            MainActivity mainActivity2 = this.m0;
-                                                                                            if (mainActivity2 != null && (v23Var = mainActivity2.T) != null) {
-                                                                                                v23Var.o();
-                                                                                            }
-                                                                                        }
-                                                                                        return linearLayout;
-                                                                                    }
-                                                                                }
-                                                                                i2 = i4;
-                                                                            } else {
-                                                                                i2 = R.id.button_favorite;
-                                                                            }
-                                                                        } else {
-                                                                            i2 = i3;
-                                                                        }
-                                                                    } else {
-                                                                        i2 = i3;
-                                                                    }
-                                                                } else {
-                                                                    i2 = i3;
-                                                                }
-                                                            } else {
-                                                                i2 = i3;
-                                                            }
-                                                        } else {
-                                                            i2 = i3;
-                                                        }
-                                                    } else {
-                                                        i2 = i3;
-                                                    }
-                                                } else {
-                                                    i2 = i3;
-                                                }
-                                            } else {
-                                                i2 = i3;
-                                            }
-                                        } else {
-                                            i2 = i3;
-                                        }
-                                    } else {
-                                        i2 = i3;
-                                    }
-                                } else {
-                                    i2 = i3;
-                                }
-                            } else {
-                                i2 = i3;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i2)));
+    public final View H(LayoutInflater r25, ViewGroup r26, Bundle r27) {
+        this.m0 = (MainActivity) l();
+        final int r2 = 0;
+        View r1 = r25.inflate(R.layout.fragment_album_page, r26, false);
+        int r3 = R.id.album_artist_label;
+        TextView r7 = (TextView) uo.s(r1, R.id.album_artist_label);
+        if (r7 == null) goto L86;
+        r3 = R.id.album_bio_label;
+        if (((TextView) uo.s(r1, R.id.album_bio_label)) == null) goto L86;
+        r3 = R.id.album_cover_image_view;
+        ImageView r8 = (ImageView) uo.s(r1, R.id.album_cover_image_view);
+        if (r8 == null) goto L86;
+        r3 = R.id.album_detail_view;
+        ConstraintLayout r9 = (ConstraintLayout) uo.s(r1, R.id.album_detail_view);
+        if (r9 == null) goto L86;
+        r3 = R.id.album_genres_textview;
+        TextView r10 = (TextView) uo.s(r1, R.id.album_genres_textview);
+        if (r10 == null) goto L86;
+        NestedScrollView r5 = (NestedScrollView) uo.s(r1, R.id.album_info_scroll_view);
+        int r6 = R.id.album_info_sector;
+        if (((ConstraintLayout) uo.s(r1, R.id.album_info_sector)) == null) goto L85;
+        r6 = R.id.album_name_label;
+        TextView r11 = (TextView) uo.s(r1, R.id.album_name_label);
+        if (r11 == null) goto L85;
+        r6 = R.id.album_notes_textview;
+        TextView r12 = (TextView) uo.s(r1, R.id.album_notes_textview);
+        if (r12 == null) goto L85;
+        r6 = R.id.album_other_info_button;
+        FrameLayout r13 = (FrameLayout) uo.s(r1, R.id.album_other_info_button);
+        if (r13 == null) goto L85;
+        r6 = R.id.album_page_button_layout;
+        if (((LinearLayout) uo.s(r1, R.id.album_page_button_layout)) == null) goto L85;
+        r6 = R.id.album_page_play_button;
+        Button r14 = (Button) uo.s(r1, R.id.album_page_play_button);
+        if (r14 == null) goto L85;
+        r6 = R.id.album_page_shuffle_button;
+        Button r15 = (Button) uo.s(r1, R.id.album_page_shuffle_button);
+        if (r15 == null) goto L85;
+        r6 = R.id.album_release_year_label;
+        TextView r16 = (TextView) uo.s(r1, R.id.album_release_year_label);
+        if (r16 == null) goto L85;
+        r6 = R.id.album_release_years_textview;
+        TextView r17 = (TextView) uo.s(r1, R.id.album_release_years_textview);
+        if (r17 == null) goto L85;
+        r6 = R.id.album_song_count_duration_textview;
+        TextView r18 = (TextView) uo.s(r1, R.id.album_song_count_duration_textview);
+        if (r18 == null) goto L85;
+        r6 = R.id.anim_toolbar;
+        MaterialToolbar r19 = (MaterialToolbar) uo.s(r1, R.id.anim_toolbar);
+        if (r19 == null) goto L85;
+        r6 = R.id.app_bar_layout;
+        if (((AppBarLayout) uo.s(r1, R.id.app_bar_layout)) == null) goto L85;
+        r6 = R.id.bottom_button_divider;
+        View r20 = uo.s(r1, R.id.bottom_button_divider);
+        if (r20 == null) goto L85;
+        if (((ToggleButton) uo.s(r1, R.id.button_favorite)) == null) goto L84;
+        int r21 = R.id.song_recycler_view;
+        RecyclerView r22 = (RecyclerView) uo.s(r1, R.id.song_recycler_view);
+        if (r22 == null) goto L83;
+        r21 = R.id.upper_button_divider;
+        View r23 = uo.s(r1, R.id.upper_button_divider);
+        if (r23 == null) goto L83;
+        LinearLayout r24 = (LinearLayout) r1;
+        this.l0 = new pc1(r24, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r22, r23);
+        nc1 r28 = X();
+        e75 r29 = r28.d();
+        b75 r30 = gh0.r(r28);
+        bq4 r31 = new bq4(r29, r30, b11.e(r28, r30));
+        i30 r32 = kx3.a(n8.class);
+        String r33 = r32.b();
+        if (r33 == null) goto L81;
+        this.n0 = (n8) r31.l(r32, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r33));
+        nc1 r34 = X();
+        e75 r35 = r34.d();
+        b75 r36 = gh0.r(r34);
+        bq4 r110 = new bq4(r35, r36, b11.e(r34, r36));
+        i30 r37 = kx3.a(li3.class);
+        String r38 = r37.b();
+        if (r38 == null) goto L79;
+        this.o0 = (li3) r110.l(r37, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r38));
+        Bundle r39 = this.s;
+        if (r39 != null) goto L56;
+        Log.e("AlbumPageFragment", "Arguments are null after process restoration.");
+        MainActivity r0 = this.m0;
+        if (r0 == null) goto L63;
+        v23 r4 = r0.T;
+        if (r4 == null) goto L63;
+        r4.o();
+        return r24;
+    L63:
+        return r24;
+    L56:
+        AlbumID3 r40 = (AlbumID3) r39.getParcelable("ALBUM_OBJECT");
+        if (r40 != null) goto L64;
+        MainActivity r41 = this.m0;
+        if (r41 == null) goto L63;
+        v23 r42 = r41.T;
+        if (r42 == null) goto L63;
+        r42.o();
+        goto L63
+    L64:
+        n8 r43 = this.n0;
+        le1 r44 = v();
+        r43.getClass();
+        r43.f = r40.getId();
+        r43.h.i(r40);
+        r43.g = r40.getArtistId();
+        rv2 r45 = r43.c;
+        String r111 = r43.f;
+        r45.getClass();
+        r43.i = rv2.l(r111);
+        final int r112 = 2;
+        rv2.j(r40.getId()).e(r44, new d8(r112, r43));
+        ToggleButton r46 = (ToggleButton) r24.findViewById(R.id.button_favorite);
+        String r47 = r40.getId();
+        final int r48 = 1;
+        if (r40.getStarred() == null) goto L67;
+        boolean r49 = true;
+    L68:
+        r46.setChecked(n61.f(2, r47, r49));
+        final int r50 = 3;
+        r46.setOnClickListener(new k8(this, r50));
+        this.n0.h.e(v(), new d8(r48, r46));
+        this.m0.o((MaterialToolbar) this.l0.n);
+        if (this.m0.n() == null) goto L71;
+        this.m0.n().f0(true);
+        this.m0.n().g0();
+    L71:
+        this.n0.h.e(v(), new g8(this, 7));
+        ((MaterialToolbar) this.l0.n).setNavigationOnClickListener(new k8(this, r2));
+        Drawable r51 = ((MaterialToolbar) this.l0.n).getOverflowIcon();
+        Objects.requireNonNull(r51);
+        r51.setTint(Z().getResources().getColor(R.color.titleTextColor, null));
+        ((FrameLayout) this.l0.k).setOnClickListener(new k8(this, r48));
+        App.b().getClass();
+        if (App.c().getBoolean("album_detail", false) == false) goto L74;
+        this.l0.a.setVisibility(0);
+    L74:
+        this.l0.c.setOnClickListener(new k8(this, r112));
+        n8 r52 = this.n0;
+        rv2 r53 = r52.c;
+        String r54 = r52.f;
+        r53.getClass();
+        k03 r55 = new k03();
+        gp3 r56 = App.f(false).c();
+        r56.getClass();
+        Log.d("BrowsingClient", "getAlbumInfo2()");
+        ((ov) r56.p).d(((pn4) r56.o).f(), r54).enqueue(new q8(r55, r2));
+        r55.e(v(), new g8(this, r48));
+        this.n0.i.e(v(), new g8(this, r112));
+        this.n0.h.e(v(), new g8(this, 8));
+        RecyclerView r57 = (RecyclerView) this.l0.q;
+        Z();
+        r57.setLayoutManager(new LinearLayoutManager(1));
+        ((RecyclerView) this.l0.q).setHasFixedSize(true);
+        ((RecyclerView) this.l0.q).setClipToPadding(false);
+        ((RecyclerView) this.l0.q).post(new a0(r50, this));
+        if (((LinearLayout) this.l0.b).findViewById(R.id.album_info_scroll_view) == null) goto L77;
+        ((RecyclerView) this.l0.q).j(new l8((NestedScrollView) ((LinearLayout) this.l0.b).findViewById(R.id.album_info_scroll_view), 0));
+    L77:
+        this.n0.h.e(v(), new g8(this, 6));
+        return r24;
+    L67:
+        r49 = false;
+        goto L68
+    L79:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L81:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L83:
+        r3 = r21;
+        goto L86
+    L84:
+        r3 = R.id.button_favorite;
+    L85:
+        r3 = r6;
+    L86:
+        nz2.n("Missing required view with ID: ".concat(r1.getResources().getResourceName(r3)));
         return null;
     }
 
@@ -644,73 +303,87 @@ public class AlbumPageFragment extends kc1 implements ClickCallback {
     }
 
     @Override // defpackage.kc1
-    public final boolean N(MenuItem menuItem) {
-        if (menuItem.getItemId() == R.id.action_rate_album) {
-            Bundle bundle = new Bundle();
-            bundle.putParcelable("ALBUM_OBJECT", ((AlbumID3) this.n0.h.d()).strippedForNav());
-            ou3 ou3Var = new ou3();
-            ou3Var.c0(bundle);
-            ou3Var.m0(X().k(), null);
-            return true;
-        }
-        if (menuItem.getItemId() == R.id.action_download_album) {
-            List list = (List) this.n0.i.d();
-            if (list != null && !list.isEmpty()) {
-                if (ud3.o() == null) {
-                    au0.w(Z()).a(gi1.H(list), (List) list.stream().map(new hu3(6)).collect(Collectors.toList()), false);
-                    return true;
-                }
-                list.forEach(new d7(1, this));
-                return true;
-            }
-        } else if (menuItem.getItemId() == R.id.action_add_to_playlist) {
-            List list2 = (List) this.n0.i.d();
-            if (list2 != null && !list2.isEmpty()) {
-                Bundle bundle2 = new Bundle();
-                bundle2.putParcelableArrayList("TRACKS_OBJECT", new ArrayList<>(list2));
-                fl3 fl3Var = new fl3();
-                fl3Var.c0(bundle2);
-                fl3Var.m0(X().k(), null);
-                return true;
-            }
-        } else {
-            if (menuItem.getItemId() != R.id.action_play_next && menuItem.getItemId() != R.id.action_add_to_queue) {
-                return false;
-            }
-            boolean z = menuItem.getItemId() == R.id.action_play_next;
-            List list3 = (List) this.n0.i.d();
-            if (list3 != null && !list3.isEmpty()) {
-                bo2.e(this.q0, list3, z);
-                ((au) this.m0.V.n).d(true);
-            }
-        }
+    public final boolean N(MenuItem r6) {
+        if (r6.getItemId() != R.id.action_rate_album) goto L6;
+        Bundle r7 = new Bundle();
+        r7.putParcelable("ALBUM_OBJECT", ((AlbumID3) this.n0.h.d()).strippedForNav());
+        ou3 r0 = new ou3();
+        r0.c0(r7);
+        r0.m0(X().k(), null);
         return true;
+    L6:
+        boolean r4 = false;
+        if (r6.getItemId() != R.id.action_download_album) goto L20;
+        List r8 = (List) this.n0.i.d();
+        if (r8 != null) goto L11;
+    L43:
+        return true;
+    L11:
+        if (r8.isEmpty() == true) goto L43;
+        if (ud3.o() != null) goto L17;
+        au0.w(Z()).a(gi1.H(r8), (List) r8.stream().map(new hu3(6)).collect(Collectors.toList()), false);
+        return true;
+    L17:
+        r8.forEach(new d7(1, this));
+        return true;
+    L20:
+        if (r6.getItemId() != R.id.action_add_to_playlist) goto L29;
+        List r9 = (List) this.n0.i.d();
+        if (r9 == null) goto L43;
+        if (r9.isEmpty() == true) goto L43;
+        Bundle r1 = new Bundle();
+        r1.putParcelableArrayList("TRACKS_OBJECT", new ArrayList(r9));
+        fl3 r10 = new fl3();
+        r10.c0(r1);
+        r10.m0(X().k(), null);
+        return true;
+    L29:
+        if (r6.getItemId() == R.id.action_play_next) goto L35;
+        if (r6.getItemId() == R.id.action_add_to_queue) goto L35;
+        return false;
+    L35:
+        if (r6.getItemId() != R.id.action_play_next) goto L37;
+        r4 = true;
+    L37:
+        List r11 = (List) this.n0.i.d();
+        if (r11 == null) goto L43;
+        if (r11.isEmpty() == true) goto L43;
+        bo2.e(this.q0, r11, r4);
+        ((au) this.m0.V.n).d(true);
+        goto L43
     }
 
     @Override // defpackage.kc1
     public final void P() {
         this.R = true;
-        ni4 ni4Var = this.p0;
-        if (ni4Var != null) {
-            ni4Var.A = this.q0;
-        }
+        ni4 r0 = this.p0;
+        if (r0 == null) goto L6;
+        r0.A = this.q0;
+        return;
     }
 
     @Override // defpackage.kc1
     public final void R() {
         this.R = true;
-        Context contextZ = Z();
-        cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
-        Bundle bundle = Bundle.EMPTY;
-        aj2 aj2Var = new aj2();
-        Looper looperX = f35.x();
-        bl2 bl2Var = new bl2(looperX);
-        int i = 4;
-        b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, cb4Var.a.e() ? new xc5(4, new fi0(new x7(contextZ))) : null), new Handler(looperX));
-        this.q0 = bl2Var;
-        bo2.j(bl2Var, this.o0);
+        Context r2 = Z();
+        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
+        Bundle r4 = Bundle.EMPTY;
+        aj2 r5 = new aj2();
+        Looper r6 = f35.x();
+        bl2 r7 = new bl2(r6);
+        int r9 = 4;
+        if (r3.a.e() == false) goto L6;
+        xc5 r0 = new xc5(4, new fi0(new x7(r2)));
+    L7:
+        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
+        this.q0 = r7;
+        bo2.j(r7, this.o0);
         this.o0.b.e(v(), new g8(this, 0));
-        this.o0.c.e(v(), new g8(this, i));
+        this.o0.c.e(v(), new g8(this, r9));
+        return;
+    L6:
+        r0 = null;
+        goto L7
     }
 
     @Override // defpackage.kc1
@@ -720,31 +393,41 @@ public class AlbumPageFragment extends kc1 implements ClickCallback {
     }
 
     public final void h0() {
-        if (this.p0 != null) {
-            String str = (String) this.o0.b.d();
-            Boolean bool = (Boolean) this.o0.c.d();
-            this.p0.s(str, bool != null && bool.booleanValue());
-        }
+        if (this.p0 == null) goto L12;
+        String r0 = (String) this.o0.b.d();
+        Boolean r1 = (Boolean) this.o0.c.d();
+        ni4 r2 = this.p0;
+        if (r1 != null) goto L7;
+    L9:
+        boolean r3 = false;
+    L10:
+        r2.s(r0, r3);
+        return;
+    L7:
+        if (r1.booleanValue() == false) goto L9;
+        r3 = true;
+        goto L10
     }
 
     public final void i0() {
-        g8 g8Var;
-        k03 k03Var = this.r0;
-        if (k03Var != null && (g8Var = this.s0) != null) {
-            k03Var.j(g8Var);
-        }
+        k03 r0 = this.r0;
+        if (r0 == null) goto L7;
+        g8 r1 = this.s0;
+        if (r1 == null) goto L7;
+        r0.j(r1);
+    L7:
         this.r0 = null;
         this.s0 = null;
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMediaClick(Bundle bundle) {
-        bo2.q(this.q0, bundle.getParcelableArrayList("TRACKS_OBJECT"), bundle.getInt("ITEM_POSITION"), "album");
+    public final void onMediaClick(Bundle r4) {
+        bo2.q(this.q0, r4.getParcelableArrayList("TRACKS_OBJECT"), r4.getInt("ITEM_POSITION"), "album");
         ((au) this.m0.V.n).d(true);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMediaLongClick(Bundle bundle) {
-        gb.x(a0()).m(R.id.songBottomSheetDialog, bundle, null);
+    public final void onMediaLongClick(Bundle r3) {
+        gb.x(a0()).m(R.id.songBottomSheetDialog, r3, null);
     }
 }

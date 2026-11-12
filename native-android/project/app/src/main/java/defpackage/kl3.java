@@ -4,7 +4,6 @@ import com.eddyizm.tempus.subsonic.models.Playlist;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CancellationException;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -12,213 +11,300 @@ public final /* synthetic */ class kl3 implements if1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ kl3(int i, Object obj) {
-        this.n = i;
-        this.o = obj;
+    public /* synthetic */ kl3(int r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object obj) throws Exception {
-        Boolean boolValueOf;
-        int i = this.n;
-        String str = null;
-        Object obj2 = this.o;
-        switch (i) {
-            case 0:
-                ml3 ml3Var = (ml3) obj2;
-                Object obj3 = ml3Var.c;
-                z34 z34VarU = ((x34) obj).U("SELECT * FROM playlist");
-                try {
-                    int iE = rr2.E(z34VarU, "id");
-                    int iE2 = rr2.E(z34VarU, "name");
-                    int iE3 = rr2.E(z34VarU, "duration");
-                    int iE4 = rr2.E(z34VarU, "coverArt");
-                    int iE5 = rr2.E(z34VarU, "comment");
-                    int iE6 = rr2.E(z34VarU, "owner");
-                    int iE7 = rr2.E(z34VarU, "isUniversal");
-                    int iE8 = rr2.E(z34VarU, "songCount");
-                    int iE9 = rr2.E(z34VarU, "created");
-                    int iE10 = rr2.E(z34VarU, "changed");
-                    int iE11 = rr2.E(z34VarU, "lastPlayed");
-                    int iE12 = rr2.E(z34VarU, "allowedUsers");
-                    ArrayList arrayList = new ArrayList();
-                    while (z34VarU.O()) {
-                        Playlist playlist = new Playlist(z34VarU.isNull(iE) ? str : z34VarU.D(iE), z34VarU.isNull(iE2) ? str : z34VarU.D(iE2), z34VarU.getLong(iE3), z34VarU.isNull(iE4) ? str : z34VarU.D(iE4));
-                        playlist.setComment(z34VarU.isNull(iE5) ? null : z34VarU.D(iE5));
-                        playlist.setOwner(z34VarU.isNull(iE6) ? null : z34VarU.D(iE6));
-                        Integer numValueOf = z34VarU.isNull(iE7) ? null : Integer.valueOf((int) z34VarU.getLong(iE7));
-                        if (numValueOf == null) {
-                            boolValueOf = null;
-                        } else {
-                            boolValueOf = Boolean.valueOf(numValueOf.intValue() != 0);
-                        }
-                        playlist.setUniversal(boolValueOf);
-                        playlist.setSongCount((int) z34VarU.getLong(iE8));
-                        playlist.setCreated(i80.B(z34VarU.isNull(iE9) ? null : Long.valueOf(z34VarU.getLong(iE9))));
-                        playlist.setChanged(i80.B(z34VarU.isNull(iE10) ? null : Long.valueOf(z34VarU.getLong(iE10))));
-                        playlist.setLastPlayed(z34VarU.getLong(iE11));
-                        playlist.setAllowedUsers(((si1) ml3Var.d).E(z34VarU.isNull(iE12) ? null : z34VarU.D(iE12)));
-                        arrayList.add(playlist);
-                        iE2 = iE2;
-                        iE3 = iE3;
-                        str = null;
-                        iE = iE;
-                        break;
-                    }
-                    return arrayList;
-                } finally {
-                    z34VarU.close();
-                }
-            case 1:
-                ((z80) obj2).y(obj);
-                return j15.a;
-            case 2:
-                tv3 tv3Var = (tv3) obj2;
-                Throwable th = (Throwable) obj;
-                CancellationException cancellationException = new CancellationException("Recomposer effect job completed");
-                cancellationException.initCause(th);
-                synchronized (tv3Var.c) {
-                    try {
-                        s22 s22Var = tv3Var.d;
-                        if (s22Var != null) {
-                            nl4 nl4Var = tv3Var.u;
-                            ov3 ov3Var = ov3.o;
-                            nl4Var.getClass();
-                            nl4Var.j(null, ov3Var);
-                            s22Var.f(cancellationException);
-                            tv3Var.r = null;
-                            s22Var.M(new o(26, tv3Var, th));
-                        } else {
-                            tv3Var.e = cancellationException;
-                            nl4 nl4Var2 = tv3Var.u;
-                            ov3 ov3Var2 = ov3.n;
-                            nl4Var2.getClass();
-                            nl4Var2.j(null, ov3Var2);
-                        }
-                    } catch (Throwable th2) {
-                        throw th2;
-                    }
-                }
-                return j15.a;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                we1 we1Var = (we1) obj;
-                we1Var.getClass();
-                ((p24) obj2).g = we1Var;
-                return j15.a;
-            case 4:
-                li0 li0Var = (li0) obj;
-                li0Var.getClass();
-                return ((s24) obj2).f(li0Var);
-            case 5:
-                x44 x44Var = ((w44) obj2).p;
-                return Boolean.valueOf(x44Var != null ? x44Var.b(obj) : true);
-            case 6:
-                g74 g74Var = (g74) obj2;
-                return new g83(g74Var.d(g74Var.k, ((g83) obj).a, g74Var.j));
-            case 7:
-                ((List) obj).add((Float) ((v82) obj2).invoke());
-                return true;
-            case 8:
-                obj.getClass();
-                return ((t5) obj2).invoke();
-            case 9:
-                we4 we4Var = (we4) obj2;
-                b24 b24Var = (b24) obj;
-                b24Var.c(we4Var.B);
-                b24Var.e(we4Var.C);
-                b24Var.b(we4Var.D);
-                float f = we4Var.E;
-                if (b24Var.t != f) {
-                    b24Var.n |= 2048;
-                    b24Var.t = f;
-                }
-                long j = we4Var.F;
-                long j2 = b24Var.u;
-                int i2 = tw4.b;
-                if (j2 != j) {
-                    b24Var.n |= 4096;
-                    b24Var.u = j;
-                }
-                ac4 ac4Var = we4Var.G;
-                if (!h12.c(b24Var.v, ac4Var)) {
-                    b24Var.n |= 8192;
-                    b24Var.v = ac4Var;
-                }
-                boolean z = we4Var.H;
-                if (b24Var.w != z) {
-                    b24Var.n |= 16384;
-                    b24Var.w = z;
-                }
-                long j3 = we4Var.I;
-                if (!x40.c(b24Var.r, j3)) {
-                    b24Var.n |= 64;
-                    b24Var.r = j3;
-                }
-                long j4 = we4Var.J;
-                if (!x40.c(b24Var.s, j4)) {
-                    b24Var.n |= 128;
-                    b24Var.s = j4;
-                }
-                int i3 = we4Var.K;
-                if (b24Var.B != i3) {
-                    b24Var.n |= 524288;
-                    b24Var.B = i3;
-                }
-                m62 m62Var = we4Var.L;
-                if (!h12.c(b24Var.y, m62Var)) {
-                    b24Var.n |= 1048576;
-                    b24Var.y = m62Var;
-                }
-                return j15.a;
-            case 10:
-                jf4 jf4Var = (jf4) obj2;
-                y94 y94Var = jf4Var.f;
-                y94Var.getClass();
-                if (!h12.c(jf4Var.f, y94Var)) {
-                    oo3.b("Requested a SingleSubscriptionSnapshotFlowManager to manage multiple subscriptions");
-                }
-                x03 x03Var = jf4Var.e;
-                Object obj4 = jf4Var.c;
-                if (x03Var != null) {
-                    if (obj4 != null) {
-                        oo3.b("workingSoleWatchedObject must be null when workingWatchSet is non-null");
-                    }
-                    x03Var.a(obj);
-                } else if (obj4 == null) {
-                    jf4Var.c = obj;
-                } else {
-                    x03 x03Var2 = w54.a;
-                    x03 x03Var3 = new x03();
-                    x03Var3.a(obj4);
-                    x03Var3.a(obj);
-                    jf4Var.e = x03Var3;
-                    jf4Var.c = null;
-                }
-                return j15.a;
-            case 11:
-                pp3 pp3Var = (pp3) obj2;
-                synchronized (pp3Var.h) {
-                    sh4 sh4Var = (sh4) pp3Var.j;
-                    sh4Var.getClass();
-                    Object obj5 = sh4Var.b;
-                    obj5.getClass();
-                    int i4 = sh4Var.d;
-                    p03 p03Var = sh4Var.c;
-                    if (p03Var == null) {
-                        p03Var = new p03();
-                        sh4Var.c = p03Var;
-                        sh4Var.f.l(obj5, p03Var);
-                    }
-                    sh4Var.b(obj, i4, obj5, p03Var);
-                }
-                return j15.a;
-            case 12:
-                vd vdVar = (vd) obj;
-                ((wf1) obj2).invoke(vdVar.e.getValue(), ((if1) p35.a.p).invoke(vdVar.f));
-                return j15.a;
-            default:
-                ((lu2) obj2).k(obj);
-                return j15.a;
-        }
+    public final Object invoke(Object r24) {
+        int r2 = this.n;
+        boolean r3 = true;
+        String r4 = null;
+        Object r0 = this.o;
+        switch(r2) {
+            case 0: goto L93;
+            case 1: goto L91;
+            case 2: goto L78;
+            case 3: goto L76;
+            case 4: goto L74;
+            case 5: goto L69;
+            case 6: goto L67;
+            case 7: goto L65;
+            case 8: goto L63;
+            case 9: goto L34;
+            case 10: goto L20;
+            case 11: goto L8;
+            case 12: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((lu2) r0).k(r24);
+        return j15.a;
+    L6:
+        vd r1 = (vd) r24;
+        ((wf1) r0).invoke(r1.e.getValue(), ((if1) p35.a.p).invoke(r1.f));
+        return j15.a;
+    L8:
+        pp3 r5 = (pp3) r0;
+        Object r6 = r5.h;
+        monitor-enter(r6);
+        sh4 r7 = (sh4) r5.j;     // Catch: Throwable -> L17
+        r7.getClass();     // Catch: Throwable -> L17
+        Object r8 = r7.b;     // Catch: Throwable -> L17
+        r8.getClass();     // Catch: Throwable -> L17
+        int r9 = r7.d;     // Catch: Throwable -> L17
+        p03 r10 = r7.c;     // Catch: Throwable -> L17
+        if (r10 != null) goto L13;
+        r10 = new p03();     // Catch: Throwable -> L17
+        r7.c = r10;     // Catch: Throwable -> L17
+        r7.f.l(r8, r10);     // Catch: Throwable -> L17
+    L13:
+        r7.b(r24, r9, r8, r10);     // Catch: Throwable -> L17
+        monitor-exit(r6);
+        return j15.a;
+    L17:
+        th = move-exception;
+        throw th;
+    L20:
+        jf4 r11 = (jf4) r0;
+        y94 r12 = r11.f;
+        r12.getClass();
+        if (h12.c(r11.f, r12) == true) goto L23;
+        oo3.b("Requested a SingleSubscriptionSnapshotFlowManager to manage multiple subscriptions");
+    L23:
+        x03 r13 = r11.e;
+        Object r14 = r11.c;
+        if (r13 != null) goto L28;
+        if (r14 != null) goto L27;
+        r11.c = r24;
+    L33:
+        return j15.a;
+    L27:
+        x03 r15 = w54.a;
+        x03 r16 = new x03();
+        r16.a(r14);
+        r16.a(r24);
+        r11.e = r16;
+        r11.c = null;
+        goto L33
+    L28:
+        if (r14 == null) goto L31;
+        oo3.b("workingSoleWatchedObject must be null when workingWatchSet is non-null");
+    L31:
+        r13.a(r24);
+        goto L33
+    L34:
+        we4 r17 = (we4) r0;
+        b24 r18 = (b24) r24;
+        r18.c(r17.B);
+        r18.e(r17.C);
+        r18.b(r17.D);
+        float r19 = r17.E;
+        if (r18.t == r19) goto L38;
+        r18.n |= 2048;
+        r18.t = r19;
+    L38:
+        long r20 = r17.F;
+        long r21 = r18.u;
+        int r22 = tw4.b;
+        if (r21 == r20) goto L42;
+        r18.n |= 4096;
+        r18.u = r20;
+    L42:
+        ac4 r23 = r17.G;
+        if (h12.c(r18.v, r23) == true) goto L45;
+        r18.n |= 8192;
+        r18.v = r23;
+    L45:
+        boolean r25 = r17.H;
+        if (r18.w == r25) goto L48;
+        r18.n |= 16384;
+        r18.w = r25;
+    L48:
+        long r26 = r17.I;
+        if (x40.c(r18.r, r26) == true) goto L51;
+        r18.n |= 64;
+        r18.r = r26;
+    L51:
+        long r27 = r17.J;
+        if (x40.c(r18.s, r27) == true) goto L54;
+        r18.n |= 128;
+        r18.s = r27;
+    L54:
+        int r28 = r17.K;
+        if (r18.B == r28) goto L58;
+        r18.n |= 524288;
+        r18.B = r28;
+    L58:
+        m62 r29 = r17.L;
+        if (h12.c(r18.y, r29) == true) goto L62;
+        r18.n |= 1048576;
+        r18.y = r29;
+    L62:
+        return j15.a;
+    L63:
+        r24.getClass();
+        return ((t5) r0).invoke();
+    L65:
+        ((List) r24).add((Float) ((v82) r0).invoke());
+        return true;
+    L67:
+        g74 r30 = (g74) r0;
+        return new g83(r30.d(r30.k, ((g83) r24).a, r30.j));
+    L69:
+        x44 r31 = ((w44) r0).p;
+        if (r31 == null) goto L73;
+        r3 = r31.b(r24);
+    L73:
+        return Boolean.valueOf(r3);
+    L74:
+        li0 r32 = (li0) r24;
+        r32.getClass();
+        return ((s24) r0).f(r32);
+    L76:
+        we1 r33 = (we1) r24;
+        r33.getClass();
+        ((p24) r0).g = r33;
+        return j15.a;
+    L78:
+        tv3 r34 = (tv3) r0;
+        Throwable r35 = (Throwable) r24;
+        CancellationException r36 = new CancellationException("Recomposer effect job completed");
+        r36.initCause(r35);
+        Object r37 = r34.c;
+        monitor-enter(r37);
+        s22 r38 = r34.d;     // Catch: Throwable -> L83
+        if (r38 == null) goto L85;
+        nl4 r39 = r34.u;     // Catch: Throwable -> L83
+        ov3 r40 = ov3.o;     // Catch: Throwable -> L83
+        r39.getClass();     // Catch: Throwable -> L83
+        r39.j(null, r40);     // Catch: Throwable -> L83
+        r38.f(r36);     // Catch: Throwable -> L83
+        r34.r = null;     // Catch: Throwable -> L83
+        r38.M(new o(26, r34, r35));     // Catch: Throwable -> L83
+    L86:
+        monitor-exit(r37);
+        return j15.a;
+    L85:
+        r34.e = r36;     // Catch: Throwable -> L83
+        nl4 r41 = r34.u;     // Catch: Throwable -> L83
+        ov3 r42 = ov3.n;     // Catch: Throwable -> L83
+        r41.getClass();     // Catch: Throwable -> L83
+        r41.j(null, r42);     // Catch: Throwable -> L83
+    L83:
+        th = move-exception;
+        throw th;
+    L91:
+        ((z80) r0).y(r24);
+        return j15.a;
+    L93:
+        ml3 r43 = (ml3) r0;
+        Object r44 = r43.c;
+        z34 r45 = ((x34) r24).U("SELECT * FROM playlist");
+        int r46 = rr2.E(r45, "id");     // Catch: Throwable -> L142
+        int r47 = rr2.E(r45, "name");     // Catch: Throwable -> L142
+        int r48 = rr2.E(r45, "duration");     // Catch: Throwable -> L142
+        int r49 = rr2.E(r45, "coverArt");     // Catch: Throwable -> L142
+        int r50 = rr2.E(r45, "comment");     // Catch: Throwable -> L142
+        int r51 = rr2.E(r45, "owner");     // Catch: Throwable -> L142
+        int r110 = rr2.E(r45, "isUniversal");     // Catch: Throwable -> L142
+        int r111 = rr2.E(r45, "songCount");     // Catch: Throwable -> L142
+        int r112 = rr2.E(r45, "created");     // Catch: Throwable -> L142
+        int r113 = rr2.E(r45, "changed");     // Catch: Throwable -> L142
+        int r114 = rr2.E(r45, "lastPlayed");     // Catch: Throwable -> L142
+        int r115 = rr2.E(r45, "allowedUsers");     // Catch: Throwable -> L142
+        ArrayList r52 = new ArrayList();     // Catch: Throwable -> L142
+    L95:
+        if (r45.O() == false) goto L144;
+        if (r45.isNull(r46) == false) goto L100;
+        String r116 = r4;
+    L102:
+        if (r45.isNull(r47) == false) goto L104;
+        String r117 = r4;
+    L105:
+        long r210 = r45.getLong(r48);     // Catch: Throwable -> L142
+        if (r45.isNull(r49) == false) goto L108;
+        String r211 = r4;
+    L109:
+        Playlist r118 = new Playlist(r116, r117, r210, r211);     // Catch: Throwable -> L142
+        if (r45.isNull(r50) == false) goto L112;
+        String r53 = null;
+    L113:
+        r118.setComment(r53);     // Catch: Throwable -> L142
+        if (r45.isNull(r51) == false) goto L116;
+        String r54 = null;
+    L117:
+        r118.setOwner(r54);     // Catch: Throwable -> L142
+        if (r45.isNull(r110) == false) goto L120;
+        Integer r55 = null;
+    L121:
+        if (r55 != null) goto L124;
+        Boolean r56 = null;
+    L128:
+        r118.setUniversal(r56);     // Catch: Throwable -> L142
+        r118.setSongCount((int) r45.getLong(r111));     // Catch: Throwable -> L142
+        if (r45.isNull(r112) == false) goto L131;
+        Long r57 = null;
+    L132:
+        r118.setCreated(i80.B(r57));     // Catch: Throwable -> L142
+        if (r45.isNull(r113) == false) goto L135;
+        Long r58 = null;
+    L136:
+        r118.setChanged(i80.B(r58));     // Catch: Throwable -> L142
+        r118.setLastPlayed(r45.getLong(r114));     // Catch: Throwable -> L142
+        if (r45.isNull(r115) == false) goto L139;
+        String r59 = null;
+    L140:
+        r118.setAllowedUsers(((si1) r43.d).E(r59));     // Catch: Throwable -> L142
+        r52.add(r118);     // Catch: Throwable -> L142
+        r47 = r47;
+        r48 = r48;
+        r4 = null;
+        r46 = r46;
+        goto L95
+    L139:
+        r59 = r45.D(r115);     // Catch: Throwable -> L142
+        goto L140
+    L135:
+        r58 = Long.valueOf(r45.getLong(r113));     // Catch: Throwable -> L142
+        goto L136
+    L131:
+        r57 = Long.valueOf(r45.getLong(r112));     // Catch: Throwable -> L142
+        goto L132
+    L124:
+        if (r55.intValue() == 0) goto L126;
+        boolean r60 = true;
+    L127:
+        r56 = Boolean.valueOf(r60);     // Catch: Throwable -> L142
+        goto L128
+    L126:
+        r60 = false;
+        goto L127
+    L120:
+        r55 = Integer.valueOf((int) r45.getLong(r110));     // Catch: Throwable -> L142
+        goto L121
+    L116:
+        r54 = r45.D(r51);     // Catch: Throwable -> L142
+        goto L117
+    L112:
+        r53 = r45.D(r50);     // Catch: Throwable -> L142
+        goto L113
+    L108:
+        r211 = r45.D(r49);     // Catch: Throwable -> L142
+        goto L109
+    L104:
+        r117 = r45.D(r47);     // Catch: Throwable -> L142
+        goto L105
+    L100:
+        r116 = r45.D(r46);     // Catch: Throwable -> L142
+        goto L102
+    L144:
+        r45.close();
+        return r52;
+    L142:
+        th = move-exception;
+        r45.close();
+        throw th;
     }
 }

@@ -3,7 +3,6 @@ package defpackage;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import app.homemusic.R;
 import com.eddyizm.tempus.interfaces.DialogClickCallback;
@@ -14,298 +13,87 @@ public final class us0 extends pp0 {
     public final /* synthetic */ int B0;
     public final DialogClickCallback C0;
 
-    public /* synthetic */ us0(DialogClickCallback dialogClickCallback, int i) {
-        this.B0 = i;
-        this.C0 = dialogClickCallback;
+    public /* synthetic */ us0(DialogClickCallback r1, int r2) {
+        this.B0 = r2;
+        this.C0 = r1;
     }
 
     @Override // defpackage.kc1
     public final void P() {
-        final int i = 0;
-        final int i2 = 1;
-        switch (this.B0) {
-            case 0:
-                this.R = true;
-                final f9 f9Var = (f9) this.w0;
-                if (f9Var != null) {
-                    f9Var.i(-1).setOnClickListener(new View.OnClickListener(this) { // from class: ts0
-                        public final /* synthetic */ us0 o;
-
-                        {
-                            this.o = this;
-                        }
-
-                        @Override // android.view.View.OnClickListener
-                        public final void onClick(View view) {
-                            int i3 = i;
-                            f9 f9Var2 = f9Var;
-                            us0 us0Var = this.o;
-                            switch (i3) {
-                                case 0:
-                                    ((qq0) us0Var.C0).onPositiveClick();
-                                    f9Var2.dismiss();
-                                    break;
-                                default:
-                                    ((qq0) us0Var.C0).onNegativeClick();
-                                    f9Var2.dismiss();
-                                    break;
-                            }
-                        }
-                    });
-                    f9Var.i(-2).setOnClickListener(new View.OnClickListener(this) { // from class: ts0
-                        public final /* synthetic */ us0 o;
-
-                        {
-                            this.o = this;
-                        }
-
-                        @Override // android.view.View.OnClickListener
-                        public final void onClick(View view) {
-                            int i3 = i2;
-                            f9 f9Var2 = f9Var;
-                            us0 us0Var = this.o;
-                            switch (i3) {
-                                case 0:
-                                    ((qq0) us0Var.C0).onPositiveClick();
-                                    f9Var2.dismiss();
-                                    break;
-                                default:
-                                    ((qq0) us0Var.C0).onNegativeClick();
-                                    f9Var2.dismiss();
-                                    break;
-                            }
-                        }
-                    });
-                }
-                break;
-            case 1:
-                this.R = true;
-                final f9 f9Var2 = (f9) this.w0;
-                if (f9Var2 != null) {
-                    f9Var2.i(-1).setOnClickListener(new View.OnClickListener(this) { // from class: wt0
-                        public final /* synthetic */ us0 o;
-
-                        {
-                            this.o = this;
-                        }
-
-                        @Override // android.view.View.OnClickListener
-                        public final void onClick(View view) {
-                            int i3 = i;
-                            f9 f9Var3 = f9Var2;
-                            us0 us0Var = this.o;
-                            switch (i3) {
-                                case 0:
-                                    if (ud3.p() != 1) {
-                                        ud3.j0(1);
-                                        au0.w(us0Var.Z()).g();
-                                        ((rm2) us0Var.C0).onPositiveClick();
-                                    }
-                                    f9Var3.dismiss();
-                                    break;
-                                case 1:
-                                    if (ud3.p() != 0) {
-                                        ud3.j0(0);
-                                        au0.w(us0Var.Z()).g();
-                                        ((rm2) us0Var.C0).onNegativeClick();
-                                    }
-                                    f9Var3.dismiss();
-                                    break;
-                                default:
-                                    if (ud3.p() != 2) {
-                                        ud3.j0(2);
-                                        au0.w(us0Var.Z()).g();
-                                        ((rm2) us0Var.C0).onNeutralClick();
-                                    }
-                                    f9Var3.dismiss();
-                                    break;
-                            }
-                        }
-                    });
-                    f9Var2.i(-2).setOnClickListener(new View.OnClickListener(this) { // from class: wt0
-                        public final /* synthetic */ us0 o;
-
-                        {
-                            this.o = this;
-                        }
-
-                        @Override // android.view.View.OnClickListener
-                        public final void onClick(View view) {
-                            int i3 = i2;
-                            f9 f9Var3 = f9Var2;
-                            us0 us0Var = this.o;
-                            switch (i3) {
-                                case 0:
-                                    if (ud3.p() != 1) {
-                                        ud3.j0(1);
-                                        au0.w(us0Var.Z()).g();
-                                        ((rm2) us0Var.C0).onPositiveClick();
-                                    }
-                                    f9Var3.dismiss();
-                                    break;
-                                case 1:
-                                    if (ud3.p() != 0) {
-                                        ud3.j0(0);
-                                        au0.w(us0Var.Z()).g();
-                                        ((rm2) us0Var.C0).onNegativeClick();
-                                    }
-                                    f9Var3.dismiss();
-                                    break;
-                                default:
-                                    if (ud3.p() != 2) {
-                                        ud3.j0(2);
-                                        au0.w(us0Var.Z()).g();
-                                        ((rm2) us0Var.C0).onNeutralClick();
-                                    }
-                                    f9Var3.dismiss();
-                                    break;
-                            }
-                        }
-                    });
-                    final int i3 = 2;
-                    f9Var2.i(-3).setOnClickListener(new View.OnClickListener(this) { // from class: wt0
-                        public final /* synthetic */ us0 o;
-
-                        {
-                            this.o = this;
-                        }
-
-                        @Override // android.view.View.OnClickListener
-                        public final void onClick(View view) {
-                            int i4 = i3;
-                            f9 f9Var3 = f9Var2;
-                            us0 us0Var = this.o;
-                            switch (i4) {
-                                case 0:
-                                    if (ud3.p() != 1) {
-                                        ud3.j0(1);
-                                        au0.w(us0Var.Z()).g();
-                                        ((rm2) us0Var.C0).onPositiveClick();
-                                    }
-                                    f9Var3.dismiss();
-                                    break;
-                                case 1:
-                                    if (ud3.p() != 0) {
-                                        ud3.j0(0);
-                                        au0.w(us0Var.Z()).g();
-                                        ((rm2) us0Var.C0).onNegativeClick();
-                                    }
-                                    f9Var3.dismiss();
-                                    break;
-                                default:
-                                    if (ud3.p() != 2) {
-                                        ud3.j0(2);
-                                        au0.w(us0Var.Z()).g();
-                                        ((rm2) us0Var.C0).onNeutralClick();
-                                    }
-                                    f9Var3.dismiss();
-                                    break;
-                            }
-                        }
-                    });
-                }
-                break;
-            default:
-                this.R = true;
-                final f9 f9Var3 = (f9) this.w0;
-                if (f9Var3 != null) {
-                    f9Var3.i(-1).setOnClickListener(new View.OnClickListener(this) { // from class: km4
-                        public final /* synthetic */ us0 o;
-
-                        {
-                            this.o = this;
-                        }
-
-                        @Override // android.view.View.OnClickListener
-                        public final void onClick(View view) {
-                            int i4 = i;
-                            f9 f9Var4 = f9Var3;
-                            us0 us0Var = this.o;
-                            switch (i4) {
-                                case 0:
-                                    if (ud3.G() != 1) {
-                                        ud3.B0(1);
-                                        ((ub4) us0Var.C0).onPositiveClick();
-                                    }
-                                    f9Var4.dismiss();
-                                    break;
-                                default:
-                                    if (ud3.G() != 0) {
-                                        ud3.B0(0);
-                                        ((ub4) us0Var.C0).onNegativeClick();
-                                    }
-                                    f9Var4.dismiss();
-                                    break;
-                            }
-                        }
-                    });
-                    f9Var3.i(-2).setOnClickListener(new View.OnClickListener(this) { // from class: km4
-                        public final /* synthetic */ us0 o;
-
-                        {
-                            this.o = this;
-                        }
-
-                        @Override // android.view.View.OnClickListener
-                        public final void onClick(View view) {
-                            int i4 = i2;
-                            f9 f9Var4 = f9Var3;
-                            us0 us0Var = this.o;
-                            switch (i4) {
-                                case 0:
-                                    if (ud3.G() != 1) {
-                                        ud3.B0(1);
-                                        ((ub4) us0Var.C0).onPositiveClick();
-                                    }
-                                    f9Var4.dismiss();
-                                    break;
-                                default:
-                                    if (ud3.G() != 0) {
-                                        ud3.B0(0);
-                                        ((ub4) us0Var.C0).onNegativeClick();
-                                    }
-                                    f9Var4.dismiss();
-                                    break;
-                            }
-                        }
-                    });
-                }
-                break;
-        }
+        final int r2 = 0;
+        final int r4 = 1;
+        switch(this.B0) {
+            case 0: goto L12;
+            case 1: goto L8;
+            default: goto L4;
+        };
+    L4:
+        this.R = true;
+        final f9 r0 = (f9) this.w0;
+        if (r0 == null) goto L16;
+        r0.i(-1).setOnClickListener(new km4(this, r0, r2));
+        r0.i(-2).setOnClickListener(new km4(this, r0, r4));
+        return;
+    L16:
+        return;
+    L8:
+        this.R = true;
+        final f9 r1 = (f9) this.w0;
+        if (r1 == null) goto L17;
+        r1.i(-1).setOnClickListener(new wt0(this, r1, r2));
+        r1.i(-2).setOnClickListener(new wt0(this, r1, r4));
+        final int r3 = 2;
+        r1.i(-3).setOnClickListener(new wt0(this, r1, r3));
+        return;
+    L17:
+        return;
+    L12:
+        this.R = true;
+        final f9 r5 = (f9) this.w0;
+        if (r5 == null) goto L18;
+        r5.i(-1).setOnClickListener(new ts0(this, r5, r2));
+        r5.i(-2).setOnClickListener(new ts0(this, r5, r4));
+        return;
     }
 
     @Override // defpackage.pp0
-    public final Dialog j0(Bundle bundle) {
-        switch (this.B0) {
-            case 0:
-                View viewInflate = o().inflate(R.layout.dialog_download_directory, (ViewGroup) null, false);
-                if (viewInflate == null) {
-                    nz2.n("rootView");
-                    return null;
-                }
-                vg2 vg2VarQ = new vg2(Z(), 0).q((LinearLayout) viewInflate);
-                vg2VarQ.p(R.string.download_directory_dialog_title);
-                return vg2VarQ.l(R.string.download_directory_dialog_positive_button, null).j(R.string.download_directory_dialog_negative_button, null).create();
-            case 1:
-                View viewInflate2 = o().inflate(R.layout.dialog_download_storage, (ViewGroup) null, false);
-                if (viewInflate2 == null) {
-                    nz2.n("rootView");
-                    return null;
-                }
-                vg2 vg2VarQ2 = new vg2(e(), 0).q((LinearLayout) viewInflate2);
-                vg2VarQ2.p(R.string.download_storage_dialog_title);
-                vg2 vg2VarJ = vg2VarQ2.l(R.string.download_storage_external_dialog_positive_button, null).j(R.string.download_storage_internal_dialog_negative_button, null);
-                vg2VarJ.k(R.string.download_storage_directory_dialog_neutral_button, null);
-                return vg2VarJ.create();
-            default:
-                View viewInflate3 = o().inflate(R.layout.dialog_streaming_cache_storage, (ViewGroup) null, false);
-                if (viewInflate3 == null) {
-                    nz2.n("rootView");
-                    return null;
-                }
-                vg2 vg2VarQ3 = new vg2(e(), 0).q((LinearLayout) viewInflate3);
-                vg2VarQ3.p(R.string.streaming_cache_storage_dialog_title);
-                return vg2VarQ3.l(R.string.streaming_cache_storage_external_dialog_positive_button, null).j(R.string.streaming_cache_storage_internal_dialog_negative_button, null).create();
-        }
+    public final Dialog j0(Bundle r5) {
+        switch(this.B0) {
+            case 0: goto L14;
+            case 1: goto L9;
+            default: goto L4;
+        };
+    L4:
+        View r6 = o().inflate(R.layout.dialog_streaming_cache_storage, null, false);
+        if (r6 == null) goto L7;
+        vg2 r0 = new vg2(l(), 0);
+        vg2 r4 = r0.q((LinearLayout) r6);
+        r4.p(R.string.streaming_cache_storage_dialog_title);
+        return r4.l(R.string.streaming_cache_storage_external_dialog_positive_button, null).j(R.string.streaming_cache_storage_internal_dialog_negative_button, null).create();
+    L7:
+        nz2.n("rootView");
+        return null;
+    L9:
+        View r7 = o().inflate(R.layout.dialog_download_storage, null, false);
+        if (r7 == null) goto L12;
+        vg2 r1 = new vg2(l(), 0);
+        vg2 r8 = r1.q((LinearLayout) r7);
+        r8.p(R.string.download_storage_dialog_title);
+        vg2 r9 = r8.l(R.string.download_storage_external_dialog_positive_button, null).j(R.string.download_storage_internal_dialog_negative_button, null);
+        r9.k(R.string.download_storage_directory_dialog_neutral_button, null);
+        return r9.create();
+    L12:
+        nz2.n("rootView");
+        return null;
+    L14:
+        View r10 = o().inflate(R.layout.dialog_download_directory, null, false);
+        if (r10 == null) goto L17;
+        vg2 r2 = new vg2(Z(), 0);
+        vg2 r11 = r2.q((LinearLayout) r10);
+        r11.p(R.string.download_directory_dialog_title);
+        return r11.l(R.string.download_directory_dialog_positive_button, null).j(R.string.download_directory_dialog_negative_button, null).create();
+    L17:
+        nz2.n("rootView");
+        return null;
     }
 }

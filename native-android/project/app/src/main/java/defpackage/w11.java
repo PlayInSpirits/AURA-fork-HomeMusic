@@ -13,40 +13,41 @@ public final /* synthetic */ class w11 implements CompoundButton.OnCheckedChange
     public final /* synthetic */ Object b;
     public final /* synthetic */ Object c;
 
-    public /* synthetic */ w11(int i, Object obj, Object obj2) {
-        this.a = i;
-        this.b = obj;
-        this.c = obj2;
+    public /* synthetic */ w11(int r1, Object r2, Object r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 
     @Override // android.widget.CompoundButton.OnCheckedChangeListener
-    public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-        int i = this.a;
-        Object obj = this.c;
-        Object obj2 = this.b;
-        switch (i) {
-            case 0:
-                compoundButton.getClass();
-                ((v11) ((wo0) obj2).n).setEnabled(z);
-                App.b().getClass();
-                App.c().edit().putBoolean("equalizer_enabled", z).apply();
-                ((EqualizerFragment) obj).l0(z);
-                break;
-            default:
-                Genre genre = (Genre) obj;
-                f71 f71Var = ((FilterFragment) obj2).n0;
-                if (!z) {
-                    String genre2 = genre.getGenre();
-                    String string = compoundButton.getText().toString();
-                    f71Var.d.remove(genre2);
-                    f71Var.e.remove(string);
-                } else {
-                    String genre3 = genre.getGenre();
-                    String string2 = compoundButton.getText().toString();
-                    f71Var.d.add(genre3);
-                    f71Var.e.add(string2);
-                }
-                break;
-        }
+    public final void onCheckedChanged(CompoundButton r3, boolean r4) {
+        int r0 = this.a;
+        Object r1 = this.c;
+        Object r2 = this.b;
+        switch(r0) {
+            case 0: goto L9;
+            default: goto L4;
+        };
+    L4:
+        Genre r5 = (Genre) r1;
+        f71 r6 = ((FilterFragment) r2).n0;
+        if (r4 == false) goto L7;
+        String r7 = r5.getGenre();
+        String r8 = r3.getText().toString();
+        r6.d.add(r7);
+        r6.e.add(r8);
+        return;
+    L7:
+        String r9 = r5.getGenre();
+        String r10 = r3.getText().toString();
+        r6.d.remove(r9);
+        r6.e.remove(r10);
+        return;
+    L9:
+        r3.getClass();
+        ((v11) ((wo0) r2).n).setEnabled(r4);
+        App.b().getClass();
+        App.c().edit().putBoolean("equalizer_enabled", r4).apply();
+        ((EqualizerFragment) r1).l0(r4);
     }
 }

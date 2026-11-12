@@ -24,93 +24,167 @@ public final class he4 {
     public final yw1 p;
     public final long[] q;
 
-    public he4(ge4 ge4Var) {
-        an2 an2Var = ge4Var.f;
-        long j = ge4Var.g;
-        int i = 0;
-        if (an2Var == null) {
-            rr2.k("presentationStartTimeMs can only be set if liveConfiguration != null", j == -9223372036854775807L);
-            rr2.k("windowStartTimeMs can only be set if liveConfiguration != null", ge4Var.h == -9223372036854775807L);
-            rr2.k("elapsedRealtimeEpochOffsetMs can only be set if liveConfiguration != null", ge4Var.i == -9223372036854775807L);
-        } else if (j != -9223372036854775807L) {
-            long j2 = ge4Var.h;
-            if (j2 != -9223372036854775807L) {
-                rr2.k("windowStartTimeMs can't be less than presentationStartTimeMs", j2 >= j);
-            }
-        }
-        int size = ge4Var.p.size();
-        long j3 = ge4Var.m;
-        if (j3 != -9223372036854775807L) {
-            rr2.k("defaultPositionUs can't be greater than durationUs", ge4Var.l <= j3);
-        }
-        this.a = ge4Var.a;
-        this.b = ge4Var.b;
-        this.c = ge4Var.c;
-        this.d = ge4Var.d;
-        this.e = ge4Var.e;
-        this.f = ge4Var.f;
-        this.g = ge4Var.g;
-        this.h = ge4Var.h;
-        this.i = ge4Var.i;
-        this.j = ge4Var.j;
-        this.k = ge4Var.k;
-        this.l = ge4Var.l;
-        this.m = ge4Var.m;
-        long j4 = ge4Var.n;
-        this.n = j4;
-        this.o = ge4Var.o;
-        yw1 yw1Var = ge4Var.p;
-        this.p = yw1Var;
-        long[] jArr = new long[yw1Var.size()];
-        this.q = jArr;
-        if (yw1Var.isEmpty()) {
-            return;
-        }
-        jArr[0] = -j4;
-        while (i < size - 1) {
-            long[] jArr2 = this.q;
-            int i2 = i + 1;
-            jArr2[i2] = jArr2[i] + ((je4) this.p.get(i)).b;
-            i = i2;
-        }
+    public he4(ge4 r10) {
+        an2 r0 = r10.f;
+        long r1 = r10.g;
+        int r5 = 0;
+        if (r0 != null) goto L18;
+        if (r1 != (-9223372036854775807L)) goto L7;
+        boolean r2 = true;
+    L8:
+        rr2.k("presentationStartTimeMs can only be set if liveConfiguration != null", r2);
+        if (r10.h != (-9223372036854775807L)) goto L11;
+        boolean r3 = true;
+    L12:
+        rr2.k("windowStartTimeMs can only be set if liveConfiguration != null", r3);
+        if (r10.i != (-9223372036854775807L)) goto L15;
+        boolean r4 = true;
+    L16:
+        rr2.k("elapsedRealtimeEpochOffsetMs can only be set if liveConfiguration != null", r4);
+    L26:
+        int r6 = r10.p.size();
+        long r7 = r10.m;
+        if (r7 != (-9223372036854775807L)) goto L29;
+    L33:
+        this.a = r10.a;
+        this.b = r10.b;
+        this.c = r10.c;
+        this.d = r10.d;
+        this.e = r10.e;
+        this.f = r10.f;
+        this.g = r10.g;
+        this.h = r10.h;
+        this.i = r10.i;
+        this.j = r10.j;
+        this.k = r10.k;
+        this.l = r10.l;
+        this.m = r10.m;
+        long r8 = r10.n;
+        this.n = r8;
+        this.o = r10.o;
+        yw1 r11 = r10.p;
+        this.p = r11;
+        long[] r9 = new long[r11.size()];
+        this.q = r9;
+        if (r11.isEmpty() == true) goto L39;
+        r9[0] = -r8;
+    L37:
+        if (r5 >= (r6 - 1)) goto L41;
+        long[] r12 = this.q;
+        int r13 = r5 + 1;
+        r12[r13] = r12[r5] + ((je4) this.p.get(r5)).b;
+        r5 = r13;
+        goto L37
+    L41:
+        return;
+    L39:
+        return;
+    L29:
+        if (r10.l > r7) goto L31;
+        boolean r14 = true;
+    L32:
+        rr2.k("defaultPositionUs can't be greater than durationUs", r14);
+        goto L33
+    L31:
+        r14 = false;
+        goto L32
+    L15:
+        r4 = false;
+        goto L16
+    L11:
+        r3 = false;
+        goto L12
+    L7:
+        r2 = false;
+        goto L8
+    L18:
+        if (r1 == (-9223372036854775807L)) goto L26;
+        long r15 = r10.h;
+        if (r15 == (-9223372036854775807L)) goto L26;
+        if (r15 < r1) goto L24;
+        boolean r16 = true;
+    L25:
+        rr2.k("windowStartTimeMs can't be less than presentationStartTimeMs", r16);
+        goto L26
+    L24:
+        r16 = false;
+        goto L25
     }
 
-    public static Object a(he4 he4Var, int i) {
-        Object obj = he4Var.a;
-        yw1 yw1Var = he4Var.p;
-        return yw1Var.isEmpty() ? obj : Pair.create(obj, ((je4) yw1Var.get(i)).a);
+    public static Object a(he4 r2, int r3) {
+        Object r0 = r2.a;
+        yw1 r4 = r2.p;
+        if (r4.isEmpty() == false) goto L6;
+        return r0;
+    L6:
+        return Pair.create(r0, ((je4) r4.get(r3)).a);
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof he4)) {
-            return false;
-        }
-        he4 he4Var = (he4) obj;
-        return this.a.equals(he4Var.a) && this.b.equals(he4Var.b) && this.c.equals(he4Var.c) && Objects.equals(this.d, he4Var.d) && Objects.equals(this.e, he4Var.e) && Objects.equals(this.f, he4Var.f) && this.g == he4Var.g && this.h == he4Var.h && this.i == he4Var.i && this.j == he4Var.j && this.k == he4Var.k && this.l == he4Var.l && this.m == he4Var.m && this.n == he4Var.n && this.o == he4Var.o && this.p.equals(he4Var.p);
+    public final boolean equals(Object r8) {
+        if (this != r8) goto L6;
+        return true;
+    L6:
+        if ((r8 instanceof he4) == true) goto L8;
+        return false;
+    L8:
+        he4 r9 = (he4) r8;
+        if (this.a.equals(r9.a) == true) goto L11;
+    L41:
+        return false;
+    L11:
+        if (this.b.equals(r9.b) == false) goto L41;
+        if (this.c.equals(r9.c) == false) goto L41;
+        if (Objects.equals(this.d, r9.d) == false) goto L41;
+        if (Objects.equals(this.e, r9.e) == false) goto L41;
+        if (Objects.equals(this.f, r9.f) == false) goto L41;
+        if (this.g != r9.g) goto L41;
+        if (this.h != r9.h) goto L41;
+        if (this.i != r9.i) goto L41;
+        if (this.j != r9.j) goto L41;
+        if (this.k != r9.k) goto L41;
+        if (this.l != r9.l) goto L41;
+        if (this.m != r9.m) goto L41;
+        if (this.n != r9.n) goto L41;
+        if (this.o != r9.o) goto L41;
+        if (this.p.equals(r9.p) == false) goto L41;
+        return true;
     }
 
     public final int hashCode() {
-        int iHashCode = (this.c.hashCode() + ((this.b.a.hashCode() + ((this.a.hashCode() + 217) * 31)) * 31)) * 31;
-        do2 do2Var = this.d;
-        int iHashCode2 = (iHashCode + (do2Var == null ? 0 : do2Var.hashCode())) * 31;
-        Object obj = this.e;
-        int iHashCode3 = (iHashCode2 + (obj == null ? 0 : obj.hashCode())) * 31;
-        an2 an2Var = this.f;
-        int iHashCode4 = (iHashCode3 + (an2Var != null ? an2Var.hashCode() : 0)) * 31;
-        long j = this.g;
-        int i = (iHashCode4 + ((int) (j ^ (j >>> 32)))) * 31;
-        long j2 = this.h;
-        int i2 = (i + ((int) (j2 ^ (j2 >>> 32)))) * 31;
-        long j3 = this.i;
-        int i3 = (((((i2 + ((int) (j3 ^ (j3 >>> 32)))) * 31) + (this.j ? 1 : 0)) * 31) + (this.k ? 1 : 0)) * 31;
-        long j4 = this.l;
-        int i4 = (i3 + ((int) (j4 ^ (j4 >>> 32)))) * 31;
-        long j5 = this.m;
-        int i5 = (i4 + ((int) (j5 ^ (j5 >>> 32)))) * 31;
-        long j6 = this.n;
-        return this.p.hashCode() + ((((i5 + ((int) (j6 ^ (j6 >>> 32)))) * 31) + (this.o ? 1 : 0)) * 31);
+        int r0 = (this.c.hashCode() + ((this.b.a.hashCode() + ((this.a.hashCode() + 217) * 31)) * 31)) * 31;
+        int r1 = 0;
+        do2 r2 = this.d;
+        if (r2 != null) goto L5;
+        int r3 = 0;
+    L6:
+        int r4 = (r0 + r3) * 31;
+        Object r5 = this.e;
+        if (r5 != null) goto L9;
+        int r6 = 0;
+    L10:
+        int r7 = (r4 + r6) * 31;
+        an2 r8 = this.f;
+        if (r8 == null) goto L14;
+        r1 = r8.hashCode();
+    L14:
+        int r9 = (r7 + r1) * 31;
+        long r10 = this.g;
+        int r11 = (r9 + ((int) (r10 ^ (r10 >>> 32)))) * 31;
+        long r12 = this.h;
+        int r13 = (r11 + ((int) (r12 ^ (r12 >>> 32)))) * 31;
+        long r14 = this.i;
+        int r15 = (((((r13 + ((int) (r14 ^ (r14 >>> 32)))) * 31) + (this.j ? 1 : 0)) * 31) + (this.k ? 1 : 0)) * 31;
+        long r16 = this.l;
+        int r17 = (r15 + ((int) (r16 ^ (r16 >>> 32)))) * 31;
+        long r18 = this.m;
+        int r19 = (r17 + ((int) (r18 ^ (r18 >>> 32)))) * 31;
+        long r20 = this.n;
+        return this.p.hashCode() + ((((r19 + ((int) (r20 ^ (r20 >>> 32)))) * 31) + (this.o ? 1 : 0)) * 31);
+    L9:
+        r6 = r5.hashCode();
+        goto L10
+    L5:
+        r3 = r2.hashCode();
+        goto L6
     }
 }

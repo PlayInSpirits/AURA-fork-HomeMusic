@@ -7,8 +7,8 @@ import java.io.Serializable;
 public abstract class q42 implements gg1, Serializable {
     private final int arity;
 
-    public q42(int i) {
-        this.arity = i;
+    public q42(int r1) {
+        this.arity = r1;
     }
 
     @Override // defpackage.gg1

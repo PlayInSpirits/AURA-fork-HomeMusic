@@ -9,51 +9,55 @@ public final class ko2 implements qk2, oi3 {
     public final kn2 o;
     public final /* synthetic */ lo2 p;
 
-    public ko2(lo2 lo2Var, MediaLibraryService mediaLibraryService, kn2 kn2Var) {
-        this.p = lo2Var;
-        this.n = mediaLibraryService;
-        this.o = kn2Var;
+    public ko2(lo2 r1, MediaLibraryService r2, kn2 r3) {
+        this.p = r1;
+        this.n = r2;
+        this.o = r3;
     }
 
     @Override // defpackage.oi3
-    public final void B(qi3 qi3Var, ni3 ni3Var) {
-        if (ni3Var.a.a(4, 5, 14, 0)) {
-            this.n.k(this.o, false);
-        }
+    public final void B(qi3 r4, ni3 r5) {
+        w71 r6 = r5.a;
+        if (r6.a(new int[]{4, 5, 14, 0}) == false) goto L6;
+        this.n.k(this.o, false);
+        return;
     }
 
     @Override // defpackage.qk2
     public final void c() {
-        MediaLibraryService mediaLibraryService = this.n;
-        kn2 kn2Var = this.o;
-        if (mediaLibraryService.f(kn2Var)) {
-            mediaLibraryService.l(kn2Var);
-        }
-        mediaLibraryService.k(kn2Var, false);
+        MediaLibraryService r0 = this.n;
+        kn2 r2 = this.o;
+        if (r0.f(r2) == false) goto L5;
+        r0.l(r2);
+    L5:
+        r0.k(r2, false);
     }
 
     @Override // defpackage.qk2
     public final void l() {
-        this.n.k(this.o, false);
+        kn2 r0 = this.o;
+        this.n.k(r0, false);
     }
 
     @Override // defpackage.qk2
     public final void u() {
-        this.n.k(this.o, false);
+        kn2 r0 = this.o;
+        this.n.k(r0, false);
     }
 
     @Override // defpackage.qk2
-    public final mw1 y(va4 va4Var) {
-        int i;
-        if (va4Var.b.equals("androidx.media3.session.NOTIFICATION_DISMISSED_EVENT_KEY")) {
-            jo2 jo2Var = (jo2) this.p.t.get(this.o);
-            if (jo2Var != null) {
-                jo2Var.b = true;
-            }
-            i = 0;
-        } else {
-            i = -6;
-        }
-        return new mw1(new ab4(i));
+    public final mw1 y(va4 r2) {
+        if (r2.b.equals("androidx.media3.session.NOTIFICATION_DISMISSED_EVENT_KEY") == false) goto L8;
+        kn2 r3 = this.o;
+        jo2 r1 = (jo2) this.p.t.get(r3);
+        if (r1 == null) goto L7;
+        r1.b = true;
+    L7:
+        int r4 = 0;
+    L10:
+        return new mw1(new ab4(r4));
+    L8:
+        r4 = -6;
+        goto L10
     }
 }

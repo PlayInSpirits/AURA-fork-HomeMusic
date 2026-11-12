@@ -5,7 +5,7 @@ package defpackage;
 public final class ya1 implements xa1 {
     public final za1[] a;
 
-    public ya1(za1[] za1VarArr) {
-        this.a = za1VarArr;
+    public ya1(za1[] r1) {
+        this.a = r1;
     }
 }

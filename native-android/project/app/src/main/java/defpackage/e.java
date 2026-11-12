@@ -1,154 +1,139 @@
 package defpackage;
 
-import java.io.EOFException;
-
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class e {
-    public static final byte[] a;
+    public static final byte[] a = null;
 
     static {
-        byte[] bytes = "0123456789abcdef".getBytes(w10.a);
-        bytes.getClass();
-        a = bytes;
+        byte[] r0 = "0123456789abcdef".getBytes(w10.a);
+        r0.getClass();
+        a = r0;
     }
 
-    public static final String a(tv tvVar, long j) throws EOFException {
-        if (j > 0) {
-            long j2 = j - 1;
-            if (tvVar.q(j2) == 13) {
-                String strK = tvVar.K(j2, w10.a);
-                tvVar.skip(2L);
-                return strK;
-            }
-        }
-        String strK2 = tvVar.K(j, w10.a);
-        tvVar.skip(1L);
-        return strK2;
+    public static final String a(tv r6, long r7) {
+        if (r7 <= 0) goto L8;
+        long r3 = r7 - 1;
+        if (r6.q(r3) != 13) goto L8;
+        String r8 = r6.K(r3, w10.a);
+        r6.skip(2);
+        return r8;
+    L8:
+        String r9 = r6.K(r7, w10.a);
+        r6.skip(1);
+        return r9;
     }
 
-    /* JADX WARN: Code duplicated, block: B:49:0x00a1 A[LOOP:0: B:8:0x001c->B:49:0x00a1, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:55:0x00a0 A[SYNTHETIC] */
-    public static final int b(tv tvVar, cb3 cb3Var, boolean z) {
-        int i;
-        int i2;
-        int i3;
-        t84 t84Var;
-        int i4;
-        cb3Var.getClass();
-        t84 t84Var2 = tvVar.n;
-        if (t84Var2 == null) {
-            return z ? -2 : -1;
-        }
-        byte[] bArr = t84Var2.a;
-        int i5 = t84Var2.b;
-        int i6 = t84Var2.c;
-        int[] iArr = cb3Var.o;
-        t84 t84Var3 = t84Var2;
-        int i7 = -1;
-        int i8 = 0;
-        loop0: while (true) {
-            int i9 = i8 + 1;
-            int i10 = iArr[i8];
-            int i11 = i8 + 2;
-            int i12 = iArr[i9];
-            if (i12 != -1) {
-                i7 = i12;
-            }
-            if (t84Var3 == null) {
-                break;
-            }
-            if (i10 >= 0) {
-                int i13 = i5 + 1;
-                int i14 = bArr[i5] & 255;
-                int i15 = i11 + i10;
-                while (i11 != i15) {
-                    if (i14 == iArr[i11]) {
-                        i = iArr[i11 + i10];
-                        if (i13 == i6) {
-                            t84Var3 = t84Var3.f;
-                            t84Var3.getClass();
-                            int i16 = t84Var3.b;
-                            byte[] bArr2 = t84Var3.a;
-                            i2 = t84Var3.c;
-                            if (t84Var3 == t84Var2) {
-                                i3 = i16;
-                                bArr = bArr2;
-                                t84Var3 = null;
-                            } else {
-                                i3 = i16;
-                                bArr = bArr2;
-                            }
-                        } else {
-                            i2 = i6;
-                            i3 = i13;
-                        }
-                        if (i >= 0) {
-                            return i;
-                        }
-                        int i17 = i2;
-                        i8 = -i;
-                        i5 = i3;
-                        i6 = i17;
-                    } else {
-                        i11++;
-                    }
-                }
-                return i7;
-            }
-            int i18 = (i10 * (-1)) + i11;
-            while (true) {
-                int i19 = i5 + 1;
-                int i20 = i11 + 1;
-                if ((bArr[i5] & 255) == iArr[i11]) {
-                    boolean z2 = i20 == i18;
-                    if (i19 == i6) {
-                        t84Var3.getClass();
-                        t84 t84Var4 = t84Var3.f;
-                        t84Var4.getClass();
-                        i3 = t84Var4.b;
-                        byte[] bArr3 = t84Var4.a;
-                        i4 = t84Var4.c;
-                        if (t84Var4 != t84Var2) {
-                            t84Var = t84Var4;
-                            bArr = bArr3;
-                        } else {
-                            if (!z2) {
-                                break loop0;
-                            }
-                            bArr = bArr3;
-                            t84Var = null;
-                        }
-                    } else {
-                        t84Var = t84Var3;
-                        i4 = i6;
-                        i3 = i19;
-                    }
-                    if (z2) {
-                        i = iArr[i20];
-                        int i21 = i4;
-                        t84Var3 = t84Var;
-                        i2 = i21;
-                        break;
-                    }
-                    i5 = i3;
-                    i6 = i4;
-                    t84Var3 = t84Var;
-                    i11 = i20;
-                }
-                return i7;
-            }
-            if (i >= 0) {
-                return i;
-            }
-            int i110 = i2;
-            i8 = -i;
-            i5 = i3;
-            i6 = i110;
-        }
-        if (z) {
-            return -2;
-        }
-        return i7;
+    public static final int b(tv r16, cb3 r17, boolean r18) {
+        r17.getClass();
+        t84 r0 = r16.n;
+        if (r0 != null) goto L7;
+        if (r18 == true) goto L58;
+        return -1;
+    L58:
+        return -2;
+    L7:
+        byte[] r2 = r0.a;
+        int r3 = r0.b;
+        int r4 = r0.c;
+        int[] r5 = r17.o;
+        t84 r8 = r0;
+        int r9 = -1;
+        int r7 = 0;
+    L8:
+        int r10 = r7 + 1;
+        int r11 = r5[r7];
+        int r12 = r7 + 2;
+        int r13 = r5[r10];
+        if (r13 == (-1)) goto L11;
+        r9 = r13;
+    L11:
+        if (r8 == null) goto L27;
+        if (r11 >= 0) goto L35;
+        int r14 = (r11 * (-1)) + r12;
+    L16:
+        int r15 = r3 + 1;
+        int r19 = r12 + 1;
+        if ((r2[r3] & 255) != r5[r12]) goto L37;
+        if (r19 != r14) goto L21;
+        boolean r6 = true;
+    L22:
+        if (r15 != r4) goto L31;
+        r8.getClass();
+        t84 r20 = r8.f;
+        r20.getClass();
+        int r21 = r20.b;
+        byte[] r22 = r20.a;
+        int r23 = r20.c;
+        if (r20 != r0) goto L30;
+        if (r6 == false) goto L27;
+        r2 = r22;
+        t84 r24 = null;
+    L32:
+        if (r6 == true) goto L33;
+        r3 = r21;
+        r4 = r23;
+        r8 = r24;
+        r12 = r19;
+        goto L16
+    L33:
+        int r25 = r5[r19];
+        int r110 = r23;
+        r8 = r24;
+        int r26 = r110;
+    L47:
+        if (r25 >= 0) goto L48;
+        int r111 = r26;
+        r7 = -r25;
+        r3 = r21;
+        r4 = r111;
+        goto L8
+    L48:
+        return r25;
+    L30:
+        r24 = r20;
+        r2 = r22;
+        goto L32
+    L31:
+        r24 = r8;
+        r23 = r4;
+        r21 = r15;
+        goto L32
+    L21:
+        r6 = false;
+    L37:
+        return r9;
+    L35:
+        int r112 = r3 + 1;
+        int r27 = r2[r3] & 255;
+        int r113 = r12 + r11;
+    L36:
+        if (r12 == r113) goto L37;
+        if (r27 == r5[r12]) goto L40;
+        r12 = r12 + 1;
+        goto L36
+    L40:
+        r25 = r5[r12 + r11];
+        if (r112 != r4) goto L46;
+        r8 = r8.f;
+        r8.getClass();
+        int r28 = r8.b;
+        byte[] r29 = r8.a;
+        r26 = r8.c;
+        if (r8 != r0) goto L45;
+        r21 = r28;
+        r2 = r29;
+        r8 = null;
+        goto L47
+    L45:
+        r21 = r28;
+        r2 = r29;
+        goto L47
+    L46:
+        r26 = r4;
+        r21 = r112;
+    L27:
+        if (r18 == false) goto L37;
+        return -2;
     }
 }

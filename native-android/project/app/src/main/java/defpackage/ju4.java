@@ -8,11 +8,13 @@ import android.content.ContextWrapper;
 public abstract class ju4 extends ContextWrapper {
     public static final Object a = null;
 
-    public static void a(Context context) {
-        if (context.getResources() instanceof ku4) {
-            return;
-        }
-        context.getResources();
-        int i = a45.a;
+    static {
+    }
+
+    public static void a(Context r1) {
+        if ((r1.getResources() instanceof ku4) == true) goto L6;
+        r1.getResources();
+        int r2 = a45.a;
+        return;
     }
 }

@@ -9,30 +9,37 @@ public final /* synthetic */ class lm implements Runnable {
     public final /* synthetic */ long q;
     public final /* synthetic */ Object r;
 
-    public /* synthetic */ lm(Object obj, int i, long j, long j2, int i2) {
-        this.n = i2;
-        this.r = obj;
-        this.o = i;
-        this.p = j;
-        this.q = j2;
+    public /* synthetic */ lm(Object r1, int r2, long r3, long r5, int r7) {
+        this.n = r7;
+        this.r = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r5;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        Object obj = this.r;
-        switch (i) {
-            case 0:
-                qm qmVar = (qm) ((xc5) obj).p;
-                String str = f35.a;
-                qmVar.S(this.o, this.p, this.q);
-                break;
-            default:
-                nj0 nj0Var = ((bp) obj).b;
-                ml3 ml3Var = nj0Var.q;
-                q9 q9VarX = nj0Var.X(((yw1) ml3Var.b).isEmpty() ? null : (mt2) te5.w((yw1) ml3Var.b));
-                nj0Var.b0(q9VarX, 1006, new lj0(q9VarX, this.o, this.p, this.q));
-                break;
-        }
+        int r0 = this.n;
+        Object r1 = this.r;
+        switch(r0) {
+            case 0: goto L10;
+            default: goto L4;
+        };
+    L4:
+        nj0 r2 = ((bp) r1).b;
+        ml3 r3 = r2.q;
+        if (((yw1) r3.b).isEmpty() == false) goto L7;
+        mt2 r4 = null;
+    L8:
+        q9 r5 = r2.X(r4);
+        r2.b0(r5, 1006, new lj0(r5, this.o, this.p, this.q));
+        return;
+    L7:
+        r4 = (mt2) te5.w((yw1) r3.b);
+        goto L8
+    L10:
+        qm r6 = (qm) ((xc5) r1).p;
+        String r7 = f35.a;
+        r6.S(this.o, this.p, this.q);
     }
 }

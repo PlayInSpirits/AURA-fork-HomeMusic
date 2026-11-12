@@ -6,9 +6,10 @@ import java.util.ArrayList;
 /* JADX INFO: loaded from: classes.dex */
 public final class v5 {
     public final ea2 a;
-    public final ArrayList b = new ArrayList();
+    public final ArrayList b;
 
-    public v5(ea2 ea2Var) {
-        this.a = ea2Var;
+    public v5(ea2 r1) {
+        this.a = r1;
+        this.b = new ArrayList();
     }
 }

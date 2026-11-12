@@ -8,18 +8,21 @@ public final class c74 implements q64 {
     public final /* synthetic */ g74 a;
     public final /* synthetic */ e74 b;
 
-    public c74(g74 g74Var, e74 e74Var) {
-        this.a = g74Var;
-        this.b = e74Var;
+    public c74(g74 r1, e74 r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
     @Override // defpackage.q64
-    public final float a(float f) {
-        float fAbs = Math.abs(f);
-        g74 g74Var = this.a;
-        if (fAbs != 0.0f && !((Boolean) g74Var.h.invoke()).booleanValue()) {
-            throw new FlingCancellationException();
-        }
-        return g74Var.e(g74Var.h(this.b.a(2, g74Var.f(g74Var.i(f)))));
+    public final float a(float r5) {
+        float r0 = Math.abs(r5);
+        g74 r1 = this.a;
+        if (r0 != 0.0f) goto L6;
+    L7:
+        long r2 = r1.f(r1.i(r5));
+        return r1.e(r1.h(this.b.a(2, r2)));
+    L6:
+        if (((Boolean) r1.h.invoke()).booleanValue() == true) goto L7;
+        throw new FlingCancellationException();
     }
 }

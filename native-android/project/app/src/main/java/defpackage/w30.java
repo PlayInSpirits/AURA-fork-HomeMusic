@@ -15,53 +15,62 @@ import javax.net.ssl.X509KeyManager;
 public final class w30 implements X509KeyManager {
     public final /* synthetic */ Context a;
 
-    public w30(Context context) {
-        this.a = context;
+    public w30(Context r1) {
+        this.a = r1;
     }
 
     @Override // javax.net.ssl.X509KeyManager
-    public final String chooseClientAlias(String[] strArr, Principal[] principalArr, Socket socket) {
-        String strD;
-        InetAddress inetAddress;
-        String strM = b11.m("client_cert", null);
-        if (strM != null && (strD = ud3.D()) != null) {
-            if (h12.c(Uri.parse(strD).getHost(), (socket == null || (inetAddress = socket.getInetAddress()) == null) ? null : inetAddress.getHostName())) {
-                return strM;
-            }
-        }
+    public final String chooseClientAlias(String[] r1, Principal[] r2, Socket r3) {
+        String r0 = b11.m("client_cert", null);
+        if (r0 == null) goto L17;
+        String r4 = ud3.D();
+        if (r4 == null) goto L17;
+        String r5 = Uri.parse(r4).getHost();
+        if (r3 == null) goto L13;
+        InetAddress r6 = r3.getInetAddress();
+        if (r6 == null) goto L13;
+        String r7 = r6.getHostName();
+    L15:
+        if (h12.c(r5, r7) == false) goto L17;
+        return r0;
+    L13:
+        r7 = null;
+    L17:
         return null;
     }
 
     @Override // javax.net.ssl.X509KeyManager
-    public final /* bridge */ /* synthetic */ String chooseServerAlias(String str, Principal[] principalArr, Socket socket) {
+    public final /* bridge */ /* synthetic */ String chooseServerAlias(String r1, Principal[] r2, Socket r3) {
         return null;
     }
 
     @Override // javax.net.ssl.X509KeyManager
-    public final X509Certificate[] getCertificateChain(String str) {
-        String strM = b11.m("client_cert", null);
-        if (!h12.c(str, strM) || strM == null) {
-            return null;
-        }
-        return KeyChain.getCertificateChain(this.a, strM);
-    }
-
-    @Override // javax.net.ssl.X509KeyManager
-    public final /* bridge */ /* synthetic */ String[] getClientAliases(String str, Principal[] principalArr) {
+    public final X509Certificate[] getCertificateChain(String r3) {
+        String r0 = b11.m("client_cert", null);
+        if (h12.c(r3, r0) == false) goto L7;
+        if (r0 == null) goto L7;
+        return KeyChain.getCertificateChain(this.a, r0);
+    L7:
         return null;
     }
 
     @Override // javax.net.ssl.X509KeyManager
-    public final PrivateKey getPrivateKey(String str) {
-        String strM = b11.m("client_cert", null);
-        if (!h12.c(str, strM) || strM == null) {
-            return null;
-        }
-        return KeyChain.getPrivateKey(this.a, strM);
+    public final /* bridge */ /* synthetic */ String[] getClientAliases(String r1, Principal[] r2) {
+        return null;
     }
 
     @Override // javax.net.ssl.X509KeyManager
-    public final /* bridge */ /* synthetic */ String[] getServerAliases(String str, Principal[] principalArr) {
+    public final PrivateKey getPrivateKey(String r3) {
+        String r0 = b11.m("client_cert", null);
+        if (h12.c(r3, r0) == false) goto L7;
+        if (r0 == null) goto L7;
+        return KeyChain.getPrivateKey(this.a, r0);
+    L7:
+        return null;
+    }
+
+    @Override // javax.net.ssl.X509KeyManager
+    public final /* bridge */ /* synthetic */ String[] getServerAliases(String r1, Principal[] r2) {
         return null;
     }
 }

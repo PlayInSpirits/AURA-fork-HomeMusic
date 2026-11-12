@@ -17,34 +17,34 @@ public final class h81 implements ValueAnimator.AnimatorUpdateListener {
     public final /* synthetic */ Matrix h;
     public final /* synthetic */ m81 i;
 
-    public h81(m81 m81Var, float f, float f2, float f3, float f4, float f5, float f6, float f7, Matrix matrix) {
-        this.i = m81Var;
-        this.a = f;
-        this.b = f2;
-        this.c = f3;
-        this.d = f4;
-        this.e = f5;
-        this.f = f6;
-        this.g = f7;
-        this.h = matrix;
+    public h81(m81 r1, float r2, float r3, float r4, float r5, float r6, float r7, float r8, Matrix r9) {
+        this.i = r1;
+        this.a = r2;
+        this.b = r3;
+        this.c = r4;
+        this.d = r5;
+        this.e = r6;
+        this.f = r7;
+        this.g = r8;
+        this.h = r9;
     }
 
     @Override // android.animation.ValueAnimator.AnimatorUpdateListener
-    public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-        float fFloatValue = ((Float) valueAnimator.getAnimatedValue()).floatValue();
-        m81 m81Var = this.i;
-        FloatingActionButton floatingActionButton = m81Var.r;
-        floatingActionButton.setAlpha(yd.b(this.a, this.b, 0.0f, 0.2f, fFloatValue));
-        float f = this.c;
-        float f2 = this.d;
-        floatingActionButton.setScaleX(yd.a(f, f2, fFloatValue));
-        floatingActionButton.setScaleY(yd.a(this.e, f2, fFloatValue));
-        float f3 = this.f;
-        float f4 = this.g;
-        m81Var.o = yd.a(f3, f4, fFloatValue);
-        float fA = yd.a(f3, f4, fFloatValue);
-        Matrix matrix = this.h;
-        m81Var.a(fA, matrix);
-        floatingActionButton.setImageMatrix(matrix);
+    public final void onAnimationUpdate(ValueAnimator r7) {
+        float r8 = ((Float) r7.getAnimatedValue()).floatValue();
+        m81 r0 = this.i;
+        FloatingActionButton r1 = r0.r;
+        r1.setAlpha(yd.b(this.a, this.b, 0.0f, 0.2f, r8));
+        float r2 = this.c;
+        float r3 = this.d;
+        r1.setScaleX(yd.a(r2, r3, r8));
+        r1.setScaleY(yd.a(this.e, r3, r8));
+        float r4 = this.f;
+        float r5 = this.g;
+        r0.o = yd.a(r4, r5, r8);
+        float r9 = yd.a(r4, r5, r8);
+        Matrix r6 = this.h;
+        r0.a(r9, r6);
+        r1.setImageMatrix(r6);
     }
 }

@@ -7,16 +7,20 @@ public abstract class v35 extends u35 {
     public String b;
     public int c;
 
-    public v35(v35 v35Var) {
+    public v35(v35 r5) {
         this.a = null;
+        int r0 = 0;
         this.c = 0;
-        this.b = v35Var.b;
-        cf3[] cf3VarArr = v35Var.a;
-        cf3[] cf3VarArr2 = new cf3[cf3VarArr.length];
-        for (int i = 0; i < cf3VarArr.length; i++) {
-            cf3VarArr2[i] = new cf3(cf3VarArr[i]);
-        }
-        this.a = cf3VarArr2;
+        this.b = r5.b;
+        cf3[] r6 = r5.a;
+        cf3[] r1 = new cf3[r6.length];
+    L4:
+        if (r0 >= r6.length) goto L6;
+        r1[r0] = new cf3(r6[r0]);
+        r0 = r0 + 1;
+        goto L4
+    L6:
+        this.a = r1;
     }
 
     public cf3[] getPathData() {
@@ -27,41 +31,49 @@ public abstract class v35 extends u35 {
         return this.b;
     }
 
-    public void setPathData(cf3[] cf3VarArr) {
-        cf3[] cf3VarArr2 = this.a;
-        if (cf3VarArr2 != null && cf3VarArr != null && cf3VarArr2.length == cf3VarArr.length) {
-            int i = 0;
-            while (true) {
-                if (i >= cf3VarArr2.length) {
-                    cf3[] cf3VarArr3 = this.a;
-                    for (int i2 = 0; i2 < cf3VarArr.length; i2++) {
-                        cf3VarArr3[i2].a = cf3VarArr[i2].a;
-                        int i3 = 0;
-                        while (true) {
-                            float[] fArr = cf3VarArr[i2].b;
-                            if (i3 < fArr.length) {
-                                cf3VarArr3[i2].b[i3] = fArr[i3];
-                                i3++;
-                            }
-                        }
-                    }
-                    return;
-                }
-                cf3 cf3Var = cf3VarArr2[i];
-                char c = cf3Var.a;
-                cf3 cf3Var2 = cf3VarArr[i];
-                if (c != cf3Var2.a || cf3Var.b.length != cf3Var2.b.length) {
-                    break;
-                } else {
-                    i++;
-                }
-            }
-        }
-        cf3[] cf3VarArr4 = new cf3[cf3VarArr.length];
-        for (int i4 = 0; i4 < cf3VarArr.length; i4++) {
-            cf3VarArr4[i4] = new cf3(cf3VarArr[i4]);
-        }
-        this.a = cf3VarArr4;
+    public void setPathData(cf3[] r8) {
+        cf3[] r0 = this.a;
+        int r1 = 0;
+        if (r0 == null) goto L27;
+        if (r8 == null) goto L27;
+        if (r0.length != r8.length) goto L27;
+        int r2 = 0;
+    L11:
+        if (r2 >= r0.length) goto L18;
+        cf3 r3 = r0[r2];
+        char r4 = r3.a;
+        cf3 r5 = r8[r2];
+        if (r4 != r5.a) goto L27;
+        if (r3.b.length != r5.b.length) goto L27;
+        r2 = r2 + 1;
+        goto L11
+    L18:
+        cf3[] r7 = this.a;
+        int r6 = 0;
+    L20:
+        if (r6 >= r8.length) goto L26;
+        r7[r6].a = r8[r6].a;
+        int r9 = 0;
+    L22:
+        float[] r10 = r8[r6].b;
+        if (r9 >= r10.length) goto L25;
+        r7[r6].b[r9] = r10[r9];
+        r9 = r9 + 1;
+        goto L22
+    L25:
+        r6 = r6 + 1;
+        goto L20
+    L26:
+        return;
+    L27:
+        cf3[] r11 = new cf3[r8.length];
+    L29:
+        if (r1 >= r8.length) goto L31;
+        r11[r1] = new cf3(r8[r1]);
+        r1 = r1 + 1;
+        goto L29
+    L31:
+        this.a = r11;
     }
 
     public v35() {

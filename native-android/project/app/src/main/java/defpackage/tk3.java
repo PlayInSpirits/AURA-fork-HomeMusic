@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.WeakHashMap;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -16,101 +15,136 @@ public final /* synthetic */ class tk3 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ wk3 o;
 
-    public /* synthetic */ tk3(wk3 wk3Var, int i) {
-        this.n = i;
-        this.o = wk3Var;
+    public /* synthetic */ tk3(wk3 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        gq0 gq0Var = gq0.n;
-        wk3 wk3Var = this.o;
-        switch (i) {
-            case 0:
-                try {
-                    wk3Var.X().runOnUiThread(new mm(wk3Var, u52.c().a ? u52.c().o : ((bj2) wk3Var.v0.get()).o0(), 5));
-                } catch (Exception e) {
-                    Log.e("PlayerQueueFragment", "Failed to get mediaBrowserListenableFuture in onResume", e);
-                    return;
-                }
-                break;
-            case 1:
-                if (wk3Var.s0) {
-                    wk3Var.k0();
-                }
-                break;
-            case 2:
-                yk3 yk3Var = wk3Var.w0;
-                if (yk3Var != null) {
-                    yk3Var.d();
-                }
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                yk3 yk3Var2 = wk3Var.w0;
-                if (yk3Var2 != null) {
-                    yk3Var2.d();
-                }
-                break;
-            case 4:
-                try {
-                    int iO0 = (u52.c().a ? u52.c().o : ((bj2) wk3Var.v0.get()).o0()) + 1;
-                    int size = wk3Var.w0.s.size();
-                    bl2 bl2Var = wk3Var.v0;
-                    List list = wk3Var.w0.s;
-                    WeakReference weakReference = bo2.a;
-                    if (!u52.q("remove", iO0, size) && bl2Var != null) {
-                        bl2Var.f(new vn2(bl2Var, iO0, size, list, 0), gq0Var);
-                    }
-                    ((RecyclerView) wk3Var.l0.t).getAdapter().n.f(iO0, size - iO0);
-                } catch (Exception e2) {
-                    Log.e("PlayerQueueFragment", "Error clearing queue", e2);
-                }
-                wk3Var.k0();
-                break;
-            case 5:
-                if (wk3Var.l0 != null) {
-                    View decorView = wk3Var.X().getWindow().getDecorView();
-                    WeakHashMap weakHashMap = j65.a;
-                    pb5 pb5VarA = b65.a(decorView);
-                    int i2 = pb5VarA != null ? pb5VarA.a.h(519).d : 0;
-                    RecyclerView recyclerView = (RecyclerView) wk3Var.l0.t;
-                    recyclerView.setPadding(recyclerView.getPaddingLeft(), ((RecyclerView) wk3Var.l0.t).getPaddingTop(), ((RecyclerView) wk3Var.l0.t).getPaddingRight(), i2);
-                    break;
-                }
-                break;
-            default:
-                try {
-                    int iO1 = (u52.c().a ? u52.c().o : ((bj2) wk3Var.v0.get()).o0()) + 1;
-                    int size2 = wk3Var.w0.s.size() - 1;
-                    if (iO1 < size2) {
-                        ArrayList arrayList = new ArrayList();
-                        for (int i3 = iO1; i3 <= size2; i3++) {
-                            arrayList.add(Integer.valueOf(i3));
-                        }
-                        while (arrayList.size() >= 2) {
-                            int iRandom = (int) (Math.random() * ((double) arrayList.size()));
-                            int iIntValue = ((Integer) arrayList.get(iRandom)).intValue();
-                            arrayList.remove(iRandom);
-                            int iRandom2 = (int) (Math.random() * ((double) arrayList.size()));
-                            int iIntValue2 = ((Integer) arrayList.get(iRandom2)).intValue();
-                            arrayList.remove(iRandom2);
-                            Collections.swap(wk3Var.w0.s, iIntValue, iIntValue2);
-                            ((RecyclerView) wk3Var.l0.t).getAdapter().n.c(iIntValue, iIntValue2);
-                        }
-                        bl2 bl2Var2 = wk3Var.v0;
-                        List list2 = wk3Var.w0.s;
-                        WeakReference weakReference2 = bo2.a;
-                        list2.getClass();
-                        if (!u52.r(list2, "reorder", 0, 0L) && bl2Var2 != null) {
-                            bl2Var2.f(new vn2(bl2Var2, list2, iO1, size2), gq0Var);
-                        }
-                    }
-                } catch (Exception e3) {
-                    Log.e("PlayerQueueFragment", "Error shuffling queue", e3);
-                }
-                wk3Var.k0();
-                break;
-        }
+        int r0 = this.n;
+        gq0 r1 = gq0.n;
+        int r2 = 0;
+        wk3 r12 = this.o;
+        switch(r0) {
+            case 0: goto L77;
+            case 1: goto L61;
+            case 2: goto L56;
+            case 3: goto L52;
+            case 4: goto L75;
+            case 5: goto L28;
+            default: goto L79;
+        };
+    L52:
+        yk3 r13 = r12.w0;
+        if (r13 == null) goto L84;
+        r13.d();
+        return;
+    L84:
+        return;
+    L56:
+        yk3 r14 = r12.w0;
+        if (r14 == null) goto L85;
+        r14.d();
+        return;
+    L85:
+        return;
+    L75:
+        bj2 r3 = (bj2) r12.v0.get();     // Catch: Exception -> L39
+        if (u52.c().a == false) goto L41;
+        int r4 = u52.c().o;     // Catch: Exception -> L39
+    L42:
+        int r6 = r4 + 1;     // Catch: Exception -> L39
+        int r7 = r12.w0.s.size();     // Catch: Exception -> L39
+        bl2 r5 = r12.v0;     // Catch: Exception -> L39
+        List r8 = r12.w0.s;     // Catch: Exception -> L39
+        WeakReference r9 = bo2.a;     // Catch: Exception -> L39
+        if (u52.q("remove", r6, r7) == true) goto L47;
+        if (r5 == null) goto L47;
+        r5.f(new vn2(r5, r6, r7, r8, 0), r1);     // Catch: Exception -> L39
+    L47:
+        ((RecyclerView) r12.l0.t).getAdapter().n.f(r6, r7 - r6);     // Catch: Exception -> L39
+    L50:
+        r12.k0();
+        return;
+    L41:
+        r4 = r3.o0();     // Catch: Exception -> L39
+    L39:
+        e = move-exception;
+        Log.e("PlayerQueueFragment", "Error clearing queue", e);
+        goto L50
+    L77:
+    L68:
+        e = move-exception;
+        Log.e("PlayerQueueFragment", "Failed to get mediaBrowserListenableFuture in onResume", e);
+        return;
+    L65:
+        if (u52.c().a == false) goto L70;
+        int r10 = u52.c().o;     // Catch: Exception -> L68
+    L71:
+        r12.X().runOnUiThread(new mm(r12, r10, 5));     // Catch: Exception -> L68
+        return;
+    L70:
+        r10 = ((bj2) r12.v0.get()).o0();     // Catch: Exception -> L68
+        goto L71
+    L79:
+        bj2 r11 = (bj2) r12.v0.get();     // Catch: Exception -> L7
+        if (u52.c().a == false) goto L9;
+        int r15 = u52.c().o;     // Catch: Exception -> L7
+    L10:
+        int r16 = r15 + 1;     // Catch: Exception -> L7
+        int r17 = r12.w0.s.size() - 1;     // Catch: Exception -> L7
+        if (r16 >= r17) goto L25;
+        ArrayList r18 = new ArrayList();     // Catch: Exception -> L7
+        int r19 = r16;
+    L13:
+        if (r19 > r17) goto L16;
+        r18.add(Integer.valueOf(r19));     // Catch: Exception -> L7
+        r19 = r19 + 1;     // Catch: Exception -> L7
+    L16:
+        if (r18.size() < 2) goto L18;
+        int r20 = (int) (Math.random() * ((double) r18.size()));     // Catch: Exception -> L7
+        int r21 = ((Integer) r18.get(r20)).intValue();     // Catch: Exception -> L7
+        r18.remove(r20);     // Catch: Exception -> L7
+        int r22 = (int) (Math.random() * ((double) r18.size()));     // Catch: Exception -> L7
+        int r23 = ((Integer) r18.get(r22)).intValue();     // Catch: Exception -> L7
+        r18.remove(r22);     // Catch: Exception -> L7
+        Collections.swap(r12.w0.s, r21, r23);     // Catch: Exception -> L7
+        ((RecyclerView) r12.l0.t).getAdapter().n.c(r21, r23);     // Catch: Exception -> L7
+        goto L16
+    L18:
+        bl2 r24 = r12.v0;     // Catch: Exception -> L7
+        List r25 = r12.w0.s;     // Catch: Exception -> L7
+        WeakReference r26 = bo2.a;     // Catch: Exception -> L7
+        r25.getClass();     // Catch: Exception -> L7
+        if (u52.r(r25, "reorder", 0, 0) == true) goto L25;
+        if (r24 == null) goto L25;
+        r24.f(new vn2(r24, r25, r16, r17), r1);     // Catch: Exception -> L7
+    L25:
+        r12.k0();
+        return;
+    L9:
+        r15 = r11.o0();     // Catch: Exception -> L7
+    L7:
+        e = move-exception;
+        Log.e("PlayerQueueFragment", "Error shuffling queue", e);
+        goto L25
+    L28:
+        if (r12.l0 == null) goto L83;
+        View r27 = r12.X().getWindow().getDecorView();
+        WeakHashMap r28 = j65.a;
+        pb5 r29 = b65.a(r27);
+        if (r29 == null) goto L34;
+        r2 = r29.a.h(519).d;
+    L34:
+        RecyclerView r30 = (RecyclerView) r12.l0.t;
+        r30.setPadding(r30.getPaddingLeft(), ((RecyclerView) r12.l0.t).getPaddingTop(), ((RecyclerView) r12.l0.t).getPaddingRight(), r2);
+        return;
+    L83:
+        return;
+    L61:
+        if (r12.s0 == false) goto L86;
+        r12.k0();
+        return;
     }
 }

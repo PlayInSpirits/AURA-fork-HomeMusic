@@ -9,9 +9,9 @@ public final class um1 {
     public final long b;
     public final int c;
 
-    public um1(Uri uri, long j, int i) {
-        this.a = uri;
-        this.b = j;
-        this.c = i;
+    public um1(Uri r1, long r2, int r4) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r4;
     }
 }

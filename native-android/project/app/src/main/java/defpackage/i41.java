@@ -24,7 +24,6 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArraySet;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -116,243 +115,272 @@ public final class i41 extends fq implements ExoPlayer {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public i41(o31 o31Var) throws Throwable {
-        i41 i41Var;
-        Handler.Callback callback;
-        i41 i41Var2;
-        int i;
-        yc5 yc5Var;
-        Looper looper = o31Var.h;
-        MediaService mediaService = o31Var.a;
-        int i2 = 0;
-        Integer num = 0;
-        ?? fqVar = new fq();
-        fqVar.e = new q90();
-        try {
-            l93.K("ExoPlayerImpl", "Init " + Integer.toHexString(System.identityHashCode(fqVar)) + " [AndroidXMedia3/1.9.2] [" + f35.a + "]");
-            vp4 vp4Var = o31Var.b;
-            fqVar.f = mediaService.getApplicationContext();
-            fqVar.t = new nj0(vp4Var);
-            fqVar.h0 = o31Var.i;
-            fqVar.a0 = o31Var.j;
-            fqVar.Y = o31Var.o;
-            fqVar.d0 = false;
-            fqVar.C = o31Var.x;
-            d41 d41Var = new d41(fqVar);
-            fqVar.x = d41Var;
-            fqVar.y = new e41();
-            kq[] kqVarArrB = ((pm0) o31Var.c.get()).b(new Handler(looper), d41Var, d41Var, d41Var, d41Var);
-            fqVar.h = kqVarArrB;
-            rr2.w(kqVarArrB.length > 0);
-            fqVar.i = new kq[kqVarArrB.length];
-            int i3 = 0;
-            while (true) {
-                kq[] kqVarArr = fqVar.i;
-                if (i3 >= kqVarArr.length) {
-                    break;
-                }
-                int i4 = fqVar.h[i3].o;
-                kqVarArr[i3] = null;
-                i3++;
-                i41Var.e.d();
-                throw th;
-            }
-            pn0 pn0Var = (pn0) o31Var.e.get();
-            fqVar.j = pn0Var;
-            fqVar.s = (lt2) o31Var.d.get();
-            cp cpVar = (cp) o31Var.g.get();
-            fqVar.v = cpVar;
-            fqVar.r = o31Var.p;
-            n84 n84Var = o31Var.q;
-            fqVar.l0 = o31Var.s;
-            fqVar.m0 = o31Var.t;
-            fqVar.n0 = o31Var.u;
-            fqVar.P = o31Var.r;
-            fqVar.u = looper;
-            fqVar.w = vp4Var;
-            fqVar.g = fqVar;
-            fqVar.n = new tc2(looper, vp4Var, new u31(fqVar, i2));
-            CopyOnWriteArraySet copyOnWriteArraySet = new CopyOnWriteArraySet();
-            fqVar.o = copyOnWriteArraySet;
-            fqVar.q = new ArrayList();
-            fqVar.Q = new pd4();
-            kq[] kqVarArr2 = fqVar.h;
-            ew4 ew4Var = new ew4(new dz3[kqVarArr2.length], new t41[kqVarArr2.length], jw4.b, null);
-            fqVar.c = ew4Var;
-            fqVar.p = new zt4();
-            SparseBooleanArray sparseBooleanArray = new SparseBooleanArray();
-            int[] iArr = {1, 2, 3, 13, 14, 15, 16, 17, 18, 19, 31, 20, 30, 21, 35, 22, 24, 27, 28, 32};
-            int length = iArr.length;
-            int i5 = 0;
-            while (i5 < length) {
-                int i6 = iArr[i5];
-                rr2.w(!false);
-                sparseBooleanArray.append(i6, true);
-                i5++;
-                num = num;
-            }
-            Integer num2 = num;
-            rr2.w(!false);
-            sparseBooleanArray.append(29, true);
-            rr2.w(!false);
-            w71 w71Var = new w71(sparseBooleanArray);
-            fqVar.d = new mi3(w71Var);
-            SparseBooleanArray sparseBooleanArray2 = new SparseBooleanArray();
-            for (int i7 = 0; i7 < w71Var.a.size(); i7++) {
-                int iB = w71Var.b(i7);
-                rr2.w(!false);
-                sparseBooleanArray2.append(iB, true);
-            }
-            rr2.w(!false);
-            sparseBooleanArray2.append(4, true);
-            rr2.w(!false);
-            sparseBooleanArray2.append(10, true);
-            rr2.w(!false);
-            fqVar.R = new mi3(new w71(sparseBooleanArray2));
-            fqVar.k = vp4Var.a(looper, null);
-            u31 u31Var = new u31(fqVar, 1);
-            fqVar.l = u31Var;
-            fqVar.p0 = ph3.k(ew4Var);
-            fqVar.t.c0(fqVar, looper);
-            ik3 ik3Var = new ik3(o31Var.E);
-            q41 q41Var = new q41(fqVar.f, fqVar.h, fqVar.i, pn0Var, ew4Var, (cd2) o31Var.f.get(), cpVar, fqVar.I, fqVar.J, fqVar.t, n84Var, o31Var.v, o31Var.w, looper, vp4Var, u31Var, ik3Var, fqVar.y, o31Var.F);
-            yp4 yp4Var = q41Var.u;
-            fqVar.m = q41Var;
-            Looper looper2 = q41Var.w;
-            fqVar.b0 = 1.0f;
-            fqVar.I = 0;
-            do2 do2Var = do2.K;
-            fqVar.S = do2Var;
-            fqVar.T = do2Var;
-            fqVar.o0 = do2Var;
-            fqVar.q0 = -1;
-            fqVar.e0 = jg0.d;
-            fqVar.f0 = true;
-            fqVar.v(fqVar.t);
-            cpVar.L(new Handler(looper), fqVar.t);
-            copyOnWriteArraySet.add(fqVar.x);
-            int i8 = Build.VERSION.SDK_INT;
-            if (i8 >= 31) {
-                try {
-                    Context context = fqVar.f;
-                    try {
-                        boolean z = o31Var.C;
-                        yp4 yp4VarA = vp4Var.a(q41Var.w, null);
-                        callback = null;
-                        try {
-                            b41 b41Var = new b41(context, z, this, ik3Var, 0);
-                            i41Var2 = this;
-                            yp4VarA.d(b41Var);
-                        } catch (Throwable th) {
-                            th = th;
-                            i41Var = this;
-                        }
-                    } catch (Throwable th2) {
-                        th = th2;
-                        i41Var = this;
-                    }
-                } catch (Throwable th3) {
-                    th = th3;
-                    i41Var = fqVar;
-                }
-            } else {
-                callback = null;
-                i41Var2 = fqVar;
-            }
-            u31 u31Var2 = new u31(i41Var2, 2);
-            c6 c6Var = new c6();
-            c6Var.b = vp4Var.a(looper2, callback);
-            c6Var.c = vp4Var.a(looper, callback);
-            c6Var.e = num2;
-            c6Var.f = num2;
-            c6Var.d = u31Var2;
-            i41Var2.D = c6Var;
-            c6Var.v(new a0(27, i41Var2));
-            i41 i41Var3 = i41Var2;
-            try {
-                ll llVar = new ll(mediaService, looper2, o31Var.h, i41Var2.x, vp4Var);
-                i41Var3.z = llVar;
-                llVar.l(o31Var.n);
-                int i9 = o31Var.m ? o31Var.l : (o31Var.y == Integer.MAX_VALUE || o31Var.z == Integer.MAX_VALUE || o31Var.A == Integer.MAX_VALUE || o31Var.B == Integer.MAX_VALUE) ? 0 : 1;
-                y10 y10Var = new y10(mediaService, looper2, vp4Var, 3);
-                i41Var3.A = y10Var;
-                boolean z2 = i9 != 0;
-                if (y10Var.b != z2) {
-                    y10Var.b = z2;
-                    y10Var.h(z2, y10Var.c);
-                }
-                y10 y10Var2 = new y10(mediaService, looper2, vp4Var, 4);
-                i41Var3.B = y10Var2;
-                boolean z3 = i9 == 2;
-                if (y10Var2.b != z3) {
-                    y10Var2.b = z3;
-                    y10Var2.i(z3, y10Var2.c);
-                }
-                i41Var3.j0 = hp0.e;
-                i41Var3.k0 = s55.d;
-                i41Var3.Z = pf4.c;
-                if (i8 >= 34) {
-                    yc5 yc5Var2 = new yc5();
-                    yc5Var2.p = i41Var3;
-                    yc5Var2.n = new WeakReference(mediaService);
-                    g41 g41Var = new g41(0, yc5Var2);
-                    yc5Var2.o = g41Var;
-                    i = 0;
-                    mediaService.registerDeviceIdChangeListener(new h41(0, i41Var3.w.a(i41Var3.u, callback)), g41Var);
-                    yc5Var = yc5Var2;
-                } else {
-                    i = 0;
-                    yc5Var = callback;
-                }
-                i41Var3.F = yc5Var;
-                i41Var3.G = new qr2(8);
-                i41Var3.H = new qr2(8);
-                int i10 = i;
-                fqVar = i41Var3;
-                fqVar.E = new w12(fqVar, i41Var3.x, i41Var3.w, o31Var.y, o31Var.z, o31Var.A, o31Var.B);
-                yp4Var.b(38, fqVar.P).b();
-                il ilVar = fqVar.a0;
-                boolean z4 = o31Var.k;
-                yp4Var.getClass();
-                xp4 xp4VarC = yp4.c();
-                xp4VarC.a = yp4Var.a.obtainMessage(31, z4 ? 1 : 0, i10, ilVar);
-                xp4VarC.b();
-                fqVar.q1(1, 3, fqVar.a0);
-                fqVar.q1(2, 4, Integer.valueOf(fqVar.Y));
-                fqVar.q1(2, 5, num2);
-                fqVar.q1(1, 9, Boolean.valueOf(fqVar.d0));
-                fqVar.q1(6, 8, fqVar.y);
-                fqVar.q1(-1, 16, Integer.valueOf(fqVar.h0));
-                fqVar.e.d();
-            } catch (Throwable th4) {
-                th = th4;
-                i41Var = i41Var3;
-            }
-        } catch (Throwable th5) {
-            th = th5;
-            i41Var = fqVar;
-        }
+    public i41(o31 r34) {
+        Looper r0 = r34.h;
+        MediaService r6 = r34.a;
+        int r7 = 0;
+        Integer r2 = 0;
+        ?? r1 = new fq();
+        r1.e = new q90();
+        l93.K("ExoPlayerImpl", "Init " + Integer.toHexString(System.identityHashCode(r1)) + " [AndroidXMedia3/1.9.2] [" + f35.a + "]");     // Catch: Throwable -> L11
+        vp4 r3 = r34.b;     // Catch: Throwable -> L11
+        r1.f = r6.getApplicationContext();     // Catch: Throwable -> L11
+        r1.t = new nj0(r3);     // Catch: Throwable -> L11
+        r1.h0 = r34.i;     // Catch: Throwable -> L11
+        r1.a0 = r34.j;     // Catch: Throwable -> L11
+        r1.Y = r34.o;     // Catch: Throwable -> L11
+        r1.d0 = false;     // Catch: Throwable -> L11
+        r1.C = r34.x;     // Catch: Throwable -> L11
+        d41 r11 = new d41(r1);     // Catch: Throwable -> L11
+        r1.x = r11;     // Catch: Throwable -> L11
+        r1.y = new e41();     // Catch: Throwable -> L11
+        kq[] r4 = ((pm0) r34.c.get()).b(new Handler(r0), r11, r11, r11, r11);     // Catch: Throwable -> L11
+        r1.h = r4;     // Catch: Throwable -> L11
+        if (r4.length <= 0) goto L6;
+        boolean r5 = true;
+    L7:
+        rr2.w(r5);     // Catch: Throwable -> L11
+        r1.i = new kq[r4.length];     // Catch: Throwable -> L11
+        int r8 = 0;
+    L8:
+        kq[] r9 = r1.i;     // Catch: Throwable -> L11
+        if (r8 >= r9.length) goto L13;
+        int r10 = r1.h[r8].o;     // Catch: Throwable -> L11
+        r9[r8] = null;     // Catch: Throwable -> L11
+        r8 = r8 + 1;     // Catch: Throwable -> L11
+        goto L8
+    L13:
+        pn0 r13 = (pn0) r34.e.get();     // Catch: Throwable -> L11
+        r1.j = r13;     // Catch: Throwable -> L11
+        r1.s = (lt2) r34.d.get();     // Catch: Throwable -> L11
+        cp r12 = (cp) r34.g.get();     // Catch: Throwable -> L11
+        r1.v = r12;     // Catch: Throwable -> L11
+        r1.r = r34.p;     // Catch: Throwable -> L11
+        n84 r14 = r34.q;     // Catch: Throwable -> L11
+        r1.l0 = r34.s;     // Catch: Throwable -> L11
+        r1.m0 = r34.t;     // Catch: Throwable -> L11
+        r1.n0 = r34.u;     // Catch: Throwable -> L11
+        r1.P = r34.r;     // Catch: Throwable -> L11
+        r1.u = r0;     // Catch: Throwable -> L11
+        r1.w = r3;     // Catch: Throwable -> L11
+        r1.g = r1;     // Catch: Throwable -> L11
+        r1.n = new tc2(r0, r3, new u31(r1, r7));     // Catch: Throwable -> L11
+        CopyOnWriteArraySet r15 = new CopyOnWriteArraySet();     // Catch: Throwable -> L11
+        r1.o = r15;     // Catch: Throwable -> L11
+        r1.q = new ArrayList();     // Catch: Throwable -> L11
+        r1.Q = new pd4();     // Catch: Throwable -> L11
+        kq[] r16 = r1.h;     // Catch: Throwable -> L11
+        ew4 r17 = new ew4(new dz3[r16.length], new t41[r16.length], jw4.b, null);     // Catch: Throwable -> L11
+        r1.c = r17;     // Catch: Throwable -> L11
+        r1.p = new zt4();     // Catch: Throwable -> L11
+        SparseBooleanArray r18 = new SparseBooleanArray();     // Catch: Throwable -> L11
+        int[] r19 = {1, 2, 3, 13, 14, 15, 16, 17, 18, 19, 31, 20, 30, 21, 35, 22, 24, 27, 28, 32};     // Catch: Throwable -> L11
+        int r110 = r19.length;     // Catch: Throwable -> L11
+        int r111 = 0;
+    L14:
+        if (r111 >= r110) goto L16;
+        int r20 = r19[r111];     // Catch: Throwable -> L11
+        rr2.w(!false);     // Catch: Throwable -> L11
+        r18.append(r20, true);     // Catch: Throwable -> L11
+        r111 = r111 + 1;     // Catch: Throwable -> L11
+        r2 = r2;
+        goto L14
+    L16:
+        Integer r31 = r2;
+        rr2.w(!false);     // Catch: Throwable -> L11
+        r18.append(29, true);     // Catch: Throwable -> L11
+        rr2.w(!false);     // Catch: Throwable -> L11
+        w71 r21 = new w71(r18);     // Catch: Throwable -> L11
+        r1.d = new mi3(r21);     // Catch: Throwable -> L11
+        SparseBooleanArray r22 = new SparseBooleanArray();     // Catch: Throwable -> L11
+        int r23 = 0;
+    L18:
+        if (r23 >= r21.a.size()) goto L20;
+        int r112 = r21.b(r23);     // Catch: Throwable -> L11
+        rr2.w(!false);     // Catch: Throwable -> L11
+        r22.append(r112, true);     // Catch: Throwable -> L11
+        r23 = r23 + 1;     // Catch: Throwable -> L11
+        goto L18
+    L20:
+        rr2.w(!false);     // Catch: Throwable -> L11
+        r22.append(4, true);     // Catch: Throwable -> L11
+        rr2.w(!false);     // Catch: Throwable -> L11
+        r22.append(10, true);     // Catch: Throwable -> L11
+        rr2.w(!false);     // Catch: Throwable -> L11
+        r1.R = new mi3(new w71(r22));     // Catch: Throwable -> L11
+        r1.k = r3.a(r0, null);     // Catch: Throwable -> L11
+        u31 r24 = new u31(r1, 1);     // Catch: Throwable -> L11
+        r1.l = r24;     // Catch: Throwable -> L11
+        r1.p0 = ph3.k(r17);     // Catch: Throwable -> L11
+        r1.t.c0(r1, r0);     // Catch: Throwable -> L11
+        ik3 r113 = new ik3(r34.E);     // Catch: Throwable -> L11
+        q41 r25 = new q41(r1.f, r1.h, r1.i, r13, r17, (cd2) r34.f.get(), r12, r1.I, r1.J, r1.t, r14, r34.v, r34.w, r0, r3, r24, r113, r1.y, r34.F);     // Catch: Throwable -> L11
+        yp4 r114 = r25.u;     // Catch: Throwable -> L11
+        r1.m = r25;     // Catch: Throwable -> L11
+        Looper r115 = r25.w;     // Catch: Throwable -> L11
+        r1.b0 = 1.0f;     // Catch: Throwable -> L11
+        r1.I = 0;     // Catch: Throwable -> L11
+        do2 r26 = do2.K;     // Catch: Throwable -> L11
+        r1.S = r26;     // Catch: Throwable -> L11
+        r1.T = r26;     // Catch: Throwable -> L11
+        r1.o0 = r26;     // Catch: Throwable -> L11
+        r1.q0 = -1;     // Catch: Throwable -> L11
+        r1.e0 = jg0.d;     // Catch: Throwable -> L11
+        r1.f0 = true;     // Catch: Throwable -> L11
+        r1.v(r1.t);     // Catch: Throwable -> L11
+        r12.L(new Handler(r0), r1.t);     // Catch: Throwable -> L11
+        r15.add(r1.x);     // Catch: Throwable -> L11
+        int r116 = Build.VERSION.SDK_INT;     // Catch: Throwable -> L11
+        if (r116 >= 31) goto L85;
+        Handler.Callback r117 = null;
+        i41 r27 = r1;
+    L37:
+        u31 r28 = new u31(r27, 2);     // Catch: Throwable -> L11
+        c6 r29 = new c6();     // Catch: Throwable -> L11
+        r29.b = r3.a(r115, r117);     // Catch: Throwable -> L11
+        r29.c = r3.a(r0, r117);     // Catch: Throwable -> L11
+        r29.e = r31;     // Catch: Throwable -> L11
+        r29.f = r31;     // Catch: Throwable -> L11
+        r29.d = r28;     // Catch: Throwable -> L11
+        r27.D = r29;     // Catch: Throwable -> L11
+        r29.v(new a0(27, r27));     // Catch: Throwable -> L11
+        i41 r30 = r27;
+        ll r32 = new ll(r6, r115, r34.h, r27.x, r3);     // Catch: Throwable -> L51
+        r30.z = r32;     // Catch: Throwable -> L51
+        r32.l(r34.n);     // Catch: Throwable -> L51
+        int r33 = r34.l;     // Catch: Throwable -> L51
+        if (r34.m == false) goto L42;
+    L54:
+        y10 r35 = new y10(r6, r115, r3, 3);     // Catch: Throwable -> L51
+        r30.A = r35;     // Catch: Throwable -> L51
+        if (r33 == 0) goto L57;
+        boolean r36 = true;
+    L59:
+        if (r35.b == r36) goto L62;
+        r35.b = r36;     // Catch: Throwable -> L51
+        r35.h(r36, r35.c);     // Catch: Throwable -> L51
+    L62:
+        y10 r37 = new y10(r6, r115, r3, 4);     // Catch: Throwable -> L51
+        r30.B = r37;     // Catch: Throwable -> L51
+        if (r33 != 2) goto L65;
+        boolean r38 = true;
+    L67:
+        if (r37.b == r38) goto L70;
+        r37.b = r38;     // Catch: Throwable -> L51
+        r37.i(r38, r37.c);     // Catch: Throwable -> L51
+    L70:
+        r30.j0 = hp0.e;     // Catch: Throwable -> L51
+        r30.k0 = s55.d;     // Catch: Throwable -> L51
+        r30.Z = pf4.c;     // Catch: Throwable -> L51
+        if (r116 < 34) goto L73;
+        yc5 r39 = new yc5();     // Catch: Throwable -> L51
+        r39.p = r30;     // Catch: Throwable -> L51
+        r39.n = new WeakReference(r6);     // Catch: Throwable -> L51
+        g41 r40 = new g41(0, r39);     // Catch: Throwable -> L51
+        r39.o = r40;     // Catch: Throwable -> L51
+        int r41 = 0;
+        bn.y(r6, new h41(0, r30.w.a(r30.u, r117)), r40);     // Catch: Throwable -> L51
+        yc5 r118 = r39;
+    L74:
+        r30.F = r118;     // Catch: Throwable -> L51
+        r30.G = new qr2(8);     // Catch: Throwable -> L51
+        r30.H = new qr2(8);     // Catch: Throwable -> L51
+        int r310 = r41;
+        r1 = r30;
+        r1.E = new w12(r1, r30.x, r30.w, r34.y, r34.z, r34.A, r34.B);     // Catch: Throwable -> L11
+        r114.b(38, r1.P).b();     // Catch: Throwable -> L11
+        il r42 = r1.a0;     // Catch: Throwable -> L11
+        boolean r43 = r34.k;     // Catch: Throwable -> L11
+        r114.getClass();     // Catch: Throwable -> L11
+        xp4 r44 = yp4.c();     // Catch: Throwable -> L11
+        r44.a = r114.a.obtainMessage(31, r43 ? 1 : 0, r310, r42);     // Catch: Throwable -> L11
+        r44.b();     // Catch: Throwable -> L11
+        r1.q1(1, 3, r1.a0);     // Catch: Throwable -> L11
+        r1.q1(2, 4, Integer.valueOf(r1.Y));     // Catch: Throwable -> L11
+        r1.q1(2, 5, r31);     // Catch: Throwable -> L11
+        r1.q1(1, 9, Boolean.valueOf(r1.d0));     // Catch: Throwable -> L11
+        r1.q1(6, 8, r1.y);     // Catch: Throwable -> L11
+        r1.q1(-1, 16, Integer.valueOf(r1.h0));     // Catch: Throwable -> L11
+        r1.e.d();
+        return;
+    L73:
+        r41 = 0;
+        r118 = r117;
+        goto L74
+    L65:
+        r38 = false;
+        goto L67
+    L57:
+        r36 = false;
+        goto L59
+    L42:
+        if (r34.y != Integer.MAX_VALUE) goto L44;
+    L53:
+        r33 = 0;
+        goto L54
+    L44:
+        if (r34.z == Integer.MAX_VALUE) goto L53;
+        if (r34.A == Integer.MAX_VALUE) goto L53;
+        if (r34.B == Integer.MAX_VALUE) goto L53;
+        r33 = 1;
+    L51:
+        th = th;
+        i41 r45 = r30;
+    L79:
+        r45.e.d();
+        throw th;
+    L85:
+        Context r46 = r1.f;     // Catch: Throwable -> L34
+        boolean r47 = r34.C;     // Catch: Throwable -> L32
+        yp4 r48 = r3.a(r25.w, null);     // Catch: Throwable -> L32
+        r117 = null;
+        b41 r49 = new b41(r46, r47, this, r113, 0);     // Catch: Throwable -> L30
+        r27 = this;
+        r48.d(r49);     // Catch: Throwable -> L11
+    L30:
+        th = th;
+        r45 = this;
+    L32:
+        th = th;
+        r45 = this;
+    L34:
+        th = th;
+        r45 = r1;
+        goto L79
+    L6:
+        r5 = false;
+    L11:
+        th = th;
+        r45 = r1;
+        goto L79
     }
 
-    public static long j1(ph3 ph3Var) {
-        bu4 bu4Var = new bu4();
-        zt4 zt4Var = new zt4();
-        ph3Var.a.g(ph3Var.b.a, zt4Var);
-        long j = ph3Var.c;
-        return j == -9223372036854775807L ? ph3Var.a.m(zt4Var.c, bu4Var, 0L).k : zt4Var.e + j;
+    public static long j1(ph3 r6) {
+        bu4 r0 = new bu4();
+        zt4 r1 = new zt4();
+        r6.a.g(r6.b.a, r1);
+        long r2 = r6.c;
+        if (r2 != (-9223372036854775807L)) goto L7;
+        return r6.a.m(r1.c, r0, 0).k;
+    L7:
+        return r1.e + r2;
     }
 
-    public static ph3 k1(ph3 ph3Var, int i) {
-        ph3 ph3VarH = ph3Var.h(i);
-        return (i == 1 || i == 4) ? ph3VarH.b(false) : ph3VarH;
+    public static ph3 k1(ph3 r1, int r2) {
+        ph3 r3 = r1.h(r2);
+        if (r2 == 1) goto L9;
+        if (r2 == 4) goto L9;
+        return r3;
+    L9:
+        return r3.b(false);
     }
 
     @Override // defpackage.qi3
     public final void A0() {
         z1();
-        if (this.b0 != 0.0f) {
-            R(0.0f);
-        }
+        if (this.b0 == 0.0f) goto L6;
+        R(0.0f);
+        return;
     }
 
     @Override // defpackage.qi3
@@ -379,21 +407,21 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     @Override // defpackage.qi3
-    public final void E(int i, boolean z) {
+    public final void E(int r1, boolean r2) {
         z1();
     }
 
     @Override // defpackage.qi3
     public final cw4 E0() {
         z1();
-        jn0 jn0VarD = this.j.d();
-        if (!this.N) {
-            return jn0VarD;
-        }
-        jn0VarD.getClass();
-        in0 in0Var = new in0(jn0VarD);
-        in0Var.m(this.O);
-        return new jn0(in0Var);
+        jn0 r0 = this.j.d();
+        if (this.N == false) goto L6;
+        r0.getClass();
+        in0 r1 = new in0(r0);
+        r1.m(this.O);
+        return new jn0(r1);
+    L6:
+        return r0;
     }
 
     @Override // defpackage.qi3
@@ -405,26 +433,30 @@ public final class i41 extends fq implements ExoPlayer {
     @Override // defpackage.qi3
     public final long F0() {
         z1();
-        if (this.p0.a.p()) {
-            return this.r0;
-        }
-        ph3 ph3Var = this.p0;
-        if (ph3Var.k.d != ph3Var.b.d) {
-            return f35.i0(ph3Var.a.m(o0(), this.b, 0L).l);
-        }
-        long j = ph3Var.q;
-        if (this.p0.k.b()) {
-            ph3 ph3Var2 = this.p0;
-            zt4 zt4VarG = ph3Var2.a.g(ph3Var2.k.a, this.p);
-            long jD = zt4VarG.d(this.p0.k.b);
-            j = jD == Long.MIN_VALUE ? zt4VarG.d : jD;
-        }
-        ph3 ph3Var3 = this.p0;
-        cu4 cu4Var = ph3Var3.a;
-        Object obj = ph3Var3.k.a;
-        zt4 zt4Var = this.p;
-        cu4Var.g(obj, zt4Var);
-        return f35.i0(j + zt4Var.e);
+        if (this.p0.a.p() == true) goto L5;
+        ph3 r0 = this.p0;
+        if (r0.k.d != r0.b.d) goto L9;
+        long r1 = r0.q;
+        if (this.p0.k.b() == false) goto L16;
+        ph3 r2 = this.p0;
+        zt4 r3 = r2.a.g(r2.k.a, this.p);
+        long r4 = r3.d(this.p0.k.b);
+        if (r4 != Long.MIN_VALUE) goto L15;
+        r1 = r3.d;
+        goto L16
+    L15:
+        r1 = r4;
+    L16:
+        ph3 r5 = this.p0;
+        cu4 r6 = r5.a;
+        Object r7 = r5.k.a;
+        zt4 r8 = this.p;
+        r6.g(r7, r8);
+        return f35.i0(r1 + r8.e);
+    L9:
+        return f35.i0(r0.a.m(o0(), this.b, 0).l);
+    L5:
+        return this.r0;
     }
 
     @Override // defpackage.qi3
@@ -433,27 +465,27 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     @Override // defpackage.qi3
-    public final void G0(int i) {
+    public final void G0(int r1) {
         z1();
     }
 
     @Override // defpackage.qi3
-    public final void H(int i, int i2) {
+    public final void H(int r1, int r2) {
         z1();
     }
 
     @Override // defpackage.qi3
-    public final void J(int i) {
+    public final void J(int r1) {
         z1();
     }
 
     @Override // defpackage.qi3
     public final int K() {
         z1();
-        if (k()) {
-            return this.p0.b.c;
-        }
+        if (k() == true) goto L5;
         return -1;
+    L5:
+        return this.p0.b.c;
     }
 
     @Override // defpackage.qi3
@@ -463,86 +495,109 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     @Override // defpackage.qi3
-    public final void L(int i, int i2, List list) {
+    public final void L(int r11, int r12, List r13) {
         z1();
-        rr2.l(i >= 0 && i2 >= i);
-        ArrayList arrayList = this.q;
-        int size = arrayList.size();
-        if (i > size) {
-            return;
-        }
-        int iMin = Math.min(i2, size);
-        if (iMin - i == list.size()) {
-            int i3 = i;
-            while (true) {
-                if (i3 >= iMin) {
-                    this.K++;
-                    yp4 yp4Var = this.m.u;
-                    yp4Var.getClass();
-                    xp4 xp4VarC = yp4.c();
-                    xp4VarC.a = yp4Var.a.obtainMessage(27, i, iMin, list);
-                    xp4VarC.b();
-                    for (int i4 = i; i4 < iMin; i4++) {
-                        f41 f41Var = (f41) arrayList.get(i4);
-                        cu4 cu4Var = f41Var.c;
-                        gn2 gn2Var = (gn2) list.get(i4 - i);
-                        f41Var.c = cu4Var instanceof du4 ? new du4(((du4) cu4Var).e, gn2Var) : new du4(cu4Var, gn2Var);
-                    }
-                    x1(this.p0.j(b1()), 0, false, 4, -9223372036854775807L, -1, false);
-                    return;
-                }
-                if (!((f41) arrayList.get(i3)).b.k.a((gn2) list.get(i3 - i))) {
-                    break;
-                } else {
-                    i3++;
-                }
-            }
-        }
-        ArrayList arrayListC1 = c1(list);
-        if (!this.p0.a.p()) {
-            ph3 ph3VarO1 = o1(Z0(this.p0, iMin, arrayListC1), i, iMin);
-            x1(ph3VarO1, 0, !ph3VarO1.b.a.equals(this.p0.b.a), 4, g1(ph3VarO1), -1, false);
-        } else {
-            boolean z = this.q0 == -1;
-            z1();
-            r1(arrayListC1, -1, -9223372036854775807L, z);
-        }
+        boolean r5 = true;
+        if (r11 < 0) goto L6;
+        if (r12 < r11) goto L6;
+        boolean r6 = true;
+    L7:
+        rr2.l(r6);
+        ArrayList r7 = this.q;
+        int r8 = r7.size();
+        if (r11 <= r8) goto L10;
+        return;
+    L10:
+        int r2 = Math.min(r12, r8);
+        if ((r2 - r11) != r13.size()) goto L17;
+        int r9 = r11;
+    L14:
+        if (r9 >= r2) goto L28;
+        rg2 r10 = ((f41) r7.get(r9)).b;
+        if (r10.k.a((gn2) r13.get(r9 - r11)) == false) goto L17;
+        r9 = r9 + 1;
+        goto L14
+    L28:
+        this.K++;
+        yp4 r1 = this.m.u;
+        r1.getClass();
+        xp4 r4 = yp4.c();
+        r4.a = r1.a.obtainMessage(27, r11, r2, r13);
+        r4.b();
+        int r3 = r11;
+    L29:
+        if (r3 >= r2) goto L35;
+        f41 r14 = (f41) r7.get(r3);
+        cu4 r15 = r14.c;
+        gn2 r16 = (gn2) r13.get(r3 - r11);
+        if ((r15 instanceof du4) == false) goto L33;
+        du4 r17 = new du4(((du4) r15).e, r16);
+    L34:
+        r14.c = r17;
+        r3 = r3 + 1;
+        goto L29
+    L33:
+        r17 = new du4(r15, r16);
+        goto L34
+    L35:
+        x1(this.p0.j(b1()), 0, false, 4, -9223372036854775807L, -1, false);
+        return;
+    L17:
+        ArrayList r18 = c1(r13);
+        if (this.p0.a.p() == true) goto L20;
+        ph3 r19 = o1(Z0(this.p0, r2, r18), r11, r2);
+        x1(r19, 0, !r19.b.a.equals(this.p0.b.a), 4, g1(r19), -1, false);
+        return;
+    L20:
+        if (this.q0 == (-1)) goto L23;
+        r5 = false;
+    L23:
+        z1();
+        r1(r18, -1, -9223372036854775807L, r5);
+        return;
+    L6:
+        r6 = false;
+        goto L7
     }
 
     @Override // defpackage.qi3
-    public final void L0(List list) {
+    public final void L0(List r7) {
         z1();
-        ArrayList arrayListC1 = c1(list);
+        ArrayList r1 = c1(r7);
         z1();
-        r1(arrayListC1, -1, -9223372036854775807L, true);
+        r1(r1, -1, -9223372036854775807L, true);
     }
 
     @Override // defpackage.qi3
-    public final void M(cw4 cw4Var) {
-        cw4 cw4VarB;
+    public final void M(cw4 r7) {
         z1();
-        pn0 pn0Var = this.j;
-        pn0Var.getClass();
-        cw4 cw4VarE0 = E0();
-        if (this.N) {
-            this.O = cw4Var.I;
-            jx1 jx1Var = this.P.a;
-            bw4 bw4VarA = cw4Var.a();
-            o15 it = jx1Var.iterator();
-            while (it.hasNext()) {
-                bw4VarA.l(((Integer) it.next()).intValue(), true);
-            }
-            cw4VarB = bw4VarA.b();
-        } else {
-            cw4VarB = cw4Var;
-        }
-        if (!cw4VarB.equals(pn0Var.d())) {
-            pn0Var.j(cw4VarB);
-        }
-        if (cw4VarE0.equals(cw4Var)) {
-            return;
-        }
-        this.n.f(19, new y31(cw4Var, 0));
+        pn0 r0 = this.j;
+        r0.getClass();
+        cw4 r1 = E0();
+        if (this.N == false) goto L9;
+        this.O = r7.I;
+        jx1 r2 = this.P.a;
+        bw4 r3 = r7.a();
+        o15 r4 = r2.h();
+    L6:
+        if (r4.hasNext() == false) goto L8;
+        r3.l(((Integer) r4.next()).intValue(), true);
+        goto L6
+    L8:
+        cw4 r5 = r3.b();
+    L11:
+        if (r5.equals(r0.d()) == true) goto L14;
+        r0.j(r5);
+    L14:
+        if (r1.equals(r7) == true) goto L18;
+        y31 r6 = new y31(r7, 0);
+        this.n.f(19, r6);
+        return;
+    L18:
+        return;
+    L9:
+        r5 = r7;
+        goto L11
     }
 
     @Override // defpackage.qi3
@@ -552,19 +607,31 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     @Override // defpackage.qi3
-    public final void N0(List list, int i) {
+    public final void N0(List r10, int r11) {
         z1();
-        ArrayList arrayListC1 = c1(list);
+        ArrayList r2 = c1(r10);
         z1();
-        rr2.l(i >= 0);
-        int iMin = Math.min(i, this.q.size());
-        if (!this.p0.a.p()) {
-            x1(Z0(this.p0, iMin, arrayListC1), 0, false, 5, -9223372036854775807L, -1, false);
-            return;
-        }
-        boolean z = this.q0 == -1;
+        if (r11 < 0) goto L5;
+        boolean r5 = true;
+    L6:
+        rr2.l(r5);
+        int r1 = Math.min(r11, this.q.size());
+        if (this.p0.a.p() == true) goto L9;
+        x1(Z0(this.p0, r1, r2), 0, false, 5, -9223372036854775807L, -1, false);
+        return;
+    L9:
+        if (this.q0 != (-1)) goto L11;
+        boolean r6 = true;
+    L12:
         z1();
-        r1(arrayListC1, -1, -9223372036854775807L, z);
+        r1(r2, -1, -9223372036854775807L, r6);
+        return;
+    L11:
+        r6 = false;
+        goto L12
+    L5:
+        r5 = false;
+        goto L6
     }
 
     @Override // defpackage.qi3
@@ -574,66 +641,80 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     @Override // defpackage.qi3
-    public final void P(int i, int i2) {
+    public final void P(int r12, int r13) {
         z1();
-        rr2.l(i >= 0 && i2 >= i);
-        int size = this.q.size();
-        int iMin = Math.min(i2, size);
-        if (i >= size || i == iMin) {
-            return;
-        }
-        ph3 ph3VarO1 = o1(this.p0, i, iMin);
-        x1(ph3VarO1, 0, !ph3VarO1.b.a.equals(this.p0.b.a), 4, g1(ph3VarO1), -1, false);
+        if (r12 < 0) goto L6;
+        if (r13 < r12) goto L6;
+        boolean r1 = true;
+    L7:
+        rr2.l(r1);
+        int r2 = this.q.size();
+        int r14 = Math.min(r13, r2);
+        if (r12 >= r2) goto L13;
+        if (r12 == r14) goto L14;
+        ph3 r3 = o1(this.p0, r12, r14);
+        x1(r3, 0, !r3.b.a.equals(this.p0.b.a), 4, g1(r3), -1, false);
+        return;
+    L14:
+        return;
+    L13:
+        return;
+    L6:
+        r1 = false;
+        goto L7
     }
 
     @Override // defpackage.qi3
-    public final void Q(SurfaceHolder surfaceHolder) {
+    public final void Q(SurfaceHolder r5) {
         z1();
-        if (surfaceHolder == null) {
-            z1();
-            p1();
-            t1(null);
-            n1(0, 0);
-            return;
-        }
+        if (r5 != null) goto L6;
+        z1();
+        p1();
+        t1(null);
+        n1(0, 0);
+        return;
+    L6:
         p1();
         this.X = true;
-        this.W = surfaceHolder;
-        surfaceHolder.addCallback(this.x);
-        Surface surface = surfaceHolder.getSurface();
-        if (surface == null || !surface.isValid()) {
-            t1(null);
-            n1(0, 0);
-        } else {
-            t1(surface);
-            Rect surfaceFrame = surfaceHolder.getSurfaceFrame();
-            n1(surfaceFrame.width(), surfaceFrame.height());
-        }
+        this.W = r5;
+        r5.addCallback(this.x);
+        Surface r2 = r5.getSurface();
+        if (r2 != null) goto L9;
+    L12:
+        t1(null);
+        n1(0, 0);
+        return;
+    L9:
+        if (r2.isValid() == false) goto L12;
+        t1(r2);
+        Rect r6 = r5.getSurfaceFrame();
+        n1(r6.width(), r6.height());
     }
 
     @Override // defpackage.qi3
-    public final void R(float f) {
+    public final void R(float r4) {
         z1();
-        float fI = f35.i(f, 0.0f, 1.0f);
-        float f2 = this.b0;
-        if (f2 == fI) {
-            return;
-        }
-        if (fI != 0.0f) {
-            f2 = fI;
-        }
-        this.c0 = f2;
-        this.b0 = fI;
-        this.m.u.b(32, Float.valueOf(fI)).b();
-        this.n.f(22, new w31(0, fI));
+        float r5 = f35.i(r4, 0.0f, 1.0f);
+        float r0 = this.b0;
+        if (r0 != r5) goto L6;
+        return;
+    L6:
+        if (r5 == 0.0f) goto L8;
+        r0 = r5;
+    L8:
+        this.c0 = r0;
+        this.b0 = r5;
+        this.m.u.b(32, Float.valueOf(r5)).b();
+        w31 r1 = new w31(0, r5);
+        this.n.f(22, r1);
     }
 
     @Override // defpackage.qi3
-    public final void T(List list, int i, long j) {
+    public final void T(List r7, int r8, long r9) {
         z1();
-        ArrayList arrayListC1 = c1(list);
+        ArrayList r1 = c1(r7);
         z1();
-        r1(arrayListC1, i, j, false);
+        r1(r1, r8, r9, false);
     }
 
     @Override // defpackage.qi3
@@ -648,9 +729,9 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     @Override // defpackage.qi3
-    public final void V(boolean z) {
+    public final void V(boolean r2) {
         z1();
-        w1(1, z);
+        w1(1, r2);
     }
 
     @Override // defpackage.qi3
@@ -660,39 +741,53 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     @Override // defpackage.fq
-    public final void X0(int i, int i2, long j, boolean z) {
+    public final void X0(int r11, int r12, long r13, boolean r15) {
         z1();
-        if (i == -1) {
-            return;
-        }
-        rr2.l(i >= 0);
-        cu4 cu4Var = this.p0.a;
-        if (cu4Var.p() || i < cu4Var.o()) {
-            nj0 nj0Var = this.t;
-            if (!nj0Var.v) {
-                q9 q9VarW = nj0Var.W();
-                nj0Var.v = true;
-                nj0Var.b0(q9VarW, -1, new oi0(20));
-            }
-            this.K++;
-            if (k()) {
-                l93.q0("ExoPlayerImpl", "seekTo ignored because an ad is playing");
-                n41 n41Var = new n41(this.p0);
-                n41Var.e(1);
-                i41 i41Var = this.l.o;
-                i41Var.k.d(new k6(24, i41Var, n41Var));
-                return;
-            }
-            ph3 ph3VarH = this.p0;
-            int i3 = ph3VarH.e;
-            if (i3 == 3 || (i3 == 4 && !cu4Var.p())) {
-                ph3VarH = this.p0.h(2);
-            }
-            int iO0 = o0();
-            ph3 ph3VarL1 = l1(ph3VarH, cu4Var, m1(i, j, cu4Var));
-            this.m.u.b(3, new p41(i, f35.Q(j), cu4Var)).b();
-            x1(ph3VarL1, 0, true, 1, g1(ph3VarL1), iO0, z);
-        }
+        if (r11 != (-1)) goto L6;
+        return;
+    L6:
+        if (r11 < 0) goto L8;
+        boolean r4 = true;
+    L9:
+        rr2.l(r4);
+        cu4 r5 = this.p0.a;
+        if (r5.p() == false) goto L12;
+    L14:
+        nj0 r6 = this.t;
+        if (r6.v == true) goto L17;
+        q9 r7 = r6.W();
+        r6.v = true;
+        r6.b0(r7, -1, new oi0(20));
+    L17:
+        this.K++;
+        if (k() == false) goto L21;
+        l93.q0("ExoPlayerImpl", "seekTo ignored because an ad is playing");
+        n41 r1 = new n41(this.p0);
+        r1.e(1);
+        i41 r0 = this.l.o;
+        r0.k.d(new k6(24, r0, r1));
+        return;
+    L21:
+        ph3 r2 = this.p0;
+        int r3 = r2.e;
+        if (r3 != 3) goto L24;
+    L27:
+        r2 = this.p0.h(2);
+    L28:
+        int r8 = o0();
+        ph3 r9 = l1(r2, r5, m1(r11, r13, r5));
+        this.m.u.b(3, new p41(r11, f35.Q(r13), r5)).b();
+        x1(r9, 0, true, 1, g1(r9), r8, r15);
+        return;
+    L24:
+        if (r3 != 4) goto L28;
+        if (r5.p() == true) goto L28;
+    L12:
+        if (r11 < r5.o()) goto L14;
+        return;
+    L8:
+        r4 = false;
+        goto L9
     }
 
     @Override // defpackage.qi3
@@ -701,111 +796,132 @@ public final class i41 extends fq implements ExoPlayer {
         return f1(this.p0);
     }
 
-    public final ph3 Z0(ph3 ph3Var, int i, ArrayList arrayList) {
-        cu4 cu4Var = ph3Var.a;
+    public final ph3 Z0(ph3 r10, int r11, ArrayList r12) {
+        cu4 r1 = r10.a;
         this.K++;
-        ArrayList arrayList2 = new ArrayList();
-        for (int i2 = 0; i2 < arrayList.size(); i2++) {
-            bu2 bu2Var = new bu2((bq) arrayList.get(i2), this.r);
-            arrayList2.add(bu2Var);
-            this.q.add(i2 + i, new f41(bu2Var.b, bu2Var.a));
-        }
-        this.Q = this.Q.a(i, arrayList2.size());
-        tm3 tm3VarB1 = b1();
-        ph3 ph3VarL1 = l1(ph3Var, tm3VarB1, i1(cu4Var, tm3VarB1, h1(ph3Var), f1(ph3Var)));
-        pd4 pd4Var = this.Q;
-        yp4 yp4Var = this.m.u;
-        l41 l41Var = new l41(arrayList2, pd4Var, -1, -9223372036854775807L);
-        yp4Var.getClass();
-        xp4 xp4VarC = yp4.c();
-        xp4VarC.a = yp4Var.a.obtainMessage(18, i, 0, l41Var);
-        xp4VarC.b();
-        return ph3VarL1;
+        ArrayList r6 = new ArrayList();
+        int r0 = 0;
+    L4:
+        if (r0 >= r12.size()) goto L6;
+        bu2 r2 = new bu2((bq) r12.get(r0), this.r);
+        r6.add(r2);
+        f41 r4 = new f41(r2.b, r2.a);
+        this.q.add(r0 + r11, r4);
+        r0 = r0 + 1;
+        goto L4
+    L6:
+        this.Q = this.Q.a(r11, r6.size());
+        tm3 r3 = b1();
+        ph3 r9 = l1(r10, r3, i1(r1, r3, h1(r10), f1(r10)));
+        pd4 r5 = this.Q;
+        yp4 r13 = this.m.u;
+        l41 r7 = new l41(r6, r5, -1, -9223372036854775807L);
+        r13.getClass();
+        xp4 r14 = yp4.c();
+        r14.a = r13.a.obtainMessage(18, r11, 0, r7);
+        r14.b();
+        return r9;
     }
 
     @Override // defpackage.qi3
     public final void a0() {
         z1();
-        if (this.b0 == 0.0f) {
-            float f = this.c0;
-            if (f != 0.0f) {
-                R(f);
-            }
-        }
+        if (this.b0 != 0.0f) goto L8;
+        float r0 = this.c0;
+        if (r0 == 0.0f) goto L9;
+        R(r0);
+        return;
+    L9:
+        return;
     }
 
     public final do2 a1() {
-        cu4 cu4VarX0 = x0();
-        if (cu4VarX0.p()) {
-            return this.o0;
-        }
-        gn2 gn2Var = cu4VarX0.m(o0(), this.b, 0L).b;
-        co2 co2VarA = this.o0.a();
-        co2VarA.b(gn2Var.d);
-        return new do2(co2VarA);
+        cu4 r0 = x0();
+        if (r0.p() == true) goto L5;
+        gn2 r1 = r0.m(o0(), this.b, 0).b;
+        co2 r5 = this.o0.a();
+        r5.b(r1.d);
+        return new do2(r5);
+    L5:
+        return this.o0;
     }
 
     @Override // defpackage.qi3
     public final void b() {
         z1();
-        ph3 ph3Var = this.p0;
-        if (ph3Var.e != 1) {
-            return;
-        }
-        ph3 ph3VarF = ph3Var.f(null);
-        ph3 ph3VarK1 = k1(ph3VarF, ph3VarF.a.p() ? 4 : 2);
+        ph3 r0 = this.p0;
+        if (r0.e == 1) goto L5;
+        return;
+    L5:
+        ph3 r1 = r0.f(null);
+        if (r1.a.p() == false) goto L8;
+        int r2 = 4;
+    L9:
+        ph3 r4 = k1(r1, r2);
         this.K++;
         this.m.u.a(29).b();
-        x1(ph3VarK1, 1, false, 5, -9223372036854775807L, -1, false);
+        x1(r4, 1, false, 5, -9223372036854775807L, -1, false);
+        return;
+    L8:
+        r2 = 2;
+        goto L9
     }
 
     @Override // defpackage.qi3
     public final long b0() {
         z1();
-        if (!k()) {
-            return F0();
-        }
-        ph3 ph3Var = this.p0;
-        return ph3Var.k.equals(ph3Var.b) ? f35.i0(this.p0.q) : getDuration();
+        if (k() == false) goto L11;
+        ph3 r0 = this.p0;
+        if (r0.k.equals(r0.b) == false) goto L9;
+        return f35.i0(this.p0.q);
+    L9:
+        return getDuration();
+    L11:
+        return F0();
     }
 
     public final tm3 b1() {
         return new tm3(this.q, this.Q);
     }
 
-    public final ArrayList c1(List list) {
-        ArrayList arrayList = new ArrayList();
-        for (int i = 0; i < list.size(); i++) {
-            arrayList.add(this.s.d((gn2) list.get(i)));
-        }
-        return arrayList;
+    public final ArrayList c1(List r5) {
+        ArrayList r0 = new ArrayList();
+        int r1 = 0;
+    L4:
+        if (r1 >= r5.size()) goto L6;
+        gn2 r2 = (gn2) r5.get(r1);
+        r0.add(this.s.d(r2));
+        r1 = r1 + 1;
+        goto L4
+    L6:
+        return r0;
     }
 
     @Override // defpackage.qi3
-    public final void d(qh3 qh3Var) {
+    public final void d(qh3 r11) {
         z1();
-        if (this.p0.o.equals(qh3Var)) {
-            return;
-        }
-        ph3 ph3VarG = this.p0.g(qh3Var);
+        if (this.p0.o.equals(r11) == false) goto L5;
+        return;
+    L5:
+        ph3 r2 = this.p0.g(r11);
         this.K++;
-        this.m.u.b(4, qh3Var).b();
-        x1(ph3VarG, 0, false, 5, -9223372036854775807L, -1, false);
+        this.m.u.b(4, r11).b();
+        x1(r2, 0, false, 5, -9223372036854775807L, -1, false);
     }
 
     @Override // defpackage.qi3
-    public final void d0(int i) {
+    public final void d0(int r1) {
         z1();
     }
 
-    public final sk3 d1(rk3 rk3Var) {
-        int iH1 = h1(this.p0);
-        cu4 cu4Var = this.p0.a;
-        if (iH1 == -1) {
-            iH1 = 0;
-        }
-        q41 q41Var = this.m;
-        return new sk3(q41Var, rk3Var, cu4Var, iH1, q41Var.w);
+    public final sk3 d1(rk3 r8) {
+        int r0 = h1(this.p0);
+        cu4 r4 = this.p0.a;
+        if (r0 != (-1)) goto L5;
+        r0 = 0;
+    L5:
+        q41 r2 = this.m;
+        return new sk3(r2, r8, r4, r0, r2.w);
     }
 
     @Override // defpackage.qi3
@@ -815,18 +931,24 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     public final int e1() {
-        Object obj;
         z1();
-        c6 c6Var = this.D;
-        c6Var.getClass();
-        Looper looperMyLooper = Looper.myLooper();
-        if (looperMyLooper == ((yp4) c6Var.c).a.getLooper()) {
-            obj = c6Var.e;
-        } else {
-            rr2.w(looperMyLooper == ((yp4) c6Var.b).a.getLooper());
-            obj = c6Var.f;
-        }
-        return ((Integer) obj).intValue();
+        c6 r2 = this.D;
+        r2.getClass();
+        Looper r0 = Looper.myLooper();
+        if (r0 != ((yp4) r2.c).a.getLooper()) goto L6;
+        Object r3 = r2.e;
+    L11:
+        return ((Integer) r3).intValue();
+    L6:
+        if (r0 != ((yp4) r2.b).a.getLooper()) goto L8;
+        boolean r1 = true;
+    L9:
+        rr2.w(r1);
+        r3 = r2.f;
+        goto L11
+    L8:
+        r1 = false;
+        goto L9
     }
 
     @Override // defpackage.qi3
@@ -835,20 +957,21 @@ public final class i41 extends fq implements ExoPlayer {
         return this.p0.g;
     }
 
-    public final long f1(ph3 ph3Var) {
-        mt2 mt2Var = ph3Var.b;
-        long j = ph3Var.c;
-        cu4 cu4Var = ph3Var.a;
-        if (!mt2Var.b()) {
-            return f35.i0(g1(ph3Var));
-        }
-        Object obj = ph3Var.b.a;
-        zt4 zt4Var = this.p;
-        cu4Var.g(obj, zt4Var);
-        if (j == -9223372036854775807L) {
-            return f35.i0(cu4Var.m(h1(ph3Var), this.b, 0L).k);
-        }
-        return f35.i0(j) + f35.i0(zt4Var.e);
+    public final long f1(ph3 r8) {
+        mt2 r0 = r8.b;
+        long r1 = r8.c;
+        cu4 r3 = r8.a;
+        if (r0.b() == false) goto L11;
+        Object r2 = r8.b.a;
+        zt4 r4 = this.p;
+        r3.g(r2, r4);
+        if (r1 == (-9223372036854775807L)) goto L7;
+        long r7 = f35.i0(r4.e);
+        return f35.i0(r1) + r7;
+    L7:
+        return f35.i0(r3.m(h1(r8), this.b, 0).k);
+    L11:
+        return f35.i0(g1(r8));
     }
 
     @Override // defpackage.qi3
@@ -863,34 +986,39 @@ public final class i41 extends fq implements ExoPlayer {
         return this.T;
     }
 
-    public final long g1(ph3 ph3Var) {
-        if (ph3Var.a.p()) {
-            return f35.Q(this.r0);
-        }
-        long jL = ph3Var.p ? ph3Var.l() : ph3Var.s;
-        if (ph3Var.b.b()) {
-            return jL;
-        }
-        cu4 cu4Var = ph3Var.a;
-        Object obj = ph3Var.b.a;
-        zt4 zt4Var = this.p;
-        cu4Var.g(obj, zt4Var);
-        return jL + zt4Var.e;
+    public final long g1(ph3 r4) {
+        if (r4.a.p() == false) goto L7;
+        return f35.Q(this.r0);
+    L7:
+        if (r4.p == false) goto L9;
+        long r0 = r4.l();
+    L11:
+        if (r4.b.b() == false) goto L13;
+        return r0;
+    L13:
+        cu4 r2 = r4.a;
+        Object r5 = r4.b.a;
+        zt4 r3 = this.p;
+        r2.g(r5, r3);
+        return r0 + r3.e;
+    L9:
+        r0 = r4.s;
+        goto L11
     }
 
     @Override // defpackage.qi3
     public final long getDuration() {
         z1();
-        if (!k()) {
-            return x();
-        }
-        ph3 ph3Var = this.p0;
-        mt2 mt2Var = ph3Var.b;
-        cu4 cu4Var = ph3Var.a;
-        Object obj = mt2Var.a;
-        zt4 zt4Var = this.p;
-        cu4Var.g(obj, zt4Var);
-        return f35.i0(zt4Var.a(mt2Var.b, mt2Var.c));
+        if (k() == false) goto L7;
+        ph3 r0 = this.p0;
+        mt2 r1 = r0.b;
+        cu4 r2 = r0.a;
+        Object r3 = r1.a;
+        zt4 r4 = this.p;
+        r2.g(r3, r4);
+        return f35.i0(r4.a(r1.b, r1.c));
+    L7:
+        return x();
     }
 
     @Override // defpackage.qi3
@@ -899,8 +1027,11 @@ public final class i41 extends fq implements ExoPlayer {
         return this.I;
     }
 
-    public final int h1(ph3 ph3Var) {
-        return ph3Var.a.p() ? this.q0 : ph3Var.a.g(ph3Var.b.a, this.p).c;
+    public final int h1(ph3 r2) {
+        if (r2.a.p() == false) goto L7;
+        return this.q0;
+    L7:
+        return r2.a.g(r2.b.a, this.p).c;
     }
 
     @Override // defpackage.qi3
@@ -915,23 +1046,43 @@ public final class i41 extends fq implements ExoPlayer {
         return this.e0;
     }
 
-    public final Pair i1(cu4 cu4Var, tm3 tm3Var, int i, long j) {
-        if (cu4Var.p() || tm3Var.p()) {
-            boolean z = !cu4Var.p() && tm3Var.p();
-            return m1(z ? -1 : i, z ? -9223372036854775807L : j, tm3Var);
-        }
-        Pair pairI = cu4Var.i(this.b, this.p, i, f35.Q(j));
-        Object obj = pairI.first;
-        if (tm3Var.b(obj) != -1) {
-            return pairI;
-        }
-        int iU = q41.U(this.b, this.p, this.I, this.J, obj, cu4Var, tm3Var);
-        if (iU == -1) {
-            return m1(-1, -9223372036854775807L, tm3Var);
-        }
-        bu4 bu4Var = this.b;
-        tm3Var.m(iU, bu4Var, 0L);
-        return m1(iU, f35.i0(bu4Var.k), tm3Var);
+    public final Pair i1(cu4 r18, tm3 r19, int r20, long r21) {
+        long r8 = -9223372036854775807L;
+        int r10 = -1;
+        if (r18.p() == true) goto L17;
+        if (r19.p() == true) goto L17;
+        zt4 r13 = this.p;
+        long r15 = f35.Q(r21);
+        Pair r1 = r18.i(this.b, r13, r20, r15);
+        Object r5 = r1.first;
+        if (r19.b(r5) == (-1)) goto L10;
+        return r1;
+    L10:
+        int r3 = this.I;
+        boolean r4 = this.J;
+        int r2 = q41.U(this.b, this.p, r3, r4, r5, r18, r19);
+        if (r2 == (-1)) goto L15;
+        bu4 r6 = this.b;
+        r19.m(r2, r6, 0);
+        return m1(r2, f35.i0(r6.k), r19);
+    L15:
+        return m1(-1, -9223372036854775807L, r19);
+    L17:
+        if (r18.p() == false) goto L19;
+    L21:
+        boolean r7 = false;
+    L22:
+        if (r7 == true) goto L25;
+        r10 = r20;
+    L25:
+        if (r7 == true) goto L29;
+        r8 = r21;
+    L29:
+        return m1(r10, r8, r19);
+    L19:
+        if (r19.p() == false) goto L21;
+        r7 = true;
+        goto L22
     }
 
     @Override // androidx.media3.exoplayer.ExoPlayer
@@ -953,102 +1104,136 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     @Override // defpackage.qi3
-    public final void k0(il ilVar, boolean z) {
+    public final void k0(il r5, boolean r6) {
         z1();
-        if (this.i0) {
-            return;
-        }
-        boolean zEquals = Objects.equals(this.a0, ilVar);
-        tc2 tc2Var = this.n;
-        if (!zEquals) {
-            this.a0 = ilVar;
-            q1(1, 3, ilVar);
-            tc2Var.c(20, new x31(ilVar, 0));
-        }
-        il ilVar2 = this.a0;
-        yp4 yp4Var = this.m.u;
-        yp4Var.getClass();
-        xp4 xp4VarC = yp4.c();
-        xp4VarC.a = yp4Var.a.obtainMessage(31, z ? 1 : 0, 0, ilVar2);
-        xp4VarC.b();
-        tc2Var.b();
+        if (this.i0 == false) goto L5;
+        return;
+    L5:
+        boolean r0 = Objects.equals(this.a0, r5);
+        tc2 r2 = this.n;
+        if (r0 == true) goto L8;
+        this.a0 = r5;
+        q1(1, 3, r5);
+        r2.c(20, new x31(r5, 0));
+    L8:
+        il r7 = this.a0;
+        yp4 r4 = this.m.u;
+        r4.getClass();
+        xp4 r1 = yp4.c();
+        r1.a = r4.a.obtainMessage(31, r6 ? 1 : 0, 0, r7);
+        r1.b();
+        r2.b();
     }
 
     @Override // defpackage.qi3
-    public final void l0(do2 do2Var) {
+    public final void l0(do2 r2) {
         z1();
-        do2Var.getClass();
-        if (do2Var.equals(this.T)) {
-            return;
-        }
-        this.T = do2Var;
-        this.n.f(15, new u31(this, 4));
+        r2.getClass();
+        if (r2.equals(this.T) == false) goto L5;
+        return;
+    L5:
+        this.T = r2;
+        u31 r3 = new u31(this, 4);
+        this.n.f(15, r3);
     }
 
-    public final ph3 l1(ph3 ph3Var, cu4 cu4Var, Pair pair) {
-        List list;
-        rr2.l(cu4Var.p() || pair != null);
-        cu4 cu4Var2 = ph3Var.a;
-        long jF1 = f1(ph3Var);
-        ph3 ph3VarJ = ph3Var.j(cu4Var);
-        if (cu4Var.p()) {
-            mt2 mt2Var = ph3.u;
-            long jQ = f35.Q(this.r0);
-            ph3 ph3VarC = ph3VarJ.d(mt2Var, jQ, jQ, jQ, 0L, tv4.d, this.c, gy3.r).c(mt2Var);
-            ph3VarC.q = ph3VarC.s;
-            return ph3VarC;
-        }
-        Object obj = ph3VarJ.b.a;
-        String str = f35.a;
-        boolean zEquals = obj.equals(pair.first);
-        mt2 mt2Var2 = !zEquals ? new mt2(pair.first) : ph3VarJ.b;
-        long jLongValue = ((Long) pair.second).longValue();
-        long jQ2 = f35.Q(jF1);
-        if (!cu4Var2.p()) {
-            jQ2 -= cu4Var2.g(obj, this.p).e;
-            if (zEquals && jQ2 - jLongValue == 1 && jQ2 == cu4Var2.g(obj, this.p).d) {
-                jQ2--;
-            }
-        }
-        if (!zEquals || jLongValue < jQ2) {
-            mt2 mt2Var3 = mt2Var2;
-            rr2.w(!mt2Var3.b());
-            tv4 tv4Var = !zEquals ? tv4.d : ph3VarJ.h;
-            ew4 ew4Var = !zEquals ? this.c : ph3VarJ.i;
-            if (zEquals) {
-                list = ph3VarJ.j;
-            } else {
-                vw1 vw1Var = yw1.o;
-                list = gy3.r;
-            }
-            ph3 ph3VarC2 = ph3VarJ.d(mt2Var3, jLongValue, jLongValue, jLongValue, 0L, tv4Var, ew4Var, list).c(mt2Var3);
-            ph3VarC2.q = jLongValue;
-            return ph3VarC2;
-        }
-        if (jLongValue != jQ2) {
-            mt2 mt2Var4 = mt2Var2;
-            rr2.w(!mt2Var4.b());
-            long jMax = Math.max(0L, ph3VarJ.r - (jLongValue - jQ2));
-            long j = ph3VarJ.q;
-            if (ph3VarJ.k.equals(ph3VarJ.b)) {
-                j = jLongValue + jMax;
-            }
-            ph3 ph3VarD = ph3VarJ.d(mt2Var4, jLongValue, jLongValue, jLongValue, jMax, ph3VarJ.h, ph3VarJ.i, ph3VarJ.j);
-            ph3VarD.q = j;
-            return ph3VarD;
-        }
-        int iB = cu4Var.b(ph3VarJ.k.a);
-        if (iB != -1 && cu4Var.f(iB, this.p, false).c == cu4Var.g(mt2Var2.a, this.p).c) {
-            return ph3VarJ;
-        }
-        cu4Var.g(mt2Var2.a, this.p);
-        boolean zB = mt2Var2.b();
-        zt4 zt4Var = this.p;
-        long jA = zB ? zt4Var.a(mt2Var2.b, mt2Var2.c) : zt4Var.d;
-        mt2 mt2Var5 = mt2Var2;
-        ph3 ph3VarC3 = ph3VarJ.d(mt2Var5, ph3VarJ.s, ph3VarJ.s, ph3VarJ.d, jA - ph3VarJ.s, ph3VarJ.h, ph3VarJ.i, ph3VarJ.j).c(mt2Var5);
-        ph3VarC3.q = jA;
-        return ph3VarC3;
+    public final ph3 l1(ph3 r23, cu4 r24, Pair r25) {
+        if (r24.p() == true) goto L7;
+        if (r25 != null) goto L7;
+        boolean r3 = false;
+    L8:
+        rr2.l(r3);
+        cu4 r6 = r23.a;
+        long r7 = f1(r23);
+        ph3 r9 = r23.j(r24);
+        if (r24.p() == false) goto L12;
+        mt2 r10 = ph3.u;
+        long r11 = f35.Q(this.r0);
+        ph3 r0 = r9.d(r10, r11, r11, r11, 0, tv4.d, this.c, gy3.r).c(r10);
+        r0.q = r0.s;
+        return r0;
+    L12:
+        Object r4 = r9.b.a;
+        String r12 = f35.a;
+        boolean r13 = r4.equals(r25.first);
+        if (r13 == true) goto L15;
+        mt2 r14 = new mt2(r25.first);
+    L16:
+        long r15 = ((Long) r25.second).longValue();
+        long r8 = f35.Q(r7);
+        if (r6.p() == true) goto L25;
+        r8 = r8 - r6.g(r4, this.p).e;
+        if (r13 == false) goto L25;
+        if ((r8 - r15) != 1) goto L25;
+        if (r8 != r6.g(r4, this.p).d) goto L25;
+        r8 = r8 - 1;
+    L25:
+        if (r13 == true) goto L27;
+    L28:
+        mt2 r16 = r14;
+        rr2.w(!r16.b());
+        if (r13 == true) goto L52;
+        tv4 r2 = tv4.d;
+    L51:
+        tv4 r19 = r2;
+        if (r13 == true) goto L56;
+        ew4 r1 = this.c;
+    L55:
+        ew4 r20 = r1;
+        if (r13 == true) goto L60;
+        vw1 r5 = yw1.o;
+        List r17 = gy3.r;
+    L61:
+        ph3 r18 = r9.d(r16, r15, r15, r15, 0, r19, r20, r17).c(r16);
+        r18.q = r15;
+        return r18;
+    L60:
+        r17 = r9.j;
+        goto L61
+    L56:
+        r1 = r9.i;
+        goto L55
+    L52:
+        r2 = r9.h;
+        goto L51
+    L27:
+        if (r15 < r8) goto L28;
+        if (r15 != r8) goto L43;
+        int r21 = r24.b(r9.k.a);
+        if (r21 != (-1)) goto L33;
+    L36:
+        r24.g(r14.a, this.p);
+        boolean r22 = r14.b();
+        zt4 r26 = this.p;
+        if (r22 == false) goto L40;
+        long r27 = r26.a(r14.b, r14.c);
+    L39:
+        mt2 r110 = r14;
+        ph3 r28 = r9.d(r110, r9.s, r9.s, r9.d, r27 - r9.s, r9.h, r9.i, r9.j).c(r110);
+        r28.q = r27;
+        return r28;
+    L40:
+        r27 = r26.d;
+        goto L39
+    L33:
+        if (r24.f(r21, this.p, false).c != r24.g(r14.a, this.p).c) goto L36;
+        return r9;
+    L43:
+        mt2 r111 = r14;
+        rr2.w(!r111.b());
+        long r112 = Math.max(0, r9.r - (r15 - r8));
+        long r29 = r9.q;
+        if (r9.k.equals(r9.b) == false) goto L46;
+        r29 = r15 + r112;
+    L46:
+        ph3 r30 = r9.d(r111, r15, r15, r15, r112, r9.h, r9.i, r9.j);
+        r30.q = r29;
+        return r30;
+    L15:
+        r14 = r9.b;
+    L7:
+        r3 = true;
+        goto L8
     }
 
     @Override // defpackage.qi3
@@ -1057,39 +1242,47 @@ public final class i41 extends fq implements ExoPlayer {
         return f35.i0(this.p0.r);
     }
 
-    public final Pair m1(int i, long j, cu4 cu4Var) {
-        if (cu4Var.p()) {
-            this.q0 = i;
-            if (j == -9223372036854775807L) {
-                j = 0;
-            }
-            this.r0 = j;
-            return null;
-        }
-        if (i == -1 || i >= cu4Var.o()) {
-            i = cu4Var.a(this.J);
-            j = f35.i0(cu4Var.m(i, this.b, 0L).k);
-        }
-        return cu4Var.i(this.b, this.p, i, f35.Q(j));
+    public final Pair m1(int r7, long r8, cu4 r10) {
+        if (r10.p() == false) goto L10;
+        this.q0 = r7;
+        if (r8 != (-9223372036854775807L)) goto L7;
+        r8 = 0;
+    L7:
+        this.r0 = r8;
+        return null;
+    L10:
+        if (r7 != (-1)) goto L12;
+    L15:
+        r7 = r10.a(this.J);
+        r8 = f35.i0(r10.m(r7, this.b, 0).k);
+    L14:
+        int r3 = r7;
+        return r10.i(this.b, this.p, r3, f35.Q(r8));
+    L12:
+        if (r7 < r10.o()) goto L14;
+        goto L14
     }
 
     @Override // defpackage.qi3
     public final int n0() {
         z1();
-        if (k()) {
-            return this.p0.b.b;
-        }
+        if (k() == true) goto L5;
         return -1;
+    L5:
+        return this.p0.b.b;
     }
 
-    public final void n1(int i, int i2) {
-        pf4 pf4Var = this.Z;
-        if (i == pf4Var.a && i2 == pf4Var.b) {
-            return;
-        }
-        this.Z = new pf4(i, i2);
-        this.n.f(24, new v31(i, i2, 0));
-        q1(2, 14, new pf4(i, i2));
+    public final void n1(int r4, int r5) {
+        pf4 r0 = this.Z;
+        if (r4 == r0.a) goto L5;
+    L8:
+        this.Z = new pf4(r4, r5);
+        v31 r1 = new v31(r4, r5, 0);
+        this.n.f(24, r1);
+        q1(2, 14, new pf4(r4, r5));
+        return;
+    L5:
+        if (r5 != r0.b) goto L8;
     }
 
     @Override // defpackage.qi3
@@ -1101,80 +1294,94 @@ public final class i41 extends fq implements ExoPlayer {
     @Override // defpackage.qi3
     public final int o0() {
         z1();
-        int iH1 = h1(this.p0);
-        if (iH1 == -1) {
-            return 0;
-        }
-        return iH1;
+        int r1 = h1(this.p0);
+        if (r1 != (-1)) goto L6;
+        return 0;
+    L6:
+        return r1;
     }
 
-    public final ph3 o1(ph3 ph3Var, int i, int i2) {
-        int iH1 = h1(ph3Var);
-        long jF1 = f1(ph3Var);
-        cu4 cu4Var = ph3Var.a;
+    public final ph3 o1(ph3 r18, int r19, int r20) {
+        int r3 = h1(r18);
+        long r4 = f1(r18);
+        cu4 r14 = r18.a;
         this.K++;
-        for (int i3 = i2 - 1; i3 >= i; i3--) {
-            this.q.remove(i3);
-        }
-        pd4 pd4Var = this.Q;
-        int i4 = i2 - i;
-        int[] iArr = pd4Var.b;
-        int[] iArr2 = new int[iArr.length - i4];
-        int i5 = 0;
-        for (int i6 = 0; i6 < iArr.length; i6++) {
-            int i7 = iArr[i6];
-            if (i7 < i || i7 >= i2) {
-                int i8 = i6 - i5;
-                if (i7 >= i) {
-                    i7 -= i4;
-                }
-                iArr2[i8] = i7;
-            } else {
-                i5++;
-            }
-        }
-        this.Q = new pd4(iArr2, new Random(pd4Var.a.nextLong()));
-        tm3 tm3VarB1 = b1();
-        ph3 ph3VarL1 = l1(ph3Var, tm3VarB1, i1(cu4Var, tm3VarB1, iH1, jF1));
-        int i9 = ph3VarL1.e;
-        if (i9 != 1 && i9 != 4 && iH1 >= i && iH1 < i2) {
-            if (q41.U(this.b, this.p, this.I, this.J, ph3Var.b.a, cu4Var, tm3VarB1) == -1) {
-                ph3VarL1 = k1(ph3VarL1, 4);
-            }
-        }
-        pd4 pd4Var2 = this.Q;
-        yp4 yp4Var = this.m.u;
-        yp4Var.getClass();
-        xp4 xp4VarC = yp4.c();
-        xp4VarC.a = yp4Var.a.obtainMessage(20, i, i2, pd4Var2);
-        xp4VarC.b();
-        return ph3VarL1;
+        int r1 = r20 - 1;
+    L3:
+        if (r1 < r19) goto L5;
+        this.q.remove(r1);
+        r1 = r1 - 1;
+        goto L3
+    L5:
+        pd4 r2 = this.Q;
+        int r5 = r20 - r19;
+        int[] r10 = r2.b;
+        int[] r11 = new int[r10.length - r5];
+        int r12 = 0;
+        int r13 = 0;
+    L7:
+        if (r12 >= r10.length) goto L17;
+        int r15 = r10[r12];
+        if (r15 < r19) goto L12;
+        if (r15 >= r20) goto L12;
+        r13 = r13 + 1;
+    L16:
+        r12 = r12 + 1;
+    L12:
+        int r16 = r12 - r13;
+        if (r15 < r19) goto L15;
+        r15 = r15 - r5;
+    L15:
+        r11[r16] = r15;
+        goto L16
+    L17:
+        this.Q = new pd4(r11, new Random(r2.a.nextLong()));
+        tm3 r17 = b1();
+        ph3 r6 = l1(r18, r17, i1(r14, r17, r3, r4));
+        int r7 = r6.e;
+        if (r7 != 1) goto L20;
+    L26:
+        pd4 r8 = this.Q;
+        yp4 r0 = this.m.u;
+        r0.getClass();
+        xp4 r9 = yp4.c();
+        r9.a = r0.a.obtainMessage(20, r19, r20, r8);
+        r9.b();
+        return r6;
+    L20:
+        if (r7 == 4) goto L26;
+        if (r3 < r19) goto L26;
+        if (r3 >= r20) goto L26;
+        Object r110 = r18.b.a;
+        if (q41.U(this.b, this.p, this.I, this.J, r110, r14, r17) != (-1)) goto L26;
+        r6 = k1(r6, 4);
+        goto L26
     }
 
     @Override // defpackage.qi3
-    public final void p0(int i) {
+    public final void p0(int r5) {
         z1();
-        if (this.I != i) {
-            this.I = i;
-            yp4 yp4Var = this.m.u;
-            yp4Var.getClass();
-            xp4 xp4VarC = yp4.c();
-            xp4VarC.a = yp4Var.a.obtainMessage(11, i, 0);
-            xp4VarC.b();
-            ij0 ij0Var = new ij0(i, 1);
-            tc2 tc2Var = this.n;
-            tc2Var.c(8, ij0Var);
-            v1();
-            tc2Var.b();
-        }
+        if (this.I == r5) goto L6;
+        this.I = r5;
+        yp4 r0 = this.m.u;
+        r0.getClass();
+        xp4 r1 = yp4.c();
+        r1.a = r0.a.obtainMessage(11, r5, 0);
+        r1.b();
+        ij0 r2 = new ij0(r5, 1);
+        tc2 r6 = this.n;
+        r6.c(8, r2);
+        v1();
+        r6.b();
+        return;
     }
 
     public final void p1() {
-        SurfaceHolder surfaceHolder = this.W;
-        if (surfaceHolder != null) {
-            surfaceHolder.removeCallback(this.x);
-            this.W = null;
-        }
+        SurfaceHolder r0 = this.W;
+        if (r0 == null) goto L6;
+        r0.removeCallback(this.x);
+        this.W = null;
+        return;
     }
 
     @Override // defpackage.qi3
@@ -1184,236 +1391,261 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     @Override // defpackage.qi3
-    public final void q0(boolean z) {
+    public final void q0(boolean r1) {
         z1();
     }
 
-    public final void q1(int i, int i2, Object obj) {
-        for (kq kqVar : this.h) {
-            if (i == -1 || kqVar.o == i) {
-                sk3 sk3VarD1 = d1(kqVar);
-                rr2.w(!sk3VarD1.f);
-                sk3VarD1.c = i2;
-                rr2.w(!sk3VarD1.f);
-                sk3VarD1.d = obj;
-                sk3VarD1.b();
-            }
-        }
-        for (kq kqVar2 : this.i) {
-            if (kqVar2 != null && (i == -1 || kqVar2.o == i)) {
-                sk3 sk3VarD2 = d1(kqVar2);
-                rr2.w(!sk3VarD2.f);
-                sk3VarD2.c = i2;
-                rr2.w(!sk3VarD2.f);
-                sk3VarD2.d = obj;
-                sk3VarD2.b();
-            }
-        }
+    public final void q1(int r7, int r8, Object r9) {
+        kq[] r0 = this.h;
+        int r1 = r0.length;
+        int r2 = 0;
+        int r3 = 0;
+    L4:
+        if (r3 >= r1) goto L11;
+        kq r5 = r0[r3];
+        if (r7 != (-1)) goto L8;
+    L9:
+        sk3 r4 = d1(r5);
+        rr2.w(!r4.f);
+        r4.c = r8;
+        rr2.w(!r4.f);
+        r4.d = r9;
+        r4.b();
+    L10:
+        r3 = r3 + 1;
+        goto L4
+    L8:
+        if (r5.o != r7) goto L10;
+    L11:
+        kq[] r6 = this.i;
+        int r10 = r6.length;
+    L12:
+        if (r2 >= r10) goto L20;
+        kq r11 = r6[r2];
+        if (r11 == null) goto L19;
+        if (r7 != (-1)) goto L17;
+    L18:
+        sk3 r12 = d1(r11);
+        rr2.w(!r12.f);
+        r12.c = r8;
+        rr2.w(!r12.f);
+        r12.d = r9;
+        r12.b();
+        goto L19
+    L17:
+        if (r11.o == r7) goto L18;
+    L19:
+        r2 = r2 + 1;
+        goto L12
     }
 
     @Override // defpackage.qi3
-    public final void r0(oi3 oi3Var) {
+    public final void r0(oi3 r1) {
         z1();
-        oi3Var.getClass();
-        this.n.e(oi3Var);
+        r1.getClass();
+        this.n.e(r1);
     }
 
-    /* JADX WARN: Code duplicated, block: B:21:0x009d  */
-    /* JADX WARN: Code duplicated, block: B:22:0x009f  */
-    /* JADX WARN: Code duplicated, block: B:24:0x00a6  */
-    /* JADX WARN: Code duplicated, block: B:25:0x00a8  */
-    /* JADX WARN: Code duplicated, block: B:27:0x00ab A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:29:0x00ae  */
-    /* JADX WARN: Code duplicated, block: B:35:0x00e7  */
-    public final void r1(ArrayList arrayList, int i, long j, boolean z) {
-        long j2;
-        int i2;
-        int i3;
-        ph3 ph3VarK1;
-        boolean z2;
-        int iA = i;
-        int iH1 = h1(this.p0);
-        long jM0 = M0();
+    public final void r1(ArrayList r15, int r16, long r17, boolean r19) {
+        int r1 = r16;
+        int r2 = h1(this.p0);
+        long r3 = M0();
         this.K++;
-        ArrayList arrayList2 = this.q;
-        arrayList2.clear();
-        ArrayList arrayList3 = new ArrayList();
-        for (int i4 = 0; i4 < arrayList.size(); i4++) {
-            bu2 bu2Var = new bu2((bq) arrayList.get(i4), this.r);
-            arrayList3.add(bu2Var);
-            arrayList2.add(i4, new f41(bu2Var.b, bu2Var.a));
-        }
-        pd4 pd4Var = this.Q;
-        int size = arrayList3.size();
-        pd4Var.getClass();
-        this.Q = new pd4(new Random(pd4Var.a.nextLong())).a(0, size);
-        tm3 tm3VarB1 = b1();
-        int i5 = tm3VarB1.g;
-        if (!tm3VarB1.p() && iA >= i5) {
-            throw new IllegalSeekPositionException();
-        }
-        if (!z) {
-            if (iA == -1) {
-                i2 = iH1;
-                j2 = jM0;
-            } else {
-                j2 = j;
-            }
-            ph3 ph3VarL1 = l1(this.p0, tm3VarB1, m1(i2, j2, tm3VarB1));
-            i3 = ph3VarL1.e;
-            if (i3 == 1) {
-                i3 = 1;
-            } else if (!tm3VarB1.p()) {
-                i3 = 4;
-            } else if (i2 != -1) {
-                if (i2 >= i5) {
-                    i3 = 4;
-                } else {
-                    i3 = 2;
-                }
-            }
-            ph3VarK1 = k1(ph3VarL1, i3);
-            this.m.u.b(17, new l41(arrayList3, this.Q, i2, f35.Q(j2))).b();
-            if (!this.p0.b.a.equals(ph3VarK1.b.a) || this.p0.a.p()) {
-                z2 = false;
-            } else {
-                z2 = true;
-            }
-            x1(ph3VarK1, 0, z2, 4, g1(ph3VarK1), -1, false);
-        }
-        iA = tm3VarB1.a(this.J);
-        j2 = -9223372036854775807L;
-        i2 = iA;
-        ph3 ph3VarL2 = l1(this.p0, tm3VarB1, m1(i2, j2, tm3VarB1));
-        i3 = ph3VarL2.e;
-        if (i3 == 1) {
-            i3 = 1;
-        } else if (!tm3VarB1.p()) {
-            i3 = 4;
-        } else if (i2 != -1) {
-            if (i2 >= i5) {
-                i3 = 4;
-            } else {
-                i3 = 2;
-            }
-        }
-        ph3VarK1 = k1(ph3VarL2, i3);
-        this.m.u.b(17, new l41(arrayList3, this.Q, i2, f35.Q(j2))).b();
-        if (this.p0.b.a.equals(ph3VarK1.b.a)) {
-            z2 = false;
-        } else {
-            z2 = false;
-        }
-        x1(ph3VarK1, 0, z2, 4, g1(ph3VarK1), -1, false);
+        ArrayList r5 = this.q;
+        r5.clear();
+        ArrayList r8 = new ArrayList();
+        int r7 = 0;
+    L4:
+        if (r7 >= r15.size()) goto L6;
+        bu2 r9 = new bu2((bq) r15.get(r7), this.r);
+        r8.add(r9);
+        r5.add(r7, new f41(r9.b, r9.a));
+        r7 = r7 + 1;
+        goto L4
+    L6:
+        pd4 r6 = this.Q;
+        int r10 = r8.size();
+        r6.getClass();
+        this.Q = new pd4(new Random(r6.a.nextLong())).a(0, r10);
+        tm3 r11 = b1();
+        int r12 = r11.g;
+        if (r11.p() == true) goto L13;
+        if (r1 < r12) goto L13;
+        throw new IllegalSeekPositionException();
+    L13:
+        if (r19 == false) goto L16;
+        r1 = r11.a(this.J);
+        long r4 = -9223372036854775807L;
+    L15:
+        int r13 = r1;
+    L19:
+        ph3 r14 = l1(this.p0, r11, m1(r13, r4, r11));
+        int r18 = r14.e;
+        if (r18 != 1) goto L23;
+        r18 = 1;
+    L30:
+        ph3 r20 = k1(r14, r18);
+        long r110 = f35.Q(r4);
+        this.m.u.b(17, new l41(r8, this.Q, r13, r110)).b();
+        if (this.p0.b.a.equals(r20.b.a) == false) goto L33;
+    L35:
+        boolean r21 = false;
+    L36:
+        x1(r20, 0, r21, 4, g1(r20), -1, false);
+        return;
+    L33:
+        if (this.p0.a.p() == true) goto L35;
+        r21 = true;
+        goto L36
+    L23:
+        if (r11.p() == false) goto L25;
+    L24:
+        r18 = 4;
+        goto L30
+    L25:
+        if (r13 == (-1)) goto L30;
+        if (r13 >= r12) goto L24;
+        r18 = 2;
+        goto L30
+    L16:
+        if (r1 != (-1)) goto L18;
+        r13 = r2;
+        r4 = r3;
+        goto L19
+    L18:
+        r4 = r17;
+        goto L15
     }
 
     @Override // defpackage.qi3
-    public final void s(boolean z) {
+    public final void s(boolean r5) {
         z1();
-        if (this.J != z) {
-            this.J = z;
-            yp4 yp4Var = this.m.u;
-            yp4Var.getClass();
-            xp4 xp4VarC = yp4.c();
-            xp4VarC.a = yp4Var.a.obtainMessage(12, z ? 1 : 0, 0);
-            xp4VarC.b();
-            t31 t31Var = new t31(0, z);
-            tc2 tc2Var = this.n;
-            tc2Var.c(9, t31Var);
-            v1();
-            tc2Var.b();
-        }
+        if (this.J == r5) goto L6;
+        this.J = r5;
+        yp4 r0 = this.m.u;
+        r0.getClass();
+        xp4 r1 = yp4.c();
+        r1.a = r0.a.obtainMessage(12, r5 ? 1 : 0, 0);
+        r1.b();
+        t31 r2 = new t31(0, r5);
+        tc2 r6 = this.n;
+        r6.c(9, r2);
+        v1();
+        r6.b();
+        return;
     }
 
-    public final void s1(pd4 pd4Var) {
+    public final void s1(pd4 r14) {
         z1();
-        rr2.l(pd4Var.b.length == this.q.size());
-        this.Q = pd4Var;
-        tm3 tm3VarB1 = b1();
-        ph3 ph3VarL1 = l1(this.p0, tm3VarB1, m1(o0(), M0(), tm3VarB1));
+        if (r14.b.length != this.q.size()) goto L5;
+        boolean r0 = true;
+    L6:
+        rr2.l(r0);
+        this.Q = r14;
+        tm3 r1 = b1();
+        ph3 r5 = l1(this.p0, r1, m1(o0(), M0(), r1));
         this.K++;
-        this.m.u.b(21, pd4Var).b();
-        x1(ph3VarL1, 0, false, 5, -9223372036854775807L, -1, false);
+        this.m.u.b(21, r14).b();
+        x1(r5, 0, false, 5, -9223372036854775807L, -1, false);
+        return;
+    L5:
+        r0 = false;
+        goto L6
     }
 
     @Override // androidx.media3.exoplayer.ExoPlayer
-    public final void setImageOutput(ImageOutput imageOutput) {
+    public final void setImageOutput(ImageOutput r3) {
         z1();
-        q1(4, 15, imageOutput);
+        q1(4, 15, r3);
     }
 
     @Override // androidx.media3.exoplayer.ExoPlayer
-    public final void setScrubbingModeEnabled(boolean z) {
-        cw4 cw4VarB;
+    public final void setScrubbingModeEnabled(boolean r7) {
         z1();
-        if (z == this.N) {
-            return;
-        }
-        this.N = z;
-        i74 i74Var = this.P;
-        if (!i74Var.a.isEmpty()) {
-            pn0 pn0Var = this.j;
-            pn0Var.getClass();
-            jn0 jn0VarD = pn0Var.d();
-            if (z) {
-                this.O = jn0VarD.I;
-                jx1 jx1Var = i74Var.a;
-                bw4 bw4VarA = jn0VarD.a();
-                o15 it = jx1Var.iterator();
-                while (it.hasNext()) {
-                    bw4VarA.l(((Integer) it.next()).intValue(), true);
-                }
-                cw4VarB = bw4VarA.b();
-            } else {
-                jn0VarD.getClass();
-                in0 in0Var = new in0(jn0VarD);
-                in0Var.m(this.O);
-                jn0 jn0Var = new jn0(in0Var);
-                this.O = null;
-                cw4VarB = jn0Var;
-            }
-            if (!cw4VarB.equals(jn0VarD)) {
-                pn0Var.j(cw4VarB);
-            }
-        }
-        this.m.u.b(36, Boolean.valueOf(z)).b();
-        ph3 ph3Var = this.p0;
-        w1(ph3Var.m, ph3Var.l);
+        if (r7 != this.N) goto L5;
+        return;
+    L5:
+        this.N = r7;
+        i74 r0 = this.P;
+        if (r0.a.isEmpty() == true) goto L18;
+        pn0 r1 = this.j;
+        r1.getClass();
+        jn0 r2 = r1.d();
+        if (r7 == false) goto L14;
+        this.O = r2.I;
+        jx1 r3 = r0.a;
+        bw4 r4 = r2.a();
+        o15 r5 = r3.h();
+    L11:
+        if (r5.hasNext() == false) goto L13;
+        r4.l(((Integer) r5.next()).intValue(), true);
+        goto L11
+    L13:
+        cw4 r6 = r4.b();
+    L16:
+        if (r6.equals(r2) == true) goto L18;
+        r1.j(r6);
+        goto L18
+    L14:
+        r2.getClass();
+        in0 r8 = new in0(r2);
+        r8.m(this.O);
+        jn0 r9 = new jn0(r8);
+        this.O = null;
+        r6 = r9;
+    L18:
+        this.m.u.b(36, Boolean.valueOf(r7)).b();
+        ph3 r10 = this.p0;
+        boolean r11 = r10.l;
+        w1(r10.m, r11);
     }
 
     @Override // defpackage.qi3
     public final void stop() {
         z1();
         u1(null);
-        this.e0 = new jg0(this.p0.s, gy3.r);
+        gy3 r1 = gy3.r;
+        this.e0 = new jg0(this.p0.s, r1);
     }
 
-    public final void t1(Surface surface) {
-        Object obj = this.U;
-        boolean zC = true;
-        boolean z = (obj == null || obj == surface) ? false : true;
-        long j = z ? this.C : -9223372036854775807L;
-        q41 q41Var = this.m;
-        if (!q41Var.X && q41Var.w.getThread().isAlive()) {
-            q90 q90Var = new q90(q41Var.D);
-            q41Var.u.b(30, new Pair(surface, q90Var)).b();
-            if (j != -9223372036854775807L) {
-                zC = q90Var.c(j);
-            }
-        }
-        if (z) {
-            Object obj2 = this.U;
-            Surface surface2 = this.V;
-            if (obj2 == surface2) {
-                surface2.release();
-                this.V = null;
-            }
-        }
-        this.U = surface;
-        if (zC) {
-            return;
-        }
+    public final void t1(Surface r11) {
+        Object r0 = this.U;
+        boolean r1 = true;
+        if (r0 == null) goto L6;
+        if (r0 == r11) goto L6;
+        boolean r2 = true;
+    L8:
+        if (r2 == false) goto L10;
+        long r4 = this.C;
+    L11:
+        q41 r6 = this.m;
+        if (r6.X == false) goto L14;
+    L19:
+        if (r2 == false) goto L23;
+        Object r3 = this.U;
+        Surface r5 = this.V;
+        if (r3 != r5) goto L23;
+        r5.release();
+        this.V = null;
+    L23:
+        this.U = r11;
+        if (r1 == true) goto L27;
         u1(new ExoPlaybackException(2, new ExoTimeoutException("Detaching surface timed out."), 1003));
+        return;
+    L27:
+        return;
+    L14:
+        if (r6.w.getThread().isAlive() == false) goto L19;
+        q90 r7 = new q90(r6.D);
+        r6.u.b(30, new Pair(r11, r7)).b();
+        if (r4 == (-9223372036854775807L)) goto L19;
+        r1 = r7.c(r4);
+        goto L19
+    L10:
+        r4 = -9223372036854775807L;
+    L6:
+        r2 = false;
+        goto L8
     }
 
     @Override // defpackage.qi3
@@ -1423,50 +1655,65 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     @Override // defpackage.qi3
-    public final void u0(int i, int i2, int i3) {
+    public final void u0(int r11, int r12, int r13) {
         z1();
-        rr2.l(i >= 0 && i <= i2 && i3 >= 0);
-        ArrayList arrayList = this.q;
-        int size = arrayList.size();
-        int iMin = Math.min(i2, size);
-        int iMin2 = Math.min(i3, size - (iMin - i));
-        if (i >= size || i == iMin || i == iMin2) {
-            return;
-        }
-        cu4 cu4VarX0 = x0();
+        if (r11 < 0) goto L7;
+        if (r11 > r12) goto L7;
+        if (r13 < 0) goto L7;
+        boolean r4 = true;
+    L8:
+        rr2.l(r4);
+        ArrayList r5 = this.q;
+        int r6 = r5.size();
+        int r7 = Math.min(r12, r6);
+        int r8 = Math.min(r13, r6 - (r7 - r11));
+        if (r11 >= r6) goto L15;
+        if (r11 == r7) goto L16;
+        if (r11 == r8) goto L17;
+        cu4 r1 = x0();
         this.K++;
-        f35.P(arrayList, i, iMin, iMin2);
-        pd4 pd4Var = this.Q;
-        pd4Var.getClass();
-        this.Q = pd4Var;
-        tm3 tm3VarB1 = b1();
-        ph3 ph3Var = this.p0;
-        ph3 ph3VarL1 = l1(ph3Var, tm3VarB1, i1(cu4VarX0, tm3VarB1, h1(ph3Var), f1(this.p0)));
-        pd4 pd4Var2 = this.Q;
-        q41 q41Var = this.m;
-        q41Var.getClass();
-        q41Var.u.b(19, new m41(i, iMin, iMin2, pd4Var2)).b();
-        x1(ph3VarL1, 0, false, 5, -9223372036854775807L, -1, false);
+        f35.P(r5, r11, r7, r8);
+        pd4 r2 = this.Q;
+        r2.getClass();
+        this.Q = r2;
+        tm3 r3 = b1();
+        ph3 r9 = this.p0;
+        ph3 r10 = l1(r9, r3, i1(r1, r3, h1(r9), f1(this.p0)));
+        pd4 r14 = this.Q;
+        q41 r15 = this.m;
+        r15.getClass();
+        r15.u.b(19, new m41(r11, r7, r8, r14)).b();
+        x1(r10, 0, false, 5, -9223372036854775807L, -1, false);
+        return;
+    L17:
+        return;
+    L16:
+        return;
+    L15:
+        return;
+    L7:
+        r4 = false;
+        goto L8
     }
 
-    public final void u1(ExoPlaybackException exoPlaybackException) {
-        ph3 ph3Var = this.p0;
-        ph3 ph3VarC = ph3Var.c(ph3Var.b);
-        ph3VarC.q = ph3VarC.s;
-        ph3VarC.r = 0L;
-        ph3 ph3VarK1 = k1(ph3VarC, 1);
-        if (exoPlaybackException != null) {
-            ph3VarK1 = ph3VarK1.f(exoPlaybackException);
-        }
+    public final void u1(ExoPlaybackException r12) {
+        ph3 r0 = this.p0;
+        ph3 r1 = r0.c(r0.b);
+        r1.q = r1.s;
+        r1.r = 0;
+        ph3 r2 = k1(r1, 1);
+        if (r12 == null) goto L5;
+        r2 = r2.f(r12);
+    L5:
         this.K++;
         this.m.u.a(6).b();
-        x1(ph3VarK1, 0, false, 5, -9223372036854775807L, -1, false);
+        x1(r2, 0, false, 5, -9223372036854775807L, -1, false);
     }
 
     @Override // defpackage.qi3
-    public final void v(oi3 oi3Var) {
-        oi3Var.getClass();
-        this.n.a(oi3Var);
+    public final void v(oi3 r1) {
+        r1.getClass();
+        this.n.a(r1);
     }
 
     @Override // defpackage.qi3
@@ -1476,60 +1723,120 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     public final void v1() {
-        mi3 mi3Var = this.R;
-        String str = f35.a;
-        i41 i41Var = this.g;
-        boolean zK = i41Var.k();
-        boolean zR0 = i41Var.R0();
-        boolean zI = i41Var.I();
-        boolean zF0 = i41Var.f0();
-        boolean zV0 = i41Var.V0();
-        boolean zT0 = i41Var.T0();
-        boolean zP = i41Var.x0().p();
-        zg5 zg5Var = new zg5(1);
-        xk0 xk0Var = (xk0) zg5Var.n;
-        xk0Var.c(this.d.a);
-        boolean z = !zK;
-        zg5Var.k(4, z);
-        zg5Var.k(5, zR0 && !zK);
-        zg5Var.k(6, zI && !zK);
-        zg5Var.k(7, !zP && (zI || !zV0 || zR0) && !zK);
-        zg5Var.k(8, zF0 && !zK);
-        zg5Var.k(9, !zP && (zF0 || (zV0 && zT0)) && !zK);
-        zg5Var.k(10, z);
-        zg5Var.k(11, zR0 && !zK);
-        zg5Var.k(12, zR0 && !zK);
-        mi3 mi3Var2 = new mi3(xk0Var.f());
-        this.R = mi3Var2;
-        if (mi3Var2.equals(mi3Var)) {
-            return;
-        }
+        mi3 r0 = this.R;
+        String r1 = f35.a;
+        i41 r2 = this.g;
+        boolean r3 = r2.k();
+        boolean r4 = r2.R0();
+        boolean r5 = r2.I();
+        boolean r6 = r2.f0();
+        boolean r7 = r2.V0();
+        boolean r8 = r2.T0();
+        boolean r9 = r2.x0().p();
+        boolean r10 = true;
+        zg5 r11 = new zg5(1);
+        xk0 r12 = (xk0) r11.n;
+        r12.c(this.d.a);
+        boolean r13 = !r3;
+        r11.k(4, r13);
+        if (r4 == false) goto L6;
+        if (r3 == true) goto L6;
+        boolean r14 = true;
+    L7:
+        r11.k(5, r14);
+        if (r5 == false) goto L11;
+        if (r3 == true) goto L11;
+        boolean r15 = true;
+    L12:
+        r11.k(6, r15);
+        if (r9 == true) goto L19;
+        if (r5 == true) goto L17;
+        if (r7 == false) goto L17;
+        if (r4 == false) goto L19;
+    L17:
+        if (r3 == true) goto L19;
+        boolean r16 = true;
+    L20:
+        r11.k(7, r16);
+        if (r6 == false) goto L24;
+        if (r3 == true) goto L24;
+        boolean r17 = true;
+    L25:
+        r11.k(8, r17);
+        if (r9 == true) goto L32;
+        if (r6 == true) goto L30;
+        if (r7 == false) goto L32;
+        if (r8 == false) goto L32;
+    L30:
+        if (r3 == true) goto L32;
+        boolean r18 = true;
+    L33:
+        r11.k(9, r18);
+        r11.k(10, r13);
+        if (r4 == false) goto L37;
+        if (r3 == true) goto L37;
+        boolean r19 = true;
+    L38:
+        r11.k(11, r19);
+        if (r4 == false) goto L42;
+        if (r3 == true) goto L42;
+    L43:
+        r11.k(12, r10);
+        mi3 r20 = new mi3(r12.f());
+        this.R = r20;
+        if (r20.equals(r0) == true) goto L47;
         this.n.c(13, new u31(this, 3));
+        return;
+    L47:
+        return;
+    L42:
+        r10 = false;
+    L37:
+        r19 = false;
+    L32:
+        r18 = false;
+    L24:
+        r17 = false;
+    L19:
+        r16 = false;
+    L11:
+        r15 = false;
+    L6:
+        r14 = false;
+        goto L7
     }
 
-    public final void w1(int i, boolean z) {
-        int i2;
-        if (this.N) {
-            i2 = 4;
-        } else {
-            i2 = (this.p0.n != 1 || z) ? 0 : 1;
-        }
-        ph3 ph3VarA = this.p0;
-        if (ph3VarA.l == z && ph3VarA.n == i2 && ph3VarA.m == i) {
-            return;
-        }
+    public final void w1(int r14, boolean r15) {
+        if (this.N == false) goto L6;
+        int r0 = 4;
+    L10:
+        ph3 r3 = this.p0;
+        if (r3.l == r15) goto L13;
+    L17:
         this.K++;
-        if (ph3VarA.p) {
-            ph3VarA = ph3VarA.a();
-        }
-        ph3 ph3VarE = ph3VarA.e(i, i2, z);
-        int i3 = i | (i2 << 4);
-        yp4 yp4Var = this.m.u;
-        yp4Var.getClass();
-        xp4 xp4VarC = yp4.c();
-        xp4VarC.a = yp4Var.a.obtainMessage(1, z ? 1 : 0, i3);
-        xp4VarC.b();
-        x1(ph3VarE, 0, false, 5, -9223372036854775807L, -1, false);
+        if (r3.p == false) goto L20;
+        r3 = r3.a();
+    L20:
+        ph3 r5 = r3.e(r14, r0, r15);
+        int r16 = r14 | (r0 << 4);
+        yp4 r1 = this.m.u;
+        r1.getClass();
+        xp4 r2 = yp4.c();
+        r2.a = r1.a.obtainMessage(1, r15 ? 1 : 0, r16);
+        r2.b();
+        x1(r5, 0, false, 5, -9223372036854775807L, -1, false);
+        return;
+    L13:
+        if (r3.n != r0) goto L17;
+        if (r3.m != r14) goto L17;
+        return;
+    L6:
+        if (this.p0.n != 1) goto L9;
+        if (r15 == true) goto L9;
+        r0 = 1;
+    L9:
+        r0 = 0;
+        goto L10
     }
 
     @Override // defpackage.qi3
@@ -1538,645 +1845,300 @@ public final class i41 extends fq implements ExoPlayer {
         return this.p0.a;
     }
 
-    public final void x1(final ph3 ph3Var, int i, boolean z, int i2, long j, int i3, boolean z2) {
-        Pair pair;
-        int i4;
-        gn2 gn2Var;
-        int i5;
-        final int i6;
-        int i7;
-        int i8;
-        Object obj;
-        gn2 gn2Var2;
-        Object obj2;
-        long j2;
-        long j3;
-        long jJ1;
-        long jJ2;
-        Object obj3;
-        gn2 gn2Var3;
-        Object obj4;
-        ph3 ph3Var2 = this.p0;
-        this.p0 = ph3Var;
-        boolean zEquals = ph3Var2.a.equals(ph3Var.a);
-        bu4 bu4Var = this.b;
-        zt4 zt4Var = this.p;
-        cu4 cu4Var = ph3Var2.a;
-        mt2 mt2Var = ph3Var2.b;
-        cu4 cu4Var2 = ph3Var.a;
-        mt2 mt2Var2 = ph3Var.b;
-        int i9 = 0;
-        if (cu4Var2.p() && cu4Var.p()) {
-            pair = new Pair(Boolean.FALSE, -1);
-        } else if (cu4Var2.p() != cu4Var.p()) {
-            pair = new Pair(Boolean.TRUE, 3);
-        } else if (!cu4Var.m(cu4Var.g(mt2Var.a, zt4Var).c, bu4Var, 0L).a.equals(cu4Var2.m(cu4Var2.g(mt2Var2.a, zt4Var).c, bu4Var, 0L).a)) {
-            if (z && i2 == 0) {
-                i4 = 1;
-            } else if (z && i2 == 1) {
-                i4 = 2;
-            } else {
-                if (zEquals) {
-                    tb4.a();
-                    return;
-                }
-                i4 = 3;
-            }
-            pair = new Pair(Boolean.TRUE, Integer.valueOf(i4));
-        } else if (z && i2 == 0 && mt2Var.d < mt2Var2.d) {
-            pair = new Pair(Boolean.TRUE, 0);
-        } else {
-            pair = (z && i2 == 1 && z2) ? new Pair(Boolean.TRUE, 2) : new Pair(Boolean.FALSE, -1);
-        }
-        boolean zBooleanValue = ((Boolean) pair.first).booleanValue();
-        int iIntValue = ((Integer) pair.second).intValue();
-        if (zBooleanValue) {
-            gn2Var = ph3Var.a.p() ? null : ph3Var.a.m(ph3Var.a.g(ph3Var.b.a, this.p).c, this.b, 0L).b;
-            this.o0 = do2.K;
-        } else {
-            gn2Var = null;
-        }
-        if (zBooleanValue || !ph3Var2.j.equals(ph3Var.j)) {
-            co2 co2VarA = this.o0.a();
-            List list = ph3Var.j;
-            for (int i10 = 0; i10 < list.size(); i10++) {
-                qv2 qv2Var = (qv2) list.get(i10);
-                int i11 = 0;
-                while (true) {
-                    pv2[] pv2VarArr = qv2Var.a;
-                    if (i11 < pv2VarArr.length) {
-                        pv2VarArr[i11].b(co2VarA);
-                        i11++;
-                    }
-                }
-            }
-            this.o0 = new do2(co2VarA);
-        }
-        do2 do2VarA1 = a1();
-        boolean zEquals2 = do2VarA1.equals(this.S);
-        this.S = do2VarA1;
-        boolean z3 = ph3Var2.l != ph3Var.l;
-        boolean z4 = ph3Var2.e != ph3Var.e;
-        if (z4 || z3) {
-            y1();
-        }
-        boolean z5 = ph3Var2.g != ph3Var.g;
-        if (!zEquals) {
-            this.n.c(0, new q31(i, i9, ph3Var));
-        }
-        if (z) {
-            zt4 zt4Var2 = new zt4();
-            if (ph3Var2.a.p()) {
-                i7 = i3;
-                i8 = i7;
-                obj = null;
-                gn2Var2 = null;
-                obj2 = null;
-            } else {
-                Object obj5 = ph3Var2.b.a;
-                ph3Var2.a.g(obj5, zt4Var2);
-                int i12 = zt4Var2.c;
-                int iB = ph3Var2.a.b(obj5);
-                obj = ph3Var2.a.m(i12, this.b, 0L).a;
-                gn2Var2 = this.b.b;
-                obj2 = obj5;
-                i7 = i12;
-                i8 = iB;
-            }
-            mt2 mt2Var3 = ph3Var2.b;
-            if (i2 == 0) {
-                boolean zB = mt2Var3.b();
-                mt2 mt2Var4 = ph3Var2.b;
-                if (zB) {
-                    jJ1 = zt4Var2.a(mt2Var4.b, mt2Var4.c);
-                    jJ2 = j1(ph3Var2);
-                } else {
-                    if (mt2Var4.e != -1) {
-                        jJ1 = j1(this.p0);
-                    } else {
-                        j2 = zt4Var2.e;
-                        j3 = zt4Var2.d;
-                        jJ1 = j2 + j3;
-                    }
-                    jJ2 = jJ1;
-                }
-            } else if (mt2Var3.b()) {
-                jJ1 = ph3Var2.s;
-                jJ2 = j1(ph3Var2);
-            } else {
-                j2 = zt4Var2.e;
-                j3 = ph3Var2.s;
-                jJ1 = j2 + j3;
-                jJ2 = jJ1;
-            }
-            long jI0 = f35.i0(jJ1);
-            long jI1 = f35.i0(jJ2);
-            mt2 mt2Var5 = ph3Var2.b;
-            pi3 pi3Var = new pi3(obj, i7, gn2Var2, obj2, i8, jI0, jI1, mt2Var5.b, mt2Var5.c);
-            bu4 bu4Var2 = this.b;
-            int iO0 = o0();
-            int iY = y();
-            if (this.p0.a.p()) {
-                obj3 = null;
-                gn2Var3 = null;
-                obj4 = null;
-            } else {
-                ph3 ph3Var3 = this.p0;
-                Object obj6 = ph3Var3.b.a;
-                ph3Var3.a.g(obj6, this.p);
-                iY = this.p0.a.b(obj6);
-                Object obj7 = this.p0.a.m(iO0, bu4Var2, 0L).a;
-                gn2Var3 = bu4Var2.b;
-                obj4 = obj6;
-                obj3 = obj7;
-            }
-            int i13 = iY;
-            long jI2 = f35.i0(j);
-            long jI3 = this.p0.b.b() ? f35.i0(j1(this.p0)) : jI2;
-            mt2 mt2Var6 = this.p0.b;
-            i5 = 0;
-            this.n.c(11, new z31(i2, pi3Var, new pi3(obj3, iO0, gn2Var3, obj4, i13, jI2, jI3, mt2Var6.b, mt2Var6.c), 0));
-        } else {
-            zBooleanValue = zBooleanValue;
-            zEquals2 = zEquals2;
-            z4 = z4;
-            i5 = 0;
-        }
-        if (zBooleanValue) {
-            this.n.c(1, new a41(gn2Var, iIntValue, i5));
-        }
-        final int i14 = 7;
-        if (ph3Var2.f != ph3Var.f) {
-            this.n.c(10, new qc2() { // from class: s31
-                @Override // defpackage.qc2
-                public final void invoke(Object obj8) {
-                    int i15 = i14;
-                    ph3 ph3Var4 = ph3Var;
-                    oi3 oi3Var = (oi3) obj8;
-                    switch (i15) {
-                        case 0:
-                            oi3Var.i(ph3Var4.g);
-                            oi3Var.q(ph3Var4.g);
-                            break;
-                        case 1:
-                            oi3Var.L(ph3Var4.e, ph3Var4.l);
-                            break;
-                        case 2:
-                            oi3Var.v(ph3Var4.e);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            oi3Var.r(ph3Var4.m, ph3Var4.l);
-                            break;
-                        case 4:
-                            oi3Var.g(ph3Var4.n);
-                            break;
-                        case 5:
-                            oi3Var.V(ph3Var4.m());
-                            break;
-                        case 6:
-                            oi3Var.N(ph3Var4.o);
-                            break;
-                        case 7:
-                            oi3Var.P(ph3Var4.f);
-                            break;
-                        case 8:
-                            oi3Var.S(ph3Var4.f);
-                            break;
-                        default:
-                            oi3Var.A((jw4) ph3Var4.i.r);
-                            break;
-                    }
-                }
-            });
-            if (ph3Var.f != null) {
-                final int i15 = 8;
-                this.n.c(10, new qc2() { // from class: s31
-                    @Override // defpackage.qc2
-                    public final void invoke(Object obj8) {
-                        int i16 = i15;
-                        ph3 ph3Var4 = ph3Var;
-                        oi3 oi3Var = (oi3) obj8;
-                        switch (i16) {
-                            case 0:
-                                oi3Var.i(ph3Var4.g);
-                                oi3Var.q(ph3Var4.g);
-                                break;
-                            case 1:
-                                oi3Var.L(ph3Var4.e, ph3Var4.l);
-                                break;
-                            case 2:
-                                oi3Var.v(ph3Var4.e);
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                oi3Var.r(ph3Var4.m, ph3Var4.l);
-                                break;
-                            case 4:
-                                oi3Var.g(ph3Var4.n);
-                                break;
-                            case 5:
-                                oi3Var.V(ph3Var4.m());
-                                break;
-                            case 6:
-                                oi3Var.N(ph3Var4.o);
-                                break;
-                            case 7:
-                                oi3Var.P(ph3Var4.f);
-                                break;
-                            case 8:
-                                oi3Var.S(ph3Var4.f);
-                                break;
-                            default:
-                                oi3Var.A((jw4) ph3Var4.i.r);
-                                break;
-                        }
-                    }
-                });
-            }
-        }
-        ew4 ew4Var = ph3Var2.i;
-        ew4 ew4Var2 = ph3Var.i;
-        if (ew4Var != ew4Var2) {
-            pn0 pn0Var = this.j;
-            Object obj8 = ew4Var2.s;
-            pn0Var.getClass();
-            final int i16 = 9;
-            this.n.c(2, new qc2() { // from class: s31
-                @Override // defpackage.qc2
-                public final void invoke(Object obj9) {
-                    int i17 = i16;
-                    ph3 ph3Var4 = ph3Var;
-                    oi3 oi3Var = (oi3) obj9;
-                    switch (i17) {
-                        case 0:
-                            oi3Var.i(ph3Var4.g);
-                            oi3Var.q(ph3Var4.g);
-                            break;
-                        case 1:
-                            oi3Var.L(ph3Var4.e, ph3Var4.l);
-                            break;
-                        case 2:
-                            oi3Var.v(ph3Var4.e);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            oi3Var.r(ph3Var4.m, ph3Var4.l);
-                            break;
-                        case 4:
-                            oi3Var.g(ph3Var4.n);
-                            break;
-                        case 5:
-                            oi3Var.V(ph3Var4.m());
-                            break;
-                        case 6:
-                            oi3Var.N(ph3Var4.o);
-                            break;
-                        case 7:
-                            oi3Var.P(ph3Var4.f);
-                            break;
-                        case 8:
-                            oi3Var.S(ph3Var4.f);
-                            break;
-                        default:
-                            oi3Var.A((jw4) ph3Var4.i.r);
-                            break;
-                    }
-                }
-            });
-        }
-        if (zEquals2) {
-            i6 = 0;
-        } else {
-            i6 = 0;
-            this.n.c(14, new r31(this.S, i6));
-        }
-        if (z5) {
-            this.n.c(3, new qc2() { // from class: s31
-                @Override // defpackage.qc2
-                public final void invoke(Object obj9) {
-                    int i17 = i6;
-                    ph3 ph3Var4 = ph3Var;
-                    oi3 oi3Var = (oi3) obj9;
-                    switch (i17) {
-                        case 0:
-                            oi3Var.i(ph3Var4.g);
-                            oi3Var.q(ph3Var4.g);
-                            break;
-                        case 1:
-                            oi3Var.L(ph3Var4.e, ph3Var4.l);
-                            break;
-                        case 2:
-                            oi3Var.v(ph3Var4.e);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            oi3Var.r(ph3Var4.m, ph3Var4.l);
-                            break;
-                        case 4:
-                            oi3Var.g(ph3Var4.n);
-                            break;
-                        case 5:
-                            oi3Var.V(ph3Var4.m());
-                            break;
-                        case 6:
-                            oi3Var.N(ph3Var4.o);
-                            break;
-                        case 7:
-                            oi3Var.P(ph3Var4.f);
-                            break;
-                        case 8:
-                            oi3Var.S(ph3Var4.f);
-                            break;
-                        default:
-                            oi3Var.A((jw4) ph3Var4.i.r);
-                            break;
-                    }
-                }
-            });
-        }
-        if (z4 || z3) {
-            final int i17 = 1;
-            this.n.c(-1, new qc2() { // from class: s31
-                @Override // defpackage.qc2
-                public final void invoke(Object obj9) {
-                    int i18 = i17;
-                    ph3 ph3Var4 = ph3Var;
-                    oi3 oi3Var = (oi3) obj9;
-                    switch (i18) {
-                        case 0:
-                            oi3Var.i(ph3Var4.g);
-                            oi3Var.q(ph3Var4.g);
-                            break;
-                        case 1:
-                            oi3Var.L(ph3Var4.e, ph3Var4.l);
-                            break;
-                        case 2:
-                            oi3Var.v(ph3Var4.e);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            oi3Var.r(ph3Var4.m, ph3Var4.l);
-                            break;
-                        case 4:
-                            oi3Var.g(ph3Var4.n);
-                            break;
-                        case 5:
-                            oi3Var.V(ph3Var4.m());
-                            break;
-                        case 6:
-                            oi3Var.N(ph3Var4.o);
-                            break;
-                        case 7:
-                            oi3Var.P(ph3Var4.f);
-                            break;
-                        case 8:
-                            oi3Var.S(ph3Var4.f);
-                            break;
-                        default:
-                            oi3Var.A((jw4) ph3Var4.i.r);
-                            break;
-                    }
-                }
-            });
-        }
-        final int i18 = 4;
-        if (z4) {
-            final int i19 = 2;
-            this.n.c(4, new qc2() { // from class: s31
-                @Override // defpackage.qc2
-                public final void invoke(Object obj9) {
-                    int i110 = i19;
-                    ph3 ph3Var4 = ph3Var;
-                    oi3 oi3Var = (oi3) obj9;
-                    switch (i110) {
-                        case 0:
-                            oi3Var.i(ph3Var4.g);
-                            oi3Var.q(ph3Var4.g);
-                            break;
-                        case 1:
-                            oi3Var.L(ph3Var4.e, ph3Var4.l);
-                            break;
-                        case 2:
-                            oi3Var.v(ph3Var4.e);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            oi3Var.r(ph3Var4.m, ph3Var4.l);
-                            break;
-                        case 4:
-                            oi3Var.g(ph3Var4.n);
-                            break;
-                        case 5:
-                            oi3Var.V(ph3Var4.m());
-                            break;
-                        case 6:
-                            oi3Var.N(ph3Var4.o);
-                            break;
-                        case 7:
-                            oi3Var.P(ph3Var4.f);
-                            break;
-                        case 8:
-                            oi3Var.S(ph3Var4.f);
-                            break;
-                        default:
-                            oi3Var.A((jw4) ph3Var4.i.r);
-                            break;
-                    }
-                }
-            });
-        }
-        final int i20 = 5;
-        if (z3 || ph3Var2.m != ph3Var.m) {
-            final int i21 = 3;
-            this.n.c(5, new qc2() { // from class: s31
-                @Override // defpackage.qc2
-                public final void invoke(Object obj9) {
-                    int i110 = i21;
-                    ph3 ph3Var4 = ph3Var;
-                    oi3 oi3Var = (oi3) obj9;
-                    switch (i110) {
-                        case 0:
-                            oi3Var.i(ph3Var4.g);
-                            oi3Var.q(ph3Var4.g);
-                            break;
-                        case 1:
-                            oi3Var.L(ph3Var4.e, ph3Var4.l);
-                            break;
-                        case 2:
-                            oi3Var.v(ph3Var4.e);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            oi3Var.r(ph3Var4.m, ph3Var4.l);
-                            break;
-                        case 4:
-                            oi3Var.g(ph3Var4.n);
-                            break;
-                        case 5:
-                            oi3Var.V(ph3Var4.m());
-                            break;
-                        case 6:
-                            oi3Var.N(ph3Var4.o);
-                            break;
-                        case 7:
-                            oi3Var.P(ph3Var4.f);
-                            break;
-                        case 8:
-                            oi3Var.S(ph3Var4.f);
-                            break;
-                        default:
-                            oi3Var.A((jw4) ph3Var4.i.r);
-                            break;
-                    }
-                }
-            });
-        }
-        final int i22 = 6;
-        if (ph3Var2.n != ph3Var.n) {
-            this.n.c(6, new qc2() { // from class: s31
-                @Override // defpackage.qc2
-                public final void invoke(Object obj9) {
-                    int i110 = i18;
-                    ph3 ph3Var4 = ph3Var;
-                    oi3 oi3Var = (oi3) obj9;
-                    switch (i110) {
-                        case 0:
-                            oi3Var.i(ph3Var4.g);
-                            oi3Var.q(ph3Var4.g);
-                            break;
-                        case 1:
-                            oi3Var.L(ph3Var4.e, ph3Var4.l);
-                            break;
-                        case 2:
-                            oi3Var.v(ph3Var4.e);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            oi3Var.r(ph3Var4.m, ph3Var4.l);
-                            break;
-                        case 4:
-                            oi3Var.g(ph3Var4.n);
-                            break;
-                        case 5:
-                            oi3Var.V(ph3Var4.m());
-                            break;
-                        case 6:
-                            oi3Var.N(ph3Var4.o);
-                            break;
-                        case 7:
-                            oi3Var.P(ph3Var4.f);
-                            break;
-                        case 8:
-                            oi3Var.S(ph3Var4.f);
-                            break;
-                        default:
-                            oi3Var.A((jw4) ph3Var4.i.r);
-                            break;
-                    }
-                }
-            });
-        }
-        if (ph3Var2.m() != ph3Var.m()) {
-            this.n.c(7, new qc2() { // from class: s31
-                @Override // defpackage.qc2
-                public final void invoke(Object obj9) {
-                    int i110 = i20;
-                    ph3 ph3Var4 = ph3Var;
-                    oi3 oi3Var = (oi3) obj9;
-                    switch (i110) {
-                        case 0:
-                            oi3Var.i(ph3Var4.g);
-                            oi3Var.q(ph3Var4.g);
-                            break;
-                        case 1:
-                            oi3Var.L(ph3Var4.e, ph3Var4.l);
-                            break;
-                        case 2:
-                            oi3Var.v(ph3Var4.e);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            oi3Var.r(ph3Var4.m, ph3Var4.l);
-                            break;
-                        case 4:
-                            oi3Var.g(ph3Var4.n);
-                            break;
-                        case 5:
-                            oi3Var.V(ph3Var4.m());
-                            break;
-                        case 6:
-                            oi3Var.N(ph3Var4.o);
-                            break;
-                        case 7:
-                            oi3Var.P(ph3Var4.f);
-                            break;
-                        case 8:
-                            oi3Var.S(ph3Var4.f);
-                            break;
-                        default:
-                            oi3Var.A((jw4) ph3Var4.i.r);
-                            break;
-                    }
-                }
-            });
-        }
-        if (!ph3Var2.o.equals(ph3Var.o)) {
-            this.n.c(12, new qc2() { // from class: s31
-                @Override // defpackage.qc2
-                public final void invoke(Object obj9) {
-                    int i110 = i22;
-                    ph3 ph3Var4 = ph3Var;
-                    oi3 oi3Var = (oi3) obj9;
-                    switch (i110) {
-                        case 0:
-                            oi3Var.i(ph3Var4.g);
-                            oi3Var.q(ph3Var4.g);
-                            break;
-                        case 1:
-                            oi3Var.L(ph3Var4.e, ph3Var4.l);
-                            break;
-                        case 2:
-                            oi3Var.v(ph3Var4.e);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            oi3Var.r(ph3Var4.m, ph3Var4.l);
-                            break;
-                        case 4:
-                            oi3Var.g(ph3Var4.n);
-                            break;
-                        case 5:
-                            oi3Var.V(ph3Var4.m());
-                            break;
-                        case 6:
-                            oi3Var.N(ph3Var4.o);
-                            break;
-                        case 7:
-                            oi3Var.P(ph3Var4.f);
-                            break;
-                        case 8:
-                            oi3Var.S(ph3Var4.f);
-                            break;
-                        default:
-                            oi3Var.A((jw4) ph3Var4.i.r);
-                            break;
-                    }
-                }
-            });
-        }
+    public final void x1(final ph3 r35, int r36, boolean r37, int r38, long r39, int r41, boolean r42) {
+        ph3 r3 = this.p0;
+        this.p0 = r35;
+        boolean r4 = r3.a.equals(r35.a);
+        bu4 r5 = this.b;
+        zt4 r6 = this.p;
+        cu4 r9 = r3.a;
+        mt2 r10 = r3.b;
+        cu4 r11 = r35.a;
+        mt2 r12 = r35.b;
+        int r16 = 0;
+        if (r11.p() == false) goto L8;
+        if (r9.p() == false) goto L8;
+        Pair r7 = new Pair(Boolean.FALSE, -1);
+    L35:
+        boolean r8 = ((Boolean) r7.first).booleanValue();
+        int r13 = ((Integer) r7.second).intValue();
+        if (r8 == true) goto L38;
+        gn2 r14 = null;
+    L43:
+        if (r8 == false) goto L45;
+    L46:
+        co2 r15 = this.o0.a();
+        List r17 = r35.j;
+        int r18 = 0;
+    L48:
+        if (r18 >= r17.size()) goto L54;
+        qv2 r19 = (qv2) r17.get(r18);
+        int r110 = 0;
+    L50:
+        pv2[] r20 = r19.a;
+        if (r110 >= r20.length) goto L53;
+        r20[r110].b(r15);
+        r110 = r110 + 1;
+        goto L50
+    L53:
+        r18 = r18 + 1;
+        goto L48
+    L54:
+        this.o0 = new do2(r15);
+    L55:
+        do2 r21 = a1();
+        boolean r22 = r21.equals(this.S);
+        this.S = r21;
+        if (r3.l == r35.l) goto L58;
+        boolean r23 = true;
+    L60:
+        if (r3.e == r35.e) goto L62;
+        boolean r111 = true;
+    L63:
+        if (r111 == true) goto L65;
+        if (r23 == true) goto L65;
+    L67:
+        if (r3.g == r35.g) goto L69;
+        boolean r112 = true;
+    L70:
+        if (r4 == true) goto L72;
+        this.n.c(0, new q31(r36, r16, r35));
+    L72:
+        if (r37 == false) goto L102;
+        zt4 r24 = new zt4();
+        if (r3.a.p() == true) goto L76;
+        Object r113 = r3.b.a;
+        r3.a.g(r113, r24);
+        int r114 = r24.c;
+        int r115 = r3.a.b(r113);
+        Object r25 = r3.a.m(r114, this.b, 0).a;
+        gn2 r26 = this.b.b;
+        Object r27 = r113;
+        int r28 = r114;
+        int r29 = r115;
+    L77:
+        mt2 r30 = r3.b;
+        if (r38 != 0) goto L89;
+        boolean r31 = r30.b();
+        mt2 r32 = r3.b;
+        if (r31 == false) goto L83;
+        long r33 = r24.a(r32.b, r32.c);
+        long r116 = j1(r3);
+    L92:
+        long r210 = f35.i0(r33);
+        long r34 = f35.i0(r116);
+        mt2 r40 = r3.b;
+        pi3 r211 = new pi3(r25, r28, r26, r27, r29, r210, r34, r40.b, r40.c);
+        bu4 r43 = this.b;
+        int r44 = o0();
+        int r117 = y();
+        if (this.p0.a.p() == true) goto L96;
+        ph3 r118 = this.p0;
+        Object r119 = r118.b.a;
+        r118.a.g(r119, this.p);
+        r117 = this.p0.a.b(r119);
+        Object r120 = this.p0.a.m(r44, r43, 0).a;
+        gn2 r212 = r43.b;
+        Object r213 = r119;
+        Object r214 = r120;
+    L95:
+        int r215 = r117;
+        long r216 = f35.i0(r39);
+        if (this.p0.b.b() == false) goto L100;
+        long r310 = f35.i0(j1(this.p0));
+    L101:
+        mt2 r45 = this.p0.b;
+        int r121 = 0;
+        this.n.c(11, new z31(r38, r211, new pi3(r214, r44, r212, r213, r215, r216, r310, r45.b, r45.c), 0));
+    L103:
+        if (r8 == false) goto L105;
+        this.n.c(1, new a41(r14, r13, r121));
+    L105:
+        final int r46 = 7;
+        if (r3.f == r35.f) goto L110;
+        this.n.c(10, new s31(r35, r46));
+        if (r35.f == null) goto L110;
+        final int r47 = 8;
+        this.n.c(10, new s31(r35, r47));
+    L110:
+        ew4 r2 = r3.i;
+        ew4 r48 = r35.i;
+        if (r2 == r48) goto L113;
+        pn0 r49 = this.j;
+        Object r50 = r48.s;
+        r49.getClass();
+        gg2 r51 = (gg2) r50;
+        final int r52 = 9;
+        this.n.c(2, new s31(r35, r52));
+    L113:
+        if (r22 == true) goto L115;
+        final int r122 = 0;
+        this.n.c(14, new r31(this.S, r122));
+    L116:
+        if (r112 == false) goto L118;
+        this.n.c(3, new s31(r35, r122));
+    L118:
+        if (r111 == true) goto L120;
+        if (r23 == true) goto L120;
+    L121:
+        final int r53 = 4;
+        if (r111 == false) goto L124;
+        final int r54 = 2;
+        this.n.c(4, new s31(r35, r54));
+    L124:
+        final int r55 = 5;
+        if (r23 == false) goto L127;
+    L128:
+        final int r56 = 3;
+        this.n.c(5, new s31(r35, r56));
+    L129:
+        final int r57 = 6;
+        if (r3.n == r35.n) goto L133;
+        this.n.c(6, new s31(r35, r53));
+    L133:
+        if (r3.m() == r35.m()) goto L136;
+        this.n.c(7, new s31(r35, r55));
+    L136:
+        if (r3.o.equals(r35.o) == true) goto L138;
+        this.n.c(12, new s31(r35, r57));
+    L138:
         v1();
         this.n.b();
-        if (ph3Var2.p != ph3Var.p) {
-            Iterator it = this.o.iterator();
-            while (it.hasNext()) {
-                ((d41) it.next()).n.y1();
-            }
-        }
+        if (r3.p == r35.p) goto L144;
+        Iterator r0 = this.o.iterator();
+    L142:
+        if (r0.hasNext() == false) goto L148;
+        ((d41) r0.next()).n.y1();
+        goto L142
+    L148:
+        return;
+    L144:
+        return;
+    L127:
+        if (r3.m == r35.m) goto L129;
+    L120:
+        final int r58 = 1;
+        this.n.c(-1, new s31(r35, r58));
+        goto L121
+    L115:
+        r122 = 0;
+        goto L116
+    L100:
+        r310 = r216;
+        goto L101
+    L96:
+        r214 = null;
+        r212 = null;
+        r213 = null;
+        goto L95
+    L83:
+        if (r32.e == (-1)) goto L86;
+        r33 = j1(this.p0);
+    L85:
+        r116 = r33;
+        goto L92
+    L86:
+        long r59 = r24.e;
+        long r123 = r24.d;
+    L87:
+        r33 = r59 + r123;
+        goto L85
+    L89:
+        if (r30.b() == false) goto L91;
+        r33 = r3.s;
+        r116 = j1(r3);
+        goto L92
+    L91:
+        r59 = r24.e;
+        r123 = r3.s;
+        goto L87
+    L76:
+        r28 = r41;
+        r29 = r28;
+        r25 = null;
+        r26 = null;
+        r27 = null;
+        goto L77
+    L102:
+        r8 = r8;
+        r22 = r22;
+        r111 = r111;
+        r121 = 0;
+        goto L103
+    L69:
+        r112 = false;
+    L65:
+        y1();
+        goto L67
+    L62:
+        r111 = false;
+        goto L63
+    L58:
+        r23 = false;
+        goto L60
+    L45:
+        if (r3.j.equals(r35.j) == true) goto L55;
+    L38:
+        if (r35.a.p() == true) goto L40;
+        r14 = r35.a.m(r35.a.g(r35.b.a, this.p).c, this.b, 0).b;
+    L41:
+        this.o0 = do2.K;
+        goto L43
+    L40:
+        r14 = null;
+    L8:
+        if (r11.p() == r9.p()) goto L11;
+        r7 = new Pair(Boolean.TRUE, 3);
+        goto L35
+    L11:
+        if (r9.m(r9.g(r10.a, r6).c, r5, 0).a.equals(r11.m(r11.g(r12.a, r6).c, r5, 0).a) == true) goto L24;
+        if (r37 == false) goto L15;
+        if (r38 != 0) goto L15;
+        int r60 = 1;
+    L21:
+        r7 = new Pair(Boolean.TRUE, Integer.valueOf(r60));
+    L15:
+        if (r37 == true) goto L17;
+    L19:
+        if (r4 == true) goto L22;
+        r60 = 3;
+        goto L21
+    L22:
+        tb4.a();
+        return;
+    L17:
+        if (r38 != 1) goto L19;
+        r60 = 2;
+        goto L21
+    L24:
+        if (r37 == false) goto L29;
+        if (r38 != 0) goto L29;
+        if (r10.d >= r12.d) goto L29;
+        r7 = new Pair(Boolean.TRUE, 0);
+    L29:
+        if (r37 == true) goto L31;
+    L34:
+        r7 = new Pair(Boolean.FALSE, -1);
+        goto L35
+    L31:
+        if (r38 != 1) goto L34;
+        if (r42 == false) goto L34;
+        r7 = new Pair(Boolean.TRUE, 2);
+        goto L35
     }
 
     @Override // defpackage.qi3
     public final int y() {
         z1();
-        if (!this.p0.a.p()) {
-            ph3 ph3Var = this.p0;
-            return ph3Var.a.b(ph3Var.b.a);
-        }
-        int i = this.q0;
-        if (i == -1) {
-            return 0;
-        }
-        return i;
+        if (this.p0.a.p() == false) goto L8;
+        int r1 = this.q0;
+        if (r1 != (-1)) goto L10;
+        return 0;
+    L10:
+        return r1;
+    L8:
+        ph3 r2 = this.p0;
+        return r2.a.b(r2.b.a);
     }
 
     @Override // defpackage.qi3
@@ -2186,28 +2148,31 @@ public final class i41 extends fq implements ExoPlayer {
     }
 
     public final void y1() {
-        int iG = g();
-        y10 y10Var = this.B;
-        y10 y10Var2 = this.A;
-        boolean z = false;
-        if (iG != 1) {
-            if (iG == 2 || iG == 3) {
-                z1();
-                boolean z2 = this.p0.p;
-                if (q() && !z2) {
-                    z = true;
-                }
-                y10Var2.k(z);
-                y10Var.k(q());
-                return;
-            }
-            if (iG != 4) {
-                tb4.a();
-                return;
-            }
-        }
-        y10Var2.k(false);
-        y10Var.k(false);
+        int r0 = g();
+        y10 r1 = this.B;
+        y10 r2 = this.A;
+        boolean r3 = false;
+        if (r0 != 1) goto L5;
+    L19:
+        r2.k(false);
+        r1.k(false);
+        return;
+    L5:
+        if (r0 != 2) goto L7;
+    L13:
+        z1();
+        boolean r4 = this.p0.p;
+        if (q() == false) goto L17;
+        if (r4 == true) goto L17;
+        r3 = true;
+    L17:
+        r2.k(r3);
+        r1.k(q());
+        return;
+    L7:
+        if (r0 == 3) goto L13;
+        if (r0 == 4) goto L19;
+        tb4.a();
     }
 
     @Override // defpackage.qi3
@@ -2218,20 +2183,26 @@ public final class i41 extends fq implements ExoPlayer {
 
     public final void z1() {
         this.e.b();
-        Thread threadCurrentThread = Thread.currentThread();
-        Looper looper = this.u;
-        if (threadCurrentThread != looper.getThread()) {
-            String name = Thread.currentThread().getName();
-            String name2 = looper.getThread().getName();
-            String str = f35.a;
-            Locale locale = Locale.US;
-            String strH = f34.h("Player is accessed on the wrong thread.\nCurrent thread: '", name, "'\nExpected thread: '", name2, "'\nSee https://developer.android.com/guide/topics/media/issues/player-accessed-on-wrong-thread");
-            if (this.f0) {
-                kf2.o(strH);
-            } else {
-                l93.r0("ExoPlayerImpl", strH, this.g0 ? null : new IllegalStateException());
-                this.g0 = true;
-            }
-        }
+        Thread r0 = Thread.currentThread();
+        Looper r1 = this.u;
+        if (r0 == r1.getThread()) goto L14;
+        String r2 = Thread.currentThread().getName();
+        String r3 = r1.getThread().getName();
+        String r4 = f35.a;
+        Locale r5 = Locale.US;
+        String r6 = f34.h("Player is accessed on the wrong thread.\nCurrent thread: '", r2, "'\nExpected thread: '", r3, "'\nSee https://developer.android.com/guide/topics/media/issues/player-accessed-on-wrong-thread");
+        if (this.f0 == false) goto L7;
+        kf2.o(r6);
+        return;
+    L7:
+        if (this.g0 == false) goto L9;
+        IllegalStateException r7 = null;
+    L10:
+        l93.r0("ExoPlayerImpl", r6, r7);
+        this.g0 = true;
+        return;
+    L9:
+        r7 = new IllegalStateException();
+        goto L10
     }
 }

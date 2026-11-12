@@ -5,8 +5,8 @@ package defpackage;
 public final class ow1 implements kl4 {
     public final boolean n;
 
-    public ow1(boolean z) {
-        this.n = z;
+    public ow1(boolean r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.kl4

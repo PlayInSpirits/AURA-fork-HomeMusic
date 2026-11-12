@@ -3,6 +3,7 @@ package com.eddyizm.tempus.homemusic;
 import defpackage.h12;
 import defpackage.q40;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -12,36 +13,45 @@ public final class SmartNextIn {
     private final String at;
     private final List<PlayEvent> played;
 
-    public SmartNextIn(List<PlayEvent> list, String str) {
-        list.getClass();
-        this.played = list;
-        this.at = str;
+    public SmartNextIn(List<PlayEvent> r1, String r2) {
+        r1.getClass();
+        this.played = r1;
+        this.at = r2;
     }
 
-    public static /* synthetic */ SmartNextIn compatible$default(SmartNextIn smartNextIn, boolean z, boolean z2, String str, int i, Object obj) {
-        if ((i & 2) != 0) {
-            z2 = z;
-        }
-        if ((i & 4) != 0) {
-            str = null;
-        }
-        return smartNextIn.compatible(z, z2, str);
+    public static /* synthetic */ SmartNextIn compatible$default(SmartNextIn r0, boolean r1, boolean r2, String r3, int r4, Object r5) {
+        if ((r4 & 2) == 0) goto L6;
+        r2 = r1;
+    L6:
+        if ((r4 & 4) == 0) goto L9;
+        r3 = null;
+    L9:
+        return r0.compatible(r1, r2, r3);
     }
 
-    public final SmartNextIn compatible(boolean z, boolean z2, String str) {
-        List<PlayEvent> list = this.played;
-        ArrayList arrayList = new ArrayList();
-        for (Object obj : list) {
-            PlayEvent playEvent = (PlayEvent) obj;
-            boolean z3 = z;
-            boolean z4 = z2;
-            if (PlayEvent.supported$default(playEvent, z3, z4, false, 4, null) && (playEvent.getAccount() == null || h12.c(playEvent.getAccount(), str))) {
-                arrayList.add(obj);
-            }
-            z = z3;
-            z2 = z4;
-        }
-        return new SmartNextIn(q40.L0(arrayList, SmartPlan.MAX_QUEUE), this.at);
+    public final SmartNextIn compatible(boolean r10, boolean r11, String r12) {
+        List<PlayEvent> r0 = this.played;
+        ArrayList r1 = new ArrayList();
+        Iterator<T> r2 = r0.iterator();
+    L4:
+        if (r2.hasNext() == false) goto L14;
+        Object r3 = r2.next();
+        PlayEvent r4 = (PlayEvent) r3;
+        boolean r5 = r10;
+        boolean r6 = r11;
+        if (PlayEvent.supported$default(r4, r5, r6, false, 4, null) == false) goto L12;
+        if (r4.getAccount() != null) goto L10;
+    L11:
+        r1.add(r3);
+        goto L12
+    L10:
+        if (h12.c(r4.getAccount(), r12) == true) goto L11;
+    L12:
+        r10 = r5;
+        r11 = r6;
+        goto L4
+    L14:
+        return new SmartNextIn(q40.L0(r1, SmartPlan.MAX_QUEUE), this.at);
     }
 
     public final String getAt() {

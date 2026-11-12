@@ -5,17 +5,17 @@ import java.nio.ByteBuffer;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface zi4 {
-    void a(int i, ByteBuffer byteBuffer);
+    void a(int r1, ByteBuffer r2);
 
-    void b(int i, ByteBuffer byteBuffer);
+    void b(int r1, ByteBuffer r2);
 
-    void c(int i, long j, long j2);
+    void c(int r1, long r2, long r4);
 
-    void d(int i, int i2);
+    void d(int r1, int r2);
 
-    void e(int i, int i2);
+    void e(int r1, int r2);
 
-    int f(int i, int i2, int i3);
+    int f(int r1, int r2, int r3);
 
     void flush();
 
@@ -25,19 +25,19 @@ public interface zi4 {
 
     Object i();
 
-    void j(int i);
+    void j(int r1);
 
     boolean k();
 
     Object l();
 
-    void m(int i, int i2, int i3, int i4, int i5);
+    void m(int r1, int r2, int r3, int r4, int r5);
 
-    void n(int i);
+    void n(int r1);
 
     int o();
 
-    void p(int i);
+    void p(int r1);
 
-    int q(int i, int i2);
+    int q(int r1, int r2);
 }

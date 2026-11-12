@@ -8,9 +8,9 @@ public final class mq1 implements gf1 {
     public final uq1 n;
     public final /* synthetic */ rq1 o;
 
-    public mq1(rq1 rq1Var, uq1 uq1Var) {
-        this.o = rq1Var;
-        this.n = uq1Var;
+    public mq1(rq1 r1, uq1 r2) {
+        this.o = r1;
+        this.n = r2;
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -28,49 +28,50 @@ public final class mq1 implements gf1 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
     @Override // defpackage.gf1
-    public final Object invoke() throws Throwable {
-        Throwable th;
-        rq1 rq1Var = this.o;
-        uq1 uq1Var = this.n;
-        b21 b21Var = b21.INTERNAL_ERROR;
-        IOException iOException = null;
-        try {
-            try {
-                try {
-                    if (!uq1Var.b(true, this)) {
-                        throw new IOException("Required SETTINGS preface not received");
-                    }
-                    do {
-                        try {
-                        } catch (Throwable th2) {
-                            th = th2;
-                        }
-                    } while (uq1Var.b(false, this));
-                    b21 b21Var2 = b21.NO_ERROR;
-                    try {
-                        b21Var = b21.CANCEL;
-                        rq1Var.b(b21Var2, b21Var, null);
-                        this = b21Var2;
-                    } catch (IOException e) {
-                        iOException = e;
-                        b21 b21Var3 = b21.PROTOCOL_ERROR;
-                        rq1Var.b(b21Var3, b21Var3, iOException);
-                        this = b21Var3;
-                    }
-                    xe5.b(uq1Var);
-                    return j15.a;
-                } catch (Throwable th3) {
-                    th = th3;
-                }
-            } catch (IOException e2) {
-                iOException = e2;
-            }
-        } catch (Throwable th4) {
-            th = th4;
-        }
-        this = b21Var;
-        rq1Var.b(this, b21Var, iOException);
-        xe5.b(uq1Var);
+    public final Object invoke() {
+        rq1 r0 = this.o;
+        uq1 r1 = this.n;
+        b21 r2 = b21.r;
+        IOException r4 = null;
+    L12:
+        Throwable th = th;
+    L29:
+        r0.b(this, r2, r4);
+        xe5.b(r1);
         throw th;
+    L18:
+        e = move-exception;
+        r4 = e;
+    L25:
+        b21 r5 = b21.q;     // Catch: Throwable -> L12
+        r0.b(r5, r5, r4);
+        b21 this = r5;
+    L11:
+        xe5.b(r1);
+        return j15.a;
+    L23:
+        th = move-exception;
+        th = th;
+    L17:
+        this = r2;
+        goto L29
+    L4:
+        if (r1.b(true, this) == false) goto L21;
+    L33:
+    L16:
+        th = th;
+        goto L17
+    L7:
+        if (r1.b(false, this) == true) goto L33;
+        b21 r6 = b21.p;     // Catch: Throwable -> L16 IOException -> L18
+        r2 = b21.u;     // Catch: Throwable -> L12 IOException -> L14
+        r0.b(r6, r2, null);
+        this = r6;
+    L14:
+        e = move-exception;
+        r4 = e;
+        goto L25
+    L21:
+        throw new IOException("Required SETTINGS preface not received");     // Catch: IOException -> L18 Throwable -> L23
     }
 }

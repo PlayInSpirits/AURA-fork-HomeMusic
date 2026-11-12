@@ -47,7 +47,7 @@ public final class sb1 {
     public float z;
 
     public sb1() {
-        vw1 vw1Var = yw1.o;
+        vw1 r0 = yw1.o;
         this.c = gy3.r;
         this.h = -1;
         this.i = -1;

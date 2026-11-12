@@ -6,15 +6,16 @@ public abstract class n85 {
     public static final /* synthetic */ int a = 0;
 
     static {
-        Float fValueOf = Float.valueOf(1.0f);
-        kd3 kd3Var = new kd3(p35.b, fValueOf);
-        kd3 kd3Var2 = new kd3(p35.h, fValueOf);
-        kd3 kd3Var3 = new kd3(p35.g, fValueOf);
-        kd3 kd3Var4 = new kd3(p35.a, Float.valueOf(0.01f));
-        kd3 kd3Var5 = new kd3(p35.i, fValueOf);
-        kd3 kd3Var6 = new kd3(p35.e, fValueOf);
-        kd3 kd3Var7 = new kd3(p35.f, fValueOf);
-        Float fValueOf2 = Float.valueOf(0.4f);
-        lg2.X(kd3Var, kd3Var2, kd3Var3, kd3Var4, kd3Var5, kd3Var6, kd3Var7, new kd3(p35.c, fValueOf2), new kd3(p35.d, fValueOf2));
+        Float r0 = Float.valueOf(1.0f);
+        kd3 r1 = new kd3(p35.b, r0);
+        kd3 r2 = new kd3(p35.h, r0);
+        kd3 r3 = new kd3(p35.g, r0);
+        Float r4 = Float.valueOf(0.01f);
+        kd3 r5 = new kd3(p35.a, r4);
+        kd3 r6 = new kd3(p35.i, r0);
+        kd3 r7 = new kd3(p35.e, r0);
+        kd3 r8 = new kd3(p35.f, r0);
+        Float r9 = Float.valueOf(0.4f);
+        lg2.X(new kd3[]{r1, r2, r3, r5, r6, r7, r8, new kd3(p35.c, r9), new kd3(p35.d, r9)});
     }
 }

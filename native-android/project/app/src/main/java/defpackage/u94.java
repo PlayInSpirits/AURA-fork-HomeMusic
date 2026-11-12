@@ -9,13 +9,13 @@ import sun.misc.Unsafe;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class u94 {
-    public static final /* synthetic */ AtomicReferenceFieldUpdater p = AtomicReferenceFieldUpdater.newUpdater(u94.class, Object.class, "head$volatile");
-    public static final /* synthetic */ AtomicLongFieldUpdater q;
-    public static final /* synthetic */ AtomicReferenceFieldUpdater r;
-    public static final /* synthetic */ AtomicLongFieldUpdater s;
-    public static final /* synthetic */ AtomicIntegerFieldUpdater t;
-    public static final /* synthetic */ long u;
-    public static final /* synthetic */ long v;
+    public static final /* synthetic */ AtomicReferenceFieldUpdater p = null;
+    public static final /* synthetic */ AtomicLongFieldUpdater q = null;
+    public static final /* synthetic */ AtomicReferenceFieldUpdater r = null;
+    public static final /* synthetic */ AtomicLongFieldUpdater s = null;
+    public static final /* synthetic */ AtomicIntegerFieldUpdater t = null;
+    public static final /* synthetic */ long u = 0;
+    public static final /* synthetic */ long v = 0;
     private volatile /* synthetic */ int _availablePermits$volatile;
     private volatile /* synthetic */ long deqIdx$volatile;
     private volatile /* synthetic */ long enqIdx$volatile;
@@ -25,192 +25,175 @@ public class u94 {
     private volatile /* synthetic */ Object tail$volatile;
 
     static {
-        Unsafe unsafe = dz.a;
-        u = unsafe.objectFieldOffset(u94.class.getDeclaredField("head$volatile"));
+        p = AtomicReferenceFieldUpdater.newUpdater(u94.class, Object.class, "head$volatile");
+        Unsafe r3 = dz.a;
+        u = r3.objectFieldOffset(u94.class.getDeclaredField("head$volatile"));
         q = AtomicLongFieldUpdater.newUpdater(u94.class, "deqIdx$volatile");
         r = AtomicReferenceFieldUpdater.newUpdater(u94.class, Object.class, "tail$volatile");
-        v = unsafe.objectFieldOffset(u94.class.getDeclaredField("tail$volatile"));
+        v = r3.objectFieldOffset(u94.class.getDeclaredField("tail$volatile"));
         s = AtomicLongFieldUpdater.newUpdater(u94.class, "enqIdx$volatile");
         t = AtomicIntegerFieldUpdater.newUpdater(u94.class, "_availablePermits$volatile");
     }
 
-    public u94(int i) {
-        this.n = i;
-        if (i <= 0) {
-            kf2.e(f34.f(i, "Semaphore should have at least 1 permit, but had "));
-            throw null;
-        }
-        if (i < 0) {
-            kf2.e(f34.f(i, "The number of acquired permits should be in 0.."));
-            throw null;
-        }
-        x94 x94Var = new x94(0L, null, 2);
-        this.head$volatile = x94Var;
-        this.tail$volatile = x94Var;
-        this._availablePermits$volatile = i;
+    public u94(int r6) {
+        this.n = r6;
+        if (r6 <= 0) goto L9;
+        if (r6 < 0) goto L7;
+        x94 r0 = new x94(0, null, 2);
+        this.head$volatile = r0;
+        this.tail$volatile = r0;
+        this._availablePermits$volatile = r6;
         this.o = new bz(2, this);
+        return;
+    L7:
+        kf2.e(f34.f(r6, "The number of acquired permits should be in 0.."));
+        throw null;
+    L9:
+        kf2.e(f34.f(r6, "Semaphore should have at least 1 permit, but had "));
+        throw null;
     }
 
-    public final boolean a(t85 t85Var) {
-        Object objJ;
-        Unsafe unsafe;
-        u94 u94Var = this;
+    public final boolean a(t85 r17) {
+        u94 r1 = this;
         r.getClass();
-        Unsafe unsafe2 = dz.a;
-        long j = v;
-        x94 x94Var = (x94) unsafe2.getObjectVolatile(u94Var, j);
-        long andIncrement = s.getAndIncrement(u94Var);
-        s94 s94Var = s94.n;
-        long j2 = andIncrement / ((long) w94.f);
-        loop0: while (true) {
-            objJ = ud3.j(x94Var, j2, s94Var);
-            if (xl.x(objJ)) {
-                break;
-            }
-            u84 u84VarV = xl.v(objJ);
-            while (true) {
-                u84 u84Var = (u84) dz.a.getObjectVolatile(u94Var, j);
-                if (u84Var.e >= u84VarV.e) {
-                    u94Var = this;
-                    break loop0;
-                }
-                if (!u84VarV.n()) {
-                    break;
-                }
-                do {
-                    unsafe = dz.a;
-                    u94Var = this;
-                    if (unsafe.compareAndSwapObject(u94Var, v, u84Var, u84VarV)) {
-                        if (!u84Var.j()) {
-                            break loop0;
-                        }
-                        u84Var.h();
-                        break loop0;
-                    }
-                } while (unsafe.getObjectVolatile(u94Var, j) == u84Var);
-                if (u84VarV.j()) {
-                    u84VarV.h();
-                }
-            }
-            u94Var = this;
-        }
-        x94 x94Var2 = (x94) xl.v(objJ);
-        AtomicReferenceArray atomicReferenceArray = x94Var2.g;
-        int i = (int) (andIncrement % ((long) w94.f));
-        while (!atomicReferenceArray.compareAndSet(i, null, t85Var)) {
-            if (atomicReferenceArray.get(i) != null) {
-                f01 f01Var = w94.b;
-                f01 f01Var2 = w94.c;
-                while (!atomicReferenceArray.compareAndSet(i, f01Var, f01Var2)) {
-                    if (atomicReferenceArray.get(i) != f01Var) {
-                        return false;
-                    }
-                }
-                ((az) t85Var).k(j15.a, u94Var.o);
-                return true;
-            }
-        }
-        t85Var.a(x94Var2, i);
+        Unsafe r0 = dz.a;
+        long r7 = v;
+        x94 r9 = (x94) r0.getObjectVolatile(r1, r7);
+        long r10 = s.getAndIncrement(r1);
+        s94 r12 = s94.n;
+        long r13 = r10 / ((long) w94.f);
+    L3:
+        Object r15 = ud3.j(r9, r13, r12);
+        if (xl.x(r15) == true) goto L22;
+        u84 r5 = xl.v(r15);
+    L6:
+        u84 r4 = (u84) dz.a.getObjectVolatile(r1, r7);
+        if (r4.e >= r5.e) goto L8;
+        if (r5.n() == false) goto L11;
+    L12:
+        Unsafe r2 = dz.a;
+        r1 = this;
+        if (r2.compareAndSwapObject(r1, v, r4, r5) == true) goto L15;
+        if (r2.getObjectVolatile(r1, r7) == r4) goto L12;
+        if (r5.j() == false) goto L6;
+        r5.h();
+        goto L6
+    L15:
+        if (r4.j() == false) goto L22;
+        r4.h();
+        goto L22
+    L11:
+        r1 = this;
+        goto L3
+    L8:
+        r1 = this;
+    L22:
+        x94 r3 = (x94) xl.v(r15);
+        AtomicReferenceArray r6 = r3.g;
+        int r8 = (int) (r10 % ((long) w94.f));
+    L24:
+        if (r6.compareAndSet(r8, null, r17) == true) goto L25;
+        if (r6.get(r8) == null) goto L24;
+        f01 r11 = w94.b;
+        f01 r14 = w94.c;
+    L31:
+        if (r6.compareAndSet(r8, r11, r14) == true) goto L32;
+        if (r6.get(r8) == r11) goto L31;
+        return false;
+    L32:
+        ((az) r17).k(j15.a, r1.o);
+        return true;
+    L25:
+        r17.a(r3, r8);
         return true;
     }
 
     public final void c() {
-        int i;
-        do {
-            AtomicIntegerFieldUpdater atomicIntegerFieldUpdater = t;
-            int andIncrement = atomicIntegerFieldUpdater.getAndIncrement(this);
-            int i2 = this.n;
-            if (andIncrement >= i2) {
-                do {
-                    i = atomicIntegerFieldUpdater.get(this);
-                    if (i <= i2) {
-                        break;
-                    }
-                } while (!atomicIntegerFieldUpdater.compareAndSet(this, i, i2));
-                throw new IllegalStateException(("The number of released permits cannot be greater than " + i2).toString());
-            }
-            if (andIncrement >= 0) {
-                return;
-            }
-        } while (!d());
+    L2:
+        AtomicIntegerFieldUpdater r0 = t;
+        int r1 = r0.getAndIncrement(this);
+        int r2 = this.n;
+        if (r1 >= r2) goto L9;
+        if (r1 >= 0) goto L8;
+        if (d() == false) goto L2;
+        return;
+    L8:
+        return;
+    L9:
+        int r3 = r0.get(this);
+        if (r3 <= r2) goto L15;
+        if (r0.compareAndSet(this, r3, r2) == false) goto L9;
+    L15:
+        throw new IllegalStateException(("The number of released permits cannot be greater than " + r2).toString());
     }
 
     public final boolean d() {
-        Object objJ;
-        Unsafe unsafe;
         p.getClass();
-        Unsafe unsafe2 = dz.a;
-        long j = u;
-        x94 x94Var = (x94) unsafe2.getObjectVolatile(this, j);
-        long andIncrement = q.getAndIncrement(this);
-        long j2 = andIncrement / ((long) w94.f);
-        t94 t94Var = t94.n;
-        loop0: while (true) {
-            objJ = ud3.j(x94Var, j2, t94Var);
-            if (xl.x(objJ)) {
-                break;
-            }
-            u84 u84VarV = xl.v(objJ);
-            while (true) {
-                u84 u84Var = (u84) dz.a.getObjectVolatile(this, j);
-                if (u84Var.e >= u84VarV.e) {
-                    break loop0;
-                }
-                if (!u84VarV.n()) {
-                    break;
-                }
-                do {
-                    unsafe = dz.a;
-                    if (unsafe.compareAndSwapObject(this, u, u84Var, u84VarV)) {
-                        if (!u84Var.j()) {
-                            break loop0;
-                        }
-                        u84Var.h();
-                        break loop0;
-                    }
-                } while (unsafe.getObjectVolatile(this, j) == u84Var);
-                if (u84VarV.j()) {
-                    u84VarV.h();
-                }
-            }
-        }
-        x94 x94Var2 = (x94) xl.v(objJ);
-        AtomicReferenceArray atomicReferenceArray = x94Var2.g;
-        x94Var2.a();
-        boolean z = false;
-        if (x94Var2.e <= j2) {
-            int i = (int) (andIncrement % ((long) w94.f));
-            Object andSet = atomicReferenceArray.getAndSet(i, w94.b);
-            if (andSet == null) {
-                int i2 = w94.a;
-                for (int i3 = 0; i3 < i2; i3++) {
-                    if (atomicReferenceArray.get(i) == w94.c) {
-                        return true;
-                    }
-                }
-                f01 f01Var = w94.b;
-                f01 f01Var2 = w94.d;
-                while (!atomicReferenceArray.compareAndSet(i, f01Var, f01Var2)) {
-                    if (atomicReferenceArray.get(i) != f01Var) {
-                        return !z;
-                    }
-                }
-                z = true;
-                return !z;
-            }
-            if (andSet != w94.e) {
-                if (!(andSet instanceof az)) {
-                    mj0.g(andSet, "unexpected: ");
-                    return false;
-                }
-                az azVar = (az) andSet;
-                f01 f01VarC = azVar.c(j15.a, this.o);
-                if (f01VarC != null) {
-                    azVar.t(f01VarC);
-                    return true;
-                }
-            }
-        }
+        Unsafe r0 = dz.a;
+        long r6 = u;
+        x94 r8 = (x94) r0.getObjectVolatile(this, r6);
+        long r9 = q.getAndIncrement(this);
+        long r11 = r9 / ((long) w94.f);
+        t94 r13 = t94.n;
+    L3:
+        Object r14 = ud3.j(r8, r11, r13);
+        if (xl.x(r14) == true) goto L22;
+        u84 r5 = xl.v(r14);
+    L6:
+        u84 r4 = (u84) dz.a.getObjectVolatile(this, r6);
+        if (r4.e >= r5.e) goto L22;
+        if (r5.n() == false) goto L3;
+    L12:
+        Unsafe r1 = dz.a;
+        if (r1.compareAndSwapObject(this, u, r4, r5) == true) goto L15;
+        if (r1.getObjectVolatile(this, r6) == r4) goto L12;
+        if (r5.j() == false) goto L6;
+        r5.h();
+        goto L6
+    L15:
+        if (r4.j() == false) goto L22;
+        r4.h();
+    L22:
+        x94 r2 = (x94) xl.v(r14);
+        AtomicReferenceArray r3 = r2.g;
+        r2.a();
+        boolean r7 = false;
+        if (r2.e > r11) goto L50;
+        int r10 = (int) (r9 % ((long) w94.f));
+        Object r12 = r3.getAndSet(r10, w94.b);
+        if (r12 != null) goto L42;
+        int r15 = w94.a;
+        int r16 = 0;
+    L28:
+        if (r16 >= r15) goto L33;
+        if (r3.get(r10) == w94.c) goto L31;
+        r16 = r16 + 1;
+        goto L28
+    L31:
+        return true;
+    L33:
+        f01 r17 = w94.b;
+        f01 r18 = w94.d;
+    L35:
+        if (r3.compareAndSet(r10, r17, r18) == true) goto L36;
+        if (r3.get(r10) == r17) goto L35;
+    L40:
+        return !r7;
+    L36:
+        r7 = true;
+        goto L40
+    L42:
+        if (r12 == w94.e) goto L50;
+        if ((r12 instanceof az) == false) goto L51;
+        az r19 = (az) r12;
+        f01 r20 = r19.c(j15.a, this.o);
+        if (r20 == null) goto L50;
+        r19.t(r20);
+        return true;
+    L51:
+        mj0.g(r12, "unexpected: ");
+        return false;
+    L50:
         return false;
     }
 }

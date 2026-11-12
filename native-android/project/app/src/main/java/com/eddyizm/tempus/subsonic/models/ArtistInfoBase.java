@@ -11,6 +11,9 @@ public class ArtistInfoBase {
     private String musicBrainzId;
     private String smallImageUrl;
 
+    public ArtistInfoBase() {
+    }
+
     public final String getBiography() {
         return this.biography;
     }
@@ -35,27 +38,27 @@ public class ArtistInfoBase {
         return this.smallImageUrl;
     }
 
-    public final void setBiography(String str) {
-        this.biography = str;
+    public final void setBiography(String r1) {
+        this.biography = r1;
     }
 
-    public final void setLargeImageUrl(String str) {
-        this.largeImageUrl = str;
+    public final void setLargeImageUrl(String r1) {
+        this.largeImageUrl = r1;
     }
 
-    public final void setLastFmUrl(String str) {
-        this.lastFmUrl = str;
+    public final void setLastFmUrl(String r1) {
+        this.lastFmUrl = r1;
     }
 
-    public final void setMediumImageUrl(String str) {
-        this.mediumImageUrl = str;
+    public final void setMediumImageUrl(String r1) {
+        this.mediumImageUrl = r1;
     }
 
-    public final void setMusicBrainzId(String str) {
-        this.musicBrainzId = str;
+    public final void setMusicBrainzId(String r1) {
+        this.musicBrainzId = r1;
     }
 
-    public final void setSmallImageUrl(String str) {
-        this.smallImageUrl = str;
+    public final void setSmallImageUrl(String r1) {
+        this.smallImageUrl = r1;
     }
 }

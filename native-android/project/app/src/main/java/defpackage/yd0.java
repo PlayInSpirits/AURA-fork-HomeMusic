@@ -10,23 +10,22 @@ public final class yd0 extends cx3 {
     public final z40 u;
     public final /* synthetic */ zd0 v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public yd0(zd0 zd0Var, z40 z40Var) {
-        this.v = zd0Var;
-        ConstraintLayout constraintLayout = (ConstraintLayout) z40Var.n;
-        super(constraintLayout);
-        this.u = z40Var;
-        constraintLayout.setOnClickListener(new p6(11, this));
+    public yd0(zd0 r2, z40 r3) {
+        this.v = r2;
+        ConstraintLayout r4 = (ConstraintLayout) r3.n;
+        super(r4);
+        this.u = r3;
+        r4.setOnClickListener(new p6(11, this));
     }
 
-    public final void s(sp3 sp3Var) {
-        Child child = new Child(sp3Var.a);
-        child.setTitle(sp3Var.c);
-        child.setAlbum(sp3Var.d);
-        child.setArtist(sp3Var.e);
-        child.setAlbumId(sp3Var.f);
-        child.setCoverArtId(sp3Var.g);
-        child.setType(sp3Var.h);
-        bo2.p((bl2) this.v.s, Collections.singletonList(child), 0, sp3Var.b);
+    public final void s(sp3 r5) {
+        Child r0 = new Child(r5.a);
+        r0.setTitle(r5.c);
+        r0.setAlbum(r5.d);
+        r0.setArtist(r5.e);
+        r0.setAlbumId(r5.f);
+        r0.setCoverArtId(r5.g);
+        r0.setType(r5.h);
+        bo2.p((bl2) this.v.s, Collections.singletonList(r0), 0, r5.b);
     }
 }

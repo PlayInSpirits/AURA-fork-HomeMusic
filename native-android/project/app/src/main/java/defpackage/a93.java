@@ -7,52 +7,49 @@ import java.util.LinkedHashSet;
 /* JADX INFO: loaded from: classes.dex */
 public final class a93 {
     public final Runnable a;
-    public final rp4 b = new rp4(new wc(16, this));
+    public final rp4 b;
 
-    public a93(Runnable runnable) {
-        this.a = runnable;
+    public a93(Runnable r2) {
+        this.a = r2;
+        this.b = new rp4(new wc(16, this));
     }
 
-    public final void a(ba2 ba2Var, v83 v83Var) {
-        ba2Var.getClass();
-        v83Var.getClass();
-        final ea2 ea2VarH = ba2Var.h();
-        if (ea2VarH.h == r92.n) {
-            return;
-        }
-        u83 u83Var = new u83(v83Var, new w83(ba2Var, v83Var));
-        v83Var.a.add(u83Var);
-        u83Var.b(false);
-        bq4 bq4Var = b().c;
-        bq4Var.getClass();
-        if (((LinkedHashSet) bq4Var.p).add(u83Var)) {
-            w33 w33Var = (w33) bq4Var.o;
-            w33Var.getClass();
-            if (u83Var.c != null) {
-                nz2.k(u83Var, "' is already registered with a dispatcher", "Handler '");
-                return;
-            } else {
-                w33Var.e.addFirst(u83Var);
-                u83Var.c = bq4Var;
-                w33Var.b();
-            }
-        }
-        final tl0 tl0Var = new tl0(u83Var, this, ea2VarH);
-        ea2VarH.a(tl0Var);
-        v83Var.c.add(new AutoCloseable() { // from class: x83
-            @Override // java.lang.AutoCloseable
-            public final void close() {
-                ea2VarH.f(tl0Var);
-            }
-        });
+    public final void a(ba2 r5, v83 r6) {
+        r5.getClass();
+        r6.getClass();
+        final ea2 r0 = r5.h();
+        if (r0.h != r92.n) goto L5;
+        return;
+    L5:
+        u83 r7 = new u83(r6, new w83(r5, r6));
+        r6.a.add(r7);
+        r7.b(false);
+        bq4 r1 = b().c;
+        r1.getClass();
+        if (((LinkedHashSet) r1.p).add(r7) == false) goto L12;
+        w33 r2 = (w33) r1.o;
+        r2.getClass();
+        if (r7.c != null) goto L10;
+        r2.e.addFirst(r7);
+        r7.c = r1;
+        r2.b();
+        goto L12
+    L10:
+        nz2.k(r7, "' is already registered with a dispatcher", "Handler '");
+        return;
+    L12:
+        final tl0 r3 = new tl0(r7, this, r0);
+        r0.a(r3);
+        AutoCloseable r4 = new x83(r0, r3);
+        r6.c.add(r4);
     }
 
     public final y83 b() {
         return (y83) this.b.getValue();
     }
 
-    public final void c(OnBackInvokedDispatcher onBackInvokedDispatcher) {
-        b().c.f(new s83(onBackInvokedDispatcher, 0), 1);
-        b().c.f(new s83(onBackInvokedDispatcher, 1000000), 0);
+    public final void c(OnBackInvokedDispatcher r5) {
+        b().c.f(new s83(r5, 0), 1);
+        b().c.f(new s83(r5, 1000000), 0);
     }
 }

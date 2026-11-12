@@ -8,13 +8,13 @@ public final class va1 {
     public final Typeface a;
     public final int b;
 
-    public va1(int i) {
+    public va1(int r2) {
         this.a = null;
-        this.b = i;
+        this.b = r2;
     }
 
-    public va1(Typeface typeface) {
-        this.a = typeface;
+    public va1(Typeface r1) {
+        this.a = r1;
         this.b = 0;
     }
 }

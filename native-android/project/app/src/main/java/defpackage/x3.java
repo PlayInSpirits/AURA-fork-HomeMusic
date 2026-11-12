@@ -7,7 +7,8 @@ import android.view.accessibility.AccessibilityNodeInfo;
 /* JADX INFO: loaded from: classes.dex */
 public final class x3 extends w3 {
     @Override // android.view.accessibility.AccessibilityNodeProvider
-    public final void addExtraDataToAccessibilityNodeInfo(int i, AccessibilityNodeInfo accessibilityNodeInfo, String str, Bundle bundle) {
-        this.a.y(i, new v3(accessibilityNodeInfo), str, bundle);
+    public final void addExtraDataToAccessibilityNodeInfo(int r2, AccessibilityNodeInfo r3, String r4, Bundle r5) {
+        v3 r0 = new v3(r3);
+        this.a.y(r2, r0, r4, r5);
     }
 }

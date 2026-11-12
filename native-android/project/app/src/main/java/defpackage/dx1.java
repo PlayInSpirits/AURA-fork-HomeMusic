@@ -7,25 +7,26 @@ import java.util.Map;
 public final class dx1 extends rw1 {
     public final zw1 o;
 
-    public dx1(zw1 zw1Var) {
-        this.o = zw1Var;
+    public dx1(zw1 r1) {
+        this.o = r1;
     }
 
     @Override // defpackage.rw1, java.util.AbstractCollection, java.util.Collection
-    public final boolean contains(Object obj) {
-        if (!(obj instanceof Map.Entry)) {
-            return false;
-        }
-        Map.Entry entry = (Map.Entry) obj;
-        return this.o.c(entry.getKey(), entry.getValue());
+    public final boolean contains(Object r2) {
+        if ((r2 instanceof Map.Entry) == false) goto L6;
+        Map.Entry r3 = (Map.Entry) r2;
+        Object r0 = r3.getKey();
+        Object r4 = r3.getValue();
+        return this.o.c(r0, r4);
+    L6:
+        return false;
     }
 
     @Override // defpackage.rw1
-    /* JADX INFO: renamed from: h */
-    public final o15 iterator() {
-        zw1 zw1Var = this.o;
-        zw1Var.getClass();
-        return new cx1(zw1Var);
+    public final o15 h() {
+        zw1 r1 = this.o;
+        r1.getClass();
+        return new cx1(r1);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection

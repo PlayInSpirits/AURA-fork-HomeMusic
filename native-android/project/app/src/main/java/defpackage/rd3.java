@@ -10,119 +10,165 @@ public final class rd3 {
     public boolean e;
     public int f;
     public int g;
+    public long h;
     public oo0 i;
     public ic j;
     public boolean k;
+    public long l;
     public mw2 m;
     public qd3 n;
     public r62 o;
+    public long p;
     public long q;
-    public long h = gz1.a;
-    public long l = 0;
-    public long p = qc0.g(0, 0, 0, 0);
 
-    public rd3(String str, zs4 zs4Var, ha1 ha1Var, int i, boolean z, int i2, int i3) {
-        this.a = str;
-        this.b = zs4Var;
-        this.c = ha1Var;
-        this.d = i;
-        this.e = z;
-        this.f = i2;
-        this.g = i3;
+    public rd3(String r1, zs4 r2, ha1 r3, int r4, boolean r5, int r6, int r7) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = gz1.a;
+        this.l = 0;
+        this.p = qc0.g(0, 0, 0, 0);
     }
 
-    public final boolean a(long j, r62 r62Var) {
-        long jA;
-        qd3 qd3Var;
-        int i;
-        float f;
-        int i2;
+    public final boolean a(long r22, r62 r24) {
         this.q = (this.q << 2) | 3;
-        boolean z = false;
-        if (this.g > 1) {
-            zs4 zs4Var = this.b;
-            mw2 mw2Var = this.m;
-            oo0 oo0Var = this.i;
-            oo0Var.getClass();
-            mw2 mw2VarT = j51.t(mw2Var, r62Var, zs4Var, oo0Var, this.c);
-            this.m = mw2VarT;
-            int i3 = this.g;
-            ro0 ro0Var = mw2VarT.c;
-            float f2 = mw2VarT.g;
-            float f3 = mw2VarT.f;
-            if (Float.isNaN(f2) || Float.isNaN(f3)) {
-                String str = nw2.a;
-                zs4 zs4Var2 = mw2VarT.e;
-                ha1 ha1Var = mw2VarT.d;
-                u01 u01Var = u01.n;
-                ic icVar = new ic(new mc(str, zs4Var2, u01Var, u01Var, ha1Var, ro0Var, false), 1, 1, qc0.b(0, 0, 15));
-                i = 1;
-                float f4 = new ic(new mc(nw2.b, mw2VarT.e, u01Var, u01Var, mw2VarT.d, ro0Var, true), 2, 1, qc0.b(0, 0, 15)).f;
-                f = icVar.f;
-                f3 = f4 - f;
-                mw2VarT.g = f;
-                mw2VarT.f = f3;
-            } else {
-                f = f2;
-                i = 1;
-            }
-            if (i3 != i) {
-                i2 = Math.round((f3 * (i3 - i)) + f);
-                if (i2 < 0) {
-                    i2 = 0;
-                }
-                int iG = nc0.g(j);
-                if (i2 > iG) {
-                    i2 = iG;
-                }
-            } else {
-                i2 = nc0.i(j);
-            }
-            jA = qc0.a(nc0.j(j), nc0.h(j), i2, nc0.g(j));
-        } else {
-            jA = j;
-        }
-        ic icVar2 = this.j;
-        if (icVar2 != null && (qd3Var = this.n) != null && !qd3Var.a() && r62Var == this.o && (nc0.b(jA, this.p) || (nc0.h(jA) == nc0.h(this.p) && nc0.j(jA) == nc0.j(this.p) && nc0.g(jA) >= icVar2.f && !icVar2.d.d))) {
-            if (!nc0.b(jA, this.p)) {
-                ic icVar3 = this.j;
-                icVar3.getClass();
-                long jD = qc0.d(jA, (((long) ji2.g(Math.min(icVar3.a.v.c(), icVar3.c()))) << 32) | (((long) ji2.g(icVar3.f)) & 4294967295L));
-                this.l = jD;
-                this.k = this.d != 3 && (((float) ((int) (jD >> 32))) < icVar3.c() || ((float) ((int) (jD & 4294967295L))) < icVar3.f);
-                this.p = jA;
-            }
-            return false;
-        }
-        qd3 mcVar = this.n;
-        if (mcVar == null || r62Var != this.o || mcVar.a()) {
-            this.o = r62Var;
-            String str2 = this.a;
-            zs4 zs4VarG0 = ud3.g0(this.b, r62Var);
-            oo0 oo0Var2 = this.i;
-            oo0Var2.getClass();
-            ha1 ha1Var2 = this.c;
-            boolean z2 = this.e;
-            u01 u01Var2 = u01.n;
-            mcVar = new mc(str2, zs4VarG0, u01Var2, u01Var2, ha1Var2, oo0Var2, z2);
-        }
-        this.n = mcVar;
-        long jW = ji2.w(jA, this.e, this.d, mcVar.d());
-        boolean z3 = this.e;
-        int i4 = this.d;
-        int i5 = this.f;
-        ic icVar4 = new ic((mc) mcVar, ((z3 || !(i4 == 2 || i4 == 4 || i4 == 5)) && i5 >= 1) ? i5 : 1, i4, jW);
-        this.p = jA;
-        int iG2 = ji2.g(icVar4.c());
-        float f5 = icVar4.f;
-        long jD2 = qc0.d(jA, (((long) iG2) << 32) | (((long) ji2.g(f5)) & 4294967295L));
-        this.l = jD2;
-        if (this.d != 3 && (((int) (jD2 >> 32)) < icVar4.c() || ((int) (jD2 & 4294967295L)) < f5)) {
-            z = true;
-        }
-        this.k = z;
-        this.j = icVar4;
+        boolean r3 = false;
+        if (this.g <= 1) goto L20;
+        zs4 r2 = this.b;
+        mw2 r6 = this.m;
+        oo0 r7 = this.i;
+        r7.getClass();
+        mw2 r4 = j51.t(r6, r24, r2, r7, this.c);
+        this.m = r4;
+        int r8 = this.g;
+        ro0 r13 = r4.c;
+        float r9 = r4.g;
+        float r10 = r4.f;
+        if (Float.isNaN(r9) == false) goto L7;
+    L10:
+        String r11 = nw2.a;
+        zs4 r12 = r4.e;
+        ha1 r14 = r4.d;
+        u01 r15 = u01.n;
+        ic r16 = new ic(new mc(r11, r12, r15, r15, r14, r13, false), 1, 1, qc0.b(0, 0, 15));
+        int r17 = 1;
+        float r18 = new ic(new mc(nw2.b, r4.e, r15, r15, r4.d, r13, true), 2, 1, qc0.b(0, 0, 15)).f;
+        float r5 = r16.f;
+        r10 = r18 - r5;
+        r4.g = r5;
+        r4.f = r10;
+    L11:
+        if (r8 == r17) goto L18;
+        int r19 = Math.round((r10 * (r8 - r17)) + r5);
+        if (r19 >= 0) goto L15;
+        r19 = 0;
+    L15:
+        int r20 = nc0.g(r22);
+        if (r19 <= r20) goto L19;
+        r19 = r20;
+    L19:
+        long r21 = qc0.a(nc0.j(r22), nc0.h(r22), r19, nc0.g(r22));
+    L21:
+        ic r23 = this.j;
+        if (r23 == null) goto L61;
+        qd3 r110 = this.n;
+        if (r110 == null) goto L61;
+        if (r110.a() == true) goto L61;
+        if (r24 != this.o) goto L61;
+        if (nc0.b(r21, this.p) == true) goto L48;
+        if (nc0.h(r21) != nc0.h(this.p)) goto L61;
+        if (nc0.j(r21) != nc0.j(this.p)) goto L61;
+        if (nc0.g(r21) < r23.f) goto L61;
+        if (r23.d.d == true) goto L61;
+    L48:
+        if (nc0.b(r21, this.p) == true) goto L60;
+        ic r1 = this.j;
+        r1.getClass();
+        long r111 = qc0.d(r21, (((long) ji2.g(Math.min(r1.a.v.c(), r1.c()))) << 32) | (((long) ji2.g(r1.f)) & 4294967295L));
+        this.l = r111;
+        if (this.d != 3) goto L53;
+    L57:
+        boolean r25 = false;
+    L59:
+        this.k = r25;
+        this.p = r21;
+        goto L60
+    L53:
+        if (((int) (r111 >> 32)) >= r1.c()) goto L55;
+    L58:
+        r25 = true;
+        goto L59
+    L55:
+        if (((int) (r111 & 4294967295L)) >= r1.f) goto L57;
+    L60:
+        return false;
+    L61:
+        qd3 r26 = this.n;
+        if (r26 != null) goto L64;
+    L67:
+        this.o = r24;
+        String r112 = this.a;
+        zs4 r113 = ud3.g0(this.b, r24);
+        oo0 r27 = this.i;
+        r27.getClass();
+        ha1 r28 = this.c;
+        boolean r114 = this.e;
+        u01 r115 = u01.n;
+        r26 = new mc(r112, r113, r115, r115, r28, r27, r114);
+    L68:
+        this.n = r26;
+        long r116 = ji2.w(r21, this.e, this.d, r26.d());
+        boolean r29 = this.e;
+        int r117 = this.d;
+        int r118 = this.f;
+        if (r29 == true) goto L79;
+        if (r117 != 2) goto L73;
+    L77:
+        int r119 = 1;
+    L82:
+        ic r120 = new ic((mc) r26, r119, r117, r116);
+        this.p = r21;
+        int r30 = ji2.g(r120.c());
+        float r31 = r120.f;
+        long r32 = qc0.d(r21, (((long) r30) << 32) | (((long) ji2.g(r31)) & 4294967295L));
+        this.l = r32;
+        if (this.d != 3) goto L86;
+    L90:
+        this.k = r3;
+        this.j = r120;
         return true;
+    L86:
+        if (((int) (r32 >> 32)) >= r120.c()) goto L88;
+    L89:
+        r3 = true;
+        goto L90
+    L88:
+        if (((int) (r32 & 4294967295L)) >= r31) goto L90;
+    L73:
+        if (r117 == 4) goto L77;
+        if (r117 == 5) goto L77;
+    L79:
+        if (r118 < 1) goto L77;
+        r119 = r118;
+        goto L82
+    L64:
+        if (r24 != this.o) goto L67;
+        if (r26.a() == false) goto L68;
+    L18:
+        r19 = nc0.i(r22);
+        goto L19
+    L7:
+        if (Float.isNaN(r10) == true) goto L10;
+        r5 = r9;
+        r17 = 1;
+        goto L11
+    L20:
+        r21 = r22;
+        goto L21
     }
 
     public final void b() {
@@ -130,31 +176,45 @@ public final class rd3 {
         this.n = null;
         this.o = null;
         this.p = qc0.g(0, 0, 0, 0);
-        this.l = 0L;
+        this.l = 0;
         this.k = false;
     }
 
-    public final void c(oo0 oo0Var) {
-        long jA;
-        oo0 oo0Var2 = this.i;
-        if (oo0Var != null) {
-            int i = gz1.b;
-            jA = gz1.a(oo0Var.g(), oo0Var.J());
-        } else {
-            jA = gz1.a;
-        }
-        if (oo0Var2 == null) {
-            this.i = oo0Var;
-            this.h = jA;
-        } else if (oo0Var == null || this.h != jA) {
-            this.i = oo0Var;
-            this.h = jA;
-            this.q = (this.q << 2) | 1;
-            b();
-        }
+    public final void c(oo0 r6) {
+        oo0 r0 = this.i;
+        if (r6 == null) goto L5;
+        int r1 = gz1.b;
+        long r2 = gz1.a(r6.g(), r6.J());
+    L6:
+        if (r0 != null) goto L9;
+        this.i = r6;
+        this.h = r2;
+        return;
+    L9:
+        if (r6 != null) goto L11;
+    L13:
+        this.i = r6;
+        this.h = r2;
+        this.q = (this.q << 2) | 1;
+        b();
+        return;
+    L11:
+        if (this.h != r2) goto L13;
+        return;
+    L5:
+        r2 = gz1.a;
+        goto L6
     }
 
     public final String toString() {
-        return b11.p(b11.u("ParagraphLayoutCache(paragraph=", this.j != null ? "<paragraph>" : "null", ", lastDensity=", gz1.b(this.h), ", history="), this.q, ", constraints=$)");
+        if (this.j == null) goto L5;
+        String r0 = "<paragraph>";
+    L6:
+        String r1 = gz1.b(this.h);
+        long r2 = this.q;
+        return b11.p(b11.u("ParagraphLayoutCache(paragraph=", r0, ", lastDensity=", r1, ", history="), r2, ", constraints=$)");
+    L5:
+        r0 = "null";
+        goto L6
     }
 }

@@ -10,32 +10,35 @@ public final class ik1 implements Iterator, x32 {
     public int p;
     public final int q;
 
-    public ik1(ig4 ig4Var, int i, int i2) {
-        this.n = ig4Var;
-        this.o = i2;
-        this.p = i;
-        this.q = ig4Var.u;
-        if (ig4Var.t) {
-            kg4.f();
-        }
+    public ik1(ig4 r1, int r2, int r3) {
+        this.n = r1;
+        this.o = r3;
+        this.p = r2;
+        this.q = r1.u;
+        if (r1.t == false) goto L6;
+        kg4.f();
+        return;
     }
 
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        return this.p < this.o;
+        if (this.p >= this.o) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // java.util.Iterator
     public final Object next() {
-        ig4 ig4Var = this.n;
-        int i = ig4Var.u;
-        int i2 = this.q;
-        if (i != i2) {
-            kg4.f();
-        }
-        int i3 = this.p;
-        this.p = ig4Var.n[(i3 * 5) + 3] + i3;
-        return new jg4(ig4Var, i3, i2);
+        ig4 r0 = this.n;
+        int r1 = r0.u;
+        int r2 = this.q;
+        if (r1 == r2) goto L5;
+        kg4.f();
+    L5:
+        int r3 = this.p;
+        this.p = r0.n[(r3 * 5) + 3] + r3;
+        return new jg4(r0, r3, r2);
     }
 
     @Override // java.util.Iterator

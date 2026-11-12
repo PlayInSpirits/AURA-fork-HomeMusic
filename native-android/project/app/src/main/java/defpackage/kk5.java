@@ -7,9 +7,9 @@ import java.util.Arrays;
 public final class kk5 extends ik5 {
     public final byte[] g;
 
-    public kk5(byte[] bArr) {
-        super(Arrays.copyOfRange(bArr, 0, 25));
-        this.g = bArr;
+    public kk5(byte[] r3) {
+        super(Arrays.copyOfRange(r3, 0, 25));
+        this.g = r3;
     }
 
     @Override // defpackage.ik5

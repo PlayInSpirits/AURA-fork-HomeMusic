@@ -11,22 +11,22 @@ public final class f82 implements wi2 {
     public final nc3 p;
     public final i03 q;
 
-    public f82(c82 c82Var, ln4 ln4Var) {
-        this.n = c82Var;
-        this.o = ln4Var;
-        this.p = (nc3) c82Var.b.invoke();
+    public f82(c82 r1, ln4 r2) {
+        this.n = r1;
+        this.o = r2;
+        this.p = (nc3) r1.b.invoke();
         f02.a();
         this.q = new i03();
     }
 
     @Override // defpackage.oo0
-    public final float B(int i) {
+    public final float B(int r1) {
         throw null;
     }
 
     @Override // defpackage.oo0
-    public final float D(float f) {
-        return this.o.D(f);
+    public final float D(float r1) {
+        return this.o.D(r1);
     }
 
     @Override // defpackage.oo0
@@ -40,23 +40,23 @@ public final class f82 implements wi2 {
     }
 
     @Override // defpackage.oo0
-    public final float M(float f) {
-        return this.o.M(f);
+    public final float M(float r1) {
+        return this.o.M(r1);
     }
 
     @Override // defpackage.wi2
-    public final vi2 T(int i, int i2, Map map, if1 if1Var, if1 if1Var2) {
-        return this.o.T(i, i2, map, if1Var, if1Var2);
+    public final vi2 T(int r1, int r2, Map r3, if1 r4, if1 r5) {
+        return this.o.T(r1, r2, r3, r4, r5);
     }
 
     @Override // defpackage.oo0
-    public final int V(float f) {
-        return this.o.V(f);
+    public final int V(float r1) {
+        return this.o.V(r1);
     }
 
     @Override // defpackage.oo0
-    public final long Y(long j) {
-        return this.o.Y(j);
+    public final long Y(long r1) {
+        return this.o.Y(r1);
     }
 
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
@@ -69,21 +69,22 @@ public final class f82 implements wi2 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public final List a(int i) {
-        i03 i03Var = this.q;
-        List list = (List) i03Var.b(i);
-        if (list != null) {
-            return list;
-        }
-        Object objC = this.p.c(i);
-        List listM = this.o.m(this.n.a(i, objC), objC);
-        i03Var.i(i, listM);
-        return listM;
+    public final List a(int r4) {
+        i03 r0 = this.q;
+        List r1 = (List) r0.b(r4);
+        if (r1 == null) goto L5;
+        return r1;
+    L5:
+        Object r2 = this.p.c(r4);
+        wf1 r3 = this.n.a(r4, r2);
+        List r5 = this.o.m(r3, r2);
+        r0.i(r4, r5);
+        return r5;
     }
 
     @Override // defpackage.oo0
-    public final float a0(long j) {
-        return this.o.a0(j);
+    public final float a0(long r1) {
+        return this.o.a0(r1);
     }
 
     @Override // defpackage.oo0
@@ -97,27 +98,27 @@ public final class f82 implements wi2 {
     }
 
     @Override // defpackage.oo0
-    public final long h(float f) {
-        return this.o.h(f);
+    public final long h(float r1) {
+        return this.o.h(r1);
     }
 
     @Override // defpackage.oo0
-    public final long i(long j) {
-        return this.o.i(j);
+    public final long i(long r1) {
+        return this.o.i(r1);
     }
 
     @Override // defpackage.oo0
-    public final float o(long j) {
-        return this.o.o(j);
+    public final float o(long r1) {
+        return this.o.o(r1);
     }
 
     @Override // defpackage.wi2
-    public final vi2 v(int i, int i2, Map map, if1 if1Var) {
-        return this.o.v(i, i2, map, if1Var);
+    public final vi2 v(int r1, int r2, Map r3, if1 r4) {
+        return this.o.v(r1, r2, r3, r4);
     }
 
     @Override // defpackage.oo0
-    public final long w(float f) {
-        return this.o.w(f);
+    public final long w(float r1) {
+        return this.o.w(r1);
     }
 }

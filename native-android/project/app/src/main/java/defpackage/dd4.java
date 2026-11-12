@@ -7,24 +7,24 @@ public final class dd4 extends n2 {
     public cz b;
 
     @Override // defpackage.n2
-    public final boolean a(m2 m2Var) {
-        cd4 cd4Var = (cd4) m2Var;
-        if (this.a >= 0) {
-            return false;
-        }
-        long j = cd4Var.v;
-        if (j < cd4Var.w) {
-            cd4Var.w = j;
-        }
-        this.a = j;
+    public final boolean a(m2 r5) {
+        cd4 r6 = (cd4) r5;
+        if (this.a < 0) goto L6;
+        return false;
+    L6:
+        long r0 = r6.v;
+        if (r0 >= r6.w) goto L9;
+        r6.w = r0;
+    L9:
+        this.a = r0;
         return true;
     }
 
     @Override // defpackage.n2
-    public final vd0[] b(m2 m2Var) {
-        long j = this.a;
-        this.a = -1L;
+    public final vd0[] b(m2 r5) {
+        long r0 = this.a;
+        this.a = -1;
         this.b = null;
-        return ((cd4) m2Var).v(j);
+        return ((cd4) r5).v(r0);
     }
 }

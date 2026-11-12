@@ -7,52 +7,62 @@ import java.util.Objects;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class on2 implements er2 {
+    public final Object n;
     public final ms2 o;
+    public final ArrayList p;
     public final /* synthetic */ pn2 q;
-    public final Object n = new Object();
-    public final ArrayList p = new ArrayList();
 
-    public on2(pn2 pn2Var, ms2 ms2Var) {
-        this.q = pn2Var;
-        this.o = ms2Var;
+    public on2(pn2 r1, ms2 r2) {
+        this.q = r1;
+        this.n = new Object();
+        this.p = new ArrayList();
+        this.o = r2;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof on2) {
-            return Objects.equals(this.o, ((on2) obj).o);
-        }
+    public final boolean equals(Object r2) {
+        if (this != r2) goto L6;
+        return true;
+    L6:
+        if ((r2 instanceof on2) == true) goto L10;
         return false;
+    L10:
+        return Objects.equals(this.o, ((on2) r2).o);
     }
 
     public final int hashCode() {
-        return Objects.hash(this.o);
+        return Objects.hash(new Object[]{this.o});
     }
 
     @Override // defpackage.er2
-    public final void z(int i, String str, jn2 jn2Var) {
-        Bundle bundle = jn2Var != null ? jn2Var.a : null;
-        if (bundle == null) {
-            bundle = Bundle.EMPTY;
-        }
-        Bundle bundle2 = bundle;
-        ms2 ms2Var = this.o;
-        if (ms2Var == null) {
-            kf2.n("remoteUserInfo cannot be null in notifyChildrenChanged");
-            return;
-        }
-        if (str == null) {
-            kf2.n("parentId cannot be null in notifyChildrenChanged");
-        } else {
-            if (bundle2 == null) {
-                kf2.n("options cannot be null in notifyChildrenChanged");
-                return;
-            }
-            bq4 bq4Var = this.q.n;
-            bq4Var.getClass();
-            ((pn2) bq4Var.q).t.post(new sz(bq4Var, ms2Var, str, bundle2, 1));
-        }
+    public final void z(int r7, String r8, jn2 r9) {
+        if (r9 == null) goto L4;
+        Bundle r10 = r9.a;
+    L5:
+        if (r10 == null) goto L7;
+    L6:
+        Bundle r4 = r10;
+        ms2 r2 = this.o;
+        if (r2 == null) goto L18;
+        if (r8 == null) goto L16;
+        if (r4 == null) goto L14;
+        bq4 r1 = this.q.n;
+        r1.getClass();
+        ((pn2) r1.q).t.post(new sz(r1, r2, r8, r4, 1));
+        return;
+    L14:
+        kf2.n("options cannot be null in notifyChildrenChanged");
+        return;
+    L16:
+        kf2.n("parentId cannot be null in notifyChildrenChanged");
+        return;
+    L18:
+        kf2.n("remoteUserInfo cannot be null in notifyChildrenChanged");
+        return;
+    L7:
+        r10 = Bundle.EMPTY;
+        goto L6
+    L4:
+        r10 = null;
+        goto L5
     }
 }

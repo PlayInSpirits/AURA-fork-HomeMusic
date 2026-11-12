@@ -13,45 +13,48 @@ public final /* synthetic */ class zr1 implements if1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ HubFragment o;
 
-    public /* synthetic */ zr1(HubFragment hubFragment, int i) {
-        this.n = i;
-        this.o = hubFragment;
+    public /* synthetic */ zr1(HubFragment r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object obj) {
-        int i = this.n;
-        j15 j15Var = j15.a;
-        HubFragment hubFragment = this.o;
-        switch (i) {
-            case 0:
-                boolean zBooleanValue = ((Boolean) obj).booleanValue();
-                List list = HubFragment.y0;
-                hubFragment.l0(!zBooleanValue);
-                return j15Var;
-            case 1:
-                String str = (String) obj;
-                List list2 = HubFragment.y0;
-                if (str != null) {
-                    k03 k03Var = js1.a;
-                    if (((String) k03Var.d()) != null) {
-                        k03Var.k(null);
-                    }
-                    hubFragment.h0(str, false);
-                }
-                return j15Var;
-            default:
-                WaveOut waveOut = (WaveOut) obj;
-                List list3 = HubFragment.y0;
-                waveOut.getClass();
-                WeakReference weakReference = b.a;
-                MainActivity mainActivity = hubFragment.m0;
-                if (mainActivity != null) {
-                    b.i(mainActivity, waveOut);
-                    return j15Var;
-                }
-                h12.Q("activity");
-                throw null;
-        }
+    public final Object invoke(Object r5) {
+        int r0 = this.n;
+        j15 r2 = j15.a;
+        HubFragment r4 = this.o;
+        switch(r0) {
+            case 0: goto L17;
+            case 1: goto L10;
+            default: goto L4;
+        };
+    L4:
+        WaveOut r6 = (WaveOut) r5;
+        List r1 = HubFragment.y0;
+        r6.getClass();
+        WeakReference r3 = b.a;
+        MainActivity r7 = r4.m0;
+        if (r7 == null) goto L8;
+        b.i(r7, r6);
+        return r2;
+    L8:
+        h12.Q("activity");
+        throw null;
+    L10:
+        String r8 = (String) r5;
+        List r9 = HubFragment.y0;
+        if (r8 == null) goto L16;
+        k03 r10 = js1.a;
+        if (((String) r10.d()) == null) goto L15;
+        r10.k(null);
+    L15:
+        r4.h0(r8, false);
+    L16:
+        return r2;
+    L17:
+        boolean r11 = ((Boolean) r5).booleanValue();
+        List r12 = HubFragment.y0;
+        r4.l0(!r11);
+        return r2;
     }
 }

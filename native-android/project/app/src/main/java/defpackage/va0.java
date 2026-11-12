@@ -4,7 +4,7 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class va0 extends xa0 {
     @Override // defpackage.xa0
-    public final long a(long j) {
-        return j;
+    public final long a(long r1) {
+        return r1;
     }
 }

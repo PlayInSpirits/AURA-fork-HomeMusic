@@ -38,29 +38,29 @@ public final class sc1 {
     public final RecyclerView v;
     public final View w;
 
-    public sc1(CoordinatorLayout coordinatorLayout, RecyclerView recyclerView, MaterialToolbar materialToolbar, RecyclerView recyclerView2, TextView textView, ImageView imageView, LinearLayout linearLayout, LinearLayout linearLayout2, Button button, Button button2, LinearLayout linearLayout3, TextView textView2, TextView textView3, View view, CollapsingToolbarLayout collapsingToolbarLayout, LinearLayout linearLayout4, TextView textView4, ShimmerFrameLayout shimmerFrameLayout, RecyclerView recyclerView3, TextView textView5, LinearLayout linearLayout5, RecyclerView recyclerView4, View view2) {
-        this.a = coordinatorLayout;
-        this.b = recyclerView;
-        this.c = materialToolbar;
-        this.d = recyclerView2;
-        this.e = textView;
-        this.f = imageView;
-        this.g = linearLayout;
-        this.h = linearLayout2;
-        this.i = button;
-        this.j = button2;
-        this.k = linearLayout3;
-        this.l = textView2;
-        this.m = textView3;
-        this.n = view;
-        this.o = collapsingToolbarLayout;
-        this.p = linearLayout4;
-        this.q = textView4;
-        this.r = shimmerFrameLayout;
-        this.s = recyclerView3;
-        this.t = textView5;
-        this.u = linearLayout5;
-        this.v = recyclerView4;
-        this.w = view2;
+    public sc1(CoordinatorLayout r1, RecyclerView r2, MaterialToolbar r3, RecyclerView r4, TextView r5, ImageView r6, LinearLayout r7, LinearLayout r8, Button r9, Button r10, LinearLayout r11, TextView r12, TextView r13, View r14, CollapsingToolbarLayout r15, LinearLayout r16, TextView r17, ShimmerFrameLayout r18, RecyclerView r19, TextView r20, LinearLayout r21, RecyclerView r22, View r23) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
+        this.j = r10;
+        this.k = r11;
+        this.l = r12;
+        this.m = r13;
+        this.n = r14;
+        this.o = r15;
+        this.p = r16;
+        this.q = r17;
+        this.r = r18;
+        this.s = r19;
+        this.t = r20;
+        this.u = r21;
+        this.v = r22;
+        this.w = r23;
     }
 }

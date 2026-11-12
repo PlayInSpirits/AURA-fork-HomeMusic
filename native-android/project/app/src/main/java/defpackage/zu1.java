@@ -11,9 +11,9 @@ public final class zu1 implements sh0 {
     public bv3 p;
     public k14 q;
 
-    public zu1(o83 o83Var, String str) {
-        this.n = o83Var;
-        this.o = str;
+    public zu1(o83 r1, String r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // defpackage.sh0
@@ -23,49 +23,50 @@ public final class zu1 implements sh0 {
 
     @Override // defpackage.sh0
     public final void c() {
-        k14 k14Var = this.q;
-        if (k14Var != null) {
-            k14Var.close();
-        }
+        k14 r0 = this.q;
+        if (r0 == null) goto L6;
+        r0.close();
+        return;
     }
 
     @Override // defpackage.sh0
     public final void cancel() {
-        bv3 bv3Var = this.p;
-        if (bv3Var != null) {
-            bv3Var.cancel();
-        }
+        bv3 r0 = this.p;
+        if (r0 == null) goto L6;
+        r0.cancel();
+        return;
     }
 
     @Override // defpackage.sh0
-    public final void d(eq3 eq3Var, rh0 rh0Var) {
-        try {
-            o83 o83Var = this.n;
-            nz3 nz3Var = new nz3();
-            nz3Var.d(this.o);
-            oz3 oz3Var = new oz3(nz3Var);
-            o83Var.getClass();
-            bv3 bv3Var = new bv3(o83Var, oz3Var);
-            this.p = bv3Var;
-            k14 k14VarC = bv3Var.c();
-            this.q = k14VarC;
-            if (!k14VarC.C) {
-                rh0Var.b(new IOException("Request failed with status code: " + this.q.q));
-            } else {
-                n14 n14Var = k14VarC.t;
-                if (n14Var == null) {
-                    rh0Var.b(new IOException("Image response has no body"));
-                } else {
-                    rh0Var.f(n14Var.byteStream());
-                }
-            }
-        } catch (IOException e) {
-            e = e;
-            rh0Var.b(e);
-        } catch (IllegalArgumentException e2) {
-            e = e2;
-            rh0Var.b(e);
-        }
+    public final void d(eq3 r4, rh0 r5) {
+        o83 r0 = this.n;     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        nz3 r1 = new nz3();     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        r1.d(this.o);     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        oz3 r2 = new oz3(r1);     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        r0.getClass();     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        bv3 r3 = new bv3(r0, r2);     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        this.p = r3;     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        k14 r6 = r3.c();     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        this.q = r6;     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        if (r6.C == true) goto L11;
+        r5.b(new IOException("Request failed with status code: " + this.q.q));     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        return;
+    L11:
+        n14 r7 = r6.t;     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        if (r7 != null) goto L15;
+        r5.b(new IOException("Image response has no body"));     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        return;
+    L15:
+        r5.f(r7.byteStream());     // Catch: IllegalArgumentException -> L7 IOException -> L9
+        return;
+    L9:
+        e = e;
+    L17:
+        r5.b(e);
+        return;
+    L7:
+        e = e;
+        goto L17
     }
 
     @Override // defpackage.sh0

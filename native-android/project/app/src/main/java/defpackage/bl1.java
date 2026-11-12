@@ -10,67 +10,75 @@ public final class bl1 implements mz0 {
     public final jv3 a;
     public final boolean b;
     public final boolean c;
+    public final n41 d;
+    public final n41 e;
+    public final n41 f;
     public long g;
+    public final boolean[] h;
     public String i;
     public wv4 j;
     public al1 k;
     public boolean l;
+    public long m;
     public boolean n;
-    public final boolean[] h = new boolean[3];
-    public final n41 d = new n41(7);
-    public final n41 e = new n41(8);
-    public final n41 f = new n41(6);
-    public long m = -9223372036854775807L;
-    public final be3 o = new be3();
+    public final be3 o;
 
-    public bl1(jv3 jv3Var, boolean z, boolean z2) {
-        this.a = jv3Var;
-        this.b = z;
-        this.c = z2;
+    public bl1(jv3 r1, boolean r2, boolean r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.h = new boolean[3];
+        this.d = new n41(7);
+        this.e = new n41(8);
+        this.f = new n41(6);
+        this.m = -9223372036854775807L;
+        this.o = new be3();
     }
 
     @Override // defpackage.mz0
-    public final void a(be3 be3Var) {
-        int i;
+    public final void a(be3 r14) {
         this.j.getClass();
-        String str = f35.a;
-        int i2 = be3Var.b;
-        int i3 = be3Var.c;
-        byte[] bArr = be3Var.a;
-        this.g += (long) be3Var.a();
-        this.j.e(be3Var.a(), be3Var);
-        while (true) {
-            int iO = uc5.o(bArr, i2, i3, this.h);
-            if (iO == i3) {
-                this.g(bArr, i2, i3);
-                return;
-            }
-            int i4 = bArr[iO + 3] & 31;
-            if (iO <= 0 || bArr[iO - 1] != 0) {
-                i = 3;
-            } else {
-                iO--;
-                i = 4;
-            }
-            int i5 = iO - i2;
-            if (i5 > 0) {
-                this.g(bArr, i2, iO);
-            }
-            int i6 = i3 - iO;
-            long j = this.g - ((long) i6);
-            bl1 bl1Var = this;
-            bl1Var.b(i6, i5 < 0 ? -i5 : 0, j, this.m);
-            bl1Var.h(i4, j, bl1Var.m);
-            i2 = iO + i;
-            this = bl1Var;
-        }
+        String r0 = f35.a;
+        int r1 = r14.b;
+        int r2 = r14.c;
+        byte[] r3 = r14.a;
+        this.g += (long) r14.a();
+        this.j.e(r14.a(), r14);
+    L3:
+        int r15 = uc5.o(r3, r1, r2, this.h);
+        if (r15 == r2) goto L5;
+        int r5 = r3[r15 + 3] & 31;
+        if (r15 > 0) goto L10;
+    L12:
+        int r4 = 3;
+    L13:
+        int r6 = r15 - r1;
+        if (r6 <= 0) goto L16;
+        this.g(r3, r1, r15);
+    L16:
+        int r7 = r2 - r15;
+        long r9 = this.g - ((long) r7);
+        if (r6 >= 0) goto L20;
+        int r8 = -r6;
+    L21:
+        bl1 r10 = this;
+        r10.b(r7, r8, r9, this.m);
+        r10.h(r5, r9, r10.m);
+        r1 = r15 + r4;
+        bl1 this = r10;
+        goto L3
+    L20:
+        r8 = 0;
+        goto L21
+    L10:
+        if (r3[r15 - 1] != 0) goto L12;
+        r15 = r15 - 1;
+        r4 = 4;
+        goto L13
+    L5:
+        this.g(r3, r1, r2);
     }
 
-    /* JADX WARN: Code duplicated, block: B:65:0x01f3  */
-    /* JADX WARN: Code duplicated, block: B:66:0x01f5  */
-    /* JADX WARN: Code duplicated, block: B:70:0x020b  */
-    /* JADX WARN: Code duplicated, block: B:73:0x0212  */
-    /* JADX WARN: Code duplicated, block: B:92:0x024f  */
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
     java.lang.UnsupportedOperationException: ArgType.getObject(), call class: class jadx.core.dex.instructions.args.ArgType$PrimitiveArg
     	at jadx.core.dex.instructions.args.ArgType.getObject(ArgType.java:596)
@@ -81,179 +89,188 @@ public final class bl1 implements mz0 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public final void b(int i, int i2, long j, long j2) {
-        long j3;
-        int i3;
-        long j4;
-        long j5;
-        boolean z;
-        boolean z2;
-        int i4;
-        int i5;
-        int i6;
-        int i7;
-        boolean z3;
-        c6 c6Var = (c6) this.a.p;
-        if (!this.l || this.k.c) {
-            n41 n41Var = this.d;
-            n41Var.d(i2);
-            n41 n41Var2 = this.e;
-            n41Var2.d(i2);
-            boolean z4 = this.l;
-            boolean z5 = n41Var.e;
-            if (z4) {
-                if (z5) {
-                    u13 u13VarL = uc5.L((byte[]) n41Var.f, 3, n41Var.c);
-                    c6Var.x(u13VarL.s);
-                    this.k.d.append(u13VarL.d, u13VarL);
-                    n41Var.f();
-                } else if (n41Var2.e) {
-                    h00 h00Var = new h00((byte[]) n41Var2.f, 4, n41Var2.c);
-                    int iM = h00Var.m();
-                    int iM2 = h00Var.m();
-                    h00Var.s();
-                    this.k.e.append(iM, new t13(iM, iM2, h00Var.h()));
-                    n41Var2.f();
-                }
-            } else if (z5 && n41Var2.e) {
-                ArrayList arrayList = new ArrayList();
-                arrayList.add(Arrays.copyOf((byte[]) n41Var.f, n41Var.c));
-                arrayList.add(Arrays.copyOf((byte[]) n41Var2.f, n41Var2.c));
-                u13 u13VarL2 = uc5.L((byte[]) n41Var.f, 3, n41Var.c);
-                int i8 = u13VarL2.s;
-                h00 h00Var2 = new h00((byte[]) n41Var2.f, 4, n41Var2.c);
-                int iM3 = h00Var2.m();
-                int iM4 = h00Var2.m();
-                h00Var2.s();
-                t13 t13Var = new t13(iM3, iM4, h00Var2.h());
-                int i9 = u13VarL2.a;
-                int i10 = u13VarL2.b;
-                int i11 = u13VarL2.c;
-                byte[] bArr = i40.a;
-                String str = String.format("avc1.%02X%02X%02X", Integer.valueOf(i9), Integer.valueOf(i10), Integer.valueOf(i11));
-                wv4 wv4Var = this.j;
-                sb1 sb1Var = new sb1();
-                sb1Var.a = this.i;
-                sb1Var.l = lw2.m("video/mp2t");
-                sb1Var.m = lw2.m("video/avc");
-                sb1Var.j = str;
-                sb1Var.t = u13VarL2.e;
-                sb1Var.u = u13VarL2.f;
-                sb1Var.C = new c50(u13VarL2.p, u13VarL2.q, u13VarL2.r, null, u13VarL2.h + 8, u13VarL2.i + 8);
-                sb1Var.z = u13VarL2.g;
-                sb1Var.p = arrayList;
-                sb1Var.o = i8;
-                f34.l(sb1Var, wv4Var);
-                this.l = true;
-                c6Var.x(i8);
-                this.k.d.append(u13VarL2.d, u13VarL2);
-                this.k.e.append(iM3, t13Var);
-                n41Var.f();
-                n41Var2.f();
-            }
-        }
-        n41 n41Var3 = this.f;
-        if (n41Var3.d(i2)) {
-            int iB0 = uc5.b0(n41Var3.c, (byte[]) n41Var3.f);
-            byte[] bArr2 = (byte[]) n41Var3.f;
-            be3 be3Var = this.o;
-            be3Var.L(iB0, bArr2);
-            be3Var.N(4);
-            c6Var.a(j2, be3Var);
-        }
-        al1 al1Var = this.k;
-        boolean z6 = this.l;
-        if (al1Var.i == 9) {
-            if (z6 && al1Var.o) {
-                j3 = al1Var.j;
-                i3 = i + ((int) (j - j3));
-                j4 = al1Var.q;
-                if (j4 != -9223372036854775807L) {
-                    j5 = al1Var.p;
-                    if (j3 != j5) {
-                        al1Var.a.a(j4, al1Var.r ? 1 : 0, (int) (j3 - j5), i3, null);
-                    }
-                }
-            }
-            al1Var.p = al1Var.j;
-            al1Var.q = al1Var.l;
-            al1Var.r = false;
-            al1Var.o = true;
-        } else if (al1Var.c) {
-            zk1 zk1Var = al1Var.n;
-            zk1 zk1Var2 = al1Var.m;
-            if (zk1Var.a) {
-                if (zk1Var2.a) {
-                    u13 u13Var = zk1Var.c;
-                    u13Var.getClass();
-                    u13 u13Var2 = zk1Var2.c;
-                    u13Var2.getClass();
-                    int i12 = u13Var2.m;
-                    if (zk1Var.f != zk1Var2.f || zk1Var.g != zk1Var2.g || zk1Var.h != zk1Var2.h || ((zk1Var.i && zk1Var2.i && zk1Var.j != zk1Var2.j) || (((i5 = zk1Var.d) != (i6 = zk1Var2.d) && (i5 == 0 || i6 == 0)) || (((i7 = u13Var.m) == 0 && i12 == 0 && (zk1Var.m != zk1Var2.m || zk1Var.n != zk1Var2.n)) || ((i7 == 1 && i12 == 1 && (zk1Var.o != zk1Var2.o || zk1Var.p != zk1Var2.p)) || (z3 = zk1Var.k) != zk1Var2.k || (z3 && zk1Var.l != zk1Var2.l)))))) {
-                        if (z6) {
-                            j3 = al1Var.j;
-                            i3 = i + ((int) (j - j3));
-                            j4 = al1Var.q;
-                            if (j4 != -9223372036854775807L) {
-                                j5 = al1Var.p;
-                                if (j3 != j5) {
-                                    al1Var.a.a(j4, al1Var.r ? 1 : 0, (int) (j3 - j5), i3, null);
-                                }
-                            }
-                        }
-                        al1Var.p = al1Var.j;
-                        al1Var.q = al1Var.l;
-                        al1Var.r = false;
-                        al1Var.o = true;
-                    }
-                } else {
-                    if (z6) {
-                        j3 = al1Var.j;
-                        i3 = i + ((int) (j - j3));
-                        j4 = al1Var.q;
-                        if (j4 != -9223372036854775807L) {
-                            j5 = al1Var.p;
-                            if (j3 != j5) {
-                                al1Var.a.a(j4, al1Var.r ? 1 : 0, (int) (j3 - j5), i3, null);
-                            }
-                        }
-                    }
-                    al1Var.p = al1Var.j;
-                    al1Var.q = al1Var.l;
-                    al1Var.r = false;
-                    al1Var.o = true;
-                }
-            }
-        }
-        if (al1Var.b) {
-            zk1 zk1Var3 = al1Var.n;
-            z = zk1Var3.b && ((i4 = zk1Var3.e) == 7 || i4 == 2);
-        } else {
-            z = al1Var.s;
-        }
-        boolean z7 = al1Var.r;
-        int i13 = al1Var.i;
-        if (i13 == 5) {
-            z2 = true;
-        } else if (z) {
-            z2 = true;
-            if (i13 != 1) {
-                z2 = false;
-            }
-        } else {
-            z2 = false;
-        }
-        boolean z8 = z7 | z2;
-        al1Var.r = z8;
-        al1Var.i = 24;
-        if (z8) {
-            this.n = false;
-        }
+    public final void b(int r23, int r24, long r25, long r27) {
+        c6 r2 = (c6) this.a.p;
+        if (this.l == true) goto L5;
+    L6:
+        n41 r3 = this.d;
+        r3.d(r24);
+        n41 r6 = this.e;
+        r6.d(r24);
+        boolean r7 = this.l;
+        boolean r8 = r3.e;
+        if (r7 == true) goto L12;
+        if (r8 == true) goto L10;
+    L17:
+        n41 r4 = this.f;
+        if (r4.d(r24) == false) goto L20;
+        int r1 = uc5.b0(r4.c, (byte[]) r4.f);
+        byte[] r5 = (byte[]) r4.f;
+        be3 r9 = this.o;
+        r9.L(r1, r5);
+        r9.N(4);
+        r2.a(r27, r9);
+    L20:
+        al1 r10 = this.k;
+        boolean r11 = this.l;
+        if (r10.i != 9) goto L23;
+    L65:
+        if (r11 == true) goto L67;
+    L74:
+        r10.p = r10.j;
+        r10.q = r10.l;
+        r10.r = false;
+        r10.o = true;
+    L76:
+        if (r10.b == false) goto L85;
+        zk1 r12 = r10.n;
+        if (r12.b == false) goto L84;
+        int r13 = r12.e;
+        if (r13 != 7) goto L82;
+    L83:
+        boolean r14 = true;
+    L86:
+        boolean r15 = r10.r;
+        int r16 = r10.i;
+        if (r16 == 5) goto L93;
+        if (r14 == false) goto L92;
+        boolean r17 = true;
+        if (r16 != 1) goto L92;
+    L94:
+        boolean r18 = r15 | r17;
+        r10.r = r18;
+        r10.i = 24;
+        if (r18 == false) goto L98;
+        this.n = false;
+        return;
+    L98:
+        return;
+    L92:
+        r17 = false;
+        goto L94
+    L93:
+        r17 = true;
+        goto L94
+    L82:
+        if (r13 == 2) goto L83;
+    L84:
+        r14 = false;
+        goto L86
+    L85:
+        r14 = r10.s;
+        goto L86
+    L67:
+        if (r10.o == false) goto L74;
+        long r19 = r10.j;
+        int r110 = r23 + ((int) (r25 - r19));
+        long r20 = r10.q;
+        if (r20 == (-9223372036854775807L)) goto L74;
+        long r21 = r10.p;
+        if (r19 == r21) goto L74;
+        int r111 = (int) (r19 - r21);
+        r10.a.a(r20, r10.r ? 1 : 0, r111, r110, null);
+        goto L74
+    L23:
+        if (r10.c == false) goto L76;
+        zk1 r22 = r10.n;
+        zk1 r26 = r10.m;
+        if (r22.a == false) goto L76;
+        if (r26.a == false) goto L65;
+        u13 r28 = r22.c;
+        r28.getClass();
+        u13 r29 = r26.c;
+        r29.getClass();
+        int r30 = r29.m;
+        if (r22.f != r26.f) goto L65;
+        if (r22.g != r26.g) goto L65;
+        if (r22.h != r26.h) goto L65;
+        if (r22.i == true) goto L39;
+    L42:
+        int r31 = r22.d;
+        int r32 = r26.d;
+        if (r31 == r32) goto L46;
+        if (r31 == 0) goto L65;
+        if (r32 == 0) goto L65;
+    L46:
+        int r33 = r28.m;
+        if (r33 != 0) goto L54;
+        if (r30 != 0) goto L54;
+        if (r22.m != r26.m) goto L65;
+        if (r22.n != r26.n) goto L65;
+    L54:
+        if (r33 != 1) goto L60;
+        if (r30 != 1) goto L60;
+        if (r22.o != r26.o) goto L65;
+        if (r22.p != r26.p) goto L65;
+    L60:
+        boolean r34 = r22.k;
+        if (r34 != r26.k) goto L65;
+        if (r34 == false) goto L76;
+        if (r22.l == r26.l) goto L76;
+    L39:
+        if (r26.i == false) goto L42;
+        if (r22.j != r26.j) goto L65;
+    L10:
+        if (r6.e == false) goto L17;
+        ArrayList r35 = new ArrayList();
+        r35.add(Arrays.copyOf((byte[]) r3.f, r3.c));
+        r35.add(Arrays.copyOf((byte[]) r6.f, r6.c));
+        u13 r36 = uc5.L((byte[]) r3.f, 3, r3.c);
+        int r37 = r36.s;
+        h00 r112 = new h00((byte[]) r6.f, 4, r6.c);
+        int r113 = r112.m();
+        int r114 = r112.m();
+        r112.s();
+        t13 r115 = new t13(r113, r114, r112.h());
+        int r116 = r36.a;
+        int r117 = r36.b;
+        int r118 = r36.c;
+        byte[] r119 = i40.a;
+        String r120 = String.format("avc1.%02X%02X%02X", new Object[]{Integer.valueOf(r116), Integer.valueOf(r117), Integer.valueOf(r118)});
+        wv4 r121 = this.j;
+        sb1 r122 = new sb1();
+        r122.a = this.i;
+        r122.l = lw2.m("video/mp2t");
+        r122.m = lw2.m("video/avc");
+        r122.j = r120;
+        r122.t = r36.e;
+        r122.u = r36.f;
+        r122.C = new c50(r36.p, r36.q, r36.r, null, r36.h + 8, r36.i + 8);
+        r122.z = r36.g;
+        r122.p = r35;
+        r122.o = r37;
+        f34.l(r122, r121);
+        this.l = true;
+        r2.x(r37);
+        this.k.d.append(r36.d, r36);
+        this.k.e.append(r113, r115);
+        r3.f();
+        r6.f();
+        goto L17
+    L12:
+        if (r8 == false) goto L15;
+        u13 r38 = uc5.L((byte[]) r3.f, 3, r3.c);
+        r2.x(r38.s);
+        this.k.d.append(r38.d, r38);
+        r3.f();
+        goto L17
+    L15:
+        if (r6.e == false) goto L17;
+        h00 r39 = new h00((byte[]) r6.f, 4, r6.c);
+        int r40 = r39.m();
+        int r41 = r39.m();
+        r39.s();
+        this.k.e.append(r40, new t13(r40, r41, r39.h()));
+        r6.f();
+        goto L17
+    L5:
+        if (this.k.c == false) goto L17;
+        goto L6
     }
 
     @Override // defpackage.mz0
     public final void c() {
-        this.g = 0L;
+        this.g = 0;
         this.n = false;
         this.m = -9223372036854775807L;
         uc5.i(this.h);
@@ -261,333 +278,268 @@ public final class bl1 implements mz0 {
         this.e.f();
         this.f.f();
         ((c6) this.a.p).j(0);
-        al1 al1Var = this.k;
-        if (al1Var != null) {
-            al1Var.k = false;
-            al1Var.o = false;
-            zk1 zk1Var = al1Var.n;
-            zk1Var.b = false;
-            zk1Var.a = false;
-        }
+        al1 r3 = this.k;
+        if (r3 == null) goto L6;
+        r3.k = false;
+        r3.o = false;
+        zk1 r4 = r3.n;
+        r4.b = false;
+        r4.a = false;
+        return;
     }
 
     @Override // defpackage.mz0
-    public final void d(boolean z) {
+    public final void d(boolean r8) {
         this.j.getClass();
-        String str = f35.a;
-        if (z) {
-            ((c6) this.a.p).j(0);
-            b(0, 0, this.g, this.m);
-            h(9, this.g, this.m);
-            b(0, 0, this.g, this.m);
-        }
+        String r1 = f35.a;
+        if (r8 == false) goto L6;
+        ((c6) this.a.p).j(0);
+        b(0, 0, this.g, this.m);
+        h(9, this.g, this.m);
+        b(0, 0, this.g, this.m);
+        return;
     }
 
     @Override // defpackage.mz0
-    public final void e(int i, long j) {
-        this.m = j;
-        this.n = ((i & 2) != 0) | this.n;
+    public final void e(int r1, long r2) {
+        this.m = r2;
+        boolean r3 = this.n;
+        if ((r1 & 2) == 0) goto L5;
+        boolean r4 = true;
+    L6:
+        this.n = r4 | r3;
+        return;
+    L5:
+        r4 = false;
+        goto L6
     }
 
     @Override // defpackage.mz0
-    public final void f(m51 m51Var, sy4 sy4Var) {
-        sy4Var.a();
-        sy4Var.b();
-        this.i = sy4Var.e;
-        sy4Var.b();
-        wv4 wv4VarT = m51Var.t(sy4Var.d, 2);
-        this.j = wv4VarT;
-        this.k = new al1(wv4VarT, this.b, this.c);
-        this.a.a(m51Var, sy4Var);
+    public final void f(m51 r5, sy4 r6) {
+        r6.a();
+        r6.b();
+        this.i = r6.e;
+        r6.b();
+        wv4 r0 = r5.t(r6.d, 2);
+        this.j = r0;
+        this.k = new al1(r0, this.b, this.c);
+        this.a.a(r5, r6);
     }
 
-    /* JADX WARN: Code duplicated, block: B:107:? A[RETURN, SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:108:? A[RETURN, SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:58:0x0102  */
-    /* JADX WARN: Code duplicated, block: B:59:0x0104  */
-    /* JADX WARN: Code duplicated, block: B:61:0x0107  */
-    /* JADX WARN: Code duplicated, block: B:64:0x010e  */
-    /* JADX WARN: Code duplicated, block: B:65:0x0113  */
-    /* JADX WARN: Code duplicated, block: B:68:0x0118  */
-    /* JADX WARN: Code duplicated, block: B:71:0x011f  */
-    /* JADX WARN: Code duplicated, block: B:81:0x0139  */
-    public final void g(byte[] bArr, int i, int i2) {
-        boolean zH;
-        boolean zH2;
-        boolean z;
-        boolean z2;
-        int iM;
-        int i3;
-        int i4;
-        int i5;
-        int iN;
-        int iN2;
-        if (!this.l || this.k.c) {
-            this.d.a(bArr, i, i2);
-            this.e.a(bArr, i, i2);
-        }
-        this.f.a(bArr, i, i2);
-        al1 al1Var = this.k;
-        SparseArray sparseArray = al1Var.e;
-        h00 h00Var = al1Var.f;
-        if (al1Var.k) {
-            int i6 = i2 - i;
-            byte[] bArr2 = al1Var.g;
-            int length = bArr2.length;
-            int i7 = al1Var.h + i6;
-            if (length < i7) {
-                al1Var.g = Arrays.copyOf(bArr2, i7 * 2);
-            }
-            System.arraycopy(bArr, i, al1Var.g, al1Var.h, i6);
-            int i8 = al1Var.h + i6;
-            al1Var.h = i8;
-            h00Var.b = al1Var.g;
-            h00Var.d = 0;
-            h00Var.c = i8;
-            h00Var.e = 0;
-            h00Var.a();
-            if (h00Var.d(8)) {
-                h00Var.s();
-                int i9 = h00Var.i(2);
-                h00Var.t(5);
-                if (h00Var.e()) {
-                    h00Var.m();
-                    if (h00Var.e()) {
-                        int iM2 = h00Var.m();
-                        if (!al1Var.c) {
-                            al1Var.k = false;
-                            zk1 zk1Var = al1Var.n;
-                            zk1Var.e = iM2;
-                            zk1Var.b = true;
-                            return;
-                        }
-                        if (h00Var.e()) {
-                            int iM3 = h00Var.m();
-                            if (sparseArray.indexOfKey(iM3) < 0) {
-                                al1Var.k = false;
-                                return;
-                            }
-                            t13 t13Var = (t13) sparseArray.get(iM3);
-                            SparseArray sparseArray2 = al1Var.d;
-                            int i10 = t13Var.a;
-                            boolean z3 = t13Var.b;
-                            u13 u13Var = (u13) sparseArray2.get(i10);
-                            boolean z4 = u13Var.j;
-                            int i11 = u13Var.n;
-                            int i12 = u13Var.l;
-                            if (z4) {
-                                if (!h00Var.d(2)) {
-                                    return;
-                                } else {
-                                    h00Var.t(2);
-                                }
-                            }
-                            if (h00Var.d(i12)) {
-                                int i13 = h00Var.i(i12);
-                                if (!u13Var.k) {
-                                    if (h00Var.d(1)) {
-                                        zH = h00Var.h();
-                                        if (!zH) {
-                                            zH2 = false;
-                                        } else {
-                                            if (!h00Var.d(1)) {
-                                                return;
-                                            }
-                                            zH2 = h00Var.h();
-                                            z = true;
-                                        }
-                                        if (al1Var.i == 5) {
-                                            z2 = true;
-                                        } else {
-                                            z2 = false;
-                                        }
-                                        if (z2) {
-                                            iM = 0;
-                                        } else if (!h00Var.e()) {
-                                            return;
-                                        } else {
-                                            iM = h00Var.m();
-                                        }
-                                        i3 = u13Var.m;
-                                        if (i3 != 0) {
-                                            if (h00Var.d(i11)) {
-                                                i4 = h00Var.i(i11);
-                                                if (!z3 && !zH) {
-                                                    if (!h00Var.e()) {
-                                                        return;
-                                                    }
-                                                    iN2 = h00Var.n();
-                                                    i5 = 0;
-                                                }
-                                                iN = 0;
-                                                zk1 zk1Var2 = al1Var.n;
-                                                zk1Var2.c = u13Var;
-                                                zk1Var2.d = i9;
-                                                zk1Var2.e = iM2;
-                                                zk1Var2.f = i13;
-                                                zk1Var2.g = iM3;
-                                                zk1Var2.h = zH;
-                                                zk1Var2.i = z;
-                                                zk1Var2.j = zH2;
-                                                zk1Var2.k = z2;
-                                                zk1Var2.l = iM;
-                                                zk1Var2.m = i4;
-                                                zk1Var2.n = iN2;
-                                                zk1Var2.o = i5;
-                                                zk1Var2.p = iN;
-                                                zk1Var2.a = true;
-                                                zk1Var2.b = true;
-                                                al1Var.k = false;
-                                            }
-                                            return;
-                                        }
-                                        if (i3 == 1 || u13Var.o) {
-                                            i4 = 0;
-                                        } else {
-                                            if (!h00Var.e()) {
-                                                return;
-                                            }
-                                            int iN3 = h00Var.n();
-                                            if (!z3 || zH) {
-                                                i5 = iN3;
-                                                i4 = 0;
-                                                iN2 = 0;
-                                                iN = 0;
-                                            } else {
-                                                if (!h00Var.e()) {
-                                                    return;
-                                                }
-                                                iN = h00Var.n();
-                                                iN2 = 0;
-                                                i5 = iN3;
-                                                i4 = 0;
-                                            }
-                                        }
-                                        zk1 zk1Var3 = al1Var.n;
-                                        zk1Var3.c = u13Var;
-                                        zk1Var3.d = i9;
-                                        zk1Var3.e = iM2;
-                                        zk1Var3.f = i13;
-                                        zk1Var3.g = iM3;
-                                        zk1Var3.h = zH;
-                                        zk1Var3.i = z;
-                                        zk1Var3.j = zH2;
-                                        zk1Var3.k = z2;
-                                        zk1Var3.l = iM;
-                                        zk1Var3.m = i4;
-                                        zk1Var3.n = iN2;
-                                        zk1Var3.o = i5;
-                                        zk1Var3.p = iN;
-                                        zk1Var3.a = true;
-                                        zk1Var3.b = true;
-                                        al1Var.k = false;
-                                        i5 = 0;
-                                        iN2 = 0;
-                                        iN = 0;
-                                        zk1 zk1Var4 = al1Var.n;
-                                        zk1Var4.c = u13Var;
-                                        zk1Var4.d = i9;
-                                        zk1Var4.e = iM2;
-                                        zk1Var4.f = i13;
-                                        zk1Var4.g = iM3;
-                                        zk1Var4.h = zH;
-                                        zk1Var4.i = z;
-                                        zk1Var4.j = zH2;
-                                        zk1Var4.k = z2;
-                                        zk1Var4.l = iM;
-                                        zk1Var4.m = i4;
-                                        zk1Var4.n = iN2;
-                                        zk1Var4.o = i5;
-                                        zk1Var4.p = iN;
-                                        zk1Var4.a = true;
-                                        zk1Var4.b = true;
-                                        al1Var.k = false;
-                                    }
-                                    return;
-                                }
-                                zH = false;
-                                zH2 = false;
-                                z = zH2;
-                                if (al1Var.i == 5) {
-                                    z2 = true;
-                                } else {
-                                    z2 = false;
-                                }
-                                if (z2) {
-                                    iM = 0;
-                                } else if (!h00Var.e()) {
-                                    return;
-                                } else {
-                                    iM = h00Var.m();
-                                }
-                                i3 = u13Var.m;
-                                if (i3 != 0) {
-                                    if (i3 == 1) {
-                                    }
-                                    i4 = 0;
-                                } else {
-                                    if (h00Var.d(i11)) {
-                                        return;
-                                    }
-                                    i4 = h00Var.i(i11);
-                                    if (!z3) {
-                                    }
-                                }
-                                i5 = 0;
-                                iN2 = 0;
-                                iN = 0;
-                                zk1 zk1Var5 = al1Var.n;
-                                zk1Var5.c = u13Var;
-                                zk1Var5.d = i9;
-                                zk1Var5.e = iM2;
-                                zk1Var5.f = i13;
-                                zk1Var5.g = iM3;
-                                zk1Var5.h = zH;
-                                zk1Var5.i = z;
-                                zk1Var5.j = zH2;
-                                zk1Var5.k = z2;
-                                zk1Var5.l = iM;
-                                zk1Var5.m = i4;
-                                zk1Var5.n = iN2;
-                                zk1Var5.o = i5;
-                                zk1Var5.p = iN;
-                                zk1Var5.a = true;
-                                zk1Var5.b = true;
-                                al1Var.k = false;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    public final void g(byte[] r17, int r18, int r19) {
+        if (this.l == true) goto L5;
+    L6:
+        this.d.a(r17, r18, r19);
+        this.e.a(r17, r18, r19);
+    L7:
+        this.f.a(r17, r18, r19);
+        al1 r0 = this.k;
+        SparseArray r4 = r0.e;
+        h00 r5 = r0.f;
+        if (r0.k == false) goto L98;
+        int r3 = r19 - r18;
+        byte[] r6 = r0.g;
+        int r7 = r6.length;
+        int r8 = r0.h + r3;
+        if (r7 >= r8) goto L13;
+        r0.g = Arrays.copyOf(r6, r8 * 2);
+    L13:
+        System.arraycopy(r17, r18, r0.g, r0.h, r3);
+        int r1 = r0.h + r3;
+        r0.h = r1;
+        r5.b = r0.g;
+        r5.d = 0;
+        r5.c = r1;
+        r5.e = 0;
+        r5.a();
+        if (r5.d(8) == false) goto L99;
+        r5.s();
+        int r2 = r5.i(2);
+        r5.t(5);
+        if (r5.e() == false) goto L100;
+        r5.m();
+        if (r5.e() == false) goto L101;
+        int r9 = r5.m();
+        if (r0.c == true) goto L27;
+        r0.k = false;
+        zk1 r10 = r0.n;
+        r10.e = r9;
+        r10.b = true;
+        return;
+    L27:
+        if (r5.e() == false) goto L102;
+        int r11 = r5.m();
+        if (r4.indexOfKey(r11) >= 0) goto L33;
+        r0.k = false;
+        return;
+    L33:
+        t13 r12 = (t13) r4.get(r11);
+        SparseArray r13 = r0.d;
+        int r14 = r12.a;
+        boolean r15 = r12.b;
+        u13 r16 = (u13) r13.get(r14);
+        boolean r110 = r16.j;
+        int r111 = r16.n;
+        int r112 = r16.l;
+        if (r110 == false) goto L40;
+        if (r5.d(2) == false) goto L103;
+        r5.t(2);
+        goto L40
+    L103:
+        return;
+    L40:
+        if (r5.d(r112) == false) goto L104;
+        int r20 = r5.i(r112);
+        if (r16.k == false) goto L45;
+        boolean r113 = false;
+        boolean r114 = false;
+    L54:
+        boolean r115 = r114;
+    L57:
+        if (r0.i != 5) goto L59;
+        boolean r21 = true;
+    L60:
+        if (r21 == true) goto L62;
+        int r116 = 0;
+    L66:
+        int r22 = r16.m;
+        if (r22 == 0) goto L69;
+        if (r22 == 1) goto L83;
+    L95:
+        int r23 = 0;
+    L79:
+        int r24 = 0;
+    L80:
+        int r25 = 0;
+    L78:
+        int r117 = 0;
+    L96:
+        zk1 r26 = r0.n;
+        r26.c = r16;
+        r26.d = r2;
+        r26.e = r9;
+        r26.f = r20;
+        r26.g = r11;
+        r26.h = r113;
+        r26.i = r115;
+        r26.j = r114;
+        r26.k = r21;
+        r26.l = r116;
+        r26.m = r23;
+        r26.n = r25;
+        r26.o = r24;
+        r26.p = r117;
+        r26.a = true;
+        r26.b = true;
+        r0.k = false;
+        return;
+    L83:
+        if (r16.o == true) goto L95;
+        if (r5.e() == false) goto L110;
+        int r27 = r5.n();
+        if (r15 == false) goto L94;
+        if (r113 == true) goto L94;
+        if (r5.e() == true) goto L93;
+        return;
+    L93:
+        r117 = r5.n();
+        r25 = 0;
+        r24 = r27;
+        r23 = 0;
+    L94:
+        r24 = r27;
+        r23 = 0;
+        goto L80
+    L110:
+        return;
+    L69:
+        if (r5.d(r111) == false) goto L108;
+        r23 = r5.i(r111);
+        if (r15 == false) goto L79;
+        if (r113 == true) goto L79;
+        if (r5.e() == false) goto L109;
+        r25 = r5.n();
+        r24 = 0;
+        goto L78
+    L109:
+        return;
+    L108:
+        return;
+    L62:
+        if (r5.e() == false) goto L107;
+        r116 = r5.m();
+        goto L66
+    L107:
+        return;
+    L59:
+        r21 = false;
+        goto L60
+    L45:
+        if (r5.d(1) == false) goto L105;
+        r113 = r5.h();
+        if (r113 == true) goto L50;
+        r114 = false;
+        goto L54
+    L50:
+        if (r5.d(1) == false) goto L106;
+        r114 = r5.h();
+        r115 = true;
+        goto L57
+    L106:
+        return;
+    L105:
+        return;
+    L104:
+        return;
+    L102:
+        return;
+    L101:
+        return;
+    L100:
+        return;
+    L99:
+        return;
+    L98:
+        return;
+    L5:
+        if (this.k.c == false) goto L7;
+        goto L6
     }
 
-    public final void h(int i, long j, long j2) {
-        if (!this.l || this.k.c) {
-            this.d.g(i);
-            this.e.g(i);
-        }
-        this.f.g(i);
-        al1 al1Var = this.k;
-        boolean z = this.n;
-        al1Var.i = i;
-        al1Var.l = j2;
-        al1Var.j = j;
-        al1Var.s = z;
-        if (!al1Var.b || i != 1) {
-            if (!al1Var.c) {
-                return;
-            }
-            if (i != 5 && i != 1 && i != 2) {
-                return;
-            }
-        }
-        zk1 zk1Var = al1Var.m;
-        al1Var.m = al1Var.n;
-        al1Var.n = zk1Var;
-        zk1Var.b = false;
-        zk1Var.a = false;
-        al1Var.h = 0;
-        al1Var.k = true;
+    public final void h(int r2, long r3, long r5) {
+        if (this.l == true) goto L5;
+    L6:
+        this.d.g(r2);
+        this.e.g(r2);
+    L7:
+        this.f.g(r2);
+        al1 r0 = this.k;
+        boolean r1 = this.n;
+        r0.i = r2;
+        r0.l = r5;
+        r0.j = r3;
+        r0.s = r1;
+        if (r0.b == false) goto L11;
+        if (r2 != 1) goto L11;
+    L17:
+        zk1 r4 = r0.m;
+        r0.m = r0.n;
+        r0.n = r4;
+        r4.b = false;
+        r4.a = false;
+        r0.h = 0;
+        r0.k = true;
+        return;
+    L11:
+        if (r0.c == true) goto L13;
+        return;
+    L13:
+        if (r2 == 5) goto L17;
+        if (r2 == 1) goto L17;
+        if (r2 == 2) goto L17;
+        return;
+    L5:
+        if (this.k.c == false) goto L7;
+        goto L6
     }
 }

@@ -4,6 +4,6 @@ package com.google.android.libraries.identity.googleid;
 /* JADX INFO: loaded from: classes.dex */
 public final class GoogleIdTokenParsingException extends Exception {
     public GoogleIdTokenParsingException() {
-        super((Throwable) null);
+        super(null);
     }
 }

@@ -22,17 +22,17 @@ public final class dm0 implements lt2 {
     public final float h;
     public boolean i;
 
-    public dm0(bi0 bi0Var, n51 n51Var) {
-        this.b = bi0Var;
-        om0 om0Var = new om0(1);
-        this.c = om0Var;
-        au auVar = new au(n51Var, om0Var);
-        this.a = auVar;
-        if (bi0Var != ((bi0) auVar.e)) {
-            auVar.e = bi0Var;
-            ((HashMap) auVar.c).clear();
-            ((HashMap) auVar.d).clear();
-        }
+    public dm0(bi0 r4, n51 r5) {
+        this.b = r4;
+        om0 r0 = new om0(1);
+        this.c = r0;
+        au r2 = new au(r5, r0);
+        this.a = r2;
+        if (r4 == ((bi0) r2.e)) goto L5;
+        r2.e = r4;
+        ((HashMap) r2.c).clear();
+        ((HashMap) r2.d).clear();
+    L5:
         this.d = -9223372036854775807L;
         this.e = -9223372036854775807L;
         this.f = -9223372036854775807L;
@@ -41,224 +41,267 @@ public final class dm0 implements lt2 {
         this.i = true;
     }
 
-    public static lt2 f(Class cls, bi0 bi0Var) {
-        try {
-            return (lt2) cls.getConstructor(bi0.class).newInstance(bi0Var);
-        } catch (Exception e) {
-            throw new IllegalStateException(e);
-        }
+    public static lt2 f(Class r1, bi0 r2) {
+        return (lt2) r1.getConstructor(new Class[]{bi0.class}).newInstance(new Object[]{r2});
+    L4:
+        e = move-exception;
+        throw new IllegalStateException(e);
     }
 
     @Override // defpackage.lt2
-    public final void a(om0 om0Var) {
-        this.c = om0Var;
-        au auVar = this.a;
-        auVar.f = om0Var;
-        ((n51) auVar.b).a(om0Var);
-        Iterator it = ((HashMap) auVar.d).values().iterator();
-        while (it.hasNext()) {
-            ((lt2) it.next()).a(om0Var);
-        }
+    public final void a(om0 r2) {
+        this.c = r2;
+        au r1 = this.a;
+        r1.f = r2;
+        ((n51) r1.b).a(r2);
+        Iterator r3 = ((HashMap) r1.d).values().iterator();
+    L4:
+        if (r3.hasNext() == false) goto L6;
+        ((lt2) r3.next()).a(r2);
+        goto L4
     }
 
     @Override // defpackage.lt2
     public final void b() {
-        au auVar = this.a;
-        auVar.getClass();
-        ((n51) auVar.b).b();
+        au r0 = this.a;
+        r0.getClass();
+        ((n51) r0.b).b();
     }
 
     @Override // defpackage.lt2
-    public final void c(boolean z) {
-        this.i = z;
-        au auVar = this.a;
-        auVar.a = z;
-        ((n51) auVar.b).d(z);
-        Iterator it = ((HashMap) auVar.d).values().iterator();
-        while (it.hasNext()) {
-            ((lt2) it.next()).c(z);
-        }
+    public final void c(boolean r2) {
+        this.i = r2;
+        au r1 = this.a;
+        r1.a = r2;
+        ((n51) r1.b).d(r2);
+        Iterator r3 = ((HashMap) r1.d).values().iterator();
+    L4:
+        if (r3.hasNext() == false) goto L6;
+        ((lt2) r3.next()).c(r2);
+        goto L4
     }
 
     @Override // defpackage.lt2
-    public final bq d(gn2 gn2Var) {
-        ww0 ww0VarA;
-        gn2 gn2VarA = gn2Var;
-        gn2VarA.b.getClass();
-        String scheme = gn2VarA.b.a.getScheme();
-        if (scheme != null && scheme.equals("ssai")) {
-            throw null;
-        }
-        boolean zEquals = Objects.equals(gn2VarA.b.b, "application/x-image-uri");
-        bn2 bn2Var = gn2VarA.b;
-        if (zEquals) {
-            long j = bn2Var.h;
-            String str = f35.a;
-            throw null;
-        }
-        int iJ = f35.J(bn2Var.a, bn2Var.b);
-        if (gn2VarA.b.h != -9223372036854775807L) {
-            n51 n51Var = (n51) this.a.b;
-            if (n51Var instanceof sk0) {
-                sk0 sk0Var = (sk0) n51Var;
-                synchronized (sk0Var) {
-                    sk0Var.f = 1;
-                }
-            }
-            n51 n51Var2 = (n51) this.a.b;
-            if (n51Var2 instanceof sk0) {
-                sk0 sk0Var2 = (sk0) n51Var2;
-                synchronized (sk0Var2) {
-                    sk0Var2.g = 1;
-                }
-            }
-        }
-        try {
-            lt2 lt2VarC = this.a.c(iJ);
-            zm2 zm2VarA = gn2VarA.c.a();
-            an2 an2Var = gn2VarA.c;
-            if (an2Var.a == -9223372036854775807L) {
-                zm2VarA.a = this.d;
-            }
-            if (an2Var.d == -3.4028235E38f) {
-                zm2VarA.d = this.g;
-            }
-            if (an2Var.e == -3.4028235E38f) {
-                zm2VarA.e = this.h;
-            }
-            if (an2Var.b == -9223372036854775807L) {
-                zm2VarA.b = this.e;
-            }
-            if (an2Var.c == -9223372036854775807L) {
-                zm2VarA.c = this.f;
-            }
-            an2 an2Var2 = new an2(zm2VarA);
-            if (!an2Var2.equals(gn2VarA.c)) {
-                tm2 tm2VarA = gn2VarA.a();
-                tm2VarA.l = an2Var2.a();
-                gn2VarA = tm2VarA.a();
-            }
-            bq bqVarD = lt2VarC.d(gn2VarA);
-            yw1 yw1Var = gn2VarA.b.g;
-            if (!yw1Var.isEmpty()) {
-                bq[] bqVarArr = new bq[yw1Var.size() + 1];
-                bqVarArr[0] = bqVarD;
-                for (int i = 0; i < yw1Var.size(); i++) {
-                    if (this.i) {
-                        sb1 sb1Var = new sb1();
-                        sb1Var.m = lw2.m(((fn2) yw1Var.get(i)).b);
-                        sb1Var.d = ((fn2) yw1Var.get(i)).c;
-                        sb1Var.e = ((fn2) yw1Var.get(i)).d;
-                        sb1Var.f = ((fn2) yw1Var.get(i)).e;
-                        sb1Var.b = ((fn2) yw1Var.get(i)).f;
-                        sb1Var.a = ((fn2) yw1Var.get(i)).g;
-                        final tb1 tb1Var = new tb1(sb1Var);
-                        n51 n51Var3 = new n51() { // from class: zl0
-                            @Override // defpackage.n51
-                            public final k51[] c() {
-                                dm0 dm0Var = this.b;
-                                om0 om0Var = dm0Var.c;
-                                tb1 tb1Var2 = tb1Var;
-                                return new k51[]{om0Var.n(tb1Var2) ? new un4(dm0Var.c.C(tb1Var2)) : new cm0(tb1Var2)};
-                            }
-                        };
-                        bi0 bi0Var = this.b;
-                        ss2 ss2Var = new ss2(10, n51Var3);
-                        Object obj = new Object();
-                        i80 i80Var = new i80(28);
-                        if (this.c.n(tb1Var)) {
-                            sb1 sb1VarA = tb1Var.a();
-                            sb1VarA.m = lw2.m("application/x-media3-cues");
-                            sb1VarA.j = tb1Var.n;
-                            sb1VarA.K = this.c.R(tb1Var);
-                            tb1Var = new tb1(sb1VarA);
-                        }
-                        tb1 tb1Var2 = tb1Var;
-                        int i2 = i + 1;
-                        String string = ((fn2) yw1Var.get(i)).a.toString();
-                        um2 um2Var = new um2();
-                        xm2 xm2Var = new xm2();
-                        List list = Collections.EMPTY_LIST;
-                        gy3 gy3Var = gy3.r;
-                        zm2 zm2Var = new zm2();
-                        cn2 cn2Var = cn2.d;
-                        Uri uri = string == null ? null : Uri.parse(string);
-                        rr2.w(((Uri) xm2Var.e) == null || ((UUID) xm2Var.d) != null);
-                        bn2 bn2Var2 = uri != null ? new bn2(uri, null, ((UUID) xm2Var.d) != null ? new ym2(xm2Var) : null, null, list, null, gy3Var, -9223372036854775807L) : null;
-                        gn2 gn2Var2 = new gn2("", new wm2(um2Var), bn2Var2, new an2(zm2Var), do2.K, cn2Var);
-                        bn2Var2.getClass();
-                        gn2Var2.b.getClass();
-                        ym2 ym2Var = gn2Var2.b.c;
-                        if (ym2Var == null) {
-                            ww0VarA = ww0.a;
-                        } else {
-                            synchronized (obj) {
-                                try {
-                                    ww0VarA = !ym2Var.equals(null) ? yc5.a(ym2Var) : null;
-                                    ww0VarA.getClass();
-                                } catch (Throwable th) {
-                                    throw th;
-                                }
-                            }
-                        }
-                        bqVarArr[i2] = new kr3(gn2Var2, bi0Var, ss2Var, ww0VarA, i80Var, 1048576, tb1Var2);
-                    } else {
-                        bi0 bi0Var2 = this.b;
-                        bi0Var2.getClass();
-                        bqVarArr[i + 1] = new hf4((fn2) yw1Var.get(i), bi0Var2, new i80(28));
-                    }
-                }
-                bqVarD = new ov2(bqVarArr);
-            }
-            wm2 wm2Var = gn2VarA.e;
-            if (wm2Var.b != 0 || wm2Var.d != Long.MIN_VALUE || wm2Var.f) {
-                c40 c40Var = new c40(bqVarD);
-                long j2 = wm2Var.b;
-                rr2.l(j2 >= 0);
-                rr2.w(!c40Var.h);
-                c40Var.b = j2;
-                long j3 = wm2Var.d;
-                rr2.w(!c40Var.h);
-                c40Var.c = j3;
-                boolean z = !wm2Var.g;
-                rr2.w(!c40Var.h);
-                c40Var.d = z;
-                boolean z2 = wm2Var.e;
-                rr2.w(!c40Var.h);
-                c40Var.e = z2;
-                boolean z3 = wm2Var.f;
-                rr2.w(!c40Var.h);
-                c40Var.f = z3;
-                boolean z4 = wm2Var.h;
-                rr2.w(!c40Var.h);
-                c40Var.g = z4;
-                c40Var.h = true;
-                bqVarD = new e40(c40Var);
-            }
-            gn2VarA.b.getClass();
-            if (gn2VarA.b.d == null) {
-                return bqVarD;
-            }
-            l93.q0("DMediaSourceFactory", "Playing media without ads. Configure ad support by calling setAdsLoaderProvider and setAdViewProvider.");
-            return bqVarD;
-        } catch (ClassNotFoundException e) {
-            throw new IllegalStateException(e);
-        }
+    public final bq d(gn2 r35) {
+        gn2 r1 = r35;
+        r1.b.getClass();
+        String r2 = r1.b.a.getScheme();
+        if (r2 != null) goto L5;
+    L8:
+        boolean r3 = Objects.equals(r1.b.b, "application/x-image-uri");
+        bn2 r4 = r1.b;
+        if (r3 == true) goto L120;
+        int r5 = f35.J(r4.a, r4.b);
+        if (r1.b.h == (-9223372036854775807L)) goto L128;
+        n51 r6 = (n51) this.a.b;
+        if ((r6 instanceof sk0) == false) goto L22;
+        sk0 r7 = (sk0) r6;
+        monitor-enter(r7);
+        r7.f = 1;     // Catch: Throwable -> L19
+        monitor-exit(r7);
+    L19:
+        th = move-exception;
+        throw th;
+    L22:
+        n51 r8 = (n51) this.a.b;
+        if ((r8 instanceof sk0) == false) goto L128;
+        sk0 r9 = (sk0) r8;
+        monitor-enter(r9);
+        r9.g = 1;     // Catch: Throwable -> L29
+        monitor-exit(r9);
+    L29:
+        th = move-exception;
+        throw th;
+    L128:
+        lt2 r10 = this.a.c(r5);     // Catch: ClassNotFoundException -> L117
+        zm2 r11 = r1.c.a();
+        an2 r12 = r1.c;
+        if (r12.a != (-9223372036854775807L)) goto L37;
+        r11.a = this.d;
+    L37:
+        if (r12.d != (-3.4028235E38f)) goto L40;
+        r11.d = this.g;
+    L40:
+        if (r12.e != (-3.4028235E38f)) goto L43;
+        r11.e = this.h;
+    L43:
+        if (r12.b != (-9223372036854775807L)) goto L46;
+        r11.b = this.e;
+    L46:
+        if (r12.c != (-9223372036854775807L)) goto L48;
+        r11.c = this.f;
+    L48:
+        an2 r13 = new an2(r11);
+        if (r13.equals(r1.c) == true) goto L51;
+        tm2 r14 = r1.a();
+        r14.l = r13.a();
+        r1 = r14.a();
+    L51:
+        bq r15 = r10.d(r1);
+        yw1 r16 = r1.b.g;
+        if (r16.isEmpty() == true) goto L100;
+        bq[] r17 = new bq[r16.size() + 1];
+        r17[0] = r15;
+        int r18 = 0;
+    L55:
+        if (r18 >= r16.size()) goto L99;
+        if (this.i == false) goto L97;
+        sb1 r19 = new sb1();
+        r19.m = lw2.m(((fn2) r16.get(r18)).b);
+        r19.d = ((fn2) r16.get(r18)).c;
+        r19.e = ((fn2) r16.get(r18)).d;
+        r19.f = ((fn2) r16.get(r18)).e;
+        r19.b = ((fn2) r16.get(r18)).f;
+        r19.a = ((fn2) r16.get(r18)).g;
+        final tb1 r110 = new tb1(r19);
+        n51 r20 = new zl0(this, r110);
+        bi0 r111 = this.b;
+        ss2 r112 = new ss2(10, r20);
+        Object r21 = new Object();
+        i80 r113 = new i80(28);
+        if (this.c.n(r110) == false) goto L61;
+        sb1 r22 = r110.a();
+        r22.m = lw2.m("application/x-media3-cues");
+        r22.j = r110.n;
+        r22.K = this.c.R(r110);
+        r110 = new tb1(r22);
+    L61:
+        tb1 r114 = r110;
+        int r23 = r18 + 1;
+        String r115 = ((fn2) r16.get(r18)).a.toString();
+        um2 r116 = new um2();
+        xm2 r117 = new xm2();
+        List r24 = Collections.EMPTY_LIST;
+        gy3 r26 = gy3.r;
+        zm2 r25 = new zm2();
+        cn2 r33 = cn2.d;
+        if (r115 != null) goto L64;
+        Uri r27 = null;
+    L66:
+        if (((Uri) r117.e) != null) goto L68;
+    L71:
+        boolean r118 = true;
+    L72:
+        rr2.w(r118);
+        if (r27 != null) goto L75;
+        bn2 r30 = null;
+    L80:
+        gn2 r28 = new gn2("", new wm2(r116), r30, new an2(r25), do2.K, r33);
+        r30.getClass();
+        r28.b.getClass();
+        ym2 r29 = r28.b.c;
+        if (r29 != null) goto L84;
+        ww0 r31 = ww0.a;
+    L94:
+        r17[r23] = new kr3(r28, r111, r112, r31, r113, 1048576, r114);
+    L98:
+        r18 = r18 + 1;
+        goto L55
+    L84:
+        monitor-enter(r21);
+        if (r29.equals(null) == true) goto L90;
+        r31 = yc5.a(r29);     // Catch: Throwable -> L88
+    L91:
+        r31.getClass();     // Catch: Throwable -> L88
+        monitor-exit(r21);     // Catch: Throwable -> L88
+        goto L94
+    L90:
+        r31 = null;
+    L88:
+        th = move-exception;
+        throw th;
+    L75:
+        if (((UUID) r117.d) == null) goto L77;
+        ym2 r210 = new ym2(r117);
+    L78:
+        r30 = new bn2(r27, null, r210, null, r24, null, r26, -9223372036854775807L);
+        goto L80
+    L77:
+        r210 = null;
+        goto L78
+    L68:
+        if (((UUID) r117.d) != null) goto L71;
+        r118 = false;
+        goto L72
+    L64:
+        r27 = Uri.parse(r115);
+        goto L66
+    L97:
+        bi0 r32 = this.b;
+        r32.getClass();
+        r17[r18 + 1] = new hf4((fn2) r16.get(r18), r32, new i80(28));
+        goto L98
+    L99:
+        r15 = new ov2(r17);
+    L100:
+        wm2 r0 = r1.e;
+        if (r0.b == 0) goto L103;
+    L107:
+        c40 r34 = new c40(r15);
+        long r36 = r0.b;
+        if (r36 < 0) goto L110;
+        boolean r37 = true;
+    L111:
+        rr2.l(r37);
+        rr2.w(!r34.h);
+        r34.b = r36;
+        long r38 = r0.d;
+        rr2.w(!r34.h);
+        r34.c = r38;
+        boolean r39 = !r0.g;
+        rr2.w(!r34.h);
+        r34.d = r39;
+        boolean r40 = r0.e;
+        rr2.w(!r34.h);
+        r34.e = r40;
+        boolean r41 = r0.f;
+        rr2.w(!r34.h);
+        r34.f = r41;
+        boolean r42 = r0.h;
+        rr2.w(!r34.h);
+        r34.g = r42;
+        r34.h = true;
+        r15 = new e40(r34);
+    L112:
+        r1.b.getClass();
+        if (r1.b.d != null) goto L115;
+        return r15;
+    L115:
+        l93.q0("DMediaSourceFactory", "Playing media without ads. Configure ad support by calling setAdsLoaderProvider and setAdViewProvider.");
+        return r15;
+    L110:
+        r37 = false;
+        goto L111
+    L103:
+        if (r0.d != Long.MIN_VALUE) goto L107;
+        if (r0.f == true) goto L107;
+    L117:
+        e = move-exception;
+        throw new IllegalStateException(e);
+    L120:
+        long r43 = r4.h;
+        String r44 = f35.a;
+        throw null;
+    L5:
+        if (r2.equals("ssai") == false) goto L8;
+        throw null;
     }
 
     @Override // defpackage.lt2
-    public final lt2 e(yc5 yc5Var) {
-        rr2.s(yc5Var, "MediaSource.Factory#setDrmSessionManagerProvider no longer handles null by instantiating a new DefaultDrmSessionManagerProvider. Explicitly construct and pass an instance in order to retain the old behavior.");
-        au auVar = this.a;
-        auVar.g = yc5Var;
-        Iterator it = ((HashMap) auVar.d).values().iterator();
-        while (it.hasNext()) {
-            ((lt2) it.next()).e(yc5Var);
-        }
+    public final lt2 e(yc5 r3) {
+        rr2.s(r3, "MediaSource.Factory#setDrmSessionManagerProvider no longer handles null by instantiating a new DefaultDrmSessionManagerProvider. Explicitly construct and pass an instance in order to retain the old behavior.");
+        au r0 = this.a;
+        r0.g = r3;
+        Iterator r1 = ((HashMap) r0.d).values().iterator();
+    L4:
+        if (r1.hasNext() == false) goto L6;
+        ((lt2) r1.next()).e(r3);
+        goto L4
+    L6:
         return this;
     }
 
-    public dm0(Context context, sk0 sk0Var) {
-        this(new rf2(context), sk0Var);
+    public dm0(Context r2, sk0 r3) {
+        this(new rf2(r2), r3);
     }
 }

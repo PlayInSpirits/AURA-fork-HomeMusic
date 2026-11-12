@@ -10,13 +10,13 @@ public final class tw2 {
     public final List b;
     public final sh0 c;
 
-    public tw2(f42 f42Var, sh0 sh0Var) {
-        List list = Collections.EMPTY_LIST;
-        h12.f(f42Var, "Argument must not be null");
-        this.a = f42Var;
-        h12.f(list, "Argument must not be null");
-        this.b = list;
-        h12.f(sh0Var, "Argument must not be null");
-        this.c = sh0Var;
+    public tw2(f42 r3, sh0 r4) {
+        List r0 = Collections.EMPTY_LIST;
+        h12.f(r3, "Argument must not be null");
+        this.a = r3;
+        h12.f(r0, "Argument must not be null");
+        this.b = r0;
+        h12.f(r4, "Argument must not be null");
+        this.c = r4;
     }
 }

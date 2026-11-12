@@ -29,58 +29,70 @@ public final class iq2 extends dq2 {
     public final View y;
     public final ImageView z;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public iq2(jq2 jq2Var, View view) {
-        this.H = jq2Var;
-        lq2 lq2Var = jq2Var.z;
-        super(lq2Var, view, (ImageButton) view.findViewById(R.id.mr_cast_mute_button), (MediaRouteVolumeSlider) view.findViewById(R.id.mr_cast_volume_slider));
+    public iq2(jq2 r4, View r5) {
+        this.H = r4;
+        lq2 r6 = r4.z;
+        super(r6, r5, (ImageButton) r5.findViewById(R.id.mr_cast_mute_button), (MediaRouteVolumeSlider) r5.findViewById(R.id.mr_cast_volume_slider));
         this.G = new i4(9, this);
-        this.y = view;
-        this.z = (ImageView) view.findViewById(R.id.mr_cast_route_icon);
-        ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.mr_cast_route_progress_bar);
-        this.A = progressBar;
-        this.B = (TextView) view.findViewById(R.id.mr_cast_route_name);
-        this.C = (RelativeLayout) view.findViewById(R.id.mr_cast_volume_layout);
-        CheckBox checkBox = (CheckBox) view.findViewById(R.id.mr_cast_checkbox);
-        this.D = checkBox;
-        Context context = lq2Var.B;
-        Drawable drawableR = zz1.r(context, R.drawable.mr_cast_checkbox);
-        if (fu.D(context)) {
-            drawableR.setTint(context.getColor(R.color.mr_dynamic_dialog_icon_light));
-        }
-        checkBox.setButtonDrawable(drawableR);
-        fu.M(context, progressBar);
-        this.E = fu.v(context);
-        Resources resources = context.getResources();
-        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
-        TypedValue typedValue = new TypedValue();
-        resources.getValue(R.dimen.mr_dynamic_dialog_row_height, typedValue, true);
-        this.F = (int) typedValue.getDimension(displayMetrics);
+        this.y = r5;
+        this.z = (ImageView) r5.findViewById(R.id.mr_cast_route_icon);
+        ProgressBar r0 = (ProgressBar) r5.findViewById(R.id.mr_cast_route_progress_bar);
+        this.A = r0;
+        this.B = (TextView) r5.findViewById(R.id.mr_cast_route_name);
+        this.C = (RelativeLayout) r5.findViewById(R.id.mr_cast_volume_layout);
+        CheckBox r7 = (CheckBox) r5.findViewById(R.id.mr_cast_checkbox);
+        this.D = r7;
+        Context r8 = r6.B;
+        Drawable r1 = zz1.r(r8, R.drawable.mr_cast_checkbox);
+        if (fu.D(r8) == false) goto L5;
+        r1.setTint(r8.getColor(R.color.mr_dynamic_dialog_icon_light));
+    L5:
+        r7.setButtonDrawable(r1);
+        fu.M(r8, r0);
+        this.E = fu.v(r8);
+        Resources r9 = r8.getResources();
+        DisplayMetrics r10 = r9.getDisplayMetrics();
+        TypedValue r2 = new TypedValue();
+        r9.getValue(R.dimen.mr_dynamic_dialog_row_height, r2, true);
+        this.F = (int) r2.getDimension(r10);
     }
 
-    public final boolean u(wq2 wq2Var) {
-        if (wq2Var.g()) {
-            return true;
-        }
-        tq2 tq2VarA = this.H.z.w.a();
-        if (tq2VarA == null) {
-            return false;
-        }
-        mq2 mq2Var = (mq2) tq2VarA.x.get(wq2Var.c);
-        return (mq2Var != null ? mq2Var.b : 4) == 3;
+    public final boolean u(wq2 r2) {
+        if (r2.g() == true) goto L17;
+        tq2 r1 = this.H.z.w.a();
+        if (r1 == null) goto L15;
+        mq2 r3 = (mq2) r1.x.get(r2.c);
+        if (r3 == null) goto L10;
+        int r4 = r3.b;
+    L12:
+        if (r4 != 3) goto L18;
+        return true;
+    L18:
+        return false;
+    L10:
+        r4 = 4;
+        goto L12
+    L15:
+        return false;
+    L17:
+        return true;
     }
 
-    public final void v(boolean z, boolean z2) {
-        CheckBox checkBox = this.D;
-        checkBox.setEnabled(false);
+    public final void v(boolean r4, boolean r5) {
+        CheckBox r0 = this.D;
+        int r1 = 0;
+        r0.setEnabled(false);
         this.y.setEnabled(false);
-        checkBox.setChecked(z);
-        if (z) {
-            this.z.setVisibility(4);
-            this.A.setVisibility(0);
-        }
-        if (z2) {
-            this.H.p(this.C, z ? this.F : 0);
-        }
+        r0.setChecked(r4);
+        if (r4 == false) goto L5;
+        this.z.setVisibility(4);
+        this.A.setVisibility(0);
+    L5:
+        if (r5 == false) goto L10;
+        if (r4 == false) goto L8;
+        r1 = this.F;
+    L8:
+        this.H.p(this.C, r1);
+        return;
     }
 }

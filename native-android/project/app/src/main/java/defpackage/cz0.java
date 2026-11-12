@@ -6,8 +6,8 @@ import android.view.Window;
 /* JADX INFO: loaded from: classes.dex */
 public class cz0 extends bz0 {
     @Override // defpackage.az0, defpackage.ez0
-    public void a(Window window) {
-        window.getClass();
-        window.getAttributes().layoutInDisplayCutoutMode = 3;
+    public void a(Window r1) {
+        r1.getClass();
+        sr0.z(r1.getAttributes());
     }
 }

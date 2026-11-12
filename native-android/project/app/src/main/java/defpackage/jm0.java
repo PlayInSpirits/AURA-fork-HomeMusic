@@ -8,47 +8,61 @@ public final class jm0 implements y43 {
     public final lm0 n;
     public final r62 o;
 
-    public jm0(lm0 lm0Var, r62 r62Var) {
-        this.n = lm0Var;
-        this.o = r62Var;
+    public jm0(lm0 r1, r62 r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // defpackage.y43
-    public final long R(int i, long j, long j2) {
-        if (i != 2 || Float.intBitsToFloat((int) (j2 >> 32)) == 0.0f) {
-            return 0L;
-        }
+    public final long R(int r1, long r2, long r4) {
+        if (r1 == 2) goto L5;
+        return 0;
+    L5:
+        if (Float.intBitsToFloat((int) (r4 >> 32)) != 0.0f) goto L8;
+        return 0;
+    L8:
         throw new CancellationException("Scroll cancelled");
     }
 
     @Override // defpackage.y43
-    public final Object b0(long j, long j2, vd0 vd0Var) {
-        return new k45(k45.a(j2, 0.0f, 0.0f, 1));
+    public final Object b0(long r1, long r3, vd0 r5) {
+        return new k45(k45.a(r3, 0.0f, 0.0f, 1));
     }
 
     @Override // defpackage.y43
-    public final long x(int i, long j) {
-        if (i != 1) {
-            return 0L;
-        }
-        lm0 lm0Var = this.n;
-        if (Math.abs(lm0Var.l()) <= 1.0E-6d) {
-            return 0L;
-        }
-        int i2 = (int) (j >> 32);
-        if (Math.abs(Float.intBitsToFloat(i2)) <= 0.0f) {
-            return 0L;
-        }
-        qc3 qc3VarM = lm0Var.m();
-        float fL = lm0Var.l() * lm0Var.o();
-        float f = ((qc3VarM.b + qc3VarM.c) * (-Math.signum(lm0Var.l()))) + fL;
-        if (lm0Var.l() > 0.0f) {
-            fL = f;
-            f = fL;
-        }
-        float fL2 = gb.l(Float.intBitsToFloat(i2), fL, f);
-        boolean z = this.o == r62.o;
-        ml3 ml3Var = lm0Var.k;
-        return (((long) Float.floatToRawIntBits(Float.intBitsToFloat((int) (j & 4294967295L)))) & 4294967295L) | (((long) Float.floatToRawIntBits(z ? ml3Var.d(fL2) : -ml3Var.d(-fL2))) << 32);
+    public final long x(int r9, long r10) {
+        boolean r0 = true;
+        if (r9 != 1) goto L21;
+        lm0 r11 = this.n;
+        if (Math.abs(r11.l()) <= 1.0E-6d) goto L23;
+        int r2 = (int) (r10 >> 32);
+        if (Math.abs(Float.intBitsToFloat(r2)) <= 0.0f) goto L24;
+        qc3 r3 = r11.m();
+        float r5 = r11.l() * r11.o();
+        float r4 = ((r3.b + r3.c) * (-Math.signum(r11.l()))) + r5;
+        if (r11.l() <= 0.0f) goto L11;
+        r5 = r4;
+        r4 = r5;
+    L11:
+        float r6 = gb.l(Float.intBitsToFloat(r2), r5, r4);
+        if (this.o == r62.o) goto L15;
+        r0 = false;
+    L15:
+        ml3 r8 = r11.k;
+        if (r0 == false) goto L18;
+        float r12 = r8.d(r6);
+    L19:
+        float r13 = Float.intBitsToFloat((int) (r10 & 4294967295L));
+        long r14 = Float.floatToRawIntBits(r12);
+        return (((long) Float.floatToRawIntBits(r13)) & 4294967295L) | (r14 << 32);
+    L18:
+        r12 = -r8.d(-r6);
+        goto L19
+    L24:
+        return 0;
+    L23:
+        return 0;
+    L21:
+        return 0;
     }
 }

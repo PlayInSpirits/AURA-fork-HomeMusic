@@ -5,55 +5,71 @@ package defpackage;
 public abstract class zc2 {
     public final a83 n;
     public boolean o;
-    public int p = -1;
+    public int p;
     public final /* synthetic */ ad2 q;
 
-    public zc2(ad2 ad2Var, a83 a83Var) {
-        this.q = ad2Var;
-        this.n = a83Var;
+    public zc2(ad2 r1, a83 r2) {
+        this.q = r1;
+        this.p = -1;
+        this.n = r2;
     }
 
-    public final void a(boolean z) {
-        if (z == this.o) {
-            return;
-        }
-        this.o = z;
-        int i = z ? 1 : -1;
-        ad2 ad2Var = this.q;
-        int i2 = ad2Var.c;
-        ad2Var.c = i + i2;
-        if (!ad2Var.d) {
-            ad2Var.d = true;
-            while (true) {
-                try {
-                    int i3 = ad2Var.c;
-                    if (i2 == i3) {
-                        break;
-                    }
-                    boolean z2 = i2 == 0 && i3 > 0;
-                    boolean z3 = i2 > 0 && i3 == 0;
-                    if (z2) {
-                        ad2Var.g();
-                    } else if (z3) {
-                        ad2Var.h();
-                    }
-                    i2 = i3;
-                } catch (Throwable th) {
-                    ad2Var.d = false;
-                    throw th;
-                }
-            }
-            ad2Var.d = false;
-        }
-        if (this.o) {
-            ad2Var.c(this);
-        }
+    public final void a(boolean r6) {
+        if (r6 == this.o) goto L45;
+        this.o = r6;
+        if (r6 == false) goto L8;
+        int r7 = 1;
+    L9:
+        ad2 r1 = this.q;
+        int r2 = r1.c;
+        r1.c = r7 + r2;
+        if (r1.d == true) goto L33;
+        r1.d = true;
+    L38:
+        int r3 = r1.c;     // Catch: Throwable -> L26
+        if (r2 == r3) goto L31;
+        if (r2 != 0) goto L19;
+        if (r3 <= 0) goto L19;
+        boolean r4 = true;
+    L20:
+        if (r2 <= 0) goto L23;
+        if (r3 != 0) goto L23;
+        boolean r5 = true;
+    L24:
+        if (r4 == false) goto L28;
+        r1.g();     // Catch: Throwable -> L26
+    L30:
+        r2 = r3;
+        goto L38
+    L28:
+        if (r5 == false) goto L30;
+        r1.h();     // Catch: Throwable -> L26
+    L23:
+        r5 = false;
+    L19:
+        r4 = false;
+        goto L20
+    L31:
+        r1.d = false;
+    L26:
+        th = move-exception;
+        r1.d = false;
+        throw th;
+    L33:
+        if (this.o == false) goto L44;
+        r1.c(this);
+        return;
+    L44:
+        return;
+    L8:
+        r7 = -1;
+        goto L9
     }
 
     public void c() {
     }
 
-    public boolean d(ba2 ba2Var) {
+    public boolean d(ba2 r1) {
         return false;
     }
 

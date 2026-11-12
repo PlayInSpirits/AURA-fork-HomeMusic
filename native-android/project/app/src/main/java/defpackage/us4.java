@@ -11,40 +11,54 @@ import java.util.HashMap;
 /* JADX INFO: loaded from: classes.dex */
 public final class us4 extends dx4 {
     @Override // defpackage.dx4
-    public final void c(mx4 mx4Var) {
-        View view = mx4Var.b;
-        if (view instanceof TextView) {
-            mx4Var.a.put("android:textscale:scale", Float.valueOf(((TextView) view).getScaleX()));
-        }
+    public final void c(mx4 r2) {
+        View r1 = r2.b;
+        if ((r1 instanceof TextView) == false) goto L6;
+        r2.a.put("android:textscale:scale", Float.valueOf(((TextView) r1).getScaleX()));
+        return;
     }
 
     @Override // defpackage.dx4
-    public final void f(mx4 mx4Var) {
-        View view = mx4Var.b;
-        if (view instanceof TextView) {
-            mx4Var.a.put("android:textscale:scale", Float.valueOf(((TextView) view).getScaleX()));
-        }
+    public final void f(mx4 r2) {
+        View r1 = r2.b;
+        if ((r1 instanceof TextView) == false) goto L6;
+        r2.a.put("android:textscale:scale", Float.valueOf(((TextView) r1).getScaleX()));
+        return;
     }
 
     @Override // defpackage.dx4
-    public final Animator j(ViewGroup viewGroup, mx4 mx4Var, mx4 mx4Var2) {
-        if (mx4Var == null || mx4Var2 == null || !(mx4Var.b instanceof TextView)) {
-            return null;
-        }
-        View view = mx4Var2.b;
-        if (!(view instanceof TextView)) {
-            return null;
-        }
-        TextView textView = (TextView) view;
-        HashMap map = mx4Var.a;
-        HashMap map2 = mx4Var2.a;
-        float fFloatValue = map.get("android:textscale:scale") != null ? ((Float) map.get("android:textscale:scale")).floatValue() : 1.0f;
-        float fFloatValue2 = map2.get("android:textscale:scale") != null ? ((Float) map2.get("android:textscale:scale")).floatValue() : 1.0f;
-        if (fFloatValue == fFloatValue2) {
-            return null;
-        }
-        ValueAnimator valueAnimatorOfFloat = ValueAnimator.ofFloat(fFloatValue, fFloatValue2);
-        valueAnimatorOfFloat.addUpdateListener(new qq(8, textView));
-        return valueAnimatorOfFloat;
+    public final Animator j(ViewGroup r3, mx4 r4, mx4 r5) {
+        if (r4 == null) goto L21;
+        if (r5 != null) goto L5;
+        return null;
+    L5:
+        if ((r4.b instanceof TextView) == false) goto L24;
+        View r2 = r5.b;
+        if ((r2 instanceof TextView) == false) goto L25;
+        TextView r6 = (TextView) r2;
+        HashMap r7 = r4.a;
+        HashMap r8 = r5.a;
+        float r1 = 1.0f;
+        if (r7.get("android:textscale:scale") == null) goto L12;
+        float r9 = ((Float) r7.get("android:textscale:scale")).floatValue();
+    L14:
+        if (r8.get("android:textscale:scale") == null) goto L17;
+        r1 = ((Float) r8.get("android:textscale:scale")).floatValue();
+    L17:
+        if (r9 == r1) goto L26;
+        ValueAnimator r10 = ValueAnimator.ofFloat(new float[]{r9, r1});
+        r10.addUpdateListener(new qq(8, r6));
+        return r10;
+    L26:
+        return null;
+    L12:
+        r9 = 1.0f;
+        goto L14
+    L25:
+        return null;
+    L24:
+        return null;
+    L21:
+        return null;
     }
 }

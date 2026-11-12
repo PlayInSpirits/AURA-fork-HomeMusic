@@ -5,8 +5,8 @@ package defpackage;
 public final class hm4 implements ao {
     public final String a;
 
-    public hm4(String str) {
-        this.a = str;
+    public hm4(String r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.ao

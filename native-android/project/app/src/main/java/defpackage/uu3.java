@@ -6,22 +6,25 @@ public final class uu3 extends ch4 {
     public final if1 e;
     public int f;
 
-    public uu3(long j, gh4 gh4Var, if1 if1Var) {
-        super(j, gh4Var);
-        this.e = if1Var;
+    public uu3(long r1, gh4 r3, if1 r4) {
+        super(r1, r3);
+        this.e = r4;
         this.f = 1;
     }
 
     @Override // defpackage.ch4
     public final void c() {
-        if (this.c) {
-            return;
-        }
+        if (this.c == true) goto L12;
         l();
         this.c = true;
-        synchronized (jh4.c) {
-            o();
-        }
+        Object r0 = jh4.c;
+        monitor-enter(r0);
+        o();     // Catch: Throwable -> L9
+        monitor-exit(r0);
+        return;
+    L9:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.ch4
@@ -46,11 +49,11 @@ public final class uu3 extends ch4 {
 
     @Override // defpackage.ch4
     public final void l() {
-        int i = this.f - 1;
-        this.f = i;
-        if (i == 0) {
-            a();
-        }
+        int r0 = this.f - 1;
+        this.f = r0;
+        if (r0 != 0) goto L6;
+        a();
+        return;
     }
 
     @Override // defpackage.ch4
@@ -58,14 +61,14 @@ public final class uu3 extends ch4 {
     }
 
     @Override // defpackage.ch4
-    public final void n(rl4 rl4Var) {
-        o54 o54Var = jh4.a;
+    public final void n(rl4 r1) {
+        o54 r0 = jh4.a;
         throw new IllegalStateException("Cannot modify a state object in a read-only snapshot");
     }
 
     @Override // defpackage.ch4
-    public final ch4 u(if1 if1Var) {
+    public final ch4 u(if1 r7) {
         jh4.c(this);
-        return new x43(this.b, this.a, jh4.k(if1Var, this.e, true), this);
+        return new x43(this.b, this.a, jh4.k(r7, this.e, true), this);
     }
 }

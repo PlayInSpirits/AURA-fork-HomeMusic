@@ -8,11 +8,11 @@ import android.os.Looper;
 /* JADX INFO: loaded from: classes.dex */
 public final class bj2 extends sk2 {
     @Override // defpackage.sk2
-    public final rk2 W0(Context context, cb4 cb4Var, Bundle bundle, Looper looper, xs xsVar) {
-        if (!cb4Var.a.e()) {
-            return new kj2(context, this, cb4Var, bundle, looper);
-        }
-        xsVar.getClass();
-        return new lj2(context, this, cb4Var, bundle, looper, xsVar);
+    public final rk2 W0(Context r9, cb4 r10, Bundle r11, Looper r12, xs r13) {
+        if (r10.a.e() == false) goto L7;
+        r13.getClass();
+        return new lj2(r9, this, r10, r11, r12, r13);
+    L7:
+        return new kj2(r9, this, r10, r11, r12);
     }
 }

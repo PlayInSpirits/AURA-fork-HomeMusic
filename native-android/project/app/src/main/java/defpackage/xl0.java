@@ -9,62 +9,68 @@ public final class xl0 implements yj2 {
     public final q41 o;
     public kq p;
     public yj2 q;
-    public boolean r = true;
+    public boolean r;
     public boolean s;
 
-    public xl0(q41 q41Var, vp4 vp4Var) {
-        this.o = q41Var;
-        this.n = new zq2(vp4Var);
+    public xl0(q41 r1, vp4 r2) {
+        this.o = r1;
+        this.n = new zq2(r2);
+        this.r = true;
     }
 
-    public final void a(kq kqVar) {
-        yj2 yj2Var;
-        yj2 yj2VarG = kqVar.g();
-        if (yj2VarG == null || yj2VarG == (yj2Var = this.q)) {
-            return;
-        }
-        if (yj2Var != null) {
-            throw new ExoPlaybackException(2, new IllegalStateException("Multiple renderer media clocks enabled."), 1000);
-        }
-        this.q = yj2VarG;
-        this.p = kqVar;
-        yj2VarG.d((qh3) this.n.r);
+    public final void a(kq r3) {
+        yj2 r0 = r3.g();
+        if (r0 == null) goto L11;
+        yj2 r1 = this.q;
+        if (r0 == r1) goto L12;
+        if (r1 != null) goto L10;
+        this.q = r0;
+        this.p = r3;
+        r0.d((qh3) this.n.r);
+        return;
+    L10:
+        throw new ExoPlaybackException(2, new IllegalStateException("Multiple renderer media clocks enabled."), 1000);
+    L12:
+        return;
     }
 
     @Override // defpackage.yj2
-    public final void d(qh3 qh3Var) {
-        yj2 yj2Var = this.q;
-        if (yj2Var != null) {
-            yj2Var.d(qh3Var);
-            qh3Var = this.q.i();
-        }
-        this.n.d(qh3Var);
+    public final void d(qh3 r2) {
+        yj2 r0 = this.q;
+        if (r0 == null) goto L5;
+        r0.d(r2);
+        r2 = this.q.i();
+    L5:
+        this.n.d(r2);
     }
 
     @Override // defpackage.yj2
     public final qh3 i() {
-        yj2 yj2Var = this.q;
-        return yj2Var != null ? yj2Var.i() : (qh3) this.n.r;
+        yj2 r0 = this.q;
+        if (r0 == null) goto L7;
+        return r0.i();
+    L7:
+        return (qh3) this.n.r;
     }
 
     @Override // defpackage.yj2
     public final long j() {
-        if (this.r) {
-            return this.n.j();
-        }
-        yj2 yj2Var = this.q;
-        yj2Var.getClass();
-        return yj2Var.j();
+        if (this.r == true) goto L5;
+        yj2 r2 = this.q;
+        r2.getClass();
+        return r2.j();
+    L5:
+        return this.n.j();
     }
 
     @Override // defpackage.yj2
     public final boolean k() {
-        if (this.r) {
-            this.n.getClass();
-            return false;
-        }
-        yj2 yj2Var = this.q;
-        yj2Var.getClass();
-        return yj2Var.k();
+        if (this.r == false) goto L6;
+        this.n.getClass();
+        return false;
+    L6:
+        yj2 r1 = this.q;
+        r1.getClass();
+        return r1.k();
     }
 }

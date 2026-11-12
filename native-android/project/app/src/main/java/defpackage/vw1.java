@@ -5,13 +5,13 @@ package defpackage;
 public final class vw1 extends v0 {
     public final yw1 q;
 
-    public vw1(yw1 yw1Var, int i) {
-        super(yw1Var.size(), i);
-        this.q = yw1Var;
+    public vw1(yw1 r2, int r3) {
+        super(r2.size(), r3);
+        this.q = r2;
     }
 
     @Override // defpackage.v0
-    public final Object a(int i) {
-        return this.q.get(i);
+    public final Object a(int r1) {
+        return this.q.get(r1);
     }
 }

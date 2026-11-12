@@ -10,27 +10,29 @@ public final /* synthetic */ class rl3 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ pz1 o;
 
-    public /* synthetic */ rl3(pz1 pz1Var, int i) {
-        this.n = i;
-        this.o = pz1Var;
+    public /* synthetic */ rl3(pz1 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        pz1 pz1Var = this.o;
-        switch (i) {
-            case 0:
-                Toast.makeText(((sl3) pz1Var.o).n(), R.string.playlist_editor_dialog_action_delete_failure, 0).show();
-                break;
-            default:
-                sl3 sl3Var = (sl3) pz1Var.o;
-                Toast.makeText(sl3Var.n(), R.string.playlist_editor_dialog_action_delete_success, 0).show();
-                Dialog dialog = sl3Var.w0;
-                if (dialog != null) {
-                    dialog.dismiss();
-                }
-                break;
-        }
+        int r0 = this.n;
+        pz1 r3 = this.o;
+        switch(r0) {
+            case 0: goto L8;
+            default: goto L4;
+        };
+    L4:
+        sl3 r4 = (sl3) r3.o;
+        Toast.makeText(r4.n(), R.string.playlist_editor_dialog_action_delete_success, 0).show();
+        Dialog r5 = r4.w0;
+        if (r5 == null) goto L10;
+        r5.dismiss();
+        return;
+    L10:
+        return;
+    L8:
+        Toast.makeText(((sl3) r3.o).n(), R.string.playlist_editor_dialog_action_delete_failure, 0).show();
     }
 }

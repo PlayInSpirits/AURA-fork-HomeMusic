@@ -13,11 +13,11 @@ public interface StaticsBoundaryInterface {
 
     String getVariationsHeader();
 
-    void initSafeBrowsing(Context context, ValueCallback<Boolean> valueCallback);
+    void initSafeBrowsing(Context r1, ValueCallback<Boolean> r2);
 
     boolean isMultiProcessEnabled();
 
-    void setSafeBrowsingAllowlist(Set<String> set, ValueCallback<Boolean> valueCallback);
+    void setSafeBrowsingAllowlist(Set<String> r1, ValueCallback<Boolean> r2);
 
-    void setSafeBrowsingWhitelist(List<String> list, ValueCallback<Boolean> valueCallback);
+    void setSafeBrowsingWhitelist(List<String> r1, ValueCallback<Boolean> r2);
 }

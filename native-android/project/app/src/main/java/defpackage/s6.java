@@ -21,140 +21,169 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class s6 extends dw3 {
+    public final /* synthetic */ int q;
+    public List r;
+    public int s;
     public final ClickCallback t;
-    public final /* synthetic */ int q = 0;
-    public int s = 400;
-    public List r = Collections.EMPTY_LIST;
 
-    public s6(ArtistPageFragment artistPageFragment) {
-        this.t = artistPageFragment;
+    public s6(ArtistPageFragment r2) {
+        this.q = 1;
+        this.s = 400;
+        this.t = r2;
+        this.r = Collections.EMPTY_LIST;
     }
 
     @Override // defpackage.dw3
     public final int a() {
-        switch (this.q) {
-            case 0:
-                break;
-            case 1:
-                break;
-        }
+        switch(this.q) {
+            case 0: goto L9;
+            case 1: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return this.r.size();
+    L7:
+        return this.r.size();
+    L9:
         return this.r.size();
     }
 
     @Override // defpackage.dw3
-    public final void g(cx3 cx3Var, int i) {
-        switch (this.q) {
-            case 0:
-                r6 r6Var = (r6) cx3Var;
-                bq4 bq4Var = r6Var.u;
-                ViewGroup.LayoutParams layoutParams = ((ImageView) bq4Var.o).getLayoutParams();
-                int i2 = this.s;
-                layoutParams.width = i2;
-                layoutParams.height = i2;
-                ((ImageView) bq4Var.o).setLayoutParams(layoutParams);
-                AlbumID3 albumID3 = (AlbumID3) this.r.get(i);
-                ((TextView) bq4Var.p).setText(albumID3.getName());
-                ((TextView) bq4Var.q).setText(albumID3.getArtist());
-                Context context = r6Var.a.getContext();
-                String coverArtId = albumID3.getCoverArtId();
-                vz3 vz3VarT = b11.g(context, coverArtId, 2, a.c(context), coverArtId != null ? wg0.b(ud3.t(), coverArtId) : null).T(xv0.b());
-                if (ud3.R()) {
-                    vz3VarT = (vz3) vz3VarT.l();
-                }
-                vz3VarT.K((ImageView) bq4Var.o);
-                break;
-            case 1:
-                cj cjVar = (cj) cx3Var;
-                ns3 ns3Var = cjVar.u;
-                ViewGroup.LayoutParams layoutParams2 = ((ShapeableImageView) ns3Var.p).getLayoutParams();
-                int i3 = this.s;
-                layoutParams2.width = i3;
-                layoutParams2.height = i3;
-                ((ShapeableImageView) ns3Var.p).setLayoutParams(layoutParams2);
-                ArtistID3 artistID3 = (ArtistID3) this.r.get(i);
-                ((TextView) ns3Var.q).setText(artistID3.getName());
-                Context context2 = cjVar.a.getContext();
-                String coverArtId2 = artistID3.getCoverArtId();
-                vz3 vz3VarT2 = b11.g(context2, coverArtId2, 3, a.c(context2), coverArtId2 != null ? wg0.b(ud3.t(), coverArtId2) : null).T(xv0.b());
-                if (ud3.R()) {
-                    vz3VarT2 = (vz3) vz3VarT2.l();
-                }
-                vz3VarT2.K((ShapeableImageView) ns3Var.p);
-                break;
-            default:
-                xd4 xd4Var = (xd4) cx3Var;
-                qp4 qp4Var = xd4Var.u;
-                ViewGroup.LayoutParams layoutParams3 = ((ImageView) qp4Var.c).getLayoutParams();
-                int i4 = this.s;
-                layoutParams3.width = i4;
-                layoutParams3.height = i4;
-                ((ImageView) qp4Var.c).setLayoutParams(layoutParams3);
-                Child child = (Child) this.r.get(i);
-                ((TextView) qp4Var.b).setText(child.getTitle());
-                Context context3 = xd4Var.a.getContext();
-                String coverArtId3 = child.getCoverArtId();
-                vz3 vz3VarT3 = b11.g(context3, coverArtId3, 9, a.c(context3), coverArtId3 != null ? wg0.b(ud3.t(), coverArtId3) : null).T(xv0.b());
-                if (ud3.R()) {
-                    vz3VarT3 = (vz3) vz3VarT3.l();
-                }
-                vz3VarT3.K((ImageView) qp4Var.c);
-                break;
-        }
+    public final void g(cx3 r5, int r6) {
+        String r1 = null;
+        switch(this.q) {
+            case 0: goto L20;
+            case 1: goto L12;
+            default: goto L4;
+        };
+    L4:
+        xd4 r7 = (xd4) r5;
+        qp4 r0 = r7.u;
+        ViewGroup.LayoutParams r2 = ((ImageView) r0.c).getLayoutParams();
+        int r3 = this.s;
+        r2.width = r3;
+        r2.height = r3;
+        ((ImageView) r0.c).setLayoutParams(r2);
+        Child r4 = (Child) this.r.get(r6);
+        ((TextView) r0.b).setText(r4.getTitle());
+        Context r8 = r7.a.getContext();
+        String r9 = r4.getCoverArtId();
+        c04 r10 = a.c(r8);
+        if (r9 == null) goto L7;
+        r1 = wg0.b(ud3.t(), r9);
+    L7:
+        vz3 r11 = b11.g(r8, r9, 9, r10, r1).T(xv0.b());
+        if (ud3.R() == false) goto L10;
+        r11 = (vz3) r11.l();
+    L10:
+        r11.K((ImageView) r0.c);
+        return;
+    L12:
+        cj r12 = (cj) r5;
+        ns3 r13 = r12.u;
+        ViewGroup.LayoutParams r14 = ((ShapeableImageView) r13.p).getLayoutParams();
+        int r15 = this.s;
+        r14.width = r15;
+        r14.height = r15;
+        ((ShapeableImageView) r13.p).setLayoutParams(r14);
+        ArtistID3 r16 = (ArtistID3) this.r.get(r6);
+        ((TextView) r13.q).setText(r16.getName());
+        Context r17 = r12.a.getContext();
+        String r18 = r16.getCoverArtId();
+        c04 r19 = a.c(r17);
+        if (r18 == null) goto L15;
+        r1 = wg0.b(ud3.t(), r18);
+    L15:
+        vz3 r20 = b11.g(r17, r18, 3, r19, r1).T(xv0.b());
+        if (ud3.R() == false) goto L18;
+        r20 = (vz3) r20.l();
+    L18:
+        r20.K((ShapeableImageView) r13.p);
+        return;
+    L20:
+        r6 r21 = (r6) r5;
+        bq4 r22 = r21.u;
+        ViewGroup.LayoutParams r23 = ((ImageView) r22.o).getLayoutParams();
+        int r24 = this.s;
+        r23.width = r24;
+        r23.height = r24;
+        ((ImageView) r22.o).setLayoutParams(r23);
+        AlbumID3 r25 = (AlbumID3) this.r.get(r6);
+        ((TextView) r22.p).setText(r25.getName());
+        ((TextView) r22.q).setText(r25.getArtist());
+        Context r26 = r21.a.getContext();
+        String r27 = r25.getCoverArtId();
+        c04 r28 = a.c(r26);
+        if (r27 == null) goto L23;
+        r1 = wg0.b(ud3.t(), r27);
+    L23:
+        vz3 r29 = b11.g(r26, r27, 2, r28, r1).T(xv0.b());
+        if (ud3.R() == false) goto L26;
+        r29 = (vz3) r29.l();
+    L26:
+        r29.K((ImageView) r22.o);
     }
 
     @Override // defpackage.dw3
-    public final cx3 i(ViewGroup viewGroup, int i) {
-        switch (this.q) {
-            case 0:
-                bq4 bq4VarM = bq4.m(LayoutInflater.from(viewGroup.getContext()), viewGroup);
-                ut4.c().b(viewGroup.getContext());
-                this.s = ut4.c().d(viewGroup.getContext());
-                return new r6(this, bq4VarM);
-            case 1:
-                View viewI = b11.i(viewGroup, R.layout.item_artist_carousel, viewGroup, false);
-                int i2 = R.id.artist_cover_image_view;
-                ShapeableImageView shapeableImageView = (ShapeableImageView) uo.s(viewI, R.id.artist_cover_image_view);
-                if (shapeableImageView != null) {
-                    i2 = R.id.artist_name_label;
-                    TextView textView = (TextView) uo.s(viewI, R.id.artist_name_label);
-                    if (textView != null) {
-                        ns3 ns3Var = new ns3((ConstraintLayout) viewI, shapeableImageView, textView, 5);
-                        ut4.c().b(viewGroup.getContext());
-                        this.s = ut4.c().d(viewGroup.getContext());
-                        return new cj(this, ns3Var);
-                    }
-                }
-                nz2.n("Missing required view with ID: ".concat(viewI.getResources().getResourceName(i2)));
-                return null;
-            default:
-                View viewI2 = b11.i(viewGroup, R.layout.item_home_similar_track, viewGroup, false);
-                int i3 = R.id.title_track_label;
-                TextView textView2 = (TextView) uo.s(viewI2, R.id.title_track_label);
-                if (textView2 != null) {
-                    i3 = R.id.track_cover_image_view;
-                    ImageView imageView = (ImageView) uo.s(viewI2, R.id.track_cover_image_view);
-                    if (imageView != null) {
-                        qp4 qp4Var = new qp4((ConstraintLayout) viewI2, textView2, imageView);
-                        ut4.c().b(viewGroup.getContext());
-                        this.s = ut4.c().d(viewGroup.getContext());
-                        return new xd4(this, qp4Var);
-                    }
-                }
-                nz2.n("Missing required view with ID: ".concat(viewI2.getResources().getResourceName(i3)));
-                return null;
-        }
+    public final cx3 i(ViewGroup r6, int r7) {
+        switch(this.q) {
+            case 0: goto L18;
+            case 1: goto L11;
+            default: goto L4;
+        };
+    L4:
+        View r8 = b11.i(r6, R.layout.item_home_similar_track, r6, false);
+        int r2 = R.id.title_track_label;
+        TextView r3 = (TextView) uo.s(r8, R.id.title_track_label);
+        if (r3 == null) goto L9;
+        r2 = R.id.track_cover_image_view;
+        ImageView r4 = (ImageView) uo.s(r8, R.id.track_cover_image_view);
+        if (r4 == null) goto L9;
+        qp4 r0 = new qp4((ConstraintLayout) r8, r3, r4);
+        ut4.c().b(r6.getContext());
+        this.s = ut4.c().d(r6.getContext());
+        return new xd4(this, r0);
+    L9:
+        nz2.n("Missing required view with ID: ".concat(r8.getResources().getResourceName(r2)));
+        return null;
+    L11:
+        View r9 = b11.i(r6, R.layout.item_artist_carousel, r6, false);
+        int r5 = R.id.artist_cover_image_view;
+        ShapeableImageView r10 = (ShapeableImageView) uo.s(r9, R.id.artist_cover_image_view);
+        if (r10 == null) goto L16;
+        r5 = R.id.artist_name_label;
+        TextView r11 = (TextView) uo.s(r9, R.id.artist_name_label);
+        if (r11 == null) goto L16;
+        ns3 r1 = new ns3((ConstraintLayout) r9, r10, r11, 5);
+        ut4.c().b(r6.getContext());
+        this.s = ut4.c().d(r6.getContext());
+        return new cj(this, r1);
+    L16:
+        nz2.n("Missing required view with ID: ".concat(r9.getResources().getResourceName(r5)));
+        return null;
+    L18:
+        bq4 r12 = bq4.m(LayoutInflater.from(r6.getContext()), r6);
+        ut4.c().b(r6.getContext());
+        this.s = ut4.c().d(r6.getContext());
+        return new r6(this, r12);
     }
 
-    public void p(List list) {
-        this.r = list;
+    public void p(List r1) {
+        this.r = r1;
         d();
     }
 
-    public s6(cp1 cp1Var) {
-        this.t = cp1Var;
+    public s6(cp1 r2) {
+        this.q = 2;
+        this.s = 400;
+        this.t = r2;
+        this.r = Collections.EMPTY_LIST;
     }
 
-    public s6(ClickCallback clickCallback) {
-        this.t = clickCallback;
+    public s6(ClickCallback r2) {
+        this.q = 0;
+        this.s = 400;
+        this.t = r2;
+        this.r = Collections.EMPTY_LIST;
     }
 }

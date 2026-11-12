@@ -8,9 +8,21 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class e00 extends l00 {
+    public static final int[] A = null;
+    public static final int[] B = null;
+    public static final int[] C = null;
+    public static final int[] D = null;
+    public static final int[] E = null;
+    public static final int[] F = null;
+    public static final boolean[] G = null;
+    public static final int[] z = null;
+    public final be3 h;
     public final int i;
     public final int j;
     public final int k;
+    public final long l;
+    public final ArrayList m;
+    public d00 n;
     public List o;
     public List p;
     public int q;
@@ -19,49 +31,72 @@ public final class e00 extends l00 {
     public boolean t;
     public byte u;
     public byte v;
+    public int w;
     public boolean x;
     public long y;
-    public static final int[] z = {11, 1, 3, 12, 14, 5, 7, 9};
-    public static final int[] A = {0, 4, 8, 12, 16, 20, 24, 28};
-    public static final int[] B = {-1, -16711936, -16776961, -16711681, -65536, -256, -65281};
-    public static final int[] C = {32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 225, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 233, 93, 237, 243, 250, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 231, 247, 209, 241, 9632};
-    public static final int[] D = {174, 176, 189, 191, 8482, 162, 163, 9834, 224, 32, 232, 226, 234, 238, 244, 251};
-    public static final int[] E = {193, 201, 211, 218, 220, 252, 8216, 161, 42, 39, 8212, 169, 8480, 8226, 8220, 8221, 192, 194, 199, 200, 202, 203, 235, 206, 207, 239, 212, 217, 249, 219, 171, 187};
-    public static final int[] F = {195, 227, 205, 204, 236, 210, 242, 213, 245, 123, 125, 92, 94, 95, 124, 126, 196, 228, 214, 246, 223, 165, 164, 9474, 197, 229, 216, 248, 9484, 9488, 9492, 9496};
-    public static final boolean[] G = {false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false};
-    public final be3 h = new be3();
-    public final ArrayList m = new ArrayList();
-    public d00 n = new d00(0, 4);
-    public int w = 0;
-    public final long l = 16000000;
 
-    public e00(int i, String str) {
-        this.i = "application/x-mp4-cea-608".equals(str) ? 2 : 3;
-        if (i == 1) {
-            this.k = 0;
-            this.j = 0;
-        } else if (i == 2) {
-            this.k = 1;
-            this.j = 0;
-        } else if (i == 3) {
-            this.k = 0;
-            this.j = 1;
-        } else if (i != 4) {
-            l93.q0("Cea608Decoder", "Invalid channel. Defaulting to CC1.");
-            this.k = 0;
-            this.j = 0;
-        } else {
-            this.k = 1;
-            this.j = 1;
-        }
+    static {
+        z = new int[]{11, 1, 3, 12, 14, 5, 7, 9};
+        A = new int[]{0, 4, 8, 12, 16, 20, 24, 28};
+        B = new int[]{-1, -16711936, -16776961, -16711681, -65536, -256, -65281};
+        C = new int[]{32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 225, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 233, 93, 237, 243, 250, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 231, 247, 209, 241, 9632};
+        D = new int[]{174, 176, 189, 191, 8482, 162, 163, 9834, 224, 32, 232, 226, 234, 238, 244, 251};
+        E = new int[]{193, 201, 211, 218, 220, 252, 8216, 161, 42, 39, 8212, 169, 8480, 8226, 8220, 8221, 192, 194, 199, 200, 202, 203, 235, 206, 207, 239, 212, 217, 249, 219, 171, 187};
+        F = new int[]{195, 227, 205, 204, 236, 210, 242, 213, 245, 123, 125, 92, 94, 95, 124, 126, 196, 228, 214, 246, 223, 165, 164, 9474, 197, 229, 216, 248, 9484, 9488, 9492, 9496};
+        G = new boolean[]{false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false, false, true, true, false, true, false, false, true, false, true, true, false, true, false, false, true, true, false, false, true, false, true, true, false};
+    }
+
+    public e00(int r6, String r7) {
+        this.h = new be3();
+        this.m = new ArrayList();
+        this.n = new d00(0, 4);
+        this.w = 0;
+        this.l = 16000000;
+        if ("application/x-mp4-cea-608".equals(r7) == false) goto L5;
+        int r8 = 2;
+    L6:
+        this.i = r8;
+        if (r6 == 1) goto L15;
+        if (r6 == 2) goto L14;
+        if (r6 == 3) goto L13;
+        if (r6 == 4) goto L12;
+        l93.q0("Cea608Decoder", "Invalid channel. Defaulting to CC1.");
+        this.k = 0;
+        this.j = 0;
+    L16:
         m(0);
         l();
         this.x = true;
         this.y = -9223372036854775807L;
+        return;
+    L12:
+        this.k = 1;
+        this.j = 1;
+        goto L16
+    L13:
+        this.k = 0;
+        this.j = 1;
+        goto L16
+    L14:
+        this.k = 1;
+        this.j = 0;
+        goto L16
+    L15:
+        this.k = 0;
+        this.j = 0;
+        goto L16
+    L5:
+        r8 = 3;
+        goto L6
     }
 
     @Override // defpackage.l00, defpackage.zi0
     public final void a() {
+    }
+
+    @Override // defpackage.l00, defpackage.zi0
+    public final /* bridge */ /* synthetic */ Object d() {
+        return i();
     }
 
     @Override // defpackage.l00, defpackage.zi0
@@ -75,8 +110,8 @@ public final class e00 extends l00 {
         l();
         this.s = false;
         this.t = false;
-        this.u = (byte) 0;
-        this.v = (byte) 0;
+        this.u = 0;
+        this.v = 0;
         this.w = 0;
         this.x = true;
         this.y = -9223372036854775807L;
@@ -84,2516 +119,386 @@ public final class e00 extends l00 {
 
     @Override // defpackage.l00
     public final zh0 g() {
-        List list = this.o;
-        this.p = list;
-        list.getClass();
-        return new zh0(12, list);
+        List r0 = this.o;
+        this.p = r0;
+        r0.getClass();
+        return new zh0(12, r0);
     }
 
-    /* JADX WARN: Code duplicated, block: B:121:0x019a  */
-    /* JADX WARN: Code duplicated, block: B:123:0x01a0 A[ADDED_TO_REGION] */
-    /* JADX WARN: Code duplicated, block: B:127:0x01ae A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:128:0x01b0  */
-    /* JADX WARN: Code duplicated, block: B:131:0x01b6  */
-    /* JADX WARN: Code duplicated, block: B:133:0x01ba  */
-    /* JADX WARN: Code duplicated, block: B:134:0x01bd  */
-    /* JADX WARN: Code duplicated, block: B:137:0x01c3 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:138:0x01c5  */
-    /* JADX WARN: Code duplicated, block: B:140:0x01ca  */
-    /* JADX WARN: Code duplicated, block: B:141:0x01d5  */
-    /* JADX WARN: Code duplicated, block: B:142:0x01da  */
-    /* JADX WARN: Code duplicated, block: B:143:0x01dc  */
-    /* JADX WARN: Code duplicated, block: B:148:0x0207 A[LOOP:1: B:146:0x0201->B:148:0x0207, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:149:0x020b  */
-    /* JADX WARN: Code duplicated, block: B:151:0x0211 A[ADDED_TO_REGION] */
-    /* JADX WARN: Code duplicated, block: B:152:0x0213  */
-    /* JADX WARN: Code duplicated, block: B:153:0x0218  */
-    /* JADX WARN: Code duplicated, block: B:154:0x021f  */
-    /* JADX WARN: Code duplicated, block: B:155:0x022a  */
-    /* JADX WARN: Code duplicated, block: B:156:0x0235  */
-    /* JADX WARN: Code duplicated, block: B:157:0x0240  */
-    /* JADX WARN: Code duplicated, block: B:158:0x0245  */
-    /* JADX WARN: Code duplicated, block: B:159:0x024a  */
-    /* JADX WARN: Code duplicated, block: B:161:0x025b  */
-    /* JADX WARN: Code duplicated, block: B:179:0x0085 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:180:0x0080 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:181:0x007e A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:182:0x00ae A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:183:0x00bd A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:188:0x0014 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:189:0x0014 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:191:0x0014 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:26:0x0059  */
-    /* JADX WARN: Code duplicated, block: B:49:0x0092  */
-    /* JADX WARN: Code duplicated, block: B:51:0x0096  */
-    /* JADX WARN: Code duplicated, block: B:52:0x0098  */
-    /* JADX WARN: Code duplicated, block: B:58:0x00a6 A[FALL_THROUGH] */
-    /* JADX WARN: Code duplicated, block: B:64:0x00b2  */
-    /* JADX WARN: Code duplicated, block: B:68:0x00bf  */
-    /* JADX WARN: Code duplicated, block: B:73:0x00d8  */
-    /* JADX WARN: Code duplicated, block: B:75:0x00de  */
-    /* JADX WARN: Code duplicated, block: B:83:0x0100 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:84:0x0102  */
-    /* JADX WARN: Code duplicated, block: B:91:0x012a  */
-    /* JADX WARN: Code duplicated, block: B:93:0x012e  */
     @Override // defpackage.l00
-    public final void h(j00 j00Var) {
-        boolean z2;
-        int i;
-        int[] iArr;
-        int i2;
-        int i3;
-        int i4;
-        ArrayList arrayList;
-        int iMin;
-        ByteBuffer byteBuffer = j00Var.r;
-        byteBuffer.getClass();
-        byte[] bArrArray = byteBuffer.array();
-        int iLimit = byteBuffer.limit();
-        be3 be3Var = this.h;
-        be3Var.L(iLimit, bArrArray);
-        boolean z3 = false;
-        while (true) {
-            int iA = be3Var.a();
-            int i5 = this.i;
-            if (iA < i5) {
-                if (z3) {
-                    int i6 = this.q;
-                    if (i6 == 1 || i6 == 3) {
-                        this.o = k();
-                        this.y = this.e;
-                        return;
-                    }
-                    return;
-                }
-                return;
-            }
-            int iA2 = i5 == 2 ? -4 : be3Var.A();
-            int iA3 = be3Var.A();
-            int iA4 = be3Var.A();
-            if ((iA2 & 2) == 0 && (iA2 & 1) == this.j) {
-                byte b = (byte) (iA3 & 127);
-                byte b2 = (byte) (iA4 & 127);
-                if (b != 0 || b2 != 0) {
-                    boolean z4 = this.s;
-                    if ((iA2 & 4) == 4) {
-                        boolean[] zArr = G;
-                        if (zArr[iA3] && zArr[iA4]) {
-                            z2 = true;
-                        } else {
-                            z2 = false;
-                        }
-                    } else {
-                        z2 = false;
-                    }
-                    this.s = z2;
-                    if (!z2 || (b & 240) != 16) {
-                        this.t = false;
-                        if (!z2) {
-                            if (1 > b && b <= 15) {
-                                this.x = false;
-                            } else if ((b & 246) == 20) {
-                                if (b2 == 32 && b2 != 47) {
-                                    switch (b2) {
-                                        default:
-                                            switch (b2) {
-                                                case 42:
-                                                case 43:
-                                                    this.x = false;
-                                                    break;
-                                            }
-                                        case 37:
-                                        case 38:
-                                        case 39:
-                                            this.x = true;
-                                            break;
-                                    }
-                                } else {
-                                    this.x = true;
-                                }
-                            }
-                            if (this.x) {
-                                i = b & 224;
-                                if (i == 0) {
-                                    this.w = (b >> 3) & 1;
-                                }
-                                if (this.w != this.k) {
-                                    if (i == 0) {
-                                        i2 = b & 247;
-                                        if (i2 == 17 || (b2 & 240) != 48) {
-                                            i3 = b & 246;
-                                            if (i3 != 18 && (b2 & 224) == 32) {
-                                                this.n.b();
-                                                this.n.a((char) ((b & 1) == 0 ? E[b2 & 31] : F[b2 & 31]));
-                                            } else if (i2 != 17 && (b2 & 240) == 32) {
-                                                this.n.a(' ');
-                                                boolean z5 = (b2 & 1) == 1;
-                                                d00 d00Var = this.n;
-                                                d00Var.a.add(new c00((b2 >> 1) & 7, d00Var.c.length(), z5));
-                                            } else if ((b & 240) != 16 && (b2 & 192) == 64) {
-                                                int i7 = z[b & 7];
-                                                if ((b2 & 32) != 0) {
-                                                    i7++;
-                                                }
-                                                d00 d00Var2 = this.n;
-                                                if (i7 != d00Var2.d) {
-                                                    if (this.q != 1 && !d00Var2.e()) {
-                                                        d00 d00Var3 = new d00(this.q, this.r);
-                                                        this.n = d00Var3;
-                                                        this.m.add(d00Var3);
-                                                    }
-                                                    this.n.d = i7;
-                                                }
-                                                boolean z6 = (b2 & 16) == 16;
-                                                boolean z7 = (b2 & 1) == 1;
-                                                int i8 = (b2 >> 1) & 7;
-                                                d00 d00Var4 = this.n;
-                                                d00Var4.a.add(new c00(z6 ? 8 : i8, d00Var4.c.length(), z7));
-                                                if (z6) {
-                                                    this.n.e = A[i8];
-                                                }
-                                            } else if (i2 != 23 && b2 >= 33 && b2 <= 35) {
-                                                this.n.f = b2 - 32;
-                                            } else if (i3 == 20 && (b2 & 240) == 32) {
-                                                if (b2 == 32) {
-                                                    m(2);
-                                                } else if (b2 != 41) {
-                                                    switch (b2) {
-                                                        case 37:
-                                                            m(1);
-                                                            this.r = 2;
-                                                            this.n.h = 2;
-                                                            break;
-                                                        case 38:
-                                                            m(1);
-                                                            this.r = 3;
-                                                            this.n.h = 3;
-                                                            break;
-                                                        case 39:
-                                                            m(1);
-                                                            this.r = 4;
-                                                            this.n.h = 4;
-                                                            break;
-                                                        default:
-                                                            i4 = this.q;
-                                                            if (i4 != 0) {
-                                                                if (b2 != 33) {
-                                                                    switch (b2) {
-                                                                        case 44:
-                                                                            this.o = Collections.EMPTY_LIST;
-                                                                            if (i4 != 1 || i4 == 3) {
-                                                                                l();
-                                                                            }
-                                                                            break;
-                                                                        case 45:
-                                                                            if (i4 == 1 && !this.n.e()) {
-                                                                                d00 d00Var5 = this.n;
-                                                                                arrayList = d00Var5.b;
-                                                                                arrayList.add(d00Var5.d());
-                                                                                d00Var5.c.setLength(0);
-                                                                                d00Var5.a.clear();
-                                                                                iMin = Math.min(d00Var5.h, d00Var5.d);
-                                                                                while (arrayList.size() >= iMin) {
-                                                                                    arrayList.remove(0);
-                                                                                }
-                                                                            }
-                                                                            break;
-                                                                        case 46:
-                                                                            l();
-                                                                            break;
-                                                                        case 47:
-                                                                            this.o = k();
-                                                                            l();
-                                                                            break;
-                                                                    }
-                                                                } else {
-                                                                    this.n.b();
-                                                                    break;
-                                                                }
-                                                            }
-                                                            break;
-                                                    }
-                                                } else {
-                                                    m(3);
-                                                }
-                                            }
-                                        } else {
-                                            this.n.a((char) D[b2 & 15]);
-                                        }
-                                    } else {
-                                        d00 d00Var6 = this.n;
-                                        iArr = C;
-                                        d00Var6.a((char) iArr[(b & 127) - 32]);
-                                        if ((b2 & 224) != 0) {
-                                            this.n.a((char) iArr[(b2 & 127) - 32]);
-                                        }
-                                    }
-                                    z3 = true;
-                                }
-                            }
-                        } else if (z4) {
-                            l();
-                            z3 = true;
-                        }
-                    } else if (this.t && this.u == b && this.v == b2) {
-                        this.t = false;
-                    } else {
-                        this.t = true;
-                        this.u = b;
-                        this.v = b2;
-                        if (!z2) {
-                            if (1 > b) {
-                                if ((b & 246) == 20) {
-                                    if (b2 == 32) {
-                                        this.x = true;
-                                    } else {
-                                        this.x = true;
-                                    }
-                                }
-                            } else if ((b & 246) == 20) {
-                                if (b2 == 32) {
-                                    this.x = true;
-                                } else {
-                                    this.x = true;
-                                }
-                            }
-                            if (this.x) {
-                                i = b & 224;
-                                if (i == 0) {
-                                    this.w = (b >> 3) & 1;
-                                }
-                                if (this.w != this.k) {
-                                    if (i == 0) {
-                                        i2 = b & 247;
-                                        if (i2 == 17) {
-                                            i3 = b & 246;
-                                            if (i3 != 18) {
-                                                if (i2 != 17) {
-                                                    if ((b & 240) != 16) {
-                                                        if (i2 != 23) {
-                                                            if (i3 == 20) {
-                                                                if (b2 == 32) {
-                                                                    m(2);
-                                                                } else if (b2 != 41) {
-                                                                    switch (b2) {
-                                                                        case 37:
-                                                                            m(1);
-                                                                            this.r = 2;
-                                                                            this.n.h = 2;
-                                                                            break;
-                                                                        case 38:
-                                                                            m(1);
-                                                                            this.r = 3;
-                                                                            this.n.h = 3;
-                                                                            break;
-                                                                        case 39:
-                                                                            m(1);
-                                                                            this.r = 4;
-                                                                            this.n.h = 4;
-                                                                            break;
-                                                                        default:
-                                                                            i4 = this.q;
-                                                                            if (i4 != 0) {
-                                                                                if (b2 != 33) {
-                                                                                    switch (b2) {
-                                                                                        case 44:
-                                                                                            this.o = Collections.EMPTY_LIST;
-                                                                                            if (i4 != 1) {
-                                                                                                l();
-                                                                                            } else {
-                                                                                                l();
-                                                                                            }
-                                                                                            break;
-                                                                                        case 45:
-                                                                                            if (i4 == 1) {
-                                                                                                d00 d00Var7 = this.n;
-                                                                                                arrayList = d00Var7.b;
-                                                                                                arrayList.add(d00Var7.d());
-                                                                                                d00Var7.c.setLength(0);
-                                                                                                d00Var7.a.clear();
-                                                                                                iMin = Math.min(d00Var7.h, d00Var7.d);
-                                                                                                while (arrayList.size() >= iMin) {
-                                                                                                    arrayList.remove(0);
-                                                                                                }
-                                                                                            }
-                                                                                            break;
-                                                                                        case 46:
-                                                                                            l();
-                                                                                            break;
-                                                                                        case 47:
-                                                                                            this.o = k();
-                                                                                            l();
-                                                                                            break;
-                                                                                    }
-                                                                                } else {
-                                                                                    this.n.b();
-                                                                                    break;
-                                                                                }
-                                                                            }
-                                                                            break;
-                                                                    }
-                                                                } else {
-                                                                    m(3);
-                                                                }
-                                                            }
-                                                        } else if (i3 == 20) {
-                                                            if (b2 == 32) {
-                                                                m(2);
-                                                            } else if (b2 != 41) {
-                                                                switch (b2) {
-                                                                    case 37:
-                                                                        m(1);
-                                                                        this.r = 2;
-                                                                        this.n.h = 2;
-                                                                        break;
-                                                                    case 38:
-                                                                        m(1);
-                                                                        this.r = 3;
-                                                                        this.n.h = 3;
-                                                                        break;
-                                                                    case 39:
-                                                                        m(1);
-                                                                        this.r = 4;
-                                                                        this.n.h = 4;
-                                                                        break;
-                                                                    default:
-                                                                        i4 = this.q;
-                                                                        if (i4 != 0) {
-                                                                            if (b2 != 33) {
-                                                                                switch (b2) {
-                                                                                    case 44:
-                                                                                        this.o = Collections.EMPTY_LIST;
-                                                                                        if (i4 != 1) {
-                                                                                            l();
-                                                                                        } else {
-                                                                                            l();
-                                                                                        }
-                                                                                        break;
-                                                                                    case 45:
-                                                                                        if (i4 == 1) {
-                                                                                            d00 d00Var8 = this.n;
-                                                                                            arrayList = d00Var8.b;
-                                                                                            arrayList.add(d00Var8.d());
-                                                                                            d00Var8.c.setLength(0);
-                                                                                            d00Var8.a.clear();
-                                                                                            iMin = Math.min(d00Var8.h, d00Var8.d);
-                                                                                            while (arrayList.size() >= iMin) {
-                                                                                                arrayList.remove(0);
-                                                                                            }
-                                                                                        }
-                                                                                        break;
-                                                                                    case 46:
-                                                                                        l();
-                                                                                        break;
-                                                                                    case 47:
-                                                                                        this.o = k();
-                                                                                        l();
-                                                                                        break;
-                                                                                }
-                                                                            } else {
-                                                                                this.n.b();
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                        break;
-                                                                }
-                                                            } else {
-                                                                m(3);
-                                                            }
-                                                        }
-                                                    } else if (i2 != 23) {
-                                                        if (i3 == 20) {
-                                                            if (b2 == 32) {
-                                                                m(2);
-                                                            } else if (b2 != 41) {
-                                                                switch (b2) {
-                                                                    case 37:
-                                                                        m(1);
-                                                                        this.r = 2;
-                                                                        this.n.h = 2;
-                                                                        break;
-                                                                    case 38:
-                                                                        m(1);
-                                                                        this.r = 3;
-                                                                        this.n.h = 3;
-                                                                        break;
-                                                                    case 39:
-                                                                        m(1);
-                                                                        this.r = 4;
-                                                                        this.n.h = 4;
-                                                                        break;
-                                                                    default:
-                                                                        i4 = this.q;
-                                                                        if (i4 != 0) {
-                                                                            if (b2 != 33) {
-                                                                                switch (b2) {
-                                                                                    case 44:
-                                                                                        this.o = Collections.EMPTY_LIST;
-                                                                                        if (i4 != 1) {
-                                                                                            l();
-                                                                                        } else {
-                                                                                            l();
-                                                                                        }
-                                                                                        break;
-                                                                                    case 45:
-                                                                                        if (i4 == 1) {
-                                                                                            d00 d00Var9 = this.n;
-                                                                                            arrayList = d00Var9.b;
-                                                                                            arrayList.add(d00Var9.d());
-                                                                                            d00Var9.c.setLength(0);
-                                                                                            d00Var9.a.clear();
-                                                                                            iMin = Math.min(d00Var9.h, d00Var9.d);
-                                                                                            while (arrayList.size() >= iMin) {
-                                                                                                arrayList.remove(0);
-                                                                                            }
-                                                                                        }
-                                                                                        break;
-                                                                                    case 46:
-                                                                                        l();
-                                                                                        break;
-                                                                                    case 47:
-                                                                                        this.o = k();
-                                                                                        l();
-                                                                                        break;
-                                                                                }
-                                                                            } else {
-                                                                                this.n.b();
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                        break;
-                                                                }
-                                                            } else {
-                                                                m(3);
-                                                            }
-                                                        }
-                                                    } else if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var10 = this.n;
-                                                                                        arrayList = d00Var10.b;
-                                                                                        arrayList.add(d00Var10.d());
-                                                                                        d00Var10.c.setLength(0);
-                                                                                        d00Var10.a.clear();
-                                                                                        iMin = Math.min(d00Var10.h, d00Var10.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if ((b & 240) != 16) {
-                                                    if (i2 != 23) {
-                                                        if (i3 == 20) {
-                                                            if (b2 == 32) {
-                                                                m(2);
-                                                            } else if (b2 != 41) {
-                                                                switch (b2) {
-                                                                    case 37:
-                                                                        m(1);
-                                                                        this.r = 2;
-                                                                        this.n.h = 2;
-                                                                        break;
-                                                                    case 38:
-                                                                        m(1);
-                                                                        this.r = 3;
-                                                                        this.n.h = 3;
-                                                                        break;
-                                                                    case 39:
-                                                                        m(1);
-                                                                        this.r = 4;
-                                                                        this.n.h = 4;
-                                                                        break;
-                                                                    default:
-                                                                        i4 = this.q;
-                                                                        if (i4 != 0) {
-                                                                            if (b2 != 33) {
-                                                                                switch (b2) {
-                                                                                    case 44:
-                                                                                        this.o = Collections.EMPTY_LIST;
-                                                                                        if (i4 != 1) {
-                                                                                            l();
-                                                                                        } else {
-                                                                                            l();
-                                                                                        }
-                                                                                        break;
-                                                                                    case 45:
-                                                                                        if (i4 == 1) {
-                                                                                            d00 d00Var11 = this.n;
-                                                                                            arrayList = d00Var11.b;
-                                                                                            arrayList.add(d00Var11.d());
-                                                                                            d00Var11.c.setLength(0);
-                                                                                            d00Var11.a.clear();
-                                                                                            iMin = Math.min(d00Var11.h, d00Var11.d);
-                                                                                            while (arrayList.size() >= iMin) {
-                                                                                                arrayList.remove(0);
-                                                                                            }
-                                                                                        }
-                                                                                        break;
-                                                                                    case 46:
-                                                                                        l();
-                                                                                        break;
-                                                                                    case 47:
-                                                                                        this.o = k();
-                                                                                        l();
-                                                                                        break;
-                                                                                }
-                                                                            } else {
-                                                                                this.n.b();
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                        break;
-                                                                }
-                                                            } else {
-                                                                m(3);
-                                                            }
-                                                        }
-                                                    } else if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var12 = this.n;
-                                                                                        arrayList = d00Var12.b;
-                                                                                        arrayList.add(d00Var12.d());
-                                                                                        d00Var12.c.setLength(0);
-                                                                                        d00Var12.a.clear();
-                                                                                        iMin = Math.min(d00Var12.h, d00Var12.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if (i2 != 23) {
-                                                    if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var13 = this.n;
-                                                                                        arrayList = d00Var13.b;
-                                                                                        arrayList.add(d00Var13.d());
-                                                                                        d00Var13.c.setLength(0);
-                                                                                        d00Var13.a.clear();
-                                                                                        iMin = Math.min(d00Var13.h, d00Var13.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if (i3 == 20) {
-                                                    if (b2 == 32) {
-                                                        m(2);
-                                                    } else if (b2 != 41) {
-                                                        switch (b2) {
-                                                            case 37:
-                                                                m(1);
-                                                                this.r = 2;
-                                                                this.n.h = 2;
-                                                                break;
-                                                            case 38:
-                                                                m(1);
-                                                                this.r = 3;
-                                                                this.n.h = 3;
-                                                                break;
-                                                            case 39:
-                                                                m(1);
-                                                                this.r = 4;
-                                                                this.n.h = 4;
-                                                                break;
-                                                            default:
-                                                                i4 = this.q;
-                                                                if (i4 != 0) {
-                                                                    if (b2 != 33) {
-                                                                        switch (b2) {
-                                                                            case 44:
-                                                                                this.o = Collections.EMPTY_LIST;
-                                                                                if (i4 != 1) {
-                                                                                    l();
-                                                                                } else {
-                                                                                    l();
-                                                                                }
-                                                                                break;
-                                                                            case 45:
-                                                                                if (i4 == 1) {
-                                                                                    d00 d00Var14 = this.n;
-                                                                                    arrayList = d00Var14.b;
-                                                                                    arrayList.add(d00Var14.d());
-                                                                                    d00Var14.c.setLength(0);
-                                                                                    d00Var14.a.clear();
-                                                                                    iMin = Math.min(d00Var14.h, d00Var14.d);
-                                                                                    while (arrayList.size() >= iMin) {
-                                                                                        arrayList.remove(0);
-                                                                                    }
-                                                                                }
-                                                                                break;
-                                                                            case 46:
-                                                                                l();
-                                                                                break;
-                                                                            case 47:
-                                                                                this.o = k();
-                                                                                l();
-                                                                                break;
-                                                                        }
-                                                                    } else {
-                                                                        this.n.b();
-                                                                        break;
-                                                                    }
-                                                                }
-                                                                break;
-                                                        }
-                                                    } else {
-                                                        m(3);
-                                                    }
-                                                }
-                                            } else if (i2 != 17) {
-                                                if ((b & 240) != 16) {
-                                                    if (i2 != 23) {
-                                                        if (i3 == 20) {
-                                                            if (b2 == 32) {
-                                                                m(2);
-                                                            } else if (b2 != 41) {
-                                                                switch (b2) {
-                                                                    case 37:
-                                                                        m(1);
-                                                                        this.r = 2;
-                                                                        this.n.h = 2;
-                                                                        break;
-                                                                    case 38:
-                                                                        m(1);
-                                                                        this.r = 3;
-                                                                        this.n.h = 3;
-                                                                        break;
-                                                                    case 39:
-                                                                        m(1);
-                                                                        this.r = 4;
-                                                                        this.n.h = 4;
-                                                                        break;
-                                                                    default:
-                                                                        i4 = this.q;
-                                                                        if (i4 != 0) {
-                                                                            if (b2 != 33) {
-                                                                                switch (b2) {
-                                                                                    case 44:
-                                                                                        this.o = Collections.EMPTY_LIST;
-                                                                                        if (i4 != 1) {
-                                                                                            l();
-                                                                                        } else {
-                                                                                            l();
-                                                                                        }
-                                                                                        break;
-                                                                                    case 45:
-                                                                                        if (i4 == 1) {
-                                                                                            d00 d00Var15 = this.n;
-                                                                                            arrayList = d00Var15.b;
-                                                                                            arrayList.add(d00Var15.d());
-                                                                                            d00Var15.c.setLength(0);
-                                                                                            d00Var15.a.clear();
-                                                                                            iMin = Math.min(d00Var15.h, d00Var15.d);
-                                                                                            while (arrayList.size() >= iMin) {
-                                                                                                arrayList.remove(0);
-                                                                                            }
-                                                                                        }
-                                                                                        break;
-                                                                                    case 46:
-                                                                                        l();
-                                                                                        break;
-                                                                                    case 47:
-                                                                                        this.o = k();
-                                                                                        l();
-                                                                                        break;
-                                                                                }
-                                                                            } else {
-                                                                                this.n.b();
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                        break;
-                                                                }
-                                                            } else {
-                                                                m(3);
-                                                            }
-                                                        }
-                                                    } else if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var16 = this.n;
-                                                                                        arrayList = d00Var16.b;
-                                                                                        arrayList.add(d00Var16.d());
-                                                                                        d00Var16.c.setLength(0);
-                                                                                        d00Var16.a.clear();
-                                                                                        iMin = Math.min(d00Var16.h, d00Var16.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if (i2 != 23) {
-                                                    if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var17 = this.n;
-                                                                                        arrayList = d00Var17.b;
-                                                                                        arrayList.add(d00Var17.d());
-                                                                                        d00Var17.c.setLength(0);
-                                                                                        d00Var17.a.clear();
-                                                                                        iMin = Math.min(d00Var17.h, d00Var17.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if (i3 == 20) {
-                                                    if (b2 == 32) {
-                                                        m(2);
-                                                    } else if (b2 != 41) {
-                                                        switch (b2) {
-                                                            case 37:
-                                                                m(1);
-                                                                this.r = 2;
-                                                                this.n.h = 2;
-                                                                break;
-                                                            case 38:
-                                                                m(1);
-                                                                this.r = 3;
-                                                                this.n.h = 3;
-                                                                break;
-                                                            case 39:
-                                                                m(1);
-                                                                this.r = 4;
-                                                                this.n.h = 4;
-                                                                break;
-                                                            default:
-                                                                i4 = this.q;
-                                                                if (i4 != 0) {
-                                                                    if (b2 != 33) {
-                                                                        switch (b2) {
-                                                                            case 44:
-                                                                                this.o = Collections.EMPTY_LIST;
-                                                                                if (i4 != 1) {
-                                                                                    l();
-                                                                                } else {
-                                                                                    l();
-                                                                                }
-                                                                                break;
-                                                                            case 45:
-                                                                                if (i4 == 1) {
-                                                                                    d00 d00Var18 = this.n;
-                                                                                    arrayList = d00Var18.b;
-                                                                                    arrayList.add(d00Var18.d());
-                                                                                    d00Var18.c.setLength(0);
-                                                                                    d00Var18.a.clear();
-                                                                                    iMin = Math.min(d00Var18.h, d00Var18.d);
-                                                                                    while (arrayList.size() >= iMin) {
-                                                                                        arrayList.remove(0);
-                                                                                    }
-                                                                                }
-                                                                                break;
-                                                                            case 46:
-                                                                                l();
-                                                                                break;
-                                                                            case 47:
-                                                                                this.o = k();
-                                                                                l();
-                                                                                break;
-                                                                        }
-                                                                    } else {
-                                                                        this.n.b();
-                                                                        break;
-                                                                    }
-                                                                }
-                                                                break;
-                                                        }
-                                                    } else {
-                                                        m(3);
-                                                    }
-                                                }
-                                            } else if ((b & 240) != 16) {
-                                                if (i2 != 23) {
-                                                    if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var19 = this.n;
-                                                                                        arrayList = d00Var19.b;
-                                                                                        arrayList.add(d00Var19.d());
-                                                                                        d00Var19.c.setLength(0);
-                                                                                        d00Var19.a.clear();
-                                                                                        iMin = Math.min(d00Var19.h, d00Var19.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if (i3 == 20) {
-                                                    if (b2 == 32) {
-                                                        m(2);
-                                                    } else if (b2 != 41) {
-                                                        switch (b2) {
-                                                            case 37:
-                                                                m(1);
-                                                                this.r = 2;
-                                                                this.n.h = 2;
-                                                                break;
-                                                            case 38:
-                                                                m(1);
-                                                                this.r = 3;
-                                                                this.n.h = 3;
-                                                                break;
-                                                            case 39:
-                                                                m(1);
-                                                                this.r = 4;
-                                                                this.n.h = 4;
-                                                                break;
-                                                            default:
-                                                                i4 = this.q;
-                                                                if (i4 != 0) {
-                                                                    if (b2 != 33) {
-                                                                        switch (b2) {
-                                                                            case 44:
-                                                                                this.o = Collections.EMPTY_LIST;
-                                                                                if (i4 != 1) {
-                                                                                    l();
-                                                                                } else {
-                                                                                    l();
-                                                                                }
-                                                                                break;
-                                                                            case 45:
-                                                                                if (i4 == 1) {
-                                                                                    d00 d00Var110 = this.n;
-                                                                                    arrayList = d00Var110.b;
-                                                                                    arrayList.add(d00Var110.d());
-                                                                                    d00Var110.c.setLength(0);
-                                                                                    d00Var110.a.clear();
-                                                                                    iMin = Math.min(d00Var110.h, d00Var110.d);
-                                                                                    while (arrayList.size() >= iMin) {
-                                                                                        arrayList.remove(0);
-                                                                                    }
-                                                                                }
-                                                                                break;
-                                                                            case 46:
-                                                                                l();
-                                                                                break;
-                                                                            case 47:
-                                                                                this.o = k();
-                                                                                l();
-                                                                                break;
-                                                                        }
-                                                                    } else {
-                                                                        this.n.b();
-                                                                        break;
-                                                                    }
-                                                                }
-                                                                break;
-                                                        }
-                                                    } else {
-                                                        m(3);
-                                                    }
-                                                }
-                                            } else if (i2 != 23) {
-                                                if (i3 == 20) {
-                                                    if (b2 == 32) {
-                                                        m(2);
-                                                    } else if (b2 != 41) {
-                                                        switch (b2) {
-                                                            case 37:
-                                                                m(1);
-                                                                this.r = 2;
-                                                                this.n.h = 2;
-                                                                break;
-                                                            case 38:
-                                                                m(1);
-                                                                this.r = 3;
-                                                                this.n.h = 3;
-                                                                break;
-                                                            case 39:
-                                                                m(1);
-                                                                this.r = 4;
-                                                                this.n.h = 4;
-                                                                break;
-                                                            default:
-                                                                i4 = this.q;
-                                                                if (i4 != 0) {
-                                                                    if (b2 != 33) {
-                                                                        switch (b2) {
-                                                                            case 44:
-                                                                                this.o = Collections.EMPTY_LIST;
-                                                                                if (i4 != 1) {
-                                                                                    l();
-                                                                                } else {
-                                                                                    l();
-                                                                                }
-                                                                                break;
-                                                                            case 45:
-                                                                                if (i4 == 1) {
-                                                                                    d00 d00Var111 = this.n;
-                                                                                    arrayList = d00Var111.b;
-                                                                                    arrayList.add(d00Var111.d());
-                                                                                    d00Var111.c.setLength(0);
-                                                                                    d00Var111.a.clear();
-                                                                                    iMin = Math.min(d00Var111.h, d00Var111.d);
-                                                                                    while (arrayList.size() >= iMin) {
-                                                                                        arrayList.remove(0);
-                                                                                    }
-                                                                                }
-                                                                                break;
-                                                                            case 46:
-                                                                                l();
-                                                                                break;
-                                                                            case 47:
-                                                                                this.o = k();
-                                                                                l();
-                                                                                break;
-                                                                        }
-                                                                    } else {
-                                                                        this.n.b();
-                                                                        break;
-                                                                    }
-                                                                }
-                                                                break;
-                                                        }
-                                                    } else {
-                                                        m(3);
-                                                    }
-                                                }
-                                            } else if (i3 == 20) {
-                                                if (b2 == 32) {
-                                                    m(2);
-                                                } else if (b2 != 41) {
-                                                    switch (b2) {
-                                                        case 37:
-                                                            m(1);
-                                                            this.r = 2;
-                                                            this.n.h = 2;
-                                                            break;
-                                                        case 38:
-                                                            m(1);
-                                                            this.r = 3;
-                                                            this.n.h = 3;
-                                                            break;
-                                                        case 39:
-                                                            m(1);
-                                                            this.r = 4;
-                                                            this.n.h = 4;
-                                                            break;
-                                                        default:
-                                                            i4 = this.q;
-                                                            if (i4 != 0) {
-                                                                if (b2 != 33) {
-                                                                    switch (b2) {
-                                                                        case 44:
-                                                                            this.o = Collections.EMPTY_LIST;
-                                                                            if (i4 != 1) {
-                                                                                l();
-                                                                            } else {
-                                                                                l();
-                                                                            }
-                                                                            break;
-                                                                        case 45:
-                                                                            if (i4 == 1) {
-                                                                                d00 d00Var112 = this.n;
-                                                                                arrayList = d00Var112.b;
-                                                                                arrayList.add(d00Var112.d());
-                                                                                d00Var112.c.setLength(0);
-                                                                                d00Var112.a.clear();
-                                                                                iMin = Math.min(d00Var112.h, d00Var112.d);
-                                                                                while (arrayList.size() >= iMin) {
-                                                                                    arrayList.remove(0);
-                                                                                }
-                                                                            }
-                                                                            break;
-                                                                        case 46:
-                                                                            l();
-                                                                            break;
-                                                                        case 47:
-                                                                            this.o = k();
-                                                                            l();
-                                                                            break;
-                                                                    }
-                                                                } else {
-                                                                    this.n.b();
-                                                                    break;
-                                                                }
-                                                            }
-                                                            break;
-                                                    }
-                                                } else {
-                                                    m(3);
-                                                }
-                                            }
-                                        } else {
-                                            i3 = b & 246;
-                                            if (i3 != 18) {
-                                                if (i2 != 17) {
-                                                    if ((b & 240) != 16) {
-                                                        if (i2 != 23) {
-                                                            if (i3 == 20) {
-                                                                if (b2 == 32) {
-                                                                    m(2);
-                                                                } else if (b2 != 41) {
-                                                                    switch (b2) {
-                                                                        case 37:
-                                                                            m(1);
-                                                                            this.r = 2;
-                                                                            this.n.h = 2;
-                                                                            break;
-                                                                        case 38:
-                                                                            m(1);
-                                                                            this.r = 3;
-                                                                            this.n.h = 3;
-                                                                            break;
-                                                                        case 39:
-                                                                            m(1);
-                                                                            this.r = 4;
-                                                                            this.n.h = 4;
-                                                                            break;
-                                                                        default:
-                                                                            i4 = this.q;
-                                                                            if (i4 != 0) {
-                                                                                if (b2 != 33) {
-                                                                                    switch (b2) {
-                                                                                        case 44:
-                                                                                            this.o = Collections.EMPTY_LIST;
-                                                                                            if (i4 != 1) {
-                                                                                                l();
-                                                                                            } else {
-                                                                                                l();
-                                                                                            }
-                                                                                            break;
-                                                                                        case 45:
-                                                                                            if (i4 == 1) {
-                                                                                                d00 d00Var113 = this.n;
-                                                                                                arrayList = d00Var113.b;
-                                                                                                arrayList.add(d00Var113.d());
-                                                                                                d00Var113.c.setLength(0);
-                                                                                                d00Var113.a.clear();
-                                                                                                iMin = Math.min(d00Var113.h, d00Var113.d);
-                                                                                                while (arrayList.size() >= iMin) {
-                                                                                                    arrayList.remove(0);
-                                                                                                }
-                                                                                            }
-                                                                                            break;
-                                                                                        case 46:
-                                                                                            l();
-                                                                                            break;
-                                                                                        case 47:
-                                                                                            this.o = k();
-                                                                                            l();
-                                                                                            break;
-                                                                                    }
-                                                                                } else {
-                                                                                    this.n.b();
-                                                                                    break;
-                                                                                }
-                                                                            }
-                                                                            break;
-                                                                    }
-                                                                } else {
-                                                                    m(3);
-                                                                }
-                                                            }
-                                                        } else if (i3 == 20) {
-                                                            if (b2 == 32) {
-                                                                m(2);
-                                                            } else if (b2 != 41) {
-                                                                switch (b2) {
-                                                                    case 37:
-                                                                        m(1);
-                                                                        this.r = 2;
-                                                                        this.n.h = 2;
-                                                                        break;
-                                                                    case 38:
-                                                                        m(1);
-                                                                        this.r = 3;
-                                                                        this.n.h = 3;
-                                                                        break;
-                                                                    case 39:
-                                                                        m(1);
-                                                                        this.r = 4;
-                                                                        this.n.h = 4;
-                                                                        break;
-                                                                    default:
-                                                                        i4 = this.q;
-                                                                        if (i4 != 0) {
-                                                                            if (b2 != 33) {
-                                                                                switch (b2) {
-                                                                                    case 44:
-                                                                                        this.o = Collections.EMPTY_LIST;
-                                                                                        if (i4 != 1) {
-                                                                                            l();
-                                                                                        } else {
-                                                                                            l();
-                                                                                        }
-                                                                                        break;
-                                                                                    case 45:
-                                                                                        if (i4 == 1) {
-                                                                                            d00 d00Var114 = this.n;
-                                                                                            arrayList = d00Var114.b;
-                                                                                            arrayList.add(d00Var114.d());
-                                                                                            d00Var114.c.setLength(0);
-                                                                                            d00Var114.a.clear();
-                                                                                            iMin = Math.min(d00Var114.h, d00Var114.d);
-                                                                                            while (arrayList.size() >= iMin) {
-                                                                                                arrayList.remove(0);
-                                                                                            }
-                                                                                        }
-                                                                                        break;
-                                                                                    case 46:
-                                                                                        l();
-                                                                                        break;
-                                                                                    case 47:
-                                                                                        this.o = k();
-                                                                                        l();
-                                                                                        break;
-                                                                                }
-                                                                            } else {
-                                                                                this.n.b();
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                        break;
-                                                                }
-                                                            } else {
-                                                                m(3);
-                                                            }
-                                                        }
-                                                    } else if (i2 != 23) {
-                                                        if (i3 == 20) {
-                                                            if (b2 == 32) {
-                                                                m(2);
-                                                            } else if (b2 != 41) {
-                                                                switch (b2) {
-                                                                    case 37:
-                                                                        m(1);
-                                                                        this.r = 2;
-                                                                        this.n.h = 2;
-                                                                        break;
-                                                                    case 38:
-                                                                        m(1);
-                                                                        this.r = 3;
-                                                                        this.n.h = 3;
-                                                                        break;
-                                                                    case 39:
-                                                                        m(1);
-                                                                        this.r = 4;
-                                                                        this.n.h = 4;
-                                                                        break;
-                                                                    default:
-                                                                        i4 = this.q;
-                                                                        if (i4 != 0) {
-                                                                            if (b2 != 33) {
-                                                                                switch (b2) {
-                                                                                    case 44:
-                                                                                        this.o = Collections.EMPTY_LIST;
-                                                                                        if (i4 != 1) {
-                                                                                            l();
-                                                                                        } else {
-                                                                                            l();
-                                                                                        }
-                                                                                        break;
-                                                                                    case 45:
-                                                                                        if (i4 == 1) {
-                                                                                            d00 d00Var115 = this.n;
-                                                                                            arrayList = d00Var115.b;
-                                                                                            arrayList.add(d00Var115.d());
-                                                                                            d00Var115.c.setLength(0);
-                                                                                            d00Var115.a.clear();
-                                                                                            iMin = Math.min(d00Var115.h, d00Var115.d);
-                                                                                            while (arrayList.size() >= iMin) {
-                                                                                                arrayList.remove(0);
-                                                                                            }
-                                                                                        }
-                                                                                        break;
-                                                                                    case 46:
-                                                                                        l();
-                                                                                        break;
-                                                                                    case 47:
-                                                                                        this.o = k();
-                                                                                        l();
-                                                                                        break;
-                                                                                }
-                                                                            } else {
-                                                                                this.n.b();
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                        break;
-                                                                }
-                                                            } else {
-                                                                m(3);
-                                                            }
-                                                        }
-                                                    } else if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var116 = this.n;
-                                                                                        arrayList = d00Var116.b;
-                                                                                        arrayList.add(d00Var116.d());
-                                                                                        d00Var116.c.setLength(0);
-                                                                                        d00Var116.a.clear();
-                                                                                        iMin = Math.min(d00Var116.h, d00Var116.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if ((b & 240) != 16) {
-                                                    if (i2 != 23) {
-                                                        if (i3 == 20) {
-                                                            if (b2 == 32) {
-                                                                m(2);
-                                                            } else if (b2 != 41) {
-                                                                switch (b2) {
-                                                                    case 37:
-                                                                        m(1);
-                                                                        this.r = 2;
-                                                                        this.n.h = 2;
-                                                                        break;
-                                                                    case 38:
-                                                                        m(1);
-                                                                        this.r = 3;
-                                                                        this.n.h = 3;
-                                                                        break;
-                                                                    case 39:
-                                                                        m(1);
-                                                                        this.r = 4;
-                                                                        this.n.h = 4;
-                                                                        break;
-                                                                    default:
-                                                                        i4 = this.q;
-                                                                        if (i4 != 0) {
-                                                                            if (b2 != 33) {
-                                                                                switch (b2) {
-                                                                                    case 44:
-                                                                                        this.o = Collections.EMPTY_LIST;
-                                                                                        if (i4 != 1) {
-                                                                                            l();
-                                                                                        } else {
-                                                                                            l();
-                                                                                        }
-                                                                                        break;
-                                                                                    case 45:
-                                                                                        if (i4 == 1) {
-                                                                                            d00 d00Var117 = this.n;
-                                                                                            arrayList = d00Var117.b;
-                                                                                            arrayList.add(d00Var117.d());
-                                                                                            d00Var117.c.setLength(0);
-                                                                                            d00Var117.a.clear();
-                                                                                            iMin = Math.min(d00Var117.h, d00Var117.d);
-                                                                                            while (arrayList.size() >= iMin) {
-                                                                                                arrayList.remove(0);
-                                                                                            }
-                                                                                        }
-                                                                                        break;
-                                                                                    case 46:
-                                                                                        l();
-                                                                                        break;
-                                                                                    case 47:
-                                                                                        this.o = k();
-                                                                                        l();
-                                                                                        break;
-                                                                                }
-                                                                            } else {
-                                                                                this.n.b();
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                        break;
-                                                                }
-                                                            } else {
-                                                                m(3);
-                                                            }
-                                                        }
-                                                    } else if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var118 = this.n;
-                                                                                        arrayList = d00Var118.b;
-                                                                                        arrayList.add(d00Var118.d());
-                                                                                        d00Var118.c.setLength(0);
-                                                                                        d00Var118.a.clear();
-                                                                                        iMin = Math.min(d00Var118.h, d00Var118.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if (i2 != 23) {
-                                                    if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var119 = this.n;
-                                                                                        arrayList = d00Var119.b;
-                                                                                        arrayList.add(d00Var119.d());
-                                                                                        d00Var119.c.setLength(0);
-                                                                                        d00Var119.a.clear();
-                                                                                        iMin = Math.min(d00Var119.h, d00Var119.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if (i3 == 20) {
-                                                    if (b2 == 32) {
-                                                        m(2);
-                                                    } else if (b2 != 41) {
-                                                        switch (b2) {
-                                                            case 37:
-                                                                m(1);
-                                                                this.r = 2;
-                                                                this.n.h = 2;
-                                                                break;
-                                                            case 38:
-                                                                m(1);
-                                                                this.r = 3;
-                                                                this.n.h = 3;
-                                                                break;
-                                                            case 39:
-                                                                m(1);
-                                                                this.r = 4;
-                                                                this.n.h = 4;
-                                                                break;
-                                                            default:
-                                                                i4 = this.q;
-                                                                if (i4 != 0) {
-                                                                    if (b2 != 33) {
-                                                                        switch (b2) {
-                                                                            case 44:
-                                                                                this.o = Collections.EMPTY_LIST;
-                                                                                if (i4 != 1) {
-                                                                                    l();
-                                                                                } else {
-                                                                                    l();
-                                                                                }
-                                                                                break;
-                                                                            case 45:
-                                                                                if (i4 == 1) {
-                                                                                    d00 d00Var1110 = this.n;
-                                                                                    arrayList = d00Var1110.b;
-                                                                                    arrayList.add(d00Var1110.d());
-                                                                                    d00Var1110.c.setLength(0);
-                                                                                    d00Var1110.a.clear();
-                                                                                    iMin = Math.min(d00Var1110.h, d00Var1110.d);
-                                                                                    while (arrayList.size() >= iMin) {
-                                                                                        arrayList.remove(0);
-                                                                                    }
-                                                                                }
-                                                                                break;
-                                                                            case 46:
-                                                                                l();
-                                                                                break;
-                                                                            case 47:
-                                                                                this.o = k();
-                                                                                l();
-                                                                                break;
-                                                                        }
-                                                                    } else {
-                                                                        this.n.b();
-                                                                        break;
-                                                                    }
-                                                                }
-                                                                break;
-                                                        }
-                                                    } else {
-                                                        m(3);
-                                                    }
-                                                }
-                                            } else if (i2 != 17) {
-                                                if ((b & 240) != 16) {
-                                                    if (i2 != 23) {
-                                                        if (i3 == 20) {
-                                                            if (b2 == 32) {
-                                                                m(2);
-                                                            } else if (b2 != 41) {
-                                                                switch (b2) {
-                                                                    case 37:
-                                                                        m(1);
-                                                                        this.r = 2;
-                                                                        this.n.h = 2;
-                                                                        break;
-                                                                    case 38:
-                                                                        m(1);
-                                                                        this.r = 3;
-                                                                        this.n.h = 3;
-                                                                        break;
-                                                                    case 39:
-                                                                        m(1);
-                                                                        this.r = 4;
-                                                                        this.n.h = 4;
-                                                                        break;
-                                                                    default:
-                                                                        i4 = this.q;
-                                                                        if (i4 != 0) {
-                                                                            if (b2 != 33) {
-                                                                                switch (b2) {
-                                                                                    case 44:
-                                                                                        this.o = Collections.EMPTY_LIST;
-                                                                                        if (i4 != 1) {
-                                                                                            l();
-                                                                                        } else {
-                                                                                            l();
-                                                                                        }
-                                                                                        break;
-                                                                                    case 45:
-                                                                                        if (i4 == 1) {
-                                                                                            d00 d00Var1111 = this.n;
-                                                                                            arrayList = d00Var1111.b;
-                                                                                            arrayList.add(d00Var1111.d());
-                                                                                            d00Var1111.c.setLength(0);
-                                                                                            d00Var1111.a.clear();
-                                                                                            iMin = Math.min(d00Var1111.h, d00Var1111.d);
-                                                                                            while (arrayList.size() >= iMin) {
-                                                                                                arrayList.remove(0);
-                                                                                            }
-                                                                                        }
-                                                                                        break;
-                                                                                    case 46:
-                                                                                        l();
-                                                                                        break;
-                                                                                    case 47:
-                                                                                        this.o = k();
-                                                                                        l();
-                                                                                        break;
-                                                                                }
-                                                                            } else {
-                                                                                this.n.b();
-                                                                                break;
-                                                                            }
-                                                                        }
-                                                                        break;
-                                                                }
-                                                            } else {
-                                                                m(3);
-                                                            }
-                                                        }
-                                                    } else if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var1112 = this.n;
-                                                                                        arrayList = d00Var1112.b;
-                                                                                        arrayList.add(d00Var1112.d());
-                                                                                        d00Var1112.c.setLength(0);
-                                                                                        d00Var1112.a.clear();
-                                                                                        iMin = Math.min(d00Var1112.h, d00Var1112.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if (i2 != 23) {
-                                                    if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var1113 = this.n;
-                                                                                        arrayList = d00Var1113.b;
-                                                                                        arrayList.add(d00Var1113.d());
-                                                                                        d00Var1113.c.setLength(0);
-                                                                                        d00Var1113.a.clear();
-                                                                                        iMin = Math.min(d00Var1113.h, d00Var1113.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if (i3 == 20) {
-                                                    if (b2 == 32) {
-                                                        m(2);
-                                                    } else if (b2 != 41) {
-                                                        switch (b2) {
-                                                            case 37:
-                                                                m(1);
-                                                                this.r = 2;
-                                                                this.n.h = 2;
-                                                                break;
-                                                            case 38:
-                                                                m(1);
-                                                                this.r = 3;
-                                                                this.n.h = 3;
-                                                                break;
-                                                            case 39:
-                                                                m(1);
-                                                                this.r = 4;
-                                                                this.n.h = 4;
-                                                                break;
-                                                            default:
-                                                                i4 = this.q;
-                                                                if (i4 != 0) {
-                                                                    if (b2 != 33) {
-                                                                        switch (b2) {
-                                                                            case 44:
-                                                                                this.o = Collections.EMPTY_LIST;
-                                                                                if (i4 != 1) {
-                                                                                    l();
-                                                                                } else {
-                                                                                    l();
-                                                                                }
-                                                                                break;
-                                                                            case 45:
-                                                                                if (i4 == 1) {
-                                                                                    d00 d00Var1114 = this.n;
-                                                                                    arrayList = d00Var1114.b;
-                                                                                    arrayList.add(d00Var1114.d());
-                                                                                    d00Var1114.c.setLength(0);
-                                                                                    d00Var1114.a.clear();
-                                                                                    iMin = Math.min(d00Var1114.h, d00Var1114.d);
-                                                                                    while (arrayList.size() >= iMin) {
-                                                                                        arrayList.remove(0);
-                                                                                    }
-                                                                                }
-                                                                                break;
-                                                                            case 46:
-                                                                                l();
-                                                                                break;
-                                                                            case 47:
-                                                                                this.o = k();
-                                                                                l();
-                                                                                break;
-                                                                        }
-                                                                    } else {
-                                                                        this.n.b();
-                                                                        break;
-                                                                    }
-                                                                }
-                                                                break;
-                                                        }
-                                                    } else {
-                                                        m(3);
-                                                    }
-                                                }
-                                            } else if ((b & 240) != 16) {
-                                                if (i2 != 23) {
-                                                    if (i3 == 20) {
-                                                        if (b2 == 32) {
-                                                            m(2);
-                                                        } else if (b2 != 41) {
-                                                            switch (b2) {
-                                                                case 37:
-                                                                    m(1);
-                                                                    this.r = 2;
-                                                                    this.n.h = 2;
-                                                                    break;
-                                                                case 38:
-                                                                    m(1);
-                                                                    this.r = 3;
-                                                                    this.n.h = 3;
-                                                                    break;
-                                                                case 39:
-                                                                    m(1);
-                                                                    this.r = 4;
-                                                                    this.n.h = 4;
-                                                                    break;
-                                                                default:
-                                                                    i4 = this.q;
-                                                                    if (i4 != 0) {
-                                                                        if (b2 != 33) {
-                                                                            switch (b2) {
-                                                                                case 44:
-                                                                                    this.o = Collections.EMPTY_LIST;
-                                                                                    if (i4 != 1) {
-                                                                                        l();
-                                                                                    } else {
-                                                                                        l();
-                                                                                    }
-                                                                                    break;
-                                                                                case 45:
-                                                                                    if (i4 == 1) {
-                                                                                        d00 d00Var1115 = this.n;
-                                                                                        arrayList = d00Var1115.b;
-                                                                                        arrayList.add(d00Var1115.d());
-                                                                                        d00Var1115.c.setLength(0);
-                                                                                        d00Var1115.a.clear();
-                                                                                        iMin = Math.min(d00Var1115.h, d00Var1115.d);
-                                                                                        while (arrayList.size() >= iMin) {
-                                                                                            arrayList.remove(0);
-                                                                                        }
-                                                                                    }
-                                                                                    break;
-                                                                                case 46:
-                                                                                    l();
-                                                                                    break;
-                                                                                case 47:
-                                                                                    this.o = k();
-                                                                                    l();
-                                                                                    break;
-                                                                            }
-                                                                        } else {
-                                                                            this.n.b();
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            }
-                                                        } else {
-                                                            m(3);
-                                                        }
-                                                    }
-                                                } else if (i3 == 20) {
-                                                    if (b2 == 32) {
-                                                        m(2);
-                                                    } else if (b2 != 41) {
-                                                        switch (b2) {
-                                                            case 37:
-                                                                m(1);
-                                                                this.r = 2;
-                                                                this.n.h = 2;
-                                                                break;
-                                                            case 38:
-                                                                m(1);
-                                                                this.r = 3;
-                                                                this.n.h = 3;
-                                                                break;
-                                                            case 39:
-                                                                m(1);
-                                                                this.r = 4;
-                                                                this.n.h = 4;
-                                                                break;
-                                                            default:
-                                                                i4 = this.q;
-                                                                if (i4 != 0) {
-                                                                    if (b2 != 33) {
-                                                                        switch (b2) {
-                                                                            case 44:
-                                                                                this.o = Collections.EMPTY_LIST;
-                                                                                if (i4 != 1) {
-                                                                                    l();
-                                                                                } else {
-                                                                                    l();
-                                                                                }
-                                                                                break;
-                                                                            case 45:
-                                                                                if (i4 == 1) {
-                                                                                    d00 d00Var1116 = this.n;
-                                                                                    arrayList = d00Var1116.b;
-                                                                                    arrayList.add(d00Var1116.d());
-                                                                                    d00Var1116.c.setLength(0);
-                                                                                    d00Var1116.a.clear();
-                                                                                    iMin = Math.min(d00Var1116.h, d00Var1116.d);
-                                                                                    while (arrayList.size() >= iMin) {
-                                                                                        arrayList.remove(0);
-                                                                                    }
-                                                                                }
-                                                                                break;
-                                                                            case 46:
-                                                                                l();
-                                                                                break;
-                                                                            case 47:
-                                                                                this.o = k();
-                                                                                l();
-                                                                                break;
-                                                                        }
-                                                                    } else {
-                                                                        this.n.b();
-                                                                        break;
-                                                                    }
-                                                                }
-                                                                break;
-                                                        }
-                                                    } else {
-                                                        m(3);
-                                                    }
-                                                }
-                                            } else if (i2 != 23) {
-                                                if (i3 == 20) {
-                                                    if (b2 == 32) {
-                                                        m(2);
-                                                    } else if (b2 != 41) {
-                                                        switch (b2) {
-                                                            case 37:
-                                                                m(1);
-                                                                this.r = 2;
-                                                                this.n.h = 2;
-                                                                break;
-                                                            case 38:
-                                                                m(1);
-                                                                this.r = 3;
-                                                                this.n.h = 3;
-                                                                break;
-                                                            case 39:
-                                                                m(1);
-                                                                this.r = 4;
-                                                                this.n.h = 4;
-                                                                break;
-                                                            default:
-                                                                i4 = this.q;
-                                                                if (i4 != 0) {
-                                                                    if (b2 != 33) {
-                                                                        switch (b2) {
-                                                                            case 44:
-                                                                                this.o = Collections.EMPTY_LIST;
-                                                                                if (i4 != 1) {
-                                                                                    l();
-                                                                                } else {
-                                                                                    l();
-                                                                                }
-                                                                                break;
-                                                                            case 45:
-                                                                                if (i4 == 1) {
-                                                                                    d00 d00Var1117 = this.n;
-                                                                                    arrayList = d00Var1117.b;
-                                                                                    arrayList.add(d00Var1117.d());
-                                                                                    d00Var1117.c.setLength(0);
-                                                                                    d00Var1117.a.clear();
-                                                                                    iMin = Math.min(d00Var1117.h, d00Var1117.d);
-                                                                                    while (arrayList.size() >= iMin) {
-                                                                                        arrayList.remove(0);
-                                                                                    }
-                                                                                }
-                                                                                break;
-                                                                            case 46:
-                                                                                l();
-                                                                                break;
-                                                                            case 47:
-                                                                                this.o = k();
-                                                                                l();
-                                                                                break;
-                                                                        }
-                                                                    } else {
-                                                                        this.n.b();
-                                                                        break;
-                                                                    }
-                                                                }
-                                                                break;
-                                                        }
-                                                    } else {
-                                                        m(3);
-                                                    }
-                                                }
-                                            } else if (i3 == 20) {
-                                                if (b2 == 32) {
-                                                    m(2);
-                                                } else if (b2 != 41) {
-                                                    switch (b2) {
-                                                        case 37:
-                                                            m(1);
-                                                            this.r = 2;
-                                                            this.n.h = 2;
-                                                            break;
-                                                        case 38:
-                                                            m(1);
-                                                            this.r = 3;
-                                                            this.n.h = 3;
-                                                            break;
-                                                        case 39:
-                                                            m(1);
-                                                            this.r = 4;
-                                                            this.n.h = 4;
-                                                            break;
-                                                        default:
-                                                            i4 = this.q;
-                                                            if (i4 != 0) {
-                                                                if (b2 != 33) {
-                                                                    switch (b2) {
-                                                                        case 44:
-                                                                            this.o = Collections.EMPTY_LIST;
-                                                                            if (i4 != 1) {
-                                                                                l();
-                                                                            } else {
-                                                                                l();
-                                                                            }
-                                                                            break;
-                                                                        case 45:
-                                                                            if (i4 == 1) {
-                                                                                d00 d00Var1118 = this.n;
-                                                                                arrayList = d00Var1118.b;
-                                                                                arrayList.add(d00Var1118.d());
-                                                                                d00Var1118.c.setLength(0);
-                                                                                d00Var1118.a.clear();
-                                                                                iMin = Math.min(d00Var1118.h, d00Var1118.d);
-                                                                                while (arrayList.size() >= iMin) {
-                                                                                    arrayList.remove(0);
-                                                                                }
-                                                                            }
-                                                                            break;
-                                                                        case 46:
-                                                                            l();
-                                                                            break;
-                                                                        case 47:
-                                                                            this.o = k();
-                                                                            l();
-                                                                            break;
-                                                                    }
-                                                                } else {
-                                                                    this.n.b();
-                                                                    break;
-                                                                }
-                                                            }
-                                                            break;
-                                                    }
-                                                } else {
-                                                    m(3);
-                                                }
-                                            }
-                                        }
-                                    } else {
-                                        d00 d00Var20 = this.n;
-                                        iArr = C;
-                                        d00Var20.a((char) iArr[(b & 127) - 32]);
-                                        if ((b2 & 224) != 0) {
-                                            this.n.a((char) iArr[(b2 & 127) - 32]);
-                                        }
-                                    }
-                                    z3 = true;
-                                }
-                            }
-                        } else if (z4) {
-                            l();
-                            z3 = true;
-                        }
-                    }
-                }
-            }
-        }
+    public final void h(j00 r15) {
+        ByteBuffer r16 = r15.r;
+        r16.getClass();
+        byte[] r0 = r16.array();
+        int r17 = r16.limit();
+        be3 r1 = this.h;
+        r1.L(r17, r0);
+        boolean r2 = false;
+    L3:
+        int r3 = r1.a();
+        int r5 = this.i;
+        if (r3 < r5) goto L162;
+        if (r5 != 2) goto L8;
+        int r6 = -4;
+    L9:
+        int r7 = r1.A();
+        int r8 = r1.A();
+        if ((r6 & 2) != 0) goto L3;
+        if ((r6 & 1) != this.j) goto L3;
+        byte r9 = (byte) (r7 & 127);
+        byte r10 = (byte) (r8 & 127);
+        if (r9 != 0) goto L19;
+        if (r10 == 0) goto L3;
+    L19:
+        boolean r11 = this.s;
+        if ((r6 & 4) != 4) goto L26;
+        boolean[] r12 = G;
+        if (r12[r7] == false) goto L26;
+        if (r12[r8] == false) goto L26;
+        boolean r13 = true;
+    L27:
+        this.s = r13;
+        if (r13 == false) goto L39;
+        if ((r9 & 240) != 16) goto L39;
+        if (this.t == false) goto L38;
+        if (this.u != r9) goto L38;
+        if (this.v != r10) goto L38;
+        this.t = false;
+    L38:
+        this.t = true;
+        this.u = r9;
+        this.v = r10;
+    L40:
+        if (r13 == false) goto L41;
+        if (1 > r9) goto L50;
+        if (r9 > 15) goto L50;
+        this.x = false;
+    L60:
+        if (this.x == false) goto L3;
+        int r14 = r9 & 224;
+        if (r14 != 0) goto L66;
+        this.w = (r9 >> 3) & 1;
+    L66:
+        if (this.w != this.k) goto L3;
+        if (r14 != 0) goto L159;
+        int r4 = r9 & 247;
+        if (r4 == 17) goto L71;
+    L73:
+        int r18 = r9 & 246;
+        if (r18 == 18) goto L76;
+    L83:
+        if (r4 != 17) goto L92;
+        if ((r10 & 240) != 32) goto L92;
+        this.n.a(' ');
+        if ((r10 & 1) != 1) goto L89;
+        boolean r19 = true;
+    L90:
+        d00 r20 = this.n;
+        r20.a.add(new c00((r10 >> 1) & 7, r20.c.length(), r19));
+    L43:
+        r2 = true;
+        goto L3
+    L89:
+        r19 = false;
+    L92:
+        if ((r9 & 240) != 16) goto L122;
+        if ((r10 & 192) != 64) goto L122;
+        int r21 = z[r9 & 7];
+        if ((r10 & 32) == 0) goto L98;
+        r21 = r21 + 1;
+    L98:
+        d00 r22 = this.n;
+        if (r21 == r22.d) goto L107;
+        if (this.q != 1) goto L103;
+    L105:
+        this.n.d = r21;
+        goto L107
+    L103:
+        if (r22.e() == true) goto L105;
+        d00 r23 = new d00(this.q, this.r);
+        this.n = r23;
+        this.m.add(r23);
+    L107:
+        if ((r10 & 16) != 16) goto L109;
+        boolean r24 = true;
+    L111:
+        if ((r10 & 1) != 1) goto L113;
+        boolean r25 = true;
+    L114:
+        int r26 = (r10 >> 1) & 7;
+        d00 r27 = this.n;
+        if (r24 == false) goto L117;
+        int r28 = 8;
+    L118:
+        r27.a.add(new c00(r28, r27.c.length(), r25));
+        if (r24 == false) goto L43;
+        this.n.e = A[r26];
+        goto L43
+    L117:
+        r28 = r26;
+        goto L118
+    L113:
+        r25 = false;
+        goto L114
+    L109:
+        r24 = false;
+    L122:
+        if (r4 != 23) goto L127;
+        if (r10 < 33) goto L127;
+        if (r10 > 35) goto L127;
+        this.n.f = r10 - 32;
+    L127:
+        if (r18 != 20) goto L43;
+        if ((r10 & 240) != 32) goto L43;
+        if (r10 != 32) goto L132;
+        m(2);
+        goto L43
+    L132:
+        if (r10 == 41) goto L157;
+        switch(r10) {
+            case 37: goto L156;
+            case 38: goto L155;
+            case 39: goto L154;
+            default: goto L134;
+        };
+    L134:
+        int r29 = this.q;
+        if (r29 == 0) goto L43;
+        if (r10 == 33) goto L153;
+        switch(r10) {
+            case 44: goto L149;
+            case 45: goto L142;
+            case 46: goto L141;
+            case 47: goto L140;
+            default: goto L43;
+        };
+    L140:
+        this.o = k();
+        l();
+        goto L43
+    L141:
+        l();
+        goto L43
+    L142:
+        if (r29 != 1) goto L43;
+        if (this.n.e() == true) goto L43;
+        d00 r30 = this.n;
+        ArrayList r31 = r30.b;
+        r31.add(r30.d());
+        r30.c.setLength(0);
+        r30.a.clear();
+        int r32 = Math.min(r30.h, r30.d);
+    L147:
+        if (r31.size() < r32) goto L43;
+        r31.remove(0);
+        goto L147
+    L149:
+        this.o = Collections.EMPTY_LIST;
+        if (r29 == 1) goto L152;
+        if (r29 != 3) goto L43;
+    L152:
+        l();
+        goto L43
+    L153:
+        this.n.b();
+        goto L43
+    L154:
+        m(1);
+        this.r = 4;
+        this.n.h = 4;
+        goto L43
+    L155:
+        m(1);
+        this.r = 3;
+        this.n.h = 3;
+        goto L43
+    L156:
+        m(1);
+        this.r = 2;
+        this.n.h = 2;
+        goto L43
+    L157:
+        m(3);
+        goto L43
+    L76:
+        if ((r10 & 224) != 32) goto L83;
+        this.n.b();
+        d00 r33 = this.n;
+        if ((r9 & 1) != 0) goto L81;
+        int r34 = E[r10 & 31];
+    L82:
+        r33.a((char) r34);
+        goto L43
+    L81:
+        r34 = F[r10 & 31];
+        goto L82
+    L71:
+        if ((r10 & 240) != 48) goto L73;
+        this.n.a((char) D[r10 & 15]);
+        goto L43
+    L159:
+        d00 r35 = this.n;
+        int[] r36 = C;
+        r35.a((char) r36[(r9 & 127) - 32]);
+        if ((r10 & 224) == 0) goto L43;
+        this.n.a((char) r36[(r10 & 127) - 32]);
+    L50:
+        if ((r9 & 246) != 20) goto L60;
+        if (r10 != 32) goto L53;
+    L58:
+        this.x = true;
+        goto L60
+    L53:
+        if (r10 == 47) goto L58;
+        switch(r10) {
+            case 37: goto L58;
+            case 38: goto L58;
+            case 39: goto L58;
+            default: goto L55;
+        };
+    L55:
+        switch(r10) {
+            case 41: goto L58;
+            case 42: goto L57;
+            case 43: goto L57;
+            default: goto L60;
+        };
+    L57:
+        this.x = false;
+        goto L60
+    L41:
+        if (r11 == false) goto L3;
+        l();
+    L39:
+        this.t = false;
+    L26:
+        r13 = false;
+        goto L27
+    L8:
+        r6 = r1.A();
+        goto L9
+    L162:
+        if (r2 == false) goto L194;
+        int r110 = this.q;
+        if (r110 == 1) goto L166;
+        if (r110 == 3) goto L166;
+        return;
+    L166:
+        this.o = k();
+        this.y = this.e;
+        return;
     }
 
-    @Override // defpackage.l00, defpackage.zi0
-    /* JADX INFO: renamed from: i */
-    public final wn4 d() {
-        wn4 wn4Var;
-        wn4 wn4VarD = super.d();
-        if (wn4VarD != null) {
-            return wn4VarD;
-        }
-        long j = this.l;
-        if (j == -9223372036854775807L) {
-            return null;
-        }
-        long j2 = this.y;
-        if (j2 == -9223372036854775807L || this.e - j2 < j || (wn4Var = (wn4) this.b.pollFirst()) == null) {
-            return null;
-        }
+    @Override // defpackage.l00
+    public final wn4 i() {
+        wn4 r0 = super.i();
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        long r1 = this.l;
+        if (r1 == (-9223372036854775807L)) goto L16;
+        long r4 = this.y;
+        if (r4 != (-9223372036854775807L)) goto L11;
+        return null;
+    L11:
+        if ((this.e - r4) < r1) goto L18;
+        wn4 r2 = (wn4) this.b.pollFirst();
+        if (r2 == null) goto L19;
         this.o = Collections.EMPTY_LIST;
         this.y = -9223372036854775807L;
-        zh0 zh0VarG = g();
-        long j3 = this.e;
-        wn4Var.p = j3;
-        wn4Var.s = zh0VarG;
-        wn4Var.t = j3;
-        return wn4Var;
+        zh0 r3 = g();
+        long r5 = this.e;
+        r2.p = r5;
+        r2.s = r3;
+        r2.t = r5;
+        return r2;
+    L19:
+        return null;
+    L18:
+        return null;
+    L16:
+        return null;
     }
 
     @Override // defpackage.l00
     public final boolean j() {
-        return this.o != this.p;
+        if (this.o == this.p) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     public final ArrayList k() {
-        ArrayList arrayList = this.m;
-        int size = arrayList.size();
-        ArrayList arrayList2 = new ArrayList(size);
-        int iMin = 2;
-        for (int i = 0; i < size; i++) {
-            ig0 ig0VarC = ((d00) arrayList.get(i)).c(Integer.MIN_VALUE);
-            arrayList2.add(ig0VarC);
-            if (ig0VarC != null) {
-                iMin = Math.min(iMin, ig0VarC.i);
-            }
-        }
-        ArrayList arrayList3 = new ArrayList(size);
-        for (int i2 = 0; i2 < size; i2++) {
-            ig0 ig0VarC2 = (ig0) arrayList2.get(i2);
-            if (ig0VarC2 != null) {
-                if (ig0VarC2.i != iMin) {
-                    ig0VarC2 = ((d00) arrayList.get(i2)).c(iMin);
-                    ig0VarC2.getClass();
-                }
-                arrayList3.add(ig0VarC2);
-            }
-        }
-        return arrayList3;
+        ArrayList r7 = this.m;
+        int r0 = r7.size();
+        ArrayList r1 = new ArrayList(r0);
+        int r2 = 2;
+        int r3 = 0;
+        int r4 = 0;
+    L3:
+        if (r4 >= r0) goto L8;
+        ig0 r5 = ((d00) r7.get(r4)).c(Integer.MIN_VALUE);
+        r1.add(r5);
+        if (r5 == null) goto L7;
+        r2 = Math.min(r2, r5.i);
+    L7:
+        r4 = r4 + 1;
+        goto L3
+    L8:
+        ArrayList r6 = new ArrayList(r0);
+    L9:
+        if (r3 >= r0) goto L17;
+        ig0 r8 = (ig0) r1.get(r3);
+        if (r8 == null) goto L16;
+        if (r8.i == r2) goto L15;
+        r8 = ((d00) r7.get(r3)).c(r2);
+        r8.getClass();
+    L15:
+        r6.add(r8);
+    L16:
+        r3 = r3 + 1;
+        goto L9
+    L17:
+        return r6;
     }
 
     public final void l() {
-        d00 d00Var = this.n;
-        d00Var.g = this.q;
-        d00Var.a.clear();
-        d00Var.b.clear();
-        d00Var.c.setLength(0);
-        d00Var.d = 15;
-        d00Var.e = 0;
-        d00Var.f = 0;
-        ArrayList arrayList = this.m;
-        arrayList.clear();
-        arrayList.add(this.n);
+        d00 r0 = this.n;
+        r0.g = this.q;
+        r0.a.clear();
+        r0.b.clear();
+        r0.c.setLength(0);
+        r0.d = 15;
+        r0.e = 0;
+        r0.f = 0;
+        ArrayList r1 = this.m;
+        r1.clear();
+        r1.add(this.n);
     }
 
-    public final void m(int i) {
-        int i2 = this.q;
-        if (i2 == i) {
-            return;
-        }
-        this.q = i;
-        if (i != 3) {
-            l();
-            if (i2 == 3 || i == 1 || i == 0) {
-                this.o = Collections.EMPTY_LIST;
-                return;
-            }
-            return;
-        }
-        int i3 = 0;
-        while (true) {
-            ArrayList arrayList = this.m;
-            if (i3 >= arrayList.size()) {
-                return;
-            }
-            ((d00) arrayList.get(i3)).g = i;
-            i3++;
-        }
+    public final void m(int r4) {
+        int r0 = this.q;
+        if (r0 == r4) goto L21;
+        this.q = r4;
+        if (r4 != 3) goto L11;
+        int r1 = 0;
+    L8:
+        ArrayList r2 = this.m;
+        if (r1 >= r2.size()) goto L22;
+        ((d00) r2.get(r1)).g = r4;
+        r1 = r1 + 1;
+        goto L8
+    L22:
+        return;
+    L11:
+        l();
+        if (r0 != 3) goto L14;
+    L18:
+        this.o = Collections.EMPTY_LIST;
+        return;
+    L14:
+        if (r4 == 1) goto L18;
+        if (r4 == 0) goto L18;
+        return;
     }
 }

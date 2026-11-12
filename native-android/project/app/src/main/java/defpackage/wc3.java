@@ -9,15 +9,14 @@ public final class wc3 extends wd0 {
     public final /* synthetic */ ad3 q;
     public int r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public wc3(ad3 ad3Var, wd0 wd0Var) {
-        super(wd0Var);
-        this.q = ad3Var;
+    public wc3(ad3 r1, wd0 r2) {
+        this.q = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.p = obj;
+    public final Object invokeSuspend(Object r3) {
+        this.p = r3;
         this.r |= Integer.MIN_VALUE;
         return this.q.f(0, null, this);
     }

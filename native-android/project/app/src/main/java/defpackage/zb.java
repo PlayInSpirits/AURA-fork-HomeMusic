@@ -5,15 +5,21 @@ package defpackage;
 public final class zb implements bh3 {
     public final int n;
 
-    public zb(int i) {
-        this.n = i;
+    public zb(int r1) {
+        this.n = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof zb) && this.n == ((zb) obj).n;
+    public final boolean equals(Object r4) {
+        if (this != r4) goto L6;
+        return true;
+    L6:
+        if ((r4 instanceof zb) == true) goto L9;
+        return false;
+    L9:
+        if (this.n == ((zb) r4).n) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     public final int hashCode() {

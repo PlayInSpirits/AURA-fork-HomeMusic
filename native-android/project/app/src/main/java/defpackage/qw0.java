@@ -7,24 +7,25 @@ public final /* synthetic */ class qw0 implements Runnable {
     public final /* synthetic */ sw0 o;
     public final /* synthetic */ tw0 p;
 
-    public /* synthetic */ qw0(sw0 sw0Var, tw0 tw0Var, int i) {
-        this.n = i;
-        this.o = sw0Var;
-        this.p = tw0Var;
+    public /* synthetic */ qw0(sw0 r1, tw0 r2, int r3) {
+        this.n = r3;
+        this.o = r1;
+        this.p = r2;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        tw0 tw0Var = this.p;
-        sw0 sw0Var = this.o;
-        switch (i) {
-            case 0:
-                tw0Var.M(sw0Var.a, sw0Var.b);
-                break;
-            default:
-                tw0Var.z(sw0Var.a, sw0Var.b);
-                break;
-        }
+        int r0 = this.n;
+        tw0 r1 = this.p;
+        sw0 r2 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.z(r2.a, r2.b);
+        return;
+    L6:
+        r1.M(r2.a, r2.b);
     }
 }

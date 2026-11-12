@@ -34,7 +34,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,34 +44,38 @@ public class pz1 implements y14, eg1, kg1, lm3, Callback, cq0, u55, ScanCallback
     public final /* synthetic */ int n;
     public Object o;
 
-    public pz1(int i) {
-        this.n = i;
-        switch (i) {
-            case 7:
-                this.o = new Bundle();
-                break;
-            case 15:
-                this.o = new xe2((Object) null);
-                break;
-            case 19:
-                this.o = new LinkedHashMap();
-                break;
-            case 20:
-                this.o = AppDatabase.y().G();
-                break;
-            default:
-                wf2 wf2Var = new wf2();
-                this.o = wf2Var;
-                if (!wf2Var.o) {
-                    if (wf2Var.p) {
-                        po3.a("ManagedValuesStore tried to enter composition twice. Did you attempt to install the same store multiple times or into two compositions?");
-                    }
-                    wf2Var.a();
-                    wf2Var.p = true;
-                    break;
-                }
-                break;
-        }
+    public pz1(int r2) {
+        this.n = r2;
+        switch(r2) {
+            case 7: goto L18;
+            case 15: goto L16;
+            case 19: goto L14;
+            case 20: goto L12;
+            default: goto L4;
+        };
+    L4:
+        wf2 r3 = new wf2();
+        this.o = r3;
+        if (r3.o == false) goto L8;
+        return;
+    L8:
+        if (r3.p == false) goto L10;
+        po3.a("ManagedValuesStore tried to enter composition twice. Did you attempt to install the same store multiple times or into two compositions?");
+    L10:
+        r3.a();
+        r3.p = true;
+        return;
+    L12:
+        this.o = AppDatabase.y().G();
+        return;
+    L14:
+        this.o = new LinkedHashMap();
+        return;
+    L16:
+        this.o = new xe2(null);
+        return;
+    L18:
+        this.o = new Bundle();
     }
 
     /*  JADX ERROR: Type inference failed
@@ -83,6 +86,29 @@ public class pz1 implements y14, eg1, kg1, lm3, Callback, cq0, u55, ScanCallback
         	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:79)
         */
     public static java.util.ArrayList A(defpackage.pz1 r22, java.lang.String r23) {
+        /*  JADX ERROR: Simple mode code generation failed
+            jadx.core.utils.exceptions.CodegenException: Error generate insn: 0x0006: CONSTRUCTOR (r2v0 ?? I:java.util.ArrayList) =  A[DECLARE_VAR, MD:():void (c)] (LINE:7) call: java.util.ArrayList.<init>():void type: CONSTRUCTOR in method: pz1.A(pz1, java.lang.String):java.util.ArrayList, file: classes.dex
+            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:310)
+            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:273)
+            	at jadx.core.codegen.MethodGen.generateSimpleCode(MethodGen.java:348)
+            	at jadx.core.codegen.MethodGen.addSimpleMethodCode(MethodGen.java:316)
+            	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:279)
+            	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:420)
+            	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:345)
+            	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$3(ClassGen.java:299)
+            	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+            	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+            	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
+            	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258)
+            Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.ArgType.getPrimitiveType()" because "type" is null
+            	at jadx.core.codegen.ClassGen.useType(ClassGen.java:564)
+            	at jadx.core.codegen.InsnGen.useType(InsnGen.java:269)
+            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:166)
+            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:159)
+            	at jadx.core.codegen.InsnGen.assignVar(InsnGen.java:152)
+            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:299)
+            	... 11 more
+            */
         /*
             Method dump skipped, instruction units count: 924
             To view this dump add '--comments-level debug' option
@@ -90,261 +116,292 @@ public class pz1 implements y14, eg1, kg1, lm3, Callback, cq0, u55, ScanCallback
         throw new UnsupportedOperationException("Method not decompiled: defpackage.pz1.A(pz1, java.lang.String):java.util.ArrayList");
     }
 
-    private final void w(Call call, Throwable th) {
+    private final void w(Call r1, Throwable r2) {
     }
 
     private final void x() {
     }
 
-    public gp3 B(rf2 rf2Var, ra raVar) {
-        long j;
-        boolean z;
-        long jE;
-        xe2 xe2Var = (xe2) this.o;
-        List list = (List) rf2Var.n;
-        xe2 xe2Var2 = new xe2(list.size());
-        int size = list.size();
-        int i = 0;
-        while (i < size) {
-            qn3 qn3Var = (qn3) list.get(i);
-            long j2 = qn3Var.a;
-            pn3 pn3Var = (pn3) xe2Var.b(j2);
-            if (pn3Var == null) {
-                j = qn3Var.b;
-                jE = qn3Var.d;
-                z = false;
-            } else {
-                long j3 = pn3Var.a;
-                j = j3;
-                z = pn3Var.c;
-                jE = raVar.E(pn3Var.b);
-            }
-            long j4 = qn3Var.a;
-            int i2 = i;
-            List list2 = list;
-            int i3 = size;
-            xe2Var2.f(j4, new on3(j4, qn3Var.b, qn3Var.d, qn3Var.e, qn3Var.f, j, jE, z, qn3Var.g, qn3Var.i, qn3Var.j, qn3Var.k, qn3Var.l, qn3Var.m));
-            boolean z2 = qn3Var.e;
-            if (z2) {
-                xe2Var.f(j2, new pn3(qn3Var.b, qn3Var.c, z2));
-            } else {
-                xe2Var.g(j2);
-            }
-            i = i2 + 1;
-            list = list2;
-            size = i3;
-        }
-        return new gp3(11, xe2Var2, rf2Var);
+    public gp3 B(rf2 r42, ra r43) {
+        xe2 r1 = (xe2) this.o;
+        List r3 = (List) r42.n;
+        xe2 r2 = new xe2(r3.size());
+        int r4 = r3.size();
+        int r6 = 0;
+    L3:
+        if (r6 >= r4) goto L14;
+        qn3 r7 = (qn3) r3.get(r6);
+        long r8 = r7.a;
+        pn3 r10 = (pn3) r1.b(r8);
+        if (r10 != null) goto L7;
+        long r11 = r7.b;
+        long r25 = r11;
+        long r27 = r7.d;
+        boolean r29 = false;
+    L8:
+        long r12 = r7.a;
+        int r15 = r6;
+        List r39 = r3;
+        int r40 = r4;
+        r2.f(r12, new on3(r12, r7.b, r7.d, r7.e, r7.f, r25, r27, r29, r7.g, r7.i, r7.j, r7.k, r7.l, r7.m));
+        boolean r5 = r7.e;
+        if (r5 == false) goto L11;
+        r1.f(r8, new pn3(r7.b, r7.c, r5));
+    L12:
+        r6 = r15 + 1;
+        r3 = r39;
+        r4 = r40;
+        goto L3
+    L11:
+        r1.g(r8);
+        goto L12
+    L7:
+        long r13 = r10.a;
+        boolean r14 = r10.c;
+        r25 = r13;
+        r29 = r14;
+        r27 = r43.E(r10.b);
+        goto L8
+    L14:
+        return new gp3(11, r2, r42);
     }
 
-    public void C(String str, Bitmap bitmap) {
-        Integer num = (Integer) eo2.q.get(str);
-        if (num == null || num.intValue() == 2) {
-            ((Bundle) this.o).putParcelable(str, bitmap);
-        } else {
-            kf2.n(xa3.h("The ", str, " key cannot be used to put a Bitmap"));
-        }
+    public void C(String r3, Bitmap r4) {
+        Integer r0 = (Integer) eo2.q.get(r3);
+        if (r0 != null) goto L5;
+    L9:
+        ((Bundle) this.o).putParcelable(r3, r4);
+        return;
+    L5:
+        if (r0.intValue() == 2) goto L9;
+        kf2.n(xa3.h("The ", r3, " key cannot be used to put a Bitmap"));
     }
 
-    public void D(String str, long j) {
-        Integer num = (Integer) eo2.q.get(str);
-        if (num == null || num.intValue() == 0) {
-            ((Bundle) this.o).putLong(str, j);
-        } else {
-            kf2.n(xa3.h("The ", str, " key cannot be used to put a long"));
-        }
+    public void D(String r2, long r3) {
+        Integer r0 = (Integer) eo2.q.get(r2);
+        if (r0 != null) goto L5;
+    L9:
+        ((Bundle) this.o).putLong(r2, r3);
+        return;
+    L5:
+        if (r0.intValue() == 0) goto L9;
+        kf2.n(xa3.h("The ", r2, " key cannot be used to put a long"));
     }
 
-    public void E(String str, mu3 mu3Var) {
-        Object obj;
-        float f = mu3Var.o;
-        Integer num = (Integer) eo2.q.get(str);
-        if (num != null && num.intValue() != 3) {
-            kf2.n(xa3.h("The ", str, " key cannot be used to put a Rating"));
-            return;
-        }
-        Bundle bundle = (Bundle) this.o;
-        if (mu3Var.p == null) {
-            boolean zC = mu3Var.c();
-            int i = mu3Var.n;
-            if (zC) {
-                switch (i) {
-                    case 1:
-                        mu3Var.p = Rating.newHeartRating(i == 1 && f == 1.0f);
-                        break;
-                    case 2:
-                        mu3Var.p = Rating.newThumbRating(i == 2 && f == 1.0f);
-                        break;
-                    case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                    case 4:
-                    case 5:
-                        mu3Var.p = Rating.newStarRating(i, mu3Var.b());
-                        break;
-                    case 6:
-                        if (i != 6 || !mu3Var.c()) {
-                            f = -1.0f;
-                        }
-                        mu3Var.p = Rating.newPercentageRating(f);
-                        break;
-                    default:
-                        obj = null;
-                        break;
-                }
-            } else {
-                mu3Var.p = Rating.newUnratedRating(i);
-            }
-            obj = mu3Var.p;
-        } else {
-            obj = mu3Var.p;
-        }
-        bundle.putParcelable(str, (Parcelable) obj);
+    public void E(String r7, mu3 r8) {
+        float r0 = r8.o;
+        Integer r1 = (Integer) eo2.q.get(r7);
+        if (r1 != null) goto L5;
+    L9:
+        Bundle r6 = (Bundle) this.o;
+        if (r8.p != null) goto L35;
+        boolean r2 = r8.c();
+        int r3 = r8.n;
+        if (r2 == false) goto L34;
+        boolean r4 = true;
+        switch(r3) {
+            case 1: goto L29;
+            case 2: goto L24;
+            case 3: goto L22;
+            case 4: goto L22;
+            case 5: goto L22;
+            case 6: goto L17;
+            default: goto L15;
+        };
+    L15:
+        Object r9 = null;
+    L36:
+        r6.putParcelable(r7, (Parcelable) r9);
+        return;
+    L22:
+        r8.p = Rating.newStarRating(r3, r8.b());
+        goto L35
+    L29:
+        if (r3 == 1) goto L32;
+    L30:
+        r4 = false;
+    L33:
+        r8.p = Rating.newHeartRating(r4);
+        goto L35
+    L32:
+        if (r0 != 1.0f) goto L30;
+    L17:
+        if (r3 == 6) goto L19;
+    L20:
+        r0 = -1.0f;
+    L21:
+        r8.p = Rating.newPercentageRating(r0);
+        goto L35
+    L19:
+        if (r8.c() == true) goto L21;
+    L24:
+        if (r3 == 2) goto L27;
+    L25:
+        r4 = false;
+    L28:
+        r8.p = Rating.newThumbRating(r4);
+        goto L35
+    L27:
+        if (r0 != 1.0f) goto L25;
+    L34:
+        r8.p = Rating.newUnratedRating(r3);
+    L35:
+        r9 = r8.p;
+        goto L36
+    L5:
+        if (r1.intValue() == 3) goto L9;
+        kf2.n(xa3.h("The ", r7, " key cannot be used to put a Rating"));
     }
 
-    public void F(String str, String str2) {
-        Integer num = (Integer) eo2.q.get(str);
-        if (num == null || num.intValue() == 1) {
-            ((Bundle) this.o).putCharSequence(str, str2);
-        } else {
-            kf2.n(xa3.h("The ", str, " key cannot be used to put a String"));
-        }
+    public void F(String r3, String r4) {
+        Integer r0 = (Integer) eo2.q.get(r3);
+        if (r0 != null) goto L5;
+    L9:
+        ((Bundle) this.o).putCharSequence(r3, r4);
+        return;
+    L5:
+        if (r0.intValue() == 1) goto L9;
+        kf2.n(xa3.h("The ", r3, " key cannot be used to put a String"));
     }
 
-    public void G(CharSequence charSequence, String str) {
-        Integer num = (Integer) eo2.q.get(str);
-        if (num == null || num.intValue() == 1) {
-            ((Bundle) this.o).putCharSequence(str, charSequence);
-        } else {
-            kf2.n(xa3.h("The ", str, " key cannot be used to put a CharSequence"));
-        }
+    public void G(CharSequence r3, String r4) {
+        Integer r0 = (Integer) eo2.q.get(r4);
+        if (r0 != null) goto L5;
+    L9:
+        ((Bundle) this.o).putCharSequence(r4, r3);
+        return;
+    L5:
+        if (r0.intValue() == 1) goto L9;
+        kf2.n(xa3.h("The ", r4, " key cannot be used to put a CharSequence"));
     }
 
-    /* JADX WARN: Code duplicated, block: B:33:0x0094 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:34:0x0096 A[LOOP:0: B:22:0x0051->B:34:0x0096, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:53:0x0099 A[EDGE_INSN: B:53:0x0099->B:35:0x0099 BREAK  A[LOOP:0: B:22:0x0051->B:34:0x0096], SYNTHETIC] */
-    public Object H(y00 y00Var, gf1 gf1Var) {
-        jf4 jf4Var;
-        y94 y94Var;
-        if (((rp) this.o) == null) {
-            oo3.b("Called runAndWatch on a manager that has been disposed of");
-        }
-        rp rpVar = (rp) this.o;
-        if ((rpVar instanceof jf4) && (y94Var = (jf4Var = (jf4) rpVar).f) != null && !y94Var.equals(y00Var)) {
-            kz2 kz2Var = new kz2();
-            y94 y94Var2 = jf4Var.f;
-            if (y94Var2 == null) {
-                oo3.b("promote must only be called when a manager is managing subscriptions for one channel and needs to start managing them for a second");
-            }
-            x03 x03Var = jf4Var.d;
-            ArrayList arrayList = kz2Var.c;
-            if (x03Var != null) {
-                Object[] objArr = x03Var.b;
-                long[] jArr = x03Var.a;
-                int length = jArr.length - 2;
-                if (length >= 0) {
-                    int i = 0;
-                    while (true) {
-                        long j = jArr[i];
-                        if ((((~j) << 7) & j & (-9187201950435737472L)) == -9187201950435737472L) {
-                            if (i != length) {
-                                break;
-                                break;
-                            }
-                            i++;
-                        } else {
-                            int i2 = 8;
-                            int i3 = 8 - ((~(i - length)) >>> 31);
-                            int i4 = 0;
-                            while (i4 < i3) {
-                                if ((j & 255) < 128) {
-                                    arrayList.add(new hz2(objArr[(i << 3) + i4], y94Var2));
-                                }
-                                j >>= i2;
-                                i4++;
-                                i2 = i2;
-                            }
-                            if (i3 != i2) {
-                                break;
-                            }
-                            if (i != length) {
-                                break;
-                            }
-                            i++;
-                        }
-                    }
-                }
-            } else {
-                Object obj = jf4Var.b;
-                obj.getClass();
-                arrayList.add(new hz2(obj, y94Var2));
-            }
-            kz2Var.f();
-            jf4Var.h();
-            this.o = kz2Var;
-        }
-        rp rpVar2 = (rp) this.o;
-        rpVar2.getClass();
-        ch4 ch4VarU = jh4.j().u(rpVar2.m(y00Var));
-        rpVar2.e(y00Var);
-        try {
-            ch4 ch4VarJ = ch4VarU.j();
-            try {
-                Object objInvoke = gf1Var.invoke();
-                ch4.q(ch4VarJ);
-                ch4VarU.c();
-                rpVar2.f();
-                return objInvoke;
-            } catch (Throwable th) {
-                ch4.q(ch4VarJ);
-                throw th;
-            }
-        } catch (Throwable th2) {
-            ch4VarU.c();
-            throw th2;
-        }
+    public Object H(y00 r21, gf1 r22) {
+        if (((rp) this.o) != null) goto L6;
+        oo3.b("Called runAndWatch on a manager that has been disposed of");
+    L6:
+        rp r2 = (rp) this.o;
+        if ((r2 instanceof jf4) == false) goto L36;
+        jf4 r3 = (jf4) r2;
+        y94 r4 = r3.f;
+        if (r4 == null) goto L36;
+        if (r4.equals(r21) == true) goto L36;
+        kz2 r5 = new kz2();
+        y94 r6 = r3.f;
+        if (r6 != null) goto L16;
+        oo3.b("promote must only be called when a manager is managing subscriptions for one channel and needs to start managing them for a second");
+    L16:
+        x03 r7 = r3.d;
+        ArrayList r8 = r5.c;
+        if (r7 != null) goto L19;
+        Object r9 = r3.b;
+        r9.getClass();
+        r8.add(new hz2(r9, r6));
+    L35:
+        r5.f();
+        r3.h();
+        this.o = r5;
+        goto L36
+    L19:
+        Object[] r10 = r7.b;
+        long[] r11 = r7.a;
+        int r12 = r11.length - 2;
+        if (r12 < 0) goto L35;
+        int r13 = 0;
+    L22:
+        long r14 = r11[r13];
+        if (((((~r14) << 7) & r14) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L33;
+        int r15 = 8;
+        int r16 = 8 - ((~(r13 - r12)) >>> 31);
+        int r17 = 0;
+    L25:
+        if (r17 >= r16) goto L32;
+        if ((r14 & 255) >= 128) goto L30;
+        r8.add(new hz2(r10[(r13 << 3) + r17], r6));
+    L30:
+        r14 = r14 >> r15;
+        r17 = r17 + 1;
+        r15 = r15;
+        goto L25
+    L32:
+        if (r16 != r15) goto L35;
+    L33:
+        if (r13 == r12) goto L35;
+        r13 = r13 + 1;
+    L36:
+        rp r0 = (rp) this.o;
+        r0.getClass();
+        ch4 r18 = jh4.j().u(r0.m(r21));
+        r0.e(r21);
+        ch4 r1 = r18.j();     // Catch: Throwable -> L42
+        Object r19 = r22.invoke();     // Catch: Throwable -> L44
+        ch4.q(r1);     // Catch: Throwable -> L42
+        r18.c();
+        r0.f();
+        return r19;
+    L44:
+        th = move-exception;
+        ch4.q(r1);     // Catch: Throwable -> L42
+        throw th;     // Catch: Throwable -> L42
+    L42:
+        th = move-exception;
+        r18.c();
+        throw th;
     }
 
-    public void I(String str, Bundle bundle) {
-        if (str != null && ((str.equals("android.support.v4.media.session.action.FOLLOW") || str.equals("android.support.v4.media.session.action.UNFOLLOW")) && (bundle == null || !bundle.containsKey("android.support.v4.media.session.ARGUMENT_MEDIA_ATTRIBUTE")))) {
-            kf2.n(xa3.h("An extra field android.support.v4.media.session.ARGUMENT_MEDIA_ATTRIBUTE is required for this action ", str, "."));
-        } else {
-            ((MediaController.TransportControls) this.o).sendCustomAction(str, bundle);
-        }
+    public void I(String r2, Bundle r3) {
+        if (r2 != null) goto L5;
+    L12:
+        ((MediaController.TransportControls) this.o).sendCustomAction(r2, r3);
+        return;
+    L5:
+        if (r2.equals("android.support.v4.media.session.action.FOLLOW") == false) goto L7;
+    L9:
+        if (r3 != null) goto L11;
+    L14:
+        kf2.n(xa3.h("An extra field android.support.v4.media.session.ARGUMENT_MEDIA_ATTRIBUTE is required for this action ", r2, "."));
+        return;
+    L11:
+        if (r3.containsKey("android.support.v4.media.session.ARGUMENT_MEDIA_ATTRIBUTE") == false) goto L14;
+    L7:
+        if (r2.equals("android.support.v4.media.session.action.UNFOLLOW") == true) goto L9;
+        goto L9
     }
 
-    public void J(float f) {
-        if (f == 0.0f) {
-            kf2.n("speed must not be zero");
-            return;
-        }
-        Bundle bundle = new Bundle();
-        bundle.putFloat("android.support.v4.media.session.action.ARGUMENT_PLAYBACK_SPEED", f);
-        I("android.support.v4.media.session.action.SET_PLAYBACK_SPEED", bundle);
+    public void J(float r3) {
+        if (r3 == 0.0f) goto L6;
+        Bundle r0 = new Bundle();
+        r0.putFloat("android.support.v4.media.session.action.ARGUMENT_PLAYBACK_SPEED", r3);
+        I("android.support.v4.media.session.action.SET_PLAYBACK_SPEED", r0);
+        return;
+    L6:
+        kf2.n("speed must not be zero");
     }
 
     @Override // defpackage.u55
-    public int a(View view) {
-        return mw3.A(view) - ((ViewGroup.MarginLayoutParams) ((nw3) view.getLayoutParams())).leftMargin;
+    public int a(View r1) {
+        nw3 r0 = (nw3) r1.getLayoutParams();
+        return mw3.A(r1) - ((ViewGroup.MarginLayoutParams) r0).leftMargin;
     }
 
     @Override // defpackage.eg1
     /* JADX INFO: renamed from: apply */
-    public Object mo77apply(Object obj) {
-        Map.Entry entry = (Map.Entry) obj;
-        jg2 jg2Var = (jg2) this.o;
-        jg2Var.getClass();
-        entry.getClass();
-        return new hg2(entry, jg2Var);
+    public Object mo77apply(Object r2) {
+        Map.Entry r3 = (Map.Entry) r2;
+        jg2 r1 = (jg2) this.o;
+        r1.getClass();
+        r3.getClass();
+        return new hg2(r3, r1);
     }
 
     @Override // defpackage.y34
-    public x34 b(String str) {
-        str.getClass();
+    public x34 b(String r1) {
+        r1.getClass();
         return new po4(((so4) this.o).z());
     }
 
     @Override // defpackage.ck2
-    public void c(Bundle bundle) {
-        ((MediaCodec) this.o).setParameters(bundle);
+    public void c(Bundle r1) {
+        ((MediaCodec) this.o).setParameters(r1);
     }
 
     @Override // defpackage.u55
@@ -353,13 +410,13 @@ public class pz1 implements y14, eg1, kg1, lm3, Callback, cq0, u55, ScanCallback
     }
 
     @Override // defpackage.ck2
-    public void e(int i, fg0 fg0Var, long j, int i2) {
-        ((MediaCodec) this.o).queueSecureInputBuffer(i, 0, fg0Var.i, j, i2);
+    public void e(int r8, fg0 r9, long r10, int r12) {
+        ((MediaCodec) this.o).queueSecureInputBuffer(r8, 0, r9.i, r10, r12);
     }
 
     @Override // defpackage.ck2
-    public void f(int i, int i2, int i3, long j) {
-        ((MediaCodec) this.o).queueInputBuffer(i, 0, i2, j, i3);
+    public void f(int r8, int r9, int r10, long r11) {
+        ((MediaCodec) this.o).queueInputBuffer(r8, 0, r9, r11, r10);
     }
 
     @Override // defpackage.ck2
@@ -368,86 +425,79 @@ public class pz1 implements y14, eg1, kg1, lm3, Callback, cq0, u55, ScanCallback
 
     @Override // defpackage.lm3
     public void g() {
-        int i = 0;
-        switch (this.n) {
-            case 12:
-                sl3 sl3Var = (sl3) this.o;
-                if (sl3Var.y() && sl3Var.n() != null) {
-                    sl3Var.X().runOnUiThread(new rl3(this, i));
-                    break;
-                }
-                break;
-            default:
-                MainActivity mainActivity = (MainActivity) this.o;
-                if (mainActivity.R != null) {
-                    Toast.makeText(mainActivity, R.string.song_bottom_sheet_undo_failure, 0).show();
-                    break;
-                }
-                break;
-        }
+        int r1 = 0;
+        switch(this.n) {
+            case 12: goto L9;
+            default: goto L4;
+        };
+    L4:
+        MainActivity r3 = (MainActivity) this.o;
+        if (r3.R == null) goto L15;
+        Toast.makeText(r3, R.string.song_bottom_sheet_undo_failure, 0).show();
+        return;
+    L15:
+        return;
+    L9:
+        sl3 r0 = (sl3) this.o;
+        if (r0.y() == true) goto L12;
+        return;
+    L12:
+        if (r0.n() == null) goto L17;
+        r0.X().runOnUiThread(new rl3(this, r1));
+        return;
     }
 
     @Override // defpackage.kg1
-    public void h(Object obj) {
-        ((lb4) this.o).l(((cw2) obj).a);
+    public void h(Object r1) {
+        ((lb4) this.o).l(((cw2) r1).a);
     }
 
     @Override // defpackage.c11
-    public boolean i(Object obj, File file, db3 db3Var) throws Throwable {
-        InputStream inputStream = (InputStream) obj;
-        qj0 qj0Var = (qj0) this.o;
-        byte[] bArr = (byte[]) qj0Var.d(65536, byte[].class);
-        FileOutputStream fileOutputStream = null;
-        try {
-            try {
-                FileOutputStream fileOutputStream2 = new FileOutputStream(file);
-                while (true) {
-                    try {
-                        int i = inputStream.read(bArr);
-                        if (i == -1) {
-                            break;
-                        }
-                        fileOutputStream2.write(bArr, 0, i);
-                    } catch (IOException e) {
-                        e = e;
-                        fileOutputStream = fileOutputStream2;
-                        if (Log.isLoggable("StreamEncoder", 3)) {
-                            Log.d("StreamEncoder", "Failed to encode data onto the OutputStream", e);
-                        }
-                        if (fileOutputStream != null) {
-                            try {
-                                fileOutputStream.close();
-                            } catch (IOException unused) {
-                            }
-                        }
-                        qj0Var.h(bArr);
-                        return false;
-                    } catch (Throwable th) {
-                        th = th;
-                        fileOutputStream = fileOutputStream2;
-                        if (fileOutputStream != null) {
-                            try {
-                                fileOutputStream.close();
-                            } catch (IOException unused2) {
-                            }
-                        }
-                        qj0Var.h(bArr);
-                        throw th;
-                    }
-                }
-                fileOutputStream2.close();
-                try {
-                    fileOutputStream2.close();
-                } catch (IOException unused3) {
-                }
-                qj0Var.h(bArr);
-                return true;
-            } catch (IOException e2) {
-                e = e2;
-            }
-        } catch (Throwable th2) {
-            th = th2;
-        }
+    public boolean i(Object r5, File r6, db3 r7) {
+        InputStream r8 = (InputStream) r5;
+        qj0 r4 = (qj0) this.o;
+        byte[] r0 = (byte[]) r4.d(65536, byte[].class);
+        FileOutputStream r2 = null;
+        FileOutputStream r3 = new FileOutputStream(r6);     // Catch: Throwable -> L14 IOException -> L16
+    L41:
+        int r9 = r8.read(r0);     // Catch: Throwable -> L7 IOException -> L9
+        if (r9 == (-1)) goto L11;
+        r3.write(r0, 0, r9);     // Catch: Throwable -> L7 IOException -> L9
+        goto L41
+    L11:
+        r3.close();     // Catch: Throwable -> L7 IOException -> L9
+        r3.close();     // Catch: IOException -> L29
+    L13:
+        r4.h(r0);
+        return true;
+    L9:
+        e = e;
+        r2 = r3;
+    L19:
+        if (Log.isLoggable("StreamEncoder", 3) == false) goto L21;
+        Log.d("StreamEncoder", "Failed to encode data onto the OutputStream", e);     // Catch: Throwable -> L14
+    L21:
+        if (r2 != null) goto L32;
+    L23:
+        r4.h(r0);
+        return false;
+    L32:
+        r2.close();     // Catch: IOException -> L31
+    L7:
+        th = th;
+        r2 = r3;
+    L25:
+        if (r2 != null) goto L37;
+    L27:
+        r4.h(r0);
+        throw th;
+    L37:
+        r2.close();     // Catch: IOException -> L30
+    L16:
+        e = e;
+    L14:
+        th = th;
+        goto L25
     }
 
     @Override // defpackage.ck2
@@ -456,151 +506,173 @@ public class pz1 implements y14, eg1, kg1, lm3, Callback, cq0, u55, ScanCallback
 
     @Override // defpackage.u55
     public int k() {
-        mw3 mw3Var = (mw3) this.o;
-        return mw3Var.n - mw3Var.G();
+        mw3 r1 = (mw3) this.o;
+        return r1.n - r1.G();
     }
 
     @Override // defpackage.ou2
-    public boolean m(qu2 qu2Var, MenuItem menuItem) {
+    public boolean m(qu2 r1, MenuItem r2) {
         return false;
     }
 
-    public void n(jw2 jw2Var) {
-        jw2Var.getClass();
-        int i = jw2Var.a;
-        int i2 = jw2Var.b;
-        LinkedHashMap linkedHashMap = (LinkedHashMap) this.o;
-        Integer numValueOf = Integer.valueOf(i);
-        Object treeMap = linkedHashMap.get(numValueOf);
-        if (treeMap == null) {
-            treeMap = new TreeMap();
-            linkedHashMap.put(numValueOf, treeMap);
-        }
-        TreeMap treeMap2 = (TreeMap) treeMap;
-        if (treeMap2.containsKey(Integer.valueOf(i2))) {
-            Log.w("ROOM", "Overriding migration " + treeMap2.get(Integer.valueOf(i2)) + " with " + jw2Var);
-        }
-        treeMap2.put(Integer.valueOf(i2), jw2Var);
+    public void n(jw2 r4) {
+        r4.getClass();
+        int r0 = r4.a;
+        int r1 = r4.b;
+        LinkedHashMap r3 = (LinkedHashMap) this.o;
+        Integer r2 = Integer.valueOf(r0);
+        Object r5 = r3.get(r2);
+        if (r5 != null) goto L5;
+        r5 = new TreeMap();
+        r3.put(r2, r5);
+    L5:
+        TreeMap r6 = (TreeMap) r5;
+        if (r6.containsKey(Integer.valueOf(r1)) == false) goto L8;
+        Log.w("ROOM", "Overriding migration " + r6.get(Integer.valueOf(r1)) + " with " + r4);
+    L8:
+        r6.put(Integer.valueOf(r1), r4);
     }
 
     @Override // defpackage.kg1
-    public void o(Throwable th) {
-        ((lb4) this.o).m(th);
+    public void o(Throwable r1) {
+        ((lb4) this.o).m(r1);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ScanCallback
-    public void onError(Exception exc) {
-        ((vb4) this.o).h0("scan_library").x(exc.getMessage());
+    public void onError(Exception r2) {
+        ((vb4) this.o).h0("scan_library").x(r2.getMessage());
     }
 
     @Override // retrofit2.Callback
-    public void onFailure(Call call, Throwable th) {
-        switch (this.n) {
-            case 13:
-                break;
-            case 14:
-                Log.e("PodcastChannelPageViewModel", "downloadPodcastEpisode network error", th);
-                break;
-            default:
-                ((gu3) this.o).g.k("Network error: " + th.getMessage());
-                break;
-        }
+    public void onFailure(Call r2, Throwable r3) {
+        switch(this.n) {
+            case 13: goto L8;
+            case 14: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((gu3) this.o).g.k("Network error: " + r3.getMessage());
+        return;
+    L6:
+        Log.e("PodcastChannelPageViewModel", "downloadPodcastEpisode network error", r3);
+        return;
     }
 
     @Override // retrofit2.Callback
-    public void onResponse(Call call, Response response) {
-        switch (this.n) {
-            case 13:
-                if (mm3.f(response)) {
-                    ((mm3) this.o).g();
-                }
-                break;
-            case 14:
-                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse() != null && "ok".equals(((ApiResponse) response.body()).getSubsonicResponse().getStatus())) {
-                    Log.d("PodcastChannelPageViewModel", "downloadPodcastEpisode successful for id: " + ((PodcastEpisode) this.o).getId());
-                } else {
-                    Log.e("PodcastChannelPageViewModel", "downloadPodcastEpisode failed with code: " + response.code());
-                }
-                break;
-            default:
-                gu3 gu3Var = (gu3) this.o;
-                if (response.code() == 501) {
-                    Application application = gu3Var.b;
-                    application.getClass();
-                    gu3Var.g.k(application.getString(R.string.radio_dialog_not_supported_snackbar));
-                } else if (response.isSuccessful() && response.body() != null) {
-                    ApiResponse apiResponse = (ApiResponse) response.body();
-                    String status = apiResponse.getSubsonicResponse().getStatus();
-                    if ("ok".equals(status)) {
-                        gu3Var.f.k(Boolean.TRUE);
-                    } else if ("failed".equals(status)) {
-                        gu3.c(gu3Var, apiResponse);
-                    }
-                } else {
-                    gu3Var.g.k("HTTP error: " + response.code());
-                }
-                break;
-        }
+    public void onResponse(Call r3, Response r4) {
+        switch(this.n) {
+            case 13: goto L31;
+            case 14: goto L20;
+            default: goto L4;
+        };
+    L4:
+        gu3 r2 = (gu3) this.o;
+        if (r4.code() != 501) goto L8;
+        Application r5 = r2.b;
+        r5.getClass();
+        r2.g.k(r5.getString(R.string.radio_dialog_not_supported_snackbar));
+        return;
+    L8:
+        if (r4.isSuccessful() == true) goto L10;
+    L17:
+        r2.g.k("HTTP error: " + r4.code());
+        return;
+    L10:
+        if (r4.body() == null) goto L17;
+        ApiResponse r6 = (ApiResponse) r4.body();
+        String r7 = r6.getSubsonicResponse().getStatus();
+        if ("ok".equals(r7) == false) goto L15;
+        r2.f.k(Boolean.TRUE);
+        return;
+    L15:
+        if ("failed".equals(r7) == false) goto L36;
+        gu3.c(r2, r6);
+        return;
+    L36:
+        return;
+    L20:
+        if (r4.isSuccessful() == true) goto L22;
+    L28:
+        Log.e("PodcastChannelPageViewModel", "downloadPodcastEpisode failed with code: " + r4.code());
+        return;
+    L22:
+        if (r4.body() == null) goto L28;
+        if (((ApiResponse) r4.body()).getSubsonicResponse() == null) goto L28;
+        if ("ok".equals(((ApiResponse) r4.body()).getSubsonicResponse().getStatus()) == false) goto L28;
+        Log.d("PodcastChannelPageViewModel", "downloadPodcastEpisode successful for id: " + ((PodcastEpisode) this.o).getId());
+        return;
+    L31:
+        if (mm3.f(r4) == false) goto L39;
+        ((mm3) this.o).g();
+        return;
     }
 
     @Override // defpackage.lm3
     public void onSuccess() {
-        switch (this.n) {
-            case 12:
-                sl3 sl3Var = (sl3) this.o;
-                if (sl3Var.y() && sl3Var.n() != null) {
-                    sl3Var.X().runOnUiThread(new rl3(this, 1));
-                    break;
-                }
-                break;
-        }
+        switch(this.n) {
+            case 12: goto L5;
+            default: goto L4;
+        };
+    L4:
+        return;
+    L5:
+        sl3 r0 = (sl3) this.o;
+        if (r0.y() == true) goto L8;
+        return;
+    L8:
+        if (r0.n() == null) goto L12;
+        r0.X().runOnUiThread(new rl3(this, 1));
+        return;
     }
 
     @Override // defpackage.cq0
-    public boolean p(float f) {
-        int i;
-        int i2;
-        RecyclerView recyclerView = (RecyclerView) this.o;
-        if (recyclerView.A.e()) {
-            i2 = (int) f;
-            i = 0;
-        } else if (recyclerView.A.d()) {
-            i = (int) f;
-            i2 = 0;
-        } else {
-            i = 0;
-            i2 = 0;
-        }
-        if (i == 0 && i2 == 0) {
-            return false;
-        }
-        recyclerView.r0();
-        return recyclerView.J(i, i2, 0, Integer.MAX_VALUE);
+    public boolean p(float r4) {
+        RecyclerView r3 = (RecyclerView) this.o;
+        if (r3.A.e() == false) goto L6;
+        int r0 = (int) r4;
+        int r5 = 0;
+    L9:
+        if (r5 != 0) goto L12;
+        if (r0 != 0) goto L12;
+        return false;
+    L12:
+        r3.r0();
+        return r3.J(r5, r0, 0, Integer.MAX_VALUE);
+    L6:
+        if (r3.A.d() == false) goto L8;
+        r5 = (int) r4;
+        r0 = 0;
+        goto L9
+    L8:
+        r5 = 0;
+        r0 = 0;
+        goto L9
     }
 
     @Override // defpackage.u55
-    public View q(int i) {
-        return ((mw3) this.o).u(i);
+    public View q(int r1) {
+        return ((mw3) this.o).u(r1);
     }
 
     @Override // defpackage.u55
-    public int r(View view) {
-        return mw3.B(view) + ((ViewGroup.MarginLayoutParams) ((nw3) view.getLayoutParams())).rightMargin;
+    public int r(View r1) {
+        nw3 r0 = (nw3) r1.getLayoutParams();
+        return mw3.B(r1) + ((ViewGroup.MarginLayoutParams) r0).rightMargin;
     }
 
     @Override // defpackage.cq0
     public float s() {
-        float f;
-        RecyclerView recyclerView = (RecyclerView) this.o;
-        if (recyclerView.A.e()) {
-            f = recyclerView.p0;
-        } else {
-            if (!recyclerView.A.d()) {
-                return 0.0f;
-            }
-            f = recyclerView.o0;
-        }
-        return -f;
+        RecyclerView r1 = (RecyclerView) this.o;
+        if (r1.A.e() == false) goto L8;
+        float r2 = r1.p0;
+    L6:
+        return -r2;
+    L8:
+        if (r1.A.d() == false) goto L10;
+        r2 = r1.o0;
+        goto L6
+    L10:
+        return 0.0f;
     }
 
     @Override // defpackage.ck2
@@ -616,95 +688,111 @@ public class pz1 implements y14, eg1, kg1, lm3, Callback, cq0, u55, ScanCallback
         ((RecyclerView) this.o).r0();
     }
 
-    public void u(StringBuilder sb, Iterator it) {
-        uc0 uc0Var = (uc0) this.o;
-        if (it.hasNext()) {
-            Map.Entry entry = (Map.Entry) it.next();
-            sb.append(uc0Var.c(entry.getKey()));
-            sb.append("=");
-            sb.append(uc0Var.c(entry.getValue()));
-            while (it.hasNext()) {
-                sb.append((CharSequence) uc0Var.o);
-                Map.Entry entry2 = (Map.Entry) it.next();
-                sb.append(uc0Var.c(entry2.getKey()));
-                sb.append("=");
-                sb.append(uc0Var.c(entry2.getValue()));
-            }
-        }
+    public void u(StringBuilder r4, Iterator r5) {
+        uc0 r3 = (uc0) this.o;
+        if (r5.hasNext() == false) goto L8;
+        Map.Entry r0 = (Map.Entry) r5.next();
+        r4.append(r3.c(r0.getKey()));
+        r4.append("=");
+        r4.append(r3.c(r0.getValue()));
+    L6:
+        if (r5.hasNext() == false) goto L10;
+        r4.append(r3.o);
+        Map.Entry r1 = (Map.Entry) r5.next();
+        r4.append(r3.c(r1.getKey()));
+        r4.append("=");
+        r4.append(r3.c(r1.getValue()));
+        goto L6
+    L10:
+        return;
     }
 
     public void v() {
-        int i;
-        TypedValue typedValue = new TypedValue();
-        df dfVar = (df) this.o;
-        Resources.Theme theme = dfVar.getTheme();
-        theme.resolveAttribute(R.attr.windowSplashScreenBackground, typedValue, true);
-        if (theme.resolveAttribute(R.attr.windowSplashScreenAnimatedIcon, typedValue, true)) {
-            theme.getDrawable(typedValue.resourceId);
-        }
-        theme.resolveAttribute(R.attr.splashScreenIconSize, typedValue, true);
-        if (!theme.resolveAttribute(R.attr.postSplashScreenTheme, typedValue, true) || (i = typedValue.resourceId) == 0) {
-            return;
-        }
-        dfVar.setTheme(i);
+        TypedValue r0 = new TypedValue();
+        df r4 = (df) this.o;
+        Resources.Theme r1 = r4.getTheme();
+        r1.resolveAttribute(R.attr.windowSplashScreenBackground, r0, true);
+        if (r1.resolveAttribute(R.attr.windowSplashScreenAnimatedIcon, r0, true) == false) goto L5;
+        r1.getDrawable(r0.resourceId);
+    L5:
+        r1.resolveAttribute(R.attr.splashScreenIconSize, r0, true);
+        if (r1.resolveAttribute(R.attr.postSplashScreenTheme, r0, true) == false) goto L11;
+        int r2 = r0.resourceId;
+        if (r2 == 0) goto L12;
+        r4.setTheme(r2);
+        return;
+    L12:
+        return;
     }
 
     @Override // defpackage.ou2
-    public void y(qu2 qu2Var) {
-        Toolbar toolbar = (Toolbar) this.o;
-        y4 y4Var = toolbar.n.G;
-        if (y4Var == null || !y4Var.k()) {
-            Iterator it = ((CopyOnWriteArrayList) toolbar.T.p).iterator();
-            while (it.hasNext()) {
-                ((cd1) it.next()).a.s();
-            }
-        }
-        si1 si1Var = toolbar.e0;
-        if (si1Var != null) {
-            si1Var.y(qu2Var);
-        }
+    public void y(qu2 r3) {
+        Toolbar r2 = (Toolbar) this.o;
+        y4 r0 = r2.n.G;
+        if (r0 != null) goto L5;
+    L7:
+        Iterator r1 = ((CopyOnWriteArrayList) r2.T.p).iterator();
+    L9:
+        if (r1.hasNext() == false) goto L11;
+        ((cd1) r1.next()).a.s();
+    L11:
+        si1 r4 = r2.e0;
+        if (r4 == null) goto L16;
+        r4.y(r3);
+        return;
+    L16:
+        return;
+    L5:
+        if (r0.k() == false) goto L7;
+        goto L7
     }
 
     @Override // defpackage.ci
-    public Object z(q64 q64Var, Float f, Float f2, if1 if1Var, vg4 vg4Var) {
-        float fFloatValue = f.floatValue();
-        float fFloatValue2 = f2.floatValue();
-        Object objD = su3.d(q64Var, Math.signum(fFloatValue2) * Math.abs(fFloatValue), fFloatValue, j51.a(0.0f, fFloatValue2, 28), (ck4) this.o, if1Var, vg4Var);
-        return objD == xe0.n ? objD : (ud) objD;
+    public Object z(q64 r8, Float r9, Float r10, if1 r11, vg4 r12) {
+        float r2 = r9.floatValue();
+        float r13 = r10.floatValue();
+        xd r3 = j51.a(0.0f, r13, 28);
+        float r14 = Math.abs(r2);
+        Object r7 = su3.d(r8, Math.signum(r13) * r14, r2, r3, (ck4) this.o, r11, r12);
+        if (r7 != xe0.n) goto L6;
+        return r7;
+    L6:
+        return (ud) r7;
     }
 
     @Override // com.eddyizm.tempus.interfaces.ScanCallback
-    public void onSuccess(boolean z, long j) {
-        vb4 vb4Var = (vb4) this.o;
-        vb4Var.h0("scan_library").x(vb4Var.t(R.string.settings_scan_result, Long.valueOf(j)));
-        if (z) {
-            vb4.k0(vb4Var);
-        }
+    public void onSuccess(boolean r2, long r3) {
+        vb4 r1 = (vb4) this.o;
+        r1.h0("scan_library").x(r1.t(R.string.settings_scan_result, new Object[]{Long.valueOf(r3)}));
+        if (r2 == false) goto L6;
+        vb4.k0(r1);
+        return;
     }
 
-    public /* synthetic */ pz1(int i, boolean z) {
-        this.n = i;
+    public /* synthetic */ pz1(int r1, boolean r2) {
+        this.n = r1;
     }
 
-    public pz1(so4 so4Var) {
+    public pz1(so4 r2) {
         this.n = 26;
-        so4Var.getClass();
-        this.o = so4Var;
+        r2.getClass();
+        this.o = r2;
     }
 
-    public pz1(View view) {
+    public pz1(View r2) {
         this.n = 0;
-        this.o = view;
-        rr2.K(b92.n, new wc(8, this));
+        this.o = r2;
+        wc r3 = new wc(8, this);
+        rr2.K(b92.n, r3);
     }
 
-    public /* synthetic */ pz1(int i, Object obj) {
-        this.n = i;
-        this.o = obj;
+    public /* synthetic */ pz1(int r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
-    public pz1(PlayerControllerFragment playerControllerFragment, bj2 bj2Var) {
+    public pz1(PlayerControllerFragment r1, bj2 r2) {
         this.n = 11;
-        this.o = playerControllerFragment;
+        this.o = r1;
     }
 }

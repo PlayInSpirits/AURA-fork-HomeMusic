@@ -8,9 +8,9 @@ import java.util.concurrent.CancellationException;
 public final class AbortFlowException extends CancellationException {
     public final transient Object n;
 
-    public AbortFlowException(q81 q81Var) {
+    public AbortFlowException(q81 r2) {
         super("Flow was aborted, no more elements needed");
-        this.n = q81Var;
+        this.n = r2;
     }
 
     @Override // java.lang.Throwable

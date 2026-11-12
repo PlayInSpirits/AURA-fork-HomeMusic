@@ -8,25 +8,26 @@ public final /* synthetic */ class at1 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ qi3 o;
 
-    public /* synthetic */ at1(qi3 qi3Var, int i) {
-        this.n = i;
-        this.o = qi3Var;
+    public /* synthetic */ at1(qi3 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        qi3 qi3Var = this.o;
-        switch (i) {
-            case 0:
-                a.g(qi3Var);
-                qi3Var.s(false);
-                ud3.y0(false);
-                a.c();
-                break;
-            default:
-                qi3Var.R(1.0f);
-                break;
-        }
+        int r0 = this.n;
+        qi3 r1 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.R(1.0f);
+        return;
+    L6:
+        a.g(r1);
+        r1.s(false);
+        ud3.y0(false);
+        a.c();
     }
 }

@@ -74,8 +74,8 @@ public final class mb0 extends ViewGroup.MarginLayoutParams {
     public int y;
     public int z;
 
-    public mb0(int i, int i2) {
-        super(i, i2);
+    public mb0(int r6, int r7) {
+        super(r6, r7);
         this.a = -1;
         this.b = -1;
         this.c = -1.0f;
@@ -147,223 +147,211 @@ public final class mb0 extends ViewGroup.MarginLayoutParams {
         this.d0 = false;
         this.a0 = true;
         this.b0 = true;
-        int i = ((ViewGroup.MarginLayoutParams) this).width;
-        if (i == -2 && this.W) {
-            this.a0 = false;
-            if (this.L == 0) {
-                this.L = 1;
-            }
-        }
-        int i2 = ((ViewGroup.MarginLayoutParams) this).height;
-        if (i2 == -2 && this.X) {
-            this.b0 = false;
-            if (this.M == 0) {
-                this.M = 1;
-            }
-        }
-        if (i == 0 || i == -1) {
-            this.a0 = false;
-            if (i == 0 && this.L == 1) {
-                ((ViewGroup.MarginLayoutParams) this).width = -2;
-                this.W = true;
-            }
-        }
-        if (i2 == 0 || i2 == -1) {
-            this.b0 = false;
-            if (i2 == 0 && this.M == 1) {
-                ((ViewGroup.MarginLayoutParams) this).height = -2;
-                this.X = true;
-            }
-        }
-        if (this.c == -1.0f && this.a == -1 && this.b == -1) {
-            return;
-        }
+        int r2 = ((ViewGroup.MarginLayoutParams) this).width;
+        if (r2 == (-2)) goto L5;
+    L9:
+        int r4 = ((ViewGroup.MarginLayoutParams) this).height;
+        if (r4 != (-2)) goto L17;
+        if (this.X == false) goto L17;
+        this.b0 = false;
+        if (this.M != 0) goto L17;
+        this.M = 1;
+    L17:
+        if (r2 == 0) goto L19;
+        if (r2 == (-1)) goto L19;
+    L24:
+        if (r4 == 0) goto L26;
+        if (r4 == (-1)) goto L26;
+    L32:
+        if (this.c == (-1.0f)) goto L34;
+    L39:
         this.d0 = true;
         this.a0 = true;
         this.b0 = true;
-        if (!(this.p0 instanceof pk1)) {
-            this.p0 = new pk1();
-        }
+        if ((this.p0 instanceof pk1) == true) goto L42;
+        this.p0 = new pk1();
+    L42:
         ((pk1) this.p0).O(this.V);
+        return;
+    L34:
+        if (this.a != (-1)) goto L39;
+        if (this.b != (-1)) goto L39;
+        return;
+    L26:
+        this.b0 = false;
+        if (r4 != 0) goto L32;
+        if (this.M != 1) goto L32;
+        ((ViewGroup.MarginLayoutParams) this).height = -2;
+        this.X = true;
+    L19:
+        this.a0 = false;
+        if (r2 != 0) goto L24;
+        if (this.L != 1) goto L24;
+        ((ViewGroup.MarginLayoutParams) this).width = -2;
+        this.W = true;
+        goto L24
+    L5:
+        if (this.W == false) goto L9;
+        this.a0 = false;
+        if (this.L != 0) goto L9;
+        this.L = 1;
+        goto L9
     }
 
-    /* JADX WARN: Code duplicated, block: B:16:0x004a  */
-    /* JADX WARN: Code duplicated, block: B:19:0x0051  */
-    /* JADX WARN: Code duplicated, block: B:22:0x0058  */
-    /* JADX WARN: Code duplicated, block: B:25:0x005e  */
-    /* JADX WARN: Code duplicated, block: B:28:0x0064  */
-    /* JADX WARN: Code duplicated, block: B:37:0x007a  */
-    /* JADX WARN: Code duplicated, block: B:38:0x0082 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:39:0x0084  */
-    /* JADX WARN: Code duplicated, block: B:40:0x008b A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:41:0x008d  */
     @Override // android.view.ViewGroup.MarginLayoutParams, android.view.ViewGroup.LayoutParams
-    public final void resolveLayoutDirection(int i) {
-        int i2;
-        int i3;
-        int i4;
-        int i5;
-        int i6 = ((ViewGroup.MarginLayoutParams) this).leftMargin;
-        int i7 = ((ViewGroup.MarginLayoutParams) this).rightMargin;
-        super.resolveLayoutDirection(i);
-        boolean z = false;
-        boolean z2 = 1 == getLayoutDirection();
+    public final void resolveLayoutDirection(int r12) {
+        int r0 = ((ViewGroup.MarginLayoutParams) this).leftMargin;
+        int r1 = ((ViewGroup.MarginLayoutParams) this).rightMargin;
+        super.resolveLayoutDirection(r12);
+        boolean r2 = false;
+        if (1 != getLayoutDirection()) goto L5;
+        boolean r13 = true;
+    L6:
         this.h0 = -1;
         this.i0 = -1;
         this.f0 = -1;
         this.g0 = -1;
         this.j0 = this.w;
         this.k0 = this.y;
-        float f = this.E;
-        this.l0 = f;
-        int i8 = this.a;
-        this.m0 = i8;
-        int i9 = this.b;
-        this.n0 = i9;
-        float f2 = this.c;
-        this.o0 = f2;
-        int i10 = this.s;
-        if (z2) {
-            if (i10 != -1) {
-                this.h0 = i10;
-            } else {
-                int i11 = this.t;
-                if (i11 != -1) {
-                    this.i0 = i11;
-                } else {
-                    i2 = this.u;
-                    if (i2 != -1) {
-                        this.g0 = i2;
-                        z = true;
-                    }
-                    i3 = this.v;
-                    if (i3 != -1) {
-                        this.f0 = i3;
-                        z = true;
-                    }
-                    i4 = this.A;
-                    if (i4 != Integer.MIN_VALUE) {
-                        this.k0 = i4;
-                    }
-                    i5 = this.B;
-                    if (i5 != Integer.MIN_VALUE) {
-                        this.j0 = i5;
-                    }
-                    if (z) {
-                        this.l0 = 1.0f - f;
-                    }
-                    if (this.d0 && this.V == 1 && this.d) {
-                        if (f2 != -1.0f) {
-                            this.o0 = 1.0f - f2;
-                            this.m0 = -1;
-                            this.n0 = -1;
-                        } else if (i8 != -1) {
-                            this.n0 = i8;
-                            this.m0 = -1;
-                            this.o0 = -1.0f;
-                        } else if (i9 != -1) {
-                            this.m0 = i9;
-                            this.n0 = -1;
-                            this.o0 = -1.0f;
-                        }
-                    }
-                }
-            }
-            z = true;
-            i2 = this.u;
-            if (i2 != -1) {
-                this.g0 = i2;
-                z = true;
-            }
-            i3 = this.v;
-            if (i3 != -1) {
-                this.f0 = i3;
-                z = true;
-            }
-            i4 = this.A;
-            if (i4 != Integer.MIN_VALUE) {
-                this.k0 = i4;
-            }
-            i5 = this.B;
-            if (i5 != Integer.MIN_VALUE) {
-                this.j0 = i5;
-            }
-            if (z) {
-                this.l0 = 1.0f - f;
-            }
-            if (this.d0) {
-                if (f2 != -1.0f) {
-                    this.o0 = 1.0f - f2;
-                    this.m0 = -1;
-                    this.n0 = -1;
-                } else if (i8 != -1) {
-                    this.n0 = i8;
-                    this.m0 = -1;
-                    this.o0 = -1.0f;
-                } else if (i9 != -1) {
-                    this.m0 = i9;
-                    this.n0 = -1;
-                    this.o0 = -1.0f;
-                }
-            }
-        } else {
-            if (i10 != -1) {
-                this.g0 = i10;
-            }
-            int i12 = this.t;
-            if (i12 != -1) {
-                this.f0 = i12;
-            }
-            int i13 = this.u;
-            if (i13 != -1) {
-                this.h0 = i13;
-            }
-            int i14 = this.v;
-            if (i14 != -1) {
-                this.i0 = i14;
-            }
-            int i15 = this.A;
-            if (i15 != Integer.MIN_VALUE) {
-                this.j0 = i15;
-            }
-            int i16 = this.B;
-            if (i16 != Integer.MIN_VALUE) {
-                this.k0 = i16;
-            }
-        }
-        if (this.u == -1 && this.v == -1 && this.t == -1 && i10 == -1) {
-            int i17 = this.g;
-            if (i17 != -1) {
-                this.h0 = i17;
-                if (((ViewGroup.MarginLayoutParams) this).rightMargin <= 0 && i7 > 0) {
-                    ((ViewGroup.MarginLayoutParams) this).rightMargin = i7;
-                }
-            } else {
-                int i18 = this.h;
-                if (i18 != -1) {
-                    this.i0 = i18;
-                    if (((ViewGroup.MarginLayoutParams) this).rightMargin <= 0 && i7 > 0) {
-                        ((ViewGroup.MarginLayoutParams) this).rightMargin = i7;
-                    }
-                }
-            }
-            int i19 = this.e;
-            if (i19 != -1) {
-                this.f0 = i19;
-                if (((ViewGroup.MarginLayoutParams) this).leftMargin > 0 || i6 <= 0) {
-                    return;
-                }
-                ((ViewGroup.MarginLayoutParams) this).leftMargin = i6;
-                return;
-            }
-            int i20 = this.f;
-            if (i20 != -1) {
-                this.g0 = i20;
-                if (((ViewGroup.MarginLayoutParams) this).leftMargin > 0 || i6 <= 0) {
-                    return;
-                }
-                ((ViewGroup.MarginLayoutParams) this).leftMargin = i6;
-            }
-        }
+        float r5 = this.E;
+        this.l0 = r5;
+        int r6 = this.a;
+        this.m0 = r6;
+        int r7 = this.b;
+        this.n0 = r7;
+        float r8 = this.c;
+        this.o0 = r8;
+        int r9 = this.s;
+        if (r13 == false) goto L42;
+        if (r9 == (-1)) goto L11;
+        this.h0 = r9;
+    L10:
+        r2 = true;
+    L14:
+        int r14 = this.u;
+        if (r14 == (-1)) goto L17;
+        this.g0 = r14;
+        r2 = true;
+    L17:
+        int r15 = this.v;
+        if (r15 == (-1)) goto L20;
+        this.f0 = r15;
+        r2 = true;
+    L20:
+        int r16 = this.A;
+        if (r16 == Integer.MIN_VALUE) goto L23;
+        this.k0 = r16;
+    L23:
+        int r17 = this.B;
+        if (r17 == Integer.MIN_VALUE) goto L27;
+        this.j0 = r17;
+    L27:
+        if (r2 == false) goto L30;
+        this.l0 = 1.0f - r5;
+    L30:
+        if (this.d0 == false) goto L60;
+        if (this.V != 1) goto L60;
+        if (this.d == false) goto L60;
+        if (r8 == (-1.0f)) goto L38;
+        this.o0 = 1.0f - r8;
+        this.m0 = -1;
+        this.n0 = -1;
+        goto L60
+    L38:
+        if (r6 == (-1)) goto L40;
+        this.n0 = r6;
+        this.m0 = -1;
+        this.o0 = -1.0f;
+        goto L60
+    L40:
+        if (r7 == (-1)) goto L60;
+        this.m0 = r7;
+        this.n0 = -1;
+        this.o0 = -1.0f;
+    L60:
+        if (this.u == (-1)) goto L62;
+        return;
+    L62:
+        if (this.v == (-1)) goto L64;
+        return;
+    L64:
+        if (this.t != (-1)) goto L94;
+        if (r9 != (-1)) goto L95;
+        int r18 = this.g;
+        if (r18 == (-1)) goto L72;
+        this.h0 = r18;
+        if (((ViewGroup.MarginLayoutParams) this).rightMargin > 0) goto L78;
+        if (r1 <= 0) goto L78;
+        ((ViewGroup.MarginLayoutParams) this).rightMargin = r1;
+    L78:
+        int r19 = this.e;
+        if (r19 == (-1)) goto L85;
+        this.f0 = r19;
+        if (((ViewGroup.MarginLayoutParams) this).leftMargin > 0) goto L96;
+        if (r0 <= 0) goto L97;
+        ((ViewGroup.MarginLayoutParams) this).leftMargin = r0;
+        return;
+    L97:
+        return;
+    L96:
+        return;
+    L85:
+        int r110 = this.f;
+        if (r110 == (-1)) goto L98;
+        this.g0 = r110;
+        if (((ViewGroup.MarginLayoutParams) this).leftMargin > 0) goto L99;
+        if (r0 <= 0) goto L100;
+        ((ViewGroup.MarginLayoutParams) this).leftMargin = r0;
+        return;
+    L100:
+        return;
+    L99:
+        return;
+    L98:
+        return;
+    L72:
+        int r111 = this.h;
+        if (r111 == (-1)) goto L78;
+        this.i0 = r111;
+        if (((ViewGroup.MarginLayoutParams) this).rightMargin > 0) goto L78;
+        if (r1 <= 0) goto L78;
+        ((ViewGroup.MarginLayoutParams) this).rightMargin = r1;
+        goto L78
+    L95:
+        return;
+    L94:
+        return;
+    L11:
+        int r112 = this.t;
+        if (r112 == (-1)) goto L14;
+        this.i0 = r112;
+        goto L10
+    L42:
+        if (r9 == (-1)) goto L44;
+        this.g0 = r9;
+    L44:
+        int r113 = this.t;
+        if (r113 == (-1)) goto L47;
+        this.f0 = r113;
+    L47:
+        int r114 = this.u;
+        if (r114 == (-1)) goto L50;
+        this.h0 = r114;
+    L50:
+        int r115 = this.v;
+        if (r115 == (-1)) goto L53;
+        this.i0 = r115;
+    L53:
+        int r116 = this.A;
+        if (r116 == Integer.MIN_VALUE) goto L56;
+        this.j0 = r116;
+    L56:
+        int r117 = this.B;
+        if (r117 == Integer.MIN_VALUE) goto L60;
+        this.k0 = r117;
+        goto L60
+    L5:
+        r13 = false;
+        goto L6
     }
 }

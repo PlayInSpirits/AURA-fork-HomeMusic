@@ -8,8 +8,8 @@ public class dl4 extends hd {
     public final xi4 c;
     public final k03 d;
 
-    public dl4(Application application) {
-        super(application);
+    public dl4(Application r2) {
+        super(r2);
         this.d = new k03(null);
         this.c = new xi4(2);
     }

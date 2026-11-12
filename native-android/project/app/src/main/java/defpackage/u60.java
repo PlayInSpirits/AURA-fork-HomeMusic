@@ -7,27 +7,27 @@ import java.util.Comparator;
 public final class u60 extends v60 {
     public final int d;
 
-    public u60(int i) {
-        this.d = i;
+    public u60(int r1) {
+        this.d = r1;
     }
 
     @Override // defpackage.v60
-    public final v60 a(int i, int i2) {
+    public final v60 a(int r1, int r2) {
         return this;
     }
 
     @Override // defpackage.v60
-    public final v60 b(Object obj, Object obj2, Comparator comparator) {
+    public final v60 b(Object r1, Object r2, Comparator r3) {
         return this;
     }
 
     @Override // defpackage.v60
-    public final v60 c(boolean z, boolean z2) {
+    public final v60 c(boolean r1, boolean r2) {
         return this;
     }
 
     @Override // defpackage.v60
-    public final v60 d(boolean z, boolean z2) {
+    public final v60 d(boolean r1, boolean r2) {
         return this;
     }
 

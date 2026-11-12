@@ -12,14 +12,19 @@ public class zw1 extends qp implements vb2, Serializable {
     public final transient ly3 r;
     public final transient int s;
 
-    public zw1(ly3 ly3Var, int i) {
-        this.r = ly3Var;
-        this.s = i;
+    public zw1(ly3 r1, int r2) {
+        this.r = r1;
+        this.s = r2;
     }
 
     @Override // defpackage.u1, defpackage.qz2
     public final Collection a() {
         return (rw1) super.a();
+    }
+
+    @Override // defpackage.u1, defpackage.qz2
+    public /* bridge */ /* synthetic */ Map b() {
+        return i();
     }
 
     @Override // defpackage.qz2
@@ -28,8 +33,14 @@ public class zw1 extends qp implements vb2, Serializable {
     }
 
     @Override // defpackage.u1
-    public final boolean d(Object obj) {
-        return obj != null && super.d(obj);
+    public final boolean d(Object r1) {
+        if (r1 != null) goto L4;
+        return false;
+    L4:
+        if (super.d(r1) == false) goto L9;
+        return true;
+    L9:
+        return false;
     }
 
     @Override // defpackage.u1
@@ -48,13 +59,13 @@ public class zw1 extends qp implements vb2, Serializable {
     }
 
     @Override // defpackage.qz2
-    public final Collection get(Object obj) {
-        yw1 yw1Var = (yw1) this.r.get(obj);
-        if (yw1Var != null) {
-            return yw1Var;
-        }
-        vw1 vw1Var = yw1.o;
+    public final Collection get(Object r1) {
+        yw1 r0 = (yw1) this.r.get(r1);
+        if (r0 != null) goto L6;
+        vw1 r2 = yw1.o;
         return gy3.r;
+    L6:
+        return r0;
     }
 
     @Override // defpackage.u1
@@ -62,26 +73,24 @@ public class zw1 extends qp implements vb2, Serializable {
         return new cx1(this);
     }
 
-    @Override // defpackage.u1, defpackage.qz2
-    /* JADX INFO: renamed from: i, reason: merged with bridge method [inline-methods] */
-    public bx1 b() {
+    public bx1 i() {
         return this.r;
     }
 
     @Override // defpackage.u1, defpackage.qz2
     public final Set keySet() {
-        ly3 ly3Var = this.r;
-        jx1 jx1Var = ly3Var.o;
-        if (jx1Var != null) {
-            return jx1Var;
-        }
-        jy3 jy3VarD = ly3Var.d();
-        ly3Var.o = jy3VarD;
-        return jy3VarD;
+        ly3 r1 = this.r;
+        jx1 r0 = r1.o;
+        if (r0 != null) goto L6;
+        jy3 r2 = r1.d();
+        r1.o = r2;
+        return r2;
+    L6:
+        return r0;
     }
 
     @Override // defpackage.u1, defpackage.qz2
-    public final boolean remove(Object obj, Object obj2) {
+    public final boolean remove(Object r1, Object r2) {
         throw new UnsupportedOperationException();
     }
 

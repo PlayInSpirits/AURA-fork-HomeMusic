@@ -11,132 +11,161 @@ import java.util.Calendar;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class yf extends b3 {
-    public final /* synthetic */ int c = 0;
+    public final /* synthetic */ int c;
     public final /* synthetic */ bg d;
     public final Object e;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public yf(bg bgVar, Context context) {
-        super(bgVar);
-        this.d = bgVar;
-        this.e = (PowerManager) context.getApplicationContext().getSystemService("power");
+    public yf(bg r2, Context r3) {
+        this.c = 0;
+        this.d = r2;
+        super(r2);
+        this.e = (PowerManager) r3.getApplicationContext().getSystemService("power");
     }
 
     @Override // defpackage.b3
     public final IntentFilter e() {
-        switch (this.c) {
-            case 0:
-                IntentFilter intentFilter = new IntentFilter();
-                intentFilter.addAction("android.os.action.POWER_SAVE_MODE_CHANGED");
-                return intentFilter;
-            default:
-                IntentFilter intentFilter2 = new IntentFilter();
-                intentFilter2.addAction("android.intent.action.TIME_SET");
-                intentFilter2.addAction("android.intent.action.TIMEZONE_CHANGED");
-                intentFilter2.addAction("android.intent.action.TIME_TICK");
-                return intentFilter2;
-        }
+        switch(this.c) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        IntentFilter r1 = new IntentFilter();
+        r1.addAction("android.intent.action.TIME_SET");
+        r1.addAction("android.intent.action.TIMEZONE_CHANGED");
+        r1.addAction("android.intent.action.TIME_TICK");
+        return r1;
+    L6:
+        IntentFilter r2 = new IntentFilter();
+        r2.addAction("android.os.action.POWER_SAVE_MODE_CHANGED");
+        return r2;
     }
 
     @Override // defpackage.b3
     public final int g() {
-        Location location;
-        boolean z;
-        long j;
-        Location lastKnownLocation;
-        int i = this.c;
-        Object obj = this.e;
-        switch (i) {
-            case 0:
-                return tf.a((PowerManager) obj) ? 2 : 1;
-            default:
-                qp4 qp4Var = (qp4) obj;
-                yn4 yn4Var = (yn4) qp4Var.c;
-                LocationManager locationManager = (LocationManager) qp4Var.b;
-                if (yn4Var.b <= System.currentTimeMillis()) {
-                    Context context = (Context) qp4Var.a;
-                    Location lastKnownLocation2 = null;
-                    if (si0.l(context, "android.permission.ACCESS_COARSE_LOCATION") == 0) {
-                        try {
-                            lastKnownLocation = locationManager.isProviderEnabled("network") ? locationManager.getLastKnownLocation("network") : null;
-                        } catch (Exception e) {
-                            Log.d("TwilightManager", "Failed to get last known location", e);
-                        }
-                        location = lastKnownLocation;
-                    } else {
-                        location = null;
-                    }
-                    if (si0.l(context, "android.permission.ACCESS_FINE_LOCATION") == 0) {
-                        try {
-                            if (locationManager.isProviderEnabled("gps")) {
-                                lastKnownLocation2 = locationManager.getLastKnownLocation("gps");
-                            }
-                        } catch (Exception e2) {
-                            Log.d("TwilightManager", "Failed to get last known location", e2);
-                        }
-                    }
-                    if (lastKnownLocation2 == null || location == null ? lastKnownLocation2 != null : lastKnownLocation2.getTime() > location.getTime()) {
-                        location = lastKnownLocation2;
-                    }
-                    z = false;
-                    if (location != null) {
-                        long jCurrentTimeMillis = System.currentTimeMillis();
-                        if (os.f == null) {
-                            os.f = new os();
-                        }
-                        os osVar = os.f;
-                        osVar.a(location.getLatitude(), location.getLongitude(), jCurrentTimeMillis - 86400000);
-                        osVar.a(location.getLatitude(), location.getLongitude(), jCurrentTimeMillis);
-                        z = osVar.d == 1;
-                        long j2 = osVar.c;
-                        long j3 = osVar.b;
-                        osVar.a(location.getLatitude(), location.getLongitude(), jCurrentTimeMillis + 86400000);
-                        long j4 = osVar.c;
-                        if (j2 == -1 || j3 == -1) {
-                            j = jCurrentTimeMillis + 43200000;
-                        } else {
-                            if (jCurrentTimeMillis > j3) {
-                                j2 = j4;
-                            } else if (jCurrentTimeMillis > j2) {
-                                j2 = j3;
-                            }
-                            j = j2 + 60000;
-                        }
-                        yn4Var.a = z;
-                        yn4Var.b = j;
-                    } else {
-                        Log.i("TwilightManager", "Could not get last known location. This is probably because the app does not have any location permissions. Falling back to hardcoded sunrise/sunset values.");
-                        int i2 = Calendar.getInstance().get(11);
-                        if (i2 < 6 || i2 >= 22) {
-                            z = true;
-                        }
-                    }
-                    break;
-                } else {
-                    z = yn4Var.a;
-                }
-                return z ? 2 : 1;
-        }
+        int r1 = this.c;
+        Object r0 = this.e;
+        switch(r1) {
+            case 0: goto L67;
+            default: goto L4;
+        };
+    L4:
+        qp4 r2 = (qp4) r0;
+        yn4 r3 = (yn4) r2.c;
+        LocationManager r4 = (LocationManager) r2.b;
+        if (r3.b <= System.currentTimeMillis()) goto L7;
+        boolean r5 = r3.a;
+    L62:
+        if (r5 == false) goto L65;
+        return 2;
+    L65:
+        return 1;
+    L7:
+        Context r6 = (Context) r2.a;
+        Location r8 = null;
+        if (si0.l(r6, "android.permission.ACCESS_COARSE_LOCATION") == 0) goto L73;
+        Location r9 = null;
+    L20:
+        if (si0.l(r6, "android.permission.ACCESS_FINE_LOCATION") == 0) goto L71;
+    L28:
+        if (r8 == null) goto L33;
+        if (r9 == null) goto L33;
+        if (r8.getTime() <= r9.getTime()) goto L35;
+    L32:
+        r9 = r8;
+    L35:
+        r5 = false;
+        if (r9 == null) goto L57;
+        long r15 = System.currentTimeMillis();
+        if (os.f != null) goto L40;
+        os.f = new os();
+    L40:
+        os r17 = os.f;
+        r17.a(r9.getLatitude(), r9.getLongitude(), r15 - 86400000);
+        r17.a(r9.getLatitude(), r9.getLongitude(), r15);
+        if (r17.d != 1) goto L43;
+        r5 = true;
+    L43:
+        long r7 = r17.c;
+        long r11 = r17.b;
+        r17.a(r9.getLatitude(), r9.getLongitude(), r15 + 86400000);
+        long r10 = r17.c;
+        if (r7 != (-1)) goto L46;
+    L55:
+        long r12 = r15 + 43200000;
+    L56:
+        r3.a = r5;
+        r3.b = r12;
+        goto L62
+    L46:
+        if (r11 == (-1)) goto L55;
+        if (r15 <= r11) goto L52;
+        r7 = r10;
+    L54:
+        r12 = r7 + 60000;
+        goto L56
+    L52:
+        if (r15 <= r7) goto L54;
+        r7 = r11;
+        goto L54
+    L57:
+        Log.i("TwilightManager", "Could not get last known location. This is probably because the app does not have any location permissions. Falling back to hardcoded sunrise/sunset values.");
+        int r13 = Calendar.getInstance().get(11);
+        if (r13 >= 6) goto L60;
+    L61:
+        r5 = true;
+        goto L62
+    L60:
+        if (r13 < 22) goto L62;
+    L33:
+        if (r8 == null) goto L35;
+    L71:
+    L26:
+        e = move-exception;
+        Log.d("TwilightManager", "Failed to get last known location", e);
+        goto L28
+    L23:
+        if (r4.isProviderEnabled("gps") == false) goto L28;
+        r8 = r4.getLastKnownLocation("gps");     // Catch: Exception -> L26
+        goto L28
+    L73:
+    L14:
+        e = move-exception;
+        Log.d("TwilightManager", "Failed to get last known location", e);
+    L16:
+        Location r14 = null;
+    L17:
+        r9 = r14;
+        goto L20
+    L11:
+        if (r4.isProviderEnabled("network") == false) goto L16;
+        r14 = r4.getLastKnownLocation("network");     // Catch: Exception -> L14
+        goto L17
+    L67:
+        if (tf.a((PowerManager) r0) == false) goto L70;
+        return 2;
+    L70:
+        return 1;
     }
 
     @Override // defpackage.b3
     public final void l() {
-        int i = this.c;
-        bg bgVar = this.d;
-        switch (i) {
-            case 0:
-                bgVar.r(true, true);
-                break;
-            default:
-                bgVar.r(true, true);
-                break;
-        }
+        int r0 = this.c;
+        bg r2 = this.d;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r2.r(true, true);
+        return;
+    L6:
+        r2.r(true, true);
     }
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public yf(bg bgVar, qp4 qp4Var) {
-        super(bgVar);
-        this.d = bgVar;
-        this.e = qp4Var;
+    public yf(bg r2, qp4 r3) {
+        this.c = 1;
+        this.d = r2;
+        super(r2);
+        this.e = r3;
     }
 }

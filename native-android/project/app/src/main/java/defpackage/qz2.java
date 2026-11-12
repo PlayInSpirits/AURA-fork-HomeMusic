@@ -13,11 +13,11 @@ public interface qz2 {
 
     void clear();
 
-    Collection get(Object obj);
+    Collection get(Object r1);
 
     Set keySet();
 
-    boolean remove(Object obj, Object obj2);
+    boolean remove(Object r1, Object r2);
 
     int size();
 }

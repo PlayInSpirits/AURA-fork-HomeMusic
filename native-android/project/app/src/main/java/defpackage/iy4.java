@@ -14,121 +14,95 @@ public final class iy4 extends ep4 implements wf1 {
     public final /* synthetic */ jy4 w;
     public final /* synthetic */ mw4 x;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public iy4(y73[] y73VarArr, jy4 jy4Var, mw4 mw4Var, vd0 vd0Var) {
-        super(2, vd0Var);
-        this.v = y73VarArr;
-        this.w = jy4Var;
-        this.x = mw4Var;
+    public iy4(y73[] r1, jy4 r2, mw4 r3, vd0 r4) {
+        this.v = r1;
+        this.w = r2;
+        this.x = r3;
+        super(2, r4);
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object obj, vd0 vd0Var) {
-        return new iy4(this.v, this.w, this.x, vd0Var);
+    public final vd0 create(Object r3, vd0 r4) {
+        jy4 r0 = this.w;
+        mw4 r1 = this.x;
+        return new iy4(this.v, r0, r1, r4);
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        return ((iy4) create((ao3) obj, (vd0) obj2)).invokeSuspend(j15.a);
+    public final Object invoke(Object r1, Object r2) {
+        return ((iy4) create((ao3) r1, (vd0) r2)).invokeSuspend(j15.a);
     }
 
-    /* JADX WARN: Code duplicated, block: B:11:0x0031  */
-    /* JADX WARN: Code duplicated, block: B:13:0x003b  */
-    /* JADX WARN: Code duplicated, block: B:15:0x003f A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:16:0x0041  */
-    /* JADX WARN: Code duplicated, block: B:19:0x0056  */
-    /* JADX WARN: Code duplicated, block: B:21:0x0059  */
-    /* JADX WARN: Code duplicated, block: B:23:0x005d  */
-    /* JADX WARN: Code duplicated, block: B:26:0x0072  */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:26:0x0072 -> B:27:0x0073). Please report as a decompilation issue!!! */
-    /*  JADX ERROR: JadxOverflowException in pass: RegionMakerVisitor
-        jadx.core.utils.exceptions.JadxOverflowException: Regions stack size limit reached
-        	at jadx.core.utils.ErrorsCounter.addError(ErrorsCounter.java:59)
-        	at jadx.core.utils.ErrorsCounter.error(ErrorsCounter.java:31)
-        	at jadx.core.dex.attributes.nodes.NotificationAttrNode.addError(NotificationAttrNode.java:19)
-        */
     @Override // defpackage.jp
-    public final java.lang.Object invokeSuspend(java.lang.Object r12) {
-        /*
-            r11 = this;
-            int r0 = r11.u
-            r1 = 0
-            r2 = 2
-            r3 = 1
-            if (r0 == 0) goto L21
-            if (r0 == r3) goto Lb
-            if (r0 != r2) goto L1b
-        Lb:
-            int r0 = r11.t
-            int r4 = r11.s
-            int r5 = r11.r
-            mw4 r6 = r11.q
-            jy4 r7 = r11.p
-            y73[] r8 = r11.o
-            defpackage.kb4.X(r12)
-            goto L57
-        L1b:
-            java.lang.String r11 = "call to 'resume' before 'invoke' with coroutine"
-            defpackage.kf2.o(r11)
-            return r1
-        L21:
-            defpackage.kb4.X(r12)
-            y73[] r12 = r11.v
-            int r0 = r12.length
-            r4 = 0
-            jy4 r5 = r11.w
-            mw4 r6 = r11.x
-            r8 = r12
-            r12 = r4
-            r7 = r5
-        L2f:
-            if (r4 >= r0) goto L75
-            r5 = r8[r4]
-            int r9 = r12 + 1
-            int r5 = r5.ordinal()
-            if (r5 == 0) goto L72
-            xe0 r10 = defpackage.xe0.n
-            if (r5 == r3) goto L5d
-            if (r5 != r2) goto L59
-            r11.o = r8
-            r11.p = r7
-            r11.q = r6
-            r11.r = r9
-            r11.s = r4
-            r11.t = r0
-            r11.u = r2
-            java.lang.Object r12 = defpackage.jy4.d(r7, r6, r12, r11)
-            if (r12 != r10) goto L56
-            goto L71
-        L56:
-            r5 = r9
-        L57:
-            r12 = r5
-            goto L73
-        L59:
-            defpackage.er1.n()
-            return r1
-        L5d:
-            r11.o = r8
-            r11.p = r7
-            r11.q = r6
-            r11.r = r9
-            r11.s = r4
-            r11.t = r0
-            r11.u = r3
-            java.lang.Object r12 = defpackage.jy4.c(r7, r6, r12, r11)
-            if (r12 != r10) goto L56
-        L71:
-            return r10
-        L72:
-            r12 = r9
-        L73:
-            int r4 = r4 + r3
-            goto L2f
-        L75:
-            j15 r11 = defpackage.j15.a
-            return r11
-        */
-        throw new UnsupportedOperationException("Method not decompiled: defpackage.iy4.invokeSuspend(java.lang.Object):java.lang.Object");
+    public final Object invokeSuspend(Object r12) {
+        int r0 = this.u;
+        if (r0 == 0) goto L9;
+        if (r0 == 1) goto L6;
+        if (r0 == 2) goto L6;
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L6:
+        int r1 = this.t;
+        int r4 = this.s;
+        int r5 = this.r;
+        mw4 r6 = this.q;
+        jy4 r7 = this.p;
+        y73[] r8 = this.o;
+        kb4.X(r12);
+    L20:
+        int r13 = r5;
+    L27:
+        r4 = r4 + 1;
+    L10:
+        if (r4 >= r1) goto L29;
+        int r9 = r13 + 1;
+        int r10 = r8[r4].ordinal();
+        if (r10 == 0) goto L26;
+        xe0 r11 = xe0.n;
+        if (r10 == 1) goto L23;
+        if (r10 != 2) goto L21;
+        this.o = r8;
+        this.p = r7;
+        this.q = r6;
+        this.r = r9;
+        this.s = r4;
+        this.t = r1;
+        this.u = 2;
+        if (jy4.d(r7, r6, r13, this) == r11) goto L25;
+    L19:
+        r5 = r9;
+    L25:
+        return r11;
+    L21:
+        er1.n();
+        return null;
+    L23:
+        this.o = r8;
+        this.p = r7;
+        this.q = r6;
+        this.r = r9;
+        this.s = r4;
+        this.t = r1;
+        this.u = 1;
+        if (jy4.c(r7, r6, r13, this) != r11) goto L19;
+        r5 = r9;
+        goto L20
+    L26:
+        r13 = r9;
+        goto L27
+    L29:
+        return j15.a;
+    L9:
+        kb4.X(r12);
+        y73[] r14 = this.v;
+        r1 = r14.length;
+        r4 = 0;
+        jy4 r15 = this.w;
+        r6 = this.x;
+        r8 = r14;
+        r13 = 0;
+        r7 = r15;
+        goto L10
     }
 }

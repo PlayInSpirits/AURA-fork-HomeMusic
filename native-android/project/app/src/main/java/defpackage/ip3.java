@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 import androidx.preference.DialogPreference;
@@ -29,129 +28,147 @@ public abstract class ip3 extends pp0 implements DialogInterface.OnClickListener
     public BitmapDrawable H0;
     public int I0;
 
-    @Override // defpackage.pp0, defpackage.kc1
-    public void F(Bundle bundle) {
-        super.F(bundle);
-        kc1 kc1VarU = u(true);
-        if (!(kc1VarU instanceof kp3)) {
-            kf2.o("Target fragment must implement TargetFragment interface");
-            return;
-        }
-        kp3 kp3Var = (kp3) kc1VarU;
-        String string = Y().getString("key");
-        if (bundle != null) {
-            this.C0 = bundle.getCharSequence("PreferenceDialogFragment.title");
-            this.D0 = bundle.getCharSequence("PreferenceDialogFragment.positiveText");
-            this.E0 = bundle.getCharSequence("PreferenceDialogFragment.negativeText");
-            this.F0 = bundle.getCharSequence("PreferenceDialogFragment.message");
-            this.G0 = bundle.getInt("PreferenceDialogFragment.layout", 0);
-            Bitmap bitmap = (Bitmap) bundle.getParcelable("PreferenceDialogFragment.icon");
-            if (bitmap != null) {
-                this.H0 = new BitmapDrawable(r(), bitmap);
-                return;
-            }
-            return;
-        }
-        DialogPreference dialogPreference = (DialogPreference) kp3Var.h0(string);
-        this.B0 = dialogPreference;
-        this.C0 = dialogPreference.b0;
-        this.D0 = dialogPreference.e0;
-        this.E0 = dialogPreference.f0;
-        this.F0 = dialogPreference.c0;
-        this.G0 = dialogPreference.g0;
-        Drawable drawable = dialogPreference.d0;
-        if (drawable == null || (drawable instanceof BitmapDrawable)) {
-            this.H0 = (BitmapDrawable) drawable;
-            return;
-        }
-        Bitmap bitmapCreateBitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmapCreateBitmap);
-        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-        drawable.draw(canvas);
-        this.H0 = new BitmapDrawable(r(), bitmapCreateBitmap);
+    public ip3() {
     }
 
     @Override // defpackage.pp0, defpackage.kc1
-    public void Q(Bundle bundle) {
-        super.Q(bundle);
-        bundle.putCharSequence("PreferenceDialogFragment.title", this.C0);
-        bundle.putCharSequence("PreferenceDialogFragment.positiveText", this.D0);
-        bundle.putCharSequence("PreferenceDialogFragment.negativeText", this.E0);
-        bundle.putCharSequence("PreferenceDialogFragment.message", this.F0);
-        bundle.putInt("PreferenceDialogFragment.layout", this.G0);
-        BitmapDrawable bitmapDrawable = this.H0;
-        if (bitmapDrawable != null) {
-            bundle.putParcelable("PreferenceDialogFragment.icon", bitmapDrawable.getBitmap());
-        }
+    public void F(Bundle r6) {
+        super.F(r6);
+        kc1 r0 = u(true);
+        if ((r0 instanceof kp3) == false) goto L19;
+        kp3 r1 = (kp3) r0;
+        String r2 = Y().getString("key");
+        if (r6 != null) goto L15;
+        DialogPreference r7 = (DialogPreference) r1.h0(r2);
+        this.B0 = r7;
+        this.C0 = r7.b0;
+        this.D0 = r7.e0;
+        this.E0 = r7.f0;
+        this.F0 = r7.c0;
+        this.G0 = r7.g0;
+        Drawable r8 = r7.d0;
+        if (r8 != null) goto L9;
+    L13:
+        this.H0 = (BitmapDrawable) r8;
+        return;
+    L9:
+        if ((r8 instanceof BitmapDrawable) == true) goto L13;
+        Bitmap r3 = Bitmap.createBitmap(r8.getIntrinsicWidth(), r8.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas r4 = new Canvas(r3);
+        r8.setBounds(0, 0, r4.getWidth(), r4.getHeight());
+        r8.draw(r4);
+        this.H0 = new BitmapDrawable(r(), r3);
+        return;
+    L15:
+        this.C0 = r6.getCharSequence("PreferenceDialogFragment.title");
+        this.D0 = r6.getCharSequence("PreferenceDialogFragment.positiveText");
+        this.E0 = r6.getCharSequence("PreferenceDialogFragment.negativeText");
+        this.F0 = r6.getCharSequence("PreferenceDialogFragment.message");
+        this.G0 = r6.getInt("PreferenceDialogFragment.layout", 0);
+        Bitmap r9 = (Bitmap) r6.getParcelable("PreferenceDialogFragment.icon");
+        if (r9 == null) goto L21;
+        this.H0 = new BitmapDrawable(r(), r9);
+        return;
+    L21:
+        return;
+    L19:
+        kf2.o("Target fragment must implement TargetFragment interface");
+    }
+
+    @Override // defpackage.pp0, defpackage.kc1
+    public void Q(Bundle r3) {
+        super.Q(r3);
+        r3.putCharSequence("PreferenceDialogFragment.title", this.C0);
+        r3.putCharSequence("PreferenceDialogFragment.positiveText", this.D0);
+        r3.putCharSequence("PreferenceDialogFragment.negativeText", this.E0);
+        r3.putCharSequence("PreferenceDialogFragment.message", this.F0);
+        r3.putInt("PreferenceDialogFragment.layout", this.G0);
+        BitmapDrawable r2 = this.H0;
+        if (r2 == null) goto L6;
+        r3.putParcelable("PreferenceDialogFragment.icon", r2.getBitmap());
+        return;
     }
 
     @Override // defpackage.pp0
-    public final Dialog j0(Bundle bundle) {
+    public final Dialog j0(Bundle r4) {
         this.I0 = -2;
-        e9 e9VarD = new e9(Z()).setTitle(this.C0).b(this.H0).f(this.D0, this).d(this.E0, this);
+        e9 r5 = new e9(Z()).setTitle(this.C0).b(this.H0).f(this.D0, this).d(this.E0, this);
         Z();
-        int i = this.G0;
-        View viewInflate = i != 0 ? o().inflate(i, (ViewGroup) null) : null;
-        if (viewInflate != null) {
-            o0(viewInflate);
-            e9VarD.setView(viewInflate);
-        } else {
-            e9VarD.c(this.F0);
-        }
-        q0(e9VarD);
-        f9 f9VarCreate = e9VarD.create();
-        if (this instanceof jz0) {
-            Window window = f9VarCreate.getWindow();
-            if (Build.VERSION.SDK_INT >= 30) {
-                hp3.a(window);
-                return f9VarCreate;
-            }
-            jz0 jz0Var = (jz0) this;
-            jz0Var.M0 = SystemClock.currentThreadTimeMillis();
-            jz0Var.r0();
-        }
-        return f9VarCreate;
+        int r0 = this.G0;
+        View r1 = null;
+        if (r0 == 0) goto L6;
+        r1 = o().inflate(r0, null);
+    L6:
+        if (r1 == null) goto L8;
+        o0(r1);
+        r5.setView(r1);
+    L9:
+        q0(r5);
+        f9 r6 = r5.create();
+        if ((this instanceof jz0) == false) goto L16;
+        Window r2 = r6.getWindow();
+        if (Build.VERSION.SDK_INT < 30) goto L15;
+        hp3.a(r2);
+        return r6;
+    L15:
+        jz0 r3 = (jz0) this;
+        r3.M0 = SystemClock.currentThreadTimeMillis();
+        r3.r0();
+    L16:
+        return r6;
+    L8:
+        r5.c(this.F0);
+        goto L9
     }
 
     public final DialogPreference n0() {
-        if (this.B0 == null) {
-            this.B0 = (DialogPreference) ((kp3) u(true)).h0(Y().getString("key"));
-        }
+        if (this.B0 != null) goto L6;
+        String r0 = Y().getString("key");
+        this.B0 = (DialogPreference) ((kp3) u(true)).h0(r0);
+    L6:
         return this.B0;
     }
 
-    public void o0(View view) {
-        int i;
-        View viewFindViewById = view.findViewById(R.id.message);
-        if (viewFindViewById != null) {
-            CharSequence charSequence = this.F0;
-            if (TextUtils.isEmpty(charSequence)) {
-                i = 8;
-            } else {
-                if (viewFindViewById instanceof TextView) {
-                    ((TextView) viewFindViewById).setText(charSequence);
-                }
-                i = 0;
-            }
-            if (viewFindViewById.getVisibility() != i) {
-                viewFindViewById.setVisibility(i);
-            }
-        }
+    public void o0(View r2) {
+        View r3 = r2.findViewById(R.id.message);
+        if (r3 == null) goto L15;
+        CharSequence r1 = this.F0;
+        if (TextUtils.isEmpty(r1) == false) goto L7;
+        int r4 = 8;
+    L12:
+        if (r3.getVisibility() == r4) goto L16;
+        r3.setVisibility(r4);
+        return;
+    L16:
+        return;
+    L7:
+        if ((r3 instanceof TextView) == false) goto L9;
+        ((TextView) r3).setText(r1);
+    L9:
+        r4 = 0;
+        goto L12
     }
 
     @Override // android.content.DialogInterface.OnClickListener
-    public final void onClick(DialogInterface dialogInterface, int i) {
-        this.I0 = i;
+    public final void onClick(DialogInterface r1, int r2) {
+        this.I0 = r2;
     }
 
     @Override // defpackage.pp0, android.content.DialogInterface.OnDismissListener
-    public final void onDismiss(DialogInterface dialogInterface) {
-        super.onDismiss(dialogInterface);
-        p0(this.I0 == -1);
+    public final void onDismiss(DialogInterface r2) {
+        super.onDismiss(r2);
+        if (this.I0 != (-1)) goto L5;
+        boolean r3 = true;
+    L6:
+        p0(r3);
+        return;
+    L5:
+        r3 = false;
+        goto L6
     }
 
-    public abstract void p0(boolean z);
+    public abstract void p0(boolean r1);
 
-    public void q0(e9 e9Var) {
+    public void q0(e9 r1) {
     }
 }

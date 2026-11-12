@@ -5,7 +5,7 @@ package defpackage;
 public final class ui0 {
     public final rm2 a;
 
-    public ui0(rm2 rm2Var) {
-        this.a = rm2Var;
+    public ui0(rm2 r1) {
+        this.a = r1;
     }
 }

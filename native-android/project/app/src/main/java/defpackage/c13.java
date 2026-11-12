@@ -10,20 +10,20 @@ import java.util.ListIterator;
 public final class c13 implements List, y32 {
     public final f13 n;
 
-    public c13(f13 f13Var) {
-        this.n = f13Var;
+    public c13(f13 r1) {
+        this.n = r1;
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean add(Object obj) {
-        this.n.b(obj);
+    public final boolean add(Object r1) {
+        this.n.b(r1);
         return true;
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean addAll(Collection collection) {
-        f13 f13Var = this.n;
-        return f13Var.e(f13Var.p, collection);
+    public final boolean addAll(Collection r2) {
+        f13 r1 = this.n;
+        return r1.e(r1.p, r2);
     }
 
     @Override // java.util.List, java.util.Collection
@@ -32,35 +32,39 @@ public final class c13 implements List, y32 {
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean contains(Object obj) {
-        return this.n.h(obj);
+    public final boolean contains(Object r1) {
+        return this.n.h(r1);
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean containsAll(Collection collection) {
-        Iterator it = collection.iterator();
-        while (it.hasNext()) {
-            if (!this.n.h(it.next())) {
-                return false;
-            }
-        }
+    public final boolean containsAll(Collection r3) {
+        Iterator r4 = r3.iterator();
+    L4:
+        if (r4.hasNext() == false) goto L9;
+        Object r0 = r4.next();
+        if (this.n.h(r0) == true) goto L4;
+        return false;
+    L9:
         return true;
     }
 
     @Override // java.util.List
-    public final Object get(int i) {
-        g13.a(this, i);
-        return this.n.n[i];
+    public final Object get(int r1) {
+        g13.a(this, r1);
+        return this.n.n[r1];
     }
 
     @Override // java.util.List
-    public final int indexOf(Object obj) {
-        return this.n.i(obj);
+    public final int indexOf(Object r1) {
+        return this.n.i(r1);
     }
 
     @Override // java.util.List, java.util.Collection
     public final boolean isEmpty() {
-        return this.n.p == 0;
+        if (this.n.p != 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // java.util.List, java.util.Collection, java.lang.Iterable
@@ -69,14 +73,18 @@ public final class c13 implements List, y32 {
     }
 
     @Override // java.util.List
-    public final int lastIndexOf(Object obj) {
-        f13 f13Var = this.n;
-        Object[] objArr = f13Var.n;
-        for (int i = f13Var.p - 1; i >= 0; i--) {
-            if (h12.c(obj, objArr[i])) {
-                return i;
-            }
-        }
+    public final int lastIndexOf(Object r3) {
+        f13 r2 = this.n;
+        int r0 = r2.p - 1;
+        Object[] r4 = r2.n;
+    L3:
+        if (r0 < 0) goto L8;
+        if (h12.c(r3, r4[r0]) == true) goto L6;
+        r0 = r0 - 1;
+        goto L3
+    L6:
+        return r0;
+    L8:
         return -1;
     }
 
@@ -86,44 +94,56 @@ public final class c13 implements List, y32 {
     }
 
     @Override // java.util.List
-    public final Object remove(int i) {
-        g13.a(this, i);
-        return this.n.k(i);
+    public final Object remove(int r1) {
+        g13.a(this, r1);
+        return this.n.k(r1);
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean removeAll(Collection collection) {
-        if (collection.isEmpty()) {
-            return false;
-        }
-        f13 f13Var = this.n;
-        int i = f13Var.p;
-        Iterator it = collection.iterator();
-        while (it.hasNext()) {
-            f13Var.j(it.next());
-        }
-        return i != f13Var.p;
+    public final boolean removeAll(Collection r3) {
+        if (r3.isEmpty() == true) goto L16;
+        f13 r2 = this.n;
+        int r0 = r2.p;
+        Iterator r4 = r3.iterator();
+    L7:
+        if (r4.hasNext() == false) goto L10;
+        r2.j(r4.next());
+        goto L7
+    L10:
+        if (r0 == r2.p) goto L13;
+        return true;
+    L13:
+        return false;
+    L16:
+        return false;
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean retainAll(Collection collection) {
-        f13 f13Var = this.n;
-        int i = f13Var.p;
-        for (int i2 = i - 1; -1 < i2; i2--) {
-            if (!collection.contains(f13Var.n[i2])) {
-                f13Var.k(i2);
-            }
-        }
-        return i != f13Var.p;
+    public final boolean retainAll(Collection r4) {
+        f13 r3 = this.n;
+        int r0 = r3.p;
+        int r1 = r0 - 1;
+    L4:
+        if ((-1) >= r1) goto L10;
+        if (r4.contains(r3.n[r1]) == true) goto L8;
+        r3.k(r1);
+    L8:
+        r1 = r1 - 1;
+        goto L4
+    L10:
+        if (r0 == r3.p) goto L13;
+        return true;
+    L13:
+        return false;
     }
 
     @Override // java.util.List
-    public final Object set(int i, Object obj) {
-        g13.a(this, i);
-        Object[] objArr = this.n.n;
-        Object obj2 = objArr[i];
-        objArr[i] = obj;
-        return obj2;
+    public final Object set(int r2, Object r3) {
+        g13.a(this, r2);
+        Object[] r1 = this.n.n;
+        Object r0 = r1[r2];
+        r1[r2] = r3;
+        return r0;
     }
 
     @Override // java.util.List, java.util.Collection
@@ -132,9 +152,9 @@ public final class c13 implements List, y32 {
     }
 
     @Override // java.util.List
-    public final List subList(int i, int i2) {
-        g13.b(i, i2, this);
-        return new d13(i, i2, this);
+    public final List subList(int r2, int r3) {
+        g13.b(r2, r3, this);
+        return new d13(r2, r3, this);
     }
 
     @Override // java.util.List, java.util.Collection
@@ -143,27 +163,27 @@ public final class c13 implements List, y32 {
     }
 
     @Override // java.util.List, java.util.Collection
-    public final Object[] toArray(Object[] objArr) {
-        return zz1.J(this, objArr);
+    public final Object[] toArray(Object[] r1) {
+        return zz1.J(this, r1);
     }
 
     @Override // java.util.List
-    public final void add(int i, Object obj) {
-        this.n.a(i, obj);
+    public final void add(int r1, Object r2) {
+        this.n.a(r1, r2);
     }
 
     @Override // java.util.List
-    public final ListIterator listIterator(int i) {
-        return new e13(this, i);
+    public final ListIterator listIterator(int r2) {
+        return new e13(this, r2);
     }
 
     @Override // java.util.List
-    public final boolean addAll(int i, Collection collection) {
-        return this.n.e(i, collection);
+    public final boolean addAll(int r1, Collection r2) {
+        return this.n.e(r1, r2);
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean remove(Object obj) {
-        return this.n.j(obj);
+    public final boolean remove(Object r1) {
+        return this.n.j(r1);
     }
 }

@@ -6,25 +6,32 @@ public final class s11 {
     public final String a;
     public final boolean b;
 
-    public s11(String str, boolean z) {
-        str.getClass();
-        this.a = str;
-        this.b = z;
+    public s11(String r1, boolean r2) {
+        r1.getClass();
+        this.a = r1;
+        this.b = r2;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof s11)) {
-            return false;
-        }
-        s11 s11Var = (s11) obj;
-        return h12.c(this.a, s11Var.a) && this.b == s11Var.b;
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if ((r5 instanceof s11) == true) goto L8;
+        return false;
+    L8:
+        s11 r6 = (s11) r5;
+        if (h12.c(this.a, r6.a) == true) goto L12;
+        return false;
+    L12:
+        if (this.b == r6.b) goto L14;
+        return false;
+    L14:
+        return true;
     }
 
     public final int hashCode() {
-        return Boolean.hashCode(this.b) + (this.a.hashCode() * 31);
+        int r0 = this.a.hashCode() * 31;
+        return Boolean.hashCode(this.b) + r0;
     }
 
     public final String toString() {

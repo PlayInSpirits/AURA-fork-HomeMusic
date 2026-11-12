@@ -70,6 +70,7 @@ import defpackage.x;
 import defpackage.x7;
 import defpackage.xc5;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -83,110 +84,117 @@ public class IndexFragment extends kc1 implements ClickCallback {
     public bl2 p0;
     public om0 q0;
     public MusicFolder r0;
-    public List s0 = new ArrayList();
+    public List s0;
+
+    public IndexFragment() {
+        this.s0 = new ArrayList();
+    }
 
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        this.m0 = (MainActivity) e();
-        int i = 0;
-        View viewInflate = layoutInflater.inflate(R.layout.fragment_index, viewGroup, false);
-        int i2 = R.id.app_bar_layout;
-        AppBarLayout appBarLayout = (AppBarLayout) uo.s(viewInflate, R.id.app_bar_layout);
-        if (appBarLayout != null) {
-            i2 = R.id.fast_scrollbar;
-            FastScrollbar fastScrollbar = (FastScrollbar) uo.s(viewInflate, R.id.fast_scrollbar);
-            if (fastScrollbar != null) {
-                i2 = R.id.hm_index_search;
-                TextInputEditText textInputEditText = (TextInputEditText) uo.s(viewInflate, R.id.hm_index_search);
-                if (textInputEditText != null) {
-                    i2 = R.id.hm_index_search_empty;
-                    TextView textView = (TextView) uo.s(viewInflate, R.id.hm_index_search_empty);
-                    if (textView != null) {
-                        i2 = R.id.hm_index_search_layout;
-                        if (((TextInputLayout) uo.s(viewInflate, R.id.hm_index_search_layout)) != null) {
-                            i2 = R.id.index_info_sector;
-                            ConstraintLayout constraintLayout = (ConstraintLayout) uo.s(viewInflate, R.id.index_info_sector);
-                            if (constraintLayout != null) {
-                                i2 = R.id.index_recycler_view;
-                                RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate, R.id.index_recycler_view);
-                                if (recyclerView != null) {
-                                    i2 = R.id.index_title_label;
-                                    TextView textView2 = (TextView) uo.s(viewInflate, R.id.index_title_label);
-                                    if (textView2 != null) {
-                                        i2 = R.id.toolbar;
-                                        MaterialToolbar materialToolbar = (MaterialToolbar) uo.s(viewInflate, R.id.toolbar);
-                                        if (materialToolbar != null) {
-                                            LinearLayout linearLayout = (LinearLayout) viewInflate;
-                                            this.l0 = new ey(linearLayout, appBarLayout, fastScrollbar, textInputEditText, textView, constraintLayout, recyclerView, textView2, materialToolbar);
-                                            nc1 nc1VarX = X();
-                                            e75 e75VarD = nc1VarX.d();
-                                            b75 b75VarR = gh0.r(nc1VarX);
-                                            bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
-                                            i30 i30VarA = kx3.a(wx1.class);
-                                            String strB = i30VarA.b();
-                                            if (strB == null) {
-                                                kf2.n("Local and anonymous classes can not be ViewModels");
-                                                return null;
-                                            }
-                                            this.n0 = (wx1) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-                                            this.q0 = new om0(5);
-                                            Bundle bundle2 = this.s;
-                                            this.r0 = bundle2 != null ? (MusicFolder) bundle2.getParcelable("MUSIC_FOLDER_OBJECT") : null;
-                                            this.m0.o((MaterialToolbar) this.l0.h);
-                                            if (this.m0.n() != null) {
-                                                this.m0.n().f0(true);
-                                                this.m0.n().g0();
-                                            }
-                                            ((MaterialToolbar) this.l0.h).setNavigationOnClickListener(new p6(21, this));
-                                            ((AppBarLayout) this.l0.a).a(new u7(6, this));
-                                            RecyclerView recyclerView2 = (RecyclerView) this.l0.f;
-                                            Z();
-                                            recyclerView2.setLayoutManager(new LinearLayoutManager(1));
-                                            ((RecyclerView) this.l0.f).setHasFixedSize(true);
-                                            b03 b03Var = new b03(this);
-                                            this.o0 = b03Var;
-                                            ((RecyclerView) this.l0.f).setAdapter(b03Var);
-                                            wx1 wx1Var = this.n0;
-                                            MusicFolder musicFolder = this.r0;
-                                            String id = musicFolder != null ? musicFolder.getId() : null;
-                                            wx1Var.c.getClass();
-                                            k03 k03Var = new k03();
-                                            gp3 gp3VarC = App.f(false).c();
-                                            gp3VarC.getClass();
-                                            Log.d("BrowsingClient", "getIndexes()");
-                                            ((ov) gp3VarC.p).b(((pn4) gp3VarC.o).f(), id, null).enqueue(new q8(k03Var, 2));
-                                            k03Var.e(v(), new d8(13, this));
-                                            TextInputEditText textInputEditText2 = (TextInputEditText) this.l0.c;
-                                            x xVar = new x(18, this);
-                                            ux3 ux3Var = qn1.a;
-                                            textInputEditText2.addTextChangedListener(new pn1(i, xVar));
-                                            textInputEditText2.setOnEditorActionListener(new on1());
-                                            ey eyVar = this.l0;
-                                            ((FastScrollbar) eyVar.b).setRecyclerView((RecyclerView) eyVar.f);
-                                            FastScrollbar fastScrollbar2 = (FastScrollbar) this.l0.b;
-                                            LayoutInflater.from(fastScrollbar2.getContext()).inflate(R.layout.layout_fast_scrollbar, (ViewGroup) fastScrollbar2, true);
-                                            TextView textView3 = (TextView) fastScrollbar2.findViewById(R.id.fastscroller_bubble);
-                                            fastScrollbar2.n = textView3;
-                                            if (textView3 != null) {
-                                                textView3.setVisibility(4);
-                                            }
-                                            fastScrollbar2.o = fastScrollbar2.findViewById(R.id.fastscroller_handle);
-                                            MusicFolder musicFolder2 = this.r0;
-                                            if (musicFolder2 != null) {
-                                                this.n0.d = musicFolder2;
-                                                ((TextView) this.l0.g).setText(musicFolder2.getName());
-                                            }
-                                            return linearLayout;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i2)));
+    public final View H(LayoutInflater r12, ViewGroup r13, Bundle r14) {
+        this.m0 = (MainActivity) l();
+        int r0 = 0;
+        View r15 = r12.inflate(R.layout.fragment_index, r13, false);
+        int r16 = R.id.app_bar_layout;
+        AppBarLayout r3 = (AppBarLayout) uo.s(r15, R.id.app_bar_layout);
+        if (r3 == null) goto L42;
+        r16 = R.id.fast_scrollbar;
+        FastScrollbar r4 = (FastScrollbar) uo.s(r15, R.id.fast_scrollbar);
+        if (r4 == null) goto L42;
+        r16 = R.id.hm_index_search;
+        TextInputEditText r5 = (TextInputEditText) uo.s(r15, R.id.hm_index_search);
+        if (r5 == null) goto L42;
+        r16 = R.id.hm_index_search_empty;
+        TextView r6 = (TextView) uo.s(r15, R.id.hm_index_search_empty);
+        if (r6 == null) goto L42;
+        r16 = R.id.hm_index_search_layout;
+        if (((TextInputLayout) uo.s(r15, R.id.hm_index_search_layout)) == null) goto L42;
+        r16 = R.id.index_info_sector;
+        ConstraintLayout r7 = (ConstraintLayout) uo.s(r15, R.id.index_info_sector);
+        if (r7 == null) goto L42;
+        r16 = R.id.index_recycler_view;
+        RecyclerView r8 = (RecyclerView) uo.s(r15, R.id.index_recycler_view);
+        if (r8 == null) goto L42;
+        r16 = R.id.index_title_label;
+        TextView r9 = (TextView) uo.s(r15, R.id.index_title_label);
+        if (r9 == null) goto L42;
+        r16 = R.id.toolbar;
+        MaterialToolbar r10 = (MaterialToolbar) uo.s(r15, R.id.toolbar);
+        if (r10 == null) goto L42;
+        LinearLayout r2 = (LinearLayout) r15;
+        this.l0 = new ey(r2, r3, r4, r5, r6, r7, r8, r9, r10);
+        nc1 r17 = X();
+        e75 r18 = r17.d();
+        b75 r1 = gh0.r(r17);
+        bq4 r11 = new bq4(r18, r1, b11.e(r17, r1));
+        i30 r19 = kx3.a(wx1.class);
+        String r110 = r19.b();
+        if (r110 == null) goto L40;
+        this.n0 = (wx1) r11.l(r19, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r110));
+        this.q0 = new om0(5);
+        Bundle r111 = this.s;
+        if (r111 == null) goto L25;
+        MusicFolder r112 = (MusicFolder) r111.getParcelable("MUSIC_FOLDER_OBJECT");
+    L26:
+        this.r0 = r112;
+        this.m0.o((MaterialToolbar) this.l0.h);
+        if (this.m0.n() == null) goto L29;
+        this.m0.n().f0(true);
+        this.m0.n().g0();
+    L29:
+        ((MaterialToolbar) this.l0.h).setNavigationOnClickListener(new p6(21, this));
+        ((AppBarLayout) this.l0.a).a(new u7(6, this));
+        RecyclerView r113 = (RecyclerView) this.l0.f;
+        Z();
+        r113.setLayoutManager(new LinearLayoutManager(1));
+        ((RecyclerView) this.l0.f).setHasFixedSize(true);
+        b03 r114 = new b03(this);
+        this.o0 = r114;
+        ((RecyclerView) this.l0.f).setAdapter(r114);
+        wx1 r115 = this.n0;
+        MusicFolder r20 = this.r0;
+        if (r20 == null) goto L32;
+        String r21 = r20.getId();
+    L33:
+        r115.c.getClass();
+        k03 r116 = new k03();
+        gp3 r22 = App.f(false).c();
+        r22.getClass();
+        Log.d("BrowsingClient", "getIndexes()");
+        ((ov) r22.p).b(((pn4) r22.o).f(), r21, null).enqueue(new q8(r116, 2));
+        r116.e(v(), new d8(13, this));
+        TextInputEditText r117 = (TextInputEditText) this.l0.c;
+        x r118 = new x(18, this);
+        ux3 r23 = qn1.a;
+        r117.addTextChangedListener(new pn1(r0, r118));
+        r117.setOnEditorActionListener(new on1());
+        ey r119 = this.l0;
+        ((FastScrollbar) r119.b).setRecyclerView((RecyclerView) r119.f);
+        FastScrollbar r120 = (FastScrollbar) this.l0.b;
+        LayoutInflater.from(r120.getContext()).inflate(R.layout.layout_fast_scrollbar, r120, true);
+        TextView r121 = (TextView) r120.findViewById(R.id.fastscroller_bubble);
+        r120.n = r121;
+        if (r121 == null) goto L36;
+        r121.setVisibility(4);
+    L36:
+        r120.o = r120.findViewById(R.id.fastscroller_handle);
+        MusicFolder r122 = this.r0;
+        if (r122 == null) goto L39;
+        this.n0.d = r122;
+        ((TextView) this.l0.g).setText(r122.getName());
+    L39:
+        return r2;
+    L32:
+        r21 = null;
+        goto L33
+    L25:
+        r112 = null;
+        goto L26
+    L40:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L42:
+        nz2.n("Missing required view with ID: ".concat(r15.getResources().getResourceName(r16)));
         return null;
     }
 
@@ -199,14 +207,21 @@ public class IndexFragment extends kc1 implements ClickCallback {
     @Override // defpackage.kc1
     public final void R() {
         this.R = true;
-        Context contextZ = Z();
-        cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
-        Bundle bundle = Bundle.EMPTY;
-        aj2 aj2Var = new aj2();
-        Looper looperX = f35.x();
-        bl2 bl2Var = new bl2(looperX);
-        b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, cb4Var.a.e() ? new xc5(4, new fi0(new x7(contextZ))) : null), new Handler(looperX));
-        this.p0 = bl2Var;
+        Context r2 = Z();
+        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
+        Bundle r4 = Bundle.EMPTY;
+        aj2 r5 = new aj2();
+        Looper r6 = f35.x();
+        bl2 r7 = new bl2(r6);
+        if (r3.a.e() == false) goto L6;
+        xc5 r0 = new xc5(4, new fi0(new x7(r2)));
+    L7:
+        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
+        this.p0 = r7;
+        return;
+    L6:
+        r0 = null;
+        goto L7
     }
 
     @Override // defpackage.kc1
@@ -220,54 +235,70 @@ public class IndexFragment extends kc1 implements ClickCallback {
     /* JADX WARN: Type inference failed for: r4v3, types: [java.util.List] */
     /* JADX WARN: Type inference failed for: r4v4 */
     public final void h0() {
-        ?? arrayList;
-        ey eyVar = this.l0;
-        if (eyVar == null) {
-            return;
-        }
-        String string = ((TextInputEditText) eyVar.c).getText() != null ? ((TextInputEditText) this.l0.c).getText().toString() : "";
-        b03 b03Var = this.o0;
-        List list = this.s0;
-        TextView textView = (TextView) this.l0.d;
-        ux3 ux3Var = qn1.a;
-        list.getClass();
-        string.getClass();
-        if (qm4.u0(string)) {
-            arrayList = list;
-        } else {
-            arrayList = new ArrayList();
-            for (Object obj : list) {
-                ux3 ux3Var2 = qn1.a;
-                String name = ((Artist) obj).getName();
-                if (name == null) {
-                    name = "";
-                }
-                if (qn1.a(name, string)) {
-                    arrayList.add(obj);
-                }
-            }
-        }
-        textView.setVisibility((!arrayList.isEmpty() || qm4.u0(string) || list.isEmpty()) ? 8 : 0);
-        b03Var.r = arrayList;
-        b03Var.d();
+        ey r0 = this.l0;
+        if (r0 != null) goto L6;
+        return;
+    L6:
+        if (((TextInputEditText) r0.c).getText() == null) goto L8;
+        String r1 = ((TextInputEditText) this.l0.c).getText().toString();
+    L9:
+        b03 r2 = this.o0;
+        List r3 = this.s0;
+        TextView r9 = (TextView) this.l0.d;
+        ux3 r4 = qn1.a;
+        r3.getClass();
+        r1.getClass();
+        if (qm4.u0(r1) == false) goto L12;
+        ?? r5 = r3;
+    L22:
+        if (r5.isEmpty() == true) goto L24;
+    L28:
+        int r6 = 8;
+    L29:
+        r9.setVisibility(r6);
+        r2.r = r5;
+        r2.d();
+        return;
+    L24:
+        if (qm4.u0(r1) == true) goto L28;
+        if (r3.isEmpty() == true) goto L28;
+        r6 = 0;
+        goto L29
+    L12:
+        r5 = new ArrayList();
+        Iterator r7 = r3.iterator();
+    L14:
+        if (r7.hasNext() == false) goto L22;
+        Object r8 = r7.next();
+        ux3 r10 = qn1.a;
+        String r11 = ((Artist) r8).getName();
+        if (r11 != null) goto L19;
+        r11 = "";
+    L19:
+        if (qn1.a(r11, r1) == false) goto L14;
+        r5.add(r8);
+        goto L14
+    L8:
+        r1 = "";
+        goto L9
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMusicIndexClick(Bundle bundle) {
-        gb.x(a0()).m(R.id.directoryFragment, bundle, null);
+    public final void onMusicIndexClick(Bundle r3) {
+        gb.x(a0()).m(R.id.directoryFragment, r3, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMusicIndexPlay(Bundle bundle) {
-        String string = bundle.getString("MUSIC_DIRECTORY_ID");
-        if (string != null) {
-            Toast.makeText(Z(), s(R.string.folder_play_collecting), 0).show();
-            ArrayList arrayList = new ArrayList();
-            AtomicInteger atomicInteger = new AtomicInteger(0);
-            tx1 tx1Var = new tx1(this, arrayList, 0);
-            atomicInteger.incrementAndGet();
-            this.q0.getClass();
-            om0.W(string).e(v(), new oq0(this, arrayList, atomicInteger, tx1Var, 1));
-        }
+    public final void onMusicIndexPlay(Bundle r10) {
+        String r11 = r10.getString("MUSIC_DIRECTORY_ID");
+        if (r11 == null) goto L6;
+        Toast.makeText(Z(), s(R.string.folder_play_collecting), 0).show();
+        ArrayList r5 = new ArrayList();
+        AtomicInteger r6 = new AtomicInteger(0);
+        tx1 r7 = new tx1(this, r5, 0);
+        r6.incrementAndGet();
+        this.q0.getClass();
+        om0.W(r11).e(v(), new oq0(this, r5, r6, r7, 1));
+        return;
     }
 }

@@ -6,5 +6,9 @@ import java.util.ArrayList;
 /* JADX INFO: loaded from: classes.dex */
 public final class k23 {
     public String a;
-    public final ArrayList b = new ArrayList();
+    public final ArrayList b;
+
+    public k23() {
+        this.b = new ArrayList();
+    }
 }

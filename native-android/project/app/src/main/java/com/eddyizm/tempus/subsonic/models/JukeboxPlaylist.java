@@ -8,11 +8,14 @@ public final class JukeboxPlaylist extends JukeboxStatus {
     public static final int $stable = 8;
     private List<? extends Child> entries;
 
+    public JukeboxPlaylist() {
+    }
+
     public final List<Child> getEntries() {
         return this.entries;
     }
 
-    public final void setEntries(List<? extends Child> list) {
-        this.entries = list;
+    public final void setEntries(List<? extends Child> r1) {
+        this.entries = r1;
     }
 }

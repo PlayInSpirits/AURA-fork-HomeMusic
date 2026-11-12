@@ -5,15 +5,15 @@ package defpackage;
 public final class t72 {
     public final String a;
 
-    public t72(String str) {
-        this.a = str;
+    public t72(String r1) {
+        this.a = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof t72) {
-            return this.a.equals(((t72) obj).a);
-        }
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof t72) == true) goto L5;
         return false;
+    L5:
+        return this.a.equals(((t72) r2).a);
     }
 
     public final int hashCode() {

@@ -45,176 +45,171 @@ public final class AppDatabase_Impl extends AppDatabase {
     public volatile rf2 v;
     public volatile c12 w;
 
+    public AppDatabase_Impl() {
+    }
+
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final rf2 A() {
-        rf2 rf2Var;
-        if (this.v != null) {
-            return this.v;
-        }
-        synchronized (this) {
-            try {
-                if (this.v == null) {
-                    rf2 rf2Var2 = new rf2();
-                    rf2Var2.n = this;
-                    rf2Var2.o = new q20(5);
-                    this.v = rf2Var2;
-                }
-                rf2Var = this.v;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return rf2Var;
+        if (this.v != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.v != null) goto L12;
+        rf2 r0 = new rf2();     // Catch: Throwable -> L10
+        r0.n = this;     // Catch: Throwable -> L10
+        r0.o = new q20(5);     // Catch: Throwable -> L10
+        this.v = r0;     // Catch: Throwable -> L10
+    L12:
+        rf2 r1 = this.v;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r1;
+    L5:
+        return this.v;
     }
 
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final hg3 B() {
-        hg3 hg3Var;
-        if (this.s != null) {
-            return this.s;
-        }
-        synchronized (this) {
-            try {
-                if (this.s == null) {
-                    this.s = new hg3(0, this);
-                }
-                hg3Var = this.s;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return hg3Var;
+        if (this.s != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.s != null) goto L12;
+        this.s = new hg3(0, this);     // Catch: Throwable -> L10
+    L12:
+        hg3 r0 = this.s;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r0;
+    L5:
+        return this.s;
     }
 
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final ml3 C() {
-        ml3 ml3Var;
-        if (this.r != null) {
-            return this.r;
-        }
-        synchronized (this) {
-            try {
-                if (this.r == null) {
-                    this.r = new ml3(this);
-                }
-                ml3Var = this.r;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return ml3Var;
+        if (this.r != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.r != null) goto L12;
+        this.r = new ml3(this);     // Catch: Throwable -> L10
+    L12:
+        ml3 r0 = this.r;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r0;
+    L5:
+        return this.r;
     }
 
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final rm3 D() {
-        rm3 rm3Var;
-        if (this.u != null) {
-            return this.u;
-        }
-        synchronized (this) {
-            try {
-                if (this.u == null) {
-                    rm3 rm3Var2 = new rm3();
-                    rm3Var2.n = this;
-                    rm3Var2.o = new q20(6);
-                    this.u = rm3Var2;
-                }
-                rm3Var = this.u;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return rm3Var;
+        if (this.u != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.u != null) goto L12;
+        rm3 r0 = new rm3();     // Catch: Throwable -> L10
+        r0.n = this;     // Catch: Throwable -> L10
+        r0.o = new q20(6);     // Catch: Throwable -> L10
+        this.u = r0;     // Catch: Throwable -> L10
+    L12:
+        rm3 r1 = this.u;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r1;
+    L5:
+        return this.u;
     }
 
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final ns3 E() {
-        ns3 ns3Var;
-        if (this.l != null) {
-            return this.l;
-        }
-        synchronized (this) {
-            try {
-                if (this.l == null) {
-                    this.l = new ns3(this);
-                }
-                ns3Var = this.l;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return ns3Var;
+        if (this.l != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.l != null) goto L12;
+        this.l = new ns3(this);     // Catch: Throwable -> L10
+    L12:
+        ns3 r0 = this.l;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r0;
+    L5:
+        return this.l;
     }
 
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final jv3 F() {
-        jv3 jv3Var;
-        if (this.n != null) {
-            return this.n;
-        }
-        synchronized (this) {
-            try {
-                if (this.n == null) {
-                    jv3 jv3Var2 = new jv3();
-                    jv3Var2.n = this;
-                    jv3Var2.o = new q20(8);
-                    jv3Var2.p = new h61(3);
-                    this.n = jv3Var2;
-                }
-                jv3Var = this.n;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return jv3Var;
+        if (this.n != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.n != null) goto L12;
+        jv3 r0 = new jv3();     // Catch: Throwable -> L10
+        r0.n = this;     // Catch: Throwable -> L10
+        r0.o = new q20(8);     // Catch: Throwable -> L10
+        r0.p = new h61(3);     // Catch: Throwable -> L10
+        this.n = r0;     // Catch: Throwable -> L10
+    L12:
+        jv3 r1 = this.n;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r1;
+    L5:
+        return this.n;
     }
 
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final na4 G() {
-        na4 na4Var;
-        if (this.m != null) {
-            return this.m;
-        }
-        synchronized (this) {
-            try {
-                if (this.m == null) {
-                    na4 na4Var2 = new na4();
-                    na4Var2.n = this;
-                    na4Var2.o = new q20(9);
-                    na4Var2.p = new h61(4);
-                    na4Var2.q = new h61(5);
-                    this.m = na4Var2;
-                }
-                na4Var = this.m;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return na4Var;
+        if (this.m != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.m != null) goto L12;
+        na4 r0 = new na4();     // Catch: Throwable -> L10
+        r0.n = this;     // Catch: Throwable -> L10
+        r0.o = new q20(9);     // Catch: Throwable -> L10
+        r0.p = new h61(4);     // Catch: Throwable -> L10
+        r0.q = new h61(5);     // Catch: Throwable -> L10
+        this.m = r0;     // Catch: Throwable -> L10
+    L12:
+        na4 r1 = this.m;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r1;
+    L5:
+        return this.m;
     }
 
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final qp4 H() {
-        qp4 qp4Var;
-        if (this.t != null) {
-            return this.t;
-        }
-        synchronized (this) {
-            try {
-                if (this.t == null) {
-                    this.t = new qp4(this);
-                }
-                qp4Var = this.t;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return qp4Var;
+        if (this.t != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.t != null) goto L12;
+        this.t = new qp4(this);     // Catch: Throwable -> L10
+    L12:
+        qp4 r0 = this.t;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r0;
+    L5:
+        return this.t;
     }
 
     @Override // defpackage.s24
     public final s12 d() {
-        return new s12(this, new HashMap(0), new HashMap(0), "queue", "server", "recent_search", "download", "chronology", "favorite", "session_media_item", "playlist", "pinned_playlist", "lyrics_cache", "internet_radio_station_cache", "playlist_song", "synced_playlist");
+        return new s12(this, new HashMap(0), new HashMap(0), new String[]{"queue", "server", "recent_search", "download", "chronology", "favorite", "session_media_item", "playlist", "pinned_playlist", "lyrics_cache", "internet_radio_station_cache", "playlist_song", "synced_playlist"});
     }
 
     @Override // defpackage.s24
@@ -223,34 +218,35 @@ public final class AppDatabase_Impl extends AppDatabase {
     }
 
     @Override // defpackage.s24
-    public final List g(LinkedHashMap linkedHashMap) {
-        ArrayList arrayList = new ArrayList();
-        int i = 11;
-        arrayList.add(new kw2(10, i, 10));
-        int i2 = 12;
-        arrayList.add(new kw2(i, i2, 11));
-        int i3 = 13;
-        arrayList.add(new kw2(i2, i3, 12));
-        int i4 = 14;
-        arrayList.add(new kw2(i3, i4, 13));
-        int i5 = 15;
-        arrayList.add(new kw2(i4, i5, 14));
-        int i6 = 16;
-        arrayList.add(new kw2(i5, i6, 15));
-        int i7 = 17;
-        arrayList.add(new kw2(i6, i7, 16));
-        int i8 = 18;
-        arrayList.add(new kw2(i7, i8, 17));
-        int i9 = 19;
-        arrayList.add(new kw2(i8, i9, 18));
-        int i10 = 20;
-        arrayList.add(new kw2(i9, i10, 19));
-        int i11 = 21;
-        arrayList.add(new kw2(i10, i11, 20));
-        int i12 = 22;
-        arrayList.add(new kw2(i11, i12, 21));
-        arrayList.add(new kw2(i12, 23, 22));
-        return arrayList;
+    public final List g(LinkedHashMap r4) {
+        ArrayList r3 = new ArrayList();
+        int r1 = 10;
+        int r2 = 11;
+        r3.add(new kw2(r1, r2, 10));
+        int r5 = 12;
+        r3.add(new kw2(r2, r5, 11));
+        int r6 = 13;
+        r3.add(new kw2(r5, r6, 12));
+        int r7 = 14;
+        r3.add(new kw2(r6, r7, 13));
+        int r8 = 15;
+        r3.add(new kw2(r7, r8, 14));
+        int r9 = 16;
+        r3.add(new kw2(r8, r9, 15));
+        int r10 = 17;
+        r3.add(new kw2(r9, r10, 16));
+        int r11 = 18;
+        r3.add(new kw2(r10, r11, 17));
+        int r12 = 19;
+        r3.add(new kw2(r11, r12, 18));
+        int r13 = 20;
+        r3.add(new kw2(r12, r13, 19));
+        int r14 = 21;
+        r3.add(new kw2(r13, r14, 20));
+        int r15 = 22;
+        r3.add(new kw2(r14, r15, 21));
+        r3.add(new kw2(r15, 23, 22));
+        return r3;
     }
 
     @Override // defpackage.s24
@@ -260,102 +256,98 @@ public final class AppDatabase_Impl extends AppDatabase {
 
     @Override // defpackage.s24
     public final Map l() {
-        HashMap map = new HashMap();
-        List list = Collections.EMPTY_LIST;
-        map.put(ns3.class, list);
-        map.put(na4.class, list);
-        map.put(jv3.class, list);
-        map.put(ss0.class, list);
-        map.put(r20.class, list);
-        map.put(i61.class, list);
-        map.put(ya4.class, list);
-        map.put(ml3.class, list);
-        map.put(hg3.class, list);
-        map.put(qp4.class, list);
-        map.put(rm3.class, list);
-        map.put(rf2.class, list);
-        map.put(c12.class, list);
-        return map;
+        HashMap r2 = new HashMap();
+        List r0 = Collections.EMPTY_LIST;
+        r2.put(ns3.class, r0);
+        r2.put(na4.class, r0);
+        r2.put(jv3.class, r0);
+        r2.put(ss0.class, r0);
+        r2.put(r20.class, r0);
+        r2.put(i61.class, r0);
+        r2.put(ya4.class, r0);
+        r2.put(ml3.class, r0);
+        r2.put(hg3.class, r0);
+        r2.put(qp4.class, r0);
+        r2.put(rm3.class, r0);
+        r2.put(rf2.class, r0);
+        r2.put(c12.class, r0);
+        return r2;
     }
 
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final r20 v() {
-        r20 r20Var;
-        if (this.p != null) {
-            return this.p;
-        }
-        synchronized (this) {
-            try {
-                if (this.p == null) {
-                    this.p = new r20(this);
-                }
-                r20Var = this.p;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return r20Var;
+        if (this.p != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.p != null) goto L12;
+        this.p = new r20(this);     // Catch: Throwable -> L10
+    L12:
+        r20 r0 = this.p;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r0;
+    L5:
+        return this.p;
     }
 
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final ss0 w() {
-        ss0 ss0Var;
-        if (this.o != null) {
-            return this.o;
-        }
-        synchronized (this) {
-            try {
-                if (this.o == null) {
-                    ss0 ss0Var2 = new ss0();
-                    ss0Var2.p = new i80(22);
-                    ss0Var2.n = this;
-                    ss0Var2.o = new q20(1, ss0Var2);
-                    ss0Var2.q = new q20(2, ss0Var2);
-                    this.o = ss0Var2;
-                }
-                ss0Var = this.o;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return ss0Var;
+        if (this.o != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.o != null) goto L12;
+        ss0 r0 = new ss0();     // Catch: Throwable -> L10
+        r0.p = new i80(22);     // Catch: Throwable -> L10
+        r0.n = this;     // Catch: Throwable -> L10
+        r0.o = new q20(1, r0);     // Catch: Throwable -> L10
+        r0.q = new q20(2, r0);     // Catch: Throwable -> L10
+        this.o = r0;     // Catch: Throwable -> L10
+    L12:
+        ss0 r1 = this.o;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r1;
+    L5:
+        return this.o;
     }
 
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final i61 x() {
-        i61 i61Var;
-        if (this.q != null) {
-            return this.q;
-        }
-        synchronized (this) {
-            try {
-                if (this.q == null) {
-                    this.q = new i61(this);
-                }
-                i61Var = this.q;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return i61Var;
+        if (this.q != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.q != null) goto L12;
+        this.q = new i61(this);     // Catch: Throwable -> L10
+    L12:
+        i61 r0 = this.q;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r0;
+    L5:
+        return this.q;
     }
 
     @Override // com.eddyizm.tempus.database.AppDatabase
     public final c12 z() {
-        c12 c12Var;
-        if (this.w != null) {
-            return this.w;
-        }
-        synchronized (this) {
-            try {
-                if (this.w == null) {
-                    this.w = new c12(this);
-                }
-                c12Var = this.w;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return c12Var;
+        if (this.w != null) goto L5;
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L8:
+        if (this.w != null) goto L12;
+        this.w = new c12(this);     // Catch: Throwable -> L10
+    L12:
+        c12 r0 = this.w;     // Catch: Throwable -> L10
+        monitor-exit(this);     // Catch: Throwable -> L10
+        return r0;
+    L5:
+        return this.w;
     }
 }

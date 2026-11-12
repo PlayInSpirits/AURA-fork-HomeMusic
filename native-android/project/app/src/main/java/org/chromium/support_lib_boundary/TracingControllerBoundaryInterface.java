@@ -9,7 +9,7 @@ import java.util.concurrent.Executor;
 public interface TracingControllerBoundaryInterface {
     boolean isTracing();
 
-    void start(int i, Collection<String> collection, int i2);
+    void start(int r1, Collection<String> r2, int r3);
 
-    boolean stop(OutputStream outputStream, Executor executor);
+    boolean stop(OutputStream r1, Executor r2);
 }

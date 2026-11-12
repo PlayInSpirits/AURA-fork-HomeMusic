@@ -12,37 +12,65 @@ public final class mn1 {
     public final String e;
     public final String f;
 
-    public mn1(int i, int i2, String str, String str2, String str3, String str4) {
-        this.a = i;
-        this.b = i2;
-        this.c = str;
-        this.d = str2;
-        this.e = str3;
-        this.f = str4;
+    public mn1(int r1, int r2, String r3, String r4, String r5, String r6) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj != null && mn1.class == obj.getClass()) {
-            mn1 mn1Var = (mn1) obj;
-            if (this.a == mn1Var.a && this.b == mn1Var.b && TextUtils.equals(this.c, mn1Var.c) && TextUtils.equals(this.d, mn1Var.d) && TextUtils.equals(this.e, mn1Var.e) && TextUtils.equals(this.f, mn1Var.f)) {
-                return true;
-            }
-        }
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if (r5 != null) goto L8;
+    L23:
         return false;
+    L8:
+        if (mn1.class != r5.getClass()) goto L23;
+        mn1 r6 = (mn1) r5;
+        if (this.a != r6.a) goto L23;
+        if (this.b != r6.b) goto L23;
+        if (TextUtils.equals(this.c, r6.c) == false) goto L23;
+        if (TextUtils.equals(this.d, r6.d) == false) goto L23;
+        if (TextUtils.equals(this.e, r6.e) == false) goto L23;
+        if (TextUtils.equals(this.f, r6.f) == false) goto L23;
+        return true;
     }
 
     public final int hashCode() {
-        int i = ((this.a * 31) + this.b) * 31;
-        String str = this.c;
-        int iHashCode = (i + (str != null ? str.hashCode() : 0)) * 31;
-        String str2 = this.d;
-        int iHashCode2 = (iHashCode + (str2 != null ? str2.hashCode() : 0)) * 31;
-        String str3 = this.e;
-        int iHashCode3 = (iHashCode2 + (str3 != null ? str3.hashCode() : 0)) * 31;
-        String str4 = this.f;
-        return iHashCode3 + (str4 != null ? str4.hashCode() : 0);
+        int r0 = ((this.a * 31) + this.b) * 31;
+        int r1 = 0;
+        String r2 = this.c;
+        if (r2 == null) goto L5;
+        int r3 = r2.hashCode();
+    L6:
+        int r4 = (r0 + r3) * 31;
+        String r5 = this.d;
+        if (r5 == null) goto L9;
+        int r6 = r5.hashCode();
+    L10:
+        int r7 = (r4 + r6) * 31;
+        String r8 = this.e;
+        if (r8 == null) goto L13;
+        int r9 = r8.hashCode();
+    L14:
+        int r10 = (r7 + r9) * 31;
+        String r11 = this.f;
+        if (r11 == null) goto L18;
+        r1 = r11.hashCode();
+    L18:
+        return r10 + r1;
+    L13:
+        r9 = 0;
+        goto L14
+    L9:
+        r6 = 0;
+        goto L10
+    L5:
+        r3 = 0;
+        goto L6
     }
 }

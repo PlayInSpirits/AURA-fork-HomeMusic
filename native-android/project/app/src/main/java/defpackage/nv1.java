@@ -5,8 +5,8 @@ package defpackage;
 public abstract class nv1 implements pv2 {
     public final String a;
 
-    public nv1(String str) {
-        this.a = str;
+    public nv1(String r1) {
+        this.a = r1;
     }
 
     public String toString() {

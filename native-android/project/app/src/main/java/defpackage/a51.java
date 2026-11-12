@@ -6,8 +6,8 @@ import java.io.ByteArrayOutputStream;
 /* JADX INFO: loaded from: classes.dex */
 public final class a51 extends ByteArrayOutputStream {
     public final byte[] b() {
-        byte[] bArr = ((ByteArrayOutputStream) this).buf;
-        bArr.getClass();
-        return bArr;
+        byte[] r0 = ((ByteArrayOutputStream) this).buf;
+        r0.getClass();
+        return r0;
     }
 }

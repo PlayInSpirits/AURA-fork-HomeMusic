@@ -7,8 +7,8 @@ import defpackage.p61;
 public final class UnsupportedApiCallException extends UnsupportedOperationException {
     public final p61 n;
 
-    public UnsupportedApiCallException(p61 p61Var) {
-        this.n = p61Var;
+    public UnsupportedApiCallException(p61 r1) {
+        this.n = r1;
     }
 
     @Override // java.lang.Throwable

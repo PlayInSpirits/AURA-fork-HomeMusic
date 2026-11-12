@@ -3,11 +3,11 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class m75 {
-    public void a(int i) {
+    public void a(int r1) {
     }
 
-    public void b(int i, float f, int i2) {
+    public void b(int r1, float r2, int r3) {
     }
 
-    public abstract void c(int i);
+    public abstract void c(int r1);
 }

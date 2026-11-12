@@ -10,49 +10,56 @@ import com.google.android.gms.common.api.internal.BasePendingResult;
 public final class wg5 extends BasePendingResult {
     public final /* synthetic */ int k;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public wg5(if5 if5Var, int i) {
-        super(if5Var);
-        this.k = i;
-        ji2.n(if5Var, "GoogleApiClient must not be null");
+    public wg5(if5 r1, int r2) {
+        this.k = r2;
+        ji2.n(r1, "GoogleApiClient must not be null");
+        super(r1);
         ji2.n(fn.a, "Api must not be null");
     }
 
     @Override // com.google.android.gms.common.api.internal.BasePendingResult
-    public final /* bridge */ /* synthetic */ t14 b(Status status) {
-        int i = this.k;
-        return status;
+    public final /* bridge */ /* synthetic */ t14 b(Status r1) {
+        int r0 = this.k;
+        return r1;
     }
 
-    public final void f(me meVar) {
-        switch (this.k) {
-            case 0:
-                sg5 sg5Var = (sg5) meVar;
-                bh5 bh5Var = (bh5) sg5Var.e();
-                ug5 ug5Var = new ug5(this, 0);
-                GoogleSignInOptions googleSignInOptions = sg5Var.L;
-                Parcel parcelM = bh5Var.m();
-                int i = pg5.a;
-                parcelM.writeStrongBinder(ug5Var);
-                pg5.c(parcelM, googleSignInOptions);
-                bh5Var.U(parcelM, 102);
-                break;
-            default:
-                sg5 sg5Var2 = (sg5) meVar;
-                bh5 bh5Var2 = (bh5) sg5Var2.e();
-                ug5 ug5Var2 = new ug5(this, 1);
-                GoogleSignInOptions googleSignInOptions2 = sg5Var2.L;
-                Parcel parcelM2 = bh5Var2.m();
-                int i2 = pg5.a;
-                parcelM2.writeStrongBinder(ug5Var2);
-                pg5.c(parcelM2, googleSignInOptions2);
-                bh5Var2.U(parcelM2, 103);
-                break;
-        }
+    public final void f(me r4) {
+        switch(this.k) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        sg5 r5 = (sg5) r4;
+        bh5 r0 = (bh5) r5.e();
+        ug5 r1 = new ug5(this, 1);
+        GoogleSignInOptions r3 = r5.L;
+        Parcel r6 = r0.m();
+        int r2 = pg5.a;
+        r6.writeStrongBinder(r1);
+        pg5.c(r6, r3);
+        r0.U(r6, 103);
+        return;
+    L6:
+        sg5 r7 = (sg5) r4;
+        bh5 r8 = (bh5) r7.e();
+        ug5 r9 = new ug5(this, 0);
+        GoogleSignInOptions r10 = r7.L;
+        Parcel r11 = r8.m();
+        int r12 = pg5.a;
+        r11.writeStrongBinder(r9);
+        pg5.c(r11, r10);
+        r8.U(r11, 102);
     }
 
-    public final void g(Status status) {
-        ji2.h("Failed result must not be success", !(status.n <= 0));
-        e(b(status));
+    public final void g(Status r3) {
+        if (r3.n > 0) goto L5;
+        boolean r0 = true;
+    L6:
+        ji2.h("Failed result must not be success", !r0);
+        e(b(r3));
+        return;
+    L5:
+        r0 = false;
+        goto L6
     }
 }

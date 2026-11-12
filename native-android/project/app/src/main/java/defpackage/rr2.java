@@ -30,768 +30,934 @@ import androidx.credentials.internal.FrameworkClassParsingException;
 import app.homemusic.R;
 import java.util.ArrayList;
 import java.util.List;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class rr2 implements bg4 {
-    public static final r70 a = new r70(-1759434350, false, new d60(3, 0));
-    public static final Object b = new Object();
+    public static final r70 a = null;
+    public static final Object b = null;
 
-    public static boolean A(String str, String str2) {
-        char c;
-        int length = str.length();
-        if (str == str2) {
-            return true;
-        }
-        if (length == str2.length()) {
-            for (int i = 0; i < length; i++) {
-                char cCharAt = str.charAt(i);
-                char cCharAt2 = str2.charAt(i);
-                if (cCharAt == cCharAt2 || ((c = (char) ((cCharAt | ' ') - 97)) < 26 && c == ((char) ((cCharAt2 | ' ') - 97)))) {
-                }
-            }
-            return true;
-        }
+    static {
+        a = new r70(-1759434350, false, new d60(3, 0));
+        b = new Object();
+    }
+
+    public static boolean A(String r6, String r7) {
+        int r0 = r6.length();
+        if (r6 != r7) goto L6;
+        return true;
+    L6:
+        if (r0 != r7.length()) goto L18;
+        int r1 = 0;
+    L9:
+        if (r1 >= r0) goto L26;
+        char r3 = r6.charAt(r1);
+        char r4 = r7.charAt(r1);
+        if (r3 == r4) goto L17;
+        char r5 = (char) ((r3 | ' ') - 97);
+        if (r5 >= 26) goto L18;
+        if (r5 != ((char) ((r4 | ' ') - 97))) goto L18;
+    L17:
+        r1 = r1 + 1;
+        goto L9
+    L26:
+        return true;
+    L18:
         return false;
     }
 
-    public static final float B(float f) {
-        float fIntBitsToFloat = Float.intBitsToFloat(((int) ((((long) Float.floatToRawIntBits(f)) & 8589934591L) / 3)) + 709952852);
-        float f2 = fIntBitsToFloat - ((fIntBitsToFloat - (f / (fIntBitsToFloat * fIntBitsToFloat))) * 0.33333334f);
-        return f2 - ((f2 - (f / (f2 * f2))) * 0.33333334f);
+    public static final float B(float r4) {
+        float r0 = Float.intBitsToFloat(((int) ((((long) Float.floatToRawIntBits(r4)) & 8589934591L) / 3)) + 709952852);
+        float r1 = r0 - ((r0 - (r4 / (r0 * r0))) * 0.33333334f);
+        return r1 - ((r1 - (r4 / (r1 * r1))) * 0.33333334f);
     }
 
-    public static final int C(List list, int i) {
-        int i2;
-        byte b2;
-        int i3 = ((od3) q40.C0(list)).c;
-        if (i > ((od3) q40.C0(list)).c) {
-            dz1.a("Index " + i + " should be less or equal than last line's end " + i3);
-        }
-        int size = list.size() - 1;
-        int i4 = 0;
-        while (true) {
-            if (i4 > size) {
-                i2 = -(i4 + 1);
-                break;
-            }
-            i2 = (i4 + size) >>> 1;
-            od3 od3Var = (od3) list.get(i2);
-            if (od3Var.b > i) {
-                b2 = 1;
-            } else {
-                b2 = od3Var.c <= i ? (byte) -1 : (byte) 0;
-            }
-            if (b2 >= 0) {
-                if (b2 <= 0) {
-                    break;
-                }
-                size = i2 - 1;
-            } else {
-                i4 = i2 + 1;
-            }
-        }
-        if (i2 >= 0 && i2 < list.size()) {
-            return i2;
-        }
-        int size2 = list.size();
-        String strA = gc2.a(list, null, new k52(11), 31);
-        StringBuilder sbT = b11.t("Found paragraph index ", " should be in range [0, ", i2, size2, ").\nDebug info: index=");
-        sbT.append(i);
-        sbT.append(", paragraphs=[");
-        sbT.append(strA);
-        sbT.append("]");
-        dz1.a(sbT.toString());
-        return i2;
+    public static final int C(List r7, int r8) {
+        int r0 = ((od3) q40.C0(r7)).c;
+        if (r8 <= ((od3) q40.C0(r7)).c) goto L6;
+        dz1.a("Index " + r8 + " should be less or equal than last line's end " + r0);
+    L6:
+        int r1 = r7.size() - 1;
+        int r3 = 0;
+    L7:
+        if (r3 > r1) goto L19;
+        int r4 = (r3 + r1) >>> 1;
+        od3 r5 = (od3) r7.get(r4);
+        if (r5.b <= r8) goto L12;
+        byte r6 = 1;
+    L15:
+        if (r6 < 0) goto L16;
+        if (r6 <= 0) goto L20;
+        r1 = r4 - 1;
+    L20:
+        if (r4 >= 0) goto L22;
+    L24:
+        int r2 = r7.size();
+        String r9 = gc2.a(r7, null, new k52(11), 31);
+        StringBuilder r10 = b11.t("Found paragraph index ", " should be in range [0, ", r4, r2, ").\nDebug info: index=");
+        r10.append(r8);
+        r10.append(", paragraphs=[");
+        r10.append(r9);
+        r10.append("]");
+        dz1.a(r10.toString());
+        return r4;
+    L22:
+        if (r4 >= r7.size()) goto L24;
+        return r4;
+    L16:
+        r3 = r4 + 1;
+        goto L7
+    L12:
+        if (r5.c > r8) goto L14;
+        r6 = -1;
+        goto L15
+    L14:
+        r6 = 0;
+        goto L15
+    L19:
+        r4 = -(r3 + 1);
+        goto L20
     }
 
-    public static final int D(List list, int i) {
-        byte b2;
-        int size = list.size() - 1;
-        int i2 = 0;
-        while (i2 <= size) {
-            int i3 = (i2 + size) >>> 1;
-            od3 od3Var = (od3) list.get(i3);
-            if (od3Var.d > i) {
-                b2 = 1;
-            } else {
-                b2 = od3Var.e <= i ? (byte) -1 : (byte) 0;
-            }
-            if (b2 < 0) {
-                i2 = i3 + 1;
-            } else {
-                if (b2 <= 0) {
-                    return i3;
-                }
-                size = i3 - 1;
-            }
-        }
-        return -(i2 + 1);
+    public static final int D(List r7, int r8) {
+        int r0 = r7.size() - 1;
+        int r3 = 0;
+    L3:
+        if (r3 > r0) goto L17;
+        int r4 = (r3 + r0) >>> 1;
+        od3 r5 = (od3) r7.get(r4);
+        if (r5.d <= r8) goto L8;
+        byte r6 = 1;
+    L11:
+        if (r6 < 0) goto L12;
+        if (r6 <= 0) goto L15;
+        r0 = r4 - 1;
+        goto L3
+    L15:
+        return r4;
+    L12:
+        r3 = r4 + 1;
+        goto L3
+    L8:
+        if (r5.e > r8) goto L10;
+        r6 = -1;
+        goto L11
+    L10:
+        r6 = 0;
+        goto L11
+    L17:
+        return -(r3 + 1);
     }
 
-    public static final int E(z34 z34Var, String str) {
-        z34Var.getClass();
-        int iY = y(z34Var, str);
-        if (iY >= 0) {
-            return iY;
-        }
-        int columnCount = z34Var.getColumnCount();
-        ArrayList arrayList = new ArrayList(columnCount);
-        for (int i = 0; i < columnCount; i++) {
-            arrayList.add(z34Var.getColumnName(i));
-        }
-        kf2.j("Column '", str, "' does not exist. Available columns: [", q40.B0(arrayList, null, null, null, null, 63), 93);
+    public static final int E(z34 r8, String r9) {
+        r8.getClass();
+        int r0 = y(r8, r9);
+        if (r0 < 0) goto L5;
+        return r0;
+    L5:
+        int r1 = r8.getColumnCount();
+        ArrayList r2 = new ArrayList(r1);
+        int r3 = 0;
+    L6:
+        if (r3 >= r1) goto L8;
+        r2.add(r8.getColumnName(r3));
+        r3 = r3 + 1;
+        goto L6
+    L8:
+        kf2.j("Column '", r9, "' does not exist. Available columns: [", q40.B0(r2, null, null, null, null, 63), 93);
         return 0;
     }
 
-    public static final ql4 F(rh4 rh4Var) {
-        ql4 ql4Var = rh4Var.n;
-        ql4Var.getClass();
-        return (ql4) jh4.t(ql4Var, rh4Var);
+    public static final ql4 F(rh4 r1) {
+        ql4 r0 = r1.n;
+        r0.getClass();
+        return (ql4) jh4.t(r0, r1);
     }
 
-    public static long G(double d) {
-        k("not a normal value", I(d));
-        int exponent = Math.getExponent(d);
-        long jDoubleToRawLongBits = Double.doubleToRawLongBits(d) & 4503599627370495L;
-        return exponent == -1023 ? jDoubleToRawLongBits << 1 : jDoubleToRawLongBits | 4503599627370496L;
+    public static long G(double r3) {
+        k("not a normal value", I(r3));
+        int r0 = Math.getExponent(r3);
+        long r4 = Double.doubleToRawLongBits(r3) & 4503599627370495L;
+        if (r0 != (-1023)) goto L7;
+        return r4 << 1;
+    L7:
+        return r4 | 4503599627370496L;
     }
 
-    public static final int H(rh4 rh4Var) {
-        ql4 ql4Var = rh4Var.n;
-        ql4Var.getClass();
-        return ((ql4) jh4.h(ql4Var)).e;
+    public static final int H(rh4 r0) {
+        ql4 r1 = r0.n;
+        r1.getClass();
+        return ((ql4) jh4.h(r1)).e;
     }
 
-    public static boolean I(double d) {
-        return Math.getExponent(d) <= 1023;
+    public static boolean I(double r0) {
+        if (Math.getExponent(r0) > 1023) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
-    public static boolean J(char c) {
-        return c >= 'A' && c <= 'Z';
+    public static boolean J(char r1) {
+        if (r1 >= 'A') goto L5;
+        return false;
+    L5:
+        if (r1 > 'Z') goto L10;
+        return true;
+    L10:
+        return false;
     }
 
-    public static r72 K(b92 b92Var, gf1 gf1Var) {
-        rv2 rv2Var = rv2.H;
-        int iOrdinal = b92Var.ordinal();
-        if (iOrdinal == 0) {
-            return new rp4(gf1Var);
-        }
-        if (iOrdinal == 1) {
-            l44 l44Var = new l44();
-            l44Var.n = gf1Var;
-            l44Var.o = rv2Var;
-            return l44Var;
-        }
-        if (iOrdinal != 2) {
-            er1.n();
-            return null;
-        }
-        x15 x15Var = new x15();
-        x15Var.n = gf1Var;
-        x15Var.o = rv2Var;
-        return x15Var;
+    public static r72 K(b92 r2, gf1 r3) {
+        rv2 r0 = rv2.H;
+        int r4 = r2.ordinal();
+        if (r4 == 0) goto L15;
+        if (r4 != 1) goto L7;
+        l44 r5 = new l44();
+        r5.n = r3;
+        r5.o = r0;
+        return r5;
+    L7:
+        if (r4 != 2) goto L10;
+        x15 r6 = new x15();
+        r6.n = r3;
+        r6.o = r0;
+        return r6;
+    L10:
+        er1.n();
+        return null;
+    L15:
+        return new rp4(r3);
     }
 
-    public static final dx2 L(dx2 dx2Var, k82 k82Var, s82 s82Var, boolean z) {
-        return dx2Var.c(new t82(k82Var, s82Var, z));
+    public static final dx2 L(dx2 r1, k82 r2, s82 r3, boolean r4) {
+        return r1.c(new t82(r2, r3, r4));
     }
 
-    public static final long M(long j, float f) {
-        return (Float.isNaN(f) || f >= 1.0f) ? j : x40.b(j, x40.d(j) * f);
+    public static final long M(long r1, float r3) {
+        if (Float.isNaN(r3) == false) goto L5;
+        return r1;
+    L5:
+        if (r3 < 1.0f) goto L8;
+        return r1;
+    L8:
+        return x40.b(r1, x40.d(r1) * r3);
     }
 
-    public static final boolean N(rh4 rh4Var, if1 if1Var) {
-        int i;
-        y1 y1Var;
-        Object objInvoke;
-        ch4 ch4VarJ;
-        boolean zE;
-        do {
-            synchronized (b) {
-                ql4 ql4Var = rh4Var.n;
-                ql4Var.getClass();
-                ql4 ql4Var2 = (ql4) jh4.h(ql4Var);
-                i = ql4Var2.d;
-                y1Var = ql4Var2.c;
-            }
-            y1Var.getClass();
-            xf3 xf3VarF = y1Var.f();
-            objInvoke = if1Var.invoke(xf3VarF);
-            y1 y1VarD = xf3VarF.d();
-            if (h12.c(y1VarD, y1Var)) {
-                break;
-            }
-            ql4 ql4Var3 = rh4Var.n;
-            ql4Var3.getClass();
-            synchronized (jh4.c) {
-                ch4VarJ = jh4.j();
-                zE = e((ql4) jh4.w(ql4Var3, rh4Var, ch4VarJ), i, y1VarD, true);
-            }
-            jh4.n(ch4VarJ, rh4Var);
-        } while (!zE);
-        return ((Boolean) objInvoke).booleanValue();
+    public static final boolean N(rh4 r7, if1 r8) {
+    L2:
+        Object r0 = b;
+        monitor-enter(r0);
+        ql4 r1 = r7.n;     // Catch: Throwable -> L20
+        r1.getClass();     // Catch: Throwable -> L20
+        ql4 r2 = (ql4) jh4.h(r1);     // Catch: Throwable -> L20
+        int r3 = r2.d;     // Catch: Throwable -> L20
+        y1 r4 = r2.c;     // Catch: Throwable -> L20
+        monitor-exit(r0);
+        r4.getClass();
+        xf3 r5 = r4.f();
+        Object r6 = r8.invoke(r5);
+        y1 r9 = r5.d();
+        if (h12.c(r9, r4) == true) goto L19;
+        ql4 r10 = r7.n;
+        r10.getClass();
+        Object r11 = jh4.c;
+        monitor-enter(r11);
+        ch4 r12 = jh4.j();     // Catch: Throwable -> L15
+        boolean r13 = e((ql4) jh4.w(r10, r7, r12), r3, r9, true);     // Catch: Throwable -> L15
+        monitor-exit(r11);
+        jh4.n(r12, r7);
+        if (r13 == false) goto L2;
+    L15:
+        th = move-exception;
+        throw th;
+    L19:
+        return ((Boolean) r6).booleanValue();
+    L20:
+        th = move-exception;
+        throw th;
     }
 
-    /* JADX WARN: Code duplicated, block: B:12:0x004c  */
-    public static RemoteViews O(Context context, String str, String str2, String str3, Bitmap bitmap, boolean z, String str4, String str5, int i, int i2, boolean z2, boolean z3, boolean z4, int i3) {
-        Bitmap bitmap2;
-        Bitmap bitmap3 = bitmap;
-        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), i2);
-        remoteViews.setTextViewText(R.id.title, str);
-        remoteViews.setTextViewText(R.id.subtitle, str2);
-        if (!z2 || TextUtils.isEmpty(str3)) {
-            remoteViews.setTextViewText(R.id.album, "");
-            remoteViews.setViewVisibility(R.id.album, 8);
-        } else {
-            remoteViews.setTextViewText(R.id.album, str3);
-            remoteViews.setViewVisibility(R.id.album, 0);
-        }
-        if (bitmap3 != null) {
-            if (bitmap3.isRecycled()) {
-                bitmap2 = null;
-            } else {
-                try {
-                    int width = bitmap3.getWidth();
-                    int height = bitmap3.getHeight();
-                    if (width <= 0 || height <= 0) {
-                        bitmap2 = null;
-                    } else {
-                        Bitmap bitmapCreateBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-                        Canvas canvas = new Canvas(bitmapCreateBitmap);
-                        Paint paint = new Paint(1);
-                        Shader.TileMode tileMode = Shader.TileMode.CLAMP;
-                        paint.setShader(new BitmapShader(bitmap3, tileMode, tileMode));
-                        float fMin = Math.min(TypedValue.applyDimension(1, 6.0f, context.getResources().getDisplayMetrics()), Math.min(width, height) / 2.0f);
-                        canvas.drawRoundRect(new RectF(0.0f, 0.0f, width, height), fMin, fMin, paint);
-                        bitmap2 = bitmapCreateBitmap;
-                    }
-                } catch (OutOfMemoryError | RuntimeException e) {
-                    Log.w("TempoWidget", "Failed to round album art", e);
-                }
-            }
-            if (bitmap2 != null) {
-                bitmap3 = bitmap2;
-            }
-            remoteViews.setImageViewBitmap(R.id.album_art, bitmap3);
-        } else {
-            remoteViews.setImageViewResource(R.id.album_art, R.drawable.ic_splash_logo);
-        }
-        remoteViews.setImageViewResource(R.id.btn_play_pause, z ? R.drawable.ic_pause : R.drawable.ic_play);
-        String string = !TextUtils.isEmpty(str4) ? str4 : context.getString(R.string.widget_time_elapsed_placeholder);
-        String string2 = !TextUtils.isEmpty(str5) ? str5 : context.getString(R.string.widget_time_duration_placeholder);
-        int i4 = i < 0 ? 0 : i;
-        if (i4 > 1000) {
-            i4 = 1000;
-        }
-        remoteViews.setTextViewText(R.id.time_elapsed, string);
-        remoteViews.setTextViewText(R.id.time_total, string2);
-        remoteViews.setProgressBar(R.id.progress, 1000, i4, false);
-        if (z3) {
-            int color = context.getColor(R.color.widget_icon_tint);
-            int color2 = context.getColor(R.color.widget_icon_tint_active);
-            remoteViews.setViewVisibility(R.id.controls_secondary, 0);
-            remoteViews.setViewVisibility(R.id.btn_shuffle, 0);
-            remoteViews.setViewVisibility(R.id.btn_repeat, 0);
-            remoteViews.setImageViewResource(R.id.btn_shuffle, R.drawable.ic_shuffle);
-            remoteViews.setImageViewResource(R.id.btn_repeat, i3 == 1 ? R.drawable.ic_repeat_one : R.drawable.ic_repeat);
-            remoteViews.setInt(R.id.btn_shuffle, "setColorFilter", z4 ? color2 : color);
-            if (i3 != 0) {
-                color = color2;
-            }
-            remoteViews.setInt(R.id.btn_repeat, "setColorFilter", color);
-        } else {
-            remoteViews.setViewVisibility(R.id.controls_secondary, 8);
-            remoteViews.setViewVisibility(R.id.btn_shuffle, 8);
-            remoteViews.setViewVisibility(R.id.btn_repeat, 8);
-        }
-        return remoteViews;
+    public static RemoteViews O(Context r17, String r18, String r19, String r20, Bitmap r21, boolean r22, String r23, String r24, int r25, int r26, boolean r27, boolean r28, boolean r29, int r30) {
+        Bitmap r2 = r21;
+        RemoteViews r4 = new RemoteViews(r17.getPackageName(), r26);
+        r4.setTextViewText(R.id.title, r18);
+        r4.setTextViewText(R.id.subtitle, r19);
+        if (r27 == true) goto L5;
+    L7:
+        r4.setTextViewText(R.id.album, "");
+        r4.setViewVisibility(R.id.album, 8);
+    L9:
+        if (r2 != null) goto L11;
+        r4.setImageViewResource(R.id.album_art, R.drawable.ic_splash_logo);
+    L27:
+        if (r22 == false) goto L29;
+        int r0 = R.drawable.ic_pause;
+    L30:
+        r4.setImageViewResource(R.id.btn_play_pause, r0);
+        if (TextUtils.isEmpty(r23) == true) goto L33;
+        String r1 = r23;
+    L35:
+        if (TextUtils.isEmpty(r24) == true) goto L37;
+        String r3 = r24;
+    L38:
+        if (r25 >= 0) goto L40;
+        int r7 = 0;
+    L42:
+        if (r7 <= 1000) goto L44;
+        r7 = 1000;
+    L44:
+        r4.setTextViewText(R.id.time_elapsed, r1);
+        r4.setTextViewText(R.id.time_total, r3);
+        r4.setProgressBar(R.id.progress, 1000, r7, false);
+        if (r28 == true) goto L47;
+        r4.setViewVisibility(R.id.controls_secondary, 8);
+        r4.setViewVisibility(R.id.btn_shuffle, 8);
+        r4.setViewVisibility(R.id.btn_repeat, 8);
+    L60:
+        return r4;
+    L47:
+        int r5 = r17.getColor(R.color.widget_icon_tint);
+        int r6 = r17.getColor(R.color.widget_icon_tint_active);
+        r4.setViewVisibility(R.id.controls_secondary, 0);
+        r4.setViewVisibility(R.id.btn_shuffle, 0);
+        r4.setViewVisibility(R.id.btn_repeat, 0);
+        r4.setImageViewResource(R.id.btn_shuffle, R.drawable.ic_shuffle);
+        if (r30 != 1) goto L50;
+        int r8 = R.drawable.ic_repeat_one;
+    L51:
+        r4.setImageViewResource(R.id.btn_repeat, r8);
+        if (r29 == false) goto L54;
+        int r9 = r6;
+    L55:
+        r4.setInt(R.id.btn_shuffle, "setColorFilter", r9);
+        if (r30 == 0) goto L59;
+        r5 = r6;
+    L59:
+        r4.setInt(R.id.btn_repeat, "setColorFilter", r5);
+        goto L60
+    L54:
+        r9 = r5;
+        goto L55
+    L50:
+        r8 = R.drawable.ic_repeat;
+        goto L51
+    L40:
+        r7 = r25;
+        goto L42
+    L37:
+        r3 = r17.getString(R.string.widget_time_duration_placeholder);
+        goto L38
+    L33:
+        r1 = r17.getString(R.string.widget_time_elapsed_placeholder);
+        goto L35
+    L29:
+        r0 = R.drawable.ic_play;
+        goto L30
+    L11:
+        if (r2.isRecycled() == false) goto L61;
+    L12:
+        Bitmap r10 = null;
+    L23:
+        if (r10 == null) goto L25;
+        r2 = r10;
+    L25:
+        r4.setImageViewBitmap(R.id.album_art, r2);
+        goto L27
+    L61:
+        int r11 = r2.getWidth();     // Catch: Throwable -> L19 RuntimeException -> L21
+        int r12 = r2.getHeight();     // Catch: Throwable -> L19 RuntimeException -> L21
+        if (r11 <= 0) goto L12;
+        if (r12 <= 0) goto L12;
+        Bitmap r13 = Bitmap.createBitmap(r11, r12, Bitmap.Config.ARGB_8888);     // Catch: Throwable -> L19 RuntimeException -> L21
+        Canvas r14 = new Canvas(r13);     // Catch: Throwable -> L19 RuntimeException -> L21
+        Paint r15 = new Paint(1);     // Catch: Throwable -> L19 RuntimeException -> L21
+        Shader.TileMode r16 = Shader.TileMode.CLAMP;     // Catch: Throwable -> L19 RuntimeException -> L21
+        r15.setShader(new BitmapShader(r2, r16, r16));     // Catch: Throwable -> L19 RuntimeException -> L21
+        float r110 = Math.min(TypedValue.applyDimension(1, 6.0f, r17.getResources().getDisplayMetrics()), Math.min(r11, r12) / 2.0f);     // Catch: Throwable -> L19 RuntimeException -> L21
+        r14.drawRoundRect(new RectF(0.0f, 0.0f, r11, r12), r110, r110, r15);     // Catch: Throwable -> L19 RuntimeException -> L21
+        r10 = r13;
+    L19:
+        e = move-exception;
+        Log.w("TempoWidget", "Failed to round album art", e);
+        goto L12
+    L5:
+        if (TextUtils.isEmpty(r20) == true) goto L7;
+        r4.setTextViewText(R.id.album, r20);
+        r4.setViewVisibility(R.id.album, 0);
+        goto L9
     }
 
-    public static int P(int i, be3 be3Var) {
-        switch (i) {
-            case 1:
-                return 192;
-            case 2:
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-            case 4:
-            case 5:
-                return 576 << (i - 2);
-            case 6:
-                return be3Var.A() + 1;
-            case 7:
-                return be3Var.H() + 1;
-            case 8:
-            case 9:
-            case 10:
-            case 11:
-            case 12:
-            case 13:
-            case 14:
-            case 15:
-                return 256 << (i - 8);
-            default:
-                return -1;
-        }
+    public static int P(int r0, be3 r1) {
+        switch(r0) {
+            case 1: goto L13;
+            case 2: goto L12;
+            case 3: goto L12;
+            case 4: goto L12;
+            case 5: goto L12;
+            case 6: goto L10;
+            case 7: goto L8;
+            case 8: goto L6;
+            case 9: goto L6;
+            case 10: goto L6;
+            case 11: goto L6;
+            case 12: goto L6;
+            case 13: goto L6;
+            case 14: goto L6;
+            case 15: goto L6;
+            default: goto L3;
+        };
+    L3:
+        return -1;
+    L13:
+        return 192;
+    L6:
+        return 256 << (r0 - 8);
+    L8:
+        return r1.H() + 1;
+    L10:
+        return r1.A() + 1;
+    L12:
+        return 576 << (r0 - 2);
     }
 
-    public static final k02 Q(wv3 wv3Var) {
-        return new k02(Math.round(wv3Var.a), Math.round(wv3Var.b), Math.round(wv3Var.c), Math.round(wv3Var.d));
+    public static final k02 Q(wv3 r4) {
+        return new k02(Math.round(r4.a), Math.round(r4.b), Math.round(r4.c), Math.round(r4.d));
     }
 
-    public static final void R(ya3 ya3Var, int i, Object obj) {
-        ya3Var.h[(ya3Var.i - ya3Var.d[ya3Var.e - 1].c) + i] = obj;
+    public static final void R(ya3 r3, int r4, Object r5) {
+        r3.h[(r3.i - r3.d[r3.e - 1].c) + r4] = r5;
     }
 
-    public static final void S(ya3 ya3Var, int i, Object obj, int i2, Object obj2) {
-        int i3 = ya3Var.i - ya3Var.d[ya3Var.e - 1].c;
-        Object[] objArr = ya3Var.h;
-        objArr[i + i3] = obj;
-        objArr[i3 + i2] = obj2;
+    public static final void S(ya3 r3, int r4, Object r5, int r6, Object r7) {
+        int r0 = r3.i - r3.d[r3.e - 1].c;
+        Object[] r8 = r3.h;
+        r8[r4 + r0] = r5;
+        r8[r0 + r6] = r7;
     }
 
-    /* JADX WARN: Failed to restore switch over string. Please report as a decompilation issue */
-    public static final GetCredentialException T(CharSequence charSequence, String str) {
-        str.getClass();
-        switch (str.hashCode()) {
-            case -781118336:
-                if (str.equals("android.credentials.GetCredentialException.TYPE_UNKNOWN")) {
-                    return new GetCredentialUnknownException(charSequence);
-                }
-                break;
-            case -408155724:
-                if (str.equals("androidx.credentials.TYPE_GET_CREDENTIAL_UNSUPPORTED_EXCEPTION")) {
-                    return new GetCredentialUnsupportedException(charSequence);
-                }
-                break;
-            case -45448328:
-                if (str.equals("android.credentials.GetCredentialException.TYPE_INTERRUPTED")) {
-                    return new GetCredentialInterruptedException(charSequence);
-                }
-                break;
-            case 580557411:
-                if (str.equals("android.credentials.GetCredentialException.TYPE_USER_CANCELED")) {
-                    return new GetCredentialCancellationException(charSequence);
-                }
-                break;
-            case 627896683:
-                if (str.equals("android.credentials.GetCredentialException.TYPE_NO_CREDENTIAL")) {
-                    return new NoCredentialException(charSequence);
-                }
-                break;
-            case 1594095913:
-                if (str.equals("androidx.credentials.TYPE_GET_CREDENTIAL_PROVIDER_CONFIGURATION_EXCEPTION")) {
-                    return new GetCredentialProviderConfigurationException(charSequence);
-                }
-                break;
-        }
-        if (!xm4.k0(str, "androidx.credentials.TYPE_GET_PUBLIC_KEY_CREDENTIAL_DOM_EXCEPTION", false)) {
-            return new GetCredentialCustomException(charSequence, str);
-        }
-        int i = GetPublicKeyCredentialException.r;
-        String string = charSequence != null ? charSequence.toString() : null;
-        try {
-            if (!xm4.k0(str, "androidx.credentials.TYPE_GET_PUBLIC_KEY_CREDENTIAL_DOM_EXCEPTION", false)) {
-                throw new FrameworkClassParsingException();
-            }
-            int i2 = GetPublicKeyCredentialDomException.s;
-            return si0.q(str, string);
-        } catch (FrameworkClassParsingException unused) {
-            return new GetCredentialCustomException(string, str);
-        }
+    public static final GetCredentialException T(CharSequence r3, String r4) {
+        r4.getClass();
+        switch(r4.hashCode()) {
+            case -781118336: goto L31;
+            case -408155724: goto L26;
+            case -45448328: goto L21;
+            case 580557411: goto L16;
+            case 627896683: goto L11;
+            case 1594095913: goto L6;
+            default: goto L33;
+        };
+    L6:
+        if (r4.equals("androidx.credentials.TYPE_GET_CREDENTIAL_PROVIDER_CONFIGURATION_EXCEPTION") == false) goto L33;
+        return new GetCredentialProviderConfigurationException(r3);
+    L11:
+        if (r4.equals("android.credentials.GetCredentialException.TYPE_NO_CREDENTIAL") == false) goto L33;
+        return new NoCredentialException(r3);
+    L16:
+        if (r4.equals("android.credentials.GetCredentialException.TYPE_USER_CANCELED") == false) goto L33;
+        return new GetCredentialCancellationException(r3);
+    L21:
+        if (r4.equals("android.credentials.GetCredentialException.TYPE_INTERRUPTED") == false) goto L33;
+        return new GetCredentialInterruptedException(r3);
+    L26:
+        if (r4.equals("androidx.credentials.TYPE_GET_CREDENTIAL_UNSUPPORTED_EXCEPTION") == false) goto L33;
+        return new GetCredentialUnsupportedException(r3);
+    L31:
+        if (r4.equals("android.credentials.GetCredentialException.TYPE_UNKNOWN") == false) goto L33;
+        return new GetCredentialUnknownException(r3);
+    L33:
+        if (xm4.k0(r4, "androidx.credentials.TYPE_GET_PUBLIC_KEY_CREDENTIAL_DOM_EXCEPTION", false) == false) goto L47;
+        int r2 = GetPublicKeyCredentialException.r;
+        if (r3 == null) goto L37;
+        String r5 = r3.toString();
+    L50:
+        if (xm4.k0(r4, "androidx.credentials.TYPE_GET_PUBLIC_KEY_CREDENTIAL_DOM_EXCEPTION", false) == false) goto L43;
+        int r0 = GetPublicKeyCredentialDomException.s;     // Catch: FrameworkClassParsingException -> L44
+        return si0.q(r4, r5);
+    L43:
+        throw new FrameworkClassParsingException();     // Catch: FrameworkClassParsingException -> L44
+    L45:
+        return new GetCredentialCustomException(r5, r4);
+    L37:
+        r5 = null;
+        goto L50
+    L47:
+        return new GetCredentialCustomException(r3, r4);
     }
 
-    public static String U(String str) {
-        int length = str.length();
-        int i = 0;
-        while (i < length) {
-            if (J(str.charAt(i))) {
-                char[] charArray = str.toCharArray();
-                while (i < length) {
-                    char c = charArray[i];
-                    if (J(c)) {
-                        charArray[i] = (char) (c ^ ' ');
-                    }
-                    i++;
-                }
-                return String.valueOf(charArray);
-            }
-            i++;
-        }
-        return str;
+    public static String U(String r4) {
+        int r0 = r4.length();
+        int r1 = 0;
+    L3:
+        if (r1 >= r0) goto L15;
+        if (J(r4.charAt(r1)) == true) goto L6;
+        r1 = r1 + 1;
+        goto L3
+    L6:
+        char[] r5 = r4.toCharArray();
+    L7:
+        if (r1 >= r0) goto L13;
+        char r2 = r5[r1];
+        if (J(r2) == false) goto L11;
+        r5[r1] = (char) (r2 ^ ' ');
+    L11:
+        r1 = r1 + 1;
+        goto L7
+    L13:
+        return String.valueOf(r5);
+    L15:
+        return r4;
     }
 
-    public static String V(String str) {
-        int length = str.length();
-        int i = 0;
-        while (i < length) {
-            char cCharAt = str.charAt(i);
-            if (cCharAt >= 'a' && cCharAt <= 'z') {
-                char[] charArray = str.toCharArray();
-                while (i < length) {
-                    char c = charArray[i];
-                    if (c >= 'a' && c <= 'z') {
-                        charArray[i] = (char) (c ^ ' ');
-                    }
-                    i++;
-                }
-                return String.valueOf(charArray);
-            }
-            i++;
-        }
-        return str;
+    public static String V(String r5) {
+        int r0 = r5.length();
+        int r1 = 0;
+    L3:
+        if (r1 >= r0) goto L18;
+        char r2 = r5.charAt(r1);
+        if (r2 < 'a') goto L17;
+        if (r2 > 'z') goto L17;
+        char[] r6 = r5.toCharArray();
+    L9:
+        if (r1 >= r0) goto L16;
+        char r3 = r6[r1];
+        if (r3 < 'a') goto L14;
+        if (r3 > 'z') goto L14;
+        r6[r1] = (char) (r3 ^ ' ');
+    L14:
+        r1 = r1 + 1;
+        goto L9
+    L16:
+        return String.valueOf(r6);
+    L17:
+        r1 = r1 + 1;
+        goto L3
+    L18:
+        return r5;
     }
 
-    public static final double W(long j) {
-        return ((j >>> 11) * 2048.0d) + (j & 2047);
+    public static final double W(long r4) {
+        return ((r4 >>> 11) * 2048.0d) + (r4 & 2047);
     }
 
-    public static Bundle X(Bundle bundle) {
-        if (bundle == null) {
-            return null;
-        }
-        z(bundle);
-        try {
-            bundle.isEmpty();
-            return bundle;
-        } catch (BadParcelableException unused) {
-            Log.e("MediaSessionCompat", "Could not unparcel the data.");
-            return null;
-        }
-    }
-
-    public static final long c(float f, boolean z, boolean z2) {
-        return (((z ? 1L : 0L) | (z2 ? 2L : 0L)) & 4294967295L) | (((long) Float.floatToRawIntBits(f)) << 32);
-    }
-
-    public static final void d(int i, int i2) {
-        if (i < 0 || i >= i2) {
-            kf2.h(b11.n("index (", ") is out of bound of [0, ", i, i2, ")"));
-        }
-    }
-
-    public static final boolean e(ql4 ql4Var, int i, y1 y1Var, boolean z) {
-        boolean z2;
-        synchronized (b) {
-            try {
-                int i2 = ql4Var.d;
-                if (i2 == i) {
-                    ql4Var.c = y1Var;
-                    z2 = true;
-                    if (z) {
-                        ql4Var.e++;
-                    }
-                    ql4Var.d = i2 + 1;
-                } else {
-                    z2 = false;
-                }
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return z2;
-    }
-
-    public static String f(String str, int i, int i2) {
-        if (i < 0) {
-            return gh0.s("%s (%s) must not be negative", str, Integer.valueOf(i));
-        }
-        if (i2 >= 0) {
-            return gh0.s("%s (%s) must not be greater than size (%s)", str, Integer.valueOf(i), Integer.valueOf(i2));
-        }
-        kf2.n(f34.f(i2, "negative size: "));
+    public static Bundle X(Bundle r2) {
+        if (r2 != null) goto L5;
+        return null;
+    L5:
+        z(r2);
+        r2.isEmpty();     // Catch: BadParcelableException -> L8
+        return r2;
+    L8:
+        Log.e("MediaSessionCompat", "Could not unparcel the data.");
         return null;
     }
 
-    public static RemoteViews g(Context context, int i, boolean z, boolean z2) {
-        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), i);
-        remoteViews.setTextViewText(R.id.title, context.getString(R.string.widget_not_playing));
-        remoteViews.setTextViewText(R.id.subtitle, context.getString(R.string.widget_placeholder_subtitle));
-        remoteViews.setTextViewText(R.id.album, "");
-        remoteViews.setViewVisibility(R.id.album, z ? 4 : 8);
-        remoteViews.setTextViewText(R.id.time_elapsed, context.getString(R.string.widget_time_elapsed_placeholder));
-        remoteViews.setTextViewText(R.id.time_total, context.getString(R.string.widget_time_duration_placeholder));
-        remoteViews.setProgressBar(R.id.progress, 1000, 0, false);
-        remoteViews.setImageViewResource(R.id.btn_play_pause, R.drawable.ic_play);
-        remoteViews.setImageViewResource(R.id.album_art, R.drawable.ic_splash_logo);
-        int i2 = z2 ? 0 : 8;
-        remoteViews.setViewVisibility(R.id.controls_secondary, i2);
-        remoteViews.setViewVisibility(R.id.btn_shuffle, i2);
-        remoteViews.setViewVisibility(R.id.btn_repeat, i2);
-        if (z2) {
-            int color = context.getColor(R.color.widget_icon_tint);
-            remoteViews.setImageViewResource(R.id.btn_shuffle, R.drawable.ic_shuffle);
-            remoteViews.setImageViewResource(R.id.btn_repeat, R.drawable.ic_repeat);
-            remoteViews.setInt(R.id.btn_shuffle, "setColorFilter", color);
-            remoteViews.setInt(R.id.btn_repeat, "setColorFilter", color);
-        }
-        return remoteViews;
+    public static final long c(float r4, boolean r5, boolean r6) {
+        long r0 = Float.floatToRawIntBits(r4);
+        long r2 = 0;
+        if (r5 == false) goto L5;
+        long r7 = 1;
+    L6:
+        if (r6 == false) goto L9;
+        r2 = 2;
+    L9:
+        return ((r7 | r2) & 4294967295L) | (r0 << 32);
+    L5:
+        r7 = 0;
+        goto L6
     }
 
-    public static boolean h(be3 be3Var, v71 v71Var, int i, t71 t71Var) {
-        long jC = be3Var.C();
-        long j = jC >>> 16;
-        if (j != i) {
-            return false;
-        }
-        boolean z = (j & 1) == 1;
-        int i2 = (int) ((jC >> 12) & 15);
-        int i3 = (int) ((jC >> 8) & 15);
-        int i4 = (int) ((jC >> 4) & 15);
-        int i5 = (int) ((jC >> 1) & 7);
-        boolean z2 = (jC & 1) == 1;
-        if (i4 <= 7) {
-            if (i4 != v71Var.g - 1) {
-                return false;
-            }
-        } else if (i4 > 10 || v71Var.g != 2) {
-            return false;
-        }
-        if (!(i5 == 0 || i5 == v71Var.i) || z2) {
-            return false;
-        }
-        try {
-            long jI = be3Var.I();
-            if (!z) {
-                jI *= (long) v71Var.b;
-            }
-            long j2 = v71Var.j;
-            if (j2 != 0 && jI > j2) {
-                return false;
-            }
-            t71Var.a = jI;
-            int iP = P(i2, be3Var);
-            long j3 = v71Var.j;
-            boolean z3 = j3 == 0 || jI + ((long) iP) >= j3;
-            if (iP == -1) {
-                return false;
-            }
-            if ((!z3 && iP < v71Var.a) || iP > v71Var.b) {
-                return false;
-            }
-            int i6 = v71Var.e;
-            if (i3 != 0) {
-                if (i3 <= 11) {
-                    if (i3 != v71Var.f) {
-                        return false;
-                    }
-                } else if (i3 != 12) {
-                    if (i3 > 14) {
-                        return false;
-                    }
-                    int iH = be3Var.H();
-                    if (i3 == 14) {
-                        iH *= 10;
-                    }
-                    if (iH != i6) {
-                        return false;
-                    }
-                } else if (be3Var.A() * 1000 != i6) {
-                    return false;
-                }
-            }
-            int iA = be3Var.A();
-            int i7 = be3Var.b;
-            byte[] bArr = be3Var.a;
-            int i8 = i7 - 1;
-            int i9 = 0;
-            for (int i10 = be3Var.b; i10 < i8; i10++) {
-                i9 = f35.l[i9 ^ (bArr[i10] & 255)];
-            }
-            String str = f35.a;
-            if (iA != i9) {
-                return false;
-            }
-            if (be3Var.a() != 0) {
-                int iJ = be3Var.j();
-                if ((iJ & 128) != 0) {
-                    return false;
-                }
-                int i11 = (iJ & 126) >> 1;
-                if ((i11 >= 2 && i11 <= 7) || (i11 >= 13 && i11 <= 31)) {
-                    l93.K("FlacFrameReader", "Ignoring frame where first subframe has a reserved type: " + i11);
-                    return false;
-                }
-            }
-            return true;
-        } catch (NumberFormatException unused) {
-            return false;
-        }
+    public static final void d(int r3, int r4) {
+        if (r3 < 0) goto L5;
+        if (r3 >= r4) goto L5;
+        return;
+    L5:
+        kf2.h(b11.n("index (", ") is out of bound of [0, ", r3, r4, ")"));
     }
 
-    public static void i(int i, int i2, String str, boolean z) {
-        if (z) {
-            return;
-        }
-        kf2.n(gh0.s(str, Integer.valueOf(i), Integer.valueOf(i2)));
+    public static final boolean e(ql4 r2, int r3, y1 r4, boolean r5) {
+        Object r0 = b;
+        monitor-enter(r0);
+        int r1 = r2.d;     // Catch: Throwable -> L9
+        if (r1 != r3) goto L13;
+        r2.c = r4;     // Catch: Throwable -> L9
+        boolean r6 = true;
+        if (r5 == false) goto L11;
+        r2.e++;     // Catch: Throwable -> L9
+    L11:
+        r2.d = r1 + 1;     // Catch: Throwable -> L9
+    L14:
+        monitor-exit(r0);
+        return r6;
+    L13:
+        r6 = false;
+    L9:
+        th = move-exception;
+        throw th;
     }
 
-    public static void j(int i, String str, boolean z) {
-        if (z) {
-            return;
-        }
-        kf2.n(gh0.s(str, Integer.valueOf(i)));
+    public static String f(String r0, int r1, int r2) {
+        if (r1 < 0) goto L4;
+        if (r2 >= 0) goto L7;
+        kf2.n(f34.f(r2, "negative size: "));
+        return null;
+    L7:
+        return gh0.s("%s (%s) must not be greater than size (%s)", new Object[]{r0, Integer.valueOf(r1), Integer.valueOf(r2)});
+    L4:
+        return gh0.s("%s (%s) must not be negative", new Object[]{r0, Integer.valueOf(r1)});
     }
 
-    public static void k(String str, boolean z) {
-        if (z) {
-            return;
-        }
-        kf2.n(str);
+    public static RemoteViews g(Context r3, int r4, boolean r5, boolean r6) {
+        RemoteViews r0 = new RemoteViews(r3.getPackageName(), r4);
+        r0.setTextViewText(R.id.title, r3.getString(R.string.widget_not_playing));
+        r0.setTextViewText(R.id.subtitle, r3.getString(R.string.widget_placeholder_subtitle));
+        r0.setTextViewText(R.id.album, "");
+        int r7 = 8;
+        if (r5 == false) goto L5;
+        int r8 = 4;
+    L6:
+        r0.setViewVisibility(R.id.album, r8);
+        r0.setTextViewText(R.id.time_elapsed, r3.getString(R.string.widget_time_elapsed_placeholder));
+        r0.setTextViewText(R.id.time_total, r3.getString(R.string.widget_time_duration_placeholder));
+        r0.setProgressBar(R.id.progress, 1000, 0, false);
+        r0.setImageViewResource(R.id.btn_play_pause, R.drawable.ic_play);
+        r0.setImageViewResource(R.id.album_art, R.drawable.ic_splash_logo);
+        if (r6 == false) goto L9;
+        r7 = 0;
+    L9:
+        r0.setViewVisibility(R.id.controls_secondary, r7);
+        r0.setViewVisibility(R.id.btn_shuffle, r7);
+        r0.setViewVisibility(R.id.btn_repeat, r7);
+        if (r6 == false) goto L12;
+        int r9 = r3.getColor(R.color.widget_icon_tint);
+        r0.setImageViewResource(R.id.btn_shuffle, R.drawable.ic_shuffle);
+        r0.setImageViewResource(R.id.btn_repeat, R.drawable.ic_repeat);
+        r0.setInt(R.id.btn_shuffle, "setColorFilter", r9);
+        r0.setInt(R.id.btn_repeat, "setColorFilter", r9);
+    L12:
+        return r0;
+    L5:
+        r8 = 8;
+        goto L6
     }
 
-    public static void l(boolean z) {
-        if (z) {
-            return;
-        }
+    public static boolean h(be3 r19, v71 r20, int r21, t71 r22) {
+        int r2 = r19.b;
+        long r3 = r19.C();
+        long r5 = r3 >>> 16;
+        if (r5 == r21) goto L6;
+        return false;
+    L6:
+        if ((r5 & 1) != 1) goto L8;
+        boolean r6 = true;
+    L9:
+        int r11 = (int) ((r3 >> 12) & 15);
+        int r8 = (int) ((r3 >> 8) & 15);
+        int r9 = (int) ((r3 >> 4) & 15);
+        int r10 = (int) ((r3 >> 1) & 7);
+        if ((r3 & 1) != 1) goto L12;
+        boolean r4 = true;
+    L14:
+        if (r9 > 7) goto L19;
+        if (r9 != (r20.g - 1)) goto L95;
+    L22:
+        if (r10 != 0) goto L25;
+    L26:
+        if (r4 == true) goto L99;
+        long r12 = r19.I();     // Catch: NumberFormatException -> L91
+        if (r6 == true) goto L31;
+        r12 = r12 * ((long) r20.b);
+    L31:
+        long r13 = r20.j;
+        if (r13 != 0) goto L34;
+    L36:
+        r22.a = r12;
+        int r7 = P(r11, r19);
+        long r14 = r20.j;
+        if (r14 != 0) goto L39;
+    L42:
+        boolean r15 = true;
+    L44:
+        if (r7 == (-1)) goto L100;
+        if (r15 == true) goto L49;
+        if (r7 >= r20.a) goto L49;
+        return false;
+    L49:
+        if (r7 > r20.b) goto L102;
+        int r16 = r20.e;
+        if (r8 != 0) goto L54;
+    L68:
+        int r1 = r19.A();
+        int r17 = r19.b;
+        byte[] r18 = r19.a;
+        int r23 = r17 - 1;
+        int r24 = 0;
+    L69:
+        if (r2 >= r23) goto L71;
+        r24 = f35.l[r24 ^ (r18[r2] & 255)];
+        r2 = r2 + 1;
+        goto L69
+    L71:
+        String r25 = f35.a;
+        if (r1 == r24) goto L74;
+        return false;
+    L74:
+        if (r19.a() == 0) goto L89;
+        int r0 = r19.j();
+        if ((r0 & 128) != 0) goto L109;
+        int r26 = (r0 & 126) >> 1;
+        if (r26 < 2) goto L84;
+        if (r26 > 7) goto L84;
+    L87:
+        l93.K("FlacFrameReader", "Ignoring frame where first subframe has a reserved type: " + r26);
+        return false;
+    L84:
+        if (r26 < 13) goto L89;
+        if (r26 > 31) goto L89;
+    L109:
+        return false;
+    L89:
+        return true;
+    L54:
+        if (r8 <= 11) goto L56;
+        if (r8 != 12) goto L63;
+        if ((r19.A() * 1000) == r16) goto L68;
+        return false;
+    L63:
+        if (r8 > 14) goto L105;
+        int r27 = r19.H();
+        if (r8 != 14) goto L67;
+        r27 = r27 * 10;
+    L67:
+        if (r27 == r16) goto L68;
+        return false;
+    L105:
+        return false;
+    L56:
+        if (r8 == r20.f) goto L68;
+        return false;
+    L102:
+        return false;
+    L100:
+        return false;
+    L39:
+        if ((r12 + ((long) r7)) >= r14) goto L42;
+        r15 = false;
+        goto L44
+    L34:
+        if (r12 <= r13) goto L36;
+        return false;
+    L110:
+        return false;
+    L99:
+        return false;
+    L25:
+        if (r10 == r20.i) goto L26;
+        return false;
+    L95:
+        return false;
+    L19:
+        if (r9 <= 10) goto L21;
+        return false;
+    L21:
+        if (r20.g == 2) goto L22;
+        return false;
+    L12:
+        r4 = false;
+        goto L14
+    L8:
+        r6 = false;
+        goto L9
+    }
+
+    public static void i(int r0, int r1, String r2, boolean r3) {
+        if (r3 == false) goto L4;
+        return;
+    L4:
+        kf2.n(gh0.s(r2, new Object[]{Integer.valueOf(r0), Integer.valueOf(r1)}));
+    }
+
+    public static void j(int r0, String r1, boolean r2) {
+        if (r2 == false) goto L4;
+        return;
+    L4:
+        kf2.n(gh0.s(r1, new Object[]{Integer.valueOf(r0)}));
+    }
+
+    public static void k(String r0, boolean r1) {
+        if (r1 == false) goto L4;
+        return;
+    L4:
+        kf2.n(r0);
+    }
+
+    public static void l(boolean r0) {
+        if (r0 == false) goto L4;
+        return;
+    L4:
         nz2.c();
     }
 
-    public static void m(boolean z, String str, long j) {
-        if (z) {
-            return;
-        }
-        kf2.n(gh0.s(str, Long.valueOf(j)));
+    public static void m(boolean r0, String r1, long r2) {
+        if (r0 == false) goto L4;
+        return;
+    L4:
+        kf2.n(gh0.s(r1, new Object[]{Long.valueOf(r2)}));
     }
 
-    public static void n(boolean z, String str, long j, long j2) {
-        if (z) {
-            return;
-        }
-        kf2.n(gh0.s(str, Long.valueOf(j), Long.valueOf(j2)));
+    public static void n(boolean r0, String r1, long r2, long r4) {
+        if (r0 == false) goto L4;
+        return;
+    L4:
+        kf2.n(gh0.s(r1, new Object[]{Long.valueOf(r2), Long.valueOf(r4)}));
     }
 
-    public static void o(boolean z, String str, Object obj) {
-        if (z) {
-            return;
-        }
-        kf2.n(gh0.s(str, obj));
+    public static void o(boolean r0, String r1, Object r2) {
+        if (r0 == false) goto L4;
+        return;
+    L4:
+        kf2.n(gh0.s(r1, new Object[]{r2}));
     }
 
-    public static void p(boolean z, String str, Object obj, Object obj2) {
-        if (z) {
-            return;
-        }
-        kf2.n(gh0.s(str, obj, obj2));
+    public static void p(boolean r0, String r1, Object r2, Object r3) {
+        if (r0 == false) goto L4;
+        return;
+    L4:
+        kf2.n(gh0.s(r1, new Object[]{r2, r3}));
     }
 
-    public static void q(int i, int i2) {
-        String strS;
-        if (i < 0 || i >= i2) {
-            if (i < 0) {
-                strS = gh0.s("%s (%s) must not be negative", "index", Integer.valueOf(i));
-            } else {
-                if (i2 < 0) {
-                    kf2.n(f34.f(i2, "negative size: "));
-                    return;
-                }
-                strS = gh0.s("%s (%s) must be less than size (%s)", "index", Integer.valueOf(i), Integer.valueOf(i2));
-            }
-            throw new IndexOutOfBoundsException(strS);
-        }
+    public static void q(int r2, int r3) {
+        if (r2 < 0) goto L7;
+        if (r2 >= r3) goto L7;
+        return;
+    L7:
+        if (r2 < 0) goto L12;
+        if (r3 >= 0) goto L11;
+        kf2.n(f34.f(r3, "negative size: "));
+        return;
+    L11:
+        String r4 = gh0.s("%s (%s) must be less than size (%s)", new Object[]{"index", Integer.valueOf(r2), Integer.valueOf(r3)});
+    L14:
+        throw new IndexOutOfBoundsException(r4);
+    L12:
+        r4 = gh0.s("%s (%s) must not be negative", new Object[]{"index", Integer.valueOf(r2)});
+        goto L14
     }
 
-    public static void r(oo2 oo2Var) {
-        oo2Var.getClass();
+    public static void r(oo2 r0) {
+        r0.getClass();
     }
 
-    public static void s(Object obj, String str) {
-        if (obj != null) {
-            return;
-        }
-        nz2.n(str);
+    public static void s(Object r0, String r1) {
+        if (r0 == null) goto L4;
+        return;
+    L4:
+        nz2.n(r1);
     }
 
-    public static void t(int i, int i2) {
-        if (i < 0 || i > i2) {
-            kf2.h(f("index", i, i2));
-        }
+    public static void t(int r1, int r2) {
+        if (r1 < 0) goto L5;
+        if (r1 > r2) goto L5;
+        return;
+    L5:
+        kf2.h(f("index", r1, r2));
     }
 
-    public static void u(int i, int i2, int i3) {
-        String strF;
-        if (i < 0 || i2 < i || i2 > i3) {
-            if (i < 0 || i > i3) {
-                strF = f("start index", i, i3);
-            } else {
-                strF = (i2 < 0 || i2 > i3) ? f("end index", i2, i3) : gh0.s("end index (%s) must not be less than start index (%s)", Integer.valueOf(i2), Integer.valueOf(i));
-            }
-            throw new IndexOutOfBoundsException(strF);
-        }
+    public static void u(int r1, int r2, int r3) {
+        if (r1 < 0) goto L8;
+        if (r2 < r1) goto L8;
+        if (r2 > r3) goto L8;
+        return;
+    L8:
+        if (r1 < 0) goto L15;
+        if (r1 > r3) goto L15;
+        if (r2 < 0) goto L14;
+        if (r2 > r3) goto L14;
+        String r4 = gh0.s("end index (%s) must not be less than start index (%s)", new Object[]{Integer.valueOf(r2), Integer.valueOf(r1)});
+    L17:
+        throw new IndexOutOfBoundsException(r4);
+    L14:
+        r4 = f("end index", r2, r3);
+    L15:
+        r4 = f("start index", r1, r3);
+        goto L17
     }
 
-    public static void v(String str, boolean z) {
-        if (z) {
-            return;
-        }
-        kf2.o(str);
+    public static void v(String r0, boolean r1) {
+        if (r1 == false) goto L4;
+        return;
+    L4:
+        kf2.o(r0);
     }
 
-    public static void w(boolean z) {
-        if (z) {
-            return;
-        }
+    public static void w(boolean r0) {
+        if (r0 == false) goto L4;
+        return;
+    L4:
         tb4.a();
     }
 
-    public static final int y(z34 z34Var, String str) {
-        z34Var.getClass();
-        int columnCount = z34Var.getColumnCount();
-        int i = 0;
-        while (true) {
-            if (i >= columnCount) {
-                i = -1;
-                break;
-            }
-            if (str.equals(z34Var.getColumnName(i))) {
-                break;
-            }
-            i++;
-        }
-        if (i >= 0) {
-            return i;
-        }
-        String str2 = "`" + str + '`';
-        int columnCount2 = z34Var.getColumnCount();
-        int i2 = 0;
-        while (true) {
-            if (i2 >= columnCount2) {
-                i2 = -1;
-                break;
-            }
-            if (str2.equals(z34Var.getColumnName(i2))) {
-                break;
-            }
-            i2++;
-        }
-        if (i2 >= 0) {
-            return i2;
-        }
-        if (Build.VERSION.SDK_INT <= 25 && str.length() != 0) {
-            int columnCount3 = z34Var.getColumnCount();
-            String strConcat = ".".concat(str);
-            String str3 = "." + str + '`';
-            for (int i3 = 0; i3 < columnCount3; i3++) {
-                String columnName = z34Var.getColumnName(i3);
-                if (columnName.length() >= str.length() + 2 && (xm4.e0(columnName, strConcat, false) || (columnName.charAt(0) == '`' && xm4.e0(columnName, str3, false)))) {
-                    return i3;
-                }
-            }
-        }
+    public static final int y(z34 r10, String r11) {
+        r10.getClass();
+        int r0 = r10.getColumnCount();
+        int r2 = 0;
+    L4:
+        if (r2 >= r0) goto L9;
+        if (r11.equals(r10.getColumnName(r2)) == true) goto L10;
+        r2 = r2 + 1;
+    L10:
+        if (r2 < 0) goto L12;
+        return r2;
+    L12:
+        String r1 = "`" + r11 + '`';
+        int r4 = r10.getColumnCount();
+        int r5 = 0;
+    L13:
+        if (r5 >= r4) goto L18;
+        if (r1.equals(r10.getColumnName(r5)) == true) goto L19;
+        r5 = r5 + 1;
+    L19:
+        if (r5 < 0) goto L22;
+        return r5;
+    L22:
+        if (Build.VERSION.SDK_INT <= 25) goto L24;
+    L39:
         return -1;
+    L24:
+        if (r11.length() == 0) goto L39;
+        int r3 = r10.getColumnCount();
+        String r6 = ".".concat(r11);
+        String r7 = "." + r11 + '`';
+        int r8 = 0;
+    L27:
+        if (r8 >= r3) goto L39;
+        String r9 = r10.getColumnName(r8);
+        if (r9.length() < (r11.length() + 2)) goto L38;
+        if (xm4.e0(r9, r6, false) == true) goto L37;
+        if (r9.charAt(0) != '`') goto L38;
+        if (xm4.e0(r9, r7, false) == false) goto L38;
+    L37:
+        return r8;
+    L38:
+        r8 = r8 + 1;
+        goto L27
+    L18:
+        r5 = -1;
+        goto L19
+    L9:
+        r2 = -1;
+        goto L10
     }
 
-    public static void z(Bundle bundle) {
-        if (bundle != null) {
-            bundle.setClassLoader(rr2.class.getClassLoader());
-        }
+    public static void z(Bundle r1) {
+        if (r1 == null) goto L5;
+        r1.setClassLoader(rr2.class.getClassLoader());
+        return;
     }
 
     @Override // defpackage.bg4
-    public float b(ViewGroup viewGroup, View view) {
-        return view.getTranslationX();
+    public float b(ViewGroup r1, View r2) {
+        return r2.getTranslationX();
     }
 
-    public abstract List x(String str, List list);
+    public abstract List x(String r1, List r2);
 }

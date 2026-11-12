@@ -9,24 +9,31 @@ public abstract class xr1 {
     public static volatile bv3 b;
     public static Thread c;
     public static Context d;
-    public static final rp4 e = new rp4(new e90(12));
-    public static final u6 f = new u6(6);
+    public static final rp4 e = null;
+    public static final u6 f = null;
+
+    static {
+        e = new rp4(new e90(12));
+        f = new u6(6);
+    }
 
     public static final synchronized void a() {
-        try {
-            a = false;
-            bv3 bv3Var = b;
-            if (bv3Var != null) {
-                bv3Var.cancel();
-            }
-            b = null;
-            Thread thread = c;
-            if (thread != null) {
-                thread.interrupt();
-            }
-            c = null;
-        } catch (Throwable th) {
-            throw th;
-        }
+        monitor-enter(xr1.class);
+        a = false;     // Catch: Throwable -> L8
+        bv3 r1 = b;     // Catch: Throwable -> L8
+        if (r1 == null) goto L10;
+        r1.cancel();     // Catch: Throwable -> L8
+    L10:
+        b = null;     // Catch: Throwable -> L8
+        Thread r2 = c;     // Catch: Throwable -> L8
+        if (r2 == null) goto L13;
+        r2.interrupt();     // Catch: Throwable -> L8
+    L13:
+        c = null;     // Catch: Throwable -> L8
+        monitor-exit(xr1.class);
+        return;
+    L8:
+        th = move-exception;
+        throw th;
     }
 }

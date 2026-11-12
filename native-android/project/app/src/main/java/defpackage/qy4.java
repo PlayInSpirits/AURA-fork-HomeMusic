@@ -4,8 +4,6 @@ import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
 import androidx.media3.common.ParserException;
-import java.io.EOFException;
-import java.io.InterruptedIOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -34,37 +32,48 @@ public final class qy4 implements k51 {
     public int s;
     public int t;
 
-    public qy4(int i, int i2, xn4 xn4Var, iu4 iu4Var, qn0 qn0Var) {
-        this.f = qn0Var;
-        this.a = i;
-        this.b = i2;
-        this.g = xn4Var;
-        if (i == 1 || i == 2) {
-            this.c = Collections.singletonList(iu4Var);
-        } else {
-            ArrayList arrayList = new ArrayList();
-            this.c = arrayList;
-            arrayList.add(iu4Var);
-        }
+    static {
+    }
+
+    public qy4(int r3, int r4, xn4 r5, iu4 r6, qn0 r7) {
+        this.f = r7;
+        this.a = r3;
+        this.b = r4;
+        this.g = r5;
+        if (r3 != 1) goto L5;
+    L8:
+        this.c = Collections.singletonList(r6);
+    L9:
         this.d = new be3(0, new byte[9400]);
-        SparseBooleanArray sparseBooleanArray = new SparseBooleanArray();
-        this.i = sparseBooleanArray;
+        SparseBooleanArray r8 = new SparseBooleanArray();
+        this.i = r8;
         this.j = new SparseBooleanArray();
-        SparseArray sparseArray = new SparseArray();
-        this.h = sparseArray;
+        SparseArray r9 = new SparseArray();
+        this.h = r9;
         this.e = new SparseIntArray();
         this.k = new sr3(1);
         this.m = m51.i;
         this.t = -1;
-        sparseBooleanArray.clear();
-        sparseArray.clear();
-        SparseArray sparseArray2 = new SparseArray();
-        int size = sparseArray2.size();
-        for (int i3 = 0; i3 < size; i3++) {
-            sparseArray.put(sparseArray2.keyAt(i3), (ty4) sparseArray2.valueAt(i3));
-        }
-        sparseArray.put(0, new h84(new xc5(this)));
+        r8.clear();
+        r9.clear();
+        SparseArray r10 = new SparseArray();
+        int r11 = r10.size();
+        int r12 = 0;
+    L10:
+        if (r12 >= r11) goto L12;
+        r9.put(r10.keyAt(r12), (ty4) r10.valueAt(r12));
+        r12 = r12 + 1;
+        goto L10
+    L12:
+        r9.put(0, new h84(new xc5(this)));
         this.r = null;
+        return;
+    L5:
+        if (r3 == 2) goto L8;
+        ArrayList r13 = new ArrayList();
+        this.c = r13;
+        r13.add(r6);
+        goto L9
     }
 
     @Override // defpackage.k51
@@ -98,312 +107,392 @@ public final class qy4 implements k51 {
     /* JADX WARN: Type inference failed for: r8v2, types: [ty4] */
     /* JADX WARN: Type inference failed for: r8v9 */
     @Override // defpackage.k51
-    public final int b(l51 l51Var, t71 t71Var) throws ParserException {
-        l51 l51Var2;
-        ?? r1;
-        int i;
-        int i2;
-        int i3;
-        int i4;
-        ty4 ty4Var;
-        boolean z;
-        long jP;
-        long length = l51Var.getLength();
-        int i5 = this.a;
-        boolean z2 = i5 == 2;
-        if (this.o) {
-            long j = -9223372036854775807L;
-            sr3 sr3Var = this.k;
-            if (length != -1 && !z2 && !sr3Var.d) {
-                int i6 = this.t;
-                iu4 iu4Var = sr3Var.b;
-                be3 be3Var = sr3Var.c;
-                if (i6 <= 0) {
-                    sr3Var.a(l51Var);
-                    return 0;
-                }
-                if (sr3Var.f) {
-                    if (sr3Var.h == -9223372036854775807L) {
-                        sr3Var.a(l51Var);
-                        return 0;
-                    }
-                    if (sr3Var.e) {
-                        long j2 = sr3Var.g;
-                        if (j2 == -9223372036854775807L) {
-                            sr3Var.a(l51Var);
-                            return 0;
-                        }
-                        sr3Var.i = iu4Var.c(sr3Var.h) - iu4Var.b(j2);
-                        sr3Var.a(l51Var);
-                        return 0;
-                    }
-                    int iMin = (int) Math.min(112800L, l51Var.getLength());
-                    if (l51Var.getPosition() != 0) {
-                        t71Var.a = 0L;
-                        return 1;
-                    }
-                    be3Var.K(iMin);
-                    l51Var.k();
-                    l51Var.n(be3Var.a, 0, iMin);
-                    int i7 = be3Var.c;
-                    for (int i8 = be3Var.b; i8 < i7; i8++) {
-                        if (be3Var.a[i8] == 71) {
-                            jP = au0.P(be3Var, i8, i6);
-                            if (jP != -9223372036854775807L) {
-                                sr3Var.g = jP;
-                                sr3Var.e = true;
-                                return 0;
-                            }
-                        }
-                    }
-                    jP = -9223372036854775807L;
-                    sr3Var.g = jP;
-                    sr3Var.e = true;
-                    return 0;
-                }
-                long length2 = l51Var.getLength();
-                int iMin2 = (int) Math.min(112800L, length2);
-                long j3 = length2 - ((long) iMin2);
-                if (l51Var.getPosition() != j3) {
-                    t71Var.a = j3;
-                    return 1;
-                }
-                be3Var.K(iMin2);
-                l51Var.k();
-                l51Var.n(be3Var.a, 0, iMin2);
-                int i9 = be3Var.b;
-                int i10 = be3Var.c;
-                for (int i11 = i10 - 188; i11 >= i9; i11--) {
-                    byte[] bArr = be3Var.a;
-                    int i12 = 0;
-                    for (int i13 = -4; i13 <= 4; i13++) {
-                        int i14 = (i13 * 188) + i11;
-                        if (i14 >= i9 && i14 < i10 && bArr[i14] == 71) {
-                            i12++;
-                            if (i12 == 5) {
-                                long jP2 = au0.P(be3Var, i11, i6);
-                                if (jP2 == -9223372036854775807L) {
-                                    break;
-                                }
-                                j = jP2;
-                                break;
-                            }
-                        } else {
-                            i12 = 0;
-                        }
-                    }
-                }
-                sr3Var.h = j;
-                sr3Var.f = true;
-                return 0;
-            }
-            if (this.p) {
-                i = 1;
-                z = false;
-                i2 = i5;
-            } else {
-                this.p = true;
-                long j4 = sr3Var.i;
-                if (j4 != -9223372036854775807L) {
-                    i = 1;
-                    z = false;
-                    i2 = i5;
-                    r71 r71Var = new r71(new pa(18), new ue1(this.t, sr3Var.b), j4, j4 + 1, 0L, length, 188L, 940);
-                    this.l = r71Var;
-                    this.m.w(r71Var.a);
-                } else {
-                    i = 1;
-                    z = false;
-                    i2 = i5;
-                    this.m.w(new bo(j4));
-                }
-            }
-            if (this.q) {
-                this.q = z;
-                d(0L, 0L);
-                if (l51Var.getPosition() != 0) {
-                    t71Var.a = 0L;
-                    return i;
-                }
-            }
-            r71 r71Var2 = this.l;
-            if (r71Var2 != null && r71Var2.c != null) {
-                return r71Var2.b(l51Var, t71Var);
-            }
-            l51Var2 = l51Var;
-            r1 = z;
-        } else {
-            l51Var2 = l51Var;
-            r1 = 0;
-            i = 1;
-            i2 = i5;
-        }
-        be3 be3Var2 = this.d;
-        byte[] bArr2 = be3Var2.a;
-        if (9400 - be3Var2.b < 188) {
-            int iA = be3Var2.a();
-            if (iA > 0) {
-                System.arraycopy(bArr2, be3Var2.b, bArr2, r1, iA);
-            }
-            be3Var2.L(iA, bArr2);
-        }
-        while (true) {
-            int iA2 = be3Var2.a();
-            ?? r7 = this.h;
-            if (iA2 >= 188) {
-                int i15 = be3Var2.b;
-                int i16 = be3Var2.c;
-                byte[] bArr3 = be3Var2.a;
-                int i17 = i15;
-                while (i17 < i16 && bArr3[i17] != 71) {
-                    i17++;
-                }
-                be3Var2.N(i17);
-                int i18 = i17 + 188;
-                ?? r8 = 0;
-                if (i18 > i16) {
-                    int i19 = (i17 - i15) + this.s;
-                    this.s = i19;
-                    i3 = i2;
-                    i4 = 2;
-                    if (i3 == 2 && i19 > 376) {
-                        throw ParserException.a(null, "Cannot find sync byte. Most likely not a Transport Stream.");
-                    }
-                } else {
-                    i3 = i2;
-                    i4 = 2;
-                    this.s = r1;
-                }
-                int i20 = be3Var2.c;
-                if (i18 > i20) {
-                    return r1;
-                }
-                int iM = be3Var2.m();
-                if ((8388608 & iM) != 0) {
-                    be3Var2.N(i18);
-                    return r1;
-                }
-                ?? r10 = (4194304 & iM) != 0 ? 1 : r1;
-                int i21 = (2096896 & iM) >> 8;
-                ?? r14 = (iM & 32) != 0 ? 1 : r1;
-                if ((iM & 16) != 0) {
-                    ty4Var = (ty4) r7.get(i21);
-                }
-                if (r8 == 0) {
-                    r8 = ty4Var;
-                    be3Var2.N(i18);
-                    return r1;
-                }
-                if (i3 != i4) {
-                    int i22 = iM & 15;
-                    SparseIntArray sparseIntArray = this.e;
-                    int i23 = sparseIntArray.get(i21, i22 - 1);
-                    sparseIntArray.put(i21, i22);
-                    if (i23 == i22) {
-                        be3Var2.N(i18);
-                        return r1;
-                    }
-                    if (i22 != ((i23 + 1) & 15)) {
-                        r8.c();
-                    }
-                }
-                if (r14 != 0) {
-                    int iA3 = be3Var2.A();
-                    r10 = (r10 == true ? 1 : 0) | ((be3Var2.A() & 64) != 0 ? i4 : r1);
-                    be3Var2.O(iA3 - 1);
-                }
-                boolean z3 = this.o;
-                if (i3 == i4 || z3 || !this.j.get(i21, r1)) {
-                    be3Var2.M(i18);
-                    r8.a(r10, be3Var2);
-                    be3Var2.M(i20);
-                }
-                if (i3 != i4 && !z3 && this.o && length != -1) {
-                    this.q = true;
-                }
-                be3Var2.N(i18);
-                return r1;
-            }
-            int i24 = be3Var2.c;
-            int i25 = l51Var2.read(bArr2, i24, 9400 - i24);
-            if (i25 == -1) {
-                for (?? r4 = r1; r4 < r7.size(); r4++) {
-                    ty4 ty4Var2 = (ty4) r7.valueAt(r4);
-                    if (ty4Var2 instanceof ag3) {
-                        ag3 ag3Var = (ag3) ty4Var2;
-                        ?? r3 = (!z2 || ag3Var.e()) ? i : r1;
-                        if (ag3Var.c == 3 && ag3Var.j == -1 && ((!z2 || !(ag3Var.a instanceof vk1)) && r3 != 0)) {
-                            ag3Var.a(i, new be3());
-                        }
-                    }
-                    i = 1;
-                }
-                return -1;
-            }
-            be3Var2.M(i24 + i25);
-            i = 1;
-        }
+    public final int b(l51 r29, t71 r30) {
+        long r12 = r29.getLength();
+        int r5 = this.a;
+        if (r5 != 2) goto L5;
+        boolean r17 = true;
+    L7:
+        if (this.o == false) goto L92;
+        long r9 = -9223372036854775807L;
+        sr3 r11 = this.k;
+        if (r12 == (-1)) goto L73;
+        if (r17 == true) goto L73;
+        if (r11.d == true) goto L73;
+        int r0 = this.t;
+        iu4 r6 = r11.b;
+        be3 r7 = r11.c;
+        if (r0 > 0) goto L18;
+        r11.a(r29);
+        return 0;
+    L18:
+        if (r11.f == true) goto L45;
+        long r14 = r29.getLength();
+        int r8 = (int) Math.min(112800, r14);
+        long r15 = r14 - ((long) r8);
+        if (r29.getPosition() == r15) goto L23;
+        r30.a = r15;
+        return 1;
+    L23:
+        r7.K(r8);
+        r29.k();
+        r29.n(r7.a, 0, r8);
+        int r1 = r7.b;
+        int r2 = r7.c;
+        int r10 = r2 - 188;
+    L24:
+        if (r10 < r1) goto L42;
+        byte[] r13 = r7.a;
+        int r16 = -4;
+        int r18 = 0;
+    L27:
+        if (r16 > 4) goto L41;
+        int r19 = (r16 * 188) + r10;
+        if (r19 < r1) goto L39;
+        if (r19 >= r2) goto L39;
+        if (r13[r19] != 71) goto L39;
+        r18 = r18 + 1;
+        if (r18 != 5) goto L40;
+        long r110 = au0.P(r7, r10, r0);
+        if (r110 == (-9223372036854775807L)) goto L41;
+        r9 = r110;
+    L40:
+        r16 = r16 + 1;
+    L39:
+        r18 = 0;
+    L41:
+        r10 = r10 - 1;
+    L42:
+        r11.h = r9;
+        r11.f = true;
+        return 0;
+    L45:
+        if (r11.h != (-9223372036854775807L)) goto L49;
+        r11.a(r29);
+        return 0;
+    L49:
+        if (r11.e == true) goto L66;
+        int r20 = (int) Math.min(112800, r29.getLength());
+        if (r29.getPosition() == 0) goto L54;
+        r30.a = 0;
+        return 1;
+    L54:
+        r7.K(r20);
+        r29.k();
+        r29.n(r7.a, 0, r20);
+        int r3 = r7.b;
+        int r4 = r7.c;
+    L55:
+        if (r3 >= r4) goto L63;
+        if (r7.a[r3] != 71) goto L62;
+        long r21 = au0.P(r7, r3, r0);
+        if (r21 == (-9223372036854775807L)) goto L62;
+    L64:
+        r11.g = r21;
+        r11.e = true;
+        return 0;
+    L62:
+        r3 = r3 + 1;
+        goto L55
+    L63:
+        r21 = -9223372036854775807L;
+        goto L64
+    L66:
+        long r22 = r11.g;
+        if (r22 != (-9223372036854775807L)) goto L70;
+        r11.a(r29);
+        return 0;
+    L70:
+        r11.i = r6.c(r11.h) - r6.b(r22);
+        r11.a(r29);
+        return 0;
+    L73:
+        if (this.p == true) goto L78;
+        this.p = true;
+        long r23 = r11.i;
+        if (r23 == (-9223372036854775807L)) goto L77;
+        iu4 r111 = r11.b;
+        int r26 = 1;
+        boolean r24 = false;
+        int r27 = r5;
+        r71 r25 = new r71(new pa(18), new ue1(this.t, r111), r23, r23 + 1, 0, r12, 188, 940);
+        this.l = r25;
+        this.m.w(r25.a);
+    L80:
+        if (this.q == false) goto L85;
+        this.q = r24;
+        d(0, 0);
+        if (r29.getPosition() == 0) goto L85;
+        r30.a = 0;
+        return r26;
+    L85:
+        r71 r28 = this.l;
+        if (r28 != null) goto L88;
+    L91:
+        l51 r31 = r29;
+        ?? r32 = r24;
+    L93:
+        be3 r33 = this.d;
+        byte[] r34 = r33.a;
+        if ((9400 - r33.b) >= 188) goto L99;
+        int r35 = r33.a();
+        if (r35 <= 0) goto L98;
+        System.arraycopy(r34, r33.b, r34, r32, r35);
+    L98:
+        r33.L(r35, r34);
+    L99:
+        int r36 = r33.a();
+        ?? r37 = this.h;
+        if (r36 >= 188) goto L127;
+        int r38 = r33.c;
+        int r39 = r31.read(r34, r38, 9400 - r38);
+        if (r39 == (-1)) goto L103;
+        r33.M(r38 + r39);
+        r26 = 1;
+        goto L99
+    L103:
+        ?? r40 = r32;
+    L105:
+        if (r40 >= r37.size()) goto L125;
+        ty4 r41 = (ty4) r37.valueAt(r40);
+        if ((r41 instanceof ag3) == false) goto L124;
+        ag3 r42 = (ag3) r41;
+        if (r17 == true) goto L111;
+    L114:
+        ?? r43 = r26;
+    L116:
+        if (r42.c != 3) goto L124;
+        if (r42.j != (-1)) goto L124;
+        if (r17 == true) goto L121;
+    L122:
+        if (r43 == 0) goto L124;
+        r42.a(r26, new be3());
+        goto L124
+    L121:
+        if ((r42.a instanceof vk1) == true) goto L124;
+    L111:
+        if (r42.e() == true) goto L114;
+        r43 = r32;
+    L124:
+        r26 = 1;
+        r40 = r40 + 1;
+        goto L105
+    L125:
+        return -1;
+    L127:
+        int r44 = r33.b;
+        int r45 = r33.c;
+        byte[] r46 = r33.a;
+        int r47 = r44;
+    L128:
+        if (r47 >= r45) goto L132;
+        if (r46[r47] == 71) goto L132;
+        r47 = r47 + 1;
+    L132:
+        r33.N(r47);
+        int r48 = r47 + 188;
+        ?? r49 = 0;
+        if (r48 <= r45) goto L141;
+        int r50 = (r47 - r44) + this.s;
+        this.s = r50;
+        int r51 = r27;
+        int r52 = 2;
+        if (r51 == 2) goto L137;
+    L142:
+        int r53 = r33.c;
+        if (r48 <= r53) goto L145;
+        return r32;
+    L145:
+        int r54 = r33.m();
+        if ((8388608 & r54) == 0) goto L150;
+        r33.N(r48);
+        return r32;
+    L150:
+        if ((4194304 & r54) == 0) goto L152;
+        ?? r112 = 1;
+    L153:
+        int r113 = (2096896 & r54) >> 8;
+        if ((r54 & 32) == 0) goto L156;
+        ?? r114 = 1;
+    L158:
+        if ((r54 & 16) == 0) goto L160;
+        r49 = (ty4) r37.get(r113);
+    L160:
+        if (r49 != 0) goto L163;
+        r33.N(r48);
+        return r32;
+    L163:
+        if (r51 == r52) goto L171;
+        int r55 = r54 & 15;
+        SparseIntArray r115 = this.e;
+        int r56 = r115.get(r113, r55 - 1);
+        r115.put(r113, r55);
+        if (r56 != r55) goto L169;
+        r33.N(r48);
+        return r32;
+    L169:
+        if (r55 == ((r56 + 1) & 15)) goto L171;
+        r49.c();
+    L171:
+        if (r114 == 0) goto L177;
+        int r57 = r33.A();
+        if ((r33.A() & 64) == 0) goto L175;
+        ?? r58 = r52;
+    L176:
+        r112 = (r112 == true ? 1 : 0) | r58;
+        r33.O(r57 - 1);
+        goto L177
+    L175:
+        r58 = r32;
+    L177:
+        boolean r59 = this.o;
+        if (r51 == r52) goto L182;
+        if (r59 == true) goto L182;
+        if (this.j.get(r113, r32) == false) goto L182;
+    L183:
+        if (r51 == r52) goto L190;
+        if (r59 == true) goto L190;
+        if (this.o == false) goto L190;
+        if (r12 == (-1)) goto L190;
+        this.q = true;
+    L190:
+        r33.N(r48);
+        return r32;
+    L182:
+        r33.M(r48);
+        r49.a(r112, r33);
+        r33.M(r53);
+        goto L183
+    L156:
+        r114 = r32;
+        goto L158
+    L152:
+        r112 = r32;
+        goto L153
+    L137:
+        if (r50 <= 376) goto L142;
+        throw ParserException.a(null, "Cannot find sync byte. Most likely not a Transport Stream.");
+    L141:
+        r51 = r27;
+        r52 = 2;
+        this.s = r32;
+        goto L142
+    L88:
+        if (r28.c == null) goto L91;
+        return r28.b(r29, r30);
+    L77:
+        r26 = 1;
+        r24 = false;
+        r27 = r5;
+        this.m.w(new bo(r23));
+        goto L80
+    L78:
+        r26 = 1;
+        r24 = false;
+        r27 = r5;
+        goto L80
+    L92:
+        r31 = r29;
+        r32 = 0;
+        r26 = 1;
+        r27 = r5;
+        goto L93
+    L5:
+        r17 = false;
+        goto L7
     }
 
     @Override // defpackage.k51
-    public final boolean c(l51 l51Var) throws EOFException, InterruptedIOException {
-        byte[] bArr = this.d.a;
-        rk0 rk0Var = (rk0) l51Var;
-        rk0Var.e(bArr, 0, 940, false);
-        for (int i = 0; i < 188; i++) {
-            int i2 = 0;
-            while (true) {
-                if (i2 >= 5) {
-                    rk0Var.d(i, false);
-                    return true;
-                }
-                if (bArr[(i2 * 188) + i] != 71) {
-                    break;
-                }
-                i2++;
-            }
-        }
+    public final boolean c(l51 r6) {
+        byte[] r5 = this.d.a;
+        rk0 r7 = (rk0) r6;
+        r7.e(r5, 0, 940, false);
+        int r1 = 0;
+    L4:
+        if (r1 >= 188) goto L14;
+        int r2 = 0;
+    L7:
+        if (r2 >= 5) goto L12;
+        if (r5[(r2 * 188) + r1] != 71) goto L10;
+        r2 = r2 + 1;
+        goto L7
+    L10:
+        r1 = r1 + 1;
+        goto L4
+    L12:
+        r7.d(r1, false);
+        return true;
+    L14:
         return false;
     }
 
     @Override // defpackage.k51
-    public final void d(long j, long j2) {
-        r71 r71Var;
-        long j3;
-        SparseArray sparseArray = this.h;
-        List list = this.c;
-        rr2.w(this.a != 2);
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            iu4 iu4Var = (iu4) list.get(i);
-            synchronized (iu4Var) {
-                j3 = iu4Var.b;
-            }
-            boolean z = j3 == -9223372036854775807L;
-            if (!z) {
-                long jD = iu4Var.d();
-                z = (jD == -9223372036854775807L || jD == 0 || jD == j2) ? false : true;
-            }
-            if (z) {
-                iu4Var.f(j2);
-            }
-        }
-        if (j2 != 0 && (r71Var = this.l) != null) {
-            r71Var.d(j2);
-        }
+    public final void d(long r12, long r14) {
+        SparseArray r13 = this.h;
+        List r15 = this.c;
+        if (this.a == 2) goto L5;
+        boolean r0 = true;
+    L6:
+        rr2.w(r0);
+        int r1 = r15.size();
+        int r2 = 0;
+    L8:
+        if (r2 >= r1) goto L33;
+        iu4 r6 = (iu4) r15.get(r2);
+        monitor-enter(r6);
+        long r7 = r6.b;     // Catch: Throwable -> L29
+        monitor-exit(r6);
+        if (r7 != (-9223372036854775807L)) goto L16;
+        boolean r8 = true;
+    L17:
+        if (r8 == true) goto L26;
+        long r9 = r6.d();
+        if (r9 != (-9223372036854775807L)) goto L21;
+    L25:
+        r8 = false;
+        goto L26
+    L21:
+        if (r9 == 0) goto L25;
+        if (r9 == r14) goto L25;
+        r8 = true;
+    L26:
+        if (r8 == false) goto L28;
+        r6.f(r14);
+    L28:
+        r2 = r2 + 1;
+        goto L8
+    L16:
+        r8 = false;
+    L29:
+        th = move-exception;
+        throw th;
+    L33:
+        if (r14 == 0) goto L37;
+        r71 r16 = this.l;
+        if (r16 == null) goto L37;
+        r16.d(r14);
+    L37:
         this.d.K(0);
         this.e.clear();
-        for (int i2 = 0; i2 < sparseArray.size(); i2++) {
-            ((ty4) sparseArray.valueAt(i2)).c();
-        }
+        int r17 = 0;
+    L39:
+        if (r17 >= r13.size()) goto L41;
+        ((ty4) r13.valueAt(r17)).c();
+        r17 = r17 + 1;
+        goto L39
+    L41:
         this.s = 0;
+        return;
+    L5:
+        r0 = false;
+        goto L6
     }
 
     @Override // defpackage.k51
-    public final void f(m51 m51Var) {
-        if ((this.b & 1) == 0) {
-            m51Var = new ll(m51Var, this.g);
-        }
-        this.m = m51Var;
+    public final void f(m51 r3) {
+        if ((this.b & 1) != 0) goto L5;
+        r3 = new ll(r3, this.g);
+    L5:
+        this.m = r3;
     }
 }

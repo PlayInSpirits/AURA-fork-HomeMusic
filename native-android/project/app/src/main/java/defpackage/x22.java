@@ -5,9 +5,9 @@ package defpackage;
 public final class x22 extends cz {
     public final x60 x;
 
-    public x22(vd0 vd0Var, x60 x60Var) {
-        super(1, vd0Var);
-        this.x = x60Var;
+    public x22(vd0 r2, x60 r3) {
+        super(1, r2);
+        this.x = r3;
     }
 
     @Override // defpackage.cz
@@ -16,12 +16,16 @@ public final class x22 extends cz {
     }
 
     @Override // defpackage.cz
-    public final Throwable o(a32 a32Var) {
-        Throwable thE;
-        Object objH = this.x.H();
-        if (!(objH instanceof z22) || (thE = ((z22) objH).e()) == null) {
-            return objH instanceof a70 ? ((a70) objH).a : a32Var.q();
-        }
-        return thE;
+    public final Throwable o(a32 r2) {
+        Object r1 = this.x.H();
+        if ((r1 instanceof z22) == false) goto L8;
+        Throwable r0 = ((z22) r1).e();
+        if (r0 == null) goto L8;
+        return r0;
+    L8:
+        if ((r1 instanceof a70) == false) goto L12;
+        return ((a70) r1).a;
+    L12:
+        return r2.q();
     }
 }

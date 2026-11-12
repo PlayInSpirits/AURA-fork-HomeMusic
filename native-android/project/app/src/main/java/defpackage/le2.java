@@ -14,58 +14,56 @@ import app.homemusic.R;
 /* JADX INFO: loaded from: classes.dex */
 public final class le2 extends kc1 {
     public ey l0;
-    public final dc1 m0 = W(new cn(22, this), new q5(1));
+    public final dc1 m0;
 
-    @Override // defpackage.kc1
-    public final void F(Bundle bundle) {
-        super.F(bundle);
-        Bundle bundle2 = this.s;
-        if (bundle2 != null) {
-            bundle2.getBoolean("single_page_mode");
-        }
+    public le2() {
+        q5 r0 = new q5(1);
+        this.m0 = W(new cn(22, this), r0);
     }
 
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        layoutInflater.getClass();
-        View viewInflate = layoutInflater.inflate(R.layout.fragment_login_permission, viewGroup, false);
-        int i = R.id.btnRequestInternet;
-        Button button = (Button) uo.s(viewInflate, R.id.btnRequestInternet);
-        if (button != null) {
-            i = R.id.btnRequestLocalNetwork;
-            Button button2 = (Button) uo.s(viewInflate, R.id.btnRequestLocalNetwork);
-            if (button2 != null) {
-                i = R.id.btnRequestNearbyDevices;
-                Button button3 = (Button) uo.s(viewInflate, R.id.btnRequestNearbyDevices);
-                if (button3 != null) {
-                    i = R.id.btnRequestNotification;
-                    Button button4 = (Button) uo.s(viewInflate, R.id.btnRequestNotification);
-                    if (button4 != null) {
-                        i = R.id.tvInternetProvided;
-                        TextView textView = (TextView) uo.s(viewInflate, R.id.tvInternetProvided);
-                        if (textView != null) {
-                            i = R.id.tvLocalNetworkProvided;
-                            TextView textView2 = (TextView) uo.s(viewInflate, R.id.tvLocalNetworkProvided);
-                            if (textView2 != null) {
-                                i = R.id.tvNearbyDevicesProvided;
-                                TextView textView3 = (TextView) uo.s(viewInflate, R.id.tvNearbyDevicesProvided);
-                                if (textView3 != null) {
-                                    i = R.id.tvNotificationProvided;
-                                    TextView textView4 = (TextView) uo.s(viewInflate, R.id.tvNotificationProvided);
-                                    if (textView4 != null) {
-                                        LinearLayout linearLayout = (LinearLayout) viewInflate;
-                                        this.l0 = new ey(linearLayout, button, button2, button3, button4, textView, textView2, textView3, textView4);
-                                        linearLayout.getClass();
-                                        return linearLayout;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i)));
+    public final void F(Bundle r1) {
+        super.F(r1);
+        Bundle r0 = this.s;
+        if (r0 == null) goto L6;
+        r0.getBoolean("single_page_mode");
+        return;
+    }
+
+    @Override // defpackage.kc1
+    public final View H(LayoutInflater r11, ViewGroup r12, Bundle r13) {
+        r11.getClass();
+        View r14 = r11.inflate(R.layout.fragment_login_permission, r12, false);
+        int r15 = R.id.btnRequestInternet;
+        Button r2 = (Button) uo.s(r14, R.id.btnRequestInternet);
+        if (r2 == null) goto L20;
+        r15 = R.id.btnRequestLocalNetwork;
+        Button r3 = (Button) uo.s(r14, R.id.btnRequestLocalNetwork);
+        if (r3 == null) goto L20;
+        r15 = R.id.btnRequestNearbyDevices;
+        Button r4 = (Button) uo.s(r14, R.id.btnRequestNearbyDevices);
+        if (r4 == null) goto L20;
+        r15 = R.id.btnRequestNotification;
+        Button r5 = (Button) uo.s(r14, R.id.btnRequestNotification);
+        if (r5 == null) goto L20;
+        r15 = R.id.tvInternetProvided;
+        TextView r6 = (TextView) uo.s(r14, R.id.tvInternetProvided);
+        if (r6 == null) goto L20;
+        r15 = R.id.tvLocalNetworkProvided;
+        TextView r7 = (TextView) uo.s(r14, R.id.tvLocalNetworkProvided);
+        if (r7 == null) goto L20;
+        r15 = R.id.tvNearbyDevicesProvided;
+        TextView r8 = (TextView) uo.s(r14, R.id.tvNearbyDevicesProvided);
+        if (r8 == null) goto L20;
+        r15 = R.id.tvNotificationProvided;
+        TextView r9 = (TextView) uo.s(r14, R.id.tvNotificationProvided);
+        if (r9 == null) goto L20;
+        LinearLayout r1 = (LinearLayout) r14;
+        this.l0 = new ey(r1, r2, r3, r4, r5, r6, r7, r8, r9);
+        r1.getClass();
+        return r1;
+    L20:
+        nz2.n("Missing required view with ID: ".concat(r14.getResources().getResourceName(r15)));
         return null;
     }
 
@@ -82,187 +80,136 @@ public final class le2 extends kc1 {
     }
 
     @Override // defpackage.kc1
-    public final void T(View view, Bundle bundle) {
-        view.getClass();
-        ey eyVar = this.l0;
-        eyVar.getClass();
-        final int i = 0;
-        ((Button) eyVar.a).setOnClickListener(new View.OnClickListener(this) { // from class: ke2
-            public final /* synthetic */ le2 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view2) {
-                int i2 = i;
-                le2 le2Var = this.o;
-                switch (i2) {
-                    case 0:
-                        le2Var.m0.a("android.permission.INTERNET");
-                        break;
-                    case 1:
-                        if (Build.VERSION.SDK_INT >= 33) {
-                            le2Var.m0.a("android.permission.POST_NOTIFICATIONS");
-                        }
-                        break;
-                    case 2:
-                        if (Build.VERSION.SDK_INT >= 37) {
-                            le2Var.m0.a("android.permission.ACCESS_LOCAL_NETWORK");
-                        }
-                        break;
-                    default:
-                        if (Build.VERSION.SDK_INT >= 33) {
-                            le2Var.m0.a("android.permission.NEARBY_WIFI_DEVICES");
-                        }
-                        break;
-                }
-            }
-        });
-        ey eyVar2 = this.l0;
-        eyVar2.getClass();
-        final int i2 = 1;
-        ((Button) eyVar2.d).setOnClickListener(new View.OnClickListener(this) { // from class: ke2
-            public final /* synthetic */ le2 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view2) {
-                int i3 = i2;
-                le2 le2Var = this.o;
-                switch (i3) {
-                    case 0:
-                        le2Var.m0.a("android.permission.INTERNET");
-                        break;
-                    case 1:
-                        if (Build.VERSION.SDK_INT >= 33) {
-                            le2Var.m0.a("android.permission.POST_NOTIFICATIONS");
-                        }
-                        break;
-                    case 2:
-                        if (Build.VERSION.SDK_INT >= 37) {
-                            le2Var.m0.a("android.permission.ACCESS_LOCAL_NETWORK");
-                        }
-                        break;
-                    default:
-                        if (Build.VERSION.SDK_INT >= 33) {
-                            le2Var.m0.a("android.permission.NEARBY_WIFI_DEVICES");
-                        }
-                        break;
-                }
-            }
-        });
-        ey eyVar3 = this.l0;
-        eyVar3.getClass();
-        final int i3 = 2;
-        ((Button) eyVar3.b).setOnClickListener(new View.OnClickListener(this) { // from class: ke2
-            public final /* synthetic */ le2 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view2) {
-                int i4 = i3;
-                le2 le2Var = this.o;
-                switch (i4) {
-                    case 0:
-                        le2Var.m0.a("android.permission.INTERNET");
-                        break;
-                    case 1:
-                        if (Build.VERSION.SDK_INT >= 33) {
-                            le2Var.m0.a("android.permission.POST_NOTIFICATIONS");
-                        }
-                        break;
-                    case 2:
-                        if (Build.VERSION.SDK_INT >= 37) {
-                            le2Var.m0.a("android.permission.ACCESS_LOCAL_NETWORK");
-                        }
-                        break;
-                    default:
-                        if (Build.VERSION.SDK_INT >= 33) {
-                            le2Var.m0.a("android.permission.NEARBY_WIFI_DEVICES");
-                        }
-                        break;
-                }
-            }
-        });
-        ey eyVar4 = this.l0;
-        eyVar4.getClass();
-        final int i4 = 3;
-        ((Button) eyVar4.c).setOnClickListener(new View.OnClickListener(this) { // from class: ke2
-            public final /* synthetic */ le2 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view2) {
-                int i5 = i4;
-                le2 le2Var = this.o;
-                switch (i5) {
-                    case 0:
-                        le2Var.m0.a("android.permission.INTERNET");
-                        break;
-                    case 1:
-                        if (Build.VERSION.SDK_INT >= 33) {
-                            le2Var.m0.a("android.permission.POST_NOTIFICATIONS");
-                        }
-                        break;
-                    case 2:
-                        if (Build.VERSION.SDK_INT >= 37) {
-                            le2Var.m0.a("android.permission.ACCESS_LOCAL_NETWORK");
-                        }
-                        break;
-                    default:
-                        if (Build.VERSION.SDK_INT >= 33) {
-                            le2Var.m0.a("android.permission.NEARBY_WIFI_DEVICES");
-                        }
-                        break;
-                }
-            }
-        });
+    public final void T(View r2, Bundle r3) {
+        r2.getClass();
+        ey r4 = this.l0;
+        r4.getClass();
+        final int r0 = 0;
+        ((Button) r4.a).setOnClickListener(new ke2(this, r0));
+        ey r5 = this.l0;
+        r5.getClass();
+        final int r1 = 1;
+        ((Button) r5.d).setOnClickListener(new ke2(this, r1));
+        ey r6 = this.l0;
+        r6.getClass();
+        final int r7 = 2;
+        ((Button) r6.b).setOnClickListener(new ke2(this, r7));
+        ey r8 = this.l0;
+        r8.getClass();
+        final int r9 = 3;
+        ((Button) r8.c).setOnClickListener(new ke2(this, r9));
         h0();
     }
 
     public final void h0() {
-        boolean z = true;
-        boolean z2 = ud3.c(Z(), "android.permission.INTERNET") == 0;
-        ey eyVar = this.l0;
-        eyVar.getClass();
-        ((TextView) eyVar.e).setVisibility(z2 ? 0 : 8);
-        ey eyVar2 = this.l0;
-        eyVar2.getClass();
-        ((Button) eyVar2.a).setVisibility(z2 ? 8 : 0);
-        int i = Build.VERSION.SDK_INT;
-        boolean z3 = i < 33 || ud3.c(Z(), "android.permission.POST_NOTIFICATIONS") == 0;
-        ey eyVar3 = this.l0;
-        eyVar3.getClass();
-        ((TextView) eyVar3.h).setVisibility(z3 ? 0 : 8);
-        ey eyVar4 = this.l0;
-        eyVar4.getClass();
-        ((Button) eyVar4.d).setVisibility(z3 ? 8 : 0);
-        boolean z4 = i < 37 || ud3.c(Z(), "android.permission.ACCESS_LOCAL_NETWORK") == 0;
-        ey eyVar5 = this.l0;
-        eyVar5.getClass();
-        ((TextView) eyVar5.f).setVisibility(z4 ? 0 : 8);
-        ey eyVar6 = this.l0;
-        eyVar6.getClass();
-        ((Button) eyVar6.b).setVisibility(z4 ? 8 : 0);
-        if (i >= 33 && ud3.c(Z(), "android.permission.NEARBY_WIFI_DEVICES") != 0) {
-            z = false;
-        }
-        ey eyVar7 = this.l0;
-        eyVar7.getClass();
-        ((TextView) eyVar7.g).setVisibility(z ? 0 : 8);
-        ey eyVar8 = this.l0;
-        eyVar8.getClass();
-        ((Button) eyVar8.c).setVisibility(z ? 8 : 0);
+        boolean r1 = true;
+        int r2 = 0;
+        if (ud3.c(Z(), "android.permission.INTERNET") != 0) goto L5;
+        boolean r0 = true;
+    L6:
+        ey r3 = this.l0;
+        r3.getClass();
+        TextView r4 = (TextView) r3.e;
+        if (r0 == false) goto L9;
+        int r5 = 0;
+    L10:
+        r4.setVisibility(r5);
+        ey r6 = this.l0;
+        r6.getClass();
+        Button r7 = (Button) r6.a;
+        if (r0 == false) goto L13;
+        int r8 = 8;
+    L14:
+        r7.setVisibility(r8);
+        int r9 = Build.VERSION.SDK_INT;
+        if (r9 >= 33) goto L17;
+    L20:
+        boolean r10 = true;
+    L21:
+        ey r11 = this.l0;
+        r11.getClass();
+        TextView r12 = (TextView) r11.h;
+        if (r10 == false) goto L24;
+        int r13 = 0;
+    L25:
+        r12.setVisibility(r13);
+        ey r14 = this.l0;
+        r14.getClass();
+        Button r15 = (Button) r14.d;
+        if (r10 == false) goto L28;
+        int r16 = 8;
+    L29:
+        r15.setVisibility(r16);
+        if (r9 >= 37) goto L32;
+    L35:
+        boolean r17 = true;
+    L36:
+        ey r18 = this.l0;
+        r18.getClass();
+        TextView r19 = (TextView) r18.f;
+        if (r17 == false) goto L39;
+        int r20 = 0;
+    L40:
+        r19.setVisibility(r20);
+        ey r21 = this.l0;
+        r21.getClass();
+        Button r22 = (Button) r21.b;
+        if (r17 == false) goto L43;
+        int r23 = 8;
+    L44:
+        r22.setVisibility(r23);
+        if (r9 >= 33) goto L47;
+    L50:
+        ey r24 = this.l0;
+        r24.getClass();
+        TextView r25 = (TextView) r24.g;
+        if (r1 == false) goto L53;
+        int r26 = 0;
+    L54:
+        r25.setVisibility(r26);
+        ey r27 = this.l0;
+        r27.getClass();
+        Button r28 = (Button) r27.c;
+        if (r1 == false) goto L57;
+        r2 = 8;
+    L57:
+        r28.setVisibility(r2);
+        return;
+    L53:
+        r26 = 8;
+        goto L54
+    L47:
+        if (ud3.c(Z(), "android.permission.NEARBY_WIFI_DEVICES") == 0) goto L50;
+        r1 = false;
+        goto L50
+    L43:
+        r23 = 0;
+        goto L44
+    L39:
+        r20 = 8;
+        goto L40
+    L32:
+        if (ud3.c(Z(), "android.permission.ACCESS_LOCAL_NETWORK") == 0) goto L35;
+        r17 = false;
+        goto L36
+    L28:
+        r16 = 0;
+        goto L29
+    L24:
+        r13 = 8;
+        goto L25
+    L17:
+        if (ud3.c(Z(), "android.permission.POST_NOTIFICATIONS") == 0) goto L20;
+        r10 = false;
+        goto L21
+    L13:
+        r8 = 0;
+        goto L14
+    L9:
+        r5 = 8;
+        goto L10
+    L5:
+        r0 = false;
+        goto L6
     }
 }

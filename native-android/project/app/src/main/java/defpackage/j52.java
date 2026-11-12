@@ -9,43 +9,63 @@ public final class j52 implements oi3 {
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ j52(int i, Object obj) {
-        this.n = i;
-        this.o = obj;
+    public /* synthetic */ j52(int r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // defpackage.oi3
-    public final void B(qi3 qi3Var, ni3 ni3Var) {
-        int i = this.n;
-        Object obj = this.o;
-        switch (i) {
-            case 0:
-                qi3Var.getClass();
-                ((ArrayBlockingQueue) obj).offer(Boolean.TRUE);
-                break;
-            case 1:
-                w71 w71Var = ni3Var.a;
-                if (w71Var.a.get(1) || w71Var.a.get(5) || w71Var.a.get(4)) {
-                    ((li3) ((om1) obj).o).c(qi3Var.a() != null ? qi3Var.a().a : null, qi3Var.g() == 3 && qi3Var.q());
-                }
-                break;
-            case 2:
-                qi3Var.getClass();
-                w71 w71Var2 = ni3Var.a;
-                if (w71Var2.a.get(1)) {
-                    is3.d = false;
-                }
-                if (w71Var2.a(0, 1, 4, 8, 9)) {
-                    is3.a(qi3Var, (MediaService) obj);
-                }
-                break;
-            default:
-                w12 w12Var = (w12) obj;
-                ((zm4) w12Var.h).a();
-                ((an4) w12Var.i).a();
-                ((bn4) w12Var.j).a();
-                ((cn4) w12Var.k).a();
-                break;
-        }
+    public final void B(qi3 r6, ni3 r7) {
+        int r0 = this.n;
+        boolean r2 = true;
+        Object r5 = this.o;
+        switch(r0) {
+            case 0: goto L31;
+            case 1: goto L13;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        w12 r8 = (w12) r5;
+        ((zm4) r8.h).a();
+        ((an4) r8.i).a();
+        ((bn4) r8.j).a();
+        ((cn4) r8.k).a();
+        return;
+    L6:
+        r6.getClass();
+        w71 r9 = r7.a;
+        if (r9.a.get(1) == false) goto L10;
+        is3.d = false;
+    L10:
+        if (r9.a(new int[]{0, 1, 4, 8, 9}) == false) goto L33;
+        is3.a(r6, (MediaService) r5);
+        return;
+    L33:
+        return;
+    L13:
+        w71 r10 = r7.a;
+        if (r10.a.get(1) == true) goto L20;
+        if (r10.a.get(5) == true) goto L20;
+        if (r10.a.get(4) == true) goto L20;
+        return;
+    L20:
+        if (r6.a() == null) goto L22;
+        String r11 = r6.a().a;
+    L24:
+        if (r6.g() == 3) goto L26;
+    L28:
+        r2 = false;
+    L29:
+        ((li3) ((om1) r5).o).c(r11, r2);
+        return;
+    L26:
+        if (r6.q() == false) goto L28;
+    L22:
+        r11 = null;
+        goto L24
+    L31:
+        r6.getClass();
+        ((ArrayBlockingQueue) r5).offer(Boolean.TRUE);
     }
 }

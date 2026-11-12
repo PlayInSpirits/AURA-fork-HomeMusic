@@ -12,12 +12,12 @@ public final class bn1 {
     public final String e;
     public final String f;
 
-    public bn1(Uri uri, tb1 tb1Var, String str, String str2, String str3, String str4) {
-        this.a = uri;
-        this.b = tb1Var;
-        this.c = str;
-        this.d = str2;
-        this.e = str3;
-        this.f = str4;
+    public bn1(Uri r1, tb1 r2, String r3, String r4, String r5, String r6) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
     }
 }

@@ -9,12 +9,12 @@ import androidx.appcompat.widget.SearchView;
 public final class s74 implements TextView.OnEditorActionListener {
     public final /* synthetic */ SearchView a;
 
-    public s74(SearchView searchView) {
-        this.a = searchView;
+    public s74(SearchView r1) {
+        this.a = r1;
     }
 
     @Override // android.widget.TextView.OnEditorActionListener
-    public final boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+    public final boolean onEditorAction(TextView r1, int r2, KeyEvent r3) {
         this.a.q();
         return true;
     }

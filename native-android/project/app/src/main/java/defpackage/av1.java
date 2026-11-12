@@ -8,8 +8,8 @@ import android.os.IInterface;
 public final class av1 implements cv1, IInterface {
     public final IBinder e;
 
-    public av1(IBinder iBinder) {
-        this.e = iBinder;
+    public av1(IBinder r1) {
+        this.e = r1;
     }
 
     @Override // android.os.IInterface

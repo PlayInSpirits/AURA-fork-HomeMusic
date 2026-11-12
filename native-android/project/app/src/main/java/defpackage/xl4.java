@@ -5,28 +5,34 @@ package defpackage;
 public final class xl4 implements j35 {
     public final Object a;
 
-    public xl4(Object obj) {
-        this.a = obj;
+    public xl4(Object r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.j35
-    public final Object a(mf3 mf3Var) {
+    public final Object a(mf3 r1) {
         return this.a;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof xl4) && h12.c(this.a, ((xl4) obj).a);
+    public final boolean equals(Object r4) {
+        if (this != r4) goto L6;
+        return true;
+    L6:
+        if ((r4 instanceof xl4) == true) goto L9;
+        return false;
+    L9:
+        if (h12.c(this.a, ((xl4) r4).a) == true) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     public final int hashCode() {
-        Object obj = this.a;
-        if (obj == null) {
-            return 0;
-        }
-        return obj.hashCode();
+        Object r0 = this.a;
+        if (r0 != null) goto L7;
+        return 0;
+    L7:
+        return r0.hashCode();
     }
 
     public final String toString() {

@@ -5,7 +5,7 @@ package defpackage;
 public final class yc1 {
     public final rf2 a;
 
-    public yc1(rf2 rf2Var) {
-        this.a = rf2Var;
+    public yc1(rf2 r1) {
+        this.a = r1;
     }
 }

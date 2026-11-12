@@ -9,8 +9,8 @@ public class ob4 extends hd {
     public final om0 d;
     public final k03 e;
 
-    public ob4(Application application) {
-        super(application);
+    public ob4(Application r2) {
+        super(r2);
         this.e = new k03(null);
         this.c = new hh3(22);
         this.d = new om0(5);

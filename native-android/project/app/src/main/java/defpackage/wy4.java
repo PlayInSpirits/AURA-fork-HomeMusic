@@ -14,16 +14,16 @@ public final class wy4 {
     public final float i;
     public final int j;
 
-    public wy4(String str, float f, float f2, int i, int i2, float f3, float f4, int i3, float f5, int i4) {
-        this.a = str;
-        this.b = f;
-        this.c = f2;
-        this.d = i;
-        this.e = i2;
-        this.f = f3;
-        this.g = f4;
-        this.h = i3;
-        this.i = f5;
-        this.j = i4;
+    public wy4(String r1, float r2, float r3, int r4, int r5, float r6, float r7, int r8, float r9, int r10) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
+        this.j = r10;
     }
 }

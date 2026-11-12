@@ -13,73 +13,75 @@ public abstract class t43 {
     public abstract r23 a();
 
     public final d23 b() {
-        d23 d23Var = this.a;
-        if (d23Var != null) {
-            return d23Var;
-        }
+        d23 r0 = this.a;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         kf2.o("You cannot access the Navigator's state until the Navigator is attached");
         return null;
     }
 
-    public r23 c(r23 r23Var, Bundle bundle, y23 y23Var) {
-        return r23Var;
+    public r23 c(r23 r1, Bundle r2, y23 r3) {
+        return r1;
     }
 
-    public void d(List list, y23 y23Var) {
-        g71 g71Var = new g71(new h71(new tq4(new w40(0, list), new br0(2, this, y23Var), 1), false, new o54(13)));
-        while (g71Var.hasNext()) {
-            b().g((a23) g71Var.next());
-        }
+    public void d(List r4, y23 r5) {
+        g71 r6 = new g71(new h71(new tq4(new w40(0, r4), new br0(2, this, r5), 1), false, new o54(13)));
+    L4:
+        if (r6.hasNext() == false) goto L6;
+        a23 r7 = (a23) r6.next();
+        b().g(r7);
+        goto L4
     }
 
-    public void e(d23 d23Var) {
-        this.a = d23Var;
+    public void e(d23 r1) {
+        this.a = r1;
         this.b = true;
     }
 
-    public void f(a23 a23Var) {
-        r23 r23Var = a23Var.o;
-        if (r23Var == null) {
-            r23Var = null;
-        }
-        if (r23Var == null) {
-            return;
-        }
-        x23 x23Var = new x23();
-        x23Var.a = true;
-        x23Var.b = false;
-        x23Var.c = -1;
-        x23Var.d = false;
-        x23Var.e = false;
-        c(r23Var, null, x23Var.a());
-        b().c(a23Var);
+    public void f(a23 r6) {
+        r23 r0 = r6.o;
+        if (r0 != null) goto L6;
+        r0 = null;
+    L6:
+        if (r0 != null) goto L8;
+        return;
+    L8:
+        x23 r2 = new x23();
+        r2.a = true;
+        r2.b = false;
+        r2.c = -1;
+        r2.d = false;
+        r2.e = false;
+        c(r0, null, r2.a());
+        b().c(r6);
     }
 
-    public void g(Bundle bundle) {
+    public void g(Bundle r1) {
     }
 
     public Bundle h() {
         return null;
     }
 
-    public void i(a23 a23Var, boolean z) {
-        a23Var.getClass();
-        List list = (List) b().e.n.getValue();
-        if (!list.contains(a23Var)) {
-            nz2.o("popBackStack was called with ", a23Var, " which does not exist in back stack ", list);
-            return;
-        }
-        ListIterator listIterator = list.listIterator(list.size());
-        a23 a23Var2 = null;
-        while (j()) {
-            a23Var2 = (a23) listIterator.previous();
-            if (h12.c(a23Var2, a23Var)) {
-                break;
-            }
-        }
-        if (a23Var2 != null) {
-            b().d(a23Var2, z);
-        }
+    public void i(a23 r4, boolean r5) {
+        r4.getClass();
+        List r0 = (List) b().e.n.getValue();
+        if (r0.contains(r4) == false) goto L13;
+        ListIterator r1 = r0.listIterator(r0.size());
+        a23 r2 = null;
+    L6:
+        if (j() == false) goto L10;
+        r2 = (a23) r1.previous();
+        if (h12.c(r2, r4) == false) goto L6;
+    L10:
+        if (r2 == null) goto L18;
+        b().d(r2, r5);
+        return;
+    L18:
+        return;
+    L13:
+        nz2.o("popBackStack was called with ", r4, " which does not exist in back stack ", r0);
     }
 
     public boolean j() {

@@ -13,97 +13,97 @@ public final /* synthetic */ class vl2 implements xl2, ks2, wc0 {
     public final /* synthetic */ int p;
     public final /* synthetic */ Object q;
 
-    public /* synthetic */ vl2(Object obj, int i, Object obj2, int i2) {
-        this.n = i2;
-        this.o = obj;
-        this.p = i;
-        this.q = obj2;
+    public /* synthetic */ vl2(Object r1, int r2, Object r3, int r4) {
+        this.n = r4;
+        this.o = r1;
+        this.p = r2;
+        this.q = r3;
     }
 
-    /* JADX WARN: Code duplicated, block: B:13:0x002d  */
-    /* JADX WARN: Code duplicated, block: B:14:0x002f  */
     @Override // defpackage.wc0
-    public void accept(Object obj) {
-        ab4 ab4Var;
-        int i;
-        tn2 tn2Var = (tn2) this.o;
-        fr2 fr2Var = (fr2) this.q;
-        try {
-            ab4Var = (ab4) ((ic2) obj).get();
-            rr2.s(ab4Var, "SessionResult must not be null");
-        } catch (InterruptedException e) {
-            e = e;
-            l93.r0("MediaSessionStub", "Session operation failed", e);
-            if (e.getCause() instanceof UnsupportedOperationException) {
-                i = -6;
-            } else {
-                i = -1;
-            }
-            ab4Var = new ab4(i);
-        } catch (CancellationException e2) {
-            l93.r0("MediaSessionStub", "Session operation cancelled", e2);
-            ab4Var = new ab4(1);
-        } catch (ExecutionException e3) {
-            e = e3;
-            l93.r0("MediaSessionStub", "Session operation failed", e);
-            if (e.getCause() instanceof UnsupportedOperationException) {
-                i = -6;
-            } else {
-                i = -1;
-            }
-            ab4Var = new ab4(i);
-        }
-        kt2.P0(tn2Var, fr2Var, this.p, ab4Var);
+    public void accept(Object r5) {
+        tn2 r0 = (tn2) this.o;
+        fr2 r1 = (fr2) this.q;
+        ab4 r6 = (ab4) ((ic2) r5).get();     // Catch: InterruptedException -> L5 ExecutionException -> L7 CancellationException -> L9
+        rr2.s(r6, "SessionResult must not be null");     // Catch: InterruptedException -> L5 ExecutionException -> L7 CancellationException -> L9
+    L17:
+        kt2.P0(r0, r1, this.p, r6);
+        return;
+    L5:
+        e = e;
+    L11:
+        l93.r0("MediaSessionStub", "Session operation failed", e);
+        if ((e.getCause() instanceof UnsupportedOperationException) == false) goto L14;
+        int r7 = -6;
+    L15:
+        r6 = new ab4(r7);
+        goto L17
+    L14:
+        r7 = -1;
+    L9:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Session operation cancelled", e);
+        r6 = new ab4(1);
+    L7:
+        e = e;
+        goto L11
     }
 
     @Override // defpackage.ks2
-    public void b(fr2 fr2Var) {
-        ls2 ls2Var = (ls2) this.o;
-        pm2 pm2Var = (pm2) this.q;
-        if (TextUtils.isEmpty(pm2Var.n)) {
-            l93.q0("MediaSessionLegacyStub", "onAddQueueItem(): Media ID shouldn't be empty");
-            return;
-        }
-        mw1 mw1VarO = ls2Var.g.o(fr2Var, yw1.o(f92.j(pm2Var)));
-        mw1VarO.f(new lg1(0, mw1VarO, new ue1(ls2Var, fr2Var, this.p)), gq0.n);
+    public void b(fr2 r4) {
+        ls2 r0 = (ls2) this.o;
+        pm2 r1 = (pm2) this.q;
+        if (TextUtils.isEmpty(r1.n) == false) goto L6;
+        l93.q0("MediaSessionLegacyStub", "onAddQueueItem(): Media ID shouldn't be empty");
+        return;
+    L6:
+        gn2 r2 = f92.j(r1);
+        mw1 r3 = r0.g.o(r4, yw1.o(r2));
+        ue1 r5 = new ue1(r0, r4, this.p);
+        r3.f(new lg1(0, r3, r5), gq0.n);
     }
 
     @Override // defpackage.xl2
-    public void d(pu1 pu1Var, int i) {
-        int i2 = this.n;
-        Object obj = this.q;
-        int i3 = this.p;
-        bm2 bm2Var = (bm2) this.o;
-        switch (i2) {
-            case 0:
-                List list = (List) obj;
-                mm2 mm2Var = bm2Var.c;
-                uw1 uw1VarJ = yw1.j();
-                for (int i4 = 0; i4 < list.size(); i4++) {
-                    uw1VarJ.c(((gn2) list.get(i4)).c(true));
-                }
-                pu1Var.Z(mm2Var, i, i3, new iw(uw1VarJ.f()));
-                break;
-            default:
-                gn2 gn2Var = (gn2) obj;
-                cb4 cb4Var = bm2Var.n;
-                cb4Var.getClass();
-                int iF = cb4Var.a.f();
-                mm2 mm2Var2 = bm2Var.c;
-                if (iF >= 2) {
-                    pu1Var.G0(mm2Var2, i, i3, gn2Var.c(true));
-                } else {
-                    pu1Var.D(mm2Var2, i, i3 + 1, gn2Var.c(true));
-                    pu1Var.N(mm2Var2, i, i3);
-                }
-                break;
-        }
+    public void d(pu1 r8, int r9) {
+        int r0 = this.n;
+        Object r2 = this.q;
+        int r3 = this.p;
+        bm2 r7 = (bm2) this.o;
+        switch(r0) {
+            case 0: goto L9;
+            default: goto L4;
+        };
+    L4:
+        gn2 r4 = (gn2) r2;
+        cb4 r1 = r7.n;
+        r1.getClass();
+        int r5 = r1.a.f();
+        mm2 r10 = r7.c;
+        if (r5 < 2) goto L7;
+        r8.G0(r10, r9, r3, r4.c(true));
+        return;
+    L7:
+        r8.D(r10, r9, r3 + 1, r4.c(true));
+        r8.N(r10, r9, r3);
+        return;
+    L9:
+        List r6 = (List) r2;
+        mm2 r11 = r7.c;
+        uw1 r12 = yw1.j();
+        int r13 = 0;
+    L11:
+        if (r13 >= r6.size()) goto L13;
+        r12.c(((gn2) r6.get(r13)).c(true));
+        r13 = r13 + 1;
+        goto L11
+    L13:
+        r8.Z(r11, r9, r3, new iw(r12.f()));
     }
 
-    public /* synthetic */ vl2(Object obj, Object obj2, int i, int i2) {
-        this.n = i2;
-        this.o = obj;
-        this.q = obj2;
-        this.p = i;
+    public /* synthetic */ vl2(Object r1, Object r2, int r3, int r4) {
+        this.n = r4;
+        this.o = r1;
+        this.q = r2;
+        this.p = r3;
     }
 }

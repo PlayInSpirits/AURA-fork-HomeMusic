@@ -11,15 +11,14 @@ public final class bd4 extends wd0 {
     public final /* synthetic */ cd4 s;
     public int t;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public bd4(cd4 cd4Var, vd0 vd0Var) {
-        super(vd0Var);
-        this.s = cd4Var;
+    public bd4(cd4 r1, vd0 r2) {
+        this.s = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) throws Throwable {
-        this.r = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.r = r2;
         this.t |= Integer.MIN_VALUE;
         cd4.k(this.s, null, this);
         return xe0.n;

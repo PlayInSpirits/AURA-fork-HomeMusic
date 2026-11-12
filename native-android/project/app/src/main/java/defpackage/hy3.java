@@ -8,8 +8,8 @@ import java.util.Objects;
 public final class hy3 extends yw1 {
     public final /* synthetic */ iy3 p;
 
-    public hy3(iy3 iy3Var) {
-        this.p = iy3Var;
+    public hy3(iy3 r1) {
+        this.p = r1;
     }
 
     @Override // defpackage.rw1
@@ -18,17 +18,17 @@ public final class hy3 extends yw1 {
     }
 
     @Override // java.util.List
-    public final Object get(int i) {
-        iy3 iy3Var = this.p;
-        rr2.q(i, iy3Var.t);
-        Object[] objArr = iy3Var.r;
-        int i2 = i * 2;
-        int i3 = iy3Var.s;
-        Object obj = objArr[i2 + i3];
-        Objects.requireNonNull(obj);
-        Object obj2 = objArr[i2 + (i3 ^ 1)];
-        Objects.requireNonNull(obj2);
-        return new AbstractMap.SimpleImmutableEntry(obj, obj2);
+    public final Object get(int r3) {
+        iy3 r2 = this.p;
+        rr2.q(r3, r2.t);
+        Object[] r0 = r2.r;
+        int r4 = r3 * 2;
+        int r5 = r2.s;
+        Object r1 = r0[r4 + r5];
+        Objects.requireNonNull(r1);
+        Object r6 = r0[r4 + (r5 ^ 1)];
+        Objects.requireNonNull(r6);
+        return new AbstractMap.SimpleImmutableEntry(r1, r6);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List

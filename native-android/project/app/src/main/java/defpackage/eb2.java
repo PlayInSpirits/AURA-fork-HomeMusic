@@ -7,782 +7,871 @@ import java.util.Arrays;
 /* JADX INFO: loaded from: classes.dex */
 public final class eb2 {
     public static boolean q;
+    public int a;
+    public boolean b;
+    public int c;
     public final fq3 d;
+    public int e;
+    public int f;
+    public pi[] g;
+    public boolean h;
+    public boolean[] i;
+    public int j;
+    public int k;
+    public int l;
     public final yc5 m;
+    public ai4[] n;
+    public int o;
     public pi p;
-    public int a = 1000;
-    public boolean b = false;
-    public int c = 0;
-    public int e = 32;
-    public int f = 32;
-    public boolean h = false;
-    public boolean[] i = new boolean[32];
-    public int j = 1;
-    public int k = 0;
-    public int l = 32;
-    public ai4[] n = new ai4[1000];
-    public int o = 0;
-    public pi[] g = new pi[32];
 
     public eb2() {
+        this.a = 1000;
+        this.b = false;
+        this.c = 0;
+        this.e = 32;
+        this.f = 32;
+        this.h = false;
+        this.i = new boolean[32];
+        this.j = 1;
+        this.k = 0;
+        this.l = 32;
+        this.n = new ai4[1000];
+        this.o = 0;
+        this.g = new pi[32];
         s();
-        yc5 yc5Var = new yc5();
-        yc5Var.n = new jo3();
-        yc5Var.o = new jo3();
-        yc5Var.p = new ai4[32];
-        this.m = yc5Var;
-        fq3 fq3Var = new fq3(yc5Var);
-        fq3Var.f = new ai4[128];
-        fq3Var.g = new ai4[128];
-        fq3Var.h = 0;
-        fq3Var.i = new gp3(18, fq3Var);
-        this.d = fq3Var;
-        this.p = new pi(yc5Var);
+        yc5 r0 = new yc5();
+        r0.n = new jo3();
+        r0.o = new jo3();
+        r0.p = new ai4[32];
+        this.m = r0;
+        fq3 r2 = new fq3(r0);
+        r2.f = new ai4[128];
+        r2.g = new ai4[128];
+        r2.h = 0;
+        r2.i = new gp3(18, r2);
+        this.d = r2;
+        this.p = new pi(r0);
     }
 
-    public static int n(Object obj) {
-        ai4 ai4Var = ((hb0) obj).i;
-        if (ai4Var != null) {
-            return (int) (ai4Var.r + 0.5f);
-        }
+    public static int n(Object r1) {
+        ai4 r2 = ((hb0) r1).i;
+        if (r2 != null) goto L5;
         return 0;
+    L5:
+        return (int) (r2.r + 0.5f);
     }
 
-    public final ai4 a(int i) {
-        jo3 jo3Var = (jo3) this.m.o;
-        int i2 = jo3Var.o;
-        Object obj = null;
-        if (i2 > 0) {
-            int i3 = i2 - 1;
-            Object[] objArr = jo3Var.n;
-            Object obj2 = objArr[i3];
-            objArr[i3] = null;
-            jo3Var.o = i3;
-            obj = obj2;
-        }
-        ai4 ai4Var = (ai4) obj;
-        if (ai4Var == null) {
-            ai4Var = new ai4(i);
-            ai4Var.y = i;
-        } else {
-            ai4Var.c();
-            ai4Var.y = i;
-        }
-        int i4 = this.o;
-        int i5 = this.a;
-        if (i4 >= i5) {
-            int i6 = i5 * 2;
-            this.a = i6;
-            this.n = (ai4[]) Arrays.copyOf(this.n, i6);
-        }
-        ai4[] ai4VarArr = this.n;
-        int i7 = this.o;
-        this.o = i7 + 1;
-        ai4VarArr[i7] = ai4Var;
-        return ai4Var;
+    public final ai4 a(int r6) {
+        jo3 r0 = (jo3) this.m.o;
+        int r1 = r0.o;
+        Object r2 = null;
+        if (r1 <= 0) goto L5;
+        int r3 = r1 - 1;
+        Object[] r4 = r0.n;
+        Object r5 = r4[r3];
+        r4[r3] = null;
+        r0.o = r3;
+        r2 = r5;
+    L5:
+        ai4 r7 = (ai4) r2;
+        if (r7 != null) goto L8;
+        r7 = new ai4(r6);
+        r7.y = r6;
+    L9:
+        int r8 = this.o;
+        int r9 = this.a;
+        if (r8 < r9) goto L12;
+        int r10 = r9 * 2;
+        this.a = r10;
+        this.n = (ai4[]) Arrays.copyOf(this.n, r10);
+    L12:
+        ai4[] r11 = this.n;
+        int r12 = this.o;
+        this.o = r12 + 1;
+        r11[r12] = r7;
+        return r7;
+    L8:
+        r7.c();
+        r7.y = r6;
+        goto L9
     }
 
-    public final void b(ai4 ai4Var, ai4 ai4Var2, int i, float f, ai4 ai4Var3, ai4 ai4Var4, int i2, int i3) {
-        pi piVarL = l();
-        if (ai4Var2 == ai4Var3) {
-            piVarL.d.g(ai4Var, 1.0f);
-            piVarL.d.g(ai4Var4, 1.0f);
-            piVarL.d.g(ai4Var2, -2.0f);
-        } else {
-            ji jiVar = piVarL.d;
-            if (f == 0.5f) {
-                jiVar.g(ai4Var, 1.0f);
-                piVarL.d.g(ai4Var2, -1.0f);
-                piVarL.d.g(ai4Var3, -1.0f);
-                piVarL.d.g(ai4Var4, 1.0f);
-                if (i > 0 || i2 > 0) {
-                    piVarL.b = (-i) + i2;
-                }
-            } else if (f <= 0.0f) {
-                jiVar.g(ai4Var, -1.0f);
-                piVarL.d.g(ai4Var2, 1.0f);
-                piVarL.b = i;
-            } else if (f >= 1.0f) {
-                jiVar.g(ai4Var4, -1.0f);
-                piVarL.d.g(ai4Var3, 1.0f);
-                piVarL.b = -i2;
-            } else {
-                float f2 = 1.0f - f;
-                jiVar.g(ai4Var, f2 * 1.0f);
-                piVarL.d.g(ai4Var2, f2 * (-1.0f));
-                piVarL.d.g(ai4Var3, (-1.0f) * f);
-                piVarL.d.g(ai4Var4, 1.0f * f);
-                if (i > 0 || i2 > 0) {
-                    piVarL.b = (i2 * f) + ((-i) * f2);
-                }
-            }
-        }
-        if (i3 != 8) {
-            piVarL.a(this, i3);
-        }
-        c(piVarL);
+    public final void b(ai4 r7, ai4 r8, int r9, float r10, ai4 r11, ai4 r12, int r13, int r14) {
+        pi r0 = l();
+        if (r8 != r11) goto L5;
+        r0.d.g(r7, 1.0f);
+        r0.d.g(r12, 1.0f);
+        r0.d.g(r8, -2.0f);
+    L22:
+        if (r14 == 8) goto L24;
+        r0.a(this, r14);
+    L24:
+        c(r0);
+        return;
+    L5:
+        ji r3 = r0.d;
+        if (r10 != 0.5f) goto L12;
+        r3.g(r7, 1.0f);
+        r0.d.g(r8, -1.0f);
+        r0.d.g(r11, -1.0f);
+        r0.d.g(r12, 1.0f);
+        if (r9 > 0) goto L10;
+        if (r13 <= 0) goto L22;
+    L10:
+        r0.b = (-r9) + r13;
+        goto L22
+    L12:
+        if (r10 > 0.0f) goto L15;
+        r3.g(r7, -1.0f);
+        r0.d.g(r8, 1.0f);
+        r0.b = r9;
+        goto L22
+    L15:
+        if (r10 < 1.0f) goto L17;
+        r3.g(r12, -1.0f);
+        r0.d.g(r11, 1.0f);
+        r0.b = -r13;
+        goto L22
+    L17:
+        float r2 = 1.0f - r10;
+        r3.g(r7, r2 * 1.0f);
+        r0.d.g(r8, r2 * (-1.0f));
+        r0.d.g(r11, (-1.0f) * r10);
+        r0.d.g(r12, 1.0f * r10);
+        if (r9 > 0) goto L20;
+        if (r13 <= 0) goto L22;
+    L20:
+        r0.b = (r13 * r10) + ((-r9) * r2);
+        goto L22
     }
 
-    /* JADX WARN: Code duplicated, block: B:119:0x01ab  */
-    /* JADX WARN: Code duplicated, block: B:57:0x00d3  */
-    /* JADX WARN: Code duplicated, block: B:75:0x00f5  */
-    public final void c(pi piVar) {
-        boolean z;
-        boolean z2;
-        ai4 ai4VarF;
-        if (this.k + 1 >= this.l || this.j + 1 >= this.f) {
-            o();
-        }
-        if (piVar.e) {
-            z = false;
-        } else {
-            ArrayList arrayList = piVar.c;
-            if (this.g.length != 0) {
-                boolean z3 = false;
-                while (!z3) {
-                    int iD = piVar.d.d();
-                    for (int i = 0; i < iD; i++) {
-                        ai4 ai4VarE = piVar.d.e(i);
-                        if (ai4VarE.p != -1 || ai4VarE.s) {
-                            arrayList.add(ai4VarE);
-                        }
-                    }
-                    int size = arrayList.size();
-                    if (size > 0) {
-                        for (int i2 = 0; i2 < size; i2++) {
-                            ai4 ai4Var = (ai4) arrayList.get(i2);
-                            if (ai4Var.s) {
-                                piVar.h(this, ai4Var, true);
-                            } else {
-                                piVar.i(this, this.g[ai4Var.p], true);
-                            }
-                        }
-                        arrayList.clear();
-                    } else {
-                        z3 = true;
-                    }
-                }
-                if (piVar.a != null && piVar.d.d() == 0) {
-                    piVar.e = true;
-                    this.b = true;
-                }
-            }
-            if (piVar.e()) {
-                return;
-            }
-            float f = piVar.b;
-            float f2 = 0.0f;
-            if (f < 0.0f) {
-                piVar.b = f * (-1.0f);
-                ji jiVar = piVar.d;
-                int i3 = jiVar.h;
-                for (int i4 = 0; i3 != -1 && i4 < jiVar.a; i4++) {
-                    float[] fArr = jiVar.g;
-                    fArr[i3] = fArr[i3] * (-1.0f);
-                    i3 = jiVar.f[i3];
-                }
-            }
-            int iD2 = piVar.d.d();
-            float f3 = 0.0f;
-            float f4 = 0.0f;
-            ai4 ai4Var2 = null;
-            ai4 ai4Var3 = null;
-            int i5 = 0;
-            boolean z4 = false;
-            boolean z5 = false;
-            while (i5 < iD2) {
-                float f5 = piVar.d.f(i5);
-                ai4 ai4VarE2 = piVar.d.e(i5);
-                float f6 = f2;
-                if (ai4VarE2.y == 1) {
-                    if (ai4Var2 == null) {
-                        if (ai4VarE2.x <= 1) {
-                            z4 = true;
-                        } else {
-                            z4 = false;
-                        }
-                        ai4Var2 = ai4VarE2;
-                        f3 = f5;
-                    } else {
-                        if (f3 > f5) {
-                            if (ai4VarE2.x > 1) {
-                                z4 = false;
-                            }
-                            ai4Var2 = ai4VarE2;
-                            f3 = f5;
-                        } else if (z4 || ai4VarE2.x > 1) {
-                        }
-                        z4 = true;
-                        ai4Var2 = ai4VarE2;
-                        f3 = f5;
-                    }
-                } else if (ai4Var2 == null && f5 < f6) {
-                    if (ai4Var3 == null) {
-                        if (ai4VarE2.x <= 1) {
-                            z5 = true;
-                        } else {
-                            z5 = false;
-                        }
-                        ai4Var3 = ai4VarE2;
-                        f4 = f5;
-                    } else {
-                        if (f4 > f5) {
-                            if (ai4VarE2.x > 1) {
-                                z5 = false;
-                            }
-                            ai4Var3 = ai4VarE2;
-                            f4 = f5;
-                        } else if (z5 || ai4VarE2.x > 1) {
-                        }
-                        z5 = true;
-                        ai4Var3 = ai4VarE2;
-                        f4 = f5;
-                    }
-                }
-                i5++;
-                f2 = f6;
-            }
-            float f7 = f2;
-            if (ai4Var2 == null) {
-                ai4Var2 = ai4Var3;
-            }
-            if (ai4Var2 == null) {
-                z2 = true;
-            } else {
-                piVar.g(ai4Var2);
-                z2 = false;
-            }
-            if (piVar.d.d() == 0) {
-                piVar.e = true;
-            }
-            if (z2) {
-                if (this.j + 1 >= this.f) {
-                    o();
-                }
-                ai4 ai4VarA = a(3);
-                int i6 = this.c + 1;
-                this.c = i6;
-                this.j++;
-                ai4VarA.o = i6;
-                yc5 yc5Var = this.m;
-                ((ai4[]) yc5Var.p)[i6] = ai4VarA;
-                piVar.a = ai4VarA;
-                int i7 = this.k;
-                h(piVar);
-                if (this.k == i7 + 1) {
-                    pi piVar2 = this.p;
-                    piVar2.a = null;
-                    piVar2.d.b();
-                    for (int i8 = 0; i8 < piVar.d.d(); i8++) {
-                        piVar2.d.a(piVar.d.e(i8), piVar.d.f(i8), true);
-                    }
-                    r(this.p);
-                    if (ai4VarA.p == -1) {
-                        if (piVar.a == ai4VarA && (ai4VarF = piVar.f(null, ai4VarA)) != null) {
-                            piVar.g(ai4VarF);
-                        }
-                        if (!piVar.e) {
-                            piVar.a.e(this, piVar);
-                        }
-                        ((jo3) yc5Var.n).c(piVar);
-                        this.k--;
-                    }
-                    z = true;
-                } else {
-                    z = false;
-                }
-            } else {
-                z = false;
-            }
-            ai4 ai4Var4 = piVar.a;
-            if (ai4Var4 == null) {
-                return;
-            }
-            if (ai4Var4.y != 1 && piVar.b < f7) {
-                return;
-            }
-        }
-        if (z) {
-            return;
-        }
-        h(piVar);
+    public final void c(pi r18) {
+        if ((this.k + 1) < this.l) goto L5;
+    L6:
+        o();
+    L8:
+        if (r18.e == true) goto L127;
+        ArrayList r2 = r18.c;
+        if (this.g.length == 0) goto L40;
+        boolean r5 = false;
+    L13:
+        if (r5 == true) goto L35;
+        int r7 = r18.d.d();
+        int r8 = 0;
+    L15:
+        if (r8 >= r7) goto L23;
+        ai4 r9 = r18.d.e(r8);
+        if (r9.p == (-1)) goto L19;
+    L21:
+        r2.add(r9);
+    L22:
+        r8 = r8 + 1;
+        goto L15
+    L19:
+        if (r9.s == true) goto L21;
+    L23:
+        int r10 = r2.size();
+        if (r10 > 0) goto L25;
+        r5 = true;
+        goto L13
+    L25:
+        int r11 = 0;
+    L26:
+        if (r11 >= r10) goto L32;
+        ai4 r12 = (ai4) r2.get(r11);
+        if (r12.s == false) goto L30;
+        r18.h(this, r12, true);
+    L31:
+        r11 = r11 + 1;
+        goto L26
+    L30:
+        r18.i(this, this.g[r12.p], true);
+        goto L31
+    L32:
+        r2.clear();
+        goto L13
+    L35:
+        if (r18.a == null) goto L40;
+        if (r18.d.d() != 0) goto L40;
+        r18.e = true;
+        this.b = true;
+    L40:
+        if (r18.e() == true) goto L158;
+        float r3 = r18.b;
+        float r6 = 0.0f;
+        if (r3 >= 0.0f) goto L49;
+        r18.b = r3 * (-1.0f);
+        ji r4 = r18.d;
+        int r13 = r4.h;
+        int r14 = 0;
+    L45:
+        if (r13 == (-1)) goto L49;
+        if (r14 >= r4.a) goto L49;
+        float[] r15 = r4.g;
+        r15[r13] = r15[r13] * (-1.0f);
+        r13 = r4.f[r13];
+        r14 = r14 + 1;
+    L49:
+        int r16 = r18.d.d();
+        float r17 = 0.0f;
+        float r19 = 0.0f;
+        ai4 r20 = null;
+        ai4 r110 = null;
+        int r21 = 0;
+        boolean r111 = false;
+        boolean r112 = false;
+    L50:
+        if (r21 >= r16) goto L87;
+        float r113 = r18.d.f(r21);
+        ai4 r22 = r18.d.e(r21);
+        float r114 = r6;
+        if (r22.y != 1) goto L68;
+        if (r20 != null) goto L60;
+        if (r22.x <= 1) goto L67;
+    L57:
+        r111 = false;
+    L58:
+        r20 = r22;
+        r17 = r113;
+    L86:
+        r21 = r21 + 1;
+        r6 = r114;
+    L67:
+        r111 = true;
+        goto L58
+    L60:
+        if (r17 > r113) goto L62;
+        if (r111 == true) goto L86;
+        if (r22.x > 1) goto L86;
+    L62:
+        if (r22.x > 1) goto L57;
+    L68:
+        if (r20 != null) goto L86;
+        if (r113 >= r114) goto L86;
+        if (r110 != null) goto L78;
+        if (r22.x <= 1) goto L85;
+    L75:
+        r112 = false;
+    L76:
+        r110 = r22;
+        r19 = r113;
+    L85:
+        r112 = true;
+        goto L76
+    L78:
+        if (r19 > r113) goto L80;
+        if (r112 == true) goto L86;
+        if (r22.x > 1) goto L86;
+    L80:
+        if (r22.x > 1) goto L75;
+    L87:
+        float r115 = r6;
+        if (r20 != null) goto L91;
+        r20 = r110;
+    L91:
+        if (r20 != null) goto L93;
+        boolean r23 = true;
+    L95:
+        if (r18.d.d() != 0) goto L97;
+        r18.e = true;
+    L97:
+        if (r23 == true) goto L99;
+    L119:
+        boolean r24 = false;
+    L120:
+        ai4 r25 = r18.a;
+        if (r25 != null) goto L123;
+        return;
+    L123:
+        if (r25.y != 1) goto L125;
+    L128:
+        if (r24 == true) goto L157;
+        h(r18);
+        return;
+    L157:
+        return;
+    L125:
+        if (r18.b >= r115) goto L128;
+        return;
+    L99:
+        if ((this.j + 1) < this.f) goto L101;
+        o();
+    L101:
+        ai4 r26 = a(3);
+        int r27 = this.c + 1;
+        this.c = r27;
+        this.j++;
+        r26.o = r27;
+        yc5 r28 = this.m;
+        ((ai4[]) r28.p)[r27] = r26;
+        r18.a = r26;
+        int r29 = this.k;
+        h(r18);
+        if (this.k != (r29 + 1)) goto L119;
+        pi r30 = this.p;
+        r30.a = null;
+        r30.d.b();
+        int r31 = 0;
+    L105:
+        if (r31 >= r18.d.d()) goto L107;
+        r30.d.a(r18.d.e(r31), r18.d.f(r31), true);
+        r31 = r31 + 1;
+        goto L105
+    L107:
+        r(this.p);
+        if (r26.p == (-1)) goto L110;
+    L118:
+        r24 = true;
+        goto L120
+    L110:
+        if (r18.a != r26) goto L115;
+        ai4 r32 = r18.f(null, r26);
+        if (r32 == null) goto L115;
+        r18.g(r32);
+    L115:
+        if (r18.e == true) goto L117;
+        r18.a.e(this, r18);
+    L117:
+        ((jo3) r28.n).c(r18);
+        this.k--;
+        goto L118
+    L93:
+        r18.g(r20);
+        r23 = false;
+        goto L95
+    L158:
+        return;
+    L127:
+        r24 = false;
+        goto L128
+    L5:
+        if ((this.j + 1) < this.f) goto L8;
+        goto L6
     }
 
-    public final void d(ai4 ai4Var, int i) {
-        int i2 = ai4Var.p;
-        if (i2 == -1) {
-            ai4Var.d(this, i);
-            for (int i3 = 0; i3 < this.c + 1; i3++) {
-                ai4 ai4Var2 = ((ai4[]) this.m.p)[i3];
-            }
-            return;
-        }
-        if (i2 == -1) {
-            pi piVarL = l();
-            piVarL.a = ai4Var;
-            float f = i;
-            ai4Var.r = f;
-            piVarL.b = f;
-            piVarL.e = true;
-            c(piVarL);
-            return;
-        }
-        pi piVar = this.g[i2];
-        if (piVar.e) {
-            piVar.b = i;
-            return;
-        }
-        if (piVar.d.d() == 0) {
-            piVar.e = true;
-            piVar.b = i;
-            return;
-        }
-        pi piVarL2 = l();
-        if (i < 0) {
-            piVarL2.b = i * (-1);
-            piVarL2.d.g(ai4Var, 1.0f);
-        } else {
-            piVarL2.b = i;
-            piVarL2.d.g(ai4Var, -1.0f);
-        }
-        c(piVarL2);
+    public final void d(ai4 r5, int r6) {
+        int r0 = r5.p;
+        if (r0 != (-1)) goto L9;
+        r5.d(this, r6);
+        int r7 = 0;
+    L6:
+        if (r7 >= (this.c + 1)) goto L8;
+        ai4 r8 = ((ai4[]) this.m.p)[r7];
+        r7 = r7 + 1;
+        goto L6
+    L8:
+        return;
+    L9:
+        if (r0 == (-1)) goto L24;
+        pi r1 = this.g[r0];
+        if (r1.e == false) goto L15;
+        r1.b = r6;
+        return;
+    L15:
+        if (r1.d.d() != 0) goto L18;
+        r1.e = true;
+        r1.b = r6;
+        return;
+    L18:
+        pi r2 = l();
+        if (r6 >= 0) goto L21;
+        r2.b = r6 * (-1);
+        r2.d.g(r5, 1.0f);
+    L22:
+        c(r2);
+        return;
+    L21:
+        r2.b = r6;
+        r2.d.g(r5, -1.0f);
+        goto L22
+    L24:
+        pi r3 = l();
+        r3.a = r5;
+        float r9 = r6;
+        r5.r = r9;
+        r3.b = r9;
+        r3.e = true;
+        c(r3);
     }
 
-    public final void e(ai4 ai4Var, ai4 ai4Var2, int i, int i2) {
-        if (i2 == 8 && ai4Var2.s && ai4Var.p == -1) {
-            ai4Var.d(this, ai4Var2.r + i);
-            return;
-        }
-        pi piVarL = l();
-        boolean z = false;
-        if (i != 0) {
-            if (i < 0) {
-                i *= -1;
-                z = true;
-            }
-            piVarL.b = i;
-        }
-        ji jiVar = piVarL.d;
-        if (z) {
-            jiVar.g(ai4Var, 1.0f);
-            piVarL.d.g(ai4Var2, -1.0f);
-        } else {
-            jiVar.g(ai4Var, -1.0f);
-            piVarL.d.g(ai4Var2, 1.0f);
-        }
-        if (i2 != 8) {
-            piVarL.a(this, i2);
-        }
-        c(piVarL);
+    public final void e(ai4 r6, ai4 r7, int r8, int r9) {
+        if (r9 == 8) goto L5;
+    L10:
+        pi r1 = l();
+        boolean r2 = false;
+        if (r8 == 0) goto L15;
+        if (r8 >= 0) goto L14;
+        r8 = r8 * (-1);
+        r2 = true;
+    L14:
+        r1.b = r8;
+    L15:
+        ji r10 = r1.d;
+        if (r2 == true) goto L18;
+        r10.g(r6, -1.0f);
+        r1.d.g(r7, 1.0f);
+    L19:
+        if (r9 == 8) goto L21;
+        r1.a(this, r9);
+    L21:
+        c(r1);
+        return;
+    L18:
+        r10.g(r6, 1.0f);
+        r1.d.g(r7, -1.0f);
+        goto L19
+    L5:
+        if (r7.s == false) goto L10;
+        if (r6.p != (-1)) goto L10;
+        r6.d(this, r7.r + r8);
     }
 
-    public final void f(ai4 ai4Var, ai4 ai4Var2, int i, int i2) {
-        pi piVarL = l();
-        ai4 ai4VarM = m();
-        ai4VarM.q = 0;
-        piVarL.b(ai4Var, ai4Var2, ai4VarM, i);
-        if (i2 != 8) {
-            piVarL.d.g(j(i2), (int) (piVarL.d.c(ai4VarM) * (-1.0f)));
-        }
-        c(piVarL);
+    public final void f(ai4 r4, ai4 r5, int r6, int r7) {
+        pi r0 = l();
+        ai4 r1 = m();
+        r1.q = 0;
+        r0.b(r4, r5, r1, r6);
+        if (r7 == 8) goto L5;
+        int r8 = (int) (r0.d.c(r1) * (-1.0f));
+        r0.d.g(j(r7), r8);
+    L5:
+        c(r0);
     }
 
-    public final void g(ai4 ai4Var, ai4 ai4Var2, int i, int i2) {
-        pi piVarL = l();
-        ai4 ai4VarM = m();
-        ai4VarM.q = 0;
-        piVarL.c(ai4Var, ai4Var2, ai4VarM, i);
-        if (i2 != 8) {
-            piVarL.d.g(j(i2), (int) (piVarL.d.c(ai4VarM) * (-1.0f)));
-        }
-        c(piVarL);
+    public final void g(ai4 r4, ai4 r5, int r6, int r7) {
+        pi r0 = l();
+        ai4 r1 = m();
+        r1.q = 0;
+        r0.c(r4, r5, r1, r6);
+        if (r7 == 8) goto L5;
+        int r8 = (int) (r0.d.c(r1) * (-1.0f));
+        r0.d.g(j(r7), r8);
+    L5:
+        c(r0);
     }
 
-    public final void h(pi piVar) {
-        int i;
-        if (piVar.e) {
-            piVar.a.d(this, piVar.b);
-        } else {
-            pi[] piVarArr = this.g;
-            int i2 = this.k;
-            piVarArr[i2] = piVar;
-            ai4 ai4Var = piVar.a;
-            ai4Var.p = i2;
-            this.k = i2 + 1;
-            ai4Var.e(this, piVar);
-        }
-        if (this.b) {
-            int i3 = 0;
-            while (i3 < this.k) {
-                if (this.g[i3] == null) {
-                    System.out.println("WTF");
-                }
-                pi piVar2 = this.g[i3];
-                if (piVar2 != null && piVar2.e) {
-                    piVar2.a.d(this, piVar2.b);
-                    ((jo3) this.m.n).c(piVar2);
-                    this.g[i3] = null;
-                    int i4 = i3 + 1;
-                    int i5 = i4;
-                    while (true) {
-                        i = this.k;
-                        if (i4 >= i) {
-                            break;
-                        }
-                        pi[] piVarArr2 = this.g;
-                        int i6 = i4 - 1;
-                        pi piVar3 = piVarArr2[i4];
-                        piVarArr2[i6] = piVar3;
-                        ai4 ai4Var2 = piVar3.a;
-                        if (ai4Var2.p == i4) {
-                            ai4Var2.p = i6;
-                        }
-                        i5 = i4;
-                        i4++;
-                    }
-                    if (i5 < i) {
-                        this.g[i5] = null;
-                    }
-                    this.k = i - 1;
-                    i3--;
-                }
-                i3++;
-            }
-            this.b = false;
-        }
+    public final void h(pi r8) {
+        if (r8.e == false) goto L5;
+        r8.a.d(this, r8.b);
+    L7:
+        if (this.b == false) goto L38;
+        int r0 = 0;
+    L10:
+        if (r0 >= this.k) goto L29;
+        if (this.g[r0] != null) goto L14;
+        System.out.println("WTF");
+    L14:
+        pi r1 = this.g[r0];
+        if (r1 == null) goto L28;
+        if (r1.e == false) goto L28;
+        r1.a.d(this, r1.b);
+        ((jo3) this.m.n).c(r1);
+        this.g[r0] = null;
+        int r2 = r0 + 1;
+        int r3 = r2;
+    L19:
+        int r4 = this.k;
+        if (r2 >= r4) goto L25;
+        pi[] r5 = this.g;
+        int r6 = r2 - 1;
+        pi r7 = r5[r2];
+        r5[r6] = r7;
+        ai4 r9 = r7.a;
+        if (r9.p != r2) goto L24;
+        r9.p = r6;
+    L24:
+        r3 = r2;
+        r2 = r2 + 1;
+        goto L19
+    L25:
+        if (r3 >= r4) goto L27;
+        this.g[r3] = null;
+    L27:
+        this.k = r4 - 1;
+        r0 = r0 - 1;
+    L28:
+        r0 = r0 + 1;
+        goto L10
+    L29:
+        this.b = false;
+        return;
+    L38:
+        return;
+    L5:
+        pi[] r10 = this.g;
+        int r11 = this.k;
+        r10[r11] = r8;
+        ai4 r12 = r8.a;
+        r12.p = r11;
+        this.k = r11 + 1;
+        r12.e(this, r8);
+        goto L7
     }
 
     public final void i() {
-        for (int i = 0; i < this.k; i++) {
-            pi piVar = this.g[i];
-            piVar.a.r = piVar.b;
-        }
+        int r0 = 0;
+    L4:
+        if (r0 >= this.k) goto L6;
+        pi r1 = this.g[r0];
+        ai4 r2 = r1.a;
+        r2.r = r1.b;
+        r0 = r0 + 1;
+        goto L4
     }
 
-    public final ai4 j(int i) {
-        if (this.j + 1 >= this.f) {
-            o();
-        }
-        ai4 ai4VarA = a(4);
-        float[] fArr = ai4VarA.u;
-        int i2 = this.c + 1;
-        this.c = i2;
+    public final ai4 j(int r5) {
+        if ((this.j + 1) < this.f) goto L5;
+        o();
+    L5:
+        ai4 r0 = a(4);
+        float[] r1 = r0.u;
+        int r2 = this.c + 1;
+        this.c = r2;
         this.j++;
-        ai4VarA.o = i2;
-        ai4VarA.q = i;
-        ((ai4[]) this.m.p)[i2] = ai4VarA;
-        fq3 fq3Var = this.d;
-        fq3Var.i.o = ai4VarA;
-        Arrays.fill(fArr, 0.0f);
-        fArr[ai4VarA.q] = 1.0f;
-        fq3Var.j(ai4VarA);
-        return ai4VarA;
+        r0.o = r2;
+        r0.q = r5;
+        ((ai4[]) this.m.p)[r2] = r0;
+        fq3 r4 = this.d;
+        r4.i.o = r0;
+        Arrays.fill(r1, 0.0f);
+        r1[r0.q] = 1.0f;
+        r4.j(r0);
+        return r0;
     }
 
-    public final ai4 k(Object obj) {
-        if (obj == null) {
-            return null;
-        }
-        if (this.j + 1 >= this.f) {
-            o();
-        }
-        if (!(obj instanceof hb0)) {
-            return null;
-        }
-        hb0 hb0Var = (hb0) obj;
-        ai4 ai4Var = hb0Var.i;
-        if (ai4Var == null) {
-            hb0Var.h();
-            ai4Var = hb0Var.i;
-        }
-        int i = ai4Var.o;
-        yc5 yc5Var = this.m;
-        if (i != -1 && i <= this.c && ((ai4[]) yc5Var.p)[i] != null) {
-            return ai4Var;
-        }
-        if (i != -1) {
-            ai4Var.c();
-        }
-        int i2 = this.c + 1;
-        this.c = i2;
+    public final ai4 k(Object r6) {
+        if (r6 != null) goto L5;
+        return null;
+    L5:
+        if ((this.j + 1) < this.f) goto L8;
+        o();
+    L8:
+        if ((r6 instanceof hb0) == false) goto L24;
+        hb0 r7 = (hb0) r6;
+        ai4 r0 = r7.i;
+        if (r0 != null) goto L12;
+        r7.h();
+        r0 = r7.i;
+    L12:
+        int r8 = r0.o;
+        yc5 r3 = this.m;
+        if (r8 != (-1)) goto L15;
+    L20:
+        if (r8 == (-1)) goto L22;
+        r0.c();
+    L22:
+        int r9 = this.c + 1;
+        this.c = r9;
         this.j++;
-        ai4Var.o = i2;
-        ai4Var.y = 1;
-        ((ai4[]) yc5Var.p)[i2] = ai4Var;
-        return ai4Var;
+        r0.o = r9;
+        r0.y = 1;
+        ((ai4[]) r3.p)[r9] = r0;
+        return r0;
+    L15:
+        if (r8 > this.c) goto L20;
+        if (((ai4[]) r3.p)[r8] == null) goto L20;
+        return r0;
+    L24:
+        return null;
     }
 
     public final pi l() {
-        Object obj;
-        yc5 yc5Var = this.m;
-        jo3 jo3Var = (jo3) yc5Var.n;
-        int i = jo3Var.o;
-        if (i > 0) {
-            int i2 = i - 1;
-            Object[] objArr = jo3Var.n;
-            obj = objArr[i2];
-            objArr[i2] = null;
-            jo3Var.o = i2;
-        } else {
-            obj = null;
-        }
-        pi piVar = (pi) obj;
-        if (piVar == null) {
-            return new pi(yc5Var);
-        }
-        piVar.a = null;
-        piVar.d.b();
-        piVar.b = 0.0f;
-        piVar.e = false;
-        return piVar;
+        yc5 r5 = this.m;
+        jo3 r0 = (jo3) r5.n;
+        int r1 = r0.o;
+        if (r1 <= 0) goto L5;
+        int r2 = r1 - 1;
+        Object[] r3 = r0.n;
+        Object r4 = r3[r2];
+        r3[r2] = null;
+        r0.o = r2;
+    L6:
+        pi r6 = (pi) r4;
+        if (r6 == null) goto L11;
+        r6.a = null;
+        r6.d.b();
+        r6.b = 0.0f;
+        r6.e = false;
+        return r6;
+    L11:
+        return new pi(r5);
+    L5:
+        r4 = null;
+        goto L6
     }
 
     public final ai4 m() {
-        if (this.j + 1 >= this.f) {
-            o();
-        }
-        ai4 ai4VarA = a(3);
-        int i = this.c + 1;
-        this.c = i;
+        if ((this.j + 1) < this.f) goto L5;
+        o();
+    L5:
+        ai4 r0 = a(3);
+        int r1 = this.c + 1;
+        this.c = r1;
         this.j++;
-        ai4VarA.o = i;
-        ((ai4[]) this.m.p)[i] = ai4VarA;
-        return ai4VarA;
+        r0.o = r1;
+        ((ai4[]) this.m.p)[r1] = r0;
+        return r0;
     }
 
     public final void o() {
-        int i = this.e * 2;
-        this.e = i;
-        this.g = (pi[]) Arrays.copyOf(this.g, i);
-        yc5 yc5Var = this.m;
-        yc5Var.p = (ai4[]) Arrays.copyOf((ai4[]) yc5Var.p, this.e);
-        int i2 = this.e;
-        this.i = new boolean[i2];
-        this.f = i2;
-        this.l = i2;
+        int r0 = this.e * 2;
+        this.e = r0;
+        this.g = (pi[]) Arrays.copyOf(this.g, r0);
+        yc5 r1 = this.m;
+        r1.p = (ai4[]) Arrays.copyOf((ai4[]) r1.p, this.e);
+        int r2 = this.e;
+        this.i = new boolean[r2];
+        this.f = r2;
+        this.l = r2;
     }
 
     public final void p() {
-        fq3 fq3Var = this.d;
-        if (fq3Var.e()) {
-            i();
-            return;
-        }
-        if (!this.h) {
-            q(fq3Var);
-            return;
-        }
-        for (int i = 0; i < this.k; i++) {
-            if (!this.g[i].e) {
-                q(fq3Var);
-                return;
-            }
-        }
+        fq3 r0 = this.d;
+        if (r0.e() == false) goto L7;
+        i();
+        return;
+    L7:
+        if (this.h == false) goto L18;
+        int r1 = 0;
+    L10:
+        if (r1 >= this.k) goto L16;
+        if (this.g[r1].e == false) goto L13;
+        r1 = r1 + 1;
+        goto L10
+    L13:
+        q(r0);
+        return;
+    L16:
+        i();
+        return;
+    L18:
+        q(r0);
+    }
+
+    public final void q(fq3 r19) {
+        int r2 = 0;
+    L4:
+        if (r2 >= this.k) goto L47;
+        pi r3 = this.g[r2];
+        int r5 = 1;
+        if (r3.a.y == 1) goto L46;
+        float r4 = 0.0f;
+        if (r3.b >= 0.0f) goto L46;
+        boolean r6 = false;
+        int r7 = 0;
+    L11:
+        if (r6 == true) goto L47;
+        r7 = r7 + r5;
+        float r8 = Float.MAX_VALUE;
+        int r9 = -1;
+        int r10 = -1;
+        int r11 = 0;
+        int r12 = 0;
+    L14:
+        if (r11 >= this.k) goto L39;
+        pi r13 = this.g[r11];
+        if (r13.a.y == r5) goto L38;
+        if (r13.e == true) goto L38;
+        if (r13.b >= r4) goto L38;
+        int r14 = r13.d.d();
+        int r15 = 0;
+    L24:
+        if (r15 >= r14) goto L38;
+        ai4 r16 = r13.d.e(r15);
+        float r1 = r13.d.c(r16);
+        if (r1 <= r4) goto L37;
+        int r17 = 0;
+    L30:
+        if (r17 >= 9) goto L37;
+        float r18 = r16.t[r17] / r1;
+        if (r18 >= r8) goto L34;
+        if (r17 != r12) goto L34;
+    L35:
+        r12 = r17;
+        r10 = r16.o;
+        r9 = r11;
+        r8 = r18;
+    L36:
+        r17 = r17 + 1;
+    L34:
+        if (r17 <= r12) goto L36;
+    L37:
+        r15 = r15 + 1;
+        r4 = 0.0f;
+    L38:
+        r11 = r11 + 1;
+        r4 = 0.0f;
+        r5 = 1;
+        goto L14
+    L39:
+        if (r9 == (-1)) goto L41;
+        pi r20 = this.g[r9];
+        r20.a.p = -1;
+        r20.g(((ai4[]) this.m.p)[r10]);
+        ai4 r21 = r20.a;
+        r21.p = r9;
+        r21.e(this, r20);
+    L43:
+        if (r7 <= (this.j / 2)) goto L45;
+        r6 = true;
+    L45:
+        r4 = 0.0f;
+        r5 = 1;
+        goto L11
+    L41:
+        r6 = true;
+    L46:
+        r2 = r2 + 1;
+    L47:
+        r(r19);
         i();
     }
 
-    public final void q(fq3 fq3Var) {
-        for (int i = 0; i < this.k; i++) {
-            pi piVar = this.g[i];
-            int i2 = 1;
-            if (piVar.a.y != 1) {
-                float f = 0.0f;
-                if (piVar.b < 0.0f) {
-                    boolean z = false;
-                    int i3 = 0;
-                    while (!z) {
-                        i3 += i2;
-                        float f2 = Float.MAX_VALUE;
-                        int i4 = -1;
-                        int i5 = -1;
-                        int i6 = 0;
-                        int i7 = 0;
-                        while (i6 < this.k) {
-                            pi piVar2 = this.g[i6];
-                            if (piVar2.a.y != i2 && !piVar2.e && piVar2.b < f) {
-                                int iD = piVar2.d.d();
-                                int i8 = 0;
-                                while (i8 < iD) {
-                                    ai4 ai4VarE = piVar2.d.e(i8);
-                                    float fC = piVar2.d.c(ai4VarE);
-                                    if (fC > f) {
-                                        for (int i9 = 0; i9 < 9; i9++) {
-                                            float f3 = ai4VarE.t[i9] / fC;
-                                            if ((f3 < f2 && i9 == i7) || i9 > i7) {
-                                                i7 = i9;
-                                                i5 = ai4VarE.o;
-                                                i4 = i6;
-                                                f2 = f3;
-                                            }
-                                        }
-                                    }
-                                    i8++;
-                                    f = 0.0f;
-                                }
-                            }
-                            i6++;
-                            f = 0.0f;
-                            i2 = 1;
-                        }
-                        if (i4 != -1) {
-                            pi piVar3 = this.g[i4];
-                            piVar3.a.p = -1;
-                            piVar3.g(((ai4[]) this.m.p)[i5]);
-                            ai4 ai4Var = piVar3.a;
-                            ai4Var.p = i4;
-                            ai4Var.e(this, piVar3);
-                        } else {
-                            z = true;
-                        }
-                        if (i3 > this.j / 2) {
-                            z = true;
-                        }
-                        f = 0.0f;
-                        i2 = 1;
-                    }
-                    break;
-                }
-            }
-        }
-        r(fq3Var);
-        i();
-    }
-
-    public final void r(pi piVar) {
-        boolean z;
-        int i = 0;
-        for (int i2 = 0; i2 < this.j; i2++) {
-            this.i[i2] = false;
-        }
-        boolean z2 = false;
-        int i3 = 0;
-        while (!z2) {
-            i3++;
-            if (i3 >= this.j * 2) {
-                return;
-            }
-            ai4 ai4Var = piVar.a;
-            if (ai4Var != null) {
-                this.i[ai4Var.o] = true;
-            }
-            ai4 ai4VarD = piVar.d(this.i);
-            if (ai4VarD != null) {
-                boolean[] zArr = this.i;
-                int i4 = ai4VarD.o;
-                if (zArr[i4]) {
-                    return;
-                } else {
-                    zArr[i4] = true;
-                }
-            }
-            if (ai4VarD != null) {
-                float f = Float.MAX_VALUE;
-                int i5 = i;
-                int i6 = -1;
-                while (i5 < this.k) {
-                    pi piVar2 = this.g[i5];
-                    if (piVar2.a.y != 1 && !piVar2.e) {
-                        ji jiVar = piVar2.d;
-                        int i7 = jiVar.h;
-                        if (i7 == -1) {
-                            z = false;
-                            break;
-                        }
-                        int i8 = i;
-                        while (true) {
-                            if (i7 == -1 || i8 >= jiVar.a) {
-                                z = false;
-                                break;
-                            } else if (jiVar.e[i7] == ai4VarD.o) {
-                                z = true;
-                                break;
-                            } else {
-                                i7 = jiVar.f[i7];
-                                i8++;
-                            }
-                        }
-                        if (z) {
-                            float fC = piVar2.d.c(ai4VarD);
-                            if (fC < 0.0f) {
-                                float f2 = (-piVar2.b) / fC;
-                                if (f2 < f) {
-                                    i6 = i5;
-                                    f = f2;
-                                }
-                            }
-                        }
-                    }
-                    i5++;
-                    i = 0;
-                }
-                if (i6 > -1) {
-                    pi piVar3 = this.g[i6];
-                    piVar3.a.p = -1;
-                    piVar3.g(ai4VarD);
-                    ai4 ai4Var2 = piVar3.a;
-                    ai4Var2.p = i6;
-                    ai4Var2.e(this, piVar3);
-                }
-            } else {
-                z2 = true;
-            }
-            i = 0;
-        }
+    public final void r(pi r17) {
+        int r2 = 0;
+        int r3 = 0;
+    L4:
+        if (r3 >= this.j) goto L6;
+        this.i[r3] = false;
+        r3 = r3 + 1;
+        goto L4
+    L6:
+        boolean r4 = false;
+        int r5 = 0;
+    L7:
+        if (r4 == true) goto L53;
+        r5 = r5 + 1;
+        if (r5 >= (this.j * 2)) goto L71;
+        ai4 r6 = r17.a;
+        if (r6 == null) goto L14;
+        this.i[r6.o] = true;
+    L14:
+        ai4 r7 = r17.d(this.i);
+        if (r7 == null) goto L20;
+        boolean[] r8 = this.i;
+        int r9 = r7.o;
+        if (r8[r9] == true) goto L72;
+        r8[r9] = true;
+        goto L20
+    L72:
+        return;
+    L20:
+        if (r7 == null) goto L51;
+        float r10 = Float.MAX_VALUE;
+        int r11 = r2;
+        int r12 = -1;
+    L23:
+        if (r11 >= this.k) goto L49;
+        pi r13 = this.g[r11];
+        if (r13.a.y == 1) goto L48;
+        if (r13.e == true) goto L48;
+        ji r14 = r13.d;
+        int r15 = r14.h;
+        if (r15 == (-1)) goto L41;
+        int r16 = r2;
+    L34:
+        if (r15 == (-1)) goto L41;
+        if (r16 >= r14.a) goto L41;
+        if (r14.e[r15] == r7.o) goto L39;
+        r15 = r14.f[r15];
+        r16 = r16 + 1;
+        goto L34
+    L39:
+        boolean r18 = true;
+    L42:
+        if (r18 == false) goto L48;
+        float r19 = r13.d.c(r7);
+        if (r19 >= 0.0f) goto L48;
+        float r110 = (-r13.b) / r19;
+        if (r110 >= r10) goto L48;
+        r12 = r11;
+        r10 = r110;
+    L41:
+        r18 = false;
+    L48:
+        r11 = r11 + 1;
+        r2 = 0;
+        goto L23
+    L49:
+        if (r12 <= (-1)) goto L52;
+        pi r20 = this.g[r12];
+        r20.a.p = -1;
+        r20.g(r7);
+        ai4 r21 = r20.a;
+        r21.p = r12;
+        r21.e(this, r20);
+    L52:
+        r2 = 0;
+        goto L7
+    L51:
+        r4 = true;
+        goto L52
+    L71:
+        return;
     }
 
     public final void s() {
-        for (int i = 0; i < this.k; i++) {
-            pi piVar = this.g[i];
-            if (piVar != null) {
-                ((jo3) this.m.n).c(piVar);
-            }
-            this.g[i] = null;
-        }
+        int r0 = 0;
+    L4:
+        if (r0 >= this.k) goto L9;
+        pi r1 = this.g[r0];
+        if (r1 == null) goto L8;
+        ((jo3) this.m.n).c(r1);
+    L8:
+        this.g[r0] = null;
+        r0 = r0 + 1;
+        goto L4
     }
 
     public final void t() {
-        yc5 yc5Var;
-        int i = 0;
-        while (true) {
-            yc5Var = this.m;
-            ai4[] ai4VarArr = (ai4[]) yc5Var.p;
-            if (i >= ai4VarArr.length) {
-                break;
-            }
-            ai4 ai4Var = ai4VarArr[i];
-            if (ai4Var != null) {
-                ai4Var.c();
-            }
-            i++;
-        }
-        jo3 jo3Var = (jo3) yc5Var.o;
-        ai4[] ai4VarArr2 = this.n;
-        int length = this.o;
-        jo3Var.getClass();
-        if (length > ai4VarArr2.length) {
-            length = ai4VarArr2.length;
-        }
-        for (int i2 = 0; i2 < length; i2++) {
-            ai4 ai4Var2 = ai4VarArr2[i2];
-            int i3 = jo3Var.o;
-            Object[] objArr = jo3Var.n;
-            if (i3 < objArr.length) {
-                objArr[i3] = ai4Var2;
-                jo3Var.o = i3 + 1;
-            }
-        }
+        int r1 = 0;
+    L3:
+        yc5 r2 = this.m;
+        ai4[] r3 = (ai4[]) r2.p;
+        if (r1 >= r3.length) goto L9;
+        ai4 r4 = r3[r1];
+        if (r4 == null) goto L8;
+        r4.c();
+    L8:
+        r1 = r1 + 1;
+        goto L3
+    L9:
+        jo3 r5 = (jo3) r2.o;
+        ai4[] r6 = this.n;
+        int r7 = this.o;
+        r5.getClass();
+        if (r7 <= r6.length) goto L12;
+        r7 = r6.length;
+    L12:
+        int r8 = 0;
+    L13:
+        if (r8 >= r7) goto L18;
+        ai4 r9 = r6[r8];
+        int r10 = r5.o;
+        Object[] r11 = r5.n;
+        if (r10 >= r11.length) goto L17;
+        r11[r10] = r9;
+        r5.o = r10 + 1;
+    L17:
+        r8 = r8 + 1;
+        goto L13
+    L18:
         this.o = 0;
-        Arrays.fill((ai4[]) yc5Var.p, (Object) null);
+        Arrays.fill((ai4[]) r2.p, null);
         this.c = 0;
-        fq3 fq3Var = this.d;
-        fq3Var.h = 0;
-        fq3Var.b = 0.0f;
+        fq3 r12 = this.d;
+        r12.h = 0;
+        r12.b = 0.0f;
         this.j = 1;
-        for (int i4 = 0; i4 < this.k; i4++) {
-            pi piVar = this.g[i4];
-        }
+        int r13 = 0;
+    L20:
+        if (r13 >= this.k) goto L22;
+        pi r14 = this.g[r13];
+        r13 = r13 + 1;
+        goto L20
+    L22:
         s();
         this.k = 0;
-        this.p = new pi(yc5Var);
+        this.p = new pi(r2);
     }
 }

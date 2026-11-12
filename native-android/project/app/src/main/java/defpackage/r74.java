@@ -8,16 +8,16 @@ import androidx.appcompat.widget.SearchView;
 public final class r74 implements View.OnFocusChangeListener {
     public final /* synthetic */ SearchView a;
 
-    public r74(SearchView searchView) {
-        this.a = searchView;
+    public r74(SearchView r1) {
+        this.a = r1;
     }
 
     @Override // android.view.View.OnFocusChangeListener
-    public final void onFocusChange(View view, boolean z) {
-        SearchView searchView = this.a;
-        View.OnFocusChangeListener onFocusChangeListener = searchView.b0;
-        if (onFocusChangeListener != null) {
-            onFocusChangeListener.onFocusChange(searchView, z);
-        }
+    public final void onFocusChange(View r1, boolean r2) {
+        SearchView r0 = this.a;
+        View.OnFocusChangeListener r3 = r0.b0;
+        if (r3 == null) goto L6;
+        r3.onFocusChange(r0, r2);
+        return;
     }
 }

@@ -10,12 +10,12 @@ public final class o41 {
     public final boolean e;
     public final boolean f;
 
-    public o41(mt2 mt2Var, long j, long j2, boolean z, boolean z2, boolean z3) {
-        this.a = mt2Var;
-        this.b = j;
-        this.c = j2;
-        this.d = z;
-        this.e = z2;
-        this.f = z3;
+    public o41(mt2 r1, long r2, long r4, boolean r6, boolean r7, boolean r8) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r4;
+        this.d = r6;
+        this.e = r7;
+        this.f = r8;
     }
 }

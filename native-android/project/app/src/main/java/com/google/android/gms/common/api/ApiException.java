@@ -5,11 +5,13 @@ package com.google.android.gms.common.api;
 public class ApiException extends Exception {
     public final Status n;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public ApiException(Status status) {
-        int i = status.n;
-        String str = status.o;
-        super(i + ": " + (str == null ? "" : str));
-        this.n = status;
+    public ApiException(Status r4) {
+        int r0 = r4.n;
+        String r1 = r4.o;
+        if (r1 != null) goto L6;
+        r1 = "";
+    L6:
+        super(r0 + ": " + r1);
+        this.n = r4;
     }
 }

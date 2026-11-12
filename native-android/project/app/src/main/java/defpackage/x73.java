@@ -5,8 +5,8 @@ package defpackage;
 public final class x73 extends ef5 {
     public final Object f;
 
-    public x73(Object obj) {
+    public x73(Object r3) {
         super(3, "com.google.android.gms.dynamic.IObjectWrapper");
-        this.f = obj;
+        this.f = r3;
     }
 }

@@ -7,9 +7,9 @@ public final class lj3 {
     public final int b;
     public final String c;
 
-    public lj3(jw4 jw4Var, int i, int i2, String str) {
-        this.a = (iw4) jw4Var.a.get(i);
-        this.b = i2;
-        this.c = str;
+    public lj3(jw4 r1, int r2, int r3, String r4) {
+        this.a = (iw4) r1.a.get(r2);
+        this.b = r3;
+        this.c = r4;
     }
 }

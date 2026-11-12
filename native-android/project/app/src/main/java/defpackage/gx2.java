@@ -5,5 +5,5 @@ package defpackage;
 public abstract class gx2 implements bx2 {
     public abstract cx2 d();
 
-    public abstract void e(cx2 cx2Var);
+    public abstract void e(cx2 r1);
 }

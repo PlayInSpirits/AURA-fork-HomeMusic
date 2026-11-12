@@ -13,109 +13,118 @@ public abstract class m1 extends AbstractCollection {
     public final Collection q;
     public final /* synthetic */ q1 r;
 
-    public m1(q1 q1Var, Object obj, Collection collection, m1 m1Var) {
-        this.r = q1Var;
-        this.n = obj;
-        this.o = collection;
-        this.p = m1Var;
-        this.q = m1Var == null ? null : m1Var.o;
+    public m1(q1 r1, Object r2, Collection r3, m1 r4) {
+        this.r = r1;
+        this.n = r2;
+        this.o = r3;
+        this.p = r4;
+        if (r4 != null) goto L5;
+        Collection r5 = null;
+    L6:
+        this.q = r5;
+        return;
+    L5:
+        r5 = r4.o;
+        goto L6
     }
 
     public final void a() {
-        m1 m1Var = this.p;
-        if (m1Var != null) {
-            m1Var.a();
-        } else {
-            this.r.r.put(this.n, this.o);
-        }
+        m1 r0 = this.p;
+        if (r0 == null) goto L6;
+        r0.a();
+        return;
+    L6:
+        this.r.r.put(this.n, this.o);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final boolean add(Object obj) {
+    public final boolean add(Object r4) {
         b();
-        boolean zIsEmpty = this.o.isEmpty();
-        boolean zAdd = this.o.add(obj);
-        if (zAdd) {
-            this.r.s++;
-            if (zIsEmpty) {
-                a();
-            }
-        }
-        return zAdd;
+        boolean r0 = this.o.isEmpty();
+        boolean r5 = this.o.add(r4);
+        if (r5 == false) goto L7;
+        this.r.s++;
+        if (r0 == false) goto L7;
+        a();
+    L7:
+        return r5;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final boolean addAll(Collection collection) {
-        if (collection.isEmpty()) {
-            return false;
-        }
-        int size = size();
-        boolean zAddAll = this.o.addAll(collection);
-        if (zAddAll) {
-            this.r.s += this.o.size() - size;
-            if (size == 0) {
-                a();
-            }
-        }
-        return zAddAll;
+    public final boolean addAll(Collection r5) {
+        if (r5.isEmpty() == false) goto L6;
+        return false;
+    L6:
+        int r0 = size();
+        boolean r6 = this.o.addAll(r5);
+        if (r6 == false) goto L11;
+        this.r.s += this.o.size() - r0;
+        if (r0 != 0) goto L11;
+        a();
+    L11:
+        return r6;
     }
 
     public final void b() {
-        Collection collection;
-        m1 m1Var = this.p;
-        if (m1Var != null) {
-            m1Var.b();
-            if (m1Var.o == this.q) {
-                return;
-            }
-            kf2.c();
-            return;
-        }
-        if (!this.o.isEmpty() || (collection = (Collection) this.r.r.get(this.n)) == null) {
-            return;
-        }
-        this.o = collection;
+        m1 r0 = this.p;
+        if (r0 == null) goto L10;
+        r0.b();
+        if (r0.o == this.q) goto L17;
+        kf2.c();
+        return;
+    L17:
+        return;
+    L10:
+        if (this.o.isEmpty() == false) goto L15;
+        Collection r1 = (Collection) this.r.r.get(this.n);
+        if (r1 == null) goto L16;
+        this.o = r1;
+        return;
+    L16:
+        return;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
     public final void clear() {
-        int size = size();
-        if (size == 0) {
-            return;
-        }
+        int r0 = size();
+        if (r0 != 0) goto L5;
+        return;
+    L5:
         this.o.clear();
-        this.r.s -= size;
+        this.r.s -= r0;
         d();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final boolean contains(Object obj) {
+    public final boolean contains(Object r1) {
         b();
-        return this.o.contains(obj);
+        return this.o.contains(r1);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final boolean containsAll(Collection collection) {
+    public final boolean containsAll(Collection r1) {
         b();
-        return this.o.containsAll(collection);
+        return this.o.containsAll(r1);
     }
 
     public final void d() {
-        m1 m1Var = this.p;
-        if (m1Var != null) {
-            m1Var.d();
-        } else if (this.o.isEmpty()) {
-            this.r.r.remove(this.n);
-        }
+        m1 r0 = this.p;
+        if (r0 == null) goto L7;
+        r0.d();
+        return;
+    L7:
+        if (this.o.isEmpty() == false) goto L10;
+        this.r.r.remove(this.n);
+        return;
     }
 
     @Override // java.util.Collection
-    public final boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
+    public final boolean equals(Object r1) {
+        if (r1 != this) goto L5;
+        return true;
+    L5:
         b();
-        return this.o.equals(obj);
+        return this.o.equals(r1);
     }
 
     @Override // java.util.Collection
@@ -131,40 +140,40 @@ public abstract class m1 extends AbstractCollection {
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final boolean remove(Object obj) {
+    public final boolean remove(Object r3) {
         b();
-        boolean zRemove = this.o.remove(obj);
-        if (zRemove) {
-            this.r.s--;
-            d();
-        }
-        return zRemove;
+        boolean r4 = this.o.remove(r3);
+        if (r4 == false) goto L5;
+        this.r.s--;
+        d();
+    L5:
+        return r4;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public boolean removeAll(Collection collection) {
-        if (collection.isEmpty()) {
-            return false;
-        }
-        int size = size();
-        boolean zRemoveAll = this.o.removeAll(collection);
-        if (zRemoveAll) {
-            this.r.s += this.o.size() - size;
-            d();
-        }
-        return zRemoveAll;
+    public boolean removeAll(Collection r4) {
+        if (r4.isEmpty() == false) goto L6;
+        return false;
+    L6:
+        int r0 = size();
+        boolean r5 = this.o.removeAll(r4);
+        if (r5 == false) goto L9;
+        this.r.s += this.o.size() - r0;
+        d();
+    L9:
+        return r5;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final boolean retainAll(Collection collection) {
-        collection.getClass();
-        int size = size();
-        boolean zRetainAll = this.o.retainAll(collection);
-        if (zRetainAll) {
-            this.r.s += this.o.size() - size;
-            d();
-        }
-        return zRetainAll;
+    public final boolean retainAll(Collection r4) {
+        r4.getClass();
+        int r0 = size();
+        boolean r5 = this.o.retainAll(r4);
+        if (r5 == false) goto L5;
+        this.r.s += this.o.size() - r0;
+        d();
+    L5:
+        return r5;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection

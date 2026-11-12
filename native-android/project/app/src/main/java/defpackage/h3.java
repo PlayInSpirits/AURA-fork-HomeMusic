@@ -7,18 +7,18 @@ import android.view.accessibility.AccessibilityManager;
 public final class h3 implements AccessibilityManager.TouchExplorationStateChangeListener {
     public final g3 n;
 
-    public h3(g3 g3Var) {
-        this.n = g3Var;
+    public h3(g3 r1) {
+        this.n = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof h3) {
-            return this.n.equals(((h3) obj).n);
-        }
+    public final boolean equals(Object r2) {
+        if (this != r2) goto L6;
+        return true;
+    L6:
+        if ((r2 instanceof h3) == true) goto L10;
         return false;
+    L10:
+        return this.n.equals(((h3) r2).n);
     }
 
     public final int hashCode() {
@@ -26,7 +26,7 @@ public final class h3 implements AccessibilityManager.TouchExplorationStateChang
     }
 
     @Override // android.view.accessibility.AccessibilityManager.TouchExplorationStateChangeListener
-    public final void onTouchExplorationStateChanged(boolean z) {
-        this.n.onTouchExplorationStateChanged(z);
+    public final void onTouchExplorationStateChanged(boolean r1) {
+        this.n.onTouchExplorationStateChanged(r1);
     }
 }

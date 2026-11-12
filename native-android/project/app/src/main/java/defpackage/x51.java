@@ -5,8 +5,8 @@ package defpackage;
 public final class x51 implements q34 {
     public final p34 a;
 
-    public x51(Throwable th) {
-        this.a = new p34(this, th, 2);
+    public x51(Throwable r3) {
+        this.a = new p34(this, r3, 2);
     }
 
     @Override // defpackage.q34

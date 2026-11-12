@@ -10,17 +10,18 @@ public final class iy0 implements jy0 {
 
     @Override // defpackage.jy0
     public final boolean a() {
-        if (this.a == null) {
-            try {
-                Method declaredMethod = Build.class.getDeclaredMethod("getLong", String.class);
-                declaredMethod.setAccessible(true);
-                Long l = (Long) declaredMethod.invoke(null, "ro.build.version.oneui");
-                l.longValue();
-                this.a = l;
-            } catch (Exception unused) {
-                this.a = -1L;
-            }
-        }
-        return this.a.longValue() >= 40100;
+        if (this.a != null) goto L8;
+        Method r0 = Build.class.getDeclaredMethod("getLong", new Class[]{String.class});     // Catch: Exception -> L6
+        r0.setAccessible(true);     // Catch: Exception -> L6
+        Long r1 = (Long) r0.invoke(null, new Object[]{"ro.build.version.oneui"});     // Catch: Exception -> L6
+        r1.longValue();     // Catch: Exception -> L6
+        this.a = r1;     // Catch: Exception -> L6
+    L6:
+        this.a = -1L;
+    L8:
+        if (this.a.longValue() >= 40100) goto L14;
+        return false;
+    L14:
+        return true;
     }
 }

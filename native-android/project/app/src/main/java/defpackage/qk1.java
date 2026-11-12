@@ -4,66 +4,77 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class qk1 extends ba5 {
     @Override // defpackage.uo0
-    public final void a(uo0 uo0Var) {
-        yo0 yo0Var = this.h;
-        if (yo0Var.c && !yo0Var.j) {
-            yo0Var.d((int) ((((yo0) yo0Var.l.get(0)).g * ((pk1) this.b).p0) + 0.5f));
-        }
+    public final void a(uo0 r3) {
+        yo0 r4 = this.h;
+        if (r4.c == true) goto L6;
+        return;
+    L6:
+        if (r4.j == false) goto L8;
+        return;
+    L8:
+        r4.d((int) ((((yo0) r4.l.get(0)).g * ((pk1) this.b).p0) + 0.5f));
     }
 
     @Override // defpackage.ba5
     public final void d() {
-        jc0 jc0Var = this.b;
-        pk1 pk1Var = (pk1) jc0Var;
-        int i = pk1Var.q0;
-        int i2 = pk1Var.r0;
-        int i3 = pk1Var.t0;
-        yo0 yo0Var = this.h;
-        if (i3 == 1) {
-            if (i != -1) {
-                yo0Var.l.add(jc0Var.S.d.h);
-                this.b.S.d.h.k.add(yo0Var);
-                yo0Var.f = i;
-            } else if (i2 != -1) {
-                yo0Var.l.add(jc0Var.S.d.i);
-                this.b.S.d.i.k.add(yo0Var);
-                yo0Var.f = -i2;
-            } else {
-                yo0Var.b = true;
-                yo0Var.l.add(jc0Var.S.d.i);
-                this.b.S.d.i.k.add(yo0Var);
-            }
-            m(this.b.d.h);
-            m(this.b.d.i);
-            return;
-        }
-        if (i != -1) {
-            yo0Var.l.add(jc0Var.S.e.h);
-            this.b.S.e.h.k.add(yo0Var);
-            yo0Var.f = i;
-        } else if (i2 != -1) {
-            yo0Var.l.add(jc0Var.S.e.i);
-            this.b.S.e.i.k.add(yo0Var);
-            yo0Var.f = -i2;
-        } else {
-            yo0Var.b = true;
-            yo0Var.l.add(jc0Var.S.e.i);
-            this.b.S.e.i.k.add(yo0Var);
-        }
+        jc0 r0 = this.b;
+        pk1 r1 = (pk1) r0;
+        int r2 = r1.q0;
+        int r3 = r1.r0;
+        int r4 = r1.t0;
+        yo0 r5 = this.h;
+        if (r4 != 1) goto L11;
+        if (r2 == (-1)) goto L6;
+        r5.l.add(r0.S.d.h);
+        this.b.S.d.h.k.add(r5);
+        r5.f = r2;
+    L9:
+        m(this.b.d.h);
+        m(this.b.d.i);
+        return;
+    L6:
+        if (r3 == (-1)) goto L8;
+        r5.l.add(r0.S.d.i);
+        this.b.S.d.i.k.add(r5);
+        r5.f = -r3;
+        goto L9
+    L8:
+        r5.b = true;
+        r5.l.add(r0.S.d.i);
+        this.b.S.d.i.k.add(r5);
+        goto L9
+    L11:
+        if (r2 == (-1)) goto L13;
+        r5.l.add(r0.S.e.h);
+        this.b.S.e.h.k.add(r5);
+        r5.f = r2;
+    L16:
         m(this.b.e.h);
         m(this.b.e.i);
+        return;
+    L13:
+        if (r3 == (-1)) goto L15;
+        r5.l.add(r0.S.e.i);
+        this.b.S.e.i.k.add(r5);
+        r5.f = -r3;
+        goto L16
+    L15:
+        r5.b = true;
+        r5.l.add(r0.S.e.i);
+        this.b.S.e.i.k.add(r5);
+        goto L16
     }
 
     @Override // defpackage.ba5
     public final void e() {
-        jc0 jc0Var = this.b;
-        int i = ((pk1) jc0Var).t0;
-        yo0 yo0Var = this.h;
-        if (i == 1) {
-            jc0Var.X = yo0Var.g;
-        } else {
-            jc0Var.Y = yo0Var.g;
-        }
+        jc0 r0 = this.b;
+        int r1 = ((pk1) r0).t0;
+        yo0 r3 = this.h;
+        if (r1 != 1) goto L6;
+        r0.X = r3.g;
+        return;
+    L6:
+        r0.Y = r3.g;
     }
 
     @Override // defpackage.ba5
@@ -76,9 +87,9 @@ public final class qk1 extends ba5 {
         return false;
     }
 
-    public final void m(yo0 yo0Var) {
-        yo0 yo0Var2 = this.h;
-        yo0Var2.k.add(yo0Var);
-        yo0Var.l.add(yo0Var2);
+    public final void m(yo0 r2) {
+        yo0 r1 = this.h;
+        r1.k.add(r2);
+        r2.l.add(r1);
     }
 }

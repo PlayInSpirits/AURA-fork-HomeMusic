@@ -8,24 +8,28 @@ public final /* synthetic */ class c41 implements qc2, it2 {
     public final /* synthetic */ int n;
     public final /* synthetic */ List o;
 
-    public /* synthetic */ c41(List list, int i) {
-        this.n = i;
-        this.o = list;
+    public /* synthetic */ c41(List r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.it2
-    public Object h(tn2 tn2Var, fr2 fr2Var, int i) {
-        int i2 = this.n;
-        List list = this.o;
-        switch (i2) {
-            case 1:
-                break;
-        }
-        return tn2Var.o(fr2Var, list);
+    public Object h(tn2 r1, fr2 r2, int r3) {
+        int r4 = this.n;
+        List r0 = this.o;
+        switch(r4) {
+            case 1: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return r1.o(r2, r0);
+    L7:
+        return r1.o(r2, r0);
     }
 
     @Override // defpackage.qc2
-    public void invoke(Object obj) {
-        ((oi3) obj).K(this.o);
+    public void invoke(Object r1) {
+        oi3 r2 = (oi3) r1;
+        r2.K(this.o);
     }
 }

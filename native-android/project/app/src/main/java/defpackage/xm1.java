@@ -9,11 +9,11 @@ public final class xm1 {
     public final long d;
     public final boolean e;
 
-    public xm1(long j, boolean z, long j2, long j3, boolean z2) {
-        this.a = j;
-        this.b = z;
-        this.c = j2;
-        this.d = j3;
-        this.e = z2;
+    public xm1(long r1, boolean r3, long r4, long r6, boolean r8) {
+        this.a = r1;
+        this.b = r3;
+        this.c = r4;
+        this.d = r6;
+        this.e = r8;
     }
 }

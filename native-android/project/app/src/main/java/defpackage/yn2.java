@@ -7,17 +7,18 @@ import android.os.Bundle;
 public final class yn2 implements ao2 {
     public final /* synthetic */ bj2 n;
 
-    public yn2(bj2 bj2Var) {
-        this.n = bj2Var;
+    public yn2(bj2 r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.ao2
-    public final void a(int i, int i2, int i3) {
-        Bundle bundle = new Bundle();
-        bundle.putInt("play_next_insert_pos", i);
-        bundle.putInt("play_next_count", i2);
-        bundle.putInt("play_next_target_count", i3);
-        hw.b(this.n.b1(new va4("com.eddyizm.tempus.PLAY_NEXT_FIXUP", Bundle.EMPTY), bundle), new tv1(), gq0.n);
+    public final void a(int r3, int r4, int r5) {
+        Bundle r0 = new Bundle();
+        r0.putInt("play_next_insert_pos", r3);
+        r0.putInt("play_next_count", r4);
+        r0.putInt("play_next_target_count", r5);
+        va4 r6 = new va4("com.eddyizm.tempus.PLAY_NEXT_FIXUP", Bundle.EMPTY);
+        hw.b(this.n.b1(r6, r0), new tv1(), gq0.n);
     }
 
     @Override // defpackage.ao2

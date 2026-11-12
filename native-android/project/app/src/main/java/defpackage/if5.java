@@ -8,25 +8,32 @@ import java.util.WeakHashMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class if5 {
-    public static final Set b = Collections.newSetFromMap(new WeakHashMap());
+    public static final Set b = null;
     public final dj1 a;
 
-    public if5(dj1 dj1Var) {
-        this.a = dj1Var;
+    static {
+        b = Collections.newSetFromMap(new WeakHashMap());
     }
 
-    public final wg5 a(wg5 wg5Var) {
-        boolean z = true;
-        if (!wg5Var.i && !((Boolean) BasePendingResult.j.get()).booleanValue()) {
-            z = false;
-        }
-        wg5Var.i = z;
-        dj1 dj1Var = this.a;
-        ij1 ij1Var = dj1Var.j;
-        ij1Var.getClass();
-        pf5 pf5Var = new pf5(new vf5(wg5Var), ij1Var.v.get(), dj1Var);
-        zw2 zw2Var = ij1Var.A;
-        zw2Var.sendMessage(zw2Var.obtainMessage(4, pf5Var));
-        return wg5Var;
+    public if5(dj1 r1) {
+        this.a = r1;
+    }
+
+    public final wg5 a(wg5 r5) {
+        boolean r1 = true;
+        if (r5.i == false) goto L5;
+    L8:
+        r5.i = r1;
+        dj1 r4 = this.a;
+        ij1 r0 = r4.j;
+        r0.getClass();
+        pf5 r3 = new pf5(new vf5(r5), r0.v.get(), r4);
+        zw2 r6 = r0.A;
+        r6.sendMessage(r6.obtainMessage(4, r3));
+        return r5;
+    L5:
+        if (((Boolean) BasePendingResult.j.get()).booleanValue() == true) goto L8;
+        r1 = false;
+        goto L8
     }
 }

@@ -1,7 +1,6 @@
 package defpackage;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -9,10 +8,10 @@ public final class b94 extends yw {
     public final transient byte[][] r;
     public final transient int[] s;
 
-    public b94(byte[][] bArr, int[] iArr) {
+    public b94(byte[][] r2, int[] r3) {
         super(yw.q.n);
-        this.r = bArr;
-        this.s = iArr;
+        this.r = r2;
+        this.s = r3;
     }
 
     @Override // defpackage.yw
@@ -21,23 +20,25 @@ public final class b94 extends yw {
     }
 
     @Override // defpackage.yw
-    public final yw c(String str) throws NoSuchAlgorithmException {
-        MessageDigest messageDigest = MessageDigest.getInstance(str);
-        byte[][] bArr = this.r;
-        int length = bArr.length;
-        int i = 0;
-        int i2 = 0;
-        while (i < length) {
-            int[] iArr = this.s;
-            int i3 = iArr[length + i];
-            int i4 = iArr[i];
-            messageDigest.update(bArr[i], i3, i4 - i2);
-            i++;
-            i2 = i4;
-        }
-        byte[] bArrDigest = messageDigest.digest();
-        bArrDigest.getClass();
-        return new yw(bArrDigest);
+    public final yw c(String r8) {
+        MessageDigest r9 = MessageDigest.getInstance(r8);
+        byte[][] r0 = this.r;
+        int r1 = r0.length;
+        int r2 = 0;
+        int r3 = 0;
+    L3:
+        if (r2 >= r1) goto L5;
+        int[] r5 = this.s;
+        int r4 = r5[r1 + r2];
+        int r6 = r5[r2];
+        r9.update(r0[r2], r4, r6 - r3);
+        r2 = r2 + 1;
+        r3 = r6;
+        goto L3
+    L5:
+        byte[] r7 = r9.digest();
+        r7.getClass();
+        return new yw(r7);
     }
 
     @Override // defpackage.yw
@@ -51,23 +52,23 @@ public final class b94 extends yw {
     }
 
     @Override // defpackage.yw
-    public final boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj instanceof yw) {
-            yw ywVar = (yw) obj;
-            if (ywVar.d() == d() && m(0, ywVar, d())) {
-                return true;
-            }
-        }
+    public final boolean equals(Object r4) {
+        if (r4 != this) goto L5;
+        return true;
+    L5:
+        if ((r4 instanceof yw) == false) goto L12;
+        yw r5 = (yw) r4;
+        if (r5.d() != d()) goto L12;
+        if (m(0, r5, d()) == false) goto L12;
+        return true;
+    L12:
         return false;
     }
 
     @Override // defpackage.yw
-    public final int f(int i, byte[] bArr) {
-        bArr.getClass();
-        return t().f(i, bArr);
+    public final int f(int r1, byte[] r2) {
+        r2.getClass();
+        return t().f(r1, r2);
     }
 
     @Override // defpackage.yw
@@ -77,148 +78,179 @@ public final class b94 extends yw {
 
     @Override // defpackage.yw
     public final int hashCode() {
-        int i = this.o;
-        if (i != 0) {
-            return i;
-        }
-        byte[][] bArr = this.r;
-        int length = bArr.length;
-        int i2 = 0;
-        int i3 = 1;
-        int i4 = 0;
-        while (i2 < length) {
-            int[] iArr = this.s;
-            int i5 = iArr[length + i2];
-            int i6 = iArr[i2];
-            byte[] bArr2 = bArr[i2];
-            int i7 = (i6 - i4) + i5;
-            while (i5 < i7) {
-                i3 = (i3 * 31) + bArr2[i5];
-                i5++;
-            }
-            i2++;
-            i4 = i6;
-        }
-        this.o = i3;
-        return i3;
+        int r0 = this.o;
+        if (r0 == 0) goto L5;
+        return r0;
+    L5:
+        byte[][] r1 = this.r;
+        int r2 = r1.length;
+        int r3 = 0;
+        int r4 = 1;
+        int r5 = 0;
+    L6:
+        if (r3 >= r2) goto L11;
+        int[] r6 = this.s;
+        int r7 = r6[r2 + r3];
+        int r8 = r6[r3];
+        byte[] r9 = r1[r3];
+        int r10 = (r8 - r5) + r7;
+    L8:
+        if (r7 >= r10) goto L10;
+        r4 = (r4 * 31) + r9[r7];
+        r7 = r7 + 1;
+        goto L8
+    L10:
+        r3 = r3 + 1;
+        r5 = r8;
+        goto L6
+    L11:
+        this.o = r4;
+        return r4;
     }
 
     @Override // defpackage.yw
-    public final byte i(int i) {
-        byte[][] bArr = this.r;
-        int length = bArr.length - 1;
-        int[] iArr = this.s;
-        zz1.i(iArr[length], i, 1L);
-        int iQ = wr1.Q(this, i);
-        return bArr[iQ][(i - (iQ == 0 ? 0 : iArr[iQ - 1])) + iArr[bArr.length + iQ]];
+    public final byte i(int r10) {
+        byte[][] r0 = this.r;
+        int r1 = r0.length - 1;
+        int[] r2 = this.s;
+        zz1.i(r2[r1], r10, 1);
+        int r9 = wr1.Q(this, r10);
+        if (r9 != 0) goto L5;
+        int r3 = 0;
+    L7:
+        return r0[r9][(r10 - r3) + r2[r0.length + r9]];
+    L5:
+        r3 = r2[r9 - 1];
+        goto L7
     }
 
     @Override // defpackage.yw
-    public final int j(byte[] bArr) {
-        bArr.getClass();
-        return t().j(bArr);
+    public final int j(byte[] r1) {
+        r1.getClass();
+        return t().j(r1);
     }
 
     @Override // defpackage.yw
-    public final boolean l(int i, int i2, int i3, byte[] bArr) {
-        bArr.getClass();
-        if (i < 0 || i > d() - i3 || i2 < 0 || i2 > bArr.length - i3) {
-            return false;
-        }
-        int i4 = i3 + i;
-        int iQ = wr1.Q(this, i);
-        while (i < i4) {
-            int[] iArr = this.s;
-            int i5 = iQ == 0 ? 0 : iArr[iQ - 1];
-            int i6 = iArr[iQ] - i5;
-            byte[][] bArr2 = this.r;
-            int i7 = iArr[bArr2.length + iQ];
-            int iMin = Math.min(i4, i6 + i5) - i;
-            if (!zz1.e((i - i5) + i7, i2, iMin, bArr2[iQ], bArr)) {
-                return false;
-            }
-            i2 += iMin;
-            i += iMin;
-            iQ++;
-        }
+    public final boolean l(int r8, int r9, int r10, byte[] r11) {
+        r11.getClass();
+        if (r8 >= 0) goto L5;
+    L22:
+        return false;
+    L5:
+        if (r8 > (d() - r10)) goto L22;
+        if (r9 < 0) goto L22;
+        if (r9 > (r11.length - r10)) goto L22;
+        int r12 = r10 + r8;
+        int r1 = wr1.Q(this, r8);
+    L11:
+        if (r8 >= r12) goto L20;
+        int[] r2 = this.s;
+        if (r1 != 0) goto L15;
+        int r3 = 0;
+    L16:
+        int r4 = r2[r1] - r3;
+        byte[][] r5 = this.r;
+        int r6 = r2[r5.length + r1];
+        int r7 = Math.min(r12, r4 + r3) - r8;
+        if (zz1.e((r8 - r3) + r6, r9, r7, r5[r1], r11) == false) goto L18;
+        r9 = r9 + r7;
+        r8 = r8 + r7;
+        r1 = r1 + 1;
+        goto L11
+    L18:
+        return false;
+    L15:
+        r3 = r2[r1 - 1];
+        goto L16
+    L20:
         return true;
     }
 
     @Override // defpackage.yw
-    public final boolean m(int i, yw ywVar, int i2) {
-        ywVar.getClass();
-        if (i >= 0 && i <= d() - i2) {
-            int i3 = i2 + i;
-            int iQ = wr1.Q(this, i);
-            int i4 = 0;
-            while (i < i3) {
-                int[] iArr = this.s;
-                int i5 = iQ == 0 ? 0 : iArr[iQ - 1];
-                int i6 = iArr[iQ] - i5;
-                byte[][] bArr = this.r;
-                int i7 = iArr[bArr.length + iQ];
-                int iMin = Math.min(i3, i6 + i5) - i;
-                if (ywVar.l(i4, (i - i5) + i7, iMin, bArr[iQ])) {
-                    i4 += iMin;
-                    i += iMin;
-                    iQ++;
-                }
-            }
-            return true;
-        }
+    public final boolean m(int r9, yw r10, int r11) {
+        r10.getClass();
+        if (r9 >= 0) goto L5;
+    L19:
         return false;
+    L5:
+        if (r9 > (d() - r11)) goto L19;
+        int r12 = r11 + r9;
+        int r1 = wr1.Q(this, r9);
+        int r2 = 0;
+    L8:
+        if (r9 >= r12) goto L17;
+        int[] r3 = this.s;
+        if (r1 != 0) goto L12;
+        int r4 = 0;
+    L13:
+        int r5 = r3[r1] - r4;
+        byte[][] r6 = this.r;
+        int r7 = r3[r6.length + r1];
+        int r8 = Math.min(r12, r5 + r4) - r9;
+        if (r10.l(r2, (r9 - r4) + r7, r8, r6[r1]) == false) goto L19;
+        r2 = r2 + r8;
+        r9 = r9 + r8;
+        r1 = r1 + 1;
+        goto L8
+    L12:
+        r4 = r3[r1 - 1];
+        goto L13
+    L17:
+        return true;
     }
 
     @Override // defpackage.yw
-    public final yw n(int i, int i2) {
-        if (i2 == -1234567890) {
-            i2 = d();
-        }
-        if (i < 0) {
-            kf2.e(b11.j(i, "beginIndex=", " < 0"));
-            return null;
-        }
-        if (i2 > d()) {
-            StringBuilder sbJ = f34.j(i2, "endIndex=", " > length(");
-            sbJ.append(d());
-            sbJ.append(')');
-            throw new IllegalArgumentException(sbJ.toString().toString());
-        }
-        int i3 = i2 - i;
-        if (i3 < 0) {
-            kf2.e(xa3.e(i2, i, "endIndex=", " < beginIndex="));
-            return null;
-        }
-        if (i == 0 && i2 == d()) {
-            return this;
-        }
-        if (i == i2) {
-            return yw.q;
-        }
-        int iQ = wr1.Q(this, i);
-        int iQ2 = wr1.Q(this, i2 - 1);
-        byte[][] bArr = this.r;
-        byte[][] bArr2 = (byte[][]) ti.e0(bArr, iQ, iQ2 + 1);
-        int[] iArr = new int[bArr2.length * 2];
-        int[] iArr2 = this.s;
-        if (iQ <= iQ2) {
-            int i4 = iQ;
-            int i5 = 0;
-            while (true) {
-                iArr[i5] = Math.min(iArr2[i4] - i, i3);
-                int i6 = i5 + 1;
-                iArr[i5 + bArr2.length] = iArr2[bArr.length + i4];
-                if (i4 == iQ2) {
-                    break;
-                }
-                i4++;
-                i5 = i6;
-            }
-        }
-        int i7 = iQ != 0 ? iArr2[iQ - 1] : 0;
-        int length = bArr2.length;
-        iArr[length] = (i - i7) + iArr[length];
-        return new b94(bArr2, iArr);
+    public final yw n(int r11, int r12) {
+        if (r12 != (-1234567890)) goto L6;
+        r12 = d();
+    L6:
+        if (r11 >= 0) goto L8;
+        kf2.e(b11.j(r11, "beginIndex=", " < 0"));
+        return null;
+    L8:
+        if (r12 > d()) goto L31;
+        int r1 = r12 - r11;
+        if (r1 < 0) goto L29;
+        if (r11 == 0) goto L13;
+    L15:
+        if (r11 == r12) goto L17;
+        int r0 = wr1.Q(this, r11);
+        int r13 = wr1.Q(this, r12 - 1);
+        byte[][] r3 = this.r;
+        byte[][] r2 = (byte[][]) ti.e0(r3, r0, r13 + 1);
+        int[] r4 = new int[r2.length * 2];
+        int r5 = 0;
+        int[] r10 = this.s;
+        if (r0 > r13) goto L24;
+        int r7 = r0;
+        int r6 = 0;
+    L21:
+        r4[r6] = Math.min(r10[r7] - r11, r1);
+        int r8 = r6 + 1;
+        r4[r6 + r2.length] = r10[r3.length + r7];
+        if (r7 == r13) goto L24;
+        r7 = r7 + 1;
+        r6 = r8;
+    L24:
+        if (r0 == 0) goto L27;
+        r5 = r10[r0 - 1];
+    L27:
+        int r14 = r2.length;
+        r4[r14] = (r11 - r5) + r4[r14];
+        return new b94(r2, r4);
+    L17:
+        return yw.q;
+    L13:
+        if (r12 != d()) goto L15;
+        return this;
+    L29:
+        kf2.e(xa3.e(r12, r11, "endIndex=", " < beginIndex="));
+        return null;
+    L31:
+        StringBuilder r15 = f34.j(r12, "endIndex=", " > length(");
+        r15.append(d());
+        r15.append(')');
+        throw new IllegalArgumentException(r15.toString().toString());
     }
 
     @Override // defpackage.yw
@@ -227,52 +259,62 @@ public final class b94 extends yw {
     }
 
     @Override // defpackage.yw
-    public final void r(tv tvVar, int i) {
-        int iQ = wr1.Q(this, 0);
-        int i2 = 0;
-        while (i2 < i) {
-            int[] iArr = this.s;
-            int i3 = iQ == 0 ? 0 : iArr[iQ - 1];
-            int i4 = iArr[iQ] - i3;
-            byte[][] bArr = this.r;
-            int i5 = iArr[bArr.length + iQ];
-            int iMin = Math.min(i, i4 + i3) - i2;
-            int i6 = (i2 - i3) + i5;
-            t84 t84Var = new t84(bArr[iQ], i6, i6 + iMin, true);
-            t84 t84Var2 = tvVar.n;
-            if (t84Var2 == null) {
-                t84Var.g = t84Var;
-                t84Var.f = t84Var;
-                tvVar.n = t84Var;
-            } else {
-                t84 t84Var3 = t84Var2.g;
-                t84Var3.getClass();
-                t84Var3.b(t84Var);
-            }
-            i2 += iMin;
-            iQ++;
-        }
-        tvVar.o += (long) i;
+    public final void r(tv r10, int r11) {
+        int r1 = wr1.Q(this, 0);
+        int r2 = 0;
+    L3:
+        if (r2 >= r11) goto L13;
+        int[] r3 = this.s;
+        if (r1 != 0) goto L7;
+        int r4 = 0;
+    L8:
+        int r5 = r3[r1] - r4;
+        byte[][] r6 = this.r;
+        int r7 = r3[r6.length + r1];
+        int r8 = Math.min(r11, r5 + r4) - r2;
+        int r9 = (r2 - r4) + r7;
+        t84 r12 = new t84(r6[r1], r9, r9 + r8, true);
+        t84 r13 = r10.n;
+        if (r13 != null) goto L11;
+        r12.g = r12;
+        r12.f = r12;
+        r10.n = r12;
+    L12:
+        r2 = r2 + r8;
+        r1 = r1 + 1;
+        goto L3
+    L11:
+        t84 r14 = r13.g;
+        r14.getClass();
+        r14.b(r12);
+        goto L12
+    L7:
+        r4 = r3[r1 - 1];
+        goto L8
+    L13:
+        r10.o += (long) r11;
     }
 
     public final byte[] s() {
-        byte[] bArr = new byte[d()];
-        byte[][] bArr2 = this.r;
-        int length = bArr2.length;
-        int i = 0;
-        int i2 = 0;
-        int i3 = 0;
-        while (i < length) {
-            int[] iArr = this.s;
-            int i4 = iArr[length + i];
-            int i5 = iArr[i];
-            int i6 = i5 - i2;
-            ti.X(i3, i4, i4 + i6, bArr2[i], bArr);
-            i3 += i6;
-            i++;
-            i2 = i5;
-        }
-        return bArr;
+        byte[] r0 = new byte[d()];
+        byte[][] r1 = this.r;
+        int r2 = r1.length;
+        int r3 = 0;
+        int r4 = 0;
+        int r5 = 0;
+    L3:
+        if (r3 >= r2) goto L5;
+        int[] r7 = this.s;
+        int r6 = r7[r2 + r3];
+        int r8 = r7[r3];
+        int r9 = r8 - r4;
+        ti.X(r5, r6, r6 + r9, r1[r3], r0);
+        r5 = r5 + r9;
+        r3 = r3 + 1;
+        r4 = r8;
+        goto L3
+    L5:
+        return r0;
     }
 
     public final yw t() {

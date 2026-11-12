@@ -8,19 +8,18 @@ public final class ht extends c0 {
     public final Thread s;
     public final g21 t;
 
-    public ht(ne0 ne0Var, Thread thread, g21 g21Var) {
-        super(ne0Var, true);
-        this.s = thread;
-        this.t = g21Var;
+    public ht(ne0 r2, Thread r3, g21 r4) {
+        super(r2, true);
+        this.s = r3;
+        this.t = r4;
     }
 
     @Override // defpackage.a32
-    public final void l(Object obj) {
-        Thread threadCurrentThread = Thread.currentThread();
-        Thread thread = this.s;
-        if (h12.c(threadCurrentThread, thread)) {
-            return;
-        }
-        LockSupport.unpark(thread);
+    public final void l(Object r1) {
+        Thread r2 = Thread.currentThread();
+        Thread r0 = this.s;
+        if (h12.c(r2, r0) == true) goto L6;
+        LockSupport.unpark(r0);
+        return;
     }
 }

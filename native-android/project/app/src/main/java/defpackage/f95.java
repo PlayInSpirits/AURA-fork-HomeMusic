@@ -10,41 +10,41 @@ public final class f95 extends q12 {
     public final s12 b;
     public final WeakReference c;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public f95(s12 s12Var, y24 y24Var) {
-        super(y24Var.a);
-        y24Var.getClass();
-        this.b = s12Var;
-        this.c = new WeakReference(y24Var);
+    public f95(s12 r2, y24 r3) {
+        r3.getClass();
+        super(r3.a);
+        this.b = r2;
+        this.c = new WeakReference(r3);
     }
 
     @Override // defpackage.q12
-    public final void a(Set set) {
-        set.getClass();
-        q12 q12Var = (q12) this.c.get();
-        if (q12Var != null) {
-            q12Var.a(set);
-            return;
-        }
-        s12 s12Var = this.b;
-        s12Var.getClass();
-        ReentrantLock reentrantLock = s12Var.d;
-        reentrantLock.lock();
-        try {
-            d83 d83Var = (d83) s12Var.c.remove(this);
-            reentrantLock.unlock();
-            if (d83Var != null) {
-                jy4 jy4Var = s12Var.b;
-                int[] iArr = d83Var.b;
-                jy4Var.getClass();
-                iArr.getClass();
-                if (jy4Var.h.k(iArr)) {
-                    g12.Q(new r12(s12Var, null, 1));
-                }
-            }
-        } catch (Throwable th) {
-            reentrantLock.unlock();
-            throw th;
-        }
+    public final void a(Set r3) {
+        r3.getClass();
+        q12 r0 = (q12) this.c.get();
+        if (r0 != null) goto L15;
+        s12 r4 = this.b;
+        r4.getClass();
+        ReentrantLock r1 = r4.d;
+        r1.lock();
+        d83 r2 = (d83) r4.c.remove(this);     // Catch: Throwable -> L12
+        r1.unlock();
+        if (r2 == null) goto L19;
+        jy4 r5 = r4.b;
+        int[] r6 = r2.b;
+        r5.getClass();
+        r6.getClass();
+        if (r5.h.k(r6) == false) goto L20;
+        g12.Q(new r12(r4, null, 1));
+        return;
+    L20:
+        return;
+    L19:
+        return;
+    L12:
+        th = move-exception;
+        r1.unlock();
+        throw th;
+    L15:
+        r0.a(r3);
     }
 }

@@ -8,8 +8,8 @@ import java.io.ByteArrayInputStream;
 public final class re5 extends i90 {
     public final ZstdInputStream o;
 
-    public re5(ByteArrayInputStream byteArrayInputStream) {
-        this.o = new ZstdInputStream(new df0(byteArrayInputStream));
+    public re5(ByteArrayInputStream r3) {
+        this.o = new ZstdInputStream(new df0(r3));
     }
 
     @Override // java.io.InputStream
@@ -23,8 +23,14 @@ public final class re5 extends i90 {
     }
 
     @Override // java.io.InputStream
-    public final synchronized void mark(int i) {
-        this.o.mark(i);
+    public final synchronized void mark(int r2) {
+        monitor-enter(this);
+        this.o.mark(r2);     // Catch: Throwable -> L6
+        monitor-exit(this);
+        return;
+    L6:
+        th = move-exception;
+        throw th;
     }
 
     @Override // java.io.InputStream
@@ -34,19 +40,31 @@ public final class re5 extends i90 {
 
     @Override // java.io.InputStream
     public final int read() {
-        int i = this.o.read();
-        b(i == -1 ? 0 : 1);
-        return i;
+        int r0 = this.o.read();
+        if (r0 != (-1)) goto L5;
+        int r1 = 0;
+    L6:
+        b(r1);
+        return r0;
+    L5:
+        r1 = 1;
+        goto L6
     }
 
     @Override // java.io.InputStream
     public final synchronized void reset() {
-        this.o.reset();
+        monitor-enter(this);
+        this.o.reset();     // Catch: Throwable -> L6
+        monitor-exit(this);
+        return;
+    L6:
+        th = move-exception;
+        throw th;
     }
 
     @Override // java.io.InputStream
-    public final long skip(long j) {
-        return vr1.G(this.o, j);
+    public final long skip(long r1) {
+        return vr1.G(this.o, r1);
     }
 
     public final String toString() {
@@ -54,17 +72,17 @@ public final class re5 extends i90 {
     }
 
     @Override // java.io.InputStream
-    public final int read(byte[] bArr) {
-        return read(bArr, 0, bArr.length);
+    public final int read(byte[] r3) {
+        return read(r3, 0, r3.length);
     }
 
     @Override // java.io.InputStream
-    public final int read(byte[] bArr, int i, int i2) {
-        if (i2 == 0) {
-            return 0;
-        }
-        int i3 = this.o.read(bArr, i, i2);
-        b(i3);
-        return i3;
+    public final int read(byte[] r2, int r3, int r4) {
+        if (r4 != 0) goto L5;
+        return 0;
+    L5:
+        int r5 = this.o.read(r2, r3, r4);
+        b(r5);
+        return r5;
     }
 }

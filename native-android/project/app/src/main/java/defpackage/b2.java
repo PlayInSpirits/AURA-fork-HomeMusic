@@ -9,9 +9,9 @@ public final class b2 {
         new b2(new g0(1, "Failure occurred while trying to finish a future."));
     }
 
-    public b2(Throwable th) {
-        boolean z = g2.q;
-        th.getClass();
-        this.a = th;
+    public b2(Throwable r2) {
+        boolean r0 = g2.q;
+        r2.getClass();
+        this.a = r2;
     }
 }

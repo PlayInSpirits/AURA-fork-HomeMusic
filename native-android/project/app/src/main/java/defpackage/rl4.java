@@ -5,9 +5,9 @@ package defpackage;
 public interface rl4 {
     tl4 a();
 
-    default tl4 b(tl4 tl4Var, tl4 tl4Var2, tl4 tl4Var3) {
+    default tl4 b(tl4 r1, tl4 r2, tl4 r3) {
         return null;
     }
 
-    void d(tl4 tl4Var);
+    void d(tl4 r1);
 }

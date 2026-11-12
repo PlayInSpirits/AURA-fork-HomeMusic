@@ -8,17 +8,17 @@ public final /* synthetic */ class ot2 implements wc0 {
     public final /* synthetic */ un2 p;
     public final /* synthetic */ int q;
 
-    public /* synthetic */ ot2(ue1 ue1Var, ed2 ed2Var, un2 un2Var, int i) {
-        this.n = ue1Var;
-        this.o = ed2Var;
-        this.p = un2Var;
-        this.q = i;
+    public /* synthetic */ ot2(ue1 r1, ed2 r2, un2 r3, int r4) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
     }
 
     @Override // defpackage.wc0
-    public final void accept(Object obj) {
-        st2 st2Var = (st2) obj;
-        ue1 ue1Var = this.n;
-        st2Var.U(ue1Var.o, (mt2) ue1Var.p, this.o, this.p, this.q);
+    public final void accept(Object r7) {
+        st2 r0 = (st2) r7;
+        ue1 r8 = this.n;
+        r0.U(r8.o, (mt2) r8.p, this.o, this.p, this.q);
     }
 }

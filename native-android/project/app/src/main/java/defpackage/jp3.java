@@ -11,48 +11,61 @@ import androidx.recyclerview.widget.RecyclerView;
 public final class jp3 extends kw3 {
     public Drawable a;
     public int b;
-    public boolean c = true;
+    public boolean c;
     public final /* synthetic */ kp3 d;
 
-    public jp3(kp3 kp3Var) {
-        this.d = kp3Var;
+    public jp3(kp3 r1) {
+        this.d = r1;
+        this.c = true;
     }
 
     @Override // defpackage.kw3
-    public final void f(Rect rect, View view, RecyclerView recyclerView, yw3 yw3Var) {
-        if (i(view, recyclerView)) {
-            rect.bottom = this.b;
-        }
+    public final void f(Rect r1, View r2, RecyclerView r3, yw3 r4) {
+        if (i(r2, r3) == false) goto L6;
+        r1.bottom = this.b;
+        return;
     }
 
     @Override // defpackage.kw3
-    public final void h(Canvas canvas, RecyclerView recyclerView) {
-        if (this.a == null) {
-            return;
-        }
-        int childCount = recyclerView.getChildCount();
-        int width = recyclerView.getWidth();
-        for (int i = 0; i < childCount; i++) {
-            View childAt = recyclerView.getChildAt(i);
-            if (i(childAt, recyclerView)) {
-                int height = childAt.getHeight() + ((int) childAt.getY());
-                this.a.setBounds(0, height, width, this.b + height);
-                this.a.draw(canvas);
-            }
-        }
+    public final void h(Canvas r8, RecyclerView r9) {
+        if (this.a == null) goto L11;
+        int r0 = r9.getChildCount();
+        int r1 = r9.getWidth();
+        int r3 = 0;
+    L6:
+        if (r3 >= r0) goto L15;
+        View r4 = r9.getChildAt(r3);
+        if (i(r4, r9) == false) goto L10;
+        int r5 = r4.getHeight() + ((int) r4.getY());
+        this.a.setBounds(0, r5, r1, this.b + r5);
+        this.a.draw(r8);
+    L10:
+        r3 = r3 + 1;
+        goto L6
+    L15:
+        return;
     }
 
-    public final boolean i(View view, RecyclerView recyclerView) {
-        cx3 cx3VarM = recyclerView.M(view);
-        if (!(cx3VarM instanceof rp3) || !((rp3) cx3VarM).y) {
-            return false;
-        }
-        boolean z = this.c;
-        int iIndexOfChild = recyclerView.indexOfChild(view);
-        if (iIndexOfChild >= recyclerView.getChildCount() - 1) {
-            return z;
-        }
-        cx3 cx3VarM2 = recyclerView.M(recyclerView.getChildAt(iIndexOfChild + 1));
-        return (cx3VarM2 instanceof rp3) && ((rp3) cx3VarM2).x;
+    public final boolean i(View r3, RecyclerView r4) {
+        cx3 r0 = r4.M(r3);
+        if ((r0 instanceof rp3) == true) goto L5;
+        return false;
+    L5:
+        if (((rp3) r0).y == false) goto L16;
+        boolean r2 = this.c;
+        int r5 = r4.indexOfChild(r3);
+        if (r5 >= (r4.getChildCount() - 1)) goto L13;
+        cx3 r6 = r4.M(r4.getChildAt(r5 + 1));
+        if ((r6 instanceof rp3) == true) goto L11;
+        return false;
+    L11:
+        if (((rp3) r6).x == false) goto L18;
+        return true;
+    L18:
+        return false;
+    L13:
+        return r2;
+    L16:
+        return false;
     }
 }

@@ -6,15 +6,17 @@ public final class wp2 {
     public final Object a;
     public final int b;
 
-    public wp2(Object obj) {
-        this.a = obj;
-        if (obj instanceof String) {
-            this.b = 1;
-        } else if (obj instanceof wq2) {
-            this.b = 2;
-        } else {
-            nz2.c();
-            throw null;
-        }
+    public wp2(Object r2) {
+        this.a = r2;
+        if ((r2 instanceof String) == false) goto L7;
+        this.b = 1;
+        return;
+    L7:
+        if ((r2 instanceof wq2) == false) goto L10;
+        this.b = 2;
+        return;
+    L10:
+        nz2.c();
+        throw null;
     }
 }

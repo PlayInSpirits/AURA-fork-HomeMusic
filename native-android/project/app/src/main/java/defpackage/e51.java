@@ -9,10 +9,9 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 public final class e51 extends dq {
     public final /* synthetic */ ExtendedFloatingActionButton g;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public e51(ExtendedFloatingActionButton extendedFloatingActionButton, d34 d34Var) {
-        super(extendedFloatingActionButton, d34Var);
-        this.g = extendedFloatingActionButton;
+    public e51(ExtendedFloatingActionButton r1, d34 r2) {
+        this.g = r1;
+        super(r1, r2);
     }
 
     @Override // defpackage.dq
@@ -27,40 +26,41 @@ public final class e51 extends dq {
     }
 
     @Override // defpackage.dq
-    public final void f(Animator animator) {
-        d34 d34Var = this.d;
-        Animator animator2 = (Animator) d34Var.o;
-        if (animator2 != null) {
-            animator2.cancel();
-        }
-        d34Var.o = animator;
-        ExtendedFloatingActionButton extendedFloatingActionButton = this.g;
-        extendedFloatingActionButton.setVisibility(0);
-        extendedFloatingActionButton.G = 2;
+    public final void f(Animator r3) {
+        d34 r0 = this.d;
+        Animator r1 = (Animator) r0.o;
+        if (r1 == null) goto L5;
+        r1.cancel();
+    L5:
+        r0.o = r3;
+        ExtendedFloatingActionButton r2 = this.g;
+        r2.setVisibility(0);
+        r2.G = 2;
     }
 
     @Override // defpackage.dq
     public final void g() {
-        ExtendedFloatingActionButton extendedFloatingActionButton = this.g;
-        extendedFloatingActionButton.setVisibility(0);
-        extendedFloatingActionButton.setAlpha(1.0f);
-        extendedFloatingActionButton.setScaleY(1.0f);
-        extendedFloatingActionButton.setScaleX(1.0f);
+        ExtendedFloatingActionButton r1 = this.g;
+        r1.setVisibility(0);
+        r1.setAlpha(1.0f);
+        r1.setScaleY(1.0f);
+        r1.setScaleX(1.0f);
     }
 
     @Override // defpackage.dq
     public final boolean h() {
-        r00 r00Var = ExtendedFloatingActionButton.V;
-        ExtendedFloatingActionButton extendedFloatingActionButton = this.g;
-        int visibility = extendedFloatingActionButton.getVisibility();
-        int i = extendedFloatingActionButton.G;
-        if (visibility != 0) {
-            if (i != 2) {
-                return false;
-            }
-        } else if (i == 1) {
-            return false;
-        }
+        r00 r0 = ExtendedFloatingActionButton.V;
+        ExtendedFloatingActionButton r2 = this.g;
+        int r1 = r2.getVisibility();
+        int r3 = r2.G;
+        if (r1 != 0) goto L5;
+        if (r3 == 1) goto L11;
+    L8:
         return true;
+    L11:
+        return false;
+    L5:
+        if (r3 == 2) goto L8;
+        return false;
     }
 }

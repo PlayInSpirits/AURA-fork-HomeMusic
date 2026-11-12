@@ -6,27 +6,46 @@ import com.google.android.gms.fido.fido2.api.common.AttestationConveyancePrefere
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
-public enum hl implements Parcelable {
-    o("none"),
-    /* JADX INFO: Fake field, exist only in values array */
-    EF19("indirect"),
-    /* JADX INFO: Fake field, exist only in values array */
-    EF29("direct");
-
-    public static final Parcelable.Creator<hl> CREATOR = new ch5(25);
+public final enum hl extends Enum implements Parcelable {
+    public static final Parcelable.Creator<hl> CREATOR = null;
+    public static final hl o = null;
+    public static final /* synthetic */ hl[] p = null;
     public final String n;
 
-    hl(String str) {
-        this.n = str;
+    static {
+        hl r0 = new hl(0, "NONE", "none");
+        o = r0;
+        p = new hl[]{r0, new hl(1, "INDIRECT", "indirect"), new hl(2, "DIRECT", "direct")};
+        CREATOR = new ch5(25);
     }
 
-    public static hl a(String str) throws AttestationConveyancePreference$UnsupportedAttestationConveyancePreferenceException {
-        for (hl hlVar : values()) {
-            if (str.equals(hlVar.n)) {
-                return hlVar;
-            }
-        }
-        throw new AttestationConveyancePreference$UnsupportedAttestationConveyancePreferenceException(xa3.h("Attestation conveyance preference ", str, " not supported"));
+    public hl(int r1, String r2, String r3) {
+        super(r2, r1);
+        this.n = r3;
+    }
+
+    public static hl a(String r5) {
+        hl[] r0 = values();
+        int r1 = r0.length;
+        int r2 = 0;
+    L3:
+        if (r2 >= r1) goto L9;
+        hl r3 = r0[r2];
+        if (r5.equals(r3.n) == true) goto L6;
+        r2 = r2 + 1;
+        goto L3
+    L6:
+        return r3;
+    L9:
+        throw new AttestationConveyancePreference$UnsupportedAttestationConveyancePreferenceException(xa3.h("Attestation conveyance preference ", r5, " not supported"));
+    }
+
+    public static hl valueOf(String r1) {
+        return (hl) Enum.valueOf(hl.class, r1);
+    }
+
+    public static hl[] values() {
+        return (hl[]) p.clone();
     }
 
     @Override // android.os.Parcelable
@@ -40,7 +59,7 @@ public enum hl implements Parcelable {
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.n);
+    public final void writeToParcel(Parcel r1, int r2) {
+        r1.writeString(this.n);
     }
 }

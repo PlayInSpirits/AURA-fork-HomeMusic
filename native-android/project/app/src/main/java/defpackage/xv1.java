@@ -7,86 +7,109 @@ import java.util.ArrayList;
 public final class xv1 implements kg0 {
     public final ArrayList a;
 
-    public xv1(int i) {
-        switch (i) {
-            case 1:
-                this.a = new ArrayList();
-                break;
-            default:
-                this.a = new ArrayList();
-                break;
-        }
+    public xv1(int r1) {
+        switch(r1) {
+            case 1: goto L5;
+            default: goto L3;
+        };
+    L3:
+        this.a = new ArrayList();
+        return;
+    L5:
+        this.a = new ArrayList();
     }
 
     @Override // defpackage.kg0
-    public long a(long j) {
-        ArrayList arrayList = this.a;
-        if (arrayList.isEmpty()) {
-            return Long.MIN_VALUE;
-        }
-        if (j < ((lg0) arrayList.get(0)).b) {
-            return ((lg0) arrayList.get(0)).b;
-        }
-        for (int i = 1; i < arrayList.size(); i++) {
-            lg0 lg0Var = (lg0) arrayList.get(i);
-            long j2 = lg0Var.b;
-            long j3 = lg0Var.b;
-            if (j < j2) {
-                long j4 = ((lg0) arrayList.get(i - 1)).d;
-                return (j4 == -9223372036854775807L || j4 <= j || j4 >= j3) ? j3 : j4;
-            }
-        }
-        long j5 = ((lg0) te5.w(arrayList)).d;
-        if (j5 == -9223372036854775807L || j >= j5) {
-            return Long.MIN_VALUE;
-        }
-        return j5;
-    }
-
-    /* JADX WARN: Code duplicated, block: B:13:0x0023  */
-    @Override // defpackage.kg0
-    public boolean b(lg0 lg0Var, long j) {
-        boolean z;
-        long j2 = lg0Var.b;
-        rr2.l(j2 != -9223372036854775807L);
-        if (j2 <= j) {
-            long j3 = lg0Var.d;
-            if (j3 == -9223372036854775807L || j < j3) {
-                z = true;
-            } else {
-                z = false;
-            }
-        } else {
-            z = false;
-        }
-        ArrayList arrayList = this.a;
-        for (int size = arrayList.size() - 1; size >= 0; size--) {
-            if (j2 >= ((lg0) arrayList.get(size)).b) {
-                arrayList.add(size + 1, lg0Var);
-                return z;
-            }
-            if (((lg0) arrayList.get(size)).b <= j) {
-                z = false;
-            }
-        }
-        arrayList.add(0, lg0Var);
-        return z;
+    public long a(long r12) {
+        ArrayList r11 = this.a;
+        if (r11.isEmpty() == false) goto L6;
+        return Long.MIN_VALUE;
+    L6:
+        if (r12 < ((lg0) r11.get(0)).b) goto L8;
+        int r3 = 1;
+    L11:
+        if (r3 >= r11.size()) goto L23;
+        lg0 r4 = (lg0) r11.get(r3);
+        long r7 = r4.b;
+        long r9 = r4.b;
+        if (r12 < r7) goto L14;
+        r3 = r3 + 1;
+        goto L11
+    L14:
+        long r0 = ((lg0) r11.get(r3 - 1)).d;
+        if (r0 != (-9223372036854775807L)) goto L17;
+    L21:
+        return r9;
+    L17:
+        if (r0 <= r12) goto L21;
+        if (r0 >= r9) goto L21;
+        return r0;
+    L23:
+        long r5 = ((lg0) te5.w(r11)).d;
+        if (r5 != (-9223372036854775807L)) goto L26;
+    L28:
+        return Long.MIN_VALUE;
+    L26:
+        if (r12 >= r5) goto L28;
+        return r5;
+    L8:
+        return ((lg0) r11.get(0)).b;
     }
 
     @Override // defpackage.kg0
-    public yw1 c(long j) {
-        int iF = f(j);
-        if (iF == 0) {
-            vw1 vw1Var = yw1.o;
-            return gy3.r;
-        }
-        lg0 lg0Var = (lg0) this.a.get(iF - 1);
-        long j2 = lg0Var.d;
-        if (j2 == -9223372036854775807L || j < j2) {
-            return lg0Var.a;
-        }
-        vw1 vw1Var2 = yw1.o;
+    public boolean b(lg0 r10, long r11) {
+        long r0 = r10.b;
+        if (r0 == (-9223372036854775807L)) goto L5;
+        boolean r4 = true;
+    L6:
+        rr2.l(r4);
+        if (r0 > r11) goto L13;
+        long r7 = r10.d;
+        if (r7 != (-9223372036854775807L)) goto L11;
+    L12:
+        boolean r2 = true;
+    L14:
+        ArrayList r9 = this.a;
+        int r3 = r9.size() - 1;
+    L15:
+        if (r3 < 0) goto L24;
+        if (r0 >= ((lg0) r9.get(r3)).b) goto L18;
+        if (((lg0) r9.get(r3)).b > r11) goto L23;
+        r2 = false;
+    L23:
+        r3 = r3 - 1;
+        goto L15
+    L18:
+        r9.add(r3 + 1, r10);
+        return r2;
+    L24:
+        r9.add(0, r10);
+        return r2;
+    L11:
+        if (r11 < r7) goto L12;
+    L13:
+        r2 = false;
+        goto L14
+    L5:
+        r4 = false;
+        goto L6
+    }
+
+    @Override // defpackage.kg0
+    public yw1 c(long r5) {
+        int r0 = f(r5);
+        if (r0 != 0) goto L6;
+        vw1 r4 = yw1.o;
         return gy3.r;
+    L6:
+        lg0 r6 = (lg0) this.a.get(r0 - 1);
+        long r1 = r6.d;
+        if (r1 == (-9223372036854775807L)) goto L14;
+        if (r5 < r1) goto L14;
+        vw1 r7 = yw1.o;
+        return gy3.r;
+    L14:
+        return r6.a;
     }
 
     @Override // defpackage.kg0
@@ -95,52 +118,71 @@ public final class xv1 implements kg0 {
     }
 
     @Override // defpackage.kg0
-    public long d(long j) {
-        ArrayList arrayList = this.a;
-        if (arrayList.isEmpty() || j < ((lg0) arrayList.get(0)).b) {
-            return -9223372036854775807L;
-        }
-        for (int i = 1; i < arrayList.size(); i++) {
-            long j2 = ((lg0) arrayList.get(i)).b;
-            if (j == j2) {
-                return j2;
-            }
-            if (j < j2) {
-                lg0 lg0Var = (lg0) arrayList.get(i - 1);
-                long j3 = lg0Var.d;
-                return (j3 == -9223372036854775807L || j3 > j) ? lg0Var.b : j3;
-            }
-        }
-        lg0 lg0Var2 = (lg0) te5.w(arrayList);
-        long j4 = lg0Var2.d;
-        return (j4 == -9223372036854775807L || j < j4) ? lg0Var2.b : j4;
+    public long d(long r8) {
+        ArrayList r7 = this.a;
+        if (r7.isEmpty() == false) goto L5;
+    L30:
+        return -9223372036854775807L;
+    L5:
+        if (r8 < ((lg0) r7.get(0)).b) goto L30;
+        int r3 = 1;
+    L9:
+        if (r3 >= r7.size()) goto L22;
+        long r4 = ((lg0) r7.get(r3)).b;
+        if (r8 == r4) goto L12;
+        if (r8 < r4) goto L14;
+        r3 = r3 + 1;
+        goto L9
+    L14:
+        lg0 r9 = (lg0) r7.get(r3 - 1);
+        long r5 = r9.d;
+        if (r5 == (-9223372036854775807L)) goto L20;
+        if (r5 > r8) goto L20;
+        return r5;
+    L20:
+        return r9.b;
+    L12:
+        return r4;
+    L22:
+        lg0 r10 = (lg0) te5.w(r7);
+        long r6 = r10.d;
+        if (r6 == (-9223372036854775807L)) goto L29;
+        if (r8 < r6) goto L29;
+        return r6;
+    L29:
+        return r10.b;
     }
 
     @Override // defpackage.kg0
-    public void e(long j) {
-        int iF = f(j);
-        if (iF == 0) {
-            return;
-        }
-        ArrayList arrayList = this.a;
-        long j2 = ((lg0) arrayList.get(iF - 1)).d;
-        if (j2 == -9223372036854775807L || j2 >= j) {
-            iF--;
-        }
-        arrayList.subList(0, iF).clear();
+    public void e(long r6) {
+        int r0 = f(r6);
+        if (r0 != 0) goto L5;
+        return;
+    L5:
+        ArrayList r5 = this.a;
+        long r1 = ((lg0) r5.get(r0 - 1)).d;
+        if (r1 != (-9223372036854775807L)) goto L8;
+    L9:
+        r0 = r0 - 1;
+    L10:
+        r5.subList(0, r0).clear();
+        return;
+    L8:
+        if (r1 < r6) goto L10;
+        goto L9
     }
 
-    public int f(long j) {
-        int i = 0;
-        while (true) {
-            ArrayList arrayList = this.a;
-            if (i >= arrayList.size()) {
-                return arrayList.size();
-            }
-            if (j < ((lg0) arrayList.get(i)).b) {
-                return i;
-            }
-            i++;
-        }
+    public int f(long r4) {
+        int r0 = 0;
+    L3:
+        ArrayList r1 = this.a;
+        if (r0 >= r1.size()) goto L10;
+        if (r4 < ((lg0) r1.get(r0)).b) goto L7;
+        r0 = r0 + 1;
+        goto L3
+    L7:
+        return r0;
+    L10:
+        return r1.size();
     }
 }

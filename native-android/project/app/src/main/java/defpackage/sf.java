@@ -11,66 +11,75 @@ public final class sf extends si0 {
     public final /* synthetic */ int g;
     public final /* synthetic */ Object h;
 
-    public /* synthetic */ sf(int i, Object obj) {
-        this.g = i;
-        this.h = obj;
+    public /* synthetic */ sf(int r1, Object r2) {
+        this.g = r1;
+        this.h = r2;
     }
 
     @Override // defpackage.si0, defpackage.u75
     public void b() {
-        int i = this.g;
-        Object obj = this.h;
-        switch (i) {
-            case 0:
-                ((qf) obj).o.H.setVisibility(0);
-                break;
-            case 1:
-                bg bgVar = (bg) obj;
-                bgVar.H.setVisibility(0);
-                if (bgVar.H.getParent() instanceof View) {
-                    View view = (View) bgVar.H.getParent();
-                    WeakHashMap weakHashMap = j65.a;
-                    view.requestApplyInsets();
-                }
-                break;
-        }
+        int r0 = this.g;
+        Object r2 = this.h;
+        switch(r0) {
+            case 0: goto L9;
+            case 1: goto L5;
+            default: goto L4;
+        };
+    L4:
+        return;
+    L5:
+        bg r3 = (bg) r2;
+        r3.H.setVisibility(0);
+        if ((r3.H.getParent() instanceof View) == false) goto L11;
+        View r4 = (View) r3.H.getParent();
+        WeakHashMap r1 = j65.a;
+        r4.requestApplyInsets();
+        return;
+    L11:
+        return;
+    L9:
+        ((qf) r2).o.H.setVisibility(0);
     }
 
     @Override // defpackage.u75
     public final void c() {
-        int i = this.g;
-        Object obj = this.h;
-        switch (i) {
-            case 0:
-                bg bgVar = ((qf) obj).o;
-                bgVar.H.setAlpha(1.0f);
-                bgVar.K.d(null);
-                bgVar.K = null;
-                break;
-            case 1:
-                bg bgVar2 = (bg) obj;
-                bgVar2.H.setAlpha(1.0f);
-                bgVar2.K.d(null);
-                bgVar2.K = null;
-                break;
-            default:
-                bg bgVar3 = (bg) ((rm3) obj).o;
-                bgVar3.H.setVisibility(8);
-                PopupWindow popupWindow = bgVar3.I;
-                if (popupWindow != null) {
-                    popupWindow.dismiss();
-                } else if (bgVar3.H.getParent() instanceof View) {
-                    View view = (View) bgVar3.H.getParent();
-                    WeakHashMap weakHashMap = j65.a;
-                    view.requestApplyInsets();
-                }
-                bgVar3.H.e();
-                bgVar3.K.d(null);
-                bgVar3.K = null;
-                ViewGroup viewGroup = bgVar3.N;
-                WeakHashMap weakHashMap2 = j65.a;
-                viewGroup.requestApplyInsets();
-                break;
-        }
+        int r0 = this.g;
+        Object r3 = this.h;
+        switch(r0) {
+            case 0: goto L14;
+            case 1: goto L12;
+            default: goto L4;
+        };
+    L4:
+        bg r4 = (bg) ((rm3) r3).o;
+        r4.H.setVisibility(8);
+        PopupWindow r1 = r4.I;
+        if (r1 == null) goto L8;
+        r1.dismiss();
+    L10:
+        r4.H.e();
+        r4.K.d(null);
+        r4.K = null;
+        ViewGroup r5 = r4.N;
+        WeakHashMap r2 = j65.a;
+        r5.requestApplyInsets();
+        return;
+    L8:
+        if ((r4.H.getParent() instanceof View) == false) goto L10;
+        View r6 = (View) r4.H.getParent();
+        WeakHashMap r7 = j65.a;
+        r6.requestApplyInsets();
+        goto L10
+    L12:
+        bg r8 = (bg) r3;
+        r8.H.setAlpha(1.0f);
+        r8.K.d(null);
+        r8.K = null;
+        return;
+    L14:
+        bg r9 = ((qf) r3).o;
+        r9.H.setAlpha(1.0f);
+        r9.K.d(null);
+        r9.K = null;
     }
 }

@@ -8,45 +8,61 @@ public final class db1 implements bb1 {
     public final float[] a;
     public final float[] b;
 
-    public db1(float[] fArr, float[] fArr2) {
-        if (fArr.length != fArr2.length || fArr.length == 0) {
-            kf2.n("Array lengths must match and be nonzero");
-            throw null;
-        }
-        this.a = fArr;
-        this.b = fArr2;
+    static {
+    }
+
+    public db1(float[] r3, float[] r4) {
+        if (r3.length == r4.length) goto L5;
+    L8:
+        kf2.n("Array lengths must match and be nonzero");
+        throw null;
+    L5:
+        if (r3.length == 0) goto L8;
+        this.a = r3;
+        this.b = r4;
     }
 
     @Override // defpackage.bb1
-    public final float a(float f) {
-        return y41.e(f, this.b, this.a);
+    public final float a(float r2) {
+        return y41.e(r2, this.b, this.a);
     }
 
     @Override // defpackage.bb1
-    public final float b(float f) {
-        return y41.e(f, this.a, this.b);
+    public final float b(float r2) {
+        return y41.e(r2, this.a, this.b);
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || !(obj instanceof db1)) {
-            return false;
-        }
-        db1 db1Var = (db1) obj;
-        return Arrays.equals(this.a, db1Var.a) && Arrays.equals(this.b, db1Var.b);
+    public final boolean equals(Object r3) {
+        if (this == r3) goto L17;
+        if (r3 != null) goto L7;
+        return false;
+    L7:
+        if ((r3 instanceof db1) == false) goto L20;
+        db1 r4 = (db1) r3;
+        float[] r0 = r4.a;
+        if (Arrays.equals(this.a, r0) == true) goto L12;
+        return false;
+    L12:
+        if (Arrays.equals(this.b, r4.b) == false) goto L18;
+        return true;
+    L18:
+        return false;
+    L20:
+        return false;
+    L17:
+        return true;
     }
 
     public final int hashCode() {
-        return Arrays.hashCode(this.b) + (Arrays.hashCode(this.a) * 31);
+        int r0 = Arrays.hashCode(this.a) * 31;
+        return Arrays.hashCode(this.b) + r0;
     }
 
     public final String toString() {
-        String string = Arrays.toString(this.a);
-        string.getClass();
-        String string2 = Arrays.toString(this.b);
-        string2.getClass();
-        return "FontScaleConverter{fromSpValues=" + string + ", toDpValues=" + string2 + "}";
+        String r0 = Arrays.toString(this.a);
+        r0.getClass();
+        String r3 = Arrays.toString(this.b);
+        r3.getClass();
+        return "FontScaleConverter{fromSpValues=" + r0 + ", toDpValues=" + r3 + "}";
     }
 }

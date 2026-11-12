@@ -34,55 +34,62 @@ public abstract class r23 {
         new LinkedHashMap();
     }
 
-    public r23(t43 t43Var) {
-        LinkedHashMap linkedHashMap = u43.b;
-        this.n = bu.n(t43Var.getClass());
+    public r23(t43 r2) {
+        LinkedHashMap r0 = u43.b;
+        this.n = bu.n(r2.getClass());
         this.r = new ArrayList();
         this.s = new mj4(0);
         this.t = new LinkedHashMap();
     }
 
-    public final Bundle a(Bundle bundle) {
-        Object obj;
-        LinkedHashMap linkedHashMap = this.t;
-        if (bundle == null && linkedHashMap.isEmpty()) {
-            return null;
-        }
-        Bundle bundle2 = new Bundle();
-        for (Map.Entry entry : linkedHashMap.entrySet()) {
-            String str = (String) entry.getKey();
-            z13 z13Var = (z13) entry.getValue();
-            z13Var.getClass();
-            str.getClass();
-            if (z13Var.c && (obj = z13Var.d) != null) {
-                z13Var.a.e(bundle2, str, obj);
-            }
-        }
-        if (bundle != null) {
-            bundle2.putAll(bundle);
-            for (Map.Entry entry2 : linkedHashMap.entrySet()) {
-                String str2 = (String) entry2.getKey();
-                z13 z13Var2 = (z13) entry2.getValue();
-                z13Var2.getClass();
-                h33 h33Var = z13Var2.a;
-                str2.getClass();
-                if (z13Var2.b || !bundle2.containsKey(str2) || bundle2.get(str2) != null) {
-                    try {
-                        h33Var.a(str2, bundle2);
-                    } catch (ClassCastException unused) {
-                    }
-                }
-                StringBuilder sbJ = xa3.j("Wrong argument type for '", str2, "' in argument bundle. ");
-                sbJ.append(h33Var.b());
-                sbJ.append(" expected.");
-                throw new IllegalArgumentException(sbJ.toString().toString());
-            }
-        }
-        return bundle2;
+    public final Bundle a(Bundle r6) {
+        LinkedHashMap r5 = this.t;
+        if (r6 == null) goto L5;
+    L8:
+        Bundle r0 = new Bundle();
+        Iterator r1 = r5.entrySet().iterator();
+    L10:
+        if (r1.hasNext() == false) goto L16;
+        Map.Entry r2 = (Map.Entry) r1.next();
+        String r3 = (String) r2.getKey();
+        z13 r4 = (z13) r2.getValue();
+        r4.getClass();
+        r3.getClass();
+        if (r4.c == false) goto L10;
+        Object r7 = r4.d;
+        if (r7 == null) goto L10;
+        r4.a.e(r0, r3, r7);
+        goto L10
+    L16:
+        if (r6 == null) goto L30;
+        r0.putAll(r6);
+        Iterator r8 = r5.entrySet().iterator();
+    L19:
+        if (r8.hasNext() == false) goto L30;
+        Map.Entry r9 = (Map.Entry) r8.next();
+        String r10 = (String) r9.getKey();
+        z13 r11 = (z13) r9.getValue();
+        r11.getClass();
+        h33 r12 = r11.a;
+        r10.getClass();
+        if (r11.b == false) goto L23;
+    L32:
+        r12.a(r10, r0);     // Catch: ClassCastException -> L31
+    L28:
+        StringBuilder r13 = xa3.j("Wrong argument type for '", r10, "' in argument bundle. ");
+        r13.append(r12.b());
+        r13.append(" expected.");
+        throw new IllegalArgumentException(r13.toString().toString());
+    L23:
+        if (r0.containsKey(r10) == false) goto L32;
+        if (r0.get(r10) == null) goto L28;
+    L30:
+        return r0;
+    L5:
+        if (r5.isEmpty() == false) goto L8;
+        return null;
     }
 
-    /* JADX WARN: Code duplicated, block: B:11:0x0022  */
-    /* JADX WARN: Code duplicated, block: B:14:0x002a  */
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
     java.lang.UnsupportedOperationException: ArgType.getObject(), call class: class jadx.core.dex.instructions.args.ArgType$PrimitiveArg
     	at jadx.core.dex.instructions.args.ArgType.getObject(ArgType.java:596)
@@ -93,581 +100,511 @@ public abstract class r23 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public final int[] b(r23 r23Var) {
-        ii iiVar = new ii();
-        while (true) {
-            t23 t23Var = this.o;
-            if ((r23Var != null ? r23Var.o : null) != null) {
-                t23 t23Var2 = r23Var.o;
-                t23Var2.getClass();
-                if (t23Var2.h(this.u, t23Var2, null, false) != this) {
-                    if (t23Var != null || t23Var.y != this.u) {
-                        iiVar.addFirst(this);
-                    }
-                    if (!h12.c(t23Var, r23Var) || t23Var == null) {
-                        break;
-                    }
-                    this = t23Var;
-                } else {
-                    iiVar.addFirst(this);
-                    break;
-                }
-            } else {
-                if (t23Var != null) {
-                    iiVar.addFirst(this);
-                } else {
-                    iiVar.addFirst(this);
-                }
-                if (!h12.c(t23Var, r23Var)) {
-                    break;
-                }
-                this = t23Var;
-            }
-        }
-        List listQ0 = q40.Q0(iiVar);
-        ArrayList arrayList = new ArrayList(r40.k0(listQ0, 10));
-        Iterator it = listQ0.iterator();
-        while (it.hasNext()) {
-            arrayList.add(Integer.valueOf(((r23) it.next()).u));
-        }
-        return q40.P0(arrayList);
+    public final int[] b(r23 r7) {
+        ii r0 = new ii();
+    L3:
+        t23 r1 = this.o;
+        if (r7 == null) goto L6;
+        t23 r3 = r7.o;
+    L7:
+        if (r3 == null) goto L11;
+        t23 r4 = r7.o;
+        r4.getClass();
+        if (r4.h(this.u, r4, null, false) != this) goto L11;
+        r0.addFirst(this);
+    L19:
+        List r6 = q40.Q0(r0);
+        ArrayList r8 = new ArrayList(r40.k0(r6, 10));
+        Iterator r9 = r6.iterator();
+    L21:
+        if (r9.hasNext() == false) goto L24;
+        r8.add(Integer.valueOf(((r23) r9.next()).u));
+        goto L21
+    L24:
+        return q40.P0(r8);
+    L11:
+        if (r1 != null) goto L13;
+    L14:
+        r0.addFirst(this);
+    L16:
+        if (h12.c(r1, r7) == true) goto L19;
+        if (r1 == null) goto L19;
+        r23 this = r1;
+        goto L3
+    L13:
+        if (r1.y == this.u) goto L16;
+    L6:
+        r3 = null;
+        goto L7
     }
 
-    public final y13 d(int i) {
-        mj4 mj4Var = this.s;
-        y13 y13Var = mj4Var.e() == 0 ? null : (y13) mj4Var.b(i);
-        if (y13Var != null) {
-            return y13Var;
-        }
-        t23 t23Var = this.o;
-        if (t23Var != null) {
-            return t23Var.d(i);
-        }
+    public final y13 d(int r4) {
+        mj4 r0 = this.s;
+        if (r0.e() != 0) goto L5;
+        y13 r1 = null;
+    L6:
+        if (r1 != null) goto L12;
+        t23 r3 = this.o;
+        if (r3 != null) goto L10;
         return null;
+    L10:
+        return r3.d(r4);
+    L12:
+        return r1;
+    L5:
+        r1 = (y13) r0.b(r4);
+        goto L6
     }
 
-    /* JADX WARN: Code duplicated, block: B:120:0x02a1  */
-    /* JADX WARN: Code duplicated, block: B:122:0x02aa  */
-    /* JADX WARN: Code duplicated, block: B:125:0x02af  */
-    /* JADX WARN: Code duplicated, block: B:128:0x02ba  */
-    /* JADX WARN: Code duplicated, block: B:130:0x02c4  */
-    /* JADX WARN: Code duplicated, block: B:131:0x02cd  */
-    /* JADX WARN: Code duplicated, block: B:134:0x02d2  */
-    /* JADX WARN: Code duplicated, block: B:139:0x02ea  */
-    /* JADX WARN: Code duplicated, block: B:142:0x02fd  */
-    /* JADX WARN: Code duplicated, block: B:144:0x030e  */
-    /* JADX WARN: Code duplicated, block: B:14:0x0045  */
-    /* JADX WARN: Code duplicated, block: B:61:0x0135  */
-    /* JADX WARN: Code duplicated, block: B:67:0x0144  */
     /* JADX WARN: Multi-variable type inference failed */
-    public p23 e(ik ikVar) {
-        Throwable th;
-        Object obj;
-        int size;
-        String str;
-        boolean z;
-        String str2;
-        int i;
-        p23 p23Var;
-        Bundle bundle;
-        Pattern pattern;
-        Matcher matcher;
-        Matcher matcher2;
-        String str3;
-        int i2;
-        List listO;
-        List listL0;
-        List listO2;
-        int i3;
-        Matcher matcher3;
-        Matcher matcher4;
-        Matcher matcher5;
-        Matcher matcher6;
-        this = this;
-        ArrayList arrayList = this.r;
-        Throwable th2 = null;
-        if (arrayList.isEmpty()) {
-            return null;
-        }
-        int size2 = arrayList.size();
-        p23 p23Var2 = null;
-        int i4 = 0;
-        while (i4 < size2) {
-            int i5 = i4 + 1;
-            n23 n23Var = (n23) arrayList.get(i4);
-            Uri uri = ikVar.b;
-            LinkedHashMap linkedHashMap = this.t;
-            if (uri != null) {
-                n23Var.getClass();
-                uri.getClass();
-                linkedHashMap.getClass();
-                Pattern pattern2 = (Pattern) n23Var.f.getValue();
-                if (pattern2 != null) {
-                    matcher6 = pattern2.matcher(uri.toString());
-                } else {
-                    matcher3 = th2;
-                }
-                if (matcher3 != 0 && matcher3.matches()) {
-                    Bundle bundle2 = new Bundle();
-                    if (n23Var.c(matcher3, bundle2, linkedHashMap) && (!((Boolean) n23Var.g.getValue()).booleanValue() || n23Var.d(uri, bundle2, linkedHashMap))) {
-                        matcher3 = matcher6;
-                        matcher3 = matcher6;
-                        String fragment = uri.getFragment();
-                        Pattern pattern3 = (Pattern) n23Var.m.getValue();
-                        if (pattern3 != null) {
-                            matcher5 = pattern3.matcher(String.valueOf(fragment));
-                        } else {
-                            matcher4 = th2;
-                        }
-                        if (matcher4 != 0 && matcher4.matches()) {
-                            matcher4 = matcher5;
-                            List list = (List) n23Var.k.getValue();
-                            th = th2;
-                            ArrayList arrayList2 = new ArrayList(r40.k0(list, 10));
-                            int i6 = 0;
-                            for (Object obj2 : list) {
-                                int i7 = i6 + 1;
-                                if (i6 < 0) {
-                                    gb.c0();
-                                    throw th;
-                                }
-                                String str4 = (String) obj2;
-                                String strDecode = Uri.decode(matcher4.group(i7));
-                                z13 z13Var = (z13) linkedHashMap.get(str4);
-                                try {
-                                    strDecode.getClass();
-                                    n23.e(bundle2, str4, strDecode, z13Var);
-                                    arrayList2.add(j15.a);
-                                    i6 = i7;
-                                } catch (IllegalArgumentException unused) {
-                                }
-                            }
-                        } else {
-                            matcher4 = matcher5;
-                            matcher4 = matcher5;
-                            th = th2;
-                        }
-                        boolean zIsEmpty = ud3.b0(linkedHashMap, new m23(0, bundle2)).isEmpty();
-                        obj = bundle2;
-                        if (!zIsEmpty) {
-                        }
-                    } else {
-                        matcher3 = matcher6;
-                        matcher3 = matcher6;
-                        matcher3 = matcher6;
-                        matcher3 = matcher6;
-                        th = th2;
-                    }
-                } else {
-                    matcher3 = matcher6;
-                    matcher3 = matcher6;
-                    matcher3 = matcher6;
-                    matcher3 = matcher6;
-                    th = th2;
-                }
-                String str5 = n23Var.a;
-                if (uri != null || str5 == null) {
-                    size = 0;
-                } else {
-                    List<String> pathSegments = uri.getPathSegments();
-                    List<String> pathSegments2 = Uri.parse(str5).getPathSegments();
-                    pathSegments.getClass();
-                    pathSegments2.getClass();
-                    LinkedHashSet linkedHashSet = new LinkedHashSet();
-                    for (Object obj3 : pathSegments) {
-                        if (pathSegments2.contains(obj3)) {
-                            linkedHashSet.add(obj3);
-                        }
-                    }
-                    size = linkedHashSet.size();
-                }
-                str = ikVar.c;
-                if (str == null && str.equals(n23Var.b)) {
-                    z = true;
-                } else {
-                    z = false;
-                }
-                str2 = ikVar.d;
-                if (str2 != null || (str3 = n23Var.c) == null) {
-                    z = z;
-                    size = size;
-                    i = -1;
-                } else {
-                    Pattern pattern4 = (Pattern) n23Var.o.getValue();
-                    pattern4.getClass();
-                    if (pattern4.matcher(str2).matches()) {
-                        Pattern patternCompile = Pattern.compile("/");
-                        patternCompile.getClass();
-                        qm4.A0(0);
-                        Matcher matcher7 = patternCompile.matcher(str3);
-                        if (matcher7.find()) {
-                            i2 = 1;
-                            ArrayList arrayList3 = new ArrayList(10);
-                            int iEnd = 0;
-                            while (true) {
-                                arrayList3.add(str3.subSequence(iEnd, matcher7.start()).toString());
-                                iEnd = matcher7.end();
-                                if (!matcher7.find()) {
-                                    break;
-                                }
-                                i2 = 1;
-                            }
-                            arrayList3.add(str3.subSequence(iEnd, str3.length()).toString());
-                            listO = arrayList3;
-                        } else {
-                            listO = gb.O(str3.toString());
-                            i2 = 1;
-                        }
-                        boolean zIsEmpty2 = listO.isEmpty();
-                        List listL1 = u01.n;
-                        if (zIsEmpty2) {
-                            listL0 = listL1;
-                            break;
-                        }
-                        ListIterator listIterator = listO.listIterator(listO.size());
-                        while (true) {
-                            if (!listIterator.hasPrevious()) {
-                                listL0 = listL1;
-                                break;
-                            }
-                            if (((String) listIterator.previous()).length() != 0) {
-                                listL0 = q40.L0(listO, listIterator.nextIndex() + 1);
-                                break;
-                            }
-                        }
-                        String str6 = (String) listL0.get(0);
-                        String str7 = (String) listL0.get(i2);
-                        Pattern patternCompile2 = Pattern.compile("/");
-                        patternCompile2.getClass();
-                        qm4.A0(0);
-                        Matcher matcher8 = patternCompile2.matcher(str2);
-                        if (matcher8.find()) {
-                            ArrayList arrayList4 = new ArrayList(10);
-                            int iEnd2 = 0;
-                            do {
-                                arrayList4.add(str2.subSequence(iEnd2, matcher8.start()).toString());
-                                iEnd2 = matcher8.end();
-                            } while (matcher8.find());
-                            arrayList4.add(str2.subSequence(iEnd2, str2.length()).toString());
-                            listO2 = arrayList4;
-                        } else {
-                            listO2 = gb.O(str2.toString());
-                        }
-                        if (listO2.isEmpty()) {
-                            i3 = 1;
-                            break;
-                        }
-                        ListIterator listIterator2 = listO2.listIterator(listO2.size());
-                        while (true) {
-                            if (!listIterator2.hasPrevious()) {
-                                i3 = 1;
-                                break;
-                            }
-                            if (((String) listIterator2.previous()).length() != 0) {
-                                i3 = 1;
-                                listL1 = q40.L0(listO2, listIterator2.nextIndex() + 1);
-                                break;
-                            }
-                        }
-                        String str8 = (String) listL1.get(0);
-                        String str9 = (String) listL1.get(i3);
-                        i = h12.c(str6, str8) ? 2 : 0;
-                        if (h12.c(str7, str9)) {
-                            i++;
-                        }
-                    } else {
-                        z = z;
-                        size = size;
-                        i = -1;
-                    }
-                }
-                if (obj != null) {
-                    p23Var = new p23(this, obj, n23Var.p, size, z, i);
-                    if (p23Var2 != null || p23Var.compareTo(p23Var2) > 0) {
-                        p23Var2 = p23Var;
-                    }
-                } else if (z || i > -1) {
-                    linkedHashMap.getClass();
-                    bundle = new Bundle();
-                    if (uri != null) {
-                        pattern = (Pattern) n23Var.f.getValue();
-                        if (pattern != null) {
-                            matcher2 = pattern.matcher(uri.toString());
-                        } else {
-                            matcher = th;
-                        }
-                        if (matcher != 0 && matcher.matches()) {
-                            n23Var.c(matcher, bundle, linkedHashMap);
-                            if (((Boolean) n23Var.g.getValue()).booleanValue()) {
-                                matcher = matcher2;
-                                n23Var.d(uri, bundle, linkedHashMap);
-                            }
-                        }
-                    }
-                    matcher = matcher2;
-                    matcher = matcher2;
-                    matcher = matcher2;
-                    if (ud3.b0(linkedHashMap, new m23(1, bundle)).isEmpty()) {
-                        p23Var = new p23(this, obj, n23Var.p, size, z, i);
-                        if (p23Var2 != null) {
-                        }
-                        p23Var2 = p23Var;
-                    }
-                }
-                i4 = i5;
-                th2 = th;
-            } else {
-                th = th2;
-            }
-            obj = th;
-            String str10 = n23Var.a;
-            if (uri != null) {
-                size = 0;
-            } else {
-                size = 0;
-            }
-            str = ikVar.c;
-            if (str == null) {
-                z = false;
-            } else {
-                z = false;
-            }
-            str2 = ikVar.d;
-            if (str2 != null) {
-                z = z;
-                size = size;
-                i = -1;
-            } else {
-                z = z;
-                size = size;
-                i = -1;
-            }
-            if (obj != null) {
-                p23Var = new p23(this, obj, n23Var.p, size, z, i);
-                if (p23Var2 != null) {
-                }
-                p23Var2 = p23Var;
-            } else if (z) {
-                linkedHashMap.getClass();
-                bundle = new Bundle();
-                if (uri != null) {
-                    pattern = (Pattern) n23Var.f.getValue();
-                    if (pattern != null) {
-                        matcher2 = pattern.matcher(uri.toString());
-                    } else {
-                        matcher = th;
-                    }
-                    if (matcher != 0) {
-                        n23Var.c(matcher, bundle, linkedHashMap);
-                        if (((Boolean) n23Var.g.getValue()).booleanValue()) {
-                            matcher = matcher2;
-                            n23Var.d(uri, bundle, linkedHashMap);
-                        }
-                    }
-                }
-                matcher = matcher2;
-                matcher = matcher2;
-                matcher = matcher2;
-                if (ud3.b0(linkedHashMap, new m23(1, bundle)).isEmpty()) {
-                    p23Var = new p23(this, obj, n23Var.p, size, z, i);
-                    if (p23Var2 != null) {
-                    }
-                    p23Var2 = p23Var;
-                }
-            } else {
-                linkedHashMap.getClass();
-                bundle = new Bundle();
-                if (uri != null) {
-                    pattern = (Pattern) n23Var.f.getValue();
-                    if (pattern != null) {
-                        matcher2 = pattern.matcher(uri.toString());
-                    } else {
-                        matcher = th;
-                    }
-                    if (matcher != 0) {
-                        n23Var.c(matcher, bundle, linkedHashMap);
-                        if (((Boolean) n23Var.g.getValue()).booleanValue()) {
-                            matcher = matcher2;
-                            n23Var.d(uri, bundle, linkedHashMap);
-                        }
-                    }
-                }
-                matcher = matcher2;
-                matcher = matcher2;
-                matcher = matcher2;
-                if (ud3.b0(linkedHashMap, new m23(1, bundle)).isEmpty()) {
-                    p23Var = new p23(this, obj, n23Var.p, size, z, i);
-                    if (p23Var2 != null) {
-                    }
-                    p23Var2 = p23Var;
-                }
-            }
-            i4 = i5;
-            th2 = th;
-        }
-        return p23Var2;
+    public p23 e(ik r28) {
+        r23 this = this;
+        ArrayList r8 = this.r;
+        Throwable r9 = null;
+        if (r8.isEmpty() == false) goto L5;
+        return null;
+    L5:
+        int r10 = r8.size();
+        p23 r12 = null;
+        int r0 = 0;
+    L6:
+        if (r0 >= r10) goto L150;
+        int r13 = r0 + 1;
+        n23 r2 = (n23) r8.get(r0);
+        Uri r1 = r28.b;
+        LinkedHashMap r4 = this.t;
+        if (r1 == null) goto L48;
+        r2.getClass();
+        r1.getClass();
+        r4.getClass();
+        Pattern r5 = (Pattern) r2.f.getValue();
+        if (r5 == null) goto L12;
+        Matcher r6 = r5.matcher(r1.toString());
+    L13:
+        if (r6 != 0) goto L16;
+    L14:
+        Throwable r16 = r9;
+    L49:
+        Object r7 = r16;
+    L50:
+        String r3 = r2.a;
+        if (r1 == null) goto L61;
+        if (r3 == null) goto L61;
+        List<String> r11 = r1.getPathSegments();
+        List<String> r14 = Uri.parse(r3).getPathSegments();
+        r11.getClass();
+        r14.getClass();
+        LinkedHashSet r15 = new LinkedHashSet();
+        Iterator<T> r17 = r11.iterator();
+    L56:
+        if (r17.hasNext() == false) goto L60;
+        Object r18 = r17.next();
+        if (r14.contains(r18) == false) goto L56;
+        r15.add(r18);
+        goto L56
+    L60:
+        int r19 = r15.size();
+    L62:
+        String r20 = r28.c;
+        if (r20 != null) goto L65;
+    L67:
+        boolean r21 = false;
+    L68:
+        String r22 = r28.d;
+        if (r22 == null) goto L120;
+        String r110 = r2.c;
+        if (r110 == null) goto L120;
+        Pattern r111 = (Pattern) r2.o.getValue();
+        r111.getClass();
+        if (r111.matcher(r22).matches() == false) goto L120;
+        Pattern r112 = Pattern.compile("/");
+        r112.getClass();
+        qm4.A0(0);
+        Matcher r113 = r112.matcher(r110);
+        if (r113.find() == true) goto L78;
+        List r114 = gb.O(r110.toString());
+        int r23 = 1;
+    L82:
+        boolean r24 = r114.isEmpty();
+        List r25 = u01.n;
+        if (r24 == true) goto L92;
+        ListIterator r26 = r114.listIterator(r114.size());
+    L86:
+        if (r26.hasPrevious() == false) goto L92;
+        if (((String) r26.previous()).length() == 0) goto L86;
+        List r27 = q40.L0(r114, r26.nextIndex() + 1);
+    L93:
+        String r115 = (String) r27.get(0);
+        String r29 = (String) r27.get(r23);
+        Pattern r116 = Pattern.compile("/");
+        r116.getClass();
+        qm4.A0(0);
+        Matcher r210 = r116.matcher(r22);
+        if (r210.find() == true) goto L96;
+        List r30 = gb.O(r22.toString());
+    L101:
+        if (r30.isEmpty() == true) goto L110;
+        ListIterator r31 = r30.listIterator(r30.size());
+    L104:
+        if (r31.hasPrevious() == false) goto L110;
+        if (((String) r31.previous()).length() == 0) goto L104;
+        int r117 = 1;
+        r25 = q40.L0(r30, r31.nextIndex() + 1);
+    L111:
+        String r32 = (String) r25.get(0);
+        String r33 = (String) r25.get(r117);
+        if (h12.c(r115, r32) == false) goto L114;
+        int r34 = 2;
+    L116:
+        if (h12.c(r29, r33) == false) goto L121;
+        r34 = r34 + 1;
+    L121:
+        if (r7 != null) goto L142;
+        if (r21 == false) goto L124;
+    L125:
+        r4.getClass();
+        Bundle r35 = new Bundle();
+        if (r1 == null) goto L141;
+        Pattern r36 = (Pattern) r2.f.getValue();
+        if (r36 == null) goto L131;
+        Matcher r37 = r36.matcher(r1.toString());
+    L132:
+        if (r37 == 0) goto L141;
+        if (r37.matches() == false) goto L141;
+        r2.c(r37, r35, r4);
+        if (((Boolean) r2.g.getValue()).booleanValue() == false) goto L141;
+        r2.d(r1, r35, r4);
+        goto L141
+    L131:
+        r37 = r16;
+    L141:
+        if (ud3.b0(r4, new m23(1, r35)).isEmpty() == true) goto L142;
+    L148:
+        r0 = r13;
+        r9 = r16;
+        goto L6
+    L124:
+        if (r34 <= (-1)) goto L148;
+    L142:
+        p23 r38 = new p23(this, r7, r2.p, r19, r21, r34);
+        if (r12 != null) goto L145;
+    L149:
+        r12 = r38;
+        goto L148
+    L145:
+        if (r38.a(r12) <= 0) goto L148;
+    L114:
+        r34 = 0;
+    L110:
+        r117 = 1;
+        goto L111
+    L96:
+        ArrayList r39 = new ArrayList(10);
+        int r118 = 0;
+    L97:
+        r39.add(r22.subSequence(r118, r210.start()).toString());
+        r118 = r210.end();
+        if (r210.find() == true) goto L97;
+        r39.add(r22.subSequence(r118, r22.length()).toString());
+        r30 = r39;
+    L92:
+        r27 = r25;
+        goto L93
+    L78:
+        r23 = 1;
+        ArrayList r40 = new ArrayList(10);
+        int r41 = 0;
+    L79:
+        r40.add(r110.subSequence(r41, r113.start()).toString());
+        r41 = r113.end();
+        if (r113.find() == false) goto L81;
+        r23 = 1;
+        goto L79
+    L81:
+        r40.add(r110.subSequence(r41, r110.length()).toString());
+        r114 = r40;
+    L120:
+        r21 = r21;
+        r19 = r19;
+        r34 = -1;
+        goto L121
+    L65:
+        if (r20.equals(r2.b) == false) goto L67;
+        r21 = true;
+    L61:
+        r19 = 0;
+        goto L62
+    L16:
+        if (r6.matches() == false) goto L14;
+        Bundle r42 = new Bundle();
+        if (r2.c(r6, r42, r4) == false) goto L14;
+        if (((Boolean) r2.g.getValue()).booleanValue() == true) goto L24;
+    L26:
+        String r43 = r1.getFragment();
+        Pattern r119 = (Pattern) r2.m.getValue();
+        if (r119 == null) goto L29;
+        Matcher r44 = r119.matcher(String.valueOf(r43));
+    L30:
+        if (r44 != 0) goto L33;
+    L31:
+        r16 = r9;
+    L45:
+        boolean r45 = ud3.b0(r4, new m23(0, r42)).isEmpty();
+        r7 = r42;
+        if (r45 == true) goto L50;
+    L33:
+        if (r44.matches() == false) goto L31;
+        List r120 = (List) r2.k.getValue();
+        r16 = r9;
+        ArrayList r121 = new ArrayList(r40.k0(r120, 10));
+        Iterator r46 = r120.iterator();
+        int r122 = 0;
+    L37:
+        if (r46.hasNext() == false) goto L45;
+        Object r123 = r46.next();
+        int r47 = r122 + 1;
+        if (r122 < 0) goto L43;
+        String r124 = (String) r123;
+        String r125 = Uri.decode(r44.group(r47));
+        z13 r48 = (z13) r4.get(r124);
+        r125.getClass();     // Catch: IllegalArgumentException -> L151
+        n23.e(r42, r124, r125, r48);     // Catch: IllegalArgumentException -> L151
+        r121.add(j15.a);
+        r122 = r47;
+        goto L37
+    L43:
+        gb.c0();
+        throw r16;
+    L29:
+        r44 = r9;
+        goto L30
+    L24:
+        if (r2.d(r1, r42, r4) == true) goto L26;
+    L12:
+        r6 = r9;
+        goto L13
+    L48:
+        r16 = r9;
+        goto L49
+    L150:
+        return r12;
     }
 
-    public boolean equals(Object obj) {
-        boolean z;
-        boolean z2;
-        if (this != obj) {
-            if (obj != null && (obj instanceof r23)) {
-                r23 r23Var = (r23) obj;
-                mj4 mj4Var = r23Var.s;
-                LinkedHashMap linkedHashMap = r23Var.t;
-                boolean zC = h12.c(this.r, r23Var.r);
-                mj4 mj4Var2 = this.s;
-                if (mj4Var2.e() != mj4Var.e()) {
-                    z = false;
-                    break;
-                }
-                Iterator it = ((gb0) fa4.b0(new nj4(mj4Var2))).iterator();
-                while (true) {
-                    if (!it.hasNext()) {
-                        z = true;
-                        break;
-                    }
-                    int iIntValue = ((Number) it.next()).intValue();
-                    if (!h12.c(mj4Var2.b(iIntValue), mj4Var.b(iIntValue))) {
-                        z = false;
-                        break;
-                    }
-                }
-                LinkedHashMap linkedHashMap2 = this.t;
-                if (linkedHashMap2.size() != linkedHashMap.size()) {
-                    z2 = false;
-                    break;
-                }
-                Set setEntrySet = linkedHashMap2.entrySet();
-                setEntrySet.getClass();
-                Iterator it2 = setEntrySet.iterator();
-                while (true) {
-                    if (!it2.hasNext()) {
-                        z2 = true;
-                        break;
-                    }
-                    Map.Entry entry = (Map.Entry) it2.next();
-                    if (!linkedHashMap.containsKey(entry.getKey()) || !h12.c(linkedHashMap.get(entry.getKey()), entry.getValue())) {
-                        z2 = false;
-                        break;
-                    }
-                }
-                if (this.u != r23Var.u || !h12.c(this.v, r23Var.v) || !zC || !z || !z2) {
-                }
-            }
-            return false;
-        }
+    public boolean equals(Object r10) {
+        if (this != r10) goto L6;
+    L39:
         return true;
+    L6:
+        if (r10 != null) goto L8;
+    L40:
+        return false;
+    L8:
+        if ((r10 instanceof r23) == false) goto L40;
+        r23 r11 = (r23) r10;
+        mj4 r2 = r11.s;
+        LinkedHashMap r3 = r11.t;
+        boolean r4 = h12.c(this.r, r11.r);
+        mj4 r5 = this.s;
+        if (r5.e() != r2.e()) goto L19;
+        Iterator r6 = ((gb0) fa4.b0(new nj4(r5))).iterator();
+    L14:
+        if (r6.hasNext() == false) goto L18;
+        int r7 = ((Number) r6.next()).intValue();
+        if (h12.c(r5.b(r7), r2.b(r7)) == true) goto L14;
+    L18:
+        boolean r8 = true;
+    L20:
+        LinkedHashMap r9 = this.t;
+        if (r9.size() != r3.size()) goto L31;
+        Set r12 = r9.entrySet();
+        r12.getClass();
+        Iterator r13 = r12.iterator();
+    L24:
+        if (r13.hasNext() == false) goto L30;
+        Map.Entry r14 = (Map.Entry) r13.next();
+        if (r3.containsKey(r14.getKey()) == false) goto L31;
+        if (h12.c(r3.get(r14.getKey()), r14.getValue()) == false) goto L31;
+    L30:
+        boolean r15 = true;
+    L33:
+        if (this.u != r11.u) goto L40;
+        if (h12.c(this.v, r11.v) == false) goto L40;
+        if (r4 == false) goto L40;
+        if (r8 == false) goto L40;
+        if (r15 == false) goto L40;
+    L31:
+        r15 = false;
+    L19:
+        r8 = false;
+        goto L20
     }
 
-    public void f(Context context, AttributeSet attributeSet) {
-        TypedArray typedArrayObtainAttributes = context.getResources().obtainAttributes(attributeSet, zs3.e);
-        typedArrayObtainAttributes.getClass();
-        String string = typedArrayObtainAttributes.getString(2);
-        if (string == null) {
-            this.u = 0;
-            this.p = null;
-        } else {
-            if (qm4.u0(string)) {
-                kf2.n("Cannot have an empty route");
-                return;
-            }
-            String strConcat = "android-app://androidx.navigation/".concat(string);
-            ArrayList arrayListB0 = ud3.b0(this.t, new q23(new n23(strConcat, null, null), 1));
-            if (!arrayListB0.isEmpty()) {
-                nz2.q("Cannot set route \"", string, "\" for destination ", this, ". Following required arguments are missing: ", arrayListB0);
-                return;
-            } else {
-                this.u = strConcat.hashCode();
-                this.p = null;
-            }
-        }
-        this.v = string;
-        if (typedArrayObtainAttributes.hasValue(1)) {
-            int resourceId = typedArrayObtainAttributes.getResourceId(1, 0);
-            this.u = resourceId;
-            this.p = null;
-            this.p = ya4.v(context, resourceId);
-        }
-        this.q = typedArrayObtainAttributes.getText(0);
-        typedArrayObtainAttributes.recycle();
+    public void f(Context r8, AttributeSet r9) {
+        TypedArray r10 = r8.getResources().obtainAttributes(r9, zs3.e);
+        r10.getClass();
+        String r2 = r10.getString(2);
+        if (r2 != null) goto L6;
+        this.u = 0;
+        this.p = null;
+    L10:
+        this.v = r2;
+        if (r10.hasValue(1) == false) goto L13;
+        int r0 = r10.getResourceId(1, 0);
+        this.u = r0;
+        this.p = null;
+        this.p = ya4.v(r8, r0);
+    L13:
+        this.q = r10.getText(0);
+        r10.recycle();
+        return;
+    L6:
+        if (qm4.u0(r2) == true) goto L17;
+        String r4 = "android-app://androidx.navigation/".concat(r2);
+        q23 r6 = new q23(new n23(r4, null, null), 1);
+        ArrayList r7 = ud3.b0(this.t, r6);
+        if (r7.isEmpty() == false) goto L15;
+        this.u = r4.hashCode();
+        this.p = null;
+        goto L10
+    L15:
+        nz2.q("Cannot set route \"", r2, "\" for destination ", this, ". Following required arguments are missing: ", r7);
+        return;
+    L17:
+        kf2.n("Cannot have an empty route");
     }
 
     public int hashCode() {
-        Set<String> setKeySet;
-        int i = this.u * 31;
-        String str = this.v;
-        int iHashCode = i + (str != null ? str.hashCode() : 0);
-        ArrayList arrayList = this.r;
-        int size = arrayList.size();
-        int i2 = 0;
-        while (i2 < size) {
-            Object obj = arrayList.get(i2);
-            i2++;
-            n23 n23Var = (n23) obj;
-            int i3 = iHashCode * 31;
-            String str2 = n23Var.a;
-            int iHashCode2 = (i3 + (str2 != null ? str2.hashCode() : 0)) * 31;
-            String str3 = n23Var.b;
-            int iHashCode3 = (iHashCode2 + (str3 != null ? str3.hashCode() : 0)) * 31;
-            String str4 = n23Var.c;
-            iHashCode = iHashCode3 + (str4 != null ? str4.hashCode() : 0);
-        }
-        mj4 mj4Var = this.s;
-        mj4Var.getClass();
-        int i4 = 0;
-        while (true) {
-            if (!(i4 < mj4Var.e())) {
-                break;
-            }
-            int i5 = i4 + 1;
-            y13 y13Var = (y13) mj4Var.f(i4);
-            int i6 = ((iHashCode * 31) + y13Var.a) * 31;
-            y23 y23Var = y13Var.b;
-            iHashCode = i6 + (y23Var != null ? y23Var.hashCode() : 0);
-            Bundle bundle = y13Var.c;
-            if (bundle != null && (setKeySet = bundle.keySet()) != null) {
-                for (String str5 : setKeySet) {
-                    int i7 = iHashCode * 31;
-                    Bundle bundle2 = y13Var.c;
-                    bundle2.getClass();
-                    Object obj2 = bundle2.get(str5);
-                    iHashCode = i7 + (obj2 != null ? obj2.hashCode() : 0);
-                }
-            }
-            i4 = i5;
-        }
-        LinkedHashMap linkedHashMap = this.t;
-        for (String str6 : linkedHashMap.keySet()) {
-            int iE = f34.e(str6, iHashCode * 31, 31);
-            Object obj3 = linkedHashMap.get(str6);
-            iHashCode = iE + (obj3 != null ? obj3.hashCode() : 0);
-        }
-        return iHashCode;
+        int r0 = this.u * 31;
+        String r2 = this.v;
+        if (r2 == null) goto L5;
+        int r3 = r2.hashCode();
+    L6:
+        int r1 = r0 + r3;
+        ArrayList r4 = this.r;
+        int r5 = r4.size();
+        int r6 = 0;
+    L7:
+        if (r6 >= r5) goto L21;
+        Object r7 = r4.get(r6);
+        r6 = r6 + 1;
+        n23 r8 = (n23) r7;
+        int r9 = r1 * 31;
+        String r10 = r8.a;
+        if (r10 == null) goto L11;
+        int r11 = r10.hashCode();
+    L12:
+        int r12 = (r9 + r11) * 31;
+        String r13 = r8.b;
+        if (r13 == null) goto L15;
+        int r14 = r13.hashCode();
+    L16:
+        int r15 = (r12 + r14) * 31;
+        String r16 = r8.c;
+        if (r16 == null) goto L19;
+        int r17 = r16.hashCode();
+    L20:
+        r1 = r15 + r17;
+        goto L7
+    L19:
+        r17 = 0;
+        goto L20
+    L15:
+        r14 = 0;
+        goto L16
+    L11:
+        r11 = 0;
+        goto L12
+    L21:
+        mj4 r18 = this.s;
+        r18.getClass();
+        int r19 = 0;
+    L23:
+        if (r19 >= r18.e()) goto L25;
+        boolean r20 = true;
+    L26:
+        if (r20 == false) goto L44;
+        int r21 = r19 + 1;
+        y13 r22 = (y13) r18.f(r19);
+        int r23 = ((r1 * 31) + r22.a) * 31;
+        y23 r24 = r22.b;
+        if (r24 == null) goto L30;
+        int r25 = r24.hashCode();
+    L31:
+        r1 = r23 + r25;
+        Bundle r26 = r22.c;
+        if (r26 == null) goto L43;
+        Set<String> r27 = r26.keySet();
+        if (r27 == null) goto L43;
+        Iterator<T> r28 = r27.iterator();
+    L37:
+        if (r28.hasNext() == false) goto L43;
+        String r29 = (String) r28.next();
+        int r30 = r1 * 31;
+        Bundle r31 = r22.c;
+        r31.getClass();
+        Object r32 = r31.get(r29);
+        if (r32 == null) goto L41;
+        int r33 = r32.hashCode();
+    L42:
+        r1 = r30 + r33;
+        goto L37
+    L41:
+        r33 = 0;
+    L43:
+        r19 = r21;
+        goto L23
+    L30:
+        r25 = 0;
+        goto L31
+    L44:
+        LinkedHashMap r34 = this.t;
+        Iterator r35 = r34.keySet().iterator();
+    L46:
+        if (r35.hasNext() == false) goto L52;
+        String r36 = (String) r35.next();
+        int r37 = f34.e(r36, r1 * 31, 31);
+        Object r38 = r34.get(r36);
+        if (r38 == null) goto L50;
+        int r39 = r38.hashCode();
+    L51:
+        r1 = r37 + r39;
+        goto L46
+    L50:
+        r39 = 0;
+        goto L51
+    L52:
+        return r1;
+    L25:
+        r20 = false;
+        goto L26
+    L5:
+        r3 = 0;
+        goto L6
     }
 
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append("(");
-        String str = this.p;
-        if (str == null) {
-            sb.append("0x");
-            sb.append(Integer.toHexString(this.u));
-        } else {
-            sb.append(str);
-        }
-        sb.append(")");
-        String str2 = this.v;
-        if (str2 != null && !qm4.u0(str2)) {
-            sb.append(" route=");
-            sb.append(this.v);
-        }
-        if (this.q != null) {
-            sb.append(" label=");
-            sb.append(this.q);
-        }
-        return sb.toString();
+        StringBuilder r0 = new StringBuilder();
+        r0.append(getClass().getSimpleName());
+        r0.append("(");
+        String r1 = this.p;
+        if (r1 != null) goto L5;
+        r0.append("0x");
+        r0.append(Integer.toHexString(this.u));
+    L6:
+        r0.append(")");
+        String r2 = this.v;
+        if (r2 == null) goto L13;
+        if (qm4.u0(r2) == true) goto L13;
+        r0.append(" route=");
+        r0.append(this.v);
+    L13:
+        if (this.q == null) goto L16;
+        r0.append(" label=");
+        r0.append(this.q);
+    L16:
+        return r0.toString();
+    L5:
+        r0.append(r1);
+        goto L6
     }
 }

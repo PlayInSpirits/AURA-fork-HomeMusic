@@ -6,16 +6,17 @@ public final class kt implements k51 {
     public final /* synthetic */ int a;
     public final df4 b;
 
-    public kt(int i) {
-        this.a = i;
-        switch (i) {
-            case 1:
-                this.b = new df4("image/png", 35152, 2);
-                break;
-            default:
-                this.b = new df4("image/bmp", 16973, 2);
-                break;
-        }
+    public kt(int r4) {
+        this.a = r4;
+        switch(r4) {
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        this.b = new df4("image/bmp", 16973, 2);
+        return;
+    L6:
+        this.b = new df4("image/png", 35152, 2);
     }
 
     private final void g() {
@@ -26,56 +27,64 @@ public final class kt implements k51 {
 
     @Override // defpackage.k51
     public final void a() {
-        int i = this.a;
+        int r0 = this.a;
     }
 
     @Override // defpackage.k51
-    public final int b(l51 l51Var, t71 t71Var) {
-        int i = this.a;
-        df4 df4Var = this.b;
-        switch (i) {
-            case 0:
-                break;
-        }
-        return df4Var.b(l51Var, t71Var);
+    public final int b(l51 r2, t71 r3) {
+        int r0 = this.a;
+        df4 r1 = this.b;
+        switch(r0) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return r1.b(r2, r3);
+    L7:
+        return r1.b(r2, r3);
     }
 
     @Override // defpackage.k51
-    public final boolean c(l51 l51Var) {
-        int i = this.a;
-        df4 df4Var = this.b;
-        switch (i) {
-            case 0:
-                break;
-        }
-        return df4Var.c(l51Var);
+    public final boolean c(l51 r2) {
+        int r0 = this.a;
+        df4 r1 = this.b;
+        switch(r0) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return r1.c(r2);
+    L7:
+        return r1.c(r2);
     }
 
     @Override // defpackage.k51
-    public final void d(long j, long j2) {
-        int i = this.a;
-        df4 df4Var = this.b;
-        switch (i) {
-            case 0:
-                df4Var.d(j, j2);
-                break;
-            default:
-                df4Var.d(j, j2);
-                break;
-        }
+    public final void d(long r2, long r4) {
+        int r0 = this.a;
+        df4 r1 = this.b;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.d(r2, r4);
+        return;
+    L6:
+        r1.d(r2, r4);
     }
 
     @Override // defpackage.k51
-    public final void f(m51 m51Var) {
-        int i = this.a;
-        df4 df4Var = this.b;
-        switch (i) {
-            case 0:
-                df4Var.f(m51Var);
-                break;
-            default:
-                df4Var.f(m51Var);
-                break;
-        }
+    public final void f(m51 r2) {
+        int r0 = this.a;
+        df4 r1 = this.b;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.f(r2);
+        return;
+    L6:
+        r1.f(r2);
     }
 }

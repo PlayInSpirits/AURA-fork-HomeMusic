@@ -7,34 +7,34 @@ public final class ht4 implements le0 {
     public final ThreadLocal o;
     public final jt4 p;
 
-    public ht4(go3 go3Var, ThreadLocal threadLocal) {
-        this.n = go3Var;
-        this.o = threadLocal;
-        this.p = new jt4(threadLocal);
+    public ht4(go3 r1, ThreadLocal r2) {
+        this.n = r1;
+        this.o = r2;
+        this.p = new jt4(r2);
     }
 
     @Override // defpackage.ne0
-    public final ne0 J(ne0 ne0Var) {
-        return ya4.F(this, ne0Var);
+    public final ne0 J(ne0 r1) {
+        return ya4.F(this, r1);
     }
 
     @Override // defpackage.ne0
-    public final le0 K(me0 me0Var) {
-        if (this.p.equals(me0Var)) {
-            return this;
-        }
+    public final le0 K(me0 r2) {
+        if (this.p.equals(r2) == false) goto L5;
+        return this;
+    L5:
         return null;
     }
 
-    public final void a(Object obj) {
-        this.o.set(obj);
+    public final void a(Object r1) {
+        this.o.set(r1);
     }
 
     public final Object c() {
-        ThreadLocal threadLocal = this.o;
-        Object obj = threadLocal.get();
-        threadLocal.set(this.n);
-        return obj;
+        ThreadLocal r0 = this.o;
+        Object r1 = r0.get();
+        r0.set(this.n);
+        return r1;
     }
 
     @Override // defpackage.le0
@@ -43,8 +43,8 @@ public final class ht4 implements le0 {
     }
 
     @Override // defpackage.ne0
-    public final Object s(wf1 wf1Var, Object obj) {
-        return wf1Var.invoke(obj, this);
+    public final Object s(wf1 r1, Object r2) {
+        return r1.invoke(r2, this);
     }
 
     public final String toString() {
@@ -52,7 +52,10 @@ public final class ht4 implements le0 {
     }
 
     @Override // defpackage.ne0
-    public final ne0 u(me0 me0Var) {
-        return this.p.equals(me0Var) ? q01.n : this;
+    public final ne0 u(me0 r2) {
+        if (this.p.equals(r2) == true) goto L5;
+        return this;
+    L5:
+        return q01.n;
     }
 }

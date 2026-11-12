@@ -3,52 +3,52 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class v64 {
-    public static final t64 a = new t64();
-    public static final sq0 b = new sq0(1);
-    public static final dd3 c = new dd3(1);
+    public static final t64 a = null;
+    public static final sq0 b = null;
+    public static final dd3 c = null;
 
-    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
-    public static final Object a(g74 g74Var, long j, wd0 wd0Var) {
-        u64 u64Var;
-        gx3 gx3Var;
-        g74 g74Var2;
-        if (wd0Var instanceof u64) {
-            u64Var = (u64) wd0Var;
-            int i = u64Var.q;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                u64Var.q = i - Integer.MIN_VALUE;
-            } else {
-                u64Var = new u64(wd0Var);
-            }
-        } else {
-            u64Var = new u64(wd0Var);
-        }
-        Object obj = u64Var.p;
-        int i2 = u64Var.q;
-        if (i2 == 0) {
-            kb4.X(obj);
-            gx3Var = new gx3();
-            s sVar = new s(g74Var, j, gx3Var, null, 1);
-            u64Var.n = g74Var;
-            u64Var.o = gx3Var;
-            u64Var.q = 1;
-            Object objG = g74Var.g(h13.n, sVar, u64Var);
-            xe0 xe0Var = xe0.n;
-            if (objG == xe0Var) {
-                return xe0Var;
-            }
-            g74Var2 = g74Var;
-        } else {
-            if (i2 != 1) {
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            }
-            gx3 gx3Var2 = u64Var.o;
-            g74 g74Var3 = u64Var.n;
-            kb4.X(obj);
-            gx3Var = gx3Var2;
-            g74Var2 = g74Var3;
-        }
-        return new g83(g74Var2.i(gx3Var.n));
+    static {
+        a = new t64();
+        b = new sq0(1);
+        c = new dd3(1);
+    }
+
+    public static final Object a(g74 r10, long r11, wd0 r13) {
+        if ((r13 instanceof u64) == false) goto L7;
+        u64 r0 = (u64) r13;
+        int r1 = r0.q;
+        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
+        r0.q = r1 - Integer.MIN_VALUE;
+    L8:
+        Object r14 = r0.p;
+        int r2 = r0.q;
+        if (r2 == 0) goto L14;
+        if (r2 != 1) goto L12;
+        gx3 r12 = r0.o;
+        g74 r15 = r0.n;
+        kb4.X(r14);
+        gx3 r7 = r12;
+        g74 r16 = r15;
+    L19:
+        return new g83(r16.i(r7.n));
+    L12:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L14:
+        kb4.X(r14);
+        r7 = new gx3();
+        s r3 = new s(r10, r11, r7, null, 1);
+        r0.n = r10;
+        r0.o = r7;
+        r0.q = 1;
+        Object r17 = r10.g(h13.n, r3, r0);
+        xe0 r18 = xe0.n;
+        if (r17 != r18) goto L17;
+        return r18;
+    L17:
+        r16 = r10;
+    L7:
+        r0 = new u64(r13);
+        goto L8
     }
 }

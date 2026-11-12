@@ -6,39 +6,43 @@ public final /* synthetic */ class ln2 implements mk {
     public final /* synthetic */ int n;
     public final /* synthetic */ pn2 o;
 
-    public /* synthetic */ ln2(pn2 pn2Var, int i) {
-        this.n = i;
-        this.o = pn2Var;
+    public /* synthetic */ ln2(pn2 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.mk
-    public final ic2 apply(Object obj) {
-        Object obj2;
-        int i = this.n;
-        pn2 pn2Var = this.o;
-        m92 m92Var = (m92) obj;
-        switch (i) {
-            case 0:
-                rr2.s(m92Var, "LibraryResult must not be null");
-                lb4 lb4Var = new lb4();
-                if (m92Var.a != 0 || (obj2 = m92Var.c) == null) {
-                    lb4Var.l(null);
-                } else {
-                    gn2 gn2Var = (gn2) obj2;
-                    byte[] bArr = gn2Var.d.k;
-                    if (bArr == null) {
-                        lb4Var.l(f92.a(gn2Var, null));
-                    } else {
-                        ic2 ic2VarJ = pn2Var.z.m.j(bArr);
-                        mn2 mn2Var = new mn2(lb4Var, ic2VarJ, 0);
-                        gq0 gq0Var = gq0.n;
-                        lb4Var.f(mn2Var, gq0Var);
-                        ((k91) ic2VarJ).f(new v6(ic2VarJ, lb4Var, gn2Var, 25), gq0Var);
-                    }
-                }
-                return lb4Var;
-            default:
-                return pn2.a(pn2Var, m92Var);
-        }
+    public final ic2 apply(Object r5) {
+        int r0 = this.n;
+        pn2 r4 = this.o;
+        m92 r6 = (m92) r5;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L5;
+        };
+    L6:
+        rr2.s(r6, "LibraryResult must not be null");
+        lb4 r1 = new lb4();
+        if (r6.a != 0) goto L15;
+        Object r7 = r6.c;
+        if (r7 == null) goto L15;
+        gn2 r8 = (gn2) r7;
+        byte[] r2 = r8.d.k;
+        if (r2 != null) goto L14;
+        r1.l(f92.a(r8, null));
+    L16:
+        return r1;
+    L14:
+        ic2 r9 = r4.z.m.j(r2);
+        mn2 r3 = new mn2(r1, r9, 0);
+        gq0 r10 = gq0.n;
+        r1.f(r3, r10);
+        v6 r11 = new v6(r9, r1, r8, 25);
+        ((k91) r9).f(r11, r10);
+    L15:
+        r1.l(null);
+        goto L16
+    L5:
+        return pn2.a(r4, r6);
     }
 }

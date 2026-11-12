@@ -5,16 +5,16 @@ package defpackage;
 public final class zd extends ce {
     public float a;
 
-    public zd(float f) {
-        this.a = f;
+    public zd(float r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.ce
-    public final float a(int i) {
-        if (i == 0) {
-            return this.a;
-        }
+    public final float a(int r1) {
+        if (r1 == 0) goto L4;
         return 0.0f;
+    L4:
+        return this.a;
     }
 
     @Override // defpackage.ce
@@ -28,14 +28,20 @@ public final class zd extends ce {
     }
 
     @Override // defpackage.ce
-    public final void d(int i, float f) {
-        if (i == 0) {
-            this.a = f;
-        }
+    public final void d(int r1, float r2) {
+        if (r1 != 0) goto L5;
+        this.a = r2;
+        return;
     }
 
-    public final boolean equals(Object obj) {
-        return (obj instanceof zd) && ((zd) obj).a == this.a;
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof zd) == true) goto L5;
+        return false;
+    L5:
+        if (((zd) r2).a != this.a) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     public final int hashCode() {

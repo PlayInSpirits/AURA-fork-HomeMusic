@@ -10,17 +10,19 @@ public final class vd {
     public final zd3 e;
     public ce f;
     public long g;
-    public long h = Long.MIN_VALUE;
-    public final zd3 i = uc5.B(Boolean.TRUE);
+    public long h;
+    public final zd3 i;
 
-    public vd(Object obj, hd5 hd5Var, ce ceVar, long j, Object obj2, long j2, gf1 gf1Var) {
-        this.a = hd5Var;
-        this.b = obj2;
-        this.c = j2;
-        this.d = gf1Var;
-        this.e = uc5.B(obj);
-        this.f = kb4.n(ceVar);
-        this.g = j;
+    public vd(Object r1, hd5 r2, ce r3, long r4, Object r6, long r7, gf1 r9) {
+        this.a = r2;
+        this.b = r6;
+        this.c = r7;
+        this.d = r9;
+        this.e = uc5.B(r1);
+        this.f = kb4.n(r3);
+        this.g = r4;
+        this.h = Long.MIN_VALUE;
+        this.i = uc5.B(Boolean.TRUE);
     }
 
     public final void a() {

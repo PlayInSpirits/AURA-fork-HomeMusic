@@ -16,82 +16,90 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class GlideException extends Exception {
-    public static final StackTraceElement[] s = new StackTraceElement[0];
+    public static final StackTraceElement[] s = null;
     public final List n;
     public f42 o;
     public int p;
     public Class q;
     public final String r;
 
-    public GlideException(String str, List list) {
-        this.r = str;
+    static {
+        s = new StackTraceElement[0];
+    }
+
+    public GlideException(String r1, List r2) {
+        this.r = r1;
         setStackTrace(s);
-        this.n = list;
+        this.n = r2;
     }
 
-    public static void a(Throwable th, ArrayList arrayList) {
-        if (!(th instanceof GlideException)) {
-            arrayList.add(th);
-            return;
-        }
-        Iterator it = ((GlideException) th).n.iterator();
-        while (it.hasNext()) {
-            a((Throwable) it.next(), arrayList);
-        }
+    public static void a(Throwable r1, ArrayList r2) {
+        if ((r1 instanceof GlideException) == false) goto L9;
+        Iterator r3 = ((GlideException) r1).n.iterator();
+    L6:
+        if (r3.hasNext() == false) goto L8;
+        a((Throwable) r3.next(), r2);
+        goto L6
+    L8:
+        return;
+    L9:
+        r2.add(r1);
     }
 
-    public static void b(List list, ji1 ji1Var) throws IOException {
-        int size = list.size();
-        int i = 0;
-        while (i < size) {
-            ji1Var.append("Cause (");
-            int i2 = i + 1;
-            ji1Var.append(String.valueOf(i2));
-            ji1Var.append(" of ");
-            ji1Var.append(String.valueOf(size));
-            ji1Var.append("): ");
-            Throwable th = (Throwable) list.get(i);
-            if (th instanceof GlideException) {
-                ((GlideException) th).e(ji1Var);
-            } else {
-                c(th, ji1Var);
-            }
-            i = i2;
-        }
+    public static void b(List r4, ji1 r5) {
+        int r0 = r4.size();
+        int r1 = 0;
+    L3:
+        if (r1 >= r0) goto L9;
+        r5.append("Cause (");
+        int r2 = r1 + 1;
+        r5.append(String.valueOf(r2));
+        r5.append(" of ");
+        r5.append(String.valueOf(r0));
+        r5.append("): ");
+        Throwable r3 = (Throwable) r4.get(r1);
+        if ((r3 instanceof GlideException) == false) goto L7;
+        ((GlideException) r3).e(r5);
+    L8:
+        r1 = r2;
+        goto L3
+    L7:
+        c(r3, r5);
+        goto L8
     }
 
-    public static void c(Throwable th, Appendable appendable) {
-        try {
-            appendable.append(th.getClass().toString()).append(": ").append(th.getMessage()).append('\n');
-        } catch (IOException unused) {
-            er1.m(th);
-        }
+    public static void c(Throwable r1, Appendable r2) {
+        r2.append(r1.getClass().toString()).append(": ").append(r1.getMessage()).append('\n');     // Catch: IOException -> L4
+        return;
+    L4:
+        er1.m(r1);
     }
 
     public final void d() {
-        ArrayList arrayList = new ArrayList();
-        a(this, arrayList);
-        int size = arrayList.size();
-        int i = 0;
-        while (i < size) {
-            StringBuilder sb = new StringBuilder("Root cause (");
-            int i2 = i + 1;
-            sb.append(i2);
-            sb.append(" of ");
-            sb.append(size);
-            sb.append(")");
-            Log.i("Glide", sb.toString(), (Throwable) arrayList.get(i));
-            i = i2;
-        }
+        ArrayList r0 = new ArrayList();
+        a(this, r0);
+        int r5 = r0.size();
+        int r1 = 0;
+    L3:
+        if (r1 >= r5) goto L5;
+        StringBuilder r2 = new StringBuilder("Root cause (");
+        int r3 = r1 + 1;
+        r2.append(r3);
+        r2.append(" of ");
+        r2.append(r5);
+        r2.append(")");
+        Log.i("Glide", r2.toString(), (Throwable) r0.get(r1));
+        r1 = r3;
+        goto L3
     }
 
-    public final void e(Appendable appendable) {
-        c(this, appendable);
-        try {
-            b(this.n, new ji1(appendable));
-        } catch (IOException e) {
-            er1.m(e);
-        }
+    public final void e(Appendable r2) {
+        c(this, r2);
+        b(this.n, new ji1(r2));     // Catch: IOException -> L5
+        return;
+    L5:
+        e = move-exception;
+        er1.m(e);
     }
 
     @Override // java.lang.Throwable
@@ -101,48 +109,57 @@ public final class GlideException extends Exception {
 
     @Override // java.lang.Throwable
     public final String getMessage() {
-        String str;
-        StringBuilder sb = new StringBuilder(71);
-        sb.append(this.r);
-        String str2 = "";
-        if (this.q != null) {
-            str = ", " + this.q;
-        } else {
-            str = "";
-        }
-        sb.append(str);
-        int i = this.p;
-        sb.append(i != 0 ? ", ".concat(xa3.x(i)) : "");
-        if (this.o != null) {
-            str2 = ", " + this.o;
-        }
-        sb.append(str2);
-        ArrayList arrayList = new ArrayList();
-        a(this, arrayList);
-        if (arrayList.isEmpty()) {
-            return sb.toString();
-        }
-        if (arrayList.size() == 1) {
-            sb.append("\nThere was 1 root cause:");
-        } else {
-            sb.append("\nThere were ");
-            sb.append(arrayList.size());
-            sb.append(" root causes:");
-        }
-        int size = arrayList.size();
-        int i2 = 0;
-        while (i2 < size) {
-            Object obj = arrayList.get(i2);
-            i2++;
-            Throwable th = (Throwable) obj;
-            sb.append('\n');
-            sb.append(th.getClass().getName());
-            sb.append('(');
-            sb.append(th.getMessage());
-            sb.append(')');
-        }
-        sb.append("\n call GlideException#logRootCauses(String) for more detail");
-        return sb.toString();
+        StringBuilder r0 = new StringBuilder(71);
+        r0.append(this.r);
+        String r2 = "";
+        if (this.q == null) goto L5;
+        String r1 = ", " + this.q;
+    L6:
+        r0.append(r1);
+        int r3 = this.p;
+        if (r3 == 0) goto L9;
+        String r4 = ", ".concat(xa3.x(r3));
+    L10:
+        r0.append(r4);
+        if (this.o == null) goto L13;
+        r2 = ", " + this.o;
+    L13:
+        r0.append(r2);
+        ArrayList r5 = new ArrayList();
+        a(this, r5);
+        if (r5.isEmpty() == false) goto L18;
+        return r0.toString();
+    L18:
+        if (r5.size() != 1) goto L20;
+        r0.append("\nThere was 1 root cause:");
+    L21:
+        int r6 = r5.size();
+        int r7 = 0;
+    L22:
+        if (r7 >= r6) goto L24;
+        Object r8 = r5.get(r7);
+        r7 = r7 + 1;
+        Throwable r9 = (Throwable) r8;
+        r0.append('\n');
+        r0.append(r9.getClass().getName());
+        r0.append('(');
+        r0.append(r9.getMessage());
+        r0.append(')');
+        goto L22
+    L24:
+        r0.append("\n call GlideException#logRootCauses(String) for more detail");
+        return r0.toString();
+    L20:
+        r0.append("\nThere were ");
+        r0.append(r5.size());
+        r0.append(" root causes:");
+        goto L21
+    L9:
+        r4 = "";
+        goto L10
+    L5:
+        r1 = "";
+        goto L6
     }
 
     @Override // java.lang.Throwable
@@ -151,16 +168,16 @@ public final class GlideException extends Exception {
     }
 
     @Override // java.lang.Throwable
-    public final void printStackTrace(PrintStream printStream) {
-        e(printStream);
+    public final void printStackTrace(PrintStream r1) {
+        e(r1);
     }
 
     @Override // java.lang.Throwable
-    public final void printStackTrace(PrintWriter printWriter) {
-        e(printWriter);
+    public final void printStackTrace(PrintWriter r1) {
+        e(r1);
     }
 
-    public GlideException(String str) {
-        this(str, Collections.EMPTY_LIST);
+    public GlideException(String r2) {
+        this(r2, Collections.EMPTY_LIST);
     }
 }

@@ -6,11 +6,13 @@ import android.webkit.WebView;
 /* JADX INFO: loaded from: classes.dex */
 public final class kr1 implements oi3 {
     @Override // defpackage.oi3
-    public final void V(boolean z) {
-        WebView webView;
-        if (!z || (webView = hw.g) == null) {
-            return;
-        }
-        webView.evaluateJavascript("window.dispatchEvent(new Event(" + rr1.c.j("hm:native-playing") + "));", null);
+    public final void V(boolean r3) {
+        if (r3 == false) goto L7;
+        WebView r2 = hw.g;
+        if (r2 == null) goto L8;
+        r2.evaluateJavascript("window.dispatchEvent(new Event(" + rr1.c.j("hm:native-playing") + "));", null);
+        return;
+    L8:
+        return;
     }
 }

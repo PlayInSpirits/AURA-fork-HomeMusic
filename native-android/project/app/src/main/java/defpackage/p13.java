@@ -10,12 +10,12 @@ public final class p13 {
     public final int[] e;
     public final int f;
 
-    public p13(int i, boolean z, int i2, int i3, int[] iArr, int i4) {
-        this.a = i;
-        this.b = z;
-        this.c = i2;
-        this.d = i3;
-        this.e = iArr;
-        this.f = i4;
+    public p13(int r1, boolean r2, int r3, int r4, int[] r5, int r6) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
     }
 }

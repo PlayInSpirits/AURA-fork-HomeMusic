@@ -9,64 +9,67 @@ public final class u71 extends im4 {
     public ru o;
 
     @Override // defpackage.im4
-    public final long b(be3 be3Var) {
-        byte[] bArr = be3Var.a;
-        if (bArr[0] != -1) {
-            return -1L;
-        }
-        int i = (bArr[2] & 255) >> 4;
-        if (i == 6 || i == 7) {
-            be3Var.O(4);
-            be3Var.I();
-        }
-        int iP = rr2.P(i, be3Var);
-        be3Var.N(0);
-        return iP;
+    public final long b(be3 r4) {
+        byte[] r3 = r4.a;
+        if (r3[0] != (-1)) goto L11;
+        int r5 = (r3[2] & 255) >> 4;
+        if (r5 != 6) goto L7;
+    L8:
+        r4.O(4);
+        r4.I();
+    L9:
+        int r6 = rr2.P(r5, r4);
+        r4.N(0);
+        return r6;
+    L7:
+        if (r5 != 7) goto L9;
+    L11:
+        return -1;
     }
 
     @Override // defpackage.im4
-    public final boolean c(be3 be3Var, long j, rf2 rf2Var) {
-        byte[] bArr = be3Var.a;
-        v71 v71Var = this.n;
-        if (v71Var == null) {
-            v71 v71Var2 = new v71(17, bArr);
-            this.n = v71Var2;
-            sb1 sb1VarA = v71Var2.c(Arrays.copyOfRange(bArr, 9, be3Var.c), null).a();
-            sb1VarA.l = lw2.m("audio/ogg");
-            rf2Var.n = new tb1(sb1VarA);
-            return true;
-        }
-        byte b = bArr[0];
-        if ((b & 127) != 3) {
-            if (b != -1) {
-                return true;
-            }
-            ru ruVar = this.o;
-            if (ruVar != null) {
-                ruVar.n = j;
-                rf2Var.o = ruVar;
-            }
-            ((tb1) rf2Var.n).getClass();
-            return false;
-        }
-        rm3 rm3VarY = l93.Y(be3Var);
-        v71 v71Var3 = new v71(v71Var.a, v71Var.b, v71Var.c, v71Var.d, v71Var.e, v71Var.g, v71Var.h, v71Var.j, rm3VarY, v71Var.l);
-        this.n = v71Var3;
-        ru ruVar2 = new ru();
-        ruVar2.p = v71Var3;
-        ruVar2.q = rm3VarY;
-        ruVar2.n = -1L;
-        ruVar2.o = -1L;
-        this.o = ruVar2;
+    public final boolean c(be3 r22, long r23, rf2 r25) {
+        byte[] r3 = r22.a;
+        v71 r4 = this.n;
+        if (r4 != null) goto L6;
+        v71 r5 = new v71(17, r3);
+        this.n = r5;
+        sb1 r0 = r5.c(Arrays.copyOfRange(r3, 9, r22.c), null).a();
+        r0.l = lw2.m("audio/ogg");
+        r25.n = new tb1(r0);
+        return true;
+    L6:
+        byte r6 = r3[0];
+        if ((r6 & 127) != 3) goto L11;
+        rm3 r19 = l93.Y(r22);
+        v71 r9 = new v71(r4.a, r4.b, r4.c, r4.d, r4.e, r4.g, r4.h, r4.j, r19, r4.l);
+        this.n = r9;
+        ru r2 = new ru();
+        r2.p = r9;
+        r2.q = r19;
+        r2.n = -1;
+        r2.o = -1;
+        this.o = r2;
+        return true;
+    L11:
+        if (r6 != (-1)) goto L17;
+        ru r1 = this.o;
+        if (r1 == null) goto L15;
+        r1.n = r23;
+        r25.o = r1;
+    L15:
+        ((tb1) r25.n).getClass();
+        return false;
+    L17:
         return true;
     }
 
     @Override // defpackage.im4
-    public final void d(boolean z) {
-        super.d(z);
-        if (z) {
-            this.n = null;
-            this.o = null;
-        }
+    public final void d(boolean r1) {
+        super.d(r1);
+        if (r1 == false) goto L6;
+        this.n = null;
+        this.o = null;
+        return;
     }
 }

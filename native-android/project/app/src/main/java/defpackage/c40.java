@@ -12,9 +12,9 @@ public final class c40 {
     public boolean g;
     public boolean h;
 
-    public c40(bq bqVar) {
-        bqVar.getClass();
-        this.a = bqVar;
+    public c40(bq r3) {
+        r3.getClass();
+        this.a = r3;
         this.d = true;
         this.c = Long.MIN_VALUE;
     }

@@ -4,14 +4,14 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class bc3 extends m75 {
     @Override // defpackage.m75
-    public final void a(int i) {
+    public final void a(int r1) {
     }
 
     @Override // defpackage.m75
-    public final void b(int i, float f, int i2) {
+    public final void b(int r1, float r2, int r3) {
     }
 
     @Override // defpackage.m75
-    public final void c(int i) {
+    public final void c(int r1) {
     }
 }

@@ -5,10 +5,9 @@ package defpackage;
 public final class t02 extends ef5 {
     public final /* synthetic */ cr4 f;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public t02(cr4 cr4Var) {
+    public t02(cr4 r1) {
+        this.f = r1;
         super(4);
-        this.f = cr4Var;
         attachInterface(this, "com.google.android.gms.identitycredentials.internal.IIdentityCredentialCallbacks");
     }
 }

@@ -11,33 +11,35 @@ public final class w70 extends RuntimeException {
     public final h03 p;
     public final int q;
 
-    public w70(q03 q03Var, q03 q03Var2, h03 h03Var, int i, Exception exc) {
-        super(exc);
-        this.n = q03Var;
-        this.o = q03Var2;
-        this.p = h03Var;
-        this.q = i;
+    public w70(q03 r1, q03 r2, h03 r3, int r4, Exception r5) {
+        super(r5);
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
     }
 
     @Override // java.lang.Throwable
     public final String getMessage() {
-        List listO;
-        ba4 ba4VarC = si0.C(new v70(this, null));
-        if (ba4VarC.hasNext()) {
-            Object next = ba4VarC.next();
-            if (ba4VarC.hasNext()) {
-                ArrayList arrayList = new ArrayList();
-                arrayList.add(next);
-                while (ba4VarC.hasNext()) {
-                    arrayList.add(ba4VarC.next());
-                }
-                listO = arrayList;
-            } else {
-                listO = gb.O(next);
-            }
-        } else {
-            listO = u01.n;
-        }
-        return rm4.d0("\n            |Failed to execute op number " + this.q + ":\n            |" + q40.B0(q40.M0(listO, 50), "\n", null, null, null, 62) + "\n            ");
+        ba4 r0 = si0.C(new v70(this, null));
+        if (r0.hasNext() == true) goto L5;
+        List r1 = u01.n;
+    L14:
+        return rm4.d0("\n            |Failed to execute op number " + this.q + ":\n            |" + q40.B0(q40.M0(r1, 50), "\n", null, null, null, 62) + "\n            ");
+    L5:
+        Object r2 = r0.next();
+        if (r0.hasNext() == true) goto L8;
+        r1 = gb.O(r2);
+        goto L14
+    L8:
+        ArrayList r3 = new ArrayList();
+        r3.add(r2);
+    L10:
+        if (r0.hasNext() == false) goto L12;
+        r3.add(r0.next());
+        goto L10
+    L12:
+        r1 = r3;
+        goto L14
     }
 }

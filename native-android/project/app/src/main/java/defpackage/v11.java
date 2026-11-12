@@ -9,15 +9,15 @@ public interface v11 {
 
     short[] d();
 
-    boolean f(Context context, int i);
+    boolean f(Context r1, int r2);
 
-    Integer n(short s);
+    Integer n(short r1);
 
-    void o(Context context, int i);
+    void o(Context r1, int r2);
 
-    void setEnabled(boolean z);
+    void setEnabled(boolean r1);
 
-    void v(short s, short s2);
+    void v(short r1, short r2);
 
-    Short z(short s);
+    Short z(short r1);
 }

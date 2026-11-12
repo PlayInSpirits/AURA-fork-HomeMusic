@@ -12,8 +12,8 @@ import com.eddyizm.tempus.subsonic.models.Genre;
 import com.eddyizm.tempus.subsonic.models.Playlist;
 import com.eddyizm.tempus.subsonic.models.PodcastChannel;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -22,287 +22,349 @@ public final class o7 extends Filter {
     public Filterable b;
 
     /* JADX WARN: Multi-variable type inference failed */
-    public /* synthetic */ o7(dw3 dw3Var, int i) {
-        this.a = i;
-        this.b = (Filterable) dw3Var;
+    public /* synthetic */ o7(dw3 r1, int r2) {
+        this.a = r2;
+        this.b = (Filterable) r1;
     }
 
     @Override // android.widget.Filter
-    public CharSequence convertResultToString(Object obj) {
-        switch (this.a) {
-            case 4:
-                return ((pg0) this.b).c((Cursor) obj);
-            default:
-                return super.convertResultToString(obj);
-        }
-    }
-
-    /* JADX WARN: Code duplicated, block: B:80:0x0189  */
-    @Override // android.widget.Filter
-    public final Filter.FilterResults performFiltering(CharSequence charSequence) {
-        Cursor cursorF;
-        int i = 0;
-        switch (this.a) {
-            case 0:
-                q7 q7Var = (q7) this.b;
-                ArrayList arrayList = new ArrayList();
-                if (charSequence == null || charSequence.length() == 0) {
-                    arrayList.addAll(q7Var.t);
-                } else {
-                    String strTrim = charSequence.toString().toLowerCase().trim();
-                    for (AlbumID3 albumID3 : q7Var.t) {
-                        if (albumID3.getName().toLowerCase().contains(strTrim)) {
-                            arrayList.add(albumID3);
-                        }
-                    }
-                }
-                Filter.FilterResults filterResults = new Filter.FilterResults();
-                filterResults.values = arrayList;
-                return filterResults;
-            case 1:
-                b8 b8Var = (b8) this.b;
-                ArrayList arrayList2 = new ArrayList();
-                if (charSequence == null || charSequence.length() == 0) {
-                    arrayList2.addAll(b8Var.s);
-                } else {
-                    String strTrim2 = charSequence.toString().toLowerCase().trim();
-                    b8Var.u = strTrim2;
-                    for (AlbumID3 albumID4 : b8Var.s) {
-                        if (albumID4.getName().toLowerCase().contains(strTrim2)) {
-                            arrayList2.add(albumID4);
-                        }
-                    }
-                }
-                Filter.FilterResults filterResults2 = new Filter.FilterResults();
-                filterResults2.values = arrayList2;
-                return filterResults2;
-            case 2:
-                ej ejVar = (ej) this.b;
-                ArrayList arrayList3 = new ArrayList();
-                if (charSequence == null || charSequence.length() == 0) {
-                    arrayList3.addAll(ejVar.s);
-                } else {
-                    String strTrim3 = charSequence.toString().toLowerCase().trim();
-                    ArrayList arrayList4 = ejVar.s;
-                    int size = arrayList4.size();
-                    while (i < size) {
-                        Object obj = arrayList4.get(i);
-                        i++;
-                        ArtistID3 artistID3 = (ArtistID3) obj;
-                        if (artistID3.getName().toLowerCase().contains(strTrim3)) {
-                            arrayList3.add(artistID3);
-                        }
-                    }
-                }
-                Filter.FilterResults filterResults3 = new Filter.FilterResults();
-                filterResults3.values = arrayList3;
-                return filterResults3;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                b8 b8Var2 = (b8) this.b;
-                ArrayList arrayList5 = new ArrayList();
-                if (charSequence == null || charSequence.length() == 0) {
-                    arrayList5.addAll(b8Var2.s);
-                } else {
-                    String strTrim4 = charSequence.toString().toLowerCase().trim();
-                    b8Var2.u = strTrim4;
-                    for (ArtistID3 artistID4 : b8Var2.s) {
-                        if (artistID4.getName().toLowerCase().contains(strTrim4)) {
-                            arrayList5.add(artistID4);
-                        }
-                    }
-                }
-                Filter.FilterResults filterResults4 = new Filter.FilterResults();
-                filterResults4.values = arrayList5;
-                return filterResults4;
-            case 4:
-                co4 co4Var = (co4) ((pg0) this.b);
-                SearchView searchView = co4Var.x;
-                String string = charSequence != null ? charSequence.toString() : "";
-                if (searchView.getVisibility() == 0 && searchView.getWindowVisibility() == 0) {
-                    try {
-                        cursorF = co4Var.f(co4Var.y, string);
-                        if (cursorF != null) {
-                            cursorF.getCount();
-                        } else {
-                            cursorF = null;
-                        }
-                    } catch (RuntimeException e) {
-                        Log.w("SuggestionsAdapter", "Search suggestions query threw an exception.", e);
-                    }
-                    break;
-                } else {
-                    cursorF = null;
-                }
-                Filter.FilterResults filterResults5 = new Filter.FilterResults();
-                if (cursorF != null) {
-                    filterResults5.count = cursorF.getCount();
-                    filterResults5.values = cursorF;
-                } else {
-                    filterResults5.count = 0;
-                    filterResults5.values = null;
-                }
-                return filterResults5;
-            case 5:
-                ej ejVar2 = (ej) this.b;
-                ArrayList arrayList6 = new ArrayList();
-                if (charSequence == null || charSequence.length() == 0) {
-                    arrayList6.addAll(ejVar2.s);
-                } else {
-                    String strTrim5 = charSequence.toString().toLowerCase().trim();
-                    ArrayList arrayList7 = ejVar2.s;
-                    int size2 = arrayList7.size();
-                    while (i < size2) {
-                        Object obj2 = arrayList7.get(i);
-                        i++;
-                        Genre genre = (Genre) obj2;
-                        if (genre.getGenre().toLowerCase().contains(strTrim5)) {
-                            arrayList6.add(genre);
-                        }
-                    }
-                }
-                Filter.FilterResults filterResults6 = new Filter.FilterResults();
-                filterResults6.values = arrayList6;
-                return filterResults6;
-            case 6:
-                Filter.FilterResults filterResults7 = new Filter.FilterResults();
-                String string2 = charSequence != null ? charSequence.toString() : null;
-                filterResults7.values = string2 != null ? string2 : "";
-                return filterResults7;
-            case 7:
-                ej ejVar3 = (ej) this.b;
-                ArrayList arrayList8 = new ArrayList();
-                if (charSequence == null || charSequence.length() == 0) {
-                    arrayList8.addAll(ejVar3.s);
-                } else {
-                    String strTrim6 = charSequence.toString().toLowerCase().trim();
-                    ArrayList arrayList9 = ejVar3.s;
-                    int size3 = arrayList9.size();
-                    while (i < size3) {
-                        Object obj3 = arrayList9.get(i);
-                        i++;
-                        Playlist playlist = (Playlist) obj3;
-                        if (playlist.getName().toLowerCase().contains(strTrim6)) {
-                            arrayList8.add(playlist);
-                        }
-                    }
-                }
-                Filter.FilterResults filterResults8 = new Filter.FilterResults();
-                filterResults8.values = arrayList8;
-                filterResults8.count = arrayList8.size();
-                return filterResults8;
-            case 8:
-                ej ejVar4 = (ej) this.b;
-                ArrayList arrayList10 = new ArrayList();
-                if (charSequence == null || charSequence.length() == 0) {
-                    arrayList10.addAll(ejVar4.s);
-                } else {
-                    String strTrim7 = charSequence.toString().toLowerCase().trim();
-                    ArrayList arrayList11 = ejVar4.s;
-                    int size4 = arrayList11.size();
-                    while (i < size4) {
-                        Object obj4 = arrayList11.get(i);
-                        i++;
-                        PodcastChannel podcastChannel = (PodcastChannel) obj4;
-                        if (podcastChannel.getTitle().toLowerCase().contains(strTrim7)) {
-                            arrayList10.add(podcastChannel);
-                        }
-                    }
-                }
-                Filter.FilterResults filterResults9 = new Filter.FilterResults();
-                filterResults9.values = arrayList10;
-                return filterResults9;
-            default:
-                ni4 ni4Var = (ni4) this.b;
-                ArrayList arrayList12 = new ArrayList();
-                if (charSequence == null || charSequence.length() == 0) {
-                    arrayList12.addAll(ni4Var.u);
-                } else {
-                    String strTrim8 = charSequence.toString().toLowerCase().trim();
-                    ni4Var.w = strTrim8;
-                    for (Child child : ni4Var.u) {
-                        if (child.getTitle().toLowerCase().contains(strTrim8)) {
-                            arrayList12.add(child);
-                        }
-                    }
-                }
-                Filter.FilterResults filterResults10 = new Filter.FilterResults();
-                filterResults10.values = arrayList12;
-                return filterResults10;
-        }
+    public CharSequence convertResultToString(Object r2) {
+        switch(this.a) {
+            case 4: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return super.convertResultToString(r2);
+    L7:
+        return ((pg0) this.b).c((Cursor) r2);
     }
 
     @Override // android.widget.Filter
-    public final void publishResults(CharSequence charSequence, Filter.FilterResults filterResults) {
-        switch (this.a) {
-            case 0:
-                q7 q7Var = (q7) this.b;
-                q7Var.s = (List) filterResults.values;
-                q7Var.d();
-                break;
-            case 1:
-                b8 b8Var = (b8) this.b;
-                b8Var.t = (List) filterResults.values;
-                b8Var.d();
-                break;
-            case 2:
-                ej ejVar = (ej) this.b;
-                ejVar.r.clear();
-                if (filterResults.count > 0) {
-                    ejVar.r.addAll((List) filterResults.values);
-                }
-                ejVar.d();
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                b8 b8Var2 = (b8) this.b;
-                b8Var2.t = (List) filterResults.values;
-                b8Var2.d();
-                break;
-            case 4:
-                pg0 pg0Var = (pg0) this.b;
-                Cursor cursor = pg0Var.p;
-                Object obj = filterResults.values;
-                if (obj != null && obj != cursor) {
-                    pg0Var.b((Cursor) obj);
-                    break;
-                }
-                break;
-            case 5:
-                ej ejVar2 = (ej) this.b;
-                ejVar2.r = (ArrayList) filterResults.values;
-                ejVar2.d();
-                break;
-            case 6:
-                q7 q7Var2 = (q7) this.b;
-                Object obj2 = filterResults != null ? filterResults.values : null;
-                String str = obj2 instanceof String ? (String) obj2 : null;
-                if (str == null) {
-                    str = "";
-                }
-                q7Var2.v = str;
-                q7Var2.t = su3.q(str, q7Var2.s);
-                q7Var2.d();
-                break;
-            case 7:
-                ej ejVar3 = (ej) this.b;
-                ejVar3.r.clear();
-                Object obj3 = filterResults.values;
-                if (obj3 != null) {
-                    ejVar3.r.addAll((List) obj3);
-                }
-                ejVar3.d();
-                break;
-            case 8:
-                ej ejVar4 = (ej) this.b;
-                ejVar4.r.clear();
-                if (filterResults.count > 0) {
-                    ejVar4.r.addAll((List) filterResults.values);
-                }
-                ejVar4.d();
-                break;
-            default:
-                ((ni4) this.b).v.b((List) filterResults.values, new jq3(9, this));
-                break;
-        }
+    public final Filter.FilterResults performFiltering(CharSequence r6) {
+        String r1 = "";
+        String r2 = null;
+        int r3 = 0;
+        switch(this.a) {
+            case 0: goto L127;
+            case 1: goto L113;
+            case 2: goto L100;
+            case 3: goto L86;
+            case 4: goto L65;
+            case 5: goto L52;
+            case 6: goto L44;
+            case 7: goto L31;
+            case 8: goto L18;
+            default: goto L4;
+        };
+    L4:
+        ni4 r5 = (ni4) this.b;
+        ArrayList r0 = new ArrayList();
+        if (r6 != null) goto L7;
+    L15:
+        r0.addAll(r5.u);
+    L16:
+        Filter.FilterResults r7 = new Filter.FilterResults();
+        r7.values = r0;
+        return r7;
+    L7:
+        if (r6.length() == 0) goto L15;
+        String r8 = r6.toString().toLowerCase().trim();
+        r5.w = r8;
+        Iterator r9 = r5.u.iterator();
+    L11:
+        if (r9.hasNext() == false) goto L16;
+        Child r4 = (Child) r9.next();
+        if (r4.getTitle().toLowerCase().contains(r8) == false) goto L11;
+        r0.add(r4);
+        goto L11
+    L18:
+        ej r10 = (ej) this.b;
+        ArrayList r11 = new ArrayList();
+        if (r6 != null) goto L21;
+    L28:
+        r11.addAll(r10.s);
+    L29:
+        Filter.FilterResults r12 = new Filter.FilterResults();
+        r12.values = r11;
+        return r12;
+    L21:
+        if (r6.length() == 0) goto L28;
+        String r13 = r6.toString().toLowerCase().trim();
+        ArrayList r14 = r10.s;
+        int r15 = r14.size();
+    L24:
+        if (r3 >= r15) goto L29;
+        Object r16 = r14.get(r3);
+        r3 = r3 + 1;
+        PodcastChannel r17 = (PodcastChannel) r16;
+        if (r17.getTitle().toLowerCase().contains(r13) == false) goto L24;
+        r11.add(r17);
+        goto L24
+    L31:
+        ej r18 = (ej) this.b;
+        ArrayList r19 = new ArrayList();
+        if (r6 != null) goto L34;
+    L41:
+        r19.addAll(r18.s);
+    L42:
+        Filter.FilterResults r20 = new Filter.FilterResults();
+        r20.values = r19;
+        r20.count = r19.size();
+        return r20;
+    L34:
+        if (r6.length() == 0) goto L41;
+        String r21 = r6.toString().toLowerCase().trim();
+        ArrayList r22 = r18.s;
+        int r23 = r22.size();
+    L37:
+        if (r3 >= r23) goto L42;
+        Object r24 = r22.get(r3);
+        r3 = r3 + 1;
+        Playlist r25 = (Playlist) r24;
+        if (r25.getName().toLowerCase().contains(r21) == false) goto L37;
+        r19.add(r25);
+        goto L37
+    L44:
+        Filter.FilterResults r26 = new Filter.FilterResults();
+        if (r6 == null) goto L47;
+        r2 = r6.toString();
+    L47:
+        if (r2 == null) goto L50;
+        r1 = r2;
+    L50:
+        r26.values = r1;
+        return r26;
+    L52:
+        ej r27 = (ej) this.b;
+        ArrayList r28 = new ArrayList();
+        if (r6 != null) goto L55;
+    L62:
+        r28.addAll(r27.s);
+    L63:
+        Filter.FilterResults r29 = new Filter.FilterResults();
+        r29.values = r28;
+        return r29;
+    L55:
+        if (r6.length() == 0) goto L62;
+        String r30 = r6.toString().toLowerCase().trim();
+        ArrayList r31 = r27.s;
+        int r32 = r31.size();
+    L58:
+        if (r3 >= r32) goto L63;
+        Object r33 = r31.get(r3);
+        r3 = r3 + 1;
+        Genre r34 = (Genre) r33;
+        if (r34.getGenre().toLowerCase().contains(r30) == false) goto L58;
+        r28.add(r34);
+        goto L58
+    L65:
+        co4 r35 = (co4) ((pg0) this.b);
+        SearchView r36 = r35.x;
+        if (r6 == null) goto L70;
+        r1 = r6.toString();
+    L70:
+        if (r36.getVisibility() == 0) goto L72;
+    L80:
+        Cursor r37 = null;
+    L81:
+        Filter.FilterResults r38 = new Filter.FilterResults();
+        if (r37 == null) goto L84;
+        r38.count = r37.getCount();
+        r38.values = r37;
+    L85:
+        return r38;
+    L84:
+        r38.count = 0;
+        r38.values = null;
+        goto L85
+    L72:
+        if (r36.getWindowVisibility() != 0) goto L80;
+        r37 = r35.f(r35.y, r1);     // Catch: RuntimeException -> L78
+        if (r37 == null) goto L80;
+        r37.getCount();     // Catch: RuntimeException -> L78
+    L78:
+        e = move-exception;
+        Log.w("SuggestionsAdapter", "Search suggestions query threw an exception.", e);
+        goto L80
+    L86:
+        b8 r39 = (b8) this.b;
+        ArrayList r40 = new ArrayList();
+        if (r6 != null) goto L89;
+    L97:
+        r40.addAll(r39.s);
+    L98:
+        Filter.FilterResults r41 = new Filter.FilterResults();
+        r41.values = r40;
+        return r41;
+    L89:
+        if (r6.length() == 0) goto L97;
+        String r42 = r6.toString().toLowerCase().trim();
+        r39.u = r42;
+        Iterator r43 = r39.s.iterator();
+    L93:
+        if (r43.hasNext() == false) goto L98;
+        ArtistID3 r44 = (ArtistID3) r43.next();
+        if (r44.getName().toLowerCase().contains(r42) == false) goto L93;
+        r40.add(r44);
+        goto L93
+    L100:
+        ej r45 = (ej) this.b;
+        ArrayList r46 = new ArrayList();
+        if (r6 != null) goto L103;
+    L110:
+        r46.addAll(r45.s);
+    L111:
+        Filter.FilterResults r47 = new Filter.FilterResults();
+        r47.values = r46;
+        return r47;
+    L103:
+        if (r6.length() == 0) goto L110;
+        String r48 = r6.toString().toLowerCase().trim();
+        ArrayList r49 = r45.s;
+        int r50 = r49.size();
+    L106:
+        if (r3 >= r50) goto L111;
+        Object r51 = r49.get(r3);
+        r3 = r3 + 1;
+        ArtistID3 r52 = (ArtistID3) r51;
+        if (r52.getName().toLowerCase().contains(r48) == false) goto L106;
+        r46.add(r52);
+        goto L106
+    L113:
+        b8 r53 = (b8) this.b;
+        ArrayList r54 = new ArrayList();
+        if (r6 != null) goto L116;
+    L124:
+        r54.addAll(r53.s);
+    L125:
+        Filter.FilterResults r55 = new Filter.FilterResults();
+        r55.values = r54;
+        return r55;
+    L116:
+        if (r6.length() == 0) goto L124;
+        String r56 = r6.toString().toLowerCase().trim();
+        r53.u = r56;
+        Iterator r57 = r53.s.iterator();
+    L120:
+        if (r57.hasNext() == false) goto L125;
+        AlbumID3 r58 = (AlbumID3) r57.next();
+        if (r58.getName().toLowerCase().contains(r56) == false) goto L120;
+        r54.add(r58);
+        goto L120
+    L127:
+        q7 r59 = (q7) this.b;
+        ArrayList r60 = new ArrayList();
+        if (r6 != null) goto L130;
+    L138:
+        r60.addAll(r59.t);
+    L139:
+        Filter.FilterResults r61 = new Filter.FilterResults();
+        r61.values = r60;
+        return r61;
+    L130:
+        if (r6.length() == 0) goto L138;
+        String r62 = r6.toString().toLowerCase().trim();
+        Iterator r63 = r59.t.iterator();
+    L134:
+        if (r63.hasNext() == false) goto L139;
+        AlbumID3 r64 = (AlbumID3) r63.next();
+        if (r64.getName().toLowerCase().contains(r62) == false) goto L134;
+        r60.add(r64);
+        goto L134
+    }
+
+    @Override // android.widget.Filter
+    public final void publishResults(CharSequence r3, Filter.FilterResults r4) {
+        switch(this.a) {
+            case 0: goto L43;
+            case 1: goto L41;
+            case 2: goto L36;
+            case 3: goto L34;
+            case 4: goto L29;
+            case 5: goto L27;
+            case 6: goto L16;
+            case 7: goto L11;
+            case 8: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((ni4) this.b).v.b((List) r4.values, new jq3(9, this));
+        return;
+    L6:
+        ej r2 = (ej) this.b;
+        r2.r.clear();
+        if (r4.count <= 0) goto L9;
+        r2.r.addAll((List) r4.values);
+    L9:
+        r2.d();
+        return;
+    L11:
+        ej r5 = (ej) this.b;
+        r5.r.clear();
+        Object r6 = r4.values;
+        if (r6 == null) goto L14;
+        r5.r.addAll((List) r6);
+    L14:
+        r5.d();
+        return;
+    L16:
+        q7 r7 = (q7) this.b;
+        String r8 = null;
+        if (r4 == null) goto L19;
+        Object r9 = r4.values;
+    L21:
+        if ((r9 instanceof String) == false) goto L23;
+        r8 = (String) r9;
+    L23:
+        if (r8 != null) goto L25;
+        r8 = "";
+    L25:
+        r7.v = r8;
+        r7.t = su3.q(r8, r7.s);
+        r7.d();
+        return;
+    L19:
+        r9 = null;
+        goto L21
+    L27:
+        ej r10 = (ej) this.b;
+        r10.r = (ArrayList) r4.values;
+        r10.d();
+        return;
+    L29:
+        pg0 r11 = (pg0) this.b;
+        Cursor r12 = r11.p;
+        Object r13 = r4.values;
+        if (r13 == null) goto L45;
+        if (r13 == r12) goto L46;
+        r11.b((Cursor) r13);
+        return;
+    L46:
+        return;
+    L45:
+        return;
+    L34:
+        b8 r14 = (b8) this.b;
+        r14.t = (List) r4.values;
+        r14.d();
+        return;
+    L36:
+        ej r15 = (ej) this.b;
+        r15.r.clear();
+        if (r4.count <= 0) goto L39;
+        r15.r.addAll((List) r4.values);
+    L39:
+        r15.d();
+        return;
+    L41:
+        b8 r16 = (b8) this.b;
+        r16.t = (List) r4.values;
+        r16.d();
+        return;
+    L43:
+        q7 r17 = (q7) this.b;
+        r17.s = (List) r4.values;
+        r17.d();
     }
 
     public /* synthetic */ o7() {

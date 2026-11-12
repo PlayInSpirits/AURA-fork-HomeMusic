@@ -7,16 +7,18 @@ import java.util.ArrayDeque;
 public final class ba0 {
     public final Object a;
     public final yk b;
+    public final ArrayDeque c;
     public wa4 d;
     public mi3 e;
     public boolean f;
-    public final ArrayDeque c = new ArrayDeque();
-    public mi3 g = mi3.b;
+    public mi3 g;
 
-    public ba0(Object obj, yk ykVar, wa4 wa4Var, mi3 mi3Var) {
-        this.a = obj;
-        this.b = ykVar;
-        this.d = wa4Var;
-        this.e = mi3Var;
+    public ba0(Object r1, yk r2, wa4 r3, mi3 r4) {
+        this.a = r1;
+        this.b = r2;
+        this.d = r3;
+        this.e = r4;
+        this.c = new ArrayDeque();
+        this.g = mi3.b;
     }
 }

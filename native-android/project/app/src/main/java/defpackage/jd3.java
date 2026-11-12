@@ -10,32 +10,63 @@ public final class jd3 extends cx2 implements u62, rv0 {
     public float F;
     public dt G;
 
-    public static boolean q0(long j) {
-        return !qf4.a(j, 9205357640488583168L) && (Float.floatToRawIntBits(Float.intBitsToFloat((int) (j & 4294967295L))) & Integer.MAX_VALUE) < 2139095040;
+    public static boolean q0(long r2) {
+        if (qf4.a(r2, 9205357640488583168L) == false) goto L5;
+        return false;
+    L5:
+        if ((Float.floatToRawIntBits(Float.intBitsToFloat((int) (r2 & 4294967295L))) & Integer.MAX_VALUE) >= 2139095040) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
-    public static boolean r0(long j) {
-        return !qf4.a(j, 9205357640488583168L) && (Float.floatToRawIntBits(Float.intBitsToFloat((int) (j >> 32))) & Integer.MAX_VALUE) < 2139095040;
+    public static boolean r0(long r2) {
+        if (qf4.a(r2, 9205357640488583168L) == false) goto L5;
+        return false;
+    L5:
+        if ((Float.floatToRawIntBits(Float.intBitsToFloat((int) (r2 >> 32))) & Integer.MAX_VALUE) >= 2139095040) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     @Override // defpackage.rv0
-    public final void S(e72 e72Var) {
-        mz mzVar = e72Var.n;
-        long jD = this.B.d();
-        long jFloatToRawIntBits = (((long) Float.floatToRawIntBits(r0(jD) ? Float.intBitsToFloat((int) (jD >> 32)) : Float.intBitsToFloat((int) (mzVar.P() >> 32)))) << 32) | (((long) Float.floatToRawIntBits(q0(jD) ? Float.intBitsToFloat((int) (jD & 4294967295L)) : Float.intBitsToFloat((int) (mzVar.P() & 4294967295L)))) & 4294967295L);
-        long jZ = (Float.intBitsToFloat((int) (mzVar.P() >> 32)) == 0.0f || Float.intBitsToFloat((int) (mzVar.P() & 4294967295L)) == 0.0f) ? 0L : q05.z(jFloatToRawIntBits, this.E.h(jFloatToRawIntBits, mzVar.P()));
-        long jA = this.D.a((((long) Math.round(Float.intBitsToFloat((int) (jZ >> 32)))) << 32) | (((long) Math.round(Float.intBitsToFloat((int) (jZ & 4294967295L)))) & 4294967295L), (((long) Math.round(Float.intBitsToFloat((int) (mzVar.P() >> 32)))) << 32) | (((long) Math.round(Float.intBitsToFloat((int) (mzVar.P() & 4294967295L)))) & 4294967295L), e72Var.getLayoutDirection());
-        float f = (int) (jA >> 32);
-        float f2 = (int) (jA & 4294967295L);
-        ((zg5) mzVar.o.o).C(f, f2);
-        try {
-            this.B.c(e72Var, jZ, this.F, this.G);
-            ((zg5) mzVar.o.o).C(-f, -f2);
-            e72Var.a();
-        } catch (Throwable th) {
-            ((zg5) mzVar.o.o).C(-f, -f2);
-            throw th;
-        }
+    public final void S(e72 r20) {
+        mz r6 = r20.n;
+        long r2 = this.B.d();
+        if (r0(r2) == false) goto L5;
+        float r4 = Float.intBitsToFloat((int) (r2 >> 32));
+    L7:
+        if (q0(r2) == false) goto L9;
+        float r3 = Float.intBitsToFloat((int) (r2 & 4294967295L));
+    L10:
+        long r5 = (Float.floatToRawIntBits(r4) << 32) | (Float.floatToRawIntBits(r3) & 4294967295L);
+        if (Float.intBitsToFloat((int) (r6.P() >> 32)) != 0.0f) goto L14;
+    L15:
+        long r7 = 0;
+    L17:
+        long r8 = this.D.a((((long) Math.round(Float.intBitsToFloat((int) (r7 >> 32)))) << 32) | (((long) Math.round(Float.intBitsToFloat((int) (r7 & 4294967295L)))) & 4294967295L), (((long) Math.round(Float.intBitsToFloat((int) (r6.P() >> 32)))) << 32) | (((long) Math.round(Float.intBitsToFloat((int) (r6.P() & 4294967295L)))) & 4294967295L), r20.getLayoutDirection());
+        float r9 = (int) (r8 >> 32);
+        float r10 = (int) (r8 & 4294967295L);
+        ((zg5) r6.o.o).C(r9, r10);
+        this.B.c(r20, r7, this.F, this.G);     // Catch: Throwable -> L21
+        ((zg5) r6.o.o).C(-r9, -r10);
+        r20.a();
+        return;
+    L21:
+        th = move-exception;
+        ((zg5) r6.o.o).C(-r9, -r10);
+        throw th;
+    L14:
+        if (Float.intBitsToFloat((int) (r6.P() & 4294967295L)) == 0.0f) goto L15;
+        r7 = q05.z(r5, this.E.h(r5, r6.P()));
+        goto L17
+    L9:
+        r3 = Float.intBitsToFloat((int) (r6.P() & 4294967295L));
+        goto L10
+    L5:
+        r4 = Float.intBitsToFloat((int) (r6.P() >> 32));
+        goto L7
     }
 
     @Override // defpackage.cx2
@@ -44,27 +75,75 @@ public final class jd3 extends cx2 implements u62, rv0 {
     }
 
     @Override // defpackage.u62
-    public final vi2 r(cf2 cf2Var, pi2 pi2Var, long j) {
-        long jA;
-        boolean z = false;
-        boolean z2 = nc0.d(j) && nc0.c(j);
-        if (nc0.f(j) && nc0.e(j)) {
-            z = true;
-        }
-        if (((!this.C || this.B.d() == 9205357640488583168L) && z2) || z) {
-            jA = nc0.a(nc0.h(j), nc0.g(j), j);
-        } else {
-            long jD = this.B.d();
-            long jFloatToRawIntBits = (((long) Float.floatToRawIntBits(qc0.f(r0(jD) ? Math.round(Float.intBitsToFloat((int) (jD >> 32))) : nc0.j(j), j))) << 32) | (((long) Float.floatToRawIntBits(qc0.e(q0(jD) ? Math.round(Float.intBitsToFloat((int) (jD & 4294967295L))) : nc0.i(j), j))) & 4294967295L);
-            if (this.C && this.B.d() != 9205357640488583168L) {
-                float fIntBitsToFloat = !r0(this.B.d()) ? Float.intBitsToFloat((int) (jFloatToRawIntBits >> 32)) : Float.intBitsToFloat((int) (this.B.d() >> 32));
-                long jFloatToRawIntBits2 = (((long) Float.floatToRawIntBits(!q0(this.B.d()) ? Float.intBitsToFloat((int) (jFloatToRawIntBits & 4294967295L)) : Float.intBitsToFloat((int) (this.B.d() & 4294967295L)))) & 4294967295L) | (((long) Float.floatToRawIntBits(fIntBitsToFloat)) << 32);
-                jFloatToRawIntBits = (Float.intBitsToFloat((int) (jFloatToRawIntBits >> 32)) == 0.0f || Float.intBitsToFloat((int) (jFloatToRawIntBits & 4294967295L)) == 0.0f) ? 0L : q05.z(jFloatToRawIntBits2, this.E.h(jFloatToRawIntBits2, jFloatToRawIntBits));
-            }
-            jA = nc0.a(qc0.f(Math.round(Float.intBitsToFloat((int) (jFloatToRawIntBits >> 32))), j), qc0.e(Math.round(Float.intBitsToFloat((int) (jFloatToRawIntBits & 4294967295L))), j), j);
-        }
-        jg3 jg3VarR = pi2Var.r(jA);
-        return cf2Var.v(jg3VarR.n, jg3VarR.o, v01.n, new la(jg3VarR, 3));
+    public final vi2 r(cf2 r12, pi2 r13, long r14) {
+        boolean r1 = false;
+        if (nc0.d(r14) == true) goto L5;
+    L7:
+        boolean r0 = false;
+    L9:
+        if (nc0.f(r14) == false) goto L14;
+        if (nc0.e(r14) == false) goto L14;
+        r1 = true;
+    L14:
+        if (this.C == true) goto L16;
+    L18:
+        if (r0 == true) goto L49;
+    L19:
+        if (r1 == true) goto L49;
+        long r2 = this.B.d();
+        if (r0(r2) == false) goto L24;
+        int r3 = Math.round(Float.intBitsToFloat((int) (r2 >> 32)));
+    L26:
+        if (q0(r2) == false) goto L28;
+        int r4 = Math.round(Float.intBitsToFloat((int) (r2 & 4294967295L)));
+    L29:
+        int r5 = qc0.f(r3, r14);
+        float r6 = qc0.e(r4, r14);
+        long r7 = (Float.floatToRawIntBits(r5) << 32) | (Float.floatToRawIntBits(r6) & 4294967295L);
+        if (this.C == true) goto L32;
+    L48:
+        long r15 = nc0.a(qc0.f(Math.round(Float.intBitsToFloat((int) (r7 >> 32))), r14), qc0.e(Math.round(Float.intBitsToFloat((int) (r7 & 4294967295L))), r14), r14);
+    L50:
+        jg3 r11 = r13.r(r15);
+        return r12.v(r11.n, r11.o, v01.n, new la(r11, 3));
+    L32:
+        if (this.B.d() == 9205357640488583168L) goto L48;
+        if (r0(this.B.d()) == true) goto L36;
+        float r8 = Float.intBitsToFloat((int) (r7 >> 32));
+    L38:
+        if (q0(this.B.d()) == true) goto L40;
+        float r9 = Float.intBitsToFloat((int) (r7 & 4294967295L));
+    L41:
+        long r10 = Float.floatToRawIntBits(r8);
+        long r16 = (((long) Float.floatToRawIntBits(r9)) & 4294967295L) | (r10 << 32);
+        if (Float.intBitsToFloat((int) (r7 >> 32)) != 0.0f) goto L45;
+    L46:
+        r7 = 0;
+        goto L48
+    L45:
+        if (Float.intBitsToFloat((int) (r7 & 4294967295L)) == 0.0f) goto L46;
+        r7 = q05.z(r16, this.E.h(r16, r7));
+        goto L48
+    L40:
+        r9 = Float.intBitsToFloat((int) (this.B.d() & 4294967295L));
+        goto L41
+    L36:
+        r8 = Float.intBitsToFloat((int) (this.B.d() >> 32));
+        goto L38
+    L28:
+        r4 = nc0.i(r14);
+        goto L29
+    L24:
+        r3 = nc0.j(r14);
+    L49:
+        r15 = nc0.a(nc0.h(r14), nc0.g(r14), r14);
+        goto L50
+    L16:
+        if (this.B.d() == 9205357640488583168L) goto L18;
+    L5:
+        if (nc0.c(r14) == false) goto L7;
+        r0 = true;
+        goto L9
     }
 
     public final String toString() {

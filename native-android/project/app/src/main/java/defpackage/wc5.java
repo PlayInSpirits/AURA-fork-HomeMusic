@@ -6,9 +6,9 @@ public final class wc5 {
     public final String a;
     public final String b;
 
-    public wc5(String str, String str2) {
-        str.getClass();
-        this.a = str;
-        this.b = str2;
+    public wc5(String r1, String r2) {
+        r1.getClass();
+        this.a = r1;
+        this.b = r2;
     }
 }

@@ -4,7 +4,7 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class fo4 extends t22 {
     @Override // defpackage.a32
-    public final boolean y(Throwable th) {
+    public final boolean y(Throwable r1) {
         return false;
     }
 }

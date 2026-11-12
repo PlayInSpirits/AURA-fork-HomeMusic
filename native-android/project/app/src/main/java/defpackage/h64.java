@@ -6,9 +6,9 @@ public final class h64 {
     public final v82 a;
     public final v82 b;
 
-    public h64(v82 v82Var, v82 v82Var2) {
-        this.a = v82Var;
-        this.b = v82Var2;
+    public h64(v82 r1, v82 r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
     public final String toString() {

@@ -11,13 +11,13 @@ public final class pu {
         this.b = -9223372036854775807L;
     }
 
-    public pu(int i, long j, long j2) {
-        this.a = j;
-        this.b = j2;
+    public pu(int r1, long r2, long r4) {
+        this.a = r2;
+        this.b = r4;
     }
 
-    public pu(long j, long j2) {
-        this.a = j;
-        this.b = j2;
+    public pu(long r1, long r3) {
+        this.a = r1;
+        this.b = r3;
     }
 }

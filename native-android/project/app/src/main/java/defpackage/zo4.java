@@ -7,15 +7,16 @@ public abstract class zo4 implements z34 {
     public final String o;
     public boolean p;
 
-    public zo4(we1 we1Var, String str) {
-        this.n = we1Var;
-        this.o = str;
+    public zo4(we1 r1, String r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     public final void b() {
-        if (this.p) {
-            h12.P(21, "statement is closed");
-            throw null;
-        }
+        if (this.p == true) goto L5;
+        return;
+    L5:
+        h12.P(21, "statement is closed");
+        throw null;
     }
 }

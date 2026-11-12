@@ -9,11 +9,11 @@ public final class mq2 {
     public final boolean d;
     public final boolean e;
 
-    public mq2(sp2 sp2Var, int i, boolean z, boolean z2, boolean z3) {
-        this.a = sp2Var;
-        this.b = i;
-        this.c = z;
-        this.d = z2;
-        this.e = z3;
+    public mq2(sp2 r1, int r2, boolean r3, boolean r4, boolean r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
     }
 }

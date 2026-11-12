@@ -7,37 +7,37 @@ import android.view.Surface;
 public final class kk2 implements q55 {
     public final /* synthetic */ ok2 b;
 
-    public kk2(ok2 ok2Var) {
-        this.b = ok2Var;
+    public kk2(ok2 r1) {
+        this.b = r1;
     }
 
     @Override // defpackage.q55
-    public final void a(s55 s55Var) {
+    public final void a(s55 r1) {
     }
 
     @Override // defpackage.q55
     public final void b() {
-        ok2 ok2Var = this.b;
-        Surface surface = ok2Var.l1;
-        if (surface != null) {
-            ok2Var.W0.j(surface);
-            ok2Var.o1 = true;
-        }
+        ok2 r2 = this.b;
+        Surface r0 = r2.l1;
+        if (r0 == null) goto L6;
+        r2.W0.j(r0);
+        r2.o1 = true;
+        return;
     }
 
     @Override // defpackage.q55
     public final void c() {
-        ok2 ok2Var = this.b;
-        if (ok2Var.l1 != null) {
-            ok2Var.S0(0, 1);
-        }
+        ok2 r2 = this.b;
+        if (r2.l1 == null) goto L6;
+        r2.S0(0, 1);
+        return;
     }
 
     @Override // defpackage.q55
     public final void d() {
-        k41 k41Var = this.b.V;
-        if (k41Var != null) {
-            k41Var.a();
-        }
+        k41 r0 = this.b.V;
+        if (r0 == null) goto L6;
+        r0.a();
+        return;
     }
 }

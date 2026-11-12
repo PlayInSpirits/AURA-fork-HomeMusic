@@ -8,46 +8,60 @@ final class uf4 extends gx2 {
     public final float c;
     public final float d;
 
-    public uf4(float f, float f2, float f3, float f4) {
-        this.a = f;
-        this.b = f2;
-        this.c = f3;
-        this.d = f4;
+    public uf4(float r1, float r2, float r3, float r4) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
     }
 
     @Override // defpackage.gx2
     public final cx2 d() {
-        vf4 vf4Var = new vf4();
-        vf4Var.B = this.a;
-        vf4Var.C = this.b;
-        vf4Var.D = this.c;
-        vf4Var.E = this.d;
-        vf4Var.F = true;
-        return vf4Var;
+        vf4 r0 = new vf4();
+        r0.B = this.a;
+        r0.C = this.b;
+        r0.D = this.c;
+        r0.E = this.d;
+        r0.F = true;
+        return r0;
     }
 
     @Override // defpackage.gx2
-    public final void e(cx2 cx2Var) {
-        vf4 vf4Var = (vf4) cx2Var;
-        vf4Var.B = this.a;
-        vf4Var.C = this.b;
-        vf4Var.D = this.c;
-        vf4Var.E = this.d;
-        vf4Var.F = true;
+    public final void e(cx2 r2) {
+        vf4 r3 = (vf4) r2;
+        r3.B = this.a;
+        r3.C = this.b;
+        r3.D = this.c;
+        r3.E = this.d;
+        r3.F = true;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof uf4)) {
-            return false;
-        }
-        uf4 uf4Var = (uf4) obj;
-        return ku0.b(this.a, uf4Var.a) && ku0.b(this.b, uf4Var.b) && ku0.b(this.c, uf4Var.c) && ku0.b(this.d, uf4Var.d);
+    public final boolean equals(Object r4) {
+        if (this != r4) goto L6;
+        return true;
+    L6:
+        if ((r4 instanceof uf4) == false) goto L22;
+        uf4 r5 = (uf4) r4;
+        float r1 = r5.a;
+        if (ku0.b(this.a, r1) == true) goto L12;
+        return false;
+    L12:
+        if (ku0.b(this.b, r5.b) == true) goto L15;
+        return false;
+    L15:
+        if (ku0.b(this.c, r5.c) == true) goto L18;
+        return false;
+    L18:
+        if (ku0.b(this.d, r5.d) == true) goto L21;
+        return false;
+    L21:
+        return true;
+    L22:
+        return false;
     }
 
     public final int hashCode() {
-        return Boolean.hashCode(true) + b11.d(b11.d(b11.d(Float.hashCode(this.a) * 31, this.b, 31), this.c, 31), this.d, 31);
+        int r3 = b11.d(b11.d(b11.d(Float.hashCode(this.a) * 31, this.b, 31), this.c, 31), this.d, 31);
+        return Boolean.hashCode(true) + r3;
     }
 }

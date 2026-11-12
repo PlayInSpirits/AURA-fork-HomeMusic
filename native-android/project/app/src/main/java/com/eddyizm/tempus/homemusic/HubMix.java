@@ -17,6 +17,9 @@ public final class HubMix {
     private int total;
     private List<? extends WaveTrack> tracks;
 
+    public HubMix() {
+    }
+
     public final String getDescription() {
         return this.description;
     }
@@ -45,31 +48,31 @@ public final class HubMix {
         return this.tracks;
     }
 
-    public final void setDescription(String str) {
-        this.description = str;
+    public final void setDescription(String r1) {
+        this.description = r1;
     }
 
-    public final void setId(long j) {
-        this.id = j;
+    public final void setId(long r1) {
+        this.id = r1;
     }
 
-    public final void setNdPlaylistId(String str) {
-        this.ndPlaylistId = str;
+    public final void setNdPlaylistId(String r1) {
+        this.ndPlaylistId = r1;
     }
 
-    public final void setReady(int i) {
-        this.ready = i;
+    public final void setReady(int r1) {
+        this.ready = r1;
     }
 
-    public final void setTitle(String str) {
-        this.title = str;
+    public final void setTitle(String r1) {
+        this.title = r1;
     }
 
-    public final void setTotal(int i) {
-        this.total = i;
+    public final void setTotal(int r1) {
+        this.total = r1;
     }
 
-    public final void setTracks(List<? extends WaveTrack> list) {
-        this.tracks = list;
+    public final void setTracks(List<? extends WaveTrack> r1) {
+        this.tracks = r1;
     }
 }

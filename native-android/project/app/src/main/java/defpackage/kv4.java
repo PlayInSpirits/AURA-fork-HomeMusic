@@ -26,53 +26,54 @@ public final class kv4 extends fi2 implements wr4 {
     public float Y;
     public float Z;
 
-    public kv4(Context context, int i) {
-        super(context, null, 0, i);
+    public kv4(Context r3, int r4) {
+        super(r3, null, 0, r4);
         this.M = new Paint.FontMetrics();
-        xr4 xr4Var = new xr4(this);
-        this.N = xr4Var;
+        xr4 r5 = new xr4(this);
+        this.N = r5;
         this.O = new ot(3, this);
         this.P = new Rect();
         this.W = 1.0f;
         this.X = 1.0f;
         this.Y = 0.5f;
         this.Z = 1.0f;
-        this.L = context;
-        float f = context.getResources().getDisplayMetrics().density;
-        TextPaint textPaint = xr4Var.a;
-        textPaint.density = f;
-        textPaint.setTextAlign(Paint.Align.CENTER);
+        this.L = r3;
+        float r2 = r3.getResources().getDisplayMetrics().density;
+        TextPaint r6 = r5.a;
+        r6.density = r2;
+        r6.setTextAlign(Paint.Align.CENTER);
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
-    public final void draw(Canvas canvas) {
-        Canvas canvas2;
-        canvas.save();
-        float fV = v();
-        float f = (float) (-((Math.sqrt(2.0d) * ((double) this.U)) - ((double) this.U)));
-        canvas.scale(this.W, this.X, (getBounds().width() * 0.5f) + getBounds().left, (getBounds().height() * this.Y) + getBounds().top);
-        canvas.translate(fV, f);
-        super.draw(canvas);
-        if (this.K == null) {
-            canvas2 = canvas;
-        } else {
-            Rect bounds = getBounds();
-            float fCenterY = bounds.centerY();
-            xr4 xr4Var = this.N;
-            TextPaint textPaint = xr4Var.a;
-            Paint.FontMetrics fontMetrics = this.M;
-            textPaint.getFontMetrics(fontMetrics);
-            int i = (int) (fCenterY - ((fontMetrics.descent + fontMetrics.ascent) / 2.0f));
-            if (xr4Var.g != null) {
-                textPaint.drawableState = getState();
-                xr4Var.g.e(this.L, xr4Var.a, xr4Var.b);
-                textPaint.setAlpha((int) (this.Z * 255.0f));
-            }
-            CharSequence charSequence = this.K;
-            canvas2 = canvas;
-            canvas2.drawText(charSequence, 0, charSequence.length(), bounds.centerX(), i, textPaint);
-        }
-        canvas2.restore();
+    public final void draw(Canvas r11) {
+        r11.save();
+        float r0 = v();
+        float r1 = (float) (-((Math.sqrt(2.0d) * this.U) - ((double) this.U)));
+        r11.scale(this.W, this.X, (getBounds().width() * 0.5f) + getBounds().left, (getBounds().height() * this.Y) + getBounds().top);
+        r11.translate(r0, r1);
+        super.draw(r11);
+        if (this.K != null) goto L5;
+        Canvas r3 = r11;
+    L9:
+        r3.restore();
+        return;
+    L5:
+        Rect r2 = getBounds();
+        float r4 = r2.centerY();
+        xr4 r5 = this.N;
+        TextPaint r9 = r5.a;
+        Paint.FontMetrics r6 = this.M;
+        r9.getFontMetrics(r6);
+        int r7 = (int) (r4 - ((r6.descent + r6.ascent) / 2.0f));
+        if (r5.g == null) goto L8;
+        r9.drawableState = getState();
+        r5.g.e(this.L, r5.a, r5.b);
+        r9.setAlpha((int) (this.Z * 255.0f));
+    L8:
+        CharSequence r8 = this.K;
+        r3 = r11;
+        r3.drawText(r8, 0, r8.length(), r2.centerX(), r7, r9);
+        goto L9
     }
 
     @Override // android.graphics.drawable.Drawable
@@ -82,36 +83,42 @@ public final class kv4 extends fi2 implements wr4 {
 
     @Override // android.graphics.drawable.Drawable
     public final int getIntrinsicWidth() {
-        float f = this.Q * 2;
-        CharSequence charSequence = this.K;
-        return (int) Math.max(f + (charSequence == null ? 0.0f : this.N.a(charSequence.toString())), this.R);
+        float r0 = this.Q * 2;
+        CharSequence r1 = this.K;
+        if (r1 != null) goto L5;
+        float r2 = 0.0f;
+    L7:
+        return (int) Math.max(r0 + r2, this.R);
+    L5:
+        r2 = this.N.a(r1.toString());
+        goto L7
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
-    public final void onBoundsChange(Rect rect) {
-        super.onBoundsChange(rect);
-        zc1 zc1VarG = this.n.a.g();
-        zc1VarG.k = w();
-        setShapeAppearanceModel(zc1VarG.a());
+    public final void onBoundsChange(Rect r2) {
+        super.onBoundsChange(r2);
+        zc1 r3 = this.n.a.g();
+        r3.k = w();
+        setShapeAppearanceModel(r3.a());
     }
 
     public final float v() {
-        int i;
-        Rect rect = this.P;
-        if (((rect.right - getBounds().right) - this.V) - this.T < 0) {
-            i = ((rect.right - getBounds().right) - this.V) - this.T;
-        } else {
-            if (((rect.left - getBounds().left) - this.V) + this.T <= 0) {
-                return 0.0f;
-            }
-            i = ((rect.left - getBounds().left) - this.V) + this.T;
-        }
-        return i;
+        Rect r0 = this.P;
+        if ((((r0.right - getBounds().right) - this.V) - this.T) >= 0) goto L8;
+        int r1 = ((r0.right - getBounds().right) - this.V) - this.T;
+    L6:
+        return r1;
+    L8:
+        if ((((r0.left - getBounds().left) - this.V) + this.T) <= 0) goto L10;
+        r1 = ((r0.left - getBounds().left) - this.V) + this.T;
+        goto L6
+    L10:
+        return 0.0f;
     }
 
     public final h83 w() {
-        float f = -v();
-        float fWidth = ((float) (((double) getBounds().width()) - (Math.sqrt(2.0d) * ((double) this.U)))) / 2.0f;
-        return new h83(new ng2(this.U), Math.min(Math.max(f, -fWidth), fWidth));
+        float r0 = -v();
+        float r1 = ((float) (getBounds().width() - (Math.sqrt(2.0d) * this.U))) / 2.0f;
+        return new h83(new ng2(this.U), Math.min(Math.max(r0, -r1), r1));
     }
 }

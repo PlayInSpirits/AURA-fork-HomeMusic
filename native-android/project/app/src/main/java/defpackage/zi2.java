@@ -11,14 +11,14 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface zi2 {
     @GET("setRating")
-    Call<ApiResponse> a(@QueryMap Map<String, String> map, @Query("id") String str, @Query("rating") int i);
+    Call<ApiResponse> a(@QueryMap Map<String, String> r1, @Query("id") String r2, @Query("rating") int r3);
 
     @GET("unstar")
-    Call<ApiResponse> b(@QueryMap Map<String, String> map, @Query("id") String str, @Query("albumId") String str2, @Query("artistId") String str3);
+    Call<ApiResponse> b(@QueryMap Map<String, String> r1, @Query("id") String r2, @Query("albumId") String r3, @Query("artistId") String r4);
 
     @GET("star")
-    Call<ApiResponse> c(@QueryMap Map<String, String> map, @Query("id") String str, @Query("albumId") String str2, @Query("artistId") String str3);
+    Call<ApiResponse> c(@QueryMap Map<String, String> r1, @Query("id") String r2, @Query("albumId") String r3, @Query("artistId") String r4);
 
     @GET("scrobble")
-    Call<ApiResponse> d(@QueryMap Map<String, String> map, @Query("id") String str, @Query("submission") Boolean bool);
+    Call<ApiResponse> d(@QueryMap Map<String, String> r1, @Query("id") String r2, @Query("submission") Boolean r3);
 }

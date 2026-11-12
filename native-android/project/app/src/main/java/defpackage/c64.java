@@ -8,60 +8,68 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class c64 {
-    public static final String a = cx.i("Schedulers");
+    public static final String a = null;
 
-    public static void a(fd5 fd5Var, xi4 xi4Var, ArrayList arrayList) {
-        if (arrayList.size() > 0) {
-            xi4Var.getClass();
-            long jCurrentTimeMillis = System.currentTimeMillis();
-            int size = arrayList.size();
-            int i = 0;
-            while (i < size) {
-                Object obj = arrayList.get(i);
-                i++;
-                fd5Var.j(((dd5) obj).a, jCurrentTimeMillis);
-            }
-        }
+    static {
+        a = cx.i("Schedulers");
     }
 
-    public static void b(r90 r90Var, WorkDatabase workDatabase, List list) {
-        if (list == null || list.size() == 0) {
-            return;
-        }
-        fd5 fd5VarA = workDatabase.A();
-        workDatabase.c();
-        try {
-            ArrayList arrayListD = fd5VarA.d();
-            a(fd5VarA, r90Var.d, arrayListD);
-            ArrayList arrayListC = fd5VarA.c(r90Var.k);
-            a(fd5VarA, r90Var.d, arrayListC);
-            arrayListC.addAll(arrayListD);
-            ArrayList arrayListB = fd5VarA.b();
-            workDatabase.t();
-            workDatabase.o();
-            if (arrayListC.size() > 0) {
-                dd5[] dd5VarArr = (dd5[]) arrayListC.toArray(new dd5[arrayListC.size()]);
-                Iterator it = list.iterator();
-                while (it.hasNext()) {
-                    a64 a64Var = (a64) it.next();
-                    if (a64Var.c()) {
-                        a64Var.e(dd5VarArr);
-                    }
-                }
-            }
-            if (arrayListB.size() > 0) {
-                dd5[] dd5VarArr2 = (dd5[]) arrayListB.toArray(new dd5[arrayListB.size()]);
-                Iterator it2 = list.iterator();
-                while (it2.hasNext()) {
-                    a64 a64Var2 = (a64) it2.next();
-                    if (!a64Var2.c()) {
-                        a64Var2.e(dd5VarArr2);
-                    }
-                }
-            }
-        } catch (Throwable th) {
-            workDatabase.o();
-            throw th;
-        }
+    public static void a(fd5 r4, xi4 r5, ArrayList r6) {
+        if (r6.size() <= 0) goto L7;
+        r5.getClass();
+        long r0 = System.currentTimeMillis();
+        int r7 = r6.size();
+        int r2 = 0;
+    L5:
+        if (r2 >= r7) goto L9;
+        Object r3 = r6.get(r2);
+        r2 = r2 + 1;
+        r4.j(((dd5) r3).a, r0);
+        goto L5
+    L9:
+        return;
+    }
+
+    public static void b(r90 r3, WorkDatabase r4, List r5) {
+        if (r5 != null) goto L4;
+        return;
+    L4:
+        if (r5.size() == 0) goto L41;
+        fd5 r0 = r4.A();
+        r4.c();
+        ArrayList r1 = r0.d();     // Catch: Throwable -> L24
+        a(r0, r3.d, r1);     // Catch: Throwable -> L24
+        ArrayList r2 = r0.c(r3.k);     // Catch: Throwable -> L24
+        a(r0, r3.d, r2);     // Catch: Throwable -> L24
+        r2.addAll(r1);     // Catch: Throwable -> L24
+        ArrayList r6 = r0.b();     // Catch: Throwable -> L24
+        r4.t();     // Catch: Throwable -> L24
+        r4.o();
+        if (r2.size() <= 0) goto L17;
+        dd5[] r7 = (dd5[]) r2.toArray(new dd5[r2.size()]);
+        Iterator r8 = r5.iterator();
+    L12:
+        if (r8.hasNext() == false) goto L17;
+        a64 r9 = (a64) r8.next();
+        if (r9.c() == false) goto L12;
+        r9.e(r7);
+    L17:
+        if (r6.size() <= 0) goto L40;
+        dd5[] r10 = (dd5[]) r6.toArray(new dd5[r6.size()]);
+        Iterator r11 = r5.iterator();
+    L20:
+        if (r11.hasNext() == false) goto L42;
+        a64 r12 = (a64) r11.next();
+        if (r12.c() == true) goto L20;
+        r12.e(r10);
+        goto L20
+    L42:
+        return;
+    L40:
+        return;
+    L24:
+        th = move-exception;
+        r4.o();
+        throw th;
     }
 }

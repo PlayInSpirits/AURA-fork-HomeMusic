@@ -18,74 +18,83 @@ public final class t61 extends kp {
     public boolean u;
 
     @Override // defpackage.ci0
-    public final long b(ii0 ii0Var) throws FileDataSource$FileDataSourceException {
-        Uri uri = ii0Var.a;
-        long j = ii0Var.f;
-        this.s = uri;
-        q(ii0Var);
-        try {
-            String path = uri.getPath();
-            path.getClass();
-            RandomAccessFile randomAccessFile = new RandomAccessFile(path, "r");
-            this.r = randomAccessFile;
-            try {
-                randomAccessFile.seek(j);
-                long length = ii0Var.g;
-                if (length == -1) {
-                    length = this.r.length() - j;
-                }
-                this.t = length;
-                if (length < 0) {
-                    throw new FileDataSource$FileDataSourceException(null, null, 2008);
-                }
-                this.u = true;
-                r(ii0Var);
-                return this.t;
-            } catch (IOException e) {
-                throw new FileDataSource$FileDataSourceException(e, 2000);
-            }
-        } catch (FileNotFoundException e2) {
-            if (TextUtils.isEmpty(uri.getQuery()) && TextUtils.isEmpty(uri.getFragment())) {
-                throw new FileDataSource$FileDataSourceException(e2, ((e2.getCause() instanceof ErrnoException) && ((ErrnoException) e2.getCause()).errno == OsConstants.EACCES) ? 2006 : 2005);
-            }
-            String path2 = uri.getPath();
-            String query = uri.getQuery();
-            String fragment = uri.getFragment();
-            StringBuilder sbU = b11.u("uri has query and/or fragment, which are not supported. Did you call Uri.parse() on a string containing '?' or '#'? Use Uri.fromFile(new File(path)) to avoid this. path=", path2, ",query=", query, ",fragment=");
-            sbU.append(fragment);
-            throw new FileDataSource$FileDataSourceException(sbU.toString(), e2, 1004);
-        } catch (SecurityException e3) {
-            throw new FileDataSource$FileDataSourceException(e3, 2006);
-        } catch (RuntimeException e4) {
-            throw new FileDataSource$FileDataSourceException(e4, 2000);
-        }
+    public final long b(ii0 r9) {
+        Uri r0 = r9.a;
+        long r1 = r9.f;
+        this.s = r0;
+        q(r9);
+        int r4 = 2006;
+        String r6 = r0.getPath();     // Catch: RuntimeException -> L19 SecurityException -> L21 FileNotFoundException -> L23
+        r6.getClass();     // Catch: RuntimeException -> L19 SecurityException -> L21 FileNotFoundException -> L23
+        RandomAccessFile r5 = new RandomAccessFile(r6, "r");     // Catch: RuntimeException -> L19 SecurityException -> L21 FileNotFoundException -> L23
+        this.r = r5;
+        r5.seek(r1);     // Catch: IOException -> L8
+        long r7 = r9.g;     // Catch: IOException -> L8
+        if (r7 != (-1)) goto L10;
+        r7 = this.r.length() - r1;     // Catch: IOException -> L8
+    L10:
+        this.t = r7;     // Catch: IOException -> L8
+        if (r7 < 0) goto L16;
+        this.u = true;
+        r(r9);
+        return this.t;
+    L16:
+        throw new FileDataSource$FileDataSourceException(null, null, 2008);
+    L8:
+        e = move-exception;
+        throw new FileDataSource$FileDataSourceException(e, 2000);
+    L23:
+        e = move-exception;
+        if (TextUtils.isEmpty(r0.getQuery()) == true) goto L32;
+    L41:
+        String r2 = r0.getPath();
+        String r3 = r0.getQuery();
+        String r8 = r0.getFragment();
+        StringBuilder r10 = b11.u("uri has query and/or fragment, which are not supported. Did you call Uri.parse() on a string containing '?' or '#'? Use Uri.fromFile(new File(path)) to avoid this. path=", r2, ",query=", r3, ",fragment=");
+        r10.append(r8);
+        throw new FileDataSource$FileDataSourceException(r10.toString(), e, 1004);
+    L32:
+        if (TextUtils.isEmpty(r0.getFragment()) == false) goto L41;
+        if ((e.getCause() instanceof ErrnoException) == true) goto L36;
+    L38:
+        r4 = 2005;
+    L40:
+        throw new FileDataSource$FileDataSourceException(e, r4);
+    L36:
+        if (((ErrnoException) e.getCause()).errno != OsConstants.EACCES) goto L38;
+    L21:
+        e = move-exception;
+        throw new FileDataSource$FileDataSourceException(e, 2006);
+    L19:
+        e = move-exception;
+        throw new FileDataSource$FileDataSourceException(e, 2000);
     }
 
     @Override // defpackage.ci0
     public final void close() {
         this.s = null;
-        try {
-            try {
-                RandomAccessFile randomAccessFile = this.r;
-                if (randomAccessFile != null) {
-                    randomAccessFile.close();
-                }
-                this.r = null;
-                if (this.u) {
-                    this.u = false;
-                    p();
-                }
-            } catch (IOException e) {
-                throw new FileDataSource$FileDataSourceException(e, 2000);
-            }
-        } catch (Throwable th) {
-            this.r = null;
-            if (this.u) {
-                this.u = false;
-                p();
-            }
-            throw th;
-        }
+        RandomAccessFile r2 = this.r;     // Catch: Throwable -> L7 IOException -> L9
+        if (r2 == null) goto L11;
+        r2.close();     // Catch: Throwable -> L7 IOException -> L9
+    L11:
+        this.r = null;
+        if (this.u == false) goto L23;
+        this.u = false;
+        p();
+        return;
+    L23:
+        return;
+    L7:
+        th = move-exception;
+        this.r = null;
+        if (this.u == false) goto L20;
+        this.u = false;
+        p();
+    L20:
+        throw th;
+    L9:
+        e = move-exception;
+        throw new FileDataSource$FileDataSourceException(e, 2000);     // Catch: Throwable -> L7
     }
 
     @Override // defpackage.ci0
@@ -94,25 +103,24 @@ public final class t61 extends kp {
     }
 
     @Override // defpackage.wh0
-    public final int read(byte[] bArr, int i, int i2) throws FileDataSource$FileDataSourceException {
-        if (i2 == 0) {
-            return 0;
-        }
-        long j = this.t;
-        if (j == 0) {
-            return -1;
-        }
-        try {
-            RandomAccessFile randomAccessFile = this.r;
-            String str = f35.a;
-            int i3 = randomAccessFile.read(bArr, i, (int) Math.min(j, i2));
-            if (i3 > 0) {
-                this.t -= (long) i3;
-                o(i3);
-            }
-            return i3;
-        } catch (IOException e) {
-            throw new FileDataSource$FileDataSourceException(e, 2000);
-        }
+    public final int read(byte[] r6, int r7, int r8) {
+        if (r8 != 0) goto L5;
+        return 0;
+    L5:
+        long r0 = this.t;
+        if (r0 != 0) goto L16;
+        return -1;
+    L16:
+        RandomAccessFile r2 = this.r;     // Catch: IOException -> L13
+        String r3 = f35.a;     // Catch: IOException -> L13
+        int r9 = r2.read(r6, r7, (int) Math.min(r0, r8));     // Catch: IOException -> L13
+        if (r9 <= 0) goto L12;
+        this.t -= (long) r9;
+        o(r9);
+    L12:
+        return r9;
+    L13:
+        e = move-exception;
+        throw new FileDataSource$FileDataSourceException(e, 2000);
     }
 }

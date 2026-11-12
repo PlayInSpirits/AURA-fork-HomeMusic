@@ -16,53 +16,64 @@ public final class n11 implements f42 {
     public final db3 i;
     public int j;
 
-    public n11(Object obj, f42 f42Var, int i, int i2, Map map, Class cls, Class cls2, db3 db3Var) {
-        h12.f(obj, "Argument must not be null");
-        this.b = obj;
-        this.g = f42Var;
-        this.c = i;
-        this.d = i2;
-        h12.f(map, "Argument must not be null");
-        this.h = map;
-        h12.f(cls, "Resource class must not be null");
-        this.e = cls;
-        h12.f(cls2, "Transcode class must not be null");
-        this.f = cls2;
-        h12.f(db3Var, "Argument must not be null");
-        this.i = db3Var;
+    public n11(Object r2, f42 r3, int r4, int r5, Map r6, Class r7, Class r8, db3 r9) {
+        h12.f(r2, "Argument must not be null");
+        this.b = r2;
+        this.g = r3;
+        this.c = r4;
+        this.d = r5;
+        h12.f(r6, "Argument must not be null");
+        this.h = r6;
+        h12.f(r7, "Resource class must not be null");
+        this.e = r7;
+        h12.f(r8, "Transcode class must not be null");
+        this.f = r8;
+        h12.f(r9, "Argument must not be null");
+        this.i = r9;
     }
 
     @Override // defpackage.f42
-    public final void b(MessageDigest messageDigest) {
+    public final void b(MessageDigest r1) {
         throw new UnsupportedOperationException();
     }
 
     @Override // defpackage.f42
-    public final boolean equals(Object obj) {
-        if (obj instanceof n11) {
-            n11 n11Var = (n11) obj;
-            if (this.b.equals(n11Var.b) && this.g.equals(n11Var.g) && this.d == n11Var.d && this.c == n11Var.c && this.h.equals(n11Var.h) && this.e.equals(n11Var.e) && this.f.equals(n11Var.f) && this.i.equals(n11Var.i)) {
-                return true;
-            }
-        }
+    public final boolean equals(Object r4) {
+        if ((r4 instanceof n11) == false) goto L22;
+        n11 r5 = (n11) r4;
+        if (this.b.equals(r5.b) == false) goto L22;
+        if (this.g.equals(r5.g) == false) goto L22;
+        if (this.d != r5.d) goto L22;
+        if (this.c != r5.c) goto L22;
+        if (this.h.equals(r5.h) == false) goto L22;
+        if (this.e.equals(r5.e) == false) goto L22;
+        if (this.f.equals(r5.f) == false) goto L22;
+        if (this.i.equals(r5.i) == false) goto L22;
+        return true;
+    L22:
         return false;
     }
 
     @Override // defpackage.f42
     public final int hashCode() {
-        if (this.j == 0) {
-            int iHashCode = this.b.hashCode();
-            this.j = iHashCode;
-            int iHashCode2 = ((((this.g.hashCode() + (iHashCode * 31)) * 31) + this.c) * 31) + this.d;
-            this.j = iHashCode2;
-            int iHashCode3 = this.h.hashCode() + (iHashCode2 * 31);
-            this.j = iHashCode3;
-            int iHashCode4 = this.e.hashCode() + (iHashCode3 * 31);
-            this.j = iHashCode4;
-            int iHashCode5 = this.f.hashCode() + (iHashCode4 * 31);
-            this.j = iHashCode5;
-            this.j = this.i.b.hashCode() + (iHashCode5 * 31);
-        }
+        if (this.j != 0) goto L6;
+        int r0 = this.b.hashCode();
+        this.j = r0;
+        int r1 = this.g.hashCode();
+        int r2 = ((((r1 + (r0 * 31)) * 31) + this.c) * 31) + this.d;
+        this.j = r2;
+        int r3 = this.h.hashCode();
+        int r4 = r3 + (r2 * 31);
+        this.j = r4;
+        int r5 = this.e.hashCode();
+        int r6 = r5 + (r4 * 31);
+        this.j = r6;
+        int r7 = this.f.hashCode();
+        int r8 = r7 + (r6 * 31);
+        this.j = r8;
+        int r9 = this.i.b.hashCode();
+        this.j = r9 + (r8 * 31);
+    L6:
         return this.j;
     }
 

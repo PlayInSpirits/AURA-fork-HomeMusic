@@ -8,8 +8,8 @@ import defpackage.yh0;
 public final class a implements yh0 {
     public final ParcelFileDescriptorRewinder$InternalRewinder n;
 
-    public a(ParcelFileDescriptor parcelFileDescriptor) {
-        this.n = new ParcelFileDescriptorRewinder$InternalRewinder(parcelFileDescriptor);
+    public a(ParcelFileDescriptor r2) {
+        this.n = new ParcelFileDescriptorRewinder$InternalRewinder(r2);
     }
 
     public final ParcelFileDescriptor a() {

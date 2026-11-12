@@ -1,7 +1,5 @@
 package defpackage;
 
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
-
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class v70 extends r14 implements wf1 {
@@ -12,129 +10,129 @@ public final class v70 extends r14 implements wf1 {
     public /* synthetic */ Object s;
     public final /* synthetic */ w70 t;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public v70(w70 w70Var, vd0 vd0Var) {
-        super(vd0Var);
-        this.t = w70Var;
+    public v70(w70 r1, vd0 r2) {
+        this.t = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object obj, vd0 vd0Var) {
-        v70 v70Var = new v70(this.t, vd0Var);
-        v70Var.s = obj;
-        return v70Var;
+    public final vd0 create(Object r2, vd0 r3) {
+        v70 r0 = new v70(this.t, r3);
+        r0.s = r2;
+        return r0;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        return ((v70) create((ba4) obj, (vd0) obj2)).invokeSuspend(j15.a);
+    public final Object invoke(Object r1, Object r2) {
+        return ((v70) create((ba4) r1, (vd0) r2)).invokeSuspend(j15.a);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        ba4 ba4Var;
-        int i;
-        int i2;
-        int i3;
-        String strE;
-        int i4;
-        int i5;
-        String str;
-        w70 w70Var = this.t;
-        q03 q03Var = w70Var.n;
-        h03 h03Var = w70Var.p;
-        int i6 = this.r;
-        if (i6 == 0) {
-            kb4.X(obj);
-            ba4Var = (ba4) this.s;
-            i = 0;
-            i2 = 0;
-            i3 = 0;
-        } else {
-            if (i6 != 1) {
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            }
-            i = this.q;
-            i2 = this.p;
-            i3 = this.o;
-            ba4Var = (ba4) this.s;
-            kb4.X(obj);
-        }
-        if (i3 >= Math.min(w70Var.q + 10, h03Var.b)) {
-            return j15.a;
-        }
-        int i7 = i3 + 1;
-        int iB = h03Var.b(i3);
-        switch (iB) {
-            case 0:
-                strE = "up";
-                break;
-            case 1:
-                Object objF = q03Var.f(i2);
-                i2++;
-                strE = "down " + objF;
-                break;
-            case 2:
-                strE = xa3.e(h03Var.b(i7), h03Var.b(i3 + 2), "remove ", " ");
-                i7 = i3 + 3;
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                int iB2 = h03Var.b(i7);
-                int iB3 = h03Var.b(i3 + 2);
-                int iB4 = h03Var.b(i3 + 3);
-                StringBuilder sbT = b11.t("move ", " ", iB2, iB3, " ");
-                sbT.append(iB4);
-                strE = sbT.toString();
-                i7 = i3 + 4;
-                break;
-            case 4:
-                strE = "clear";
-                break;
-            case 5:
-                i4 = i3 + 2;
-                int iB5 = h03Var.b(i7);
-                i5 = i2 + 1;
-                str = "insertBottomUp " + iB5 + " " + q03Var.f(i2);
-                int i8 = i4;
-                strE = str;
-                i7 = i8;
-                i2 = i5;
-                break;
-            case 6:
-                i4 = i3 + 2;
-                int iB6 = h03Var.b(i7);
-                i5 = i2 + 1;
-                str = "insertTopDown " + iB6 + " " + q03Var.f(i2);
-                int i9 = i4;
-                strE = str;
-                i7 = i9;
-                i2 = i5;
-                break;
-            case 7:
-                Object objF2 = q03Var.f(i2);
-                objF2.getClass();
-                jz4.j(2, objF2);
-                i2 += 2;
-                strE = "apply " + ((wf1) objF2);
-                break;
-            case 8:
-                strE = "reuse " + w70Var.o.f(i);
-                i++;
-                break;
-            case 9:
-                strE = "recompose pending";
-                break;
-            default:
-                strE = f34.f(iB, "unknown op: ");
-                break;
-        }
-        this.s = ba4Var;
-        this.o = i7;
-        this.p = i2;
-        this.q = i;
+    public final Object invokeSuspend(Object r11) {
+        w70 r0 = this.t;
+        q03 r1 = r0.n;
+        h03 r2 = r0.p;
+        int r3 = this.r;
+        if (r3 == 0) goto L8;
+        if (r3 != 1) goto L6;
+        int r4 = this.q;
+        int r5 = this.p;
+        int r6 = this.o;
+        ba4 r7 = (ba4) this.s;
+        kb4.X(r11);
+    L10:
+        if (r6 >= Math.min(r0.q + 10, r2.b)) goto L28;
+        int r12 = r6 + 1;
+        int r8 = r2.b(r6);
+        switch(r8) {
+            case 0: goto L24;
+            case 1: goto L23;
+            case 2: goto L22;
+            case 3: goto L21;
+            case 4: goto L20;
+            case 5: goto L19;
+            case 6: goto L17;
+            case 7: goto L16;
+            case 8: goto L15;
+            case 9: goto L14;
+            default: goto L13;
+        };
+    L13:
+        String r9 = f34.f(r8, "unknown op: ");
+    L25:
+        this.s = r7;
+        this.o = r12;
+        this.p = r5;
+        this.q = r4;
         this.r = 1;
-        ba4Var.b(this, i3 + ": " + strE);
+        r7.b(this, r6 + ": " + r9);
         return xe0.n;
+    L14:
+        r9 = "recompose pending";
+        goto L25
+    L15:
+        r9 = "reuse " + r0.o.f(r4);
+        r4 = r4 + 1;
+        goto L25
+    L16:
+        Object r10 = r1.f(r5);
+        r10.getClass();
+        jz4.j(2, r10);
+        r5 = r5 + 2;
+        r9 = "apply " + ((wf1) r10);
+        goto L25
+    L17:
+        int r13 = r6 + 2;
+        int r14 = r2.b(r12);
+        int r15 = r5 + 1;
+        String r16 = "insertTopDown " + r14 + " " + r1.f(r5);
+    L18:
+        int r17 = r13;
+        r9 = r16;
+        r12 = r17;
+        r5 = r15;
+        goto L25
+    L19:
+        r13 = r6 + 2;
+        int r18 = r2.b(r12);
+        r15 = r5 + 1;
+        r16 = "insertBottomUp " + r18 + " " + r1.f(r5);
+        goto L18
+    L20:
+        r9 = "clear";
+        goto L25
+    L21:
+        int r19 = r2.b(r12);
+        int r20 = r2.b(r6 + 2);
+        int r21 = r2.b(r6 + 3);
+        StringBuilder r110 = b11.t("move ", " ", r19, r20, " ");
+        r110.append(r21);
+        r9 = r110.toString();
+        r12 = r6 + 4;
+        goto L25
+    L22:
+        r9 = xa3.e(r2.b(r12), r2.b(r6 + 2), "remove ", " ");
+        r12 = r6 + 3;
+        goto L25
+    L23:
+        Object r22 = r1.f(r5);
+        r5 = r5 + 1;
+        r9 = "down " + r22;
+        goto L25
+    L24:
+        r9 = "up";
+        goto L25
+    L28:
+        return j15.a;
+    L6:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L8:
+        kb4.X(r11);
+        r7 = (ba4) this.s;
+        r4 = 0;
+        r5 = 0;
+        r6 = 0;
+        goto L10
     }
 }

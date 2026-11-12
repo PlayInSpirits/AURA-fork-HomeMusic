@@ -9,29 +9,30 @@ public final /* synthetic */ class om implements Runnable {
     public final /* synthetic */ long q;
     public final /* synthetic */ Object r;
 
-    public /* synthetic */ om(Object obj, String str, long j, long j2, int i) {
-        this.n = i;
-        this.r = obj;
-        this.o = str;
-        this.p = j;
-        this.q = j2;
+    public /* synthetic */ om(Object r1, String r2, long r3, long r5, int r7) {
+        this.n = r7;
+        this.r = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r5;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        Object obj = this.r;
-        switch (i) {
-            case 0:
-                qm qmVar = (qm) ((xc5) obj).p;
-                String str = f35.a;
-                qmVar.V(this.p, this.q, this.o);
-                break;
-            default:
-                o55 o55Var = (o55) ((rf2) obj).o;
-                String str2 = f35.a;
-                o55Var.x(this.p, this.q, this.o);
-                break;
-        }
+        int r0 = this.n;
+        Object r1 = this.r;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        o55 r2 = (o55) ((rf2) r1).o;
+        String r3 = f35.a;
+        r2.x(this.p, this.q, this.o);
+        return;
+    L6:
+        qm r4 = (qm) ((xc5) r1).p;
+        String r5 = f35.a;
+        r4.V(this.p, this.q, this.o);
     }
 }

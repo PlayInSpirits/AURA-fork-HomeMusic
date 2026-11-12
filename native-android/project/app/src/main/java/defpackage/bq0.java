@@ -18,234 +18,280 @@ public final class bq0 {
     public final cq0 b;
     public VelocityTracker c;
     public float d;
-    public int e = -1;
-    public int f = -1;
-    public int g = -1;
-    public final int[] h = {Integer.MAX_VALUE, 0};
+    public int e;
+    public int f;
+    public int g;
+    public final int[] h;
 
-    public bq0(Context context, cq0 cq0Var) {
-        this.a = context;
-        this.b = cq0Var;
+    public bq0(Context r3, cq0 r4) {
+        this.e = -1;
+        this.f = -1;
+        this.g = -1;
+        this.h = new int[]{Integer.MAX_VALUE, 0};
+        this.a = r3;
+        this.b = r4;
     }
 
-    /* JADX WARN: Code duplicated, block: B:30:0x007d  */
-    /* JADX WARN: Code duplicated, block: B:51:0x00c4  */
-    /* JADX WARN: Code duplicated, block: B:81:0x0168  */
-    public final void a(MotionEvent motionEvent, int i) {
-        int i2;
-        int i3;
-        int scaledMinimumFlingVelocity;
-        int scaledMaximumFlingVelocity;
-        boolean z;
-        float f;
-        float yVelocity;
-        long j;
-        int i4;
-        float fSqrt;
-        float f2;
-        float[] fArr;
-        int source = motionEvent.getSource();
-        int deviceId = motionEvent.getDeviceId();
-        int i5 = this.f;
-        int[] iArr = this.h;
-        if (i5 == source && this.g == deviceId && this.e == i) {
-            z = false;
-            i2 = 1;
-            i3 = 0;
-        } else {
-            Context context = this.a;
-            ViewConfiguration viewConfiguration = ViewConfiguration.get(context);
-            int deviceId2 = motionEvent.getDeviceId();
-            int source2 = motionEvent.getSource();
-            i2 = 1;
-            int i6 = Build.VERSION.SDK_INT;
-            i3 = 0;
-            if (i6 >= 34) {
-                Method method = n65.a;
-                scaledMinimumFlingVelocity = a3.i(viewConfiguration, deviceId2, i, source2);
-            } else {
-                Method method2 = n65.a;
-                InputDevice device = InputDevice.getDevice(deviceId2);
-                if (device == null || device.getMotionRange(i, source2) == null) {
-                    scaledMinimumFlingVelocity = Integer.MAX_VALUE;
-                } else {
-                    Resources resources = context.getResources();
-                    int identifier = (source2 == 4194304 && i == 26) ? resources.getIdentifier("config_viewMinRotaryEncoderFlingVelocity", "dimen", "android") : -1;
-                    Objects.requireNonNull(viewConfiguration);
-                    if (identifier == -1) {
-                        scaledMinimumFlingVelocity = viewConfiguration.getScaledMinimumFlingVelocity();
-                    } else if (identifier == 0 || (scaledMinimumFlingVelocity = resources.getDimensionPixelSize(identifier)) < 0) {
-                        scaledMinimumFlingVelocity = Integer.MAX_VALUE;
-                    }
-                }
-            }
-            iArr[0] = scaledMinimumFlingVelocity;
-            int deviceId3 = motionEvent.getDeviceId();
-            int source3 = motionEvent.getSource();
-            if (i6 >= 34) {
-                scaledMaximumFlingVelocity = a3.h(viewConfiguration, deviceId3, i, source3);
-            } else {
-                InputDevice device2 = InputDevice.getDevice(deviceId3);
-                if (device2 == null || device2.getMotionRange(i, source3) == null) {
-                    scaledMaximumFlingVelocity = Integer.MIN_VALUE;
-                } else {
-                    Resources resources2 = context.getResources();
-                    int identifier2 = (source3 == 4194304 && i == 26) ? resources2.getIdentifier("config_viewMaxRotaryEncoderFlingVelocity", "dimen", "android") : -1;
-                    Objects.requireNonNull(viewConfiguration);
-                    if (identifier2 == -1) {
-                        scaledMaximumFlingVelocity = viewConfiguration.getScaledMaximumFlingVelocity();
-                    } else if (identifier2 == 0 || (scaledMaximumFlingVelocity = resources2.getDimensionPixelSize(identifier2)) < 0) {
-                        scaledMaximumFlingVelocity = Integer.MIN_VALUE;
-                    }
-                }
-            }
-            iArr[1] = scaledMaximumFlingVelocity;
-            this.f = source;
-            this.g = deviceId;
-            this.e = i;
-            z = true;
-        }
-        int i7 = iArr[i3];
-        VelocityTracker velocityTracker = this.c;
-        if (i7 == Integer.MAX_VALUE) {
-            if (velocityTracker != null) {
-                velocityTracker.recycle();
-                this.c = null;
-                return;
-            }
-            return;
-        }
-        if (velocityTracker == null) {
-            this.c = VelocityTracker.obtain();
-        }
-        VelocityTracker velocityTracker2 = this.c;
-        Map map = n45.a;
-        velocityTracker2.addMovement(motionEvent);
-        float f3 = 0.0f;
-        int i8 = 20;
-        if (Build.VERSION.SDK_INT < 34 && motionEvent.getSource() == 4194304) {
-            Map map2 = n45.a;
-            if (!map2.containsKey(velocityTracker2)) {
-                map2.put(velocityTracker2, new o45());
-            }
-            o45 o45Var = (o45) map2.get(velocityTracker2);
-            long[] jArr = o45Var.b;
-            long eventTime = motionEvent.getEventTime();
-            if (o45Var.d != 0 && eventTime - jArr[o45Var.e] > 40) {
-                o45Var.d = i3;
-                o45Var.c = 0.0f;
-            }
-            int i9 = (o45Var.e + 1) % 20;
-            o45Var.e = i9;
-            int i10 = o45Var.d;
-            if (i10 != 20) {
-                o45Var.d = i10 + 1;
-            }
-            o45Var.a[i9] = motionEvent.getAxisValue(26);
-            jArr[o45Var.e] = eventTime;
-        }
-        velocityTracker2.computeCurrentVelocity(1000, Float.MAX_VALUE);
-        o45 o45Var2 = (o45) n45.a.get(velocityTracker2);
-        if (o45Var2 != null) {
-            float[] fArr2 = o45Var2.a;
-            long[] jArr2 = o45Var2.b;
-            int i11 = o45Var2.d;
-            if (i11 < 2) {
-                fSqrt = 0.0f;
-                f = 0.0f;
-            } else {
-                int i12 = o45Var2.e;
-                int i13 = ((i12 + 20) - (i11 - 1)) % 20;
-                long j2 = jArr2[i12];
-                while (true) {
-                    j = jArr2[i13];
-                    long j3 = j2 - j;
-                    i4 = o45Var2.d;
-                    if (j3 <= 100) {
-                        break;
-                    }
-                    o45Var2.d = i4 - 1;
-                    i13 = (i13 + 1) % 20;
-                }
-                if (i4 < 2) {
-                    fSqrt = 0.0f;
-                    f = 0.0f;
-                } else if (i4 == 2) {
-                    int i14 = (i13 + 1) % 20;
-                    long j4 = jArr2[i14];
-                    if (j == j4) {
-                        fSqrt = 0.0f;
-                        f = 0.0f;
-                    } else {
-                        fSqrt = fArr2[i14] / (j4 - j);
-                        f = 0.0f;
-                    }
-                } else {
-                    float fAbs = 0.0f;
-                    int i15 = 0;
-                    int i16 = 0;
-                    while (true) {
-                        if (i15 >= o45Var2.d - 1) {
-                            break;
-                        }
-                        int i17 = i15 + i13;
-                        long j5 = jArr2[i17 % 20];
-                        int i18 = (i17 + 1) % i8;
-                        if (jArr2[i18] == j5) {
-                            f2 = f3;
-                            fArr = fArr2;
-                        } else {
-                            i16++;
-                            f2 = f3;
-                            fArr = fArr2;
-                            float fSqrt2 = (fAbs < f3 ? -1.0f : 1.0f) * ((float) Math.sqrt(Math.abs(fAbs) * 2.0f));
-                            float f4 = fArr[i18] / (jArr2[i18] - j5);
-                            fAbs += Math.abs(f4) * (f4 - fSqrt2);
-                            if (i16 == i2) {
-                                fAbs *= 0.5f;
-                            }
-                        }
-                        i15++;
-                        f3 = f2;
-                        fArr2 = fArr;
-                        i8 = 20;
-                        i2 = 1;
-                    }
-                    f = f3;
-                    fSqrt = (fAbs < f ? -1.0f : 1.0f) * ((float) Math.sqrt(Math.abs(fAbs) * 2.0f));
-                }
-            }
-            float f5 = fSqrt * 1000.0f;
-            o45Var2.c = f5;
-            if (f5 < (-Math.abs((float) r4))) {
-                o45Var2.c = -Math.abs(Float.MAX_VALUE);
-            } else if (o45Var2.c > Math.abs((float) r4)) {
-                o45Var2.c = Math.abs((float) r4);
-            }
-        } else {
-            f = 0.0f;
-        }
-        if (Build.VERSION.SDK_INT >= 34) {
-            yVelocity = a3.d(velocityTracker2, i);
-        } else if (i == 0) {
-            yVelocity = velocityTracker2.getXVelocity();
-        } else if (i == 1) {
-            yVelocity = velocityTracker2.getYVelocity();
-        } else {
-            o45 o45Var3 = (o45) n45.a.get(velocityTracker2);
-            yVelocity = (o45Var3 == null || i != 26) ? f : o45Var3.c;
-        }
-        cq0 cq0Var = this.b;
-        float fS = cq0Var.s() * yVelocity;
-        float fSignum = Math.signum(fS);
-        if (z || (fSignum != Math.signum(this.d) && fSignum != f)) {
-            cq0Var.t();
-        }
-        if (Math.abs(fS) < iArr[0]) {
-            return;
-        }
-        int i19 = iArr[1];
-        float fMax = Math.max(-i19, Math.min(fS, i19));
-        this.d = cq0Var.p(fMax) ? fMax : f;
+    public final void a(MotionEvent r28, int r29) {
+        int r3 = r28.getSource();
+        int r4 = r28.getDeviceId();
+        int r5 = this.f;
+        int[] r10 = this.h;
+        if (r5 == r3) goto L5;
+    L10:
+        Context r6 = this.a;
+        ViewConfiguration r13 = ViewConfiguration.get(r6);
+        int r14 = r28.getDeviceId();
+        int r15 = r28.getSource();
+        int r16 = 1;
+        int r11 = Build.VERSION.SDK_INT;
+        int r17 = 0;
+        if (r11 < 34) goto L13;
+        Method r19 = n65.a;
+        int r18 = a3.i(r13, r14, r29, r15);
+    L31:
+        r10[0] = r18;
+        int r110 = r28.getDeviceId();
+        int r111 = r28.getSource();
+        if (r11 < 34) goto L34;
+        int r7 = a3.h(r13, r110, r29, r111);
+    L52:
+        r10[1] = r7;
+        this.f = r3;
+        this.g = r4;
+        this.e = r29;
+        boolean r12 = true;
+    L53:
+        int r8 = r10[r17];
+        VelocityTracker r9 = this.c;
+        if (r8 != Integer.MAX_VALUE) goto L58;
+        if (r9 == null) goto L141;
+        r9.recycle();
+        this.c = null;
+        return;
+    L141:
+        return;
+    L58:
+        if (r9 != null) goto L60;
+        this.c = VelocityTracker.obtain();
+    L60:
+        VelocityTracker r20 = this.c;
+        Map r21 = n45.a;
+        r20.addMovement(r28);
+        float r22 = 0.0f;
+        int r23 = 20;
+        if (Build.VERSION.SDK_INT < 34) goto L64;
+    L77:
+        r20.computeCurrentVelocity(1000, Float.MAX_VALUE);
+        o45 r1 = (o45) n45.a.get(r20);
+        if (r1 == null) goto L116;
+        float[] r24 = r1.a;
+        long[] r25 = r1.b;
+        int r112 = r1.d;
+        if (r112 >= 2) goto L82;
+    L81:
+        float r26 = 0.0f;
+        float r27 = 0.0f;
+    L110:
+        float r30 = r26 * 1000.0f;
+        r1.c = r30;
+        if (r30 >= (-Math.abs(r4))) goto L114;
+        r1.c = -Math.abs(Float.MAX_VALUE);
+    L118:
+        if (Build.VERSION.SDK_INT < 34) goto L120;
+        float r2 = a3.d(r20, r29);
+    L132:
+        cq0 r31 = this.b;
+        float r32 = r31.s() * r2;
+        float r33 = Math.signum(r32);
+        if (r12 == false) goto L135;
+    L138:
+        r31.t();
+    L140:
+        if (Math.abs(r32) < r10[0]) goto L153;
+        int r34 = r10[1];
+        float r35 = Math.max(-r34, Math.min(r32, r34));
+        if (r31.p(r35) == false) goto L145;
+        float r36 = r35;
+    L146:
+        this.d = r36;
+        return;
+    L145:
+        r36 = r27;
+        goto L146
+    L153:
+        return;
+    L135:
+        if (r33 == Math.signum(this.d)) goto L140;
+        if (r33 == r27) goto L140;
+    L120:
+        if (r29 != 0) goto L123;
+        r2 = r20.getXVelocity();
+        goto L132
+    L123:
+        if (r29 != 1) goto L125;
+        r2 = r20.getYVelocity();
+        goto L132
+    L125:
+        o45 r37 = (o45) n45.a.get(r20);
+        if (r37 != null) goto L128;
+    L131:
+        r2 = r27;
+        goto L132
+    L128:
+        if (r29 != 26) goto L131;
+        r2 = r37.c;
+        goto L132
+    L114:
+        if (r1.c <= Math.abs(r4)) goto L118;
+        r1.c = Math.abs(r4);
+        goto L118
+    L82:
+        int r113 = r1.e;
+        int r114 = ((r113 + 20) - (r112 - 1)) % 20;
+        long r115 = r25[r113];
+    L83:
+        long r210 = r25[r114];
+        long r211 = r115 - r210;
+        int r116 = r1.d;
+        if (r211 <= 100) goto L86;
+        r1.d = r116 - 1;
+        r114 = (r114 + 1) % 20;
+        goto L83
+    L86:
+        if (r116 < 2) goto L81;
+        if (r116 != 2) goto L93;
+        int r117 = (r114 + 1) % 20;
+        long r118 = r25[r117];
+        if (r210 == r118) goto L81;
+        r26 = r24[r117] / (r118 - r210);
+        r27 = 0.0f;
+        goto L110
+    L93:
+        float r119 = 0.0f;
+        int r120 = 0;
+        int r121 = 0;
+    L94:
+        float r122 = 1.0f;
+        if (r120 >= (r1.d - 1)) goto L106;
+        int r38 = r120 + r114;
+        long r212 = r25[r38 % 20];
+        int r39 = (r38 + 1) % r23;
+        if (r25[r39] != r212) goto L99;
+        float r213 = r22;
+        float[] r214 = r24;
+    L105:
+        r120 = r120 + 1;
+        r22 = r213;
+        r24 = r214;
+        r23 = 20;
+        r16 = 1;
+        goto L94
+    L99:
+        r121 = r121 + 1;
+        if (r119 >= r22) goto L102;
+        r122 = -1.0f;
+    L102:
+        r213 = r22;
+        r214 = r24;
+        float r123 = r122 * ((float) Math.sqrt(Math.abs(r119) * 2.0f));
+        float r40 = r214[r39] / (r25[r39] - r212);
+        r119 = r119 + (Math.abs(r40) * (r40 - r123));
+        if (r121 != r16) goto L105;
+        r119 = r119 * 0.5f;
+        goto L105
+    L106:
+        r27 = r22;
+        if (r119 >= r27) goto L109;
+        r122 = -1.0f;
+    L109:
+        r26 = r122 * ((float) Math.sqrt(Math.abs(r119) * 2.0f));
+        goto L110
+    L116:
+        r27 = 0.0f;
+        goto L118
+    L64:
+        if (r28.getSource() != 4194304) goto L77;
+        Map r41 = n45.a;
+        if (r41.containsKey(r20) == true) goto L68;
+        r41.put(r20, new o45());
+    L68:
+        o45 r42 = (o45) r41.get(r20);
+        long[] r43 = r42.b;
+        long r124 = r28.getEventTime();
+        if (r42.d != 0) goto L71;
+    L73:
+        int r44 = (r42.e + 1) % 20;
+        r42.e = r44;
+        int r125 = r42.d;
+        if (r125 == 20) goto L76;
+        r42.d = r125 + 1;
+    L76:
+        r42.a[r44] = r28.getAxisValue(26);
+        r43[r42.e] = r124;
+        goto L77
+    L71:
+        if ((r124 - r43[r42.e]) <= 40) goto L73;
+        r42.d = r17;
+        r42.c = 0.0f;
+        goto L73
+    L34:
+        InputDevice r126 = InputDevice.getDevice(r110);
+        if (r126 != null) goto L37;
+    L51:
+        r7 = Integer.MIN_VALUE;
+        goto L52
+    L37:
+        if (r126.getMotionRange(r29, r111) == null) goto L51;
+        Resources r45 = r6.getResources();
+        if (r111 == 4194304) goto L41;
+    L43:
+        int r46 = -1;
+    L44:
+        Objects.requireNonNull(r13);
+        if (r46 == (-1)) goto L50;
+        if (r46 == 0) goto L51;
+        r7 = r45.getDimensionPixelSize(r46);
+        if (r7 >= 0) goto L52;
+    L50:
+        r7 = r13.getScaledMaximumFlingVelocity();
+        goto L52
+    L41:
+        if (r29 != 26) goto L43;
+        r46 = r45.getIdentifier("config_viewMaxRotaryEncoderFlingVelocity", "dimen", "android");
+        goto L44
+    L13:
+        Method r127 = n65.a;
+        InputDevice r128 = InputDevice.getDevice(r14);
+        if (r128 != null) goto L16;
+    L30:
+        r18 = Integer.MAX_VALUE;
+        goto L31
+    L16:
+        if (r128.getMotionRange(r29, r15) == null) goto L30;
+        Resources r129 = r6.getResources();
+        if (r15 == 4194304) goto L20;
+    L22:
+        int r130 = -1;
+    L23:
+        Objects.requireNonNull(r13);
+        if (r130 == (-1)) goto L29;
+        if (r130 == 0) goto L30;
+        r18 = r129.getDimensionPixelSize(r130);
+        if (r18 >= 0) goto L31;
+    L29:
+        r18 = r13.getScaledMinimumFlingVelocity();
+        goto L31
+    L20:
+        if (r29 != 26) goto L22;
+        r130 = r129.getIdentifier("config_viewMinRotaryEncoderFlingVelocity", "dimen", "android");
+        goto L23
+    L5:
+        if (this.g != r4) goto L10;
+        if (this.e != r29) goto L10;
+        r12 = false;
+        r16 = 1;
+        r17 = 0;
+        goto L53
     }
 }

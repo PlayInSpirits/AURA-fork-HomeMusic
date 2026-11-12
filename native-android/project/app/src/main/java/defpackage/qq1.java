@@ -9,22 +9,22 @@ public final class qq1 extends q42 implements gf1 {
     public final /* synthetic */ int o;
     public final /* synthetic */ long p;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public qq1(rq1 rq1Var, int i, long j) {
+    public qq1(rq1 r1, int r2, long r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
         super(0);
-        this.n = rq1Var;
-        this.o = i;
-        this.p = j;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        rq1 rq1Var = this.n;
-        try {
-            rq1Var.J.v(this.o, this.p);
-        } catch (IOException e) {
-            rq1Var.f(e);
-        }
+        rq1 r0 = this.n;
+        r0.J.v(this.o, this.p);     // Catch: IOException -> L5
+    L8:
         return j15.a;
+    L5:
+        e = move-exception;
+        r0.f(e);
+        goto L8
     }
 }

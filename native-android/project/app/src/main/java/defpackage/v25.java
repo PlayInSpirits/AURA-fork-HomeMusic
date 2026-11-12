@@ -5,17 +5,21 @@ package defpackage;
 public final class v25 implements fe {
     public final String a;
 
-    public v25(String str) {
-        this.a = str;
+    public v25(String r1) {
+        this.a = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof v25) {
-            return this.a.equals(((v25) obj).a);
-        }
+    public final boolean equals(Object r2) {
+        if (this != r2) goto L5;
+        return true;
+    L5:
+        if ((r2 instanceof v25) == false) goto L13;
+        String r3 = ((v25) r2).a;
+        if (this.a.equals(r3) == true) goto L11;
+        return false;
+    L11:
+        return true;
+    L13:
         return false;
     }
 

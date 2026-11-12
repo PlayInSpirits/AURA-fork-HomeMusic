@@ -35,32 +35,32 @@ public final class vp0 {
     public final TextView y;
     public final TextView z;
 
-    public vp0(NestedScrollView nestedScrollView, TextView textView, TextView textView2, TextView textView3, TextView textView4, TextView textView5, TextView textView6, TextView textView7, TextView textView8, TextView textView9, TextView textView10, TextView textView11, LinearLayout linearLayout, TextView textView12, LinearLayout linearLayout2, TextView textView13, TextView textView14, TextView textView15, ImageView imageView, TextView textView16, TextView textView17, TextView textView18, TextView textView19, TextView textView20, TextView textView21, TextView textView22) {
-        this.a = nestedScrollView;
-        this.b = textView;
-        this.c = textView2;
-        this.d = textView3;
-        this.e = textView4;
-        this.f = textView5;
-        this.g = textView6;
-        this.h = textView7;
-        this.i = textView8;
-        this.j = textView9;
-        this.k = textView10;
-        this.l = textView11;
-        this.m = linearLayout;
-        this.n = textView12;
-        this.o = linearLayout2;
-        this.p = textView13;
-        this.q = textView14;
-        this.r = textView15;
-        this.s = imageView;
-        this.t = textView16;
-        this.u = textView17;
-        this.v = textView18;
-        this.w = textView19;
-        this.x = textView20;
-        this.y = textView21;
-        this.z = textView22;
+    public vp0(NestedScrollView r1, TextView r2, TextView r3, TextView r4, TextView r5, TextView r6, TextView r7, TextView r8, TextView r9, TextView r10, TextView r11, TextView r12, LinearLayout r13, TextView r14, LinearLayout r15, TextView r16, TextView r17, TextView r18, ImageView r19, TextView r20, TextView r21, TextView r22, TextView r23, TextView r24, TextView r25, TextView r26) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
+        this.j = r10;
+        this.k = r11;
+        this.l = r12;
+        this.m = r13;
+        this.n = r14;
+        this.o = r15;
+        this.p = r16;
+        this.q = r17;
+        this.r = r18;
+        this.s = r19;
+        this.t = r20;
+        this.u = r21;
+        this.v = r22;
+        this.w = r23;
+        this.x = r24;
+        this.y = r25;
+        this.z = r26;
     }
 }

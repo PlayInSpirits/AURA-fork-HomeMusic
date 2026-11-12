@@ -4,27 +4,55 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class kx implements bi0 {
     public se4 n;
-    public final y41 o = new y41(6);
-    public px p = px.c;
+    public final y41 o;
+    public px p;
     public boolean q;
     public bi0 r;
     public int s;
 
-    @Override // defpackage.bi0
-    /* JADX INFO: renamed from: a, reason: merged with bridge method [inline-methods] */
-    public final lx m() {
-        bi0 bi0Var = this.r;
-        return c(bi0Var != null ? bi0Var.m() : null, this.s);
+    public kx() {
+        this.o = new y41(6);
+        this.p = px.c;
+    }
+
+    public final lx a() {
+        bi0 r0 = this.r;
+        if (r0 == null) goto L5;
+        ci0 r1 = r0.m();
+    L7:
+        return c(r1, this.s);
+    L5:
+        r1 = null;
+        goto L7
     }
 
     public final lx b() {
-        bi0 bi0Var = this.r;
-        return c(bi0Var != null ? bi0Var.m() : null, this.s | 1);
+        bi0 r0 = this.r;
+        if (r0 == null) goto L5;
+        ci0 r1 = r0.m();
+    L7:
+        return c(r1, this.s | 1);
+    L5:
+        r1 = null;
+        goto L7
     }
 
-    public final lx c(ci0 ci0Var, int i) {
-        se4 se4Var = this.n;
-        se4Var.getClass();
-        return new lx(se4Var, ci0Var, this.o.m(), (this.q || ci0Var == null) ? null : new jx(se4Var), this.p, i);
+    public final lx c(ci0 r8, int r9) {
+        se4 r1 = this.n;
+        r1.getClass();
+        if (this.q == true) goto L8;
+        if (r8 == null) goto L8;
+        jx r0 = new jx(r1);
+    L7:
+        jx r4 = r0;
+        return new lx(r1, r8, this.o.m(), r4, this.p, r9);
+    L8:
+        r0 = null;
+        goto L7
+    }
+
+    @Override // defpackage.bi0
+    public final /* bridge */ /* synthetic */ ci0 m() {
+        return a();
     }
 }

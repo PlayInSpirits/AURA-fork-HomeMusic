@@ -12,21 +12,21 @@ public final class ba4 implements Iterator, vd0, x32 {
     public vd0 q;
 
     public final RuntimeException a() {
-        int i = this.n;
-        if (i == 4) {
-            return new NoSuchElementException();
-        }
-        if (i == 5) {
-            return new IllegalStateException("Iterator has failed.");
-        }
+        int r0 = this.n;
+        if (r0 == 4) goto L11;
+        if (r0 == 5) goto L9;
         return new IllegalStateException("Unexpected state of the iterator: " + this.n);
+    L9:
+        return new IllegalStateException("Iterator has failed.");
+    L11:
+        return new NoSuchElementException();
     }
 
-    public final void b(vd0 vd0Var, Object obj) {
-        this.o = obj;
+    public final void b(vd0 r1, Object r2) {
+        this.o = r2;
         this.n = 3;
-        this.q = vd0Var;
-        vd0Var.getClass();
+        this.q = r1;
+        r1.getClass();
     }
 
     @Override // defpackage.vd0
@@ -36,57 +36,61 @@ public final class ba4 implements Iterator, vd0, x32 {
 
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        while (true) {
-            int i = this.n;
-            if (i != 0) {
-                if (i != 1) {
-                    if (i == 2 || i == 3) {
-                        return true;
-                    }
-                    if (i == 4) {
-                        return false;
-                    }
-                    throw a();
-                }
-                Iterator it = this.p;
-                it.getClass();
-                if (it.hasNext()) {
-                    this.n = 2;
-                    return true;
-                }
-                this.p = null;
-            }
-            this.n = 5;
-            vd0 vd0Var = this.q;
-            vd0Var.getClass();
-            this.q = null;
-            vd0Var.resumeWith(j15.a);
-        }
+    L2:
+        int r0 = this.n;
+        if (r0 == 0) goto L21;
+        if (r0 != 1) goto L6;
+        Iterator r1 = this.p;
+        r1.getClass();
+        if (r1.hasNext() == true) goto L18;
+        this.p = null;
+        goto L21
+    L18:
+        this.n = 2;
+        return true;
+    L6:
+        if (r0 != 2) goto L8;
+    L15:
+        return true;
+    L8:
+        if (r0 == 3) goto L15;
+        if (r0 != 4) goto L14;
+        return false;
+    L14:
+        throw a();
+    L21:
+        this.n = 5;
+        vd0 r2 = this.q;
+        r2.getClass();
+        this.q = null;
+        r2.resumeWith(j15.a);
+        goto L2
     }
 
     @Override // java.util.Iterator
     public final Object next() {
-        int i = this.n;
-        if (i == 0 || i == 1) {
-            if (hasNext()) {
-                return next();
-            }
-            tb4.k();
-            return null;
-        }
-        if (i == 2) {
-            this.n = 1;
-            Iterator it = this.p;
-            it.getClass();
-            return it.next();
-        }
-        if (i != 3) {
-            throw a();
-        }
+        int r0 = this.n;
+        if (r0 == 0) goto L17;
+        if (r0 == 1) goto L17;
+        if (r0 != 2) goto L9;
+        this.n = 1;
+        Iterator r4 = this.p;
+        r4.getClass();
+        return r4.next();
+    L9:
+        if (r0 != 3) goto L13;
         this.n = 0;
-        Object obj = this.o;
+        Object r1 = this.o;
         this.o = null;
-        return obj;
+        return r1;
+    L13:
+        throw a();
+    L17:
+        if (hasNext() == true) goto L19;
+        tb4.k();
+        return null;
+    L19:
+        return next();
     }
 
     @Override // java.util.Iterator
@@ -95,8 +99,8 @@ public final class ba4 implements Iterator, vd0, x32 {
     }
 
     @Override // defpackage.vd0
-    public final void resumeWith(Object obj) {
-        kb4.X(obj);
+    public final void resumeWith(Object r1) {
+        kb4.X(r1);
         this.n = 4;
     }
 }

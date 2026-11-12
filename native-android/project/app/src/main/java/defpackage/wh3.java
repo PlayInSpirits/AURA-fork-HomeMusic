@@ -4,12 +4,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.slider.Slider;
-import org.json.JSONException;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class wh3 implements dg4 {
-    public final /* synthetic */ int a = 0;
+    public final /* synthetic */ int a;
     public final /* synthetic */ ai3 b;
     public final /* synthetic */ TextView c;
     public final /* synthetic */ Button d;
@@ -20,73 +19,77 @@ public final /* synthetic */ class wh3 implements dg4 {
     public final /* synthetic */ MaterialSwitch i;
     public final /* synthetic */ Slider j;
 
-    public /* synthetic */ wh3(ai3 ai3Var, TextView textView, Button button, Button button2, Button[] buttonArr, MaterialSwitch materialSwitch, MaterialSwitch materialSwitch2, Slider slider, Slider slider2) {
-        this.b = ai3Var;
-        this.c = textView;
-        this.d = button;
-        this.e = button2;
-        this.f = buttonArr;
-        this.h = materialSwitch;
-        this.i = materialSwitch2;
-        this.g = slider;
-        this.j = slider2;
+    public /* synthetic */ wh3(ai3 r2, TextView r3, Button r4, Button r5, Button[] r6, MaterialSwitch r7, MaterialSwitch r8, Slider r9, Slider r10) {
+        this.a = 0;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.h = r7;
+        this.i = r8;
+        this.g = r9;
+        this.j = r10;
     }
 
     @Override // defpackage.dg4
-    public final void a(float f, boolean z) throws JSONException {
-        int i = this.a;
-        Slider slider = this.j;
-        MaterialSwitch materialSwitch = this.i;
-        MaterialSwitch materialSwitch2 = this.h;
-        Slider slider2 = this.g;
-        Button[] buttonArr = this.f;
-        Button button = this.e;
-        Button button2 = this.d;
-        TextView textView = this.c;
-        ai3 ai3Var = this.b;
-        switch (i) {
-            case 0:
-                float fQ0 = ai3.q0(ai3.n0(f));
-                ai3Var.x0(textView, fQ0);
-                ai3.r0(button2, button, fQ0);
-                ai3.v0(buttonArr[0], fQ0, materialSwitch2.isChecked(), materialSwitch.isChecked(), ai3.p0(ai3.n0(slider2.getValue())));
-                if (z) {
-                    slider.setValue(ai3.o0(fQ0));
-                    ud3.r0(fQ0);
-                    vj3 vj3Var = ai3Var.B0;
-                    if (vj3Var != null) {
-                        vj3Var.a(fQ0);
-                    }
-                    break;
-                }
-                break;
-            default:
-                float fP0 = ai3.p0(ai3.n0(f));
-                ai3Var.u0(textView, fP0);
-                ai3.r0(button2, button, fP0);
-                ai3.v0(buttonArr[0], ai3.q0(ai3.n0(slider2.getValue())), materialSwitch2.isChecked(), materialSwitch.isChecked(), fP0);
-                if (z) {
-                    slider.setValue(ai3.o0(fP0));
-                    ud3.s0(fP0);
-                    vj3 vj3Var2 = ai3Var.B0;
-                    if (vj3Var2 != null) {
-                        vj3Var2.a(ai3.q0(ai3.n0(slider2.getValue())));
-                    }
-                    break;
-                }
-                break;
-        }
+    public final void a(float r11, boolean r12) {
+        int r0 = this.a;
+        Slider r2 = this.j;
+        MaterialSwitch r3 = this.i;
+        MaterialSwitch r4 = this.h;
+        Slider r5 = this.g;
+        Button[] r6 = this.f;
+        Button r7 = this.e;
+        Button r8 = this.d;
+        TextView r9 = this.c;
+        ai3 r10 = this.b;
+        switch(r0) {
+            case 0: goto L11;
+            default: goto L4;
+        };
+    L4:
+        float r13 = ai3.p0(ai3.n0(r11));
+        r10.u0(r9, r13);
+        ai3.r0(r8, r7, r13);
+        ai3.v0(r6[0], ai3.q0(ai3.n0(r5.getValue())), r4.isChecked(), r3.isChecked(), r13);
+        if (r12 == false) goto L19;
+        r2.setValue(ai3.o0(r13));
+        ud3.s0(r13);
+        vj3 r14 = r10.B0;
+        if (r14 == null) goto L18;
+        r14.a(ai3.q0(ai3.n0(r5.getValue())));
+        return;
+    L18:
+        return;
+    L19:
+        return;
+    L11:
+        float r15 = ai3.q0(ai3.n0(r11));
+        r10.x0(r9, r15);
+        ai3.r0(r8, r7, r15);
+        ai3.v0(r6[0], r15, r4.isChecked(), r3.isChecked(), ai3.p0(ai3.n0(r5.getValue())));
+        if (r12 == false) goto L21;
+        r2.setValue(ai3.o0(r15));
+        ud3.r0(r15);
+        vj3 r16 = r10.B0;
+        if (r16 == null) goto L20;
+        r16.a(r15);
+        return;
+    L20:
+        return;
     }
 
-    public /* synthetic */ wh3(ai3 ai3Var, TextView textView, Button button, Button button2, Button[] buttonArr, Slider slider, MaterialSwitch materialSwitch, MaterialSwitch materialSwitch2, Slider slider2) {
-        this.b = ai3Var;
-        this.c = textView;
-        this.d = button;
-        this.e = button2;
-        this.f = buttonArr;
-        this.g = slider;
-        this.h = materialSwitch;
-        this.i = materialSwitch2;
-        this.j = slider2;
+    public /* synthetic */ wh3(ai3 r2, TextView r3, Button r4, Button r5, Button[] r6, Slider r7, MaterialSwitch r8, MaterialSwitch r9, Slider r10) {
+        this.a = 1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
+        this.j = r10;
     }
 }

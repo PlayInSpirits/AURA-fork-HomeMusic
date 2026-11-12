@@ -8,17 +8,18 @@ import android.view.Display;
 public final class h55 extends g55 implements Choreographer.FrameCallback {
     @Override // defpackage.g55
     public final void a() {
-        long refreshRate;
         this.o.registerDisplayListener(this, f35.p(null));
         this.n.postFrameCallback(this);
-        Display display = this.o.getDisplay(0);
-        if (display != null) {
-            refreshRate = (long) (1.0E9d / ((double) display.getRefreshRate()));
-        } else {
-            l93.q0("VideoFrameReleaseHelper", "Unable to query display refresh rate");
-            refreshRate = -9223372036854775807L;
-        }
-        this.q = refreshRate;
+        Display r0 = this.o.getDisplay(0);
+        if (r0 == null) goto L5;
+        long r1 = (long) (1.0E9d / ((double) r0.getRefreshRate()));
+    L6:
+        this.q = r1;
+        return;
+    L5:
+        l93.q0("VideoFrameReleaseHelper", "Unable to query display refresh rate");
+        r1 = -9223372036854775807L;
+        goto L6
     }
 
     @Override // defpackage.g55
@@ -30,24 +31,24 @@ public final class h55 extends g55 implements Choreographer.FrameCallback {
     }
 
     @Override // android.view.Choreographer.FrameCallback
-    public final void doFrame(long j) {
-        this.p = j;
-        this.n.postFrameCallbackDelayed(this, 500L);
+    public final void doFrame(long r3) {
+        this.p = r3;
+        this.n.postFrameCallbackDelayed(this, 500);
     }
 
     @Override // android.hardware.display.DisplayManager.DisplayListener
-    public final void onDisplayChanged(int i) {
-        long refreshRate;
-        if (i == 0) {
-            this.n.postFrameCallback(this);
-            Display display = this.o.getDisplay(0);
-            if (display != null) {
-                refreshRate = (long) (1.0E9d / ((double) display.getRefreshRate()));
-            } else {
-                l93.q0("VideoFrameReleaseHelper", "Unable to query display refresh rate");
-                refreshRate = -9223372036854775807L;
-            }
-            this.q = refreshRate;
-        }
+    public final void onDisplayChanged(int r5) {
+        if (r5 != 0) goto L9;
+        this.n.postFrameCallback(this);
+        Display r6 = this.o.getDisplay(0);
+        if (r6 == null) goto L6;
+        long r0 = (long) (1.0E9d / ((double) r6.getRefreshRate()));
+    L7:
+        this.q = r0;
+        return;
+    L6:
+        l93.q0("VideoFrameReleaseHelper", "Unable to query display refresh rate");
+        r0 = -9223372036854775807L;
+        goto L7
     }
 }

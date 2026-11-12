@@ -4,29 +4,36 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.android.gms.fido.fido2.api.common.PublicKeyCredentialType$UnsupportedPublicKeyCredTypeException;
 
-/* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
-/* JADX WARN: Unknown enum class pattern. Please report as an issue! */
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
-public final class bs3 implements Parcelable {
+public final enum bs3 extends Enum implements Parcelable {
+    public static final Parcelable.Creator<bs3> CREATOR = null;
+    public static final /* synthetic */ bs3[] n = null;
 
-    /* JADX INFO: Fake field, exist only in values array */
-    bs3 EF5;
-    public static final /* synthetic */ bs3[] n = {new bs3("PUBLIC_KEY", 0)};
-    public static final Parcelable.Creator<bs3> CREATOR = new ch5(18);
-
-    public static bs3 a(String str) throws PublicKeyCredentialType$UnsupportedPublicKeyCredTypeException {
-        for (bs3 bs3Var : values()) {
-            bs3Var.getClass();
-            if (str.equals("public-key")) {
-                return bs3Var;
-            }
-        }
-        throw new PublicKeyCredentialType$UnsupportedPublicKeyCredTypeException(xa3.h("PublicKeyCredentialType ", str, " not supported"));
+    static {
+        n = new bs3[]{new bs3("PUBLIC_KEY", 0)};
+        CREATOR = new ch5(18);
     }
 
-    public static bs3 valueOf(String str) {
-        return (bs3) Enum.valueOf(bs3.class, str);
+    public static bs3 a(String r5) {
+        bs3[] r0 = values();
+        int r1 = r0.length;
+        int r2 = 0;
+    L3:
+        if (r2 >= r1) goto L9;
+        bs3 r3 = r0[r2];
+        r3.getClass();
+        if (r5.equals("public-key") == true) goto L6;
+        r2 = r2 + 1;
+        goto L3
+    L6:
+        return r3;
+    L9:
+        throw new PublicKeyCredentialType$UnsupportedPublicKeyCredTypeException(xa3.h("PublicKeyCredentialType ", r5, " not supported"));
+    }
+
+    public static bs3 valueOf(String r1) {
+        return (bs3) Enum.valueOf(bs3.class, r1);
     }
 
     public static bs3[] values() {
@@ -44,7 +51,7 @@ public final class bs3 implements Parcelable {
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString("public-key");
+    public final void writeToParcel(Parcel r1, int r2) {
+        r1.writeString("public-key");
     }
 }

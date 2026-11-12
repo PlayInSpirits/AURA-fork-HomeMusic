@@ -43,259 +43,308 @@ public final class mf4 implements zj2, kg1, StarCallback {
     public Object p;
     public Object q;
 
-    public mf4(int i) {
-        this.n = i;
-        switch (i) {
-            case 6:
-                this.p = Collections.newSetFromMap(new WeakHashMap());
-                this.q = new HashSet();
-                break;
-            case 7:
-                this.p = new Object();
-                break;
-        }
+    public mf4(int r1) {
+        this.n = r1;
+        switch(r1) {
+            case 6: goto L8;
+            case 7: goto L6;
+            default: goto L5;
+        };
+    L6:
+        this.p = new Object();
+        return;
+    L8:
+        this.p = Collections.newSetFromMap(new WeakHashMap());
+        this.q = new HashSet();
+        return;
     }
 
-    public static String b(Class cls) {
-        int modifiers = cls.getModifiers();
-        if (Modifier.isInterface(modifiers)) {
-            return "Interfaces can't be instantiated! Register an InstanceCreator or a TypeAdapter for this type. Interface name: ".concat(cls.getName());
-        }
-        if (Modifier.isAbstract(modifiers)) {
-            return "Abstract classes can't be instantiated! Register an InstanceCreator or a TypeAdapter for this type. Class name: ".concat(cls.getName());
-        }
+    public static String b(Class r2) {
+        int r0 = r2.getModifiers();
+        if (Modifier.isInterface(r0) == false) goto L7;
+        return "Interfaces can't be instantiated! Register an InstanceCreator or a TypeAdapter for this type. Interface name: ".concat(r2.getName());
+    L7:
+        if (Modifier.isAbstract(r0) == true) goto L9;
         return null;
+    L9:
+        return "Abstract classes can't be instantiated! Register an InstanceCreator or a TypeAdapter for this type. Class name: ".concat(r2.getName());
     }
 
-    public static mf4 f(Context context) {
-        if (r == null) {
-            synchronized (mf4.class) {
-                try {
-                    if (r == null) {
-                        r = new mf4(context.getApplicationContext());
-                    }
-                } catch (Throwable th) {
-                    throw th;
-                }
-            }
-        }
+    public static mf4 f(Context r2) {
+        if (r != null) goto L16;
+        monitor-enter(mf4.class);
+    L9:
+        th = move-exception;
+        throw th;
+    L7:
+        if (r != null) goto L11;
+        r = new mf4(r2.getApplicationContext());     // Catch: Throwable -> L9
+    L11:
+        monitor-exit(mf4.class);     // Catch: Throwable -> L9
+    L16:
         return r;
     }
 
-    public boolean c(pz3 pz3Var) {
-        boolean z = true;
-        if (pz3Var == null) {
-            return true;
-        }
-        boolean zRemove = ((Set) this.p).remove(pz3Var);
-        if (!((HashSet) this.q).remove(pz3Var) && !zRemove) {
-            z = false;
-        }
-        if (z) {
-            pz3Var.clear();
-        }
-        return z;
-    }
-
     @Override // defpackage.zj2
-    /* JADX INFO: renamed from: d, reason: merged with bridge method [inline-methods] */
-    public yk a(ml3 ml3Var) throws Exception {
-        MediaCodec mediaCodecCreateByCodecName;
-        ck2 blVar;
-        int i;
-        String str = ((dk2) ml3Var.a).a;
-        yk ykVar = null;
-        try {
-            Trace.beginSection("createCodec:" + str);
-            mediaCodecCreateByCodecName = MediaCodec.createByCodecName(str);
-            try {
-                if (!this.o || Build.VERSION.SDK_INT < 36) {
-                    blVar = new bl(mediaCodecCreateByCodecName, (HandlerThread) ((xk) this.q).get());
-                    i = 0;
-                } else {
-                    blVar = new pz1(27, mediaCodecCreateByCodecName);
-                    i = 4;
-                }
-                yk ykVar2 = new yk(mediaCodecCreateByCodecName, (HandlerThread) ((xk) this.p).get(), blVar, (ns3) ml3Var.f);
-                try {
-                    Trace.endSection();
-                    Surface surface = (Surface) ml3Var.d;
-                    if (surface == null && ((dk2) ml3Var.a).h && Build.VERSION.SDK_INT >= 35) {
-                        i |= 8;
-                    }
-                    yk.b(ykVar2, (MediaFormat) ml3Var.b, surface, (MediaCrypto) ml3Var.e, i);
-                    return ykVar2;
-                } catch (Exception e) {
-                    e = e;
-                    ykVar = ykVar2;
-                    if (ykVar != null) {
-                        ykVar.a();
-                    } else if (mediaCodecCreateByCodecName != null) {
-                        mediaCodecCreateByCodecName.release();
-                    }
-                    throw e;
-                }
-            } catch (Exception e2) {
-                e = e2;
-            }
-        } catch (Exception e3) {
-            e = e3;
-            mediaCodecCreateByCodecName = null;
-        }
+    public /* bridge */ /* synthetic */ ak2 a(ml3 r1) {
+        return d(r1);
     }
 
-    public o73 e(TypeToken typeToken) {
-        o73 zh0Var;
-        String str;
-        o73 uc0Var;
-        Type type = typeToken.getType();
-        Class rawType = typeToken.getRawType();
-        Map map = (Map) this.p;
-        i80 i80Var = null;
-        if (map.get(type) != null) {
-            kf2.k();
-            return null;
-        }
-        if (map.get(rawType) != null) {
-            kf2.k();
-            return null;
-        }
-        if (EnumSet.class.isAssignableFrom(rawType)) {
-            zh0Var = new d34(17, type);
-        } else {
-            zh0Var = rawType == EnumMap.class ? new zh0(16, type) : null;
-        }
-        if (zh0Var != null) {
-            return zh0Var;
-        }
+    public boolean c(pz3 r3) {
+        boolean r0 = true;
+        if (r3 != null) goto L5;
+        return true;
+    L5:
+        boolean r1 = ((Set) this.p).remove(r3);
+        if (((HashSet) this.q).remove(r3) == true) goto L10;
+        if (r1 == true) goto L10;
+        r0 = false;
+    L10:
+        if (r0 == false) goto L12;
+        r3.clear();
+    L12:
+        return r0;
+    }
+
+    public yk d(ml3 r7) {
+        String r1 = ((dk2) r7.a).a;
+        yk r2 = null;
+        Trace.beginSection("createCodec:" + r1);     // Catch: Exception -> L24
+        MediaCodec r0 = MediaCodec.createByCodecName(r1);     // Catch: Exception -> L24
+    L9:
+        e = e;
+    L26:
+        if (r2 != null) goto L29;
+        if (r0 == null) goto L30;
+        r0.release();
+    L30:
+        throw e;
+    L29:
+        r2.a();
+        goto L30
+    L5:
+        if (this.o == true) goto L7;
+    L11:
+        ck2 r3 = new bl(r0, (HandlerThread) ((xk) this.q).get());     // Catch: Exception -> L9
+        int r4 = 0;
+    L12:
+        yk r5 = new yk(r0, (HandlerThread) ((xk) this.p).get(), r3, (ns3) r7.f);     // Catch: Exception -> L9
+        Trace.endSection();     // Catch: Exception -> L20
+        Surface r6 = (Surface) r7.d;     // Catch: Exception -> L20
+        if (r6 == null) goto L16;
+    L22:
+        yk.b(r5, (MediaFormat) r7.b, r6, (MediaCrypto) r7.e, r4);     // Catch: Exception -> L20
+        return r5;
+    L16:
+        if (((dk2) r7.a).h == false) goto L22;
+        if (Build.VERSION.SDK_INT < 35) goto L22;
+        r4 = r4 | 8;     // Catch: Exception -> L20
+    L20:
+        e = e;
+        r2 = r5;
+        goto L26
+    L7:
+        if (Build.VERSION.SDK_INT < 36) goto L11;
+        r3 = new pz1(27, r0);     // Catch: Exception -> L9
+        r4 = 4;
+    L24:
+        e = e;
+        r0 = null;
+        goto L26
+    }
+
+    public o73 e(TypeToken r8) {
+        Type r0 = r8.getType();
+        Class r9 = r8.getRawType();
+        Map r1 = (Map) this.p;
+        i80 r3 = null;
+        if (r1.get(r0) == null) goto L5;
+        kf2.k();
+        return null;
+    L5:
+        if (r1.get(r9) == null) goto L7;
+        kf2.k();
+        return null;
+    L7:
+        if (EnumSet.class.isAssignableFrom(r9) == false) goto L10;
+        o73 r2 = new d34(17, r0);
+    L13:
+        if (r2 == null) goto L15;
+        return r2;
+    L15:
         fu.x((List) this.q);
-        if (Modifier.isAbstract(rawType.getModifiers())) {
-            uc0Var = null;
-        } else {
-            try {
-                Constructor declaredConstructor = rawType.getDeclaredConstructor(null);
-                hw hwVar = ox3.a;
-                try {
-                    declaredConstructor.setAccessible(true);
-                    str = null;
-                } catch (Exception e) {
-                    str = "Failed making constructor '" + ox3.b(declaredConstructor) + "' accessible; either increase its visibility or write a custom InstanceCreator or TypeAdapter for its declaring type: " + e.getMessage();
-                }
-                uc0Var = str != null ? new uc0(1, str) : new zg5(declaredConstructor);
-            } catch (NoSuchMethodException unused) {
-                uc0Var = null;
-            }
-        }
-        if (uc0Var != null) {
-            return uc0Var;
-        }
-        if (Collection.class.isAssignableFrom(rawType)) {
-            if (SortedSet.class.isAssignableFrom(rawType)) {
-                i80Var = new i80(5);
-            } else if (Set.class.isAssignableFrom(rawType)) {
-                i80Var = new i80(6);
-            } else {
-                i80Var = Queue.class.isAssignableFrom(rawType) ? new i80(7) : new i80(8);
-            }
-        } else if (Map.class.isAssignableFrom(rawType)) {
-            if (ConcurrentNavigableMap.class.isAssignableFrom(rawType)) {
-                i80Var = new i80(9);
-            } else if (ConcurrentMap.class.isAssignableFrom(rawType)) {
-                i80Var = new i80(10);
-            } else if (SortedMap.class.isAssignableFrom(rawType)) {
-                i80Var = new i80(11);
-            } else {
-                i80Var = (!(type instanceof ParameterizedType) || String.class.isAssignableFrom(TypeToken.get(((ParameterizedType) type).getActualTypeArguments()[0]).getRawType())) ? new i80(13) : new i80(12);
-            }
-        }
-        if (i80Var != null) {
-            return i80Var;
-        }
-        String strB = b(rawType);
-        if (strB != null) {
-            return new vc0(strB);
-        }
-        if (this.o) {
-            return new zh0(15, rawType);
-        }
-        return new uc0(0, "Unable to create instance of " + rawType + "; usage of JDK Unsafe is disabled. Registering an InstanceCreator or a TypeAdapter for this type, adding a no-args constructor, or enabling usage of JDK Unsafe may fix this problem.");
+        if (Modifier.isAbstract(r9.getModifiers()) == false) goto L74;
+    L17:
+        o73 r4 = null;
+    L27:
+        if (r4 == null) goto L30;
+        return r4;
+    L30:
+        if (Collection.class.isAssignableFrom(r9) == false) goto L42;
+        if (SortedSet.class.isAssignableFrom(r9) == false) goto L35;
+        r3 = new i80(5);
+    L58:
+        if (r3 == null) goto L60;
+        return r3;
+    L60:
+        String r5 = b(r9);
+        if (r5 == null) goto L65;
+        return new vc0(r5);
+    L65:
+        if (this.o == false) goto L68;
+        return new zh0(15, r9);
+    L68:
+        return new uc0(0, "Unable to create instance of " + r9 + "; usage of JDK Unsafe is disabled. Registering an InstanceCreator or a TypeAdapter for this type, adding a no-args constructor, or enabling usage of JDK Unsafe may fix this problem.");
+    L35:
+        if (Set.class.isAssignableFrom(r9) == false) goto L38;
+        r3 = new i80(6);
+        goto L58
+    L38:
+        if (Queue.class.isAssignableFrom(r9) == false) goto L40;
+        r3 = new i80(7);
+        goto L58
+    L40:
+        r3 = new i80(8);
+        goto L58
+    L42:
+        if (Map.class.isAssignableFrom(r9) == false) goto L58;
+        if (ConcurrentNavigableMap.class.isAssignableFrom(r9) == false) goto L47;
+        r3 = new i80(9);
+        goto L58
+    L47:
+        if (ConcurrentMap.class.isAssignableFrom(r9) == false) goto L50;
+        r3 = new i80(10);
+        goto L58
+    L50:
+        if (SortedMap.class.isAssignableFrom(r9) == false) goto L53;
+        r3 = new i80(11);
+        goto L58
+    L53:
+        if ((r0 instanceof ParameterizedType) == true) goto L55;
+    L57:
+        r3 = new i80(13);
+        goto L58
+    L55:
+        if (String.class.isAssignableFrom(TypeToken.get(((ParameterizedType) r0).getActualTypeArguments()[0]).getRawType()) == true) goto L57;
+        r3 = new i80(12);
+        goto L58
+    L74:
+        Constructor r6 = r9.getDeclaredConstructor(null);     // Catch: NoSuchMethodException -> L73
+        hw r7 = ox3.a;
+        r6.setAccessible(true);     // Catch: Exception -> L22
+        String r10 = null;
+    L24:
+        if (r10 == null) goto L26;
+        r4 = new uc0(1, r10);
+        goto L27
+    L26:
+        r4 = new zg5(r6);
+    L22:
+        e = move-exception;
+        r10 = "Failed making constructor '" + ox3.b(r6) + "' accessible; either increase its visibility or write a custom InstanceCreator or TypeAdapter for its declaring type: " + e.getMessage();
+        goto L24
+    L10:
+        if (r9 != EnumMap.class) goto L12;
+        r2 = new zh0(16, r0);
+        goto L13
+    L12:
+        r2 = null;
+        goto L13
     }
 
     public void g() {
-        if (this.o || ((HashSet) this.q).isEmpty()) {
-            return;
-        }
-        ll llVar = (ll) this.p;
-        sd0 sd0Var = (sd0) llVar.q;
-        boolean z = false;
-        llVar.o = ((ConnectivityManager) sd0Var.get()).getActiveNetwork() != null;
-        try {
-            ((ConnectivityManager) sd0Var.get()).registerDefaultNetworkCallback((oy1) llVar.r);
-            z = true;
-        } catch (RuntimeException e) {
-            if (Log.isLoggable("ConnectivityMonitor", 5)) {
-                Log.w("ConnectivityMonitor", "Failed to register callback", e);
-            }
-        }
-        this.o = z;
+        if (this.o == false) goto L5;
+        return;
+    L5:
+        if (((HashSet) this.q).isEmpty() == true) goto L23;
+        ll r0 = (ll) this.p;
+        sd0 r1 = (sd0) r0.q;
+        boolean r3 = false;
+        if (((ConnectivityManager) r1.get()).getActiveNetwork() == null) goto L10;
+        boolean r2 = true;
+    L11:
+        r0.o = r2;
+        ((ConnectivityManager) r1.get()).registerDefaultNetworkCallback((oy1) r0.r);     // Catch: RuntimeException -> L14
+        r3 = true;
+    L18:
+        this.o = r3;
+        return;
+    L14:
+        e = move-exception;
+        if (Log.isLoggable("ConnectivityMonitor", 5) == false) goto L18;
+        Log.w("ConnectivityMonitor", "Failed to register callback", e);
+        goto L18
+    L10:
+        r2 = false;
+        goto L11
     }
 
     @Override // defpackage.kg1
-    public void h(Object obj) {
-        Bitmap bitmap = (Bitmap) obj;
-        s63 s63Var = (s63) this.p;
-        if (this.o) {
-            return;
-        }
-        s63Var.d(bitmap);
-        vl2 vl2Var = (vl2) this.q;
-        rm2 rm2Var = new rm2(s63Var.a());
-        lo2 lo2Var = (lo2) vl2Var.o;
-        lo2Var.r.execute(new ct0(lo2Var, vl2Var.p, (kn2) vl2Var.q, rm2Var, 2));
+    public void h(Object r8) {
+        Bitmap r9 = (Bitmap) r8;
+        s63 r0 = (s63) this.p;
+        if (this.o == true) goto L6;
+        r0.d(r9);
+        vl2 r7 = (vl2) this.q;
+        rm2 r5 = new rm2(r0.a());
+        lo2 r2 = (lo2) r7.o;
+        int r3 = r7.p;
+        kn2 r4 = (kn2) r7.q;
+        r2.r.execute(new ct0(r2, r3, r4, r5, 2));
+        return;
     }
 
-    public void i(hk5 hk5Var) {
-        synchronized (this.p) {
-            try {
-                if (((ArrayDeque) this.q) == null) {
-                    this.q = new ArrayDeque();
-                }
-                ((ArrayDeque) this.q).add(hk5Var);
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+    public void i(hk5 r3) {
+        Object r0 = this.p;
+        monitor-enter(r0);
+    L7:
+        th = move-exception;
+        throw th;
+    L5:
+        if (((ArrayDeque) this.q) != null) goto L9;
+        this.q = new ArrayDeque();     // Catch: Throwable -> L7
+    L9:
+        ((ArrayDeque) this.q).add(r3);     // Catch: Throwable -> L7
+        monitor-exit(r0);     // Catch: Throwable -> L7
     }
 
-    public void j(jw jwVar) {
-        hk5 hk5Var;
-        synchronized (this.p) {
-            if (((ArrayDeque) this.q) != null && !this.o) {
-                this.o = true;
-                while (true) {
-                    synchronized (this.p) {
-                        try {
-                            hk5Var = (hk5) ((ArrayDeque) this.q).poll();
-                            if (hk5Var == null) {
-                                this.o = false;
-                                return;
-                            }
-                        } catch (Throwable th) {
-                            throw th;
-                        }
-                    }
-                    hk5Var.a(jwVar);
-                }
-            }
-        }
+    public void j(jw r3) {
+        Object r0 = this.p;
+        monitor-enter(r0);
+    L24:
+        th = move-exception;
+        throw th;
+    L5:
+        if (((ArrayDeque) this.q) != null) goto L7;
+    L26:
+        monitor-exit(r0);     // Catch: Throwable -> L24
+        return;
+    L7:
+        if (this.o == true) goto L26;
+        this.o = true;     // Catch: Throwable -> L24
+        monitor-exit(r0);     // Catch: Throwable -> L24
+    L11:
+        Object r1 = this.p;
+        monitor-enter(r1);
+        hk5 r2 = (hk5) ((ArrayDeque) this.q).poll();     // Catch: Throwable -> L18
+        if (r2 == null) goto L15;
+        monitor-exit(r1);     // Catch: Throwable -> L18
+        r2.a(r3);
+        goto L11
+    L15:
+        this.o = false;     // Catch: Throwable -> L18
+        monitor-exit(r1);     // Catch: Throwable -> L18
+        return;
+    L18:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.kg1
-    public void o(Throwable th) {
-        if (this.o) {
-            return;
-        }
-        l93.q0("NotificationProvider", "Failed to load bitmap: " + th.getMessage());
+    public void o(Throwable r2) {
+        if (this.o == true) goto L6;
+        l93.q0("NotificationProvider", "Failed to load bitmap: " + r2.getMessage());
+        return;
     }
 
     @Override // com.eddyizm.tempus.interfaces.StarCallback
@@ -304,46 +353,49 @@ public final class mf4 implements zj2, kg1, StarCallback {
     }
 
     public String toString() {
-        switch (this.n) {
-            case 2:
-                return ((Map) this.p).toString();
-            case 6:
-                return super.toString() + "{numRequests=" + ((Set) this.p).size() + ", isPaused=" + this.o + "}";
-            default:
-                return super.toString();
-        }
+        switch(this.n) {
+            case 2: goto L9;
+            case 6: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return super.toString();
+    L7:
+        return super.toString() + "{numRequests=" + ((Set) this.p).size() + ", isPaused=" + this.o + "}";
+    L9:
+        return ((Map) this.p).toString();
     }
 
-    public mf4(Map map, boolean z, List list) {
+    public mf4(Map r2, boolean r3, List r4) {
         this.n = 2;
-        this.p = map;
-        this.o = z;
-        this.q = list;
+        this.p = r2;
+        this.o = r3;
+        this.q = r4;
     }
 
-    public mf4(Context context) {
+    public mf4(Context r3) {
         this.n = 0;
         this.q = new HashSet();
-        this.p = new ll(new sd0(new aj(context)), new kf4(this));
+        this.p = new ll(new sd0(new aj(r3)), new kf4(this));
     }
 
-    public mf4(xk xkVar, xk xkVar2) {
+    public mf4(xk r2, xk r3) {
         this.n = 1;
-        this.p = xkVar;
-        this.q = xkVar2;
+        this.p = r2;
+        this.q = r3;
         this.o = true;
     }
 
-    public mf4(d34 d34Var, Child child, boolean z) {
+    public mf4(d34 r2, Child r3, boolean r4) {
         this.n = 5;
-        this.p = d34Var;
-        this.q = child;
-        this.o = z;
+        this.p = r2;
+        this.q = r3;
+        this.o = r4;
     }
 
-    public mf4(s63 s63Var, vl2 vl2Var) {
+    public mf4(s63 r2, vl2 r3) {
         this.n = 3;
-        this.p = s63Var;
-        this.q = vl2Var;
+        this.p = r2;
+        this.q = r3;
     }
 }

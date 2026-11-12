@@ -6,8 +6,8 @@ public final class vz2 {
     public final tl1 a;
     public final tz3 b;
 
-    public vz2(tl1 tl1Var, tz3 tz3Var) {
-        this.a = tl1Var;
-        this.b = tz3Var;
+    public vz2(tl1 r1, tz3 r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

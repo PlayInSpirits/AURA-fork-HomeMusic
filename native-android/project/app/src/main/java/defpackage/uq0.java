@@ -8,13 +8,12 @@ public final class uq0 extends cx3 {
     public final na4 u;
     public final /* synthetic */ vq0 v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public uq0(vq0 vq0Var, na4 na4Var) {
-        this.v = vq0Var;
-        ConstraintLayout constraintLayout = (ConstraintLayout) na4Var.n;
-        super(constraintLayout);
-        this.u = na4Var;
-        constraintLayout.setOnClickListener(new p6(12, this));
-        constraintLayout.setOnLongClickListener(new q6(8, this));
+    public uq0(vq0 r2, na4 r3) {
+        this.v = r2;
+        ConstraintLayout r4 = (ConstraintLayout) r3.n;
+        super(r4);
+        this.u = r3;
+        r4.setOnClickListener(new p6(12, this));
+        r4.setOnLongClickListener(new q6(8, this));
     }
 }

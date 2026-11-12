@@ -12,46 +12,45 @@ public final class wz1 extends ma5 {
     public int r;
     public final int[] s;
 
-    public wz1(View view) {
+    public wz1(View r2) {
         super(0);
         this.s = new int[2];
-        this.p = view;
+        this.p = r2;
     }
 
     @Override // defpackage.ma5
-    public final void a(ta5 ta5Var) {
+    public final void a(ta5 r1) {
         this.p.setTranslationY(0.0f);
     }
 
     @Override // defpackage.ma5
-    public final void b(ta5 ta5Var) {
-        View view = this.p;
-        int[] iArr = this.s;
-        view.getLocationOnScreen(iArr);
-        this.q = iArr[1];
+    public final void b(ta5 r2) {
+        View r3 = this.p;
+        int[] r0 = this.s;
+        r3.getLocationOnScreen(r0);
+        this.q = r0[1];
     }
 
     @Override // defpackage.ma5
-    public final pb5 c(pb5 pb5Var, List list) {
-        Iterator it = list.iterator();
-        while (it.hasNext()) {
-            ta5 ta5Var = (ta5) it.next();
-            if ((ta5Var.a.d() & 8) != 0) {
-                this.p.setTranslationY(yd.c(this.r, ta5Var.a.c(), 0));
-                break;
-            }
-        }
-        return pb5Var;
+    public final pb5 c(pb5 r3, List r4) {
+        Iterator r5 = r4.iterator();
+    L4:
+        if (r5.hasNext() == false) goto L8;
+        ta5 r0 = (ta5) r5.next();
+        if ((r0.a.d() & 8) == 0) goto L4;
+        this.p.setTranslationY(yd.c(this.r, r0.a.c(), 0));
+    L8:
+        return r3;
     }
 
     @Override // defpackage.ma5
-    public final qr2 d(ta5 ta5Var, qr2 qr2Var) {
-        View view = this.p;
-        int[] iArr = this.s;
-        view.getLocationOnScreen(iArr);
-        int i = this.q - iArr[1];
-        this.r = i;
-        view.setTranslationY(i);
-        return qr2Var;
+    public final qr2 d(ta5 r3, qr2 r4) {
+        View r5 = this.p;
+        int[] r0 = this.s;
+        r5.getLocationOnScreen(r0);
+        int r1 = this.q - r0[1];
+        this.r = r1;
+        r5.setTranslationY(r1);
+        return r4;
     }
 }

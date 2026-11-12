@@ -15,46 +15,48 @@ import java.util.concurrent.TimeUnit;
 public class mx2 extends AbstractExecutorService implements AutoCloseable, ExecutorService {
     public final ExecutorService n;
 
-    public mx2(ExecutorService executorService) {
-        executorService.getClass();
-        this.n = executorService;
+    public mx2(ExecutorService r1) {
+        r1.getClass();
+        this.n = r1;
     }
 
     @Override // java.util.concurrent.ExecutorService
-    public final boolean awaitTermination(long j, TimeUnit timeUnit) {
-        return this.n.awaitTermination(j, timeUnit);
+    public final boolean awaitTermination(long r1, TimeUnit r3) {
+        return this.n.awaitTermination(r1, r3);
     }
 
-    public final ic2 b(Callable callable) {
-        return (ic2) super.submit(callable);
+    public final ic2 b(Callable r1) {
+        return (ic2) super.submit(r1);
     }
 
     @Override // java.lang.AutoCloseable
     public final /* synthetic */ void close() {
-        boolean zIsTerminated;
-        if (this == ForkJoinPool.commonPool() || (zIsTerminated = isTerminated())) {
-            return;
-        }
+        if (this == ForkJoinPool.commonPool()) goto L26;
+        boolean r0 = isTerminated();
+        if (r0 == true) goto L24;
         shutdown();
-        boolean z = false;
-        while (!zIsTerminated) {
-            try {
-                zIsTerminated = awaitTermination(1L, TimeUnit.DAYS);
-            } catch (InterruptedException unused) {
-                if (!z) {
-                    shutdownNow();
-                    z = true;
-                }
-            }
-        }
-        if (z) {
-            Thread.currentThread().interrupt();
-        }
+        boolean r1 = false;
+    L8:
+        if (r0 == true) goto L13;
+        r0 = awaitTermination(1, TimeUnit.DAYS);     // Catch: InterruptedException -> L11
+    L11:
+        if (r1 == true) goto L8;
+        shutdownNow();
+        r1 = true;
+        goto L8
+    L13:
+        if (r1 == false) goto L25;
+        Thread.currentThread().interrupt();
+        return;
+    L25:
+        return;
+    L24:
+        return;
     }
 
     @Override // java.util.concurrent.Executor
-    public final void execute(Runnable runnable) {
-        this.n.execute(runnable);
+    public final void execute(Runnable r1) {
+        this.n.execute(r1);
     }
 
     @Override // java.util.concurrent.ExecutorService
@@ -68,8 +70,8 @@ public class mx2 extends AbstractExecutorService implements AutoCloseable, Execu
     }
 
     @Override // java.util.concurrent.AbstractExecutorService
-    public final RunnableFuture newTaskFor(Runnable runnable, Object obj) {
-        return new py4(Executors.callable(runnable, obj));
+    public final RunnableFuture newTaskFor(Runnable r1, Object r2) {
+        return new py4(Executors.callable(r1, r2));
     }
 
     @Override // java.util.concurrent.ExecutorService
@@ -83,8 +85,8 @@ public class mx2 extends AbstractExecutorService implements AutoCloseable, Execu
     }
 
     @Override // java.util.concurrent.AbstractExecutorService, java.util.concurrent.ExecutorService
-    public final Future submit(Runnable runnable) {
-        return (ic2) super.submit(runnable);
+    public final Future submit(Runnable r1) {
+        return (ic2) super.submit(r1);
     }
 
     public final String toString() {
@@ -92,17 +94,17 @@ public class mx2 extends AbstractExecutorService implements AutoCloseable, Execu
     }
 
     @Override // java.util.concurrent.AbstractExecutorService, java.util.concurrent.ExecutorService
-    public final Future submit(Runnable runnable, Object obj) {
-        return (ic2) super.submit(runnable, obj);
+    public final Future submit(Runnable r1, Object r2) {
+        return (ic2) super.submit(r1, r2);
     }
 
     @Override // java.util.concurrent.AbstractExecutorService, java.util.concurrent.ExecutorService
-    public final Future submit(Callable callable) {
-        return (ic2) super.submit(callable);
+    public final Future submit(Callable r1) {
+        return (ic2) super.submit(r1);
     }
 
     @Override // java.util.concurrent.AbstractExecutorService
-    public final RunnableFuture newTaskFor(Callable callable) {
-        return new py4(callable);
+    public final RunnableFuture newTaskFor(Callable r1) {
+        return new py4(r1);
     }
 }

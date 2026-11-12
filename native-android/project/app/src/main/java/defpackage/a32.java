@@ -15,180 +15,220 @@ import sun.misc.Unsafe;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class a32 implements s22 {
-    public static final /* synthetic */ AtomicReferenceFieldUpdater n = AtomicReferenceFieldUpdater.newUpdater(a32.class, Object.class, "_state$volatile");
-    public static final /* synthetic */ AtomicReferenceFieldUpdater o;
-    public static final /* synthetic */ long p;
-    public static final /* synthetic */ long q;
+    public static final /* synthetic */ AtomicReferenceFieldUpdater n = null;
+    public static final /* synthetic */ AtomicReferenceFieldUpdater o = null;
+    public static final /* synthetic */ long p = 0;
+    public static final /* synthetic */ long q = 0;
     private volatile /* synthetic */ Object _parentHandle$volatile;
     private volatile /* synthetic */ Object _state$volatile;
 
     static {
-        Unsafe unsafe = dz.a;
-        q = unsafe.objectFieldOffset(a32.class.getDeclaredField("_state$volatile"));
+        n = AtomicReferenceFieldUpdater.newUpdater(a32.class, Object.class, "_state$volatile");
+        Unsafe r3 = dz.a;
+        q = r3.objectFieldOffset(a32.class.getDeclaredField("_state$volatile"));
         o = AtomicReferenceFieldUpdater.newUpdater(a32.class, Object.class, "_parentHandle$volatile");
-        p = unsafe.objectFieldOffset(a32.class.getDeclaredField("_parentHandle$volatile"));
+        p = r3.objectFieldOffset(a32.class.getDeclaredField("_parentHandle$volatile"));
     }
 
-    public a32(boolean z) {
-        this._state$volatile = z ? zz1.j : zz1.i;
+    public a32(boolean r1) {
+        if (r1 == false) goto L5;
+        n01 r2 = zz1.j;
+    L6:
+        this._state$volatile = r2;
+        return;
+    L5:
+        r2 = zz1.i;
+        goto L6
     }
 
-    public static d20 V(zd2 zd2Var) {
-        while (zd2Var.n()) {
-            zd2Var = zd2Var.m();
-        }
-        while (true) {
-            zd2Var = zd2Var.l();
-            if (!zd2Var.n()) {
-                if (zd2Var instanceof d20) {
-                    return (d20) zd2Var;
-                }
-                if (zd2Var instanceof h63) {
-                    return null;
-                }
-            }
-        }
+    public static d20 V(zd2 r1) {
+    L3:
+        if (r1.n() == false) goto L5;
+        r1 = r1.m();
+    L5:
+        r1 = r1.l();
+        if (r1.n() == true) goto L5;
+        if ((r1 instanceof d20) == true) goto L10;
+        if ((r1 instanceof h63) == false) goto L5;
+        return null;
+    L10:
+        return (d20) r1;
     }
 
-    public static String e0(Object obj) {
-        if (!(obj instanceof z22)) {
-            if (obj instanceof mx1) {
-                return ((mx1) obj).b() ? "Active" : "New";
-            }
-            return obj instanceof a70 ? "Cancelled" : "Completed";
-        }
-        z22 z22Var = (z22) obj;
-        if (z22Var.f()) {
-            return "Cancelling";
-        }
-        return z22.o.get(z22Var) != 0 ? "Completing" : "Active";
+    public static String e0(Object r2) {
+        if ((r2 instanceof z22) == false) goto L14;
+        z22 r3 = (z22) r2;
+        if (r3.f() == false) goto L9;
+        return "Cancelling";
+    L9:
+        if (z22.o.get(r3) == 0) goto L12;
+        return "Completing";
+    L12:
+        return "Active";
+    L14:
+        if ((r2 instanceof mx1) == false) goto L21;
+        if (((mx1) r2).b() == false) goto L18;
+        return "Active";
+    L18:
+        return "New";
+    L21:
+        if ((r2 instanceof a70) == false) goto L24;
+        return "Cancelled";
+    L24:
+        return "Completed";
     }
 
-    public final Throwable A(Object obj) {
-        Throwable thE;
-        if (obj instanceof Throwable) {
-            return (Throwable) obj;
-        }
-        a32 a32Var = (a32) obj;
-        Object objH = a32Var.H();
-        if (objH instanceof z22) {
-            thE = ((z22) objH).e();
-        } else if (objH instanceof a70) {
-            thE = ((a70) objH).a;
-        } else {
-            if (objH instanceof mx1) {
-                mj0.g(objH, "Cannot be cancelling child in this state: ");
-                return null;
-            }
-            thE = null;
-        }
-        CancellationException cancellationException = thE instanceof CancellationException ? (CancellationException) thE : null;
-        return cancellationException == null ? new JobCancellationException("Parent job is ".concat(e0(objH)), thE, a32Var) : cancellationException;
+    public final Throwable A(Object r4) {
+        if ((r4 instanceof Throwable) == true) goto L5;
+        a32 r5 = (a32) r4;
+        Object r3 = r5.H();
+        CancellationException r1 = null;
+        if ((r3 instanceof z22) == false) goto L10;
+        Throwable r0 = ((z22) r3).e();
+    L16:
+        if ((r0 instanceof CancellationException) == false) goto L18;
+        r1 = (CancellationException) r0;
+    L18:
+        if (r1 == null) goto L20;
+        return r1;
+    L20:
+        return new JobCancellationException("Parent job is ".concat(e0(r3)), r0, r5);
+    L10:
+        if ((r3 instanceof a70) == false) goto L13;
+        r0 = ((a70) r3).a;
+        goto L16
+    L13:
+        if ((r3 instanceof mx1) == true) goto L21;
+        r0 = null;
+        goto L16
+    L21:
+        mj0.g(r3, "Cannot be cancelling child in this state: ");
+        return null;
+    L5:
+        return (Throwable) r4;
     }
 
-    public final Object B(z22 z22Var, Object obj) throws Throwable {
-        Throwable th;
-        a32 a32Var;
-        z22 z22Var2;
-        a70 a70Var = obj instanceof a70 ? (a70) obj : null;
-        Throwable th2 = a70Var != null ? a70Var.a : null;
-        synchronized (z22Var) {
-            try {
-                z22Var.f();
-                ArrayList arrayListG = z22Var.g(th2);
-                Throwable thC = C(z22Var, arrayListG);
-                if (thC != null) {
-                    try {
-                        if (arrayListG.size() > 1) {
-                            Set setNewSetFromMap = Collections.newSetFromMap(new IdentityHashMap(arrayListG.size()));
-                            int size = arrayListG.size();
-                            int i = 0;
-                            while (i < size) {
-                                Object obj2 = arrayListG.get(i);
-                                i++;
-                                Throwable th3 = (Throwable) obj2;
-                                if (th3 != thC && th3 != thC && !(th3 instanceof CancellationException) && setNewSetFromMap.add(th3)) {
-                                    j51.d(thC, th3);
-                                }
-                            }
-                        }
-                    } catch (Throwable th4) {
-                        th = th4;
-                        throw th;
-                    }
-                }
-                if (thC != null && thC != th2) {
-                    obj = new a70(thC, false);
-                }
-                if (thC != null && (w(thC) || I(thC))) {
-                    obj.getClass();
-                    a70.b.compareAndSet((a70) obj, 0, 1);
-                }
-                X(obj);
-                AtomicReferenceFieldUpdater atomicReferenceFieldUpdater = n;
-                Object nx1Var = obj instanceof mx1 ? new nx1((mx1) obj) : obj;
-                while (true) {
-                    atomicReferenceFieldUpdater.getClass();
-                    Unsafe unsafe = dz.a;
-                    long j = q;
-                    a32Var = this;
-                    z22Var2 = z22Var;
-                    if (unsafe.compareAndSwapObject(a32Var, j, z22Var2, nx1Var) || unsafe.getObjectVolatile(a32Var, j) != z22Var2) {
-                        break;
-                    }
-                    this = a32Var;
-                    z22Var = z22Var2;
-                }
-                a32Var.z(z22Var2, obj);
-                return obj;
-            } catch (Throwable th5) {
-                th = th5;
-            }
-        }
+    public final Object B(z22 r11, Object r12) {
+        Throwable r1 = null;
+        if ((r12 instanceof a70) == false) goto L5;
+        a70 r0 = (a70) r12;
+    L6:
+        if (r0 == null) goto L8;
+        r1 = r0.a;
+    L8:
+        monitor-enter(r11);
+        r11.f();     // Catch: Throwable -> L52
+        ArrayList r2 = r11.g(r1);     // Catch: Throwable -> L52
+        Throwable r3 = C(r11, r2);     // Catch: Throwable -> L52
+        if (r3 != null) goto L56;
+    L28:
+        monitor-exit(r11);
+        if (r3 == null) goto L34;
+        if (r3 == r1) goto L34;
+        r12 = new a70(r3, false);
+    L34:
+        if (r3 != null) goto L36;
+    L40:
+        X(r12);
+        AtomicReferenceFieldUpdater r4 = n;
+        if ((r12 instanceof mx1) == false) goto L43;
+        Object r8 = new nx1((mx1) r12);
+    L44:
+        r4.getClass();
+        Unsafe r5 = dz.a;
+        long r6 = q;
+        a32 r7 = this;
+        z22 r9 = r11;
+        if (r5.compareAndSwapObject(r7, r6, r9, r8) == true) goto L49;
+        if (r5.getObjectVolatile(r7, r6) != r9) goto L49;
+        a32 this = r7;
+        r11 = r9;
+    L49:
+        r7.z(r9, r12);
+        return r12;
+    L43:
+        r8 = r12;
+        goto L44
+    L36:
+        if (w(r3) == false) goto L38;
+    L39:
+        r12.getClass();
+        a70.b.compareAndSet((a70) r12, 0, 1);
+        goto L40
+    L38:
+        if (I(r3) == false) goto L40;
+    L56:
+    L26:
+        th = move-exception;
+        Throwable r10 = th;
+    L54:
+        monitor-exit(r11);
+        throw r10;
+    L13:
+        if (r2.size() <= 1) goto L28;
+        Set r13 = Collections.newSetFromMap(new IdentityHashMap(r2.size()));     // Catch: Throwable -> L26
+        int r14 = r2.size();     // Catch: Throwable -> L26
+        int r15 = 0;
+    L16:
+        if (r15 >= r14) goto L28;
+        Object r16 = r2.get(r15);     // Catch: Throwable -> L26
+        r15 = r15 + 1;     // Catch: Throwable -> L26
+        Throwable r17 = (Throwable) r16;     // Catch: Throwable -> L26
+        if (r17 == r3) goto L16;
+        if (r17 == r3) goto L16;
+        if ((r17 instanceof CancellationException) == true) goto L16;
+        if (r13.add(r17) == false) goto L16;
+        j51.d(r3, r17);     // Catch: Throwable -> L26
+    L52:
+        th = move-exception;
+        r10 = th;
+        goto L54
+    L5:
+        r0 = null;
+        goto L6
     }
 
-    public final Throwable C(z22 z22Var, ArrayList arrayList) {
-        Object obj;
-        Object obj2 = null;
-        if (arrayList.isEmpty()) {
-            if (z22Var.f()) {
-                return new JobCancellationException(x(), null, this);
-            }
-            return null;
-        }
-        int size = arrayList.size();
-        int i = 0;
-        int i2 = 0;
-        do {
-            if (i2 >= size) {
-                obj = null;
-                break;
-            }
-            obj = arrayList.get(i2);
-            i2++;
-        } while (((Throwable) obj) instanceof CancellationException);
-        Throwable th = (Throwable) obj;
-        if (th != null) {
-            return th;
-        }
-        Throwable th2 = (Throwable) arrayList.get(0);
-        if (th2 instanceof TimeoutCancellationException) {
-            int size2 = arrayList.size();
-            while (i < size2) {
-                Object obj3 = arrayList.get(i);
-                i++;
-                Throwable th3 = (Throwable) obj3;
-                if (th3 != th2 && (th3 instanceof TimeoutCancellationException)) {
-                    obj2 = obj3;
-                    break;
-                }
-            }
-            Throwable th4 = (Throwable) obj2;
-            if (th4 != null) {
-                return th4;
-            }
-        }
-        return th2;
+    public final Throwable C(z22 r5, ArrayList r6) {
+        Object r1 = null;
+        if (r6.isEmpty() == true) goto L5;
+        int r4 = r6.size();
+        int r7 = 0;
+        int r0 = 0;
+    L10:
+        if (r0 >= r4) goto L14;
+        Object r2 = r6.get(r0);
+        r0 = r0 + 1;
+        if ((((Throwable) r2) instanceof CancellationException) == true) goto L10;
+    L15:
+        Throwable r3 = (Throwable) r2;
+        if (r3 == null) goto L18;
+        return r3;
+    L18:
+        Throwable r8 = (Throwable) r6.get(0);
+        if ((r8 instanceof TimeoutCancellationException) == false) goto L30;
+        int r9 = r6.size();
+    L21:
+        if (r7 >= r9) goto L27;
+        Object r10 = r6.get(r7);
+        r7 = r7 + 1;
+        Throwable r11 = (Throwable) r10;
+        if (r11 == r8) goto L21;
+        if ((r11 instanceof TimeoutCancellationException) == false) goto L21;
+        r1 = r10;
+    L27:
+        Throwable r12 = (Throwable) r1;
+        if (r12 == null) goto L30;
+        return r12;
+    L30:
+        return r8;
+    L14:
+        r2 = null;
+        goto L15
+    L5:
+        if (r5.f() == true) goto L7;
+        return null;
+    L7:
+        return new JobCancellationException(x(), null, this);
     }
 
     public boolean D() {
@@ -199,19 +239,19 @@ public class a32 implements s22 {
         return this instanceof x60;
     }
 
-    public final h63 F(mx1 mx1Var) {
-        h63 h63VarD = mx1Var.d();
-        if (h63VarD != null) {
-            return h63VarD;
-        }
-        if (mx1Var instanceof n01) {
-            return new h63();
-        }
-        if (mx1Var instanceof u22) {
-            a0((u22) mx1Var);
-            return null;
-        }
-        mj0.g(mx1Var, "State should have list: ");
+    public final h63 F(mx1 r3) {
+        h63 r0 = r3.d();
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        if ((r3 instanceof n01) == false) goto L9;
+        return new h63();
+    L9:
+        if ((r3 instanceof u22) == false) goto L12;
+        a0((u22) r3);
+        return null;
+    L12:
+        mj0.g(r3, "State should have list: ");
         return null;
     }
 
@@ -225,376 +265,416 @@ public class a32 implements s22 {
         return dz.a.getObjectVolatile(this, q);
     }
 
-    public boolean I(Throwable th) {
+    public boolean I(Throwable r1) {
         return false;
     }
 
     @Override // defpackage.ne0
-    public final ne0 J(ne0 ne0Var) {
-        return ya4.F(this, ne0Var);
+    public final ne0 J(ne0 r1) {
+        return ya4.F(this, r1);
     }
 
     @Override // defpackage.ne0
-    public final le0 K(me0 me0Var) {
-        return ya4.r(this, me0Var);
+    public final le0 K(me0 r1) {
+        return ya4.r(this, r1);
     }
 
-    public void L(CompletionHandlerException completionHandlerException) {
-        throw completionHandlerException;
+    public void L(CompletionHandlerException r1) {
+        throw r1;
     }
 
     @Override // defpackage.s22
-    public final as0 M(if1 if1Var) {
-        return O(true, new v12(if1Var));
+    public final as0 M(if1 r2) {
+        return O(true, new v12(r2));
     }
 
-    public final void N(s22 s22Var) {
-        k63 k63Var = k63.n;
-        if (s22Var == null) {
-            c0(k63Var);
-            return;
-        }
-        s22Var.start();
-        c20 c20VarJ = s22Var.j(this);
-        c0(c20VarJ);
-        if (H() instanceof mx1) {
-            return;
-        }
-        c20VarJ.a();
-        c0(k63Var);
+    public final void N(s22 r3) {
+        k63 r0 = k63.n;
+        if (r3 != null) goto L6;
+        c0(r0);
+        return;
+    L6:
+        r3.start();
+        c20 r4 = r3.j(this);
+        c0(r4);
+        if ((H() instanceof mx1) == true) goto L10;
+        r4.a();
+        c0(r0);
+        return;
     }
 
-    public final as0 O(boolean z, u22 u22Var) {
-        a32 a32Var;
-        u22 u22Var2;
-        boolean zE;
-        u22Var.t = this;
-        loop0: while (true) {
-            Object objH = this.H();
-            if (!(objH instanceof n01)) {
-                a32Var = this;
-                u22Var2 = u22Var;
-                boolean z2 = objH instanceof mx1;
-                k63 k63Var = k63.n;
-                if (z2) {
-                    mx1 mx1Var = (mx1) objH;
-                    h63 h63VarD = mx1Var.d();
-                    if (h63VarD == null) {
-                        a32Var.a0((u22) objH);
-                    } else {
-                        if (u22Var2.r()) {
-                            z22 z22Var = mx1Var instanceof z22 ? (z22) mx1Var : null;
-                            Throwable thE = z22Var != null ? z22Var.e() : null;
-                            if (thE == null) {
-                                zE = h63VarD.e(u22Var2, 5);
-                            } else if (z) {
-                                u22Var2.s(thE);
-                                return k63Var;
-                            }
-                        } else {
-                            zE = h63VarD.e(u22Var2, 1);
-                        }
-                        if (zE) {
-                            break;
-                        }
-                    }
-                    this = a32Var;
-                    u22Var = u22Var2;
-                } else if (z) {
-                    Object objH2 = a32Var.H();
-                    a70 a70Var = objH2 instanceof a70 ? (a70) objH2 : null;
-                    u22Var2.s(a70Var != null ? a70Var.a : null);
-                }
-                return k63Var;
-            }
-            n01 n01Var = (n01) objH;
-            if (n01Var.n) {
-                while (true) {
-                    n.getClass();
-                    Unsafe unsafe = dz.a;
-                    long j = q;
-                    a32Var = this;
-                    u22Var2 = u22Var;
-                    if (unsafe.compareAndSwapObject(a32Var, j, objH, u22Var2)) {
-                        break loop0;
-                    }
-                    if (unsafe.getObjectVolatile(a32Var, j) != objH) {
-                        break;
-                    }
-                    this = a32Var;
-                    u22Var = u22Var2;
-                }
-            } else {
-                a32Var = this;
-                u22Var2 = u22Var;
-                a32Var.Z(n01Var);
-            }
-            this = a32Var;
-            u22Var = u22Var2;
-        }
-        return u22Var2;
+    public final as0 O(boolean r7, u22 r8) {
+        r8.t = this;
+    L3:
+        Object r4 = this.H();
+        if ((r4 instanceof n01) == false) goto L15;
+        n01 r0 = (n01) r4;
+        if (r0.n == false) goto L14;
+    L7:
+        n.getClass();
+        Unsafe r1 = dz.a;
+        long r2 = q;
+        a32 r3 = this;
+        u22 r5 = r8;
+        if (r1.compareAndSwapObject(r3, r2, r4, r5) == true) goto L35;
+        if (r1.getObjectVolatile(r3, r2) != r4) goto L36;
+        a32 this = r3;
+        r8 = r5;
+    L36:
+        this = r3;
+        r8 = r5;
+    L35:
+        return r5;
+    L14:
+        r3 = this;
+        r5 = r8;
+        r3.Z(r0);
+        goto L36
+    L15:
+        r3 = this;
+        r5 = r8;
+        boolean r6 = r4 instanceof mx1;
+        k63 r9 = k63.n;
+        Throwable r10 = null;
+        if (r6 == false) goto L37;
+        mx1 r11 = (mx1) r4;
+        h63 r12 = r11.d();
+        if (r12 != null) goto L21;
+        r3.a0((u22) r4);
+        goto L36
+    L21:
+        if (r5.r() == true) goto L23;
+        boolean r13 = r12.e(r5, 1);
+    L34:
+        if (r13 == false) goto L36;
+    L23:
+        if ((r11 instanceof z22) == false) goto L25;
+        z22 r14 = (z22) r11;
+    L26:
+        if (r14 == null) goto L28;
+        r10 = r14.e();
+    L28:
+        if (r10 != null) goto L30;
+        r13 = r12.e(r5, 5);
+        goto L34
+    L30:
+        if (r7 == false) goto L45;
+        r5.s(r10);
+        return r9;
+    L45:
+        return r9;
+    L25:
+        r14 = null;
+        goto L26
+    L37:
+        if (r7 == false) goto L45;
+        Object r15 = r3.H();
+        if ((r15 instanceof a70) == false) goto L41;
+        a70 r16 = (a70) r15;
+    L42:
+        if (r16 == null) goto L44;
+        r10 = r16.a;
+    L44:
+        r5.s(r10);
+        goto L45
+    L41:
+        r16 = null;
+        goto L42
     }
 
     public boolean P() {
         return this instanceof ht;
     }
 
-    public final boolean Q(Object obj) {
-        Object objH0;
-        do {
-            objH0 = h0(H(), obj);
-            if (objH0 == zz1.d) {
-                return false;
-            }
-            if (objH0 == zz1.e) {
-                return true;
-            }
-        } while (objH0 == zz1.f);
-        l(objH0);
+    public final boolean Q(Object r4) {
+    L2:
+        Object r0 = h0(H(), r4);
+        if (r0 == zz1.d) goto L4;
+        if (r0 == zz1.e) goto L8;
+        if (r0 == zz1.f) goto L2;
+        l(r0);
         return true;
+    L8:
+        return true;
+    L4:
+        return false;
     }
 
     @Override // defpackage.s22
-    public final Object R(wd0 wd0Var) {
-        Object objH;
-        j15 j15Var;
-        do {
-            objH = H();
-            boolean z = objH instanceof mx1;
-            j15Var = j15.a;
-            if (!z) {
-                gb.u(wd0Var.getContext());
-                return j15Var;
-            }
-        } while (d0(objH) < 0);
-        cz czVar = new cz(1, ya4.x(wd0Var));
-        czVar.u();
-        czVar.x(new wy(2, gb.K(this, true, new x14(czVar))));
-        Object objQ = czVar.q();
-        xe0 xe0Var = xe0.n;
-        if (objQ != xe0Var) {
-            objQ = j15Var;
-        }
-        return objQ == xe0Var ? objQ : j15Var;
+    public final Object R(wd0 r4) {
+    L2:
+        Object r0 = H();
+        boolean r1 = r0 instanceof mx1;
+        j15 r2 = j15.a;
+        if (r1 == false) goto L4;
+        if (d0(r0) < 0) goto L2;
+        cz r3 = new cz(1, ya4.x(r4));
+        r3.u();
+        int r5 = 2;
+        r3.x(new wy(r5, gb.K(this, true, new x14(r3))));
+        Object r6 = r3.q();
+        xe0 r7 = xe0.n;
+        if (r6 == r7) goto L12;
+        r6 = r2;
+    L12:
+        if (r6 != r7) goto L14;
+        return r6;
+    L14:
+        return r2;
+    L4:
+        gb.u(r4.getContext());
+        return r2;
     }
 
-    public final Object S(Object obj) {
-        Object objH0;
-        do {
-            objH0 = h0(H(), obj);
-            if (objH0 == zz1.d) {
-                String str = "Job " + this + " is already complete or completing, but is being completed with " + obj;
-                a70 a70Var = obj instanceof a70 ? (a70) obj : null;
-                throw new IllegalStateException(str, a70Var != null ? a70Var.a : null);
-            }
-        } while (objH0 == zz1.f);
-        return objH0;
+    public final Object S(Object r4) {
+    L2:
+        Object r0 = h0(H(), r4);
+        if (r0 == zz1.d) goto L4;
+        if (r0 == zz1.f) goto L2;
+        return r0;
+    L4:
+        String r3 = "Job " + this + " is already complete or completing, but is being completed with " + r4;
+        Throwable r2 = null;
+        if ((r4 instanceof a70) == false) goto L7;
+        a70 r5 = (a70) r4;
+    L8:
+        if (r5 == null) goto L11;
+        r2 = r5.a;
+    L11:
+        throw new IllegalStateException(r3, r2);
+    L7:
+        r5 = null;
+        goto L8
     }
 
     @Override // defpackage.s22
-    public final as0 T(boolean z, boolean z2, q qVar) {
-        return O(z2, z ? new u12(qVar) : new v12(qVar));
+    public final as0 T(boolean r1, boolean r2, q r3) {
+        if (r1 == false) goto L4;
+        u22 r4 = new u12(r3);
+    L6:
+        return O(r2, r4);
+    L4:
+        r4 = new v12(r3);
+        goto L6
     }
 
     public String U() {
         return getClass().getSimpleName();
     }
 
-    public final void W(h63 h63Var, Throwable th) {
-        h63Var.e(new sb2(4), 4);
-        Object objK = h63Var.k();
-        objK.getClass();
-        CompletionHandlerException completionHandlerException = null;
-        for (zd2 zd2VarL = (zd2) objK; !zd2VarL.equals(h63Var); zd2VarL = zd2VarL.l()) {
-            if ((zd2VarL instanceof u22) && ((u22) zd2VarL).r()) {
-                try {
-                    ((u22) zd2VarL).s(th);
-                } catch (Throwable th2) {
-                    if (completionHandlerException != null) {
-                        j51.d(completionHandlerException, th2);
-                    } else {
-                        completionHandlerException = new CompletionHandlerException("Exception in completion handler " + zd2VarL + " for " + this, th2);
-                    }
-                }
-            }
-        }
-        if (completionHandlerException != null) {
-            L(completionHandlerException);
-        }
-        w(th);
+    public final void W(h63 r6, Throwable r7) {
+        r6.e(new sb2(4), 4);
+        Object r0 = r6.k();
+        r0.getClass();
+        zd2 r1 = (zd2) r0;
+        CompletionHandlerException r2 = null;
+    L4:
+        if (r1.equals(r6) == true) goto L16;
+        if ((r1 instanceof u22) == false) goto L15;
+        if (((u22) r1).r() == false) goto L15;
+        ((u22) r1).s(r7);     // Catch: Throwable -> L11
+    L11:
+        th = move-exception;
+        if (r2 == null) goto L14;
+        j51.d(r2, th);
+        goto L15
+    L14:
+        r2 = new CompletionHandlerException("Exception in completion handler " + r1 + " for " + this, th);
+    L15:
+        r1 = r1.l();
+        goto L4
+    L16:
+        if (r2 == null) goto L18;
+        L(r2);
+    L18:
+        w(r7);
     }
 
-    public void X(Object obj) {
+    public void X(Object r1) {
     }
 
     public void Y() {
     }
 
-    public final void Z(n01 n01Var) {
-        h63 h63Var = new h63();
-        Object lx1Var = n01Var.n ? h63Var : new lx1(h63Var);
-        while (true) {
-            n.getClass();
-            Unsafe unsafe = dz.a;
-            long j = q;
-            a32 a32Var = this;
-            n01 n01Var2 = n01Var;
-            if (unsafe.compareAndSwapObject(a32Var, j, n01Var2, lx1Var) || unsafe.getObjectVolatile(a32Var, j) != n01Var2) {
-                return;
-            }
-            this = a32Var;
-            n01Var = n01Var2;
-        }
+    public final void Z(n01 r9) {
+        h63 r0 = new h63();
+        if (r9.n == false) goto L5;
+        Object r7 = r0;
+    L6:
+        n.getClass();
+        Unsafe r2 = dz.a;
+        long r4 = q;
+        a32 r3 = this;
+        n01 r6 = r9;
+        if (r2.compareAndSwapObject(r3, r4, r6, r7) == true) goto L11;
+        if (r2.getObjectVolatile(r3, r4) != r6) goto L16;
+        a32 this = r3;
+        r9 = r6;
+        goto L6
+    L16:
+        return;
+    L11:
+        return;
+    L5:
+        r7 = new lx1(r0);
+        goto L6
     }
 
-    public final void a0(u22 u22Var) {
-        u22Var.g(new h63());
-        zd2 zd2VarL = u22Var.l();
-        while (true) {
-            n.getClass();
-            Unsafe unsafe = dz.a;
-            long j = q;
-            a32 a32Var = this;
-            u22 u22Var2 = u22Var;
-            if (unsafe.compareAndSwapObject(a32Var, j, u22Var2, zd2VarL) || unsafe.getObjectVolatile(a32Var, j) != u22Var2) {
-                return;
-            }
-            this = a32Var;
-            u22Var = u22Var2;
-        }
+    public final void a0(u22 r8) {
+        r8.g(new h63());
+        zd2 r6 = r8.l();
+    L3:
+        n.getClass();
+        Unsafe r1 = dz.a;
+        long r3 = q;
+        a32 r2 = this;
+        u22 r5 = r8;
+        if (r1.compareAndSwapObject(r2, r3, r5, r6) == true) goto L8;
+        if (r1.getObjectVolatile(r2, r3) != r5) goto L12;
+        a32 this = r2;
+        r8 = r5;
+        goto L3
+    L12:
+        return;
     }
 
     @Override // defpackage.s22
     public boolean b() {
-        Object objH = H();
-        return (objH instanceof mx1) && ((mx1) objH).b();
+        Object r1 = H();
+        if ((r1 instanceof mx1) == true) goto L5;
+        return false;
+    L5:
+        if (((mx1) r1).b() == false) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
-    public final void b0(u22 u22Var) {
-        a32 a32Var;
-        while (true) {
-            Object objH = this.H();
-            if (!(objH instanceof u22)) {
-                if (!(objH instanceof mx1) || ((mx1) objH).d() == null) {
-                    return;
-                }
-                u22Var.o();
-                return;
-            }
-            if (objH != u22Var) {
-                return;
-            }
-            n01 n01Var = zz1.j;
-            while (true) {
-                n.getClass();
-                Unsafe unsafe = dz.a;
-                long j = q;
-                a32Var = this;
-                if (unsafe.compareAndSwapObject(a32Var, j, objH, n01Var)) {
-                    return;
-                }
-                if (unsafe.getObjectVolatile(a32Var, j) != objH) {
-                    break;
-                } else {
-                    this = a32Var;
-                }
-            }
-            this = a32Var;
-        }
+    public final void b0(u22 r7) {
+    L2:
+        Object r4 = this.H();
+        if ((r4 instanceof u22) == false) goto L15;
+        if (r4 != r7) goto L26;
+        n01 r5 = zz1.j;
+    L7:
+        n.getClass();
+        Unsafe r0 = dz.a;
+        long r2 = q;
+        a32 r1 = this;
+        if (r0.compareAndSwapObject(r1, r2, r4, r5) == true) goto L27;
+        if (r0.getObjectVolatile(r1, r2) != r4) goto L12;
+        a32 this = r1;
+        goto L7
+    L12:
+        this = r1;
+        goto L2
+    L27:
+        return;
+    L26:
+        return;
+    L15:
+        if ((r4 instanceof mx1) == true) goto L17;
+        return;
+    L17:
+        if (((mx1) r4).d() == null) goto L25;
+        r7.o();
+        return;
     }
 
-    public final void c0(c20 c20Var) {
+    public final void c0(c20 r4) {
         o.getClass();
-        dz.a.putObjectVolatile(this, p, c20Var);
+        dz.a.putObjectVolatile(this, p, r4);
     }
 
-    public final int d0(Object obj) {
-        Unsafe unsafe;
-        Unsafe unsafe2;
-        boolean z = obj instanceof n01;
-        long j = q;
-        AtomicReferenceFieldUpdater atomicReferenceFieldUpdater = n;
-        if (z) {
-            if (((n01) obj).n) {
-                return 0;
-            }
-            n01 n01Var = zz1.j;
-            do {
-                atomicReferenceFieldUpdater.getClass();
-                unsafe2 = dz.a;
-                if (unsafe2.compareAndSwapObject(this, q, obj, n01Var)) {
-                    Y();
-                    return 1;
-                }
-            } while (unsafe2.getObjectVolatile(this, j) == obj);
-            return -1;
-        }
-        if (!(obj instanceof lx1)) {
-            return 0;
-        }
-        h63 h63Var = ((lx1) obj).n;
-        do {
-            atomicReferenceFieldUpdater.getClass();
-            unsafe = dz.a;
-            if (unsafe.compareAndSwapObject(this, q, obj, h63Var)) {
-                Y();
-                return 1;
-            }
-        } while (unsafe.getObjectVolatile(this, j) == obj);
+    public final int d0(Object r11) {
+        boolean r0 = r11 instanceof n01;
+        long r6 = q;
+        AtomicReferenceFieldUpdater r9 = n;
+        if (r0 == false) goto L16;
+        if (((n01) r11).n == true) goto L35;
+        n01 r5 = zz1.j;
+    L8:
+        r9.getClass();
+        Unsafe r1 = dz.a;
+        if (r1.compareAndSwapObject(this, q, r11, r5) == true) goto L10;
+        if (r1.getObjectVolatile(this, r6) == r11) goto L8;
         return -1;
+    L10:
+        Y();
+        return 1;
+    L35:
+        return 0;
+    L16:
+        if ((r11 instanceof lx1) == false) goto L26;
+        h63 r7 = ((lx1) r11).n;
+    L18:
+        r9.getClass();
+        Unsafe r2 = dz.a;
+        if (r2.compareAndSwapObject(this, q, r11, r7) == true) goto L20;
+        if (r2.getObjectVolatile(this, r6) == r11) goto L18;
+        return -1;
+    L20:
+        Y();
+        return 1;
+    L26:
+        return 0;
     }
 
     @Override // defpackage.s22
-    public void f(CancellationException cancellationException) {
-        if (cancellationException == null) {
-            cancellationException = new JobCancellationException(x(), null, this);
-        }
-        p(cancellationException);
+    public void f(CancellationException r3) {
+        if (r3 != null) goto L4;
+        r3 = new JobCancellationException(x(), null, this);
+    L4:
+        p(r3);
     }
 
-    public final boolean f0(mx1 mx1Var, Object obj) {
-        Object nx1Var = obj instanceof mx1 ? new nx1((mx1) obj) : obj;
-        while (true) {
-            n.getClass();
-            Unsafe unsafe = dz.a;
-            long j = q;
-            a32 a32Var = this;
-            mx1 mx1Var2 = mx1Var;
-            if (unsafe.compareAndSwapObject(a32Var, j, mx1Var2, nx1Var)) {
-                a32Var.X(obj);
-                a32Var.z(mx1Var2, obj);
-                return true;
-            }
-            if (unsafe.getObjectVolatile(a32Var, j) != mx1Var2) {
-                return false;
-            }
-            this = a32Var;
-            mx1Var = mx1Var2;
-        }
+    public final boolean f0(mx1 r9, Object r10) {
+        if ((r10 instanceof mx1) == false) goto L5;
+        Object r7 = new nx1((mx1) r10);
+    L6:
+        n.getClass();
+        Unsafe r2 = dz.a;
+        long r4 = q;
+        a32 r3 = this;
+        mx1 r6 = r9;
+        if (r2.compareAndSwapObject(r3, r4, r6, r7) == true) goto L8;
+        if (r2.getObjectVolatile(r3, r4) != r6) goto L12;
+        a32 this = r3;
+        r9 = r6;
+        goto L6
+    L12:
+        return false;
+    L8:
+        r3.X(r10);
+        r3.z(r6, r10);
+        return true;
+    L5:
+        r7 = r10;
+        goto L6
     }
 
-    public final boolean g0(mx1 mx1Var, Throwable th) {
-        h63 h63VarF = F(mx1Var);
-        if (h63VarF == null) {
-            return false;
-        }
-        z22 z22Var = new z22(h63VarF, th);
-        while (true) {
-            n.getClass();
-            Unsafe unsafe = dz.a;
-            long j = q;
-            a32 a32Var = this;
-            mx1 mx1Var2 = mx1Var;
-            if (unsafe.compareAndSwapObject(a32Var, j, mx1Var2, z22Var)) {
-                a32Var.W(h63VarF, th);
-                return true;
-            }
-            if (unsafe.getObjectVolatile(a32Var, j) != mx1Var2) {
-                return false;
-            }
-            this = a32Var;
-            mx1Var = mx1Var2;
-        }
+    public final boolean g0(mx1 r8, Throwable r9) {
+        h63 r0 = F(r8);
+        if (r0 == null) goto L12;
+        z22 r6 = new z22(r0, r9);
+    L6:
+        n.getClass();
+        Unsafe r1 = dz.a;
+        long r3 = q;
+        a32 r2 = this;
+        mx1 r5 = r8;
+        if (r1.compareAndSwapObject(r2, r3, r5, r6) == true) goto L8;
+        if (r1.getObjectVolatile(r2, r3) != r5) goto L17;
+        a32 this = r2;
+        r8 = r5;
+        goto L6
+    L17:
+        return false;
+    L8:
+        r2.W(r0, r9);
+        return true;
+    L12:
+        return false;
     }
 
     @Override // defpackage.le0
@@ -602,430 +682,438 @@ public class a32 implements s22 {
         return fz0.h0;
     }
 
-    public final Object h0(Object obj, Object obj2) {
-        if (!(obj instanceof mx1)) {
-            return zz1.d;
-        }
-        if (((obj instanceof n01) || (obj instanceof u22)) && !(obj instanceof d20) && !(obj2 instanceof a70)) {
-            return f0((mx1) obj, obj2) ? obj2 : zz1.f;
-        }
-        mx1 mx1Var = (mx1) obj;
-        h63 h63VarF = F(mx1Var);
-        if (h63VarF == null) {
-            return zz1.f;
-        }
-        z22 z22Var = mx1Var instanceof z22 ? (z22) mx1Var : null;
-        if (z22Var == null) {
-            z22Var = new z22(h63VarF, null);
-        }
-        synchronized (z22Var) {
-            AtomicIntegerFieldUpdater atomicIntegerFieldUpdater = z22.o;
-            if (atomicIntegerFieldUpdater.get(z22Var) != 0) {
-                return zz1.d;
-            }
-            atomicIntegerFieldUpdater.set(z22Var, 1);
-            if (z22Var != mx1Var) {
-                AtomicReferenceFieldUpdater atomicReferenceFieldUpdater = n;
-                while (!atomicReferenceFieldUpdater.compareAndSet(this, mx1Var, z22Var)) {
-                    if (atomicReferenceFieldUpdater.get(this) != mx1Var) {
-                        return zz1.f;
-                    }
-                }
-            }
-            boolean zF = z22Var.f();
-            a70 a70Var = obj2 instanceof a70 ? (a70) obj2 : null;
-            if (a70Var != null) {
-                z22Var.a(a70Var.a);
-            }
-            Throwable thE = zF ? null : z22Var.e();
-            if (thE != null) {
-                W(h63VarF, thE);
-            }
-            d20 d20VarV = V(h63VarF);
-            if (d20VarV != null && i0(z22Var, d20VarV, obj2)) {
-                return zz1.e;
-            }
-            h63VarF.e(new sb2(2), 2);
-            d20 d20VarV2 = V(h63VarF);
-            return (d20VarV2 == null || !i0(z22Var, d20VarV2, obj2)) ? B(z22Var, obj2) : zz1.e;
-        }
+    public final Object h0(Object r7, Object r8) {
+        if ((r7 instanceof mx1) == true) goto L7;
+        return zz1.d;
+    L7:
+        if ((r7 instanceof n01) == true) goto L11;
+        if ((r7 instanceof u22) == true) goto L11;
+    L19:
+        mx1 r9 = (mx1) r7;
+        h63 r0 = F(r9);
+        if (r0 == null) goto L22;
+        Throwable r2 = null;
+        if ((r9 instanceof z22) == false) goto L26;
+        z22 r1 = (z22) r9;
+    L27:
+        if (r1 != null) goto L29;
+        r1 = new z22(r0, null);
+    L29:
+        monitor-enter(r1);
+        AtomicIntegerFieldUpdater r3 = z22.o;     // Catch: Throwable -> L38
+        if (r3.get(r1) == 0) goto L33;
+        boolean r4 = true;
+    L34:
+        if (r4 == false) goto L40;
+        f01 r6 = zz1.d;     // Catch: Throwable -> L38
+        monitor-exit(r1);
+        return r6;
+    L40:
+        r3.set(r1, 1);     // Catch: Throwable -> L38
+        if (r1 == r9) goto L51;
+        AtomicReferenceFieldUpdater r5 = n;     // Catch: Throwable -> L38
+    L44:
+        if (r5.compareAndSet(this, r9, r1) == true) goto L51;
+        if (r5.get(this) == r9) goto L44;
+        f01 r10 = zz1.f;     // Catch: Throwable -> L38
+        monitor-exit(r1);
+        return r10;
+    L51:
+        boolean r11 = r1.f();     // Catch: Throwable -> L38
+        if ((r8 instanceof a70) == false) goto L54;
+        a70 r12 = (a70) r8;     // Catch: Throwable -> L38
+    L55:
+        if (r12 == null) goto L57;
+        r1.a(r12.a);     // Catch: Throwable -> L38
+    L57:
+        Throwable r13 = r1.e();     // Catch: Throwable -> L38
+        if (r11 == true) goto L60;
+        r2 = r13;
+    L60:
+        monitor-exit(r1);
+        if (r2 == null) goto L63;
+        W(r0, r2);
+    L63:
+        d20 r14 = V(r0);
+        if (r14 != null) goto L66;
+    L69:
+        r0.e(new sb2(2), 2);
+        d20 r15 = V(r0);
+        if (r15 == null) goto L76;
+        if (i0(r1, r15, r8) == false) goto L76;
+        return zz1.e;
+    L76:
+        return B(r1, r8);
+    L66:
+        if (i0(r1, r14, r8) == false) goto L69;
+        return zz1.e;
+    L54:
+        r12 = null;
+        goto L55
+    L33:
+        r4 = false;
+    L38:
+        th = move-exception;
+        throw th;
+    L26:
+        r1 = null;
+        goto L27
+    L22:
+        return zz1.f;
+    L11:
+        if ((r7 instanceof d20) == true) goto L19;
+        if ((r8 instanceof a70) == true) goto L19;
+        if (f0((mx1) r7, r8) == false) goto L18;
+        return r8;
+    L18:
+        return zz1.f;
     }
 
-    public final boolean i0(z22 z22Var, d20 d20Var, Object obj) {
-        while (gb.K(d20Var.u, false, new y22(this, z22Var, d20Var, obj)) == k63.n) {
-            d20Var = V(d20Var);
-            if (d20Var == null) {
-                return false;
-            }
-        }
+    public final boolean i0(z22 r4, d20 r5, Object r6) {
+    L3:
+        if (gb.K(r5.u, false, new y22(this, r4, r5, r6)) != k63.n) goto L4;
+        r5 = V(r5);
+        if (r5 != null) goto L3;
+        return false;
+    L4:
         return true;
     }
 
     @Override // defpackage.s22
     public final boolean isCancelled() {
-        Object objH = H();
-        if (objH instanceof a70) {
-            return true;
-        }
-        return (objH instanceof z22) && ((z22) objH).f();
-    }
-
-    @Override // defpackage.s22
-    public final c20 j(a32 a32Var) {
-        a32 a32Var2;
-        d20 d20Var = new d20(a32Var);
-        d20Var.t = this;
-        loop0: while (true) {
-            Object objH = this.H();
-            if (objH instanceof n01) {
-                n01 n01Var = (n01) objH;
-                if (n01Var.n) {
-                    while (true) {
-                        n.getClass();
-                        Unsafe unsafe = dz.a;
-                        long j = q;
-                        a32Var2 = this;
-                        if (unsafe.compareAndSwapObject(a32Var2, j, objH, d20Var)) {
-                            break loop0;
-                        }
-                        if (unsafe.getObjectVolatile(a32Var2, j) != objH) {
-                            break;
-                        }
-                        this = a32Var2;
-                    }
-                } else {
-                    a32Var2 = this;
-                    a32Var2.Z(n01Var);
-                }
-                this = a32Var2;
-            } else {
-                a32Var2 = this;
-                boolean z = objH instanceof mx1;
-                k63 k63Var = k63.n;
-                Throwable thE = null;
-                if (!z) {
-                    Object objH2 = a32Var2.H();
-                    a70 a70Var = objH2 instanceof a70 ? (a70) objH2 : null;
-                    d20Var.s(a70Var != null ? a70Var.a : null);
-                    return k63Var;
-                }
-                h63 h63VarD = ((mx1) objH).d();
-                if (h63VarD != null) {
-                    if (h63VarD.e(d20Var, 7)) {
-                        break;
-                    }
-                    boolean zE = h63VarD.e(d20Var, 3);
-                    Object objH3 = a32Var2.H();
-                    if (objH3 instanceof z22) {
-                        thE = ((z22) objH3).e();
-                    } else {
-                        a70 a70Var2 = objH3 instanceof a70 ? (a70) objH3 : null;
-                        if (a70Var2 != null) {
-                            thE = a70Var2.a;
-                        }
-                    }
-                    d20Var.s(thE);
-                    if (zE) {
-                        break;
-                    }
-                    return k63Var;
-                }
-                a32Var2.a0((u22) objH);
-                this = a32Var2;
-            }
-        }
-        return d20Var;
-    }
-
-    public void l(Object obj) {
-    }
-
-    public void m(Object obj) {
-        l(obj);
-    }
-
-    /* JADX WARN: Code duplicated, block: B:18:0x003c A[PHI: r0
-  0x003c: PHI (r0v1 java.lang.Object) = (r0v0 java.lang.Object), (r0v9 java.lang.Object) binds: [B:3:0x0008, B:16:0x0038] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:20:0x0040  */
-    /* JADX WARN: Code duplicated, block: B:26:0x0056 A[Catch: all -> 0x005c, TRY_LEAVE, TryCatch #0 {, blocks: (B:24:0x004b, B:26:0x0056, B:31:0x005e, B:33:0x0067, B:34:0x006b), top: B:71:0x004b }] */
-    /* JADX WARN: Code duplicated, block: B:31:0x005e A[Catch: all -> 0x005c, TRY_ENTER, TryCatch #0 {, blocks: (B:24:0x004b, B:26:0x0056, B:31:0x005e, B:33:0x0067, B:34:0x006b), top: B:71:0x004b }] */
-    /* JADX WARN: Code duplicated, block: B:33:0x0067 A[Catch: all -> 0x005c, TryCatch #0 {, blocks: (B:24:0x004b, B:26:0x0056, B:31:0x005e, B:33:0x0067, B:34:0x006b), top: B:71:0x004b }] */
-    /* JADX WARN: Code duplicated, block: B:36:0x007a  */
-    /* JADX WARN: Code duplicated, block: B:39:0x007e  */
-    /* JADX WARN: Code duplicated, block: B:43:0x008a  */
-    /* JADX WARN: Code duplicated, block: B:45:0x008e A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:46:0x0090  */
-    /* JADX WARN: Code duplicated, block: B:54:0x00b3  */
-    /* JADX WARN: Code duplicated, block: B:68:0x00d0 A[RETURN] */
-    /* JADX WARN: Code duplicated, block: B:69:0x00d1  */
-    /* JADX WARN: Code duplicated, block: B:71:0x004b A[EXC_TOP_SPLITTER, SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:76:0x00a6 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:77:0x00a3 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:78:0x004a A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:79:0x00bf A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:80:0x009d A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:81:0x00b9 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:82:0x00b7 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:84:0x0042 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:85:0x0042 A[SYNTHETIC] */
-    /* JADX WARN: Instruction removed from duplicated block: B:20:0x0040, please report this as an issue */
-    public final boolean o(Object obj) {
-        Throwable thA;
-        Object objH;
-        Throwable thE;
-        f01 f01Var;
-        mx1 mx1Var;
-        Object objH0;
-        Object objH1 = zz1.d;
-        if (E()) {
-            do {
-                Object objH2 = H();
-                if (objH2 instanceof mx1) {
-                    if (objH2 instanceof z22) {
-                        if (z22.o.get((z22) objH2) != 0) {
-                        }
-                    }
-                    objH1 = h0(objH2, new a70(A(obj), false));
-                }
-                objH1 = zz1.d;
-                break;
-            } while (objH1 == zz1.f);
-            if (objH1 != zz1.e) {
-                if (objH1 == zz1.d) {
-                    thA = null;
-                    while (true) {
-                        objH = H();
-                        if (objH instanceof z22) {
-                            synchronized (objH) {
-                                if (((z22) objH).c() == zz1.h) {
-                                    f01Var = zz1.g;
-                                } else {
-                                    boolean zF = ((z22) objH).f();
-                                    if (thA == null) {
-                                        thA = A(obj);
-                                    }
-                                    ((z22) objH).a(thA);
-                                    thE = zF ? null : ((z22) objH).e();
-                                    if (thE != null) {
-                                        W(((z22) objH).n, thE);
-                                    }
-                                    f01Var = zz1.d;
-                                }
-                            }
-                        } else if (objH instanceof mx1) {
-                            if (thA == null) {
-                                thA = A(obj);
-                            }
-                            mx1Var = (mx1) objH;
-                            if (mx1Var.b()) {
-                                objH0 = h0(objH, new a70(thA, false));
-                                if (objH0 != zz1.d) {
-                                    mj0.g(objH, "Cannot happen in ");
-                                    return false;
-                                }
-                                if (objH0 != zz1.f) {
-                                    objH1 = objH0;
-                                    break;
-                                }
-                            } else if (g0(mx1Var, thA)) {
-                                f01Var = zz1.d;
-                            }
-                        } else {
-                            f01Var = zz1.g;
-                        }
-                        objH1 = f01Var;
-                        break;
-                    }
-                }
-                if (objH1 != zz1.d && objH1 != zz1.e) {
-                    if (objH1 == zz1.g) {
-                        return false;
-                    }
-                    l(objH1);
-                    return true;
-                }
-            }
-        } else {
-            if (objH1 == zz1.d) {
-                thA = null;
-                while (true) {
-                    objH = H();
-                    if (objH instanceof z22) {
-                        synchronized (objH) {
-                            if (((z22) objH).c() == zz1.h) {
-                                f01Var = zz1.g;
-                            } else {
-                                boolean zF2 = ((z22) objH).f();
-                                if (thA == null) {
-                                    thA = A(obj);
-                                }
-                                ((z22) objH).a(thA);
-                                if (zF2) {
-                                }
-                                if (thE != null) {
-                                    W(((z22) objH).n, thE);
-                                }
-                                f01Var = zz1.d;
-                            }
-                        }
-                    } else if (objH instanceof mx1) {
-                        if (thA == null) {
-                            thA = A(obj);
-                        }
-                        mx1Var = (mx1) objH;
-                        if (mx1Var.b()) {
-                            objH0 = h0(objH, new a70(thA, false));
-                            if (objH0 != zz1.d) {
-                                mj0.g(objH, "Cannot happen in ");
-                                return false;
-                            }
-                            if (objH0 != zz1.f) {
-                                objH1 = objH0;
-                                break;
-                            }
-                        } else if (g0(mx1Var, thA)) {
-                            f01Var = zz1.d;
-                        }
-                    } else {
-                        f01Var = zz1.g;
-                    }
-                    objH1 = f01Var;
-                    break;
-                }
-            }
-            if (objH1 != zz1.d) {
-                if (objH1 == zz1.g) {
-                    return false;
-                }
-                l(objH1);
-                return true;
-            }
-        }
+        Object r1 = H();
+        if ((r1 instanceof a70) == false) goto L5;
+        return true;
+    L5:
+        if ((r1 instanceof z22) == true) goto L7;
+        return false;
+    L7:
+        if (((z22) r1).f() == true) goto L14;
+        return false;
+    L14:
         return true;
     }
 
-    public void p(CancellationException cancellationException) {
-        o(cancellationException);
+    @Override // defpackage.s22
+    public final c20 j(a32 r7) {
+        d20 r5 = new d20(r7);
+        r5.t = this;
+    L3:
+        Object r4 = this.H();
+        if ((r4 instanceof n01) == false) goto L15;
+        n01 r8 = (n01) r4;
+        if (r8.n == false) goto L14;
+    L7:
+        n.getClass();
+        Unsafe r0 = dz.a;
+        long r2 = q;
+        a32 r1 = this;
+        if (r0.compareAndSwapObject(r1, r2, r4, r5) == true) goto L35;
+        if (r0.getObjectVolatile(r1, r2) != r4) goto L20;
+        a32 this = r1;
+    L20:
+        this = r1;
+    L35:
+        return r5;
+    L14:
+        r1 = this;
+        r1.Z(r8);
+        goto L20
+    L15:
+        r1 = this;
+        boolean r6 = r4 instanceof mx1;
+        k63 r9 = k63.n;
+        Throwable r3 = null;
+        if (r6 == false) goto L37;
+        h63 r10 = ((mx1) r4).d();
+        if (r10 != null) goto L22;
+        r1.a0((u22) r4);
+        goto L20
+    L22:
+        if (r10.e(r5, 7) == true) goto L35;
+        boolean r11 = r10.e(r5, 3);
+        Object r12 = r1.H();
+        if ((r12 instanceof z22) == false) goto L28;
+        r3 = ((z22) r12).e();
+    L33:
+        r5.s(r3);
+        if (r11 == true) goto L35;
+        return r9;
+    L28:
+        if ((r12 instanceof a70) == false) goto L30;
+        a70 r13 = (a70) r12;
+    L31:
+        if (r13 == null) goto L33;
+        r3 = r13.a;
+        goto L33
+    L30:
+        r13 = null;
+        goto L31
+    L37:
+        Object r14 = r1.H();
+        if ((r14 instanceof a70) == false) goto L40;
+        a70 r15 = (a70) r14;
+    L41:
+        if (r15 == null) goto L43;
+        r3 = r15.a;
+    L43:
+        r5.s(r3);
+        return r9;
+    L40:
+        r15 = null;
+        goto L41
+    }
+
+    public void l(Object r1) {
+    }
+
+    public void m(Object r1) {
+        l(r1);
+    }
+
+    public final boolean o(Object r8) {
+        Object r0 = zz1.d;
+        if (E() == false) goto L19;
+    L4:
+        Object r1 = H();
+        if ((r1 instanceof mx1) == false) goto L14;
+        if ((r1 instanceof z22) == true) goto L9;
+    L11:
+        r0 = h0(r1, new a70(A(r8), false));
+        if (r0 == zz1.f) goto L4;
+    L16:
+        if (r0 != zz1.e) goto L19;
+    L65:
+        return true;
+    L9:
+        if (z22.o.get((z22) r1) == 0) goto L11;
+    L14:
+        r0 = zz1.d;
+    L19:
+        if (r0 != zz1.d) goto L61;
+        Throwable r2 = null;
+        Throwable r3 = null;
+    L21:
+        Object r4 = H();
+        if ((r4 instanceof z22) == true) goto L23;
+        if ((r4 instanceof mx1) == false) goto L59;
+        if (r3 != null) goto L47;
+        r3 = A(r8);
+    L47:
+        mx1 r5 = (mx1) r4;
+        if (r5.b() == true) goto L50;
+        Object r6 = h0(r4, new a70(r3, false));
+        if (r6 == zz1.d) goto L57;
+        if (r6 == zz1.f) goto L21;
+        r0 = r6;
+        goto L61
+    L57:
+        mj0.g(r4, "Cannot happen in ");
+        return false;
+    L50:
+        if (g0(r5, r3) == false) goto L21;
+        f01 r9 = zz1.d;
+    L28:
+        r0 = r9;
+        goto L61
+    L59:
+        r9 = zz1.g;
+        goto L28
+    L23:
+        monitor-enter(r4);
+    L29:
+        th = move-exception;
+        throw th;
+    L25:
+        if (((z22) r4).c() != zz1.h) goto L31;
+        r9 = zz1.g;     // Catch: Throwable -> L29
+        monitor-exit(r4);
+        goto L28
+    L31:
+        boolean r7 = ((z22) r4).f();     // Catch: Throwable -> L29
+        if (r3 != null) goto L34;
+        r3 = A(r8);     // Catch: Throwable -> L29
+    L34:
+        ((z22) r4).a(r3);     // Catch: Throwable -> L29
+        Throwable r10 = ((z22) r4).e();     // Catch: Throwable -> L29
+        if (r7 == true) goto L37;
+        r2 = r10;
+    L37:
+        monitor-exit(r4);
+        if (r2 == null) goto L40;
+        W(((z22) r4).n, r2);
+    L40:
+        r9 = zz1.d;
+    L61:
+        if (r0 == zz1.d) goto L65;
+        if (r0 == zz1.e) goto L65;
+        if (r0 != zz1.g) goto L69;
+        return false;
+    L69:
+        l(r0);
+        return true;
+    }
+
+    public void p(CancellationException r1) {
+        o(r1);
     }
 
     @Override // defpackage.s22
     public final CancellationException q() {
-        CancellationException cancellationException;
-        Object objH = H();
-        if (objH instanceof z22) {
-            Throwable thE = ((z22) objH).e();
-            if (thE == null) {
-                mj0.g(this, "Job is still new or active: ");
-                return null;
-            }
-            String strConcat = getClass().getSimpleName().concat(" is cancelling");
-            cancellationException = thE instanceof CancellationException ? (CancellationException) thE : null;
-            return cancellationException == null ? new JobCancellationException(strConcat, thE, this) : cancellationException;
-        }
-        if (objH instanceof mx1) {
-            mj0.g(this, "Job is still new or active: ");
-            return null;
-        }
-        if (!(objH instanceof a70)) {
-            return new JobCancellationException(getClass().getSimpleName().concat(" has completed normally"), null, this);
-        }
-        Throwable th = ((a70) objH).a;
-        cancellationException = th instanceof CancellationException ? (CancellationException) th : null;
-        return cancellationException == null ? new JobCancellationException(x(), th, this) : cancellationException;
+        Object r0 = H();
+        CancellationException r3 = null;
+        if ((r0 instanceof z22) == false) goto L16;
+        Throwable r1 = ((z22) r0).e();
+        if (r1 == null) goto L13;
+        String r2 = getClass().getSimpleName().concat(" is cancelling");
+        if ((r1 instanceof CancellationException) == false) goto L9;
+        r3 = (CancellationException) r1;
+    L9:
+        if (r3 == null) goto L11;
+        return r3;
+    L11:
+        return new JobCancellationException(r2, r1, this);
+    L13:
+        mj0.g(this, "Job is still new or active: ");
+        return null;
+    L16:
+        if ((r0 instanceof mx1) == false) goto L18;
+        mj0.g(this, "Job is still new or active: ");
+        return null;
+    L18:
+        if ((r0 instanceof a70) == false) goto L27;
+        Throwable r4 = ((a70) r0).a;
+        if ((r4 instanceof CancellationException) == false) goto L22;
+        r3 = (CancellationException) r4;
+    L22:
+        if (r3 == null) goto L24;
+        return r3;
+    L24:
+        return new JobCancellationException(x(), r4, this);
+    L27:
+        return new JobCancellationException(getClass().getSimpleName().concat(" has completed normally"), null, this);
     }
 
     @Override // defpackage.ne0
-    public final Object s(wf1 wf1Var, Object obj) {
-        return wf1Var.invoke(obj, this);
+    public final Object s(wf1 r1, Object r2) {
+        return r1.invoke(r2, this);
     }
 
     @Override // defpackage.s22
     public final boolean start() {
-        int iD0;
-        do {
-            iD0 = d0(H());
-            if (iD0 == 0) {
-                return false;
-            }
-        } while (iD0 != 1);
+    L2:
+        int r0 = d0(H());
+        if (r0 == 0) goto L8;
+        if (r0 != 1) goto L2;
         return true;
+    L8:
+        return false;
     }
 
     public final String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(U() + '{' + e0(H()) + '}');
-        sb.append('@');
-        sb.append(si0.x(this));
-        return sb.toString();
+        StringBuilder r0 = new StringBuilder();
+        r0.append(U() + '{' + e0(H()) + '}');
+        r0.append('@');
+        r0.append(si0.x(this));
+        return r0.toString();
     }
 
     @Override // defpackage.ne0
-    public final ne0 u(me0 me0Var) {
-        return ya4.C(this, me0Var);
+    public final ne0 u(me0 r1) {
+        return ya4.C(this, r1);
     }
 
-    public final boolean w(Throwable th) {
-        if (P()) {
-            return true;
-        }
-        boolean z = th instanceof CancellationException;
-        c20 c20VarG = G();
-        if (c20VarG == null || c20VarG == k63.n) {
-            return z;
-        }
-        return c20VarG.c(th) || z;
+    public final boolean w(Throwable r3) {
+        if (P() == true) goto L19;
+        boolean r0 = r3 instanceof CancellationException;
+        c20 r2 = G();
+        if (r2 != null) goto L8;
+    L18:
+        return r0;
+    L8:
+        if (r2 == k63.n) goto L18;
+        if (r2.c(r3) == true) goto L16;
+        if (r0 == true) goto L20;
+        return false;
+    L20:
+        return true;
+    L16:
+        return true;
+    L19:
+        return true;
     }
 
     public String x() {
         return "Job was cancelled";
     }
 
-    public boolean y(Throwable th) {
-        if (th instanceof CancellationException) {
-            return true;
-        }
-        return o(th) && D();
+    public boolean y(Throwable r2) {
+        if ((r2 instanceof CancellationException) == false) goto L6;
+        return true;
+    L6:
+        if (o(r2) == true) goto L8;
+        return false;
+    L8:
+        if (D() == false) goto L14;
+        return true;
+    L14:
+        return false;
     }
 
-    public final void z(mx1 mx1Var, Object obj) {
-        c20 c20VarG = G();
-        if (c20VarG != null) {
-            c20VarG.a();
-            c0(k63.n);
-        }
-        CompletionHandlerException completionHandlerException = null;
-        a70 a70Var = obj instanceof a70 ? (a70) obj : null;
-        Throwable th = a70Var != null ? a70Var.a : null;
-        if (mx1Var instanceof u22) {
-            try {
-                ((u22) mx1Var).s(th);
-                return;
-            } catch (Throwable th2) {
-                L(new CompletionHandlerException("Exception in completion handler " + mx1Var + " for " + this, th2));
-                return;
-            }
-        }
-        h63 h63VarD = mx1Var.d();
-        if (h63VarD != null) {
-            h63VarD.e(new sb2(1), 1);
-            Object objK = h63VarD.k();
-            objK.getClass();
-            for (zd2 zd2VarL = (zd2) objK; !zd2VarL.equals(h63VarD); zd2VarL = zd2VarL.l()) {
-                if (zd2VarL instanceof u22) {
-                    try {
-                        ((u22) zd2VarL).s(th);
-                    } catch (Throwable th3) {
-                        if (completionHandlerException != null) {
-                            j51.d(completionHandlerException, th3);
-                        } else {
-                            completionHandlerException = new CompletionHandlerException("Exception in completion handler " + zd2VarL + " for " + this, th3);
-                        }
-                    }
-                }
-            }
-            if (completionHandlerException != null) {
-                L(completionHandlerException);
-            }
-        }
+    public final void z(mx1 r7, Object r8) {
+        c20 r0 = G();
+        if (r0 == null) goto L5;
+        r0.a();
+        c0(k63.n);
+    L5:
+        CompletionHandlerException r1 = null;
+        if ((r8 instanceof a70) == false) goto L8;
+        a70 r9 = (a70) r8;
+    L9:
+        if (r9 == null) goto L11;
+        Throwable r10 = r9.a;
+    L13:
+        if ((r7 instanceof u22) == true) goto L37;
+        h63 r11 = r7.d();
+        if (r11 == null) goto L45;
+        r11.e(new sb2(1), 1);
+        Object r2 = r11.k();
+        r2.getClass();
+        zd2 r3 = (zd2) r2;
+    L22:
+        if (r3.equals(r11) == true) goto L32;
+        if ((r3 instanceof u22) == false) goto L31;
+        ((u22) r3).s(r10);     // Catch: Throwable -> L27
+    L27:
+        th = move-exception;
+        if (r1 == null) goto L30;
+        j51.d(r1, th);
+        goto L31
+    L30:
+        r1 = new CompletionHandlerException("Exception in completion handler " + r3 + " for " + this, th);
+    L31:
+        r3 = r3.l();
+        goto L22
+    L32:
+        if (r1 == null) goto L46;
+        L(r1);
+        return;
+    L46:
+        return;
+    L45:
+        return;
+    L37:
+        ((u22) r7).s(r10);     // Catch: Throwable -> L16
+        return;
+    L16:
+        th = move-exception;
+        L(new CompletionHandlerException("Exception in completion handler " + r7 + " for " + this, th));
+        return;
+    L11:
+        r10 = null;
+        goto L13
+    L8:
+        r9 = null;
+        goto L9
     }
 }

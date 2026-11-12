@@ -9,37 +9,39 @@ public final /* synthetic */ class qn2 implements Runnable {
     public final /* synthetic */ fr2 q;
     public final /* synthetic */ int r;
 
-    public /* synthetic */ qn2(tn2 tn2Var, mw1 mw1Var, fr2 fr2Var, int i, int i2) {
-        this.n = i2;
-        this.o = tn2Var;
-        this.p = mw1Var;
-        this.q = fr2Var;
-        this.r = i;
+    public /* synthetic */ qn2(tn2 r1, mw1 r2, fr2 r3, int r4, int r5) {
+        this.n = r5;
+        this.o = r1;
+        this.p = r2;
+        this.q = r3;
+        this.r = r4;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        int i2 = this.r;
-        fr2 fr2Var = this.q;
-        mw1 mw1Var = this.p;
-        tn2 tn2Var = this.o;
-        tn2Var.getClass();
-        switch (i) {
-            case 0:
-                m92 m92Var = (m92) tn2.E(mw1Var);
-                if (m92Var != null) {
-                    tn2Var.n(fr2Var, m92Var);
-                    tn2.G(i2, m92Var);
-                }
-                break;
-            default:
-                m92 m92Var2 = (m92) tn2.E(mw1Var);
-                if (m92Var2 != null) {
-                    tn2Var.n(fr2Var, m92Var2);
-                    tn2.G(i2, m92Var2);
-                }
-                break;
-        }
+        int r0 = this.n;
+        int r1 = this.r;
+        fr2 r2 = this.q;
+        mw1 r3 = this.p;
+        tn2 r4 = this.o;
+        r4.getClass();
+        switch(r0) {
+            case 0: goto L8;
+            default: goto L4;
+        };
+    L4:
+        m92 r5 = (m92) tn2.E(r3);
+        if (r5 == null) goto L12;
+        r4.n(r2, r5);
+        tn2.G(r1, r5);
+        return;
+    L12:
+        return;
+    L8:
+        m92 r6 = (m92) tn2.E(r3);
+        if (r6 == null) goto L13;
+        r4.n(r2, r6);
+        tn2.G(r1, r6);
+        return;
     }
 }

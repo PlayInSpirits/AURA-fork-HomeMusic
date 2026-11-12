@@ -17,34 +17,47 @@ public final class s34 {
     public List g;
     public final ArrayList h;
 
-    public s34(f6 f6Var, rm2 rm2Var, hy hyVar, boolean z) {
-        List listF;
-        f6Var.getClass();
-        rm2Var.getClass();
-        hyVar.getClass();
-        this.a = f6Var;
-        this.b = rm2Var;
-        this.c = hyVar;
-        this.d = z;
-        u01 u01Var = u01.n;
-        this.e = u01Var;
-        this.g = u01Var;
+    public s34(f6 r1, rm2 r2, hy r3, boolean r4) {
+        r1.getClass();
+        r2.getClass();
+        r3.getClass();
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        u01 r5 = u01.n;
+        this.e = r5;
+        this.g = r5;
         this.h = new ArrayList();
-        gr1 gr1Var = f6Var.h;
-        gr1Var.getClass();
-        URI uriJ = gr1Var.j();
-        if (uriJ.getHost() == null) {
-            listF = ze5.f(Proxy.NO_PROXY);
-        } else {
-            List<Proxy> listSelect = f6Var.g.select(uriJ);
-            listF = (listSelect == null || listSelect.isEmpty()) ? ze5.f(Proxy.NO_PROXY) : ze5.k(listSelect);
-        }
-        this.e = listF;
+        gr1 r6 = r1.h;
+        r6.getClass();
+        URI r7 = r6.j();
+        if (r7.getHost() != null) goto L5;
+        List r8 = ze5.f(new Proxy[]{Proxy.NO_PROXY});
+    L12:
+        this.e = r8;
         this.f = 0;
-        gr1Var.getClass();
+        r6.getClass();
+        return;
+    L5:
+        List<Proxy> r9 = r1.g.select(r7);
+        if (r9 != null) goto L8;
+    L11:
+        r8 = ze5.f(new Proxy[]{Proxy.NO_PROXY});
+        goto L12
+    L8:
+        if (r9.isEmpty() == true) goto L11;
+        r8 = ze5.k(r9);
+        goto L12
     }
 
     public final boolean a() {
-        return this.f < this.e.size() || !this.h.isEmpty();
+        if (this.f >= this.e.size()) goto L6;
+        return true;
+    L6:
+        if (this.h.isEmpty() == true) goto L9;
+        return true;
+    L9:
+        return false;
     }
 }

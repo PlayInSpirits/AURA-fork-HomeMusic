@@ -5,8 +5,8 @@ package defpackage;
 public final class od5 extends pd5 {
     public final int a;
 
-    public od5(int i) {
-        this.a = i;
+    public od5(int r1) {
+        this.a = r1;
     }
 
     public /* synthetic */ od5() {

@@ -9,15 +9,14 @@ public final class to4 extends wd0 {
     public final /* synthetic */ uo4 q;
     public int r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public to4(uo4 uo4Var, wd0 wd0Var) {
-        super(wd0Var);
-        this.q = uo4Var;
+    public to4(uo4 r1, wd0 r2) {
+        this.q = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.p = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.p = r2;
         this.r |= Integer.MIN_VALUE;
         return this.q.e(null, null, this);
     }

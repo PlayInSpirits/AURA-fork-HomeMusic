@@ -17,8 +17,8 @@ public class wl3 extends hd {
     public Integer j;
     public d8 k;
 
-    public wl3(Application application) {
-        super(application);
+    public wl3(Application r2) {
+        super(r2);
         this.g = new k03();
         this.h = new k03();
         this.c = new mm3();
@@ -27,30 +27,31 @@ public class wl3 extends hd {
 
     @Override // defpackage.x65
     public final void b() {
-        d8 d8Var = this.k;
-        if (d8Var == null) {
-            return;
-        }
-        this.g.j(d8Var);
+        d8 r0 = this.k;
+        if (r0 != null) goto L5;
+        return;
+    L5:
+        this.g.j(r0);
         this.k = null;
     }
 
-    public final void c(Playlist playlist) {
-        this.f = playlist;
-        d8 d8Var = this.k;
-        if (d8Var != null) {
-            this.g.j(d8Var);
-            this.k = null;
-        }
+    public final void c(Playlist r4) {
+        this.f = r4;
+        d8 r0 = this.k;
+        if (r0 == null) goto L6;
+        this.g.j(r0);
+        this.k = null;
+    L6:
         this.j = null;
-        if (playlist == null) {
-            this.g = new k03();
-            return;
-        }
-        k03 k03VarC = this.c.c(this.f.getId(), false, null);
-        this.g = k03VarC;
-        d8 d8Var2 = new d8(20, this);
-        this.k = d8Var2;
-        k03VarC.f(d8Var2);
+        if (r4 == null) goto L10;
+        String r5 = this.f.getId();
+        k03 r6 = this.c.c(r5, false, null);
+        this.g = r6;
+        d8 r1 = new d8(20, this);
+        this.k = r1;
+        r6.f(r1);
+        return;
+    L10:
+        this.g = new k03();
     }
 }

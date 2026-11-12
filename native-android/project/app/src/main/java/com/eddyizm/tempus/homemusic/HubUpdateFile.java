@@ -8,6 +8,9 @@ public class HubUpdateFile {
     private long size;
     private String url;
 
+    public HubUpdateFile() {
+    }
+
     public final String getSha256() {
         return this.sha256;
     }
@@ -20,15 +23,15 @@ public class HubUpdateFile {
         return this.url;
     }
 
-    public final void setSha256(String str) {
-        this.sha256 = str;
+    public final void setSha256(String r1) {
+        this.sha256 = r1;
     }
 
-    public final void setSize(long j) {
-        this.size = j;
+    public final void setSize(long r1) {
+        this.size = r1;
     }
 
-    public final void setUrl(String str) {
-        this.url = str;
+    public final void setUrl(String r1) {
+        this.url = r1;
     }
 }

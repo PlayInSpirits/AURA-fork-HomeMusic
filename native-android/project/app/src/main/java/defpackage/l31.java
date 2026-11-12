@@ -6,8 +6,8 @@ public final class l31 {
     public final byte[] a;
     public final String b;
 
-    public l31(String str, byte[] bArr) {
-        this.a = bArr;
-        this.b = str;
+    public l31(String r1, byte[] r2) {
+        this.a = r2;
+        this.b = r1;
     }
 }

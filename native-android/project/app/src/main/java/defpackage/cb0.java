@@ -7,12 +7,18 @@ import org.conscrypt.Conscrypt;
 /* JADX INFO: loaded from: classes.dex */
 public final class cb0 implements vn0 {
     @Override // defpackage.vn0
-    public final boolean b(SSLSocket sSLSocket) {
-        return bb0.d && Conscrypt.isConscrypt(sSLSocket);
+    public final boolean b(SSLSocket r1) {
+        if (bb0.d == true) goto L5;
+        return false;
+    L5:
+        if (Conscrypt.isConscrypt(r1) == false) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     @Override // defpackage.vn0
-    public final uh4 g(SSLSocket sSLSocket) {
+    public final uh4 g(SSLSocket r1) {
         return new db0();
     }
 }

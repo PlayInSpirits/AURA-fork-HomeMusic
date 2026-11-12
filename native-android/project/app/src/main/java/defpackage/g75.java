@@ -7,43 +7,45 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class g75 extends de0 {
     public h75 n;
-    public int o = 0;
+    public int o;
 
     public g75() {
+        this.o = 0;
     }
 
     @Override // defpackage.de0
-    public boolean l(CoordinatorLayout coordinatorLayout, View view, int i) {
-        x(coordinatorLayout, view, i);
-        if (this.n == null) {
-            this.n = new h75(view);
-        }
-        h75 h75Var = this.n;
-        View view2 = h75Var.a;
-        h75Var.b = view2.getTop();
-        h75Var.c = view2.getLeft();
+    public boolean l(CoordinatorLayout r1, View r2, int r3) {
+        x(r1, r2, r3);
+        if (this.n != null) goto L5;
+        this.n = new h75(r2);
+    L5:
+        h75 r4 = this.n;
+        View r5 = r4.a;
+        r4.b = r5.getTop();
+        r4.c = r5.getLeft();
         this.n.a();
-        int i2 = this.o;
-        if (i2 == 0) {
-            return true;
-        }
-        this.n.b(i2);
+        int r6 = this.o;
+        if (r6 == 0) goto L10;
+        this.n.b(r6);
         this.o = 0;
+        return true;
+    L10:
         return true;
     }
 
     public final int w() {
-        h75 h75Var = this.n;
-        if (h75Var != null) {
-            return h75Var.d;
-        }
+        h75 r0 = this.n;
+        if (r0 != null) goto L5;
         return 0;
+    L5:
+        return r0.d;
     }
 
-    public void x(CoordinatorLayout coordinatorLayout, View view, int i) {
-        coordinatorLayout.r(view, i);
+    public void x(CoordinatorLayout r1, View r2, int r3) {
+        r1.r(r2, r3);
     }
 
-    public g75(int i) {
+    public g75(int r1) {
+        this.o = 0;
     }
 }

@@ -23,13 +23,15 @@ public final class q95 {
     public int p;
     public boolean q;
 
-    public static int a(int i, int i2, String str, String str2) {
-        if (str.isEmpty() || i == -1) {
-            return i;
-        }
-        if (str.equals(str2)) {
-            return i + i2;
-        }
+    public static int a(int r1, int r2, String r3, String r4) {
+        if (r3.isEmpty() == false) goto L5;
+    L12:
+        return r1;
+    L5:
+        if (r1 == (-1)) goto L12;
+        if (r3.equals(r4) == true) goto L10;
         return -1;
+    L10:
+        return r1 + r2;
     }
 }

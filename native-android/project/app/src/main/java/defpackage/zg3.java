@@ -6,24 +6,32 @@ public final class zg3 {
     public final boolean a;
     public final int b;
 
-    public zg3(int i, boolean z) {
-        this.a = z;
-        this.b = i;
+    public zg3(int r1, boolean r2) {
+        this.a = r2;
+        this.b = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof zg3)) {
-            return false;
-        }
-        zg3 zg3Var = (zg3) obj;
-        return this.a == zg3Var.a && this.b == zg3Var.b;
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if ((r5 instanceof zg3) == true) goto L8;
+        return false;
+    L8:
+        zg3 r6 = (zg3) r5;
+        boolean r1 = r6.a;
+        if (this.a == r1) goto L12;
+        return false;
+    L12:
+        if (this.b != r6.b) goto L14;
+        return true;
+    L14:
+        return false;
     }
 
     public final int hashCode() {
-        return Integer.hashCode(this.b) + (Boolean.hashCode(this.a) * 31);
+        int r0 = Boolean.hashCode(this.a) * 31;
+        return Integer.hashCode(this.b) + r0;
     }
 
     public final String toString() {

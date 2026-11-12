@@ -30,14 +30,9 @@ public final class ks4 {
     public final Paint.FontMetricsInt l;
     public final int m;
     public final sa2[] n;
-    public final Rect o = new Rect();
+    public final Rect o;
     public z40 p;
 
-    /* JADX WARN: Code duplicated, block: B:57:0x012a  */
-    /* JADX WARN: Code duplicated, block: B:74:0x0161  */
-    /* JADX WARN: Code duplicated, block: B:86:0x0178  */
-    /* JADX WARN: Code duplicated, block: B:97:0x01a3 A[PHI: r14
-  0x01a3: PHI (r14v7 int) = (r14v6 int), (r14v9 int) binds: [B:102:0x01b5, B:95:0x019c] A[DONT_GENERATE, DONT_INLINE]] */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r15v10 */
     /* JADX WARN: Type inference failed for: r15v12 */
@@ -51,306 +46,430 @@ public final class ks4 {
     /* JADX WARN: Type inference failed for: r8v14 */
     /* JADX WARN: Type inference failed for: r8v39 */
     /* JADX WARN: Type inference failed for: r8v40 */
-    public ks4(CharSequence charSequence, float f, TextPaint textPaint, int i, TextUtils.TruncateAt truncateAt, int i2, boolean z, int i3, int i4, int i5, int i6, int i7, int i8, t62 t62Var) throws Throwable {
-        int i9;
-        TextDirectionHeuristic textDirectionHeuristic;
-        Layout layoutM;
-        sa2[] sa2VarArr;
-        int i10;
-        int i11;
-        int i12;
-        int i13;
-        Throwable th;
-        char c;
-        long j;
-        int i14;
-        int i15;
-        int i16;
-        long jA;
-        ?? r8;
-        boolean zIsFallbackLineSpacingEnabled;
-        int topPadding;
-        boolean zIsFallbackLineSpacingEnabled2;
-        long jA2;
-        int i17;
-        ?? r6;
-        int i18;
-        this.a = textPaint;
-        this.b = truncateAt;
-        this.c = z;
-        int length = charSequence.length();
-        TextDirectionHeuristic textDirectionHeuristicB = ns4.b(i2);
-        Layout.Alignment alignment = nr4.a;
-        Layout.Alignment alignment2 = i != 0 ? i != 1 ? i != 2 ? i != 3 ? i != 4 ? Layout.Alignment.ALIGN_NORMAL : nr4.b : nr4.a : Layout.Alignment.ALIGN_CENTER : Layout.Alignment.ALIGN_OPPOSITE : Layout.Alignment.ALIGN_NORMAL;
-        boolean z2 = (charSequence instanceof Spanned) && ((Spanned) charSequence).nextSpanTransition(-1, length, ir.class) < length;
+    public ks4(CharSequence r22, float r23, TextPaint r24, int r25, TextUtils.TruncateAt r26, int r27, boolean r28, int r29, int r30, int r31, int r32, int r33, int r34, t62 r35) {
+        this.a = r24;
+        this.b = r26;
+        this.c = r28;
+        this.o = new Rect();
+        int r5 = r22.length();
+        TextDirectionHeuristic r12 = ns4.b(r27);
+        Layout.Alignment r8 = nr4.a;
+        if (r25 == 0) goto L15;
+        if (r25 == 1) goto L14;
+        if (r25 != 2) goto L7;
+        Layout.Alignment r3 = Layout.Alignment.ALIGN_CENTER;
+    L17:
+        if ((r22 instanceof Spanned) == true) goto L19;
+    L21:
+        boolean r6 = false;
+    L22:
         Trace.beginSection("TextLayout:initLayout");
-        try {
-            BoringLayout.Metrics metricsA = t62Var.a();
-            double d = f;
-            int iCeil = (int) Math.ceil(d);
-            if (metricsA == null || t62Var.c() > f || z2) {
-                this.k = false;
-                i9 = i3;
-                textDirectionHeuristic = textDirectionHeuristicB;
-                layoutM = fu.m(charSequence, textPaint, iCeil, charSequence.length(), textDirectionHeuristic, alignment2, i9, truncateAt, (int) Math.ceil(d), i8, z, i4, i5, i6, i7);
-            } else {
-                this.k = true;
-                if (iCeil < 0) {
-                    dz1.a("negative width");
-                }
-                if (iCeil < 0) {
-                    dz1.a("negative ellipsized width");
-                }
-                layoutM = Build.VERSION.SDK_INT >= 33 ? n3.g(charSequence, textPaint, iCeil, alignment2, metricsA, z, truncateAt, iCeil) : new BoringLayout(charSequence, textPaint, iCeil, alignment2, 1.0f, 0.0f, metricsA, z, truncateAt, iCeil);
-                i9 = i3;
-                textDirectionHeuristic = textDirectionHeuristicB;
-            }
-            this.e = layoutM;
-            Trace.endSection();
-            int iMin = Math.min(layoutM.getLineCount(), i9);
-            this.f = iMin;
-            int i19 = iMin - 1;
-            this.d = iMin >= i9 && (layoutM.getEllipsisCount(i19) > 0 || layoutM.getLineEnd(i19) != charSequence.length());
-            if (layoutM.getText() instanceof Spanned) {
-                CharSequence text = layoutM.getText();
-                text.getClass();
-                if (bu.q((Spanned) text, sa2.class) || layoutM.getText().length() <= 0) {
-                    CharSequence text2 = layoutM.getText();
-                    text2.getClass();
-                    i10 = 0;
-                    sa2VarArr = (sa2[]) ((Spanned) text2).getSpans(0, layoutM.getText().length(), sa2.class);
-                } else {
-                    sa2VarArr = null;
-                    i10 = 0;
-                }
-            } else {
-                sa2VarArr = null;
-                i10 = 0;
-            }
-            this.n = sa2VarArr;
-            if (sa2VarArr == null) {
-                i11 = 2;
-                i12 = i10;
-            } else {
-                sa2 sa2Var = sa2VarArr.length == 0 ? null : sa2VarArr[i10];
-                if (sa2Var != null) {
-                    if (sa2Var.p) {
-                        i11 = 2;
-                        i18 = sa2Var.s == 2 ? 1 : i18;
-                        i12 = i18;
-                    } else {
-                        i11 = 2;
-                    }
-                    i18 = i10;
-                    i12 = i18;
-                } else {
-                    i11 = 2;
-                    i12 = i10;
-                }
-            }
-            if (sa2VarArr == null) {
-                i13 = i10;
-            } else {
-                sa2 sa2Var2 = sa2VarArr.length == 0 ? null : sa2VarArr[i10];
-                if (sa2Var2 != null && sa2Var2.q && sa2Var2.s == i11) {
-                    i13 = 1;
-                } else {
-                    i13 = i10;
-                }
-            }
-            if (i12 == 0 || i13 == 0) {
-                long jA3 = ns4.b;
-                if (z) {
-                    th = null;
-                    c = ' ';
-                    j = 4294967295L;
-                    i14 = 1;
-                    i15 = 33;
-                } else {
-                    if (this.k) {
-                        BoringLayout boringLayout = (BoringLayout) layoutM;
-                        i15 = 33;
-                        if (Build.VERSION.SDK_INT >= 33) {
-                            zIsFallbackLineSpacingEnabled2 = boringLayout.isFallbackLineSpacingEnabled();
-                        } else {
-                            r8 = i10;
-                        }
-                    } else {
-                        i15 = 33;
-                        StaticLayout staticLayout = (StaticLayout) layoutM;
-                        int i20 = Build.VERSION.SDK_INT;
-                        if (i20 >= 33) {
-                            zIsFallbackLineSpacingEnabled = staticLayout.isFallbackLineSpacingEnabled();
-                        } else if (i20 >= 28) {
-                            r8 = 1;
-                        } else {
-                            r8 = i10;
-                        }
-                    }
-                    if (r8 != 0) {
-                        r8 = zIsFallbackLineSpacingEnabled;
-                        th = null;
-                        c = ' ';
-                        j = 4294967295L;
-                        i14 = 1;
-                    } else {
-                        r8 = zIsFallbackLineSpacingEnabled;
-                        TextPaint paint = layoutM.getPaint();
-                        CharSequence text3 = layoutM.getText();
-                        th = null;
-                        c = ' ';
-                        Rect rectU = uo.u(paint, text3, layoutM.getLineStart(i10), layoutM.getLineEnd(i10));
-                        int lineAscent = layoutM.getLineAscent(i10);
-                        j = 4294967295L;
-                        int i21 = rectU.top;
-                        if (i21 < lineAscent) {
-                            r8 = zIsFallbackLineSpacingEnabled2;
-                            topPadding = lineAscent - i21;
-                        } else {
-                            r8 = zIsFallbackLineSpacingEnabled2;
-                            topPadding = layoutM.getTopPadding();
-                        }
-                        i14 = 1;
-                        rectU = iMin != 1 ? uo.u(paint, text3, layoutM.getLineStart(i19), layoutM.getLineEnd(i19)) : rectU;
-                        int lineDescent = layoutM.getLineDescent(i19);
-                        int i22 = rectU.bottom;
-                        int bottomPadding = i22 > lineDescent ? i22 - lineDescent : layoutM.getBottomPadding();
-                        if (topPadding != 0 || bottomPadding != 0) {
-                            jA3 = ns4.a(topPadding, bottomPadding);
-                        }
-                    }
-                }
-                int i23 = i12 != 0 ? i10 : (int) (jA3 >> c);
-                if (i13 != 0) {
-                    r8 = zIsFallbackLineSpacingEnabled2;
-                    r8 = zIsFallbackLineSpacingEnabled2;
-                    i16 = i10;
-                } else {
-                    r8 = zIsFallbackLineSpacingEnabled2;
-                    r8 = zIsFallbackLineSpacingEnabled2;
-                    i16 = (int) (jA3 & j);
-                }
-                jA = ns4.a(i23, i16);
-            } else {
-                jA = ns4.b;
-                th = null;
-                c = ' ';
-                j = 4294967295L;
-                i14 = 1;
-                i15 = 33;
-            }
-            if (sa2VarArr != null) {
-                int length2 = sa2VarArr.length;
-                int iMax = i10;
-                int iMax2 = iMax;
-                for (int i24 = iMax2; i24 < length2; i24++) {
-                    sa2 sa2Var3 = sa2VarArr[i24];
-                    int i25 = sa2Var3.x;
-                    iMax = i25 < 0 ? Math.max(iMax, Math.abs(i25)) : iMax;
-                    int i26 = sa2Var3.y;
-                    if (i26 < 0) {
-                        iMax2 = Math.max(iMax, Math.abs(i26));
-                    }
-                }
-                jA2 = (iMax == 0 && iMax2 == 0) ? ns4.b : ns4.a(iMax, iMax2);
-            } else {
-                jA2 = ns4.b;
-            }
-            this.g = Math.max((int) (jA >> c), (int) (jA2 >> c));
-            this.h = Math.max((int) (jA & j), (int) (jA2 & j));
-            TextPaint textPaint2 = this.a;
-            sa2[] sa2VarArr2 = this.n;
-            int i27 = this.f - i14;
-            Layout layout = this.e;
-            if (layout.getLineStart(i27) != layout.getLineEnd(i27) || sa2VarArr2 == null || sa2VarArr2.length == 0) {
-                i17 = i10;
-                r6 = th;
-            } else {
-                SpannableString spannableString = new SpannableString("\u200b");
-                if (sa2VarArr2.length == 0) {
-                    kf2.m("Array is empty.");
-                    throw th;
-                }
-                sa2 sa2Var4 = sa2VarArr2[i10];
-                spannableString.setSpan(new sa2(sa2Var4.n, spannableString.length(), (i27 == 0 || !sa2Var4.q) ? sa2Var4.q : i10, sa2Var4.q, sa2Var4.r, sa2Var4.s), i10, spannableString.length(), i15);
-                i17 = i10;
-                StaticLayout staticLayoutM = fu.m(spannableString, textPaint2, Integer.MAX_VALUE, spannableString.length(), textDirectionHeuristic, p62.a, Integer.MAX_VALUE, null, Integer.MAX_VALUE, 0, this.c, 0, 0, 0, 0);
-                Paint.FontMetricsInt fontMetricsInt = new Paint.FontMetricsInt();
-                fontMetricsInt.ascent = staticLayoutM.getLineAscent(i17);
-                fontMetricsInt.descent = staticLayoutM.getLineDescent(i17);
-                fontMetricsInt.top = staticLayoutM.getLineTop(i17);
-                fontMetricsInt.bottom = staticLayoutM.getLineBottom(i17);
-                r6 = fontMetricsInt;
-            }
-            this.m = r6 != 0 ? ((Paint.FontMetricsInt) r6).bottom - ((int) (d(i19) - g(i19))) : i17;
-            this.l = r6;
-            Layout layout2 = this.e;
-            this.i = vr1.t(layout2, i19, layout2.getPaint());
-            Layout layout3 = this.e;
-            this.j = vr1.u(layout3, i19, layout3.getPaint());
-        } catch (Throwable th2) {
-            Trace.endSection();
-            throw th2;
-        }
+        BoringLayout.Metrics r9 = r35.a();     // Catch: Throwable -> L168
+        double r10 = r23;
+        int r11 = (int) Math.ceil(r10);     // Catch: Throwable -> L168
+        if (r9 != null) goto L26;
+    L40:
+        this.k = false;     // Catch: Throwable -> L168
+        int r7 = r29;
+        TextDirectionHeuristic r13 = r12;
+        Layout r2 = fu.m(r22, r24, r11, r22.length(), r13, r3, r7, r26, (int) Math.ceil(r10), r34, r28, r30, r31, r32, r33);     // Catch: Throwable -> L168
+    L41:
+        this.e = r2;     // Catch: Throwable -> L168
+        Trace.endSection();
+        int r1 = Math.min(r2.getLineCount(), r7);
+        this.f = r1;
+        int r4 = r1 - 1;
+        if (r1 >= r7) goto L46;
+    L44:
+        boolean r14 = false;
+    L50:
+        this.d = r14;
+        if ((r2.getText() instanceof Spanned) == false) goto L57;
+        CharSequence r15 = r2.getText();
+        r15.getClass();
+        if (bu.q((Spanned) r15, sa2.class) == false) goto L56;
+    L58:
+        CharSequence r16 = r2.getText();
+        r16.getClass();
+        int r17 = 0;
+        sa2[] r18 = (sa2[]) ((Spanned) r16).getSpans(0, r2.getText().length(), sa2.class);
+    L59:
+        this.n = r18;
+        if (r18 != null) goto L62;
+    L74:
+        int r19 = 2;
+        int r110 = r17;
+    L75:
+        if (r18 != null) goto L77;
+    L86:
+        int r111 = r17;
+    L87:
+        if (r110 == 0) goto L90;
+        if (r111 == 0) goto L90;
+        long r20 = ns4.b;
+        Throwable r210 = null;
+        char r211 = ' ';
+        long r212 = 4294967295L;
+        int r112 = 1;
+        int r113 = 33;
+    L130:
+        if (r18 == null) goto L144;
+        int r21 = r18.length;
+        int r36 = r17;
+        int r37 = r36;
+        int r114 = r37;
+    L132:
+        if (r114 >= r21) goto L140;
+        sa2 r115 = r18[r114];
+        int r116 = r115.x;
+        if (r116 >= 0) goto L136;
+        r36 = Math.max(r36, Math.abs(r116));
+    L136:
+        int r117 = r115.y;
+        if (r117 >= 0) goto L139;
+        r37 = Math.max(r36, Math.abs(r117));
+    L139:
+        r114 = r114 + 1;
+        goto L132
+    L140:
+        if (r36 != 0) goto L143;
+        if (r37 != 0) goto L143;
+        long r38 = ns4.b;
+    L145:
+        this.g = Math.max((int) (r20 >> r211), (int) (r38 >> r211));
+        this.h = Math.max((int) (r20 & r212), (int) (r38 & r212));
+        TextPaint r39 = this.a;
+        sa2[] r40 = this.n;
+        int r41 = this.f - r112;
+        Layout r42 = this.e;
+        if (r42.getLineStart(r41) != r42.getLineEnd(r41)) goto L162;
+        if (r40 == null) goto L162;
+        if (r40.length == 0) goto L162;
+        SpannableString r43 = new SpannableString("\u200b");
+        if (r40.length == 0) goto L160;
+        sa2 r44 = r40[r17];
+        int r45 = r43.length();
+        if (r41 != 0) goto L156;
+    L158:
+        ?? r118 = r44.q;
+    L159:
+        r43.setSpan(new sa2(r44.n, r45, r118, r44.q, r44.r, r44.s), r17, r43.length(), r113);
+        int r46 = r17;
+        TextDirectionHeuristic r119 = r13;
+        StaticLayout r47 = fu.m(r43, r39, Integer.MAX_VALUE, r43.length(), r119, p62.a, Integer.MAX_VALUE, null, Integer.MAX_VALUE, 0, this.c, 0, 0, 0, 0);
+        Paint.FontMetricsInt r48 = new Paint.FontMetricsInt();
+        r48.ascent = r47.getLineAscent(r46);
+        r48.descent = r47.getLineDescent(r46);
+        r48.top = r47.getLineTop(r46);
+        r48.bottom = r47.getLineBottom(r46);
+        ?? r49 = r48;
+    L163:
+        if (r49 == 0) goto L165;
+        int r120 = ((Paint.FontMetricsInt) r49).bottom - ((int) (d(r4) - g(r4)));
+    L166:
+        this.m = r120;
+        this.l = r49;
+        Layout r50 = this.e;
+        this.i = vr1.t(r50, r4, r50.getPaint());
+        Layout r51 = this.e;
+        this.j = vr1.u(r51, r4, r51.getPaint());
+        return;
+    L165:
+        r120 = r46;
+        goto L166
+    L156:
+        if (r44.q == false) goto L158;
+        r118 = r17;
+        goto L159
+    L160:
+        kf2.m("Array is empty.");
+        throw r210;
+    L162:
+        r46 = r17;
+        r49 = r210;
+    L143:
+        r38 = ns4.a(r36, r37);
+        goto L145
+    L144:
+        r38 = ns4.b;
+    L90:
+        long r121 = ns4.b;
+        if (r28 == false) goto L93;
+        r210 = null;
+        r211 = ' ';
+        r212 = 4294967295L;
+        r112 = 1;
+        r113 = 33;
+    L123:
+        if (r110 == 0) goto L125;
+        int r122 = r17;
+    L126:
+        if (r111 == 0) goto L128;
+        int r52 = r17;
+    L129:
+        r20 = ns4.a(r122, r52);
+        goto L130
+    L128:
+        r52 = (int) (r121 & r212);
+        goto L129
+    L125:
+        r122 = (int) (r121 >> r211);
+        goto L126
+    L93:
+        if (this.k == false) goto L98;
+        BoringLayout r53 = (BoringLayout) r2;
+        r113 = 33;
+        if (Build.VERSION.SDK_INT < 33) goto L97;
+        ?? r54 = n3.x(r53);
+    L104:
+        if (r54 == 0) goto L106;
+        r210 = null;
+        r211 = ' ';
+        r212 = 4294967295L;
+        r112 = 1;
+        goto L123
+    L106:
+        TextPaint r55 = r2.getPaint();
+        CharSequence r123 = r2.getText();
+        r210 = null;
+        r211 = ' ';
+        Rect r56 = uo.u(r55, r123, r2.getLineStart(r17), r2.getLineEnd(r17));
+        int r57 = r2.getLineAscent(r17);
+        r212 = 4294967295L;
+        int r124 = r56.top;
+        if (r124 >= r57) goto L110;
+        int r58 = r57 - r124;
+    L109:
+        r112 = 1;
+        if (r1 == 1) goto L114;
+        r56 = uo.u(r55, r123, r2.getLineStart(r4), r2.getLineEnd(r4));
+    L114:
+        int r59 = r2.getLineDescent(r4);
+        int r60 = r56.bottom;
+        if (r60 <= r59) goto L117;
+        int r61 = r60 - r59;
+    L118:
+        if (r58 != 0) goto L121;
+        if (r61 == 0) goto L123;
+    L121:
+        r121 = ns4.a(r58, r61);
+        goto L123
+    L117:
+        r61 = r2.getBottomPadding();
+        goto L118
+    L110:
+        r58 = r2.getTopPadding();
+    L97:
+        r54 = r17;
+        goto L104
+    L98:
+        r113 = 33;
+        StaticLayout r62 = (StaticLayout) r2;
+        int r125 = Build.VERSION.SDK_INT;
+        if (r125 < 33) goto L102;
+        r54 = n3.y(r62);
+        goto L104
+    L102:
+        if (r125 < 28) goto L97;
+        r54 = 1;
+        goto L104
+    L77:
+        if (r18.length != 0) goto L79;
+        sa2 r63 = null;
+    L80:
+        if (r63 == null) goto L86;
+        if (r63.q == false) goto L86;
+        if (r63.s != r19) goto L86;
+        r111 = 1;
+        goto L87
+    L79:
+        r63 = r18[r17];
+        goto L80
+    L62:
+        if (r18.length != 0) goto L64;
+        sa2 r64 = null;
+    L65:
+        if (r64 == null) goto L74;
+        if (r64.p == false) goto L71;
+        r19 = 2;
+        if (r64.s != 2) goto L72;
+        int r126 = 1;
+    L73:
+        r110 = r126;
+    L72:
+        r126 = r17;
+        goto L73
+    L71:
+        r19 = 2;
+        goto L72
+    L64:
+        r64 = r18[r17];
+        goto L65
+    L56:
+        if (r2.getText().length() <= 0) goto L58;
+    L57:
+        r18 = null;
+        r17 = 0;
+        goto L59
+    L46:
+        if (r2.getEllipsisCount(r4) <= 0) goto L48;
+    L49:
+        r14 = true;
+        goto L50
+    L48:
+        if (r2.getLineEnd(r4) == r22.length()) goto L44;
+    L26:
+        if (r35.c() > r23) goto L40;
+        if (r6 == true) goto L40;
+        this.k = true;     // Catch: Throwable -> L168
+        if (r11 >= 0) goto L32;
+        dz1.a("negative width");     // Catch: Throwable -> L168
+    L32:
+        if (r11 >= 0) goto L36;
+        dz1.a("negative ellipsized width");     // Catch: Throwable -> L168
+    L36:
+        if (Build.VERSION.SDK_INT < 33) goto L38;
+        r2 = n3.g(r22, r24, r11, r3, r9, r28, r26, r11);     // Catch: Throwable -> L168
+    L39:
+        r7 = r29;
+        r13 = r12;
+        goto L41
+    L38:
+        r2 = new BoringLayout(r22, r24, r11, r3, 1.0f, 0.0f, r9, r28, r26, r11);     // Catch: Throwable -> L168
+    L168:
+        th = move-exception;
+        Trace.endSection();
+        throw th;
+    L19:
+        if (((Spanned) r22).nextSpanTransition(-1, r5, ir.class) >= r5) goto L21;
+        r6 = true;
+        goto L22
+    L7:
+        if (r25 != 3) goto L9;
+        r3 = nr4.a;
+        goto L17
+    L9:
+        if (r25 == 4) goto L11;
+        r3 = Layout.Alignment.ALIGN_NORMAL;
+        goto L17
+    L11:
+        r3 = nr4.b;
+        goto L17
+    L14:
+        r3 = Layout.Alignment.ALIGN_OPPOSITE;
+        goto L17
+    L15:
+        r3 = Layout.Alignment.ALIGN_NORMAL;
+        goto L17
     }
 
     public final int a() {
-        boolean z = this.d;
-        Layout layout = this.e;
-        return (z ? layout.getLineBottom(this.f - 1) : layout.getHeight()) + this.g + this.h + this.m;
+        boolean r0 = this.d;
+        Layout r1 = this.e;
+        if (r0 == false) goto L5;
+        int r2 = r1.getLineBottom(this.f - 1);
+    L7:
+        return ((r2 + this.g) + this.h) + this.m;
+    L5:
+        r2 = r1.getHeight();
+        goto L7
     }
 
     public final z40 b() {
-        z40 z40Var = this.p;
-        if (z40Var != null) {
-            return z40Var;
-        }
-        z40 z40Var2 = new z40(this.e);
-        this.p = z40Var2;
-        return z40Var2;
+        z40 r0 = this.p;
+        if (r0 != null) goto L6;
+        z40 r1 = new z40(this.e);
+        this.p = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
-    public final float c(int i) {
-        Paint.FontMetricsInt fontMetricsInt;
-        return this.g + ((i != this.f + (-1) || (fontMetricsInt = this.l) == null) ? this.e.getLineBaseline(i) : g(i) - fontMetricsInt.ascent);
+    public final float c(int r3) {
+        float r0 = this.g;
+        if (r3 != (this.f - 1)) goto L7;
+        Paint.FontMetricsInt r1 = this.l;
+        if (r1 == null) goto L7;
+        float r2 = g(r3) - r1.ascent;
+    L9:
+        return r0 + r2;
+    L7:
+        r2 = this.e.getLineBaseline(r3);
+        goto L9
     }
 
-    public final float d(int i) {
-        Paint.FontMetricsInt fontMetricsInt;
-        int i2 = this.f;
-        int i3 = i2 - 1;
-        Layout layout = this.e;
-        if (i != i3 || (fontMetricsInt = this.l) == null) {
-            return this.g + layout.getLineBottom(i) + (i == i2 + (-1) ? this.h : 0);
-        }
-        return layout.getLineBottom(i - 1) + fontMetricsInt.bottom;
+    public final float d(int r4) {
+        int r0 = this.f;
+        int r1 = r0 - 1;
+        Layout r2 = this.e;
+        if (r4 != r1) goto L8;
+        Paint.FontMetricsInt r3 = this.l;
+        if (r3 == null) goto L8;
+        return r2.getLineBottom(r4 - 1) + r3.bottom;
+    L8:
+        float r5 = this.g + r2.getLineBottom(r4);
+        if (r4 != (r0 - 1)) goto L11;
+        int r6 = this.h;
+    L13:
+        return r5 + r6;
+    L11:
+        r6 = 0;
+        goto L13
     }
 
-    public final int e(int i) {
-        ThreadLocal threadLocal = ns4.a;
-        Layout layout = this.e;
-        return (layout.getEllipsisCount(i) <= 0 || this.b != TextUtils.TruncateAt.END) ? layout.getLineEnd(i) : layout.getText().length();
+    public final int e(int r3) {
+        ThreadLocal r0 = ns4.a;
+        Layout r1 = this.e;
+        if (r1.getEllipsisCount(r3) <= 0) goto L9;
+        if (this.b != TextUtils.TruncateAt.END) goto L9;
+        return r1.getText().length();
+    L9:
+        return r1.getLineEnd(r3);
     }
 
-    public final int f(int i) {
-        int i2 = this.f;
-        if (i2 <= 0) {
-            return 0;
-        }
-        int lineForOffset = this.e.getLineForOffset(i);
-        int i3 = i2 - 1;
-        return lineForOffset > i3 ? i3 : lineForOffset;
+    public final int f(int r2) {
+        int r0 = this.f;
+        if (r0 > 0) goto L6;
+        return 0;
+    L6:
+        int r1 = this.e.getLineForOffset(r2);
+        int r3 = r0 - 1;
+        if (r1 <= r3) goto L9;
+        return r3;
+    L9:
+        return r1;
     }
 
-    public final float g(int i) {
-        return this.e.getLineTop(i) + (i == 0 ? 0 : this.g);
+    public final float g(int r2) {
+        float r0 = this.e.getLineTop(r2);
+        if (r2 != 0) goto L5;
+        int r1 = 0;
+    L7:
+        return r0 + r1;
+    L5:
+        r1 = this.g;
+        goto L7
     }
 
-    public final float h(int i, boolean z) {
-        return (f(i) == this.f - 1 ? this.i + this.j : 0.0f) + b().d(i, true, z);
+    public final float h(int r3, boolean r4) {
+        float r5 = b().d(r3, true, r4);
+        if (f(r3) != (this.f - 1)) goto L5;
+        float r6 = this.i + this.j;
+    L7:
+        return r6 + r5;
+    L5:
+        r6 = 0.0f;
+        goto L7
     }
 
-    public final float i(int i, boolean z) {
-        return (f(i) == this.f + (-1) ? this.i + this.j : 0.0f) + b().d(i, false, z);
+    public final float i(int r3, boolean r4) {
+        float r5 = b().d(r3, false, r4);
+        if (f(r3) != (this.f - 1)) goto L5;
+        float r6 = this.i + this.j;
+    L7:
+        return r6 + r5;
+    L5:
+        r6 = 0.0f;
+        goto L7
     }
 }

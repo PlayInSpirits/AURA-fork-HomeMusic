@@ -6,8 +6,8 @@ import java.util.Set;
 /* JADX INFO: loaded from: classes.dex */
 public final class t1 extends s1 implements Set {
     @Override // java.util.Collection, java.util.Set
-    public final boolean equals(Object obj) {
-        return j51.r(this, obj);
+    public final boolean equals(Object r1) {
+        return j51.r(this, r1);
     }
 
     @Override // java.util.Collection, java.util.Set

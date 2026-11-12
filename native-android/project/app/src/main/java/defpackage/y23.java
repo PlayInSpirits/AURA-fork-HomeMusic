@@ -13,27 +13,58 @@ public final class y23 {
     public final int h;
     public final int i;
 
-    public y23(boolean z, boolean z2, int i, boolean z3, boolean z4, int i2, int i3, int i4, int i5) {
-        this.a = z;
-        this.b = z2;
-        this.c = i;
-        this.d = z3;
-        this.e = z4;
-        this.f = i2;
-        this.g = i3;
-        this.h = i4;
-        this.i = i5;
+    public y23(boolean r1, boolean r2, int r3, boolean r4, boolean r5, int r6, int r7, int r8, int r9) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || !(obj instanceof y23)) {
-            return false;
-        }
-        y23 y23Var = (y23) obj;
-        return this.a == y23Var.a && this.b == y23Var.b && this.c == y23Var.c && this.d == y23Var.d && this.e == y23Var.e && this.f == y23Var.f && this.g == y23Var.g && this.h == y23Var.h && this.i == y23Var.i;
+    public final boolean equals(Object r3) {
+        if (this == r3) goto L30;
+        if (r3 != null) goto L6;
+        return false;
+    L6:
+        if ((r3 instanceof y23) == false) goto L40;
+        y23 r4 = (y23) r3;
+        boolean r0 = r4.a;
+        if (this.a == r0) goto L11;
+        return false;
+    L11:
+        if (this.b == r4.b) goto L13;
+        return false;
+    L13:
+        if (this.c == r4.c) goto L15;
+        return false;
+    L15:
+        if (this.d == r4.d) goto L17;
+        return false;
+    L17:
+        if (this.e == r4.e) goto L19;
+        return false;
+    L19:
+        if (this.f == r4.f) goto L21;
+        return false;
+    L21:
+        if (this.g == r4.g) goto L23;
+        return false;
+    L23:
+        if (this.h == r4.h) goto L25;
+        return false;
+    L25:
+        if (this.i != r4.i) goto L39;
+        return true;
+    L39:
+        return false;
+    L40:
+        return false;
+    L30:
+        return true;
     }
 
     public final int hashCode() {
@@ -41,30 +72,35 @@ public final class y23 {
     }
 
     public final String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(y23.class.getSimpleName());
-        sb.append("(");
-        if (this.a) {
-            sb.append("launchSingleTop ");
-        }
-        if (this.b) {
-            sb.append("restoreState ");
-        }
-        int i = this.i;
-        int i2 = this.h;
-        int i3 = this.g;
-        int i4 = this.f;
-        if (i4 != -1 || i3 != -1 || i2 != -1 || i != -1) {
-            sb.append("anim(enterAnim=0x");
-            sb.append(Integer.toHexString(i4));
-            sb.append(" exitAnim=0x");
-            sb.append(Integer.toHexString(i3));
-            sb.append(" popEnterAnim=0x");
-            sb.append(Integer.toHexString(i2));
-            sb.append(" popExitAnim=0x");
-            sb.append(Integer.toHexString(i));
-            sb.append(")");
-        }
-        return sb.toString();
+        StringBuilder r0 = new StringBuilder();
+        r0.append(y23.class.getSimpleName());
+        r0.append("(");
+        if (this.a == false) goto L6;
+        r0.append("launchSingleTop ");
+    L6:
+        if (this.b == false) goto L8;
+        r0.append("restoreState ");
+    L8:
+        int r1 = this.i;
+        int r2 = this.h;
+        int r3 = this.g;
+        int r5 = this.f;
+        if (r5 != (-1)) goto L13;
+        if (r3 != (-1)) goto L13;
+        if (r2 != (-1)) goto L13;
+        if (r1 != (-1)) goto L13;
+    L15:
+        return r0.toString();
+    L13:
+        r0.append("anim(enterAnim=0x");
+        r0.append(Integer.toHexString(r5));
+        r0.append(" exitAnim=0x");
+        r0.append(Integer.toHexString(r3));
+        r0.append(" popEnterAnim=0x");
+        r0.append(Integer.toHexString(r2));
+        r0.append(" popExitAnim=0x");
+        r0.append(Integer.toHexString(r1));
+        r0.append(")");
+        goto L15
     }
 }

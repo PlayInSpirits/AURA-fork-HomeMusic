@@ -8,24 +8,25 @@ public final class m4 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ ActionBarOverlayLayout o;
 
-    public /* synthetic */ m4(ActionBarOverlayLayout actionBarOverlayLayout, int i) {
-        this.n = i;
-        this.o = actionBarOverlayLayout;
+    public /* synthetic */ m4(ActionBarOverlayLayout r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        ActionBarOverlayLayout actionBarOverlayLayout = this.o;
-        switch (i) {
-            case 0:
-                actionBarOverlayLayout.h();
-                actionBarOverlayLayout.J = actionBarOverlayLayout.q.animate().translationY(0.0f).setListener(actionBarOverlayLayout.K);
-                break;
-            default:
-                actionBarOverlayLayout.h();
-                actionBarOverlayLayout.J = actionBarOverlayLayout.q.animate().translationY(-actionBarOverlayLayout.q.getHeight()).setListener(actionBarOverlayLayout.K);
-                break;
-        }
+        int r0 = this.n;
+        ActionBarOverlayLayout r2 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r2.h();
+        r2.J = r2.q.animate().translationY(-r2.q.getHeight()).setListener(r2.K);
+        return;
+    L6:
+        r2.h();
+        r2.J = r2.q.animate().translationY(0.0f).setListener(r2.K);
     }
 }

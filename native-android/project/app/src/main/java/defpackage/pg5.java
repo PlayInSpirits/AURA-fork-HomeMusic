@@ -13,26 +13,27 @@ public abstract class pg5 {
         pg5.class.getClassLoader();
     }
 
-    public static Parcelable a(Parcel parcel, Parcelable.Creator creator) {
-        if (parcel.readInt() == 0) {
-            return null;
-        }
-        return (Parcelable) creator.createFromParcel(parcel);
+    public static Parcelable a(Parcel r1, Parcelable.Creator r2) {
+        if (r1.readInt() != 0) goto L7;
+        return null;
+    L7:
+        return (Parcelable) r2.createFromParcel(r1);
     }
 
-    public static void b(Parcel parcel) {
-        int iDataAvail = parcel.dataAvail();
-        if (iDataAvail > 0) {
-            throw new BadParcelableException(f34.f(iDataAvail, "Parcel data not fully consumed, unread size: "));
-        }
+    public static void b(Parcel r2) {
+        int r3 = r2.dataAvail();
+        if (r3 > 0) goto L6;
+        return;
+    L6:
+        throw new BadParcelableException(f34.f(r3, "Parcel data not fully consumed, unread size: "));
     }
 
-    public static void c(Parcel parcel, Parcelable parcelable) {
-        if (parcelable == null) {
-            parcel.writeInt(0);
-        } else {
-            parcel.writeInt(1);
-            parcelable.writeToParcel(parcel, 0);
-        }
+    public static void c(Parcel r2, Parcelable r3) {
+        if (r3 != null) goto L6;
+        r2.writeInt(0);
+        return;
+    L6:
+        r2.writeInt(1);
+        r3.writeToParcel(r2, 0);
     }
 }

@@ -5,12 +5,12 @@ package defpackage;
 public final class p84 extends bo implements q84 {
     @Override // defpackage.q84
     public final long a() {
-        return -1L;
+        return -1;
     }
 
     @Override // defpackage.q84
-    public final long c(long j) {
-        return 0L;
+    public final long c(long r1) {
+        return 0;
     }
 
     @Override // defpackage.q84

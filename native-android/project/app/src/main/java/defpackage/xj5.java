@@ -7,34 +7,52 @@ import java.util.Arrays;
 public final class xj5 extends ak5 {
     public final long n;
 
-    public xj5(long j) {
-        this.n = j;
+    public xj5(long r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.ak5
     public final int a() {
-        return ak5.d(this.n >= 0 ? (byte) 0 : (byte) 32);
+        if (this.n < 0) goto L5;
+        byte r4 = 0;
+    L7:
+        return ak5.d(r4);
+    L5:
+        r4 = 32;
+        goto L7
     }
 
     @Override // java.lang.Comparable
-    public final /* bridge */ /* synthetic */ int compareTo(Object obj) {
-        ak5 ak5Var = (ak5) obj;
-        if (a() != ak5Var.a()) {
-            return a() - ak5Var.a();
-        }
-        long jAbs = Math.abs(this.n);
-        long jAbs2 = Math.abs(((xj5) ak5Var).n);
-        if (jAbs < jAbs2) {
-            return -1;
-        }
-        return jAbs > jAbs2 ? 1 : 0;
+    public final /* bridge */ /* synthetic */ int compareTo(Object r3) {
+        ak5 r4 = (ak5) r3;
+        if (a() != r4.a()) goto L5;
+        long r0 = Math.abs(this.n);
+        long r2 = Math.abs(((xj5) r4).n);
+        if (r0 >= r2) goto L10;
+        return -1;
+    L10:
+        if (r0 <= r2) goto L13;
+        return 1;
+    L13:
+        return 0;
+    L5:
+        return a() - r4.a();
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return obj != null && xj5.class == obj.getClass() && this.n == ((xj5) obj).n;
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if (r5 != null) goto L9;
+        return false;
+    L9:
+        if (xj5.class == r5.getClass()) goto L12;
+        return false;
+    L12:
+        if (this.n != ((xj5) r5).n) goto L14;
+        return true;
+    L14:
+        return false;
     }
 
     public final int hashCode() {

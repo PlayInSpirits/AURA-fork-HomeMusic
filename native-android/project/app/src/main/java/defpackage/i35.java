@@ -5,20 +5,20 @@ package defpackage;
 public abstract class i35 {
     public if1 a;
 
-    public abstract void a(sv0 sv0Var);
+    public abstract void a(sv0 r1);
 
     public if1 b() {
         return this.a;
     }
 
     public final void c() {
-        if1 if1VarB = b();
-        if (if1VarB != null) {
-            if1VarB.invoke(this);
-        }
+        if1 r0 = b();
+        if (r0 == null) goto L6;
+        r0.invoke(this);
+        return;
     }
 
-    public void d(x xVar) {
-        this.a = xVar;
+    public void d(x r1) {
+        this.a = r1;
     }
 }

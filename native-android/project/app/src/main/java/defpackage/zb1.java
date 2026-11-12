@@ -5,14 +5,14 @@ package defpackage;
 public abstract class zb1 implements of4 {
     public final of4 n;
 
-    public zb1(of4 of4Var) {
-        of4Var.getClass();
-        this.n = of4Var;
+    public zb1(of4 r1) {
+        r1.getClass();
+        this.n = r1;
     }
 
     @Override // defpackage.of4
-    public void L(tv tvVar, long j) {
-        this.n.L(tvVar, j);
+    public void L(tv r1, long r2) {
+        this.n.L(r1, r2);
     }
 
     @Override // defpackage.of4, java.io.Closeable, java.lang.AutoCloseable

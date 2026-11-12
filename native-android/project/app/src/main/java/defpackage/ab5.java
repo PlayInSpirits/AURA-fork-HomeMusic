@@ -6,7 +6,7 @@ public final class ab5 extends za5 {
     public ab5() {
     }
 
-    public ab5(pb5 pb5Var) {
-        super(pb5Var);
+    public ab5(pb5 r1) {
+        super(r1);
     }
 }

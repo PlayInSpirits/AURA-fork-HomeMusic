@@ -13,11 +13,11 @@ public final class z12 {
     public final ImageView d;
     public final TextView e;
 
-    public /* synthetic */ z12(ConstraintLayout constraintLayout, ImageView imageView, ImageView imageView2, ImageView imageView3, TextView textView) {
-        this.a = constraintLayout;
-        this.b = imageView;
-        this.c = imageView2;
-        this.d = imageView3;
-        this.e = textView;
+    public /* synthetic */ z12(ConstraintLayout r1, ImageView r2, ImageView r3, ImageView r4, TextView r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
     }
 }

@@ -16,6 +16,9 @@ public final class HubTrackSource {
     @ka4("source_url")
     private String sourceUrl;
 
+    public HubTrackSource() {
+    }
+
     public final String getKind() {
         return this.kind;
     }
@@ -36,23 +39,23 @@ public final class HubTrackSource {
         return this.sourceUrl;
     }
 
-    public final void setKind(String str) {
-        this.kind = str;
+    public final void setKind(String r1) {
+        this.kind = r1;
     }
 
-    public final void setPageUrl(String str) {
-        this.pageUrl = str;
+    public final void setPageUrl(String r1) {
+        this.pageUrl = r1;
     }
 
-    public final void setProvider(String str) {
-        this.provider = str;
+    public final void setProvider(String r1) {
+        this.provider = r1;
     }
 
-    public final void setSource(String str) {
-        this.source = str;
+    public final void setSource(String r1) {
+        this.source = r1;
     }
 
-    public final void setSourceUrl(String str) {
-        this.sourceUrl = str;
+    public final void setSourceUrl(String r1) {
+        this.sourceUrl = r1;
     }
 }

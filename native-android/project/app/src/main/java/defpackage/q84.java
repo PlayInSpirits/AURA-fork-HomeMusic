@@ -5,7 +5,7 @@ package defpackage;
 public interface q84 extends m84 {
     long a();
 
-    long c(long j);
+    long c(long r1);
 
     int f();
 }

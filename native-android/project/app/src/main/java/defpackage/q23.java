@@ -6,26 +6,27 @@ public final class q23 extends q42 implements if1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ n23 o;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ q23(n23 n23Var, int i) {
+    public /* synthetic */ q23(n23 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
         super(1);
-        this.n = i;
-        this.o = n23Var;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object obj) {
-        int i = this.n;
-        n23 n23Var = this.o;
-        switch (i) {
-            case 0:
-                String str = (String) obj;
-                str.getClass();
-                return Boolean.valueOf(!n23Var.b().contains(str));
-            default:
-                String str2 = (String) obj;
-                str2.getClass();
-                return Boolean.valueOf(!n23Var.b().contains(str2));
-        }
+    public final Object invoke(Object r2) {
+        int r0 = this.n;
+        n23 r1 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        String r3 = (String) r2;
+        r3.getClass();
+        return Boolean.valueOf(!r1.b().contains(r3));
+    L6:
+        String r4 = (String) r2;
+        r4.getClass();
+        return Boolean.valueOf(!r1.b().contains(r4));
     }
 }

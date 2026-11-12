@@ -8,38 +8,38 @@ import android.os.Bundle;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class o01 implements Application.ActivityLifecycleCallbacks {
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public void onActivityCreated(Activity activity, Bundle bundle) {
-        activity.getClass();
+    public void onActivityCreated(Activity r1, Bundle r2) {
+        r1.getClass();
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public void onActivityDestroyed(Activity activity) {
-        activity.getClass();
+    public void onActivityDestroyed(Activity r1) {
+        r1.getClass();
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public void onActivityPaused(Activity activity) {
-        activity.getClass();
+    public void onActivityPaused(Activity r1) {
+        r1.getClass();
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public void onActivityResumed(Activity activity) {
-        activity.getClass();
+    public void onActivityResumed(Activity r1) {
+        r1.getClass();
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
-        activity.getClass();
-        bundle.getClass();
+    public void onActivitySaveInstanceState(Activity r1, Bundle r2) {
+        r1.getClass();
+        r2.getClass();
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public void onActivityStarted(Activity activity) {
-        activity.getClass();
+    public void onActivityStarted(Activity r1) {
+        r1.getClass();
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public void onActivityStopped(Activity activity) {
-        activity.getClass();
+    public void onActivityStopped(Activity r1) {
+        r1.getClass();
     }
 }

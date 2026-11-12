@@ -13,49 +13,66 @@ public final class a04 implements wq4 {
     public final bh0 n;
     public final View o;
 
-    public a04(View view) {
-        this.o = view;
-        this.n = new bh0(view);
+    public a04(View r2) {
+        this.o = r2;
+        this.n = new bh0(r2);
     }
 
     @Override // defpackage.wq4
-    public final void b(cf4 cf4Var) {
-        this.n.b.remove(cf4Var);
+    public final void b(cf4 r1) {
+        this.n.b.remove(r1);
     }
 
     @Override // defpackage.wq4
-    public final void c(Object obj, cx4 cx4Var) {
+    public final void c(Object r1, cx4 r2) {
     }
 
     @Override // defpackage.wq4
-    public final void d(cf4 cf4Var) {
-        bh0 bh0Var = this.n;
-        ArrayList arrayList = bh0Var.b;
-        View view = bh0Var.a;
-        int paddingRight = view.getPaddingRight() + view.getPaddingLeft();
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        int iA = bh0Var.a(view.getWidth(), layoutParams != null ? layoutParams.width : 0, paddingRight);
-        int paddingBottom = view.getPaddingBottom() + view.getPaddingTop();
-        ViewGroup.LayoutParams layoutParams2 = view.getLayoutParams();
-        int iA2 = bh0Var.a(view.getHeight(), layoutParams2 != null ? layoutParams2.height : 0, paddingBottom);
-        if ((iA > 0 || iA == Integer.MIN_VALUE) && (iA2 > 0 || iA2 == Integer.MIN_VALUE)) {
-            cf4Var.m(iA, iA2);
-            return;
-        }
-        if (!arrayList.contains(cf4Var)) {
-            arrayList.add(cf4Var);
-        }
-        if (bh0Var.c == null) {
-            ViewTreeObserver viewTreeObserver = view.getViewTreeObserver();
-            ah0 ah0Var = new ah0(bh0Var);
-            bh0Var.c = ah0Var;
-            viewTreeObserver.addOnPreDrawListener(ah0Var);
-        }
+    public final void d(cf4 r7) {
+        bh0 r6 = this.n;
+        ArrayList r0 = r6.b;
+        View r1 = r6.a;
+        int r3 = r1.getPaddingRight() + r1.getPaddingLeft();
+        ViewGroup.LayoutParams r2 = r1.getLayoutParams();
+        int r4 = 0;
+        if (r2 == null) goto L5;
+        int r5 = r2.width;
+    L6:
+        int r8 = r6.a(r1.getWidth(), r5, r3);
+        int r9 = r1.getPaddingBottom() + r1.getPaddingTop();
+        ViewGroup.LayoutParams r10 = r1.getLayoutParams();
+        if (r10 == null) goto L9;
+        r4 = r10.height;
+    L9:
+        int r11 = r6.a(r1.getHeight(), r4, r9);
+        if (r8 > 0) goto L12;
+        if (r8 == Integer.MIN_VALUE) goto L12;
+    L16:
+        if (r0.contains(r7) == true) goto L19;
+        r0.add(r7);
+    L19:
+        if (r6.c != null) goto L24;
+        ViewTreeObserver r12 = r1.getViewTreeObserver();
+        ah0 r13 = new ah0(r6);
+        r6.c = r13;
+        r12.addOnPreDrawListener(r13);
+        return;
+    L24:
+        return;
+    L12:
+        if (r11 > 0) goto L22;
+        if (r11 != Integer.MIN_VALUE) goto L16;
+    L22:
+        r7.m(r8, r11);
+        return;
+    L5:
+        r5 = 0;
+        goto L6
     }
 
     @Override // defpackage.wq4
-    public final void e(pz3 pz3Var) {
-        this.o.setTag(R.id.glide_custom_view_target_tag, pz3Var);
+    public final void e(pz3 r2) {
+        this.o.setTag(R.id.glide_custom_view_target_tag, r2);
     }
 
     @Override // defpackage.z92
@@ -63,7 +80,7 @@ public final class a04 implements wq4 {
     }
 
     @Override // defpackage.wq4
-    public final void i(Drawable drawable) {
+    public final void i(Drawable r1) {
     }
 
     @Override // defpackage.z92
@@ -71,30 +88,32 @@ public final class a04 implements wq4 {
     }
 
     @Override // defpackage.wq4
-    public final void k(Drawable drawable) {
+    public final void k(Drawable r1) {
     }
 
     @Override // defpackage.wq4
     public final pz3 l() {
-        Object tag = this.o.getTag(R.id.glide_custom_view_target_tag);
-        if (tag != null) {
-            if (tag instanceof pz3) {
-                return (pz3) tag;
-            }
-            kf2.n("You must not pass non-R.id ids to setTag(id)");
-        }
+        Object r2 = this.o.getTag(R.id.glide_custom_view_target_tag);
+        if (r2 != null) goto L5;
+    L9:
         return null;
+    L5:
+        if ((r2 instanceof pz3) == true) goto L7;
+        kf2.n("You must not pass non-R.id ids to setTag(id)");
+        goto L9
+    L7:
+        return (pz3) r2;
     }
 
     @Override // defpackage.wq4
-    public final void m(Drawable drawable) {
-        bh0 bh0Var = this.n;
-        ViewTreeObserver viewTreeObserver = bh0Var.a.getViewTreeObserver();
-        if (viewTreeObserver.isAlive()) {
-            viewTreeObserver.removeOnPreDrawListener(bh0Var.c);
-        }
-        bh0Var.c = null;
-        bh0Var.b.clear();
+    public final void m(Drawable r2) {
+        bh0 r1 = this.n;
+        ViewTreeObserver r3 = r1.a.getViewTreeObserver();
+        if (r3.isAlive() == false) goto L5;
+        r3.removeOnPreDrawListener(r1.c);
+    L5:
+        r1.c = null;
+        r1.b.clear();
     }
 
     @Override // defpackage.z92

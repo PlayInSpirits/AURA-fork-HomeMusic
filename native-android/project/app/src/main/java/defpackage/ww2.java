@@ -7,7 +7,7 @@ import java.util.List;
 public final class ww2 {
     public final List a;
 
-    public ww2(List list) {
-        this.a = list;
+    public ww2(List r1) {
+        this.a = r1;
     }
 }

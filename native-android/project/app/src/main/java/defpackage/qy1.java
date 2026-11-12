@@ -12,12 +12,12 @@ public final class qy1 implements kl4 {
     public long t;
     public final /* synthetic */ ty1 u;
 
-    public qy1(ty1 ty1Var, Float f, Float f2, py1 py1Var) {
-        this.u = ty1Var;
-        this.n = f;
-        this.o = f2;
-        this.p = uc5.B(f);
-        this.q = new yq4(py1Var, this.n, this.o, null);
+    public qy1(ty1 r2, Float r3, Float r4, py1 r5) {
+        this.u = r2;
+        this.n = r3;
+        this.o = r4;
+        this.p = uc5.B(r3);
+        this.q = new yq4(r5, this.n, this.o, null);
     }
 
     @Override // defpackage.kl4

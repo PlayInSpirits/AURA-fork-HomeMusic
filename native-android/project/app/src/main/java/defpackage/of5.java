@@ -8,10 +8,10 @@ public final class of5 {
     public final long c;
     public final int d;
 
-    public of5(iw2 iw2Var, int i, long j, int i2) {
-        this.a = iw2Var;
-        this.b = i;
-        this.c = j;
-        this.d = i2;
+    public of5(iw2 r1, int r2, long r3, int r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r5;
     }
 }

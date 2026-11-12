@@ -6,6 +6,6 @@ public abstract /* synthetic */ class b91 {
     public static final /* synthetic */ int a = 0;
 
     static {
-        kb4.V("kotlinx.coroutines.flow.defaultConcurrency", 16L, 1L, 2147483647L);
+        kb4.V("kotlinx.coroutines.flow.defaultConcurrency", 16, 1, 2147483647L);
     }
 }

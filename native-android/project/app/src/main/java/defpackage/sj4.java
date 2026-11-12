@@ -27,43 +27,58 @@ public final class sj4 extends GLSurfaceView {
     public boolean w;
     public boolean x;
 
-    public sj4(Context context) {
-        super(context, null);
+    public sj4(Context r7) {
+        super(r7, null);
         this.n = new CopyOnWriteArrayList();
         this.r = new Handler(Looper.getMainLooper());
-        Object systemService = context.getSystemService("sensor");
-        systemService.getClass();
-        SensorManager sensorManager = (SensorManager) systemService;
-        this.o = sensorManager;
-        Sensor defaultSensor = sensorManager.getDefaultSensor(15);
-        this.p = defaultSensor == null ? sensorManager.getDefaultSensor(11) : defaultSensor;
-        z54 z54Var = new z54();
-        this.s = z54Var;
-        rj4 rj4Var = new rj4(this, z54Var);
-        View.OnTouchListener mv4Var = new mv4(context, rj4Var);
-        WindowManager windowManager = (WindowManager) context.getSystemService("window");
-        windowManager.getClass();
-        this.q = new kb3(windowManager.getDefaultDisplay(), mv4Var, rj4Var);
+        Object r0 = r7.getSystemService("sensor");
+        r0.getClass();
+        SensorManager r1 = (SensorManager) r0;
+        this.o = r1;
+        Sensor r2 = r1.getDefaultSensor(15);
+        if (r2 != null) goto L5;
+        r2 = r1.getDefaultSensor(11);
+    L5:
+        this.p = r2;
+        z54 r3 = new z54();
+        this.s = r3;
+        rj4 r4 = new rj4(this, r3);
+        View.OnTouchListener r5 = new mv4(r7, r4);
+        WindowManager r8 = (WindowManager) r7.getSystemService("window");
+        r8.getClass();
+        this.q = new kb3(r8.getDefaultDisplay(), new jb3[]{r5, r4});
         this.v = true;
         setEGLContextClientVersion(2);
-        setRenderer(rj4Var);
-        setOnTouchListener(mv4Var);
+        setRenderer(r4);
+        setOnTouchListener(r5);
     }
 
     public final void a() {
-        boolean z = this.v && this.w;
-        Sensor sensor = this.p;
-        if (sensor == null || z == this.x) {
-            return;
-        }
-        kb3 kb3Var = this.q;
-        SensorManager sensorManager = this.o;
-        if (z) {
-            sensorManager.registerListener(kb3Var, sensor, 0);
-        } else {
-            sensorManager.unregisterListener(kb3Var);
-        }
-        this.x = z;
+        if (this.v == true) goto L5;
+    L7:
+        boolean r0 = false;
+    L8:
+        Sensor r2 = this.p;
+        if (r2 != null) goto L11;
+        return;
+    L11:
+        if (r0 == this.x) goto L20;
+        kb3 r3 = this.q;
+        SensorManager r4 = this.o;
+        if (r0 == false) goto L16;
+        r4.registerListener(r3, r2, 0);
+    L17:
+        this.x = r0;
+        return;
+    L16:
+        r4.unregisterListener(r3);
+        goto L17
+    L20:
+        return;
+    L5:
+        if (this.w == false) goto L7;
+        r0 = true;
+        goto L8
     }
 
     public uy getCameraMotionListener() {
@@ -81,7 +96,8 @@ public final class sj4 extends GLSurfaceView {
     @Override // android.opengl.GLSurfaceView, android.view.SurfaceView, android.view.View
     public final void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        this.r.post(new jq3(10, this));
+        jq3 r0 = new jq3(10, this);
+        this.r.post(r0);
     }
 
     @Override // android.opengl.GLSurfaceView
@@ -98,12 +114,12 @@ public final class sj4 extends GLSurfaceView {
         a();
     }
 
-    public void setDefaultStereoMode(int i) {
-        this.s.x = i;
+    public void setDefaultStereoMode(int r1) {
+        this.s.x = r1;
     }
 
-    public void setUseSensorRotation(boolean z) {
-        this.v = z;
+    public void setUseSensorRotation(boolean r1) {
+        this.v = r1;
         a();
     }
 }

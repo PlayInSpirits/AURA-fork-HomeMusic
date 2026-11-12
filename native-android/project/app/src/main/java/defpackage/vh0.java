@@ -6,19 +6,26 @@ public final class vh0 {
     public long a;
     public float b;
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof vh0)) {
-            return false;
-        }
-        vh0 vh0Var = (vh0) obj;
-        return this.a == vh0Var.a && Float.compare(this.b, vh0Var.b) == 0;
+    public final boolean equals(Object r8) {
+        if (this != r8) goto L6;
+        return true;
+    L6:
+        if ((r8 instanceof vh0) == true) goto L8;
+        return false;
+    L8:
+        vh0 r9 = (vh0) r8;
+        if (this.a == r9.a) goto L12;
+        return false;
+    L12:
+        if (Float.compare(this.b, r9.b) == 0) goto L14;
+        return false;
+    L14:
+        return true;
     }
 
     public final int hashCode() {
-        return Float.hashCode(this.b) + (Long.hashCode(this.a) * 31);
+        int r0 = Long.hashCode(this.a) * 31;
+        return Float.hashCode(this.b) + r0;
     }
 
     public final String toString() {

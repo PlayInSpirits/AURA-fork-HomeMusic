@@ -8,127 +8,145 @@ public final class hw4 extends ir2 {
     public final aw f;
     public sk4 g;
 
-    public hw4(g74 g74Var, q70 q70Var, oo0 oo0Var) {
-        super(g74Var, q70Var, oo0Var);
+    public hw4(g74 r1, q70 r2, oo0 r3) {
+        super(r1, r2, r3);
         this.f = su3.a(Integer.MAX_VALUE, 6, null);
     }
 
-    /* JADX WARN: Code duplicated, block: B:8:0x0022  */
-    /* JADX WARN: Code restructure failed: missing block: B:24:0x00e2, code lost:
-    
-        if (r0.invoke(r3, r7) == r10) goto L25;
-     */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public static final Object E(hw4 hw4Var, g74 g74Var, fw4 fw4Var, wd0 wd0Var) {
-        gw4 gw4Var;
-        hw4Var.getClass();
-        rf2 rf2Var = (rf2) hw4Var.e;
-        if (wd0Var instanceof gw4) {
-            gw4Var = (gw4) wd0Var;
-            int i = gw4Var.p;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                gw4Var.p = i - Integer.MIN_VALUE;
-            } else {
-                gw4Var = new gw4(hw4Var, wd0Var);
-            }
-        } else {
-            gw4Var = new gw4(hw4Var, wd0Var);
-        }
-        gw4 gw4Var2 = gw4Var;
-        Object obj = gw4Var2.n;
-        int i2 = gw4Var2.p;
-        Object obj2 = xe0.n;
-        if (i2 != 0) {
-            if (i2 == 1) {
-                kb4.X(obj);
-            } else {
-                if (i2 != 2) {
-                    kf2.o("call to 'resume' before 'invoke' with coroutine");
-                    return null;
-                }
-                kb4.X(obj);
-            }
-            return j15.a;
-        }
-        kb4.X(obj);
-        jx3 jx3Var = new jx3();
-        jx3Var.n = fw4Var;
-        long j = fw4Var.b;
-        long j2 = fw4Var.a;
-        ((m45) rf2Var.n).a(j, Float.intBitsToFloat((int) (j2 >> 32)));
-        ((m45) rf2Var.o).a(j, Float.intBitsToFloat((int) (j2 & 4294967295L)));
-        fw4 fw4VarG = G(hw4Var.f);
-        if (fw4VarG != null) {
-            long j3 = fw4VarG.b;
-            long j4 = fw4VarG.a;
-            ((m45) rf2Var.n).a(j3, Float.intBitsToFloat((int) (j4 >> 32)));
-            ((m45) rf2Var.o).a(j3, Float.intBitsToFloat((int) (j4 & 4294967295L)));
-            jx3Var.n = ((fw4) jx3Var.n).a(fw4VarG);
-        }
-        wf1 qv3Var = new qv3(hw4Var, g74Var, jx3Var, null, 2);
-        gw4Var2.p = 1;
-        if (hw4Var.D(qv3Var, gw4Var2) != obj2) {
-        }
-        return obj2;
-        wf1 wf1Var = (wf1) hw4Var.c;
-        k45 k45Var = new k45(e35.h(((m45) rf2Var.n).b(Float.MAX_VALUE), ((m45) rf2Var.o).b(Float.MAX_VALUE)));
-        gw4Var2.p = 2;
+    public static final Object E(hw4 r16, g74 r17, fw4 r18, wd0 r19) {
+        r16.getClass();
+        rf2 r6 = (rf2) r16.e;
+        if ((r19 instanceof gw4) == false) goto L8;
+        gw4 r3 = (gw4) r19;
+        int r4 = r3.p;
+        if ((r4 & Integer.MIN_VALUE) == 0) goto L8;
+        r3.p = r4 - Integer.MIN_VALUE;
+    L7:
+        gw4 r7 = r3;
+        Object r2 = r7.n;
+        int r5 = r7.p;
+        Object r10 = xe0.n;
+        if (r5 == 0) goto L17;
+        if (r5 == 1) goto L16;
+        if (r5 != 2) goto L14;
+        kb4.X(r2);
+    L27:
+        return j15.a;
+    L14:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L16:
+        kb4.X(r2);
+    L23:
+        wf1 r0 = (wf1) r16.c;
+        k45 r8 = new k45(e35.h(((m45) r6.n).b(Float.MAX_VALUE), ((m45) r6.o).b(Float.MAX_VALUE)));
+        r7.p = 2;
+        if (r0.invoke(r8, r7) != r10) goto L27;
+    L25:
+        return r10;
+    L17:
+        kb4.X(r2);
+        jx3 r9 = new jx3();
+        r9.n = r18;
+        long r11 = r18.b;
+        long r12 = r18.a;
+        ((m45) r6.n).a(r11, Float.intBitsToFloat((int) (r12 >> 32)));
+        ((m45) r6.o).a(r11, Float.intBitsToFloat((int) (r12 & 4294967295L)));
+        fw4 r1 = G(r16.f);
+        if (r1 == null) goto L20;
+        long r13 = r1.b;
+        long r14 = r1.a;
+        ((m45) r6.n).a(r13, Float.intBitsToFloat((int) (r14 >> 32)));
+        ((m45) r6.o).a(r13, Float.intBitsToFloat((int) (r14 & 4294967295L)));
+        r9.n = ((fw4) r9.n).a(r1);
+    L20:
+        wf1 r15 = new qv3(r16, r17, r9, null, 2);
+        r7.p = 1;
+        if (r16.D(r15, r7) != r10) goto L23;
+    L8:
+        r3 = new gw4(r16, r19);
+        goto L7
     }
 
-    public static fw4 G(aw awVar) {
-        fw4 fw4Var = null;
-        ba4 ba4VarC = si0.C(new kb1(new by2(awVar, 1), null));
-        while (ba4VarC.hasNext()) {
-            fw4 fw4VarA = (fw4) ba4VarC.next();
-            if (fw4Var != null) {
-                fw4VarA = fw4Var.a(fw4VarA);
-            }
-            fw4Var = fw4VarA;
-        }
-        return fw4Var;
+    public static fw4 G(aw r2) {
+        fw4 r1 = null;
+        ba4 r3 = si0.C(new kb1(new by2(r2, 1), null));
+    L4:
+        if (r3.hasNext() == false) goto L9;
+        fw4 r0 = (fw4) r3.next();
+        if (r1 == null) goto L7;
+        r0 = r1.a(r0);
+    L7:
+        r1 = r0;
+        goto L4
+    L9:
+        return r1;
     }
 
-    public final boolean F(kn3 kn3Var) {
-        boolean z;
-        boolean z2;
-        boolean z3;
-        aw awVar;
-        g74 g74Var = (g74) this.b;
-        on3 on3Var = (on3) q40.x0(kn3Var.a);
-        if (on3Var != null) {
-            List listB = on3Var.b();
-            int size = listB.size();
-            int i = 0;
-            z3 = false;
-            while (true) {
-                awVar = this.f;
-                if (i >= size) {
-                    break;
-                }
-                bm1 bm1Var = (bm1) listB.get(i);
-                long j = bm1Var.d ^ (-9223372034707292160L);
-                if (!(g74Var.j(g74Var.f(j)) == 0.0f)) {
-                    z3 = !(awVar.d(new fw4(j, bm1Var.a, false)) instanceof i10) || z3;
-                }
-                i++;
-            }
-            z = true;
-            z2 = false;
-            long j2 = on3Var.l ^ (-9223372034707292160L);
-            boolean z4 = kn3Var.c == 12;
-            if (!(g74Var.j(g74Var.f(j2)) == 0.0f) || z4) {
-                if (!(awVar.d(new fw4(j2, on3Var.b, z4)) instanceof i10) || z3) {
-                    z3 = true;
-                }
-            }
-            return (!z3 || this.a) ? z : z2;
-        }
-        z = true;
-        z2 = false;
-        z3 = z2;
-        if (z3) {
-        }
+    public final boolean F(kn3 r24) {
+        g74 r2 = (g74) this.b;
+        on3 r3 = (on3) q40.x0(r24.a);
+        if (r3 == null) goto L33;
+        List r6 = r3.b();
+        int r7 = r6.size();
+        int r8 = 0;
+        boolean r9 = false;
+    L5:
+        aw r11 = this.f;
+        if (r8 >= r7) goto L19;
+        bm1 r14 = (bm1) r6.get(r8);
+        long r4 = r14.d ^ (-9223372034707292160L);
+        if (r2.j(r2.f(r4)) != 0.0f) goto L10;
+        boolean r10 = true;
+    L11:
+        if (r10 == true) goto L18;
+        if ((r11.d(new fw4(r4, r14.a, false)) instanceof i10) == false) goto L17;
+        if (r9 == true) goto L17;
+        r9 = false;
+    L17:
+        r9 = true;
+    L18:
+        r8 = r8 + 1;
+        goto L5
+    L10:
+        r10 = false;
+        goto L11
+    L19:
+        boolean r15 = true;
+        boolean r16 = false;
+        long r5 = r3.l ^ (-9223372034707292160L);
+        if (r24.c != 12) goto L22;
+        boolean r22 = true;
+    L24:
+        if (r2.j(r2.f(r5)) != 0.0f) goto L26;
+        boolean r1 = true;
+    L27:
+        if (r1 == false) goto L30;
+        if (r22 == true) goto L30;
+    L35:
+        if (r9 == false) goto L37;
+    L40:
+        return r15;
+    L37:
+        if (this.a == true) goto L40;
+        return r16;
+    L30:
+        if ((r11.d(new fw4(r5, r3.b, r22)) instanceof i10) == false) goto L32;
+        if (r9 == true) goto L32;
+    L34:
+        r9 = r16;
+    L32:
+        r9 = true;
+        goto L35
+    L26:
+        r1 = false;
+        goto L27
+    L22:
+        r22 = false;
+        goto L24
+    L33:
+        r15 = true;
+        r16 = false;
+        goto L34
     }
 }

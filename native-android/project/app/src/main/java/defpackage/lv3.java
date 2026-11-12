@@ -11,40 +11,55 @@ public final class lv3 {
     public p03 f;
     public w03 g;
 
-    public lv3(z80 z80Var) {
-        this.a = z80Var;
+    public lv3(z80 r1) {
+        this.a = r1;
     }
 
     public final boolean a() {
-        if (this.a != null) {
-            mg1 mg1Var = this.c;
-            if (mg1Var != null ? mg1Var.a() : false) {
-                return true;
-            }
-        }
+        if (this.a == null) goto L11;
+        mg1 r2 = this.c;
+        if (r2 == null) goto L7;
+        boolean r3 = r2.a();
+    L8:
+        if (r3 == false) goto L11;
+        return true;
+    L7:
+        r3 = false;
+    L11:
         return false;
     }
 
-    public final p12 b(Object obj) {
-        p12 p12VarS;
-        z80 z80Var = this.a;
-        return (z80Var == null || (p12VarS = z80Var.s(this, obj)) == null) ? p12.n : p12VarS;
+    public final p12 b(Object r2) {
+        z80 r0 = this.a;
+        if (r0 == null) goto L9;
+        p12 r1 = r0.s(this, r2);
+        if (r1 == null) goto L9;
+        return r1;
+    L9:
+        return p12.n;
     }
 
     public final void c() {
-        z80 z80Var = this.a;
-        if (z80Var != null) {
-            z80Var.B = true;
-            z80Var.G.r();
-        }
+        z80 r0 = this.a;
+        if (r0 == null) goto L5;
+        r0.B = true;
+        r0.G.r();
+    L5:
         this.a = null;
         this.f = null;
         this.g = null;
         this.d = null;
     }
 
-    public final void d(boolean z) {
-        int i = this.b;
-        this.b = z ? i | 32 : i & (-33);
+    public final void d(boolean r2) {
+        int r0 = this.b;
+        if (r2 == false) goto L5;
+        int r3 = r0 | 32;
+    L6:
+        this.b = r3;
+        return;
+    L5:
+        r3 = r0 & (-33);
+        goto L6
     }
 }

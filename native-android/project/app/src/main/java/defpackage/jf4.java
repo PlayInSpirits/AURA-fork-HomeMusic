@@ -14,40 +14,46 @@ public final class jf4 extends rp {
     public jf4() {
         super(4);
         this.g = new kl3(10, this);
-        z zVar = new z(12, this);
+        z r0 = new z(12, this);
         jh4.e(jh4.a);
-        synchronized (jh4.c) {
-            jh4.h = q40.F0(zVar, jh4.h);
-        }
-        this.h = new ss2(18, zVar);
+        Object r1 = jh4.c;
+        monitor-enter(r1);
+        jh4.h = q40.F0(r0, jh4.h);     // Catch: Throwable -> L8
+        monitor-exit(r1);
+        this.h = new ss2(18, r0);
+        return;
+    L8:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.rp
-    public final void e(y94 y94Var) {
+    public final void e(y94 r1) {
         this.c = null;
         this.e = null;
     }
 
     @Override // defpackage.rp
     public final void f() {
-        synchronized (this.a) {
-            try {
-                this.b = this.c;
-                if (this.e == null) {
-                    this.d = null;
-                } else {
-                    if (this.d == null) {
-                        x03 x03Var = w54.a;
-                        this.d = new x03();
-                    }
-                    x03 x03Var2 = this.d;
-                    this.d = this.e;
-                    this.e = x03Var2;
-                }
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+        Object r0 = this.a;
+        monitor-enter(r0);
+        this.b = this.c;     // Catch: Throwable -> L7
+        if (this.e != null) goto L10;
+        this.d = null;     // Catch: Throwable -> L7
+    L13:
+        monitor-exit(r0);
+        return;
+    L10:
+        if (this.d != null) goto L12;
+        x03 r1 = w54.a;     // Catch: Throwable -> L7
+        this.d = new x03();     // Catch: Throwable -> L7
+    L12:
+        x03 r2 = this.d;     // Catch: Throwable -> L7
+        this.d = this.e;     // Catch: Throwable -> L7
+        this.e = r2;     // Catch: Throwable -> L7
+    L7:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.rp
@@ -55,25 +61,33 @@ public final class jf4 extends rp {
         this.h.d();
         this.c = null;
         this.e = null;
-        synchronized (this.a) {
-            this.f = null;
-            this.b = null;
-            this.d = null;
-        }
+        Object r1 = this.a;
+        monitor-enter(r1);
+        this.f = null;     // Catch: Throwable -> L7
+        this.b = null;     // Catch: Throwable -> L7
+        this.d = null;     // Catch: Throwable -> L7
+        monitor-exit(r1);
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.rp
-    public final if1 m(y94 y94Var) {
-        y94 y94Var2 = this.f;
-        if (y94Var2 != null && !y94Var2.equals(y94Var)) {
-            oo3.b("Requested a SingleSubscriptionSnapshotFlowManager to manage multiple subscriptions");
-        }
-        this.f = y94Var;
+    public final if1 m(y94 r2) {
+        y94 r0 = this.f;
+        if (r0 != null) goto L5;
+    L8:
+        this.f = r2;
         return this.g;
+    L5:
+        if (r0.equals(r2) == true) goto L8;
+        oo3.b("Requested a SingleSubscriptionSnapshotFlowManager to manage multiple subscriptions");
+        goto L8
     }
 
     @Override // defpackage.rp
-    public final void n(y00 y00Var) {
+    public final void n(y00 r1) {
         this.f = null;
         this.c = null;
         this.e = null;

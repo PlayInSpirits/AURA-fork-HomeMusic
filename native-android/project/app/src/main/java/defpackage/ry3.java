@@ -7,15 +7,14 @@ public final class ry3 extends wd0 {
     public final /* synthetic */ sy3 o;
     public int p;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public ry3(sy3 sy3Var, wd0 wd0Var) {
-        super(wd0Var);
-        this.o = sy3Var;
+    public ry3(sy3 r1, wd0 r2) {
+        this.o = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.n = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.n = r2;
         this.p |= Integer.MIN_VALUE;
         return this.o.a(0.0f, this);
     }

@@ -9,75 +9,88 @@ public final class fr3 implements q44 {
     public final int n;
     public final /* synthetic */ hr3 o;
 
-    public fr3(hr3 hr3Var, int i) {
-        this.o = hr3Var;
-        this.n = i;
+    public fr3(hr3 r1, int r2) {
+        this.o = r1;
+        this.n = r2;
     }
 
     @Override // defpackage.q44
     public final boolean c() {
-        hr3 hr3Var = this.o;
-        return !hr3Var.G() && hr3Var.I[this.n].s(hr3Var.c0);
+        hr3 r0 = this.o;
+        if (r0.G() == false) goto L5;
+        return false;
+    L5:
+        if (r0.I[this.n].s(r0.c0) == false) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     @Override // defpackage.q44
-    public final void s() throws IOException {
-        int i = this.n;
-        hr3 hr3Var = this.o;
-        p44 p44Var = hr3Var.I[i];
-        pw0 pw0Var = p44Var.h;
-        if (pw0Var != null && pw0Var.getState() == 1) {
-            DrmSession$DrmSessionException drmSession$DrmSessionExceptionG = p44Var.h.g();
-            drmSession$DrmSessionExceptionG.getClass();
-            throw drmSession$DrmSessionExceptionG;
-        }
-        i61 i61Var = hr3Var.z;
-        int iD = hr3Var.q.D(hr3Var.S);
-        IOException iOException = (IOException) i61Var.q;
-        if (iOException != null) {
-            throw iOException;
-        }
-        id2 id2Var = (id2) i61Var.p;
-        if (id2Var != null) {
-            if (iD == Integer.MIN_VALUE) {
-                iD = id2Var.n;
-            }
-            IOException iOException2 = id2Var.r;
-            if (iOException2 != null && id2Var.s > iD) {
-                throw iOException2;
-            }
-        }
+    public final void s() {
+        int r0 = this.n;
+        hr3 r3 = this.o;
+        p44 r1 = r3.I[r0];
+        pw0 r2 = r1.h;
+        if (r2 != null) goto L5;
+    L9:
+        i61 r4 = r3.z;
+        int r5 = r3.q.D(r3.S);
+        IOException r6 = (IOException) r4.q;
+        if (r6 != null) goto L23;
+        id2 r7 = (id2) r4.p;
+        if (r7 != null) goto L14;
+        return;
+    L14:
+        if (r5 != Integer.MIN_VALUE) goto L16;
+        r5 = r7.n;
+    L16:
+        IOException r8 = r7.r;
+        if (r8 != null) goto L19;
+        return;
+    L19:
+        if (r7.s <= r5) goto L25;
+        throw r8;
+    L25:
+        return;
+    L23:
+        throw r6;
+    L5:
+        if (r2.getState() != 1) goto L9;
+        DrmSession$DrmSessionException r9 = r1.h.g();
+        r9.getClass();
+        throw r9;
     }
 
     @Override // defpackage.q44
-    public final int t(gp3 gp3Var, cj0 cj0Var, int i) {
-        hr3 hr3Var = this.o;
-        if (hr3Var.G()) {
-            return -3;
-        }
-        int i2 = this.n;
-        hr3Var.B(i2);
-        int iW = hr3Var.I[i2].w(gp3Var, cj0Var, i, hr3Var.c0);
-        if (iW == -3) {
-            hr3Var.C(i2);
-        }
-        return iW;
+    public final int t(gp3 r5, cj0 r6, int r7) {
+        hr3 r0 = this.o;
+        if (r0.G() == false) goto L5;
+        return -3;
+    L5:
+        int r4 = this.n;
+        r0.B(r4);
+        int r8 = r0.I[r4].w(r5, r6, r7, r0.c0);
+        if (r8 != (-3)) goto L8;
+        r0.C(r4);
+    L8:
+        return r8;
     }
 
     @Override // defpackage.q44
-    public final int u(long j) {
-        hr3 hr3Var = this.o;
-        if (hr3Var.G()) {
-            return 0;
-        }
-        int i = this.n;
-        hr3Var.B(i);
-        p44 p44Var = hr3Var.I[i];
-        int iQ = p44Var.q(hr3Var.c0, j);
-        p44Var.A(iQ);
-        if (iQ == 0) {
-            hr3Var.C(i);
-        }
-        return iQ;
+    public final int u(long r4) {
+        hr3 r0 = this.o;
+        if (r0.G() == false) goto L6;
+        return 0;
+    L6:
+        int r3 = this.n;
+        r0.B(r3);
+        p44 r1 = r0.I[r3];
+        int r5 = r1.q(r0.c0, r4);
+        r1.A(r5);
+        if (r5 != 0) goto L9;
+        r0.C(r3);
+    L9:
+        return r5;
     }
 }

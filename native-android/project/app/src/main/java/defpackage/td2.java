@@ -6,38 +6,40 @@ import java.lang.reflect.Method;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class td2 {
-    public static final qr3 a;
+    public static final qr3 a = null;
 
     static {
-        Object s14Var;
-        try {
-            ClassLoader classLoader = j54.class.getClassLoader();
-            classLoader.getClass();
-            Method method = classLoader.loadClass("androidx.compose.ui.platform.AndroidCompositionLocals_androidKt").getMethod("getLocalSavedStateRegistryOwner", null);
-            Annotation[] annotations = method.getAnnotations();
-            annotations.getClass();
-            int length = annotations.length;
-            int i = 0;
-            while (true) {
-                if (i >= length) {
-                    Object objInvoke = method.invoke(null, null);
-                    if (objInvoke instanceof qr3) {
-                        s14Var = (qr3) objInvoke;
-                        break;
-                    }
-                } else if (!(annotations[i] instanceof zo0)) {
-                    i++;
-                }
-                s14Var = null;
-                break;
-            }
-        } catch (Throwable th) {
-            s14Var = new s14(th);
-        }
-        qr3 wl4Var = (qr3) (s14Var instanceof s14 ? null : s14Var);
-        if (wl4Var == null) {
-            wl4Var = new wl4(new rd2(1));
-        }
-        a = wl4Var;
+        Object r0 = null;
+        ClassLoader r1 = j54.class.getClassLoader();     // Catch: Throwable -> L9
+        r1.getClass();     // Catch: Throwable -> L9
+        Method r2 = r1.loadClass("androidx.compose.ui.platform.AndroidCompositionLocals_androidKt").getMethod("getLocalSavedStateRegistryOwner", null);     // Catch: Throwable -> L9
+        Annotation[] r3 = r2.getAnnotations();     // Catch: Throwable -> L9
+        r3.getClass();     // Catch: Throwable -> L9
+        int r4 = r3.length;     // Catch: Throwable -> L9
+        int r5 = 0;
+    L4:
+        if (r5 >= r4) goto L11;
+        if ((r3[r5] instanceof zo0) == true) goto L7;
+        r5 = r5 + 1;     // Catch: Throwable -> L9
+    L7:
+        Object r6 = null;
+    L17:
+        if ((r6 instanceof s14) == true) goto L20;
+        r0 = r6;
+    L20:
+        qr3 r7 = (qr3) r0;
+        if (r7 != null) goto L23;
+        r7 = new wl4(new rd2(1));
+    L23:
+        a = r7;
+        return;
+    L11:
+        Object r8 = r2.invoke(null, null);     // Catch: Throwable -> L9
+        if ((r8 instanceof qr3) == false) goto L7;
+        r6 = (qr3) r8;     // Catch: Throwable -> L9
+    L9:
+        th = move-exception;
+        r6 = new s14(th);
+        goto L17
     }
 }

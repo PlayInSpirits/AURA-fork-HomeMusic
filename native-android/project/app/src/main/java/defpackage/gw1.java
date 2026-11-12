@@ -6,24 +6,31 @@ public final class gw1 {
     public final fw1 a;
     public final int b;
 
-    public gw1(fw1 fw1Var, int i) {
-        this.a = fw1Var;
-        this.b = i;
+    public gw1(fw1 r1, int r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof gw1)) {
-            return false;
-        }
-        gw1 gw1Var = (gw1) obj;
-        return this.a.equals(gw1Var.a) && this.b == gw1Var.b;
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof gw1) == false) goto L16;
+        gw1 r4 = (gw1) r3;
+        if (this.a.equals(r4.a) == true) goto L11;
+        return false;
+    L11:
+        if (this.b == r4.b) goto L14;
+        return false;
+    L14:
+        return true;
+    L16:
+        return false;
     }
 
     public final int hashCode() {
-        return Integer.hashCode(this.b) + (this.a.hashCode() * 31);
+        int r0 = this.a.hashCode() * 31;
+        return Integer.hashCode(this.b) + r0;
     }
 
     public final String toString() {

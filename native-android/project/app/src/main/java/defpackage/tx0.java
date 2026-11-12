@@ -16,16 +16,16 @@ public final class tx0 {
     public final int i;
     public final SparseArray j;
 
-    public tx0(int i, boolean z, int i2, int i3, int i4, int i5, int i6, int i7, int i8, SparseArray sparseArray) {
-        this.a = i;
-        this.b = z;
-        this.c = i2;
-        this.d = i3;
-        this.e = i4;
-        this.f = i5;
-        this.g = i6;
-        this.h = i7;
-        this.i = i8;
-        this.j = sparseArray;
+    public tx0(int r1, boolean r2, int r3, int r4, int r5, int r6, int r7, int r8, int r9, SparseArray r10) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
+        this.j = r10;
     }
 }

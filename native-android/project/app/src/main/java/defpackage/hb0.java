@@ -3,121 +3,140 @@ package defpackage;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class hb0 {
+    public HashSet a;
     public int b;
     public boolean c;
     public final jc0 d;
     public final int e;
     public hb0 f;
+    public int g;
+    public int h;
     public ai4 i;
-    public HashSet a = null;
-    public int g = 0;
-    public int h = Integer.MIN_VALUE;
 
-    public hb0(jc0 jc0Var, int i) {
-        this.d = jc0Var;
-        this.e = i;
+    public hb0(jc0 r2, int r3) {
+        this.a = null;
+        this.g = 0;
+        this.h = Integer.MIN_VALUE;
+        this.d = r2;
+        this.e = r3;
     }
 
-    public final void a(hb0 hb0Var, int i, int i2) {
-        if (hb0Var == null) {
-            g();
-            return;
-        }
-        this.f = hb0Var;
-        if (hb0Var.a == null) {
-            hb0Var.a = new HashSet();
-        }
-        HashSet hashSet = this.f.a;
-        if (hashSet != null) {
-            hashSet.add(this);
-        }
-        this.g = i;
-        this.h = i2;
+    public final void a(hb0 r2, int r3, int r4) {
+        if (r2 != null) goto L5;
+        g();
+        return;
+    L5:
+        this.f = r2;
+        if (r2.a != null) goto L8;
+        r2.a = new HashSet();
+    L8:
+        HashSet r5 = this.f.a;
+        if (r5 == null) goto L11;
+        r5.add(this);
+    L11:
+        this.g = r3;
+        this.h = r4;
     }
 
-    public final void b(int i, aa5 aa5Var, ArrayList arrayList) {
-        HashSet hashSet = this.a;
-        if (hashSet != null) {
-            Iterator it = hashSet.iterator();
-            while (it.hasNext()) {
-                gi1.n(((hb0) it.next()).d, i, arrayList, aa5Var);
-            }
-        }
+    public final void b(int r2, aa5 r3, ArrayList r4) {
+        HashSet r1 = this.a;
+        if (r1 == null) goto L8;
+        Iterator r5 = r1.iterator();
+    L6:
+        if (r5.hasNext() == false) goto L10;
+        gi1.n(((hb0) r5.next()).d, r2, r4, r3);
+        goto L6
+    L10:
+        return;
     }
 
     public final int c() {
-        if (this.c) {
-            return this.b;
-        }
+        if (this.c == true) goto L7;
         return 0;
+    L7:
+        return this.b;
     }
 
     public final int d() {
-        hb0 hb0Var;
-        if (this.d.f0 == 8) {
-            return 0;
-        }
-        int i = this.h;
-        return (i == Integer.MIN_VALUE || (hb0Var = this.f) == null || hb0Var.d.f0 != 8) ? this.g : i;
+        if (this.d.f0 != 8) goto L6;
+        return 0;
+    L6:
+        int r0 = this.h;
+        if (r0 == Integer.MIN_VALUE) goto L14;
+        hb0 r2 = this.f;
+        if (r2 == null) goto L14;
+        if (r2.d.f0 != 8) goto L14;
+        return r0;
+    L14:
+        return this.g;
     }
 
     public final boolean e() {
-        hb0 hb0Var;
-        HashSet<hb0> hashSet = this.a;
-        if (hashSet == null) {
-            return false;
-        }
-        for (hb0 hb0Var2 : hashSet) {
-            jc0 jc0Var = hb0Var2.d;
-            int i = hb0Var2.e;
-            switch (xa3.w(i)) {
-                case 0:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                    hb0Var = null;
-                    break;
-                case 1:
-                    hb0Var = jc0Var.J;
-                    break;
-                case 2:
-                    hb0Var = jc0Var.K;
-                    break;
-                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                    hb0Var = jc0Var.H;
-                    break;
-                case 4:
-                    hb0Var = jc0Var.I;
-                    break;
-                default:
-                    throw new AssertionError(xa3.v(i));
-            }
-            if (hb0Var.f()) {
-                return true;
-            }
-        }
+        HashSet r3 = this.a;
+        if (r3 == null) goto L21;
+        Iterator r4 = r3.iterator();
+    L7:
+        if (r4.hasNext() == false) goto L27;
+        hb0 r0 = (hb0) r4.next();
+        jc0 r1 = r0.d;
+        int r2 = r0.e;
+        switch(xa3.w(r2)) {
+            case 0: goto L16;
+            case 1: goto L15;
+            case 2: goto L14;
+            case 3: goto L13;
+            case 4: goto L12;
+            case 5: goto L16;
+            case 6: goto L16;
+            case 7: goto L16;
+            case 8: goto L16;
+            default: goto L11;
+        };
+    L12:
+        hb0 r5 = r1.I;
+    L18:
+        if (r5.f() == false) goto L7;
+        return true;
+    L13:
+        r5 = r1.H;
+        goto L18
+    L14:
+        r5 = r1.K;
+        goto L18
+    L15:
+        r5 = r1.J;
+        goto L18
+    L16:
+        r5 = null;
+        goto L18
+    L11:
+        throw new AssertionError(xa3.v(r2));
+    L27:
+        return false;
+    L21:
         return false;
     }
 
     public final boolean f() {
-        return this.f != null;
+        if (this.f == null) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     public final void g() {
-        HashSet hashSet;
-        hb0 hb0Var = this.f;
-        if (hb0Var != null && (hashSet = hb0Var.a) != null) {
-            hashSet.remove(this);
-            if (this.f.a.size() == 0) {
-                this.f.a = null;
-            }
-        }
+        hb0 r0 = this.f;
+        if (r0 == null) goto L9;
+        HashSet r1 = r0.a;
+        if (r1 == null) goto L9;
+        r1.remove(this);
+        if (this.f.a.size() != 0) goto L9;
+        this.f.a = null;
+    L9:
         this.a = null;
         this.f = null;
         this.g = 0;
@@ -127,16 +146,16 @@ public final class hb0 {
     }
 
     public final void h() {
-        ai4 ai4Var = this.i;
-        if (ai4Var == null) {
-            this.i = new ai4(1);
-        } else {
-            ai4Var.c();
-        }
+        ai4 r0 = this.i;
+        if (r0 != null) goto L6;
+        this.i = new ai4(1);
+        return;
+    L6:
+        r0.c();
     }
 
-    public final void i(int i) {
-        this.b = i;
+    public final void i(int r1) {
+        this.b = r1;
         this.c = true;
     }
 

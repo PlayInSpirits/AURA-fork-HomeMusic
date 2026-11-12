@@ -10,21 +10,27 @@ public final class f44 implements Map.Entry {
     public f44 p;
     public f44 q;
 
-    public f44(Object obj, Object obj2) {
-        this.n = obj;
-        this.o = obj2;
+    public f44(Object r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // java.util.Map.Entry
-    public final boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof f44)) {
-            return false;
-        }
-        f44 f44Var = (f44) obj;
-        return this.n.equals(f44Var.n) && this.o.equals(f44Var.o);
+    public final boolean equals(Object r3) {
+        if (r3 != this) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof f44) == false) goto L17;
+        f44 r4 = (f44) r3;
+        if (this.n.equals(r4.n) == true) goto L10;
+        return false;
+    L10:
+        if (this.o.equals(r4.o) == false) goto L16;
+        return true;
+    L16:
+        return false;
+    L17:
+        return false;
     }
 
     @Override // java.util.Map.Entry
@@ -39,11 +45,12 @@ public final class f44 implements Map.Entry {
 
     @Override // java.util.Map.Entry
     public final int hashCode() {
-        return this.o.hashCode() ^ this.n.hashCode();
+        int r0 = this.n.hashCode();
+        return this.o.hashCode() ^ r0;
     }
 
     @Override // java.util.Map.Entry
-    public final Object setValue(Object obj) {
+    public final Object setValue(Object r1) {
         throw new UnsupportedOperationException("An entry modification is not supported");
     }
 

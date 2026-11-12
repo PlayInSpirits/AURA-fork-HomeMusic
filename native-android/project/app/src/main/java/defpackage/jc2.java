@@ -8,22 +8,23 @@ public final /* synthetic */ class jc2 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ AtomicBoolean o;
 
-    public /* synthetic */ jc2(AtomicBoolean atomicBoolean, int i) {
-        this.n = i;
-        this.o = atomicBoolean;
+    public /* synthetic */ jc2(AtomicBoolean r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        AtomicBoolean atomicBoolean = this.o;
-        switch (i) {
-            case 0:
-                atomicBoolean.set(true);
-                break;
-            default:
-                atomicBoolean.set(true);
-                break;
-        }
+        int r0 = this.n;
+        AtomicBoolean r2 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r2.set(true);
+        return;
+    L6:
+        r2.set(true);
     }
 }

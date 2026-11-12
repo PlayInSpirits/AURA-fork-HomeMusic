@@ -6,23 +6,24 @@ public final /* synthetic */ class y31 implements qc2 {
     public final /* synthetic */ int n;
     public final /* synthetic */ cw4 o;
 
-    public /* synthetic */ y31(cw4 cw4Var, int i) {
-        this.n = i;
-        this.o = cw4Var;
+    public /* synthetic */ y31(cw4 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.qc2
-    public final void invoke(Object obj) {
-        int i = this.n;
-        cw4 cw4Var = this.o;
-        oi3 oi3Var = (oi3) obj;
-        switch (i) {
-            case 0:
-                oi3Var.o(cw4Var);
-                break;
-            default:
-                oi3Var.o(cw4Var);
-                break;
-        }
+    public final void invoke(Object r2) {
+        int r0 = this.n;
+        cw4 r1 = this.o;
+        oi3 r3 = (oi3) r2;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r3.o(r1);
+        return;
+    L6:
+        r3.o(r1);
     }
 }

@@ -9,48 +9,48 @@ import android.text.TextUtils;
 public final class ms2 {
     public final os2 a;
 
-    public ms2(MediaSessionManager.RemoteUserInfo remoteUserInfo) {
-        String packageName = remoteUserInfo.getPackageName();
-        if (packageName == null) {
-            nz2.n("package shouldn't be null");
-            throw null;
-        }
-        if (TextUtils.isEmpty(packageName)) {
-            kf2.n("packageName should be nonempty");
-            throw null;
-        }
-        this.a = new ns2(remoteUserInfo.getPackageName(), remoteUserInfo.getPid(), remoteUserInfo.getUid());
+    public ms2(MediaSessionManager.RemoteUserInfo r4) {
+        String r0 = sr0.o(r4);
+        if (r0 != null) goto L5;
+        nz2.n("package shouldn't be null");
+        throw null;
+    L5:
+        if (TextUtils.isEmpty(r0) == true) goto L8;
+        this.a = new ns2(sr0.o(r4), sr0.b(r4), sr0.u(r4));
+        return;
+    L8:
+        kf2.n("packageName should be nonempty");
+        throw null;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof ms2)) {
-            return false;
-        }
-        return this.a.equals(((ms2) obj).a);
+    public final boolean equals(Object r2) {
+        if (this != r2) goto L6;
+        return true;
+    L6:
+        if ((r2 instanceof ms2) == true) goto L9;
+        return false;
+    L9:
+        os2 r3 = ((ms2) r2).a;
+        return this.a.equals(r3);
     }
 
     public final int hashCode() {
         return this.a.hashCode();
     }
 
-    public ms2(String str, int i, int i2) {
-        if (str != null) {
-            if (!TextUtils.isEmpty(str)) {
-                if (Build.VERSION.SDK_INT >= 28) {
-                    this.a = new ns2(str, i, i2);
-                    return;
-                } else {
-                    this.a = new os2(str, i, i2);
-                    return;
-                }
-            }
-            kf2.n("packageName should be nonempty");
-            throw null;
-        }
+    public ms2(String r3, int r4, int r5) {
+        if (r3 != null) goto L5;
         nz2.n("package shouldn't be null");
         throw null;
+    L5:
+        if (TextUtils.isEmpty(r3) == false) goto L7;
+        kf2.n("packageName should be nonempty");
+        throw null;
+    L7:
+        if (Build.VERSION.SDK_INT < 28) goto L10;
+        this.a = new ns2(r3, r4, r5);
+        return;
+    L10:
+        this.a = new os2(r3, r4, r5);
     }
 }

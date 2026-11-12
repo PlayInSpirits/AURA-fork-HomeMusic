@@ -10,137 +10,147 @@ import com.eddyizm.tempus.service.MediaService;
 /* JADX INFO: loaded from: classes.dex */
 public final class yf4 {
     public static yf4 j;
+    public final Handler a;
     public jq3 b;
+    public volatile boolean c;
     public ua4 d;
     public long e;
     public boolean f;
     public boolean g;
     public vj3 h;
     public zh0 i;
-    public final Handler a = new Handler(Looper.getMainLooper());
-    public volatile boolean c = false;
 
     public yf4() {
-        SharedPreferences sharedPreferencesC;
-        this.e = 0L;
+        this.a = new Handler(Looper.getMainLooper());
+        this.c = false;
+        this.e = 0;
         this.f = false;
         this.g = false;
-        try {
-            App.b().getClass();
-            sharedPreferencesC = App.c();
-        } catch (Exception unused) {
-            sharedPreferencesC = null;
-        }
-        if (sharedPreferencesC == null) {
-            return;
-        }
-        boolean z = sharedPreferencesC.getBoolean("sleep_timer_end_of_track", false);
-        long j2 = sharedPreferencesC.getLong("sleep_timer_end_time_ms", 0L);
-        if (z) {
-            this.g = true;
-            this.f = true;
-        } else {
-            if (j2 <= System.currentTimeMillis()) {
-                b();
-                return;
-            }
-            this.e = j2;
-            this.f = true;
-            jq3 jq3Var = new jq3(8, this);
-            this.b = jq3Var;
-            this.a.postDelayed(jq3Var, 1000L);
-        }
+        App.b().getClass();     // Catch: Exception -> L5
+        SharedPreferences r3 = App.c();     // Catch: Exception -> L5
+    L6:
+        if (r3 != null) goto L8;
+        return;
+    L8:
+        boolean r0 = r3.getBoolean("sleep_timer_end_of_track", false);
+        long r1 = r3.getLong("sleep_timer_end_time_ms", 0);
+        if (r0 == false) goto L13;
+        this.g = true;
+        this.f = true;
+        return;
+    L13:
+        if (r1 <= System.currentTimeMillis()) goto L16;
+        this.e = r1;
+        this.f = true;
+        jq3 r2 = new jq3(8, this);
+        this.b = r2;
+        this.a.postDelayed(r2, 1000);
+        return;
+    L16:
+        b();
+        return;
+    L5:
+        r3 = null;
+        goto L6
     }
 
     public static void b() {
-        SharedPreferences sharedPreferencesC;
-        try {
-            App.b().getClass();
-            sharedPreferencesC = App.c();
-        } catch (Exception unused) {
-            sharedPreferencesC = null;
-        }
-        if (sharedPreferencesC == null) {
-            return;
-        }
-        sharedPreferencesC.edit().remove("sleep_timer_end_time_ms").remove("sleep_timer_end_of_track").apply();
+        App.b().getClass();     // Catch: Exception -> L4
+        SharedPreferences r0 = App.c();     // Catch: Exception -> L4
+    L5:
+        if (r0 != null) goto L7;
+        return;
+    L7:
+        r0.edit().remove("sleep_timer_end_time_ms").remove("sleep_timer_end_of_track").apply();
+        return;
+    L4:
+        r0 = null;
+        goto L5
     }
 
     public static yf4 c() {
-        if (j == null) {
-            j = new yf4();
-        }
+        if (j != null) goto L6;
+        j = new yf4();
+    L6:
         return j;
     }
 
-    public final void a(boolean z) {
-        vj3 vj3Var;
+    public final void a(boolean r3) {
         this.f = false;
         this.g = false;
-        this.e = 0L;
+        this.e = 0;
         this.c = true;
-        jq3 jq3Var = this.b;
-        if (jq3Var != null) {
-            this.a.removeCallbacks(jq3Var);
-            this.b = null;
-        }
+        jq3 r0 = this.b;
+        if (r0 == null) goto L5;
+        this.a.removeCallbacks(r0);
+        this.b = null;
+    L5:
         f();
         b();
-        if (!z || (vj3Var = this.h) == null) {
-            return;
-        }
-        vj3Var.a.x0();
+        if (r3 == false) goto L11;
+        vj3 r2 = this.h;
+        if (r2 == null) goto L12;
+        r2.a.x0();
+        return;
+    L12:
+        return;
     }
 
     public final String d() {
-        boolean z;
-        boolean z2 = this.f;
-        if (!z2 || (z = this.g)) {
-            return "";
-        }
-        long jMax = 0;
-        if (z2 && !z) {
-            jMax = Math.max(0L, this.e - System.currentTimeMillis());
-        }
-        return String.format("%d:%02d", Long.valueOf(jMax / 60000), Long.valueOf((jMax % 60000) / 1000));
+        boolean r0 = this.f;
+        if (r0 == false) goto L14;
+        boolean r1 = this.g;
+        if (r1 == true) goto L16;
+        long r2 = 0;
+        if (r0 == false) goto L12;
+        if (r1 == true) goto L12;
+        r2 = Math.max(0, this.e - System.currentTimeMillis());
+    L12:
+        long r4 = r2 / 60000;
+        return String.format("%d:%02d", new Object[]{Long.valueOf(r4), Long.valueOf((r2 % 60000) / 1000)});
+    L16:
+        return "";
+    L14:
+        return "";
     }
 
     public final void e() {
-        SharedPreferences sharedPreferencesC;
         a(false);
         this.g = true;
         this.f = true;
-        this.e = 0L;
-        try {
-            App.b().getClass();
-            sharedPreferencesC = App.c();
-        } catch (Exception unused) {
-            sharedPreferencesC = null;
-        }
-        if (sharedPreferencesC != null) {
-            sharedPreferencesC.edit().putLong("sleep_timer_end_time_ms", this.e).putBoolean("sleep_timer_end_of_track", this.g).apply();
-        }
-        vj3 vj3Var = this.h;
-        if (vj3Var != null) {
-            vj3Var.a.x0();
-        }
-        zh0 zh0Var = this.i;
-        if (zh0Var != null) {
-            yf4 yf4VarC = c();
-            qi3 qi3VarA = ((MediaService) zh0Var.o).p().a();
-            yf4VarC.f();
-            yf4VarC.c = false;
-            ua4 ua4Var = new ua4(yf4VarC, qi3VarA);
-            yf4VarC.d = ua4Var;
-            yf4VarC.a.post(ua4Var);
-        }
+        this.e = 0;
+        App.b().getClass();     // Catch: Exception -> L5
+        SharedPreferences r1 = App.c();     // Catch: Exception -> L5
+    L6:
+        if (r1 == null) goto L9;
+        r1.edit().putLong("sleep_timer_end_time_ms", this.e).putBoolean("sleep_timer_end_of_track", this.g).apply();
+    L9:
+        vj3 r2 = this.h;
+        if (r2 == null) goto L12;
+        r2.a.x0();
+    L12:
+        zh0 r5 = this.i;
+        if (r5 == null) goto L18;
+        yf4 r3 = c();
+        qi3 r6 = ((MediaService) r5.o).p().a();
+        r3.f();
+        r3.c = false;
+        ua4 r0 = new ua4(r3, r6);
+        r3.d = r0;
+        r3.a.post(r0);
+        return;
+    L18:
+        return;
+    L5:
+        r1 = null;
+        goto L6
     }
 
     public final void f() {
-        ua4 ua4Var = this.d;
-        if (ua4Var != null) {
-            this.a.removeCallbacks(ua4Var);
-            this.d = null;
-        }
+        ua4 r0 = this.d;
+        if (r0 == null) goto L6;
+        this.a.removeCallbacks(r0);
+        this.d = null;
+        return;
     }
 }

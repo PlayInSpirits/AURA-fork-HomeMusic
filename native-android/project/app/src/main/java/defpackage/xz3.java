@@ -7,8 +7,8 @@ import android.os.Process;
 public final class xz3 extends Thread {
     public final int n;
 
-    public xz3(Runnable runnable) {
-        super(runnable, "fonts-androidx");
+    public xz3(Runnable r2) {
+        super(r2, "fonts-androidx");
         this.n = 10;
     }
 

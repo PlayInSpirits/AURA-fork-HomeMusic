@@ -29,187 +29,199 @@ public final class j62 implements mz0 {
     public int u;
     public String v;
 
-    public j62(int i, String str) {
-        this.a = str;
-        this.b = i;
-        be3 be3Var = new be3(1024);
-        this.c = be3Var;
-        byte[] bArr = be3Var.a;
-        this.d = new h00(bArr.length, bArr);
+    public j62(int r2, String r3) {
+        this.a = r3;
+        this.b = r2;
+        be3 r4 = new be3(1024);
+        this.c = r4;
+        byte[] r5 = r4.a;
+        this.d = new h00(r5.length, r5);
         this.l = -9223372036854775807L;
     }
 
     @Override // defpackage.mz0
-    public final void a(be3 be3Var) throws ParserException {
-        int i;
-        boolean zH;
+    public final void a(be3 r24) {
         this.e.getClass();
-        while (be3Var.a() > 0) {
-            int i2 = this.h;
-            if (i2 != 0) {
-                if (i2 != 1) {
-                    be3 be3Var2 = this.c;
-                    h00 h00Var = this.d;
-                    if (i2 == 2) {
-                        int iA = ((this.k & (-225)) << 8) | be3Var.A();
-                        this.j = iA;
-                        if (iA > be3Var2.a.length) {
-                            be3Var2.K(iA);
-                            byte[] bArr = be3Var2.a;
-                            h00Var.getClass();
-                            h00Var.o(bArr.length, bArr);
-                        }
-                        this.i = 0;
-                        this.h = 3;
-                    } else {
-                        if (i2 != 3) {
-                            tb4.a();
-                            return;
-                        }
-                        int iMin = Math.min(be3Var.a(), this.j - this.i);
-                        be3Var.k(h00Var.b, this.i, iMin);
-                        int i3 = this.i + iMin;
-                        this.i = i3;
-                        if (i3 == this.j) {
-                            h00Var.q(0);
-                            if (h00Var.h()) {
-                                if (this.m) {
-                                }
-                                this.h = 0;
-                            } else {
-                                this.m = true;
-                                int i4 = h00Var.i(1);
-                                int i5 = i4 == 1 ? h00Var.i(1) : 0;
-                                this.n = i5;
-                                if (i5 != 0) {
-                                    throw ParserException.a(null, null);
-                                }
-                                if (i4 == 1) {
-                                    h00Var.i((h00Var.i(2) + 1) * 8);
-                                }
-                                if (!h00Var.h()) {
-                                    throw ParserException.a(null, null);
-                                }
-                                this.o = h00Var.i(6);
-                                int i6 = h00Var.i(4);
-                                int i7 = h00Var.i(3);
-                                if (i6 != 0 || i7 != 0) {
-                                    throw ParserException.a(null, null);
-                                }
-                                if (i4 == 0) {
-                                    int iG = h00Var.g();
-                                    int iB = h00Var.b();
-                                    g gVarD = xl.D(h00Var, true);
-                                    this.v = gVarD.a;
-                                    this.s = gVarD.b;
-                                    this.u = gVarD.c;
-                                    int iB2 = iB - h00Var.b();
-                                    h00Var.q(iG);
-                                    byte[] bArr2 = new byte[(iB2 + 7) / 8];
-                                    h00Var.j(iB2, bArr2);
-                                    sb1 sb1Var = new sb1();
-                                    sb1Var.a = this.f;
-                                    sb1Var.l = lw2.m("video/mp2t");
-                                    sb1Var.m = lw2.m("audio/mp4a-latm");
-                                    sb1Var.j = this.v;
-                                    sb1Var.E = this.u;
-                                    sb1Var.F = this.s;
-                                    sb1Var.p = Collections.singletonList(bArr2);
-                                    sb1Var.d = this.a;
-                                    sb1Var.f = this.b;
-                                    tb1 tb1Var = new tb1(sb1Var);
-                                    if (!tb1Var.equals(this.g)) {
-                                        this.g = tb1Var;
-                                        this.t = 1024000000 / ((long) tb1Var.G);
-                                        this.e.g(tb1Var);
-                                    }
-                                } else {
-                                    int i8 = h00Var.i((h00Var.i(2) + 1) * 8);
-                                    int iB3 = h00Var.b();
-                                    g gVarD2 = xl.D(h00Var, true);
-                                    this.v = gVarD2.a;
-                                    this.s = gVarD2.b;
-                                    this.u = gVarD2.c;
-                                    h00Var.t(i8 - (iB3 - h00Var.b()));
-                                }
-                                int i9 = h00Var.i(3);
-                                this.p = i9;
-                                if (i9 == 0) {
-                                    h00Var.t(8);
-                                } else if (i9 == 1) {
-                                    h00Var.t(9);
-                                } else if (i9 == 3 || i9 == 4 || i9 == 5) {
-                                    h00Var.t(6);
-                                } else {
-                                    if (i9 != 6 && i9 != 7) {
-                                        tb4.a();
-                                        return;
-                                    }
-                                    h00Var.t(1);
-                                }
-                                boolean zH2 = h00Var.h();
-                                this.q = zH2;
-                                this.r = 0L;
-                                if (zH2) {
-                                    if (i4 == 1) {
-                                        this.r = h00Var.i((h00Var.i(2) + 1) * 8);
-                                    } else {
-                                        do {
-                                            zH = h00Var.h();
-                                            this.r = (this.r << 8) + ((long) h00Var.i(8));
-                                        } while (zH);
-                                    }
-                                }
-                                if (h00Var.h()) {
-                                    h00Var.t(8);
-                                }
-                            }
-                            if (this.n != 0) {
-                                throw ParserException.a(null, null);
-                            }
-                            if (this.o != 0) {
-                                throw ParserException.a(null, null);
-                            }
-                            if (this.p != 0) {
-                                throw ParserException.a(null, null);
-                            }
-                            int i10 = 0;
-                            do {
-                                i = h00Var.i(8);
-                                i10 += i;
-                            } while (i == 255);
-                            int iG2 = h00Var.g();
-                            if ((iG2 & 7) == 0) {
-                                be3Var2.N(iG2 >> 3);
-                            } else {
-                                h00Var.j(i10 * 8, be3Var2.a);
-                                be3Var2.N(0);
-                            }
-                            this.e.e(i10, be3Var2);
-                            rr2.w(this.l != -9223372036854775807L);
-                            this.e.a(this.l, 1, i10, 0, null);
-                            this.l += this.t;
-                            if (this.q) {
-                                h00Var.t((int) this.r);
-                            }
-                            this.h = 0;
-                        } else {
-                            continue;
-                        }
-                    }
-                } else {
-                    int iA2 = be3Var.A();
-                    if ((iA2 & 224) == 224) {
-                        this.k = iA2;
-                        this.h = 2;
-                    } else if (iA2 != 86) {
-                        this.h = 0;
-                    }
-                }
-            } else if (be3Var.A() == 86) {
-                this.h = 1;
-            }
-        }
+    L4:
+        if (r24.a() <= 0) goto L111;
+        int r1 = this.h;
+        boolean r3 = true;
+        if (r1 != 0) goto L8;
+        if (r24.A() != 86) goto L4;
+        this.h = 1;
+        goto L4
+    L8:
+        if (r1 != 1) goto L9;
+        int r2 = r24.A();
+        if ((r2 & 224) == 224) goto L105;
+        if (r2 == 86) goto L4;
+        this.h = 0;
+        goto L4
+    L105:
+        this.k = r2;
+        this.h = 2;
+        goto L4
+    L9:
+        be3 r4 = this.c;
+        h00 r8 = this.d;
+        if (r1 != 2) goto L11;
+        int r5 = ((this.k & (-225)) << 8) | r24.A();
+        this.j = r5;
+        if (r5 <= r4.a.length) goto L102;
+        r4.K(r5);
+        byte[] r6 = r4.a;
+        r8.getClass();
+        r8.o(r6.length, r6);
+    L102:
+        this.i = 0;
+        this.h = 3;
+        goto L4
+    L11:
+        if (r1 != 3) goto L97;
+        int r7 = Math.min(r24.a(), this.j - this.i);
+        r24.k(r8.b, this.i, r7);
+        int r9 = this.i + r7;
+        this.i = r9;
+        if (r9 != this.j) goto L4;
+        r8.q(0);
+        if (r8.h() == true) goto L67;
+        this.m = true;
+        int r10 = r8.i(1);
+        if (r10 != 1) goto L19;
+        int r11 = r8.i(1);
+    L20:
+        this.n = r11;
+        if (r11 != 0) goto L65;
+        if (r10 != 1) goto L25;
+        r8.i((r8.i(2) + 1) * 8);
+    L25:
+        if (r8.h() == false) goto L63;
+        this.o = r8.i(6);
+        int r13 = r8.i(4);
+        int r14 = r8.i(3);
+        if (r13 != 0) goto L61;
+        if (r14 != 0) goto L61;
+        if (r10 != 0) goto L33;
+        int r15 = r8.g();
+        int r16 = r8.b();
+        g r17 = xl.D(r8, true);
+        this.v = r17.a;
+        this.s = r17.b;
+        this.u = r17.c;
+        int r18 = r16 - r8.b();
+        r8.q(r15);
+        byte[] r12 = new byte[(r18 + 7) / 8];
+        r8.j(r18, r12);
+        sb1 r19 = new sb1();
+        r19.a = this.f;
+        r19.l = lw2.m("video/mp2t");
+        r19.m = lw2.m("audio/mp4a-latm");
+        r19.j = this.v;
+        r19.E = this.u;
+        r19.F = this.s;
+        r19.p = Collections.singletonList(r12);
+        r19.d = this.a;
+        r19.f = this.b;
+        tb1 r20 = new tb1(r19);
+        if (r20.equals(this.g) == true) goto L34;
+        this.g = r20;
+        this.t = 1024000000 / ((long) r20.G);
+        this.e.g(r20);
+    L34:
+        int r21 = r8.i(3);
+        this.p = r21;
+        if (r21 == 0) goto L50;
+        if (r21 == 1) goto L49;
+        if (r21 == 3) goto L48;
+        if (r21 == 4) goto L48;
+        if (r21 == 5) goto L48;
+        if (r21 != 6) goto L43;
+    L47:
+        r8.t(1);
+    L51:
+        boolean r22 = r8.h();
+        this.q = r22;
+        this.r = 0;
+        if (r22 == false) goto L58;
+        if (r10 != 1) goto L55;
+        this.r = r8.i((r8.i(2) + 1) * 8);
+    L55:
+        boolean r23 = r8.h();
+        this.r = (this.r << 8) + ((long) r8.i(8));
+        if (r23 == true) goto L55;
+    L58:
+        if (r8.h() == false) goto L70;
+        r8.t(8);
+    L70:
+        if (this.n != 0) goto L96;
+        if (this.o != 0) goto L94;
+        if (this.p != 0) goto L92;
+        int r25 = 0;
+    L76:
+        int r26 = r8.i(8);
+        r25 = r25 + r26;
+        if (r26 == 255) goto L76;
+        int r27 = r8.g();
+        if ((r27 & 7) != 0) goto L81;
+        r4.N(r27 >> 3);
+    L82:
+        this.e.e(r25, r4);
+        if (this.l != (-9223372036854775807L)) goto L86;
+        r3 = false;
+    L86:
+        rr2.w(r3);
+        this.e.a(this.l, 1, r25, 0, null);
+        this.l += this.t;
+        if (this.q == false) goto L89;
+        r8.t((int) this.r);
+    L89:
+        this.h = 0;
+        goto L4
+    L81:
+        r8.j(r25 * 8, r4.a);
+        r4.N(0);
+        goto L82
+    L92:
+        throw ParserException.a(null, null);
+    L94:
+        throw ParserException.a(null, null);
+    L96:
+        throw ParserException.a(null, null);
+    L43:
+        if (r21 == 7) goto L47;
+        tb4.a();
+        return;
+    L48:
+        r8.t(6);
+        goto L51
+    L49:
+        r8.t(9);
+        goto L51
+    L50:
+        r8.t(8);
+        goto L51
+    L33:
+        int r28 = r8.i((r8.i(2) + 1) * 8);
+        int r110 = r8.b();
+        g r111 = xl.D(r8, true);
+        this.v = r111.a;
+        this.s = r111.b;
+        this.u = r111.c;
+        r8.t(r28 - (r110 - r8.b()));
+    L61:
+        throw ParserException.a(null, null);
+    L63:
+        throw ParserException.a(null, null);
+    L65:
+        throw ParserException.a(null, null);
+    L19:
+        r11 = 0;
+        goto L20
+    L67:
+        if (this.m == true) goto L70;
+    L97:
+        tb4.a();
+        return;
     }
 
     @Override // defpackage.mz0
@@ -220,20 +232,20 @@ public final class j62 implements mz0 {
     }
 
     @Override // defpackage.mz0
-    public final void d(boolean z) {
+    public final void d(boolean r1) {
     }
 
     @Override // defpackage.mz0
-    public final void e(int i, long j) {
-        this.l = j;
+    public final void e(int r1, long r2) {
+        this.l = r2;
     }
 
     @Override // defpackage.mz0
-    public final void f(m51 m51Var, sy4 sy4Var) {
-        sy4Var.a();
-        sy4Var.b();
-        this.e = m51Var.t(sy4Var.d, 1);
-        sy4Var.b();
-        this.f = sy4Var.e;
+    public final void f(m51 r3, sy4 r4) {
+        r4.a();
+        r4.b();
+        this.e = r3.t(r4.d, 1);
+        r4.b();
+        this.f = r4.e;
     }
 }

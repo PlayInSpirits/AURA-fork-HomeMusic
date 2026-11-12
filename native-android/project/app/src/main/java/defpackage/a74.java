@@ -13,7 +13,7 @@ public interface a74 {
         return true;
     }
 
-    float d(float f);
+    float d(float r1);
 
-    Object e(h13 h13Var, wf1 wf1Var, wd0 wd0Var);
+    Object e(h13 r1, wf1 r2, wd0 r3);
 }

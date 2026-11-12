@@ -8,7 +8,7 @@ import android.widget.EdgeEffect;
 /* JADX INFO: loaded from: classes.dex */
 public final class tb {
     public final oo0 a;
-    public long b = 9205357640488583168L;
+    public long b;
     public final vy0 c;
     public final zd3 d;
     public final boolean e;
@@ -17,310 +17,422 @@ public final class tb {
     public long h;
     public final fo0 i;
 
-    public tb(Context context, oo0 oo0Var, long j, ac3 ac3Var) {
-        this.a = oo0Var;
-        vy0 vy0Var = new vy0(context, e35.U(j));
-        this.c = vy0Var;
-        this.d = new zd3(j15.a, rv2.s);
+    public tb(Context r3, oo0 r4, long r5, ac3 r7) {
+        this.a = r4;
+        this.b = 9205357640488583168L;
+        vy0 r6 = new vy0(r3, e35.U(r5));
+        this.c = r6;
+        rv2 r8 = rv2.s;
+        this.d = new zd3(j15.a, r8);
         this.e = true;
-        this.g = 0L;
-        this.h = -1L;
-        hg3 hg3Var = new hg3(5, this);
-        kn3 kn3Var = gp4.a;
-        ip4 ip4Var = new ip4(null, null, hg3Var);
-        this.i = Build.VERSION.SDK_INT >= 31 ? new bj1(ip4Var, this, vy0Var) : new bj1(ip4Var, this, vy0Var, ac3Var);
+        this.g = 0;
+        this.h = -1;
+        hg3 r9 = new hg3(5, this);
+        kn3 r10 = gp4.a;
+        ip4 r11 = new ip4(null, null, r9);
+        if (Build.VERSION.SDK_INT < 31) goto L5;
+        bj1 r12 = new bj1(r11, this, r6);
+    L6:
+        this.i = r12;
+        return;
+    L5:
+        r12 = new bj1(r11, this, r6, r7);
+        goto L6
     }
 
     public final void a() {
-        boolean z;
-        vy0 vy0Var = this.c;
-        EdgeEffect edgeEffect = vy0Var.d;
-        boolean z2 = true;
-        if (edgeEffect != null) {
-            edgeEffect.onRelease();
-            z = !edgeEffect.isFinished();
-        } else {
-            z = false;
-        }
-        EdgeEffect edgeEffect2 = vy0Var.e;
-        if (edgeEffect2 != null) {
-            edgeEffect2.onRelease();
-            z = !edgeEffect2.isFinished() || z;
-        }
-        EdgeEffect edgeEffect3 = vy0Var.f;
-        if (edgeEffect3 != null) {
-            edgeEffect3.onRelease();
-            z = !edgeEffect3.isFinished() || z;
-        }
-        EdgeEffect edgeEffect4 = vy0Var.g;
-        if (edgeEffect4 != null) {
-            edgeEffect4.onRelease();
-            if (edgeEffect4.isFinished() && !z) {
-                z2 = false;
-            }
-            z = z2;
-        }
-        if (z) {
-            d();
-        }
+        vy0 r0 = this.c;
+        EdgeEffect r1 = r0.d;
+        boolean r2 = true;
+        if (r1 == null) goto L5;
+        r1.onRelease();
+        boolean r3 = !r1.isFinished();
+    L6:
+        EdgeEffect r4 = r0.e;
+        if (r4 == null) goto L14;
+        r4.onRelease();
+        if (r4.isFinished() == false) goto L13;
+        if (r3 == true) goto L13;
+        r3 = false;
+    L13:
+        r3 = true;
+    L14:
+        EdgeEffect r5 = r0.f;
+        if (r5 == null) goto L22;
+        r5.onRelease();
+        if (r5.isFinished() == false) goto L21;
+        if (r3 == true) goto L21;
+        r3 = false;
+    L21:
+        r3 = true;
+    L22:
+        EdgeEffect r6 = r0.g;
+        if (r6 == null) goto L30;
+        r6.onRelease();
+        if (r6.isFinished() == false) goto L29;
+        if (r3 == true) goto L29;
+        r2 = false;
+    L29:
+        r3 = r2;
+    L30:
+        if (r3 == false) goto L33;
+        d();
+        return;
+    L33:
+        return;
+    L5:
+        r3 = false;
+        goto L6
     }
 
-    /* JADX WARN: Code duplicated, block: B:7:0x001b  */
-    /* JADX WARN: Code restructure failed: missing block: B:50:0x0137, code lost:
-    
-        if (r4 == r6) goto L51;
-     */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public final Object b(long j, f74 f74Var, wd0 wd0Var) {
-        rb rbVar;
-        float fA;
-        float fA2;
-        long jD;
-        if (wd0Var instanceof rb) {
-            rbVar = (rb) wd0Var;
-            int i = rbVar.q;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                rbVar.q = i - Integer.MIN_VALUE;
-            } else {
-                rbVar = new rb(this, wd0Var);
-            }
-        } else {
-            rbVar = new rb(this, wd0Var);
-        }
-        Object objInvokeSuspend = rbVar.o;
-        int i2 = rbVar.q;
-        j15 j15Var = j15.a;
-        vy0 vy0Var = this.c;
-        if (i2 == 0) {
-            kb4.X(objInvokeSuspend);
-            boolean zB = qf4.b(this.g);
-            xe0 xe0Var = xe0.n;
-            if (zB) {
-                rbVar.q = 1;
-                f74Var.getClass();
-                f74 f74Var2 = new f74(f74Var.r, rbVar);
-                f74Var2.q = j;
-                if (f74Var2.invokeSuspend(j15Var) != xe0Var) {
-                    return j15Var;
-                }
-            } else {
-                boolean zG = vy0.g(vy0Var.f);
-                oo0 oo0Var = this.a;
-                if (!zG || k45.b(j) >= 0.0f) {
-                    fA = (!vy0.g(vy0Var.g) || k45.b(j) <= 0.0f) ? 0.0f : -uo.a(vy0Var.d(), -k45.b(j), Float.intBitsToFloat((int) (this.g >> 32)), oo0Var);
-                } else {
-                    fA = uo.a(vy0Var.c(), k45.b(j), Float.intBitsToFloat((int) (this.g >> 32)), oo0Var);
-                }
-                if (!vy0.g(vy0Var.d) || k45.c(j) >= 0.0f) {
-                    fA2 = (!vy0.g(vy0Var.e) || k45.c(j) <= 0.0f) ? 0.0f : -uo.a(vy0Var.b(), -k45.c(j), Float.intBitsToFloat((int) (this.g & 4294967295L)), oo0Var);
-                } else {
-                    fA2 = uo.a(vy0Var.e(), k45.c(j), Float.intBitsToFloat((int) (this.g & 4294967295L)), oo0Var);
-                }
-                long jH = e35.h(fA, fA2);
-                if (jH != 0) {
-                    d();
-                }
-                jD = k45.d(j, jH);
-                rbVar.n = jD;
-                rbVar.q = 2;
-                f74Var.getClass();
-                f74 f74Var3 = new f74(f74Var.r, rbVar);
-                f74Var3.q = jD;
-                objInvokeSuspend = f74Var3.invokeSuspend(j15Var);
-            }
-            return xe0Var;
-        }
-        if (i2 == 1) {
-            kb4.X(objInvokeSuspend);
-            return j15Var;
-        }
-        if (i2 != 2) {
-            kf2.o("call to 'resume' before 'invoke' with coroutine");
-            return null;
-        }
-        jD = rbVar.n;
-        kb4.X(objInvokeSuspend);
-        long jD2 = k45.d(jD, ((k45) objInvokeSuspend).a);
+    public final Object b(long r19, f74 r21, wd0 r22) {
+        if ((r22 instanceof rb) == false) goto L7;
+        rb r5 = (rb) r22;
+        int r6 = r5.q;
+        if ((r6 & Integer.MIN_VALUE) == 0) goto L7;
+        r5.q = r6 - Integer.MIN_VALUE;
+    L8:
+        Object r4 = r5.o;
+        int r7 = r5.q;
+        j15 r8 = j15.a;
+        vy0 r11 = this.c;
+        if (r7 == 0) goto L17;
+        if (r7 == 1) goto L15;
+        if (r7 != 2) goto L13;
+        long r1 = r5.n;
+        kb4.X(r4);
+    L52:
+        long r2 = k45.d(r1, ((k45) r4).a);
         this.f = false;
-        if (k45.b(jD2) > 0.0f) {
-            EdgeEffect edgeEffectC = vy0Var.c();
-            int iL = ji2.L(k45.b(jD2));
-            if (Build.VERSION.SDK_INT >= 31 || edgeEffectC.isFinished()) {
-                edgeEffectC.onAbsorb(iL);
-            }
-        } else if (k45.b(jD2) < 0.0f) {
-            EdgeEffect edgeEffectD = vy0Var.d();
-            int i3 = -ji2.L(k45.b(jD2));
-            if (Build.VERSION.SDK_INT >= 31 || edgeEffectD.isFinished()) {
-                edgeEffectD.onAbsorb(i3);
-            }
-        }
-        if (k45.c(jD2) > 0.0f) {
-            EdgeEffect edgeEffectE = vy0Var.e();
-            int iL2 = ji2.L(k45.c(jD2));
-            if (Build.VERSION.SDK_INT >= 31 || edgeEffectE.isFinished()) {
-                edgeEffectE.onAbsorb(iL2);
-            }
-        } else if (k45.c(jD2) < 0.0f) {
-            EdgeEffect edgeEffectB = vy0Var.b();
-            int i4 = -ji2.L(k45.c(jD2));
-            if (Build.VERSION.SDK_INT >= 31 || edgeEffectB.isFinished()) {
-                edgeEffectB.onAbsorb(i4);
-            }
-        }
+        if (k45.b(r2) <= 0.0f) goto L61;
+        EdgeEffect r3 = r11.c();
+        int r9 = ji2.L(k45.b(r2));
+        if (Build.VERSION.SDK_INT < 31) goto L58;
+        r3.onAbsorb(r9);
+    L69:
+        if (k45.c(r2) <= 0.0f) goto L77;
+        EdgeEffect r10 = r11.e();
+        int r12 = ji2.L(k45.c(r2));
+        if (Build.VERSION.SDK_INT < 31) goto L74;
+        r10.onAbsorb(r12);
+    L84:
         a();
-        return j15Var;
+        return r8;
+    L74:
+        if (r10.isFinished() == false) goto L84;
+        r10.onAbsorb(r12);
+        goto L84
+    L77:
+        if (k45.c(r2) >= 0.0f) goto L84;
+        EdgeEffect r13 = r11.b();
+        int r14 = -ji2.L(k45.c(r2));
+        if (Build.VERSION.SDK_INT < 31) goto L82;
+        r13.onAbsorb(r14);
+        goto L84
+    L82:
+        if (r13.isFinished() == false) goto L84;
+        r13.onAbsorb(r14);
+        goto L84
+    L58:
+        if (r3.isFinished() == false) goto L69;
+        r3.onAbsorb(r9);
+        goto L69
+    L61:
+        if (k45.b(r2) >= 0.0f) goto L69;
+        EdgeEffect r15 = r11.d();
+        int r16 = -ji2.L(k45.b(r2));
+        if (Build.VERSION.SDK_INT < 31) goto L66;
+        r15.onAbsorb(r16);
+        goto L69
+    L66:
+        if (r15.isFinished() == false) goto L69;
+        r15.onAbsorb(r16);
+        goto L69
+    L13:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L15:
+        kb4.X(r4);
+        return r8;
+    L17:
+        kb4.X(r4);
+        boolean r17 = qf4.b(this.g);
+        xe0 r18 = xe0.n;
+        if (r17 == false) goto L23;
+        r5.q = 1;
+        r21.getClass();
+        f74 r0 = new f74(r21.r, r5);
+        r0.q = r19;
+        if (r0.invokeSuspend(r8) == r18) goto L51;
+        return r8;
+    L51:
+        return r18;
+    L23:
+        boolean r20 = vy0.g(r11.f);
+        oo0 r110 = this.a;
+        if (r20 == false) goto L29;
+        if (k45.b(r19) >= 0.0f) goto L29;
+        float r23 = uo.a(r11.c(), k45.b(r19), Float.intBitsToFloat((int) (this.g >> 32)), r110);
+    L35:
+        if (vy0.g(r11.d) == false) goto L40;
+        if (k45.c(r19) >= 0.0f) goto L40;
+        float r24 = uo.a(r11.e(), k45.c(r19), Float.intBitsToFloat((int) (this.g & 4294967295L)), r110);
+    L45:
+        long r111 = e35.h(r23, r24);
+        if (r111 == 0) goto L49;
+        d();
+    L49:
+        r1 = k45.d(r19, r111);
+        r5.n = r1;
+        r5.q = 2;
+        r21.getClass();
+        f74 r25 = new f74(r21.r, r5);
+        r25.q = r1;
+        r4 = r25.invokeSuspend(r8);
+        if (r4 != r18) goto L52;
+    L40:
+        if (vy0.g(r11.e) == true) goto L42;
+    L44:
+        r24 = 0.0f;
+        goto L45
+    L42:
+        if (k45.c(r19) <= 0.0f) goto L44;
+        r24 = -uo.a(r11.b(), -k45.c(r19), Float.intBitsToFloat((int) (this.g & 4294967295L)), r110);
+    L29:
+        if (vy0.g(r11.g) == true) goto L31;
+    L33:
+        r23 = 0.0f;
+        goto L35
+    L31:
+        if (k45.b(r19) <= 0.0f) goto L33;
+        r23 = -uo.a(r11.d(), -k45.b(r19), Float.intBitsToFloat((int) (this.g >> 32)), r110);
+    L7:
+        r5 = new rb(this, r22);
+        goto L8
     }
 
     public final long c() {
-        long jQ = this.b;
-        if ((9223372034707292159L & jQ) == 9205357640488583168L) {
-            jQ = h12.q(this.g);
-        }
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (jQ >> 32)) / Float.intBitsToFloat((int) (this.g >> 32));
-        return (((long) Float.floatToRawIntBits(Float.intBitsToFloat((int) (jQ & 4294967295L)) / Float.intBitsToFloat((int) (this.g & 4294967295L)))) & 4294967295L) | (Float.floatToRawIntBits(fIntBitsToFloat) << 32);
+        long r0 = this.b;
+        if ((9223372034707292159L & r0) != 9205357640488583168L) goto L6;
+        r0 = h12.q(this.g);
+    L6:
+        float r3 = Float.intBitsToFloat((int) (r0 >> 32)) / Float.intBitsToFloat((int) (this.g >> 32));
+        float r1 = Float.intBitsToFloat((int) (r0 & 4294967295L)) / Float.intBitsToFloat((int) (this.g & 4294967295L));
+        long r6 = Float.floatToRawIntBits(r3);
+        return (((long) Float.floatToRawIntBits(r1)) & 4294967295L) | (r6 << 32);
     }
 
     public final void d() {
-        if (this.e) {
-            this.d.setValue(j15.a);
-        }
+        if (this.e == false) goto L6;
+        this.d.setValue(j15.a);
+        return;
     }
 
     public final boolean e() {
-        vy0 vy0Var = this.c;
-        EdgeEffect edgeEffect = vy0Var.d;
-        if (edgeEffect != null) {
-            if ((Build.VERSION.SDK_INT >= 31 ? qe.b(edgeEffect) : 0.0f) != 0.0f) {
-                return true;
-            }
-        }
-        EdgeEffect edgeEffect2 = vy0Var.e;
-        if (edgeEffect2 != null) {
-            if ((Build.VERSION.SDK_INT >= 31 ? qe.b(edgeEffect2) : 0.0f) != 0.0f) {
-                return true;
-            }
-        }
-        EdgeEffect edgeEffect3 = vy0Var.f;
-        if (edgeEffect3 != null) {
-            if ((Build.VERSION.SDK_INT >= 31 ? qe.b(edgeEffect3) : 0.0f) != 0.0f) {
-                return true;
-            }
-        }
-        EdgeEffect edgeEffect4 = vy0Var.g;
-        if (edgeEffect4 != null) {
-            return (Build.VERSION.SDK_INT >= 31 ? qe.b(edgeEffect4) : 0.0f) != 0.0f;
-        }
+        vy0 r4 = this.c;
+        EdgeEffect r0 = r4.d;
+        if (r0 != null) goto L5;
+    L10:
+        EdgeEffect r1 = r4.e;
+        if (r1 != null) goto L13;
+    L18:
+        EdgeEffect r2 = r4.f;
+        if (r2 != null) goto L21;
+    L26:
+        EdgeEffect r5 = r4.g;
+        if (r5 != null) goto L29;
         return false;
+    L29:
+        if (Build.VERSION.SDK_INT < 31) goto L31;
+        float r6 = qe.b(r5);
+    L33:
+        if (r6 == 0.0f) goto L42;
+        return true;
+    L42:
+        return false;
+    L31:
+        r6 = 0.0f;
+        goto L33
+    L21:
+        if (Build.VERSION.SDK_INT < 31) goto L23;
+        float r3 = qe.b(r2);
+    L25:
+        if (r3 == 0.0f) goto L26;
+        return true;
+    L23:
+        r3 = 0.0f;
+        goto L25
+    L13:
+        if (Build.VERSION.SDK_INT < 31) goto L15;
+        float r7 = qe.b(r1);
+    L17:
+        if (r7 == 0.0f) goto L18;
+        return true;
+    L15:
+        r7 = 0.0f;
+        goto L17
+    L5:
+        if (Build.VERSION.SDK_INT < 31) goto L7;
+        float r8 = qe.b(r0);
+    L9:
+        if (r8 == 0.0f) goto L10;
+        return true;
+    L7:
+        r8 = 0.0f;
+        goto L9
     }
 
-    public final float f(long j) {
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (c() >> 32));
-        int i = (int) (j & 4294967295L);
-        float fIntBitsToFloat2 = Float.intBitsToFloat(i) / Float.intBitsToFloat((int) (this.g & 4294967295L));
-        EdgeEffect edgeEffectB = this.c.b();
-        float fD = -fIntBitsToFloat2;
-        float f = 1.0f - fIntBitsToFloat;
-        int i2 = Build.VERSION.SDK_INT;
-        if (i2 >= 31) {
-            fD = qe.d(edgeEffectB, fD, f);
-        } else {
-            edgeEffectB.onPull(fD, f);
-        }
-        return (i2 >= 31 ? qe.b(edgeEffectB) : 0.0f) == 0.0f ? Float.intBitsToFloat((int) (4294967295L & this.g)) * (-fD) : Float.intBitsToFloat(i);
+    public final float f(long r9) {
+        float r0 = Float.intBitsToFloat((int) (c() >> 32));
+        int r10 = (int) (r9 & 4294967295L);
+        float r11 = Float.intBitsToFloat(r10) / Float.intBitsToFloat((int) (this.g & 4294967295L));
+        EdgeEffect r3 = this.c.b();
+        float r12 = -r11;
+        float r4 = 1.0f - r0;
+        int r1 = Build.VERSION.SDK_INT;
+        if (r1 < 31) goto L5;
+        r12 = qe.d(r3, r12, r4);
+    L6:
+        float r8 = Float.intBitsToFloat((int) (4294967295L & this.g)) * (-r12);
+        if (r1 < 31) goto L9;
+        float r2 = qe.b(r3);
+    L11:
+        if (r2 != 0.0f) goto L14;
+        return r8;
+    L14:
+        return Float.intBitsToFloat(r10);
+    L9:
+        r2 = 0.0f;
+        goto L11
+    L5:
+        r3.onPull(r12, r4);
+        goto L6
     }
 
-    public final float g(long j) {
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (c() & 4294967295L));
-        int i = (int) (j >> 32);
-        float fIntBitsToFloat2 = Float.intBitsToFloat(i) / Float.intBitsToFloat((int) (this.g >> 32));
-        EdgeEffect edgeEffectC = this.c.c();
-        float f = 1.0f - fIntBitsToFloat;
-        int i2 = Build.VERSION.SDK_INT;
-        if (i2 >= 31) {
-            fIntBitsToFloat2 = qe.d(edgeEffectC, fIntBitsToFloat2, f);
-        } else {
-            edgeEffectC.onPull(fIntBitsToFloat2, f);
-        }
-        return (i2 >= 31 ? qe.b(edgeEffectC) : 0.0f) == 0.0f ? Float.intBitsToFloat((int) (this.g >> 32)) * fIntBitsToFloat2 : Float.intBitsToFloat(i);
+    public final float g(long r8) {
+        float r0 = Float.intBitsToFloat((int) (c() & 4294967295L));
+        int r9 = (int) (r8 >> 32);
+        float r10 = Float.intBitsToFloat(r9) / Float.intBitsToFloat((int) (this.g >> 32));
+        EdgeEffect r2 = this.c.c();
+        float r3 = 1.0f - r0;
+        int r1 = Build.VERSION.SDK_INT;
+        if (r1 < 31) goto L5;
+        r10 = qe.d(r2, r10, r3);
+    L6:
+        float r7 = Float.intBitsToFloat((int) (this.g >> 32)) * r10;
+        if (r1 < 31) goto L9;
+        float r4 = qe.b(r2);
+    L11:
+        if (r4 != 0.0f) goto L14;
+        return r7;
+    L14:
+        return Float.intBitsToFloat(r9);
+    L9:
+        r4 = 0.0f;
+        goto L11
+    L5:
+        r2.onPull(r10, r3);
+        goto L6
     }
 
-    public final float h(long j) {
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (c() & 4294967295L));
-        int i = (int) (j >> 32);
-        float fIntBitsToFloat2 = Float.intBitsToFloat(i) / Float.intBitsToFloat((int) (this.g >> 32));
-        EdgeEffect edgeEffectD = this.c.d();
-        float fD = -fIntBitsToFloat2;
-        int i2 = Build.VERSION.SDK_INT;
-        if (i2 >= 31) {
-            fD = qe.d(edgeEffectD, fD, fIntBitsToFloat);
-        } else {
-            edgeEffectD.onPull(fD, fIntBitsToFloat);
-        }
-        return (i2 >= 31 ? qe.b(edgeEffectD) : 0.0f) == 0.0f ? Float.intBitsToFloat((int) (this.g >> 32)) * (-fD) : Float.intBitsToFloat(i);
+    public final float h(long r8) {
+        float r0 = Float.intBitsToFloat((int) (c() & 4294967295L));
+        int r9 = (int) (r8 >> 32);
+        float r10 = Float.intBitsToFloat(r9) / Float.intBitsToFloat((int) (this.g >> 32));
+        EdgeEffect r2 = this.c.d();
+        float r11 = -r10;
+        int r3 = Build.VERSION.SDK_INT;
+        if (r3 < 31) goto L5;
+        r11 = qe.d(r2, r11, r0);
+    L6:
+        float r7 = Float.intBitsToFloat((int) (this.g >> 32)) * (-r11);
+        if (r3 < 31) goto L9;
+        float r1 = qe.b(r2);
+    L11:
+        if (r1 != 0.0f) goto L14;
+        return r7;
+    L14:
+        return Float.intBitsToFloat(r9);
+    L9:
+        r1 = 0.0f;
+        goto L11
+    L5:
+        r2.onPull(r11, r0);
+        goto L6
     }
 
-    public final float i(long j) {
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (c() >> 32));
-        int i = (int) (j & 4294967295L);
-        float fIntBitsToFloat2 = Float.intBitsToFloat(i) / Float.intBitsToFloat((int) (this.g & 4294967295L));
-        EdgeEffect edgeEffectE = this.c.e();
-        int i2 = Build.VERSION.SDK_INT;
-        if (i2 >= 31) {
-            fIntBitsToFloat2 = qe.d(edgeEffectE, fIntBitsToFloat2, fIntBitsToFloat);
-        } else {
-            edgeEffectE.onPull(fIntBitsToFloat2, fIntBitsToFloat);
-        }
-        return (i2 >= 31 ? qe.b(edgeEffectE) : 0.0f) == 0.0f ? Float.intBitsToFloat((int) (this.g & 4294967295L)) * fIntBitsToFloat2 : Float.intBitsToFloat(i);
+    public final float i(long r9) {
+        float r0 = Float.intBitsToFloat((int) (c() >> 32));
+        int r10 = (int) (r9 & 4294967295L);
+        float r11 = Float.intBitsToFloat(r10) / Float.intBitsToFloat((int) (this.g & 4294967295L));
+        EdgeEffect r3 = this.c.e();
+        int r4 = Build.VERSION.SDK_INT;
+        if (r4 < 31) goto L5;
+        r11 = qe.d(r3, r11, r0);
+    L6:
+        float r8 = Float.intBitsToFloat((int) (this.g & 4294967295L)) * r11;
+        if (r4 < 31) goto L9;
+        float r1 = qe.b(r3);
+    L11:
+        if (r1 != 0.0f) goto L14;
+        return r8;
+    L14:
+        return Float.intBitsToFloat(r10);
+    L9:
+        r1 = 0.0f;
+        goto L11
+    L5:
+        r3.onPull(r11, r0);
+        goto L6
     }
 
-    public final void j(long j) {
-        boolean zA = qf4.a(this.g, 0L);
-        boolean zA2 = qf4.a(j, this.g);
-        this.g = j;
-        if (!zA2) {
-            int iL = ji2.L(Float.intBitsToFloat((int) (j >> 32)));
-            long jL = (((long) ji2.L(Float.intBitsToFloat((int) (j & 4294967295L)))) & 4294967295L) | (((long) iL) << 32);
-            vy0 vy0Var = this.c;
-            vy0Var.c = jL;
-            EdgeEffect edgeEffect = vy0Var.d;
-            if (edgeEffect != null) {
-                edgeEffect.setSize((int) (jL >> 32), (int) (jL & 4294967295L));
-            }
-            EdgeEffect edgeEffect2 = vy0Var.e;
-            if (edgeEffect2 != null) {
-                edgeEffect2.setSize((int) (jL >> 32), (int) (jL & 4294967295L));
-            }
-            EdgeEffect edgeEffect3 = vy0Var.f;
-            if (edgeEffect3 != null) {
-                edgeEffect3.setSize((int) (jL & 4294967295L), (int) (jL >> 32));
-            }
-            EdgeEffect edgeEffect4 = vy0Var.g;
-            if (edgeEffect4 != null) {
-                edgeEffect4.setSize((int) (jL & 4294967295L), (int) (jL >> 32));
-            }
-            EdgeEffect edgeEffect5 = vy0Var.h;
-            if (edgeEffect5 != null) {
-                edgeEffect5.setSize((int) (jL >> 32), (int) (jL & 4294967295L));
-            }
-            EdgeEffect edgeEffect6 = vy0Var.i;
-            if (edgeEffect6 != null) {
-                edgeEffect6.setSize((int) (jL >> 32), (int) (jL & 4294967295L));
-            }
-            EdgeEffect edgeEffect7 = vy0Var.j;
-            if (edgeEffect7 != null) {
-                edgeEffect7.setSize((int) (jL & 4294967295L), (int) (jL >> 32));
-            }
-            EdgeEffect edgeEffect8 = vy0Var.k;
-            if (edgeEffect8 != null) {
-                edgeEffect8.setSize((int) (4294967295L & jL), (int) (jL >> 32));
-            }
-        }
-        if (zA || zA2) {
-            return;
-        }
+    public final void j(long r11) {
+        boolean r0 = qf4.a(this.g, 0);
+        boolean r1 = qf4.a(r11, this.g);
+        this.g = r11;
+        if (r1 == true) goto L28;
+        int r3 = ji2.L(Float.intBitsToFloat((int) (r11 >> 32)));
+        long r12 = ((long) ji2.L(Float.intBitsToFloat((int) (r11 & 4294967295L)))) & 4294967295L;
+        long r13 = r12 | (((long) r3) << 32);
+        vy0 r4 = this.c;
+        r4.c = r13;
+        EdgeEffect r6 = r4.d;
+        if (r6 == null) goto L7;
+        r6.setSize((int) (r13 >> 32), (int) (r13 & 4294967295L));
+    L7:
+        EdgeEffect r7 = r4.e;
+        if (r7 == null) goto L10;
+        r7.setSize((int) (r13 >> 32), (int) (r13 & 4294967295L));
+    L10:
+        EdgeEffect r8 = r4.f;
+        if (r8 == null) goto L13;
+        r8.setSize((int) (r13 & 4294967295L), (int) (r13 >> 32));
+    L13:
+        EdgeEffect r9 = r4.g;
+        if (r9 == null) goto L16;
+        r9.setSize((int) (r13 & 4294967295L), (int) (r13 >> 32));
+    L16:
+        EdgeEffect r10 = r4.h;
+        if (r10 == null) goto L19;
+        r10.setSize((int) (r13 >> 32), (int) (r13 & 4294967295L));
+    L19:
+        EdgeEffect r14 = r4.i;
+        if (r14 == null) goto L22;
+        r14.setSize((int) (r13 >> 32), (int) (r13 & 4294967295L));
+    L22:
+        EdgeEffect r15 = r4.j;
+        if (r15 == null) goto L25;
+        r15.setSize((int) (r13 & 4294967295L), (int) (r13 >> 32));
+    L25:
+        EdgeEffect r5 = r4.k;
+        if (r5 == null) goto L28;
+        r5.setSize((int) (4294967295L & r13), (int) (r13 >> 32));
+    L28:
+        if (r0 == true) goto L32;
+        if (r1 == true) goto L33;
         a();
+        return;
+    L33:
+        return;
     }
 }

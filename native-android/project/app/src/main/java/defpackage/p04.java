@@ -9,31 +9,31 @@ public final class p04 implements ci0 {
     public final ci0 n;
     public boolean o;
 
-    public p04(ci0 ci0Var, mj0 mj0Var) {
-        this.n = ci0Var;
+    public p04(ci0 r1, mj0 r2) {
+        this.n = r1;
     }
 
     @Override // defpackage.ci0
-    public final long b(ii0 ii0Var) {
-        hi0 hi0VarA = ii0Var.a();
-        hi0VarA.i = ii0Var.i & (-3);
-        ii0 ii0VarA = hi0VarA.a();
+    public final long b(ii0 r2) {
+        hi0 r0 = r2.a();
+        r0.i = r2.i & (-3);
+        ii0 r3 = r0.a();
         this.o = true;
-        return this.n.b(ii0VarA);
+        return this.n.b(r3);
     }
 
     @Override // defpackage.ci0
-    public final void c(rw4 rw4Var) {
-        rw4Var.getClass();
-        this.n.c(rw4Var);
+    public final void c(rw4 r1) {
+        r1.getClass();
+        this.n.c(r1);
     }
 
     @Override // defpackage.ci0
     public final void close() {
-        if (this.o) {
-            this.o = false;
-            this.n.close();
-        }
+        if (this.o == false) goto L6;
+        this.o = false;
+        this.n.close();
+        return;
     }
 
     @Override // defpackage.ci0
@@ -43,15 +43,15 @@ public final class p04 implements ci0 {
 
     @Override // defpackage.ci0
     public final Uri m() {
-        Uri uriM = this.n.m();
-        if (uriM == null) {
-            return null;
-        }
-        return uriM;
+        Uri r0 = this.n.m();
+        if (r0 != null) goto L6;
+        return null;
+    L6:
+        return r0;
     }
 
     @Override // defpackage.wh0
-    public final int read(byte[] bArr, int i, int i2) {
-        return this.n.read(bArr, i, i2);
+    public final int read(byte[] r1, int r2, int r3) {
+        return this.n.read(r1, r2, r3);
     }
 }

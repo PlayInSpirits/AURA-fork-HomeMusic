@@ -13,26 +13,26 @@ public class bu0 extends hd {
     public final k03 e;
     public final k03 f;
 
-    public bu0(Application application) {
-        super(application);
+    public bu0(Application r5) {
+        super(r5);
         this.d = new k03(null);
-        k03 k03Var = new k03(null);
-        this.e = k03Var;
+        k03 r6 = new k03(null);
+        this.e = r6;
         this.f = new k03();
         this.c = new hg3(15);
         App.b().getClass();
-        String string = App.c().getString("default_download_view_type", "download_type_track");
-        string.getClass();
-        DownloadStack downloadStack = new DownloadStack(string, null);
-        ArrayList arrayList = new ArrayList();
-        arrayList.add(downloadStack);
-        k03Var.k(arrayList);
+        String r1 = App.c().getString("default_download_view_type", "download_type_track");
+        r1.getClass();
+        DownloadStack r4 = new DownloadStack(r1, null);
+        ArrayList r0 = new ArrayList();
+        r0.add(r4);
+        r6.k(r0);
     }
 
-    public final void c(DownloadStack downloadStack) {
-        k03 k03Var = this.e;
-        ArrayList arrayList = (ArrayList) k03Var.d();
-        arrayList.add(downloadStack);
-        k03Var.k(arrayList);
+    public final void c(DownloadStack r2) {
+        k03 r1 = this.e;
+        ArrayList r0 = (ArrayList) r1.d();
+        r0.add(r2);
+        r1.k(r0);
     }
 }

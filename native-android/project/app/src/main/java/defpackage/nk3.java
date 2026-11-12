@@ -17,88 +17,111 @@ public final /* synthetic */ class nk3 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ qk3 o;
 
-    public /* synthetic */ nk3(qk3 qk3Var, int i) {
-        this.n = i;
-        this.o = qk3Var;
+    public /* synthetic */ nk3(qk3 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        long jM0;
-        List<Line> line;
-        int iMax;
-        Integer start;
-        int i = this.n;
-        qk3 qk3Var = this.o;
-        switch (i) {
-            case 0:
-                try {
-                    qk3Var.o0 = (bj2) qk3Var.n0.get();
-                    qk3Var.m0.k.e(qk3Var.v(), new mk3(qk3Var, 4));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return;
-                }
-                break;
-            default:
-                if (qk3Var.p0 != null) {
-                    if (qk3Var.l0 != null) {
-                        LyricsList lyricsList = (LyricsList) qk3Var.m0.k.d();
-                        if (u52.c().a) {
-                            jM0 = u52.c().b(SystemClock.elapsedRealtime());
-                        } else {
-                            bj2 bj2Var = qk3Var.o0;
-                            jM0 = bj2Var != null ? bj2Var.M0() : 0L;
-                        }
-                        int i2 = (int) jM0;
-                        if (qk3.h0(lyricsList) && (line = lyricsList.getStructuredLyrics().get(0).getLine()) != null && !line.isEmpty()) {
-                            int i3 = 0;
-                            for (int i4 = 0; i4 < line.size() && ((start = line.get(i4).getStart()) == null || start.intValue() <= i2); i4++) {
-                                i3 = i4;
-                            }
-                            Integer num = qk3Var.t0;
-                            if (num == null || i3 != num.intValue()) {
-                                qk3Var.t0 = Integer.valueOf(i3);
-                                StringBuilder sb = new StringBuilder();
-                                Iterator<Line> it = line.iterator();
-                                while (it.hasNext()) {
-                                    sb.append(it.next().getValue().trim());
-                                    sb.append("\n\n");
-                                }
-                                SpannableString spannableString = new SpannableString(sb.toString());
-                                int i5 = -1;
-                                int i6 = 0;
-                                int i7 = 0;
-                                while (i6 < line.size()) {
-                                    boolean z = i6 == i3;
-                                    if (z) {
-                                        i5 = i7;
-                                    }
-                                    int length = line.get(i6).getValue().length() + 2 + i7;
-                                    spannableString.setSpan(new pk3(qk3Var, line.get(i6).getStart().intValue(), z), i7, length, 33);
-                                    i6++;
-                                    i7 = length;
-                                }
-                                ((TextView) qk3Var.l0.d).setMovementMethod(LinkMovementMethod.getInstance());
-                                ((TextView) qk3Var.l0.d).setText(spannableString);
-                                if (i5 >= 0 && qk3Var.m0.s) {
-                                    ml3 ml3Var = qk3Var.l0;
-                                    NestedScrollView nestedScrollView = (NestedScrollView) ml3Var.c;
-                                    Layout layout = ((TextView) ml3Var.d).getLayout();
-                                    if (layout == null) {
-                                        iMax = 0;
-                                    } else {
-                                        int lineForOffset = layout.getLineForOffset(i5);
-                                        iMax = Math.max(((layout.getLineBottom(lineForOffset) + layout.getLineTop(lineForOffset)) / 2) - (((NestedScrollView) qk3Var.l0.c).getHeight() / 2), 0);
-                                    }
-                                    nestedScrollView.u(0 - nestedScrollView.getScrollX(), iMax - nestedScrollView.getScrollY(), false);
-                                }
-                            }
-                        }
-                    }
-                    qk3Var.p0.postDelayed(qk3Var.q0, 250L);
-                }
-                break;
-        }
+        int r0 = this.n;
+        qk3 r12 = this.o;
+        switch(r0) {
+            case 0: goto L65;
+            default: goto L5;
+        };
+    L65:
+        r12.o0 = (bj2) r12.n0.get();     // Catch: Exception -> L62
+        r12.m0.k.e(r12.v(), new mk3(r12, 4));     // Catch: Exception -> L62
+        return;
+    L62:
+        e = move-exception;
+        e.printStackTrace();
+        return;
+    L5:
+        if (r12.p0 != null) goto L7;
+        return;
+    L7:
+        if (r12.l0 == null) goto L58;
+        LyricsList r1 = (LyricsList) r12.m0.k.d();
+        if (u52.c().a == false) goto L11;
+        long r2 = u52.c().b(SystemClock.elapsedRealtime());
+    L15:
+        int r3 = (int) r2;
+        if (qk3.h0(r1) == false) goto L58;
+        List<Line> r4 = r1.getStructuredLyrics().get(0).getLine();
+        if (r4 == null) goto L58;
+        if (r4.isEmpty() == true) goto L58;
+        int r5 = 0;
+        int r6 = 0;
+    L24:
+        if (r5 >= r4.size()) goto L31;
+        Integer r7 = r4.get(r5).getStart();
+        if (r7 == null) goto L30;
+        if (r7.intValue() > r3) goto L31;
+    L30:
+        r6 = r5;
+        r5 = r5 + 1;
+    L31:
+        Integer r8 = r12.t0;
+        if (r8 != null) goto L34;
+    L36:
+        r12.t0 = Integer.valueOf(r6);
+        StringBuilder r9 = new StringBuilder();
+        Iterator<Line> r10 = r4.iterator();
+    L38:
+        if (r10.hasNext() == false) goto L40;
+        r9.append(r10.next().getValue().trim());
+        r9.append("\n\n");
+        goto L38
+    L40:
+        SpannableString r11 = new SpannableString(r9.toString());
+        int r13 = -1;
+        int r14 = 0;
+        int r15 = 0;
+    L42:
+        if (r14 >= r4.size()) goto L49;
+        if (r14 != r6) goto L45;
+        boolean r16 = true;
+    L46:
+        if (r16 == false) goto L48;
+        r13 = r15;
+    L48:
+        int r17 = (r4.get(r14).getValue().length() + 2) + r15;
+        r11.setSpan(new pk3(r12, r4.get(r14).getStart().intValue(), r16), r15, r17, 33);
+        r14 = r14 + 1;
+        r15 = r17;
+        goto L42
+    L45:
+        r16 = false;
+        goto L46
+    L49:
+        ((TextView) r12.l0.d).setMovementMethod(LinkMovementMethod.getInstance());
+        ((TextView) r12.l0.d).setText(r11);
+        if (r13 < 0) goto L58;
+        if (r12.m0.s == false) goto L58;
+        ml3 r18 = r12.l0;
+        NestedScrollView r19 = (NestedScrollView) r18.c;
+        Layout r20 = ((TextView) r18.d).getLayout();
+        if (r20 != null) goto L56;
+        int r21 = 0;
+    L57:
+        r19.u(0 - r19.getScrollX(), r21 - r19.getScrollY(), false);
+        goto L58
+    L56:
+        int r22 = r20.getLineForOffset(r13);
+        r21 = Math.max(((r20.getLineBottom(r22) + r20.getLineTop(r22)) / 2) - (((NestedScrollView) r12.l0.c).getHeight() / 2), 0);
+        goto L57
+    L34:
+        if (r6 != r8.intValue()) goto L36;
+    L11:
+        bj2 r23 = r12.o0;
+        if (r23 == null) goto L14;
+        r2 = r23.M0();
+        goto L15
+    L14:
+        r2 = 0;
+    L58:
+        r12.p0.postDelayed(r12.q0, 250);
     }
 }

@@ -10,15 +10,14 @@ public final class a25 extends wd0 {
     public final /* synthetic */ b25 r;
     public int s;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public a25(b25 b25Var, wd0 wd0Var) {
-        super(wd0Var);
-        this.r = b25Var;
+    public a25(b25 r1, wd0 r2) {
+        this.r = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.q = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.q = r2;
         this.s |= Integer.MIN_VALUE;
         return this.r.a(null, null, this);
     }

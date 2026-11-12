@@ -13,86 +13,97 @@ import androidx.recyclerview.widget.RecyclerView;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class is0 extends kw3 {
-    public static final int[] d = {R.attr.listDivider};
+    public static final int[] d = null;
     public Drawable a;
     public final int b;
-    public final Rect c = new Rect();
+    public final Rect c;
 
-    public is0(Context context) {
-        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(d);
-        Drawable drawable = typedArrayObtainStyledAttributes.getDrawable(0);
-        this.a = drawable;
-        if (drawable == null) {
-            Log.w("DividerItem", "@android:attr/listDivider was not set in the theme used for this DividerItemDecoration. Please set that attribute all call setDrawable()");
-        }
-        typedArrayObtainStyledAttributes.recycle();
+    static {
+        d = new int[]{R.attr.listDivider};
+    }
+
+    public is0(Context r3) {
+        this.c = new Rect();
+        TypedArray r4 = r3.obtainStyledAttributes(d);
+        Drawable r0 = r4.getDrawable(0);
+        this.a = r0;
+        if (r0 != null) goto L5;
+        Log.w("DividerItem", "@android:attr/listDivider was not set in the theme used for this DividerItemDecoration. Please set that attribute all call setDrawable()");
+    L5:
+        r4.recycle();
         this.b = 1;
     }
 
     @Override // defpackage.kw3
-    public final void f(Rect rect, View view, RecyclerView recyclerView, yw3 yw3Var) {
-        Drawable drawable = this.a;
-        if (drawable == null) {
-            rect.set(0, 0, 0, 0);
-        } else if (this.b == 1) {
-            rect.set(0, 0, 0, drawable.getIntrinsicHeight());
-        } else {
-            rect.set(0, 0, drawable.getIntrinsicWidth(), 0);
-        }
+    public final void f(Rect r1, View r2, RecyclerView r3, yw3 r4) {
+        Drawable r5 = this.a;
+        if (r5 != null) goto L7;
+        r1.set(0, 0, 0, 0);
+        return;
+    L7:
+        if (this.b != 1) goto L10;
+        r1.set(0, 0, 0, r5.getIntrinsicHeight());
+        return;
+    L10:
+        r1.set(0, 0, r5.getIntrinsicWidth(), 0);
     }
 
     @Override // defpackage.kw3
-    public final void g(Canvas canvas, RecyclerView recyclerView) {
-        int height;
-        int paddingTop;
-        int width;
-        int paddingLeft;
-        if (recyclerView.getLayoutManager() == null || this.a == null) {
-            return;
-        }
-        int i = 0;
-        int i2 = this.b;
-        Rect rect = this.c;
-        if (i2 == 1) {
-            canvas.save();
-            if (recyclerView.getClipToPadding()) {
-                paddingLeft = recyclerView.getPaddingLeft();
-                width = recyclerView.getWidth() - recyclerView.getPaddingRight();
-                canvas.clipRect(paddingLeft, recyclerView.getPaddingTop(), width, recyclerView.getHeight() - recyclerView.getPaddingBottom());
-            } else {
-                width = recyclerView.getWidth();
-                paddingLeft = 0;
-            }
-            int childCount = recyclerView.getChildCount();
-            while (i < childCount) {
-                View childAt = recyclerView.getChildAt(i);
-                RecyclerView.O(childAt, rect);
-                int iRound = Math.round(childAt.getTranslationY()) + rect.bottom;
-                this.a.setBounds(paddingLeft, iRound - this.a.getIntrinsicHeight(), width, iRound);
-                this.a.draw(canvas);
-                i++;
-            }
-            canvas.restore();
-            return;
-        }
-        canvas.save();
-        if (recyclerView.getClipToPadding()) {
-            paddingTop = recyclerView.getPaddingTop();
-            height = recyclerView.getHeight() - recyclerView.getPaddingBottom();
-            canvas.clipRect(recyclerView.getPaddingLeft(), paddingTop, recyclerView.getWidth() - recyclerView.getPaddingRight(), height);
-        } else {
-            height = recyclerView.getHeight();
-            paddingTop = 0;
-        }
-        int childCount2 = recyclerView.getChildCount();
-        while (i < childCount2) {
-            View childAt2 = recyclerView.getChildAt(i);
-            recyclerView.getLayoutManager().z(childAt2, rect);
-            int iRound2 = Math.round(childAt2.getTranslationX()) + rect.right;
-            this.a.setBounds(iRound2 - this.a.getIntrinsicWidth(), paddingTop, iRound2, height);
-            this.a.draw(canvas);
-            i++;
-        }
-        canvas.restore();
+    public final void g(Canvas r9, RecyclerView r10) {
+        if (r10.getLayoutManager() != null) goto L5;
+        return;
+    L5:
+        if (this.a == null) goto L30;
+        int r0 = 0;
+        int r2 = this.b;
+        Rect r3 = this.c;
+        if (r2 != 1) goto L18;
+        r9.save();
+        if (r10.getClipToPadding() == false) goto L12;
+        int r1 = r10.getPaddingLeft();
+        int r4 = r10.getWidth() - r10.getPaddingRight();
+        r9.clipRect(r1, r10.getPaddingTop(), r4, r10.getHeight() - r10.getPaddingBottom());
+    L13:
+        int r5 = r10.getChildCount();
+    L14:
+        if (r0 >= r5) goto L16;
+        View r6 = r10.getChildAt(r0);
+        RecyclerView.O(r6, r3);
+        int r7 = Math.round(r6.getTranslationY()) + r3.bottom;
+        this.a.setBounds(r1, r7 - this.a.getIntrinsicHeight(), r4, r7);
+        this.a.draw(r9);
+        r0 = r0 + 1;
+        goto L14
+    L16:
+        r9.restore();
+        return;
+    L12:
+        r4 = r10.getWidth();
+        r1 = 0;
+        goto L13
+    L18:
+        r9.save();
+        if (r10.getClipToPadding() == false) goto L21;
+        int r8 = r10.getPaddingTop();
+        int r11 = r10.getHeight() - r10.getPaddingBottom();
+        r9.clipRect(r10.getPaddingLeft(), r8, r10.getWidth() - r10.getPaddingRight(), r11);
+    L22:
+        int r12 = r10.getChildCount();
+    L23:
+        if (r0 >= r12) goto L25;
+        View r13 = r10.getChildAt(r0);
+        r10.getLayoutManager().z(r13, r3);
+        int r14 = Math.round(r13.getTranslationX()) + r3.right;
+        this.a.setBounds(r14 - this.a.getIntrinsicWidth(), r8, r14, r11);
+        this.a.draw(r9);
+        r0 = r0 + 1;
+        goto L23
+    L25:
+        r9.restore();
+        return;
+    L21:
+        r11 = r10.getHeight();
+        r8 = 0;
+        goto L22
     }
 }

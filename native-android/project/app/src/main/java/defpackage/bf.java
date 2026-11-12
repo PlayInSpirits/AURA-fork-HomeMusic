@@ -12,31 +12,39 @@ public final class bf implements i54 {
     public final /* synthetic */ int a;
     public final Object b;
 
-    public bf(rm3 rm3Var) {
+    public bf(rm3 r2) {
         this.a = 1;
         this.b = new LinkedHashSet();
-        rm3Var.L("androidx.savedstate.Restarter", this);
+        r2.L("androidx.savedstate.Restarter", this);
     }
 
     @Override // defpackage.i54
     public final Bundle a() {
-        int i = this.a;
-        Object obj = this.b;
-        switch (i) {
-            case 0:
-                Bundle bundle = new Bundle();
-                ((df) obj).m().getClass();
-                return bundle;
-            default:
-                Bundle bundleG = fh0.g((kd3[]) Arrays.copyOf(new kd3[0], 0));
-                List listQ0 = q40.Q0((LinkedHashSet) obj);
-                bundleG.putStringArrayList("classes_to_restore", listQ0 instanceof ArrayList ? (ArrayList) listQ0 : new ArrayList<>(listQ0));
-                return bundleG;
-        }
+        int r0 = this.a;
+        Object r2 = this.b;
+        switch(r0) {
+            case 0: goto L10;
+            default: goto L4;
+        };
+    L4:
+        Bundle r1 = fh0.g((kd3[]) Arrays.copyOf(new kd3[0], 0));
+        List r3 = q40.Q0((LinkedHashSet) r2);
+        if ((r3 instanceof ArrayList) == false) goto L7;
+        ArrayList<String> r4 = (ArrayList) r3;
+    L8:
+        r1.putStringArrayList("classes_to_restore", r4);
+        return r1;
+    L7:
+        r4 = new ArrayList(r3);
+        goto L8
+    L10:
+        Bundle r5 = new Bundle();
+        ((df) r2).m().getClass();
+        return r5;
     }
 
-    public bf(df dfVar) {
+    public bf(df r2) {
         this.a = 0;
-        this.b = dfVar;
+        this.b = r2;
     }
 }

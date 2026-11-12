@@ -11,9 +11,9 @@ import java.util.Set;
 public final class dl0 extends uo implements Map {
     public final Map u;
 
-    public dl0(Map map) {
+    public dl0(Map r2) {
         super(10);
-        this.u = map;
+        this.u = r2;
     }
 
     @Override // java.util.Map
@@ -22,27 +22,32 @@ public final class dl0 extends uo implements Map {
     }
 
     @Override // java.util.Map
-    public final boolean containsKey(Object obj) {
-        return obj != null && this.u.containsKey(obj);
+    public final boolean containsKey(Object r1) {
+        if (r1 != null) goto L4;
+        return false;
+    L4:
+        if (this.u.containsKey(r1) == false) goto L9;
+        return true;
+    L9:
+        return false;
     }
 
     @Override // java.util.Map
-    public final boolean containsValue(Object obj) {
-        Iterator it = ((hb4) entrySet()).iterator();
-        it.getClass();
-        if (obj == null) {
-            while (it.hasNext()) {
-                if (((Map.Entry) it.next()).getValue() == null) {
-                    return true;
-                }
-            }
-            return false;
-        }
-        while (it.hasNext()) {
-            if (obj.equals(((Map.Entry) it.next()).getValue())) {
-                return true;
-            }
-        }
+    public final boolean containsValue(Object r2) {
+        Iterator r1 = ((hb4) entrySet()).iterator();
+        r1.getClass();
+        if (r2 != null) goto L10;
+    L5:
+        if (r1.hasNext() == false) goto L15;
+        if (((Map.Entry) r1.next()).getValue() != null) goto L5;
+        return true;
+    L15:
+        return false;
+    L10:
+        if (r1.hasNext() == false) goto L24;
+        if (r2.equals(((Map.Entry) r1.next()).getValue()) == false) goto L10;
+        return true;
+    L24:
         return false;
     }
 
@@ -52,16 +57,22 @@ public final class dl0 extends uo implements Map {
     }
 
     @Override // java.util.Map
-    public final boolean equals(Object obj) {
-        return obj != null && vr1.o(obj, this);
+    public final boolean equals(Object r1) {
+        if (r1 != null) goto L4;
+        return false;
+    L4:
+        if (vr1.o(r1, this) == false) goto L9;
+        return true;
+    L9:
+        return false;
     }
 
     @Override // java.util.Map
-    public final Object get(Object obj) {
-        if (obj == null) {
-            return null;
-        }
-        return (List) this.u.get(obj);
+    public final Object get(Object r1) {
+        if (r1 != null) goto L6;
+        return null;
+    L6:
+        return (List) this.u.get(r1);
     }
 
     @Override // java.util.Map
@@ -71,8 +82,16 @@ public final class dl0 extends uo implements Map {
 
     @Override // java.util.Map
     public final boolean isEmpty() {
-        Map map = this.u;
-        return map.isEmpty() || (map.size() == 1 && map.containsKey(null));
+        Map r2 = this.u;
+        if (r2.isEmpty() == false) goto L5;
+    L11:
+        return true;
+    L5:
+        if (r2.size() == 1) goto L7;
+        return false;
+    L7:
+        if (r2.containsKey(null) == true) goto L11;
+        return false;
     }
 
     @Override // java.util.Map
@@ -86,24 +105,24 @@ public final class dl0 extends uo implements Map {
     }
 
     @Override // java.util.Map
-    public final Object put(Object obj, Object obj2) {
-        return this.u.put(obj, obj2);
+    public final Object put(Object r1, Object r2) {
+        return this.u.put(r1, r2);
     }
 
     @Override // java.util.Map
-    public final void putAll(Map map) {
-        this.u.putAll(map);
+    public final void putAll(Map r1) {
+        this.u.putAll(r1);
     }
 
     @Override // java.util.Map
-    public final Object remove(Object obj) {
-        return this.u.remove(obj);
+    public final Object remove(Object r1) {
+        return this.u.remove(r1);
     }
 
     @Override // java.util.Map
     public final int size() {
-        Map map = this.u;
-        return map.size() - (map.containsKey(null) ? 1 : 0);
+        Map r2 = this.u;
+        return r2.size() - (r2.containsKey(null) ? 1 : 0);
     }
 
     @Override // java.util.Map

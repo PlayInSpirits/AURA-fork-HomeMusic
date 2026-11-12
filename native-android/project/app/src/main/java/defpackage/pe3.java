@@ -8,35 +8,48 @@ public final class pe3 extends bf3 {
     public final float e;
     public final float f;
 
-    public pe3(float f, float f2, float f3, float f4) {
+    public pe3(float r2, float r3, float r4, float r5) {
         super(2);
-        this.c = f;
-        this.d = f2;
-        this.e = f3;
-        this.f = f4;
+        this.c = r2;
+        this.d = r3;
+        this.e = r4;
+        this.f = r5;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof pe3)) {
-            return false;
-        }
-        pe3 pe3Var = (pe3) obj;
-        return Float.compare(this.c, pe3Var.c) == 0 && Float.compare(this.d, pe3Var.d) == 0 && Float.compare(this.e, pe3Var.e) == 0 && Float.compare(this.f, pe3Var.f) == 0;
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if ((r5 instanceof pe3) == true) goto L8;
+        return false;
+    L8:
+        pe3 r6 = (pe3) r5;
+        if (Float.compare(this.c, r6.c) == 0) goto L12;
+        return false;
+    L12:
+        if (Float.compare(this.d, r6.d) == 0) goto L15;
+        return false;
+    L15:
+        if (Float.compare(this.e, r6.e) == 0) goto L18;
+        return false;
+    L18:
+        if (Float.compare(this.f, r6.f) == 0) goto L20;
+        return false;
+    L20:
+        return true;
     }
 
     public final int hashCode() {
-        return Float.hashCode(this.f) + b11.d(b11.d(Float.hashCode(this.c) * 31, this.d, 31), this.e, 31);
+        int r0 = b11.d(b11.d(Float.hashCode(this.c) * 31, this.d, 31), this.e, 31);
+        return Float.hashCode(this.f) + r0;
     }
 
     public final String toString() {
-        StringBuilder sbR = b11.r("ReflectiveCurveTo(x1=", this.c, ", y1=", this.d, ", x2=");
-        sbR.append(this.e);
-        sbR.append(", y2=");
-        sbR.append(this.f);
-        sbR.append(")");
-        return sbR.toString();
+        StringBuilder r0 = b11.r("ReflectiveCurveTo(x1=", this.c, ", y1=", this.d, ", x2=");
+        r0.append(this.e);
+        r0.append(", y2=");
+        r0.append(this.f);
+        r0.append(")");
+        return r0.toString();
     }
 }

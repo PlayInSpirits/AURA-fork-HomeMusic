@@ -12,43 +12,43 @@ public final class rg0 implements Application.ActivityLifecycleCallbacks {
     public int n;
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityCreated(Activity activity, Bundle bundle) {
-        if (activity.getClass() != sg0.b.o) {
-            sg0.c = new WeakReference(activity);
-            new Date().getTime();
-            Application application = sg0.a;
-        }
-        Application application2 = sg0.a;
+    public final void onActivityCreated(Activity r1, Bundle r2) {
+        if (r1.getClass() == sg0.b.o) goto L5;
+        sg0.c = new WeakReference(r1);
+        new Date().getTime();
+        Application r0 = sg0.a;
+    L5:
+        Application r3 = sg0.a;
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityDestroyed(Activity activity) {
-        Application application = sg0.a;
+    public final void onActivityDestroyed(Activity r1) {
+        Application r0 = sg0.a;
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityPaused(Activity activity) {
-        Application application = sg0.a;
+    public final void onActivityPaused(Activity r1) {
+        Application r0 = sg0.a;
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityResumed(Activity activity) {
-        Application application = sg0.a;
+    public final void onActivityResumed(Activity r1) {
+        Application r0 = sg0.a;
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
+    public final void onActivitySaveInstanceState(Activity r1, Bundle r2) {
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityStarted(Activity activity) {
+    public final void onActivityStarted(Activity r1) {
         this.n++;
-        Application application = sg0.a;
+        Application r0 = sg0.a;
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityStopped(Activity activity) {
+    public final void onActivityStopped(Activity r1) {
         this.n--;
-        Application application = sg0.a;
+        Application r0 = sg0.a;
     }
 }

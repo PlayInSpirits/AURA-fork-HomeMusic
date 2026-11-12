@@ -12,24 +12,36 @@ public final class s83 extends v33 {
     public final OnBackInvokedCallback e;
     public boolean f;
 
-    public s83(OnBackInvokedDispatcher onBackInvokedDispatcher, int i) {
-        this.c = onBackInvokedDispatcher;
-        this.d = i;
-        this.e = Build.VERSION.SDK_INT == 33 ? new vf(2, this) : new t83(this);
+    public s83(OnBackInvokedDispatcher r1, int r2) {
+        this.c = r1;
+        this.d = r2;
+        if (Build.VERSION.SDK_INT != 33) goto L5;
+        OnBackInvokedCallback r3 = new vf(2, this);
+    L6:
+        this.e = r3;
+        return;
+    L5:
+        r3 = new t83(this);
+        goto L6
     }
 
     @Override // defpackage.v33
-    public final void b(boolean z) {
-        OnBackInvokedCallback onBackInvokedCallback = this.e;
-        if (z && !this.f) {
-            this.c.registerOnBackInvokedCallback(this.d, onBackInvokedCallback);
-            this.f = true;
-        } else {
-            if (z || !this.f) {
-                return;
-            }
-            this.c.unregisterOnBackInvokedCallback(onBackInvokedCallback);
-            this.f = false;
-        }
+    public final void b(boolean r3) {
+        OnBackInvokedCallback r0 = this.e;
+        if (r3 == true) goto L5;
+    L8:
+        if (r3 == false) goto L10;
+        return;
+    L10:
+        if (this.f == false) goto L14;
+        n3.C(this.c, r0);
+        this.f = false;
+        return;
+    L14:
+        return;
+    L5:
+        if (this.f == true) goto L8;
+        n3.u(this.c, this.d, r0);
+        this.f = true;
     }
 }

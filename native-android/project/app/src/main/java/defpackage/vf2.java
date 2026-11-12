@@ -10,38 +10,47 @@ public class vf2 extends hd {
     public final xi4 c;
     public final k03 d;
 
-    public vf2(Application application) {
-        super(application);
+    public vf2(Application r2) {
+        super(r2);
         this.d = new k03(ud3.k());
         this.c = new xi4(18);
     }
 
     public static boolean c() {
-        int i;
-        rq rqVar = new rq(new vs3().a);
-        Thread thread = new Thread(rqVar);
-        thread.start();
-        try {
-            thread.join();
-            i = rqVar.o;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            i = 0;
-        }
-        return i != 0;
+        rq r1 = new rq(new vs3().a);
+        Thread r0 = new Thread(r1);
+        r0.start();
+        r0.join();     // Catch: InterruptedException -> L5
+        int r2 = r1.o;     // Catch: InterruptedException -> L5
+    L7:
+        if (r2 == 0) goto L12;
+        return true;
+    L12:
+        return false;
+    L5:
+        e = move-exception;
+        e.printStackTrace();
+        r2 = 0;
+        goto L7
     }
 
-    public final void d(String str) {
-        String strE = ud3.E();
-        String strConcat = strE == null ? null : "active_music_folder_id_".concat(strE);
-        if (strConcat != null) {
-            App.b().getClass();
-            SharedPreferences.Editor editorEdit = App.c().edit();
-            if (str == null) {
-                str = "default";
-            }
-            editorEdit.putString(strConcat, str).apply();
-        }
+    public final void d(String r3) {
+        String r0 = ud3.E();
+        if (r0 != null) goto L5;
+        String r1 = null;
+    L6:
+        if (r1 == null) goto L12;
+        App.b().getClass();
+        SharedPreferences.Editor r2 = App.c().edit();
+        if (r3 != null) goto L11;
+        r3 = "default";
+    L11:
+        r2.putString(r1, r3).apply();
+    L12:
         this.d.k(ud3.k());
+        return;
+    L5:
+        r1 = "active_music_folder_id_".concat(r0);
+        goto L6
     }
 }

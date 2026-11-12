@@ -10,211 +10,216 @@ public final class cm1 {
     public boolean c;
     public boolean d;
     public boolean e;
-    public final q03 f = new q03();
-    public final i63 g = new i63();
-    public final m03 h = new m03(10);
+    public final q03 f;
+    public final i63 g;
+    public final m03 h;
 
-    public cm1(q62 q62Var) {
-        this.a = q62Var;
+    public cm1(q62 r2) {
+        this.a = r2;
+        this.f = new q03();
+        this.g = new i63();
+        this.h = new m03(10);
     }
 
-    /* JADX WARN: Code duplicated, block: B:28:0x0076  */
-    /* JADX WARN: Code duplicated, block: B:30:0x007c  */
-    public final void a(long j, List list, boolean z) {
-        int i;
-        m03 m03Var;
-        long[] jArr;
-        a63 a63Var;
-        Object objD;
-        Object obj;
-        int size = list.size();
-        i63 i63Var = this.g;
-        i63 i63Var2 = i63Var;
-        boolean z2 = true;
-        int i2 = 0;
-        while (true) {
-            i = 7;
-            m03Var = this.h;
-            if (i2 >= size) {
-                break;
-            }
-            cx2 cx2Var = (cx2) list.get(i2);
-            if (cx2Var.A) {
-                cx2Var.z = new fa(i, this, cx2Var);
-                if (z2) {
-                    f13 f13Var = i63Var2.a;
-                    Object[] objArr = f13Var.n;
-                    int i3 = f13Var.p;
-                    int i4 = 0;
-                    while (true) {
-                        if (i4 >= i3) {
-                            obj = null;
-                            break;
-                        }
-                        obj = objArr[i4];
-                        if (h12.c(((a63) obj).c, cx2Var)) {
-                            break;
-                        } else {
-                            i4++;
-                        }
-                    }
-                    a63Var = (a63) obj;
-                    if (a63Var != null) {
-                        a63Var.i = true;
-                        a63Var.d.a(j);
-                        if (z) {
-                            Object objD2 = m03Var.d(j);
-                            if (objD2 == null) {
-                                objD2 = new q03();
-                                m03Var.f(j, objD2);
-                            }
-                            ((q03) objD2).a(a63Var);
-                        }
-                    } else {
-                        z2 = false;
-                        a63Var = new a63(cx2Var);
-                        a63Var.d.a(j);
-                        if (z) {
-                            objD = m03Var.d(j);
-                            if (objD == null) {
-                                objD = new q03();
-                                m03Var.f(j, objD);
-                            }
-                            ((q03) objD).a(a63Var);
-                        }
-                        i63Var2.a.b(a63Var);
-                    }
-                } else {
-                    a63Var = new a63(cx2Var);
-                    a63Var.d.a(j);
-                    if (z) {
-                        objD = m03Var.d(j);
-                        if (objD == null) {
-                            objD = new q03();
-                            m03Var.f(j, objD);
-                        }
-                        ((q03) objD).a(a63Var);
-                    }
-                    i63Var2.a.b(a63Var);
-                }
-                i63Var2 = a63Var;
-            }
-            i2++;
-        }
-        if (z) {
-            long[] jArr2 = m03Var.b;
-            Object[] objArr2 = m03Var.c;
-            long[] jArr3 = m03Var.a;
-            int length = jArr3.length - 2;
-            if (length >= 0) {
-                int i5 = 0;
-                while (true) {
-                    long j2 = jArr3[i5];
-                    if ((((~j2) << i) & j2 & (-9187201950435737472L)) != -9187201950435737472L) {
-                        int i6 = 8;
-                        int i7 = 8 - ((~(i5 - length)) >>> 31);
-                        int i8 = 0;
-                        while (i8 < i7) {
-                            if ((255 & j2) < 128) {
-                                int i9 = (i5 << 3) + i8;
-                                long j3 = jArr2[i9];
-                                q03 q03Var = (q03) objArr2[i9];
-                                f13 f13Var2 = i63Var.a;
-                                Object[] objArr3 = f13Var2.n;
-                                int i10 = f13Var2.p;
-                                for (int i11 = 0; i11 < i10; i11++) {
-                                    ((a63) objArr3[i11]).f(j3, q03Var);
-                                }
-                            }
-                            j2 >>= i6;
-                            i8++;
-                            i6 = i6;
-                            jArr2 = jArr2;
-                        }
-                        jArr = jArr2;
-                        if (i7 != i6) {
-                            break;
-                        }
-                    } else {
-                        jArr = jArr2;
-                    }
-                    if (i5 == length) {
-                        break;
-                    }
-                    i5++;
-                    jArr2 = jArr;
-                    i = 7;
-                }
-            }
-        }
-        m03Var.a();
+    public final void a(long r19, List r21, boolean r22) {
+        int r3 = r21.size();
+        i63 r4 = this.g;
+        i63 r9 = r4;
+        boolean r8 = true;
+        int r7 = 0;
+    L3:
+        int r10 = 7;
+        m03 r11 = this.h;
+        if (r7 >= r3) goto L34;
+        cx2 r13 = (cx2) r21.get(r7);
+        if (r13.A == false) goto L33;
+        r13.z = new fa(r10, this, r13);
+        if (r8 == false) goto L26;
+        f13 r12 = r9.a;
+        Object[] r14 = r12.n;
+        int r15 = r12.p;
+        int r16 = 0;
+    L10:
+        if (r16 >= r15) goto L15;
+        Object r17 = r14[r16];
+        if (h12.c(((a63) r17).c, r13) == true) goto L16;
+        r16 = r16 + 1;
+    L16:
+        a63 r6 = (a63) r17;
+        if (r6 == null) goto L25;
+        r6.i = true;
+        r6.d.a(r19);
+        if (r22 == false) goto L24;
+        Object r18 = r11.d(r19);
+        if (r18 != null) goto L23;
+        r18 = new q03();
+        r11.f(r19, r18);
+    L23:
+        ((q03) r18).a(r6);
+    L24:
+        r9 = r6;
+        goto L33
+    L25:
+        r8 = false;
+        goto L26
+    L15:
+        r17 = null;
+    L26:
+        r6 = new a63(r13);
+        r6.d.a(r19);
+        if (r22 == false) goto L32;
+        Object r110 = r11.d(r19);
+        if (r110 != null) goto L31;
+        r110 = new q03();
+        r11.f(r19, r110);
+    L31:
+        ((q03) r110).a(r6);
+    L32:
+        r9.a.b(r6);
+    L33:
+        r7 = r7 + 1;
+        goto L3
+    L34:
+        if (r22 == false) goto L55;
+        long[] r0 = r11.b;
+        Object[] r1 = r11.c;
+        long[] r2 = r11.a;
+        int r5 = r2.length - 2;
+        if (r5 < 0) goto L55;
+        int r20 = 0;
+    L38:
+        long r23 = r2[r20];
+        if (((((~r23) << r10) & r23) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L52;
+        int r24 = 8;
+        int r25 = 8 - ((~(r20 - r5)) >>> 31);
+        int r111 = 0;
+    L41:
+        if (r111 >= r25) goto L49;
+        if ((255 & r23) >= 128) goto L48;
+        int r112 = (r20 << 3) + r111;
+        long r113 = r0[r112];
+        q03 r114 = (q03) r1[r112];
+        f13 r115 = r4.a;
+        Object[] r26 = r115.n;
+        int r116 = r115.p;
+        int r27 = 0;
+    L45:
+        if (r27 >= r116) goto L48;
+        ((a63) r26[r27]).f(r113, r114);
+        r27 = r27 + 1;
+    L48:
+        r23 = r23 >> r24;
+        r111 = r111 + 1;
+        r24 = r24;
+        r0 = r0;
+        goto L41
+    L49:
+        long[] r117 = r0;
+        if (r25 != r24) goto L55;
+    L53:
+        if (r20 == r5) goto L55;
+        r20 = r20 + 1;
+        r0 = r117;
+        r10 = 7;
+        goto L38
+    L52:
+        r117 = r0;
+    L55:
+        r11.a();
     }
 
-    public final boolean b(gp3 gp3Var, boolean z) {
-        xe2 xe2Var = (xe2) gp3Var.o;
-        q62 q62Var = this.a;
-        i63 i63Var = this.g;
-        boolean zA = i63Var.a(xe2Var, q62Var, gp3Var, z);
-        f13 f13Var = i63Var.a;
-        if (!zA) {
-            return false;
-        }
-        boolean z2 = true;
+    public final boolean b(gp3 r10, boolean r11) {
+        xe2 r0 = (xe2) r10.o;
+        q62 r1 = this.a;
+        i63 r2 = this.g;
+        boolean r3 = r2.a(r0, r1, r10, r11);
+        f13 r4 = r2.a;
+        if (r3 == true) goto L5;
+        return false;
+    L5:
+        boolean r5 = true;
         this.b = true;
-        Object[] objArr = f13Var.n;
-        int i = f13Var.p;
-        boolean z3 = false;
-        for (int i2 = 0; i2 < i; i2++) {
-            z3 = ((a63) objArr[i2]).e(gp3Var, z) || z3;
-        }
-        Object[] objArr2 = f13Var.n;
-        int i3 = f13Var.p;
-        boolean z4 = false;
-        for (int i4 = 0; i4 < i3; i4++) {
-            z4 = ((a63) objArr2[i4]).d(gp3Var) || z4;
-        }
-        i63Var.b(gp3Var);
-        if (!z4 && !z3) {
-            z2 = false;
-        }
+        Object[] r6 = r4.n;
+        int r7 = r4.p;
+        int r8 = 0;
+        boolean r9 = false;
+    L6:
+        if (r8 >= r7) goto L14;
+        if (((a63) r6[r8]).e(r10, r11) == true) goto L12;
+        if (r9 == true) goto L12;
+        r9 = false;
+    L13:
+        r8 = r8 + 1;
+    L12:
+        r9 = true;
+        goto L13
+    L14:
+        Object[] r12 = r4.n;
+        int r13 = r4.p;
+        int r14 = 0;
+        boolean r15 = false;
+    L15:
+        if (r14 >= r13) goto L23;
+        if (((a63) r12[r14]).d(r10) == true) goto L21;
+        if (r15 == true) goto L21;
+        r15 = false;
+    L22:
+        r14 = r14 + 1;
+    L21:
+        r15 = true;
+        goto L22
+    L23:
+        r2.b(r10);
+        if (r15 == true) goto L28;
+        if (r9 == true) goto L28;
+        r5 = false;
+    L28:
         this.b = false;
-        if (this.e) {
-            this.e = false;
-            q03 q03Var = this.f;
-            int i5 = q03Var.b;
-            for (int i6 = 0; i6 < i5; i6++) {
-                d((cx2) q03Var.f(i6));
-            }
-            q03Var.d();
-        }
-        if (this.c) {
-            this.c = false;
-            c();
-        }
-        if (this.d) {
-            this.d = false;
-            i63Var.a.g();
-        }
-        return z2;
+        if (this.e == false) goto L35;
+        this.e = false;
+        q03 r16 = this.f;
+        int r17 = r16.b;
+        int r18 = 0;
+    L31:
+        if (r18 >= r17) goto L33;
+        d((cx2) r16.f(r18));
+        r18 = r18 + 1;
+        goto L31
+    L33:
+        r16.d();
+    L35:
+        if (this.c == false) goto L38;
+        this.c = false;
+        c();
+    L38:
+        if (this.d == false) goto L40;
+        this.d = false;
+        r2.a.g();
+    L40:
+        return r5;
     }
 
     public final void c() {
-        if (this.b) {
-            this.c = true;
-            return;
-        }
-        i63 i63Var = this.g;
-        f13 f13Var = i63Var.a;
-        Object[] objArr = f13Var.n;
-        int i = f13Var.p;
-        for (int i2 = 0; i2 < i; i2++) {
-            ((a63) objArr[i2]).c();
-        }
-        if (this.d) {
-            this.d = true;
-        } else {
-            i63Var.a.g();
-        }
+        if (this.b == false) goto L6;
+        this.c = true;
+        return;
+    L6:
+        i63 r0 = this.g;
+        f13 r2 = r0.a;
+        Object[] r3 = r2.n;
+        int r4 = r2.p;
+        int r5 = 0;
+    L7:
+        if (r5 >= r4) goto L10;
+        ((a63) r3[r5]).c();
+        r5 = r5 + 1;
+        goto L7
+    L10:
+        if (this.d == false) goto L13;
+        this.d = true;
+        return;
+    L13:
+        r0.a.g();
     }
 
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
@@ -227,32 +232,31 @@ public final class cm1 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public final void d(cx2 cx2Var) {
-        if (this.b) {
-            this.e = true;
-            this.f.a(cx2Var);
-            return;
-        }
-        i63 i63Var = this.g;
-        q03 q03Var = i63Var.b;
-        q03Var.d();
-        q03Var.a(i63Var);
-        while (q03Var.i()) {
-            i63 i63Var2 = (i63) q03Var.k(q03Var.b - 1);
-            int i = 0;
-            while (true) {
-                f13 f13Var = i63Var2.a;
-                if (i < f13Var.p) {
-                    a63 a63Var = (a63) f13Var.n[i];
-                    if (h12.c(a63Var.c, cx2Var)) {
-                        i63Var2.a.j(a63Var);
-                        a63Var.c();
-                    } else {
-                        q03Var.a(a63Var);
-                        i++;
-                    }
-                }
-            }
-        }
+    public final void d(cx2 r6) {
+        if (this.b == false) goto L6;
+        this.e = true;
+        this.f.a(r6);
+        return;
+    L6:
+        i63 r5 = this.g;
+        q03 r0 = r5.b;
+        r0.d();
+        r0.a(r5);
+    L8:
+        if (r0.i() == false) goto L16;
+        i63 r7 = (i63) r0.k(r0.b - 1);
+        int r2 = 0;
+    L10:
+        f13 r3 = r7.a;
+        if (r2 >= r3.p) goto L8;
+        a63 r4 = (a63) r3.n[r2];
+        if (h12.c(r4.c, r6) == true) goto L14;
+        r0.a(r4);
+        r2 = r2 + 1;
+        goto L10
+    L14:
+        r7.a.j(r4);
+        r4.c();
+        goto L10
     }
 }

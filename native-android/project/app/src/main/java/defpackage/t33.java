@@ -9,27 +9,40 @@ public final class t33 {
     public final float d;
     public final long e;
 
-    public t33(int i, float f, float f2, float f3, long j) {
-        this.a = i;
-        this.b = f;
-        this.c = f2;
-        this.d = f3;
-        this.e = j;
+    public t33(int r1, float r2, float r3, float r4, long r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj != null && t33.class == obj.getClass()) {
-            t33 t33Var = (t33) obj;
-            return this.c == t33Var.c && this.d == t33Var.d && this.b == t33Var.b && this.a == t33Var.a && this.e == t33Var.e;
-        }
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if (r5 != null) goto L8;
+    L23:
         return false;
+    L8:
+        if (t33.class != r5.getClass()) goto L23;
+        t33 r6 = (t33) r5;
+        if (this.c != r6.c) goto L23;
+        if (this.d != r6.d) goto L23;
+        if (this.b != r6.b) goto L23;
+        if (this.a == r6.a) goto L20;
+        return false;
+    L20:
+        if (this.e == r6.e) goto L22;
+        return false;
+    L22:
+        return true;
     }
 
     public final int hashCode() {
-        return Long.hashCode(this.e) + f34.d(this.a, b11.d(b11.d(Float.hashCode(this.c) * 31, this.d, 31), this.b, 31), 31);
+        int r0 = b11.d(b11.d(Float.hashCode(this.c) * 31, this.d, 31), this.b, 31);
+        int r1 = f34.d(this.a, r0, 31);
+        return Long.hashCode(this.e) + r1;
     }
 
     public final String toString() {

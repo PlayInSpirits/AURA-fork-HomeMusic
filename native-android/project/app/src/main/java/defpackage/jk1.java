@@ -7,10 +7,12 @@ import java.util.ArrayList;
 public final class jk1 {
     public final Object a;
     public ArrayList b;
-    public jk1 d = this;
-    public jk1 c = this;
+    public jk1 c;
+    public jk1 d;
 
-    public jk1(xn3 xn3Var) {
-        this.a = xn3Var;
+    public jk1(xn3 r1) {
+        this.d = this;
+        this.c = this;
+        this.a = r1;
     }
 }

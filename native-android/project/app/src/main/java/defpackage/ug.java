@@ -14,17 +14,17 @@ public final class ug implements ah, DialogInterface.OnClickListener {
     public CharSequence p;
     public final /* synthetic */ bh q;
 
-    public ug(bh bhVar) {
-        this.q = bhVar;
+    public ug(bh r1) {
+        this.q = r1;
     }
 
     @Override // defpackage.ah
     public final boolean b() {
-        f9 f9Var = this.n;
-        if (f9Var != null) {
-            return f9Var.isShowing();
-        }
+        f9 r0 = this.n;
+        if (r0 != null) goto L5;
         return false;
+    L5:
+        return r0.isShowing();
     }
 
     @Override // defpackage.ah
@@ -33,17 +33,17 @@ public final class ug implements ah, DialogInterface.OnClickListener {
     }
 
     @Override // defpackage.ah
-    public final void d(int i) {
+    public final void d(int r1) {
         Log.e("AppCompatSpinner", "Cannot set horizontal offset for MODE_DIALOG, ignoring");
     }
 
     @Override // defpackage.ah
     public final void dismiss() {
-        f9 f9Var = this.n;
-        if (f9Var != null) {
-            f9Var.dismiss();
-            this.n = null;
-        }
+        f9 r0 = this.n;
+        if (r0 == null) goto L6;
+        r0.dismiss();
+        this.n = null;
+        return;
     }
 
     @Override // defpackage.ah
@@ -57,48 +57,48 @@ public final class ug implements ah, DialogInterface.OnClickListener {
     }
 
     @Override // defpackage.ah
-    public final void h(CharSequence charSequence) {
-        this.p = charSequence;
+    public final void h(CharSequence r1) {
+        this.p = r1;
     }
 
     @Override // defpackage.ah
-    public final void i(Drawable drawable) {
+    public final void i(Drawable r1) {
         Log.e("AppCompatSpinner", "Cannot set popup background for MODE_DIALOG, ignoring");
     }
 
     @Override // defpackage.ah
-    public final void j(int i) {
+    public final void j(int r1) {
         Log.e("AppCompatSpinner", "Cannot set vertical offset for MODE_DIALOG, ignoring");
     }
 
     @Override // defpackage.ah
-    public final void m(int i) {
+    public final void m(int r1) {
         Log.e("AppCompatSpinner", "Cannot set horizontal (original) offset for MODE_DIALOG, ignoring");
     }
 
     @Override // defpackage.ah
-    public final void n(int i, int i2) {
-        if (this.o == null) {
-            return;
-        }
-        bh bhVar = this.q;
-        e9 e9Var = new e9(bhVar.getPopupContext());
-        CharSequence charSequence = this.p;
-        if (charSequence != null) {
-            e9Var.setTitle(charSequence);
-        }
-        vg vgVar = this.o;
-        int selectedItemPosition = bhVar.getSelectedItemPosition();
-        a9 a9Var = e9Var.a;
-        a9Var.q = vgVar;
-        a9Var.r = this;
-        a9Var.w = selectedItemPosition;
-        a9Var.v = true;
-        f9 f9VarCreate = e9Var.create();
-        this.n = f9VarCreate;
-        AlertController$RecycleListView alertController$RecycleListView = f9VarCreate.t.f;
-        alertController$RecycleListView.setTextDirection(i);
-        alertController$RecycleListView.setTextAlignment(i2);
+    public final void n(int r5, int r6) {
+        if (this.o != null) goto L5;
+        return;
+    L5:
+        bh r1 = this.q;
+        e9 r0 = new e9(r1.getPopupContext());
+        CharSequence r2 = this.p;
+        if (r2 == null) goto L8;
+        r0.setTitle(r2);
+    L8:
+        vg r3 = this.o;
+        int r4 = r1.getSelectedItemPosition();
+        a9 r7 = r0.a;
+        r7.q = r3;
+        r7.r = this;
+        r7.w = r4;
+        r7.v = true;
+        f9 r8 = r0.create();
+        this.n = r8;
+        AlertController$RecycleListView r9 = r8.t.f;
+        r9.setTextDirection(r5);
+        r9.setTextAlignment(r6);
         this.n.show();
     }
 
@@ -108,17 +108,17 @@ public final class ug implements ah, DialogInterface.OnClickListener {
     }
 
     @Override // android.content.DialogInterface.OnClickListener
-    public final void onClick(DialogInterface dialogInterface, int i) {
-        bh bhVar = this.q;
-        bhVar.setSelection(i);
-        if (bhVar.getOnItemClickListener() != null) {
-            bhVar.performItemClick(null, i, this.o.getItemId(i));
-        }
+    public final void onClick(DialogInterface r4, int r5) {
+        bh r6 = this.q;
+        r6.setSelection(r5);
+        if (r6.getOnItemClickListener() == null) goto L5;
+        r6.performItemClick(null, r5, this.o.getItemId(r5));
+    L5:
         dismiss();
     }
 
     @Override // defpackage.ah
-    public final void p(ListAdapter listAdapter) {
-        this.o = (vg) listAdapter;
+    public final void p(ListAdapter r1) {
+        this.o = (vg) r1;
     }
 }

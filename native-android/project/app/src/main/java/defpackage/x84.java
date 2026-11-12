@@ -6,13 +6,13 @@ public final class x84 implements Comparable {
     public final long n;
     public final ii0 o;
 
-    public x84(long j, ii0 ii0Var) {
-        this.n = j;
-        this.o = ii0Var;
+    public x84(long r1, ii0 r3) {
+        this.n = r1;
+        this.o = r3;
     }
 
     @Override // java.lang.Comparable
-    public final int compareTo(Object obj) {
-        return Long.compare(this.n, ((x84) obj).n);
+    public final int compareTo(Object r3) {
+        return Long.compare(this.n, ((x84) r3).n);
     }
 }

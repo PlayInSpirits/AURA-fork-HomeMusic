@@ -6,28 +6,30 @@ public final class id5 implements Runnable {
     public final jd5 n;
     public final rc5 o;
 
-    public id5(jd5 jd5Var, rc5 rc5Var) {
-        this.n = jd5Var;
-        this.o = rc5Var;
+    public id5(jd5 r1, rc5 r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        synchronized (this.n.d) {
-            try {
-                if (((id5) this.n.b.remove(this.o)) != null) {
-                    co0 co0Var = (co0) this.n.c.remove(this.o);
-                    if (co0Var != null) {
-                        rc5 rc5Var = this.o;
-                        cx.f().b(co0.B, "Exceeded time limits on execution for " + rc5Var);
-                        co0Var.u.execute(new bo0(co0Var, 0));
-                    }
-                } else {
-                    cx.f().b("WrkTimerRunnable", "Timer with " + this.o + " is already marked as complete.");
-                }
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+        Object r1 = this.n.d;
+        monitor-enter(r1);
+    L9:
+        th = move-exception;
+        throw th;
+    L5:
+        if (((id5) this.n.b.remove(this.o)) == null) goto L11;
+        co0 r0 = (co0) this.n.c.remove(this.o);     // Catch: Throwable -> L9
+        if (r0 == null) goto L12;
+        rc5 r6 = this.o;     // Catch: Throwable -> L9
+        cx.f().b(co0.B, "Exceeded time limits on execution for " + r6);     // Catch: Throwable -> L9
+        r0.u.execute(new bo0(r0, 0));     // Catch: Throwable -> L9
+    L12:
+        monitor-exit(r1);     // Catch: Throwable -> L9
+        return;
+    L11:
+        cx.f().b("WrkTimerRunnable", "Timer with " + this.o + " is already marked as complete.");     // Catch: Throwable -> L9
+        goto L12
     }
 }

@@ -11,67 +11,68 @@ import android.provider.Settings;
 public final class rx2 implements qx2 {
     public final Context n;
     public td0 o;
-    public final vd3 p = new vd3(1.0f);
+    public final vd3 p;
     public sk4 q;
 
-    public rx2(Context context) {
-        this.n = context;
+    public rx2(Context r2) {
+        this.n = r2;
+        this.p = new vd3(1.0f);
     }
 
     @Override // defpackage.ne0
-    public final ne0 J(ne0 ne0Var) {
-        return ya4.F(this, ne0Var);
+    public final ne0 J(ne0 r1) {
+        return ya4.F(this, r1);
     }
 
     @Override // defpackage.ne0
-    public final le0 K(me0 me0Var) {
-        return ya4.r(this, me0Var);
+    public final le0 K(me0 r1) {
+        return ya4.r(this, r1);
     }
 
     @Override // defpackage.ne0
-    public final Object s(wf1 wf1Var, Object obj) {
-        return wf1Var.invoke(obj, this);
+    public final Object s(wf1 r1, Object r2) {
+        return r1.invoke(r2, this);
     }
 
     @Override // defpackage.ne0
-    public final ne0 u(me0 me0Var) {
-        return ya4.C(this, me0Var);
+    public final ne0 u(me0 r1) {
+        return ya4.C(this, r1);
     }
 
     @Override // defpackage.qx2
     public final float v() {
-        vd0 vd0Var;
-        ll4 ll4Var;
-        if (this.q == null) {
-            Context context = this.n;
-            w03 w03Var = ic5.a;
-            synchronized (w03Var) {
-                try {
-                    Object objG = w03Var.g(context);
-                    vd0Var = null;
-                    if (objG == null) {
-                        ContentResolver contentResolver = context.getContentResolver();
-                        Uri uriFor = Settings.Global.getUriFor("animator_duration_scale");
-                        aw awVarA = su3.a(-1, 6, null);
-                        gc0 gc0Var = new gc0(1, new hc5(contentResolver, uriFor, new ng0(awVarA, wr1.m(Looper.getMainLooper())), awVarA, context, null));
-                        fo4 fo4Var = new fo4(null);
-                        rm0 rm0Var = rr0.a;
-                        objG = ya4.L(gc0Var, new td0(ya4.F(fo4Var, uf2.a)), new il4(), Float.valueOf(Settings.Global.getFloat(context.getContentResolver(), "animator_duration_scale", 1.0f)));
-                        w03Var.l(context, objG);
-                    }
-                    ll4Var = (ll4) objG;
-                } catch (Throwable th) {
-                    throw th;
-                }
-            }
-            this.p.h(((Number) ll4Var.getValue()).floatValue());
-            td0 td0Var = this.o;
-            if (td0Var == null) {
-                kf2.o("MotionDurationScale scale factor requested before recomposer loop start");
-                return 0.0f;
-            }
-            this.q = fu.G(td0Var, null, null, new p(ll4Var, this, vd0Var, 11), 3);
-        }
+        if (this.q != null) goto L21;
+        Context r6 = this.n;
+        w03 r8 = ic5.a;
+        monitor-enter(r8);
+        Object r0 = r8.g(r6);     // Catch: Throwable -> L9
+        vd0 r9 = null;
+        if (r0 != null) goto L11;
+        ContentResolver r2 = r6.getContentResolver();     // Catch: Throwable -> L9
+        Uri r3 = Settings.Global.getUriFor("animator_duration_scale");     // Catch: Throwable -> L9
+        aw r5 = su3.a(-1, 6, null);     // Catch: Throwable -> L9
+        hc5 r1 = new hc5(r2, r3, new ng0(r5, wr1.m(Looper.getMainLooper())), r5, r6, null);     // Catch: Throwable -> L9
+        gc0 r4 = new gc0(1, r1);     // Catch: Throwable -> L9
+        fo4 r7 = new fo4(null);     // Catch: Throwable -> L9
+        rm0 r10 = rr0.a;     // Catch: Throwable -> L9
+        r0 = ya4.L(r4, new td0(ya4.F(r7, uf2.a)), new il4(), Float.valueOf(Settings.Global.getFloat(r6.getContentResolver(), "animator_duration_scale", 1.0f)));     // Catch: Throwable -> L9
+        r8.l(r6, r0);     // Catch: Throwable -> L9
+    L11:
+        ll4 r11 = (ll4) r0;     // Catch: Throwable -> L9
+        monitor-exit(r8);
+        float r12 = ((Number) r11.getValue()).floatValue();
+        this.p.h(r12);
+        td0 r13 = this.o;
+        if (r13 == null) goto L16;
+        this.q = fu.G(r13, null, null, new p(r11, this, r9, 11), 3);
+        goto L21
+    L16:
+        kf2.o("MotionDurationScale scale factor requested before recomposer loop start");
+        return 0.0f;
+    L9:
+        th = move-exception;
+        throw th;
+    L21:
         return this.p.g();
     }
 }

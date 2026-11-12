@@ -6,6 +6,6 @@ public abstract class c45 {
     public static final /* synthetic */ int a = 0;
 
     static {
-        int i = x40.h;
+        int r0 = x40.h;
     }
 }

@@ -11,61 +11,74 @@ public final class m5 implements Application.ActivityLifecycleCallbacks {
     public Object n;
     public Activity o;
     public final int p;
-    public boolean q = false;
-    public boolean r = false;
-    public boolean s = false;
+    public boolean q;
+    public boolean r;
+    public boolean s;
 
-    public m5(Activity activity) {
-        this.o = activity;
-        this.p = activity.hashCode();
+    public m5(Activity r2) {
+        this.q = false;
+        this.r = false;
+        this.s = false;
+        this.o = r2;
+        this.p = r2.hashCode();
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityCreated(Activity activity, Bundle bundle) {
+    public final void onActivityCreated(Activity r1, Bundle r2) {
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityDestroyed(Activity activity) {
-        if (this.o == activity) {
-            this.o = null;
-            this.r = true;
-        }
+    public final void onActivityDestroyed(Activity r2) {
+        if (this.o != r2) goto L6;
+        this.o = null;
+        this.r = true;
+        return;
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityPaused(Activity activity) {
-        if (!this.r || this.s || this.q) {
-            return;
-        }
-        Object obj = this.n;
-        try {
-            Object obj2 = n5.c.get(activity);
-            if (obj2 == obj && activity.hashCode() == this.p) {
-                n5.g.postAtFrontOfQueue(new lg1(4, n5.b.get(activity), obj2));
-                this.s = true;
-                this.n = null;
-            }
-        } catch (Throwable th) {
-            Log.e("ActivityRecreator", "Exception while fetching field values", th);
-        }
+    public final void onActivityPaused(Activity r5) {
+        if (this.r == true) goto L5;
+        return;
+    L5:
+        if (this.s == false) goto L7;
+        return;
+    L7:
+        if (this.q == true) goto L25;
+        Object r0 = this.n;
+        Object r1 = n5.c.get(r5);     // Catch: Throwable -> L18
+        if (r1 == r0) goto L13;
+        return;
+    L13:
+        if (r5.hashCode() != this.p) goto L27;
+        Object r6 = n5.b.get(r5);     // Catch: Throwable -> L18
+        n5.g.postAtFrontOfQueue(new lg1(4, r6, r1));     // Catch: Throwable -> L18
+        this.s = true;
+        this.n = null;
+        return;
+    L27:
+        return;
+    L18:
+        th = move-exception;
+        Log.e("ActivityRecreator", "Exception while fetching field values", th);
+        return;
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityResumed(Activity activity) {
+    public final void onActivityResumed(Activity r1) {
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
+    public final void onActivitySaveInstanceState(Activity r1, Bundle r2) {
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityStarted(Activity activity) {
-        if (this.o == activity) {
-            this.q = true;
-        }
+    public final void onActivityStarted(Activity r2) {
+        if (this.o != r2) goto L6;
+        this.q = true;
+        return;
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityStopped(Activity activity) {
+    public final void onActivityStopped(Activity r1) {
     }
 }

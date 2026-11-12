@@ -22,127 +22,155 @@ public final class ad0 extends kp {
     public long v;
     public boolean w;
 
-    public ad0(Context context) {
+    public ad0(Context r2) {
         super(false);
-        this.r = context.getContentResolver();
+        this.r = r2.getContentResolver();
     }
 
     @Override // defpackage.ci0
-    public final long b(ii0 ii0Var) throws ContentDataSource$ContentDataSourceException {
-        int i;
-        AssetFileDescriptor assetFileDescriptorOpenAssetFileDescriptor;
-        try {
-            try {
-                Uri uri = ii0Var.a;
-                long j = ii0Var.g;
-                long j2 = ii0Var.f;
-                Uri uriNormalizeScheme = uri.normalizeScheme();
-                this.s = uriNormalizeScheme;
-                q(ii0Var);
-                boolean zEquals = Objects.equals(uriNormalizeScheme.getScheme(), "content");
-                ContentResolver contentResolver = this.r;
-                if (zEquals) {
-                    Bundle bundle = new Bundle();
-                    bundle.putBoolean("android.provider.extra.ACCEPT_ORIGINAL_MEDIA_FORMAT", true);
-                    assetFileDescriptorOpenAssetFileDescriptor = contentResolver.openTypedAssetFileDescriptor(uriNormalizeScheme, "*/*", bundle);
-                } else {
-                    assetFileDescriptorOpenAssetFileDescriptor = contentResolver.openAssetFileDescriptor(uriNormalizeScheme, "r");
-                }
-                this.t = assetFileDescriptorOpenAssetFileDescriptor;
-                if (assetFileDescriptorOpenAssetFileDescriptor == null) {
-                    i = 2000;
-                    try {
-                        throw new ContentDataSource$ContentDataSourceException(new IOException("Could not open file descriptor for: " + uriNormalizeScheme), 2000);
-                    } catch (IOException e) {
-                        e = e;
-                        throw new ContentDataSource$ContentDataSourceException(e, e instanceof FileNotFoundException ? 2005 : i);
-                    }
-                }
-                long length = assetFileDescriptorOpenAssetFileDescriptor.getLength();
-                FileInputStream fileInputStream = new FileInputStream(assetFileDescriptorOpenAssetFileDescriptor.getFileDescriptor());
-                this.u = fileInputStream;
-                if (length != -1 && j2 > length) {
-                    throw new ContentDataSource$ContentDataSourceException(null, 2008);
-                }
-                long startOffset = assetFileDescriptorOpenAssetFileDescriptor.getStartOffset();
-                long jSkip = fileInputStream.skip(startOffset + j2) - startOffset;
-                if (jSkip != j2) {
-                    throw new ContentDataSource$ContentDataSourceException(null, 2008);
-                }
-                if (length == -1) {
-                    FileChannel channel = fileInputStream.getChannel();
-                    long size = channel.size();
-                    if (size == 0) {
-                        this.v = -1L;
-                    } else {
-                        long jPosition = size - channel.position();
-                        this.v = jPosition;
-                        if (jPosition < 0) {
-                            throw new ContentDataSource$ContentDataSourceException(null, 2008);
-                        }
-                    }
-                } else {
-                    long j3 = length - jSkip;
-                    this.v = j3;
-                    if (j3 < 0) {
-                        throw new ContentDataSource$ContentDataSourceException(null, 2008);
-                    }
-                }
-                if (j != -1) {
-                    long j4 = this.v;
-                    this.v = j4 == -1 ? j : Math.min(j4, j);
-                }
-                this.w = true;
-                r(ii0Var);
-                return j != -1 ? j : this.v;
-            } catch (ContentDataSource$ContentDataSourceException e2) {
-                throw e2;
-            }
-        } catch (IOException e3) {
-            e = e3;
-            i = 2000;
-        }
+    public final long b(ii0 r21) {
+        Uri r4 = r21.a;     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        long r5 = r21.g;     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        long r7 = r21.f;     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        Uri r6 = r4.normalizeScheme();     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        this.s = r6;     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        q(r21);     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        boolean r9 = Objects.equals(r6.getScheme(), "content");     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        ContentResolver r10 = this.r;
+        if (r9 == false) goto L9;
+        Bundle r11 = new Bundle();     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        r11.putBoolean("android.provider.extra.ACCEPT_ORIGINAL_MEDIA_FORMAT", true);     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        AssetFileDescriptor r12 = r10.openTypedAssetFileDescriptor(r6, "*/*", r11);     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+    L10:
+        this.t = r12;     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        if (r12 == null) goto L51;
+        long r13 = r12.getLength();     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        FileInputStream r2 = new FileInputStream(r12.getFileDescriptor());     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        this.u = r2;     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        if (r13 != (-1)) goto L15;
+    L19:
+        long r16 = r12.getStartOffset();     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        long r14 = r2.skip(r16 + r7) - r16;     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        if (r14 != r7) goto L49;
+        if (r13 != (-1)) goto L31;
+        FileChannel r3 = r2.getChannel();     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        long r15 = r3.size();     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        if (r15 != 0) goto L26;
+        this.v = -1;     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+    L35:
+        if (r5 == (-1)) goto L41;
+        long r8 = this.v;
+        if (r8 != (-1)) goto L39;
+        long r17 = r5;
+    L40:
+        this.v = r17;
+        goto L41
+    L39:
+        r17 = Math.min(r8, r5);
+    L41:
+        this.w = true;
+        r(r21);
+        if (r5 == (-1)) goto L45;
+        return r5;
+    L45:
+        return this.v;
+    L26:
+        long r18 = r15 - r3.position();     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        this.v = r18;     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        if (r18 >= 0) goto L35;
+        throw new ContentDataSource$ContentDataSourceException(null, 2008);     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+    L31:
+        long r19 = r13 - r14;     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        this.v = r19;     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+        if (r19 >= 0) goto L35;
+        throw new ContentDataSource$ContentDataSourceException(null, 2008);     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+    L49:
+        throw new ContentDataSource$ContentDataSourceException(null, 2008);     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+    L15:
+        if (r7 <= r13) goto L19;
+        throw new ContentDataSource$ContentDataSourceException(null, 2008);     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+    L51:
+        int r20 = 2000;
+    L54:
+        e = e;
+    L56:
+        if ((e instanceof FileNotFoundException) == false) goto L58;
+        int r22 = 2005;
+    L60:
+        throw new ContentDataSource$ContentDataSourceException(e, r22);
+    L58:
+        r22 = r20;
+        goto L60
+    L53:
+        throw new ContentDataSource$ContentDataSourceException(new IOException("Could not open file descriptor for: " + r6), 2000);     // Catch: IOException -> L54 ContentDataSource$ContentDataSourceException -> L61
+    L9:
+        r12 = r10.openAssetFileDescriptor(r6, "r");     // Catch: IOException -> L7 ContentDataSource$ContentDataSourceException -> L61
+    L61:
+        e = move-exception;
+        throw e;
+    L7:
+        e = e;
+        r20 = 2000;
+        goto L56
     }
 
-    /* JADX WARN: Bottom block not found for handler: all -> 0x000e */
-    /* JADX WARN: Bottom block not found for handler: all -> 0x004e */
     @Override // defpackage.ci0
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
     public final void close() {
         this.s = null;
-        try {
-            FileInputStream fileInputStream = this.u;
-            if (fileInputStream != null) {
-                fileInputStream.close();
-            }
-            this.u = null;
-            try {
-                try {
-                    AssetFileDescriptor assetFileDescriptor = this.t;
-                    if (assetFileDescriptor != null) {
-                        assetFileDescriptor.close();
-                    }
-                    this.t = null;
-                    if (this.w) {
-                        this.w = false;
-                        p();
-                    }
-                } catch (IOException e) {
-                    throw new ContentDataSource$ContentDataSourceException(e, 2000);
-                }
-            } catch (Throwable th) {
-                this.t = null;
-                if (this.w) {
-                    this.w = false;
-                    p();
-                }
-                throw th;
-            }
-        } catch (IOException e2) {
-            throw new ContentDataSource$ContentDataSourceException(e2, 2000);
-        }
+        FileInputStream r3 = this.u;     // Catch: Throwable -> L7 IOException -> L9
+        if (r3 == null) goto L11;
+        r3.close();     // Catch: Throwable -> L7 IOException -> L9
+    L11:
+        this.u = null;
+        AssetFileDescriptor r4 = this.t;     // Catch: Throwable -> L16 IOException -> L18
+        if (r4 == null) goto L20;
+        r4.close();     // Catch: Throwable -> L16 IOException -> L18
+    L20:
+        this.t = null;
+        if (this.w == false) goto L59;
+        this.w = false;
+        p();
+        return;
+    L59:
+        return;
+    L16:
+        th = move-exception;
+        this.t = null;
+        if (this.w == false) goto L29;
+        this.w = false;
+        p();
+    L29:
+        throw th;
+    L18:
+        e = move-exception;
+        throw new ContentDataSource$ContentDataSourceException(e, 2000);     // Catch: Throwable -> L16
+    L9:
+        e = move-exception;
+        throw new ContentDataSource$ContentDataSourceException(e, 2000);     // Catch: Throwable -> L7
+    L7:
+        th = move-exception;
+        this.u = null;
+        AssetFileDescriptor r5 = this.t;     // Catch: Throwable -> L37 IOException -> L39
+        if (r5 == null) goto L41;
+        r5.close();     // Catch: Throwable -> L37 IOException -> L39
+    L41:
+        this.t = null;
+        if (this.w == false) goto L44;
+        this.w = false;
+        p();
+    L44:
+        throw th;
+    L39:
+        e = move-exception;
+        throw new ContentDataSource$ContentDataSourceException(e, 2000);     // Catch: Throwable -> L37
+    L37:
+        th = move-exception;
+        this.t = null;
+        if (this.w == false) goto L50;
+        this.w = false;
+        p();
+    L50:
+        throw th;
     }
 
     @Override // defpackage.ci0
@@ -151,31 +179,32 @@ public final class ad0 extends kp {
     }
 
     @Override // defpackage.wh0
-    public final int read(byte[] bArr, int i, int i2) throws ContentDataSource$ContentDataSourceException {
-        if (i2 == 0) {
-            return 0;
-        }
-        long j = this.v;
-        if (j != 0) {
-            if (j != -1) {
-                try {
-                    i2 = (int) Math.min(j, i2);
-                } catch (IOException e) {
-                    throw new ContentDataSource$ContentDataSourceException(e, 2000);
-                }
-            }
-            FileInputStream fileInputStream = this.u;
-            String str = f35.a;
-            int i3 = fileInputStream.read(bArr, i, i2);
-            if (i3 != -1) {
-                long j2 = this.v;
-                if (j2 != -1) {
-                    this.v = j2 - ((long) i3);
-                }
-                o(i3);
-                return i3;
-            }
-        }
+    public final int read(byte[] r9, int r10, int r11) {
+        if (r11 != 0) goto L5;
+        return 0;
+    L5:
+        long r0 = this.v;
+        if (r0 != 0) goto L9;
+    L15:
         return -1;
+    L9:
+        if (r0 != (-1)) goto L24;
+    L13:
+        FileInputStream r1 = this.u;     // Catch: IOException -> L21
+        String r2 = f35.a;     // Catch: IOException -> L21
+        int r12 = r1.read(r9, r10, r11);     // Catch: IOException -> L21
+        if (r12 == (-1)) goto L15;
+        long r13 = this.v;
+        if (r13 == (-1)) goto L19;
+        this.v = r13 - ((long) r12);
+    L19:
+        o(r12);
+        return r12;
+    L21:
+        e = move-exception;
+        throw new ContentDataSource$ContentDataSourceException(e, 2000);
+    L24:
+        r11 = (int) Math.min(r0, r11);     // Catch: IOException -> L21
+        goto L13
     }
 }

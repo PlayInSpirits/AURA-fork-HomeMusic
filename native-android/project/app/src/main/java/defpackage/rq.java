@@ -3,7 +3,6 @@ package defpackage;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -12,83 +11,94 @@ public final class rq implements Runnable {
     public int o;
     public final Object p;
 
-    public rq(List list, int i, Throwable th) {
+    public rq(List r1, int r2, Throwable r3) {
         this.n = 2;
-        l93.m(list, "initCallbacks cannot be null");
-        this.p = new ArrayList(list);
-        this.o = i;
+        l93.m(r1, "initCallbacks cannot be null");
+        this.p = new ArrayList(r1);
+        this.o = r2;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        int i2 = 0;
-        Object obj = this.p;
-        switch (i) {
-            case 0:
-                ((uq) obj).t.x(this.o, 4);
-                break;
-            case 1:
-                int i3 = this.o;
-                au0 au0Var = (au0) ((c05) obj).n;
-                if (au0Var != null) {
-                    au0Var.M(i3);
-                }
-                break;
-            case 2:
-                ArrayList arrayList = (ArrayList) obj;
-                int size = arrayList.size();
-                if (this.o == 1) {
-                    while (i2 < size) {
-                        ((rz0) arrayList.get(i2)).b();
-                        i2++;
-                    }
-                } else {
-                    while (i2 < size) {
-                        ((rz0) arrayList.get(i2)).a();
-                        i2++;
-                    }
-                }
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                ((nh2) obj).t0.m0(this.o);
-                break;
-            case 4:
-                ((k33) obj).i(this.o);
-                break;
-            case 5:
-                this.o = ((Integer) xl.E((s24) ((ns3) obj).o, true, false, new k52(28))).intValue();
-                break;
-            case 6:
-                ((RecyclerView) obj).m0(this.o);
-                break;
-            default:
-                ((gf5) obj).f(this.o);
-                break;
-        }
+        int r0 = this.n;
+        int r1 = 0;
+        Object r3 = this.p;
+        switch(r0) {
+            case 0: goto L25;
+            case 1: goto L21;
+            case 2: goto L14;
+            case 3: goto L12;
+            case 4: goto L10;
+            case 5: goto L8;
+            case 6: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((gf5) r3).f(this.o);
+        return;
+    L6:
+        ((RecyclerView) r3).m0(this.o);
+        return;
+    L8:
+        this.o = ((Integer) xl.E((s24) ((ns3) r3).o, true, false, new k52(28))).intValue();
+        return;
+    L10:
+        ((k33) r3).i(this.o);
+        return;
+    L12:
+        ((nh2) r3).t0.m0(this.o);
+        return;
+    L14:
+        ArrayList r4 = (ArrayList) r3;
+        int r2 = r4.size();
+        if (this.o == 1) goto L18;
+    L16:
+        if (r1 >= r2) goto L20;
+        ((rz0) r4.get(r1)).a();
+        r1 = r1 + 1;
+        goto L16
+    L20:
+        return;
+    L18:
+        if (r1 >= r2) goto L29;
+        ((rz0) r4.get(r1)).b();
+        r1 = r1 + 1;
+        goto L18
+    L29:
+        return;
+    L21:
+        int r5 = this.o;
+        au0 r6 = (au0) ((c05) r3).n;
+        if (r6 == null) goto L30;
+        r6.M(r5);
+        return;
+    L30:
+        return;
+    L25:
+        ((uq) r3).t.x(this.o, 4);
     }
 
-    public rq(ns3 ns3Var) {
+    public rq(ns3 r2) {
         this.n = 5;
         this.o = 0;
-        this.p = ns3Var;
+        this.p = r2;
     }
 
-    public rq(int i, p75 p75Var) {
+    public rq(int r2, p75 r3) {
         this.n = 6;
-        this.o = i;
-        this.p = p75Var;
+        this.o = r2;
+        this.p = r3;
     }
 
-    public /* synthetic */ rq(int i, int i2, Object obj) {
-        this.n = i2;
-        this.p = obj;
-        this.o = i;
+    public /* synthetic */ rq(int r1, int r2, Object r3) {
+        this.n = r2;
+        this.p = r3;
+        this.o = r1;
     }
 
-    public rq(uq uqVar) {
+    public rq(uq r2) {
         this.n = 0;
-        this.p = uqVar;
+        this.p = r2;
         this.o = -1;
     }
 }

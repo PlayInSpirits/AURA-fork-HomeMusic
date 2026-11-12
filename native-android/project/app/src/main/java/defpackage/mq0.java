@@ -13,33 +13,34 @@ public final /* synthetic */ class mq0 implements Runnable {
     public final /* synthetic */ DirectoryFragment o;
     public final /* synthetic */ ArrayList p;
 
-    public /* synthetic */ mq0(DirectoryFragment directoryFragment, ArrayList arrayList, int i) {
-        this.n = i;
-        this.o = directoryFragment;
-        this.p = arrayList;
+    public /* synthetic */ mq0(DirectoryFragment r1, ArrayList r2, int r3) {
+        this.n = r3;
+        this.o = r1;
+        this.p = r2;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        int i2 = 1;
-        ArrayList arrayList = this.p;
-        DirectoryFragment directoryFragment = this.o;
-        switch (i) {
-            case 0:
-                boolean zIsEmpty = arrayList.isEmpty();
-                MainActivity mainActivity = directoryFragment.m0;
-                if (!zIsEmpty) {
-                    mainActivity.runOnUiThread(new mq0(directoryFragment, arrayList, i2));
-                } else {
-                    mainActivity.runOnUiThread(new a0(22, directoryFragment));
-                }
-                break;
-            default:
-                bo2.o(directoryFragment.p0, arrayList, 0);
-                ((au) directoryFragment.m0.V.n).d(true);
-                Toast.makeText(directoryFragment.Z(), directoryFragment.t(R.string.folder_play_playing, Integer.valueOf(arrayList.size())), 0).show();
-                break;
-        }
+        int r0 = this.n;
+        int r1 = 1;
+        ArrayList r2 = this.p;
+        DirectoryFragment r4 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        bo2.o(r4.p0, r2, 0);
+        ((au) r4.m0.V.n).d(true);
+        Toast.makeText(r4.Z(), r4.t(R.string.folder_play_playing, new Object[]{Integer.valueOf(r2.size())}), 0).show();
+        return;
+    L6:
+        boolean r3 = r2.isEmpty();
+        MainActivity r5 = r4.m0;
+        if (r3 == true) goto L9;
+        r5.runOnUiThread(new mq0(r4, r2, r1));
+        return;
+    L9:
+        r5.runOnUiThread(new a0(22, r4));
     }
 }

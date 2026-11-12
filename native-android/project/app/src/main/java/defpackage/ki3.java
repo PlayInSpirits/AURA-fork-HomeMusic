@@ -17,7 +17,7 @@ public final class ki3 {
     public final CopyOnWriteArraySet g;
     public final long h;
     public final f55 i;
-    public tu j = new tu();
+    public tu j;
     public yp4 k;
     public Pair l;
     public int m;
@@ -25,26 +25,37 @@ public final class ki3 {
     public long o;
     public int p;
 
-    public ki3(fi3 fi3Var) {
-        this.a = fi3Var.a;
-        ii3 ii3Var = fi3Var.c;
-        ii3Var.getClass();
-        this.b = ii3Var;
+    static {
+    }
+
+    public ki3(fi3 r7) {
+        this.a = r7.a;
+        this.j = new tu();
+        ii3 r0 = r7.c;
+        r0.getClass();
+        this.b = r0;
         this.c = new SparseArray();
-        vw1 vw1Var = yw1.o;
-        gy3 gy3Var = gy3.r;
-        this.d = fi3Var.d;
-        vp4 vp4Var = fi3Var.e;
-        this.f = vp4Var;
-        long j = fi3Var.g;
-        this.h = j != -9223372036854775807L ? -j : -9223372036854775807L;
-        f55 f55Var = fi3Var.h;
-        this.i = f55Var;
-        this.e = new tn0(fi3Var.b, f55Var, vp4Var);
+        vw1 r1 = yw1.o;
+        gy3 r2 = gy3.r;
+        this.d = r7.d;
+        vp4 r3 = r7.e;
+        this.f = r3;
+        long r4 = r7.g;
+        if (r4 == (-9223372036854775807L)) goto L5;
+        long r5 = -r4;
+    L6:
+        this.h = r5;
+        f55 r6 = r7.h;
+        this.i = r6;
+        this.e = new tn0(r7.b, r6, r3);
         this.g = new CopyOnWriteArraySet();
         new tb1(new sb1());
         this.o = -9223372036854775807L;
         this.p = -1;
         this.n = 0;
+        return;
+    L5:
+        r5 = -9223372036854775807L;
+        goto L6
     }
 }

@@ -9,31 +9,33 @@ public final /* synthetic */ class vt1 implements Runnable {
     public final /* synthetic */ List o;
     public final /* synthetic */ int p;
 
-    public /* synthetic */ vt1(int i, int i2, List list) {
-        this.n = i2;
-        this.o = list;
-        this.p = i;
+    public /* synthetic */ vt1(int r1, int r2, List r3) {
+        this.n = r2;
+        this.o = r3;
+        this.p = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        switch (this.n) {
-            case 0:
-                List list = this.o;
-                int i = this.p;
-                es1 es1Var = xt1.c;
-                if (es1Var != null) {
-                    es1Var.invoke(list, Integer.valueOf(i));
-                }
-                break;
-            default:
-                List list2 = this.o;
-                int i2 = this.p;
-                es1 es1Var2 = xt1.d;
-                if (es1Var2 != null) {
-                    es1Var2.invoke(list2, Integer.valueOf(i2));
-                }
-                break;
-        }
+        switch(this.n) {
+            case 0: goto L8;
+            default: goto L4;
+        };
+    L4:
+        List r0 = this.o;
+        int r2 = this.p;
+        es1 r1 = xt1.d;
+        if (r1 == null) goto L12;
+        r1.invoke(r0, Integer.valueOf(r2));
+        return;
+    L12:
+        return;
+    L8:
+        List r3 = this.o;
+        int r4 = this.p;
+        es1 r5 = xt1.c;
+        if (r5 == null) goto L13;
+        r5.invoke(r3, Integer.valueOf(r4));
+        return;
     }
 }

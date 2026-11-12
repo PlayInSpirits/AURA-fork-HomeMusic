@@ -31,7 +31,7 @@ public final class hk3 extends kc1 {
     public aj3 m0;
     public bl2 n0;
     public bj2 o0;
-    public final Handler p0 = new Handler(Looper.getMainLooper());
+    public final Handler p0;
     public final zd3 q0;
     public List r0;
     public final wd3 s0;
@@ -43,109 +43,101 @@ public final class hk3 extends kc1 {
     public final zd3 y0;
 
     public hk3() {
-        u01 u01Var = u01.n;
-        this.q0 = uc5.B(u01Var);
-        this.r0 = u01Var;
+        this.p0 = new Handler(Looper.getMainLooper());
+        u01 r0 = u01.n;
+        this.q0 = uc5.B(r0);
+        this.r0 = r0;
         this.s0 = new wd3(0);
-        Boolean bool = Boolean.FALSE;
-        this.t0 = uc5.B(bool);
+        Boolean r1 = Boolean.FALSE;
+        this.t0 = uc5.B(r1);
         this.u0 = uc5.B(null);
         this.v0 = uc5.B(null);
         this.w0 = new int[0];
-        this.x0 = uc5.B(bool);
-        this.y0 = uc5.B(bool);
+        this.x0 = uc5.B(r1);
+        this.y0 = uc5.B(r1);
     }
 
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        layoutInflater.getClass();
-        int i = 0;
-        View viewInflate = layoutInflater.inflate(R.layout.inner_fragment_player_cover, viewGroup, false);
-        int i2 = R.id.horizontal_guideline;
-        if (((Guideline) uo.s(viewInflate, R.id.horizontal_guideline)) != null) {
-            i2 = R.id.inner_button_bottom_left;
-            Button button = (Button) uo.s(viewInflate, R.id.inner_button_bottom_left);
-            if (button != null) {
-                i2 = R.id.inner_button_bottom_right;
-                Button button2 = (Button) uo.s(viewInflate, R.id.inner_button_bottom_right);
-                if (button2 != null) {
-                    i2 = R.id.inner_button_bottom_right_alternative;
-                    Button button3 = (Button) uo.s(viewInflate, R.id.inner_button_bottom_right_alternative);
-                    if (button3 != null) {
-                        i2 = R.id.inner_button_top_left;
-                        Button button4 = (Button) uo.s(viewInflate, R.id.inner_button_top_left);
-                        if (button4 != null) {
-                            i2 = R.id.inner_button_top_right;
-                            Button button5 = (Button) uo.s(viewInflate, R.id.inner_button_top_right);
-                            if (button5 != null) {
-                                i2 = R.id.now_playing_artwork_pager;
-                                ComposeView composeView = (ComposeView) uo.s(viewInflate, R.id.now_playing_artwork_pager);
-                                if (composeView != null) {
-                                    i2 = R.id.now_playing_song_cover_button_group;
-                                    ConstraintLayout constraintLayout = (ConstraintLayout) uo.s(viewInflate, R.id.now_playing_song_cover_button_group);
-                                    if (constraintLayout != null) {
-                                        i2 = R.id.now_playing_tap_button;
-                                        Button button6 = (Button) uo.s(viewInflate, R.id.now_playing_tap_button);
-                                        if (button6 != null) {
-                                            i2 = R.id.vertical_guideline;
-                                            if (((Guideline) uo.s(viewInflate, R.id.vertical_guideline)) != null) {
-                                                ConstraintLayout constraintLayout2 = (ConstraintLayout) viewInflate;
-                                                this.l0 = new ey(constraintLayout2, button, button2, button3, button4, button5, composeView, constraintLayout, button6);
-                                                nc1 nc1VarX = X();
-                                                e75 e75VarD = nc1VarX.d();
-                                                b75 b75VarR = gh0.r(nc1VarX);
-                                                bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
-                                                i30 i30VarA = kx3.a(aj3.class);
-                                                String strB = i30VarA.b();
-                                                if (strB == null) {
-                                                    kf2.n("Local and anonymous classes can not be ViewModels");
-                                                    return null;
-                                                }
-                                                this.m0 = (aj3) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-                                                composeView.setViewCompositionStrategy(rv2.K);
-                                                int i3 = 1;
-                                                composeView.setContent(new r70(1604145647, true, new z(9, this)));
-                                                ey eyVar = this.l0;
-                                                int i4 = 3;
-                                                if (eyVar != null) {
-                                                    ((ConstraintLayout) eyVar.g).setOnClickListener(new fk3(this, 2));
-                                                    ((Button) eyVar.h).setOnClickListener(new fk3(this, i4));
-                                                }
-                                                aj3 aj3Var = this.m0;
-                                                if (aj3Var == null) {
-                                                    h12.Q("playerBottomSheetViewModel");
-                                                    throw null;
-                                                }
-                                                aj3Var.n.e(v(), new ht1(new dk3(this, i4), 1));
-                                                aj3 aj3Var2 = this.m0;
-                                                if (aj3Var2 == null) {
-                                                    h12.Q("playerBottomSheetViewModel");
-                                                    throw null;
-                                                }
-                                                ns3 ns3Var = aj3Var2.f.a;
-                                                ((s24) ns3Var.o).i().a(new String[]{"queue"}, new ks3(ns3Var, i3)).e(v(), new ht1(new dk3(this, 4), 1));
-                                                is3.e.e(v(), new ht1(new dk3(this, 5), 1));
-                                                u52.c.e(v(), new ht1(new dk3(this, 6), 1));
-                                                u52.b.e(v(), new ht1(new dk3(this, 7), 1));
-                                                aj3 aj3Var3 = this.m0;
-                                                if (aj3Var3 == null) {
-                                                    h12.Q("playerBottomSheetViewModel");
-                                                    throw null;
-                                                }
-                                                aj3Var3.n.e(v(), new ht1(new dk3(this, i), 1));
-                                                constraintLayout2.getClass();
-                                                return constraintLayout2;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i2)));
+    public final View H(LayoutInflater r13, ViewGroup r14, Bundle r15) {
+        r13.getClass();
+        int r0 = 0;
+        View r16 = r13.inflate(R.layout.inner_fragment_player_cover, r14, false);
+        int r17 = R.id.horizontal_guideline;
+        if (((Guideline) uo.s(r16, R.id.horizontal_guideline)) == null) goto L43;
+        r17 = R.id.inner_button_bottom_left;
+        Button r4 = (Button) uo.s(r16, R.id.inner_button_bottom_left);
+        if (r4 == null) goto L43;
+        r17 = R.id.inner_button_bottom_right;
+        Button r5 = (Button) uo.s(r16, R.id.inner_button_bottom_right);
+        if (r5 == null) goto L43;
+        r17 = R.id.inner_button_bottom_right_alternative;
+        Button r6 = (Button) uo.s(r16, R.id.inner_button_bottom_right_alternative);
+        if (r6 == null) goto L43;
+        r17 = R.id.inner_button_top_left;
+        Button r7 = (Button) uo.s(r16, R.id.inner_button_top_left);
+        if (r7 == null) goto L43;
+        r17 = R.id.inner_button_top_right;
+        Button r8 = (Button) uo.s(r16, R.id.inner_button_top_right);
+        if (r8 == null) goto L43;
+        r17 = R.id.now_playing_artwork_pager;
+        ComposeView r9 = (ComposeView) uo.s(r16, R.id.now_playing_artwork_pager);
+        if (r9 == null) goto L43;
+        r17 = R.id.now_playing_song_cover_button_group;
+        ConstraintLayout r10 = (ConstraintLayout) uo.s(r16, R.id.now_playing_song_cover_button_group);
+        if (r10 == null) goto L43;
+        r17 = R.id.now_playing_tap_button;
+        Button r11 = (Button) uo.s(r16, R.id.now_playing_tap_button);
+        if (r11 == null) goto L43;
+        r17 = R.id.vertical_guideline;
+        if (((Guideline) uo.s(r16, R.id.vertical_guideline)) == null) goto L43;
+        ConstraintLayout r3 = (ConstraintLayout) r16;
+        this.l0 = new ey(r3, r4, r5, r6, r7, r8, r9, r10, r11);
+        nc1 r18 = X();
+        e75 r19 = r18.d();
+        b75 r110 = gh0.r(r18);
+        bq4 r2 = new bq4(r19, r110, b11.e(r18, r110));
+        i30 r111 = kx3.a(aj3.class);
+        String r112 = r111.b();
+        if (r112 == null) goto L41;
+        this.m0 = (aj3) r2.l(r111, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r112));
+        r9.setViewCompositionStrategy(rv2.K);
+        int r12 = 1;
+        r9.setContent(new r70(1604145647, true, new z(9, this)));
+        ey r113 = this.l0;
+        int r114 = 3;
+        if (r113 == null) goto L27;
+        ((ConstraintLayout) r113.g).setOnClickListener(new fk3(this, 2));
+        ((Button) r113.h).setOnClickListener(new fk3(this, r114));
+    L27:
+        aj3 r115 = this.m0;
+        if (r115 == null) goto L39;
+        r115.n.e(v(), new ht1(new dk3(this, r114), 1));
+        aj3 r116 = this.m0;
+        if (r116 == null) goto L37;
+        ns3 r117 = r116.f.a;
+        ((s24) r117.o).i().a(new String[]{"queue"}, new ks3(r117, r12)).e(v(), new ht1(new dk3(this, 4), 1));
+        is3.e.e(v(), new ht1(new dk3(this, 5), 1));
+        u52.c.e(v(), new ht1(new dk3(this, 6), 1));
+        u52.b.e(v(), new ht1(new dk3(this, 7), 1));
+        aj3 r118 = this.m0;
+        if (r118 == null) goto L35;
+        r118.n.e(v(), new ht1(new dk3(this, r0), 1));
+        r3.getClass();
+        return r3;
+    L35:
+        h12.Q("playerBottomSheetViewModel");
+        throw null;
+    L37:
+        h12.Q("playerBottomSheetViewModel");
+        throw null;
+    L39:
+        h12.Q("playerBottomSheetViewModel");
+        throw null;
+    L41:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L43:
+        nz2.n("Missing required view with ID: ".concat(r16.getResources().getResourceName(r17)));
         return null;
     }
 
@@ -158,31 +150,33 @@ public final class hk3 extends kc1 {
 
     @Override // defpackage.kc1
     public final void R() {
-        xc5 xc5Var;
         this.R = true;
-        Context contextZ = Z();
-        cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
-        Bundle bundle = Bundle.EMPTY;
-        aj2 aj2Var = new aj2();
-        Looper looperX = f35.x();
-        bl2 bl2Var = new bl2(looperX);
-        if (cb4Var.a.e()) {
-            xc5Var = new xc5(4, new fi0(new x7(contextZ)));
-        } else {
-            xc5Var = null;
-        }
-        b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, xc5Var), new Handler(looperX));
-        this.n0 = bl2Var;
-        bl2Var.f(new ur2(9, bl2Var, this), gq0.n);
+        Context r2 = Z();
+        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
+        Bundle r4 = Bundle.EMPTY;
+        aj2 r5 = new aj2();
+        Looper r6 = f35.x();
+        bl2 r7 = new bl2(r6);
+        if (r3.a.e() == false) goto L6;
+        fi0 r8 = new fi0(new x7(r2));
+        xc5 r0 = new xc5(4, r8);
+    L7:
+        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
+        this.n0 = r7;
+        r7.f(new ur2(9, r7, this), gq0.n);
         l0(false);
+        return;
+    L6:
+        r0 = null;
+        goto L7
     }
 
     @Override // defpackage.kc1
     public final void S() {
-        bl2 bl2Var = this.n0;
-        if (bl2Var != null) {
-            sk2.Z0(bl2Var);
-        }
+        bl2 r0 = this.n0;
+        if (r0 == null) goto L5;
+        sk2.Z0(r0);
+    L5:
         this.n0 = null;
         this.o0 = null;
         this.R = true;
@@ -192,137 +186,198 @@ public final class hk3 extends kc1 {
         return (List) this.q0.getValue();
     }
 
-    /* JADX WARN: Code duplicated, block: B:35:0x00df  */
-    public final void i0(bj2 bj2Var) {
-        gn2 gn2VarA;
-        if (u52.c().a) {
-            return;
-        }
-        int[] iArrD = is3.d(bj2Var);
-        this.w0 = iArrD;
-        ArrayList arrayList = new ArrayList(iArrD.length);
-        boolean z = false;
-        for (int i : iArrD) {
-            Child childN = gi1.N(bj2Var.Y(i));
-            if (childN == null) {
-                String str = bj2Var.Y(i).a;
-                str.getClass();
-                childN = new Child(str, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, -2, 7, null);
-            }
-            arrayList.add(childN);
-        }
-        this.q0.setValue(arrayList);
-        int iL0 = ti.l0(iArrD, bj2Var.o0());
-        if (iL0 < 0) {
-            iL0 = 0;
-        }
-        k0(iL0);
-        if (!((Boolean) this.t0.getValue()).booleanValue() && (gn2VarA = bj2Var.a()) != null) {
-            if (b.h(bj2Var)) {
-                if (is3.e(bj2Var) == 0) {
-                    z = true;
-                }
-            } else if (!a.j(bj2Var) && is3.e(bj2Var) == 0) {
-                boolean zU = xa3.u("continuous_play", true);
-                int iH = bj2Var.h();
-                boolean zC = is3.c(gn2VarA);
-                if (zU && zC && iH == 0 && !is3.d) {
-                    z = true;
-                }
-            }
-        }
-        this.x0.setValue(Boolean.valueOf(z));
+    public final void i0(bj2 r49) {
+        if (u52.c().a == false) goto L5;
+        return;
+    L5:
+        int[] r2 = is3.d(r49);
+        this.w0 = r2;
+        ArrayList r3 = new ArrayList(r2.length);
+        int r4 = r2.length;
+        boolean r5 = false;
+        int r6 = 0;
+    L6:
+        if (r6 >= r4) goto L11;
+        int r7 = r2[r6];
+        Child r8 = gi1.N(r49.Y(r7));
+        if (r8 != null) goto L10;
+        String r10 = r49.Y(r7).a;
+        r10.getClass();
+        r8 = new Child(r10, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, -2, 7, null);
+    L10:
+        r3.add(r8);
+        r6 = r6 + 1;
+        goto L6
+    L11:
+        this.q0.setValue(r3);
+        int r9 = ti.l0(r2, r49.o0());
+        if (r9 >= 0) goto L14;
+        r9 = 0;
+    L14:
+        k0(r9);
+        if (((Boolean) this.t0.getValue()).booleanValue() == true) goto L36;
+        gn2 r11 = r49.a();
+        if (r11 == null) goto L36;
+        if (b.h(r49) == false) goto L25;
+        if (is3.e(r49) != 0) goto L36;
+    L35:
+        r5 = true;
+        goto L36
+    L25:
+        if (a.j(r49) == true) goto L36;
+        if (is3.e(r49) != 0) goto L36;
+        boolean r12 = xa3.u("continuous_play", true);
+        int r1 = r49.h();
+        boolean r13 = is3.c(r11);
+        if (r12 == false) goto L36;
+        if (r13 == false) goto L36;
+        if (r1 != 0) goto L36;
+        if (is3.d == false) goto L35;
+    L36:
+        this.x0.setValue(Boolean.valueOf(r5));
     }
 
     public final void j0() {
-        Object objO;
-        int i;
-        v52 v52VarC = u52.c();
+        v52 r0 = u52.c();
         this.t0.setValue(Boolean.FALSE);
-        if (u52.k()) {
-            objO = u52.l();
-        } else {
-            objO = v52VarC.p > 0 ? gb.O(u52.d()) : u01.n;
-        }
-        this.q0.setValue(objO);
-        int i2 = 0;
-        if (u52.k() && (i = v52VarC.o) >= 0) {
-            i2 = i;
-        }
-        k0(i2);
+        if (u52.k() == false) goto L6;
+        Object r1 = u52.l();
+    L9:
+        this.q0.setValue(r1);
+        int r2 = 0;
+        if (u52.k() == false) goto L15;
+        int r3 = r0.o;
+        if (r3 < 0) goto L15;
+        r2 = r3;
+    L15:
+        k0(r2);
+        return;
+    L6:
+        if (r0.p <= 0) goto L8;
+        r1 = gb.O(u52.d());
+        goto L9
+    L8:
+        r1 = u01.n;
+        goto L9
     }
 
-    public final void k0(int i) {
-        this.s0.h(i);
+    public final void k0(int r1) {
+        this.s0.h(r1);
     }
 
-    public final void l0(boolean z) {
-        ey eyVar;
-        ey eyVar2 = this.l0;
-        if (eyVar2 == null) {
-            return;
-        }
-        ConstraintLayout constraintLayout = (ConstraintLayout) eyVar2.g;
-        Fade fade = new Fade();
-        fade.setDuration(200L);
-        fade.addTarget(constraintLayout);
-        TransitionManager.beginDelayedTransition((ConstraintLayout) eyVar2.a, fade);
-        constraintLayout.setVisibility(z ? 0 : 8);
-        ((Button) eyVar2.h).setVisibility(z ? 8 : 0);
-        ((Button) eyVar2.c).setVisibility(ud3.Y() ? 0 : 8);
-        ((Button) eyVar2.d).setVisibility(ud3.Y() ? 8 : 0);
-        if (z || (eyVar = this.l0) == null) {
-            return;
-        }
-        ((Button) eyVar.h).setVisibility(0);
-        Handler handler = this.p0;
-        handler.removeCallbacksAndMessages(null);
-        handler.postDelayed(new qa1(28, this), 10000L);
+    public final void l0(boolean r6) {
+        ey r0 = this.l0;
+        if (r0 == null) goto L29;
+        ConstraintLayout r1 = (ConstraintLayout) r0.g;
+        Fade r2 = new Fade();
+        r2.setDuration(200);
+        r2.addTarget(r1);
+        TransitionManager.beginDelayedTransition((ConstraintLayout) r0.a, r2);
+        int r3 = 8;
+        if (r6 == false) goto L8;
+        int r4 = 0;
+    L9:
+        r1.setVisibility(r4);
+        Button r5 = (Button) r0.h;
+        if (r6 == false) goto L12;
+        int r7 = 8;
+    L13:
+        r5.setVisibility(r7);
+        Button r8 = (Button) r0.c;
+        if (ud3.Y() == false) goto L16;
+        int r9 = 0;
+    L17:
+        r8.setVisibility(r9);
+        Button r10 = (Button) r0.d;
+        if (ud3.Y() == true) goto L21;
+        r3 = 0;
+    L21:
+        r10.setVisibility(r3);
+        if (r6 == true) goto L27;
+        ey r11 = this.l0;
+        if (r11 == null) goto L28;
+        ((Button) r11.h).setVisibility(0);
+        Handler r12 = this.p0;
+        r12.removeCallbacksAndMessages(null);
+        r12.postDelayed(new qa1(28, this), 10000);
+        return;
+    L28:
+        return;
+    L27:
+        return;
+    L16:
+        r9 = 8;
+        goto L17
+    L12:
+        r7 = 0;
+        goto L13
+    L8:
+        r4 = 8;
+        goto L9
     }
 
-    public final void m0(do2 do2Var, int i) {
-        gn2 gn2VarA;
-        String str;
-        if (u52.c().a) {
-            return;
-        }
-        Bundle bundle = do2Var.I;
-        this.t0.setValue(Boolean.valueOf(bundle != null && WaveOrigin.RADIO.equals(bundle.getString("type"))));
-        this.u0.setValue(do2Var.m);
-        String string = null;
-        this.v0.setValue(bundle != null ? bundle.getString("coverArtId") : null);
-        bj2 bj2Var = this.o0;
-        if (bj2Var != null && bj2Var.Q0() > 0) {
-            i0(bj2Var);
-            return;
-        }
-        bj2 bj2Var2 = this.o0;
-        if (bj2Var2 != null && (gn2VarA = bj2Var2.a()) != null && (str = gn2VarA.a) != null) {
-            string = str;
-        } else if (bundle != null) {
-            string = bundle.getString("id");
-        }
-        if (string != null && !h0().isEmpty()) {
-            Iterator it = h0().iterator();
-            int i2 = 0;
-            while (true) {
-                if (!it.hasNext()) {
-                    i2 = -1;
-                    break;
-                } else if (h12.c(((Child) it.next()).getId(), string)) {
-                    break;
-                } else {
-                    i2++;
-                }
-            }
-            if (i2 >= 0) {
-                k0(i2);
-                return;
-            }
-        }
-        if (i < 0) {
-            i = 0;
-        }
-        k0(i);
+    public final void m0(do2 r5, int r6) {
+        if (u52.c().a == false) goto L5;
+        return;
+    L5:
+        Bundle r0 = r5.I;
+        if (r0 != null) goto L8;
+    L10:
+        boolean r2 = false;
+    L11:
+        this.t0.setValue(Boolean.valueOf(r2));
+        this.u0.setValue(r5.m);
+        String r7 = null;
+        if (r0 == null) goto L14;
+        String r3 = r0.getString("coverArtId");
+    L15:
+        this.v0.setValue(r3);
+        bj2 r4 = this.o0;
+        if (r4 != null) goto L18;
+    L21:
+        bj2 r8 = this.o0;
+        if (r8 == null) goto L29;
+        gn2 r9 = r8.a();
+        if (r9 == null) goto L29;
+        String r10 = r9.a;
+        if (r10 == null) goto L29;
+        r7 = r10;
+    L31:
+        if (r7 != null) goto L33;
+    L45:
+        if (r6 >= 0) goto L47;
+        r6 = 0;
+    L47:
+        k0(r6);
+        return;
+    L33:
+        if (h0().isEmpty() == true) goto L45;
+        Iterator r1 = h0().iterator();
+        int r11 = 0;
+    L36:
+        if (r1.hasNext() == false) goto L41;
+        if (h12.c(((Child) r1.next()).getId(), r7) == true) goto L42;
+        r11 = r11 + 1;
+    L42:
+        if (r11 < 0) goto L45;
+        k0(r11);
+        return;
+    L41:
+        r11 = -1;
+    L29:
+        if (r0 == null) goto L31;
+        r7 = r0.getString("id");
+        goto L31
+    L18:
+        if (r4.Q0() <= 0) goto L21;
+        i0(r4);
+        return;
+    L14:
+        r3 = null;
+        goto L15
+    L8:
+        if (WaveOrigin.RADIO.equals(r0.getString("type")) == false) goto L10;
+        r2 = true;
+        goto L11
     }
 }

@@ -8,9 +8,9 @@ public final class sw1 extends r1 implements Serializable {
     public final Object n;
     public final Object o;
 
-    public sw1(Object obj, Object obj2) {
-        this.n = obj;
-        this.o = obj2;
+    public sw1(Object r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // java.util.Map.Entry
@@ -24,7 +24,7 @@ public final class sw1 extends r1 implements Serializable {
     }
 
     @Override // defpackage.r1, java.util.Map.Entry
-    public final Object setValue(Object obj) {
+    public final Object setValue(Object r1) {
         throw new UnsupportedOperationException();
     }
 }

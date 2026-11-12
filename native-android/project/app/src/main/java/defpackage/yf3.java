@@ -6,44 +6,47 @@ public final class yf3 extends b1 {
     public final Object[] p;
     public final wx4 q;
 
-    public yf3(int i, int i2, int i3, Object[] objArr, Object[] objArr2) {
-        super(i, i2);
-        this.p = objArr2;
-        int i4 = (i2 - 1) & (-32);
-        this.q = new wx4(objArr, i > i4 ? i4 : i, i4, i3);
+    public yf3(int r1, int r2, int r3, Object[] r4, Object[] r5) {
+        super(r1, r2);
+        this.p = r5;
+        int r6 = (r2 - 1) & (-32);
+        if (r1 <= r6) goto L5;
+        r1 = r6;
+    L5:
+        this.q = new wx4(r4, r1, r6, r3);
     }
 
     @Override // java.util.ListIterator, java.util.Iterator
     public final Object next() {
-        if (!hasNext()) {
-            tb4.k();
-            return null;
-        }
-        wx4 wx4Var = this.q;
-        if (wx4Var.hasNext()) {
-            this.n++;
-            return wx4Var.next();
-        }
-        int i = this.n;
-        this.n = i + 1;
-        return this.p[i - wx4Var.o];
+        if (hasNext() == false) goto L10;
+        wx4 r0 = this.q;
+        if (r0.hasNext() == false) goto L8;
+        this.n++;
+        return r0.next();
+    L8:
+        int r1 = this.n;
+        this.n = r1 + 1;
+        return this.p[r1 - r0.o];
+    L10:
+        tb4.k();
+        return null;
     }
 
     @Override // java.util.ListIterator
     public final Object previous() {
-        if (!hasPrevious()) {
-            tb4.k();
-            return null;
-        }
-        int i = this.n;
-        wx4 wx4Var = this.q;
-        int i2 = wx4Var.o;
-        if (i <= i2) {
-            this.n = i - 1;
-            return wx4Var.previous();
-        }
-        int i3 = i - 1;
-        this.n = i3;
-        return this.p[i3 - i2];
+        if (hasPrevious() == false) goto L10;
+        int r0 = this.n;
+        wx4 r1 = this.q;
+        int r2 = r1.o;
+        if (r0 <= r2) goto L8;
+        int r3 = r0 - 1;
+        this.n = r3;
+        return this.p[r3 - r2];
+    L8:
+        this.n = r0 - 1;
+        return r1.previous();
+    L10:
+        tb4.k();
+        return null;
     }
 }

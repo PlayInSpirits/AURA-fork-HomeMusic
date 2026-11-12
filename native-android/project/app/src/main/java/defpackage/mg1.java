@@ -5,12 +5,15 @@ package defpackage;
 public final class mg1 {
     public int a;
 
-    public mg1(int i) {
-        this.a = i;
+    public mg1(int r1) {
+        this.a = r1;
     }
 
     public final boolean a() {
-        return this.a != Integer.MIN_VALUE;
+        if (this.a == Integer.MIN_VALUE) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     public final String toString() {

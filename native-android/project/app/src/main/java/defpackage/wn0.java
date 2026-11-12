@@ -9,8 +9,8 @@ public final class wn0 implements uh4 {
     public final vn0 a;
     public uh4 b;
 
-    public wn0(vn0 vn0Var) {
-        this.a = vn0Var;
+    public wn0(vn0 r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.uh4
@@ -19,36 +19,42 @@ public final class wn0 implements uh4 {
     }
 
     @Override // defpackage.uh4
-    public final boolean b(SSLSocket sSLSocket) {
-        return this.a.b(sSLSocket);
+    public final boolean b(SSLSocket r1) {
+        return this.a.b(r1);
     }
 
     @Override // defpackage.uh4
-    public final String c(SSLSocket sSLSocket) {
-        uh4 uh4VarE = e(sSLSocket);
-        if (uh4VarE != null) {
-            return uh4VarE.c(sSLSocket);
-        }
+    public final String c(SSLSocket r1) {
+        uh4 r0 = e(r1);
+        if (r0 != null) goto L5;
         return null;
+    L5:
+        return r0.c(r1);
     }
 
     @Override // defpackage.uh4
-    public final void d(SSLSocket sSLSocket, String str, List list) {
-        list.getClass();
-        uh4 uh4VarE = e(sSLSocket);
-        if (uh4VarE != null) {
-            uh4VarE.d(sSLSocket, str, list);
-        }
+    public final void d(SSLSocket r1, String r2, List r3) {
+        r3.getClass();
+        uh4 r0 = e(r1);
+        if (r0 == null) goto L6;
+        r0.d(r1, r2, r3);
+        return;
     }
 
-    public final synchronized uh4 e(SSLSocket sSLSocket) {
-        try {
-            if (this.b == null && this.a.b(sSLSocket)) {
-                this.b = this.a.g(sSLSocket);
-            }
-        } catch (Throwable th) {
-            throw th;
-        }
-        return this.b;
+    public final synchronized uh4 e(SSLSocket r2) {
+        monitor-enter(this);
+    L8:
+        th = move-exception;
+        throw th;
+    L4:
+        if (this.b == null) goto L6;
+    L10:
+        uh4 r3 = this.b;     // Catch: Throwable -> L8
+        monitor-exit(this);
+        return r3;
+    L6:
+        if (this.a.b(r2) == false) goto L10;
+        this.b = this.a.g(r2);     // Catch: Throwable -> L8
+        goto L10
     }
 }

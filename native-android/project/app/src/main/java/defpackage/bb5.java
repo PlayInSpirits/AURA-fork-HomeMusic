@@ -11,77 +11,86 @@ public abstract class bb5 {
     public final Rect[][] c;
     public final Rect[][] d;
 
-    public bb5(pb5 pb5Var) {
+    public bb5(pb5 r3) {
         this.c = new Rect[10][];
         this.d = new Rect[10][];
-        this.a = pb5Var;
-        c(pb5Var);
+        this.a = r3;
+        c(r3);
     }
 
     public final void a() {
-        vz1[] vz1VarArr = this.b;
-        if (vz1VarArr != null) {
-            vz1 vz1VarH = vz1VarArr[0];
-            vz1 vz1VarH2 = vz1VarArr[1];
-            pb5 pb5Var = this.a;
-            if (vz1VarH2 == null) {
-                vz1VarH2 = pb5Var.a.h(2);
-            }
-            if (vz1VarH == null) {
-                vz1VarH = pb5Var.a.h(1);
-            }
-            h(vz1.a(vz1VarH, vz1VarH2));
-            vz1 vz1Var = this.b[ud3.N(16)];
-            if (vz1Var != null) {
-                g(vz1Var);
-            }
-            vz1 vz1Var2 = this.b[ud3.N(32)];
-            if (vz1Var2 != null) {
-                e(vz1Var2);
-            }
-            vz1 vz1Var3 = this.b[ud3.N(64)];
-            if (vz1Var3 != null) {
-                i(vz1Var3);
-            }
-        }
+        vz1[] r0 = this.b;
+        if (r0 == null) goto L19;
+        vz1 r1 = r0[0];
+        vz1 r2 = r0[1];
+        pb5 r3 = this.a;
+        if (r2 != null) goto L7;
+        r2 = r3.a.h(2);
+    L7:
+        if (r1 != null) goto L9;
+        r1 = r3.a.h(1);
+    L9:
+        h(vz1.a(r1, r2));
+        vz1 r4 = this.b[ud3.N(16)];
+        if (r4 == null) goto L12;
+        g(r4);
+    L12:
+        vz1 r5 = this.b[ud3.N(32)];
+        if (r5 == null) goto L15;
+        e(r5);
+    L15:
+        vz1 r6 = this.b[ud3.N(64)];
+        if (r6 == null) goto L20;
+        i(r6);
+        return;
+    L20:
+        return;
     }
 
     public abstract pb5 b();
 
-    public void c(pb5 pb5Var) {
-        for (int i = 1; i <= 512; i <<= 1) {
-            List<Rect> listE = pb5Var.a.e(i);
-            int iN = ud3.N(i);
-            this.c[iN] = (Rect[]) listE.toArray(new Rect[listE.size()]);
-            if (i != 8) {
-                List<Rect> listF = pb5Var.a.f(i);
-                this.d[iN] = (Rect[]) listF.toArray(new Rect[listF.size()]);
-            }
-        }
+    public void c(pb5 r5) {
+        int r0 = 1;
+    L4:
+        if (r0 > 512) goto L9;
+        List<Rect> r1 = r5.a.e(r0);
+        int r2 = ud3.N(r0);
+        Rect[] r3 = (Rect[]) r1.toArray(new Rect[r1.size()]);
+        this.c[r2] = r3;
+        if (r0 == 8) goto L8;
+        List<Rect> r4 = r5.a.f(r0);
+        Rect[] r6 = (Rect[]) r4.toArray(new Rect[r4.size()]);
+        this.d[r2] = r6;
+    L8:
+        r0 = r0 << 1;
+        goto L4
     }
 
-    public void d(int i, vz1 vz1Var) {
-        if (this.b == null) {
-            this.b = new vz1[10];
-        }
-        for (int i2 = 1; i2 <= 512; i2 <<= 1) {
-            if ((i & i2) != 0) {
-                this.b[ud3.N(i2)] = vz1Var;
-            }
-        }
+    public void d(int r4, vz1 r5) {
+        if (this.b != null) goto L5;
+        this.b = new vz1[10];
+    L5:
+        int r0 = 1;
+    L7:
+        if (r0 > 512) goto L13;
+        if ((r4 & r0) == 0) goto L12;
+        this.b[ud3.N(r0)] = r5;
+    L12:
+        r0 = r0 << 1;
+        goto L7
     }
 
-    public void e(vz1 vz1Var) {
+    public void e(vz1 r1) {
     }
 
-    public abstract void f(vz1 vz1Var);
+    public abstract void f(vz1 r1);
 
-    public void g(vz1 vz1Var) {
+    public void g(vz1 r1) {
     }
 
-    public abstract void h(vz1 vz1Var);
+    public abstract void h(vz1 r1);
 
-    public void i(vz1 vz1Var) {
+    public void i(vz1 r1) {
     }
 
     public bb5() {

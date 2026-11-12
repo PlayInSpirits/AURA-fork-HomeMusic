@@ -7,9 +7,9 @@ public final class wx2 {
     public final long b;
     public final long c;
 
-    public wx2(long j, long j2, String str) {
-        this.a = str;
-        this.b = j;
-        this.c = j2;
+    public wx2(long r1, long r3, String r5) {
+        this.a = r5;
+        this.b = r1;
+        this.c = r3;
     }
 }

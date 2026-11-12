@@ -3,6 +3,7 @@ package defpackage;
 import android.content.Intent;
 import android.os.PowerManager;
 import androidx.work.impl.background.systemalarm.SystemAlarmService;
+import java.util.ArrayList;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -10,110 +11,115 @@ public final class sp4 implements Runnable {
     public final /* synthetic */ int n;
     public final tp4 o;
 
-    public /* synthetic */ sp4(tp4 tp4Var, int i) {
-        this.n = i;
-        this.o = tp4Var;
+    public /* synthetic */ sp4(tp4 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
-    /* JADX WARN: Code duplicated, block: B:34:0x008e A[Catch: all -> 0x0048, TryCatch #2 {all -> 0x0048, blocks: (B:6:0x001b, B:8:0x001f, B:10:0x0044, B:13:0x004a, B:14:0x0051, B:15:0x0052, B:16:0x005c, B:20:0x0066, B:22:0x006e, B:23:0x0070, B:27:0x007a, B:29:0x0087, B:37:0x0099, B:33:0x008d, B:34:0x008e, B:36:0x0096, B:41:0x009d, B:24:0x0071, B:25:0x0077, B:17:0x005d, B:18:0x0063), top: B:68:0x001b, inners: #3, #4 }] */
-    /* JADX WARN: Code duplicated, block: B:36:0x0096 A[Catch: all -> 0x0048, TryCatch #2 {all -> 0x0048, blocks: (B:6:0x001b, B:8:0x001f, B:10:0x0044, B:13:0x004a, B:14:0x0051, B:15:0x0052, B:16:0x005c, B:20:0x0066, B:22:0x006e, B:23:0x0070, B:27:0x007a, B:29:0x0087, B:37:0x0099, B:33:0x008d, B:34:0x008e, B:36:0x0096, B:41:0x009d, B:24:0x0071, B:25:0x0077, B:17:0x005d, B:18:0x0063), top: B:68:0x001b, inners: #3, #4 }] */
     @Override // java.lang.Runnable
     public final void run() {
-        vc5 vc5Var;
-        sp4 sp4Var;
-        boolean zIsEmpty;
-        boolean zIsEmpty2;
-        switch (this.n) {
-            case 0:
-                synchronized (this.o.t) {
-                    tp4 tp4Var = this.o;
-                    tp4Var.u = (Intent) tp4Var.t.get(0);
-                    break;
-                }
-                Intent intent = this.o.u;
-                if (intent != null) {
-                    String action = intent.getAction();
-                    int intExtra = this.o.u.getIntExtra("KEY_START_ID", 0);
-                    cx cxVarF = cx.f();
-                    String str = tp4.x;
-                    cxVarF.b(str, "Processing command " + this.o.u + ", " + intExtra);
-                    PowerManager.WakeLock wakeLockA = y85.a(this.o.n, action + " (" + intExtra + ")");
-                    int i = 1;
-                    try {
-                        cx.f().b(str, "Acquiring operation wake lock (" + action + ") " + wakeLockA);
-                        wakeLockA.acquire();
-                        tp4 tp4Var2 = this.o;
-                        tp4Var2.s.a(tp4Var2.u, intExtra, tp4Var2);
-                        cx.f().b(str, "Releasing operation wake lock (" + action + ") " + wakeLockA);
-                        wakeLockA.release();
-                        tp4 tp4Var3 = this.o;
-                        vc5Var = (vc5) tp4Var3.o.q;
-                        sp4Var = new sp4(tp4Var3, i);
-                    } catch (Throwable th) {
-                        try {
-                            cx cxVarF2 = cx.f();
-                            String str2 = tp4.x;
-                            cxVarF2.e(str2, "Unexpected error in onHandleIntent", th);
-                            cx.f().b(str2, "Releasing operation wake lock (" + action + ") " + wakeLockA);
-                            wakeLockA.release();
-                            tp4 tp4Var4 = this.o;
-                            vc5Var = (vc5) tp4Var4.o.q;
-                            sp4Var = new sp4(tp4Var4, i);
-                        } catch (Throwable th2) {
-                            cx.f().b(tp4.x, "Releasing operation wake lock (" + action + ") " + wakeLockA);
-                            wakeLockA.release();
-                            tp4 tp4Var5 = this.o;
-                            ((vc5) tp4Var5.o.q).execute(new sp4(tp4Var5, i));
-                            throw th2;
-                        }
-                    }
-                    vc5Var.execute(sp4Var);
-                    return;
-                }
-                return;
-            default:
-                tp4 tp4Var6 = this.o;
-                cx cxVarF3 = cx.f();
-                String str3 = tp4.x;
-                cxVarF3.b(str3, "Checking if commands are complete.");
-                tp4.c();
-                synchronized (tp4Var6.t) {
-                    try {
-                        if (tp4Var6.u != null) {
-                            cx.f().b(str3, "Removing command " + tp4Var6.u);
-                            if (!((Intent) tp4Var6.t.remove(0)).equals(tp4Var6.u)) {
-                                throw new IllegalStateException("Dequeue-d command is not the first.");
-                            }
-                            tp4Var6.u = null;
-                        }
-                        ia4 ia4Var = (ia4) tp4Var6.o.n;
-                        k60 k60Var = tp4Var6.s;
-                        synchronized (k60Var.p) {
-                            zIsEmpty = k60Var.o.isEmpty();
-                            break;
-                        }
-                        if (zIsEmpty && tp4Var6.t.isEmpty()) {
-                            synchronized (ia4Var.r) {
-                                zIsEmpty2 = ia4Var.p.isEmpty();
-                                break;
-                            }
-                            if (zIsEmpty2) {
-                                cx.f().b(str3, "No more commands & intents.");
-                                SystemAlarmService systemAlarmService = tp4Var6.v;
-                                if (systemAlarmService != null) {
-                                    systemAlarmService.a();
-                                }
-                            } else if (!tp4Var6.t.isEmpty()) {
-                                tp4Var6.d();
-                            }
-                        } else if (!tp4Var6.t.isEmpty()) {
-                            tp4Var6.d();
-                        }
-                    } catch (Throwable th3) {
-                        throw th3;
-                    }
-                }
-                return;
-        }
+        switch(this.n) {
+            case 0: goto L44;
+            default: goto L4;
+        };
+    L4:
+        tp4 r8 = this.o;
+        cx r2 = cx.f();
+        String r3 = tp4.x;
+        r2.b(r3, "Checking if commands are complete.");
+        tp4.c();
+        ArrayList r4 = r8.t;
+        monitor-enter(r4);
+    L11:
+        th = move-exception;
+        throw th;
+    L7:
+        if (r8.u == null) goto L15;
+        cx.f().b(r3, "Removing command " + r8.u);     // Catch: Throwable -> L11
+        if (((Intent) r8.t.remove(0)).equals(r8.u) == false) goto L14;
+        r8.u = null;     // Catch: Throwable -> L11
+        goto L15
+    L14:
+        throw new IllegalStateException("Dequeue-d command is not the first.");     // Catch: Throwable -> L11
+    L15:
+        ia4 r0 = (ia4) r8.o.n;     // Catch: Throwable -> L11
+        k60 r1 = r8.s;     // Catch: Throwable -> L11
+        Object r5 = r1.p;     // Catch: Throwable -> L11
+        monitor-enter(r5);     // Catch: Throwable -> L11
+        boolean r6 = r1.o.isEmpty();     // Catch: Throwable -> L39
+        monitor-exit(r5);     // Catch: Throwable -> L39
+        if (r6 == false) goto L35;
+        if (r8.t.isEmpty() == false) goto L35;
+        Object r7 = r0.r;     // Catch: Throwable -> L11
+        monitor-enter(r7);     // Catch: Throwable -> L11
+        boolean r9 = r0.p.isEmpty();     // Catch: Throwable -> L31
+        monitor-exit(r7);     // Catch: Throwable -> L31
+        if (r9 == false) goto L35;
+        cx.f().b(r3, "No more commands & intents.");     // Catch: Throwable -> L11
+        SystemAlarmService r10 = r8.v;     // Catch: Throwable -> L11
+        if (r10 == null) goto L37;
+        r10.a();     // Catch: Throwable -> L11
+    L37:
+        monitor-exit(r4);     // Catch: Throwable -> L11
+        return;
+    L31:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L11
+    L35:
+        if (r8.t.isEmpty() == true) goto L37;
+        r8.d();     // Catch: Throwable -> L11
+        goto L37
+    L39:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L11
+    L44:
+        ArrayList r11 = this.o.t;
+        monitor-enter(r11);
+        tp4 r12 = this.o;     // Catch: Throwable -> L61
+        r12.u = (Intent) r12.t.get(0);     // Catch: Throwable -> L61
+        monitor-exit(r11);     // Catch: Throwable -> L61
+        Intent r13 = this.o.u;
+        if (r13 == null) goto L60;
+        String r14 = r13.getAction();
+        int r15 = this.o.u.getIntExtra("KEY_START_ID", 0);
+        cx r16 = cx.f();
+        String r17 = tp4.x;
+        r16.b(r17, "Processing command " + this.o.u + ", " + r15);
+        PowerManager.WakeLock r18 = y85.a(this.o.n, r14 + " (" + r15 + ")");
+        int r19 = 1;
+        cx.f().b(r17, "Acquiring operation wake lock (" + r14 + ") " + r18);     // Catch: Throwable -> L54
+        r18.acquire();     // Catch: Throwable -> L54
+        tp4 r20 = this.o;     // Catch: Throwable -> L54
+        r20.s.a(r20.u, r15, r20);     // Catch: Throwable -> L54
+        cx.f().b(r17, "Releasing operation wake lock (" + r14 + ") " + r18);
+        r18.release();
+        tp4 r21 = this.o;
+        vc5 r22 = (vc5) r21.o.q;
+        sp4 r23 = new sp4(r21, r19);
+    L53:
+        r22.execute(r23);
+        return;
+    L54:
+        th = move-exception;
+        cx r24 = cx.f();     // Catch: Throwable -> L57
+        String r25 = tp4.x;     // Catch: Throwable -> L57
+        r24.e(r25, "Unexpected error in onHandleIntent", th);     // Catch: Throwable -> L57
+        cx.f().b(r25, "Releasing operation wake lock (" + r14 + ") " + r18);
+        r18.release();
+        tp4 r26 = this.o;
+        r22 = (vc5) r26.o.q;
+        r23 = new sp4(r26, r19);
+    L57:
+        th = move-exception;
+        cx.f().b(tp4.x, "Releasing operation wake lock (" + r14 + ") " + r18);
+        r18.release();
+        tp4 r27 = this.o;
+        ((vc5) r27.o.q).execute(new sp4(r27, r19));
+        throw th;
+    L60:
+        return;
+    L61:
+        th = move-exception;
+        throw th;
     }
 }

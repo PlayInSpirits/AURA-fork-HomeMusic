@@ -3,7 +3,12 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class z23 {
-    public final x23 a = new x23();
-    public int b = -1;
+    public final x23 a;
+    public int b;
     public boolean c;
+
+    public z23() {
+        this.a = new x23();
+        this.b = -1;
+    }
 }

@@ -10,30 +10,32 @@ public final /* synthetic */ class mp1 implements a83 {
     public final /* synthetic */ k03 c;
     public final /* synthetic */ hd d;
 
-    public /* synthetic */ mp1(hd hdVar, int i, k03 k03Var, int i2) {
-        this.a = i2;
-        this.d = hdVar;
-        this.b = i;
-        this.c = k03Var;
+    public /* synthetic */ mp1(hd r1, int r2, k03 r3, int r4) {
+        this.a = r4;
+        this.d = r1;
+        this.b = r2;
+        this.c = r3;
     }
 
     @Override // defpackage.a83
-    public final void b(Object obj) {
-        int i = this.a;
-        k03 k03Var = this.c;
-        int i2 = this.b;
-        hd hdVar = this.d;
-        switch (i) {
-            case 0:
-                if (i2 == ((b) hdVar).F) {
-                    k03Var.k(obj);
-                }
-                break;
-            default:
-                if (i2 == ((n92) hdVar).n) {
-                    k03Var.k(obj);
-                }
-                break;
-        }
+    public final void b(Object r4) {
+        int r0 = this.a;
+        k03 r1 = this.c;
+        int r2 = this.b;
+        hd r3 = this.d;
+        switch(r0) {
+            case 0: goto L9;
+            default: goto L5;
+        };
+    L5:
+        if (r2 != ((n92) r3).n) goto L12;
+        r1.k(r4);
+        return;
+    L12:
+        return;
+    L9:
+        if (r2 != ((b) r3).F) goto L13;
+        r1.k(r4);
+        return;
     }
 }

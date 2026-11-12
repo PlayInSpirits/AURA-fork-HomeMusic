@@ -9,14 +9,14 @@ public final /* synthetic */ class ym implements Executor {
     public final /* synthetic */ int n;
     public final /* synthetic */ Handler o;
 
-    public /* synthetic */ ym(Handler handler, int i) {
-        this.n = i;
-        this.o = handler;
+    public /* synthetic */ ym(Handler r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.util.concurrent.Executor
-    public final void execute(Runnable runnable) {
-        int i = this.n;
-        this.o.post(runnable);
+    public final void execute(Runnable r2) {
+        int r0 = this.n;
+        this.o.post(r2);
     }
 }

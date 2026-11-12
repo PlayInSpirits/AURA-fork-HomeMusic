@@ -9,29 +9,32 @@ public final /* synthetic */ class ni0 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ View o;
 
-    public /* synthetic */ ni0(View view, int i) {
-        this.n = i;
-        this.o = view;
+    public /* synthetic */ ni0(View r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        View view = this.o;
-        switch (i) {
-            case 0:
-                view.requestFocus();
-                view.post(new ni0(view, 3));
-                break;
-            case 1:
-                view.setVisibility(8);
-                break;
-            case 2:
-                ((InputMethodManager) view.getContext().getSystemService("input_method")).showSoftInput(view, 0);
-                break;
-            default:
-                ((InputMethodManager) view.getContext().getSystemService(InputMethodManager.class)).showSoftInput(view, 1);
-                break;
-        }
+        int r0 = this.n;
+        View r2 = this.o;
+        switch(r0) {
+            case 0: goto L10;
+            case 1: goto L8;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((InputMethodManager) r2.getContext().getSystemService(InputMethodManager.class)).showSoftInput(r2, 1);
+        return;
+    L6:
+        ((InputMethodManager) r2.getContext().getSystemService("input_method")).showSoftInput(r2, 0);
+        return;
+    L8:
+        r2.setVisibility(8);
+        return;
+    L10:
+        r2.requestFocus();
+        r2.post(new ni0(r2, 3));
     }
 }

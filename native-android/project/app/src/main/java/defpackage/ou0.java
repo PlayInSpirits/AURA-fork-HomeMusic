@@ -7,20 +7,21 @@ public final class ou0 implements if1 {
     public final /* synthetic */ pu0 o;
     public final /* synthetic */ zg5 p;
 
-    public ou0(jx3 jx3Var, pu0 pu0Var, zg5 zg5Var) {
-        this.n = jx3Var;
-        this.o = pu0Var;
-        this.p = zg5Var;
+    public ou0(jx3 r1, pu0 r2, zg5 r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object obj) {
-        rx4 rx4Var = (rx4) obj;
-        pu0 pu0Var = (pu0) rx4Var;
-        if (!((qb) ((ra) j51.P(this.o)).getDragAndDropManager()).b.contains(pu0Var) || !ud3.a(pu0Var, su3.u(this.p))) {
-            return qx4.n;
-        }
-        this.n.n = rx4Var;
+    public final Object invoke(Object r4) {
+        rx4 r5 = (rx4) r4;
+        pu0 r0 = (pu0) r5;
+        if (((qb) ((ra) j51.P(this.o)).getDragAndDropManager()).b.contains(r0) == false) goto L9;
+        if (ud3.a(r0, su3.u(this.p)) == false) goto L9;
+        this.n.n = r5;
         return qx4.p;
+    L9:
+        return qx4.n;
     }
 }

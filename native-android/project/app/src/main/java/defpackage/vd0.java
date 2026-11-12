@@ -5,5 +5,5 @@ package defpackage;
 public interface vd0<T> {
     ne0 getContext();
 
-    void resumeWith(Object obj);
+    void resumeWith(Object r1);
 }

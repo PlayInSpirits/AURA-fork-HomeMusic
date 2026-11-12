@@ -11,6 +11,9 @@ public final class HubUpload {
     @ka4("orig_name")
     private String origName;
 
+    public HubUpload() {
+    }
+
     public final long getId() {
         return this.id;
     }
@@ -19,11 +22,11 @@ public final class HubUpload {
         return this.origName;
     }
 
-    public final void setId(long j) {
-        this.id = j;
+    public final void setId(long r1) {
+        this.id = r1;
     }
 
-    public final void setOrigName(String str) {
-        this.origName = str;
+    public final void setOrigName(String r1) {
+        this.origName = r1;
     }
 }

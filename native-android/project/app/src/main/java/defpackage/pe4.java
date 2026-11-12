@@ -53,217 +53,338 @@ public final class pe4 {
     /* JADX WARN: Type inference failed for: r15v1 */
     /* JADX WARN: Type inference failed for: r15v2, types: [int] */
     /* JADX WARN: Type inference failed for: r15v5 */
-    public pe4(oe4 oe4Var) {
-        int i;
-        jw4 jw4Var = oe4Var.y;
-        do2 do2Var = oe4Var.z;
-        boolean z = false;
-        if (oe4Var.x.p()) {
-            int i2 = oe4Var.d;
-            rr2.k("Empty playlist only allowed in STATE_IDLE or STATE_ENDED", i2 == 1 || i2 == 4);
-            rr2.k("Ads not allowed if playlist is empty", oe4Var.C == -1 && oe4Var.D == -1);
-            jw4Var = jw4Var == null ? jw4.b : jw4Var;
-            if (do2Var == null) {
-                do2Var = do2.K;
-            }
-        } else {
-            int i3 = oe4Var.B;
-            if (i3 == -1) {
-                i = 0;
-            } else {
-                rr2.k("currentMediaItemIndex must be less than playlist.size()", i3 < oe4Var.x.o());
-                i = i3;
-            }
-            if (oe4Var.C != -1) {
-                zt4 zt4Var = new zt4();
-                bu4 bu4Var = new bu4();
-                Long l = oe4Var.E;
-                long jLongValue = l != null ? l.longValue() : oe4Var.F.get();
-                cu4 cu4Var = oe4Var.x;
-                oe4Var.x.f(cu4Var.b(cu4Var.i(bu4Var, zt4Var, i, f35.Q(jLongValue)).first), zt4Var, false);
-                rr2.k("PeriodData has less ad groups than adGroupIndex", oe4Var.C < zt4Var.g.a);
-                int i4 = zt4Var.g.a(oe4Var.C).b;
-                if (i4 != -1) {
-                    rr2.k("Ad group has less ads than adIndexInGroupIndex", oe4Var.D < i4);
-                }
-            }
-            yw1 yw1Var = oe4Var.w;
-            if (yw1Var != null) {
-                he4 he4Var = (he4) yw1Var.get(i);
-                jw4 jw4Var2 = he4Var.b;
-                do2Var = he4Var.d;
-                jw4Var = jw4Var2;
-            }
-            if (do2Var == null) {
-                gn2 gn2Var = oe4Var.x.m(i, new bu4(), 0L).b;
-                jw4Var.getClass();
-                co2 co2Var = new co2();
-                yw1 yw1Var2 = jw4Var.a;
-                int size = yw1Var2.size();
-                int i5 = 0;
-                while (i5 < size) {
-                    ?? r12 = (iw4) yw1Var2.get(i5);
-                    for (?? r13 = z; r13 < r12.a; r13++) {
-                        if (r12.e[r13]) {
-                            tb1 tb1VarA = r12.a(r13);
-                            if (tb1VarA.l != null) {
-                                ?? r15 = z;
-                                while (true) {
-                                    pv2[] pv2VarArr = tb1VarA.l.a;
-                                    if (r15 < pv2VarArr.length) {
-                                        pv2VarArr[r15].b(co2Var);
-                                        r15++;
-                                    }
-                                }
-                            }
-                        }
-                        z = false;
-                    }
-                    i5++;
-                    z = false;
-                }
-                co2Var.b(gn2Var.d);
-                do2Var = new do2(co2Var);
-                z = true;
-            } else {
-                z = false;
-            }
-        }
-        if (oe4Var.f != null) {
-            rr2.k("Player error only allowed in STATE_IDLE", oe4Var.d == 1);
-        }
-        int i6 = oe4Var.d;
-        ne4 xmVar = oe4Var.F;
-        Long l2 = oe4Var.E;
-        if (l2 != null) {
-            if (oe4Var.C == -1 && oe4Var.b && oe4Var.d == 3 && oe4Var.e == 0 && l2.longValue() != -9223372036854775807L) {
-                final long jLongValue2 = oe4Var.E.longValue();
-                final float f = oe4Var.l.a;
-                final long jElapsedRealtime = SystemClock.elapsedRealtime();
-                xmVar = new ne4() { // from class: me4
-                    @Override // defpackage.ne4
-                    public final long get() {
-                        return jLongValue2 + ((long) ((SystemClock.elapsedRealtime() - jElapsedRealtime) * f));
-                    }
-                };
-            } else {
-                xmVar = new xm(oe4Var.E.longValue());
-            }
-        }
-        xm xmVar2 = oe4Var.G;
-        this.a = oe4Var.a;
-        this.b = oe4Var.b;
-        this.c = oe4Var.c;
-        this.d = oe4Var.d;
-        this.e = oe4Var.e;
-        this.f = oe4Var.f;
-        this.g = oe4Var.g;
-        this.h = oe4Var.h;
-        this.i = oe4Var.i;
-        this.j = oe4Var.j;
-        this.k = oe4Var.k;
-        this.l = oe4Var.l;
-        this.m = oe4Var.m;
-        this.n = oe4Var.n;
-        this.o = oe4Var.o;
-        this.p = oe4Var.p;
-        this.q = oe4Var.q;
-        this.r = oe4Var.r;
-        this.s = oe4Var.s;
-        this.t = oe4Var.t;
-        this.u = oe4Var.u;
-        this.v = oe4Var.v;
-        this.w = oe4Var.x;
-        jw4Var.getClass();
-        this.x = jw4Var;
-        this.y = do2Var;
-        this.z = oe4Var.A;
-        this.A = oe4Var.B;
-        this.B = oe4Var.C;
-        this.C = oe4Var.D;
-        this.D = xmVar;
-        this.E = xmVar2;
-        this.F = oe4Var.H;
-        this.G = oe4Var.I;
-        this.H = oe4Var.J;
-        this.I = oe4Var.K;
-        this.J = oe4Var.L;
-        this.K = oe4Var.M;
-        this.L = z;
+    public pe4(oe4 r19) {
+        jw4 r2 = r19.y;
+        do2 r3 = r19.z;
+        boolean r8 = false;
+        if (r19.x.p() == false) goto L21;
+        int r4 = r19.d;
+        if (r4 == 1) goto L9;
+        if (r4 == 4) goto L9;
+        boolean r5 = false;
+    L10:
+        rr2.k("Empty playlist only allowed in STATE_IDLE or STATE_ENDED", r5);
+        if (r19.C == (-1)) goto L13;
+    L15:
+        boolean r6 = false;
+    L16:
+        rr2.k("Ads not allowed if playlist is empty", r6);
+        if (r2 != null) goto L19;
+        r2 = jw4.b;
+    L19:
+        if (r3 != null) goto L68;
+        r3 = do2.K;
+    L68:
+        if (r19.f != null) goto L70;
+    L74:
+        int r7 = r19.d;
+        ne4 r9 = r19.F;
+        Long r10 = r19.E;
+        if (r10 != null) goto L77;
+    L88:
+        xm r11 = r19.G;
+        this.a = r19.a;
+        this.b = r19.b;
+        this.c = r19.c;
+        this.d = r19.d;
+        this.e = r19.e;
+        this.f = r19.f;
+        this.g = r19.g;
+        this.h = r19.h;
+        this.i = r19.i;
+        this.j = r19.j;
+        this.k = r19.k;
+        this.l = r19.l;
+        this.m = r19.m;
+        this.n = r19.n;
+        this.o = r19.o;
+        this.p = r19.p;
+        this.q = r19.q;
+        this.r = r19.r;
+        this.s = r19.s;
+        this.t = r19.t;
+        this.u = r19.u;
+        this.v = r19.v;
+        this.w = r19.x;
+        r2.getClass();
+        this.x = r2;
+        this.y = r3;
+        this.z = r19.A;
+        this.A = r19.B;
+        this.B = r19.C;
+        this.C = r19.D;
+        this.D = r9;
+        this.E = r11;
+        this.F = r19.H;
+        this.G = r19.I;
+        this.H = r19.J;
+        this.I = r19.K;
+        this.J = r19.L;
+        this.K = r19.M;
+        this.L = r8;
+        return;
+    L77:
+        if (r19.C == (-1)) goto L79;
+    L87:
+        r9 = new xm(r19.E.longValue());
+        goto L88
+    L79:
+        if (r19.b == false) goto L87;
+        if (r19.d != 3) goto L87;
+        if (r19.e != 0) goto L87;
+        if (r10.longValue() == (-9223372036854775807L)) goto L87;
+        final long r12 = r19.E.longValue();
+        final float r14 = r19.l.a;
+        final long r13 = SystemClock.elapsedRealtime();
+        r9 = new me4(r12, r13, r14);
+        goto L88
+    L70:
+        if (r19.d != 1) goto L72;
+        boolean r15 = true;
+    L73:
+        rr2.k("Player error only allowed in STATE_IDLE", r15);
+        goto L74
+    L72:
+        r15 = false;
+        goto L73
+    L13:
+        if (r19.D != (-1)) goto L15;
+        r6 = true;
+    L9:
+        r5 = true;
+        goto L10
+    L21:
+        int r16 = r19.B;
+        if (r16 != (-1)) goto L25;
+        int r17 = 0;
+    L30:
+        if (r19.C == (-1)) goto L46;
+        zt4 r18 = new zt4();
+        bu4 r110 = new bu4();
+        Long r20 = r19.E;
+        if (r20 == null) goto L34;
+        long r21 = r20.longValue();
+    L35:
+        cu4 r111 = r19.x;
+        r19.x.f(r111.b(r111.i(r110, r18, r17, f35.Q(r21)).first), r18, false);
+        if (r19.C >= r18.g.a) goto L38;
+        boolean r22 = true;
+    L39:
+        rr2.k("PeriodData has less ad groups than adGroupIndex", r22);
+        int r23 = r18.g.a(r19.C).b;
+        if (r23 == (-1)) goto L46;
+        if (r19.D >= r23) goto L44;
+        boolean r24 = true;
+    L45:
+        rr2.k("Ad group has less ads than adIndexInGroupIndex", r24);
+        goto L46
+    L44:
+        r24 = false;
+        goto L45
+    L38:
+        r22 = false;
+        goto L39
+    L34:
+        r21 = r19.F.get();
+    L46:
+        yw1 r25 = r19.w;
+        if (r25 == null) goto L49;
+        he4 r26 = (he4) r25.get(r17);
+        jw4 r27 = r26.b;
+        r3 = r26.d;
+        r2 = r27;
+    L49:
+        if (r3 != null) goto L66;
+        gn2 r28 = r19.x.m(r17, new bu4(), 0).b;
+        r2.getClass();
+        co2 r29 = new co2();
+        yw1 r30 = r2.a;
+        int r112 = r30.size();
+        int r113 = 0;
+    L51:
+        if (r113 >= r112) goto L65;
+        ?? r114 = (iw4) r30.get(r113);
+        ?? r115 = r8;
+    L54:
+        if (r115 >= r114.a) goto L64;
+        if (r114.e[r115] == false) goto L63;
+        tb1 r116 = r114.a(r115);
+        if (r116.l == null) goto L63;
+        ?? r117 = r8;
+    L60:
+        pv2[] r31 = r116.l.a;
+        if (r117 >= r31.length) goto L63;
+        r31[r117].b(r29);
+        r117 = r117 + 1;
+    L63:
+        r8 = false;
+        r115 = r115 + 1;
+        goto L54
+    L64:
+        r113 = r113 + 1;
+        r8 = false;
+        goto L51
+    L65:
+        r29.b(r28.d);
+        r3 = new do2(r29);
+        r8 = true;
+        goto L68
+    L66:
+        r8 = false;
+        goto L68
+    L25:
+        if (r16 >= r19.x.o()) goto L27;
+        boolean r32 = true;
+    L28:
+        rr2.k("currentMediaItemIndex must be less than playlist.size()", r32);
+        r17 = r16;
+        goto L30
+    L27:
+        r32 = false;
+        goto L28
     }
 
     public final oe4 a() {
-        oe4 oe4Var = new oe4();
-        oe4Var.a = this.a;
-        oe4Var.b = this.b;
-        oe4Var.c = this.c;
-        oe4Var.d = this.d;
-        oe4Var.e = this.e;
-        oe4Var.f = this.f;
-        oe4Var.g = this.g;
-        oe4Var.h = this.h;
-        oe4Var.i = this.i;
-        oe4Var.j = this.j;
-        oe4Var.k = this.k;
-        oe4Var.l = this.l;
-        oe4Var.m = this.m;
-        oe4Var.n = this.n;
-        oe4Var.o = this.o;
-        oe4Var.p = this.p;
-        oe4Var.q = this.q;
-        oe4Var.r = this.r;
-        oe4Var.s = this.s;
-        oe4Var.t = this.t;
-        oe4Var.u = this.u;
-        oe4Var.v = this.v;
-        cu4 cu4Var = this.w;
-        oe4Var.x = cu4Var;
-        if (cu4Var instanceof le4) {
-            oe4Var.w = ((le4) cu4Var).e;
-        } else {
-            oe4Var.y = this.x;
-            oe4Var.z = this.L ? null : this.y;
-        }
-        oe4Var.A = this.z;
-        oe4Var.B = this.A;
-        oe4Var.C = this.B;
-        oe4Var.D = this.C;
-        oe4Var.E = null;
-        oe4Var.F = this.D;
-        oe4Var.G = this.E;
-        oe4Var.H = this.F;
-        oe4Var.I = this.G;
-        oe4Var.J = this.H;
-        oe4Var.K = this.I;
-        oe4Var.L = this.J;
-        oe4Var.M = this.K;
-        return oe4Var;
+        oe4 r0 = new oe4();
+        r0.a = this.a;
+        r0.b = this.b;
+        r0.c = this.c;
+        r0.d = this.d;
+        r0.e = this.e;
+        r0.f = this.f;
+        r0.g = this.g;
+        r0.h = this.h;
+        r0.i = this.i;
+        r0.j = this.j;
+        r0.k = this.k;
+        r0.l = this.l;
+        r0.m = this.m;
+        r0.n = this.n;
+        r0.o = this.o;
+        r0.p = this.p;
+        r0.q = this.q;
+        r0.r = this.r;
+        r0.s = this.s;
+        r0.t = this.t;
+        r0.u = this.u;
+        r0.v = this.v;
+        cu4 r1 = this.w;
+        r0.x = r1;
+        if ((r1 instanceof le4) == false) goto L5;
+        r0.w = ((le4) r1).e;
+    L10:
+        r0.A = this.z;
+        r0.B = this.A;
+        r0.C = this.B;
+        r0.D = this.C;
+        r0.E = null;
+        r0.F = this.D;
+        r0.G = this.E;
+        r0.H = this.F;
+        r0.I = this.G;
+        r0.J = this.H;
+        r0.K = this.I;
+        r0.L = this.J;
+        r0.M = this.K;
+        return r0;
+    L5:
+        r0.y = this.x;
+        if (this.L == false) goto L8;
+        do2 r2 = null;
+    L9:
+        r0.z = r2;
+        goto L10
+    L8:
+        r2 = this.y;
+        goto L9
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof pe4) {
-            pe4 pe4Var = (pe4) obj;
-            if (this.b == pe4Var.b && this.c == pe4Var.c && this.a.equals(pe4Var.a) && this.d == pe4Var.d && this.e == pe4Var.e && this.f == pe4Var.f && this.g == pe4Var.g && this.h == pe4Var.h && this.i == pe4Var.i && this.j == pe4Var.j && this.k == pe4Var.k && this.l.equals(pe4Var.l) && this.m.equals(pe4Var.m) && this.n.equals(pe4Var.n) && this.o == pe4Var.o && this.p == pe4Var.p && this.q.equals(pe4Var.q) && this.r.equals(pe4Var.r) && this.s.equals(pe4Var.s) && this.t == pe4Var.t && this.u.equals(pe4Var.u) && this.v.equals(pe4Var.v) && this.w.equals(pe4Var.w) && this.x.equals(pe4Var.x) && this.y.equals(pe4Var.y) && this.z.equals(pe4Var.z) && this.A == pe4Var.A && this.B == pe4Var.B && this.C == pe4Var.C && this.D.equals(pe4Var.D) && this.E.equals(pe4Var.E) && this.F.equals(pe4Var.F) && this.G.equals(pe4Var.G) && this.H.equals(pe4Var.H) && this.I == pe4Var.I && this.J == pe4Var.J && this.K == pe4Var.K) {
-                return true;
-            }
-        }
+    public final boolean equals(Object r7) {
+        if (this != r7) goto L5;
+        return true;
+    L5:
+        if ((r7 instanceof pe4) == false) goto L84;
+        pe4 r8 = (pe4) r7;
+        if (this.b != r8.b) goto L84;
+        if (this.c != r8.c) goto L84;
+        if (this.a.equals(r8.a) == false) goto L84;
+        if (this.d != r8.d) goto L84;
+        if (this.e != r8.e) goto L84;
+        if (this.f == r8.f) goto L21;
+        return false;
+    L21:
+        if (this.g != r8.g) goto L84;
+        if (this.h != r8.h) goto L84;
+        if (this.i != r8.i) goto L84;
+        if (this.j != r8.j) goto L84;
+        if (this.k != r8.k) goto L84;
+        if (this.l.equals(r8.l) == false) goto L84;
+        if (this.m.equals(r8.m) == false) goto L84;
+        if (this.n.equals(r8.n) == false) goto L84;
+        if (this.o != r8.o) goto L84;
+        if (this.p != r8.p) goto L84;
+        if (this.q.equals(r8.q) == false) goto L84;
+        if (this.r.equals(r8.r) == false) goto L84;
+        if (this.s.equals(r8.s) == false) goto L84;
+        if (this.t != r8.t) goto L84;
+        if (this.u.equals(r8.u) == false) goto L84;
+        if (this.v.equals(r8.v) == false) goto L84;
+        if (this.w.equals(r8.w) == false) goto L84;
+        if (this.x.equals(r8.x) == false) goto L84;
+        if (this.y.equals(r8.y) == false) goto L84;
+        if (this.z.equals(r8.z) == false) goto L84;
+        if (this.A != r8.A) goto L84;
+        if (this.B != r8.B) goto L84;
+        if (this.C != r8.C) goto L84;
+        if (this.D.equals(r8.D) == false) goto L84;
+        if (this.E.equals(r8.E) == false) goto L84;
+        if (this.F.equals(r8.F) == false) goto L84;
+        if (this.G.equals(r8.G) == false) goto L84;
+        if (this.H.equals(r8.H) == false) goto L84;
+        if (this.I != r8.I) goto L84;
+        if (this.J != r8.J) goto L84;
+        if (this.K != r8.K) goto L84;
+        return true;
+    L84:
         return false;
     }
 
     public final int hashCode() {
-        int iHashCode = (((((((((this.a.hashCode() + 217) * 31) + (this.b ? 1 : 0)) * 31) + this.c) * 31) + this.d) * 31) + this.e) * 31;
-        PlaybackException playbackException = this.f;
-        int iHashCode2 = (((((iHashCode + (playbackException == null ? 0 : playbackException.hashCode())) * 31) + this.g) * 31) + (this.h ? 1 : 0)) * 961;
-        long j = this.i;
-        int i = (iHashCode2 + ((int) (j ^ (j >>> 32)))) * 31;
-        long j2 = this.j;
-        int i2 = (i + ((int) (j2 ^ (j2 >>> 32)))) * 31;
-        long j3 = this.k;
-        int iHashCode3 = (((((this.H.hashCode() + ((this.G.hashCode() + ((this.F.hashCode() + ((this.E.hashCode() + ((this.D.hashCode() + ((((((((this.z.hashCode() + ((this.y.hashCode() + ((this.x.a.hashCode() + ((this.w.hashCode() + ((this.v.hashCode() + ((this.u.hashCode() + ((((this.s.hashCode() + ((this.r.hashCode() + ((this.q.hashCode() + ((Float.floatToRawIntBits(this.p) + ((Float.floatToRawIntBits(this.o) + ((this.n.hashCode() + ((this.m.hashCode() + ((this.l.hashCode() + ((i2 + ((int) (j3 ^ (j3 >>> 32)))) * 31)) * 31)) * 31)) * 31)) * 31)) * 31)) * 31)) * 31)) * 31) + this.t) * 961)) * 961)) * 31)) * 31)) * 31)) * 31)) * 31) + this.A) * 31) + this.B) * 31) + this.C) * 31)) * 31)) * 31)) * 31)) * 31)) * 31) + (this.I ? 1 : 0)) * 31) + this.J) * 31;
-        long j4 = this.K;
-        return iHashCode3 + ((int) ((j4 >>> 32) ^ j4));
+        int r0 = (((((((((this.a.hashCode() + 217) * 31) + (this.b ? 1 : 0)) * 31) + this.c) * 31) + this.d) * 31) + this.e) * 31;
+        PlaybackException r1 = this.f;
+        if (r1 != null) goto L5;
+        int r2 = 0;
+    L6:
+        int r3 = (((((r0 + r2) * 31) + this.g) * 31) + (this.h ? 1 : 0)) * 961;
+        long r4 = this.i;
+        int r5 = (r3 + ((int) (r4 ^ (r4 >>> 32)))) * 31;
+        long r6 = this.j;
+        int r7 = (r5 + ((int) (r6 ^ (r6 >>> 32)))) * 31;
+        long r8 = this.k;
+        int r9 = (r7 + ((int) (r8 ^ (r8 >>> 32)))) * 31;
+        int r10 = (this.l.hashCode() + r9) * 31;
+        int r11 = (this.m.hashCode() + r10) * 31;
+        int r12 = (this.n.hashCode() + r11) * 31;
+        int r13 = (Float.floatToRawIntBits(this.o) + r12) * 31;
+        int r14 = (Float.floatToRawIntBits(this.p) + r13) * 31;
+        int r15 = (this.q.hashCode() + r14) * 31;
+        int r16 = (this.r.hashCode() + r15) * 31;
+        int r17 = (((this.s.hashCode() + r16) * 31) + this.t) * 961;
+        int r18 = (this.u.hashCode() + r17) * 961;
+        int r19 = (this.v.hashCode() + r18) * 31;
+        int r20 = (this.w.hashCode() + r19) * 31;
+        int r21 = (this.x.a.hashCode() + r20) * 31;
+        int r22 = (this.y.hashCode() + r21) * 31;
+        int r23 = (((((((this.z.hashCode() + r22) * 31) + this.A) * 31) + this.B) * 31) + this.C) * 31;
+        int r24 = (this.D.hashCode() + r23) * 31;
+        int r25 = (this.E.hashCode() + r24) * 31;
+        int r26 = (this.F.hashCode() + r25) * 31;
+        int r27 = (this.G.hashCode() + r26) * 31;
+        int r28 = (((((this.H.hashCode() + r27) * 31) + (this.I ? 1 : 0)) * 31) + this.J) * 31;
+        long r29 = this.K;
+        return r28 + ((int) ((r29 >>> 32) ^ r29));
+    L5:
+        r2 = r1.hashCode();
+        goto L6
     }
 }

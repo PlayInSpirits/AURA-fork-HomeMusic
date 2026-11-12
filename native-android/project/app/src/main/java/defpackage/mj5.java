@@ -2,18 +2,16 @@ package defpackage;
 
 import java.util.Comparator;
 
-/* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
-/* JADX WARN: Unknown enum class pattern. Please report as an issue! */
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
-public final class mj5 implements Comparator {
-    public static final mj5 n;
-    public static final /* synthetic */ mj5[] o;
+public final enum mj5 extends Enum implements Comparator {
+    public static final mj5 n = null;
+    public static final /* synthetic */ mj5[] o = null;
 
     static {
-        mj5 mj5Var = new mj5("INSTANCE", 0);
-        n = mj5Var;
-        o = new mj5[]{mj5Var};
+        mj5 r0 = new mj5("INSTANCE", 0);
+        n = r0;
+        o = new mj5[]{r0};
     }
 
     public static mj5[] values() {
@@ -21,17 +19,22 @@ public final class mj5 implements Comparator {
     }
 
     @Override // java.util.Comparator
-    public final /* bridge */ /* synthetic */ int compare(Object obj, Object obj2) {
-        byte[] bArr = (byte[]) obj;
-        byte[] bArr2 = (byte[]) obj2;
-        int iMin = Math.min(bArr.length, bArr2.length);
-        for (int i = 0; i < iMin; i++) {
-            int i2 = (bArr[i] & 255) - (bArr2[i] & 255);
-            if (i2 != 0) {
-                return i2;
-            }
-        }
-        return bArr.length - bArr2.length;
+    public final /* bridge */ /* synthetic */ int compare(Object r4, Object r5) {
+        byte[] r6 = (byte[]) r4;
+        byte[] r7 = (byte[]) r5;
+        int r3 = Math.min(r6.length, r7.length);
+        int r0 = 0;
+    L3:
+        if (r0 >= r3) goto L9;
+        byte r1 = r6[r0];
+        int r2 = (r1 & 255) - (r7[r0] & 255);
+        if (r2 != 0) goto L6;
+        r0 = r0 + 1;
+        goto L3
+    L6:
+        return r2;
+    L9:
+        return r6.length - r7.length;
     }
 
     @Override // java.lang.Enum

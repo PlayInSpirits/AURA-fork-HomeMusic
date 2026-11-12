@@ -9,34 +9,39 @@ import java.io.Flushable;
 public final class hx implements Closeable, Flushable {
     public final jr0 n;
 
-    public hx(File file) {
-        s32 s32Var = b71.a;
-        String str = ge3.o;
-        ge3 ge3VarA = tv1.A(file);
-        s32Var.getClass();
-        gr4 gr4Var = gr4.l;
-        gr4Var.getClass();
-        this.n = new jr0(s32Var, ge3VarA, gr4Var);
+    public hx(File r4) {
+        s32 r0 = b71.a;
+        String r1 = ge3.o;
+        ge3 r5 = tv1.A(r4);
+        r0.getClass();
+        gr4 r2 = gr4.l;
+        r2.getClass();
+        this.n = new jr0(r0, r5, r2);
     }
 
-    public final void b(oz3 oz3Var) {
-        oz3Var.getClass();
-        jr0 jr0Var = this.n;
-        String strD = si0.D(oz3Var.a);
-        synchronized (jr0Var) {
-            strD.getClass();
-            jr0Var.q();
-            jr0Var.b();
-            jr0.R(strD);
-            dr0 dr0Var = (dr0) jr0Var.v.get(strD);
-            if (dr0Var == null) {
-                return;
-            }
-            jr0Var.K(dr0Var);
-            if (jr0Var.t <= jr0Var.p) {
-                jr0Var.B = false;
-            }
-        }
+    public final void b(oz3 r5) {
+        r5.getClass();
+        jr0 r4 = this.n;
+        String r6 = si0.D(r5.a);
+        monitor-enter(r4);
+        r6.getClass();     // Catch: Throwable -> L12
+        r4.q();     // Catch: Throwable -> L12
+        r4.b();     // Catch: Throwable -> L12
+        jr0.R(r6);     // Catch: Throwable -> L12
+        dr0 r7 = (dr0) r4.v.get(r6);     // Catch: Throwable -> L12
+        if (r7 != null) goto L8;
+        monitor-exit(r4);
+        return;
+    L8:
+        r4.K(r7);     // Catch: Throwable -> L12
+        if (r4.t > r4.p) goto L14;
+        r4.B = false;     // Catch: Throwable -> L12
+    L14:
+        monitor-exit(r4);
+        return;
+    L12:
+        th = move-exception;
+        throw th;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable

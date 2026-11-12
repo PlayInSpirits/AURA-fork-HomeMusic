@@ -8,23 +8,26 @@ public final /* synthetic */ class zx0 implements Function {
     public final /* synthetic */ int a;
     public final /* synthetic */ d64 b;
 
-    public /* synthetic */ zx0(d64 d64Var, int i) {
-        this.a = i;
-        this.b = d64Var;
+    public /* synthetic */ zx0(d64 r1, int r2) {
+        this.a = r2;
+        this.b = r1;
     }
 
     @Override // java.util.function.Function
-    public final Object apply(Object obj) {
-        int i = this.a;
-        d64 d64Var = this.b;
-        gy0 gy0Var = (gy0) obj;
-        switch (i) {
-            case 0:
-                return Double.valueOf(gy0Var.d(d64Var));
-            case 1:
-                return (Double) gy0Var.f.apply(d64Var);
-            default:
-                return (Double) gy0Var.g.apply(d64Var);
-        }
+    public final Object apply(Object r2) {
+        int r0 = this.a;
+        d64 r1 = this.b;
+        gy0 r3 = (gy0) r2;
+        switch(r0) {
+            case 0: goto L9;
+            case 1: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return (Double) r3.g.apply(r1);
+    L7:
+        return (Double) r3.f.apply(r1);
+    L9:
+        return Double.valueOf(r3.d(r1));
     }
 }

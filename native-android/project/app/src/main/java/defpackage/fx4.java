@@ -4,7 +4,7 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class fx4 implements bx4 {
     @Override // defpackage.bx4
-    public void a(dx4 dx4Var) {
+    public void a(dx4 r1) {
     }
 
     @Override // defpackage.bx4

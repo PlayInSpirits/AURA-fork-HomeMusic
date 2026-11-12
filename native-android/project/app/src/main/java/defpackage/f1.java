@@ -13,72 +13,78 @@ public class f1 extends AbstractMap {
     public final transient Map p;
     public final /* synthetic */ q1 q;
 
-    public f1(q1 q1Var, Map map) {
-        this.q = q1Var;
-        this.p = map;
+    public f1(q1 r1, Map r2) {
+        this.q = r1;
+        this.p = r2;
     }
 
-    public final sw1 a(Map.Entry entry) {
-        Object key = entry.getKey();
-        return new sw1(key, this.q.k(key, (Collection) entry.getValue()));
+    public final sw1 a(Map.Entry r2) {
+        Object r0 = r2.getKey();
+        Collection r3 = (Collection) r2.getValue();
+        return new sw1(r0, this.q.k(r0, r3));
     }
 
     @Override // java.util.AbstractMap, java.util.Map
     public final void clear() {
-        q1 q1Var = this.q;
-        if (this.p == q1Var.r) {
-            q1Var.clear();
-            return;
-        }
-        e1 e1Var = new e1(this);
-        while (e1Var.hasNext()) {
-            e1Var.next();
-            e1Var.remove();
-        }
+        q1 r0 = this.q;
+        Map r1 = r0.r;
+        if (this.p != r1) goto L6;
+        r0.clear();
+        return;
+    L6:
+        e1 r2 = new e1(this);
+    L8:
+        if (r2.hasNext() == false) goto L10;
+        r2.next();
+        r2.remove();
+        goto L8
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final boolean containsKey(Object obj) {
-        Map map = this.p;
-        map.getClass();
-        try {
-            return map.containsKey(obj);
-        } catch (ClassCastException | NullPointerException unused) {
-            return false;
-        }
+    public final boolean containsKey(Object r1) {
+        Map r0 = this.p;
+        r0.getClass();
+        return r0.containsKey(r1);
+    L5:
+        return false;
     }
 
     @Override // java.util.AbstractMap, java.util.Map
     public final Set entrySet() {
-        d1 d1Var = this.n;
-        if (d1Var != null) {
-            return d1Var;
-        }
-        d1 d1Var2 = new d1(this, 0);
-        this.n = d1Var2;
-        return d1Var2;
+        d1 r0 = this.n;
+        if (r0 != null) goto L6;
+        d1 r1 = new d1(this, 0);
+        this.n = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final boolean equals(Object obj) {
-        return this == obj || this.p.equals(obj);
+    public final boolean equals(Object r1) {
+        if (this != r1) goto L4;
+        return true;
+    L4:
+        if (this.p.equals(r1) == true) goto L10;
+        return false;
+    L10:
+        return true;
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final Object get(Object obj) {
-        Object obj2;
-        Map map = this.p;
-        map.getClass();
-        try {
-            obj2 = map.get(obj);
-        } catch (ClassCastException | NullPointerException unused) {
-            obj2 = null;
-        }
-        Collection collection = (Collection) obj2;
-        if (collection == null) {
-            return null;
-        }
-        return this.q.k(obj, collection);
+    public final Object get(Object r3) {
+        Map r0 = this.p;
+        r0.getClass();
+        Object r1 = r0.get(r3);     // Catch: Throwable -> L5
+    L6:
+        Collection r2 = (Collection) r1;
+        if (r2 != null) goto L10;
+        return null;
+    L10:
+        return this.q.k(r3, r2);
+    L5:
+        r1 = null;
+        goto L6
     }
 
     @Override // java.util.AbstractMap, java.util.Map
@@ -92,17 +98,17 @@ public class f1 extends AbstractMap {
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final Object remove(Object obj) {
-        Collection collection = (Collection) this.p.remove(obj);
-        if (collection == null) {
-            return null;
-        }
-        q1 q1Var = this.q;
-        Collection collectionI = q1Var.i();
-        collectionI.addAll(collection);
-        q1Var.s -= collection.size();
-        collection.clear();
-        return collectionI;
+    public final Object remove(Object r4) {
+        Collection r5 = (Collection) this.p.remove(r4);
+        if (r5 != null) goto L6;
+        return null;
+    L6:
+        q1 r3 = this.q;
+        Collection r0 = r3.i();
+        r0.addAll(r5);
+        r3.s -= r5.size();
+        r5.clear();
+        return r0;
     }
 
     @Override // java.util.AbstractMap, java.util.Map
@@ -117,12 +123,12 @@ public class f1 extends AbstractMap {
 
     @Override // java.util.AbstractMap, java.util.Map
     public final Collection values() {
-        s1 s1Var = this.o;
-        if (s1Var != null) {
-            return s1Var;
-        }
-        s1 s1Var2 = new s1(this);
-        this.o = s1Var2;
-        return s1Var2;
+        s1 r0 = this.o;
+        if (r0 != null) goto L6;
+        s1 r1 = new s1(this);
+        this.o = r1;
+        return r1;
+    L6:
+        return r0;
     }
 }

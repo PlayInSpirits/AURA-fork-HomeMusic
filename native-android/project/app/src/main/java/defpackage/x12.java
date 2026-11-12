@@ -14,35 +14,35 @@ public final class x12 {
     public final FrameLayout d;
     public final TextView e;
 
-    public x12(ConstraintLayout constraintLayout, FrameLayout frameLayout, ImageView imageView, TextView textView, TextView textView2) {
-        this.a = constraintLayout;
-        this.d = frameLayout;
-        this.b = imageView;
-        this.c = textView;
-        this.e = textView2;
+    public x12(ConstraintLayout r1, FrameLayout r2, ImageView r3, TextView r4, TextView r5) {
+        this.a = r1;
+        this.d = r2;
+        this.b = r3;
+        this.c = r4;
+        this.e = r5;
     }
 
-    public x12(ConstraintLayout constraintLayout, ImageView imageView, FrameLayout frameLayout, TextView textView, TextView textView2) {
-        this.a = constraintLayout;
-        this.b = imageView;
-        this.d = frameLayout;
-        this.c = textView;
-        this.e = textView2;
+    public x12(ConstraintLayout r1, ImageView r2, FrameLayout r3, TextView r4, TextView r5) {
+        this.a = r1;
+        this.b = r2;
+        this.d = r3;
+        this.c = r4;
+        this.e = r5;
     }
 
-    public x12(ConstraintLayout constraintLayout, ImageView imageView, TextView textView, FrameLayout frameLayout, TextView textView2) {
-        this.a = constraintLayout;
-        this.b = imageView;
-        this.c = textView;
-        this.d = frameLayout;
-        this.e = textView2;
+    public x12(ConstraintLayout r1, ImageView r2, TextView r3, FrameLayout r4, TextView r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
     }
 
-    public x12(ConstraintLayout constraintLayout, TextView textView, ImageView imageView, FrameLayout frameLayout, TextView textView2) {
-        this.a = constraintLayout;
-        this.c = textView;
-        this.b = imageView;
-        this.d = frameLayout;
-        this.e = textView2;
+    public x12(ConstraintLayout r1, TextView r2, ImageView r3, FrameLayout r4, TextView r5) {
+        this.a = r1;
+        this.c = r2;
+        this.b = r3;
+        this.d = r4;
+        this.e = r5;
     }
 }

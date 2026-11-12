@@ -7,7 +7,7 @@ import android.os.Binder;
 public final class kk3 extends Binder {
     public final /* synthetic */ lk3 e;
 
-    public kk3(lk3 lk3Var) {
-        this.e = lk3Var;
+    public kk3(lk3 r1) {
+        this.e = r1;
     }
 }

@@ -5,19 +5,19 @@ package defpackage;
 public final /* synthetic */ class rx implements r02 {
     public final /* synthetic */ cx a;
 
-    public /* synthetic */ rx(cx cxVar) {
-        this.a = cxVar;
+    public /* synthetic */ rx(cx r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.r02
-    public final k14 a(ev3 ev3Var) {
-        oz3 oz3Var = ev3Var.e;
-        if (!cx.h()) {
-            nz3 nz3VarA = oz3Var.a();
-            nz3VarA.a("Cache-Control", "public, only-if-cached, max-stale=" + this.a.a);
-            nz3VarA.c.e("Pragma");
-            oz3Var = new oz3(nz3VarA);
-        }
-        return ev3Var.b(oz3Var);
+    public final k14 a(ev3 r4) {
+        oz3 r0 = r4.e;
+        if (cx.h() == true) goto L6;
+        nz3 r1 = r0.a();
+        r1.a("Cache-Control", "public, only-if-cached, max-stale=" + this.a.a);
+        r1.c.e("Pragma");
+        r0 = new oz3(r1);
+    L6:
+        return r4.b(r0);
     }
 }

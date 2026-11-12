@@ -6,9 +6,13 @@ import android.graphics.Outline;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface uj1 {
-    public static final fz0 a = fz0.d0;
+    public static final fz0 a = null;
 
-    void A(float f);
+    static {
+        a = fz0.d0;
+    }
+
+    void A(float r1);
 
     float B();
 
@@ -18,19 +22,19 @@ public interface uj1 {
 
     void E();
 
-    void F(boolean z);
+    void F(boolean r1);
 
     float G();
 
-    void H(int i);
+    void H(int r1);
 
     void I();
 
-    void J(long j);
+    void J(long r1);
 
     Matrix K();
 
-    void L(float f);
+    void L(float r1);
 
     float M();
 
@@ -42,21 +46,21 @@ public interface uj1 {
 
     float c();
 
-    void d(Outline outline, long j);
+    void d(Outline r1, long r2);
 
-    void e(int i);
+    void e(int r1);
 
     void f();
 
-    void g(jz jzVar);
+    void g(jz r1);
 
     int h();
 
     dt i();
 
-    void j(float f);
+    void j(float r1);
 
-    void k(int i, int i2, long j);
+    void k(int r1, int r2, long r3);
 
     float l();
 
@@ -66,17 +70,17 @@ public interface uj1 {
 
     float n();
 
-    void o(long j);
+    void o(long r1);
 
     long p();
 
-    void q(oo0 oo0Var, r62 r62Var, sj1 sj1Var, ir0 ir0Var);
+    void q(oo0 r1, r62 r2, sj1 r3, ir0 r4);
 
     void r();
 
-    void s(float f);
+    void s(float r1);
 
-    void t(int i, int i2, int i3, int i4);
+    void t(int r1, int r2, int r3, int r4);
 
     float u();
 
@@ -86,7 +90,7 @@ public interface uj1 {
 
     long x();
 
-    void y(long j);
+    void y(long r1);
 
     void z();
 }

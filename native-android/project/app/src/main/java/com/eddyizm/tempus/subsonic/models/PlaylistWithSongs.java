@@ -12,14 +12,18 @@ import java.util.List;
 /* JADX INFO: loaded from: classes.dex */
 public final class PlaylistWithSongs extends Playlist implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<PlaylistWithSongs> CREATOR = new b23(15);
+    public static final Parcelable.Creator<PlaylistWithSongs> CREATOR = null;
 
     @ka4("entry")
     private List<? extends Child> entries;
 
-    public PlaylistWithSongs(List<? extends Child> list) {
-        super("", null, 0L, null, 14, null);
-        this.entries = list;
+    static {
+        CREATOR = new b23(15);
+    }
+
+    public PlaylistWithSongs(List<? extends Child> r9) {
+        super("", null, 0, null, 14, null);
+        this.entries = r9;
     }
 
     @Override // com.eddyizm.tempus.subsonic.models.Playlist, android.os.Parcelable
@@ -31,24 +35,25 @@ public final class PlaylistWithSongs extends Playlist implements Parcelable {
         return this.entries;
     }
 
-    public final void setEntries(List<? extends Child> list) {
-        this.entries = list;
+    public final void setEntries(List<? extends Child> r1) {
+        this.entries = r1;
     }
 
     @Override // com.eddyizm.tempus.subsonic.models.Playlist, android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        parcel.getClass();
-        List<? extends Child> list = this.entries;
-        if (list == null) {
-            parcel.writeInt(0);
-            return;
-        }
-        parcel.writeInt(1);
-        parcel.writeInt(list.size());
-        Iterator<? extends Child> it = list.iterator();
-        while (it.hasNext()) {
-            parcel.writeParcelable(it.next(), i);
-        }
+    public final void writeToParcel(Parcel r2, int r3) {
+        r2.getClass();
+        List<? extends Child> r1 = this.entries;
+        if (r1 != null) goto L6;
+        r2.writeInt(0);
+        return;
+    L6:
+        r2.writeInt(1);
+        r2.writeInt(r1.size());
+        Iterator<? extends Child> r4 = r1.iterator();
+    L8:
+        if (r4.hasNext() == false) goto L10;
+        r2.writeParcelable(r4.next(), r3);
+        goto L8
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -56,14 +61,16 @@ public final class PlaylistWithSongs extends Playlist implements Parcelable {
         this(null, 1, 0 == true ? 1 : 0);
     }
 
-    public /* synthetic */ PlaylistWithSongs(List list, int i, xj0 xj0Var) {
-        this((i & 1) != 0 ? null : list);
+    public /* synthetic */ PlaylistWithSongs(List r1, int r2, xj0 r3) {
+        if ((r2 & 1) == 0) goto L5;
+        r1 = null;
+    L5:
+        this(r1);
     }
 
-    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
-    public PlaylistWithSongs(String str, List<? extends Child> list) {
-        this(list);
-        str.getClass();
-        setId(str);
+    public PlaylistWithSongs(String r1, List<? extends Child> r2) {
+        r1.getClass();
+        this(r2);
+        setId(r1);
     }
 }

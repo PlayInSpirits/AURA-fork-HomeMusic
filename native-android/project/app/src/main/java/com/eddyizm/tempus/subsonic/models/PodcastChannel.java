@@ -12,7 +12,7 @@ import java.util.List;
 /* JADX INFO: loaded from: classes.dex */
 public final class PodcastChannel implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<PodcastChannel> CREATOR = new b23(16);
+    public static final Parcelable.Creator<PodcastChannel> CREATOR = null;
 
     @ka4("coverArt")
     private String coverArtId;
@@ -27,8 +27,39 @@ public final class PodcastChannel implements Parcelable {
     private String title;
     private String url;
 
-    public /* synthetic */ PodcastChannel(List list, String str, String str2, String str3, String str4, String str5, String str6, String str7, String str8, int i, xj0 xj0Var) {
-        this((i & 1) != 0 ? null : list, (i & 2) != 0 ? null : str, (i & 4) != 0 ? null : str2, (i & 8) != 0 ? null : str3, (i & 16) != 0 ? null : str4, (i & 32) != 0 ? null : str5, (i & 64) != 0 ? null : str6, (i & 128) != 0 ? null : str7, (i & 256) != 0 ? null : str8);
+    static {
+        CREATOR = new b23(16);
+    }
+
+    public /* synthetic */ PodcastChannel(List r2, String r3, String r4, String r5, String r6, String r7, String r8, String r9, String r10, int r11, xj0 r12) {
+        if ((r11 & 1) == 0) goto L6;
+        r2 = null;
+    L6:
+        if ((r11 & 2) == 0) goto L9;
+        r3 = null;
+    L9:
+        if ((r11 & 4) == 0) goto L12;
+        r4 = null;
+    L12:
+        if ((r11 & 8) == 0) goto L15;
+        r5 = null;
+    L15:
+        if ((r11 & 16) == 0) goto L18;
+        r6 = null;
+    L18:
+        if ((r11 & 32) == 0) goto L21;
+        r7 = null;
+    L21:
+        if ((r11 & 64) == 0) goto L24;
+        r8 = null;
+    L24:
+        if ((r11 & 128) == 0) goto L27;
+        r9 = null;
+    L27:
+        if ((r11 & 256) == 0) goto L29;
+        r10 = null;
+    L29:
+        this(r2, r3, r4, r5, r6, r7, r8, r9, r10);
     }
 
     @Override // android.os.Parcelable
@@ -72,79 +103,90 @@ public final class PodcastChannel implements Parcelable {
         return this.url;
     }
 
-    public final void setCoverArtId(String str) {
-        this.coverArtId = str;
+    public final void setCoverArtId(String r1) {
+        this.coverArtId = r1;
     }
 
-    public final void setDescription(String str) {
-        this.description = str;
+    public final void setDescription(String r1) {
+        this.description = r1;
     }
 
-    public final void setEpisodes(List<PodcastEpisode> list) {
-        this.episodes = list;
+    public final void setEpisodes(List<PodcastEpisode> r1) {
+        this.episodes = r1;
     }
 
-    public final void setErrorMessage(String str) {
-        this.errorMessage = str;
+    public final void setErrorMessage(String r1) {
+        this.errorMessage = r1;
     }
 
-    public final void setId(String str) {
-        this.id = str;
+    public final void setId(String r1) {
+        this.id = r1;
     }
 
-    public final void setOriginalImageUrl(String str) {
-        this.originalImageUrl = str;
+    public final void setOriginalImageUrl(String r1) {
+        this.originalImageUrl = r1;
     }
 
-    public final void setStatus(String str) {
-        this.status = str;
+    public final void setStatus(String r1) {
+        this.status = r1;
     }
 
-    public final void setTitle(String str) {
-        this.title = str;
+    public final void setTitle(String r1) {
+        this.title = r1;
     }
 
-    public final void setUrl(String str) {
-        this.url = str;
+    public final void setUrl(String r1) {
+        this.url = r1;
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        parcel.getClass();
-        List<PodcastEpisode> list = this.episodes;
-        if (list == null) {
-            parcel.writeInt(0);
-        } else {
-            parcel.writeInt(1);
-            parcel.writeInt(list.size());
-            Iterator<PodcastEpisode> it = list.iterator();
-            while (it.hasNext()) {
-                it.next().writeToParcel(parcel, i);
-            }
-        }
-        parcel.writeString(this.id);
-        parcel.writeString(this.url);
-        parcel.writeString(this.title);
-        parcel.writeString(this.description);
-        parcel.writeString(this.coverArtId);
-        parcel.writeString(this.originalImageUrl);
-        parcel.writeString(this.status);
-        parcel.writeString(this.errorMessage);
+    public final void writeToParcel(Parcel r3, int r4) {
+        r3.getClass();
+        List<PodcastEpisode> r0 = this.episodes;
+        if (r0 != null) goto L5;
+        r3.writeInt(0);
+    L9:
+        r3.writeString(this.id);
+        r3.writeString(this.url);
+        r3.writeString(this.title);
+        r3.writeString(this.description);
+        r3.writeString(this.coverArtId);
+        r3.writeString(this.originalImageUrl);
+        r3.writeString(this.status);
+        r3.writeString(this.errorMessage);
+        return;
+    L5:
+        r3.writeInt(1);
+        r3.writeInt(r0.size());
+        Iterator<PodcastEpisode> r1 = r0.iterator();
+    L7:
+        if (r1.hasNext() == false) goto L9;
+        r1.next().writeToParcel(r3, r4);
+        goto L7
     }
 
-    public PodcastChannel(List<PodcastEpisode> list, String str, String str2, String str3, String str4, String str5, String str6, String str7, String str8) {
-        this.episodes = list;
-        this.id = str;
-        this.url = str2;
-        this.title = str3;
-        this.description = str4;
-        this.coverArtId = str5;
-        this.originalImageUrl = str6;
-        this.status = str7;
-        this.errorMessage = str8;
+    public PodcastChannel(List<PodcastEpisode> r1, String r2, String r3, String r4, String r5, String r6, String r7, String r8, String r9) {
+        this.episodes = r1;
+        this.id = r2;
+        this.url = r3;
+        this.title = r4;
+        this.description = r5;
+        this.coverArtId = r6;
+        this.originalImageUrl = r7;
+        this.status = r8;
+        this.errorMessage = r9;
     }
 
     public PodcastChannel() {
-        this(null, null, null, null, null, null, null, null, null, 511, null);
+        List r1 = null;
+        String r2 = null;
+        String r3 = null;
+        String r4 = null;
+        String r5 = null;
+        String r6 = null;
+        String r7 = null;
+        String r8 = null;
+        String r9 = null;
+        this(r1, r2, r3, r4, r5, r6, r7, r8, r9, 511, null);
     }
 }

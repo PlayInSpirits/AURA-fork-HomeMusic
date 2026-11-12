@@ -1,7 +1,6 @@
 package defpackage;
 
 import java.math.RoundingMode;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -12,82 +11,87 @@ public abstract class ms0 {
         Math.log(2.0d);
     }
 
-    public static boolean a(double d) {
-        if (rr2.I(d)) {
-            return d == 0.0d || 52 - Long.numberOfTrailingZeros(rr2.G(d)) <= Math.getExponent(d);
-        }
+    public static boolean a(double r2) {
+        if (rr2.I(r2) == true) goto L5;
+        return false;
+    L5:
+        if (r2 != 0.0d) goto L7;
+        return true;
+    L7:
+        if ((52 - Long.numberOfTrailingZeros(rr2.G(r2))) > Math.getExponent(r2)) goto L13;
+        return true;
+    L13:
         return false;
     }
 
-    public static boolean b(double d) {
-        if (d > 0.0d && rr2.I(d)) {
-            long jG = rr2.G(d);
-            if ((jG & (jG - 1)) == 0) {
-                return true;
-            }
-        }
+    public static boolean b(double r4) {
+        if (r4 > 0.0d) goto L5;
+    L10:
         return false;
+    L5:
+        if (rr2.I(r4) == false) goto L10;
+        long r5 = rr2.G(r4);
+        if ((r5 & (r5 - 1)) != 0) goto L10;
+        return true;
     }
 
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    /* JADX WARN: Code duplicated, block: B:27:0x0071  */
-    /* JADX WARN: Code duplicated, block: B:31:? A[RETURN, SYNTHETIC] */
-    public static int c(double d) {
-        boolean zB;
-        RoundingMode roundingMode = RoundingMode.CEILING;
-        boolean z = false;
-        rr2.k("x must be positive and finite", d > 0.0d && rr2.I(d));
-        int exponent = Math.getExponent(d);
-        if (Math.getExponent(d) < -1022) {
-            return c(d * 4.503599627370496E15d) - 52;
-        }
-        switch (ls0.a[roundingMode.ordinal()]) {
-            case 1:
-                l93.n(b(d));
-                if (z) {
-                    return exponent + 1;
-                }
-                return exponent;
-            case 2:
-                if (z) {
-                    return exponent + 1;
-                }
-                return exponent;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                z = !b(d);
-                if (z) {
-                    return exponent + 1;
-                }
-                return exponent;
-            case 4:
-                z = exponent < 0;
-                zB = b(d);
-                z &= !zB;
-                if (z) {
-                    return exponent + 1;
-                }
-                return exponent;
-            case 5:
-                z = exponent >= 0;
-                zB = b(d);
-                z &= !zB;
-                if (z) {
-                    return exponent + 1;
-                }
-                return exponent;
-            case 6:
-            case 7:
-            case 8:
-                double dLongBitsToDouble = Double.longBitsToDouble((Double.doubleToRawLongBits(d) & 4503599627370495L) | 4607182418800017408L);
-                if (dLongBitsToDouble * dLongBitsToDouble > 2.0d) {
-                    z = true;
-                }
-                if (z) {
-                    return exponent + 1;
-                }
-                return exponent;
-            default:
-                throw new AssertionError();
-        }
+    public static int c(double r6) {
+        RoundingMode r0 = RoundingMode.CEILING;
+        boolean r2 = false;
+        if (r6 > 0.0d) goto L5;
+    L7:
+        boolean r1 = false;
+    L8:
+        rr2.k("x must be positive and finite", r1);
+        int r3 = Math.getExponent(r6);
+        if (Math.getExponent(r6) < (-1022)) goto L30;
+        switch(ls0.a[r0.ordinal()]) {
+            case 1: goto L25;
+            case 2: goto L26;
+            case 3: goto L24;
+            case 4: goto L21;
+            case 5: goto L17;
+            case 6: goto L14;
+            case 7: goto L14;
+            case 8: goto L14;
+            default: goto L13;
+        };
+    L14:
+        double r7 = Double.longBitsToDouble((Double.doubleToRawLongBits(r6) & 4503599627370495L) | 4607182418800017408L);
+        if ((r7 * r7) <= 2.0d) goto L26;
+        r2 = true;
+        goto L26
+    L17:
+        if (r3 < 0) goto L19;
+        r2 = true;
+    L19:
+        boolean r8 = b(r6);
+    L20:
+        r2 = r2 & (!r8);
+        goto L26
+    L21:
+        if (r3 >= 0) goto L23;
+        r2 = true;
+    L23:
+        r8 = b(r6);
+        goto L20
+    L24:
+        r2 = !b(r6);
+        goto L26
+    L25:
+        l93.n(b(r6));
+    L26:
+        if (r2 == true) goto L28;
+        return r3;
+    L28:
+        return r3 + 1;
+    L13:
+        throw new AssertionError();
+    L30:
+        return c(r6 * 4.503599627370496E15d) - 52;
+    L5:
+        if (rr2.I(r6) == false) goto L7;
+        r1 = true;
+        goto L8
     }
 }

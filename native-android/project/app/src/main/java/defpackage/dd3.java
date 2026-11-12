@@ -5,17 +5,31 @@ package defpackage;
 public final class dd3 implements oo0 {
     public final /* synthetic */ int n;
 
+    public /* synthetic */ dd3(int r1) {
+        this.n = r1;
+    }
+
     @Override // defpackage.oo0
     public final float J() {
-        switch (this.n) {
-        }
+        switch(this.n) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        return 1.0f;
+    L6:
         return 1.0f;
     }
 
     @Override // defpackage.oo0
     public final float g() {
-        switch (this.n) {
-        }
+        switch(this.n) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        return 1.0f;
+    L6:
         return 1.0f;
     }
 }

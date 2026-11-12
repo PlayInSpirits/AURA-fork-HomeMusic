@@ -14,40 +14,42 @@ public final class jp2 extends Animation {
     public final /* synthetic */ int p;
     public final /* synthetic */ View q;
 
-    public jp2(SwipeRefreshLayout swipeRefreshLayout, int i, int i2) {
+    public jp2(SwipeRefreshLayout r2, int r3, int r4) {
         this.n = 2;
-        this.q = swipeRefreshLayout;
-        this.o = i;
-        this.p = i2;
+        this.q = r2;
+        this.o = r3;
+        this.p = r4;
     }
 
     @Override // android.view.animation.Animation
-    public final void applyTransformation(float f, Transformation transformation) {
-        int i = this.n;
-        int i2 = this.p;
-        int i3 = this.o;
-        View view = this.q;
-        switch (i) {
-            case 0:
-                qp2.r(view, i3 - ((int) ((i3 - i2) * f)));
-                break;
-            case 1:
-                int i4 = i2 + ((int) ((i3 - i2) * f));
-                int i5 = lq2.g0;
-                ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-                layoutParams.height = i4;
-                view.setLayoutParams(layoutParams);
-                break;
-            default:
-                ((SwipeRefreshLayout) view).M.setAlpha((int) (((i2 - i3) * f) + i3));
-                break;
-        }
+    public final void applyTransformation(float r3, Transformation r4) {
+        int r5 = this.n;
+        int r0 = this.p;
+        int r1 = this.o;
+        View r2 = this.q;
+        switch(r5) {
+            case 0: goto L8;
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((SwipeRefreshLayout) r2).M.setAlpha((int) (((r0 - r1) * r3) + r1));
+        return;
+    L6:
+        int r6 = r0 + ((int) ((r1 - r0) * r3));
+        int r7 = lq2.g0;
+        ViewGroup.LayoutParams r8 = r2.getLayoutParams();
+        r8.height = r6;
+        r2.setLayoutParams(r8);
+        return;
+    L8:
+        qp2.r(r2, r1 - ((int) ((r1 - r0) * r3)));
     }
 
-    public /* synthetic */ jp2(int i, int i2, int i3, View view) {
-        this.n = i3;
-        this.o = i;
-        this.p = i2;
-        this.q = view;
+    public /* synthetic */ jp2(int r1, int r2, int r3, View r4) {
+        this.n = r3;
+        this.o = r1;
+        this.p = r2;
+        this.q = r4;
     }
 }

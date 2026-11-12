@@ -7,12 +7,12 @@ import java.util.concurrent.locks.AbstractOwnableSynchronizer;
 public final class d12 extends AbstractOwnableSynchronizer implements Runnable {
     public final e12 n;
 
-    public d12(e12 e12Var) {
-        this.n = e12Var;
+    public d12(e12 r1) {
+        this.n = r1;
     }
 
-    public static void a(d12 d12Var, Thread thread) {
-        d12Var.setExclusiveOwnerThread(thread);
+    public static void a(d12 r0, Thread r1) {
+        r0.setExclusiveOwnerThread(r1);
     }
 
     @Override // java.lang.Runnable

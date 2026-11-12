@@ -12,44 +12,46 @@ public final /* synthetic */ class yr1 implements gf1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ HubFragment o;
 
-    public /* synthetic */ yr1(HubFragment hubFragment, int i) {
-        this.n = i;
-        this.o = hubFragment;
+    public /* synthetic */ yr1(HubFragment r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        int i = this.n;
-        j15 j15Var = j15.a;
-        int i2 = 1;
-        HubFragment hubFragment = this.o;
-        switch (i) {
-            case 0:
-                List list = HubFragment.y0;
-                WeakReference weakReference = lr1.a;
-                MainActivity mainActivity = hubFragment.m0;
-                if (mainActivity == null) {
-                    h12.Q("activity");
-                    throw null;
-                }
-                bl2 bl2Var = mainActivity.P;
-                if (bl2Var != null) {
-                    bl2Var.f(new jr1(bl2Var, 0), ud3.w(mainActivity));
-                }
-                bl2 bl2Var2 = mainActivity.P;
-                if (bl2Var2 != null) {
-                    bl2Var2.f(new jr1(bl2Var2, i2), ud3.w(mainActivity));
-                }
-                return j15Var;
-            default:
-                List list2 = HubFragment.y0;
-                long jElapsedRealtime = SystemClock.elapsedRealtime();
-                if (jElapsedRealtime - hubFragment.q0 >= 30000) {
-                    hubFragment.q0 = jElapsedRealtime;
-                    hw.i = null;
-                    hubFragment.h0(hubFragment.o0, true);
-                }
-                return j15Var;
-        }
+        int r0 = this.n;
+        j15 r1 = j15.a;
+        int r2 = 1;
+        HubFragment r10 = this.o;
+        switch(r0) {
+            case 0: goto L9;
+            default: goto L4;
+        };
+    L4:
+        List r3 = HubFragment.y0;
+        long r4 = SystemClock.elapsedRealtime();
+        if ((r4 - r10.q0) < 30000) goto L8;
+        r10.q0 = r4;
+        hw.i = null;
+        r10.h0(r10.o0, true);
+    L8:
+        return r1;
+    L9:
+        List r5 = HubFragment.y0;
+        WeakReference r6 = lr1.a;
+        MainActivity r11 = r10.m0;
+        if (r11 == null) goto L20;
+        bl2 r7 = r11.P;
+        if (r7 == null) goto L15;
+        r7.f(new jr1(r7, 0), ud3.w(r11));
+    L15:
+        bl2 r8 = r11.P;
+        if (r8 == null) goto L19;
+        r8.f(new jr1(r8, r2), ud3.w(r11));
+    L19:
+        return r1;
+    L20:
+        h12.Q("activity");
+        throw null;
     }
 }

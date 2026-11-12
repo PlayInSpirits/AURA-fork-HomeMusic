@@ -7,7 +7,7 @@ import android.os.ResultReceiver;
 /* JADX INFO: loaded from: classes.dex */
 class MediaControllerCompat$MediaControllerImplApi21$ExtraBinderRequestResultReceiver extends ResultReceiver {
     @Override // android.os.ResultReceiver
-    public final void onReceiveResult(int i, Bundle bundle) {
+    public final void onReceiveResult(int r1, Bundle r2) {
         throw null;
     }
 }

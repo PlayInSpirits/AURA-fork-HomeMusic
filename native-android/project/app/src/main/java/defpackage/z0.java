@@ -10,11 +10,11 @@ public final class z0 extends a1 implements RandomAccess {
     public final int o;
     public final int p;
 
-    public z0(a1 a1Var, int i, int i2) {
-        this.n = a1Var;
-        this.o = i;
-        h12.g(i, i2, a1Var.a());
-        this.p = i2 - i;
+    public z0(a1 r1, int r2, int r3) {
+        this.n = r1;
+        this.o = r2;
+        h12.g(r2, r3, r1.a());
+        this.p = r3 - r2;
     }
 
     @Override // defpackage.y
@@ -23,19 +23,22 @@ public final class z0 extends a1 implements RandomAccess {
     }
 
     @Override // java.util.List
-    public final Object get(int i) {
-        int i2 = this.p;
-        if (i < 0 || i >= i2) {
-            kf2.h(xa3.e(i, i2, "index: ", ", size: "));
-            return null;
-        }
-        return this.n.get(this.o + i);
+    public final Object get(int r3) {
+        int r0 = this.p;
+        if (r3 < 0) goto L7;
+        if (r3 >= r0) goto L7;
+        int r1 = this.o + r3;
+        return this.n.get(r1);
+    L7:
+        kf2.h(xa3.e(r3, r0, "index: ", ", size: "));
+        return null;
     }
 
     @Override // defpackage.a1, java.util.List
-    public final List subList(int i, int i2) {
-        h12.g(i, i2, this.p);
-        int i3 = this.o;
-        return new z0(this.n, i + i3, i3 + i2);
+    public final List subList(int r3, int r4) {
+        h12.g(r3, r4, this.p);
+        int r1 = this.o;
+        a1 r2 = this.n;
+        return new z0(r2, r3 + r1, r1 + r4);
     }
 }

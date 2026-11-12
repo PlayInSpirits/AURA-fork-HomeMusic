@@ -23,31 +23,40 @@ import java.util.WeakHashMap;
 public final class LanPlaybackActivity extends df {
     public static final /* synthetic */ int N = 0;
 
+    public LanPlaybackActivity() {
+    }
+
     @Override // defpackage.df, defpackage.k70, android.app.Activity, android.view.Window.Callback
-    public final boolean dispatchKeyEvent(KeyEvent keyEvent) {
-        keyEvent.getClass();
-        return z52.a(keyEvent) || super.dispatchKeyEvent(keyEvent);
+    public final boolean dispatchKeyEvent(KeyEvent r2) {
+        r2.getClass();
+        if (z52.a(r2) == false) goto L5;
+        return true;
+    L5:
+        if (super.dispatchKeyEvent(r2) == true) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     @Override // defpackage.nc1, defpackage.l70, defpackage.k70, android.app.Activity
-    public final void onCreate(Bundle bundle) {
+    public final void onCreate(Bundle r4) {
         jz4.r(this);
         kb4.T(this);
-        super.onCreate(bundle);
+        super.onCreate(r4);
         setContentView(R.layout.fragment_settings);
-        MaterialToolbar materialToolbar = (MaterialToolbar) findViewById(R.id.settings_toolbar);
-        materialToolbar.setTitle(R.string.lan_title);
-        materialToolbar.setNavigationOnClickListener(new p6(22, this));
-        View viewFindViewById = findViewById(android.R.id.content);
-        er1 er1Var = new er1(10);
-        WeakHashMap weakHashMap = j65.a;
-        a65.c(viewFindViewById, er1Var);
-        if (bundle == null) {
-            md1 md1VarK = k();
-            md1VarK.getClass();
-            po poVar = new po(md1VarK);
-            poVar.j(R.id.settings_container, new h62(), null);
-            poVar.e(false);
-        }
+        MaterialToolbar r0 = (MaterialToolbar) findViewById(R.id.settings_toolbar);
+        r0.setTitle(R.string.lan_title);
+        r0.setNavigationOnClickListener(new p6(22, this));
+        View r1 = findViewById(android.R.id.content);
+        er1 r2 = new er1(10);
+        WeakHashMap r3 = j65.a;
+        a65.c(r1, r2);
+        if (r4 != null) goto L6;
+        md1 r5 = k();
+        r5.getClass();
+        po r6 = new po(r5);
+        r6.j(R.id.settings_container, new h62(), null);
+        r6.e(false);
+        return;
     }
 }

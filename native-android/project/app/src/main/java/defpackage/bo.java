@@ -7,90 +7,112 @@ public class bo implements m84 {
     public final long b;
     public final Object c;
 
-    public bo(long j, long j2) {
+    public bo(long r3, long r5) {
         this.a = 2;
-        this.b = j;
-        o84 o84Var = j2 == 0 ? o84.c : new o84(0L, j2);
-        this.c = new l84(o84Var, o84Var);
+        this.b = r3;
+        if (r5 != 0) goto L5;
+        o84 r4 = o84.c;
+    L6:
+        this.c = new l84(r4, r4);
+        return;
+    L5:
+        r4 = new o84(0, r5);
+        goto L6
     }
 
     @Override // defpackage.m84
     public final boolean b() {
-        switch (this.a) {
-            case 0:
-                return true;
-            case 1:
-                return true;
-            default:
-                return false;
-        }
+        switch(this.a) {
+            case 0: goto L8;
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        return false;
+    L6:
+        return true;
+    L8:
+        return true;
     }
 
     @Override // defpackage.m84
-    public final l84 e(long j) {
-        int i = this.a;
-        int i2 = 1;
-        Object obj = this.c;
-        switch (i) {
-            case 0:
-                co coVar = (co) obj;
-                l84 l84VarB = coVar.i[0].b(j);
-                while (true) {
-                    u20[] u20VarArr = coVar.i;
-                    if (i2 >= u20VarArr.length) {
-                        return l84VarB;
-                    }
-                    l84 l84VarB2 = u20VarArr[i2].b(j);
-                    if (l84VarB2.a.b < l84VarB.a.b) {
-                        l84VarB = l84VarB2;
-                    }
-                    i2++;
-                }
-                break;
-            case 1:
-                v71 v71Var = (v71) obj;
-                v71Var.k.getClass();
-                rm3 rm3Var = v71Var.k;
-                long[] jArr = (long[]) rm3Var.n;
-                long[] jArr2 = (long[]) rm3Var.o;
-                int iF = f35.f(jArr, f35.k((((long) v71Var.e) * j) / 1000000, 0L, v71Var.j - 1), false);
-                long j2 = iF == -1 ? 0L : jArr[iF];
-                long j3 = iF != -1 ? jArr2[iF] : 0L;
-                int i3 = v71Var.e;
-                long j4 = (j2 * 1000000) / ((long) i3);
-                long j5 = this.b;
-                o84 o84Var = new o84(j4, j3 + j5);
-                if (j4 == j || iF == jArr.length - 1) {
-                    return new l84(o84Var, o84Var);
-                }
-                int i4 = iF + 1;
-                return new l84(o84Var, new o84((jArr[i4] * 1000000) / ((long) i3), j5 + jArr2[i4]));
-            default:
-                return (l84) obj;
-        }
+    public final l84 e(long r19) {
+        int r3 = this.a;
+        int r5 = 1;
+        Object r6 = this.c;
+        switch(r3) {
+            case 0: goto L21;
+            case 1: goto L6;
+            default: goto L5;
+        };
+    L6:
+        v71 r7 = (v71) r6;
+        r7.k.getClass();
+        rm3 r4 = r7.k;
+        long[] r8 = (long[]) r4.n;
+        long[] r9 = (long[]) r4.o;
+        int r10 = f35.f(r8, f35.k((((long) r7.e) * r19) / 1000000, 0, r7.j - 1), false);
+        long r11 = 0;
+        if (r10 != (-1)) goto L9;
+        long r13 = 0;
+    L10:
+        if (r10 == (-1)) goto L13;
+        r11 = r9[r10];
+    L13:
+        int r12 = r7.e;
+        long r14 = (r13 * 1000000) / ((long) r12);
+        long r15 = this.b;
+        o84 r0 = new o84(r14, r11 + r15);
+        if (r14 == r19) goto L20;
+        if (r10 == (r8.length - 1)) goto L20;
+        int r16 = r10 + 1;
+        return new l84(r0, new o84((r8[r16] * 1000000) / ((long) r12), r15 + r9[r16]));
+    L20:
+        return new l84(r0, r0);
+    L9:
+        r13 = r8[r10];
+        goto L10
+    L21:
+        co r17 = (co) r6;
+        l84 r1 = r17.i[0].b(r19);
+    L22:
+        u20[] r18 = r17.i;
+        if (r5 >= r18.length) goto L28;
+        l84 r20 = r18[r5].b(r19);
+        if (r20.a.b >= r1.a.b) goto L27;
+        r1 = r20;
+    L27:
+        r5 = r5 + 1;
+        goto L22
+    L28:
+        return r1;
+    L5:
+        return (l84) r6;
     }
 
     @Override // defpackage.m84
     public final long g() {
-        switch (this.a) {
-            case 0:
-                return this.b;
-            case 1:
-                return ((v71) this.c).b();
-            default:
-                return this.b;
-        }
+        switch(this.a) {
+            case 0: goto L9;
+            case 1: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return this.b;
+    L7:
+        return ((v71) this.c).b();
+    L9:
+        return this.b;
     }
 
-    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
-    public bo(long j) {
-        this(j, 0L);
+    public bo(long r3) {
         this.a = 2;
+        this(r3, 0);
     }
 
-    public /* synthetic */ bo(Object obj, long j, int i) {
-        this.a = i;
-        this.c = obj;
-        this.b = j;
+    public /* synthetic */ bo(Object r1, long r2, int r4) {
+        this.a = r4;
+        this.c = r1;
+        this.b = r2;
     }
 }

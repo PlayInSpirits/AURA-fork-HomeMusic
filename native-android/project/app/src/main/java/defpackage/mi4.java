@@ -2,16 +2,9 @@ package defpackage;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.util.Log;
-import android.view.View;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import com.eddyizm.tempus.interfaces.ClickCallback;
 import com.eddyizm.tempus.subsonic.models.Child;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.regex.Pattern;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -19,208 +12,47 @@ public final class mi4 extends cx3 {
     public final y12 u;
     public final /* synthetic */ ni4 v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public mi4(ni4 ni4Var, y12 y12Var) {
-        this.v = ni4Var;
-        ConstraintLayout constraintLayout = y12Var.a;
-        super(constraintLayout);
-        this.u = y12Var;
-        final int i = 1;
-        y12Var.q.setSelected(true);
-        y12Var.p.setSelected(true);
-        final int i2 = 0;
-        constraintLayout.setOnClickListener(new View.OnClickListener(this) { // from class: li4
-            public final /* synthetic */ mi4 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view) {
-                int i3 = i2;
-                mi4 mi4Var = this.o;
-                switch (i3) {
-                    case 0:
-                        ni4 ni4Var2 = mi4Var.v;
-                        int iC = mi4Var.c();
-                        if (iC != -1) {
-                            rm3 rm3Var = ni4Var2.B;
-                            ClickCallback clickCallback = ni4Var2.q;
-                            pk pkVar = ni4Var2.v;
-                            if (rm3Var == null || ((LinkedHashSet) rm3Var.n).isEmpty()) {
-                                Child child = (Child) pkVar.f.get(iC);
-                                Bundle bundle = new Bundle();
-                                List listSubList = pkVar.f;
-                                int iC2 = mi4Var.c();
-                                Pattern pattern = e03.a;
-                                if (!listSubList.isEmpty() && listSubList.size() > 100) {
-                                    int i4 = iC2 < 15 ? 0 : iC2 - 15;
-                                    listSubList = listSubList.subList(i4, Math.min(i4 + 100, listSubList.size()));
-                                }
-                                bundle.putParcelableArrayList("TRACKS_OBJECT", new ArrayList<>(listSubList));
-                                List list = pkVar.f;
-                                int iC3 = mi4Var.c();
-                                if (!list.isEmpty() && list.size() > 100) {
-                                    iC3 = Math.min(iC3, 15);
-                                }
-                                bundle.putInt("ITEM_POSITION", iC3);
-                                if (!u52.c().a) {
-                                    if (!child.getId().equals(ni4Var2.x)) {
-                                        clickCallback.onMediaClick(bundle);
-                                    } else {
-                                        Log.i("SongHorizontalAdapter", "Tapping on currently playing song, toggling playback");
-                                        try {
-                                            bj2 bj2Var = (bj2) ni4Var2.A.get();
-                                            Log.i("SongHorizontalAdapter", "MediaBrowser retrieved, isPlaying: " + ni4Var2.y);
-                                            if (ni4Var2.y) {
-                                                bj2Var.c();
-                                            } else {
-                                                bj2Var.m0();
-                                            }
-                                        } catch (InterruptedException e) {
-                                            e = e;
-                                            Log.e("SongHorizontalAdapter", "Error getting MediaBrowser", e);
-                                            return;
-                                        } catch (ExecutionException e2) {
-                                            e = e2;
-                                            Log.e("SongHorizontalAdapter", "Error getting MediaBrowser", e);
-                                            return;
-                                        }
-                                    }
-                                } else if (!child.getId().equals(u52.c().x)) {
-                                    clickCallback.onMediaClick(bundle);
-                                } else {
-                                    u52.a(u52.c().k ? "pause" : "play", 0L);
-                                }
-                            } else {
-                                mi4Var.t();
-                            }
-                            break;
-                        }
-                        break;
-                    default:
-                        rm3 rm3Var2 = mi4Var.v.B;
-                        if (rm3Var2 == null || ((LinkedHashSet) rm3Var2.n).isEmpty()) {
-                            mi4Var.s();
-                        } else {
-                            mi4Var.t();
-                        }
-                        break;
-                }
-            }
-        });
-        constraintLayout.setOnLongClickListener(new q6(24, this));
-        y12Var.o.setOnClickListener(new View.OnClickListener(this) { // from class: li4
-            public final /* synthetic */ mi4 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view) {
-                int i3 = i;
-                mi4 mi4Var = this.o;
-                switch (i3) {
-                    case 0:
-                        ni4 ni4Var2 = mi4Var.v;
-                        int iC = mi4Var.c();
-                        if (iC != -1) {
-                            rm3 rm3Var = ni4Var2.B;
-                            ClickCallback clickCallback = ni4Var2.q;
-                            pk pkVar = ni4Var2.v;
-                            if (rm3Var == null || ((LinkedHashSet) rm3Var.n).isEmpty()) {
-                                Child child = (Child) pkVar.f.get(iC);
-                                Bundle bundle = new Bundle();
-                                List listSubList = pkVar.f;
-                                int iC2 = mi4Var.c();
-                                Pattern pattern = e03.a;
-                                if (!listSubList.isEmpty() && listSubList.size() > 100) {
-                                    int i4 = iC2 < 15 ? 0 : iC2 - 15;
-                                    listSubList = listSubList.subList(i4, Math.min(i4 + 100, listSubList.size()));
-                                }
-                                bundle.putParcelableArrayList("TRACKS_OBJECT", new ArrayList<>(listSubList));
-                                List list = pkVar.f;
-                                int iC3 = mi4Var.c();
-                                if (!list.isEmpty() && list.size() > 100) {
-                                    iC3 = Math.min(iC3, 15);
-                                }
-                                bundle.putInt("ITEM_POSITION", iC3);
-                                if (!u52.c().a) {
-                                    if (!child.getId().equals(ni4Var2.x)) {
-                                        clickCallback.onMediaClick(bundle);
-                                    } else {
-                                        Log.i("SongHorizontalAdapter", "Tapping on currently playing song, toggling playback");
-                                        try {
-                                            bj2 bj2Var = (bj2) ni4Var2.A.get();
-                                            Log.i("SongHorizontalAdapter", "MediaBrowser retrieved, isPlaying: " + ni4Var2.y);
-                                            if (ni4Var2.y) {
-                                                bj2Var.c();
-                                            } else {
-                                                bj2Var.m0();
-                                            }
-                                        } catch (InterruptedException e) {
-                                            e = e;
-                                            Log.e("SongHorizontalAdapter", "Error getting MediaBrowser", e);
-                                            return;
-                                        } catch (ExecutionException e2) {
-                                            e = e2;
-                                            Log.e("SongHorizontalAdapter", "Error getting MediaBrowser", e);
-                                            return;
-                                        }
-                                    }
-                                } else if (!child.getId().equals(u52.c().x)) {
-                                    clickCallback.onMediaClick(bundle);
-                                } else {
-                                    u52.a(u52.c().k ? "pause" : "play", 0L);
-                                }
-                            } else {
-                                mi4Var.t();
-                            }
-                            break;
-                        }
-                        break;
-                    default:
-                        rm3 rm3Var2 = mi4Var.v.B;
-                        if (rm3Var2 == null || ((LinkedHashSet) rm3Var2.n).isEmpty()) {
-                            mi4Var.s();
-                        } else {
-                            mi4Var.t();
-                        }
-                        break;
-                }
-            }
-        });
+    public mi4(ni4 r4, y12 r5) {
+        this.v = r4;
+        ConstraintLayout r6 = r5.a;
+        super(r6);
+        this.u = r5;
+        final int r1 = 1;
+        r5.q.setSelected(true);
+        r5.p.setSelected(true);
+        final int r2 = 0;
+        r6.setOnClickListener(new li4(this, r2));
+        r6.setOnLongClickListener(new q6(24, this));
+        r5.o.setOnClickListener(new li4(this, r1));
     }
 
     public final void s() {
-        Bundle bundle = new Bundle();
-        ni4 ni4Var = this.v;
-        bundle.putParcelable("TRACK_OBJECT", (Parcelable) ni4Var.v.f.get(c()));
-        bundle.putInt("ITEM_POSITION", c());
-        ni4Var.q.onMediaLongClick(bundle);
+        Bundle r0 = new Bundle();
+        ni4 r1 = this.v;
+        r0.putParcelable("TRACK_OBJECT", (Parcelable) r1.v.f.get(c()));
+        r0.putInt("ITEM_POSITION", c());
+        r1.q.onMediaLongClick(r0);
     }
 
     public final boolean t() {
-        int iC = c();
-        if (iC == -1) {
-            return false;
-        }
-        ni4 ni4Var = this.v;
-        rm3 rm3Var = ni4Var.B;
-        Child child = (Child) ni4Var.v.f.get(iC);
-        rm3Var.getClass();
-        child.getClass();
-        LinkedHashSet linkedHashSet = (LinkedHashSet) rm3Var.n;
-        if (!linkedHashSet.remove(child.getId())) {
-            linkedHashSet.add(child.getId());
-        }
-        vo1 vo1Var = (vo1) rm3Var.o;
-        if (vo1Var == null) {
-            return true;
-        }
-        vo1Var.invoke();
+        int r0 = c();
+        if (r0 != (-1)) goto L6;
+        return false;
+    L6:
+        ni4 r3 = this.v;
+        rm3 r1 = r3.B;
+        Child r4 = (Child) r3.v.f.get(r0);
+        r1.getClass();
+        r4.getClass();
+        LinkedHashSet r2 = (LinkedHashSet) r1.n;
+        if (r2.remove(r4.getId()) == true) goto L9;
+        r2.add(r4.getId());
+    L9:
+        vo1 r5 = (vo1) r1.o;
+        if (r5 == null) goto L14;
+        r5.invoke();
+        return true;
+    L14:
         return true;
     }
 }

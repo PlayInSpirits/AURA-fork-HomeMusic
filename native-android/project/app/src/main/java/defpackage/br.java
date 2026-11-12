@@ -5,7 +5,7 @@ package defpackage;
 public final class br {
     public final /* synthetic */ fr a;
 
-    public br(fr frVar) {
-        this.a = frVar;
+    public br(fr r1) {
+        this.a = r1;
     }
 }

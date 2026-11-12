@@ -7,26 +7,30 @@ import java.util.ListIterator;
 public final class y0 extends x0 implements ListIterator {
     public final /* synthetic */ a1 q;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public y0(a1 a1Var, int i) {
-        super(0, a1Var);
-        this.q = a1Var;
-        int iA = a1Var.a();
-        if (i < 0 || i > iA) {
-            kf2.h(xa3.e(i, iA, "index: ", ", size: "));
-            throw null;
-        }
-        this.o = i;
+    public y0(a1 r2, int r3) {
+        this.q = r2;
+        super(0, r2);
+        int r4 = r2.a();
+        if (r3 < 0) goto L7;
+        if (r3 > r4) goto L7;
+        this.o = r3;
+        return;
+    L7:
+        kf2.h(xa3.e(r3, r4, "index: ", ", size: "));
+        throw null;
     }
 
     @Override // java.util.ListIterator
-    public final void add(Object obj) {
+    public final void add(Object r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.ListIterator
     public final boolean hasPrevious() {
-        return this.o > 0;
+        if (this.o <= 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // java.util.ListIterator
@@ -36,13 +40,13 @@ public final class y0 extends x0 implements ListIterator {
 
     @Override // java.util.ListIterator
     public final Object previous() {
-        if (!hasPrevious()) {
-            tb4.k();
-            return null;
-        }
-        int i = this.o - 1;
-        this.o = i;
-        return this.q.get(i);
+        if (hasPrevious() == false) goto L6;
+        int r0 = this.o - 1;
+        this.o = r0;
+        return this.q.get(r0);
+    L6:
+        tb4.k();
+        return null;
     }
 
     @Override // java.util.ListIterator
@@ -51,7 +55,7 @@ public final class y0 extends x0 implements ListIterator {
     }
 
     @Override // java.util.ListIterator
-    public final void set(Object obj) {
+    public final void set(Object r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 }

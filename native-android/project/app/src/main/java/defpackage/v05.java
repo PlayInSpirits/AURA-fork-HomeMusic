@@ -10,18 +10,18 @@ public final enum v05 extends x05 {
     }
 
     @Override // defpackage.x05
-    public final Type a(Type type) {
-        return x05.n.a(type);
+    public final Type a(Type r1) {
+        return x05.n.a(r1);
     }
 
     @Override // defpackage.x05
-    public final String b(Type type) {
-        return x05.o.b(type);
+    public final String b(Type r1) {
+        return x05.o.b(r1);
     }
 
     @Override // defpackage.x05
-    public final Type d(Type type) {
-        type.getClass();
-        return type;
+    public final Type d(Type r1) {
+        r1.getClass();
+        return r1;
     }
 }

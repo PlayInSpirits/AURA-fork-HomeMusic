@@ -11,18 +11,18 @@ public class xm3 extends hd {
     public final k03 d;
     public final k03 e;
 
-    public xm3(Application application) {
-        super(application);
+    public xm3(Application r2) {
+        super(r2);
         this.d = new k03(Boolean.FALSE);
         this.e = new k03();
         this.c = new hh3(1);
     }
 
-    public final void c(String str) {
-        Application application = this.b;
-        application.getClass();
-        Toast.makeText(application, str, 1).show();
-        this.e.k(str);
-        Log.e("PodcastChannelEditorViewModel", "Error shown: " + str);
+    public final void c(String r3) {
+        Application r0 = this.b;
+        r0.getClass();
+        Toast.makeText(r0, r3, 1).show();
+        this.e.k(r3);
+        Log.e("PodcastChannelEditorViewModel", "Error shown: " + r3);
     }
 }

@@ -15,40 +15,42 @@ public final class pr extends cj0 {
         this.y = 0;
     }
 
-    public final boolean v(cj0 cj0Var) {
-        ByteBuffer byteBuffer;
-        rr2.l(!cj0Var.d(1073741824));
-        rr2.l(!cj0Var.d(268435456));
-        rr2.l(!cj0Var.d(4));
-        if (w()) {
-            if (this.y >= this.z) {
-                return false;
-            }
-            ByteBuffer byteBuffer2 = cj0Var.r;
-            if (byteBuffer2 != null && (byteBuffer = this.r) != null) {
-                if (byteBuffer2.remaining() + byteBuffer.position() > 3072000) {
-                    return false;
-                }
-            }
-        }
-        int i = this.y;
-        this.y = i + 1;
-        if (i == 0) {
-            this.t = cj0Var.t;
-            if (cj0Var.d(1)) {
-                this.o = 1;
-            }
-        }
-        ByteBuffer byteBuffer3 = cj0Var.r;
-        if (byteBuffer3 != null) {
-            t(byteBuffer3.remaining());
-            this.r.put(byteBuffer3);
-        }
-        this.x = cj0Var.t;
+    public final boolean v(cj0 r5) {
+        rr2.l(!r5.d(1073741824));
+        rr2.l(!r5.d(268435456));
+        rr2.l(!r5.d(4));
+        if (w() == true) goto L6;
+    L16:
+        int r0 = this.y;
+        this.y = r0 + 1;
+        if (r0 != 0) goto L21;
+        this.t = r5.t;
+        if (r5.d(1) == false) goto L21;
+        this.o = 1;
+    L21:
+        ByteBuffer r1 = r5.r;
+        if (r1 == null) goto L24;
+        t(r1.remaining());
+        this.r.put(r1);
+    L24:
+        this.x = r5.t;
         return true;
+    L6:
+        if (this.y >= this.z) goto L26;
+        ByteBuffer r2 = r5.r;
+        if (r2 == null) goto L16;
+        ByteBuffer r3 = this.r;
+        if (r3 == null) goto L16;
+        if ((r2.remaining() + r3.position()) <= 3072000) goto L16;
+        return false;
+    L26:
+        return false;
     }
 
     public final boolean w() {
-        return this.y > 0;
+        if (this.y <= 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 }

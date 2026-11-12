@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -14,171 +13,200 @@ public class s1 extends AbstractCollection {
     public final /* synthetic */ int n;
     public final Object o;
 
-    public s1(AbstractMap abstractMap) {
+    public s1(AbstractMap r2) {
         this.n = 3;
-        this.o = abstractMap;
+        this.o = r2;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
     public final void clear() {
-        int i = this.n;
-        Object obj = this.o;
-        switch (i) {
-            case 0:
-                ((u1) obj).clear();
-                break;
-            case 1:
-                ((q1) obj).clear();
-                break;
-            case 2:
-                ((p60) obj).clear();
-                break;
-            default:
-                ((AbstractMap) obj).clear();
-                break;
-        }
+        int r0 = this.n;
+        Object r1 = this.o;
+        switch(r0) {
+            case 0: goto L10;
+            case 1: goto L8;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((AbstractMap) r1).clear();
+        return;
+    L6:
+        ((p60) r1).clear();
+        return;
+    L8:
+        ((q1) r1).clear();
+        return;
+    L10:
+        ((u1) r1).clear();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public boolean contains(Object obj) {
-        int i = this.n;
-        Object obj2 = this.o;
-        switch (i) {
-            case 0:
-                if (!(obj instanceof Map.Entry)) {
-                    return false;
-                }
-                Map.Entry entry = (Map.Entry) obj;
-                return ((u1) obj2).c(entry.getKey(), entry.getValue());
-            case 1:
-                return ((q1) obj2).d(obj);
-            case 2:
-            default:
-                return super.contains(obj);
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                return ((AbstractMap) obj2).containsValue(obj);
-        }
+    public boolean contains(Object r3) {
+        int r0 = this.n;
+        Object r1 = this.o;
+        switch(r0) {
+            case 0: goto L11;
+            case 1: goto L9;
+            case 2: goto L5;
+            case 3: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return super.contains(r3);
+    L7:
+        return ((AbstractMap) r1).containsValue(r3);
+    L9:
+        return ((q1) r1).d(r3);
+    L11:
+        if ((r3 instanceof Map.Entry) == false) goto L13;
+        Map.Entry r4 = (Map.Entry) r3;
+        return ((u1) r1).c(r4.getKey(), r4.getValue());
+    L13:
+        return false;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
     public boolean isEmpty() {
-        switch (this.n) {
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                return ((AbstractMap) this.o).isEmpty();
-            default:
-                return super.isEmpty();
-        }
+        switch(this.n) {
+            case 3: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return super.isEmpty();
+    L7:
+        return ((AbstractMap) this.o).isEmpty();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.lang.Iterable
     public final Iterator iterator() {
-        int i = this.n;
-        Object obj = this.o;
-        switch (i) {
-            case 0:
-                return ((u1) obj).h();
-            case 1:
-                return new c1((q1) obj, 0);
-            case 2:
-                p60 p60Var = (p60) obj;
-                Map mapC = p60Var.c();
-                return mapC != null ? mapC.values().iterator() : new m60(p60Var, 2);
-            default:
-                return new ig2(((AbstractMap) obj).entrySet().iterator());
-        }
+        int r0 = this.n;
+        Object r2 = this.o;
+        switch(r0) {
+            case 0: goto L14;
+            case 1: goto L12;
+            case 2: goto L6;
+            default: goto L5;
+        };
+    L6:
+        p60 r3 = (p60) r2;
+        Map r1 = r3.c();
+        if (r1 == null) goto L10;
+        return r1.values().iterator();
+    L10:
+        return new m60(r3, 2);
+    L5:
+        return new ig2(((AbstractMap) r2).entrySet().iterator());
+    L12:
+        return new c1((q1) r2, 0);
+    L14:
+        return ((u1) r2).h();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public boolean remove(Object obj) {
-        int i = this.n;
-        Object obj2 = this.o;
-        switch (i) {
-            case 0:
-                if (!(obj instanceof Map.Entry)) {
-                    return false;
-                }
-                Map.Entry entry = (Map.Entry) obj;
-                return ((u1) obj2).remove(entry.getKey(), entry.getValue());
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                AbstractMap abstractMap = (AbstractMap) obj2;
-                try {
-                    return super.remove(obj);
-                } catch (UnsupportedOperationException unused) {
-                    for (Map.Entry entry2 : abstractMap.entrySet()) {
-                        if (si0.s(obj, entry2.getValue())) {
-                            abstractMap.remove(entry2.getKey());
-                            return true;
-                        }
-                    }
-                    return false;
-                }
-            default:
-                return super.remove(obj);
-        }
+    public boolean remove(Object r5) {
+        int r0 = this.n;
+        Object r2 = this.o;
+        switch(r0) {
+            case 0: goto L17;
+            case 3: goto L6;
+            default: goto L5;
+        };
+    L6:
+        AbstractMap r3 = (AbstractMap) r2;
+        return super.remove(r5);
+    L9:
+        Iterator r4 = r3.entrySet().iterator();
+    L11:
+        if (r4.hasNext() == false) goto L26;
+        Map.Entry r1 = (Map.Entry) r4.next();
+        if (si0.s(r5, r1.getValue()) == false) goto L11;
+        r3.remove(r1.getKey());
+        return true;
+    L26:
+        return false;
+    L5:
+        return super.remove(r5);
+    L17:
+        if ((r5 instanceof Map.Entry) == false) goto L27;
+        Map.Entry r6 = (Map.Entry) r5;
+        return ((u1) r2).remove(r6.getKey(), r6.getValue());
+    L27:
+        return false;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public boolean removeAll(Collection collection) {
-        switch (this.n) {
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                AbstractMap abstractMap = (AbstractMap) this.o;
-                try {
-                    collection.getClass();
-                    return super.removeAll(collection);
-                } catch (UnsupportedOperationException unused) {
-                    HashSet hashSet = new HashSet();
-                    for (Map.Entry entry : abstractMap.entrySet()) {
-                        if (collection.contains(entry.getValue())) {
-                            hashSet.add(entry.getKey());
-                        }
-                    }
-                    return abstractMap.keySet().removeAll(hashSet);
-                }
-            default:
-                return super.removeAll(collection);
-        }
+    public boolean removeAll(Collection r5) {
+        switch(this.n) {
+            case 3: goto L6;
+            default: goto L5;
+        };
+    L6:
+        AbstractMap r0 = (AbstractMap) this.o;
+        r5.getClass();     // Catch: UnsupportedOperationException -> L9
+        return super.removeAll(r5);
+    L9:
+        HashSet r4 = new HashSet();
+        Iterator r1 = r0.entrySet().iterator();
+    L11:
+        if (r1.hasNext() == false) goto L16;
+        Map.Entry r2 = (Map.Entry) r1.next();
+        if (r5.contains(r2.getValue()) == false) goto L11;
+        r4.add(r2.getKey());
+        goto L11
+    L16:
+        return r0.keySet().removeAll(r4);
+    L5:
+        return super.removeAll(r5);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public boolean retainAll(Collection collection) {
-        switch (this.n) {
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                AbstractMap abstractMap = (AbstractMap) this.o;
-                try {
-                    collection.getClass();
-                    return super.retainAll(collection);
-                } catch (UnsupportedOperationException unused) {
-                    HashSet hashSet = new HashSet();
-                    for (Map.Entry entry : abstractMap.entrySet()) {
-                        if (collection.contains(entry.getValue())) {
-                            hashSet.add(entry.getKey());
-                        }
-                    }
-                    return abstractMap.keySet().retainAll(hashSet);
-                }
-            default:
-                return super.retainAll(collection);
-        }
+    public boolean retainAll(Collection r5) {
+        switch(this.n) {
+            case 3: goto L6;
+            default: goto L5;
+        };
+    L6:
+        AbstractMap r0 = (AbstractMap) this.o;
+        r5.getClass();     // Catch: UnsupportedOperationException -> L9
+        return super.retainAll(r5);
+    L9:
+        HashSet r4 = new HashSet();
+        Iterator r1 = r0.entrySet().iterator();
+    L11:
+        if (r1.hasNext() == false) goto L16;
+        Map.Entry r2 = (Map.Entry) r1.next();
+        if (r5.contains(r2.getValue()) == false) goto L11;
+        r4.add(r2.getKey());
+        goto L11
+    L16:
+        return r0.keySet().retainAll(r4);
+    L5:
+        return super.retainAll(r5);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
     public final int size() {
-        int i = this.n;
-        Object obj = this.o;
-        switch (i) {
-            case 0:
-                return ((u1) obj).size();
-            case 1:
-                return ((q1) obj).s;
-            case 2:
-                return ((p60) obj).size();
-            default:
-                return ((AbstractMap) obj).size();
-        }
+        int r0 = this.n;
+        Object r1 = this.o;
+        switch(r0) {
+            case 0: goto L11;
+            case 1: goto L9;
+            case 2: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return ((AbstractMap) r1).size();
+    L7:
+        return ((p60) r1).size();
+    L9:
+        return ((q1) r1).s;
+    L11:
+        return ((u1) r1).size();
     }
 
-    public /* synthetic */ s1(int i, Object obj) {
-        this.n = i;
-        this.o = obj;
+    public /* synthetic */ s1(int r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 }

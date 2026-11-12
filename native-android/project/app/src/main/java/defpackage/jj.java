@@ -1,7 +1,6 @@
 package defpackage;
 
 import android.os.Bundle;
-import android.view.View;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.eddyizm.tempus.subsonic.models.ArtistID3;
 
@@ -11,71 +10,24 @@ public final class jj extends cx3 {
     public final x12 u;
     public final /* synthetic */ b8 v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public jj(b8 b8Var, x12 x12Var) {
-        this.v = b8Var;
-        ConstraintLayout constraintLayout = x12Var.a;
-        super(constraintLayout);
-        this.u = x12Var;
-        final int i = 1;
-        x12Var.e.setSelected(true);
-        final int i2 = 0;
-        constraintLayout.setOnClickListener(new View.OnClickListener(this) { // from class: ij
-            public final /* synthetic */ jj o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view) {
-                int i3 = i2;
-                jj jjVar = this.o;
-                switch (i3) {
-                    case 0:
-                        Bundle bundle = new Bundle();
-                        b8 b8Var2 = jjVar.v;
-                        bundle.putParcelable("ARTIST_OBJECT", ((ArtistID3) b8Var2.t.get(jjVar.c())).strippedForNav());
-                        b8Var2.r.onArtistClick(bundle);
-                        break;
-                    default:
-                        jjVar.s();
-                        break;
-                }
-            }
-        });
-        constraintLayout.setOnLongClickListener(new q6(7, this));
-        x12Var.d.setOnClickListener(new View.OnClickListener(this) { // from class: ij
-            public final /* synthetic */ jj o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view) {
-                int i3 = i;
-                jj jjVar = this.o;
-                switch (i3) {
-                    case 0:
-                        Bundle bundle = new Bundle();
-                        b8 b8Var2 = jjVar.v;
-                        bundle.putParcelable("ARTIST_OBJECT", ((ArtistID3) b8Var2.t.get(jjVar.c())).strippedForNav());
-                        b8Var2.r.onArtistClick(bundle);
-                        break;
-                    default:
-                        jjVar.s();
-                        break;
-                }
-            }
-        });
+    public jj(b8 r4, x12 r5) {
+        this.v = r4;
+        ConstraintLayout r6 = r5.a;
+        super(r6);
+        this.u = r5;
+        final int r1 = 1;
+        r5.e.setSelected(true);
+        final int r2 = 0;
+        r6.setOnClickListener(new ij(this, r2));
+        r6.setOnLongClickListener(new q6(7, this));
+        r5.d.setOnClickListener(new ij(this, r1));
     }
 
     public final boolean s() {
-        Bundle bundle = new Bundle();
-        b8 b8Var = this.v;
-        bundle.putParcelable("ARTIST_OBJECT", ((ArtistID3) b8Var.t.get(c())).strippedForNav());
-        b8Var.r.onArtistLongClick(bundle);
+        Bundle r0 = new Bundle();
+        b8 r1 = this.v;
+        r0.putParcelable("ARTIST_OBJECT", ((ArtistID3) r1.t.get(c())).strippedForNav());
+        r1.r.onArtistLongClick(r0);
         return true;
     }
 }

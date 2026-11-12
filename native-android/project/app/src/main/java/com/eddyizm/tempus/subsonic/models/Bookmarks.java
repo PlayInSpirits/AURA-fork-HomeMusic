@@ -11,11 +11,14 @@ public final class Bookmarks {
     @ka4("bookmark")
     private List<Bookmark> bookmarks;
 
+    public Bookmarks() {
+    }
+
     public final List<Bookmark> getBookmarks() {
         return this.bookmarks;
     }
 
-    public final void setBookmarks(List<Bookmark> list) {
-        this.bookmarks = list;
+    public final void setBookmarks(List<Bookmark> r1) {
+        this.bookmarks = r1;
     }
 }

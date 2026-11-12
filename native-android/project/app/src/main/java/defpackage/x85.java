@@ -11,30 +11,31 @@ public final /* synthetic */ class x85 implements Runnable {
     public final /* synthetic */ boolean q;
     public final /* synthetic */ Object r;
 
-    public /* synthetic */ x85(Object obj, AtomicBoolean atomicBoolean, boolean z, boolean z2, int i) {
-        this.n = i;
-        this.r = obj;
-        this.o = atomicBoolean;
-        this.p = z;
-        this.q = z2;
+    public /* synthetic */ x85(Object r1, AtomicBoolean r2, boolean r3, boolean r4, int r5) {
+        this.n = r5;
+        this.r = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        boolean z = this.q;
-        boolean z2 = this.p;
-        AtomicBoolean atomicBoolean = this.o;
-        y10 y10Var = (y10) this.r;
-        switch (i) {
-            case 0:
-                atomicBoolean.set(false);
-                xc5.l((xc5) y10Var.d, z2, z);
-                break;
-            default:
-                atomicBoolean.set(false);
-                ((rf2) y10Var.d).n(z2, z);
-                break;
-        }
+        int r0 = this.n;
+        boolean r2 = this.q;
+        boolean r3 = this.p;
+        AtomicBoolean r4 = this.o;
+        y10 r5 = (y10) this.r;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r4.set(false);
+        ((rf2) r5.d).n(r3, r2);
+        return;
+    L6:
+        r4.set(false);
+        xc5.l((xc5) r5.d, r3, r2);
     }
 }

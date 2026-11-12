@@ -11,15 +11,17 @@ public final class zb4 extends CharacterStyle {
     public final float c;
     public final float d;
 
-    public zb4(int i, float f, float f2, float f3) {
-        this.a = i;
-        this.b = f;
-        this.c = f2;
-        this.d = f3;
+    public zb4(int r1, float r2, float r3, float r4) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
     }
 
     @Override // android.text.style.CharacterStyle
-    public final void updateDrawState(TextPaint textPaint) {
-        textPaint.setShadowLayer(this.d, this.b, this.c, this.a);
+    public final void updateDrawState(TextPaint r4) {
+        float r0 = this.c;
+        int r1 = this.a;
+        r4.setShadowLayer(this.d, this.b, r0, r1);
     }
 }

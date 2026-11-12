@@ -8,10 +8,19 @@ import android.view.View;
 public final class dr implements View.OnTouchListener {
     public final /* synthetic */ int n;
 
+    public /* synthetic */ dr(int r1) {
+        this.n = r1;
+    }
+
     @Override // android.view.View.OnTouchListener
-    public final boolean onTouch(View view, MotionEvent motionEvent) {
-        switch (this.n) {
-        }
+    public final boolean onTouch(View r1, MotionEvent r2) {
+        switch(this.n) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        return true;
+    L6:
         return true;
     }
 }

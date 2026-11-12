@@ -8,26 +8,28 @@ import android.view.animation.Interpolator;
 /* JADX INFO: loaded from: classes.dex */
 public final class pb3 {
     public final BitmapDrawable a;
+    public float b;
     public final Rect c;
     public Interpolator d;
     public long e;
     public final Rect f;
     public int g;
+    public float h;
     public long i;
     public boolean j;
     public boolean k;
     public hd5 l;
-    public float b = 1.0f;
-    public float h = 1.0f;
 
-    public pb3(BitmapDrawable bitmapDrawable, Rect rect) {
-        this.a = bitmapDrawable;
-        this.f = rect;
-        Rect rect2 = new Rect(rect);
-        this.c = rect2;
-        if (bitmapDrawable != null) {
-            bitmapDrawable.setAlpha((int) (this.b * 255.0f));
-            bitmapDrawable.setBounds(rect2);
-        }
+    public pb3(BitmapDrawable r2, Rect r3) {
+        this.b = 1.0f;
+        this.h = 1.0f;
+        this.a = r2;
+        this.f = r3;
+        Rect r0 = new Rect(r3);
+        this.c = r0;
+        if (r2 == null) goto L6;
+        r2.setAlpha((int) (this.b * 255.0f));
+        r2.setBounds(r0);
+        return;
     }
 }

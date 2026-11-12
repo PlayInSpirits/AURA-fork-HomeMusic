@@ -9,15 +9,15 @@ public final class m50 {
     public final short b;
     public final int c;
 
-    public m50(int i, short s, short s2) {
-        this.a = s;
-        this.b = s2;
-        this.c = i;
+    public m50(int r1, short r2, short r3) {
+        this.a = r2;
+        this.b = r3;
+        this.c = r1;
     }
 
-    public final void a(ByteArrayOutputStream byteArrayOutputStream) {
-        byteArrayOutputStream.write(g12.S(this.a));
-        byteArrayOutputStream.write(g12.S(this.b));
-        byteArrayOutputStream.write(g12.b(this.c));
+    public final void a(ByteArrayOutputStream r2) {
+        r2.write(g12.S(this.a));
+        r2.write(g12.S(this.b));
+        r2.write(g12.b(this.c));
     }
 }

@@ -4,8 +4,8 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class q10 extends u10 {
     @Override // defpackage.ro3
-    public final boolean apply(Object obj) {
-        return c(((Character) obj).charValue());
+    public final boolean apply(Object r1) {
+        return c(((Character) r1).charValue());
     }
 
     @Override // defpackage.u10

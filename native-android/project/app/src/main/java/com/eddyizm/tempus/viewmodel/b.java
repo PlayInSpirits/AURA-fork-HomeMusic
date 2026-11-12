@@ -76,8 +76,8 @@ public class b extends hd {
     public final k03 y;
     public final k03 z;
 
-    public b(Application application) {
-        super(application);
+    public b(Application r13) {
+        super(r13);
         this.l = new k03(null);
         this.m = new k03(null);
         this.n = new k03(null);
@@ -96,154 +96,180 @@ public class b extends hd {
         this.A = new k03();
         this.C = new k03(null);
         this.E = ud3.k();
-        int i = 0;
+        int r0 = 0;
         this.F = 0;
-        int i2 = 2;
-        if (ud3.r() != null && !ud3.r().equals("null")) {
-            List list = (List) new nk1().f(ud3.r(), new HomeViewModel$2().getType());
-            this.D = list;
-            if (list != null && list.stream().noneMatch(new c7(15))) {
-                List list2 = this.D;
-                Application application2 = this.b;
-                application2.getClass();
-                list2.add(new HomeSector("HOME_SECTOR_CONTINUE_LISTENING", application2.getString(R.string.home_title_continue_listening), true, 2));
-                ud3.l0(this.D);
-            }
-        }
-        this.c = new xi4(i2);
-        int i3 = 27;
-        this.d = new rv2(i3);
+        int r3 = 2;
+        if (ud3.r() != null) goto L5;
+    L11:
+        this.c = new xi4(r3);
+        int r4 = 27;
+        this.d = new rv2(r4);
         this.e = new pa(12);
         this.f = new zh0(13);
-        d34 d34Var = new d34(25);
-        this.g = d34Var;
+        d34 r2 = new d34(25);
+        this.g = r2;
         this.h = new mm3();
-        this.i = new hh3(i3);
-        this.j = new bl4(application);
-        this.k = new cl4(application);
-        List arrayList = new ArrayList();
-        lg1 lg1Var = new lg1((i61) d34Var.o);
-        Thread thread = new Thread(lg1Var);
-        thread.start();
-        try {
-            thread.join();
-            arrayList = (List) lg1Var.p;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        ArrayList arrayList2 = new ArrayList(arrayList);
-        HashMap map = new HashMap();
-        int size = arrayList2.size();
-        int i4 = 0;
-        while (i4 < size) {
-            Object obj = arrayList2.get(i4);
-            i4++;
-            Favorite favorite = (Favorite) obj;
-            String string = favorite.toString();
-            if (!map.containsKey(string) || favorite.getTimestamp() > ((Favorite) map.get(string)).getTimestamp()) {
-                map.put(string, favorite);
-            }
-        }
-        ArrayList arrayList3 = new ArrayList(map.values());
-        ArrayList arrayList4 = new ArrayList();
-        int size2 = arrayList2.size();
-        int i5 = 0;
-        while (i5 < size2) {
-            Object obj2 = arrayList2.get(i5);
-            i5++;
-            Favorite favorite2 = (Favorite) obj2;
-            if (!arrayList3.contains(favorite2)) {
-                arrayList4.add(favorite2);
-            }
-        }
-        int size3 = arrayList3.size();
-        int i6 = 0;
-        while (i6 < size3) {
-            Object obj3 = arrayList3.get(i6);
-            i6++;
-            Favorite favorite3 = (Favorite) obj3;
-            if (favorite3.getToStar()) {
-                if (!g12.P(favorite3)) {
-                    d34Var.C(favorite3);
-                } else if (favorite3.getSongId() != null) {
-                    d34.I(favorite3.getSongId(), null, null, new op1(this, favorite3));
-                } else if (favorite3.getAlbumId() != null) {
-                    d34.I(null, favorite3.getAlbumId(), null, new op1(this, favorite3));
-                } else if (favorite3.getArtistId() != null) {
-                    d34.I(null, null, favorite3.getArtistId(), new op1(this, favorite3));
-                }
-            } else if (!g12.P(favorite3)) {
-                d34Var.C(favorite3);
-            } else if (favorite3.getSongId() != null) {
-                d34.K(favorite3.getSongId(), null, null, new op1(this, favorite3));
-            } else if (favorite3.getAlbumId() != null) {
-                d34.K(null, favorite3.getAlbumId(), null, new op1(this, favorite3));
-            } else if (favorite3.getArtistId() != null) {
-                d34.K(null, null, favorite3.getArtistId(), new op1(this, favorite3));
-            }
-        }
-        int size4 = arrayList4.size();
-        while (i < size4) {
-            Object obj4 = arrayList4.get(i);
-            i++;
-            d34Var.C((Favorite) obj4);
-        }
+        this.i = new hh3(r4);
+        this.j = new bl4(r13);
+        this.k = new cl4(r13);
+        List r5 = new ArrayList();
+        lg1 r6 = new lg1((i61) r2.o);
+        Thread r7 = new Thread(r6);
+        r7.start();
+        r7.join();     // Catch: InterruptedException -> L14
+        r5 = (List) r6.p;     // Catch: InterruptedException -> L14
+    L16:
+        ArrayList r14 = new ArrayList(r5);
+        HashMap r8 = new HashMap();
+        int r9 = r14.size();
+        int r10 = 0;
+    L17:
+        if (r10 >= r9) goto L23;
+        Object r11 = r14.get(r10);
+        r10 = r10 + 1;
+        Favorite r12 = (Favorite) r11;
+        String r15 = r12.toString();
+        if (r8.containsKey(r15) == false) goto L22;
+        if (r12.getTimestamp() <= ((Favorite) r8.get(r15)).getTimestamp()) goto L17;
+    L22:
+        r8.put(r15, r12);
+        goto L17
+    L23:
+        ArrayList r16 = new ArrayList(r8.values());
+        ArrayList r17 = new ArrayList();
+        int r18 = r14.size();
+        int r19 = 0;
+    L24:
+        if (r19 >= r18) goto L28;
+        Object r20 = r14.get(r19);
+        r19 = r19 + 1;
+        Favorite r21 = (Favorite) r20;
+        if (r16.contains(r21) == true) goto L24;
+        r17.add(r21);
+        goto L24
+    L28:
+        int r110 = r16.size();
+        int r22 = 0;
+    L29:
+        if (r22 >= r110) goto L56;
+        Object r23 = r16.get(r22);
+        r22 = r22 + 1;
+        Favorite r24 = (Favorite) r23;
+        if (r24.getToStar() == true) goto L33;
+        if (g12.P(r24) == false) goto L46;
+        if (r24.getSongId() != null) goto L49;
+        if (r24.getAlbumId() != null) goto L52;
+        if (r24.getArtistId() == null) goto L29;
+        d34.K(null, null, r24.getArtistId(), new op1(this, r24));
+        goto L29
+    L52:
+        d34.K(null, r24.getAlbumId(), null, new op1(this, r24));
+        goto L29
+    L49:
+        d34.K(r24.getSongId(), null, null, new op1(this, r24));
+        goto L29
+    L46:
+        r2.C(r24);
+        goto L29
+    L33:
+        if (g12.P(r24) == false) goto L34;
+        if (r24.getSongId() != null) goto L37;
+        if (r24.getAlbumId() != null) goto L40;
+        if (r24.getArtistId() == null) goto L29;
+        d34.I(null, null, r24.getArtistId(), new op1(this, r24));
+        goto L29
+    L40:
+        d34.I(null, r24.getAlbumId(), null, new op1(this, r24));
+        goto L29
+    L37:
+        d34.I(r24.getSongId(), null, null, new op1(this, r24));
+        goto L29
+    L34:
+        r2.C(r24);
+        goto L29
+    L56:
+        int r111 = r17.size();
+    L57:
+        if (r0 >= r111) goto L59;
+        Object r1 = r17.get(r0);
+        r0 = r0 + 1;
+        r2.C((Favorite) r1);
+        goto L57
+    L59:
         this.A.k(ud3.s());
         this.B = fu.N(this.A, new x(17, this));
+        return;
+    L14:
+        e = move-exception;
+        e.printStackTrace();
+        goto L16
+    L5:
+        if (ud3.r().equals("null") == true) goto L11;
+        List r25 = (List) new nk1().f(ud3.r(), new HomeViewModel$2().getType());
+        this.D = r25;
+        if (r25 == null) goto L11;
+        if (r25.stream().noneMatch(new c7(15)) == false) goto L11;
+        List r26 = this.D;
+        Application r27 = this.b;
+        r27.getClass();
+        r26.add(new HomeSector("HOME_SECTOR_CONTINUE_LISTENING", r27.getString(R.string.home_title_continue_listening), true, 2));
+        ud3.l0(this.D);
+        goto L11
     }
 
-    public final void c(le1 le1Var, int i) {
-        long j;
-        long j2;
-        long timeInMillis;
-        long timeInMillis2;
-        Calendar calendar = Calendar.getInstance();
-        String strE = ud3.E();
-        int i2 = calendar.get(3);
-        if (i == 0) {
-            timeInMillis = calendar.getTimeInMillis();
-            calendar.set(3, i2 - 1);
-            timeInMillis2 = calendar.getTimeInMillis();
-        } else {
-            if (i != 1) {
-                if (i == 2) {
-                    timeInMillis = calendar.getTimeInMillis();
-                    calendar.set(3, i2 - 52);
-                    timeInMillis2 = calendar.getTimeInMillis();
-                } else {
-                    j = 0;
-                    j2 = 0;
-                }
-                r20 r20Var = (r20) this.f.o;
-                t24 t24VarA = ((s24) r20Var.o).i().a(new String[]{"chronology"}, new p20(r20Var, j, j2, strE));
-                k03 k03Var = this.x;
-                Objects.requireNonNull(k03Var);
-                t24VarA.e(le1Var, new g7(k03Var, 0));
-            }
-            timeInMillis = calendar.getTimeInMillis();
-            calendar.set(3, i2 - 4);
-            timeInMillis2 = calendar.getTimeInMillis();
-        }
-        j2 = timeInMillis;
-        j = timeInMillis2;
-        r20 r20Var2 = (r20) this.f.o;
-        t24 t24VarA2 = ((s24) r20Var2.o).i().a(new String[]{"chronology"}, new p20(r20Var2, j, j2, strE));
-        k03 k03Var2 = this.x;
-        Objects.requireNonNull(k03Var2);
-        t24VarA2.e(le1Var, new g7(k03Var2, 0));
+    public final void c(le1 r11, int r12) {
+        Calendar r0 = Calendar.getInstance();
+        String r7 = ud3.E();
+        int r2 = r0.get(3);
+        if (r12 != 0) goto L6;
+        long r4 = r0.getTimeInMillis();
+        r0.set(3, r2 - 1);
+        long r1 = r0.getTimeInMillis();
+    L5:
+        long r5 = r4;
+        long r3 = r1;
+    L12:
+        r20 r6 = (r20) this.f.o;
+        t24 r13 = ((s24) r6.o).i().a(new String[]{"chronology"}, new p20(r6, r3, r5, r7));
+        k03 r10 = this.x;
+        Objects.requireNonNull(r10);
+        r13.e(r11, new g7(r10, 0));
+        return;
+    L6:
+        if (r12 != 1) goto L9;
+        r4 = r0.getTimeInMillis();
+        r0.set(3, r2 - 4);
+        r1 = r0.getTimeInMillis();
+        goto L5
+    L9:
+        if (r12 != 2) goto L11;
+        r4 = r0.getTimeInMillis();
+        r0.set(3, r2 - 52);
+        r1 = r0.getTimeInMillis();
+        goto L5
+    L11:
+        r3 = 0;
+        r5 = 0;
+        goto L12
     }
 
-    public final boolean d(String str) {
-        List list = this.D;
-        return list != null && list.stream().filter(new at0(12, str)).findAny().orElse(null) == null;
+    public final boolean d(String r3) {
+        List r2 = this.D;
+        if (r2 != null) goto L5;
+        return false;
+    L5:
+        if (r2.stream().filter(new at0(12, r3)).findAny().orElse(null) != null) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     public final boolean e() {
-        String strK = ud3.k();
-        if (Objects.equals(strK, this.E)) {
-            return false;
-        }
-        this.E = strK;
+        String r0 = ud3.k();
+        if (Objects.equals(r0, this.E) == false) goto L6;
+        return false;
+    L6:
+        this.E = r0;
         this.F++;
         this.l.k(null);
         this.m.k(null);
@@ -254,24 +280,24 @@ public class b extends hd {
         return true;
     }
 
-    public final void f(le1 le1Var) {
-        int i = Calendar.getInstance().get(1);
-        int i2 = this.F;
-        Integer numValueOf = Integer.valueOf(i);
-        Integer numValueOf2 = Integer.valueOf(i);
+    public final void f(le1 r6) {
+        int r0 = Calendar.getInstance().get(1);
+        int r1 = this.F;
+        Integer r2 = Integer.valueOf(r0);
+        Integer r3 = Integer.valueOf(r0);
         this.d.getClass();
-        rv2.m("byYear", SmartPlan.MAX_QUEUE, numValueOf, numValueOf2).e(le1Var, new ri4(i2, 2, this));
+        rv2.m("byYear", SmartPlan.MAX_QUEUE, r2, r3).e(r6, new ri4(r1, 2, this));
     }
 
-    public final void g(ba2 ba2Var) {
+    public final void g(ba2 r4) {
         this.i.getClass();
-        k03 k03VarM = hh3.m();
-        k03 k03Var = this.C;
-        Objects.requireNonNull(k03Var);
-        k03VarM.e(ba2Var, new g7(k03Var, 0));
+        k03 r0 = hh3.m();
+        k03 r3 = this.C;
+        Objects.requireNonNull(r3);
+        r0.e(r4, new g7(r3, 0));
     }
 
-    public final mp1 h(k03 k03Var) {
-        return new mp1(this, this.F, k03Var, 0);
+    public final mp1 h(k03 r4) {
+        return new mp1(this, this.F, r4, 0);
     }
 }

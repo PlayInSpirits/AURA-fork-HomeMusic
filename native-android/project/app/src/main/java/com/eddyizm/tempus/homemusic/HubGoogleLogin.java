@@ -7,6 +7,9 @@ public final class HubGoogleLogin {
     private String password;
     private String username;
 
+    public HubGoogleLogin() {
+    }
+
     public final String getPassword() {
         return this.password;
     }
@@ -15,11 +18,11 @@ public final class HubGoogleLogin {
         return this.username;
     }
 
-    public final void setPassword(String str) {
-        this.password = str;
+    public final void setPassword(String r1) {
+        this.password = r1;
     }
 
-    public final void setUsername(String str) {
-        this.username = str;
+    public final void setUsername(String r1) {
+        this.username = r1;
     }
 }

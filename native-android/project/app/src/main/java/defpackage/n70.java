@@ -18,76 +18,35 @@ public class n70 extends Dialog implements ba2, j54 {
     public final rp4 p;
     public final rp4 q;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public n70(Context context, int i) {
-        super(context, i);
-        context.getClass();
+    public n70(Context r2, int r3) {
+        r2.getClass();
+        super(r2, r3);
         this.o = new gp3(new xm2(this, new wc(22, this)));
-        final int i2 = 0;
-        this.p = new rp4(new gf1(this) { // from class: m70
-            public final /* synthetic */ n70 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // defpackage.gf1
-            public final Object invoke() {
-                int i3 = i2;
-                n70 n70Var = this.o;
-                switch (i3) {
-                    case 0:
-                        iq0 iq0Var = new iq0();
-                        n70Var.c().b().c.e(iq0Var);
-                        return iq0Var;
-                    default:
-                        return new a93(new a0(14, n70Var));
-                }
-            }
-        });
-        final int i3 = 1;
-        this.q = new rp4(new gf1(this) { // from class: m70
-            public final /* synthetic */ n70 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // defpackage.gf1
-            public final Object invoke() {
-                int i4 = i3;
-                n70 n70Var = this.o;
-                switch (i4) {
-                    case 0:
-                        iq0 iq0Var = new iq0();
-                        n70Var.c().b().c.e(iq0Var);
-                        return iq0Var;
-                    default:
-                        return new a93(new a0(14, n70Var));
-                }
-            }
-        });
+        final int r4 = 0;
+        this.p = new rp4(new m70(this, r4));
+        final int r5 = 1;
+        this.q = new rp4(new m70(this, r5));
     }
 
-    public static void a(n70 n70Var) {
+    public static void a(n70 r0) {
         super.onBackPressed();
     }
 
     @Override // android.app.Dialog
-    public void addContentView(View view, ViewGroup.LayoutParams layoutParams) {
-        view.getClass();
+    public void addContentView(View r1, ViewGroup.LayoutParams r2) {
+        r1.getClass();
         d();
-        super.addContentView(view, layoutParams);
+        super.addContentView(r1, r2);
     }
 
     public final ea2 b() {
-        ea2 ea2Var = this.n;
-        if (ea2Var != null) {
-            return ea2Var;
-        }
-        ea2 ea2Var2 = new ea2(this, true);
-        this.n = ea2Var2;
-        return ea2Var2;
+        ea2 r0 = this.n;
+        if (r0 != null) goto L6;
+        ea2 r1 = new ea2(this, true);
+        this.n = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     public final a93 c() {
@@ -95,26 +54,26 @@ public class n70 extends Dialog implements ba2, j54 {
     }
 
     public final void d() {
-        Window window = getWindow();
-        window.getClass();
-        View decorView = window.getDecorView();
-        decorView.getClass();
-        decorView.setTag(R.id.view_tree_lifecycle_owner, this);
-        Window window2 = getWindow();
-        window2.getClass();
-        View decorView2 = window2.getDecorView();
-        decorView2.getClass();
-        decorView2.setTag(R.id.view_tree_on_back_pressed_dispatcher_owner, this);
-        Window window3 = getWindow();
-        window3.getClass();
-        View decorView3 = window3.getDecorView();
-        decorView3.getClass();
-        decorView3.setTag(R.id.view_tree_saved_state_registry_owner, this);
-        Window window4 = getWindow();
-        window4.getClass();
-        View decorView4 = window4.getDecorView();
-        decorView4.getClass();
-        decorView4.setTag(R.id.view_tree_navigation_event_dispatcher_owner, this);
+        Window r0 = getWindow();
+        r0.getClass();
+        View r1 = r0.getDecorView();
+        r1.getClass();
+        r1.setTag(R.id.view_tree_lifecycle_owner, this);
+        Window r2 = getWindow();
+        r2.getClass();
+        View r3 = r2.getDecorView();
+        r3.getClass();
+        r3.setTag(R.id.view_tree_on_back_pressed_dispatcher_owner, this);
+        Window r4 = getWindow();
+        r4.getClass();
+        View r5 = r4.getDecorView();
+        r5.getClass();
+        r5.setTag(R.id.view_tree_saved_state_registry_owner, this);
+        Window r6 = getWindow();
+        r6.getClass();
+        View r7 = r6.getDecorView();
+        r7.getClass();
+        r7.setTag(R.id.view_tree_navigation_event_dispatcher_owner, this);
     }
 
     @Override // defpackage.j54
@@ -133,24 +92,24 @@ public class n70 extends Dialog implements ba2, j54 {
     }
 
     @Override // android.app.Dialog
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        if (Build.VERSION.SDK_INT >= 33) {
-            a93 a93VarC = c();
-            OnBackInvokedDispatcher onBackInvokedDispatcher = getOnBackInvokedDispatcher();
-            onBackInvokedDispatcher.getClass();
-            a93VarC.c(onBackInvokedDispatcher);
-        }
-        this.o.s(bundle);
+    public void onCreate(Bundle r3) {
+        super.onCreate(r3);
+        if (Build.VERSION.SDK_INT < 33) goto L5;
+        a93 r0 = c();
+        OnBackInvokedDispatcher r1 = n3.k(this);
+        r1.getClass();
+        r0.c(r1);
+    L5:
+        this.o.s(r3);
         b().d(q92.ON_CREATE);
     }
 
     @Override // android.app.Dialog
     public final Bundle onSaveInstanceState() {
-        Bundle bundleOnSaveInstanceState = super.onSaveInstanceState();
-        bundleOnSaveInstanceState.getClass();
-        this.o.t(bundleOnSaveInstanceState);
-        return bundleOnSaveInstanceState;
+        Bundle r0 = super.onSaveInstanceState();
+        r0.getClass();
+        this.o.t(r0);
+        return r0;
     }
 
     @Override // android.app.Dialog
@@ -167,22 +126,22 @@ public class n70 extends Dialog implements ba2, j54 {
     }
 
     @Override // android.app.Dialog
-    public void setContentView(View view) {
-        view.getClass();
+    public void setContentView(View r1) {
+        r1.getClass();
         d();
-        super.setContentView(view);
+        super.setContentView(r1);
     }
 
     @Override // android.app.Dialog
-    public void setContentView(int i) {
+    public void setContentView(int r1) {
         d();
-        super.setContentView(i);
+        super.setContentView(r1);
     }
 
     @Override // android.app.Dialog
-    public void setContentView(View view, ViewGroup.LayoutParams layoutParams) {
-        view.getClass();
+    public void setContentView(View r1, ViewGroup.LayoutParams r2) {
+        r1.getClass();
         d();
-        super.setContentView(view, layoutParams);
+        super.setContentView(r1, r2);
     }
 }

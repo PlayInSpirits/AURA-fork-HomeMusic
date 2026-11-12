@@ -17,26 +17,37 @@ public final class eb0 implements q84, m84 {
     public final boolean l;
     public final long m;
 
-    public eb0(long j, long j2, int i, int i2, boolean z, boolean z2) {
-        this.a = j;
-        this.b = j2;
-        this.c = i2 == -1 ? 1 : i2;
-        this.e = i;
-        this.g = z;
-        this.h = z2;
-        if (j == -1) {
-            this.d = -1L;
-            this.f = -9223372036854775807L;
-        } else {
-            long j3 = j - j2;
-            this.d = j3;
-            this.f = (Math.max(0L, j3) * 8000000) / ((long) i);
-        }
-        this.i = j2;
-        this.j = i;
-        this.k = i2;
-        this.l = z;
-        this.m = j == -1 ? -1L : j;
+    public eb0(long r5, long r7, int r9, int r10, boolean r11, boolean r12) {
+        this.a = r5;
+        this.b = r7;
+        if (r10 != (-1)) goto L5;
+        int r0 = 1;
+    L6:
+        this.c = r0;
+        this.e = r9;
+        this.g = r11;
+        this.h = r12;
+        if (r5 != (-1)) goto L9;
+        this.d = -1;
+        this.f = -9223372036854775807L;
+    L10:
+        this.i = r7;
+        this.j = r9;
+        this.k = r10;
+        this.l = r11;
+        if (r5 != (-1)) goto L14;
+        r5 = -1;
+    L14:
+        this.m = r5;
+        return;
+    L9:
+        long r1 = r5 - r7;
+        this.d = r1;
+        this.f = (Math.max(0, r1) * 8000000) / ((long) r9);
+        goto L10
+    L5:
+        r0 = r10;
+        goto L6
     }
 
     @Override // defpackage.q84
@@ -46,12 +57,18 @@ public final class eb0 implements q84, m84 {
 
     @Override // defpackage.m84
     public final boolean b() {
-        return this.d != -1 || this.g;
+        if (this.d == (-1)) goto L5;
+        return true;
+    L5:
+        if (this.g == true) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     @Override // defpackage.q84
-    public final long c(long j) {
-        return (Math.max(0L, j - this.b) * 8000000) / ((long) this.e);
+    public final long c(long r5) {
+        return (Math.max(0, r5 - this.b) * 8000000) / ((long) this.e);
     }
 
     @Override // defpackage.m84
@@ -60,29 +77,31 @@ public final class eb0 implements q84, m84 {
     }
 
     @Override // defpackage.m84
-    public final l84 e(long j) {
-        long j2 = this.d;
-        long j3 = this.b;
-        if (j2 == -1 && !this.g) {
-            o84 o84Var = new o84(0L, j3);
-            return new l84(o84Var, o84Var);
-        }
-        int i = this.e;
-        long j4 = this.c;
-        long jMin = (((((long) i) * j) / 8000000) / j4) * j4;
-        if (j2 != -1) {
-            jMin = Math.min(jMin, j2 - j4);
-        }
-        long jMax = Math.max(jMin, 0L) + j3;
-        long jMax2 = (Math.max(0L, jMax - j3) * 8000000) / ((long) i);
-        o84 o84Var2 = new o84(jMax2, jMax);
-        if (j2 != -1 && jMax2 < j) {
-            long j5 = jMax + j4;
-            if (j5 < this.a) {
-                return new l84(o84Var2, new o84((Math.max(0L, j5 - j3) * 8000000) / ((long) i), j5));
-            }
-        }
-        return new l84(o84Var2, o84Var2);
+    public final l84 e(long r18) {
+        long r3 = this.d;
+        long r5 = this.b;
+        if (r3 == (-1)) goto L5;
+    L8:
+        int r2 = this.e;
+        long r13 = this.c;
+        long r9 = (((((long) r2) * r18) / 8000000) / r13) * r13;
+        if (r3 == (-1)) goto L11;
+        r9 = Math.min(r9, r3 - r13);
+    L11:
+        long r4 = Math.max(r9, 0) + r5;
+        long r10 = (Math.max(0, r4 - r5) * 8000000) / ((long) r2);
+        o84 r11 = new o84(r10, r4);
+        if (r3 == (-1)) goto L21;
+        if (r10 >= r18) goto L21;
+        long r6 = r4 + r13;
+        if (r6 >= this.a) goto L21;
+        return new l84(r11, new o84((Math.max(0, r6 - r5) * 8000000) / ((long) r2), r6));
+    L21:
+        return new l84(r11, r11);
+    L5:
+        if (this.g == true) goto L8;
+        o84 r1 = new o84(0, r5);
+        return new l84(r1, r1);
     }
 
     @Override // defpackage.q84

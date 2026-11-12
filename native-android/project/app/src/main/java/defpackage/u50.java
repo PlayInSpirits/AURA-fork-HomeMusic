@@ -5,11 +5,11 @@ package defpackage;
 public final class u50 implements as4 {
     public final long n;
 
-    public u50(long j) {
-        this.n = j;
-        if (j != 16) {
-            return;
-        }
+    public u50(long r3) {
+        this.n = r3;
+        if (r3 == 16) goto L5;
+        return;
+    L5:
         dz1.a("ColorStyle value must be specified, use TextForegroundStyle.Unspecified instead.");
     }
 
@@ -23,11 +23,17 @@ public final class u50 implements as4 {
         return this.n;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof u50) && x40.c(this.n, ((u50) obj).n);
+    public final boolean equals(Object r6) {
+        if (this != r6) goto L6;
+        return true;
+    L6:
+        if ((r6 instanceof u50) == true) goto L9;
+        return false;
+    L9:
+        if (x40.c(this.n, ((u50) r6).n) == true) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     @Override // defpackage.as4
@@ -36,7 +42,7 @@ public final class u50 implements as4 {
     }
 
     public final int hashCode() {
-        int i = x40.h;
+        int r0 = x40.h;
         return Long.hashCode(this.n);
     }
 

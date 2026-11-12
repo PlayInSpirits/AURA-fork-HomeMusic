@@ -5,29 +5,37 @@ package defpackage;
 public final class ij5 extends kj5 {
     public final char[] e;
 
-    public ij5(hj5 hj5Var) {
-        super(hj5Var, (Character) null);
+    public ij5(hj5 r5) {
+        super(r5, null);
         this.e = new char[512];
-        char[] cArr = hj5Var.b;
-        if (cArr.length != 16) {
-            nz2.c();
-            throw null;
-        }
-        for (int i = 0; i < 256; i++) {
-            char[] cArr2 = this.e;
-            cArr2[i] = cArr[i >>> 4];
-            cArr2[i | 256] = cArr[i & 15];
-        }
+        char[] r6 = r5.b;
+        if (r6.length != 16) goto L9;
+        int r0 = 0;
+    L6:
+        if (r0 >= 256) goto L8;
+        char[] r1 = this.e;
+        r1[r0] = r6[r0 >>> 4];
+        r1[r0 | 256] = r6[r0 & 15];
+        r0 = r0 + 1;
+        goto L6
+    L8:
+        return;
+    L9:
+        nz2.c();
+        throw null;
     }
 
     @Override // defpackage.kj5
-    public final void a(StringBuilder sb, byte[] bArr, int i) {
-        fu.R(0, i, bArr.length);
-        for (int i2 = 0; i2 < i; i2++) {
-            int i3 = bArr[i2] & 255;
-            char[] cArr = this.e;
-            sb.append(cArr[i3]);
-            sb.append(cArr[i3 | 256]);
-        }
+    public final void a(StringBuilder r5, byte[] r6, int r7) {
+        int r1 = 0;
+        fu.R(0, r7, r6.length);
+    L3:
+        if (r1 >= r7) goto L5;
+        int r0 = r6[r1] & 255;
+        char[] r2 = this.e;
+        r5.append(r2[r0]);
+        r5.append(r2[r0 | 256]);
+        r1 = r1 + 1;
+        goto L3
     }
 }

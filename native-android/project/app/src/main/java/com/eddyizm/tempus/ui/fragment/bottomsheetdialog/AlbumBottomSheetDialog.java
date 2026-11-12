@@ -25,6 +25,7 @@ import defpackage.b75;
 import defpackage.bj2;
 import defpackage.bl2;
 import defpackage.bq4;
+import defpackage.c04;
 import defpackage.c7;
 import defpackage.cb4;
 import defpackage.d8;
@@ -39,6 +40,7 @@ import defpackage.i30;
 import defpackage.j7;
 import defpackage.kf2;
 import defpackage.kx3;
+import defpackage.le1;
 import defpackage.n61;
 import defpackage.nc1;
 import defpackage.q05;
@@ -67,146 +69,173 @@ public class AlbumBottomSheetDialog extends zt implements View.OnClickListener {
     public bl2 I0;
 
     public AlbumBottomSheetDialog() {
-        List list = Collections.EMPTY_LIST;
-        this.F0 = list;
-        this.G0 = list;
+        List r0 = Collections.EMPTY_LIST;
+        this.F0 = r0;
+        this.G0 = r0;
         this.H0 = true;
     }
 
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        int i = 0;
-        View viewInflate = layoutInflater.inflate(R.layout.bottom_sheet_album_dialog, viewGroup, false);
-        Bundle bundle2 = this.s;
-        if (bundle2 != null) {
-            AlbumID3 albumID3 = (AlbumID3) bundle2.getParcelable("ALBUM_OBJECT");
-            this.D0 = albumID3;
-            if (albumID3 != null) {
-                nc1 nc1VarX = X();
-                e75 e75VarD = nc1VarX.d();
-                b75 b75VarR = gh0.r(nc1VarX);
-                bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
-                i30 i30VarA = kx3.a(b.class);
-                String strB = i30VarA.b();
-                if (strB == null) {
-                    kf2.n("Local and anonymous classes can not be ViewModels");
-                    return null;
-                }
-                this.B0 = (b) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-                nc1 nc1VarX2 = X();
-                e75 e75VarD2 = nc1VarX2.d();
-                b75 b75VarR2 = gh0.r(nc1VarX2);
-                bq4 bq4Var2 = new bq4(e75VarD2, b75VarR2, b11.e(nc1VarX2, b75VarR2));
-                i30 i30VarA2 = kx3.a(j7.class);
-                String strB2 = i30VarA2.b();
-                if (strB2 == null) {
-                    kf2.n("Local and anonymous classes can not be ViewModels");
-                    return null;
-                }
-                j7 j7Var = (j7) bq4Var2.l(i30VarA2, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB2));
-                this.C0 = j7Var;
-                j7Var.g = this.D0;
-                q05.u((ViewGroup) viewInflate.findViewById(R.id.option_linear_layout));
-                ImageView imageView = (ImageView) viewInflate.findViewById(R.id.album_cover_image_view);
-                Context contextZ = Z();
-                String coverArtId = this.C0.g.getCoverArtId();
-                vz3 vz3VarT = b11.g(contextZ, coverArtId, 2, a.c(contextZ), coverArtId != null ? wg0.b(ud3.t(), coverArtId) : null).T(xv0.b());
-                if (ud3.R()) {
-                    vz3VarT = (vz3) vz3VarT.l();
-                }
-                vz3VarT.K(imageView);
-                TextView textView = (TextView) viewInflate.findViewById(R.id.album_title_text_view);
-                textView.setText(this.C0.g.getName());
-                int i2 = 1;
-                textView.setSelected(true);
-                ((TextView) viewInflate.findViewById(R.id.album_artist_text_view)).setText(this.C0.g.getArtist());
-                ToggleButton toggleButton = (ToggleButton) viewInflate.findViewById(R.id.button_favorite);
-                toggleButton.setChecked(n61.f(2, this.C0.g.getId(), this.C0.g.getStarred() != null));
-                toggleButton.setOnClickListener(new y6(this, 3));
-                ((TextView) viewInflate.findViewById(R.id.play_radio_text_view)).setOnClickListener(new y6(this, 4));
-                ((TextView) viewInflate.findViewById(R.id.play_random_text_view)).setOnClickListener(new y6(this, 5));
-                int i3 = 6;
-                ((TextView) viewInflate.findViewById(R.id.play_next_text_view)).setOnClickListener(new y6(this, i3));
-                ((TextView) viewInflate.findViewById(R.id.add_to_queue_text_view)).setOnClickListener(new y6(this, 7));
-                this.C0.c().e(v(), new f7(i, this, (TextView) viewInflate.findViewById(R.id.download_all_text_view)));
-                ((TextView) viewInflate.findViewById(R.id.add_to_playlist_text_view)).setOnClickListener(new y6(this, 8));
-                this.E0 = (TextView) viewInflate.findViewById(R.id.remove_all_text_view);
-                this.C0.c().e(v(), new b7(this, i3));
-                ((TextView) viewInflate.findViewById(R.id.go_to_artist_text_view)).setOnClickListener(new y6(this, i));
-                TextView textView2 = (TextView) viewInflate.findViewById(R.id.share_text_view);
-                textView2.setOnClickListener(new y6(this, i2));
-                textView2.setVisibility(ud3.V() ? 0 : 8);
-                return viewInflate;
-            }
-        }
+    public final View H(LayoutInflater r7, ViewGroup r8, Bundle r9) {
+        int r0 = 0;
+        View r10 = r7.inflate(R.layout.bottom_sheet_album_dialog, r8, false);
+        Bundle r11 = this.s;
+        if (r11 == null) goto L31;
+        AlbumID3 r12 = (AlbumID3) r11.getParcelable("ALBUM_OBJECT");
+        this.D0 = r12;
+        if (r12 == null) goto L31;
+        nc1 r13 = X();
+        e75 r14 = r13.d();
+        b75 r1 = gh0.r(r13);
+        bq4 r2 = new bq4(r14, r1, b11.e(r13, r1));
+        i30 r15 = kx3.a(b.class);
+        String r16 = r15.b();
+        String r3 = null;
+        if (r16 == null) goto L29;
+        this.B0 = (b) r2.l(r15, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r16));
+        nc1 r17 = X();
+        e75 r18 = r17.d();
+        b75 r4 = gh0.r(r17);
+        bq4 r5 = new bq4(r18, r4, b11.e(r17, r4));
+        i30 r19 = kx3.a(j7.class);
+        String r20 = r19.b();
+        if (r20 == null) goto L27;
+        j7 r21 = (j7) r5.l(r19, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r20));
+        this.C0 = r21;
+        r21.g = this.D0;
+        q05.u((ViewGroup) r10.findViewById(R.id.option_linear_layout));
+        ImageView r22 = (ImageView) r10.findViewById(R.id.album_cover_image_view);
+        Context r23 = Z();
+        String r6 = this.C0.g.getCoverArtId();
+        c04 r24 = a.c(r23);
+        if (r6 == null) goto L14;
+        r3 = wg0.b(ud3.t(), r6);
+    L14:
+        vz3 r25 = b11.g(r23, r6, 2, r24, r3).T(xv0.b());
+        if (ud3.R() == false) goto L17;
+        r25 = (vz3) r25.l();
+    L17:
+        r25.K(r22);
+        TextView r26 = (TextView) r10.findViewById(R.id.album_title_text_view);
+        r26.setText(this.C0.g.getName());
+        int r27 = 1;
+        r26.setSelected(true);
+        ((TextView) r10.findViewById(R.id.album_artist_text_view)).setText(this.C0.g.getArtist());
+        ToggleButton r28 = (ToggleButton) r10.findViewById(R.id.button_favorite);
+        String r29 = this.C0.g.getId();
+        if (this.C0.g.getStarred() == null) goto L20;
+        boolean r30 = true;
+    L21:
+        r28.setChecked(n61.f(2, r29, r30));
+        r28.setOnClickListener(new y6(this, 3));
+        ((TextView) r10.findViewById(R.id.play_radio_text_view)).setOnClickListener(new y6(this, 4));
+        ((TextView) r10.findViewById(R.id.play_random_text_view)).setOnClickListener(new y6(this, 5));
+        int r31 = 6;
+        ((TextView) r10.findViewById(R.id.play_next_text_view)).setOnClickListener(new y6(this, r31));
+        ((TextView) r10.findViewById(R.id.add_to_queue_text_view)).setOnClickListener(new y6(this, 7));
+        this.C0.c().e(v(), new f7(r0, this, (TextView) r10.findViewById(R.id.download_all_text_view)));
+        ((TextView) r10.findViewById(R.id.add_to_playlist_text_view)).setOnClickListener(new y6(this, 8));
+        this.E0 = (TextView) r10.findViewById(R.id.remove_all_text_view);
+        this.C0.c().e(v(), new b7(this, r31));
+        ((TextView) r10.findViewById(R.id.go_to_artist_text_view)).setOnClickListener(new y6(this, r0));
+        TextView r32 = (TextView) r10.findViewById(R.id.share_text_view);
+        r32.setOnClickListener(new y6(this, r27));
+        if (ud3.V() == true) goto L25;
+        r0 = 8;
+    L25:
+        r32.setVisibility(r0);
+        return r10;
+    L20:
+        r30 = false;
+        goto L21
+    L27:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L29:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L31:
         n0();
-        return viewInflate;
+        return r10;
     }
 
     @Override // defpackage.pp0, defpackage.kc1
     public final void R() {
-        xc5 xc5Var;
         super.R();
-        if (this.D0 != null) {
-            Context contextZ = Z();
-            cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
-            Bundle bundle = Bundle.EMPTY;
-            aj2 aj2Var = new aj2();
-            Looper looperX = f35.x();
-            bl2 bl2Var = new bl2(looperX);
-            if (cb4Var.a.e()) {
-                xc5Var = new xc5(4, new fi0(new x7(contextZ)));
-            } else {
-                xc5Var = null;
-            }
-            b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, xc5Var), new Handler(looperX));
-            this.I0 = bl2Var;
-        }
+        if (this.D0 == null) goto L11;
+        Context r2 = Z();
+        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
+        Bundle r4 = Bundle.EMPTY;
+        aj2 r5 = new aj2();
+        Looper r6 = f35.x();
+        bl2 r7 = new bl2(r6);
+        if (r3.a.e() == false) goto L8;
+        fi0 r8 = new fi0(new x7(r2));
+        xc5 r0 = new xc5(4, r8);
+    L9:
+        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
+        this.I0 = r7;
+        return;
+    L8:
+        r0 = null;
+        goto L9
     }
 
     @Override // defpackage.pp0, defpackage.kc1
     public final void S() {
-        bl2 bl2Var = this.I0;
-        if (bl2Var != null) {
-            sk2.Z0(bl2Var);
-        }
+        bl2 r0 = this.I0;
+        if (r0 == null) goto L5;
+        sk2.Z0(r0);
+    L5:
         super.S();
     }
 
     @Override // defpackage.kc1
-    public final void T(View view, Bundle bundle) {
-        if (this.D0 != null) {
-            g51.d.e(v(), new d8(15, new a0(2, this)));
-        }
+    public final void T(View r3, Bundle r4) {
+        if (this.D0 == null) goto L6;
+        le1 r5 = v();
+        a0 r6 = new a0(2, this);
+        g51.d.e(r5, new d8(15, r6));
+        return;
     }
 
     public final void o0() {
-        if (this.E0 == null) {
-            return;
-        }
-        List list = this.F0;
-        if (list == null || list.isEmpty()) {
-            this.E0.setVisibility(8);
-            return;
-        }
-        int i = 0;
-        if (ud3.o() != null) {
-            this.E0.setVisibility(this.F0.stream().anyMatch(new c7(i)) ? 0 : 8);
-            return;
-        }
-        List list2 = this.G0;
-        if (list2 == null || list2.isEmpty()) {
-            this.E0.setVisibility(8);
-            return;
-        }
-        eu0 eu0VarW = au0.w(Z());
-        eu0VarW.getClass();
-        boolean zAnyMatch = list2.stream().anyMatch(new c7(eu0VarW));
-        TextView textView = this.E0;
-        if (zAnyMatch) {
-            textView.setVisibility(0);
-        } else {
-            textView.setVisibility(8);
-        }
+        if (this.E0 != null) goto L5;
+        return;
+    L5:
+        List r0 = this.F0;
+        int r1 = 8;
+        if (r0 != null) goto L8;
+    L30:
+        this.E0.setVisibility(8);
+        return;
+    L8:
+        if (r0.isEmpty() == true) goto L30;
+        int r2 = 0;
+        if (ud3.o() != null) goto L25;
+        List r3 = this.G0;
+        if (r3 != null) goto L15;
+    L23:
+        this.E0.setVisibility(8);
+        return;
+    L15:
+        if (r3.isEmpty() == true) goto L23;
+        eu0 r4 = au0.w(Z());
+        r4.getClass();
+        boolean r5 = r3.stream().anyMatch(new c7(r4));
+        TextView r6 = this.E0;
+        if (r5 == false) goto L21;
+        r6.setVisibility(0);
+        return;
+    L21:
+        r6.setVisibility(8);
+        return;
+    L25:
+        boolean r7 = this.F0.stream().anyMatch(new c7(r2));
+        TextView r8 = this.E0;
+        if (r7 == false) goto L28;
+        r1 = 0;
+    L28:
+        r8.setVisibility(r1);
     }
 }

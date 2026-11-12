@@ -15,8 +15,10 @@ import java.util.Iterator;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class qj3 {
+    public int A;
     public boolean B;
     public boolean C;
+    public boolean D;
     public final PlayerControlView a;
     public final View b;
     public final ViewGroup c;
@@ -36,431 +38,247 @@ public final class qj3 {
     public final AnimatorSet q;
     public final ValueAnimator r;
     public final ValueAnimator s;
-    public final mj3 t = new mj3(this, 0);
-    public final mj3 u = new mj3(this, 3);
-    public final mj3 v = new mj3(this, 4);
-    public final mj3 w = new mj3(this, 5);
-    public final mj3 x = new mj3(this, 6);
-    public final cs1 y = new cs1(2, this);
-    public boolean D = true;
-    public int A = 0;
-    public final ArrayList z = new ArrayList();
+    public final mj3 t;
+    public final mj3 u;
+    public final mj3 v;
+    public final mj3 w;
+    public final mj3 x;
+    public final cs1 y;
+    public final ArrayList z;
 
-    public qj3(PlayerControlView playerControlView) {
-        this.a = playerControlView;
-        final int i = 0;
-        final int i2 = 3;
-        final int i3 = 2;
-        final int i4 = 1;
-        this.c = (ViewGroup) playerControlView.findViewById(R.id.exo_top_controls);
-        this.b = playerControlView.findViewById(R.id.exo_controls_background);
-        this.d = (ViewGroup) playerControlView.findViewById(R.id.exo_center_controls);
-        this.f = (ViewGroup) playerControlView.findViewById(R.id.exo_minimal_controls);
-        ViewGroup viewGroup = (ViewGroup) playerControlView.findViewById(R.id.exo_bottom_bar);
-        this.e = viewGroup;
-        this.j = (ViewGroup) playerControlView.findViewById(R.id.exo_time);
-        View viewFindViewById = playerControlView.findViewById(R.id.exo_progress);
-        this.k = viewFindViewById;
-        this.g = (ViewGroup) playerControlView.findViewById(R.id.exo_basic_controls);
-        this.h = (ViewGroup) playerControlView.findViewById(R.id.exo_extra_controls);
-        this.i = (ViewGroup) playerControlView.findViewById(R.id.exo_extra_controls_scroll_view);
-        View viewFindViewById2 = playerControlView.findViewById(R.id.exo_overflow_show);
-        this.l = viewFindViewById2;
-        View viewFindViewById3 = playerControlView.findViewById(R.id.exo_overflow_hide);
-        if (viewFindViewById2 != null && viewFindViewById3 != null) {
-            viewFindViewById2.setOnClickListener(new bj3(i2, this));
-            viewFindViewById3.setOnClickListener(new bj3(i2, this));
-        }
-        ValueAnimator valueAnimatorOfFloat = ValueAnimator.ofFloat(1.0f, 0.0f);
-        valueAnimatorOfFloat.setInterpolator(new LinearInterpolator());
-        valueAnimatorOfFloat.addUpdateListener(new ValueAnimator.AnimatorUpdateListener(this) { // from class: nj3
-            public final /* synthetic */ qj3 b;
-
-            {
-                this.b = this;
-            }
-
-            @Override // android.animation.ValueAnimator.AnimatorUpdateListener
-            public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-                int i5 = i2;
-                qj3 qj3Var = this.b;
-                switch (i5) {
-                    case 0:
-                        float fFloatValue = ((Float) valueAnimator.getAnimatedValue()).floatValue();
-                        View view = qj3Var.b;
-                        if (view != null) {
-                            view.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup2 = qj3Var.c;
-                        if (viewGroup2 != null) {
-                            viewGroup2.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup3 = qj3Var.d;
-                        if (viewGroup3 != null) {
-                            viewGroup3.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup4 = qj3Var.f;
-                        if (viewGroup4 != null) {
-                            viewGroup4.setAlpha(fFloatValue);
-                        }
-                        break;
-                    case 1:
-                        qj3Var.a(((Float) valueAnimator.getAnimatedValue()).floatValue());
-                        break;
-                    case 2:
-                        qj3Var.a(((Float) valueAnimator.getAnimatedValue()).floatValue());
-                        break;
-                    default:
-                        float fFloatValue2 = ((Float) valueAnimator.getAnimatedValue()).floatValue();
-                        View view2 = qj3Var.b;
-                        if (view2 != null) {
-                            view2.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup5 = qj3Var.c;
-                        if (viewGroup5 != null) {
-                            viewGroup5.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup6 = qj3Var.d;
-                        if (viewGroup6 != null) {
-                            viewGroup6.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup7 = qj3Var.f;
-                        if (viewGroup7 != null) {
-                            viewGroup7.setAlpha(fFloatValue2);
-                        }
-                        break;
-                }
-            }
-        });
-        valueAnimatorOfFloat.addListener(new oj3(this, i));
-        ValueAnimator valueAnimatorOfFloat2 = ValueAnimator.ofFloat(0.0f, 1.0f);
-        valueAnimatorOfFloat2.setInterpolator(new LinearInterpolator());
-        valueAnimatorOfFloat2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener(this) { // from class: nj3
-            public final /* synthetic */ qj3 b;
-
-            {
-                this.b = this;
-            }
-
-            @Override // android.animation.ValueAnimator.AnimatorUpdateListener
-            public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-                int i5 = i;
-                qj3 qj3Var = this.b;
-                switch (i5) {
-                    case 0:
-                        float fFloatValue = ((Float) valueAnimator.getAnimatedValue()).floatValue();
-                        View view = qj3Var.b;
-                        if (view != null) {
-                            view.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup2 = qj3Var.c;
-                        if (viewGroup2 != null) {
-                            viewGroup2.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup3 = qj3Var.d;
-                        if (viewGroup3 != null) {
-                            viewGroup3.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup4 = qj3Var.f;
-                        if (viewGroup4 != null) {
-                            viewGroup4.setAlpha(fFloatValue);
-                        }
-                        break;
-                    case 1:
-                        qj3Var.a(((Float) valueAnimator.getAnimatedValue()).floatValue());
-                        break;
-                    case 2:
-                        qj3Var.a(((Float) valueAnimator.getAnimatedValue()).floatValue());
-                        break;
-                    default:
-                        float fFloatValue2 = ((Float) valueAnimator.getAnimatedValue()).floatValue();
-                        View view2 = qj3Var.b;
-                        if (view2 != null) {
-                            view2.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup5 = qj3Var.c;
-                        if (viewGroup5 != null) {
-                            viewGroup5.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup6 = qj3Var.d;
-                        if (viewGroup6 != null) {
-                            viewGroup6.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup7 = qj3Var.f;
-                        if (viewGroup7 != null) {
-                            viewGroup7.setAlpha(fFloatValue2);
-                        }
-                        break;
-                }
-            }
-        });
-        valueAnimatorOfFloat2.addListener(new oj3(this, i4));
-        Resources resources = playerControlView.getResources();
-        float dimension = resources.getDimension(R.dimen.exo_styled_bottom_bar_height) - resources.getDimension(R.dimen.exo_styled_progress_bar_height);
-        float dimension2 = resources.getDimension(R.dimen.exo_styled_bottom_bar_height);
-        AnimatorSet animatorSet = new AnimatorSet();
-        this.m = animatorSet;
-        animatorSet.setDuration(250L);
-        animatorSet.addListener(new pj3(this, playerControlView, i));
-        animatorSet.play(valueAnimatorOfFloat).with(d(viewFindViewById, 0.0f, dimension)).with(d(viewGroup, 0.0f, dimension));
-        AnimatorSet animatorSet2 = new AnimatorSet();
-        this.n = animatorSet2;
-        animatorSet2.setDuration(250L);
-        animatorSet2.addListener(new pj3(this, playerControlView, i4));
-        animatorSet2.play(d(viewFindViewById, dimension, dimension2)).with(d(viewGroup, dimension, dimension2));
-        AnimatorSet animatorSet3 = new AnimatorSet();
-        this.o = animatorSet3;
-        animatorSet3.setDuration(250L);
-        animatorSet3.addListener(new pj3(this, playerControlView, i3));
-        animatorSet3.play(valueAnimatorOfFloat).with(d(viewFindViewById, 0.0f, dimension2)).with(d(viewGroup, 0.0f, dimension2));
-        AnimatorSet animatorSet4 = new AnimatorSet();
-        this.p = animatorSet4;
-        animatorSet4.setDuration(250L);
-        animatorSet4.addListener(new oj3(this, i3));
-        animatorSet4.play(valueAnimatorOfFloat2).with(d(viewFindViewById, dimension, 0.0f)).with(d(viewGroup, dimension, 0.0f));
-        AnimatorSet animatorSet5 = new AnimatorSet();
-        this.q = animatorSet5;
-        animatorSet5.setDuration(250L);
-        animatorSet5.addListener(new oj3(this, i2));
-        animatorSet5.play(valueAnimatorOfFloat2).with(d(viewFindViewById, dimension2, 0.0f)).with(d(viewGroup, dimension2, 0.0f));
-        ValueAnimator valueAnimatorOfFloat3 = ValueAnimator.ofFloat(0.0f, 1.0f);
-        this.r = valueAnimatorOfFloat3;
-        valueAnimatorOfFloat3.setDuration(250L);
-        valueAnimatorOfFloat3.addUpdateListener(new ValueAnimator.AnimatorUpdateListener(this) { // from class: nj3
-            public final /* synthetic */ qj3 b;
-
-            {
-                this.b = this;
-            }
-
-            @Override // android.animation.ValueAnimator.AnimatorUpdateListener
-            public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-                int i5 = i4;
-                qj3 qj3Var = this.b;
-                switch (i5) {
-                    case 0:
-                        float fFloatValue = ((Float) valueAnimator.getAnimatedValue()).floatValue();
-                        View view = qj3Var.b;
-                        if (view != null) {
-                            view.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup2 = qj3Var.c;
-                        if (viewGroup2 != null) {
-                            viewGroup2.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup3 = qj3Var.d;
-                        if (viewGroup3 != null) {
-                            viewGroup3.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup4 = qj3Var.f;
-                        if (viewGroup4 != null) {
-                            viewGroup4.setAlpha(fFloatValue);
-                        }
-                        break;
-                    case 1:
-                        qj3Var.a(((Float) valueAnimator.getAnimatedValue()).floatValue());
-                        break;
-                    case 2:
-                        qj3Var.a(((Float) valueAnimator.getAnimatedValue()).floatValue());
-                        break;
-                    default:
-                        float fFloatValue2 = ((Float) valueAnimator.getAnimatedValue()).floatValue();
-                        View view2 = qj3Var.b;
-                        if (view2 != null) {
-                            view2.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup5 = qj3Var.c;
-                        if (viewGroup5 != null) {
-                            viewGroup5.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup6 = qj3Var.d;
-                        if (viewGroup6 != null) {
-                            viewGroup6.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup7 = qj3Var.f;
-                        if (viewGroup7 != null) {
-                            viewGroup7.setAlpha(fFloatValue2);
-                        }
-                        break;
-                }
-            }
-        });
-        valueAnimatorOfFloat3.addListener(new oj3(this, 4));
-        ValueAnimator valueAnimatorOfFloat4 = ValueAnimator.ofFloat(1.0f, 0.0f);
-        this.s = valueAnimatorOfFloat4;
-        valueAnimatorOfFloat4.setDuration(250L);
-        valueAnimatorOfFloat4.addUpdateListener(new ValueAnimator.AnimatorUpdateListener(this) { // from class: nj3
-            public final /* synthetic */ qj3 b;
-
-            {
-                this.b = this;
-            }
-
-            @Override // android.animation.ValueAnimator.AnimatorUpdateListener
-            public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-                int i5 = i3;
-                qj3 qj3Var = this.b;
-                switch (i5) {
-                    case 0:
-                        float fFloatValue = ((Float) valueAnimator.getAnimatedValue()).floatValue();
-                        View view = qj3Var.b;
-                        if (view != null) {
-                            view.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup2 = qj3Var.c;
-                        if (viewGroup2 != null) {
-                            viewGroup2.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup3 = qj3Var.d;
-                        if (viewGroup3 != null) {
-                            viewGroup3.setAlpha(fFloatValue);
-                        }
-                        ViewGroup viewGroup4 = qj3Var.f;
-                        if (viewGroup4 != null) {
-                            viewGroup4.setAlpha(fFloatValue);
-                        }
-                        break;
-                    case 1:
-                        qj3Var.a(((Float) valueAnimator.getAnimatedValue()).floatValue());
-                        break;
-                    case 2:
-                        qj3Var.a(((Float) valueAnimator.getAnimatedValue()).floatValue());
-                        break;
-                    default:
-                        float fFloatValue2 = ((Float) valueAnimator.getAnimatedValue()).floatValue();
-                        View view2 = qj3Var.b;
-                        if (view2 != null) {
-                            view2.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup5 = qj3Var.c;
-                        if (viewGroup5 != null) {
-                            viewGroup5.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup6 = qj3Var.d;
-                        if (viewGroup6 != null) {
-                            viewGroup6.setAlpha(fFloatValue2);
-                        }
-                        ViewGroup viewGroup7 = qj3Var.f;
-                        if (viewGroup7 != null) {
-                            viewGroup7.setAlpha(fFloatValue2);
-                        }
-                        break;
-                }
-            }
-        });
-        valueAnimatorOfFloat4.addListener(new oj3(this, 5));
+    public qj3(PlayerControlView r17) {
+        this.a = r17;
+        final int r3 = 0;
+        this.t = new mj3(this, 0);
+        final int r4 = 3;
+        this.u = new mj3(this, 3);
+        this.v = new mj3(this, 4);
+        this.w = new mj3(this, 5);
+        this.x = new mj3(this, 6);
+        final int r7 = 2;
+        this.y = new cs1(2, this);
+        final int r2 = 1;
+        this.D = true;
+        this.A = 0;
+        this.z = new ArrayList();
+        this.c = (ViewGroup) r17.findViewById(R.id.exo_top_controls);
+        this.b = r17.findViewById(R.id.exo_controls_background);
+        this.d = (ViewGroup) r17.findViewById(R.id.exo_center_controls);
+        this.f = (ViewGroup) r17.findViewById(R.id.exo_minimal_controls);
+        ViewGroup r8 = (ViewGroup) r17.findViewById(R.id.exo_bottom_bar);
+        this.e = r8;
+        this.j = (ViewGroup) r17.findViewById(R.id.exo_time);
+        View r9 = r17.findViewById(R.id.exo_progress);
+        this.k = r9;
+        this.g = (ViewGroup) r17.findViewById(R.id.exo_basic_controls);
+        this.h = (ViewGroup) r17.findViewById(R.id.exo_extra_controls);
+        this.i = (ViewGroup) r17.findViewById(R.id.exo_extra_controls_scroll_view);
+        View r10 = r17.findViewById(R.id.exo_overflow_show);
+        this.l = r10;
+        View r11 = r17.findViewById(R.id.exo_overflow_hide);
+        if (r10 == null) goto L6;
+        if (r11 == null) goto L6;
+        r10.setOnClickListener(new bj3(r4, this));
+        r11.setOnClickListener(new bj3(r4, this));
+    L6:
+        ValueAnimator r12 = ValueAnimator.ofFloat(new float[]{1.0f, 0.0f});
+        r12.setInterpolator(new LinearInterpolator());
+        r12.addUpdateListener(new nj3(this, r4));
+        r12.addListener(new oj3(this, r3));
+        ValueAnimator r13 = ValueAnimator.ofFloat(new float[]{0.0f, 1.0f});
+        r13.setInterpolator(new LinearInterpolator());
+        r13.addUpdateListener(new nj3(this, r3));
+        r13.addListener(new oj3(this, r2));
+        Resources r14 = r17.getResources();
+        float r15 = r14.getDimension(R.dimen.exo_styled_bottom_bar_height) - r14.getDimension(R.dimen.exo_styled_progress_bar_height);
+        float r16 = r14.getDimension(R.dimen.exo_styled_bottom_bar_height);
+        AnimatorSet r18 = new AnimatorSet();
+        this.m = r18;
+        r18.setDuration(250);
+        r18.addListener(new pj3(this, r17, r3));
+        r18.play(r12).with(d(r9, 0.0f, r15)).with(d(r8, 0.0f, r15));
+        AnimatorSet r5 = new AnimatorSet();
+        this.n = r5;
+        r5.setDuration(250);
+        r5.addListener(new pj3(this, r17, r2));
+        r5.play(d(r9, r15, r16)).with(d(r8, r15, r16));
+        AnimatorSet r6 = new AnimatorSet();
+        this.o = r6;
+        r6.setDuration(250);
+        r6.addListener(new pj3(this, r17, r7));
+        r6.play(r12).with(d(r9, 0.0f, r16)).with(d(r8, 0.0f, r16));
+        AnimatorSet r1 = new AnimatorSet();
+        this.p = r1;
+        r1.setDuration(250);
+        r1.addListener(new oj3(this, r7));
+        r1.play(r13).with(d(r9, r15, 0.0f)).with(d(r8, r15, 0.0f));
+        AnimatorSet r19 = new AnimatorSet();
+        this.q = r19;
+        r19.setDuration(250);
+        r19.addListener(new oj3(this, r4));
+        r19.play(r13).with(d(r9, r16, 0.0f)).with(d(r8, r16, 0.0f));
+        ValueAnimator r20 = ValueAnimator.ofFloat(new float[]{0.0f, 1.0f});
+        this.r = r20;
+        r20.setDuration(250);
+        r20.addUpdateListener(new nj3(this, r2));
+        r20.addListener(new oj3(this, 4));
+        ValueAnimator r21 = ValueAnimator.ofFloat(new float[]{1.0f, 0.0f});
+        this.s = r21;
+        r21.setDuration(250);
+        r21.addUpdateListener(new nj3(this, r7));
+        r21.addListener(new oj3(this, 5));
     }
 
-    public static int c(View view) {
-        if (view == null) {
-            return 0;
-        }
-        int width = view.getWidth();
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        if (!(layoutParams instanceof ViewGroup.MarginLayoutParams)) {
-            return width;
-        }
-        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) layoutParams;
-        return marginLayoutParams.leftMargin + marginLayoutParams.rightMargin + width;
+    public static int c(View r2) {
+        if (r2 != null) goto L5;
+        return 0;
+    L5:
+        int r0 = r2.getWidth();
+        ViewGroup.LayoutParams r3 = r2.getLayoutParams();
+        if ((r3 instanceof ViewGroup.MarginLayoutParams) == false) goto L9;
+        ViewGroup.MarginLayoutParams r4 = (ViewGroup.MarginLayoutParams) r3;
+        return (r4.leftMargin + r4.rightMargin) + r0;
+    L9:
+        return r0;
     }
 
-    public static ObjectAnimator d(View view, float f, float f2) {
-        return ObjectAnimator.ofFloat(view, "translationY", f, f2);
+    public static ObjectAnimator d(View r2, float r3, float r4) {
+        return ObjectAnimator.ofFloat(r2, "translationY", new float[]{r3, r4});
     }
 
-    public static boolean j(View view) {
-        int id = view.getId();
-        return id == R.id.exo_bottom_bar || id == R.id.exo_media_route_button_placeholder || id == R.id.exo_prev || id == R.id.exo_next || id == R.id.exo_rew || id == R.id.exo_rew_with_amount || id == R.id.exo_ffwd || id == R.id.exo_ffwd_with_amount;
+    public static boolean j(View r1) {
+        int r2 = r1.getId();
+        if (r2 != R.id.exo_bottom_bar) goto L5;
+        return true;
+    L5:
+        if (r2 != R.id.exo_media_route_button_placeholder) goto L7;
+        return true;
+    L7:
+        if (r2 != R.id.exo_prev) goto L9;
+        return true;
+    L9:
+        if (r2 != R.id.exo_next) goto L11;
+        return true;
+    L11:
+        if (r2 != R.id.exo_rew) goto L13;
+        return true;
+    L13:
+        if (r2 != R.id.exo_rew_with_amount) goto L15;
+        return true;
+    L15:
+        if (r2 != R.id.exo_ffwd) goto L17;
+        return true;
+    L17:
+        if (r2 == R.id.exo_ffwd_with_amount) goto L29;
+        return false;
+    L29:
+        return true;
     }
 
-    public final void a(float f) {
-        ViewGroup viewGroup = this.i;
-        if (viewGroup != null) {
-            viewGroup.setTranslationX((int) ((1.0f - f) * viewGroup.getWidth()));
-        }
-        ViewGroup viewGroup2 = this.j;
-        if (viewGroup2 != null) {
-            viewGroup2.setAlpha(1.0f - f);
-        }
-        ViewGroup viewGroup3 = this.g;
-        if (viewGroup3 != null) {
-            viewGroup3.setAlpha(1.0f - f);
-        }
+    public final void a(float r5) {
+        ViewGroup r1 = this.i;
+        if (r1 == null) goto L5;
+        r1.setTranslationX((int) ((1.0f - r5) * r1.getWidth()));
+    L5:
+        ViewGroup r2 = this.j;
+        if (r2 == null) goto L8;
+        r2.setAlpha(1.0f - r5);
+    L8:
+        ViewGroup r4 = this.g;
+        if (r4 == null) goto L12;
+        r4.setAlpha(1.0f - r5);
+        return;
     }
 
-    public final boolean b(View view) {
-        return view != null && this.z.contains(view);
+    public final boolean b(View r1) {
+        if (r1 != null) goto L4;
+        return false;
+    L4:
+        if (this.z.contains(r1) == false) goto L9;
+        return true;
+    L9:
+        return false;
     }
 
-    public final void e(Runnable runnable, long j) {
-        if (j >= 0) {
-            this.a.postDelayed(runnable, j);
-        }
+    public final void e(Runnable r3, long r4) {
+        if (r4 < 0) goto L6;
+        this.a.postDelayed(r3, r4);
+        return;
     }
 
     public final void f() {
-        mj3 mj3Var = this.x;
-        PlayerControlView playerControlView = this.a;
-        playerControlView.removeCallbacks(mj3Var);
-        playerControlView.removeCallbacks(this.u);
-        playerControlView.removeCallbacks(this.w);
-        playerControlView.removeCallbacks(this.v);
+        mj3 r0 = this.x;
+        PlayerControlView r1 = this.a;
+        r1.removeCallbacks(r0);
+        r1.removeCallbacks(this.u);
+        r1.removeCallbacks(this.w);
+        r1.removeCallbacks(this.v);
     }
 
     public final void g() {
-        if (this.A == 3) {
-            return;
-        }
+        if (this.A == 3) goto L18;
         f();
-        int showTimeoutMs = this.a.getShowTimeoutMs();
-        if (showTimeoutMs > 0) {
-            if (!this.D) {
-                e(this.x, showTimeoutMs);
-            } else if (this.A == 1) {
-                e(this.v, 2000L);
-            } else {
-                e(this.w, showTimeoutMs);
-            }
-        }
+        int r0 = this.a.getShowTimeoutMs();
+        if (r0 > 0) goto L8;
+        return;
+    L8:
+        if (this.D == true) goto L12;
+        e(this.x, r0);
+        return;
+    L12:
+        if (this.A != 1) goto L15;
+        e(this.v, 2000);
+        return;
+    L15:
+        e(this.w, r0);
+        return;
     }
 
-    public final void h(View view, boolean z) {
-        if (view == null) {
-            return;
-        }
-        ArrayList arrayList = this.z;
-        if (!z) {
-            view.setVisibility(8);
-            arrayList.remove(view);
-            return;
-        }
-        if (this.B && j(view)) {
-            view.setVisibility(4);
-        } else {
-            view.setVisibility(0);
-        }
-        arrayList.add(view);
+    public final void h(View r2, boolean r3) {
+        if (r2 != null) goto L4;
+        return;
+    L4:
+        ArrayList r0 = this.z;
+        if (r3 == true) goto L9;
+        r2.setVisibility(8);
+        r0.remove(r2);
+        return;
+    L9:
+        if (this.B == true) goto L11;
+    L13:
+        r2.setVisibility(0);
+    L14:
+        r0.add(r2);
+        return;
+    L11:
+        if (j(r2) == false) goto L13;
+        r2.setVisibility(4);
+        goto L14
     }
 
-    public final void i(int i) {
-        int i2 = this.A;
-        this.A = i;
-        PlayerControlView playerControlView = this.a;
-        if (i == 2) {
-            playerControlView.setVisibility(8);
-        } else if (i2 == 2) {
-            playerControlView.setVisibility(0);
-        }
-        if (i2 != i) {
-            Iterator it = playerControlView.x.iterator();
-            if (it.hasNext()) {
-                if (it.next() != null) {
-                    kf2.k();
-                } else {
-                    playerControlView.getVisibility();
-                    throw null;
-                }
-            }
-        }
+    public final void i(int r3) {
+        int r0 = this.A;
+        this.A = r3;
+        PlayerControlView r2 = this.a;
+        if (r3 != 2) goto L5;
+        r2.setVisibility(8);
+    L7:
+        if (r0 == r3) goto L17;
+        Iterator r4 = r2.x.iterator();
+        if (r4.hasNext() == true) goto L12;
+        return;
+    L12:
+        if (r4.next() == null) goto L15;
+        kf2.k();
+        return;
+    L15:
+        r2.getVisibility();
+        throw null;
+    L17:
+        return;
+    L5:
+        if (r0 != 2) goto L7;
+        r2.setVisibility(0);
+        goto L7
     }
 }

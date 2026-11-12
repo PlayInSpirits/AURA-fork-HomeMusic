@@ -6,8 +6,8 @@ public final class ip1 {
     public final boolean a;
     public final long b;
 
-    public ip1(boolean z, long j) {
-        this.a = z;
-        this.b = j;
+    public ip1(boolean r1, long r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

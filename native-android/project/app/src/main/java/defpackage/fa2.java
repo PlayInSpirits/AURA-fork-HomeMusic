@@ -8,9 +8,9 @@ public final class fa2 implements z92 {
     public final /* synthetic */ ea2 n;
     public final /* synthetic */ rf2 o;
 
-    public fa2(rf2 rf2Var, ea2 ea2Var) {
-        this.o = rf2Var;
-        this.n = ea2Var;
+    public fa2(rf2 r1, ea2 r2) {
+        this.o = r1;
+        this.n = r2;
     }
 
     @Override // defpackage.z92

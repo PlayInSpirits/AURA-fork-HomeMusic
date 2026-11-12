@@ -8,8 +8,8 @@ public final class pu0 extends cx2 implements rx4, o62 {
     public long D;
 
     @Override // defpackage.o62, defpackage.yi2
-    public final void a(long j) {
-        this.D = j;
+    public final void a(long r1) {
+        this.D = r1;
     }
 
     @Override // defpackage.rx4
@@ -24,99 +24,107 @@ public final class pu0 extends cx2 implements rx4, o62 {
     }
 
     public final boolean q0() {
-        pu0 pu0Var = this.B;
-        if (pu0Var != null) {
-            return pu0Var.q0();
-        }
-        pu0 pu0Var2 = this.C;
-        if (pu0Var2 != null) {
-            return pu0Var2.q0();
-        }
+        pu0 r0 = this.B;
+        if (r0 != null) goto L11;
+        pu0 r1 = this.C;
+        if (r1 != null) goto L7;
         return false;
+    L7:
+        return r1.q0();
+    L11:
+        return r0.q0();
     }
 
     public final void r0() {
-        pu0 pu0Var = this.C;
-        if (pu0Var != null) {
-            pu0Var.r0();
-            return;
-        }
-        pu0 pu0Var2 = this.B;
-        if (pu0Var2 != null) {
-            pu0Var2.r0();
-        }
+        pu0 r0 = this.C;
+        if (r0 != null) goto L8;
+        pu0 r1 = this.B;
+        if (r1 == null) goto L10;
+        r1.r0();
+        return;
+    L10:
+        return;
+    L8:
+        r0.r0();
     }
 
     public final void s0() {
-        pu0 pu0Var = this.C;
-        if (pu0Var != null) {
-            pu0Var.s0();
-        }
-        pu0 pu0Var2 = this.B;
-        if (pu0Var2 != null) {
-            pu0Var2.s0();
-        }
+        pu0 r0 = this.C;
+        if (r0 == null) goto L5;
+        r0.s0();
+    L5:
+        pu0 r1 = this.B;
+        if (r1 == null) goto L8;
+        r1.s0();
+    L8:
         this.B = null;
     }
 
-    public final void t0(zg5 zg5Var) {
-        rx4 rx4Var;
-        pu0 pu0Var;
-        pu0 pu0Var2 = this.B;
-        if (pu0Var2 == null || !ud3.a(pu0Var2, su3.u(zg5Var))) {
-            if (this.n.A) {
-                jx3 jx3Var = new jx3();
-                gh0.J(this, new ou0(jx3Var, this, zg5Var));
-                rx4Var = (rx4) jx3Var.n;
-            } else {
-                rx4Var = null;
-            }
-            pu0Var = (pu0) rx4Var;
-        } else {
-            pu0Var = pu0Var2;
-        }
-        if (pu0Var != null && pu0Var2 == null) {
-            pu0Var.r0();
-            pu0Var.t0(zg5Var);
-            pu0 pu0Var3 = this.C;
-            if (pu0Var3 != null) {
-                pu0Var3.s0();
-            }
-        } else if (pu0Var == null && pu0Var2 != null) {
-            pu0 pu0Var4 = this.C;
-            if (pu0Var4 != null) {
-                pu0Var4.r0();
-                pu0Var4.t0(zg5Var);
-            }
-            pu0Var2.s0();
-        } else if (!h12.c(pu0Var, pu0Var2)) {
-            if (pu0Var != null) {
-                pu0Var.r0();
-                pu0Var.t0(zg5Var);
-            }
-            if (pu0Var2 != null) {
-                pu0Var2.s0();
-            }
-        } else if (pu0Var != null) {
-            pu0Var.t0(zg5Var);
-        } else {
-            pu0 pu0Var5 = this.C;
-            if (pu0Var5 != null) {
-                pu0Var5.t0(zg5Var);
-            }
-        }
-        this.B = pu0Var;
+    public final void t0(zg5 r4) {
+        pu0 r0 = this.B;
+        if (r0 == null) goto L8;
+        if (ud3.a(r0, su3.u(r4)) != true) goto L8;
+        pu0 r1 = r0;
+    L12:
+        if (r1 == null) goto L17;
+        if (r0 != null) goto L17;
+        r1.r0();
+        r1.t0(r4);
+        pu0 r5 = this.C;
+        if (r5 == null) goto L34;
+        r5.s0();
+    L34:
+        this.B = r1;
+        return;
+    L17:
+        if (r1 != null) goto L24;
+        if (r0 == null) goto L24;
+        pu0 r2 = this.C;
+        if (r2 == null) goto L22;
+        r2.r0();
+        r2.t0(r4);
+    L22:
+        r0.s0();
+    L24:
+        if (h12.c(r1, r0) == true) goto L29;
+        if (r1 == null) goto L27;
+        r1.r0();
+        r1.t0(r4);
+    L27:
+        if (r0 == null) goto L34;
+        r0.s0();
+        goto L34
+    L29:
+        if (r1 == null) goto L31;
+        r1.t0(r4);
+        goto L34
+    L31:
+        pu0 r3 = this.C;
+        if (r3 == null) goto L34;
+        r3.t0(r4);
+    L8:
+        if (this.n.A == true) goto L10;
+        rx4 r6 = null;
+    L11:
+        r1 = (pu0) r6;
+        goto L12
+    L10:
+        jx3 r7 = new jx3();
+        gh0.J(this, new ou0(r7, this, r4));
+        r6 = (rx4) r7.n;
+        goto L11
     }
 
     public final void u0() {
-        pu0 pu0Var = this.C;
-        if (pu0Var != null) {
-            pu0Var.u0();
-            return;
-        }
-        pu0 pu0Var2 = this.B;
-        if (pu0Var2 != null) {
-            pu0Var2.u0();
-        }
+        pu0 r0 = this.C;
+        if (r0 != null) goto L8;
+        pu0 r1 = this.B;
+        if (r1 == null) goto L10;
+        r1.u0();
+        return;
+    L10:
+        return;
+    L8:
+        r0.u0();
     }
 }

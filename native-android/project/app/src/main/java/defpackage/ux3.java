@@ -8,20 +8,20 @@ import java.util.regex.Pattern;
 public final class ux3 implements Serializable {
     public final Pattern n;
 
-    public ux3(String str) {
-        Pattern patternCompile = Pattern.compile(str);
-        patternCompile.getClass();
-        this.n = patternCompile;
+    public ux3(String r1) {
+        Pattern r2 = Pattern.compile(r1);
+        r2.getClass();
+        this.n = r2;
     }
 
-    public final boolean a(String str) {
-        str.getClass();
-        return this.n.matcher(str).matches();
+    public final boolean a(String r1) {
+        r1.getClass();
+        return this.n.matcher(r1).matches();
     }
 
     public final String toString() {
-        String string = this.n.toString();
-        string.getClass();
-        return string;
+        String r0 = this.n.toString();
+        r0.getClass();
+        return r0;
     }
 }

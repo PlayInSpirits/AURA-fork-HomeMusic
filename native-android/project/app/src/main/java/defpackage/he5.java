@@ -8,12 +8,11 @@ public final class he5 extends cx3 {
     public final wo0 u;
     public final /* synthetic */ uc4 v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public he5(uc4 uc4Var, wo0 wo0Var) {
-        this.v = uc4Var;
-        LinearLayout linearLayout = (LinearLayout) wo0Var.n;
-        super(linearLayout);
-        this.u = wo0Var;
-        linearLayout.setOnClickListener(new bj3(17, this));
+    public he5(uc4 r2, wo0 r3) {
+        this.v = r2;
+        LinearLayout r4 = (LinearLayout) r3.n;
+        super(r4);
+        this.u = r3;
+        r4.setOnClickListener(new bj3(17, this));
     }
 }

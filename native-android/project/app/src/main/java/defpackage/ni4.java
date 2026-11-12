@@ -23,7 +23,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -36,73 +35,31 @@ public final class ni4 extends dw3 implements Filterable {
     public final boolean s;
     public final AlbumID3 t;
     public List u;
-    public final pk v = new pk(this, new hh3(29));
+    public final pk v;
     public String w;
     public String x;
     public boolean y;
     public List z;
 
-    public ni4(le1 le1Var, ClickCallback clickCallback, boolean z, boolean z2, AlbumID3 albumID3) {
-        List list = Collections.EMPTY_LIST;
-        this.z = list;
+    public ni4(le1 r4, ClickCallback r5, boolean r6, boolean r7, AlbumID3 r8) {
+        this.v = new pk(this, new hh3(29));
+        List r0 = Collections.EMPTY_LIST;
+        this.z = r0;
         this.C = new o7(this, 9);
-        this.q = clickCallback;
-        this.r = z;
-        this.s = z2;
-        this.u = list;
+        this.q = r5;
+        this.r = r6;
+        this.s = r7;
+        this.u = r0;
         this.w = "";
-        this.t = albumID3;
-        final int i = 0;
+        this.t = r8;
+        final int r9 = 0;
         o(false);
-        if (le1Var != null) {
-            g51.d.e(le1Var, new d8(15, new Runnable(this) { // from class: ji4
-                public final /* synthetic */ ni4 o;
-
-                {
-                    this.o = this;
-                }
-
-                @Override // java.lang.Runnable
-                public final void run() {
-                    int i2 = i;
-                    ni4 ni4Var = this.o;
-                    switch (i2) {
-                        case 0:
-                            if (ud3.o() != null) {
-                                ni4Var.d();
-                            }
-                            break;
-                        default:
-                            ni4Var.d();
-                            break;
-                    }
-                }
-            }));
-            final int i2 = 1;
-            kb4.N(le1Var, new Runnable(this) { // from class: ji4
-                public final /* synthetic */ ni4 o;
-
-                {
-                    this.o = this;
-                }
-
-                @Override // java.lang.Runnable
-                public final void run() {
-                    int i3 = i2;
-                    ni4 ni4Var = this.o;
-                    switch (i3) {
-                        case 0:
-                            if (ud3.o() != null) {
-                                ni4Var.d();
-                            }
-                            break;
-                        default:
-                            ni4Var.d();
-                            break;
-                    }
-                }
-            });
-        }
+        if (r4 == null) goto L6;
+        Runnable r10 = new ji4(this, r9);
+        g51.d.e(r4, new d8(15, r10));
+        final int r11 = 1;
+        kb4.N(r4, new ji4(this, r11));
+        return;
     }
 
     @Override // defpackage.dw3
@@ -111,150 +68,261 @@ public final class ni4 extends dw3 implements Filterable {
     }
 
     @Override // defpackage.dw3
-    public final long b(int i) {
-        return i;
+    public final long b(int r1) {
+        return r1;
     }
 
-    /* JADX WARN: Code duplicated, block: B:27:0x00c8  */
-    /* JADX WARN: Code duplicated, block: B:28:0x00ca  */
     @Override // defpackage.dw3
-    public final void g(cx3 cx3Var, final int i) {
-        ko1 ko1Var;
-        mi4 mi4Var = (mi4) cx3Var;
-        pk pkVar = this.v;
-        Child child = (Child) pkVar.f.get(i);
-        y12 y12Var = mi4Var.u;
-        y12Var.q.setText(child.getTitle());
-        TextView textView = y12Var.p;
-        ConstraintLayout constraintLayout = y12Var.m;
-        ImageView imageView = y12Var.r;
-        TextView textView2 = y12Var.t;
-        ConstraintLayout constraintLayout2 = y12Var.e;
-        TextView textView3 = y12Var.f;
-        FrameLayout frameLayout = y12Var.n;
-        View view = mi4Var.a;
-        textView.setText(view.getContext().getString(R.string.song_subtitle_formatter, this.s ? child.getAlbum() : child.getArtist(), e03.g(child.getDuration()), e03.f(child)));
-        Context context = view.getContext();
-        Integer track = child.getTrack();
-        textView2.setText(track != null ? String.valueOf(track) : context.getString(R.string.label_placeholder));
-        if (ud3.o() == null) {
-            eu0 eu0VarW = au0.w(view.getContext());
-            String id = child.getId();
-            eu0VarW.getClass();
-            if (eu0.d(id)) {
-                frameLayout.setVisibility(0);
-            } else {
-                frameLayout.setVisibility(8);
-            }
-        } else if (g51.e(child) != null) {
-            frameLayout.setVisibility(0);
-        } else {
-            frameLayout.setVisibility(8);
-        }
-        if (frameLayout.getVisibility() == 0) {
-            Context context2 = frameLayout.getContext();
-            context2.getClass();
-            String strO = ud3.o();
-            ko1 ko1Var2 = ko1.n;
-            ko1 ko1Var3 = ko1.p;
-            if (strO == null) {
-                eu0 eu0VarW2 = au0.w(context2);
-                String id2 = child.getId();
-                eu0VarW2.getClass();
-                Integer numC = eu0.c(id2);
-                if (numC == null || numC.intValue() == 4 || numC.intValue() == 5) {
-                    ko1Var = ko1Var2;
-                } else if (numC.intValue() == 3) {
-                    ko1Var = ko1Var3;
-                } else {
-                    ko1Var = ko1.o;
-                }
-            } else if (g51.e(child) != null) {
-                ko1Var = ko1Var3;
-            } else {
-                ko1Var = ko1Var2;
-            }
-            if (ko1Var == ko1Var2) {
-                frameLayout.setVisibility(8);
-            } else {
-                View childAt = frameLayout.getChildAt(0);
-                if (childAt == null) {
-                    childAt = frameLayout;
-                }
-                childAt.setBackground(frameLayout.getContext().getDrawable(ko1Var == ko1Var3 ? R.drawable.ic_homemusic_on_phone : R.drawable.ic_homemusic_to_phone));
-                childAt.setContentDescription(frameLayout.getContext().getString(ko1Var == ko1Var3 ? R.string.homemusic_downloaded_on_phone : R.string.homemusic_downloading_to_phone));
-            }
-        }
-        boolean z = this.r;
-        if (z) {
-            Context context3 = view.getContext();
-            String coverArtId = child.getCoverArtId();
-            vz3 vz3VarT = b11.g(context3, coverArtId, 9, a.c(context3), coverArtId != null ? wg0.b(ud3.t(), coverArtId) : null).T(xv0.b());
-            if (ud3.R()) {
-                vz3VarT = (vz3) vz3VarT.l();
-            }
-            vz3VarT.K(imageView);
-        }
-        textView2.setVisibility(z ? 4 : 0);
-        imageView.setVisibility(z ? 0 : 4);
-        if (z) {
-            constraintLayout2.setVisibility(8);
-        } else {
-            if (i != 0 || pkVar.f.stream().filter(new c7(20)).map(new hu3(3)).filter(new c7(21)).distinct().count() <= 1) {
-                if (i > 0) {
-                    int i2 = i - 1;
-                    if (pkVar.f.get(i2) == null || ((Child) pkVar.f.get(i2)).getDiscNumber() == null || ((Child) pkVar.f.get(i)).getDiscNumber() == null || ((Child) pkVar.f.get(i2)).getDiscNumber().intValue() >= ((Child) pkVar.f.get(i)).getDiscNumber().intValue()) {
-                    }
-                }
-                constraintLayout2.setVisibility(8);
-            }
-            if (((Child) pkVar.f.get(i)).getDiscNumber() != null) {
-                textView3.setText(view.getContext().getString(R.string.disc_titleless, ((Child) pkVar.f.get(i)).getDiscNumber().toString()));
-                constraintLayout2.setVisibility(0);
-                textView3.setVisibility(0);
-                y12Var.d.setVisibility(0);
-            } else {
-                constraintLayout2.setVisibility(8);
-            }
-            AlbumID3 albumID3 = this.t;
-            if (albumID3 != null && albumID3.getDiscTitles() != null) {
-                Optional<DiscTitle> optionalFindFirst = albumID3.getDiscTitles().stream().filter(new Predicate() { // from class: ki4
-                    @Override // java.util.function.Predicate
-                    public final boolean test(Object obj) {
-                        return Objects.equals(((DiscTitle) obj).getDisc(), ((Child) this.a.v.f.get(i)).getDiscNumber());
-                    }
-                }).findFirst();
-                if (optionalFindFirst.isPresent() && optionalFindFirst.get().getDisc() != null && optionalFindFirst.get().getTitle() != null && !optionalFindFirst.get().getTitle().isEmpty()) {
-                    textView3.setText(view.getContext().getString(R.string.disc_titlefull, optionalFindFirst.get().getDisc().toString(), optionalFindFirst.get().getTitle()));
-                }
-            }
-        }
-        if (xa3.u("rating_per_item", false)) {
-            boolean zF = n61.f(1, child.getId(), child.getStarred() != null);
-            constraintLayout.setVisibility((zF || child.getUserRating() != null) ? 0 : 8);
-            y12Var.k.setVisibility(zF ? 0 : 8);
-            y12Var.l.setVisibility(child.getUserRating() == null ? 8 : 0);
-            if (child.getUserRating() != null) {
-                ImageView imageView2 = y12Var.i;
-                Context context4 = view.getContext();
-                int iIntValue = child.getUserRating().intValue();
-                int i3 = R.drawable.ic_star_outlined;
-                imageView2.setImageDrawable(zz1.r(context4, iIntValue >= 1 ? R.drawable.ic_star : R.drawable.ic_star_outlined));
-                y12Var.u.setImageDrawable(zz1.r(view.getContext(), child.getUserRating().intValue() >= 2 ? R.drawable.ic_star : R.drawable.ic_star_outlined));
-                y12Var.s.setImageDrawable(zz1.r(view.getContext(), child.getUserRating().intValue() >= 3 ? R.drawable.ic_star : R.drawable.ic_star_outlined));
-                y12Var.h.setImageDrawable(zz1.r(view.getContext(), child.getUserRating().intValue() >= 4 ? R.drawable.ic_star : R.drawable.ic_star_outlined));
-                ImageView imageView3 = y12Var.g;
-                Context context5 = view.getContext();
-                if (child.getUserRating().intValue() >= 5) {
-                    i3 = R.drawable.ic_star;
-                }
-                imageView3.setImageDrawable(zz1.r(context5, i3));
-            }
-        } else {
-            constraintLayout.setVisibility(8);
-        }
-        p(mi4Var, child);
-        jz4.k(view, y12Var.o, this.B, child);
+    public final void g(cx3 r19, final int r20) {
+        mi4 r2 = (mi4) r19;
+        pk r3 = this.v;
+        Child r4 = (Child) r3.f.get(r20);
+        y12 r5 = r2.u;
+        r5.q.setText(r4.getTitle());
+        TextView r6 = r5.p;
+        ConstraintLayout r7 = r5.m;
+        ImageView r8 = r5.r;
+        TextView r9 = r5.t;
+        ConstraintLayout r10 = r5.e;
+        TextView r11 = r5.f;
+        FrameLayout r12 = r5.n;
+        View r13 = r2.a;
+        Context r14 = r13.getContext();
+        if (this.s == false) goto L5;
+        String r15 = r4.getAlbum();
+    L6:
+        r6.setText(r14.getString(R.string.song_subtitle_formatter, new Object[]{r15, e03.g(r4.getDuration()), e03.f(r4)}));
+        Context r16 = r13.getContext();
+        Integer r17 = r4.getTrack();
+        if (r17 == null) goto L9;
+        String r18 = String.valueOf(r17);
+    L10:
+        r9.setText(r18);
+        if (ud3.o() != null) goto L17;
+        eu0 r21 = au0.w(r13.getContext());
+        String r110 = r4.getId();
+        r21.getClass();
+        if (eu0.d(r110) == false) goto L15;
+        r12.setVisibility(0);
+    L21:
+        if (r12.getVisibility() != 0) goto L54;
+        Context r22 = r12.getContext();
+        r22.getClass();
+        String r111 = ud3.o();
+        ko1 r23 = ko1.n;
+        ko1 r112 = ko1.p;
+        if (r111 != null) goto L26;
+        eu0 r24 = au0.w(r22);
+        String r113 = r4.getId();
+        r24.getClass();
+        Integer r25 = eu0.c(r113);
+        if (r25 != null) goto L32;
+    L28:
+        ko1 r26 = r23;
+    L40:
+        if (r26 != r23) goto L42;
+        r12.setVisibility(8);
+        goto L54
+    L42:
+        View r114 = r12.getChildAt(0);
+        if (r114 != null) goto L45;
+        r114 = r12;
+    L45:
+        Context r27 = r12.getContext();
+        if (r26 != r112) goto L48;
+        int r115 = R.drawable.ic_homemusic_on_phone;
+    L49:
+        r114.setBackground(r27.getDrawable(r115));
+        Context r28 = r12.getContext();
+        if (r26 != r112) goto L52;
+        int r29 = R.string.homemusic_downloaded_on_phone;
+    L53:
+        r114.setContentDescription(r28.getString(r29));
+        goto L54
+    L52:
+        r29 = R.string.homemusic_downloading_to_phone;
+        goto L53
+    L48:
+        r115 = R.drawable.ic_homemusic_to_phone;
+        goto L49
+    L32:
+        if (r25.intValue() == 4) goto L28;
+        if (r25.intValue() == 5) goto L28;
+        if (r25.intValue() == 3) goto L27;
+        r26 = ko1.o;
+    L27:
+        r26 = r112;
+        goto L40
+    L26:
+        if (g51.e(r4) == null) goto L28;
+    L54:
+        boolean r30 = this.r;
+        if (r30 == false) goto L64;
+        Context r31 = r13.getContext();
+        String r116 = r4.getCoverArtId();
+        c04 r117 = a.c(r31);
+        if (r116 == null) goto L59;
+        String r118 = wg0.b(ud3.t(), r116);
+    L60:
+        vz3 r32 = b11.g(r31, r116, 9, r117, r118).T(xv0.b());
+        if (ud3.R() == false) goto L63;
+        r32 = (vz3) r32.l();
+    L63:
+        r32.K(r8);
+        goto L64
+    L59:
+        r118 = null;
+    L64:
+        if (r30 == false) goto L66;
+        int r33 = 4;
+    L67:
+        r9.setVisibility(r33);
+        if (r30 == false) goto L70;
+        int r34 = 0;
+    L71:
+        r8.setVisibility(r34);
+        if (r30 == true) goto L103;
+        if (r20 == 0) goto L75;
+    L77:
+        if (r20 <= 0) goto L103;
+        int r35 = r20 - 1;
+        if (r3.f.get(r35) == null) goto L103;
+        if (((Child) r3.f.get(r35)).getDiscNumber() == null) goto L103;
+        if (((Child) r3.f.get(r20)).getDiscNumber() == null) goto L103;
+        if (((Child) r3.f.get(r35)).getDiscNumber().intValue() >= ((Child) r3.f.get(r20)).getDiscNumber().intValue()) goto L103;
+    L87:
+        if (((Child) r3.f.get(r20)).getDiscNumber() == null) goto L89;
+        r11.setText(r13.getContext().getString(R.string.disc_titleless, new Object[]{((Child) r3.f.get(r20)).getDiscNumber().toString()}));
+        r10.setVisibility(0);
+        r11.setVisibility(0);
+        r5.d.setVisibility(0);
+    L90:
+        AlbumID3 r36 = this.t;
+        if (r36 != null) goto L93;
+    L104:
+        int r37 = 0;
+        if (xa3.u("rating_per_item", false) == false) goto L148;
+        String r1 = r4.getId();
+        if (r4.getStarred() == null) goto L109;
+        boolean r38 = true;
+    L110:
+        boolean r39 = n61.f(1, r1, r38);
+        if (r39 == false) goto L113;
+    L116:
+        int r40 = 0;
+    L117:
+        r7.setVisibility(r40);
+        ImageView r41 = r5.k;
+        if (r39 == false) goto L120;
+        int r42 = 0;
+    L121:
+        r41.setVisibility(r42);
+        LinearLayout r43 = r5.l;
+        if (r4.getUserRating() != null) goto L125;
+        r37 = 8;
+    L125:
+        r43.setVisibility(r37);
+        if (r4.getUserRating() == null) goto L149;
+        ImageView r44 = r5.i;
+        Context r45 = r13.getContext();
+        int r46 = r4.getUserRating().intValue();
+        int r47 = R.drawable.ic_star_outlined;
+        if (r46 < 1) goto L130;
+        int r48 = R.drawable.ic_star;
+    L131:
+        r44.setImageDrawable(zz1.r(r45, r48));
+        ImageView r49 = r5.u;
+        Context r50 = r13.getContext();
+        if (r4.getUserRating().intValue() < 2) goto L134;
+        int r51 = R.drawable.ic_star;
+    L135:
+        r49.setImageDrawable(zz1.r(r50, r51));
+        ImageView r52 = r5.s;
+        Context r53 = r13.getContext();
+        if (r4.getUserRating().intValue() < 3) goto L138;
+        int r54 = R.drawable.ic_star;
+    L139:
+        r52.setImageDrawable(zz1.r(r53, r54));
+        ImageView r55 = r5.h;
+        Context r56 = r13.getContext();
+        if (r4.getUserRating().intValue() < 4) goto L142;
+        int r57 = R.drawable.ic_star;
+    L143:
+        r55.setImageDrawable(zz1.r(r56, r57));
+        ImageView r58 = r5.g;
+        Context r59 = r13.getContext();
+        if (r4.getUserRating().intValue() < 5) goto L146;
+        r47 = R.drawable.ic_star;
+    L146:
+        r58.setImageDrawable(zz1.r(r59, r47));
+        goto L149
+    L142:
+        r57 = R.drawable.ic_star_outlined;
+        goto L143
+    L138:
+        r54 = R.drawable.ic_star_outlined;
+        goto L139
+    L134:
+        r51 = R.drawable.ic_star_outlined;
+        goto L135
+    L130:
+        r48 = R.drawable.ic_star_outlined;
+    L149:
+        p(r2, r4);
+        jz4.k(r13, r5.o, this.B, r4);
+        return;
+    L120:
+        r42 = 8;
+        goto L121
+    L113:
+        if (r4.getUserRating() != null) goto L116;
+        r40 = 8;
+        goto L117
+    L109:
+        r38 = false;
+        goto L110
+    L148:
+        r7.setVisibility(8);
+        goto L149
+    L93:
+        if (r36.getDiscTitles() == null) goto L104;
+        Optional<DiscTitle> r60 = r36.getDiscTitles().stream().filter(new ki4(this, r20)).findFirst();
+        if (r60.isPresent() == false) goto L104;
+        if (r60.get().getDisc() == null) goto L104;
+        if (r60.get().getTitle() == null) goto L104;
+        if (r60.get().getTitle().isEmpty() == true) goto L104;
+        r11.setText(r13.getContext().getString(R.string.disc_titlefull, new Object[]{r60.get().getDisc().toString(), r60.get().getTitle()}));
+        goto L104
+    L89:
+        r10.setVisibility(8);
+        goto L90
+    L75:
+        if (r3.f.stream().filter(new c7(20)).map(new hu3(3)).filter(new c7(21)).distinct().count() <= 1) goto L77;
+    L103:
+        r10.setVisibility(8);
+        goto L104
+    L70:
+        r34 = 4;
+        goto L71
+    L66:
+        r33 = 0;
+        goto L67
+    L15:
+        r12.setVisibility(8);
+        goto L21
+    L17:
+        if (g51.e(r4) == null) goto L19;
+        r12.setVisibility(0);
+        goto L21
+    L19:
+        r12.setVisibility(8);
+        goto L21
+    L9:
+        r18 = r16.getString(R.string.label_placeholder);
+        goto L10
+    L5:
+        r15 = r4.getArtist();
+        goto L6
     }
 
     @Override // android.widget.Filterable
@@ -263,218 +331,248 @@ public final class ni4 extends dw3 implements Filterable {
     }
 
     @Override // defpackage.dw3
-    public final void h(cx3 cx3Var, int i, List list) {
-        mi4 mi4Var = (mi4) cx3Var;
-        if (list.isEmpty() || !(list.contains("payload_playback") || list.contains("payload_homemusic_selection"))) {
-            g(mi4Var, i);
-            return;
-        }
-        Child child = (Child) this.v.f.get(i);
-        if (list.contains("payload_playback")) {
-            p(mi4Var, child);
-        }
-        if (list.contains("payload_homemusic_selection")) {
-            jz4.k(mi4Var.a, mi4Var.u.o, this.B, child);
-        }
+    public final void h(cx3 r4, int r5, List r6) {
+        mi4 r7 = (mi4) r4;
+        if (r6.isEmpty() == false) goto L5;
+    L15:
+        g(r7, r5);
+        return;
+    L5:
+        if (r6.contains("payload_playback") == false) goto L7;
+    L8:
+        Child r8 = (Child) this.v.f.get(r5);
+        if (r6.contains("payload_playback") == false) goto L12;
+        p(r7, r8);
+    L12:
+        if (r6.contains("payload_homemusic_selection") == false) goto L17;
+        jz4.k(r7.a, r7.u.o, this.B, r8);
+        return;
+    L17:
+        return;
+    L7:
+        if (r6.contains("payload_homemusic_selection") == false) goto L15;
+        goto L8
     }
 
     @Override // defpackage.dw3
-    public final cx3 i(ViewGroup viewGroup, int i) {
-        View viewI = b11.i(viewGroup, R.layout.item_horizontal_track, viewGroup, false);
-        int i2 = R.id.cover_art_overlay;
-        View viewS = uo.s(viewI, R.id.cover_art_overlay);
-        if (viewS != null) {
-            i2 = R.id.cover_image_separator;
-            View viewS2 = uo.s(viewI, R.id.cover_image_separator);
-            if (viewS2 != null) {
-                i2 = R.id.different_disk_divider;
-                View viewS3 = uo.s(viewI, R.id.different_disk_divider);
-                if (viewS3 != null) {
-                    i2 = R.id.different_disk_divider_sector;
-                    ConstraintLayout constraintLayout = (ConstraintLayout) uo.s(viewI, R.id.different_disk_divider_sector);
-                    if (constraintLayout != null) {
-                        i2 = R.id.disc_title_text_view;
-                        TextView textView = (TextView) uo.s(viewI, R.id.disc_title_text_view);
-                        if (textView != null) {
-                            i2 = R.id.five_star_icon;
-                            ImageView imageView = (ImageView) uo.s(viewI, R.id.five_star_icon);
-                            if (imageView != null) {
-                                i2 = R.id.four_star_icon;
-                                ImageView imageView2 = (ImageView) uo.s(viewI, R.id.four_star_icon);
-                                if (imageView2 != null) {
-                                    i2 = R.id.one_star_icon;
-                                    ImageView imageView3 = (ImageView) uo.s(viewI, R.id.one_star_icon);
-                                    if (imageView3 != null) {
-                                        i2 = R.id.play_pause_icon;
-                                        ImageView imageView4 = (ImageView) uo.s(viewI, R.id.play_pause_icon);
-                                        if (imageView4 != null) {
-                                            i2 = R.id.preferred_icon;
-                                            ImageView imageView5 = (ImageView) uo.s(viewI, R.id.preferred_icon);
-                                            if (imageView5 != null) {
-                                                i2 = R.id.rating_bar_layout;
-                                                LinearLayout linearLayout = (LinearLayout) uo.s(viewI, R.id.rating_bar_layout);
-                                                if (linearLayout != null) {
-                                                    i2 = R.id.rating_indicator_image_view;
-                                                    ConstraintLayout constraintLayout2 = (ConstraintLayout) uo.s(viewI, R.id.rating_indicator_image_view);
-                                                    if (constraintLayout2 != null) {
-                                                        i2 = R.id.search_result_download_indicator_image_view;
-                                                        FrameLayout frameLayout = (FrameLayout) uo.s(viewI, R.id.search_result_download_indicator_image_view);
-                                                        if (frameLayout != null) {
-                                                            i2 = R.id.search_result_song_more_button;
-                                                            FrameLayout frameLayout2 = (FrameLayout) uo.s(viewI, R.id.search_result_song_more_button);
-                                                            if (frameLayout2 != null) {
-                                                                i2 = R.id.search_result_song_subtitle_text_view;
-                                                                TextView textView2 = (TextView) uo.s(viewI, R.id.search_result_song_subtitle_text_view);
-                                                                if (textView2 != null) {
-                                                                    i2 = R.id.search_result_song_title_text_view;
-                                                                    TextView textView3 = (TextView) uo.s(viewI, R.id.search_result_song_title_text_view);
-                                                                    if (textView3 != null) {
-                                                                        i2 = R.id.song_cover_image_view;
-                                                                        ImageView imageView6 = (ImageView) uo.s(viewI, R.id.song_cover_image_view);
-                                                                        if (imageView6 != null) {
-                                                                            i2 = R.id.three_star_icon;
-                                                                            ImageView imageView7 = (ImageView) uo.s(viewI, R.id.three_star_icon);
-                                                                            if (imageView7 != null) {
-                                                                                i2 = R.id.track_number_text_view;
-                                                                                TextView textView4 = (TextView) uo.s(viewI, R.id.track_number_text_view);
-                                                                                if (textView4 != null) {
-                                                                                    i2 = R.id.two_star_icon;
-                                                                                    ImageView imageView8 = (ImageView) uo.s(viewI, R.id.two_star_icon);
-                                                                                    if (imageView8 != null) {
-                                                                                        return new mi4(this, new y12((ConstraintLayout) viewI, viewS, viewS2, viewS3, constraintLayout, textView, imageView, imageView2, imageView3, imageView4, imageView5, linearLayout, constraintLayout2, frameLayout, frameLayout2, textView2, textView3, imageView6, imageView7, textView4, imageView8));
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewI.getResources().getResourceName(i2)));
+    public final cx3 i(ViewGroup r25, int r26) {
+        View r0 = b11.i(r25, R.layout.item_horizontal_track, r25, false);
+        int r1 = R.id.cover_art_overlay;
+        View r4 = uo.s(r0, R.id.cover_art_overlay);
+        if (r4 == null) goto L44;
+        r1 = R.id.cover_image_separator;
+        View r5 = uo.s(r0, R.id.cover_image_separator);
+        if (r5 == null) goto L44;
+        r1 = R.id.different_disk_divider;
+        View r6 = uo.s(r0, R.id.different_disk_divider);
+        if (r6 == null) goto L44;
+        r1 = R.id.different_disk_divider_sector;
+        ConstraintLayout r7 = (ConstraintLayout) uo.s(r0, R.id.different_disk_divider_sector);
+        if (r7 == null) goto L44;
+        r1 = R.id.disc_title_text_view;
+        TextView r8 = (TextView) uo.s(r0, R.id.disc_title_text_view);
+        if (r8 == null) goto L44;
+        r1 = R.id.five_star_icon;
+        ImageView r9 = (ImageView) uo.s(r0, R.id.five_star_icon);
+        if (r9 == null) goto L44;
+        r1 = R.id.four_star_icon;
+        ImageView r10 = (ImageView) uo.s(r0, R.id.four_star_icon);
+        if (r10 == null) goto L44;
+        r1 = R.id.one_star_icon;
+        ImageView r11 = (ImageView) uo.s(r0, R.id.one_star_icon);
+        if (r11 == null) goto L44;
+        r1 = R.id.play_pause_icon;
+        ImageView r12 = (ImageView) uo.s(r0, R.id.play_pause_icon);
+        if (r12 == null) goto L44;
+        r1 = R.id.preferred_icon;
+        ImageView r13 = (ImageView) uo.s(r0, R.id.preferred_icon);
+        if (r13 == null) goto L44;
+        r1 = R.id.rating_bar_layout;
+        LinearLayout r14 = (LinearLayout) uo.s(r0, R.id.rating_bar_layout);
+        if (r14 == null) goto L44;
+        r1 = R.id.rating_indicator_image_view;
+        ConstraintLayout r15 = (ConstraintLayout) uo.s(r0, R.id.rating_indicator_image_view);
+        if (r15 == null) goto L44;
+        r1 = R.id.search_result_download_indicator_image_view;
+        FrameLayout r16 = (FrameLayout) uo.s(r0, R.id.search_result_download_indicator_image_view);
+        if (r16 == null) goto L44;
+        r1 = R.id.search_result_song_more_button;
+        FrameLayout r17 = (FrameLayout) uo.s(r0, R.id.search_result_song_more_button);
+        if (r17 == null) goto L44;
+        r1 = R.id.search_result_song_subtitle_text_view;
+        TextView r18 = (TextView) uo.s(r0, R.id.search_result_song_subtitle_text_view);
+        if (r18 == null) goto L44;
+        r1 = R.id.search_result_song_title_text_view;
+        TextView r19 = (TextView) uo.s(r0, R.id.search_result_song_title_text_view);
+        if (r19 == null) goto L44;
+        r1 = R.id.song_cover_image_view;
+        ImageView r20 = (ImageView) uo.s(r0, R.id.song_cover_image_view);
+        if (r20 == null) goto L44;
+        r1 = R.id.three_star_icon;
+        ImageView r21 = (ImageView) uo.s(r0, R.id.three_star_icon);
+        if (r21 == null) goto L44;
+        r1 = R.id.track_number_text_view;
+        TextView r22 = (TextView) uo.s(r0, R.id.track_number_text_view);
+        if (r22 == null) goto L44;
+        r1 = R.id.two_star_icon;
+        ImageView r23 = (ImageView) uo.s(r0, R.id.two_star_icon);
+        if (r23 == null) goto L44;
+        return new mi4(this, new y12((ConstraintLayout) r0, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23));
+    L44:
+        nz2.n("Missing required view with ID: ".concat(r0.getResources().getResourceName(r1)));
         return null;
     }
 
     @Override // defpackage.dw3
-    public final void n(cx3 cx3Var) {
-        mi4 mi4Var = (mi4) cx3Var;
-        c04 c04VarC = a.c(mi4Var.a.getContext());
-        ImageView imageView = mi4Var.u.r;
-        c04VarC.getClass();
-        c04VarC.q(new a04(imageView));
+    public final void n(cx3 r2) {
+        mi4 r3 = (mi4) r2;
+        c04 r1 = a.c(r3.a.getContext());
+        ImageView r4 = r3.u.r;
+        r1.getClass();
+        r1.q(new a04(r4));
     }
 
-    public final void p(mi4 mi4Var, Child child) {
-        y12 y12Var = mi4Var.u;
-        String str = this.x;
-        boolean z = this.r;
-        if (str == null || !str.equals(child.getId())) {
-            y12Var.j.setVisibility(4);
-            if (z) {
-                y12Var.b.setVisibility(4);
-                return;
-            } else {
-                y12Var.t.setVisibility(0);
-                return;
-            }
-        }
-        y12Var.j.setVisibility(0);
-        if (this.y) {
-            y12Var.j.setImageResource(R.drawable.ic_pause);
-        } else {
-            y12Var.j.setImageResource(R.drawable.ic_play);
-        }
-        if (z) {
-            y12Var.b.setVisibility(0);
-        } else {
-            y12Var.t.setVisibility(4);
-        }
+    public final void p(mi4 r5, Child r6) {
+        y12 r7 = r5.u;
+        String r0 = this.x;
+        boolean r1 = this.r;
+        if (r0 != null) goto L5;
+    L15:
+        r7.j.setVisibility(4);
+        if (r1 == true) goto L19;
+        r7.t.setVisibility(0);
+        return;
+    L19:
+        r7.b.setVisibility(4);
+        return;
+    L5:
+        if (r0.equals(r6.getId()) == false) goto L15;
+        r7.j.setVisibility(0);
+        if (this.y == false) goto L9;
+        r7.j.setImageResource(R.drawable.ic_pause);
+    L10:
+        if (r1 == true) goto L13;
+        r7.t.setVisibility(4);
+        return;
+    L13:
+        r7.b.setVisibility(0);
+        return;
+    L9:
+        r7.j.setImageResource(R.drawable.ic_play);
+        goto L10
     }
 
-    public final List q(String str) {
-        if (str == null) {
-            return Collections.EMPTY_LIST;
-        }
-        ArrayList arrayList = new ArrayList();
-        int i = 0;
-        while (true) {
-            pk pkVar = this.v;
-            if (i >= pkVar.f.size()) {
-                return arrayList;
-            }
-            if (str.equals(((Child) pkVar.f.get(i)).getId())) {
-                arrayList.add(Integer.valueOf(i));
-            }
-            i++;
-        }
+    public final List q(String r5) {
+        if (r5 == null) goto L4;
+        ArrayList r0 = new ArrayList();
+        int r1 = 0;
+    L6:
+        pk r2 = this.v;
+        if (r1 >= r2.f.size()) goto L12;
+        if (r5.equals(((Child) r2.f.get(r1)).getId()) == false) goto L11;
+        r0.add(Integer.valueOf(r1));
+    L11:
+        r1 = r1 + 1;
+        goto L6
+    L12:
+        return r0;
+    L4:
+        return Collections.EMPTY_LIST;
     }
 
-    public final void r(List list) {
-        if (list == null) {
-            list = Collections.EMPTY_LIST;
-        }
-        this.u = list;
+    public final void r(List r1) {
+        if (r1 != null) goto L5;
+        r1 = Collections.EMPTY_LIST;
+    L5:
+        this.u = r1;
         this.C.filter(this.w);
     }
 
-    public final void s(String str, boolean z) {
-        pk pkVar;
-        String str2 = this.x;
-        boolean z2 = this.y;
-        List list = this.z;
-        this.x = str;
-        this.y = z;
-        if (Objects.equals(str2, str) && z2 == z) {
-            if (list.equals(str != null ? q(str) : Collections.EMPTY_LIST)) {
-                return;
-            }
-        }
-        this.z = str != null ? q(str) : Collections.EMPTY_LIST;
-        Iterator it = list.iterator();
-        while (true) {
-            boolean zHasNext = it.hasNext();
-            pkVar = this.v;
-            if (!zHasNext) {
-                break;
-            }
-            int iIntValue = ((Integer) it.next()).intValue();
-            if (iIntValue >= 0 && iIntValue < pkVar.f.size()) {
-                e(iIntValue, "payload_playback");
-            }
-        }
-        for (Integer num : this.z) {
-            int iIntValue2 = num.intValue();
-            if (!list.contains(num) && iIntValue2 >= 0 && iIntValue2 < pkVar.f.size()) {
-                e(iIntValue2, "payload_playback");
-            }
-        }
+    public final void s(String r5, boolean r6) {
+        String r0 = this.x;
+        boolean r1 = this.y;
+        List r2 = this.z;
+        this.x = r5;
+        this.y = r6;
+        if (Objects.equals(r0, r5) == false) goto L11;
+        if (r1 != r6) goto L11;
+        if (r5 == null) goto L7;
+        List r7 = q(r5);
+    L9:
+        if (r2.equals(r7) == false) goto L11;
+        return;
+    L7:
+        r7 = Collections.EMPTY_LIST;
+    L11:
+        if (r5 == null) goto L13;
+        List r8 = q(r5);
+    L14:
+        this.z = r8;
+        Iterator r9 = r2.iterator();
+    L15:
+        boolean r10 = r9.hasNext();
+        pk r3 = this.v;
+        if (r10 == false) goto L22;
+        int r11 = ((Integer) r9.next()).intValue();
+        if (r11 < 0) goto L15;
+        if (r11 >= r3.f.size()) goto L15;
+        e(r11, "payload_playback");
+        goto L15
+    L22:
+        Iterator r12 = this.z.iterator();
+    L24:
+        if (r12.hasNext() == false) goto L48;
+        Integer r13 = (Integer) r12.next();
+        int r4 = r13.intValue();
+        if (r2.contains(r13) == true) goto L24;
+        if (r4 < 0) goto L24;
+        if (r4 >= r3.f.size()) goto L24;
+        e(r4, "payload_playback");
+        goto L24
+    L48:
+        return;
+    L13:
+        r8 = Collections.EMPTY_LIST;
+        goto L14
     }
 
-    public final void t(String str) {
-        pk pkVar = this.v;
-        ArrayList arrayList = new ArrayList(pkVar.f);
-        switch (str) {
-            case "MEDIA_BY_TITLE":
-                arrayList.sort(Comparator.comparing(new hu3(4)));
-                break;
-            case "MEDIA_LEAST_RECENTLY_STARRED":
-                arrayList.sort(Comparator.comparing(new hu3(5), Comparator.nullsLast(Comparator.naturalOrder())));
-                break;
-            case "MEDIA_MOST_RECENTLY_STARRED":
-                arrayList.sort(Comparator.comparing(new hu3(5), Comparator.nullsLast(Comparator.reverseOrder())));
-                break;
-        }
-        pkVar.b(arrayList, null);
+    public final void t(String r4) {
+        pk r3 = this.v;
+        ArrayList r0 = new ArrayList(r3.f);
+        byte r2 = -1;
+        switch(r4.hashCode()) {
+            case -1737560469: goto L14;
+            case 1114836697: goto L10;
+            case 1154412489: goto L6;
+            default: goto L18;
+        };
+    L6:
+        if (r4.equals("MEDIA_MOST_RECENTLY_STARRED") == false) goto L18;
+        r2 = 2;
+        goto L18
+    L10:
+        if (r4.equals("MEDIA_LEAST_RECENTLY_STARRED") == false) goto L18;
+        r2 = 1;
+        goto L18
+    L14:
+        if (r4.equals("MEDIA_BY_TITLE") == false) goto L18;
+        r2 = 0;
+    L18:
+        switch(r2) {
+            case 0: goto L22;
+            case 1: goto L21;
+            case 2: goto L20;
+            default: goto L23;
+        };
+    L20:
+        r0.sort(Comparator.comparing(new hu3(5), Comparator.nullsLast(Comparator.reverseOrder())));
+        goto L23
+    L21:
+        r0.sort(Comparator.comparing(new hu3(5), Comparator.nullsLast(Comparator.naturalOrder())));
+        goto L23
+    L22:
+        r0.sort(Comparator.comparing(new hu3(4)));
+    L23:
+        r3.b(r0, null);
     }
 }

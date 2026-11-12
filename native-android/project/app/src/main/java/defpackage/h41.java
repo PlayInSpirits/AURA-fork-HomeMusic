@@ -9,33 +9,36 @@ public final /* synthetic */ class h41 implements Executor {
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ h41(int i, Object obj) {
-        this.n = i;
-        this.o = obj;
+    public /* synthetic */ h41(int r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // java.util.concurrent.Executor
-    public final void execute(Runnable runnable) {
-        int i = this.n;
-        Object obj = this.o;
-        switch (i) {
-            case 0:
-                ((yp4) obj).d(runnable);
-                break;
-            case 1:
-                f35.W(((bl2) obj).u, runnable);
-                break;
-            case 2:
-                f35.W(((lo2) obj).q, runnable);
-                break;
-            default:
-                yp4 yp4Var = ((qe4) obj).e;
-                if (yp4Var.a.getLooper() != Looper.myLooper()) {
-                    yp4Var.d(runnable);
-                } else {
-                    runnable.run();
-                }
-                break;
-        }
+    public final void execute(Runnable r3) {
+        int r0 = this.n;
+        Object r2 = this.o;
+        switch(r0) {
+            case 0: goto L13;
+            case 1: goto L11;
+            case 2: goto L9;
+            default: goto L4;
+        };
+    L4:
+        yp4 r4 = ((qe4) r2).e;
+        if (r4.a.getLooper() != Looper.myLooper()) goto L7;
+        r3.run();
+        return;
+    L7:
+        r4.d(r3);
+        return;
+    L9:
+        f35.W(((lo2) r2).q, r3);
+        return;
+    L11:
+        f35.W(((bl2) r2).u, r3);
+        return;
+    L13:
+        ((yp4) r2).d(r3);
     }
 }

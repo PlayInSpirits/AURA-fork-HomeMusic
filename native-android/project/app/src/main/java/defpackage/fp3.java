@@ -6,24 +6,31 @@ public final class fp3 {
     public final String a;
     public final Long b;
 
-    public fp3(String str, Long l) {
-        this.a = str;
-        this.b = l;
+    public fp3(String r1, Long r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof fp3)) {
-            return false;
-        }
-        fp3 fp3Var = (fp3) obj;
-        return this.a.equals(fp3Var.a) && this.b.equals(fp3Var.b);
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof fp3) == false) goto L16;
+        fp3 r4 = (fp3) r3;
+        if (this.a.equals(r4.a) == true) goto L11;
+        return false;
+    L11:
+        if (this.b.equals(r4.b) == true) goto L14;
+        return false;
+    L14:
+        return true;
+    L16:
+        return false;
     }
 
     public final int hashCode() {
-        return this.b.hashCode() + (this.a.hashCode() * 31);
+        int r0 = this.a.hashCode() * 31;
+        return this.b.hashCode() + r0;
     }
 
     public final String toString() {

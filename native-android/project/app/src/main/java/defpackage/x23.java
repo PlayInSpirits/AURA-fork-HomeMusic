@@ -5,11 +5,17 @@ package defpackage;
 public final class x23 {
     public boolean a;
     public boolean b;
+    public int c;
     public boolean d;
     public boolean e;
-    public int c = -1;
-    public int f = -1;
-    public int g = -1;
+    public int f;
+    public int g;
+
+    public x23() {
+        this.c = -1;
+        this.f = -1;
+        this.g = -1;
+    }
 
     public final y23 a() {
         return new y23(this.a, this.b, this.c, this.d, this.e, this.f, this.g, -1, -1);

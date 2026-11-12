@@ -4,8 +4,9 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class i64 extends a6 implements if1 {
     @Override // defpackage.if1
-    public final Object invoke(Object obj) {
-        ((f13) this.n).b((j64) obj);
+    public final Object invoke(Object r1) {
+        f13 r0 = (f13) this.n;
+        r0.b((j64) r1);
         return j15.a;
     }
 }

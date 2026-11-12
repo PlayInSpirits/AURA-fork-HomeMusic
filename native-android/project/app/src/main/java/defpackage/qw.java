@@ -8,50 +8,58 @@ import java.util.ArrayDeque;
 public final class qw {
     public final ArrayDeque a;
 
-    public qw(int i) {
-        switch (i) {
-            case 1:
-                this.a = new ArrayDeque(16);
-                break;
-            default:
-                this.a = new ArrayDeque(0);
-                break;
-        }
+    public qw(int r2) {
+        switch(r2) {
+            case 1: goto L5;
+            default: goto L3;
+        };
+    L3:
+        this.a = new ArrayDeque(0);
+        return;
+    L5:
+        this.a = new ArrayDeque(16);
     }
 
-    public synchronized void a(di1 di1Var) {
-        di1Var.b = null;
-        di1Var.c = null;
-        this.a.offer(di1Var);
+    public synchronized void a(di1 r2) {
+        monitor-enter(this);
+        r2.b = null;     // Catch: Throwable -> L7
+        r2.c = null;     // Catch: Throwable -> L7
+        this.a.offer(r2);     // Catch: Throwable -> L7
+        monitor-exit(this);
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
     public void b() {
-        ArrayDeque arrayDeque = this.a;
-        if (arrayDeque.isEmpty()) {
-            return;
-        }
-        throw new IOException("data item not completed, stackSize: " + arrayDeque.size() + " scope: " + d());
+        ArrayDeque r0 = this.a;
+        if (r0.isEmpty() == false) goto L6;
+        return;
+    L6:
+        throw new IOException("data item not completed, stackSize: " + r0.size() + " scope: " + d());
     }
 
-    public void c(long j) {
-        long jD = d();
-        if (jD != j) {
-            if (jD != -1) {
-                if (jD != -2) {
-                    return;
-                } else {
-                    jD = -2;
-                }
-            }
-            throw new IOException("expected non-string scope or scope " + j + " but found " + jD);
-        }
+    public void c(long r5) {
+        long r0 = d();
+        if (r0 != r5) goto L5;
+        return;
+    L5:
+        if (r0 == (-1)) goto L11;
+        if (r0 != (-2)) goto L13;
+        r0 = -2;
+        goto L11
+    L13:
+        return;
+    L11:
+        throw new IOException("expected non-string scope or scope " + r5 + " but found " + r0);
     }
 
     public long d() {
-        ArrayDeque arrayDeque = this.a;
-        if (arrayDeque.isEmpty()) {
-            return 0L;
-        }
-        return ((Long) arrayDeque.peek()).longValue();
+        ArrayDeque r2 = this.a;
+        if (r2.isEmpty() == false) goto L7;
+        return 0;
+    L7:
+        return ((Long) r2.peek()).longValue();
     }
 }

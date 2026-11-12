@@ -5,94 +5,111 @@ import android.os.Handler;
 import android.text.TextUtils;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class dk1 implements a64, c93, w21 {
-    public static final String B = cx.i("GreedyScheduler");
+    public static final String B = null;
     public final na4 A;
     public final Context n;
+    public final HashMap o;
     public final do0 p;
     public boolean q;
+    public final Object r;
+    public final qr2 s;
     public final pq3 t;
     public final rm3 u;
     public final r90 v;
+    public final HashMap w;
     public Boolean x;
     public final c52 y;
     public final bq4 z;
-    public final HashMap o = new HashMap();
-    public final Object r = new Object();
-    public final qr2 s = new qr2(new nh0(1));
-    public final HashMap w = new HashMap();
 
-    public dk1(Context context, r90 r90Var, z40 z40Var, pq3 pq3Var, rm3 rm3Var, bq4 bq4Var) {
-        this.n = context;
-        hg3 hg3Var = r90Var.g;
-        this.p = new do0(this, hg3Var, r90Var.d);
-        hg3Var.getClass();
-        na4 na4Var = new na4();
-        na4Var.n = hg3Var;
-        na4Var.o = rm3Var;
-        na4Var.p = new Object();
-        na4Var.q = new LinkedHashMap();
-        this.A = na4Var;
-        this.z = bq4Var;
-        this.y = new c52(z40Var);
-        this.v = r90Var;
-        this.t = pq3Var;
-        this.u = rm3Var;
+    static {
+        B = cx.i("GreedyScheduler");
+    }
+
+    public dk1(Context r3, r90 r4, z40 r5, pq3 r6, rm3 r7, bq4 r8) {
+        this.o = new HashMap();
+        this.r = new Object();
+        this.s = new qr2(new nh0(1));
+        this.w = new HashMap();
+        this.n = r3;
+        hg3 r9 = r4.g;
+        this.p = new do0(this, r9, r4.d);
+        r9.getClass();
+        na4 r0 = new na4();
+        r0.n = r9;
+        r0.o = r7;
+        r0.p = new Object();
+        r0.q = new LinkedHashMap();
+        this.A = r0;
+        this.z = r8;
+        this.y = new c52(r5);
+        this.v = r4;
+        this.t = r6;
+        this.u = r7;
     }
 
     @Override // defpackage.c93
-    public final void a(dd5 dd5Var, tc0 tc0Var) {
-        rc5 rc5VarM = q05.m(dd5Var);
-        boolean z = tc0Var instanceof rc0;
-        rm3 rm3Var = this.u;
-        na4 na4Var = this.A;
-        String str = B;
-        qr2 qr2Var = this.s;
-        if (z) {
-            if (qr2Var.e(rc5VarM)) {
-                return;
-            }
-            cx.f().b(str, "Constraints met: Scheduling work ID " + rc5VarM);
-            gl4 gl4VarW = qr2Var.w(rc5VarM);
-            na4Var.R(gl4VarW);
-            rm3Var.getClass();
-            rm3Var.Q(gl4VarW, null);
-            return;
-        }
-        cx.f().b(str, "Constraints not met: Cancelling work ID " + rc5VarM);
-        gl4 gl4VarS = qr2Var.s(rc5VarM);
-        if (gl4VarS != null) {
-            na4Var.i(gl4VarS);
-            int i = ((sc0) tc0Var).a;
-            rm3Var.getClass();
-            rm3Var.R(gl4VarS, i);
-        }
+    public final void a(dd5 r7, tc0 r8) {
+        rc5 r9 = q05.m(r7);
+        boolean r0 = r8 instanceof rc0;
+        rm3 r1 = this.u;
+        na4 r2 = this.A;
+        String r3 = B;
+        qr2 r6 = this.s;
+        if (r0 == true) goto L5;
+        cx.f().b(r3, "Constraints not met: Cancelling work ID " + r9);
+        gl4 r10 = r6.s(r9);
+        if (r10 == null) goto L13;
+        r2.i(r10);
+        int r11 = ((sc0) r8).a;
+        r1.getClass();
+        r1.R(r10, r11);
+        return;
+    L13:
+        return;
+    L5:
+        if (r6.e(r9) == true) goto L12;
+        cx.f().b(r3, "Constraints met: Scheduling work ID " + r9);
+        gl4 r12 = r6.w(r9);
+        r2.R(r12);
+        r1.getClass();
+        r1.Q(r12, null);
+        return;
     }
 
     @Override // defpackage.w21
-    public final void b(rc5 rc5Var, boolean z) {
-        s22 s22Var;
-        gl4 gl4VarS = this.s.s(rc5Var);
-        if (gl4VarS != null) {
-            this.A.i(gl4VarS);
-        }
-        synchronized (this.r) {
-            s22Var = (s22) this.o.remove(rc5Var);
-        }
-        if (s22Var != null) {
-            cx.f().b(B, "Stopping tracking for " + rc5Var);
-            s22Var.f(null);
-        }
-        if (z) {
-            return;
-        }
-        synchronized (this.r) {
-            this.w.remove(rc5Var);
-        }
+    public final void b(rc5 r6, boolean r7) {
+        gl4 r0 = this.s.s(r6);
+        if (r0 == null) goto L5;
+        this.A.i(r0);
+    L5:
+        Object r1 = this.r;
+        monitor-enter(r1);
+        s22 r2 = (s22) this.o.remove(r6);     // Catch: Throwable -> L21
+        monitor-exit(r1);     // Catch: Throwable -> L21
+        if (r2 == null) goto L11;
+        cx.f().b(B, "Stopping tracking for " + r6);
+        r2.f(null);
+    L11:
+        if (r7 == true) goto L20;
+        Object r8 = this.r;
+        monitor-enter(r8);
+        this.w.remove(r6);     // Catch: Throwable -> L17
+        monitor-exit(r8);     // Catch: Throwable -> L17
+        return;
+    L17:
+        th = move-exception;
+        throw th;
+    L20:
+        return;
+    L21:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.a64
@@ -101,122 +118,137 @@ public final class dk1 implements a64, c93, w21 {
     }
 
     @Override // defpackage.a64
-    public final void d(String str) {
-        Runnable runnable;
-        if (this.x == null) {
-            this.x = Boolean.valueOf(nq3.a(this.n, this.v));
-        }
-        boolean zBooleanValue = this.x.booleanValue();
-        String str2 = B;
-        if (!zBooleanValue) {
-            cx.f().g(str2, "Ignoring schedule request in non-main process");
-            return;
-        }
-        if (!this.q) {
-            this.t.a(this);
-            this.q = true;
-        }
-        cx.f().b(str2, "Cancelling work ID " + str);
-        do0 do0Var = this.p;
-        if (do0Var != null && (runnable = (Runnable) do0Var.d.remove(str)) != null) {
-            ((Handler) do0Var.b.o).removeCallbacks(runnable);
-        }
-        for (gl4 gl4Var : this.s.t(str)) {
-            this.A.i(gl4Var);
-            rm3 rm3Var = this.u;
-            rm3Var.getClass();
-            rm3Var.R(gl4Var, -512);
-        }
+    public final void d(String r5) {
+        if (this.x != null) goto L5;
+        this.x = Boolean.valueOf(nq3.a(this.n, this.v));
+    L5:
+        boolean r0 = this.x.booleanValue();
+        String r1 = B;
+        if (r0 == true) goto L10;
+        cx.f().g(r1, "Ignoring schedule request in non-main process");
+        return;
+    L10:
+        if (this.q == true) goto L12;
+        this.t.a(this);
+        this.q = true;
+    L12:
+        cx.f().b(r1, "Cancelling work ID " + r5);
+        do0 r2 = this.p;
+        if (r2 == null) goto L17;
+        Runnable r3 = (Runnable) r2.d.remove(r5);
+        if (r3 == null) goto L17;
+        ((Handler) r2.b.o).removeCallbacks(r3);
+    L17:
+        Iterator r6 = this.s.t(r5).iterator();
+    L19:
+        if (r6.hasNext() == false) goto L21;
+        gl4 r4 = (gl4) r6.next();
+        this.A.i(r4);
+        rm3 r7 = this.u;
+        r7.getClass();
+        r7.R(r4, -512);
+        goto L19
     }
 
     @Override // defpackage.a64
-    public final void e(dd5... dd5VarArr) {
-        long jMax;
-        if (this.x == null) {
-            this.x = Boolean.valueOf(nq3.a(this.n, this.v));
-        }
-        if (!this.x.booleanValue()) {
-            cx.f().g(B, "Ignoring schedule request in a secondary process");
-            return;
-        }
-        if (!this.q) {
-            this.t.a(this);
-            this.q = true;
-        }
-        HashSet<dd5> hashSet = new HashSet();
-        HashSet hashSet2 = new HashSet();
-        for (dd5 dd5Var : dd5VarArr) {
-            if (!this.s.e(q05.m(dd5Var))) {
-                synchronized (this.r) {
-                    try {
-                        rc5 rc5VarM = q05.m(dd5Var);
-                        ck1 ck1Var = (ck1) this.w.get(rc5VarM);
-                        if (ck1Var == null) {
-                            int i = dd5Var.k;
-                            this.v.d.getClass();
-                            ck1Var = new ck1(i, System.currentTimeMillis());
-                            this.w.put(rc5VarM, ck1Var);
-                        }
-                        jMax = (((long) Math.max((dd5Var.k - ck1Var.a) - 5, 0)) * 30000) + ck1Var.b;
-                    } catch (Throwable th) {
-                        throw th;
-                    }
-                }
-                long jMax2 = Math.max(dd5Var.a(), jMax);
-                this.v.d.getClass();
-                long jCurrentTimeMillis = System.currentTimeMillis();
-                if (dd5Var.b == 1) {
-                    if (jCurrentTimeMillis < jMax2) {
-                        do0 do0Var = this.p;
-                        if (do0Var != null) {
-                            hg3 hg3Var = do0Var.b;
-                            HashMap map = do0Var.d;
-                            Runnable runnable = (Runnable) map.remove(dd5Var.a);
-                            if (runnable != null) {
-                                ((Handler) hg3Var.o).removeCallbacks(runnable);
-                            }
-                            lg1 lg1Var = new lg1(do0Var, dd5Var, false, 8);
-                            map.put(dd5Var.a, lg1Var);
-                            do0Var.c.getClass();
-                            ((Handler) hg3Var.o).postDelayed(lg1Var, jMax2 - System.currentTimeMillis());
-                        }
-                    } else if (dd5Var.c()) {
-                        mc0 mc0Var = dd5Var.j;
-                        if (mc0Var.d) {
-                            cx.f().b(B, "Ignoring " + dd5Var + ". Requires device idle.");
-                        } else if (mc0Var.i.isEmpty()) {
-                            hashSet.add(dd5Var);
-                            hashSet2.add(dd5Var.a);
-                        } else {
-                            cx.f().b(B, "Ignoring " + dd5Var + ". Requires ContentUri triggers.");
-                        }
-                    } else if (!this.s.e(q05.m(dd5Var))) {
-                        cx.f().b(B, "Starting work for " + dd5Var.a);
-                        qr2 qr2Var = this.s;
-                        qr2Var.getClass();
-                        gl4 gl4VarW = qr2Var.w(q05.m(dd5Var));
-                        this.A.R(gl4VarW);
-                        rm3 rm3Var = this.u;
-                        rm3Var.getClass();
-                        rm3Var.Q(gl4VarW, null);
-                    }
-                }
-            }
-        }
-        synchronized (this.r) {
-            try {
-                if (!hashSet.isEmpty()) {
-                    cx.f().b(B, "Starting tracking for " + TextUtils.join(",", hashSet2));
-                    for (dd5 dd5Var2 : hashSet) {
-                        rc5 rc5VarM2 = q05.m(dd5Var2);
-                        if (!this.o.containsKey(rc5VarM2)) {
-                            this.o.put(rc5VarM2, lc5.a(this.y, dd5Var2, (pe0) this.z.o, this));
-                        }
-                    }
-                }
-            } catch (Throwable th2) {
-                throw th2;
-            }
-        }
+    public final void e(dd5... r18) {
+        if (this.x != null) goto L6;
+        this.x = Boolean.valueOf(nq3.a(this.n, this.v));
+    L6:
+        if (this.x.booleanValue() == true) goto L10;
+        cx.f().g(B, "Ignoring schedule request in a secondary process");
+        return;
+    L10:
+        if (this.q == true) goto L12;
+        this.t.a(this);
+        this.q = true;
+    L12:
+        HashSet r2 = new HashSet();
+        HashSet r4 = new HashSet();
+        int r5 = r18.length;
+        int r7 = 0;
+    L13:
+        if (r7 >= r5) goto L51;
+        dd5 r8 = r18[r7];
+        if (this.s.e(q05.m(r8)) == true) goto L48;
+        Object r9 = this.r;
+        monitor-enter(r9);
+        rc5 r10 = q05.m(r8);     // Catch: Throwable -> L22
+        ck1 r11 = (ck1) this.w.get(r10);     // Catch: Throwable -> L22
+        if (r11 != null) goto L24;
+        int r12 = r8.k;     // Catch: Throwable -> L22
+        this.v.d.getClass();     // Catch: Throwable -> L22
+        r11 = new ck1(r12, System.currentTimeMillis());     // Catch: Throwable -> L22
+        this.w.put(r10, r11);     // Catch: Throwable -> L22
+    L24:
+        long r13 = (((long) Math.max((r8.k - r11.a) - 5, 0)) * 30000) + r11.b;     // Catch: Throwable -> L22
+        monitor-exit(r9);     // Catch: Throwable -> L22
+        long r14 = Math.max(r8.a(), r13);
+        this.v.d.getClass();
+        long r15 = System.currentTimeMillis();
+        if (r8.b != 1) goto L48;
+        if (r15 >= r14) goto L37;
+        do0 r16 = this.p;
+        if (r16 == null) goto L48;
+        hg3 r17 = r16.b;
+        HashMap r19 = r16.d;
+        Runnable r110 = (Runnable) r19.remove(r8.a);
+        if (r110 == null) goto L35;
+        ((Handler) r17.o).removeCallbacks(r110);
+    L35:
+        lg1 r111 = new lg1(r16, r8, false, 8);
+        r19.put(r8.a, r111);
+        r16.c.getClass();
+        ((Handler) r17.o).postDelayed(r111, r14 - System.currentTimeMillis());
+        goto L48
+    L37:
+        if (r8.c() == false) goto L46;
+        mc0 r20 = r8.j;
+        if (r20.d == false) goto L42;
+        cx.f().b(B, "Ignoring " + r8 + ". Requires device idle.");
+        goto L48
+    L42:
+        if (r20.i.isEmpty() == true) goto L44;
+        cx.f().b(B, "Ignoring " + r8 + ". Requires ContentUri triggers.");
+        goto L48
+    L44:
+        r2.add(r8);
+        r4.add(r8.a);
+        goto L48
+    L46:
+        if (this.s.e(q05.m(r8)) == true) goto L48;
+        cx.f().b(B, "Starting work for " + r8.a);
+        qr2 r21 = this.s;
+        r21.getClass();
+        gl4 r22 = r21.w(q05.m(r8));
+        this.A.R(r22);
+        rm3 r23 = this.u;
+        r23.getClass();
+        r23.Q(r22, null);
+    L22:
+        th = move-exception;
+        throw th;
+    L48:
+        r7 = r7 + 1;
+        goto L13
+    L51:
+        Object r1 = this.r;
+        monitor-enter(r1);
+    L61:
+        th = move-exception;
+        throw th;
+    L54:
+        if (r2.isEmpty() == true) goto L63;
+        String r3 = TextUtils.join(",", r4);     // Catch: Throwable -> L61
+        cx.f().b(B, "Starting tracking for " + r3);     // Catch: Throwable -> L61
+        Iterator r6 = r2.iterator();     // Catch: Throwable -> L61
+    L57:
+        if (r6.hasNext() == false) goto L63;
+        dd5 r24 = (dd5) r6.next();     // Catch: Throwable -> L61
+        rc5 r25 = q05.m(r24);     // Catch: Throwable -> L61
+        if (this.o.containsKey(r25) == true) goto L57;
+        this.o.put(r25, lc5.a(this.y, r24, (pe0) this.z.o, this));     // Catch: Throwable -> L61
+    L63:
+        monitor-exit(r1);     // Catch: Throwable -> L61
     }
 }

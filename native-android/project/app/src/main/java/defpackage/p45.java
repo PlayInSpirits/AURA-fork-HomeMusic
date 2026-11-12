@@ -5,17 +5,21 @@ package defpackage;
 public final class p45 implements fe {
     public final String a;
 
-    public p45(String str) {
-        this.a = str;
+    public p45(String r1) {
+        this.a = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj instanceof p45) {
-            return this.a.equals(((p45) obj).a);
-        }
+    public final boolean equals(Object r2) {
+        if (this != r2) goto L5;
+        return true;
+    L5:
+        if ((r2 instanceof p45) == false) goto L13;
+        String r3 = ((p45) r2).a;
+        if (this.a.equals(r3) == true) goto L11;
+        return false;
+    L11:
+        return true;
+    L13:
         return false;
     }
 

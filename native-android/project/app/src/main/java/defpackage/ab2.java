@@ -19,46 +19,54 @@ public final class ab2 {
     public List k;
     public boolean l;
 
-    public final void a(View view) {
-        int iD;
-        int size = this.k.size();
-        View view2 = null;
-        int i = Integer.MAX_VALUE;
-        for (int i2 = 0; i2 < size; i2++) {
-            View view3 = ((cx3) this.k.get(i2)).a;
-            nw3 nw3Var = (nw3) view3.getLayoutParams();
-            if (view3 != view && !nw3Var.a.j() && (iD = (nw3Var.a.d() - this.d) * this.e) >= 0 && iD < i) {
-                view2 = view3;
-                if (iD == 0) {
-                    break;
-                } else {
-                    i = iD;
-                }
-            }
-        }
-        if (view2 == null) {
-            this.d = -1;
-        } else {
-            this.d = ((nw3) view2.getLayoutParams()).a.d();
-        }
+    public final void a(View r8) {
+        int r0 = this.k.size();
+        View r1 = null;
+        int r2 = Integer.MAX_VALUE;
+        int r3 = 0;
+    L3:
+        if (r3 >= r0) goto L18;
+        View r4 = ((cx3) this.k.get(r3)).a;
+        nw3 r5 = (nw3) r4.getLayoutParams();
+        if (r4 == r8) goto L17;
+        if (r5.a.j() == true) goto L17;
+        int r6 = (r5.a.d() - this.d) * this.e;
+        if (r6 < 0) goto L17;
+        if (r6 >= r2) goto L17;
+        r1 = r4;
+        if (r6 == 0) goto L18;
+        r2 = r6;
+    L17:
+        r3 = r3 + 1;
+    L18:
+        if (r1 != null) goto L21;
+        this.d = -1;
+        return;
+    L21:
+        this.d = ((nw3) r1.getLayoutParams()).a.d();
     }
 
-    public final View b(hm2 hm2Var) {
-        List list = this.k;
-        if (list == null) {
-            View view = hm2Var.k(this.d, Long.MAX_VALUE).a;
-            this.d += this.e;
-            return view;
-        }
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            View view2 = ((cx3) this.k.get(i)).a;
-            nw3 nw3Var = (nw3) view2.getLayoutParams();
-            if (!nw3Var.a.j() && this.d == nw3Var.a.d()) {
-                a(view2);
-                return view2;
-            }
-        }
+    public final View b(hm2 r5) {
+        List r0 = this.k;
+        if (r0 == null) goto L16;
+        int r6 = r0.size();
+        int r1 = 0;
+    L5:
+        if (r1 >= r6) goto L14;
+        View r2 = ((cx3) this.k.get(r1)).a;
+        nw3 r3 = (nw3) r2.getLayoutParams();
+        if (r3.a.j() == true) goto L13;
+        if (this.d != r3.a.d()) goto L13;
+        a(r2);
+        return r2;
+    L13:
+        r1 = r1 + 1;
+        goto L5
+    L14:
         return null;
+    L16:
+        View r7 = r5.k(this.d, Long.MAX_VALUE).a;
+        this.d += this.e;
+        return r7;
     }
 }

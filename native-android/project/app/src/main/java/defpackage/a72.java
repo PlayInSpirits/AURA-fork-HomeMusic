@@ -1,27 +1,25 @@
 package defpackage;
 
-/* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
-/* JADX WARN: Unknown enum class pattern. Please report as an issue! */
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
-public final class a72 {
-    public static final a72 n;
-    public static final a72 o;
-    public static final a72 p;
-    public static final /* synthetic */ a72[] q;
+public final enum a72 extends Enum {
+    public static final a72 n = null;
+    public static final a72 o = null;
+    public static final a72 p = null;
+    public static final /* synthetic */ a72[] q = null;
 
     static {
-        a72 a72Var = new a72("InMeasureBlock", 0);
-        n = a72Var;
-        a72 a72Var2 = new a72("InLayoutBlock", 1);
-        o = a72Var2;
-        a72 a72Var3 = new a72("NotUsed", 2);
-        p = a72Var3;
-        q = new a72[]{a72Var, a72Var2, a72Var3};
+        a72 r0 = new a72("InMeasureBlock", 0);
+        n = r0;
+        a72 r1 = new a72("InLayoutBlock", 1);
+        o = r1;
+        a72 r2 = new a72("NotUsed", 2);
+        p = r2;
+        q = new a72[]{r0, r1, r2};
     }
 
-    public static a72 valueOf(String str) {
-        return (a72) Enum.valueOf(a72.class, str);
+    public static a72 valueOf(String r1) {
+        return (a72) Enum.valueOf(a72.class, r1);
     }
 
     public static a72[] values() {

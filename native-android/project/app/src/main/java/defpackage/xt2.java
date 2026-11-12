@@ -9,24 +9,25 @@ public final /* synthetic */ class xt2 implements Runnable {
     public final /* synthetic */ zt2 o;
     public final /* synthetic */ Pair p;
 
-    public /* synthetic */ xt2(zt2 zt2Var, Pair pair, int i) {
-        this.n = i;
-        this.o = zt2Var;
-        this.p = pair;
+    public /* synthetic */ xt2(zt2 r1, Pair r2, int r3) {
+        this.n = r3;
+        this.o = r1;
+        this.p = r2;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        Pair pair = this.p;
-        zt2 zt2Var = this.o;
-        switch (i) {
-            case 0:
-                ((nj0) zt2Var.o.i).M(((Integer) pair.first).intValue(), (mt2) pair.second);
-                break;
-            default:
-                ((nj0) zt2Var.o.i).z(((Integer) pair.first).intValue(), (mt2) pair.second);
-                break;
-        }
+        int r0 = this.n;
+        Pair r1 = this.p;
+        zt2 r2 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((nj0) r2.o.i).z(((Integer) r1.first).intValue(), (mt2) r1.second);
+        return;
+    L6:
+        ((nj0) r2.o.i).M(((Integer) r1.first).intValue(), (mt2) r1.second);
     }
 }

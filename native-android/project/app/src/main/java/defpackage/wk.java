@@ -11,32 +11,33 @@ public final /* synthetic */ class wk implements MediaCodec.OnFrameRenderedListe
     public final /* synthetic */ int a;
     public final /* synthetic */ nk2 b;
 
-    public /* synthetic */ wk(ak2 ak2Var, nk2 nk2Var, int i) {
-        this.a = i;
-        this.b = nk2Var;
+    public /* synthetic */ wk(ak2 r1, nk2 r2, int r3) {
+        this.a = r3;
+        this.b = r2;
     }
 
     @Override // android.media.MediaCodec.OnFrameRenderedListener
-    public final void onFrameRendered(MediaCodec mediaCodec, long j, long j2) {
-        int i = this.a;
-        nk2 nk2Var = this.b;
-        switch (i) {
-            case 0:
-                Handler handler = nk2Var.n;
-                if (Build.VERSION.SDK_INT >= 30) {
-                    nk2Var.a(j);
-                } else {
-                    handler.sendMessageAtFrontOfQueue(Message.obtain(handler, 0, (int) (j >> 32), (int) j));
-                }
-                break;
-            default:
-                Handler handler2 = nk2Var.n;
-                if (Build.VERSION.SDK_INT >= 30) {
-                    nk2Var.a(j);
-                } else {
-                    handler2.sendMessageAtFrontOfQueue(Message.obtain(handler2, 0, (int) (j >> 32), (int) j));
-                }
-                break;
-        }
+    public final void onFrameRendered(MediaCodec r3, long r4, long r6) {
+        int r5 = this.a;
+        nk2 r2 = this.b;
+        switch(r5) {
+            case 0: goto L9;
+            default: goto L4;
+        };
+    L4:
+        Handler r7 = r2.n;
+        if (Build.VERSION.SDK_INT >= 30) goto L7;
+        r7.sendMessageAtFrontOfQueue(Message.obtain(r7, 0, (int) (r4 >> 32), (int) r4));
+        return;
+    L7:
+        r2.a(r4);
+        return;
+    L9:
+        Handler r8 = r2.n;
+        if (Build.VERSION.SDK_INT >= 30) goto L12;
+        r8.sendMessageAtFrontOfQueue(Message.obtain(r8, 0, (int) (r4 >> 32), (int) r4));
+        return;
+    L12:
+        r2.a(r4);
     }
 }

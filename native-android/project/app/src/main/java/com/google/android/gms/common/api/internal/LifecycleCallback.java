@@ -12,30 +12,30 @@ import defpackage.x92;
 public class LifecycleCallback {
     public final x92 n;
 
-    public LifecycleCallback(x92 x92Var) {
-        this.n = x92Var;
+    public LifecycleCallback(x92 r1) {
+        this.n = r1;
     }
 
-    private static x92 getChimeraLifecycleFragmentImpl(t92 t92Var) {
+    private static x92 getChimeraLifecycleFragmentImpl(t92 r1) {
         throw new IllegalStateException("Method not available in SDK.");
     }
 
     public final Activity a() {
-        Activity activityE = this.n.e();
-        ji2.m(activityE);
-        return activityE;
+        Activity r0 = this.n.e();
+        ji2.m(r0);
+        return r0;
     }
 
-    public void b(int i, int i2, Intent intent) {
+    public void b(int r1, int r2, Intent r3) {
     }
 
-    public void c(Bundle bundle) {
+    public void c(Bundle r1) {
     }
 
     public void d() {
     }
 
-    public void e(Bundle bundle) {
+    public void e(Bundle r1) {
     }
 
     public void f() {

@@ -11,10 +11,10 @@ public final class wc2 extends AbstractSequentialList implements Serializable {
     public final List n;
     public final eg1 o;
 
-    public wc2(eg1 eg1Var, List list) {
-        list.getClass();
-        this.n = list;
-        this.o = eg1Var;
+    public wc2(eg1 r1, List r2) {
+        r2.getClass();
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
@@ -23,13 +23,13 @@ public final class wc2 extends AbstractSequentialList implements Serializable {
     }
 
     @Override // java.util.AbstractSequentialList, java.util.AbstractList, java.util.List
-    public final ListIterator listIterator(int i) {
-        return new uc2(this, this.n.listIterator(i), 1);
+    public final ListIterator listIterator(int r3) {
+        return new uc2(this, this.n.listIterator(r3), 1);
     }
 
     @Override // java.util.AbstractList
-    public final void removeRange(int i, int i2) {
-        this.n.subList(i, i2).clear();
+    public final void removeRange(int r1, int r2) {
+        this.n.subList(r1, r2).clear();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List

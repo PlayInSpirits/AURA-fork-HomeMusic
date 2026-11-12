@@ -8,43 +8,46 @@ public final class og0 extends DataSetObserver {
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ og0(int i, Object obj) {
-        this.a = i;
-        this.b = obj;
+    public /* synthetic */ og0(int r1, Object r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
     @Override // android.database.DataSetObserver
     public final void onChanged() {
-        int i = this.a;
-        Object obj = this.b;
-        switch (i) {
-            case 0:
-                co4 co4Var = (co4) obj;
-                co4Var.n = true;
-                co4Var.notifyDataSetChanged();
-                break;
-            default:
-                bc2 bc2Var = (bc2) obj;
-                if (bc2Var.M.isShowing()) {
-                    bc2Var.f();
-                }
-                break;
-        }
+        int r0 = this.a;
+        Object r1 = this.b;
+        switch(r0) {
+            case 0: goto L8;
+            default: goto L4;
+        };
+    L4:
+        bc2 r2 = (bc2) r1;
+        if (r2.M.isShowing() == false) goto L10;
+        r2.f();
+        return;
+    L10:
+        return;
+    L8:
+        co4 r3 = (co4) r1;
+        r3.n = true;
+        r3.notifyDataSetChanged();
     }
 
     @Override // android.database.DataSetObserver
     public final void onInvalidated() {
-        int i = this.a;
-        Object obj = this.b;
-        switch (i) {
-            case 0:
-                co4 co4Var = (co4) obj;
-                co4Var.n = false;
-                co4Var.notifyDataSetInvalidated();
-                break;
-            default:
-                ((bc2) obj).dismiss();
-                break;
-        }
+        int r0 = this.a;
+        Object r1 = this.b;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((bc2) r1).dismiss();
+        return;
+    L6:
+        co4 r2 = (co4) r1;
+        r2.n = false;
+        r2.notifyDataSetInvalidated();
     }
 }

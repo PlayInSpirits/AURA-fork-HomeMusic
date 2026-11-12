@@ -10,7 +10,7 @@ public interface ah {
 
     int c();
 
-    void d(int i);
+    void d(int r1);
 
     void dismiss();
 
@@ -18,17 +18,17 @@ public interface ah {
 
     Drawable g();
 
-    void h(CharSequence charSequence);
+    void h(CharSequence r1);
 
-    void i(Drawable drawable);
+    void i(Drawable r1);
 
-    void j(int i);
+    void j(int r1);
 
-    void m(int i);
+    void m(int r1);
 
-    void n(int i, int i2);
+    void n(int r1, int r2);
 
     int o();
 
-    void p(ListAdapter listAdapter);
+    void p(ListAdapter r1);
 }

@@ -11,7 +11,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.ListIterator;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -20,47 +19,71 @@ public class rd1 extends t43 {
     public final Context c;
     public final ld1 d;
     public final int e;
-    public final LinkedHashSet f = new LinkedHashSet();
-    public final ArrayList g = new ArrayList();
-    public final pd1 h = new pd1(0, this);
-    public final ir0 i = new ir0(1, this);
+    public final LinkedHashSet f;
+    public final ArrayList g;
+    public final pd1 h;
+    public final ir0 i;
 
     /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
     public static final class a extends x65 {
         public WeakReference b;
 
+        public a() {
+        }
+
         @Override // defpackage.x65
         public final void b() {
-            WeakReference weakReference = this.b;
-            if (weakReference == null) {
-                h12.Q("completeTransition");
-                throw null;
-            }
-            gf1 gf1Var = (gf1) weakReference.get();
-            if (gf1Var != null) {
-                gf1Var.invoke();
-            }
+            WeakReference r0 = this.b;
+            if (r0 == null) goto L8;
+            gf1 r1 = (gf1) r0.get();
+            if (r1 == null) goto L10;
+            r1.invoke();
+            return;
+        L10:
+            return;
+        L8:
+            h12.Q("completeTransition");
+            throw null;
         }
     }
 
-    public rd1(Context context, ld1 ld1Var, int i) {
-        this.c = context;
-        this.d = ld1Var;
-        this.e = i;
+    public rd1(Context r1, ld1 r2, int r3) {
+        this.c = r1;
+        this.d = r2;
+        this.e = r3;
+        this.f = new LinkedHashSet();
+        this.g = new ArrayList();
+        this.h = new pd1(0, this);
+        this.i = new ir0(1, this);
     }
 
-    public static void k(rd1 rd1Var, String str, int i) {
-        boolean z = (i & 2) == 0;
-        boolean z2 = (i & 4) != 0;
-        ArrayList arrayList = rd1Var.g;
-        if (z2) {
-            v40.p0(arrayList, new td1(0, str));
-        }
-        arrayList.add(new kd3(str, Boolean.valueOf(z)));
+    public static void k(rd1 r3, String r4, int r5) {
+        boolean r1 = true;
+        if ((r5 & 2) == 0) goto L5;
+        boolean r0 = false;
+    L7:
+        if ((r5 & 4) != 0) goto L10;
+        r1 = false;
+    L10:
+        ArrayList r6 = r3.g;
+        if (r1 == false) goto L13;
+        v40.p0(r6, new td1(0, r4));
+    L13:
+        r6.add(new kd3(r4, Boolean.valueOf(r0)));
+        return;
+    L5:
+        r0 = true;
+        goto L7
     }
 
     public static boolean n() {
-        return Log.isLoggable("FragmentManager", 2) || Log.isLoggable("FragmentNavigator", 2);
+        if (Log.isLoggable("FragmentManager", 2) == false) goto L5;
+        return true;
+    L5:
+        if (Log.isLoggable("FragmentNavigator", 2) == true) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     @Override // defpackage.t43
@@ -69,276 +92,285 @@ public class rd1 extends t43 {
     }
 
     @Override // defpackage.t43
-    public final void d(List list, y23 y23Var) {
-        ld1 ld1Var = this.d;
-        if (ld1Var.N()) {
-            Log.i("FragmentNavigator", "Ignoring navigate() call: FragmentManager has already saved its state");
-            return;
-        }
-        Iterator it = list.iterator();
-        while (it.hasNext()) {
-            a23 a23Var = (a23) it.next();
-            boolean zIsEmpty = ((List) b().e.n.getValue()).isEmpty();
-            int i = 0;
-            if (y23Var == null || zIsEmpty || !y23Var.b || !this.f.remove(a23Var.s)) {
-                po poVarM = m(a23Var, y23Var);
-                String str = a23Var.s;
-                if (!zIsEmpty) {
-                    a23 a23Var2 = (a23) q40.D0((List) b().e.n.getValue());
-                    if (a23Var2 != null) {
-                        k(this, a23Var2.s, 6);
-                    }
-                    k(this, str, 6);
-                    poVarM.c(str);
-                }
-                poVarM.e(false);
-                if (n()) {
-                    Log.v("FragmentNavigator", "Calling pushWithTransition via navigate() on entry " + a23Var);
-                }
-                b().h(a23Var);
-            } else {
-                ld1Var.w(new kd1(ld1Var, a23Var.s, i), false);
-                b().h(a23Var);
-            }
-        }
+    public final void d(List r9, y23 r10) {
+        ld1 r0 = this.d;
+        if (r0.N() == false) goto L6;
+        Log.i("FragmentNavigator", "Ignoring navigate() call: FragmentManager has already saved its state");
+        return;
+    L6:
+        Iterator r11 = r9.iterator();
+    L8:
+        if (r11.hasNext() == false) goto L27;
+        a23 r1 = (a23) r11.next();
+        boolean r3 = ((List) b().e.n.getValue()).isEmpty();
+        int r4 = 0;
+        if (r10 == null) goto L17;
+        if (r3 == true) goto L17;
+        if (r10.b == false) goto L17;
+        if (this.f.remove(r1.s) == false) goto L17;
+        r0.w(new kd1(r0, r1.s, r4), false);
+        b().h(r1);
+    L17:
+        po r5 = m(r1, r10);
+        String r6 = r1.s;
+        if (r3 == true) goto L23;
+        a23 r7 = (a23) q40.D0((List) b().e.n.getValue());
+        if (r7 == null) goto L22;
+        k(this, r7.s, 6);
+    L22:
+        k(this, r6, 6);
+        r5.c(r6);
+    L23:
+        r5.e(false);
+        if (n() == false) goto L26;
+        Log.v("FragmentNavigator", "Calling pushWithTransition via navigate() on entry " + r1);
+    L26:
+        b().h(r1);
+        goto L8
     }
 
     @Override // defpackage.t43
-    public final void e(final d23 d23Var) {
-        this.a = d23Var;
+    public final void e(final d23 r4) {
+        this.a = r4;
         this.b = true;
-        if (n()) {
-            Log.v("FragmentNavigator", "onAttach");
-        }
-        xd1 xd1Var = new xd1() { // from class: qd1
-            @Override // defpackage.xd1
-            public final void a(ld1 ld1Var, kc1 kc1Var) {
-                Object objPrevious;
-                ld1Var.getClass();
-                kc1Var.getClass();
-                d23 d23Var2 = d23Var;
-                List list = (List) d23Var2.e.n.getValue();
-                ListIterator listIterator = list.listIterator(list.size());
-                do {
-                    if (!listIterator.hasPrevious()) {
-                        objPrevious = null;
-                        break;
-                    }
-                    objPrevious = listIterator.previous();
-                } while (!h12.c(((a23) objPrevious).s, kc1Var.L));
-                a23 a23Var = (a23) objPrevious;
-                boolean zN = rd1.n();
-                rd1 rd1Var = this;
-                if (zN) {
-                    Log.v("FragmentNavigator", "Attaching fragment " + kc1Var + " associated with entry " + a23Var + " to FragmentManager " + rd1Var.d);
-                }
-                if (a23Var != null) {
-                    kc1Var.e0.e(kc1Var, new wd1(new ud1(rd1Var, kc1Var, a23Var), 0));
-                    kc1Var.c0.a(rd1Var.h);
-                    rd1Var.l(kc1Var, a23Var, d23Var2);
-                }
-            }
-        };
-        ld1 ld1Var = this.d;
-        ld1Var.o.add(xd1Var);
-        vd1 vd1Var = new vd1(d23Var, this);
-        if (ld1Var.m == null) {
-            ld1Var.m = new ArrayList();
-        }
-        ld1Var.m.add(vd1Var);
+        if (n() == false) goto L5;
+        Log.v("FragmentNavigator", "onAttach");
+    L5:
+        xd1 r0 = new qd1(r4, this);
+        ld1 r1 = this.d;
+        r1.o.add(r0);
+        vd1 r2 = new vd1(r4, this);
+        if (r1.m != null) goto L8;
+        r1.m = new ArrayList();
+    L8:
+        r1.m.add(r2);
     }
 
     @Override // defpackage.t43
-    public final void f(a23 a23Var) {
-        String str = a23Var.s;
-        ld1 ld1Var = this.d;
-        if (ld1Var.N()) {
-            Log.i("FragmentNavigator", "Ignoring onLaunchSingleTop() call: FragmentManager has already saved its state");
-            return;
-        }
-        po poVarM = m(a23Var, null);
-        List list = (List) b().e.n.getValue();
-        if (list.size() > 1) {
-            a23 a23Var2 = (a23) q40.y0(list, list.size() - 2);
-            if (a23Var2 != null) {
-                k(this, a23Var2.s, 6);
-            }
-            k(this, str, 4);
-            ld1Var.w(new jd1(ld1Var, str, -1), false);
-            k(this, str, 2);
-            poVarM.c(str);
-        }
-        poVarM.e(false);
-        b().c(a23Var);
+    public final void f(a23 r8) {
+        String r0 = r8.s;
+        ld1 r1 = this.d;
+        if (r1.N() == false) goto L6;
+        Log.i("FragmentNavigator", "Ignoring onLaunchSingleTop() call: FragmentManager has already saved its state");
+        return;
+    L6:
+        po r2 = m(r8, null);
+        List r3 = (List) b().e.n.getValue();
+        if (r3.size() <= 1) goto L12;
+        a23 r4 = (a23) q40.y0(r3, r3.size() - 2);
+        if (r4 == null) goto L11;
+        k(this, r4.s, 6);
+    L11:
+        k(this, r0, 4);
+        r1.w(new jd1(r1, r0, -1), false);
+        k(this, r0, 2);
+        r2.c(r0);
+    L12:
+        r2.e(false);
+        b().c(r8);
     }
 
     @Override // defpackage.t43
-    public final void g(Bundle bundle) {
-        ArrayList<String> stringArrayList = bundle.getStringArrayList("androidx-nav-fragment:navigator:savedIds");
-        if (stringArrayList != null) {
-            LinkedHashSet linkedHashSet = this.f;
-            linkedHashSet.clear();
-            v40.n0(stringArrayList, linkedHashSet);
-        }
+    public final void g(Bundle r2) {
+        ArrayList<String> r3 = r2.getStringArrayList("androidx-nav-fragment:navigator:savedIds");
+        if (r3 == null) goto L6;
+        LinkedHashSet r1 = this.f;
+        r1.clear();
+        v40.n0(r3, r1);
+        return;
     }
 
     @Override // defpackage.t43
     public final Bundle h() {
-        LinkedHashSet linkedHashSet = this.f;
-        if (linkedHashSet.isEmpty()) {
-            return null;
-        }
-        return fh0.g(new kd3("androidx-nav-fragment:navigator:savedIds", new ArrayList(linkedHashSet)));
+        LinkedHashSet r2 = this.f;
+        if (r2.isEmpty() == false) goto L7;
+        return null;
+    L7:
+        return fh0.g(new kd3[]{new kd3("androidx-nav-fragment:navigator:savedIds", new ArrayList(r2))});
     }
 
     @Override // defpackage.t43
-    public final void i(a23 a23Var, boolean z) {
-        int i;
-        a23Var.getClass();
-        ld1 ld1Var = this.d;
-        if (ld1Var.N()) {
-            Log.i("FragmentNavigator", "Ignoring popBackStack() call: FragmentManager has already saved its state");
-            return;
-        }
-        List list = (List) b().e.n.getValue();
-        int iIndexOf = list.indexOf(a23Var);
-        List listSubList = list.subList(iIndexOf, list.size());
-        a23 a23Var2 = (a23) q40.w0(list);
-        int i2 = 1;
-        a23 a23Var3 = (a23) q40.y0(list, iIndexOf - 1);
-        if (a23Var3 != null) {
-            k(this, a23Var3.s, 6);
-        }
-        ArrayList arrayList = new ArrayList();
-        Iterator it = listSubList.iterator();
-        while (true) {
-            int i3 = 0;
-            if (!it.hasNext()) {
-                int size = arrayList.size();
-                int i4 = 0;
-                while (i4 < size) {
-                    Object obj = arrayList.get(i4);
-                    i4++;
-                    k(this, ((a23) obj).s, 4);
-                }
-                if (z) {
-                    for (a23 a23Var4 : q40.H0(listSubList)) {
-                        if (h12.c(a23Var4, a23Var2)) {
-                            Log.i("FragmentNavigator", "FragmentManager cannot save the state of the initial destination " + a23Var4);
-                        } else {
-                            ld1Var.w(new kd1(ld1Var, a23Var4.s, i2), false);
-                            this.f.add(a23Var4.s);
-                        }
-                    }
-                } else {
-                    ld1Var.w(new jd1(ld1Var, a23Var.s, -1), false);
-                }
-                if (n()) {
-                    Log.v("FragmentNavigator", "Calling popWithTransition via popBackStack() on entry " + a23Var + " with savedState " + z);
-                }
-                b().f(a23Var, z);
-                return;
-            }
-            Object next = it.next();
-            a23 a23Var5 = (a23) next;
-            ArrayList arrayList2 = this.g;
-            arrayList2.getClass();
-            String str = a23Var5.s;
-            Iterator it2 = arrayList2.iterator();
-            while (true) {
-                if (!it2.hasNext()) {
-                    i = -1;
-                    break;
-                }
-                kd3 kd3Var = (kd3) it2.next();
-                kd3Var.getClass();
-                String str2 = (String) kd3Var.n;
-                if (i3 < 0) {
-                    gb.c0();
-                    throw null;
-                }
-                if (h12.c(str, str2)) {
-                    i = i3;
-                    break;
-                }
-                i3++;
-            }
-            if (i >= 0 || !h12.c(a23Var5.s, a23Var2.s)) {
-                arrayList.add(next);
-            }
-        }
+    public final void i(a23 r18, boolean r19) {
+        r18.getClass();
+        ld1 r3 = this.d;
+        if (r3.N() == false) goto L6;
+        Log.i("FragmentNavigator", "Ignoring popBackStack() call: FragmentManager has already saved its state");
+        return;
+    L6:
+        List r4 = (List) b().e.n.getValue();
+        int r6 = r4.indexOf(r18);
+        List r7 = r4.subList(r6, r4.size());
+        a23 r8 = (a23) q40.w0(r4);
+        int r9 = 1;
+        a23 r5 = (a23) q40.y0(r4, r6 - 1);
+        if (r5 == null) goto L9;
+        k(this, r5.s, 6);
+    L9:
+        ArrayList r10 = new ArrayList();
+        Iterator r11 = r7.iterator();
+    L10:
+        int r12 = 0;
+        if (r11.hasNext() == false) goto L29;
+        Object r13 = r11.next();
+        a23 r14 = (a23) r13;
+        ArrayList r15 = this.g;
+        r15.getClass();
+        String r16 = r14.s;
+        Iterator r17 = r15.iterator();
+    L14:
+        if (r17.hasNext() == false) goto L23;
+        kd3 r110 = (kd3) r17.next();
+        r110.getClass();
+        String r111 = (String) r110.n;
+        if (r12 < 0) goto L21;
+        if (h12.c(r16, r111) == true) goto L19;
+        r12 = r12 + 1;
+        goto L14
+    L19:
+        int r112 = r12;
+    L24:
+        if (r112 >= 0) goto L28;
+        if (h12.c(r14.s, r8.s) == true) goto L10;
+    L28:
+        r10.add(r13);
+        goto L10
+    L21:
+        gb.c0();
+        throw null;
+    L23:
+        r112 = -1;
+        goto L24
+    L29:
+        int r20 = r10.size();
+        int r113 = 0;
+    L30:
+        if (r113 >= r20) goto L32;
+        Object r114 = r10.get(r113);
+        r113 = r113 + 1;
+        k(this, ((a23) r114).s, 4);
+        goto L30
+    L32:
+        if (r19 == false) goto L40;
+        Iterator r21 = q40.H0(r7).iterator();
+    L35:
+        if (r21.hasNext() == false) goto L42;
+        a23 r22 = (a23) r21.next();
+        if (h12.c(r22, r8) == true) goto L38;
+        r3.w(new kd1(r3, r22.s, r9), false);
+        this.f.add(r22.s);
+        goto L35
+    L38:
+        Log.i("FragmentNavigator", "FragmentManager cannot save the state of the initial destination " + r22);
+    L42:
+        if (n() == false) goto L44;
+        Log.v("FragmentNavigator", "Calling popWithTransition via popBackStack() on entry " + r18 + " with savedState " + r19);
+    L44:
+        b().f(r18, r19);
+        return;
+    L40:
+        r3.w(new jd1(r3, r18.s, -1), false);
+        goto L42
     }
 
-    public final void l(kc1 kc1Var, a23 a23Var, d23 d23Var) {
-        kc1Var.getClass();
-        e75 e75VarD = kc1Var.d();
-        LinkedHashMap linkedHashMap = new LinkedHashMap();
-        i30 i30VarA = kx3.a(a.class);
-        if (linkedHashMap.containsKey(i30VarA)) {
-            kf2.e(xa3.h("A `initializer` with the same `clazz` has already been added: ", i30VarA.b(), "."));
-            return;
-        }
-        linkedHashMap.put(i30VarA, new z65(i30VarA));
-        Collection collectionValues = linkedHashMap.values();
-        collectionValues.getClass();
-        z65[] z65VarArr = (z65[]) collectionValues.toArray(new z65[0]);
-        zy1 zy1Var = new zy1((z65[]) Arrays.copyOf(z65VarArr, z65VarArr.length));
-        sf0 sf0Var = sf0.b;
-        sf0Var.getClass();
-        bq4 bq4Var = new bq4(e75VarD, zy1Var, sf0Var);
-        i30 i30VarA2 = kx3.a(a.class);
-        String strB = i30VarA2.b();
-        if (strB == null) {
-            kf2.n("Local and anonymous classes can not be ViewModels");
-        } else {
-            ((a) bq4Var.l(i30VarA2, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB))).b = new WeakReference(new gp(a23Var, d23Var, this, kc1Var));
-        }
+    public final void l(kc1 r6, a23 r7, d23 r8) {
+        r6.getClass();
+        e75 r0 = r6.d();
+        LinkedHashMap r1 = new LinkedHashMap();
+        i30 r3 = kx3.a(a.class);
+        if (r1.containsKey(r3) == true) goto L10;
+        r1.put(r3, new z65(r3));
+        Collection r2 = r1.values();
+        r2.getClass();
+        z65[] r4 = (z65[]) r2.toArray(new z65[0]);
+        zy1 r5 = new zy1((z65[]) Arrays.copyOf(r4, r4.length));
+        sf0 r9 = sf0.b;
+        r9.getClass();
+        bq4 r10 = new bq4(r0, r5, r9);
+        i30 r11 = kx3.a(a.class);
+        String r12 = r11.b();
+        if (r12 == null) goto L8;
+        a r13 = (a) r10.l(r11, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r12));
+        r13.b = new WeakReference(new gp(r7, r8, this, r6));
+        return;
+    L8:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return;
+    L10:
+        kf2.e(xa3.h("A `initializer` with the same `clazz` has already been added: ", r3.b(), "."));
     }
 
-    public final po m(a23 a23Var, y23 y23Var) {
-        r23 r23Var = a23Var.o;
-        r23Var.getClass();
-        Bundle bundleC = a23Var.c();
-        String str = ((sd1) r23Var).x;
-        if (str == null) {
-            kf2.o("Fragment class was not set");
-            return null;
-        }
-        char cCharAt = str.charAt(0);
-        Context context = this.c;
-        if (cCharAt == '.') {
-            str = context.getPackageName() + str;
-        }
-        ld1 ld1Var = this.d;
-        dd1 dd1VarF = ld1Var.F();
-        context.getClassLoader();
-        kc1 kc1VarA = dd1VarF.a(str);
-        kc1VarA.getClass();
-        kc1VarA.c0(bundleC);
-        po poVar = new po(ld1Var);
-        int i = y23Var != null ? y23Var.f : -1;
-        int i2 = y23Var != null ? y23Var.g : -1;
-        int i3 = y23Var != null ? y23Var.h : -1;
-        int i4 = y23Var != null ? y23Var.i : -1;
-        if (i != -1 || i2 != -1 || i3 != -1 || i4 != -1) {
-            if (i == -1) {
-                i = 0;
-            }
-            if (i2 == -1) {
-                i2 = 0;
-            }
-            if (i3 == -1) {
-                i3 = 0;
-            }
-            int i5 = i4 != -1 ? i4 : 0;
-            poVar.b = i;
-            poVar.c = i2;
-            poVar.d = i3;
-            poVar.e = i5;
-        }
-        poVar.j(this.e, kc1VarA, a23Var.s);
-        poVar.l(kc1VarA);
-        poVar.p = true;
-        return poVar;
+    public final po m(a23 r8, y23 r9) {
+        r23 r0 = r8.o;
+        r0.getClass();
+        Bundle r1 = r8.c();
+        String r2 = ((sd1) r0).x;
+        if (r2 == null) goto L38;
+        int r3 = 0;
+        char r4 = r2.charAt(0);
+        Context r5 = this.c;
+        if (r4 != '.') goto L7;
+        r2 = r5.getPackageName() + r2;
+    L7:
+        ld1 r6 = this.d;
+        dd1 r7 = r6.F();
+        r5.getClassLoader();
+        kc1 r10 = r7.a(r2);
+        r10.getClass();
+        r10.c0(r1);
+        po r11 = new po(r6);
+        if (r9 == null) goto L10;
+        int r12 = r9.f;
+    L11:
+        if (r9 == null) goto L13;
+        int r13 = r9.g;
+    L14:
+        if (r9 == null) goto L16;
+        int r14 = r9.h;
+    L17:
+        if (r9 == null) goto L19;
+        int r15 = r9.i;
+    L20:
+        if (r12 != (-1)) goto L24;
+        if (r13 != (-1)) goto L24;
+        if (r14 != (-1)) goto L24;
+        if (r15 != (-1)) goto L24;
+    L36:
+        r11.j(this.e, r10, r8.s);
+        r11.l(r10);
+        r11.p = true;
+        return r11;
+    L24:
+        if (r12 != (-1)) goto L27;
+        r12 = 0;
+    L27:
+        if (r13 != (-1)) goto L30;
+        r13 = 0;
+    L30:
+        if (r14 != (-1)) goto L33;
+        r14 = 0;
+    L33:
+        if (r15 == (-1)) goto L35;
+        r3 = r15;
+    L35:
+        r11.b = r12;
+        r11.c = r13;
+        r11.d = r14;
+        r11.e = r3;
+        goto L36
+    L19:
+        r15 = -1;
+        goto L20
+    L16:
+        r14 = -1;
+        goto L17
+    L13:
+        r13 = -1;
+        goto L14
+    L10:
+        r12 = -1;
+        goto L11
+    L38:
+        kf2.o("Fragment class was not set");
+        return null;
     }
 }

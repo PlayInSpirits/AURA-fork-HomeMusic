@@ -14,59 +14,83 @@ public final class e20 implements Callback, l51, m51 {
     public long o;
     public Object p;
 
-    public e20(l51 l51Var, long j) {
+    public e20(l51 r3, long r4) {
         this.n = 5;
-        this.p = l51Var;
-        rr2.l(l51Var.getPosition() >= j);
-        this.o = j;
+        this.p = r3;
+        if (r3.getPosition() < r4) goto L5;
+        boolean r5 = true;
+    L6:
+        rr2.l(r5);
+        this.o = r4;
+        return;
+    L5:
+        r5 = false;
+        goto L6
     }
 
-    public static long u(e20 e20Var, long j, float f) {
-        long jE = g83.e(e20Var.o, j);
-        e20Var.o = jE;
-        float fC = ((hb3) e20Var.p) == null ? g83.c(jE) : Math.abs(e20Var.x(jE));
-        if (fC <= 0.0f || fC < f) {
-            return 9205357640488583168L;
-        }
-        hb3 hb3Var = (hb3) e20Var.p;
-        long j2 = e20Var.o;
-        if (hb3Var == null) {
-            float fC2 = g83.c(j2);
-            return g83.d(e20Var.o, g83.f((((long) Float.floatToRawIntBits(Float.intBitsToFloat((int) (j2 >> 32)) / fC2)) << 32) | (((long) Float.floatToRawIntBits(Float.intBitsToFloat((int) (j2 & 4294967295L)) / fC2)) & 4294967295L), f));
-        }
-        float fX = e20Var.x(j2) - (Math.signum(e20Var.x(e20Var.o)) * f);
-        long j3 = e20Var.o;
-        hb3 hb3Var2 = (hb3) e20Var.p;
-        hb3 hb3Var3 = hb3.o;
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (hb3Var2 == hb3Var3 ? j3 & 4294967295L : j3 >> 32));
-        if (((hb3) e20Var.p) == hb3Var3) {
-            return (((long) Float.floatToRawIntBits(fX)) << 32) | (((long) Float.floatToRawIntBits(fIntBitsToFloat)) & 4294967295L);
-        }
-        return (((long) Float.floatToRawIntBits(fX)) & 4294967295L) | (((long) Float.floatToRawIntBits(fIntBitsToFloat)) << 32);
+    public static long u(e20 r6, long r7, float r9) {
+        long r8 = g83.e(r6.o, r7);
+        r6.o = r8;
+        if (((hb3) r6.p) != null) goto L5;
+        float r10 = g83.c(r8);
+    L7:
+        if (r10 > 0.0f) goto L9;
+        return 9205357640488583168L;
+    L9:
+        if (r10 < r9) goto L27;
+        hb3 r11 = (hb3) r6.p;
+        long r0 = r6.o;
+        if (r11 != null) goto L14;
+        float r12 = g83.c(r0);
+        float r4 = Float.intBitsToFloat((int) (r0 >> 32)) / r12;
+        float r1 = Float.intBitsToFloat((int) (r0 & 4294967295L)) / r12;
+        return g83.d(r6.o, g83.f((Float.floatToRawIntBits(r4) << 32) | (Float.floatToRawIntBits(r1) & 4294967295L), r9));
+    L14:
+        float r13 = r6.x(r0) - (Math.signum(r6.x(r6.o)) * r9);
+        long r2 = r6.o;
+        hb3 r14 = (hb3) r6.p;
+        hb3 r5 = hb3.o;
+        if (r14 != r5) goto L18;
+        long r3 = r2 & 4294967295L;
+    L17:
+        float r15 = Float.intBitsToFloat((int) r3);
+        if (((hb3) r6.p) == r5) goto L22;
+        long r16 = Float.floatToRawIntBits(r15);
+        return (((long) Float.floatToRawIntBits(r13)) & 4294967295L) | (r16 << 32);
+    L22:
+        return (Float.floatToRawIntBits(r13) << 32) | (((long) Float.floatToRawIntBits(r15)) & 4294967295L);
+    L18:
+        r3 = r2 >> 32;
+        goto L17
+    L27:
+        return 9205357640488583168L;
+    L5:
+        r10 = Math.abs(r6.x(r8));
+        goto L7
     }
 
-    public void A(int i) {
-        if (i < 64) {
-            this.o |= 1 << i;
-        } else {
-            r();
-            ((e20) this.p).A(i - 64);
-        }
+    public void A(int r5) {
+        if (r5 < 64) goto L6;
+        r();
+        ((e20) this.p).A(r5 - 64);
+        return;
+    L6:
+        this.o |= 1 << r5;
     }
 
     @Override // defpackage.l51
-    public boolean a(byte[] bArr, int i, int i2, boolean z) {
-        return ((l51) this.p).a(bArr, 0, i2, z);
+    public boolean a(byte[] r1, int r2, int r3, boolean r4) {
+        return ((l51) this.p).a(r1, 0, r3, r4);
     }
 
     @Override // defpackage.l51
-    public boolean d(int i, boolean z) {
-        return ((l51) this.p).d(i, true);
+    public boolean d(int r1, boolean r2) {
+        return ((l51) this.p).d(r1, true);
     }
 
     @Override // defpackage.l51
-    public boolean e(byte[] bArr, int i, int i2, boolean z) {
-        return ((l51) this.p).e(bArr, i, i2, z);
+    public boolean e(byte[] r1, int r2, int r3, boolean r4) {
+        return ((l51) this.p).e(r1, r2, r3, r4);
     }
 
     @Override // defpackage.l51
@@ -75,8 +99,8 @@ public final class e20 implements Callback, l51, m51 {
     }
 
     @Override // defpackage.l51
-    public void g(int i) {
-        ((l51) this.p).g(i);
+    public void g(int r1) {
+        ((l51) this.p).g(r1);
     }
 
     @Override // defpackage.l51
@@ -90,13 +114,13 @@ public final class e20 implements Callback, l51, m51 {
     }
 
     @Override // defpackage.l51
-    public int h(int i) {
-        return ((l51) this.p).h(i);
+    public int h(int r1) {
+        return ((l51) this.p).h(r1);
     }
 
     @Override // defpackage.l51
-    public int i(byte[] bArr, int i, int i2) {
-        return ((l51) this.p).i(bArr, i, i2);
+    public int i(byte[] r1, int r2, int r3) {
+        return ((l51) this.p).i(r1, r2, r3);
     }
 
     @Override // defpackage.l51
@@ -105,50 +129,55 @@ public final class e20 implements Callback, l51, m51 {
     }
 
     @Override // defpackage.l51
-    public void l(int i) {
-        ((l51) this.p).l(i);
+    public void l(int r1) {
+        ((l51) this.p).l(r1);
     }
 
     @Override // defpackage.l51
-    public void n(byte[] bArr, int i, int i2) {
-        ((l51) this.p).n(bArr, i, i2);
+    public void n(byte[] r1, int r2, int r3) {
+        ((l51) this.p).n(r1, r2, r3);
     }
 
-    public void o(int i) {
-        if (i < 64) {
-            this.o &= ~(1 << i);
-            return;
-        }
-        e20 e20Var = (e20) this.p;
-        if (e20Var != null) {
-            e20Var.o(i - 64);
-        }
-    }
-
-    @Override // retrofit2.Callback
-    public void onFailure(Call call, Throwable th) {
-        StringBuilder sb = new StringBuilder("createBookmark id=");
-        sb.append((String) this.p);
-        sb.append(" pos=");
-        Log.e("QueueRepository", b11.p(sb, this.o, " failed"), th);
+    public void o(int r5) {
+        if (r5 < 64) goto L8;
+        e20 r4 = (e20) this.p;
+        if (r4 == null) goto L10;
+        r4.o(r5 - 64);
+        return;
+    L10:
+        return;
+    L8:
+        this.o &= ~(1 << r5);
     }
 
     @Override // retrofit2.Callback
-    public void onResponse(Call call, Response response) {
-        String strValueOf;
-        String message = "";
-        if (response.body() == null || ((ApiResponse) response.body()).getSubsonicResponse() == null) {
-            strValueOf = "unknown";
-        } else {
-            strValueOf = String.valueOf(((ApiResponse) response.body()).getSubsonicResponse().getStatus());
-            if (((ApiResponse) response.body()).getSubsonicResponse().getError() != null) {
-                message = ((ApiResponse) response.body()).getSubsonicResponse().getError().getMessage();
-            }
-        }
-        if (response.isSuccessful() && "ok".equals(strValueOf)) {
-            return;
-        }
-        Log.w("QueueRepository", "createBookmark id=" + ((String) this.p) + " pos=" + this.o + " -> HTTP " + response.code() + " subsonicStatus=" + strValueOf + " " + message);
+    public void onFailure(Call r3, Throwable r4) {
+        StringBuilder r5 = new StringBuilder("createBookmark id=");
+        r5.append((String) this.p);
+        r5.append(" pos=");
+        Log.e("QueueRepository", b11.p(r5, this.o, " failed"), r4);
+    }
+
+    @Override // retrofit2.Callback
+    public void onResponse(Call r5, Response r6) {
+        String r0 = "";
+        if (r6.body() != null) goto L5;
+    L9:
+        String r7 = "unknown";
+    L11:
+        if (r6.isSuccessful() == true) goto L13;
+    L16:
+        Log.w("QueueRepository", "createBookmark id=" + ((String) this.p) + " pos=" + this.o + " -> HTTP " + r6.code() + " subsonicStatus=" + r7 + " " + r0);
+        return;
+    L13:
+        if ("ok".equals(r7) == false) goto L16;
+        return;
+    L5:
+        if (((ApiResponse) r6.body()).getSubsonicResponse() == null) goto L9;
+        r7 = String.valueOf(((ApiResponse) r6.body()).getSubsonicResponse().getStatus());
+        if (((ApiResponse) r6.body()).getSubsonicResponse().getError() == null) goto L11;
+        r0 = ((ApiResponse) r6.body()).getSubsonicResponse().getError().getMessage();
+        goto L11
     }
 
     @Override // defpackage.m51
@@ -156,153 +185,187 @@ public final class e20 implements Callback, l51, m51 {
         ((m51) this.p).p();
     }
 
-    public int q(int i) {
-        e20 e20Var = (e20) this.p;
-        if (e20Var == null) {
-            long j = this.o;
-            return i >= 64 ? Long.bitCount(j) : Long.bitCount(((1 << i) - 1) & j);
-        }
-        if (i < 64) {
-            return Long.bitCount(((1 << i) - 1) & this.o);
-        }
-        return Long.bitCount(this.o) + e20Var.q(i - 64);
+    public int q(int r7) {
+        e20 r0 = (e20) this.p;
+        if (r0 != null) goto L10;
+        long r4 = this.o;
+        if (r7 < 64) goto L9;
+        return Long.bitCount(r4);
+    L9:
+        return Long.bitCount(((1 << r7) - 1) & r4);
+    L10:
+        if (r7 >= 64) goto L13;
+        long r1 = this.o;
+        return Long.bitCount(((1 << r7) - 1) & r1);
+    L13:
+        int r8 = r0.q(r7 - 64);
+        return Long.bitCount(this.o) + r8;
     }
 
     public void r() {
-        if (((e20) this.p) == null) {
-            this.p = new e20();
-        }
+        if (((e20) this.p) != null) goto L6;
+        this.p = new e20();
+        return;
     }
 
     @Override // defpackage.wh0
-    public int read(byte[] bArr, int i, int i2) {
-        return ((l51) this.p).read(bArr, i, i2);
+    public int read(byte[] r1, int r2, int r3) {
+        return ((l51) this.p).read(r1, r2, r3);
     }
 
     @Override // defpackage.l51
-    public void readFully(byte[] bArr, int i, int i2) {
-        ((l51) this.p).readFully(bArr, i, i2);
+    public void readFully(byte[] r1, int r2, int r3) {
+        ((l51) this.p).readFully(r1, r2, r3);
     }
 
-    public boolean s(int i) {
-        if (i < 64) {
-            return ((1 << i) & this.o) != 0;
-        }
+    public boolean s(int r5) {
+        if (r5 < 64) goto L6;
         r();
-        return ((e20) this.p).s(i - 64);
+        return ((e20) this.p).s(r5 - 64);
+    L6:
+        long r0 = this.o;
+        if (((1 << r5) & r0) == 0) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     @Override // defpackage.m51
-    public wv4 t(int i, int i2) {
-        return ((m51) this.p).t(i, i2);
+    public wv4 t(int r1, int r2) {
+        return ((m51) this.p).t(r1, r2);
     }
 
     public String toString() {
-        switch (this.n) {
-            case 0:
-                if (((e20) this.p) == null) {
-                    return Long.toBinaryString(this.o);
-                }
-                return ((e20) this.p).toString() + "xx" + Long.toBinaryString(this.o);
-            default:
-                return super.toString();
-        }
+        switch(this.n) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return super.toString();
+    L7:
+        if (((e20) this.p) != null) goto L10;
+        return Long.toBinaryString(this.o);
+    L10:
+        return ((e20) this.p).toString() + "xx" + Long.toBinaryString(this.o);
     }
 
-    public void v(int i, boolean z) {
-        if (i >= 64) {
-            r();
-            ((e20) this.p).v(i - 64, z);
-            return;
-        }
-        long j = this.o;
-        boolean z2 = (Long.MIN_VALUE & j) != 0;
-        long j2 = (1 << i) - 1;
-        this.o = ((j & (~j2)) << 1) | (j & j2);
-        if (z) {
-            A(i);
-        } else {
-            o(i);
-        }
-        if (z2 || ((e20) this.p) != null) {
-            r();
-            ((e20) this.p).v(0, z2);
-        }
+    public void v(int r10, boolean r11) {
+        if (r10 < 64) goto L6;
+        r();
+        ((e20) this.p).v(r10 - 64, r11);
+        return;
+    L6:
+        long r0 = this.o;
+        if ((Long.MIN_VALUE & r0) == 0) goto L9;
+        boolean r2 = true;
+    L10:
+        long r7 = (1 << r10) - 1;
+        this.o = ((r0 & (~r7)) << 1) | (r0 & r7);
+        if (r11 == false) goto L13;
+        A(r10);
+    L14:
+        if (r2 == false) goto L16;
+    L19:
+        r();
+        ((e20) this.p).v(0, r2);
+        return;
+    L16:
+        if (((e20) this.p) != null) goto L19;
+        return;
+    L13:
+        o(r10);
+        goto L14
+    L9:
+        r2 = false;
+        goto L10
     }
 
     @Override // defpackage.m51
-    public void w(m84 m84Var) {
-        ((m51) this.p).w(new fl4(this, m84Var, m84Var));
+    public void w(m84 r3) {
+        ((m51) this.p).w(new fl4(this, r3, r3));
     }
 
-    public float x(long j) {
-        return Float.intBitsToFloat((int) (((hb3) this.p) == hb3.o ? j >> 32 : j & 4294967295L));
+    public float x(long r3) {
+        if (((hb3) this.p) != hb3.o) goto L7;
+        long r2 = r3 >> 32;
+    L6:
+        return Float.intBitsToFloat((int) r2);
+    L7:
+        r2 = r3 & 4294967295L;
+        goto L6
     }
 
-    public boolean y(int i) {
-        if (i >= 64) {
-            r();
-            return ((e20) this.p).y(i - 64);
-        }
-        long j = 1 << i;
-        long j2 = this.o;
-        boolean z = (j2 & j) != 0;
-        long j3 = j2 & (~j);
-        this.o = j3;
-        long j4 = j - 1;
-        this.o = (j3 & j4) | Long.rotateRight((~j4) & j3, 1);
-        e20 e20Var = (e20) this.p;
-        if (e20Var != null) {
-            if (e20Var.s(0)) {
-                A(63);
-            }
-            ((e20) this.p).y(0);
-        }
-        return z;
+    public boolean y(int r11) {
+        if (r11 < 64) goto L6;
+        r();
+        return ((e20) this.p).y(r11 - 64);
+    L6:
+        long r2 = 1 << r11;
+        long r4 = this.o;
+        if ((r4 & r2) == 0) goto L9;
+        boolean r12 = true;
+    L10:
+        long r5 = r4 & (~r2);
+        this.o = r5;
+        long r3 = r2 - 1;
+        this.o = (r5 & r3) | Long.rotateRight((~r3) & r5, 1);
+        e20 r0 = (e20) this.p;
+        if (r0 != null) goto L13;
+    L16:
+        return r12;
+    L13:
+        if (r0.s(0) == false) goto L15;
+        A(63);
+    L15:
+        ((e20) this.p).y(0);
+        goto L16
+    L9:
+        r12 = false;
+        goto L10
     }
 
     public void z() {
-        this.o = 0L;
-        e20 e20Var = (e20) this.p;
-        if (e20Var != null) {
-            e20Var.z();
-        }
+        this.o = 0;
+        e20 r2 = (e20) this.p;
+        if (r2 == null) goto L6;
+        r2.z();
+        return;
     }
 
-    public e20(fw fwVar) {
+    public e20(fw r3) {
         this.n = 1;
-        fwVar.getClass();
-        this.p = fwVar;
-        this.o = 262144L;
+        r3.getClass();
+        this.p = r3;
+        this.o = 262144;
     }
 
-    public /* synthetic */ e20(long j, Object obj, int i) {
-        this.n = i;
-        this.o = j;
-        this.p = obj;
+    public /* synthetic */ e20(long r1, Object r3, int r4) {
+        this.n = r4;
+        this.o = r1;
+        this.p = r3;
     }
 
-    public e20(Context context, String str, long j) {
+    public e20(Context r3, String r4, long r5) {
         this.n = 2;
-        rm3 rm3Var = new rm3(context, str, false);
-        this.o = j;
-        this.p = rm3Var;
+        rm3 r0 = new rm3(r3, r4, false);
+        this.o = r5;
+        this.p = r0;
     }
 
-    public e20(String str, long j) {
+    public e20(String r2, long r3) {
         this.n = 4;
-        this.p = str;
-        this.o = j;
+        this.p = r2;
+        this.o = r3;
     }
 
     public e20() {
         this.n = 0;
-        this.o = 0L;
+        this.o = 0;
     }
 
-    public e20(hb3 hb3Var, int i) {
+    public e20(hb3 r1, int r2) {
         this.n = 7;
-        this.p = hb3Var;
-        this.o = 0L;
+        this.p = r1;
+        this.o = 0;
     }
 }

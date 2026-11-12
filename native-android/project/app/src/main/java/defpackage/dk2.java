@@ -26,528 +26,551 @@ public final class dk2 {
     public int k;
     public float l;
 
-    public dk2(String str, String str2, String str3, MediaCodecInfo.CodecCapabilities codecCapabilities, boolean z, boolean z2, boolean z3, boolean z4, boolean z5, boolean z6) {
-        str.getClass();
-        this.a = str;
-        this.b = str2;
-        this.c = str3;
-        this.d = codecCapabilities;
-        this.g = z;
-        this.e = z4;
-        this.f = z5;
-        this.h = z6;
-        this.i = lw2.l(str2);
+    public dk2(String r1, String r2, String r3, MediaCodecInfo.CodecCapabilities r4, boolean r5, boolean r6, boolean r7, boolean r8, boolean r9, boolean r10) {
+        r1.getClass();
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.g = r5;
+        this.e = r8;
+        this.f = r9;
+        this.h = r10;
+        this.i = lw2.l(r2);
         this.l = -3.4028235E38f;
         this.j = -1;
         this.k = -1;
     }
 
-    public static boolean a(MediaCodecInfo.VideoCapabilities videoCapabilities, int i, int i2, double d) {
-        int widthAlignment = videoCapabilities.getWidthAlignment();
-        int heightAlignment = videoCapabilities.getHeightAlignment();
-        Point point = new Point(f35.g(i, widthAlignment) * widthAlignment, f35.g(i2, heightAlignment) * heightAlignment);
-        int i3 = point.x;
-        int i4 = point.y;
-        if (d == -1.0d || d < 1.0d) {
-            return videoCapabilities.isSizeSupported(i3, i4);
-        }
-        double dFloor = Math.floor(d);
-        if (!videoCapabilities.areSizeAndRateSupported(i3, i4, dFloor)) {
-            return false;
-        }
-        Range<Double> achievableFrameRatesFor = videoCapabilities.getAchievableFrameRatesFor(i3, i4);
-        return achievableFrameRatesFor == null || dFloor <= ((Double) achievableFrameRatesFor.getUpper()).doubleValue();
+    public static boolean a(MediaCodecInfo.VideoCapabilities r3, int r4, int r5, double r6) {
+        int r0 = r3.getWidthAlignment();
+        int r1 = r3.getHeightAlignment();
+        Point r2 = new Point(f35.g(r4, r0) * r0, f35.g(r5, r1) * r1);
+        int r7 = r2.x;
+        int r8 = r2.y;
+        if (r6 == (-1.0d)) goto L20;
+        if (r6 < 1.0d) goto L20;
+        double r9 = Math.floor(r6);
+        if (r3.areSizeAndRateSupported(r7, r8, r9) == false) goto L22;
+        Range<Double> r10 = r3.getAchievableFrameRatesFor(r7, r8);
+        if (r10 != null) goto L14;
+        return true;
+    L14:
+        if (r9 > ((Double) r10.getUpper()).doubleValue()) goto L17;
+        return true;
+    L17:
+        return false;
+    L22:
+        return false;
+    L20:
+        return r3.isSizeSupported(r7, r8);
     }
 
-    /* JADX WARN: Code duplicated, block: B:32:0x006c  */
-    public static dk2 i(String str, String str2, String str3, MediaCodecInfo.CodecCapabilities codecCapabilities, boolean z, boolean z2, boolean z3) {
-        boolean z4;
-        boolean z5 = codecCapabilities != null && codecCapabilities.isFeatureSupported("adaptive-playback");
-        if (codecCapabilities != null) {
-            codecCapabilities.isFeatureSupported("tunneled-playback");
-        }
-        boolean z6 = codecCapabilities != null && codecCapabilities.isFeatureSupported("secure-playback");
-        if (Build.VERSION.SDK_INT < 35 || codecCapabilities == null || !codecCapabilities.isFeatureSupported("detached-surface")) {
-            z4 = false;
-        } else {
-            String str4 = Build.MANUFACTURER;
-            if (str4.equals("Xiaomi") || str4.equals("OPPO") || str4.equals("realme") || str4.equals("motorola") || str4.equals("LENOVO")) {
-                z4 = false;
-            } else {
-                z4 = true;
-            }
-        }
-        return new dk2(str, str2, str3, codecCapabilities, z, z2, z3, z5, z6, z4);
+    public static dk2 i(String r11, String r12, String r13, MediaCodecInfo.CodecCapabilities r14, boolean r15, boolean r16, boolean r17) {
+        if (r14 != null) goto L5;
+    L7:
+        boolean r8 = false;
+    L8:
+        if (r14 == null) goto L10;
+        r14.isFeatureSupported("tunneled-playback");
+    L10:
+        if (r14 != null) goto L12;
+    L14:
+        boolean r9 = false;
+    L16:
+        if (Build.VERSION.SDK_INT < 35) goto L32;
+        if (r14 == null) goto L32;
+        if (r14.isFeatureSupported("detached-surface") == false) goto L32;
+        String r3 = Build.MANUFACTURER;
+        if (r3.equals("Xiaomi") == true) goto L32;
+        if (r3.equals("OPPO") == true) goto L32;
+        if (r3.equals("realme") == true) goto L32;
+        if (r3.equals("motorola") == true) goto L32;
+        if (r3.equals("LENOVO") == true) goto L32;
+        boolean r10 = true;
+    L34:
+        return new dk2(r11, r12, r13, r14, r15, r16, r17, r8, r9, r10);
+    L32:
+        r10 = false;
+        goto L34
+    L12:
+        if (r14.isFeatureSupported("secure-playback") == false) goto L14;
+        r9 = true;
+        goto L16
+    L5:
+        if (r14.isFeatureSupported("adaptive-playback") == false) goto L7;
+        r8 = true;
+        goto L8
     }
 
-    public final ej0 b(tb1 tb1Var, tb1 tb1Var2) {
-        tb1 tb1Var3;
-        tb1 tb1Var4;
-        int i;
-        String str = tb1Var.n;
-        c50 c50Var = tb1Var.D;
-        String str2 = tb1Var2.n;
-        c50 c50Var2 = tb1Var2.D;
-        int i2 = !Objects.equals(str, str2) ? 8 : 0;
-        if (this.i) {
-            if (tb1Var.z != tb1Var2.z) {
-                i2 |= 1024;
-            }
-            boolean z = (tb1Var.u == tb1Var2.u && tb1Var.v == tb1Var2.v) ? false : true;
-            if (!this.e && z) {
-                i2 |= 512;
-            }
-            if ((!c50.e(c50Var) || !c50.e(c50Var2)) && !Objects.equals(c50Var, c50Var2)) {
-                i2 |= 2048;
-            }
-            if (Build.MODEL.startsWith("SM-T230") && "OMX.MARVELL.VIDEO.HW.CODA7542DECODER".equals(this.a) && !tb1Var.b(tb1Var2)) {
-                i2 |= 2;
-            }
-            int i3 = tb1Var.w;
-            if (i3 != -1 && (i = tb1Var.x) != -1 && i3 == tb1Var2.w && i == tb1Var2.x && z) {
-                i2 |= 2;
-            }
-            if (i2 == 0 && Objects.equals(tb1Var2.n, "video/dolby-vision")) {
-                Pair pairB = i40.b(tb1Var);
-                Pair pairB2 = i40.b(tb1Var2);
-                if (pairB == null || pairB2 == null || !((Integer) pairB.first).equals(pairB2.first)) {
-                    i2 |= 2;
-                }
-            }
-            if (i2 == 0) {
-                return new ej0(this.a, tb1Var, tb1Var2, tb1Var.b(tb1Var2) ? 3 : 2, 0);
-            }
-            tb1Var3 = tb1Var;
-            tb1Var4 = tb1Var2;
-        } else {
-            tb1Var3 = tb1Var;
-            tb1Var4 = tb1Var2;
-            if (tb1Var3.F != tb1Var4.F) {
-                i2 |= 4096;
-            }
-            if (tb1Var3.G != tb1Var4.G) {
-                i2 |= 8192;
-            }
-            if (tb1Var3.H != tb1Var4.H) {
-                i2 |= 16384;
-            }
-            String str3 = this.b;
-            if (i2 == 0 && (str3.equals("audio/mp4a-latm") || str3.equals("audio/ac4"))) {
-                Pair pairB3 = i40.b(tb1Var3);
-                Pair pairB4 = i40.b(tb1Var4);
-                if (pairB3 != null && pairB4 != null) {
-                    int iIntValue = ((Integer) pairB3.first).intValue();
-                    int iIntValue2 = ((Integer) pairB4.first).intValue();
-                    if (iIntValue == 42 && iIntValue2 == 42) {
-                        return new ej0(this.a, tb1Var3, tb1Var4, 3, 0);
-                    }
-                    if (str3.equals("audio/ac4") && pairB3.equals(pairB4)) {
-                        return new ej0(this.a, tb1Var3, tb1Var4, 3, 0);
-                    }
-                }
-            }
-            if (i2 == 0 && (str3.equals("audio/eac3-joc") || str3.equals("audio/eac3"))) {
-                return new ej0(this.a, tb1Var3, tb1Var4, 3, 0);
-            }
-            if (!tb1Var3.b(tb1Var4)) {
-                i2 |= 32;
-            }
-            if ("audio/opus".equals(str3)) {
-                i2 |= 2;
-            }
-            if (i2 == 0) {
-                return new ej0(this.a, tb1Var3, tb1Var4, 1, 0);
-            }
-        }
-        return new ej0(this.a, tb1Var3, tb1Var4, 0, i2);
+    public final ej0 b(tb1 r9, tb1 r10) {
+        String r0 = r9.n;
+        c50 r1 = r9.D;
+        String r2 = r10.n;
+        c50 r3 = r10.D;
+        boolean r4 = Objects.equals(r0, r2);
+        boolean r5 = false;
+        if (r4 == true) goto L5;
+        int r6 = 8;
+    L7:
+        if (this.i == true) goto L9;
+        tb1 r7 = r9;
+        tb1 r8 = r10;
+        if (r7.F == r8.F) goto L67;
+        r6 = r6 | 4096;
+    L67:
+        if (r7.G == r8.G) goto L70;
+        r6 = r6 | 8192;
+    L70:
+        if (r7.H == r8.H) goto L72;
+        r6 = r6 | 16384;
+    L72:
+        String r11 = this.b;
+        if (r6 == 0) goto L75;
+    L92:
+        if (r6 != 0) goto L100;
+        if (r11.equals("audio/eac3-joc") == true) goto L98;
+        if (r11.equals("audio/eac3") == false) goto L100;
+    L98:
+        return new ej0(this.a, r7, r8, 3, 0);
+    L100:
+        if (r7.b(r8) == true) goto L103;
+        r6 = r6 | 32;
+    L103:
+        if ("audio/opus".equals(r11) == false) goto L105;
+        r6 = r6 | 2;
+    L105:
+        if (r6 == 0) goto L107;
+    L109:
+        return new ej0(this.a, r7, r8, 0, r6);
+    L107:
+        return new ej0(this.a, r7, r8, 1, 0);
+    L75:
+        if (r11.equals("audio/mp4a-latm") == false) goto L77;
+    L78:
+        Pair r12 = i40.b(r7);
+        Pair r13 = i40.b(r8);
+        if (r12 == null) goto L92;
+        if (r13 == null) goto L92;
+        int r14 = ((Integer) r12.first).intValue();
+        int r15 = ((Integer) r13.first).intValue();
+        if (r14 != 42) goto L87;
+        if (r15 != 42) goto L87;
+        return new ej0(this.a, r7, r8, 3, 0);
+    L87:
+        if (r11.equals("audio/ac4") == false) goto L92;
+        if (r12.equals(r13) == false) goto L92;
+        return new ej0(this.a, r7, r8, 3, 0);
+    L77:
+        if (r11.equals("audio/ac4") == false) goto L92;
+    L9:
+        if (r9.z == r10.z) goto L12;
+        r6 = r6 | 1024;
+    L12:
+        if (r9.u == r10.u) goto L14;
+    L15:
+        r5 = true;
+    L17:
+        if (this.e == true) goto L21;
+        if (r5 == false) goto L21;
+        r6 = r6 | 512;
+    L21:
+        if (c50.e(r1) == false) goto L25;
+        if (c50.e(r3) == false) goto L25;
+    L28:
+        if (Build.MODEL.startsWith("SM-T230") == true) goto L30;
+    L34:
+        int r16 = r9.w;
+        if (r16 == (-1)) goto L44;
+        int r17 = r9.x;
+        if (r17 == (-1)) goto L44;
+        if (r16 != r10.w) goto L44;
+        if (r17 != r10.x) goto L44;
+        if (r5 == false) goto L44;
+        r6 = r6 | 2;
+    L44:
+        if (r6 == 0) goto L46;
+    L53:
+        if (r6 == 0) goto L55;
+        r7 = r9;
+        r8 = r10;
+        goto L109
+    L55:
+        if (r9.b(r10) == false) goto L58;
+        int r18 = 3;
+    L60:
+        return new ej0(this.a, r9, r10, r18, 0);
+    L58:
+        r18 = 2;
+        goto L60
+    L46:
+        if (Objects.equals(r10.n, "video/dolby-vision") == false) goto L53;
+        Pair r19 = i40.b(r9);
+        Pair r20 = i40.b(r10);
+        if (r19 == null) goto L52;
+        if (r20 == null) goto L52;
+        if (((Integer) r19.first).equals(r20.first) == true) goto L53;
+    L52:
+        r6 = r6 | 2;
+        goto L53
+    L30:
+        if ("OMX.MARVELL.VIDEO.HW.CODA7542DECODER".equals(this.a) == false) goto L34;
+        if (r9.b(r10) == true) goto L34;
+        r6 = r6 | 2;
+    L25:
+        if (Objects.equals(r1, r3) == true) goto L28;
+        r6 = r6 | 2048;
+        goto L28
+    L14:
+        if (r9.v == r10.v) goto L17;
+    L5:
+        r6 = 0;
+        goto L7
     }
 
-    /* JADX WARN: Code duplicated, block: B:17:0x004e  */
-    /* JADX WARN: Code duplicated, block: B:19:0x006c  */
-    /* JADX WARN: Code duplicated, block: B:22:0x0077  */
-    /* JADX WARN: Code duplicated, block: B:25:0x0080  */
-    /* JADX WARN: Code duplicated, block: B:26:0x0082  */
-    /* JADX WARN: Code duplicated, block: B:29:0x0089  */
-    /* JADX WARN: Code duplicated, block: B:30:0x008b  */
-    /* JADX WARN: Code duplicated, block: B:33:0x0094  */
-    /* JADX WARN: Code duplicated, block: B:36:0x0099  */
-    /* JADX WARN: Code duplicated, block: B:38:0x009c  */
-    /* JADX WARN: Code duplicated, block: B:46:0x00b0  */
-    /* JADX WARN: Code duplicated, block: B:48:0x00b4  */
-    /* JADX WARN: Code duplicated, block: B:50:0x00b8  */
-    /* JADX WARN: Code duplicated, block: B:53:0x00c0  */
-    /* JADX WARN: Code duplicated, block: B:56:0x00c5  */
-    /* JADX WARN: Code duplicated, block: B:59:0x00d0  */
-    /* JADX WARN: Code duplicated, block: B:62:0x00d5  */
-    /* JADX WARN: Code duplicated, block: B:65:0x00e5  */
-    /* JADX WARN: Code duplicated, block: B:67:0x00ef  */
-    /* JADX WARN: Code duplicated, block: B:70:0x0114  */
-    /* JADX WARN: Code duplicated, block: B:72:0x011a  */
-    /* JADX WARN: Code duplicated, block: B:91:0x013c A[ADDED_TO_REGION, REMOVE, SYNTHETIC] */
-    /* JADX WARN: Instruction removed from duplicated block: B:17:0x004e, please report this as an issue */
-    public final boolean c(Context context, tb1 tb1Var, boolean z) {
-        int iIntValue;
-        int iIntValue2;
-        boolean zEquals;
-        String str;
-        MediaCodecInfo.CodecCapabilities codecCapabilities;
-        MediaCodecInfo.CodecProfileLevel[] codecProfileLevelArr;
-        int length;
-        int i;
-        MediaCodecInfo.CodecProfileLevel codecProfileLevel;
-        int maxInputChannelCount;
-        int i2;
-        MediaCodecInfo.CodecProfileLevel[] codecProfileLevelArr2;
-        MediaCodecInfo.AudioCapabilities audioCapabilities;
-        Pair pairB = i40.b(tb1Var);
-        String str2 = tb1Var.n;
-        String str3 = this.c;
-        if (str2 != null && str2.equals("video/mv-hevc")) {
-            String strM = lw2.m(str3);
-            if (!strM.equals("video/mv-hevc")) {
-                if (strM.equals("video/hevc")) {
-                    HashMap map = jk2.a;
-                    String strQ = uc5.q(tb1Var.q);
-                    if (strQ == null) {
-                        pairB = null;
-                    } else {
-                        String strTrim = strQ.trim();
-                        String str4 = f35.a;
-                        pairB = i40.c(strQ, strTrim.split("\\.", -1), tb1Var.D);
-                    }
-                }
-                if (pairB != null) {
-                    iIntValue = ((Integer) pairB.first).intValue();
-                    iIntValue2 = ((Integer) pairB.second).intValue();
-                    zEquals = "video/dolby-vision".equals(str2);
-                    str = this.b;
-                    if (zEquals) {
-                        str.getClass();
-                        switch (str) {
-                            case "video/av01":
-                            case "video/hevc":
-                                iIntValue = 2;
-                                break;
-                            case "video/avc":
-                                iIntValue = 8;
-                                break;
-                        }
-                        iIntValue2 = 0;
-                    }
-                    if (this.i) {
-                        codecCapabilities = this.d;
-                        if (codecCapabilities != null) {
-                            codecProfileLevelArr = new MediaCodecInfo.CodecProfileLevel[0];
-                        } else {
-                            codecProfileLevelArr = new MediaCodecInfo.CodecProfileLevel[0];
-                        }
-                        if (str.equals("audio/ac4")) {
-                            if (codecCapabilities != null) {
-                                maxInputChannelCount = 2;
-                            } else {
-                                maxInputChannelCount = 2;
-                            }
-                            if (maxInputChannelCount > 18) {
-                            }
-                            if (context.getPackageManager().hasSystemFeature("android.hardware.type.automotive")) {
-                                codecProfileLevelArr2 = new MediaCodecInfo.CodecProfileLevel[]{jk2.b(1026, i2)};
-                            } else {
-                                codecProfileLevelArr2 = new MediaCodecInfo.CodecProfileLevel[]{jk2.b(257, i2), jk2.b(513, i2), jk2.b(514, i2), jk2.b(1026, i2), jk2.b(1028, i2)};
-                            }
-                            codecProfileLevelArr = codecProfileLevelArr2;
-                        }
-                        length = codecProfileLevelArr.length;
-                        for (i = 0; i < length; i++) {
-                            codecProfileLevel = codecProfileLevelArr[i];
-                            if (codecProfileLevel.profile != iIntValue) {
-                            }
-                        }
-                        h("codec.profileLevel, " + tb1Var.k + ", " + str3);
-                        return false;
-                    }
-                    codecCapabilities = this.d;
-                    if (codecCapabilities != null) {
-                        codecProfileLevelArr = new MediaCodecInfo.CodecProfileLevel[0];
-                    } else {
-                        codecProfileLevelArr = new MediaCodecInfo.CodecProfileLevel[0];
-                    }
-                    if (str.equals("audio/ac4")) {
-                        if (codecCapabilities != null) {
-                            maxInputChannelCount = 2;
-                        } else {
-                            maxInputChannelCount = 2;
-                        }
-                        if (maxInputChannelCount > 18) {
-                        }
-                        if (context.getPackageManager().hasSystemFeature("android.hardware.type.automotive")) {
-                            codecProfileLevelArr2 = new MediaCodecInfo.CodecProfileLevel[]{jk2.b(1026, i2)};
-                        } else {
-                            codecProfileLevelArr2 = new MediaCodecInfo.CodecProfileLevel[]{jk2.b(257, i2), jk2.b(513, i2), jk2.b(514, i2), jk2.b(1026, i2), jk2.b(1028, i2)};
-                        }
-                        codecProfileLevelArr = codecProfileLevelArr2;
-                    }
-                    length = codecProfileLevelArr.length;
-                    while (i < length) {
-                        codecProfileLevel = codecProfileLevelArr[i];
-                        if (codecProfileLevel.profile != iIntValue) {
-                        }
-                    }
-                    h("codec.profileLevel, " + tb1Var.k + ", " + str3);
-                    return false;
-                }
-            }
-        } else if (pairB != null) {
-            iIntValue = ((Integer) pairB.first).intValue();
-            iIntValue2 = ((Integer) pairB.second).intValue();
-            zEquals = "video/dolby-vision".equals(str2);
-            str = this.b;
-            if (zEquals) {
-                str.getClass();
-                switch (str) {
-                    case -1662735862:
-                        if (str.equals("video/av01")) {
-                        }
-                        break;
-                    case -1662541442:
-                        if (str.equals("video/hevc")) {
-                        }
-                        break;
-                    case 1331836730:
-                        if (str.equals("video/avc")) {
-                        }
-                        break;
-                }
-                /*  JADX ERROR: Method code generation error
-                    java.lang.NullPointerException: Switch insn not found in header
-                    	at java.base/java.util.Objects.requireNonNull(Objects.java:235)
-                    	at jadx.core.codegen.RegionGen.makeSwitch(RegionGen.java:246)
-                    	at jadx.core.dex.regions.SwitchRegion.generate(SwitchRegion.java:90)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.codegen.RegionGen.makeRegionIndent(RegionGen.java:83)
-                    	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:126)
-                    	at jadx.core.dex.regions.conditions.IfRegion.generate(IfRegion.java:90)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.codegen.RegionGen.makeRegionIndent(RegionGen.java:83)
-                    	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:126)
-                    	at jadx.core.codegen.RegionGen.connectElseIf(RegionGen.java:157)
-                    	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:136)
-                    	at jadx.core.dex.regions.conditions.IfRegion.generate(IfRegion.java:90)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.codegen.MethodGen.addRegionInsns(MethodGen.java:291)
-                    	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:270)
-                    	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:420)
-                    	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:345)
-                    	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$3(ClassGen.java:299)
-                    	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-                    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-                    	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-                    	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-                    */
-                /*
-                    Method dump skipped, instruction units count: 372
-                    To view this dump add '--comments-level debug' option
-                */
-                throw new UnsupportedOperationException("Method not decompiled: defpackage.dk2.c(android.content.Context, tb1, boolean):boolean");
-            }
+    public final boolean c(Context r17, tb1 r18, boolean r19) {
+        Pair r2 = i40.b(r18);
+        String r3 = r18.n;
+        byte r4 = -1;
+        String r6 = this.c;
+        if (r3 != null) goto L5;
+    L15:
+        if (r2 == null) goto L83;
+        int r8 = ((Integer) r2.first).intValue();
+        int r5 = ((Integer) r2.second).intValue();
+        boolean r7 = "video/dolby-vision".equals(r3);
+        int r9 = 8;
+        String r11 = this.b;
+        if (r7 == false) goto L40;
+        r11.getClass();
+        switch(r11.hashCode()) {
+            case -1662735862: goto L31;
+            case -1662541442: goto L27;
+            case 1331836730: goto L23;
+            default: goto L34;
+        };
+    L34:
+        switch(r4) {
+            case 0: goto L38;
+            case 1: goto L38;
+            case 2: goto L36;
+            default: goto L40;
+        };
+    L36:
+        r8 = 8;
+    L37:
+        r5 = 0;
+        goto L40
+    L38:
+        r8 = 2;
+        goto L37
+    L23:
+        if (r11.equals("video/avc") == false) goto L34;
+        r4 = 2;
+        goto L34
+    L27:
+        if (r11.equals("video/hevc") == false) goto L34;
+        r4 = 1;
+        goto L34
+    L31:
+        if (r11.equals("video/av01") == false) goto L34;
+        r4 = 0;
+    L40:
+        if (this.i == false) goto L42;
+    L46:
+        MediaCodecInfo.CodecCapabilities r10 = this.d;
+        if (r10 == null) goto L50;
+        MediaCodecInfo.CodecProfileLevel[] r13 = r10.profileLevels;
+        if (r13 == null) goto L50;
+    L52:
+        if (r11.equals("audio/ac4") == true) goto L54;
+    L68:
+        int r12 = r13.length;
+        int r14 = 0;
+    L69:
+        if (r14 >= r12) goto L85;
+        MediaCodecInfo.CodecProfileLevel r15 = r13[r14];
+        if (r15.profile != r8) goto L84;
+        if (r15.level >= r5) goto L76;
+        if (r19 == true) goto L84;
+    L76:
+        if ("video/hevc".equals(r11) == false) goto L83;
+        if (2 != r8) goto L83;
+        String r16 = Build.DEVICE;
+        if ("sailfish".equals(r16) == true) goto L84;
+        if ("marlin".equals(r16) == false) goto L83;
+    L84:
+        r14 = r14 + 1;
+        goto L69
+    L85:
+        h("codec.profileLevel, " + r18.k + ", " + r6);
+        return false;
+    L54:
+        if (r13.length != 0) goto L68;
+        if (r10 == null) goto L59;
+        MediaCodecInfo.AudioCapabilities r20 = r10.getAudioCapabilities();
+        if (r20 == null) goto L59;
+        int r21 = r20.getMaxInputChannelCount();
+    L61:
+        if (r21 <= 18) goto L64;
+        r9 = 16;
+    L64:
+        if (r17.getPackageManager().hasSystemFeature("android.hardware.type.automotive") == false) goto L67;
+        MediaCodecInfo.CodecProfileLevel[] r22 = {jk2.b(1026, r9)};
+    L66:
+        r13 = r22;
+        goto L68
+    L67:
+        r22 = new MediaCodecInfo.CodecProfileLevel[]{jk2.b(257, r9), jk2.b(513, r9), jk2.b(514, r9), jk2.b(1026, r9), jk2.b(1028, r9)};
+    L59:
+        r21 = 2;
+    L50:
+        r13 = new MediaCodecInfo.CodecProfileLevel[0];
+        goto L52
+    L42:
+        if (r11.equals("audio/ac4") == true) goto L46;
+        if (r8 == 42) goto L46;
+    L83:
+        return true;
+    L5:
+        if (r3.equals("video/mv-hevc") == false) goto L15;
+        String r23 = lw2.m(r6);
+        if (r23.equals("video/mv-hevc") == true) goto L83;
+        if (r23.equals("video/hevc") == false) goto L15;
+        HashMap r24 = jk2.a;
+        String r25 = uc5.q(r18.q);
+        if (r25 != null) goto L14;
+        r2 = null;
+        goto L15
+    L14:
+        String r26 = r25.trim();
+        String r27 = f35.a;
+        r2 = i40.c(r25, r26.split("\\.", -1), r18.D);
+        goto L15
+    }
 
-            public final boolean d(tb1 tb1Var) {
-                return (Objects.equals(tb1Var.n, "audio/flac") && tb1Var.H == 22 && Build.VERSION.SDK_INT < 34 && this.a.equals("c2.android.flac.decoder")) ? false : true;
-            }
+    public final boolean d(tb1 r3) {
+        if (Objects.equals(r3.n, "audio/flac") == true) goto L5;
+        return true;
+    L5:
+        if (r3.H == 22) goto L7;
+        return true;
+    L7:
+        if (Build.VERSION.SDK_INT < 34) goto L9;
+        return true;
+    L9:
+        if (this.a.equals("c2.android.flac.decoder") == false) goto L17;
+        return false;
+    L17:
+        return true;
+    }
 
-            public final boolean e(Context context, tb1 tb1Var) {
-                int i;
-                int i2;
-                String str = tb1Var.n;
-                String str2 = this.b;
-                if ((!str2.equals(str) && !str2.equals(jk2.c(tb1Var))) || !c(context, tb1Var, true) || !d(tb1Var)) {
-                    return false;
-                }
-                if (this.i) {
-                    int i3 = tb1Var.u;
-                    if (i3 > 0 && (i2 = tb1Var.v) > 0) {
-                        return g(i3, i2, tb1Var.y);
-                    }
-                } else {
-                    int i4 = tb1Var.G;
-                    MediaCodecInfo.CodecCapabilities codecCapabilities = this.d;
-                    if (i4 != -1) {
-                        if (codecCapabilities == null) {
-                            h("sampleRate.caps");
-                            return false;
-                        }
-                        MediaCodecInfo.AudioCapabilities audioCapabilities = codecCapabilities.getAudioCapabilities();
-                        if (audioCapabilities == null) {
-                            h("sampleRate.aCaps");
-                            return false;
-                        }
-                        if (!audioCapabilities.isSampleRateSupported(i4)) {
-                            h("sampleRate.support, " + i4);
-                            return false;
-                        }
-                    }
-                    int i5 = tb1Var.F;
-                    if (i5 != -1) {
-                        if (codecCapabilities == null) {
-                            h("channelCount.caps");
-                            return false;
-                        }
-                        MediaCodecInfo.AudioCapabilities audioCapabilities2 = codecCapabilities.getAudioCapabilities();
-                        if (audioCapabilities2 == null) {
-                            h("channelCount.aCaps");
-                            return false;
-                        }
-                        int maxInputChannelCount = audioCapabilities2.getMaxInputChannelCount();
-                        if (maxInputChannelCount <= 1 && ((Build.VERSION.SDK_INT < 26 || maxInputChannelCount <= 0) && !"audio/mpeg".equals(str2) && !"audio/3gpp".equals(str2) && !"audio/amr-wb".equals(str2) && !"audio/mp4a-latm".equals(str2) && !"audio/vorbis".equals(str2) && !"audio/opus".equals(str2) && !"audio/raw".equals(str2) && !"audio/flac".equals(str2) && !"audio/g711-alaw".equals(str2) && !"audio/g711-mlaw".equals(str2) && !"audio/gsm".equals(str2))) {
-                            if ("audio/ac3".equals(str2)) {
-                                i = 6;
-                            } else {
-                                i = "audio/eac3".equals(str2) ? 16 : 30;
-                            }
-                            l93.q0("MediaCodecInfo", "AssumedMaxChannelAdjustment: " + this.a + ", [" + maxInputChannelCount + " to " + i + "]");
-                            maxInputChannelCount = i;
-                        }
-                        if (maxInputChannelCount < i5) {
-                            h("channelCount.support, " + i5);
-                            return false;
-                        }
-                    }
-                }
-                return true;
-            }
+    public final boolean e(Context r7, tb1 r8) {
+        String r0 = r8.n;
+        String r1 = this.b;
+        if (r1.equals(r0) == true) goto L9;
+        if (r1.equals(jk2.c(r8)) == true) goto L9;
+        return false;
+    L9:
+        if (c(r7, r8, true) == true) goto L12;
+    L13:
+        return false;
+    L12:
+        if (d(r8) == false) goto L13;
+        if (this.i == false) goto L23;
+        int r9 = r8.u;
+        if (r9 <= 0) goto L85;
+        int r2 = r8.v;
+        if (r2 <= 0) goto L85;
+        return g(r9, r2, r8.y);
+    L85:
+        return true;
+    L23:
+        int r10 = r8.G;
+        MediaCodecInfo.CodecCapabilities r3 = this.d;
+        if (r10 == (-1)) goto L36;
+        if (r3 != null) goto L28;
+        h("sampleRate.caps");
+        return false;
+    L28:
+        MediaCodecInfo.AudioCapabilities r5 = r3.getAudioCapabilities();
+        if (r5 != null) goto L33;
+        h("sampleRate.aCaps");
+        return false;
+    L33:
+        if (r5.isSampleRateSupported(r10) == true) goto L36;
+        h("sampleRate.support, " + r10);
+        return false;
+    L36:
+        int r11 = r8.F;
+        if (r11 == (-1)) goto L85;
+        if (r3 != null) goto L41;
+        h("channelCount.caps");
+        return false;
+    L41:
+        MediaCodecInfo.AudioCapabilities r12 = r3.getAudioCapabilities();
+        if (r12 != null) goto L45;
+        h("channelCount.aCaps");
+        return false;
+    L45:
+        int r13 = r12.getMaxInputChannelCount();
+        if (r13 <= 1) goto L48;
+    L82:
+        if (r13 >= r11) goto L85;
+        h("channelCount.support, " + r11);
+        return false;
+    L48:
+        if (Build.VERSION.SDK_INT < 26) goto L52;
+        if (r13 > 0) goto L82;
+    L52:
+        if ("audio/mpeg".equals(r1) == true) goto L82;
+        if ("audio/3gpp".equals(r1) == true) goto L82;
+        if ("audio/amr-wb".equals(r1) == true) goto L82;
+        if ("audio/mp4a-latm".equals(r1) == true) goto L82;
+        if ("audio/vorbis".equals(r1) == true) goto L82;
+        if ("audio/opus".equals(r1) == true) goto L82;
+        if ("audio/raw".equals(r1) == true) goto L82;
+        if ("audio/flac".equals(r1) == true) goto L82;
+        if ("audio/g711-alaw".equals(r1) == true) goto L82;
+        if ("audio/g711-mlaw".equals(r1) == true) goto L82;
+        if ("audio/gsm".equals(r1) == true) goto L82;
+        if ("audio/ac3".equals(r1) == false) goto L78;
+        int r4 = 6;
+    L81:
+        l93.q0("MediaCodecInfo", "AssumedMaxChannelAdjustment: " + this.a + ", [" + r13 + " to " + r4 + "]");
+        r13 = r4;
+        goto L82
+    L78:
+        if ("audio/eac3".equals(r1) == false) goto L80;
+        r4 = 16;
+        goto L81
+    L80:
+        r4 = 30;
+        goto L81
+    }
 
-            public final boolean f(tb1 tb1Var) {
-                if (this.i) {
-                    return this.e;
-                }
-                Pair pairB = i40.b(tb1Var);
-                return pairB != null && ((Integer) pairB.first).intValue() == 42;
-            }
+    public final boolean f(tb1 r2) {
+        if (this.i == true) goto L5;
+        Pair r1 = i40.b(r2);
+        if (r1 != null) goto L9;
+        return false;
+    L9:
+        if (((Integer) r1.first).intValue() != 42) goto L14;
+        return true;
+    L14:
+        return false;
+    L5:
+        return this.e;
+    }
 
-            /* JADX WARN: Code duplicated, block: B:51:0x008d  */
-            /* JADX WARN: Code duplicated, block: B:59:0x00ab A[DONT_INVERT] */
-            /* JADX WARN: Code duplicated, block: B:60:0x00ad  */
-            public final boolean g(int i, int i2, double d) {
-                String str;
-                char c;
-                Boolean bool;
-                List supportedPerformancePoints;
-                MediaCodecInfo.CodecCapabilities codecCapabilities = this.d;
-                if (codecCapabilities == null) {
-                    h("sizeAndRate.caps");
-                    return false;
-                }
-                MediaCodecInfo.VideoCapabilities videoCapabilities = codecCapabilities.getVideoCapabilities();
-                if (videoCapabilities == null) {
-                    h("sizeAndRate.vCaps");
-                    return false;
-                }
-                int i3 = Build.VERSION.SDK_INT;
-                if (i3 >= 29) {
-                    if (i3 < 29 || (((bool = uc5.j) != null && bool.booleanValue()) || (supportedPerformancePoints = videoCapabilities.getSupportedPerformancePoints()) == null || supportedPerformancePoints.isEmpty())) {
-                        c = 0;
-                    } else {
-                        ek2.m();
-                        MediaCodecInfo.VideoCapabilities.PerformancePoint performancePointH = ek2.h(i, i2, (int) d);
-                        int i4 = 0;
-                        while (true) {
-                            if (i4 >= supportedPerformancePoints.size()) {
-                                c = 1;
-                                break;
-                            }
-                            if (yj1.c(supportedPerformancePoints.get(i4)).covers(performancePointH)) {
-                                c = 2;
-                                break;
-                            }
-                            i4++;
-                        }
-                        if (c == 1 && uc5.j == null) {
-                            int iK = i3 >= 35 ? 2 : q05.k(false);
-                            int iK2 = q05.k(true);
-                            boolean z = iK == 0 || (iK2 != 0 ? !(iK == 2 && iK2 == 2) : iK != 2);
-                            uc5.j = Boolean.valueOf(z);
-                            if (z) {
-                                c = 0;
-                            }
-                        }
-                    }
-                    if (c != 2) {
-                        if (c == 1) {
-                            StringBuilder sbT = b11.t("sizeAndRate.cover, ", "x", i, i2, "@");
-                            sbT.append(d);
-                            h(sbT.toString());
-                            return false;
-                        }
-                        if (!a(videoCapabilities, i, i2, d)) {
-                            if (i < i2) {
-                                str = this.a;
-                                if ("OMX.MTK.VIDEO.DECODER.HEVC".equals(str)) {
-                                    StringBuilder sbT2 = b11.t("sizeAndRate.rotated, ", "x", i, i2, "@");
-                                    sbT2.append(d);
-                                    StringBuilder sbU = b11.u("AssumedSupport [", sbT2.toString(), "] [", str, ", ");
-                                    sbU.append(this.b);
-                                    sbU.append("] [");
-                                    sbU.append(f35.a);
-                                    sbU.append("]");
-                                    l93.A("MediaCodecInfo", sbU.toString());
-                                    return true;
-                                }
-                                StringBuilder sbT3 = b11.t("sizeAndRate.rotated, ", "x", i, i2, "@");
-                                sbT3.append(d);
-                                StringBuilder sbU2 = b11.u("AssumedSupport [", sbT3.toString(), "] [", str, ", ");
-                                sbU2.append(this.b);
-                                sbU2.append("] [");
-                                sbU2.append(f35.a);
-                                sbU2.append("]");
-                                l93.A("MediaCodecInfo", sbU2.toString());
-                                return true;
-                            }
-                            StringBuilder sbT4 = b11.t("sizeAndRate.support, ", "x", i, i2, "@");
-                            sbT4.append(d);
-                            h(sbT4.toString());
-                            return false;
-                        }
-                    }
-                } else if (!a(videoCapabilities, i, i2, d)) {
-                    if (i < i2) {
-                        str = this.a;
-                        if (("OMX.MTK.VIDEO.DECODER.HEVC".equals(str) || !"mcv5a".equals(Build.DEVICE)) && a(videoCapabilities, i2, i, d)) {
-                            StringBuilder sbT5 = b11.t("sizeAndRate.rotated, ", "x", i, i2, "@");
-                            sbT5.append(d);
-                            StringBuilder sbU3 = b11.u("AssumedSupport [", sbT5.toString(), "] [", str, ", ");
-                            sbU3.append(this.b);
-                            sbU3.append("] [");
-                            sbU3.append(f35.a);
-                            sbU3.append("]");
-                            l93.A("MediaCodecInfo", sbU3.toString());
-                            return true;
-                        }
-                    }
-                    StringBuilder sbT6 = b11.t("sizeAndRate.support, ", "x", i, i2, "@");
-                    sbT6.append(d);
-                    h(sbT6.toString());
-                    return false;
-                }
-                return true;
-            }
+    public final boolean g(int r12, int r13, double r14) {
+        MediaCodecInfo.CodecCapabilities r1 = this.d;
+        if (r1 != null) goto L6;
+        h("sizeAndRate.caps");
+        return false;
+    L6:
+        MediaCodecInfo.VideoCapabilities r2 = r1.getVideoCapabilities();
+        if (r2 != null) goto L10;
+        h("sizeAndRate.vCaps");
+        return false;
+    L10:
+        int r3 = Build.VERSION.SDK_INT;
+        if (r3 < 29) goto L58;
+        if (r3 < 29) goto L51;
+        Boolean r4 = uc5.j;
+        if (r4 != null) goto L17;
+    L19:
+        List r5 = yj1.e(r2);
+        if (r5 == null) goto L51;
+        if (r5.isEmpty() == true) goto L51;
+        ek2.m();
+        MediaCodecInfo.VideoCapabilities.PerformancePoint r8 = ek2.h(r12, r13, (int) r14);
+        int r9 = 0;
+    L26:
+        if (r9 >= r5.size()) goto L31;
+        if (ek2.t(yj1.c(r5.get(r9)), r8) == true) goto L29;
+        r9 = r9 + 1;
+        goto L26
+    L29:
+        char r6 = 2;
+    L32:
+        if (r6 == 1) goto L34;
+    L52:
+        if (r6 == 2) goto L72;
+        if (r6 != 1) goto L58;
+        StringBuilder r15 = b11.t("sizeAndRate.cover, ", "x", r12, r13, "@");
+        r15.append(r14);
+        h(r15.toString());
+        return false;
+    L72:
+        return true;
+    L34:
+        if (uc5.j != null) goto L52;
+        if (r3 < 35) goto L38;
+        int r7 = 2;
+    L39:
+        int r10 = q05.k(true);
+        if (r7 != 0) goto L42;
+    L41:
+        boolean r11 = true;
+    L49:
+        uc5.j = Boolean.valueOf(r11);
+        if (r11 == false) goto L52;
+    L42:
+        if (r10 != 0) goto L46;
+        if (r7 != 2) goto L41;
+    L45:
+        r11 = false;
+        goto L49
+    L46:
+        if (r7 != 2) goto L41;
+        if (r10 == 2) goto L45;
+    L38:
+        r7 = q05.k(false);
+        goto L39
+    L31:
+        r6 = 1;
+        goto L32
+    L17:
+        if (r4.booleanValue() == false) goto L19;
+    L51:
+        r6 = 0;
+    L58:
+        if (a(r2, r12, r13, r14) == true) goto L72;
+        if (r12 >= r13) goto L70;
+        String r16 = this.a;
+        if ("OMX.MTK.VIDEO.DECODER.HEVC".equals(r16) == false) goto L66;
+        if ("mcv5a".equals(Build.DEVICE) == true) goto L70;
+    L66:
+        if (a(r2, r13, r12, r14) == false) goto L70;
+        StringBuilder r17 = b11.t("sizeAndRate.rotated, ", "x", r12, r13, "@");
+        r17.append(r14);
+        StringBuilder r18 = b11.u("AssumedSupport [", r17.toString(), "] [", r16, ", ");
+        r18.append(this.b);
+        r18.append("] [");
+        r18.append(f35.a);
+        r18.append("]");
+        l93.A("MediaCodecInfo", r18.toString());
+        return true;
+    L70:
+        StringBuilder r19 = b11.t("sizeAndRate.support, ", "x", r12, r13, "@");
+        r19.append(r14);
+        h(r19.toString());
+        return false;
+    }
 
-            public final void h(String str) {
-                StringBuilder sbJ = xa3.j("NoSupport [", str, "] [");
-                sbJ.append(this.a);
-                sbJ.append(", ");
-                sbJ.append(this.b);
-                sbJ.append("] [");
-                sbJ.append(f35.a);
-                sbJ.append("]");
-                l93.A("MediaCodecInfo", sbJ.toString());
-            }
+    public final void h(String r3) {
+        StringBuilder r4 = xa3.j("NoSupport [", r3, "] [");
+        r4.append(this.a);
+        r4.append(", ");
+        r4.append(this.b);
+        r4.append("] [");
+        r4.append(f35.a);
+        r4.append("]");
+        l93.A("MediaCodecInfo", r4.toString());
+    }
 
-            public final String toString() {
-                return this.a;
-            }
-        }
+    public final String toString() {
+        return this.a;
+    }
+}

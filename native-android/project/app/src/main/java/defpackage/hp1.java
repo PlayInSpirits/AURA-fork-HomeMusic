@@ -31,54 +31,50 @@ public class hp1 extends kc1 implements ClickCallback, RadioCallback {
     public zd0 o0;
     public bl2 p0;
 
+    public hp1() {
+    }
+
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        this.m0 = (MainActivity) e();
-        View viewInflate = layoutInflater.inflate(R.layout.fragment_home_tab_radio, viewGroup, false);
-        int i = R.id.empty_description_image_view;
-        if (((ImageView) uo.s(viewInflate, R.id.empty_description_image_view)) != null) {
-            i = R.id.empty_radio_station_layout;
-            LinearLayout linearLayout = (LinearLayout) uo.s(viewInflate, R.id.empty_radio_station_layout);
-            if (linearLayout != null) {
-                i = R.id.hide_section_button;
-                TextView textView = (TextView) uo.s(viewInflate, R.id.hide_section_button);
-                if (textView != null) {
-                    i = R.id.internet_radio_station_pre_text_view;
-                    TextView textView2 = (TextView) uo.s(viewInflate, R.id.internet_radio_station_pre_text_view);
-                    if (textView2 != null) {
-                        i = R.id.internet_radio_station_recycler_view;
-                        RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate, R.id.internet_radio_station_recycler_view);
-                        if (recyclerView != null) {
-                            i = R.id.internet_radio_station_title_text_view;
-                            TextView textView3 = (TextView) uo.s(viewInflate, R.id.internet_radio_station_title_text_view);
-                            if (textView3 != null) {
-                                i = R.id.subtitle_empty_description_label;
-                                if (((TextView) uo.s(viewInflate, R.id.subtitle_empty_description_label)) != null) {
-                                    i = R.id.title_empty_description_label;
-                                    if (((TextView) uo.s(viewInflate, R.id.title_empty_description_label)) != null) {
-                                        ConstraintLayout constraintLayout = (ConstraintLayout) viewInflate;
-                                        this.l0 = new z40(constraintLayout, linearLayout, textView, textView2, recyclerView, textView3);
-                                        nc1 nc1VarX = X();
-                                        e75 e75VarD = nc1VarX.d();
-                                        b75 b75VarR = gh0.r(nc1VarX);
-                                        bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
-                                        i30 i30VarA = kx3.a(iu3.class);
-                                        String strB = i30VarA.b();
-                                        if (strB != null) {
-                                            this.n0 = (iu3) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-                                            return constraintLayout;
-                                        }
-                                        kf2.n("Local and anonymous classes can not be ViewModels");
-                                        return null;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i)));
+    public final View H(LayoutInflater r9, ViewGroup r10, Bundle r11) {
+        this.m0 = (MainActivity) l();
+        View r12 = r9.inflate(R.layout.fragment_home_tab_radio, r10, false);
+        int r13 = R.id.empty_description_image_view;
+        if (((ImageView) uo.s(r12, R.id.empty_description_image_view)) == null) goto L24;
+        r13 = R.id.empty_radio_station_layout;
+        LinearLayout r3 = (LinearLayout) uo.s(r12, R.id.empty_radio_station_layout);
+        if (r3 == null) goto L24;
+        r13 = R.id.hide_section_button;
+        TextView r4 = (TextView) uo.s(r12, R.id.hide_section_button);
+        if (r4 == null) goto L24;
+        r13 = R.id.internet_radio_station_pre_text_view;
+        TextView r5 = (TextView) uo.s(r12, R.id.internet_radio_station_pre_text_view);
+        if (r5 == null) goto L24;
+        r13 = R.id.internet_radio_station_recycler_view;
+        RecyclerView r6 = (RecyclerView) uo.s(r12, R.id.internet_radio_station_recycler_view);
+        if (r6 == null) goto L24;
+        r13 = R.id.internet_radio_station_title_text_view;
+        TextView r7 = (TextView) uo.s(r12, R.id.internet_radio_station_title_text_view);
+        if (r7 == null) goto L24;
+        r13 = R.id.subtitle_empty_description_label;
+        if (((TextView) uo.s(r12, R.id.subtitle_empty_description_label)) == null) goto L24;
+        r13 = R.id.title_empty_description_label;
+        if (((TextView) uo.s(r12, R.id.title_empty_description_label)) == null) goto L24;
+        ConstraintLayout r2 = (ConstraintLayout) r12;
+        this.l0 = new z40(r2, r3, r4, r5, r6, r7);
+        nc1 r14 = X();
+        e75 r15 = r14.d();
+        b75 r16 = gh0.r(r14);
+        bq4 r1 = new bq4(r15, r16, b11.e(r14, r16));
+        i30 r17 = kx3.a(iu3.class);
+        String r18 = r17.b();
+        if (r18 == null) goto L22;
+        this.n0 = (iu3) r1.l(r17, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r18));
+        return r2;
+    L22:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L24:
+        nz2.n("Missing required view with ID: ".concat(r12.getResources().getResourceName(r13)));
         return null;
     }
 
@@ -91,14 +87,21 @@ public class hp1 extends kc1 implements ClickCallback, RadioCallback {
     @Override // defpackage.kc1
     public final void R() {
         this.R = true;
-        Context contextZ = Z();
-        cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
-        Bundle bundle = Bundle.EMPTY;
-        aj2 aj2Var = new aj2();
-        Looper looperX = f35.x();
-        bl2 bl2Var = new bl2(looperX);
-        b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, cb4Var.a.e() ? new xc5(4, new fi0(new x7(contextZ))) : null), new Handler(looperX));
-        this.p0 = bl2Var;
+        Context r2 = Z();
+        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
+        Bundle r4 = Bundle.EMPTY;
+        aj2 r5 = new aj2();
+        Looper r6 = f35.x();
+        bl2 r7 = new bl2(r6);
+        if (r3.a.e() == false) goto L6;
+        xc5 r0 = new xc5(4, new fi0(new x7(r2)));
+    L7:
+        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
+        this.p0 = r7;
+        return;
+    L6:
+        r0 = null;
+        goto L7
     }
 
     @Override // defpackage.kc1
@@ -108,42 +111,45 @@ public class hp1 extends kc1 implements ClickCallback, RadioCallback {
     }
 
     @Override // defpackage.kc1
-    public final void T(View view, Bundle bundle) {
+    public final void T(View r3, Bundle r4) {
         ((TextView) this.l0.p).setOnClickListener(new p6(19, this));
         ((TextView) this.l0.r).setOnLongClickListener(new q6(10, this));
         ((TextView) this.l0.o).setOnClickListener(new ep1(1));
-        RecyclerView recyclerView = (RecyclerView) this.l0.q;
+        RecyclerView r5 = (RecyclerView) this.l0.q;
         Z();
-        recyclerView.setLayoutManager(new LinearLayoutManager(1));
+        r5.setLayoutManager(new LinearLayoutManager(1));
         ((RecyclerView) this.l0.q).setHasFixedSize(true);
-        zd0 zd0Var = new zd0(this);
-        this.o0 = zd0Var;
-        ((RecyclerView) this.l0.q).setAdapter(zd0Var);
+        zd0 r6 = new zd0(this);
+        this.o0 = r6;
+        ((RecyclerView) this.l0.q).setAdapter(r6);
         this.n0.c(v()).e(v(), new d8(12, this));
     }
 
     @Override // com.eddyizm.tempus.interfaces.RadioCallback
     public final void onDismiss() {
-        new Handler().postDelayed(new qa1(12, this), 1000L);
+        new Handler().postDelayed(new qa1(12, this), 1000);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onInternetRadioStationClick(Bundle bundle) {
-        bl2 bl2Var = this.p0;
-        InternetRadioStation internetRadioStation = (InternetRadioStation) bundle.getParcelable("INTERNET_RADIO_STATION_OBJECT");
-        WeakReference weakReference = bo2.a;
-        if (u52.c().a) {
-            u52.h(R.string.lan_music_only);
-        } else if (bl2Var != null) {
-            bl2Var.f(new ws1(22, bl2Var, internetRadioStation), gq0.n);
-        }
+    public final void onInternetRadioStationClick(Bundle r4) {
+        bl2 r0 = this.p0;
+        InternetRadioStation r5 = (InternetRadioStation) r4.getParcelable("INTERNET_RADIO_STATION_OBJECT");
+        WeakReference r1 = bo2.a;
+        if (u52.c().a == true) goto L6;
+        if (r0 == null) goto L7;
+        r0.f(new ws1(22, r0, r5), gq0.n);
+    L7:
         ((au) this.m0.V.n).d(true);
+        return;
+    L6:
+        u52.h(R.string.lan_music_only);
+        goto L7
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onInternetRadioStationLongClick(Bundle bundle) {
-        eu3 eu3Var = new eu3(new hg3(23, this));
-        eu3Var.c0(bundle);
-        eu3Var.m0(this.m0.k(), null);
+    public final void onInternetRadioStationLongClick(Bundle r4) {
+        eu3 r0 = new eu3(new hg3(23, this));
+        r0.c0(r4);
+        r0.m0(this.m0.k(), null);
     }
 }

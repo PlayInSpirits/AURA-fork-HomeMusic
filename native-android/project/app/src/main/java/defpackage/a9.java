@@ -22,6 +22,7 @@ public final class a9 {
     public DialogInterface.OnClickListener j;
     public CharSequence k;
     public DialogInterface.OnClickListener l;
+    public boolean m;
     public st1 n;
     public ru2 o;
     public CharSequence[] p;
@@ -31,12 +32,13 @@ public final class a9 {
     public boolean[] t;
     public boolean u;
     public boolean v;
+    public int w;
     public fz2 x;
-    public int w = -1;
-    public boolean m = true;
 
-    public a9(ContextThemeWrapper contextThemeWrapper) {
-        this.a = contextThemeWrapper;
-        this.b = (LayoutInflater) contextThemeWrapper.getSystemService("layout_inflater");
+    public a9(ContextThemeWrapper r2) {
+        this.w = -1;
+        this.a = r2;
+        this.m = true;
+        this.b = (LayoutInflater) r2.getSystemService("layout_inflater");
     }
 }

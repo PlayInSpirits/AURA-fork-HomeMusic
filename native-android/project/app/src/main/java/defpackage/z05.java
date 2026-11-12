@@ -28,309 +28,374 @@ public final class z05 implements aw1, g84 {
     public Object p;
     public Object q;
 
-    public z05(int i) {
-        this.n = i;
-        switch (i) {
-            case 9:
-                this.o = new AtomicReference(l93.c);
-                this.p = new Object();
-                break;
-            default:
-                this.q = new xi4(15);
-                break;
-        }
+    public z05(int r2) {
+        this.n = r2;
+        switch(r2) {
+            case 9: goto L6;
+            default: goto L4;
+        };
+    L4:
+        this.q = new xi4(15);
+        return;
+    L6:
+        this.o = new AtomicReference(l93.c);
+        this.p = new Object();
     }
 
-    public static z84 e(Class cls, kx kxVar) {
-        try {
-            return (z84) cls.getConstructor(kx.class).newInstance(kxVar);
-        } catch (Exception e) {
-            mj0.j("Downloader factory missing", e);
-            return null;
-        }
+    public static z84 e(Class r1, kx r2) {
+        return (z84) r1.getConstructor(new Class[]{kx.class}).newInstance(new Object[]{r2});
+    L4:
+        e = move-exception;
+        mj0.j("Downloader factory missing", e);
+        return null;
     }
 
     @Override // defpackage.g84
-    public void a(be3 be3Var) {
-        long jD;
-        long j;
+    public void a(be3 r14) {
         ((iu4) this.p).getClass();
-        String str = f35.a;
-        iu4 iu4Var = (iu4) this.p;
-        synchronized (iu4Var) {
-            try {
-                long j2 = iu4Var.c;
-                jD = j2 != -9223372036854775807L ? j2 + iu4Var.b : iu4Var.d();
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        iu4 iu4Var2 = (iu4) this.p;
-        synchronized (iu4Var2) {
-            j = iu4Var2.b;
-        }
-        if (jD == -9223372036854775807L || j == -9223372036854775807L) {
-            return;
-        }
-        tb1 tb1Var = (tb1) this.o;
-        if (j != tb1Var.s) {
-            sb1 sb1VarA = tb1Var.a();
-            sb1VarA.r = j;
-            tb1 tb1Var2 = new tb1(sb1VarA);
-            this.o = tb1Var2;
-            ((wv4) this.q).g(tb1Var2);
-        }
-        int iA = be3Var.a();
-        ((wv4) this.q).e(iA, be3Var);
-        ((wv4) this.q).a(jD, 1, iA, 0, null);
+        String r0 = f35.a;
+        iu4 r1 = (iu4) this.p;
+        monitor-enter(r1);
+        long r2 = r1.c;     // Catch: Throwable -> L8
+        if (r2 == (-9223372036854775807L)) goto L10;
+        long r3 = r2 + r1.b;     // Catch: Throwable -> L8
+    L7:
+        long r7 = r3;
+        monitor-exit(r1);
+        iu4 r4 = (iu4) this.p;
+        monitor-enter(r4);
+        long r5 = r4.b;     // Catch: Throwable -> L27
+        monitor-exit(r4);
+        if (r7 != (-9223372036854775807L)) goto L20;
+        return;
+    L20:
+        if (r5 == (-9223372036854775807L)) goto L37;
+        tb1 r6 = (tb1) this.o;
+        if (r5 == r6.s) goto L25;
+        sb1 r8 = r6.a();
+        r8.r = r5;
+        tb1 r9 = new tb1(r8);
+        this.o = r9;
+        ((wv4) this.q).g(r9);
+    L25:
+        int r10 = r14.a();
+        ((wv4) this.q).e(r10, r14);
+        ((wv4) this.q).a(r7, 1, r10, 0, null);
+        return;
+    L37:
+        return;
+    L27:
+        th = move-exception;
+        throw th;
+    L10:
+        r3 = r1.d();     // Catch: Throwable -> L8
+    L8:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.g84
-    public void b(iu4 iu4Var, m51 m51Var, sy4 sy4Var) {
-        this.p = iu4Var;
-        sy4Var.a();
-        sy4Var.b();
-        wv4 wv4VarT = m51Var.t(sy4Var.d, 5);
-        this.q = wv4VarT;
-        wv4VarT.g((tb1) this.o);
+    public void b(iu4 r1, m51 r2, sy4 r3) {
+        this.p = r1;
+        r3.a();
+        r3.b();
+        wv4 r4 = r2.t(r3.d, 5);
+        this.q = r4;
+        r4.g((tb1) this.o);
     }
 
     @Override // defpackage.aw1
     public int c() {
-        List list = (List) this.p;
-        ByteBuffer byteBufferC = vw.c((ByteBuffer) this.o);
-        qj0 qj0Var = (qj0) this.q;
-        if (byteBufferC != null) {
-            int size = list.size();
-            for (int i = 0; i < size; i++) {
-                try {
-                    int iC = ((wv1) list.get(i)).c(byteBufferC, qj0Var);
-                    if (iC != -1) {
-                        return iC;
-                    }
-                } catch (Throwable th) {
-                    throw th;
-                }
-            }
-        }
+        List r0 = (List) this.p;
+        ByteBuffer r1 = vw.c((ByteBuffer) this.o);
+        qj0 r8 = (qj0) this.q;
+        if (r1 == null) goto L16;
+        int r3 = r0.size();
+        int r5 = 0;
+    L6:
+        if (r5 >= r3) goto L16;
+        int r6 = ((wv1) r0.get(r5)).c(r1, r8);     // Catch: Throwable -> L13
+        ByteBuffer r7 = (ByteBuffer) r1.position(0);
+        if (r6 != (-1)) goto L11;
+        r5 = r5 + 1;
+        goto L6
+    L11:
+        return r6;
+    L13:
+        th = move-exception;
+        ByteBuffer r2 = (ByteBuffer) r1.position(0);
+        throw th;
+    L16:
         return -1;
     }
 
-    public du0 d(tt0 tt0Var) {
-        z84 z84VarM;
-        zm2 zm2Var;
-        bn2 bn2Var;
-        ym2 ym2Var;
-        um2 um2Var;
-        bn2 bn2Var2;
-        ym2 ym2Var2;
-        kx kxVar = (kx) this.o;
-        Uri uri = tt0Var.o;
-        int iJ = f35.J(uri, tt0Var.p);
-        boolean z = true;
-        if (iJ != 0 && iJ != 1 && iJ != 2) {
-            if (iJ != 4) {
-                kf2.n(f34.f(iJ, "Unsupported type: "));
-                return null;
-            }
-            rt0 rt0Var = tt0Var.u;
-            um2 um2Var2 = new um2();
-            xm2 xm2Var = new xm2();
-            List list = Collections.EMPTY_LIST;
-            gy3 gy3Var = gy3.r;
-            zm2 zm2Var2 = new zm2();
-            cn2 cn2Var = cn2.d;
-            String str = tt0Var.s;
-            if (((Uri) xm2Var.e) != null && ((UUID) xm2Var.d) == null) {
-                z = false;
-            }
-            rr2.w(z);
-            if (uri != null) {
-                if (((UUID) xm2Var.d) != null) {
-                    ym2Var2 = new ym2(xm2Var);
-                    um2Var = um2Var2;
-                } else {
-                    um2Var = um2Var2;
-                    ym2Var2 = null;
-                }
-                bn2Var2 = new bn2(uri, null, ym2Var2, null, list, str, gy3Var, -9223372036854775807L);
-            } else {
-                um2Var = um2Var2;
-                bn2Var2 = null;
-            }
-            return new zq3(new gn2("", new wm2(um2Var), bn2Var2, new an2(zm2Var2), do2.K, cn2Var), kxVar, (Executor) this.p, rt0Var != null ? rt0Var.n : 0L, rt0Var != null ? rt0Var.o : -1L);
-        }
-        SparseArray sparseArray = (SparseArray) this.q;
-        if (f35.l(sparseArray, iJ)) {
-            z84VarM = (z84) sparseArray.get(iJ);
-        } else {
-            try {
-                z84VarM = m(iJ, kxVar);
-            } catch (ClassNotFoundException e) {
-                mj0.j(f34.f(iJ, "Module missing for content type "), e);
-                return null;
-            }
-        }
-        um2 um2Var3 = new um2();
-        xm2 xm2Var2 = new xm2();
-        List listUnmodifiableList = Collections.EMPTY_LIST;
-        gy3 gy3Var2 = gy3.r;
-        zm2 zm2Var3 = new zm2();
-        cn2 cn2Var2 = cn2.d;
-        List list2 = tt0Var.q;
-        if (list2 != null && !list2.isEmpty()) {
-            listUnmodifiableList = Collections.unmodifiableList(new ArrayList(list2));
-        }
-        List list3 = listUnmodifiableList;
-        String str2 = tt0Var.s;
-        if (((Uri) xm2Var2.e) != null && ((UUID) xm2Var2.d) == null) {
-            z = false;
-        }
-        rr2.w(z);
-        if (uri != null) {
-            if (((UUID) xm2Var2.d) != null) {
-                ym2Var = new ym2(xm2Var2);
-                zm2Var = zm2Var3;
-            } else {
-                zm2Var = zm2Var3;
-                ym2Var = null;
-            }
-            bn2Var = new bn2(uri, null, ym2Var, null, list3, str2, gy3Var2, -9223372036854775807L);
-        } else {
-            zm2Var = zm2Var3;
-            bn2Var = null;
-        }
-        gn2 gn2Var = new gn2("", new wm2(um2Var3), bn2Var, new an2(zm2Var), do2.K, cn2Var2);
-        st0 st0Var = tt0Var.v;
-        if (st0Var != null) {
-            lm1 lm1Var = (lm1) z84VarM;
-            lm1Var.d = st0Var.n;
-            lm1Var.e = st0Var.o;
-        }
-        Executor executor = (Executor) this.p;
-        lm1 lm1Var2 = (lm1) z84VarM;
-        lm1Var2.getClass();
-        return new mm1(gn2Var, lm1Var2.b, lm1Var2.a, executor, lm1Var2.c, lm1Var2.d, lm1Var2.e);
-    }
-
-    /* JADX WARN: Code duplicated, block: B:26:0x006f A[RETURN, SYNTHETIC] */
-    public boolean equals(Object obj) {
-        switch (this.n) {
-            case 0:
-                GenericDeclaration genericDeclaration = (GenericDeclaration) this.o;
-                String str = (String) this.p;
-                if (!y05.a) {
-                    if (obj instanceof TypeVariable) {
-                        TypeVariable typeVariable = (TypeVariable) obj;
-                        if (str.equals(typeVariable.getName()) && genericDeclaration.equals(typeVariable.getGenericDeclaration())) {
-                            return true;
-                        }
-                    }
-                    return false;
-                }
-                if (obj != null && Proxy.isProxyClass(obj.getClass()) && (Proxy.getInvocationHandler(obj) instanceof a15)) {
-                    z05 z05Var = ((a15) Proxy.getInvocationHandler(obj)).a;
-                    if (str.equals((String) z05Var.p) && genericDeclaration.equals((GenericDeclaration) z05Var.o) && ((gy3) this.q).equals((gy3) z05Var.q)) {
-                        return true;
-                    }
-                }
-                return false;
-            default:
-                return super.equals(obj);
-        }
-    }
-
-    public Object f() {
-        long jM = te5.m();
-        if (jM == nt4.a) {
-            return this.q;
-        }
-        kt4 kt4Var = (kt4) ((AtomicReference) this.o).get();
-        int iA = kt4Var.a(jM);
-        if (iA >= 0) {
-            return kt4Var.c[iA];
-        }
+    public du0 d(tt0 r25) {
+        kx r5 = (kx) this.o;
+        Uri r7 = r25.o;
+        int r2 = f35.J(r7, r25.p);
+        boolean r4 = true;
+        if (r2 == 0) goto L36;
+        if (r2 == 1) goto L36;
+        if (r2 == 2) goto L36;
+        if (r2 != 4) goto L34;
+        rt0 r3 = r25.u;
+        um2 r9 = new um2();
+        xm2 r10 = new xm2();
+        List r11 = Collections.EMPTY_LIST;
+        gy3 r13 = gy3.r;
+        zm2 r12 = new zm2();
+        cn2 r20 = cn2.d;
+        String r14 = r25.s;
+        if (((Uri) r10.e) != null) goto L12;
+    L15:
+        rr2.w(r4);
+        if (r7 != null) goto L18;
+        um2 r1 = r9;
+        bn2 r17 = null;
+    L23:
+        gn2 r15 = new gn2("", new wm2(r1), r17, new an2(r12), do2.K, r20);
+        Executor r6 = (Executor) this.p;
+        if (r3 == null) goto L27;
+        long r0 = r3.n;
+    L26:
+        long r8 = r0;
+        if (r3 == null) goto L31;
+        long r16 = r3.o;
+    L33:
+        return new zq3(r15, r5, r6, r8, r16);
+    L31:
+        r16 = -1;
+        goto L33
+    L27:
+        r0 = 0;
+        goto L26
+    L18:
+        if (((UUID) r10.d) == null) goto L20;
+        ym2 r18 = new ym2(r10);
+        r1 = r9;
+    L21:
+        r17 = new bn2(r7, null, r18, null, r11, r14, r13, -9223372036854775807L);
+        goto L23
+    L20:
+        r1 = r9;
+        r18 = null;
+        goto L21
+    L12:
+        if (((UUID) r10.d) != null) goto L15;
+        r4 = false;
+        goto L15
+    L34:
+        kf2.n(f34.f(r2, "Unsupported type: "));
+        return null;
+    L36:
+        SparseArray r19 = (SparseArray) this.q;
+        if (f35.l(r19, r2) == false) goto L67;
+        z84 r21 = (z84) r19.get(r2);
+    L40:
+        um2 r22 = new um2();
+        xm2 r23 = new xm2();
+        List r24 = Collections.EMPTY_LIST;
+        gy3 r110 = gy3.r;
+        zm2 r26 = new zm2();
+        cn2 r27 = cn2.d;
+        List r111 = r25.q;
+        if (r111 != null) goto L43;
+    L45:
+        List r112 = r24;
+        String r113 = r25.s;
+        if (((Uri) r23.e) != null) goto L48;
+    L51:
+        rr2.w(r4);
+        if (r7 != null) goto L54;
+        zm2 r28 = r26;
+        bn2 r114 = null;
+    L59:
+        gn2 r115 = new gn2("", new wm2(r22), r114, new an2(r28), do2.K, r27);
+        st0 r29 = r25.v;
+        if (r29 == null) goto L62;
+        lm1 r30 = (lm1) r21;
+        r30.d = r29.n;
+        r30.e = r29.o;
+    L62:
+        Executor r31 = (Executor) this.p;
+        lm1 r32 = (lm1) r21;
+        r32.getClass();
+        return new mm1(r115, r32.b, r32.a, r31, r32.c, r32.d, r32.e);
+    L54:
+        if (((UUID) r23.d) == null) goto L56;
+        ym2 r33 = new ym2(r23);
+        r28 = r26;
+    L57:
+        r114 = new bn2(r7, null, r33, null, r112, r113, r110, -9223372036854775807L);
+        goto L59
+    L56:
+        r28 = r26;
+        r33 = null;
+        goto L57
+    L48:
+        if (((UUID) r23.d) != null) goto L51;
+        r4 = false;
+        goto L51
+    L43:
+        if (r111.isEmpty() == true) goto L45;
+        r24 = Collections.unmodifiableList(new ArrayList(r111));
+        goto L45
+    L67:
+        r21 = m(r2, r5);     // Catch: ClassNotFoundException -> L64
+    L64:
+        e = move-exception;
+        mj0.j(f34.f(r2, "Module missing for content type "), e);
         return null;
     }
 
-    public long g() {
-        rk0 rk0Var = (rk0) this.q;
-        if (rk0Var != null) {
-            return rk0Var.q;
-        }
-        return -1L;
+    public boolean equals(Object r4) {
+        switch(this.n) {
+            case 0: goto L6;
+            default: goto L5;
+        };
+    L6:
+        GenericDeclaration r0 = (GenericDeclaration) this.o;
+        String r1 = (String) this.p;
+        if (y05.a == false) goto L21;
+        if (r4 != null) goto L10;
+    L27:
+        return false;
+    L10:
+        if (Proxy.isProxyClass(r4.getClass()) == false) goto L27;
+        if ((Proxy.getInvocationHandler(r4) instanceof a15) == false) goto L27;
+        z05 r5 = ((a15) Proxy.getInvocationHandler(r4)).a;
+        if (r1.equals((String) r5.p) == false) goto L27;
+        if (r0.equals((GenericDeclaration) r5.o) == false) goto L27;
+        if (((gy3) this.q).equals((gy3) r5.q) == false) goto L27;
+    L26:
+        return true;
+    L21:
+        if ((r4 instanceof TypeVariable) == false) goto L27;
+        TypeVariable r6 = (TypeVariable) r4;
+        if (r1.equals(r6.getName()) == false) goto L27;
+        if (r0.equals(r6.getGenericDeclaration()) == false) goto L27;
+    L5:
+        return super.equals(r4);
     }
 
-    /* JADX WARN: Code duplicated, block: B:24:0x005b  */
-    public void h(ci0 ci0Var, Uri uri, Map map, long j, long j2, hr3 hr3Var) throws UnrecognizedInputFormatException {
-        rk0 rk0Var = new rk0(ci0Var, j, j2);
-        this.q = rk0Var;
-        if (((k51) this.p) != null) {
-            return;
-        }
-        k51[] k51VarArrE = ((n51) this.o).e(uri, map);
-        int length = k51VarArrE.length;
-        vw1 vw1Var = yw1.o;
-        uc5.f(length, "expectedSize");
-        uw1 uw1Var = new uw1(length);
-        boolean z = true;
-        if (k51VarArrE.length == 1) {
-            this.p = k51VarArrE[0];
-        } else {
-            for (k51 k51Var : k51VarArrE) {
-                try {
-                    if (k51Var.c(rk0Var)) {
-                        this.p = k51Var;
-                        rk0Var.s = 0;
-                        break;
-                    }
-                    uw1Var.d(k51Var.e());
-                    boolean z2 = ((k51) this.p) != null || rk0Var.q == j;
-                    rr2.w(z2);
-                    rk0Var.s = 0;
-                } catch (EOFException unused) {
-                    if (((k51) this.p) != null || rk0Var.q == j) {
-                    }
-                } catch (Throwable th) {
-                    if (((k51) this.p) == null && rk0Var.q != j) {
-                        z = false;
-                    }
-                    rr2.w(z);
-                    rk0Var.s = 0;
-                    throw th;
-                }
-                rr2.w(z2);
-                rk0Var.s = 0;
-            }
-            if (((k51) this.p) == null) {
-                String str = "None of the available extractors (" + new uc0(", ").b(hw.P(new kf2(14), yw1.l(k51VarArrE))) + ") could read the stream.";
-                uri.getClass();
-                throw new UnrecognizedInputFormatException(str, uw1Var.f());
-            }
-        }
-        ((k51) this.p).f(hr3Var);
+    public Object f() {
+        long r0 = te5.m();
+        if (r0 == nt4.a) goto L5;
+        kt4 r4 = (kt4) ((AtomicReference) this.o).get();
+        int r1 = r4.a(r0);
+        if (r1 >= 0) goto L9;
+        return null;
+    L9:
+        return r4.c[r1];
+    L5:
+        return this.q;
+    }
+
+    public long g() {
+        rk0 r2 = (rk0) this.q;
+        if (r2 != null) goto L5;
+        return -1;
+    L5:
+        return r2.q;
+    }
+
+    public void h(ci0 r8, Uri r9, Map r10, long r11, long r13, hr3 r15) {
+        rk0 r1 = new rk0(r8, r11, r13);
+        this.q = r1;
+        if (((k51) this.p) == null) goto L5;
+        return;
+    L5:
+        k51[] r12 = ((n51) this.o).e(r9, r10);
+        int r14 = r12.length;
+        vw1 r16 = yw1.o;
+        uc5.f(r14, "expectedSize");
+        uw1 r17 = new uw1(r14);
+        boolean r18 = true;
+        if (r12.length != 1) goto L8;
+        this.p = r12[0];
+    L42:
+        ((k51) this.p).f(r15);
+        return;
+    L8:
+        int r19 = r12.length;
+        int r110 = 0;
+    L9:
+        if (r110 >= r19) goto L41;
+        k51 r0 = r12[r110];
+    L15:
+        th = move-exception;
+        if (((k51) this.p) == null) goto L29;
+    L32:
+        rr2.w(r18);
+        r1.s = 0;
+        throw th;
+    L29:
+        if (r1.q == r11) goto L32;
+        r18 = false;
+        goto L32
+    L12:
+        if (r0.c(r1) == false) goto L17;
+        this.p = r0;     // Catch: Throwable -> L15 EOFException -> L34
+        goto L35
+    L14:
+        r1.s = 0;
+        goto L41
+    L17:
+        r17.d(r0.e());     // Catch: Throwable -> L15 EOFException -> L34
+        if (((k51) this.p) == null) goto L21;
+    L24:
+        boolean r2 = true;
+    L25:
+        rr2.w(r2);
+        r1.s = 0;
+        r110 = r110 + 1;
+        goto L9
+    L21:
+        if (r1.q == r11) goto L24;
+    L23:
+        r2 = false;
+    L35:
+        if (((k51) this.p) != null) goto L24;
+        if (r1.q != r11) goto L23;
+    L41:
+        if (((k51) this.p) != null) goto L42;
+        StringBuilder r111 = new StringBuilder("None of the available extractors (");
+        r111.append(new uc0(", ").b(hw.P(new kf2(14), yw1.l(r12))));
+        r111.append(") could read the stream.");
+        String r20 = r111.toString();
+        r9.getClass();
+        throw new UnrecognizedInputFormatException(r20, r17.f());
     }
 
     public int hashCode() {
-        switch (this.n) {
-            case 0:
-                return ((String) this.p).hashCode() ^ ((GenericDeclaration) this.o).hashCode();
-            default:
-                return super.hashCode();
-        }
+        switch(this.n) {
+            case 0: goto L6;
+            default: goto L5;
+        };
+    L6:
+        int r0 = ((GenericDeclaration) this.o).hashCode();
+        return ((String) this.p).hashCode() ^ r0;
+    L5:
+        return super.hashCode();
     }
 
     @Override // defpackage.aw1
-    public Bitmap i(BitmapFactory.Options options) {
-        return BitmapFactory.decodeStream(new uw(vw.c((ByteBuffer) this.o)), null, options);
+    public Bitmap i(BitmapFactory.Options r2) {
+        return BitmapFactory.decodeStream(new uw(vw.c((ByteBuffer) this.o)), null, r2);
     }
 
     public boolean j() {
-        if (((kl4) this.o).getValue() != this.q) {
-            return true;
-        }
-        z05 z05Var = (z05) this.p;
-        return z05Var != null && z05Var.j();
+        if (((kl4) this.o).getValue() != this.q) goto L11;
+        z05 r2 = (z05) this.p;
+        if (r2 != null) goto L7;
+        return false;
+    L7:
+        if (r2.j() == true) goto L14;
+        return false;
+    L14:
+        return true;
+    L11:
+        return true;
     }
 
     @Override // defpackage.aw1
@@ -342,104 +407,114 @@ public final class z05 implements aw1, g84 {
         return kb4.C((List) this.p, vw.c((ByteBuffer) this.o));
     }
 
-    public z84 m(int i, kx kxVar) {
-        z84 z84VarE;
-        if (i == 0) {
-            z84VarE = e(Class.forName("androidx.media3.exoplayer.dash.offline.DashDownloader$Factory").asSubclass(z84.class), kxVar);
-        } else if (i == 1) {
-            z84VarE = e(Class.forName("androidx.media3.exoplayer.smoothstreaming.offline.SsDownloader$Factory").asSubclass(z84.class), kxVar);
-        } else {
-            if (i != 2) {
-                kf2.n(f34.f(i, "Unsupported type: "));
-                return null;
-            }
-            z84VarE = e(lm1.class.asSubclass(z84.class), kxVar);
-        }
-        ((SparseArray) this.q).put(i, z84VarE);
-        return z84VarE;
+    public z84 m(int r3, kx r4) {
+        if (r3 != 0) goto L5;
+        z84 r5 = e(Class.forName("androidx.media3.exoplayer.dash.offline.DashDownloader$Factory").asSubclass(z84.class), r4);
+    L13:
+        ((SparseArray) this.q).put(r3, r5);
+        return r5;
+    L5:
+        if (r3 != 1) goto L7;
+        r5 = e(Class.forName("androidx.media3.exoplayer.smoothstreaming.offline.SsDownloader$Factory").asSubclass(z84.class), r4);
+        goto L13
+    L7:
+        if (r3 != 2) goto L9;
+        r5 = e(lm1.class.asSubclass(z84.class), r4);
+        goto L13
+    L9:
+        kf2.n(f34.f(r3, "Unsupported type: "));
+        return null;
     }
 
-    public void n(Object obj) {
-        long jM = te5.m();
-        if (jM == nt4.a) {
-            this.q = obj;
-            return;
-        }
-        synchronized (this.p) {
-            kt4 kt4Var = (kt4) ((AtomicReference) this.o).get();
-            int iA = kt4Var.a(jM);
-            if (iA < 0) {
-                ((AtomicReference) this.o).set(kt4Var.b(jM, obj));
-            } else {
-                kt4Var.c[iA] = obj;
-            }
-        }
+    public void n(Object r6) {
+        long r0 = te5.m();
+        if (r0 != nt4.a) goto L6;
+        this.q = r6;
+        return;
+    L6:
+        Object r2 = this.p;
+        monitor-enter(r2);
+        kt4 r3 = (kt4) ((AtomicReference) this.o).get();     // Catch: Throwable -> L13
+        int r4 = r3.a(r0);     // Catch: Throwable -> L13
+        if (r4 >= 0) goto L15;
+        ((AtomicReference) this.o).set(r3.b(r0, r6));     // Catch: Throwable -> L13
+        monitor-exit(r2);
+        return;
+    L15:
+        r3.c[r4] = r6;     // Catch: Throwable -> L13
+        monitor-exit(r2);
+        return;
+    L13:
+        th = move-exception;
+        throw th;
     }
 
     public String toString() {
-        switch (this.n) {
-            case 0:
-                return (String) this.p;
-            default:
-                return super.toString();
-        }
+        switch(this.n) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return super.toString();
+    L7:
+        return (String) this.p;
     }
 
-    public /* synthetic */ z05(Object obj, Object obj2, Object obj3, int i) {
-        this.n = i;
-        this.o = obj;
-        this.p = obj2;
-        this.q = obj3;
+    public /* synthetic */ z05(Object r1, Object r2, Object r3, int r4) {
+        this.n = r4;
+        this.o = r1;
+        this.p = r2;
+        this.q = r3;
     }
 
-    public z05(String str) {
+    public z05(String r3) {
         this.n = 8;
-        sb1 sb1Var = new sb1();
-        sb1Var.l = lw2.m("video/mp2t");
-        sb1Var.m = lw2.m(str);
-        this.o = new tb1(sb1Var);
+        sb1 r0 = new sb1();
+        r0.l = lw2.m("video/mp2t");
+        r0.m = lw2.m(r3);
+        this.o = new tb1(r0);
     }
 
-    public z05(n51 n51Var) {
+    public z05(n51 r2) {
         this.n = 2;
-        this.o = n51Var;
+        this.o = r2;
     }
 
-    public z05(kx kxVar, Executor executor) {
+    public z05(kx r2, Executor r3) {
         this.n = 3;
-        this.o = kxVar;
-        executor.getClass();
-        this.p = executor;
+        this.o = r2;
+        r3.getClass();
+        this.p = r3;
         this.q = new SparseArray();
     }
 
-    public z05(n05 n05Var, z05 z05Var) {
+    public z05(n05 r2, z05 r3) {
         this.n = 10;
-        this.o = n05Var;
-        this.p = z05Var;
-        this.q = n05Var.n;
+        this.o = r2;
+        this.p = r3;
+        this.q = r2.n;
     }
 
-    public z05(GenericDeclaration genericDeclaration, String str, Type[] typeArr) {
+    public z05(GenericDeclaration r2, String r3, Type[] r4) {
         this.n = 0;
-        b15.b(typeArr, "bound for type variable");
-        genericDeclaration.getClass();
-        this.o = genericDeclaration;
-        str.getClass();
-        this.p = str;
-        this.q = yw1.l(typeArr);
+        b15.b(r4, "bound for type variable");
+        r2.getClass();
+        this.o = r2;
+        r3.getClass();
+        this.p = r3;
+        this.q = yw1.l(r4);
     }
 
-    public z05(i11 i11Var, cf4 cf4Var, m11 m11Var) {
+    public z05(i11 r2, cf4 r3, m11 r4) {
         this.n = 4;
-        this.q = i11Var;
-        this.p = cf4Var;
-        this.o = m11Var;
+        this.q = r2;
+        this.p = r3;
+        this.o = r4;
     }
 
-    public z05(im2 im2Var) {
+    public z05(im2 r2) {
         this.n = 7;
-        this.q = im2Var;
+        this.q = r2;
         this.o = new dj2(this);
     }
 }

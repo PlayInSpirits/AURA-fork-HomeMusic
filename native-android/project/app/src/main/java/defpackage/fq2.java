@@ -16,16 +16,15 @@ public final class fq2 extends dq2 {
     public final TextView y;
     public final int z;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public fq2(jq2 jq2Var, View view) {
-        this.A = jq2Var;
-        lq2 lq2Var = jq2Var.z;
-        super(lq2Var, view, (ImageButton) view.findViewById(R.id.mr_cast_mute_button), (MediaRouteVolumeSlider) view.findViewById(R.id.mr_cast_volume_slider));
-        this.y = (TextView) view.findViewById(R.id.mr_group_volume_route_name);
-        Resources resources = lq2Var.B.getResources();
-        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
-        TypedValue typedValue = new TypedValue();
-        resources.getValue(R.dimen.mr_dynamic_volume_group_list_item_height, typedValue, true);
-        this.z = (int) typedValue.getDimension(displayMetrics);
+    public fq2(jq2 r4, View r5) {
+        this.A = r4;
+        lq2 r6 = r4.z;
+        super(r6, r5, (ImageButton) r5.findViewById(R.id.mr_cast_mute_button), (MediaRouteVolumeSlider) r5.findViewById(R.id.mr_cast_volume_slider));
+        this.y = (TextView) r5.findViewById(R.id.mr_group_volume_route_name);
+        Resources r7 = r6.B.getResources();
+        DisplayMetrics r8 = r7.getDisplayMetrics();
+        TypedValue r0 = new TypedValue();
+        r7.getValue(R.dimen.mr_dynamic_volume_group_list_item_height, r0, true);
+        this.z = (int) r0.getDimension(r8);
     }
 }

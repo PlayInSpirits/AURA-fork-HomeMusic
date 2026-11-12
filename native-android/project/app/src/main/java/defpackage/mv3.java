@@ -6,24 +6,25 @@ public final /* synthetic */ class mv3 implements gf1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ tv3 o;
 
-    public /* synthetic */ mv3(tv3 tv3Var, int i) {
-        this.n = i;
-        this.o = tv3Var;
+    public /* synthetic */ mv3(tv3 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        int i = this.n;
-        j15 j15Var = j15.a;
-        tv3 tv3Var = this.o;
-        switch (i) {
-            case 0:
-                tv3Var.E();
-                break;
-            default:
-                tv3Var.E();
-                break;
-        }
-        return j15Var;
+        int r0 = this.n;
+        j15 r1 = j15.a;
+        tv3 r2 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r2.E();
+        return r1;
+    L6:
+        r2.E();
+        return r1;
     }
 }

@@ -7,8 +7,8 @@ import java.util.concurrent.atomic.AtomicReferenceArray;
 public final class x94 extends u84 {
     public final /* synthetic */ AtomicReferenceArray g;
 
-    public x94(long j, x94 x94Var, int i) {
-        super(j, x94Var, i);
+    public x94(long r1, x94 r3, int r4) {
+        super(r1, r3, r4);
         this.g = new AtomicReferenceArray(w94.f);
     }
 
@@ -18,8 +18,9 @@ public final class x94 extends u84 {
     }
 
     @Override // defpackage.u84
-    public final void l(int i, ne0 ne0Var) {
-        this.g.set(i, w94.e);
+    public final void l(int r2, ne0 r3) {
+        f01 r4 = w94.e;
+        this.g.set(r2, r4);
         m();
     }
 

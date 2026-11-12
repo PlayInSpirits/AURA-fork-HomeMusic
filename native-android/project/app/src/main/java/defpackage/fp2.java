@@ -9,67 +9,81 @@ import app.homemusic.R;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class fp2 extends pp0 {
-    public final boolean B0 = false;
+    public final boolean B0;
     public dg C0;
     public rq2 D0;
 
     public fp2() {
+        this.B0 = false;
         this.r0 = true;
-        Dialog dialog = this.w0;
-        if (dialog != null) {
-            dialog.setCancelable(true);
-        }
+        Dialog r1 = this.w0;
+        if (r1 == null) goto L6;
+        r1.setCancelable(true);
+        return;
     }
 
     @Override // defpackage.pp0
-    public final Dialog j0(Bundle bundle) {
-        if (this.B0) {
-            aq2 aq2Var = new aq2(n());
-            this.C0 = aq2Var;
-            n0();
-            aq2Var.j(this.D0);
-        } else {
-            ep2 ep2Var = new ep2(n());
-            this.C0 = ep2Var;
-            n0();
-            ep2Var.k(this.D0);
-        }
+    public final Dialog j0(Bundle r2) {
+        if (this.B0 == false) goto L5;
+        aq2 r0 = new aq2(n());
+        this.C0 = r0;
+        n0();
+        r0.j(this.D0);
+    L7:
         return this.C0;
+    L5:
+        ep2 r1 = new ep2(n());
+        this.C0 = r1;
+        n0();
+        r1.k(this.D0);
+        goto L7
     }
 
     public final void n0() {
-        if (this.D0 == null) {
-            Bundle bundle = this.s;
-            if (bundle != null) {
-                Bundle bundle2 = bundle.getBundle("selector");
-                rq2 rq2Var = null;
-                if (bundle2 != null) {
-                    rq2Var = new rq2(bundle2, null);
-                } else {
-                    rq2 rq2Var2 = rq2.c;
-                }
-                this.D0 = rq2Var;
-            }
-            if (this.D0 == null) {
-                this.D0 = rq2.c;
-            }
-        }
+        if (this.D0 != null) goto L15;
+        Bundle r0 = this.s;
+        if (r0 == null) goto L12;
+        Bundle r1 = r0.getBundle("selector");
+        rq2 r2 = null;
+        if (r1 == null) goto L9;
+        r2 = new rq2(r1, null);
+    L10:
+        this.D0 = r2;
+        goto L12
+    L9:
+        rq2 r3 = rq2.c;
+    L12:
+        if (this.D0 != null) goto L16;
+        this.D0 = rq2.c;
+        return;
+    L16:
+        return;
     }
 
     @Override // defpackage.kc1, android.content.ComponentCallbacks
-    public final void onConfigurationChanged(Configuration configuration) {
+    public final void onConfigurationChanged(Configuration r5) {
         this.R = true;
-        dg dgVar = this.C0;
-        if (dgVar == null) {
-            return;
-        }
-        if (!this.B0) {
-            ep2 ep2Var = (ep2) dgVar;
-            ep2Var.getWindow().setLayout(xl.p(ep2Var.getContext()), -2);
-        } else {
-            aq2 aq2Var = (aq2) dgVar;
-            Context context = aq2Var.v;
-            aq2Var.getWindow().setLayout(!context.getResources().getBoolean(R.bool.is_tablet) ? -1 : xl.p(context), context.getResources().getBoolean(R.bool.is_tablet) ? -2 : -1);
-        }
+        dg r6 = this.C0;
+        if (r6 != null) goto L5;
+        return;
+    L5:
+        int r0 = -2;
+        if (this.B0 == false) goto L16;
+        aq2 r7 = (aq2) r6;
+        Context r4 = r7.v;
+        if (r4.getResources().getBoolean(R.bool.is_tablet) == true) goto L10;
+        int r1 = -1;
+    L12:
+        if (r4.getResources().getBoolean(R.bool.is_tablet) == true) goto L14;
+        r0 = -1;
+    L14:
+        r7.getWindow().setLayout(r1, r0);
+        return;
+    L10:
+        r1 = xl.p(r4);
+        goto L12
+    L16:
+        ep2 r8 = (ep2) r6;
+        r8.getWindow().setLayout(xl.p(r8.getContext()), -2);
     }
 }

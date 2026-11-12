@@ -7,17 +7,17 @@ import android.text.Editable;
 public final class e11 extends ft4 {
     public final /* synthetic */ g11 n;
 
-    public e11(g11 g11Var) {
-        this.n = g11Var;
+    public e11(g11 r1) {
+        this.n = r1;
     }
 
     @Override // android.text.TextWatcher
-    public final void afterTextChanged(Editable editable) {
+    public final void afterTextChanged(Editable r1) {
         this.n.a().a();
     }
 
     @Override // android.text.TextWatcher
-    public final void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+    public final void beforeTextChanged(CharSequence r1, int r2, int r3, int r4) {
         this.n.a().b();
     }
 }

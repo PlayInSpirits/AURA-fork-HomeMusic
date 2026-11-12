@@ -5,12 +5,12 @@ package defpackage;
 public final class fd1 implements xd1 {
     public final /* synthetic */ kc1 n;
 
-    public fd1(kc1 kc1Var) {
-        this.n = kc1Var;
+    public fd1(kc1 r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.xd1
-    public final void a(ld1 ld1Var, kc1 kc1Var) {
+    public final void a(ld1 r1, kc1 r2) {
         this.n.getClass();
     }
 }

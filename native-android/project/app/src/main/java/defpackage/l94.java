@@ -1,6 +1,5 @@
 package defpackage;
 
-import android.view.autofill.AutofillValue;
 import com.eddyizm.tempus.homemusic.SmartSession;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -9,20 +8,20 @@ public final class l94 {
     public final c72 a;
     public final x01 b;
     public final e02 c;
-    public final q03 d = new q03(2);
+    public final q03 d;
 
-    public l94(c72 c72Var, x01 x01Var, i03 i03Var) {
-        this.a = c72Var;
-        this.b = x01Var;
-        this.c = i03Var;
+    public l94(c72 r1, x01 r2, i03 r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = new q03(2);
     }
 
     public final i94 a() {
-        return new i94(this.b, false, this.a, new e94());
+        e94 r0 = new e94();
+        return new i94(this.b, false, this.a, r0);
     }
 
-    /* JADX WARN: Code duplicated, block: B:34:0x007a  */
-    /* JADX WARN: Code duplicated, block: B:42:0x008f  */
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
     java.lang.UnsupportedOperationException: ArgType.getObject(), call class: class jadx.core.dex.instructions.args.ArgType$PrimitiveArg
     	at jadx.core.dex.instructions.args.ArgType.getObject(ArgType.java:596)
@@ -33,169 +32,197 @@ public final class l94 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public final void b(c72 c72Var, e94 e94Var) {
-        mb mbVar;
-        mb mbVar2;
-        String str;
-        String str2;
-        qu4 qu4Var;
-        qu4 qu4Var2;
-        wb wbVar;
-        wb wbVar2;
-        CharSequence charSequenceI0;
-        String str3;
-        q03 q03Var = this.d;
-        Object[] objArr = q03Var.a;
-        int i = q03Var.b;
-        for (int i2 = 0; i2 < i; i2++) {
-            y9 y9Var = (y9) objArr[i2];
-            y9Var.getClass();
-            e94 e94VarV = c72Var.v();
-            int i3 = c72Var.o;
-            qr2 qr2Var = y9Var.n;
-            ra raVar = y9Var.p;
-            if (e94Var != null) {
-                Object objG = e94Var.n.g(n94.r);
-                if (objG == null) {
-                    objG = null;
-                }
-                mbVar = (mb) objG;
-            } else {
-                mbVar = null;
-            }
-            if (e94VarV != null) {
-                Object objG2 = e94VarV.n.g(n94.r);
-                if (objG2 == null) {
-                    objG2 = null;
-                }
-                mbVar2 = (mb) objG2;
-            } else {
-                mbVar2 = null;
-            }
-            mb mbVar3 = fz0.O;
-            if (!h12.c(mbVar2, mbVar3)) {
-                if (h12.c(mbVar, mbVar3) && !h12.c(mbVar2, mbVar3)) {
-                    qr2Var.p(raVar, i3, true);
-                }
-                if (e94Var != null) {
-                    Object objG3 = e94Var.n.g(n94.C);
-                    if (objG3 == null) {
-                        objG3 = null;
-                    }
-                    he heVar = (he) objG3;
-                    if (heVar != null) {
-                        str = heVar.o;
-                    } else {
-                        str = null;
-                    }
-                } else {
-                    str = null;
-                }
-                if (e94VarV != null) {
-                    Object objG4 = e94VarV.n.g(n94.C);
-                    if (objG4 == null) {
-                        objG4 = null;
-                    }
-                    he heVar2 = (he) objG4;
-                    if (heVar2 != null) {
-                        str3 = heVar2.o;
-                    } else {
-                        str2 = null;
-                    }
-                } else {
-                    str2 = null;
-                }
-                if (str != str2) {
-                    if (str == null) {
-                        qr2Var.p(raVar, i3, true);
-                    } else if (str2 == null) {
-                        qr2Var.p(raVar, i3, false);
-                    } else if (h12.c(mbVar2, fz0.P)) {
-                        if (str2.length() > 5000) {
-                            if (Character.isHighSurrogate(str2.charAt(4999)) && Character.isLowSurrogate(str2.charAt(SmartSession.MAX_SONGS))) {
-                                charSequenceI0 = str2;
-                                charSequenceI0 = qm4.I0(4999, str2);
-                            } else {
-                                charSequenceI0 = str2;
-                                charSequenceI0 = str2;
-                                charSequenceI0 = qm4.I0(SmartSession.MAX_SONGS, str2);
-                            }
-                        }
-                        charSequenceI0 = str2;
-                        qr2Var.k().notifyValueChanged(raVar, i3, AutofillValue.forText(charSequenceI0));
-                    }
-                }
-                if (e94Var != null) {
-                    Object objG5 = e94Var.n.g(n94.H);
-                    if (objG5 == null) {
-                        objG5 = null;
-                    }
-                    qu4Var = (qu4) objG5;
-                } else {
-                    qu4Var = null;
-                }
-                if (e94VarV != null) {
-                    Object objG6 = e94VarV.n.g(n94.H);
-                    if (objG6 == null) {
-                        objG6 = null;
-                    }
-                    qu4Var2 = (qu4) objG6;
-                } else {
-                    qu4Var2 = null;
-                }
-                if (qu4Var != qu4Var2) {
-                    if (qu4Var == null) {
-                        qr2Var.p(raVar, i3, true);
-                    } else if (qu4Var2 == null) {
-                        qr2Var.p(raVar, i3, false);
-                    } else if (h12.c(mbVar2, fz0.Q)) {
-                        int iOrdinal = qu4Var2.ordinal();
-                        Boolean bool = iOrdinal != 0 ? iOrdinal != 1 ? null : Boolean.FALSE : Boolean.TRUE;
-                        if (bool != null) {
-                            qr2Var.k().notifyValueChanged(raVar, i3, AutofillValue.forToggle(bool.booleanValue()));
-                        }
-                    }
-                }
-                if (e94Var != null) {
-                    Object objG7 = e94Var.n.g(n94.s);
-                    if (objG7 == null) {
-                        objG7 = null;
-                    }
-                    wbVar = (wb) objG7;
-                } else {
-                    wbVar = null;
-                }
-                if (e94VarV != null) {
-                    Object objG8 = e94VarV.n.g(n94.s);
-                    if (objG8 == null) {
-                        objG8 = null;
-                    }
-                    wbVar2 = (wb) objG8;
-                } else {
-                    wbVar2 = null;
-                }
-                if (!h12.c(wbVar, wbVar2)) {
-                    if (wbVar == null) {
-                        qr2Var.p(raVar, i3, true);
-                    } else if (wbVar2 == null) {
-                        qr2Var.p(raVar, i3, false);
-                    } else {
-                        qr2Var.k().notifyValueChanged(raVar, i3, wbVar2.a);
-                    }
-                }
-            } else if (!h12.c(mbVar, mbVar3)) {
-                qr2Var.p(raVar, i3, false);
-            }
-            boolean z = e94Var != null && e94Var.n.b(n94.q);
-            boolean z2 = e94VarV != null && e94VarV.n.b(n94.q);
-            if (z != z2) {
-                j03 j03Var = y9Var.t;
-                if (z2) {
-                    j03Var.a(i3);
-                } else {
-                    j03Var.f(i3);
-                }
-            }
-        }
+    public final void b(c72 r18, e94 r19) {
+        q03 r0 = this.d;
+        Object[] r2 = r0.a;
+        int r1 = r0.b;
+        int r4 = 0;
+    L3:
+        if (r4 >= r1) goto L122;
+        y9 r5 = (y9) r2[r4];
+        r5.getClass();
+        e94 r6 = r18.v();
+        int r8 = r18.o;
+        qr2 r9 = r5.n;
+        ra r10 = r5.p;
+        if (r19 == null) goto L10;
+        Object r12 = r19.n.g(n94.r);
+        if (r12 != null) goto L9;
+        r12 = null;
+    L9:
+        mb r13 = (mb) r12;
+    L11:
+        if (r6 == null) goto L16;
+        Object r14 = r6.n.g(n94.r);
+        if (r14 != null) goto L15;
+        r14 = null;
+    L15:
+        mb r15 = (mb) r14;
+    L17:
+        mb r16 = fz0.O;
+        boolean r11 = true;
+        if (h12.c(r15, r16) == false) goto L23;
+        if (h12.c(r13, r16) == true) goto L106;
+        r9.p(r10, r8, false);
+    L106:
+        if (r19 != null) goto L108;
+    L110:
+        boolean r17 = false;
+    L111:
+        if (r6 != null) goto L113;
+    L115:
+        r11 = false;
+    L116:
+        if (r17 == r11) goto L121;
+        j03 r7 = r5.t;
+        if (r11 == false) goto L120;
+        r7.a(r8);
+        goto L121
+    L120:
+        r7.f(r8);
+    L121:
+        r4 = r4 + 1;
+        goto L3
+    L113:
+        if (r6.n.b(n94.q) != true) goto L115;
+    L108:
+        if (r19.n.b(n94.q) != true) goto L110;
+        r17 = true;
+        goto L111
+    L23:
+        if (h12.c(r13, r16) == true) goto L25;
+    L27:
+        if (r19 == null) goto L34;
+        Object r110 = r19.n.g(n94.C);
+        if (r110 != null) goto L31;
+        r110 = null;
+    L31:
+        he r111 = (he) r110;
+        if (r111 == null) goto L34;
+        String r112 = r111.o;
+    L35:
+        if (r6 == null) goto L42;
+        Object r113 = r6.n.g(n94.C);
+        if (r113 != null) goto L39;
+        r113 = null;
+    L39:
+        he r114 = (he) r113;
+        if (r114 == null) goto L42;
+        String r115 = r114.o;
+    L43:
+        if (r112 == r115) goto L60;
+        if (r112 != null) goto L46;
+        r9.p(r10, r8, true);
+        goto L60
+    L46:
+        if (r115 != null) goto L49;
+        r9.p(r10, r8, false);
+        goto L60
+    L49:
+        if (h12.c(r15, fz0.P) == false) goto L60;
+        int r116 = r115.length();
+        CharSequence r117 = r115;
+        if (r116 > 5000) goto L54;
+    L59:
+        gm0.v(r9.k(), r10, r8, tn.g(r117));
+        goto L60
+    L54:
+        if (Character.isHighSurrogate(r115.charAt(4999)) == true) goto L56;
+    L58:
+        r117 = qm4.I0(SmartSession.MAX_SONGS, r115);
+        goto L59
+    L56:
+        if (Character.isLowSurrogate(r115.charAt(SmartSession.MAX_SONGS)) == false) goto L58;
+        r117 = qm4.I0(4999, r115);
+    L60:
+        if (r19 == null) goto L65;
+        Object r118 = r19.n.g(n94.H);
+        if (r118 != null) goto L64;
+        r118 = null;
+    L64:
+        qu4 r119 = (qu4) r118;
+    L66:
+        if (r6 == null) goto L71;
+        Object r120 = r6.n.g(n94.H);
+        if (r120 != null) goto L70;
+        r120 = null;
+    L70:
+        qu4 r121 = (qu4) r120;
+    L72:
+        if (r119 == r121) goto L87;
+        if (r119 != null) goto L75;
+        r9.p(r10, r8, true);
+        goto L87
+    L75:
+        if (r121 != null) goto L78;
+        r9.p(r10, r8, false);
+        goto L87
+    L78:
+        if (h12.c(r15, fz0.Q) == false) goto L87;
+        int r122 = r121.ordinal();
+        if (r122 == 0) goto L84;
+        if (r122 == 1) goto L83;
+        Boolean r123 = null;
+    L85:
+        if (r123 == null) goto L87;
+        gm0.v(r9.k(), r10, r8, tn.h(r123.booleanValue()));
+        goto L87
+    L83:
+        r123 = Boolean.FALSE;
+        goto L85
+    L84:
+        r123 = Boolean.TRUE;
+    L87:
+        if (r19 == null) goto L92;
+        Object r124 = r19.n.g(n94.s);
+        if (r124 != null) goto L91;
+        r124 = null;
+    L91:
+        wb r125 = (wb) r124;
+    L93:
+        if (r6 == null) goto L98;
+        Object r126 = r6.n.g(n94.s);
+        if (r126 != null) goto L97;
+        r126 = null;
+    L97:
+        wb r127 = (wb) r126;
+    L100:
+        if (h12.c(r125, r127) == true) goto L106;
+        if (r125 != null) goto L103;
+        r9.p(r10, r8, true);
+        goto L106
+    L103:
+        if (r127 != null) goto L105;
+        r9.p(r10, r8, false);
+        goto L106
+    L105:
+        gm0.v(r9.k(), r10, r8, r127.a);
+        goto L106
+    L98:
+        r127 = null;
+        goto L100
+    L92:
+        r125 = null;
+        goto L93
+    L71:
+        r121 = null;
+        goto L72
+    L65:
+        r119 = null;
+    L42:
+        r115 = null;
+    L34:
+        r112 = null;
+        goto L35
+    L25:
+        if (h12.c(r15, r16) == true) goto L27;
+        r9.p(r10, r8, true);
+        goto L27
+    L16:
+        r15 = null;
+        goto L17
+    L10:
+        r13 = null;
+        goto L11
     }
 }

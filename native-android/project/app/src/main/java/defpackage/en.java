@@ -38,112 +38,121 @@ public final class en {
     public long y;
     public long z;
 
-    public en(d34 d34Var, vp4 vp4Var, AudioTrack audioTrack, int i, int i2, int i3) {
-        this.a = d34Var;
-        this.b = vp4Var;
-        this.d = audioTrack;
-        try {
-            this.m = AudioTrack.class.getMethod("getLatency", null);
-        } catch (NoSuchMethodException unused) {
-        }
+    public en(d34 r3, vp4 r4, AudioTrack r5, int r6, int r7, int r8) {
+        this.a = r3;
+        this.b = r4;
+        this.d = r5;
+        this.m = AudioTrack.class.getMethod("getLatency", null);     // Catch: NoSuchMethodException -> L10
+    L4:
         this.c = new long[10];
         this.z = -9223372036854775807L;
         this.y = -9223372036854775807L;
-        this.h = new vm(audioTrack, d34Var);
-        int sampleRate = audioTrack.getSampleRate();
-        this.e = sampleRate;
-        boolean zL = f35.L(i);
-        this.g = zL;
-        this.f = zL ? f35.Y(sampleRate, i3 / i2) : -9223372036854775807L;
-        this.q = 0L;
-        this.r = 0L;
+        this.h = new vm(r5, r3);
+        int r9 = r5.getSampleRate();
+        this.e = r9;
+        boolean r10 = f35.L(r6);
+        this.g = r10;
+        if (r10 == false) goto L7;
+        long r11 = f35.Y(r9, r8 / r7);
+    L8:
+        this.f = r11;
+        this.q = 0;
+        this.r = 0;
         this.A = false;
-        this.B = 0L;
+        this.B = 0;
         this.u = -9223372036854775807L;
         this.v = -9223372036854775807L;
-        this.o = 0L;
-        this.n = 0L;
+        this.o = 0;
+        this.n = 0;
         this.i = 1.0f;
         this.j = -9223372036854775807L;
+        return;
+    L7:
+        r11 = -9223372036854775807L;
+        goto L8
     }
 
-    /* JADX WARN: Code duplicated, block: B:25:0x0064  */
-    /* JADX WARN: Code duplicated, block: B:27:0x0068  */
-    /* JADX WARN: Code duplicated, block: B:28:0x0071  */
     public final long a() {
-        long j;
-        if (this.u != -9223372036854775807L) {
-            return Math.min(this.x, c());
-        }
+        if (this.u != (-9223372036854775807L)) goto L5;
         this.b.getClass();
-        long jElapsedRealtime = SystemClock.elapsedRealtime();
-        if (jElapsedRealtime - this.p >= 5) {
-            AudioTrack audioTrack = this.d;
-            int playState = audioTrack.getPlayState();
-            if (playState != 1) {
-                long playbackHeadPosition = ((long) audioTrack.getPlaybackHeadPosition()) & 4294967295L;
-                if (Build.VERSION.SDK_INT > 29) {
-                    j = this.q;
-                    if (j > playbackHeadPosition) {
-                        if (this.A) {
-                            this.B += j;
-                            this.A = false;
-                        } else {
-                            this.r++;
-                        }
-                    }
-                    this.q = playbackHeadPosition;
-                } else if (playbackHeadPosition != 0 || this.q <= 0 || playState != 3) {
-                    this.v = -9223372036854775807L;
-                    j = this.q;
-                    if (j > playbackHeadPosition) {
-                        if (this.A) {
-                            this.B += j;
-                            this.A = false;
-                        } else {
-                            this.r++;
-                        }
-                    }
-                    this.q = playbackHeadPosition;
-                } else if (this.v == -9223372036854775807L) {
-                    this.v = jElapsedRealtime;
-                }
-            }
-            this.p = jElapsedRealtime;
-        }
-        return this.q + this.B + (this.r << 32);
+        long r0 = SystemClock.elapsedRealtime();
+        if ((r0 - this.p) < 5) goto L32;
+        AudioTrack r4 = this.d;
+        int r5 = r4.getPlayState();
+        if (r5 == 1) goto L30;
+        long r6 = ((long) r4.getPlaybackHeadPosition()) & 4294967295L;
+        if (Build.VERSION.SDK_INT <= 29) goto L14;
+    L23:
+        long r2 = this.q;
+        if (r2 > r6) goto L26;
+    L29:
+        this.q = r6;
+        goto L30
+    L26:
+        if (this.A == false) goto L28;
+        this.B += r2;
+        this.A = false;
+        goto L29
+    L28:
+        this.r++;
+        goto L29
+    L14:
+        if (r6 == 0) goto L16;
+    L22:
+        this.v = -9223372036854775807L;
+        goto L23
+    L16:
+        if (this.q <= 0) goto L22;
+        if (r5 != 3) goto L22;
+        if (this.v != (-9223372036854775807L)) goto L30;
+        this.v = r0;
+    L30:
+        this.p = r0;
+    L32:
+        return (this.q + this.B) + (this.r << 32);
+    L5:
+        return Math.min(this.x, c());
     }
 
-    public final long b(long j) {
-        long jA;
-        int i = this.t;
-        int i2 = this.e;
-        if (i == 0) {
-            jA = this.u != -9223372036854775807L ? f35.Y(i2, c()) : f35.Y(i2, a());
-        } else {
-            jA = f35.A(j + this.k, this.i);
-        }
-        long jMax = Math.max(0L, jA - this.n);
-        return this.u != -9223372036854775807L ? Math.min(f35.Y(i2, this.x), jMax) : jMax;
+    public final long b(long r7) {
+        int r0 = this.t;
+        int r1 = this.e;
+        if (r0 == 0) goto L5;
+        long r8 = f35.A(r7 + this.k, this.i);
+    L9:
+        long r9 = Math.max(0, r8 - this.n);
+        if (this.u != (-9223372036854775807L)) goto L12;
+        return r9;
+    L12:
+        return Math.min(f35.Y(r1, this.x), r9);
+    L5:
+        if (this.u == (-9223372036854775807L)) goto L7;
+        r8 = f35.Y(r1, c());
+        goto L9
+    L7:
+        r8 = f35.Y(r1, a());
+        goto L9
     }
 
     public final long c() {
-        if (this.d.getPlayState() == 2) {
-            return this.w;
-        }
+        if (this.d.getPlayState() == 2) goto L5;
         this.b.getClass();
-        return this.w + f35.a0(f35.A(f35.Q(SystemClock.elapsedRealtime()) - this.u, this.i), this.e, 1000000L, RoundingMode.UP);
+        return this.w + f35.a0(f35.A(f35.Q(SystemClock.elapsedRealtime()) - this.u, this.i), this.e, 1000000, RoundingMode.UP);
+    L5:
+        return this.w;
     }
 
-    public final void d(long j) {
-        long j2 = this.j;
-        if (j2 == -9223372036854775807L || j < j2) {
-            return;
-        }
-        long jE = f35.E(j - j2, this.i);
+    public final void d(long r6) {
+        long r0 = this.j;
+        if (r0 != (-9223372036854775807L)) goto L5;
+        return;
+    L5:
+        if (r6 < r0) goto L10;
+        long r7 = f35.E(r6 - r0, this.i);
         this.b.getClass();
-        long jCurrentTimeMillis = System.currentTimeMillis() - f35.i0(jE);
+        long r1 = System.currentTimeMillis() - f35.i0(r7);
         this.j = -9223372036854775807L;
-        ((an) this.a.o).i.f(-1, new xm(jCurrentTimeMillis));
+        ((an) this.a.o).i.f(-1, new xm(r1));
+        return;
     }
 }

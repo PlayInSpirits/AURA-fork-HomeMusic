@@ -11,80 +11,114 @@ public final class mm0 {
     public boolean f;
     public final /* synthetic */ nm0 g;
 
-    public mm0(nm0 nm0Var, String str, int i, mt2 mt2Var) {
-        this.g = nm0Var;
-        this.a = str;
-        this.b = i;
-        this.c = mt2Var == null ? -1L : mt2Var.d;
-        if (mt2Var == null || !mt2Var.b()) {
-            return;
-        }
-        this.d = mt2Var;
+    public mm0(nm0 r1, String r2, int r3, mt2 r4) {
+        this.g = r1;
+        this.a = r2;
+        this.b = r3;
+        if (r4 != null) goto L5;
+        long r5 = -1;
+    L6:
+        this.c = r5;
+        if (r4 != null) goto L9;
+        return;
+    L9:
+        if (r4.b() == false) goto L13;
+        this.d = r4;
+        return;
+    L13:
+        return;
+    L5:
+        r5 = r4.d;
+        goto L6
     }
 
-    public final boolean a(q9 q9Var) {
-        mt2 mt2Var = q9Var.d;
-        cu4 cu4Var = q9Var.b;
-        if (mt2Var == null) {
-            return this.b != q9Var.c;
-        }
-        long j = this.c;
-        if (j == -1) {
-            return false;
-        }
-        if (mt2Var.d > j) {
-            return true;
-        }
-        mt2 mt2Var2 = this.d;
-        if (mt2Var2 == null) {
-            return false;
-        }
-        int i = mt2Var2.b;
-        int iB = cu4Var.b(mt2Var.a);
-        int iB2 = cu4Var.b(mt2Var2.a);
-        if (mt2Var.d < mt2Var2.d || iB < iB2) {
-            return false;
-        }
-        if (iB > iB2) {
-            return true;
-        }
-        if (!mt2Var.b()) {
-            int i2 = mt2Var.e;
-            return i2 == -1 || i2 > i;
-        }
-        int i3 = mt2Var.b;
-        int i4 = mt2Var.c;
-        if (i3 <= i) {
-            return i3 == i && i4 > mt2Var2.c;
-        }
+    public final boolean a(q9 r8) {
+        mt2 r0 = r8.d;
+        cu4 r1 = r8.b;
+        if (r0 == null) goto L5;
+        long r2 = this.c;
+        if (r2 != (-1)) goto L11;
+        return false;
+    L11:
+        if (r0.d > r2) goto L40;
+        mt2 r7 = this.d;
+        if (r7 == null) goto L48;
+        int r9 = r7.b;
+        int r3 = r1.b(r0.a);
+        int r4 = r1.b(r7.a);
+        if (r0.d < r7.d) goto L43;
+        if (r3 < r4) goto L49;
+        if (r3 <= r4) goto L23;
+        return true;
+    L23:
+        if (r0.b() == false) goto L30;
+        int r5 = r0.b;
+        int r6 = r0.c;
+        if (r5 > r9) goto L33;
+        if (r5 == r9) goto L28;
+        return false;
+    L28:
+        if (r6 <= r7.c) goto L45;
+        return true;
+    L45:
+        return false;
+    L33:
+        return true;
+    L30:
+        int r10 = r0.e;
+        if (r10 == (-1)) goto L37;
+        if (r10 <= r9) goto L46;
+        return true;
+    L46:
+        return false;
+    L37:
+        return true;
+    L49:
+        return false;
+    L43:
+        return false;
+    L48:
+        return false;
+    L40:
+        return true;
+    L5:
+        if (this.b != r8.c) goto L39;
+        return false;
+    L39:
         return true;
     }
 
-    public final boolean b(cu4 cu4Var, cu4 cu4Var2) {
-        mt2 mt2Var;
-        int i = this.b;
-        if (i < cu4Var.o()) {
-            nm0 nm0Var = this.g;
-            bu4 bu4Var = nm0Var.a;
-            cu4Var.n(i, bu4Var);
-            int i2 = bu4Var.m;
-            while (true) {
-                if (i2 > bu4Var.n) {
-                    i = -1;
-                    break;
-                }
-                int iB = cu4Var2.b(cu4Var.l(i2));
-                if (iB != -1) {
-                    i = cu4Var2.f(iB, nm0Var.b, false).c;
-                    break;
-                }
-                i2++;
-            }
-        } else if (i >= cu4Var2.o()) {
-            i = -1;
-            break;
-        }
-        this.b = i;
-        return i != -1 && ((mt2Var = this.d) == null || cu4Var2.b(mt2Var.a) != -1);
+    public final boolean b(cu4 r7, cu4 r8) {
+        int r0 = this.b;
+        if (r0 >= r7.o()) goto L5;
+        nm0 r1 = this.g;
+        bu4 r4 = r1.a;
+        r7.n(r0, r4);
+        int r2 = r4.m;
+    L10:
+        if (r2 > r4.n) goto L7;
+        int r5 = r8.b(r7.l(r2));
+        if (r5 != (-1)) goto L13;
+        r2 = r2 + 1;
+        goto L10
+    L13:
+        r0 = r8.f(r5, r1.b, false).c;
+    L15:
+        this.b = r0;
+        if (r0 == (-1)) goto L25;
+        mt2 r6 = this.d;
+        if (r6 != null) goto L22;
+        return true;
+    L22:
+        if (r8.b(r6.a) == (-1)) goto L25;
+        return true;
+    L25:
+        return false;
+    L7:
+        r0 = -1;
+        goto L15
+    L5:
+        if (r0 >= r8.o()) goto L7;
+        goto L7
     }
 }

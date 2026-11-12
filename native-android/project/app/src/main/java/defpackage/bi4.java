@@ -8,22 +8,23 @@ public final /* synthetic */ class bi4 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ SongBottomSheetDialog o;
 
-    public /* synthetic */ bi4(SongBottomSheetDialog songBottomSheetDialog, int i) {
-        this.n = i;
-        this.o = songBottomSheetDialog;
+    public /* synthetic */ bi4(SongBottomSheetDialog r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        SongBottomSheetDialog songBottomSheetDialog = this.o;
-        switch (i) {
-            case 0:
-                songBottomSheetDialog.q0();
-                break;
-            default:
-                songBottomSheetDialog.h0();
-                break;
-        }
+        int r0 = this.n;
+        SongBottomSheetDialog r1 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.h0();
+        return;
+    L6:
+        r1.q0();
     }
 }

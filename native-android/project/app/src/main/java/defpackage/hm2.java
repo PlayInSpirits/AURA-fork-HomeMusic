@@ -29,355 +29,361 @@ public final class hm2 {
     public Object g;
     public final Object h;
 
-    public hm2(hm2 hm2Var) {
-        this.d = (fg4) hm2Var.d;
-        this.e = (ei3) hm2Var.e;
-        this.f = (eo2) hm2Var.f;
-        this.a = hm2Var.a;
-        this.g = (CharSequence) hm2Var.g;
-        this.b = hm2Var.b;
-        this.c = hm2Var.c;
-        this.h = (Bundle) hm2Var.h;
+    public hm2(hm2 r2) {
+        this.d = (fg4) r2.d;
+        this.e = (ei3) r2.e;
+        this.f = (eo2) r2.f;
+        this.a = r2.a;
+        this.g = (CharSequence) r2.g;
+        this.b = r2.b;
+        this.c = r2.c;
+        this.h = (Bundle) r2.h;
     }
 
-    public void a(cx3 cx3Var, boolean z) {
-        RecyclerView.l(cx3Var);
-        View view = cx3Var.a;
-        RecyclerView recyclerView = (RecyclerView) this.h;
-        ex3 ex3Var = recyclerView.B0;
-        if (ex3Var != null) {
-            z2 z2VarJ = ex3Var.j();
-            j65.o(view, z2VarJ instanceof dx3 ? (z2) ((dx3) z2VarJ).r.remove(view) : null);
-        }
-        if (z) {
-            ArrayList arrayList = recyclerView.B;
-            if (arrayList.size() > 0) {
-                arrayList.get(0).getClass();
-                kf2.k();
-                return;
-            }
-            dw3 dw3Var = recyclerView.z;
-            if (dw3Var != null) {
-                dw3Var.n(cx3Var);
-            }
-            if (recyclerView.u0 != null) {
-                recyclerView.t.O(cx3Var);
-            }
-            if (RecyclerView.Q0) {
-                Log.d("RecyclerView", "dispatchViewRecycled: " + cx3Var);
-            }
-        }
-        cx3Var.s = null;
-        cx3Var.r = null;
-        tw3 tw3VarC = c();
-        tw3VarC.getClass();
-        int i = cx3Var.f;
-        ArrayList arrayList2 = tw3VarC.a(i).a;
-        if (((sw3) tw3VarC.a.get(i)).b <= arrayList2.size()) {
-            wr1.g(view);
-        } else if (RecyclerView.P0 && arrayList2.contains(cx3Var)) {
-            kf2.n("this scrap item already exists");
-        } else {
-            cx3Var.o();
-            arrayList2.add(cx3Var);
-        }
+    public void a(cx3 r6, boolean r7) {
+        RecyclerView.l(r6);
+        View r0 = r6.a;
+        RecyclerView r1 = (RecyclerView) this.h;
+        ex3 r2 = r1.B0;
+        if (r2 == null) goto L9;
+        z2 r3 = r2.j();
+        if ((r3 instanceof dx3) == false) goto L7;
+        z2 r4 = (z2) ((dx3) r3).r.remove(r0);
+    L8:
+        j65.o(r0, r4);
+        goto L9
+    L7:
+        r4 = null;
+    L9:
+        if (r7 == false) goto L23;
+        ArrayList r8 = r1.B;
+        if (r8.size() > 0) goto L21;
+        dw3 r9 = r1.z;
+        if (r9 == null) goto L16;
+        r9.n(r6);
+    L16:
+        if (r1.u0 == null) goto L19;
+        r1.t.O(r6);
+    L19:
+        if (RecyclerView.Q0 == false) goto L23;
+        Log.d("RecyclerView", "dispatchViewRecycled: " + r6);
+        goto L23
+    L21:
+        r8.get(0).getClass();
+        kf2.k();
+        return;
+    L23:
+        r6.s = null;
+        r6.r = null;
+        tw3 r5 = c();
+        r5.getClass();
+        int r10 = r6.f;
+        ArrayList r11 = r5.a(r10).a;
+        if (((sw3) r5.a.get(r10)).b > r11.size()) goto L28;
+        wr1.g(r0);
+        return;
+    L28:
+        if (RecyclerView.P0 == true) goto L30;
+    L34:
+        r6.o();
+        r11.add(r6);
+        return;
+    L30:
+        if (r11.contains(r6) == false) goto L34;
+        kf2.n("this scrap item already exists");
     }
 
-    public int b(int i) {
-        RecyclerView recyclerView = (RecyclerView) this.h;
-        yw3 yw3Var = recyclerView.u0;
-        if (i >= 0 && i < yw3Var.b()) {
-            return !yw3Var.g ? i : recyclerView.r.i(i, 0);
-        }
-        StringBuilder sbJ = f34.j(i, "invalid position ", ". State item count is ");
-        sbJ.append(yw3Var.b());
-        sbJ.append(recyclerView.C());
-        throw new IndexOutOfBoundsException(sbJ.toString());
+    public int b(int r5) {
+        RecyclerView r4 = (RecyclerView) this.h;
+        yw3 r0 = r4.u0;
+        if (r5 >= 0) goto L5;
+    L11:
+        StringBuilder r6 = f34.j(r5, "invalid position ", ". State item count is ");
+        r6.append(r0.b());
+        r6.append(r4.C());
+        throw new IndexOutOfBoundsException(r6.toString());
+    L5:
+        if (r5 >= r0.b()) goto L11;
+        if (r0.g == true) goto L10;
+        return r5;
+    L10:
+        return r4.r.i(r5, 0);
     }
 
     public tw3 c() {
-        if (((tw3) this.g) == null) {
-            tw3 tw3Var = new tw3();
-            tw3Var.a = new SparseArray();
-            tw3Var.b = 0;
-            tw3Var.c = Collections.newSetFromMap(new IdentityHashMap());
-            this.g = tw3Var;
-            d();
-        }
+        if (((tw3) this.g) != null) goto L6;
+        tw3 r0 = new tw3();
+        r0.a = new SparseArray();
+        r0.b = 0;
+        r0.c = Collections.newSetFromMap(new IdentityHashMap());
+        this.g = r0;
+        d();
+    L6:
         return (tw3) this.g;
     }
 
     public void d() {
-        RecyclerView recyclerView;
-        dw3 dw3Var;
-        tw3 tw3Var = (tw3) this.g;
-        if (tw3Var == null || (dw3Var = (recyclerView = (RecyclerView) this.h).z) == null || !recyclerView.F) {
-            return;
-        }
-        tw3Var.c.add(dw3Var);
+        tw3 r0 = (tw3) this.g;
+        if (r0 == null) goto L10;
+        RecyclerView r2 = (RecyclerView) this.h;
+        dw3 r1 = r2.z;
+        if (r1 != null) goto L7;
+        return;
+    L7:
+        if (r2.F == false) goto L12;
+        r0.c.add(r1);
+        return;
+    L12:
+        return;
     }
 
-    public void e(dw3 dw3Var, boolean z) {
-        tw3 tw3Var = (tw3) this.g;
-        if (tw3Var != null) {
-            SparseArray sparseArray = tw3Var.a;
-            Set set = tw3Var.c;
-            set.remove(dw3Var);
-            if (set.size() != 0 || z) {
-                return;
-            }
-            for (int i = 0; i < sparseArray.size(); i++) {
-                ArrayList arrayList = ((sw3) sparseArray.get(sparseArray.keyAt(i))).a;
-                for (int i2 = 0; i2 < arrayList.size(); i2++) {
-                    wr1.g(((cx3) arrayList.get(i2)).a);
-                }
-            }
-        }
+    public void e(dw3 r4, boolean r5) {
+        tw3 r3 = (tw3) this.g;
+        if (r3 == null) goto L15;
+        SparseArray r0 = r3.a;
+        Set r6 = r3.c;
+        r6.remove(r4);
+        if (r6.size() != 0) goto L18;
+        if (r5 == true) goto L19;
+        int r7 = 0;
+    L9:
+        if (r7 >= r0.size()) goto L20;
+        ArrayList r8 = ((sw3) r0.get(r0.keyAt(r7))).a;
+        int r1 = 0;
+    L12:
+        if (r1 >= r8.size()) goto L14;
+        wr1.g(((cx3) r8.get(r1)).a);
+        r1 = r1 + 1;
+        goto L12
+    L14:
+        r7 = r7 + 1;
+        goto L9
+    L20:
+        return;
+    L19:
+        return;
+    L18:
+        return;
     }
 
     public void f() {
-        ArrayList arrayList = (ArrayList) this.f;
-        for (int size = arrayList.size() - 1; size >= 0; size--) {
-            g(size);
-        }
-        arrayList.clear();
-        if (RecyclerView.U0) {
-            b30 b30Var = ((RecyclerView) this.h).t0;
-            int[] iArr = b30Var.c;
-            if (iArr != null) {
-                Arrays.fill(iArr, -1);
-            }
-            b30Var.d = 0;
-        }
+        ArrayList r0 = (ArrayList) this.f;
+        int r1 = r0.size() - 1;
+    L3:
+        if (r1 < 0) goto L5;
+        g(r1);
+        r1 = r1 - 1;
+        goto L3
+    L5:
+        r0.clear();
+        if (RecyclerView.U0 == false) goto L13;
+        b30 r2 = ((RecyclerView) this.h).t0;
+        int[] r3 = r2.c;
+        if (r3 == null) goto L10;
+        Arrays.fill(r3, -1);
+    L10:
+        r2.d = 0;
+        return;
     }
 
-    public void g(int i) {
-        ArrayList arrayList = (ArrayList) this.f;
-        if (RecyclerView.Q0) {
-            Log.d("RecyclerView", "Recycling cached view at index " + i);
-        }
-        cx3 cx3Var = (cx3) arrayList.get(i);
-        if (RecyclerView.Q0) {
-            Log.d("RecyclerView", "CachedViewHolder to be recycled: " + cx3Var);
-        }
-        a(cx3Var, true);
-        arrayList.remove(i);
+    public void g(int r6) {
+        ArrayList r0 = (ArrayList) this.f;
+        if (RecyclerView.Q0 == false) goto L5;
+        Log.d("RecyclerView", "Recycling cached view at index " + r6);
+    L5:
+        cx3 r1 = (cx3) r0.get(r6);
+        if (RecyclerView.Q0 == false) goto L8;
+        Log.d("RecyclerView", "CachedViewHolder to be recycled: " + r1);
+    L8:
+        a(r1, true);
+        r0.remove(r6);
     }
 
-    public void h(View view) {
-        RecyclerView recyclerView = (RecyclerView) this.h;
-        cx3 cx3VarN = RecyclerView.N(view);
-        if (cx3VarN.l()) {
-            recyclerView.removeDetachedView(view, false);
-        }
-        if (cx3VarN.k()) {
-            cx3VarN.n.l(cx3VarN);
-        } else if (cx3VarN.r()) {
-            cx3VarN.j &= -33;
-        }
-        i(cx3VarN);
-        if (recyclerView.c0 == null || cx3VarN.i()) {
-            return;
-        }
-        recyclerView.c0.d(cx3VarN);
+    public void h(View r4) {
+        RecyclerView r0 = (RecyclerView) this.h;
+        cx3 r1 = RecyclerView.N(r4);
+        if (r1.l() == false) goto L6;
+        r0.removeDetachedView(r4, false);
+    L6:
+        if (r1.k() == false) goto L9;
+        r1.n.l(r1);
+    L11:
+        i(r1);
+        if (r0.c0 != null) goto L14;
+        return;
+    L14:
+        if (r1.i() == true) goto L18;
+        r0.c0.d(r1);
+        return;
+    L18:
+        return;
+    L9:
+        if (r1.r() == false) goto L11;
+        r1.j &= -33;
+        goto L11
     }
 
-    /* JADX WARN: Code duplicated, block: B:16:0x0038  */
-    /* JADX WARN: Code duplicated, block: B:61:0x00bf  */
-    /* JADX WARN: Code duplicated, block: B:63:0x00cb  */
-    /* JADX WARN: Code duplicated, block: B:65:0x00d2  */
-    /* JADX WARN: Code duplicated, block: B:68:0x00db A[LOOP:2: B:64:0x00d0->B:68:0x00db, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:93:0x00de A[EDGE_INSN: B:93:0x00de->B:69:0x00de BREAK  A[LOOP:1: B:60:0x00bd->B:67:0x00d8, LOOP_LABEL: LOOP:1: B:60:0x00bd->B:67:0x00d8], SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:95:0x00de A[EDGE_INSN: B:95:0x00de->B:69:0x00de BREAK  A[LOOP:1: B:60:0x00bd->B:67:0x00d8], SYNTHETIC] */
-    public void i(cx3 cx3Var) {
-        boolean z;
-        boolean z2;
-        int i;
-        int i2;
-        int i3;
-        int i4;
-        ArrayList arrayList = (ArrayList) this.f;
-        RecyclerView recyclerView = (RecyclerView) this.h;
-        b30 b30Var = recyclerView.t0;
-        boolean zK = cx3Var.k();
-        View view = cx3Var.a;
-        boolean z3 = false;
-        boolean z4 = true;
-        if (zK || view.getParent() != null) {
-            StringBuilder sb = new StringBuilder("Scrapped or attached views may not be recycled. isScrap:");
-            sb.append(cx3Var.k());
-            sb.append(" isAttached:");
-            sb.append(view.getParent() != null);
-            sb.append(recyclerView.C());
-            throw new IllegalArgumentException(sb.toString());
-        }
-        if (cx3Var.l()) {
-            StringBuilder sb2 = new StringBuilder("Tmp detached view should be removed from RecyclerView before it can be recycled: ");
-            sb2.append(cx3Var);
-            kf2.g(recyclerView.C(), sb2);
-            return;
-        }
-        if (cx3Var.q()) {
-            kf2.n("Trying to recycle an ignored view holder. You should first call stopIgnoringView(view) before calling recycle.".concat(recyclerView.C()));
-            return;
-        }
-        if ((cx3Var.j & 16) == 0) {
-            WeakHashMap weakHashMap = j65.a;
-            if (view.hasTransientState()) {
-                z = true;
-            } else {
-                z = false;
-            }
-        } else {
-            z = false;
-        }
-        dw3 dw3Var = recyclerView.z;
-        boolean z5 = dw3Var != null && z && dw3Var.k(cx3Var);
-        if (RecyclerView.P0 && arrayList.contains(cx3Var)) {
-            StringBuilder sb3 = new StringBuilder("cached view received recycle internal? ");
-            sb3.append(cx3Var);
-            kf2.g(recyclerView.C(), sb3);
-            return;
-        }
-        if (z5 || cx3Var.i()) {
-            if (this.c <= 0 || (cx3Var.j & 526) != 0) {
-                z2 = false;
-            } else {
-                int size = arrayList.size();
-                if (size >= this.c && size > 0) {
-                    g(0);
-                    size--;
-                }
-                if (RecyclerView.U0 && size > 0) {
-                    int i5 = cx3Var.c;
-                    if (b30Var.c != null) {
-                        int i6 = b30Var.d * 2;
-                        int i7 = 0;
-                        while (true) {
-                            if (i7 >= i6) {
-                                i = size - 1;
-                                loop1: while (i >= 0) {
-                                    i2 = ((cx3) arrayList.get(i)).c;
-                                    if (b30Var.c != null) {
-                                        break;
-                                    }
-                                    i3 = b30Var.d * 2;
-                                    i4 = 0;
-                                    while (true) {
-                                        if (i4 < i3) {
-                                            break loop1;
-                                        } else if (b30Var.c[i4] == i2) {
-                                            break;
-                                        } else {
-                                            i4 += 2;
-                                        }
-                                    }
-                                    i--;
-                                }
-                                size = i + 1;
-                            } else if (b30Var.c[i7] != i5) {
-                                i7 += 2;
-                            }
-                        }
-                    } else {
-                        i = size - 1;
-                        loop1: while (i >= 0) {
-                            i2 = ((cx3) arrayList.get(i)).c;
-                            if (b30Var.c != null) {
-                                break;
-                                break;
-                            }
-                            i3 = b30Var.d * 2;
-                            i4 = 0;
-                            while (true) {
-                                if (i4 < i3) {
-                                    break loop1;
-                                    break loop1;
-                                } else if (b30Var.c[i4] == i2) {
-                                    break;
-                                } else {
-                                    i4 += 2;
-                                }
-                            }
-                            i--;
-                        }
-                        size = i + 1;
-                    }
-                }
-                arrayList.add(size, cx3Var);
-                z2 = true;
-            }
-            if (z2) {
-                z4 = false;
-            } else {
-                a(cx3Var, true);
-            }
-            z3 = z2;
-        } else {
-            if (RecyclerView.Q0) {
-                Log.d("RecyclerView", "trying to recycle a non-recycleable holder. Hopefully, it will re-visit here. We are still removing it from animation lists".concat(recyclerView.C()));
-            }
-            z4 = false;
-        }
-        recyclerView.t.O(cx3Var);
-        if (z3 || z4 || !z) {
-            return;
-        }
-        wr1.g(view);
-        cx3Var.s = null;
-        cx3Var.r = null;
+    public void i(cx3 r13) {
+        ArrayList r0 = (ArrayList) this.f;
+        RecyclerView r1 = (RecyclerView) this.h;
+        b30 r2 = r1.t0;
+        boolean r3 = r13.k();
+        View r4 = r13.a;
+        boolean r5 = false;
+        boolean r6 = true;
+        if (r3 == false) goto L5;
+    L86:
+        StringBuilder r7 = new StringBuilder("Scrapped or attached views may not be recycled. isScrap:");
+        r7.append(r13.k());
+        r7.append(" isAttached:");
+        if (r4.getParent() == null) goto L89;
+        r5 = true;
+    L89:
+        r7.append(r5);
+        r7.append(r1.C());
+        throw new IllegalArgumentException(r7.toString());
+    L5:
+        if (r4.getParent() != null) goto L86;
+        if (r13.l() == false) goto L10;
+        StringBuilder r12 = new StringBuilder("Tmp detached view should be removed from RecyclerView before it can be recycled: ");
+        r12.append(r13);
+        kf2.g(r1.C(), r12);
+        return;
+    L10:
+        if (r13.q() == false) goto L12;
+        kf2.n("Trying to recycle an ignored view holder. You should first call stopIgnoringView(view) before calling recycle.".concat(r1.C()));
+        return;
+    L12:
+        if ((r13.j & 16) != 0) goto L16;
+        WeakHashMap r8 = j65.a;
+        if (r4.hasTransientState() == false) goto L16;
+        boolean r9 = true;
+    L17:
+        dw3 r10 = r1.z;
+        if (r10 == null) goto L23;
+        if (r9 == false) goto L23;
+        if (r10.k(r13) == false) goto L23;
+        boolean r11 = true;
+    L25:
+        if (RecyclerView.P0 == true) goto L27;
+    L31:
+        if (r11 == true) goto L40;
+        if (r13.i() == true) goto L40;
+        if (RecyclerView.Q0 == false) goto L38;
+        Log.d("RecyclerView", "trying to recycle a non-recycleable holder. Hopefully, it will re-visit here. We are still removing it from animation lists".concat(r1.C()));
+    L38:
+        r6 = false;
+    L76:
+        r1.t.O(r13);
+        if (r5 == true) goto L97;
+        if (r6 == true) goto L98;
+        if (r9 == false) goto L99;
+        wr1.g(r4);
+        r13.s = null;
+        r13.r = null;
+        return;
+    L99:
+        return;
+    L98:
+        return;
+    L97:
+        return;
+    L40:
+        if (this.c > 0) goto L42;
+    L71:
+        boolean r14 = false;
+    L72:
+        if (r14 == true) goto L75;
+        a(r13, true);
+    L74:
+        r5 = r14;
+        goto L76
+    L75:
+        r6 = false;
+        goto L74
+    L42:
+        if ((r13.j & 526) != 0) goto L71;
+        int r15 = r0.size();
+        if (r15 < this.c) goto L49;
+        if (r15 <= 0) goto L49;
+        g(0);
+        r15 = r15 - 1;
+    L49:
+        if (RecyclerView.U0 == false) goto L70;
+        if (r15 <= 0) goto L70;
+        int r16 = r13.c;
+        if (r2.c == null) goto L59;
+        int r17 = r2.d * 2;
+        int r18 = 0;
+    L54:
+        if (r18 >= r17) goto L59;
+        if (r2.c[r18] == r16) goto L70;
+        r18 = r18 + 2;
+    L59:
+        int r19 = r15 - 1;
+    L60:
+        if (r19 < 0) goto L69;
+        int r20 = ((cx3) r0.get(r19)).c;
+        if (r2.c == null) goto L69;
+        int r21 = r2.d * 2;
+        int r110 = 0;
+    L64:
+        if (r110 >= r21) goto L69;
+        if (r2.c[r110] == r20) goto L67;
+        r110 = r110 + 2;
+        goto L64
+    L67:
+        r19 = r19 - 1;
+    L69:
+        r15 = r19 + 1;
+    L70:
+        r0.add(r15, r13);
+        r14 = true;
+        goto L72
+    L27:
+        if (r0.contains(r13) == false) goto L31;
+        StringBuilder r111 = new StringBuilder("cached view received recycle internal? ");
+        r111.append(r13);
+        kf2.g(r1.C(), r111);
+        return;
+    L23:
+        r11 = false;
+    L16:
+        r9 = false;
+        goto L17
     }
 
-    public void j(View view) {
-        jw3 jw3Var;
-        RecyclerView recyclerView = (RecyclerView) this.h;
-        cx3 cx3VarN = RecyclerView.N(view);
-        if ((cx3VarN.j & 12) == 0 && cx3VarN.m() && (jw3Var = recyclerView.c0) != null) {
-            pl0 pl0Var = (pl0) jw3Var;
-            if (cx3VarN.e().isEmpty() && pl0Var.g && !cx3VarN.h()) {
-                if (((ArrayList) this.e) == null) {
-                    this.e = new ArrayList();
-                }
-                cx3VarN.n = this;
-                cx3VarN.o = true;
-                ((ArrayList) this.e).add(cx3VarN);
-                return;
-            }
-        }
-        if (cx3VarN.h() && !cx3VarN.j() && !recyclerView.z.o) {
-            kf2.n("Called scrap view with an invalid view. Invalid views cannot be reused from scrap, they should rebound from recycler pool.".concat(recyclerView.C()));
-            return;
-        }
-        cx3VarN.n = this;
-        cx3VarN.o = false;
-        ((ArrayList) this.d).add(cx3VarN);
+    public void j(View r4) {
+        RecyclerView r0 = (RecyclerView) this.h;
+        cx3 r5 = RecyclerView.N(r4);
+        if ((r5.j & 12) != 0) goto L22;
+        if (r5.m() == false) goto L22;
+        jw3 r1 = r0.c0;
+        if (r1 == null) goto L22;
+        pl0 r2 = (pl0) r1;
+        if (r5.e().isEmpty() == false) goto L22;
+        if (r2.g == false) goto L22;
+        if (r5.h() == true) goto L22;
+        if (((ArrayList) this.e) != null) goto L19;
+        this.e = new ArrayList();
+    L19:
+        r5.n = this;
+        r5.o = true;
+        ((ArrayList) this.e).add(r5);
+        return;
+    L22:
+        if (r5.h() == true) goto L24;
+    L30:
+        r5.n = this;
+        r5.o = false;
+        ((ArrayList) this.d).add(r5);
+        return;
+    L24:
+        if (r5.j() == true) goto L30;
+        if (r0.z.o == true) goto L30;
+        kf2.n("Called scrap view with an invalid view. Invalid views cannot be reused from scrap, they should rebound from recycler pool.".concat(r0.C()));
     }
 
-    /* JADX WARN: Code duplicated, block: B:120:0x021c  */
-    /* JADX WARN: Code duplicated, block: B:195:0x039e A[EDGE_INSN: B:195:0x039e->B:196:0x039f BREAK  A[LOOP:3: B:190:0x0386->B:194:0x039b]] */
-    /* JADX WARN: Code duplicated, block: B:276:0x0501  */
-    /* JADX WARN: Code duplicated, block: B:278:0x0507  */
-    /* JADX WARN: Code duplicated, block: B:279:0x0515  */
-    /* JADX WARN: Code duplicated, block: B:282:0x051f  */
-    /* JADX WARN: Code duplicated, block: B:283:0x0522  */
-    /* JADX WARN: Code duplicated, block: B:285:0x0525  */
-    /* JADX WARN: Code duplicated, block: B:287:0x052d  */
-    /* JADX WARN: Code duplicated, block: B:290:0x0541  */
-    /* JADX WARN: Code duplicated, block: B:291:0x0555  */
-    /* JADX WARN: Code duplicated, block: B:294:0x055d  */
-    /* JADX WARN: Code duplicated, block: B:309:0x05b8  */
-    /* JADX WARN: Code duplicated, block: B:311:0x05bc  */
-    /* JADX WARN: Code duplicated, block: B:314:0x05cd  */
-    /* JADX WARN: Code duplicated, block: B:317:0x05d8  */
-    /* JADX WARN: Code duplicated, block: B:321:0x05f2  */
-    /* JADX WARN: Code duplicated, block: B:345:0x0643  */
-    /* JADX WARN: Code duplicated, block: B:348:0x0648  */
-    /* JADX WARN: Code duplicated, block: B:352:0x0651  */
-    /* JADX WARN: Code duplicated, block: B:353:0x065b  */
-    /* JADX WARN: Code duplicated, block: B:355:0x0661  */
-    /* JADX WARN: Code duplicated, block: B:356:0x066b  */
-    /* JADX WARN: Code duplicated, block: B:361:0x0675  */
-    /* JADX WARN: Code duplicated, block: B:36:0x0095 A[EDGE_INSN: B:36:0x0095->B:37:0x0099 BREAK  A[LOOP:0: B:14:0x0030->B:20:0x004f]] */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
     java.lang.UnsupportedOperationException: ArgType.getObject(), call class: class jadx.core.dex.instructions.args.ArgType$UnknownArg
@@ -389,694 +395,612 @@ public final class hm2 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public cx3 k(int i, long j) {
-        View view;
-        boolean z;
-        boolean z2;
-        cx3 cx3Var;
-        cx3 cx3Var2;
-        cx3 cx3VarI;
-        long j2;
-        boolean z3;
-        dw3 dw3Var;
-        boolean z4;
-        long j3;
-        long nanoTime;
-        long j4;
-        AccessibilityManager accessibilityManager;
-        boolean z5;
-        boolean z6;
-        ArrayList arrayList;
-        ViewGroup.LayoutParams layoutParams;
-        ViewGroup.LayoutParams layoutParams2;
-        nw3 nw3Var;
-        boolean z7;
-        String str;
-        cx3 cx3Var3;
-        String str2;
-        RecyclerView recyclerViewH;
-        cx3 cx3Var4;
-        cx3 cx3Var5;
-        cx3 cx3Var6;
-        cx3 cx3Var7;
-        View view2;
-        cx3 cx3Var8;
-        cx3 cx3Var9;
-        cx3 cx3Var10;
-        boolean z8;
-        View view3;
-        cx3 cx3Var11;
-        int size;
-        int i2;
-        ArrayList arrayList2 = (ArrayList) this.d;
-        ArrayList arrayList3 = (ArrayList) this.f;
-        RecyclerView recyclerView = (RecyclerView) this.h;
-        yw3 yw3Var = recyclerView.u0;
-        if (i < 0 || i >= yw3Var.b()) {
-            StringBuilder sbT = b11.t("Invalid item position ", "(", i, i, "). Item count:");
-            sbT.append(yw3Var.b());
-            sbT.append(recyclerView.C());
-            throw new IndexOutOfBoundsException(sbT.toString());
-        }
-        if (yw3Var.g) {
-            ArrayList arrayList4 = (ArrayList) this.e;
-            if (arrayList4 != null && (size = arrayList4.size()) != 0) {
-                int i3 = 0;
-                while (true) {
-                    if (i3 >= size) {
-                        if (recyclerView.z.o && (i2 = recyclerView.r.i(i, 0)) > 0 && i2 < recyclerView.z.a()) {
-                            long jB = recyclerView.z.b(i2);
-                            int i4 = 0;
-                            while (true) {
-                                if (i4 >= size) {
-                                    view3 = null;
-                                    z = true;
-                                    cx3Var11 = null;
-                                    break;
-                                }
-                                cx3 cx3Var12 = (cx3) ((ArrayList) this.e).get(i4);
-                                if (!cx3Var12.r()) {
-                                    view3 = null;
-                                    z = true;
-                                    if (cx3Var12.e == jB) {
-                                        cx3Var12.a(32);
-                                        cx3Var11 = cx3Var12;
-                                        break;
-                                    }
-                                }
-                                i4++;
-                            }
-                        } else {
-                            view3 = null;
-                            z = true;
-                            cx3Var11 = null;
-                            break;
-                        }
-                    } else {
-                        cx3 cx3Var13 = (cx3) ((ArrayList) this.e).get(i3);
-                        if (!cx3Var13.r() && cx3Var13.d() == i) {
-                            cx3Var13.a(32);
-                            view3 = null;
-                            z = true;
-                            cx3Var11 = cx3Var13;
-                            break;
-                        }
-                        i3++;
-                    }
-                }
-            } else {
-                view3 = null;
-                z = true;
-                cx3Var11 = null;
-                break;
-            }
-            if (cx3Var11 != null) {
-                z2 = z;
-                cx3Var = cx3Var11;
-                view = view3;
-            } else {
-                z2 = false;
-                cx3Var = cx3Var11;
-                view = view3;
-            }
-        } else {
-            view = null;
-            z = true;
-            z2 = false;
-            cx3Var = null;
-        }
-        String str3 = "RecyclerView";
-        if (cx3Var == null) {
-            int size2 = arrayList2.size();
-            int i5 = 0;
-            while (true) {
-                if (i5 >= size2) {
-                    ArrayList arrayList5 = (ArrayList) recyclerView.s.r;
-                    int size3 = arrayList5.size();
-                    int i6 = 0;
-                    View view4 = view;
-                    while (true) {
-                        if (i6 >= size3) {
-                            cx3Var7 = view4;
-                            view2 = view4;
-                            break;
-                        }
-                        View view5 = (View) arrayList5.get(i6);
-                        cx3 cx3VarN = RecyclerView.N(view5);
-                        View view6 = view4;
-                        if (cx3VarN.d() == i && !cx3VarN.h() && !cx3VarN.j()) {
-                            view2 = view5;
-                            cx3Var7 = view6;
-                            break;
-                        }
-                        i6++;
-                        view4 = view6;
-                    }
-                    if (view2 == null) {
-                        int size4 = arrayList3.size();
-                        int i7 = 0;
-                        while (true) {
-                            if (i7 >= size4) {
-                                cx3Var8 = cx3Var7;
-                                cx3Var10 = cx3Var7;
-                                break;
-                            }
-                            cx3Var9 = (cx3) arrayList3.get(i7);
-                            if (!cx3Var9.h() && cx3Var9.d() == i && !cx3Var9.f()) {
-                                arrayList3.remove(i7);
-                                cx3Var8 = cx3Var9;
-                                cx3Var10 = cx3Var7;
-                                if (!RecyclerView.Q0) {
-                                    break;
-                                }
-                                Log.d("RecyclerView", "getScrapOrHiddenOrCachedHolderForPosition(" + i + ") found match in cache: " + cx3Var9);
-                                break;
-                            }
-                            i7++;
-                        }
-                    } else {
-                        cx3 cx3VarN2 = RecyclerView.N(view2);
-                        ew4 ew4Var = recyclerView.s;
-                        e20 e20Var = (e20) ew4Var.q;
-                        int iIndexOfChild = ((RecyclerView) ((rm2) ew4Var.p).o).indexOfChild(view2);
-                        if (iIndexOfChild < 0) {
-                            mj0.l(view2, "view is not a child, cannot hide ");
-                            return cx3Var7;
-                        }
-                        if (!e20Var.s(iIndexOfChild)) {
-                            throw new RuntimeException("trying to unhide a view that was not hidden" + view2);
-                        }
-                        e20Var.o(iIndexOfChild);
-                        ew4Var.p(view2);
-                        ew4 ew4Var2 = recyclerView.s;
-                        e20 e20Var2 = (e20) ew4Var2.q;
-                        int iIndexOfChild2 = ((RecyclerView) ((rm2) ew4Var2.p).o).indexOfChild(view2);
-                        int iQ = (iIndexOfChild2 == -1 || e20Var2.s(iIndexOfChild2)) ? -1 : iIndexOfChild2 - e20Var2.q(iIndexOfChild2);
-                        if (iQ == -1) {
-                            StringBuilder sb = new StringBuilder("layout index should not be -1 after unhiding a view:");
-                            sb.append(cx3VarN2);
-                            nz2.m(recyclerView.C(), sb);
-                            return cx3Var7;
-                        }
-                        recyclerView.s.f(iQ);
-                        j(view2);
-                        cx3VarN2.a(8224);
-                        cx3Var8 = cx3VarN2;
-                        break;
-                    }
-                } else {
-                    cx3 cx3Var14 = (cx3) arrayList2.get(i5);
-                    if (!cx3Var14.r() && cx3Var14.d() == i && !cx3Var14.h() && (yw3Var.g || !cx3Var14.j())) {
-                        cx3Var14.a(32);
-                        cx3Var10 = view;
-                        cx3Var8 = cx3Var14;
-                        break;
-                    }
-                    i5++;
-                }
-            }
-            if (cx3Var8 != null) {
-                cx3Var8 = cx3Var9;
-                cx3Var10 = cx3Var7;
-                cx3Var10 = cx3Var7;
-                if (!cx3Var8.j()) {
-                    int i8 = cx3Var8.c;
-                    if (i8 < 0 || i8 >= recyclerView.z.a()) {
-                        throw new IndexOutOfBoundsException("Inconsistency detected. Invalid view holder adapter position" + cx3Var8 + recyclerView.C());
-                    }
-                    if (yw3Var.g || recyclerView.z.c(cx3Var8.c) == cx3Var8.f) {
-                        dw3 dw3Var2 = recyclerView.z;
-                        if (!dw3Var2.o || cx3Var8.e == dw3Var2.b(cx3Var8.c)) {
-                            z8 = z;
-                        } else {
-                            z8 = false;
-                        }
-                    } else {
-                        z8 = false;
-                    }
-                } else {
-                    if (RecyclerView.P0 && !yw3Var.g) {
-                        kf2.o("should not receive a removed view unless it is pre layout".concat(recyclerView.C()));
-                        return cx3Var10;
-                    }
-                    z8 = yw3Var.g;
-                }
-                if (z8) {
-                    cx3VarI = cx3Var8;
-                    z2 = z;
-                    cx3Var2 = cx3Var10;
-                } else {
-                    cx3Var8.a(4);
-                    if (cx3Var8.k()) {
-                        recyclerView.removeDetachedView(cx3Var8.a, false);
-                        cx3Var8.n.l(cx3Var8);
-                    } else if (cx3Var8.r()) {
-                        cx3Var8.j &= -33;
-                    }
-                    i(cx3Var8);
-                    cx3VarI = cx3Var10;
-                    cx3Var2 = cx3Var10;
-                }
-            } else {
-                cx3Var8 = cx3Var9;
-                cx3Var10 = cx3Var7;
-                cx3Var10 = cx3Var7;
-                cx3VarI = cx3Var8;
-                cx3Var2 = cx3Var10;
-            }
-        } else {
-            cx3Var2 = view;
-            cx3VarI = cx3Var;
-        }
-        if (cx3VarI == null) {
-            int i9 = recyclerView.r.i(i, 0);
-            if (i9 < 0 || i9 >= recyclerView.z.a()) {
-                StringBuilder sbT2 = b11.t("Inconsistency detected. Invalid item position ", "(offset:", i, i9, ").state:");
-                sbT2.append(yw3Var.b());
-                sbT2.append(recyclerView.C());
-                throw new IndexOutOfBoundsException(sbT2.toString());
-            }
-            int iC = recyclerView.z.c(i9);
-            dw3 dw3Var3 = recyclerView.z;
-            j2 = 3;
-            if (dw3Var3.o) {
-                long jB2 = dw3Var3.b(i9);
-                int size5 = arrayList2.size() - 1;
-                while (true) {
-                    if (size5 < 0) {
-                        cx3Var5 = cx3Var2;
-                        str = str3;
-                        int size6 = arrayList3.size() - 1;
-                        while (true) {
-                            if (size6 >= 0) {
-                                cx3Var6 = (cx3) arrayList3.get(size6);
-                                long j5 = jB2;
-                                if (cx3Var6.e != j5 || cx3Var6.f()) {
-                                    size6--;
-                                    jB2 = j5;
-                                } else {
-                                    if (iC == cx3Var6.f) {
-                                        arrayList3.remove(size6);
-                                        break;
-                                    }
-                                    g(size6);
-                                }
-                            }
-                            cx3Var6 = null;
-                            break;
-                        }
-                    }
-                    cx3 cx3Var15 = (cx3) arrayList2.get(size5);
-                    str = str3;
-                    long j6 = cx3Var15.e;
-                    View view7 = cx3Var15.a;
-                    if (j6 != jB2 || cx3Var15.r()) {
-                        cx3Var5 = cx3Var2;
-                        cx3Var5 = cx3Var2;
-                    } else {
-                        if (iC == cx3Var15.f) {
-                            cx3Var5 = cx3Var2;
-                            cx3Var15.a(32);
-                            if (cx3Var15.j() && !yw3Var.g) {
-                                cx3Var15.j = (cx3Var15.j & (-15)) | 2;
-                            }
-                            cx3Var6 = cx3Var15;
-                            break;
-                        }
-                        cx3Var5 = cx3Var2;
-                        arrayList2.remove(size5);
-                        recyclerView.removeDetachedView(view7, false);
-                        cx3 cx3VarN3 = RecyclerView.N(view7);
-                        cx3VarN3.n = cx3Var5;
-                        cx3VarN3.o = false;
-                        cx3VarN3.j &= -33;
-                        i(cx3VarN3);
-                    }
-                    size5--;
-                    str3 = str;
-                    cx3Var5 = null;
-                }
-                if (cx3Var6 != null) {
-                    cx3Var6.c = i9;
-                    cx3Var3 = cx3Var6;
-                    z2 = z;
-                } else {
-                    cx3Var3 = cx3Var6;
-                }
-            } else {
-                str = "RecyclerView";
-            }
-            if (cx3Var3 == null) {
-                cx3Var3 = cx3VarI;
-                if (RecyclerView.Q0) {
-                    str2 = str;
-                    Log.d(str2, "tryGetViewHolderForPositionByDeadline(" + i + ") fetching from shared pool");
-                } else {
-                    str2 = str;
-                }
-                sw3 sw3Var = (sw3) c().a.get(iC);
-                if (sw3Var == null) {
-                    cx3Var4 = null;
-                    break;
-                }
-                ArrayList arrayList6 = sw3Var.a;
-                if (!arrayList6.isEmpty()) {
-                    int size7 = arrayList6.size() - 1;
-                    while (true) {
-                        if (size7 < 0) {
-                            cx3Var4 = null;
-                            break;
-                        }
-                        if (!((cx3) arrayList6.get(size7)).f()) {
-                            cx3Var4 = (cx3) arrayList6.remove(size7);
-                            break;
-                        }
-                        size7--;
-                    }
-                } else {
-                    cx3Var4 = null;
-                    break;
-                }
-                if (cx3Var4 != null) {
-                    cx3Var4.o();
-                    boolean z9 = RecyclerView.P0;
-                }
-                cx3VarI = cx3Var4;
-            } else {
-                cx3Var3 = cx3VarI;
-                str2 = str;
-            }
-            if (cx3VarI == null) {
-                cx3VarI = cx3Var3;
-                long nanoTime2 = recyclerView.getNanoTime();
-                if (j != Long.MAX_VALUE) {
-                    long j7 = ((tw3) this.g).a(iC).c;
-                    if (j7 != 0 && j7 + nanoTime2 >= j) {
-                        return null;
-                    }
-                }
-                dw3 dw3Var4 = recyclerView.z;
-                dw3Var4.getClass();
-                try {
-                    if (ov4.a()) {
-                        Trace.beginSection(String.format("RV onCreateViewHolder type=0x%X", Integer.valueOf(iC)));
-                    }
-                    cx3VarI = dw3Var4.i(recyclerView, iC);
-                    if (cx3VarI.a.getParent() != null) {
-                        throw new IllegalStateException("ViewHolder views must not be attached when created. Ensure that you are not passing 'true' to the attachToRoot parameter of LayoutInflater.inflate(..., boolean attachToRoot)");
-                    }
-                    cx3VarI.f = iC;
-                    Trace.endSection();
-                    if (RecyclerView.U0 && (recyclerViewH = RecyclerView.H(cx3VarI.a)) != null) {
-                        cx3VarI.b = new WeakReference(recyclerViewH);
-                    }
-                    long nanoTime3 = recyclerView.getNanoTime() - nanoTime2;
-                    sw3 sw3VarA = ((tw3) this.g).a(iC);
-                    long j8 = sw3VarA.c;
-                    if (j8 != 0) {
-                        nanoTime3 = (nanoTime3 / 4) + ((j8 / 4) * 3);
-                    }
-                    sw3VarA.c = nanoTime3;
-                    if (RecyclerView.Q0) {
-                        Log.d(str2, "tryGetViewHolderForPositionByDeadline created new ViewHolder");
-                    }
-                } catch (Throwable th) {
-                    Trace.endSection();
-                    throw th;
-                }
-            }
-        } else {
-            j2 = 3;
-        }
-        cx3VarI = cx3Var3;
-        View view8 = cx3VarI.a;
-        if (z2 && !yw3Var.g) {
-            int i10 = cx3VarI.j;
-            if ((i10 & 8192) != 0) {
-                cx3VarI.j = i10 & (-8193);
-                if (yw3Var.j) {
-                    jw3.b(cx3VarI);
-                    jw3 jw3Var = recyclerView.c0;
-                    cx3VarI.e();
-                    jw3Var.getClass();
-                    n50 n50Var = new n50();
-                    n50Var.b(cx3VarI);
-                    recyclerView.b0(cx3VarI, n50Var);
-                }
-            }
-        }
-        if (!yw3Var.g || !cx3VarI.g()) {
-            if (!cx3VarI.g() || (cx3VarI.j & 2) != 0 || cx3VarI.h()) {
-                if (RecyclerView.P0 && cx3VarI.j()) {
-                    StringBuilder sb2 = new StringBuilder("Removed holder should be bound and it should come here only in pre-layout. Holder: ");
-                    sb2.append(cx3VarI);
-                    nz2.m(recyclerView.C(), sb2);
-                    return null;
-                }
-                int i11 = recyclerView.r.i(i, 0);
-                cx3VarI.s = null;
-                cx3VarI.r = recyclerView;
-                int i12 = cx3VarI.f;
-                long nanoTime4 = recyclerView.getNanoTime();
-                if (j != Long.MAX_VALUE) {
-                    long j9 = ((tw3) this.g).a(i12).d;
-                    if (j9 == 0 || j9 + nanoTime4 < j) {
-                        if (cx3VarI.l()) {
-                            recyclerView.attachViewToParent(view8, recyclerView.getChildCount(), view8.getLayoutParams());
-                            z3 = z;
-                        } else {
-                            z3 = false;
-                        }
-                        dw3Var = recyclerView.z;
-                        dw3Var.getClass();
-                        if (cx3VarI.s == null) {
-                            z4 = z;
-                        } else {
-                            z4 = false;
-                        }
-                        if (z4) {
-                            cx3VarI.c = i11;
-                            j3 = nanoTime4;
-                            if (dw3Var.o) {
-                                cx3VarI.e = dw3Var.b(i11);
-                            }
-                            cx3VarI.j = (cx3VarI.j & (-520)) | 1;
-                            if (ov4.a()) {
-                                Trace.beginSection(String.format("RV onBindViewHolder type=0x%X", Integer.valueOf(cx3VarI.f)));
-                            }
-                        } else {
-                            j3 = nanoTime4;
-                        }
-                        cx3VarI.s = dw3Var;
-                        if (RecyclerView.P0) {
-                            if (view8.getParent() != null && view8.isAttachedToWindow() != cx3VarI.l()) {
-                                throw new IllegalStateException("Temp-detached state out of sync with reality. holder.isTmpDetached(): " + cx3VarI.l() + ", attached to window: " + view8.isAttachedToWindow() + ", holder: " + cx3VarI);
-                            }
-                            if (view8.getParent() == null && view8.isAttachedToWindow()) {
-                                er1.o(cx3VarI, "Attempting to bind attached holder with no parent (AKA temp detached): ");
-                                return null;
-                            }
-                        }
-                        z2 z2Var = null;
-                        dw3Var.h(cx3VarI, i11, cx3VarI.e());
-                        if (z4) {
-                            arrayList = cx3VarI.k;
-                            if (arrayList != null) {
-                                arrayList.clear();
-                            }
-                            cx3VarI.j &= -1025;
-                            layoutParams = view8.getLayoutParams();
-                            if (layoutParams instanceof nw3) {
-                                ((nw3) layoutParams).c = z;
-                            }
-                            Trace.endSection();
-                        }
-                        if (z3) {
-                            recyclerView.detachViewFromParent(view8);
-                        }
-                        nanoTime = recyclerView.getNanoTime() - j3;
-                        sw3 sw3VarA2 = ((tw3) this.g).a(cx3VarI.f);
-                        j4 = sw3VarA2.d;
-                        if (j4 != 0) {
-                            nanoTime = (nanoTime / 4) + ((j4 / 4) * j2);
-                        }
-                        sw3VarA2.d = nanoTime;
-                        accessibilityManager = recyclerView.O;
-                        if (accessibilityManager == null && accessibilityManager.isEnabled()) {
-                            z5 = true;
-                            if (view8.getImportantForAccessibility() == 0) {
-                                view8.setImportantForAccessibility(1);
-                            }
-                            ex3 ex3Var = recyclerView.B0;
-                            if (ex3Var != null) {
-                                z2 z2VarJ = ex3Var.j();
-                                if (z2VarJ instanceof dx3) {
-                                    dx3 dx3Var = (dx3) z2VarJ;
-                                    View.AccessibilityDelegate accessibilityDelegateD = j65.d(view8);
-                                    if (accessibilityDelegateD != null) {
-                                        z2Var = accessibilityDelegateD instanceof y2 ? ((y2) accessibilityDelegateD).a : new z2(accessibilityDelegateD);
-                                    }
-                                    if (z2Var != null && z2Var != dx3Var) {
-                                        dx3Var.r.put(view8, z2Var);
-                                    }
-                                }
-                                j65.o(view8, z2VarJ);
-                            }
-                        } else {
-                            z5 = true;
-                        }
-                        if (yw3Var.g) {
-                            cx3VarI.g = i;
-                        }
-                        z6 = z5;
-                    } else {
-                        z6 = false;
-                        z5 = z;
-                    }
-                } else {
-                    if (cx3VarI.l()) {
-                        recyclerView.attachViewToParent(view8, recyclerView.getChildCount(), view8.getLayoutParams());
-                        z3 = z;
-                    } else {
-                        z3 = false;
-                    }
-                    dw3Var = recyclerView.z;
-                    dw3Var.getClass();
-                    if (cx3VarI.s == null) {
-                        z4 = z;
-                    } else {
-                        z4 = false;
-                    }
-                    if (z4) {
-                        cx3VarI.c = i11;
-                        j3 = nanoTime4;
-                        if (dw3Var.o) {
-                            cx3VarI.e = dw3Var.b(i11);
-                        }
-                        cx3VarI.j = (cx3VarI.j & (-520)) | 1;
-                        if (ov4.a()) {
-                            Trace.beginSection(String.format("RV onBindViewHolder type=0x%X", Integer.valueOf(cx3VarI.f)));
-                        }
-                    } else {
-                        j3 = nanoTime4;
-                    }
-                    cx3VarI.s = dw3Var;
-                    if (RecyclerView.P0) {
-                        if (view8.getParent() != null) {
-                        }
-                        if (view8.getParent() == null) {
-                            er1.o(cx3VarI, "Attempting to bind attached holder with no parent (AKA temp detached): ");
-                            return null;
-                        }
-                    }
-                    z2 z2Var2 = null;
-                    dw3Var.h(cx3VarI, i11, cx3VarI.e());
-                    if (z4) {
-                        arrayList = cx3VarI.k;
-                        if (arrayList != null) {
-                            arrayList.clear();
-                        }
-                        cx3VarI.j &= -1025;
-                        layoutParams = view8.getLayoutParams();
-                        if (layoutParams instanceof nw3) {
-                            ((nw3) layoutParams).c = z;
-                        }
-                        Trace.endSection();
-                    }
-                    if (z3) {
-                        recyclerView.detachViewFromParent(view8);
-                    }
-                    nanoTime = recyclerView.getNanoTime() - j3;
-                    sw3 sw3VarA3 = ((tw3) this.g).a(cx3VarI.f);
-                    j4 = sw3VarA3.d;
-                    if (j4 != 0) {
-                        nanoTime = (nanoTime / 4) + ((j4 / 4) * j2);
-                    }
-                    sw3VarA3.d = nanoTime;
-                    accessibilityManager = recyclerView.O;
-                    if (accessibilityManager == null) {
-                        z5 = true;
-                    } else {
-                        z5 = true;
-                    }
-                    if (yw3Var.g) {
-                        cx3VarI.g = i;
-                    }
-                    z6 = z5;
-                }
-            }
-            layoutParams2 = view8.getLayoutParams();
-            if (layoutParams2 == null) {
-                nw3Var = (nw3) recyclerView.generateDefaultLayoutParams();
-                view8.setLayoutParams(nw3Var);
-            } else if (recyclerView.checkLayoutParams(layoutParams2)) {
-                nw3Var = (nw3) layoutParams2;
-            } else {
-                nw3Var = (nw3) recyclerView.generateLayoutParams(layoutParams2);
-                view8.setLayoutParams(nw3Var);
-            }
-            nw3Var.a = cx3VarI;
-            if (z2 || !z6) {
-                z7 = false;
-            } else {
-                z7 = z5;
-            }
-            nw3Var.d = z7;
-            return cx3VarI;
-        }
-        cx3VarI.g = i;
-        z5 = z;
-        z6 = false;
-        layoutParams2 = view8.getLayoutParams();
-        if (layoutParams2 == null) {
-            nw3Var = (nw3) recyclerView.generateDefaultLayoutParams();
-            view8.setLayoutParams(nw3Var);
-        } else if (recyclerView.checkLayoutParams(layoutParams2)) {
-            nw3Var = (nw3) recyclerView.generateLayoutParams(layoutParams2);
-            view8.setLayoutParams(nw3Var);
-        } else {
-            nw3Var = (nw3) layoutParams2;
-        }
-        nw3Var.a = cx3VarI;
-        if (z2) {
-            z7 = false;
-        } else {
-            z7 = false;
-        }
-        nw3Var.d = z7;
-        return cx3VarI;
+    public cx3 k(int r30, long r31) {
+        ArrayList r2 = (ArrayList) this.d;
+        ArrayList r3 = (ArrayList) this.f;
+        RecyclerView r4 = (RecyclerView) this.h;
+        yw3 r5 = r4.u0;
+        if (r30 >= 0) goto L5;
+    L364:
+        StringBuilder r1 = b11.t("Invalid item position ", "(", r30, r30, "). Item count:");
+        r1.append(r5.b());
+        r1.append(r4.C());
+        throw new IndexOutOfBoundsException(r1.toString());
+    L5:
+        if (r30 >= r5.b()) goto L364;
+        if (r5.g == false) goto L40;
+        ArrayList r6 = (ArrayList) this.e;
+        if (r6 == null) goto L36;
+        int r7 = r6.size();
+        if (r7 == 0) goto L36;
+        int r11 = 0;
+    L14:
+        if (r11 >= r7) goto L22;
+        cx3 r12 = (cx3) ((ArrayList) this.e).get(r11);
+        if (r12.r() == true) goto L20;
+        if (r12.d() != r30) goto L20;
+        r12.a(32);
+        View r15 = null;
+        boolean r16 = true;
+        cx3 r13 = r12;
+    L37:
+        if (r13 == null) goto L39;
+        boolean r8 = r16;
+        cx3 r14 = r13;
+        View r17 = r15;
+    L41:
+        String r9 = "RecyclerView";
+        if (r14 != null) goto L138;
+        int r10 = r2.size();
+        int r18 = 0;
+    L44:
+        if (r18 >= r10) goto L57;
+        cx3 r19 = (cx3) r2.get(r18);
+        if (r19.r() == true) goto L56;
+        if (r19.d() != r30) goto L56;
+        if (r19.h() == true) goto L56;
+        if (r5.g == true) goto L55;
+        if (r19.j() == true) goto L56;
+    L55:
+        r19.a(32);
+        cx3 r110 = r17;
+        cx3 r111 = r19;
+    L101:
+        if (r111 != null) goto L103;
+        cx3 r112 = r111;
+        cx3 r113 = r110;
+    L140:
+        if (r112 != null) goto L236;
+        int r20 = r4.r.i(r30, 0);
+        if (r20 >= 0) goto L144;
+    L234:
+        StringBuilder r21 = b11.t("Inconsistency detected. Invalid item position ", "(offset:", r30, r20, ").state:");
+        r21.append(r5.b());
+        r21.append(r4.C());
+        throw new IndexOutOfBoundsException(r21.toString());
+    L144:
+        if (r20 >= r4.z.a()) goto L234;
+        int r114 = r4.z.c(r20);
+        dw3 r115 = r4.z;
+        long r24 = 3;
+        if (r115.o == false) goto L179;
+        long r116 = r115.b(r20);
+        int r117 = r2.size() - 1;
+        cx3 r118 = r113;
+    L148:
+        if (r117 < 0) goto L164;
+        cx3 r119 = (cx3) r2.get(r117);
+        String r26 = r9;
+        long r22 = r119.e;
+        View r120 = r119.a;
+        if (r22 != r116) goto L163;
+        if (r119.r() == true) goto L163;
+        if (r114 == r119.f) goto L155;
+        r2.remove(r117);
+        r4.removeDetachedView(r120, false);
+        cx3 r121 = RecyclerView.N(r120);
+        r121.n = r118;
+        r121.o = false;
+        r121.j &= -33;
+        i(r121);
+        goto L163
+    L155:
+        r119.a(32);
+        if (r119.j() == true) goto L158;
+    L160:
+        cx3 r23 = r119;
+    L176:
+        if (r23 == null) goto L178;
+        r23.c = r20;
+        cx3 r122 = r23;
+        r8 = r16;
+    L180:
+        if (r122 == null) goto L182;
+        String r25 = r26;
+        r112 = r122;
+    L200:
+        if (r112 != null) goto L237;
+        long r27 = r4.getNanoTime();
+        if (r31 == Long.MAX_VALUE) goto L210;
+        long r28 = ((tw3) this.g).a(r114).c;
+        if (r28 == 0) goto L210;
+        if ((r28 + r27) < r31) goto L210;
+        return null;
+    L210:
+        dw3 r29 = r4.z;
+        r29.getClass();
+    L231:
+        th = move-exception;
+        Trace.endSection();
+        throw th;
+    L212:
+        if (ov4.a() == false) goto L214;
+        Trace.beginSection(String.format("RV onCreateViewHolder type=0x%X", new Object[]{Integer.valueOf(r114)}));     // Catch: Throwable -> L231
+    L214:
+        r112 = r29.i(r4, r114);     // Catch: Throwable -> L231
+        if (r112.a.getParent() != null) goto L230;
+        r112.f = r114;     // Catch: Throwable -> L231
+        Trace.endSection();
+        if (RecyclerView.U0 == false) goto L222;
+        RecyclerView r32 = RecyclerView.H(r112.a);
+        if (r32 == null) goto L222;
+        r112.b = new WeakReference(r32);
+    L222:
+        long r33 = r4.getNanoTime() - r27;
+        sw3 r34 = ((tw3) this.g).a(r114);
+        long r35 = r34.c;
+        if (r35 == 0) goto L226;
+        r33 = (r33 / 4) + ((r35 / 4) * 3);
+    L226:
+        r34.c = r33;
+        if (RecyclerView.Q0 == false) goto L237;
+        Log.d(r25, "tryGetViewHolderForPositionByDeadline created new ViewHolder");
+        goto L237
+    L230:
+        throw new IllegalStateException("ViewHolder views must not be attached when created. Ensure that you are not passing 'true' to the attachToRoot parameter of LayoutInflater.inflate(..., boolean attachToRoot)");     // Catch: Throwable -> L231
+    L237:
+        View r36 = r112.a;
+        if (r8 == false) goto L247;
+        if (r5.g == true) goto L247;
+        int r37 = r112.j;
+        if ((r37 & 8192) == 0) goto L247;
+        r112.j = r37 & (-8193);
+        if (r5.j == false) goto L247;
+        jw3.b(r112);
+        jw3 r38 = r4.c0;
+        r112.e();
+        r38.getClass();
+        n50 r39 = new n50();
+        r39.b(r112);
+        r4.b0(r112, r39);
+    L247:
+        if (r5.g == false) goto L252;
+        if (r112.g() == false) goto L252;
+        r112.g = r30;
+    L259:
+        boolean r40 = r16;
+        boolean r0 = false;
+    L350:
+        ViewGroup.LayoutParams r41 = r36.getLayoutParams();
+        if (r41 != null) goto L354;
+        nw3 r42 = (nw3) r4.generateDefaultLayoutParams();
+        r36.setLayoutParams(r42);
+    L357:
+        r42.a = r112;
+        if (r8 == false) goto L361;
+        if (r0 == false) goto L361;
+        boolean r43 = r40;
+    L362:
+        r42.d = r43;
+        return r112;
+    L361:
+        r43 = false;
+        goto L362
+    L354:
+        if (r4.checkLayoutParams(r41) == true) goto L356;
+        r42 = (nw3) r4.generateLayoutParams(r41);
+        r36.setLayoutParams(r42);
+        goto L357
+    L356:
+        r42 = (nw3) r41;
+    L252:
+        if (r112.g() == false) goto L261;
+        if ((r112.j & 2) != 0) goto L261;
+        if (r112.h() == false) goto L259;
+    L261:
+        if (RecyclerView.P0 == false) goto L268;
+        if (r112.j() == false) goto L268;
+        StringBuilder r44 = new StringBuilder("Removed holder should be bound and it should come here only in pre-layout. Holder: ");
+        r44.append(r112);
+        nz2.m(r4.C(), r44);
+        return null;
+    L268:
+        int r45 = r4.r.i(r30, 0);
+        r112.s = null;
+        r112.r = r4;
+        int r46 = r112.f;
+        long r47 = r4.getNanoTime();
+        if (r31 == Long.MAX_VALUE) goto L277;
+        long r123 = ((tw3) this.g).a(r46).d;
+        if (r123 == 0) goto L277;
+        if ((r123 + r47) < r31) goto L277;
+        r0 = false;
+        r40 = r16;
+    L277:
+        if (r112.l() == false) goto L279;
+        RecyclerView.e(r4, r36, r4.getChildCount(), r36.getLayoutParams());
+        boolean r48 = r16;
+    L280:
+        dw3 r124 = r4.z;
+        r124.getClass();
+        if (r112.s != null) goto L283;
+        boolean r125 = r16;
+    L284:
+        if (r125 == false) goto L291;
+        r112.c = r45;
+        long r210 = r47;
+        if (r124.o == false) goto L288;
+        r112.e = r124.b(r45);
+    L288:
+        r112.j = (r112.j & (-520)) | 1;
+        if (ov4.a() == false) goto L292;
+        Trace.beginSection(String.format("RV onBindViewHolder type=0x%X", new Object[]{Integer.valueOf(r112.f)}));
+    L292:
+        r112.s = r124;
+        if (RecyclerView.P0 == true) goto L295;
+    L305:
+        z2 r126 = null;
+        r124.h(r112, r45, r112.e());
+        if (r125 == false) goto L316;
+        ArrayList r49 = r112.k;
+        if (r49 == null) goto L312;
+        r49.clear();
+    L312:
+        r112.j &= -1025;
+        ViewGroup.LayoutParams r50 = r36.getLayoutParams();
+        if ((r50 instanceof nw3) == false) goto L315;
+        ((nw3) r50).c = r16;
+    L315:
+        Trace.endSection();
+    L316:
+        if (r48 == false) goto L318;
+        RecyclerView.f(r36, r4);
+    L318:
+        long r51 = r4.getNanoTime() - r210;
+        sw3 r52 = ((tw3) this.g).a(r112.f);
+        long r53 = r52.d;
+        if (r53 == 0) goto L322;
+        r51 = (r51 / 4) + ((r53 / 4) * r24);
+    L322:
+        r52.d = r51;
+        AccessibilityManager r54 = r4.O;
+        if (r54 != null) goto L325;
+    L345:
+        r40 = true;
+    L347:
+        if (r5.g == false) goto L349;
+        r112.g = r30;
+    L349:
+        r0 = r40;
+        goto L350
+    L325:
+        if (r54.isEnabled() == false) goto L345;
+        r40 = true;
+        if (r36.getImportantForAccessibility() != 0) goto L329;
+        r36.setImportantForAccessibility(1);
+    L329:
+        ex3 r55 = r4.B0;
+        if (r55 == null) goto L347;
+        z2 r56 = r55.j();
+        if ((r56 instanceof dx3) == false) goto L344;
+        dx3 r57 = (dx3) r56;
+        View.AccessibilityDelegate r58 = j65.d(r36);
+        if (r58 != null) goto L338;
+    L341:
+        if (r126 == null) goto L344;
+        if (r126 == r57) goto L344;
+        r57.r.put(r36, r126);
+        goto L344
+    L338:
+        if ((r58 instanceof y2) == false) goto L340;
+        r126 = ((y2) r58).a;
+        goto L341
+    L340:
+        r126 = new z2(r58);
+    L344:
+        j65.o(r36, r56);
+        goto L347
+    L295:
+        if (r36.getParent() != null) goto L302;
+        if (r36.isAttachedToWindow() == r112.l()) goto L302;
+        throw new IllegalStateException("Temp-detached state out of sync with reality. holder.isTmpDetached(): " + r112.l() + ", attached to window: " + r36.isAttachedToWindow() + ", holder: " + r112);
+    L302:
+        if (r36.getParent() != null) goto L305;
+        if (r36.isAttachedToWindow() == false) goto L305;
+        er1.o(r112, "Attempting to bind attached holder with no parent (AKA temp detached): ");
+        return null;
+    L291:
+        r210 = r47;
+        goto L292
+    L283:
+        r125 = false;
+        goto L284
+    L279:
+        r48 = false;
+        goto L280
+    L182:
+        if (RecyclerView.Q0 == false) goto L184;
+        r25 = r26;
+        Log.d(r25, "tryGetViewHolderForPositionByDeadline(" + r30 + ") fetching from shared pool");
+    L185:
+        sw3 r59 = (sw3) c().a.get(r114);
+        if (r59 == null) goto L195;
+        ArrayList r60 = r59.a;
+        if (r60.isEmpty() == true) goto L195;
+        int r61 = r60.size() - 1;
+    L190:
+        if (r61 < 0) goto L195;
+        if (((cx3) r60.get(r61)).f() == false) goto L193;
+        r61 = r61 - 1;
+        goto L190
+    L193:
+        cx3 r62 = (cx3) r60.remove(r61);
+    L196:
+        if (r62 == null) goto L198;
+        r62.o();
+        boolean r63 = RecyclerView.P0;
+    L198:
+        r112 = r62;
+    L195:
+        r62 = null;
+        goto L196
+    L184:
+        r25 = r26;
+        goto L185
+    L178:
+        r122 = r23;
+        goto L180
+    L158:
+        if (r5.g == true) goto L160;
+        r119.j = (r119.j & (-15)) | 2;
+    L163:
+        r117 = r117 - 1;
+        r9 = r26;
+        r118 = null;
+        goto L148
+    L164:
+        r26 = r9;
+        int r64 = r3.size() - 1;
+    L165:
+        if (r64 < 0) goto L174;
+        r23 = (cx3) r3.get(r64);
+        long r211 = r116;
+        if (r23.e != r211) goto L175;
+        if (r23.f() == true) goto L175;
+        if (r114 != r23.f) goto L173;
+        r3.remove(r64);
+        goto L176
+    L173:
+        g(r64);
+    L175:
+        r64 = r64 - 1;
+        r116 = r211;
+    L174:
+        r23 = null;
+        goto L176
+    L179:
+        r26 = "RecyclerView";
+        r122 = r112;
+        goto L180
+    L236:
+        r24 = 3;
+        goto L237
+    L103:
+        if (r111.j() == true) goto L105;
+        int r65 = r111.c;
+        if (r65 < 0) goto L136;
+        if (r65 >= r4.z.a()) goto L136;
+        if (r5.g == false) goto L119;
+    L121:
+        dw3 r66 = r4.z;
+        if (r66.o == true) goto L124;
+    L125:
+        boolean r67 = r16;
+    L126:
+        if (r67 == true) goto L134;
+        r111.a(4);
+        if (r111.k() == false) goto L131;
+        r4.removeDetachedView(r111.a, false);
+        r111.n.l(r111);
+    L133:
+        i(r111);
+        r112 = r110;
+        r113 = r110;
+        goto L140
+    L131:
+        if (r111.r() == false) goto L133;
+        r111.j &= -33;
+        goto L133
+    L134:
+        r112 = r111;
+        r8 = r16;
+        r113 = r110;
+        goto L140
+    L124:
+        if (r111.e == r66.b(r111.c)) goto L125;
+    L120:
+        r67 = false;
+        goto L126
+    L119:
+        if (r4.z.c(r111.c) == r111.f) goto L121;
+    L136:
+        throw new IndexOutOfBoundsException("Inconsistency detected. Invalid view holder adapter position" + r111 + r4.C());
+    L105:
+        if (RecyclerView.P0 == true) goto L107;
+    L111:
+        r67 = r5.g;
+        goto L126
+    L107:
+        if (r5.g == true) goto L111;
+        kf2.o("should not receive a removed view unless it is pre layout".concat(r4.C()));
+        return r110;
+    L56:
+        r18 = r18 + 1;
+        goto L44
+    L57:
+        ArrayList r68 = (ArrayList) r4.s.r;
+        int r127 = r68.size();
+        int r128 = 0;
+        View r129 = r17;
+    L58:
+        if (r128 >= r127) goto L67;
+        View r130 = (View) r68.get(r128);
+        cx3 r131 = RecyclerView.N(r130);
+        View r132 = r129;
+        if (r131.d() != r30) goto L66;
+        if (r131.h() == true) goto L66;
+        if (r131.j() == true) goto L66;
+        View r133 = r130;
+        cx3 r134 = r132;
+    L68:
+        if (r133 == null) goto L88;
+        cx3 r69 = RecyclerView.N(r133);
+        ew4 r135 = r4.s;
+        e20 r136 = (e20) r135.q;
+        int r137 = ((RecyclerView) ((rm2) r135.p).o).indexOfChild(r133);
+        if (r137 >= 0) goto L72;
+        mj0.l(r133, "view is not a child, cannot hide ");
+        return r134;
+    L72:
+        if (r136.s(r137) == false) goto L85;
+        r136.o(r137);
+        r135.p(r133);
+        ew4 r138 = r4.s;
+        e20 r139 = (e20) r138.q;
+        int r140 = ((RecyclerView) ((rm2) r138.p).o).indexOfChild(r133);
+        if (r140 != (-1)) goto L77;
+    L78:
+        int r141 = -1;
+    L80:
+        if (r141 == (-1)) goto L82;
+        r4.s.f(r141);
+        j(r133);
+        r69.a(8224);
+        r111 = r69;
+        r110 = r134;
+        goto L101
+    L82:
+        StringBuilder r70 = new StringBuilder("layout index should not be -1 after unhiding a view:");
+        r70.append(r69);
+        nz2.m(r4.C(), r70);
+        return r134;
+    L77:
+        if (r139.s(r140) == true) goto L78;
+        r141 = r140 - r139.q(r140);
+        goto L80
+    L85:
+        throw new RuntimeException("trying to unhide a view that was not hidden" + r133);
+    L88:
+        int r71 = r3.size();
+        int r142 = 0;
+    L89:
+        if (r142 >= r71) goto L100;
+        cx3 r143 = (cx3) r3.get(r142);
+        if (r143.h() == true) goto L99;
+        if (r143.d() != r30) goto L99;
+        if (r143.f() == true) goto L99;
+        r3.remove(r142);
+        r111 = r143;
+        r110 = r134;
+        if (RecyclerView.Q0 == false) goto L101;
+        Log.d("RecyclerView", "getScrapOrHiddenOrCachedHolderForPosition(" + r30 + ") found match in cache: " + r143);
+        r111 = r143;
+        r110 = r134;
+    L99:
+        r142 = r142 + 1;
+        goto L89
+    L100:
+        r111 = r134;
+        r110 = r134;
+    L66:
+        r128 = r128 + 1;
+        r129 = r132;
+        goto L58
+    L67:
+        r134 = r129;
+        r133 = r129;
+        goto L68
+    L138:
+        r113 = r17;
+        r112 = r14;
+        goto L140
+    L39:
+        r8 = false;
+        r14 = r13;
+        r17 = r15;
+    L20:
+        r11 = r11 + 1;
+        goto L14
+    L22:
+        if (r4.z.o == false) goto L36;
+        int r144 = r4.r.i(r30, 0);
+        if (r144 <= 0) goto L36;
+        if (r144 >= r4.z.a()) goto L36;
+        long r145 = r4.z.b(r144);
+        int r146 = 0;
+    L28:
+        if (r146 >= r7) goto L36;
+        cx3 r147 = (cx3) ((ArrayList) this.e).get(r146);
+        if (r147.r() == true) goto L35;
+        r15 = null;
+        r16 = true;
+        if (r147.e != r145) goto L35;
+        r147.a(32);
+        r13 = r147;
+    L35:
+        r146 = r146 + 1;
+    L36:
+        r15 = null;
+        r16 = true;
+        r13 = null;
+        goto L37
+    L40:
+        r17 = null;
+        r16 = true;
+        r8 = false;
+        r14 = null;
+        goto L41
     }
 
-    public void l(cx3 cx3Var) {
-        if (cx3Var.o) {
-            ((ArrayList) this.e).remove(cx3Var);
-        } else {
-            ((ArrayList) this.d).remove(cx3Var);
-        }
-        cx3Var.n = null;
-        cx3Var.o = false;
-        cx3Var.j &= -33;
+    public void l(cx3 r2) {
+        if (r2.o == false) goto L5;
+        ((ArrayList) this.e).remove(r2);
+    L6:
+        r2.n = null;
+        r2.o = false;
+        r2.j &= -33;
+        return;
+    L5:
+        ((ArrayList) this.d).remove(r2);
+        goto L6
     }
 
     public void m() {
-        ArrayList arrayList = (ArrayList) this.f;
-        mw3 mw3Var = ((RecyclerView) this.h).A;
-        this.c = this.b + (mw3Var != null ? mw3Var.j : 0);
-        for (int size = arrayList.size() - 1; size >= 0 && arrayList.size() > this.c; size--) {
-            g(size);
-        }
+        ArrayList r0 = (ArrayList) this.f;
+        mw3 r1 = ((RecyclerView) this.h).A;
+        if (r1 == null) goto L5;
+        int r2 = r1.j;
+    L6:
+        this.c = this.b + r2;
+        int r3 = r0.size() - 1;
+    L7:
+        if (r3 < 0) goto L11;
+        if (r0.size() <= this.c) goto L14;
+        g(r3);
+        r3 = r3 - 1;
+        goto L7
+    L14:
+        return;
+    L11:
+        return;
+    L5:
+        r2 = 0;
+        goto L6
     }
 
-    public hm2(fg4 fg4Var, ei3 ei3Var, eo2 eo2Var, List list, CharSequence charSequence, int i, int i2, Bundle bundle) {
-        this.d = fg4Var;
-        this.e = ei3Var;
-        this.f = eo2Var;
-        list.getClass();
-        this.a = list;
-        this.g = charSequence;
-        this.b = i;
-        this.c = i2;
-        this.h = bundle == null ? Bundle.EMPTY : bundle;
+    public hm2(fg4 r1, ei3 r2, eo2 r3, List r4, CharSequence r5, int r6, int r7, Bundle r8) {
+        this.d = r1;
+        this.e = r2;
+        this.f = r3;
+        r4.getClass();
+        this.a = r4;
+        this.g = r5;
+        this.b = r6;
+        this.c = r7;
+        if (r8 != null) goto L6;
+        r8 = Bundle.EMPTY;
+    L6:
+        this.h = r8;
     }
 
     public hm2() {
@@ -1090,13 +1014,13 @@ public final class hm2 {
         this.h = Bundle.EMPTY;
     }
 
-    public hm2(RecyclerView recyclerView) {
-        this.h = recyclerView;
-        ArrayList arrayList = new ArrayList();
-        this.d = arrayList;
+    public hm2(RecyclerView r2) {
+        this.h = r2;
+        ArrayList r3 = new ArrayList();
+        this.d = r3;
         this.e = null;
         this.f = new ArrayList();
-        this.a = Collections.unmodifiableList(arrayList);
+        this.a = Collections.unmodifiableList(r3);
         this.b = 2;
         this.c = 2;
     }

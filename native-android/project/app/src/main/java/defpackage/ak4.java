@@ -22,73 +22,79 @@ public final class ak4 {
         this.j = new yx0();
     }
 
-    public final yx0 a(double d, double d2, long j) {
-        double dSin;
-        double dCos;
-        if (!this.c) {
-            if (this.i == Double.MAX_VALUE) {
-                kf2.o("Error: Final position of the spring must be set before the animation starts");
-                return null;
-            }
-            double d3 = this.b;
-            if (d3 > 1.0d) {
-                double d4 = this.a;
-                this.f = (Math.sqrt((d3 * d3) - 1.0d) * d4) + ((-d3) * d4);
-                double d5 = this.b;
-                double d6 = this.a;
-                this.g = ((-d5) * d6) - (Math.sqrt((d5 * d5) - 1.0d) * d6);
-            } else if (d3 >= 0.0d && d3 < 1.0d) {
-                this.h = Math.sqrt(1.0d - (d3 * d3)) * this.a;
-            }
-            this.c = true;
-        }
-        double d7 = j / 1000.0d;
-        double d8 = d - this.i;
-        double d9 = this.b;
-        if (d9 > 1.0d) {
-            double d10 = this.g;
-            double d11 = ((d10 * d8) - d2) / (d10 - this.f);
-            double d12 = d8 - d11;
-            dSin = (Math.pow(2.718281828459045d, this.f * d7) * d11) + (Math.pow(2.718281828459045d, d10 * d7) * d12);
-            double d13 = this.g;
-            double dPow = Math.pow(2.718281828459045d, d13 * d7) * d12 * d13;
-            double d14 = this.f;
-            dCos = (Math.pow(2.718281828459045d, d14 * d7) * d11 * d14) + dPow;
-        } else if (d9 == 1.0d) {
-            double d15 = this.a;
-            double d16 = (d15 * d8) + d2;
-            double d17 = (d16 * d7) + d8;
-            double dPow2 = Math.pow(2.718281828459045d, (-d15) * d7) * d17;
-            double dPow3 = Math.pow(2.718281828459045d, (-this.a) * d7) * d17;
-            double d18 = -this.a;
-            dCos = (Math.pow(2.718281828459045d, d18 * d7) * d16) + (dPow3 * d18);
-            dSin = dPow2;
-        } else {
-            double d19 = 1.0d / this.h;
-            double d20 = this.a;
-            double d21 = ((d9 * d20 * d8) + d2) * d19;
-            dSin = ((Math.sin(this.h * d7) * d21) + (Math.cos(this.h * d7) * d8)) * Math.pow(2.718281828459045d, (-d9) * d20 * d7);
-            double d22 = this.a;
-            double d23 = this.b;
-            double d24 = (-d22) * dSin * d23;
-            double dPow4 = Math.pow(2.718281828459045d, (-d23) * d22 * d7);
-            double d25 = this.h;
-            double dSin2 = Math.sin(d25 * d7) * (-d25) * d8;
-            double d26 = this.h;
-            dCos = (((Math.cos(d26 * d7) * d21 * d26) + dSin2) * dPow4) + d24;
-        }
-        float f = (float) (dSin + this.i);
-        yx0 yx0Var = this.j;
-        yx0Var.a = f;
-        yx0Var.b = (float) dCos;
-        return yx0Var;
+    public final yx0 a(double r17, double r19, long r21) {
+        if (this.c == false) goto L6;
+    L16:
+        double r4 = r21 / 1000.0d;
+        double r6 = r17 - this.i;
+        double r8 = this.b;
+        if (r8 <= 1.0d) goto L19;
+        double r1 = this.g;
+        double r9 = ((r1 * r6) - r19) / (r1 - this.f);
+        double r7 = r6 - r9;
+        double r12 = (Math.pow(2.718281828459045d, this.f * r4) * r9) + (Math.pow(2.718281828459045d, r1 * r4) * r7);
+        double r2 = this.g;
+        double r3 = Math.pow(2.718281828459045d, r2 * r4) * (r7 * r2);
+        double r10 = this.f;
+        double r5 = (Math.pow(2.718281828459045d, r10 * r4) * (r9 * r10)) + r3;
+    L22:
+        float r11 = (float) (r12 + this.i);
+        yx0 r0 = this.j;
+        r0.a = r11;
+        r0.b = (float) r5;
+        return r0;
+    L19:
+        if (r8 != 1.0d) goto L21;
+        double r13 = this.a;
+        double r14 = (r13 * r6) + r19;
+        double r15 = (r14 * r4) + r6;
+        double r16 = Math.pow(2.718281828459045d, (-r13) * r4) * r15;
+        double r18 = Math.pow(2.718281828459045d, (-this.a) * r4) * r15;
+        double r110 = -this.a;
+        r5 = (Math.pow(2.718281828459045d, r110 * r4) * r14) + (r18 * r110);
+        r12 = r16;
+        goto L22
+    L21:
+        double r20 = 1.0d / this.h;
+        double r111 = this.a;
+        double r112 = (((r8 * r111) * r6) + r19) * r20;
+        r12 = ((Math.sin(this.h * r4) * r112) + (Math.cos(this.h * r4) * r6)) * Math.pow(2.718281828459045d, ((-r8) * r111) * r4);
+        double r22 = this.a;
+        double r113 = this.b;
+        double r23 = ((-r22) * r12) * r113;
+        double r24 = Math.pow(2.718281828459045d, ((-r113) * r22) * r4);
+        double r114 = this.h;
+        double r25 = Math.sin(r114 * r4) * ((-r114) * r6);
+        double r26 = this.h;
+        r5 = (((Math.cos(r26 * r4) * (r112 * r26)) + r25) * r24) + r23;
+        goto L22
+    L6:
+        if (this.i == Double.MAX_VALUE) goto L24;
+        double r27 = this.b;
+        if (r27 <= 1.0d) goto L11;
+        double r28 = this.a;
+        this.f = (Math.sqrt((r27 * r27) - 1.0d) * r28) + ((-r27) * r28);
+        double r29 = this.b;
+        double r30 = this.a;
+        this.g = ((-r29) * r30) - (Math.sqrt((r29 * r29) - 1.0d) * r30);
+    L15:
+        this.c = true;
+        goto L16
+    L11:
+        if (r27 < 0.0d) goto L15;
+        if (r27 >= 1.0d) goto L15;
+        this.h = Math.sqrt(1.0d - (r27 * r27)) * this.a;
+        goto L15
+    L24:
+        kf2.o("Error: Final position of the spring must be set before the animation starts");
+        return null;
     }
 
-    public ak4(float f) {
+    public ak4(float r3) {
         this.a = Math.sqrt(1500.0d);
         this.b = 0.5d;
         this.c = false;
         this.j = new yx0();
-        this.i = f;
+        this.i = r3;
     }
 }

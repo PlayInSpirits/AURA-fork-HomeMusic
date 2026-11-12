@@ -30,193 +30,222 @@ public final class gv4 implements fj0 {
     public final int n;
     public final Drawable o;
 
-    public gv4(Toolbar toolbar, boolean z) {
-        Drawable drawable;
+    public gv4(Toolbar r8, boolean r9) {
         this.n = 0;
-        this.a = toolbar;
-        this.h = toolbar.getTitle();
-        this.i = toolbar.getSubtitle();
-        this.g = this.h != null;
-        this.f = toolbar.getNavigationIcon();
-        jv3 jv3VarF = jv3.f(toolbar.getContext(), null, st3.a, R.attr.actionBarStyle);
-        TypedArray typedArray = (TypedArray) jv3VarF.o;
-        int i = 15;
-        this.o = jv3VarF.c(15);
-        if (z) {
-            CharSequence text = typedArray.getText(27);
-            if (!TextUtils.isEmpty(text)) {
-                this.g = true;
-                this.h = text;
-                if ((this.b & 8) != 0) {
-                    toolbar.setTitle(text);
-                    if (this.g) {
-                        j65.p(toolbar.getRootView(), text);
-                    }
-                }
-            }
-            CharSequence text2 = typedArray.getText(25);
-            if (!TextUtils.isEmpty(text2)) {
-                this.i = text2;
-                if ((this.b & 8) != 0) {
-                    toolbar.setSubtitle(text2);
-                }
-            }
-            Drawable drawableC = jv3VarF.c(20);
-            if (drawableC != null) {
-                this.e = drawableC;
-                d();
-            }
-            Drawable drawableC2 = jv3VarF.c(17);
-            if (drawableC2 != null) {
-                this.d = drawableC2;
-                d();
-            }
-            if (this.f == null && (drawable = this.o) != null) {
-                this.f = drawable;
-                if ((this.b & 4) != 0) {
-                    toolbar.setNavigationIcon(drawable);
-                } else {
-                    toolbar.setNavigationIcon((Drawable) null);
-                }
-            }
-            a(typedArray.getInt(10, 0));
-            int resourceId = typedArray.getResourceId(9, 0);
-            if (resourceId != 0) {
-                View viewInflate = LayoutInflater.from(toolbar.getContext()).inflate(resourceId, (ViewGroup) toolbar, false);
-                View view = this.c;
-                if (view != null && (this.b & 16) != 0) {
-                    toolbar.removeView(view);
-                }
-                this.c = viewInflate;
-                if (viewInflate != null && (this.b & 16) != 0) {
-                    toolbar.addView(viewInflate);
-                }
-                a(this.b | 16);
-            }
-            int layoutDimension = typedArray.getLayoutDimension(13, 0);
-            if (layoutDimension > 0) {
-                ViewGroup.LayoutParams layoutParams = toolbar.getLayoutParams();
-                layoutParams.height = layoutDimension;
-                toolbar.setLayoutParams(layoutParams);
-            }
-            int dimensionPixelOffset = typedArray.getDimensionPixelOffset(7, -1);
-            int dimensionPixelOffset2 = typedArray.getDimensionPixelOffset(3, -1);
-            if (dimensionPixelOffset >= 0 || dimensionPixelOffset2 >= 0) {
-                int iMax = Math.max(dimensionPixelOffset, 0);
-                int iMax2 = Math.max(dimensionPixelOffset2, 0);
-                toolbar.d();
-                toolbar.G.a(iMax, iMax2);
-            }
-            int resourceId2 = typedArray.getResourceId(28, 0);
-            if (resourceId2 != 0) {
-                Context context = toolbar.getContext();
-                toolbar.y = resourceId2;
-                mh mhVar = toolbar.o;
-                if (mhVar != null) {
-                    mhVar.setTextAppearance(context, resourceId2);
-                }
-            }
-            int resourceId3 = typedArray.getResourceId(26, 0);
-            if (resourceId3 != 0) {
-                Context context2 = toolbar.getContext();
-                toolbar.z = resourceId3;
-                mh mhVar2 = toolbar.p;
-                if (mhVar2 != null) {
-                    mhVar2.setTextAppearance(context2, resourceId3);
-                }
-            }
-            int resourceId4 = typedArray.getResourceId(22, 0);
-            if (resourceId4 != 0) {
-                toolbar.setPopupTheme(resourceId4);
-            }
-        } else {
-            if (toolbar.getNavigationIcon() != null) {
-                this.o = toolbar.getNavigationIcon();
-            } else {
-                i = 11;
-            }
-            this.b = i;
-        }
-        jv3VarF.g();
-        if (R.string.abc_action_bar_up_description != this.n) {
-            this.n = R.string.abc_action_bar_up_description;
-            if (TextUtils.isEmpty(toolbar.getNavigationContentDescription())) {
-                b(this.n);
-            }
-        }
-        this.j = toolbar.getNavigationContentDescription();
-        toolbar.setNavigationOnClickListener(new xp2(this));
+        this.a = r8;
+        this.h = r8.getTitle();
+        this.i = r8.getSubtitle();
+        if (this.h == null) goto L5;
+        boolean r1 = true;
+    L6:
+        this.g = r1;
+        this.f = r8.getNavigationIcon();
+        jv3 r2 = jv3.f(r8.getContext(), null, st3.a, R.attr.actionBarStyle);
+        TypedArray r3 = (TypedArray) r2.o;
+        int r4 = 15;
+        this.o = r2.c(15);
+        if (r9 == false) goto L68;
+        CharSequence r10 = r3.getText(27);
+        if (TextUtils.isEmpty(r10) == true) goto L15;
+        this.g = true;
+        this.h = r10;
+        if ((this.b & 8) == 0) goto L15;
+        r8.setTitle(r10);
+        if (this.g == false) goto L15;
+        j65.p(r8.getRootView(), r10);
+    L15:
+        CharSequence r11 = r3.getText(25);
+        if (TextUtils.isEmpty(r11) == true) goto L20;
+        this.i = r11;
+        if ((this.b & 8) == 0) goto L20;
+        r8.setSubtitle(r11);
+    L20:
+        Drawable r12 = r2.c(20);
+        if (r12 == null) goto L23;
+        this.e = r12;
+        d();
+    L23:
+        Drawable r13 = r2.c(17);
+        if (r13 == null) goto L27;
+        this.d = r13;
+        d();
+    L27:
+        if (this.f != null) goto L34;
+        Drawable r14 = this.o;
+        if (r14 == null) goto L34;
+        this.f = r14;
+        if ((this.b & 4) == 0) goto L33;
+        r8.setNavigationIcon(r14);
+        goto L34
+    L33:
+        r8.setNavigationIcon(null);
+    L34:
+        a(r3.getInt(10, 0));
+        int r15 = r3.getResourceId(9, 0);
+        if (r15 == 0) goto L47;
+        View r16 = LayoutInflater.from(r8.getContext()).inflate(r15, r8, false);
+        View r5 = this.c;
+        if (r5 != null) goto L39;
+    L41:
+        this.c = r16;
+        if (r16 != null) goto L44;
+    L46:
+        a(this.b | 16);
+        goto L47
+    L44:
+        if ((this.b & 16) == 0) goto L46;
+        r8.addView(r16);
+        goto L46
+    L39:
+        if ((this.b & 16) == 0) goto L41;
+        r8.removeView(r5);
+    L47:
+        int r17 = r3.getLayoutDimension(13, 0);
+        if (r17 <= 0) goto L50;
+        ViewGroup.LayoutParams r6 = r8.getLayoutParams();
+        r6.height = r17;
+        r8.setLayoutParams(r6);
+    L50:
+        int r18 = r3.getDimensionPixelOffset(7, -1);
+        int r7 = r3.getDimensionPixelOffset(3, -1);
+        if (r18 >= 0) goto L53;
+        if (r7 >= 0) goto L53;
+    L54:
+        int r19 = r3.getResourceId(28, 0);
+        if (r19 == 0) goto L59;
+        Context r20 = r8.getContext();
+        r8.y = r19;
+        mh r21 = r8.o;
+        if (r21 == null) goto L59;
+        r21.setTextAppearance(r20, r19);
+    L59:
+        int r22 = r3.getResourceId(26, 0);
+        if (r22 == 0) goto L64;
+        Context r23 = r8.getContext();
+        r8.z = r22;
+        mh r24 = r8.p;
+        if (r24 == null) goto L64;
+        r24.setTextAppearance(r23, r22);
+    L64:
+        int r25 = r3.getResourceId(22, 0);
+        if (r25 == 0) goto L72;
+        r8.setPopupTheme(r25);
+    L72:
+        r2.g();
+        if (R.string.abc_action_bar_up_description == this.n) goto L78;
+        this.n = R.string.abc_action_bar_up_description;
+        if (TextUtils.isEmpty(r8.getNavigationContentDescription()) == false) goto L78;
+        b(this.n);
+    L78:
+        this.j = r8.getNavigationContentDescription();
+        r8.setNavigationOnClickListener(new xp2(this));
+        return;
+    L53:
+        int r26 = Math.max(r18, 0);
+        int r27 = Math.max(r7, 0);
+        r8.d();
+        r8.G.a(r26, r27);
+        goto L54
+    L68:
+        if (r8.getNavigationIcon() == null) goto L70;
+        this.o = r8.getNavigationIcon();
+    L71:
+        this.b = r4;
+        goto L72
+    L70:
+        r4 = 11;
+        goto L71
+    L5:
+        r1 = false;
+        goto L6
     }
 
-    public final void a(int i) {
-        View view;
-        int i2 = this.b ^ i;
-        this.b = i;
-        if (i2 != 0) {
-            int i3 = i2 & 4;
-            Toolbar toolbar = this.a;
-            if (i3 != 0) {
-                if ((i & 4) != 0) {
-                    c();
-                }
-                if ((this.b & 4) != 0) {
-                    Drawable drawable = this.f;
-                    if (drawable == null) {
-                        drawable = this.o;
-                    }
-                    toolbar.setNavigationIcon(drawable);
-                } else {
-                    toolbar.setNavigationIcon((Drawable) null);
-                }
-            }
-            if ((i2 & 3) != 0) {
-                d();
-            }
-            if ((i2 & 8) != 0) {
-                if ((i & 8) != 0) {
-                    toolbar.setTitle(this.h);
-                    toolbar.setSubtitle(this.i);
-                } else {
-                    toolbar.setTitle((CharSequence) null);
-                    toolbar.setSubtitle((CharSequence) null);
-                }
-            }
-            if ((i2 & 16) == 0 || (view = this.c) == null) {
-                return;
-            }
-            if ((i & 16) != 0) {
-                toolbar.addView(view);
-            } else {
-                toolbar.removeView(view);
-            }
-        }
-    }
-
-    public final void b(int i) {
-        this.j = i == 0 ? null : this.a.getContext().getString(i);
+    public final void a(int r5) {
+        int r0 = this.b ^ r5;
+        this.b = r5;
+        if (r0 == 0) goto L36;
+        int r1 = r0 & 4;
+        Toolbar r3 = this.a;
+        if (r1 == 0) goto L18;
+        if ((r5 & 4) == 0) goto L10;
         c();
+    L10:
+        if ((this.b & 4) == 0) goto L16;
+        Drawable r2 = this.f;
+        if (r2 != null) goto L15;
+        r2 = this.o;
+    L15:
+        r3.setNavigationIcon(r2);
+        goto L18
+    L16:
+        r3.setNavigationIcon(null);
+    L18:
+        if ((r0 & 3) == 0) goto L21;
+        d();
+    L21:
+        if ((r0 & 8) == 0) goto L27;
+        if ((r5 & 8) == 0) goto L25;
+        r3.setTitle(this.h);
+        r3.setSubtitle(this.i);
+        goto L27
+    L25:
+        r3.setTitle(null);
+        r3.setSubtitle(null);
+    L27:
+        if ((r0 & 16) == 0) goto L37;
+        View r4 = this.c;
+        if (r4 != null) goto L31;
+        return;
+    L31:
+        if ((r5 & 16) == 0) goto L34;
+        r3.addView(r4);
+        return;
+    L34:
+        r3.removeView(r4);
+        return;
+    L37:
+        return;
+    }
+
+    public final void b(int r2) {
+        if (r2 != 0) goto L4;
+        String r3 = null;
+    L5:
+        this.j = r3;
+        c();
+        return;
+    L4:
+        r3 = this.a.getContext().getString(r2);
+        goto L5
     }
 
     public final void c() {
-        if ((this.b & 4) != 0) {
-            boolean zIsEmpty = TextUtils.isEmpty(this.j);
-            Toolbar toolbar = this.a;
-            if (zIsEmpty) {
-                toolbar.setNavigationContentDescription(this.n);
-            } else {
-                toolbar.setNavigationContentDescription(this.j);
-            }
-        }
+        if ((this.b & 4) == 0) goto L10;
+        boolean r0 = TextUtils.isEmpty(this.j);
+        Toolbar r1 = this.a;
+        if (r0 == false) goto L8;
+        r1.setNavigationContentDescription(this.n);
+        return;
+    L8:
+        r1.setNavigationContentDescription(this.j);
+        return;
     }
 
     public final void d() {
-        Drawable drawable;
-        int i = this.b;
-        if ((i & 2) == 0) {
-            drawable = null;
-        } else if ((i & 1) == 0 || (drawable = this.e) == null) {
-            drawable = this.d;
-        }
-        this.a.setLogo(drawable);
+        int r0 = this.b;
+        if ((r0 & 2) != 0) goto L5;
+        Drawable r1 = null;
+    L12:
+        this.a.setLogo(r1);
+        return;
+    L5:
+        if ((r0 & 1) == 0) goto L10;
+        r1 = this.e;
+        if (r1 != null) goto L12;
+        r1 = this.d;
+        goto L12
+    L10:
+        r1 = this.d;
+        goto L12
     }
 }

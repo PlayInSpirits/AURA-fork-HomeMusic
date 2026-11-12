@@ -15,89 +15,100 @@ public final class ky4 extends fp {
     public long o;
 
     @Override // defpackage.fp
-    public final gm a(gm gmVar) throws AudioProcessor$UnhandledAudioFormatException {
-        if (!f35.L(gmVar.c)) {
-            throw new AudioProcessor$UnhandledAudioFormatException(gmVar);
-        }
+    public final gm a(gm r2) {
+        if (f35.L(r2.c) == false) goto L13;
         this.k = true;
-        return (this.i == 0 && this.j == 0) ? gm.e : gmVar;
+        if (this.i == 0) goto L7;
+    L11:
+        return r2;
+    L7:
+        if (this.j != 0) goto L11;
+        return gm.e;
+    L13:
+        throw new AudioProcessor$UnhandledAudioFormatException(r2);
     }
 
     @Override // defpackage.fp, defpackage.im
     public final boolean c() {
-        return super.c() && this.n == 0;
+        if (super.c() == true) goto L5;
+        return false;
+    L5:
+        if (this.n != 0) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     @Override // defpackage.fp, defpackage.im
     public final ByteBuffer d() {
-        int i;
-        if (super.c() && (i = this.n) > 0) {
-            l(i).put(this.m, 0, this.n).flip();
-            this.n = 0;
-        }
+        if (super.c() == false) goto L8;
+        int r0 = this.n;
+        if (r0 <= 0) goto L8;
+        l(r0).put(this.m, 0, this.n).flip();
+        this.n = 0;
+    L8:
         return super.d();
     }
 
     @Override // defpackage.im
-    public final void e(ByteBuffer byteBuffer) {
-        int iPosition = byteBuffer.position();
-        int iLimit = byteBuffer.limit();
-        int i = iLimit - iPosition;
-        if (i == 0) {
-            return;
-        }
-        int iMin = Math.min(i, this.l);
-        this.o += (long) (iMin / this.b.d);
-        this.l -= iMin;
-        byteBuffer.position(iPosition + iMin);
-        if (this.l > 0) {
-            return;
-        }
-        int i2 = i - iMin;
-        int length = (this.n + i2) - this.m.length;
-        ByteBuffer byteBufferL = l(length);
-        int iJ = f35.j(length, 0, this.n);
-        byteBufferL.put(this.m, 0, iJ);
-        int iJ2 = f35.j(length - iJ, 0, i2);
-        byteBuffer.limit(byteBuffer.position() + iJ2);
-        byteBufferL.put(byteBuffer);
-        byteBuffer.limit(iLimit);
-        int i3 = i2 - iJ2;
-        int i4 = this.n - iJ;
-        this.n = i4;
-        byte[] bArr = this.m;
-        System.arraycopy(bArr, iJ, bArr, 0, i4);
-        byteBuffer.get(this.m, this.n, i3);
-        this.n += i3;
-        byteBufferL.flip();
+    public final void e(ByteBuffer r9) {
+        int r0 = r9.position();
+        int r1 = r9.limit();
+        int r2 = r1 - r0;
+        if (r2 == 0) goto L10;
+        int r3 = Math.min(r2, this.l);
+        this.o += (long) (r3 / this.b.d);
+        this.l -= r3;
+        r9.position(r0 + r3);
+        if (this.l <= 0) goto L8;
+        return;
+    L8:
+        int r4 = r2 - r3;
+        int r5 = (this.n + r4) - this.m.length;
+        ByteBuffer r6 = l(r5);
+        int r7 = f35.j(r5, 0, this.n);
+        r6.put(this.m, 0, r7);
+        int r8 = f35.j(r5 - r7, 0, r4);
+        r9.limit(r9.position() + r8);
+        r6.put(r9);
+        r9.limit(r1);
+        int r10 = r4 - r8;
+        int r11 = this.n - r7;
+        this.n = r11;
+        byte[] r12 = this.m;
+        System.arraycopy(r12, r7, r12, 0, r11);
+        r9.get(this.m, this.n, r10);
+        this.n += r10;
+        r6.flip();
+        return;
     }
 
     @Override // defpackage.im
-    public final long h(long j) {
-        return Math.max(0L, j - f35.Y(this.b.a, this.j + this.i));
+    public final long h(long r3) {
+        return Math.max(0, r3 - f35.Y(this.b.a, this.j + this.i));
     }
 
     @Override // defpackage.fp
     public final void i() {
-        if (this.k) {
-            this.k = false;
-            int i = this.j;
-            int i2 = this.b.d;
-            this.m = new byte[i * i2];
-            this.l = this.i * i2;
-        }
+        if (this.k == false) goto L5;
+        this.k = false;
+        int r0 = this.j;
+        int r2 = this.b.d;
+        this.m = new byte[r0 * r2];
+        this.l = this.i * r2;
+    L5:
         this.n = 0;
     }
 
     @Override // defpackage.fp
     public final void j() {
-        if (this.k) {
-            int i = this.n;
-            if (i > 0) {
-                this.o += (long) (i / this.b.d);
-            }
-            this.n = 0;
-        }
+        if (this.k == false) goto L9;
+        int r0 = this.n;
+        if (r0 <= 0) goto L7;
+        this.o += (long) (r0 / this.b.d);
+    L7:
+        this.n = 0;
+        return;
     }
 
     @Override // defpackage.fp

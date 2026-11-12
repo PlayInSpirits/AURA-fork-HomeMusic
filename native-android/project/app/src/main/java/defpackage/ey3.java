@@ -1,6 +1,6 @@
 package defpackage;
 
-import com.bumptech.glide.Registry$MissingComponentException;
+import com.bumptech.glide.Registry$NoImageHeaderParserException;
 import com.bumptech.glide.Registry$NoModelLoaderAvailableException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,183 +20,222 @@ public final class ey3 {
     public final zh0 e;
     public final c52 f;
     public final xv1 g;
-    public final qr2 h = new qr2(13);
-    public final gd2 i = new gd2();
+    public final qr2 h;
+    public final gd2 i;
     public final i61 j;
 
     public ey3() {
-        i61 i61Var = new i61(new ko3(20), new y41(4), new y41(5), 5);
-        this.j = i61Var;
-        tv1 tv1Var = na4.r;
-        na4 na4Var = new na4();
-        na4Var.n = new ArrayList();
-        na4Var.p = new HashSet();
-        na4Var.q = i61Var;
-        na4Var.o = tv1Var;
-        rf2 rf2Var = new rf2();
-        int i = 0;
-        rf2Var.o = new om1(12, (byte) 0);
-        rf2Var.n = na4Var;
-        this.a = rf2Var;
+        this.h = new qr2(13);
+        this.i = new gd2();
+        i61 r4 = new i61(new ko3(20), new y41(4), new y41(5), 5);
+        this.j = r4;
+        tv1 r2 = na4.r;
+        na4 r1 = new na4();
+        r1.n = new ArrayList();
+        r1.p = new HashSet();
+        r1.q = r4;
+        r1.o = r2;
+        rf2 r0 = new rf2();
+        int r5 = 0;
+        r0.o = new om1(12, (byte) 0);
+        r0.n = r1;
+        this.a = r0;
         this.b = new hg3(16);
         this.c = new rf2(19);
         this.d = new b52();
         this.e = new zh0(0);
-        c52 c52Var = new c52();
-        c52Var.a = new ArrayList();
-        this.f = c52Var;
+        c52 r3 = new c52();
+        r3.a = new ArrayList();
+        this.f = r3;
         this.g = new xv1(0);
-        List listAsList = Arrays.asList("Animation", "Bitmap", "BitmapDrawable");
-        ArrayList arrayList = new ArrayList(listAsList.size());
-        arrayList.add("legacy_prepend_all");
-        Iterator it = listAsList.iterator();
-        while (it.hasNext()) {
-            arrayList.add((String) it.next());
-        }
-        arrayList.add("legacy_append");
-        rf2 rf2Var2 = this.c;
-        synchronized (rf2Var2) {
-            try {
-                ArrayList arrayList2 = new ArrayList((ArrayList) rf2Var2.n);
-                ((ArrayList) rf2Var2.n).clear();
-                int size = arrayList.size();
-                int i2 = 0;
-                while (i2 < size) {
-                    Object obj = arrayList.get(i2);
-                    i2++;
-                    ((ArrayList) rf2Var2.n).add((String) obj);
-                }
-                int size2 = arrayList2.size();
-                while (i < size2) {
-                    Object obj2 = arrayList2.get(i);
-                    i++;
-                    String str = (String) obj2;
-                    if (!arrayList.contains(str)) {
-                        ((ArrayList) rf2Var2.n).add(str);
-                    }
-                }
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+        List r6 = Arrays.asList(new String[]{"Animation", "Bitmap", "BitmapDrawable"});
+        ArrayList r7 = new ArrayList(r6.size());
+        r7.add("legacy_prepend_all");
+        Iterator r8 = r6.iterator();
+    L4:
+        if (r8.hasNext() == false) goto L6;
+        r7.add((String) r8.next());
+        goto L4
+    L6:
+        r7.add("legacy_append");
+        rf2 r9 = this.c;
+        monitor-enter(r9);
+        ArrayList r10 = new ArrayList((ArrayList) r9.n);     // Catch: Throwable -> L11
+        ((ArrayList) r9.n).clear();     // Catch: Throwable -> L11
+        int r11 = r7.size();     // Catch: Throwable -> L11
+        int r12 = 0;
+    L9:
+        if (r12 >= r11) goto L13;
+        Object r13 = r7.get(r12);     // Catch: Throwable -> L11
+        r12 = r12 + 1;     // Catch: Throwable -> L11
+        ((ArrayList) r9.n).add((String) r13);     // Catch: Throwable -> L11
+        goto L9
+    L13:
+        int r14 = r10.size();     // Catch: Throwable -> L11
+    L14:
+        if (r5 >= r14) goto L19;
+        Object r15 = r10.get(r5);     // Catch: Throwable -> L11
+        r5 = r5 + 1;     // Catch: Throwable -> L11
+        String r16 = (String) r15;     // Catch: Throwable -> L11
+        if (r7.contains(r16) == true) goto L14;
+        ((ArrayList) r9.n).add(r16);     // Catch: Throwable -> L11
+        goto L14
+    L19:
+        monitor-exit(r9);
+        return;
+    L11:
+        th = move-exception;
+        throw th;
     }
 
-    public final void a(Class cls, c11 c11Var) {
-        hg3 hg3Var = this.b;
-        synchronized (hg3Var) {
-            ((ArrayList) hg3Var.o).add(new d11(cls, c11Var));
-        }
+    public final void a(Class r3, c11 r4) {
+        hg3 r2 = this.b;
+        monitor-enter(r2);
+        ((ArrayList) r2.o).add(new d11(r3, r4));     // Catch: Throwable -> L7
+        monitor-exit(r2);
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
-    public final void b(Class cls, w04 w04Var) {
-        b52 b52Var = this.d;
-        synchronized (b52Var) {
-            b52Var.a.add(new x04(cls, w04Var));
-        }
+    public final void b(Class r3, w04 r4) {
+        b52 r2 = this.d;
+        monitor-enter(r2);
+        r2.a.add(new x04(r3, r4));     // Catch: Throwable -> L7
+        monitor-exit(r2);
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
-    public final void c(Class cls, Class cls2, vw2 vw2Var) {
-        rf2 rf2Var = this.a;
-        synchronized (rf2Var) {
-            ((na4) rf2Var.n).e(cls, cls2, vw2Var);
-            ((HashMap) ((om1) rf2Var.o).o).clear();
-        }
+    public final void c(Class r2, Class r3, vw2 r4) {
+        rf2 r1 = this.a;
+        monitor-enter(r1);
+        ((na4) r1.n).e(r2, r3, r4);     // Catch: Throwable -> L7
+        ((HashMap) ((om1) r1.o).o).clear();     // Catch: Throwable -> L7
+        monitor-exit(r1);
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
-    public final void d(String str, Class cls, Class cls2, t04 t04Var) {
-        rf2 rf2Var = this.c;
-        synchronized (rf2Var) {
-            rf2Var.d(str).add(new u04(cls, cls2, t04Var));
-        }
+    public final void d(String r2, Class r3, Class r4, t04 r5) {
+        rf2 r1 = this.c;
+        monitor-enter(r1);
+        r1.d(r2).add(new u04(r3, r4, r5));     // Catch: Throwable -> L7
+        monitor-exit(r1);
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
     public final ArrayList e() {
-        ArrayList arrayList;
-        xv1 xv1Var = this.g;
-        synchronized (xv1Var) {
-            arrayList = xv1Var.a;
-        }
-        if (arrayList.isEmpty()) {
-            throw new Registry$MissingComponentException() { // from class: com.bumptech.glide.Registry$NoImageHeaderParserException
-            };
-        }
-        return arrayList;
+        xv1 r1 = this.g;
+        monitor-enter(r1);
+        ArrayList r0 = r1.a;     // Catch: Throwable -> L11
+        monitor-exit(r1);
+        if (r0.isEmpty() == true) goto L10;
+        return r0;
+    L10:
+        throw new Registry$NoImageHeaderParserException();
+    L11:
+        th = move-exception;
+        throw th;
     }
 
-    public final List f(Object obj) {
-        List listUnmodifiableList;
-        rf2 rf2Var = this.a;
-        rf2Var.getClass();
-        Class<?> cls = obj.getClass();
-        synchronized (rf2Var) {
-            ww2 ww2Var = (ww2) ((HashMap) ((om1) rf2Var.o).o).get(cls);
-            listUnmodifiableList = ww2Var == null ? null : ww2Var.a;
-            if (listUnmodifiableList == null) {
-                listUnmodifiableList = Collections.unmodifiableList(((na4) rf2Var.n).h(cls));
-                if (((ww2) ((HashMap) ((om1) rf2Var.o).o).put(cls, new ww2(listUnmodifiableList))) != null) {
-                    throw new IllegalStateException("Already cached loaders for model: " + cls);
-                }
-            }
-        }
-        if (listUnmodifiableList.isEmpty()) {
-            throw new Registry$NoModelLoaderAvailableException("Failed to find any ModelLoaders registered for model class: " + obj.getClass());
-        }
-        int size = listUnmodifiableList.size();
-        List arrayList = Collections.EMPTY_LIST;
-        boolean z = true;
-        for (int i = 0; i < size; i++) {
-            uw2 uw2Var = (uw2) listUnmodifiableList.get(i);
-            if (uw2Var.a(obj)) {
-                if (z) {
-                    arrayList = new ArrayList(size - i);
-                    z = false;
-                }
-                arrayList.add(uw2Var);
-            }
-        }
-        if (!arrayList.isEmpty()) {
-            return arrayList;
-        }
-        throw new Registry$NoModelLoaderAvailableException("Found ModelLoaders for model class: " + listUnmodifiableList + ", but none that handle this specific model instance: " + obj);
+    public final List f(Object r8) {
+        rf2 r7 = this.a;
+        r7.getClass();
+        Class<?> r0 = r8.getClass();
+        monitor-enter(r7);
+        ww2 r1 = (ww2) ((HashMap) ((om1) r7.o).o).get(r0);     // Catch: Throwable -> L14
+        if (r1 != null) goto L7;
+        List r2 = null;
+    L8:
+        if (r2 != null) goto L16;
+        r2 = Collections.unmodifiableList(((na4) r7.n).h(r0));     // Catch: Throwable -> L14
+        if (((ww2) ((HashMap) ((om1) r7.o).o).put(r0, new ww2(r2))) == null) goto L16;
+        throw new IllegalStateException("Already cached loaders for model: " + r0);     // Catch: Throwable -> L14
+    L16:
+        monitor-exit(r7);
+        if (r2.isEmpty() == true) goto L33;
+        int r9 = r2.size();
+        List r3 = Collections.EMPTY_LIST;
+        boolean r4 = true;
+        int r5 = 0;
+    L20:
+        if (r5 >= r9) goto L28;
+        uw2 r6 = (uw2) r2.get(r5);
+        if (r6.a(r8) == false) goto L26;
+        if (r4 == false) goto L25;
+        r3 = new ArrayList(r9 - r5);
+        r4 = false;
+    L25:
+        r3.add(r6);
+    L26:
+        r5 = r5 + 1;
+        goto L20
+    L28:
+        if (r3.isEmpty() == true) goto L31;
+        return r3;
+    L31:
+        throw new Registry$NoModelLoaderAvailableException("Found ModelLoaders for model class: " + r2 + ", but none that handle this specific model instance: " + r8);
+    L33:
+        throw new Registry$NoModelLoaderAvailableException("Failed to find any ModelLoaders registered for model class: " + r8.getClass());
+    L7:
+        r2 = r1.a;     // Catch: Throwable -> L14
+    L14:
+        th = move-exception;
+        throw th;
     }
 
-    public final yh0 g(Object obj) {
-        yh0 yh0VarB;
-        zh0 zh0Var = this.e;
-        synchronized (zh0Var) {
-            try {
-                h12.e(obj);
-                xh0 xh0Var = (xh0) ((HashMap) zh0Var.o).get(obj.getClass());
-                if (xh0Var == null) {
-                    for (xh0 xh0Var2 : ((HashMap) zh0Var.o).values()) {
-                        if (xh0Var2.a().isAssignableFrom(obj.getClass())) {
-                            xh0Var = xh0Var2;
-                            break;
-                        }
-                    }
-                }
-                if (xh0Var == null) {
-                    xh0Var = zh0.p;
-                }
-                yh0VarB = xh0Var.b(obj);
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return yh0VarB;
+    public final yh0 g(Object r6) {
+        zh0 r5 = this.e;
+        monitor-enter(r5);
+        h12.e(r6);     // Catch: Throwable -> L12
+        xh0 r0 = (xh0) ((HashMap) r5.o).get(r6.getClass());     // Catch: Throwable -> L12
+        if (r0 != null) goto L14;
+        Iterator r1 = ((HashMap) r5.o).values().iterator();     // Catch: Throwable -> L12
+    L8:
+        if (r1.hasNext() == false) goto L14;
+        xh0 r2 = (xh0) r1.next();     // Catch: Throwable -> L12
+        if (r2.a().isAssignableFrom(r6.getClass()) == false) goto L8;
+        r0 = r2;
+    L14:
+        if (r0 != null) goto L16;
+        r0 = zh0.p;     // Catch: Throwable -> L12
+    L16:
+        yh0 r7 = r0.b(r6);     // Catch: Throwable -> L12
+        monitor-exit(r5);
+        return r7;
+    L12:
+        th = move-exception;
+        throw th;
     }
 
-    public final void h(xh0 xh0Var) {
-        zh0 zh0Var = this.e;
-        synchronized (zh0Var) {
-            ((HashMap) zh0Var.o).put(xh0Var.a(), xh0Var);
-        }
+    public final void h(xh0 r3) {
+        zh0 r2 = this.e;
+        monitor-enter(r2);
+        ((HashMap) r2.o).put(r3.a(), r3);     // Catch: Throwable -> L7
+        monitor-exit(r2);
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
-    public final void i(Class cls, Class cls2, d14 d14Var) {
-        c52 c52Var = this.f;
-        synchronized (c52Var) {
-            c52Var.a.add(new nw4(cls, cls2, d14Var));
-        }
+    public final void i(Class r3, Class r4, d14 r5) {
+        c52 r2 = this.f;
+        monitor-enter(r2);
+        r2.a.add(new nw4(r3, r4, r5));     // Catch: Throwable -> L7
+        monitor-exit(r2);
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 }

@@ -13,71 +13,72 @@ public final class p21 extends ac1 {
     public boolean r;
     public final /* synthetic */ y10 s;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public p21(y10 y10Var, ej4 ej4Var, long j) {
-        super(ej4Var);
-        ej4Var.getClass();
-        this.s = y10Var;
-        this.n = j;
+    public p21(y10 r1, ej4 r2, long r3) {
+        r2.getClass();
+        this.s = r1;
+        super(r2);
+        this.n = r3;
         this.p = true;
-        if (j == 0) {
-            b(null);
-        }
+        if (r3 != 0) goto L6;
+        b(null);
+        return;
     }
 
-    public final IOException b(IOException iOException) {
-        if (this.q) {
-            return iOException;
-        }
+    public final IOException b(IOException r4) {
+        if (this.q == false) goto L5;
+        return r4;
+    L5:
         this.q = true;
-        if (iOException == null && this.p) {
-            this.p = false;
-        }
-        return this.s.a(true, false, iOException);
+        if (r4 != null) goto L11;
+        if (this.p == false) goto L11;
+        this.p = false;
+    L11:
+        return this.s.a(true, false, r4);
     }
 
     @Override // defpackage.ac1, java.io.Closeable, java.lang.AutoCloseable
-    public final void close() throws IOException {
-        if (this.r) {
-            return;
-        }
+    public final void close() {
+        if (this.r == false) goto L5;
+        return;
+    L5:
         this.r = true;
-        try {
-            super.close();
-            b(null);
-        } catch (IOException e) {
-            throw b(e);
-        }
+        super.close();     // Catch: IOException -> L8
+        b(null);     // Catch: IOException -> L8
+        return;
+    L8:
+        e = move-exception;
+        throw b(e);
     }
 
     @Override // defpackage.ac1, defpackage.ej4
-    public final long read(tv tvVar, long j) throws IOException {
-        tvVar.getClass();
-        if (this.r) {
-            kf2.o("closed");
-            return 0L;
-        }
-        try {
-            long j2 = delegate().read(tvVar, j);
-            if (this.p) {
-                this.p = false;
-            }
-            if (j2 == -1) {
-                b(null);
-                return -1L;
-            }
-            long j3 = this.o + j2;
-            long j4 = this.n;
-            if (j4 == -1 || j3 <= j4) {
-                this.o = j3;
-                if (j3 == j4) {
-                    b(null);
-                }
-                return j2;
-            }
-            throw new ProtocolException("expected " + j4 + " bytes but received " + j3);
-        } catch (IOException e) {
-            throw b(e);
-        }
+    public final long read(tv r9, long r10) {
+        r9.getClass();
+        if (this.r == false) goto L29;
+        kf2.o("closed");
+        return 0;
+    L29:
+        long r11 = delegate().read(r9, r10);     // Catch: IOException -> L7
+        if (this.p == false) goto L10;
+        this.p = false;     // Catch: IOException -> L7
+    L10:
+        if (r11 != (-1)) goto L14;
+        b(null);     // Catch: IOException -> L7
+        return -1;
+    L14:
+        long r4 = this.o + r11;
+        long r6 = this.n;
+        if (r6 != (-1)) goto L17;
+    L21:
+        this.o = r4;     // Catch: IOException -> L7
+        if (r4 != r6) goto L24;
+        b(null);     // Catch: IOException -> L7
+    L24:
+        return r11;
+    L17:
+        if (r4 <= r6) goto L21;
+        throw new ProtocolException("expected " + r6 + " bytes but received " + r4);     // Catch: IOException -> L7
+    L7:
+        e = move-exception;
+        throw b(e);
     }
 }

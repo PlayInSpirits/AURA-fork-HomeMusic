@@ -7,27 +7,26 @@ import android.os.Bundle;
 public class sj2 extends bq4 {
     public final /* synthetic */ pn2 s;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public sj2(pn2 pn2Var) {
-        super(pn2Var);
-        this.s = pn2Var;
+    public sj2(pn2 r1) {
+        this.s = r1;
+        super(r1);
     }
 
     @Override // defpackage.bq4
-    public final void p(String str, Bundle bundle) {
-        if (bundle == null) {
-            super.p(str, bundle);
-            return;
-        }
-        qj2 qj2Var = (qj2) this.o;
-        qj2Var.getClass();
-        qj2Var.notifyChildrenChanged(str, bundle);
+    public final void p(String r1, Bundle r2) {
+        if (r2 == null) goto L5;
+        qj2 r0 = (qj2) this.o;
+        r0.getClass();
+        r0.notifyChildrenChanged(r1, r2);
+        return;
+    L5:
+        super.p(r1, r2);
     }
 
     @Override // defpackage.bq4
     public final void r() {
-        rj2 rj2Var = new rj2(this, this.s);
-        this.o = rj2Var;
-        rj2Var.onCreate();
+        rj2 r0 = new rj2(this, this.s);
+        this.o = r0;
+        r0.onCreate();
     }
 }

@@ -6,14 +6,14 @@ public final class da2 {
     public r92 a;
     public w92 b;
 
-    public final void a(ba2 ba2Var, q92 q92Var) {
-        r92 r92VarA = q92Var.a();
-        r92 r92Var = this.a;
-        if (r92VarA.compareTo(r92Var) < 0) {
-            r92Var = r92VarA;
-        }
-        this.a = r92Var;
-        this.b.b(ba2Var, q92Var);
-        this.a = r92VarA;
+    public final void a(ba2 r4, q92 r5) {
+        r92 r0 = r5.a();
+        r92 r1 = this.a;
+        if (r0.compareTo(r1) >= 0) goto L5;
+        r1 = r0;
+    L5:
+        this.a = r1;
+        this.b.b(r4, r5);
+        this.a = r0;
     }
 }

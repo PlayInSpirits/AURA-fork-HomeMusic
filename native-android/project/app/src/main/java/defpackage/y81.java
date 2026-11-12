@@ -9,15 +9,14 @@ public final class y81 extends wd0 {
     public final /* synthetic */ z81 q;
     public int r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public y81(z81 z81Var, vd0 vd0Var) {
-        super(vd0Var);
-        this.q = z81Var;
+    public y81(z81 r1, vd0 r2) {
+        this.q = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.p = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.p = r2;
         this.r |= Integer.MIN_VALUE;
         return this.q.b(null, this);
     }

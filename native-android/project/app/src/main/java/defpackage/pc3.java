@@ -13,15 +13,15 @@ public final class pc3 {
     public final /* synthetic */ rv2 h;
     public final /* synthetic */ we0 i;
 
-    public pc3(lm0 lm0Var, ac3 ac3Var, float f, rv2 rv2Var, k82 k82Var, gf1 gf1Var, gs gsVar, rv2 rv2Var2, we0 we0Var) {
-        this.a = lm0Var;
-        this.b = ac3Var;
-        this.c = f;
-        this.d = rv2Var;
-        this.e = k82Var;
-        this.f = gf1Var;
-        this.g = gsVar;
-        this.h = rv2Var2;
-        this.i = we0Var;
+    public pc3(lm0 r1, ac3 r2, float r3, rv2 r4, k82 r5, gf1 r6, gs r7, rv2 r8, we0 r9) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
     }
 }

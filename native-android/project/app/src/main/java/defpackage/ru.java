@@ -8,10 +8,17 @@ public final class ru implements l83, g45 {
     public Object p;
     public Object q;
 
-    public ru(int i, long j) {
-        rr2.w(((m9) this.p) == null);
-        this.n = j;
-        this.o = j + ((long) i);
+    public ru(int r3, long r4) {
+        if (((m9) this.p) != null) goto L5;
+        boolean r0 = true;
+    L6:
+        rr2.w(r0);
+        this.n = r4;
+        this.o = r4 + ((long) r3);
+        return;
+    L5:
+        r0 = false;
+        goto L6
     }
 
     @Override // defpackage.g45
@@ -20,70 +27,85 @@ public final class ru implements l83, g45 {
     }
 
     @Override // defpackage.l83
-    public long b(l51 l51Var) {
-        long j = this.o;
-        if (j < 0) {
-            return -1L;
-        }
-        long j2 = -(j + 2);
-        this.o = -1L;
-        return j2;
+    public long b(l51 r7) {
+        long r0 = this.o;
+        if (r0 < 0) goto L6;
+        long r1 = -(r0 + 2);
+        this.o = -1;
+        return r1;
+    L6:
+        return -1;
     }
 
-    public long c(long j) {
-        long j2 = this.o;
-        if (j + j2 <= 0) {
-            return 0L;
-        }
-        long j3 = j + j2;
-        long j4 = this.n;
-        long j5 = j3 / j4;
-        return (((hz3) this.q) == hz3.n || j5 % 2 == 0) ? j3 - (j5 * j4) : ((j5 + 1) * j4) - j3;
+    public long c(long r9) {
+        long r0 = this.o;
+        if ((r9 + r0) > 0) goto L5;
+        return 0;
+    L5:
+        long r10 = r9 + r0;
+        long r1 = this.n;
+        long r2 = r10 / r1;
+        if (((hz3) this.q) == hz3.n) goto L13;
+        if ((r2 % 2) == 0) goto L13;
+        return ((r2 + 1) * r1) - r10;
+    L13:
+        return r10 - (r2 * r1);
     }
 
     @Override // defpackage.g45
-    public ce d(long j, ce ceVar, ce ceVar2, ce ceVar3) {
-        x7 x7Var = (x7) this.p;
-        return ((ss0) x7Var.p).d(c(j), ceVar, ceVar2, f(j, ceVar, ceVar3, ceVar2));
+    public ce d(long r8, ce r10, ce r11, ce r12) {
+        x7 r0 = (x7) this.p;
+        long r9 = c(r8);
+        ce r13 = f(r8, r10, r12, r11);
+        return ((ss0) r0.p).d(r9, r10, r11, r13);
     }
 
     @Override // defpackage.l83
     public m84 e() {
-        rr2.w(this.n != -1);
+        if (this.n == (-1)) goto L5;
+        boolean r0 = true;
+    L6:
+        rr2.w(r0);
         return new bo((v71) this.p, this.n, 1);
+    L5:
+        r0 = false;
+        goto L6
     }
 
-    public ce f(long j, ce ceVar, ce ceVar2, ce ceVar3) {
-        long j2 = this.o;
-        long j3 = j + j2;
-        long j4 = this.n;
-        if (j3 <= j4) {
-            return ceVar2;
-        }
-        return ((ss0) ((x7) this.p).p).d(j4 - j2, ceVar, ceVar3, ceVar2);
+    public ce f(long r11, ce r13, ce r14, ce r15) {
+        long r0 = this.o;
+        long r12 = r11 + r0;
+        long r2 = this.n;
+        if (r12 <= r2) goto L7;
+        ss0 r4 = (ss0) ((x7) this.p).p;
+        return r4.d(r2 - r0, r13, r15, r14);
+    L7:
+        return r14;
     }
 
     @Override // defpackage.l83
-    public void g(long j) {
-        long[] jArr = (long[]) ((rm3) this.q).n;
-        this.o = jArr[f35.f(jArr, j, true)];
+    public void g(long r3) {
+        long[] r0 = (long[]) ((rm3) this.q).n;
+        this.o = r0[f35.f(r0, r3, true)];
     }
 
     @Override // defpackage.g45
-    public ce k(long j, ce ceVar, ce ceVar2, ce ceVar3) {
-        x7 x7Var = (x7) this.p;
-        return ((ss0) x7Var.p).k(c(j), ceVar, ceVar2, f(j, ceVar, ceVar3, ceVar2));
+    public ce k(long r8, ce r10, ce r11, ce r12) {
+        x7 r0 = (x7) this.p;
+        long r9 = c(r8);
+        ce r13 = f(r8, r10, r12, r11);
+        return ((ss0) r0.p).k(r9, r10, r11, r13);
     }
 
     @Override // defpackage.g45
-    public long m(ce ceVar, ce ceVar2, ce ceVar3) {
+    public long m(ce r1, ce r2, ce r3) {
         return Long.MAX_VALUE;
     }
 
-    public ru(String str, byte[] bArr, long j, long j2) {
-        this.p = str;
-        this.q = bArr;
-        this.n = j;
-        this.o = j2;
+    public ru(String r1, byte[] r2, long r3, long r5) {
+        this.p = r1;
+        this.q = r2;
+        this.n = r3;
+        this.o = r5;
     }
 }

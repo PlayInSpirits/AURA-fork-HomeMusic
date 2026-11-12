@@ -13,128 +13,146 @@ public abstract class b3 {
     public Object a;
     public Object b;
 
-    public b3(String str, Bundle bundle) {
-        bundle.getClass();
-        this.a = str;
-        this.b = bundle;
+    public b3(String r1, Bundle r2) {
+        r2.getClass();
+        this.a = r1;
+        this.b = r2;
     }
 
     public void c() {
-        v9 v9Var = (v9) this.a;
-        if (v9Var != null) {
-            try {
-                ((bg) this.b).x.unregisterReceiver(v9Var);
-            } catch (IllegalArgumentException unused) {
-            }
-            this.a = null;
-        }
+        v9 r0 = (v9) this.a;
+        if (r0 == null) goto L10;
+        ((bg) this.b).x.unregisterReceiver(r0);     // Catch: IllegalArgumentException -> L7
+    L5:
+        this.a = null;
+        return;
     }
 
     public void d() {
-        pj4 pj4Var = (pj4) this.a;
-        gz gzVar = (gz) this.b;
-        LinkedHashSet linkedHashSet = pj4Var.e;
-        if (linkedHashSet.remove(gzVar) && linkedHashSet.isEmpty()) {
-            pj4Var.b();
-        }
+        pj4 r0 = (pj4) this.a;
+        gz r2 = (gz) this.b;
+        LinkedHashSet r1 = r0.e;
+        if (r1.remove(r2) == true) goto L5;
+        return;
+    L5:
+        if (r1.isEmpty() == false) goto L9;
+        r0.b();
+        return;
     }
 
     public abstract IntentFilter e();
 
-    public abstract int[] f(int i);
+    public abstract int[] f(int r1);
 
     public abstract int g();
 
-    public MenuItem h(MenuItem menuItem) {
-        if (!(menuItem instanceof oo4)) {
-            return menuItem;
-        }
-        oo4 oo4Var = (oo4) menuItem;
-        if (((yd4) this.b) == null) {
-            this.b = new yd4(0);
-        }
-        MenuItem menuItem2 = (MenuItem) ((yd4) this.b).get(oo4Var);
-        if (menuItem2 != null) {
-            return menuItem2;
-        }
-        xu2 xu2Var = new xu2((Context) this.a, oo4Var);
-        ((yd4) this.b).put(oo4Var, xu2Var);
-        return xu2Var;
+    public MenuItem h(MenuItem r3) {
+        if ((r3 instanceof oo4) == false) goto L11;
+        oo4 r4 = (oo4) r3;
+        if (((yd4) this.b) != null) goto L7;
+        this.b = new yd4(0);
+    L7:
+        MenuItem r0 = (MenuItem) ((yd4) this.b).get(r4);
+        if (r0 != null) goto L12;
+        xu2 r1 = new xu2((Context) this.a, r4);
+        ((yd4) this.b).put(r4, r1);
+        return r1;
+    L12:
+        return r0;
+    L11:
+        return r3;
     }
 
-    public int[] i(int i, int i2) {
-        if (i < 0 || i2 < 0 || i == i2) {
-            return null;
-        }
-        int[] iArr = (int[]) this.b;
-        iArr[0] = i;
-        iArr[1] = i2;
-        return iArr;
+    public int[] i(int r2, int r3) {
+        if (r2 < 0) goto L8;
+        if (r3 < 0) goto L10;
+        if (r2 == r3) goto L11;
+        int[] r1 = (int[]) this.b;
+        r1[0] = r2;
+        r1[1] = r3;
+        return r1;
+    L11:
+        return null;
+    L10:
+        return null;
+    L8:
+        return null;
     }
 
     public String j() {
-        String str = (String) this.a;
-        if (str != null) {
-            return str;
-        }
+        String r0 = (String) this.a;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         h12.Q("text");
         throw null;
     }
 
     public boolean k() {
-        pj4 pj4Var = (pj4) this.a;
-        View view = pj4Var.c.T;
-        view.getClass();
-        int i = 4;
-        if (view.getAlpha() != 0.0f || view.getVisibility() != 0) {
-            int visibility = view.getVisibility();
-            if (visibility == 0) {
-                i = 2;
-            } else if (visibility != 4) {
-                if (visibility != 8) {
-                    kf2.n(f34.f(visibility, "Unknown visibility "));
-                    return false;
-                }
-                i = 3;
-            }
-        }
-        int i2 = pj4Var.a;
-        if (i != i2) {
-            return (i == 2 || i2 == 2) ? false : true;
-        }
+        pj4 r5 = (pj4) this.a;
+        View r0 = r5.c.T;
+        r0.getClass();
+        int r4 = 4;
+        if (r0.getAlpha() == 0.0f) goto L5;
+    L7:
+        int r1 = r0.getVisibility();
+        if (r1 == 0) goto L15;
+        if (r1 != 4) goto L11;
+    L16:
+        int r6 = r5.a;
+        if (r4 == r6) goto L22;
+        if (r4 == 2) goto L21;
+        if (r6 == 2) goto L21;
         return true;
+    L21:
+        return false;
+    L22:
+        return true;
+    L11:
+        if (r1 != 8) goto L13;
+        r4 = 3;
+        goto L16
+    L13:
+        kf2.n(f34.f(r1, "Unknown visibility "));
+        return false;
+    L15:
+        r4 = 2;
+        goto L16
+    L5:
+        if (r0.getVisibility() != 0) goto L7;
+        goto L7
     }
 
     public abstract void l();
 
-    public abstract int[] m(int i);
+    public abstract int[] m(int r1);
 
     public void n() {
         c();
-        IntentFilter intentFilterE = e();
-        if (intentFilterE.countActions() == 0) {
-            return;
-        }
-        if (((v9) this.a) == null) {
-            this.a = new v9(1, this);
-        }
-        ((bg) this.b).x.registerReceiver((v9) this.a, intentFilterE);
+        IntentFilter r0 = e();
+        if (r0.countActions() != 0) goto L6;
+        return;
+    L6:
+        if (((v9) this.a) != null) goto L8;
+        this.a = new v9(1, this);
+    L8:
+        ((bg) this.b).x.registerReceiver((v9) this.a, r0);
     }
 
-    public b3(Context context) {
-        this.a = context;
+    public b3(Context r1) {
+        this.a = r1;
     }
 
     public b3() {
         this.b = new int[2];
     }
 
-    public b3(pj4 pj4Var, gz gzVar) {
-        this.a = pj4Var;
-        this.b = gzVar;
+    public b3(pj4 r1, gz r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
-    public b3(bg bgVar) {
-        this.b = bgVar;
+    public b3(bg r1) {
+        this.b = r1;
     }
 }

@@ -6,19 +6,20 @@ public final /* synthetic */ class ll2 implements xl2, it2 {
     public final /* synthetic */ long n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ ll2(long j, Object obj) {
-        this.o = obj;
-        this.n = j;
+    public /* synthetic */ ll2(long r1, Object r3) {
+        this.o = r3;
+        this.n = r1;
     }
 
     @Override // defpackage.xl2
-    public void d(pu1 pu1Var, int i) {
-        bm2 bm2Var = (bm2) this.o;
-        pu1Var.d0(bm2Var.c, i, this.n);
+    public void d(pu1 r4, int r5) {
+        bm2 r0 = (bm2) this.o;
+        long r1 = this.n;
+        r4.d0(r0.c, r5, r1);
     }
 
     @Override // defpackage.it2
-    public Object h(tn2 tn2Var, fr2 fr2Var, int i) {
-        return tn2Var.x(fr2Var, yw1.o((gn2) this.o), 0, this.n);
+    public Object h(tn2 r7, fr2 r8, int r9) {
+        return r7.x(r8, yw1.o((gn2) this.o), 0, this.n);
     }
 }

@@ -10,12 +10,12 @@ public final class i5 extends WeakReference {
     public final boolean b;
     public q04 c;
 
-    public i5(f42 f42Var, o11 o11Var, ReferenceQueue referenceQueue) {
-        super(o11Var, referenceQueue);
-        h12.f(f42Var, "Argument must not be null");
-        this.a = f42Var;
-        boolean z = o11Var.n;
+    public i5(f42 r1, o11 r2, ReferenceQueue r3) {
+        super(r2, r3);
+        h12.f(r1, "Argument must not be null");
+        this.a = r1;
+        boolean r4 = r2.n;
         this.c = null;
-        this.b = z;
+        this.b = r4;
     }
 }

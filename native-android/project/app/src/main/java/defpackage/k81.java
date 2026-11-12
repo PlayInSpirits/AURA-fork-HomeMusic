@@ -6,31 +6,31 @@ public final class k81 extends l81 {
     public final /* synthetic */ int e;
     public final /* synthetic */ o81 f;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ k81(o81 o81Var, int i) {
-        super(o81Var);
-        this.e = i;
-        this.f = o81Var;
+    public /* synthetic */ k81(o81 r1, int r2) {
+        this.e = r2;
+        this.f = r1;
+        super(r1);
     }
 
     @Override // defpackage.l81
     public final float a() {
-        float f;
-        float f2;
-        int i = this.e;
-        o81 o81Var = this.f;
-        switch (i) {
-            case 0:
-                f = o81Var.h;
-                f2 = o81Var.i;
-                break;
-            case 1:
-                f = o81Var.h;
-                f2 = o81Var.j;
-                break;
-            default:
-                return o81Var.h;
-        }
-        return f + f2;
+        int r0 = this.e;
+        o81 r1 = this.f;
+        switch(r0) {
+            case 0: goto L9;
+            case 1: goto L6;
+            default: goto L5;
+        };
+    L6:
+        float r2 = r1.h;
+        float r3 = r1.j;
+    L8:
+        return r2 + r3;
+    L9:
+        r2 = r1.h;
+        r3 = r1.i;
+        goto L8
+    L5:
+        return r1.h;
     }
 }

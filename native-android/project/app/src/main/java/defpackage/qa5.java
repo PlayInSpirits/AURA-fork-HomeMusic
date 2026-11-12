@@ -16,55 +16,62 @@ public final class qa5 extends WindowInsetsAnimation$Callback {
     public ArrayList c;
     public final HashMap d;
 
-    public qa5(ma5 ma5Var) {
-        super(ma5Var.o);
+    public qa5(ma5 r2) {
+        super(r2.o);
         this.d = new HashMap();
-        this.a = ma5Var;
+        this.a = r2;
     }
 
-    public final ta5 a(WindowInsetsAnimation windowInsetsAnimation) {
-        HashMap map = this.d;
-        ta5 ta5Var = (ta5) map.get(windowInsetsAnimation);
-        if (ta5Var != null) {
-            return ta5Var;
-        }
-        ta5 ta5Var2 = new ta5(0, null, 0L);
-        ta5Var2.a = new ra5(windowInsetsAnimation);
-        map.put(windowInsetsAnimation, ta5Var2);
-        return ta5Var2;
+    public final ta5 a(WindowInsetsAnimation r6) {
+        HashMap r5 = this.d;
+        ta5 r0 = (ta5) r5.get(r6);
+        if (r0 != null) goto L6;
+        ta5 r1 = new ta5(0, null, 0);
+        r1.a = new ra5(r6);
+        r5.put(r6, r1);
+        return r1;
+    L6:
+        return r0;
     }
 
-    public final void onEnd(WindowInsetsAnimation windowInsetsAnimation) {
-        this.a.a(a(windowInsetsAnimation));
-        this.d.remove(windowInsetsAnimation);
+    public final void onEnd(WindowInsetsAnimation r3) {
+        this.a.a(a(r3));
+        this.d.remove(r3);
     }
 
-    public final void onPrepare(WindowInsetsAnimation windowInsetsAnimation) {
-        this.a.b(a(windowInsetsAnimation));
+    public final void onPrepare(WindowInsetsAnimation r2) {
+        this.a.b(a(r2));
     }
 
-    public final WindowInsets onProgress(WindowInsets windowInsets, List list) {
-        ArrayList arrayList = this.c;
-        if (arrayList == null) {
-            ArrayList arrayList2 = new ArrayList(list.size());
-            this.c = arrayList2;
-            this.b = Collections.unmodifiableList(arrayList2);
-        } else {
-            arrayList.clear();
-        }
-        for (int size = list.size() - 1; size >= 0; size--) {
-            WindowInsetsAnimation windowInsetsAnimationL = xq2.l(list.get(size));
-            ta5 ta5VarA = a(windowInsetsAnimationL);
-            ta5VarA.a.e(windowInsetsAnimationL.getFraction());
-            this.c.add(ta5VarA);
-        }
-        return this.a.c(pb5.g(windowInsets, null), this.b).f();
+    public final WindowInsets onProgress(WindowInsets r5, List r6) {
+        ArrayList r0 = this.c;
+        if (r0 != null) goto L5;
+        ArrayList r1 = new ArrayList(r6.size());
+        this.c = r1;
+        this.b = Collections.unmodifiableList(r1);
+    L6:
+        int r2 = r6.size() - 1;
+    L7:
+        if (r2 < 0) goto L10;
+        WindowInsetsAnimation r3 = xq2.l(r6.get(r2));
+        ta5 r4 = a(r3);
+        r4.a.e(xq2.D(r3));
+        this.c.add(r4);
+        r2 = r2 - 1;
+        goto L7
+    L10:
+        return this.a.c(pb5.g(r5, null), this.b).f();
+    L5:
+        r0.clear();
+        goto L6
     }
 
-    public final WindowInsetsAnimation.Bounds onStart(WindowInsetsAnimation windowInsetsAnimation, WindowInsetsAnimation.Bounds bounds) {
-        qr2 qr2VarD = this.a.d(a(windowInsetsAnimation), new qr2(bounds));
-        qr2VarD.getClass();
+    public final WindowInsetsAnimation.Bounds onStart(WindowInsetsAnimation r2, WindowInsetsAnimation.Bounds r3) {
+        ta5 r4 = a(r2);
+        qr2 r0 = new qr2(r3);
+        qr2 r1 = this.a.d(r4, r0);
+        r1.getClass();
         xq2.o();
-        return xq2.j(((vz1) qr2VarD.o).d(), ((vz1) qr2VarD.p).d());
+        return xq2.j(((vz1) r1.o).d(), ((vz1) r1.p).d());
     }
 }

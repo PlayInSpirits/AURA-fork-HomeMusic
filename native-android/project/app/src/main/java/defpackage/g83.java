@@ -5,45 +5,71 @@ package defpackage;
 public final class g83 {
     public final long a;
 
-    public static long a(int i, long j) {
-        return (((long) Float.floatToRawIntBits((i & 1) != 0 ? Float.intBitsToFloat((int) (j >> 32)) : 0.0f)) << 32) | (((long) Float.floatToRawIntBits((i & 2) != 0 ? Float.intBitsToFloat((int) (j & 4294967295L)) : 0.0f)) & 4294967295L);
+    public /* synthetic */ g83(long r1) {
+        this.a = r1;
     }
 
-    public static final boolean b(long j, long j2) {
-        return j == j2;
+    public static long a(int r7, long r8) {
+        float r2 = 0.0f;
+        if ((r7 & 1) == 0) goto L5;
+        float r0 = Float.intBitsToFloat((int) (r8 >> 32));
+    L7:
+        if ((r7 & 2) == 0) goto L10;
+        r2 = Float.intBitsToFloat((int) (r8 & 4294967295L));
+    L10:
+        return (Float.floatToRawIntBits(r0) << 32) | (((long) Float.floatToRawIntBits(r2)) & 4294967295L);
+    L5:
+        r0 = 0.0f;
+        goto L7
     }
 
-    public static final float c(long j) {
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (j >> 32));
-        float fIntBitsToFloat2 = Float.intBitsToFloat((int) (j & 4294967295L));
-        return (float) Math.sqrt((fIntBitsToFloat2 * fIntBitsToFloat2) + (fIntBitsToFloat * fIntBitsToFloat));
+    public static final boolean b(long r0, long r2) {
+        if (r0 != r2) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
-    public static final long d(long j, long j2) {
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (j >> 32)) - Float.intBitsToFloat((int) (j2 >> 32));
-        float fIntBitsToFloat2 = Float.intBitsToFloat((int) (j & 4294967295L)) - Float.intBitsToFloat((int) (j2 & 4294967295L));
-        return (((long) Float.floatToRawIntBits(fIntBitsToFloat)) << 32) | (((long) Float.floatToRawIntBits(fIntBitsToFloat2)) & 4294967295L);
+    public static final float c(long r3) {
+        float r0 = Float.intBitsToFloat((int) (r3 >> 32));
+        float r4 = Float.intBitsToFloat((int) (r3 & 4294967295L));
+        return (float) Math.sqrt((r4 * r4) + (r0 * r0));
     }
 
-    public static final long e(long j, long j2) {
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (j2 >> 32)) + Float.intBitsToFloat((int) (j >> 32));
-        return (((long) Float.floatToRawIntBits(Float.intBitsToFloat((int) (j2 & 4294967295L)) + Float.intBitsToFloat((int) (j & 4294967295L)))) & 4294967295L) | (Float.floatToRawIntBits(fIntBitsToFloat) << 32);
+    public static final long d(long r6, long r8) {
+        float r1 = Float.intBitsToFloat((int) (r6 >> 32)) - Float.intBitsToFloat((int) (r8 >> 32));
+        float r7 = Float.intBitsToFloat((int) (r6 & 4294967295L)) - Float.intBitsToFloat((int) (r8 & 4294967295L));
+        return (Float.floatToRawIntBits(r1) << 32) | (Float.floatToRawIntBits(r7) & 4294967295L);
     }
 
-    public static final long f(long j, float f) {
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (j >> 32)) * f;
-        float fIntBitsToFloat2 = Float.intBitsToFloat((int) (j & 4294967295L)) * f;
-        return (((long) Float.floatToRawIntBits(fIntBitsToFloat)) << 32) | (((long) Float.floatToRawIntBits(fIntBitsToFloat2)) & 4294967295L);
+    public static final long e(long r5, long r7) {
+        float r2 = Float.intBitsToFloat((int) (r7 >> 32)) + Float.intBitsToFloat((int) (r5 >> 32));
+        float r6 = Float.intBitsToFloat((int) (r7 & 4294967295L)) + Float.intBitsToFloat((int) (r5 & 4294967295L));
+        long r8 = Float.floatToRawIntBits(r2);
+        return (((long) Float.floatToRawIntBits(r6)) & 4294967295L) | (r8 << 32);
     }
 
-    public static String g(long j) {
-        return (9223372034707292159L & j) != 9205357640488583168L ? f34.h("Offset(", gh0.F(Float.intBitsToFloat((int) (j >> 32))), ", ", gh0.F(Float.intBitsToFloat((int) (j & 4294967295L))), ")") : "Offset.Unspecified";
+    public static final long f(long r6, float r8) {
+        float r1 = Float.intBitsToFloat((int) (r6 >> 32)) * r8;
+        float r7 = Float.intBitsToFloat((int) (r6 & 4294967295L)) * r8;
+        return (Float.floatToRawIntBits(r1) << 32) | (Float.floatToRawIntBits(r7) & 4294967295L);
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof g83) {
-            return this.a == ((g83) obj).a;
-        }
+    public static String g(long r4) {
+        if ((9223372034707292159L & r4) != 9205357640488583168L) goto L5;
+        return "Offset.Unspecified";
+    L5:
+        return f34.h("Offset(", gh0.F(Float.intBitsToFloat((int) (r4 >> 32))), ", ", gh0.F(Float.intBitsToFloat((int) (r4 & 4294967295L))), ")");
+    }
+
+    public final boolean equals(Object r3) {
+        if ((r3 instanceof g83) == false) goto L11;
+        long r0 = ((g83) r3).a;
+        if (this.a == r0) goto L9;
+        return false;
+    L9:
+        return true;
+    L11:
         return false;
     }
 

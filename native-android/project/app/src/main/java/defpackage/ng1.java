@@ -6,27 +6,30 @@ public final /* synthetic */ class ng1 implements gf1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ rg1 o;
 
-    public /* synthetic */ ng1(rg1 rg1Var, jy2 jy2Var) {
+    public /* synthetic */ ng1(rg1 r1, jy2 r2) {
         this.n = 0;
-        this.o = rg1Var;
+        this.o = r1;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        int i = this.n;
-        rg1 rg1Var = this.o;
-        switch (i) {
-            case 0:
-                throw null;
-            case 1:
-                return rg1Var.l();
-            default:
-                return rg1Var.l();
-        }
+        int r0 = this.n;
+        rg1 r1 = this.o;
+        switch(r0) {
+            case 0: goto L9;
+            case 1: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return r1.l();
+    L7:
+        return r1.l();
+    L9:
+        throw null;
     }
 
-    public /* synthetic */ ng1(int i, rg1 rg1Var) {
-        this.n = i;
-        this.o = rg1Var;
+    public /* synthetic */ ng1(int r1, rg1 r2) {
+        this.n = r1;
+        this.o = r2;
     }
 }

@@ -12,7 +12,7 @@ public interface qk2 {
     default void u() {
     }
 
-    default mw1 y(va4 va4Var) {
+    default mw1 y(va4 r1) {
         return new mw1(new ab4(-6));
     }
 }

@@ -4,8 +4,8 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class k12 extends q14 {
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        kb4.X(obj);
-        return obj;
+    public final Object invokeSuspend(Object r1) {
+        kb4.X(r1);
+        return r1;
     }
 }

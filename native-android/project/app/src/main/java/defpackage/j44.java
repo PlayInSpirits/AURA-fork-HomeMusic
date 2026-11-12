@@ -6,10 +6,11 @@ import java.security.MessageDigest;
 /* JADX INFO: loaded from: classes.dex */
 public final class j44 implements r51 {
     public final MessageDigest n;
-    public final ul4 o = new ul4();
+    public final ul4 o;
 
-    public j44(MessageDigest messageDigest) {
-        this.n = messageDigest;
+    public j44(MessageDigest r2) {
+        this.o = new ul4();
+        this.n = r2;
     }
 
     @Override // defpackage.r51

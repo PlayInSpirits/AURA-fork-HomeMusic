@@ -5,7 +5,6 @@ import android.os.RemoteException;
 import android.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -19,89 +18,102 @@ public final /* synthetic */ class fm2 implements Runnable {
     public final /* synthetic */ Object r;
     public final /* synthetic */ Object s;
 
-    public /* synthetic */ fm2(ls2 ls2Var, va4 va4Var, int i, ms2 ms2Var, ks2 ks2Var) {
+    public /* synthetic */ fm2(ls2 r2, va4 r3, int r4, ms2 r5, ks2 r6) {
         this.n = 1;
-        this.p = ls2Var;
-        this.q = va4Var;
-        this.o = i;
-        this.r = ms2Var;
-        this.s = ks2Var;
+        this.p = r2;
+        this.q = r3;
+        this.o = r4;
+        this.r = r5;
+        this.s = r6;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        Bitmap bitmap;
-        int i = this.n;
-        int i2 = this.o;
-        Object obj = this.s;
-        Object obj2 = this.r;
-        Object obj3 = this.q;
-        Object obj4 = this.p;
-        switch (i) {
-            case 0:
-                im2 im2Var = (im2) obj4;
-                List list = (List) obj2;
-                ArrayList arrayList = (ArrayList) obj;
-                if (((AtomicInteger) obj3).incrementAndGet() == list.size()) {
-                    for (int i3 = 0; i3 < arrayList.size(); i3++) {
-                        ic2 ic2Var = (ic2) arrayList.get(i3);
-                        if (ic2Var != null) {
-                            try {
-                                bitmap = (Bitmap) hw.j(ic2Var);
-                            } catch (CancellationException | ExecutionException e) {
-                                l93.B("MCImplLegacy", "Failed to get bitmap", e);
-                                bitmap = null;
-                            }
-                        } else {
-                            bitmap = null;
-                        }
-                        im2Var.i.a(f92.i((gn2) list.get(i3), bitmap), i2 + i3);
-                    }
-                }
-                break;
-            case 1:
-                ls2 ls2Var = (ls2) obj4;
-                va4 va4Var = (va4) obj3;
-                ms2 ms2Var = (ms2) obj2;
-                ks2 ks2Var = (ks2) obj;
-                if (!ls2Var.g.l()) {
-                    if (!((kr2) ls2Var.m.o).a.isActive()) {
-                        StringBuilder sb = new StringBuilder("Ignore incoming session command before initialization. command=");
-                        sb.append(va4Var == null ? Integer.valueOf(i2) : va4Var.b);
-                        sb.append(", pid=");
-                        sb.append(ms2Var.a.b);
-                        l93.q0("MediaSessionLegacyStub", sb.toString());
-                    } else {
-                        fr2 fr2VarM = ls2Var.M(ms2Var);
-                        na4 na4Var = ls2Var.f;
-                        if (va4Var != null) {
-                            if (!na4Var.J(fr2VarM, va4Var)) {
-                            }
-                        } else if (!na4Var.I(fr2VarM, i2)) {
-                        }
-                        try {
-                            ks2Var.b(fr2VarM);
-                        } catch (RemoteException e2) {
-                            l93.r0("MediaSessionLegacyStub", "Exception in " + fr2VarM, e2);
-                            return;
-                        }
-                    }
-                    break;
-                }
-                break;
-            default:
-                Pair pair = (Pair) obj3;
-                ((nj0) ((zt2) obj4).o.i).U(((Integer) pair.first).intValue(), (mt2) pair.second, (ed2) obj2, (un2) obj, this.o);
-                break;
-        }
+        int r0 = this.n;
+        int r1 = this.o;
+        Object r2 = this.s;
+        Object r3 = this.r;
+        Object r4 = this.q;
+        Object r5 = this.p;
+        switch(r0) {
+            case 0: goto L29;
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        Pair r6 = (Pair) r4;
+        ((nj0) ((zt2) r5).o.i).U(((Integer) r6.first).intValue(), (mt2) r6.second, (ed2) r3, (un2) r2, this.o);
+        return;
+    L6:
+        ls2 r7 = (ls2) r5;
+        va4 r8 = (va4) r4;
+        ms2 r9 = (ms2) r3;
+        ks2 r10 = (ks2) r2;
+        if (r7.g.l() == false) goto L10;
+        return;
+    L10:
+        if (((kr2) r7.m.o).a.isActive() == true) goto L16;
+        StringBuilder r12 = new StringBuilder("Ignore incoming session command before initialization. command=");
+        if (r8 != null) goto L14;
+        Object r11 = Integer.valueOf(r1);
+    L15:
+        r12.append(r11);
+        r12.append(", pid=");
+        r12.append(r9.a.b);
+        l93.q0("MediaSessionLegacyStub", r12.toString());
+        return;
+    L14:
+        r11 = r8.b;
+        goto L15
+    L16:
+        fr2 r13 = r7.M(r9);
+        na4 r14 = r7.f;
+        if (r8 == null) goto L22;
+        if (r14.J(r13, r8) == false) goto L54;
+    L45:
+        r10.b(r13);     // Catch: RemoteException -> L26
+        return;
+    L26:
+        e = move-exception;
+        l93.r0("MediaSessionLegacyStub", "Exception in " + r13, e);
+        return;
+    L54:
+        return;
+    L22:
+        if (r14.I(r13, r1) == true) goto L45;
+        return;
+    L29:
+        im2 r15 = (im2) r5;
+        List r16 = (List) r3;
+        ArrayList r17 = (ArrayList) r2;
+        if (((AtomicInteger) r4).incrementAndGet() != r16.size()) goto L44;
+        int r18 = 0;
+    L33:
+        if (r18 >= r17.size()) goto L57;
+        ic2 r19 = (ic2) r17.get(r18);
+        if (r19 != null) goto L47;
+    L42:
+        Bitmap r20 = null;
+    L43:
+        r15.i.a(f92.i((gn2) r16.get(r18), r20), r1 + r18);
+        r18 = r18 + 1;
+        goto L33
+    L47:
+        r20 = (Bitmap) hw.j(r19);     // Catch: ExecutionException -> L38 Throwable -> L40
+    L40:
+        e = move-exception;
+        l93.B("MCImplLegacy", "Failed to get bitmap", e);
+        goto L42
+    L57:
+        return;
     }
 
-    public /* synthetic */ fm2(Object obj, Object obj2, Object obj3, Object obj4, int i, int i2) {
-        this.n = i2;
-        this.p = obj;
-        this.q = obj2;
-        this.r = obj3;
-        this.s = obj4;
-        this.o = i;
+    public /* synthetic */ fm2(Object r1, Object r2, Object r3, Object r4, int r5, int r6) {
+        this.n = r6;
+        this.p = r1;
+        this.q = r2;
+        this.r = r3;
+        this.s = r4;
+        this.o = r5;
     }
 }

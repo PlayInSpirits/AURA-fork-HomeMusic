@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.LinkedHashMap;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -24,578 +23,446 @@ public final class zf0 extends q42 implements gf1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ zf0(int i, Object obj) {
+    public /* synthetic */ zf0(int r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
         super(0);
-        this.n = i;
-        this.o = obj;
     }
 
-    /* JADX WARN: Code duplicated, block: B:125:0x029b A[Catch: all -> 0x0230, TRY_LEAVE, TryCatch #10 {all -> 0x0230, blocks: (B:44:0x0168, B:96:0x0237, B:125:0x029b, B:131:0x02ba, B:122:0x0295, B:92:0x022f, B:88:0x0226, B:149:0x02f2, B:150:0x02f5, B:142:0x02d5, B:145:0x02e8, B:146:0x02ef, B:153:0x02fa, B:154:0x0310, B:85:0x0221, B:45:0x0171, B:47:0x017a, B:50:0x018b, B:76:0x0210, B:72:0x0209, B:79:0x0214, B:80:0x0219, B:119:0x0290), top: B:267:0x0168, inners: #2, #12, #13 }] */
-    /* JADX WARN: Code duplicated, block: B:129:0x02b1  */
-    /* JADX WARN: Code duplicated, block: B:184:0x038f  */
-    /* JADX WARN: Code duplicated, block: B:187:0x03a6  */
-    /* JADX WARN: Code duplicated, block: B:192:0x03d7 A[LOOP:4: B:191:0x03d5->B:192:0x03d7, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:195:0x03f4  */
-    /* JADX WARN: Code duplicated, block: B:197:0x03fb  */
-    /* JADX WARN: Code duplicated, block: B:202:0x0424  */
-    /* JADX WARN: Code duplicated, block: B:212:0x0465  */
-    /* JADX WARN: Code duplicated, block: B:215:0x0480  */
-    /* JADX WARN: Code duplicated, block: B:217:0x0490  */
-    /* JADX WARN: Code duplicated, block: B:219:0x0494  */
-    /* JADX WARN: Code duplicated, block: B:220:0x0499  */
-    /* JADX WARN: Code duplicated, block: B:222:0x049c  */
-    /* JADX WARN: Code duplicated, block: B:223:0x04a3  */
-    /* JADX WARN: Code duplicated, block: B:225:0x04a6  */
-    /* JADX WARN: Code duplicated, block: B:22:0x00b1  */
-    /* JADX WARN: Code duplicated, block: B:304:0x02ba A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:307:0x02b4 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:315:0x0417 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:317:0x03f9 A[SYNTHETIC] */
-    /* JADX WARN: Instruction removed from duplicated block: B:197:0x03fb, please report this as an issue */
     @Override // defpackage.gf1
-    public final Object invoke() throws Throwable {
-        int i;
-        Bundle bundleA;
-        Bundle bundleA2;
-        int i2;
-        rp4 rp4Var;
-        Bundle bundle;
-        int i3;
-        Bundle bundle2;
-        LinkedHashMap linkedHashMap;
-        int[] intArray;
-        ArrayList<String> stringArrayList;
-        ArrayList<String> stringArrayList2;
-        int size;
-        int i4;
-        String str;
-        Parcelable[] parcelableArray;
-        ii iiVar;
-        int i5;
-        int length;
-        int i6;
-        int i7;
-        ea2 ea2VarH;
-        r32 r32Var;
-        int i8;
-        xu3 xu3Var;
-        Throwable th;
-        kd3 kd3Var;
-        Throwable th2;
-        Throwable th3;
-        kd3 kd3Var2;
-        int i9 = this.n;
-        j15 j15Var = j15.a;
-        int i10 = 2;
-        int i11 = -1;
-        boolean z = false;
-        Object obj = this.o;
-        switch (i9) {
-            case 0:
-                ((wo0) obj).F(new GetCredentialUnsupportedException("Your device doesn't support credential manager"));
-                return j15Var;
-            case 1:
-                rq1 rq1Var = (rq1) obj;
-                rq1Var.getClass();
-                try {
-                    rq1Var.J.s(2, 0, false);
-                    break;
-                } catch (IOException e) {
-                    rq1Var.f(e);
-                }
-                return j15Var;
-            case 2:
-                a23 a23Var = (a23) obj;
-                Context applicationContext = a23Var.n.getApplicationContext();
-                return new k54(applicationContext instanceof Application ? (Application) applicationContext : null, a23Var, a23Var.c());
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                v23 v23Var = (v23) obj;
-                return new w23(v23Var.a, v23Var.u);
-            case 4:
-                return new n23((String) obj, null, null);
-            case 5:
-                NavHostFragment navHostFragment = (NavHostFragment) obj;
-                Context contextN = navHostFragment.n();
-                if (contextN != null) {
-                    v23 v23Var2 = new v23(contextN);
-                    ba2 ba2Var = v23Var2.n;
-                    if (navHostFragment != ba2Var) {
-                        pd1 pd1Var = v23Var2.r;
-                        if (ba2Var != null && (ea2VarH = ba2Var.h()) != null) {
-                            ea2VarH.f(pd1Var);
-                        }
-                        v23Var2.n = navHostFragment;
-                        navHostFragment.c0.a(pd1Var);
-                    }
-                    e75 e75VarD = navHostFragment.d();
-                    if (h12.c(v23Var2.o, su3.s(e75VarD))) {
-                        Context contextZ = navHostFragment.Z();
-                        ld1 ld1VarM = navHostFragment.m();
-                        ld1VarM.getClass();
-                        tp0 tp0Var = new tp0(contextZ, ld1VarM);
-                        u43 u43Var = v23Var2.u;
-                        u43Var.a(tp0Var);
-                        Context contextZ2 = navHostFragment.Z();
-                        ld1 ld1VarM2 = navHostFragment.m();
-                        ld1VarM2.getClass();
-                        i = navHostFragment.J;
-                        if (i != 0) {
-                            i = R.id.nav_host_fragment_container;
-                        } else {
-                            i = R.id.nav_host_fragment_container;
-                        }
-                        u43Var.a(new rd1(contextZ2, ld1VarM2, i));
-                        bundleA = ((rm3) navHostFragment.g0.p).A("android-support-nav:fragment:navControllerState");
-                        if (bundleA != null) {
-                            bundleA.setClassLoader(contextN.getClassLoader());
-                            v23Var2.d = bundleA.getBundle("android-support-nav:controller:navigatorState");
-                            v23Var2.e = bundleA.getParcelableArray("android-support-nav:controller:backStack");
-                            linkedHashMap = v23Var2.m;
-                            linkedHashMap.clear();
-                            intArray = bundleA.getIntArray("android-support-nav:controller:backStackDestIds");
-                            stringArrayList = bundleA.getStringArrayList("android-support-nav:controller:backStackIds");
-                            if (intArray != null) {
-                                length = intArray.length;
-                                i6 = 0;
-                                i7 = 0;
-                                while (i6 < length) {
-                                    v23Var2.l.put(Integer.valueOf(intArray[i6]), stringArrayList.get(i7));
-                                    i6++;
-                                    i7++;
-                                }
-                            }
-                            stringArrayList2 = bundleA.getStringArrayList("android-support-nav:controller:backStackStates");
-                            if (stringArrayList2 != null) {
-                                size = stringArrayList2.size();
-                                i4 = 0;
-                                while (i4 < size) {
-                                    String str2 = stringArrayList2.get(i4);
-                                    i4++;
-                                    str = str2;
-                                    parcelableArray = bundleA.getParcelableArray("android-support-nav:controller:backStackStates:" + str);
-                                    if (parcelableArray != null) {
-                                        str.getClass();
-                                        iiVar = new ii(parcelableArray.length);
-                                        i5 = 0;
-                                        while (i5 < parcelableArray.length) {
-                                            int i12 = i5 + 1;
-                                            Parcelable parcelable = parcelableArray[i5];
-                                            parcelable.getClass();
-                                            iiVar.addLast((c23) parcelable);
-                                            i5 = i12;
-                                        }
-                                        linkedHashMap.put(str, iiVar);
-                                    }
-                                }
-                            }
-                            v23Var2.f = bundleA.getBoolean("android-support-nav:controller:deepLinkHandled");
-                        }
-                        ((rm3) navHostFragment.g0.p).L("android-support-nav:fragment:navControllerState", new cs0(i10, v23Var2));
-                        bundleA2 = ((rm3) navHostFragment.g0.p).A("android-support-nav:fragment:graphId");
-                        if (bundleA2 != null) {
-                            navHostFragment.n0 = bundleA2.getInt("android-support-nav:fragment:graphId");
-                        }
-                        ((rm3) navHostFragment.g0.p).L("android-support-nav:fragment:graphId", new cs0(3, navHostFragment));
-                        i2 = navHostFragment.n0;
-                        rp4Var = v23Var2.B;
-                        if (i2 != 0) {
-                            v23Var2.v(((w23) rp4Var.getValue()).b(i2), null);
-                        } else {
-                            bundle = navHostFragment.s;
-                            if (bundle != null) {
-                                i3 = bundle.getInt("android-support-nav:fragment:graphId");
-                            } else {
-                                i3 = 0;
-                            }
-                            if (bundle != null) {
-                                bundle2 = bundle.getBundle("android-support-nav:fragment:startDestinationArgs");
-                            } else {
-                                bundle2 = null;
-                            }
-                            if (i3 != 0) {
-                                v23Var2.v(((w23) rp4Var.getValue()).b(i3), bundle2);
-                            }
-                        }
-                        return v23Var2;
-                    }
-                    if (v23Var2.g.isEmpty()) {
-                        v23Var2.o = su3.s(e75VarD);
-                        Context contextZ3 = navHostFragment.Z();
-                        ld1 ld1VarM3 = navHostFragment.m();
-                        ld1VarM3.getClass();
-                        tp0 tp0Var2 = new tp0(contextZ3, ld1VarM3);
-                        u43 u43Var2 = v23Var2.u;
-                        u43Var2.a(tp0Var2);
-                        Context contextZ4 = navHostFragment.Z();
-                        ld1 ld1VarM4 = navHostFragment.m();
-                        ld1VarM4.getClass();
-                        i = navHostFragment.J;
-                        if (i != 0 || i == -1) {
-                            i = R.id.nav_host_fragment_container;
-                        }
-                        u43Var2.a(new rd1(contextZ4, ld1VarM4, i));
-                        bundleA = ((rm3) navHostFragment.g0.p).A("android-support-nav:fragment:navControllerState");
-                        if (bundleA != null) {
-                            bundleA.setClassLoader(contextN.getClassLoader());
-                            v23Var2.d = bundleA.getBundle("android-support-nav:controller:navigatorState");
-                            v23Var2.e = bundleA.getParcelableArray("android-support-nav:controller:backStack");
-                            linkedHashMap = v23Var2.m;
-                            linkedHashMap.clear();
-                            intArray = bundleA.getIntArray("android-support-nav:controller:backStackDestIds");
-                            stringArrayList = bundleA.getStringArrayList("android-support-nav:controller:backStackIds");
-                            if (intArray != null && stringArrayList != null) {
-                                length = intArray.length;
-                                i6 = 0;
-                                i7 = 0;
-                                while (i6 < length) {
-                                    v23Var2.l.put(Integer.valueOf(intArray[i6]), stringArrayList.get(i7));
-                                    i6++;
-                                    i7++;
-                                }
-                            }
-                            stringArrayList2 = bundleA.getStringArrayList("android-support-nav:controller:backStackStates");
-                            if (stringArrayList2 != null) {
-                                size = stringArrayList2.size();
-                                i4 = 0;
-                                while (i4 < size) {
-                                    String str3 = stringArrayList2.get(i4);
-                                    i4++;
-                                    str = str3;
-                                    parcelableArray = bundleA.getParcelableArray("android-support-nav:controller:backStackStates:" + str);
-                                    if (parcelableArray != null) {
-                                        str.getClass();
-                                        iiVar = new ii(parcelableArray.length);
-                                        i5 = 0;
-                                        while (i5 < parcelableArray.length) {
-                                            int i13 = i5 + 1;
-                                            try {
-                                                Parcelable parcelable2 = parcelableArray[i5];
-                                                parcelable2.getClass();
-                                                iiVar.addLast((c23) parcelable2);
-                                                i5 = i13;
-                                            } catch (ArrayIndexOutOfBoundsException e2) {
-                                                kf2.m(e2.getMessage());
-                                            }
-                                        }
-                                        linkedHashMap.put(str, iiVar);
-                                    }
-                                }
-                            }
-                            v23Var2.f = bundleA.getBoolean("android-support-nav:controller:deepLinkHandled");
-                        }
-                        ((rm3) navHostFragment.g0.p).L("android-support-nav:fragment:navControllerState", new cs0(i10, v23Var2));
-                        bundleA2 = ((rm3) navHostFragment.g0.p).A("android-support-nav:fragment:graphId");
-                        if (bundleA2 != null) {
-                            navHostFragment.n0 = bundleA2.getInt("android-support-nav:fragment:graphId");
-                        }
-                        ((rm3) navHostFragment.g0.p).L("android-support-nav:fragment:graphId", new cs0(3, navHostFragment));
-                        i2 = navHostFragment.n0;
-                        rp4Var = v23Var2.B;
-                        if (i2 != 0) {
-                            v23Var2.v(((w23) rp4Var.getValue()).b(i2), null);
-                        } else {
-                            bundle = navHostFragment.s;
-                            if (bundle != null) {
-                                i3 = bundle.getInt("android-support-nav:fragment:graphId");
-                            } else {
-                                i3 = 0;
-                            }
-                            if (bundle != null) {
-                                bundle2 = bundle.getBundle("android-support-nav:fragment:startDestinationArgs");
-                            } else {
-                                bundle2 = null;
-                            }
-                            if (i3 != 0) {
-                                v23Var2.v(((w23) rp4Var.getValue()).b(i3), bundle2);
-                            }
-                        }
-                        return v23Var2;
-                    }
-                    kf2.o("ViewModelStore should be set before setGraph call");
-                } else {
-                    kf2.o("NavController cannot be created before the fragment is attached");
-                }
-                return null;
-            case 6:
-                y04 y04Var = (y04) obj;
-                ClassLoader classLoader = y04Var.c;
-                b71 b71Var = y04Var.d;
-                Enumeration<URL> resources = classLoader.getResources("");
-                resources.getClass();
-                ArrayList list = Collections.list(resources);
-                list.getClass();
-                ArrayList arrayList = new ArrayList();
-                int size2 = list.size();
-                int i14 = 0;
-                while (i14 < size2) {
-                    Object obj2 = list.get(i14);
-                    i14++;
-                    URL url = (URL) obj2;
-                    url.getClass();
-                    if (h12.c(url.getProtocol(), "file")) {
-                        String str4 = ge3.o;
-                        kd3Var2 = new kd3(b71Var, tv1.A(new File(url.toURI())));
-                    } else {
-                        kd3Var2 = null;
-                    }
-                    if (kd3Var2 != null) {
-                        arrayList.add(kd3Var2);
-                    }
-                }
-                Enumeration<URL> resources2 = classLoader.getResources("META-INF/MANIFEST.MF");
-                resources2.getClass();
-                ArrayList list2 = Collections.list(resources2);
-                list2.getClass();
-                ArrayList arrayList2 = new ArrayList();
-                int size3 = list2.size();
-                int i15 = 0;
-                while (i15 < size3) {
-                    int i16 = i15 + 1;
-                    URL url2 = (URL) list2.get(i15);
-                    url2.getClass();
-                    String string = url2.toString();
-                    string.getClass();
-                    if (xm4.k0(string, "jar:file:", z)) {
-                        boolean z2 = true;
-                        int iLastIndexOf = string.lastIndexOf("!", string.length() - 1);
-                        if (iLastIndexOf != i11) {
-                            String str5 = ge3.o;
-                            ge3 ge3VarA = tv1.A(new File(URI.create(string.substring(4, iLastIndexOf))));
-                            r32 r32VarI = b71Var.i(ge3VarA);
-                            try {
-                                long size4 = r32VarI.size();
-                                long j = size4 - 22;
-                                if (j < 0) {
-                                    throw new IOException("not a zip: size=" + r32VarI.size());
-                                }
-                                long jMax = Math.max(size4 - 65558, 0L);
-                                long j2 = 0;
-                                long j3 = j;
-                                while (true) {
-                                    xu3 xu3Var2 = new xu3(r32VarI.b(j3));
-                                    try {
-                                        if (xu3Var2.f() == 101010256) {
-                                            int iN = xu3Var2.n() & 65535;
-                                            int iN2 = xu3Var2.n() & 65535;
-                                            long j4 = j3;
-                                            long jN = xu3Var2.n() & 65535;
-                                            r32 r32Var2 = r32VarI;
-                                            if (jN == (xu3Var2.n() & 65535) && iN == 0 && iN2 == 0) {
-                                                try {
-                                                    xu3Var2.skip(4L);
-                                                    long jF = ((long) xu3Var2.f()) & 4294967295L;
-                                                    int iN3 = xu3Var2.n() & 65535;
-                                                    pu puVar = new pu(iN3, jN, jF);
-                                                    xu3Var2.q(iN3);
-                                                    try {
-                                                        xu3Var2.close();
-                                                        long j5 = j4 - 20;
-                                                        if (j5 > 0) {
-                                                            r32Var = r32Var2;
-                                                            try {
-                                                                xu3 xu3Var3 = new xu3(r32Var.b(j5));
-                                                                try {
-                                                                    if (xu3Var3.f() == 117853008) {
-                                                                        int iF = xu3Var3.f();
-                                                                        long j6 = xu3Var3.j();
-                                                                        if (xu3Var3.f() != 1 || iF != 0) {
-                                                                            throw new IOException("unsupported zip: spanned");
-                                                                        }
-                                                                        xu3 xu3Var4 = new xu3(r32Var.b(j6));
-                                                                        try {
-                                                                            int iF2 = xu3Var4.f();
-                                                                            if (iF2 != 101075792) {
-                                                                                throw new IOException("bad zip: expected " + gb.B(101075792) + " but was " + gb.B(iF2));
-                                                                            }
-                                                                            xu3Var4.skip(12L);
-                                                                            int iF3 = xu3Var4.f();
-                                                                            int iF4 = xu3Var4.f();
-                                                                            long j7 = xu3Var4.j();
-                                                                            if (j7 != xu3Var4.j() || iF3 != 0 || iF4 != 0) {
-                                                                                throw new IOException("unsupported zip: spanned");
-                                                                            }
-                                                                            xu3Var4.skip(8L);
-                                                                            pu puVar2 = new pu(iN3, j7, xu3Var4.j());
-                                                                            try {
-                                                                                xu3Var4.close();
-                                                                                th3 = null;
-                                                                            } catch (Throwable th4) {
-                                                                                th3 = th4;
-                                                                            }
-                                                                            puVar = puVar2;
-                                                                            if (th3 != null) {
-                                                                                throw th3;
-                                                                            }
-                                                                        } catch (Throwable th5) {
-                                                                            try {
-                                                                                xu3Var4.close();
-                                                                            } catch (Throwable th6) {
-                                                                                j51.d(th5, th6);
-                                                                            }
-                                                                            th3 = th5;
-                                                                        }
-                                                                    }
-                                                                    try {
-                                                                        xu3Var3.close();
-                                                                        th2 = null;
-                                                                    } catch (Throwable th7) {
-                                                                        th2 = th7;
-                                                                    }
-                                                                } catch (Throwable th8) {
-                                                                    try {
-                                                                        xu3Var3.close();
-                                                                    } catch (Throwable th9) {
-                                                                        j51.d(th8, th9);
-                                                                    }
-                                                                    th2 = th8;
-                                                                }
-                                                                if (th2 != null) {
-                                                                    throw th2;
-                                                                }
-                                                            } catch (Throwable th10) {
-                                                                th = th10;
-                                                            }
-                                                        } else {
-                                                            r32Var = r32Var2;
-                                                        }
-                                                        pu puVar3 = puVar;
-                                                        ArrayList arrayList3 = new ArrayList();
-                                                        xu3 xu3Var5 = new xu3(r32Var.b(puVar3.b));
-                                                        try {
-                                                            long j8 = puVar3.a;
-                                                            while (j2 < j8) {
-                                                                ne5 ne5VarV = gb.V(xu3Var5);
-                                                                i8 = i16;
-                                                                xu3Var = xu3Var5;
-                                                                try {
-                                                                    if (ne5VarV.h >= puVar3.b) {
-                                                                        throw new IOException("bad zip: local file header offset >= central directory offset");
-                                                                    }
-                                                                    ge3 ge3Var = y04.f;
-                                                                    if (hh3.d(ne5VarV.a)) {
-                                                                        arrayList3.add(ne5VarV);
-                                                                    }
-                                                                    j2++;
-                                                                    i16 = i8;
-                                                                    xu3Var5 = xu3Var;
-                                                                } catch (Throwable th11) {
-                                                                    th = th11;
-                                                                    Throwable th12 = th;
-                                                                    try {
-                                                                        xu3Var.close();
-                                                                    } catch (Throwable th13) {
-                                                                        j51.d(th12, th13);
-                                                                    }
-                                                                    th = th12;
-                                                                    if (th == null) {
-                                                                        throw th;
-                                                                    }
-                                                                    oe5 oe5Var = new oe5(ge3VarA, b71Var, gb.g(arrayList3));
-                                                                    try {
-                                                                        r32Var.close();
-                                                                        break;
-                                                                    } catch (Throwable unused) {
-                                                                    }
-                                                                    kd3Var = new kd3(oe5Var, y04.f);
-                                                                    if (kd3Var != null) {
-                                                                        arrayList2.add(kd3Var);
-                                                                    }
-                                                                    i15 = i8;
-                                                                    i11 = -1;
-                                                                    z = false;
-                                                                }
-                                                                break;
-                                                            }
-                                                            i8 = i16;
-                                                            try {
-                                                                xu3Var5.close();
-                                                                th = null;
-                                                            } catch (Throwable th14) {
-                                                                th = th14;
-                                                            }
-                                                        } catch (Throwable th15) {
-                                                            th = th15;
-                                                            i8 = i16;
-                                                            xu3Var = xu3Var5;
-                                                        }
-                                                        if (th == null) {
-                                                            throw th;
-                                                        }
-                                                        oe5 oe5Var2 = new oe5(ge3VarA, b71Var, gb.g(arrayList3));
-                                                        r32Var.close();
-                                                        kd3Var = new kd3(oe5Var2, y04.f);
-                                                    } catch (Throwable th16) {
-                                                        th = th16;
-                                                        r32Var = r32Var2;
-                                                    }
-                                                } catch (Throwable th17) {
-                                                    th = th17;
-                                                }
-                                                break;
-                                            } else {
-                                                try {
-                                                    throw new IOException("unsupported zip: spanned");
-                                                } catch (Throwable th18) {
-                                                    th = th18;
-                                                }
-                                            }
-                                        } else {
-                                            long j9 = j3;
-                                            int i17 = i16;
-                                            boolean z3 = z2;
-                                            r32 r32Var3 = r32VarI;
-                                            xu3Var2.close();
-                                            j3 = j9 - 1;
-                                            if (j3 < jMax) {
-                                                throw new IOException("not a zip: end of central directory signature not found");
-                                            }
-                                            i16 = i17;
-                                            r32VarI = r32Var3;
-                                            z2 = z3;
-                                        }
-                                    } catch (Throwable th19) {
-                                        th = th19;
-                                    }
-                                    xu3Var2.close();
-                                    throw th;
-                                }
-                            } catch (Throwable th20) {
-                                th = th20;
-                                r32Var = r32VarI;
-                            }
-                            Throwable th21 = th;
-                            if (r32Var == null) {
-                                throw th21;
-                            }
-                            try {
-                                r32Var.close();
-                                throw th21;
-                            } catch (Throwable th22) {
-                                j51.d(th21, th22);
-                                throw th21;
-                            }
-                        }
-                        i8 = i16;
-                        kd3Var = null;
-                    } else {
-                        i8 = i16;
-                        kd3Var = null;
-                    }
-                    if (kd3Var != null) {
-                        arrayList2.add(kd3Var);
-                    }
-                    i15 = i8;
-                    i11 = -1;
-                    z = false;
-                }
-                return q40.G0(arrayList, arrayList2);
-            case 7:
-                return ((r21) ((y10) obj).f).i();
-            case 8:
-                return new tc0[((p81[]) obj).length];
-            default:
-                return ((Worker) obj).d();
-        }
+    public final Object invoke() {
+        int r1 = this.n;
+        j15 r2 = j15.a;
+        int r3 = 2;
+        int r4 = -1;
+        boolean r5 = false;
+        Object r0 = this.o;
+        switch(r1) {
+            case 0: goto L245;
+            case 1: goto L239;
+            case 2: goto L233;
+            case 3: goto L231;
+            case 4: goto L230;
+            case 5: goto L163;
+            case 6: goto L10;
+            case 7: goto L9;
+            case 8: goto L7;
+            default: goto L5;
+        };
+    L10:
+        y04 r6 = (y04) r0;
+        ClassLoader r7 = r6.c;
+        b71 r8 = r6.d;
+        Enumeration<URL> r9 = r7.getResources("");
+        r9.getClass();
+        ArrayList r10 = Collections.list(r9);
+        r10.getClass();
+        ArrayList r11 = new ArrayList();
+        int r12 = r10.size();
+        int r13 = 0;
+    L11:
+        if (r13 >= r12) goto L18;
+        Object r14 = r10.get(r13);
+        r13 = r13 + 1;
+        URL r15 = (URL) r14;
+        r15.getClass();
+        if (h12.c(r15.getProtocol(), "file") == true) goto L15;
+        kd3 r16 = null;
+    L16:
+        if (r16 == null) goto L11;
+        r11.add(r16);
+        goto L11
+    L15:
+        String r17 = ge3.o;
+        r16 = new kd3(r8, tv1.A(new File(r15.toURI())));
+        goto L16
+    L18:
+        Enumeration<URL> r18 = r7.getResources("META-INF/MANIFEST.MF");
+        r18.getClass();
+        ArrayList r19 = Collections.list(r18);
+        r19.getClass();
+        ArrayList r20 = new ArrayList();
+        int r21 = r19.size();
+        int r22 = 0;
+    L19:
+        if (r22 >= r21) goto L162;
+        int r110 = r22 + 1;
+        URL r23 = (URL) r19.get(r22);
+        r23.getClass();
+        String r24 = r23.toString();
+        r24.getClass();
+        if (xm4.k0(r24, "jar:file:", r5) == true) goto L23;
+    L22:
+        int r35 = r110;
+        kd3 r25 = null;
+    L128:
+        if (r25 == null) goto L130;
+        r20.add(r25);
+    L130:
+        r22 = r35;
+        r4 = -1;
+        r5 = false;
+        goto L19
+    L23:
+        boolean r111 = true;
+        int r26 = r24.lastIndexOf("!", r24.length() - 1);
+        if (r26 == r4) goto L22;
+        String r112 = ge3.o;
+        ge3 r27 = tv1.A(new File(URI.create(r24.substring(4, r26))));
+        r32 r113 = r8.i(r27);
+        long r114 = r113.size();     // Catch: Throwable -> L151
+        long r115 = r114 - 22;     // Catch: Throwable -> L151
+        if (r115 < 0) goto L154;
+        long r116 = Math.max(r114 - 65558, 0);     // Catch: Throwable -> L151
+        long r117 = 0;
+        long r28 = r115;
+    L30:
+        xu3 r118 = new xu3(r113.b(r28));     // Catch: Throwable -> L151
+    L147:
+        th = th;
+    L149:
+        r118.close();     // Catch: Throwable -> L93
+        throw th;     // Catch: Throwable -> L93
+    L32:
+        if (r118.f() == 101010256) goto L33;
+        long r29 = r28;
+        int r36 = r110;
+        boolean r210 = r111;
+        r32 r30 = r113;
+        r118.close();     // Catch: Throwable -> L93
+        r28 = r29 - 1;     // Catch: Throwable -> L93
+        if (r28 < r116) goto L146;
+        r110 = r36;
+        r113 = r30;
+        r111 = r210;
+        goto L30
+    L146:
+        throw new IOException("not a zip: end of central directory signature not found");     // Catch: Throwable -> L93
+    L33:
+        int r31 = r118.n() & 65535;     // Catch: Throwable -> L147
+        int r119 = r118.n() & 65535;     // Catch: Throwable -> L147
+        long r211 = r28;
+        long r32 = r118.n() & 65535;     // Catch: Throwable -> L147
+        r32 r212 = r113;
+        if (r32 != (r118.n() & 65535)) goto L259;
+        if (r31 != 0) goto L259;
+        if (r119 != 0) goto L259;
+        r118.skip(4);     // Catch: Throwable -> L134
+        long r213 = ((long) r118.f()) & 4294967295L;     // Catch: Throwable -> L134
+        int r33 = r118.n() & 65535;     // Catch: Throwable -> L134
+        pu r120 = new pu(r33, r32, r213);     // Catch: Throwable -> L134
+        r118.q(r33);     // Catch: Throwable -> L134
+        r118.close();     // Catch: Throwable -> L132
+        long r34 = r211 - 20;
+        if (r34 <= 0) goto L95;
+        r32 r37 = r212;
+        xu3 r38 = new xu3(r37.b(r34));     // Catch: Throwable -> L93
+    L77:
+        th = move-exception;
+        r38.close();     // Catch: Throwable -> L87
+    L89:
+        Throwable th = th;
+    L90:
+        if (th != null) goto L92;
+    L91:
+        pu r39 = r120;
+        ArrayList r40 = new ArrayList();     // Catch: Throwable -> L93
+        xu3 r121 = new xu3(r37.b(r39.b));     // Catch: Throwable -> L93
+        long r122 = r39.a;     // Catch: Throwable -> L112
+    L99:
+        if (r117 >= r122) goto L114;
+        ne5 r41 = gb.V(r121);     // Catch: Throwable -> L112
+        r35 = r110;
+        xu3 r123 = r121;
+    L107:
+        th = th;
+    L108:
+        Throwable r42 = th;
+        r123.close();     // Catch: Throwable -> L121
+    L123:
+        Throwable th2 = r42;
+    L124:
+        if (th2 != null) goto L131;
+        oe5 r43 = new oe5(r27, r8, gb.g(r40));     // Catch: Throwable -> L93
+        r37.close();     // Catch: Throwable -> L247
+    L127:
+        r25 = new kd3(r43, y04.f);
+        goto L128
+    L131:
+        throw th2;     // Catch: Throwable -> L93
+    L121:
+        th = move-exception;
+        j51.d(r42, th);     // Catch: Throwable -> L93
+        goto L123
+    L103:
+        if (r41.h >= r39.b) goto L111;
+        ge3 r124 = y04.f;     // Catch: Throwable -> L107
+        if (hh3.d(r41.a) == false) goto L109;
+        r40.add(r41);     // Catch: Throwable -> L107
+    L109:
+        r117 = r117 + 1;     // Catch: Throwable -> L107
+        r110 = r35;
+        r121 = r123;
+        goto L99
+    L111:
+        throw new IOException("bad zip: local file header offset >= central directory offset");     // Catch: Throwable -> L107
+    L114:
+        r35 = r110;
+        r121.close();     // Catch: Throwable -> L117
+        th2 = null;
+    L117:
+        th2 = th;
+    L112:
+        th = th;
+        r35 = r110;
+        r123 = r121;
+        goto L108
+    L92:
+        throw th;     // Catch: Throwable -> L93
+    L87:
+        th = move-exception;
+        j51.d(th, th);     // Catch: Throwable -> L93
+        goto L89
+    L46:
+        if (r38.f() != 117853008) goto L283;
+        int r44 = r38.f();     // Catch: Throwable -> L77
+        long r125 = r38.j();     // Catch: Throwable -> L77
+        if (r38.f() != 1) goto L80;
+        if (r44 != 0) goto L80;
+        xu3 r126 = new xu3(r37.b(r125));     // Catch: Throwable -> L77
+        int r45 = r126.f();     // Catch: Throwable -> L67
+        if (r45 != 101075792) goto L66;
+        r126.skip(12);     // Catch: Throwable -> L67
+        int r46 = r126.f();     // Catch: Throwable -> L67
+        int r127 = r126.f();     // Catch: Throwable -> L67
+        long r310 = r126.j();     // Catch: Throwable -> L67
+        if (r310 != r126.j()) goto L63;
+        if (r46 != 0) goto L63;
+        if (r127 != 0) goto L63;
+        r126.skip(8);     // Catch: Throwable -> L67
+        pu r214 = new pu(r33, r310, r126.j());     // Catch: Throwable -> L67
+        r126.close();     // Catch: Throwable -> L60
+        Throwable th3 = null;
+    L61:
+        r120 = r214;
+    L74:
+        if (th3 == null) goto L283;
+        throw th3;     // Catch: Throwable -> L77
+    L60:
+        th3 = th;
+    L63:
+        throw new IOException("unsupported zip: spanned");     // Catch: Throwable -> L67
+    L66:
+        throw new IOException("bad zip: expected " + gb.B(101075792) + " but was " + gb.B(r45));     // Catch: Throwable -> L67
+    L67:
+        th = move-exception;
+        r126.close();     // Catch: Throwable -> L71
+    L73:
+        th3 = th;
+        goto L74
+    L71:
+        th = move-exception;
+        j51.d(th, th);     // Catch: Throwable -> L77
+    L80:
+        throw new IOException("unsupported zip: spanned");     // Catch: Throwable -> L77
+    L283:
+        r38.close();     // Catch: Throwable -> L83
+        th = null;
+    L83:
+        th = th;
+    L93:
+        th = th;
+    L94:
+        Throwable r47 = th;
+        if (r37 == null) goto L320;
+        r37.close();     // Catch: Throwable -> L158
+        throw r47;
+    L158:
+        th = move-exception;
+        j51.d(r47, th);
+        throw r47;
+    L320:
+        throw r47;
+    L95:
+        r37 = r212;
+    L132:
+        th = th;
+        r37 = r212;
+    L134:
+        th = th;
+    L259:
+    L139:
+        th = th;
+        goto L149
+    L138:
+        throw new IOException("unsupported zip: spanned");     // Catch: Throwable -> L139
+    L154:
+        throw new IOException("not a zip: size=" + r113.size());     // Catch: Throwable -> L93
+    L151:
+        th = th;
+        r37 = r113;
+        goto L94
+    L162:
+        return q40.G0(r11, r20);
+    L163:
+        NavHostFragment r48 = (NavHostFragment) r0;
+        Context r49 = r48.n();
+        if (r49 == null) goto L227;
+        v23 r50 = new v23(r49);
+        ba2 r51 = r50.n;
+        if (r48 == r51) goto L173;
+        pd1 r52 = r50.r;
+        if (r51 == null) goto L172;
+        ea2 r53 = r51.h();
+        if (r53 == null) goto L172;
+        r53.f(r52);
+    L172:
+        r50.n = r48;
+        r48.c0.a(r52);
+    L173:
+        e75 r54 = r48.d();
+        if (h12.c(r50.o, su3.s(r54)) == false) goto L177;
+    L179:
+        Context r55 = r48.Z();
+        ld1 r56 = r48.m();
+        r56.getClass();
+        tp0 r57 = new tp0(r55, r56);
+        u43 r58 = r50.u;
+        r58.a(r57);
+        Context r59 = r48.Z();
+        ld1 r60 = r48.m();
+        r60.getClass();
+        int r61 = r48.J;
+        if (r61 != 0) goto L182;
+    L184:
+        r61 = R.id.nav_host_fragment_container;
+    L185:
+        r58.a(new rd1(r59, r60, r61));
+        Bundle r62 = ((rm3) r48.g0.p).A("android-support-nav:fragment:navControllerState");
+        if (r62 == null) goto L210;
+        r62.setClassLoader(r49.getClassLoader());
+        r50.d = r62.getBundle("android-support-nav:controller:navigatorState");
+        r50.e = r62.getParcelableArray("android-support-nav:controller:backStack");
+        LinkedHashMap r63 = r50.m;
+        r63.clear();
+        int[] r64 = r62.getIntArray("android-support-nav:controller:backStackDestIds");
+        ArrayList<String> r65 = r62.getStringArrayList("android-support-nav:controller:backStackIds");
+        if (r64 == null) goto L193;
+        if (r65 == null) goto L193;
+        int r66 = r64.length;
+        int r67 = 0;
+        int r128 = 0;
+    L191:
+        if (r67 >= r66) goto L193;
+        r50.l.put(Integer.valueOf(r64[r67]), r65.get(r128));
+        r67 = r67 + 1;
+        r128 = r128 + 1;
+    L193:
+        ArrayList<String> r68 = r62.getStringArrayList("android-support-nav:controller:backStackStates");
+        if (r68 == null) goto L209;
+        int r69 = r68.size();
+        int r70 = 0;
+    L196:
+        if (r70 >= r69) goto L209;
+        String r71 = r68.get(r70);
+        r70 = r70 + 1;
+        String r72 = r71;
+        Parcelable[] r129 = r62.getParcelableArray("android-support-nav:controller:backStackStates:" + r72);
+        if (r129 == null) goto L196;
+        r72.getClass();
+        ii r130 = new ii(r129.length);
+        int r131 = 0;
+    L201:
+        if (r131 >= r129.length) goto L208;
+        int r132 = r131 + 1;
+        Parcelable r133 = r129[r131];     // Catch: ArrayIndexOutOfBoundsException -> L205
+        r133.getClass();
+        r130.addLast((c23) r133);
+        r131 = r132;
+    L205:
+        e = move-exception;
+        kf2.m(e.getMessage());
+    L207:
+        return null;
+    L208:
+        r63.put(r72, r130);
+    L209:
+        r50.f = r62.getBoolean("android-support-nav:controller:deepLinkHandled");
+    L210:
+        ((rm3) r48.g0.p).L("android-support-nav:fragment:navControllerState", new cs0(r3, r50));
+        Bundle r73 = ((rm3) r48.g0.p).A("android-support-nav:fragment:graphId");
+        if (r73 == null) goto L213;
+        r48.n0 = r73.getInt("android-support-nav:fragment:graphId");
+    L213:
+        ((rm3) r48.g0.p).L("android-support-nav:fragment:graphId", new cs0(3, r48));
+        int r74 = r48.n0;
+        rp4 r75 = r50.B;
+        if (r74 == 0) goto L217;
+        r50.v(((w23) r75.getValue()).b(r74), null);
+    L322:
+        return r50;
+    L217:
+        Bundle r76 = r48.s;
+        if (r76 == null) goto L220;
+        int r77 = r76.getInt("android-support-nav:fragment:graphId");
+    L221:
+        if (r76 == null) goto L223;
+        Bundle r78 = r76.getBundle("android-support-nav:fragment:startDestinationArgs");
+    L224:
+        if (r77 == 0) goto L322;
+        r50.v(((w23) r75.getValue()).b(r77), r78);
+        goto L322
+    L223:
+        r78 = null;
+        goto L224
+    L220:
+        r77 = 0;
+        goto L221
+    L182:
+        if (r61 == (-1)) goto L184;
+    L177:
+        if (r50.g.isEmpty() == false) goto L226;
+        r50.o = su3.s(r54);
+        goto L179
+    L226:
+        kf2.o("ViewModelStore should be set before setGraph call");
+        goto L207
+    L227:
+        kf2.o("NavController cannot be created before the fragment is attached");
+        goto L207
+    L231:
+        v23 r79 = (v23) r0;
+        return new w23(r79.a, r79.u);
+    L233:
+        a23 r80 = (a23) r0;
+        Context r81 = r80.n.getApplicationContext();
+        if ((r81 instanceof Application) == false) goto L236;
+        Application r82 = (Application) r81;
+    L238:
+        return new k54(r82, r80, r80.c());
+    L236:
+        r82 = null;
+        goto L238
+    L239:
+        rq1 r83 = (rq1) r0;
+        r83.getClass();
+        r83.J.s(2, 0, false);     // Catch: IOException -> L242
+    L244:
+        return r2;
+    L242:
+        e = move-exception;
+        r83.f(e);
+        goto L244
+    L245:
+        ((wo0) r0).F(new GetCredentialUnsupportedException("Your device doesn't support credential manager"));
+        return r2;
+    L5:
+        return ((Worker) r0).d();
+    L7:
+        return new tc0[((p81[]) r0).length];
+    L9:
+        return ((r21) ((y10) r0).f).i();
+    L230:
+        return new n23((String) r0, null, null);
     }
 }

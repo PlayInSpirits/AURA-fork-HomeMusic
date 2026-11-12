@@ -8,55 +8,61 @@ public final class v34 {
     public ba5 a;
     public ArrayList b;
 
-    public static long a(yo0 yo0Var, long j) {
-        ba5 ba5Var = yo0Var.d;
-        ArrayList arrayList = yo0Var.k;
-        if (ba5Var instanceof yl1) {
-            return j;
-        }
-        int size = arrayList.size();
-        long jMin = j;
-        for (int i = 0; i < size; i++) {
-            uo0 uo0Var = (uo0) arrayList.get(i);
-            if (uo0Var instanceof yo0) {
-                yo0 yo0Var2 = (yo0) uo0Var;
-                if (yo0Var2.d != ba5Var) {
-                    jMin = Math.min(jMin, a(yo0Var2, ((long) yo0Var2.f) + j));
-                }
-            }
-        }
-        yo0 yo0Var3 = ba5Var.i;
-        yo0 yo0Var4 = ba5Var.h;
-        if (yo0Var != yo0Var3) {
-            return jMin;
-        }
-        long j2 = j - ba5Var.j();
-        return Math.min(Math.min(jMin, a(yo0Var4, j2)), j2 - ((long) yo0Var4.f));
+    public static long a(yo0 r9, long r10) {
+        ba5 r0 = r9.d;
+        ArrayList r1 = r9.k;
+        if ((r0 instanceof yl1) == false) goto L5;
+        return r10;
+    L5:
+        int r2 = r1.size();
+        int r3 = 0;
+        long r4 = r10;
+    L6:
+        if (r3 >= r2) goto L14;
+        uo0 r6 = (uo0) r1.get(r3);
+        if ((r6 instanceof yo0) == false) goto L13;
+        yo0 r7 = (yo0) r6;
+        if (r7.d == r0) goto L13;
+        r4 = Math.min(r4, a(r7, ((long) r7.f) + r10));
+    L13:
+        r3 = r3 + 1;
+        goto L6
+    L14:
+        yo0 r5 = r0.i;
+        yo0 r8 = r0.h;
+        if (r9 != r5) goto L18;
+        long r11 = r10 - r0.j();
+        return Math.min(Math.min(r4, a(r8, r11)), r11 - ((long) r8.f));
+    L18:
+        return r4;
     }
 
-    public static long b(yo0 yo0Var, long j) {
-        ba5 ba5Var = yo0Var.d;
-        ArrayList arrayList = yo0Var.k;
-        if (ba5Var instanceof yl1) {
-            return j;
-        }
-        int size = arrayList.size();
-        long jMax = j;
-        for (int i = 0; i < size; i++) {
-            uo0 uo0Var = (uo0) arrayList.get(i);
-            if (uo0Var instanceof yo0) {
-                yo0 yo0Var2 = (yo0) uo0Var;
-                if (yo0Var2.d != ba5Var) {
-                    jMax = Math.max(jMax, b(yo0Var2, ((long) yo0Var2.f) + j));
-                }
-            }
-        }
-        yo0 yo0Var3 = ba5Var.h;
-        yo0 yo0Var4 = ba5Var.i;
-        if (yo0Var != yo0Var3) {
-            return jMax;
-        }
-        long j2 = ba5Var.j() + j;
-        return Math.max(Math.max(jMax, b(yo0Var4, j2)), j2 - ((long) yo0Var4.f));
+    public static long b(yo0 r9, long r10) {
+        ba5 r0 = r9.d;
+        ArrayList r1 = r9.k;
+        if ((r0 instanceof yl1) == false) goto L5;
+        return r10;
+    L5:
+        int r2 = r1.size();
+        int r3 = 0;
+        long r4 = r10;
+    L6:
+        if (r3 >= r2) goto L14;
+        uo0 r6 = (uo0) r1.get(r3);
+        if ((r6 instanceof yo0) == false) goto L13;
+        yo0 r7 = (yo0) r6;
+        if (r7.d == r0) goto L13;
+        r4 = Math.max(r4, b(r7, ((long) r7.f) + r10));
+    L13:
+        r3 = r3 + 1;
+        goto L6
+    L14:
+        yo0 r5 = r0.h;
+        yo0 r8 = r0.i;
+        if (r9 != r5) goto L18;
+        long r11 = r0.j() + r10;
+        return Math.max(Math.max(r4, b(r8, r11)), r11 - ((long) r8.f));
+    L18:
+        return r4;
     }
 }

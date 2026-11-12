@@ -10,37 +10,43 @@ public final /* synthetic */ class g20 implements CompoundButton.OnCheckedChange
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ g20(int i, Object obj) {
-        this.a = i;
-        this.b = obj;
+    public /* synthetic */ g20(int r1, Object r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
     @Override // android.widget.CompoundButton.OnCheckedChangeListener
-    public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-        int i = this.a;
-        Object obj = this.b;
-        switch (i) {
-            case 0:
-                Chip chip = (Chip) obj;
-                th2 th2Var = chip.w;
-                if (th2Var != null) {
-                    y10 y10Var = (y10) ((hg3) th2Var).o;
-                    if (!z ? y10Var.m(chip, y10Var.c) : y10Var.b(chip)) {
-                        y10Var.g();
-                    }
-                }
-                CompoundButton.OnCheckedChangeListener onCheckedChangeListener = chip.v;
-                if (onCheckedChangeListener != null) {
-                    onCheckedChangeListener.onCheckedChanged(compoundButton, z);
-                }
-                break;
-            case 1:
-                qo1 qo1Var = (qo1) obj;
-                ((HomeSector) qo1Var.v.q.get(qo1Var.c())).setVisible(z);
-                break;
-            default:
-                ((fl3) obj).C0.d.k(Boolean.valueOf(z));
-                break;
-        }
+    public final void onCheckedChanged(CompoundButton r3, boolean r4) {
+        int r0 = this.a;
+        Object r2 = this.b;
+        switch(r0) {
+            case 0: goto L8;
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((fl3) r2).C0.d.k(Boolean.valueOf(r4));
+        return;
+    L6:
+        qo1 r5 = (qo1) r2;
+        ((HomeSector) r5.v.q.get(r5.c())).setVisible(r4);
+        return;
+    L8:
+        Chip r6 = (Chip) r2;
+        th2 r1 = r6.w;
+        if (r1 == null) goto L18;
+        y10 r7 = (y10) ((hg3) r1).o;
+        if (r4 == false) goto L16;
+        if (r7.b(r6) == false) goto L18;
+    L17:
+        r7.g();
+        goto L18
+    L16:
+        if (r7.m(r6, r7.c) == true) goto L17;
+    L18:
+        CompoundButton.OnCheckedChangeListener r8 = r6.v;
+        if (r8 == null) goto L22;
+        r8.onCheckedChanged(r3, r4);
+        return;
     }
 }

@@ -5,23 +5,27 @@ package defpackage;
 public final class h10 extends i10 {
     public final Throwable a;
 
-    public h10(Throwable th) {
-        this.a = th;
+    public h10(Throwable r1) {
+        this.a = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof h10) {
-            return h12.c(this.a, ((h10) obj).a);
-        }
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof h10) == false) goto L8;
+        Throwable r3 = ((h10) r2).a;
+        if (h12.c(this.a, r3) == false) goto L10;
+        return true;
+    L10:
+        return false;
+    L8:
         return false;
     }
 
     public final int hashCode() {
-        Throwable th = this.a;
-        if (th != null) {
-            return th.hashCode();
-        }
+        Throwable r0 = this.a;
+        if (r0 != null) goto L5;
         return 0;
+    L5:
+        return r0.hashCode();
     }
 
     @Override // defpackage.i10

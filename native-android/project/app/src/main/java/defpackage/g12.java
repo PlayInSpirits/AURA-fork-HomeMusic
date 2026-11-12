@@ -20,8 +20,6 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.common.api.Status;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
@@ -30,6 +28,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -39,552 +38,720 @@ import java.util.Set;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class g12 {
     public static byte a;
-    public static final l50 b = new l50(1, "android");
-    public static final ca1 c = new ca1(14);
-    public static final n7 d = new n7(15);
-    public static final f01 e = new f01(1, "NO_VALUE");
+    public static final l50 b = null;
+    public static final ca1 c = null;
+    public static final n7 d = null;
+    public static final f01 e = null;
     public static Method f;
     public static Method g;
     public static boolean h;
 
-    public static final void A(u62 u62Var) {
-        j51.O(u62Var).D();
+    static {
+        b = new l50(1, "android");
+        c = new ca1(14);
+        d = new n7(15);
+        e = new f01(1, "NO_VALUE");
     }
 
-    public static boolean B(int i) {
-        return i != 0 && v50.e(i) > 0.5d;
+    public static final void A(u62 r0) {
+        j51.O(r0).D();
     }
 
-    public static boolean C(String str) {
-        te teVar = m95.a;
-        Set<ue> setUnmodifiableSet = Collections.unmodifiableSet(ue.c);
-        HashSet<ue> hashSet = new HashSet();
-        for (ue ueVar : setUnmodifiableSet) {
-            if (ueVar.a.equals(str)) {
-                hashSet.add(ueVar);
-            }
-        }
-        if (hashSet.isEmpty()) {
-            tb4.e("Unknown feature ".concat(str));
-            return false;
-        }
-        for (ue ueVar2 : hashSet) {
-            if (ueVar2.a() || ueVar2.b()) {
-                return true;
-            }
-        }
+    public static boolean B(int r4) {
+        if (r4 != 0) goto L4;
+        return false;
+    L4:
+        if (v50.e(r4) <= 0.5d) goto L9;
+        return true;
+    L9:
         return false;
     }
 
-    public static final boolean D(long j) {
-        return (j & 2) != 0;
+    public static boolean C(String r4) {
+        te r0 = m95.a;
+        Set r1 = Collections.unmodifiableSet(ue.c);
+        HashSet r2 = new HashSet();
+        Iterator r3 = r1.iterator();
+    L4:
+        if (r3.hasNext() == false) goto L9;
+        ue r5 = (ue) r3.next();
+        if (r5.a.equals(r4) == false) goto L4;
+        r2.add(r5);
+        goto L4
+    L9:
+        if (r2.isEmpty() == true) goto L20;
+        Iterator r6 = r2.iterator();
+    L12:
+        if (r6.hasNext() == false) goto L19;
+        ue r7 = (ue) r6.next();
+        if (r7.a() == true) goto L31;
+        if (r7.b() == false) goto L12;
+        return true;
+    L31:
+        return true;
+    L19:
+        return false;
+    L20:
+        tb4.e("Unknown feature ".concat(r4));
+        return false;
     }
 
-    public static final boolean E(long j) {
-        return (j & 1) != 0;
+    public static final boolean D(long r2) {
+        if ((r2 & 2) == 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
-    public static boolean F(String str, String str2) {
-        return str.startsWith(str2.concat("(")) && str.endsWith(")");
+    public static final boolean E(long r2) {
+        if ((r2 & 1) == 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
-    public static int H(int i, float f2, int i2) {
-        return v50.g(v50.i(i2, Math.round(Color.alpha(i2) * f2)), i);
+    public static boolean F(String r1, String r2) {
+        if (r1.startsWith(r2.concat("(")) == true) goto L5;
+        return false;
+    L5:
+        if (r1.endsWith(")") == false) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
-    public static String I(String str) {
-        return str == null ? "" : Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase(Locale.getDefault());
+    public static int H(int r1, float r2, int r3) {
+        return v50.g(v50.i(r3, Math.round(Color.alpha(r3) * r2)), r1);
     }
 
-    public static final Object J(Object obj, Object obj2) {
-        if (obj == null) {
-            return obj2;
-        }
-        if (obj instanceof ArrayList) {
-            ((ArrayList) obj).add(obj2);
-            return obj;
-        }
-        ArrayList arrayList = new ArrayList(4);
-        arrayList.add(obj);
-        arrayList.add(obj2);
-        return arrayList;
+    public static String I(String r2) {
+        if (r2 != null) goto L6;
+        return "";
+    L6:
+        return Normalizer.normalize(r2, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase(Locale.getDefault());
     }
 
-    public static int N(Context context, int i, int i2) {
-        TypedValue typedValueD = zz1.D(context, i);
-        return (typedValueD == null || typedValueD.type != 16) ? i2 : typedValueD.data;
+    public static final Object J(Object r2, Object r3) {
+        if (r2 != null) goto L5;
+        return r3;
+    L5:
+        if ((r2 instanceof ArrayList) == false) goto L8;
+        ((ArrayList) r2).add(r3);
+        return r2;
+    L8:
+        ArrayList r0 = new ArrayList(4);
+        r0.add(r2);
+        r0.add(r3);
+        return r0;
     }
 
-    public static TimeInterpolator O(Context context, int i, TimeInterpolator timeInterpolator) {
-        TypedValue typedValue = new TypedValue();
-        if (!context.getTheme().resolveAttribute(i, typedValue, true)) {
-            return timeInterpolator;
-        }
-        if (typedValue.type != 3) {
-            kf2.n("Motion easing theme attribute must be an @interpolator resource for ?attr/motionEasing*Interpolator attributes or a string for ?attr/motionEasing* attributes.");
-            return null;
-        }
-        String strValueOf = String.valueOf(typedValue.string);
-        if (!F(strValueOf, "cubic-bezier") && !F(strValueOf, "path")) {
-            return AnimationUtils.loadInterpolator(context, typedValue.resourceId);
-        }
-        if (F(strValueOf, "cubic-bezier")) {
-            String[] strArrSplit = strValueOf.substring(13, strValueOf.length() - 1).split(",");
-            if (strArrSplit.length == 4) {
-                return new PathInterpolator(w(strArrSplit, 0), w(strArrSplit, 1), w(strArrSplit, 2), w(strArrSplit, 3));
-            }
-            mj0.f(strArrSplit.length, "Motion easing theme attribute must have 4 control points if using bezier curve format; instead got: ");
-            return null;
-        }
-        if (!F(strValueOf, "path")) {
-            kf2.n("Invalid motion easing type: ".concat(strValueOf));
-            return null;
-        }
-        String strSubstring = strValueOf.substring(5, strValueOf.length() - 1);
-        Path path = new Path();
-        try {
-            cf3.b(fh0.l(strSubstring), path);
-            return new PathInterpolator(path);
-        } catch (RuntimeException e2) {
-            nz2.s("Error in parsing ".concat(strSubstring), e2);
-            return null;
-        }
+    public static int N(Context r1, int r2, int r3) {
+        TypedValue r4 = zz1.D(r1, r2);
+        if (r4 != null) goto L5;
+    L8:
+        return r3;
+    L5:
+        if (r4.type != 16) goto L8;
+        return r4.data;
     }
 
-    public static final boolean P(Favorite favorite) {
-        int i;
-        boolean z = false;
-        String string = App.a().getSharedPreferences("homemusic_favorite_retries", 0).getString(String.valueOf(favorite.getTimestamp()), null);
-        if (string == null) {
-            string = b11.k("legacyfav:", favorite.getTimestamp());
-        }
-        if (favorite.getSongId() != null) {
-            i = 1;
-        } else {
-            i = favorite.getAlbumId() != null ? 2 : 3;
-        }
-        String songId = favorite.getSongId();
-        if (songId == null && (songId = favorite.getAlbumId()) == null) {
-            songId = favorite.getArtistId();
-        }
-        boolean toStar = favorite.getToStar();
-        HashMap map = n61.a;
-        synchronized (n61.class) {
-            if (songId == null) {
-                return false;
-            }
-            HashMap map2 = n61.a;
-            if (!map2.containsKey(n61.e(i, songId))) {
-                k61 k61Var = new k61(songId, i, string, toStar);
-                String strE = n61.e(i, songId);
-                map2.put(strE, new l61(strE, toStar, null, k61Var));
-                return true;
-            }
-            l61 l61Var = (l61) map2.get(n61.e(i, songId));
-            while (l61Var != null && l61Var.e) {
-                l61Var = l61Var.c;
-            }
-            if (l61Var != null && l61Var.f.d.equals(string)) {
-                z = true;
-            }
-            return z;
-        }
+    public static TimeInterpolator O(Context r6, int r7, TimeInterpolator r8) {
+        TypedValue r0 = new TypedValue();
+        if (r6.getTheme().resolveAttribute(r7, r0, true) == true) goto L6;
+        return r8;
+    L6:
+        if (r0.type != 3) goto L33;
+        String r9 = String.valueOf(r0.string);
+        if (F(r9, "cubic-bezier") == true) goto L15;
+        if (F(r9, "path") == true) goto L15;
+        return AnimationUtils.loadInterpolator(r6, r0.resourceId);
+    L15:
+        if (F(r9, "cubic-bezier") == false) goto L23;
+        String[] r10 = r9.substring(13, r9.length() - 1).split(",");
+        if (r10.length == 4) goto L19;
+        mj0.f(r10.length, "Motion easing theme attribute must have 4 control points if using bezier curve format; instead got: ");
+        return null;
+    L19:
+        return new PathInterpolator(w(r10, 0), w(r10, 1), w(r10, 2), w(r10, 3));
+    L23:
+        if (F(r9, "path") == false) goto L31;
+        String r11 = r9.substring(5, r9.length() - 1);
+        Path r12 = new Path();
+        cf3.b(fh0.l(r11), r12);     // Catch: RuntimeException -> L28
+        return new PathInterpolator(r12);
+    L28:
+        e = move-exception;
+        nz2.s("Error in parsing ".concat(r11), e);
+        return null;
+    L31:
+        kf2.n("Invalid motion easing type: ".concat(r9));
+        return null;
+    L33:
+        kf2.n("Motion easing theme attribute must be an @interpolator resource for ?attr/motionEasing*Interpolator attributes or a string for ?attr/motionEasing* attributes.");
+        return null;
     }
 
-    public static final Object Q(wf1 wf1Var) {
+    public static final boolean P(Favorite r9) {
+        boolean r2 = false;
+        String r0 = App.a().getSharedPreferences("homemusic_favorite_retries", 0).getString(String.valueOf(r9.getTimestamp()), null);
+        if (r0 != null) goto L6;
+        r0 = b11.k("legacyfav:", r9.getTimestamp());
+    L6:
+        if (r9.getSongId() == null) goto L9;
+        int r1 = 1;
+    L12:
+        String r5 = r9.getSongId();
+        if (r5 != null) goto L17;
+        r5 = r9.getAlbumId();
+        if (r5 != null) goto L17;
+        r5 = r9.getArtistId();
+    L17:
+        boolean r10 = r9.getToStar();
+        HashMap r6 = n61.a;
+        monitor-enter(n61.class);
+        if (r5 != null) goto L42;
+        monitor-exit(n61.class);
+        return false;
+    L42:
+        HashMap r7 = n61.a;     // Catch: Throwable -> L33
+        if (r7.containsKey(n61.e(r1, r5)) == false) goto L37;
+        l61 r11 = (l61) r7.get(n61.e(r1, r5));     // Catch: Throwable -> L33
+    L25:
+        if (r11 == null) goto L29;
+        if (r11.e == false) goto L29;
+        r11 = r11.c;     // Catch: Throwable -> L33
+    L29:
+        if (r11 != null) goto L31;
+    L35:
+        monitor-exit(n61.class);
+        return r2;
+    L31:
+        if (r11.f.d.equals(r0) == false) goto L35;
+        r2 = true;
+        goto L35
+    L37:
+        k61 r3 = new k61(r5, r1, r0, r10);     // Catch: Throwable -> L33
+        String r4 = n61.e(r1, r5);     // Catch: Throwable -> L33
+        r7.put(r4, new l61(r4, r10, null, r3));     // Catch: Throwable -> L33
+        monitor-exit(n61.class);
+        return true;
+    L33:
+        th = move-exception;
+        throw th;
+    L9:
+        if (r9.getAlbumId() == null) goto L11;
+        r1 = 2;
+        goto L12
+    L11:
+        r1 = 3;
+        goto L12
+    }
+
+    public static final Object Q(wf1 r2) {
         Thread.interrupted();
-        return fu.L(q01.n, new e73(wf1Var, null));
+        e73 r0 = new e73(r2, null);
+        return fu.L(q01.n, r0);
     }
 
-    public static void R(Status status, Object obj, cr4 cr4Var) {
-        if (status.n <= 0) {
-            cr4Var.b(obj);
-        } else {
-            cr4Var.a(status.p != null ? new ResolvableApiException(status) : new ApiException(status));
-        }
+    public static void R(Status r1, Object r2, cr4 r3) {
+        if (r1.n > 0) goto L7;
+        r3.b(r2);
+        return;
+    L7:
+        if (r1.p == null) goto L9;
+        ApiException r4 = new ResolvableApiException(r1);
+    L10:
+        r3.a(r4);
+        return;
+    L9:
+        r4 = new ApiException(r1);
+        goto L10
     }
 
-    public static byte[] S(short s) {
-        return new byte[]{(byte) (s & 255), (byte) ((s >> 8) & 255)};
+    public static byte[] S(short r3) {
+        return new byte[]{(byte) (r3 & 255), (byte) ((r3 >> 8) & 255)};
     }
 
-    public static int T(int i) {
-        return (int) (((long) Integer.rotateLeft((int) (((long) i) * (-862048943)), 15)) * 461845907);
+    public static int T(int r4) {
+        return (int) (((long) Integer.rotateLeft((int) (((long) r4) * (-862048943)), 15)) * 461845907);
     }
 
-    public static int U(Object obj) {
-        return T(obj == null ? 0 : obj.hashCode());
+    public static int U(Object r0) {
+        if (r0 != null) goto L4;
+        int r1 = 0;
+    L6:
+        return T(r1);
+    L4:
+        r1 = r0.hashCode();
+        goto L6
     }
 
-    public static final cd4 a(int i, int i2, wv wvVar) {
-        if (i < 0) {
-            kf2.e(f34.f(i, "replay cannot be negative, but was "));
-            return null;
-        }
-        if (i2 < 0) {
-            kf2.e(f34.f(i2, "extraBufferCapacity cannot be negative, but was "));
-            return null;
-        }
-        if (i <= 0 && i2 <= 0 && wvVar != wv.n) {
-            nz2.l(wvVar, "replay or extraBufferCapacity must be positive with non-default onBufferOverflow strategy ");
-            return null;
-        }
-        int i3 = i2 + i;
-        if (i3 < 0) {
-            i3 = Integer.MAX_VALUE;
-        }
-        return new cd4(i, i3, wvVar);
+    public static final cd4 a(int r2, int r3, wv r4) {
+        if (r2 < 0) goto L19;
+        if (r3 < 0) goto L17;
+        if (r2 > 0) goto L12;
+        if (r3 > 0) goto L12;
+        if (r4 == wv.n) goto L12;
+        nz2.l(r4, "replay or extraBufferCapacity must be positive with non-default onBufferOverflow strategy ");
+        return null;
+    L12:
+        int r5 = r3 + r2;
+        if (r5 >= 0) goto L16;
+        r5 = Integer.MAX_VALUE;
+    L16:
+        return new cd4(r2, r5, r4);
+    L17:
+        kf2.e(f34.f(r3, "extraBufferCapacity cannot be negative, but was "));
+        return null;
+    L19:
+        kf2.e(f34.f(r2, "replay cannot be negative, but was "));
+        return null;
     }
 
-    public static byte[] b(int i) {
-        return new byte[]{(byte) (i & 255), (byte) ((i >> 8) & 255), (byte) ((i >> 16) & 255), (byte) ((i >> 24) & 255)};
+    public static byte[] b(int r5) {
+        return new byte[]{(byte) (r5 & 255), (byte) ((r5 >> 8) & 255), (byte) ((r5 >> 16) & 255), (byte) ((r5 >> 24) & 255)};
     }
 
-    public static final float c(long j, long j2) {
-        return Math.min(Float.intBitsToFloat((int) (j2 >> 32)) / Float.intBitsToFloat((int) (j >> 32)), Float.intBitsToFloat((int) (j2 & 4294967295L)) / Float.intBitsToFloat((int) (j & 4294967295L)));
+    public static final float c(long r4, long r6) {
+        return Math.min(Float.intBitsToFloat((int) (r6 >> 32)) / Float.intBitsToFloat((int) (r4 >> 32)), Float.intBitsToFloat((int) (r6 & 4294967295L)) / Float.intBitsToFloat((int) (r4 & 4294967295L)));
     }
 
-    public static final void d(Object[] objArr, long j, Object obj) {
-        objArr[((int) j) & (objArr.length - 1)] = obj;
+    public static final void d(Object[] r0, long r1, Object r3) {
+        r0[((int) r1) & (r0.length - 1)] = r3;
     }
 
-    public static void f(vo4 vo4Var, Object[] objArr) {
-        if (objArr == null) {
-            return;
-        }
-        int length = objArr.length;
-        int i = 0;
-        while (i < length) {
-            Object obj = objArr[i];
-            i++;
-            if (obj == null) {
-                vo4Var.e(i);
-            } else if (obj instanceof byte[]) {
-                vo4Var.x(i, (byte[]) obj);
-            } else if (obj instanceof Float) {
-                vo4Var.d(((Number) obj).floatValue(), i);
-            } else if (obj instanceof Double) {
-                vo4Var.d(((Number) obj).doubleValue(), i);
-            } else if (obj instanceof Long) {
-                vo4Var.c(i, ((Number) obj).longValue());
-            } else if (obj instanceof Integer) {
-                vo4Var.c(i, ((Number) obj).intValue());
-            } else if (obj instanceof Short) {
-                vo4Var.c(i, ((Number) obj).shortValue());
-            } else if (obj instanceof Byte) {
-                vo4Var.c(i, ((Number) obj).byteValue());
-            } else if (obj instanceof String) {
-                vo4Var.h(i, (String) obj);
-            } else {
-                if (!(obj instanceof Boolean)) {
-                    throw new IllegalArgumentException("Cannot bind " + obj + " at index " + i + " Supported types: Null, ByteArray, Float, Double, Long, Int, Short, Byte, String");
-                }
-                vo4Var.c(i, ((Boolean) obj).booleanValue() ? 1L : 0L);
-            }
-        }
+    public static void f(vo4 r4, Object[] r5) {
+        if (r5 == null) goto L42;
+        int r0 = r5.length;
+        int r1 = 0;
+    L5:
+        if (r1 >= r0) goto L74;
+        Object r2 = r5[r1];
+        r1 = r1 + 1;
+        if (r2 == null) goto L8;
+        if ((r2 instanceof byte[]) == true) goto L11;
+        if ((r2 instanceof Float) == true) goto L14;
+        if ((r2 instanceof Double) == true) goto L17;
+        if ((r2 instanceof Long) == true) goto L20;
+        if ((r2 instanceof Integer) == true) goto L23;
+        if ((r2 instanceof Short) == true) goto L26;
+        if ((r2 instanceof Byte) == true) goto L29;
+        if ((r2 instanceof String) == true) goto L32;
+        if ((r2 instanceof Boolean) == false) goto L41;
+        if (((Boolean) r2).booleanValue() == false) goto L38;
+        long r3 = 1;
+    L39:
+        r4.c(r1, r3);
+        goto L5
+    L38:
+        r3 = 0;
+        goto L39
+    L41:
+        throw new IllegalArgumentException("Cannot bind " + r2 + " at index " + r1 + " Supported types: Null, ByteArray, Float, Double, Long, Int, Short, Byte, String");
+    L32:
+        r4.h(r1, (String) r2);
+        goto L5
+    L29:
+        r4.c(r1, ((Number) r2).byteValue());
+        goto L5
+    L26:
+        r4.c(r1, ((Number) r2).shortValue());
+        goto L5
+    L23:
+        r4.c(r1, ((Number) r2).intValue());
+        goto L5
+    L20:
+        r4.c(r1, ((Number) r2).longValue());
+        goto L5
+    L17:
+        r4.d(((Number) r2).doubleValue(), r1);
+        goto L5
+    L14:
+        r4.d(((Number) r2).floatValue(), r1);
+        goto L5
+    L11:
+        r4.x(r1, (byte[]) r2);
+        goto L5
+    L8:
+        r4.e(r1);
+        goto L5
+    L74:
+        return;
     }
 
-    public static byte[] j(char c2) {
-        return new byte[]{(byte) (c2 & 255), (byte) ((c2 >> '\b') & 255)};
+    public static byte[] j(char r3) {
+        return new byte[]{(byte) (r3 & 255), (byte) ((r3 >> '\b') & 255)};
     }
 
-    public static final int k(long j, long j2) {
-        boolean zE = E(j);
-        if (zE != E(j2)) {
-            return zE ? -1 : 1;
-        }
-        int iSignum = (int) Math.signum(u(j) - u(j2));
-        if (Math.min(u(j), u(j2)) >= 0.0f && D(j) != D(j2)) {
-            return D(j) ? -1 : 1;
-        }
-        return iSignum;
+    public static final int k(long r5, long r7) {
+        boolean r0 = E(r5);
+        if (r0 == E(r7)) goto L7;
+        if (r0 == false) goto L6;
+        return -1;
+    L6:
+        return 1;
+    L7:
+        int r1 = (int) Math.signum(u(r5) - u(r7));
+        if (Math.min(u(r5), u(r7)) >= 0.0f) goto L11;
+    L16:
+        return r1;
+    L11:
+        if (D(r5) == D(r7)) goto L16;
+        if (D(r5) == false) goto L15;
+        return -1;
+    L15:
+        return 1;
     }
 
-    public static int l(int i, int i2) {
-        return v50.i(i, (Color.alpha(i) * i2) / 255);
+    public static int l(int r1, int r2) {
+        return v50.i(r1, (Color.alpha(r1) * r2) / 255);
     }
 
-    public static byte[] m(df dfVar, Map map) throws IOException {
-        l50 l50Var;
-        if (map.entrySet().isEmpty()) {
-            kf2.n("No color resources provided for harmonization.");
-            return null;
-        }
-        l50 l50Var2 = new l50(127, dfVar.getPackageName());
-        HashMap map2 = new HashMap();
-        j50 j50Var = null;
-        for (Map.Entry entry : map.entrySet()) {
-            int iIntValue = ((Integer) entry.getKey()).intValue();
-            String resourceName = dfVar.getResources().getResourceName(((Integer) entry.getKey()).intValue());
-            j50 j50Var2 = new j50(resourceName, iIntValue, ((Integer) entry.getValue()).intValue());
-            if (!dfVar.getResources().getResourceTypeName(((Integer) entry.getKey()).intValue()).equals("color")) {
-                kf2.g(Integer.toHexString(j50Var2.b & 255), xa3.j("Non color resource found: name=", resourceName, ", typeId="));
-                return null;
-            }
-            byte b2 = j50Var2.a;
-            if (b2 == 1) {
-                l50Var = b;
-            } else {
-                if (b2 != 127) {
-                    kf2.n(f34.f(b2, "Not supported with unknown package id: "));
-                    return null;
-                }
-                l50Var = l50Var2;
-            }
-            if (!map2.containsKey(l50Var)) {
-                map2.put(l50Var, new ArrayList());
-            }
-            ((List) map2.get(l50Var)).add(j50Var2);
-            j50Var = j50Var2;
-        }
-        byte b3 = j50Var.b;
-        a = b3;
-        if (b3 == 0) {
-            kf2.n("No color resources found for harmonization.");
-            return null;
-        }
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ArrayList arrayList = new ArrayList();
-        int size = map2.size();
-        o50 o50Var = new o50(new String[0], false);
-        for (Map.Entry entry2 : map2.entrySet()) {
-            List list = (List) entry2.getValue();
-            Collections.sort(list, c);
-            arrayList.add(new k50((l50) entry2.getKey(), list));
-        }
-        int size2 = arrayList.size();
-        int iA = 0;
-        int i = 0;
-        while (i < size2) {
-            Object obj = arrayList.get(i);
-            i++;
-            iA += ((k50) obj).a();
-        }
-        int i2 = o50Var.l + 12 + iA;
-        byteArrayOutputStream.write(S((short) 2));
-        byteArrayOutputStream.write(S((short) 12));
-        byteArrayOutputStream.write(b(i2));
-        byteArrayOutputStream.write(b(size));
-        o50Var.a(byteArrayOutputStream);
-        int size3 = arrayList.size();
-        int i3 = 0;
-        while (i3 < size3) {
-            Object obj2 = arrayList.get(i3);
-            i3++;
-            k50 k50Var = (k50) obj2;
-            o50 o50Var2 = k50Var.c;
-            k50Var.a.a(byteArrayOutputStream);
-            l50 l50Var3 = k50Var.b;
-            byteArrayOutputStream.write(b(l50Var3.a));
-            char[] charArray = l50Var3.b.toCharArray();
-            for (int i4 = 0; i4 < 128; i4++) {
-                if (i4 < charArray.length) {
-                    byteArrayOutputStream.write(j(charArray[i4]));
-                } else {
-                    byteArrayOutputStream.write(j((char) 0));
-                }
-            }
-            byteArrayOutputStream.write(b(288));
-            byteArrayOutputStream.write(b(0));
-            byteArrayOutputStream.write(b(o50Var2.l + 288));
-            byteArrayOutputStream.write(b(0));
-            byteArrayOutputStream.write(b(0));
-            o50Var2.a(byteArrayOutputStream);
-            k50Var.d.a(byteArrayOutputStream);
-            gc gcVar = k50Var.e;
-            ((m50) gcVar.b).a(byteArrayOutputStream);
-            byteArrayOutputStream.write(new byte[]{a, 0, 0, 0});
-            byteArrayOutputStream.write(b(gcVar.a));
-            for (int i5 : (int[]) gcVar.c) {
-                byteArrayOutputStream.write(b(i5));
-            }
-            ew4 ew4Var = (ew4) gcVar.d;
-            m50 m50Var = (m50) ew4Var.p;
-            int[] iArr = (int[]) ew4Var.r;
-            m50Var.a(byteArrayOutputStream);
-            byteArrayOutputStream.write(new byte[]{a, 0, 0, 0});
-            byteArrayOutputStream.write(b(ew4Var.o));
-            byteArrayOutputStream.write(b((iArr.length * 4) + 84));
-            byteArrayOutputStream.write((byte[]) ew4Var.q);
-            for (int i6 : iArr) {
-                byteArrayOutputStream.write(b(i6));
-            }
-            for (n50 n50Var : (n50[]) ew4Var.s) {
-                n50Var.getClass();
-                byteArrayOutputStream.write(S((short) 8));
-                byteArrayOutputStream.write(S((short) 2));
-                byteArrayOutputStream.write(b(n50Var.a));
-                byteArrayOutputStream.write(S((short) 8));
-                byteArrayOutputStream.write(new byte[]{0, 28});
-                byteArrayOutputStream.write(b(n50Var.b));
-            }
-        }
-        return byteArrayOutputStream.toByteArray();
+    public static byte[] m(df r12, Map r13) {
+        if (r13.entrySet().isEmpty() == true) goto L54;
+        l50 r0 = new l50(127, r12.getPackageName());
+        HashMap r2 = new HashMap();
+        Iterator r14 = r13.entrySet().iterator();
+        j50 r4 = null;
+    L6:
+        if (r14.hasNext() == false) goto L22;
+        Map.Entry r5 = (Map.Entry) r14.next();
+        int r7 = ((Integer) r5.getKey()).intValue();
+        String r8 = r12.getResources().getResourceName(((Integer) r5.getKey()).intValue());
+        j50 r6 = new j50(r8, r7, ((Integer) r5.getValue()).intValue());
+        if (r12.getResources().getResourceTypeName(((Integer) r5.getKey()).intValue()).equals("color") == false) goto L20;
+        byte r9 = r6.a;
+        if (r9 != 1) goto L12;
+        l50 r10 = b;
+    L15:
+        if (r2.containsKey(r10) == true) goto L17;
+        r2.put(r10, new ArrayList());
+    L17:
+        ((List) r2.get(r10)).add(r6);
+        r4 = r6;
+        goto L6
+    L12:
+        if (r9 != 127) goto L18;
+        r10 = r0;
+        goto L15
+    L18:
+        kf2.n(f34.f(r9, "Not supported with unknown package id: "));
+        return null;
+    L20:
+        kf2.g(Integer.toHexString(r6.b & 255), xa3.j("Non color resource found: name=", r8, ", typeId="));
+        return null;
+    L22:
+        byte r15 = r4.b;
+        a = r15;
+        if (r15 == 0) goto L52;
+        ByteArrayOutputStream r16 = new ByteArrayOutputStream();
+        ArrayList r17 = new ArrayList();
+        int r1 = r2.size();
+        o50 r3 = new o50(new String[0], false);
+        Iterator r11 = r2.entrySet().iterator();
+    L26:
+        if (r11.hasNext() == false) goto L28;
+        Map.Entry r18 = (Map.Entry) r11.next();
+        List r19 = (List) r18.getValue();
+        Collections.sort(r19, c);
+        r17.add(new k50((l50) r18.getKey(), r19));
+        goto L26
+    L28:
+        int r20 = r17.size();
+        int r21 = 0;
+        int r22 = 0;
+    L29:
+        if (r22 >= r20) goto L31;
+        Object r23 = r17.get(r22);
+        r22 = r22 + 1;
+        r21 = r21 + ((k50) r23).a();
+        goto L29
+    L31:
+        int r24 = (r3.l + 12) + r21;
+        r16.write(S(2));
+        r16.write(S(12));
+        r16.write(b(r24));
+        r16.write(b(r1));
+        r3.a(r16);
+        int r25 = r17.size();
+        int r26 = 0;
+    L32:
+        if (r26 >= r25) goto L51;
+        Object r27 = r17.get(r26);
+        r26 = r26 + 1;
+        k50 r28 = (k50) r27;
+        o50 r29 = r28.c;
+        r28.a.a(r16);
+        l50 r30 = r28.b;
+        r16.write(b(r30.a));
+        char[] r31 = r30.b.toCharArray();
+        int r32 = 0;
+    L35:
+        if (r32 >= 128) goto L41;
+        if (r32 >= r31.length) goto L39;
+        r16.write(j(r31[r32]));
+    L40:
+        r32 = r32 + 1;
+        goto L35
+    L39:
+        r16.write(j(0));
+        goto L40
+    L41:
+        r16.write(b(288));
+        r16.write(b(0));
+        r16.write(b(r29.l + 288));
+        r16.write(b(0));
+        r16.write(b(0));
+        r29.a(r16);
+        r28.d.a(r16);
+        gc r33 = r28.e;
+        ((m50) r33.b).a(r16);
+        r16.write(new byte[]{a, 0, 0, 0});
+        r16.write(b(r33.a));
+        int[] r34 = (int[]) r33.c;
+        int r35 = r34.length;
+        int r110 = 0;
+    L42:
+        if (r110 >= r35) goto L44;
+        r16.write(b(r34[r110]));
+        r110 = r110 + 1;
+        goto L42
+    L44:
+        ew4 r36 = (ew4) r33.d;
+        m50 r37 = (m50) r36.p;
+        int[] r38 = (int[]) r36.r;
+        r37.a(r16);
+        r16.write(new byte[]{a, 0, 0, 0});
+        r16.write(b(r36.o));
+        r16.write(b((r38.length * 4) + 84));
+        r16.write((byte[]) r36.q);
+        int r39 = r38.length;
+        int r40 = 0;
+    L45:
+        if (r40 >= r39) goto L47;
+        r16.write(b(r38[r40]));
+        r40 = r40 + 1;
+        goto L45
+    L47:
+        n50[] r41 = (n50[]) r36.s;
+        int r42 = r41.length;
+        int r43 = 0;
+    L48:
+        if (r43 >= r42) goto L32;
+        n50 r44 = r41[r43];
+        r44.getClass();
+        r16.write(S(8));
+        r16.write(S(2));
+        r16.write(b(r44.a));
+        r16.write(S(8));
+        r16.write(new byte[]{0, 28});
+        r16.write(b(r44.b));
+        r43 = r43 + 1;
+        goto L48
+    L51:
+        return r16.toByteArray();
+    L52:
+        kf2.n("No color resources found for harmonization.");
+        return null;
+    L54:
+        kf2.n("No color resources provided for harmonization.");
+        return null;
     }
 
-    public static void n(Canvas canvas, boolean z) {
-        Method method;
-        int i = Build.VERSION.SDK_INT;
-        if (i >= 29) {
-            if (z) {
-                canvas.enableZ();
-                return;
-            } else {
-                canvas.disableZ();
-                return;
-            }
-        }
-        if (!h) {
-            try {
-                if (i == 28) {
-                    Method declaredMethod = Class.class.getDeclaredMethod("getDeclaredMethod", String.class, new Class[0].getClass());
-                    f = (Method) declaredMethod.invoke(Canvas.class, "insertReorderBarrier", new Class[0]);
-                    g = (Method) declaredMethod.invoke(Canvas.class, "insertInorderBarrier", new Class[0]);
-                } else {
-                    f = Canvas.class.getDeclaredMethod("insertReorderBarrier", null);
-                    g = Canvas.class.getDeclaredMethod("insertInorderBarrier", null);
-                }
-                Method method2 = f;
-                if (method2 != null) {
-                    method2.setAccessible(true);
-                }
-                Method method3 = g;
-                if (method3 != null) {
-                    method3.setAccessible(true);
-                }
-            } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException unused) {
-            }
-            h = true;
-        }
-        if (z) {
-            try {
-                Method method4 = f;
-                if (method4 != null) {
-                    method4.invoke(canvas, null);
-                }
-            } catch (IllegalAccessException | InvocationTargetException unused2) {
-                return;
-            }
-        }
-        if (z || (method = g) == null) {
-            return;
-        }
-        method.invoke(canvas, null);
+    public static void n(Canvas r11, boolean r12) {
+        int r0 = Build.VERSION.SDK_INT;
+        if (r0 < 29) goto L10;
+        if (r12 == false) goto L7;
+        kz.z(r11);
+        return;
+    L7:
+        kz.C(r11);
+        return;
+    L10:
+        if (h == false) goto L33;
+    L22:
+        if (r12 == true) goto L35;
+    L26:
+        if (r12 == true) goto L37;
+        Method r13 = g;     // Catch: Throwable -> L32
+        if (r13 == null) goto L38;
+        r13.invoke(r11, null);     // Catch: Throwable -> L32
+        return;
+    L39:
+        return;
+    L38:
+        return;
+    L37:
+        return;
+    L35:
+        Method r1 = f;     // Catch: Throwable -> L32
+        if (r1 == null) goto L26;
+        r1.invoke(r11, null);     // Catch: Throwable -> L32
+        goto L26
+    L33:
+        if (r0 != 28) goto L14;
+        Method r2 = Class.class.getDeclaredMethod("getDeclaredMethod", new Class[]{String.class, new Class[0].getClass()});     // Catch: Throwable -> L31
+        f = (Method) r2.invoke(Canvas.class, new Object[]{"insertReorderBarrier", new Class[0]});     // Catch: Throwable -> L31
+        g = (Method) r2.invoke(Canvas.class, new Object[]{"insertInorderBarrier", new Class[0]});     // Catch: Throwable -> L31
+    L15:
+        Method r3 = f;     // Catch: Throwable -> L31
+        if (r3 == null) goto L18;
+        r3.setAccessible(true);     // Catch: Throwable -> L31
+    L18:
+        Method r4 = g;     // Catch: Throwable -> L31
+        if (r4 == null) goto L21;
+        r4.setAccessible(true);     // Catch: Throwable -> L31
+        goto L21
+    L14:
+        f = Canvas.class.getDeclaredMethod("insertReorderBarrier", null);     // Catch: Throwable -> L31
+        g = Canvas.class.getDeclaredMethod("insertInorderBarrier", null);     // Catch: Throwable -> L31
+    L21:
+        h = true;
+        goto L22
     }
 
-    public static final p81 o(zc4 zc4Var, ne0 ne0Var, int i, wv wvVar) {
-        return ((i == 0 || i == -3) && wvVar == wv.n) ? zc4Var : new b10(zc4Var, ne0Var, i, wvVar);
+    public static final p81 o(zc4 r1, ne0 r2, int r3, wv r4) {
+        if (r3 == 0) goto L6;
+        if (r3 == (-3)) goto L6;
+    L9:
+        return new b10(r1, r2, r3, r4);
+    L6:
+        if (r4 != wv.n) goto L9;
+        return r1;
     }
 
-    public static int r(int i, Context context, String str) {
-        TypedValue typedValueF = zz1.F(i, context, str);
-        int i2 = typedValueF.resourceId;
-        return i2 != 0 ? context.getColor(i2) : typedValueF.data;
+    public static int r(int r0, Context r1, String r2) {
+        TypedValue r3 = zz1.F(r0, r1, r2);
+        int r4 = r3.resourceId;
+        if (r4 == 0) goto L7;
+        return r1.getColor(r4);
+    L7:
+        return r3.data;
     }
 
-    public static int s(Context context, int i, int i2) {
-        TypedValue typedValueD = zz1.D(context, i);
-        if (typedValueD == null) {
-            return i2;
-        }
-        int i3 = typedValueD.resourceId;
-        return i3 != 0 ? context.getColor(i3) : typedValueD.data;
+    public static int s(Context r0, int r1, int r2) {
+        TypedValue r3 = zz1.D(r0, r1);
+        if (r3 == null) goto L10;
+        int r4 = r3.resourceId;
+        if (r4 == 0) goto L9;
+        return r0.getColor(r4);
+    L9:
+        return r3.data;
+    L10:
+        return r2;
     }
 
-    public static int t(View view, int i) {
-        Context context = view.getContext();
-        TypedValue typedValueF = zz1.F(i, view.getContext(), view.getClass().getCanonicalName());
-        int i2 = typedValueF.resourceId;
-        return i2 != 0 ? context.getColor(i2) : typedValueF.data;
+    public static int t(View r2, int r3) {
+        Context r0 = r2.getContext();
+        TypedValue r4 = zz1.F(r3, r2.getContext(), r2.getClass().getCanonicalName());
+        int r5 = r4.resourceId;
+        if (r5 == 0) goto L7;
+        return r0.getColor(r5);
+    L7:
+        return r4.data;
     }
 
-    public static final float u(long j) {
-        return Float.intBitsToFloat((int) (j >> 32));
+    public static final float u(long r1) {
+        return Float.intBitsToFloat((int) (r1 >> 32));
     }
 
-    public static is0 v(Context context) {
-        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(new int[]{R.attr.listDivider});
-        InsetDrawable insetDrawable = new InsetDrawable(typedArrayObtainStyledAttributes.getDrawable(0), 42, 0, 42, 42);
-        typedArrayObtainStyledAttributes.recycle();
-        is0 is0Var = new is0(context);
-        is0Var.a = insetDrawable;
-        return is0Var;
+    public static is0 v(Context r8) {
+        TypedArray r0 = r8.obtainStyledAttributes(new int[]{R.attr.listDivider});
+        InsetDrawable r2 = new InsetDrawable(r0.getDrawable(0), 42, 0, 42, 42);
+        r0.recycle();
+        is0 r1 = new is0(r8);
+        r1.a = r2;
+        return r1;
     }
 
-    public static float w(String[] strArr, int i) {
-        float f2 = Float.parseFloat(strArr[i]);
-        if (f2 >= 0.0f && f2 <= 1.0f) {
-            return f2;
-        }
-        tb4.f("Motion easing control point value must be between 0 and 1; instead got: ", f2);
+    public static float w(String[] r1, int r2) {
+        float r3 = Float.parseFloat(r1[r2]);
+        if (r3 >= 0.0f) goto L5;
+    L7:
+        tb4.f("Motion easing control point value must be between 0 and 1; instead got: ", r3);
         return 0.0f;
+    L5:
+        if (r3 > 1.0f) goto L7;
+        return r3;
     }
 
-    public static String x(Date date) {
-        return date == null ? App.a().getString(app.homemusic.R.string.share_no_expiration) : new SimpleDateFormat("dd MMM, yyyy", Locale.getDefault()).format(date);
+    public static String x(Date r3) {
+        if (r3 != null) goto L6;
+        return App.a().getString(app.homemusic.R.string.share_no_expiration);
+    L6:
+        return new SimpleDateFormat("dd MMM, yyyy", Locale.getDefault()).format(r3);
     }
 
-    public static int y(int i, int i2) {
-        if (i == 0) {
-            i = 1;
-        }
-        return i / i2 > 0 ? i2 : i % i2;
+    public static int y(int r1, int r2) {
+        if (r1 != 0) goto L5;
+        r1 = 1;
+    L5:
+        if ((r1 / r2) <= 0) goto L8;
+        return r2;
+    L8:
+        return r1 % r2;
     }
 
-    public static SimpleDateFormat z(int i, int i2) {
-        String str;
-        String str2;
-        StringBuilder sb = new StringBuilder();
-        if (i == 0) {
-            str = "EEEE, MMMM d, yyyy";
-        } else if (i == 1) {
-            str = "MMMM d, yyyy";
-        } else if (i == 2) {
-            str = "MMM d, yyyy";
-        } else {
-            if (i != 3) {
-                kf2.n(f34.f(i, "Unknown DateFormat style: "));
-                return null;
-            }
-            str = "M/d/yy";
-        }
-        sb.append(str);
-        sb.append(" ");
-        if (i2 == 0 || i2 == 1) {
-            str2 = "h:mm:ss a z";
-        } else if (i2 == 2) {
-            str2 = "h:mm:ss a";
-        } else {
-            if (i2 != 3) {
-                kf2.n(f34.f(i2, "Unknown DateFormat style: "));
-                return null;
-            }
-            str2 = "h:mm a";
-        }
-        sb.append(str2);
-        return new SimpleDateFormat(sb.toString(), Locale.US);
+    public static SimpleDateFormat z(int r6, int r7) {
+        StringBuilder r0 = new StringBuilder();
+        if (r6 == 0) goto L12;
+        if (r6 == 1) goto L11;
+        if (r6 == 2) goto L10;
+        if (r6 != 3) goto L8;
+        String r8 = "M/d/yy";
+    L13:
+        r0.append(r8);
+        r0.append(" ");
+        if (r7 == 0) goto L22;
+        if (r7 == 1) goto L22;
+        if (r7 == 2) goto L21;
+        if (r7 != 3) goto L19;
+        String r9 = "h:mm a";
+    L23:
+        r0.append(r9);
+        return new SimpleDateFormat(r0.toString(), Locale.US);
+    L19:
+        kf2.n(f34.f(r7, "Unknown DateFormat style: "));
+        return null;
+    L21:
+        r9 = "h:mm:ss a";
+    L22:
+        r9 = "h:mm:ss a z";
+        goto L23
+    L8:
+        kf2.n(f34.f(r6, "Unknown DateFormat style: "));
+        return null;
+    L10:
+        r8 = "MMM d, yyyy";
+        goto L13
+    L11:
+        r8 = "MMMM d, yyyy";
+        goto L13
+    L12:
+        r8 = "EEEE, MMMM d, yyyy";
+        goto L13
     }
 
     public void G() {
     }
 
-    public abstract void K(t0 t0Var, t0 t0Var2);
+    public abstract void K(t0 r1, t0 r2);
 
-    public abstract void L(t0 t0Var, Thread thread);
+    public abstract void L(t0 r1, Thread r2);
 
-    public void M(Context context, a aVar, ey3 ey3Var) {
+    public void M(Context r1, a r2, ey3 r3) {
     }
 
-    public void e(Context context, hi1 hi1Var) {
+    public void e(Context r1, hi1 r2) {
     }
 
-    public abstract boolean g(u0 u0Var, i0 i0Var, i0 i0Var2);
+    public abstract boolean g(u0 r1, i0 r2, i0 r3);
 
-    public abstract boolean h(u0 u0Var, Object obj, Object obj2);
+    public abstract boolean h(u0 r1, Object r2, Object r3);
 
-    public abstract boolean i(u0 u0Var, t0 t0Var, t0 t0Var2);
+    public abstract boolean i(u0 r1, t0 r2, t0 r3);
 
-    public abstract i0 p(u0 u0Var);
+    public abstract i0 p(u0 r1);
 
-    public abstract t0 q(u0 u0Var);
+    public abstract t0 q(u0 r1);
 }

@@ -7,8 +7,8 @@ import java.io.InputStream;
 public final class tz1 implements xh0 {
     public final qj0 a;
 
-    public tz1(qj0 qj0Var) {
-        this.a = qj0Var;
+    public tz1(qj0 r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.xh0
@@ -17,7 +17,7 @@ public final class tz1 implements xh0 {
     }
 
     @Override // defpackage.xh0
-    public final yh0 b(Object obj) {
-        return new hg3((InputStream) obj, this.a);
+    public final yh0 b(Object r2) {
+        return new hg3((InputStream) r2, this.a);
     }
 }

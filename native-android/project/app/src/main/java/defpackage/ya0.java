@@ -3,23 +3,25 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class ya0 {
-    public static final i03 a;
+    public static final i03 a = null;
 
     static {
-        k24 k24Var = s50.e;
-        int i = k24Var.c;
-        va0 va0Var = new va0(k24Var, k24Var, 1);
-        int i2 = k24Var.c;
-        q83 q83Var = s50.x;
-        int i3 = (q83Var.c << 6) | i2;
-        xa0 xa0Var = new xa0(k24Var, q83Var, 0);
-        int i4 = (i2 << 6) | q83Var.c;
-        xa0 xa0Var2 = new xa0(q83Var, k24Var, 0);
-        i03 i03Var = f02.a;
-        i03 i03Var2 = new i03();
-        i03Var2.i(i | (i << 6), va0Var);
-        i03Var2.i(i3, xa0Var);
-        i03Var2.i(i4, xa0Var2);
-        a = i03Var2;
+        k24 r0 = s50.e;
+        int r1 = r0.c;
+        int r2 = r1 | (r1 << 6);
+        va0 r3 = new va0(r0, r0, 1);
+        int r4 = r0.c;
+        q83 r5 = s50.x;
+        int r6 = (r5.c << 6) | r4;
+        xa0 r7 = new xa0(r0, r5, 0);
+        int r8 = r4 << 6;
+        int r9 = r8 | r5.c;
+        xa0 r10 = new xa0(r5, r0, 0);
+        i03 r11 = f02.a;
+        i03 r12 = new i03();
+        r12.i(r2, r3);
+        r12.i(r6, r7);
+        r12.i(r9, r10);
+        a = r12;
     }
 }

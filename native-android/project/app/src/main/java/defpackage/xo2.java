@@ -9,52 +9,56 @@ public final class xo2 extends MediaRouter2$RouteCallback {
     public final /* synthetic */ int a;
     public final /* synthetic */ zo2 b;
 
-    public /* synthetic */ xo2(zo2 zo2Var, int i) {
-        this.a = i;
-        this.b = zo2Var;
+    public /* synthetic */ xo2(zo2 r1, int r2) {
+        this.a = r2;
+        this.b = r1;
     }
 
-    public void onRoutesAdded(List list) {
-        switch (this.a) {
-            case 0:
-                this.b.i();
-                break;
-            default:
-                super.onRoutesAdded(list);
-                break;
-        }
+    public void onRoutesAdded(List r2) {
+        switch(this.a) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        super.onRoutesAdded(r2);
+        return;
+    L6:
+        this.b.i();
     }
 
-    public void onRoutesChanged(List list) {
-        switch (this.a) {
-            case 0:
-                this.b.i();
-                break;
-            default:
-                super.onRoutesChanged(list);
-                break;
-        }
+    public void onRoutesChanged(List r2) {
+        switch(this.a) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        super.onRoutesChanged(r2);
+        return;
+    L6:
+        this.b.i();
     }
 
-    public void onRoutesRemoved(List list) {
-        switch (this.a) {
-            case 0:
-                this.b.i();
-                break;
-            default:
-                super.onRoutesRemoved(list);
-                break;
-        }
+    public void onRoutesRemoved(List r2) {
+        switch(this.a) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        super.onRoutesRemoved(r2);
+        return;
+    L6:
+        this.b.i();
     }
 
-    public void onRoutesUpdated(List list) {
-        switch (this.a) {
-            case 1:
-                this.b.i();
-                break;
-            default:
-                super.onRoutesUpdated(list);
-                break;
-        }
+    public void onRoutesUpdated(List r2) {
+        switch(this.a) {
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        super.onRoutesUpdated(r2);
+        return;
+    L6:
+        this.b.i();
     }
 }

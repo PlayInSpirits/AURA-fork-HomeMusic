@@ -6,14 +6,18 @@ import defpackage.o14;
 /* JADX INFO: loaded from: classes.dex */
 public final class ResponseStatus {
     public static final int $stable = 0;
-    public static final o14 Companion = new o14();
+    public static final o14 Companion = null;
     public static String FAILED = "failed";
     public static String OK = "ok";
     private final String value;
 
-    public ResponseStatus(String str) {
-        str.getClass();
-        this.value = str;
+    static {
+        Companion = new o14();
+    }
+
+    public ResponseStatus(String r1) {
+        r1.getClass();
+        this.value = r1;
     }
 
     public final String getValue() {

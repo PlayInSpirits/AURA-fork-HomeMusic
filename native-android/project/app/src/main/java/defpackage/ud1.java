@@ -9,41 +9,42 @@ public final class ud1 extends q42 implements if1 {
     public final /* synthetic */ kc1 o;
     public final /* synthetic */ a23 p;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public ud1(rd1 rd1Var, kc1 kc1Var, a23 a23Var) {
+    public ud1(rd1 r1, kc1 r2, a23 r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
         super(1);
-        this.n = rd1Var;
-        this.o = kc1Var;
-        this.p = a23Var;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object obj) {
-        ba2 ba2Var = (ba2) obj;
-        rd1 rd1Var = this.n;
-        ArrayList arrayList = rd1Var.g;
-        boolean z = false;
-        kc1 kc1Var = this.o;
-        if (arrayList == null || !arrayList.isEmpty()) {
-            int size = arrayList.size();
-            int i = 0;
-            while (i < size) {
-                Object obj2 = arrayList.get(i);
-                i++;
-                if (h12.c(((kd3) obj2).n, kc1Var.L)) {
-                    z = true;
-                    break;
-                }
-            }
-        }
-        if (ba2Var != null && !z) {
-            le1 le1VarV = kc1Var.v();
-            le1VarV.e();
-            ea2 ea2Var = le1VarV.r;
-            if (ea2Var.h.compareTo(r92.p) >= 0) {
-                ea2Var.a((aa2) rd1Var.i.invoke(this.p));
-            }
-        }
+    public final Object invoke(Object r9) {
+        ba2 r10 = (ba2) r9;
+        rd1 r0 = this.n;
+        ArrayList r1 = r0.g;
+        boolean r2 = false;
+        kc1 r3 = this.o;
+        if (r1 != null) goto L5;
+    L7:
+        int r4 = r1.size();
+        int r5 = 0;
+    L8:
+        if (r5 >= r4) goto L12;
+        Object r6 = r1.get(r5);
+        r5 = r5 + 1;
+        if (h12.c(((kd3) r6).n, r3.L) == false) goto L8;
+        r2 = true;
+    L12:
+        if (r10 == null) goto L18;
+        if (r2 == true) goto L18;
+        le1 r11 = r3.v();
+        r11.e();
+        ea2 r12 = r11.r;
+        if (r12.h.compareTo(r92.p) < 0) goto L18;
+        r12.a((aa2) r0.i.invoke(this.p));
+    L18:
         return j15.a;
+    L5:
+        if (r1.isEmpty() == false) goto L7;
+        goto L7
     }
 }

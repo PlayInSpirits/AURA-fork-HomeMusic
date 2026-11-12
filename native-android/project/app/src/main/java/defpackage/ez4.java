@@ -9,19 +9,20 @@ public final class ez4 implements cz4 {
     public final /* synthetic */ Class o;
     public final /* synthetic */ bz4 p;
 
-    public ez4(Class cls, Class cls2, bz4 bz4Var) {
-        this.n = cls;
-        this.o = cls2;
-        this.p = bz4Var;
+    public ez4(Class r1, Class r2, bz4 r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
     }
 
     @Override // defpackage.cz4
-    public final bz4 a(nk1 nk1Var, TypeToken typeToken) {
-        Class rawType = typeToken.getRawType();
-        if (rawType == this.n || rawType == this.o) {
-            return this.p;
-        }
+    public final bz4 a(nk1 r1, TypeToken r2) {
+        Class r3 = r2.getRawType();
+        if (r3 == this.n) goto L10;
+        if (r3 == this.o) goto L10;
         return null;
+    L10:
+        return this.p;
     }
 
     public final String toString() {

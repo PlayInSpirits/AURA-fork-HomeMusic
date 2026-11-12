@@ -6,19 +6,26 @@ public final class cd5 {
     public String a;
     public int b;
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof cd5)) {
-            return false;
-        }
-        cd5 cd5Var = (cd5) obj;
-        return h12.c(this.a, cd5Var.a) && this.b == cd5Var.b;
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof cd5) == false) goto L16;
+        cd5 r4 = (cd5) r3;
+        if (h12.c(this.a, r4.a) == true) goto L11;
+        return false;
+    L11:
+        if (this.b == r4.b) goto L14;
+        return false;
+    L14:
+        return true;
+    L16:
+        return false;
     }
 
     public final int hashCode() {
-        return xa3.w(this.b) + (this.a.hashCode() * 31);
+        int r0 = this.a.hashCode() * 31;
+        return xa3.w(this.b) + r0;
     }
 
     public final String toString() {

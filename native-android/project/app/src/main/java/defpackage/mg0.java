@@ -7,114 +7,133 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class mg0 implements qn4 {
-    public static final kw p = new kw(new kf2(27), x13.o);
+    public static final kw p = null;
     public final yw1 n;
     public final long[] o;
 
-    /* JADX WARN: Code duplicated, block: B:37:0x00cf  */
-    public mg0(gy3 gy3Var) {
-        int i = gy3Var.q;
-        long j = -9223372036854775807L;
-        int i2 = 0;
-        if (i == 1) {
-            vw1 vw1VarListIterator = gy3Var.listIterator(0);
-            Object next = vw1VarListIterator.next();
-            if (vw1VarListIterator.hasNext()) {
-                StringBuilder sb = new StringBuilder("expected one element but was: <");
-                sb.append(next);
-                while (i2 < 4 && vw1VarListIterator.hasNext()) {
-                    sb.append(", ");
-                    sb.append(vw1VarListIterator.next());
-                    i2++;
-                }
-                if (vw1VarListIterator.hasNext()) {
-                    sb.append(", ...");
-                }
-                sb.append('>');
-                throw new IllegalArgumentException(sb.toString());
-            }
-            lg0 lg0Var = (lg0) next;
-            long j2 = lg0Var.b;
-            long j3 = lg0Var.c;
-            long j4 = j2 == -9223372036854775807L ? 0L : j2;
-            yw1 yw1Var = lg0Var.a;
-            if (j3 == -9223372036854775807L) {
-                this.n = yw1.o(yw1Var);
-                this.o = new long[]{j4};
-                return;
-            } else {
-                vw1 vw1Var = yw1.o;
-                this.n = yw1.p(yw1Var, gy3.r);
-                this.o = new long[]{j4, j3 + j4};
-                return;
-            }
-        }
-        long[] jArr = new long[i * 2];
-        this.o = jArr;
-        Arrays.fill(jArr, Long.MAX_VALUE);
-        ArrayList arrayList = new ArrayList();
-        gy3 gy3VarQ = yw1.q(p, gy3Var);
-        int i3 = 0;
-        while (i2 < gy3VarQ.q) {
-            lg0 lg0Var2 = (lg0) gy3VarQ.get(i2);
-            long j5 = lg0Var2.b;
-            long j6 = lg0Var2.c;
-            yw1 yw1Var2 = lg0Var2.a;
-            j5 = j5 == j ? 0L : j5;
-            long j7 = j5 + j6;
-            if (i3 != 0) {
-                int i4 = i3 - 1;
-                long j8 = this.o[i4];
-                if (j8 < j5) {
-                    this.o[i3] = j5;
-                    arrayList.add(yw1Var2);
-                    i3++;
-                } else if (j8 == j5 && ((yw1) arrayList.get(i4)).isEmpty()) {
-                    arrayList.set(i4, yw1Var2);
-                } else {
-                    l93.q0("CuesWithTimingSubtitle", "Truncating unsupported overlapping cues.");
-                    this.o[i4] = j5;
-                    arrayList.set(i4, yw1Var2);
-                }
-            } else {
-                this.o[i3] = j5;
-                arrayList.add(yw1Var2);
-                i3++;
-            }
-            if (j6 != j) {
-                this.o[i3] = j7;
-                arrayList.add(gy3.r);
-                i3++;
-            }
-            i2++;
-            j = j;
-        }
-        this.n = yw1.k(arrayList);
+    static {
+        x13 r0 = x13.o;
+        p = new kw(new kf2(27), r0);
+    }
+
+    public mg0(gy3 r19) {
+        int r2 = r19.q;
+        long r6 = -9223372036854775807L;
+        int r8 = 0;
+        if (r2 != 1) goto L27;
+        vw1 r1 = r19.m(0);
+        Object r3 = r1.next();
+        if (r1.hasNext() == true) goto L16;
+        lg0 r4 = (lg0) r3;
+        long r10 = r4.b;
+        long r12 = r4.c;
+        if (r10 != (-9223372036854775807L)) goto L9;
+        long r5 = 0;
+    L10:
+        yw1 r7 = r4.a;
+        if (r12 != (-9223372036854775807L)) goto L14;
+        this.n = yw1.o(r7);
+        this.o = new long[]{r5};
+        return;
+    L14:
+        vw1 r9 = yw1.o;
+        this.n = yw1.p(r7, gy3.r);
+        this.o = new long[]{r5, r12 + r5};
+        return;
+    L9:
+        r5 = r10;
+        goto L10
+    L16:
+        StringBuilder r0 = new StringBuilder("expected one element but was: <");
+        r0.append(r3);
+    L18:
+        if (r8 >= 4) goto L23;
+        if (r1.hasNext() == false) goto L23;
+        r0.append(", ");
+        r0.append(r1.next());
+        r8 = r8 + 1;
+    L23:
+        if (r1.hasNext() == false) goto L25;
+        r0.append(", ...");
+    L25:
+        r0.append('>');
+        throw new IllegalArgumentException(r0.toString());
+    L27:
+        long[] r11 = new long[r2 * 2];
+        this.o = r11;
+        Arrays.fill(r11, Long.MAX_VALUE);
+        ArrayList r13 = new ArrayList();
+        gy3 r14 = yw1.q(p, r19);
+        int r15 = 0;
+    L29:
+        if (r8 >= r14.q) goto L48;
+        lg0 r16 = (lg0) r14.get(r8);
+        long r17 = r16.b;
+        long r18 = r16.c;
+        yw1 r20 = r16.a;
+        if (r17 != r6) goto L33;
+        r17 = 0;
+    L33:
+        long r110 = r17 + r18;
+        if (r15 == 0) goto L43;
+        int r21 = r15 - 1;
+        long r111 = this.o[r21];
+        if (r111 < r17) goto L43;
+        if (r111 == r17) goto L40;
+    L42:
+        l93.q0("CuesWithTimingSubtitle", "Truncating unsupported overlapping cues.");
+        this.o[r21] = r17;
+        r13.set(r21, r20);
+    L45:
+        if (r18 == r6) goto L47;
+        this.o[r15] = r110;
+        r13.add(gy3.r);
+        r15 = r15 + 1;
+    L47:
+        r8 = r8 + 1;
+        r6 = r6;
+        goto L29
+    L40:
+        if (((yw1) r13.get(r21)).isEmpty() == false) goto L42;
+        r13.set(r21, r20);
+    L43:
+        this.o[r15] = r17;
+        r13.add(r20);
+        r15 = r15 + 1;
+        goto L45
+    L48:
+        this.n = yw1.k(r13);
     }
 
     @Override // defpackage.qn4
-    public final int e(long j) {
-        int iB = f35.b(this.o, j, false);
-        if (iB < this.n.size()) {
-            return iB;
-        }
+    public final int e(long r3) {
+        int r4 = f35.b(this.o, r3, false);
+        if (r4 >= this.n.size()) goto L5;
+        return r4;
+    L5:
         return -1;
     }
 
     @Override // defpackage.qn4
-    public final long k(int i) {
-        rr2.l(i < this.n.size());
-        return this.o[i];
+    public final long k(int r3) {
+        if (r3 >= this.n.size()) goto L5;
+        boolean r0 = true;
+    L6:
+        rr2.l(r0);
+        return this.o[r3];
+    L5:
+        r0 = false;
+        goto L6
     }
 
     @Override // defpackage.qn4
-    public final List m(long j) {
-        int iF = f35.f(this.o, j, false);
-        if (iF != -1) {
-            return (yw1) this.n.get(iF);
-        }
-        vw1 vw1Var = yw1.o;
+    public final List m(long r3) {
+        int r4 = f35.f(this.o, r3, false);
+        if (r4 != (-1)) goto L7;
+        vw1 r2 = yw1.o;
         return gy3.r;
+    L7:
+        return (yw1) this.n.get(r4);
     }
 
     @Override // defpackage.qn4

@@ -15,141 +15,171 @@ import javax.net.ssl.SSLSession;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class m83 implements HostnameVerifier {
-    public static final m83 a = new m83();
+    public static final m83 a = null;
 
-    public static List a(X509Certificate x509Certificate, int i) {
-        Object obj;
-        try {
-            Collection<List<?>> subjectAlternativeNames = x509Certificate.getSubjectAlternativeNames();
-            if (subjectAlternativeNames != null) {
-                ArrayList arrayList = new ArrayList();
-                for (List<?> list : subjectAlternativeNames) {
-                    if (list != null && list.size() >= 2 && h12.c(list.get(0), Integer.valueOf(i)) && (obj = list.get(1)) != null) {
-                        arrayList.add((String) obj);
-                    }
-                }
-                return arrayList;
-            }
-        } catch (CertificateParsingException unused) {
-        }
+    static {
+        a = new m83();
+    }
+
+    public static List a(X509Certificate r4, int r5) {
+        Collection<List<?>> r6 = r4.getSubjectAlternativeNames();     // Catch: CertificateParsingException -> L23
+        if (r6 == null) goto L22;
+        ArrayList r0 = new ArrayList();     // Catch: CertificateParsingException -> L23
+        Iterator<List<?>> r7 = r6.iterator();     // Catch: CertificateParsingException -> L23
+    L7:
+        if (r7.hasNext() == false) goto L20;
+        List<?> r1 = r7.next();     // Catch: CertificateParsingException -> L23
+        if (r1 == null) goto L7;
+        if (r1.size() < 2) goto L7;
+        if (h12.c(r1.get(0), Integer.valueOf(r5)) == false) goto L7;
+        Object r2 = r1.get(1);     // Catch: CertificateParsingException -> L23
+        if (r2 == null) goto L7;
+        r0.add((String) r2);     // Catch: CertificateParsingException -> L23
+    L20:
+        return r0;
+    L22:
         return u01.n;
     }
 
-    public static boolean b(String str) {
-        long j;
-        int length = str.length();
-        int length2 = str.length();
-        if (length2 < 0) {
-            kf2.e(b11.j(length2, "endIndex < beginIndex: ", " < 0"));
-            return false;
-        }
-        if (length2 > str.length()) {
-            StringBuilder sbJ = f34.j(length2, "endIndex > string.length: ", " > ");
-            sbJ.append(str.length());
-            throw new IllegalArgumentException(sbJ.toString().toString());
-        }
-        long j2 = 0;
-        int i = 0;
-        while (i < length2) {
-            char cCharAt = str.charAt(i);
-            if (cCharAt < 128) {
-                j2++;
-            } else {
-                if (cCharAt < 2048) {
-                    j = 2;
-                } else if (cCharAt < 55296 || cCharAt > 57343) {
-                    j = 3;
-                } else {
-                    int i2 = i + 1;
-                    char cCharAt2 = i2 < length2 ? str.charAt(i2) : (char) 0;
-                    if (cCharAt > 56319 || cCharAt2 < 56320 || cCharAt2 > 57343) {
-                        j2++;
-                        i = i2;
-                    } else {
-                        j2 += 4;
-                        i += 2;
-                    }
-                }
-                j2 += j;
-            }
-            i++;
-        }
-        return length == ((int) j2);
+    public static boolean b(String r13) {
+        int r0 = r13.length();
+        int r1 = r13.length();
+        if (r1 >= 0) goto L5;
+        kf2.e(b11.j(r1, "endIndex < beginIndex: ", " < 0"));
+        return false;
+    L5:
+        if (r1 > r13.length()) goto L39;
+        long r3 = 0;
+        int r5 = 0;
+    L7:
+        if (r5 >= r1) goto L35;
+        char r6 = r13.charAt(r5);
+        if (r6 < 128) goto L10;
+        if (r6 < 2048) goto L14;
+        if (r6 < 55296) goto L33;
+        if (r6 > 57343) goto L33;
+        int r10 = r5 + 1;
+        if (r10 >= r1) goto L24;
+        char r11 = r13.charAt(r10);
+    L26:
+        if (r6 > 56319) goto L32;
+        if (r11 < 56320) goto L32;
+        if (r11 > 57343) goto L32;
+        r3 = r3 + 4;
+        r5 = r5 + 2;
+    L32:
+        r3 = r3 + 1;
+        r5 = r10;
+        goto L7
+    L24:
+        r11 = 0;
+    L33:
+        long r7 = 3;
+    L15:
+        r3 = r3 + r7;
+    L11:
+        r5 = r5 + 1;
+        goto L7
+    L14:
+        r7 = 2;
+        goto L15
+    L10:
+        r3 = r3 + 1;
+        goto L11
+    L35:
+        if (r0 != ((int) r3)) goto L38;
+        return true;
+    L38:
+        return false;
+    L39:
+        StringBuilder r2 = f34.j(r1, "endIndex > string.length: ", " > ");
+        r2.append(r13.length());
+        throw new IllegalArgumentException(r2.toString().toString());
     }
 
-    /* JADX WARN: Code duplicated, block: B:59:0x00eb  */
-    public static boolean c(String str, X509Certificate x509Certificate) {
-        boolean zEquals;
-        int length;
-        str.getClass();
-        if (ue5.a.a(str)) {
-            String strB = ue5.b(str);
-            List listA = a(x509Certificate, 7);
-            if (!listA.isEmpty()) {
-                Iterator it = listA.iterator();
-                while (it.hasNext()) {
-                    if (h12.c(strB, ue5.b((String) it.next()))) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-        if (b(str)) {
-            Locale locale = Locale.US;
-            locale.getClass();
-            str = str.toLowerCase(locale);
-            str.getClass();
-        }
-        List<String> listA2 = a(x509Certificate, 2);
-        if (!listA2.isEmpty()) {
-            for (String lowerCase : listA2) {
-                if (str.length() == 0 || xm4.k0(str, ".", false) || xm4.e0(str, "..", false) || lowerCase == null || lowerCase.length() == 0 || xm4.k0(lowerCase, ".", false) || xm4.e0(lowerCase, "..", false)) {
-                    zEquals = false;
-                } else {
-                    String strConcat = !xm4.e0(str, ".", false) ? str.concat(".") : str;
-                    if (!xm4.e0(lowerCase, ".", false)) {
-                        lowerCase = lowerCase.concat(".");
-                    }
-                    if (b(lowerCase)) {
-                        Locale locale2 = Locale.US;
-                        locale2.getClass();
-                        lowerCase = lowerCase.toLowerCase(locale2);
-                        lowerCase.getClass();
-                    }
-                    if (!qm4.o0(lowerCase, "*")) {
-                        zEquals = strConcat.equals(lowerCase);
-                    } else if (!xm4.k0(lowerCase, "*.", false) || qm4.r0(lowerCase, '*', 1, 4) != -1 || strConcat.length() < lowerCase.length() || "*.".equals(lowerCase)) {
-                        zEquals = false;
-                    } else {
-                        String strSubstring = lowerCase.substring(1);
-                        if (xm4.e0(strConcat, strSubstring, false) && ((length = strConcat.length() - strSubstring.length()) <= 0 || qm4.v0(strConcat, '.', length - 1, 4) == -1)) {
-                            zEquals = true;
-                        } else {
-                            zEquals = false;
-                        }
-                    }
-                }
-                if (zEquals) {
-                    return true;
-                }
-            }
-        }
+    public static boolean c(String r9, X509Certificate r10) {
+        r9.getClass();
+        if (ue5.a.a(r9) == false) goto L14;
+        String r11 = ue5.b(r9);
+        List r12 = a(r10, 7);
+        if (r12.isEmpty() == true) goto L74;
+        Iterator r13 = r12.iterator();
+    L9:
+        if (r13.hasNext() == false) goto L74;
+        if (h12.c(r11, ue5.b((String) r13.next())) == false) goto L9;
+    L73:
+        return true;
+    L74:
         return false;
+    L14:
+        if (b(r9) == false) goto L16;
+        Locale r0 = Locale.US;
+        r0.getClass();
+        r9 = r9.toLowerCase(r0);
+        r9.getClass();
+    L16:
+        List r14 = a(r10, 2);
+        if (r14.isEmpty() == true) goto L74;
+        Iterator r15 = r14.iterator();
+    L21:
+        if (r15.hasNext() == false) goto L74;
+        String r1 = (String) r15.next();
+        if (r9.length() != 0) goto L26;
+    L59:
+        boolean r2 = false;
+    L72:
+        if (r2 == false) goto L21;
+    L26:
+        if (xm4.k0(r9, ".", false) == true) goto L59;
+        if (xm4.e0(r9, "..", false) == true) goto L59;
+        if (r1 == null) goto L59;
+        if (r1.length() == 0) goto L59;
+        if (xm4.k0(r1, ".", false) == true) goto L59;
+        if (xm4.e0(r1, "..", false) == true) goto L59;
+        if (xm4.e0(r9, ".", false) == true) goto L42;
+        String r4 = r9.concat(".");
+    L44:
+        if (xm4.e0(r1, ".", false) == true) goto L47;
+        r1 = r1.concat(".");
+    L47:
+        if (b(r1) == false) goto L50;
+        Locale r3 = Locale.US;
+        r3.getClass();
+        r1 = r1.toLowerCase(r3);
+        r1.getClass();
+    L50:
+        if (qm4.o0(r1, "*") == true) goto L53;
+        r2 = r4.equals(r1);
+        goto L72
+    L53:
+        if (xm4.k0(r1, "*.", false) == false) goto L59;
+        if (qm4.r0(r1, '*', 1, 4) != (-1)) goto L59;
+        if (r4.length() < r1.length()) goto L59;
+        if ("*.".equals(r1) == true) goto L59;
+        String r5 = r1.substring(1);
+        if (xm4.e0(r4, r5, false) == false) goto L59;
+        int r6 = r4.length() - r5.length();
+        if (r6 > 0) goto L69;
+    L71:
+        r2 = true;
+        goto L72
+    L69:
+        if (qm4.v0(r4, '.', r6 - 1, 4) == (-1)) goto L71;
+    L42:
+        r4 = r9;
+        goto L44
     }
 
     @Override // javax.net.ssl.HostnameVerifier
-    public final boolean verify(String str, SSLSession sSLSession) {
-        str.getClass();
-        sSLSession.getClass();
-        if (b(str)) {
-            try {
-                Certificate certificate = sSLSession.getPeerCertificates()[0];
-                certificate.getClass();
-                return c(str, (X509Certificate) certificate);
-            } catch (SSLException unused) {
-            }
-        }
+    public final boolean verify(String r2, SSLSession r3) {
+        r2.getClass();
+        r3.getClass();
+        if (b(r2) == true) goto L9;
+    L7:
         return false;
+    L9:
+        Certificate r1 = r3.getPeerCertificates()[0];     // Catch: SSLException -> L8
+        r1.getClass();     // Catch: SSLException -> L8
+        return c(r2, (X509Certificate) r1);
     }
 }

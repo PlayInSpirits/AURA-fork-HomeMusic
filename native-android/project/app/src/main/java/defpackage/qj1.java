@@ -7,38 +7,44 @@ import java.security.MessageDigest;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class qj1 extends bt {
-    public static final byte[] f = "com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners".getBytes(f42.a);
+    public static final byte[] f = null;
     public final float b;
     public final float c;
     public final float d;
     public final float e;
 
-    public qj1(float f2, float f3, float f4, float f5) {
-        this.b = f2;
-        this.c = f3;
-        this.d = f4;
-        this.e = f5;
+    static {
+        f = "com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners".getBytes(f42.a);
+    }
+
+    public qj1(float r1, float r2, float r3, float r4) {
+        this.b = r1;
+        this.c = r2;
+        this.d = r3;
+        this.e = r4;
     }
 
     @Override // defpackage.f42
-    public final void b(MessageDigest messageDigest) {
-        messageDigest.update(f);
-        messageDigest.update(ByteBuffer.allocate(16).putFloat(this.b).putFloat(this.c).putFloat(this.d).putFloat(this.e).array());
+    public final void b(MessageDigest r3) {
+        r3.update(f);
+        r3.update(ByteBuffer.allocate(16).putFloat(this.b).putFloat(this.c).putFloat(this.d).putFloat(this.e).array());
     }
 
     @Override // defpackage.bt
-    public final Bitmap c(zs zsVar, Bitmap bitmap, int i, int i2) {
-        return xw4.c(zsVar, bitmap, new v03(this.b, this.c, this.d, this.e));
+    public final Bitmap c(zs r3, Bitmap r4, int r5, int r6) {
+        return xw4.c(r3, r4, new v03(this.b, this.c, this.d, this.e));
     }
 
     @Override // defpackage.f42
-    public final boolean equals(Object obj) {
-        if (obj instanceof qj1) {
-            qj1 qj1Var = (qj1) obj;
-            if (this.b == qj1Var.b && this.c == qj1Var.c && this.d == qj1Var.d && this.e == qj1Var.e) {
-                return true;
-            }
-        }
+    public final boolean equals(Object r4) {
+        if ((r4 instanceof qj1) == false) goto L14;
+        qj1 r5 = (qj1) r4;
+        if (this.b != r5.b) goto L14;
+        if (this.c != r5.c) goto L14;
+        if (this.d != r5.d) goto L14;
+        if (this.e != r5.e) goto L14;
+        return true;
+    L14:
         return false;
     }
 

@@ -7,56 +7,60 @@ import app.homemusic.R;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class t4 extends av2 {
-    public final /* synthetic */ int l = 0;
+    public final /* synthetic */ int l;
     public final /* synthetic */ y4 m;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public t4(y4 y4Var, Context context, en4 en4Var, View view) {
-        super(context, en4Var, view, false, R.attr.actionOverflowMenuStyle, 0);
-        this.m = y4Var;
-        if ((en4Var.A.x & 32) != 32) {
-            View view2 = y4Var.w;
-            this.e = view2 == null ? (View) y4Var.u : view2;
-        }
-        zg5 zg5Var = y4Var.K;
-        this.h = zg5Var;
-        yu2 yu2Var = this.i;
-        if (yu2Var != null) {
-            yu2Var.i(zg5Var);
-        }
+    public t4(y4 r9, Context r10, en4 r11, View r12) {
+        this.l = 0;
+        this.m = r9;
+        super(r10, r11, r12, false, R.attr.actionOverflowMenuStyle, 0);
+        if ((r11.A.x & 32) == 32) goto L9;
+        View r8 = r9.w;
+        if (r8 != null) goto L8;
+        r8 = (View) r9.u;
+    L8:
+        this.e = r8;
+    L9:
+        zg5 r13 = r9.K;
+        this.h = r13;
+        yu2 r14 = this.i;
+        if (r14 == null) goto L13;
+        r14.i(r13);
+        return;
     }
 
     @Override // defpackage.av2
     public final void c() {
-        int i = this.l;
-        y4 y4Var = this.m;
-        switch (i) {
-            case 0:
-                y4Var.H = null;
-                y4Var.L = 0;
-                super.c();
-                break;
-            default:
-                qu2 qu2Var = y4Var.p;
-                if (qu2Var != null) {
-                    qu2Var.c(true);
-                }
-                y4Var.G = null;
-                super.c();
-                break;
-        }
+        int r0 = this.l;
+        y4 r2 = this.m;
+        switch(r0) {
+            case 0: goto L9;
+            default: goto L4;
+        };
+    L4:
+        qu2 r1 = r2.p;
+        if (r1 == null) goto L7;
+        r1.c(true);
+    L7:
+        r2.G = null;
+        super.c();
+        return;
+    L9:
+        r2.H = null;
+        r2.L = 0;
+        super.c();
     }
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public t4(y4 y4Var, Context context, qu2 qu2Var, View view) {
-        super(context, qu2Var, view, true, R.attr.actionOverflowMenuStyle, 0);
-        this.m = y4Var;
+    public t4(y4 r9, Context r10, qu2 r11, View r12) {
+        this.l = 1;
+        this.m = r9;
+        super(r10, r11, r12, true, R.attr.actionOverflowMenuStyle, 0);
         this.f = 8388613;
-        zg5 zg5Var = y4Var.K;
-        this.h = zg5Var;
-        yu2 yu2Var = this.i;
-        if (yu2Var != null) {
-            yu2Var.i(zg5Var);
-        }
+        zg5 r8 = r9.K;
+        this.h = r8;
+        yu2 r13 = this.i;
+        if (r13 == null) goto L6;
+        r13.i(r8);
+        return;
     }
 }

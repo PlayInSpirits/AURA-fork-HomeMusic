@@ -5,11 +5,17 @@ package defpackage;
 public final class no0 {
     public int a;
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof no0) && this.a == ((no0) obj).a;
+    public final boolean equals(Object r4) {
+        if (this != r4) goto L6;
+        return true;
+    L6:
+        if ((r4 instanceof no0) == true) goto L9;
+        return false;
+    L9:
+        if (this.a == ((no0) r4).a) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     public final int hashCode() {

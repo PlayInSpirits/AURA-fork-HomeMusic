@@ -13,6 +13,9 @@ public final class Bookmark {
     private long position;
     private String username;
 
+    public Bookmark() {
+    }
+
     public final Date getChanged() {
         return this.changed;
     }
@@ -37,27 +40,27 @@ public final class Bookmark {
         return this.username;
     }
 
-    public final void setChanged(Date date) {
-        this.changed = date;
+    public final void setChanged(Date r1) {
+        this.changed = r1;
     }
 
-    public final void setComment(String str) {
-        this.comment = str;
+    public final void setComment(String r1) {
+        this.comment = r1;
     }
 
-    public final void setCreated(Date date) {
-        this.created = date;
+    public final void setCreated(Date r1) {
+        this.created = r1;
     }
 
-    public final void setEntry(Child child) {
-        this.entry = child;
+    public final void setEntry(Child r1) {
+        this.entry = r1;
     }
 
-    public final void setPosition(long j) {
-        this.position = j;
+    public final void setPosition(long r1) {
+        this.position = r1;
     }
 
-    public final void setUsername(String str) {
-        this.username = str;
+    public final void setUsername(String r1) {
+        this.username = r1;
     }
 }

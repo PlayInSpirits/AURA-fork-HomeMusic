@@ -1,109 +1,209 @@
 package defpackage;
 
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import java.util.function.Function;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class ai2 implements Function {
     public final /* synthetic */ int a;
 
-    @Override // java.util.function.Function
-    public final Object apply(Object obj) {
-        switch (this.a) {
-            case 0:
-                return Double.valueOf(((d64) obj).c ? 24.0d : 98.0d);
-            case 1:
-                return ((d64) obj).e;
-            case 2:
-                d64 d64Var = (d64) obj;
-                boolean zC = tv1.C(d64Var);
-                boolean z = d64Var.c;
-                if (zC) {
-                    return Double.valueOf(z ? 10.0d : 90.0d);
-                }
-                return Double.valueOf(z ? 20.0d : 100.0d);
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                return Double.valueOf(((d64) obj).c ? 10.0d : 90.0d);
-            case 4:
-                return ((d64) obj).e;
-            case 5:
-                return Double.valueOf(((d64) obj).c ? 40.0d : 80.0d);
-            case 6:
-                return gy0.c(new bi2(15), new bi2(17), null, null);
-            case 7:
-                return ((d64) obj).j;
-            case 8:
-                return Double.valueOf(((d64) obj).c ? 20.0d : 100.0d);
-            case 9:
-                return ((d64) obj).h;
-            case 10:
-                return Double.valueOf(((d64) obj).c ? 10.0d : 90.0d);
-            case 11:
-                return ((d64) obj).e;
-            case 12:
-                return ((d64) obj).g;
-            case 13:
-                return ((d64) obj).i;
-            case 14:
-                return Double.valueOf(((d64) obj).c ? 30.0d : 90.0d);
-            case 15:
-                return ((d64) obj).h;
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                return Double.valueOf(((d64) obj).c ? 10.0d : 90.0d);
-            case 17:
-                return ((d64) obj).h;
-            case 18:
-                return Double.valueOf(((d64) obj).c ? 22.0d : 90.0d);
-            case 19:
-                return ((d64) obj).g;
-            case 20:
-                d64 d64Var2 = (d64) obj;
-                boolean zC2 = tv1.C(d64Var2);
-                tu4 tu4Var = d64Var2.g;
-                boolean z2 = d64Var2.c;
-                if (zC2) {
-                    return Double.valueOf(z2 ? 60.0d : 49.0d);
-                }
-                if (tv1.B(d64Var2)) {
-                    return Double.valueOf(vr1.q(ol1.a(tu4Var.a, tu4Var.b, tv1.D(ol1.a(tu4Var.a, tu4Var.b, d64Var2.a.c), d64Var2))).c);
-                }
-                return Double.valueOf(z2 ? 30.0d : 90.0d);
-            case 21:
-                d64 d64Var3 = (d64) obj;
-                boolean zC3 = tv1.C(d64Var3);
-                boolean z3 = d64Var3.c;
-                if (zC3) {
-                    return Double.valueOf(z3 ? 10.0d : 90.0d);
-                }
-                return Double.valueOf(z3 ? 20.0d : 100.0d);
-            case 22:
-                return ((d64) obj).f;
-            case 23:
-                d64 d64Var4 = (d64) obj;
-                boolean zC4 = tv1.C(d64Var4);
-                boolean z4 = d64Var4.c;
-                if (zC4) {
-                    return Double.valueOf(z4 ? 10.0d : 100.0d);
-                }
-                return Double.valueOf(z4 ? 20.0d : 100.0d);
-            case 24:
-                return ((d64) obj).f;
-            case 25:
-                return Double.valueOf(((d64) obj).c ? 80.0d : 40.0d);
-            case 26:
-                return ((d64) obj).h;
-            case 27:
-                return Double.valueOf(((d64) obj).c ? 4.0d : 100.0d);
-            case 28:
-                return ((d64) obj).i;
-            default:
-                return Double.valueOf(((d64) obj).c ? 60.0d : 50.0d);
-        }
+    public /* synthetic */ ai2(tv1 r1) {
+        this.a = 6;
     }
 
-    public /* synthetic */ ai2(int i) {
-        this.a = i;
+    @Override // java.util.function.Function
+    public final Object apply(Object r18) {
+        double r1 = 30.0d;
+        double r3 = 40.0d;
+        double r7 = 60.0d;
+        double r9 = 20.0d;
+        double r11 = 100.0d;
+        double r13 = 10.0d;
+        double r15 = 90.0d;
+        switch(this.a) {
+            case 0: goto L138;
+            case 1: goto L136;
+            case 2: goto L124;
+            case 3: goto L119;
+            case 4: goto L117;
+            case 5: goto L111;
+            case 6: goto L108;
+            case 7: goto L107;
+            case 8: goto L101;
+            case 9: goto L99;
+            case 10: goto L93;
+            case 11: goto L91;
+            case 12: goto L89;
+            case 13: goto L87;
+            case 14: goto L81;
+            case 15: goto L79;
+            case 16: goto L73;
+            case 17: goto L71;
+            case 18: goto L66;
+            case 19: goto L64;
+            case 20: goto L49;
+            case 21: goto L38;
+            case 22: goto L37;
+            case 23: goto L26;
+            case 24: goto L25;
+            case 25: goto L20;
+            case 26: goto L18;
+            case 27: goto L13;
+            case 28: goto L11;
+            default: goto L5;
+        };
+    L26:
+        d64 r0 = (d64) r18;
+        boolean r2 = tv1.C(r0);
+        boolean r4 = r0.c;
+        if (r2 == false) goto L31;
+        if (r4 == false) goto L143;
+        r11 = 10.0d;
+    L143:
+        return Double.valueOf(r11);
+    L31:
+        if (r4 == true) goto L35;
+        r9 = 100.0d;
+    L35:
+        return Double.valueOf(r9);
+    L38:
+        d64 r5 = (d64) r18;
+        boolean r6 = tv1.C(r5);
+        boolean r8 = r5.c;
+        if (r6 == false) goto L44;
+        if (r8 == true) goto L144;
+        r13 = 90.0d;
+    L144:
+        return Double.valueOf(r13);
+    L44:
+        if (r8 == true) goto L48;
+        r9 = 100.0d;
+    L48:
+        return Double.valueOf(r9);
+    L49:
+        d64 r10 = (d64) r18;
+        boolean r12 = tv1.C(r10);
+        tu4 r14 = r10.g;
+        boolean r16 = r10.c;
+        if (r12 == false) goto L56;
+        if (r16 == true) goto L145;
+        r7 = 49.0d;
+    L145:
+        return Double.valueOf(r7);
+    L56:
+        if (tv1.B(r10) == true) goto L62;
+        if (r16 == true) goto L146;
+        r1 = 90.0d;
+    L146:
+        return Double.valueOf(r1);
+    L62:
+        return Double.valueOf(vr1.q(ol1.a(r14.a, r14.b, tv1.D(ol1.a(r14.a, r14.b, r10.a.c), r10))).c);
+    L108:
+        d64 r17 = (d64) r18;
+        return gy0.c(new bi2(15), new bi2(17), null, null);
+    L124:
+        d64 r19 = (d64) r18;
+        boolean r20 = tv1.C(r19);
+        boolean r21 = r19.c;
+        if (r20 == false) goto L130;
+        if (r21 == true) goto L147;
+        r13 = 90.0d;
+    L147:
+        return Double.valueOf(r13);
+    L130:
+        if (r21 == true) goto L134;
+        r9 = 100.0d;
+    L134:
+        return Double.valueOf(r9);
+    L5:
+        if (((d64) r18).c == true) goto L9;
+        r7 = 50.0d;
+    L9:
+        return Double.valueOf(r7);
+    L11:
+        return ((d64) r18).i;
+    L13:
+        if (((d64) r18).c == false) goto L16;
+        r11 = 4.0d;
+    L16:
+        return Double.valueOf(r11);
+    L18:
+        return ((d64) r18).h;
+    L20:
+        if (((d64) r18).c == false) goto L23;
+        r3 = 80.0d;
+    L23:
+        return Double.valueOf(r3);
+    L25:
+        return ((d64) r18).f;
+    L37:
+        return ((d64) r18).f;
+    L64:
+        return ((d64) r18).g;
+    L66:
+        if (((d64) r18).c == false) goto L69;
+        r15 = 22.0d;
+    L69:
+        return Double.valueOf(r15);
+    L71:
+        return ((d64) r18).h;
+    L73:
+        if (((d64) r18).c == true) goto L77;
+        r13 = 90.0d;
+    L77:
+        return Double.valueOf(r13);
+    L79:
+        return ((d64) r18).h;
+    L81:
+        if (((d64) r18).c == true) goto L85;
+        r1 = 90.0d;
+    L85:
+        return Double.valueOf(r1);
+    L87:
+        return ((d64) r18).i;
+    L89:
+        return ((d64) r18).g;
+    L91:
+        return ((d64) r18).e;
+    L93:
+        if (((d64) r18).c == true) goto L97;
+        r13 = 90.0d;
+    L97:
+        return Double.valueOf(r13);
+    L99:
+        return ((d64) r18).h;
+    L101:
+        if (((d64) r18).c == true) goto L105;
+        r9 = 100.0d;
+    L105:
+        return Double.valueOf(r9);
+    L107:
+        return ((d64) r18).j;
+    L111:
+        if (((d64) r18).c == true) goto L115;
+        r3 = 80.0d;
+    L115:
+        return Double.valueOf(r3);
+    L117:
+        return ((d64) r18).e;
+    L119:
+        if (((d64) r18).c == true) goto L123;
+        r13 = 90.0d;
+    L123:
+        return Double.valueOf(r13);
+    L136:
+        return ((d64) r18).e;
+    L138:
+        if (((d64) r18).c == false) goto L140;
+        double r22 = 24.0d;
+    L142:
+        return Double.valueOf(r22);
+    L140:
+        r22 = 98.0d;
+        goto L142
+    }
+
+    public /* synthetic */ ai2(int r1) {
+        this.a = r1;
     }
 }

@@ -6,8 +6,8 @@ public final class t13 {
     public final int a;
     public final boolean b;
 
-    public t13(int i, int i2, boolean z) {
-        this.a = i2;
-        this.b = z;
+    public t13(int r1, int r2, boolean r3) {
+        this.a = r2;
+        this.b = r3;
     }
 }

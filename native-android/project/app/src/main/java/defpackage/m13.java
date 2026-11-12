@@ -8,25 +8,26 @@ public final class m13 implements az, t85 {
     public final cz n;
     public final /* synthetic */ n13 o;
 
-    public m13(n13 n13Var, cz czVar) {
-        this.o = n13Var;
-        this.n = czVar;
+    public m13(n13 r1, cz r2) {
+        this.o = r1;
+        this.n = r2;
     }
 
     @Override // defpackage.t85
-    public final void a(u84 u84Var, int i) {
-        this.n.a(u84Var, i);
+    public final void a(u84 r1, int r2) {
+        this.n.a(r1, r2);
     }
 
     @Override // defpackage.az
-    public final f01 c(Object obj, xf1 xf1Var) {
-        n13 n13Var = this.o;
-        bz bzVar = new bz(n13Var, this);
-        f01 f01VarG = this.n.G((j15) obj, bzVar);
-        if (f01VarG != null) {
-            n13.w.set(n13Var, null);
-        }
-        return f01VarG;
+    public final f01 c(Object r2, xf1 r3) {
+        n13 r0 = this.o;
+        bz r4 = new bz(r0, this);
+        cz r1 = this.n;
+        f01 r5 = r1.G((j15) r2, r4);
+        if (r5 == null) goto L5;
+        n13.w.set(r0, null);
+    L5:
+        return r5;
     }
 
     @Override // defpackage.vd0
@@ -35,27 +36,29 @@ public final class m13 implements az, t85 {
     }
 
     @Override // defpackage.az
-    public final void k(Object obj, xf1 xf1Var) {
-        AtomicReferenceFieldUpdater atomicReferenceFieldUpdater = n13.w;
-        n13 n13Var = this.o;
-        atomicReferenceFieldUpdater.set(n13Var, null);
-        x xVar = new x(25, n13Var, this);
-        cz czVar = this.n;
-        czVar.D(j15.a, czVar.p, new bz(0, xVar));
+    public final void k(Object r3, xf1 r4) {
+        AtomicReferenceFieldUpdater r5 = n13.w;
+        n13 r0 = this.o;
+        r5.set(r0, null);
+        x r6 = new x(25, r0, this);
+        cz r2 = this.n;
+        int r7 = r2.p;
+        bz r1 = new bz(0, r6);
+        r2.D(j15.a, r7, r1);
     }
 
     @Override // defpackage.az
-    public final boolean r(Throwable th) {
-        return this.n.r(th);
+    public final boolean r(Throwable r1) {
+        return this.n.r(r1);
     }
 
     @Override // defpackage.vd0
-    public final void resumeWith(Object obj) {
-        this.n.resumeWith(obj);
+    public final void resumeWith(Object r1) {
+        this.n.resumeWith(r1);
     }
 
     @Override // defpackage.az
-    public final void t(Object obj) {
-        this.n.t(obj);
+    public final void t(Object r1) {
+        this.n.t(r1);
     }
 }

@@ -5,12 +5,13 @@ package defpackage;
 public final class sq2 {
     public final yq2 a;
     public final uo b;
-    public rq2 c = rq2.c;
+    public rq2 c;
     public int d;
     public long e;
 
-    public sq2(yq2 yq2Var, uo uoVar) {
-        this.a = yq2Var;
-        this.b = uoVar;
+    public sq2(yq2 r1, uo r2) {
+        this.a = r1;
+        this.b = r2;
+        this.c = rq2.c;
     }
 }

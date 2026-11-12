@@ -10,17 +10,17 @@ public final class uu implements su {
     public Object r;
 
     public long a() {
-        int i = this.p;
-        if (i == 0) {
-            tb4.k();
-            return 0L;
-        }
-        long[] jArr = (long[]) this.r;
-        int i2 = this.n;
-        long j = jArr[i2];
-        this.n = this.q & (i2 + 1);
-        this.p = i - 1;
-        return j;
+        int r0 = this.p;
+        if (r0 == 0) goto L6;
+        long[] r1 = (long[]) this.r;
+        int r2 = this.n;
+        long r3 = r1[r2];
+        this.n = this.q & (r2 + 1);
+        this.p = r0 - 1;
+        return r3;
+    L6:
+        tb4.k();
+        return 0;
     }
 
     @Override // defpackage.su
@@ -35,21 +35,21 @@ public final class uu implements su {
 
     @Override // defpackage.su
     public int l() {
-        be3 be3Var = (be3) this.r;
-        int i = this.o;
-        if (i == 8) {
-            return be3Var.A();
-        }
-        if (i == 16) {
-            return be3Var.H();
-        }
-        int i2 = this.p;
-        this.p = i2 + 1;
-        if (i2 % 2 != 0) {
-            return this.q & 15;
-        }
-        int iA = be3Var.A();
-        this.q = iA;
-        return (iA & 240) >> 4;
+        be3 r0 = (be3) this.r;
+        int r1 = this.o;
+        if (r1 != 8) goto L7;
+        return r0.A();
+    L7:
+        if (r1 == 16) goto L9;
+        int r2 = this.p;
+        this.p = r2 + 1;
+        if ((r2 % 2) != 0) goto L15;
+        int r3 = r0.A();
+        this.q = r3;
+        return (r3 & 240) >> 4;
+    L15:
+        return this.q & 15;
+    L9:
+        return r0.H();
     }
 }

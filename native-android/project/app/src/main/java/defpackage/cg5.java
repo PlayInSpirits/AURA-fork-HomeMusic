@@ -8,19 +8,19 @@ import com.google.android.gms.common.api.Status;
 public abstract class cg5 {
     public final int a;
 
-    public cg5(int i) {
-        this.a = i;
+    public cg5(int r1) {
+        this.a = r1;
     }
 
-    public static Status e(RemoteException remoteException) {
-        return new Status(19, remoteException.getClass().getSimpleName() + ": " + remoteException.getLocalizedMessage(), null, null);
+    public static Status e(RemoteException r3) {
+        return new Status(19, r3.getClass().getSimpleName() + ": " + r3.getLocalizedMessage(), null, null);
     }
 
-    public abstract void a(Status status);
+    public abstract void a(Status r1);
 
-    public abstract void b(Exception exc);
+    public abstract void b(Exception r1);
 
-    public abstract void c(gf5 gf5Var);
+    public abstract void c(gf5 r1);
 
-    public abstract void d(xc5 xc5Var, boolean z);
+    public abstract void d(xc5 r1, boolean r2);
 }

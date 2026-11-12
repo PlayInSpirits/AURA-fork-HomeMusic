@@ -4,7 +4,6 @@ import android.os.Trace;
 import java.util.concurrent.atomic.AtomicReference;
 import kotlin.KotlinNothingValueException;
 import kotlin.NoWhenBranchMatchedException;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -16,225 +15,215 @@ public final class ef3 {
     public final boolean e;
     public final d15 f;
     public final Object g;
-    public final AtomicReference h = new AtomicReference(gf3.p);
-    public long i = te5.m();
+    public final AtomicReference h;
+    public long i;
     public x03 j;
     public final uy3 k;
     public final uv3 l;
 
-    public ef3(z80 z80Var, u80 u80Var, rg1 rg1Var, z03 z03Var, wf1 wf1Var, boolean z, d15 d15Var, Object obj) {
-        this.a = z80Var;
-        this.b = u80Var;
-        this.c = rg1Var;
-        this.d = wf1Var;
-        this.e = z;
-        this.f = d15Var;
-        this.g = obj;
-        x03 x03Var = w54.a;
-        x03Var.getClass();
-        this.j = x03Var;
-        uy3 uy3Var = new uy3();
-        uy3Var.g(z03Var, rg1Var.v());
-        this.k = uy3Var;
-        this.l = new uv3(d15Var.p);
+    public ef3(z80 r1, u80 r2, rg1 r3, z03 r4, wf1 r5, boolean r6, d15 r7, Object r8) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r5;
+        this.e = r6;
+        this.f = r7;
+        this.g = r8;
+        this.h = new AtomicReference(gf3.p);
+        this.i = te5.m();
+        x03 r9 = w54.a;
+        r9.getClass();
+        this.j = r9;
+        uy3 r10 = new uy3();
+        r10.g(r4, r3.v());
+        this.k = r10;
+        this.l = new uv3(r7.p);
     }
 
-    public final void a() throws Exception {
-        AtomicReference atomicReference = this.h;
-        try {
-            switch (((gf3) atomicReference.get()).ordinal()) {
-                case 0:
-                    throw new IllegalStateException("The paused composition is invalid because of a previous exception");
-                case 1:
-                    throw new IllegalStateException("The paused composition has been cancelled");
-                case 2:
-                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                case 4:
-                    throw new IllegalStateException("The paused composition has not completed yet");
-                case 5:
-                    b();
-                    gf3 gf3Var = gf3.s;
-                    gf3 gf3Var2 = gf3.t;
-                    while (!atomicReference.compareAndSet(gf3Var, gf3Var2)) {
-                        if (atomicReference.get() != gf3Var) {
-                            oo3.b("Unexpected state change from: " + gf3Var + " to: " + gf3Var2 + ".");
-                            return;
-                        }
-                    }
-                    return;
-                case 6:
-                    throw new IllegalStateException("The paused composition has already been applied");
-                default:
-                    throw new NoWhenBranchMatchedException();
-            }
-        } catch (Exception e) {
-            atomicReference.set(gf3.n);
-            throw e;
-        }
+    public final void a() {
+        AtomicReference r0 = this.h;
+    L7:
+        e = move-exception;
+        r0.set(gf3.n);
+        throw e;
+    L4:
+        switch(((gf3) r0.get()).ordinal()) {
+            case 0: goto L24;
+            case 1: goto L22;
+            case 2: goto L20;
+            case 3: goto L20;
+            case 4: goto L20;
+            case 5: goto L11;
+            case 6: goto L10;
+            default: goto L6;
+        };     // Catch: Exception -> L7
+    L11:
+        b();     // Catch: Exception -> L7
+        gf3 r4 = gf3.s;     // Catch: Exception -> L7
+        gf3 r1 = gf3.t;     // Catch: Exception -> L7
+    L13:
+        if (r0.compareAndSet(r4, r1) == true) goto L14;
+        if (r0.get() == r4) goto L13;
+        oo3.b("Unexpected state change from: " + r4 + " to: " + r1 + ".");     // Catch: Exception -> L7
+        return;
+    L14:
+        return;
+    L6:
+        throw new NoWhenBranchMatchedException();     // Catch: Exception -> L7
+    L10:
+        throw new IllegalStateException("The paused composition has already been applied");     // Catch: Exception -> L7
+    L20:
+        throw new IllegalStateException("The paused composition has not completed yet");     // Catch: Exception -> L7
+    L22:
+        throw new IllegalStateException("The paused composition has been cancelled");     // Catch: Exception -> L7
+    L24:
+        throw new IllegalStateException("The paused composition is invalid because of a previous exception");     // Catch: Exception -> L7
     }
 
     public final void b() {
         Trace.beginSection("PausedComposition:applyChanges");
-        try {
-            synchronized (this.g) {
-                try {
-                    this.l.f(this.f, this.k);
-                    this.k.c();
-                    this.k.d();
-                    this.k.b();
-                    this.a.D = null;
-                } catch (Throwable th) {
-                    this.k.b();
-                    this.a.D = null;
-                    throw th;
-                }
-            }
-            Trace.endSection();
-        } catch (Throwable th2) {
-            Trace.endSection();
-            throw th2;
-        }
+        Object r0 = this.g;     // Catch: Throwable -> L18
+        monitor-enter(r0);     // Catch: Throwable -> L18
+        this.l.f(this.f, this.k);     // Catch: Throwable -> L13
+        this.k.c();     // Catch: Throwable -> L13
+        this.k.d();     // Catch: Throwable -> L13
+        this.k.b();     // Catch: Throwable -> L11
+        this.a.D = null;     // Catch: Throwable -> L11
+        monitor-exit(r0);     // Catch: Throwable -> L18
+        Trace.endSection();
+        return;
+    L11:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L18
+    L13:
+        th = move-exception;
+        this.k.b();     // Catch: Throwable -> L11
+        this.a.D = null;     // Catch: Throwable -> L11
+        throw th;     // Catch: Throwable -> L11
+    L18:
+        th = move-exception;
+        Trace.endSection();
+        throw th;
     }
 
     public final boolean c() {
-        return ((gf3) this.h.get()).compareTo(gf3.s) >= 0;
+        if (((gf3) this.h.get()).compareTo(gf3.s) < 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     public final void d() {
-        gf3 gf3Var;
-        gf3 gf3Var2;
-        boolean z;
-        while (true) {
-            AtomicReference atomicReference = this.h;
-            gf3Var = gf3.q;
-            gf3Var2 = gf3.s;
-            if (atomicReference.compareAndSet(gf3Var, gf3Var2)) {
-                z = true;
-                break;
-            } else if (atomicReference.get() != gf3Var) {
-                z = false;
-                break;
-            }
-        }
-        if (z) {
-            return;
-        }
-        oo3.b("Unexpected state change from: " + gf3Var + " to: " + gf3Var2 + ".");
+    L2:
+        AtomicReference r0 = this.h;
+        gf3 r1 = gf3.q;
+        gf3 r2 = gf3.s;
+        if (r0.compareAndSet(r1, r2) == true) goto L4;
+        if (r0.get() == r1) goto L2;
+        boolean r4 = false;
+    L8:
+        if (r4 == true) goto L14;
+        oo3.b("Unexpected state change from: " + r1 + " to: " + r2 + ".");
+        return;
+    L14:
+        return;
+    L4:
+        r4 = true;
+        goto L8
     }
 
-    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
-    /* JADX WARN: Code duplicated, block: B:28:0x0082 A[Catch: Exception -> 0x0023, TryCatch #1 {Exception -> 0x0023, blocks: (B:3:0x0004, B:6:0x001d, B:7:0x0022, B:10:0x0026, B:11:0x002d, B:12:0x002e, B:13:0x0035, B:14:0x0036, B:15:0x0040, B:16:0x0041, B:22:0x0069, B:24:0x0079, B:25:0x007b, B:31:0x00a3, B:33:0x00ab, B:28:0x0082, B:30:0x0088, B:35:0x00b1, B:36:0x00b3, B:38:0x00b9, B:41:0x00c0, B:42:0x00db, B:19:0x0048, B:21:0x004e, B:45:0x00e3, B:48:0x00f2, B:50:0x00f6, B:54:0x0100, B:53:0x00fb, B:55:0x0105, B:56:0x0107, B:62:0x012f, B:64:0x0137, B:59:0x010e, B:61:0x0114, B:68:0x0140, B:69:0x0141, B:70:0x0148, B:71:0x0149, B:72:0x0150, B:23:0x006b, B:46:0x00e8), top: B:77:0x0004, inners: #0, #2 }] */
-    /* JADX WARN: Code duplicated, block: B:33:0x00ab A[Catch: Exception -> 0x0023, TryCatch #1 {Exception -> 0x0023, blocks: (B:3:0x0004, B:6:0x001d, B:7:0x0022, B:10:0x0026, B:11:0x002d, B:12:0x002e, B:13:0x0035, B:14:0x0036, B:15:0x0040, B:16:0x0041, B:22:0x0069, B:24:0x0079, B:25:0x007b, B:31:0x00a3, B:33:0x00ab, B:28:0x0082, B:30:0x0088, B:35:0x00b1, B:36:0x00b3, B:38:0x00b9, B:41:0x00c0, B:42:0x00db, B:19:0x0048, B:21:0x004e, B:45:0x00e3, B:48:0x00f2, B:50:0x00f6, B:54:0x0100, B:53:0x00fb, B:55:0x0105, B:56:0x0107, B:62:0x012f, B:64:0x0137, B:59:0x010e, B:61:0x0114, B:68:0x0140, B:69:0x0141, B:70:0x0148, B:71:0x0149, B:72:0x0150, B:23:0x006b, B:46:0x00e8), top: B:77:0x0004, inners: #0, #2 }] */
-    /* JADX WARN: Code duplicated, block: B:64:0x0137 A[Catch: Exception -> 0x0023, TRY_LEAVE, TryCatch #1 {Exception -> 0x0023, blocks: (B:3:0x0004, B:6:0x001d, B:7:0x0022, B:10:0x0026, B:11:0x002d, B:12:0x002e, B:13:0x0035, B:14:0x0036, B:15:0x0040, B:16:0x0041, B:22:0x0069, B:24:0x0079, B:25:0x007b, B:31:0x00a3, B:33:0x00ab, B:28:0x0082, B:30:0x0088, B:35:0x00b1, B:36:0x00b3, B:38:0x00b9, B:41:0x00c0, B:42:0x00db, B:19:0x0048, B:21:0x004e, B:45:0x00e3, B:48:0x00f2, B:50:0x00f6, B:54:0x0100, B:53:0x00fb, B:55:0x0105, B:56:0x0107, B:62:0x012f, B:64:0x0137, B:59:0x010e, B:61:0x0114, B:68:0x0140, B:69:0x0141, B:70:0x0148, B:71:0x0149, B:72:0x0150, B:23:0x006b, B:46:0x00e8), top: B:77:0x0004, inners: #0, #2 }] */
-    /* JADX WARN: Code duplicated, block: B:84:0x0088 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:85:? A[LOOP:1: B:25:0x007b->B:85:?, LOOP_END, SYNTHETIC] */
-    public final boolean e(md4 md4Var) throws Exception {
-        long j;
-        gf3 gf3Var = gf3.r;
-        AtomicReference atomicReference = this.h;
-        try {
-            int iOrdinal = ((gf3) atomicReference.get()).ordinal();
-            gf3 gf3Var2 = gf3.q;
-            z80 z80Var = this.a;
-            u80 u80Var = this.b;
-            switch (iOrdinal) {
-                case 0:
-                    throw new IllegalStateException("The paused composition is invalid because of a previous exception");
-                case 1:
-                    throw new IllegalStateException("The paused composition has been cancelled");
-                case 2:
-                    rg1 rg1Var = this.c;
-                    boolean z = this.e;
-                    if (z) {
-                        rg1Var.z = 0;
-                        rg1Var.y = true;
-                    }
-                    this.j = u80Var.b(z80Var, md4Var, this.d);
-                    if (z) {
-                        if (rg1Var.F || rg1Var.z != 0) {
-                            oo3.a("Cannot disable reuse from root if it was caused by other groups");
-                        }
-                        rg1Var.z = -1;
-                        rg1Var.y = false;
-                    }
-                    gf3 gf3Var3 = gf3.p;
-                    while (!atomicReference.compareAndSet(gf3Var3, gf3Var2)) {
-                        if (atomicReference.get() != gf3Var3) {
-                            oo3.b("Unexpected state change from: " + gf3Var3 + " to: " + gf3Var2 + ".");
-                            if (this.j.g()) {
-                                d();
-                            }
-                            return c();
-                        }
-                    }
-                    if (this.j.g()) {
-                        d();
-                    }
-                    return c();
-                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                    try {
-                        while (!atomicReference.compareAndSet(gf3Var2, gf3Var)) {
-                            if (atomicReference.get() != gf3Var2) {
-                                oo3.b("Unexpected state change from: " + gf3Var2 + " to: " + gf3Var + ".");
-                                j = this.i;
-                                this.i = te5.m();
-                                this.j = u80Var.n(z80Var, md4Var, this.j);
-                                this.i = j;
-                                while (!atomicReference.compareAndSet(gf3Var, gf3Var2)) {
-                                    if (atomicReference.get() != gf3Var) {
-                                        oo3.b("Unexpected state change from: " + gf3Var + " to: " + gf3Var2 + ".");
-                                        if (this.j.g()) {
-                                            d();
-                                        }
-                                        return c();
-                                    }
-                                }
-                                if (this.j.g()) {
-                                    d();
-                                }
-                                return c();
-                            }
-                        }
-                        this.i = te5.m();
-                        this.j = u80Var.n(z80Var, md4Var, this.j);
-                        this.i = j;
-                        while (!atomicReference.compareAndSet(gf3Var, gf3Var2)) {
-                            if (atomicReference.get() != gf3Var) {
-                                oo3.b("Unexpected state change from: " + gf3Var + " to: " + gf3Var2 + ".");
-                                if (this.j.g()) {
-                                    d();
-                                }
-                                return c();
-                            }
-                        }
-                        if (this.j.g()) {
-                            d();
-                        }
-                        return c();
-                    } catch (Throwable th) {
-                        this.i = j;
-                        while (!atomicReference.compareAndSet(gf3Var, gf3Var2)) {
-                            if (atomicReference.get() != gf3Var) {
-                                oo3.b("Unexpected state change from: " + gf3Var + " to: " + gf3Var2 + ".");
-                                throw th;
-                            }
-                        }
-                        throw th;
-                    }
-                    j = this.i;
-                case 4:
-                    l80.b("Recursive call to resume()");
-                    throw new KotlinNothingValueException();
-                case 5:
-                    throw new IllegalStateException("Pausable composition is complete and apply() should be applied");
-                case 6:
-                    throw new IllegalStateException("The paused composition has been applied");
-                default:
-                    throw new NoWhenBranchMatchedException();
-            }
-        } catch (Exception e) {
-            atomicReference.set(gf3.n);
-            throw e;
-        }
+    public final boolean e(md4 r14) {
+        gf3 r0 = gf3.r;
+        AtomicReference r1 = this.h;
+        int r2 = ((gf3) r1.get()).ordinal();     // Catch: Exception -> L8
+        gf3 r3 = gf3.q;
+        z80 r4 = this.a;
+        u80 r5 = this.b;
+        switch(r2) {
+            case 0: goto L72;
+            case 1: goto L70;
+            case 2: goto L43;
+            case 3: goto L17;
+            case 4: goto L14;
+            case 5: goto L13;
+            case 6: goto L11;
+            default: goto L7;
+        };
+    L14:
+        l80.b("Recursive call to resume()");     // Catch: Exception -> L8
+        throw new KotlinNothingValueException();     // Catch: Exception -> L8
+    L43:
+        rg1 r6 = this.c;
+        boolean r9 = this.e;
+        if (r9 == false) goto L78;
+        r6.z = 0;     // Catch: Exception -> L8
+        r6.y = true;     // Catch: Exception -> L8
+    L78:
+        this.j = r5.b(r4, r14, this.d);     // Catch: Throwable -> L67
+        if (r9 == true) goto L49;
+    L55:
+        gf3 r15 = gf3.p;     // Catch: Exception -> L8
+    L57:
+        if (r1.compareAndSet(r15, r3) == true) goto L63;
+        if (r1.get() == r15) goto L57;
+        oo3.b("Unexpected state change from: " + r15 + " to: " + r3 + ".");     // Catch: Exception -> L8
+    L63:
+        if (this.j.g() == false) goto L66;
+        d();     // Catch: Exception -> L8
+    L66:
+        return c();
+    L49:
+        if (r6.F == false) goto L51;
+    L53:
+        oo3.a("Cannot disable reuse from root if it was caused by other groups");     // Catch: Exception -> L8
+    L54:
+        r6.z = -1;     // Catch: Exception -> L8
+        r6.y = false;     // Catch: Exception -> L8
+        goto L55
+    L51:
+        if (r6.z != 0) goto L53;
+    L67:
+        th = move-exception;
+        throw th;     // Catch: Exception -> L8
+    L7:
+        throw new NoWhenBranchMatchedException();     // Catch: Exception -> L8
+    L11:
+        throw new IllegalStateException("The paused composition has been applied");     // Catch: Exception -> L8
+    L13:
+        throw new IllegalStateException("Pausable composition is complete and apply() should be applied");     // Catch: Exception -> L8
+    L17:
+        if (r1.compareAndSet(r3, r0) == true) goto L22;
+        if (r1.get() == r3) goto L17;
+        oo3.b("Unexpected state change from: " + r3 + " to: " + r0 + ".");     // Catch: Exception -> L8
+    L22:
+        long r10 = this.i;     // Catch: Exception -> L8
+        this.i = te5.m();     // Catch: Throwable -> L34
+        this.j = r5.n(r4, r14, this.j);     // Catch: Throwable -> L34
+        this.i = r10;     // Catch: Exception -> L8
+    L26:
+        if (r1.compareAndSet(r0, r3) == true) goto L32;
+        if (r1.get() == r0) goto L26;
+        oo3.b("Unexpected state change from: " + r0 + " to: " + r3 + ".");     // Catch: Exception -> L8
+    L32:
+        if (this.j.g() == false) goto L66;
+        d();     // Catch: Exception -> L8
+        goto L66
+    L34:
+        th = move-exception;
+        this.i = r10;     // Catch: Exception -> L8
+    L37:
+        if (r1.compareAndSet(r0, r3) == true) goto L42;
+        if (r1.get() == r0) goto L37;
+        oo3.b("Unexpected state change from: " + r0 + " to: " + r3 + ".");     // Catch: Exception -> L8
+    L42:
+        throw th;     // Catch: Exception -> L8
+    L70:
+        throw new IllegalStateException("The paused composition has been cancelled");     // Catch: Exception -> L8
+    L72:
+        throw new IllegalStateException("The paused composition is invalid because of a previous exception");     // Catch: Exception -> L8
+    L8:
+        e = move-exception;
+        r1.set(gf3.n);
+        throw e;
     }
 }

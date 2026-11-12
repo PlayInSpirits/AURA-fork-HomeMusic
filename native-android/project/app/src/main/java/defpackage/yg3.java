@@ -8,8 +8,8 @@ public final class yg3 {
     public final wq2 a;
     public final MediaRouter.UserRouteInfo b;
 
-    public yg3(wq2 wq2Var, MediaRouter.UserRouteInfo userRouteInfo) {
-        this.a = wq2Var;
-        this.b = userRouteInfo;
+    public yg3(wq2 r1, MediaRouter.UserRouteInfo r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

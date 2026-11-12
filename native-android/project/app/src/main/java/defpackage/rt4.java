@@ -5,15 +5,21 @@ package defpackage;
 public final class rt4 implements pv2 {
     public final long a;
 
-    public rt4(long j) {
-        this.a = j;
+    public rt4(long r1) {
+        this.a = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return obj != null && rt4.class == obj.getClass() && this.a == ((rt4) obj).a;
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if (r5 != null) goto L8;
+    L13:
+        return false;
+    L8:
+        if (rt4.class != r5.getClass()) goto L13;
+        if (this.a != ((rt4) r5).a) goto L13;
+        return true;
     }
 
     public final int hashCode() {

@@ -15,34 +15,36 @@ public final class ww3 {
     public boolean f;
     public int g;
 
-    public final void a(RecyclerView recyclerView) {
-        int i = this.d;
-        if (i >= 0) {
-            this.d = -1;
-            recyclerView.S(i);
-            this.f = false;
-            return;
-        }
-        if (!this.f) {
-            this.g = 0;
-            return;
-        }
-        Interpolator interpolator = this.e;
-        if (interpolator != null && this.c < 1) {
-            kf2.o("If you provide an interpolator, you must set a positive duration");
-            return;
-        }
-        int i2 = this.c;
-        if (i2 < 1) {
-            kf2.o("Scroll duration must be a positive number");
-            return;
-        }
-        recyclerView.r0.c(this.a, this.b, i2, interpolator);
-        int i3 = this.g + 1;
-        this.g = i3;
-        if (i3 > 10) {
-            Log.e("RecyclerView", "Smooth Scroll action is being updated too frequently. Make sure you are not changing it unless necessary");
-        }
+    public final void a(RecyclerView r7) {
+        int r0 = this.d;
+        if (r0 < 0) goto L7;
+        this.d = -1;
+        r7.S(r0);
         this.f = false;
+        return;
+    L7:
+        if (this.f == false) goto L24;
+        Interpolator r1 = this.e;
+        if (r1 != null) goto L11;
+    L15:
+        int r3 = this.c;
+        if (r3 < 1) goto L22;
+        r7.r0.c(this.a, this.b, r3, r1);
+        int r8 = this.g + 1;
+        this.g = r8;
+        if (r8 <= 10) goto L20;
+        Log.e("RecyclerView", "Smooth Scroll action is being updated too frequently. Make sure you are not changing it unless necessary");
+    L20:
+        this.f = false;
+        return;
+    L22:
+        kf2.o("Scroll duration must be a positive number");
+        return;
+    L11:
+        if (this.c >= 1) goto L15;
+        kf2.o("If you provide an interpolator, you must set a positive duration");
+        return;
+    L24:
+        this.g = 0;
     }
 }

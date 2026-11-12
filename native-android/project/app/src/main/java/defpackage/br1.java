@@ -9,56 +9,69 @@ import java.util.regex.Pattern;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class br1 {
     static {
-        yw ywVar = yw.q;
+        yw r0 = yw.q;
         pa.t("\"\\");
         pa.t("\t ,=");
     }
 
-    public static final boolean a(k14 k14Var) {
-        if (h12.c(k14Var.n.b, "HEAD")) {
-            return false;
-        }
-        int i = k14Var.q;
-        if (((i < 100 || i >= 200) && i != 204 && i != 304) || ze5.e(k14Var) != -1) {
-            return true;
-        }
-        String strA = k14Var.s.a("Transfer-Encoding");
-        if (strA == null) {
-            strA = null;
-        }
-        return "chunked".equalsIgnoreCase(strA);
+    public static final boolean a(k14 r4) {
+        if (h12.c(r4.n.b, "HEAD") == true) goto L26;
+        int r0 = r4.q;
+        if (r0 < 100) goto L10;
+        if (r0 >= 200) goto L10;
+    L15:
+        if (ze5.e(r4) != (-1)) goto L24;
+        String r5 = r4.s.a("Transfer-Encoding");
+        if (r5 != null) goto L20;
+        r5 = null;
+    L20:
+        if ("chunked".equalsIgnoreCase(r5) == true) goto L28;
+        return false;
+    L28:
+        return true;
+    L24:
+        return true;
+    L10:
+        if (r0 == 204) goto L15;
+        if (r0 == 304) goto L15;
+        return true;
+    L26:
+        return false;
     }
 
-    public static final void b(be0 be0Var, gr1 gr1Var, tl1 tl1Var) {
-        List listUnmodifiableList;
-        be0Var.getClass();
-        gr1Var.getClass();
-        tl1Var.getClass();
-        if (be0Var == be0.g) {
-            return;
-        }
-        Pattern pattern = ae0.k;
-        List listF = tl1Var.f("Set-Cookie");
-        int size = listF.size();
-        ArrayList arrayList = null;
-        for (int i = 0; i < size; i++) {
-            ae0 ae0VarT = l93.T(gr1Var, (String) listF.get(i));
-            if (ae0VarT != null) {
-                if (arrayList == null) {
-                    arrayList = new ArrayList();
-                }
-                arrayList.add(ae0VarT);
-            }
-        }
-        if (arrayList != null) {
-            listUnmodifiableList = Collections.unmodifiableList(arrayList);
-            listUnmodifiableList.getClass();
-        } else {
-            listUnmodifiableList = u01.n;
-        }
-        if (listUnmodifiableList.isEmpty()) {
-            return;
-        }
-        be0Var.p(gr1Var, listUnmodifiableList);
+    public static final void b(be0 r4, gr1 r5, tl1 r6) {
+        r4.getClass();
+        r5.getClass();
+        r6.getClass();
+        if (r4 == be0.g) goto L25;
+        Pattern r0 = ae0.k;
+        List r7 = r6.f("Set-Cookie");
+        int r1 = r7.size();
+        ArrayList r2 = null;
+        int r3 = 0;
+    L6:
+        if (r3 >= r1) goto L14;
+        ae0 r8 = l93.T(r5, (String) r7.get(r3));
+        if (r8 == null) goto L13;
+        if (r2 != null) goto L12;
+        r2 = new ArrayList();
+    L12:
+        r2.add(r8);
+    L13:
+        r3 = r3 + 1;
+        goto L6
+    L14:
+        if (r2 == null) goto L16;
+        List r9 = Collections.unmodifiableList(r2);
+        r9.getClass();
+    L18:
+        if (r9.isEmpty() == false) goto L20;
+        return;
+    L20:
+        r4.p(r5, r9);
+        return;
+    L16:
+        r9 = u01.n;
+        goto L18
     }
 }

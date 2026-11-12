@@ -7,15 +7,17 @@ import android.view.ViewGroup;
 /* JADX INFO: loaded from: classes.dex */
 public final class k75 implements ow3 {
     @Override // defpackage.ow3
-    public final void b(View view) {
+    public final void b(View r1) {
     }
 
     @Override // defpackage.ow3
-    public final void c(View view) {
-        nw3 nw3Var = (nw3) view.getLayoutParams();
-        if (((ViewGroup.MarginLayoutParams) nw3Var).width == -1 && ((ViewGroup.MarginLayoutParams) nw3Var).height == -1) {
-            return;
-        }
+    public final void c(View r2) {
+        nw3 r1 = (nw3) r2.getLayoutParams();
+        if (((ViewGroup.MarginLayoutParams) r1).width == (-1)) goto L5;
+    L7:
         kf2.o("Pages must fill the whole ViewPager2 (use match_parent)");
+        return;
+    L5:
+        if (((ViewGroup.MarginLayoutParams) r1).height != (-1)) goto L7;
     }
 }

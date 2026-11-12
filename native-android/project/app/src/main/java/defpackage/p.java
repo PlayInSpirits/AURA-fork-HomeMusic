@@ -2,9 +2,8 @@ package defpackage;
 
 import android.view.View;
 import app.homemusic.R;
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import java.util.ArrayList;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
+import java.util.Set;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -14,669 +13,680 @@ public final class p extends ep4 implements wf1 {
     public /* synthetic */ Object q;
     public final /* synthetic */ Object r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ p(Object obj, Object obj2, vd0 vd0Var, int i) {
-        super(2, vd0Var);
-        this.o = i;
-        this.q = obj;
-        this.r = obj2;
+    public /* synthetic */ p(Object r1, Object r2, vd0 r3, int r4) {
+        this.o = r4;
+        this.q = r1;
+        this.r = r2;
+        super(2, r3);
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object obj, vd0 vd0Var) {
-        int i = this.o;
-        Object obj2 = this.r;
-        switch (i) {
-            case 0:
-                return new p((rm2) this.q, (wp1) obj2, vd0Var, 0);
-            case 1:
-                return new p((rm2) this.q, (xp1) obj2, vd0Var, 1);
-            case 2:
-                p pVar = new p((ip) obj2, vd0Var, 2);
-                pVar.q = obj;
-                return pVar;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                return new p((cv) this.q, (jo) obj2, vd0Var, 3);
-            case 4:
-                p pVar2 = new p((z00) obj2, vd0Var, 4);
-                pVar2.q = obj;
-                return pVar2;
-            case 5:
-                p pVar3 = new p((a10) obj2, vd0Var, 5);
-                pVar3.q = obj;
-                return pVar3;
-            case 6:
-                return new p((a80) this.q, (Runnable) obj2, vd0Var, 6);
-            case 7:
-                return new p((wf1) this.q, (go3) obj2, vd0Var, 7);
-            case 8:
-                return new p((wf1) this.q, (jx3) obj2, vd0Var, 8);
-            case 9:
-                return new p((rm2) this.q, (b13) obj2, vd0Var, 9);
-            case 10:
-                return new p((sn3) this.q, (lm0) obj2, vd0Var, 10);
-            case 11:
-                return new p((ll4) this.q, (rx2) obj2, vd0Var, 11);
-            case 12:
-                p pVar4 = new p((hy2) obj2, vd0Var, 12);
-                pVar4.q = obj;
-                return pVar4;
-            case 13:
-                return new p((p53) this.q, (rq3) obj2, vd0Var, 13);
-            case 14:
-                return new p((ir2) this.q, (wf1) obj2, vd0Var, 14);
-            case 15:
-                p pVar5 = new p((y00) obj2, vd0Var, 15);
-                pVar5.q = obj;
-                return pVar5;
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                return new p((zu0) this.q, (z64) obj2, vd0Var, 16);
-            case 17:
-                return new p((jy4) this.q, (gf1) obj2, vd0Var, 17);
-            case 18:
-                p pVar6 = new p((q81) obj2, vd0Var, 18);
-                pVar6.q = obj;
-                return pVar6;
-            default:
-                return new p((tv3) this.q, (View) obj2, vd0Var, 19);
-        }
+    public final vd0 create(Object r3, vd0 r4) {
+        int r0 = this.o;
+        Object r1 = this.r;
+        switch(r0) {
+            case 0: goto L43;
+            case 1: goto L41;
+            case 2: goto L38;
+            case 3: goto L37;
+            case 4: goto L34;
+            case 5: goto L32;
+            case 6: goto L31;
+            case 7: goto L29;
+            case 8: goto L27;
+            case 9: goto L25;
+            case 10: goto L23;
+            case 11: goto L21;
+            case 12: goto L18;
+            case 13: goto L17;
+            case 14: goto L15;
+            case 15: goto L12;
+            case 16: goto L11;
+            case 17: goto L9;
+            case 18: goto L6;
+            default: goto L5;
+        };
+    L6:
+        p r2 = new p((q81) r1, r4, 18);
+        r2.q = r3;
+        return r2;
+    L12:
+        p r5 = new p((y00) r1, r4, 15);
+        r5.q = r3;
+        return r5;
+    L18:
+        p r6 = new p((hy2) r1, r4, 12);
+        r6.q = r3;
+        return r6;
+    L32:
+        p r7 = new p((a10) r1, r4, 5);
+        r7.q = r3;
+        return r7;
+    L34:
+        p r8 = new p((z00) r1, r4, 4);
+        r8.q = r3;
+        return r8;
+    L38:
+        p r9 = new p((ip) r1, r4, 2);
+        r9.q = r3;
+        return r9;
+    L5:
+        return new p((tv3) this.q, (View) r1, r4, 19);
+    L9:
+        return new p((jy4) this.q, (gf1) r1, r4, 17);
+    L11:
+        return new p((zu0) this.q, (z64) r1, r4, 16);
+    L15:
+        return new p((ir2) this.q, (wf1) r1, r4, 14);
+    L17:
+        return new p((p53) this.q, (rq3) r1, r4, 13);
+    L21:
+        return new p((ll4) this.q, (rx2) r1, r4, 11);
+    L23:
+        return new p((sn3) this.q, (lm0) r1, r4, 10);
+    L25:
+        return new p((rm2) this.q, (b13) r1, r4, 9);
+    L27:
+        return new p((wf1) this.q, (jx3) r1, r4, 8);
+    L29:
+        return new p((wf1) this.q, (go3) r1, r4, 7);
+    L31:
+        return new p((a80) this.q, (Runnable) r1, r4, 6);
+    L37:
+        return new p((cv) this.q, (jo) r1, r4, 3);
+    L41:
+        return new p((rm2) this.q, (xp1) r1, r4, 1);
+    L43:
+        return new p((rm2) this.q, (wp1) r1, r4, 0);
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) throws Throwable {
-        int i = this.o;
-        j15 j15Var = j15.a;
-        switch (i) {
-            case 0:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 1:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 2:
-                return ((p) create((rq3) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 4:
-                return ((p) create((rq3) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 5:
-                return ((p) create((q81) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 6:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 7:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 8:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 9:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 10:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 11:
-                ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-                return xe0.n;
-            case 12:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 13:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 14:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 15:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 17:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-            case 18:
-                return ((p) create(obj, (vd0) obj2)).invokeSuspend(j15Var);
-            default:
-                return ((p) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
-        }
+    public final Object invoke(Object r3, Object r4) {
+        int r0 = this.o;
+        j15 r1 = j15.a;
+        switch(r0) {
+            case 0: goto L43;
+            case 1: goto L41;
+            case 2: goto L39;
+            case 3: goto L37;
+            case 4: goto L35;
+            case 5: goto L33;
+            case 6: goto L31;
+            case 7: goto L29;
+            case 8: goto L27;
+            case 9: goto L25;
+            case 10: goto L23;
+            case 11: goto L20;
+            case 12: goto L19;
+            case 13: goto L17;
+            case 14: goto L15;
+            case 15: goto L13;
+            case 16: goto L11;
+            case 17: goto L9;
+            case 18: goto L7;
+            default: goto L5;
+        };
+    L20:
+        ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+        return xe0.n;
+    L5:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L7:
+        return ((p) create(r3, (vd0) r4)).invokeSuspend(r1);
+    L9:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L11:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L13:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L15:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L17:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L19:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L23:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L25:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L27:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L29:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L31:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L33:
+        return ((p) create((q81) r3, (vd0) r4)).invokeSuspend(r1);
+    L35:
+        return ((p) create((rq3) r3, (vd0) r4)).invokeSuspend(r1);
+    L37:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L39:
+        return ((p) create((rq3) r3, (vd0) r4)).invokeSuspend(r1);
+    L41:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    L43:
+        return ((p) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
     }
 
-    /* JADX WARN: Code duplicated, block: B:125:0x0204 A[Catch: all -> 0x01e2, TryCatch #0 {all -> 0x01e2, blocks: (B:113:0x01dc, B:123:0x01fa, B:125:0x0204, B:129:0x0217, B:120:0x01ef), top: B:272:0x01d2 }] */
-    /* JADX WARN: Code duplicated, block: B:127:0x0213  */
-    /* JADX WARN: Code duplicated, block: B:128:0x0214  */
-    /* JADX WARN: Code duplicated, block: B:133:0x0240  */
-    /* JADX WARN: Code restructure failed: missing block: B:130:0x023a, code lost:
-    
-        if (defpackage.hy2.E(r6, r7, r8, r9, r10, r11) == r0) goto L131;
-     */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:130:0x023a -> B:115:0x01e0). Please report as a decompilation issue!!! */
     @Override // defpackage.jp
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public final Object invokeSuspend(Object obj) throws Throwable {
-        we0 we0Var;
-        we0 we0Var2;
-        p pVar;
-        Object objH;
-        Throwable th;
-        s22 s22Var;
-        int i = 0;
-        int i2 = 2;
-        vd0 vd0Var = null;
-        switch (this.o) {
-            case 0:
-                xe0 xe0Var = xe0.n;
-                int i3 = this.p;
-                if (i3 == 0) {
-                    kb4.X(obj);
-                    rm2 rm2Var = (rm2) this.q;
-                    wp1 wp1Var = (wp1) this.r;
-                    this.p = 1;
-                    if (rm2Var.e(wp1Var, this) == xe0Var) {
-                        return xe0Var;
-                    }
-                } else {
-                    if (i3 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                return j15.a;
-            case 1:
-                xe0 xe0Var2 = xe0.n;
-                int i4 = this.p;
-                if (i4 == 0) {
-                    kb4.X(obj);
-                    rm2 rm2Var2 = (rm2) this.q;
-                    xp1 xp1Var = (xp1) this.r;
-                    this.p = 1;
-                    if (rm2Var2.e(xp1Var, this) == xe0Var2) {
-                        return xe0Var2;
-                    }
-                } else {
-                    if (i4 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                return j15.a;
-            case 2:
-                xe0 xe0Var3 = xe0.n;
-                int i5 = this.p;
-                if (i5 == 0) {
-                    kb4.X(obj);
-                    rq3 rq3Var = (rq3) this.q;
-                    ip ipVar = (ip) this.r;
-                    hp hpVar = new hp(ipVar, rq3Var);
-                    xb0 xb0Var = ipVar.a;
-                    xb0Var.getClass();
-                    synchronized (xb0Var.c) {
-                        try {
-                            if (xb0Var.d.add(hpVar)) {
-                                if (xb0Var.d.size() == 1) {
-                                    xb0Var.e = xb0Var.a();
-                                    cx.f().b(yb0.a, xb0Var.getClass().getSimpleName() + ": initial state = " + xb0Var.e);
-                                    xb0Var.c();
-                                }
-                                Object sc0Var = ipVar.e(xb0Var.e) ? new sc0(ipVar.d()) : rc0.a;
-                                rq3Var.getClass();
-                                rq3Var.d(sc0Var);
-                            }
-                        } catch (Throwable th2) {
-                            throw th2;
-                        }
-                        break;
-                    }
-                    gp gpVar = new gp(i, (ip) this.r, hpVar);
-                    this.p = 1;
-                    if (jz4.i(rq3Var, gpVar, this) == xe0Var3) {
-                        return xe0Var3;
-                    }
-                } else {
-                    if (i5 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                return j15.a;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                xe0 xe0Var4 = xe0.n;
-                int i6 = this.p;
-                if (i6 == 0) {
-                    kb4.X(obj);
-                    cv cvVar = (cv) this.q;
-                    jo joVar = (jo) this.r;
-                    this.p = 1;
-                    if (xl.h(cvVar, joVar, this) == xe0Var4) {
-                        return xe0Var4;
-                    }
-                } else {
-                    if (i6 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                return j15.a;
-            case 4:
-                xe0 xe0Var5 = xe0.n;
-                int i7 = this.p;
-                if (i7 == 0) {
-                    kb4.X(obj);
-                    rq3 rq3Var2 = (rq3) this.q;
-                    z00 z00Var = (z00) this.r;
-                    this.p = 1;
-                    if (z00Var.b(rq3Var2, this) == xe0Var5) {
-                        return xe0Var5;
-                    }
-                } else {
-                    if (i7 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                return j15.a;
-            case 5:
-                xe0 xe0Var6 = xe0.n;
-                int i8 = this.p;
-                if (i8 == 0) {
-                    kb4.X(obj);
-                    q81 q81Var = (q81) this.q;
-                    a10 a10Var = (a10) this.r;
-                    this.p = 1;
-                    if (a10Var.f(q81Var, this) == xe0Var6) {
-                        return xe0Var6;
-                    }
-                } else {
-                    if (i8 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                return j15.a;
-            case 6:
-                j15 j15Var = j15.a;
-                a80 a80Var = (a80) this.q;
-                xe0 xe0Var7 = xe0.n;
-                int i9 = this.p;
-                if (i9 == 0) {
-                    kb4.X(obj);
-                    sy3 sy3Var = a80Var.f;
-                    this.p = 1;
-                    Object objA = sy3Var.a(0.0f - sy3Var.c, this);
-                    if (objA != xe0Var7) {
-                        objA = j15Var;
-                    }
-                    if (objA == xe0Var7) {
-                        return xe0Var7;
-                    }
-                } else {
-                    if (i9 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                ((zd3) a80Var.c.o).setValue(Boolean.FALSE);
-                ((Runnable) this.r).run();
-                return j15Var;
-            case 7:
-                xe0 xe0Var8 = xe0.n;
-                int i10 = this.p;
-                if (i10 != 0) {
-                    if (i10 == 1) {
-                        kb4.X(obj);
-                        return obj;
-                    }
-                    kf2.o("call to 'resume' before 'invoke' with coroutine");
-                    return null;
-                }
-                kb4.X(obj);
-                wf1 wf1Var = (wf1) this.q;
-                go3 go3Var = (go3) this.r;
-                this.p = 1;
-                Object objInvoke = wf1Var.invoke(go3Var, this);
-                return objInvoke == xe0Var8 ? xe0Var8 : objInvoke;
-            case 8:
-                xe0 xe0Var9 = xe0.n;
-                int i11 = this.p;
-                if (i11 != 0) {
-                    if (i11 == 1) {
-                        kb4.X(obj);
-                        return obj;
-                    }
-                    kf2.o("call to 'resume' before 'invoke' with coroutine");
-                    return null;
-                }
-                kb4.X(obj);
-                wf1 wf1Var2 = (wf1) this.q;
-                Object obj2 = ((jx3) this.r).n;
-                this.p = 1;
-                Object objInvoke2 = wf1Var2.invoke(obj2, this);
-                return objInvoke2 == xe0Var9 ? xe0Var9 : objInvoke2;
-            case 9:
-                xe0 xe0Var10 = xe0.n;
-                int i12 = this.p;
-                if (i12 != 0) {
-                    if (i12 == 1) {
-                        kb4.X(obj);
-                        return j15.a;
-                    }
-                    kf2.o("call to 'resume' before 'invoke' with coroutine");
-                    return null;
-                }
-                kb4.X(obj);
-                ArrayList arrayList = new ArrayList();
-                cd4 cd4Var = (cd4) ((rm2) this.q).o;
-                lv0 lv0Var = new lv0(i, arrayList, (b13) this.r);
-                this.p = 1;
-                cd4Var.getClass();
-                cd4.k(cd4Var, lv0Var, this);
-                return xe0Var10;
-            case 10:
-                xe0 xe0Var11 = xe0.n;
-                int i13 = this.p;
-                if (i13 == 0) {
-                    kb4.X(obj);
-                    sn3 sn3Var = (sn3) this.q;
-                    j82 j82Var = new j82((lm0) this.r, null);
-                    this.p = 1;
-                    if (xl.g(sn3Var, j82Var, this) == xe0Var11) {
-                        return xe0Var11;
-                    }
-                } else {
-                    if (i13 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                return j15.a;
-            case 11:
-                xe0 xe0Var12 = xe0.n;
-                int i14 = this.p;
-                if (i14 == 0) {
-                    kb4.X(obj);
-                    ll4 ll4Var = (ll4) this.q;
-                    fc0 fc0Var = new fc0(2, (rx2) this.r);
-                    this.p = 1;
-                    if (ll4Var.a(fc0Var, this) == xe0Var12) {
-                        return xe0Var12;
-                    }
-                } else {
-                    if (i14 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                er1.a();
-                return null;
-            case 12:
-                hy2 hy2Var = (hy2) this.r;
-                xe0 xe0Var13 = xe0.n;
-                int i15 = this.p;
-                try {
-                    if (i15 == 0) {
-                        kb4.X(obj);
-                        we0Var = (we0) this.q;
-                        if (gb.L(we0Var.e())) {
-                            hy2Var.h = null;
-                            return j15.a;
-                        }
-                        aw awVar = hy2Var.g;
-                        this.q = we0Var;
-                        this.p = 1;
-                        awVar.getClass();
-                        objH = aw.H(awVar, this);
-                        if (objH == xe0Var13) {
-                            we0Var2 = we0Var;
-                            obj = objH;
-                            cy2 cy2Var = (cy2) obj;
-                            float fM = ((oo0) hy2Var.d).M(6.0f);
-                            float fM2 = ((oo0) hy2Var.d).M(1.0f);
-                            g74 g74Var = (g74) hy2Var.b;
-                            this.q = we0Var2;
-                            this.p = 2;
-                            pVar = this;
-                            break;
-                        }
-                        return xe0Var13;
-                    }
-                    if (i15 == 1) {
-                        we0Var2 = (we0) this.q;
-                        kb4.X(obj);
-                        cy2 cy2Var2 = (cy2) obj;
-                        float fM3 = ((oo0) hy2Var.d).M(6.0f);
-                        float fM4 = ((oo0) hy2Var.d).M(1.0f);
-                        g74 g74Var2 = (g74) hy2Var.b;
-                        this.q = we0Var2;
-                        this.p = 2;
-                        pVar = this;
-                    } else {
-                        if (i15 != 2) {
-                            kf2.o("call to 'resume' before 'invoke' with coroutine");
-                            return null;
-                        }
-                        we0Var2 = (we0) this.q;
-                        kb4.X(obj);
-                        pVar = this;
-                    }
-                    break;
-                    we0Var = we0Var2;
-                    this = pVar;
-                    if (gb.L(we0Var.e())) {
-                        hy2Var.h = null;
-                        return j15.a;
-                    }
-                    aw awVar2 = hy2Var.g;
-                    this.q = we0Var;
-                    this.p = 1;
-                    awVar2.getClass();
-                    objH = aw.H(awVar2, this);
-                    if (objH == xe0Var13) {
-                        we0Var2 = we0Var;
-                        obj = objH;
-                        cy2 cy2Var3 = (cy2) obj;
-                        float fM5 = ((oo0) hy2Var.d).M(6.0f);
-                        float fM6 = ((oo0) hy2Var.d).M(1.0f);
-                        g74 g74Var3 = (g74) hy2Var.b;
-                        this.q = we0Var2;
-                        this.p = 2;
-                        pVar = this;
-                        break;
-                    }
-                    return xe0Var13;
-                } catch (Throwable th3) {
-                    hy2Var.h = null;
-                    throw th3;
-                }
-            case 13:
-                xe0 xe0Var14 = xe0.n;
-                int i16 = this.p;
-                if (i16 == 0) {
-                    kb4.X(obj);
-                    this.p = 1;
-                    if (au0.j(1000L, this) == xe0Var14) {
-                        return xe0Var14;
-                    }
-                } else {
-                    if (i16 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                cx.f().b(lc5.a, "NetworkRequestConstraintController didn't receive neither onCapabilitiesChanged/onLost callback, sending `ConstraintsNotMet` after 1000 ms");
-                ((rq3) this.r).d(new sc0(7));
-                return j15.a;
-            case 14:
-                xe0 xe0Var15 = xe0.n;
-                int i17 = this.p;
-                if (i17 == 0) {
-                    kb4.X(obj);
-                    g74 g74Var4 = (g74) ((ir2) this.q).b;
-                    h13 h13Var = h13.o;
-                    wf1 wf1Var3 = (wf1) this.r;
-                    this.p = 1;
-                    if (g74Var4.g(h13Var, wf1Var3, this) == xe0Var15) {
-                        return xe0Var15;
-                    }
-                } else {
-                    if (i17 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                return j15.a;
-            case 15:
-                xe0 xe0Var16 = xe0.n;
-                int i18 = this.p;
-                if (i18 != 0) {
-                    if (i18 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    s22Var = (s22) this.q;
-                    try {
-                        kb4.X(obj);
-                        s22Var.f(null);
-                        return obj;
-                    } catch (Throwable th4) {
-                        th = th4;
-                        s22Var.f(null);
-                        throw th;
-                    }
-                }
-                kb4.X(obj);
-                sk4 sk4VarG = fu.G((we0) this.q, null, null, new ac0(i2, vd0Var), 3);
-                try {
-                    y00 y00Var = (y00) this.r;
-                    this.q = sk4VarG;
-                    this.p = 1;
-                    Object objH2 = y00Var.h(this);
-                    if (objH2 == xe0Var16) {
-                        return xe0Var16;
-                    }
-                    obj = objH2;
-                    s22Var = sk4VarG;
-                    s22Var.f(null);
-                    return obj;
-                } catch (Throwable th5) {
-                    th = th5;
-                    s22Var = sk4VarG;
-                    s22Var.f(null);
-                    throw th;
-                }
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                xe0 xe0Var17 = xe0.n;
-                int i19 = this.p;
-                if (i19 == 0) {
-                    kb4.X(obj);
-                    zu0 zu0Var = (zu0) this.q;
-                    float f = zu0Var.b ? -1.0f : 1.0f;
-                    g74 g74Var5 = ((z64) this.r).e0;
-                    long j = zu0Var.a;
-                    float fIntBitsToFloat = Float.intBitsToFloat((int) (j >> 32)) * f;
-                    float fIntBitsToFloat2 = Float.intBitsToFloat((int) (j & 4294967295L)) * f;
-                    long jFloatToRawIntBits = Float.floatToRawIntBits(fIntBitsToFloat);
-                    long jFloatToRawIntBits2 = Float.floatToRawIntBits(fIntBitsToFloat2);
-                    this.p = 1;
-                    if (g74Var5.c((jFloatToRawIntBits << 32) | (jFloatToRawIntBits2 & 4294967295L), false, this) == xe0Var17) {
-                        return xe0Var17;
-                    }
-                } else {
-                    if (i19 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                return j15.a;
-            case 17:
-                gf1 gf1Var = (gf1) this.r;
-                xe0 xe0Var18 = xe0.n;
-                int i20 = this.p;
-                try {
-                    if (i20 == 0) {
-                        kb4.X(obj);
-                        jy4 jy4Var = (jy4) this.q;
-                        this.p = 1;
-                        obj = jy4.b(jy4Var, this);
-                        if (obj == xe0Var18) {
-                            return xe0Var18;
-                        }
-                    } else {
-                        if (i20 != 1) {
-                            kf2.o("call to 'resume' before 'invoke' with coroutine");
-                            return null;
-                        }
-                        kb4.X(obj);
-                    }
-                    gf1Var.invoke();
-                    return j15.a;
-                } catch (Throwable th6) {
-                    gf1Var.invoke();
-                    throw th6;
-                }
-            case 18:
-                xe0 xe0Var19 = xe0.n;
-                int i21 = this.p;
-                if (i21 == 0) {
-                    kb4.X(obj);
-                    Object obj3 = this.q;
-                    q81 q81Var2 = (q81) this.r;
-                    this.p = 1;
-                    if (q81Var2.b(obj3, this) == xe0Var19) {
-                        return xe0Var19;
-                    }
-                } else {
-                    if (i21 != 1) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    kb4.X(obj);
-                }
-                return j15.a;
-            default:
-                j15 j15Var2 = j15.a;
-                tv3 tv3Var = (tv3) this.q;
-                View view = (View) this.r;
-                xe0 xe0Var20 = xe0.n;
-                int i22 = this.p;
-                try {
-                    if (i22 == 0) {
-                        kb4.X(obj);
-                        this.p = 1;
-                        Object objQ = ya4.q(tv3Var.u, new pv3(i2, vd0Var, i), this);
-                        if (objQ != xe0Var20) {
-                            objQ = j15Var2;
-                        }
-                        if (objQ == xe0Var20) {
-                            return xe0Var20;
-                        }
-                    } else {
-                        if (i22 != 1) {
-                            kf2.o("call to 'resume' before 'invoke' with coroutine");
-                            return null;
-                        }
-                        kb4.X(obj);
-                    }
-                    if (ic5.a(view) == tv3Var) {
-                        view.setTag(R.id.androidx_compose_ui_view_composition_context, null);
-                    }
-                    return j15Var2;
-                } catch (Throwable th7) {
-                    if (ic5.a(view) != tv3Var) {
-                        throw th7;
-                    }
-                    view.setTag(R.id.androidx_compose_ui_view_composition_context, null);
-                    throw th7;
-                }
-        }
+    public final Object invokeSuspend(Object r14) {
+        float r1 = 1.0f;
+        int r2 = 0;
+        int r3 = 2;
+        vd0 r5 = null;
+        switch(this.o) {
+            case 0: goto L262;
+            case 1: goto L252;
+            case 2: goto L225;
+            case 3: goto L215;
+            case 4: goto L205;
+            case 5: goto L195;
+            case 6: goto L182;
+            case 7: goto L173;
+            case 8: goto L164;
+            case 9: goto L157;
+            case 10: goto L147;
+            case 11: goto L137;
+            case 12: goto L108;
+            case 13: goto L98;
+            case 14: goto L88;
+            case 15: goto L68;
+            case 16: goto L55;
+            case 17: goto L38;
+            case 18: goto L28;
+            default: goto L4;
+        };
+    L4:
+        j15 r0 = j15.a;
+        tv3 r4 = (tv3) this.q;
+        View r6 = (View) this.r;
+        xe0 r7 = xe0.n;
+        int r8 = this.p;
+        if (r8 == 0) goto L12;
+        if (r8 != 1) goto L11;
+        kb4.X(r14);     // Catch: Throwable -> L9
+    L19:
+        if (ic5.a(r6) != r4) goto L23;
+        r6.setTag(R.id.androidx_compose_ui_view_composition_context, null);
+    L23:
+        return r0;
+    L11:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L12:
+        kb4.X(r14);
+        this.p = 1;     // Catch: Throwable -> L9
+        Object r13 = ya4.q(r4.u, new pv3(r3, r5, r2), this);     // Catch: Throwable -> L9
+        if (r13 == r7) goto L17;
+        r13 = r0;
+    L17:
+        if (r13 != r7) goto L19;
+        return r7;
+    L9:
+        th = move-exception;
+        if (ic5.a(r6) != r4) goto L286;
+        r6.setTag(R.id.androidx_compose_ui_view_composition_context, null);
+        throw th;
+    L286:
+        throw th;
+    L28:
+        xe0 r9 = xe0.n;
+        int r10 = this.p;
+        if (r10 == 0) goto L33;
+        if (r10 != 1) goto L32;
+        kb4.X(r14);
+    L37:
+        return j15.a;
+    L32:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L33:
+        kb4.X(r14);
+        Object r15 = this.q;
+        q81 r11 = (q81) this.r;
+        this.p = 1;
+        if (r11.b(r15, this) != r9) goto L37;
+        return r9;
+    L38:
+        gf1 r12 = (gf1) this.r;
+        xe0 r16 = xe0.n;
+        int r17 = this.p;
+        if (r17 == 0) goto L46;
+        if (r17 != 1) goto L45;
+        kb4.X(r14);     // Catch: Throwable -> L43
+    L50:
+        Set r18 = (Set) r14;     // Catch: Throwable -> L43
+        r12.invoke();
+        return j15.a;
+    L45:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L46:
+        kb4.X(r14);
+        jy4 r19 = (jy4) this.q;     // Catch: Throwable -> L43
+        this.p = 1;     // Catch: Throwable -> L43
+        r14 = jy4.b(r19, this);     // Catch: Throwable -> L43
+        if (r14 != r16) goto L50;
+        return r16;
+    L43:
+        th = move-exception;
+        r12.invoke();
+        throw th;
+    L55:
+        xe0 r20 = xe0.n;
+        int r21 = this.p;
+        if (r21 == 0) goto L60;
+        if (r21 != 1) goto L59;
+        kb4.X(r14);
+    L67:
+        return j15.a;
+    L59:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L60:
+        kb4.X(r14);
+        zu0 r110 = (zu0) this.q;
+        if (r110.b == false) goto L63;
+        r1 = -1.0f;
+    L63:
+        g74 r22 = ((z64) this.r).e0;
+        long r23 = r110.a;
+        float r24 = Float.intBitsToFloat((int) (r23 >> 32)) * r1;
+        float r25 = Float.intBitsToFloat((int) (r23 & 4294967295L)) * r1;
+        long r26 = Float.floatToRawIntBits(r24);
+        long r111 = Float.floatToRawIntBits(r25);
+        this.p = 1;
+        if (r22.c((r26 << 32) | (r111 & 4294967295L), false, this) != r20) goto L67;
+        return r20;
+    L68:
+        xe0 r27 = xe0.n;
+        int r28 = this.p;
+        if (r28 == 0) goto L77;
+        if (r28 != 1) goto L76;
+        s22 r112 = (s22) this.q;
+        kb4.X(r14);     // Catch: Throwable -> L74
+    L82:
+        r112.f(null);
+        return r14;
+    L74:
+        th = move-exception;
+        Throwable r113 = th;
+    L86:
+        r112.f(null);
+        throw r113;
+    L76:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L77:
+        kb4.X(r14);
+        sk4 r114 = fu.G((we0) this.q, null, null, new ac0(r3, r5), 3);
+        y00 r29 = (y00) this.r;     // Catch: Throwable -> L84
+        this.q = r114;     // Catch: Throwable -> L84
+        this.p = 1;     // Catch: Throwable -> L84
+        Object r115 = r29.h(this);     // Catch: Throwable -> L84
+        if (r115 == r27) goto L294;
+        r14 = r115;
+        r112 = r114;
+        goto L82
+    L294:
+        return r27;
+    L84:
+        th = move-exception;
+        r113 = th;
+        r112 = r114;
+        goto L86
+    L88:
+        xe0 r30 = xe0.n;
+        int r31 = this.p;
+        if (r31 == 0) goto L93;
+        if (r31 != 1) goto L92;
+        kb4.X(r14);
+    L97:
+        return j15.a;
+    L92:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L93:
+        kb4.X(r14);
+        g74 r116 = (g74) ((ir2) this.q).b;
+        h13 r32 = h13.o;
+        wf1 r33 = (wf1) this.r;
+        this.p = 1;
+        if (r116.g(r32, r33, this) != r30) goto L97;
+        return r30;
+    L98:
+        xe0 r34 = xe0.n;
+        int r35 = this.p;
+        if (r35 == 0) goto L103;
+        if (r35 != 1) goto L102;
+        kb4.X(r14);
+    L106:
+        cx.f().b(lc5.a, "NetworkRequestConstraintController didn't receive neither onCapabilitiesChanged/onLost callback, sending `ConstraintsNotMet` after 1000 ms");
+        ((rq3) this.r).d(new sc0(7));
+        return j15.a;
+    L102:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L103:
+        kb4.X(r14);
+        this.p = 1;
+        if (au0.j(1000, this) != r34) goto L106;
+        return r34;
+    L108:
+        hy2 r36 = (hy2) this.r;
+        xe0 r37 = xe0.n;
+        int r38 = this.p;
+        if (r38 == 0) goto L122;
+        if (r38 == 1) goto L119;
+        if (r38 != 2) goto L118;
+        we0 r39 = (we0) this.q;
+        kb4.X(r14);     // Catch: Throwable -> L116
+        p r117 = this;
+    L115:
+        we0 r118 = r39;
+        p this = r117;
+    L123:
+        if (gb.L(r118.e()) == false) goto L133;
+        aw r40 = r36.g;     // Catch: Throwable -> L116
+        this.q = r118;     // Catch: Throwable -> L116
+        this.p = 1;     // Catch: Throwable -> L116
+        r40.getClass();     // Catch: Throwable -> L116
+        Object r41 = aw.H(r40, this);     // Catch: Throwable -> L116
+        if (r41 == r37) goto L300;
+        r39 = r118;
+        r14 = r41;
+    L129:
+        cy2 r42 = (cy2) r14;     // Catch: Throwable -> L116
+        float r43 = ((oo0) r36.d).M(6.0f);     // Catch: Throwable -> L116
+        float r119 = ((oo0) r36.d).M(1.0f);     // Catch: Throwable -> L116
+        g74 r44 = (g74) r36.b;     // Catch: Throwable -> L116
+        this.q = r39;     // Catch: Throwable -> L116
+        this.p = 2;     // Catch: Throwable -> L116
+        r117 = this;
+        if (hy2.E(r36, r44, r42, r43, r119, r117) != r37) goto L115;
+    L300:
+        return r37;
+    L133:
+        r36.h = null;
+        return j15.a;
+    L118:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L119:
+        r39 = (we0) this.q;
+        kb4.X(r14);     // Catch: Throwable -> L116
+        goto L129
+    L122:
+        kb4.X(r14);
+        r118 = (we0) this.q;
+    L116:
+        th = move-exception;
+        r36.h = null;
+        throw th;
+    L137:
+        xe0 r120 = xe0.n;
+        int r45 = this.p;
+        if (r45 == 0) goto L142;
+        if (r45 == 1) goto L141;
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L141:
+        kb4.X(r14);
+    L145:
+        er1.a();
+        return null;
+    L142:
+        kb4.X(r14);
+        ll4 r121 = (ll4) this.q;
+        fc0 r46 = new fc0(2, (rx2) this.r);
+        this.p = 1;
+        if (r121.a(r46, this) != r120) goto L145;
+        return r120;
+    L147:
+        xe0 r122 = xe0.n;
+        int r47 = this.p;
+        if (r47 == 0) goto L152;
+        if (r47 != 1) goto L151;
+        kb4.X(r14);
+    L156:
+        return j15.a;
+    L151:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L152:
+        kb4.X(r14);
+        sn3 r123 = (sn3) this.q;
+        j82 r48 = new j82((lm0) this.r, null);
+        this.p = 1;
+        if (xl.g(r123, r48, this) != r122) goto L156;
+        return r122;
+    L157:
+        xe0 r124 = xe0.n;
+        int r49 = this.p;
+        if (r49 == 0) goto L162;
+        if (r49 != 1) goto L161;
+        kb4.X(r14);
+        return j15.a;
+    L161:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L162:
+        kb4.X(r14);
+        ArrayList r125 = new ArrayList();
+        cd4 r50 = (cd4) ((rm2) this.q).o;
+        lv0 r51 = new lv0(r2, r125, (b13) this.r);
+        this.p = 1;
+        r50.getClass();
+        cd4.k(r50, r51, this);
+        return r124;
+    L164:
+        xe0 r126 = xe0.n;
+        int r52 = this.p;
+        if (r52 == 0) goto L169;
+        if (r52 != 1) goto L168;
+        kb4.X(r14);
+        return r14;
+    L168:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L169:
+        kb4.X(r14);
+        wf1 r127 = (wf1) this.q;
+        Object r53 = ((jx3) this.r).n;
+        this.p = 1;
+        Object r128 = r127.invoke(r53, this);
+        if (r128 == r126) goto L172;
+        return r128;
+    L172:
+        return r126;
+    L173:
+        xe0 r129 = xe0.n;
+        int r54 = this.p;
+        if (r54 == 0) goto L178;
+        if (r54 != 1) goto L177;
+        kb4.X(r14);
+        return r14;
+    L177:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L178:
+        kb4.X(r14);
+        wf1 r130 = (wf1) this.q;
+        go3 r55 = (go3) this.r;
+        this.p = 1;
+        Object r131 = r130.invoke(r55, this);
+        if (r131 == r129) goto L181;
+        return r131;
+    L181:
+        return r129;
+    L182:
+        j15 r132 = j15.a;
+        a80 r56 = (a80) this.q;
+        xe0 r57 = xe0.n;
+        int r58 = this.p;
+        if (r58 == 0) goto L187;
+        if (r58 != 1) goto L186;
+        kb4.X(r14);
+    L193:
+        ((zd3) r56.c.o).setValue(Boolean.FALSE);
+        ((Runnable) this.r).run();
+        return r132;
+    L186:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L187:
+        kb4.X(r14);
+        sy3 r133 = r56.f;
+        this.p = 1;
+        Object r134 = r133.a(0.0f - r133.c, this);
+        if (r134 == r57) goto L191;
+        r134 = r132;
+    L191:
+        if (r134 != r57) goto L193;
+        return r57;
+    L195:
+        xe0 r135 = xe0.n;
+        int r59 = this.p;
+        if (r59 == 0) goto L200;
+        if (r59 != 1) goto L199;
+        kb4.X(r14);
+    L204:
+        return j15.a;
+    L199:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L200:
+        kb4.X(r14);
+        q81 r136 = (q81) this.q;
+        a10 r60 = (a10) this.r;
+        this.p = 1;
+        if (r60.f(r136, this) != r135) goto L204;
+        return r135;
+    L205:
+        xe0 r137 = xe0.n;
+        int r61 = this.p;
+        if (r61 == 0) goto L210;
+        if (r61 != 1) goto L209;
+        kb4.X(r14);
+    L214:
+        return j15.a;
+    L209:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L210:
+        kb4.X(r14);
+        rq3 r138 = (rq3) this.q;
+        z00 r62 = (z00) this.r;
+        this.p = 1;
+        if (r62.b(r138, this) != r137) goto L214;
+        return r137;
+    L215:
+        xe0 r139 = xe0.n;
+        int r63 = this.p;
+        if (r63 == 0) goto L220;
+        if (r63 != 1) goto L219;
+        kb4.X(r14);
+    L224:
+        return j15.a;
+    L219:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L220:
+        kb4.X(r14);
+        cv r140 = (cv) this.q;
+        jo r64 = (jo) this.r;
+        this.p = 1;
+        if (xl.h(r140, r64, this) != r139) goto L224;
+        return r139;
+    L225:
+        xe0 r141 = xe0.n;
+        int r65 = this.p;
+        if (r65 == 0) goto L230;
+        if (r65 != 1) goto L229;
+        kb4.X(r14);
+    L249:
+        return j15.a;
+    L229:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L230:
+        kb4.X(r14);
+        rq3 r142 = (rq3) this.q;
+        ip r66 = (ip) this.r;
+        hp r67 = new hp(r66, r142);
+        xb0 r68 = r66.a;
+        r68.getClass();
+        Object r69 = r68.c;
+        monitor-enter(r69);
+    L237:
+        th = move-exception;
+        throw th;
+    L233:
+        if (r68.d.add(r67) == true) goto L235;
+    L244:
+        monitor-exit(r69);
+        gp r70 = new gp(r2, (ip) this.r, r67);
+        this.p = 1;
+        if (jz4.i(r142, r70, this) != r141) goto L249;
+        return r141;
+    L235:
+        if (r68.d.size() != 1) goto L240;
+        r68.e = r68.a();     // Catch: Throwable -> L237
+        cx.f().b(yb0.a, r68.getClass().getSimpleName() + ": initial state = " + r68.e);     // Catch: Throwable -> L237
+        r68.c();     // Catch: Throwable -> L237
+    L240:
+        if (r66.e(r68.e) == false) goto L242;
+        Object r71 = new sc0(r66.d());     // Catch: Throwable -> L237
+    L243:
+        r142.getClass();     // Catch: Throwable -> L237
+        r142.d(r71);     // Catch: Throwable -> L237
+        goto L244
+    L242:
+        r71 = rc0.a;     // Catch: Throwable -> L237
+        goto L243
+    L252:
+        xe0 r143 = xe0.n;
+        int r72 = this.p;
+        if (r72 == 0) goto L257;
+        if (r72 != 1) goto L256;
+        kb4.X(r14);
+    L261:
+        return j15.a;
+    L256:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L257:
+        kb4.X(r14);
+        rm2 r144 = (rm2) this.q;
+        xp1 r73 = (xp1) this.r;
+        this.p = 1;
+        if (r144.e(r73, this) != r143) goto L261;
+        return r143;
+    L262:
+        xe0 r145 = xe0.n;
+        int r74 = this.p;
+        if (r74 == 0) goto L267;
+        if (r74 != 1) goto L266;
+        kb4.X(r14);
+    L271:
+        return j15.a;
+    L266:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L267:
+        kb4.X(r14);
+        rm2 r146 = (rm2) this.q;
+        wp1 r75 = (wp1) this.r;
+        this.p = 1;
+        if (r146.e(r75, this) != r145) goto L271;
+        return r145;
     }
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ p(Object obj, vd0 vd0Var, int i) {
-        super(2, vd0Var);
-        this.o = i;
-        this.r = obj;
+    public /* synthetic */ p(Object r1, vd0 r2, int r3) {
+        this.o = r3;
+        this.r = r1;
+        super(2, r2);
     }
 }

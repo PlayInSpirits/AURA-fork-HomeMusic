@@ -15,105 +15,116 @@ import androidx.fragment.app.strictmode.FragmentTagUsageViolation;
 public final class wc1 implements LayoutInflater.Factory2 {
     public final ld1 n;
 
-    public wc1(ld1 ld1Var) {
-        this.n = ld1Var;
+    public wc1(ld1 r1) {
+        this.n = r1;
     }
 
     @Override // android.view.LayoutInflater.Factory2
-    public final View onCreateView(View view, String str, Context context, AttributeSet attributeSet) {
-        boolean zIsAssignableFrom;
-        fe1 fe1VarF;
-        boolean zEquals = FragmentContainerView.class.getName().equals(str);
-        ld1 ld1Var = this.n;
-        if (zEquals) {
-            return new FragmentContainerView(context, attributeSet, ld1Var);
-        }
-        if ("fragment".equals(str)) {
-            String attributeValue = attributeSet.getAttributeValue(null, "class");
-            TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, ot3.a);
-            if (attributeValue == null) {
-                attributeValue = typedArrayObtainStyledAttributes.getString(0);
-            }
-            int resourceId = typedArrayObtainStyledAttributes.getResourceId(1, -1);
-            String string = typedArrayObtainStyledAttributes.getString(2);
-            typedArrayObtainStyledAttributes.recycle();
-            if (attributeValue != null) {
-                try {
-                    zIsAssignableFrom = kc1.class.isAssignableFrom(dd1.b(context.getClassLoader(), attributeValue));
-                } catch (ClassNotFoundException unused) {
-                    zIsAssignableFrom = false;
-                }
-                if (zIsAssignableFrom) {
-                    int id = view != null ? view.getId() : 0;
-                    if (id == -1 && resourceId == -1 && string == null) {
-                        throw new IllegalArgumentException(attributeSet.getPositionDescription() + ": Must specify unique android:id, android:tag, or have a parent with an id for " + attributeValue);
-                    }
-                    kc1 kc1VarC = resourceId != -1 ? ld1Var.C(resourceId) : null;
-                    if (kc1VarC == null && string != null) {
-                        kc1VarC = ld1Var.D(string);
-                    }
-                    if (kc1VarC == null && id != -1) {
-                        kc1VarC = ld1Var.C(id);
-                    }
-                    if (kc1VarC == null) {
-                        dd1 dd1VarF = ld1Var.F();
-                        context.getClassLoader();
-                        kc1VarC = dd1VarF.a(attributeValue);
-                        kc1VarC.A = true;
-                        kc1VarC.J = resourceId != 0 ? resourceId : id;
-                        kc1VarC.K = id;
-                        kc1VarC.L = string;
-                        kc1VarC.B = true;
-                        kc1VarC.F = ld1Var;
-                        mc1 mc1Var = ld1Var.v;
-                        kc1VarC.G = mc1Var;
-                        kc1VarC.M(mc1Var.B, attributeSet, kc1VarC.o);
-                        fe1VarF = ld1Var.a(kc1VarC);
-                        if (ld1.I(2)) {
-                            Log.v("FragmentManager", "Fragment " + kc1VarC + " has been inflated via the <fragment> tag: id=0x" + Integer.toHexString(resourceId));
-                        }
-                    } else {
-                        if (kc1VarC.B) {
-                            throw new IllegalArgumentException(attributeSet.getPositionDescription() + ": Duplicate id 0x" + Integer.toHexString(resourceId) + ", tag " + string + ", or parent id 0x" + Integer.toHexString(id) + " with another fragment for " + attributeValue);
-                        }
-                        kc1VarC.B = true;
-                        kc1VarC.F = ld1Var;
-                        mc1 mc1Var2 = ld1Var.v;
-                        kc1VarC.G = mc1Var2;
-                        kc1VarC.M(mc1Var2.B, attributeSet, kc1VarC.o);
-                        fe1VarF = ld1Var.f(kc1VarC);
-                        if (ld1.I(2)) {
-                            Log.v("FragmentManager", "Retained Fragment " + kc1VarC + " has been re-attached via the <fragment> tag: id=0x" + Integer.toHexString(resourceId));
-                        }
-                    }
-                    ViewGroup viewGroup = (ViewGroup) view;
-                    ge1 ge1Var = he1.a;
-                    he1.b(new FragmentTagUsageViolation(kc1VarC, "Attempting to use <fragment> tag to add fragment " + kc1VarC + " to container " + viewGroup));
-                    he1.a(kc1VarC).getClass();
-                    kc1VarC.S = viewGroup;
-                    fe1VarF.k();
-                    fe1VarF.j();
-                    View view2 = kc1VarC.T;
-                    if (view2 == null) {
-                        kf2.o(xa3.h("Fragment ", attributeValue, " did not create a view."));
-                        return null;
-                    }
-                    if (resourceId != 0) {
-                        view2.setId(resourceId);
-                    }
-                    if (kc1VarC.T.getTag() == null) {
-                        kc1VarC.T.setTag(string);
-                    }
-                    kc1VarC.T.addOnAttachStateChangeListener(new vc1(this, fe1VarF));
-                    return kc1VarC.T;
-                }
-            }
-        }
+    public final View onCreateView(View r11, String r12, Context r13, AttributeSet r14) {
+        boolean r0 = FragmentContainerView.class.getName().equals(r12);
+        ld1 r1 = this.n;
+        if (r0 == false) goto L7;
+        return new FragmentContainerView(r13, r14, r1);
+    L7:
+        if ("fragment".equals(r12) == false) goto L64;
+        String r15 = r14.getAttributeValue(null, "class");
+        TypedArray r2 = r13.obtainStyledAttributes(r14, ot3.a);
+        int r3 = 0;
+        if (r15 != null) goto L12;
+        r15 = r2.getString(0);
+    L12:
+        int r6 = r2.getResourceId(1, -1);
+        String r8 = r2.getString(2);
+        r2.recycle();
+        if (r15 == null) goto L64;
+        boolean r4 = kc1.class.isAssignableFrom(dd1.b(r13.getClassLoader(), r15));     // Catch: ClassNotFoundException -> L17
+    L18:
+        if (r4 == false) goto L64;
+        if (r11 == null) goto L22;
+        r3 = r11.getId();
+    L22:
+        if (r3 != (-1)) goto L28;
+        if (r6 != (-1)) goto L28;
+        if (r8 != null) goto L28;
+        throw new IllegalArgumentException(r14.getPositionDescription() + ": Must specify unique android:id, android:tag, or have a parent with an id for " + r15);
+    L28:
+        if (r6 == (-1)) goto L30;
+        kc1 r5 = r1.C(r6);
+    L31:
+        if (r5 != null) goto L34;
+        if (r8 == null) goto L34;
+        r5 = r1.D(r8);
+    L34:
+        if (r5 != null) goto L38;
+        if (r3 == (-1)) goto L38;
+        r5 = r1.C(r3);
+    L38:
+        if (r5 != null) goto L47;
+        dd1 r7 = r1.F();
+        r13.getClassLoader();
+        r5 = r7.a(r15);
+        r5.A = true;
+        if (r6 == 0) goto L42;
+        int r16 = r6;
+    L43:
+        r5.J = r16;
+        r5.K = r3;
+        r5.L = r8;
+        r5.B = true;
+        r5.F = r1;
+        mc1 r17 = r1.v;
+        r5.G = r17;
+        r5.M(r17.B, r14, r5.o);
+        fe1 r18 = r1.a(r5);
+        if (ld1.I(2) == false) goto L51;
+        Log.v("FragmentManager", "Fragment " + r5 + " has been inflated via the <fragment> tag: id=0x" + Integer.toHexString(r6));
+    L51:
+        ViewGroup r19 = (ViewGroup) r11;
+        ge1 r110 = he1.a;
+        he1.b(new FragmentTagUsageViolation(r5, "Attempting to use <fragment> tag to add fragment " + r5 + " to container " + r19));
+        he1.a(r5).getClass();
+        r5.S = r19;
+        r18.k();
+        r18.j();
+        View r111 = r5.T;
+        if (r111 == null) goto L60;
+        if (r6 == 0) goto L56;
+        r111.setId(r6);
+    L56:
+        if (r5.T.getTag() != null) goto L58;
+        r5.T.setTag(r8);
+    L58:
+        r5.T.addOnAttachStateChangeListener(new vc1(this, r18));
+        return r5.T;
+    L60:
+        kf2.o(xa3.h("Fragment ", r15, " did not create a view."));
+        return null;
+    L42:
+        r16 = r3;
+        goto L43
+    L47:
+        if (r5.B == true) goto L63;
+        r5.B = true;
+        r5.F = r1;
+        mc1 r112 = r1.v;
+        r5.G = r112;
+        r5.M(r112.B, r14, r5.o);
+        r18 = r1.f(r5);
+        if (ld1.I(2) == false) goto L51;
+        Log.v("FragmentManager", "Retained Fragment " + r5 + " has been re-attached via the <fragment> tag: id=0x" + Integer.toHexString(r6));
+        goto L51
+    L63:
+        throw new IllegalArgumentException(r14.getPositionDescription() + ": Duplicate id 0x" + Integer.toHexString(r6) + ", tag " + r8 + ", or parent id 0x" + Integer.toHexString(r3) + " with another fragment for " + r15);
+    L30:
+        r5 = null;
+    L17:
+        r4 = false;
+    L64:
         return null;
     }
 
     @Override // android.view.LayoutInflater.Factory
-    public final View onCreateView(String str, Context context, AttributeSet attributeSet) {
-        return onCreateView(null, str, context, attributeSet);
+    public final View onCreateView(String r2, Context r3, AttributeSet r4) {
+        return onCreateView(null, r2, r3, r4);
     }
 }

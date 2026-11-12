@@ -10,9 +10,9 @@ public final class u53 {
     public final Executor b;
     public final /* synthetic */ v53 c;
 
-    public u53(v53 v53Var, uj0 uj0Var, Executor executor) {
-        this.c = v53Var;
-        this.a = new WeakReference(uj0Var);
-        this.b = executor;
+    public u53(v53 r1, uj0 r2, Executor r3) {
+        this.c = r1;
+        this.a = new WeakReference(r2);
+        this.b = r3;
     }
 }

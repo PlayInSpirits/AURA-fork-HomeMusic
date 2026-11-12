@@ -23,22 +23,22 @@ public final class y61 implements sh0 {
     public final Object p;
     public Object q;
 
-    public /* synthetic */ y61(int i, Comparable comparable, Object obj) {
-        this.n = i;
-        this.o = comparable;
-        this.p = obj;
+    public /* synthetic */ y61(int r1, Comparable r2, Object r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
     }
 
-    public static y61 b(Context context, Uri uri, st4 st4Var) {
-        qj0 qj0Var = a.a(context).q;
-        ArrayList arrayListE = a.a(context).p.a().e();
-        ContentResolver contentResolver = context.getContentResolver();
-        ss0 ss0Var = new ss0();
-        ss0Var.n = st4Var;
-        ss0Var.o = qj0Var;
-        ss0Var.p = contentResolver;
-        ss0Var.q = arrayListE;
-        return new y61(1, uri, ss0Var);
+    public static y61 b(Context r3, Uri r4, st4 r5) {
+        qj0 r0 = a.a(r3).q;
+        ArrayList r2 = a.a(r3).p.a().e();
+        ContentResolver r6 = r3.getContentResolver();
+        ss0 r1 = new ss0();
+        r1.n = r5;
+        r1.o = r0;
+        r1.p = r6;
+        r1.q = r2;
+        return new y61(1, r4, r1);
     }
 
     private final void f() {
@@ -49,117 +49,113 @@ public final class y61 implements sh0 {
 
     @Override // defpackage.sh0
     public final Class a() {
-        switch (this.n) {
-            case 0:
-                switch (((y41) this.p).n) {
-                    case 7:
-                        return ParcelFileDescriptor.class;
-                    default:
-                        return InputStream.class;
-                }
-            default:
-                return InputStream.class;
-        }
+        switch(this.n) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        return InputStream.class;
+    L6:
+        switch(((y41) this.p).n) {
+            case 7: goto L8;
+            default: goto L10;
+        };
+    L8:
+        return ParcelFileDescriptor.class;
+    L10:
+        return InputStream.class;
     }
 
     @Override // defpackage.sh0
     public final void c() {
-        switch (this.n) {
-            case 0:
-                Object obj = this.q;
-                if (obj != null) {
-                    try {
-                        switch (((y41) this.p).n) {
-                            case 7:
-                                ((ParcelFileDescriptor) obj).close();
-                                break;
-                            default:
-                                ((InputStream) obj).close();
-                                break;
-                        }
-                    } catch (IOException unused) {
-                        return;
-                    }
-                }
-                break;
-            default:
-                InputStream inputStream = (InputStream) this.q;
-                if (inputStream != null) {
-                    try {
-                        inputStream.close();
-                    } catch (IOException unused2) {
-                        return;
-                    }
-                }
-                break;
-        }
+        switch(this.n) {
+            case 0: goto L8;
+            default: goto L4;
+        };
+    L4:
+        InputStream r1 = (InputStream) this.q;
+        if (r1 == null) goto L22;
+        r1.close();     // Catch: IOException -> L15
+        return;
+    L23:
+        return;
+    L22:
+        return;
+    L8:
+        Object r0 = this.q;
+        if (r0 == null) goto L24;
+        switch(((y41) this.p).n) {
+            case 7: goto L13;
+            default: goto L12;
+        };     // Catch: IOException -> L16
+    L12:
+        ((InputStream) r0).close();     // Catch: IOException -> L16
+    L17:
+        return;
+    L13:
+        ((ParcelFileDescriptor) r0).close();     // Catch: IOException -> L16
+    L25:
+        return;
     }
 
     @Override // defpackage.sh0
     public final void cancel() {
-        int i = this.n;
+        int r0 = this.n;
     }
 
     @Override // defpackage.sh0
-    public final void d(eq3 eq3Var, rh0 rh0Var) throws Throwable {
-        Object objOpen;
-        switch (this.n) {
-            case 0:
-                try {
-                    y41 y41Var = (y41) this.p;
-                    File file = (File) this.o;
-                    switch (y41Var.n) {
-                        case 7:
-                            objOpen = ParcelFileDescriptor.open(file, 268435456);
-                            break;
-                        default:
-                            objOpen = new FileInputStream(file);
-                            break;
-                    }
-                    this.q = objOpen;
-                    rh0Var.f(objOpen);
-                } catch (FileNotFoundException e) {
-                    if (Log.isLoggable("FileLoader", 3)) {
-                        Log.d("FileLoader", "Failed to open file", e);
-                    }
-                    rh0Var.b(e);
-                    return;
-                }
-                break;
-            default:
-                try {
-                    InputStream inputStreamH = h();
-                    this.q = inputStreamH;
-                    rh0Var.f(inputStreamH);
-                } catch (FileNotFoundException e2) {
-                    if (Log.isLoggable("MediaStoreThumbFetcher", 3)) {
-                        Log.d("MediaStoreThumbFetcher", "Failed to find thumbnail file", e2);
-                    }
-                    rh0Var.b(e2);
-                }
-                break;
-        }
+    public final void d(eq3 r3, rh0 r4) {
+        switch(this.n) {
+            case 0: goto L26;
+            default: goto L24;
+        };
+    L24:
+        InputStream r5 = h();     // Catch: FileNotFoundException -> L6
+        this.q = r5;     // Catch: FileNotFoundException -> L6
+        r4.f(r5);     // Catch: FileNotFoundException -> L6
+        return;
+    L6:
+        e = move-exception;
+        if (Log.isLoggable("MediaStoreThumbFetcher", 3) == false) goto L10;
+        Log.d("MediaStoreThumbFetcher", "Failed to find thumbnail file", e);
+    L10:
+        r4.b(e);
+        return;
+    L26:
+        y41 r6 = (y41) this.p;     // Catch: FileNotFoundException -> L18
+        File r1 = (File) this.o;     // Catch: FileNotFoundException -> L18
+        switch(r6.n) {
+            case 7: goto L15;
+            default: goto L14;
+        };     // Catch: FileNotFoundException -> L18
+    L14:
+        Object r7 = new FileInputStream(r1);     // Catch: FileNotFoundException -> L18
+    L16:
+        this.q = r7;     // Catch: FileNotFoundException -> L18
+        r4.f(r7);     // Catch: FileNotFoundException -> L18
+        return;
+    L15:
+        r7 = ParcelFileDescriptor.open(r1, 268435456);     // Catch: FileNotFoundException -> L18
+    L18:
+        e = move-exception;
+        if (Log.isLoggable("FileLoader", 3) == false) goto L22;
+        Log.d("FileLoader", "Failed to open file", e);
+    L22:
+        r4.b(e);
     }
 
     @Override // defpackage.sh0
     public final int e() {
-        switch (this.n) {
-        }
+        switch(this.n) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        return 1;
+    L6:
         return 1;
     }
 
-    /* JADX WARN: Code duplicated, block: B:15:0x0033 A[PHI: r6
-  0x0033: PHI (r6v7 android.database.Cursor) = (r6v3 android.database.Cursor), (r6v10 android.database.Cursor) binds: [B:26:0x0056, B:14:0x0031] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:25:0x0047 A[Catch: all -> 0x002b, TRY_LEAVE, TryCatch #8 {all -> 0x002b, blocks: (B:6:0x001c, B:8:0x0022, B:23:0x0041, B:25:0x0047), top: B:83:0x0012 }] */
-    /* JADX WARN: Code duplicated, block: B:30:0x005f  */
-    /* JADX WARN: Code duplicated, block: B:31:0x0061  */
-    /* JADX WARN: Code duplicated, block: B:33:0x006c  */
-    /* JADX WARN: Code duplicated, block: B:43:0x00a5  */
-    /* JADX WARN: Code duplicated, block: B:62:0x00e3  */
-    /* JADX WARN: Code duplicated, block: B:64:0x00e6  */
-    /* JADX WARN: Code duplicated, block: B:76:0x00b9 A[EXC_TOP_SPLITTER, SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:89:? A[RETURN, SYNTHETIC] */
-    /* JADX WARN: Instruction removed from duplicated block: B:25:0x0047, please report this as an issue */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Not initialized variable reg: 6, insn: 0x002c: MOVE (r5 I:??[OBJECT, ARRAY]) = (r6 I:??[OBJECT, ARRAY]) (LINE:45), block:B:11:0x002c */
     /* JADX WARN: Type inference failed for: r0v4, types: [java.lang.NullPointerException, java.lang.Throwable] */
@@ -167,191 +163,92 @@ public final class y61 implements sh0 {
     /* JADX WARN: Type inference failed for: r5v1 */
     /* JADX WARN: Type inference failed for: r5v2, types: [android.database.Cursor] */
     /* JADX WARN: Type inference failed for: r6v0 */
-    public InputStream h() throws Throwable {
-        ?? r6;
-        SecurityException e;
-        Cursor cursorP;
-        String string;
-        File file;
-        InputStream inputStreamOpenInputStream;
-        int iA;
-        ss0 ss0Var = (ss0) this.p;
-        ContentResolver contentResolver = (ContentResolver) ss0Var.p;
-        Uri uri = (Uri) this.o;
+    public InputStream h() {
+        ss0 r0 = (ss0) this.p;
+        ContentResolver r1 = (ContentResolver) r0.p;
+        Uri r11 = (Uri) this.o;
         ?? r5 = 0;
-        InputStream inputStreamOpenInputStream2 = null;
-        try {
-            try {
-                try {
-                    try {
-                        cursorP = ((st4) ss0Var.n).p(uri);
-                        if (cursorP != null) {
-                            try {
-                                if (cursorP.moveToFirst()) {
-                                    string = cursorP.getString(0);
-                                    cursorP.close();
-                                }
-                            } catch (SecurityException e2) {
-                                e = e2;
-                                if (Log.isLoggable("ThumbStreamOpener", 3)) {
-                                    Log.d("ThumbStreamOpener", "Failed to query for thumbnail for Uri: " + uri, e);
-                                }
-                                if (cursorP != null) {
-                                }
-                                string = null;
-                                if (TextUtils.isEmpty(string)) {
-                                    inputStreamOpenInputStream = null;
-                                } else {
-                                    file = new File(string);
-                                    if (file.exists()) {
-                                        inputStreamOpenInputStream = null;
-                                    } else {
-                                        inputStreamOpenInputStream = null;
-                                    }
-                                }
-                                if (inputStreamOpenInputStream != null) {
-                                    try {
-                                        try {
-                                            inputStreamOpenInputStream2 = contentResolver.openInputStream(uri);
-                                            iA = kb4.A((ArrayList) ss0Var.q, inputStreamOpenInputStream2, (qj0) ss0Var.o);
-                                            if (inputStreamOpenInputStream2 != null) {
-                                                try {
-                                                    inputStreamOpenInputStream2.close();
-                                                } catch (IOException unused) {
-                                                }
-                                            }
-                                        } catch (Throwable th) {
-                                            if (0 != 0) {
-                                                try {
-                                                    r5.close();
-                                                } catch (IOException unused2) {
-                                                }
-                                            }
-                                            throw th;
-                                        }
-                                    } catch (IOException | NullPointerException e3) {
-                                        if (Log.isLoggable("ThumbStreamOpener", 3)) {
-                                            Log.d("ThumbStreamOpener", "Failed to open uri: " + uri, e3);
-                                        }
-                                        if (inputStreamOpenInputStream2 != null) {
-                                            try {
-                                                inputStreamOpenInputStream2.close();
-                                            } catch (IOException unused3) {
-                                            }
-                                        }
-                                        iA = -1;
-                                    }
-                                } else {
-                                    iA = -1;
-                                }
-                                if (iA != -1) {
-                                    return new j31(inputStreamOpenInputStream, iA);
-                                }
-                                return inputStreamOpenInputStream;
-                            }
-                            if (TextUtils.isEmpty(string)) {
-                                inputStreamOpenInputStream = null;
-                            } else {
-                                file = new File(string);
-                                if (file.exists() || 0 >= file.length()) {
-                                    inputStreamOpenInputStream = null;
-                                } else {
-                                    Uri uriFromFile = Uri.fromFile(file);
-                                    try {
-                                        inputStreamOpenInputStream = contentResolver.openInputStream(uriFromFile);
-                                    } catch (NullPointerException e4) {
-                                        throw ((FileNotFoundException) new FileNotFoundException("NPE opening uri: " + uri + " -> " + uriFromFile).initCause(e4));
-                                    }
-                                }
-                            }
-                            if (inputStreamOpenInputStream != null) {
-                                inputStreamOpenInputStream2 = contentResolver.openInputStream(uri);
-                                iA = kb4.A((ArrayList) ss0Var.q, inputStreamOpenInputStream2, (qj0) ss0Var.o);
-                                if (inputStreamOpenInputStream2 != null) {
-                                    inputStreamOpenInputStream2.close();
-                                }
-                            } else {
-                                iA = -1;
-                            }
-                            if (iA != -1) {
-                                return new j31(inputStreamOpenInputStream, iA);
-                            }
-                            return inputStreamOpenInputStream;
-                        }
-                        if (cursorP != null) {
-                            cursorP.close();
-                        }
-                    } catch (SecurityException e5) {
-                        e = e5;
-                        cursorP = null;
-                        if (Log.isLoggable("ThumbStreamOpener", 3)) {
-                            Log.d("ThumbStreamOpener", "Failed to query for thumbnail for Uri: " + uri, e);
-                        }
-                        if (cursorP != null) {
-                            cursorP.close();
-                        }
-                        string = null;
-                        if (TextUtils.isEmpty(string)) {
-                            inputStreamOpenInputStream = null;
-                        } else {
-                            file = new File(string);
-                            if (file.exists()) {
-                                inputStreamOpenInputStream = null;
-                            } else {
-                                inputStreamOpenInputStream = null;
-                            }
-                        }
-                        if (inputStreamOpenInputStream != null) {
-                            inputStreamOpenInputStream2 = contentResolver.openInputStream(uri);
-                            iA = kb4.A((ArrayList) ss0Var.q, inputStreamOpenInputStream2, (qj0) ss0Var.o);
-                            if (inputStreamOpenInputStream2 != null) {
-                                inputStreamOpenInputStream2.close();
-                            }
-                        } else {
-                            iA = -1;
-                        }
-                        if (iA != -1) {
-                            return new j31(inputStreamOpenInputStream, iA);
-                        }
-                        return inputStreamOpenInputStream;
-                    }
-                } catch (Throwable th2) {
-                    th = th2;
-                    if (r5 != 0) {
-                        r5.close();
-                    }
-                    throw th;
-                }
-            } catch (SecurityException e6) {
-                e = e6;
-            }
-            string = null;
-            if (TextUtils.isEmpty(string)) {
-                inputStreamOpenInputStream = null;
-            } else {
-                file = new File(string);
-                if (file.exists()) {
-                    inputStreamOpenInputStream = null;
-                } else {
-                    inputStreamOpenInputStream = null;
-                }
-            }
-            if (inputStreamOpenInputStream != null) {
-                inputStreamOpenInputStream2 = contentResolver.openInputStream(uri);
-                iA = kb4.A((ArrayList) ss0Var.q, inputStreamOpenInputStream2, (qj0) ss0Var.o);
-                if (inputStreamOpenInputStream2 != null) {
-                    inputStreamOpenInputStream2.close();
-                }
-            } else {
-                iA = -1;
-            }
-            if (iA != -1) {
-                return new j31(inputStreamOpenInputStream, iA);
-            }
-            return inputStreamOpenInputStream;
-        } catch (Throwable th3) {
-            th = th3;
-            r5 = r6;
-        }
+        InputStream r6 = null;
+        Cursor r7 = ((st4) r0.n).p(r11);     // Catch: Throwable -> L17 SecurityException -> L19
+        if (r7 != null) goto L86;
+    L14:
+        if (r7 == null) goto L16;
+    L15:
+        r7.close();
+    L16:
+        String r3 = null;
+    L29:
+        if (TextUtils.isEmpty(r3) == false) goto L31;
+    L30:
+        InputStream r4 = null;
+    L42:
+        if (r4 != null) goto L84;
+    L62:
+        int r12 = -1;
+    L63:
+        if (r12 != (-1)) goto L65;
+        return r4;
+    L65:
+        return new j31(r4, r12);
+    L84:
+        r6 = r1.openInputStream(r11);     // Catch: Throwable -> L48 Throwable -> L50 IOException -> L52
+        r12 = kb4.A((ArrayList) r0.q, r6, (qj0) r0.o);     // Catch: Throwable -> L48 Throwable -> L50 IOException -> L52
+        if (r6 == null) goto L63;
+        r6.close();     // Catch: IOException -> L69
+    L48:
+        th = move-exception;
+        if (0 != 0) goto L80;
+    L61:
+        throw th;
+    L80:
+        r5.close();     // Catch: IOException -> L70
+    L50:
+        e = move-exception;
+        if (Log.isLoggable("ThumbStreamOpener", 3) == false) goto L56;
+        Log.d("ThumbStreamOpener", "Failed to open uri: " + r11, e);     // Catch: Throwable -> L48
+    L56:
+        if (r6 == null) goto L62;
+        r6.close();     // Catch: IOException -> L71
+        goto L62
+    L31:
+        File r8 = new File(r3);
+        if (r8.exists() == false) goto L30;
+        if (0 >= r8.length()) goto L30;
+        Uri r9 = Uri.fromFile(r8);
+        r4 = r1.openInputStream(r9);     // Catch: NullPointerException -> L38
+    L38:
+        e = move-exception;
+        throw ((FileNotFoundException) new FileNotFoundException("NPE opening uri: " + r11 + " -> " + r9).initCause(e));
+    L86:
+    L12:
+        SecurityException e = e;
+    L24:
+        if (Log.isLoggable("ThumbStreamOpener", 3) == false) goto L26;
+        Log.d("ThumbStreamOpener", "Failed to query for thumbnail for Uri: " + r11, e);     // Catch: Throwable -> L10
+    L26:
+        if (r7 == null) goto L16;
+    L7:
+        if (r7.moveToFirst() == false) goto L14;
+        r3 = r7.getString(0);     // Catch: Throwable -> L10 SecurityException -> L12
+        r7.close();
+        goto L29
+    L19:
+        e = e;
+    L20:
+        r7 = null;
+    L17:
+        th = th;
+    L66:
+        if (r5 == 0) goto L68;
+        r5.close();
+    L68:
+        throw th;
+    L21:
+        e = move-exception;
+        e = e;
+    L10:
+        th = th;
+        r5 = r6;
+        goto L66
     }
 }

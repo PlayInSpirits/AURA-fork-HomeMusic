@@ -7,10 +7,10 @@ public final class n72 implements jn4 {
     public final /* synthetic */ o72 b;
     public final /* synthetic */ Object c;
 
-    public n72(o72 o72Var, Object obj) {
-        this.b = o72Var;
-        this.c = obj;
-        int[] iArr = m02.a;
+    public n72(o72 r1, Object r2) {
+        this.b = r1;
+        this.c = r2;
+        int[] r3 = m02.a;
         this.a = new j03();
     }
 
@@ -45,123 +45,135 @@ public final class n72 implements jn4 {
     /* JADX WARN: Type inference failed for: r6v9 */
     /* JADX WARN: Type inference failed for: r7v7 */
     @Override // defpackage.jn4
-    public final void b(ea eaVar) {
-        qx4 qx4Var;
-        w12 w12Var;
-        c72 c72Var = (c72) this.b.w.g(this.c);
-        cx2 cx2Var = (c72Var == null || (w12Var = c72Var.Q) == null) ? null : (cx2) w12Var.g;
-        if (cx2Var == null || !cx2Var.A) {
-            return;
-        }
-        if (!cx2Var.n.A) {
-            cz1.b("visitSubtreeIf called on an unattached node");
-        }
-        f13 f13Var = new f13(new cx2[16]);
-        cx2 cx2Var2 = cx2Var.n;
-        cx2 cx2Var3 = cx2Var2.s;
-        if (cx2Var3 == null) {
-            j51.b(f13Var, cx2Var2);
-        } else {
-            f13Var.b(cx2Var3);
-        }
-        while (true) {
-            int i = f13Var.p;
-            if (i == 0) {
-                return;
-            }
-            cx2 cx2Var4 = (cx2) f13Var.k(i - 1);
-            if ((cx2Var4.q & 262144) != 0) {
-                cx2 cx2Var5 = cx2Var4;
-                while (true) {
-                    if (cx2Var5 != null && cx2Var5.A) {
-                        if ((cx2Var5.p & 262144) != 0) {
-                            ?? f13Var2 = 0;
-                            ?? C = cx2Var5;
-                            while (C != 0) {
-                                if (C instanceof rx4) {
-                                    rx4 rx4Var = (rx4) C;
-                                    boolean zEquals = "androidx.compose.foundation.lazy.layout.TraversablePrefetchStateNode".equals(rx4Var.f());
-                                    qx4 qx4Var2 = qx4.o;
-                                    if (zEquals) {
-                                        eaVar.invoke(rx4Var);
-                                        qx4Var = qx4Var2;
-                                    } else {
-                                        qx4Var = qx4.n;
-                                    }
-                                    if (qx4Var != qx4.p) {
-                                        if (qx4Var == qx4Var2) {
-                                            break;
-                                        }
-                                    } else {
-                                        return;
-                                    }
-                                } else if ((C.p & 262144) != 0 && (C instanceof fo0)) {
-                                    cx2 cx2Var6 = ((fo0) C).C;
-                                    int i2 = 0;
-                                    C = C;
-                                    f13Var2 = f13Var2;
-                                    while (cx2Var6 != null) {
-                                        if ((cx2Var6.p & 262144) != 0) {
-                                            i2++;
-                                            if (i2 == 1) {
-                                                f13Var2 = f13Var2;
-                                                C = cx2Var6;
-                                            } else {
-                                                if (f13Var2 == 0) {
-                                                    f13Var2 = new f13(new cx2[16]);
-                                                }
-                                                if (C != 0) {
-                                                    f13Var2.b(C);
-                                                    C = 0;
-                                                }
-                                                f13Var2.b(cx2Var6);
-                                            }
-                                        }
-                                        cx2Var6 = cx2Var6.s;
-                                        C = C;
-                                        f13Var2 = f13Var2;
-                                    }
-                                    if (i2 == 1) {
-                                    }
-                                }
-                                C = j51.c(f13Var2);
-                            }
-                        }
-                        cx2Var5 = cx2Var5.s;
-                    }
-                }
-            }
-            j51.b(f13Var, cx2Var4);
-        }
+    public final void b(ea r12) {
+        c72 r11 = (c72) this.b.w.g(this.c);
+        if (r11 == null) goto L7;
+        w12 r13 = r11.Q;
+        if (r13 == null) goto L7;
+        cx2 r14 = (cx2) r13.g;
+    L8:
+        if (r14 != null) goto L10;
+        return;
+    L10:
+        if (r14.A == true) goto L12;
+        return;
+    L12:
+        if (r14.n.A == true) goto L14;
+        cz1.b("visitSubtreeIf called on an unattached node");
+    L14:
+        f13 r1 = new f13(new cx2[16]);
+        cx2 r15 = r14.n;
+        cx2 r3 = r15.s;
+        if (r3 != null) goto L17;
+        j51.b(r1, r15);
+    L18:
+        int r16 = r1.p;
+        if (r16 == 0) goto L88;
+        cx2 r17 = (cx2) r1.k(r16 - 1);
+        if ((r17.q & 262144) == 0) goto L63;
+        cx2 r4 = r17;
+    L23:
+        if (r4 == null) goto L63;
+        if (r4.A == false) goto L63;
+        if ((r4.p & 262144) == 0) goto L62;
+        ?? r6 = 0;
+        ?? r5 = r4;
+    L29:
+        if (r5 == 0) goto L62;
+        if ((r5 instanceof rx4) == true) goto L32;
+        if ((r5.p & 262144) == 0) goto L61;
+        if ((r5 instanceof fo0) == false) goto L61;
+        cx2 r7 = ((fo0) r5).C;
+        int r8 = 0;
+        r5 = r5;
+        r6 = r6;
+    L47:
+        if (r7 == null) goto L59;
+        if ((r7.p & 262144) == 0) goto L58;
+        r8 = r8 + 1;
+        r6 = r6;
+        if (r8 != 1) goto L53;
+        r5 = r7;
+        goto L58
+    L53:
+        if (r6 != 0) goto L55;
+        r6 = new f13(new cx2[16]);
+    L55:
+        if (r5 == 0) goto L57;
+        r6.b(r5);
+        r5 = 0;
+    L57:
+        r6.b(r7);
+    L58:
+        r7 = r7.s;
+        r5 = r5;
+        r6 = r6;
+        goto L47
+    L59:
+        if (r8 == 1) goto L29;
+    L61:
+        r5 = j51.c(r6);
+        goto L29
+    L32:
+        rx4 r9 = (rx4) r5;
+        boolean r10 = "androidx.compose.foundation.lazy.layout.TraversablePrefetchStateNode".equals(r9.f());
+        qx4 r18 = qx4.o;
+        if (r10 == false) goto L35;
+        r12.invoke(r9);
+        qx4 r19 = r18;
+    L37:
+        if (r19 == qx4.p) goto L89;
+        if (r19 == r18) goto L18;
+    L89:
+        return;
+    L35:
+        r19 = qx4.n;
+    L62:
+        r4 = r4.s;
+    L63:
+        j51.b(r1, r17);
+        goto L18
+    L88:
+        return;
+    L17:
+        r1.b(r3);
+    L7:
+        r14 = null;
+        goto L8
     }
 
     @Override // defpackage.jn4
     public final int c() {
-        c72 c72Var = (c72) this.b.w.g(this.c);
-        if (c72Var != null) {
-            return ((c13) c72Var.n()).n.p;
-        }
+        c72 r1 = (c72) this.b.w.g(this.c);
+        if (r1 != null) goto L5;
         return 0;
+    L5:
+        return ((c13) r1.n()).n.p;
     }
 
     @Override // defpackage.jn4
-    public final void d(int i, long j) {
-        o72 o72Var = this.b;
-        c72 c72Var = (c72) o72Var.w.g(this.c);
-        if (c72Var == null || !c72Var.G()) {
-            return;
-        }
-        int i2 = ((c13) c72Var.n()).n.p;
-        if (i < 0 || i >= i2) {
-            cz1.d("Index (" + i + ") is out of bound of [0, " + i2 + ")");
-        }
-        if (c72Var.H()) {
-            cz1.a("Pre-measure called on node that is not placed");
-        }
-        c72 c72Var2 = o72Var.n;
-        c72Var2.C = true;
-        ((ra) h12.L(c72Var)).r((c72) ((c13) c72Var.n()).get(i), j);
-        c72Var2.C = false;
-        this.a.a(i);
+    public final void d(int r6, long r7) {
+        o72 r0 = this.b;
+        c72 r1 = (c72) r0.w.g(this.c);
+        if (r1 != null) goto L5;
+        return;
+    L5:
+        if (r1.G() == false) goto L16;
+        int r2 = ((c13) r1.n()).n.p;
+        if (r6 < 0) goto L9;
+        if (r6 >= r2) goto L9;
+    L11:
+        if (r1.H() == false) goto L13;
+        cz1.a("Pre-measure called on node that is not placed");
+    L13:
+        c72 r3 = r0.n;
+        r3.C = true;
+        ((ra) h12.L(r1)).r((c72) ((c13) r1.n()).get(r6), r7);
+        r3.C = false;
+        this.a.a(r6);
+        return;
+    L9:
+        cz1.d("Index (" + r6 + ") is out of bound of [0, " + r2 + ")");
+        goto L11
     }
 }

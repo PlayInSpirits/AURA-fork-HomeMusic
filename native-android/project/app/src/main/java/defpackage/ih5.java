@@ -9,8 +9,8 @@ import android.os.Parcel;
 public final class ih5 implements IInterface {
     public final IBinder e;
 
-    public ih5(IBinder iBinder) {
-        this.e = iBinder;
+    public ih5(IBinder r1) {
+        this.e = r1;
     }
 
     @Override // android.os.IInterface
@@ -18,19 +18,22 @@ public final class ih5 implements IInterface {
         return this.e;
     }
 
-    public final void m(ui5 ui5Var, sh1 sh1Var) {
-        Parcel parcelObtain = Parcel.obtain();
-        Parcel parcelObtain2 = Parcel.obtain();
-        try {
-            parcelObtain.writeInterfaceToken("com.google.android.gms.common.internal.IGmsServiceBroker");
-            parcelObtain.writeStrongBinder(ui5Var);
-            parcelObtain.writeInt(1);
-            rh5.a(sh1Var, parcelObtain, 0);
-            this.e.transact(46, parcelObtain, parcelObtain2, 0);
-            parcelObtain2.readException();
-        } finally {
-            parcelObtain2.recycle();
-            parcelObtain.recycle();
-        }
+    public final void m(ui5 r4, sh1 r5) {
+        Parcel r0 = Parcel.obtain();
+        Parcel r1 = Parcel.obtain();
+        r0.writeInterfaceToken("com.google.android.gms.common.internal.IGmsServiceBroker");     // Catch: Throwable -> L6
+        r0.writeStrongBinder(r4);     // Catch: Throwable -> L6
+        r0.writeInt(1);     // Catch: Throwable -> L6
+        rh5.a(r5, r0, 0);     // Catch: Throwable -> L6
+        this.e.transact(46, r0, r1, 0);     // Catch: Throwable -> L6
+        r1.readException();     // Catch: Throwable -> L6
+        r1.recycle();
+        r0.recycle();
+        return;
+    L6:
+        th = move-exception;
+        r1.recycle();
+        r0.recycle();
+        throw th;
     }
 }

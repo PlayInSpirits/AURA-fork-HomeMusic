@@ -6,7 +6,7 @@ import java.io.Serializable;
 /* JADX INFO: loaded from: classes.dex */
 public final class ju3 extends ku3 implements Serializable {
     @Override // defpackage.ku3
-    public final int a(int i) {
-        return ku3.o.a(i);
+    public final int a(int r1) {
+        return ku3.o.a(r1);
     }
 }

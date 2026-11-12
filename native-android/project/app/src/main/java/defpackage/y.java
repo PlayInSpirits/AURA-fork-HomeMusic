@@ -9,12 +9,12 @@ public abstract class y implements Collection, x32 {
     public abstract int a();
 
     @Override // java.util.Collection
-    public final boolean add(Object obj) {
+    public final boolean add(Object r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Collection
-    public final boolean addAll(Collection collection) {
+    public final boolean addAll(Collection r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -24,52 +24,55 @@ public abstract class y implements Collection, x32 {
     }
 
     @Override // java.util.Collection, java.util.List
-    public boolean contains(Object obj) {
-        if (isEmpty()) {
-            return false;
-        }
-        Iterator<E> it = iterator();
-        while (it.hasNext()) {
-            if (h12.c(it.next(), obj)) {
-                return true;
-            }
-        }
+    public boolean contains(Object r3) {
+        if (isEmpty() == false) goto L5;
+        return false;
+    L5:
+        Iterator<E> r2 = iterator();
+    L7:
+        if (r2.hasNext() == false) goto L12;
+        if (h12.c(r2.next(), r3) == false) goto L7;
+        return true;
+    L12:
         return false;
     }
 
     @Override // java.util.Collection
-    public boolean containsAll(Collection collection) {
-        collection.getClass();
-        Collection collection2 = collection;
-        if (collection2.isEmpty()) {
-            return true;
-        }
-        Iterator it = collection2.iterator();
-        while (it.hasNext()) {
-            if (!contains(it.next())) {
-                return false;
-            }
-        }
+    public boolean containsAll(Collection r2) {
+        r2.getClass();
+        Collection r3 = r2;
+        if (r3.isEmpty() == true) goto L12;
+        Iterator r4 = r3.iterator();
+    L7:
+        if (r4.hasNext() == false) goto L17;
+        if (contains(r4.next()) == true) goto L7;
+        return false;
+    L17:
+        return true;
+    L12:
         return true;
     }
 
     @Override // java.util.Collection
     public boolean isEmpty() {
-        return a() == 0;
+        if (a() != 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // java.util.Collection
-    public final boolean remove(Object obj) {
+    public final boolean remove(Object r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Collection
-    public final boolean removeAll(Collection collection) {
+    public final boolean removeAll(Collection r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Collection
-    public final boolean retainAll(Collection collection) {
+    public final boolean retainAll(Collection r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -79,9 +82,9 @@ public abstract class y implements Collection, x32 {
     }
 
     @Override // java.util.Collection
-    public Object[] toArray(Object[] objArr) {
-        objArr.getClass();
-        return zz1.J(this, objArr);
+    public Object[] toArray(Object[] r1) {
+        r1.getClass();
+        return zz1.J(this, r1);
     }
 
     public final String toString() {

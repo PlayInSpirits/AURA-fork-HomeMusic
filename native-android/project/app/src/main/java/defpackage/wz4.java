@@ -8,22 +8,22 @@ import java.util.Objects;
 public final class wz4 extends gb3 {
     public final /* synthetic */ HashMap n;
 
-    public wz4(HashMap map) {
-        this.n = map;
+    public wz4(HashMap r1) {
+        this.n = r1;
     }
 
     @Override // java.util.Comparator
-    public final int compare(Object obj, Object obj2) {
-        HashMap map = this.n;
-        Object obj3 = map.get(obj);
-        Objects.requireNonNull(obj3);
-        Object obj4 = map.get(obj2);
-        Objects.requireNonNull(obj4);
-        Comparable comparable = (Comparable) obj3;
-        Comparable comparable2 = (Comparable) obj4;
-        if (comparable == comparable2) {
-            return 0;
-        }
-        return comparable2.compareTo(comparable);
+    public final int compare(Object r1, Object r2) {
+        HashMap r0 = this.n;
+        Object r3 = r0.get(r1);
+        Objects.requireNonNull(r3);
+        Object r4 = r0.get(r2);
+        Objects.requireNonNull(r4);
+        Comparable r5 = (Comparable) r3;
+        Comparable r6 = (Comparable) r4;
+        if (r5 != r6) goto L6;
+        return 0;
+    L6:
+        return r6.compareTo(r5);
     }
 }

@@ -9,33 +9,33 @@ public final class h15 extends ep4 implements wf1 {
     public /* synthetic */ boolean o;
     public final /* synthetic */ Context p;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public h15(Context context, vd0 vd0Var) {
-        super(2, vd0Var);
-        this.p = context;
+    public h15(Context r1, vd0 r2) {
+        this.p = r1;
+        super(2, r2);
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object obj, vd0 vd0Var) {
-        h15 h15Var = new h15(this.p, vd0Var);
-        h15Var.o = ((Boolean) obj).booleanValue();
-        return h15Var;
+    public final vd0 create(Object r2, vd0 r3) {
+        h15 r0 = new h15(this.p, r3);
+        r0.o = ((Boolean) r2).booleanValue();
+        return r0;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        Boolean bool = (Boolean) obj;
-        bool.booleanValue();
-        h15 h15Var = (h15) create(bool, (vd0) obj2);
-        j15 j15Var = j15.a;
-        h15Var.invokeSuspend(j15Var);
-        return j15Var;
+    public final Object invoke(Object r1, Object r2) {
+        Boolean r3 = (Boolean) r1;
+        r3.booleanValue();
+        h15 r0 = (h15) create(r3, (vd0) r2);
+        j15 r4 = j15.a;
+        r0.invokeSuspend(r4);
+        return r4;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        kb4.X(obj);
-        yb3.a(this.p, RescheduleReceiver.class, this.o);
+    public final Object invokeSuspend(Object r2) {
+        kb4.X(r2);
+        boolean r3 = this.o;
+        yb3.a(this.p, RescheduleReceiver.class, r3);
         return j15.a;
     }
 }

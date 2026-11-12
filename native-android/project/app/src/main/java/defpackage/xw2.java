@@ -11,33 +11,37 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class xw2 extends FutureTask {
     public final /* synthetic */ qk n;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public xw2(qk qkVar, zq0 zq0Var) {
-        super(zq0Var);
-        this.n = qkVar;
+    public xw2(qk r1, zq0 r2) {
+        this.n = r1;
+        super(r2);
     }
 
     @Override // java.util.concurrent.FutureTask
     public final void done() {
-        qk qkVar = this.n;
-        AtomicBoolean atomicBoolean = qkVar.r;
-        try {
-            Object obj = get();
-            if (atomicBoolean.get()) {
-                return;
-            }
-            qkVar.a(obj);
-        } catch (InterruptedException e) {
-            Log.w("AsyncTask", e);
-        } catch (CancellationException unused) {
-            if (atomicBoolean.get()) {
-                return;
-            }
-            qkVar.a(null);
-        } catch (ExecutionException e2) {
-            nz2.s("An error occurred while executing doInBackground()", e2.getCause());
-        } catch (Throwable th) {
-            nz2.s("An error occurred while executing doInBackground()", th);
-        }
+        qk r1 = this.n;
+        AtomicBoolean r2 = r1.r;
+        Object r4 = get();     // Catch: Throwable -> L7 CancellationException -> L10 ExecutionException -> L13 InterruptedException -> L16
+        if (r2.get() == true) goto L21;
+        r1.a(r4);     // Catch: Throwable -> L7 CancellationException -> L10 ExecutionException -> L13 InterruptedException -> L16
+        return;
+        goto L11
+    L21:
+        return;
+    L16:
+        e = move-exception;
+        Log.w("AsyncTask", e);
+        return;
+    L13:
+        e = move-exception;
+        nz2.s("An error occurred while executing doInBackground()", e.getCause());
+        return;
+    L7:
+        th = move-exception;
+        nz2.s("An error occurred while executing doInBackground()", th);
+        return;
+    L11:
+        if (r2.get() == true) goto L22;
+        r1.a(null);
+        return;
     }
 }

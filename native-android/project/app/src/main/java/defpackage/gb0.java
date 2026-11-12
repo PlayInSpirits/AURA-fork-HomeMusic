@@ -8,17 +8,17 @@ import java.util.concurrent.atomic.AtomicReference;
 public final class gb0 implements aa4 {
     public final AtomicReference a;
 
-    public gb0(aa4 aa4Var) {
-        this.a = new AtomicReference(aa4Var);
+    public gb0(aa4 r2) {
+        this.a = new AtomicReference(r2);
     }
 
     @Override // defpackage.aa4
     public final Iterator iterator() {
-        aa4 aa4Var = (aa4) this.a.getAndSet(null);
-        if (aa4Var != null) {
-            return aa4Var.iterator();
-        }
+        aa4 r1 = (aa4) this.a.getAndSet(null);
+        if (r1 != null) goto L5;
         kf2.o("This sequence can be consumed only once.");
         return null;
+    L5:
+        return r1.iterator();
     }
 }

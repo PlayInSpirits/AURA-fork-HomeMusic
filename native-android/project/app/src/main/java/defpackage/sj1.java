@@ -11,7 +11,14 @@ public final class sj1 {
     public boolean A;
     public RectF B;
     public final uj1 a;
+    public oo0 b;
+    public r62 c;
+    public if1 d;
+    public final ir0 e;
     public Outline f;
+    public boolean g;
+    public long h;
+    public long i;
     public float j;
     public ya4 k;
     public nc l;
@@ -20,6 +27,7 @@ public final class sj1 {
     public mz o;
     public gc p;
     public int q;
+    public final jw r;
     public boolean s;
     public long t;
     public long u;
@@ -28,262 +36,261 @@ public final class sj1 {
     public int x;
     public int y;
     public long z;
-    public oo0 b = gb.b;
-    public r62 c = r62.n;
-    public if1 d = k5.q;
-    public final ir0 e = new ir0(2, this);
-    public boolean g = true;
-    public long h = 0;
-    public long i = 9205357640488583168L;
-    public final jw r = new jw();
 
     static {
         h12.c(Build.FINGERPRINT, "robolectric");
     }
 
-    public sj1(uj1 uj1Var) {
-        this.a = uj1Var;
-        uj1Var.F(false);
-        this.t = 0L;
-        this.u = 0L;
+    public sj1(uj1 r6) {
+        this.a = r6;
+        this.b = gb.b;
+        this.c = r62.n;
+        this.d = k5.q;
+        this.e = new ir0(2, this);
+        this.g = true;
+        this.h = 0;
+        this.i = 9205357640488583168L;
+        this.r = new jw();
+        r6.F(false);
+        this.t = 0;
+        this.u = 0;
         this.z = 9205357640488583168L;
     }
 
     public final void a() {
-        Outline outline;
-        if (this.g) {
-            boolean z = this.A;
-            Outline outline2 = null;
-            uj1 uj1Var = this.a;
-            if (z || uj1Var.M() > 0.0f) {
-                nc ncVar = this.l;
-                if (ncVar != null) {
-                    RectF rectF = this.B;
-                    if (rectF == null) {
-                        rectF = new RectF();
-                        this.B = rectF;
-                    }
-                    boolean z2 = ncVar instanceof nc;
-                    if (!z2) {
-                        er1.l("Unable to obtain android.graphics.Path");
-                        return;
-                    }
-                    Path path = ncVar.a;
-                    path.computeBounds(rectF, false);
-                    int i = Build.VERSION.SDK_INT;
-                    if (i > 28 || path.isConvex()) {
-                        outline = this.f;
-                        if (outline == null) {
-                            outline = new Outline();
-                            this.f = outline;
-                        }
-                        if (i >= 30) {
-                            if (!z2) {
-                                er1.l("Unable to obtain android.graphics.Path");
-                                return;
-                            }
-                            outline.setPath(path);
-                        } else {
-                            if (!z2) {
-                                er1.l("Unable to obtain android.graphics.Path");
-                                return;
-                            }
-                            outline.setConvexPath(path);
-                        }
-                        outline.offset(this.v, this.w);
-                        this.n = !outline.canClip();
-                    } else {
-                        Outline outline3 = this.f;
-                        if (outline3 != null) {
-                            outline3.setEmpty();
-                        }
-                        this.n = true;
-                        outline = null;
-                    }
-                    this.l = ncVar;
-                    if (outline != null) {
-                        outline.setAlpha(uj1Var.b());
-                        outline2 = outline;
-                    }
-                    uj1Var.d(outline2, (4294967295L & ((long) Math.round(rectF.height()))) | (((long) Math.round(rectF.width())) << 32));
-                    if (this.n && this.A) {
-                        uj1Var.F(false);
-                        uj1Var.f();
-                    } else {
-                        uj1Var.F(this.A);
-                    }
-                } else {
-                    uj1Var.F(this.A);
-                    Outline outline4 = this.f;
-                    if (outline4 == null) {
-                        outline4 = new Outline();
-                        this.f = outline4;
-                    }
-                    Outline outline5 = outline4;
-                    long jO0 = l93.o0(this.u);
-                    long j = this.h;
-                    long j2 = this.i;
-                    if (j2 != 9205357640488583168L) {
-                        jO0 = j2;
-                    }
-                    int i2 = (int) (j >> 32);
-                    int i3 = (int) (j & 4294967295L);
-                    int i4 = (int) (jO0 >> 32);
-                    int i5 = (int) (jO0 & 4294967295L);
-                    outline5.setRoundRect(Math.round(Float.intBitsToFloat(i2)), Math.round(Float.intBitsToFloat(i3)), Math.round(Float.intBitsToFloat(i4) + Float.intBitsToFloat(i2)), Math.round(Float.intBitsToFloat(i5) + Float.intBitsToFloat(i3)), this.j);
-                    outline5.setAlpha(uj1Var.b());
-                    uj1Var.d(outline5, (4294967295L & ((long) Math.round(Float.intBitsToFloat(i5)))) | (((long) Math.round(Float.intBitsToFloat(i4))) << 32));
-                }
-            } else {
-                uj1Var.F(false);
-                uj1Var.d(null, 0L);
-            }
-        }
+        if (this.g == false) goto L59;
+        boolean r1 = this.A;
+        Outline r3 = null;
+        uj1 r4 = this.a;
+        if (r1 == false) goto L7;
+    L10:
+        nc r2 = this.l;
+        if (r2 == null) goto L51;
+        RectF r8 = this.B;
+        if (r8 != null) goto L15;
+        r8 = new RectF();
+        this.B = r8;
+    L15:
+        boolean r9 = r2 instanceof nc;
+        if (r9 == false) goto L49;
+        Path r11 = r2.a;
+        r11.computeBounds(r8, false);
+        int r12 = Build.VERSION.SDK_INT;
+        if (r12 <= 28) goto L20;
+    L26:
+        Outline r13 = this.f;
+        if (r13 != null) goto L30;
+        r13 = new Outline();
+        this.f = r13;
+    L30:
+        if (r12 < 30) goto L35;
+        if (r9 == false) goto L33;
+        xq2.q(r13, r11);
+    L37:
+        r13.offset(this.v, this.w);
+        this.n = !r13.canClip();
+    L38:
+        this.l = r2;
+        if (r13 == null) goto L41;
+        r13.setAlpha(r4.b());
+        r3 = r13;
+    L41:
+        int r5 = Math.round(r8.width());
+        r4.d(r3, (4294967295L & ((long) Math.round(r8.height()))) | (((long) r5) << 32));
+        if (this.n == true) goto L44;
+    L46:
+        r4.F(this.A);
+        goto L59
+    L44:
+        if (this.A == false) goto L46;
+        r4.F(false);
+        r4.f();
+        goto L59
+    L33:
+        er1.l("Unable to obtain android.graphics.Path");
+        return;
+    L35:
+        if (r9 == false) goto L47;
+        r13.setConvexPath(r11);
+        goto L37
+    L47:
+        er1.l("Unable to obtain android.graphics.Path");
+        return;
+    L20:
+        if (r11.isConvex() == true) goto L26;
+        Outline r10 = this.f;
+        if (r10 == null) goto L25;
+        r10.setEmpty();
+    L25:
+        this.n = true;
+        r13 = null;
+        goto L38
+    L49:
+        er1.l("Unable to obtain android.graphics.Path");
+        return;
+    L51:
+        r4.F(this.A);
+        Outline r6 = this.f;
+        if (r6 != null) goto L54;
+        r6 = new Outline();
+        this.f = r6;
+    L54:
+        Outline r14 = r6;
+        long r15 = l93.o0(this.u);
+        long r16 = this.h;
+        long r17 = this.i;
+        if (r17 == 9205357640488583168L) goto L58;
+        r15 = r17;
+    L58:
+        int r7 = (int) (r16 >> 32);
+        int r18 = (int) (r16 & 4294967295L);
+        int r19 = (int) (r15 >> 32);
+        int r110 = (int) (r15 & 4294967295L);
+        r14.setRoundRect(Math.round(Float.intBitsToFloat(r7)), Math.round(Float.intBitsToFloat(r18)), Math.round(Float.intBitsToFloat(r19) + Float.intBitsToFloat(r7)), Math.round(Float.intBitsToFloat(r110) + Float.intBitsToFloat(r18)), this.j);
+        r14.setAlpha(r4.b());
+        int r20 = Math.round(Float.intBitsToFloat(r19));
+        r4.d(r14, (4294967295L & ((long) Math.round(Float.intBitsToFloat(r110)))) | (((long) r20) << 32));
+        goto L59
+    L7:
+        if (r4.M() > 0.0f) goto L10;
+        r4.F(false);
+        r4.d(null, 0);
+    L59:
         this.g = false;
     }
 
-    /* JADX WARN: Code duplicated, block: B:23:0x005c A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:24:0x005e A[LOOP:0: B:14:0x0027->B:24:0x005e, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:29:0x0061 A[EDGE_INSN: B:29:0x0061->B:25:0x0061 BREAK  A[LOOP:0: B:14:0x0027->B:24:0x005e], SYNTHETIC] */
     public final void b() {
-        if (this.s && this.q == 0) {
-            jw jwVar = this.r;
-            sj1 sj1Var = (sj1) jwVar.o;
-            if (sj1Var != null) {
-                sj1Var.e();
-                jwVar.o = null;
-            }
-            x03 x03Var = (x03) jwVar.q;
-            if (x03Var != null) {
-                Object[] objArr = x03Var.b;
-                long[] jArr = x03Var.a;
-                int length = jArr.length - 2;
-                if (length >= 0) {
-                    int i = 0;
-                    while (true) {
-                        long j = jArr[i];
-                        if ((((~j) << 7) & j & (-9187201950435737472L)) == -9187201950435737472L) {
-                            if (i != length) {
-                                break;
-                                break;
-                            }
-                            i++;
-                        } else {
-                            int i2 = 8 - ((~(i - length)) >>> 31);
-                            for (int i3 = 0; i3 < i2; i3++) {
-                                if ((255 & j) < 128) {
-                                    ((sj1) objArr[(i << 3) + i3]).e();
-                                }
-                                j >>= 8;
-                            }
-                            if (i2 != 8) {
-                                break;
-                            } else if (i != length) {
-                                break;
-                            } else {
-                                i++;
-                            }
-                        }
-                    }
-                }
-                x03Var.b();
-            }
-            this.a.f();
-        }
+        if (this.s == true) goto L5;
+        return;
+    L5:
+        if (this.q != 0) goto L34;
+        jw r0 = this.r;
+        sj1 r1 = (sj1) r0.o;
+        if (r1 == null) goto L9;
+        r1.e();
+        r0.o = null;
+    L9:
+        x03 r2 = (x03) r0.q;
+        if (r2 == null) goto L26;
+        Object[] r3 = r2.b;
+        long[] r4 = r2.a;
+        int r5 = r4.length - 2;
+        if (r5 < 0) goto L25;
+        int r6 = 0;
+    L14:
+        long r7 = r4[r6];
+        if (((((~r7) << 7) & r7) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L23;
+        int r8 = 8 - ((~(r6 - r5)) >>> 31);
+        int r10 = 0;
+    L17:
+        if (r10 >= r8) goto L22;
+        if ((255 & r7) >= 128) goto L21;
+        ((sj1) r3[(r6 << 3) + r10]).e();
+    L21:
+        r7 = r7 >> 8;
+        r10 = r10 + 1;
+        goto L17
+    L22:
+        if (r8 != 8) goto L25;
+    L23:
+        if (r6 == r5) goto L25;
+        r6 = r6 + 1;
+    L25:
+        r2.b();
+    L26:
+        this.a.f();
+        return;
     }
 
-    /* JADX WARN: Code duplicated, block: B:29:0x0088 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:30:0x008a A[LOOP:0: B:20:0x0053->B:30:0x008a, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:34:0x008d A[EDGE_INSN: B:34:0x008d->B:31:0x008d BREAK  A[LOOP:0: B:20:0x0053->B:30:0x008a], SYNTHETIC] */
-    public final void c(sv0 sv0Var) {
-        jw jwVar = this.r;
-        jwVar.p = (sj1) jwVar.o;
-        x03 x03Var = (x03) jwVar.q;
-        if (x03Var != null && x03Var.h()) {
-            x03 x03Var2 = (x03) jwVar.r;
-            if (x03Var2 == null) {
-                x03 x03Var3 = w54.a;
-                x03Var2 = new x03();
-                jwVar.r = x03Var2;
-            }
-            x03Var2.j(x03Var);
-            x03Var.b();
-        }
-        jwVar.n = true;
-        this.d.invoke(sv0Var);
-        jwVar.n = false;
-        sj1 sj1Var = (sj1) jwVar.p;
-        if (sj1Var != null) {
-            sj1Var.e();
-        }
-        x03 x03Var4 = (x03) jwVar.r;
-        if (x03Var4 == null || !x03Var4.h()) {
-            return;
-        }
-        Object[] objArr = x03Var4.b;
-        long[] jArr = x03Var4.a;
-        int length = jArr.length - 2;
-        if (length >= 0) {
-            int i = 0;
-            while (true) {
-                long j = jArr[i];
-                if ((((~j) << 7) & j & (-9187201950435737472L)) == -9187201950435737472L) {
-                    if (i != length) {
-                        break;
-                        break;
-                    }
-                    i++;
-                } else {
-                    int i2 = 8 - ((~(i - length)) >>> 31);
-                    for (int i3 = 0; i3 < i2; i3++) {
-                        if ((255 & j) < 128) {
-                            ((sj1) objArr[(i << 3) + i3]).e();
-                        }
-                        j >>= 8;
-                    }
-                    if (i2 != 8) {
-                        break;
-                    } else if (i != length) {
-                        break;
-                    } else {
-                        i++;
-                    }
-                }
-            }
-        }
-        x03Var4.b();
+    public final void c(sv0 r14) {
+        jw r0 = this.r;
+        r0.p = (sj1) r0.o;
+        x03 r1 = (x03) r0.q;
+        if (r1 != null) goto L5;
+    L10:
+        r0.n = true;
+        this.d.invoke(r14);
+        r0.n = false;
+        sj1 r15 = (sj1) r0.p;
+        if (r15 == null) goto L13;
+        r15.e();
+    L13:
+        x03 r16 = (x03) r0.r;
+        if (r16 != null) goto L16;
+        return;
+    L16:
+        if (r16.h() == false) goto L39;
+        Object[] r2 = r16.b;
+        long[] r3 = r16.a;
+        int r4 = r3.length - 2;
+        if (r4 < 0) goto L31;
+        int r5 = 0;
+    L20:
+        long r6 = r3[r5];
+        if (((((~r6) << 7) & r6) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L29;
+        int r7 = 8 - ((~(r5 - r4)) >>> 31);
+        int r8 = 0;
+    L23:
+        if (r8 >= r7) goto L28;
+        if ((255 & r6) >= 128) goto L27;
+        ((sj1) r2[(r5 << 3) + r8]).e();
+    L27:
+        r6 = r6 >> 8;
+        r8 = r8 + 1;
+        goto L23
+    L28:
+        if (r7 != 8) goto L31;
+    L29:
+        if (r5 == r4) goto L31;
+        r5 = r5 + 1;
+    L31:
+        r16.b();
+        return;
+    L39:
+        return;
+    L5:
+        if (r1.h() == false) goto L10;
+        x03 r9 = (x03) r0.r;
+        if (r9 != null) goto L9;
+        x03 r10 = w54.a;
+        r9 = new x03();
+        r0.r = r9;
+    L9:
+        r9.j(r1);
+        r1.b();
+        goto L10
     }
 
     public final ya4 d() {
-        ya4 nb3Var;
-        ya4 ya4Var = this.k;
-        nc ncVar = this.l;
-        if (ya4Var != null) {
-            return ya4Var;
-        }
-        if (ncVar != null) {
-            mb3 mb3Var = new mb3(ncVar);
-            this.k = mb3Var;
-            return mb3Var;
-        }
-        long jO0 = l93.o0(this.u);
-        long j = this.h;
-        long j2 = this.i;
-        if (j2 != 9205357640488583168L) {
-            jO0 = j2;
-        }
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (j >> 32));
-        float fIntBitsToFloat2 = Float.intBitsToFloat((int) (j & 4294967295L));
-        float fIntBitsToFloat3 = Float.intBitsToFloat((int) (jO0 >> 32)) + fIntBitsToFloat;
-        float fIntBitsToFloat4 = Float.intBitsToFloat((int) (jO0 & 4294967295L)) + fIntBitsToFloat2;
-        float f = this.j;
-        if (f > 0.0f) {
-            nb3Var = new ob3(wr1.a(fIntBitsToFloat, fIntBitsToFloat2, fIntBitsToFloat3, fIntBitsToFloat4, (((long) Float.floatToRawIntBits(f)) << 32) | (4294967295L & ((long) Float.floatToRawIntBits(f)))));
-        } else {
-            nb3Var = new nb3(new wv3(fIntBitsToFloat, fIntBitsToFloat2, fIntBitsToFloat3, fIntBitsToFloat4));
-        }
-        this.k = nb3Var;
-        return nb3Var;
+        ya4 r0 = this.k;
+        nc r1 = this.l;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        if (r1 == null) goto L8;
+        mb3 r2 = new mb3(r1);
+        this.k = r2;
+        return r2;
+    L8:
+        long r3 = l93.o0(this.u);
+        long r4 = this.h;
+        long r5 = this.i;
+        if (r5 == 9205357640488583168L) goto L12;
+        r3 = r5;
+    L12:
+        float r6 = Float.intBitsToFloat((int) (r4 >> 32));
+        float r7 = Float.intBitsToFloat((int) (r4 & 4294967295L));
+        float r8 = Float.intBitsToFloat((int) (r3 >> 32)) + r6;
+        float r9 = Float.intBitsToFloat((int) (r3 & 4294967295L)) + r7;
+        float r10 = this.j;
+        if (r10 <= 0.0f) goto L15;
+        ya4 r11 = new ob3(wr1.a(r6, r7, r8, r9, (Float.floatToRawIntBits(r10) << 32) | (4294967295L & ((long) Float.floatToRawIntBits(r10)))));
+    L16:
+        this.k = r11;
+        return r11;
+    L15:
+        r11 = new nb3(new wv3(r6, r7, r8, r9));
+        goto L16
     }
 
     public final void e() {
@@ -291,19 +298,25 @@ public final class sj1 {
         b();
     }
 
-    public final void f(long j, long j2, float f) {
-        float f2 = this.v;
-        long jE = g83.e(j, (((long) Float.floatToRawIntBits(this.w)) & 4294967295L) | (Float.floatToRawIntBits(f2) << 32));
-        if (g83.b(this.h, jE) && qf4.a(this.i, j2) && this.j == f && this.l == null) {
-            return;
-        }
+    public final void f(long r7, long r9, float r11) {
+        float r0 = this.v;
+        float r1 = this.w;
+        long r2 = Float.floatToRawIntBits(r0);
+        long r8 = g83.e(r7, (((long) Float.floatToRawIntBits(r1)) & 4294967295L) | (r2 << 32));
+        if (g83.b(this.h, r8) == true) goto L5;
+    L12:
         this.k = null;
         this.l = null;
         this.g = true;
         this.n = false;
-        this.h = jE;
-        this.i = j2;
-        this.j = f;
+        this.h = r8;
+        this.i = r9;
+        this.j = r11;
         a();
+        return;
+    L5:
+        if (qf4.a(this.i, r9) == false) goto L12;
+        if (this.j != r11) goto L12;
+        if (this.l != null) goto L12;
     }
 }

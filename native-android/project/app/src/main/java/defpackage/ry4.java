@@ -6,8 +6,8 @@ public final class ry4 {
     public final String a;
     public final byte[] b;
 
-    public ry4(String str, byte[] bArr) {
-        this.a = str;
-        this.b = bArr;
+    public ry4(String r1, byte[] r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

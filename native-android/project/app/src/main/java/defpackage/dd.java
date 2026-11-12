@@ -8,19 +8,21 @@ public final class dd implements Choreographer.FrameCallback {
     public final /* synthetic */ cz n;
     public final /* synthetic */ if1 o;
 
-    public dd(cz czVar, ed edVar, if1 if1Var) {
-        this.n = czVar;
-        this.o = if1Var;
+    public dd(cz r1, ed r2, if1 r3) {
+        this.n = r1;
+        this.o = r3;
     }
 
     @Override // android.view.Choreographer.FrameCallback
-    public final void doFrame(long j) {
-        Object s14Var;
-        try {
-            s14Var = this.o.invoke(Long.valueOf(j));
-        } catch (Throwable th) {
-            s14Var = new s14(th);
-        }
-        this.n.resumeWith(s14Var);
+    public final void doFrame(long r2) {
+        if1 r0 = this.o;
+        Object r3 = r0.invoke(Long.valueOf(r2));     // Catch: Throwable -> L5
+    L7:
+        this.n.resumeWith(r3);
+        return;
+    L5:
+        th = move-exception;
+        r3 = new s14(th);
+        goto L7
     }
 }

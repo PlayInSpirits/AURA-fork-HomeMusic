@@ -7,8 +7,8 @@ import java.util.Iterator;
 public final class ha4 implements Iterable, x32 {
     public final /* synthetic */ mo0 n;
 
-    public ha4(mo0 mo0Var) {
-        this.n = mo0Var;
+    public ha4(mo0 r1) {
+        this.n = r1;
     }
 
     @Override // java.lang.Iterable

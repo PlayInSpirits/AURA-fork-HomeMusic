@@ -10,55 +10,53 @@ import java.util.RandomAccess;
 public class o1 extends m1 implements List {
     public final /* synthetic */ q1 s;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public o1(q1 q1Var, Object obj, List list, m1 m1Var) {
-        super(q1Var, obj, list, m1Var);
-        this.s = q1Var;
+    public o1(q1 r1, Object r2, List r3, m1 r4) {
+        this.s = r1;
+        super(r1, r2, r3, r4);
     }
 
     @Override // java.util.List
-    public final void add(int i, Object obj) {
+    public final void add(int r3, Object r4) {
         b();
-        boolean zIsEmpty = this.o.isEmpty();
-        ((List) this.o).add(i, obj);
+        boolean r0 = this.o.isEmpty();
+        ((List) this.o).add(r3, r4);
         this.s.s++;
-        if (zIsEmpty) {
-            a();
-        }
+        if (r0 == false) goto L6;
+        a();
+        return;
     }
 
     @Override // java.util.List
-    public final boolean addAll(int i, Collection collection) {
-        if (collection.isEmpty()) {
-            return false;
-        }
-        int size = size();
-        boolean zAddAll = ((List) this.o).addAll(i, collection);
-        if (zAddAll) {
-            this.s.s += this.o.size() - size;
-            if (size == 0) {
-                a();
-            }
-        }
-        return zAddAll;
+    public final boolean addAll(int r4, Collection r5) {
+        if (r5.isEmpty() == false) goto L6;
+        return false;
+    L6:
+        int r0 = size();
+        boolean r6 = ((List) this.o).addAll(r4, r5);
+        if (r6 == false) goto L11;
+        this.s.s += this.o.size() - r0;
+        if (r0 != 0) goto L11;
+        a();
+    L11:
+        return r6;
     }
 
     @Override // java.util.List
-    public final Object get(int i) {
+    public final Object get(int r1) {
         b();
-        return ((List) this.o).get(i);
+        return ((List) this.o).get(r1);
     }
 
     @Override // java.util.List
-    public final int indexOf(Object obj) {
+    public final int indexOf(Object r1) {
         b();
-        return ((List) this.o).indexOf(obj);
+        return ((List) this.o).indexOf(r1);
     }
 
     @Override // java.util.List
-    public final int lastIndexOf(Object obj) {
+    public final int lastIndexOf(Object r1) {
         b();
-        return ((List) this.o).lastIndexOf(obj);
+        return ((List) this.o).lastIndexOf(r1);
     }
 
     @Override // java.util.List
@@ -68,37 +66,40 @@ public class o1 extends m1 implements List {
     }
 
     @Override // java.util.List
-    public final Object remove(int i) {
+    public final Object remove(int r3) {
         b();
-        Object objRemove = ((List) this.o).remove(i);
+        Object r4 = ((List) this.o).remove(r3);
         this.s.s--;
         d();
-        return objRemove;
+        return r4;
     }
 
     @Override // java.util.List
-    public final Object set(int i, Object obj) {
+    public final Object set(int r1, Object r2) {
         b();
-        return ((List) this.o).set(i, obj);
+        return ((List) this.o).set(r1, r2);
     }
 
     @Override // java.util.List
-    public final List subList(int i, int i2) {
+    public final List subList(int r3, int r4) {
         b();
-        List listSubList = ((List) this.o).subList(i, i2);
-        m1 m1Var = this.p;
-        if (m1Var == null) {
-            m1Var = this;
-        }
-        boolean z = listSubList instanceof RandomAccess;
-        q1 q1Var = this.s;
-        Object obj = this.n;
-        return z ? new j1(q1Var, obj, listSubList, m1Var) : new o1(q1Var, obj, listSubList, m1Var);
+        List r5 = ((List) this.o).subList(r3, r4);
+        m1 r6 = this.p;
+        if (r6 != null) goto L5;
+        r6 = this;
+    L5:
+        boolean r0 = r5 instanceof RandomAccess;
+        q1 r1 = this.s;
+        Object r2 = this.n;
+        if (r0 == false) goto L10;
+        return new j1(r1, r2, r5, r6);
+    L10:
+        return new o1(r1, r2, r5, r6);
     }
 
     @Override // java.util.List
-    public final ListIterator listIterator(int i) {
+    public final ListIterator listIterator(int r2) {
         b();
-        return new n1(this, i);
+        return new n1(this, r2);
     }
 }

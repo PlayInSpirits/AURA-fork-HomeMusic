@@ -5,7 +5,7 @@ package defpackage;
 public final class z65 {
     public final i30 a;
 
-    public z65(i30 i30Var) {
-        this.a = i30Var;
+    public z65(i30 r1) {
+        this.a = r1;
     }
 }

@@ -1,12 +1,10 @@
 package defpackage;
 
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
@@ -18,1090 +16,167 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.textfield.TextInputLayout;
 import java.util.List;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class re2 extends kc1 {
     public zc1 l0;
 
-    @Override // defpackage.kc1
-    public final void F(Bundle bundle) {
-        super.F(bundle);
-        Bundle bundle2 = this.s;
-        if (bundle2 != null) {
-            bundle2.getBoolean("single_page_mode");
-        }
+    public re2() {
     }
 
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        layoutInflater.getClass();
-        final int i = 0;
-        View viewInflate = layoutInflater.inflate(R.layout.fragment_login_theme, viewGroup, false);
-        int i2 = R.id.card_amber;
-        MaterialCardView materialCardView = (MaterialCardView) uo.s(viewInflate, R.id.card_amber);
-        if (materialCardView != null) {
-            i2 = R.id.card_blue;
-            MaterialCardView materialCardView2 = (MaterialCardView) uo.s(viewInflate, R.id.card_blue);
-            if (materialCardView2 != null) {
-                i2 = R.id.card_coral;
-                MaterialCardView materialCardView3 = (MaterialCardView) uo.s(viewInflate, R.id.card_coral);
-                if (materialCardView3 != null) {
-                    i2 = R.id.card_emerald;
-                    MaterialCardView materialCardView4 = (MaterialCardView) uo.s(viewInflate, R.id.card_emerald);
-                    if (materialCardView4 != null) {
-                        i2 = R.id.card_flirt;
-                        MaterialCardView materialCardView5 = (MaterialCardView) uo.s(viewInflate, R.id.card_flirt);
-                        if (materialCardView5 != null) {
-                            i2 = R.id.card_purple;
-                            MaterialCardView materialCardView6 = (MaterialCardView) uo.s(viewInflate, R.id.card_purple);
-                            if (materialCardView6 != null) {
-                                i2 = R.id.card_slate;
-                                MaterialCardView materialCardView7 = (MaterialCardView) uo.s(viewInflate, R.id.card_slate);
-                                if (materialCardView7 != null) {
-                                    i2 = R.id.card_teal;
-                                    MaterialCardView materialCardView8 = (MaterialCardView) uo.s(viewInflate, R.id.card_teal);
-                                    if (materialCardView8 != null) {
-                                        i2 = R.id.chooseAccentColorContainer;
-                                        if (((LinearLayout) uo.s(viewInflate, R.id.chooseAccentColorContainer)) != null) {
-                                            i2 = R.id.chooseAccentColorTitle;
-                                            if (((TextView) uo.s(viewInflate, R.id.chooseAccentColorTitle)) != null) {
-                                                i2 = R.id.defaultDynamicSwitch;
-                                                MaterialSwitch materialSwitch = (MaterialSwitch) uo.s(viewInflate, R.id.defaultDynamicSwitch);
-                                                if (materialSwitch != null) {
-                                                    ConstraintLayout constraintLayout = (ConstraintLayout) viewInflate;
-                                                    int i3 = R.id.mainSwitchesContainer;
-                                                    if (((LinearLayout) uo.s(viewInflate, R.id.mainSwitchesContainer)) != null) {
-                                                        i3 = R.id.themesList;
-                                                        AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) uo.s(viewInflate, R.id.themesList);
-                                                        if (autoCompleteTextView != null) {
-                                                            i3 = R.id.themesListContainer;
-                                                            if (((TextInputLayout) uo.s(viewInflate, R.id.themesListContainer)) != null) {
-                                                                i3 = R.id.trueBlackSwitch;
-                                                                MaterialSwitch materialSwitch2 = (MaterialSwitch) uo.s(viewInflate, R.id.trueBlackSwitch);
-                                                                if (materialSwitch2 != null) {
-                                                                    zc1 zc1Var = new zc1();
-                                                                    zc1Var.a = constraintLayout;
-                                                                    zc1Var.b = materialCardView;
-                                                                    zc1Var.c = materialCardView2;
-                                                                    zc1Var.d = materialCardView3;
-                                                                    zc1Var.e = materialCardView4;
-                                                                    zc1Var.f = materialCardView5;
-                                                                    zc1Var.g = materialCardView6;
-                                                                    zc1Var.h = materialCardView7;
-                                                                    zc1Var.i = materialCardView8;
-                                                                    zc1Var.j = materialSwitch;
-                                                                    zc1Var.l = autoCompleteTextView;
-                                                                    zc1Var.k = materialSwitch2;
-                                                                    this.l0 = zc1Var;
-                                                                    final int i4 = 1;
-                                                                    if (xa3.u("dark_theme_black", false)) {
-                                                                        zc1 zc1Var2 = this.l0;
-                                                                        zc1Var2.getClass();
-                                                                        ((MaterialSwitch) zc1Var2.k).setChecked(true);
-                                                                    }
-                                                                    zc1 zc1Var3 = this.l0;
-                                                                    zc1Var3.getClass();
-                                                                    ((MaterialSwitch) zc1Var3.k).setOnClickListener(new View.OnClickListener(this) { // from class: pe2
-                                                                        public final /* synthetic */ re2 o;
+    public final void F(Bundle r1) {
+        super.F(r1);
+        Bundle r0 = this.s;
+        if (r0 == null) goto L6;
+        r0.getBoolean("single_page_mode");
+        return;
+    }
 
-                                                                        {
-                                                                            this.o = this;
-                                                                        }
-
-                                                                        @Override // android.view.View.OnClickListener
-                                                                        public final void onClick(View view) {
-                                                                            int i5 = i;
-                                                                            re2 re2Var = this.o;
-                                                                            switch (i5) {
-                                                                                case 0:
-                                                                                    zc1 zc1Var4 = re2Var.l0;
-                                                                                    zc1Var4.getClass();
-                                                                                    if (((MaterialSwitch) zc1Var4.k).isChecked()) {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC = App.c();
-                                                                                        sharedPreferencesC.getClass();
-                                                                                        SharedPreferences.Editor editorEdit = sharedPreferencesC.edit();
-                                                                                        editorEdit.putBoolean("dark_theme_black", true);
-                                                                                        editorEdit.apply();
-                                                                                    } else {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC2 = App.c();
-                                                                                        sharedPreferencesC2.getClass();
-                                                                                        SharedPreferences.Editor editorEdit2 = sharedPreferencesC2.edit();
-                                                                                        editorEdit2.putBoolean("dark_theme_black", false);
-                                                                                        editorEdit2.apply();
-                                                                                    }
-                                                                                    nc1 nc1VarE = re2Var.e();
-                                                                                    nc1VarE.getClass();
-                                                                                    jz4.r((df) nc1VarE);
-                                                                                    nc1 nc1VarE2 = re2Var.e();
-                                                                                    if (nc1VarE2 != null) {
-                                                                                        nc1VarE2.recreate();
-                                                                                    }
-                                                                                    break;
-                                                                                case 1:
-                                                                                    re2Var.h0("HEX:#7B1FA2");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    re2Var.h0("HEX:#FFA000");
-                                                                                    break;
-                                                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                                                                    re2Var.h0("HEX:#00796B");
-                                                                                    break;
-                                                                                case 4:
-                                                                                    re2Var.h0("HEX:#455A64");
-                                                                                    break;
-                                                                                case 5:
-                                                                                    zc1 zc1Var5 = re2Var.l0;
-                                                                                    zc1Var5.getClass();
-                                                                                    boolean zIsChecked = ((MaterialSwitch) zc1Var5.j).isChecked();
-                                                                                    App.b().getClass();
-                                                                                    App.c().edit().putBoolean("dynamic_color_accent", zIsChecked).apply();
-                                                                                    re2Var.h0(ud3.m());
-                                                                                    break;
-                                                                                case 6:
-                                                                                    re2Var.m().a0("dialog_result_key", re2Var.v(), new cn(23, re2Var));
-                                                                                    String strS = re2Var.s(R.string.la_theme_dialog_color_picker_title);
-                                                                                    strS.getClass();
-                                                                                    f50 f50Var = new f50();
-                                                                                    Bundle bundle2 = new Bundle();
-                                                                                    bundle2.putString("arg_title", strS);
-                                                                                    f50Var.c0(bundle2);
-                                                                                    f50Var.m0(re2Var.m(), "ColorPickerDialog");
-                                                                                    break;
-                                                                                case 7:
-                                                                                    re2Var.h0("HEX:#FF5722");
-                                                                                    break;
-                                                                                case 8:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                case 9:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                default:
-                                                                                    re2Var.h0("HEX:#1976D2");
-                                                                                    break;
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    zc1 zc1Var4 = this.l0;
-                                                                    zc1Var4.getClass();
-                                                                    ((MaterialSwitch) zc1Var4.j).setChecked(ud3.S());
-                                                                    zc1 zc1Var5 = this.l0;
-                                                                    zc1Var5.getClass();
-                                                                    final int i5 = 5;
-                                                                    ((MaterialSwitch) zc1Var5.j).setOnClickListener(new View.OnClickListener(this) { // from class: pe2
-                                                                        public final /* synthetic */ re2 o;
-
-                                                                        {
-                                                                            this.o = this;
-                                                                        }
-
-                                                                        @Override // android.view.View.OnClickListener
-                                                                        public final void onClick(View view) {
-                                                                            int i6 = i5;
-                                                                            re2 re2Var = this.o;
-                                                                            switch (i6) {
-                                                                                case 0:
-                                                                                    zc1 zc1Var6 = re2Var.l0;
-                                                                                    zc1Var6.getClass();
-                                                                                    if (((MaterialSwitch) zc1Var6.k).isChecked()) {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC = App.c();
-                                                                                        sharedPreferencesC.getClass();
-                                                                                        SharedPreferences.Editor editorEdit = sharedPreferencesC.edit();
-                                                                                        editorEdit.putBoolean("dark_theme_black", true);
-                                                                                        editorEdit.apply();
-                                                                                    } else {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC2 = App.c();
-                                                                                        sharedPreferencesC2.getClass();
-                                                                                        SharedPreferences.Editor editorEdit2 = sharedPreferencesC2.edit();
-                                                                                        editorEdit2.putBoolean("dark_theme_black", false);
-                                                                                        editorEdit2.apply();
-                                                                                    }
-                                                                                    nc1 nc1VarE = re2Var.e();
-                                                                                    nc1VarE.getClass();
-                                                                                    jz4.r((df) nc1VarE);
-                                                                                    nc1 nc1VarE2 = re2Var.e();
-                                                                                    if (nc1VarE2 != null) {
-                                                                                        nc1VarE2.recreate();
-                                                                                    }
-                                                                                    break;
-                                                                                case 1:
-                                                                                    re2Var.h0("HEX:#7B1FA2");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    re2Var.h0("HEX:#FFA000");
-                                                                                    break;
-                                                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                                                                    re2Var.h0("HEX:#00796B");
-                                                                                    break;
-                                                                                case 4:
-                                                                                    re2Var.h0("HEX:#455A64");
-                                                                                    break;
-                                                                                case 5:
-                                                                                    zc1 zc1Var7 = re2Var.l0;
-                                                                                    zc1Var7.getClass();
-                                                                                    boolean zIsChecked = ((MaterialSwitch) zc1Var7.j).isChecked();
-                                                                                    App.b().getClass();
-                                                                                    App.c().edit().putBoolean("dynamic_color_accent", zIsChecked).apply();
-                                                                                    re2Var.h0(ud3.m());
-                                                                                    break;
-                                                                                case 6:
-                                                                                    re2Var.m().a0("dialog_result_key", re2Var.v(), new cn(23, re2Var));
-                                                                                    String strS = re2Var.s(R.string.la_theme_dialog_color_picker_title);
-                                                                                    strS.getClass();
-                                                                                    f50 f50Var = new f50();
-                                                                                    Bundle bundle2 = new Bundle();
-                                                                                    bundle2.putString("arg_title", strS);
-                                                                                    f50Var.c0(bundle2);
-                                                                                    f50Var.m0(re2Var.m(), "ColorPickerDialog");
-                                                                                    break;
-                                                                                case 7:
-                                                                                    re2Var.h0("HEX:#FF5722");
-                                                                                    break;
-                                                                                case 8:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                case 9:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                default:
-                                                                                    re2Var.h0("HEX:#1976D2");
-                                                                                    break;
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    String[] stringArray = r().getStringArray(R.array.theme_list_titles);
-                                                                    stringArray.getClass();
-                                                                    List listR0 = ti.r0(stringArray);
-                                                                    final String[] stringArray2 = r().getStringArray(R.array.theme_list_values);
-                                                                    stringArray2.getClass();
-                                                                    ArrayAdapter arrayAdapter = new ArrayAdapter(Z(), android.R.layout.simple_dropdown_item_1line, listR0);
-                                                                    zc1 zc1Var6 = this.l0;
-                                                                    zc1Var6.getClass();
-                                                                    AutoCompleteTextView autoCompleteTextView2 = (AutoCompleteTextView) zc1Var6.l;
-                                                                    autoCompleteTextView2.setAdapter(arrayAdapter);
-                                                                    autoCompleteTextView2.setThreshold(0);
-                                                                    fa faVar = new fa(13, arrayAdapter, autoCompleteTextView2);
-                                                                    autoCompleteTextView2.setOnClickListener(new p6(25, faVar));
-                                                                    final int i6 = 3;
-                                                                    autoCompleteTextView2.setOnFocusChangeListener(new p30(3, faVar));
-                                                                    int iM0 = ti.m0(stringArray2, ud3.H());
-                                                                    autoCompleteTextView2.setText((CharSequence) ((iM0 == -1 || iM0 >= listR0.size()) ? ud3.H() : (String) listR0.get(iM0)), false);
-                                                                    autoCompleteTextView2.setOnItemClickListener(new AdapterView.OnItemClickListener() { // from class: qe2
-                                                                        @Override // android.widget.AdapterView.OnItemClickListener
-                                                                        public final void onItemClick(AdapterView adapterView, View view, int i7, long j) {
-                                                                            String str = stringArray2[i7];
-                                                                            str.getClass();
-                                                                            jz4.d(str);
-                                                                            App.b().getClass();
-                                                                            App.c().edit().putString("theme", str).apply();
-                                                                            re2 re2Var = this;
-                                                                            nc1 nc1VarE = re2Var.e();
-                                                                            nc1VarE.getClass();
-                                                                            jz4.r((df) nc1VarE);
-                                                                            nc1 nc1VarE2 = re2Var.e();
-                                                                            if (nc1VarE2 != null) {
-                                                                                nc1VarE2.recreate();
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    zc1 zc1Var7 = this.l0;
-                                                                    zc1Var7.getClass();
-                                                                    final int i7 = 6;
-                                                                    ((MaterialCardView) zc1Var7.f).setOnClickListener(new View.OnClickListener(this) { // from class: pe2
-                                                                        public final /* synthetic */ re2 o;
-
-                                                                        {
-                                                                            this.o = this;
-                                                                        }
-
-                                                                        @Override // android.view.View.OnClickListener
-                                                                        public final void onClick(View view) {
-                                                                            int i8 = i7;
-                                                                            re2 re2Var = this.o;
-                                                                            switch (i8) {
-                                                                                case 0:
-                                                                                    zc1 zc1Var8 = re2Var.l0;
-                                                                                    zc1Var8.getClass();
-                                                                                    if (((MaterialSwitch) zc1Var8.k).isChecked()) {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC = App.c();
-                                                                                        sharedPreferencesC.getClass();
-                                                                                        SharedPreferences.Editor editorEdit = sharedPreferencesC.edit();
-                                                                                        editorEdit.putBoolean("dark_theme_black", true);
-                                                                                        editorEdit.apply();
-                                                                                    } else {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC2 = App.c();
-                                                                                        sharedPreferencesC2.getClass();
-                                                                                        SharedPreferences.Editor editorEdit2 = sharedPreferencesC2.edit();
-                                                                                        editorEdit2.putBoolean("dark_theme_black", false);
-                                                                                        editorEdit2.apply();
-                                                                                    }
-                                                                                    nc1 nc1VarE = re2Var.e();
-                                                                                    nc1VarE.getClass();
-                                                                                    jz4.r((df) nc1VarE);
-                                                                                    nc1 nc1VarE2 = re2Var.e();
-                                                                                    if (nc1VarE2 != null) {
-                                                                                        nc1VarE2.recreate();
-                                                                                    }
-                                                                                    break;
-                                                                                case 1:
-                                                                                    re2Var.h0("HEX:#7B1FA2");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    re2Var.h0("HEX:#FFA000");
-                                                                                    break;
-                                                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                                                                    re2Var.h0("HEX:#00796B");
-                                                                                    break;
-                                                                                case 4:
-                                                                                    re2Var.h0("HEX:#455A64");
-                                                                                    break;
-                                                                                case 5:
-                                                                                    zc1 zc1Var9 = re2Var.l0;
-                                                                                    zc1Var9.getClass();
-                                                                                    boolean zIsChecked = ((MaterialSwitch) zc1Var9.j).isChecked();
-                                                                                    App.b().getClass();
-                                                                                    App.c().edit().putBoolean("dynamic_color_accent", zIsChecked).apply();
-                                                                                    re2Var.h0(ud3.m());
-                                                                                    break;
-                                                                                case 6:
-                                                                                    re2Var.m().a0("dialog_result_key", re2Var.v(), new cn(23, re2Var));
-                                                                                    String strS = re2Var.s(R.string.la_theme_dialog_color_picker_title);
-                                                                                    strS.getClass();
-                                                                                    f50 f50Var = new f50();
-                                                                                    Bundle bundle2 = new Bundle();
-                                                                                    bundle2.putString("arg_title", strS);
-                                                                                    f50Var.c0(bundle2);
-                                                                                    f50Var.m0(re2Var.m(), "ColorPickerDialog");
-                                                                                    break;
-                                                                                case 7:
-                                                                                    re2Var.h0("HEX:#FF5722");
-                                                                                    break;
-                                                                                case 8:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                case 9:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                default:
-                                                                                    re2Var.h0("HEX:#1976D2");
-                                                                                    break;
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    zc1 zc1Var8 = this.l0;
-                                                                    zc1Var8.getClass();
-                                                                    final int i8 = 7;
-                                                                    ((MaterialCardView) zc1Var8.d).setOnClickListener(new View.OnClickListener(this) { // from class: pe2
-                                                                        public final /* synthetic */ re2 o;
-
-                                                                        {
-                                                                            this.o = this;
-                                                                        }
-
-                                                                        @Override // android.view.View.OnClickListener
-                                                                        public final void onClick(View view) {
-                                                                            int i9 = i8;
-                                                                            re2 re2Var = this.o;
-                                                                            switch (i9) {
-                                                                                case 0:
-                                                                                    zc1 zc1Var9 = re2Var.l0;
-                                                                                    zc1Var9.getClass();
-                                                                                    if (((MaterialSwitch) zc1Var9.k).isChecked()) {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC = App.c();
-                                                                                        sharedPreferencesC.getClass();
-                                                                                        SharedPreferences.Editor editorEdit = sharedPreferencesC.edit();
-                                                                                        editorEdit.putBoolean("dark_theme_black", true);
-                                                                                        editorEdit.apply();
-                                                                                    } else {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC2 = App.c();
-                                                                                        sharedPreferencesC2.getClass();
-                                                                                        SharedPreferences.Editor editorEdit2 = sharedPreferencesC2.edit();
-                                                                                        editorEdit2.putBoolean("dark_theme_black", false);
-                                                                                        editorEdit2.apply();
-                                                                                    }
-                                                                                    nc1 nc1VarE = re2Var.e();
-                                                                                    nc1VarE.getClass();
-                                                                                    jz4.r((df) nc1VarE);
-                                                                                    nc1 nc1VarE2 = re2Var.e();
-                                                                                    if (nc1VarE2 != null) {
-                                                                                        nc1VarE2.recreate();
-                                                                                    }
-                                                                                    break;
-                                                                                case 1:
-                                                                                    re2Var.h0("HEX:#7B1FA2");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    re2Var.h0("HEX:#FFA000");
-                                                                                    break;
-                                                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                                                                    re2Var.h0("HEX:#00796B");
-                                                                                    break;
-                                                                                case 4:
-                                                                                    re2Var.h0("HEX:#455A64");
-                                                                                    break;
-                                                                                case 5:
-                                                                                    zc1 zc1Var10 = re2Var.l0;
-                                                                                    zc1Var10.getClass();
-                                                                                    boolean zIsChecked = ((MaterialSwitch) zc1Var10.j).isChecked();
-                                                                                    App.b().getClass();
-                                                                                    App.c().edit().putBoolean("dynamic_color_accent", zIsChecked).apply();
-                                                                                    re2Var.h0(ud3.m());
-                                                                                    break;
-                                                                                case 6:
-                                                                                    re2Var.m().a0("dialog_result_key", re2Var.v(), new cn(23, re2Var));
-                                                                                    String strS = re2Var.s(R.string.la_theme_dialog_color_picker_title);
-                                                                                    strS.getClass();
-                                                                                    f50 f50Var = new f50();
-                                                                                    Bundle bundle2 = new Bundle();
-                                                                                    bundle2.putString("arg_title", strS);
-                                                                                    f50Var.c0(bundle2);
-                                                                                    f50Var.m0(re2Var.m(), "ColorPickerDialog");
-                                                                                    break;
-                                                                                case 7:
-                                                                                    re2Var.h0("HEX:#FF5722");
-                                                                                    break;
-                                                                                case 8:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                case 9:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                default:
-                                                                                    re2Var.h0("HEX:#1976D2");
-                                                                                    break;
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    zc1 zc1Var9 = this.l0;
-                                                                    zc1Var9.getClass();
-                                                                    final int i9 = 8;
-                                                                    ((MaterialCardView) zc1Var9.e).setOnClickListener(new View.OnClickListener(this) { // from class: pe2
-                                                                        public final /* synthetic */ re2 o;
-
-                                                                        {
-                                                                            this.o = this;
-                                                                        }
-
-                                                                        @Override // android.view.View.OnClickListener
-                                                                        public final void onClick(View view) {
-                                                                            int i10 = i9;
-                                                                            re2 re2Var = this.o;
-                                                                            switch (i10) {
-                                                                                case 0:
-                                                                                    zc1 zc1Var10 = re2Var.l0;
-                                                                                    zc1Var10.getClass();
-                                                                                    if (((MaterialSwitch) zc1Var10.k).isChecked()) {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC = App.c();
-                                                                                        sharedPreferencesC.getClass();
-                                                                                        SharedPreferences.Editor editorEdit = sharedPreferencesC.edit();
-                                                                                        editorEdit.putBoolean("dark_theme_black", true);
-                                                                                        editorEdit.apply();
-                                                                                    } else {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC2 = App.c();
-                                                                                        sharedPreferencesC2.getClass();
-                                                                                        SharedPreferences.Editor editorEdit2 = sharedPreferencesC2.edit();
-                                                                                        editorEdit2.putBoolean("dark_theme_black", false);
-                                                                                        editorEdit2.apply();
-                                                                                    }
-                                                                                    nc1 nc1VarE = re2Var.e();
-                                                                                    nc1VarE.getClass();
-                                                                                    jz4.r((df) nc1VarE);
-                                                                                    nc1 nc1VarE2 = re2Var.e();
-                                                                                    if (nc1VarE2 != null) {
-                                                                                        nc1VarE2.recreate();
-                                                                                    }
-                                                                                    break;
-                                                                                case 1:
-                                                                                    re2Var.h0("HEX:#7B1FA2");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    re2Var.h0("HEX:#FFA000");
-                                                                                    break;
-                                                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                                                                    re2Var.h0("HEX:#00796B");
-                                                                                    break;
-                                                                                case 4:
-                                                                                    re2Var.h0("HEX:#455A64");
-                                                                                    break;
-                                                                                case 5:
-                                                                                    zc1 zc1Var11 = re2Var.l0;
-                                                                                    zc1Var11.getClass();
-                                                                                    boolean zIsChecked = ((MaterialSwitch) zc1Var11.j).isChecked();
-                                                                                    App.b().getClass();
-                                                                                    App.c().edit().putBoolean("dynamic_color_accent", zIsChecked).apply();
-                                                                                    re2Var.h0(ud3.m());
-                                                                                    break;
-                                                                                case 6:
-                                                                                    re2Var.m().a0("dialog_result_key", re2Var.v(), new cn(23, re2Var));
-                                                                                    String strS = re2Var.s(R.string.la_theme_dialog_color_picker_title);
-                                                                                    strS.getClass();
-                                                                                    f50 f50Var = new f50();
-                                                                                    Bundle bundle2 = new Bundle();
-                                                                                    bundle2.putString("arg_title", strS);
-                                                                                    f50Var.c0(bundle2);
-                                                                                    f50Var.m0(re2Var.m(), "ColorPickerDialog");
-                                                                                    break;
-                                                                                case 7:
-                                                                                    re2Var.h0("HEX:#FF5722");
-                                                                                    break;
-                                                                                case 8:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                case 9:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                default:
-                                                                                    re2Var.h0("HEX:#1976D2");
-                                                                                    break;
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    zc1 zc1Var10 = this.l0;
-                                                                    zc1Var10.getClass();
-                                                                    final int i10 = 9;
-                                                                    ((MaterialCardView) zc1Var10.e).setOnClickListener(new View.OnClickListener(this) { // from class: pe2
-                                                                        public final /* synthetic */ re2 o;
-
-                                                                        {
-                                                                            this.o = this;
-                                                                        }
-
-                                                                        @Override // android.view.View.OnClickListener
-                                                                        public final void onClick(View view) {
-                                                                            int i11 = i10;
-                                                                            re2 re2Var = this.o;
-                                                                            switch (i11) {
-                                                                                case 0:
-                                                                                    zc1 zc1Var11 = re2Var.l0;
-                                                                                    zc1Var11.getClass();
-                                                                                    if (((MaterialSwitch) zc1Var11.k).isChecked()) {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC = App.c();
-                                                                                        sharedPreferencesC.getClass();
-                                                                                        SharedPreferences.Editor editorEdit = sharedPreferencesC.edit();
-                                                                                        editorEdit.putBoolean("dark_theme_black", true);
-                                                                                        editorEdit.apply();
-                                                                                    } else {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC2 = App.c();
-                                                                                        sharedPreferencesC2.getClass();
-                                                                                        SharedPreferences.Editor editorEdit2 = sharedPreferencesC2.edit();
-                                                                                        editorEdit2.putBoolean("dark_theme_black", false);
-                                                                                        editorEdit2.apply();
-                                                                                    }
-                                                                                    nc1 nc1VarE = re2Var.e();
-                                                                                    nc1VarE.getClass();
-                                                                                    jz4.r((df) nc1VarE);
-                                                                                    nc1 nc1VarE2 = re2Var.e();
-                                                                                    if (nc1VarE2 != null) {
-                                                                                        nc1VarE2.recreate();
-                                                                                    }
-                                                                                    break;
-                                                                                case 1:
-                                                                                    re2Var.h0("HEX:#7B1FA2");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    re2Var.h0("HEX:#FFA000");
-                                                                                    break;
-                                                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                                                                    re2Var.h0("HEX:#00796B");
-                                                                                    break;
-                                                                                case 4:
-                                                                                    re2Var.h0("HEX:#455A64");
-                                                                                    break;
-                                                                                case 5:
-                                                                                    zc1 zc1Var12 = re2Var.l0;
-                                                                                    zc1Var12.getClass();
-                                                                                    boolean zIsChecked = ((MaterialSwitch) zc1Var12.j).isChecked();
-                                                                                    App.b().getClass();
-                                                                                    App.c().edit().putBoolean("dynamic_color_accent", zIsChecked).apply();
-                                                                                    re2Var.h0(ud3.m());
-                                                                                    break;
-                                                                                case 6:
-                                                                                    re2Var.m().a0("dialog_result_key", re2Var.v(), new cn(23, re2Var));
-                                                                                    String strS = re2Var.s(R.string.la_theme_dialog_color_picker_title);
-                                                                                    strS.getClass();
-                                                                                    f50 f50Var = new f50();
-                                                                                    Bundle bundle2 = new Bundle();
-                                                                                    bundle2.putString("arg_title", strS);
-                                                                                    f50Var.c0(bundle2);
-                                                                                    f50Var.m0(re2Var.m(), "ColorPickerDialog");
-                                                                                    break;
-                                                                                case 7:
-                                                                                    re2Var.h0("HEX:#FF5722");
-                                                                                    break;
-                                                                                case 8:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                case 9:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                default:
-                                                                                    re2Var.h0("HEX:#1976D2");
-                                                                                    break;
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    zc1 zc1Var11 = this.l0;
-                                                                    zc1Var11.getClass();
-                                                                    final int i11 = 10;
-                                                                    ((MaterialCardView) zc1Var11.c).setOnClickListener(new View.OnClickListener(this) { // from class: pe2
-                                                                        public final /* synthetic */ re2 o;
-
-                                                                        {
-                                                                            this.o = this;
-                                                                        }
-
-                                                                        @Override // android.view.View.OnClickListener
-                                                                        public final void onClick(View view) {
-                                                                            int i12 = i11;
-                                                                            re2 re2Var = this.o;
-                                                                            switch (i12) {
-                                                                                case 0:
-                                                                                    zc1 zc1Var12 = re2Var.l0;
-                                                                                    zc1Var12.getClass();
-                                                                                    if (((MaterialSwitch) zc1Var12.k).isChecked()) {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC = App.c();
-                                                                                        sharedPreferencesC.getClass();
-                                                                                        SharedPreferences.Editor editorEdit = sharedPreferencesC.edit();
-                                                                                        editorEdit.putBoolean("dark_theme_black", true);
-                                                                                        editorEdit.apply();
-                                                                                    } else {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC2 = App.c();
-                                                                                        sharedPreferencesC2.getClass();
-                                                                                        SharedPreferences.Editor editorEdit2 = sharedPreferencesC2.edit();
-                                                                                        editorEdit2.putBoolean("dark_theme_black", false);
-                                                                                        editorEdit2.apply();
-                                                                                    }
-                                                                                    nc1 nc1VarE = re2Var.e();
-                                                                                    nc1VarE.getClass();
-                                                                                    jz4.r((df) nc1VarE);
-                                                                                    nc1 nc1VarE2 = re2Var.e();
-                                                                                    if (nc1VarE2 != null) {
-                                                                                        nc1VarE2.recreate();
-                                                                                    }
-                                                                                    break;
-                                                                                case 1:
-                                                                                    re2Var.h0("HEX:#7B1FA2");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    re2Var.h0("HEX:#FFA000");
-                                                                                    break;
-                                                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                                                                    re2Var.h0("HEX:#00796B");
-                                                                                    break;
-                                                                                case 4:
-                                                                                    re2Var.h0("HEX:#455A64");
-                                                                                    break;
-                                                                                case 5:
-                                                                                    zc1 zc1Var13 = re2Var.l0;
-                                                                                    zc1Var13.getClass();
-                                                                                    boolean zIsChecked = ((MaterialSwitch) zc1Var13.j).isChecked();
-                                                                                    App.b().getClass();
-                                                                                    App.c().edit().putBoolean("dynamic_color_accent", zIsChecked).apply();
-                                                                                    re2Var.h0(ud3.m());
-                                                                                    break;
-                                                                                case 6:
-                                                                                    re2Var.m().a0("dialog_result_key", re2Var.v(), new cn(23, re2Var));
-                                                                                    String strS = re2Var.s(R.string.la_theme_dialog_color_picker_title);
-                                                                                    strS.getClass();
-                                                                                    f50 f50Var = new f50();
-                                                                                    Bundle bundle2 = new Bundle();
-                                                                                    bundle2.putString("arg_title", strS);
-                                                                                    f50Var.c0(bundle2);
-                                                                                    f50Var.m0(re2Var.m(), "ColorPickerDialog");
-                                                                                    break;
-                                                                                case 7:
-                                                                                    re2Var.h0("HEX:#FF5722");
-                                                                                    break;
-                                                                                case 8:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                case 9:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                default:
-                                                                                    re2Var.h0("HEX:#1976D2");
-                                                                                    break;
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    zc1 zc1Var12 = this.l0;
-                                                                    zc1Var12.getClass();
-                                                                    ((MaterialCardView) zc1Var12.g).setOnClickListener(new View.OnClickListener(this) { // from class: pe2
-                                                                        public final /* synthetic */ re2 o;
-
-                                                                        {
-                                                                            this.o = this;
-                                                                        }
-
-                                                                        @Override // android.view.View.OnClickListener
-                                                                        public final void onClick(View view) {
-                                                                            int i12 = i4;
-                                                                            re2 re2Var = this.o;
-                                                                            switch (i12) {
-                                                                                case 0:
-                                                                                    zc1 zc1Var13 = re2Var.l0;
-                                                                                    zc1Var13.getClass();
-                                                                                    if (((MaterialSwitch) zc1Var13.k).isChecked()) {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC = App.c();
-                                                                                        sharedPreferencesC.getClass();
-                                                                                        SharedPreferences.Editor editorEdit = sharedPreferencesC.edit();
-                                                                                        editorEdit.putBoolean("dark_theme_black", true);
-                                                                                        editorEdit.apply();
-                                                                                    } else {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC2 = App.c();
-                                                                                        sharedPreferencesC2.getClass();
-                                                                                        SharedPreferences.Editor editorEdit2 = sharedPreferencesC2.edit();
-                                                                                        editorEdit2.putBoolean("dark_theme_black", false);
-                                                                                        editorEdit2.apply();
-                                                                                    }
-                                                                                    nc1 nc1VarE = re2Var.e();
-                                                                                    nc1VarE.getClass();
-                                                                                    jz4.r((df) nc1VarE);
-                                                                                    nc1 nc1VarE2 = re2Var.e();
-                                                                                    if (nc1VarE2 != null) {
-                                                                                        nc1VarE2.recreate();
-                                                                                    }
-                                                                                    break;
-                                                                                case 1:
-                                                                                    re2Var.h0("HEX:#7B1FA2");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    re2Var.h0("HEX:#FFA000");
-                                                                                    break;
-                                                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                                                                    re2Var.h0("HEX:#00796B");
-                                                                                    break;
-                                                                                case 4:
-                                                                                    re2Var.h0("HEX:#455A64");
-                                                                                    break;
-                                                                                case 5:
-                                                                                    zc1 zc1Var14 = re2Var.l0;
-                                                                                    zc1Var14.getClass();
-                                                                                    boolean zIsChecked = ((MaterialSwitch) zc1Var14.j).isChecked();
-                                                                                    App.b().getClass();
-                                                                                    App.c().edit().putBoolean("dynamic_color_accent", zIsChecked).apply();
-                                                                                    re2Var.h0(ud3.m());
-                                                                                    break;
-                                                                                case 6:
-                                                                                    re2Var.m().a0("dialog_result_key", re2Var.v(), new cn(23, re2Var));
-                                                                                    String strS = re2Var.s(R.string.la_theme_dialog_color_picker_title);
-                                                                                    strS.getClass();
-                                                                                    f50 f50Var = new f50();
-                                                                                    Bundle bundle2 = new Bundle();
-                                                                                    bundle2.putString("arg_title", strS);
-                                                                                    f50Var.c0(bundle2);
-                                                                                    f50Var.m0(re2Var.m(), "ColorPickerDialog");
-                                                                                    break;
-                                                                                case 7:
-                                                                                    re2Var.h0("HEX:#FF5722");
-                                                                                    break;
-                                                                                case 8:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                case 9:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                default:
-                                                                                    re2Var.h0("HEX:#1976D2");
-                                                                                    break;
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    zc1 zc1Var13 = this.l0;
-                                                                    zc1Var13.getClass();
-                                                                    final int i12 = 2;
-                                                                    ((MaterialCardView) zc1Var13.b).setOnClickListener(new View.OnClickListener(this) { // from class: pe2
-                                                                        public final /* synthetic */ re2 o;
-
-                                                                        {
-                                                                            this.o = this;
-                                                                        }
-
-                                                                        @Override // android.view.View.OnClickListener
-                                                                        public final void onClick(View view) {
-                                                                            int i13 = i12;
-                                                                            re2 re2Var = this.o;
-                                                                            switch (i13) {
-                                                                                case 0:
-                                                                                    zc1 zc1Var14 = re2Var.l0;
-                                                                                    zc1Var14.getClass();
-                                                                                    if (((MaterialSwitch) zc1Var14.k).isChecked()) {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC = App.c();
-                                                                                        sharedPreferencesC.getClass();
-                                                                                        SharedPreferences.Editor editorEdit = sharedPreferencesC.edit();
-                                                                                        editorEdit.putBoolean("dark_theme_black", true);
-                                                                                        editorEdit.apply();
-                                                                                    } else {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC2 = App.c();
-                                                                                        sharedPreferencesC2.getClass();
-                                                                                        SharedPreferences.Editor editorEdit2 = sharedPreferencesC2.edit();
-                                                                                        editorEdit2.putBoolean("dark_theme_black", false);
-                                                                                        editorEdit2.apply();
-                                                                                    }
-                                                                                    nc1 nc1VarE = re2Var.e();
-                                                                                    nc1VarE.getClass();
-                                                                                    jz4.r((df) nc1VarE);
-                                                                                    nc1 nc1VarE2 = re2Var.e();
-                                                                                    if (nc1VarE2 != null) {
-                                                                                        nc1VarE2.recreate();
-                                                                                    }
-                                                                                    break;
-                                                                                case 1:
-                                                                                    re2Var.h0("HEX:#7B1FA2");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    re2Var.h0("HEX:#FFA000");
-                                                                                    break;
-                                                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                                                                    re2Var.h0("HEX:#00796B");
-                                                                                    break;
-                                                                                case 4:
-                                                                                    re2Var.h0("HEX:#455A64");
-                                                                                    break;
-                                                                                case 5:
-                                                                                    zc1 zc1Var15 = re2Var.l0;
-                                                                                    zc1Var15.getClass();
-                                                                                    boolean zIsChecked = ((MaterialSwitch) zc1Var15.j).isChecked();
-                                                                                    App.b().getClass();
-                                                                                    App.c().edit().putBoolean("dynamic_color_accent", zIsChecked).apply();
-                                                                                    re2Var.h0(ud3.m());
-                                                                                    break;
-                                                                                case 6:
-                                                                                    re2Var.m().a0("dialog_result_key", re2Var.v(), new cn(23, re2Var));
-                                                                                    String strS = re2Var.s(R.string.la_theme_dialog_color_picker_title);
-                                                                                    strS.getClass();
-                                                                                    f50 f50Var = new f50();
-                                                                                    Bundle bundle2 = new Bundle();
-                                                                                    bundle2.putString("arg_title", strS);
-                                                                                    f50Var.c0(bundle2);
-                                                                                    f50Var.m0(re2Var.m(), "ColorPickerDialog");
-                                                                                    break;
-                                                                                case 7:
-                                                                                    re2Var.h0("HEX:#FF5722");
-                                                                                    break;
-                                                                                case 8:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                case 9:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                default:
-                                                                                    re2Var.h0("HEX:#1976D2");
-                                                                                    break;
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    zc1 zc1Var14 = this.l0;
-                                                                    zc1Var14.getClass();
-                                                                    ((MaterialCardView) zc1Var14.i).setOnClickListener(new View.OnClickListener(this) { // from class: pe2
-                                                                        public final /* synthetic */ re2 o;
-
-                                                                        {
-                                                                            this.o = this;
-                                                                        }
-
-                                                                        @Override // android.view.View.OnClickListener
-                                                                        public final void onClick(View view) {
-                                                                            int i13 = i6;
-                                                                            re2 re2Var = this.o;
-                                                                            switch (i13) {
-                                                                                case 0:
-                                                                                    zc1 zc1Var15 = re2Var.l0;
-                                                                                    zc1Var15.getClass();
-                                                                                    if (((MaterialSwitch) zc1Var15.k).isChecked()) {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC = App.c();
-                                                                                        sharedPreferencesC.getClass();
-                                                                                        SharedPreferences.Editor editorEdit = sharedPreferencesC.edit();
-                                                                                        editorEdit.putBoolean("dark_theme_black", true);
-                                                                                        editorEdit.apply();
-                                                                                    } else {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC2 = App.c();
-                                                                                        sharedPreferencesC2.getClass();
-                                                                                        SharedPreferences.Editor editorEdit2 = sharedPreferencesC2.edit();
-                                                                                        editorEdit2.putBoolean("dark_theme_black", false);
-                                                                                        editorEdit2.apply();
-                                                                                    }
-                                                                                    nc1 nc1VarE = re2Var.e();
-                                                                                    nc1VarE.getClass();
-                                                                                    jz4.r((df) nc1VarE);
-                                                                                    nc1 nc1VarE2 = re2Var.e();
-                                                                                    if (nc1VarE2 != null) {
-                                                                                        nc1VarE2.recreate();
-                                                                                    }
-                                                                                    break;
-                                                                                case 1:
-                                                                                    re2Var.h0("HEX:#7B1FA2");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    re2Var.h0("HEX:#FFA000");
-                                                                                    break;
-                                                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                                                                    re2Var.h0("HEX:#00796B");
-                                                                                    break;
-                                                                                case 4:
-                                                                                    re2Var.h0("HEX:#455A64");
-                                                                                    break;
-                                                                                case 5:
-                                                                                    zc1 zc1Var16 = re2Var.l0;
-                                                                                    zc1Var16.getClass();
-                                                                                    boolean zIsChecked = ((MaterialSwitch) zc1Var16.j).isChecked();
-                                                                                    App.b().getClass();
-                                                                                    App.c().edit().putBoolean("dynamic_color_accent", zIsChecked).apply();
-                                                                                    re2Var.h0(ud3.m());
-                                                                                    break;
-                                                                                case 6:
-                                                                                    re2Var.m().a0("dialog_result_key", re2Var.v(), new cn(23, re2Var));
-                                                                                    String strS = re2Var.s(R.string.la_theme_dialog_color_picker_title);
-                                                                                    strS.getClass();
-                                                                                    f50 f50Var = new f50();
-                                                                                    Bundle bundle2 = new Bundle();
-                                                                                    bundle2.putString("arg_title", strS);
-                                                                                    f50Var.c0(bundle2);
-                                                                                    f50Var.m0(re2Var.m(), "ColorPickerDialog");
-                                                                                    break;
-                                                                                case 7:
-                                                                                    re2Var.h0("HEX:#FF5722");
-                                                                                    break;
-                                                                                case 8:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                case 9:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                default:
-                                                                                    re2Var.h0("HEX:#1976D2");
-                                                                                    break;
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    zc1 zc1Var15 = this.l0;
-                                                                    zc1Var15.getClass();
-                                                                    final int i13 = 4;
-                                                                    ((MaterialCardView) zc1Var15.h).setOnClickListener(new View.OnClickListener(this) { // from class: pe2
-                                                                        public final /* synthetic */ re2 o;
-
-                                                                        {
-                                                                            this.o = this;
-                                                                        }
-
-                                                                        @Override // android.view.View.OnClickListener
-                                                                        public final void onClick(View view) {
-                                                                            int i14 = i13;
-                                                                            re2 re2Var = this.o;
-                                                                            switch (i14) {
-                                                                                case 0:
-                                                                                    zc1 zc1Var16 = re2Var.l0;
-                                                                                    zc1Var16.getClass();
-                                                                                    if (((MaterialSwitch) zc1Var16.k).isChecked()) {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC = App.c();
-                                                                                        sharedPreferencesC.getClass();
-                                                                                        SharedPreferences.Editor editorEdit = sharedPreferencesC.edit();
-                                                                                        editorEdit.putBoolean("dark_theme_black", true);
-                                                                                        editorEdit.apply();
-                                                                                    } else {
-                                                                                        App.b().getClass();
-                                                                                        SharedPreferences sharedPreferencesC2 = App.c();
-                                                                                        sharedPreferencesC2.getClass();
-                                                                                        SharedPreferences.Editor editorEdit2 = sharedPreferencesC2.edit();
-                                                                                        editorEdit2.putBoolean("dark_theme_black", false);
-                                                                                        editorEdit2.apply();
-                                                                                    }
-                                                                                    nc1 nc1VarE = re2Var.e();
-                                                                                    nc1VarE.getClass();
-                                                                                    jz4.r((df) nc1VarE);
-                                                                                    nc1 nc1VarE2 = re2Var.e();
-                                                                                    if (nc1VarE2 != null) {
-                                                                                        nc1VarE2.recreate();
-                                                                                    }
-                                                                                    break;
-                                                                                case 1:
-                                                                                    re2Var.h0("HEX:#7B1FA2");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    re2Var.h0("HEX:#FFA000");
-                                                                                    break;
-                                                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                                                                    re2Var.h0("HEX:#00796B");
-                                                                                    break;
-                                                                                case 4:
-                                                                                    re2Var.h0("HEX:#455A64");
-                                                                                    break;
-                                                                                case 5:
-                                                                                    zc1 zc1Var17 = re2Var.l0;
-                                                                                    zc1Var17.getClass();
-                                                                                    boolean zIsChecked = ((MaterialSwitch) zc1Var17.j).isChecked();
-                                                                                    App.b().getClass();
-                                                                                    App.c().edit().putBoolean("dynamic_color_accent", zIsChecked).apply();
-                                                                                    re2Var.h0(ud3.m());
-                                                                                    break;
-                                                                                case 6:
-                                                                                    re2Var.m().a0("dialog_result_key", re2Var.v(), new cn(23, re2Var));
-                                                                                    String strS = re2Var.s(R.string.la_theme_dialog_color_picker_title);
-                                                                                    strS.getClass();
-                                                                                    f50 f50Var = new f50();
-                                                                                    Bundle bundle2 = new Bundle();
-                                                                                    bundle2.putString("arg_title", strS);
-                                                                                    f50Var.c0(bundle2);
-                                                                                    f50Var.m0(re2Var.m(), "ColorPickerDialog");
-                                                                                    break;
-                                                                                case 7:
-                                                                                    re2Var.h0("HEX:#FF5722");
-                                                                                    break;
-                                                                                case 8:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                case 9:
-                                                                                    re2Var.h0("HEX:#2E7D32");
-                                                                                    break;
-                                                                                default:
-                                                                                    re2Var.h0("HEX:#1976D2");
-                                                                                    break;
-                                                                            }
-                                                                        }
-                                                                    });
-                                                                    zc1 zc1Var16 = this.l0;
-                                                                    zc1Var16.getClass();
-                                                                    return (ConstraintLayout) zc1Var16.a;
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                    i2 = i3;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i2)));
+    @Override // defpackage.kc1
+    public final View H(LayoutInflater r13, ViewGroup r14, Bundle r15) {
+        r13.getClass();
+        final int r0 = 0;
+        View r16 = r13.inflate(R.layout.fragment_login_theme, r14, false);
+        int r17 = R.id.card_amber;
+        MaterialCardView r18 = (MaterialCardView) uo.s(r16, R.id.card_amber);
+        if (r18 == null) goto L44;
+        r17 = R.id.card_blue;
+        MaterialCardView r1 = (MaterialCardView) uo.s(r16, R.id.card_blue);
+        if (r1 == null) goto L44;
+        r17 = R.id.card_coral;
+        MaterialCardView r2 = (MaterialCardView) uo.s(r16, R.id.card_coral);
+        if (r2 == null) goto L44;
+        r17 = R.id.card_emerald;
+        MaterialCardView r3 = (MaterialCardView) uo.s(r16, R.id.card_emerald);
+        if (r3 == null) goto L44;
+        r17 = R.id.card_flirt;
+        MaterialCardView r4 = (MaterialCardView) uo.s(r16, R.id.card_flirt);
+        if (r4 == null) goto L44;
+        r17 = R.id.card_purple;
+        MaterialCardView r5 = (MaterialCardView) uo.s(r16, R.id.card_purple);
+        if (r5 == null) goto L44;
+        r17 = R.id.card_slate;
+        MaterialCardView r6 = (MaterialCardView) uo.s(r16, R.id.card_slate);
+        if (r6 == null) goto L44;
+        r17 = R.id.card_teal;
+        MaterialCardView r7 = (MaterialCardView) uo.s(r16, R.id.card_teal);
+        if (r7 == null) goto L44;
+        r17 = R.id.chooseAccentColorContainer;
+        if (((LinearLayout) uo.s(r16, R.id.chooseAccentColorContainer)) == null) goto L44;
+        r17 = R.id.chooseAccentColorTitle;
+        if (((TextView) uo.s(r16, R.id.chooseAccentColorTitle)) == null) goto L44;
+        r17 = R.id.defaultDynamicSwitch;
+        MaterialSwitch r8 = (MaterialSwitch) uo.s(r16, R.id.defaultDynamicSwitch);
+        if (r8 == null) goto L44;
+        ConstraintLayout r19 = (ConstraintLayout) r16;
+        int r9 = R.id.mainSwitchesContainer;
+        if (((LinearLayout) uo.s(r16, R.id.mainSwitchesContainer)) == null) goto L43;
+        r9 = R.id.themesList;
+        AutoCompleteTextView r10 = (AutoCompleteTextView) uo.s(r16, R.id.themesList);
+        if (r10 == null) goto L43;
+        r9 = R.id.themesListContainer;
+        if (((TextInputLayout) uo.s(r16, R.id.themesListContainer)) == null) goto L43;
+        r9 = R.id.trueBlackSwitch;
+        MaterialSwitch r11 = (MaterialSwitch) uo.s(r16, R.id.trueBlackSwitch);
+        if (r11 == null) goto L43;
+        zc1 r110 = new zc1();
+        r110.a = r19;
+        r110.b = r18;
+        r110.c = r1;
+        r110.d = r2;
+        r110.e = r3;
+        r110.f = r4;
+        r110.g = r5;
+        r110.h = r6;
+        r110.i = r7;
+        r110.j = r8;
+        r110.l = r10;
+        r110.k = r11;
+        this.l0 = r110;
+        final int r111 = 1;
+        if (xa3.u("dark_theme_black", false) == false) goto L35;
+        zc1 r112 = this.l0;
+        r112.getClass();
+        ((MaterialSwitch) r112.k).setChecked(true);
+    L35:
+        zc1 r113 = this.l0;
+        r113.getClass();
+        ((MaterialSwitch) r113.k).setOnClickListener(new pe2(this, r0));
+        zc1 r114 = this.l0;
+        r114.getClass();
+        ((MaterialSwitch) r114.j).setChecked(ud3.S());
+        zc1 r115 = this.l0;
+        r115.getClass();
+        final int r12 = 5;
+        ((MaterialSwitch) r115.j).setOnClickListener(new pe2(this, r12));
+        String[] r116 = r().getStringArray(R.array.theme_list_titles);
+        r116.getClass();
+        List r117 = ti.r0(r116);
+        final String[] r118 = r().getStringArray(R.array.theme_list_values);
+        r118.getClass();
+        ArrayAdapter r20 = new ArrayAdapter(Z(), android.R.layout.simple_dropdown_item_1line, r117);
+        zc1 r21 = this.l0;
+        r21.getClass();
+        AutoCompleteTextView r22 = (AutoCompleteTextView) r21.l;
+        r22.setAdapter(r20);
+        r22.setThreshold(0);
+        fa r23 = new fa(13, r20, r22);
+        r22.setOnClickListener(new p6(25, r23));
+        final int r24 = 3;
+        r22.setOnFocusChangeListener(new p30(3, r23));
+        int r25 = ti.m0(r118, ud3.H());
+        if (r25 != (-1)) goto L38;
+    L40:
+        String r119 = ud3.H();
+    L41:
+        r22.setText(r119, false);
+        r22.setOnItemClickListener(new qe2(r118, this));
+        zc1 r120 = this.l0;
+        r120.getClass();
+        final int r26 = 6;
+        ((MaterialCardView) r120.f).setOnClickListener(new pe2(this, r26));
+        zc1 r121 = this.l0;
+        r121.getClass();
+        final int r27 = 7;
+        ((MaterialCardView) r121.d).setOnClickListener(new pe2(this, r27));
+        zc1 r122 = this.l0;
+        r122.getClass();
+        final int r28 = 8;
+        ((MaterialCardView) r122.e).setOnClickListener(new pe2(this, r28));
+        zc1 r123 = this.l0;
+        r123.getClass();
+        final int r29 = 9;
+        ((MaterialCardView) r123.e).setOnClickListener(new pe2(this, r29));
+        zc1 r124 = this.l0;
+        r124.getClass();
+        final int r30 = 10;
+        ((MaterialCardView) r124.c).setOnClickListener(new pe2(this, r30));
+        zc1 r125 = this.l0;
+        r125.getClass();
+        ((MaterialCardView) r125.g).setOnClickListener(new pe2(this, r111));
+        zc1 r126 = this.l0;
+        r126.getClass();
+        final int r127 = 2;
+        ((MaterialCardView) r126.b).setOnClickListener(new pe2(this, r127));
+        zc1 r128 = this.l0;
+        r128.getClass();
+        ((MaterialCardView) r128.i).setOnClickListener(new pe2(this, r24));
+        zc1 r129 = this.l0;
+        r129.getClass();
+        final int r130 = 4;
+        ((MaterialCardView) r129.h).setOnClickListener(new pe2(this, r130));
+        zc1 r131 = this.l0;
+        r131.getClass();
+        return (ConstraintLayout) r131.a;
+    L38:
+        if (r25 >= r117.size()) goto L40;
+        r119 = (String) r117.get(r25);
+    L43:
+        r17 = r9;
+    L44:
+        nz2.n("Missing required view with ID: ".concat(r16.getResources().getResourceName(r17)));
         return null;
     }
 
@@ -1112,30 +187,37 @@ public final class re2 extends kc1 {
     }
 
     @Override // defpackage.kc1
-    public final void T(View view, Bundle bundle) {
-        int color;
-        view.getClass();
-        String strM = ud3.m();
-        if (strM.equals("DYNAMIC") || strM.length() == 0) {
-            color = Color.parseColor("#B5076B");
-        } else {
-            String strZ0 = qm4.z0(strM, "HEX:");
-            color = xm4.k0(strZ0, "#", false) ? Color.parseColor(strZ0) : Color.parseColor("#".concat(strZ0));
-        }
-        zc1 zc1Var = this.l0;
-        zc1Var.getClass();
-        ((MaterialCardView) zc1Var.f).setCardBackgroundColor(color);
+    public final void T(View r2, Bundle r3) {
+        r2.getClass();
+        String r4 = ud3.m();
+        if (r4.equals("DYNAMIC") == false) goto L5;
+    L11:
+        int r5 = Color.parseColor("#B5076B");
+    L12:
+        zc1 r1 = this.l0;
+        r1.getClass();
+        ((MaterialCardView) r1.f).setCardBackgroundColor(r5);
+        return;
+    L5:
+        if (r4.length() == 0) goto L11;
+        String r6 = qm4.z0(r4, "HEX:");
+        if (xm4.k0(r6, "#", false) == false) goto L10;
+        r5 = Color.parseColor(r6);
+        goto L12
+    L10:
+        r5 = Color.parseColor("#".concat(r6));
+        goto L12
     }
 
-    public final void h0(String str) {
+    public final void h0(String r3) {
         App.b().getClass();
-        App.c().edit().putString("color_accent", str).apply();
-        nc1 nc1VarE = e();
-        nc1VarE.getClass();
-        jz4.r((df) nc1VarE);
-        nc1 nc1VarE2 = e();
-        if (nc1VarE2 != null) {
-            nc1VarE2.recreate();
-        }
+        App.c().edit().putString("color_accent", r3).apply();
+        nc1 r4 = l();
+        r4.getClass();
+        jz4.r((df) r4);
+        nc1 r2 = l();
+        if (r2 == null) goto L6;
+        r2.recreate();
+        return;
     }
 }

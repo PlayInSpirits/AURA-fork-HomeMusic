@@ -10,46 +10,50 @@ public final /* synthetic */ class n31 implements go4 {
     public final /* synthetic */ int n;
     public final /* synthetic */ MediaService o;
 
-    public /* synthetic */ n31(MediaService mediaService, int i) {
-        this.n = i;
-        this.o = mediaService;
+    public /* synthetic */ n31(MediaService r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.go4
     public final Object get() {
-        vj0 vj0Var;
-        int i = this.n;
-        MediaService mediaService = this.o;
-        switch (i) {
-            case 0:
-                return new pm0(mediaService);
-            case 1:
-                return new dm0(mediaService, new sk0());
-            case 2:
-                return new pn0(jn0.F0, new rv2(25), mediaService);
-            default:
-                gy3 gy3Var = vj0.C;
-                synchronized (vj0.class) {
-                    try {
-                        if (vj0.I == null) {
-                            Context applicationContext = mediaService.getApplicationContext();
-                            HashMap map = new HashMap(8);
-                            map.put(0, 1000000L);
-                            map.put(2, -9223372036854775807L);
-                            map.put(3, -9223372036854775807L);
-                            map.put(4, -9223372036854775807L);
-                            map.put(5, -9223372036854775807L);
-                            map.put(10, -9223372036854775807L);
-                            map.put(9, -9223372036854775807L);
-                            map.put(7, -9223372036854775807L);
-                            vj0.I = new vj0(applicationContext, map);
-                        }
-                        vj0Var = vj0.I;
-                    } catch (Throwable th) {
-                        throw th;
-                    }
-                }
-                return vj0Var;
-        }
+        int r0 = this.n;
+        MediaService r6 = this.o;
+        switch(r0) {
+            case 0: goto L21;
+            case 1: goto L19;
+            case 2: goto L16;
+            default: goto L4;
+        };
+    L4:
+        gy3 r1 = vj0.C;
+        monitor-enter(vj0.class);
+    L9:
+        th = move-exception;
+        throw th;
+    L7:
+        if (vj0.I != null) goto L11;
+        Context r7 = r6.getApplicationContext();     // Catch: Throwable -> L9
+        HashMap r2 = new HashMap(8);     // Catch: Throwable -> L9
+        r2.put(0, 1000000L);     // Catch: Throwable -> L9
+        r2.put(2, -9223372036854775807L);     // Catch: Throwable -> L9
+        r2.put(3, -9223372036854775807L);     // Catch: Throwable -> L9
+        r2.put(4, -9223372036854775807L);     // Catch: Throwable -> L9
+        r2.put(5, -9223372036854775807L);     // Catch: Throwable -> L9
+        r2.put(10, -9223372036854775807L);     // Catch: Throwable -> L9
+        r2.put(9, -9223372036854775807L);     // Catch: Throwable -> L9
+        r2.put(7, -9223372036854775807L);     // Catch: Throwable -> L9
+        vj0.I = new vj0(r7, r2);     // Catch: Throwable -> L9
+    L11:
+        vj0 r8 = vj0.I;     // Catch: Throwable -> L9
+        monitor-exit(vj0.class);
+        return r8;
+    L16:
+        rv2 r3 = new rv2(25);
+        return new pn0(jn0.F0, r3, r6);
+    L19:
+        return new dm0(r6, new sk0());
+    L21:
+        return new pm0(r6);
     }
 }

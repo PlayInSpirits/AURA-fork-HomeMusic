@@ -10,26 +10,32 @@ public final class ex1 extends o15 {
     public Object p;
     public final /* synthetic */ Iterator q;
 
-    public ex1(o15 o15Var) {
+    public ex1(o15 r2) {
         super(0);
-        this.q = o15Var;
+        this.q = r2;
     }
 
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        return this.o > 0 || this.q.hasNext();
+        if (this.o <= 0) goto L5;
+        return true;
+    L5:
+        if (this.q.hasNext() == true) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     @Override // java.util.Iterator
     public final Object next() {
-        if (this.o <= 0) {
-            p73 p73Var = (p73) this.q.next();
-            this.p = p73Var.a;
-            this.o = p73Var.a();
-        }
+        if (this.o > 0) goto L5;
+        p73 r0 = (p73) this.q.next();
+        this.p = r0.a;
+        this.o = r0.a();
+    L5:
         this.o--;
-        Object obj = this.p;
-        Objects.requireNonNull(obj);
-        return obj;
+        Object r2 = this.p;
+        Objects.requireNonNull(r2);
+        return r2;
     }
 }

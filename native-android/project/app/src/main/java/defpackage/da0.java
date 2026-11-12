@@ -3,22 +3,26 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class da0 implements le0 {
-    public static final i80 o = new i80(4);
+    public static final i80 o = null;
     public final go3 n;
 
-    public da0(go3 go3Var) {
-        go3Var.getClass();
-        this.n = go3Var;
+    static {
+        o = new i80(4);
+    }
+
+    public da0(go3 r1) {
+        r1.getClass();
+        this.n = r1;
     }
 
     @Override // defpackage.ne0
-    public final ne0 J(ne0 ne0Var) {
-        return ya4.F(this, ne0Var);
+    public final ne0 J(ne0 r1) {
+        return ya4.F(this, r1);
     }
 
     @Override // defpackage.ne0
-    public final le0 K(me0 me0Var) {
-        return ya4.r(this, me0Var);
+    public final le0 K(me0 r1) {
+        return ya4.r(this, r1);
     }
 
     @Override // defpackage.le0
@@ -27,12 +31,12 @@ public final class da0 implements le0 {
     }
 
     @Override // defpackage.ne0
-    public final Object s(wf1 wf1Var, Object obj) {
-        return wf1Var.invoke(obj, this);
+    public final Object s(wf1 r1, Object r2) {
+        return r1.invoke(r2, this);
     }
 
     @Override // defpackage.ne0
-    public final ne0 u(me0 me0Var) {
-        return ya4.C(this, me0Var);
+    public final ne0 u(me0 r1) {
+        return ya4.C(this, r1);
     }
 }

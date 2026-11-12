@@ -7,9 +7,9 @@ public final class u04 {
     public final Class b;
     public final t04 c;
 
-    public u04(Class cls, Class cls2, t04 t04Var) {
-        this.a = cls;
-        this.b = cls2;
-        this.c = t04Var;
+    public u04(Class r1, Class r2, t04 r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 }

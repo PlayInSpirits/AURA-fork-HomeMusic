@@ -22,150 +22,175 @@ public final /* synthetic */ class un1 implements Runnable {
     public final /* synthetic */ Object q;
     public final /* synthetic */ Object r;
 
-    public /* synthetic */ un1(h62 h62Var, long j, Object obj, NsdServiceInfo nsdServiceInfo) {
+    public /* synthetic */ un1(h62 r2, long r3, Object r5, NsdServiceInfo r6) {
         this.n = 3;
-        this.p = h62Var;
-        this.o = j;
-        this.q = obj;
-        this.r = nsdServiceInfo;
+        this.p = r2;
+        this.o = r3;
+        this.q = r5;
+        this.r = r6;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        Object s14Var;
-        int i = this.n;
-        int i2 = R.string.lan_connection_error;
-        switch (i) {
-            case 0:
-                long j = this.o;
-                String str = (String) this.p;
-                Consumer consumer = (Consumer) this.q;
-                List list = (List) this.r;
-                if (j == n61.d()) {
-                    b00 b00Var = b00.a;
-                    if (h12.c(str, b00.a())) {
-                        consumer.accept(kb4.U(list));
-                        return;
-                    }
-                    return;
-                }
-                return;
-            case 1:
-                long j2 = this.o;
-                Exception exc = (Exception) this.p;
-                JSONObject jSONObject = (JSONObject) this.q;
-                gf1 gf1Var = (gf1) this.r;
-                if (u52.i == j2) {
-                    if (exc instanceof q52) {
-                        i2 = R.string.lan_queue_changed;
-                    }
-                    u52.b.k(v52.a(u52.c(), 0, 0, i2, 536739839));
-                    if (!h12.c(jSONObject.optString("command"), "queue_state")) {
-                        Handler handler = u52.a;
-                        u52.h(i2);
-                    }
-                    gf1Var.invoke();
-                    return;
-                }
-                return;
-            case 2:
-                h62 h62Var = (h62) this.q;
-                NsdServiceInfo nsdServiceInfo = (NsdServiceInfo) this.r;
-                String str2 = (String) this.p;
-                long j3 = this.o;
-                try {
-                    s14Var = h62Var.F0.a(nsdServiceInfo, str2);
-                } catch (Throwable th) {
-                    s14Var = new s14(th);
-                }
-                h62Var.D0.post(new un1(h62Var, j3, s14Var, nsdServiceInfo));
-                return;
-            default:
-                h62 h62Var2 = (h62) this.p;
-                long j4 = this.o;
-                Object obj = this.q;
-                NsdServiceInfo nsdServiceInfo2 = (NsdServiceInfo) this.r;
-                if (h62Var2.l0(j4)) {
-                    h62Var2.O0 = false;
-                    if (!(obj instanceof s14)) {
-                        y42 y42Var = (y42) obj;
-                        String str3 = y42Var.a;
-                        boolean z = LanReceiverService.y;
-                        Context context = h62Var2.t0;
-                        if (context == null) {
-                            h12.Q("app");
-                            throw null;
-                        }
-                        SharedPreferences sharedPreferences = context.getSharedPreferences("lan-playback", 0);
-                        Set<String> stringSet = sharedPreferences.getStringSet("receivers", z01.n);
-                        stringSet.getClass();
-                        boolean zContains = stringSet.contains(str3);
-                        if (y42Var.c && zContains) {
-                            Context context2 = h62Var2.t0;
-                            if (context2 == null) {
-                                h12.Q("app");
-                                throw null;
-                            }
-                            u52.b(context2, nsdServiceInfo2, str3);
-                            h62Var2.X().finish();
-                        } else {
-                            vg2 vg2Var = new vg2(h62Var2.Z(), 0);
-                            vg2Var.p(R.string.lan_pair_title);
-                            vg2Var.a.f = h62Var2.t(R.string.lan_pair_compare, y42Var.b);
-                            f9 f9VarCreate = vg2Var.l(R.string.lan_pair_confirm, new vs1(sharedPreferences, y42Var, h62Var2, nsdServiceInfo2, 1)).j(android.R.string.cancel, null).create();
-                            h62Var2.U0 = null;
-                            f9 f9Var = h62Var2.K0;
-                            if (f9Var != null) {
-                                f9Var.dismiss();
-                            }
-                            h62Var2.K0 = f9VarCreate;
-                            f9VarCreate.show();
-                        }
-                    }
-                    Throwable thA = bb3.a(obj);
-                    if (thA != null) {
-                        LanConnectionFailure lanConnectionFailure = thA instanceof LanConnectionFailure ? (LanConnectionFailure) thA : null;
-                        r42 r42Var = lanConnectionFailure != null ? lanConnectionFailure.n : null;
-                        int i3 = r42Var == null ? -1 : d62.a[r42Var.ordinal()];
-                        if (i3 != -1) {
-                            if (i3 == 1) {
-                                i2 = R.string.lan_identity_error;
-                            } else if (i3 == 2) {
-                                i2 = R.string.lan_connect_error;
-                            } else if (i3 == 3) {
-                                i2 = R.string.lan_tls_error;
-                            } else if (i3 == 4) {
-                                i2 = R.string.lan_identity_mismatch;
-                            } else {
-                                if (i3 != 5) {
-                                    er1.n();
-                                    return;
-                                }
-                                i2 = R.string.lan_response_error;
-                            }
-                        }
-                        h62Var2.s0(i2);
-                        return;
-                    }
-                    return;
-                }
-                return;
-        }
+        int r0 = this.n;
+        int r1 = R.string.lan_connection_error;
+        switch(r0) {
+            case 0: goto L73;
+            case 1: goto L63;
+            case 2: goto L56;
+            default: goto L4;
+        };
+    L4:
+        h62 r6 = (h62) this.p;
+        long r3 = this.o;
+        Object r2 = this.q;
+        NsdServiceInfo r7 = (NsdServiceInfo) this.r;
+        if (r6.l0(r3) == false) goto L83;
+        r6.O0 = false;
+        r42 r9 = null;
+        if ((r2 instanceof s14) == true) goto L25;
+        y42 r5 = (y42) r2;
+        String r11 = r5.a;
+        boolean r4 = LanReceiverService.y;
+        Context r8 = r6.t0;
+        if (r8 == null) goto L23;
+        SharedPreferences r10 = r8.getSharedPreferences("lan-playback", 0);
+        Set<String> r12 = r10.getStringSet("receivers", z01.n);
+        r12.getClass();
+        boolean r13 = r12.contains(r11);
+        if (r5.c == false) goto L19;
+        if (r13 == false) goto L19;
+        Context r14 = r6.t0;
+        if (r14 == null) goto L17;
+        u52.b(r14, r7, r11);
+        r6.X().finish();
+        goto L25
+    L17:
+        h12.Q("app");
+        throw null;
+    L19:
+        vg2 r15 = new vg2(r6.Z(), 0);
+        r15.p(R.string.lan_pair_title);
+        r15.a.f = r6.t(R.string.lan_pair_compare, new Object[]{r5.b});
+        f9 r16 = r15.l(R.string.lan_pair_confirm, new vs1(r10, r5, r6, r7, 1)).j(android.R.string.cancel, null).create();
+        r6.U0 = null;
+        f9 r17 = r6.K0;
+        if (r17 == null) goto L22;
+        r17.dismiss();
+    L22:
+        r6.K0 = r16;
+        r16.show();
+        goto L25
+    L23:
+        h12.Q("app");
+        throw null;
+    L25:
+        Throwable r18 = bb3.a(r2);
+        if (r18 != null) goto L28;
+        return;
+    L28:
+        if ((r18 instanceof LanConnectionFailure) == false) goto L30;
+        LanConnectionFailure r19 = (LanConnectionFailure) r18;
+    L31:
+        if (r19 == null) goto L34;
+        r9 = r19.n;
+    L34:
+        if (r9 != null) goto L36;
+        int r20 = -1;
+    L37:
+        if (r20 != (-1)) goto L39;
+    L54:
+        r6.s0(r1);
+        return;
+    L39:
+        if (r20 != 1) goto L41;
+        r1 = R.string.lan_identity_error;
+        goto L54
+    L41:
+        if (r20 != 2) goto L43;
+        r1 = R.string.lan_connect_error;
+        goto L54
+    L43:
+        if (r20 != 3) goto L45;
+        r1 = R.string.lan_tls_error;
+        goto L54
+    L45:
+        if (r20 != 4) goto L47;
+        r1 = R.string.lan_identity_mismatch;
+        goto L54
+    L47:
+        if (r20 != 5) goto L49;
+        r1 = R.string.lan_response_error;
+        goto L54
+    L49:
+        er1.n();
+        return;
+    L36:
+        r20 = d62.a[r9.ordinal()];
+        goto L37
+    L30:
+        r19 = null;
+        goto L31
+    L83:
+        return;
+    L56:
+        h62 r21 = (h62) this.q;
+        NsdServiceInfo r22 = (NsdServiceInfo) this.r;
+        String r23 = (String) this.p;
+        long r24 = this.o;
+        Object r25 = r21.F0.a(r22, r23);     // Catch: Throwable -> L59
+    L61:
+        r21.D0.post(new un1(r21, r24, r25, r22));
+        return;
+    L59:
+        th = move-exception;
+        r25 = new s14(th);
+        goto L61
+    L63:
+        long r26 = this.o;
+        Exception r27 = (Exception) this.p;
+        JSONObject r28 = (JSONObject) this.q;
+        gf1 r110 = (gf1) this.r;
+        if (u52.i == r26) goto L66;
+        return;
+    L66:
+        if ((r27 instanceof q52) == false) goto L68;
+        r1 = R.string.lan_queue_changed;
+    L68:
+        u52.b.k(v52.a(u52.c(), 0, 0, r1, 536739839));
+        if (h12.c(r28.optString("command"), "queue_state") == true) goto L71;
+        Handler r29 = u52.a;
+        u52.h(r1);
+    L71:
+        r110.invoke();
+        return;
+    L73:
+        long r30 = this.o;
+        String r31 = (String) this.p;
+        Consumer r32 = (Consumer) this.q;
+        List r111 = (List) this.r;
+        if (r30 != n61.d()) goto L85;
+        b00 r33 = b00.a;
+        if (h12.c(r31, b00.a()) == false) goto L86;
+        r32.accept(kb4.U(r111));
+        return;
+    L86:
+        return;
     }
 
-    public /* synthetic */ un1(long j, Serializable serializable, Object obj, Object obj2, int i) {
-        this.n = i;
-        this.o = j;
-        this.p = serializable;
-        this.q = obj;
-        this.r = obj2;
+    public /* synthetic */ un1(long r1, Serializable r3, Object r4, Object r5, int r6) {
+        this.n = r6;
+        this.o = r1;
+        this.p = r3;
+        this.q = r4;
+        this.r = r5;
     }
 
-    public /* synthetic */ un1(h62 h62Var, NsdServiceInfo nsdServiceInfo, String str, long j) {
+    public /* synthetic */ un1(h62 r2, NsdServiceInfo r3, String r4, long r5) {
         this.n = 2;
-        this.q = h62Var;
-        this.r = nsdServiceInfo;
-        this.p = str;
-        this.o = j;
+        this.q = r2;
+        this.r = r3;
+        this.p = r4;
+        this.o = r5;
     }
 }

@@ -2,7 +2,6 @@ package defpackage;
 
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
@@ -32,23 +31,28 @@ public final class ix0 extends h11 {
     public ValueAnimator q;
     public ValueAnimator r;
 
-    public ix0(g11 g11Var) {
-        super(g11Var);
+    public ix0(g11 r4) {
+        super(r4);
         this.i = new p6(13, this);
         this.j = new p30(2, this);
         this.k = new cn(8, this);
         this.o = Long.MAX_VALUE;
-        this.f = g12.N(g11Var.getContext(), R.attr.motionDurationShort3, 67);
-        this.e = g12.N(g11Var.getContext(), R.attr.motionDurationShort3, 50);
-        this.g = g12.O(g11Var.getContext(), R.attr.motionEasingLinearInterpolator, yd.a);
+        this.f = g12.N(r4.getContext(), R.attr.motionDurationShort3, 67);
+        this.e = g12.N(r4.getContext(), R.attr.motionDurationShort3, 50);
+        this.g = g12.O(r4.getContext(), R.attr.motionEasingLinearInterpolator, yd.a);
     }
 
     @Override // defpackage.h11
     public final void a() {
-        if (this.p.isTouchExplorationEnabled() && this.h.getInputType() != 0 && !this.d.hasFocus()) {
-            this.h.dismissDropDown();
-        }
+        if (this.p.isTouchExplorationEnabled() == true) goto L5;
+    L9:
         this.h.post(new a0(26, this));
+        return;
+    L5:
+        if (this.h.getInputType() == 0) goto L9;
+        if (this.d.hasFocus() == true) goto L9;
+        this.h.dismissDropDown();
+        goto L9
     }
 
     @Override // defpackage.h11
@@ -77,8 +81,11 @@ public final class ix0 extends h11 {
     }
 
     @Override // defpackage.h11
-    public final boolean i(int i) {
-        return i != 0;
+    public final boolean i(int r1) {
+        if (r1 == 0) goto L5;
+        return true;
+    L5:
+        return false;
     }
 
     @Override // defpackage.h11
@@ -87,110 +94,133 @@ public final class ix0 extends h11 {
     }
 
     @Override // defpackage.h11
-    public final void l(EditText editText) {
-        if (!(editText instanceof AutoCompleteTextView)) {
-            tb4.e("EditText needs to be an AutoCompleteTextView if an Exposed Dropdown Menu is being used.");
-            return;
-        }
-        AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) editText;
-        this.h = autoCompleteTextView;
-        autoCompleteTextView.setOnTouchListener(new s7(4, this));
-        this.h.setOnDismissListener(new AutoCompleteTextView.OnDismissListener() { // from class: hx0
-            @Override // android.widget.AutoCompleteTextView.OnDismissListener
-            public final void onDismiss() {
-                ix0 ix0Var = this.a;
-                ix0Var.m = true;
-                ix0Var.o = System.currentTimeMillis();
-                ix0Var.s(false);
-            }
-        });
+    public final void l(EditText r4) {
+        if ((r4 instanceof AutoCompleteTextView) == false) goto L12;
+        AutoCompleteTextView r0 = (AutoCompleteTextView) r4;
+        this.h = r0;
+        r0.setOnTouchListener(new s7(4, this));
+        this.h.setOnDismissListener(new hx0(this));
         this.h.setThreshold(0);
-        TextInputLayout textInputLayout = this.a;
-        textInputLayout.setErrorIconDrawable((Drawable) null);
-        if (editText.getInputType() == 0 && this.p.isTouchExplorationEnabled()) {
-            WeakHashMap weakHashMap = j65.a;
-            this.d.setImportantForAccessibility(2);
-        }
-        textInputLayout.setEndIconVisible(true);
+        TextInputLayout r1 = this.a;
+        r1.setErrorIconDrawable(null);
+        if (r4.getInputType() == 0) goto L8;
+    L10:
+        r1.setEndIconVisible(true);
+        return;
+    L8:
+        if (this.p.isTouchExplorationEnabled() == false) goto L10;
+        WeakHashMap r5 = j65.a;
+        this.d.setImportantForAccessibility(2);
+        goto L10
+    L12:
+        tb4.e("EditText needs to be an AutoCompleteTextView if an Exposed Dropdown Menu is being used.");
     }
 
     @Override // defpackage.h11
-    public final void m(v3 v3Var) {
-        if (this.h.getInputType() == 0) {
-            v3Var.i(Spinner.class.getName());
-        }
-        if (Build.VERSION.SDK_INT >= 26 ? v3Var.a.isShowingHintText() : v3Var.e(4)) {
-            v3Var.l(null);
-        }
+    public final void m(v3 r2) {
+        if (this.h.getInputType() != 0) goto L7;
+        r2.i(Spinner.class.getName());
+    L7:
+        if (Build.VERSION.SDK_INT < 26) goto L9;
+        boolean r1 = j3.B(r2.a);
+    L10:
+        if (r1 == false) goto L13;
+        r2.l(null);
+        return;
+    L13:
+        return;
+    L9:
+        r1 = r2.e(4);
+        goto L10
     }
 
     @Override // defpackage.h11
-    public final void n(AccessibilityEvent accessibilityEvent) {
-        if (this.p.isEnabled() && this.h.getInputType() == 0) {
-            boolean z = accessibilityEvent.getEventType() == 32768 && this.n && !this.h.isPopupShowing();
-            if (accessibilityEvent.getEventType() == 1 || z) {
-                t();
-                this.m = true;
-                this.o = System.currentTimeMillis();
-            }
-        }
+    public final void n(AccessibilityEvent r4) {
+        if (this.p.isEnabled() == true) goto L5;
+        return;
+    L5:
+        if (this.h.getInputType() == 0) goto L8;
+        return;
+    L8:
+        if (r4.getEventType() == 32768) goto L10;
+    L14:
+        boolean r0 = false;
+    L16:
+        if (r4.getEventType() == 1) goto L18;
+        if (r0 == true) goto L18;
+        return;
+    L18:
+        t();
+        this.m = true;
+        this.o = System.currentTimeMillis();
+        return;
+    L10:
+        if (this.n == false) goto L14;
+        if (this.h.isPopupShowing() == true) goto L14;
+        r0 = true;
+        goto L16
     }
 
     @Override // defpackage.h11
     public final void q() {
-        int i = 2;
-        ValueAnimator valueAnimatorOfFloat = ValueAnimator.ofFloat(0.0f, 1.0f);
-        TimeInterpolator timeInterpolator = this.g;
-        valueAnimatorOfFloat.setInterpolator(timeInterpolator);
-        valueAnimatorOfFloat.setDuration(this.f);
-        valueAnimatorOfFloat.addUpdateListener(new cn0(i, this));
-        this.r = valueAnimatorOfFloat;
-        ValueAnimator valueAnimatorOfFloat2 = ValueAnimator.ofFloat(1.0f, 0.0f);
-        valueAnimatorOfFloat2.setInterpolator(timeInterpolator);
-        valueAnimatorOfFloat2.setDuration(this.e);
-        valueAnimatorOfFloat2.addUpdateListener(new cn0(i, this));
-        this.q = valueAnimatorOfFloat2;
-        valueAnimatorOfFloat2.addListener(new l4(4, this));
+        int r0 = 2;
+        ValueAnimator r1 = ValueAnimator.ofFloat(new float[]{0.0f, 1.0f});
+        TimeInterpolator r2 = this.g;
+        r1.setInterpolator(r2);
+        r1.setDuration(this.f);
+        r1.addUpdateListener(new cn0(r0, this));
+        this.r = r1;
+        ValueAnimator r3 = ValueAnimator.ofFloat(new float[]{1.0f, 0.0f});
+        r3.setInterpolator(r2);
+        r3.setDuration(this.e);
+        r3.addUpdateListener(new cn0(r0, this));
+        this.q = r3;
+        r3.addListener(new l4(4, this));
         this.p = (AccessibilityManager) this.c.getSystemService("accessibility");
     }
 
     @Override // defpackage.h11
     public final void r() {
-        AutoCompleteTextView autoCompleteTextView = this.h;
-        if (autoCompleteTextView != null) {
-            autoCompleteTextView.setOnTouchListener(null);
-            this.h.setOnDismissListener(null);
-        }
+        AutoCompleteTextView r0 = this.h;
+        if (r0 == null) goto L6;
+        r0.setOnTouchListener(null);
+        this.h.setOnDismissListener(null);
+        return;
     }
 
-    public final void s(boolean z) {
-        if (this.n != z) {
-            this.n = z;
-            this.r.cancel();
-            this.q.start();
-        }
+    public final void s(boolean r2) {
+        if (this.n == r2) goto L6;
+        this.n = r2;
+        this.r.cancel();
+        this.q.start();
+        return;
     }
 
     public final void t() {
-        if (this.h == null) {
-            return;
-        }
-        long jCurrentTimeMillis = System.currentTimeMillis() - this.o;
-        if (jCurrentTimeMillis < 0 || jCurrentTimeMillis > 300) {
-            this.m = false;
-        }
-        if (this.m) {
-            this.m = false;
-            return;
-        }
+        if (this.h != null) goto L5;
+        return;
+    L5:
+        long r0 = System.currentTimeMillis() - this.o;
+        if (r0 >= 0) goto L8;
+    L9:
+        this.m = false;
+    L11:
+        if (this.m == true) goto L18;
         s(!this.n);
-        boolean z = this.n;
-        AutoCompleteTextView autoCompleteTextView = this.h;
-        if (!z) {
-            autoCompleteTextView.dismissDropDown();
-        } else {
-            autoCompleteTextView.requestFocus();
-            this.h.showDropDown();
-        }
+        boolean r1 = this.n;
+        AutoCompleteTextView r2 = this.h;
+        if (r1 == false) goto L16;
+        r2.requestFocus();
+        this.h.showDropDown();
+        return;
+    L16:
+        r2.dismissDropDown();
+        return;
+    L18:
+        this.m = false;
+        return;
+    L8:
+        if (r0 <= 300) goto L11;
+        goto L9
     }
 }

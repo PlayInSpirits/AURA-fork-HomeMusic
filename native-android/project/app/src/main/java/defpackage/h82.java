@@ -6,22 +6,25 @@ public final /* synthetic */ class h82 implements gf1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ lm0 o;
 
-    public /* synthetic */ h82(lm0 lm0Var, int i) {
-        this.n = i;
-        this.o = lm0Var;
+    public /* synthetic */ h82(lm0 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        int i = this.n;
-        lm0 lm0Var = this.o;
-        switch (i) {
-            case 0:
-                return Integer.valueOf(lm0Var.n());
-            case 1:
-                return Integer.valueOf(lm0Var.n());
-            default:
-                return Boolean.valueOf(lm0Var.k.a());
-        }
+        int r0 = this.n;
+        lm0 r1 = this.o;
+        switch(r0) {
+            case 0: goto L9;
+            case 1: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return Boolean.valueOf(r1.k.a());
+    L7:
+        return Integer.valueOf(r1.n());
+    L9:
+        return Integer.valueOf(r1.n());
     }
 }

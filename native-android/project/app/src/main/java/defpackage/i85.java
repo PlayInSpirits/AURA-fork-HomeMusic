@@ -3,7 +3,7 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class i85 {
-    public static final i85 k;
+    public static final i85 k = null;
     public final float a;
     public final float b;
     public final float c;
@@ -16,56 +16,59 @@ public final class i85 {
     public final float j;
 
     static {
-        float[] fArr = gi1.c;
-        float fC0 = (float) ((((double) gi1.c0()) * 63.66197723675813d) / 100.0d);
-        float[][] fArr2 = gi1.a;
-        float f = fArr[0];
-        float[] fArr3 = fArr2[0];
-        float f2 = fArr3[0] * f;
-        float f3 = fArr[1];
-        float f4 = (fArr3[1] * f3) + f2;
-        float f5 = fArr[2];
-        float f6 = (fArr3[2] * f5) + f4;
-        float[] fArr4 = fArr2[1];
-        float f7 = (fArr4[2] * f5) + (fArr4[1] * f3) + (fArr4[0] * f);
-        float[] fArr5 = fArr2[2];
-        float f8 = (f5 * fArr5[2]) + (f3 * fArr5[1]) + (f * fArr5[0]);
-        float fExp = (1.0f - (((float) Math.exp(((-fC0) - 42.0f) / 92.0f)) * 0.2777778f)) * 1.0f;
-        double d = fExp;
-        if (d > 1.0d) {
-            fExp = 1.0f;
-        } else if (d < 0.0d) {
-            fExp = 0.0f;
-        }
-        float[] fArr6 = {(((100.0f / f6) * fExp) + 1.0f) - fExp, (((100.0f / f7) * fExp) + 1.0f) - fExp, (((100.0f / f8) * fExp) + 1.0f) - fExp};
-        float f9 = 1.0f / ((5.0f * fC0) + 1.0f);
-        float f10 = f9 * f9 * f9 * f9;
-        float f11 = 1.0f - f10;
-        float fCbrt = (0.1f * f11 * f11 * ((float) Math.cbrt(((double) fC0) * 5.0d))) + (f10 * fC0);
-        float fC1 = gi1.c0() / fArr[1];
-        double d2 = fC1;
-        float fSqrt = ((float) Math.sqrt(d2)) + 1.48f;
-        float fPow = 0.725f / ((float) Math.pow(d2, 0.2d));
-        float[] fArr7 = {(float) Math.pow(((double) ((fArr6[0] * fCbrt) * f6)) / 100.0d, 0.42d), (float) Math.pow(((double) ((fArr6[1] * fCbrt) * f7)) / 100.0d, 0.42d), (float) Math.pow(((double) ((fArr6[2] * fCbrt) * f8)) / 100.0d, 0.42d)};
-        float f12 = fArr7[0];
-        float f13 = (f12 * 400.0f) / (f12 + 27.13f);
-        float f14 = fArr7[1];
-        float f15 = (f14 * 400.0f) / (f14 + 27.13f);
-        float f16 = fArr7[2];
-        float[] fArr8 = {f13, f15, (400.0f * f16) / (f16 + 27.13f)};
-        k = new i85(fC1, ((fArr8[2] * 0.05f) + (fArr8[0] * 2.0f) + fArr8[1]) * fPow, fPow, fPow, 0.69f, 1.0f, fArr6, fCbrt, (float) Math.pow(fCbrt, 0.25d), fSqrt);
+        float[] r0 = gi1.c;
+        float r1 = (float) ((((double) gi1.c0()) * 63.66197723675813d) / 100.0d);
+        float[][] r2 = gi1.a;
+        float r6 = r0[0];
+        float[] r7 = r2[0];
+        float r8 = r7[0] * r6;
+        float r10 = r0[1];
+        float r11 = (r7[1] * r10) + r8;
+        float r12 = r0[2];
+        float r9 = (r7[2] * r12) + r11;
+        float[] r13 = r2[1];
+        float r14 = (r13[2] * r12) + ((r13[1] * r10) + (r13[0] * r6));
+        float[] r3 = r2[2];
+        float r15 = (r12 * r3[2]) + ((r10 * r3[1]) + (r6 * r3[0]));
+        float r4 = (1.0f - (((float) Math.exp(((-r1) - 42.0f) / 92.0f)) * 0.2777778f)) * 1.0f;
+        double r16 = r4;
+        if (r16 <= 1.0d) goto L6;
+        r4 = 1.0f;
+    L8:
+        float[] r17 = {(((100.0f / r9) * r4) + 1.0f) - r4, (((100.0f / r14) * r4) + 1.0f) - r4, (((100.0f / r15) * r4) + 1.0f) - r4};
+        float r18 = 1.0f / ((5.0f * r1) + 1.0f);
+        float r19 = ((r18 * r18) * r18) * r18;
+        float r20 = 1.0f - r19;
+        float r110 = (((0.1f * r20) * r20) * ((float) Math.cbrt(((double) r1) * 5.0d))) + (r19 * r1);
+        float r111 = gi1.c0() / r0[1];
+        double r5 = r111;
+        float r23 = ((float) Math.sqrt(r5)) + 1.48f;
+        float r112 = 0.725f / ((float) Math.pow(r5, 0.2d));
+        float[] r21 = {(float) Math.pow(((double) ((r17[0] * r110) * r9)) / 100.0d, 0.42d), (float) Math.pow(((double) ((r17[1] * r110) * r14)) / 100.0d, 0.42d), (float) Math.pow(((double) ((r17[2] * r110) * r15)) / 100.0d, 0.42d)};
+        float r22 = r21[0];
+        float r24 = (r22 * 400.0f) / (r22 + 27.13f);
+        float r25 = r21[1];
+        float r26 = (r25 * 400.0f) / (r25 + 27.13f);
+        float r27 = r21[2];
+        float[] r28 = {r24, r26, (400.0f * r27) / (r27 + 27.13f)};
+        k = new i85(r111, ((r28[2] * 0.05f) + ((r28[0] * 2.0f) + r28[1])) * r112, r112, r112, 0.69f, 1.0f, r17, r110, (float) Math.pow(r110, 0.25d), r23);
+        return;
+    L6:
+        if (r16 >= 0.0d) goto L8;
+        r4 = 0.0f;
+        goto L8
     }
 
-    public i85(float f, float f2, float f3, float f4, float f5, float f6, float[] fArr, float f7, float f8, float f9) {
-        this.f = f;
-        this.a = f2;
-        this.b = f3;
-        this.c = f4;
-        this.d = f5;
-        this.e = f6;
-        this.g = fArr;
-        this.h = f7;
-        this.i = f8;
-        this.j = f9;
+    public i85(float r1, float r2, float r3, float r4, float r5, float r6, float[] r7, float r8, float r9, float r10) {
+        this.f = r1;
+        this.a = r2;
+        this.b = r3;
+        this.c = r4;
+        this.d = r5;
+        this.e = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
+        this.j = r10;
     }
 }

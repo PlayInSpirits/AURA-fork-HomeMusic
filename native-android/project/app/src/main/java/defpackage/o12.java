@@ -7,9 +7,9 @@ public final class o12 {
     public int b;
     public Object c;
 
-    public o12(lv3 lv3Var, int i, Object obj) {
-        this.a = lv3Var;
-        this.b = i;
-        this.c = obj;
+    public o12(lv3 r1, int r2, Object r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 }

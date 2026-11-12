@@ -7,13 +7,19 @@ import java.util.Iterator;
 public abstract class o15 implements Iterator {
     public final /* synthetic */ int n;
 
+    public /* synthetic */ o15(int r1) {
+        this.n = r1;
+    }
+
     @Override // java.util.Iterator
     public final void remove() {
-        switch (this.n) {
-            case 0:
-                throw new UnsupportedOperationException();
-            default:
-                throw new UnsupportedOperationException();
-        }
+        switch(this.n) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        throw new UnsupportedOperationException();
+    L7:
+        throw new UnsupportedOperationException();
     }
 }

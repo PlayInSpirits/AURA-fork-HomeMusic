@@ -21,6 +21,7 @@ import defpackage.bj2;
 import defpackage.bj3;
 import defpackage.bl2;
 import defpackage.bq4;
+import defpackage.c04;
 import defpackage.cb4;
 import defpackage.e75;
 import defpackage.f35;
@@ -47,65 +48,78 @@ public class PodcastChannelBottomSheetDialog extends zt implements View.OnClickL
     public PodcastChannel C0;
     public bl2 D0;
 
+    public PodcastChannelBottomSheetDialog() {
+    }
+
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View viewInflate = layoutInflater.inflate(R.layout.bottom_sheet_podcast_channel_dialog, viewGroup, false);
-        Bundle bundle2 = this.s;
-        if (bundle2 != null) {
-            PodcastChannel podcastChannel = (PodcastChannel) bundle2.getParcelable("PODCAST_CHANNEL_OBJECT");
-            this.C0 = podcastChannel;
-            if (podcastChannel != null) {
-                nc1 nc1VarX = X();
-                e75 e75VarD = nc1VarX.d();
-                b75 b75VarR = gh0.r(nc1VarX);
-                bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
-                i30 i30VarA = kx3.a(um3.class);
-                String strB = i30VarA.b();
-                if (strB == null) {
-                    kf2.n("Local and anonymous classes can not be ViewModels");
-                    return null;
-                }
-                um3 um3Var = (um3) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-                this.B0 = um3Var;
-                um3Var.d = this.C0;
-                ImageView imageView = (ImageView) viewInflate.findViewById(R.id.podcast_cover_image_view);
-                Context contextZ = Z();
-                String coverArtId = this.B0.d.getCoverArtId();
-                vz3 vz3VarT = b11.g(contextZ, coverArtId, 7, a.c(contextZ), coverArtId != null ? wg0.b(ud3.t(), coverArtId) : null).T(xv0.b());
-                if (ud3.R()) {
-                    vz3VarT = (vz3) vz3VarT.l();
-                }
-                vz3VarT.K(imageView);
-                ((TextView) viewInflate.findViewById(R.id.podcast_title_text_view)).setText(this.B0.d.getTitle());
-                ((TextView) viewInflate.findViewById(R.id.delete_text_view)).setOnClickListener(new bj3(9, this));
-                return viewInflate;
-            }
-        }
+    public final View H(LayoutInflater r5, ViewGroup r6, Bundle r7) {
+        View r8 = r5.inflate(R.layout.bottom_sheet_podcast_channel_dialog, r6, false);
+        Bundle r9 = this.s;
+        if (r9 == null) goto L19;
+        PodcastChannel r10 = (PodcastChannel) r9.getParcelable("PODCAST_CHANNEL_OBJECT");
+        this.C0 = r10;
+        if (r10 == null) goto L19;
+        nc1 r11 = X();
+        e75 r12 = r11.d();
+        b75 r0 = gh0.r(r11);
+        bq4 r1 = new bq4(r12, r0, b11.e(r11, r0));
+        i30 r13 = kx3.a(um3.class);
+        String r14 = r13.b();
+        String r2 = null;
+        if (r14 == null) goto L17;
+        um3 r15 = (um3) r1.l(r13, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r14));
+        this.B0 = r15;
+        r15.d = this.C0;
+        ImageView r16 = (ImageView) r8.findViewById(R.id.podcast_cover_image_view);
+        Context r17 = Z();
+        String r3 = this.B0.d.getCoverArtId();
+        c04 r4 = a.c(r17);
+        if (r3 == null) goto L12;
+        r2 = wg0.b(ud3.t(), r3);
+    L12:
+        vz3 r18 = b11.g(r17, r3, 7, r4, r2).T(xv0.b());
+        if (ud3.R() == false) goto L15;
+        r18 = (vz3) r18.l();
+    L15:
+        r18.K(r16);
+        ((TextView) r8.findViewById(R.id.podcast_title_text_view)).setText(this.B0.d.getTitle());
+        ((TextView) r8.findViewById(R.id.delete_text_view)).setOnClickListener(new bj3(9, this));
+        return r8;
+    L17:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L19:
         n0();
-        return viewInflate;
+        return r8;
     }
 
     @Override // defpackage.pp0, defpackage.kc1
     public final void R() {
         super.R();
-        if (this.C0 != null) {
-            Context contextZ = Z();
-            cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
-            Bundle bundle = Bundle.EMPTY;
-            aj2 aj2Var = new aj2();
-            Looper looperX = f35.x();
-            bl2 bl2Var = new bl2(looperX);
-            b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, cb4Var.a.e() ? new xc5(4, new fi0(new x7(contextZ))) : null), new Handler(looperX));
-            this.D0 = bl2Var;
-        }
+        if (this.C0 == null) goto L11;
+        Context r2 = Z();
+        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
+        Bundle r4 = Bundle.EMPTY;
+        aj2 r5 = new aj2();
+        Looper r6 = f35.x();
+        bl2 r7 = new bl2(r6);
+        if (r3.a.e() == false) goto L8;
+        xc5 r0 = new xc5(4, new fi0(new x7(r2)));
+    L9:
+        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
+        this.D0 = r7;
+        return;
+    L8:
+        r0 = null;
+        goto L9
     }
 
     @Override // defpackage.pp0, defpackage.kc1
     public final void S() {
-        bl2 bl2Var = this.D0;
-        if (bl2Var != null) {
-            sk2.Z0(bl2Var);
-        }
+        bl2 r0 = this.D0;
+        if (r0 == null) goto L5;
+        sk2.Z0(r0);
+    L5:
         super.S();
     }
 }

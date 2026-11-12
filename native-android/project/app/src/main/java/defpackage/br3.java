@@ -5,10 +5,9 @@ package defpackage;
 public final class br3 extends xb1 {
     public final /* synthetic */ hr3 b;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public br3(hr3 hr3Var, m84 m84Var) {
-        super(m84Var);
-        this.b = hr3Var;
+    public br3(hr3 r1, m84 r2) {
+        this.b = r1;
+        super(r2);
     }
 
     @Override // defpackage.xb1, defpackage.m84

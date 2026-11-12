@@ -8,31 +8,37 @@ public final class wx3 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ xx3 o;
 
-    public /* synthetic */ wx3(xx3 xx3Var, int i) {
-        this.n = i;
-        this.o = xx3Var;
+    public /* synthetic */ wx3(xx3 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        xx3 xx3Var = this.o;
-        switch (i) {
-            case 0:
-                SparseArray sparseArray = xx3Var.h;
-                int size = sparseArray.size();
-                for (int i2 = 0; i2 < size; i2++) {
-                    ((zx3) sparseArray.valueAt(i2)).getClass();
-                    zx3.a(null, null);
-                }
-                sparseArray.clear();
-                break;
-            default:
-                cy3 cy3Var = xx3Var.i;
-                if (cy3Var.A == xx3Var) {
-                    cy3Var.j();
-                }
-                break;
-        }
+        int r0 = this.n;
+        xx3 r3 = this.o;
+        switch(r0) {
+            case 0: goto L8;
+            default: goto L4;
+        };
+    L4:
+        cy3 r1 = r3.i;
+        if (r1.A != r3) goto L14;
+        r1.j();
+        return;
+    L14:
+        return;
+    L8:
+        SparseArray r4 = r3.h;
+        int r2 = r4.size();
+        int r5 = 0;
+    L9:
+        if (r5 >= r2) goto L11;
+        ((zx3) r4.valueAt(r5)).getClass();
+        zx3.a(null, null);
+        r5 = r5 + 1;
+        goto L9
+    L11:
+        r4.clear();
     }
 }

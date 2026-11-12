@@ -4,57 +4,60 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class e2 extends ji2 {
     @Override // defpackage.ji2
-    public final void B(f2 f2Var, f2 f2Var2) {
-        f2Var.b = f2Var2;
+    public final void B(f2 r1, f2 r2) {
+        r1.b = r2;
     }
 
     @Override // defpackage.ji2
-    public final void C(f2 f2Var, Thread thread) {
-        f2Var.a = thread;
+    public final void C(f2 r1, Thread r2) {
+        r1.a = r2;
     }
 
     @Override // defpackage.ji2
-    public final boolean d(g2 g2Var, c2 c2Var, c2 c2Var2) {
-        synchronized (g2Var) {
-            try {
-                if (g2Var.o != c2Var) {
-                    return false;
-                }
-                g2Var.o = c2Var2;
-                return true;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+    public final boolean d(g2 r1, c2 r2, c2 r3) {
+        monitor-enter(r1);
+    L8:
+        th = move-exception;
+        throw th;
+    L4:
+        if (r1.o != r2) goto L11;
+        r1.o = r3;     // Catch: Throwable -> L8
+        monitor-exit(r1);     // Catch: Throwable -> L8
+        return true;
+    L11:
+        monitor-exit(r1);     // Catch: Throwable -> L8
+        return false;
     }
 
     @Override // defpackage.ji2
-    public final boolean e(g2 g2Var, Object obj, Object obj2) {
-        synchronized (g2Var) {
-            try {
-                if (g2Var.n != obj) {
-                    return false;
-                }
-                g2Var.n = obj2;
-                return true;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+    public final boolean e(g2 r1, Object r2, Object r3) {
+        monitor-enter(r1);
+    L8:
+        th = move-exception;
+        throw th;
+    L4:
+        if (r1.n != r2) goto L11;
+        r1.n = r3;     // Catch: Throwable -> L8
+        monitor-exit(r1);     // Catch: Throwable -> L8
+        return true;
+    L11:
+        monitor-exit(r1);     // Catch: Throwable -> L8
+        return false;
     }
 
     @Override // defpackage.ji2
-    public final boolean f(g2 g2Var, f2 f2Var, f2 f2Var2) {
-        synchronized (g2Var) {
-            try {
-                if (g2Var.p != f2Var) {
-                    return false;
-                }
-                g2Var.p = f2Var2;
-                return true;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+    public final boolean f(g2 r1, f2 r2, f2 r3) {
+        monitor-enter(r1);
+    L8:
+        th = move-exception;
+        throw th;
+    L4:
+        if (r1.p != r2) goto L11;
+        r1.p = r3;     // Catch: Throwable -> L8
+        monitor-exit(r1);     // Catch: Throwable -> L8
+        return true;
+    L11:
+        monitor-exit(r1);     // Catch: Throwable -> L8
+        return false;
     }
 }

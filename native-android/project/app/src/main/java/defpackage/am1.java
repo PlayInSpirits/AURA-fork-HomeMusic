@@ -8,28 +8,31 @@ public final /* synthetic */ class am1 implements e93 {
     public final /* synthetic */ int n;
     public final /* synthetic */ HiddenActivity o;
 
-    public /* synthetic */ am1(HiddenActivity hiddenActivity, int i) {
-        this.n = i;
-        this.o = hiddenActivity;
+    public /* synthetic */ am1(HiddenActivity r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.e93
-    public final void a(Exception exc) {
-        int i = this.n;
-        HiddenActivity hiddenActivity = this.o;
-        switch (i) {
-            case 0:
-                HiddenActivity.handleCreatePublicKeyCredential$lambda$2$lambda$1(hiddenActivity, exc);
-                break;
-            case 1:
-                HiddenActivity.handleCreatePassword$lambda$14$lambda$13(hiddenActivity, exc);
-                break;
-            case 2:
-                HiddenActivity.handleGetSignInIntent$lambda$6$lambda$5(hiddenActivity, exc);
-                break;
-            default:
-                HiddenActivity.handleBeginSignIn$lambda$10$lambda$9(hiddenActivity, exc);
-                break;
-        }
+    public final void a(Exception r2) {
+        int r0 = this.n;
+        HiddenActivity r1 = this.o;
+        switch(r0) {
+            case 0: goto L10;
+            case 1: goto L8;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        HiddenActivity.m15$r8$lambda$6h9SR8cK3MImADhkyfzalXd_1Y(r1, r2);
+        return;
+    L6:
+        HiddenActivity.m16$r8$lambda$VEpGZlRc13jsiBO5ww6UDWZp4(r1, r2);
+        return;
+    L8:
+        HiddenActivity.m17$r8$lambda$qMAU_l0G9_KRnfItO3T9FPPDo4(r1, r2);
+        return;
+    L10:
+        HiddenActivity.$r8$lambda$piSmIePRzcbBAl0LmfpYTsqgRKc(r1, r2);
     }
 }

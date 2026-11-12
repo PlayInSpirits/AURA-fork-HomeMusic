@@ -12,29 +12,31 @@ public final class v51 extends Drawable {
     public final float[] c;
     public float d;
 
-    public v51(Drawable drawable, Drawable drawable2) {
-        this.a = drawable.getConstantState().newDrawable().mutate();
-        Drawable drawableMutate = drawable2.getConstantState().newDrawable().mutate();
-        this.b = drawableMutate;
-        drawableMutate.setAlpha(0);
+    public v51(Drawable r1, Drawable r2) {
+        this.a = r1.getConstantState().newDrawable().mutate();
+        Drawable r3 = r2.getConstantState().newDrawable().mutate();
+        this.b = r3;
+        r3.setAlpha(0);
         this.c = new float[2];
     }
 
-    public final void a(float f) {
-        if (this.d != f) {
-            this.d = f;
-            float[] fArr = this.c;
-            zz1.g(f, fArr);
-            this.a.setAlpha((int) (fArr[0] * 255.0f));
-            this.b.setAlpha((int) (fArr[1] * 255.0f));
-            invalidateSelf();
-        }
+    public final void a(float r4) {
+        if (this.d == r4) goto L6;
+        this.d = r4;
+        float[] r0 = this.c;
+        zz1.g(r4, r0);
+        int r5 = (int) (r0[0] * 255.0f);
+        this.a.setAlpha(r5);
+        int r6 = (int) (r0[1] * 255.0f);
+        this.b.setAlpha(r6);
+        invalidateSelf();
+        return;
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void draw(Canvas canvas) {
-        this.a.draw(canvas);
-        this.b.draw(canvas);
+    public final void draw(Canvas r2) {
+        this.a.draw(r2);
+        this.b.draw(r2);
     }
 
     @Override // android.graphics.drawable.Drawable
@@ -64,40 +66,56 @@ public final class v51 extends Drawable {
 
     @Override // android.graphics.drawable.Drawable
     public final boolean isStateful() {
-        return this.a.isStateful() || this.b.isStateful();
+        if (this.a.isStateful() == false) goto L5;
+        return true;
+    L5:
+        if (this.b.isStateful() == true) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setAlpha(int i) {
-        float f = this.d;
-        Drawable drawable = this.b;
-        Drawable drawable2 = this.a;
-        if (f <= 0.5f) {
-            drawable2.setAlpha(i);
-            drawable.setAlpha(0);
-        } else {
-            drawable2.setAlpha(0);
-            drawable.setAlpha(i);
-        }
+    public final void setAlpha(int r5) {
+        float r0 = this.d;
+        Drawable r2 = this.b;
+        Drawable r3 = this.a;
+        if (r0 > 0.5f) goto L5;
+        r3.setAlpha(r5);
+        r2.setAlpha(0);
+    L6:
+        invalidateSelf();
+        return;
+    L5:
+        r3.setAlpha(0);
+        r2.setAlpha(r5);
+        goto L6
+    }
+
+    @Override // android.graphics.drawable.Drawable
+    public final void setBounds(int r2, int r3, int r4, int r5) {
+        super.setBounds(r2, r3, r4, r5);
+        this.a.setBounds(r2, r3, r4, r5);
+        this.b.setBounds(r2, r3, r4, r5);
+    }
+
+    @Override // android.graphics.drawable.Drawable
+    public final void setColorFilter(ColorFilter r2) {
+        this.a.setColorFilter(r2);
+        this.b.setColorFilter(r2);
         invalidateSelf();
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setBounds(int i, int i2, int i3, int i4) {
-        super.setBounds(i, i2, i3, i4);
-        this.a.setBounds(i, i2, i3, i4);
-        this.b.setBounds(i, i2, i3, i4);
-    }
-
-    @Override // android.graphics.drawable.Drawable
-    public final void setColorFilter(ColorFilter colorFilter) {
-        this.a.setColorFilter(colorFilter);
-        this.b.setColorFilter(colorFilter);
-        invalidateSelf();
-    }
-
-    @Override // android.graphics.drawable.Drawable
-    public final boolean setState(int[] iArr) {
-        return this.a.setState(iArr) || this.b.setState(iArr);
+    public final boolean setState(int[] r2) {
+        boolean r0 = this.a.setState(r2);
+        boolean r1 = this.b.setState(r2);
+        if (r0 == true) goto L8;
+        if (r1 == true) goto L10;
+        return false;
+    L10:
+        return true;
+    L8:
+        return true;
     }
 }

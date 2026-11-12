@@ -5,9 +5,9 @@ package defpackage;
 public abstract class ep4 extends wd0 implements gg1 {
     public final int n;
 
-    public ep4(int i, vd0 vd0Var) {
-        super(vd0Var);
-        this.n = i;
+    public ep4(int r1, vd0 r2) {
+        super(r2);
+        this.n = r1;
     }
 
     @Override // defpackage.gg1
@@ -17,10 +17,10 @@ public abstract class ep4 extends wd0 implements gg1 {
 
     @Override // defpackage.jp
     public final String toString() {
-        if (getCompletion() != null) {
-            return super.toString();
-        }
+        if (getCompletion() != null) goto L7;
         kx3.a.getClass();
         return lx3.a(this);
+    L7:
+        return super.toString();
     }
 }

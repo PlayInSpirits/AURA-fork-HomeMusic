@@ -6,28 +6,28 @@ public final class ju0 implements ne0 {
     public final /* synthetic */ ne0 n;
     public final Throwable o;
 
-    public ju0(ne0 ne0Var, Throwable th) {
-        this.n = ne0Var;
-        this.o = th;
+    public ju0(ne0 r1, Throwable r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // defpackage.ne0
-    public final ne0 J(ne0 ne0Var) {
-        return this.n.J(ne0Var);
+    public final ne0 J(ne0 r1) {
+        return this.n.J(r1);
     }
 
     @Override // defpackage.ne0
-    public final le0 K(me0 me0Var) {
-        return this.n.K(me0Var);
+    public final le0 K(me0 r1) {
+        return this.n.K(r1);
     }
 
     @Override // defpackage.ne0
-    public final Object s(wf1 wf1Var, Object obj) {
-        return this.n.s(wf1Var, obj);
+    public final Object s(wf1 r1, Object r2) {
+        return this.n.s(r1, r2);
     }
 
     @Override // defpackage.ne0
-    public final ne0 u(me0 me0Var) {
-        return this.n.u(me0Var);
+    public final ne0 u(me0 r1) {
+        return this.n.u(r1);
     }
 }

@@ -7,54 +7,55 @@ import java.io.InputStream;
 public final class gi0 extends InputStream {
     public final ci0 n;
     public final ii0 o;
-    public boolean q = false;
-    public boolean r = false;
-    public final byte[] p = new byte[1];
+    public final byte[] p;
+    public boolean q;
+    public boolean r;
 
-    public gi0(ci0 ci0Var, ii0 ii0Var) {
-        this.n = ci0Var;
-        this.o = ii0Var;
+    public gi0(ci0 r2, ii0 r3) {
+        this.q = false;
+        this.r = false;
+        this.n = r2;
+        this.o = r3;
+        this.p = new byte[1];
     }
 
     public final void b() {
-        if (this.q) {
-            return;
-        }
+        if (this.q == true) goto L6;
         this.n.b(this.o);
         this.q = true;
+        return;
     }
 
     @Override // java.io.InputStream, java.io.Closeable, java.lang.AutoCloseable
     public final void close() {
-        if (this.r) {
-            return;
-        }
+        if (this.r == true) goto L6;
         this.n.close();
         this.r = true;
+        return;
     }
 
     @Override // java.io.InputStream
-    public final int read(byte[] bArr, int i, int i2) {
+    public final int read(byte[] r2, int r3, int r4) {
         rr2.w(!this.r);
         b();
-        int i3 = this.n.read(bArr, i, i2);
-        if (i3 == -1) {
-            return -1;
-        }
-        return i3;
+        int r1 = this.n.read(r2, r3, r4);
+        if (r1 != (-1)) goto L5;
+        return -1;
+    L5:
+        return r1;
     }
 
     @Override // java.io.InputStream
-    public final int read(byte[] bArr) {
-        return read(bArr, 0, bArr.length);
+    public final int read(byte[] r3) {
+        return read(r3, 0, r3.length);
     }
 
     @Override // java.io.InputStream
     public final int read() {
-        byte[] bArr = this.p;
-        if (read(bArr, 0, bArr.length) == -1) {
-            return -1;
-        }
-        return bArr[0] & 255;
+        byte[] r0 = this.p;
+        if (read(r0, 0, r0.length) != (-1)) goto L6;
+        return -1;
+    L6:
+        return r0[0] & 255;
     }
 }

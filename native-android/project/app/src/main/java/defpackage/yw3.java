@@ -18,15 +18,18 @@ public final class yw3 {
     public long m;
     public int n;
 
-    public final void a(int i) {
-        if ((this.d & i) != 0) {
-            return;
-        }
-        nz2.y("Layout state should be one of ", Integer.toBinaryString(i), " but it is ", Integer.toBinaryString(this.d));
+    public final void a(int r3) {
+        if ((this.d & r3) == 0) goto L5;
+        return;
+    L5:
+        nz2.y("Layout state should be one of ", Integer.toBinaryString(r3), " but it is ", Integer.toBinaryString(this.d));
     }
 
     public final int b() {
-        return this.g ? this.b - this.c : this.e;
+        if (this.g == false) goto L7;
+        return this.b - this.c;
+    L7:
+        return this.e;
     }
 
     public final String toString() {

@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.appcompat.widget.SearchView;
 import com.eddyizm.tempus.App;
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import com.eddyizm.tempus.subsonic.models.Bookmarks;
 import com.eddyizm.tempus.ui.fragment.AlbumListPageFragment;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -53,274 +52,295 @@ public class rm3 implements u74, f51, eg1, ak2 {
     public Object n;
     public Object o;
 
-    public rm3(pn4 pn4Var, int i) {
-        String str;
-        gr1 gr1Var;
-        gr1 gr1VarB;
-        dz4 dz4VarA;
-        dz4 dz4VarA2;
-        gr1 gr1VarB2;
-        dz4 dz4VarA3;
-        dz4 dz4VarA4;
-        gr1 gr1VarB3;
-        dz4 dz4VarA5;
-        dz4 dz4VarA6;
-        TimeUnit timeUnit = TimeUnit.SECONDS;
-        TimeUnit timeUnit2 = TimeUnit.MINUTES;
-        String str2 = "https://localhost/rest/";
-        switch (i) {
-            case 14:
-                this.n = pn4Var;
-                ok1 ok1Var = new ok1();
-                ok1Var.a(Date.class, new r01());
-                ok1Var.a(Bookmarks.class, new lt());
-                ok1Var.j = true;
-                ArrayList arrayList = ok1Var.e;
-                int size = arrayList.size();
-                ArrayList arrayList2 = ok1Var.f;
-                ArrayList arrayList3 = new ArrayList(arrayList2.size() + size + 3);
-                arrayList3.addAll(arrayList);
-                Collections.reverse(arrayList3);
-                ArrayList arrayList4 = new ArrayList(arrayList2);
-                Collections.reverse(arrayList4);
-                arrayList3.addAll(arrayList4);
-                int i2 = ok1Var.g;
-                int i3 = ok1Var.h;
-                ak0 ak0Var = bk0.b;
-                boolean z = gk4.a;
-                if (i2 != 2 && i3 != 2) {
-                    dz4 dz4VarA7 = ak0Var.a(i2, i3);
-                    if (z) {
-                        dz4VarA2 = gk4.c.a(i2, i3);
-                        dz4VarA = gk4.b.a(i2, i3);
-                    } else {
-                        dz4VarA = null;
-                        dz4VarA2 = null;
-                    }
-                    arrayList3.add(dz4VarA7);
-                    if (z) {
-                        arrayList3.add(dz4VarA2);
-                        arrayList3.add(dz4VarA);
-                    }
-                }
-                u21 u21Var = ok1Var.a;
-                int i4 = ok1Var.c;
-                HashMap map = new HashMap(ok1Var.d);
-                boolean z2 = ok1Var.i;
-                boolean z3 = ok1Var.j;
-                boolean z4 = ok1Var.k;
-                int i5 = ok1Var.b;
-                new ArrayList(arrayList);
-                new ArrayList(arrayList2);
-                nk1 nk1Var = new nk1(u21Var, i4, map, z2, z3, z4, i5, arrayList3, ok1Var.l, ok1Var.m, new ArrayList(ok1Var.n));
-                Retrofit.Builder builder = new Retrofit.Builder();
-                String strJ = pn4Var.j();
-                String string = strJ != null ? qm4.K0(strJ).toString() : null;
-                str = string != null ? string : "";
-                try {
-                    fr1 fr1Var = new fr1();
-                    gr1Var = null;
-                    try {
-                        fr1Var.e(null, str);
-                        gr1VarB = fr1Var.b();
-                    } catch (IllegalArgumentException unused) {
-                        gr1VarB = gr1Var;
-                    }
-                } catch (IllegalArgumentException unused2) {
-                    gr1Var = null;
-                }
-                if (gr1VarB != null && gr1VarB.d.length() > 0) {
-                    str2 = str;
-                }
-                Retrofit.Builder builderAddConverterFactory = builder.baseUrl(str2).addConverterFactory(GsonConverterFactory.create(nk1Var));
-                cx cxVar = new cx();
-                rx rxVar = new rx(cxVar);
-                cxVar.a = 2592000;
-                n83 n83Var = new n83();
-                n83Var.a(2L, timeUnit2);
-                n83Var.b(20L, timeUnit);
-                n83Var.z = ze5.b(30L, timeUnit);
-                n83Var.A = ze5.b(30L, timeUnit);
-                dr1 dr1Var = new dr1();
-                dr1Var.b = cr1.n;
-                n83Var.c.add(dr1Var);
-                n83Var.c.add(rxVar);
-                File cacheDir = App.a().getCacheDir();
-                cacheDir.getClass();
-                n83Var.l = new hx(cacheDir);
-                SSLSocketFactory sSLSocketFactory = x30.b;
-                if (sSLSocketFactory != null) {
-                    n83Var.c(sSLSocketFactory, x30.a);
-                }
-                Retrofit retrofitBuild = builderAddConverterFactory.client(new o83(n83Var)).build();
-                retrofitBuild.getClass();
-                this.o = (in2) retrofitBuild.create(in2.class);
-                break;
-            case 17:
-                this.n = pn4Var;
-                ok1 ok1Var2 = new ok1();
-                ok1Var2.a(Date.class, new r01());
-                ok1Var2.a(Bookmarks.class, new lt());
-                ok1Var2.j = true;
-                ArrayList arrayList5 = ok1Var2.e;
-                int size2 = arrayList5.size();
-                ArrayList arrayList6 = ok1Var2.f;
-                ArrayList arrayList7 = new ArrayList(arrayList6.size() + size2 + 3);
-                arrayList7.addAll(arrayList5);
-                Collections.reverse(arrayList7);
-                ArrayList arrayList8 = new ArrayList(arrayList6);
-                Collections.reverse(arrayList8);
-                arrayList7.addAll(arrayList8);
-                int i6 = ok1Var2.g;
-                int i7 = ok1Var2.h;
-                ak0 ak0Var2 = bk0.b;
-                boolean z5 = gk4.a;
-                if (i6 != 2 && i7 != 2) {
-                    dz4 dz4VarA8 = ak0Var2.a(i6, i7);
-                    if (z5) {
-                        dz4VarA4 = gk4.c.a(i6, i7);
-                        dz4VarA3 = gk4.b.a(i6, i7);
-                    } else {
-                        dz4VarA3 = null;
-                        dz4VarA4 = null;
-                    }
-                    arrayList7.add(dz4VarA8);
-                    if (z5) {
-                        arrayList7.add(dz4VarA4);
-                        arrayList7.add(dz4VarA3);
-                    }
-                }
-                u21 u21Var2 = ok1Var2.a;
-                int i8 = ok1Var2.c;
-                HashMap map2 = new HashMap(ok1Var2.d);
-                boolean z6 = ok1Var2.i;
-                boolean z7 = ok1Var2.j;
-                boolean z8 = ok1Var2.k;
-                int i9 = ok1Var2.b;
-                new ArrayList(arrayList5);
-                new ArrayList(arrayList6);
-                nk1 nk1Var2 = new nk1(u21Var2, i8, map2, z6, z7, z8, i9, arrayList7, ok1Var2.l, ok1Var2.m, new ArrayList(ok1Var2.n));
-                Retrofit.Builder builder2 = new Retrofit.Builder();
-                String strJ2 = pn4Var.j();
-                String string2 = strJ2 != null ? qm4.K0(strJ2).toString() : null;
-                str = string2 != null ? string2 : "";
-                try {
-                    fr1 fr1Var2 = new fr1();
-                    fr1Var2.e(null, str);
-                    gr1VarB2 = fr1Var2.b();
-                } catch (IllegalArgumentException unused3) {
-                    gr1VarB2 = null;
-                }
-                if (gr1VarB2 != null && gr1VarB2.d.length() > 0) {
-                    str2 = str;
-                }
-                Retrofit.Builder builderAddConverterFactory2 = builder2.baseUrl(str2).addConverterFactory(GsonConverterFactory.create(nk1Var2));
-                cx cxVar2 = new cx();
-                rx rxVar2 = new rx(cxVar2);
-                cxVar2.a = 2592000;
-                n83 n83Var2 = new n83();
-                n83Var2.a(2L, timeUnit2);
-                n83Var2.b(20L, timeUnit);
-                n83Var2.z = ze5.b(30L, timeUnit);
-                n83Var2.A = ze5.b(30L, timeUnit);
-                dr1 dr1Var2 = new dr1();
-                dr1Var2.b = cr1.n;
-                n83Var2.c.add(dr1Var2);
-                n83Var2.c.add(rxVar2);
-                File cacheDir2 = App.a().getCacheDir();
-                cacheDir2.getClass();
-                n83Var2.l = new hx(cacheDir2);
-                SSLSocketFactory sSLSocketFactory2 = x30.b;
-                if (sSLSocketFactory2 != null) {
-                    n83Var2.c(sSLSocketFactory2, x30.a);
-                }
-                Retrofit retrofitBuild2 = builderAddConverterFactory2.client(new o83(n83Var2)).build();
-                retrofitBuild2.getClass();
-                this.o = (qm3) retrofitBuild2.create(qm3.class);
-                break;
-            default:
-                this.n = pn4Var;
-                ok1 ok1Var3 = new ok1();
-                ok1Var3.a(Date.class, new r01());
-                ok1Var3.a(Bookmarks.class, new lt());
-                ok1Var3.j = true;
-                ArrayList arrayList9 = ok1Var3.e;
-                int size3 = arrayList9.size();
-                ArrayList arrayList10 = ok1Var3.f;
-                ArrayList arrayList11 = new ArrayList(arrayList10.size() + size3 + 3);
-                arrayList11.addAll(arrayList9);
-                Collections.reverse(arrayList11);
-                ArrayList arrayList12 = new ArrayList(arrayList10);
-                Collections.reverse(arrayList12);
-                arrayList11.addAll(arrayList12);
-                int i10 = ok1Var3.g;
-                int i11 = ok1Var3.h;
-                ak0 ak0Var3 = bk0.b;
-                boolean z9 = gk4.a;
-                if (i10 != 2 && i11 != 2) {
-                    dz4 dz4VarA9 = ak0Var3.a(i10, i11);
-                    if (z9) {
-                        dz4VarA6 = gk4.c.a(i10, i11);
-                        dz4VarA5 = gk4.b.a(i10, i11);
-                    } else {
-                        dz4VarA5 = null;
-                        dz4VarA6 = null;
-                    }
-                    arrayList11.add(dz4VarA9);
-                    if (z9) {
-                        arrayList11.add(dz4VarA6);
-                        arrayList11.add(dz4VarA5);
-                    }
-                }
-                u21 u21Var3 = ok1Var3.a;
-                int i12 = ok1Var3.c;
-                HashMap map3 = new HashMap(ok1Var3.d);
-                boolean z10 = ok1Var3.i;
-                boolean z11 = ok1Var3.j;
-                boolean z12 = ok1Var3.k;
-                int i13 = ok1Var3.b;
-                new ArrayList(arrayList9);
-                new ArrayList(arrayList10);
-                nk1 nk1Var3 = new nk1(u21Var3, i12, map3, z10, z11, z12, i13, arrayList11, ok1Var3.l, ok1Var3.m, new ArrayList(ok1Var3.n));
-                Retrofit.Builder builder3 = new Retrofit.Builder();
-                String strJ3 = pn4Var.j();
-                String string3 = strJ3 != null ? qm4.K0(strJ3).toString() : null;
-                str = string3 != null ? string3 : "";
-                try {
-                    fr1 fr1Var3 = new fr1();
-                    fr1Var3.e(null, str);
-                    gr1VarB3 = fr1Var3.b();
-                } catch (IllegalArgumentException unused4) {
-                    gr1VarB3 = null;
-                }
-                if (gr1VarB3 != null && gr1VarB3.d.length() > 0) {
-                    str2 = str;
-                }
-                Retrofit.Builder builderAddConverterFactory3 = builder3.baseUrl(str2).addConverterFactory(GsonConverterFactory.create(nk1Var3));
-                cx cxVar3 = new cx();
-                rx rxVar3 = new rx(cxVar3);
-                cxVar3.a = 2592000;
-                n83 n83Var3 = new n83();
-                n83Var3.a(2L, timeUnit2);
-                n83Var3.b(20L, timeUnit);
-                n83Var3.z = ze5.b(30L, timeUnit);
-                n83Var3.A = ze5.b(30L, timeUnit);
-                dr1 dr1Var3 = new dr1();
-                dr1Var3.b = cr1.n;
-                n83Var3.c.add(dr1Var3);
-                n83Var3.c.add(rxVar3);
-                File cacheDir3 = App.a().getCacheDir();
-                cacheDir3.getClass();
-                n83Var3.l = new hx(cacheDir3);
-                SSLSocketFactory sSLSocketFactory3 = x30.b;
-                if (sSLSocketFactory3 != null) {
-                    n83Var3.c(sSLSocketFactory3, x30.a);
-                }
-                Retrofit retrofitBuild3 = builderAddConverterFactory3.client(new o83(n83Var3)).build();
-                retrofitBuild3.getClass();
-                this.o = (mt) retrofitBuild3.create(mt.class);
-                break;
-        }
+    public rm3(pn4 r29, int r30) {
+        TimeUnit r4 = TimeUnit.SECONDS;
+        TimeUnit r7 = TimeUnit.MINUTES;
+        String r11 = "https://localhost/rest/";
+        String r12 = "";
+        switch(r30) {
+            case 14: goto L62;
+            case 17: goto L33;
+            default: goto L4;
+        };
+    L4:
+        this.n = r29;
+        ok1 r5 = new ok1();
+        r5.a(Date.class, new r01());
+        r5.a(Bookmarks.class, new lt());
+        r5.j = true;
+        ArrayList r3 = r5.e;
+        int r6 = r3.size();
+        ArrayList r15 = r5.f;
+        ArrayList r2 = new ArrayList((r15.size() + r6) + 3);
+        r2.addAll(r3);
+        Collections.reverse(r2);
+        ArrayList r8 = new ArrayList(r15);
+        Collections.reverse(r8);
+        r2.addAll(r8);
+        int r9 = r5.g;
+        int r10 = r5.h;
+        ak0 r13 = bk0.b;
+        boolean r16 = gk4.a;
+        if (r9 == 2) goto L14;
+        if (r10 == 2) goto L14;
+        dz4 r14 = r13.a(r9, r10);
+        if (r16 == false) goto L10;
+        dz4 r17 = gk4.c.a(r9, r10);
+        dz4 r18 = gk4.b.a(r9, r10);
+    L11:
+        r2.add(r14);
+        if (r16 == false) goto L14;
+        r2.add(r17);
+        r2.add(r18);
+        goto L14
+    L10:
+        r18 = null;
+        r17 = null;
+    L14:
+        u21 r19 = r5.a;
+        int r20 = r5.c;
+        HashMap r21 = new HashMap(r5.d);
+        boolean r110 = r5.i;
+        boolean r111 = r5.j;
+        boolean r112 = r5.k;
+        int r22 = r5.b;
+        new ArrayList(r3);
+        new ArrayList(r15);
+        nk1 r113 = new nk1(r19, r20, r21, r110, r111, r112, r22, r2, r5.l, r5.m, new ArrayList(r5.n));
+        Retrofit.Builder r23 = new Retrofit.Builder();
+        String r1 = r29.j();
+        if (r1 == null) goto L17;
+        String r24 = qm4.K0(r1).toString();
+    L18:
+        if (r24 == null) goto L99;
+        r12 = r24;
+    L99:
+        fr1 r25 = new fr1();     // Catch: IllegalArgumentException -> L23
+        r25.e(null, r12);     // Catch: IllegalArgumentException -> L23
+        gr1 r114 = r25.b();     // Catch: IllegalArgumentException -> L23
+    L24:
+        if (r114 != null) goto L26;
+    L28:
+        Retrofit.Builder r26 = r23.baseUrl(r11).addConverterFactory(GsonConverterFactory.create(r113));
+        cx r27 = new cx();
+        rx r28 = new rx(r27);
+        r27.a = 2592000;
+        n83 r31 = new n83();
+        r31.a(2, r7);
+        r31.b(20, r4);
+        r31.z = ze5.b(30, r4);
+        r31.A = ze5.b(30, r4);
+        dr1 r32 = new dr1();
+        r32.b = cr1.n;
+        r31.c.add(r32);
+        r31.c.add(r28);
+        File r33 = App.a().getCacheDir();
+        r33.getClass();
+        r31.l = new hx(r33);
+        SSLSocketFactory r34 = x30.b;
+        if (r34 == null) goto L31;
+        r31.c(r34, x30.a);
+    L31:
+        Retrofit r35 = r26.client(new o83(r31)).build();
+        r35.getClass();
+        this.o = (mt) r35.create(mt.class);
+        return;
+    L26:
+        if (r114.d.length() <= 0) goto L28;
+        r11 = r12;
+    L23:
+        r114 = null;
+        goto L24
+    L17:
+        r24 = null;
+        goto L18
+    L33:
+        this.n = r29;
+        ok1 r36 = new ok1();
+        r36.a(Date.class, new r01());
+        r36.a(Bookmarks.class, new lt());
+        r36.j = true;
+        ArrayList r37 = r36.e;
+        int r38 = r37.size();
+        ArrayList r39 = r36.f;
+        ArrayList r40 = new ArrayList((r39.size() + r38) + 3);
+        r40.addAll(r37);
+        Collections.reverse(r40);
+        ArrayList r41 = new ArrayList(r39);
+        Collections.reverse(r41);
+        r40.addAll(r41);
+        int r42 = r36.g;
+        int r43 = r36.h;
+        ak0 r115 = bk0.b;
+        boolean r116 = gk4.a;
+        if (r42 == 2) goto L43;
+        if (r43 == 2) goto L43;
+        dz4 r117 = r115.a(r42, r43);
+        if (r116 == false) goto L39;
+        dz4 r118 = gk4.c.a(r42, r43);
+        dz4 r44 = gk4.b.a(r42, r43);
+    L40:
+        r40.add(r117);
+        if (r116 == false) goto L43;
+        r40.add(r118);
+        r40.add(r44);
+        goto L43
+    L39:
+        r44 = null;
+        r118 = null;
+    L43:
+        u21 r45 = r36.a;
+        int r46 = r36.c;
+        HashMap r119 = new HashMap(r36.d);
+        boolean r120 = r36.i;
+        boolean r121 = r36.j;
+        boolean r122 = r36.k;
+        int r47 = r36.b;
+        new ArrayList(r37);
+        new ArrayList(r39);
+        nk1 r123 = new nk1(r45, r46, r119, r120, r121, r122, r47, r40, r36.l, r36.m, new ArrayList(r36.n));
+        Retrofit.Builder r48 = new Retrofit.Builder();
+        String r49 = r29.j();
+        if (r49 == null) goto L46;
+        String r50 = qm4.K0(r49).toString();
+    L47:
+        if (r50 == null) goto L97;
+        r12 = r50;
+    L97:
+        fr1 r51 = new fr1();     // Catch: IllegalArgumentException -> L52
+        r51.e(null, r12);     // Catch: IllegalArgumentException -> L52
+        gr1 r124 = r51.b();     // Catch: IllegalArgumentException -> L52
+    L53:
+        if (r124 != null) goto L55;
+    L57:
+        Retrofit.Builder r52 = r48.baseUrl(r11).addConverterFactory(GsonConverterFactory.create(r123));
+        cx r53 = new cx();
+        rx r54 = new rx(r53);
+        r53.a = 2592000;
+        n83 r55 = new n83();
+        r55.a(2, r7);
+        r55.b(20, r4);
+        r55.z = ze5.b(30, r4);
+        r55.A = ze5.b(30, r4);
+        dr1 r56 = new dr1();
+        r56.b = cr1.n;
+        r55.c.add(r56);
+        r55.c.add(r54);
+        File r57 = App.a().getCacheDir();
+        r57.getClass();
+        r55.l = new hx(r57);
+        SSLSocketFactory r58 = x30.b;
+        if (r58 == null) goto L60;
+        r55.c(r58, x30.a);
+    L60:
+        Retrofit r59 = r52.client(new o83(r55)).build();
+        r59.getClass();
+        this.o = (qm3) r59.create(qm3.class);
+        return;
+    L55:
+        if (r124.d.length() <= 0) goto L57;
+        r11 = r12;
+    L52:
+        r124 = null;
+        goto L53
+    L46:
+        r50 = null;
+        goto L47
+    L62:
+        this.n = r29;
+        ok1 r60 = new ok1();
+        r60.a(Date.class, new r01());
+        r60.a(Bookmarks.class, new lt());
+        r60.j = true;
+        ArrayList r61 = r60.e;
+        int r62 = r61.size();
+        ArrayList r63 = r60.f;
+        ArrayList r64 = new ArrayList((r63.size() + r62) + 3);
+        r64.addAll(r61);
+        Collections.reverse(r64);
+        ArrayList r65 = new ArrayList(r63);
+        Collections.reverse(r65);
+        r64.addAll(r65);
+        int r66 = r60.g;
+        int r67 = r60.h;
+        ak0 r125 = bk0.b;
+        boolean r126 = gk4.a;
+        if (r66 == 2) goto L72;
+        if (r67 == 2) goto L72;
+        dz4 r127 = r125.a(r66, r67);
+        if (r126 == false) goto L68;
+        dz4 r128 = gk4.c.a(r66, r67);
+        dz4 r68 = gk4.b.a(r66, r67);
+    L69:
+        r64.add(r127);
+        if (r126 == false) goto L72;
+        r64.add(r128);
+        r64.add(r68);
+        goto L72
+    L68:
+        r68 = null;
+        r128 = null;
+    L72:
+        u21 r69 = r60.a;
+        int r70 = r60.c;
+        HashMap r129 = new HashMap(r60.d);
+        boolean r130 = r60.i;
+        boolean r131 = r60.j;
+        boolean r132 = r60.k;
+        int r71 = r60.b;
+        new ArrayList(r61);
+        new ArrayList(r63);
+        nk1 r133 = new nk1(r69, r70, r129, r130, r131, r132, r71, r64, r60.l, r60.m, new ArrayList(r60.n));
+        Retrofit.Builder r72 = new Retrofit.Builder();
+        String r73 = r29.j();
+        if (r73 == null) goto L75;
+        String r74 = qm4.K0(r73).toString();
+    L76:
+        if (r74 == null) goto L95;
+        r12 = r74;
+    L95:
+        fr1 r75 = new fr1();     // Catch: IllegalArgumentException -> L83
+        gr1 r76 = null;
+        r75.e(null, r12);     // Catch: IllegalArgumentException -> L94
+        gr1 r134 = r75.b();     // Catch: IllegalArgumentException -> L94
+    L85:
+        if (r134 != null) goto L87;
+    L89:
+        Retrofit.Builder r77 = r72.baseUrl(r11).addConverterFactory(GsonConverterFactory.create(r133));
+        cx r78 = new cx();
+        rx r79 = new rx(r78);
+        r78.a = 2592000;
+        n83 r80 = new n83();
+        r80.a(2, r7);
+        r80.b(20, r4);
+        r80.z = ze5.b(30, r4);
+        r80.A = ze5.b(30, r4);
+        dr1 r81 = new dr1();
+        r81.b = cr1.n;
+        r80.c.add(r81);
+        r80.c.add(r79);
+        File r82 = App.a().getCacheDir();
+        r82.getClass();
+        r80.l = new hx(r82);
+        SSLSocketFactory r83 = x30.b;
+        if (r83 == null) goto L92;
+        r80.c(r83, x30.a);
+    L92:
+        Retrofit r84 = r77.client(new o83(r80)).build();
+        r84.getClass();
+        this.o = (in2) r84.create(in2.class);
+        return;
+    L87:
+        if (r134.d.length() <= 0) goto L89;
+        r11 = r12;
+    L84:
+        r134 = r76;
+    L83:
+        r76 = null;
+        goto L84
+    L75:
+        r74 = null;
+        goto L76
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -347,587 +367,644 @@ public class rm3 implements u74, f51, eg1, ak2 {
     /* JADX WARN: Type inference failed for: r5v8 */
     /* JADX WARN: Type inference failed for: r5v9 */
     /* JADX WARN: Type inference failed for: r6v5 */
-    public static void D(c72 c72Var) {
-        if (c72Var.Y > 0) {
-            if (c72Var.R.d == y62.r && !c72Var.p() && !c72Var.q() && !c72Var.Z && c72Var.H()) {
-                cx2 cx2Var = (cx2) c72Var.Q.g;
-                if ((cx2Var.q & 256) != 0) {
-                    while (cx2Var != null) {
-                        if ((cx2Var.p & 256) != 0) {
-                            ?? C = cx2Var;
-                            ?? f13Var = 0;
-                            while (C != 0) {
-                                if (C instanceof vi1) {
-                                    vi1 vi1Var = (vi1) C;
-                                    vi1Var.L(j51.M(vi1Var, 256));
-                                } else if ((C.p & 256) != 0 && (C instanceof fo0)) {
-                                    cx2 cx2Var2 = ((fo0) C).C;
-                                    int i = 0;
-                                    C = C;
-                                    f13Var = f13Var;
-                                    while (cx2Var2 != null) {
-                                        if ((cx2Var2.p & 256) != 0) {
-                                            i++;
-                                            if (i == 1) {
-                                                f13Var = f13Var;
-                                                C = cx2Var2;
-                                            } else {
-                                                if (f13Var == 0) {
-                                                    f13Var = new f13(new cx2[16]);
-                                                }
-                                                if (C != 0) {
-                                                    f13Var.b(C);
-                                                    C = 0;
-                                                }
-                                                f13Var.b(cx2Var2);
-                                            }
-                                        }
-                                        cx2Var2 = cx2Var2.s;
-                                        C = C;
-                                        f13Var = f13Var;
-                                    }
-                                    if (i == 1) {
-                                    }
-                                }
-                                C = j51.c(f13Var);
-                            }
-                        }
-                        if ((cx2Var.q & 256) == 0) {
-                            break;
-                        } else {
-                            cx2Var = cx2Var.s;
-                        }
-                    }
-                }
-            }
-            c72Var.X = false;
-            f13 f13VarY = c72Var.y();
-            Object[] objArr = f13VarY.n;
-            int i2 = f13VarY.p;
-            for (int i3 = 0; i3 < i2; i3++) {
-                D((c72) objArr[i3]);
-            }
-        }
+    public static void D(c72 r10) {
+        if (r10.Y <= 0) goto L53;
+        int r2 = 0;
+        if (r10.R.d == y62.r) goto L7;
+    L50:
+        r10.X = false;
+        f13 r11 = r10.y();
+        Object[] r0 = r11.n;
+        int r12 = r11.p;
+    L51:
+        if (r2 >= r12) goto L69;
+        D((c72) r0[r2]);
+        r2 = r2 + 1;
+        goto L51
+    L69:
+        return;
+    L7:
+        if (r10.p() == true) goto L50;
+        if (r10.q() == true) goto L50;
+        if (r10.Z == true) goto L50;
+        if (r10.H() == false) goto L50;
+        cx2 r1 = (cx2) r10.Q.g;
+        if ((r1.q & 256) == 0) goto L50;
+    L18:
+        if (r1 == null) goto L50;
+        if ((r1.p & 256) == 0) goto L48;
+        ?? r4 = r1;
+        ?? r5 = 0;
+    L22:
+        if (r4 == 0) goto L48;
+        if ((r4 instanceof vi1) == true) goto L25;
+        if ((r4.p & 256) == 0) goto L46;
+        if ((r4 instanceof fo0) == false) goto L46;
+        cx2 r6 = ((fo0) r4).C;
+        int r7 = 0;
+        r4 = r4;
+        r5 = r5;
+    L32:
+        if (r6 == null) goto L44;
+        if ((r6.p & 256) == 0) goto L43;
+        r7 = r7 + 1;
+        r5 = r5;
+        if (r7 != 1) goto L38;
+        r4 = r6;
+        goto L43
+    L38:
+        if (r5 != 0) goto L40;
+        r5 = new f13(new cx2[16]);
+    L40:
+        if (r4 == 0) goto L42;
+        r5.b(r4);
+        r4 = 0;
+    L42:
+        r5.b(r6);
+    L43:
+        r6 = r6.s;
+        r4 = r4;
+        r5 = r5;
+        goto L32
+    L44:
+        if (r7 == 1) goto L22;
+    L46:
+        r4 = j51.c(r5);
+        goto L22
+    L25:
+        vi1 r8 = (vi1) r4;
+        r8.L(j51.M(r8, 256));
+    L48:
+        if ((r1.q & 256) == 0) goto L50;
+        r1 = r1.s;
+        goto L18
     }
 
-    public Bundle A(String str) {
-        xm2 xm2Var = (xm2) this.n;
-        if (!xm2Var.b) {
-            kf2.o("You can 'consumeRestoredStateForKey' only after the corresponding component has moved to the 'CREATED' state");
-            return null;
-        }
-        Bundle bundle = (Bundle) xm2Var.h;
-        if (bundle == null) {
-            return null;
-        }
-        Bundle bundleW = bundle.containsKey(str) ? jz4.w(str, bundle) : null;
-        bundle.remove(str);
-        if (bundle.isEmpty()) {
-            xm2Var.h = null;
-        }
-        return bundleW;
+    public Bundle A(String r4) {
+        xm2 r3 = (xm2) this.n;
+        if (r3.b == false) goto L15;
+        Bundle r0 = (Bundle) r3.h;
+        if (r0 != null) goto L8;
+        return null;
+    L8:
+        if (r0.containsKey(r4) == false) goto L10;
+        Bundle r2 = jz4.w(r4, r0);
+    L11:
+        r0.remove(r4);
+        if (r0.isEmpty() == false) goto L14;
+        r3.h = null;
+    L14:
+        return r2;
+    L10:
+        r2 = null;
+        goto L11
+    L15:
+        kf2.o("You can 'consumeRestoredStateForKey' only after the corresponding component has moved to the 'CREATED' state");
+        return null;
     }
 
-    public void B(String str) {
-        xl.E((s24) this.n, false, true, new rs0(16, str));
+    public void B(String r3) {
+        xl.E((s24) this.n, false, true, new rs0(16, r3));
     }
 
     /* JADX WARN: Multi-variable type inference failed */
     public void C() {
-        Object[] objArr;
-        f13 f13Var = (f13) this.n;
-        Arrays.sort(f13Var.n, 0, f13Var.p, ca1.t);
-        int i = f13Var.p;
-        c72[] c72VarArr = (c72[]) this.o;
-        if (c72VarArr == null || c72VarArr.length < i) {
-            objArr = c72VarArr;
-            objArr = new c72[Math.max(16, i)];
-        }
-        objArr = c72VarArr;
+        f13 r0 = (f13) this.n;
+        int r4 = 0;
+        Arrays.sort(r0.n, 0, r0.p, ca1.t);
+        int r1 = r0.p;
+        c72[] r2 = (c72[]) this.o;
+        if (r2 == null) goto L6;
+        int r3 = r2.length;
+        Object[] r5 = r2;
+        if (r3 < r1) goto L6;
+    L7:
         this.o = null;
-        for (int i2 = 0; i2 < i; i2++) {
-            objArr[i2] = f13Var.n[i2];
-        }
-        f13Var.g();
-        while (true) {
-            i--;
-            if (-1 >= i) {
-                this.o = objArr;
-                return;
-            }
-            c72 c72Var = objArr[i];
-            c72Var.getClass();
-            if (c72Var.X) {
-                D(c72Var);
-            }
-            objArr[i] = 0;
-        }
+    L8:
+        if (r4 >= r1) goto L10;
+        r5[r4] = r0.n[r4];
+        r4 = r4 + 1;
+        goto L8
+    L10:
+        r0.g();
+    L11:
+        r1 = r1 - 1;
+        if ((-1) >= r1) goto L17;
+        c72 r6 = r5[r1];
+        r6.getClass();
+        if (r6.X == false) goto L16;
+        D(r6);
+    L16:
+        r5[r1] = 0;
+        goto L11
+    L17:
+        this.o = r5;
+        return;
+    L6:
+        r5 = new c72[Math.max(16, r1)];
+        goto L7
     }
 
-    public k51 E(Object... objArr) {
-        Constructor constructorD;
-        synchronized (((AtomicBoolean) this.o)) {
-            if (!((AtomicBoolean) this.o).get()) {
-                try {
-                    constructorD = ((mj0) this.n).d();
-                } catch (ClassNotFoundException unused) {
-                    ((AtomicBoolean) this.o).set(true);
-                    constructorD = null;
-                } catch (Exception e) {
-                    throw new RuntimeException("Error instantiating extension", e);
-                }
-            }
-            constructorD = null;
-        }
-        if (constructorD == null) {
-            return null;
-        }
-        try {
-            return (k51) constructorD.newInstance(objArr);
-        } catch (Exception e2) {
-            mj0.j("Unexpected error creating extractor", e2);
-            return null;
-        }
+    public k51 E(Object... r4) {
+        AtomicBoolean r0 = (AtomicBoolean) this.o;
+        monitor-enter(r0);
+    L8:
+        th = move-exception;
+        throw th;
+    L5:
+        if (((AtomicBoolean) this.o).get() == false) goto L31;
+        monitor-exit(r0);     // Catch: Throwable -> L8
+    L7:
+        Constructor r3 = null;
+    L19:
+        if (r3 != null) goto L29;
+        return null;
+    L29:
+        return (k51) r3.newInstance(r4);
+    L23:
+        e = move-exception;
+        mj0.j("Unexpected error creating extractor", e);
+        return null;
+    L31:
+        r3 = ((mj0) this.n).d();     // Catch: Throwable -> L8 Exception -> L13 ClassNotFoundException -> L16
+        monitor-exit(r0);     // Catch: Throwable -> L8
+        goto L19
+    L16:
+        ((AtomicBoolean) this.o).set(true);     // Catch: Throwable -> L8
+    L13:
+        e = move-exception;
+        throw new RuntimeException("Error instantiating extension", e);     // Catch: Throwable -> L8
     }
 
-    public Call F(String str) {
+    public Call F(String r3) {
         Log.d("BrowsingClient", "getPlaylist()");
-        return ((qm3) this.o).c(((pn4) this.n).f(), str);
+        return ((qm3) this.o).c(((pn4) this.n).f(), r3);
     }
 
-    public i54 G(String str) {
-        i54 i54Var;
-        xm2 xm2Var = (xm2) this.n;
-        synchronized (((xi4) xm2Var.f)) {
-            Iterator it = ((LinkedHashMap) xm2Var.g).entrySet().iterator();
-            do {
-                i54Var = null;
-                if (!it.hasNext()) {
-                    break;
-                }
-                Map.Entry entry = (Map.Entry) it.next();
-                String str2 = (String) entry.getKey();
-                i54 i54Var2 = (i54) entry.getValue();
-                if (h12.c(str2, str)) {
-                    i54Var = i54Var2;
-                }
-            } while (i54Var == null);
-        }
-        return i54Var;
+    public i54 G(String r5) {
+        xm2 r4 = (xm2) this.n;
+        xi4 r0 = (xi4) r4.f;
+        monitor-enter(r0);
+        Iterator r6 = ((LinkedHashMap) r4.g).entrySet().iterator();     // Catch: Throwable -> L12
+    L5:
+        i54 r2 = null;
+        if (r6.hasNext() == false) goto L14;
+        Map.Entry r1 = (Map.Entry) r6.next();     // Catch: Throwable -> L12
+        String r3 = (String) r1.getKey();     // Catch: Throwable -> L12
+        i54 r7 = (i54) r1.getValue();     // Catch: Throwable -> L12
+        if (h12.c(r3, r5) == false) goto L10;
+        r2 = r7;
+    L10:
+        if (r2 == null) goto L5;
+    L14:
+        monitor-exit(r0);
+        return r2;
+    L12:
+        th = move-exception;
+        throw th;
     }
 
-    public void H(d5 d5Var) {
-        bq4 bq4Var = (bq4) this.n;
-        ((ActionMode.Callback) bq4Var.n).onDestroyActionMode(bq4Var.i(d5Var));
-        bg bgVar = (bg) this.o;
-        if (bgVar.I != null) {
-            bgVar.y.getDecorView().removeCallbacks(bgVar.J);
-        }
-        if (bgVar.H != null) {
-            s75 s75Var = bgVar.K;
-            if (s75Var != null) {
-                s75Var.b();
-            }
-            s75 s75VarA = j65.a(bgVar.H);
-            s75VarA.a(0.0f);
-            bgVar.K = s75VarA;
-            s75VarA.d(new sf(2, this));
-        }
-        bgVar.G = null;
-        ViewGroup viewGroup = bgVar.N;
-        WeakHashMap weakHashMap = j65.a;
-        viewGroup.requestApplyInsets();
-        bgVar.O();
+    public void H(d5 r4) {
+        bq4 r0 = (bq4) this.n;
+        ((ActionMode.Callback) r0.n).onDestroyActionMode(r0.i(r4));
+        bg r5 = (bg) this.o;
+        if (r5.I == null) goto L6;
+        r5.y.getDecorView().removeCallbacks(r5.J);
+    L6:
+        if (r5.H == null) goto L11;
+        s75 r1 = r5.K;
+        if (r1 == null) goto L10;
+        r1.b();
+    L10:
+        s75 r2 = j65.a(r5.H);
+        r2.a(0.0f);
+        r5.K = r2;
+        r2.d(new sf(2, this));
+    L11:
+        r5.G = null;
+        ViewGroup r3 = r5.N;
+        WeakHashMap r6 = j65.a;
+        r3.requestApplyInsets();
+        r5.O();
     }
 
-    public boolean I(d5 d5Var, Menu menu) {
-        ViewGroup viewGroup = ((bg) this.o).N;
-        WeakHashMap weakHashMap = j65.a;
-        viewGroup.requestApplyInsets();
-        bq4 bq4Var = (bq4) this.n;
-        ActionMode.Callback callback = (ActionMode.Callback) bq4Var.n;
-        jo4 jo4VarI = bq4Var.i(d5Var);
-        yd4 yd4Var = (yd4) bq4Var.q;
-        Menu jv2Var = (Menu) yd4Var.get(menu);
-        if (jv2Var == null) {
-            jv2Var = new jv2((Context) bq4Var.o, (qu2) menu);
-            yd4Var.put(menu, jv2Var);
-        }
-        return callback.onPrepareActionMode(jo4VarI, jv2Var);
+    public boolean I(d5 r5, Menu r6) {
+        ViewGroup r0 = ((bg) this.o).N;
+        WeakHashMap r1 = j65.a;
+        r0.requestApplyInsets();
+        bq4 r4 = (bq4) this.n;
+        ActionMode.Callback r2 = (ActionMode.Callback) r4.n;
+        jo4 r7 = r4.i(r5);
+        yd4 r3 = (yd4) r4.q;
+        Menu r8 = (Menu) r3.get(r6);
+        if (r8 != null) goto L6;
+        r8 = new jv2((Context) r4.o, (qu2) r6);
+        r3.put(r6, r8);
+    L6:
+        return r2.onPrepareActionMode(r7, r8);
     }
 
-    /* JADX WARN: Code duplicated, block: B:113:0x0110 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:63:0x0109 A[Catch: IOException -> 0x0091, XmlPullParserException -> 0x0094, TryCatch #2 {IOException -> 0x0091, XmlPullParserException -> 0x0094, blocks: (B:20:0x0062, B:97:0x0209, B:28:0x0074, B:29:0x0082, B:31:0x0087, B:38:0x0097, B:46:0x00b1, B:41:0x00a0, B:44:0x00a9, B:47:0x00bf, B:51:0x00ce, B:53:0x00d6, B:54:0x00e0, B:63:0x0109, B:64:0x0110, B:65:0x0128, B:57:0x00e9, B:59:0x00f1, B:60:0x00ff, B:66:0x0129, B:68:0x0131, B:69:0x013f, B:72:0x0149, B:73:0x0154, B:74:0x016c, B:75:0x016d, B:78:0x0177, B:79:0x0182, B:80:0x019a, B:81:0x019b, B:83:0x01a3, B:84:0x01ac, B:87:0x01b6, B:88:0x01c0, B:89:0x01d8, B:90:0x01d9, B:93:0x01e3, B:94:0x01ed, B:95:0x0205, B:96:0x0206), top: B:105:0x0062 }] */
-    /* JADX WARN: Failed to restore switch over string. Please report as a decompilation issue */
-    public void J(Context context, XmlResourceParser xmlResourceParser) {
-        wb0 wb0Var = new wb0();
-        int attributeCount = xmlResourceParser.getAttributeCount();
-        for (int i = 0; i < attributeCount; i++) {
-            String attributeName = xmlResourceParser.getAttributeName(i);
-            String attributeValue = xmlResourceParser.getAttributeValue(i);
-            if (attributeName != null && attributeValue != null && "id".equals(attributeName)) {
-                int identifier = attributeValue.contains("/") ? context.getResources().getIdentifier(attributeValue.substring(attributeValue.indexOf(47) + 1), "id", context.getPackageName()) : -1;
-                if (identifier == -1) {
-                    if (attributeValue.length() > 1) {
-                        identifier = Integer.parseInt(attributeValue.substring(1));
-                    } else {
-                        Log.e("ConstraintLayoutStates", "error in parsing id");
-                    }
-                }
-                try {
-                    int eventType = xmlResourceParser.getEventType();
-                    rb0 rb0VarE = null;
-                    while (eventType != 1) {
-                        if (eventType == 0) {
-                            xmlResourceParser.getName();
-                        } else if (eventType == 2) {
-                            String name = xmlResourceParser.getName();
-                            switch (name.hashCode()) {
-                                case -2025855158:
-                                    if (name.equals("Layout")) {
-                                        if (rb0VarE == null) {
-                                            throw new RuntimeException("XML parser error must be within a Constraint " + xmlResourceParser.getLineNumber());
-                                        }
-                                        rb0VarE.d.a(context, Xml.asAttributeSet(xmlResourceParser));
-                                    } else {
-                                        continue;
-                                    }
-                                    break;
-                                case -1984451626:
-                                    if (name.equals("Motion")) {
-                                        if (rb0VarE == null) {
-                                            throw new RuntimeException("XML parser error must be within a Constraint " + xmlResourceParser.getLineNumber());
-                                        }
-                                        rb0VarE.c.a(context, Xml.asAttributeSet(xmlResourceParser));
-                                    } else {
-                                        continue;
-                                    }
-                                    break;
-                                case -1962203927:
-                                    if (name.equals("ConstraintOverride")) {
-                                        rb0VarE = wb0.e(context, Xml.asAttributeSet(xmlResourceParser), true);
-                                    }
-                                    break;
-                                case -1269513683:
-                                    if (name.equals("PropertySet")) {
-                                        if (rb0VarE == null) {
-                                            throw new RuntimeException("XML parser error must be within a Constraint " + xmlResourceParser.getLineNumber());
-                                        }
-                                        rb0VarE.b.a(context, Xml.asAttributeSet(xmlResourceParser));
-                                    } else {
-                                        continue;
-                                    }
-                                    break;
-                                case -1238332596:
-                                    if (name.equals("Transform")) {
-                                        if (rb0VarE == null) {
-                                            throw new RuntimeException("XML parser error must be within a Constraint " + xmlResourceParser.getLineNumber());
-                                        }
-                                        rb0VarE.e.a(context, Xml.asAttributeSet(xmlResourceParser));
-                                    } else {
-                                        continue;
-                                    }
-                                    break;
-                                case -71750448:
-                                    if (name.equals("Guideline")) {
-                                        rb0VarE = wb0.e(context, Xml.asAttributeSet(xmlResourceParser), false);
-                                        rb0VarE.d.a = true;
-                                    }
-                                    break;
-                                case 366511058:
-                                    if (name.equals("CustomMethod")) {
-                                        if (rb0VarE != null) {
-                                            throw new RuntimeException("XML parser error must be within a Constraint " + xmlResourceParser.getLineNumber());
-                                        }
-                                        ib0.a(context, xmlResourceParser, rb0VarE.f);
-                                    } else {
-                                        continue;
-                                    }
-                                    break;
-                                case 1331510167:
-                                    if (name.equals("Barrier")) {
-                                        rb0VarE = wb0.e(context, Xml.asAttributeSet(xmlResourceParser), false);
-                                        rb0VarE.d.h0 = 1;
-                                    }
-                                    break;
-                                case 1791837707:
-                                    if (name.equals("CustomAttribute")) {
-                                        if (rb0VarE != null) {
-                                            throw new RuntimeException("XML parser error must be within a Constraint " + xmlResourceParser.getLineNumber());
-                                        }
-                                        ib0.a(context, xmlResourceParser, rb0VarE.f);
-                                    } else {
-                                        continue;
-                                    }
-                                    break;
-                                case 1803088381:
-                                    if (name.equals("Constraint")) {
-                                        rb0VarE = wb0.e(context, Xml.asAttributeSet(xmlResourceParser), false);
-                                    }
-                                    break;
-                            }
-                        } else if (eventType == 3) {
-                            String lowerCase = xmlResourceParser.getName().toLowerCase(Locale.ROOT);
-                            switch (lowerCase.hashCode()) {
-                                case -2075718416:
-                                    if (lowerCase.equals("guideline")) {
-                                        wb0Var.c.put(Integer.valueOf(rb0VarE.a), rb0VarE);
-                                        rb0VarE = null;
-                                    }
-                                    break;
-                                case -190376483:
-                                    if (lowerCase.equals("constraint")) {
-                                        wb0Var.c.put(Integer.valueOf(rb0VarE.a), rb0VarE);
-                                        rb0VarE = null;
-                                    }
-                                    break;
-                                case 426575017:
-                                    if (lowerCase.equals("constraintoverride")) {
-                                        wb0Var.c.put(Integer.valueOf(rb0VarE.a), rb0VarE);
-                                        rb0VarE = null;
-                                    }
-                                    break;
-                                case 2146106725:
-                                    if (lowerCase.equals("constraintset")) {
-                                        ((SparseArray) this.o).put(identifier, wb0Var);
-                                        return;
-                                    }
-                                    break;
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                        eventType = xmlResourceParser.next();
-                    }
-                } catch (IOException e) {
-                    Log.e("ConstraintSet", "Error parsing XML resource", e);
-                } catch (XmlPullParserException e2) {
-                    Log.e("ConstraintSet", "Error parsing XML resource", e2);
-                }
-                ((SparseArray) this.o).put(identifier, wb0Var);
-                return;
-            }
-        }
+    public void J(Context r12, XmlResourceParser r13) {
+        wb0 r0 = new wb0();
+        int r1 = r13.getAttributeCount();
+        int r3 = 0;
+    L3:
+        if (r3 >= r1) goto L104;
+        String r4 = r13.getAttributeName(r3);
+        String r5 = r13.getAttributeValue(r3);
+        if (r4 == null) goto L103;
+        if (r5 == null) goto L103;
+        if ("id".equals(r4) == false) goto L103;
+        if (r5.contains("/") == false) goto L13;
+        int r2 = r12.getResources().getIdentifier(r5.substring(r5.indexOf(47) + 1), "id", r12.getPackageName());
+    L14:
+        if (r2 != (-1)) goto L105;
+        if (r5.length() <= 1) goto L18;
+        r2 = Integer.parseInt(r5.substring(1));
+        goto L105
+    L18:
+        Log.e("ConstraintLayoutStates", "error in parsing id");
+    L105:
+        int r6 = r13.getEventType();     // Catch: IOException -> L34 XmlPullParserException -> L36
+        rb0 r8 = null;
+    L21:
+        if (r6 == 1) goto L101;
+        if (r6 != 0) goto L24;
+        r13.getName();     // Catch: IOException -> L34 XmlPullParserException -> L36
+    L97:
+        r6 = r13.next();     // Catch: IOException -> L34 XmlPullParserException -> L36
+        goto L21
+    L24:
+        if (r6 != 2) goto L26;
+        String r7 = r13.getName();     // Catch: IOException -> L34 XmlPullParserException -> L36
+        switch(r7.hashCode()) {
+            case -2025855158: goto L91;
+            case -1984451626: goto L85;
+            case -1962203927: goto L82;
+            case -1269513683: goto L76;
+            case -1238332596: goto L70;
+            case -71750448: goto L67;
+            case 366511058: goto L61;
+            case 1331510167: goto L58;
+            case 1791837707: goto L55;
+            case 1803088381: goto L52;
+            default: goto L97;
+        };
+    L52:
+        if (r7.equals("Constraint") == false) goto L97;
+        r8 = wb0.e(r12, Xml.asAttributeSet(r13), false);     // Catch: IOException -> L34 XmlPullParserException -> L36
+        goto L97
+    L55:
+        if (r7.equals("CustomAttribute") == false) goto L97;
+    L62:
+        if (r8 == null) goto L65;
+        ib0.a(r12, r13, r8.f);     // Catch: IOException -> L34 XmlPullParserException -> L36
+        goto L97
+    L65:
+        throw new RuntimeException("XML parser error must be within a Constraint " + r13.getLineNumber());     // Catch: IOException -> L34 XmlPullParserException -> L36
+    L58:
+        if (r7.equals("Barrier") == false) goto L97;
+        r8 = wb0.e(r12, Xml.asAttributeSet(r13), false);     // Catch: IOException -> L34 XmlPullParserException -> L36
+        r8.d.h0 = 1;     // Catch: IOException -> L34 XmlPullParserException -> L36
+        goto L97
+    L61:
+        if (r7.equals("CustomMethod") == false) goto L97;
+    L67:
+        if (r7.equals("Guideline") == false) goto L97;
+        r8 = wb0.e(r12, Xml.asAttributeSet(r13), false);     // Catch: IOException -> L34 XmlPullParserException -> L36
+        r8.d.a = true;     // Catch: IOException -> L34 XmlPullParserException -> L36
+        goto L97
+    L70:
+        if (r7.equals("Transform") == false) goto L97;
+        if (r8 == null) goto L74;
+        r8.e.a(r12, Xml.asAttributeSet(r13));     // Catch: IOException -> L34 XmlPullParserException -> L36
+        goto L97
+    L74:
+        throw new RuntimeException("XML parser error must be within a Constraint " + r13.getLineNumber());     // Catch: IOException -> L34 XmlPullParserException -> L36
+    L76:
+        if (r7.equals("PropertySet") == false) goto L97;
+        if (r8 == null) goto L80;
+        r8.b.a(r12, Xml.asAttributeSet(r13));     // Catch: IOException -> L34 XmlPullParserException -> L36
+        goto L97
+    L80:
+        throw new RuntimeException("XML parser error must be within a Constraint " + r13.getLineNumber());     // Catch: IOException -> L34 XmlPullParserException -> L36
+    L82:
+        if (r7.equals("ConstraintOverride") == false) goto L97;
+        r8 = wb0.e(r12, Xml.asAttributeSet(r13), true);     // Catch: IOException -> L34 XmlPullParserException -> L36
+        goto L97
+    L85:
+        if (r7.equals("Motion") == false) goto L97;
+        if (r8 == null) goto L89;
+        r8.c.a(r12, Xml.asAttributeSet(r13));     // Catch: IOException -> L34 XmlPullParserException -> L36
+        goto L97
+    L89:
+        throw new RuntimeException("XML parser error must be within a Constraint " + r13.getLineNumber());     // Catch: IOException -> L34 XmlPullParserException -> L36
+    L91:
+        if (r7.equals("Layout") == false) goto L97;
+        if (r8 == null) goto L95;
+        r8.d.a(r12, Xml.asAttributeSet(r13));     // Catch: IOException -> L34 XmlPullParserException -> L36
+        goto L97
+    L95:
+        throw new RuntimeException("XML parser error must be within a Constraint " + r13.getLineNumber());     // Catch: IOException -> L34 XmlPullParserException -> L36
+    L26:
+        if (r6 != 3) goto L97;
+        String r9 = r13.getName().toLowerCase(Locale.ROOT);     // Catch: IOException -> L34 XmlPullParserException -> L36
+        switch(r9.hashCode()) {
+            case -2075718416: goto L45;
+            case -190376483: goto L42;
+            case 426575017: goto L39;
+            case 2146106725: goto L32;
+            default: goto L97;
+        };     // Catch: IOException -> L34 XmlPullParserException -> L36
+    L32:
+        if (r9.equals("constraintset") == false) goto L97;
+    L39:
+        if (r9.equals("constraintoverride") == false) goto L97;
+    L46:
+        r0.c.put(Integer.valueOf(r8.a), r8);     // Catch: IOException -> L34 XmlPullParserException -> L36
+        r8 = null;
+        goto L97
+    L42:
+        if (r9.equals("constraint") == false) goto L97;
+    L45:
+        if (r9.equals("guideline") == false) goto L97;
+    L101:
+        ((SparseArray) this.o).put(r2, r0);
+        return;
+    L34:
+        e = move-exception;
+        Log.e("ConstraintSet", "Error parsing XML resource", e);
+    L36:
+        e = move-exception;
+        Log.e("ConstraintSet", "Error parsing XML resource", e);
+        goto L101
+    L13:
+        r2 = -1;
+    L103:
+        r3 = r3 + 1;
+        goto L3
     }
 
-    public n50 K(cx3 cx3Var, int i) {
-        r65 r65Var;
-        n50 n50Var;
-        yd4 yd4Var = (yd4) this.n;
-        int iD = yd4Var.d(cx3Var);
-        if (iD >= 0 && (r65Var = (r65) yd4Var.j(iD)) != null) {
-            int i2 = r65Var.a;
-            if ((i2 & i) != 0) {
-                int i3 = i2 & (~i);
-                r65Var.a = i3;
-                if (i == 4) {
-                    n50Var = r65Var.b;
-                } else if (i == 8) {
-                    n50Var = r65Var.c;
-                } else {
-                    kf2.n("Must provide flag PRE or POST");
-                }
-                if ((i3 & 12) == 0) {
-                    yd4Var.h(iD);
-                    r65Var.a = 0;
-                    r65Var.b = null;
-                    r65Var.c = null;
-                    r65.d.a(r65Var);
-                }
-                return n50Var;
-            }
-        }
+    public n50 K(cx3 r5, int r6) {
+        yd4 r4 = (yd4) this.n;
+        int r7 = r4.d(r5);
+        if (r7 < 0) goto L20;
+        r65 r1 = (r65) r4.j(r7);
+        if (r1 == null) goto L20;
+        int r2 = r1.a;
+        if ((r2 & r6) == 0) goto L20;
+        int r3 = r2 & (~r6);
+        r1.a = r3;
+        if (r6 != 4) goto L13;
+        n50 r8 = r1.b;
+    L16:
+        if ((r3 & 12) != 0) goto L18;
+        r4.h(r7);
+        r1.a = 0;
+        r1.b = null;
+        r1.c = null;
+        r65.d.a(r1);
+    L18:
+        return r8;
+    L13:
+        if (r6 != 8) goto L19;
+        r8 = r1.c;
+        goto L16
+    L19:
+        kf2.n("Must provide flag PRE or POST");
+    L20:
         return null;
     }
 
-    public void L(String str, i54 i54Var) {
-        i54Var.getClass();
-        xm2 xm2Var = (xm2) this.n;
-        synchronized (((xi4) xm2Var.f)) {
-            if (((LinkedHashMap) xm2Var.g).containsKey(str)) {
-                throw new IllegalArgumentException("SavedStateProvider with the given key is already registered");
-            }
-            ((LinkedHashMap) xm2Var.g).put(str, i54Var);
-        }
+    public void L(String r3, i54 r4) {
+        r4.getClass();
+        xm2 r2 = (xm2) this.n;
+        xi4 r0 = (xi4) r2.f;
+        monitor-enter(r0);
+    L9:
+        th = move-exception;
+        throw th;
+    L5:
+        if (((LinkedHashMap) r2.g).containsKey(r3) == true) goto L12;
+        ((LinkedHashMap) r2.g).put(r3, r4);     // Catch: Throwable -> L9
+        monitor-exit(r0);
+        return;
+    L12:
+        throw new IllegalArgumentException("SavedStateProvider with the given key is already registered");     // Catch: Throwable -> L9
     }
 
-    public void M(String str) {
-        yq0 yq0Var;
-        synchronized (this) {
-            try {
-                Object obj = ((HashMap) this.n).get(str);
-                h12.f(obj, "Argument must not be null");
-                yq0Var = (yq0) obj;
-                int i = yq0Var.b;
-                if (i < 1) {
-                    throw new IllegalStateException("Cannot release a lock that is not held, safeKey: " + str + ", interestedThreads: " + yq0Var.b);
-                }
-                int i2 = i - 1;
-                yq0Var.b = i2;
-                if (i2 == 0) {
-                    yq0 yq0Var2 = (yq0) ((HashMap) this.n).remove(str);
-                    if (!yq0Var2.equals(yq0Var)) {
-                        throw new IllegalStateException("Removed the wrong lock, expected to remove: " + yq0Var + ", but actually removed: " + yq0Var2 + ", safeKey: " + str);
-                    }
-                    zg5 zg5Var = (zg5) this.o;
-                    synchronized (((ArrayDeque) zg5Var.n)) {
-                        try {
-                            if (((ArrayDeque) zg5Var.n).size() < 10) {
-                                ((ArrayDeque) zg5Var.n).offer(yq0Var2);
-                            }
-                        } catch (Throwable th) {
-                            throw th;
-                        }
-                    }
-                }
-            } catch (Throwable th2) {
-                throw th2;
-            }
-        }
-        yq0Var.a.unlock();
+    public void M(String r6) {
+        monitor-enter(this);
+        Object r2 = ((HashMap) this.n).get(r6);     // Catch: Throwable -> L23
+        h12.f(r2, "Argument must not be null");     // Catch: Throwable -> L23
+        yq0 r3 = (yq0) r2;     // Catch: Throwable -> L23
+        int r4 = r3.b;     // Catch: Throwable -> L23
+        if (r4 < 1) goto L29;
+        int r5 = r4 - 1;     // Catch: Throwable -> L23
+        r3.b = r5;     // Catch: Throwable -> L23
+        if (r5 != 0) goto L25;
+        yq0 r1 = (yq0) ((HashMap) this.n).remove(r6);     // Catch: Throwable -> L23
+        if (r1.equals(r3) == false) goto L22;
+        zg5 r7 = (zg5) this.o;     // Catch: Throwable -> L23
+        ArrayDeque r0 = (ArrayDeque) r7.n;     // Catch: Throwable -> L23
+        monitor-enter(r0);     // Catch: Throwable -> L23
+    L15:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L23
+    L13:
+        if (((ArrayDeque) r7.n).size() >= 10) goto L17;
+        ((ArrayDeque) r7.n).offer(r1);     // Catch: Throwable -> L15
+    L17:
+        monitor-exit(r0);     // Catch: Throwable -> L15
+    L22:
+        throw new IllegalStateException("Removed the wrong lock, expected to remove: " + r3 + ", but actually removed: " + r1 + ", safeKey: " + r6);     // Catch: Throwable -> L23
+    L25:
+        monitor-exit(this);     // Catch: Throwable -> L23
+        r3.a.unlock();
+        return;
+    L29:
+        throw new IllegalStateException("Cannot release a lock that is not held, safeKey: " + r6 + ", interestedThreads: " + r3.b);     // Catch: Throwable -> L23
+    L23:
+        th = move-exception;
+        throw th;
     }
 
-    public void N(cx3 cx3Var) {
-        r65 r65Var = (r65) ((yd4) this.n).get(cx3Var);
-        if (r65Var == null) {
-            return;
-        }
-        r65Var.a &= -2;
+    public void N(cx3 r1) {
+        r65 r0 = (r65) ((yd4) this.n).get(r1);
+        if (r0 != null) goto L5;
+        return;
+    L5:
+        r0.a &= -2;
     }
 
-    public void O(cx3 cx3Var) {
-        xe2 xe2Var = (xe2) this.o;
-        for (int iH = xe2Var.h() - 1; iH >= 0; iH--) {
-            if (cx3Var == xe2Var.i(iH)) {
-                Object[] objArr = xe2Var.p;
-                Object obj = objArr[iH];
-                Object obj2 = ud3.b;
-                if (obj == obj2) {
-                    break;
-                }
-                objArr[iH] = obj2;
-                xe2Var.n = true;
-                break;
-            }
-        }
-        r65 r65Var = (r65) ((yd4) this.n).remove(cx3Var);
-        if (r65Var != null) {
-            r65Var.a = 0;
-            r65Var.b = null;
-            r65Var.c = null;
-            r65.d.a(r65Var);
-        }
+    public void O(cx3 r7) {
+        xe2 r0 = (xe2) this.o;
+        int r1 = r0.h() - 1;
+    L3:
+        if (r1 < 0) goto L10;
+        if (r7 == r0.i(r1)) goto L6;
+        r1 = r1 - 1;
+        goto L3
+    L6:
+        Object[] r3 = r0.p;
+        Object r4 = r3[r1];
+        Object r5 = ud3.b;
+        if (r4 == r5) goto L10;
+        r3[r1] = r5;
+        r0.n = true;
+    L10:
+        r65 r6 = (r65) ((yd4) this.n).remove(r7);
+        if (r6 == null) goto L16;
+        r6.a = 0;
+        r6.b = null;
+        r6.c = null;
+        r65.d.a(r6);
+        return;
     }
 
     public void P() {
-        if (!((xm2) this.n).c) {
-            kf2.o("Can not perform this action after onSaveInstanceState");
-            return;
-        }
-        bf bfVar = (bf) this.o;
-        if (bfVar == null) {
-            bfVar = new bf(this);
-        }
-        this.o = bfVar;
-        try {
-            g92.class.getDeclaredConstructor(null);
-            bf bfVar2 = (bf) this.o;
-            if (bfVar2 != null) {
-                ((LinkedHashSet) bfVar2.b).add(g92.class.getName());
-            }
-        } catch (NoSuchMethodException e) {
-            throw new IllegalArgumentException("Class " + g92.class.getSimpleName() + " must have default constructor in order to be automatically recreated", e);
-        }
+        if (((xm2) this.n).c == false) goto L16;
+        bf r1 = (bf) this.o;
+        if (r1 != null) goto L7;
+        r1 = new bf(this);
+    L7:
+        this.o = r1;
+        g92.class.getDeclaredConstructor(null);     // Catch: NoSuchMethodException -> L13
+        bf r4 = (bf) this.o;
+        if (r4 == null) goto L20;
+        ((LinkedHashSet) r4.b).add(g92.class.getName());
+        return;
+    L20:
+        return;
+    L13:
+        e = move-exception;
+        throw new IllegalArgumentException("Class " + g92.class.getSimpleName() + " must have default constructor in order to be automatically recreated", e);
+    L16:
+        kf2.o("Can not perform this action after onSaveInstanceState");
     }
 
-    public void Q(gl4 gl4Var, z45 z45Var) {
-        gl4Var.getClass();
-        ((bq4) this.o).h(new qo2(this, gl4Var, z45Var, 21));
+    public void Q(gl4 r4, z45 r5) {
+        r4.getClass();
+        ((bq4) this.o).h(new qo2(this, r4, r5, 21));
     }
 
-    public void R(gl4 gl4Var, int i) {
-        gl4Var.getClass();
-        ((bq4) this.o).h(new am4((pq3) this.n, gl4Var, false, i));
+    public void R(gl4 r4, int r5) {
+        r4.getClass();
+        ((bq4) this.o).h(new am4((pq3) this.n, r4, false, r5));
     }
 
-    public Call S(String str, String str2, Boolean bool, ArrayList arrayList, ArrayList arrayList2) {
+    public Call S(String r9, String r10, Boolean r11, ArrayList r12, ArrayList r13) {
         Log.d("BrowsingClient", "updatePlaylist()");
-        return ((qm3) this.o).b(((pn4) this.n).f(), str, str2, bool, arrayList, arrayList2);
+        return ((qm3) this.o).b(((pn4) this.n).f(), r9, r10, r11, r12, r13);
     }
 
     @Override // defpackage.ak2
     public void a() {
-        ns3 ns3Var = (ns3) this.o;
-        MediaCodec mediaCodec = (MediaCodec) this.n;
-        try {
-            int i = Build.VERSION.SDK_INT;
-            if (i >= 30 && i < 33) {
-                mediaCodec.stop();
-            }
-        } finally {
-            if (Build.VERSION.SDK_INT >= 35 && ns3Var != null) {
-                ns3Var.e(mediaCodec);
-            }
-            mediaCodec.release();
-        }
+        ns3 r0 = (ns3) this.o;
+        MediaCodec r4 = (MediaCodec) this.n;
+        int r2 = Build.VERSION.SDK_INT;     // Catch: Throwable -> L9
+        if (r2 >= 30) goto L6;
+    L11:
+        if (r2 < 35) goto L14;
+        if (r0 == null) goto L14;
+        r0.e(r4);
+    L14:
+        r4.release();
+        return;
+    L6:
+        if (r2 >= 33) goto L11;
+        r4.stop();     // Catch: Throwable -> L9
+    L9:
+        th = move-exception;
+        if (Build.VERSION.SDK_INT < 35) goto L20;
+        if (r0 == null) goto L20;
+        r0.e(r4);
+    L20:
+        r4.release();
+        throw th;
     }
 
     @Override // defpackage.eg1
     /* JADX INFO: renamed from: apply */
-    public Object mo77apply(Object obj) {
-        return ((eg1) ((hg3) this.n).o).mo77apply(obj);
+    public Object mo77apply(Object r1) {
+        return ((eg1) ((hg3) this.n).o).mo77apply(r1);
     }
 
     @Override // defpackage.f51
     public int b() {
-        ViewGroup.MarginLayoutParams marginLayoutParams;
-        ExtendedFloatingActionButton extendedFloatingActionButton = (ExtendedFloatingActionButton) ((hg3) this.n).o;
-        ExtendedFloatingActionButton extendedFloatingActionButton2 = (ExtendedFloatingActionButton) this.o;
-        int i = extendedFloatingActionButton2.U;
-        if (i != -1) {
-            return (i == 0 || i == -2) ? extendedFloatingActionButton.getMeasuredHeight() : i;
-        }
-        if (!(extendedFloatingActionButton2.getParent() instanceof View)) {
-            return extendedFloatingActionButton.getMeasuredHeight();
-        }
-        View view = (View) extendedFloatingActionButton2.getParent();
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        if (layoutParams == null || layoutParams.height != -2) {
-            return (view.getHeight() - ((!(extendedFloatingActionButton2.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) || (marginLayoutParams = (ViewGroup.MarginLayoutParams) extendedFloatingActionButton2.getLayoutParams()) == null) ? 0 : marginLayoutParams.topMargin + marginLayoutParams.bottomMargin)) - (view.getPaddingBottom() + view.getPaddingTop());
-        }
-        return extendedFloatingActionButton.getMeasuredHeight();
+        ExtendedFloatingActionButton r0 = (ExtendedFloatingActionButton) ((hg3) this.n).o;
+        ExtendedFloatingActionButton r4 = (ExtendedFloatingActionButton) this.o;
+        int r1 = r4.U;
+        if (r1 == (-1)) goto L5;
+        if (r1 == 0) goto L27;
+        if (r1 == (-2)) goto L27;
+        return r1;
+    L27:
+        return r0.getMeasuredHeight();
+    L5:
+        if ((r4.getParent() instanceof View) == false) goto L7;
+        View r2 = (View) r4.getParent();
+        ViewGroup.LayoutParams r3 = r2.getLayoutParams();
+        if (r3 != null) goto L11;
+    L14:
+        int r5 = r2.getPaddingTop();
+        int r6 = r2.getPaddingBottom() + r5;
+        if ((r4.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) == false) goto L19;
+        ViewGroup.MarginLayoutParams r7 = (ViewGroup.MarginLayoutParams) r4.getLayoutParams();
+        if (r7 == null) goto L19;
+        int r8 = r7.topMargin + r7.bottomMargin;
+    L21:
+        return (r2.getHeight() - r8) - r6;
+    L19:
+        r8 = 0;
+        goto L21
+    L11:
+        if (r3.height != (-2)) goto L14;
+        return r0.getMeasuredHeight();
+    L7:
+        return r0.getMeasuredHeight();
     }
 
     @Override // defpackage.ak2
-    public void c(Bundle bundle) {
-        ((MediaCodec) this.n).setParameters(bundle);
+    public void c(Bundle r1) {
+        ((MediaCodec) this.n).setParameters(r1);
     }
 
     @Override // defpackage.f51
     public int d() {
-        ViewGroup.MarginLayoutParams marginLayoutParams;
-        hg3 hg3Var = (hg3) this.n;
-        ExtendedFloatingActionButton extendedFloatingActionButton = (ExtendedFloatingActionButton) this.o;
-        if (!(extendedFloatingActionButton.getParent() instanceof View)) {
-            return hg3Var.d();
-        }
-        View view = (View) extendedFloatingActionButton.getParent();
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        if (layoutParams == null || layoutParams.width != -2) {
-            return (view.getWidth() - ((!(extendedFloatingActionButton.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) || (marginLayoutParams = (ViewGroup.MarginLayoutParams) extendedFloatingActionButton.getLayoutParams()) == null) ? 0 : marginLayoutParams.leftMargin + marginLayoutParams.rightMargin)) - (view.getPaddingRight() + view.getPaddingLeft());
-        }
-        return hg3Var.d();
+        hg3 r0 = (hg3) this.n;
+        ExtendedFloatingActionButton r4 = (ExtendedFloatingActionButton) this.o;
+        if ((r4.getParent() instanceof View) == false) goto L5;
+        View r1 = (View) r4.getParent();
+        ViewGroup.LayoutParams r2 = r1.getLayoutParams();
+        if (r2 != null) goto L9;
+    L12:
+        int r3 = r1.getPaddingLeft();
+        int r5 = r1.getPaddingRight() + r3;
+        if ((r4.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) == false) goto L17;
+        ViewGroup.MarginLayoutParams r6 = (ViewGroup.MarginLayoutParams) r4.getLayoutParams();
+        if (r6 == null) goto L17;
+        int r7 = r6.leftMargin + r6.rightMargin;
+    L19:
+        return (r1.getWidth() - r7) - r5;
+    L17:
+        r7 = 0;
+        goto L19
+    L9:
+        if (r2.width != (-2)) goto L12;
+        return r0.d();
+    L5:
+        return r0.d();
     }
 
     @Override // defpackage.ak2
-    public void e(int i, fg0 fg0Var, long j, int i2) {
-        ((MediaCodec) this.n).queueSecureInputBuffer(i, 0, fg0Var.i, j, i2);
+    public void e(int r8, fg0 r9, long r10, int r12) {
+        ((MediaCodec) this.n).queueSecureInputBuffer(r8, 0, r9.i, r10, r12);
     }
 
     @Override // defpackage.ak2
-    public void f(int i, int i2, int i3, long j) {
-        ((MediaCodec) this.n).queueInputBuffer(i, 0, i2, j, i3);
+    public void f(int r8, int r9, int r10, long r11) {
+        ((MediaCodec) this.n).queueInputBuffer(r8, 0, r9, r11, r10);
     }
 
     @Override // defpackage.ak2
@@ -936,8 +1013,8 @@ public class rm3 implements u74, f51, eg1, ak2 {
     }
 
     @Override // defpackage.ak2
-    public void g(int i) {
-        ((MediaCodec) this.n).releaseOutputBuffer(i, false);
+    public void g(int r2) {
+        ((MediaCodec) this.n).releaseOutputBuffer(r2, false);
     }
 
     @Override // defpackage.ak2
@@ -947,7 +1024,7 @@ public class rm3 implements u74, f51, eg1, ak2 {
 
     @Override // defpackage.ak2
     public void i() {
-        ((MediaCodec) this.n).detachOutputSurface();
+        vk.k((MediaCodec) this.n);
     }
 
     @Override // defpackage.f51
@@ -956,58 +1033,57 @@ public class rm3 implements u74, f51, eg1, ak2 {
     }
 
     @Override // defpackage.ak2
-    public void l(int i, long j) {
-        ((MediaCodec) this.n).releaseOutputBuffer(i, j);
+    public void l(int r1, long r2) {
+        ((MediaCodec) this.n).releaseOutputBuffer(r1, r2);
     }
 
     @Override // defpackage.ak2
     public int m() {
-        return ((MediaCodec) this.n).dequeueInputBuffer(0L);
+        return ((MediaCodec) this.n).dequeueInputBuffer(0);
     }
 
     @Override // defpackage.ak2
-    public int n(MediaCodec.BufferInfo bufferInfo) {
-        int iDequeueOutputBuffer;
-        do {
-            iDequeueOutputBuffer = ((MediaCodec) this.n).dequeueOutputBuffer(bufferInfo, 0L);
-        } while (iDequeueOutputBuffer == -3);
-        return iDequeueOutputBuffer;
+    public int n(MediaCodec.BufferInfo r4) {
+    L2:
+        int r0 = ((MediaCodec) this.n).dequeueOutputBuffer(r4, 0);
+        if (r0 == (-3)) goto L2;
+        return r0;
     }
 
     @Override // defpackage.f51
     public ViewGroup.LayoutParams o() {
-        int i = ((ExtendedFloatingActionButton) this.o).U;
-        if (i == 0) {
-            i = -2;
-        }
-        return new ViewGroup.LayoutParams(-1, i);
+        int r2 = ((ExtendedFloatingActionButton) this.o).U;
+        if (r2 != 0) goto L6;
+        r2 = -2;
+    L6:
+        return new ViewGroup.LayoutParams(-1, r2);
     }
 
     @Override // defpackage.u74
-    public boolean onQueryTextChange(String str) {
-        ((o7) ((AlbumListPageFragment) this.o).o0.v).filter(str);
+    public boolean onQueryTextChange(String r1) {
+        ((o7) ((AlbumListPageFragment) this.o).o0.v).filter(r1);
         return false;
     }
 
     @Override // defpackage.u74
-    public boolean onQueryTextSubmit(String str) {
+    public boolean onQueryTextSubmit(String r1) {
         ((SearchView) this.n).clearFocus();
         return false;
     }
 
     @Override // defpackage.ak2
-    public void p(int i) {
-        ((MediaCodec) this.n).setVideoScalingMode(i);
+    public void p(int r1) {
+        ((MediaCodec) this.n).setVideoScalingMode(r1);
     }
 
     @Override // defpackage.ak2
-    public ByteBuffer q(int i) {
-        return ((MediaCodec) this.n).getInputBuffer(i);
+    public ByteBuffer q(int r1) {
+        return ((MediaCodec) this.n).getInputBuffer(r1);
     }
 
     @Override // defpackage.ak2
-    public void r(Surface surface) {
-        ((MediaCodec) this.n).setOutputSurface(surface);
+    public void r(Surface r1) {
+        ((MediaCodec) this.n).setOutputSurface(r1);
     }
 
     @Override // defpackage.f51
@@ -1016,105 +1092,114 @@ public class rm3 implements u74, f51, eg1, ak2 {
     }
 
     @Override // defpackage.ak2
-    public ByteBuffer t(int i) {
-        return ((MediaCodec) this.n).getOutputBuffer(i);
+    public ByteBuffer t(int r1) {
+        return ((MediaCodec) this.n).getOutputBuffer(r1);
     }
 
     @Override // defpackage.ak2
-    public void u(ArrayList arrayList) {
-        ((MediaCodec) this.n).subscribeToVendorParameters(arrayList);
+    public void u(ArrayList r1) {
+        go2.B((MediaCodec) this.n, r1);
     }
 
     @Override // defpackage.ak2
-    public void v(nk2 nk2Var, Handler handler) {
-        ((MediaCodec) this.n).setOnFrameRenderedListener(new wk(this, nk2Var, 1), handler);
+    public void v(nk2 r4, Handler r5) {
+        ((MediaCodec) this.n).setOnFrameRenderedListener(new wk(this, r4, 1), r5);
     }
 
     @Override // defpackage.ak2
-    public void x(ArrayList arrayList) {
-        ((MediaCodec) this.n).unsubscribeFromVendorParameters(arrayList);
+    public void x(ArrayList r1) {
+        go2.l((MediaCodec) this.n, r1);
     }
 
-    public void y(cx3 cx3Var, n50 n50Var) {
-        yd4 yd4Var = (yd4) this.n;
-        r65 r65VarA = (r65) yd4Var.get(cx3Var);
-        if (r65VarA == null) {
-            r65VarA = r65.a();
-            yd4Var.put(cx3Var, r65VarA);
-        }
-        r65VarA.c = n50Var;
-        r65VarA.a |= 8;
+    public void y(cx3 r2, n50 r3) {
+        yd4 r1 = (yd4) this.n;
+        r65 r0 = (r65) r1.get(r2);
+        if (r0 != null) goto L5;
+        r0 = r65.a();
+        r1.put(r2, r0);
+    L5:
+        r0.c = r3;
+        r0.a |= 8;
     }
 
     public void z() {
-        LinkedHashSet linkedHashSet = (LinkedHashSet) this.n;
-        if (linkedHashSet.isEmpty()) {
-            return;
-        }
-        linkedHashSet.clear();
-        vo1 vo1Var = (vo1) this.o;
-        if (vo1Var != null) {
-            vo1Var.invoke();
-        }
+        LinkedHashSet r0 = (LinkedHashSet) this.n;
+        if (r0.isEmpty() == true) goto L10;
+        r0.clear();
+        vo1 r2 = (vo1) this.o;
+        if (r2 == null) goto L9;
+        r2.invoke();
+        return;
+    L9:
+        return;
     }
 
-    public /* synthetic */ rm3(Object obj, Object obj2, boolean z) {
-        this.n = obj;
-        this.o = obj2;
+    public /* synthetic */ rm3(Object r1, Object r2, boolean r3) {
+        this.n = r1;
+        this.o = r2;
     }
 
-    public /* synthetic */ rm3(Object obj, Object obj2) {
-        this.o = obj;
-        this.n = obj2;
+    public /* synthetic */ rm3(Object r1, Object r2) {
+        this.o = r1;
+        this.n = r2;
     }
 
-    public rm3(int i) {
-        switch (i) {
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                this.n = new f13(new c72[16]);
-                break;
-            case 17:
-            case 19:
-            case 21:
-            default:
-                this.n = new HashMap();
-                this.o = new zg5(21);
-                break;
-            case 18:
-                long[] jArr = v54.a;
-                this.n = new w03();
-                break;
-            case 20:
-                this.n = new LinkedHashSet();
-                break;
-            case 22:
-                this.n = new yd4(0);
-                this.o = new xe2((Object) null);
-                break;
-        }
+    public rm3(int r2) {
+        switch(r2) {
+            case 16: goto L11;
+            case 17: goto L3;
+            case 18: goto L9;
+            case 19: goto L3;
+            case 20: goto L7;
+            case 21: goto L3;
+            case 22: goto L5;
+            default: goto L3;
+        };
+    L3:
+        this.n = new HashMap();
+        this.o = new zg5(21);
+        return;
+    L5:
+        this.n = new yd4(0);
+        this.o = new xe2(null);
+        return;
+    L7:
+        this.n = new LinkedHashSet();
+        return;
+    L9:
+        long[] r3 = v54.a;
+        this.n = new w03();
+        return;
+    L11:
+        this.n = new f13(new c72[16]);
     }
 
-    public rm3(pq3 pq3Var, bq4 bq4Var) {
-        pq3Var.getClass();
-        bq4Var.getClass();
-        this.n = pq3Var;
-        this.o = bq4Var;
+    public rm3(pq3 r1, bq4 r2) {
+        r1.getClass();
+        r2.getClass();
+        this.n = r1;
+        this.o = r2;
     }
 
-    public rm3(MediaCodec mediaCodec, ns3 ns3Var) {
-        this.n = mediaCodec;
-        this.o = ns3Var;
-        if (Build.VERSION.SDK_INT < 35 || ns3Var == null) {
-            return;
-        }
-        LoudnessCodecController loudnessCodecController = (LoudnessCodecController) ns3Var.q;
-        if (loudnessCodecController == null || loudnessCodecController.addMediaCodec(mediaCodec)) {
-            rr2.w(((HashSet) ns3Var.o).add(mediaCodec));
-        }
+    public rm3(MediaCodec r2, ns3 r3) {
+        this.n = r2;
+        this.o = r3;
+        if (Build.VERSION.SDK_INT < 35) goto L12;
+        if (r3 == null) goto L13;
+        LoudnessCodecController r1 = (LoudnessCodecController) r3.q;
+        if (r1 != null) goto L8;
+    L10:
+        rr2.w(((HashSet) r3.o).add(r2));
+        return;
+    L8:
+        if (vk.i(r1, r2) == true) goto L10;
+        return;
+    L13:
+        return;
     }
 
-    public rm3(mj0 mj0Var) {
-        this.n = mj0Var;
+    public rm3(mj0 r2) {
+        this.n = r2;
         this.o = new AtomicBoolean(false);
     }
 }

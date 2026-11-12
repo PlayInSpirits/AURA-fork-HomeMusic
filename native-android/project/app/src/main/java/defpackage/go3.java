@@ -13,100 +13,95 @@ public final class go3 implements mw4, qu3 {
     public final ii c;
     public final AtomicBoolean d;
 
-    public go3(sa0 sa0Var, boolean z) {
-        sa0Var.getClass();
-        this.a = sa0Var;
-        this.b = z;
+    public go3(sa0 r1, boolean r2) {
+        r1.getClass();
+        this.a = r1;
+        this.b = r2;
         this.c = new ii();
         this.d = new AtomicBoolean(false);
     }
 
     @Override // defpackage.mw4
-    public final Object a(lw4 lw4Var, wf1 wf1Var, ep4 ep4Var) {
-        if (this.d.get()) {
-            h12.P(21, "Connection is recycled");
-            throw null;
-        }
-        da0 da0Var = (da0) ep4Var.getContext().K(da0.o);
-        if (da0Var != null && da0Var.n == this) {
-            return g(lw4Var, wf1Var, ep4Var);
-        }
+    public final Object a(lw4 r5, wf1 r6, ep4 r7) {
+        if (this.d.get() == true) goto L12;
+        da0 r0 = (da0) r7.getContext().K(da0.o);
+        if (r0 != null) goto L7;
+    L10:
         h12.P(21, "Attempted to use connection on a different coroutine");
+        throw null;
+    L7:
+        if (r0.n != this) goto L10;
+        return g(r5, r6, r7);
+    L12:
+        h12.P(21, "Connection is recycled");
         throw null;
     }
 
-    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
     @Override // defpackage.yn3
-    public final Object b(String str, if1 if1Var, wd0 wd0Var) {
-        fo3 fo3Var;
-        sa0 sa0Var;
-        if (wd0Var instanceof fo3) {
-            fo3Var = (fo3) wd0Var;
-            int i = fo3Var.t;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                fo3Var.t = i - Integer.MIN_VALUE;
-            } else {
-                fo3Var = new fo3(this, wd0Var);
-            }
-        } else {
-            fo3Var = new fo3(this, wd0Var);
-        }
-        Object obj = fo3Var.r;
-        int i2 = fo3Var.t;
-        if (i2 == 0) {
-            kb4.X(obj);
-            if (this.d.get()) {
-                h12.P(21, "Connection is recycled");
-                throw null;
-            }
-            da0 da0Var = (da0) fo3Var.getContext().K(da0.o);
-            if (da0Var == null || da0Var.n != this) {
-                h12.P(21, "Attempted to use connection on a different coroutine");
-                throw null;
-            }
-            fo3Var.n = this;
-            fo3Var.o = str;
-            fo3Var.p = if1Var;
-            sa0Var = this.a;
-            fo3Var.q = sa0Var;
-            fo3Var.t = 1;
-            Object objB = sa0Var.o.b(fo3Var);
-            xe0 xe0Var = xe0.n;
-            if (objB == xe0Var) {
-                return xe0Var;
-            }
-        } else {
-            if (i2 != 1) {
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            }
-            sa0 sa0Var2 = fo3Var.q;
-            if1Var = fo3Var.p;
-            str = fo3Var.o;
-            go3 go3Var = fo3Var.n;
-            kb4.X(obj);
-            sa0Var = sa0Var2;
-            this = go3Var;
-        }
-        try {
-            zn3 zn3Var = new zn3(this, this.a.U(str));
-            try {
-                Object objInvoke = if1Var.invoke(zn3Var);
-                ud3.e(zn3Var, null);
-                sa0Var.f(null);
-                return objInvoke;
-            } catch (Throwable th) {
-                try {
-                    throw th;
-                } catch (Throwable th2) {
-                    ud3.e(zn3Var, th);
-                    throw th2;
-                }
-            }
-        } catch (Throwable th3) {
-            sa0Var.f(null);
-            throw th3;
-        }
+    public final Object b(String r6, if1 r7, wd0 r8) {
+        if ((r8 instanceof fo3) == false) goto L7;
+        fo3 r0 = (fo3) r8;
+        int r1 = r0.t;
+        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
+        r0.t = r1 - Integer.MIN_VALUE;
+    L8:
+        Object r9 = r0.r;
+        int r2 = r0.t;
+        if (r2 == 0) goto L14;
+        if (r2 != 1) goto L12;
+        sa0 r5 = r0.q;
+        r7 = r0.p;
+        r6 = r0.o;
+        go3 r3 = r0.n;
+        kb4.X(r9);
+        sa0 r10 = r5;
+        go3 this = r3;
+    L41:
+        zn3 r4 = new zn3(this, this.a.U(r6));     // Catch: Throwable -> L28
+        Object r11 = r7.invoke(r4);     // Catch: Throwable -> L30
+        ud3.e(r4, null);     // Catch: Throwable -> L28
+        r10.f(null);
+        return r11;
+    L30:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L32
+    L32:
+        th = move-exception;
+        ud3.e(r4, th);     // Catch: Throwable -> L28
+        throw th;     // Catch: Throwable -> L28
+    L28:
+        th = move-exception;
+        r10.f(null);
+        throw th;
+    L12:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L14:
+        kb4.X(r9);
+        if (this.d.get() == true) goto L39;
+        da0 r12 = (da0) r0.getContext().K(da0.o);
+        if (r12 != null) goto L19;
+    L37:
+        h12.P(21, "Attempted to use connection on a different coroutine");
+        throw null;
+    L19:
+        if (r12.n != this) goto L37;
+        r0.n = this;
+        r0.o = r6;
+        r0.p = r7;
+        r10 = this.a;
+        r0.q = r10;
+        r0.t = 1;
+        Object r13 = r10.o.b(r0);
+        xe0 r14 = xe0.n;
+        if (r13 != r14) goto L41;
+        return r14;
+    L39:
+        h12.P(21, "Connection is recycled");
+        throw null;
+    L7:
+        r0 = new fo3(this, r8);
+        goto L8
     }
 
     @Override // defpackage.qu3
@@ -115,285 +110,250 @@ public final class go3 implements mw4, qu3 {
     }
 
     @Override // defpackage.mw4
-    public final Object d(ep4 ep4Var) {
-        if (this.d.get()) {
-            h12.P(21, "Connection is recycled");
-            throw null;
-        }
-        da0 da0Var = (da0) ep4Var.getContext().K(da0.o);
-        if (da0Var != null && da0Var.n == this) {
-            return Boolean.valueOf(!this.c.isEmpty());
-        }
+    public final Object d(ep4 r4) {
+        if (this.d.get() == true) goto L12;
+        da0 r5 = (da0) r4.getContext().K(da0.o);
+        if (r5 != null) goto L7;
+    L10:
         h12.P(21, "Attempted to use connection on a different coroutine");
+        throw null;
+    L7:
+        if (r5.n != this) goto L10;
+        return Boolean.valueOf(!this.c.isEmpty());
+    L12:
+        h12.P(21, "Connection is recycled");
         throw null;
     }
 
-    /* JADX WARN: Code duplicated, block: B:7:0x0015  */
-    public final Object e(lw4 lw4Var, wd0 wd0Var) {
-        co3 co3Var;
-        sa0 sa0Var;
-        if (wd0Var instanceof co3) {
-            co3Var = (co3) wd0Var;
-            int i = co3Var.s;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                co3Var.s = i - Integer.MIN_VALUE;
-            } else {
-                co3Var = new co3(this, wd0Var);
-            }
-        } else {
-            co3Var = new co3(this, wd0Var);
-        }
-        Object obj = co3Var.q;
-        int i2 = co3Var.s;
-        if (i2 == 0) {
-            kb4.X(obj);
-            co3Var.n = this;
-            co3Var.o = lw4Var;
-            sa0Var = this.a;
-            co3Var.p = sa0Var;
-            co3Var.s = 1;
-            Object objB = sa0Var.o.b(co3Var);
-            xe0 xe0Var = xe0.n;
-            if (objB == xe0Var) {
-                return xe0Var;
-            }
-        } else {
-            if (i2 != 1) {
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            }
-            sa0 sa0Var2 = co3Var.p;
-            lw4Var = co3Var.o;
-            go3 go3Var = co3Var.n;
-            kb4.X(obj);
-            sa0Var = sa0Var2;
-            this = go3Var;
-        }
-        try {
-            ii iiVar = this.c;
-            sa0 sa0Var3 = this.a;
-            int i3 = iiVar.p;
-            if (iiVar.isEmpty()) {
-                int iOrdinal = lw4Var.ordinal();
-                if (iOrdinal == 0) {
-                    h12.n(sa0Var3, "BEGIN DEFERRED TRANSACTION");
-                } else if (iOrdinal == 1) {
-                    h12.n(sa0Var3, "BEGIN IMMEDIATE TRANSACTION");
-                } else {
-                    if (iOrdinal != 2) {
-                        throw new NoWhenBranchMatchedException();
-                    }
-                    h12.n(sa0Var3, "BEGIN EXCLUSIVE TRANSACTION");
-                }
-            } else {
-                h12.n(sa0Var3, "SAVEPOINT '" + i3 + '\'');
-            }
-            iiVar.addLast(new bo3(i3));
-            j15 j15Var = j15.a;
-            sa0Var.f(null);
-            return j15Var;
-        } catch (Throwable th) {
-            sa0Var.f(null);
-            throw th;
-        }
+    public final Object e(lw4 r7, wd0 r8) {
+        if ((r8 instanceof co3) == false) goto L7;
+        co3 r1 = (co3) r8;
+        int r2 = r1.s;
+        if ((r2 & Integer.MIN_VALUE) == 0) goto L7;
+        r1.s = r2 - Integer.MIN_VALUE;
+    L8:
+        Object r9 = r1.q;
+        int r3 = r1.s;
+        if (r3 == 0) goto L14;
+        if (r3 != 1) goto L12;
+        sa0 r6 = r1.p;
+        r7 = r1.o;
+        go3 r4 = r1.n;
+        kb4.X(r9);
+        sa0 r10 = r6;
+        go3 this = r4;
+    L37:
+        ii r5 = this.c;     // Catch: Throwable -> L25
+        sa0 r11 = this.a;     // Catch: Throwable -> L25
+        int r12 = r5.p;     // Catch: Throwable -> L25
+        if (r5.isEmpty() == false) goto L31;
+        int r13 = r7.ordinal();     // Catch: Throwable -> L25
+        if (r13 == 0) goto L30;
+        if (r13 != 1) goto L23;
+        h12.n(r11, "BEGIN IMMEDIATE TRANSACTION");     // Catch: Throwable -> L25
+    L32:
+        r5.addLast(new bo3(r12));     // Catch: Throwable -> L25
+        j15 r14 = j15.a;     // Catch: Throwable -> L25
+        r10.f(null);
+        return r14;
+    L23:
+        if (r13 != 2) goto L28;
+        h12.n(r11, "BEGIN EXCLUSIVE TRANSACTION");     // Catch: Throwable -> L25
+        goto L32
+    L28:
+        throw new NoWhenBranchMatchedException();     // Catch: Throwable -> L25
+    L30:
+        h12.n(r11, "BEGIN DEFERRED TRANSACTION");     // Catch: Throwable -> L25
+        goto L32
+    L31:
+        h12.n(r11, "SAVEPOINT '" + r12 + '\'');     // Catch: Throwable -> L25
+    L25:
+        th = move-exception;
+        r10.f(null);
+        throw th;
+    L12:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L14:
+        kb4.X(r9);
+        r1.n = this;
+        r1.o = r7;
+        r10 = this.a;
+        r1.p = r10;
+        r1.s = 1;
+        Object r15 = r10.o.b(r1);
+        xe0 r16 = xe0.n;
+        if (r15 != r16) goto L37;
+        return r16;
+    L7:
+        r1 = new co3(this, r8);
+        goto L8
     }
 
-    /* JADX WARN: Code duplicated, block: B:7:0x0017  */
-    public final Object f(boolean z, wd0 wd0Var) {
-        do3 do3Var;
-        sa0 sa0Var;
-        if (wd0Var instanceof do3) {
-            do3Var = (do3) wd0Var;
-            int i = do3Var.s;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                do3Var.s = i - Integer.MIN_VALUE;
-            } else {
-                do3Var = new do3(this, wd0Var);
-            }
-        } else {
-            do3Var = new do3(this, wd0Var);
-        }
-        Object obj = do3Var.q;
-        int i2 = do3Var.s;
-        if (i2 == 0) {
-            kb4.X(obj);
-            do3Var.n = this;
-            sa0Var = this.a;
-            do3Var.o = sa0Var;
-            do3Var.p = z;
-            do3Var.s = 1;
-            Object objB = sa0Var.o.b(do3Var);
-            xe0 xe0Var = xe0.n;
-            if (objB == xe0Var) {
-                return xe0Var;
-            }
-        } else {
-            if (i2 != 1) {
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            }
-            z = do3Var.p;
-            sa0 sa0Var2 = do3Var.o;
-            go3 go3Var = do3Var.n;
-            kb4.X(obj);
-            sa0Var = sa0Var2;
-            this = go3Var;
-        }
-        try {
-            ii iiVar = this.c;
-            sa0 sa0Var3 = this.a;
-            if (iiVar.isEmpty()) {
-                throw new IllegalStateException("Not in a transaction");
-            }
-            bo3 bo3Var = (bo3) v40.q0(iiVar);
-            if (z) {
-                bo3Var.getClass();
-                if (iiVar.isEmpty()) {
-                    h12.n(sa0Var3, "END TRANSACTION");
-                } else {
-                    h12.n(sa0Var3, "RELEASE SAVEPOINT '" + bo3Var.a + '\'');
-                }
-            } else if (iiVar.isEmpty()) {
-                h12.n(sa0Var3, "ROLLBACK TRANSACTION");
-            } else {
-                h12.n(sa0Var3, "ROLLBACK TRANSACTION TO SAVEPOINT '" + bo3Var.a + '\'');
-            }
-            j15 j15Var = j15.a;
-            sa0Var.f(null);
-            return j15Var;
-        } catch (Throwable th) {
-            sa0Var.f(null);
-            throw th;
-        }
+    public final Object f(boolean r7, wd0 r8) {
+        if ((r8 instanceof do3) == false) goto L7;
+        do3 r2 = (do3) r8;
+        int r3 = r2.s;
+        if ((r3 & Integer.MIN_VALUE) == 0) goto L7;
+        r2.s = r3 - Integer.MIN_VALUE;
+    L8:
+        Object r9 = r2.q;
+        int r4 = r2.s;
+        if (r4 == 0) goto L14;
+        if (r4 != 1) goto L12;
+        r7 = r2.p;
+        sa0 r6 = r2.o;
+        go3 r5 = r2.n;
+        kb4.X(r9);
+        sa0 r10 = r6;
+        go3 this = r5;
+    L38:
+        ii r11 = this.c;     // Catch: Throwable -> L24
+        sa0 r12 = this.a;     // Catch: Throwable -> L24
+        if (r11.isEmpty() == true) goto L35;
+        bo3 r13 = (bo3) v40.q0(r11);     // Catch: Throwable -> L24
+        if (r7 == false) goto L28;
+        r13.getClass();     // Catch: Throwable -> L24
+        if (r11.isEmpty() == false) goto L26;
+        h12.n(r12, "END TRANSACTION");     // Catch: Throwable -> L24
+    L31:
+        j15 r14 = j15.a;     // Catch: Throwable -> L24
+        r10.f(null);
+        return r14;
+    L26:
+        h12.n(r12, "RELEASE SAVEPOINT '" + r13.a + '\'');     // Catch: Throwable -> L24
+        goto L31
+    L28:
+        if (r11.isEmpty() == false) goto L30;
+        h12.n(r12, "ROLLBACK TRANSACTION");     // Catch: Throwable -> L24
+        goto L31
+    L30:
+        h12.n(r12, "ROLLBACK TRANSACTION TO SAVEPOINT '" + r13.a + '\'');     // Catch: Throwable -> L24
+        goto L31
+    L35:
+        throw new IllegalStateException("Not in a transaction");     // Catch: Throwable -> L24
+    L24:
+        th = move-exception;
+        r10.f(null);
+        throw th;
+    L12:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L14:
+        kb4.X(r9);
+        r2.n = this;
+        r10 = this.a;
+        r2.o = r10;
+        r2.p = r7;
+        r2.s = 1;
+        Object r15 = r10.o.b(r2);
+        xe0 r16 = xe0.n;
+        if (r15 != r16) goto L38;
+        return r16;
+    L7:
+        r2 = new do3(this, r8);
+        goto L8
     }
 
-    /* JADX WARN: Code duplicated, block: B:42:0x0098  */
-    /* JADX WARN: Code duplicated, block: B:46:0x00a4 A[RETURN] */
-    /* JADX WARN: Code duplicated, block: B:57:0x00bd  */
-    /* JADX WARN: Code duplicated, block: B:59:0x00c1  */
-    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
     /* JADX WARN: Multi-variable type inference failed */
-    public final Object g(lw4 lw4Var, wf1 wf1Var, wd0 wd0Var) throws Throwable {
-        eo3 eo3Var;
-        go3 go3Var;
-        int i;
-        SQLException e;
-        Throwable th;
-        boolean z;
-        if (wd0Var instanceof eo3) {
-            eo3Var = (eo3) wd0Var;
-            int i2 = eo3Var.s;
-            if ((i2 & Integer.MIN_VALUE) != 0) {
-                eo3Var.s = i2 - Integer.MIN_VALUE;
-            } else {
-                eo3Var = new eo3(this, wd0Var);
-            }
-        } else {
-            eo3Var = new eo3(this, wd0Var);
-        }
-        Object objInvoke = eo3Var.q;
-        int i3 = eo3Var.s;
-        Object[] objArr = 0;
-        xe0 xe0Var = xe0.n;
-        try {
-            if (i3 == 0) {
-                kb4.X(objInvoke);
-                if (lw4Var == null) {
-                    lw4Var = lw4.n;
-                }
-                eo3Var.n = this;
-                eo3Var.o = (Serializable) wf1Var;
-                eo3Var.s = 1;
-                if (e(lw4Var, eo3Var) != xe0Var) {
-                }
-                return xe0Var;
-            }
-            if (i3 == 1) {
-                wf1Var = (wf1) eo3Var.o;
-                this = (go3) eo3Var.n;
-                kb4.X(objInvoke);
-            } else {
-                if (i3 != 2) {
-                    if (i3 == 3 || i3 == 4) {
-                        Object obj = eo3Var.n;
-                        kb4.X(objInvoke);
-                        return obj;
-                    }
-                    if (i3 != 5) {
-                        kf2.o("call to 'resume' before 'invoke' with coroutine");
-                        return null;
-                    }
-                    th = (Throwable) eo3Var.o;
-                    th = (Throwable) eo3Var.n;
-                    try {
-                        kb4.X(objInvoke);
-                        throw th;
-                    } catch (SQLException e2) {
-                        e = e2;
-                        if (th != null) {
-                            throw e;
-                        }
-                        j51.d(th, e);
-                        throw th;
-                    }
-                }
-                i = eo3Var.p;
-                go3Var = (go3) eo3Var.n;
-                try {
-                    kb4.X(objInvoke);
-                    z = i != 0;
-                    eo3Var.n = objInvoke;
-                    eo3Var.s = 3;
-                    if (go3Var.f(z, eo3Var) != xe0Var) {
-                        return xe0Var;
-                    }
-                    return objInvoke;
-                } catch (Throwable th2) {
-                    th = th2;
-                    this = go3Var;
-                    try {
-                        throw th;
-                    } catch (Throwable th3) {
-                        try {
-                            eo3Var.n = th;
-                            eo3Var.o = th3;
-                            eo3Var.s = 5;
-                            if (this.f(false, eo3Var) != xe0Var) {
-                                throw th3;
-                            }
-                        } catch (SQLException e3) {
-                            e = e3;
-                            th = th3;
-                            if (th != null) {
-                                throw e;
-                            }
-                            j51.d(th, e);
-                            throw th;
-                        }
-                    }
-                }
-            }
-            ao3 ao3Var = new ao3(objArr == true ? 1 : 0, this);
-            eo3Var.n = this;
-            eo3Var.o = null;
-            eo3Var.p = 1;
-            eo3Var.s = 2;
-            objInvoke = wf1Var.invoke(ao3Var, eo3Var);
-            if (objInvoke != xe0Var) {
-                go3Var = this;
-                i = 1;
-                if (i != 0) {
-                }
-                eo3Var.n = objInvoke;
-                eo3Var.s = 3;
-                if (go3Var.f(z, eo3Var) != xe0Var) {
-                    return objInvoke;
-                }
-            }
-            return xe0Var;
-        } catch (Throwable th4) {
-            th = th4;
-            throw th;
-        }
+    public final Object g(lw4 r11, wf1 r12, wd0 r13) {
+        if ((r13 instanceof eo3) == false) goto L7;
+        eo3 r0 = (eo3) r13;
+        int r1 = r0.s;
+        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
+        r0.s = r1 - Integer.MIN_VALUE;
+    L8:
+        Object r14 = r0.q;
+        int r2 = r0.s;
+        boolean r3 = false;
+        Object[] r4 = 0;
+        xe0 r8 = xe0.n;
+        if (r2 == 0) goto L31;
+        if (r2 == 1) goto L30;
+        if (r2 == 2) goto L25;
+        if (r2 != 3) goto L14;
+    L23:
+        Object r10 = r0.n;
+        kb4.X(r14);
+        return r10;
+    L14:
+        if (r2 == 4) goto L23;
+        if (r2 == 5) goto L18;
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L18:
+        Throwable r15 = (Throwable) r0.o;
+        th = (Throwable) r0.n;
+        kb4.X(r14);     // Catch: SQLException -> L21
+        throw r15;
+    L21:
+        SQLException e = e;
+    L56:
+        if (th == null) goto L59;
+        j51.d(th, e);
+        throw r15;
+    L59:
+        throw e;
+    L25:
+        int r16 = r0.p;
+        go3 r17 = (go3) r0.n;
+        kb4.X(r14);     // Catch: Throwable -> L28
+    L41:
+        if (r16 == 0) goto L43;
+        r3 = true;
+    L43:
+        r0.n = r14;
+        r0.s = 3;
+        if (r17.f(r3, r0) == r8) goto L52;
+        return r14;
+    L52:
+        return r8;
+    L28:
+        th = move-exception;
+        th = th;
+        go3 this = r17;
+    L66:
+        throw th;     // Catch: Throwable -> L49
+    L49:
+        th = move-exception;
+        r0.n = th;     // Catch: SQLException -> L54
+        r0.o = th;     // Catch: SQLException -> L54
+        r0.s = 5;     // Catch: SQLException -> L54
+        if (this.f(false, r0) == r8) goto L52;
+        throw th;
+    L54:
+        e = move-exception;
+        e = e;
+        r15 = th;
+        goto L56
+    L30:
+        r12 = (wf1) r0.o;
+        this = (go3) r0.n;
+        kb4.X(r14);
+    L64:
+        ao3 r18 = new ao3(r4 == true ? 1 : 0, this);     // Catch: Throwable -> L47
+        r0.n = this;     // Catch: Throwable -> L47
+        r0.o = null;     // Catch: Throwable -> L47
+        r0.p = 1;     // Catch: Throwable -> L47
+        r0.s = 2;     // Catch: Throwable -> L47
+        r14 = r12.invoke(r18, r0);     // Catch: Throwable -> L47
+        if (r14 == r8) goto L52;
+        r17 = this;
+        r16 = 1;
+    L47:
+        th = th;
+        goto L66
+    L31:
+        kb4.X(r14);
+        if (r11 != null) goto L34;
+        r11 = lw4.n;
+    L34:
+        r0.n = this;
+        r0.o = (Serializable) r12;
+        r0.s = 1;
+        if (e(r11, r0) != r8) goto L64;
+    L7:
+        r0 = new eo3(this, r13);
+        goto L8
     }
 }

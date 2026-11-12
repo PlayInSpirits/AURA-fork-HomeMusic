@@ -7,15 +7,14 @@ import com.google.android.gms.common.internal.a;
 public final class fj5 extends fh5 {
     public final /* synthetic */ a g;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public fj5(a aVar, int i) {
-        super(aVar, i, null);
-        this.g = aVar;
+    public fj5(a r2, int r3) {
+        this.g = r2;
+        super(r2, r3, null);
     }
 
     @Override // defpackage.fh5
-    public final void a(ka0 ka0Var) {
-        this.g.v.k(ka0Var);
+    public final void a(ka0 r1) {
+        this.g.v.k(r1);
         System.currentTimeMillis();
     }
 

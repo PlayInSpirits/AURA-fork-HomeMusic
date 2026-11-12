@@ -6,18 +6,22 @@ import android.os.Parcelable;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class zd3 extends sl4 implements Parcelable, nh4 {
-    public static final Parcelable.Creator<zd3> CREATOR = new yd3(0);
+    public static final Parcelable.Creator<zd3> CREATOR = null;
     public final rv2 o;
     public oh4 p;
 
-    public zd3(Object obj, rv2 rv2Var) {
-        this.o = rv2Var;
-        ch4 ch4VarJ = jh4.j();
-        oh4 oh4Var = new oh4(ch4VarJ.g(), obj);
-        if (!(ch4VarJ instanceof yi1)) {
-            oh4Var.b = new oh4(1L, obj);
-        }
-        this.p = oh4Var;
+    static {
+        CREATOR = new yd3(0);
+    }
+
+    public zd3(Object r4, rv2 r5) {
+        this.o = r5;
+        ch4 r6 = jh4.j();
+        oh4 r0 = new oh4(r6.g(), r4);
+        if ((r6 instanceof yi1) == true) goto L5;
+        r0.b = new oh4(1, r4);
+    L5:
+        this.p = r0;
     }
 
     @Override // defpackage.rl4
@@ -26,10 +30,13 @@ public final class zd3 extends sl4 implements Parcelable, nh4 {
     }
 
     @Override // defpackage.rl4
-    public final tl4 b(tl4 tl4Var, tl4 tl4Var2, tl4 tl4Var3) {
-        if (this.o.i(((oh4) tl4Var2).c, ((oh4) tl4Var3).c)) {
-            return tl4Var2;
-        }
+    public final tl4 b(tl4 r1, tl4 r2, tl4 r3) {
+        oh4 r4 = (oh4) r1;
+        Object r5 = ((oh4) r2).c;
+        Object r6 = ((oh4) r3).c;
+        if (this.o.i(r5, r6) == false) goto L5;
+        return r2;
+    L5:
         return null;
     }
 
@@ -39,9 +46,9 @@ public final class zd3 extends sl4 implements Parcelable, nh4 {
     }
 
     @Override // defpackage.rl4
-    public final void d(tl4 tl4Var) {
-        tl4Var.getClass();
-        this.p = (oh4) tl4Var;
+    public final void d(tl4 r1) {
+        r1.getClass();
+        this.p = (oh4) r1;
     }
 
     @Override // android.os.Parcelable
@@ -55,18 +62,20 @@ public final class zd3 extends sl4 implements Parcelable, nh4 {
     }
 
     @Override // defpackage.b13
-    public final void setValue(Object obj) {
-        ch4 ch4VarJ;
-        oh4 oh4Var = (oh4) jh4.h(this.p);
-        if (this.o.i(oh4Var.c, obj)) {
-            return;
-        }
-        oh4 oh4Var2 = this.p;
-        synchronized (jh4.c) {
-            ch4VarJ = jh4.j();
-            ((oh4) jh4.o(oh4Var2, this, ch4VarJ, oh4Var)).c = obj;
-        }
-        jh4.n(ch4VarJ, this);
+    public final void setValue(Object r5) {
+        oh4 r0 = (oh4) jh4.h(this.p);
+        if (this.o.i(r0.c, r5) == true) goto L13;
+        oh4 r1 = this.p;
+        Object r2 = jh4.c;
+        monitor-enter(r2);
+        ch4 r3 = jh4.j();     // Catch: Throwable -> L10
+        ((oh4) jh4.o(r1, this, r3, r0)).c = r5;     // Catch: Throwable -> L10
+        monitor-exit(r2);
+        jh4.n(r3, this);
+        return;
+    L10:
+        th = move-exception;
+        throw th;
     }
 
     public final String toString() {
@@ -74,22 +83,24 @@ public final class zd3 extends sl4 implements Parcelable, nh4 {
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        int i2;
-        parcel.writeValue(getValue());
-        rv2 rv2Var = rv2.s;
-        rv2 rv2Var2 = this.o;
-        if (h12.c(rv2Var2, rv2Var)) {
-            i2 = 0;
-        } else if (h12.c(rv2Var2, rv2.D)) {
-            i2 = 1;
-        } else {
-            if (!h12.c(rv2Var2, rv2.A)) {
-                kf2.o("Only known types of MutableState's SnapshotMutationPolicy are supported");
-                return;
-            }
-            i2 = 2;
-        }
-        parcel.writeInt(i2);
+    public final void writeToParcel(Parcel r1, int r2) {
+        r1.writeValue(getValue());
+        rv2 r3 = rv2.s;
+        rv2 r0 = this.o;
+        if (h12.c(r0, r3) == false) goto L6;
+        int r4 = 0;
+    L11:
+        r1.writeInt(r4);
+        return;
+    L6:
+        if (h12.c(r0, rv2.D) == false) goto L9;
+        r4 = 1;
+        goto L11
+    L9:
+        if (h12.c(r0, rv2.A) == false) goto L13;
+        r4 = 2;
+        goto L11
+    L13:
+        kf2.o("Only known types of MutableState's SnapshotMutationPolicy are supported");
     }
 }

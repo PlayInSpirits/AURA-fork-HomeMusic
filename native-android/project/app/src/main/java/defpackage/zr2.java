@@ -2,243 +2,291 @@ package defpackage;
 
 import android.animation.ValueAnimator;
 import android.view.View;
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class zr2 implements wc0, it2, ht2, eg1, kv1, oz2 {
     public final /* synthetic */ int n;
 
-    public /* synthetic */ zr2(String str) {
+    public /* synthetic */ zr2(String r1) {
         this.n = 8;
     }
 
-    public static /* synthetic */ void c(int i, String str) {
-        throw new IllegalStateException(str + i);
+    public static /* synthetic */ void c(int r1, String r2) {
+        throw new IllegalStateException(r2 + r1);
     }
 
     @Override // defpackage.oz2
-    public void a(ValueAnimator valueAnimator, View view) {
-        switch (this.n) {
-            case 28:
-                view.setTranslationX(((Float) valueAnimator.getAnimatedValue()).floatValue());
-                break;
-            default:
-                view.setTranslationY(((Float) valueAnimator.getAnimatedValue()).floatValue());
-                break;
-        }
+    public void a(ValueAnimator r1, View r2) {
+        switch(this.n) {
+            case 28: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r2.setTranslationY(((Float) r1.getAnimatedValue()).floatValue());
+        return;
+    L6:
+        r2.setTranslationX(((Float) r1.getAnimatedValue()).floatValue());
     }
 
     @Override // defpackage.wc0
-    public void accept(Object obj) {
-        al3 al3Var = (al3) obj;
-        switch (this.n) {
-            case 1:
-                al3Var.A0();
-                break;
-            case 2:
-                al3Var.c();
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                al3Var.c0();
-                break;
-            case 4:
-                al3Var.C0();
-                break;
-            case 5:
-                al3Var.J0();
-                break;
-            case 6:
-                al3Var.S();
-                break;
-            case 7:
-                al3Var.A();
-                break;
-            case 8:
-            case 12:
-            case 13:
-            default:
-                al3Var.r();
-                break;
-            case 9:
-                al3Var.I0();
-                break;
-            case 10:
-                al3Var.H0();
-                break;
-            case 11:
-                al3Var.G();
-                break;
-            case 14:
-                al3Var.stop();
-                break;
-            case 15:
-                al3Var.a0();
-                break;
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                al3Var.C();
-                break;
-            case 17:
-                al3Var.b();
-                break;
-        }
+    public void accept(Object r1) {
+        al3 r2 = (al3) r1;
+        switch(this.n) {
+            case 1: goto L32;
+            case 2: goto L30;
+            case 3: goto L28;
+            case 4: goto L26;
+            case 5: goto L24;
+            case 6: goto L22;
+            case 7: goto L20;
+            case 8: goto L4;
+            case 9: goto L18;
+            case 10: goto L16;
+            case 11: goto L14;
+            case 12: goto L4;
+            case 13: goto L4;
+            case 14: goto L12;
+            case 15: goto L10;
+            case 16: goto L8;
+            case 17: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r2.r();
+        return;
+    L6:
+        r2.b();
+        return;
+    L8:
+        r2.C();
+        return;
+    L10:
+        r2.a0();
+        return;
+    L12:
+        r2.stop();
+        return;
+    L14:
+        r2.G();
+        return;
+    L16:
+        r2.H0();
+        return;
+    L18:
+        r2.I0();
+        return;
+    L20:
+        r2.A();
+        return;
+    L22:
+        r2.S();
+        return;
+    L24:
+        r2.J0();
+        return;
+    L26:
+        r2.C0();
+        return;
+    L28:
+        r2.c0();
+        return;
+    L30:
+        r2.c();
+        return;
+    L32:
+        r2.A0();
     }
 
-    /* JADX WARN: Code duplicated, block: B:59:0x013e  */
-    /* JADX WARN: Code duplicated, block: B:63:0x014c  */
     @Override // defpackage.eg1
     /* JADX INFO: renamed from: apply */
-    public Object mo77apply(Object obj) {
-        StringBuilder sb;
-        char cCharAt;
-        boolean z = true;
-        switch (this.n) {
-            case 21:
-                String str = (String) obj;
-                n10 n10Var = iu2.g;
-                n10Var.getClass();
-                for (int length = str.length() - 1; length >= 0; length--) {
-                    if (!n10Var.c(str.charAt(length))) {
-                        z = false;
-                        if (!z && !str.isEmpty()) {
-                            return str;
-                        }
-                        sb = new StringBuilder(str.length() + 16);
-                        sb.append('\"');
-                        for (int i = 0; i < str.length(); i++) {
-                            cCharAt = str.charAt(i);
-                            if (cCharAt != '\r' || cCharAt == '\\' || cCharAt == '\"') {
-                                sb.append('\\');
-                            }
-                            sb.append(cCharAt);
-                        }
-                        sb.append('\"');
-                        return sb.toString();
-                    }
-                }
-                if (!z) {
-                }
-                sb = new StringBuilder(str.length() + 16);
-                sb.append('\"');
-                while (i < str.length()) {
-                    cCharAt = str.charAt(i);
-                    if (cCharAt != '\r') {
-                        sb.append('\\');
-                    } else {
-                        sb.append('\\');
-                    }
-                    sb.append(cCharAt);
-                }
-                sb.append('\"');
-                return sb.toString();
-            case 22:
-                Collection collection = (Collection) obj;
-                int i2 = hx1.q;
-                if (collection instanceof hx1) {
-                    return (hx1) collection;
-                }
-                boolean z2 = collection instanceof hx1;
-                int size = z2 ? ((gx1) ((my3) ((hx1) collection)).i()).size() : 11;
-                fx1 fx1Var = new fx1();
-                fx1Var.b = false;
-                q73 q73Var = new q73();
-                q73Var.d(size);
-                fx1Var.a = q73Var;
-                if (z2) {
-                    hx1 hx1Var = (hx1) collection;
-                    q73 q73Var2 = hx1Var instanceof my3 ? ((my3) hx1Var).r : null;
-                    if (q73Var2 != null) {
-                        q73Var.a(Math.max(q73Var.c, q73Var2.c));
-                        i = q73Var2.c == 0 ? -1 : 0;
-                        while (i >= 0) {
-                            rr2.q(i, q73Var2.c);
-                            Object obj2 = q73Var2.a[i];
-                            rr2.q(i, q73Var2.c);
-                            fx1Var.c(q73Var2.b[i], obj2);
-                            i++;
-                            if (i >= q73Var2.c) {
-                                i = -1;
-                            }
-                        }
-                    } else {
-                        jx1 jx1VarJ = hx1Var.j();
-                        q73 q73Var3 = fx1Var.a;
-                        q73Var3.a(Math.max(q73Var3.c, jx1VarJ.size()));
-                        for (p73 p73Var : hx1Var.j()) {
-                            fx1Var.c(p73Var.a(), p73Var.a);
-                        }
-                    }
-                } else {
-                    Iterator it = collection.iterator();
-                    while (it.hasNext()) {
-                        fx1Var.a(it.next());
-                    }
-                }
-                Objects.requireNonNull(fx1Var.a);
-                if (fx1Var.a.c == 0) {
-                    return my3.u;
-                }
-                fx1Var.b = true;
-                return new my3(fx1Var.a);
-            case 23:
-                return Long.valueOf(((lg0) obj).b);
-            case 24:
-                return Long.valueOf(((lg0) obj).c);
-            case 25:
-                return yw1.k(hw.P(new tb4(10), ((no2) obj).n().b));
-            default:
-                return (pv4) obj;
-        }
+    public Object mo77apply(Object r6) {
+        int r0 = 0;
+        boolean r1 = true;
+        switch(this.n) {
+            case 21: goto L46;
+            case 22: goto L12;
+            case 23: goto L11;
+            case 24: goto L9;
+            case 25: goto L7;
+            default: goto L5;
+        };
+    L12:
+        Collection r7 = (Collection) r6;
+        int r5 = hx1.q;
+        if ((r7 instanceof hx1) == true) goto L79;
+        boolean r2 = r7 instanceof hx1;
+        if (r2 == false) goto L18;
+        int r3 = ((gx1) ((my3) ((hx1) r7)).i()).size();
+    L19:
+        fx1 r8 = new fx1();
+        r8.b = false;
+        q73 r4 = new q73();
+        r4.d(r3);
+        r8.a = r4;
+        if (r2 == false) goto L37;
+        hx1 r9 = (hx1) r7;
+        if ((r9 instanceof my3) == false) goto L24;
+        q73 r10 = ((my3) r9).r;
+    L25:
+        if (r10 == null) goto L33;
+        r4.a(Math.max(r4.c, r10.c));
+        if (r10.c != 0) goto L29;
+        r0 = -1;
+    L29:
+        if (r0 < 0) goto L41;
+        rr2.q(r0, r10.c);
+        Object r11 = r10.a[r0];
+        rr2.q(r0, r10.c);
+        r8.c(r10.b[r0], r11);
+        r0 = r0 + 1;
+        if (r0 < r10.c) goto L29;
+        r0 = -1;
+    L41:
+        Objects.requireNonNull(r8.a);
+        if (r8.a.c == 0) goto L80;
+        r8.b = true;
+        return new my3(r8.a);
+    L80:
+        return my3.u;
+    L33:
+        jx1 r12 = r9.j();
+        q73 r13 = r8.a;
+        r13.a(Math.max(r13.c, r12.size()));
+        Iterator r14 = r9.j().iterator();
+    L35:
+        if (r14.hasNext() == false) goto L41;
+        p73 r15 = (p73) r14.next();
+        r8.c(r15.a(), r15.a);
+        goto L35
+    L24:
+        r10 = null;
+        goto L25
+    L37:
+        Iterator r16 = r7.iterator();
+    L39:
+        if (r16.hasNext() == false) goto L41;
+        r8.a(r16.next());
+        goto L39
+    L18:
+        r3 = 11;
+        goto L19
+    L79:
+        return (hx1) r7;
+    L46:
+        String r17 = (String) r6;
+        n10 r18 = iu2.g;
+        r18.getClass();
+        int r19 = r17.length() - 1;
+    L47:
+        if (r19 < 0) goto L52;
+        if (r18.c(r17.charAt(r19)) == false) goto L50;
+        r19 = r19 - 1;
+        goto L47
+    L50:
+        r1 = false;
+    L52:
+        if (r1 == true) goto L54;
+    L56:
+        StringBuilder r20 = new StringBuilder(r17.length() + 16);
+        r20.append('\"');
+    L58:
+        if (r0 >= r17.length()) goto L65;
+        char r21 = r17.charAt(r0);
+        if (r21 == '\r') goto L63;
+        if (r21 == '\\') goto L63;
+        if (r21 == '\"') goto L63;
+    L64:
+        r20.append(r21);
+        r0 = r0 + 1;
+    L63:
+        r20.append('\\');
+        goto L64
+    L65:
+        r20.append('\"');
+        return r20.toString();
+    L54:
+        if (r17.isEmpty() == true) goto L56;
+        return r17;
+    L5:
+        return (pv4) r6;
+    L7:
+        return yw1.k(hw.P(new tb4(10), ((no2) r6).n().b));
+    L9:
+        return Long.valueOf(((lg0) r6).c);
+    L11:
+        return Long.valueOf(((lg0) r6).b);
     }
 
     @Override // defpackage.ht2
-    public void b(al3 al3Var, fr2 fr2Var, List list) {
-        switch (this.n) {
-            case 12:
-                al3Var.w0(list);
-                break;
-            default:
-                al3Var.w0(list);
-                break;
-        }
+    public void b(al3 r1, fr2 r2, List r3) {
+        switch(this.n) {
+            case 12: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.w0(r3);
+        return;
+    L6:
+        r1.w0(r3);
     }
 
     @Override // defpackage.kv1
-    public boolean d(int i, int i2, int i3, int i4, int i5) {
-        if (i2 == 67 && i3 == 79 && i4 == 77 && (i5 == 77 || i == 2)) {
-            return true;
-        }
-        if (i2 == 77 && i3 == 76 && i4 == 76) {
-            return i5 == 84 || i == 2;
-        }
+    public boolean d(int r3, int r4, int r5, int r6, int r7) {
+        if (r4 == 67) goto L5;
+    L9:
+        if (r4 == 77) goto L11;
         return false;
+    L11:
+        if (r5 != 76) goto L23;
+        if (r6 == 76) goto L14;
+        return false;
+    L14:
+        if (r7 == 84) goto L21;
+        if (r3 != 2) goto L25;
+        return true;
+    L25:
+        return false;
+    L21:
+        return true;
+    L23:
+        return false;
+    L5:
+        if (r5 != 79) goto L9;
+        if (r6 != 77) goto L9;
+        if (r7 == 77) goto L16;
+        if (r3 != 2) goto L9;
+        return true;
+    L16:
+        return true;
     }
 
     @Override // defpackage.it2
-    public Object h(tn2 tn2Var, fr2 fr2Var, int i) {
-        switch (this.n) {
-            case 8:
-                pq pqVar = tn2Var.D;
-                tn2Var.B(fr2Var);
-                pqVar.getClass();
-                mw1 mw1Var = new mw1(m92.b(-6));
-                mw1Var.f(new sn2(tn2Var, mw1Var, fr2Var, 0), new rn2(tn2Var, 0));
-                return mw1Var;
-            default:
-                return tn2Var.w(fr2Var);
-        }
+    public Object h(tn2 r2, fr2 r3, int r4) {
+        switch(this.n) {
+            case 8: goto L6;
+            default: goto L5;
+        };
+    L6:
+        pq r1 = r2.D;
+        r2.B(r3);
+        r1.getClass();
+        mw1 r5 = new mw1(m92.b(-6));
+        r5.f(new sn2(r2, r5, r3, 0), new rn2(r2, 0));
+        return r5;
+    L5:
+        return r2.w(r3);
     }
 
-    public /* synthetic */ zr2(int i) {
-        this.n = i;
+    public /* synthetic */ zr2(int r1) {
+        this.n = r1;
     }
 
-    public /* synthetic */ zr2(String str, jn2 jn2Var) {
+    public /* synthetic */ zr2(String r1, jn2 r2) {
         this.n = 19;
     }
 }

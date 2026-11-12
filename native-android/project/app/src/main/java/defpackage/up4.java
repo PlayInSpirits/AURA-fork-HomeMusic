@@ -7,9 +7,9 @@ public final class up4 {
     public final int b;
     public final if1 c;
 
-    public up4(int i, int i2, if1 if1Var) {
-        this.a = i;
-        this.b = i2;
-        this.c = if1Var;
+    public up4(int r1, int r2, if1 r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 }

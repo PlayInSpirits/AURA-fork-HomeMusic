@@ -8,10 +8,10 @@ public final class rx0 {
     public final byte[] c;
     public final byte[] d;
 
-    public rx0(int i, boolean z, byte[] bArr, byte[] bArr2) {
-        this.a = i;
-        this.b = z;
-        this.c = bArr;
-        this.d = bArr2;
+    public rx0(int r1, boolean r2, byte[] r3, byte[] r4) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
     }
 }

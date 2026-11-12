@@ -5,12 +5,18 @@ package defpackage;
 public final class r9 extends e35 {
     public final int p;
 
-    public r9(int i) {
-        this.p = i;
+    public r9(int r1) {
+        this.p = r1;
     }
 
-    public final boolean equals(Object obj) {
-        return (obj instanceof r9) && ((r9) obj).p == this.p;
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof r9) == true) goto L5;
+        return false;
+    L5:
+        if (((r9) r2).p != this.p) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     public final int hashCode() {

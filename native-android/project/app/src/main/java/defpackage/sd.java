@@ -9,272 +9,157 @@ import java.util.ArrayList;
 public final class sd implements Choreographer.FrameCallback {
     public final /* synthetic */ yc5 n;
 
-    public sd(yc5 yc5Var) {
-        this.n = yc5Var;
+    public sd(yc5 r1) {
+        this.n = r1;
     }
 
-    /* JADX WARN: Code duplicated, block: B:16:0x0046  */
-    /* JADX WARN: Code duplicated, block: B:17:0x004e  */
-    /* JADX WARN: Code duplicated, block: B:19:0x005c  */
-    /* JADX WARN: Code duplicated, block: B:21:0x0060  */
-    /* JADX WARN: Code duplicated, block: B:22:0x0069  */
-    /* JADX WARN: Code duplicated, block: B:24:0x007c  */
-    /* JADX WARN: Code duplicated, block: B:26:0x0083  */
-    /* JADX WARN: Code duplicated, block: B:27:0x00c3  */
-    /* JADX WARN: Code duplicated, block: B:33:0x011b  */
-    /* JADX WARN: Code duplicated, block: B:36:0x0132  */
-    /* JADX WARN: Code duplicated, block: B:38:0x013f  */
-    /* JADX WARN: Code duplicated, block: B:41:0x015a  */
-    /* JADX WARN: Code duplicated, block: B:45:0x016f  */
-    /* JADX WARN: Code duplicated, block: B:47:0x0175 A[LOOP:1: B:43:0x0169->B:47:0x0175, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:52:0x018d  */
-    /* JADX WARN: Code duplicated, block: B:54:0x0193  */
-    /* JADX WARN: Code duplicated, block: B:74:0x0178 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:76:0x0199 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:7:0x0025  */
-    /* JADX WARN: Code duplicated, block: B:80:0x0196 A[SYNTHETIC] */
     @Override // android.view.Choreographer.FrameCallback
-    public final void doFrame(long j) {
-        long j2;
-        long j3;
-        boolean z;
-        float f;
-        ak4 ak4Var;
-        float f2;
-        float f3;
-        float f4;
-        ak4 ak4Var2;
-        boolean z2;
-        ArrayList arrayList;
-        ThreadLocal threadLocal;
-        td tdVar;
-        ArrayList arrayList2;
-        int iIndexOf;
-        int i;
-        int size;
-        td tdVar2 = (td) ((zg5) this.n.n).n;
-        long jUptimeMillis = SystemClock.uptimeMillis();
-        ArrayList arrayList3 = tdVar2.b;
-        long jUptimeMillis2 = SystemClock.uptimeMillis();
-        int i2 = 0;
-        while (i2 < arrayList3.size()) {
-            zj4 zj4Var = (zj4) arrayList3.get(i2);
-            if (zj4Var == null) {
-                i2 = i2;
-            } else {
-                yd4 yd4Var = tdVar2.a;
-                Long l = (Long) yd4Var.get(zj4Var);
-                if (l == null) {
-                    j2 = zj4Var.g;
-                    if (j2 == 0) {
-                        zj4Var.g = jUptimeMillis;
-                        zj4Var.a(zj4Var.b);
-                        i2 = i2;
-                    } else {
-                        j3 = jUptimeMillis - j2;
-                        zj4Var.g = jUptimeMillis;
-                        z = zj4Var.m;
-                        f = zj4Var.l;
-                        if (z) {
-                            if (f != Float.MAX_VALUE) {
-                                zj4Var.k.i = f;
-                                zj4Var.l = Float.MAX_VALUE;
-                            }
-                            zj4Var.b = (float) zj4Var.k.i;
-                            zj4Var.a = 0.0f;
-                            zj4Var.m = false;
-                            z2 = true;
-                            f3 = -3.4028235E38f;
-                        } else {
-                            i2 = i2;
-                            ak4Var = zj4Var.k;
-                            if (f != Float.MAX_VALUE) {
-                                double d = ak4Var.i;
-                                long j4 = j3 / 2;
-                                yx0 yx0VarA = ak4Var.a(zj4Var.b, zj4Var.a, j4);
-                                ak4 ak4Var3 = zj4Var.k;
-                                ak4Var3.i = zj4Var.l;
-                                zj4Var.l = Float.MAX_VALUE;
-                                yx0 yx0VarA2 = ak4Var3.a(yx0VarA.a, yx0VarA.b, j4);
-                                zj4Var.b = yx0VarA2.a;
-                                zj4Var.a = yx0VarA2.b;
-                                f2 = Float.MAX_VALUE;
-                                f3 = -3.4028235E38f;
-                            } else {
-                                f2 = Float.MAX_VALUE;
-                                f3 = -3.4028235E38f;
-                                yx0 yx0VarA3 = ak4Var.a(zj4Var.b, zj4Var.a, j3);
-                                zj4Var.b = yx0VarA3.a;
-                                zj4Var.a = yx0VarA3.b;
-                            }
-                            float fMax = Math.max(zj4Var.b, f3);
-                            zj4Var.b = fMax;
-                            float fMin = Math.min(fMax, f2);
-                            zj4Var.b = fMin;
-                            f4 = zj4Var.a;
-                            ak4Var2 = zj4Var.k;
-                            ak4Var2.getClass();
-                            if (Math.abs(f4) < ak4Var2.e) {
-                                z2 = false;
-                            } else {
-                                z2 = false;
-                            }
-                        }
-                        float fMin2 = Math.min(zj4Var.b, Float.MAX_VALUE);
-                        zj4Var.b = fMin2;
-                        float fMax2 = Math.max(fMin2, f3);
-                        zj4Var.b = fMax2;
-                        zj4Var.a(fMax2);
-                        if (z2) {
-                            arrayList = zj4Var.i;
-                            zj4Var.f = false;
-                            threadLocal = td.f;
-                            if (threadLocal.get() == null) {
-                                threadLocal.set(new td());
-                            }
-                            tdVar = (td) threadLocal.get();
-                            tdVar.a.remove(zj4Var);
-                            arrayList2 = tdVar.b;
-                            iIndexOf = arrayList2.indexOf(zj4Var);
-                            if (iIndexOf >= 0) {
-                                arrayList2.set(iIndexOf, null);
-                                tdVar.e = true;
-                            }
-                            zj4Var.g = 0L;
-                            zj4Var.c = false;
-                            for (i = 0; i < arrayList.size(); i++) {
-                                if (arrayList.get(i) == null) {
-                                    arrayList.get(i).getClass();
-                                    kf2.k();
-                                    return;
-                                }
-                            }
-                            for (size = arrayList.size() - 1; size >= 0; size--) {
-                                if (arrayList.get(size) == null) {
-                                    arrayList.remove(size);
-                                }
-                            }
-                        } else {
-                            continue;
-                        }
-                    }
-                } else if (l.longValue() < jUptimeMillis2) {
-                    yd4Var.remove(zj4Var);
-                    j2 = zj4Var.g;
-                    if (j2 == 0) {
-                        zj4Var.g = jUptimeMillis;
-                        zj4Var.a(zj4Var.b);
-                        i2 = i2;
-                    } else {
-                        j3 = jUptimeMillis - j2;
-                        zj4Var.g = jUptimeMillis;
-                        z = zj4Var.m;
-                        f = zj4Var.l;
-                        if (z) {
-                            if (f != Float.MAX_VALUE) {
-                                zj4Var.k.i = f;
-                                zj4Var.l = Float.MAX_VALUE;
-                            }
-                            zj4Var.b = (float) zj4Var.k.i;
-                            zj4Var.a = 0.0f;
-                            zj4Var.m = false;
-                            z2 = true;
-                            f3 = -3.4028235E38f;
-                        } else {
-                            i2 = i2;
-                            ak4Var = zj4Var.k;
-                            if (f != Float.MAX_VALUE) {
-                                double d2 = ak4Var.i;
-                                long j5 = j3 / 2;
-                                yx0 yx0VarA4 = ak4Var.a(zj4Var.b, zj4Var.a, j5);
-                                ak4 ak4Var4 = zj4Var.k;
-                                ak4Var4.i = zj4Var.l;
-                                zj4Var.l = Float.MAX_VALUE;
-                                yx0 yx0VarA5 = ak4Var4.a(yx0VarA4.a, yx0VarA4.b, j5);
-                                zj4Var.b = yx0VarA5.a;
-                                zj4Var.a = yx0VarA5.b;
-                                f2 = Float.MAX_VALUE;
-                                f3 = -3.4028235E38f;
-                            } else {
-                                f2 = Float.MAX_VALUE;
-                                f3 = -3.4028235E38f;
-                                yx0 yx0VarA6 = ak4Var.a(zj4Var.b, zj4Var.a, j3);
-                                zj4Var.b = yx0VarA6.a;
-                                zj4Var.a = yx0VarA6.b;
-                            }
-                            float fMax3 = Math.max(zj4Var.b, f3);
-                            zj4Var.b = fMax3;
-                            float fMin3 = Math.min(fMax3, f2);
-                            zj4Var.b = fMin3;
-                            f4 = zj4Var.a;
-                            ak4Var2 = zj4Var.k;
-                            ak4Var2.getClass();
-                            if (Math.abs(f4) < ak4Var2.e || Math.abs(fMin3 - ((float) ak4Var2.i)) >= ak4Var2.d) {
-                                z2 = false;
-                            } else {
-                                zj4Var.b = (float) zj4Var.k.i;
-                                zj4Var.a = 0.0f;
-                                z2 = true;
-                            }
-                        }
-                        float fMin4 = Math.min(zj4Var.b, Float.MAX_VALUE);
-                        zj4Var.b = fMin4;
-                        float fMax4 = Math.max(fMin4, f3);
-                        zj4Var.b = fMax4;
-                        zj4Var.a(fMax4);
-                        if (z2) {
-                            arrayList = zj4Var.i;
-                            zj4Var.f = false;
-                            threadLocal = td.f;
-                            if (threadLocal.get() == null) {
-                                threadLocal.set(new td());
-                            }
-                            tdVar = (td) threadLocal.get();
-                            tdVar.a.remove(zj4Var);
-                            arrayList2 = tdVar.b;
-                            iIndexOf = arrayList2.indexOf(zj4Var);
-                            if (iIndexOf >= 0) {
-                                arrayList2.set(iIndexOf, null);
-                                tdVar.e = true;
-                            }
-                            zj4Var.g = 0L;
-                            zj4Var.c = false;
-                            while (i < arrayList.size()) {
-                                if (arrayList.get(i) == null) {
-                                    arrayList.get(i).getClass();
-                                    kf2.k();
-                                    return;
-                                }
-                            }
-                            while (size >= 0) {
-                                if (arrayList.get(size) == null) {
-                                    arrayList.remove(size);
-                                }
-                            }
-                        } else {
-                            continue;
-                        }
-                    }
-                } else {
-                    i2 = i2;
-                }
-            }
-            i2++;
-        }
-        if (tdVar2.e) {
-            for (int size2 = arrayList3.size() - 1; size2 >= 0; size2--) {
-                if (arrayList3.get(size2) == null) {
-                    arrayList3.remove(size2);
-                }
-            }
-            tdVar2.e = false;
-        }
-        if (arrayList3.size() > 0) {
-            if (tdVar2.d == null) {
-                tdVar2.d = new yc5(tdVar2.c);
-            }
-            yc5 yc5Var = tdVar2.d;
-            ((Choreographer) yc5Var.o).postFrameCallback((sd) yc5Var.p);
-        }
+    public final void doFrame(long r37) {
+        td r0 = (td) ((zg5) this.n.n).n;
+        long r1 = SystemClock.uptimeMillis();
+        ArrayList r3 = r0.b;
+        long r4 = SystemClock.uptimeMillis();
+        int r7 = 0;
+    L4:
+        if (r7 >= r3.size()) goto L58;
+        zj4 r8 = (zj4) r3.get(r7);
+        if (r8 != null) goto L8;
+    L7:
+        r7 = r7;
+    L56:
+        r7 = r7 + 1;
+        goto L4
+    L8:
+        yd4 r10 = r0.a;
+        Long r11 = (Long) r10.get(r8);
+        if (r11 != null) goto L12;
+    L14:
+        long r12 = r8.g;
+        if (r12 != 0) goto L17;
+        r8.g = r1;
+        r8.a(r8.b);
+        goto L7
+    L17:
+        long r19 = r1 - r12;
+        r8.g = r1;
+        boolean r13 = r8.m;
+        float r14 = r8.l;
+        if (r13 == true) goto L20;
+        r7 = r7;
+        ak4 r9 = r8.k;
+        if (r14 == Float.MAX_VALUE) goto L27;
+        double r15 = r9.i;
+        long r34 = r19 / 2;
+        yx0 r6 = r9.a(r8.b, r8.a, r34);
+        ak4 r16 = r8.k;
+        r16.i = r8.l;
+        r8.l = Float.MAX_VALUE;
+        yx0 r17 = r16.a(r6.a, r6.b, r34);
+        r8.b = r17.a;
+        r8.a = r17.b;
+        float r18 = Float.MAX_VALUE;
+        float r110 = -3.4028235E38f;
+    L28:
+        float r20 = Math.max(r8.b, r110);
+        r8.b = r20;
+        float r21 = Math.min(r20, r18);
+        r8.b = r21;
+        float r22 = r8.a;
+        ak4 r111 = r8.k;
+        r111.getClass();
+        if (Math.abs(r22) < r111.e) goto L31;
+    L33:
+        boolean r23 = false;
+    L34:
+        float r24 = Math.min(r8.b, Float.MAX_VALUE);
+        r8.b = r24;
+        float r25 = Math.max(r24, r110);
+        r8.b = r25;
+        r8.a(r25);
+        if (r23 == false) goto L56;
+        ArrayList r26 = r8.i;
+        r8.f = false;
+        ThreadLocal r27 = td.f;
+        if (r27.get() != null) goto L39;
+        r27.set(new td());
+    L39:
+        td r28 = (td) r27.get();
+        r28.a.remove(r8);
+        ArrayList r29 = r28.b;
+        int r112 = r29.indexOf(r8);
+        if (r112 < 0) goto L42;
+        r29.set(r112, null);
+        r28.e = true;
+    L42:
+        r8.g = 0;
+        r8.c = false;
+        int r30 = 0;
+    L44:
+        if (r30 >= r26.size()) goto L50;
+        if (r26.get(r30) != null) goto L48;
+        r30 = r30 + 1;
+        goto L44
+    L48:
+        r26.get(r30).getClass();
+        kf2.k();
+        return;
+    L50:
+        int r31 = r26.size() - 1;
+    L51:
+        if (r31 < 0) goto L56;
+        if (r26.get(r31) != null) goto L55;
+        r26.remove(r31);
+    L55:
+        r31 = r31 - 1;
+        goto L51
+    L31:
+        if (Math.abs(r21 - ((float) r111.i)) >= r111.d) goto L33;
+        r8.b = (float) r8.k.i;
+        r8.a = 0.0f;
+        r23 = true;
+        goto L34
+    L27:
+        r18 = Float.MAX_VALUE;
+        r110 = -3.4028235E38f;
+        yx0 r32 = r9.a(r8.b, r8.a, r19);
+        r8.b = r32.a;
+        r8.a = r32.b;
+        goto L28
+    L20:
+        if (r14 == Float.MAX_VALUE) goto L23;
+        r8.k.i = r14;
+        r8.l = Float.MAX_VALUE;
+    L23:
+        r8.b = (float) r8.k.i;
+        r8.a = 0.0f;
+        r8.m = false;
+        r23 = true;
+        r110 = -3.4028235E38f;
+        goto L34
+    L12:
+        if (r11.longValue() >= r4) goto L7;
+        r10.remove(r8);
+        goto L14
+    L58:
+        if (r0.e == false) goto L67;
+        int r2 = r3.size() - 1;
+    L60:
+        if (r2 < 0) goto L65;
+        if (r3.get(r2) != null) goto L64;
+        r3.remove(r2);
+    L64:
+        r2 = r2 - 1;
+        goto L60
+    L65:
+        r0.e = false;
+    L67:
+        if (r3.size() > 0) goto L69;
+        return;
+    L69:
+        if (r0.d != null) goto L71;
+        r0.d = new yc5(r0.c);
+    L71:
+        yc5 r5 = r0.d;
+        ((Choreographer) r5.o).postFrameCallback((sd) r5.p);
     }
 }

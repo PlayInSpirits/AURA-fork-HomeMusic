@@ -5,7 +5,7 @@ package defpackage;
 public interface a64 {
     boolean c();
 
-    void d(String str);
+    void d(String r1);
 
-    void e(dd5... dd5VarArr);
+    void e(dd5... r1);
 }

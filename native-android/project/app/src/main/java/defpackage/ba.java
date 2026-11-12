@@ -5,10 +5,14 @@ import android.graphics.Canvas;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class ba {
-    public static final Canvas a = new Canvas();
+    public static final Canvas a = null;
 
-    public static final Canvas a(jz jzVar) {
-        jzVar.getClass();
-        return ((aa) jzVar).a;
+    static {
+        a = new Canvas();
+    }
+
+    public static final Canvas a(jz r0) {
+        r0.getClass();
+        return ((aa) r0).a;
     }
 }

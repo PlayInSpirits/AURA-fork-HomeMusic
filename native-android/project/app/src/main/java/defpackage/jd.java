@@ -8,17 +8,17 @@ import android.graphics.drawable.Drawable;
 public final class jd extends Animatable2.AnimationCallback {
     public final /* synthetic */ hq a;
 
-    public jd(hq hqVar) {
-        this.a = hqVar;
+    public jd(hq r1) {
+        this.a = r1;
     }
 
     @Override // android.graphics.drawable.Animatable2.AnimationCallback
-    public final void onAnimationEnd(Drawable drawable) {
-        this.a.a(drawable);
+    public final void onAnimationEnd(Drawable r1) {
+        this.a.a(r1);
     }
 
     @Override // android.graphics.drawable.Animatable2.AnimationCallback
-    public final void onAnimationStart(Drawable drawable) {
-        this.a.b(drawable);
+    public final void onAnimationStart(Drawable r1) {
+        this.a.b(r1);
     }
 }

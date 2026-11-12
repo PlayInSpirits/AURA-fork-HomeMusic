@@ -14,22 +14,24 @@ public final class qj implements ViewTreeObserver.OnGlobalLayoutListener {
     public final /* synthetic */ CoordinatorLayout p;
     public final /* synthetic */ ArtistPageFragment q;
 
-    public qj(ArtistPageFragment artistPageFragment, Button button, Button button2, CoordinatorLayout coordinatorLayout) {
-        this.q = artistPageFragment;
-        this.n = button;
-        this.o = button2;
-        this.p = coordinatorLayout;
+    public qj(ArtistPageFragment r1, Button r2, Button r3, CoordinatorLayout r4) {
+        this.q = r1;
+        this.n = r2;
+        this.o = r3;
+        this.p = r4;
     }
 
     @Override // android.view.ViewTreeObserver.OnGlobalLayoutListener
     public final void onGlobalLayout() {
-        CoordinatorLayout coordinatorLayout = this.p;
-        ArtistPageFragment artistPageFragment = this.q;
-        try {
-            ArtistPageFragment.h0(artistPageFragment, this.n, R.string.artist_page_shuffle_button);
-            ArtistPageFragment.h0(artistPageFragment, this.o, R.string.artist_page_radio_button);
-        } finally {
-            coordinatorLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        }
+        CoordinatorLayout r0 = this.p;
+        ArtistPageFragment r1 = this.q;
+        ArtistPageFragment.h0(r1, this.n, R.string.artist_page_shuffle_button);     // Catch: Throwable -> L6
+        ArtistPageFragment.h0(r1, this.o, R.string.artist_page_radio_button);     // Catch: Throwable -> L6
+        r0.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        return;
+    L6:
+        th = move-exception;
+        r0.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        throw th;
     }
 }

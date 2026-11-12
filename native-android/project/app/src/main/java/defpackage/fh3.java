@@ -8,8 +8,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class fh3 extends z1 {
     @Override // defpackage.z1
     public final Random b() {
-        ThreadLocalRandom threadLocalRandomCurrent = ThreadLocalRandom.current();
-        threadLocalRandomCurrent.getClass();
-        return threadLocalRandomCurrent;
+        ThreadLocalRandom r0 = ThreadLocalRandom.current();
+        r0.getClass();
+        return r0;
     }
 }

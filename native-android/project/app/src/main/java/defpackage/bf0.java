@@ -9,72 +9,81 @@ public final class bf0 extends ep4 implements wf1 {
     public int p;
     public final /* synthetic */ CoroutineWorker q;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ bf0(CoroutineWorker coroutineWorker, vd0 vd0Var, int i) {
-        super(2, vd0Var);
-        this.o = i;
-        this.q = coroutineWorker;
+    public /* synthetic */ bf0(CoroutineWorker r1, vd0 r2, int r3) {
+        this.o = r3;
+        this.q = r1;
+        super(2, r2);
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object obj, vd0 vd0Var) {
-        int i = this.o;
-        CoroutineWorker coroutineWorker = this.q;
-        switch (i) {
-            case 0:
-                return new bf0(coroutineWorker, vd0Var, 0);
-            default:
-                return new bf0(coroutineWorker, vd0Var, 1);
-        }
+    public final vd0 create(Object r2, vd0 r3) {
+        int r4 = this.o;
+        CoroutineWorker r1 = this.q;
+        switch(r4) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return new bf0(r1, r3, 1);
+    L7:
+        return new bf0(r1, r3, 0);
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        int i = this.o;
-        j15 j15Var = j15.a;
-        we0 we0Var = (we0) obj;
-        vd0 vd0Var = (vd0) obj2;
-        switch (i) {
-            case 0:
-                ((bf0) create(we0Var, vd0Var)).invokeSuspend(j15Var);
-                return j15Var;
-            default:
-                return ((bf0) create(we0Var, vd0Var)).invokeSuspend(j15Var);
-        }
+    public final Object invoke(Object r3, Object r4) {
+        int r0 = this.o;
+        j15 r1 = j15.a;
+        we0 r5 = (we0) r3;
+        vd0 r6 = (vd0) r4;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L5;
+        };
+    L6:
+        ((bf0) create(r5, r6)).invokeSuspend(r1);
+        return r1;
+    L5:
+        return ((bf0) create(r5, r6)).invokeSuspend(r1);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        switch (this.o) {
-            case 0:
-                int i = this.p;
-                if (i == 0) {
-                    kb4.X(obj);
-                    this.p = 1;
-                    kf2.o("Not implemented");
-                } else {
-                    if (i == 1) {
-                        kb4.X(obj);
-                        return obj;
-                    }
-                    kf2.o("call to 'resume' before 'invoke' with coroutine");
-                }
-                return null;
-            default:
-                int i2 = this.p;
-                if (i2 != 0) {
-                    if (i2 == 1) {
-                        kb4.X(obj);
-                        return obj;
-                    }
-                    kf2.o("call to 'resume' before 'invoke' with coroutine");
-                    return null;
-                }
-                kb4.X(obj);
-                this.p = 1;
-                Object objD = this.q.d(this);
-                xe0 xe0Var = xe0.n;
-                return objD == xe0Var ? xe0Var : objD;
-        }
+    public final Object invokeSuspend(Object r5) {
+        switch(this.o) {
+            case 0: goto L13;
+            default: goto L4;
+        };
+    L4:
+        int r0 = this.p;
+        if (r0 == 0) goto L9;
+        if (r0 != 1) goto L8;
+        kb4.X(r5);
+        return r5;
+    L8:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L9:
+        kb4.X(r5);
+        this.p = 1;
+        Object r6 = this.q.d(this);
+        xe0 r4 = xe0.n;
+        if (r6 == r4) goto L12;
+        return r6;
+    L12:
+        return r4;
+    L13:
+        int r1 = this.p;
+        if (r1 == 0) goto L19;
+        if (r1 != 1) goto L17;
+        kb4.X(r5);
+        return r5;
+    L17:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+    L24:
+        return null;
+    L19:
+        kb4.X(r5);
+        this.p = 1;
+        kf2.o("Not implemented");
+        goto L24
     }
 }

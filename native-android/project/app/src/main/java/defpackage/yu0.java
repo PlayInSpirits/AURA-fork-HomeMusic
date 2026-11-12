@@ -5,7 +5,7 @@ package defpackage;
 public final class yu0 extends av0 {
     public final long a;
 
-    public yu0(long j) {
-        this.a = j;
+    public yu0(long r1) {
+        this.a = r1;
     }
 }

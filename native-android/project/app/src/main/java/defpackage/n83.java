@@ -16,7 +16,10 @@ public final class n83 {
     public long C;
     public rm2 D;
     public gr4 E;
+    public na4 a;
     public d34 b;
+    public final ArrayList c;
+    public final ArrayList d;
     public tb4 e;
     public boolean f;
     public boolean g;
@@ -39,25 +42,25 @@ public final class n83 {
     public int x;
     public int y;
     public int z;
-    public na4 a = new na4(4);
-    public final ArrayList c = new ArrayList();
-    public final ArrayList d = new ArrayList();
 
     public n83() {
-        tl1 tl1Var = ze5.a;
+        this.a = new na4(4);
+        this.c = new ArrayList();
+        this.d = new ArrayList();
+        tl1 r0 = ze5.a;
         this.e = new tb4(19);
         this.f = true;
         this.g = true;
-        fz0 fz0Var = fz0.A;
-        this.h = fz0Var;
+        fz0 r1 = fz0.A;
+        this.h = r1;
         this.i = true;
         this.j = true;
         this.k = be0.g;
         this.m = fz0.W;
-        this.o = fz0Var;
-        SocketFactory socketFactory = SocketFactory.getDefault();
-        socketFactory.getClass();
-        this.p = socketFactory;
+        this.o = r1;
+        SocketFactory r2 = SocketFactory.getDefault();
+        r2.getClass();
+        this.p = r2;
         this.s = o83.G;
         this.t = o83.F;
         this.u = m83.a;
@@ -66,28 +69,33 @@ public final class n83 {
         this.z = 10000;
         this.A = 10000;
         this.B = 60000;
-        this.C = 1024L;
+        this.C = 1024;
     }
 
-    public final void a(long j, TimeUnit timeUnit) {
-        timeUnit.getClass();
-        this.x = ze5.b(j, timeUnit);
+    public final void a(long r1, TimeUnit r3) {
+        r3.getClass();
+        this.x = ze5.b(r1, r3);
     }
 
-    public final void b(long j, TimeUnit timeUnit) {
-        timeUnit.getClass();
-        this.y = ze5.b(j, timeUnit);
+    public final void b(long r1, TimeUnit r3) {
+        r3.getClass();
+        this.y = ze5.b(r1, r3);
     }
 
-    public final void c(SSLSocketFactory sSLSocketFactory, X509TrustManager x509TrustManager) {
-        sSLSocketFactory.getClass();
-        x509TrustManager.getClass();
-        if (!sSLSocketFactory.equals(this.q) || !x509TrustManager.equals(this.r)) {
-            this.D = null;
-        }
-        this.q = sSLSocketFactory;
-        qg3 qg3Var = qg3.a;
-        this.w = qg3.a.b(x509TrustManager);
-        this.r = x509TrustManager;
+    public final void c(SSLSocketFactory r2, X509TrustManager r3) {
+        r2.getClass();
+        r3.getClass();
+        if (r2.equals(this.q) == true) goto L5;
+    L6:
+        this.D = null;
+    L7:
+        this.q = r2;
+        qg3 r4 = qg3.a;
+        this.w = qg3.a.b(r3);
+        this.r = r3;
+        return;
+    L5:
+        if (r3.equals(this.r) == true) goto L7;
+        goto L6
     }
 }

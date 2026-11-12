@@ -15,184 +15,206 @@ public final class m44 {
     public ru f;
     public long g;
 
-    public m44(n9 n9Var) {
-        this.a = n9Var;
-        int iM = n9Var.m();
-        this.b = iM;
+    public m44(n9 r4) {
+        this.a = r4;
+        int r5 = r4.m();
+        this.b = r5;
         this.c = new be3(32);
-        ru ruVar = new ru(iM, 0L);
-        this.d = ruVar;
-        this.e = ruVar;
-        this.f = ruVar;
+        ru r0 = new ru(r5, 0);
+        this.d = r0;
+        this.e = r0;
+        this.f = r0;
     }
 
-    public static ru c(ru ruVar, long j, ByteBuffer byteBuffer, int i) {
-        while (j >= ruVar.o) {
-            ruVar = (ru) ruVar.q;
-        }
-        while (i > 0) {
-            int iMin = Math.min(i, (int) (ruVar.o - j));
-            m9 m9Var = (m9) ruVar.p;
-            byteBuffer.put(m9Var.a, ((int) (j - ruVar.n)) + m9Var.b, iMin);
-            i -= iMin;
-            j += (long) iMin;
-            if (j == ruVar.o) {
-                ruVar = (ru) ruVar.q;
-            }
-        }
-        return ruVar;
+    public static ru c(ru r5, long r6, ByteBuffer r8, int r9) {
+    L3:
+        if (r6 < r5.o) goto L5;
+        r5 = (ru) r5.q;
+    L5:
+        if (r9 <= 0) goto L9;
+        int r0 = Math.min(r9, (int) (r5.o - r6));
+        m9 r1 = (m9) r5.p;
+        r8.put(r1.a, ((int) (r6 - r5.n)) + r1.b, r0);
+        r9 = r9 - r0;
+        r6 = r6 + ((long) r0);
+        if (r6 != r5.o) goto L5;
+        r5 = (ru) r5.q;
+        goto L5
+    L9:
+        return r5;
     }
 
-    public static ru d(ru ruVar, long j, byte[] bArr, int i) {
-        while (j >= ruVar.o) {
-            ruVar = (ru) ruVar.q;
-        }
-        int i2 = i;
-        while (i2 > 0) {
-            int iMin = Math.min(i2, (int) (ruVar.o - j));
-            m9 m9Var = (m9) ruVar.p;
-            System.arraycopy(m9Var.a, ((int) (j - ruVar.n)) + m9Var.b, bArr, i - i2, iMin);
-            i2 -= iMin;
-            j += (long) iMin;
-            if (j == ruVar.o) {
-                ruVar = (ru) ruVar.q;
-            }
-        }
-        return ruVar;
+    public static ru d(ru r6, long r7, byte[] r9, int r10) {
+    L3:
+        if (r7 < r6.o) goto L5;
+        r6 = (ru) r6.q;
+        goto L3
+    L5:
+        int r0 = r10;
+    L6:
+        if (r0 <= 0) goto L10;
+        int r1 = Math.min(r0, (int) (r6.o - r7));
+        m9 r2 = (m9) r6.p;
+        System.arraycopy(r2.a, ((int) (r7 - r6.n)) + r2.b, r9, r10 - r0, r1);
+        r0 = r0 - r1;
+        r7 = r7 + ((long) r1);
+        if (r7 != r6.o) goto L6;
+        r6 = (ru) r6.q;
+        goto L6
+    L10:
+        return r6;
     }
 
-    public static ru e(ru ruVar, cj0 cj0Var, cw1 cw1Var, be3 be3Var) {
-        if (cj0Var.d(1073741824)) {
-            long j = cw1Var.b;
-            int iH = 1;
-            be3Var.K(1);
-            ru ruVarD = d(ruVar, j, be3Var.a, 1);
-            long j2 = j + 1;
-            byte b = be3Var.a[0];
-            boolean z = (b & 128) != 0;
-            int i = b & 127;
-            fg0 fg0Var = cj0Var.q;
-            byte[] bArr = fg0Var.a;
-            if (bArr == null) {
-                fg0Var.a = new byte[16];
-            } else {
-                Arrays.fill(bArr, (byte) 0);
-            }
-            ruVar = d(ruVarD, j2, fg0Var.a, i);
-            long j3 = j2 + ((long) i);
-            if (z) {
-                be3Var.K(2);
-                ruVar = d(ruVar, j3, be3Var.a, 2);
-                j3 += 2;
-                iH = be3Var.H();
-            }
-            int[] iArr = fg0Var.d;
-            if (iArr == null || iArr.length < iH) {
-                iArr = new int[iH];
-            }
-            int[] iArr2 = fg0Var.e;
-            if (iArr2 == null || iArr2.length < iH) {
-                iArr2 = new int[iH];
-            }
-            if (z) {
-                int i2 = iH * 6;
-                be3Var.K(i2);
-                ruVar = d(ruVar, j3, be3Var.a, i2);
-                j3 += (long) i2;
-                be3Var.N(0);
-                for (int i3 = 0; i3 < iH; i3++) {
-                    iArr[i3] = be3Var.H();
-                    iArr2[i3] = be3Var.E();
-                }
-            } else {
-                iArr[0] = 0;
-                iArr2[0] = cw1Var.a - ((int) (j3 - cw1Var.b));
-            }
-            vv4 vv4Var = (vv4) cw1Var.c;
-            String str = f35.a;
-            byte[] bArr2 = vv4Var.b;
-            byte[] bArr3 = fg0Var.a;
-            int i4 = vv4Var.a;
-            int i5 = vv4Var.c;
-            int i6 = vv4Var.d;
-            fg0Var.f = iH;
-            fg0Var.d = iArr;
-            fg0Var.e = iArr2;
-            fg0Var.b = bArr2;
-            fg0Var.a = bArr3;
-            fg0Var.c = i4;
-            fg0Var.g = i5;
-            fg0Var.h = i6;
-            MediaCodec.CryptoInfo cryptoInfo = fg0Var.i;
-            cryptoInfo.numSubSamples = iH;
-            cryptoInfo.numBytesOfClearData = iArr;
-            cryptoInfo.numBytesOfEncryptedData = iArr2;
-            cryptoInfo.key = bArr2;
-            cryptoInfo.iv = bArr3;
-            cryptoInfo.mode = i4;
-            hd5 hd5Var = fg0Var.j;
-            hd5Var.getClass();
-            MediaCodec.CryptoInfo.Pattern pattern = (MediaCodec.CryptoInfo.Pattern) hd5Var.p;
-            pattern.set(i5, i6);
-            ((MediaCodec.CryptoInfo) hd5Var.o).setPattern(pattern);
-            long j4 = cw1Var.b;
-            int i7 = (int) (j3 - j4);
-            cw1Var.b = j4 + ((long) i7);
-            cw1Var.a -= i7;
-        }
-        if (!cj0Var.d(268435456)) {
-            cj0Var.t(cw1Var.a);
-            return c(ruVar, cw1Var.b, cj0Var.r, cw1Var.a);
-        }
-        be3Var.K(4);
-        ru ruVarD2 = d(ruVar, cw1Var.b, be3Var.a, 4);
-        int iE = be3Var.E();
-        cw1Var.b += 4;
-        cw1Var.a -= 4;
-        cj0Var.t(iE);
-        ru ruVarC = c(ruVarD2, cw1Var.b, cj0Var.r, iE);
-        cw1Var.b += (long) iE;
-        int i8 = cw1Var.a - iE;
-        cw1Var.a = i8;
-        ByteBuffer byteBuffer = cj0Var.u;
-        if (byteBuffer == null || byteBuffer.capacity() < i8) {
-            cj0Var.u = ByteBuffer.allocate(i8);
-        } else {
-            cj0Var.u.clear();
-        }
-        return c(ruVarC, cw1Var.b, cj0Var.u, cw1Var.a);
+    public static ru e(ru r12, cj0 r13, cw1 r14, be3 r15) {
+        if (r13.d(1073741824) == false) goto L32;
+        long r0 = r14.b;
+        int r2 = 1;
+        r15.K(1);
+        ru r16 = d(r12, r0, r15.a, 1);
+        long r1 = r0 + 1;
+        int r4 = 0;
+        byte r3 = r15.a[0];
+        if ((r3 & 128) == 0) goto L7;
+        boolean r5 = true;
+    L8:
+        int r6 = r3 & 127;
+        fg0 r7 = r13.q;
+        byte[] r8 = r7.a;
+        if (r8 != null) goto L11;
+        r7.a = new byte[16];
+    L12:
+        r12 = d(r16, r1, r7.a, r6);
+        long r9 = r1 + ((long) r6);
+        if (r5 == false) goto L15;
+        r15.K(2);
+        r12 = d(r12, r9, r15.a, 2);
+        r9 = r9 + 2;
+        r2 = r15.H();
+    L15:
+        int[] r10 = r7.d;
+        if (r10 != null) goto L18;
+    L19:
+        r10 = new int[r2];
+    L20:
+        int[] r11 = r7.e;
+        if (r11 != null) goto L23;
+    L24:
+        r11 = new int[r2];
+    L25:
+        if (r5 == false) goto L29;
+        int r17 = r2 * 6;
+        r15.K(r17);
+        r12 = d(r12, r9, r15.a, r17);
+        r9 = r9 + ((long) r17);
+        r15.N(0);
+    L27:
+        if (r4 >= r2) goto L30;
+        r10[r4] = r15.H();
+        r11[r4] = r15.E();
+        r4 = r4 + 1;
+    L30:
+        vv4 r18 = (vv4) r14.c;
+        String r19 = f35.a;
+        byte[] r20 = r18.b;
+        byte[] r21 = r7.a;
+        int r22 = r18.a;
+        int r110 = r18.c;
+        int r23 = r18.d;
+        r7.f = r2;
+        r7.d = r10;
+        r7.e = r11;
+        r7.b = r20;
+        r7.a = r21;
+        r7.c = r22;
+        r7.g = r110;
+        r7.h = r23;
+        MediaCodec.CryptoInfo r111 = r7.i;
+        r111.numSubSamples = r2;
+        r111.numBytesOfClearData = r10;
+        r111.numBytesOfEncryptedData = r11;
+        r111.key = r20;
+        r111.iv = r21;
+        r111.mode = r22;
+        hd5 r24 = r7.j;
+        r24.getClass();
+        MediaCodec.CryptoInfo.Pattern r25 = (MediaCodec.CryptoInfo.Pattern) r24.p;
+        r25.set(r110, r23);
+        ((MediaCodec.CryptoInfo) r24.o).setPattern(r25);
+        long r26 = r14.b;
+        int r27 = (int) (r9 - r26);
+        r14.b = r26 + ((long) r27);
+        r14.a -= r27;
+        goto L32
+    L29:
+        r10[0] = 0;
+        r11[0] = r14.a - ((int) (r9 - r14.b));
+        goto L30
+    L23:
+        if (r11.length >= r2) goto L25;
+    L18:
+        if (r10.length >= r2) goto L20;
+    L11:
+        Arrays.fill(r8, (byte) 0);
+        goto L12
+    L7:
+        r5 = false;
+    L32:
+        if (r13.d(268435456) == false) goto L42;
+        r15.K(4);
+        ru r112 = d(r12, r14.b, r15.a, 4);
+        int r113 = r15.E();
+        r14.b += 4;
+        r14.a -= 4;
+        r13.t(r113);
+        ru r114 = c(r112, r14.b, r13.r, r113);
+        r14.b += (long) r113;
+        int r28 = r14.a - r113;
+        r14.a = r28;
+        ByteBuffer r115 = r13.u;
+        if (r115 != null) goto L36;
+    L39:
+        r13.u = ByteBuffer.allocate(r28);
+    L41:
+        return c(r114, r14.b, r13.u, r14.a);
+    L36:
+        if (r115.capacity() < r28) goto L39;
+        r13.u.clear();
+        goto L41
+    L42:
+        r13.t(r14.a);
+        return c(r12, r14.b, r13.r, r14.a);
     }
 
-    public final void a(long j) {
-        ru ruVar;
-        if (j == -1) {
-            return;
-        }
-        while (true) {
-            ruVar = this.d;
-            if (j < ruVar.o) {
-                break;
-            }
-            this.a.f((m9) ruVar.p);
-            ru ruVar2 = this.d;
-            ruVar2.p = null;
-            ru ruVar3 = (ru) ruVar2.q;
-            ruVar2.q = null;
-            this.d = ruVar3;
-        }
-        if (this.e.n < ruVar.n) {
-            this.e = ruVar;
-        }
+    public final void a(long r4) {
+        if (r4 == (-1)) goto L14;
+    L5:
+        ru r0 = this.d;
+        if (r4 < r0.o) goto L9;
+        m9 r1 = (m9) r0.p;
+        this.a.f(r1);
+        ru r2 = this.d;
+        r2.p = null;
+        ru r3 = (ru) r2.q;
+        r2.q = null;
+        this.d = r3;
+        goto L5
+    L9:
+        if (this.e.n >= r0.n) goto L13;
+        this.e = r0;
+        return;
+    L13:
+        return;
     }
 
-    public final int b(int i) {
-        ru ruVar = this.f;
-        if (((m9) ruVar.p) == null) {
-            m9 m9VarG = this.a.g();
-            ru ruVar2 = new ru(this.b, this.f.o);
-            ruVar.p = m9VarG;
-            ruVar.q = ruVar2;
-        }
-        return Math.min(i, (int) (this.f.o - this.g));
+    public final int b(int r7) {
+        ru r0 = this.f;
+        if (((m9) r0.p) != null) goto L6;
+        m9 r1 = this.a.g();
+        long r3 = this.f.o;
+        ru r2 = new ru(this.b, r3);
+        r0.p = r1;
+        r0.q = r2;
+    L6:
+        return Math.min(r7, (int) (this.f.o - this.g));
     }
 }

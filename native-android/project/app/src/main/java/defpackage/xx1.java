@@ -5,8 +5,8 @@ package defpackage;
 public final class xx1 extends yw1 {
     public final /* synthetic */ gx1 p;
 
-    public xx1(gx1 gx1Var) {
-        this.p = gx1Var;
+    public xx1(gx1 r1) {
+        this.p = r1;
     }
 
     @Override // defpackage.rw1
@@ -15,18 +15,20 @@ public final class xx1 extends yw1 {
     }
 
     @Override // java.util.List
-    public final Object get(int i) {
-        gx1 gx1Var = this.p;
-        switch (gx1Var.q) {
-            case 0:
-                q73 q73Var = ((my3) gx1Var.r).r;
-                rr2.q(i, q73Var.c);
-                return new p73(q73Var, i);
-            default:
-                q73 q73Var2 = ((my3) gx1Var.r).r;
-                rr2.q(i, q73Var2.c);
-                return q73Var2.a[i];
-        }
+    public final Object get(int r2) {
+        gx1 r1 = this.p;
+        switch(r1.q) {
+            case 0: goto L5;
+            default: goto L4;
+        };
+    L4:
+        q73 r3 = ((my3) r1.r).r;
+        rr2.q(r2, r3.c);
+        return r3.a[r2];
+    L5:
+        q73 r4 = ((my3) r1.r).r;
+        rr2.q(r2, r4.c);
+        return new p73(r4, r2);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List

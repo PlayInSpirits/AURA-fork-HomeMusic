@@ -8,24 +8,31 @@ public final class hw1 {
     public final Resources.Theme a;
     public final int b;
 
-    public hw1(Resources.Theme theme, int i) {
-        this.a = theme;
-        this.b = i;
+    public hw1(Resources.Theme r1, int r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof hw1)) {
-            return false;
-        }
-        hw1 hw1Var = (hw1) obj;
-        return h12.c(this.a, hw1Var.a) && this.b == hw1Var.b;
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if ((r5 instanceof hw1) == true) goto L8;
+        return false;
+    L8:
+        hw1 r6 = (hw1) r5;
+        if (h12.c(this.a, r6.a) == true) goto L12;
+        return false;
+    L12:
+        if (this.b == r6.b) goto L14;
+        return false;
+    L14:
+        return true;
     }
 
     public final int hashCode() {
-        return Integer.hashCode(this.b) + (this.a.hashCode() * 31);
+        int r0 = this.a.hashCode() * 31;
+        return Integer.hashCode(this.b) + r0;
     }
 
     public final String toString() {

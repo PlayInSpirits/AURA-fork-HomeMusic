@@ -9,15 +9,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -31,16 +28,12 @@ import com.eddyizm.tempus.App;
 import com.eddyizm.tempus.homemusic.WaveOrigin;
 import com.eddyizm.tempus.homemusic.a;
 import com.eddyizm.tempus.service.MediaService;
-import com.eddyizm.tempus.subsonic.models.AlbumID3;
-import com.eddyizm.tempus.subsonic.models.ArtistID3;
 import com.eddyizm.tempus.subsonic.models.Child;
 import com.eddyizm.tempus.ui.activity.MainActivity;
-import com.eddyizm.tempus.ui.fragment.PlayerControllerFragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import defpackage.a52;
-import defpackage.a83;
 import defpackage.aj2;
 import defpackage.aj3;
 import defpackage.b11;
@@ -63,11 +56,11 @@ import defpackage.fu;
 import defpackage.g12;
 import defpackage.gh0;
 import defpackage.gq0;
+import defpackage.gt1;
 import defpackage.ht1;
 import defpackage.i30;
 import defpackage.i61;
 import defpackage.i8;
-import defpackage.if1;
 import defpackage.ik;
 import defpackage.iw4;
 import defpackage.ix4;
@@ -89,11 +82,13 @@ import defpackage.qa1;
 import defpackage.qh3;
 import defpackage.rj3;
 import defpackage.si0;
+import defpackage.sj3;
 import defpackage.sk2;
 import defpackage.tb1;
 import defpackage.tj3;
 import defpackage.u52;
 import defpackage.ud3;
+import defpackage.uj3;
 import defpackage.uo;
 import defpackage.v00;
 import defpackage.v52;
@@ -108,8 +103,6 @@ import defpackage.yj3;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.concurrent.ExecutorService;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -127,8 +120,8 @@ public class PlayerControllerFragment extends kc1 {
     public MainActivity K0;
     public aj3 L0;
     public bl2 M0;
-    public boolean N0 = false;
-    public final y11 O0 = new y11(1, this);
+    public boolean N0;
+    public final y11 O0;
     public i61 l0;
     public a52 m0;
     public boolean n0;
@@ -145,886 +138,189 @@ public class PlayerControllerFragment extends kc1 {
     public TextView y0;
     public ConstraintLayout z0;
 
-    public static void j0(Chip chip) {
-        if (chip == null) {
-            return;
-        }
-        chip.setVisibility(8);
-        chip.setText("");
-        chip.setOnClickListener(null);
-        chip.setOnLongClickListener(null);
+    public PlayerControllerFragment() {
+        this.N0 = false;
+        this.O0 = new y11(1, this);
     }
 
-    public static qh3 l0(float f) {
-        float f2 = 1.0f;
-        if (xa3.u("playback_speed_pitch", false)) {
-            if (xa3.u("playback_speed_manual_pitch", false)) {
-                App.b().getClass();
-                f2 = App.c().getFloat("playback_speed_manual_pitch_value", 1.0f);
-            } else {
-                f2 = f;
-            }
-        }
-        return new qh3(f, f2);
+    public static void j0(Chip r1) {
+        if (r1 != null) goto L4;
+        return;
+    L4:
+        r1.setVisibility(8);
+        r1.setText("");
+        r1.setOnClickListener(null);
+        r1.setOnLongClickListener(null);
     }
 
-    public static void s0(TextView textView, String str) {
-        if (TextUtils.equals(textView.getText(), str)) {
-            return;
-        }
-        textView.setText(str);
+    public static qh3 l0(float r3) {
+        float r2 = 1.0f;
+        if (xa3.u("playback_speed_pitch", false) == false) goto L9;
+        if (xa3.u("playback_speed_manual_pitch", false) == false) goto L7;
+        App.b().getClass();
+        r2 = App.c().getFloat("playback_speed_manual_pitch_value", 1.0f);
+        goto L9
+    L7:
+        r2 = r3;
+    L9:
+        return new qh3(r3, r2);
+    }
+
+    public static void s0(TextView r1, String r2) {
+        if (TextUtils.equals(r1.getText(), r2) == true) goto L6;
+        r1.setText(r2);
+        return;
     }
 
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        int i;
-        this.K0 = (MainActivity) e();
-        final int i2 = 0;
-        View viewInflate = layoutInflater.inflate(R.layout.inner_fragment_player_controller, viewGroup, false);
-        int i3 = R.id.now_playing_media_controller_view;
-        PlayerControlView playerControlView = (PlayerControlView) uo.s(viewInflate, R.id.now_playing_media_controller_view);
-        if (playerControlView != null) {
-            i3 = R.id.player_remote_toggle;
-            MaterialButton materialButton = (MaterialButton) uo.s(viewInflate, R.id.player_remote_toggle);
-            if (materialButton != null) {
-                LinearLayout linearLayout = (LinearLayout) viewInflate;
-                this.l0 = new i61(linearLayout, playerControlView, materialButton, false, 6);
-                nc1 nc1VarX = X();
-                e75 e75VarD = nc1VarX.d();
-                b75 b75VarR = gh0.r(nc1VarX);
-                bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
-                i30 i30VarA = kx3.a(aj3.class);
-                String strB = i30VarA.b();
-                if (strB == null) {
-                    kf2.n("Local and anonymous classes can not be ViewModels");
-                    return null;
-                }
-                this.L0 = (aj3) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-                nc1 nc1VarX2 = X();
-                e75 e75VarD2 = nc1VarX2.d();
-                b75 b75VarR2 = gh0.r(nc1VarX2);
-                bq4 bq4Var2 = new bq4(e75VarD2, b75VarR2, b11.e(nc1VarX2, b75VarR2));
-                i30 i30VarA2 = kx3.a(pu3.class);
-                String strB2 = i30VarA2.b();
-                if (strB2 == null) {
-                    kf2.n("Local and anonymous classes can not be ViewModels");
-                    return null;
-                }
-                this.r0 = (pu3) bq4Var2.l(i30VarA2, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB2));
-                this.o0 = (ViewPager2) ((LinearLayout) this.l0.o).findViewById(R.id.player_media_cover_view_pager);
-                ToggleButton toggleButton = (ToggleButton) ((LinearLayout) this.l0.o).findViewById(R.id.button_favorite);
-                this.p0 = toggleButton;
-                ot1.f(toggleButton, new wj3(this, i2));
-                this.q0 = (ImageButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_overflow_button);
-                this.t0 = (TextView) ((LinearLayout) this.l0.o).findViewById(R.id.player_media_title_label);
-                this.u0 = (TextView) ((LinearLayout) this.l0.o).findViewById(R.id.player_artist_name_label);
-                this.v0 = (Button) ((LinearLayout) this.l0.o).findViewById(R.id.player_playback_speed_button);
-                this.w0 = (ToggleButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_skip_silence_toggle_button);
-                this.x0 = (Chip) ((LinearLayout) this.l0.o).findViewById(R.id.player_media_extension);
-                this.y0 = (TextView) ((LinearLayout) this.l0.o).findViewById(R.id.player_media_bitrate);
-                this.z0 = (ConstraintLayout) ((LinearLayout) this.l0.o).findViewById(R.id.player_quick_action_view);
-                this.A0 = (ImageButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_open_queue_button);
-                this.B0 = (ImageButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_open_lyrics_button);
-                this.C0 = (ImageButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_info_track);
-                this.s0 = (RatingBar) ((LinearLayout) this.l0.o).findViewById(R.id.song_rating_bar);
-                this.D0 = (LinearLayout) ((LinearLayout) this.l0.o).findViewById(R.id.rating_container);
-                this.G0 = (ChipGroup) ((LinearLayout) this.l0.o).findViewById(R.id.asset_link_chip_group);
-                this.H0 = (Chip) ((LinearLayout) this.l0.o).findViewById(R.id.asset_link_song_chip);
-                this.I0 = (Chip) ((LinearLayout) this.l0.o).findViewById(R.id.asset_link_album_chip);
-                this.J0 = (Chip) ((LinearLayout) this.l0.o).findViewById(R.id.asset_link_artist_chip);
-                this.E0 = (ImageButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_sleep_timer_button);
-                this.F0 = (TextView) ((LinearLayout) this.l0.o).findViewById(R.id.player_sleep_timer_label);
-                DefaultTimeBar defaultTimeBar = (DefaultTimeBar) ((LinearLayout) this.l0.o).findViewById(R.id.exo_progress);
-                defaultTimeBar.getClass();
-                int iT = g12.t(defaultTimeBar, R.attr.colorOnPrimaryContainer);
-                int iT2 = g12.t(defaultTimeBar, R.attr.colorPrimaryContainer);
-                defaultTimeBar.setBufferedColor(j51.k(iT2, iT, 0) | j51.k(iT2, iT, 16) | (-16777216) | j51.k(iT2, iT, 8));
-                le1 le1VarV = v();
-                LinearLayout linearLayout2 = (LinearLayout) this.l0.o;
-                k03 k03Var = this.L0.n;
-                d7 d7Var = new d7(5, this);
-                wj3 wj3Var = new wj3(this, 1);
-                TextView textView = this.u0;
-                linearLayout2.getClass();
-                k03Var.getClass();
-                View viewFindViewById = linearLayout2.findViewById(R.id.player_smart_rec_row);
-                TextView textView2 = (TextView) linearLayout2.findViewById(R.id.player_smart_rec_label);
-                ImageButton imageButton = (ImageButton) linearLayout2.findViewById(R.id.player_smart_rec_add);
-                ImageButton imageButton2 = (ImageButton) linearLayout2.findViewById(R.id.player_smart_rec_hide);
-                ImageButton imageButton3 = (ImageButton) linearLayout2.findViewById(R.id.exo_shuffle);
-                if (imageButton3 != null) {
-                    imageButton3.setOnClickListener(new j8(13, linearLayout2, wj3Var));
-                }
-                if (imageButton != null) {
-                    imageButton.setOnClickListener(new et1(k03Var, d7Var, linearLayout2, i2));
-                }
-                if (imageButton2 != null) {
-                    imageButton2.setOnClickListener(new j8(14, k03Var, linearLayout2));
-                }
-                final ft1 ft1Var = new ft1(k03Var, linearLayout2, viewFindViewById, textView2, imageButton, textView, wj3Var);
-                k03Var.e(le1VarV, new ht1(new if1() { // from class: gt1
-                    @Override // defpackage.if1
-                    public final Object invoke(Object obj) {
-                        int i4 = i2;
-                        j15 j15Var = j15.a;
-                        ft1 ft1Var2 = ft1Var;
-                        switch (i4) {
-                            case 0:
-                                ft1Var2.run();
-                                break;
-                            default:
-                                ft1Var2.run();
-                                break;
-                        }
-                        return j15Var;
-                    }
-                }, 0));
-                final int i4 = 1;
-                a.f.e(le1VarV, new ht1(new if1() { // from class: gt1
-                    @Override // defpackage.if1
-                    public final Object invoke(Object obj) {
-                        int i5 = i4;
-                        j15 j15Var = j15.a;
-                        ft1 ft1Var2 = ft1Var;
-                        switch (i5) {
-                            case 0:
-                                ft1Var2.run();
-                                break;
-                            default:
-                                ft1Var2.run();
-                                break;
-                        }
-                        return j15Var;
-                    }
-                }, 0));
-                if (this.D0 == null) {
-                    i = 8;
-                } else {
-                    boolean zU = xa3.u("song_rating_per_item", false);
-                    LinearLayout linearLayout3 = this.D0;
-                    if (zU) {
-                        linearLayout3.setVisibility(0);
-                        i = 8;
-                    } else {
-                        i = 8;
-                        linearLayout3.setVisibility(8);
-                    }
-                }
-                this.m0 = new a52(Looper.getMainLooper());
-                final int i5 = 3;
-                u52.b.e(v(), new a83(this) { // from class: uj3
-                    public final /* synthetic */ PlayerControllerFragment b;
-
-                    {
-                        this.b = this;
-                    }
-
-                    /* JADX WARN: Code duplicated, block: B:55:0x0159  */
-                    /* JADX WARN: Code duplicated, block: B:56:0x015b  */
-                    @Override // defpackage.a83
-                    public final void b(Object obj) {
-                        int i6;
-                        int i7 = i5;
-                        int i8 = 5;
-                        PlayerControllerFragment playerControllerFragment = this.b;
-                        switch (i7) {
-                            case 0:
-                                AlbumID3 albumID3 = (AlbumID3) obj;
-                                if (albumID3 != null) {
-                                    playerControllerFragment.t0.setOnClickListener(new j8(18, playerControllerFragment, albumID3));
-                                    TextView textView3 = playerControllerFragment.t0;
-                                    if (textView3 != null) {
-                                        textView3.setOnLongClickListener(new i8(i8, playerControllerFragment, textView3));
-                                        break;
-                                    }
-                                }
-                                break;
-                            case 1:
-                                Child child = (Child) obj;
-                                if (child != null) {
-                                    if (!u52.c().a || Objects.equals(child.getId(), u52.c().x)) {
-                                        playerControllerFragment.p0.setEnabled(true);
-                                        pu3 pu3Var = playerControllerFragment.r0;
-                                        pu3Var.f = child;
-                                        ImageButton imageButton4 = null;
-                                        pu3Var.g = null;
-                                        pu3Var.h = null;
-                                        int i9 = 0;
-                                        playerControllerFragment.p0.setChecked(n61.f(1, child.getId(), child.getStarred() != null));
-                                        playerControllerFragment.p0.setOnClickListener(new j8(17, playerControllerFragment, child));
-                                        LinearLayout linearLayout4 = (LinearLayout) playerControllerFragment.l0.o;
-                                        ExecutorService executorService = ur1.a;
-                                        linearLayout4.getClass();
-                                        View viewFindViewById2 = linearLayout4.findViewById(R.id.homemusic_player_dislike);
-                                        if (viewFindViewById2 != null) {
-                                            if (ur1.b(child)) {
-                                                i6 = 0;
-                                            } else {
-                                                i6 = 8;
-                                            }
-                                            viewFindViewById2.setVisibility(i6);
-                                            viewFindViewById2.setOnClickListener(new tr1(child, i9));
-                                        } else {
-                                            View viewFindViewById3 = linearLayout4.findViewById(R.id.button_favorite);
-                                            if (viewFindViewById3 != null) {
-                                                ViewParent parent = viewFindViewById3.getParent();
-                                                ConstraintLayout constraintLayout = parent instanceof ConstraintLayout ? (ConstraintLayout) parent : null;
-                                                if (constraintLayout != null) {
-                                                    Context context = linearLayout4.getContext();
-                                                    ImageButton imageButton5 = new ImageButton(context);
-                                                    imageButton5.setId(R.id.homemusic_player_dislike);
-                                                    imageButton5.setContentDescription(context.getString(R.string.homemusic_dislike));
-                                                    imageButton5.setImageResource(R.drawable.ic_homemusic_dislike);
-                                                    imageButton5.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                                                    TypedValue typedValue = new TypedValue();
-                                                    context.getTheme().resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, typedValue, true);
-                                                    imageButton5.setBackgroundResource(typedValue.resourceId);
-                                                    imageButton5.setPadding(0, 0, 0, 0);
-                                                    int i10 = viewFindViewById3.getLayoutParams().width;
-                                                    int i11 = (int) (16.0f * context.getResources().getDisplayMetrics().density);
-                                                    mb0 mb0Var = new mb0(i10, viewFindViewById3.getLayoutParams().height);
-                                                    mb0Var.i = viewFindViewById3.getId();
-                                                    mb0Var.l = viewFindViewById3.getId();
-                                                    mb0Var.u = viewFindViewById3.getId();
-                                                    mb0Var.setMarginEnd(i11);
-                                                    int childCount = constraintLayout.getChildCount();
-                                                    for (int i12 = 0; i12 < childCount; i12++) {
-                                                        View childAt = constraintLayout.getChildAt(i12);
-                                                        ViewGroup.LayoutParams layoutParams = childAt.getLayoutParams();
-                                                        mb0 mb0Var2 = layoutParams instanceof mb0 ? (mb0) layoutParams : null;
-                                                        if (mb0Var2 != null && mb0Var2.u == viewFindViewById3.getId()) {
-                                                            mb0Var2.u = imageButton5.getId();
-                                                            childAt.setLayoutParams(mb0Var2);
-                                                        }
-                                                    }
-                                                    constraintLayout.addView(imageButton5, mb0Var);
-                                                    imageButton4 = imageButton5;
-                                                }
-                                            }
-                                            if (imageButton4 != null) {
-                                                viewFindViewById2 = imageButton4;
-                                                if (ur1.b(child)) {
-                                                    i6 = 0;
-                                                } else {
-                                                    i6 = 8;
-                                                }
-                                                viewFindViewById2.setVisibility(i6);
-                                                viewFindViewById2.setOnClickListener(new tr1(child, i9));
-                                            }
-                                        }
-                                        playerControllerFragment.p0.setOnLongClickListener(new i8(4, playerControllerFragment, child));
-                                        Integer userRating = child.getUserRating();
-                                        RatingBar ratingBar = playerControllerFragment.s0;
-                                        if (userRating != null) {
-                                            ratingBar.setRating(userRating.intValue());
-                                        } else {
-                                            ratingBar.setRating(0.0f);
-                                        }
-                                        playerControllerFragment.s0.setOnRatingBarChangeListener(new ak3(playerControllerFragment, child));
-                                        if (playerControllerFragment.e() != null) {
-                                            playerControllerFragment.L0.f(playerControllerFragment.X(), child);
-                                        }
-                                    }
-                                }
-                                break;
-                            case 2:
-                                ArtistID3 artistID3 = (ArtistID3) obj;
-                                if (artistID3 != null) {
-                                    playerControllerFragment.u0.setOnClickListener(new j8(16, playerControllerFragment, artistID3));
-                                    TextView textView4 = playerControllerFragment.u0;
-                                    if (textView4 != null) {
-                                        textView4.setOnLongClickListener(new i8(i8, playerControllerFragment, textView4));
-                                        break;
-                                    }
-                                }
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                playerControllerFragment.m0();
-                                break;
-                            default:
-                                playerControllerFragment.m0();
-                                break;
-                        }
-                    }
-                });
-                final int i6 = 4;
-                u52.c.e(v(), new a83(this) { // from class: uj3
-                    public final /* synthetic */ PlayerControllerFragment b;
-
-                    {
-                        this.b = this;
-                    }
-
-                    /* JADX WARN: Code duplicated, block: B:55:0x0159  */
-                    /* JADX WARN: Code duplicated, block: B:56:0x015b  */
-                    @Override // defpackage.a83
-                    public final void b(Object obj) {
-                        int i7;
-                        int i8 = i6;
-                        int i9 = 5;
-                        PlayerControllerFragment playerControllerFragment = this.b;
-                        switch (i8) {
-                            case 0:
-                                AlbumID3 albumID3 = (AlbumID3) obj;
-                                if (albumID3 != null) {
-                                    playerControllerFragment.t0.setOnClickListener(new j8(18, playerControllerFragment, albumID3));
-                                    TextView textView3 = playerControllerFragment.t0;
-                                    if (textView3 != null) {
-                                        textView3.setOnLongClickListener(new i8(i9, playerControllerFragment, textView3));
-                                        break;
-                                    }
-                                }
-                                break;
-                            case 1:
-                                Child child = (Child) obj;
-                                if (child != null) {
-                                    if (!u52.c().a || Objects.equals(child.getId(), u52.c().x)) {
-                                        playerControllerFragment.p0.setEnabled(true);
-                                        pu3 pu3Var = playerControllerFragment.r0;
-                                        pu3Var.f = child;
-                                        ImageButton imageButton4 = null;
-                                        pu3Var.g = null;
-                                        pu3Var.h = null;
-                                        int i10 = 0;
-                                        playerControllerFragment.p0.setChecked(n61.f(1, child.getId(), child.getStarred() != null));
-                                        playerControllerFragment.p0.setOnClickListener(new j8(17, playerControllerFragment, child));
-                                        LinearLayout linearLayout4 = (LinearLayout) playerControllerFragment.l0.o;
-                                        ExecutorService executorService = ur1.a;
-                                        linearLayout4.getClass();
-                                        View viewFindViewById2 = linearLayout4.findViewById(R.id.homemusic_player_dislike);
-                                        if (viewFindViewById2 != null) {
-                                            if (ur1.b(child)) {
-                                                i7 = 0;
-                                            } else {
-                                                i7 = 8;
-                                            }
-                                            viewFindViewById2.setVisibility(i7);
-                                            viewFindViewById2.setOnClickListener(new tr1(child, i10));
-                                        } else {
-                                            View viewFindViewById3 = linearLayout4.findViewById(R.id.button_favorite);
-                                            if (viewFindViewById3 != null) {
-                                                ViewParent parent = viewFindViewById3.getParent();
-                                                ConstraintLayout constraintLayout = parent instanceof ConstraintLayout ? (ConstraintLayout) parent : null;
-                                                if (constraintLayout != null) {
-                                                    Context context = linearLayout4.getContext();
-                                                    ImageButton imageButton5 = new ImageButton(context);
-                                                    imageButton5.setId(R.id.homemusic_player_dislike);
-                                                    imageButton5.setContentDescription(context.getString(R.string.homemusic_dislike));
-                                                    imageButton5.setImageResource(R.drawable.ic_homemusic_dislike);
-                                                    imageButton5.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                                                    TypedValue typedValue = new TypedValue();
-                                                    context.getTheme().resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, typedValue, true);
-                                                    imageButton5.setBackgroundResource(typedValue.resourceId);
-                                                    imageButton5.setPadding(0, 0, 0, 0);
-                                                    int i11 = viewFindViewById3.getLayoutParams().width;
-                                                    int i12 = (int) (16.0f * context.getResources().getDisplayMetrics().density);
-                                                    mb0 mb0Var = new mb0(i11, viewFindViewById3.getLayoutParams().height);
-                                                    mb0Var.i = viewFindViewById3.getId();
-                                                    mb0Var.l = viewFindViewById3.getId();
-                                                    mb0Var.u = viewFindViewById3.getId();
-                                                    mb0Var.setMarginEnd(i12);
-                                                    int childCount = constraintLayout.getChildCount();
-                                                    for (int i13 = 0; i13 < childCount; i13++) {
-                                                        View childAt = constraintLayout.getChildAt(i13);
-                                                        ViewGroup.LayoutParams layoutParams = childAt.getLayoutParams();
-                                                        mb0 mb0Var2 = layoutParams instanceof mb0 ? (mb0) layoutParams : null;
-                                                        if (mb0Var2 != null && mb0Var2.u == viewFindViewById3.getId()) {
-                                                            mb0Var2.u = imageButton5.getId();
-                                                            childAt.setLayoutParams(mb0Var2);
-                                                        }
-                                                    }
-                                                    constraintLayout.addView(imageButton5, mb0Var);
-                                                    imageButton4 = imageButton5;
-                                                }
-                                            }
-                                            if (imageButton4 != null) {
-                                                viewFindViewById2 = imageButton4;
-                                                if (ur1.b(child)) {
-                                                    i7 = 0;
-                                                } else {
-                                                    i7 = 8;
-                                                }
-                                                viewFindViewById2.setVisibility(i7);
-                                                viewFindViewById2.setOnClickListener(new tr1(child, i10));
-                                            }
-                                        }
-                                        playerControllerFragment.p0.setOnLongClickListener(new i8(4, playerControllerFragment, child));
-                                        Integer userRating = child.getUserRating();
-                                        RatingBar ratingBar = playerControllerFragment.s0;
-                                        if (userRating != null) {
-                                            ratingBar.setRating(userRating.intValue());
-                                        } else {
-                                            ratingBar.setRating(0.0f);
-                                        }
-                                        playerControllerFragment.s0.setOnRatingBarChangeListener(new ak3(playerControllerFragment, child));
-                                        if (playerControllerFragment.e() != null) {
-                                            playerControllerFragment.L0.f(playerControllerFragment.X(), child);
-                                        }
-                                    }
-                                }
-                                break;
-                            case 2:
-                                ArtistID3 artistID3 = (ArtistID3) obj;
-                                if (artistID3 != null) {
-                                    playerControllerFragment.u0.setOnClickListener(new j8(16, playerControllerFragment, artistID3));
-                                    TextView textView4 = playerControllerFragment.u0;
-                                    if (textView4 != null) {
-                                        textView4.setOnLongClickListener(new i8(i9, playerControllerFragment, textView4));
-                                        break;
-                                    }
-                                }
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                playerControllerFragment.m0();
-                                break;
-                            default:
-                                playerControllerFragment.m0();
-                                break;
-                        }
-                    }
-                });
-                ((MaterialButton) this.l0.q).setOnClickListener(new rj3(this, 5));
-                ImageButton imageButton4 = this.q0;
-                if (imageButton4 != null) {
-                    imageButton4.setOnClickListener(new rj3(this, i6));
-                }
-                ConstraintLayout constraintLayout = this.z0;
-                if (xa3.u("quick_action_visible", true)) {
-                    i = 0;
-                }
-                constraintLayout.setVisibility(i);
-                final int i7 = 2;
-                this.A0.setOnClickListener(new rj3(this, i7));
-                this.B0.setOnClickListener(new rj3(this, i5));
-                this.o0.setOrientation(0);
-                this.o0.setAdapter(new bk3(m(), this.c0));
-                this.o0.setUserInputEnabled(false);
-                ((ArrayList) this.o0.p.b).add(new q80(i5, this));
-                final int i8 = 1;
-                this.L0.n.e(v(), new a83(this) { // from class: uj3
-                    public final /* synthetic */ PlayerControllerFragment b;
-
-                    {
-                        this.b = this;
-                    }
-
-                    /* JADX WARN: Code duplicated, block: B:55:0x0159  */
-                    /* JADX WARN: Code duplicated, block: B:56:0x015b  */
-                    @Override // defpackage.a83
-                    public final void b(Object obj) {
-                        int i9;
-                        int i10 = i8;
-                        int i11 = 5;
-                        PlayerControllerFragment playerControllerFragment = this.b;
-                        switch (i10) {
-                            case 0:
-                                AlbumID3 albumID3 = (AlbumID3) obj;
-                                if (albumID3 != null) {
-                                    playerControllerFragment.t0.setOnClickListener(new j8(18, playerControllerFragment, albumID3));
-                                    TextView textView3 = playerControllerFragment.t0;
-                                    if (textView3 != null) {
-                                        textView3.setOnLongClickListener(new i8(i11, playerControllerFragment, textView3));
-                                        break;
-                                    }
-                                }
-                                break;
-                            case 1:
-                                Child child = (Child) obj;
-                                if (child != null) {
-                                    if (!u52.c().a || Objects.equals(child.getId(), u52.c().x)) {
-                                        playerControllerFragment.p0.setEnabled(true);
-                                        pu3 pu3Var = playerControllerFragment.r0;
-                                        pu3Var.f = child;
-                                        ImageButton imageButton5 = null;
-                                        pu3Var.g = null;
-                                        pu3Var.h = null;
-                                        int i12 = 0;
-                                        playerControllerFragment.p0.setChecked(n61.f(1, child.getId(), child.getStarred() != null));
-                                        playerControllerFragment.p0.setOnClickListener(new j8(17, playerControllerFragment, child));
-                                        LinearLayout linearLayout4 = (LinearLayout) playerControllerFragment.l0.o;
-                                        ExecutorService executorService = ur1.a;
-                                        linearLayout4.getClass();
-                                        View viewFindViewById2 = linearLayout4.findViewById(R.id.homemusic_player_dislike);
-                                        if (viewFindViewById2 != null) {
-                                            if (ur1.b(child)) {
-                                                i9 = 0;
-                                            } else {
-                                                i9 = 8;
-                                            }
-                                            viewFindViewById2.setVisibility(i9);
-                                            viewFindViewById2.setOnClickListener(new tr1(child, i12));
-                                        } else {
-                                            View viewFindViewById3 = linearLayout4.findViewById(R.id.button_favorite);
-                                            if (viewFindViewById3 != null) {
-                                                ViewParent parent = viewFindViewById3.getParent();
-                                                ConstraintLayout constraintLayout2 = parent instanceof ConstraintLayout ? (ConstraintLayout) parent : null;
-                                                if (constraintLayout2 != null) {
-                                                    Context context = linearLayout4.getContext();
-                                                    ImageButton imageButton6 = new ImageButton(context);
-                                                    imageButton6.setId(R.id.homemusic_player_dislike);
-                                                    imageButton6.setContentDescription(context.getString(R.string.homemusic_dislike));
-                                                    imageButton6.setImageResource(R.drawable.ic_homemusic_dislike);
-                                                    imageButton6.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                                                    TypedValue typedValue = new TypedValue();
-                                                    context.getTheme().resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, typedValue, true);
-                                                    imageButton6.setBackgroundResource(typedValue.resourceId);
-                                                    imageButton6.setPadding(0, 0, 0, 0);
-                                                    int i13 = viewFindViewById3.getLayoutParams().width;
-                                                    int i14 = (int) (16.0f * context.getResources().getDisplayMetrics().density);
-                                                    mb0 mb0Var = new mb0(i13, viewFindViewById3.getLayoutParams().height);
-                                                    mb0Var.i = viewFindViewById3.getId();
-                                                    mb0Var.l = viewFindViewById3.getId();
-                                                    mb0Var.u = viewFindViewById3.getId();
-                                                    mb0Var.setMarginEnd(i14);
-                                                    int childCount = constraintLayout2.getChildCount();
-                                                    for (int i15 = 0; i15 < childCount; i15++) {
-                                                        View childAt = constraintLayout2.getChildAt(i15);
-                                                        ViewGroup.LayoutParams layoutParams = childAt.getLayoutParams();
-                                                        mb0 mb0Var2 = layoutParams instanceof mb0 ? (mb0) layoutParams : null;
-                                                        if (mb0Var2 != null && mb0Var2.u == viewFindViewById3.getId()) {
-                                                            mb0Var2.u = imageButton6.getId();
-                                                            childAt.setLayoutParams(mb0Var2);
-                                                        }
-                                                    }
-                                                    constraintLayout2.addView(imageButton6, mb0Var);
-                                                    imageButton5 = imageButton6;
-                                                }
-                                            }
-                                            if (imageButton5 != null) {
-                                                viewFindViewById2 = imageButton5;
-                                                if (ur1.b(child)) {
-                                                    i9 = 0;
-                                                } else {
-                                                    i9 = 8;
-                                                }
-                                                viewFindViewById2.setVisibility(i9);
-                                                viewFindViewById2.setOnClickListener(new tr1(child, i12));
-                                            }
-                                        }
-                                        playerControllerFragment.p0.setOnLongClickListener(new i8(4, playerControllerFragment, child));
-                                        Integer userRating = child.getUserRating();
-                                        RatingBar ratingBar = playerControllerFragment.s0;
-                                        if (userRating != null) {
-                                            ratingBar.setRating(userRating.intValue());
-                                        } else {
-                                            ratingBar.setRating(0.0f);
-                                        }
-                                        playerControllerFragment.s0.setOnRatingBarChangeListener(new ak3(playerControllerFragment, child));
-                                        if (playerControllerFragment.e() != null) {
-                                            playerControllerFragment.L0.f(playerControllerFragment.X(), child);
-                                        }
-                                    }
-                                }
-                                break;
-                            case 2:
-                                ArtistID3 artistID3 = (ArtistID3) obj;
-                                if (artistID3 != null) {
-                                    playerControllerFragment.u0.setOnClickListener(new j8(16, playerControllerFragment, artistID3));
-                                    TextView textView4 = playerControllerFragment.u0;
-                                    if (textView4 != null) {
-                                        textView4.setOnLongClickListener(new i8(i11, playerControllerFragment, textView4));
-                                        break;
-                                    }
-                                }
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                playerControllerFragment.m0();
-                                break;
-                            default:
-                                playerControllerFragment.m0();
-                                break;
-                        }
-                    }
-                });
-                this.L0.o.e(v(), new a83(this) { // from class: uj3
-                    public final /* synthetic */ PlayerControllerFragment b;
-
-                    {
-                        this.b = this;
-                    }
-
-                    /* JADX WARN: Code duplicated, block: B:55:0x0159  */
-                    /* JADX WARN: Code duplicated, block: B:56:0x015b  */
-                    @Override // defpackage.a83
-                    public final void b(Object obj) {
-                        int i9;
-                        int i10 = i2;
-                        int i11 = 5;
-                        PlayerControllerFragment playerControllerFragment = this.b;
-                        switch (i10) {
-                            case 0:
-                                AlbumID3 albumID3 = (AlbumID3) obj;
-                                if (albumID3 != null) {
-                                    playerControllerFragment.t0.setOnClickListener(new j8(18, playerControllerFragment, albumID3));
-                                    TextView textView3 = playerControllerFragment.t0;
-                                    if (textView3 != null) {
-                                        textView3.setOnLongClickListener(new i8(i11, playerControllerFragment, textView3));
-                                        break;
-                                    }
-                                }
-                                break;
-                            case 1:
-                                Child child = (Child) obj;
-                                if (child != null) {
-                                    if (!u52.c().a || Objects.equals(child.getId(), u52.c().x)) {
-                                        playerControllerFragment.p0.setEnabled(true);
-                                        pu3 pu3Var = playerControllerFragment.r0;
-                                        pu3Var.f = child;
-                                        ImageButton imageButton5 = null;
-                                        pu3Var.g = null;
-                                        pu3Var.h = null;
-                                        int i12 = 0;
-                                        playerControllerFragment.p0.setChecked(n61.f(1, child.getId(), child.getStarred() != null));
-                                        playerControllerFragment.p0.setOnClickListener(new j8(17, playerControllerFragment, child));
-                                        LinearLayout linearLayout4 = (LinearLayout) playerControllerFragment.l0.o;
-                                        ExecutorService executorService = ur1.a;
-                                        linearLayout4.getClass();
-                                        View viewFindViewById2 = linearLayout4.findViewById(R.id.homemusic_player_dislike);
-                                        if (viewFindViewById2 != null) {
-                                            if (ur1.b(child)) {
-                                                i9 = 0;
-                                            } else {
-                                                i9 = 8;
-                                            }
-                                            viewFindViewById2.setVisibility(i9);
-                                            viewFindViewById2.setOnClickListener(new tr1(child, i12));
-                                        } else {
-                                            View viewFindViewById3 = linearLayout4.findViewById(R.id.button_favorite);
-                                            if (viewFindViewById3 != null) {
-                                                ViewParent parent = viewFindViewById3.getParent();
-                                                ConstraintLayout constraintLayout2 = parent instanceof ConstraintLayout ? (ConstraintLayout) parent : null;
-                                                if (constraintLayout2 != null) {
-                                                    Context context = linearLayout4.getContext();
-                                                    ImageButton imageButton6 = new ImageButton(context);
-                                                    imageButton6.setId(R.id.homemusic_player_dislike);
-                                                    imageButton6.setContentDescription(context.getString(R.string.homemusic_dislike));
-                                                    imageButton6.setImageResource(R.drawable.ic_homemusic_dislike);
-                                                    imageButton6.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                                                    TypedValue typedValue = new TypedValue();
-                                                    context.getTheme().resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, typedValue, true);
-                                                    imageButton6.setBackgroundResource(typedValue.resourceId);
-                                                    imageButton6.setPadding(0, 0, 0, 0);
-                                                    int i13 = viewFindViewById3.getLayoutParams().width;
-                                                    int i14 = (int) (16.0f * context.getResources().getDisplayMetrics().density);
-                                                    mb0 mb0Var = new mb0(i13, viewFindViewById3.getLayoutParams().height);
-                                                    mb0Var.i = viewFindViewById3.getId();
-                                                    mb0Var.l = viewFindViewById3.getId();
-                                                    mb0Var.u = viewFindViewById3.getId();
-                                                    mb0Var.setMarginEnd(i14);
-                                                    int childCount = constraintLayout2.getChildCount();
-                                                    for (int i15 = 0; i15 < childCount; i15++) {
-                                                        View childAt = constraintLayout2.getChildAt(i15);
-                                                        ViewGroup.LayoutParams layoutParams = childAt.getLayoutParams();
-                                                        mb0 mb0Var2 = layoutParams instanceof mb0 ? (mb0) layoutParams : null;
-                                                        if (mb0Var2 != null && mb0Var2.u == viewFindViewById3.getId()) {
-                                                            mb0Var2.u = imageButton6.getId();
-                                                            childAt.setLayoutParams(mb0Var2);
-                                                        }
-                                                    }
-                                                    constraintLayout2.addView(imageButton6, mb0Var);
-                                                    imageButton5 = imageButton6;
-                                                }
-                                            }
-                                            if (imageButton5 != null) {
-                                                viewFindViewById2 = imageButton5;
-                                                if (ur1.b(child)) {
-                                                    i9 = 0;
-                                                } else {
-                                                    i9 = 8;
-                                                }
-                                                viewFindViewById2.setVisibility(i9);
-                                                viewFindViewById2.setOnClickListener(new tr1(child, i12));
-                                            }
-                                        }
-                                        playerControllerFragment.p0.setOnLongClickListener(new i8(4, playerControllerFragment, child));
-                                        Integer userRating = child.getUserRating();
-                                        RatingBar ratingBar = playerControllerFragment.s0;
-                                        if (userRating != null) {
-                                            ratingBar.setRating(userRating.intValue());
-                                        } else {
-                                            ratingBar.setRating(0.0f);
-                                        }
-                                        playerControllerFragment.s0.setOnRatingBarChangeListener(new ak3(playerControllerFragment, child));
-                                        if (playerControllerFragment.e() != null) {
-                                            playerControllerFragment.L0.f(playerControllerFragment.X(), child);
-                                        }
-                                    }
-                                }
-                                break;
-                            case 2:
-                                ArtistID3 artistID3 = (ArtistID3) obj;
-                                if (artistID3 != null) {
-                                    playerControllerFragment.u0.setOnClickListener(new j8(16, playerControllerFragment, artistID3));
-                                    TextView textView4 = playerControllerFragment.u0;
-                                    if (textView4 != null) {
-                                        textView4.setOnLongClickListener(new i8(i11, playerControllerFragment, textView4));
-                                        break;
-                                    }
-                                }
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                playerControllerFragment.m0();
-                                break;
-                            default:
-                                playerControllerFragment.m0();
-                                break;
-                        }
-                    }
-                });
-                this.L0.p.e(v(), new a83(this) { // from class: uj3
-                    public final /* synthetic */ PlayerControllerFragment b;
-
-                    {
-                        this.b = this;
-                    }
-
-                    /* JADX WARN: Code duplicated, block: B:55:0x0159  */
-                    /* JADX WARN: Code duplicated, block: B:56:0x015b  */
-                    @Override // defpackage.a83
-                    public final void b(Object obj) {
-                        int i9;
-                        int i10 = i7;
-                        int i11 = 5;
-                        PlayerControllerFragment playerControllerFragment = this.b;
-                        switch (i10) {
-                            case 0:
-                                AlbumID3 albumID3 = (AlbumID3) obj;
-                                if (albumID3 != null) {
-                                    playerControllerFragment.t0.setOnClickListener(new j8(18, playerControllerFragment, albumID3));
-                                    TextView textView3 = playerControllerFragment.t0;
-                                    if (textView3 != null) {
-                                        textView3.setOnLongClickListener(new i8(i11, playerControllerFragment, textView3));
-                                        break;
-                                    }
-                                }
-                                break;
-                            case 1:
-                                Child child = (Child) obj;
-                                if (child != null) {
-                                    if (!u52.c().a || Objects.equals(child.getId(), u52.c().x)) {
-                                        playerControllerFragment.p0.setEnabled(true);
-                                        pu3 pu3Var = playerControllerFragment.r0;
-                                        pu3Var.f = child;
-                                        ImageButton imageButton5 = null;
-                                        pu3Var.g = null;
-                                        pu3Var.h = null;
-                                        int i12 = 0;
-                                        playerControllerFragment.p0.setChecked(n61.f(1, child.getId(), child.getStarred() != null));
-                                        playerControllerFragment.p0.setOnClickListener(new j8(17, playerControllerFragment, child));
-                                        LinearLayout linearLayout4 = (LinearLayout) playerControllerFragment.l0.o;
-                                        ExecutorService executorService = ur1.a;
-                                        linearLayout4.getClass();
-                                        View viewFindViewById2 = linearLayout4.findViewById(R.id.homemusic_player_dislike);
-                                        if (viewFindViewById2 != null) {
-                                            if (ur1.b(child)) {
-                                                i9 = 0;
-                                            } else {
-                                                i9 = 8;
-                                            }
-                                            viewFindViewById2.setVisibility(i9);
-                                            viewFindViewById2.setOnClickListener(new tr1(child, i12));
-                                        } else {
-                                            View viewFindViewById3 = linearLayout4.findViewById(R.id.button_favorite);
-                                            if (viewFindViewById3 != null) {
-                                                ViewParent parent = viewFindViewById3.getParent();
-                                                ConstraintLayout constraintLayout2 = parent instanceof ConstraintLayout ? (ConstraintLayout) parent : null;
-                                                if (constraintLayout2 != null) {
-                                                    Context context = linearLayout4.getContext();
-                                                    ImageButton imageButton6 = new ImageButton(context);
-                                                    imageButton6.setId(R.id.homemusic_player_dislike);
-                                                    imageButton6.setContentDescription(context.getString(R.string.homemusic_dislike));
-                                                    imageButton6.setImageResource(R.drawable.ic_homemusic_dislike);
-                                                    imageButton6.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                                                    TypedValue typedValue = new TypedValue();
-                                                    context.getTheme().resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, typedValue, true);
-                                                    imageButton6.setBackgroundResource(typedValue.resourceId);
-                                                    imageButton6.setPadding(0, 0, 0, 0);
-                                                    int i13 = viewFindViewById3.getLayoutParams().width;
-                                                    int i14 = (int) (16.0f * context.getResources().getDisplayMetrics().density);
-                                                    mb0 mb0Var = new mb0(i13, viewFindViewById3.getLayoutParams().height);
-                                                    mb0Var.i = viewFindViewById3.getId();
-                                                    mb0Var.l = viewFindViewById3.getId();
-                                                    mb0Var.u = viewFindViewById3.getId();
-                                                    mb0Var.setMarginEnd(i14);
-                                                    int childCount = constraintLayout2.getChildCount();
-                                                    for (int i15 = 0; i15 < childCount; i15++) {
-                                                        View childAt = constraintLayout2.getChildAt(i15);
-                                                        ViewGroup.LayoutParams layoutParams = childAt.getLayoutParams();
-                                                        mb0 mb0Var2 = layoutParams instanceof mb0 ? (mb0) layoutParams : null;
-                                                        if (mb0Var2 != null && mb0Var2.u == viewFindViewById3.getId()) {
-                                                            mb0Var2.u = imageButton6.getId();
-                                                            childAt.setLayoutParams(mb0Var2);
-                                                        }
-                                                    }
-                                                    constraintLayout2.addView(imageButton6, mb0Var);
-                                                    imageButton5 = imageButton6;
-                                                }
-                                            }
-                                            if (imageButton5 != null) {
-                                                viewFindViewById2 = imageButton5;
-                                                if (ur1.b(child)) {
-                                                    i9 = 0;
-                                                } else {
-                                                    i9 = 8;
-                                                }
-                                                viewFindViewById2.setVisibility(i9);
-                                                viewFindViewById2.setOnClickListener(new tr1(child, i12));
-                                            }
-                                        }
-                                        playerControllerFragment.p0.setOnLongClickListener(new i8(4, playerControllerFragment, child));
-                                        Integer userRating = child.getUserRating();
-                                        RatingBar ratingBar = playerControllerFragment.s0;
-                                        if (userRating != null) {
-                                            ratingBar.setRating(userRating.intValue());
-                                        } else {
-                                            ratingBar.setRating(0.0f);
-                                        }
-                                        playerControllerFragment.s0.setOnRatingBarChangeListener(new ak3(playerControllerFragment, child));
-                                        if (playerControllerFragment.e() != null) {
-                                            playerControllerFragment.L0.f(playerControllerFragment.X(), child);
-                                        }
-                                    }
-                                }
-                                break;
-                            case 2:
-                                ArtistID3 artistID3 = (ArtistID3) obj;
-                                if (artistID3 != null) {
-                                    playerControllerFragment.u0.setOnClickListener(new j8(16, playerControllerFragment, artistID3));
-                                    TextView textView4 = playerControllerFragment.u0;
-                                    if (textView4 != null) {
-                                        textView4.setOnLongClickListener(new i8(i11, playerControllerFragment, textView4));
-                                        break;
-                                    }
-                                }
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                playerControllerFragment.m0();
-                                break;
-                            default:
-                                playerControllerFragment.m0();
-                                break;
-                        }
-                    }
-                });
-                x0();
-                return linearLayout;
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i3)));
+    public final View H(LayoutInflater r17, ViewGroup r18, Bundle r19) {
+        this.K0 = (MainActivity) l();
+        final int r2 = 0;
+        View r1 = r17.inflate(R.layout.inner_fragment_player_controller, r18, false);
+        int r3 = R.id.now_playing_media_controller_view;
+        PlayerControlView r7 = (PlayerControlView) uo.s(r1, R.id.now_playing_media_controller_view);
+        if (r7 == null) goto L36;
+        r3 = R.id.player_remote_toggle;
+        MaterialButton r8 = (MaterialButton) uo.s(r1, R.id.player_remote_toggle);
+        if (r8 == null) goto L36;
+        LinearLayout r6 = (LinearLayout) r1;
+        this.l0 = new i61(r6, r7, r8, false, 6);
+        nc1 r4 = X();
+        e75 r5 = r4.d();
+        b75 r9 = gh0.r(r4);
+        bq4 r10 = new bq4(r5, r9, b11.e(r4, r9));
+        i30 r11 = kx3.a(aj3.class);
+        String r12 = r11.b();
+        if (r12 == null) goto L34;
+        this.L0 = (aj3) r10.l(r11, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r12));
+        nc1 r13 = X();
+        e75 r14 = r13.d();
+        b75 r15 = gh0.r(r13);
+        bq4 r16 = new bq4(r14, r15, b11.e(r13, r15));
+        i30 r20 = kx3.a(pu3.class);
+        String r21 = r20.b();
+        if (r21 == null) goto L32;
+        this.r0 = (pu3) r16.l(r20, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r21));
+        this.o0 = (ViewPager2) ((LinearLayout) this.l0.o).findViewById(R.id.player_media_cover_view_pager);
+        ToggleButton r22 = (ToggleButton) ((LinearLayout) this.l0.o).findViewById(R.id.button_favorite);
+        this.p0 = r22;
+        ot1.f(r22, new wj3(this, r2));
+        this.q0 = (ImageButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_overflow_button);
+        this.t0 = (TextView) ((LinearLayout) this.l0.o).findViewById(R.id.player_media_title_label);
+        this.u0 = (TextView) ((LinearLayout) this.l0.o).findViewById(R.id.player_artist_name_label);
+        this.v0 = (Button) ((LinearLayout) this.l0.o).findViewById(R.id.player_playback_speed_button);
+        this.w0 = (ToggleButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_skip_silence_toggle_button);
+        this.x0 = (Chip) ((LinearLayout) this.l0.o).findViewById(R.id.player_media_extension);
+        this.y0 = (TextView) ((LinearLayout) this.l0.o).findViewById(R.id.player_media_bitrate);
+        this.z0 = (ConstraintLayout) ((LinearLayout) this.l0.o).findViewById(R.id.player_quick_action_view);
+        this.A0 = (ImageButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_open_queue_button);
+        this.B0 = (ImageButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_open_lyrics_button);
+        this.C0 = (ImageButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_info_track);
+        this.s0 = (RatingBar) ((LinearLayout) this.l0.o).findViewById(R.id.song_rating_bar);
+        this.D0 = (LinearLayout) ((LinearLayout) this.l0.o).findViewById(R.id.rating_container);
+        this.G0 = (ChipGroup) ((LinearLayout) this.l0.o).findViewById(R.id.asset_link_chip_group);
+        this.H0 = (Chip) ((LinearLayout) this.l0.o).findViewById(R.id.asset_link_song_chip);
+        this.I0 = (Chip) ((LinearLayout) this.l0.o).findViewById(R.id.asset_link_album_chip);
+        this.J0 = (Chip) ((LinearLayout) this.l0.o).findViewById(R.id.asset_link_artist_chip);
+        LinearLayout r23 = (LinearLayout) ((LinearLayout) this.l0.o).findViewById(R.id.player_sleep_timer_container);
+        this.E0 = (ImageButton) ((LinearLayout) this.l0.o).findViewById(R.id.player_sleep_timer_button);
+        this.F0 = (TextView) ((LinearLayout) this.l0.o).findViewById(R.id.player_sleep_timer_label);
+        DefaultTimeBar r24 = (DefaultTimeBar) ((LinearLayout) this.l0.o).findViewById(R.id.exo_progress);
+        r24.getClass();
+        int r25 = g12.t(r24, R.attr.colorOnPrimaryContainer);
+        int r26 = g12.t(r24, R.attr.colorPrimaryContainer);
+        r24.setBufferedColor(j51.k(r26, r25, 0) | ((j51.k(r26, r25, 16) | (-16777216)) | j51.k(r26, r25, 8)));
+        le1 r27 = v();
+        LinearLayout r110 = (LinearLayout) this.l0.o;
+        k03 r28 = this.L0.n;
+        d7 r29 = new d7(5, this);
+        wj3 r111 = new wj3(this, 1);
+        TextView r112 = this.u0;
+        r110.getClass();
+        r28.getClass();
+        View r113 = r110.findViewById(R.id.player_smart_rec_row);
+        TextView r114 = (TextView) r110.findViewById(R.id.player_smart_rec_label);
+        ImageButton r115 = (ImageButton) r110.findViewById(R.id.player_smart_rec_add);
+        ImageButton r30 = (ImageButton) r110.findViewById(R.id.player_smart_rec_hide);
+        ImageButton r31 = (ImageButton) r110.findViewById(R.id.exo_shuffle);
+        if (r31 == null) goto L13;
+        r31.setOnClickListener(new j8(13, r110, r111));
+    L13:
+        if (r115 == null) goto L15;
+        r115.setOnClickListener(new et1(r28, r29, r110, r2));
+    L15:
+        if (r30 == null) goto L17;
+        r30.setOnClickListener(new j8(14, r28, r110));
+    L17:
+        final ft1 r32 = new ft1(r28, r110, r113, r114, r115, r112, r111);
+        r28.e(r27, new ht1(new gt1(r32, r2), 0));
+        final int r33 = 1;
+        a.f.e(r27, new ht1(new gt1(r32, r33), 0));
+        if (this.D0 != null) goto L20;
+    L19:
+        int r34 = 8;
+    L24:
+        this.m0 = new a52(Looper.getMainLooper());
+        final int r35 = 3;
+        u52.b.e(v(), new uj3(this, r35));
+        final int r36 = 4;
+        u52.c.e(v(), new uj3(this, r36));
+        ((MaterialButton) this.l0.q).setOnClickListener(new rj3(this, 5));
+        ImageButton r37 = this.q0;
+        if (r37 == null) goto L27;
+        r37.setOnClickListener(new rj3(this, r36));
+    L27:
+        ConstraintLayout r38 = this.z0;
+        if (xa3.u("quick_action_visible", true) == false) goto L30;
+        r34 = 0;
+    L30:
+        r38.setVisibility(r34);
+        final int r39 = 2;
+        this.A0.setOnClickListener(new rj3(this, r39));
+        this.B0.setOnClickListener(new rj3(this, r35));
+        this.o0.setOrientation(0);
+        this.o0.setAdapter(new bk3(m(), this.c0));
+        this.o0.setUserInputEnabled(false);
+        ViewPager2 r40 = this.o0;
+        ((ArrayList) r40.p.b).add(new q80(r35, this));
+        final int r41 = 1;
+        this.L0.n.e(v(), new uj3(this, r41));
+        this.L0.o.e(v(), new uj3(this, r2));
+        this.L0.p.e(v(), new uj3(this, r39));
+        x0();
+        return r6;
+    L20:
+        boolean r42 = xa3.u("song_rating_per_item", false);
+        LinearLayout r43 = this.D0;
+        if (r42 == false) goto L23;
+        r43.setVisibility(0);
+        goto L19
+    L23:
+        r34 = 8;
+        r43.setVisibility(8);
+        goto L24
+    L32:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L34:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L36:
+        nz2.n("Missing required view with ID: ".concat(r1.getResources().getResourceName(r3)));
         return null;
     }
 
     @Override // defpackage.kc1
     public final void J() {
         this.R = true;
-        i61 i61Var = this.l0;
-        if (i61Var != null) {
-            ((PlayerControlView) i61Var.p).setPlayer(null);
-        }
-        a52 a52Var = this.m0;
-        if (a52Var != null) {
-            a52Var.A1();
-        }
+        i61 r0 = this.l0;
+        if (r0 == null) goto L5;
+        ((PlayerControlView) r0.p).setPlayer(null);
+    L5:
+        a52 r1 = this.m0;
+        if (r1 == null) goto L8;
+        r1.A1();
+    L8:
         this.m0 = null;
         this.l0 = null;
     }
@@ -1032,39 +328,41 @@ public class PlayerControllerFragment extends kc1 {
     @Override // defpackage.kc1
     public final void O() {
         this.R = true;
-        if (this.N0) {
-            X().unbindService(this.O0);
-            this.N0 = false;
-        }
+        if (this.N0 == false) goto L6;
+        X().unbindService(this.O0);
+        this.N0 = false;
+        return;
     }
 
     @Override // defpackage.kc1
     public final void P() {
         this.R = true;
-        Intent intent = new Intent(X(), (Class<?>) MediaService.class);
-        intent.setAction("com.eddyizm.tempus.service.BIND_EQUALIZER");
-        X().bindService(intent, this.O0, 1);
+        Intent r1 = new Intent(X(), MediaService.class);
+        r1.setAction("com.eddyizm.tempus.service.BIND_EQUALIZER");
+        X().bindService(r1, this.O0, 1);
         this.N0 = true;
     }
 
     @Override // defpackage.kc1
     public final void R() {
-        xc5 xc5Var;
         this.R = true;
-        Context contextZ = Z();
-        cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
-        Bundle bundle = Bundle.EMPTY;
-        aj2 aj2Var = new aj2();
-        Looper looperX = f35.x();
-        bl2 bl2Var = new bl2(looperX);
-        if (cb4Var.a.e()) {
-            xc5Var = new xc5(4, new fi0(new x7(contextZ)));
-        } else {
-            xc5Var = null;
-        }
-        b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, xc5Var), new Handler(looperX));
-        this.M0 = bl2Var;
-        bl2Var.f(new qa1(27, this), gq0.n);
+        Context r2 = Z();
+        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
+        Bundle r4 = Bundle.EMPTY;
+        aj2 r5 = new aj2();
+        Looper r6 = f35.x();
+        bl2 r7 = new bl2(r6);
+        if (r3.a.e() == false) goto L6;
+        fi0 r8 = new fi0(new x7(r2));
+        xc5 r0 = new xc5(4, r8);
+    L7:
+        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
+        this.M0 = r7;
+        r7.f(new qa1(27, this), gq0.n);
+        return;
+    L6:
+        r0 = null;
+        goto L7
     }
 
     @Override // defpackage.kc1
@@ -1074,113 +372,144 @@ public class PlayerControllerFragment extends kc1 {
         this.R = true;
     }
 
-    public final ik h0(Chip chip, String str, String str2) {
-        int i;
-        if (chip == null) {
-            return null;
-        }
-        if (TextUtils.isEmpty(str2)) {
-            j0(chip);
-            return null;
-        }
-        int i2 = 1;
-        switch (str) {
-            case "artist":
-                i = R.string.asset_link_label_artist;
-                break;
-            case "song":
-                i = R.string.asset_link_label_song;
-                break;
-            case "year":
-                i = R.string.asset_link_label_year;
-                break;
-            case "album":
-                i = R.string.asset_link_label_album;
-                break;
-            case "genre":
-                i = R.string.asset_link_label_genre;
-                break;
-            case "playlist":
-                i = R.string.asset_link_label_playlist;
-                break;
-            default:
-                i = R.string.asset_link_label_unknown;
-                break;
-        }
-        String strS = s(i);
-        ik ikVarH = l93.h(str, str2);
-        if (ikVarH == null) {
-            j0(chip);
-            return null;
-        }
-        chip.setText(t(R.string.asset_link_chip_text, strS, ikVarH.d));
-        chip.setVisibility(0);
-        chip.setOnClickListener(new tj3(this, ikVarH, i2));
-        chip.setOnLongClickListener(new yj3(this, ikVarH, str2, 0));
-        return ikVarH;
+    public final ik h0(Chip r6, String r7, String r8) {
+        if (r6 != null) goto L6;
+        return null;
+    L6:
+        if (TextUtils.isEmpty(r8) == false) goto L9;
+        j0(r6);
+        return null;
+    L9:
+        int r2 = 1;
+        byte r4 = -1;
+        switch(r7.hashCode()) {
+            case -1409097913: goto L33;
+            case 3536149: goto L29;
+            case 3704893: goto L25;
+            case 92896879: goto L21;
+            case 98240899: goto L17;
+            case 1879474642: goto L13;
+            default: goto L36;
+        };
+    L36:
+        switch(r4) {
+            case 0: goto L43;
+            case 1: goto L42;
+            case 2: goto L41;
+            case 3: goto L40;
+            case 4: goto L39;
+            case 5: goto L38;
+            default: goto L37;
+        };
+    L37:
+        int r1 = R.string.asset_link_label_unknown;
+    L44:
+        String r3 = s(r1);
+        ik r9 = l93.h(r7, r8);
+        if (r9 != null) goto L48;
+        j0(r6);
+        return null;
+    L48:
+        r6.setText(t(R.string.asset_link_chip_text, new Object[]{r3, r9.d}));
+        r6.setVisibility(0);
+        r6.setOnClickListener(new tj3(this, r9, r2));
+        r6.setOnLongClickListener(new yj3(this, r9, r8, 0));
+        return r9;
+    L38:
+        r1 = R.string.asset_link_label_playlist;
+        goto L44
+    L39:
+        r1 = R.string.asset_link_label_genre;
+        goto L44
+    L40:
+        r1 = R.string.asset_link_label_album;
+        goto L44
+    L41:
+        r1 = R.string.asset_link_label_year;
+        goto L44
+    L42:
+        r1 = R.string.asset_link_label_song;
+        goto L44
+    L43:
+        r1 = R.string.asset_link_label_artist;
+        goto L44
+    L13:
+        if (r7.equals("playlist") == false) goto L36;
+        r4 = 5;
+        goto L36
+    L17:
+        if (r7.equals("genre") == false) goto L36;
+        r4 = 4;
+        goto L36
+    L21:
+        if (r7.equals("album") == false) goto L36;
+        r4 = 3;
+        goto L36
+    L25:
+        if (r7.equals("year") == false) goto L36;
+        r4 = 2;
+        goto L36
+    L29:
+        if (r7.equals("song") == false) goto L36;
+        r4 = 1;
+        goto L36
+    L33:
+        if (r7.equals("artist") == false) goto L36;
+        r4 = 0;
+        goto L36
     }
 
-    public final void i0(View view, ik ikVar) {
-        if (view == null) {
-            return;
-        }
-        int i = 0;
-        if (ikVar == null) {
-            l93.p(view);
-            view.setOnClickListener(null);
-            view.setOnLongClickListener(null);
-            view.setClickable(false);
-            view.setLongClickable(false);
-            return;
-        }
-        view.setClickable(true);
-        view.setLongClickable(true);
-        l93.g(view);
-        view.setOnClickListener(new tj3(this, ikVar, i));
-        view.setOnLongClickListener(new i8(3, this, ikVar));
+    public final void i0(View r3, ik r4) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        int r0 = 0;
+        if (r4 != null) goto L8;
+        l93.p(r3);
+        r3.setOnClickListener(null);
+        r3.setOnLongClickListener(null);
+        r3.setClickable(false);
+        r3.setLongClickable(false);
+        return;
+    L8:
+        r3.setClickable(true);
+        r3.setLongClickable(true);
+        l93.g(r3);
+        r3.setOnClickListener(new tj3(this, r4, r0));
+        r3.setOnLongClickListener(new i8(3, this, r4));
     }
 
     public final bj2 k0() {
-        bl2 bl2Var = this.M0;
-        if (bl2Var != null && bl2Var.isDone()) {
-            try {
-                return (bj2) this.M0.get();
-            } catch (Exception e) {
-                Log.e("PlayerCoverFragment", "Unable to resolve media browser", e);
-            }
-        }
+        bl2 r0 = this.M0;
+        if (r0 != null) goto L5;
+    L11:
         return null;
+    L5:
+        if (r0.isDone() == false) goto L11;
+        return (bj2) this.M0.get();
+    L9:
+        e = move-exception;
+        Log.e("PlayerCoverFragment", "Unable to resolve media browser", e);
+        goto L11
     }
 
     public final void m0() {
-        if (this.l0 == null || this.m0 == null) {
-            return;
-        }
-        if (!u52.c().a) {
-            ((MaterialButton) this.l0.q).setText(R.string.lan_play_on);
-            ((MaterialButton) this.l0.q).setContentDescription(s(R.string.lan_play_on));
-            ((MaterialButton) this.l0.q).setSelected(false);
-            this.p0.setEnabled(true);
-            bj2 bj2VarK0 = k0();
-            if (bj2VarK0 != null) {
-                ((PlayerControlView) this.l0.p).setPlayer(bj2VarK0);
-                n0(bj2VarK0);
-                q0(bj2VarK0.K0());
-                p0(bj2VarK0.K0());
-                return;
-            }
-            return;
-        }
-        a52 a52Var = this.m0;
-        a52Var.F1();
-        if (a52Var.f.isEmpty() && !a52Var.i) {
-            a52Var.D1(a52Var.i1(), false, false);
-        }
+        if (this.l0 != null) goto L5;
+        return;
+    L5:
+        if (this.m0 != null) goto L8;
+        return;
+    L8:
+        if (u52.c().a == false) goto L28;
+        a52 r0 = this.m0;
+        r0.F1();
+        if (r0.f.isEmpty() == true) goto L12;
+    L15:
         ((PlayerControlView) this.l0.p).setPlayer(this.m0);
-        v52 v52VarC = u52.c();
-        String str = v52VarC.c;
-        ((MaterialButton) this.l0.q).setText(t(R.string.lan_operating_on, str));
-        ((MaterialButton) this.l0.q).setContentDescription(t(R.string.lan_controlling, str));
+        v52 r1 = u52.c();
+        String r3 = r1.c;
+        ((MaterialButton) this.l0.q).setText(t(R.string.lan_operating_on, new Object[]{r3}));
+        ((MaterialButton) this.l0.q).setContentDescription(t(R.string.lan_controlling, new Object[]{r3}));
         ((MaterialButton) this.l0.q).setSelected(true);
         ((PlayerControlView) this.l0.p).setShowShuffleButton(true);
         ((PlayerControlView) this.l0.p).setRepeatToggleModes(3);
@@ -1191,491 +520,702 @@ public class PlayerControllerFragment extends kc1 {
         this.v0.setVisibility(0);
         this.w0.setVisibility(8);
         this.p0.setVisibility(0);
-        Child child = (Child) this.L0.n.d();
-        this.p0.setEnabled(child != null && Objects.equals(child.getId(), v52VarC.x));
+        Child r4 = (Child) this.L0.n.d();
+        ToggleButton r5 = this.p0;
+        if (r4 != null) goto L18;
+    L20:
+        boolean r6 = false;
+    L21:
+        r5.setEnabled(r6);
         this.n0 = true;
-        try {
-            do2 do2VarE = si0.E(u52.d());
-            q0(do2VarE);
-            p0(do2VarE);
-            this.v0.setText(t(R.string.player_playback_speed, Float.valueOf(v52VarC.y)));
-            x0();
-        } finally {
-            this.n0 = false;
-        }
+        do2 r2 = si0.E(u52.d());     // Catch: Throwable -> L25
+        q0(r2);     // Catch: Throwable -> L25
+        p0(r2);     // Catch: Throwable -> L25
+        this.v0.setText(t(R.string.player_playback_speed, new Object[]{Float.valueOf(r1.y)}));     // Catch: Throwable -> L25
+        x0();     // Catch: Throwable -> L25
+        this.n0 = false;
+        return;
+    L25:
+        th = move-exception;
+        this.n0 = false;
+        throw th;
+    L18:
+        if (Objects.equals(r4.getId(), r1.x) == false) goto L20;
+        r6 = true;
+        goto L21
+    L12:
+        if (r0.i == true) goto L15;
+        r0.D1(r0.i1(), false, false);
+        goto L15
+    L28:
+        ((MaterialButton) this.l0.q).setText(R.string.lan_play_on);
+        ((MaterialButton) this.l0.q).setContentDescription(s(R.string.lan_play_on));
+        ((MaterialButton) this.l0.q).setSelected(false);
+        this.p0.setEnabled(true);
+        bj2 r7 = k0();
+        if (r7 == null) goto L35;
+        ((PlayerControlView) this.l0.p).setPlayer(r7);
+        n0(r7);
+        q0(r7.K0());
+        p0(r7.K0());
+        return;
     }
 
-    public final void n0(bj2 bj2Var) {
-        if (this.l0 == null || u52.c().a) {
-            return;
-        }
+    public final void n0(bj2 r11) {
+        if (this.l0 != null) goto L5;
+        return;
+    L5:
+        if (u52.c().a == true) goto L29;
         this.v0.setOnClickListener(new rj3(this, 6));
         this.w0.setOnClickListener(new rj3(this, 7));
-        if (bj2Var.K0().I != null) {
-            String string = bj2Var.K0().I.getString("type", "music");
-            int iHashCode = string.hashCode();
-            if (iHashCode != -405568764) {
-                if (iHashCode == 104263205) {
-                    string.equals("music");
-                } else if (iHashCode == 108270587 && string.equals(WaveOrigin.RADIO)) {
-                    ((PlayerControlView) this.l0.p).setShowShuffleButton(false);
-                    ((PlayerControlView) this.l0.p).setShowRewindButton(false);
-                    ((PlayerControlView) this.l0.p).setShowPreviousButton(false);
-                    ((PlayerControlView) this.l0.p).setShowNextButton(false);
-                    ((PlayerControlView) this.l0.p).setShowFastForwardButton(false);
-                    ((PlayerControlView) this.l0.p).setRepeatToggleModes(0);
-                    ((LinearLayout) this.l0.o).findViewById(R.id.player_playback_speed_button).setVisibility(8);
-                    ((LinearLayout) this.l0.o).findViewById(R.id.player_skip_silence_toggle_button).setVisibility(8);
-                    ((LinearLayout) this.l0.o).findViewById(R.id.button_favorite).setVisibility(8);
-                    r0(bj2Var);
-                    return;
-                }
-            } else if (string.equals("podcast")) {
-                ((PlayerControlView) this.l0.p).setShowShuffleButton(false);
-                ((PlayerControlView) this.l0.p).setShowRewindButton(true);
-                ((PlayerControlView) this.l0.p).setShowPreviousButton(false);
-                ((PlayerControlView) this.l0.p).setShowNextButton(false);
-                ((PlayerControlView) this.l0.p).setShowFastForwardButton(true);
-                ((PlayerControlView) this.l0.p).setRepeatToggleModes(0);
-                ((LinearLayout) this.l0.o).findViewById(R.id.player_playback_speed_button).setVisibility(0);
-                ((LinearLayout) this.l0.o).findViewById(R.id.player_skip_silence_toggle_button).setVisibility(0);
-                ((LinearLayout) this.l0.o).findViewById(R.id.button_favorite).setVisibility(8);
-                r0(bj2Var);
-                return;
-            }
-            ((PlayerControlView) this.l0.p).setShowShuffleButton(true);
-            ((PlayerControlView) this.l0.p).setShowRewindButton(false);
-            ((PlayerControlView) this.l0.p).setShowPreviousButton(true);
-            ((PlayerControlView) this.l0.p).setShowNextButton(true);
-            ((PlayerControlView) this.l0.p).setShowFastForwardButton(false);
-            ((PlayerControlView) this.l0.p).setRepeatToggleModes(3);
-            ((LinearLayout) this.l0.o).findViewById(R.id.player_playback_speed_button).setVisibility(0);
-            ((LinearLayout) this.l0.o).findViewById(R.id.player_skip_silence_toggle_button).setVisibility(8);
-            ((LinearLayout) this.l0.o).findViewById(R.id.button_favorite).setVisibility(0);
-            r0(bj2Var);
-        }
+        if (r11.K0().I == null) goto L28;
+        String r0 = r11.K0().I.getString("type", "music");
+        int r1 = r0.hashCode();
+        if (r1 == (-405568764)) goto L22;
+        if (r1 != 104263205) goto L14;
+        r0.equals("music");
+    L25:
+        ((PlayerControlView) this.l0.p).setShowShuffleButton(true);
+        ((PlayerControlView) this.l0.p).setShowRewindButton(false);
+        ((PlayerControlView) this.l0.p).setShowPreviousButton(true);
+        ((PlayerControlView) this.l0.p).setShowNextButton(true);
+        ((PlayerControlView) this.l0.p).setShowFastForwardButton(false);
+        ((PlayerControlView) this.l0.p).setRepeatToggleModes(3);
+        ((LinearLayout) this.l0.o).findViewById(R.id.player_playback_speed_button).setVisibility(0);
+        ((LinearLayout) this.l0.o).findViewById(R.id.player_skip_silence_toggle_button).setVisibility(8);
+        ((LinearLayout) this.l0.o).findViewById(R.id.button_favorite).setVisibility(0);
+        r0(r11);
+        return;
+    L14:
+        if (r1 != 108270587) goto L25;
+        if (r0.equals(WaveOrigin.RADIO) == false) goto L25;
+        ((PlayerControlView) this.l0.p).setShowShuffleButton(false);
+        ((PlayerControlView) this.l0.p).setShowRewindButton(false);
+        ((PlayerControlView) this.l0.p).setShowPreviousButton(false);
+        ((PlayerControlView) this.l0.p).setShowNextButton(false);
+        ((PlayerControlView) this.l0.p).setShowFastForwardButton(false);
+        ((PlayerControlView) this.l0.p).setRepeatToggleModes(0);
+        ((LinearLayout) this.l0.o).findViewById(R.id.player_playback_speed_button).setVisibility(8);
+        ((LinearLayout) this.l0.o).findViewById(R.id.player_skip_silence_toggle_button).setVisibility(8);
+        ((LinearLayout) this.l0.o).findViewById(R.id.button_favorite).setVisibility(8);
+        r0(r11);
+        return;
+    L22:
+        if (r0.equals("podcast") == false) goto L25;
+        ((PlayerControlView) this.l0.p).setShowShuffleButton(false);
+        ((PlayerControlView) this.l0.p).setShowRewindButton(true);
+        ((PlayerControlView) this.l0.p).setShowPreviousButton(false);
+        ((PlayerControlView) this.l0.p).setShowNextButton(false);
+        ((PlayerControlView) this.l0.p).setShowFastForwardButton(true);
+        ((PlayerControlView) this.l0.p).setRepeatToggleModes(0);
+        ((LinearLayout) this.l0.o).findViewById(R.id.player_playback_speed_button).setVisibility(0);
+        ((LinearLayout) this.l0.o).findViewById(R.id.player_skip_silence_toggle_button).setVisibility(0);
+        ((LinearLayout) this.l0.o).findViewById(R.id.button_favorite).setVisibility(8);
+        r0(r11);
+        return;
+    L28:
+        return;
     }
 
-    /* JADX WARN: Code duplicated, block: B:102:0x0158  */
-    /* JADX WARN: Code duplicated, block: B:63:0x00d7 A[PHI: r13
-  0x00d7: PHI (r13v21 java.lang.String) = (r13v10 java.lang.String), (r13v11 java.lang.String) binds: [B:62:0x00d5, B:65:0x00df] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:82:0x0118 A[PHI: r14
-  0x0118: PHI (r14v1 java.lang.String) = 
-  (r14v0 java.lang.String)
-  (r14v0 java.lang.String)
-  (r14v4 java.lang.String)
-  (r14v4 java.lang.String)
-  (r14v4 java.lang.String)
- binds: [B:54:0x00be, B:56:0x00c4, B:68:0x00ea, B:70:0x00f2, B:72:0x00f8] A[DONT_GENERATE, DONT_INLINE]] */
     public final void o0() {
-        tb1 tb1VarA;
-        String lowerCase;
-        if (u52.c().a || this.x0 == null) {
-            return;
-        }
-        bj2 bj2VarK0 = k0();
-        if (e03.m(bj2VarK0)) {
-            return;
-        }
-        String string = null;
-        boolean z = true;
-        if (bj2VarK0 == null) {
-            tb1VarA = null;
-        } else {
-            vw1 vw1VarListIterator = bj2VarK0.e0().a.listIterator(0);
-            tb1VarA = null;
-            loop0: while (vw1VarListIterator.hasNext()) {
-                iw4 iw4Var = (iw4) vw1VarListIterator.next();
-                if (iw4Var.b.c == 1) {
-                    for (int i = 0; i < iw4Var.a; i++) {
-                        if (iw4Var.e[i]) {
-                            tb1VarA = iw4Var.a(i);
-                            break loop0;
-                        } else {
-                            if (tb1VarA == null) {
-                                tb1VarA = iw4Var.a(i);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        if (tb1VarA == null) {
-            return;
-        }
-        String str = tb1VarA.n;
-        int i2 = tb1VarA.j;
-        boolean zEquals = "upnp".equals(tb1VarA.a);
-        if (zEquals && "audio/x-unknown".equals(str)) {
-            return;
-        }
-        if (str == null) {
-            lowerCase = null;
-        } else {
-            lowerCase = str.toLowerCase();
-            if (lowerCase.contains("flac")) {
-                lowerCase = "flac";
-            } else if (lowerCase.contains("opus")) {
-                lowerCase = "opus";
-            } else if (lowerCase.contains("vorbis")) {
-                lowerCase = "vorbis";
-            } else if (lowerCase.contains("mp4a") || lowerCase.contains("aac")) {
-                lowerCase = "aac";
-            } else {
-                String str2 = "mp3";
-                if (lowerCase.contains("mpeg") || lowerCase.contains("mp3")) {
-                    lowerCase = str2;
-                } else if (lowerCase.contains("alac")) {
-                    lowerCase = "alac";
-                } else {
-                    String str3 = "eac3";
-                    if (lowerCase.contains("eac3")) {
-                        lowerCase = str3;
-                    } else {
-                        str3 = "ac3";
-                        if (lowerCase.contains("ac3")) {
-                            lowerCase = str3;
-                        } else {
-                            str2 = "wav";
-                            if (lowerCase.contains("pcm") || lowerCase.contains("raw") || lowerCase.contains("wav")) {
-                                lowerCase = str2;
-                            } else if (lowerCase.contains("ogg")) {
-                                lowerCase = "ogg";
-                            } else {
-                                int iIndexOf = lowerCase.indexOf(47);
-                                if (iIndexOf >= 0 && iIndexOf < lowerCase.length() - 1) {
-                                    lowerCase = lowerCase.substring(iIndexOf + 1);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        if (zEquals) {
-            string = e03.p(bj2VarK0.K0().I);
-        } else if (bj2VarK0 != null && bj2VarK0.K0().I != null) {
-            string = bj2VarK0.K0().I.getString("suffix", null);
-        }
-        if (lowerCase != null && !lowerCase.isEmpty() && string != null && !string.isEmpty() && !lowerCase.equalsIgnoreCase(string)) {
-            String lowerCase2 = string.toLowerCase();
-            lowerCase2.getClass();
-            switch (lowerCase2) {
-                case "m4a":
-                case "m4b":
-                case "mp4":
-                    if (lowerCase.equals("aac") || lowerCase.equals("alac")) {
-                        z = false;
-                        break;
-                    }
-                    break;
-                case "oga":
-                case "ogg":
-                    if (lowerCase.equals("vorbis") || lowerCase.equals("opus") || lowerCase.equals("flac")) {
-                        z = false;
-                        break;
-                    }
-                    break;
-            }
-        } else {
-            z = false;
-        }
-        if (lowerCase != null && !lowerCase.isEmpty()) {
-            Chip chip = this.x0;
-            if (z) {
-                StringBuilder sbS = b11.s(lowerCase, " (");
-                sbS.append(s(R.string.player_transcoding));
-                sbS.append(")");
-                lowerCase = sbS.toString();
-            }
-            chip.setText(lowerCase);
-        }
-        if (Objects.equals(bj2VarK0.K0().I.getString("type"), WaveOrigin.RADIO)) {
-            this.y0.setText((i2 / 1000) + "kbps");
-            this.y0.setVisibility(ud3.l() ? 0 : 8);
-            return;
-        }
-        if (i2 != -1 && i2 > 0) {
-            if (z) {
-                this.y0.setText((i2 / 1000) + "kbps");
-                this.y0.setVisibility(ud3.l() ? 0 : 8);
-                return;
-            }
-            return;
-        }
-        if (z) {
-            int iD = e03.d();
-            String strB = e03.b(iD, e03.q(iD));
-            boolean zEquals2 = strB.equals("0");
-            TextView textView = this.y0;
-            if (zEquals2) {
-                textView.setVisibility(8);
-            } else {
-                textView.setText(strB.concat("kbps"));
-                this.y0.setVisibility(ud3.l() ? 0 : 8);
-            }
-        }
+        if (u52.c().a == false) goto L6;
+        return;
+    L6:
+        if (this.x0 == null) goto L190;
+        bj2 r0 = k0();
+        if (e03.m(r0) == true) goto L191;
+        String r1 = null;
+        boolean r2 = true;
+        int r3 = 0;
+        if (r0 != null) goto L14;
+        tb1 r5 = null;
+    L29:
+        if (r5 == null) goto L192;
+        String r4 = r5.n;
+        int r6 = r5.j;
+        boolean r7 = "upnp".equals(r5.a);
+        if (r7 == false) goto L37;
+        if ("audio/x-unknown".equals(r4) == false) goto L37;
+        return;
+    L37:
+        if (r4 != null) goto L39;
+        String r8 = null;
+    L84:
+        if (r7 == false) goto L86;
+        r1 = e03.p(r0.K0().I);
+    L92:
+        if (r8 != null) goto L94;
+    L102:
+        r2 = false;
+    L139:
+        if (r8 == null) goto L147;
+        if (r8.isEmpty() == true) goto L147;
+        Chip r9 = this.x0;
+        if (r2 == false) goto L145;
+        StringBuilder r10 = b11.s(r8, " (");
+        r10.append(s(R.string.player_transcoding));
+        r10.append(")");
+        r8 = r10.toString();
+    L145:
+        r9.setText(r8);
+    L147:
+        if (Objects.equals(r0.K0().I.getString("type"), WaveOrigin.RADIO) == false) goto L154;
+        this.y0.setText((r6 / 1000) + "kbps");
+        TextView r15 = this.y0;
+        if (ud3.l() == true) goto L152;
+        r3 = 8;
+    L152:
+        r15.setVisibility(r3);
+        return;
+    L154:
+        if (r6 == (-1)) goto L163;
+        if (r6 <= 0) goto L163;
+        if (r2 == false) goto L187;
+        this.y0.setText((r6 / 1000) + "kbps");
+        TextView r16 = this.y0;
+        if (ud3.l() == true) goto L161;
+        r3 = 8;
+    L161:
+        r16.setVisibility(r3);
+        return;
+    L187:
+        return;
+    L163:
+        if (r2 == false) goto L188;
+        int r11 = e03.d();
+        String r12 = e03.b(r11, e03.q(r11));
+        boolean r13 = r12.equals("0");
+        TextView r14 = this.y0;
+        if (r13 == true) goto L172;
+        r14.setText(r12.concat("kbps"));
+        TextView r17 = this.y0;
+        if (ud3.l() == true) goto L170;
+        r3 = 8;
+    L170:
+        r17.setVisibility(r3);
+        return;
+    L172:
+        r14.setVisibility(8);
+        return;
+    L188:
+        return;
+    L94:
+        if (r8.isEmpty() == true) goto L102;
+        if (r1 == null) goto L102;
+        if (r1.isEmpty() == true) goto L102;
+        if (r8.equalsIgnoreCase(r1) == true) goto L102;
+        String r18 = r1.toLowerCase();
+        r18.getClass();
+        switch(r18.hashCode()) {
+            case 106458: goto L123;
+            case 106459: goto L119;
+            case 108273: goto L115;
+            case 109961: goto L111;
+            case 109967: goto L107;
+            default: goto L105;
+        };
+    L105:
+        byte r19 = -1;
+    L126:
+        switch(r19) {
+            case 0: goto L136;
+            case 1: goto L136;
+            case 2: goto L136;
+            case 3: goto L129;
+            case 4: goto L129;
+            default: goto L139;
+        };
+    L129:
+        if (r8.equals("vorbis") == true) goto L102;
+        if (r8.equals("opus") == true) goto L102;
+        if (r8.equals("flac") == true) goto L102;
+    L136:
+        if (r8.equals("aac") == true) goto L102;
+        if (r8.equals("alac") == true) goto L102;
+    L107:
+        if (r18.equals("ogg") == false) goto L182;
+        r19 = 4;
+        goto L126
+    L182:
+        r19 = -1;
+        goto L126
+    L111:
+        if (r18.equals("oga") == false) goto L183;
+        r19 = 3;
+        goto L126
+    L183:
+        r19 = -1;
+        goto L126
+    L115:
+        if (r18.equals("mp4") == false) goto L184;
+        r19 = 2;
+        goto L126
+    L184:
+        r19 = -1;
+        goto L126
+    L119:
+        if (r18.equals("m4b") == false) goto L185;
+        r19 = 1;
+        goto L126
+    L185:
+        r19 = -1;
+        goto L126
+    L123:
+        if (r18.equals("m4a") == false) goto L186;
+        r19 = 0;
+        goto L126
+    L186:
+        r19 = -1;
+        goto L126
+    L86:
+        if (r0 == null) goto L92;
+        if (r0.K0().I == null) goto L92;
+        r1 = r0.K0().I.getString("suffix", null);
+        goto L92
+    L39:
+        r8 = r4.toLowerCase();
+        if (r8.contains("flac") == false) goto L43;
+        r8 = "flac";
+        goto L84
+    L43:
+        if (r8.contains("opus") == false) goto L46;
+        r8 = "opus";
+        goto L84
+    L46:
+        if (r8.contains("vorbis") == false) goto L49;
+        r8 = "vorbis";
+        goto L84
+    L49:
+        if (r8.contains("mp4a") == false) goto L51;
+    L83:
+        r8 = "aac";
+        goto L84
+    L51:
+        if (r8.contains("aac") == true) goto L83;
+        String r110 = "mp3";
+        if (r8.contains("mpeg") == false) goto L56;
+    L82:
+        r8 = r110;
+        goto L84
+    L56:
+        if (r8.contains("mp3") == true) goto L82;
+        if (r8.contains("alac") == false) goto L61;
+        r8 = "alac";
+        goto L84
+    L61:
+        String r111 = "eac3";
+        if (r8.contains("eac3") == false) goto L64;
+    L63:
+        r8 = r111;
+        goto L84
+    L64:
+        r111 = "ac3";
+        if (r8.contains("ac3") == true) goto L63;
+        r110 = "wav";
+        if (r8.contains("pcm") == true) goto L82;
+        if (r8.contains("raw") == true) goto L82;
+        if (r8.contains("wav") == true) goto L82;
+        if (r8.contains("ogg") == false) goto L77;
+        r8 = "ogg";
+        goto L84
+    L77:
+        int r112 = r8.indexOf(47);
+        if (r112 < 0) goto L84;
+        if (r112 >= (r8.length() - 1)) goto L84;
+        r8 = r8.substring(r112 + 1);
+        goto L84
+    L192:
+        return;
+    L14:
+        vw1 r20 = r0.e0().a.m(0);
+        r5 = null;
+    L16:
+        if (r20.hasNext() == false) goto L29;
+        iw4 r21 = (iw4) r20.next();
+        if (r21.b.c != 1) goto L16;
+        int r22 = 0;
+    L22:
+        if (r22 >= r21.a) goto L16;
+        if (r21.e[r22] == true) goto L25;
+        if (r5 != null) goto L28;
+        r5 = r21.a(r22);
+    L28:
+        r22 = r22 + 1;
+        goto L22
+    L25:
+        r5 = r21.a(r22);
+        goto L29
+    L191:
+        return;
     }
 
-    public final void p0(do2 do2Var) {
-        String str;
-        String str2;
-        if (this.l0 != null) {
-            if (!u52.c().a || this.n0) {
-                final int i = 1;
-                final int i2 = 0;
-                boolean z = !u52.c().a && e03.m(k0());
-                Bundle bundle = do2Var.I;
-                if (bundle != null) {
-                    String string = bundle.getString("suffix", s(R.string.player_unknown_format));
-                    int i3 = bundle.getInt("bitrate", 0);
-                    if (i3 != 0) {
-                        str = i3 + "kbps";
-                    } else {
-                        str = "Original";
-                    }
-                    String str3 = "";
-                    if (bundle.getInt("samplingRate", 0) != 0) {
-                        str2 = new DecimalFormat("0.#").format(((double) bundle.getInt("samplingRate", 0)) / 1000.0d) + "kHz";
-                    } else {
-                        str2 = "";
-                    }
-                    if (bundle.getInt("bitDepth", 0) != 0) {
-                        str3 = bundle.getInt("bitDepth", 0) + "b";
-                    }
-                    this.x0.setText(string);
-                    if (!str.equals("Original") || z) {
-                        ArrayList arrayList = new ArrayList();
-                        if (!str.trim().isEmpty()) {
-                            arrayList.add(str);
-                        }
-                        if (!str3.trim().isEmpty()) {
-                            arrayList.add(str3);
-                        }
-                        if (!str2.trim().isEmpty()) {
-                            arrayList.add(str2);
-                        }
-                        String strJoin = TextUtils.join(" • ", arrayList);
-                        this.y0.setVisibility(ud3.l() ? 0 : 8);
-                        this.y0.setText(strJoin);
-                    } else {
-                        this.y0.setVisibility(8);
-                    }
-                }
-                if (!z) {
-                    o0();
-                }
-                this.C0.setOnClickListener(new j8(19, this, do2Var));
-                this.x0.setOnClickListener(new rj3(this, i2));
-                this.x0.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: sj3
-                    public final /* synthetic */ PlayerControllerFragment o;
-
-                    {
-                        this.o = this;
-                    }
-
-                    @Override // android.view.View.OnLongClickListener
-                    public final boolean onLongClick(View view) {
-                        int i4 = i2;
-                        PlayerControllerFragment playerControllerFragment = this.o;
-                        switch (i4) {
-                            case 0:
-                                playerControllerFragment.v0();
-                                break;
-                            default:
-                                playerControllerFragment.v0();
-                                break;
-                        }
-                        return true;
-                    }
-                });
-                this.y0.setOnClickListener(new rj3(this, i));
-                this.y0.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: sj3
-                    public final /* synthetic */ PlayerControllerFragment o;
-
-                    {
-                        this.o = this;
-                    }
-
-                    @Override // android.view.View.OnLongClickListener
-                    public final boolean onLongClick(View view) {
-                        int i4 = i;
-                        PlayerControllerFragment playerControllerFragment = this.o;
-                        switch (i4) {
-                            case 0:
-                                playerControllerFragment.v0();
-                                break;
-                            default:
-                                playerControllerFragment.v0();
-                                break;
-                        }
-                        return true;
-                    }
-                });
-            }
-        }
+    public final void p0(do2 r18) {
+        if (this.l0 != null) goto L5;
+        return;
+    L5:
+        if (u52.c().a == true) goto L7;
+    L9:
+        final int r3 = 1;
+        final int r4 = 0;
+        if (u52.c().a == false) goto L12;
+    L14:
+        boolean r2 = false;
+    L15:
+        Bundle r5 = r18.I;
+        if (r5 == null) goto L45;
+        String r6 = r5.getString("suffix", s(R.string.player_unknown_format));
+        int r7 = r5.getInt("bitrate", 0);
+        if (r7 == 0) goto L20;
+        String r8 = r7 + "kbps";
+    L21:
+        String r11 = "";
+        if (r5.getInt("samplingRate", 0) == 0) goto L24;
+        String r9 = new DecimalFormat("0.#").format(((double) r5.getInt("samplingRate", 0)) / 1000.0d) + "kHz";
+    L26:
+        if (r5.getInt("bitDepth", 0) == 0) goto L28;
+        r11 = r5.getInt("bitDepth", 0) + "b";
+    L28:
+        this.x0.setText(r6);
+        int r10 = 8;
+        if (r8.equals("Original") == false) goto L32;
+        if (r2 == true) goto L32;
+        this.y0.setVisibility(8);
+    L32:
+        ArrayList r12 = new ArrayList();
+        if (r8.trim().isEmpty() == true) goto L36;
+        r12.add(r8);
+    L36:
+        if (r11.trim().isEmpty() == true) goto L39;
+        r12.add(r11);
+    L39:
+        if (r9.trim().isEmpty() == true) goto L41;
+        r12.add(r9);
+    L41:
+        String r13 = TextUtils.join(" • ", r12);
+        TextView r14 = this.y0;
+        if (ud3.l() == false) goto L44;
+        r10 = 0;
+    L44:
+        r14.setVisibility(r10);
+        this.y0.setText(r13);
+        goto L45
+    L24:
+        r9 = "";
+        goto L26
+    L20:
+        r8 = "Original";
+    L45:
+        if (r2 == true) goto L47;
+        o0();
+    L47:
+        this.C0.setOnClickListener(new j8(19, this, r18));
+        this.x0.setOnClickListener(new rj3(this, r4));
+        this.x0.setOnLongClickListener(new sj3(this, r4));
+        this.y0.setOnClickListener(new rj3(this, r3));
+        this.y0.setOnLongClickListener(new sj3(this, r3));
+        return;
+    L12:
+        if (e03.m(k0()) == false) goto L14;
+        r2 = true;
+        goto L15
+    L7:
+        if (this.n0 == true) goto L9;
     }
 
-    public final void q0(do2 do2Var) {
-        String strValueOf;
-        String strValueOf2;
-        if (this.l0 != null) {
-            if (!u52.c().a || this.n0) {
-                Bundle bundle = do2Var.I;
-                Integer num = do2Var.n;
-                CharSequence charSequence = do2Var.a;
-                CharSequence charSequence2 = do2Var.b;
-                int i = 8;
-                if (Objects.equals(bundle != null ? bundle.getString("type") : null, WaveOrigin.RADIO)) {
-                    if (bundle != null) {
-                        strValueOf2 = bundle.getString("stationName", charSequence2 != null ? String.valueOf(charSequence2) : "");
-                    } else {
-                        strValueOf2 = charSequence2 != null ? String.valueOf(charSequence2) : "";
-                    }
-                    String string = bundle != null ? bundle.getString("radioArtist", "") : "";
-                    String string2 = bundle != null ? bundle.getString("radioTitle", "") : "";
-                    if (!TextUtils.isEmpty(string) && !TextUtils.isEmpty(string2)) {
-                        string = b11.o(string, " - ", string2);
-                    } else if (!TextUtils.isEmpty(string2)) {
-                        string = string2;
-                    } else if (TextUtils.isEmpty(string)) {
-                        string = strValueOf2;
-                    }
-                    s0(this.t0, string);
-                    s0(this.u0, strValueOf2);
-                    this.t0.setSelected(true);
-                    this.u0.setSelected(true);
-                    this.t0.setVisibility(!TextUtils.isEmpty(string) ? 0 : 8);
-                    this.u0.setVisibility(TextUtils.isEmpty(strValueOf2) ? 8 : 0);
-                    w0(do2Var);
-                    return;
-                }
-                TextView textView = this.t0;
-                if (!xa3.u("track_number_visible", false) || num == null || String.valueOf(num).isEmpty()) {
-                    strValueOf = String.valueOf(charSequence);
-                } else {
-                    strValueOf = String.format("%02d", num) + ". " + String.valueOf(charSequence);
-                }
-                s0(textView, strValueOf);
-                s0(this.u0, charSequence2 != null ? String.valueOf(charSequence2) : "");
-                this.t0.setSelected(true);
-                this.u0.setSelected(true);
-                fu.p(this.u0, bundle != null ? bundle.getString("id") : null);
-                this.t0.setVisibility((charSequence == null || charSequence.equals("")) ? 8 : 0);
-                TextView textView2 = this.u0;
-                if ((charSequence2 != null && !charSequence2.equals("")) || (bundle != null && Objects.equals(bundle.getString("type"), WaveOrigin.RADIO) && bundle.getString("uri") != null)) {
-                    i = 0;
-                }
-                textView2.setVisibility(i);
-                w0(do2Var);
-            }
-        }
+    public final void q0(do2 r15) {
+        if (this.l0 != null) goto L5;
+        return;
+    L5:
+        if (u52.c().a == true) goto L7;
+    L9:
+        Bundle r0 = r15.I;
+        Integer r1 = r15.n;
+        CharSequence r2 = r15.a;
+        CharSequence r3 = r15.b;
+        String r4 = null;
+        if (r0 == null) goto L12;
+        String r6 = r0.getString("type");
+    L13:
+        int r8 = 8;
+        String r11 = "";
+        if (Objects.equals(r6, WaveOrigin.RADIO) == false) goto L49;
+        if (r0 == null) goto L20;
+        if (r3 == null) goto L18;
+        String r5 = String.valueOf(r3);
+    L19:
+        String r7 = r0.getString("stationName", r5);
+    L23:
+        if (r0 == null) goto L25;
+        String r9 = r0.getString("radioArtist", "");
+    L26:
+        if (r0 == null) goto L29;
+        r11 = r0.getString("radioTitle", "");
+    L29:
+        if (TextUtils.isEmpty(r9) == true) goto L34;
+        if (TextUtils.isEmpty(r11) == true) goto L34;
+        r9 = b11.o(r9, " - ", r11);
+    L40:
+        s0(this.t0, r9);
+        s0(this.u0, r7);
+        this.t0.setSelected(true);
+        this.u0.setSelected(true);
+        TextView r10 = this.t0;
+        if (TextUtils.isEmpty(r9) == true) goto L43;
+        int r12 = 0;
+    L44:
+        r10.setVisibility(r12);
+        TextView r13 = this.u0;
+        if (TextUtils.isEmpty(r7) == true) goto L47;
+        r8 = 0;
+    L47:
+        r13.setVisibility(r8);
+        w0(r15);
+        return;
+    L43:
+        r12 = 8;
+    L34:
+        if (TextUtils.isEmpty(r11) == true) goto L37;
+        r9 = r11;
+        goto L40
+    L37:
+        if (TextUtils.isEmpty(r9) == false) goto L40;
+        r9 = r7;
+        goto L40
+    L25:
+        r9 = "";
+        goto L26
+    L18:
+        r5 = "";
+        goto L19
+    L20:
+        if (r3 == null) goto L22;
+        r7 = String.valueOf(r3);
+        goto L23
+    L22:
+        r7 = "";
+        goto L23
+    L49:
+        TextView r14 = this.t0;
+        if (xa3.u("track_number_visible", false) == false) goto L55;
+        if (r1 == null) goto L55;
+        if (String.valueOf(r1).isEmpty() == true) goto L55;
+        String r16 = String.format("%02d", new Object[]{r1}) + ". " + String.valueOf(r2);
+    L56:
+        s0(r14, r16);
+        TextView r17 = this.u0;
+        if (r3 == null) goto L59;
+        String r18 = String.valueOf(r3);
+    L60:
+        s0(r17, r18);
+        this.t0.setSelected(true);
+        this.u0.setSelected(true);
+        TextView r19 = this.u0;
+        if (r0 == null) goto L63;
+        r4 = r0.getString("id");
+    L63:
+        fu.p(r19, r4);
+        TextView r20 = this.t0;
+        if (r2 != null) goto L66;
+    L68:
+        int r21 = 8;
+    L69:
+        r20.setVisibility(r21);
+        TextView r22 = this.u0;
+        if (r3 != null) goto L72;
+    L73:
+        if (r0 != null) goto L75;
+    L79:
+        r22.setVisibility(r8);
+        w0(r15);
+        return;
+    L75:
+        if (Objects.equals(r0.getString("type"), WaveOrigin.RADIO) == false) goto L79;
+        if (r0.getString("uri") == null) goto L79;
+    L78:
+        r8 = 0;
+        goto L79
+    L72:
+        if (r3.equals("") == false) goto L78;
+    L66:
+        if (r2.equals("") == true) goto L68;
+        r21 = 0;
+        goto L69
+    L59:
+        r18 = "";
+    L55:
+        r16 = String.valueOf(r2);
+        goto L56
+    L12:
+        r6 = null;
+        goto L13
+    L7:
+        if (this.n0 == true) goto L9;
     }
 
-    public final void r0(bj2 bj2Var) {
-        Button button = (Button) ((LinearLayout) this.l0.o).findViewById(R.id.player_playback_speed_button);
+    public final void r0(bj2 r5) {
+        Button r0 = (Button) ((LinearLayout) this.l0.o).findViewById(R.id.player_playback_speed_button);
         App.b().getClass();
-        float f = App.c().getFloat("playback_speed", 1.0f);
-        boolean zU = xa3.u("skip_silence", false);
-        bj2Var.d(l0(f));
-        button.setText(t(R.string.player_playback_speed, Float.valueOf(f)));
-        this.w0.setChecked(zU);
+        float r1 = App.c().getFloat("playback_speed", 1.0f);
+        boolean r2 = xa3.u("skip_silence", false);
+        r5.d(l0(r1));
+        r0.setText(t(R.string.player_playback_speed, new Object[]{Float.valueOf(r1)}));
+        this.w0.setChecked(r2);
     }
 
     public final void t0() {
-        boolean z;
-        if (this.G0 == null) {
-            return;
-        }
-        int i = 0;
-        while (true) {
-            if (i >= this.G0.getChildCount()) {
-                z = false;
-                break;
-            } else {
-                if (this.G0.getChildAt(i).getVisibility() == 0) {
-                    z = true;
-                    break;
-                }
-                i++;
-            }
-        }
-        this.G0.setVisibility(z ? 0 : 8);
+        if (this.G0 != null) goto L5;
+        return;
+    L5:
+        int r0 = 0;
+        int r1 = 0;
+    L7:
+        if (r1 >= this.G0.getChildCount()) goto L12;
+        if (this.G0.getChildAt(r1).getVisibility() == 0) goto L10;
+        r1 = r1 + 1;
+        goto L7
+    L10:
+        boolean r2 = true;
+    L13:
+        ChipGroup r3 = this.G0;
+        if (r2 == true) goto L17;
+        r0 = 8;
+    L17:
+        r3.setVisibility(r0);
+        return;
+    L12:
+        r2 = false;
+        goto L13
     }
 
     public final void u0() {
-        ViewGroup viewGroup = (ViewGroup) this.y0.getParent();
-        kx4 kx4Var = new kx4();
-        kx4Var.F(new cg4(8388611));
-        kx4Var.F(new v00());
-        kx4Var.x(500L);
-        kx4Var.z(new AccelerateDecelerateInterpolator());
-        ix4.a(viewGroup, kx4Var);
-        this.y0.setVisibility(ud3.l() ? 8 : 0);
+        ViewGroup r0 = (ViewGroup) this.y0.getParent();
+        kx4 r1 = new kx4();
+        r1.F(new cg4(8388611));
+        r1.F(new v00());
+        r1.G(500);
+        r1.H(new AccelerateDecelerateInterpolator());
+        ix4.a(r0, r1);
+        TextView r4 = this.y0;
+        if (ud3.l() == false) goto L5;
+        int r2 = 8;
+    L6:
+        r4.setVisibility(r2);
         xa3.t("bitrate_visible", !ud3.l());
+        return;
+    L5:
+        r2 = 0;
+        goto L6
     }
 
     public final void v0() {
-        ViewGroup viewGroup = (ViewGroup) this.z0.getParent();
-        kx4 kx4Var = new kx4();
-        kx4Var.F(new cg4(80));
-        kx4Var.F(new v00());
-        kx4Var.x(500L);
-        kx4Var.z(new AccelerateDecelerateInterpolator());
-        ix4.a(viewGroup, kx4Var);
-        this.z0.setVisibility(xa3.u("quick_action_visible", true) ? 8 : 0);
+        ViewGroup r0 = (ViewGroup) this.z0.getParent();
+        kx4 r1 = new kx4();
+        r1.F(new cg4(80));
+        r1.F(new v00());
+        r1.G(500);
+        r1.H(new AccelerateDecelerateInterpolator());
+        ix4.a(r0, r1);
+        ConstraintLayout r4 = this.z0;
+        if (xa3.u("quick_action_visible", true) == false) goto L5;
+        int r2 = 8;
+    L6:
+        r4.setVisibility(r2);
         App.b().getClass();
         xa3.t("quick_action_visible", !App.c().getBoolean("quick_action_visible", true));
+        return;
+    L5:
+        r2 = 0;
+        goto L6
     }
 
-    public final void w0(do2 do2Var) {
-        if (this.G0 == null) {
-            return;
-        }
-        Bundle bundle = do2Var.I;
-        if (!"music".equals(bundle != null ? bundle.getString("type", "music") : "music")) {
-            j0(this.H0);
-            j0(this.I0);
-            j0(this.J0);
-            t0();
-            return;
-        }
-        String string = bundle != null ? bundle.getString("id") : null;
-        String string2 = bundle != null ? bundle.getString("albumId") : null;
-        String string3 = bundle != null ? bundle.getString("artistId") : null;
-        ik ikVarH0 = h0(this.H0, "song", string);
-        h0(this.I0, "album", string2);
-        ik ikVarH1 = h0(this.J0, "artist", string3);
-        i0(this.t0, ikVarH0);
-        TextView textView = this.u0;
-        if (ikVarH1 == null) {
-            ikVarH1 = ikVarH0;
-        }
-        i0(textView, ikVarH1);
-        i0(this.o0, ikVarH0);
+    public final void w0(do2 r5) {
+        if (this.G0 != null) goto L5;
+        return;
+    L5:
+        Bundle r6 = r5.I;
+        if (r6 == null) goto L8;
+        String r1 = r6.getString("type", "music");
+    L10:
+        if ("music".equals(r1) == true) goto L13;
+        j0(this.H0);
+        j0(this.I0);
+        j0(this.J0);
         t0();
+        return;
+    L13:
+        String r0 = null;
+        if (r6 == null) goto L16;
+        String r2 = r6.getString("id");
+    L17:
+        if (r6 == null) goto L19;
+        String r3 = r6.getString("albumId");
+    L20:
+        if (r6 == null) goto L22;
+        r0 = r6.getString("artistId");
+    L22:
+        ik r7 = h0(this.H0, "song", r2);
+        h0(this.I0, "album", r3);
+        ik r4 = h0(this.J0, "artist", r0);
+        i0(this.t0, r7);
+        TextView r8 = this.u0;
+        if (r4 != null) goto L26;
+        r4 = r7;
+    L26:
+        i0(r8, r4);
+        i0(this.o0, r7);
+        t0();
+        return;
+    L19:
+        r3 = null;
+        goto L20
+    L16:
+        r2 = null;
+        goto L17
+    L8:
+        r1 = "music";
+        goto L10
     }
 
     public final void x0() {
-        String strD;
-        if (this.E0 == null || this.F0 == null) {
-            return;
-        }
-        boolean z = u52.c().a;
-        v52 v52VarC = u52.c();
-        if (!(z ? v52VarC.A : yf4.c().f)) {
-            this.F0.setVisibility(8);
-            this.F0.setText("");
-            this.E0.setImageTintList(ColorStateList.valueOf(g12.t(this.E0, R.attr.colorOnSurface)));
-        } else {
-            if (z ? v52VarC.B : yf4.c().g) {
-                strD = s(R.string.sleep_timer_end_of_track_label);
-            } else {
-                strD = z ? v52VarC.C : yf4.c().d();
-            }
-            this.F0.setText(strD);
-            this.F0.setVisibility(0);
-            this.E0.setImageTintList(ColorStateList.valueOf(g12.t(this.E0, R.attr.colorPrimary)));
-        }
+        if (this.E0 != null) goto L5;
+        return;
+    L5:
+        if (this.F0 == null) goto L25;
+        boolean r0 = u52.c().a;
+        v52 r1 = u52.c();
+        if (r0 == false) goto L10;
+        boolean r2 = r1.A;
+    L11:
+        if (r2 == false) goto L22;
+        if (r0 == false) goto L14;
+        boolean r3 = r1.B;
+    L15:
+        if (r3 == false) goto L17;
+        String r4 = s(R.string.sleep_timer_end_of_track_label);
+    L20:
+        this.F0.setText(r4);
+        this.F0.setVisibility(0);
+        int r5 = g12.t(this.E0, R.attr.colorPrimary);
+        this.E0.setImageTintList(ColorStateList.valueOf(r5));
+        return;
+    L17:
+        if (r0 == false) goto L19;
+        r4 = r1.C;
+        goto L20
+    L19:
+        r4 = yf4.c().d();
+        goto L20
+    L14:
+        r3 = yf4.c().g;
+        goto L15
+    L22:
+        this.F0.setVisibility(8);
+        this.F0.setText("");
+        int r6 = g12.t(this.E0, R.attr.colorOnSurface);
+        this.E0.setImageTintList(ColorStateList.valueOf(r6));
+        return;
+    L10:
+        r2 = yf4.c().f;
+        goto L11
     }
 }

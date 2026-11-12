@@ -16,74 +16,80 @@ public final /* synthetic */ class bt2 implements it2, wc0, q43, md4, cp3, py {
     public final /* synthetic */ Object n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ bt2(Object obj, Object obj2) {
-        this.n = obj;
-        this.o = obj2;
+    public /* synthetic */ bt2(Object r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // defpackage.q43
-    public boolean a(MenuItem menuItem) {
-        v23 v23Var = (v23) this.n;
-        NavigationView navigationView = (NavigationView) this.o;
-        v23Var.getClass();
-        navigationView.getClass();
-        menuItem.getClass();
-        boolean zC = uo.C(menuItem, v23Var);
-        if (zC) {
-            ViewParent parent = navigationView.getParent();
-            if (parent instanceof DrawerLayout) {
-                ((DrawerLayout) parent).d();
-                return zC;
-            }
-            BottomSheetBehavior bottomSheetBehaviorR = uo.r(navigationView);
-            if (bottomSheetBehaviorR != null) {
-                bottomSheetBehaviorR.J(5);
-            }
-        }
-        return zC;
+    public boolean a(MenuItem r3) {
+        v23 r0 = (v23) this.n;
+        NavigationView r2 = (NavigationView) this.o;
+        r0.getClass();
+        r2.getClass();
+        r3.getClass();
+        boolean r4 = uo.C(r3, r0);
+        if (r4 == false) goto L11;
+        ViewParent r1 = r2.getParent();
+        if ((r1 instanceof DrawerLayout) == false) goto L8;
+        ((DrawerLayout) r1).d();
+        return r4;
+    L8:
+        BottomSheetBehavior r5 = uo.r(r2);
+        if (r5 == null) goto L11;
+        r5.J(5);
+    L11:
+        return r4;
     }
 
     @Override // defpackage.wc0
-    public void accept(Object obj) {
-        ue1 ue1Var = (ue1) this.n;
-        ((st2) obj).l(ue1Var.o, (mt2) ue1Var.p, (un2) this.o);
+    public void accept(Object r3) {
+        ue1 r0 = (ue1) this.n;
+        un2 r2 = (un2) this.o;
+        ((st2) r3).l(r0.o, (mt2) r0.p, r2);
     }
 
     @Override // defpackage.md4
     public boolean b() {
-        vp3 vp3Var = (vp3) this.n;
-        zn znVar = (zn) this.o;
-        if (!vp3Var.q) {
-            vp3Var.h();
-            long jA = zn.a(vp3Var.o, znVar.a);
-            znVar.a = jA;
-            vp3Var.q = !vp3Var.g(vp3Var.n, jA + znVar.b);
-        }
-        return vp3Var.q;
+        vp3 r0 = (vp3) this.n;
+        zn r7 = (zn) this.o;
+        if (r0.q == true) goto L6;
+        r0.h();
+        long r1 = zn.a(r0.o, r7.a);
+        r7.a = r1;
+        r0.q = !r0.g(r0.n, r1 + r7.b);
+    L6:
+        return r0.q;
     }
 
     @Override // defpackage.it2
-    public Object h(tn2 tn2Var, fr2 fr2Var, int i) {
-        return tn2Var.l() ? new mw1(new ab4(-100)) : f35.h0((ic2) ((it2) this.n).h(tn2Var, fr2Var, i), new eg0(tn2Var, fr2Var, (ht2) this.o, 9));
+    public Object h(tn2 r3, fr2 r4, int r5) {
+        it2 r0 = (it2) this.n;
+        ht2 r2 = (ht2) this.o;
+        if (r3.l() == false) goto L7;
+        return new mw1(new ab4(-100));
+    L7:
+        return f35.h0((ic2) r0.h(r3, r4, r5), new eg0(r3, r4, r2, 9));
     }
 
     @Override // defpackage.cp3
-    public void j(Preference preference) {
-        vb4 vb4Var = (vb4) this.n;
-        vb4Var.z0.a((Intent) this.o);
+    public void j(Preference r1) {
+        vb4 r2 = (vb4) this.n;
+        Intent r0 = (Intent) this.o;
+        r2.z0.a(r0);
     }
 
     @Override // defpackage.py
-    public Object k(oy oyVar) {
-        Executor executor = (Executor) this.n;
-        gf1 gf1Var = (gf1) this.o;
-        AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        jc2 jc2Var = new jc2(atomicBoolean, 1);
-        n04 n04Var = oyVar.c;
-        if (n04Var != null) {
-            n04Var.f(jc2Var, fq0.n);
-        }
-        executor.execute(new qo2(atomicBoolean, oyVar, gf1Var, 22));
+    public Object k(oy r6) {
+        Executor r0 = (Executor) this.n;
+        gf1 r5 = (gf1) this.o;
+        AtomicBoolean r1 = new AtomicBoolean(false);
+        jc2 r2 = new jc2(r1, 1);
+        n04 r3 = r6.c;
+        if (r3 == null) goto L5;
+        r3.f(r2, fq0.n);
+    L5:
+        r0.execute(new qo2(r1, r6, r5, 22));
         return j15.a;
     }
 }

@@ -11,64 +11,68 @@ import java.util.concurrent.atomic.AtomicInteger;
 /* JADX INFO: loaded from: classes.dex */
 public final class kj4 implements TextWatcher, SpanWatcher {
     public final Object n;
-    public final AtomicInteger o = new AtomicInteger(0);
+    public final AtomicInteger o;
 
-    public kj4(Object obj) {
-        this.n = obj;
+    public kj4(Object r3) {
+        this.o = new AtomicInteger(0);
+        this.n = r3;
     }
 
     @Override // android.text.TextWatcher
-    public final void afterTextChanged(Editable editable) {
-        ((TextWatcher) this.n).afterTextChanged(editable);
+    public final void afterTextChanged(Editable r1) {
+        ((TextWatcher) this.n).afterTextChanged(r1);
     }
 
     @Override // android.text.TextWatcher
-    public final void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        ((TextWatcher) this.n).beforeTextChanged(charSequence, i, i2, i3);
+    public final void beforeTextChanged(CharSequence r1, int r2, int r3, int r4) {
+        ((TextWatcher) this.n).beforeTextChanged(r1, r2, r3, r4);
     }
 
     @Override // android.text.SpanWatcher
-    public final void onSpanAdded(Spannable spannable, Object obj, int i, int i2) {
-        if (this.o.get() <= 0 || !(obj instanceof l05)) {
-            ((SpanWatcher) this.n).onSpanAdded(spannable, obj, i, i2);
-        }
-    }
-
-    /* JADX WARN: Code duplicated, block: B:14:0x001c A[PHI: r11
-  0x001c: PHI (r11v1 int) = (r11v0 int), (r11v2 int) binds: [B:8:0x0011, B:12:0x0017] A[DONT_GENERATE, DONT_INLINE]] */
-    @Override // android.text.SpanWatcher
-    public final void onSpanChanged(Spannable spannable, Object obj, int i, int i2, int i3, int i4) {
-        int i5;
-        int i6;
-        if (this.o.get() <= 0 || !(obj instanceof l05)) {
-            if (Build.VERSION.SDK_INT >= 28) {
-                i5 = i;
-                i6 = i3;
-            } else {
-                if (i > i2) {
-                    i = 0;
-                }
-                if (i3 > i4) {
-                    i5 = i;
-                    i6 = 0;
-                } else {
-                    i5 = i;
-                    i6 = i3;
-                }
-            }
-            ((SpanWatcher) this.n).onSpanChanged(spannable, obj, i5, i2, i6, i4);
-        }
+    public final void onSpanAdded(Spannable r2, Object r3, int r4, int r5) {
+        if (this.o.get() > 0) goto L5;
+    L7:
+        ((SpanWatcher) this.n).onSpanAdded(r2, r3, r4, r5);
+        return;
+    L5:
+        if ((r3 instanceof l05) == false) goto L7;
     }
 
     @Override // android.text.SpanWatcher
-    public final void onSpanRemoved(Spannable spannable, Object obj, int i, int i2) {
-        if (this.o.get() <= 0 || !(obj instanceof l05)) {
-            ((SpanWatcher) this.n).onSpanRemoved(spannable, obj, i, i2);
-        }
+    public final void onSpanChanged(Spannable r9, Object r10, int r11, int r12, int r13, int r14) {
+        if (this.o.get() <= 0) goto L8;
+        if ((r10 instanceof l05) == false) goto L8;
+        return;
+    L8:
+        if (Build.VERSION.SDK_INT < 28) goto L10;
+    L14:
+        int r4 = r11;
+        int r6 = r13;
+    L15:
+        ((SpanWatcher) this.n).onSpanChanged(r9, r10, r4, r12, r6, r14);
+        return;
+    L10:
+        if (r11 <= r12) goto L12;
+        r11 = 0;
+    L12:
+        if (r13 <= r14) goto L14;
+        r4 = r11;
+        r6 = 0;
+        goto L15
+    }
+
+    @Override // android.text.SpanWatcher
+    public final void onSpanRemoved(Spannable r2, Object r3, int r4, int r5) {
+        if (this.o.get() > 0) goto L5;
+    L7:
+        ((SpanWatcher) this.n).onSpanRemoved(r2, r3, r4, r5);
+        return;
+    L5:
+        if ((r3 instanceof l05) == false) goto L7;
     }
 
     @Override // android.text.TextWatcher
-    public final void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        ((TextWatcher) this.n).onTextChanged(charSequence, i, i2, i3);
+    public final void onTextChanged(CharSequence r1, int r2, int r3, int r4) {
+        ((TextWatcher) this.n).onTextChanged(r1, r2, r3, r4);
     }
 }

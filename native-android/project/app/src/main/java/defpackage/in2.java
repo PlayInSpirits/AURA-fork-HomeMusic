@@ -10,5 +10,5 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface in2 {
     @GET("startScan")
-    Call<ApiResponse> a(@QueryMap Map<String, String> map);
+    Call<ApiResponse> a(@QueryMap Map<String, String> r1);
 }

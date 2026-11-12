@@ -16,70 +16,72 @@ public final class qi1 implements f42 {
     public volatile byte[] g;
     public int h;
 
-    public qi1(String str) {
-        u72 u72Var = ul1.a;
+    public qi1(String r4) {
+        u72 r0 = ul1.a;
         this.c = null;
-        if (TextUtils.isEmpty(str)) {
-            kf2.n("Must not be null or empty");
-            throw null;
-        }
-        this.d = str;
-        h12.f(u72Var, "Argument must not be null");
-        this.b = u72Var;
+        if (TextUtils.isEmpty(r4) == true) goto L6;
+        this.d = r4;
+        h12.f(r0, "Argument must not be null");
+        this.b = r0;
+        return;
+    L6:
+        kf2.n("Must not be null or empty");
+        throw null;
     }
 
     @Override // defpackage.f42
-    public final void b(MessageDigest messageDigest) {
-        if (this.g == null) {
-            this.g = c().getBytes(f42.a);
-        }
-        messageDigest.update(this.g);
+    public final void b(MessageDigest r3) {
+        if (this.g != null) goto L5;
+        this.g = c().getBytes(f42.a);
+    L5:
+        r3.update(this.g);
     }
 
     public final String c() {
-        String str = this.d;
-        if (str != null) {
-            return str;
-        }
-        URL url = this.c;
-        h12.f(url, "Argument must not be null");
-        return url.toString();
+        String r0 = this.d;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        URL r1 = this.c;
+        h12.f(r1, "Argument must not be null");
+        return r1.toString();
     }
 
     public final URL d() {
-        if (this.f == null) {
-            if (TextUtils.isEmpty(this.e)) {
-                String string = this.d;
-                if (TextUtils.isEmpty(string)) {
-                    URL url = this.c;
-                    h12.f(url, "Argument must not be null");
-                    string = url.toString();
-                }
-                this.e = Uri.encode(string, "@#&=*+-_.,:!?()/~'%;$");
-            }
-            this.f = new URL(this.e);
-        }
+        if (this.f != null) goto L12;
+        if (TextUtils.isEmpty(this.e) == false) goto L10;
+        String r1 = this.d;
+        if (TextUtils.isEmpty(r1) == false) goto L9;
+        URL r2 = this.c;
+        h12.f(r2, "Argument must not be null");
+        r1 = r2.toString();
+    L9:
+        this.e = Uri.encode(r1, "@#&=*+-_.,:!?()/~'%;$");
+    L10:
+        this.f = new URL(this.e);
+    L12:
         return this.f;
     }
 
     @Override // defpackage.f42
-    public final boolean equals(Object obj) {
-        if (obj instanceof qi1) {
-            qi1 qi1Var = (qi1) obj;
-            if (c().equals(qi1Var.c()) && this.b.equals(qi1Var.b)) {
-                return true;
-            }
-        }
+    public final boolean equals(Object r4) {
+        if ((r4 instanceof qi1) == false) goto L10;
+        qi1 r5 = (qi1) r4;
+        if (c().equals(r5.c()) == false) goto L10;
+        if (this.b.equals(r5.b) == false) goto L10;
+        return true;
+    L10:
         return false;
     }
 
     @Override // defpackage.f42
     public final int hashCode() {
-        if (this.h == 0) {
-            int iHashCode = c().hashCode();
-            this.h = iHashCode;
-            this.h = this.b.hashCode() + (iHashCode * 31);
-        }
+        if (this.h != 0) goto L6;
+        int r0 = c().hashCode();
+        this.h = r0;
+        int r1 = this.b.hashCode();
+        this.h = r1 + (r0 * 31);
+    L6:
         return this.h;
     }
 
@@ -87,12 +89,12 @@ public final class qi1 implements f42 {
         return c();
     }
 
-    public qi1(URL url) {
-        u72 u72Var = ul1.a;
-        h12.f(url, "Argument must not be null");
-        this.c = url;
+    public qi1(URL r3) {
+        u72 r0 = ul1.a;
+        h12.f(r3, "Argument must not be null");
+        this.c = r3;
         this.d = null;
-        h12.f(u72Var, "Argument must not be null");
-        this.b = u72Var;
+        h12.f(r0, "Argument must not be null");
+        this.b = r0;
     }
 }

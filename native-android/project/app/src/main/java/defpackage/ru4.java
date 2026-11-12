@@ -6,28 +6,43 @@ import com.google.android.gms.fido.fido2.api.common.TokenBinding$UnsupportedToke
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
-public enum ru4 implements Parcelable {
-    /* JADX INFO: Fake field, exist only in values array */
-    EF7("present"),
-    /* JADX INFO: Fake field, exist only in values array */
-    EF17("supported"),
-    /* JADX INFO: Fake field, exist only in values array */
-    EF27("not-supported");
-
-    public static final Parcelable.Creator<ru4> CREATOR = new ch5(22);
+public final enum ru4 extends Enum implements Parcelable {
+    public static final Parcelable.Creator<ru4> CREATOR = null;
+    public static final /* synthetic */ ru4[] o = null;
     public final String n;
 
-    ru4(String str) {
-        this.n = str;
+    static {
+        o = new ru4[]{new ru4(0, "PRESENT", "present"), new ru4(1, "SUPPORTED", "supported"), new ru4(2, "NOT_SUPPORTED", "not-supported")};
+        CREATOR = new ch5(22);
     }
 
-    public static ru4 a(String str) throws TokenBinding$UnsupportedTokenBindingStatusException {
-        for (ru4 ru4Var : values()) {
-            if (str.equals(ru4Var.n)) {
-                return ru4Var;
-            }
-        }
-        throw new TokenBinding$UnsupportedTokenBindingStatusException(xa3.h("TokenBindingStatus ", str, " not supported"));
+    public ru4(int r1, String r2, String r3) {
+        super(r2, r1);
+        this.n = r3;
+    }
+
+    public static ru4 a(String r5) {
+        ru4[] r0 = values();
+        int r1 = r0.length;
+        int r2 = 0;
+    L3:
+        if (r2 >= r1) goto L9;
+        ru4 r3 = r0[r2];
+        if (r5.equals(r3.n) == true) goto L6;
+        r2 = r2 + 1;
+        goto L3
+    L6:
+        return r3;
+    L9:
+        throw new TokenBinding$UnsupportedTokenBindingStatusException(xa3.h("TokenBindingStatus ", r5, " not supported"));
+    }
+
+    public static ru4 valueOf(String r1) {
+        return (ru4) Enum.valueOf(ru4.class, r1);
+    }
+
+    public static ru4[] values() {
+        return (ru4[]) o.clone();
     }
 
     @Override // android.os.Parcelable
@@ -41,7 +56,7 @@ public enum ru4 implements Parcelable {
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.n);
+    public final void writeToParcel(Parcel r1, int r2) {
+        r1.writeString(this.n);
     }
 }

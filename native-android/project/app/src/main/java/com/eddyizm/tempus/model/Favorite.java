@@ -10,42 +10,46 @@ import defpackage.hz0;
 /* JADX INFO: loaded from: classes.dex */
 public final class Favorite implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<Favorite> CREATOR = new hz0(1);
+    public static final Parcelable.Creator<Favorite> CREATOR = null;
     private final String albumId;
     private final String artistId;
     private final String songId;
     private long timestamp;
     private final boolean toStar;
 
-    public Favorite(long j, String str, String str2, String str3, boolean z) {
-        this.timestamp = j;
-        this.songId = str;
-        this.albumId = str2;
-        this.artistId = str3;
-        this.toStar = z;
+    static {
+        CREATOR = new hz0(1);
     }
 
-    public static /* synthetic */ Favorite copy$default(Favorite favorite, long j, String str, String str2, String str3, boolean z, int i, Object obj) {
-        if ((i & 1) != 0) {
-            j = favorite.timestamp;
-        }
-        long j2 = j;
-        if ((i & 2) != 0) {
-            str = favorite.songId;
-        }
-        String str4 = str;
-        if ((i & 4) != 0) {
-            str2 = favorite.albumId;
-        }
-        String str5 = str2;
-        if ((i & 8) != 0) {
-            str3 = favorite.artistId;
-        }
-        String str6 = str3;
-        if ((i & 16) != 0) {
-            z = favorite.toStar;
-        }
-        return favorite.copy(j2, str4, str5, str6, z);
+    public Favorite(long r1, String r3, String r4, String r5, boolean r6) {
+        this.timestamp = r1;
+        this.songId = r3;
+        this.albumId = r4;
+        this.artistId = r5;
+        this.toStar = r6;
+    }
+
+    public static /* synthetic */ Favorite copy$default(Favorite r7, long r8, String r10, String r11, String r12, boolean r13, int r14, Object r15) {
+        if ((r14 & 1) == 0) goto L5;
+        r8 = r7.timestamp;
+    L5:
+        long r1 = r8;
+        if ((r14 & 2) == 0) goto L8;
+        r10 = r7.songId;
+    L8:
+        String r3 = r10;
+        if ((r14 & 4) == 0) goto L11;
+        r11 = r7.albumId;
+    L11:
+        String r4 = r11;
+        if ((r14 & 8) == 0) goto L14;
+        r12 = r7.artistId;
+    L14:
+        String r5 = r12;
+        if ((r14 & 16) == 0) goto L18;
+        r13 = r7.toStar;
+    L18:
+        return r7.copy(r1, r3, r4, r5, r13);
     }
 
     public final long component1() {
@@ -68,8 +72,8 @@ public final class Favorite implements Parcelable {
         return this.toStar;
     }
 
-    public final Favorite copy(long j, String str, String str2, String str3, boolean z) {
-        return new Favorite(j, str, str2, str3, z);
+    public final Favorite copy(long r1, String r3, String r4, String r5, boolean r6) {
+        return new Favorite(r1, r3, r4, r5, r6);
     }
 
     @Override // android.os.Parcelable
@@ -77,15 +81,30 @@ public final class Favorite implements Parcelable {
         return 0;
     }
 
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Favorite)) {
-            return false;
-        }
-        Favorite favorite = (Favorite) obj;
-        return this.timestamp == favorite.timestamp && h12.c(this.songId, favorite.songId) && h12.c(this.albumId, favorite.albumId) && h12.c(this.artistId, favorite.artistId) && this.toStar == favorite.toStar;
+    public boolean equals(Object r8) {
+        if (this != r8) goto L6;
+        return true;
+    L6:
+        if ((r8 instanceof Favorite) == true) goto L8;
+        return false;
+    L8:
+        Favorite r9 = (Favorite) r8;
+        if (this.timestamp == r9.timestamp) goto L12;
+        return false;
+    L12:
+        if (h12.c(this.songId, r9.songId) == true) goto L15;
+        return false;
+    L15:
+        if (h12.c(this.albumId, r9.albumId) == true) goto L18;
+        return false;
+    L18:
+        if (h12.c(this.artistId, r9.artistId) == true) goto L21;
+        return false;
+    L21:
+        if (this.toStar == r9.toStar) goto L23;
+        return false;
+    L23:
+        return true;
     }
 
     public final String getAlbumId() {
@@ -109,39 +128,59 @@ public final class Favorite implements Parcelable {
     }
 
     public int hashCode() {
-        int iHashCode = Long.hashCode(this.timestamp) * 31;
-        String str = this.songId;
-        int iHashCode2 = (iHashCode + (str == null ? 0 : str.hashCode())) * 31;
-        String str2 = this.albumId;
-        int iHashCode3 = (iHashCode2 + (str2 == null ? 0 : str2.hashCode())) * 31;
-        String str3 = this.artistId;
-        return Boolean.hashCode(this.toStar) + ((iHashCode3 + (str3 != null ? str3.hashCode() : 0)) * 31);
+        int r0 = Long.hashCode(this.timestamp) * 31;
+        String r1 = this.songId;
+        int r2 = 0;
+        if (r1 != null) goto L5;
+        int r3 = 0;
+    L6:
+        int r4 = (r0 + r3) * 31;
+        String r5 = this.albumId;
+        if (r5 != null) goto L9;
+        int r6 = 0;
+    L10:
+        int r7 = (r4 + r6) * 31;
+        String r8 = this.artistId;
+        if (r8 == null) goto L15;
+        r2 = r8.hashCode();
+    L15:
+        return Boolean.hashCode(this.toStar) + ((r7 + r2) * 31);
+    L9:
+        r6 = r5.hashCode();
+        goto L10
+    L5:
+        r3 = r1.hashCode();
+        goto L6
     }
 
-    public final void setTimestamp(long j) {
-        this.timestamp = j;
+    public final void setTimestamp(long r1) {
+        this.timestamp = r1;
     }
 
     public String toString() {
-        String str = this.songId;
-        if (str == null) {
-            str = "null";
-        }
-        String str2 = this.albumId;
-        if (str2 == null) {
-            str2 = "null";
-        }
-        String str3 = this.artistId;
-        return b11.o(str, str2, str3 != null ? str3 : "null");
+        String r0 = this.songId;
+        String r1 = "null";
+        if (r0 != null) goto L5;
+        r0 = "null";
+    L5:
+        String r2 = this.albumId;
+        if (r2 != null) goto L8;
+        r2 = "null";
+    L8:
+        String r3 = this.artistId;
+        if (r3 == null) goto L13;
+        r1 = r3;
+    L13:
+        return b11.o(r0, r2, r1);
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        parcel.getClass();
-        parcel.writeLong(this.timestamp);
-        parcel.writeString(this.songId);
-        parcel.writeString(this.albumId);
-        parcel.writeString(this.artistId);
-        parcel.writeInt(this.toStar ? 1 : 0);
+    public final void writeToParcel(Parcel r3, int r4) {
+        r3.getClass();
+        r3.writeLong(this.timestamp);
+        r3.writeString(this.songId);
+        r3.writeString(this.albumId);
+        r3.writeString(this.artistId);
+        r3.writeInt(this.toStar ? 1 : 0);
     }
 }

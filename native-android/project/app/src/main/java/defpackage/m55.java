@@ -3,40 +3,43 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class m55 implements Runnable {
-    public final /* synthetic */ int n = 0;
+    public final /* synthetic */ int n;
     public final /* synthetic */ rf2 o;
     public final /* synthetic */ long p;
     public final /* synthetic */ int q;
 
-    public /* synthetic */ m55(rf2 rf2Var, int i, long j) {
-        this.o = rf2Var;
-        this.q = i;
-        this.p = j;
+    public /* synthetic */ m55(rf2 r2, int r3, long r4) {
+        this.n = 0;
+        this.o = r2;
+        this.q = r3;
+        this.p = r4;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        int i2 = this.q;
-        long j = this.p;
-        rf2 rf2Var = this.o;
-        switch (i) {
-            case 0:
-                o55 o55Var = (o55) rf2Var.o;
-                String str = f35.a;
-                o55Var.m(i2, j);
-                break;
-            default:
-                o55 o55Var2 = (o55) rf2Var.o;
-                String str2 = f35.a;
-                o55Var2.i(i2, j);
-                break;
-        }
+        int r0 = this.n;
+        int r1 = this.q;
+        long r2 = this.p;
+        rf2 r4 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        o55 r5 = (o55) r4.o;
+        String r3 = f35.a;
+        r5.i(r1, r2);
+        return;
+    L6:
+        o55 r6 = (o55) r4.o;
+        String r7 = f35.a;
+        r6.m(r1, r2);
     }
 
-    public /* synthetic */ m55(rf2 rf2Var, long j, int i) {
-        this.o = rf2Var;
-        this.p = j;
-        this.q = i;
+    public /* synthetic */ m55(rf2 r2, long r3, int r5) {
+        this.n = 1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r5;
     }
 }

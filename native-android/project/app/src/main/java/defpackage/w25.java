@@ -8,27 +8,46 @@ public final class w25 extends nv1 {
     public final String b;
     public final String c;
 
-    public w25(String str, String str2, String str3) {
-        super(str);
-        this.b = str2;
-        this.c = str3;
+    public w25(String r1, String r2, String r3) {
+        super(r1);
+        this.b = r2;
+        this.c = r3;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || w25.class != obj.getClass()) {
-            return false;
-        }
-        w25 w25Var = (w25) obj;
-        return this.a.equals(w25Var.a) && Objects.equals(this.b, w25Var.b) && this.c.equals(w25Var.c);
+    public final boolean equals(Object r3) {
+        if (this == r3) goto L18;
+        if (r3 != null) goto L6;
+        return false;
+    L6:
+        if (w25.class != r3.getClass()) goto L22;
+        w25 r4 = (w25) r3;
+        if (this.a.equals(r4.a) == true) goto L11;
+        return false;
+    L11:
+        if (Objects.equals(this.b, r4.b) == true) goto L13;
+        return false;
+    L13:
+        if (this.c.equals(r4.c) == false) goto L21;
+        return true;
+    L21:
+        return false;
+    L22:
+        return false;
+    L18:
+        return true;
     }
 
     public final int hashCode() {
-        int iE = f34.e(this.a, 527, 31);
-        String str = this.b;
-        return this.c.hashCode() + ((iE + (str != null ? str.hashCode() : 0)) * 31);
+        int r0 = f34.e(this.a, 527, 31);
+        String r1 = this.b;
+        if (r1 == null) goto L5;
+        int r2 = r1.hashCode();
+    L6:
+        int r3 = this.c.hashCode();
+        return r3 + ((r0 + r2) * 31);
+    L5:
+        r2 = 0;
+        goto L6
     }
 
     @Override // defpackage.nv1

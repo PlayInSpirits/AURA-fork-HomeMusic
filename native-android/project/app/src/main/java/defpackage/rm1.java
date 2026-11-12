@@ -8,27 +8,39 @@ import java.util.HashMap;
 /* JADX INFO: loaded from: classes.dex */
 public final class rm1 {
     public final String a;
+    public final HashMap b;
     public Uri c;
     public Uri d;
+    public long e;
+    public long f;
+    public long g;
+    public long h;
+    public ArrayList i;
     public boolean j;
+    public long k;
+    public long l;
+    public ArrayList m;
+    public ArrayList n;
     public Boolean o;
     public String p;
     public String q;
+    public long r;
+    public long s;
     public String t;
-    public final HashMap b = new HashMap();
-    public long e = -9223372036854775807L;
-    public long f = -9223372036854775807L;
-    public long g = -9223372036854775807L;
-    public long h = -9223372036854775807L;
-    public ArrayList i = new ArrayList();
-    public long k = -9223372036854775807L;
-    public long l = -9223372036854775807L;
-    public ArrayList m = new ArrayList();
-    public ArrayList n = new ArrayList();
-    public long r = -9223372036854775807L;
-    public long s = -9223372036854775807L;
 
-    public rm1(String str) {
-        this.a = str;
+    public rm1(String r3) {
+        this.a = r3;
+        this.b = new HashMap();
+        this.e = -9223372036854775807L;
+        this.f = -9223372036854775807L;
+        this.g = -9223372036854775807L;
+        this.h = -9223372036854775807L;
+        this.i = new ArrayList();
+        this.k = -9223372036854775807L;
+        this.l = -9223372036854775807L;
+        this.m = new ArrayList();
+        this.n = new ArrayList();
+        this.r = -9223372036854775807L;
+        this.s = -9223372036854775807L;
     }
 }

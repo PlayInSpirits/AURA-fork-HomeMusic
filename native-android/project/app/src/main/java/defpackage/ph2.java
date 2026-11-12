@@ -17,7 +17,7 @@ public final class ph2 extends InsetDrawable {
     }
 
     @Override // android.graphics.drawable.InsetDrawable, android.graphics.drawable.DrawableWrapper, android.graphics.drawable.Drawable
-    public final boolean getPadding(Rect rect) {
+    public final boolean getPadding(Rect r1) {
         return false;
     }
 }

@@ -7,7 +7,7 @@ import java.util.Arrays;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class vr3 extends h2 {
-    public static final Parcelable.Creator<vr3> CREATOR = new ch5(14);
+    public static final Parcelable.Creator<vr3> CREATOR = null;
     public final String n;
     public final String o;
     public final rj5 p;
@@ -17,55 +17,118 @@ public final class vr3 extends h2 {
     public final hn t;
     public final String u;
 
-    public vr3(String str, String str2, byte[] bArr, kn knVar, jn jnVar, ln lnVar, hn hnVar, String str3) {
-        rj5 rj5VarI = bArr == null ? null : rj5.i(bArr.length, bArr);
-        boolean z = false;
-        ji2.h("Must provide a response object.", (knVar != null && jnVar == null && lnVar == null) || (knVar == null && jnVar != null && lnVar == null) || (knVar == null && jnVar == null && lnVar != null));
-        if (lnVar != null || (str != null && rj5VarI != null)) {
-            z = true;
-        }
-        ji2.h("Must provide id and rawId if not an error response.", z);
-        this.n = str;
-        this.o = str2;
-        this.p = rj5VarI;
-        this.q = knVar;
-        this.r = jnVar;
-        this.s = lnVar;
-        this.t = hnVar;
-        this.u = str3;
+    static {
+        CREATOR = new ch5(14);
     }
 
-    public final boolean equals(Object obj) {
-        if (!(obj instanceof vr3)) {
-            return false;
-        }
-        vr3 vr3Var = (vr3) obj;
-        return au0.n(this.n, vr3Var.n) && au0.n(this.o, vr3Var.o) && au0.n(this.p, vr3Var.p) && au0.n(this.q, vr3Var.q) && au0.n(this.r, vr3Var.r) && au0.n(this.s, vr3Var.s) && au0.n(this.t, vr3Var.t) && au0.n(this.u, vr3Var.u);
+    public vr3(String r5, String r6, byte[] r7, kn r8, jn r9, ln r10, hn r11, String r12) {
+        if (r7 != null) goto L4;
+        rj5 r13 = null;
+    L5:
+        boolean r0 = false;
+        if (r8 == null) goto L11;
+        if (r9 != null) goto L11;
+        if (r10 != null) goto L11;
+    L10:
+        boolean r2 = true;
+    L19:
+        ji2.h("Must provide a response object.", r2);
+        if (r10 != null) goto L23;
+        if (r5 == null) goto L24;
+        if (r13 != null) goto L23;
+    L24:
+        ji2.h("Must provide id and rawId if not an error response.", r0);
+        this.n = r5;
+        this.o = r6;
+        this.p = r13;
+        this.q = r8;
+        this.r = r9;
+        this.s = r10;
+        this.t = r11;
+        this.u = r12;
+        return;
+    L23:
+        r0 = true;
+    L11:
+        if (r8 != null) goto L14;
+        if (r9 == null) goto L14;
+        if (r10 == null) goto L10;
+    L14:
+        if (r8 != null) goto L18;
+        if (r9 != null) goto L18;
+        if (r10 != null) goto L10;
+    L18:
+        r2 = false;
+        goto L19
+    L4:
+        r13 = rj5.i(r7.length, r7);
+        goto L5
+    }
+
+    public final boolean equals(Object r3) {
+        if ((r3 instanceof vr3) == false) goto L32;
+        vr3 r4 = (vr3) r3;
+        if (au0.n(this.n, r4.n) == true) goto L8;
+        return false;
+    L8:
+        if (au0.n(this.o, r4.o) == true) goto L10;
+        return false;
+    L10:
+        if (au0.n(this.p, r4.p) == true) goto L12;
+        return false;
+    L12:
+        if (au0.n(this.q, r4.q) == true) goto L14;
+        return false;
+    L14:
+        if (au0.n(this.r, r4.r) == true) goto L16;
+        return false;
+    L16:
+        if (au0.n(this.s, r4.s) == true) goto L18;
+        return false;
+    L18:
+        if (au0.n(this.t, r4.t) == true) goto L20;
+        return false;
+    L20:
+        if (au0.n(this.u, r4.u) == false) goto L31;
+        return true;
+    L31:
+        return false;
+    L32:
+        return false;
     }
 
     public final int hashCode() {
-        return Arrays.hashCode(new Object[]{this.n, this.o, this.p, this.r, this.q, this.s, this.t, this.u});
+        hn r6 = this.t;
+        String r7 = this.u;
+        return Arrays.hashCode(new Object[]{this.n, this.o, this.p, this.r, this.q, this.s, r6, r7});
     }
 
     public final String toString() {
-        rj5 rj5Var = this.p;
-        String strN = ya4.n(rj5Var == null ? null : rj5Var.j());
-        String strValueOf = String.valueOf(this.q);
-        String strValueOf2 = String.valueOf(this.r);
-        String strValueOf3 = String.valueOf(this.s);
-        String strValueOf4 = String.valueOf(this.t);
-        StringBuilder sbU = b11.u("PublicKeyCredential{\n id='", this.n, "', \n type='", this.o, "', \n rawId=");
-        f34.n(sbU, strN, ", \n registerResponse=", strValueOf, ", \n signResponse=");
-        f34.n(sbU, strValueOf2, ", \n errorResponse=", strValueOf3, ", \n extensionsClientOutputs=");
-        sbU.append(strValueOf4);
-        sbU.append(", \n authenticatorAttachment='");
-        sbU.append(this.u);
-        sbU.append("'}");
-        return sbU.toString();
+        rj5 r0 = this.p;
+        if (r0 != null) goto L5;
+        byte[] r1 = null;
+    L6:
+        String r2 = ya4.n(r1);
+        String r3 = String.valueOf(this.q);
+        String r4 = String.valueOf(this.r);
+        String r5 = String.valueOf(this.s);
+        String r6 = String.valueOf(this.t);
+        StringBuilder r7 = b11.u("PublicKeyCredential{\n id='", this.n, "', \n type='", this.o, "', \n rawId=");
+        f34.n(r7, r2, ", \n registerResponse=", r3, ", \n signResponse=");
+        f34.n(r7, r4, ", \n errorResponse=", r5, ", \n extensionsClientOutputs=");
+        r7.append(r6);
+        r7.append(", \n authenticatorAttachment='");
+        r7.append(this.u);
+        r7.append("'}");
+        return r7.toString();
+    L5:
+        r1 = r0.j();
+        goto L6
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
+    public final void writeToParcel(Parcel r1, int r2) {
+        gk5 r0 = (gk5) fk5.b.a.n;
         gk5.a.b();
         throw null;
     }

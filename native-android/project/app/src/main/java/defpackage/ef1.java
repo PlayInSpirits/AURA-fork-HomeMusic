@@ -7,7 +7,10 @@ import java.util.Map;
 /* JADX INFO: loaded from: classes.dex */
 public final class ef1 extends LinkedHashMap {
     @Override // java.util.LinkedHashMap
-    public final boolean removeEldestEntry(Map.Entry entry) {
-        return size() > 4;
+    public final boolean removeEldestEntry(Map.Entry r1) {
+        if (size() <= 4) goto L6;
+        return true;
+    L6:
+        return false;
     }
 }

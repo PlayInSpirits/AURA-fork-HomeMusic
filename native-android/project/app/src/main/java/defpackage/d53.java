@@ -8,16 +8,15 @@ public final class d53 extends wd0 {
     public final /* synthetic */ e53 p;
     public int q;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public d53(e53 e53Var, wd0 wd0Var) {
-        super(wd0Var);
-        this.p = e53Var;
+    public d53(e53 r1, wd0 r2) {
+        this.p = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.o = obj;
+    public final Object invokeSuspend(Object r3) {
+        this.o = r3;
         this.q |= Integer.MIN_VALUE;
-        return this.p.s(0L, this);
+        return this.p.s(0, this);
     }
 }

@@ -14,37 +14,45 @@ public final class mh2 extends rw3 {
     public final /* synthetic */ MaterialButton b;
     public final /* synthetic */ nh2 c;
 
-    public mh2(nh2 nh2Var, lx2 lx2Var, MaterialButton materialButton) {
-        this.c = nh2Var;
-        this.a = lx2Var;
-        this.b = materialButton;
+    public mh2(nh2 r1, lx2 r2, MaterialButton r3) {
+        this.c = r1;
+        this.a = r2;
+        this.b = r3;
     }
 
     @Override // defpackage.rw3
-    public final void a(RecyclerView recyclerView, int i) {
-        if (i == 0) {
-            recyclerView.announceForAccessibility(this.b.getText());
-        }
+    public final void a(RecyclerView r1, int r2) {
+        if (r2 != 0) goto L5;
+        r1.announceForAccessibility(this.b.getText());
+        return;
     }
 
     @Override // defpackage.rw3
-    public final void b(RecyclerView recyclerView, int i, int i2) {
-        dy dyVar = this.a.q;
-        nh2 nh2Var = this.c;
-        RecyclerView recyclerView2 = nh2Var.t0;
-        int iP0 = i < 0 ? ((LinearLayoutManager) recyclerView2.getLayoutManager()).P0() : ((LinearLayoutManager) recyclerView2.getLayoutManager()).Q0();
-        Calendar calendarC = a35.c(dyVar.n.n);
-        calendarC.add(2, iP0);
-        nh2Var.p0 = new ix2(calendarC);
-        Calendar calendarC2 = a35.c(dyVar.n.n);
-        calendarC2.add(2, iP0);
-        calendarC2.set(5, 1);
-        Calendar calendarC3 = a35.c(calendarC2);
-        calendarC3.get(2);
-        calendarC3.get(1);
-        calendarC3.getMaximum(7);
-        calendarC3.getActualMaximum(5);
-        calendarC3.getTimeInMillis();
-        this.b.setText(a35.b("yMMMM", Locale.getDefault()).format(new Date(calendarC3.getTimeInMillis())));
+    public final void b(RecyclerView r4, int r5, int r6) {
+        dy r7 = this.a.q;
+        nh2 r8 = this.c;
+        RecyclerView r0 = r8.t0;
+        if (r5 >= 0) goto L5;
+        int r9 = ((LinearLayoutManager) r0.getLayoutManager()).P0();
+    L6:
+        Calendar r1 = a35.c(r7.n.n);
+        r1.add(2, r9);
+        r8.p0 = new ix2(r1);
+        Calendar r10 = a35.c(r7.n.n);
+        r10.add(2, r9);
+        r10.set(5, 1);
+        Calendar r11 = a35.c(r10);
+        r11.get(2);
+        r11.get(1);
+        r11.getMaximum(7);
+        r11.getActualMaximum(5);
+        r11.getTimeInMillis();
+        long r12 = r11.getTimeInMillis();
+        String r13 = a35.b("yMMMM", Locale.getDefault()).format(new Date(r12));
+        this.b.setText(r13);
+        return;
+    L5:
+        r9 = ((LinearLayoutManager) r0.getLayoutManager()).Q0();
+        goto L6
     }
 }

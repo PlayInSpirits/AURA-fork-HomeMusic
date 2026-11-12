@@ -7,27 +7,29 @@ import java.util.concurrent.Executor;
 public final /* synthetic */ class di implements Executor {
     public final /* synthetic */ int n;
 
-    public /* synthetic */ di(int i) {
-        this.n = i;
+    public /* synthetic */ di(int r1) {
+        this.n = r1;
     }
 
-    private final void a(Runnable runnable) {
+    private final void a(Runnable r1) {
     }
 
     @Override // java.util.concurrent.Executor
-    public final void execute(Runnable runnable) {
-        switch (this.n) {
-            case 0:
-                ei.V().j.k.execute(runnable);
-                break;
-            case 1:
-                break;
-            case 2:
-                u52.a.post(runnable);
-                break;
-            default:
-                runnable.run();
-                break;
-        }
+    public final void execute(Runnable r1) {
+        switch(this.n) {
+            case 0: goto L8;
+            case 1: goto L10;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.run();
+        return;
+    L6:
+        u52.a.post(r1);
+        return;
+    L8:
+        ei.V().j.k.execute(r1);
+        return;
     }
 }

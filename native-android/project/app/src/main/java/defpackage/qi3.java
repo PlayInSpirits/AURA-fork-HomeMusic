@@ -14,7 +14,7 @@ public interface qi3 {
 
     float B();
 
-    void B0(gn2 gn2Var);
+    void B0(gn2 r1);
 
     void C();
 
@@ -24,7 +24,7 @@ public interface qi3 {
 
     boolean D0();
 
-    void E(int i, boolean z);
+    void E(int r1, boolean r2);
 
     cw4 E0();
 
@@ -34,9 +34,9 @@ public interface qi3 {
 
     void G();
 
-    void G0(int i);
+    void G0(int r1);
 
-    void H(int i, int i2);
+    void H(int r1, int r2);
 
     void H0();
 
@@ -44,7 +44,7 @@ public interface qi3 {
 
     void I0();
 
-    void J(int i);
+    void J(int r1);
 
     void J0();
 
@@ -52,39 +52,39 @@ public interface qi3 {
 
     do2 K0();
 
-    void L(int i, int i2, List list);
+    void L(int r1, int r2, List r3);
 
-    void L0(List list);
+    void L0(List r1);
 
-    void M(cw4 cw4Var);
+    void M(cw4 r1);
 
     long M0();
 
-    void N(int i);
+    void N(int r1);
 
-    void N0(List list, int i);
+    void N0(List r1, int r2);
 
-    void O(long j);
+    void O(long r1);
 
     long O0();
 
-    void P(int i, int i2);
+    void P(int r1, int r2);
 
     boolean P0();
 
-    void Q(SurfaceHolder surfaceHolder);
+    void Q(SurfaceHolder r1);
 
     int Q0();
 
-    void R(float f);
+    void R(float r1);
 
     boolean R0();
 
     void S();
 
-    boolean S0(int i);
+    boolean S0(int r1);
 
-    void T(List list, int i, long j);
+    void T(List r1, int r2, long r3);
 
     boolean T0();
 
@@ -92,15 +92,15 @@ public interface qi3 {
 
     Looper U0();
 
-    void V(boolean z);
+    void V(boolean r1);
 
     boolean V0();
 
-    void W(int i);
+    void W(int r1);
 
     long X();
 
-    gn2 Y(int i);
+    gn2 Y(int r1);
 
     long Z();
 
@@ -116,11 +116,11 @@ public interface qi3 {
 
     void c0();
 
-    void d(qh3 qh3Var);
+    void d(qh3 r1);
 
-    void d0(int i);
+    void d0(int r1);
 
-    void e(float f);
+    void e(float r1);
 
     jw4 e0();
 
@@ -148,17 +148,17 @@ public interface qi3 {
 
     boolean k();
 
-    void k0(il ilVar, boolean z);
+    void k0(il r1, boolean r2);
 
     long l();
 
-    void l0(do2 do2Var);
+    void l0(do2 r1);
 
     long m();
 
     void m0();
 
-    void n(int i, long j);
+    void n(int r1, long r2);
 
     int n0();
 
@@ -166,39 +166,39 @@ public interface qi3 {
 
     int o0();
 
-    void p(gn2 gn2Var, long j);
+    void p(gn2 r1, long r2);
 
-    void p0(int i);
+    void p0(int r1);
 
     boolean q();
 
-    void q0(boolean z);
+    void q0(boolean r1);
 
     void r();
 
-    void r0(oi3 oi3Var);
+    void r0(oi3 r1);
 
-    void s(boolean z);
+    void s(boolean r1);
 
-    void s0(gn2 gn2Var);
+    void s0(gn2 r1);
 
     void stop();
 
     int t();
 
-    void t0(int i, int i2);
+    void t0(int r1, int r2);
 
     long u();
 
-    void u0(int i, int i2, int i3);
+    void u0(int r1, int r2, int r3);
 
-    void v(oi3 oi3Var);
+    void v(oi3 r1);
 
     int v0();
 
     int w();
 
-    void w0(List list);
+    void w0(List r1);
 
     long x();
 
@@ -210,5 +210,5 @@ public interface qi3 {
 
     s55 z();
 
-    void z0(int i, gn2 gn2Var);
+    void z0(int r1, gn2 r2);
 }

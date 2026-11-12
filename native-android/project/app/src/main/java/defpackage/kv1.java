@@ -3,5 +3,5 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface kv1 {
-    boolean d(int i, int i2, int i3, int i4, int i5);
+    boolean d(int r1, int r2, int r3, int r4, int r5);
 }

@@ -17,173 +17,140 @@ public final class a80 implements ScrollCaptureCallback {
     public final td0 e;
     public final sy3 f;
 
-    public a80(i94 i94Var, k02 k02Var, td0 td0Var, rm2 rm2Var, ra raVar) {
-        this.a = i94Var;
-        this.b = k02Var;
-        this.c = rm2Var;
-        this.d = raVar;
-        this.e = new td0(td0Var.n.J(sq0.o));
-        this.f = new sy3(k02Var.d - k02Var.b, new z70(this, null));
+    public a80(i94 r1, k02 r2, td0 r3, rm2 r4, ra r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r4;
+        this.d = r5;
+        this.e = new td0(r3.n.J(sq0.o));
+        this.f = new sy3(r2.d - r2.b, new z70(this, null));
     }
 
-    /* JADX WARN: Code duplicated, block: B:34:0x00ce  */
-    /* JADX WARN: Code duplicated, block: B:36:0x00d1  */
-    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
-    public static final Object a(a80 a80Var, ScrollCaptureSession scrollCaptureSession, k02 k02Var, wd0 wd0Var) {
-        y70 y70Var;
-        int i;
-        int i2;
-        ScrollCaptureSession scrollCaptureSessionH;
-        int i3;
-        k02 k02Var2;
-        int i4;
-        int iM;
-        int iM2;
-        int i5;
-        int i6;
-        Canvas canvasLockHardwareCanvas;
-        if (wd0Var instanceof y70) {
-            y70Var = (y70) wd0Var;
-            int i7 = y70Var.t;
-            if ((i7 & Integer.MIN_VALUE) != 0) {
-                y70Var.t = i7 - Integer.MIN_VALUE;
-            } else {
-                y70Var = new y70(a80Var, wd0Var);
-            }
-        } else {
-            y70Var = new y70(a80Var, wd0Var);
-        }
-        Object obj = y70Var.r;
-        int i8 = y70Var.t;
-        xe0 xe0Var = xe0.n;
-        if (i8 == 0) {
-            kb4.X(obj);
-            i = k02Var.b;
-            i2 = k02Var.d;
-            sy3 sy3Var = a80Var.f;
-            y70Var.n = scrollCaptureSession;
-            y70Var.o = k02Var;
-            y70Var.p = i;
-            y70Var.q = i2;
-            y70Var.t = 1;
-            if (i > i2) {
-                sy3Var.getClass();
-                throw new IllegalArgumentException(("Expected min=" + i + " ≤ max=" + i2).toString());
-            }
-            int i9 = i2 - i;
-            int i10 = sy3Var.a;
-            if (i9 > i10) {
-                kf2.e(xa3.e(i9, i10, "Expected range (", ") to be ≤ viewportSize="));
-                return null;
-            }
-            Object objA = sy3Var.a((((i9 / 2) + i) - (i10 / 2)) - sy3Var.c, y70Var);
-            Object obj2 = j15.a;
-            if (objA != xe0Var) {
-                objA = obj2;
-            }
-            if (objA == xe0Var) {
-                obj2 = objA;
-            }
-            if (obj2 != xe0Var) {
-            }
-            return xe0Var;
-        }
-        if (i8 == 1) {
-            int i11 = y70Var.q;
-            int i12 = y70Var.p;
-            k02 k02Var3 = y70Var.o;
-            ScrollCaptureSession scrollCaptureSessionH2 = db.h(y70Var.n);
-            kb4.X(obj);
-            i = i12;
-            k02Var = k02Var3;
-            i2 = i11;
-            scrollCaptureSession = scrollCaptureSessionH2;
-        } else {
-            if (i8 != 2) {
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            }
-            i3 = y70Var.q;
-            i4 = y70Var.p;
-            k02Var2 = y70Var.o;
-            scrollCaptureSessionH = db.h(y70Var.n);
-            kb4.X(obj);
-        }
-        sy3 sy3Var2 = a80Var.f;
-        iM = gb.m(i4 - ji2.L(sy3Var2.c), 0, sy3Var2.a);
-        sy3 sy3Var3 = a80Var.f;
-        iM2 = gb.m(i3 - ji2.L(sy3Var3.c), 0, sy3Var3.a);
-        i5 = k02Var2.a;
-        i6 = k02Var2.c;
-        if (iM == iM2) {
-            return k02.e;
-        }
-        canvasLockHardwareCanvas = scrollCaptureSessionH.getSurface().lockHardwareCanvas();
-        try {
-            canvasLockHardwareCanvas.save();
-            canvasLockHardwareCanvas.translate(-i5, -iM);
-            k02 k02Var4 = a80Var.b;
-            canvasLockHardwareCanvas.translate(-k02Var4.a, -k02Var4.b);
-            a80Var.d.getRootView().draw(canvasLockHardwareCanvas);
-            int iL = ji2.L(a80Var.f.c);
-            return new k02(i5, iM + iL, i6, iM2 + iL);
-        } finally {
-            scrollCaptureSessionH.getSurface().unlockCanvasAndPost(canvasLockHardwareCanvas);
-        }
-        k52 k52Var = new k52(15);
-        y70Var.n = scrollCaptureSession;
-        y70Var.o = k02Var;
-        y70Var.p = i;
-        y70Var.q = i2;
-        y70Var.t = 2;
-        if (vr1.x(y70Var.getContext()).a(k52Var, y70Var) != xe0Var) {
-            scrollCaptureSessionH = scrollCaptureSession;
-            i3 = i2;
-            k02Var2 = k02Var;
-            i4 = i;
-            sy3 sy3Var4 = a80Var.f;
-            iM = gb.m(i4 - ji2.L(sy3Var4.c), 0, sy3Var4.a);
-            sy3 sy3Var5 = a80Var.f;
-            iM2 = gb.m(i3 - ji2.L(sy3Var5.c), 0, sy3Var5.a);
-            i5 = k02Var2.a;
-            i6 = k02Var2.c;
-            if (iM == iM2) {
-                return k02.e;
-            }
-            canvasLockHardwareCanvas = scrollCaptureSessionH.getSurface().lockHardwareCanvas();
-            canvasLockHardwareCanvas.save();
-            canvasLockHardwareCanvas.translate(-i5, -iM);
-            k02 k02Var5 = a80Var.b;
-            canvasLockHardwareCanvas.translate(-k02Var5.a, -k02Var5.b);
-            a80Var.d.getRootView().draw(canvasLockHardwareCanvas);
-            int iL2 = ji2.L(a80Var.f.c);
-            return new k02(i5, iM + iL2, i6, iM2 + iL2);
-        }
-        return xe0Var;
+    public static final Object a(a80 r8, ScrollCaptureSession r9, k02 r10, wd0 r11) {
+        if ((r11 instanceof y70) == false) goto L7;
+        y70 r0 = (y70) r11;
+        int r1 = r0.t;
+        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
+        r0.t = r1 - Integer.MIN_VALUE;
+    L8:
+        Object r12 = r0.r;
+        int r2 = r0.t;
+        xe0 r5 = xe0.n;
+        if (r2 == 0) goto L16;
+        if (r2 == 1) goto L15;
+        if (r2 != 2) goto L13;
+        int r13 = r0.q;
+        int r14 = r0.p;
+        k02 r3 = r0.o;
+        ScrollCaptureSession r4 = db.h(r0.n);
+        kb4.X(r12);
+    L32:
+        sy3 r15 = r8.f;
+        int r16 = gb.m(r14 - ji2.L(r15.c), 0, r15.a);
+        sy3 r17 = r8.f;
+        int r18 = gb.m(r13 - ji2.L(r17.c), 0, r17.a);
+        int r19 = r3.a;
+        int r6 = r3.c;
+        if (r16 == r18) goto L35;
+        Canvas r7 = db.i(r4).lockHardwareCanvas();
+        r7.save();     // Catch: Throwable -> L40
+        r7.translate(-r19, -r16);     // Catch: Throwable -> L40
+        k02 r20 = r8.b;     // Catch: Throwable -> L40
+        r7.translate(-r20.a, -r20.b);     // Catch: Throwable -> L40
+        r8.d.getRootView().draw(r7);     // Catch: Throwable -> L40
+        db.C(r4).unlockCanvasAndPost(r7);
+        int r21 = ji2.L(r8.f.c);
+        return new k02(r19, r16 + r21, r6, r18 + r21);
+    L40:
+        th = move-exception;
+        db.C(r4).unlockCanvasAndPost(r7);
+        throw th;
+    L35:
+        return k02.e;
+    L13:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L15:
+        int r22 = r0.q;
+        int r110 = r0.p;
+        k02 r23 = r0.o;
+        ScrollCaptureSession r24 = db.h(r0.n);
+        kb4.X(r12);
+        int r111 = r110;
+        r10 = r23;
+        int r25 = r22;
+        r9 = r24;
+    L28:
+        k52 r26 = new k52(15);
+        r0.n = r9;
+        r0.o = r10;
+        r0.p = r111;
+        r0.q = r25;
+        r0.t = 2;
+        if (vr1.x(r0.getContext()).a(r26, r0) != r5) goto L31;
+    L30:
+        return r5;
+    L31:
+        r4 = r9;
+        r13 = r25;
+        r3 = r10;
+        r14 = r111;
+        goto L32
+    L16:
+        kb4.X(r12);
+        r111 = r10.b;
+        r25 = r10.d;
+        sy3 r27 = r8.f;
+        r0.n = r9;
+        r0.o = r10;
+        r0.p = r111;
+        r0.q = r25;
+        r0.t = 1;
+        if (r111 > r25) goto L45;
+        int r28 = r25 - r111;
+        int r29 = r27.a;
+        if (r28 > r29) goto L43;
+        Object r30 = r27.a((((r28 / 2) + r111) - (r29 / 2)) - r27.c, r0);
+        Object r31 = j15.a;
+        if (r30 == r5) goto L24;
+        r30 = r31;
+    L24:
+        if (r30 != r5) goto L26;
+        r31 = r30;
+    L26:
+        if (r31 != r5) goto L28;
+    L43:
+        kf2.e(xa3.e(r28, r29, "Expected range (", ") to be ≤ viewportSize="));
+        return null;
+    L45:
+        r27.getClass();
+        throw new IllegalArgumentException(("Expected min=" + r111 + " ≤ max=" + r25).toString());
+    L7:
+        r0 = new y70(r8, r11);
+        goto L8
     }
 
-    public final void onScrollCaptureEnd(Runnable runnable) {
-        fu.G(this.e, j63.o, null, new p(this, runnable, null, 6), 2);
+    public final void onScrollCaptureEnd(Runnable r5) {
+        j63 r0 = j63.o;
+        vd0 r3 = null;
+        p r1 = new p(this, r5, r3, 6);
+        fu.G(this.e, r0, null, r1, 2);
     }
 
-    public final void onScrollCaptureImageRequest(ScrollCaptureSession scrollCaptureSession, CancellationSignal cancellationSignal, Rect rect, Consumer consumer) {
-        final sk4 sk4VarG = fu.G(this.e, null, null, new x70(this, scrollCaptureSession, rect, consumer, null, 0), 3);
-        sk4VarG.M(new x(7, cancellationSignal));
-        cancellationSignal.setOnCancelListener(new CancellationSignal.OnCancelListener() { // from class: b80
-            @Override // android.os.CancellationSignal.OnCancelListener
-            public final void onCancel() {
-                sk4VarG.f(null);
-            }
-        });
+    public final void onScrollCaptureImageRequest(ScrollCaptureSession r8, CancellationSignal r9, Rect r10, Consumer r11) {
+        x70 r0 = new x70(this, r8, r10, r11, null, 0);
+        final sk4 r7 = fu.G(this.e, null, null, r0, 3);
+        r7.M(new x(7, r9));
+        r9.setOnCancelListener(new b80(r7));
     }
 
-    public final void onScrollCaptureSearch(CancellationSignal cancellationSignal, Consumer consumer) {
-        consumer.accept(uo.U(this.b));
+    public final void onScrollCaptureSearch(CancellationSignal r1, Consumer r2) {
+        r2.accept(uo.U(this.b));
     }
 
-    public final void onScrollCaptureStart(ScrollCaptureSession scrollCaptureSession, CancellationSignal cancellationSignal, Runnable runnable) {
+    public final void onScrollCaptureStart(ScrollCaptureSession r1, CancellationSignal r2, Runnable r3) {
         this.f.c = 0.0f;
         ((zd3) this.c.o).setValue(Boolean.TRUE);
-        runnable.run();
+        r3.run();
     }
 }

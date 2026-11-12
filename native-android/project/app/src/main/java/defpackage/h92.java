@@ -8,17 +8,17 @@ import android.text.style.MetricAffectingSpan;
 public final class h92 extends MetricAffectingSpan {
     public final float n;
 
-    public h92(float f) {
-        this.n = f;
+    public h92(float r1) {
+        this.n = r1;
     }
 
     @Override // android.text.style.CharacterStyle
-    public final void updateDrawState(TextPaint textPaint) {
-        textPaint.setLetterSpacing(this.n);
+    public final void updateDrawState(TextPaint r1) {
+        r1.setLetterSpacing(this.n);
     }
 
     @Override // android.text.style.MetricAffectingSpan
-    public final void updateMeasureState(TextPaint textPaint) {
-        textPaint.setLetterSpacing(this.n);
+    public final void updateMeasureState(TextPaint r1) {
+        r1.setLetterSpacing(this.n);
     }
 }

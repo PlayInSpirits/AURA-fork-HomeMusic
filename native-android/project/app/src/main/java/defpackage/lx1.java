@@ -5,8 +5,8 @@ package defpackage;
 public final class lx1 implements mx1 {
     public final h63 n;
 
-    public lx1(h63 h63Var) {
-        this.n = h63Var;
+    public lx1(h63 r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.mx1

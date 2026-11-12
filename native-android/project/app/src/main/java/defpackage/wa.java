@@ -9,15 +9,14 @@ public final class wa extends wd0 {
     public final /* synthetic */ ya q;
     public int r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public wa(ya yaVar, wd0 wd0Var) {
-        super(wd0Var);
-        this.q = yaVar;
+    public wa(ya r1, wd0 r2) {
+        this.q = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.p = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.p = r2;
         this.r |= Integer.MIN_VALUE;
         return this.q.l(this);
     }

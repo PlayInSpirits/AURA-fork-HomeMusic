@@ -7,72 +7,85 @@ public abstract class ba5 implements uo0 {
     public jc0 b;
     public v34 c;
     public int d;
-    public final eq0 e = new eq0(this);
-    public int f = 0;
-    public boolean g = false;
-    public final yo0 h = new yo0(this);
-    public final yo0 i = new yo0(this);
-    public int j = 1;
+    public final eq0 e;
+    public int f;
+    public boolean g;
+    public final yo0 h;
+    public final yo0 i;
+    public int j;
 
-    public ba5(jc0 jc0Var) {
-        this.b = jc0Var;
+    public ba5(jc0 r2) {
+        this.e = new eq0(this);
+        this.f = 0;
+        this.g = false;
+        this.h = new yo0(this);
+        this.i = new yo0(this);
+        this.j = 1;
+        this.b = r2;
     }
 
-    public static void b(yo0 yo0Var, yo0 yo0Var2, int i) {
-        yo0Var.l.add(yo0Var2);
-        yo0Var.f = i;
-        yo0Var2.k.add(yo0Var);
+    public static void b(yo0 r1, yo0 r2, int r3) {
+        r1.l.add(r2);
+        r1.f = r3;
+        r2.k.add(r1);
     }
 
-    public static yo0 h(hb0 hb0Var) {
-        hb0 hb0Var2 = hb0Var.f;
-        if (hb0Var2 == null) {
-            return null;
-        }
-        jc0 jc0Var = hb0Var2.d;
-        int iW = xa3.w(hb0Var2.e);
-        if (iW == 1) {
-            return jc0Var.d.h;
-        }
-        if (iW == 2) {
-            return jc0Var.e.h;
-        }
-        if (iW == 3) {
-            return jc0Var.d.i;
-        }
-        if (iW == 4) {
-            return jc0Var.e.i;
-        }
-        if (iW != 5) {
-            return null;
-        }
-        return jc0Var.e.k;
-    }
-
-    public static yo0 i(hb0 hb0Var, int i) {
-        hb0 hb0Var2 = hb0Var.f;
-        if (hb0Var2 == null) {
-            return null;
-        }
-        jc0 jc0Var = hb0Var2.d;
-        ba5 ba5Var = i == 0 ? jc0Var.d : jc0Var.e;
-        int iW = xa3.w(hb0Var2.e);
-        if (iW == 1 || iW == 2) {
-            return ba5Var.h;
-        }
-        if (iW == 3 || iW == 4) {
-            return ba5Var.i;
-        }
+    public static yo0 h(hb0 r2) {
+        hb0 r3 = r2.f;
+        if (r3 == null) goto L27;
+        jc0 r0 = r3.d;
+        int r4 = xa3.w(r3.e);
+        if (r4 == 1) goto L26;
+        if (r4 == 2) goto L24;
+        if (r4 == 3) goto L22;
+        if (r4 == 4) goto L20;
+        if (r4 == 5) goto L18;
+        return null;
+    L18:
+        return r0.e.k;
+    L20:
+        return r0.e.i;
+    L22:
+        return r0.d.i;
+    L24:
+        return r0.e.h;
+    L26:
+        return r0.d.h;
+    L27:
         return null;
     }
 
-    public final void c(yo0 yo0Var, yo0 yo0Var2, int i, eq0 eq0Var) {
-        yo0Var.l.add(yo0Var2);
-        yo0Var.l.add(this.e);
-        yo0Var.h = i;
-        yo0Var.i = eq0Var;
-        yo0Var2.k.add(yo0Var);
-        eq0Var.k.add(yo0Var);
+    public static yo0 i(hb0 r1, int r2) {
+        hb0 r3 = r1.f;
+        if (r3 == null) goto L23;
+        jc0 r0 = r3.d;
+        if (r2 != 0) goto L8;
+        ba5 r4 = r0.d;
+    L9:
+        int r5 = xa3.w(r3.e);
+        if (r5 == 1) goto L22;
+        if (r5 == 2) goto L22;
+        if (r5 == 3) goto L20;
+        if (r5 == 4) goto L20;
+        return null;
+    L20:
+        return r4.i;
+    L22:
+        return r4.h;
+    L8:
+        r4 = r0.e;
+        goto L9
+    L23:
+        return null;
+    }
+
+    public final void c(yo0 r2, yo0 r3, int r4, eq0 r5) {
+        r2.l.add(r3);
+        r2.l.add(this.e);
+        r2.h = r4;
+        r2.i = r5;
+        r3.k.add(r2);
+        r5.k.add(r2);
     }
 
     public abstract void d();
@@ -81,130 +94,131 @@ public abstract class ba5 implements uo0 {
 
     public abstract void f();
 
-    public final int g(int i, int i2) {
-        jc0 jc0Var = this.b;
-        if (i2 == 0) {
-            int i3 = jc0Var.v;
-            int iMax = Math.max(jc0Var.u, i);
-            if (i3 > 0) {
-                iMax = Math.min(i3, i);
-            }
-            if (iMax != i) {
-                return iMax;
-            }
-        } else {
-            int i4 = jc0Var.y;
-            int iMax2 = Math.max(jc0Var.x, i);
-            if (i4 > 0) {
-                iMax2 = Math.min(i4, i);
-            }
-            if (iMax2 != i) {
-                return iMax2;
-            }
-        }
-        return i;
+    public final int g(int r1, int r2) {
+        jc0 r0 = this.b;
+        if (r2 != 0) goto L9;
+        int r3 = r0.v;
+        int r4 = Math.max(r0.u, r1);
+        if (r3 <= 0) goto L7;
+        r4 = Math.min(r3, r1);
+    L7:
+        if (r4 == r1) goto L14;
+        return r4;
+    L14:
+        return r1;
+    L9:
+        int r5 = r0.y;
+        int r6 = Math.max(r0.x, r1);
+        if (r5 <= 0) goto L12;
+        r6 = Math.min(r5, r1);
+    L12:
+        if (r6 == r1) goto L14;
+        return r6;
     }
 
     public long j() {
-        eq0 eq0Var = this.e;
-        if (eq0Var.j) {
-            return eq0Var.g;
-        }
-        return 0L;
+        eq0 r2 = this.e;
+        if (r2.j == true) goto L5;
+        return 0;
+    L5:
+        return r2.g;
     }
 
     public abstract boolean k();
 
-    /* JADX WARN: Code duplicated, block: B:28:0x0054 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:29:0x0056  */
-    /* JADX WARN: Code duplicated, block: B:32:0x005e  */
-    /* JADX WARN: Code duplicated, block: B:34:0x0064  */
-    /* JADX WARN: Code duplicated, block: B:35:0x0069  */
-    public final void l(hb0 hb0Var, hb0 hb0Var2, int i) {
-        eq0 eq0Var;
-        float f;
-        int i2;
-        int i3;
-        yo0 yo0VarH = h(hb0Var);
-        yo0 yo0VarH2 = h(hb0Var2);
-        if (yo0VarH.j && yo0VarH2.j) {
-            int iD = hb0Var.d() + yo0VarH.g;
-            int iD2 = yo0VarH2.g - hb0Var2.d();
-            int i4 = iD2 - iD;
-            eq0 eq0Var2 = this.e;
-            if (!eq0Var2.j && this.d == 3) {
-                int i5 = this.a;
-                if (i5 == 0) {
-                    eq0Var2.d(g(i4, i));
-                } else if (i5 == 1) {
-                    eq0Var2.d(Math.min(g(eq0Var2.m, i), i4));
-                } else if (i5 == 2) {
-                    jc0 jc0Var = this.b;
-                    jc0 jc0Var2 = jc0Var.S;
-                    if (jc0Var2 != null) {
-                        eq0 eq0Var3 = (i == 0 ? jc0Var2.d : jc0Var2.e).e;
-                        if (eq0Var3.j) {
-                            eq0Var2.d(g((int) ((eq0Var3.g * (i == 0 ? jc0Var.w : jc0Var.z)) + 0.5f), i));
-                        }
-                    }
-                } else if (i5 == 3) {
-                    jc0 jc0Var3 = this.b;
-                    ba5 ba5Var = jc0Var3.d;
-                    if (ba5Var.d == 3 && ba5Var.a == 3) {
-                        w45 w45Var = jc0Var3.e;
-                        if (w45Var.d != 3 || w45Var.a != 3) {
-                            if (i == 0) {
-                                ba5Var = jc0Var3.e;
-                            }
-                            eq0Var = ba5Var.e;
-                            if (eq0Var.j) {
-                                f = jc0Var3.V;
-                                i2 = eq0Var.g;
-                                if (i == 1) {
-                                    i3 = (int) ((i2 / f) + 0.5f);
-                                } else {
-                                    i3 = (int) ((f * i2) + 0.5f);
-                                }
-                                eq0Var2.d(i3);
-                            }
-                        }
-                    } else {
-                        if (i == 0) {
-                            ba5Var = jc0Var3.e;
-                        }
-                        eq0Var = ba5Var.e;
-                        if (eq0Var.j) {
-                            f = jc0Var3.V;
-                            i2 = eq0Var.g;
-                            if (i == 1) {
-                                i3 = (int) ((i2 / f) + 0.5f);
-                            } else {
-                                i3 = (int) ((f * i2) + 0.5f);
-                            }
-                            eq0Var2.d(i3);
-                        }
-                    }
-                }
-            }
-            if (eq0Var2.j) {
-                int i6 = eq0Var2.g;
-                yo0 yo0Var = this.i;
-                yo0 yo0Var2 = this.h;
-                if (i6 == i4) {
-                    yo0Var2.d(iD);
-                    yo0Var.d(iD2);
-                    return;
-                }
-                jc0 jc0Var4 = this.b;
-                float f2 = i == 0 ? jc0Var4.c0 : jc0Var4.d0;
-                if (yo0VarH == yo0VarH2) {
-                    iD = yo0VarH.g;
-                    iD2 = yo0VarH2.g;
-                    f2 = 0.5f;
-                }
-                yo0Var2.d((int) ((((iD2 - iD) - i6) * f2) + iD + 0.5f));
-                yo0Var.d(yo0Var2.g + eq0Var2.g);
-            }
-        }
+    public final void l(hb0 r12, hb0 r13, int r14) {
+        yo0 r0 = h(r12);
+        yo0 r1 = h(r13);
+        if (r0.j == true) goto L5;
+        return;
+    L5:
+        if (r1.j == false) goto L66;
+        int r15 = r12.d() + r0.g;
+        int r2 = r1.g - r13.d();
+        int r16 = r2 - r15;
+        eq0 r3 = this.e;
+        if (r3.j == true) goto L51;
+        if (this.d != 3) goto L51;
+        int r4 = this.a;
+        if (r4 != 0) goto L14;
+        r3.d(g(r16, r14));
+        goto L51
+    L14:
+        if (r4 != 1) goto L16;
+        r3.d(Math.min(g(r3.m, r14), r16));
+        goto L51
+    L16:
+        if (r4 == 2) goto L37;
+        if (r4 != 3) goto L51;
+        jc0 r5 = this.b;
+        ba5 r8 = r5.d;
+        if (r8.d == 3) goto L22;
+    L28:
+        if (r14 != 0) goto L30;
+        r8 = r5.e;
+    L30:
+        eq0 r6 = r8.e;
+        if (r6.j == false) goto L51;
+        float r7 = r5.V;
+        int r9 = r6.g;
+        if (r14 != 1) goto L35;
+        int r10 = (int) ((r9 / r7) + 0.5f);
+    L36:
+        r3.d(r10);
+        goto L51
+    L35:
+        r10 = (int) ((r7 * r9) + 0.5f);
+        goto L36
+    L22:
+        if (r8.a != 3) goto L28;
+        w45 r11 = r5.e;
+        if (r11.d != 3) goto L28;
+        if (r11.a != 3) goto L28;
+    L37:
+        jc0 r17 = this.b;
+        jc0 r18 = r17.S;
+        if (r18 == null) goto L51;
+        if (r14 != 0) goto L41;
+        ba5 r19 = r18.d;
+    L42:
+        eq0 r20 = r19.e;
+        if (r20.j == false) goto L51;
+        if (r14 != 0) goto L46;
+        float r21 = r17.w;
+    L47:
+        r3.d(g((int) ((r20.g * r21) + 0.5f), r14));
+        goto L51
+    L46:
+        r21 = r17.z;
+        goto L47
+    L41:
+        r19 = r18.e;
+    L51:
+        if (r3.j == false) goto L67;
+        int r22 = r3.g;
+        yo0 r23 = this.i;
+        yo0 r24 = this.h;
+        if (r22 != r16) goto L57;
+        r24.d(r15);
+        r23.d(r2);
+        return;
+    L57:
+        jc0 r110 = this.b;
+        if (r14 != 0) goto L60;
+        float r111 = r110.c0;
+    L61:
+        if (r0 != r1) goto L63;
+        r15 = r0.g;
+        r2 = r1.g;
+        r111 = 0.5f;
+    L63:
+        r24.d((int) ((((r2 - r15) - r22) * r111) + (r15 + 0.5f)));
+        r23.d(r24.g + r3.g);
+        return;
+    L60:
+        r111 = r110.d0;
+        goto L61
+    L67:
+        return;
     }
 }

@@ -9,36 +9,44 @@ import java.io.File;
 public final class u61 implements t04 {
     public final /* synthetic */ int a;
 
-    public /* synthetic */ u61(int i) {
-        this.a = i;
+    public /* synthetic */ u61(int r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.t04
-    public final /* bridge */ /* synthetic */ boolean a(Object obj, db3 db3Var) {
-        switch (this.a) {
-            case 0:
-                break;
-            case 1:
-                break;
-            default:
-                break;
-        }
+    public final /* bridge */ /* synthetic */ boolean a(Object r1, db3 r2) {
+        switch(this.a) {
+            case 0: goto L8;
+            case 1: goto L7;
+            default: goto L4;
+        };
+    L4:
+        Drawable r3 = (Drawable) r1;
+        return true;
+    L7:
+        Bitmap r4 = (Bitmap) r1;
+        return true;
+    L8:
+        File r5 = (File) r1;
         return true;
     }
 
     @Override // defpackage.t04
-    public final q04 b(Object obj, int i, int i2, db3 db3Var) {
-        switch (this.a) {
-            case 0:
-                return new ld((File) obj);
-            case 1:
-                return new ld(3, (Bitmap) obj);
-            default:
-                Drawable drawable = (Drawable) obj;
-                if (drawable != null) {
-                    return new wh1(drawable, 1);
-                }
-                return null;
-        }
+    public final q04 b(Object r1, int r2, int r3, db3 r4) {
+        switch(this.a) {
+            case 0: goto L12;
+            case 1: goto L10;
+            default: goto L4;
+        };
+    L4:
+        Drawable r5 = (Drawable) r1;
+        if (r5 != null) goto L13;
+        return null;
+    L13:
+        return new wh1(r5, 1);
+    L10:
+        return new ld(3, (Bitmap) r1);
+    L12:
+        return new ld((File) r1);
     }
 }

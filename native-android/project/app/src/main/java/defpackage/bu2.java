@@ -6,13 +6,15 @@ import java.util.ArrayList;
 /* JADX INFO: loaded from: classes.dex */
 public final class bu2 implements tt2 {
     public final rg2 a;
+    public final Object b;
+    public final ArrayList c;
     public int d;
     public boolean e;
-    public final ArrayList c = new ArrayList();
-    public final Object b = new Object();
 
-    public bu2(bq bqVar, boolean z) {
-        this.a = new rg2(bqVar, z);
+    public bu2(bq r2, boolean r3) {
+        this.a = new rg2(r2, r3);
+        this.c = new ArrayList();
+        this.b = new Object();
     }
 
     @Override // defpackage.tt2

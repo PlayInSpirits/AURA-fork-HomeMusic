@@ -8,10 +8,10 @@ public final class m41 {
     public final int c;
     public final pd4 d;
 
-    public m41(int i, int i2, int i3, pd4 pd4Var) {
-        this.a = i;
-        this.b = i2;
-        this.c = i3;
-        this.d = pd4Var;
+    public m41(int r1, int r2, int r3, pd4 r4) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
     }
 }

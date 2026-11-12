@@ -6,35 +6,43 @@ import java.io.Serializable;
 /* JADX INFO: loaded from: classes.dex */
 public final class rp4 implements r72, Serializable {
     public gf1 n;
-    public volatile Object o = rv2.H;
-    public final Object p = this;
+    public volatile Object o;
+    public final Object p;
 
-    public rp4(gf1 gf1Var) {
-        this.n = gf1Var;
+    public rp4(gf1 r1) {
+        this.n = r1;
+        this.o = rv2.H;
+        this.p = this;
     }
 
     @Override // defpackage.r72
     public final Object getValue() {
-        Object objInvoke;
-        Object obj = this.o;
-        rv2 rv2Var = rv2.H;
-        if (obj != rv2Var) {
-            return obj;
-        }
-        synchronized (this.p) {
-            objInvoke = this.o;
-            if (objInvoke == rv2Var) {
-                gf1 gf1Var = this.n;
-                gf1Var.getClass();
-                objInvoke = gf1Var.invoke();
-                this.o = objInvoke;
-                this.n = null;
-            }
-        }
-        return objInvoke;
+        Object r0 = this.o;
+        rv2 r1 = rv2.H;
+        if (r0 == r1) goto L5;
+        return r0;
+    L5:
+        Object r2 = this.p;
+        monitor-enter(r2);
+        Object r3 = this.o;     // Catch: Throwable -> L13
+        if (r3 != r1) goto L11;
+        gf1 r4 = this.n;     // Catch: Throwable -> L13
+        r4.getClass();     // Catch: Throwable -> L13
+        r3 = r4.invoke();     // Catch: Throwable -> L13
+        this.o = r3;     // Catch: Throwable -> L13
+        this.n = null;     // Catch: Throwable -> L13
+    L11:
+        monitor-exit(r2);
+        return r3;
+    L13:
+        th = move-exception;
+        throw th;
     }
 
     public final String toString() {
-        return this.o != rv2.H ? String.valueOf(getValue()) : "Lazy value not initialized yet.";
+        if (this.o != rv2.H) goto L5;
+        return "Lazy value not initialized yet.";
+    L5:
+        return String.valueOf(getValue());
     }
 }

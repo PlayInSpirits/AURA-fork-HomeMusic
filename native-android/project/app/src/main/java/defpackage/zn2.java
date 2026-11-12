@@ -9,27 +9,29 @@ public final class zn2 implements oi3 {
     public final /* synthetic */ int o;
     public final /* synthetic */ long p;
 
-    public zn2(bj2 bj2Var, int i, long j) {
-        this.n = bj2Var;
-        this.o = i;
-        this.p = j;
+    public zn2(bj2 r1, int r2, long r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
     }
 
     @Override // defpackage.oi3
-    public final void I(cu4 cu4Var, int i) {
-        bj2 bj2Var = this.n;
-        int iQ0 = bj2Var.Q0();
-        int i2 = this.o;
-        if (iQ0 <= 0 || i2 < 0 || i2 >= iQ0) {
-            Log.d("MediaManager", "Cannot start playback: itemCount=" + iQ0 + ", startIndex=" + i2);
-            return;
-        }
-        if (u52.c().a) {
-            bj2Var.r0(this);
-            return;
-        }
-        bj2Var.n(i2, this.p);
-        bj2Var.m0();
-        bj2Var.r0(this);
+    public final void I(cu4 r4, int r5) {
+        bj2 r6 = this.n;
+        int r7 = r6.Q0();
+        int r0 = this.o;
+        if (r7 <= 0) goto L12;
+        if (r0 < 0) goto L12;
+        if (r0 >= r7) goto L12;
+        if (u52.c().a == false) goto L10;
+        r6.r0(this);
+        return;
+    L10:
+        r6.n(r0, this.p);
+        r6.m0();
+        r6.r0(this);
+        return;
+    L12:
+        Log.d("MediaManager", "Cannot start playback: itemCount=" + r7 + ", startIndex=" + r0);
     }
 }

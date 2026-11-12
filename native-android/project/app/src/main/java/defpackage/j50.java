@@ -9,11 +9,11 @@ public final class j50 {
     public final String d;
     public final int e;
 
-    public j50(String str, int i, int i2) {
-        this.d = str;
-        this.e = i2;
-        this.c = (short) (65535 & i);
-        this.b = (byte) ((i >> 16) & 255);
-        this.a = (byte) ((i >> 24) & 255);
+    public j50(String r1, int r2, int r3) {
+        this.d = r1;
+        this.e = r3;
+        this.c = (short) (65535 & r2);
+        this.b = (byte) ((r2 >> 16) & 255);
+        this.a = (byte) ((r2 >> 24) & 255);
     }
 }

@@ -7,8 +7,8 @@ import com.google.gson.JsonIOException;
 public final class vc0 implements o73, kg1, wo4 {
     public final String n;
 
-    public /* synthetic */ vc0(String str) {
-        this.n = str;
+    public /* synthetic */ vc0(String r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.o73
@@ -22,15 +22,16 @@ public final class vc0 implements o73, kg1, wo4 {
     }
 
     @Override // defpackage.kg1
-    public /* bridge */ /* synthetic */ void h(Object obj) {
+    public /* bridge */ /* synthetic */ void h(Object r1) {
+        ab4 r2 = (ab4) r1;
     }
 
     @Override // defpackage.wo4
-    public void n(vo4 vo4Var) {
+    public void n(vo4 r1) {
     }
 
     @Override // defpackage.kg1
-    public void o(Throwable th) {
-        l93.r0("MediaNtfMng", "custom command " + this.n + " produced an error: " + th.getMessage(), th);
+    public void o(Throwable r3) {
+        l93.r0("MediaNtfMng", "custom command " + this.n + " produced an error: " + r3.getMessage(), r3);
     }
 }

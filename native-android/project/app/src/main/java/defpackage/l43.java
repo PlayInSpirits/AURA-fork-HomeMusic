@@ -27,41 +27,50 @@ public final class l43 implements gv2 {
     public int H;
     public int I;
     public boolean J;
+    public boolean K;
     public int L;
     public int M;
     public int N;
+    public int O;
+    public final i4 P;
     public NavigationMenuView n;
     public LinearLayout o;
     public qu2 p;
     public int q;
     public d43 r;
     public LayoutInflater s;
+    public int t;
     public ColorStateList u;
+    public int v;
+    public boolean w;
     public ColorStateList x;
     public ColorStateList y;
     public Drawable z;
-    public int t = 0;
-    public int v = 0;
-    public boolean w = true;
-    public boolean K = true;
-    public int O = -1;
-    public final i4 P = new i4(12, this);
 
-    @Override // defpackage.gv2
-    public final void a(qu2 qu2Var, boolean z) {
+    public l43() {
+        this.t = 0;
+        this.v = 0;
+        this.w = true;
+        this.K = true;
+        this.O = -1;
+        this.P = new i4(12, this);
     }
 
     @Override // defpackage.gv2
-    public final void c(boolean z) {
-        d43 d43Var = this.r;
-        if (d43Var != null) {
-            d43Var.p();
-            d43Var.d();
-        }
+    public final void a(qu2 r1, boolean r2) {
     }
 
     @Override // defpackage.gv2
-    public final boolean d(en4 en4Var) {
+    public final void c(boolean r1) {
+        d43 r0 = this.r;
+        if (r0 == null) goto L6;
+        r0.p();
+        r0.d();
+        return;
+    }
+
+    @Override // defpackage.gv2
+    public final boolean d(en4 r1) {
         return false;
     }
 
@@ -71,7 +80,7 @@ public final class l43 implements gv2 {
     }
 
     @Override // defpackage.gv2
-    public final boolean g(tu2 tu2Var) {
+    public final boolean g(tu2 r1) {
         return false;
     }
 
@@ -81,103 +90,113 @@ public final class l43 implements gv2 {
     }
 
     @Override // defpackage.gv2
-    public final void h(Parcelable parcelable) {
-        tu2 tu2Var;
-        View actionView;
-        ae3 ae3Var;
-        if (parcelable instanceof Bundle) {
-            Bundle bundle = (Bundle) parcelable;
-            SparseArray<Parcelable> sparseParcelableArray = bundle.getSparseParcelableArray("android:menu:list");
-            if (sparseParcelableArray != null) {
-                this.n.restoreHierarchyState(sparseParcelableArray);
-            }
-            Bundle bundle2 = bundle.getBundle("android:menu:adapter");
-            if (bundle2 != null) {
-                d43 d43Var = this.r;
-                ArrayList arrayList = d43Var.q;
-                int i = bundle2.getInt("android:menu:checked", 0);
-                if (i != 0) {
-                    d43Var.s = true;
-                    int size = arrayList.size();
-                    for (int i2 = 0; i2 < size; i2++) {
-                        f43 f43Var = (f43) arrayList.get(i2);
-                        if (f43Var instanceof h43) {
-                            tu2 tu2Var2 = ((h43) f43Var).a;
-                            if (tu2Var2.a == i) {
-                                d43Var.q(tu2Var2);
-                                break;
-                            }
-                        }
-                    }
-                    d43Var.s = false;
-                    d43Var.p();
-                }
-                SparseArray sparseParcelableArray2 = bundle2.getSparseParcelableArray("android:menu:action_views");
-                if (sparseParcelableArray2 != null) {
-                    int size2 = arrayList.size();
-                    for (int i3 = 0; i3 < size2; i3++) {
-                        f43 f43Var2 = (f43) arrayList.get(i3);
-                        if ((f43Var2 instanceof h43) && (actionView = (tu2Var = ((h43) f43Var2).a).getActionView()) != null && (ae3Var = (ae3) sparseParcelableArray2.get(tu2Var.a)) != null) {
-                            actionView.restoreHierarchyState(ae3Var);
-                        }
-                    }
-                }
-            }
-            SparseArray<Parcelable> sparseParcelableArray3 = bundle.getSparseParcelableArray("android:menu:header");
-            if (sparseParcelableArray3 != null) {
-                this.o.restoreHierarchyState(sparseParcelableArray3);
-            }
-        }
+    public final void h(Parcelable r10) {
+        if ((r10 instanceof Bundle) == false) goto L48;
+        Bundle r11 = (Bundle) r10;
+        SparseArray<Parcelable> r0 = r11.getSparseParcelableArray("android:menu:list");
+        if (r0 == null) goto L7;
+        this.n.restoreHierarchyState(r0);
+    L7:
+        Bundle r1 = r11.getBundle("android:menu:adapter");
+        if (r1 == null) goto L35;
+        d43 r2 = this.r;
+        ArrayList r3 = r2.q;
+        int r4 = 0;
+        int r5 = r1.getInt("android:menu:checked", 0);
+        if (r5 == 0) goto L20;
+        r2.s = true;
+        int r6 = r3.size();
+        int r7 = 0;
+    L12:
+        if (r7 >= r6) goto L19;
+        f43 r8 = (f43) r3.get(r7);
+        if ((r8 instanceof h43) == false) goto L18;
+        tu2 r9 = ((h43) r8).a;
+        if (r9.a != r5) goto L18;
+        r2.q(r9);
+    L18:
+        r7 = r7 + 1;
+    L19:
+        r2.s = false;
+        r2.p();
+    L20:
+        SparseArray r12 = r1.getSparseParcelableArray("android:menu:action_views");
+        if (r12 == null) goto L35;
+        int r13 = r3.size();
+    L23:
+        if (r4 >= r13) goto L35;
+        f43 r14 = (f43) r3.get(r4);
+        if ((r14 instanceof h43) == false) goto L34;
+        tu2 r15 = ((h43) r14).a;
+        View r16 = r15.getActionView();
+        if (r16 == null) goto L34;
+        ae3 r17 = (ae3) r12.get(r15.a);
+        if (r17 == null) goto L34;
+        r16.restoreHierarchyState(r17);
+    L34:
+        r4 = r4 + 1;
+    L35:
+        SparseArray<Parcelable> r18 = r11.getSparseParcelableArray("android:menu:header");
+        if (r18 == null) goto L49;
+        this.o.restoreHierarchyState(r18);
+        return;
+    L49:
+        return;
     }
 
     @Override // defpackage.gv2
-    public final boolean j(tu2 tu2Var) {
+    public final boolean j(tu2 r1) {
         return false;
     }
 
     @Override // defpackage.gv2
-    public final void l(Context context, qu2 qu2Var) {
-        this.s = LayoutInflater.from(context);
-        this.p = qu2Var;
-        this.N = context.getResources().getDimensionPixelOffset(R.dimen.design_navigation_separator_vertical_padding);
+    public final void l(Context r2, qu2 r3) {
+        this.s = LayoutInflater.from(r2);
+        this.p = r3;
+        this.N = r2.getResources().getDimensionPixelOffset(R.dimen.design_navigation_separator_vertical_padding);
     }
 
     @Override // defpackage.gv2
     public final Parcelable m() {
-        tu2 tu2Var;
-        View actionView;
-        Bundle bundle = new Bundle();
-        if (this.n != null) {
-            SparseArray<Parcelable> sparseArray = new SparseArray<>();
-            this.n.saveHierarchyState(sparseArray);
-            bundle.putSparseParcelableArray("android:menu:list", sparseArray);
-        }
-        d43 d43Var = this.r;
-        if (d43Var != null) {
-            ArrayList arrayList = d43Var.q;
-            Bundle bundle2 = new Bundle();
-            tu2 tu2Var2 = d43Var.r;
-            if (tu2Var2 != null) {
-                bundle2.putInt("android:menu:checked", tu2Var2.a);
-            }
-            SparseArray<? extends Parcelable> sparseArray2 = new SparseArray<>();
-            int size = arrayList.size();
-            for (int i = 0; i < size; i++) {
-                f43 f43Var = (f43) arrayList.get(i);
-                if ((f43Var instanceof h43) && (actionView = (tu2Var = ((h43) f43Var).a).getActionView()) != null) {
-                    ae3 ae3Var = new ae3();
-                    actionView.saveHierarchyState(ae3Var);
-                    sparseArray2.put(tu2Var.a, ae3Var);
-                }
-            }
-            bundle2.putSparseParcelableArray("android:menu:action_views", sparseArray2);
-            bundle.putBundle("android:menu:adapter", bundle2);
-        }
-        if (this.o != null) {
-            SparseArray<Parcelable> sparseArray3 = new SparseArray<>();
-            this.o.saveHierarchyState(sparseArray3);
-            bundle.putSparseParcelableArray("android:menu:header", sparseArray3);
-        }
-        return bundle;
+        Bundle r0 = new Bundle();
+        if (this.n == null) goto L5;
+        SparseArray<Parcelable> r1 = new SparseArray();
+        this.n.saveHierarchyState(r1);
+        r0.putSparseParcelableArray("android:menu:list", r1);
+    L5:
+        d43 r2 = this.r;
+        if (r2 == null) goto L20;
+        ArrayList r3 = r2.q;
+        Bundle r4 = new Bundle();
+        tu2 r5 = r2.r;
+        if (r5 == null) goto L10;
+        r4.putInt("android:menu:checked", r5.a);
+    L10:
+        SparseArray<? extends Parcelable> r6 = new SparseArray();
+        int r7 = r3.size();
+        int r8 = 0;
+    L11:
+        if (r8 >= r7) goto L18;
+        f43 r9 = (f43) r3.get(r8);
+        if ((r9 instanceof h43) == false) goto L17;
+        tu2 r10 = ((h43) r9).a;
+        View r11 = r10.getActionView();
+        if (r11 == null) goto L17;
+        ae3 r12 = new ae3();
+        r11.saveHierarchyState(r12);
+        r6.put(r10.a, r12);
+    L17:
+        r8 = r8 + 1;
+        goto L11
+    L18:
+        r4.putSparseParcelableArray("android:menu:action_views", r6);
+        r0.putBundle("android:menu:adapter", r4);
+    L20:
+        if (this.o == null) goto L22;
+        SparseArray<Parcelable> r13 = new SparseArray();
+        this.o.saveHierarchyState(r13);
+        r0.putSparseParcelableArray("android:menu:header", r13);
+    L22:
+        return r0;
     }
 }

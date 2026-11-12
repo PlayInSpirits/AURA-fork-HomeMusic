@@ -8,11 +8,14 @@ public final class LyricsList {
     public static final int $stable = 8;
     private List<StructuredLyrics> structuredLyrics;
 
+    public LyricsList() {
+    }
+
     public final List<StructuredLyrics> getStructuredLyrics() {
         return this.structuredLyrics;
     }
 
-    public final void setStructuredLyrics(List<StructuredLyrics> list) {
-        this.structuredLyrics = list;
+    public final void setStructuredLyrics(List<StructuredLyrics> r1) {
+        this.structuredLyrics = r1;
     }
 }

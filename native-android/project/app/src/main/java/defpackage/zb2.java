@@ -7,23 +7,28 @@ import android.widget.AbsListView;
 public final class zb2 implements AbsListView.OnScrollListener {
     public final /* synthetic */ bc2 a;
 
-    public zb2(bc2 bc2Var) {
-        this.a = bc2Var;
+    public zb2(bc2 r1) {
+        this.a = r1;
     }
 
     @Override // android.widget.AbsListView.OnScrollListener
-    public final void onScroll(AbsListView absListView, int i, int i2, int i3) {
+    public final void onScroll(AbsListView r1, int r2, int r3, int r4) {
     }
 
     @Override // android.widget.AbsListView.OnScrollListener
-    public final void onScrollStateChanged(AbsListView absListView, int i) {
-        bc2 bc2Var = this.a;
-        yb2 yb2Var = bc2Var.E;
-        lg lgVar = bc2Var.M;
-        if (i != 1 || lgVar.getInputMethodMode() == 2 || lgVar.getContentView() == null) {
-            return;
-        }
-        bc2Var.I.removeCallbacks(yb2Var);
-        yb2Var.run();
+    public final void onScrollStateChanged(AbsListView r3, int r4) {
+        bc2 r2 = this.a;
+        yb2 r5 = r2.E;
+        lg r0 = r2.M;
+        if (r4 == 1) goto L5;
+        return;
+    L5:
+        if (r0.getInputMethodMode() != 2) goto L8;
+        return;
+    L8:
+        if (r0.getContentView() == null) goto L12;
+        r2.I.removeCallbacks(r5);
+        r5.run();
+        return;
     }
 }

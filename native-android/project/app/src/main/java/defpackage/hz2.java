@@ -6,8 +6,8 @@ public final class hz2 implements jz2 {
     public final Object a;
     public final y94 b;
 
-    public hz2(Object obj, y94 y94Var) {
-        this.a = obj;
-        this.b = y94Var;
+    public hz2(Object r1, y94 r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

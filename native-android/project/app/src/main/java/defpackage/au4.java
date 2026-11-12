@@ -8,67 +8,79 @@ public final class au4 extends cu4 {
     public final int[] g;
     public final int[] h;
 
-    public au4(gy3 gy3Var, gy3 gy3Var2, int[] iArr) {
-        rr2.l(gy3Var.q == iArr.length);
-        this.e = gy3Var;
-        this.f = gy3Var2;
-        this.g = iArr;
-        this.h = new int[iArr.length];
-        for (int i = 0; i < iArr.length; i++) {
-            this.h[iArr[i]] = i;
-        }
+    public au4(gy3 r4, gy3 r5, int[] r6) {
+        int r2 = 0;
+        if (r4.q != r6.length) goto L5;
+        boolean r0 = true;
+    L6:
+        rr2.l(r0);
+        this.e = r4;
+        this.f = r5;
+        this.g = r6;
+        this.h = new int[r6.length];
+    L8:
+        if (r2 >= r6.length) goto L10;
+        this.h[r6[r2]] = r2;
+        r2 = r2 + 1;
+        goto L8
+    L10:
+        return;
+    L5:
+        r0 = false;
+        goto L6
     }
 
     @Override // defpackage.cu4
-    public final int a(boolean z) {
-        if (p()) {
-            return -1;
-        }
-        if (z) {
-            return this.g[0];
-        }
+    public final int a(boolean r2) {
+        if (p() == false) goto L7;
+        return -1;
+    L7:
+        if (r2 == true) goto L9;
         return 0;
+    L9:
+        return this.g[0];
     }
 
     @Override // defpackage.cu4
-    public final int b(Object obj) {
+    public final int b(Object r1) {
         throw new UnsupportedOperationException();
     }
 
     @Override // defpackage.cu4
-    public final int c(boolean z) {
-        if (p()) {
-            return -1;
-        }
-        yw1 yw1Var = this.e;
-        if (!z) {
-            return yw1Var.size() - 1;
-        }
-        return this.g[yw1Var.size() - 1];
+    public final int c(boolean r2) {
+        if (p() == false) goto L6;
+        return -1;
+    L6:
+        yw1 r0 = this.e;
+        if (r2 == false) goto L11;
+        return this.g[r0.size() - 1];
+    L11:
+        return r0.size() - 1;
     }
 
     @Override // defpackage.cu4
-    public final int e(int i, int i2, boolean z) {
-        if (i2 == 1) {
-            return i;
-        }
-        if (i == c(z)) {
-            if (i2 == 2) {
-                return a(z);
-            }
-            return -1;
-        }
-        if (!z) {
-            return i + 1;
-        }
-        return this.g[this.h[i] + 1];
+    public final int e(int r3, int r4, boolean r5) {
+        if (r4 != 1) goto L6;
+        return r3;
+    L6:
+        if (r3 == c(r5)) goto L8;
+        if (r5 == false) goto L17;
+        int r6 = this.h[r3] + 1;
+        return this.g[r6];
+    L17:
+        return r3 + 1;
+    L8:
+        if (r4 == 2) goto L10;
+        return -1;
+    L10:
+        return a(r5);
     }
 
     @Override // defpackage.cu4
-    public final zt4 f(int i, zt4 zt4Var, boolean z) {
-        zt4 zt4Var2 = (zt4) this.f.get(i);
-        zt4Var.i(zt4Var2.a, zt4Var2.b, zt4Var2.c, zt4Var2.d, zt4Var2.e, zt4Var2.g, zt4Var2.f);
-        return zt4Var;
+    public final zt4 f(int r11, zt4 r12, boolean r13) {
+        zt4 r10 = (zt4) this.f.get(r11);
+        r12.i(r10.a, r10.b, r10.c, r10.d, r10.e, r10.g, r10.f);
+        return r12;
     }
 
     @Override // defpackage.cu4
@@ -77,33 +89,34 @@ public final class au4 extends cu4 {
     }
 
     @Override // defpackage.cu4
-    public final int k(int i, int i2, boolean z) {
-        if (i2 == 1) {
-            return i;
-        }
-        if (i == a(z)) {
-            if (i2 == 2) {
-                return c(z);
-            }
-            return -1;
-        }
-        if (!z) {
-            return i - 1;
-        }
-        return this.g[this.h[i] - 1];
+    public final int k(int r3, int r4, boolean r5) {
+        if (r4 != 1) goto L6;
+        return r3;
+    L6:
+        if (r3 == a(r5)) goto L8;
+        if (r5 == false) goto L17;
+        int r6 = this.h[r3] - 1;
+        return this.g[r6];
+    L17:
+        return r3 - 1;
+    L8:
+        if (r4 == 2) goto L10;
+        return -1;
+    L10:
+        return c(r5);
     }
 
     @Override // defpackage.cu4
-    public final Object l(int i) {
+    public final Object l(int r1) {
         throw new UnsupportedOperationException();
     }
 
     @Override // defpackage.cu4
-    public final bu4 m(int i, bu4 bu4Var, long j) {
-        bu4 bu4Var2 = (bu4) this.e.get(i);
-        bu4Var.b(bu4Var2.a, bu4Var2.b, bu4Var2.c, bu4Var2.d, bu4Var2.e, bu4Var2.f, bu4Var2.g, bu4Var2.h, bu4Var2.i, bu4Var2.k, bu4Var2.l, bu4Var2.m, bu4Var2.n, bu4Var2.o);
-        bu4Var.j = bu4Var2.j;
-        return bu4Var;
+    public final bu4 m(int r25, bu4 r26, long r27) {
+        bu4 r0 = (bu4) this.e.get(r25);
+        r26.b(r0.a, r0.b, r0.c, r0.d, r0.e, r0.f, r0.g, r0.h, r0.i, r0.k, r0.l, r0.m, r0.n, r0.o);
+        r26.j = r0.j;
+        return r26;
     }
 
     @Override // defpackage.cu4

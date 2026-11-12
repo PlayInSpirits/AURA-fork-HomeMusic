@@ -8,6 +8,9 @@ public final class HubUpdatePatch extends HubUpdateFile {
     private long baseVersionCode;
     private String format;
 
+    public HubUpdatePatch() {
+    }
+
     public final String getBaseSha256() {
         return this.baseSha256;
     }
@@ -20,15 +23,15 @@ public final class HubUpdatePatch extends HubUpdateFile {
         return this.format;
     }
 
-    public final void setBaseSha256(String str) {
-        this.baseSha256 = str;
+    public final void setBaseSha256(String r1) {
+        this.baseSha256 = r1;
     }
 
-    public final void setBaseVersionCode(long j) {
-        this.baseVersionCode = j;
+    public final void setBaseVersionCode(long r1) {
+        this.baseVersionCode = r1;
     }
 
-    public final void setFormat(String str) {
-        this.format = str;
+    public final void setFormat(String r1) {
+        this.format = r1;
     }
 }

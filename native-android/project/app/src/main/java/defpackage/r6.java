@@ -9,15 +9,14 @@ public final class r6 extends cx3 {
     public final bq4 u;
     public final /* synthetic */ s6 v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public r6(s6 s6Var, bq4 bq4Var) {
-        this.v = s6Var;
-        ConstraintLayout constraintLayout = (ConstraintLayout) bq4Var.n;
-        super(constraintLayout);
-        this.u = bq4Var;
-        ((TextView) bq4Var.p).setSelected(true);
-        ((TextView) bq4Var.q).setSelected(true);
-        constraintLayout.setOnClickListener(new p6(0, this));
-        constraintLayout.setOnLongClickListener(new q6(0, this));
+    public r6(s6 r3, bq4 r4) {
+        this.v = r3;
+        ConstraintLayout r5 = (ConstraintLayout) r4.n;
+        super(r5);
+        this.u = r4;
+        ((TextView) r4.p).setSelected(true);
+        ((TextView) r4.q).setSelected(true);
+        r5.setOnClickListener(new p6(0, this));
+        r5.setOnLongClickListener(new q6(0, this));
     }
 }

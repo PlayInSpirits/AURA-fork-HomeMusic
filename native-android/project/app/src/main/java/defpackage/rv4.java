@@ -8,16 +8,26 @@ public final class rv4 {
     public long c;
     public int d;
     public int e;
+    public long[] f;
+    public int[] g;
+    public int[] h;
+    public long[] i;
+    public boolean[] j;
     public boolean k;
+    public boolean[] l;
     public qv4 m;
+    public final be3 n;
     public boolean o;
     public long p;
     public boolean q;
-    public long[] f = new long[0];
-    public int[] g = new int[0];
-    public int[] h = new int[0];
-    public long[] i = new long[0];
-    public boolean[] j = new boolean[0];
-    public boolean[] l = new boolean[0];
-    public final be3 n = new be3();
+
+    public rv4() {
+        this.f = new long[0];
+        this.g = new int[0];
+        this.h = new int[0];
+        this.i = new long[0];
+        this.j = new boolean[0];
+        this.l = new boolean[0];
+        this.n = new be3();
+    }
 }

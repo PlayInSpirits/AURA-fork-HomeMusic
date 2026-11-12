@@ -8,15 +8,14 @@ public final class rd5 extends wd0 {
     public final /* synthetic */ td5 p;
     public int q;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public rd5(td5 td5Var, wd0 wd0Var) {
-        super(wd0Var);
-        this.p = td5Var;
+    public rd5(td5 r1, wd0 r2) {
+        this.p = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.o = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.o = r2;
         this.q |= Integer.MIN_VALUE;
         return td5.a(this.p, this);
     }

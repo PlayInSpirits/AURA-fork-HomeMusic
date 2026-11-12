@@ -29,115 +29,141 @@ public final class q7 extends dw3 implements Filterable {
     public final ClickCallback u;
     public Object v;
 
-    public q7(AlbumCatalogueFragment albumCatalogueFragment) {
+    public q7(AlbumCatalogueFragment r3) {
         this.q = 0;
         this.v = new o7(this, 0);
-        this.u = albumCatalogueFragment;
-        List list = Collections.EMPTY_LIST;
-        this.s = list;
-        this.t = list;
+        this.u = r3;
+        List r4 = Collections.EMPTY_LIST;
+        this.s = r4;
+        this.t = r4;
         this.r = true;
     }
 
     @Override // defpackage.dw3
     public final int a() {
-        switch (this.q) {
-            case 0:
-                return this.s.size();
-            default:
-                return this.t.size();
-        }
+        switch(this.q) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return this.t.size();
+    L7:
+        return this.s.size();
     }
 
     @Override // defpackage.dw3
-    public long b(int i) {
-        switch (this.q) {
-            case 0:
-                return i;
-            default:
-                return super.b(i);
-        }
+    public long b(int r2) {
+        switch(this.q) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return super.b(r2);
+    L7:
+        return r2;
     }
 
     @Override // defpackage.dw3
-    public final void g(cx3 cx3Var, int i) {
-        switch (this.q) {
-            case 0:
-                p7 p7Var = (p7) cx3Var;
-                AlbumID3 albumID3 = (AlbumID3) this.s.get(i);
-                ss0 ss0Var = p7Var.u;
-                ((TextView) ss0Var.p).setText(albumID3.getName());
-                ((TextView) ss0Var.q).setText(albumID3.getArtist());
-                ((TextView) ss0Var.q).setVisibility(this.r ? 0 : 8);
-                Context context = p7Var.a.getContext();
-                String coverArtId = albumID3.getCoverArtId();
-                vz3 vz3VarT = b11.g(context, coverArtId, 2, a.c(context), coverArtId != null ? wg0.b(ud3.t(), coverArtId) : null).T(xv0.b());
-                if (ud3.R()) {
-                    vz3VarT = (vz3) vz3VarT.l();
-                }
-                vz3VarT.K((ImageView) ss0Var.o);
-                break;
-            default:
-                mo1 mo1Var = (mo1) cx3Var;
-                Playlist playlist = (Playlist) this.t.get(i);
-                View view = mo1Var.a;
-                Resources resources = view.getResources();
-                mo1Var.v.setText(playlist.getName());
-                mo1Var.w.setText(resources.getQuantityString(R.plurals.homemusic_tracks_count, playlist.getSongCount(), Integer.valueOf(playlist.getSongCount())));
-                Context context2 = view.getContext();
-                String coverArtId2 = playlist.getCoverArtId();
-                vz3 vz3VarT2 = b11.g(context2, coverArtId2, 6, a.c(context2), coverArtId2 != null ? wg0.b(ud3.t(), coverArtId2) : null).T(xv0.b());
-                if (ud3.R()) {
-                    vz3VarT2 = (vz3) vz3VarT2.l();
-                }
-                vz3VarT2.K(mo1Var.u);
-                break;
-        }
+    public final void g(cx3 r7, int r8) {
+        String r1 = null;
+        switch(this.q) {
+            case 0: goto L12;
+            default: goto L4;
+        };
+    L4:
+        mo1 r9 = (mo1) r7;
+        Playlist r6 = (Playlist) this.t.get(r8);
+        View r10 = r9.a;
+        Resources r0 = r10.getResources();
+        r9.v.setText(r6.getName());
+        r9.w.setText(r0.getQuantityString(R.plurals.homemusic_tracks_count, r6.getSongCount(), new Object[]{Integer.valueOf(r6.getSongCount())}));
+        Context r11 = r10.getContext();
+        String r12 = r6.getCoverArtId();
+        c04 r2 = a.c(r11);
+        if (r12 == null) goto L7;
+        r1 = wg0.b(ud3.t(), r12);
+    L7:
+        vz3 r13 = b11.g(r11, r12, 6, r2, r1).T(xv0.b());
+        if (ud3.R() == false) goto L10;
+        r13 = (vz3) r13.l();
+    L10:
+        r13.K(r9.u);
+        return;
+    L12:
+        p7 r14 = (p7) r7;
+        AlbumID3 r15 = (AlbumID3) this.s.get(r8);
+        ss0 r3 = r14.u;
+        ((TextView) r3.p).setText(r15.getName());
+        ((TextView) r3.q).setText(r15.getArtist());
+        TextView r4 = (TextView) r3.q;
+        if (this.r == false) goto L15;
+        int r16 = 0;
+    L16:
+        r4.setVisibility(r16);
+        Context r17 = r14.a.getContext();
+        String r18 = r15.getCoverArtId();
+        c04 r19 = a.c(r17);
+        if (r18 == null) goto L19;
+        r1 = wg0.b(ud3.t(), r18);
+    L19:
+        vz3 r20 = b11.g(r17, r18, 2, r19, r1).T(xv0.b());
+        if (ud3.R() == false) goto L22;
+        r20 = (vz3) r20.l();
+    L22:
+        r20.K((ImageView) r3.o);
+        return;
+    L15:
+        r16 = 8;
+        goto L16
     }
 
     @Override // android.widget.Filterable
     public final Filter getFilter() {
-        switch (this.q) {
-            case 0:
-                return (o7) this.v;
-            default:
-                return new o7(this, 6);
-        }
+        switch(this.q) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return new o7(this, 6);
+    L7:
+        return (o7) this.v;
     }
 
     @Override // defpackage.dw3
-    public final cx3 i(ViewGroup viewGroup, int i) {
-        switch (this.q) {
-            case 0:
-                return new p7(this, ss0.C(LayoutInflater.from(viewGroup.getContext()), viewGroup));
-            default:
-                LayoutInflater layoutInflaterFrom = LayoutInflater.from(viewGroup.getContext());
-                if (this.r) {
-                    ss0 ss0VarC = ss0.C(layoutInflaterFrom, viewGroup);
-                    ConstraintLayout constraintLayout = (ConstraintLayout) ss0VarC.n;
-                    constraintLayout.getClass();
-                    return new mo1(this, constraintLayout, (ImageView) ss0VarC.o, (TextView) ss0VarC.p, (TextView) ss0VarC.q);
-                }
-                bq4 bq4VarM = bq4.m(layoutInflaterFrom, viewGroup);
-                ImageView imageView = (ImageView) bq4VarM.o;
-                int iD = ut4.c().d(viewGroup.getContext());
-                ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
-                layoutParams.width = iD;
-                layoutParams.height = iD;
-                imageView.setLayoutParams(layoutParams);
-                ConstraintLayout constraintLayout2 = (ConstraintLayout) bq4VarM.n;
-                constraintLayout2.getClass();
-                return new mo1(this, constraintLayout2, imageView, (TextView) bq4VarM.p, (TextView) bq4VarM.q);
-        }
+    public final cx3 i(ViewGroup r8, int r9) {
+        switch(this.q) {
+            case 0: goto L10;
+            default: goto L4;
+        };
+    L4:
+        LayoutInflater r10 = LayoutInflater.from(r8.getContext());
+        if (this.r == false) goto L7;
+        ss0 r11 = ss0.C(r10, r8);
+        ConstraintLayout r2 = (ConstraintLayout) r11.n;
+        r2.getClass();
+        return new mo1(this, r2, (ImageView) r11.o, (TextView) r11.p, (TextView) r11.q);
+    L7:
+        bq4 r7 = bq4.m(r10, r8);
+        ImageView r4 = (ImageView) r7.o;
+        int r12 = ut4.c().d(r8.getContext());
+        ViewGroup.LayoutParams r13 = r4.getLayoutParams();
+        r13.width = r12;
+        r13.height = r12;
+        r4.setLayoutParams(r13);
+        ConstraintLayout r3 = (ConstraintLayout) r7.n;
+        r3.getClass();
+        return new mo1(this, r3, r4, (TextView) r7.p, (TextView) r7.q);
+    L10:
+        return new p7(this, ss0.C(LayoutInflater.from(r8.getContext()), r8));
     }
 
-    public q7(ClickCallback clickCallback, boolean z) {
+    public q7(ClickCallback r2, boolean r3) {
         this.q = 1;
-        this.u = clickCallback;
-        this.r = z;
-        u01 u01Var = u01.n;
-        this.s = u01Var;
-        this.t = u01Var;
+        this.u = r2;
+        this.r = r3;
+        u01 r4 = u01.n;
+        this.s = r4;
+        this.t = r4;
         this.v = "";
     }
 }

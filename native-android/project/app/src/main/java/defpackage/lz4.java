@@ -13,87 +13,114 @@ public final class lz4 extends rp {
     public final /* synthetic */ HashMap b;
     public final /* synthetic */ Type c;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public lz4(HashMap map, Type type) {
+    public lz4(HashMap r1, Type r2) {
+        this.b = r1;
+        this.c = r2;
         super(6);
-        this.b = map;
-        this.c = type;
     }
 
     @Override // defpackage.rp
-    public final void p(Class cls) {
-        Type type = this.c;
-        if (type instanceof WildcardType) {
-            return;
-        }
-        tb4.h("No type mapping from ", cls, " to ", type);
+    public final void p(Class r3) {
+        Type r2 = this.c;
+        if ((r2 instanceof WildcardType) == false) goto L5;
+        return;
+    L5:
+        tb4.h("No type mapping from ", r3, " to ", r2);
     }
 
     @Override // defpackage.rp
-    public final void q(GenericArrayType genericArrayType) {
-        Type type = this.c;
-        if (type instanceof WildcardType) {
-            return;
-        }
-        Type typeC = b15.c(type);
-        rr2.o(typeC != null, "%s is not an array type.", type);
-        sz4.a(this.b, genericArrayType.getGenericComponentType(), typeC);
+    public final void q(GenericArrayType r5) {
+        Type r0 = this.c;
+        if ((r0 instanceof WildcardType) == false) goto L5;
+        return;
+    L5:
+        Type r1 = b15.c(r0);
+        if (r1 == null) goto L8;
+        boolean r2 = true;
+    L9:
+        rr2.o(r2, "%s is not an array type.", r0);
+        sz4.a(this.b, r5.getGenericComponentType(), r1);
+        return;
+    L8:
+        r2 = false;
+        goto L9
     }
 
     @Override // defpackage.rp
-    public final void r(ParameterizedType parameterizedType) {
-        Type type = this.c;
-        if (type instanceof WildcardType) {
-            return;
-        }
-        try {
-            ParameterizedType parameterizedType2 = (ParameterizedType) ParameterizedType.class.cast(type);
-            Type ownerType = parameterizedType.getOwnerType();
-            HashMap map = this.b;
-            if (ownerType != null && parameterizedType2.getOwnerType() != null) {
-                sz4.a(map, parameterizedType.getOwnerType(), parameterizedType2.getOwnerType());
-            }
-            rr2.p(parameterizedType.getRawType().equals(parameterizedType2.getRawType()), "Inconsistent raw type: %s vs. %s", parameterizedType, type);
-            Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
-            Type[] actualTypeArguments2 = parameterizedType2.getActualTypeArguments();
-            rr2.p(actualTypeArguments.length == actualTypeArguments2.length, "%s not compatible with %s", parameterizedType, parameterizedType2);
-            for (int i = 0; i < actualTypeArguments.length; i++) {
-                sz4.a(map, actualTypeArguments[i], actualTypeArguments2[i]);
-            }
-        } catch (ClassCastException unused) {
-            throw new IllegalArgumentException(type + " is not a ParameterizedType");
-        }
+    public final void r(ParameterizedType r7) {
+        Type r0 = this.c;
+        if ((r0 instanceof WildcardType) == false) goto L23;
+        return;
+    L23:
+        ParameterizedType r1 = (ParameterizedType) ParameterizedType.class.cast(r0);
+        Type r2 = r7.getOwnerType();
+        HashMap r6 = this.b;
+        if (r2 != null) goto L10;
+    L12:
+        rr2.p(r7.getRawType().equals(r1.getRawType()), "Inconsistent raw type: %s vs. %s", r7, r0);
+        Type[] r3 = r7.getActualTypeArguments();
+        Type[] r4 = r1.getActualTypeArguments();
+        int r5 = 0;
+        if (r3.length != r4.length) goto L15;
+        boolean r8 = true;
+    L16:
+        rr2.p(r8, "%s not compatible with %s", r7, r1);
+    L18:
+        if (r5 >= r3.length) goto L26;
+        sz4.a(r6, r3[r5], r4[r5]);
+        r5 = r5 + 1;
+        goto L18
+    L26:
+        return;
+    L15:
+        r8 = false;
+        goto L16
+    L10:
+        if (r1.getOwnerType() == null) goto L12;
+        sz4.a(r6, r7.getOwnerType(), r1.getOwnerType());
+    L22:
+        throw new IllegalArgumentException(r0 + " is not a ParameterizedType");
     }
 
     @Override // defpackage.rp
-    public final void s(TypeVariable typeVariable) {
-        this.b.put(new pz4(typeVariable), this.c);
+    public final void s(TypeVariable r2) {
+        pz4 r0 = new pz4(r2);
+        Type r3 = this.c;
+        this.b.put(r0, r3);
     }
 
     @Override // defpackage.rp
-    public final void t(WildcardType wildcardType) {
-        HashMap map;
-        Type type = this.c;
-        if (type instanceof WildcardType) {
-            WildcardType wildcardType2 = (WildcardType) type;
-            Type[] upperBounds = wildcardType.getUpperBounds();
-            Type[] upperBounds2 = wildcardType2.getUpperBounds();
-            Type[] lowerBounds = wildcardType.getLowerBounds();
-            Type[] lowerBounds2 = wildcardType2.getLowerBounds();
-            rr2.p(upperBounds.length == upperBounds2.length && lowerBounds.length == lowerBounds2.length, "Incompatible type: %s vs. %s", wildcardType, type);
-            int i = 0;
-            while (true) {
-                int length = upperBounds.length;
-                map = this.b;
-                if (i >= length) {
-                    break;
-                }
-                sz4.a(map, upperBounds[i], upperBounds2[i]);
-                i++;
-            }
-            for (int i2 = 0; i2 < lowerBounds.length; i2++) {
-                sz4.a(map, lowerBounds[i2], lowerBounds2[i2]);
-            }
-        }
+    public final void t(WildcardType r9) {
+        Type r0 = this.c;
+        if ((r0 instanceof WildcardType) == false) goto L18;
+        WildcardType r1 = (WildcardType) r0;
+        Type[] r2 = r9.getUpperBounds();
+        Type[] r3 = r1.getUpperBounds();
+        Type[] r4 = r9.getLowerBounds();
+        Type[] r5 = r1.getLowerBounds();
+        int r7 = 0;
+        if (r2.length == r3.length) goto L8;
+    L10:
+        boolean r6 = false;
+    L11:
+        rr2.p(r6, "Incompatible type: %s vs. %s", r9, r0);
+        int r10 = 0;
+    L12:
+        int r8 = r2.length;
+        HashMap r11 = this.b;
+        if (r10 >= r8) goto L16;
+        sz4.a(r11, r2[r10], r3[r10]);
+        r10 = r10 + 1;
+    L16:
+        if (r7 >= r4.length) goto L21;
+        sz4.a(r11, r4[r7], r5[r7]);
+        r7 = r7 + 1;
+        goto L16
+    L21:
+        return;
+    L8:
+        if (r4.length != r5.length) goto L10;
+        r6 = true;
+        goto L11
     }
 }

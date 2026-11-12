@@ -7,7 +7,7 @@ import java.util.concurrent.locks.LockSupport;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class te0 extends Thread {
-    public static final /* synthetic */ AtomicIntegerFieldUpdater v = AtomicIntegerFieldUpdater.newUpdater(te0.class, "workerCtl$volatile");
+    public static final /* synthetic */ AtomicIntegerFieldUpdater v = null;
     private volatile int indexInArray;
     public final ad5 n;
     private volatile Object nextParkedWorker;
@@ -20,57 +20,73 @@ public final class te0 extends Thread {
     public final /* synthetic */ ve0 u;
     private volatile /* synthetic */ int workerCtl$volatile;
 
-    public te0(ve0 ve0Var, int i) {
-        this.u = ve0Var;
+    static {
+        v = AtomicIntegerFieldUpdater.newUpdater(te0.class, "workerCtl$volatile");
+    }
+
+    public te0(ve0 r3, int r4) {
+        this.u = r3;
         setDaemon(true);
         setContextClassLoader(ve0.class.getClassLoader());
         this.n = new ad5();
         this.o = new jx3();
         this.p = ue0.q;
         this.nextParkedWorker = ve0.x;
-        int iNanoTime = (int) System.nanoTime();
-        this.s = iNanoTime == 0 ? 42 : iNanoTime;
-        f(i);
+        int r5 = (int) System.nanoTime();
+        if (r5 != 0) goto L6;
+        r5 = 42;
+    L6:
+        this.s = r5;
+        f(r4);
     }
 
-    public final br4 a(boolean z) {
-        br4 br4VarE;
-        br4 br4VarE2;
-        long j;
-        ue0 ue0Var = this.p;
-        ve0 ve0Var = this.u;
-        ad5 ad5Var = this.n;
-        ue0 ue0Var2 = ue0.n;
-        if (ue0Var != ue0Var2) {
-            AtomicLongFieldUpdater atomicLongFieldUpdater = ve0.v;
-            do {
-                j = atomicLongFieldUpdater.get(ve0Var);
-                if (((int) ((9223367638808264704L & j) >> 42)) == 0) {
-                    br4 br4VarG = ad5Var.g();
-                    return (br4VarG == null && (br4VarG = (br4) ve0Var.s.d()) == null) ? i(1) : br4VarG;
-                }
-            } while (!ve0.v.compareAndSet(ve0Var, j, j - 4398046511104L));
-            this.p = ue0Var2;
-        }
-        if (z) {
-            boolean z2 = d(ve0Var.n * 2) == 0;
-            if (z2 && (br4VarE2 = e()) != null) {
-                return br4VarE2;
-            }
-            br4 br4VarE3 = ad5Var.e();
-            if (br4VarE3 != null) {
-                return br4VarE3;
-            }
-            if (!z2 && (br4VarE = e()) != null) {
-                return br4VarE;
-            }
-        } else {
-            br4 br4VarE4 = e();
-            if (br4VarE4 != null) {
-                return br4VarE4;
-            }
-        }
+    public final br4 a(boolean r11) {
+        ue0 r0 = this.p;
+        ve0 r2 = this.u;
+        boolean r7 = true;
+        ad5 r8 = this.n;
+        ue0 r9 = ue0.n;
+        if (r0 == r9) goto L18;
+        AtomicLongFieldUpdater r1 = ve0.v;
+    L6:
+        long r3 = r1.get(r2);
+        if (((int) ((9223367638808264704L & r3) >> 42)) == 0) goto L8;
+        AtomicLongFieldUpdater r4 = ve0.v;
+        if (r4.compareAndSet(r2, r3, r3 - 4398046511104L) == false) goto L6;
+        this.p = r9;
+        goto L18
+    L8:
+        br4 r12 = r8.g();
+        if (r12 != null) goto L14;
+        r12 = (br4) r2.s.d();
+        if (r12 != null) goto L14;
+        return i(1);
+    L14:
+        return r12;
+    L18:
+        if (r11 == true) goto L20;
+        br4 r13 = e();
+        if (r13 == null) goto L38;
+        return r13;
+    L38:
         return i(3);
+    L20:
+        if (d(r2.n * 2) == 0) goto L23;
+        r7 = false;
+    L23:
+        if (r7 == false) goto L27;
+        br4 r14 = e();
+        if (r14 == null) goto L27;
+        return r14;
+    L27:
+        br4 r15 = r8.e();
+        if (r15 == null) goto L30;
+        return r15;
+    L30:
+        if (r7 == true) goto L38;
+        br4 r16 = e();
+        if (r16 == null) goto L38;
+        return r16;
     }
 
     public final int b() {
@@ -81,257 +97,278 @@ public final class te0 extends Thread {
         return this.nextParkedWorker;
     }
 
-    public final int d(int i) {
-        int i2 = this.s;
-        int i3 = i2 ^ (i2 << 13);
-        int i4 = i3 ^ (i3 >> 17);
-        int i5 = i4 ^ (i4 << 5);
-        this.s = i5;
-        int i6 = i - 1;
-        return (i6 & i) == 0 ? i6 & i5 : (Integer.MAX_VALUE & i5) % i;
+    public final int d(int r3) {
+        int r0 = this.s;
+        int r1 = r0 ^ (r0 << 13);
+        int r2 = r1 ^ (r1 >> 17);
+        int r4 = r2 ^ (r2 << 5);
+        this.s = r4;
+        int r5 = r3 - 1;
+        if ((r5 & r3) != 0) goto L7;
+        return r5 & r4;
+    L7:
+        return (Integer.MAX_VALUE & r4) % r3;
     }
 
     public final br4 e() {
-        int iD = d(2);
-        ve0 ve0Var = this.u;
-        wi1 wi1Var = ve0Var.s;
-        wi1 wi1Var2 = ve0Var.r;
-        if (iD == 0) {
-            br4 br4Var = (br4) wi1Var2.d();
-            return br4Var != null ? br4Var : (br4) wi1Var.d();
-        }
-        br4 br4Var2 = (br4) wi1Var.d();
-        return br4Var2 != null ? br4Var2 : (br4) wi1Var2.d();
+        int r0 = d(2);
+        ve0 r2 = this.u;
+        wi1 r1 = r2.s;
+        wi1 r3 = r2.r;
+        if (r0 != 0) goto L9;
+        br4 r4 = (br4) r3.d();
+        if (r4 == null) goto L8;
+        return r4;
+    L8:
+        return (br4) r1.d();
+    L9:
+        br4 r5 = (br4) r1.d();
+        if (r5 == null) goto L13;
+        return r5;
+    L13:
+        return (br4) r3.d();
     }
 
-    public final void f(int i) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(this.u.q);
-        sb.append("-worker-");
-        sb.append(i == 0 ? "TERMINATED" : String.valueOf(i));
-        setName(sb.toString());
-        this.indexInArray = i;
+    public final void f(int r3) {
+        StringBuilder r0 = new StringBuilder();
+        r0.append(this.u.q);
+        r0.append("-worker-");
+        if (r3 != 0) goto L5;
+        String r1 = "TERMINATED";
+    L6:
+        r0.append(r1);
+        setName(r0.toString());
+        this.indexInArray = r3;
+        return;
+    L5:
+        r1 = String.valueOf(r3);
+        goto L6
     }
 
-    public final void g(Object obj) {
-        this.nextParkedWorker = obj;
+    public final void g(Object r1) {
+        this.nextParkedWorker = r1;
     }
 
-    public final boolean h(ue0 ue0Var) {
-        ue0 ue0Var2 = this.p;
-        boolean z = ue0Var2 == ue0.n;
-        if (z) {
-            ve0.v.addAndGet(this.u, 4398046511104L);
-        }
-        if (ue0Var2 != ue0Var) {
-            this.p = ue0Var;
-        }
-        return z;
+    public final boolean h(ue0 r7) {
+        ue0 r0 = this.p;
+        if (r0 != ue0.n) goto L5;
+        boolean r1 = true;
+    L6:
+        if (r1 == false) goto L8;
+        ve0.v.addAndGet(this.u, 4398046511104L);
+    L8:
+        if (r0 == r7) goto L10;
+        this.p = r7;
+    L10:
+        return r1;
+    L5:
+        r1 = false;
+        goto L6
     }
 
-    public final br4 i(int i) {
-        br4 br4VarH;
-        long jI;
-        AtomicLongFieldUpdater atomicLongFieldUpdater = ve0.v;
-        ve0 ve0Var = this.u;
-        int i2 = (int) (atomicLongFieldUpdater.get(ve0Var) & 2097151);
-        if (i2 < 2) {
-            return null;
-        }
-        int iD = d(i2);
-        long jMin = Long.MAX_VALUE;
-        for (int i3 = 0; i3 < i2; i3++) {
-            iD++;
-            if (iD > i2) {
-                iD = 1;
-            }
-            te0 te0Var = (te0) ve0Var.t.b(iD);
-            if (te0Var != null && te0Var != this) {
-                ad5 ad5Var = te0Var.n;
-                if (i != 3) {
-                    ad5Var.getClass();
-                    int i4 = ad5.d.get(ad5Var);
-                    int i5 = ad5.c.get(ad5Var);
-                    boolean z = i == 1;
-                    while (true) {
-                        if (i4 == i5 || (z && ad5.e.get(ad5Var) == 0)) {
-                            br4VarH = null;
-                            break;
-                        }
-                        int i6 = i4 + 1;
-                        br4VarH = ad5Var.h(i4, z);
-                        if (br4VarH != null) {
-                            break;
-                        }
-                        i4 = i6;
-                    }
-                } else {
-                    br4VarH = ad5Var.f();
-                }
-                jx3 jx3Var = this.o;
-                if (br4VarH != null) {
-                    jx3Var.n = br4VarH;
-                    jI = -1;
-                } else {
-                    jI = ad5Var.i(i, jx3Var);
-                }
-                if (jI == -1) {
-                    br4 br4Var = (br4) jx3Var.n;
-                    jx3Var.n = null;
-                    return br4Var;
-                }
-                if (jI > 0) {
-                    jMin = Math.min(jMin, jI);
-                }
-            }
-        }
-        if (jMin == Long.MAX_VALUE) {
-            jMin = 0;
-        }
-        this.r = jMin;
+    public final br4 i(int r23) {
+        AtomicLongFieldUpdater r2 = ve0.v;
+        ve0 r3 = this.u;
+        int r4 = (int) (r2.get(r3) & 2097151);
+        if (r4 >= 2) goto L5;
+        return null;
+    L5:
+        int r5 = d(r4);
+        int r9 = 0;
+        long r10 = Long.MAX_VALUE;
+    L7:
+        if (r9 >= r4) goto L44;
+        boolean r14 = true;
+        r5 = r5 + 1;
+        if (r5 <= r4) goto L11;
+        r5 = 1;
+    L11:
+        te0 r15 = (te0) r3.t.b(r5);
+        if (r15 == null) goto L42;
+        if (r15 == this) goto L42;
+        ad5 r16 = r15.n;
+        if (r23 != 3) goto L17;
+        br4 r6 = r16.f();
+    L29:
+        jx3 r17 = this.o;
+        if (r6 == null) goto L33;
+        r17.n = r6;
+        long r7 = -1;
+    L35:
+        if (r7 == (-1)) goto L36;
+        if (r7 <= 0) goto L42;
+        r10 = Math.min(r10, r7);
+        goto L42
+    L36:
+        br4 r0 = (br4) r17.n;
+        r17.n = null;
+        return r0;
+    L33:
+        r7 = r16.i(r23, r17);
+        goto L35
+    L17:
+        r16.getClass();
+        int r8 = ad5.d.get(r16);
+        int r11 = ad5.c.get(r16);
+        if (r23 == 1) goto L21;
+        r14 = false;
+    L21:
+        if (r8 == r11) goto L25;
+        if (r14 == true) goto L24;
+    L26:
+        int r12 = r8 + 1;
+        r6 = r16.h(r8, r14);
+        if (r6 != null) goto L29;
+        r8 = r12;
+        goto L21
+    L24:
+        if (ad5.e.get(r16) != 0) goto L26;
+    L25:
+        r6 = null;
+    L42:
+        r9 = r9 + 1;
+        goto L7
+    L44:
+        if (r10 != Long.MAX_VALUE) goto L47;
+        r10 = 0;
+    L47:
+        this.r = r10;
         return null;
     }
 
     @Override // java.lang.Thread, java.lang.Runnable
     public final void run() {
-        long j;
-        loop0: while (true) {
-            boolean z = false;
-            while (true) {
-                if (ve0.w.get(this.u) == 0) {
-                    ue0 ue0Var = this.p;
-                    ue0 ue0Var2 = ue0.r;
-                    if (ue0Var == ue0Var2) {
-                        break loop0;
-                    }
-                    br4 br4VarA = a(this.t);
-                    if (br4VarA != null) {
-                        this.r = 0L;
-                        ve0 ve0Var = this.u;
-                        this.q = 0L;
-                        if (this.p == ue0.p) {
-                            this.p = ue0.o;
-                        }
-                        if (!br4VarA.o) {
-                            try {
-                                br4VarA.run();
-                                break;
-                            } catch (Throwable th) {
-                                Thread threadCurrentThread = Thread.currentThread();
-                                threadCurrentThread.getUncaughtExceptionHandler().uncaughtException(threadCurrentThread, th);
-                                break;
-                            }
-                        }
-                        if (h(ue0.o) && !ve0Var.s() && !ve0Var.q(ve0.v.get(ve0Var))) {
-                            ve0Var.s();
-                        }
-                        try {
-                            br4VarA.run();
-                        } catch (Throwable th2) {
-                            Thread threadCurrentThread2 = Thread.currentThread();
-                            threadCurrentThread2.getUncaughtExceptionHandler().uncaughtException(threadCurrentThread2, th2);
-                        }
-                        ve0.v.addAndGet(ve0Var, -2097152L);
-                        if (this.p == ue0Var2) {
-                            break;
-                        }
-                        this.p = ue0.q;
-                        break;
-                    }
-                    this.t = false;
-                    if (this.r == 0) {
-                        Object obj = this.nextParkedWorker;
-                        f01 f01Var = ve0.x;
-                        if (obj != f01Var) {
-                            v.set(this, -1);
-                            while (this.nextParkedWorker != ve0.x) {
-                                AtomicIntegerFieldUpdater atomicIntegerFieldUpdater = v;
-                                if (atomicIntegerFieldUpdater.get(this) != -1) {
-                                    break;
-                                }
-                                ve0 ve0Var2 = this.u;
-                                AtomicIntegerFieldUpdater atomicIntegerFieldUpdater2 = ve0.w;
-                                if (atomicIntegerFieldUpdater2.get(ve0Var2) != 0) {
-                                    break;
-                                }
-                                ue0 ue0Var3 = this.p;
-                                ue0 ue0Var4 = ue0.r;
-                                if (ue0Var3 == ue0Var4) {
-                                    break;
-                                }
-                                h(ue0.p);
-                                Thread.interrupted();
-                                if (this.q == 0) {
-                                    j = 2097151;
-                                    this.q = System.nanoTime() + this.u.p;
-                                } else {
-                                    j = 2097151;
-                                }
-                                LockSupport.parkNanos(this.u.p);
-                                if (System.nanoTime() - this.q >= 0) {
-                                    this.q = 0L;
-                                    ve0 ve0Var3 = this.u;
-                                    synchronized (ve0Var3.t) {
-                                        try {
-                                            if (!(atomicIntegerFieldUpdater2.get(ve0Var3) != 0)) {
-                                                AtomicLongFieldUpdater atomicLongFieldUpdater = ve0.v;
-                                                if (((int) (atomicLongFieldUpdater.get(ve0Var3) & j)) > ve0Var3.n) {
-                                                    if (atomicIntegerFieldUpdater.compareAndSet(this, -1, 1)) {
-                                                        int i = this.indexInArray;
-                                                        f(0);
-                                                        ve0Var3.n(this, i, 0);
-                                                        int andDecrement = (int) (atomicLongFieldUpdater.getAndDecrement(ve0Var3) & j);
-                                                        if (andDecrement != i) {
-                                                            Object objB = ve0Var3.t.b(andDecrement);
-                                                            objB.getClass();
-                                                            te0 te0Var = (te0) objB;
-                                                            ve0Var3.t.c(i, te0Var);
-                                                            te0Var.f(i);
-                                                            ve0Var3.n(te0Var, andDecrement, i);
-                                                        }
-                                                        ve0Var3.t.c(andDecrement, null);
-                                                        this.p = ue0Var4;
-                                                    }
-                                                }
-                                            }
-                                        } catch (Throwable th3) {
-                                            throw th3;
-                                        }
-                                    }
-                                }
-                            }
-                        } else {
-                            ve0 ve0Var4 = this.u;
-                            if (this.nextParkedWorker == f01Var) {
-                                AtomicLongFieldUpdater atomicLongFieldUpdater2 = ve0.u;
-                                while (true) {
-                                    long j2 = atomicLongFieldUpdater2.get(ve0Var4);
-                                    int i2 = this.indexInArray;
-                                    this.nextParkedWorker = ve0Var4.t.b((int) (j2 & 2097151));
-                                    ve0 ve0Var5 = ve0Var4;
-                                    if (ve0.u.compareAndSet(ve0Var5, j2, ((j2 + 2097152) & (-2097152)) | ((long) i2))) {
-                                        break;
-                                    } else {
-                                        ve0Var4 = ve0Var5;
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        if (z) {
-                            h(ue0.p);
-                            Thread.interrupted();
-                            LockSupport.parkNanos(this.r);
-                            this.r = 0L;
-                            break;
-                        }
-                        z = true;
-                    }
-                } else {
-                    break loop0;
-                }
-            }
-        }
+    L3:
+        boolean r0 = false;
+    L5:
+        if (ve0.w.get(this.u) != 0) goto L95;
+        ue0 r3 = this.p;
+        ue0 r4 = ue0.r;
+        if (r3 == r4) goto L95;
+        br4 r5 = a(this.t);
+        if (r5 != null) goto L11;
+        this.t = false;
+        if (this.r != 0) goto L38;
+        Object r6 = this.nextParkedWorker;
+        f01 r9 = ve0.x;
+        if (r6 != r9) goto L43;
+        ve0 r7 = this.u;
+        if (this.nextParkedWorker != r9) goto L5;
+        AtomicLongFieldUpdater r8 = ve0.u;
+    L91:
+        long r19 = r8.get(r7);
+        int r10 = this.indexInArray;
+        this.nextParkedWorker = r7.t.b((int) (r19 & 2097151));
+        ve0 r18 = r7;
+        if (ve0.u.compareAndSet(r18, r19, ((r19 + 2097152) & (-2097152)) | ((long) r10)) == true) goto L5;
+        r7 = r18;
+        goto L91
+    L43:
+        v.set(this, -1);
+    L45:
+        if (this.nextParkedWorker == ve0.x) goto L5;
+        AtomicIntegerFieldUpdater r11 = v;
+        if (r11.get(this) != (-1)) goto L5;
+        ve0 r12 = this.u;
+        AtomicIntegerFieldUpdater r13 = ve0.w;
+        if (r13.get(r12) != 0) goto L5;
+        ue0 r14 = this.p;
+        ue0 r15 = ue0.r;
+        if (r14 == r15) goto L5;
+        h(ue0.p);
+        Thread.interrupted();
+        if (this.q != 0) goto L57;
+        long r16 = 2097151;
+        this.q = System.nanoTime() + this.u.p;
+    L58:
+        LockSupport.parkNanos(this.u.p);
+        if ((System.nanoTime() - this.q) < 0) goto L45;
+        this.q = 0;
+        ve0 r17 = this.u;
+        m04 r110 = r17.t;
+        monitor-enter(r110);
+        if (r13.get(r17) == 0) goto L65;
+        boolean r20 = true;
+    L66:
+        if (r20 == true) goto L67;
+        AtomicLongFieldUpdater r21 = ve0.v;     // Catch: Throwable -> L80
+        if (((int) (r21.get(r17) & r16)) <= r17.n) goto L71;
+        if (r11.compareAndSet(this, -1, 1) == false) goto L75;
+        int r22 = this.indexInArray;     // Catch: Throwable -> L80
+        f(0);     // Catch: Throwable -> L80
+        r17.n(this, r22, 0);     // Catch: Throwable -> L80
+        int r23 = (int) (r21.getAndDecrement(r17) & r16);     // Catch: Throwable -> L80
+        if (r23 == r22) goto L82;
+        Object r111 = r17.t.b(r23);     // Catch: Throwable -> L80
+        r111.getClass();     // Catch: Throwable -> L80
+        te0 r112 = (te0) r111;     // Catch: Throwable -> L80
+        r17.t.c(r22, r112);     // Catch: Throwable -> L80
+        r112.f(r22);     // Catch: Throwable -> L80
+        r17.n(r112, r23, r22);     // Catch: Throwable -> L80
+    L82:
+        r17.t.c(r23, null);     // Catch: Throwable -> L80
+        monitor-exit(r110);
+        this.p = r15;
+        goto L45
+    L75:
+        monitor-exit(r110);
+        goto L45
+    L71:
+        monitor-exit(r110);
+        goto L45
+    L67:
+        monitor-exit(r110);
+        goto L45
+    L65:
+        r20 = false;
+    L80:
+        th = move-exception;
+        throw th;
+    L57:
+        r16 = 2097151;
+        goto L58
+    L38:
+        if (r0 == true) goto L40;
+        r0 = true;
+        goto L5
+    L40:
+        h(ue0.p);
+        Thread.interrupted();
+        LockSupport.parkNanos(this.r);
+        this.r = 0;
+        goto L3
+    L11:
+        this.r = 0;
+        ve0 r24 = this.u;
+        this.q = 0;
+        if (this.p != ue0.p) goto L15;
+        this.p = ue0.o;
+    L15:
+        if (r5.o == true) goto L17;
+        r5.run();     // Catch: Throwable -> L34
+    L34:
+        th = move-exception;
+        Thread r25 = Thread.currentThread();
+        r25.getUncaughtExceptionHandler().uncaughtException(r25, th);
+        goto L3
+    L17:
+        if (h(ue0.o) == true) goto L19;
+    L101:
+        r5.run();     // Catch: Throwable -> L27
+    L29:
+        ve0.v.addAndGet(r24, -2097152);
+        if (this.p == r4) goto L3;
+        this.p = ue0.q;
+    L27:
+        th = move-exception;
+        Thread r26 = Thread.currentThread();
+        r26.getUncaughtExceptionHandler().uncaughtException(r26, th);
+        goto L29
+    L19:
+        if (r24.s() == true) goto L101;
+        if (r24.q(ve0.v.get(r24)) == true) goto L101;
+        r24.s();
+    L95:
         h(ue0.r);
     }
 }

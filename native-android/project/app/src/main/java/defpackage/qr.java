@@ -4,83 +4,97 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class qr implements fc2 {
     public final fc2 n;
-    public int o = 0;
-    public int p = -1;
-    public int q = -1;
-    public Object r = null;
+    public int o;
+    public int p;
+    public int q;
+    public Object r;
 
-    public qr(fc2 fc2Var) {
-        this.n = fc2Var;
+    public qr(fc2 r2) {
+        this.o = 0;
+        this.p = -1;
+        this.q = -1;
+        this.r = null;
+        this.n = r2;
     }
 
     @Override // defpackage.fc2
-    public final void a(int i, int i2) {
+    public final void a(int r1, int r2) {
         b();
-        this.n.a(i, i2);
+        this.n.a(r1, r2);
     }
 
     public final void b() {
-        int i = this.o;
-        if (i == 0) {
-            return;
-        }
-        fc2 fc2Var = this.n;
-        if (i == 1) {
-            fc2Var.k(this.p, this.q);
-        } else if (i == 2) {
-            fc2Var.r(this.p, this.q);
-        } else if (i == 3) {
-            fc2Var.y(this.p, this.q, this.r);
-        }
+        int r0 = this.o;
+        if (r0 != 0) goto L5;
+        return;
+    L5:
+        fc2 r2 = this.n;
+        if (r0 != 1) goto L8;
+        r2.k(this.p, this.q);
+    L15:
         this.r = null;
         this.o = 0;
+        return;
+    L8:
+        if (r0 != 2) goto L10;
+        r2.r(this.p, this.q);
+        goto L15
+    L10:
+        if (r0 != 3) goto L15;
+        r2.y(this.p, this.q, this.r);
+        goto L15
     }
 
     @Override // defpackage.fc2
-    public final void k(int i, int i2) {
-        int i3;
-        if (this.o == 1 && i >= (i3 = this.p)) {
-            int i4 = this.q;
-            if (i <= i3 + i4) {
-                this.q = i4 + i2;
-                this.p = Math.min(i, i3);
-                return;
-            }
-        }
+    public final void k(int r5, int r6) {
+        if (this.o != 1) goto L10;
+        int r0 = this.p;
+        if (r5 < r0) goto L10;
+        int r2 = this.q;
+        if (r5 > (r0 + r2)) goto L10;
+        this.q = r2 + r6;
+        this.p = Math.min(r5, r0);
+        return;
+    L10:
         b();
-        this.p = i;
-        this.q = i2;
+        this.p = r5;
+        this.q = r6;
         this.o = 1;
     }
 
     @Override // defpackage.fc2
-    public final void r(int i, int i2) {
-        int i3;
-        if (this.o == 2 && (i3 = this.p) >= i && i3 <= i + i2) {
-            this.q += i2;
-            this.p = i;
-        } else {
-            b();
-            this.p = i;
-            this.q = i2;
-            this.o = 2;
-        }
+    public final void r(int r4, int r5) {
+        if (this.o != 2) goto L10;
+        int r0 = this.p;
+        if (r0 < r4) goto L10;
+        if (r0 > (r4 + r5)) goto L10;
+        this.q += r5;
+        this.p = r4;
+        return;
+    L10:
+        b();
+        this.p = r4;
+        this.q = r5;
+        this.o = 2;
     }
 
     @Override // defpackage.fc2
-    public final void y(int i, int i2, Object obj) {
-        int i3;
-        int i4;
-        int i5;
-        if (this.o == 3 && i <= (i4 = this.q + (i3 = this.p)) && (i5 = i + i2) >= i3 && this.r == obj) {
-            this.p = Math.min(i, i3);
-            this.q = Math.max(i4, i5) - this.p;
-            return;
-        }
+    public final void y(int r6, int r7, Object r8) {
+        if (this.o != 3) goto L12;
+        int r0 = this.p;
+        int r2 = this.q + r0;
+        if (r6 > r2) goto L12;
+        int r3 = r6 + r7;
+        if (r3 < r0) goto L12;
+        if (this.r != r8) goto L12;
+        this.p = Math.min(r6, r0);
+        this.q = Math.max(r2, r3) - this.p;
+        return;
+    L12:
         b();
-        this.p = i;
-        this.q = i2;
-        this.r = obj;
+        this.p = r6;
+        this.q = r7;
+        this.r = r8;
         this.o = 3;
     }
 }

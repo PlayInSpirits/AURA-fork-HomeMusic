@@ -5,18 +5,18 @@ package defpackage;
 public abstract class d0 implements le0 {
     public final me0 n;
 
-    public d0(me0 me0Var) {
-        this.n = me0Var;
+    public d0(me0 r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.ne0
-    public final /* bridge */ ne0 J(ne0 ne0Var) {
-        return ya4.F(this, ne0Var);
+    public final /* bridge */ ne0 J(ne0 r1) {
+        return ya4.F(this, r1);
     }
 
     @Override // defpackage.ne0
-    public /* bridge */ le0 K(me0 me0Var) {
-        return ya4.r(this, me0Var);
+    public /* bridge */ le0 K(me0 r1) {
+        return ya4.r(this, r1);
     }
 
     @Override // defpackage.le0
@@ -25,12 +25,12 @@ public abstract class d0 implements le0 {
     }
 
     @Override // defpackage.ne0
-    public final Object s(wf1 wf1Var, Object obj) {
-        return wf1Var.invoke(obj, this);
+    public final Object s(wf1 r1, Object r2) {
+        return r1.invoke(r2, this);
     }
 
     @Override // defpackage.ne0
-    public /* bridge */ ne0 u(me0 me0Var) {
-        return ya4.C(this, me0Var);
+    public /* bridge */ ne0 u(me0 r1) {
+        return ya4.C(this, r1);
     }
 }

@@ -9,9 +9,8 @@ import android.util.Log;
 import android.util.LruCache;
 import android.util.Pair;
 import android.view.KeyEvent;
-import com.bumptech.glide.a;
 import com.eddyizm.tempus.homemusic.SmartPlan;
-import com.eddyizm.tempus.homemusic.WaveRetry;
+import com.eddyizm.tempus.homemusic.a;
 import com.eddyizm.tempus.model.PlaylistSong;
 import com.eddyizm.tempus.subsonic.models.Child;
 import com.eddyizm.tempus.subsonic.models.Playlist;
@@ -20,11 +19,10 @@ import com.eddyizm.tempus.ui.fragment.SongListPageFragment;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -34,434 +32,472 @@ public final /* synthetic */ class qo2 implements Runnable {
     public final /* synthetic */ Object p;
     public final /* synthetic */ Object q;
 
-    public /* synthetic */ qo2(Object obj, Object obj2, Object obj3, int i) {
-        this.n = i;
-        this.o = obj;
-        this.p = obj2;
-        this.q = obj3;
+    public /* synthetic */ qo2(Object r1, Object r2, Object r3, int r4) {
+        this.n = r4;
+        this.o = r1;
+        this.p = r2;
+        this.q = r3;
     }
 
-    /* JADX WARN: Code duplicated, block: B:251:0x024c A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:253:0x01e6 A[SYNTHETIC] */
-    /* JADX WARN: Failed to restore switch over string. Please report as a decompilation issue */
     @Override // java.lang.Runnable
     public final void run() {
-        boolean zJ;
-        boolean zContains;
-        int i = 17;
-        int i2 = 14;
-        int i3 = 10;
-        int i4 = 1;
-        boolean zBooleanValue = true;
-        int i5 = 0;
-        switch (this.n) {
-            case 0:
-                ro2 ro2Var = (ro2) this.o;
-                uw1 uw1Var = (uw1) this.p;
-                mt2 mt2Var = (mt2) this.q;
-                nj0 nj0Var = ro2Var.c;
-                gy3 gy3VarF = uw1Var.f();
-                ml3 ml3Var = nj0Var.q;
-                qi3 qi3Var = nj0Var.t;
-                qi3Var.getClass();
-                ml3Var.getClass();
-                ml3Var.b = yw1.k(gy3VarF);
-                if (!gy3VarF.isEmpty()) {
-                    ml3Var.e = (mt2) gy3VarF.get(0);
-                    mt2Var.getClass();
-                    ml3Var.f = mt2Var;
-                }
-                if (((mt2) ml3Var.d) == null) {
-                    ml3Var.d = ml3.k(qi3Var, (yw1) ml3Var.b, (mt2) ml3Var.e, (zt4) ml3Var.a);
-                }
-                ml3Var.v(qi3Var.x0());
-                return;
-            case 1:
-                cj2 cj2Var = (cj2) this.o;
-                fr2 fr2Var = (fr2) this.p;
-                KeyEvent keyEvent = (KeyEvent) this.q;
-                tn2 tn2Var = (tn2) cj2Var.c;
-                if (tn2Var.k(fr2Var)) {
-                    tn2Var.c(keyEvent, false, false);
-                } else {
-                    ls2 ls2Var = tn2Var.h;
-                    ms2 ms2Var = fr2Var.a;
-                    ms2Var.getClass();
-                    ls2Var.getClass();
-                    ls2Var.I(1, new bs2(ls2Var, i4), ms2Var, true);
-                }
-                cj2Var.b = null;
-                return;
-            case 2:
-                tn2 tn2Var2 = (tn2) this.o;
-                gr2 gr2Var = (gr2) this.q;
-                if (tn2Var2.l()) {
-                    return;
-                }
-                ju2.f(tn2Var2.s, gr2Var);
-                return;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                zt2 zt2Var = (zt2) this.o;
-                Pair pair = (Pair) this.p;
-                ((nj0) zt2Var.o.i).D(((Integer) pair.first).intValue(), (mt2) pair.second, (tv1) this.q);
-                return;
-            case 4:
-                zt2 zt2Var2 = (zt2) this.o;
-                Pair pair2 = (Pair) this.p;
-                ((nj0) zt2Var2.o.i).c(((Integer) pair2.first).intValue(), (mt2) pair2.second, (Exception) this.q);
-                return;
-            case 5:
-                PlaylistPageFragment playlistPageFragment = (PlaylistPageFragment) this.o;
-                List list = (List) this.p;
-                String str = (String) this.q;
-                ArrayList arrayList = new ArrayList(list);
-                Collections.shuffle(arrayList);
-                bo2.q(playlistPageFragment.r0, arrayList, 0, str);
-                ((au) playlistPageFragment.m0.V.n).d(true);
-                return;
-            case 6:
-                mm3 mm3Var = (mm3) this.o;
-                String str2 = (String) this.p;
-                Context context = (Context) this.q;
-                qp4 qp4Var = mm3Var.d;
-                List list2 = (List) xl.E((s24) qp4Var.a, true, false, new o(29, qp4Var, str2));
-                if (list2.isEmpty()) {
-                    return;
-                }
-                new Handler(Looper.getMainLooper()).post(new qo2(mm3Var, list2, context, i3));
-                return;
-            case 7:
-                mm3 mm3Var2 = (mm3) this.o;
-                String str3 = (String) this.p;
-                k03 k03Var = (k03) this.q;
-                List<PlaylistSong> list3 = (List) xl.E((s24) mm3Var2.c.n, true, false, new rs0(i, str3));
-                if (list3 == null || list3.isEmpty()) {
-                    return;
-                }
-                ArrayList arrayList2 = new ArrayList();
-                for (PlaylistSong playlistSong : list3) {
-                    Child child = new Child(playlistSong.getId());
-                    child.setTitle(playlistSong.getTitle());
-                    child.setArtist(playlistSong.getArtist());
-                    child.setAlbum(playlistSong.getAlbum());
-                    child.setTrack(playlistSong.getTrack());
-                    child.setCoverArtId(playlistSong.getCoverArtId());
-                    child.setDuration(playlistSong.getDuration());
-                    child.setAlbumId(playlistSong.getAlbumId());
-                    child.setArtistId(playlistSong.getArtistId());
-                    arrayList2.add(child);
-                }
-                k03Var.i(arrayList2);
-                return;
-            case 8:
-                xl.E((s24) ((mm3) this.o).b.a, false, true, new ps0(1, (String) this.q, (String) this.p));
-                return;
-            case 9:
-                mm3 mm3Var3 = (mm3) this.o;
-                String str4 = (String) this.p;
-                Runnable runnable = (Runnable) this.q;
-                mm3Var3.c.B(str4);
-                xl.E((s24) mm3Var3.a.o, false, true, new rs0(11, str4));
-                String strD = ud3.D();
-                if (strD != null) {
-                    mm3Var3.d.o(str4, strD);
-                }
-                xl.E((s24) mm3Var3.b.a, false, true, new rs0(i2, str4));
-                if (runnable != null) {
-                    new Handler(Looper.getMainLooper()).post(runnable);
-                }
-                mm3Var3.h();
-                return;
-            case 10:
-                mm3 mm3Var4 = (mm3) this.o;
-                List<Playlist> list4 = (List) this.p;
-                Context context2 = (Context) this.q;
-                for (Playlist playlist : list4) {
-                    k03 k03VarC = mm3Var4.c(playlist.getId(), false, null);
-                    k03VarC.f(new np1(k03VarC, context2, playlist));
-                }
-                return;
-            case 11:
-                mm3 mm3Var5 = (mm3) this.o;
-                Playlist playlist2 = (Playlist) this.p;
-                ArrayList arrayList3 = (ArrayList) this.q;
-                String id = playlist2.getId();
-                ml3 ml3Var2 = mm3Var5.b;
-                xl.E((s24) ml3Var2.a, false, true, new hl3(ml3Var2, playlist2, i5));
-                xl.E((s24) ml3Var2.a, false, true, new o(23, playlist2.isUniversal(), id));
-                rm3 rm3Var = mm3Var5.c;
-                List list5 = (List) xl.E((s24) rm3Var.n, true, false, new rs0(i, id));
-                if (arrayList3.isEmpty()) {
-                    if (list5 == null || list5.isEmpty()) {
-                        return;
-                    }
-                    rm3Var.B(id);
-                    Log.d("PlaylistRepository", "Cleared songs for playlist " + id);
-                    return;
-                }
-                if (list5 != null && list5.size() == arrayList3.size()) {
-                    Log.d("PlaylistRepository", "Songs for playlist " + id + " already cached (size match).");
-                    return;
-                }
-                ArrayList arrayList4 = new ArrayList();
-                int size = arrayList3.size();
-                int i6 = 0;
-                while (i6 < size) {
-                    Object obj = arrayList3.get(i6);
-                    i6++;
-                    arrayList4.add(new PlaylistSong(id, (Child) obj));
-                }
-                rm3Var.B(id);
-                xl.E((s24) rm3Var.n, false, true, new o(24, rm3Var, arrayList4));
-                Log.d("PlaylistRepository", "Cached " + arrayList4.size() + " songs for playlist " + id);
-                return;
-            case 12:
-                r20 r20Var = (r20) this.o;
-                String str5 = (String) this.p;
-                String str6 = (String) this.q;
-                mm3 mm3Var6 = (mm3) r20Var.q;
-                mm3Var6.c.B(str5);
-                if (str6 != null) {
-                    mm3Var6.d.o(str5, str6);
-                }
-                xl.E((s24) mm3Var6.b.a, false, true, new rs0(i2, str5));
-                Log.d("PlaylistRepository", "Deleted playlist " + str5 + " and its songs from local DB.");
-                return;
-            case 13:
-                pq3 pq3Var = (pq3) this.o;
-                ry ryVar = (ry) this.p;
-                td5 td5Var = (td5) this.q;
-                try {
-                    zBooleanValue = ((Boolean) ryVar.o.get()).booleanValue();
-                    break;
-                } catch (InterruptedException | ExecutionException unused) {
-                }
-                synchronized (pq3Var.k) {
-                    try {
-                        rc5 rc5VarM = q05.m(td5Var.a);
-                        String str7 = rc5VarM.a;
-                        if (pq3Var.c(str7) == td5Var) {
-                            pq3Var.b(str7);
-                        }
-                        cx.f().b(pq3.l, pq3.class.getSimpleName() + " " + str7 + " executed; reschedule = " + zBooleanValue);
-                        ArrayList arrayList5 = pq3Var.j;
-                        int size2 = arrayList5.size();
-                        while (i5 < size2) {
-                            Object obj2 = arrayList5.get(i5);
-                            i5++;
-                            ((w21) obj2).b(rc5VarM, zBooleanValue);
-                        }
-                    } catch (Throwable th) {
-                        throw th;
-                    }
-                    break;
-                }
-                return;
-            case 14:
-                List<qs3> list6 = (List) this.o;
-                hx3 hx3Var = (hx3) this.p;
-                Context context3 = (Context) this.q;
-                for (qs3 qs3Var : list6) {
-                    if (rs3.c.get() != hx3Var.n) {
-                        return;
-                    }
-                    try {
-                        se4 se4VarD = au0.D(context3);
-                        String strD2 = new xi4(i3).d(new ii0(qs3Var.a, 0L, 1, null, Collections.EMPTY_MAP, 0L, -1L, null, 0));
-                        long jA = nd0.a(se4VarD.i(strD2));
-                        if (jA == -1) {
-                            HashSet hashSet = rs3.f;
-                            synchronized (hashSet) {
-                                try {
-                                    zContains = hashSet.contains(strD2);
-                                } catch (Throwable th2) {
-                                    throw th2;
-                                }
-                            }
-                            if (!zContains) {
-                                zJ = false;
-                            }
-                            if (!zJ) {
-                                rs3.a.a(context3, qs3Var, hx3Var.n);
-                            }
-                        }
-                        long jMin = qs3Var.b;
-                        if (jA != -1) {
-                            jMin = Math.min(jMin, jA);
-                        }
-                        zJ = se4VarD.j(strD2, jMin);
-                    } catch (Exception unused2) {
-                    }
-                    if (!zJ) {
-                        rs3.a.a(context3, qs3Var, hx3Var.n);
-                    }
-                }
-                synchronized (rs3.a) {
-                    if (rs3.c.get() == hx3Var.n) {
-                        rs3.e = u01.n;
-                    }
-                    break;
-                }
-                return;
-            case 15:
-                SongListPageFragment songListPageFragment = (SongListPageFragment) this.o;
-                ArrayList arrayList6 = (ArrayList) this.p;
-                String str8 = (String) this.q;
-                ArrayList arrayList7 = new ArrayList(arrayList6);
-                Collections.shuffle(arrayList7);
-                bo2.q(songListPageFragment.q0, arrayList7.subList(0, Math.min(SmartPlan.MAX_QUEUE, arrayList7.size())), 0, str8);
-                ((au) songListPageFragment.m0.V.n).d(true);
-                return;
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                ns3 ns3Var = (ns3) this.o;
-                Uri uri = (Uri) this.p;
-                lb4 lb4Var = (lb4) this.q;
-                try {
-                    Bitmap bitmap = (Bitmap) a.c((Context) ns3Var.o).g().N(uri).R(512, 512).get();
-                    ((LruCache) ns3Var.p).put(uri, bitmap);
-                    lb4Var.l(bitmap);
-                    return;
-                } catch (Exception e) {
-                    lb4Var.m(e);
-                    return;
-                }
-            case 17:
-                ic2 ic2Var = (ic2) this.o;
-                lb4 lb4Var2 = (lb4) this.p;
-                try {
-                    try {
-                        lb4Var2.n(((mk) this.q).apply(hw.j(ic2Var)));
-                        return;
-                    } catch (Throwable th3) {
-                        lb4Var2.m(th3);
-                        return;
-                    }
-                } catch (Error e2) {
-                    e = e2;
-                    lb4Var2.m(e);
-                    return;
-                } catch (CancellationException unused3) {
-                    lb4Var2.cancel(false);
-                    return;
-                } catch (RuntimeException e3) {
-                    e = e3;
-                    lb4Var2.m(e);
-                    return;
-                } catch (ExecutionException e4) {
-                    e = e4;
-                    Throwable cause = e.getCause();
-                    if (cause != null) {
-                        e = cause;
-                    }
-                    lb4Var2.m(e);
-                    return;
-                }
-            case 18:
-                lb4 lb4Var3 = (lb4) this.o;
-                ur2 ur2Var = (ur2) this.p;
-                ab4 ab4Var = (ab4) this.q;
-                try {
-                    if (lb4Var3.n instanceof f0) {
-                        return;
-                    }
-                    ur2Var.run();
-                    lb4Var3.l(ab4Var);
-                    return;
-                } catch (Throwable th4) {
-                    lb4Var3.m(th4);
-                    return;
-                }
-            case 19:
-                rf2 rf2Var = (rf2) this.o;
-                tb1 tb1Var = (tb1) this.p;
-                ej0 ej0Var = (ej0) this.q;
-                o55 o55Var = (o55) rf2Var.o;
-                String str9 = f35.a;
-                o55Var.s(tb1Var, ej0Var);
-                return;
-            case 20:
-                bl2 bl2Var = (bl2) this.o;
-                String str10 = (String) this.p;
-                Context context4 = (Context) this.q;
-                try {
-                    if (bl2Var.isDone()) {
-                        sk2 sk2Var = (sk2) bl2Var.get();
-                        Log.d("TempoWidget", "controller connected, isPlaying=" + sk2Var.h0());
-                        switch (str10.hashCode()) {
-                            case -1515577246:
-                                if (str10.equals("tempo.widget.SHUFFLE")) {
-                                    qi3 qi3VarH = com.eddyizm.tempus.homemusic.a.h();
-                                    if (qi3VarH != null && com.eddyizm.tempus.homemusic.a.b != null) {
-                                        io1.b.post(new at1(qi3VarH, i5));
-                                        i5 = 1;
-                                    }
-                                    if (i5 == 0) {
-                                        sk2Var.s(!sk2Var.D0());
-                                    }
-                                }
-                                break;
-                            case -10242334:
-                                if (str10.equals("tempo.widget.PLAY_PAUSE")) {
-                                    if (sk2Var.h0()) {
-                                        sk2Var.c();
-                                    } else {
-                                        sk2Var.m0();
-                                    }
-                                }
-                                break;
-                            case 837569034:
-                                if (str10.equals("tempo.widget.NEXT")) {
-                                    sk2Var.H0();
-                                }
-                                break;
-                            case 837640522:
-                                if (str10.equals("tempo.widget.PREV")) {
-                                    sk2Var.S();
-                                }
-                                break;
-                            case 1859223282:
-                                if (str10.equals("tempo.widget.REPEAT")) {
-                                    int iH = sk2Var.h();
-                                    if (iH == 0) {
-                                        i4 = 2;
-                                    } else if (iH != 2) {
-                                        i4 = 0;
-                                    }
-                                    sk2Var.p0(i4);
-                                }
-                                break;
-                        }
-                        ji2.I(context4);
-                        sk2Var.Y0();
-                        return;
-                    }
-                    return;
-                } catch (InterruptedException e5) {
-                    e = e5;
-                    Log.e("TempoWidget", "dispatch failed", e);
-                    return;
-                } catch (ExecutionException e6) {
-                    e = e6;
-                    Log.e("TempoWidget", "dispatch failed", e);
-                    return;
-                }
-            case 21:
-                ((pq3) ((rm3) this.o).n).g((gl4) this.p, (z45) this.q);
-                return;
-            default:
-                AtomicBoolean atomicBoolean = (AtomicBoolean) this.o;
-                oy oyVar = (oy) this.p;
-                gf1 gf1Var = (gf1) this.q;
-                if (atomicBoolean.get()) {
-                    return;
-                }
-                try {
-                    oyVar.a(gf1Var.invoke());
-                    return;
-                } catch (Throwable th5) {
-                    oyVar.b(th5);
-                    return;
-                }
-        }
+        int r3 = 17;
+        int r4 = 14;
+        int r5 = 10;
+        int r6 = 1;
+        boolean r7 = true;
+        int r8 = 0;
+        switch(this.n) {
+            case 0: goto L216;
+            case 1: goto L210;
+            case 2: goto L206;
+            case 3: goto L204;
+            case 4: goto L202;
+            case 5: goto L200;
+            case 6: goto L195;
+            case 7: goto L185;
+            case 8: goto L183;
+            case 9: goto L175;
+            case 10: goto L170;
+            case 11: goto L155;
+            case 12: goto L150;
+            case 13: goto L134;
+            case 14: goto L98;
+            case 15: goto L96;
+            case 16: goto L90;
+            case 17: goto L72;
+            case 18: goto L63;
+            case 19: goto L61;
+            case 20: goto L14;
+            case 21: goto L12;
+            default: goto L4;
+        };
+    L4:
+        AtomicBoolean r1 = (AtomicBoolean) this.o;
+        oy r2 = (oy) this.p;
+        gf1 r0 = (gf1) this.q;
+        if (r1.get() == true) goto L259;
+        r2.a(r0.invoke());     // Catch: Throwable -> L9
+        return;
+    L9:
+        th = move-exception;
+        r2.b(th);
+        return;
+    L259:
+        return;
+    L12:
+        rm3 r9 = (rm3) this.o;
+        ((pq3) r9.n).g((gl4) this.p, (z45) this.q);
+        return;
+    L14:
+        bl2 r10 = (bl2) this.o;
+        String r11 = (String) this.p;
+        Context r12 = (Context) this.q;
+    L30:
+        e = e;
+    L59:
+        Log.e("TempoWidget", "dispatch failed", e);
+        return;
+    L32:
+        e = e;
+        goto L59
+    L16:
+        if (r10.isDone() == false) goto L261;
+        sk2 r13 = (sk2) r10.get();     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        Log.d("TempoWidget", "controller connected, isPlaying=" + r13.h0());     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        switch(r11.hashCode()) {
+            case -1515577246: goto L47;
+            case -10242334: goto L41;
+            case 837569034: goto L38;
+            case 837640522: goto L35;
+            case 1859223282: goto L22;
+            default: goto L57;
+        };     // Catch: InterruptedException -> L30 ExecutionException -> L32
+    L57:
+        ji2.I(r12);     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        r13.Y0();     // Catch: InterruptedException -> L30 ExecutionException -> L32
+    L262:
+        return;
+    L22:
+        if (r11.equals("tempo.widget.REPEAT") == false) goto L57;
+        int r14 = r13.h();     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        if (r14 != 0) goto L26;
+        r6 = 2;
+    L29:
+        r13.p0(r6);     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        goto L57
+    L26:
+        if (r14 == 2) goto L29;
+        r6 = 0;
+        goto L29
+    L35:
+        if (r11.equals("tempo.widget.PREV") == false) goto L57;
+        r13.S();     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        goto L57
+    L38:
+        if (r11.equals("tempo.widget.NEXT") == false) goto L57;
+        r13.H0();     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        goto L57
+    L41:
+        if (r11.equals("tempo.widget.PLAY_PAUSE") == false) goto L57;
+        if (r13.h0() == false) goto L45;
+        r13.c();     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        goto L57
+    L45:
+        r13.m0();     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        goto L57
+    L47:
+        if (r11.equals("tempo.widget.SHUFFLE") == false) goto L57;
+        qi3 r15 = a.h();     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        if (r15 != null) goto L52;
+    L55:
+        if (r8 != 0) goto L57;
+        r13.s(!r13.D0());     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        goto L57
+    L52:
+        if (a.b == null) goto L55;
+        io1.b.post(new at1(r15, r8));     // Catch: InterruptedException -> L30 ExecutionException -> L32
+        r8 = 1;
+        goto L55
+    L261:
+        return;
+    L61:
+        rf2 r16 = (rf2) this.o;
+        tb1 r17 = (tb1) this.p;
+        ej0 r18 = (ej0) this.q;
+        o55 r19 = (o55) r16.o;
+        String r20 = f35.a;
+        r19.s(r17, r18);
+        return;
+    L63:
+        lb4 r21 = (lb4) this.o;
+        ur2 r22 = (ur2) this.p;
+        ab4 r23 = (ab4) this.q;
+    L69:
+        th = move-exception;
+        r21.m(th);
+        return;
+    L65:
+        if ((r21.n instanceof f0) == true) goto L263;
+        r22.run();     // Catch: Throwable -> L69
+        r21.l(r23);     // Catch: Throwable -> L69
+        return;
+    L263:
+        return;
+    L72:
+        ic2 r24 = (ic2) this.o;
+        lb4 r25 = (lb4) this.p;
+        r25.n(((mk) this.q).apply(hw.j(r24)));     // Catch: Throwable -> L76
+        return;
+    L76:
+        th = move-exception;
+        r25.m(th);
+        return;
+    L78:
+        e = e;
+    L81:
+        r25.m(e);
+        return;
+    L88:
+        r25.cancel(false);
+        return;
+    L80:
+        e = e;
+    L82:
+        e = e;
+        Throwable r26 = e.getCause();
+        if (r26 == null) goto L87;
+        e = r26;
+    L87:
+        r25.m(e);
+        return;
+    L90:
+        ns3 r27 = (ns3) this.o;
+        Uri r28 = (Uri) this.p;
+        lb4 r29 = (lb4) this.q;
+        Bitmap r30 = (Bitmap) com.bumptech.glide.a.c((Context) r27.o).g().N(r28).R(512, 512).get();     // Catch: Exception -> L93
+        ((LruCache) r27.p).put(r28, r30);     // Catch: Exception -> L93
+        r29.l(r30);     // Catch: Exception -> L93
+        return;
+    L93:
+        e = move-exception;
+        r29.m(e);
+        return;
+    L96:
+        SongListPageFragment r31 = (SongListPageFragment) this.o;
+        ArrayList r32 = (ArrayList) this.p;
+        String r33 = (String) this.q;
+        ArrayList r34 = new ArrayList(r32);
+        Collections.shuffle(r34);
+        bo2.q(r31.q0, r34.subList(0, Math.min(SmartPlan.MAX_QUEUE, r34.size())), 0, r33);
+        ((au) r31.m0.V.n).d(true);
+        return;
+    L98:
+        List r35 = (List) this.o;
+        hx3 r36 = (hx3) this.p;
+        Context r37 = (Context) this.q;
+        Iterator r38 = r35.iterator();
+    L100:
+        if (r38.hasNext() == false) goto L122;
+        qs3 r39 = (qs3) r38.next();
+        if (rs3.c.get() != r36.n) goto L270;
+        se4 r40 = au0.D(r37);     // Catch: Exception -> L224
+        String r41 = new xi4(r5).d(new ii0(r39.a, 0, 1, null, Collections.EMPTY_MAP, 0, -1, null, 0));     // Catch: Exception -> L224
+        long r42 = nd0.a(r40.i(r41));     // Catch: Exception -> L224
+        if (r42 != (-1)) goto L115;
+        HashSet r110 = rs3.f;     // Catch: Exception -> L224
+        monitor-enter(r110);     // Catch: Exception -> L224
+        boolean r111 = r110.contains(r41);     // Catch: Throwable -> L112
+        monitor-exit(r110);     // Catch: Exception -> L224
+        if (r111 == true) goto L115;
+    L112:
+        th = move-exception;
+        throw th;     // Catch: Exception -> L224
+    L115:
+        long r112 = r39.b;
+        if (r42 == (-1)) goto L119;
+        r112 = Math.min(r112, r42);     // Catch: Exception -> L224
+    L119:
+        boolean r43 = r40.j(r41, r112);     // Catch: Exception -> L224
+    L120:
+        if (r43 == true) goto L100;
+        rs3.a.a(r37, r39, r36.n);
+    L111:
+        r43 = false;
+        goto L120
+    L270:
+        return;
+    L122:
+        rs3 r44 = rs3.a;
+        monitor-enter(r44);
+    L128:
+        th = move-exception;
+        throw th;
+    L125:
+        if (rs3.c.get() != r36.n) goto L130;
+        rs3.e = u01.n;     // Catch: Throwable -> L128
+    L130:
+        monitor-exit(r44);
+        return;
+    L134:
+        pq3 r45 = (pq3) this.o;
+        ry r46 = (ry) this.p;
+        td5 r47 = (td5) this.q;
+        r7 = ((Boolean) r46.o.get()).booleanValue();     // Catch: Throwable -> L225
+    L136:
+        Object r48 = r45.k;
+        monitor-enter(r48);
+        rc5 r49 = q05.m(r47.a);     // Catch: Throwable -> L141
+        String r50 = r49.a;     // Catch: Throwable -> L141
+        if (r45.c(r50) != r47) goto L143;
+        r45.b(r50);     // Catch: Throwable -> L141
+    L143:
+        cx.f().b(pq3.l, pq3.class.getSimpleName() + " " + r50 + " executed; reschedule = " + r7);     // Catch: Throwable -> L141
+        ArrayList r51 = r45.j;     // Catch: Throwable -> L141
+        int r52 = r51.size();     // Catch: Throwable -> L141
+    L144:
+        if (r8 >= r52) goto L146;
+        Object r53 = r51.get(r8);     // Catch: Throwable -> L141
+        r8 = r8 + 1;     // Catch: Throwable -> L141
+        ((w21) r53).b(r49, r7);     // Catch: Throwable -> L141
+        goto L144
+    L146:
+        monitor-exit(r48);     // Catch: Throwable -> L141
+        return;
+    L141:
+        th = move-exception;
+        throw th;
+    L150:
+        r20 r54 = (r20) this.o;
+        String r55 = (String) this.p;
+        String r56 = (String) this.q;
+        mm3 r57 = (mm3) r54.q;
+        r57.c.B(r55);
+        if (r56 == null) goto L153;
+        r57.d.o(r55, r56);
+    L153:
+        xl.E((s24) r57.b.a, false, true, new rs0(r4, r55));
+        Log.d("PlaylistRepository", "Deleted playlist " + r55 + " and its songs from local DB.");
+        return;
+    L155:
+        mm3 r58 = (mm3) this.o;
+        Playlist r59 = (Playlist) this.p;
+        ArrayList r60 = (ArrayList) this.q;
+        String r61 = r59.getId();
+        ml3 r62 = r58.b;
+        xl.E((s24) r62.a, false, true, new hl3(r62, r59, r8));
+        xl.E((s24) r62.a, false, true, new o(23, r59.isUniversal(), r61));
+        rm3 r63 = r58.c;
+        List r64 = (List) xl.E((s24) r63.n, true, false, new rs0(r3, r61));
+        if (r60.isEmpty() == false) goto L161;
+        if (r64 != null) goto L159;
+        return;
+    L159:
+        if (r64.isEmpty() == true) goto L272;
+        r63.B(r61);
+        Log.d("PlaylistRepository", "Cleared songs for playlist " + r61);
+        return;
+    L272:
+        return;
+    L161:
+        if (r64 != null) goto L163;
+    L165:
+        ArrayList r65 = new ArrayList();
+        int r66 = r60.size();
+        int r67 = 0;
+    L166:
+        if (r67 >= r66) goto L168;
+        Object r68 = r60.get(r67);
+        r67 = r67 + 1;
+        r65.add(new PlaylistSong(r61, (Child) r68));
+        goto L166
+    L168:
+        r63.B(r61);
+        xl.E((s24) r63.n, false, true, new o(24, r63, r65));
+        Log.d("PlaylistRepository", "Cached " + r65.size() + " songs for playlist " + r61);
+        return;
+    L163:
+        if (r64.size() != r60.size()) goto L165;
+        Log.d("PlaylistRepository", "Songs for playlist " + r61 + " already cached (size match).");
+        return;
+    L170:
+        mm3 r69 = (mm3) this.o;
+        List r70 = (List) this.p;
+        Context r71 = (Context) this.q;
+        Iterator r72 = r70.iterator();
+    L172:
+        if (r72.hasNext() == false) goto L174;
+        Playlist r73 = (Playlist) r72.next();
+        k03 r74 = r69.c(r73.getId(), false, null);
+        r74.f(new np1(r74, r71, r73));
+        goto L172
+    L174:
+        return;
+    L175:
+        mm3 r75 = (mm3) this.o;
+        String r76 = (String) this.p;
+        Runnable r77 = (Runnable) this.q;
+        r75.c.B(r76);
+        xl.E((s24) r75.a.o, false, true, new rs0(11, r76));
+        String r78 = ud3.D();
+        if (r78 == null) goto L178;
+        r75.d.o(r76, r78);
+    L178:
+        xl.E((s24) r75.b.a, false, true, new rs0(r4, r76));
+        if (r77 == null) goto L181;
+        new Handler(Looper.getMainLooper()).post(r77);
+    L181:
+        r75.h();
+        return;
+    L183:
+        mm3 r79 = (mm3) this.o;
+        String r80 = (String) this.p;
+        xl.E((s24) r79.b.a, false, true, new ps0(1, (String) this.q, r80));
+        return;
+    L185:
+        mm3 r81 = (mm3) this.o;
+        String r82 = (String) this.p;
+        k03 r83 = (k03) this.q;
+        List r84 = (List) xl.E((s24) r81.c.n, true, false, new rs0(r3, r82));
+        if (r84 != null) goto L188;
+        return;
+    L188:
+        if (r84.isEmpty() == true) goto L276;
+        ArrayList r85 = new ArrayList();
+        Iterator r86 = r84.iterator();
+    L191:
+        if (r86.hasNext() == false) goto L193;
+        PlaylistSong r87 = (PlaylistSong) r86.next();
+        Child r88 = new Child(r87.getId());
+        r88.setTitle(r87.getTitle());
+        r88.setArtist(r87.getArtist());
+        r88.setAlbum(r87.getAlbum());
+        r88.setTrack(r87.getTrack());
+        r88.setCoverArtId(r87.getCoverArtId());
+        r88.setDuration(r87.getDuration());
+        r88.setAlbumId(r87.getAlbumId());
+        r88.setArtistId(r87.getArtistId());
+        r85.add(r88);
+        goto L191
+    L193:
+        r83.i(r85);
+        return;
+    L276:
+        return;
+    L195:
+        mm3 r89 = (mm3) this.o;
+        String r90 = (String) this.p;
+        Context r91 = (Context) this.q;
+        qp4 r92 = r89.d;
+        List r93 = (List) xl.E((s24) r92.a, true, false, new o(29, r92, r90));
+        if (r93.isEmpty() == true) goto L277;
+        new Handler(Looper.getMainLooper()).post(new qo2(r89, r93, r91, r5));
+        return;
+    L277:
+        return;
+    L200:
+        PlaylistPageFragment r94 = (PlaylistPageFragment) this.o;
+        List r95 = (List) this.p;
+        String r96 = (String) this.q;
+        ArrayList r97 = new ArrayList(r95);
+        Collections.shuffle(r97);
+        bo2.q(r94.r0, r97, 0, r96);
+        ((au) r94.m0.V.n).d(true);
+        return;
+    L202:
+        zt2 r98 = (zt2) this.o;
+        Pair r99 = (Pair) this.p;
+        ((nj0) r98.o.i).c(((Integer) r99.first).intValue(), (mt2) r99.second, (Exception) this.q);
+        return;
+    L204:
+        zt2 r100 = (zt2) this.o;
+        Pair r101 = (Pair) this.p;
+        ((nj0) r100.o.i).D(((Integer) r101.first).intValue(), (mt2) r101.second, (tv1) this.q);
+        return;
+    L206:
+        tn2 r102 = (tn2) this.o;
+        gr2 r103 = (gr2) this.q;
+        if (r102.l() == true) goto L278;
+        ju2.f(r102.s, r103);
+        return;
+    L278:
+        return;
+    L210:
+        cj2 r104 = (cj2) this.o;
+        fr2 r105 = (fr2) this.p;
+        KeyEvent r106 = (KeyEvent) this.q;
+        tn2 r107 = (tn2) r104.c;
+        if (r107.k(r105) == false) goto L213;
+        r107.c(r106, false, false);
+    L214:
+        r104.b = null;
+        return;
+    L213:
+        ls2 r108 = r107.h;
+        ms2 r109 = r105.a;
+        r109.getClass();
+        r108.getClass();
+        r108.I(1, new bs2(r108, r6), r109, true);
+        goto L214
+    L216:
+        ro2 r113 = (ro2) this.o;
+        uw1 r114 = (uw1) this.p;
+        mt2 r115 = (mt2) this.q;
+        nj0 r116 = r113.c;
+        gy3 r117 = r114.f();
+        ml3 r118 = r116.q;
+        qi3 r119 = r116.t;
+        r119.getClass();
+        r118.getClass();
+        r118.b = yw1.k(r117);
+        if (r117.isEmpty() == true) goto L220;
+        r118.e = (mt2) r117.get(0);
+        r115.getClass();
+        r118.f = r115;
+    L220:
+        if (((mt2) r118.d) != null) goto L222;
+        r118.d = ml3.k(r119, (yw1) r118.b, (mt2) r118.e, (zt4) r118.a);
+    L222:
+        r118.v(r119.x0());
     }
 }

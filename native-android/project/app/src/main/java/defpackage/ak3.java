@@ -10,17 +10,17 @@ public final class ak3 implements RatingBar.OnRatingBarChangeListener {
     public final /* synthetic */ Child a;
     public final /* synthetic */ PlayerControllerFragment b;
 
-    public ak3(PlayerControllerFragment playerControllerFragment, Child child) {
-        this.b = playerControllerFragment;
-        this.a = child;
+    public ak3(PlayerControllerFragment r1, Child r2) {
+        this.b = r1;
+        this.a = r2;
     }
 
     @Override // android.widget.RatingBar.OnRatingBarChangeListener
-    public final void onRatingChanged(RatingBar ratingBar, float f, boolean z) {
-        if (z) {
-            int i = (int) f;
-            this.b.r0.c(i);
-            this.a.setUserRating(Integer.valueOf(i));
-        }
+    public final void onRatingChanged(RatingBar r1, float r2, boolean r3) {
+        if (r3 == false) goto L5;
+        int r4 = (int) r2;
+        this.b.r0.c(r4);
+        this.a.setUserRating(Integer.valueOf(r4));
+        return;
     }
 }

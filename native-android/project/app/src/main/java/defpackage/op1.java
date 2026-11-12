@@ -10,9 +10,9 @@ public final class op1 implements StarCallback {
     public final /* synthetic */ Favorite n;
     public final /* synthetic */ b o;
 
-    public op1(b bVar, Favorite favorite) {
-        this.o = bVar;
-        this.n = favorite;
+    public op1(b r1, Favorite r2) {
+        this.o = r1;
+        this.n = r2;
     }
 
     @Override // com.eddyizm.tempus.interfaces.StarCallback

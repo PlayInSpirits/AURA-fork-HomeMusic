@@ -8,7 +8,7 @@ import com.eddyizm.tempus.service.MediaService;
 public final class xp extends Binder {
     public final /* synthetic */ MediaService e;
 
-    public xp(MediaService mediaService) {
-        this.e = mediaService;
+    public xp(MediaService r1) {
+        this.e = r1;
     }
 }

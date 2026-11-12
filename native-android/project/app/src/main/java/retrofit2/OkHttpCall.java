@@ -1,6 +1,6 @@
 package retrofit2;
 
-import defpackage.ac1;
+import defpackage.av3;
 import defpackage.bv3;
 import defpackage.fu4;
 import defpackage.fw;
@@ -17,7 +17,6 @@ import defpackage.na4;
 import defpackage.o83;
 import defpackage.oz3;
 import defpackage.qg3;
-import defpackage.tv;
 import defpackage.xu3;
 import defpackage.yu3;
 import java.io.IOException;
@@ -51,19 +50,10 @@ final class OkHttpCall<T> implements Call<T> {
         @Nullable
         IOException thrownException;
 
-        public ExceptionCatchingResponseBody(n14 n14Var) {
-            this.delegate = n14Var;
-            this.delegateSource = new xu3(new ac1(n14Var.source()) { // from class: retrofit2.OkHttpCall.ExceptionCatchingResponseBody.1
-                @Override // defpackage.ac1, defpackage.ej4
-                public long read(tv tvVar, long j) throws IOException {
-                    try {
-                        return super.read(tvVar, j);
-                    } catch (IOException e) {
-                        ExceptionCatchingResponseBody.this.thrownException = e;
-                        throw e;
-                    }
-                }
-            });
+        public ExceptionCatchingResponseBody(n14 r2) {
+            this.delegate = r2;
+            final fw r3 = r2.source();
+            this.delegateSource = new xu3(new AnonymousClass1(this, r3));
         }
 
         @Override // defpackage.n14, java.io.Closeable, java.lang.AutoCloseable
@@ -86,11 +76,12 @@ final class OkHttpCall<T> implements Call<T> {
             return this.delegateSource;
         }
 
-        public void throwIfCaught() throws IOException {
-            IOException iOException = this.thrownException;
-            if (iOException != null) {
-                throw iOException;
-            }
+        public void throwIfCaught() {
+            IOException r0 = this.thrownException;
+            if (r0 != null) goto L5;
+            return;
+        L5:
+            throw r0;
         }
     }
 
@@ -101,9 +92,9 @@ final class OkHttpCall<T> implements Call<T> {
         @Nullable
         private final hu2 contentType;
 
-        public NoContentResponseBody(@Nullable hu2 hu2Var, long j) {
-            this.contentType = hu2Var;
-            this.contentLength = j;
+        public NoContentResponseBody(@Nullable hu2 r1, long r2) {
+            this.contentType = r1;
+            this.contentLength = r2;
         }
 
         @Override // defpackage.n14
@@ -122,245 +113,260 @@ final class OkHttpCall<T> implements Call<T> {
         }
     }
 
-    public OkHttpCall(RequestFactory requestFactory, Object obj, Object[] objArr, fy fyVar, Converter<n14, T> converter) {
-        this.requestFactory = requestFactory;
-        this.instance = obj;
-        this.args = objArr;
-        this.callFactory = fyVar;
-        this.responseConverter = converter;
+    public OkHttpCall(RequestFactory r1, Object r2, Object[] r3, fy r4, Converter<n14, T> r5) {
+        this.requestFactory = r1;
+        this.instance = r2;
+        this.args = r3;
+        this.callFactory = r4;
+        this.responseConverter = r5;
     }
 
     private gy createRawCall() {
-        fy fyVar = this.callFactory;
-        oz3 oz3VarCreate = this.requestFactory.create(this.instance, this.args);
-        o83 o83Var = (o83) fyVar;
-        o83Var.getClass();
-        oz3VarCreate.getClass();
-        return new bv3(o83Var, oz3VarCreate);
+        fy r0 = this.callFactory;
+        oz3 r3 = this.requestFactory.create(this.instance, this.args);
+        o83 r1 = (o83) r0;
+        r1.getClass();
+        r3.getClass();
+        return new bv3(r1, r3);
     }
 
-    private gy getRawCall() throws IOException {
-        gy gyVar = this.rawCall;
-        if (gyVar != null) {
-            return gyVar;
-        }
-        Throwable th = this.creationFailure;
-        if (th != null) {
-            if (th instanceof IOException) {
-                throw ((IOException) th);
-            }
-            if (th instanceof RuntimeException) {
-                throw ((RuntimeException) th);
-            }
-            throw ((Error) th);
-        }
-        try {
-            gy gyVarCreateRawCall = createRawCall();
-            this.rawCall = gyVarCreateRawCall;
-            return gyVarCreateRawCall;
-        } catch (IOException | Error | RuntimeException e) {
-            Utils.throwIfFatal(e);
-            this.creationFailure = e;
-            throw e;
-        }
+    private gy getRawCall() {
+        gy r0 = this.rawCall;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        Throwable r1 = this.creationFailure;
+        if (r1 != null) goto L8;
+        gy r2 = createRawCall();     // Catch: IOException -> L19 Throwable -> L21 RuntimeException -> L23
+        this.rawCall = r2;     // Catch: IOException -> L19 Throwable -> L21 RuntimeException -> L23
+        return r2;
+    L21:
+        e = move-exception;
+        Utils.throwIfFatal(e);
+        this.creationFailure = e;
+        throw e;
+    L8:
+        if ((r1 instanceof IOException) == true) goto L16;
+        if ((r1 instanceof RuntimeException) == false) goto L14;
+        throw ((RuntimeException) r1);
+    L14:
+        throw ((Error) r1);
+    L16:
+        throw ((IOException) r1);
     }
 
     @Override // retrofit2.Call
     public void cancel() {
-        gy gyVar;
         this.canceled = true;
-        synchronized (this) {
-            gyVar = this.rawCall;
-        }
-        if (gyVar != null) {
-            ((bv3) gyVar).cancel();
-        }
+        monitor-enter(this);
+        gy r0 = this.rawCall;     // Catch: Throwable -> L9
+        monitor-exit(this);     // Catch: Throwable -> L9
+        if (r0 == null) goto L14;
+        ((bv3) r0).cancel();
+        return;
+    L14:
+        return;
+    L9:
+        th = move-exception;
+        throw th;
     }
 
     @Override // retrofit2.Call
-    public OkHttpCall<T> clone() {
-        return new OkHttpCall<>(this.requestFactory, this.instance, this.args, this.callFactory, this.responseConverter);
+    /* JADX INFO: renamed from: clone */
+    public OkHttpCall<T> mo76clone() {
+        return new OkHttpCall(this.requestFactory, this.instance, this.args, this.callFactory, this.responseConverter);
     }
 
     @Override // retrofit2.Call
-    public void enqueue(final Callback<T> callback) {
-        gy gyVar;
-        Throwable th;
-        yu3 yu3Var;
-        Objects.requireNonNull(callback, "callback == null");
-        synchronized (this) {
-            try {
-                if (this.executed) {
-                    throw new IllegalStateException("Already executed.");
-                }
-                this.executed = true;
-                gyVar = this.rawCall;
-                th = this.creationFailure;
-                if (gyVar == null && th == null) {
-                    try {
-                        gy gyVarCreateRawCall = createRawCall();
-                        this.rawCall = gyVarCreateRawCall;
-                        gyVar = gyVarCreateRawCall;
-                    } catch (Throwable th2) {
-                        th = th2;
-                        Utils.throwIfFatal(th);
-                        this.creationFailure = th;
-                    }
-                }
-            } catch (Throwable th3) {
-                throw th3;
-            }
-        }
-        if (th != null) {
-            callback.onFailure(this, th);
-            return;
-        }
-        if (this.canceled) {
-            ((bv3) gyVar).cancel();
-        }
-        ky kyVar = new ky() { // from class: retrofit2.OkHttpCall.1
-            private void callFailure(Throwable th4) {
-                try {
-                    callback.onFailure(OkHttpCall.this, th4);
-                } catch (Throwable th5) {
-                    Utils.throwIfFatal(th5);
-                    th5.printStackTrace();
-                }
-            }
-
-            @Override // defpackage.ky
-            public void onFailure(gy gyVar2, IOException iOException) {
-                callFailure(iOException);
-            }
-
-            @Override // defpackage.ky
-            public void onResponse(gy gyVar2, k14 k14Var) {
-                try {
-                    try {
-                        callback.onResponse(OkHttpCall.this, OkHttpCall.this.parseResponse(k14Var));
-                    } catch (Throwable th4) {
-                        Utils.throwIfFatal(th4);
-                        th4.printStackTrace();
-                    }
-                } catch (Throwable th5) {
-                    Utils.throwIfFatal(th5);
-                    callFailure(th5);
-                }
-            }
-        };
-        bv3 bv3Var = (bv3) gyVar;
-        bv3Var.getClass();
-        if (!bv3Var.r.compareAndSet(false, true)) {
-            kf2.o("Already Executed");
-            return;
-        }
-        qg3 qg3Var = qg3.a;
-        bv3Var.s = qg3.a.g();
-        na4 na4Var = bv3Var.n.a;
-        yu3 yu3Var2 = new yu3(bv3Var, kyVar);
-        na4Var.getClass();
-        synchronized (na4Var) {
-            ((ArrayDeque) na4Var.o).add(yu3Var2);
-            String str = bv3Var.o.a.d;
-            Iterator it = ((ArrayDeque) na4Var.p).iterator();
-            do {
-                if (!it.hasNext()) {
-                    Iterator it2 = ((ArrayDeque) na4Var.o).iterator();
-                    do {
-                        if (!it2.hasNext()) {
-                            yu3Var = null;
-                            break;
-                        }
-                        yu3Var = (yu3) it2.next();
-                    } while (!h12.c(yu3Var.p.o.a.d, str));
-                } else {
-                    yu3Var = (yu3) it.next();
-                }
-            } while (!h12.c(yu3Var.p.o.a.d, str));
-            if (yu3Var != null) {
-                yu3Var2.o = yu3Var.o;
-            }
-        }
-        na4Var.L();
+    public void enqueue(final Callback<T> r5) {
+        Objects.requireNonNull(r5, "callback == null");
+        monitor-enter(this);
+    L13:
+        th = move-exception;
+        throw th;
+    L5:
+        if (this.executed == true) goto L50;
+        this.executed = true;     // Catch: Throwable -> L13
+        gy r1 = this.rawCall;     // Catch: Throwable -> L13
+        Throwable th = this.creationFailure;     // Catch: Throwable -> L13
+        if (r1 != null) goto L15;
+        if (th != null) goto L15;
+        gy r3 = createRawCall();     // Catch: Throwable -> L11
+        this.rawCall = r3;     // Catch: Throwable -> L11
+        r1 = r3;
+        goto L15
+    L11:
+        th = th;
+        Utils.throwIfFatal(th);     // Catch: Throwable -> L13
+        this.creationFailure = th;     // Catch: Throwable -> L13
+    L15:
+        monitor-exit(this);     // Catch: Throwable -> L13
+        if (th == null) goto L20;
+        r5.onFailure(this, th);
+        return;
+    L20:
+        if (this.canceled == false) goto L22;
+        ((bv3) r1).cancel();
+    L22:
+        ky r2 = new AnonymousClass1(this, r5);
+        bv3 r4 = (bv3) r1;
+        r4.getClass();
+        if (r4.r.compareAndSet(false, true) == false) goto L47;
+        qg3 r6 = qg3.a;
+        r4.s = qg3.a.g();
+        na4 r7 = r4.n.a;
+        yu3 r8 = new yu3(r4, r2);
+        r7.getClass();
+        monitor-enter(r7);
+        ((ArrayDeque) r7.o).add(r8);     // Catch: Throwable -> L44
+        String r0 = r4.o.a.d;     // Catch: Throwable -> L44
+        Iterator r9 = ((ArrayDeque) r7.p).iterator();     // Catch: Throwable -> L44
+    L28:
+        if (r9.hasNext() == false) goto L32;
+        yu3 r10 = (yu3) r9.next();     // Catch: Throwable -> L44
+        if (h12.c(r10.p.o.a.d, r0) == false) goto L28;
+    L39:
+        if (r10 == null) goto L41;
+        r8.o = r10.o;     // Catch: Throwable -> L44
+    L41:
+        monitor-exit(r7);
+        r7.L();
+        return;
+    L32:
+        Iterator r11 = ((ArrayDeque) r7.o).iterator();     // Catch: Throwable -> L44
+    L34:
+        if (r11.hasNext() == false) goto L38;
+        r10 = (yu3) r11.next();     // Catch: Throwable -> L44
+        if (h12.c(r10.p.o.a.d, r0) == false) goto L34;
+    L38:
+        r10 = null;
+    L44:
+        th = move-exception;
+        throw th;
+    L47:
+        kf2.o("Already Executed");
+        return;
+    L50:
+        throw new IllegalStateException("Already executed.");     // Catch: Throwable -> L13
     }
 
     @Override // retrofit2.Call
     public Response<T> execute() {
-        gy rawCall;
-        synchronized (this) {
-            if (this.executed) {
-                throw new IllegalStateException("Already executed.");
-            }
-            this.executed = true;
-            rawCall = getRawCall();
-        }
-        if (this.canceled) {
-            ((bv3) rawCall).cancel();
-        }
-        return parseResponse(((bv3) rawCall).c());
+        monitor-enter(this);
+    L12:
+        th = move-exception;
+        throw th;
+    L4:
+        if (this.executed == true) goto L15;
+        this.executed = true;     // Catch: Throwable -> L12
+        gy r0 = getRawCall();     // Catch: Throwable -> L12
+        monitor-exit(this);     // Catch: Throwable -> L12
+        if (this.canceled == false) goto L11;
+        ((bv3) r0).cancel();
+    L11:
+        return parseResponse(((bv3) r0).c());
+    L15:
+        throw new IllegalStateException("Already executed.");     // Catch: Throwable -> L12
     }
 
     @Override // retrofit2.Call
     public boolean isCanceled() {
-        boolean z = true;
-        if (this.canceled) {
-            return true;
-        }
-        synchronized (this) {
-            gy gyVar = this.rawCall;
-            if (gyVar == null || !((bv3) gyVar).A) {
-                z = false;
-            }
-        }
-        return z;
+        boolean r1 = true;
+        if (this.canceled == false) goto L5;
+        return true;
+    L5:
+        monitor-enter(this);
+        gy r0 = this.rawCall;     // Catch: Throwable -> L14
+        if (r0 != null) goto L9;
+    L11:
+        r1 = false;
+    L12:
+        monitor-exit(this);     // Catch: Throwable -> L14
+        return r1;
+    L9:
+        if (((bv3) r0).A == false) goto L11;
+    L14:
+        th = move-exception;
+        throw th;
     }
 
     @Override // retrofit2.Call
     public synchronized boolean isExecuted() {
-        return this.executed;
+        monitor-enter(this);
+        boolean r0 = this.executed;     // Catch: Throwable -> L6
+        monitor-exit(this);
+        return r0;
+    L6:
+        th = move-exception;
+        throw th;
     }
 
-    public Response<T> parseResponse(k14 k14Var) throws IOException {
-        n14 n14Var = k14Var.t;
-        j14 j14VarF = k14Var.f();
-        j14VarF.g = new NoContentResponseBody(n14Var.contentType(), n14Var.contentLength());
-        k14 k14VarA = j14VarF.a();
-        int i = k14VarA.q;
-        if (i < 200 || i >= 300) {
-            try {
-                return Response.error(Utils.buffer(n14Var), k14VarA);
-            } finally {
-                n14Var.close();
-            }
-        }
-        if (i == 204 || i == 205) {
-            n14Var.close();
-            return Response.success((Object) null, k14VarA);
-        }
-        ExceptionCatchingResponseBody exceptionCatchingResponseBody = new ExceptionCatchingResponseBody(n14Var);
-        try {
-            return Response.success(this.responseConverter.convert(exceptionCatchingResponseBody), k14VarA);
-        } catch (RuntimeException e) {
-            exceptionCatchingResponseBody.throwIfCaught();
-            throw e;
-        }
+    public Response<T> parseResponse(k14 r6) {
+        n14 r0 = r6.t;
+        j14 r7 = r6.f();
+        r7.g = new NoContentResponseBody(r0.contentType(), r0.contentLength());
+        k14 r8 = r7.a();
+        int r1 = r8.q;
+        if (r1 >= 200) goto L5;
+    L26:
+        Response<T> r5 = Response.error(Utils.buffer(r0), r8);     // Catch: Throwable -> L23
+        r0.close();
+        return r5;
+    L23:
+        th = move-exception;
+        r0.close();
+        throw th;
+    L5:
+        if (r1 >= 300) goto L26;
+        if (r1 != 204) goto L10;
+    L18:
+        r0.close();
+        return Response.success(null, r8);
+    L10:
+        if (r1 == 205) goto L18;
+        ExceptionCatchingResponseBody r2 = new ExceptionCatchingResponseBody(r0);
+        return Response.success(this.responseConverter.convert(r2), r8);
+    L15:
+        e = move-exception;
+        r2.throwIfCaught();
+        throw e;
     }
 
     @Override // retrofit2.Call
     public synchronized oz3 request() {
-        try {
-        } catch (IOException e) {
-            throw new RuntimeException("Unable to create request.", e);
-        }
-        return ((bv3) getRawCall()).o;
+        monitor-enter(this);
+        oz3 r0 = ((bv3) getRawCall()).o;     // Catch: Throwable -> L6 IOException -> L8
+        monitor-exit(this);
+        return r0;
+    L6:
+        th = move-exception;
+        throw th;
+    L8:
+        e = move-exception;
+        throw new RuntimeException("Unable to create request.", e);     // Catch: Throwable -> L6
     }
 
     @Override // retrofit2.Call
     public synchronized fu4 timeout() {
-        try {
-        } catch (IOException e) {
-            throw new RuntimeException("Unable to create call.", e);
-        }
-        return ((bv3) getRawCall()).q;
+        monitor-enter(this);
+        av3 r0 = ((bv3) getRawCall()).q;     // Catch: Throwable -> L6 IOException -> L8
+        monitor-exit(this);
+        return r0;
+    L6:
+        th = move-exception;
+        throw th;
+    L8:
+        e = move-exception;
+        throw new RuntimeException("Unable to create call.", e);     // Catch: Throwable -> L6
+    }
+
+    @Override // retrofit2.Call
+    /* JADX INFO: renamed from: clone */
+    public /* bridge */ /* synthetic */ Call mo76clone() {
+        return mo76clone();
+    }
+
+    public /* bridge */ /* synthetic */ Object clone() {
+        return mo76clone();
     }
 }

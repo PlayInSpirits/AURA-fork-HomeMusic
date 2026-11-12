@@ -11,88 +11,97 @@ public abstract class yb1 extends uo implements Set, Collection {
         super(10);
     }
 
-    @Override // defpackage.uo
-    /* JADX INFO: renamed from: W, reason: merged with bridge method [inline-methods] */
-    public abstract jx1 o();
+    public abstract jx1 W();
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean add(Object obj) {
-        ((a05) this).o().getClass();
+    public final boolean add(Object r1) {
+        ((a05) this).W().getClass();
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean addAll(Collection collection) {
-        ((a05) this).o().getClass();
+    public final boolean addAll(Collection r1) {
+        ((a05) this).W().getClass();
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.Set, java.util.Collection
     public final void clear() {
-        ((a05) this).o().clear();
+        ((a05) this).W().clear();
         throw null;
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean contains(Object obj) {
-        return ((a05) this).o().contains(obj);
+    public final boolean contains(Object r1) {
+        return ((a05) this).W().contains(r1);
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean containsAll(Collection collection) {
-        return ((a05) this).o().containsAll(collection);
+    public final boolean containsAll(Collection r1) {
+        return ((a05) this).W().containsAll(r1);
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean equals(Object obj) {
-        return obj == this || o().equals(obj);
+    public final boolean equals(Object r1) {
+        if (r1 != this) goto L4;
+        return true;
+    L4:
+        if (W().equals(r1) == true) goto L10;
+        return false;
+    L10:
+        return true;
     }
 
     @Override // java.util.Set, java.util.Collection
     public final int hashCode() {
-        return o().hashCode();
+        return W().hashCode();
     }
 
     @Override // java.util.Set, java.util.Collection
     public final boolean isEmpty() {
-        return ((a05) this).o().isEmpty();
+        return ((a05) this).W().isEmpty();
     }
 
     @Override // java.util.Set, java.util.Collection, java.lang.Iterable
     public final Iterator iterator() {
-        return ((a05) this).o().iterator();
+        return ((a05) this).W().iterator();
+    }
+
+    @Override // defpackage.uo
+    public /* bridge */ /* synthetic */ Object o() {
+        return W();
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean remove(Object obj) {
-        ((a05) this).o().getClass();
+    public final boolean remove(Object r1) {
+        ((a05) this).W().getClass();
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean removeAll(Collection collection) {
-        ((a05) this).o().getClass();
+    public final boolean removeAll(Collection r1) {
+        ((a05) this).W().getClass();
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean retainAll(Collection collection) {
-        ((a05) this).o().getClass();
+    public final boolean retainAll(Collection r1) {
+        ((a05) this).W().getClass();
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.Set, java.util.Collection
     public final int size() {
-        return ((a05) this).o().size();
+        return ((a05) this).W().size();
     }
 
     @Override // java.util.Set, java.util.Collection
     public final Object[] toArray() {
-        return ((a05) this).o().toArray(rw1.n);
+        return ((a05) this).W().toArray(rw1.n);
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final Object[] toArray(Object[] objArr) {
-        return ((a05) this).o().toArray(objArr);
+    public final Object[] toArray(Object[] r1) {
+        return ((a05) this).W().toArray(r1);
     }
 }

@@ -5,8 +5,8 @@ package defpackage;
 public final class c24 implements q34 {
     public final cv3 a;
 
-    public c24(cv3 cv3Var) {
-        this.a = cv3Var;
+    public c24(cv3 r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.q34

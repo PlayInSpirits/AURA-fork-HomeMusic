@@ -8,25 +8,25 @@ import java.io.Serializable;
 public final class f33 extends h33 {
     public final Class r;
 
-    public f33(Class cls) {
+    public f33(Class r4) {
         super(true);
-        if (!Serializable.class.isAssignableFrom(cls)) {
-            nz2.h(cls, " does not implement Serializable.");
-            throw null;
-        }
-        try {
-            this.r = Class.forName("[L" + cls.getName() + ';');
-        } catch (ClassNotFoundException e) {
-            er1.m(e);
-            throw null;
-        }
+        if (Serializable.class.isAssignableFrom(r4) == true) goto L12;
+        nz2.h(r4, " does not implement Serializable.");
+        throw null;
+    L12:
+        this.r = Class.forName("[L" + r4.getName() + ';');
+        return;
+    L7:
+        e = move-exception;
+        er1.m(e);
+        throw null;
     }
 
     @Override // defpackage.h33
-    public final Object a(String str, Bundle bundle) {
-        bundle.getClass();
-        str.getClass();
-        return (Serializable[]) bundle.get(str);
+    public final Object a(String r1, Bundle r2) {
+        r2.getClass();
+        r1.getClass();
+        return (Serializable[]) r2.get(r1);
     }
 
     @Override // defpackage.h33
@@ -35,29 +35,32 @@ public final class f33 extends h33 {
     }
 
     @Override // defpackage.h33
-    public final Object d(String str) {
-        str.getClass();
+    public final Object d(String r1) {
+        r1.getClass();
         throw new UnsupportedOperationException("Arrays don't support default values.");
     }
 
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r3v1, types: [java.io.Serializable, java.io.Serializable[], java.lang.Object] */
     @Override // defpackage.h33
-    public final void e(Bundle bundle, String str, Object obj) {
-        ?? r3 = (Serializable[]) obj;
-        str.getClass();
-        this.r.cast(r3);
-        bundle.putSerializable(str, r3);
+    public final void e(Bundle r1, String r2, Object r3) {
+        ?? r4 = (Serializable[]) r3;
+        r2.getClass();
+        this.r.cast(r4);
+        r1.putSerializable(r2, r4);
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || !f33.class.equals(obj.getClass())) {
-            return false;
-        }
-        return h12.c(this.r, ((f33) obj).r);
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if (r3 != null) goto L7;
+        return false;
+    L7:
+        if (f33.class.equals(r3.getClass()) == true) goto L10;
+        return false;
+    L10:
+        return h12.c(this.r, ((f33) r3).r);
     }
 
     public final int hashCode() {

@@ -9,37 +9,37 @@ public abstract class wn4 extends dj0 implements qn4 {
     public long t;
 
     @Override // defpackage.qn4
-    public final int e(long j) {
-        qn4 qn4Var = this.s;
-        qn4Var.getClass();
-        return qn4Var.e(j - this.t);
+    public final int e(long r4) {
+        qn4 r0 = this.s;
+        r0.getClass();
+        return r0.e(r4 - this.t);
     }
 
     @Override // defpackage.qn4
-    public final long k(int i) {
-        qn4 qn4Var = this.s;
-        qn4Var.getClass();
-        return qn4Var.k(i) + this.t;
+    public final long k(int r3) {
+        qn4 r0 = this.s;
+        r0.getClass();
+        return r0.k(r3) + this.t;
     }
 
     @Override // defpackage.qn4
-    public final List m(long j) {
-        qn4 qn4Var = this.s;
-        qn4Var.getClass();
-        return qn4Var.m(j - this.t);
+    public final List m(long r4) {
+        qn4 r0 = this.s;
+        r0.getClass();
+        return r0.m(r4 - this.t);
     }
 
     @Override // defpackage.qn4
     public final int n() {
-        qn4 qn4Var = this.s;
-        qn4Var.getClass();
-        return qn4Var.n();
+        qn4 r0 = this.s;
+        r0.getClass();
+        return r0.n();
     }
 
     @Override // defpackage.dj0
     public final void r() {
         this.o = 0;
-        this.p = 0L;
+        this.p = 0;
         this.q = 0;
         this.r = false;
         this.s = null;

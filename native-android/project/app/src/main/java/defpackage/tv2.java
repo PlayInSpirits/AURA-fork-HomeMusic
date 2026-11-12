@@ -7,28 +7,43 @@ import android.os.Bundle;
 public final class tv2 extends be5 {
     public final long l;
 
-    public tv2(kr3 kr3Var) {
-        super(kr3Var);
-        Bundle bundle = kr3Var.h().d.I;
-        int i = bundle != null ? bundle.getInt("duration", 0) : 0;
-        this.l = i > 0 ? f35.Q(((long) i) * 1000) : -9223372036854775807L;
+    public tv2(kr3 r5) {
+        super(r5);
+        Bundle r6 = r5.h().d.I;
+        int r0 = 0;
+        if (r6 == null) goto L5;
+        r0 = r6.getInt("duration", 0);
+    L5:
+        if (r0 <= 0) goto L7;
+        long r1 = f35.Q(((long) r0) * 1000);
+    L8:
+        this.l = r1;
+        return;
+    L7:
+        r1 = -9223372036854775807L;
+        goto L8
     }
 
     @Override // defpackage.be5
-    public final void A(cu4 cu4Var) {
-        cu4Var.getClass();
-        if (cu4Var.o() == 0) {
-            m(cu4Var);
-            return;
-        }
-        bu4 bu4VarM = cu4Var.m(0, new bu4(), 0L);
-        bu4VarM.getClass();
-        long j = bu4VarM.l;
-        boolean z = bu4VarM.j;
-        long j2 = this.l;
-        if (j2 != -9223372036854775807L && j == -9223372036854775807L && !z) {
-            cu4Var = new sv2(0, j2, cu4Var);
-        }
-        m(cu4Var);
+    public final void A(cu4 r10) {
+        r10.getClass();
+        if (r10.o() != 0) goto L6;
+        m(r10);
+        return;
+    L6:
+        bu4 r0 = r10.m(0, new bu4(), 0);
+        r0.getClass();
+        long r1 = r0.l;
+        boolean r2 = r0.j;
+        long r4 = this.l;
+        if (r4 != (-9223372036854775807L)) goto L9;
+    L12:
+        m(r10);
+        return;
+    L9:
+        if (r1 != (-9223372036854775807L)) goto L12;
+        if (r2 == true) goto L12;
+        r10 = new sv2(0, r4, r10);
+        goto L12
     }
 }

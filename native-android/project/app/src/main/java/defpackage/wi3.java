@@ -18,66 +18,72 @@ public final /* synthetic */ class wi3 implements View.OnClickListener {
     public final /* synthetic */ Object p;
     public final /* synthetic */ Object q;
 
-    public /* synthetic */ wi3(Object obj, Object obj2, int i, int i2) {
-        this.n = i2;
-        this.p = obj;
-        this.q = obj2;
-        this.o = i;
+    public /* synthetic */ wi3(Object r1, Object r2, int r3, int r4) {
+        this.n = r4;
+        this.p = r1;
+        this.q = r2;
+        this.o = r3;
     }
 
     @Override // android.view.View.OnClickListener
-    public final void onClick(View view) {
-        Playlist playlist;
-        int i = this.n;
-        Object obj = this.q;
-        Object obj2 = this.p;
-        switch (i) {
-            case 0:
-                xi3 xi3Var = (xi3) ((np0) obj2).b;
-                bo2.q(xi3Var.q0, ((PlayQueue) obj).getEntries(), this.o, "queue");
-                ((ImageButton) ((ae1) xi3Var.o0.q).e).setVisibility(8);
-                break;
-            default:
-                SongBottomSheetDialog songBottomSheetDialog = (SongBottomSheetDialog) obj2;
-                String str = (String) obj;
-                Child child = songBottomSheetDialog.D0;
-                MainActivity mainActivity = (MainActivity) songBottomSheetDialog.X();
-                songBottomSheetDialog.h0();
-                e75 e75VarD = mainActivity.d();
-                b75 b75VarR = gh0.r(mainActivity);
-                tf0 tf0VarQ = gh0.q(mainActivity);
-                b75VarR.getClass();
-                tf0VarQ.getClass();
-                bq4 bq4Var = new bq4(e75VarD, b75VarR, tf0VarQ);
-                i30 i30VarA = kx3.a(im3.class);
-                String strB = i30VarA.b();
-                if (strB == null) {
-                    kf2.n("Local and anonymous classes can not be ViewModels");
-                } else {
-                    im3 im3Var = (im3) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-                    int i2 = this.o;
-                    ew4 ew4Var = new ew4(mainActivity, im3Var, str, child, i2, 5);
-                    k03 k03Var = im3Var.j;
-                    List list = (List) k03Var.d();
-                    if (im3Var.f == null && (playlist = im3Var.e) != null && playlist.getId().equals(str) && list != null && i2 >= 0 && i2 < list.size()) {
-                        im3Var.f = str;
-                        int i3 = im3Var.h + 1;
-                        im3Var.h = i3;
-                        im3Var.i = i3;
-                        ArrayList arrayList = new ArrayList(list);
-                        Child child2 = (Child) arrayList.remove(i2);
-                        k03Var.k(arrayList);
-                        mm3 mm3Var = im3Var.c;
-                        hq1 hq1Var = new hq1(im3Var, arrayList, str, list, i2, ew4Var, child2);
-                        mm3Var.getClass();
-                        ArrayList arrayList2 = new ArrayList();
-                        arrayList2.add(Integer.valueOf(i2));
-                        new Thread(new t6(mm3Var, str, arrayList2, hq1Var, 27)).start();
-                    } else {
-                        ew4Var.o();
-                    }
-                }
-                break;
-        }
+    public final void onClick(View r11) {
+        int r12 = this.n;
+        Object r0 = this.q;
+        Object r1 = this.p;
+        switch(r12) {
+            case 0: goto L21;
+            default: goto L4;
+        };
+    L4:
+        SongBottomSheetDialog r2 = (SongBottomSheetDialog) r1;
+        String r5 = (String) r0;
+        Child r6 = r2.D0;
+        MainActivity r3 = (MainActivity) r2.X();
+        r2.h0();
+        e75 r13 = r3.d();
+        b75 r4 = gh0.r(r3);
+        tf0 r7 = gh0.q(r3);
+        r4.getClass();
+        r7.getClass();
+        bq4 r8 = new bq4(r13, r4, r7);
+        i30 r14 = kx3.a(im3.class);
+        String r9 = r14.b();
+        if (r9 == null) goto L19;
+        im3 r10 = (im3) r8.l(r14, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r9));
+        int r15 = this.o;
+        ew4 r16 = new ew4(r3, r10, r5, r6, r15, 5);
+        k03 r17 = r10.j;
+        List r18 = (List) r17.d();
+        if (r10.f != null) goto L18;
+        Playlist r19 = r10.e;
+        if (r19 == null) goto L18;
+        if (r19.getId().equals(r5) == false) goto L18;
+        if (r18 == null) goto L18;
+        if (r15 < 0) goto L18;
+        if (r15 >= r18.size()) goto L18;
+        r10.f = r5;
+        int r110 = r10.h + 1;
+        r10.h = r110;
+        r10.i = r110;
+        ArrayList r20 = new ArrayList(r18);
+        Child r21 = (Child) r20.remove(r15);
+        r17.k(r20);
+        mm3 r111 = r10.c;
+        hq1 r22 = new hq1(r10, r20, r5, r18, r15, r16, r21);
+        r111.getClass();
+        ArrayList r23 = new ArrayList();
+        r23.add(Integer.valueOf(r15));
+        new Thread(new t6(r111, r5, r23, r22, 27)).start();
+        return;
+    L18:
+        r16.o();
+        return;
+    L19:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return;
+    L21:
+        xi3 r112 = (xi3) ((np0) r1).b;
+        bo2.q(r112.q0, ((PlayQueue) r0).getEntries(), this.o, "queue");
+        ((ImageButton) ((ae1) r112.o0.q).e).setVisibility(8);
     }
 }

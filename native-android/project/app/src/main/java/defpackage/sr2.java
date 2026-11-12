@@ -8,34 +8,39 @@ public final /* synthetic */ class sr2 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ tn2 o;
 
-    public /* synthetic */ sr2(tn2 tn2Var, int i) {
-        this.n = i;
-        this.o = tn2Var;
+    public /* synthetic */ sr2(tn2 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        tn2 tn2Var = this.o;
-        switch (i) {
-            case 0:
-                xr2 xr2Var = tn2Var.u;
-                if (xr2Var != null) {
-                    tn2Var.s.r0(xr2Var);
-                }
-                break;
-            case 1:
-                rm2 rm2Var = tn2Var.v;
-                if (rm2Var != null) {
-                    ((MediaLibraryService) rm2Var.o).k(tn2Var.k, false);
-                }
-                break;
-            case 2:
-                tn2.a(tn2Var);
-                break;
-            default:
-                tn2Var.C();
-                break;
-        }
+        int r0 = this.n;
+        tn2 r2 = this.o;
+        switch(r0) {
+            case 0: goto L12;
+            case 1: goto L8;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r2.C();
+        return;
+    L6:
+        tn2.a(r2);
+        return;
+    L8:
+        rm2 r1 = r2.v;
+        if (r1 == null) goto L16;
+        kn2 r3 = r2.k;
+        ((MediaLibraryService) r1.o).k(r3, false);
+        return;
+    L16:
+        return;
+    L12:
+        xr2 r4 = r2.u;
+        if (r4 == null) goto L17;
+        r2.s.r0(r4);
+        return;
     }
 }

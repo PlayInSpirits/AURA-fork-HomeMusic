@@ -8,7 +8,6 @@ import com.eddyizm.tempus.ui.fragment.PlaylistCatalogueFragment;
 import com.eddyizm.tempus.ui.fragment.PlaylistPageFragment;
 import com.eddyizm.tempus.ui.fragment.PodcastChannelCatalogueFragment;
 import com.eddyizm.tempus.ui.fragment.SongListPageFragment;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -17,70 +16,84 @@ public final class w7 implements SearchView.OnQueryTextListener {
     public final /* synthetic */ SearchView b;
     public final /* synthetic */ kc1 c;
 
-    public /* synthetic */ w7(kc1 kc1Var, SearchView searchView, int i) {
-        this.a = i;
-        this.c = kc1Var;
-        this.b = searchView;
+    public /* synthetic */ w7(kc1 r1, SearchView r2, int r3) {
+        this.a = r3;
+        this.c = r1;
+        this.b = r2;
     }
 
     @Override // android.widget.SearchView.OnQueryTextListener
-    public final boolean onQueryTextChange(String str) {
-        int i = this.a;
-        kc1 kc1Var = this.c;
-        switch (i) {
-            case 0:
-                ((o7) ((AlbumCatalogueFragment) kc1Var).q0.v).filter(str);
-                return false;
-            case 1:
-                ((o7) ((ArtistListPageFragment) kc1Var).o0.v).filter(str);
-                return false;
-            case 2:
-                ((o7) ((GenreCatalogueFragment) kc1Var).o0.u).filter(str);
-                return true;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                q7 q7Var = ((PlaylistCatalogueFragment) kc1Var).o0;
-                q7Var.getClass();
-                new o7(q7Var, 6).filter(str);
-                return false;
-            case 4:
-                ((PlaylistPageFragment) kc1Var).p0.C.filter(str);
-                return false;
-            case 5:
-                ((o7) ((PodcastChannelCatalogueFragment) kc1Var).o0.u).filter(str);
-                return false;
-            default:
-                ((SongListPageFragment) kc1Var).p0.C.filter(str);
-                return false;
-        }
+    public final boolean onQueryTextChange(String r4) {
+        int r0 = this.a;
+        kc1 r3 = this.c;
+        switch(r0) {
+            case 0: goto L16;
+            case 1: goto L14;
+            case 2: goto L12;
+            case 3: goto L10;
+            case 4: goto L8;
+            case 5: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((SongListPageFragment) r3).p0.C.filter(r4);
+        return false;
+    L6:
+        ((o7) ((PodcastChannelCatalogueFragment) r3).o0.u).filter(r4);
+        return false;
+    L8:
+        ((PlaylistPageFragment) r3).p0.C.filter(r4);
+        return false;
+    L10:
+        q7 r5 = ((PlaylistCatalogueFragment) r3).o0;
+        r5.getClass();
+        new o7(r5, 6).filter(r4);
+        return false;
+    L12:
+        ((o7) ((GenreCatalogueFragment) r3).o0.u).filter(r4);
+        return true;
+    L14:
+        ((o7) ((ArtistListPageFragment) r3).o0.v).filter(r4);
+        return false;
+    L16:
+        ((o7) ((AlbumCatalogueFragment) r3).q0.v).filter(r4);
+        return false;
     }
 
     @Override // android.widget.SearchView.OnQueryTextListener
-    public final boolean onQueryTextSubmit(String str) {
-        int i = this.a;
-        SearchView searchView = this.b;
-        switch (i) {
-            case 0:
-                searchView.clearFocus();
-                return false;
-            case 1:
-                searchView.clearFocus();
-                return false;
-            case 2:
-                ((o7) ((GenreCatalogueFragment) this.c).o0.u).filter(str);
-                searchView.clearFocus();
-                return true;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                searchView.clearFocus();
-                return false;
-            case 4:
-                searchView.clearFocus();
-                return false;
-            case 5:
-                searchView.clearFocus();
-                return false;
-            default:
-                searchView.clearFocus();
-                return false;
-        }
+    public final boolean onQueryTextSubmit(String r4) {
+        int r0 = this.a;
+        SearchView r2 = this.b;
+        switch(r0) {
+            case 0: goto L16;
+            case 1: goto L14;
+            case 2: goto L12;
+            case 3: goto L10;
+            case 4: goto L8;
+            case 5: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r2.clearFocus();
+        return false;
+    L6:
+        r2.clearFocus();
+        return false;
+    L8:
+        r2.clearFocus();
+        return false;
+    L10:
+        r2.clearFocus();
+        return false;
+    L12:
+        ((o7) ((GenreCatalogueFragment) this.c).o0.u).filter(r4);
+        r2.clearFocus();
+        return true;
+    L14:
+        r2.clearFocus();
+        return false;
+    L16:
+        r2.clearFocus();
+        return false;
     }
 }

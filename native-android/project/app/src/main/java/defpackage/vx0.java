@@ -7,16 +7,21 @@ import android.util.SparseArray;
 public final class vx0 {
     public final int a;
     public final int b;
-    public final SparseArray c = new SparseArray();
-    public final SparseArray d = new SparseArray();
-    public final SparseArray e = new SparseArray();
-    public final SparseArray f = new SparseArray();
-    public final SparseArray g = new SparseArray();
+    public final SparseArray c;
+    public final SparseArray d;
+    public final SparseArray e;
+    public final SparseArray f;
+    public final SparseArray g;
     public qx0 h;
     public j83 i;
 
-    public vx0(int i, int i2) {
-        this.a = i;
-        this.b = i2;
+    public vx0(int r1, int r2) {
+        this.a = r1;
+        this.b = r2;
+        this.c = new SparseArray();
+        this.d = new SparseArray();
+        this.e = new SparseArray();
+        this.f = new SparseArray();
+        this.g = new SparseArray();
     }
 }

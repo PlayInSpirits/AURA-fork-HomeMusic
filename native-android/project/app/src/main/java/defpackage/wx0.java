@@ -14,181 +14,219 @@ public final class wx0 implements mz0 {
     public final Object f;
     public Object g;
 
-    public wx0(List list) {
+    public wx0(List r3) {
         this.a = 0;
-        this.f = list;
-        this.g = new wv4[list.size()];
+        this.f = r3;
+        this.g = new wv4[r3.size()];
         this.c = -9223372036854775807L;
     }
 
     @Override // defpackage.mz0
-    public final void a(be3 be3Var) {
-        boolean z;
-        boolean z2;
-        switch (this.a) {
-            case 0:
-                if (this.b) {
-                    if (this.d == 2) {
-                        if (be3Var.a() == 0) {
-                            z2 = false;
-                        } else {
-                            if (be3Var.A() != 32) {
-                                this.b = false;
-                            }
-                            this.d--;
-                            z2 = this.b;
-                        }
-                        if (!z2) {
-                        }
-                    }
-                    if (this.d == 1) {
-                        if (be3Var.a() == 0) {
-                            z = false;
-                        } else {
-                            if (be3Var.A() != 0) {
-                                this.b = false;
-                            }
-                            this.d--;
-                            z = this.b;
-                        }
-                        if (!z) {
-                        }
-                    }
-                    int i = be3Var.b;
-                    int iA = be3Var.a();
-                    for (wv4 wv4Var : (wv4[]) this.g) {
-                        be3Var.N(i);
-                        wv4Var.e(iA, be3Var);
-                    }
-                    this.e += iA;
-                }
-                break;
-            default:
-                be3 be3Var2 = (be3) this.f;
-                ((wv4) this.g).getClass();
-                if (this.b) {
-                    int iA2 = be3Var.a();
-                    int i2 = this.e;
-                    if (i2 < 10) {
-                        int iMin = Math.min(iA2, 10 - i2);
-                        System.arraycopy(be3Var.a, be3Var.b, be3Var2.a, this.e, iMin);
-                        if (this.e + iMin == 10) {
-                            be3Var2.N(0);
-                            if (73 == be3Var2.A() && 68 == be3Var2.A() && 51 == be3Var2.A()) {
-                                be3Var2.O(3);
-                                this.d = be3Var2.z() + 10;
-                            } else {
-                                l93.q0("Id3Reader", "Discarding invalid ID3 tag");
-                                this.b = false;
-                            }
-                        }
-                    }
-                    int iMin2 = Math.min(iA2, this.d - this.e);
-                    ((wv4) this.g).e(iMin2, be3Var);
-                    this.e += iMin2;
-                    break;
-                }
-                break;
-        }
+    public final void a(be3 r10) {
+        int r1 = 0;
+        switch(this.a) {
+            case 0: goto L23;
+            default: goto L4;
+        };
+    L4:
+        be3 r0 = (be3) this.f;
+        ((wv4) this.g).getClass();
+        if (this.b == false) goto L53;
+        int r2 = r10.a();
+        int r3 = this.e;
+        if (r3 >= 10) goto L20;
+        int r4 = Math.min(r2, 10 - r3);
+        System.arraycopy(r10.a, r10.b, r0.a, this.e, r4);
+        if ((this.e + r4) != 10) goto L20;
+        r0.N(0);
+        if (73 == r0.A()) goto L14;
+    L19:
+        l93.q0("Id3Reader", "Discarding invalid ID3 tag");
+        this.b = false;
+        return;
+    L14:
+        if (68 != r0.A()) goto L19;
+        if (51 != r0.A()) goto L19;
+        r0.O(3);
+        this.d = r0.z() + 10;
+    L20:
+        int r5 = Math.min(r2, this.d - this.e);
+        ((wv4) this.g).e(r5, r10);
+        this.e += r5;
+        return;
+    L53:
+        return;
+    L23:
+        if (this.b == true) goto L25;
+        return;
+    L25:
+        if (this.d != 2) goto L36;
+        if (r10.a() != 0) goto L30;
+        boolean r6 = false;
+    L33:
+        if (r6 == true) goto L36;
+        return;
+    L30:
+        if (r10.A() == 32) goto L32;
+        this.b = false;
+    L32:
+        this.d--;
+        r6 = this.b;
+    L36:
+        if (this.d == 1) goto L38;
+    L46:
+        int r7 = r10.b;
+        int r8 = r10.a();
+        wv4[] r9 = (wv4[]) this.g;
+        int r11 = r9.length;
+    L47:
+        if (r1 >= r11) goto L49;
+        wv4 r12 = r9[r1];
+        r10.N(r7);
+        r12.e(r8, r10);
+        r1 = r1 + 1;
+        goto L47
+    L49:
+        this.e += r8;
+        return;
+    L38:
+        if (r10.a() != 0) goto L41;
+        boolean r13 = false;
+    L44:
+        if (r13 == true) goto L46;
+        return;
+    L41:
+        if (r10.A() == 0) goto L43;
+        this.b = false;
+    L43:
+        this.d--;
+        r13 = this.b;
+        goto L44
     }
 
     @Override // defpackage.mz0
     public final void c() {
-        switch (this.a) {
-            case 0:
-                this.b = false;
-                this.c = -9223372036854775807L;
-                break;
-            default:
-                this.b = false;
-                this.c = -9223372036854775807L;
-                break;
-        }
+        switch(this.a) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        this.b = false;
+        this.c = -9223372036854775807L;
+        return;
+    L6:
+        this.b = false;
+        this.c = -9223372036854775807L;
     }
 
     @Override // defpackage.mz0
-    public final void d(boolean z) {
-        int i;
-        switch (this.a) {
-            case 0:
-                if (this.b) {
-                    rr2.w(this.c != -9223372036854775807L);
-                    for (wv4 wv4Var : (wv4[]) this.g) {
-                        wv4Var.a(this.c, 1, this.e, 0, null);
-                    }
-                    this.b = false;
-                }
-                break;
-            default:
-                ((wv4) this.g).getClass();
-                if (this.b && (i = this.d) != 0 && this.e == i) {
-                    rr2.w(this.c != -9223372036854775807L);
-                    ((wv4) this.g).a(this.c, 1, this.d, 0, null);
-                    this.b = false;
-                    break;
-                }
-                break;
-        }
+    public final void d(boolean r12) {
+        boolean r0 = true;
+        switch(this.a) {
+            case 0: goto L18;
+            default: goto L4;
+        };
+    L4:
+        ((wv4) this.g).getClass();
+        if (this.b == false) goto L29;
+        int r13 = this.d;
+        if (r13 != 0) goto L9;
+        return;
+    L9:
+        if (this.e == r13) goto L12;
+        return;
+    L12:
+        if (this.c != (-9223372036854775807L)) goto L15;
+        r0 = false;
+    L15:
+        rr2.w(r0);
+        ((wv4) this.g).a(this.c, 1, this.d, 0, null);
+        this.b = false;
+        return;
+    L29:
+        return;
+    L18:
+        if (this.b == true) goto L20;
+        return;
+    L20:
+        if (this.c != (-9223372036854775807L)) goto L23;
+        r0 = false;
+    L23:
+        rr2.w(r0);
+        wv4[] r14 = (wv4[]) this.g;
+        int r1 = r14.length;
+        int r2 = 0;
+    L24:
+        if (r2 >= r1) goto L26;
+        r14[r2].a(this.c, 1, this.e, 0, null);
+        r2 = r2 + 1;
+        goto L24
+    L26:
+        this.b = false;
     }
 
     @Override // defpackage.mz0
-    public final void e(int i, long j) {
-        switch (this.a) {
-            case 0:
-                if ((i & 4) != 0) {
-                    this.b = true;
-                    this.c = j;
-                    this.e = 0;
-                    this.d = 2;
-                    break;
-                }
-                break;
-            default:
-                if ((i & 4) != 0) {
-                    this.b = true;
-                    this.c = j;
-                    this.d = 0;
-                    this.e = 0;
-                    break;
-                }
-                break;
-        }
+    public final void e(int r2, long r3) {
+        switch(this.a) {
+            case 0: goto L10;
+            default: goto L5;
+        };
+    L5:
+        if ((r2 & 4) == 0) goto L14;
+        this.b = true;
+        this.c = r3;
+        this.d = 0;
+        this.e = 0;
+        return;
+    L14:
+        return;
+    L10:
+        if ((r2 & 4) == 0) goto L15;
+        this.b = true;
+        this.c = r3;
+        this.e = 0;
+        this.d = 2;
+        return;
     }
 
     @Override // defpackage.mz0
-    public final void f(m51 m51Var, sy4 sy4Var) {
-        switch (this.a) {
-            case 0:
-                wv4[] wv4VarArr = (wv4[]) this.g;
-                for (int i = 0; i < wv4VarArr.length; i++) {
-                    ry4 ry4Var = (ry4) ((List) this.f).get(i);
-                    sy4Var.a();
-                    sy4Var.b();
-                    wv4 wv4VarT = m51Var.t(sy4Var.d, 3);
-                    sb1 sb1Var = new sb1();
-                    sy4Var.b();
-                    sb1Var.a = sy4Var.e;
-                    sb1Var.l = lw2.m("video/mp2t");
-                    sb1Var.m = lw2.m("application/dvbsubs");
-                    sb1Var.p = Collections.singletonList(ry4Var.b);
-                    sb1Var.d = ry4Var.a;
-                    f34.l(sb1Var, wv4VarT);
-                    wv4VarArr[i] = wv4VarT;
-                }
-                break;
-            default:
-                sy4Var.a();
-                sy4Var.b();
-                wv4 wv4VarT2 = m51Var.t(sy4Var.d, 5);
-                this.g = wv4VarT2;
-                sb1 sb1Var2 = new sb1();
-                sy4Var.b();
-                sb1Var2.a = sy4Var.e;
-                sb1Var2.l = lw2.m("video/mp2t");
-                sb1Var2.m = lw2.m("application/id3");
-                f34.l(sb1Var2, wv4VarT2);
-                break;
-        }
+    public final void f(m51 r8, sy4 r9) {
+        switch(this.a) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r9.a();
+        r9.b();
+        wv4 r10 = r8.t(r9.d, 5);
+        this.g = r10;
+        sb1 r7 = new sb1();
+        r9.b();
+        r7.a = r9.e;
+        r7.l = lw2.m("video/mp2t");
+        r7.m = lw2.m("application/id3");
+        f34.l(r7, r10);
+        return;
+    L6:
+        wv4[] r0 = (wv4[]) this.g;
+        int r2 = 0;
+    L8:
+        if (r2 >= r0.length) goto L10;
+        ry4 r3 = (ry4) ((List) this.f).get(r2);
+        r9.a();
+        r9.b();
+        wv4 r4 = r8.t(r9.d, 3);
+        sb1 r5 = new sb1();
+        r9.b();
+        r5.a = r9.e;
+        r5.l = lw2.m("video/mp2t");
+        r5.m = lw2.m("application/dvbsubs");
+        r5.p = Collections.singletonList(r3.b);
+        r5.d = r3.a;
+        f34.l(r5, r4);
+        r0[r2] = r4;
+        r2 = r2 + 1;
+        goto L8
     }
 
     public wx0() {

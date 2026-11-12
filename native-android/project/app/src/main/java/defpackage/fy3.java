@@ -5,38 +5,52 @@ import java.util.Collection;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class fy3 extends bx1 {
-    public static final fy3 v = new fy3();
+    public static final fy3 v = null;
     public final transient Object q;
     public final transient Object[] r;
     public final transient int s;
     public final transient int t;
     public final transient fy3 u;
 
-    public fy3(int i, Object[] objArr) {
-        this.r = objArr;
-        this.t = i;
+    static {
+        v = new fy3();
+    }
+
+    public fy3(int r5, Object[] r6) {
+        this.r = r6;
+        this.t = r5;
         this.s = 0;
-        int i2 = i >= 2 ? jx1.i(i) : 0;
-        Object objH = ly3.h(objArr, i, i2, 0);
-        if (objH instanceof Object[]) {
-            throw ((ax1) ((Object[]) objH)[2]).a();
-        }
-        this.q = objH;
-        Object objH2 = ly3.h(objArr, i, i2, 1);
-        if (objH2 instanceof Object[]) {
-            throw ((ax1) ((Object[]) objH2)[2]).a();
-        }
-        this.u = new fy3(objH2, objArr, i, this);
+        if (r5 < 2) goto L5;
+        int r2 = jx1.i(r5);
+    L6:
+        Object r0 = ly3.h(r6, r5, r2, 0);
+        if ((r0 instanceof Object[]) == true) goto L15;
+        this.q = r0;
+        Object r1 = ly3.h(r6, r5, r2, 1);
+        if ((r1 instanceof Object[]) == true) goto L13;
+        this.u = new fy3(r1, r6, r5, this);
+        return;
+    L13:
+        throw ((ax1) ((Object[]) r1)[2]).a();
+    L15:
+        throw ((ax1) ((Object[]) r0)[2]).a();
+    L5:
+        r2 = 0;
+        goto L6
     }
 
     @Override // defpackage.bx1
     public final iy3 c() {
-        return new iy3(this, this.r, this.s, this.t);
+        int r1 = this.s;
+        int r2 = this.t;
+        return new iy3(this, this.r, r1, r2);
     }
 
     @Override // defpackage.bx1
     public final jy3 d() {
-        return new jy3(this, new ky3(this.r, this.s, this.t));
+        int r1 = this.s;
+        int r2 = this.t;
+        return new jy3(this, new ky3(this.r, r1, r2));
     }
 
     @Override // defpackage.bx1
@@ -45,25 +59,26 @@ public final class fy3 extends bx1 {
     }
 
     @Override // defpackage.bx1
-    /* JADX INFO: renamed from: f */
-    public final rw1 values() {
-        fy3 fy3Var = this.u;
-        jx1 jx1Var = fy3Var.o;
-        if (jx1Var != null) {
-            return jx1Var;
-        }
-        jy3 jy3VarD = fy3Var.d();
-        fy3Var.o = jy3VarD;
-        return jy3VarD;
+    public final rw1 f() {
+        fy3 r1 = this.u;
+        jx1 r0 = r1.o;
+        if (r0 != null) goto L6;
+        jy3 r2 = r1.d();
+        r1.o = r2;
+        return r2;
+    L6:
+        return r0;
     }
 
     @Override // defpackage.bx1, java.util.Map
-    public final Object get(Object obj) {
-        Object objI = ly3.i(this.q, this.r, this.t, this.s, obj);
-        if (objI == null) {
-            return null;
-        }
-        return objI;
+    public final Object get(Object r4) {
+        int r0 = this.t;
+        int r1 = this.s;
+        Object r3 = ly3.i(this.q, this.r, r0, r1, r4);
+        if (r3 != null) goto L6;
+        return null;
+    L6:
+        return r3;
     }
 
     @Override // java.util.Map
@@ -73,14 +88,14 @@ public final class fy3 extends bx1 {
 
     @Override // defpackage.bx1, java.util.Map
     public final Collection values() {
-        fy3 fy3Var = this.u;
-        jx1 jx1Var = fy3Var.o;
-        if (jx1Var != null) {
-            return jx1Var;
-        }
-        jy3 jy3VarD = fy3Var.d();
-        fy3Var.o = jy3VarD;
-        return jy3VarD;
+        fy3 r1 = this.u;
+        jx1 r0 = r1.o;
+        if (r0 != null) goto L6;
+        jy3 r2 = r1.d();
+        r1.o = r2;
+        return r2;
+    L6:
+        return r0;
     }
 
     public fy3() {
@@ -91,11 +106,11 @@ public final class fy3 extends bx1 {
         this.u = this;
     }
 
-    public fy3(Object obj, Object[] objArr, int i, fy3 fy3Var) {
-        this.q = obj;
-        this.r = objArr;
+    public fy3(Object r1, Object[] r2, int r3, fy3 r4) {
+        this.q = r1;
+        this.r = r2;
         this.s = 1;
-        this.t = i;
-        this.u = fy3Var;
+        this.t = r3;
+        this.u = r4;
     }
 }

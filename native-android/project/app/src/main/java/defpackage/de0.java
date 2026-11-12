@@ -9,70 +9,70 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class de0 {
-    public boolean e(View view, Rect rect) {
+    public boolean e(View r1, Rect r2) {
         return false;
     }
 
-    public boolean f(View view, View view2) {
+    public boolean f(View r1, View r2) {
         return false;
     }
 
-    public void g(ge0 ge0Var) {
+    public void g(ge0 r1) {
     }
 
-    public boolean h(CoordinatorLayout coordinatorLayout, View view, View view2) {
+    public boolean h(CoordinatorLayout r1, View r2, View r3) {
         return false;
     }
 
-    public void i(CoordinatorLayout coordinatorLayout, View view) {
+    public void i(CoordinatorLayout r1, View r2) {
     }
 
     public void j() {
     }
 
-    public boolean k(CoordinatorLayout coordinatorLayout, View view, MotionEvent motionEvent) {
+    public boolean k(CoordinatorLayout r1, View r2, MotionEvent r3) {
         return false;
     }
 
-    public boolean l(CoordinatorLayout coordinatorLayout, View view, int i) {
+    public boolean l(CoordinatorLayout r1, View r2, int r3) {
         return false;
     }
 
-    public boolean m(CoordinatorLayout coordinatorLayout, View view, int i, int i2, int i3) {
+    public boolean m(CoordinatorLayout r1, View r2, int r3, int r4, int r5) {
         return false;
     }
 
-    public boolean n(View view) {
+    public boolean n(View r1) {
         return false;
     }
 
-    public void o(CoordinatorLayout coordinatorLayout, View view, View view2, int i, int i2, int[] iArr, int i3) {
+    public void o(CoordinatorLayout r1, View r2, View r3, int r4, int r5, int[] r6, int r7) {
     }
 
-    public void p(CoordinatorLayout coordinatorLayout, View view, int i, int i2, int i3, int[] iArr) {
-        iArr[0] = iArr[0] + i2;
-        iArr[1] = iArr[1] + i3;
+    public void p(CoordinatorLayout r1, View r2, int r3, int r4, int r5, int[] r6) {
+        r6[0] = r6[0] + r4;
+        r6[1] = r6[1] + r5;
     }
 
-    public boolean q(CoordinatorLayout coordinatorLayout, View view, Rect rect, boolean z) {
+    public boolean q(CoordinatorLayout r1, View r2, Rect r3, boolean r4) {
         return false;
     }
 
-    public void r(View view, Parcelable parcelable) {
+    public void r(View r1, Parcelable r2) {
     }
 
-    public Parcelable s(View view) {
+    public Parcelable s(View r1) {
         return View.BaseSavedState.EMPTY_STATE;
     }
 
-    public boolean t(CoordinatorLayout coordinatorLayout, View view, View view2, int i, int i2) {
+    public boolean t(CoordinatorLayout r1, View r2, View r3, int r4, int r5) {
         return false;
     }
 
-    public void u(CoordinatorLayout coordinatorLayout, View view, View view2, int i) {
+    public void u(CoordinatorLayout r1, View r2, View r3, int r4) {
     }
 
-    public boolean v(CoordinatorLayout coordinatorLayout, View view, MotionEvent motionEvent) {
+    public boolean v(CoordinatorLayout r1, View r2, MotionEvent r3) {
         return false;
     }
 }

@@ -8,55 +8,50 @@ public final class a91 extends ep4 implements xf1 {
     public /* synthetic */ Object q;
     public final /* synthetic */ wf1 r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public a91(wf1 wf1Var, vd0 vd0Var) {
-        super(3, vd0Var);
-        this.r = wf1Var;
+    public a91(wf1 r1, vd0 r2) {
+        this.r = r1;
+        super(3, r2);
     }
 
     @Override // defpackage.xf1
-    public final Object a(Object obj, Object obj2, Object obj3) {
-        a91 a91Var = new a91(this.r, (vd0) obj3);
-        a91Var.p = (q81) obj;
-        a91Var.q = obj2;
-        return a91Var.invokeSuspend(j15.a);
+    public final Object a(Object r2, Object r3, Object r4) {
+        wf1 r1 = this.r;
+        a91 r0 = new a91(r1, (vd0) r4);
+        r0.p = (q81) r2;
+        r0.q = r3;
+        return r0.invokeSuspend(j15.a);
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:14:0x0039, code lost:
-    
-        if (r0.b(r6, r5) == r4) goto L15;
-     */
     @Override // defpackage.jp
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public final Object invokeSuspend(Object obj) {
-        q81 q81Var;
-        int i = this.o;
-        xe0 xe0Var = xe0.n;
-        if (i != 0) {
-            if (i == 1) {
-                q81Var = this.p;
-                kb4.X(obj);
-            } else {
-                if (i != 2) {
-                    kf2.o("call to 'resume' before 'invoke' with coroutine");
-                    return null;
-                }
-                kb4.X(obj);
-            }
-            return j15.a;
-        }
-        kb4.X(obj);
-        q81Var = this.p;
-        Object obj2 = this.q;
-        this.p = q81Var;
-        this.o = 1;
-        obj = this.r.invoke(obj2, this);
-        if (obj != xe0Var) {
-        }
-        return xe0Var;
+    public final Object invokeSuspend(Object r6) {
+        int r0 = this.o;
+        xe0 r4 = xe0.n;
+        if (r0 == 0) goto L10;
+        if (r0 == 1) goto L9;
+        if (r0 != 2) goto L7;
+        kb4.X(r6);
+    L17:
+        return j15.a;
+    L7:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L9:
+        q81 r1 = this.p;
+        kb4.X(r6);
+    L13:
         this.p = null;
         this.o = 2;
+        if (r1.b(r6, this) != r4) goto L17;
+    L15:
+        return r4;
+    L10:
+        kb4.X(r6);
+        r1 = this.p;
+        Object r7 = this.q;
+        this.p = r1;
+        this.o = 1;
+        r6 = this.r.invoke(r7, this);
+        if (r6 != r4) goto L13;
+        goto L13
     }
 }

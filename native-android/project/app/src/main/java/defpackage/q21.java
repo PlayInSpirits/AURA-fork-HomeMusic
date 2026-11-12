@@ -7,7 +7,7 @@ import java.io.IOException;
 public interface q21 {
     void a();
 
-    void b(bv3 bv3Var, IOException iOException);
+    void b(bv3 r1, IOException r2);
 
     void cancel();
 

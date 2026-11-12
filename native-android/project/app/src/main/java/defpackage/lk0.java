@@ -6,8 +6,8 @@ public final class lk0 {
     public final int a;
     public final long b;
 
-    public lk0(int i, long j) {
-        this.a = i;
-        this.b = j;
+    public lk0(int r1, long r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

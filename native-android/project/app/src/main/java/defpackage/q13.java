@@ -9,11 +9,11 @@ public final class q13 {
     public final int d;
     public final int e;
 
-    public q13(int i, int i2, int i3, int i4, int i5) {
-        this.a = i;
-        this.b = i2;
-        this.c = i3;
-        this.d = i4;
-        this.e = i5;
+    public q13(int r1, int r2, int r3, int r4, int r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
     }
 }

@@ -11,16 +11,18 @@ public final class ay3 extends nq2 implements yx3 {
     public String h;
     public String i;
     public boolean j;
+    public int k;
     public int l;
     public xx3 m;
+    public int n;
     public final /* synthetic */ cy3 o;
-    public int k = -1;
-    public int n = -1;
 
-    public ay3(cy3 cy3Var, String str, pq2 pq2Var) {
-        this.o = cy3Var;
-        this.f = str;
-        this.g = pq2Var;
+    public ay3(cy3 r1, String r2, pq2 r3) {
+        this.o = r1;
+        this.k = -1;
+        this.n = -1;
+        this.f = r2;
+        this.g = r3;
     }
 
     @Override // defpackage.yx3
@@ -29,72 +31,73 @@ public final class ay3 extends nq2 implements yx3 {
     }
 
     @Override // defpackage.yx3
-    public final void b(xx3 xx3Var) {
-        zx3 zx3Var = new zx3(this);
-        this.m = xx3Var;
-        int i = xx3Var.e;
-        xx3Var.e = i + 1;
-        int i2 = xx3Var.d;
-        xx3Var.d = i2 + 1;
-        Bundle bundleH = b11.h("memberRouteId", this.f);
-        bundleH.putParcelable("routeControllerOptions", this.g.a);
-        xx3Var.b(11, i2, i, null, bundleH);
-        xx3Var.h.put(i2, zx3Var);
-        this.n = i;
-        if (this.j) {
-            xx3Var.a(i);
-            int i3 = this.k;
-            if (i3 >= 0) {
-                xx3Var.c(this.n, i3);
-                this.k = -1;
-            }
-            int i4 = this.l;
-            if (i4 != 0) {
-                xx3Var.d(this.n, i4);
-                this.l = 0;
-            }
-        }
+    public final void b(xx3 r8) {
+        zx3 r0 = new zx3(this);
+        this.m = r8;
+        int r4 = r8.e;
+        r8.e = r4 + 1;
+        int r3 = r8.d;
+        r8.d = r3 + 1;
+        Bundle r6 = b11.h("memberRouteId", this.f);
+        r6.putParcelable("routeControllerOptions", this.g.a);
+        r8.b(11, r3, r4, null, r6);
+        r8.h.put(r3, r0);
+        this.n = r4;
+        if (this.j == false) goto L11;
+        r8.a(r4);
+        int r9 = this.k;
+        if (r9 < 0) goto L7;
+        r8.c(this.n, r9);
+        this.k = -1;
+    L7:
+        int r10 = this.l;
+        if (r10 == 0) goto L12;
+        r8.d(this.n, r10);
+        this.l = 0;
+        return;
+    L12:
+        return;
     }
 
     @Override // defpackage.yx3
     public final void c() {
-        xx3 xx3Var = this.m;
-        if (xx3Var != null) {
-            int i = this.n;
-            int i2 = xx3Var.d;
-            xx3Var.d = i2 + 1;
-            xx3Var.b(4, i2, i, null, null);
-            this.m = null;
-            this.n = 0;
-        }
+        xx3 r0 = this.m;
+        if (r0 == null) goto L6;
+        int r3 = this.n;
+        int r2 = r0.d;
+        r0.d = r2 + 1;
+        r0.b(4, r2, r3, null, null);
+        this.m = null;
+        this.n = 0;
+        return;
     }
 
     @Override // defpackage.oq2
     public final void d() {
-        cy3 cy3Var = this.o;
-        cy3Var.x.remove(this);
+        cy3 r0 = this.o;
+        r0.x.remove(this);
         c();
-        cy3Var.l();
+        r0.l();
     }
 
     @Override // defpackage.oq2
     public final void e() {
         this.j = true;
-        xx3 xx3Var = this.m;
-        if (xx3Var != null) {
-            xx3Var.a(this.n);
-        }
+        xx3 r0 = this.m;
+        if (r0 == null) goto L6;
+        r0.a(this.n);
+        return;
     }
 
     @Override // defpackage.oq2
-    public final void f(int i) {
-        xx3 xx3Var = this.m;
-        if (xx3Var != null) {
-            xx3Var.c(this.n, i);
-        } else {
-            this.k = i;
-            this.l = 0;
-        }
+    public final void f(int r2) {
+        xx3 r0 = this.m;
+        if (r0 == null) goto L6;
+        r0.c(this.n, r2);
+        return;
+    L6:
+        this.k = r2;
+        this.l = 0;
     }
 
     @Override // defpackage.oq2
@@ -103,27 +106,27 @@ public final class ay3 extends nq2 implements yx3 {
     }
 
     @Override // defpackage.oq2
-    public final void h(int i) {
+    public final void h(int r8) {
         this.j = false;
-        xx3 xx3Var = this.m;
-        if (xx3Var != null) {
-            int i2 = this.n;
-            Bundle bundle = new Bundle();
-            bundle.putInt("unselectReason", i);
-            int i3 = xx3Var.d;
-            xx3Var.d = i3 + 1;
-            xx3Var.b(6, i3, i2, null, bundle);
-        }
+        xx3 r1 = this.m;
+        if (r1 == null) goto L6;
+        int r4 = this.n;
+        Bundle r6 = new Bundle();
+        r6.putInt("unselectReason", r8);
+        int r3 = r1.d;
+        r1.d = r3 + 1;
+        r1.b(6, r3, r4, null, r6);
+        return;
     }
 
     @Override // defpackage.oq2
-    public final void i(int i) {
-        xx3 xx3Var = this.m;
-        if (xx3Var != null) {
-            xx3Var.d(this.n, i);
-        } else {
-            this.l += i;
-        }
+    public final void i(int r2) {
+        xx3 r0 = this.m;
+        if (r0 == null) goto L6;
+        r0.d(this.n, r2);
+        return;
+    L6:
+        this.l += r2;
     }
 
     @Override // defpackage.nq2
@@ -137,39 +140,39 @@ public final class ay3 extends nq2 implements yx3 {
     }
 
     @Override // defpackage.nq2
-    public final void m(String str) {
-        xx3 xx3Var = this.m;
-        if (xx3Var != null) {
-            int i = this.n;
-            Bundle bundleH = b11.h("memberRouteId", str);
-            int i2 = xx3Var.d;
-            xx3Var.d = i2 + 1;
-            xx3Var.b(12, i2, i, null, bundleH);
-        }
+    public final void m(String r7) {
+        xx3 r0 = this.m;
+        if (r0 == null) goto L6;
+        int r3 = this.n;
+        Bundle r5 = b11.h("memberRouteId", r7);
+        int r2 = r0.d;
+        r0.d = r2 + 1;
+        r0.b(12, r2, r3, null, r5);
+        return;
     }
 
     @Override // defpackage.nq2
-    public final void n(String str) {
-        xx3 xx3Var = this.m;
-        if (xx3Var != null) {
-            int i = this.n;
-            Bundle bundleH = b11.h("memberRouteId", str);
-            int i2 = xx3Var.d;
-            xx3Var.d = i2 + 1;
-            xx3Var.b(13, i2, i, null, bundleH);
-        }
+    public final void n(String r7) {
+        xx3 r0 = this.m;
+        if (r0 == null) goto L6;
+        int r3 = this.n;
+        Bundle r5 = b11.h("memberRouteId", r7);
+        int r2 = r0.d;
+        r0.d = r2 + 1;
+        r0.b(13, r2, r3, null, r5);
+        return;
     }
 
     @Override // defpackage.nq2
-    public final void o(ArrayList arrayList) {
-        xx3 xx3Var = this.m;
-        if (xx3Var != null) {
-            int i = this.n;
-            Bundle bundle = new Bundle();
-            bundle.putStringArrayList("memberRouteIds", new ArrayList<>(arrayList));
-            int i2 = xx3Var.d;
-            xx3Var.d = i2 + 1;
-            xx3Var.b(14, i2, i, null, bundle);
-        }
+    public final void o(ArrayList r7) {
+        xx3 r0 = this.m;
+        if (r0 == null) goto L6;
+        int r3 = this.n;
+        Bundle r5 = new Bundle();
+        r5.putStringArrayList("memberRouteIds", new ArrayList(r7));
+        int r2 = r0.d;
+        r0.d = r2 + 1;
+        r0.b(14, r2, r3, null, r5);
+        return;
     }
 }

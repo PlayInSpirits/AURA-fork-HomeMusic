@@ -11,50 +11,30 @@ public final /* synthetic */ class ss3 implements Runnable {
     public final /* synthetic */ String p;
     public final /* synthetic */ long q;
 
-    public /* synthetic */ ss3(vs3 vs3Var, String str, long j, int i) {
-        this.n = i;
-        this.o = vs3Var;
-        this.p = str;
-        this.q = j;
+    public /* synthetic */ ss3(vs3 r1, String r2, long r3, int r5) {
+        this.n = r5;
+        this.o = r1;
+        this.p = r2;
+        this.q = r3;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        vs3 vs3Var = this.o;
-        switch (i) {
-            case 0:
-                ns3 ns3Var = vs3Var.a;
-                final long jCurrentTimeMillis = System.currentTimeMillis();
-                s24 s24Var = (s24) ns3Var.o;
-                final long j = this.q;
-                final String str = this.p;
-                xl.E(s24Var, false, true, new if1() { // from class: js3
-                    @Override // defpackage.if1
-                    public final Object invoke(Object obj) throws Exception {
-                        long j2 = jCurrentTimeMillis;
-                        long j3 = j;
-                        z34 z34VarU = ((x34) obj).U("UPDATE queue SET last_play=?, playing_changed=? WHERE id=?");
-                        try {
-                            z34VarU.c(1, j2);
-                            z34VarU.c(2, j3);
-                            String str2 = str;
-                            if (str2 == null) {
-                                z34VarU.e(3);
-                            } else {
-                                z34VarU.r(3, str2);
-                            }
-                            z34VarU.O();
-                            return null;
-                        } finally {
-                            z34VarU.close();
-                        }
-                    }
-                });
-                break;
-            default:
-                vs3.d((List) vs3Var.a.c().stream().map(new bi2(28)).collect(Collectors.toList()), this.p, this.q);
-                break;
-        }
+        int r0 = this.n;
+        vs3 r1 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        vs3.d((List) r1.a.c().stream().map(new bi2(28)).collect(Collectors.toList()), this.p, this.q);
+        return;
+    L6:
+        ns3 r2 = r1.a;
+        final long r3 = System.currentTimeMillis();
+        s24 r4 = (s24) r2.o;
+        final long r5 = this.q;
+        final String r6 = this.p;
+        xl.E(r4, false, true, new js3(r3, r5, r6));
     }
 }

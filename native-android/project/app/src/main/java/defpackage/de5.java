@@ -5,70 +5,75 @@ import java.util.zip.Checksum;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class de5 implements Checksum {
-    public final byte[] a = new byte[1];
-    public final int[] b = new int[4];
-    public final byte[] c = new byte[16];
+    public final byte[] a;
+    public final int[] b;
+    public final byte[] c;
     public int d;
     public int e;
 
     public de5() {
+        this.a = new byte[1];
+        this.b = new int[4];
+        this.c = new byte[16];
         a();
     }
 
     public final void a() {
-        int[] iArr = this.b;
-        iArr[0] = 606290984;
-        iArr[1] = -2048144777;
-        iArr[2] = 0;
-        iArr[3] = 1640531535;
+        int[] r3 = this.b;
+        r3[0] = 606290984;
+        r3[1] = -2048144777;
+        r3[2] = 0;
+        r3[3] = 1640531535;
     }
 
-    public final void b(int i, byte[] bArr) {
-        int[] iArr = this.b;
-        int i2 = iArr[0];
-        int i3 = iArr[1];
-        int i4 = iArr[2];
-        int i5 = iArr[3];
-        int iRotateLeft = Integer.rotateLeft((((int) (gh0.m(bArr, i, 4) & 4294967295L)) * (-2048144777)) + i2, 13) * (-1640531535);
-        int iRotateLeft2 = Integer.rotateLeft((((int) (gh0.m(bArr, i + 4, 4) & 4294967295L)) * (-2048144777)) + i3, 13) * (-1640531535);
-        int iRotateLeft3 = Integer.rotateLeft((((int) (gh0.m(bArr, i + 8, 4) & 4294967295L)) * (-2048144777)) + i4, 13) * (-1640531535);
-        int iRotateLeft4 = Integer.rotateLeft((((int) (gh0.m(bArr, i + 12, 4) & 4294967295L)) * (-2048144777)) + i5, 13) * (-1640531535);
-        iArr[0] = iRotateLeft;
-        iArr[1] = iRotateLeft2;
-        iArr[2] = iRotateLeft3;
-        iArr[3] = iRotateLeft4;
+    public final void b(int r23, byte[] r24) {
+        int[] r3 = this.b;
+        int r5 = r3[0];
+        int r7 = r3[1];
+        int r9 = r3[2];
+        int r11 = r3[3];
+        int r13 = Integer.rotateLeft((((int) (gh0.m(r24, r23, 4) & 4294967295L)) * (-2048144777)) + r5, 13) * (-1640531535);
+        int r8 = Integer.rotateLeft((((int) (gh0.m(r24, r23 + 4, 4) & 4294967295L)) * (-2048144777)) + r7, 13) * (-1640531535);
+        int r10 = Integer.rotateLeft((((int) (gh0.m(r24, r23 + 8, 4) & 4294967295L)) * (-2048144777)) + r9, 13) * (-1640531535);
+        int r1 = Integer.rotateLeft((((int) (gh0.m(r24, r23 + 12, 4) & 4294967295L)) * (-2048144777)) + r11, 13) * (-1640531535);
+        r3[0] = r13;
+        r3[1] = r8;
+        r3[2] = r10;
+        r3[3] = r1;
         this.e = 0;
     }
 
     @Override // java.util.zip.Checksum
     public final long getValue() {
-        int iRotateLeft;
-        byte[] bArr;
-        int i = this.d;
-        int i2 = 0;
-        int[] iArr = this.b;
-        if (i > 16) {
-            iRotateLeft = Integer.rotateLeft(iArr[3], 18) + Integer.rotateLeft(iArr[2], 12) + Integer.rotateLeft(iArr[1], 7) + Integer.rotateLeft(iArr[0], 1);
-        } else {
-            iRotateLeft = iArr[2] + 374761393;
-        }
-        int iRotateLeft2 = iRotateLeft + this.d;
-        int i3 = this.e - 4;
-        while (true) {
-            bArr = this.c;
-            if (i2 > i3) {
-                break;
-            }
-            iRotateLeft2 = Integer.rotateLeft((((int) (4294967295L & gh0.m(bArr, i2, 4))) * (-1028477379)) + iRotateLeft2, 17) * 668265263;
-            i2 += 4;
-        }
-        while (i2 < this.e) {
-            iRotateLeft2 = Integer.rotateLeft(((bArr[i2] & 255) * 374761393) + iRotateLeft2, 11) * (-1640531535);
-            i2++;
-        }
-        int i4 = ((iRotateLeft2 >>> 15) ^ iRotateLeft2) * (-2048144777);
-        int i5 = (i4 ^ (i4 >>> 13)) * (-1028477379);
-        return ((long) (i5 ^ (i5 >>> 16))) & 4294967295L;
+        int r0 = this.d;
+        int r3 = 0;
+        int[] r5 = this.b;
+        if (r0 <= 16) goto L5;
+        int r1 = Integer.rotateLeft(r5[0], 1);
+        int r4 = Integer.rotateLeft(r5[1], 7) + r1;
+        int r2 = Integer.rotateLeft(r5[2], 12) + r4;
+        int r6 = Integer.rotateLeft(r5[3], 18) + r2;
+    L6:
+        int r7 = r6 + this.d;
+        int r8 = this.e - 4;
+    L7:
+        byte[] r9 = this.c;
+        if (r3 > r8) goto L11;
+        r7 = Integer.rotateLeft((((int) (4294967295L & gh0.m(r9, r3, 4))) * (-1028477379)) + r7, 17) * 668265263;
+        r3 = r3 + 4;
+    L11:
+        if (r3 >= this.e) goto L13;
+        int r10 = r3 + 1;
+        r7 = Integer.rotateLeft(((r9[r3] & 255) * 374761393) + r7, 11) * (-1640531535);
+        r3 = r10;
+        goto L11
+    L13:
+        int r11 = ((r7 >>> 15) ^ r7) * (-2048144777);
+        int r12 = (r11 ^ (r11 >>> 13)) * (-1028477379);
+        return ((long) (r12 ^ (r12 >>> 16))) & 4294967295L;
+    L5:
+        r6 = r5[2] + 374761393;
+        goto L6
     }
 
     @Override // java.util.zip.Checksum
@@ -79,42 +84,44 @@ public final class de5 implements Checksum {
     }
 
     @Override // java.util.zip.Checksum
-    public final void update(byte[] bArr, int i, int i2) {
-        if (i2 <= 0) {
-            return;
-        }
-        this.d += i2;
-        int i3 = i + i2;
-        int i4 = this.e;
-        int i5 = i4 + i2;
-        byte[] bArr2 = this.c;
-        if (i5 < 16) {
-            System.arraycopy(bArr, i, bArr2, i4, i2);
-            this.e += i2;
-            return;
-        }
-        if (i4 > 0) {
-            int i6 = 16 - i4;
-            System.arraycopy(bArr, i, bArr2, i4, i6);
-            b(0, bArr2);
-            i += i6;
-        }
-        int i7 = i3 - 16;
-        while (i <= i7) {
-            b(i, bArr);
-            i += 16;
-        }
-        if (i < i3) {
-            int i8 = i3 - i;
-            this.e = i8;
-            System.arraycopy(bArr, i, bArr2, 0, i8);
-        }
+    public final void update(byte[] r6, int r7, int r8) {
+        if (r8 <= 0) goto L19;
+        this.d += r8;
+        int r0 = r7 + r8;
+        int r1 = this.e;
+        int r2 = r1 + r8;
+        byte[] r3 = this.c;
+        if (r2 >= 16) goto L9;
+        System.arraycopy(r6, r7, r3, r1, r8);
+        this.e += r8;
+        return;
+    L9:
+        if (r1 <= 0) goto L11;
+        int r4 = 16 - r1;
+        System.arraycopy(r6, r7, r3, r1, r4);
+        b(0, r3);
+        r7 = r7 + r4;
+    L11:
+        int r5 = r0 - 16;
+    L12:
+        if (r7 > r5) goto L14;
+        b(r7, r6);
+        r7 = r7 + 16;
+        goto L12
+    L14:
+        if (r7 >= r0) goto L18;
+        int r9 = r0 - r7;
+        this.e = r9;
+        System.arraycopy(r6, r7, r3, 0, r9);
+        return;
+    L18:
+        return;
     }
 
     @Override // java.util.zip.Checksum
-    public final void update(int i) {
-        byte[] bArr = this.a;
-        bArr[0] = (byte) (i & 255);
-        update(bArr, 0, 1);
+    public final void update(int r3) {
+        byte[] r0 = this.a;
+        r0[0] = (byte) (r3 & 255);
+        update(r0, 0, 1);
     }
 }

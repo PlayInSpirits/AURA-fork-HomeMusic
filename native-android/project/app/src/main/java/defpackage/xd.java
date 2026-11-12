@@ -9,12 +9,12 @@ public final class xd implements kl4 {
     public long q;
     public boolean r;
 
-    public xd(Float f, ce ceVar, long j, long j2, boolean z) {
-        this.n = uc5.B(f);
-        this.o = kb4.n(ceVar);
-        this.p = j;
-        this.q = j2;
-        this.r = z;
+    public xd(Float r1, ce r2, long r3, long r5, boolean r7) {
+        this.n = uc5.B(r1);
+        this.o = kb4.n(r2);
+        this.p = r3;
+        this.q = r5;
+        this.r = r7;
     }
 
     public final Object a() {

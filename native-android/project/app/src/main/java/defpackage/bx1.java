@@ -2,6 +2,7 @@ package defpackage;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -17,14 +18,22 @@ public abstract class bx1 implements Map, Serializable {
         return new ue1(4);
     }
 
-    public static bx1 b(Map map) {
-        if ((map instanceof bx1) && !(map instanceof SortedMap)) {
-            return (bx1) map;
-        }
-        Set setEntrySet = map.entrySet();
-        ue1 ue1Var = new ue1(setEntrySet instanceof Collection ? setEntrySet.size() : 4);
-        ue1Var.y(setEntrySet);
-        return ue1Var.d(true);
+    public static bx1 b(Map r2) {
+        if ((r2 instanceof bx1) == true) goto L5;
+    L8:
+        Set r3 = r2.entrySet();
+        if ((r3 instanceof Collection) == false) goto L11;
+        int r0 = r3.size();
+    L12:
+        ue1 r1 = new ue1(r0);
+        r1.y(r3);
+        return r1.d(true);
+    L11:
+        r0 = 4;
+        goto L12
+    L5:
+        if ((r2 instanceof SortedMap) == true) goto L8;
+        return (bx1) r2;
     }
 
     public abstract iy3 c();
@@ -35,13 +44,16 @@ public abstract class bx1 implements Map, Serializable {
     }
 
     @Override // java.util.Map
-    public final boolean containsKey(Object obj) {
-        return get(obj) != null;
+    public final boolean containsKey(Object r1) {
+        if (get(r1) == null) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // java.util.Map
-    public final boolean containsValue(Object obj) {
-        return values().contains(obj);
+    public final boolean containsValue(Object r1) {
+        return f().contains(r1);
     }
 
     public abstract jy3 d();
@@ -50,98 +62,111 @@ public abstract class bx1 implements Map, Serializable {
 
     @Override // java.util.Map
     public final Set entrySet() {
-        jx1 jx1Var = this.n;
-        if (jx1Var != null) {
-            return jx1Var;
-        }
-        iy3 iy3VarC = c();
-        this.n = iy3VarC;
-        return iy3VarC;
+        jx1 r0 = this.n;
+        if (r0 != null) goto L6;
+        iy3 r1 = c();
+        this.n = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     @Override // java.util.Map
-    public final boolean equals(Object obj) {
-        return vr1.o(obj, this);
+    public final boolean equals(Object r1) {
+        return vr1.o(r1, this);
+    }
+
+    public rw1 f() {
+        rw1 r0 = this.p;
+        if (r0 != null) goto L6;
+        rw1 r1 = e();
+        this.p = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     @Override // java.util.Map
-    /* JADX INFO: renamed from: f, reason: merged with bridge method [inline-methods] */
-    public rw1 values() {
-        rw1 rw1Var = this.p;
-        if (rw1Var != null) {
-            return rw1Var;
-        }
-        rw1 rw1VarE = e();
-        this.p = rw1VarE;
-        return rw1VarE;
-    }
+    public abstract Object get(Object r1);
 
     @Override // java.util.Map
-    public abstract Object get(Object obj);
-
-    @Override // java.util.Map
-    public final Object getOrDefault(Object obj, Object obj2) {
-        Object obj3 = get(obj);
-        return obj3 != null ? obj3 : obj2;
+    public final Object getOrDefault(Object r1, Object r2) {
+        Object r0 = get(r1);
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        return r2;
     }
 
     @Override // java.util.Map
     public final int hashCode() {
-        jx1 jx1VarC = this.n;
-        if (jx1VarC == null) {
-            jx1VarC = c();
-            this.n = jx1VarC;
-        }
-        return j51.x(jx1VarC);
+        jx1 r0 = this.n;
+        if (r0 != null) goto L6;
+        r0 = c();
+        this.n = r0;
+    L6:
+        return j51.x(r0);
     }
 
     @Override // java.util.Map
     public final boolean isEmpty() {
-        return size() == 0;
+        if (size() != 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // java.util.Map
     public final Set keySet() {
-        jx1 jx1Var = this.o;
-        if (jx1Var != null) {
-            return jx1Var;
-        }
-        jy3 jy3VarD = d();
-        this.o = jy3VarD;
-        return jy3VarD;
+        jx1 r0 = this.o;
+        if (r0 != null) goto L6;
+        jy3 r1 = d();
+        this.o = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     @Override // java.util.Map
-    public final Object put(Object obj, Object obj2) {
+    public final Object put(Object r1, Object r2) {
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.Map
-    public final void putAll(Map map) {
+    public final void putAll(Map r1) {
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.Map
-    public final Object remove(Object obj) {
+    public final Object remove(Object r1) {
         throw new UnsupportedOperationException();
     }
 
     public final String toString() {
-        int size = size();
-        uc5.f(size, "size");
-        StringBuilder sb = new StringBuilder((int) Math.min(((long) size) * 8, 1073741824L));
-        sb.append('{');
-        boolean z = true;
-        for (Map.Entry entry : entrySet()) {
-            if (!z) {
-                sb.append(", ");
-            }
-            sb.append(entry.getKey());
-            sb.append('=');
-            sb.append(entry.getValue());
-            z = false;
-        }
-        sb.append('}');
-        return sb.toString();
+        int r0 = size();
+        uc5.f(r0, "size");
+        StringBuilder r1 = new StringBuilder((int) Math.min(((long) r0) * 8, 1073741824));
+        r1.append('{');
+        Iterator r6 = entrySet().iterator();
+        boolean r2 = true;
+    L4:
+        if (r6.hasNext() == false) goto L9;
+        Map.Entry r3 = (Map.Entry) r6.next();
+        if (r2 == true) goto L8;
+        r1.append(", ");
+    L8:
+        r1.append(r3.getKey());
+        r1.append('=');
+        r1.append(r3.getValue());
+        r2 = false;
+        goto L4
+    L9:
+        r1.append('}');
+        return r1.toString();
+    }
+
+    @Override // java.util.Map
+    public /* bridge */ /* synthetic */ Collection values() {
+        return f();
     }
 }

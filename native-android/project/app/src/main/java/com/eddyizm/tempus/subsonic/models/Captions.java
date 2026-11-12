@@ -7,6 +7,9 @@ public final class Captions {
     private String id;
     private String name;
 
+    public Captions() {
+    }
+
     public final String getId() {
         return this.id;
     }
@@ -15,11 +18,11 @@ public final class Captions {
         return this.name;
     }
 
-    public final void setId(String str) {
-        this.id = str;
+    public final void setId(String r1) {
+        this.id = r1;
     }
 
-    public final void setName(String str) {
-        this.name = str;
+    public final void setName(String r1) {
+        this.name = r1;
     }
 }

@@ -9,11 +9,18 @@ import defpackage.xj0;
 /* JADX INFO: loaded from: classes.dex */
 public class RecordLabel implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<RecordLabel> CREATOR = new b23(24);
+    public static final Parcelable.Creator<RecordLabel> CREATOR = null;
     private String name;
 
-    public /* synthetic */ RecordLabel(String str, int i, xj0 xj0Var) {
-        this((i & 1) != 0 ? null : str);
+    static {
+        CREATOR = new b23(24);
+    }
+
+    public /* synthetic */ RecordLabel(String r1, int r2, xj0 r3) {
+        if ((r2 & 1) == 0) goto L5;
+        r1 = null;
+    L5:
+        this(r1);
     }
 
     @Override // android.os.Parcelable
@@ -25,18 +32,18 @@ public class RecordLabel implements Parcelable {
         return this.name;
     }
 
-    public final void setName(String str) {
-        this.name = str;
+    public final void setName(String r1) {
+        this.name = r1;
     }
 
     @Override // android.os.Parcelable
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.getClass();
-        parcel.writeString(this.name);
+    public void writeToParcel(Parcel r1, int r2) {
+        r1.getClass();
+        r1.writeString(this.name);
     }
 
-    public RecordLabel(String str) {
-        this.name = str;
+    public RecordLabel(String r1) {
+        this.name = r1;
     }
 
     /* JADX WARN: Multi-variable type inference failed */

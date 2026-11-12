@@ -8,7 +8,7 @@ import java.util.Map;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class xo0 {
-    public final /* synthetic */ int a = 0;
+    public final /* synthetic */ int a;
     public boolean b;
     public boolean c;
     public Object d;
@@ -18,1088 +18,771 @@ public final class xo0 {
     public Object h;
     public Object i;
 
-    public xo0(boolean z, boolean z2, ge3 ge3Var, Long l, Long l2, Long l3, Long l4, Map map) {
-        map.getClass();
-        this.b = z;
-        this.c = z2;
-        this.d = ge3Var;
-        this.e = l;
-        this.f = l2;
-        this.g = l3;
-        this.h = l4;
-        this.i = lg2.a0(map);
+    public xo0(boolean r2, boolean r3, ge3 r4, Long r5, Long r6, Long r7, Long r8, Map r9) {
+        this.a = 1;
+        r9.getClass();
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = lg2.a0(r9);
     }
 
-    public void a(yo0 yo0Var, int i, ArrayList arrayList, v34 v34Var) {
-        ba5 ba5Var = yo0Var.d;
-        v34 v34Var2 = ba5Var.c;
-        yo0 yo0Var2 = ba5Var.i;
-        yo0 yo0Var3 = ba5Var.h;
-        if (v34Var2 == null) {
-            kc0 kc0Var = (kc0) this.d;
-            if (ba5Var == kc0Var.d || ba5Var == kc0Var.e) {
-                return;
-            }
-            if (v34Var == null) {
-                v34Var = new v34();
-                v34Var.a = null;
-                v34Var.b = new ArrayList();
-                v34Var.a = ba5Var;
-                arrayList.add(v34Var);
-            }
-            ba5Var.c = v34Var;
-            v34Var.b.add(ba5Var);
-            ArrayList arrayList2 = yo0Var3.k;
-            int size = arrayList2.size();
-            int i2 = 0;
-            int i3 = 0;
-            while (i3 < size) {
-                Object obj = arrayList2.get(i3);
-                i3++;
-                uo0 uo0Var = (uo0) obj;
-                if (uo0Var instanceof yo0) {
-                    a((yo0) uo0Var, i, arrayList, v34Var);
-                }
-            }
-            ArrayList arrayList3 = yo0Var2.k;
-            int size2 = arrayList3.size();
-            int i4 = 0;
-            while (i4 < size2) {
-                Object obj2 = arrayList3.get(i4);
-                i4++;
-                uo0 uo0Var2 = (uo0) obj2;
-                if (uo0Var2 instanceof yo0) {
-                    a((yo0) uo0Var2, i, arrayList, v34Var);
-                }
-            }
-            if (i == 1 && (ba5Var instanceof w45)) {
-                ArrayList arrayList4 = ((w45) ba5Var).k.k;
-                int size3 = arrayList4.size();
-                int i5 = 0;
-                while (i5 < size3) {
-                    Object obj3 = arrayList4.get(i5);
-                    i5++;
-                    uo0 uo0Var3 = (uo0) obj3;
-                    if (uo0Var3 instanceof yo0) {
-                        a((yo0) uo0Var3, i, arrayList, v34Var);
-                    }
-                }
-            }
-            ArrayList arrayList5 = yo0Var3.l;
-            int size4 = arrayList5.size();
-            int i6 = 0;
-            while (i6 < size4) {
-                Object obj4 = arrayList5.get(i6);
-                i6++;
-                a((yo0) obj4, i, arrayList, v34Var);
-            }
-            ArrayList arrayList6 = yo0Var2.l;
-            int size5 = arrayList6.size();
-            int i7 = 0;
-            while (i7 < size5) {
-                Object obj5 = arrayList6.get(i7);
-                i7++;
-                a((yo0) obj5, i, arrayList, v34Var);
-            }
-            if (i == 1 && (ba5Var instanceof w45)) {
-                ArrayList arrayList7 = ((w45) ba5Var).k.l;
-                int size6 = arrayList7.size();
-                while (i2 < size6) {
-                    Object obj6 = arrayList7.get(i2);
-                    i2++;
-                    a((yo0) obj6, i, arrayList, v34Var);
-                }
-            }
-        }
+    public void a(yo0 r10, int r11, ArrayList r12, v34 r13) {
+        ba5 r14 = r10.d;
+        v34 r0 = r14.c;
+        yo0 r1 = r14.i;
+        yo0 r2 = r14.h;
+        if (r0 != null) goto L42;
+        kc0 r3 = (kc0) this.d;
+        if (r14 != r3.d) goto L7;
+        return;
+    L7:
+        if (r14 == r3.e) goto L64;
+        if (r13 != null) goto L11;
+        r13 = new v34();
+        r13.a = null;
+        r13.b = new ArrayList();
+        r13.a = r14;
+        r12.add(r13);
+    L11:
+        r14.c = r13;
+        r13.b.add(r14);
+        ArrayList r4 = r2.k;
+        int r5 = r4.size();
+        int r6 = 0;
+        int r7 = 0;
+    L12:
+        if (r7 >= r5) goto L16;
+        Object r8 = r4.get(r7);
+        r7 = r7 + 1;
+        uo0 r9 = (uo0) r8;
+        if ((r9 instanceof yo0) == false) goto L12;
+        a((yo0) r9, r11, r12, r13);
+        goto L12
+    L16:
+        ArrayList r15 = r1.k;
+        int r16 = r15.size();
+        int r17 = 0;
+    L17:
+        if (r17 >= r16) goto L22;
+        Object r18 = r15.get(r17);
+        r17 = r17 + 1;
+        uo0 r19 = (uo0) r18;
+        if ((r19 instanceof yo0) == false) goto L17;
+        a((yo0) r19, r11, r12, r13);
+        goto L17
+    L22:
+        if (r11 == 1) goto L24;
+    L30:
+        ArrayList r20 = r2.l;
+        int r21 = r20.size();
+        int r22 = 0;
+    L31:
+        if (r22 >= r21) goto L33;
+        Object r23 = r20.get(r22);
+        r22 = r22 + 1;
+        a((yo0) r23, r11, r12, r13);
+        goto L31
+    L33:
+        ArrayList r24 = r1.l;
+        int r25 = r24.size();
+        int r26 = 0;
+    L34:
+        if (r26 >= r25) goto L36;
+        Object r27 = r24.get(r26);
+        r26 = r26 + 1;
+        a((yo0) r27, r11, r12, r13);
+        goto L34
+    L36:
+        if (r11 == 1) goto L38;
+        return;
+    L38:
+        if ((r14 instanceof w45) == false) goto L63;
+        ArrayList r110 = ((w45) r14).k.l;
+        int r28 = r110.size();
+    L40:
+        if (r6 >= r28) goto L65;
+        Object r29 = r110.get(r6);
+        r6 = r6 + 1;
+        a((yo0) r29, r11, r12, r13);
+        goto L40
+    L65:
+        return;
+    L63:
+        return;
+    L24:
+        if ((r14 instanceof w45) == false) goto L30;
+        ArrayList r30 = ((w45) r14).k.k;
+        int r31 = r30.size();
+        int r32 = 0;
+    L26:
+        if (r32 >= r31) goto L30;
+        Object r33 = r30.get(r32);
+        r32 = r32 + 1;
+        uo0 r34 = (uo0) r33;
+        if ((r34 instanceof yo0) == false) goto L26;
+        a((yo0) r34, r11, r12, r13);
+        goto L26
+    L64:
+        return;
     }
 
-    /* JADX WARN: Code duplicated, block: B:100:0x01b4  */
-    /* JADX WARN: Code duplicated, block: B:102:0x01ba  */
-    /* JADX WARN: Code duplicated, block: B:103:0x01bc A[ADDED_TO_REGION] */
-    /* JADX WARN: Code duplicated, block: B:107:0x01c7 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:108:0x01c9 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:109:0x01cb  */
-    /* JADX WARN: Code duplicated, block: B:112:0x01de  */
-    /* JADX WARN: Code duplicated, block: B:114:0x0207  */
-    /* JADX WARN: Code duplicated, block: B:116:0x020a  */
-    /* JADX WARN: Code duplicated, block: B:117:0x021f  */
-    /* JADX WARN: Code duplicated, block: B:119:0x0224  */
-    /* JADX WARN: Code duplicated, block: B:121:0x0228  */
-    /* JADX WARN: Code duplicated, block: B:126:0x025f  */
-    /* JADX WARN: Code duplicated, block: B:128:0x0269  */
-    /* JADX WARN: Code duplicated, block: B:134:0x029a  */
-    /* JADX WARN: Code duplicated, block: B:136:0x02a1 A[ADDED_TO_REGION] */
-    /* JADX WARN: Code duplicated, block: B:138:0x02a5 A[ADDED_TO_REGION] */
-    /* JADX WARN: Code duplicated, block: B:148:0x02e8  */
-    /* JADX WARN: Code duplicated, block: B:149:0x0306  */
-    /* JADX WARN: Code duplicated, block: B:152:0x0311  */
-    /* JADX WARN: Code duplicated, block: B:155:0x0324  */
-    /* JADX WARN: Code duplicated, block: B:156:0x0337  */
-    /* JADX WARN: Code duplicated, block: B:63:0x00c2  */
-    /* JADX WARN: Code duplicated, block: B:65:0x00c5  */
-    /* JADX WARN: Code duplicated, block: B:67:0x00c8  */
-    /* JADX WARN: Code duplicated, block: B:69:0x00cb  */
-    /* JADX WARN: Code duplicated, block: B:70:0x00d1 A[PHI: r0
-  0x00d1: PHI (r0v22 int) = (r0v20 int), (r0v99 int) binds: [B:68:0x00c9, B:62:0x00c0] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:72:0x00d6  */
-    /* JADX WARN: Code duplicated, block: B:73:0x00d8  */
-    /* JADX WARN: Code duplicated, block: B:78:0x00ea A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:79:0x00ec  */
-    /* JADX WARN: Code duplicated, block: B:82:0x012c  */
-    /* JADX WARN: Code duplicated, block: B:84:0x0131  */
-    /* JADX WARN: Code duplicated, block: B:85:0x0144  */
-    /* JADX WARN: Code duplicated, block: B:87:0x0147  */
-    /* JADX WARN: Code duplicated, block: B:89:0x014b  */
-    /* JADX WARN: Code duplicated, block: B:95:0x0182  */
-    /* JADX WARN: Code duplicated, block: B:97:0x018c  */
-    public void b(kc0 kc0Var) {
-        int i;
-        int i2;
-        int iO;
-        int i3;
-        int i4;
-        int i5;
-        int i6;
-        int i7;
-        int i8;
-        int i9;
-        int i10;
-        int i11;
-        int i12;
-        int i13;
-        int i14;
-        int i15;
-        int i16;
-        int i17;
-        float f;
-        int i18;
-        int i19;
-        ArrayList arrayList = kc0Var.p0;
-        int[] iArr = kc0Var.o0;
-        int size = arrayList.size();
-        char c = 0;
-        int i20 = 0;
-        while (i20 < size) {
-            Object obj = arrayList.get(i20);
-            i20++;
-            jc0 jc0Var = (jc0) obj;
-            int[] iArr2 = jc0Var.o0;
-            hb0[] hb0VarArr = jc0Var.P;
-            hb0 hb0Var = jc0Var.K;
-            hb0 hb0Var2 = jc0Var.I;
-            hb0 hb0Var3 = jc0Var.J;
-            hb0 hb0Var4 = jc0Var.H;
-            int i21 = iArr2[c];
-            int i22 = iArr2[1];
-            c = c;
-            if (jc0Var.f0 == 8) {
-                jc0Var.a = true;
-            } else {
-                float f2 = jc0Var.w;
-                if (f2 < 1.0f && i21 == 3) {
-                    jc0Var.r = 2;
-                }
-                float f3 = jc0Var.z;
-                if (f3 < 1.0f && i22 == 3) {
-                    jc0Var.s = 2;
-                }
-                if (jc0Var.V > 0.0f) {
-                    if (i21 == 3) {
-                        i19 = 2;
-                        if (i22 == 2 || i22 == 1) {
-                            i = 3;
-                            jc0Var.r = 3;
-                        } else {
-                            i = 3;
-                        }
-                    } else {
-                        i = 3;
-                        i19 = 2;
-                    }
-                    if (i22 == i && (i21 == i19 || i21 == 1)) {
-                        jc0Var.s = i;
-                    } else if (i21 == i && i22 == i) {
-                        if (jc0Var.r == 0) {
-                            jc0Var.r = i;
-                        }
-                        if (jc0Var.s == 0) {
-                            jc0Var.s = i;
-                        }
-                    }
-                } else {
-                    i = 3;
-                }
-                if (i21 == i && jc0Var.r == 1 && (hb0Var4.f == null || hb0Var3.f == null)) {
-                    i21 = 2;
-                }
-                if (i22 == 3 && jc0Var.s == 1 && (hb0Var2.f == null || hb0Var.f == null)) {
-                    i22 = 2;
-                }
-                up1 up1Var = jc0Var.d;
-                up1Var.d = i21;
-                int i23 = jc0Var.r;
-                up1Var.a = i23;
-                w45 w45Var = jc0Var.e;
-                w45Var.d = i22;
-                ArrayList arrayList2 = arrayList;
-                int i24 = jc0Var.s;
-                w45Var.a = i24;
-                if (i21 == 4 || i21 == 1) {
-                    if (i22 == 4) {
-                        i2 = 1;
-                    } else if (i22 != 1) {
-                        i6 = 2;
-                        if (i22 == 2) {
-                            i2 = 1;
-                        } else {
-                            if (i21 != 3) {
-                                i7 = i6;
-                                i8 = i22;
-                                i9 = 1;
-                            } else if (i22 == i6 && i22 != 1) {
-                                i7 = i6;
-                                i10 = 3;
-                                i8 = i22;
-                                i9 = 1;
-                                if (i8 != i10) {
-                                    if (i21 == i7 && i21 != i9) {
-                                        i14 = i10;
-                                        i11 = i21;
-                                        i12 = i7;
-                                    } else if (i24 == i10) {
-                                        if (i21 == i7) {
-                                            f(i7, 0, i7, 0, jc0Var);
-                                        }
-                                        int iO2 = jc0Var.o();
-                                        f = jc0Var.V;
-                                        if (jc0Var.W == -1) {
-                                            f = 1.0f / f;
-                                        }
-                                        f(i9, iO2, i9, (int) ((iO2 * f) + 0.5f), jc0Var);
-                                        jc0Var.d.e.d(jc0Var.o());
-                                        jc0Var.e.e.d(jc0Var.i());
-                                        jc0Var.a = true;
-                                    } else if (i24 == 1) {
-                                        f(i21, 0, i7, 0, jc0Var);
-                                        jc0Var.e.e.m = jc0Var.i();
-                                    } else {
-                                        i15 = i7;
-                                        i16 = i21;
-                                        if (i24 == 2) {
-                                            i17 = iArr[1];
-                                            if (i17 != i9 || i17 == 4) {
-                                                f(i16, jc0Var.o(), i9, (int) ((f3 * kc0Var.i()) + 0.5f), jc0Var);
-                                                jc0Var.d.e.d(jc0Var.o());
-                                                jc0Var.e.e.d(jc0Var.i());
-                                                jc0Var.a = true;
-                                            } else {
-                                                i11 = i16;
-                                                i12 = i15;
-                                                i14 = 3;
-                                            }
-                                        } else {
-                                            i11 = i16;
-                                            if (hb0VarArr[2].f != null || hb0VarArr[3].f == null) {
-                                                f(i15, 0, i8, 0, jc0Var);
-                                                jc0Var.d.e.d(jc0Var.o());
-                                                jc0Var.e.e.d(jc0Var.i());
-                                                jc0Var.a = true;
-                                            } else {
-                                                i12 = i15;
-                                            }
-                                        }
-                                    }
-                                    i9 = i9;
-                                    i13 = 1;
-                                    if (i11 == i14 && i8 == i14) {
-                                        if (i23 != i13 || i24 == i13) {
-                                            f(i12, 0, i12, 0, jc0Var);
-                                            jc0Var.d.e.m = jc0Var.o();
-                                            jc0Var.e.e.m = jc0Var.i();
-                                        } else if (i24 == 2 && i23 == 2 && iArr[c] == i9 && iArr[i13] == i9) {
-                                            f(i9, (int) ((f2 * kc0Var.o()) + 0.5f), i9, (int) ((f3 * kc0Var.i()) + 0.5f), jc0Var);
-                                            jc0Var.d.e.d(jc0Var.o());
-                                            jc0Var.e.e.d(jc0Var.i());
-                                            jc0Var.a = true;
-                                        }
-                                    }
-                                } else {
-                                    i11 = i21;
-                                    i12 = i7;
-                                }
-                                i13 = 1;
-                                i14 = 3;
-                                if (i11 == i14) {
-                                    if (i23 != i13) {
-                                        f(i12, 0, i12, 0, jc0Var);
-                                        jc0Var.d.e.m = jc0Var.o();
-                                        jc0Var.e.e.m = jc0Var.i();
-                                    } else {
-                                        f(i12, 0, i12, 0, jc0Var);
-                                        jc0Var.d.e.m = jc0Var.o();
-                                        jc0Var.e.e.m = jc0Var.i();
-                                    }
-                                }
-                            } else if (i23 == 3) {
-                                if (i22 == i6) {
-                                    f(i6, 0, i6, 0, jc0Var);
-                                }
-                                int i25 = jc0Var.i();
-                                f(1, (int) ((i25 * jc0Var.V) + 0.5f), 1, i25, jc0Var);
-                                jc0Var.d.e.d(jc0Var.o());
-                                jc0Var.e.e.d(jc0Var.i());
-                                jc0Var.a = true;
-                            } else {
-                                i7 = i6;
-                                if (i23 == 1) {
-                                    f(i7, 0, i22, 0, jc0Var);
-                                    jc0Var.d.e.m = jc0Var.o();
-                                } else if (i23 == 2) {
-                                    i18 = iArr[c];
-                                    if (i18 != 1 || i18 == 4) {
-                                        f(1, (int) ((f2 * kc0Var.o()) + 0.5f), i22, jc0Var.i(), jc0Var);
-                                        jc0Var.d.e.d(jc0Var.o());
-                                        jc0Var.e.e.d(jc0Var.i());
-                                        jc0Var.a = true;
-                                    } else {
-                                        i8 = i22;
-                                        i9 = 1;
-                                    }
-                                } else {
-                                    i8 = i22;
-                                    i9 = 1;
-                                    if (hb0VarArr[c].f != null || hb0VarArr[1].f == null) {
-                                        f(i7, 0, i8, 0, jc0Var);
-                                        jc0Var.d.e.d(jc0Var.o());
-                                        jc0Var.e.e.d(jc0Var.i());
-                                        jc0Var.a = true;
-                                    }
-                                }
-                            }
-                            i10 = 3;
-                            if (i8 != i10) {
-                                i11 = i21;
-                                i12 = i7;
-                            } else if (i21 == i7) {
-                                if (i24 == i10) {
-                                    if (i21 == i7) {
-                                        f(i7, 0, i7, 0, jc0Var);
-                                    }
-                                    int iO3 = jc0Var.o();
-                                    f = jc0Var.V;
-                                    if (jc0Var.W == -1) {
-                                        f = 1.0f / f;
-                                    }
-                                    f(i9, iO3, i9, (int) ((iO3 * f) + 0.5f), jc0Var);
-                                    jc0Var.d.e.d(jc0Var.o());
-                                    jc0Var.e.e.d(jc0Var.i());
-                                    jc0Var.a = true;
-                                } else if (i24 == 1) {
-                                    f(i21, 0, i7, 0, jc0Var);
-                                    jc0Var.e.e.m = jc0Var.i();
-                                } else {
-                                    i15 = i7;
-                                    i16 = i21;
-                                    if (i24 == 2) {
-                                        i17 = iArr[1];
-                                        if (i17 != i9) {
-                                        }
-                                        f(i16, jc0Var.o(), i9, (int) ((f3 * kc0Var.i()) + 0.5f), jc0Var);
-                                        jc0Var.d.e.d(jc0Var.o());
-                                        jc0Var.e.e.d(jc0Var.i());
-                                        jc0Var.a = true;
-                                    } else {
-                                        i11 = i16;
-                                        if (hb0VarArr[2].f != null) {
-                                        }
-                                        f(i15, 0, i8, 0, jc0Var);
-                                        jc0Var.d.e.d(jc0Var.o());
-                                        jc0Var.e.e.d(jc0Var.i());
-                                        jc0Var.a = true;
-                                    }
-                                }
-                            } else if (i24 == i10) {
-                                if (i21 == i7) {
-                                    f(i7, 0, i7, 0, jc0Var);
-                                }
-                                int iO4 = jc0Var.o();
-                                f = jc0Var.V;
-                                if (jc0Var.W == -1) {
-                                    f = 1.0f / f;
-                                }
-                                f(i9, iO4, i9, (int) ((iO4 * f) + 0.5f), jc0Var);
-                                jc0Var.d.e.d(jc0Var.o());
-                                jc0Var.e.e.d(jc0Var.i());
-                                jc0Var.a = true;
-                            } else if (i24 == 1) {
-                                f(i21, 0, i7, 0, jc0Var);
-                                jc0Var.e.e.m = jc0Var.i();
-                            } else {
-                                i15 = i7;
-                                i16 = i21;
-                                if (i24 == 2) {
-                                    i17 = iArr[1];
-                                    if (i17 != i9) {
-                                    }
-                                    f(i16, jc0Var.o(), i9, (int) ((f3 * kc0Var.i()) + 0.5f), jc0Var);
-                                    jc0Var.d.e.d(jc0Var.o());
-                                    jc0Var.e.e.d(jc0Var.i());
-                                    jc0Var.a = true;
-                                } else {
-                                    i11 = i16;
-                                    if (hb0VarArr[2].f != null) {
-                                    }
-                                    f(i15, 0, i8, 0, jc0Var);
-                                    jc0Var.d.e.d(jc0Var.o());
-                                    jc0Var.e.e.d(jc0Var.i());
-                                    jc0Var.a = true;
-                                }
-                            }
-                            i13 = 1;
-                            i14 = 3;
-                            if (i11 == i14) {
-                                if (i23 != i13) {
-                                    f(i12, 0, i12, 0, jc0Var);
-                                    jc0Var.d.e.m = jc0Var.o();
-                                    jc0Var.e.e.m = jc0Var.i();
-                                } else {
-                                    f(i12, 0, i12, 0, jc0Var);
-                                    jc0Var.d.e.m = jc0Var.o();
-                                    jc0Var.e.e.m = jc0Var.i();
-                                }
-                            }
-                        }
-                    } else {
-                        i2 = 1;
-                    }
-                    iO = jc0Var.o();
-                    if (i21 == 4) {
-                        iO = (kc0Var.o() - hb0Var4.g) - hb0Var3.g;
-                        i21 = i2;
-                    }
-                    i3 = jc0Var.i();
-                    if (i22 == 4) {
-                        i4 = i2;
-                        i5 = (kc0Var.i() - hb0Var2.g) - hb0Var.g;
-                    } else {
-                        i4 = i22;
-                        i5 = i3;
-                    }
-                    f(i21, iO, i4, i5, jc0Var);
-                    jc0Var.d.e.d(jc0Var.o());
-                    jc0Var.e.e.d(jc0Var.i());
-                    jc0Var.a = true;
-                } else {
-                    i6 = 2;
-                    if (i21 == 2) {
-                        if (i22 == 4) {
-                            i2 = 1;
-                        } else if (i22 != 1) {
-                            i6 = 2;
-                            if (i22 == 2) {
-                                i2 = 1;
-                            } else {
-                                if (i21 != 3) {
-                                    if (i22 == i6) {
-                                    }
-                                    if (i23 == 3) {
-                                        if (i22 == i6) {
-                                            f(i6, 0, i6, 0, jc0Var);
-                                        }
-                                        int i26 = jc0Var.i();
-                                        f(1, (int) ((i26 * jc0Var.V) + 0.5f), 1, i26, jc0Var);
-                                        jc0Var.d.e.d(jc0Var.o());
-                                        jc0Var.e.e.d(jc0Var.i());
-                                        jc0Var.a = true;
-                                    } else {
-                                        i7 = i6;
-                                        if (i23 == 1) {
-                                            f(i7, 0, i22, 0, jc0Var);
-                                            jc0Var.d.e.m = jc0Var.o();
-                                        } else if (i23 == 2) {
-                                            i18 = iArr[c];
-                                            if (i18 != 1) {
-                                            }
-                                            f(1, (int) ((f2 * kc0Var.o()) + 0.5f), i22, jc0Var.i(), jc0Var);
-                                            jc0Var.d.e.d(jc0Var.o());
-                                            jc0Var.e.e.d(jc0Var.i());
-                                            jc0Var.a = true;
-                                        } else {
-                                            i8 = i22;
-                                            i9 = 1;
-                                            if (hb0VarArr[c].f != null) {
-                                            }
-                                            f(i7, 0, i8, 0, jc0Var);
-                                            jc0Var.d.e.d(jc0Var.o());
-                                            jc0Var.e.e.d(jc0Var.i());
-                                            jc0Var.a = true;
-                                        }
-                                    }
-                                } else {
-                                    i7 = i6;
-                                    i8 = i22;
-                                    i9 = 1;
-                                }
-                                i10 = 3;
-                                if (i8 != i10) {
-                                    i11 = i21;
-                                    i12 = i7;
-                                } else if (i21 == i7) {
-                                    if (i24 == i10) {
-                                        if (i21 == i7) {
-                                            f(i7, 0, i7, 0, jc0Var);
-                                        }
-                                        int iO5 = jc0Var.o();
-                                        f = jc0Var.V;
-                                        if (jc0Var.W == -1) {
-                                            f = 1.0f / f;
-                                        }
-                                        f(i9, iO5, i9, (int) ((iO5 * f) + 0.5f), jc0Var);
-                                        jc0Var.d.e.d(jc0Var.o());
-                                        jc0Var.e.e.d(jc0Var.i());
-                                        jc0Var.a = true;
-                                    } else if (i24 == 1) {
-                                        f(i21, 0, i7, 0, jc0Var);
-                                        jc0Var.e.e.m = jc0Var.i();
-                                    } else {
-                                        i15 = i7;
-                                        i16 = i21;
-                                        if (i24 == 2) {
-                                            i17 = iArr[1];
-                                            if (i17 != i9) {
-                                            }
-                                            f(i16, jc0Var.o(), i9, (int) ((f3 * kc0Var.i()) + 0.5f), jc0Var);
-                                            jc0Var.d.e.d(jc0Var.o());
-                                            jc0Var.e.e.d(jc0Var.i());
-                                            jc0Var.a = true;
-                                        } else {
-                                            i11 = i16;
-                                            if (hb0VarArr[2].f != null) {
-                                            }
-                                            f(i15, 0, i8, 0, jc0Var);
-                                            jc0Var.d.e.d(jc0Var.o());
-                                            jc0Var.e.e.d(jc0Var.i());
-                                            jc0Var.a = true;
-                                        }
-                                    }
-                                } else if (i24 == i10) {
-                                    if (i21 == i7) {
-                                        f(i7, 0, i7, 0, jc0Var);
-                                    }
-                                    int iO6 = jc0Var.o();
-                                    f = jc0Var.V;
-                                    if (jc0Var.W == -1) {
-                                        f = 1.0f / f;
-                                    }
-                                    f(i9, iO6, i9, (int) ((iO6 * f) + 0.5f), jc0Var);
-                                    jc0Var.d.e.d(jc0Var.o());
-                                    jc0Var.e.e.d(jc0Var.i());
-                                    jc0Var.a = true;
-                                } else if (i24 == 1) {
-                                    f(i21, 0, i7, 0, jc0Var);
-                                    jc0Var.e.e.m = jc0Var.i();
-                                } else {
-                                    i15 = i7;
-                                    i16 = i21;
-                                    if (i24 == 2) {
-                                        i17 = iArr[1];
-                                        if (i17 != i9) {
-                                        }
-                                        f(i16, jc0Var.o(), i9, (int) ((f3 * kc0Var.i()) + 0.5f), jc0Var);
-                                        jc0Var.d.e.d(jc0Var.o());
-                                        jc0Var.e.e.d(jc0Var.i());
-                                        jc0Var.a = true;
-                                    } else {
-                                        i11 = i16;
-                                        if (hb0VarArr[2].f != null) {
-                                        }
-                                        f(i15, 0, i8, 0, jc0Var);
-                                        jc0Var.d.e.d(jc0Var.o());
-                                        jc0Var.e.e.d(jc0Var.i());
-                                        jc0Var.a = true;
-                                    }
-                                }
-                                i13 = 1;
-                                i14 = 3;
-                                if (i11 == i14) {
-                                    if (i23 != i13) {
-                                        f(i12, 0, i12, 0, jc0Var);
-                                        jc0Var.d.e.m = jc0Var.o();
-                                        jc0Var.e.e.m = jc0Var.i();
-                                    } else {
-                                        f(i12, 0, i12, 0, jc0Var);
-                                        jc0Var.d.e.m = jc0Var.o();
-                                        jc0Var.e.e.m = jc0Var.i();
-                                    }
-                                }
-                            }
-                        } else {
-                            i2 = 1;
-                        }
-                        iO = jc0Var.o();
-                        if (i21 == 4) {
-                            iO = (kc0Var.o() - hb0Var4.g) - hb0Var3.g;
-                            i21 = i2;
-                        }
-                        i3 = jc0Var.i();
-                        if (i22 == 4) {
-                            i4 = i2;
-                            i5 = (kc0Var.i() - hb0Var2.g) - hb0Var.g;
-                        } else {
-                            i4 = i22;
-                            i5 = i3;
-                        }
-                        f(i21, iO, i4, i5, jc0Var);
-                        jc0Var.d.e.d(jc0Var.o());
-                        jc0Var.e.e.d(jc0Var.i());
-                        jc0Var.a = true;
-                    } else {
-                        if (i21 != 3) {
-                            if (i22 == i6) {
-                            }
-                            if (i23 == 3) {
-                                if (i22 == i6) {
-                                    f(i6, 0, i6, 0, jc0Var);
-                                }
-                                int i27 = jc0Var.i();
-                                f(1, (int) ((i27 * jc0Var.V) + 0.5f), 1, i27, jc0Var);
-                                jc0Var.d.e.d(jc0Var.o());
-                                jc0Var.e.e.d(jc0Var.i());
-                                jc0Var.a = true;
-                            } else {
-                                i7 = i6;
-                                if (i23 == 1) {
-                                    f(i7, 0, i22, 0, jc0Var);
-                                    jc0Var.d.e.m = jc0Var.o();
-                                } else if (i23 == 2) {
-                                    i18 = iArr[c];
-                                    if (i18 != 1) {
-                                    }
-                                    f(1, (int) ((f2 * kc0Var.o()) + 0.5f), i22, jc0Var.i(), jc0Var);
-                                    jc0Var.d.e.d(jc0Var.o());
-                                    jc0Var.e.e.d(jc0Var.i());
-                                    jc0Var.a = true;
-                                } else {
-                                    i8 = i22;
-                                    i9 = 1;
-                                    if (hb0VarArr[c].f != null) {
-                                    }
-                                    f(i7, 0, i8, 0, jc0Var);
-                                    jc0Var.d.e.d(jc0Var.o());
-                                    jc0Var.e.e.d(jc0Var.i());
-                                    jc0Var.a = true;
-                                }
-                            }
-                        } else {
-                            i7 = i6;
-                            i8 = i22;
-                            i9 = 1;
-                        }
-                        i10 = 3;
-                        if (i8 != i10) {
-                            i11 = i21;
-                            i12 = i7;
-                        } else if (i21 == i7) {
-                            if (i24 == i10) {
-                                if (i21 == i7) {
-                                    f(i7, 0, i7, 0, jc0Var);
-                                }
-                                int iO7 = jc0Var.o();
-                                f = jc0Var.V;
-                                if (jc0Var.W == -1) {
-                                    f = 1.0f / f;
-                                }
-                                f(i9, iO7, i9, (int) ((iO7 * f) + 0.5f), jc0Var);
-                                jc0Var.d.e.d(jc0Var.o());
-                                jc0Var.e.e.d(jc0Var.i());
-                                jc0Var.a = true;
-                            } else if (i24 == 1) {
-                                f(i21, 0, i7, 0, jc0Var);
-                                jc0Var.e.e.m = jc0Var.i();
-                            } else {
-                                i15 = i7;
-                                i16 = i21;
-                                if (i24 == 2) {
-                                    i17 = iArr[1];
-                                    if (i17 != i9) {
-                                    }
-                                    f(i16, jc0Var.o(), i9, (int) ((f3 * kc0Var.i()) + 0.5f), jc0Var);
-                                    jc0Var.d.e.d(jc0Var.o());
-                                    jc0Var.e.e.d(jc0Var.i());
-                                    jc0Var.a = true;
-                                } else {
-                                    i11 = i16;
-                                    if (hb0VarArr[2].f != null) {
-                                    }
-                                    f(i15, 0, i8, 0, jc0Var);
-                                    jc0Var.d.e.d(jc0Var.o());
-                                    jc0Var.e.e.d(jc0Var.i());
-                                    jc0Var.a = true;
-                                }
-                            }
-                        } else if (i24 == i10) {
-                            if (i21 == i7) {
-                                f(i7, 0, i7, 0, jc0Var);
-                            }
-                            int iO8 = jc0Var.o();
-                            f = jc0Var.V;
-                            if (jc0Var.W == -1) {
-                                f = 1.0f / f;
-                            }
-                            f(i9, iO8, i9, (int) ((iO8 * f) + 0.5f), jc0Var);
-                            jc0Var.d.e.d(jc0Var.o());
-                            jc0Var.e.e.d(jc0Var.i());
-                            jc0Var.a = true;
-                        } else if (i24 == 1) {
-                            f(i21, 0, i7, 0, jc0Var);
-                            jc0Var.e.e.m = jc0Var.i();
-                        } else {
-                            i15 = i7;
-                            i16 = i21;
-                            if (i24 == 2) {
-                                i17 = iArr[1];
-                                if (i17 != i9) {
-                                }
-                                f(i16, jc0Var.o(), i9, (int) ((f3 * kc0Var.i()) + 0.5f), jc0Var);
-                                jc0Var.d.e.d(jc0Var.o());
-                                jc0Var.e.e.d(jc0Var.i());
-                                jc0Var.a = true;
-                            } else {
-                                i11 = i16;
-                                if (hb0VarArr[2].f != null) {
-                                }
-                                f(i15, 0, i8, 0, jc0Var);
-                                jc0Var.d.e.d(jc0Var.o());
-                                jc0Var.e.e.d(jc0Var.i());
-                                jc0Var.a = true;
-                            }
-                        }
-                        i13 = 1;
-                        i14 = 3;
-                        if (i11 == i14) {
-                            if (i23 != i13) {
-                                f(i12, 0, i12, 0, jc0Var);
-                                jc0Var.d.e.m = jc0Var.o();
-                                jc0Var.e.e.m = jc0Var.i();
-                            } else {
-                                f(i12, 0, i12, 0, jc0Var);
-                                jc0Var.d.e.m = jc0Var.o();
-                                jc0Var.e.e.m = jc0Var.i();
-                            }
-                        }
-                    }
-                }
-                arrayList = arrayList2;
-            }
-        }
+    public void b(kc0 r25) {
+        ArrayList r1 = r25.p0;
+        int[] r2 = r25.o0;
+        int r3 = r1.size();
+        char r4 = 0;
+        int r5 = 0;
+    L3:
+        if (r5 >= r3) goto L158;
+        Object r6 = r1.get(r5);
+        r5 = r5 + 1;
+        jc0 r12 = (jc0) r6;
+        int[] r7 = r12.o0;
+        hb0[] r8 = r12.P;
+        hb0 r9 = r12.K;
+        hb0 r10 = r12.I;
+        hb0 r11 = r12.J;
+        hb0 r13 = r12.H;
+        int r14 = r7[r4];
+        int r15 = r7[1];
+        r4 = r4;
+        if (r12.f0 == 8) goto L6;
+        float r16 = r12.w;
+        if (r16 >= 1.0f) goto L11;
+        if (r14 != 3) goto L11;
+        r12.r = 2;
+    L11:
+        float r17 = r12.z;
+        if (r17 >= 1.0f) goto L16;
+        if (r15 != 3) goto L16;
+        r12.s = 2;
+    L16:
+        if (r12.V > 0.0f) goto L18;
+        int r0 = 3;
+    L40:
+        if (r14 != r0) goto L49;
+        if (r12.r != 1) goto L49;
+        if (r13.f != null) goto L46;
+    L47:
+        r14 = 2;
+        goto L49
+    L46:
+        if (r11.f == null) goto L47;
+    L49:
+        if (r15 == 3) goto L51;
+    L57:
+        up1 r18 = r12.d;
+        r18.d = r14;
+        int r19 = r12.r;
+        r18.a = r19;
+        w45 r20 = r12.e;
+        r20.d = r15;
+        ArrayList r22 = r1;
+        int r21 = r12.s;
+        r20.a = r21;
+        if (r14 == 4) goto L64;
+        if (r14 == 1) goto L64;
+        int r23 = 2;
+        if (r14 == 2) goto L64;
+    L71:
+        if (r14 != 3) goto L100;
+        if (r15 != r23) goto L74;
+    L77:
+        if (r19 != 3) goto L82;
+        if (r15 != r23) goto L80;
+        f(r23, 0, r23, 0, r12);
+    L80:
+        int r110 = r12.i();
+        f(1, (int) ((r110 * r12.V) + 0.5f), 1, r110, r12);
+        r12.d.e.d(r12.o());
+        r12.e.e.d(r12.i());
+        r12.a = true;
+    L81:
+        r1 = r22;
+        goto L3
+    L82:
+        int r24 = r23;
+        if (r19 != 1) goto L86;
+        f(r24, 0, r15, 0, r12);
+        r12.d.e.m = r12.o();
+        goto L81
+    L86:
+        if (r19 != 2) goto L95;
+        int r26 = r2[r4];
+        if (r26 != 1) goto L90;
+    L94:
+        f(1, (int) ((r16 * r25.o()) + 0.5f), r15, r12.i(), r12);
+        r12.d.e.d(r12.o());
+        r12.e.e.d(r12.i());
+        r12.a = true;
+        goto L81
+    L90:
+        if (r26 == 4) goto L94;
+        int r111 = r15;
+        int r27 = 1;
+    L93:
+        int r28 = 3;
+    L101:
+        if (r111 != r28) goto L134;
+        if (r14 == r24) goto L107;
+        if (r14 == r27) goto L107;
+        int r29 = r28;
+        int r30 = r14;
+        int r112 = r24;
+    L106:
+        r27 = r27;
+        int r31 = 1;
+    L135:
+        if (r30 != r29) goto L81;
+        if (r111 != r29) goto L81;
+        if (r19 == r31) goto L148;
+        if (r21 == r31) goto L148;
+        if (r21 != 2) goto L81;
+        if (r19 != 2) goto L81;
+        if (r2[r4] != r27) goto L81;
+        if (r2[r31] != r27) goto L81;
+        f(r27, (int) ((r16 * r25.o()) + 0.5f), r27, (int) ((r17 * r25.i()) + 0.5f), r12);
+        r12.d.e.d(r12.o());
+        r12.e.e.d(r12.i());
+        r12.a = true;
+    L148:
+        f(r112, 0, r112, 0, r12);
+        r12.d.e.m = r12.o();
+        r12.e.e.m = r12.i();
+    L107:
+        if (r21 != r28) goto L115;
+        if (r14 != r24) goto L110;
+        f(r24, 0, r24, 0, r12);
+    L110:
+        int r32 = r12.o();
+        float r33 = r12.V;
+        if (r12.W != (-1)) goto L113;
+        r33 = 1.0f / r33;
+    L113:
+        int r34 = r27;
+        f(r34, r32, r27, (int) ((r32 * r33) + 0.5f), r12);
+        r12.d.e.d(r12.o());
+        r12.e.e.d(r12.i());
+        r12.a = true;
+        goto L81
+    L115:
+        if (r21 != 1) goto L117;
+        f(r14, 0, r24, 0, r12);
+        r12.e.e.m = r12.i();
+        goto L81
+    L117:
+        int r113 = r24;
+        int r35 = r14;
+        if (r21 != 2) goto L126;
+        int r36 = r2[1];
+        if (r36 != r27) goto L122;
+    L125:
+        f(r35, r12.o(), r27, (int) ((r17 * r25.i()) + 0.5f), r12);
+        r12.d.e.d(r12.o());
+        r12.e.e.d(r12.i());
+        r12.a = true;
+        goto L81
+    L122:
+        if (r36 == 4) goto L125;
+        r30 = r35;
+        r112 = r113;
+        r29 = 3;
+        goto L106
+    L126:
+        r30 = r35;
+        if (r8[2].f != null) goto L129;
+    L133:
+        f(r113, 0, r111, 0, r12);
+        r12.d.e.d(r12.o());
+        r12.e.e.d(r12.i());
+        r12.a = true;
+        goto L81
+    L129:
+        if (r8[3].f == null) goto L133;
+        r112 = r113;
+    L132:
+        r31 = 1;
+        r29 = 3;
+        goto L135
+    L134:
+        r30 = r14;
+        r112 = r24;
+        goto L132
+    L95:
+        r111 = r15;
+        r27 = 1;
+        if (r8[r4].f != null) goto L98;
+    L99:
+        f(r24, 0, r111, 0, r12);
+        r12.d.e.d(r12.o());
+        r12.e.e.d(r12.i());
+        r12.a = true;
+        goto L81
+    L98:
+        if (r8[1].f != null) goto L93;
+    L74:
+        if (r15 == 1) goto L77;
+        r24 = r23;
+        r28 = 3;
+        r111 = r15;
+        r27 = 1;
+        goto L101
+    L100:
+        r24 = r23;
+        r111 = r15;
+        r27 = 1;
+    L64:
+        if (r15 != 4) goto L66;
+    L69:
+        int r210 = 1;
+    L150:
+        int r37 = r12.o();
+        if (r14 != 4) goto L153;
+        r37 = (r25.o() - r13.g) - r11.g;
+        r14 = r210;
+    L153:
+        int r38 = r12.i();
+        if (r15 != 4) goto L156;
+        int r114 = r210;
+        int r115 = (r25.i() - r10.g) - r9.g;
+    L157:
+        f(r14, r37, r114, r115, r12);
+        r12.d.e.d(r12.o());
+        r12.e.e.d(r12.i());
+        r12.a = true;
+        goto L81
+    L156:
+        r114 = r15;
+        r115 = r38;
+        goto L157
+    L66:
+        if (r15 == 1) goto L149;
+        r23 = 2;
+        if (r15 != 2) goto L71;
+    L149:
+        r210 = 1;
+        goto L150
+    L51:
+        if (r12.s != 1) goto L57;
+        if (r10.f != null) goto L55;
+    L56:
+        r15 = 2;
+        goto L57
+    L55:
+        if (r9.f != null) goto L57;
+    L18:
+        if (r14 != 3) goto L25;
+        int r116 = 2;
+        if (r15 == 2) goto L22;
+        if (r15 == 1) goto L22;
+        r0 = 3;
+    L26:
+        if (r15 != r0) goto L31;
+        if (r14 != r116) goto L29;
+    L30:
+        r12.s = r0;
+        goto L40
+    L29:
+        if (r14 == 1) goto L30;
+    L31:
+        if (r14 != r0) goto L40;
+        if (r15 != r0) goto L40;
+        if (r12.r != 0) goto L37;
+        r12.r = r0;
+    L37:
+        if (r12.s != 0) goto L40;
+        r12.s = r0;
+    L22:
+        r0 = 3;
+        r12.r = 3;
+        goto L40
+    L25:
+        r0 = 3;
+        r116 = 2;
+        goto L26
+    L6:
+        r12.a = true;
+        goto L3
     }
 
     public void c() {
-        kc0 kc0Var = (kc0) this.d;
-        ArrayList arrayList = (ArrayList) this.g;
-        ArrayList arrayList2 = (ArrayList) this.f;
-        arrayList2.clear();
-        kc0 kc0Var2 = (kc0) this.e;
-        kc0Var2.d.f();
-        kc0Var2.e.f();
-        arrayList2.add(kc0Var2.d);
-        arrayList2.add(kc0Var2.e);
-        ArrayList arrayList3 = kc0Var2.p0;
-        int size = arrayList3.size();
-        HashSet hashSet = null;
-        int i = 0;
-        while (i < size) {
-            Object obj = arrayList3.get(i);
-            i++;
-            jc0 jc0Var = (jc0) obj;
-            if (jc0Var instanceof pk1) {
-                qk1 qk1Var = new qk1(jc0Var);
-                jc0Var.d.f();
-                jc0Var.e.f();
-                qk1Var.f = ((pk1) jc0Var).t0;
-                arrayList2.add(qk1Var);
-            } else {
-                if (jc0Var.v()) {
-                    if (jc0Var.b == null) {
-                        jc0Var.b = new q00(jc0Var, 0);
-                    }
-                    if (hashSet == null) {
-                        hashSet = new HashSet();
-                    }
-                    hashSet.add(jc0Var.b);
-                } else {
-                    arrayList2.add(jc0Var.d);
-                }
-                if (jc0Var.w()) {
-                    if (jc0Var.c == null) {
-                        jc0Var.c = new q00(jc0Var, 1);
-                    }
-                    if (hashSet == null) {
-                        hashSet = new HashSet();
-                    }
-                    hashSet.add(jc0Var.c);
-                } else {
-                    arrayList2.add(jc0Var.e);
-                }
-                if (jc0Var instanceof ep) {
-                    arrayList2.add(new yl1(jc0Var));
-                }
-            }
-        }
-        if (hashSet != null) {
-            arrayList2.addAll(hashSet);
-        }
-        int size2 = arrayList2.size();
-        int i2 = 0;
-        while (i2 < size2) {
-            Object obj2 = arrayList2.get(i2);
-            i2++;
-            ((ba5) obj2).f();
-        }
-        int size3 = arrayList2.size();
-        int i3 = 0;
-        while (i3 < size3) {
-            Object obj3 = arrayList2.get(i3);
-            i3++;
-            ba5 ba5Var = (ba5) obj3;
-            if (ba5Var.b != kc0Var2) {
-                ba5Var.d();
-            }
-        }
-        arrayList.clear();
-        e(kc0Var.d, 0, arrayList);
-        e(kc0Var.e, 1, arrayList);
+        kc0 r0 = (kc0) this.d;
+        ArrayList r1 = (ArrayList) this.g;
+        ArrayList r2 = (ArrayList) this.f;
+        r2.clear();
+        kc0 r3 = (kc0) this.e;
+        r3.d.f();
+        r3.e.f();
+        r2.add(r3.d);
+        r2.add(r3.e);
+        ArrayList r4 = r3.p0;
+        int r5 = r4.size();
+        HashSet r6 = null;
+        int r8 = 0;
+    L4:
+        if (r8 >= r5) goto L29;
+        Object r10 = r4.get(r8);
+        r8 = r8 + 1;
+        jc0 r11 = (jc0) r10;
+        if ((r11 instanceof pk1) == true) goto L7;
+        if (r11.v() == true) goto L11;
+        r2.add(r11.d);
+    L18:
+        if (r11.w() == true) goto L20;
+        r2.add(r11.e);
+    L27:
+        if ((r11 instanceof ep) == false) goto L4;
+        r2.add(new yl1(r11));
+        goto L4
+    L20:
+        if (r11.c != null) goto L22;
+        r11.c = new q00(r11, 1);
+    L22:
+        if (r6 != null) goto L24;
+        r6 = new HashSet();
+    L24:
+        r6.add(r11.c);
+        goto L27
+    L11:
+        if (r11.b != null) goto L13;
+        r11.b = new q00(r11, 0);
+    L13:
+        if (r6 != null) goto L15;
+        r6 = new HashSet();
+    L15:
+        r6.add(r11.b);
+        goto L18
+    L7:
+        qk1 r9 = new qk1(r11);
+        r11.d.f();
+        r11.e.f();
+        r9.f = ((pk1) r11).t0;
+        r2.add(r9);
+        goto L4
+    L29:
+        if (r6 == null) goto L31;
+        r2.addAll(r6);
+    L31:
+        int r7 = r2.size();
+        int r12 = 0;
+    L32:
+        if (r12 >= r7) goto L34;
+        Object r13 = r2.get(r12);
+        r12 = r12 + 1;
+        ((ba5) r13).f();
+        goto L32
+    L34:
+        int r14 = r2.size();
+        int r15 = 0;
+    L35:
+        if (r15 >= r14) goto L40;
+        Object r16 = r2.get(r15);
+        r15 = r15 + 1;
+        ba5 r17 = (ba5) r16;
+        if (r17.b == r3) goto L35;
+        r17.d();
+        goto L35
+    L40:
+        r1.clear();
+        e(r0.d, 0, r1);
+        e(r0.e, 1, r1);
         this.b = false;
     }
 
-    public int d(kc0 kc0Var, int i) {
-        ArrayList arrayList;
-        int i2;
-        long j;
-        float f;
-        long j2;
-        ArrayList arrayList2 = (ArrayList) this.g;
-        int size = arrayList2.size();
-        long j3 = 0;
-        int i3 = 0;
-        long jMax = 0;
-        while (i3 < size) {
-            ba5 ba5Var = ((v34) arrayList2.get(i3)).a;
-            if (!(ba5Var instanceof q00) ? !(i != 0 ? (ba5Var instanceof w45) : (ba5Var instanceof up1)) : ((q00) ba5Var).f != i) {
-                yo0 yo0Var = (i == 0 ? kc0Var.d : kc0Var.e).h;
-                yo0 yo0Var2 = (i == 0 ? kc0Var.d : kc0Var.e).i;
-                yo0 yo0Var3 = ba5Var.h;
-                yo0 yo0Var4 = ba5Var.i;
-                boolean zContains = yo0Var3.l.contains(yo0Var);
-                boolean zContains2 = yo0Var4.l.contains(yo0Var2);
-                long j4 = ba5Var.j();
-                if (zContains && zContains2) {
-                    long jB = v34.b(yo0Var3, j3);
-                    arrayList = arrayList2;
-                    long jA = v34.a(yo0Var4, j3);
-                    long j5 = jB - j4;
-                    int i4 = yo0Var4.f;
-                    i2 = i3;
-                    if (j5 >= (-i4)) {
-                        j5 += (long) i4;
-                    }
-                    long j6 = yo0Var3.f;
-                    long j7 = ((-jA) - j4) - j6;
-                    if (j7 >= j6) {
-                        j7 -= j6;
-                    }
-                    jc0 jc0Var = ba5Var.b;
-                    if (i == 0) {
-                        f = jc0Var.c0;
-                    } else if (i == 1) {
-                        f = jc0Var.d0;
-                    } else {
-                        jc0Var.getClass();
-                        f = -1.0f;
-                    }
-                    if (f > 0.0f) {
-                        j2 = (long) ((j5 / (1.0f - f)) + (j7 / f));
-                    } else {
-                        j2 = 0;
-                    }
-                    float f2 = j2;
-                    j = (((long) yo0Var3.f) + ((((long) ((f2 * f) + 0.5f)) + j4) + ((long) xa3.a(1.0f, f, f2, 0.5f)))) - ((long) yo0Var4.f);
-                } else {
-                    arrayList = arrayList2;
-                    i2 = i3;
-                    if (zContains) {
-                        j = Math.max(v34.b(yo0Var3, yo0Var3.f), ((long) yo0Var3.f) + j4);
-                    } else if (zContains2) {
-                        j = Math.max(-v34.a(yo0Var4, yo0Var4.f), ((long) (-yo0Var4.f)) + j4);
-                    } else {
-                        j = (ba5Var.j() + ((long) yo0Var3.f)) - ((long) yo0Var4.f);
-                    }
-                }
-            } else {
-                arrayList = arrayList2;
-                j = j3;
-                i2 = i3;
-            }
-            jMax = Math.max(jMax, j);
-            i3 = i2 + 1;
-            arrayList2 = arrayList;
-            j3 = 0;
-        }
-        return (int) jMax;
+    public int d(kc0 r18, int r19) {
+        ArrayList r1 = (ArrayList) this.g;
+        int r3 = r1.size();
+        long r4 = 0;
+        int r6 = 0;
+        long r7 = 0;
+    L3:
+        if (r6 >= r3) goto L53;
+        ba5 r9 = ((v34) r1.get(r6)).a;
+        if ((r9 instanceof q00) == true) goto L7;
+        if (r19 != 0) goto L14;
+        if ((r9 instanceof up1) == false) goto L8;
+    L16:
+        if (r19 != 0) goto L19;
+        ba5 r10 = r18.d;
+    L18:
+        yo0 r11 = r10.h;
+        if (r19 != 0) goto L23;
+        ba5 r12 = r18.d;
+    L22:
+        yo0 r13 = r12.i;
+        yo0 r14 = r9.h;
+        yo0 r15 = r9.i;
+        boolean r16 = r14.l.contains(r11);
+        boolean r17 = r15.l.contains(r13);
+        long r110 = r9.j();
+        if (r16 == false) goto L45;
+        if (r17 == false) goto L45;
+        long r111 = v34.b(r14, r4);
+        ArrayList r112 = r1;
+        long r0 = v34.a(r15, r4);
+        long r113 = r111 - r110;
+        int r5 = r15.f;
+        int r114 = r6;
+        if (r113 < (-r5)) goto L30;
+        r113 = r113 + ((long) r5);
+    L30:
+        long r8 = r14.f;
+        long r2 = ((-r0) - r110) - r8;
+        if (r2 < r8) goto L33;
+        r2 = r2 - r8;
+    L33:
+        jc0 r20 = r9.b;
+        if (r19 != 0) goto L37;
+        float r21 = r20.c0;
+    L41:
+        if (r21 <= 0.0f) goto L43;
+        long r22 = (long) ((r113 / (1.0f - r21)) + (r2 / r21));
+    L44:
+        float r23 = r22;
+        long r24 = (((long) r14.f) + ((((long) ((r23 * r21) + 0.5f)) + r110) + ((long) xa3.a(1.0f, r21, r23, 0.5f)))) - ((long) r15.f);
+    L51:
+        r7 = Math.max(r7, r24);
+        r6 = r114 + 1;
+        r1 = r112;
+        r4 = 0;
+        goto L3
+    L43:
+        r22 = 0;
+        goto L44
+    L37:
+        if (r19 != 1) goto L39;
+        r21 = r20.d0;
+        goto L41
+    L39:
+        r20.getClass();
+        r21 = -1.0f;
+    L45:
+        r112 = r1;
+        r114 = r6;
+        if (r16 == false) goto L48;
+        r24 = Math.max(v34.b(r14, r14.f), ((long) r14.f) + r110);
+        goto L51
+    L48:
+        if (r17 == false) goto L50;
+        r24 = Math.max(-v34.a(r15, r15.f), ((long) (-r15.f)) + r110);
+        goto L51
+    L50:
+        r24 = (r9.j() + r14.f) - ((long) r15.f);
+        goto L51
+    L23:
+        r12 = r18.e;
+        goto L22
+    L19:
+        r10 = r18.e;
+    L8:
+        r112 = r1;
+        r24 = r4;
+        r114 = r6;
+        goto L51
+    L14:
+        if ((r9 instanceof w45) == true) goto L16;
+    L7:
+        if (((q00) r9).f == r19) goto L16;
+    L53:
+        return (int) r7;
     }
 
-    public void e(ba5 ba5Var, int i, ArrayList arrayList) {
-        yo0 yo0Var = ba5Var.h;
-        yo0 yo0Var2 = ba5Var.i;
-        ArrayList arrayList2 = yo0Var.k;
-        int size = arrayList2.size();
-        int i2 = 0;
-        int i3 = 0;
-        while (i3 < size) {
-            Object obj = arrayList2.get(i3);
-            i3++;
-            uo0 uo0Var = (uo0) obj;
-            if (uo0Var instanceof yo0) {
-                a((yo0) uo0Var, i, arrayList, null);
-            } else if (uo0Var instanceof ba5) {
-                a(((ba5) uo0Var).h, i, arrayList, null);
-            }
-        }
-        ArrayList arrayList3 = yo0Var2.k;
-        int size2 = arrayList3.size();
-        int i4 = 0;
-        while (i4 < size2) {
-            Object obj2 = arrayList3.get(i4);
-            i4++;
-            uo0 uo0Var2 = (uo0) obj2;
-            if (uo0Var2 instanceof yo0) {
-                a((yo0) uo0Var2, i, arrayList, null);
-            } else if (uo0Var2 instanceof ba5) {
-                a(((ba5) uo0Var2).i, i, arrayList, null);
-            }
-        }
-        if (i == 1) {
-            ArrayList arrayList4 = ((w45) ba5Var).k.k;
-            int size3 = arrayList4.size();
-            while (i2 < size3) {
-                Object obj3 = arrayList4.get(i2);
-                i2++;
-                uo0 uo0Var3 = (uo0) obj3;
-                if (uo0Var3 instanceof yo0) {
-                    a((yo0) uo0Var3, i, arrayList, null);
-                }
-            }
-        }
+    public void e(ba5 r9, int r10, ArrayList r11) {
+        yo0 r0 = r9.h;
+        yo0 r1 = r9.i;
+        ArrayList r2 = r0.k;
+        int r3 = r2.size();
+        int r4 = 0;
+        int r5 = 0;
+    L4:
+        if (r5 >= r3) goto L11;
+        Object r6 = r2.get(r5);
+        r5 = r5 + 1;
+        uo0 r7 = (uo0) r6;
+        if ((r7 instanceof yo0) == true) goto L7;
+        if ((r7 instanceof ba5) == false) goto L4;
+        a(((ba5) r7).h, r10, r11, null);
+        goto L4
+    L7:
+        a((yo0) r7, r10, r11, null);
+        goto L4
+    L11:
+        ArrayList r8 = r1.k;
+        int r12 = r8.size();
+        int r13 = 0;
+    L12:
+        if (r13 >= r12) goto L20;
+        Object r14 = r8.get(r13);
+        r13 = r13 + 1;
+        uo0 r15 = (uo0) r14;
+        if ((r15 instanceof yo0) == true) goto L15;
+        if ((r15 instanceof ba5) == false) goto L12;
+        a(((ba5) r15).i, r10, r11, null);
+        goto L12
+    L15:
+        a((yo0) r15, r10, r11, null);
+        goto L12
+    L20:
+        if (r10 != 1) goto L26;
+        ArrayList r16 = ((w45) r9).k.k;
+        int r17 = r16.size();
+    L22:
+        if (r4 >= r17) goto L48;
+        Object r18 = r16.get(r4);
+        r4 = r4 + 1;
+        uo0 r19 = (uo0) r18;
+        if ((r19 instanceof yo0) == false) goto L22;
+        a((yo0) r19, r10, r11, null);
+        goto L22
+    L48:
+        return;
     }
 
-    public void f(int i, int i2, int i3, int i4, jc0 jc0Var) {
-        kr krVar = (kr) this.i;
-        krVar.a = i;
-        krVar.b = i3;
-        krVar.c = i2;
-        krVar.d = i4;
-        ((nr3) this.h).d(jc0Var, krVar);
-        jc0Var.K(krVar.e);
-        jc0Var.H(krVar.f);
-        jc0Var.E = krVar.h;
-        int i5 = krVar.g;
-        jc0Var.Z = i5;
-        jc0Var.E = i5 > 0;
+    public void f(int r2, int r3, int r4, int r5, jc0 r6) {
+        kr r0 = (kr) this.i;
+        r0.a = r2;
+        r0.b = r4;
+        r0.c = r3;
+        r0.d = r5;
+        ((nr3) this.h).d(r6, r0);
+        r6.K(r0.e);
+        r6.H(r0.f);
+        r6.E = r0.h;
+        int r1 = r0.g;
+        r6.Z = r1;
+        if (r1 <= 0) goto L5;
+        boolean r7 = true;
+    L6:
+        r6.E = r7;
+        return;
+    L5:
+        r7 = false;
+        goto L6
     }
 
     public void g() {
-        gr grVar;
-        xo0 xo0Var = this;
-        ArrayList arrayList = ((kc0) xo0Var.d).p0;
-        int size = arrayList.size();
-        int i = 0;
-        while (i < size) {
-            int i2 = i + 1;
-            jc0 jc0Var = (jc0) arrayList.get(i);
-            if (!jc0Var.a) {
-                int[] iArr = jc0Var.o0;
-                int i3 = iArr[0];
-                int i4 = iArr[1];
-                int i5 = jc0Var.r;
-                int i6 = jc0Var.s;
-                boolean z = i3 == 2 || (i3 == 3 && i5 == 1);
-                boolean z2 = i4 == 2 || (i4 == 3 && i6 == 1);
-                eq0 eq0Var = jc0Var.d.e;
-                boolean z3 = eq0Var.j;
-                eq0 eq0Var2 = jc0Var.e.e;
-                boolean z4 = eq0Var2.j;
-                boolean z5 = z;
-                if (z3 && z4) {
-                    xo0Var.f(1, eq0Var.g, 1, eq0Var2.g, jc0Var);
-                    jc0Var.a = true;
-                } else if (z3 && z2) {
-                    f(1, eq0Var.g, 2, eq0Var2.g, jc0Var);
-                    w45 w45Var = jc0Var.e;
-                    if (i4 == 3) {
-                        w45Var.e.m = jc0Var.i();
-                    } else {
-                        w45Var.e.d(jc0Var.i());
-                        jc0Var.a = true;
-                    }
-                } else if (z4 && z5) {
-                    f(2, eq0Var.g, 1, eq0Var2.g, jc0Var);
-                    up1 up1Var = jc0Var.d;
-                    if (i3 == 3) {
-                        up1Var.e.m = jc0Var.o();
-                    } else {
-                        up1Var.e.d(jc0Var.o());
-                        jc0Var.a = true;
-                    }
-                }
-                if (jc0Var.a && (grVar = jc0Var.e.l) != null) {
-                    grVar.d(jc0Var.Z);
-                }
-                xo0Var = this;
-            }
-            i = i2;
-        }
+        xo0 r0 = this;
+        ArrayList r6 = ((kc0) r0.d).p0;
+        int r7 = r6.size();
+        int r1 = 0;
+    L3:
+        if (r1 >= r7) goto L43;
+        int r9 = r1 + 1;
+        jc0 r5 = (jc0) r6.get(r1);
+        if (r5.a == true) goto L6;
+        int[] r2 = r5.o0;
+        int r10 = r2[0];
+        int r12 = r2[1];
+        int r3 = r5.r;
+        int r4 = r5.s;
+        if (r10 == 2) goto L13;
+        if (r10 != 3) goto L12;
+        if (r3 == 1) goto L13;
+    L12:
+        boolean r8 = false;
+    L14:
+        if (r12 == 2) goto L19;
+        if (r12 != 3) goto L18;
+        if (r4 == 1) goto L19;
+    L18:
+        boolean r11 = false;
+    L20:
+        eq0 r13 = r5.d.e;
+        boolean r14 = r13.j;
+        eq0 r15 = r5.e.e;
+        boolean r16 = r15.j;
+        boolean r17 = r8;
+        if (r14 == false) goto L24;
+        if (r16 == false) goto L24;
+        r0.f(1, r13.g, 1, r15.g, r5);
+        r5.a = true;
+    L38:
+        if (r5.a == false) goto L42;
+        gr r18 = r5.e.l;
+        if (r18 == null) goto L42;
+        r18.d(r5.Z);
+    L42:
+        r0 = this;
+    L24:
+        if (r14 == false) goto L31;
+        if (r11 == false) goto L31;
+        f(1, r13.g, 2, r15.g, r5);
+        w45 r19 = r5.e;
+        if (r12 != 3) goto L29;
+        r19.e.m = r5.i();
+        goto L38
+    L29:
+        r19.e.d(r5.i());
+        r5.a = true;
+    L31:
+        if (r16 == false) goto L38;
+        if (r17 == false) goto L38;
+        f(2, r13.g, 1, r15.g, r5);
+        up1 r20 = r5.d;
+        if (r10 != 3) goto L36;
+        r20.e.m = r5.o();
+        goto L38
+    L36:
+        r20.e.d(r5.o());
+        r5.a = true;
+    L19:
+        r11 = true;
+    L13:
+        r8 = true;
+    L6:
+        r1 = r9;
+        goto L3
     }
 
     public String toString() {
-        switch (this.a) {
-            case 1:
-                Map map = (Map) this.i;
-                Long l = (Long) this.h;
-                Long l2 = (Long) this.g;
-                Long l3 = (Long) this.f;
-                Long l4 = (Long) this.e;
-                ArrayList arrayList = new ArrayList();
-                if (this.b) {
-                    arrayList.add("isRegularFile");
-                }
-                if (this.c) {
-                    arrayList.add("isDirectory");
-                }
-                if (l4 != null) {
-                    arrayList.add("byteCount=" + l4);
-                }
-                if (l3 != null) {
-                    arrayList.add("createdAt=" + l3);
-                }
-                if (l2 != null) {
-                    arrayList.add("lastModifiedAt=" + l2);
-                }
-                if (l != null) {
-                    arrayList.add("lastAccessedAt=" + l);
-                }
-                if (!map.isEmpty()) {
-                    arrayList.add("extras=" + map);
-                }
-                return q40.B0(arrayList, ", ", "FileMetadata(", ")", null, 56);
-            default:
-                return super.toString();
-        }
+        switch(this.a) {
+            case 1: goto L6;
+            default: goto L5;
+        };
+    L6:
+        Map r0 = (Map) this.i;
+        Long r1 = (Long) this.h;
+        Long r2 = (Long) this.g;
+        Long r3 = (Long) this.f;
+        Long r4 = (Long) this.e;
+        ArrayList r5 = new ArrayList();
+        if (this.b == false) goto L10;
+        r5.add("isRegularFile");
+    L10:
+        if (this.c == false) goto L12;
+        r5.add("isDirectory");
+    L12:
+        if (r4 == null) goto L14;
+        r5.add("byteCount=" + r4);
+    L14:
+        if (r3 == null) goto L16;
+        r5.add("createdAt=" + r3);
+    L16:
+        if (r2 == null) goto L18;
+        r5.add("lastModifiedAt=" + r2);
+    L18:
+        if (r1 == null) goto L21;
+        r5.add("lastAccessedAt=" + r1);
+    L21:
+        if (r0.isEmpty() == true) goto L24;
+        r5.add("extras=" + r0);
+    L24:
+        return q40.B0(r5, ", ", "FileMetadata(", ")", null, 56);
+    L5:
+        return super.toString();
     }
 
     public /* synthetic */ xo0() {
+        this.a = 0;
     }
 
-    public /* synthetic */ xo0(boolean z, boolean z2, ge3 ge3Var, Long l, Long l2, Long l3, Long l4) {
-        this(z, z2, ge3Var, l, l2, l3, l4, v01.n);
+    public /* synthetic */ xo0(boolean r11, boolean r12, ge3 r13, Long r14, Long r15, Long r16, Long r17) {
+        this.a = 1;
+        this(r11, r12, r13, r14, r15, r16, r17, v01.n);
     }
 }

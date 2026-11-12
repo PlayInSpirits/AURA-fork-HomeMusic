@@ -7,112 +7,122 @@ import java.util.Arrays;
 public abstract class i45 {
     public static final /* synthetic */ int a = 0;
 
-    /* JADX WARN: Code duplicated, block: B:9:0x001e  */
     static {
-        char c;
-        int i;
-        pa[] paVarArr;
-        char c2;
-        boolean z;
-        float[][] fArr = {new float[2], new float[2]};
-        int i2 = new int[2][0];
-        char c3 = 3;
-        int i3 = 1;
-        if (i2 == 0) {
-            c = 3;
-        } else if (i2 == 1) {
-            c = 1;
-        } else if (i2 == 2 || i2 == 3) {
-            c = 2;
-        } else if (i2 == 4) {
-            c = 4;
-        } else if (i2 != 5) {
-            c = 1;
-        } else {
-            c = 5;
-        }
-        float[] fArr2 = fArr[0];
-        float[] fArr3 = fArr[1];
-        int length = (fArr2.length % 2) + (fArr2.length / 2);
-        pa[] paVarArr2 = new pa[length];
-        int i4 = 0;
-        while (i4 < length) {
-            int i5 = i4 * 2;
-            float f = fArr2[i5];
-            int i6 = i5 + 1;
-            float f2 = fArr2[i6];
-            float f3 = fArr3[i5];
-            float f4 = fArr3[i6];
-            pa paVar = new pa(9);
-            float f5 = f3 - f;
-            float f6 = f4 - f2;
-            float[] fArr4 = new float[101];
-            if (c != c3 && Math.abs(f5) >= 0.001f && Math.abs(f6) >= 0.001f) {
-                float f7 = f2 - f4;
-                float[] fArr5 = au0.v;
-                int i7 = i3;
-                i = i7;
-                float f8 = f7;
-                float fHypot = 0.0f;
-                float f9 = 0.0f;
-                while (true) {
-                    double d = (float) (((((double) i7) * 90.0d) / 90.0d) * 0.017453292519943295d);
-                    float f10 = f7;
-                    float fSin = ((float) Math.sin(d)) * f5;
-                    float fCos = f10 * ((float) Math.cos(d));
-                    float f11 = fCos - f8;
-                    paVarArr = paVarArr2;
-                    c2 = c;
-                    fHypot += (float) Math.hypot(fSin - f9, f11);
-                    fArr5[i7] = fHypot;
-                    if (i7 == 90) {
-                        break;
-                    }
-                    i7++;
-                    f9 = fSin;
-                    c = c2;
-                    paVarArr2 = paVarArr;
-                    f8 = fCos;
-                    f7 = f10;
-                }
-                int i8 = i;
-                while (true) {
-                    fArr5[i8] = fArr5[i8] / fHypot;
-                    if (i8 == 90) {
-                        break;
-                    } else {
-                        i8++;
-                    }
-                }
-                for (int i9 = 0; i9 < 101; i9++) {
-                    float f12 = i9 / 100.0f;
-                    int iBinarySearch = Arrays.binarySearch(fArr5, 0, 91, f12);
-                    if (iBinarySearch >= 0) {
-                        fArr4[i9] = iBinarySearch / 90.0f;
-                    } else if (iBinarySearch == -1) {
-                        fArr4[i9] = 0.0f;
-                    } else {
-                        int i10 = -iBinarySearch;
-                        int i11 = i10 - 2;
-                        float f13 = i11;
-                        float f14 = fArr5[i11];
-                        fArr4[i9] = (((f12 - f14) / (fArr5[i10 - 1] - f14)) + f13) / 90.0f;
-                    }
-                }
-                z = false;
-            } else {
-                paVarArr = paVarArr2;
-                c2 = c;
-                i = i3;
-                z = false;
-                Math.hypot(f6, f5);
-            }
-            paVarArr[i4] = paVar;
-            i4++;
-            c = c2;
-            i3 = i;
-            paVarArr2 = paVarArr;
-            c3 = 3;
-        }
+        float[][] r2 = {new float[2], new float[2]};
+        int r1 = new int[2][0];
+        char r6 = 3;
+        int r7 = 1;
+        if (r1 == 0) goto L13;
+        if (r1 == 1) goto L9;
+        if (r1 == 2) goto L12;
+        if (r1 == 3) goto L12;
+        if (r1 == 4) goto L11;
+        if (r1 != 5) goto L9;
+        char r3 = 5;
+    L14:
+        float[] r8 = r2[0];
+        float[] r4 = r2[1];
+        int r10 = (r8.length % 2) + (r8.length / 2);
+        pa[] r0 = new pa[r10];
+        int r9 = 0;
+    L15:
+        if (r9 >= r10) goto L45;
+        int r11 = r9 * 2;
+        float r13 = r8[r11];
+        int r14 = r11 + 1;
+        float r15 = r8[r14];
+        float r12 = r4[r11];
+        float r16 = r4[r14];
+        pa r17 = new pa(9);
+        float r18 = r12 - r13;
+        float r5 = r16 - r15;
+        float[] r19 = new float[101];
+        if (r3 != r6) goto L20;
+    L18:
+        pa[] r23 = r0;
+        char r110 = r3;
+        int r20 = r7;
+        boolean r21 = false;
+        Math.hypot(r5, r18);
+    L44:
+        r23[r9] = r17;
+        r9 = r9 + 1;
+        r3 = r110;
+        r7 = r20;
+        r0 = r23;
+        r6 = 3;
+        goto L15
+    L20:
+        if (Math.abs(r18) < 0.001f) goto L18;
+        if (Math.abs(r5) < 0.001f) goto L18;
+        float r111 = r15 - r16;
+        float[] r22 = au0.v;
+        int r24 = r7;
+        r20 = r24;
+        float r112 = r111;
+        float r113 = 0.0f;
+        float r114 = 0.0f;
+    L25:
+        double r25 = (float) (((((double) r24) * 90.0d) / 90.0d) * 0.017453292519943295d);
+        float r26 = r111;
+        float r115 = ((float) Math.sin(r25)) * r18;
+        float r116 = r26 * ((float) Math.cos(r25));
+        float r117 = r116 - r112;
+        r23 = r0;
+        r110 = r3;
+        r113 = r113 + ((float) Math.hypot(r115 - r114, r117));
+        r22[r24] = r113;
+        if (r24 == 90) goto L28;
+        r24 = r24 + 1;
+        r114 = r115;
+        r3 = r110;
+        r0 = r23;
+        r112 = r116;
+        r111 = r26;
+        goto L25
+    L28:
+        int r27 = r20;
+    L29:
+        r22[r27] = r22[r27] / r113;
+        if (r27 == 90) goto L32;
+        r27 = r27 + 1;
+        goto L29
+    L32:
+        int r28 = 0;
+    L33:
+        if (r28 >= 101) goto L42;
+        float r29 = r28 / 100.0f;
+        int r30 = Arrays.binarySearch(r22, 0, 91, r29);
+        if (r30 < 0) goto L38;
+        r19[r28] = r30 / 90.0f;
+    L41:
+        r28 = r28 + 1;
+        goto L33
+    L38:
+        if (r30 != (-1)) goto L40;
+        r19[r28] = 0.0f;
+        goto L41
+    L40:
+        int r31 = -r30;
+        int r118 = r31 - 2;
+        float r119 = r118;
+        float r120 = r22[r118];
+        r19[r28] = (((r29 - r120) / (r22[r31 - 1] - r120)) + r119) / 90.0f;
+        goto L41
+    L42:
+        r21 = false;
+        goto L44
+    L45:
+        return;
+    L11:
+        r3 = 4;
+    L12:
+        r3 = 2;
+    L9:
+        r3 = 1;
+        goto L14
+    L13:
+        r3 = 3;
+        goto L14
     }
 }

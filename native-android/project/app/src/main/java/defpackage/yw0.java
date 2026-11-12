@@ -8,28 +8,28 @@ import java.lang.reflect.Method;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class yw0 {
-    public static final Method a;
-    public static final Method b;
-    public static final Method c;
-    public static final boolean d;
+    public static final Method a = null;
+    public static final Method b = null;
+    public static final Method c = null;
+    public static final boolean d = false;
 
     static {
-        try {
-            Class cls = Integer.TYPE;
-            Class cls2 = Boolean.TYPE;
-            Class cls3 = Float.TYPE;
-            Method declaredMethod = AbsListView.class.getDeclaredMethod("positionSelector", cls, View.class, cls2, cls3, cls3);
-            a = declaredMethod;
-            declaredMethod.setAccessible(true);
-            Method declaredMethod2 = AdapterView.class.getDeclaredMethod("setSelectedPositionInt", cls);
-            b = declaredMethod2;
-            declaredMethod2.setAccessible(true);
-            Method declaredMethod3 = AdapterView.class.getDeclaredMethod("setNextSelectedPositionInt", cls);
-            c = declaredMethod3;
-            declaredMethod3.setAccessible(true);
-            d = true;
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
+        Class r3 = Integer.TYPE;     // Catch: NoSuchMethodException -> L5
+        Class r5 = Boolean.TYPE;     // Catch: NoSuchMethodException -> L5
+        Class r6 = Float.TYPE;     // Catch: NoSuchMethodException -> L5
+        Method r1 = AbsListView.class.getDeclaredMethod("positionSelector", new Class[]{r3, View.class, r5, r6, r6});     // Catch: NoSuchMethodException -> L5
+        a = r1;     // Catch: NoSuchMethodException -> L5
+        r1.setAccessible(true);     // Catch: NoSuchMethodException -> L5
+        Method r2 = AdapterView.class.getDeclaredMethod("setSelectedPositionInt", new Class[]{r3});     // Catch: NoSuchMethodException -> L5
+        b = r2;     // Catch: NoSuchMethodException -> L5
+        r2.setAccessible(true);     // Catch: NoSuchMethodException -> L5
+        Method r0 = AdapterView.class.getDeclaredMethod("setNextSelectedPositionInt", new Class[]{r3});     // Catch: NoSuchMethodException -> L5
+        c = r0;     // Catch: NoSuchMethodException -> L5
+        r0.setAccessible(true);     // Catch: NoSuchMethodException -> L5
+        d = true;     // Catch: NoSuchMethodException -> L5
+        return;
+    L5:
+        e = move-exception;
+        e.printStackTrace();
     }
 }

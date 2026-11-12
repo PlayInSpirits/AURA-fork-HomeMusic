@@ -6,8 +6,8 @@ public final class i13 {
     public final h13 a;
     public final s22 b;
 
-    public i13(h13 h13Var, s22 s22Var) {
-        this.a = h13Var;
-        this.b = s22Var;
+    public i13(h13 r1, s22 r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

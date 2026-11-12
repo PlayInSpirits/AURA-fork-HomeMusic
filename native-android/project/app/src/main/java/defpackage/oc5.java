@@ -5,21 +5,21 @@ package defpackage;
 public final class oc5 extends jw2 {
     public final /* synthetic */ int c;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ oc5(int i, int i2, int i3) {
-        super(i, i2);
-        this.c = i3;
+    public /* synthetic */ oc5(int r1, int r2, int r3) {
+        this.c = r3;
+        super(r1, r2);
     }
 
     @Override // defpackage.jw2
-    public final void a(we1 we1Var) {
-        switch (this.c) {
-            case 0:
-                we1Var.q("ALTER TABLE `WorkSpec` ADD COLUMN `trace_tag` TEXT DEFAULT NULL");
-                break;
-            default:
-                we1Var.q("ALTER TABLE `WorkSpec` ADD COLUMN `required_network_request` BLOB NOT NULL DEFAULT x''");
-                break;
-        }
+    public final void a(we1 r1) {
+        switch(this.c) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.q("ALTER TABLE `WorkSpec` ADD COLUMN `required_network_request` BLOB NOT NULL DEFAULT x''");
+        return;
+    L6:
+        r1.q("ALTER TABLE `WorkSpec` ADD COLUMN `trace_tag` TEXT DEFAULT NULL");
     }
 }

@@ -5,13 +5,13 @@ package defpackage;
 public final class y83 extends v33 {
     public final bq4 c;
 
-    public y83(a93 a93Var) {
-        bq4 bq4Var = new bq4(new ss2(7, a93Var));
-        bq4Var.e(this);
-        this.c = bq4Var;
+    public y83(a93 r4) {
+        bq4 r0 = new bq4(new ss2(7, r4));
+        r0.e(this);
+        this.c = r0;
     }
 
     @Override // defpackage.v33
-    public final void b(boolean z) {
+    public final void b(boolean r1) {
     }
 }

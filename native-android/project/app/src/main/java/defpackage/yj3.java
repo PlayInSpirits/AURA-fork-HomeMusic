@@ -14,31 +14,32 @@ public final /* synthetic */ class yj3 implements View.OnLongClickListener {
     public final /* synthetic */ String p;
     public final /* synthetic */ kc1 q;
 
-    public /* synthetic */ yj3(kc1 kc1Var, ik ikVar, String str, int i) {
-        this.n = i;
-        this.q = kc1Var;
-        this.o = ikVar;
-        this.p = str;
+    public /* synthetic */ yj3(kc1 r1, ik r2, String r3, int r4) {
+        this.n = r4;
+        this.q = r1;
+        this.o = r2;
+        this.p = r3;
     }
 
     @Override // android.view.View.OnLongClickListener
-    public final boolean onLongClick(View view) {
-        int i = this.n;
-        String str = this.p;
-        ik ikVar = this.o;
-        kc1 kc1Var = this.q;
-        switch (i) {
-            case 0:
-                PlayerControllerFragment playerControllerFragment = (PlayerControllerFragment) kc1Var;
-                l93.t(playerControllerFragment.Z(), ikVar);
-                Toast.makeText(playerControllerFragment.Z(), playerControllerFragment.t(R.string.asset_link_copied_toast, str), 0).show();
-                break;
-            default:
-                SongBottomSheetDialog songBottomSheetDialog = (SongBottomSheetDialog) kc1Var;
-                l93.t(songBottomSheetDialog.Z(), ikVar);
-                Toast.makeText(songBottomSheetDialog.Z(), songBottomSheetDialog.t(R.string.asset_link_copied_toast, str), 0).show();
-                break;
-        }
+    public final boolean onLongClick(View r6) {
+        int r7 = this.n;
+        String r3 = this.p;
+        ik r4 = this.o;
+        kc1 r5 = this.q;
+        switch(r7) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        SongBottomSheetDialog r8 = (SongBottomSheetDialog) r5;
+        l93.t(r8.Z(), r4);
+        Toast.makeText(r8.Z(), r8.t(R.string.asset_link_copied_toast, new Object[]{r3}), 0).show();
+        return true;
+    L6:
+        PlayerControllerFragment r9 = (PlayerControllerFragment) r5;
+        l93.t(r9.Z(), r4);
+        Toast.makeText(r9.Z(), r9.t(R.string.asset_link_copied_toast, new Object[]{r3}), 0).show();
         return true;
     }
 }

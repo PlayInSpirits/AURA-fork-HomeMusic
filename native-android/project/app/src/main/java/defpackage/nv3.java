@@ -5,7 +5,7 @@ package defpackage;
 public final class nv3 {
     public final Throwable a;
 
-    public nv3(Throwable th) {
-        this.a = th;
+    public nv3(Throwable r1) {
+        this.a = r1;
     }
 }

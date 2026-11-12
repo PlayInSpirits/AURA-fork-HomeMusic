@@ -5,8 +5,8 @@ package defpackage;
 public final class w91 extends gx2 {
     public final /* synthetic */ ey a;
 
-    public w91(ey eyVar) {
-        this.a = eyVar;
+    public w91(ey r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.gx2
@@ -15,11 +15,15 @@ public final class w91 extends gx2 {
     }
 
     @Override // defpackage.gx2
-    public final /* bridge */ /* synthetic */ void e(cx2 cx2Var) {
+    public final /* bridge */ /* synthetic */ void e(cx2 r1) {
+        ba1 r2 = (ba1) r1;
     }
 
-    public final boolean equals(Object obj) {
-        return obj == this;
+    public final boolean equals(Object r1) {
+        if (r1 != this) goto L5;
+        return true;
+    L5:
+        return false;
     }
 
     public final int hashCode() {

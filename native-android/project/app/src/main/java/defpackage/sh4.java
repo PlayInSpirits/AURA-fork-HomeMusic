@@ -8,19 +8,27 @@ public final class sh4 {
     public final if1 a;
     public Object b;
     public p03 c;
+    public int d;
+    public final w03 e;
+    public final w03 f;
+    public final x03 g;
+    public final f13 h;
+    public final qg1 i;
     public boolean j;
     public int k;
-    public int d = -1;
-    public final w03 e = te5.i();
-    public final w03 f = new w03();
-    public final x03 g = new x03();
-    public final f13 h = new f13(new dp0[16]);
-    public final qg1 i = new qg1(1, this);
-    public final w03 l = te5.i();
-    public final HashMap m = new HashMap();
+    public final w03 l;
+    public final HashMap m;
 
-    public sh4(if1 if1Var) {
-        this.a = if1Var;
+    public sh4(if1 r2) {
+        this.a = r2;
+        this.d = -1;
+        this.e = te5.i();
+        this.f = new w03();
+        this.g = new x03();
+        this.h = new f13(new dp0[16]);
+        this.i = new qg1(1, this);
+        this.l = te5.i();
+        this.m = new HashMap();
     }
 
     /*  JADX ERROR: Type inference failed
@@ -31,6 +39,29 @@ public final class sh4 {
         	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:79)
         */
     public final boolean a(java.util.Set r46) {
+        /*  JADX ERROR: Simple mode code generation failed
+            jadx.core.utils.exceptions.CodegenException: Error generate insn: 0x0008: IGET (r4v0 ?? I:f13) = (r45v0 'this' sh4 A[IMMUTABLE_TYPE, THIS]) A[DECLARE_VAR] (LINE:9) sh4.h f13 in method: sh4.a(java.util.Set):boolean, file: classes.dex
+            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:310)
+            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:273)
+            	at jadx.core.codegen.MethodGen.generateSimpleCode(MethodGen.java:348)
+            	at jadx.core.codegen.MethodGen.addSimpleMethodCode(MethodGen.java:316)
+            	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:279)
+            	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:420)
+            	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:345)
+            	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$3(ClassGen.java:299)
+            	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+            	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+            	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
+            	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258)
+            Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.ArgType.getPrimitiveType()" because "type" is null
+            	at jadx.core.codegen.ClassGen.useType(ClassGen.java:564)
+            	at jadx.core.codegen.InsnGen.useType(InsnGen.java:269)
+            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:166)
+            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:159)
+            	at jadx.core.codegen.InsnGen.assignVar(InsnGen.java:152)
+            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:299)
+            	... 11 more
+            */
         /*
             Method dump skipped, instruction units count: 1678
             To view this dump add '--comments-level debug' option
@@ -38,197 +69,174 @@ public final class sh4 {
         throw new UnsupportedOperationException("Method not decompiled: defpackage.sh4.a(java.util.Set):boolean");
     }
 
-    /* JADX WARN: Code duplicated, block: B:27:0x008b A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:28:0x008d A[LOOP:0: B:15:0x0048->B:28:0x008d, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:37:0x0090 A[EDGE_INSN: B:37:0x0090->B:29:0x0090 BREAK  A[LOOP:0: B:15:0x0048->B:28:0x008d], SYNTHETIC] */
-    public final void b(Object obj, int i, Object obj2, p03 p03Var) {
-        int i2;
-        if (this.k > 0) {
-            return;
-        }
-        int iC = p03Var.c(obj);
-        if (iC < 0) {
-            iC = ~iC;
-            i2 = -1;
-        } else {
-            i2 = p03Var.c[iC];
-        }
-        p03Var.b[iC] = obj;
-        p03Var.c[iC] = i;
-        if ((obj instanceof dp0) && i2 != i) {
-            cp0 cp0VarH = ((dp0) obj).h();
-            this.m.put(obj, cp0VarH.f);
-            p03 p03Var2 = cp0VarH.e;
-            w03 w03Var = this.l;
-            te5.J(w03Var, obj);
-            Object[] objArr = p03Var2.b;
-            long[] jArr = p03Var2.a;
-            int length = jArr.length - 2;
-            if (length >= 0) {
-                int i3 = 0;
-                while (true) {
-                    long j = jArr[i3];
-                    if ((((~j) << 7) & j & (-9187201950435737472L)) == -9187201950435737472L) {
-                        if (i3 != length) {
-                            break;
-                            break;
-                        }
-                        i3++;
-                    } else {
-                        int i4 = 8 - ((~(i3 - length)) >>> 31);
-                        for (int i5 = 0; i5 < i4; i5++) {
-                            if ((j & 255) < 128) {
-                                rl4 rl4Var = (rl4) objArr[(i3 << 3) + i5];
-                                if (rl4Var instanceof sl4) {
-                                    ((sl4) rl4Var).f(2);
-                                }
-                                te5.b(w03Var, rl4Var, obj);
-                            }
-                            j >>= 8;
-                        }
-                        if (i4 != 8) {
-                            break;
-                        } else if (i3 != length) {
-                            break;
-                        } else {
-                            i3++;
-                        }
-                    }
-                }
-            }
-        }
-        if (i2 == -1) {
-            if (obj instanceof sl4) {
-                ((sl4) obj).f(2);
-            }
-            te5.b(this.e, obj, obj2);
-        }
+    public final void b(Object r21, int r22, Object r23, p03 r24) {
+        if (this.k > 0) goto L42;
+        int r4 = r24.c(r21);
+        if (r4 >= 0) goto L8;
+        r4 = ~r4;
+        int r6 = -1;
+    L9:
+        r24.b[r4] = r21;
+        r24.c[r4] = r22;
+        if ((r21 instanceof dp0) == false) goto L30;
+        if (r6 == r22) goto L30;
+        cp0 r2 = ((dp0) r21).h();
+        this.m.put(r21, r2.f);
+        p03 r3 = r2.e;
+        w03 r5 = this.l;
+        te5.J(r5, r21);
+        Object[] r7 = r3.b;
+        long[] r8 = r3.a;
+        int r9 = r8.length - 2;
+        if (r9 < 0) goto L30;
+        int r10 = 0;
+    L15:
+        long r11 = r8[r10];
+        if (((((~r11) << 7) & r11) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L27;
+        int r13 = 8 - ((~(r10 - r9)) >>> 31);
+        int r15 = 0;
+    L18:
+        if (r15 >= r13) goto L26;
+        if ((r11 & 255) >= 128) goto L25;
+        rl4 r12 = (rl4) r7[(r10 << 3) + r15];
+        if ((r12 instanceof sl4) == false) goto L24;
+        ((sl4) r12).f(2);
+    L24:
+        te5.b(r5, r12, r21);
+    L25:
+        r11 = r11 >> 8;
+        r15 = r15 + 1;
+        goto L18
+    L26:
+        if (r13 != 8) goto L30;
+    L27:
+        if (r10 == r9) goto L30;
+        r10 = r10 + 1;
+    L30:
+        if (r6 == (-1)) goto L32;
+        return;
+    L32:
+        if ((r21 instanceof sl4) == false) goto L34;
+        ((sl4) r21).f(2);
+    L34:
+        te5.b(this.e, r21, r23);
+        return;
+    L8:
+        r6 = r24.c[r4];
+        goto L9
     }
 
-    /* JADX WARN: Code duplicated, block: B:35:0x00cb  */
-    public final void c(k52 k52Var) {
-        long[] jArr;
-        long[] jArr2;
-        long j;
-        char c;
-        long j2;
-        int i;
-        Object obj;
-        long j3;
-        Object obj2;
-        w03 w03Var = this.f;
-        long[] jArr3 = w03Var.a;
-        int length = jArr3.length - 2;
-        if (length < 0) {
-            return;
-        }
-        int i2 = 0;
-        while (true) {
-            long j4 = jArr3[i2];
-            char c2 = 7;
-            long j5 = -9187201950435737472L;
-            if ((((~j4) << 7) & j4 & (-9187201950435737472L)) != -9187201950435737472L) {
-                int i3 = 8;
-                int i4 = 8 - ((~(i2 - length)) >>> 31);
-                int i5 = 0;
-                while (i5 < i4) {
-                    if ((j4 & 255) < 128) {
-                        int i6 = (i2 << 3) + i5;
-                        c = c2;
-                        Object obj3 = w03Var.b[i6];
-                        j2 = j5;
-                        p03 p03Var = (p03) w03Var.c[i6];
-                        Boolean bool = (Boolean) k52Var.invoke(obj3);
-                        if (bool.booleanValue()) {
-                            Object[] objArr = p03Var.b;
-                            int[] iArr = p03Var.c;
-                            long[] jArr4 = p03Var.a;
-                            int i7 = i3;
-                            int length2 = jArr4.length - 2;
-                            if (length2 >= 0) {
-                                jArr2 = jArr3;
-                                j = j4;
-                                int i8 = 0;
-                                while (true) {
-                                    long j6 = jArr4[i8];
-                                    long[] jArr5 = jArr4;
-                                    if ((((~j6) << c) & j6 & j2) != j2) {
-                                        int i9 = 8 - ((~(i8 - length2)) >>> 31);
-                                        int i10 = 0;
-                                        while (i10 < i9) {
-                                            if ((j6 & 255) < 128) {
-                                                int i11 = (i8 << 3) + i10;
-                                                j3 = j6;
-                                                Object obj4 = objArr[i11];
-                                                int i12 = iArr[i11];
-                                                w03 w03Var2 = this.e;
-                                                te5.I(w03Var2, obj4, obj3);
-                                                obj2 = obj3;
-                                                if ((obj4 instanceof dp0) && !w03Var2.c(obj4)) {
-                                                    te5.J(this.l, obj4);
-                                                    this.m.remove(obj4);
-                                                }
-                                            } else {
-                                                j3 = j6;
-                                                obj2 = obj3;
-                                            }
-                                            j6 = j3 >> i7;
-                                            i10++;
-                                            obj3 = obj2;
-                                        }
-                                        obj = obj3;
-                                        if (i9 != i7) {
-                                            break;
-                                        }
-                                    } else {
-                                        obj = obj3;
-                                    }
-                                    if (i8 == length2) {
-                                        break;
-                                    }
-                                    i8++;
-                                    jArr4 = jArr5;
-                                    obj3 = obj;
-                                    i7 = 8;
-                                }
-                            } else {
-                                jArr2 = jArr3;
-                                j = j4;
-                            }
-                        } else {
-                            jArr2 = jArr3;
-                            j = j4;
-                        }
-                        if (bool.booleanValue()) {
-                            w03Var.k(i6);
-                        }
-                        i = 8;
-                    } else {
-                        jArr2 = jArr3;
-                        j = j4;
-                        c = c2;
-                        j2 = j5;
-                        i = i3;
-                    }
-                    i5++;
-                    i3 = i;
-                    j4 = j >> i;
-                    c2 = c;
-                    j5 = j2;
-                    jArr3 = jArr2;
-                }
-                jArr = jArr3;
-                if (i4 != i3) {
-                    return;
-                }
-            } else {
-                jArr = jArr3;
-            }
-            if (i2 == length) {
-                return;
-            }
-            i2++;
-            jArr3 = jArr;
-        }
+    public final void c(k52 r34) {
+        w03 r1 = this.f;
+        long[] r2 = r1.a;
+        int r3 = r2.length - 2;
+        if (r3 < 0) goto L48;
+        int r5 = 0;
+    L5:
+        long r6 = r2[r5];
+        char r10 = 7;
+        long r11 = -9187201950435737472L;
+        if (((((~r6) << 7) & r6) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L45;
+        int r9 = 8;
+        int r8 = 8 - ((~(r5 - r3)) >>> 31);
+        int r13 = 0;
+    L8:
+        if (r13 >= r8) goto L42;
+        if ((r6 & 255) >= 128) goto L40;
+        int r4 = (r5 << 3) + r13;
+        char r16 = r10;
+        Object r12 = r1.b[r4];
+        long r20 = r11;
+        p03 r14 = (p03) r1.c[r4];
+        Boolean r22 = (Boolean) r34.invoke(r12);
+        if (r22.booleanValue() == false) goto L35;
+        Object[] r15 = r14.b;
+        int[] r17 = r14.c;
+        long[] r18 = r14.a;
+        int r25 = r9;
+        int r19 = r18.length - 2;
+        if (r19 < 0) goto L35;
+        long[] r26 = r2;
+        long r27 = r6;
+        int r7 = 0;
+    L16:
+        long r21 = r18[r7];
+        long[] r29 = r18;
+        if (((((~r21) << r16) & r21) & r20) == r20) goto L32;
+        int r110 = 8 - ((~(r7 - r19)) >>> 31);
+        int r111 = 0;
+    L19:
+        if (r111 >= r110) goto L29;
+        if ((r21 & 255) >= 128) goto L27;
+        int r30 = (r7 << 3) + r111;
+        long r31 = r21;
+        Object r23 = r15[r30];
+        int r24 = r17[r30];
+        w03 r28 = this.e;
+        te5.I(r28, r23, r12);
+        Object r32 = r12;
+        if ((r23 instanceof dp0) == false) goto L28;
+        if (r28.c(r23) == true) goto L28;
+        te5.J(this.l, r23);
+        this.m.remove(r23);
+    L28:
+        r21 = r31 >> r25;
+        r111 = r111 + 1;
+        r12 = r32;
+        goto L19
+    L27:
+        r31 = r21;
+        r32 = r12;
+        goto L28
+    L29:
+        Object r33 = r12;
+        if (r110 != r25) goto L37;
+    L33:
+        if (r7 == r19) goto L37;
+        r7 = r7 + 1;
+        r18 = r29;
+        r12 = r33;
+        r25 = 8;
+    L37:
+        if (r22.booleanValue() == false) goto L39;
+        r1.k(r4);
+    L39:
+        int r35 = 8;
+    L41:
+        r13 = r13 + 1;
+        r9 = r35;
+        r6 = r27 >> r35;
+        r10 = r16;
+        r11 = r20;
+        r2 = r26;
+        goto L8
+    L32:
+        r33 = r12;
+    L35:
+        r26 = r2;
+        r27 = r6;
+        goto L37
+    L40:
+        r26 = r2;
+        r27 = r6;
+        r16 = r10;
+        r20 = r11;
+        r35 = r9;
+        goto L41
+    L42:
+        long[] r210 = r2;
+        if (r8 != r9) goto L61;
+    L46:
+        if (r5 == r3) goto L62;
+        r5 = r5 + 1;
+        r2 = r210;
+        goto L5
+    L62:
+        return;
+    L61:
+        return;
+    L45:
+        r210 = r2;
+        goto L46
     }
 }

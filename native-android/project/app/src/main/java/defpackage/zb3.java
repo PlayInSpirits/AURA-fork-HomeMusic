@@ -5,9 +5,9 @@ package defpackage;
 public final class zb3 implements h30 {
     public final Class n;
 
-    public zb3(Class cls) {
-        cls.getClass();
-        this.n = cls;
+    public zb3(Class r1) {
+        r1.getClass();
+        this.n = r1;
     }
 
     @Override // defpackage.h30
@@ -15,10 +15,14 @@ public final class zb3 implements h30 {
         throw null;
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof zb3) {
-            return h12.c(this.n, ((zb3) obj).n);
-        }
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof zb3) == false) goto L8;
+        Class r3 = ((zb3) r2).n;
+        if (h12.c(this.n, r3) == false) goto L10;
+        return true;
+    L10:
+        return false;
+    L8:
         return false;
     }
 

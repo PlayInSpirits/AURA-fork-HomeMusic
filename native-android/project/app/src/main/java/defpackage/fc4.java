@@ -14,43 +14,43 @@ public final class fc4 extends jc4 {
     public final float d;
     public final float e;
 
-    public fc4(hc4 hc4Var, float f, float f2) {
-        this.c = hc4Var;
-        this.d = f;
-        this.e = f2;
+    public fc4(hc4 r1, float r2, float r3) {
+        this.c = r1;
+        this.d = r2;
+        this.e = r3;
     }
 
     @Override // defpackage.jc4
-    public final void a(Matrix matrix, yb4 yb4Var, int i, Canvas canvas) {
-        hc4 hc4Var = this.c;
-        float f = hc4Var.c;
-        float f2 = this.e;
-        float f3 = hc4Var.b;
-        float f4 = this.d;
-        RectF rectF = new RectF(0.0f, 0.0f, (float) Math.hypot(f - f2, f3 - f4), 0.0f);
-        Matrix matrix2 = this.a;
-        matrix2.set(matrix);
-        matrix2.preTranslate(f4, f2);
-        matrix2.preRotate(b());
-        yb4Var.getClass();
-        rectF.bottom += i;
-        rectF.offset(0.0f, -i);
-        int i2 = yb4Var.c;
-        int[] iArr = yb4.i;
-        iArr[0] = i2;
-        iArr[1] = yb4Var.b;
-        iArr[2] = yb4Var.a;
-        Paint paint = (Paint) yb4Var.f;
-        float f5 = rectF.left;
-        paint.setShader(new LinearGradient(f5, rectF.top, f5, rectF.bottom, iArr, yb4.j, Shader.TileMode.CLAMP));
-        canvas.save();
-        canvas.concat(matrix2);
-        canvas.drawRect(rectF, paint);
-        canvas.restore();
+    public final void a(Matrix r18, yb4 r19, int r20, Canvas r21) {
+        hc4 r4 = this.c;
+        float r5 = r4.c;
+        float r6 = this.e;
+        float r7 = r4.b;
+        float r8 = this.d;
+        RectF r9 = new RectF(0.0f, 0.0f, (float) Math.hypot(r5 - r6, r7 - r8), 0.0f);
+        Matrix r10 = this.a;
+        r10.set(r18);
+        r10.preTranslate(r8, r6);
+        r10.preRotate(b());
+        r19.getClass();
+        r9.bottom += r20;
+        r9.offset(0.0f, -r20);
+        int r2 = r19.c;
+        int[] r14 = yb4.i;
+        r14[0] = r2;
+        r14[1] = r19.b;
+        r14[2] = r19.a;
+        Paint r0 = (Paint) r19.f;
+        float r11 = r9.left;
+        r0.setShader(new LinearGradient(r11, r9.top, r11, r9.bottom, r14, yb4.j, Shader.TileMode.CLAMP));
+        r21.save();
+        r21.concat(r10);
+        r21.drawRect(r9, r0);
+        r21.restore();
     }
 
     public final float b() {
-        hc4 hc4Var = this.c;
-        return (float) Math.toDegrees(Math.atan((hc4Var.c - this.e) / (hc4Var.b - this.d)));
+        hc4 r0 = this.c;
+        return (float) Math.toDegrees(Math.atan((r0.c - this.e) / (r0.b - this.d)));
     }
 }

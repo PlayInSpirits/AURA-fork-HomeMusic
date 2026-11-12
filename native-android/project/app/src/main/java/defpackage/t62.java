@@ -16,93 +16,107 @@ public final class t62 {
     public final CharSequence a;
     public final TextPaint b;
     public final int c;
-    public float d = Float.NaN;
-    public float e = Float.NaN;
+    public float d;
+    public float e;
     public BoringLayout.Metrics f;
     public boolean g;
     public CharSequence h;
 
-    public t62(CharSequence charSequence, TextPaint textPaint, int i) {
-        this.a = charSequence;
-        this.b = textPaint;
-        this.c = i;
+    public t62(CharSequence r1, TextPaint r2, int r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = Float.NaN;
+        this.e = Float.NaN;
     }
 
     public final BoringLayout.Metrics a() {
-        BoringLayout.Metrics metricsIsBoring;
-        if (!this.g) {
-            TextDirectionHeuristic textDirectionHeuristicB = ns4.b(this.c);
-            int i = Build.VERSION.SDK_INT;
-            CharSequence charSequence = this.a;
-            TextPaint textPaint = this.b;
-            if (i >= 33) {
-                metricsIsBoring = BoringLayout.isBoring(charSequence, textPaint, textDirectionHeuristicB, true, null);
-            } else {
-                metricsIsBoring = !textDirectionHeuristicB.isRtl(charSequence, 0, charSequence.length()) ? BoringLayout.isBoring(charSequence, textPaint, null) : null;
-            }
-            this.f = metricsIsBoring;
-            this.g = true;
-        }
+        if (this.g == true) goto L13;
+        TextDirectionHeuristic r0 = ns4.b(this.c);
+        int r1 = Build.VERSION.SDK_INT;
+        CharSequence r3 = this.a;
+        TextPaint r4 = this.b;
+        if (r1 < 33) goto L8;
+        BoringLayout.Metrics r2 = n3.f(r3, r4, r0);
+    L11:
+        this.f = r2;
+        this.g = true;
+        goto L13
+    L8:
+        if (r0.isRtl(r3, 0, r3.length()) == true) goto L10;
+        r2 = BoringLayout.isBoring(r3, r4, null);
+        goto L11
+    L10:
+        r2 = null;
+    L13:
         return this.f;
     }
 
     public final CharSequence b() {
-        CharSequence charSequence = this.h;
-        if (charSequence != null) {
-            charSequence.getClass();
-            return charSequence;
-        }
-        CharSequence charSequence2 = this.a;
-        if (charSequence2 instanceof Spanned) {
-            Spanned spanned = (Spanned) charSequence2;
-            if (bu.q(spanned, CharacterStyle.class)) {
-                CharacterStyle[] characterStyleArr = (CharacterStyle[]) spanned.getSpans(0, charSequence2.length(), CharacterStyle.class);
-                if (characterStyleArr != null && characterStyleArr.length != 0) {
-                    SpannableString spannableString = null;
-                    for (CharacterStyle characterStyle : characterStyleArr) {
-                        if (!(characterStyle instanceof MetricAffectingSpan)) {
-                            if (spannableString == null) {
-                                spannableString = new SpannableString(charSequence2);
-                            }
-                            spannableString.removeSpan(characterStyle);
-                        }
-                    }
-                    if (spannableString != null) {
-                        charSequence2 = spannableString;
-                    }
-                }
-            }
-        }
-        this.h = charSequence2;
-        return charSequence2;
+        CharSequence r0 = this.h;
+        if (r0 != null) goto L26;
+        CharSequence r1 = this.a;
+        if ((r1 instanceof Spanned) == false) goto L24;
+        Spanned r2 = (Spanned) r1;
+        if (bu.q(r2, CharacterStyle.class) == false) goto L24;
+        int r4 = 0;
+        CharacterStyle[] r3 = (CharacterStyle[]) r2.getSpans(0, r1.length(), CharacterStyle.class);
+        if (r3 == null) goto L24;
+        if (r3.length == 0) goto L24;
+        int r5 = r3.length;
+        SpannableString r6 = null;
+    L15:
+        if (r4 >= r5) goto L22;
+        CharacterStyle r7 = r3[r4];
+        if ((r7 instanceof MetricAffectingSpan) == true) goto L21;
+        if (r6 != null) goto L20;
+        r6 = new SpannableString(r1);
+    L20:
+        r6.removeSpan(r7);
+    L21:
+        r4 = r4 + 1;
+        goto L15
+    L22:
+        if (r6 == null) goto L24;
+        r1 = r6;
+    L24:
+        this.h = r1;
+        return r1;
+    L26:
+        r0.getClass();
+        return r0;
     }
 
-    /* JADX WARN: Code duplicated, block: B:22:0x0051  */
-    /* JADX WARN: Code duplicated, block: B:25:0x005a  */
     public final float c() {
-        if (!Float.isNaN(this.d)) {
-            return this.d;
-        }
-        BoringLayout.Metrics metricsA = a();
-        float fCeil = metricsA != null ? metricsA.width : -1;
-        TextPaint textPaint = this.b;
-        if (fCeil < 0.0f) {
-            fCeil = (float) Math.ceil(Layout.getDesiredWidth(b(), 0, b().length(), textPaint));
-        }
-        if (fCeil != 0.0f) {
-            CharSequence charSequence = this.a;
-            if (charSequence instanceof Spanned) {
-                Spanned spanned = (Spanned) charSequence;
-                if (bu.q(spanned, i92.class) || bu.q(spanned, h92.class)) {
-                    fCeil += 0.5f;
-                } else if (textPaint.getLetterSpacing() != 0.0f) {
-                    fCeil += 0.5f;
-                }
-            } else if (textPaint.getLetterSpacing() != 0.0f) {
-                fCeil += 0.5f;
-            }
-        }
-        this.d = fCeil;
-        return fCeil;
+        if (Float.isNaN(this.d) == false) goto L5;
+        BoringLayout.Metrics r0 = a();
+        if (r0 == null) goto L9;
+        int r1 = r0.width;
+    L10:
+        float r2 = r1;
+        TextPaint r3 = this.b;
+        if (r2 >= 0.0f) goto L14;
+        r2 = (float) Math.ceil(Layout.getDesiredWidth(b(), 0, b().length(), r3));
+    L14:
+        if (r2 == 0.0f) goto L26;
+        CharSequence r4 = this.a;
+        if ((r4 instanceof Spanned) == false) goto L23;
+        Spanned r5 = (Spanned) r4;
+        if (bu.q(r5, i92.class) == false) goto L21;
+    L25:
+        r2 = r2 + 0.5f;
+        goto L26
+    L21:
+        if (bu.q(r5, h92.class) == true) goto L25;
+    L23:
+        if (r3.getLetterSpacing() != 0.0f) goto L25;
+    L26:
+        this.d = r2;
+        return r2;
+    L9:
+        r1 = -1;
+        goto L10
+    L5:
+        return this.d;
     }
 }

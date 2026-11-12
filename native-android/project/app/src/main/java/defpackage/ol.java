@@ -8,22 +8,22 @@ import android.media.AudioDeviceInfo;
 public final class ol extends AudioDeviceCallback {
     public final /* synthetic */ ql a;
 
-    public ol(ql qlVar) {
-        this.a = qlVar;
+    public ol(ql r1) {
+        this.a = r1;
     }
 
     @Override // android.media.AudioDeviceCallback
-    public final void onAudioDevicesAdded(AudioDeviceInfo[] audioDeviceInfoArr) {
-        ql qlVar = this.a;
-        qlVar.a(nl.b(qlVar.a, qlVar.i, qlVar.h));
+    public final void onAudioDevicesAdded(AudioDeviceInfo[] r3) {
+        ql r2 = this.a;
+        r2.a(nl.b(r2.a, r2.i, r2.h));
     }
 
     @Override // android.media.AudioDeviceCallback
-    public final void onAudioDevicesRemoved(AudioDeviceInfo[] audioDeviceInfoArr) {
-        ql qlVar = this.a;
-        if (f35.m(audioDeviceInfoArr, qlVar.h)) {
-            qlVar.h = null;
-        }
-        qlVar.a(nl.b(qlVar.a, qlVar.i, qlVar.h));
+    public final void onAudioDevicesRemoved(AudioDeviceInfo[] r3) {
+        ql r2 = this.a;
+        if (f35.m(r3, r2.h) == false) goto L5;
+        r2.h = null;
+    L5:
+        r2.a(nl.b(r2.a, r2.i, r2.h));
     }
 }

@@ -20,118 +20,130 @@ public abstract class pg0 extends BaseAdapter implements Filterable {
     public og0 s;
     public o7 t;
 
-    public abstract void a(View view, Cursor cursor);
+    public abstract void a(View r1, Cursor r2);
 
-    public void b(Cursor cursor) {
-        Cursor cursor2 = this.p;
-        if (cursor == cursor2) {
-            cursor2 = null;
-        } else {
-            if (cursor2 != null) {
-                ng0 ng0Var = this.r;
-                if (ng0Var != null) {
-                    cursor2.unregisterContentObserver(ng0Var);
-                }
-                og0 og0Var = this.s;
-                if (og0Var != null) {
-                    cursor2.unregisterDataSetObserver(og0Var);
-                }
-            }
-            this.p = cursor;
-            if (cursor != null) {
-                ng0 ng0Var2 = this.r;
-                if (ng0Var2 != null) {
-                    cursor.registerContentObserver(ng0Var2);
-                }
-                og0 og0Var2 = this.s;
-                if (og0Var2 != null) {
-                    cursor.registerDataSetObserver(og0Var2);
-                }
-                this.q = cursor.getColumnIndexOrThrow("_id");
-                this.n = true;
-                notifyDataSetChanged();
-            } else {
-                this.q = -1;
-                this.n = false;
-                notifyDataSetInvalidated();
-            }
-        }
-        if (cursor2 != null) {
-            cursor2.close();
-        }
+    public void b(Cursor r3) {
+        Cursor r0 = this.p;
+        if (r3 != r0) goto L5;
+        r0 = null;
+    L22:
+        if (r0 == null) goto L25;
+        r0.close();
+        return;
+    L25:
+        return;
+    L5:
+        if (r0 == null) goto L12;
+        ng0 r1 = this.r;
+        if (r1 == null) goto L9;
+        r0.unregisterContentObserver(r1);
+    L9:
+        og0 r2 = this.s;
+        if (r2 == null) goto L12;
+        r0.unregisterDataSetObserver(r2);
+    L12:
+        this.p = r3;
+        if (r3 == null) goto L21;
+        ng0 r4 = this.r;
+        if (r4 == null) goto L17;
+        r3.registerContentObserver(r4);
+    L17:
+        og0 r5 = this.s;
+        if (r5 == null) goto L20;
+        r3.registerDataSetObserver(r5);
+    L20:
+        this.q = r3.getColumnIndexOrThrow("_id");
+        this.n = true;
+        notifyDataSetChanged();
+        goto L22
+    L21:
+        this.q = -1;
+        this.n = false;
+        notifyDataSetInvalidated();
+        goto L22
     }
 
-    public abstract String c(Cursor cursor);
+    public abstract String c(Cursor r1);
 
     @Override // android.widget.Adapter
     public final int getCount() {
-        Cursor cursor;
-        if (!this.n || (cursor = this.p) == null) {
-            return 0;
-        }
-        return cursor.getCount();
+        if (this.n == false) goto L8;
+        Cursor r1 = this.p;
+        if (r1 != null) goto L7;
+        return 0;
+    L7:
+        return r1.getCount();
+    L8:
+        return 0;
     }
 
     @Override // android.widget.BaseAdapter, android.widget.SpinnerAdapter
-    public View getDropDownView(int i, View view, ViewGroup viewGroup) {
-        if (!this.n) {
-            return null;
-        }
-        this.p.moveToPosition(i);
-        if (view == null) {
-            co4 co4Var = (co4) this;
-            view = co4Var.w.inflate(co4Var.v, viewGroup, false);
-        }
-        a(view, this.p);
-        return view;
+    public View getDropDownView(int r2, View r3, ViewGroup r4) {
+        if (this.n == false) goto L9;
+        this.p.moveToPosition(r2);
+        if (r3 != null) goto L7;
+        co4 r5 = (co4) this;
+        int r6 = r5.v;
+        r3 = r5.w.inflate(r6, r4, false);
+    L7:
+        a(r3, this.p);
+        return r3;
+    L9:
+        return null;
     }
 
     @Override // android.widget.Filterable
     public final Filter getFilter() {
-        if (this.t == null) {
-            o7 o7Var = new o7();
-            o7Var.b = this;
-            this.t = o7Var;
-        }
+        if (this.t != null) goto L6;
+        o7 r0 = new o7();
+        r0.b = this;
+        this.t = r0;
+    L6:
         return this.t;
     }
 
     @Override // android.widget.Adapter
-    public final Object getItem(int i) {
-        Cursor cursor;
-        if (!this.n || (cursor = this.p) == null) {
-            return null;
-        }
-        cursor.moveToPosition(i);
+    public final Object getItem(int r2) {
+        if (this.n == false) goto L8;
+        Cursor r0 = this.p;
+        if (r0 == null) goto L10;
+        r0.moveToPosition(r2);
         return this.p;
+    L10:
+        return null;
+    L8:
+        return null;
     }
 
     @Override // android.widget.Adapter
-    public final long getItemId(int i) {
-        Cursor cursor;
-        if (this.n && (cursor = this.p) != null && cursor.moveToPosition(i)) {
-            return this.p.getLong(this.q);
-        }
-        return 0L;
+    public final long getItemId(int r4) {
+        if (this.n == false) goto L10;
+        Cursor r0 = this.p;
+        if (r0 == null) goto L10;
+        if (r0.moveToPosition(r4) == false) goto L10;
+        return this.p.getLong(this.q);
+    L10:
+        return 0;
     }
 
     @Override // android.widget.Adapter
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        if (!this.n) {
-            kf2.o("this should only be called when the cursor is valid");
-            return null;
-        }
-        if (!this.p.moveToPosition(i)) {
-            kf2.o(f34.f(i, "couldn't move cursor to position "));
-            return null;
-        }
-        if (view == null) {
-            co4 co4Var = (co4) this;
-            view = co4Var.w.inflate(co4Var.u, viewGroup, false);
-            view.setTag(new bo4(view));
-            ((ImageView) view.findViewById(R.id.edit_query)).setImageResource(co4Var.B);
-        }
-        a(view, this.p);
-        return view;
+    public View getView(int r3, View r4, ViewGroup r5) {
+        if (this.n == true) goto L5;
+        kf2.o("this should only be called when the cursor is valid");
+        return null;
+    L5:
+        if (this.p.moveToPosition(r3) == false) goto L10;
+        if (r4 != null) goto L8;
+        co4 r6 = (co4) this;
+        int r7 = r6.u;
+        r4 = r6.w.inflate(r7, r5, false);
+        r4.setTag(new bo4(r4));
+        ((ImageView) r4.findViewById(R.id.edit_query)).setImageResource(r6.B);
+    L8:
+        a(r4, this.p);
+        return r4;
+    L10:
+        kf2.o(f34.f(r3, "couldn't move cursor to position "));
+        return null;
     }
 }

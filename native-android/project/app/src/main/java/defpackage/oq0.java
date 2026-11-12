@@ -8,6 +8,7 @@ import com.eddyizm.tempus.ui.fragment.IndexFragment;
 import java.io.Serializable;
 import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -20,86 +21,93 @@ public final /* synthetic */ class oq0 implements a83 {
     public final /* synthetic */ Object d;
     public final /* synthetic */ Object e;
 
-    public /* synthetic */ oq0(Object obj, AbstractList abstractList, Serializable serializable, Object obj2, int i) {
-        this.a = i;
-        this.d = obj;
-        this.b = abstractList;
-        this.c = serializable;
-        this.e = obj2;
+    public /* synthetic */ oq0(Object r1, AbstractList r2, Serializable r3, Object r4, int r5) {
+        this.a = r5;
+        this.d = r1;
+        this.b = r2;
+        this.c = r3;
+        this.e = r4;
     }
 
     @Override // defpackage.a83
-    public final void b(Object obj) {
-        switch (this.a) {
-            case 0:
-                DirectoryFragment directoryFragment = (DirectoryFragment) this.d;
-                ArrayList arrayList = (ArrayList) this.b;
-                AtomicInteger atomicInteger = (AtomicInteger) this.c;
-                mq0 mq0Var = (mq0) this.e;
-                Directory directory = (Directory) obj;
-                if (directory != null && directory.getChildren() != null) {
-                    for (Child child : directory.getChildren()) {
-                        if (child.isDir()) {
-                            String id = child.getId();
-                            atomicInteger.incrementAndGet();
-                            directoryFragment.q0.getClass();
-                            om0.W(id).e(directoryFragment.v(), new oq0(directoryFragment, arrayList, atomicInteger, mq0Var, 0));
-                        } else if (!child.isVideo()) {
-                            synchronized (arrayList) {
-                                arrayList.add(child);
-                            }
-                        } else {
-                            continue;
-                        }
-                        break;
-                    }
-                }
-                if (atomicInteger.decrementAndGet() == 0) {
-                    mq0Var.run();
-                    return;
-                }
-                return;
-            case 1:
-                IndexFragment indexFragment = (IndexFragment) this.d;
-                ArrayList arrayList2 = (ArrayList) this.b;
-                AtomicInteger atomicInteger2 = (AtomicInteger) this.c;
-                tx1 tx1Var = (tx1) this.e;
-                Directory directory2 = (Directory) obj;
-                if (directory2 != null && directory2.getChildren() != null) {
-                    for (Child child2 : directory2.getChildren()) {
-                        if (child2.isDir()) {
-                            String id2 = child2.getId();
-                            atomicInteger2.incrementAndGet();
-                            indexFragment.q0.getClass();
-                            om0.W(id2).e(indexFragment.v(), new oq0(indexFragment, arrayList2, atomicInteger2, tx1Var, 1));
-                        } else if (!child2.isVideo()) {
-                            synchronized (arrayList2) {
-                                arrayList2.add(child2);
-                            }
-                        } else {
-                            continue;
-                        }
-                        break;
-                    }
-                }
-                if (atomicInteger2.decrementAndGet() == 0) {
-                    tx1Var.run();
-                    return;
-                }
-                return;
-            default:
-                gl3 gl3Var = (gl3) this.d;
-                AbstractList abstractList = this.b;
-                String str = (String) this.c;
-                Dialog dialog = (Dialog) this.e;
-                List list = (List) obj;
-                if (list != null) {
-                    gl3Var.getClass();
-                    abstractList.removeAll(hw.P(new nz2(14), list));
-                }
-                gl3Var.c.a(str, new ArrayList(abstractList), (Boolean) gl3Var.d.d());
-                dialog.dismiss();
-                return;
-        }
+    public final void b(Object r8) {
+        switch(this.a) {
+            case 0: goto L33;
+            case 1: goto L9;
+            default: goto L4;
+        };
+    L4:
+        gl3 r0 = (gl3) this.d;
+        AbstractList r1 = this.b;
+        String r2 = (String) this.c;
+        Dialog r7 = (Dialog) this.e;
+        List r9 = (List) r8;
+        if (r9 == null) goto L7;
+        r0.getClass();
+        r1.removeAll(hw.P(new nz2(14), r9));
+    L7:
+        r0.c.a(r2, new ArrayList(r1), (Boolean) r0.d.d());
+        r7.dismiss();
+        return;
+    L9:
+        IndexFragment r3 = (IndexFragment) this.d;
+        ArrayList r4 = (ArrayList) this.b;
+        AtomicInteger r5 = (AtomicInteger) this.c;
+        tx1 r6 = (tx1) this.e;
+        Directory r10 = (Directory) r8;
+        if (r10 == null) goto L30;
+        if (r10.getChildren() == null) goto L30;
+        Iterator<Child> r11 = r10.getChildren().iterator();
+    L15:
+        if (r11.hasNext() == false) goto L30;
+        Child r12 = r11.next();
+        if (r12.isDir() == true) goto L18;
+        if (r12.isVideo() == true) goto L15;
+        monitor-enter(r4);
+        r4.add(r12);     // Catch: Throwable -> L25
+        monitor-exit(r4);     // Catch: Throwable -> L25
+    L25:
+        th = move-exception;
+        throw th;
+    L18:
+        String r13 = r12.getId();
+        r5.incrementAndGet();
+        r3.q0.getClass();
+        om0.W(r13).e(r3.v(), new oq0(r3, r4, r5, r6, 1));
+    L30:
+        if (r5.decrementAndGet() != 0) goto L77;
+        r6.run();
+        return;
+    L77:
+        return;
+    L33:
+        DirectoryFragment r14 = (DirectoryFragment) this.d;
+        ArrayList r15 = (ArrayList) this.b;
+        AtomicInteger r16 = (AtomicInteger) this.c;
+        mq0 r17 = (mq0) this.e;
+        Directory r18 = (Directory) r8;
+        if (r18 == null) goto L54;
+        if (r18.getChildren() == null) goto L54;
+        Iterator<Child> r19 = r18.getChildren().iterator();
+    L39:
+        if (r19.hasNext() == false) goto L54;
+        Child r20 = r19.next();
+        if (r20.isDir() == true) goto L42;
+        if (r20.isVideo() == true) goto L39;
+        monitor-enter(r15);
+        r15.add(r20);     // Catch: Throwable -> L49
+        monitor-exit(r15);     // Catch: Throwable -> L49
+    L49:
+        th = move-exception;
+        throw th;
+    L42:
+        String r21 = r20.getId();
+        r16.incrementAndGet();
+        r14.q0.getClass();
+        om0.W(r21).e(r14.v(), new oq0(r14, r15, r16, r17, 0));
+    L54:
+        if (r16.decrementAndGet() != 0) goto L78;
+        r17.run();
+        return;
     }
 }

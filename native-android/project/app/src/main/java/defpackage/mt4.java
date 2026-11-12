@@ -8,9 +8,9 @@ public final class mt4 {
     public final ht4[] c;
     public int d;
 
-    public mt4(int i, ne0 ne0Var) {
-        this.a = ne0Var;
-        this.b = new Object[i];
-        this.c = new ht4[i];
+    public mt4(int r1, ne0 r2) {
+        this.a = r2;
+        this.b = new Object[r1];
+        this.c = new ht4[r1];
     }
 }

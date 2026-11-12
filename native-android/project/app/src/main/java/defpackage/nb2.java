@@ -8,189 +8,242 @@ import java.util.Set;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class nb2 extends AbstractMap implements Serializable {
-    public static final jb2 v = new jb2(0);
+    public static final jb2 v = null;
+    public final Comparator n;
     public final boolean o;
     public mb2 p;
+    public int q;
+    public int r;
     public final mb2 s;
     public lb2 t;
     public lb2 u;
-    public int q = 0;
-    public int r = 0;
-    public final Comparator n = v;
 
-    public nb2(boolean z) {
-        this.o = z;
-        this.s = new mb2(z);
+    static {
+        v = new jb2(0);
     }
 
-    public final mb2 a(Object obj, boolean z) {
-        int iCompareTo;
-        mb2 mb2Var;
-        mb2 mb2Var2 = this.p;
-        jb2 jb2Var = v;
-        Comparator comparator = this.n;
-        if (mb2Var2 != null) {
-            Comparable comparable = comparator == jb2Var ? (Comparable) obj : null;
-            while (true) {
-                Object obj2 = mb2Var2.s;
-                iCompareTo = comparable != null ? comparable.compareTo(obj2) : comparator.compare(obj, obj2);
-                if (iCompareTo == 0) {
-                    return mb2Var2;
-                }
-                mb2 mb2Var3 = iCompareTo < 0 ? mb2Var2.o : mb2Var2.p;
-                if (mb2Var3 == null) {
-                    break;
-                }
-                mb2Var2 = mb2Var3;
-            }
-        } else {
-            iCompareTo = 0;
-        }
-        mb2 mb2Var4 = mb2Var2;
-        if (!z) {
-            return null;
-        }
-        mb2 mb2Var5 = this.s;
-        if (mb2Var4 != null) {
-            mb2Var = new mb2(this.o, mb2Var4, obj, mb2Var5, mb2Var5.r);
-            if (iCompareTo < 0) {
-                mb2Var4.o = mb2Var;
-            } else {
-                mb2Var4.p = mb2Var;
-            }
-            b(mb2Var4, true);
-        } else {
-            if (comparator == jb2Var && !(obj instanceof Comparable)) {
-                throw new ClassCastException(obj.getClass().getName().concat(" is not Comparable"));
-            }
-            mb2Var = new mb2(this.o, mb2Var4, obj, mb2Var5, mb2Var5.r);
-            this.p = mb2Var;
-        }
+    public nb2(boolean r2) {
+        this.q = 0;
+        this.r = 0;
+        this.n = v;
+        this.o = r2;
+        this.s = new mb2(r2);
+    }
+
+    public final mb2 a(Object r13, boolean r14) {
+        mb2 r0 = this.p;
+        jb2 r2 = v;
+        Comparator r3 = this.n;
+        if (r0 == null) goto L19;
+        if (r3 != r2) goto L6;
+        Comparable r4 = (Comparable) r13;
+    L7:
+        Object r5 = r0.s;
+        if (r4 == null) goto L10;
+        int r6 = r4.compareTo(r5);
+    L11:
+        if (r6 == 0) goto L12;
+        if (r6 >= 0) goto L15;
+        mb2 r7 = r0.o;
+    L16:
+        if (r7 == null) goto L17;
+        r0 = r7;
+    L17:
+        mb2 r8 = r0;
+        if (r14 == true) goto L22;
+        return null;
+    L22:
+        mb2 r10 = this.s;
+        if (r8 != null) goto L31;
+        if (r3 == r2) goto L26;
+    L30:
+        mb2 r9 = new mb2(this.o, r8, r13, r10, r10.r);
+        this.p = r9;
+    L36:
         this.q++;
         this.r++;
-        return mb2Var;
+        return r9;
+    L26:
+        if ((r13 instanceof Comparable) == true) goto L30;
+        throw new ClassCastException(r13.getClass().getName().concat(" is not Comparable"));
+    L31:
+        r9 = new mb2(this.o, r8, r13, r10, r10.r);
+        if (r6 >= 0) goto L34;
+        r8.o = r9;
+    L35:
+        b(r8, true);
+        goto L36
+    L34:
+        r8.p = r9;
+        goto L35
+    L15:
+        r7 = r0.p;
+        goto L16
+    L12:
+        return r0;
+    L10:
+        r6 = r3.compare(r13, r5);
+        goto L11
+    L6:
+        r4 = null;
+        goto L7
+    L19:
+        r6 = 0;
+        goto L17
     }
 
-    public final void b(mb2 mb2Var, boolean z) {
-        while (mb2Var != null) {
-            mb2 mb2Var2 = mb2Var.o;
-            mb2 mb2Var3 = mb2Var.p;
-            int i = mb2Var2 != null ? mb2Var2.v : 0;
-            int i2 = mb2Var3 != null ? mb2Var3.v : 0;
-            int i3 = i - i2;
-            if (i3 == -2) {
-                mb2 mb2Var4 = mb2Var3.o;
-                mb2 mb2Var5 = mb2Var3.p;
-                int i4 = (mb2Var4 != null ? mb2Var4.v : 0) - (mb2Var5 != null ? mb2Var5.v : 0);
-                if (i4 == -1 || (i4 == 0 && !z)) {
-                    e(mb2Var);
-                } else {
-                    f(mb2Var3);
-                    e(mb2Var);
-                }
-                if (z) {
-                    return;
-                }
-            } else if (i3 == 2) {
-                mb2 mb2Var6 = mb2Var2.o;
-                mb2 mb2Var7 = mb2Var2.p;
-                int i5 = (mb2Var6 != null ? mb2Var6.v : 0) - (mb2Var7 != null ? mb2Var7.v : 0);
-                if (i5 == 1 || (i5 == 0 && !z)) {
-                    f(mb2Var);
-                } else {
-                    e(mb2Var2);
-                    f(mb2Var);
-                }
-                if (z) {
-                    return;
-                }
-            } else if (i3 == 0) {
-                mb2Var.v = i + 1;
-                if (z) {
-                    return;
-                }
-            } else {
-                mb2Var.v = Math.max(i, i2) + 1;
-                if (!z) {
-                    return;
-                }
-            }
-            mb2Var = mb2Var.n;
-        }
+    public final void b(mb2 r8, boolean r9) {
+    L2:
+        if (r8 == null) goto L52;
+        mb2 r0 = r8.o;
+        mb2 r1 = r8.p;
+        int r2 = 0;
+        if (r0 == null) goto L6;
+        int r3 = r0.v;
+    L7:
+        if (r1 == null) goto L9;
+        int r4 = r1.v;
+    L10:
+        int r5 = r3 - r4;
+        if (r5 != (-2)) goto L28;
+        mb2 r6 = r1.o;
+        mb2 r7 = r1.p;
+        if (r7 == null) goto L15;
+        int r10 = r7.v;
+    L16:
+        if (r6 == null) goto L18;
+        r2 = r6.v;
+    L18:
+        int r11 = r2 - r10;
+        if (r11 == (-1)) goto L24;
+        if (r11 != 0) goto L23;
+        if (r9 == false) goto L24;
+    L23:
+        f(r1);
+        e(r8);
+    L25:
+        if (r9 == false) goto L51;
+        return;
+    L51:
+        r8 = r8.n;
+    L24:
+        e(r8);
+        goto L25
+    L15:
+        r10 = 0;
+        goto L16
+    L28:
+        if (r5 != 2) goto L44;
+        mb2 r12 = r0.o;
+        mb2 r13 = r0.p;
+        if (r13 == null) goto L32;
+        int r14 = r13.v;
+    L33:
+        if (r12 == null) goto L35;
+        r2 = r12.v;
+    L35:
+        int r15 = r2 - r14;
+        if (r15 == 1) goto L41;
+        if (r15 != 0) goto L40;
+        if (r9 == false) goto L41;
+    L40:
+        e(r0);
+        f(r8);
+    L42:
+        if (r9 == false) goto L51;
+        return;
+    L41:
+        f(r8);
+        goto L42
+    L32:
+        r14 = 0;
+        goto L33
+    L44:
+        if (r5 != 0) goto L48;
+        r8.v = r3 + 1;
+        if (r9 == false) goto L51;
+        return;
+    L48:
+        r8.v = Math.max(r3, r4) + 1;
+        if (r9 == true) goto L51;
+        return;
+    L9:
+        r4 = 0;
+        goto L10
+    L6:
+        r3 = 0;
+        goto L7
     }
 
-    public final void c(mb2 mb2Var, boolean z) {
-        mb2 mb2Var2;
-        mb2 mb2Var3;
-        int i;
-        if (z) {
-            mb2 mb2Var4 = mb2Var.r;
-            mb2Var4.q = mb2Var.q;
-            mb2Var.q.r = mb2Var4;
-        }
-        mb2 mb2Var5 = mb2Var.o;
-        mb2 mb2Var6 = mb2Var.p;
-        mb2 mb2Var7 = mb2Var.n;
-        int i2 = 0;
-        if (mb2Var5 == null || mb2Var6 == null) {
-            if (mb2Var5 != null) {
-                d(mb2Var, mb2Var5);
-                mb2Var.o = null;
-            } else if (mb2Var6 != null) {
-                d(mb2Var, mb2Var6);
-                mb2Var.p = null;
-            } else {
-                d(mb2Var, null);
-            }
-            b(mb2Var7, false);
-            this.q--;
-            this.r++;
-            return;
-        }
-        if (mb2Var5.v > mb2Var6.v) {
-            mb2 mb2Var8 = mb2Var5.p;
-            while (true) {
-                mb2 mb2Var9 = mb2Var8;
-                mb2Var3 = mb2Var5;
-                mb2Var5 = mb2Var9;
-                if (mb2Var5 == null) {
-                    break;
-                } else {
-                    mb2Var8 = mb2Var5.p;
-                }
-            }
-        } else {
-            mb2 mb2Var10 = mb2Var6.o;
-            while (true) {
-                mb2Var2 = mb2Var6;
-                mb2Var6 = mb2Var10;
-                if (mb2Var6 == null) {
-                    break;
-                } else {
-                    mb2Var10 = mb2Var6.o;
-                }
-            }
-            mb2Var3 = mb2Var2;
-        }
-        c(mb2Var3, false);
-        mb2 mb2Var11 = mb2Var.o;
-        if (mb2Var11 != null) {
-            i = mb2Var11.v;
-            mb2Var3.o = mb2Var11;
-            mb2Var11.n = mb2Var3;
-            mb2Var.o = null;
-        } else {
-            i = 0;
-        }
-        mb2 mb2Var12 = mb2Var.p;
-        if (mb2Var12 != null) {
-            i2 = mb2Var12.v;
-            mb2Var3.p = mb2Var12;
-            mb2Var12.n = mb2Var3;
-            mb2Var.p = null;
-        }
-        mb2Var3.v = Math.max(i, i2) + 1;
-        d(mb2Var, mb2Var3);
+    public final void c(mb2 r7, boolean r8) {
+        if (r8 == false) goto L4;
+        mb2 r9 = r7.r;
+        r9.q = r7.q;
+        r7.q.r = r9;
+    L4:
+        mb2 r10 = r7.o;
+        mb2 r0 = r7.p;
+        mb2 r1 = r7.n;
+        int r2 = 0;
+        if (r10 == null) goto L27;
+        if (r0 == null) goto L27;
+        if (r10.v <= r0.v) goto L13;
+        mb2 r3 = r10.p;
+    L10:
+        mb2 r5 = r3;
+        mb2 r4 = r10;
+        r10 = r5;
+        if (r10 == null) goto L18;
+        r3 = r10.p;
+    L18:
+        c(r4, false);
+        mb2 r11 = r7.o;
+        if (r11 == null) goto L21;
+        int r6 = r11.v;
+        r4.o = r11;
+        r11.n = r4;
+        r7.o = null;
+    L22:
+        mb2 r12 = r7.p;
+        if (r12 == null) goto L25;
+        r2 = r12.v;
+        r4.p = r12;
+        r12.n = r4;
+        r7.p = null;
+    L25:
+        r4.v = Math.max(r6, r2) + 1;
+        d(r7, r4);
+        return;
+    L21:
+        r6 = 0;
+        goto L22
+    L13:
+        mb2 r13 = r0.o;
+    L14:
+        mb2 r14 = r0;
+        r0 = r13;
+        if (r0 == null) goto L17;
+        r13 = r0.o;
+        goto L14
+    L17:
+        r4 = r14;
+    L27:
+        if (r10 == null) goto L29;
+        d(r7, r10);
+        r7.o = null;
+    L32:
+        b(r1, false);
+        this.q--;
+        this.r++;
+        return;
+    L29:
+        if (r0 == null) goto L31;
+        d(r7, r0);
+        r7.p = null;
+        goto L32
+    L31:
+        d(r7, null);
+        goto L32
     }
 
     @Override // java.util.AbstractMap, java.util.Map
@@ -198,147 +251,181 @@ public final class nb2 extends AbstractMap implements Serializable {
         this.p = null;
         this.q = 0;
         this.r++;
-        mb2 mb2Var = this.s;
-        mb2Var.r = mb2Var;
-        mb2Var.q = mb2Var;
+        mb2 r1 = this.s;
+        r1.r = r1;
+        r1.q = r1;
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final boolean containsKey(Object obj) {
-        mb2 mb2VarA = null;
-        if (obj != null) {
-            try {
-                mb2VarA = a(obj, false);
-            } catch (ClassCastException unused) {
-            }
-        }
-        return mb2VarA != null;
+    public final boolean containsKey(Object r3) {
+        mb2 r1 = null;
+        if (r3 != null) goto L10;
+    L5:
+        if (r1 == null) goto L8;
+        return true;
+    L8:
+        return false;
+    L10:
+        r1 = a(r3, false);     // Catch: ClassCastException -> L9
+        goto L5
     }
 
-    public final void d(mb2 mb2Var, mb2 mb2Var2) {
-        mb2 mb2Var3 = mb2Var.n;
-        mb2Var.n = null;
-        if (mb2Var2 != null) {
-            mb2Var2.n = mb2Var3;
-        }
-        if (mb2Var3 == null) {
-            this.p = mb2Var2;
-        } else if (mb2Var3.o == mb2Var) {
-            mb2Var3.o = mb2Var2;
-        } else {
-            mb2Var3.p = mb2Var2;
-        }
+    public final void d(mb2 r3, mb2 r4) {
+        mb2 r0 = r3.n;
+        r3.n = null;
+        if (r4 == null) goto L5;
+        r4.n = r0;
+    L5:
+        if (r0 != null) goto L7;
+        this.p = r4;
+        return;
+    L7:
+        if (r0.o != r3) goto L10;
+        r0.o = r4;
+        return;
+    L10:
+        r0.p = r4;
     }
 
-    public final void e(mb2 mb2Var) {
-        mb2 mb2Var2 = mb2Var.o;
-        mb2 mb2Var3 = mb2Var.p;
-        mb2 mb2Var4 = mb2Var3.o;
-        mb2 mb2Var5 = mb2Var3.p;
-        mb2Var.p = mb2Var4;
-        if (mb2Var4 != null) {
-            mb2Var4.n = mb2Var;
-        }
-        d(mb2Var, mb2Var3);
-        mb2Var3.o = mb2Var;
-        mb2Var.n = mb2Var3;
-        int iMax = Math.max(mb2Var2 != null ? mb2Var2.v : 0, mb2Var4 != null ? mb2Var4.v : 0) + 1;
-        mb2Var.v = iMax;
-        mb2Var3.v = Math.max(iMax, mb2Var5 != null ? mb2Var5.v : 0) + 1;
+    public final void e(mb2 r5) {
+        mb2 r0 = r5.o;
+        mb2 r1 = r5.p;
+        mb2 r2 = r1.o;
+        mb2 r3 = r1.p;
+        r5.p = r2;
+        if (r2 == null) goto L5;
+        r2.n = r5;
+    L5:
+        d(r5, r1);
+        r1.o = r5;
+        r5.n = r1;
+        int r4 = 0;
+        if (r0 == null) goto L8;
+        int r6 = r0.v;
+    L9:
+        if (r2 == null) goto L11;
+        int r7 = r2.v;
+    L12:
+        int r8 = Math.max(r6, r7) + 1;
+        r5.v = r8;
+        if (r3 == null) goto L15;
+        r4 = r3.v;
+    L15:
+        r1.v = Math.max(r8, r4) + 1;
+        return;
+    L11:
+        r7 = 0;
+        goto L12
+    L8:
+        r6 = 0;
+        goto L9
     }
 
     @Override // java.util.AbstractMap, java.util.Map
     public final Set entrySet() {
-        lb2 lb2Var = this.t;
-        if (lb2Var != null) {
-            return lb2Var;
-        }
-        lb2 lb2Var2 = new lb2(this, 0);
-        this.t = lb2Var2;
-        return lb2Var2;
+        lb2 r0 = this.t;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        lb2 r1 = new lb2(this, 0);
+        this.t = r1;
+        return r1;
     }
 
-    public final void f(mb2 mb2Var) {
-        mb2 mb2Var2 = mb2Var.o;
-        mb2 mb2Var3 = mb2Var.p;
-        mb2 mb2Var4 = mb2Var2.o;
-        mb2 mb2Var5 = mb2Var2.p;
-        mb2Var.o = mb2Var5;
-        if (mb2Var5 != null) {
-            mb2Var5.n = mb2Var;
-        }
-        d(mb2Var, mb2Var2);
-        mb2Var2.p = mb2Var;
-        mb2Var.n = mb2Var2;
-        int iMax = Math.max(mb2Var3 != null ? mb2Var3.v : 0, mb2Var5 != null ? mb2Var5.v : 0) + 1;
-        mb2Var.v = iMax;
-        mb2Var2.v = Math.max(iMax, mb2Var4 != null ? mb2Var4.v : 0) + 1;
+    public final void f(mb2 r5) {
+        mb2 r0 = r5.o;
+        mb2 r1 = r5.p;
+        mb2 r2 = r0.o;
+        mb2 r3 = r0.p;
+        r5.o = r3;
+        if (r3 == null) goto L5;
+        r3.n = r5;
+    L5:
+        d(r5, r0);
+        r0.p = r5;
+        r5.n = r0;
+        int r4 = 0;
+        if (r1 == null) goto L8;
+        int r6 = r1.v;
+    L9:
+        if (r3 == null) goto L11;
+        int r7 = r3.v;
+    L12:
+        int r8 = Math.max(r6, r7) + 1;
+        r5.v = r8;
+        if (r2 == null) goto L15;
+        r4 = r2.v;
+    L15:
+        r0.v = Math.max(r8, r4) + 1;
+        return;
+    L11:
+        r7 = 0;
+        goto L12
+    L8:
+        r6 = 0;
+        goto L9
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final Object get(Object obj) {
-        mb2 mb2VarA;
-        if (obj != null) {
-            try {
-                mb2VarA = a(obj, false);
-            } catch (ClassCastException unused) {
-                mb2VarA = null;
-            }
-        } else {
-            mb2VarA = null;
-        }
-        if (mb2VarA != null) {
-            return mb2VarA.u;
-        }
+    public final Object get(Object r3) {
+        if (r3 != null) goto L13;
+    L7:
+        mb2 r2 = null;
+    L8:
+        if (r2 != null) goto L10;
         return null;
+    L10:
+        return r2.u;
+    L13:
+        r2 = a(r3, false);     // Catch: ClassCastException -> L12
+        goto L8
     }
 
     @Override // java.util.AbstractMap, java.util.Map
     public final Set keySet() {
-        lb2 lb2Var = this.u;
-        if (lb2Var != null) {
-            return lb2Var;
-        }
-        lb2 lb2Var2 = new lb2(this, 1);
-        this.u = lb2Var2;
-        return lb2Var2;
+        lb2 r0 = this.u;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        lb2 r1 = new lb2(this, 1);
+        this.u = r1;
+        return r1;
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final Object put(Object obj, Object obj2) {
-        if (obj == null) {
-            nz2.n("key == null");
-            return null;
-        }
-        if (obj2 == null && !this.o) {
-            nz2.n("value == null");
-            return null;
-        }
-        mb2 mb2VarA = a(obj, true);
-        Object obj3 = mb2VarA.u;
-        mb2VarA.u = obj2;
-        return obj3;
-    }
-
-    @Override // java.util.AbstractMap, java.util.Map
-    public final Object remove(Object obj) {
-        mb2 mb2VarA;
-        if (obj != null) {
-            try {
-                mb2VarA = a(obj, false);
-            } catch (ClassCastException unused) {
-                mb2VarA = null;
-            }
-        } else {
-            mb2VarA = null;
-        }
-        if (mb2VarA != null) {
-            c(mb2VarA, true);
-        }
-        if (mb2VarA != null) {
-            return mb2VarA.u;
-        }
+    public final Object put(Object r3, Object r4) {
+        if (r3 == null) goto L12;
+        if (r4 == null) goto L6;
+    L10:
+        mb2 r2 = a(r3, true);
+        Object r5 = r2.u;
+        r2.u = r4;
+        return r5;
+    L6:
+        if (this.o == true) goto L10;
+        nz2.n("value == null");
         return null;
+    L12:
+        nz2.n("key == null");
+        return null;
+    }
+
+    @Override // java.util.AbstractMap, java.util.Map
+    public final Object remove(Object r3) {
+        if (r3 != null) goto L15;
+    L7:
+        mb2 r4 = null;
+    L8:
+        if (r4 == null) goto L10;
+        c(r4, true);
+    L10:
+        if (r4 != null) goto L12;
+        return null;
+    L12:
+        return r4.u;
+    L15:
+        r4 = a(r3, false);     // Catch: ClassCastException -> L14
+        goto L8
     }
 
     @Override // java.util.AbstractMap, java.util.Map

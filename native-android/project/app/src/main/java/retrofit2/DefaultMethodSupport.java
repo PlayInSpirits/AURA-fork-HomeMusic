@@ -17,13 +17,13 @@ final class DefaultMethodSupport {
     }
 
     @Nullable
-    public static Object invoke(Method method, Class<?> cls, Object obj, @Nullable Object[] objArr) throws NoSuchMethodException {
-        Constructor<MethodHandles.Lookup> declaredConstructor = lookupConstructor;
-        if (declaredConstructor == null) {
-            declaredConstructor = tn.j().getDeclaredConstructor(Class.class, Integer.TYPE);
-            declaredConstructor.setAccessible(true);
-            lookupConstructor = declaredConstructor;
-        }
-        return tn.n(declaredConstructor.newInstance(cls, -1)).unreflectSpecial(method, cls).bindTo(obj).invokeWithArguments(objArr);
+    public static Object invoke(Method r3, Class<?> r4, Object r5, @Nullable Object[] r6) {
+        Constructor<MethodHandles.Lookup> r0 = lookupConstructor;
+        if (r0 != null) goto L6;
+        r0 = tn.j().getDeclaredConstructor(new Class[]{Class.class, Integer.TYPE});
+        r0.setAccessible(true);
+        lookupConstructor = r0;
+    L6:
+        return tn.k(tn.l(tn.m(tn.n(r0.newInstance(new Object[]{r4, -1})), r3, r4), r5), r6);
     }
 }

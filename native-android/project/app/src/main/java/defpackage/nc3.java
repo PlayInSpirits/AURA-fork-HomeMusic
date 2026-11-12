@@ -7,81 +7,104 @@ public final class nc3 {
     public final lc3 b;
     public final ue1 c;
 
-    public nc3(lm0 lm0Var, lc3 lc3Var, ue1 ue1Var) {
-        this.a = lm0Var;
-        this.b = lc3Var;
-        this.c = ue1Var;
+    public nc3(lm0 r1, lc3 r2, ue1 r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 
-    public final void a(final int i, Object obj, rg1 rg1Var, int i2) {
-        int i3;
-        Object obj2;
-        rg1 rg1Var2;
-        rg1Var.S(-1201380429);
-        int i4 = (rg1Var.d(i) ? 4 : 2) | i2 | (rg1Var.g(obj) ? 32 : 16) | (rg1Var.e(this) ? 256 : 128);
-        if (rg1Var.K(i4 & 1, (i4 & 147) != 146)) {
-            i3 = i;
-            obj2 = obj;
-            rg1Var2 = rg1Var;
-            jz4.b(obj2, i3, this.a.z, fh0.w(1142237095, new wf1() { // from class: mc3
-                @Override // defpackage.wf1
-                public final Object invoke(Object obj3, Object obj4) {
-                    rg1 rg1Var3 = (rg1) obj3;
-                    int iIntValue = ((Integer) obj4).intValue();
-                    if (rg1Var3.K(iIntValue & 1, (iIntValue & 3) != 2)) {
-                        ue1 ue1Var = this.n.b.a;
-                        int i5 = i;
-                        f12 f12VarJ = ue1Var.j(i5);
-                        ((yf1) f12VarJ.c.o).d(rc3.a, Integer.valueOf(i5 - f12VarJ.a), rg1Var3, 0);
-                    } else {
-                        rg1Var3.N();
-                    }
-                    return j15.a;
-                }
-            }, rg1Var), rg1Var2, ((i4 >> 3) & 14) | 3072 | ((i4 << 3) & 112));
-        } else {
-            i3 = i;
-            obj2 = obj;
-            rg1Var2 = rg1Var;
-            rg1Var2.N();
-        }
-        lv3 lv3VarP = rg1Var2.p();
-        if (lv3VarP != null) {
-            lv3VarP.d = new d82(this, i3, obj2, i2);
-        }
+    public final void a(final int r9, Object r10, rg1 r11, int r12) {
+        r11.S(-1201380429);
+        if (r11.d(r9) == false) goto L5;
+        int r0 = 4;
+    L6:
+        int r1 = r0 | r12;
+        if (r11.g(r10) == false) goto L9;
+        int r2 = 32;
+    L10:
+        int r3 = r1 | r2;
+        if (r11.e(this) == false) goto L13;
+        int r4 = 256;
+    L14:
+        int r5 = r3 | r4;
+        if ((r5 & 147) == 146) goto L17;
+        boolean r6 = true;
+    L19:
+        if (r11.K(r5 & 1, r6) == false) goto L21;
+        int r7 = r9;
+        Object r8 = r10;
+        rg1 r13 = r11;
+        jz4.b(r8, r7, this.a.z, fh0.w(1142237095, new mc3(this, r9), r11), r13, (((r5 >> 3) & 14) | 3072) | ((r5 << 3) & 112));
+    L22:
+        lv3 r14 = r13.p();
+        if (r14 == null) goto L26;
+        r14.d = new d82(this, r7, r8, r12);
+        return;
+    L26:
+        return;
+    L21:
+        r7 = r9;
+        r8 = r10;
+        r13 = r11;
+        r13.N();
+        goto L22
+    L17:
+        r6 = false;
+        goto L19
+    L13:
+        r4 = 128;
+        goto L14
+    L9:
+        r2 = 16;
+        goto L10
+    L5:
+        r0 = 2;
+        goto L6
     }
 
     public final int b() {
-        lc3 lc3Var = this.b;
-        lc3Var.getClass();
-        return lc3Var.a.o;
+        lc3 r0 = this.b;
+        r0.getClass();
+        return r0.a.o;
     }
 
-    public final Object c(int i) {
-        Object objInvoke;
-        ue1 ue1Var = this.c;
-        Object[] objArr = (Object[]) ue1Var.q;
-        int i2 = i - ue1Var.o;
-        Object obj = (i2 < 0 || i2 >= objArr.length) ? null : objArr[i2];
-        if (obj != null) {
-            return obj;
-        }
-        lc3 lc3Var = this.b;
-        lc3Var.getClass();
-        f12 f12VarJ = lc3Var.a.j(i);
-        int i3 = i - f12VarJ.a;
-        if1 if1Var = (if1) f12VarJ.c.n;
-        return (if1Var == null || (objInvoke = if1Var.invoke(Integer.valueOf(i3))) == null) ? new ql0(i) : objInvoke;
+    public final Object c(int r4) {
+        ue1 r0 = this.c;
+        Object[] r1 = (Object[]) r0.q;
+        int r2 = r4 - r0.o;
+        if (r2 >= 0) goto L5;
+    L7:
+        Object r3 = null;
+    L8:
+        if (r3 != null) goto L17;
+        lc3 r5 = this.b;
+        r5.getClass();
+        f12 r6 = r5.a.j(r4);
+        int r7 = r4 - r6.a;
+        if1 r8 = (if1) r6.c.n;
+        if (r8 == null) goto L16;
+        Object r9 = r8.invoke(Integer.valueOf(r7));
+        if (r9 == null) goto L16;
+        return r9;
+    L16:
+        return new ql0(r4);
+    L17:
+        return r3;
+    L5:
+        if (r2 >= r1.length) goto L7;
+        r3 = r1[r2];
+        goto L8
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof nc3)) {
-            return false;
-        }
-        return h12.c(this.b, ((nc3) obj).b);
+    public final boolean equals(Object r2) {
+        if (this != r2) goto L6;
+        return true;
+    L6:
+        if ((r2 instanceof nc3) == true) goto L9;
+        return false;
+    L9:
+        lc3 r3 = ((nc3) r2).b;
+        return h12.c(this.b, r3);
     }
 
     public final int hashCode() {

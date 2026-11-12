@@ -5,8 +5,8 @@ package defpackage;
 final class b53 extends gx2 {
     public final y43 a;
 
-    public b53(y43 y43Var) {
-        this.a = y43Var;
+    public b53(y43 r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.gx2
@@ -15,28 +15,34 @@ final class b53 extends gx2 {
     }
 
     @Override // defpackage.gx2
-    public final void e(cx2 cx2Var) {
-        e53 e53Var = (e53) cx2Var;
-        e53Var.B = this.a;
-        na4 na4Var = e53Var.C;
-        if (((e53) na4Var.n) == e53Var) {
-            na4Var.n = null;
-            na4Var.q = null;
-            na4Var.p = gb.c;
-        }
-        na4 na4Var2 = new na4(10);
-        e53Var.C = na4Var2;
-        if (e53Var.A) {
-            na4Var2.n = e53Var;
-            na4Var2.o = null;
-            e53Var.D = null;
-            na4Var2.p = new wc(15, e53Var);
-            na4Var2.q = e53Var.e0();
-        }
+    public final void e(cx2 r3) {
+        e53 r4 = (e53) r3;
+        r4.B = this.a;
+        na4 r2 = r4.C;
+        if (((e53) r2.n) != r4) goto L5;
+        r2.n = null;
+        r2.q = null;
+        r2.p = gb.c;
+    L5:
+        na4 r5 = new na4(10);
+        r4.C = r5;
+        if (r4.A == false) goto L9;
+        r5.n = r4;
+        r5.o = null;
+        r4.D = null;
+        r5.p = new wc(15, r4);
+        r5.q = r4.e0();
+        return;
     }
 
-    public final boolean equals(Object obj) {
-        return (obj instanceof b53) && h12.c(((b53) obj).a, this.a);
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof b53) == true) goto L6;
+        return false;
+    L6:
+        if (h12.c(((b53) r2).a, this.a) == true) goto L9;
+        return false;
+    L9:
+        return true;
     }
 
     public final int hashCode() {

@@ -5,13 +5,13 @@ package defpackage;
 public interface zi0 {
     void a();
 
-    void b(long j);
+    void b(long r1);
 
     Object d();
 
     Object e();
 
-    void f(vn4 vn4Var);
+    void f(vn4 r1);
 
     void flush();
 }

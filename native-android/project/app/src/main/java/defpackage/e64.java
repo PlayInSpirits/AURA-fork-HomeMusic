@@ -5,9 +5,9 @@ package defpackage;
 public class e64 extends c0 implements ye0 {
     public final vd0 s;
 
-    public e64(vd0 vd0Var, ne0 ne0Var) {
-        super(ne0Var, true);
-        this.s = vd0Var;
+    public e64(vd0 r2, ne0 r3) {
+        super(r3, true);
+        this.s = r2;
     }
 
     @Override // defpackage.a32
@@ -17,20 +17,20 @@ public class e64 extends c0 implements ye0 {
 
     @Override // defpackage.ye0
     public final ye0 getCallerFrame() {
-        vd0 vd0Var = this.s;
-        if (vd0Var instanceof ye0) {
-            return (ye0) vd0Var;
-        }
+        vd0 r1 = this.s;
+        if ((r1 instanceof ye0) == true) goto L5;
         return null;
+    L5:
+        return (ye0) r1;
     }
 
     @Override // defpackage.a32
-    public void l(Object obj) {
-        uc5.T(ya4.x(this.s), hw.I(obj));
+    public void l(Object r1) {
+        uc5.T(ya4.x(this.s), hw.I(r1));
     }
 
     @Override // defpackage.a32
-    public void m(Object obj) {
-        this.s.resumeWith(hw.I(obj));
+    public void m(Object r1) {
+        this.s.resumeWith(hw.I(r1));
     }
 }

@@ -12,30 +12,40 @@ public final class hm3 implements a83 {
     public final /* synthetic */ int d;
     public final /* synthetic */ im3 e;
 
-    public hm3(im3 im3Var, k03 k03Var, boolean z, String str, int i) {
-        this.e = im3Var;
-        this.a = k03Var;
-        this.b = z;
-        this.c = str;
-        this.d = i;
+    public hm3(im3 r1, k03 r2, boolean r3, String r4, int r5) {
+        this.e = r1;
+        this.a = r2;
+        this.b = r3;
+        this.c = r4;
+        this.d = r5;
     }
 
     @Override // defpackage.a83
-    public final void b(Object obj) {
-        Playlist playlist;
-        List list = (List) obj;
+    public final void b(Object r4) {
+        List r5 = (List) r4;
         this.a.j(this);
-        String str = this.c;
-        im3 im3Var = this.e;
-        if (list == null && this.b && (playlist = im3Var.e) != null && playlist.getId().equals(str)) {
-            im3.c(im3Var, str, false);
-            return;
-        }
-        im3Var.f = null;
-        if (list == null || im3Var.i > this.d || !im3Var.e(str)) {
-            return;
-        }
-        im3Var.i = im3Var.h;
-        im3Var.j.k(list);
+        String r0 = this.c;
+        im3 r1 = this.e;
+        if (r5 == null) goto L5;
+    L12:
+        r1.f = null;
+        if (r5 != null) goto L15;
+        return;
+    L15:
+        if (r1.i <= this.d) goto L17;
+        return;
+    L17:
+        if (r1.e(r0) == false) goto L22;
+        r1.i = r1.h;
+        r1.j.k(r5);
+        return;
+    L22:
+        return;
+    L5:
+        if (this.b == false) goto L12;
+        Playlist r2 = r1.e;
+        if (r2 == null) goto L12;
+        if (r2.getId().equals(r0) == false) goto L12;
+        im3.c(r1, r0, false);
     }
 }

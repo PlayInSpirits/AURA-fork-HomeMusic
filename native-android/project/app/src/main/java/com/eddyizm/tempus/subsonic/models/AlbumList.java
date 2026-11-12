@@ -8,11 +8,14 @@ public final class AlbumList {
     public static final int $stable = 8;
     private List<? extends Child> albums;
 
+    public AlbumList() {
+    }
+
     public final List<Child> getAlbums() {
         return this.albums;
     }
 
-    public final void setAlbums(List<? extends Child> list) {
-        this.albums = list;
+    public final void setAlbums(List<? extends Child> r1) {
+        this.albums = r1;
     }
 }

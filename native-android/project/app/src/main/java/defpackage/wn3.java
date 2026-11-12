@@ -7,226 +7,237 @@ import java.util.concurrent.locks.ReentrantLock;
 public final class wn3 {
     public final int a;
     public final gf1 b;
-    public final ReentrantLock c = new ReentrantLock();
+    public final ReentrantLock c;
     public int d;
     public boolean e;
     public final sa0[] f;
     public final v94 g;
     public final x20 h;
 
-    public wn3(int i, gf1 gf1Var) {
-        this.a = i;
-        this.b = gf1Var;
-        this.f = new sa0[i];
-        int i2 = w94.a;
-        this.g = new v94(i);
-        x20 x20Var = new x20();
-        if (i < 1) {
-            kf2.n("capacity must be >= 1");
-            throw null;
-        }
-        if (i > 1073741824) {
-            kf2.n("capacity must be <= 2^30");
-            throw null;
-        }
-        i = Integer.bitCount(i) != 1 ? Integer.highestOneBit(i - 1) << 1 : i;
-        x20Var.c = i - 1;
-        x20Var.d = new Object[i];
-        this.h = x20Var;
+    public wn3(int r4, gf1 r5) {
+        this.a = r4;
+        this.b = r5;
+        this.c = new ReentrantLock();
+        this.f = new sa0[r4];
+        int r6 = w94.a;
+        this.g = new v94(r4);
+        x20 r7 = new x20();
+        if (r4 >= 1) goto L5;
+        kf2.n("capacity must be >= 1");
+        throw null;
+    L5:
+        if (r4 <= 1073741824) goto L7;
+        kf2.n("capacity must be <= 2^30");
+        throw null;
+    L7:
+        if (Integer.bitCount(r4) == 1) goto L9;
+        r4 = Integer.highestOneBit(r4 - 1) << 1;
+    L9:
+        r7.c = r4 - 1;
+        r7.d = new Object[r4];
+        this.h = r7;
     }
 
-    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
-    public final Object a(wd0 wd0Var) {
-        vn3 vn3Var;
-        int andDecrement;
-        if (wd0Var instanceof vn3) {
-            vn3Var = (vn3) wd0Var;
-            int i = vn3Var.q;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                vn3Var.q = i - Integer.MIN_VALUE;
-            } else {
-                vn3Var = new vn3(this, wd0Var);
-            }
-        } else {
-            vn3Var = new vn3(this, wd0Var);
-        }
-        Object obj = vn3Var.o;
-        int i2 = vn3Var.q;
-        if (i2 == 0) {
-            kb4.X(obj);
-            vn3Var.n = this;
-            vn3Var.q = 1;
-            v94 v94Var = this.g;
-            v94Var.getClass();
-            int i3 = v94Var.n;
-            do {
-                andDecrement = u94.t.getAndDecrement(v94Var);
-            } while (andDecrement > i3);
-            Object obj2 = j15.a;
-            xe0 xe0Var = xe0.n;
-            if (andDecrement <= 0) {
-                cz czVarS = zz1.s(ya4.x(vn3Var));
-                try {
-                    if (!v94Var.a(czVarS)) {
-                        while (true) {
-                            int andDecrement2 = u94.t.getAndDecrement(v94Var);
-                            if (andDecrement2 <= i3) {
-                                if (andDecrement2 > 0) {
-                                    czVarS.k(obj2, v94Var.o);
-                                    break;
-                                }
-                                if (v94Var.a(czVarS)) {
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    Object objQ = czVarS.q();
-                    if (objQ != xe0Var) {
-                        objQ = obj2;
-                    }
-                    if (objQ == xe0Var) {
-                        obj2 = objQ;
-                    }
-                } catch (Throwable th) {
-                    czVarS.B();
-                    throw th;
-                }
-            }
-            if (obj2 == xe0Var) {
-                return xe0Var;
-            }
-        } else {
-            if (i2 != 1) {
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            }
-            this = vn3Var.n;
-            kb4.X(obj);
-        }
-        try {
-            ReentrantLock reentrantLock = this.c;
-            x20 x20Var = this.h;
-            reentrantLock.lock();
-            try {
-                if (this.e) {
-                    h12.P(21, "Connection pool is closed");
-                    throw null;
-                }
-                if (x20Var.a == x20Var.b && this.d < this.a) {
-                    sa0 sa0Var = new sa0((x34) this.b.invoke());
-                    sa0[] sa0VarArr = this.f;
-                    int i4 = this.d;
-                    this.d = i4 + 1;
-                    sa0VarArr[i4] = sa0Var;
-                    x20Var.a(sa0Var);
-                }
-                int i5 = x20Var.a;
-                if (i5 == x20Var.b) {
-                    throw new ArrayIndexOutOfBoundsException();
-                }
-                Object[] objArr = (Object[]) x20Var.d;
-                Object obj3 = objArr[i5];
-                objArr[i5] = null;
-                x20Var.a = (i5 + 1) & x20Var.c;
-                sa0 sa0Var2 = (sa0) obj3;
-                reentrantLock.unlock();
-                return sa0Var2;
-            } catch (Throwable th2) {
-                reentrantLock.unlock();
-                throw th2;
-            }
-        } catch (Throwable th3) {
-            this.g.c();
-            throw th3;
-        }
+    public final Object a(wd0 r8) {
+        if ((r8 instanceof vn3) == false) goto L7;
+        vn3 r0 = (vn3) r8;
+        int r1 = r0.q;
+        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
+        r0.q = r1 - Integer.MIN_VALUE;
+    L8:
+        Object r9 = r0.o;
+        int r2 = r0.q;
+        if (r2 == 0) goto L14;
+        if (r2 != 1) goto L12;
+        wn3 this = r0.n;
+        kb4.X(r9);
+    L68:
+        ReentrantLock r10 = this.c;     // Catch: Throwable -> L51
+        x20 r3 = this.h;     // Catch: Throwable -> L51
+        r10.lock();     // Catch: Throwable -> L51
+    L53:
+        th = move-exception;
+        r10.unlock();     // Catch: Throwable -> L51
+        throw th;     // Catch: Throwable -> L51
+    L39:
+        if (this.e == false) goto L41;
+        h12.P(21, "Connection pool is closed");     // Catch: Throwable -> L53
+        throw null;     // Catch: Throwable -> L53
+    L41:
+        if (r3.a == r3.b) goto L43;
+    L46:
+        int r4 = r3.a;     // Catch: Throwable -> L53
+        if (r4 == r3.b) goto L56;
+        Object[] r5 = (Object[]) r3.d;     // Catch: Throwable -> L53
+        Object r6 = r5[r4];     // Catch: Throwable -> L53
+        r5[r4] = null;     // Catch: Throwable -> L53
+        r3.a = (r4 + 1) & r3.c;     // Catch: Throwable -> L53
+        sa0 r7 = (sa0) r6;     // Catch: Throwable -> L53
+        r10.unlock();     // Catch: Throwable -> L51
+        return r7;
+    L56:
+        throw new ArrayIndexOutOfBoundsException();     // Catch: Throwable -> L53
+    L43:
+        if (this.d >= this.a) goto L46;
+        sa0 r11 = new sa0((x34) this.b.invoke());     // Catch: Throwable -> L53
+        sa0[] r12 = this.f;     // Catch: Throwable -> L53
+        int r13 = this.d;     // Catch: Throwable -> L53
+        this.d = r13 + 1;     // Catch: Throwable -> L53
+        r12[r13] = r11;     // Catch: Throwable -> L53
+        r3.a(r11);     // Catch: Throwable -> L53
+    L51:
+        th = move-exception;
+        this.g.c();
+        throw th;
+    L12:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L14:
+        kb4.X(r9);
+        r0.n = this;
+        r0.q = 1;
+        v94 r14 = this.g;
+        r14.getClass();
+        int r15 = r14.n;
+    L15:
+        int r16 = u94.t.getAndDecrement(r14);
+        if (r16 > r15) goto L15;
+        Object r17 = j15.a;
+        xe0 r18 = xe0.n;
+        if (r16 > 0) goto L35;
+        cz r19 = zz1.s(ya4.x(r0));
+    L63:
+        th = move-exception;
+        r19.B();
+        throw th;
+    L22:
+        if (r14.a(r19) == true) goto L29;
+    L23:
+        int r20 = u94.t.getAndDecrement(r14);     // Catch: Throwable -> L63
+        if (r20 > r15) goto L23;
+        if (r20 > 0) goto L26;
+        if (r14.a(r19) == false) goto L23;
+    L26:
+        r19.k(r17, r14.o);     // Catch: Throwable -> L63
+    L29:
+        Object r21 = r19.q();
+        if (r21 == r18) goto L33;
+        r21 = r17;
+    L33:
+        if (r21 != r18) goto L35;
+        r17 = r21;
+    L35:
+        if (r17 != r18) goto L68;
+        return r18;
+    L7:
+        r0 = new vn3(this, r8);
+        goto L8
     }
 
     public final void b() {
-        ReentrantLock reentrantLock = this.c;
-        reentrantLock.lock();
-        try {
-            this.e = true;
-            for (sa0 sa0Var : this.f) {
-                if (sa0Var != null) {
-                    sa0Var.close();
-                }
-            }
-            reentrantLock.unlock();
-        } catch (Throwable th) {
-            reentrantLock.unlock();
-            throw th;
-        }
+        ReentrantLock r0 = this.c;
+        r0.lock();
+        this.e = true;     // Catch: Throwable -> L9
+        sa0[] r4 = this.f;     // Catch: Throwable -> L9
+        int r1 = r4.length;     // Catch: Throwable -> L9
+        int r2 = 0;
+    L4:
+        if (r2 >= r1) goto L12;
+        sa0 r3 = r4[r2];     // Catch: Throwable -> L9
+        if (r3 == null) goto L11;
+        r3.close();     // Catch: Throwable -> L9
+    L11:
+        r2 = r2 + 1;
+        goto L4
+    L12:
+        r0.unlock();
+        return;
+    L9:
+        th = move-exception;
+        r0.unlock();
+        throw th;
     }
 
-    public final void c(StringBuilder sb) {
-        x20 x20Var = this.h;
-        ReentrantLock reentrantLock = this.c;
-        reentrantLock.lock();
-        try {
-            qb2 qb2VarR = gb.r();
-            int i = (x20Var.b - x20Var.a) & x20Var.c;
-            for (int i2 = 0; i2 < i; i2++) {
-                if (i2 >= 0) {
-                    int i3 = x20Var.b;
-                    int i4 = x20Var.a;
-                    int i5 = x20Var.c;
-                    if (i2 < ((i3 - i4) & i5)) {
-                        Object obj = ((Object[]) x20Var.d)[(i4 + i2) & i5];
-                        obj.getClass();
-                        qb2VarR.add(obj);
-                    }
-                }
-                throw new ArrayIndexOutOfBoundsException();
-            }
-            qb2 qb2VarF = gb.f(qb2VarR);
-            sb.append('\t' + toString() + " (");
-            sb.append("capacity=" + this.a + ", ");
-            StringBuilder sb2 = new StringBuilder();
-            sb2.append("permits=");
-            v94 v94Var = this.g;
-            v94Var.getClass();
-            sb2.append(Math.max(u94.t.get(v94Var), 0));
-            sb2.append(", ");
-            sb.append(sb2.toString());
-            sb.append("queue=(size=" + qb2VarF.a() + ")[" + q40.B0(qb2VarF, null, null, null, null, 63) + "], ");
-            sb.append(")");
-            sb.append('\n');
-            sa0[] sa0VarArr = this.f;
-            int length = sa0VarArr.length;
-            int i6 = 0;
-            for (int i7 = 0; i7 < length; i7++) {
-                sa0 sa0Var = sa0VarArr[i7];
-                i6++;
-                StringBuilder sb3 = new StringBuilder();
-                sb3.append("\t\t[");
-                sb3.append(i6);
-                sb3.append("] - ");
-                sb3.append(sa0Var != null ? sa0Var.n.toString() : null);
-                sb.append(sb3.toString());
-                sb.append('\n');
-                if (sa0Var != null) {
-                    sa0Var.j(sb);
-                }
-            }
-            reentrantLock.unlock();
-        } catch (Throwable th) {
-            reentrantLock.unlock();
-            throw th;
-        }
+    public final void c(StringBuilder r13) {
+        x20 r1 = this.h;
+        ReentrantLock r2 = this.c;
+        r2.lock();
+        qb2 r3 = gb.r();     // Catch: Throwable -> L9
+        int r4 = (r1.b - r1.a) & r1.c;     // Catch: Throwable -> L9
+        int r5 = 0;
+        int r6 = 0;
+    L4:
+        if (r6 >= r4) goto L13;
+        if (r6 < 0) goto L12;
+        int r7 = r1.b;     // Catch: Throwable -> L9
+        int r8 = r1.a;     // Catch: Throwable -> L9
+        int r9 = r1.c;     // Catch: Throwable -> L9
+        if (r6 >= ((r7 - r8) & r9)) goto L12;
+        Object r10 = ((Object[]) r1.d)[(r8 + r6) & r9];     // Catch: Throwable -> L9
+        r10.getClass();     // Catch: Throwable -> L9
+        r3.add(r10);     // Catch: Throwable -> L9
+        r6 = r6 + 1;     // Catch: Throwable -> L9
+    L12:
+        throw new ArrayIndexOutOfBoundsException();     // Catch: Throwable -> L9
+    L13:
+        qb2 r11 = gb.f(r3);     // Catch: Throwable -> L9
+        r13.append('\t' + toString() + " (");     // Catch: Throwable -> L9
+        r13.append("capacity=" + this.a + ", ");     // Catch: Throwable -> L9
+        StringBuilder r12 = new StringBuilder();     // Catch: Throwable -> L9
+        r12.append("permits=");     // Catch: Throwable -> L9
+        v94 r14 = this.g;     // Catch: Throwable -> L9
+        r14.getClass();     // Catch: Throwable -> L9
+        r12.append(Math.max(u94.t.get(r14), 0));     // Catch: Throwable -> L9
+        r12.append(", ");     // Catch: Throwable -> L9
+        r13.append(r12.toString());     // Catch: Throwable -> L9
+        r13.append("queue=(size=" + r11.a() + ")[" + q40.B0(r11, null, null, null, null, 63) + "], ");     // Catch: Throwable -> L9
+        r13.append(")");     // Catch: Throwable -> L9
+        r13.append('\n');     // Catch: Throwable -> L9
+        sa0[] r15 = this.f;     // Catch: Throwable -> L9
+        int r16 = r15.length;     // Catch: Throwable -> L9
+        int r17 = 0;
+    L14:
+        if (r5 >= r16) goto L23;
+        sa0 r18 = r15[r5];     // Catch: Throwable -> L9
+        r17 = r17 + 1;     // Catch: Throwable -> L9
+        StringBuilder r19 = new StringBuilder();     // Catch: Throwable -> L9
+        r19.append("\t\t[");     // Catch: Throwable -> L9
+        r19.append(r17);     // Catch: Throwable -> L9
+        r19.append("] - ");     // Catch: Throwable -> L9
+        if (r18 == null) goto L18;
+        String r20 = r18.n.toString();     // Catch: Throwable -> L9
+    L19:
+        r19.append(r20);     // Catch: Throwable -> L9
+        r13.append(r19.toString());     // Catch: Throwable -> L9
+        r13.append('\n');     // Catch: Throwable -> L9
+        if (r18 == null) goto L22;
+        r18.j(r13);     // Catch: Throwable -> L9
+    L22:
+        r5 = r5 + 1;
+        goto L14
+    L18:
+        r20 = null;
+        goto L19
+    L23:
+        r2.unlock();
+        return;
+    L9:
+        th = move-exception;
+        r2.unlock();
+        throw th;
     }
 
-    public final void d(sa0 sa0Var) {
-        sa0Var.getClass();
-        ReentrantLock reentrantLock = this.c;
-        reentrantLock.lock();
-        try {
-            this.h.a(sa0Var);
-            reentrantLock.unlock();
-            this.g.c();
-        } catch (Throwable th) {
-            reentrantLock.unlock();
-            throw th;
-        }
+    public final void d(sa0 r3) {
+        r3.getClass();
+        ReentrantLock r0 = this.c;
+        r0.lock();
+        this.h.a(r3);     // Catch: Throwable -> L6
+        r0.unlock();
+        this.g.c();
+        return;
+    L6:
+        th = move-exception;
+        r0.unlock();
+        throw th;
     }
 }

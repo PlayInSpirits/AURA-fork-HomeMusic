@@ -14,11 +14,11 @@ public final class bo4 {
     public final ImageView d;
     public final ImageView e;
 
-    public bo4(View view) {
-        this.a = (TextView) view.findViewById(R.id.text1);
-        this.b = (TextView) view.findViewById(R.id.text2);
-        this.c = (ImageView) view.findViewById(R.id.icon1);
-        this.d = (ImageView) view.findViewById(R.id.icon2);
-        this.e = (ImageView) view.findViewById(app.homemusic.R.id.edit_query);
+    public bo4(View r2) {
+        this.a = (TextView) r2.findViewById(R.id.text1);
+        this.b = (TextView) r2.findViewById(R.id.text2);
+        this.c = (ImageView) r2.findViewById(R.id.icon1);
+        this.d = (ImageView) r2.findViewById(R.id.icon2);
+        this.e = (ImageView) r2.findViewById(app.homemusic.R.id.edit_query);
     }
 }

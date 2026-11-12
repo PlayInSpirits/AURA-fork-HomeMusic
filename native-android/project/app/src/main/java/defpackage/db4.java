@@ -10,16 +10,16 @@ import java.util.Objects;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class db4 implements bb4 {
-    public static final String k;
-    public static final String l;
-    public static final String m;
-    public static final String n;
-    public static final String o;
-    public static final String p;
-    public static final String q;
-    public static final String r;
-    public static final String s;
-    public static final String t;
+    public static final String k = null;
+    public static final String l = null;
+    public static final String m = null;
+    public static final String n = null;
+    public static final String o = null;
+    public static final String p = null;
+    public static final String q = null;
+    public static final String r = null;
+    public static final String s = null;
+    public static final String t = null;
     public final int a;
     public final int b;
     public final int c;
@@ -32,7 +32,7 @@ public final class db4 implements bb4 {
     public final MediaSession.Token j;
 
     static {
-        String str = f35.a;
+        String r0 = f35.a;
         k = Integer.toString(0, 36);
         l = Integer.toString(1, 36);
         m = Integer.toString(2, 36);
@@ -45,17 +45,17 @@ public final class db4 implements bb4 {
         t = Integer.toString(9, 36);
     }
 
-    public db4(int i, int i2, int i3, int i4, String str, String str2, ComponentName componentName, IBinder iBinder, Bundle bundle, MediaSession.Token token) {
-        this.a = i;
-        this.b = i2;
-        this.c = i3;
-        this.d = i4;
-        this.e = str;
-        this.f = str2;
-        this.g = componentName;
-        this.h = iBinder;
-        this.i = bundle;
-        this.j = token;
+    public db4(int r1, int r2, int r3, int r4, String r5, String r6, ComponentName r7, IBinder r8, Bundle r9, MediaSession.Token r10) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
+        this.j = r10;
     }
 
     @Override // defpackage.bb4
@@ -83,12 +83,24 @@ public final class db4 implements bb4 {
         return false;
     }
 
-    public final boolean equals(Object obj) {
-        if (!(obj instanceof db4)) {
-            return false;
-        }
-        db4 db4Var = (db4) obj;
-        return this.a == db4Var.a && this.b == db4Var.b && this.c == db4Var.c && this.d == db4Var.d && TextUtils.equals(this.e, db4Var.e) && TextUtils.equals(this.f, db4Var.f) && Objects.equals(this.g, db4Var.g) && Objects.equals(this.h, db4Var.h) && Objects.equals(this.j, db4Var.j);
+    public final boolean equals(Object r4) {
+        if ((r4 instanceof db4) == true) goto L5;
+        return false;
+    L5:
+        db4 r5 = (db4) r4;
+        if (this.a == r5.a) goto L8;
+    L25:
+        return false;
+    L8:
+        if (this.b != r5.b) goto L25;
+        if (this.c != r5.c) goto L25;
+        if (this.d != r5.d) goto L25;
+        if (TextUtils.equals(this.e, r5.e) == false) goto L25;
+        if (TextUtils.equals(this.f, r5.f) == false) goto L25;
+        if (Objects.equals(this.g, r5.g) == false) goto L25;
+        if (Objects.equals(this.h, r5.h) == false) goto L25;
+        if (Objects.equals(this.j, r5.j) == false) goto L25;
+        return true;
     }
 
     @Override // defpackage.bb4
@@ -113,25 +125,31 @@ public final class db4 implements bb4 {
 
     @Override // defpackage.bb4
     public final Bundle h() {
-        Bundle bundle = new Bundle();
-        bundle.putInt(k, this.a);
-        bundle.putInt(l, this.b);
-        bundle.putInt(m, this.c);
-        bundle.putString(n, this.e);
-        bundle.putString(o, this.f);
-        bundle.putBinder(q, this.h);
-        bundle.putParcelable(p, this.g);
-        bundle.putBundle(r, this.i);
-        bundle.putInt(s, this.d);
-        MediaSession.Token token = this.j;
-        if (token != null) {
-            bundle.putParcelable(t, token);
-        }
-        return bundle;
+        Bundle r0 = new Bundle();
+        r0.putInt(k, this.a);
+        r0.putInt(l, this.b);
+        r0.putInt(m, this.c);
+        r0.putString(n, this.e);
+        r0.putString(o, this.f);
+        r0.putBinder(q, this.h);
+        r0.putParcelable(p, this.g);
+        r0.putBundle(r, this.i);
+        r0.putInt(s, this.d);
+        MediaSession.Token r3 = this.j;
+        if (r3 == null) goto L5;
+        r0.putParcelable(t, r3);
+    L5:
+        return r0;
     }
 
     public final int hashCode() {
-        return Objects.hash(Integer.valueOf(this.a), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d), this.e, this.f, this.g, this.h, this.j);
+        Integer r1 = Integer.valueOf(this.a);
+        Integer r2 = Integer.valueOf(this.b);
+        Integer r3 = Integer.valueOf(this.c);
+        Integer r4 = Integer.valueOf(this.d);
+        IBinder r8 = this.h;
+        MediaSession.Token r9 = this.j;
+        return Objects.hash(new Object[]{r1, r2, r3, r4, this.e, this.f, this.g, r8, r9});
     }
 
     @Override // defpackage.bb4

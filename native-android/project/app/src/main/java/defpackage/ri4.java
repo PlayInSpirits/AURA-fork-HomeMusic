@@ -12,49 +12,59 @@ public final /* synthetic */ class ri4 implements a83 {
     public final /* synthetic */ Object b;
     public final /* synthetic */ int c;
 
-    public /* synthetic */ ri4(int i, int i2, Object obj) {
-        this.a = i2;
-        this.b = obj;
-        this.c = i;
+    public /* synthetic */ ri4(int r1, int r2, Object r3) {
+        this.a = r2;
+        this.b = r3;
+        this.c = r1;
     }
 
     @Override // defpackage.a83
-    public final void b(Object obj) {
-        int i = this.a;
-        int i2 = this.c;
-        Object obj2 = this.b;
-        switch (i) {
-            case 0:
-                SongListPageFragment songListPageFragment = (SongListPageFragment) obj2;
-                List list = (List) obj;
-                if (songListPageFragment.l0 != null && i2 == songListPageFragment.s0) {
-                    songListPageFragment.r0 = false;
-                    songListPageFragment.p0.r(list);
-                    songListPageFragment.j0();
-                    songListPageFragment.k0(list);
-                    break;
-                }
-                break;
-            case 1:
-                SongListPageFragment songListPageFragment2 = (SongListPageFragment) obj2;
-                List list2 = (List) obj;
-                if (songListPageFragment2.l0 != null && i2 == songListPageFragment2.s0) {
-                    songListPageFragment2.r0 = false;
-                    songListPageFragment2.p0.r(list2);
-                    songListPageFragment2.j0();
-                    songListPageFragment2.k0(list2);
-                    break;
-                }
-                break;
-            default:
-                b bVar = (b) obj2;
-                List list3 = (List) obj;
-                if (list3 != null && i2 == bVar.F) {
-                    list3.sort(Comparator.comparing(new m7(8), Comparator.nullsFirst(Comparator.naturalOrder())).reversed());
-                    bVar.m.k(list3.subList(0, Math.min(20, list3.size())));
-                    break;
-                }
-                break;
-        }
+    public final void b(Object r4) {
+        int r0 = this.a;
+        int r2 = this.c;
+        Object r3 = this.b;
+        switch(r0) {
+            case 0: goto L17;
+            case 1: goto L10;
+            default: goto L4;
+        };
+    L4:
+        b r5 = (b) r3;
+        List r6 = (List) r4;
+        if (r6 != null) goto L7;
+        return;
+    L7:
+        if (r2 != r5.F) goto L25;
+        r6.sort(Comparator.comparing(new m7(8), Comparator.nullsFirst(Comparator.naturalOrder())).reversed());
+        r5.m.k(r6.subList(0, Math.min(20, r6.size())));
+        return;
+    L25:
+        return;
+    L10:
+        SongListPageFragment r7 = (SongListPageFragment) r3;
+        List r8 = (List) r4;
+        if (r7.l0 != null) goto L13;
+        return;
+    L13:
+        if (r2 != r7.s0) goto L27;
+        r7.r0 = false;
+        r7.p0.r(r8);
+        r7.j0();
+        r7.k0(r8);
+        return;
+    L27:
+        return;
+    L17:
+        SongListPageFragment r9 = (SongListPageFragment) r3;
+        List r10 = (List) r4;
+        if (r9.l0 != null) goto L20;
+        return;
+    L20:
+        if (r2 != r9.s0) goto L29;
+        r9.r0 = false;
+        r9.p0.r(r10);
+        r9.j0();
+        r9.k0(r10);
+        return;
     }
 }

@@ -10,8 +10,8 @@ public abstract class e5 {
     public final Context a;
     public om1 b;
 
-    public e5(Context context) {
-        this.a = context;
+    public e5(Context r1) {
+        this.a = r1;
     }
 
     public boolean a() {
@@ -24,23 +24,23 @@ public abstract class e5 {
 
     public abstract View c();
 
-    public View d(tu2 tu2Var) {
+    public View d(tu2 r1) {
         return c();
     }
 
     public abstract boolean e();
 
-    public void f(en4 en4Var) {
+    public void f(en4 r1) {
     }
 
     public boolean g() {
         return false;
     }
 
-    public void h(om1 om1Var) {
-        if (this.b != null) {
-            Log.w("ActionProvider(support)", "setVisibilityListener: Setting a new ActionProvider.VisibilityListener when one is already set. Are you reusing this " + getClass().getSimpleName() + " instance while it is still in use somewhere else?");
-        }
-        this.b = om1Var;
+    public void h(om1 r3) {
+        if (this.b == null) goto L5;
+        Log.w("ActionProvider(support)", "setVisibilityListener: Setting a new ActionProvider.VisibilityListener when one is already set. Are you reusing this " + getClass().getSimpleName() + " instance while it is still in use somewhere else?");
+    L5:
+        this.b = r3;
     }
 }

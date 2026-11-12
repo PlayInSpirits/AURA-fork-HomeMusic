@@ -10,15 +10,16 @@ public final class vl implements AudioManager.OnAudioFocusChangeListener {
     public final Handler a;
     public final AudioManager.OnAudioFocusChangeListener b;
 
-    public vl(AudioManager.OnAudioFocusChangeListener onAudioFocusChangeListener, Handler handler) {
-        this.b = onAudioFocusChangeListener;
-        Looper looper = handler.getLooper();
-        String str = f35.a;
-        this.a = new Handler(looper, null);
+    public vl(AudioManager.OnAudioFocusChangeListener r2, Handler r3) {
+        this.b = r2;
+        Looper r4 = r3.getLooper();
+        String r5 = f35.a;
+        this.a = new Handler(r4, null);
     }
 
     @Override // android.media.AudioManager.OnAudioFocusChangeListener
-    public final void onAudioFocusChange(int i) {
-        f35.W(this.a, new ul(i, 0, this));
+    public final void onAudioFocusChange(int r3) {
+        ul r0 = new ul(r3, 0, this);
+        f35.W(this.a, r0);
     }
 }

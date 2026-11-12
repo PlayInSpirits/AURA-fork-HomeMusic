@@ -4,15 +4,20 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class yi1 extends a13 {
     @Override // defpackage.a13
-    public final a13 C(if1 if1Var, if1 if1Var2) {
-        return (a13) ((ch4) jh4.e(new ih4(new cd(2, if1Var, if1Var2), 0)));
+    public final a13 C(if1 r2, if1 r3) {
+        return (a13) ((ch4) jh4.e(new ih4(new cd(2, r2, r3), 0)));
     }
 
     @Override // defpackage.a13, defpackage.ch4
     public final void c() {
-        synchronized (jh4.c) {
-            o();
-        }
+        Object r0 = jh4.c;
+        monitor-enter(r0);
+        o();     // Catch: Throwable -> L7
+        monitor-exit(r0);
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.a13, defpackage.ch4
@@ -33,8 +38,8 @@ public final class yi1 extends a13 {
     }
 
     @Override // defpackage.a13, defpackage.ch4
-    public final ch4 u(if1 if1Var) {
-        return (uu3) ((ch4) jh4.e(new ih4(new kv(1, if1Var), 0)));
+    public final ch4 u(if1 r2) {
+        return (uu3) ((ch4) jh4.e(new ih4(new kv(1, r2), 0)));
     }
 
     @Override // defpackage.a13

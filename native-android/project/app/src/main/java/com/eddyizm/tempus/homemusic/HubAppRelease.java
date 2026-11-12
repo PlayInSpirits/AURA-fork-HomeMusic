@@ -15,6 +15,9 @@ public final class HubAppRelease {
     private long versionCode;
     private String versionName;
 
+    public HubAppRelease() {
+    }
+
     public final HubUpdateFile getFull() {
         return this.full;
     }
@@ -47,35 +50,35 @@ public final class HubAppRelease {
         return this.versionName;
     }
 
-    public final void setFull(HubUpdateFile hubUpdateFile) {
-        this.full = hubUpdateFile;
+    public final void setFull(HubUpdateFile r1) {
+        this.full = r1;
     }
 
-    public final void setNotes(String str) {
-        this.notes = str;
+    public final void setNotes(String r1) {
+        this.notes = r1;
     }
 
-    public final void setPatches(List<HubUpdatePatch> list) {
-        this.patches = list;
+    public final void setPatches(List<HubUpdatePatch> r1) {
+        this.patches = r1;
     }
 
-    public final void setSha256(String str) {
-        this.sha256 = str;
+    public final void setSha256(String r1) {
+        this.sha256 = r1;
     }
 
-    public final void setSize(long j) {
-        this.size = j;
+    public final void setSize(long r1) {
+        this.size = r1;
     }
 
-    public final void setUrl(String str) {
-        this.url = str;
+    public final void setUrl(String r1) {
+        this.url = r1;
     }
 
-    public final void setVersionCode(long j) {
-        this.versionCode = j;
+    public final void setVersionCode(long r1) {
+        this.versionCode = r1;
     }
 
-    public final void setVersionName(String str) {
-        this.versionName = str;
+    public final void setVersionName(String r1) {
+        this.versionName = r1;
     }
 }

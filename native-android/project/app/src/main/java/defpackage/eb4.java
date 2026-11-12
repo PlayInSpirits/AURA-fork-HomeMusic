@@ -10,12 +10,12 @@ import java.util.Objects;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class eb4 implements bb4 {
-    public static final String f;
-    public static final String g;
-    public static final String h;
-    public static final String i;
-    public static final String j;
-    public static final String k;
+    public static final String f = null;
+    public static final String g = null;
+    public static final String h = null;
+    public static final String i = null;
+    public static final String j = null;
+    public static final String k = null;
     public final int a;
     public final int b;
     public final ComponentName c;
@@ -23,7 +23,7 @@ public final class eb4 implements bb4 {
     public final Bundle e;
 
     static {
-        String str = f35.a;
+        String r0 = f35.a;
         f = Integer.toString(0, 36);
         g = Integer.toString(1, 36);
         h = Integer.toString(2, 36);
@@ -32,15 +32,25 @@ public final class eb4 implements bb4 {
         k = Integer.toString(5, 36);
     }
 
-    public eb4(ComponentName componentName, int i2) {
-        String packageName = componentName.getPackageName();
-        Bundle bundle = Bundle.EMPTY;
-        rr2.l((Build.MANUFACTURER.equals("samsung") && Build.VERSION.SDK_INT == 36) || !TextUtils.isEmpty(packageName));
-        this.a = i2;
+    public eb4(ComponentName r5, int r6) {
+        String r0 = r5.getPackageName();
+        Bundle r1 = Bundle.EMPTY;
+        if (Build.MANUFACTURER.equals("samsung") == false) goto L7;
+        if (Build.VERSION.SDK_INT != 36) goto L7;
+    L8:
+        boolean r2 = true;
+    L10:
+        rr2.l(r2);
+        this.a = r6;
         this.b = 101;
-        this.c = componentName;
-        this.d = packageName;
-        this.e = bundle;
+        this.c = r5;
+        this.d = r0;
+        this.e = r1;
+        return;
+    L7:
+        if (TextUtils.isEmpty(r0) == false) goto L8;
+        r2 = false;
+        goto L10
     }
 
     @Override // defpackage.bb4
@@ -60,8 +70,11 @@ public final class eb4 implements bb4 {
 
     @Override // defpackage.bb4
     public final String d() {
-        ComponentName componentName = this.c;
-        return componentName == null ? "" : componentName.getClassName();
+        ComponentName r0 = this.c;
+        if (r0 != null) goto L7;
+        return "";
+    L7:
+        return r0.getClassName();
     }
 
     @Override // defpackage.bb4
@@ -69,23 +82,23 @@ public final class eb4 implements bb4 {
         return true;
     }
 
-    public final boolean equals(Object obj) {
-        if (!(obj instanceof eb4)) {
-            return false;
-        }
-        eb4 eb4Var = (eb4) obj;
-        int i2 = eb4Var.b;
-        int i3 = this.b;
-        if (i3 != i2) {
-            return false;
-        }
-        if (i3 == 100) {
-            return true;
-        }
-        if (i3 != 101) {
-            return false;
-        }
-        return Objects.equals(this.c, eb4Var.c);
+    public final boolean equals(Object r3) {
+        if ((r3 instanceof eb4) == false) goto L18;
+        eb4 r4 = (eb4) r3;
+        int r0 = r4.b;
+        int r1 = this.b;
+        if (r1 == r0) goto L9;
+        return false;
+    L9:
+        if (r1 != 100) goto L11;
+        return true;
+    L11:
+        if (r1 == 101) goto L15;
+        return false;
+    L15:
+        return Objects.equals(this.c, r4.c);
+    L18:
+        return false;
     }
 
     @Override // defpackage.bb4
@@ -105,23 +118,26 @@ public final class eb4 implements bb4 {
 
     @Override // defpackage.bb4
     public final int getType() {
-        return this.b != 101 ? 0 : 2;
+        if (this.b == 101) goto L6;
+        return 0;
+    L6:
+        return 2;
     }
 
     @Override // defpackage.bb4
     public final Bundle h() {
-        Bundle bundle = new Bundle();
-        bundle.putBundle(f, null);
-        bundle.putInt(g, this.a);
-        bundle.putInt(h, this.b);
-        bundle.putParcelable(i, this.c);
-        bundle.putString(j, this.d);
-        bundle.putBundle(k, this.e);
-        return bundle;
+        Bundle r0 = new Bundle();
+        r0.putBundle(f, null);
+        r0.putInt(g, this.a);
+        r0.putInt(h, this.b);
+        r0.putParcelable(i, this.c);
+        r0.putString(j, this.d);
+        r0.putBundle(k, this.e);
+        return r0;
     }
 
     public final int hashCode() {
-        return Objects.hash(Integer.valueOf(this.b), this.c, null);
+        return Objects.hash(new Object[]{Integer.valueOf(this.b), this.c, null});
     }
 
     @Override // defpackage.bb4

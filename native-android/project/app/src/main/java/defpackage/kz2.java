@@ -16,41 +16,53 @@ public final class kz2 extends rp {
         this.b = te5.i();
         this.c = new ArrayList();
         this.d = new w03();
-        z zVar = new z(8, this);
+        z r0 = new z(8, this);
         jh4.e(jh4.a);
-        synchronized (jh4.c) {
-            jh4.h = q40.F0(zVar, jh4.h);
-        }
-        this.e = new ss2(18, zVar);
+        Object r1 = jh4.c;
+        monitor-enter(r1);
+        jh4.h = q40.F0(r0, jh4.h);     // Catch: Throwable -> L8
+        monitor-exit(r1);
+        this.e = new ss2(18, r0);
+        return;
+    L8:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.rp
-    public final void e(y94 y94Var) {
-        this.c.add(new iz2(y94Var));
+    public final void e(y94 r2) {
+        iz2 r0 = new iz2(r2);
+        this.c.add(r0);
     }
 
     @Override // defpackage.rp
     public final void f() {
-        synchronized (this.a) {
-            try {
-                ArrayList arrayList = this.c;
-                int size = arrayList.size();
-                for (int i = 0; i < size; i++) {
-                    jz2 jz2Var = (jz2) arrayList.get(i);
-                    if (jz2Var instanceof hz2) {
-                        te5.b(this.b, ((hz2) jz2Var).a, ((hz2) jz2Var).b);
-                    } else {
-                        if (!(jz2Var instanceof iz2)) {
-                            throw new NoWhenBranchMatchedException();
-                        }
-                        te5.J(this.b, ((iz2) jz2Var).a);
-                    }
-                }
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+        Object r0 = this.a;
+        monitor-enter(r0);
+        ArrayList r1 = this.c;     // Catch: Throwable -> L9
+        int r2 = r1.size();     // Catch: Throwable -> L9
+        int r3 = 0;
+    L5:
+        if (r3 >= r2) goto L17;
+        jz2 r4 = (jz2) r1.get(r3);     // Catch: Throwable -> L9
+        if ((r4 instanceof hz2) == false) goto L12;
+        te5.b(this.b, ((hz2) r4).a, ((hz2) r4).b);     // Catch: Throwable -> L9
+    L14:
+        r3 = r3 + 1;     // Catch: Throwable -> L9
+        goto L5
+    L12:
+        if ((r4 instanceof iz2) == false) goto L16;
+        te5.J(this.b, ((iz2) r4).a);     // Catch: Throwable -> L9
+        goto L14
+    L16:
+        throw new NoWhenBranchMatchedException();     // Catch: Throwable -> L9
+    L17:
+        monitor-exit(r0);
         this.c.clear();
+        return;
+    L9:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.rp
@@ -58,33 +70,38 @@ public final class kz2 extends rp {
         this.e.d();
         this.c.clear();
         this.d.a();
-        synchronized (this.a) {
-            this.b.a();
-        }
+        Object r0 = this.a;
+        monitor-enter(r0);
+        this.b.a();     // Catch: Throwable -> L7
+        monitor-exit(r0);
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.rp
-    public final if1 m(y94 y94Var) {
-        w03 w03Var = this.d;
-        if1 oVar = (if1) w03Var.g(y94Var);
-        if (oVar == null) {
-            oVar = new o(19, this, y94Var);
-            int iF = w03Var.f(y94Var);
-            if (iF < 0) {
-                iF = ~iF;
-            }
-            Object[] objArr = w03Var.c;
-            Object obj = objArr[iF];
-            w03Var.b[iF] = y94Var;
-            objArr[iF] = oVar;
-        }
-        return oVar;
+    public final if1 m(y94 r5) {
+        w03 r0 = this.d;
+        if1 r1 = (if1) r0.g(r5);
+        if (r1 != null) goto L8;
+        r1 = new o(19, this, r5);
+        int r4 = r0.f(r5);
+        if (r4 >= 0) goto L7;
+        r4 = ~r4;
+    L7:
+        Object[] r2 = r0.c;
+        Object r3 = r2[r4];
+        r0.b[r4] = r5;
+        r2[r4] = r1;
+    L8:
+        return r1;
     }
 
     @Override // defpackage.rp
-    public final void n(y00 y00Var) {
-        this.d.j(y00Var);
-        e(y00Var);
+    public final void n(y00 r2) {
+        this.d.j(r2);
+        e(r2);
         f();
     }
 }

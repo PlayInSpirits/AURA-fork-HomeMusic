@@ -9,8 +9,8 @@ public final class jb1 extends wd0 {
     public int q;
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.p = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.p = r2;
         this.q |= Integer.MIN_VALUE;
         return xl.f(null, null, this);
     }

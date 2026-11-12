@@ -28,6 +28,7 @@ public final class d9 {
     public final int D;
     public final boolean E;
     public final b9 F;
+    public final i4 G;
     public final Context a;
     public final f9 b;
     public final Window c;
@@ -35,6 +36,7 @@ public final class d9 {
     public CharSequence e;
     public AlertController$RecycleListView f;
     public View g;
+    public boolean h;
     public Button i;
     public CharSequence j;
     public Message k;
@@ -51,81 +53,91 @@ public final class d9 {
     public TextView v;
     public View w;
     public ListAdapter x;
+    public int y;
     public final int z;
-    public boolean h = false;
-    public int y = -1;
-    public final i4 G = new i4(2, this);
 
-    public d9(Context context, f9 f9Var, Window window) {
-        this.a = context;
-        this.b = f9Var;
-        this.c = window;
-        b9 b9Var = new b9();
-        b9Var.b = new WeakReference(f9Var);
-        this.F = b9Var;
-        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(null, st3.e, R.attr.alertDialogStyle, 0);
-        this.z = typedArrayObtainStyledAttributes.getResourceId(0, 0);
-        typedArrayObtainStyledAttributes.getResourceId(2, 0);
-        this.A = typedArrayObtainStyledAttributes.getResourceId(4, 0);
-        this.B = typedArrayObtainStyledAttributes.getResourceId(5, 0);
-        this.C = typedArrayObtainStyledAttributes.getResourceId(7, 0);
-        this.D = typedArrayObtainStyledAttributes.getResourceId(3, 0);
-        this.E = typedArrayObtainStyledAttributes.getBoolean(6, true);
-        typedArrayObtainStyledAttributes.getDimensionPixelSize(1, 0);
-        typedArrayObtainStyledAttributes.recycle();
-        f9Var.e().i(1);
+    public d9(Context r5, f9 r6, Window r7) {
+        this.h = false;
+        this.y = -1;
+        this.G = new i4(2, this);
+        this.a = r5;
+        this.b = r6;
+        this.c = r7;
+        b9 r8 = new b9();
+        r8.b = new WeakReference(r6);
+        this.F = r8;
+        TypedArray r9 = r5.obtainStyledAttributes(null, st3.e, R.attr.alertDialogStyle, 0);
+        this.z = r9.getResourceId(0, 0);
+        r9.getResourceId(2, 0);
+        this.A = r9.getResourceId(4, 0);
+        this.B = r9.getResourceId(5, 0);
+        this.C = r9.getResourceId(7, 0);
+        this.D = r9.getResourceId(3, 0);
+        this.E = r9.getBoolean(6, true);
+        r9.getDimensionPixelSize(1, 0);
+        r9.recycle();
+        r6.e().i(1);
     }
 
-    public static boolean a(View view) {
-        if (view.onCheckIsTextEditor()) {
-            return true;
-        }
-        if (!(view instanceof ViewGroup)) {
-            return false;
-        }
-        ViewGroup viewGroup = (ViewGroup) view;
-        int childCount = viewGroup.getChildCount();
-        while (childCount > 0) {
-            childCount--;
-            if (a(viewGroup.getChildAt(childCount))) {
-                return true;
-            }
-        }
+    public static boolean a(View r4) {
+        if (r4.onCheckIsTextEditor() == false) goto L6;
+        return true;
+    L6:
+        if ((r4 instanceof ViewGroup) == true) goto L8;
+        return false;
+    L8:
+        ViewGroup r5 = (ViewGroup) r4;
+        int r0 = r5.getChildCount();
+    L9:
+        if (r0 <= 0) goto L13;
+        r0 = r0 - 1;
+        if (a(r5.getChildAt(r0)) == false) goto L9;
+        return true;
+    L13:
         return false;
     }
 
-    public static ViewGroup b(View view, View view2) {
-        if (view == null) {
-            if (view2 instanceof ViewStub) {
-                view2 = ((ViewStub) view2).inflate();
-            }
-            return (ViewGroup) view2;
-        }
-        if (view2 != null) {
-            ViewParent parent = view2.getParent();
-            if (parent instanceof ViewGroup) {
-                ((ViewGroup) parent).removeView(view2);
-            }
-        }
-        if (view instanceof ViewStub) {
-            view = ((ViewStub) view).inflate();
-        }
-        return (ViewGroup) view;
+    public static ViewGroup b(View r2, View r3) {
+        if (r2 == null) goto L4;
+        if (r3 == null) goto L13;
+        ViewParent r0 = r3.getParent();
+        if ((r0 instanceof ViewGroup) == false) goto L13;
+        ((ViewGroup) r0).removeView(r3);
+    L13:
+        if ((r2 instanceof ViewStub) == false) goto L16;
+        r2 = ((ViewStub) r2).inflate();
+    L16:
+        return (ViewGroup) r2;
+    L4:
+        if ((r3 instanceof ViewStub) == false) goto L7;
+        r3 = ((ViewStub) r3).inflate();
+    L7:
+        return (ViewGroup) r3;
     }
 
-    public final void c(int i, CharSequence charSequence, DialogInterface.OnClickListener onClickListener) {
-        Message messageObtainMessage = onClickListener != null ? this.F.obtainMessage(i, onClickListener) : null;
-        if (i == -3) {
-            this.p = charSequence;
-            this.q = messageObtainMessage;
-        } else if (i == -2) {
-            this.m = charSequence;
-            this.n = messageObtainMessage;
-        } else if (i != -1) {
-            kf2.n("Button does not exist");
-        } else {
-            this.j = charSequence;
-            this.k = messageObtainMessage;
-        }
+    public final void c(int r2, CharSequence r3, DialogInterface.OnClickListener r4) {
+        if (r4 == null) goto L4;
+        Message r5 = this.F.obtainMessage(r2, r4);
+    L6:
+        if (r2 != (-3)) goto L8;
+        this.p = r3;
+        this.q = r5;
+        return;
+    L8:
+        if (r2 != (-2)) goto L10;
+        this.m = r3;
+        this.n = r5;
+        return;
+    L10:
+        if (r2 != (-1)) goto L13;
+        this.j = r3;
+        this.k = r5;
+        return;
+    L13:
+        kf2.n("Button does not exist");
+        return;
+    L4:
+        r5 = null;
+        goto L6
     }
 }

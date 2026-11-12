@@ -9,5 +9,5 @@ import java.util.concurrent.Executor;
 public interface yf0 {
     boolean isAvailableOnDevice();
 
-    void onGetCredential(Context context, kh1 kh1Var, CancellationSignal cancellationSignal, Executor executor, vf0 vf0Var);
+    void onGetCredential(Context r1, kh1 r2, CancellationSignal r3, Executor r4, vf0 r5);
 }

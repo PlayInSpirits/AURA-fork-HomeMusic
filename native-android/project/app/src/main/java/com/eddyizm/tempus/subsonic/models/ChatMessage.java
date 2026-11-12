@@ -8,6 +8,9 @@ public final class ChatMessage {
     private long time;
     private String username;
 
+    public ChatMessage() {
+    }
+
     public final String getMessage() {
         return this.message;
     }
@@ -20,15 +23,15 @@ public final class ChatMessage {
         return this.username;
     }
 
-    public final void setMessage(String str) {
-        this.message = str;
+    public final void setMessage(String r1) {
+        this.message = r1;
     }
 
-    public final void setTime(long j) {
-        this.time = j;
+    public final void setTime(long r1) {
+        this.time = r1;
     }
 
-    public final void setUsername(String str) {
-        this.username = str;
+    public final void setUsername(String r1) {
+        this.username = r1;
     }
 }

@@ -6,9 +6,9 @@ public final class l22 extends o15 {
     public final Object o;
     public boolean p;
 
-    public l22(Object obj) {
+    public l22(Object r2) {
         super(0);
-        this.o = obj;
+        this.o = r2;
     }
 
     @Override // java.util.Iterator
@@ -18,11 +18,11 @@ public final class l22 extends o15 {
 
     @Override // java.util.Iterator
     public final Object next() {
-        if (this.p) {
-            tb4.k();
-            return null;
-        }
+        if (this.p == true) goto L6;
         this.p = true;
         return this.o;
+    L6:
+        tb4.k();
+        return null;
     }
 }

@@ -2,7 +2,6 @@ package defpackage;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,71 +12,24 @@ public final class zm3 extends cx3 {
     public final z40 u;
     public final /* synthetic */ zd0 v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public zm3(zd0 zd0Var, z40 z40Var) {
-        this.v = zd0Var;
-        ConstraintLayout constraintLayout = (ConstraintLayout) z40Var.n;
-        super(constraintLayout);
-        this.u = z40Var;
-        final int i = 1;
-        ((TextView) z40Var.r).setSelected(true);
-        ((TextView) z40Var.p).setSelected(true);
-        final int i2 = 0;
-        constraintLayout.setOnClickListener(new View.OnClickListener(this) { // from class: ym3
-            public final /* synthetic */ zm3 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view) {
-                int i3 = i2;
-                zm3 zm3Var = this.o;
-                switch (i3) {
-                    case 0:
-                        Bundle bundle = new Bundle();
-                        zd0 zd0Var2 = zm3Var.v;
-                        bundle.putParcelable("PODCAST_CHANNEL_OBJECT", (Parcelable) zd0Var2.r.get(zm3Var.c()));
-                        ((gp1) zd0Var2.s).onPodcastChannelClick(bundle);
-                        break;
-                    default:
-                        zm3Var.s();
-                        break;
-                }
-            }
-        });
-        constraintLayout.setOnLongClickListener(new q6(17, this));
-        ((ImageView) z40Var.q).setOnClickListener(new View.OnClickListener(this) { // from class: ym3
-            public final /* synthetic */ zm3 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view) {
-                int i3 = i;
-                zm3 zm3Var = this.o;
-                switch (i3) {
-                    case 0:
-                        Bundle bundle = new Bundle();
-                        zd0 zd0Var2 = zm3Var.v;
-                        bundle.putParcelable("PODCAST_CHANNEL_OBJECT", (Parcelable) zd0Var2.r.get(zm3Var.c()));
-                        ((gp1) zd0Var2.s).onPodcastChannelClick(bundle);
-                        break;
-                    default:
-                        zm3Var.s();
-                        break;
-                }
-            }
-        });
+    public zm3(zd0 r4, z40 r5) {
+        this.v = r4;
+        ConstraintLayout r6 = (ConstraintLayout) r5.n;
+        super(r6);
+        this.u = r5;
+        final int r1 = 1;
+        ((TextView) r5.r).setSelected(true);
+        ((TextView) r5.p).setSelected(true);
+        final int r2 = 0;
+        r6.setOnClickListener(new ym3(this, r2));
+        r6.setOnLongClickListener(new q6(17, this));
+        ((ImageView) r5.q).setOnClickListener(new ym3(this, r1));
     }
 
     public final void s() {
-        Bundle bundle = new Bundle();
-        zd0 zd0Var = this.v;
-        bundle.putParcelable("PODCAST_CHANNEL_OBJECT", (Parcelable) zd0Var.r.get(c()));
-        ((gp1) zd0Var.s).onPodcastChannelLongClick(bundle);
+        Bundle r0 = new Bundle();
+        zd0 r1 = this.v;
+        r0.putParcelable("PODCAST_CHANNEL_OBJECT", (Parcelable) r1.r.get(c()));
+        ((gp1) r1.s).onPodcastChannelLongClick(r0);
     }
 }

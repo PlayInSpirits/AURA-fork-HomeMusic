@@ -8,8 +8,8 @@ import java.util.UUID;
 public final class f21 implements pw0 {
     public final DrmSession$DrmSessionException a;
 
-    public f21(DrmSession$DrmSessionException drmSession$DrmSessionException) {
-        this.a = drmSession$DrmSessionException;
+    public f21(DrmSession$DrmSessionException r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.pw0
@@ -23,15 +23,15 @@ public final class f21 implements pw0 {
     }
 
     @Override // defpackage.pw0
-    public final void d(sw0 sw0Var) {
+    public final void d(sw0 r1) {
     }
 
     @Override // defpackage.pw0
-    public final void e(sw0 sw0Var) {
+    public final void e(sw0 r1) {
     }
 
     @Override // defpackage.pw0
-    public final boolean f(String str) {
+    public final boolean f(String r1) {
         return false;
     }
 

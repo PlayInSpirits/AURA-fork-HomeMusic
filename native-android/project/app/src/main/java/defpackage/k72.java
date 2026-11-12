@@ -11,130 +11,149 @@ public final class k72 implements vi2 {
     public final /* synthetic */ int d;
     public final /* synthetic */ vi2 e;
 
-    public /* synthetic */ k72(vi2 vi2Var, o72 o72Var, int i, vi2 vi2Var2, int i2) {
-        this.a = i2;
-        this.c = o72Var;
-        this.d = i;
-        this.e = vi2Var2;
-        this.b = vi2Var;
+    public /* synthetic */ k72(vi2 r1, o72 r2, int r3, vi2 r4, int r5) {
+        this.a = r5;
+        this.c = r2;
+        this.d = r3;
+        this.e = r4;
+        this.b = r1;
     }
 
     @Override // defpackage.vi2
     public final Map a() {
-        switch (this.a) {
-            case 0:
-                break;
-        }
+        switch(this.a) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return this.b.a();
+    L7:
         return this.b.a();
     }
 
     @Override // defpackage.vi2
     public final int b() {
-        switch (this.a) {
-            case 0:
-                break;
-        }
+        switch(this.a) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return this.b.b();
+    L7:
         return this.b.b();
     }
 
-    /* JADX WARN: Code duplicated, block: B:29:0x0089 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:30:0x008b A[LOOP:0: B:11:0x002f->B:30:0x008b, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:34:0x008e A[SYNTHETIC] */
     @Override // defpackage.vi2
     public final void c() {
-        int i = this.a;
-        vi2 vi2Var = this.e;
-        int i2 = this.d;
-        o72 o72Var = this.c;
-        switch (i) {
-            case 0:
-                o72Var.r = i2;
-                vi2Var.c();
-                f13 f13Var = o72Var.z;
-                w03 w03Var = o72Var.y;
-                long[] jArr = w03Var.a;
-                int length = jArr.length - 2;
-                if (length >= 0) {
-                    int i3 = 0;
-                    while (true) {
-                        long j = jArr[i3];
-                        if ((((~j) << 7) & j & (-9187201950435737472L)) != -9187201950435737472L) {
-                            int i4 = 8 - ((~(i3 - length)) >>> 31);
-                            for (int i5 = 0; i5 < i4; i5++) {
-                                if ((255 & j) < 128) {
-                                    int i6 = (i3 << 3) + i5;
-                                    Object obj = w03Var.b[i6];
-                                    jn4 jn4Var = (jn4) w03Var.c[i6];
-                                    int i7 = f13Var.i(obj);
-                                    if (i7 < 0 || i7 >= o72Var.r) {
-                                        if (i7 >= 0) {
-                                            Object[] objArr = f13Var.n;
-                                            Object obj2 = objArr[i7];
-                                            objArr[i7] = gn4.b;
-                                        }
-                                        if (o72Var.w.b(obj)) {
-                                            jn4Var.a();
-                                        }
-                                        w03Var.k(i6);
-                                    }
-                                }
-                                j >>= 8;
-                            }
-                            if (i4 == 8) {
-                                if (i3 != length) {
-                                    i3++;
-                                }
-                            }
-                        } else if (i3 != length) {
-                            i3++;
-                        }
-                    }
-                }
-                o72Var.g(o72Var.q);
-                break;
-            default:
-                o72Var.q = i2;
-                vi2Var.c();
-                if (o72Var.n.u == null) {
-                    o72Var.g(o72Var.q);
-                }
-                break;
-        }
+        int r1 = this.a;
+        vi2 r2 = this.e;
+        int r3 = this.d;
+        o72 r0 = this.c;
+        switch(r1) {
+            case 0: goto L8;
+            default: goto L4;
+        };
+    L4:
+        r0.q = r3;
+        r2.c();
+        if (r0.n.u != null) goto L39;
+        r0.g(r0.q);
+        return;
+    L39:
+        return;
+    L8:
+        r0.r = r3;
+        r2.c();
+        f13 r4 = r0.z;
+        w03 r5 = r0.y;
+        long[] r6 = r5.a;
+        int r7 = r6.length - 2;
+        if (r7 < 0) goto L31;
+        int r8 = 0;
+    L11:
+        long r9 = r6[r8];
+        if (((((~r9) << 7) & r9) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L29;
+        int r10 = 8 - ((~(r8 - r7)) >>> 31);
+        int r11 = 0;
+    L14:
+        if (r11 >= r10) goto L28;
+        if ((255 & r9) >= 128) goto L27;
+        int r12 = (r8 << 3) + r11;
+        Object r13 = r5.b[r12];
+        jn4 r14 = (jn4) r5.c[r12];
+        int r15 = r4.i(r13);
+        if (r15 >= 0) goto L20;
+    L21:
+        if (r15 < 0) goto L24;
+        Object[] r16 = r4.n;
+        Object r17 = r16[r15];
+        r16[r15] = gn4.b;
+    L24:
+        if (r0.w.b(r13) == false) goto L26;
+        r14.a();
+    L26:
+        r5.k(r12);
+        goto L27
+    L20:
+        if (r15 >= r0.r) goto L21;
+    L27:
+        r9 = r9 >> 8;
+        r11 = r11 + 1;
+        goto L14
+    L28:
+        if (r10 != 8) goto L31;
+    L29:
+        if (r8 == r7) goto L31;
+        r8 = r8 + 1;
+    L31:
+        r0.g(r0.q);
     }
 
     @Override // defpackage.vi2
     public final int d() {
-        switch (this.a) {
-            case 0:
-                break;
-        }
+        switch(this.a) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return this.b.d();
+    L7:
         return this.b.d();
     }
 
     @Override // defpackage.vi2
     public final if1 e() {
-        switch (this.a) {
-            case 0:
-                break;
-        }
+        switch(this.a) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return this.b.e();
+    L7:
         return this.b.e();
     }
 
     @Override // defpackage.vi2
     public final wf1 f() {
-        switch (this.a) {
-            case 0:
-                break;
-        }
+        switch(this.a) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return this.b.f();
+    L7:
         return this.b.f();
     }
 
     @Override // defpackage.vi2
     public final if1 g() {
-        switch (this.a) {
-            case 0:
-                break;
-        }
+        switch(this.a) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return this.b.g();
+    L7:
         return this.b.g();
     }
 }

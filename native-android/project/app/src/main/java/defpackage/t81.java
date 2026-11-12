@@ -11,8 +11,8 @@ public final class t81 extends wd0 {
     public int s;
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.r = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.r = r2;
         this.s |= Integer.MIN_VALUE;
         return jz4.q(null, null, false, this);
     }

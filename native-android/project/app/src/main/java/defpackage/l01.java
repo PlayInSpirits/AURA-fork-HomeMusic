@@ -11,62 +11,90 @@ import android.widget.EditText;
 public final class l01 implements TextWatcher {
     public final EditText n;
     public k01 o;
-    public boolean p = true;
+    public boolean p;
 
-    public l01(EditText editText) {
-        this.n = editText;
+    public l01(EditText r1) {
+        this.n = r1;
+        this.p = true;
     }
 
-    public static void a(EditText editText, int i) {
-        int length;
-        if (i == 1 && editText != null && editText.isAttachedToWindow()) {
-            Editable editableText = editText.getEditableText();
-            int selectionStart = Selection.getSelectionStart(editableText);
-            int selectionEnd = Selection.getSelectionEnd(editableText);
-            tz0 tz0VarA = tz0.a();
-            if (editableText == null) {
-                length = 0;
-            } else {
-                tz0VarA.getClass();
-                length = editableText.length();
-            }
-            tz0VarA.f(0, length, 0, editableText);
-            if (selectionStart >= 0 && selectionEnd >= 0) {
-                Selection.setSelection(editableText, selectionStart, selectionEnd);
-            } else if (selectionStart >= 0) {
-                Selection.setSelection(editableText, selectionStart);
-            } else if (selectionEnd >= 0) {
-                Selection.setSelection(editableText, selectionEnd);
-            }
-        }
+    public static void a(EditText r4, int r5) {
+        if (r5 != 1) goto L22;
+        if (r4 != null) goto L6;
+        return;
+    L6:
+        if (r4.isAttachedToWindow() == false) goto L24;
+        Editable r6 = r4.getEditableText();
+        int r7 = Selection.getSelectionStart(r6);
+        int r0 = Selection.getSelectionEnd(r6);
+        tz0 r1 = tz0.a();
+        if (r6 != null) goto L10;
+        int r3 = 0;
+    L11:
+        r1.f(0, r3, 0, r6);
+        if (r7 < 0) goto L16;
+        if (r0 < 0) goto L16;
+        Selection.setSelection(r6, r7, r0);
+        return;
+    L16:
+        if (r7 < 0) goto L19;
+        Selection.setSelection(r6, r7);
+        return;
+    L19:
+        if (r0 < 0) goto L25;
+        Selection.setSelection(r6, r0);
+        return;
+    L25:
+        return;
+    L10:
+        r1.getClass();
+        r3 = r6.length();
+        goto L11
+    L24:
+        return;
     }
 
     @Override // android.text.TextWatcher
-    public final void afterTextChanged(Editable editable) {
+    public final void afterTextChanged(Editable r1) {
     }
 
     @Override // android.text.TextWatcher
-    public final void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+    public final void beforeTextChanged(CharSequence r1, int r2, int r3, int r4) {
     }
 
     @Override // android.text.TextWatcher
-    public final void onTextChanged(CharSequence charSequence, int i, int i2, int i3) throws Throwable {
-        EditText editText = this.n;
-        if (!editText.isInEditMode() && this.p && tz0.c() && i2 <= i3 && (charSequence instanceof Spannable)) {
-            int iB = tz0.a().b();
-            if (iB != 0) {
-                if (iB == 1) {
-                    tz0.a().f(i, i3 + i, 0, (Spannable) charSequence);
-                    return;
-                } else if (iB != 3) {
-                    return;
-                }
-            }
-            tz0 tz0VarA = tz0.a();
-            if (this.o == null) {
-                this.o = new k01(editText);
-            }
-            tz0VarA.g(this.o);
-        }
+    public final void onTextChanged(CharSequence r3, int r4, int r5, int r6) {
+        EditText r0 = this.n;
+        if (r0.isInEditMode() == false) goto L5;
+        return;
+    L5:
+        if (this.p == true) goto L7;
+        return;
+    L7:
+        if (tz0.c() == false) goto L30;
+        if (r5 <= r6) goto L11;
+        return;
+    L11:
+        if ((r3 instanceof Spannable) == false) goto L29;
+        int r7 = tz0.a().b();
+        if (r7 != 0) goto L15;
+    L21:
+        tz0 r8 = tz0.a();
+        if (this.o != null) goto L24;
+        this.o = new k01(r0);
+    L24:
+        r8.g(this.o);
+        return;
+    L15:
+        if (r7 != 1) goto L17;
+        tz0 r2 = tz0.a();
+        int r9 = r6 + r4;
+        r2.f(r4, r9, 0, (Spannable) r3);
+        return;
+    L17:
+        if (r7 == 3) goto L21;
+        return;
+    L29:
+        return;
     }
 }

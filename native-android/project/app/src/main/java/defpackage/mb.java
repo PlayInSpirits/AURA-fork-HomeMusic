@@ -5,14 +5,18 @@ package defpackage;
 public final class mb {
     public final int a;
 
-    public /* synthetic */ mb(int i) {
-        this.a = i;
+    public /* synthetic */ mb(int r1) {
+        this.a = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof mb) {
-            return this.a == ((mb) obj).a;
-        }
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof mb) == false) goto L11;
+        int r3 = ((mb) r2).a;
+        if (this.a == r3) goto L9;
+        return false;
+    L9:
+        return true;
+    L11:
         return false;
     }
 

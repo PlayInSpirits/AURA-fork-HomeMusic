@@ -5,8 +5,8 @@ package defpackage;
 public final class pa3 extends g12 {
     public final Throwable i;
 
-    public pa3(Throwable th) {
-        this.i = th;
+    public pa3(Throwable r1) {
+        this.i = r1;
     }
 
     public final String toString() {

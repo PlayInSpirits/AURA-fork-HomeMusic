@@ -34,345 +34,398 @@ public final class q24 {
     public boolean q;
     public final boolean r;
 
-    public q24(Context context, Class cls, String str) {
-        context.getClass();
+    public q24(Context r3, Class r4, String r5) {
+        r3.getClass();
         this.d = new ArrayList();
         this.e = new ArrayList();
         this.j = r24.n;
-        this.k = -1L;
+        this.k = -1;
         this.l = new pz1(19);
         this.m = new LinkedHashSet();
         this.n = new LinkedHashSet();
         this.o = new ArrayList();
         this.p = true;
         this.r = true;
-        this.a = kx3.a(cls);
-        this.b = context;
-        this.c = str;
+        this.a = kx3.a(r4);
+        this.b = r3;
+        this.c = r5;
     }
 
-    public final void a(jw2... jw2VarArr) {
-        for (jw2 jw2Var : jw2VarArr) {
-            Integer numValueOf = Integer.valueOf(jw2Var.a);
-            LinkedHashSet linkedHashSet = this.n;
-            linkedHashSet.add(numValueOf);
-            linkedHashSet.add(Integer.valueOf(jw2Var.b));
-        }
-        jw2[] jw2VarArr2 = (jw2[]) Arrays.copyOf(jw2VarArr, jw2VarArr.length);
-        pz1 pz1Var = this.l;
-        pz1Var.getClass();
-        for (jw2 jw2Var2 : jw2VarArr2) {
-            pz1Var.n(jw2Var2);
-        }
+    public final void a(jw2... r7) {
+        int r0 = r7.length;
+        int r1 = 0;
+        int r2 = 0;
+    L3:
+        if (r2 >= r0) goto L5;
+        jw2 r3 = r7[r2];
+        Integer r4 = Integer.valueOf(r3.a);
+        LinkedHashSet r5 = this.n;
+        r5.add(r4);
+        r5.add(Integer.valueOf(r3.b));
+        r2 = r2 + 1;
+        goto L3
+    L5:
+        jw2[] r8 = (jw2[]) Arrays.copyOf(r7, r7.length);
+        pz1 r6 = this.l;
+        r6.getClass();
+        int r9 = r8.length;
+    L6:
+        if (r1 >= r9) goto L8;
+        r6.n(r8[r1]);
+        r1 = r1 + 1;
+        goto L6
     }
 
     public final s24 b() {
-        String name;
-        qz0 qz0VarE;
-        LinkedHashMap linkedHashMap;
-        int size;
-        boolean[] zArr;
-        Iterator it;
-        so4 so4VarB;
-        so4 so4VarB2;
-        boolean zContainsKey;
-        Executor executor = this.f;
-        if (executor == null && this.g == null) {
-            di diVar = ei.l;
-            this.g = diVar;
-            this.f = diVar;
-        } else if (executor != null && this.g == null) {
-            this.g = executor;
-        } else if (executor == null) {
-            this.f = this.g;
-        }
-        LinkedHashSet linkedHashSet = this.n;
-        linkedHashSet.getClass();
-        LinkedHashSet linkedHashSet2 = this.m;
-        linkedHashSet2.getClass();
-        if (!linkedHashSet.isEmpty()) {
-            Iterator it2 = linkedHashSet.iterator();
-            while (it2.hasNext()) {
-                int iIntValue = ((Number) it2.next()).intValue();
-                if (linkedHashSet2.contains(Integer.valueOf(iIntValue))) {
-                    kf2.e(f34.f(iIntValue, "Inconsistency detected. A Migration was supplied to addMigration() that has a start or end version equal to a start version supplied to fallbackToDestructiveMigrationFrom(). Start version is: "));
-                    return null;
-                }
-            }
-        }
-        ro4 y41Var = this.h;
-        if (y41Var == null) {
-            y41Var = new y41(16);
-        }
-        ro4 ro4Var = y41Var;
-        if (this.k > 0) {
-            if (this.c != null) {
-                kf2.n("Required value was null.");
-                return null;
-            }
-            kf2.n("Cannot create auto-closing database for an in-memory database.");
-            return null;
-        }
-        boolean z = this.i;
-        r24 r24Var = this.j;
-        r24Var.getClass();
-        Context context = this.b;
-        context.getClass();
-        if (r24Var == r24.n) {
-            Object systemService = context.getSystemService("activity");
-            ActivityManager activityManager = systemService instanceof ActivityManager ? (ActivityManager) systemService : null;
-            r24Var = (activityManager == null || activityManager.isLowRamDevice()) ? r24.o : r24.p;
-        }
-        Executor executor2 = this.f;
-        if (executor2 == null) {
-            kf2.n("Required value was null.");
-            return null;
-        }
-        Executor executor3 = this.g;
-        if (executor3 == null) {
-            kf2.n("Required value was null.");
-            return null;
-        }
-        li0 li0Var = new li0(context, this.c, ro4Var, this.l, this.d, z, r24Var, executor2, executor3, null, this.p, this.q, linkedHashSet2, null, null, null, this.e, this.o, false, null, null);
-        li0Var.v = this.r;
-        i30 i30Var = this.a;
-        i30Var.getClass();
-        Class clsA = i30Var.a();
-        clsA.getClass();
-        Package r0 = clsA.getPackage();
-        if (r0 == null || (name = r0.getName()) == null) {
-            name = "";
-        }
-        String canonicalName = clsA.getCanonicalName();
-        canonicalName.getClass();
-        if (name.length() != 0) {
-            canonicalName = canonicalName.substring(name.length() + 1);
-        }
-        String strReplace = canonicalName.replace('.', '_');
-        strReplace.getClass();
-        String strConcat = strReplace.concat("_Impl");
-        try {
-            Class<?> cls = Class.forName(name.length() == 0 ? strConcat : name + '.' + strConcat, true, clsA.getClassLoader());
-            cls.getClass();
-            s24 s24Var = (s24) cls.getDeclaredConstructor(null).newInstance(null);
-            s24Var.getClass();
-            s24Var.j = li0Var.v;
-            try {
-                qz0VarE = s24Var.e();
-                qz0VarE.getClass();
-                while (true) {
-                    boolean zHasNext = it.hasNext();
-                    int i = -1;
-                    List list = li0Var.r;
-                    if (zHasNext) {
-                        i30 i30Var2 = (i30) it.next();
-                        int size2 = list.size() - 1;
-                        if (size2 >= 0) {
-                            while (true) {
-                                int i2 = size2 - 1;
-                                if (i30Var2.d(list.get(size2))) {
-                                    zArr[size2] = true;
-                                    i = size2;
-                                    break;
-                                }
-                                if (i2 < 0) {
-                                    break;
-                                }
-                                size2 = i2;
-                            }
-                        }
-                        if (i < 0) {
-                            nz2.k(i30Var2.b(), ") is missing in the database configuration.", "A required auto migration spec (");
-                            return null;
-                        }
-                        linkedHashMap.put(i30Var2, list.get(i));
-                    } else {
-                        int size3 = list.size() - 1;
-                        if (size3 >= 0) {
-                            while (true) {
-                                int i3 = size3 - 1;
-                                if (size3 >= size || !zArr[size3]) {
-                                    kf2.n("Unexpected auto migration specs found. Annotate AutoMigrationSpec implementation with @ProvidedAutoMigrationSpec annotation or remove this spec from the builder.");
-                                    return null;
-                                }
-                                if (i3 < 0) {
-                                    break;
-                                }
-                                size3 = i3;
-                            }
-                        }
-                        LinkedHashMap linkedHashMap2 = new LinkedHashMap(lg2.W(linkedHashMap.size()));
-                        for (Map.Entry entry : linkedHashMap.entrySet()) {
-                            i30 i30Var3 = (i30) entry.getKey();
-                            i30Var3.getClass();
-                            Class clsA2 = i30Var3.a();
-                            clsA2.getClass();
-                            linkedHashMap2.put(clsA2, entry.getValue());
-                        }
-                        for (jw2 jw2Var : s24Var.g(linkedHashMap2)) {
-                            int i4 = jw2Var.a;
-                            int i5 = jw2Var.b;
-                            pz1 pz1Var = li0Var.d;
-                            LinkedHashMap linkedHashMap3 = (LinkedHashMap) pz1Var.o;
-                            if (linkedHashMap3.containsKey(Integer.valueOf(i4))) {
-                                Map map = (Map) linkedHashMap3.get(Integer.valueOf(i4));
-                                if (map == null) {
-                                    map = v01.n;
-                                }
-                                zContainsKey = map.containsKey(Integer.valueOf(i5));
-                            } else {
-                                zContainsKey = false;
-                            }
-                            if (!zContainsKey) {
-                                pz1Var.n(jw2Var);
-                            }
-                        }
-                        Set<Map.Entry> setEntrySet = s24Var.l().entrySet();
-                        int iW = lg2.W(r40.k0(setEntrySet, 10));
-                        if (iW < 16) {
-                            iW = 16;
-                        }
-                        LinkedHashMap linkedHashMap4 = new LinkedHashMap(iW);
-                        for (Map.Entry entry2 : setEntrySet) {
-                            Class cls2 = (Class) entry2.getKey();
-                            List<Class> list2 = (List) entry2.getValue();
-                            cls2.getClass();
-                            i30 i30VarA = kx3.a(cls2);
-                            ArrayList arrayList = new ArrayList(r40.k0(list2, 10));
-                            for (Class cls3 : list2) {
-                                cls3.getClass();
-                                arrayList.add(kx3.a(cls3));
-                            }
-                            linkedHashMap4.put(i30VarA, arrayList);
-                        }
-                        boolean[] zArr2 = new boolean[linkedHashMap4.size()];
-                        Iterator it3 = linkedHashMap4.entrySet().iterator();
-                        while (true) {
-                            boolean zHasNext2 = it3.hasNext();
-                            List list3 = li0Var.q;
-                            if (!zHasNext2) {
-                                int size4 = list3.size() - 1;
-                                if (size4 >= 0) {
-                                    while (true) {
-                                        int i6 = size4 - 1;
-                                        if (!zArr2[size4]) {
-                                            nz2.A(list3.get(size4), ". Annotate TypeConverter class with @ProvidedTypeConverter annotation or remove this converter from the builder.", "Unexpected type converter ");
-                                            return null;
-                                        }
-                                        if (i6 < 0) {
-                                            break;
-                                        }
-                                        size4 = i6;
-                                    }
-                                }
-                                s24Var.b = li0Var.h;
-                                s24Var.c = new ia4(li0Var.i, 1);
-                                Executor executor4 = s24Var.b;
-                                if (executor4 == null) {
-                                    h12.Q("internalQueryExecutor");
-                                    throw null;
-                                }
-                                td0 td0VarA = te5.a(ya4.F(kb4.w(executor4), new fo4(null)));
-                                s24Var.a = td0VarA;
-                                ne0 ne0Var = td0VarA.n;
-                                ia4 ia4Var = s24Var.c;
-                                if (ia4Var == null) {
-                                    h12.Q("internalTransactionExecutor");
-                                    throw null;
-                                }
-                                ne0Var.J(kb4.w(ia4Var));
-                                s24Var.g = li0Var.f;
-                                p24 p24Var = s24Var.d;
-                                if (p24Var == null) {
-                                    h12.Q("connectionManager");
-                                    throw null;
-                                }
-                                so4 so4VarC = p24Var.c();
-                                if (so4VarC == null) {
-                                    so4VarB = null;
-                                    break;
-                                }
-                                so4VarB = so4VarC;
-                                while (!(so4VarB instanceof lo3)) {
-                                    if (!(so4VarB instanceof go0)) {
-                                        so4VarB = null;
-                                        break;
-                                    }
-                                    so4VarB = ((go0) so4VarB).b();
-                                }
-                                p24 p24Var2 = s24Var.d;
-                                if (p24Var2 == null) {
-                                    h12.Q("connectionManager");
-                                    throw null;
-                                }
-                                so4 so4VarC2 = p24Var2.c();
-                                if (so4VarC2 == null) {
-                                    so4VarB2 = null;
-                                    break;
-                                }
-                                so4VarB2 = so4VarC2;
-                                while (!(so4VarB2 instanceof pn)) {
-                                    if (!(so4VarB2 instanceof go0)) {
-                                        so4VarB2 = null;
-                                        break;
-                                    }
-                                    so4VarB2 = ((go0) so4VarB2).b();
-                                }
-                                return s24Var;
-                            }
-                            Map.Entry entry3 = (Map.Entry) it3.next();
-                            i30 i30Var4 = (i30) entry3.getKey();
-                            for (i30 i30Var5 : (List) entry3.getValue()) {
-                                int size5 = list3.size() - 1;
-                                if (size5 < 0) {
-                                    size5 = -1;
-                                    break;
-                                }
-                                while (true) {
-                                    int i7 = size5 - 1;
-                                    if (i30Var5.d(list3.get(size5))) {
-                                        zArr2[size5] = true;
-                                        break;
-                                    }
-                                    if (i7 < 0) {
-                                        size5 = -1;
-                                        break;
-                                    }
-                                    size5 = i7;
-                                }
-                                if (size5 < 0) {
-                                    throw new IllegalArgumentException(("A required type converter (" + i30Var5.b() + ") for " + i30Var4.b() + " is missing in the database configuration.").toString());
-                                }
-                                Object obj = list3.get(size5);
-                                i30Var5.getClass();
-                                obj.getClass();
-                                s24Var.i.put(i30Var5, obj);
-                            }
-                        }
-                    }
-                }
-            } catch (p63 unused) {
-                qz0VarE = null;
-            }
-            s24Var.d = qz0VarE == null ? new p24(li0Var, new kl3(4, s24Var)) : new p24(li0Var, qz0VarE);
-            s24Var.e = s24Var.d();
-            linkedHashMap = new LinkedHashMap();
-            Set<Class> setK = s24Var.k();
-            ArrayList arrayList2 = new ArrayList(r40.k0(setK, 10));
-            for (Class cls4 : setK) {
-                cls4.getClass();
-                arrayList2.add(kx3.a(cls4));
-            }
-            Set setT0 = q40.T0(arrayList2);
-            size = setT0.size();
-            zArr = new boolean[size];
-            it = setT0.iterator();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Cannot find implementation for " + clsA.getCanonicalName() + ". " + strConcat + " does not exist. Is Room annotation processor correctly configured?", e);
-        } catch (IllegalAccessException e2) {
-            throw new RuntimeException("Cannot access the constructor " + clsA.getCanonicalName(), e2);
-        } catch (InstantiationException e3) {
-            throw new RuntimeException("Failed to create an instance of " + clsA.getCanonicalName(), e3);
-        }
+        Executor r1 = this.f;
+        if (r1 == null) goto L5;
+    L7:
+        if (r1 != null) goto L9;
+    L11:
+        if (r1 != null) goto L13;
+        this.f = this.g;
+    L13:
+        LinkedHashSet r2 = this.n;
+        r2.getClass();
+        LinkedHashSet r15 = this.m;
+        r15.getClass();
+        if (r2.isEmpty() == true) goto L23;
+        Iterator r3 = r2.iterator();
+    L17:
+        if (r3.hasNext() == false) goto L23;
+        int r4 = ((Number) r3.next()).intValue();
+        if (r15.contains(Integer.valueOf(r4)) == false) goto L17;
+        kf2.e(f34.f(r4, "Inconsistency detected. A Migration was supplied to addMigration() that has a start or end version equal to a start version supplied to fallbackToDestructiveMigrationFrom(). Start version is: "));
+        return null;
+    L23:
+        ro4 r5 = this.h;
+        if (r5 != null) goto L26;
+        r5 = new y41(16);
+    L26:
+        ro4 r6 = r5;
+        if (this.k <= 0) goto L29;
+        boolean r7 = true;
+    L31:
+        if (r7 == true) goto L33;
+        boolean r8 = this.i;
+        r24 r9 = this.j;
+        r9.getClass();
+        Context r10 = this.b;
+        r10.getClass();
+        if (r9 != r24.n) goto L50;
+        Object r11 = r10.getSystemService("activity");
+        if ((r11 instanceof ActivityManager) == false) goto L44;
+        ActivityManager r12 = (ActivityManager) r11;
+    L45:
+        if (r12 != null) goto L47;
+    L49:
+        r9 = r24.o;
+        goto L50
+    L47:
+        if (r12.isLowRamDevice() == true) goto L49;
+        r9 = r24.p;
+        goto L50
+    L44:
+        r12 = null;
+    L50:
+        Executor r13 = this.f;
+        if (r13 == null) goto L213;
+        Executor r14 = this.g;
+        if (r14 == null) goto L211;
+        r24 r16 = r9;
+        li0 r17 = new li0(r10, this.c, r6, this.l, this.d, r8, r16, r13, r14, null, this.p, this.q, r15, null, null, null, this.e, this.o, false, null, null);
+        r17.v = this.r;
+        i30 r0 = this.a;
+        r0.getClass();
+        Class r18 = r0.a();
+        r18.getClass();
+        Package r19 = r18.getPackage();
+        if (r19 == null) goto L58;
+        String r20 = r19.getName();
+        if (r20 == null) goto L58;
+    L59:
+        String r21 = r18.getCanonicalName();
+        r21.getClass();
+        if (r20.length() == 0) goto L63;
+        r21 = r21.substring(r20.length() + 1);
+    L63:
+        String r22 = r21.replace('.', '_');
+        r22.getClass();
+        String r23 = r22.concat("_Impl");
+    L203:
+        e = move-exception;
+        throw new RuntimeException("Cannot find implementation for " + r18.getCanonicalName() + ". " + r23 + " does not exist. Is Room annotation processor correctly configured?", e);
+    L201:
+        e = move-exception;
+        throw new RuntimeException("Cannot access the constructor " + r18.getCanonicalName(), e);
+    L199:
+        e = move-exception;
+        throw new RuntimeException("Failed to create an instance of " + r18.getCanonicalName(), e);
+    L65:
+        if (r20.length() != 0) goto L67;
+        String r24 = r23;
+    L68:
+        Class<?> r25 = Class.forName(r24, true, r18.getClassLoader());     // Catch: InstantiationException -> L199 IllegalAccessException -> L201 ClassNotFoundException -> L203
+        r25.getClass();     // Catch: InstantiationException -> L199 IllegalAccessException -> L201 ClassNotFoundException -> L203
+        s24 r26 = (s24) r25.getDeclaredConstructor(null).newInstance(null);
+        r26.getClass();
+        r26.j = r17.v;
+        qz0 r27 = r26.e();     // Catch: p63 -> L72
+        r27.getClass();     // Catch: p63 -> L72
+    L73:
+        if (r27 != null) goto L75;
+        p24 r28 = new p24(r17, new kl3(4, r26));
+    L76:
+        r26.d = r28;
+        r26.e = r26.d();
+        LinkedHashMap r29 = new LinkedHashMap();
+        Set r30 = r26.k();
+        ArrayList r31 = new ArrayList(r40.k0(r30, 10));
+        Iterator r32 = r30.iterator();
+    L78:
+        if (r32.hasNext() == false) goto L80;
+        Class r33 = (Class) r32.next();
+        r33.getClass();
+        r31.add(kx3.a(r33));
+        goto L78
+    L80:
+        Set r34 = q40.T0(r31);
+        int r35 = r34.size();
+        boolean[] r36 = new boolean[r35];
+        Iterator r37 = r34.iterator();
+    L81:
+        boolean r38 = r37.hasNext();
+        int r39 = -1;
+        List r110 = r17.r;
+        if (r38 == false) goto L95;
+        i30 r40 = (i30) r37.next();
+        int r111 = r110.size() - 1;
+        if (r111 < 0) goto L91;
+    L85:
+        int r112 = r111 - 1;
+        if (r40.d(r110.get(r111)) == true) goto L87;
+        if (r112 < 0) goto L91;
+        r111 = r112;
+        goto L85
+    L87:
+        r36[r111] = true;
+        r39 = r111;
+    L91:
+        if (r39 < 0) goto L93;
+        r29.put(r40, r110.get(r39));
+        goto L81
+    L93:
+        nz2.k(r40.b(), ") is missing in the database configuration.", "A required auto migration spec (");
+        return null;
+    L95:
+        int r41 = r110.size() - 1;
+        if (r41 < 0) goto L106;
+    L97:
+        int r42 = r41 - 1;
+        if (r41 >= r35) goto L104;
+        if (r36[r41] == false) goto L104;
+        if (r42 < 0) goto L106;
+        r41 = r42;
+    L104:
+        kf2.n("Unexpected auto migration specs found. Annotate AutoMigrationSpec implementation with @ProvidedAutoMigrationSpec annotation or remove this spec from the builder.");
+        return null;
+    L106:
+        LinkedHashMap r43 = new LinkedHashMap(lg2.W(r29.size()));
+        Iterator r44 = r29.entrySet().iterator();
+    L108:
+        if (r44.hasNext() == false) goto L110;
+        Map.Entry r45 = (Map.Entry) r44.next();
+        i30 r46 = (i30) r45.getKey();
+        r46.getClass();
+        Class r47 = r46.a();
+        r47.getClass();
+        r43.put(r47, r45.getValue());
+        goto L108
+    L110:
+        Iterator r48 = r26.g(r43).iterator();
+    L112:
+        if (r48.hasNext() == false) goto L122;
+        jw2 r49 = (jw2) r48.next();
+        int r50 = r49.a;
+        int r51 = r49.b;
+        pz1 r52 = r17.d;
+        LinkedHashMap r113 = (LinkedHashMap) r52.o;
+        if (r113.containsKey(Integer.valueOf(r50)) == false) goto L119;
+        Map r53 = (Map) r113.get(Integer.valueOf(r50));
+        if (r53 != null) goto L118;
+        r53 = v01.n;
+    L118:
+        boolean r54 = r53.containsKey(Integer.valueOf(r51));
+    L120:
+        if (r54 == true) goto L112;
+        r52.n(r49);
+        goto L112
+    L119:
+        r54 = false;
+        goto L120
+    L122:
+        Set r55 = r26.l().entrySet();
+        int r56 = lg2.W(r40.k0(r55, 10));
+        if (r56 >= 16) goto L125;
+        r56 = 16;
+    L125:
+        LinkedHashMap r57 = new LinkedHashMap(r56);
+        Iterator r58 = r55.iterator();
+    L127:
+        if (r58.hasNext() == false) goto L133;
+        Map.Entry r59 = (Map.Entry) r58.next();
+        Class r60 = (Class) r59.getKey();
+        List r61 = (List) r59.getValue();
+        r60.getClass();
+        i30 r62 = kx3.a(r60);
+        ArrayList r63 = new ArrayList(r40.k0(r61, 10));
+        Iterator r64 = r61.iterator();
+    L130:
+        if (r64.hasNext() == false) goto L132;
+        Class r114 = (Class) r64.next();
+        r114.getClass();
+        r63.add(kx3.a(r114));
+        goto L130
+    L132:
+        r57.put(r62, r63);
+        goto L127
+    L133:
+        boolean[] r65 = new boolean[r57.size()];
+        Iterator r66 = r57.entrySet().iterator();
+    L134:
+        boolean r67 = r66.hasNext();
+        List r68 = r17.q;
+        if (r67 == false) goto L152;
+        Map.Entry r69 = (Map.Entry) r66.next();
+        i30 r70 = (i30) r69.getKey();
+        Iterator r71 = ((List) r69.getValue()).iterator();
+    L138:
+        if (r71.hasNext() == false) goto L134;
+        i30 r72 = (i30) r71.next();
+        int r115 = r68.size() - 1;
+        if (r115 < 0) goto L147;
+    L141:
+        int r116 = r115 - 1;
+        if (r72.d(r68.get(r115)) == true) goto L143;
+        if (r116 < 0) goto L147;
+        r115 = r116;
+        goto L141
+    L143:
+        r65[r115] = true;
+    L148:
+        if (r115 < 0) goto L151;
+        Object r117 = r68.get(r115);
+        r72.getClass();
+        r117.getClass();
+        r26.i.put(r72, r117);
+        goto L138
+    L151:
+        throw new IllegalArgumentException(("A required type converter (" + r72.b() + ") for " + r70.b() + " is missing in the database configuration.").toString());
+    L147:
+        r115 = -1;
+        goto L148
+    L152:
+        int r73 = r68.size() - 1;
+        if (r73 < 0) goto L161;
+    L154:
+        int r74 = r73 - 1;
+        if (r65[r73] == false) goto L159;
+        if (r74 < 0) goto L161;
+        r73 = r74;
+        goto L154
+    L159:
+        nz2.A(r68.get(r73), ". Annotate TypeConverter class with @ProvidedTypeConverter annotation or remove this converter from the builder.", "Unexpected type converter ");
+        return null;
+    L161:
+        r26.b = r17.h;
+        r26.c = new ia4(r17.i, 1);
+        Executor r75 = r26.b;
+        if (r75 == null) goto L197;
+        td0 r76 = te5.a(ya4.F(kb4.w(r75), new fo4(null)));
+        r26.a = r76;
+        ne0 r77 = r76.n;
+        ia4 r78 = r26.c;
+        if (r78 == null) goto L195;
+        r77.J(kb4.w(r78));
+        r26.g = r17.f;
+        p24 r79 = r26.d;
+        if (r79 == null) goto L193;
+        so4 r80 = r79.c();
+        if (r80 != null) goto L170;
+    L169:
+        so4 r81 = null;
+    L177:
+        lo3 r82 = (lo3) r81;
+        p24 r83 = r26.d;
+        if (r83 == null) goto L191;
+        so4 r84 = r83.c();
+        if (r84 != null) goto L182;
+    L181:
+        so4 r85 = null;
+    L189:
+        pn r86 = (pn) r85;
+        return r26;
+    L182:
+        r85 = r84;
+    L184:
+        if ((r85 instanceof pn) == true) goto L189;
+        if ((r85 instanceof go0) == false) goto L181;
+        r85 = ((go0) r85).b();
+        goto L184
+    L191:
+        h12.Q("connectionManager");
+        throw null;
+    L170:
+        r81 = r80;
+    L172:
+        if ((r81 instanceof lo3) == true) goto L177;
+        if ((r81 instanceof go0) == false) goto L169;
+        r81 = ((go0) r81).b();
+        goto L172
+    L193:
+        h12.Q("connectionManager");
+        throw null;
+    L195:
+        h12.Q("internalTransactionExecutor");
+        throw null;
+    L197:
+        h12.Q("internalQueryExecutor");
+        throw null;
+    L75:
+        r28 = new p24(r17, r27);
+    L72:
+        r27 = null;
+        goto L73
+    L67:
+        r24 = r20 + '.' + r23;     // Catch: InstantiationException -> L199 IllegalAccessException -> L201 ClassNotFoundException -> L203
+    L58:
+        r20 = "";
+        goto L59
+    L211:
+        kf2.n("Required value was null.");
+        return null;
+    L213:
+        kf2.n("Required value was null.");
+        return null;
+    L33:
+        if (this.c == null) goto L36;
+        kf2.n("Required value was null.");
+        return null;
+    L36:
+        kf2.n("Cannot create auto-closing database for an in-memory database.");
+        return null;
+    L29:
+        r7 = false;
+        goto L31
+    L9:
+        if (this.g != null) goto L11;
+        this.g = r1;
+        goto L13
+    L5:
+        if (this.g != null) goto L7;
+        di r87 = ei.l;
+        this.g = r87;
+        this.f = r87;
+        goto L13
     }
 }

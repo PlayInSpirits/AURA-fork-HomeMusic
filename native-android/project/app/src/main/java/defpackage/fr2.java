@@ -12,36 +12,40 @@ public final class fr2 {
     public final er2 d;
     public final Bundle e;
 
-    public fr2(ms2 ms2Var, int i, int i2, boolean z, er2 er2Var, Bundle bundle) {
-        this.a = ms2Var;
-        this.b = i;
-        this.c = i2;
-        this.d = er2Var;
-        this.e = bundle;
+    public fr2(ms2 r1, int r2, int r3, boolean r4, er2 r5, Bundle r6) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r5;
+        this.e = r6;
     }
 
-    public final boolean equals(Object obj) {
-        if (!(obj instanceof fr2)) {
-            return false;
-        }
-        if (this == obj) {
-            return true;
-        }
-        fr2 fr2Var = (fr2) obj;
-        er2 er2Var = fr2Var.d;
-        er2 er2Var2 = this.d;
-        return (er2Var2 == null && er2Var == null) ? this.a.equals(fr2Var.a) : Objects.equals(er2Var2, er2Var);
+    public final boolean equals(Object r3) {
+        if ((r3 instanceof fr2) == true) goto L6;
+        return false;
+    L6:
+        if (this != r3) goto L9;
+        return true;
+    L9:
+        fr2 r4 = (fr2) r3;
+        er2 r0 = r4.d;
+        er2 r1 = this.d;
+        if (r1 != null) goto L16;
+        if (r0 != null) goto L16;
+        return this.a.equals(r4.a);
+    L16:
+        return Objects.equals(r1, r0);
     }
 
     public final int hashCode() {
-        return Objects.hash(this.d, this.a);
+        return Objects.hash(new Object[]{this.d, this.a});
     }
 
     public final String toString() {
-        StringBuilder sb = new StringBuilder("ControllerInfo {pkg=");
-        ms2 ms2Var = this.a;
-        sb.append(ms2Var.a.a);
-        sb.append(", uid=");
-        return f34.i(sb, ms2Var.a.c, "}");
+        StringBuilder r0 = new StringBuilder("ControllerInfo {pkg=");
+        ms2 r2 = this.a;
+        r0.append(r2.a.a);
+        r0.append(", uid=");
+        return f34.i(r0, r2.a.c, "}");
     }
 }

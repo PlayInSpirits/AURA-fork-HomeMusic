@@ -10,8 +10,8 @@ public class f71 extends hd {
     public final ArrayList d;
     public final ArrayList e;
 
-    public f71(Application application) {
-        super(application);
+    public f71(Application r2) {
+        super(r2);
         this.d = new ArrayList();
         this.e = new ArrayList();
         this.c = new y41(18);

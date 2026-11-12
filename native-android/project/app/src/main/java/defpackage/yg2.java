@@ -17,21 +17,21 @@ public abstract class yg2 {
     public final int e;
     public oo f;
 
-    public yg2(View view) {
-        this.b = view;
-        Context context = view.getContext();
-        this.a = g12.O(context, R.attr.motionEasingStandardDecelerateInterpolator, new PathInterpolator(0.0f, 0.0f, 0.0f, 1.0f));
-        this.c = g12.N(context, R.attr.motionDurationMedium2, 300);
-        this.d = g12.N(context, R.attr.motionDurationShort3, 150);
-        this.e = g12.N(context, R.attr.motionDurationShort2, 100);
+    public yg2(View r4) {
+        this.b = r4;
+        Context r5 = r4.getContext();
+        this.a = g12.O(r5, R.attr.motionEasingStandardDecelerateInterpolator, new PathInterpolator(0.0f, 0.0f, 0.0f, 1.0f));
+        this.c = g12.N(r5, R.attr.motionDurationMedium2, 300);
+        this.d = g12.N(r5, R.attr.motionDurationShort3, 150);
+        this.e = g12.N(r5, R.attr.motionDurationShort2, 100);
     }
 
     public final oo a() {
-        if (this.f == null) {
-            Log.w("MaterialBackHelper", "Must call startBackProgress() and updateBackProgress() before cancelBackProgress()");
-        }
-        oo ooVar = this.f;
+        if (this.f != null) goto L5;
+        Log.w("MaterialBackHelper", "Must call startBackProgress() and updateBackProgress() before cancelBackProgress()");
+    L5:
+        oo r0 = this.f;
         this.f = null;
-        return ooVar;
+        return r0;
     }
 }

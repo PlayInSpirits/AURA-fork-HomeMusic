@@ -12,7 +12,9 @@ public class kr2 {
     public final MediaSession a;
     public final jr2 b;
     public final pr2 c;
+    public final Object d;
     public final Bundle e;
+    public final RemoteCallbackList f;
     public ei3 g;
     public List h;
     public eo2 i;
@@ -20,34 +22,42 @@ public class kr2 {
     public int k;
     public ir2 l;
     public ms2 m;
-    public final Object d = new Object();
-    public final RemoteCallbackList f = new RemoteCallbackList();
 
-    public kr2(Context context, String str, Bundle bundle) {
-        MediaSession mediaSessionA = a(context, str, bundle);
-        this.a = mediaSessionA;
-        jr2 jr2Var = new jr2(this);
-        this.b = jr2Var;
-        this.c = new pr2(mediaSessionA.getSessionToken(), jr2Var);
-        this.e = bundle;
-        mediaSessionA.setFlags(3);
+    public kr2(Context r3, String r4, Bundle r5) {
+        this.d = new Object();
+        this.f = new RemoteCallbackList();
+        MediaSession r6 = a(r3, r4, r5);
+        this.a = r6;
+        jr2 r7 = new jr2(this);
+        this.b = r7;
+        this.c = new pr2(r6.getSessionToken(), r7);
+        this.e = r5;
+        r6.setFlags(3);
     }
 
-    public MediaSession a(Context context, String str, Bundle bundle) {
-        return new MediaSession(context, str);
+    public MediaSession a(Context r1, String r2, Bundle r3) {
+        return new MediaSession(r1, r2);
     }
 
     public ms2 b() {
-        ms2 ms2Var;
-        synchronized (this.d) {
-            ms2Var = this.m;
-        }
-        return ms2Var;
+        Object r0 = this.d;
+        monitor-enter(r0);
+        ms2 r1 = this.m;     // Catch: Throwable -> L7
+        monitor-exit(r0);     // Catch: Throwable -> L7
+        return r1;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
-    public void c(ms2 ms2Var) {
-        synchronized (this.d) {
-            this.m = ms2Var;
-        }
+    public void c(ms2 r2) {
+        Object r0 = this.d;
+        monitor-enter(r0);
+        this.m = r2;     // Catch: Throwable -> L7
+        monitor-exit(r0);     // Catch: Throwable -> L7
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 }

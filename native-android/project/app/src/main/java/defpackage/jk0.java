@@ -10,15 +10,15 @@ public final class jk0 implements vw0 {
     public boolean p;
     public final /* synthetic */ kk0 q;
 
-    public jk0(kk0 kk0Var, sw0 sw0Var) {
-        this.q = kk0Var;
-        this.n = sw0Var;
+    public jk0(kk0 r1, sw0 r2) {
+        this.q = r1;
+        this.n = r2;
     }
 
     @Override // defpackage.vw0
     public final void a() {
-        Handler handler = this.q.u;
-        handler.getClass();
-        f35.W(handler, new a0(18, this));
+        Handler r0 = this.q.u;
+        r0.getClass();
+        f35.W(r0, new a0(18, this));
     }
 }

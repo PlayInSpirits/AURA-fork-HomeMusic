@@ -2,7 +2,6 @@ package defpackage;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,71 +12,24 @@ public final class z02 extends cx3 {
     public final lv4 u;
     public final /* synthetic */ zd0 v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public z02(zd0 zd0Var, lv4 lv4Var) {
-        this.v = zd0Var;
-        ConstraintLayout constraintLayout = (ConstraintLayout) lv4Var.n;
-        super(constraintLayout);
-        this.u = lv4Var;
-        final int i = 1;
-        ((TextView) lv4Var.t).setSelected(true);
-        ((TextView) lv4Var.s).setSelected(true);
-        final int i2 = 0;
-        constraintLayout.setOnClickListener(new View.OnClickListener(this) { // from class: y02
-            public final /* synthetic */ z02 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view) {
-                int i3 = i2;
-                z02 z02Var = this.o;
-                switch (i3) {
-                    case 0:
-                        Bundle bundle = new Bundle();
-                        zd0 zd0Var2 = z02Var.v;
-                        bundle.putParcelable("INTERNET_RADIO_STATION_OBJECT", (Parcelable) zd0Var2.r.get(z02Var.c()));
-                        ((hp1) zd0Var2.s).onInternetRadioStationClick(bundle);
-                        break;
-                    default:
-                        z02Var.s();
-                        break;
-                }
-            }
-        });
-        constraintLayout.setOnLongClickListener(new q6(11, this));
-        ((ImageView) lv4Var.r).setOnClickListener(new View.OnClickListener(this) { // from class: y02
-            public final /* synthetic */ z02 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view) {
-                int i3 = i;
-                z02 z02Var = this.o;
-                switch (i3) {
-                    case 0:
-                        Bundle bundle = new Bundle();
-                        zd0 zd0Var2 = z02Var.v;
-                        bundle.putParcelable("INTERNET_RADIO_STATION_OBJECT", (Parcelable) zd0Var2.r.get(z02Var.c()));
-                        ((hp1) zd0Var2.s).onInternetRadioStationClick(bundle);
-                        break;
-                    default:
-                        z02Var.s();
-                        break;
-                }
-            }
-        });
+    public z02(zd0 r4, lv4 r5) {
+        this.v = r4;
+        ConstraintLayout r6 = (ConstraintLayout) r5.n;
+        super(r6);
+        this.u = r5;
+        final int r1 = 1;
+        ((TextView) r5.t).setSelected(true);
+        ((TextView) r5.s).setSelected(true);
+        final int r2 = 0;
+        r6.setOnClickListener(new y02(this, r2));
+        r6.setOnLongClickListener(new q6(11, this));
+        ((ImageView) r5.r).setOnClickListener(new y02(this, r1));
     }
 
     public final void s() {
-        Bundle bundle = new Bundle();
-        zd0 zd0Var = this.v;
-        bundle.putParcelable("INTERNET_RADIO_STATION_OBJECT", (Parcelable) zd0Var.r.get(c()));
-        ((hp1) zd0Var.s).onInternetRadioStationLongClick(bundle);
+        Bundle r0 = new Bundle();
+        zd0 r1 = this.v;
+        r0.putParcelable("INTERNET_RADIO_STATION_OBJECT", (Parcelable) r1.r.get(c()));
+        ((hp1) r1.s).onInternetRadioStationLongClick(r0);
     }
 }

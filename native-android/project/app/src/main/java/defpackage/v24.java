@@ -3,7 +3,6 @@ package defpackage;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import androidx.work.impl.WorkDatabase_Impl;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -15,197 +14,210 @@ public final class v24 extends uv {
     public final List q;
     public final h95 r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public v24(li0 li0Var, h95 h95Var) {
+    public v24(li0 r3, h95 r4) {
+        r3.getClass();
         super(23, 3);
-        li0Var.getClass();
-        this.q = li0Var.e;
-        this.p = li0Var;
-        this.r = h95Var;
+        this.q = r3.e;
+        this.p = r3;
+        this.r = r4;
     }
 
     @Override // defpackage.uv
-    public final void j(we1 we1Var) {
+    public final void j(we1 r1) {
     }
 
     @Override // defpackage.uv
-    public final void l(we1 we1Var) throws IOException {
-        Cursor cursorF = we1Var.F(new vc0("SELECT count(*) FROM sqlite_master WHERE name != 'android_metadata'"));
-        try {
-            boolean z = false;
-            if (cursorF.moveToFirst() && cursorF.getInt(0) == 0) {
-                z = true;
-            }
-            cursorF.close();
-            h95.a(we1Var);
-            if (!z) {
-                u24 u24VarB = h95.b(we1Var);
-                if (!u24VarB.a) {
-                    nz2.x(u24VarB.b, "Pre-packaged database has an invalid schema: ");
-                    return;
-                }
-            }
-            SQLiteDatabase sQLiteDatabase = we1Var.n;
-            sQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-            sQLiteDatabase.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '86254750241babac4b8d52996a675549')");
-            List list = this.q;
-            if (list != null) {
-                Iterator it = list.iterator();
-                while (it.hasNext()) {
-                    ((m30) it.next()).getClass();
-                }
-            }
-        } catch (Throwable th) {
-            try {
-                throw th;
-            } catch (Throwable th2) {
-                q05.h(cursorF, th);
-                throw th2;
-            }
-        }
+    public final void l(we1 r4) {
+        Cursor r0 = r4.F(new vc0("SELECT count(*) FROM sqlite_master WHERE name != 'android_metadata'"));
+        boolean r2 = false;
+        if (r0.moveToFirst() == false) goto L10;
+        if (r0.getInt(0) != 0) goto L10;
+        r2 = true;
+    L10:
+        r0.close();
+        h95.a(r4);
+        if (r2 == true) goto L17;
+        u24 r1 = h95.b(r4);
+        if (r1.a == true) goto L17;
+        nz2.x(r1.b, "Pre-packaged database has an invalid schema: ");
+        return;
+    L17:
+        SQLiteDatabase r5 = r4.n;
+        r5.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
+        r5.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '86254750241babac4b8d52996a675549')");
+        List r3 = this.q;
+        if (r3 == null) goto L23;
+        Iterator r6 = r3.iterator();
+    L21:
+        if (r6.hasNext() == false) goto L33;
+        ((m30) r6.next()).getClass();
+        goto L21
+    L33:
+        return;
+    L23:
+        return;
+    L8:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L25
+    L25:
+        th = move-exception;
+        q05.h(r0, th);
+        throw th;
     }
 
     @Override // defpackage.uv
-    public final void o(we1 we1Var, int i, int i2) throws IOException {
-        q(we1Var, i, i2);
+    public final void o(we1 r1, int r2, int r3) {
+        q(r1, r2, r3);
     }
 
     @Override // defpackage.uv
-    public final void p(we1 we1Var) throws IOException {
-        SQLiteDatabase sQLiteDatabase = we1Var.n;
-        Cursor cursorF = we1Var.F(new vc0("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name='room_master_table'"));
-        try {
-            boolean z = cursorF.moveToFirst() && cursorF.getInt(0) != 0;
-            cursorF.close();
-            if (z) {
-                Cursor cursorF2 = we1Var.F(new vc0("SELECT identity_hash FROM room_master_table WHERE id = 42 LIMIT 1"));
-                try {
-                    String string = cursorF2.moveToFirst() ? cursorF2.getString(0) : null;
-                    cursorF2.close();
-                    if (!"86254750241babac4b8d52996a675549".equals(string) && !"1cbd3130fa23b59692c061c594c16cc0".equals(string)) {
-                        kf2.o(xa3.g("Room cannot verify the data integrity. Looks like you've changed schema but forgot to update the version number. You can simply fix this by increasing the version number. Expected identity hash: 86254750241babac4b8d52996a675549, found: ", string));
-                        return;
-                    }
-                } catch (Throwable th) {
-                    try {
-                        throw th;
-                    } catch (Throwable th2) {
-                        q05.h(cursorF2, th);
-                        throw th2;
-                    }
-                }
-            } else {
-                u24 u24VarB = h95.b(we1Var);
-                if (!u24VarB.a) {
-                    nz2.x(u24VarB.b, "Pre-packaged database has an invalid schema: ");
-                    return;
-                } else {
-                    sQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-                    sQLiteDatabase.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '86254750241babac4b8d52996a675549')");
-                }
-            }
-            WorkDatabase_Impl workDatabase_Impl = (WorkDatabase_Impl) this.r.n;
-            sQLiteDatabase.execSQL("PRAGMA foreign_keys = ON");
-            workDatabase_Impl.p(new po4(we1Var));
-            List list = this.q;
-            if (list != null) {
-                Iterator it = list.iterator();
-                while (it.hasNext()) {
-                    ((m30) it.next()).a(we1Var);
-                }
-            }
-            this.p = null;
-        } catch (Throwable th3) {
-            try {
-                throw th3;
-            } catch (Throwable th4) {
-                q05.h(cursorF, th3);
-                throw th4;
-            }
-        }
+    public final void p(we1 r6) {
+        SQLiteDatabase r0 = r6.n;
+        Cursor r1 = r6.F(new vc0("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name='room_master_table'"));
+    L8:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L46
+    L46:
+        th = move-exception;
+        q05.h(r1, th);
+        throw th;
+    L4:
+        if (r1.moveToFirst() == false) goto L10;
+        if (r1.getInt(0) == 0) goto L10;
+        boolean r2 = true;
+    L11:
+        r1.close();
+        if (r2 == false) goto L32;
+        Cursor r3 = r6.F(new vc0("SELECT identity_hash FROM room_master_table WHERE id = 42 LIMIT 1"));
+    L18:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L29
+    L29:
+        th = move-exception;
+        q05.h(r3, th);
+        throw th;
+    L15:
+        if (r3.moveToFirst() == false) goto L20;
+        String r4 = r3.getString(0);     // Catch: Throwable -> L18
+    L21:
+        r3.close();
+        if ("86254750241babac4b8d52996a675549".equals(r4) == false) goto L24;
+    L35:
+        WorkDatabase_Impl r5 = (WorkDatabase_Impl) this.r.n;
+        r0.execSQL("PRAGMA foreign_keys = ON");
+        r5.p(new po4(r6));
+        List r7 = this.q;
+        if (r7 == null) goto L41;
+        Iterator r8 = r7.iterator();
+    L39:
+        if (r8.hasNext() == false) goto L41;
+        ((m30) r8.next()).a(r6);
+    L41:
+        this.p = null;
+        return;
+    L24:
+        if ("1cbd3130fa23b59692c061c594c16cc0".equals(r4) == true) goto L35;
+        kf2.o(xa3.g("Room cannot verify the data integrity. Looks like you've changed schema but forgot to update the version number. You can simply fix this by increasing the version number. Expected identity hash: 86254750241babac4b8d52996a675549, found: ", r4));
+        return;
+    L20:
+        r4 = null;
+        goto L21
+    L32:
+        u24 r9 = h95.b(r6);
+        if (r9.a == false) goto L43;
+        r0.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
+        r0.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '86254750241babac4b8d52996a675549')");
+        goto L35
+    L43:
+        nz2.x(r9.b, "Pre-packaged database has an invalid schema: ");
+        return;
+    L10:
+        r2 = false;
+        goto L11
     }
 
     @Override // defpackage.uv
-    public final void q(we1 we1Var, int i, int i2) throws IOException {
-        SQLiteDatabase sQLiteDatabase = we1Var.n;
-        li0 li0Var = this.p;
-        if (li0Var != null) {
-            pz1 pz1Var = li0Var.d;
-            pz1Var.getClass();
-            List listU = si0.u(pz1Var, i, i2);
-            if (listU != null) {
-                xl.l(new po4(we1Var));
-                Iterator it = listU.iterator();
-                while (it.hasNext()) {
-                    ((jw2) it.next()).b(new po4(we1Var));
-                }
-                u24 u24VarB = h95.b(we1Var);
-                if (!u24VarB.a) {
-                    nz2.x(u24VarB.b, "Migration didn't properly handle: ");
-                    return;
-                } else {
-                    sQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-                    sQLiteDatabase.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '86254750241babac4b8d52996a675549')");
-                    return;
-                }
-            }
-        }
-        li0 li0Var2 = this.p;
-        if (li0Var2 == null || si0.B(li0Var2, i, i2)) {
-            kf2.o(b11.n("A migration from ", " to ", i, i2, " was required but not found. Please provide the necessary Migration path via RoomDatabase.Builder.addMigration(Migration ...) or allow for destructive migrations via one of the RoomDatabase.Builder.fallbackToDestructiveMigration* methods."));
-            return;
-        }
-        if (li0Var2.s) {
-            Cursor cursorF = we1Var.F(new vc0("SELECT name, type FROM sqlite_master WHERE type = 'table' OR type = 'view'"));
-            try {
-                qb2 qb2VarR = gb.r();
-                while (cursorF.moveToNext()) {
-                    String string = cursorF.getString(0);
-                    string.getClass();
-                    if (!xm4.k0(string, "sqlite_", false) && !string.equals("android_metadata")) {
-                        qb2VarR.add(new kd3(string, Boolean.valueOf(h12.c(cursorF.getString(1), "view"))));
-                    }
-                }
-                qb2 qb2VarF = gb.f(qb2VarR);
-                cursorF.close();
-                ListIterator listIterator = qb2VarF.listIterator(0);
-                while (true) {
-                    dm1 dm1Var = (dm1) listIterator;
-                    if (!dm1Var.hasNext()) {
-                        break;
-                    }
-                    kd3 kd3Var = (kd3) dm1Var.next();
-                    String str = (String) kd3Var.n;
-                    if (((Boolean) kd3Var.o).booleanValue()) {
-                        sQLiteDatabase.execSQL("DROP VIEW IF EXISTS " + str);
-                    } else {
-                        sQLiteDatabase.execSQL("DROP TABLE IF EXISTS " + str);
-                    }
-                }
-            } catch (Throwable th) {
-                try {
-                    throw th;
-                } catch (Throwable th2) {
-                    q05.h(cursorF, th);
-                    throw th2;
-                }
-            }
-        } else {
-            sQLiteDatabase.execSQL("DROP TABLE IF EXISTS `Dependency`");
-            sQLiteDatabase.execSQL("DROP TABLE IF EXISTS `WorkSpec`");
-            sQLiteDatabase.execSQL("DROP TABLE IF EXISTS `WorkTag`");
-            sQLiteDatabase.execSQL("DROP TABLE IF EXISTS `SystemIdInfo`");
-            sQLiteDatabase.execSQL("DROP TABLE IF EXISTS `WorkName`");
-            sQLiteDatabase.execSQL("DROP TABLE IF EXISTS `WorkProgress`");
-            sQLiteDatabase.execSQL("DROP TABLE IF EXISTS `Preference`");
-        }
-        List list = this.q;
-        if (list != null) {
-            Iterator it2 = list.iterator();
-            while (it2.hasNext()) {
-                ((m30) it2.next()).getClass();
-            }
-        }
-        h95.a(we1Var);
+    public final void q(we1 r5, int r6, int r7) {
+        SQLiteDatabase r0 = r5.n;
+        li0 r1 = this.p;
+        if (r1 == null) goto L16;
+        pz1 r2 = r1.d;
+        r2.getClass();
+        List r3 = si0.u(r2, r6, r7);
+        if (r3 == null) goto L16;
+        xl.l(new po4(r5));
+        Iterator r4 = r3.iterator();
+    L8:
+        if (r4.hasNext() == false) goto L10;
+        ((jw2) r4.next()).b(new po4(r5));
+        goto L8
+    L10:
+        u24 r8 = h95.b(r5);
+        if (r8.a == false) goto L14;
+        r0.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
+        r0.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '86254750241babac4b8d52996a675549')");
+        return;
+    L14:
+        nz2.x(r8.b, "Migration didn't properly handle: ");
+        return;
+    L16:
+        li0 r9 = this.p;
+        if (r9 != null) goto L19;
+    L55:
+        kf2.o(b11.n("A migration from ", " to ", r6, r7, " was required but not found. Please provide the necessary Migration path via RoomDatabase.Builder.addMigration(Migration ...) or allow for destructive migrations via one of the RoomDatabase.Builder.fallbackToDestructiveMigration* methods."));
+        return;
+    L19:
+        if (si0.B(r9, r6, r7) == true) goto L55;
+        if (r9.s == false) goto L46;
+        Cursor r10 = r5.F(new vc0("SELECT name, type FROM sqlite_master WHERE type = 'table' OR type = 'view'"));
+        qb2 r11 = gb.r();     // Catch: Throwable -> L32
+    L25:
+        if (r10.moveToNext() == false) goto L34;
+        String r12 = r10.getString(0);     // Catch: Throwable -> L32
+        r12.getClass();     // Catch: Throwable -> L32
+        if (xm4.k0(r12, "sqlite_", false) == true) goto L25;
+        if (r12.equals("android_metadata") == true) goto L25;
+        r11.add(new kd3(r12, Boolean.valueOf(h12.c(r10.getString(1), "view"))));     // Catch: Throwable -> L32
+        goto L25
+    L34:
+        qb2 r13 = gb.f(r11);     // Catch: Throwable -> L32
+        r10.close();
+        ListIterator r14 = r13.listIterator(0);
+    L36:
+        dm1 r15 = (dm1) r14;
+        if (r15.hasNext() == false) goto L47;
+        kd3 r16 = (kd3) r15.next();
+        String r17 = (String) r16.n;
+        if (((Boolean) r16.o).booleanValue() == true) goto L40;
+        r0.execSQL("DROP TABLE IF EXISTS " + r17);
+        goto L36
+    L40:
+        r0.execSQL("DROP VIEW IF EXISTS " + r17);
+    L47:
+        List r18 = this.q;
+        if (r18 == null) goto L53;
+        Iterator r19 = r18.iterator();
+    L51:
+        if (r19.hasNext() == false) goto L53;
+        ((m30) r19.next()).getClass();
+    L53:
+        h95.a(r5);
+        return;
+    L32:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L43
+    L43:
+        th = move-exception;
+        q05.h(r10, th);
+        throw th;
+    L46:
+        r0.execSQL("DROP TABLE IF EXISTS `Dependency`");
+        r0.execSQL("DROP TABLE IF EXISTS `WorkSpec`");
+        r0.execSQL("DROP TABLE IF EXISTS `WorkTag`");
+        r0.execSQL("DROP TABLE IF EXISTS `SystemIdInfo`");
+        r0.execSQL("DROP TABLE IF EXISTS `WorkName`");
+        r0.execSQL("DROP TABLE IF EXISTS `WorkProgress`");
+        r0.execSQL("DROP TABLE IF EXISTS `Preference`");
+        goto L47
     }
 }

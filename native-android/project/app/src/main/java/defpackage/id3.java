@@ -9,59 +9,90 @@ final class id3 extends gx2 {
     public final float d;
     public final dt e;
 
-    public id3(hd3 hd3Var, hs hsVar, i80 i80Var, float f, dt dtVar) {
-        this.a = hd3Var;
-        this.b = hsVar;
-        this.c = i80Var;
-        this.d = f;
-        this.e = dtVar;
+    public id3(hd3 r1, hs r2, i80 r3, float r4, dt r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
     }
 
     @Override // defpackage.gx2
     public final cx2 d() {
-        jd3 jd3Var = new jd3();
-        jd3Var.B = this.a;
-        jd3Var.C = true;
-        jd3Var.D = this.b;
-        jd3Var.E = this.c;
-        jd3Var.F = this.d;
-        jd3Var.G = this.e;
-        return jd3Var;
+        jd3 r0 = new jd3();
+        r0.B = this.a;
+        r0.C = true;
+        r0.D = this.b;
+        r0.E = this.c;
+        r0.F = this.d;
+        r0.G = this.e;
+        return r0;
     }
 
     @Override // defpackage.gx2
-    public final void e(cx2 cx2Var) {
-        jd3 jd3Var = (jd3) cx2Var;
-        boolean z = jd3Var.C;
-        hd3 hd3Var = this.a;
-        boolean z2 = (z && qf4.a(jd3Var.B.d(), hd3Var.d())) ? false : true;
-        jd3Var.B = hd3Var;
-        jd3Var.C = true;
-        jd3Var.D = this.b;
-        jd3Var.E = this.c;
-        jd3Var.F = this.d;
-        jd3Var.G = this.e;
-        if (z2) {
-            g12.A(jd3Var);
-        }
-        jz4.z(jd3Var);
+    public final void e(cx2 r8) {
+        jd3 r9 = (jd3) r8;
+        boolean r0 = r9.C;
+        hd3 r1 = this.a;
+        if (r0 == true) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        r9.B = r1;
+        r9.C = true;
+        r9.D = this.b;
+        r9.E = this.c;
+        r9.F = this.d;
+        r9.G = this.e;
+        if (r2 == false) goto L12;
+        g12.A(r9);
+    L12:
+        jz4.z(r9);
+        return;
+    L5:
+        if (qf4.a(r9.B.d(), r1.d()) == false) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof id3)) {
-            return false;
-        }
-        id3 id3Var = (id3) obj;
-        return h12.c(this.a, id3Var.a) && h12.c(this.b, id3Var.b) && h12.c(this.c, id3Var.c) && Float.compare(this.d, id3Var.d) == 0 && h12.c(this.e, id3Var.e);
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof id3) == false) goto L25;
+        id3 r4 = (id3) r3;
+        if (h12.c(this.a, r4.a) == true) goto L11;
+        return false;
+    L11:
+        if (h12.c(this.b, r4.b) == true) goto L14;
+        return false;
+    L14:
+        if (h12.c(this.c, r4.c) == true) goto L17;
+        return false;
+    L17:
+        if (Float.compare(this.d, r4.d) == 0) goto L20;
+        return false;
+    L20:
+        if (h12.c(this.e, r4.e) == true) goto L23;
+        return false;
+    L23:
+        return true;
+    L25:
+        return false;
     }
 
     public final int hashCode() {
-        int iD = b11.d((this.c.hashCode() + ((this.b.hashCode() + xa3.c(this.a.hashCode() * 31, 31, true)) * 31)) * 31, this.d, 31);
-        dt dtVar = this.e;
-        return iD + (dtVar == null ? 0 : dtVar.hashCode());
+        int r0 = xa3.c(this.a.hashCode() * 31, 31, true);
+        int r2 = (this.b.hashCode() + r0) * 31;
+        int r1 = b11.d((this.c.hashCode() + r2) * 31, this.d, 31);
+        dt r3 = this.e;
+        if (r3 != null) goto L5;
+        int r4 = 0;
+    L7:
+        return r1 + r4;
+    L5:
+        r4 = r3.hashCode();
+        goto L7
     }
 
     public final String toString() {

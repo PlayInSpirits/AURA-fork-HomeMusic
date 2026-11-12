@@ -9,28 +9,50 @@ public abstract class a6 implements gg1, Serializable {
     public final Class o;
     public final String p;
     public final String q;
-    public final boolean r = false;
+    public final boolean r;
     public final int s;
     public final int t;
 
-    public a6(int i, int i2, Class cls, Object obj, String str, String str2) {
-        this.n = obj;
-        this.o = cls;
-        this.p = str;
-        this.q = str2;
-        this.s = i;
-        this.t = i2 >> 1;
+    public a6(int r1, int r2, Class r3, Object r4, String r5, String r6) {
+        this.n = r4;
+        this.o = r3;
+        this.p = r5;
+        this.q = r6;
+        this.r = false;
+        this.s = r1;
+        this.t = r2 >> 1;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof a6)) {
-            return false;
-        }
-        a6 a6Var = (a6) obj;
-        return this.r == a6Var.r && this.s == a6Var.s && this.t == a6Var.t && h12.c(this.n, a6Var.n) && this.o.equals(a6Var.o) && this.p.equals(a6Var.p) && this.q.equals(a6Var.q);
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof a6) == false) goto L32;
+        a6 r4 = (a6) r3;
+        if (this.r == r4.r) goto L10;
+        return false;
+    L10:
+        if (this.s == r4.s) goto L12;
+        return false;
+    L12:
+        if (this.t == r4.t) goto L14;
+        return false;
+    L14:
+        if (h12.c(this.n, r4.n) == true) goto L16;
+        return false;
+    L16:
+        if (this.o.equals(r4.o) == true) goto L18;
+        return false;
+    L18:
+        if (this.p.equals(r4.p) == true) goto L20;
+        return false;
+    L20:
+        if (this.q.equals(r4.q) == false) goto L31;
+        return true;
+    L31:
+        return false;
+    L32:
+        return false;
     }
 
     @Override // defpackage.gg1
@@ -39,8 +61,24 @@ public abstract class a6 implements gg1, Serializable {
     }
 
     public final int hashCode() {
-        Object obj = this.n;
-        return ((((f34.e(this.q, f34.e(this.p, (this.o.hashCode() + ((obj != null ? obj.hashCode() : 0) * 31)) * 31, 31), 31) + (this.r ? 1231 : 1237)) * 31) + this.s) * 31) + this.t;
+        Object r0 = this.n;
+        if (r0 == null) goto L5;
+        int r1 = r0.hashCode();
+    L6:
+        int r2 = this.o.hashCode();
+        int r3 = (r2 + (r1 * 31)) * 31;
+        int r4 = f34.e(this.p, r3, 31);
+        int r5 = f34.e(this.q, r4, 31);
+        if (this.r == false) goto L9;
+        int r6 = 1231;
+    L11:
+        return ((((r5 + r6) * 31) + this.s) * 31) + this.t;
+    L9:
+        r6 = 1237;
+        goto L11
+    L5:
+        r1 = 0;
+        goto L6
     }
 
     public final String toString() {

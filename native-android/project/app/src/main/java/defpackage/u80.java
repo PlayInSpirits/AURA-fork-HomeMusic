@@ -5,9 +5,9 @@ import java.util.Set;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class u80 {
-    public abstract void a(z80 z80Var, wf1 wf1Var);
+    public abstract void a(z80 r1, wf1 r2);
 
-    public abstract x03 b(z80 z80Var, md4 md4Var, wf1 wf1Var);
+    public abstract x03 b(z80 r1, md4 r2, wf1 r3);
 
     public void c() {
     }
@@ -30,28 +30,28 @@ public abstract class u80 {
 
     public abstract boolean k();
 
-    public abstract void l(z80 z80Var);
+    public abstract void l(z80 r1);
 
-    public abstract iy2 m(jy2 jy2Var);
+    public abstract iy2 m(jy2 r1);
 
-    public abstract x03 n(z80 z80Var, md4 md4Var, x03 x03Var);
+    public abstract x03 n(z80 r1, md4 r2, x03 r3);
 
-    public abstract void o(Set set);
+    public abstract void o(Set r1);
 
-    public void p(rg1 rg1Var) {
+    public void p(rg1 r1) {
     }
 
-    public abstract void q(lv3 lv3Var);
+    public abstract void q(lv3 r1);
 
-    public abstract void r(z80 z80Var);
+    public abstract void r(z80 r1);
 
-    public abstract ez s(wc wcVar);
+    public abstract ez s(wc r1);
 
     public void t() {
     }
 
-    public void u(rg1 rg1Var) {
+    public void u(rg1 r1) {
     }
 
-    public abstract void v(z80 z80Var);
+    public abstract void v(z80 r1);
 }

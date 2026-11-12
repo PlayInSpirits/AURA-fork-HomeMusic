@@ -7,13 +7,13 @@ import java.util.Collection;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class jb4 extends AbstractSet {
     @Override // java.util.AbstractSet, java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public boolean removeAll(Collection collection) {
-        return j51.L(this, collection);
+    public boolean removeAll(Collection r1) {
+        return j51.L(this, r1);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public boolean retainAll(Collection collection) {
-        collection.getClass();
-        return super.retainAll(collection);
+    public boolean retainAll(Collection r1) {
+        r1.getClass();
+        return super.retainAll(r1);
     }
 }

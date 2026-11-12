@@ -8,8 +8,8 @@ import com.google.android.material.search.SearchView;
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class p74 implements View.OnTouchListener {
     @Override // android.view.View.OnTouchListener
-    public final boolean onTouch(View view, MotionEvent motionEvent) {
-        int i = SearchView.Q;
+    public final boolean onTouch(View r1, MotionEvent r2) {
+        int r0 = SearchView.Q;
         return true;
     }
 }

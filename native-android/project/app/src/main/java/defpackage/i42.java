@@ -8,10 +8,10 @@ public final class i42 {
     public final int c;
     public final int d;
 
-    public i42(Object obj, int i, int i2, int i3) {
-        this.a = i;
-        this.b = obj;
-        this.c = i2;
-        this.d = i3;
+    public i42(Object r1, int r2, int r3, int r4) {
+        this.a = r2;
+        this.b = r1;
+        this.c = r3;
+        this.d = r4;
     }
 }

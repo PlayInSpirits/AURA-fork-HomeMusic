@@ -6,9 +6,12 @@ public final class oe0 implements me0 {
     public final if1 n;
     public final me0 o;
 
-    public oe0(me0 me0Var, if1 if1Var) {
-        me0Var.getClass();
-        this.n = if1Var;
-        this.o = me0Var instanceof oe0 ? ((oe0) me0Var).o : me0Var;
+    public oe0(me0 r1, if1 r2) {
+        r1.getClass();
+        this.n = r2;
+        if ((r1 instanceof oe0) == false) goto L5;
+        r1 = ((oe0) r1).o;
+    L5:
+        this.o = r1;
     }
 }

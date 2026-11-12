@@ -7,9 +7,9 @@ public final class p41 {
     public final int b;
     public final long c;
 
-    public p41(int i, long j, cu4 cu4Var) {
-        this.a = cu4Var;
-        this.b = i;
-        this.c = j;
+    public p41(int r1, long r2, cu4 r4) {
+        this.a = r4;
+        this.b = r1;
+        this.c = r2;
     }
 }

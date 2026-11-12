@@ -8,15 +8,15 @@ import java.util.Arrays;
 public final class uh5 implements Serializable {
     public final Object n;
 
-    public uh5(Object obj) {
-        this.n = obj;
+    public uh5(Object r1) {
+        this.n = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof uh5) {
-            return bu.H(this.n, ((uh5) obj).n);
-        }
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof uh5) == true) goto L5;
         return false;
+    L5:
+        return bu.H(this.n, ((uh5) r2).n);
     }
 
     public final int hashCode() {

@@ -6,70 +6,86 @@ import androidx.appcompat.view.menu.ActionMenuItemView;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class r4 extends vb1 {
-    public final /* synthetic */ int w = 0;
+    public final /* synthetic */ int w;
     public final /* synthetic */ View x;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public r4(ActionMenuItemView actionMenuItemView) {
-        super(actionMenuItemView);
-        this.x = actionMenuItemView;
+    public r4(ActionMenuItemView r2) {
+        this.w = 0;
+        this.x = r2;
+        super(r2);
     }
 
     @Override // defpackage.vb1
     public final nd4 b() {
-        t4 t4Var;
-        int i = this.w;
-        View view = this.x;
-        switch (i) {
-            case 0:
-                s4 s4Var = ((ActionMenuItemView) view).z;
-                if (s4Var == null || (t4Var = ((u4) s4Var).a.H) == null) {
-                    return null;
-                }
-                return t4Var.a();
-            default:
-                t4 t4Var2 = ((v4) view).q.G;
-                if (t4Var2 == null) {
-                    return null;
-                }
-                return t4Var2.a();
-        }
+        int r0 = this.w;
+        View r2 = this.x;
+        switch(r0) {
+            case 0: goto L9;
+            default: goto L4;
+        };
+    L4:
+        t4 r3 = ((v4) r2).q.G;
+        if (r3 != null) goto L8;
+        return null;
+    L8:
+        return r3.a();
+    L9:
+        s4 r4 = ((ActionMenuItemView) r2).z;
+        if (r4 == null) goto L16;
+        t4 r5 = ((u4) r4).a.H;
+        if (r5 != null) goto L14;
+        return null;
+    L14:
+        return r5.a();
+    L16:
+        return null;
     }
 
     @Override // defpackage.vb1
     public final boolean c() {
-        nd4 nd4VarB;
-        int i = this.w;
-        View view = this.x;
-        switch (i) {
-            case 0:
-                ActionMenuItemView actionMenuItemView = (ActionMenuItemView) view;
-                pu2 pu2Var = actionMenuItemView.x;
-                return pu2Var != null && pu2Var.a(actionMenuItemView.u) && (nd4VarB = b()) != null && nd4VarB.b();
-            default:
-                ((v4) view).q.n();
-                return true;
-        }
+        int r0 = this.w;
+        View r2 = this.x;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((v4) r2).q.n();
+        return true;
+    L6:
+        ActionMenuItemView r3 = (ActionMenuItemView) r2;
+        pu2 r1 = r3.x;
+        if (r1 != null) goto L9;
+    L15:
+        return false;
+    L9:
+        if (r1.a(r3.u) == false) goto L15;
+        nd4 r4 = b();
+        if (r4 == null) goto L15;
+        if (r4.b() == false) goto L15;
+        return true;
     }
 
     @Override // defpackage.vb1
     public boolean d() {
-        switch (this.w) {
-            case 1:
-                y4 y4Var = ((v4) this.x).q;
-                if (y4Var.I != null) {
-                    return false;
-                }
-                y4Var.f();
-                return true;
-            default:
-                return super.d();
-        }
+        switch(this.w) {
+            case 1: goto L6;
+            default: goto L5;
+        };
+    L6:
+        y4 r1 = ((v4) this.x).q;
+        if (r1.I == null) goto L9;
+        return false;
+    L9:
+        r1.f();
+        return true;
+    L5:
+        return super.d();
     }
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public r4(v4 v4Var, v4 v4Var2) {
-        super(v4Var2);
-        this.x = v4Var;
+    public r4(v4 r2, v4 r3) {
+        this.w = 1;
+        this.x = r2;
+        super(r3);
     }
 }

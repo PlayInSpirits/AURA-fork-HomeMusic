@@ -6,15 +6,15 @@ public final class vh implements pv2 {
     public final int a;
     public final String b;
 
-    public vh(int i, String str) {
-        this.a = i;
-        this.b = str;
+    public vh(int r1, String r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
     public final String toString() {
-        StringBuilder sb = new StringBuilder("Ait(controlCode=");
-        sb.append(this.a);
-        sb.append(",url=");
-        return b11.q(sb, this.b, ")");
+        StringBuilder r0 = new StringBuilder("Ait(controlCode=");
+        r0.append(this.a);
+        r0.append(",url=");
+        return b11.q(r0, this.b, ")");
     }
 }

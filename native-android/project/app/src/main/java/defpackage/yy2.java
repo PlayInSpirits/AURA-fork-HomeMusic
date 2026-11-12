@@ -7,27 +7,45 @@ public final class yy2 {
     public Class b;
     public Class c;
 
-    public yy2(Class cls, Class cls2, Class cls3) {
-        this.a = cls;
-        this.b = cls2;
-        this.c = cls3;
+    public yy2(Class r1, Class r2, Class r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || yy2.class != obj.getClass()) {
-            return false;
-        }
-        yy2 yy2Var = (yy2) obj;
-        return this.a.equals(yy2Var.a) && this.b.equals(yy2Var.b) && e35.n(this.c, yy2Var.c);
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if (r5 != null) goto L8;
+    L20:
+        return false;
+    L8:
+        if (yy2.class != r5.getClass()) goto L20;
+        yy2 r6 = (yy2) r5;
+        if (this.a.equals(r6.a) == true) goto L14;
+        return false;
+    L14:
+        if (this.b.equals(r6.b) == true) goto L17;
+        return false;
+    L17:
+        if (e35.n(this.c, r6.c) == true) goto L19;
+        return false;
+    L19:
+        return true;
     }
 
     public final int hashCode() {
-        int iHashCode = (this.b.hashCode() + (this.a.hashCode() * 31)) * 31;
-        Class cls = this.c;
-        return iHashCode + (cls != null ? cls.hashCode() : 0);
+        int r0 = this.a.hashCode() * 31;
+        int r1 = (this.b.hashCode() + r0) * 31;
+        Class r2 = this.c;
+        if (r2 == null) goto L5;
+        int r3 = r2.hashCode();
+    L7:
+        return r1 + r3;
+    L5:
+        r3 = 0;
+        goto L7
     }
 
     public final String toString() {

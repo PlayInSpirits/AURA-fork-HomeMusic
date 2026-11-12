@@ -5,41 +5,67 @@ import android.os.Bundle;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class lu3 {
-    public static final String a;
+    public static final String a = null;
 
     static {
-        String str = f35.a;
+        String r0 = f35.a;
         a = Integer.toString(0, 36);
     }
 
-    public static lu3 a(Bundle bundle) {
-        String str = a;
-        int i = bundle.getInt(str, -1);
-        if (i == 0) {
-            String str2 = vl1.d;
-            rr2.l(bundle.getInt(str, -1) == 0);
-            return bundle.getBoolean(vl1.d, false) ? new vl1(bundle.getBoolean(vl1.e, false)) : new vl1();
-        }
-        if (i == 1) {
-            String str3 = jf3.c;
-            rr2.l(bundle.getInt(str, -1) == 1);
-            float f = bundle.getFloat(jf3.c, -1.0f);
-            return f == -1.0f ? new jf3() : new jf3(f);
-        }
-        if (i == 2) {
-            String str4 = xk4.d;
-            rr2.l(bundle.getInt(str, -1) == 2);
-            int i2 = bundle.getInt(xk4.d, 5);
-            float f2 = bundle.getFloat(xk4.e, -1.0f);
-            return f2 == -1.0f ? new xk4(i2) : new xk4(i2, f2);
-        }
-        if (i != 3) {
-            kf2.n(f34.f(i, "Unknown RatingType: "));
-            return null;
-        }
-        String str5 = qt4.d;
-        rr2.l(bundle.getInt(str, -1) == 3);
-        return bundle.getBoolean(qt4.d, false) ? new qt4(bundle.getBoolean(qt4.e, false)) : new qt4();
+    public static lu3 a(Bundle r7) {
+        String r0 = a;
+        int r2 = r7.getInt(r0, -1);
+        boolean r3 = false;
+        boolean r4 = true;
+        if (r2 != 0) goto L5;
+        String r5 = vl1.d;
+        if (r7.getInt(r0, -1) == 0) goto L44;
+        r4 = false;
+    L44:
+        rr2.l(r4);
+        if (r7.getBoolean(vl1.d, false) == false) goto L49;
+        return new vl1(r7.getBoolean(vl1.e, false));
+    L49:
+        return new vl1();
+    L5:
+        if (r2 != 1) goto L7;
+        String r6 = jf3.c;
+        if (r7.getInt(r0, -1) != 1) goto L34;
+        r3 = true;
+    L34:
+        rr2.l(r3);
+        float r8 = r7.getFloat(jf3.c, -1.0f);
+        if (r8 != (-1.0f)) goto L39;
+        return new jf3();
+    L39:
+        return new jf3(r8);
+    L7:
+        if (r2 != 2) goto L9;
+        String r9 = xk4.d;
+        if (r7.getInt(r0, -1) != 2) goto L25;
+        r3 = true;
+    L25:
+        rr2.l(r3);
+        int r1 = r7.getInt(xk4.d, 5);
+        float r10 = r7.getFloat(xk4.e, -1.0f);
+        if (r10 != (-1.0f)) goto L30;
+        return new xk4(r1);
+    L30:
+        return new xk4(r1, r10);
+    L9:
+        if (r2 != 3) goto L20;
+        String r11 = qt4.d;
+        if (r7.getInt(r0, -1) == 3) goto L14;
+        r4 = false;
+    L14:
+        rr2.l(r4);
+        if (r7.getBoolean(qt4.d, false) == false) goto L19;
+        return new qt4(r7.getBoolean(qt4.e, false));
+    L19:
+        return new qt4();
+    L20:
+        kf2.n(f34.f(r2, "Unknown RatingType: "));
+        return null;
     }
 
     public abstract boolean b();

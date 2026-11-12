@@ -8,24 +8,31 @@ public final class c62 {
     public final NsdServiceInfo a;
     public final long b;
 
-    public c62(NsdServiceInfo nsdServiceInfo, long j) {
-        this.a = nsdServiceInfo;
-        this.b = j;
+    public c62(NsdServiceInfo r1, long r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof c62)) {
-            return false;
-        }
-        c62 c62Var = (c62) obj;
-        return this.a.equals(c62Var.a) && this.b == c62Var.b;
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof c62) == false) goto L16;
+        c62 r4 = (c62) r3;
+        if (this.a.equals(r4.a) == true) goto L11;
+        return false;
+    L11:
+        if (this.b == r4.b) goto L14;
+        return false;
+    L14:
+        return true;
+    L16:
+        return false;
     }
 
     public final int hashCode() {
-        return Long.hashCode(this.b) + (this.a.hashCode() * 31);
+        int r0 = this.a.hashCode() * 31;
+        return Long.hashCode(this.b) + r0;
     }
 
     public final String toString() {

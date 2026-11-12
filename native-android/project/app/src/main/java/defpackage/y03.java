@@ -16,148 +16,100 @@ public final class y03 extends r14 implements wf1 {
     public final /* synthetic */ z03 y;
     public final /* synthetic */ bh1 z;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public y03(z03 z03Var, bh1 bh1Var, vd0 vd0Var) {
-        super(vd0Var);
-        this.y = z03Var;
-        this.z = bh1Var;
+    public y03(z03 r1, bh1 r2, vd0 r3) {
+        this.y = r1;
+        this.z = r2;
+        super(r3);
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object obj, vd0 vd0Var) {
-        y03 y03Var = new y03(this.y, this.z, vd0Var);
-        y03Var.x = obj;
-        return y03Var;
+    public final vd0 create(Object r3, vd0 r4) {
+        y03 r0 = new y03(this.y, this.z, r4);
+        r0.x = r3;
+        return r0;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        return ((y03) create((ba4) obj, (vd0) obj2)).invokeSuspend(j15.a);
+    public final Object invoke(Object r1, Object r2) {
+        return ((y03) create((ba4) r1, (vd0) r2)).invokeSuspend(j15.a);
     }
 
-    /* JADX WARN: Code duplicated, block: B:13:0x0051  */
-    /* JADX WARN: Code duplicated, block: B:20:0x0097 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:21:0x0099  */
-    /* JADX WARN: Code duplicated, block: B:23:0x00a1  */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:12:0x004f -> B:22:0x009f). Please report as a decompilation issue!!! */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:13:0x0051 -> B:14:0x0064). Please report as a decompilation issue!!! */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:16:0x006d -> B:19:0x0094). Please report as a decompilation issue!!! */
-    /*  JADX ERROR: JadxOverflowException in pass: RegionMakerVisitor
-        jadx.core.utils.exceptions.JadxOverflowException: Regions stack size limit reached
-        	at jadx.core.utils.ErrorsCounter.addError(ErrorsCounter.java:59)
-        	at jadx.core.utils.ErrorsCounter.error(ErrorsCounter.java:31)
-        	at jadx.core.dex.attributes.nodes.NotificationAttrNode.addError(NotificationAttrNode.java:19)
-        */
     @Override // defpackage.jp
-    public final java.lang.Object invokeSuspend(java.lang.Object r21) {
-        /*
-            r20 = this;
-            r0 = r20
-            int r1 = r0.w
-            r2 = 0
-            r3 = 8
-            r4 = 1
-            if (r1 == 0) goto L2c
-            if (r1 != r4) goto L25
-            int r1 = r0.u
-            int r5 = r0.t
-            long r6 = r0.v
-            int r8 = r0.s
-            int r9 = r0.r
-            long[] r10 = r0.q
-            z03 r11 = r0.p
-            bh1 r12 = r0.o
-            java.lang.Object r13 = r0.x
-            ba4 r13 = (defpackage.ba4) r13
-            defpackage.kb4.X(r21)
-            goto L94
-        L25:
-            java.lang.String r0 = "call to 'resume' before 'invoke' with coroutine"
-            defpackage.kf2.o(r0)
-            r0 = 0
-            return r0
-        L2c:
-            defpackage.kb4.X(r21)
-            java.lang.Object r1 = r0.x
-            ba4 r1 = (defpackage.ba4) r1
-            z03 r5 = r0.y
-            x03 r6 = r5.o
-            long[] r6 = r6.a
-            int r7 = r6.length
-            int r7 = r7 + (-2)
-            if (r7 < 0) goto La4
-            bh1 r8 = r0.z
-            r9 = r2
-        L41:
-            r10 = r6[r9]
-            long r12 = ~r10
-            r14 = 7
-            long r12 = r12 << r14
-            long r12 = r12 & r10
-            r14 = -9187201950435737472(0x8080808080808080, double:-2.937446524422997E-306)
-            long r12 = r12 & r14
-            int r12 = (r12 > r14 ? 1 : (r12 == r14 ? 0 : -1))
-            if (r12 == 0) goto L9f
-            int r12 = r9 - r7
-            int r12 = ~r12
-            int r12 = r12 >>> 31
-            int r12 = 8 - r12
-            r13 = r1
-            r1 = r2
-            r18 = r10
-            r11 = r5
-            r10 = r6
-            r5 = r12
-            r12 = r8
-            r8 = r9
-            r9 = r7
-            r6 = r18
-        L64:
-            if (r1 >= r5) goto L97
-            r14 = 255(0xff, double:1.26E-321)
-            long r14 = r14 & r6
-            r16 = 128(0x80, double:6.32E-322)
-            int r14 = (r14 > r16 ? 1 : (r14 == r16 ? 0 : -1))
-            if (r14 >= 0) goto L94
-            int r2 = r8 << 3
-            int r2 = r2 + r1
-            r12.o = r2
-            x03 r3 = r11.o
-            java.lang.Object[] r3 = r3.b
-            r2 = r3[r2]
-            r0.x = r13
-            r0.o = r12
-            r0.p = r11
-            r0.q = r10
-            r0.r = r9
-            r0.s = r8
-            r0.v = r6
-            r0.t = r5
-            r0.u = r1
-            r0.w = r4
-            r13.b(r0, r2)
-            xe0 r0 = defpackage.xe0.n
-            return r0
-        L94:
-            long r6 = r6 >> r3
-            int r1 = r1 + r4
-            goto L64
-        L97:
-            if (r5 != r3) goto La4
-            r7 = r9
-            r6 = r10
-            r5 = r11
-            r1 = r13
-            r9 = r8
-            r8 = r12
-        L9f:
-            if (r9 == r7) goto La4
-            int r9 = r9 + 1
-            goto L41
-        La4:
-            j15 r0 = defpackage.j15.a
-            return r0
-        */
-        throw new UnsupportedOperationException("Method not decompiled: defpackage.y03.invokeSuspend(java.lang.Object):java.lang.Object");
+    public final Object invokeSuspend(Object r21) {
+        int r1 = this.w;
+        if (r1 == 0) goto L8;
+        if (r1 != 1) goto L6;
+        int r2 = this.u;
+        int r5 = this.t;
+        long r6 = this.v;
+        int r8 = this.s;
+        int r9 = this.r;
+        long[] r10 = this.q;
+        z03 r11 = this.p;
+        bh1 r12 = this.o;
+        ba4 r13 = (ba4) this.x;
+        kb4.X(r21);
+    L19:
+        r6 = r6 >> 8;
+        r2 = r2 + 1;
+    L14:
+        if (r2 < r5) goto L16;
+        if (r5 != 8) goto L25;
+        int r7 = r9;
+        long[] r14 = r10;
+        z03 r15 = r11;
+        ba4 r3 = r13;
+        int r16 = r8;
+        bh1 r17 = r12;
+    L22:
+        if (r16 == r7) goto L25;
+        r16 = r16 + 1;
+    L11:
+        long r18 = r14[r16];
+        if (((((~r18) << 7) & r18) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L22;
+        r13 = r3;
+        r2 = 0;
+        r11 = r15;
+        r10 = r14;
+        r5 = 8 - ((~(r16 - r7)) >>> 31);
+        r12 = r17;
+        r8 = r16;
+        r9 = r7;
+        r6 = r18;
+    L25:
+        return j15.a;
+    L16:
+        if ((255 & r6) >= 128) goto L19;
+        int r4 = (r8 << 3) + r2;
+        r12.o = r4;
+        Object r19 = r11.o.b[r4];
+        this.x = r13;
+        this.o = r12;
+        this.p = r11;
+        this.q = r10;
+        this.r = r9;
+        this.s = r8;
+        this.v = r6;
+        this.t = r5;
+        this.u = r2;
+        this.w = 1;
+        r13.b(this, r19);
+        return xe0.n;
+    L6:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L8:
+        kb4.X(r21);
+        r3 = (ba4) this.x;
+        r15 = this.y;
+        r14 = r15.o.a;
+        r7 = r14.length - 2;
+        if (r7 < 0) goto L25;
+        r17 = this.z;
+        r16 = 0;
+        goto L11
     }
 }

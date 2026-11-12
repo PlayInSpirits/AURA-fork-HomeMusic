@@ -10,21 +10,22 @@ public final class i23 extends q42 implements if1 {
     public final /* synthetic */ r23 p;
     public final /* synthetic */ Bundle q;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public i23(fx3 fx3Var, v23 v23Var, r23 r23Var, Bundle bundle) {
+    public i23(fx3 r1, v23 r2, r23 r3, Bundle r4) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
         super(1);
-        this.n = fx3Var;
-        this.o = v23Var;
-        this.p = r23Var;
-        this.q = bundle;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object obj) {
-        a23 a23Var = (a23) obj;
-        a23Var.getClass();
+    public final Object invoke(Object r4) {
+        a23 r5 = (a23) r4;
+        r5.getClass();
         this.n.n = true;
-        this.o.a(this.p, this.q, a23Var, u01.n);
+        Bundle r0 = this.q;
+        u01 r1 = u01.n;
+        this.o.a(this.p, r0, r5, r1);
         return j15.a;
     }
 }

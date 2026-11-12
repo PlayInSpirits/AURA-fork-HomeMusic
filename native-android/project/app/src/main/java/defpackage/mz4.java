@@ -9,7 +9,6 @@ import java.lang.reflect.TypeVariable;
 import java.lang.reflect.WildcardType;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -17,142 +16,182 @@ public final class mz4 extends rp {
     public final /* synthetic */ int b;
     public final Object c;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
     public mz4() {
-        super(6);
         this.b = 0;
+        super(6);
         this.c = new HashMap();
     }
 
     @Override // defpackage.rp
-    public void p(Class cls) {
-        int i = this.b;
-        Object obj = this.c;
-        switch (i) {
-            case 0:
-                o(cls.getGenericSuperclass());
-                o(cls.getGenericInterfaces());
-                break;
-            case 2:
-                ((ix1) obj).c(cls);
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                ((AtomicReference) obj).set(cls.getComponentType());
-                break;
-        }
+    public void p(Class r4) {
+        int r0 = this.b;
+        Object r1 = this.c;
+        switch(r0) {
+            case 0: goto L9;
+            case 1: goto L4;
+            case 2: goto L7;
+            case 3: goto L5;
+            default: goto L4;
+        };
+    L4:
+        return;
+    L5:
+        ((AtomicReference) r1).set(r4.getComponentType());
+        return;
+    L7:
+        ((ix1) r1).c(r4);
+        return;
+    L9:
+        o(new Type[]{r4.getGenericSuperclass()});
+        o(r4.getGenericInterfaces());
     }
 
     @Override // defpackage.rp
-    public void q(GenericArrayType genericArrayType) {
-        int i = this.b;
-        Object obj = this.c;
-        switch (i) {
-            case 1:
-                o(genericArrayType.getGenericComponentType());
-                break;
-            case 2:
-                Class<? super Object> rawType = TypeToken.of(genericArrayType.getGenericComponentType()).getRawType();
-                c32 c32Var = b15.a;
-                ((ix1) obj).c(Array.newInstance(rawType, 0).getClass());
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                ((AtomicReference) obj).set(genericArrayType.getGenericComponentType());
-                break;
-        }
+    public void q(GenericArrayType r4) {
+        int r0 = this.b;
+        Object r2 = this.c;
+        switch(r0) {
+            case 1: goto L9;
+            case 2: goto L7;
+            case 3: goto L5;
+            default: goto L4;
+        };
+    L4:
+        return;
+    L5:
+        ((AtomicReference) r2).set(r4.getGenericComponentType());
+        return;
+    L7:
+        Class<? super Object> r3 = TypeToken.of(r4.getGenericComponentType()).getRawType();
+        c32 r5 = b15.a;
+        ((ix1) r2).c(Array.newInstance(r3, 0).getClass());
+        return;
+    L9:
+        o(new Type[]{r4.getGenericComponentType()});
     }
 
     @Override // defpackage.rp
-    public void r(ParameterizedType parameterizedType) {
-        int i = this.b;
-        Object obj = this.c;
-        switch (i) {
-            case 0:
-                Class cls = (Class) parameterizedType.getRawType();
-                TypeVariable[] typeParameters = cls.getTypeParameters();
-                Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
-                rr2.w(typeParameters.length == actualTypeArguments.length);
-                for (int i2 = 0; i2 < typeParameters.length; i2++) {
-                    pz4 pz4Var = new pz4(typeParameters[i2]);
-                    Type type = actualTypeArguments[i2];
-                    HashMap map = (HashMap) obj;
-                    if (!map.containsKey(pz4Var)) {
-                        Type type2 = type;
-                        while (true) {
-                            if (type2 == null) {
-                                map.put(pz4Var, type);
-                            }
-                            boolean z = type2 instanceof TypeVariable;
-                            pz4 pz4Var2 = null;
-                            if (z ? pz4Var.a((TypeVariable) type2) : false) {
-                                while (type != null) {
-                                    type = (Type) map.remove(type instanceof TypeVariable ? new pz4((TypeVariable) type) : null);
-                                }
-                            } else {
-                                if (z) {
-                                    pz4Var2 = new pz4((TypeVariable) type2);
-                                }
-                                type2 = (Type) map.get(pz4Var2);
-                            }
-                            break;
-                            break;
-                        }
-                    }
-                }
-                o(cls);
-                o(parameterizedType.getOwnerType());
-                break;
-            case 1:
-                o(parameterizedType.getActualTypeArguments());
-                o(parameterizedType.getOwnerType());
-                break;
-            case 2:
-                ((ix1) obj).f((Class) parameterizedType.getRawType());
-                break;
-        }
+    public void r(ParameterizedType r15) {
+        int r0 = this.b;
+        Object r1 = this.c;
+        switch(r0) {
+            case 0: goto L9;
+            case 1: goto L7;
+            case 2: goto L5;
+            default: goto L4;
+        };
+    L4:
+        return;
+    L5:
+        ((ix1) r1).f((Class) r15.getRawType());
+        return;
+    L7:
+        o(r15.getActualTypeArguments());
+        o(new Type[]{r15.getOwnerType()});
+        return;
+    L9:
+        Class r2 = (Class) r15.getRawType();
+        TypeVariable[] r4 = r2.getTypeParameters();
+        Type[] r5 = r15.getActualTypeArguments();
+        if (r4.length != r5.length) goto L12;
+        boolean r6 = true;
+    L13:
+        rr2.w(r6);
+        int r7 = 0;
+    L15:
+        if (r7 >= r4.length) goto L38;
+        pz4 r8 = new pz4(r4[r7]);
+        Type r9 = r5[r7];
+        HashMap r10 = (HashMap) r1;
+        if (r10.containsKey(r8) == true) goto L37;
+        Type r11 = r9;
+    L20:
+        if (r11 == null) goto L36;
+        boolean r12 = r11 instanceof TypeVariable;
+        if (r12 == false) goto L24;
+        boolean r13 = r8.a((TypeVariable) r11);
+    L25:
+        pz4 r14 = null;
+        if (r13 == true) goto L27;
+        if (r12 == false) goto L35;
+        r14 = new pz4((TypeVariable) r11);
+    L35:
+        r11 = (Type) r10.get(r14);
+    L27:
+        if (r9 == null) goto L37;
+        if ((r9 instanceof TypeVariable) == false) goto L31;
+        pz4 r16 = new pz4((TypeVariable) r9);
+    L32:
+        r9 = (Type) r10.remove(r16);
+        goto L27
+    L31:
+        r16 = null;
+        goto L32
+    L24:
+        r13 = false;
+        goto L25
+    L36:
+        r10.put(r8, r9);
+    L37:
+        r7 = r7 + 1;
+        goto L15
+    L38:
+        o(new Type[]{r2});
+        o(new Type[]{r15.getOwnerType()});
+        return;
+    L12:
+        r6 = false;
+        goto L13
     }
 
     @Override // defpackage.rp
-    public final void s(TypeVariable typeVariable) {
-        int i = this.b;
-        Object obj = this.c;
-        switch (i) {
-            case 0:
-                o(typeVariable.getBounds());
-                return;
-            case 1:
-                throw new IllegalArgumentException(((TypeToken) obj).runtimeType + "contains a type variable and is not safe for the operation");
-            case 2:
-                o(typeVariable.getBounds());
-                return;
-            default:
-                ((AtomicReference) obj).set(b15.a(typeVariable.getBounds()));
-                return;
-        }
+    public final void s(TypeVariable r3) {
+        int r0 = this.b;
+        Object r1 = this.c;
+        switch(r0) {
+            case 0: goto L10;
+            case 1: goto L9;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((AtomicReference) r1).set(b15.a(r3.getBounds()));
+        return;
+    L6:
+        o(r3.getBounds());
+        return;
+    L10:
+        o(r3.getBounds());
+        return;
+    L9:
+        throw new IllegalArgumentException(TypeToken.access$500((TypeToken) r1) + "contains a type variable and is not safe for the operation");
     }
 
     @Override // defpackage.rp
-    public final void t(WildcardType wildcardType) {
-        switch (this.b) {
-            case 0:
-                o(wildcardType.getUpperBounds());
-                break;
-            case 1:
-                o(wildcardType.getLowerBounds());
-                o(wildcardType.getUpperBounds());
-                break;
-            case 2:
-                o(wildcardType.getUpperBounds());
-                break;
-            default:
-                ((AtomicReference) this.c).set(b15.a(wildcardType.getUpperBounds()));
-                break;
-        }
+    public final void t(WildcardType r2) {
+        switch(this.b) {
+            case 0: goto L10;
+            case 1: goto L8;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((AtomicReference) this.c).set(b15.a(r2.getUpperBounds()));
+        return;
+    L6:
+        o(r2.getUpperBounds());
+        return;
+    L8:
+        o(r2.getLowerBounds());
+        o(r2.getUpperBounds());
+        return;
+    L10:
+        o(r2.getUpperBounds());
     }
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ mz4(int i, Object obj) {
+    public /* synthetic */ mz4(int r1, Object r2) {
+        this.b = r1;
+        this.c = r2;
         super(6);
-        this.b = i;
-        this.c = obj;
     }
 }

@@ -13,8 +13,8 @@ public class j7 extends hd {
     public AlbumID3 g;
     public final k03 h;
 
-    public j7(Application application) {
-        super(application);
+    public j7(Application r2) {
+        super(r2);
         this.h = new k03(null);
         this.c = new rv2(27);
         this.d = new pa(12);
@@ -23,8 +23,8 @@ public class j7 extends hd {
     }
 
     public final k03 c() {
-        String id = this.g.getId();
+        String r0 = this.g.getId();
         this.c.getClass();
-        return rv2.l(id);
+        return rv2.l(r0);
     }
 }

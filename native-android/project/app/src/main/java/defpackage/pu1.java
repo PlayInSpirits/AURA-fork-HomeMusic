@@ -8,121 +8,121 @@ import android.view.Surface;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface pu1 extends IInterface {
-    void A(ju1 ju1Var, int i, Bundle bundle);
+    void A(ju1 r1, int r2, Bundle r3);
 
-    void A0(ju1 ju1Var, int i);
+    void A0(ju1 r1, int r2);
 
-    void B(ju1 ju1Var, int i);
+    void B(ju1 r1, int r2);
 
-    void B0(ju1 ju1Var, int i, boolean z);
+    void B0(ju1 r1, int r2, boolean r3);
 
-    void C0(ju1 ju1Var, int i);
+    void C0(ju1 r1, int r2);
 
-    void D(ju1 ju1Var, int i, int i2, Bundle bundle);
+    void D(ju1 r1, int r2, int r3, Bundle r4);
 
-    void D0(ju1 ju1Var, int i, int i2);
+    void D0(ju1 r1, int r2, int r3);
 
-    void E0(ju1 ju1Var, int i, int i2, int i3, int i4);
+    void E0(ju1 r1, int r2, int r3, int r4, int r5);
 
-    void F(ju1 ju1Var, int i, int i2);
+    void F(ju1 r1, int r2, int r3);
 
-    void F0(ju1 ju1Var, int i, int i2, int i3);
+    void F0(ju1 r1, int r2, int r3, int r4);
 
-    void G(ju1 ju1Var, int i, Bundle bundle);
+    void G(ju1 r1, int r2, Bundle r3);
 
-    void G0(ju1 ju1Var, int i, int i2, Bundle bundle);
+    void G0(ju1 r1, int r2, int r3, Bundle r4);
 
-    void H(ju1 ju1Var, int i);
+    void H(ju1 r1, int r2);
 
-    void H0(ju1 ju1Var, int i, boolean z);
+    void H0(ju1 r1, int r2, boolean r3);
 
-    void J(ju1 ju1Var, int i, iw iwVar);
+    void J(ju1 r1, int r2, iw r3);
 
-    void K(ju1 ju1Var, int i, int i2);
+    void K(ju1 r1, int r2, int r3);
 
-    void L(ju1 ju1Var, int i, IBinder iBinder, boolean z);
+    void L(ju1 r1, int r2, IBinder r3, boolean r4);
 
-    void M(ju1 ju1Var, int i, int i2, int i3);
+    void M(ju1 r1, int r2, int r3, int r4);
 
-    void N(ju1 ju1Var, int i, int i2);
+    void N(ju1 r1, int r2, int r3);
 
-    void P(ju1 ju1Var, int i, int i2, int i3, IBinder iBinder);
+    void P(ju1 r1, int r2, int r3, int r4, IBinder r5);
 
-    void Q(ju1 ju1Var, int i, int i2, int i3);
+    void Q(ju1 r1, int r2, int r3, int r4);
 
-    void R(ju1 ju1Var, int i);
+    void R(ju1 r1, int r2);
 
-    void S(ju1 ju1Var, int i, int i2, long j);
+    void S(ju1 r1, int r2, int r3, long r4);
 
-    void T(ju1 ju1Var, int i, IBinder iBinder);
+    void T(ju1 r1, int r2, IBinder r3);
 
-    void W(ju1 ju1Var, int i);
+    void W(ju1 r1, int r2);
 
-    void Z(ju1 ju1Var, int i, int i2, IBinder iBinder);
+    void Z(ju1 r1, int r2, int r3, IBinder r4);
 
-    void a(ju1 ju1Var, int i, Bundle bundle);
+    void a(ju1 r1, int r2, Bundle r3);
 
-    void a0(ju1 ju1Var, int i);
+    void a0(ju1 r1, int r2);
 
-    void b(ju1 ju1Var, int i, Bundle bundle, boolean z);
+    void b(ju1 r1, int r2, Bundle r3, boolean r4);
 
-    void d(ju1 ju1Var, int i);
+    void d(ju1 r1, int r2);
 
-    void d0(ju1 ju1Var, int i, long j);
+    void d0(ju1 r1, int r2, long r3);
 
-    void e0(ju1 ju1Var, int i);
+    void e0(ju1 r1, int r2);
 
-    void f0(ju1 ju1Var, int i, int i2);
+    void f0(ju1 r1, int r2, int r3);
 
-    void g0(ju1 ju1Var, int i);
+    void g0(ju1 r1, int r2);
 
-    void h0(ju1 ju1Var, int i, boolean z);
+    void h0(ju1 r1, int r2, boolean r3);
 
-    void i0(ju1 ju1Var, int i, Bundle bundle);
+    void i0(ju1 r1, int r2, Bundle r3);
 
-    void j0(ju1 ju1Var, int i);
+    void j0(ju1 r1, int r2);
 
-    void k(ju1 ju1Var, int i);
+    void k(ju1 r1, int r2);
 
-    void l(ju1 ju1Var, int i, Bundle bundle, long j);
+    void l(ju1 r1, int r2, Bundle r3, long r4);
 
-    void m0(ju1 ju1Var, int i, Surface surface);
+    void m0(ju1 r1, int r2, Surface r3);
 
-    void n0(ju1 ju1Var, int i, Bundle bundle);
+    void n0(ju1 r1, int r2, Bundle r3);
 
-    void o0(ju1 ju1Var, int i, Bundle bundle, boolean z);
+    void o0(ju1 r1, int r2, Bundle r3, boolean r4);
 
-    void p(ju1 ju1Var, int i);
+    void p(ju1 r1, int r2);
 
-    void p0(ju1 ju1Var);
+    void p0(ju1 r1);
 
-    void q(ju1 ju1Var, int i);
+    void q(ju1 r1, int r2);
 
-    void q0(ju1 ju1Var, int i, int i2);
+    void q0(ju1 r1, int r2, int r3);
 
-    void r0(ju1 ju1Var, int i, Bundle bundle);
+    void r0(ju1 r1, int r2, Bundle r3);
 
-    void s(ju1 ju1Var, int i, Bundle bundle, Bundle bundle2, boolean z);
+    void s(ju1 r1, int r2, Bundle r3, Bundle r4, boolean r5);
 
-    void t(ju1 ju1Var, int i, int i2, int i3);
+    void t(ju1 r1, int r2, int r3, int r4);
 
-    void t0(ju1 ju1Var, int i, Bundle bundle, Bundle bundle2);
+    void t0(ju1 r1, int r2, Bundle r3, Bundle r4);
 
-    void u(ju1 ju1Var, int i, IBinder iBinder, int i2, long j);
+    void u(ju1 r1, int r2, IBinder r3, int r4, long r5);
 
-    void v(ju1 ju1Var, int i);
+    void v(ju1 r1, int r2);
 
-    void v0(ju1 ju1Var, int i);
+    void v0(ju1 r1, int r2);
 
-    void w(ju1 ju1Var, int i, float f);
+    void w(ju1 r1, int r2, float r3);
 
-    void x(ju1 ju1Var, int i, float f);
+    void x(ju1 r1, int r2, float r3);
 
-    void x0(ju1 ju1Var, int i, boolean z, int i2);
+    void x0(ju1 r1, int r2, boolean r3, int r4);
 
-    void y(ju1 ju1Var, int i);
+    void y(ju1 r1, int r2);
 
-    void y0(ju1 ju1Var, int i, Bundle bundle);
+    void y0(ju1 r1, int r2, Bundle r3);
 
-    void z0(ju1 ju1Var, int i, Surface surface, int i2, int i3);
+    void z0(ju1 r1, int r2, Surface r3, int r4, int r5);
 }

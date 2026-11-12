@@ -6,9 +6,9 @@ public final class jy3 extends jx1 {
     public final transient bx1 q;
     public final transient ky3 r;
 
-    public jy3(bx1 bx1Var, ky3 ky3Var) {
-        this.q = bx1Var;
-        this.r = ky3Var;
+    public jy3(bx1 r1, ky3 r2) {
+        this.q = r1;
+        this.r = r2;
     }
 
     @Override // defpackage.jx1, defpackage.rw1
@@ -17,13 +17,16 @@ public final class jy3 extends jx1 {
     }
 
     @Override // defpackage.rw1
-    public final int b(int i, Object[] objArr) {
-        return this.r.b(i, objArr);
+    public final int b(int r1, Object[] r2) {
+        return this.r.b(r1, r2);
     }
 
     @Override // defpackage.rw1, java.util.AbstractCollection, java.util.Collection
-    public final boolean contains(Object obj) {
-        return this.q.get(obj) != null;
+    public final boolean contains(Object r1) {
+        if (this.q.get(r1) == null) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // defpackage.rw1
@@ -32,9 +35,8 @@ public final class jy3 extends jx1 {
     }
 
     @Override // defpackage.rw1
-    /* JADX INFO: renamed from: h */
-    public final o15 iterator() {
-        return this.r.listIterator(0);
+    public final o15 h() {
+        return this.r.m(0);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set

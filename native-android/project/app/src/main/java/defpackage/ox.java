@@ -11,55 +11,51 @@ public final class ox implements ej4 {
     public final /* synthetic */ jw p;
     public final /* synthetic */ wu3 q;
 
-    public ox(fw fwVar, jw jwVar, wu3 wu3Var) {
-        this.o = fwVar;
-        this.p = jwVar;
-        this.q = wu3Var;
+    public ox(fw r1, jw r2, wu3 r3) {
+        this.o = r1;
+        this.p = r2;
+        this.q = r3;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
-    public final void close() throws IOException {
-        boolean zH;
-        if (!this.n) {
-            tl1 tl1Var = ze5.a;
-            TimeUnit.MILLISECONDS.getClass();
-            try {
-                zH = ze5.h(this, 100);
-            } catch (IOException unused) {
-                zH = false;
-            }
-            if (!zH) {
-                this.n = true;
-                this.p.a();
-            }
-        }
+    public final void close() {
+        if (this.n == true) goto L10;
+        tl1 r0 = ze5.a;
+        TimeUnit.MILLISECONDS.getClass();
+        boolean r1 = ze5.h(this, 100);     // Catch: IOException -> L7
+    L8:
+        if (r1 == true) goto L10;
+        this.n = true;
+        this.p.a();
+    L7:
+        r1 = false;
+    L10:
         this.o.close();
     }
 
     @Override // defpackage.ej4
-    public final long read(tv tvVar, long j) throws IOException {
-        tvVar.getClass();
-        try {
-            long j2 = this.o.read(tvVar, j);
-            wu3 wu3Var = this.q;
-            if (j2 != -1) {
-                tvVar.n(wu3Var.o, tvVar.o - j2, j2);
-                wu3Var.b();
-                return j2;
-            }
-            if (!this.n) {
-                this.n = true;
-                wu3Var.close();
-            }
-            return -1L;
-        } catch (IOException e) {
-            if (this.n) {
-                throw e;
-            }
-            this.n = true;
-            this.p.a();
-            throw e;
-        }
+    public final long read(tv r10, long r11) {
+        r10.getClass();
+        long r6 = this.o.read(r10, r11);     // Catch: IOException -> L12
+        wu3 r8 = this.q;
+        if (r6 == (-1)) goto L7;
+        r10.n(r8.o, r10.o - r6, r6);
+        r8.b();
+        return r6;
+    L7:
+        if (this.n == true) goto L9;
+        this.n = true;
+        r8.close();
+    L9:
+        return -1;
+    L12:
+        e = move-exception;
+        if (this.n == true) goto L19;
+        this.n = true;
+        this.p.a();
+        throw e;
+    L19:
+        throw e;
     }
 
     @Override // defpackage.ej4

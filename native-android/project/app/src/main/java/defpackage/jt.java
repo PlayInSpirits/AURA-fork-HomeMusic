@@ -5,8 +5,8 @@ package defpackage;
 public final class jt extends l21 {
     public final Thread y;
 
-    public jt(Thread thread) {
-        this.y = thread;
+    public jt(Thread r1) {
+        this.y = r1;
     }
 
     @Override // defpackage.l21

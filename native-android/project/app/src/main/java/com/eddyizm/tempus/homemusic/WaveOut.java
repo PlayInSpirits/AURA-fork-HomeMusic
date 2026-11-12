@@ -17,6 +17,9 @@ public final class WaveOut {
     private String title;
     private List<? extends WaveTrack> tracks;
 
+    public WaveOut() {
+    }
+
     public final String getMode() {
         return this.mode;
     }
@@ -41,27 +44,27 @@ public final class WaveOut {
         return this.tracks;
     }
 
-    public final void setMode(String str) {
-        this.mode = str;
+    public final void setMode(String r1) {
+        this.mode = r1;
     }
 
-    public final void setPending(boolean z) {
-        this.pending = z;
+    public final void setPending(boolean r1) {
+        this.pending = r1;
     }
 
-    public final void setSeed(Map<String, ? extends Object> map) {
-        this.seed = map;
+    public final void setSeed(Map<String, ? extends Object> r1) {
+        this.seed = r1;
     }
 
-    public final void setSessionId(String str) {
-        this.sessionId = str;
+    public final void setSessionId(String r1) {
+        this.sessionId = r1;
     }
 
-    public final void setTitle(String str) {
-        this.title = str;
+    public final void setTitle(String r1) {
+        this.title = r1;
     }
 
-    public final void setTracks(List<? extends WaveTrack> list) {
-        this.tracks = list;
+    public final void setTracks(List<? extends WaveTrack> r1) {
+        this.tracks = r1;
     }
 }

@@ -5,13 +5,13 @@ package defpackage;
 public interface jn4 {
     void a();
 
-    default void b(ea eaVar) {
+    default void b(ea r1) {
     }
 
     default int c() {
         return 0;
     }
 
-    default void d(int i, long j) {
+    default void d(int r1, long r2) {
     }
 }

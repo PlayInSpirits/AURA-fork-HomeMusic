@@ -9,15 +9,14 @@ public final class cy4 extends wd0 {
     public final /* synthetic */ e10 q;
     public int r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public cy4(e10 e10Var, vd0 vd0Var) {
-        super(vd0Var);
-        this.q = e10Var;
+    public cy4(e10 r1, vd0 r2) {
+        this.q = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.p = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.p = r2;
         this.r |= Integer.MIN_VALUE;
         return this.q.a(null, this);
     }

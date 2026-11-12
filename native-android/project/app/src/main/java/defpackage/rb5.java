@@ -6,14 +6,14 @@ import android.view.Window;
 /* JADX INFO: loaded from: classes.dex */
 public final class rb5 extends qb5 {
     @Override // defpackage.su3
-    public final void C(boolean z) {
-        if (!z) {
-            K(16);
-            return;
-        }
-        Window window = this.g;
-        window.clearFlags(134217728);
-        window.addFlags(Integer.MIN_VALUE);
+    public final void C(boolean r3) {
+        if (r3 == false) goto L6;
+        Window r1 = this.g;
+        r1.clearFlags(134217728);
+        r1.addFlags(Integer.MIN_VALUE);
         J(16);
+        return;
+    L6:
+        K(16);
     }
 }

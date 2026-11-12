@@ -13,22 +13,22 @@ public final class v41 implements ViewTreeObserver.OnPreDrawListener {
     public final /* synthetic */ w41 p;
     public final /* synthetic */ ExpandableBehavior q;
 
-    public v41(ExpandableBehavior expandableBehavior, View view, int i, w41 w41Var) {
-        this.q = expandableBehavior;
-        this.n = view;
-        this.o = i;
-        this.p = w41Var;
+    public v41(ExpandableBehavior r1, View r2, int r3, w41 r4) {
+        this.q = r1;
+        this.n = r2;
+        this.o = r3;
+        this.p = r4;
     }
 
     @Override // android.view.ViewTreeObserver.OnPreDrawListener
     public final boolean onPreDraw() {
-        View view = this.n;
-        view.getViewTreeObserver().removeOnPreDrawListener(this);
-        ExpandableBehavior expandableBehavior = this.q;
-        if (expandableBehavior.n == this.o) {
-            Object obj = this.p;
-            expandableBehavior.w((View) obj, view, ((FloatingActionButton) obj).B.b, false);
-        }
+        View r0 = this.n;
+        r0.getViewTreeObserver().removeOnPreDrawListener(this);
+        ExpandableBehavior r1 = this.q;
+        if (r1.n != this.o) goto L5;
+        Object r5 = this.p;
+        r1.w((View) r5, r0, ((FloatingActionButton) r5).B.b, false);
+    L5:
         return false;
     }
 }

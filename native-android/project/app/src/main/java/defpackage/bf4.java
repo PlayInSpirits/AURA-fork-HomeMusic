@@ -8,7 +8,7 @@ import java.util.UUID;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class bf4 extends cu4 {
-    public static final Object q = new Object();
+    public static final Object q = null;
     public final long e;
     public final long f;
     public final long g;
@@ -23,51 +23,79 @@ public final class bf4 extends cu4 {
     public final an2 p;
 
     static {
-        um2 um2Var = new um2();
-        xm2 xm2Var = new xm2();
-        List list = Collections.EMPTY_LIST;
-        gy3 gy3Var = gy3.r;
-        zm2 zm2Var = new zm2();
-        cn2 cn2Var = cn2.d;
-        Uri uri = Uri.EMPTY;
-        rr2.w(((Uri) xm2Var.e) == null || ((UUID) xm2Var.d) != null);
-        if (uri != null) {
-            new bn2(uri, null, ((UUID) xm2Var.d) != null ? new ym2(xm2Var) : null, null, list, null, gy3Var, -9223372036854775807L);
-        }
-        new wm2(um2Var);
-        new an2(zm2Var);
-        do2 do2Var = do2.K;
+        q = new Object();
+        um2 r0 = new um2();
+        xm2 r1 = new xm2();
+        List r7 = Collections.EMPTY_LIST;
+        gy3 r9 = gy3.r;
+        zm2 r12 = new zm2();
+        cn2 r2 = cn2.d;
+        Uri r3 = Uri.EMPTY;
+        if (((Uri) r1.e) != null) goto L5;
+    L8:
+        boolean r4 = true;
+    L9:
+        rr2.w(r4);
+        if (r3 != null) goto L12;
+    L17:
+        new wm2(r0);
+        new an2(r12);
+        do2 r5 = do2.K;
+        return;
+    L12:
+        if (((UUID) r1.d) == null) goto L15;
+        ym2 r6 = new ym2(r1);
+    L16:
+        new bn2(r3, null, r6, null, r7, null, r9, -9223372036854775807L);
+        goto L17
+    L15:
+        r6 = null;
+        goto L16
+    L5:
+        if (((UUID) r1.d) != null) goto L8;
+        r4 = false;
+        goto L9
     }
 
-    public bf4(long j, long j2, long j3, long j4, long j5, long j6, boolean z, boolean z2, boolean z3, y41 y41Var, gn2 gn2Var, an2 an2Var) {
-        this.e = j;
-        this.f = j2;
-        this.g = j3;
-        this.h = j4;
-        this.i = j5;
-        this.j = j6;
-        this.k = z;
-        this.l = z2;
-        this.m = z3;
-        this.n = y41Var;
-        gn2Var.getClass();
-        this.o = gn2Var;
-        this.p = an2Var;
+    public bf4(long r1, long r3, long r5, long r7, long r9, long r11, boolean r13, boolean r14, boolean r15, y41 r16, gn2 r17, an2 r18) {
+        this.e = r1;
+        this.f = r3;
+        this.g = r5;
+        this.h = r7;
+        this.i = r9;
+        this.j = r11;
+        this.k = r13;
+        this.l = r14;
+        this.m = r15;
+        this.n = r16;
+        r17.getClass();
+        this.o = r17;
+        this.p = r18;
     }
 
     @Override // defpackage.cu4
-    public final int b(Object obj) {
-        return q != obj ? -1 : 0;
+    public final int b(Object r1) {
+        if (q == r1) goto L6;
+        return -1;
+    L6:
+        return 0;
     }
 
     @Override // defpackage.cu4
-    public final zt4 f(int i, zt4 zt4Var, boolean z) {
-        rr2.q(i, 1);
-        Object obj = z ? q : null;
-        long j = -this.i;
-        zt4Var.getClass();
-        zt4Var.i(null, obj, 0, this.g, j, z5.f, false);
-        return zt4Var;
+    public final zt4 f(int r11, zt4 r12, boolean r13) {
+        rr2.q(r11, 1);
+        if (r13 == false) goto L6;
+        Object r14 = q;
+    L5:
+        Object r2 = r14;
+        long r6 = -this.i;
+        r12.getClass();
+        z5 r8 = z5.f;
+        r12.i(null, r2, 0, this.g, r6, r8, false);
+        return r12;
+    L6:
+        r14 = null;
+        goto L5
     }
 
     @Override // defpackage.cu4
@@ -76,33 +104,34 @@ public final class bf4 extends cu4 {
     }
 
     @Override // defpackage.cu4
-    public final Object l(int i) {
-        rr2.q(i, 1);
+    public final Object l(int r1) {
+        rr2.q(r1, 1);
         return q;
     }
 
-    /* JADX WARN: Code duplicated, block: B:14:0x002d A[PHI: r1
-  0x002d: PHI (r1v2 long) = (r1v1 long), (r1v1 long), (r1v1 long), (r1v4 long) binds: [B:3:0x000c, B:5:0x0010, B:7:0x0016, B:12:0x002a] A[DONT_GENERATE, DONT_INLINE]] */
     @Override // defpackage.cu4
-    public final bu4 m(int i, bu4 bu4Var, long j) {
-        long j2;
-        rr2.q(i, 1);
-        long j3 = this.j;
-        boolean z = this.l;
-        if (!z || this.m || j == 0) {
-            j2 = j3;
-        } else {
-            long j4 = this.h;
-            if (j4 != -9223372036854775807L) {
-                j3 += j;
-                if (j3 <= j4) {
-                    j2 = j3;
-                }
-            }
-            j2 = -9223372036854775807L;
-        }
-        bu4Var.b(bu4.p, this.o, this.n, this.e, this.f, -9223372036854775807L, this.k, z, this.p, j2, this.h, 0, 0, this.i);
-        return bu4Var;
+    public final bu4 m(int r25, bu4 r26, long r27) {
+        rr2.q(r25, 1);
+        long r1 = this.j;
+        boolean r14 = this.l;
+        if (r14 == true) goto L5;
+    L14:
+        long r16 = r1;
+    L15:
+        r26.b(bu4.p, this.o, this.n, this.e, this.f, -9223372036854775807L, this.k, r14, this.p, r16, this.h, 0, 0, this.i);
+        return r26;
+    L5:
+        if (this.m == true) goto L14;
+        if (r27 == 0) goto L14;
+        long r3 = this.h;
+        if (r3 != (-9223372036854775807L)) goto L11;
+    L10:
+        r16 = -9223372036854775807L;
+        goto L15
+    L11:
+        r1 = r1 + r27;
+        if (r1 <= r3) goto L14;
+        goto L14
     }
 
     @Override // defpackage.cu4

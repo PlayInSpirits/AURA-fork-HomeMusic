@@ -9,21 +9,21 @@ import com.eddyizm.tempus.ui.fragment.ArtistCatalogueFragment;
 public final class gj implements SearchView.OnQueryTextListener {
     public final /* synthetic */ ArtistCatalogueFragment a;
 
-    public gj(ArtistCatalogueFragment artistCatalogueFragment) {
-        this.a = artistCatalogueFragment;
+    public gj(ArtistCatalogueFragment r1) {
+        this.a = r1;
     }
 
     @Override // android.widget.SearchView.OnQueryTextListener
-    public final boolean onQueryTextChange(String str) {
-        ArtistCatalogueFragment.h0(this.a, str);
+    public final boolean onQueryTextChange(String r1) {
+        ArtistCatalogueFragment.h0(this.a, r1);
         return true;
     }
 
     @Override // android.widget.SearchView.OnQueryTextListener
-    public final boolean onQueryTextSubmit(String str) {
-        ArtistCatalogueFragment artistCatalogueFragment = this.a;
-        Toast.makeText(artistCatalogueFragment.Z(), "Search: " + str, 0).show();
-        ArtistCatalogueFragment.h0(artistCatalogueFragment, str);
+    public final boolean onQueryTextSubmit(String r4) {
+        ArtistCatalogueFragment r3 = this.a;
+        Toast.makeText(r3.Z(), "Search: " + r4, 0).show();
+        ArtistCatalogueFragment.h0(r3, r4);
         return true;
     }
 }

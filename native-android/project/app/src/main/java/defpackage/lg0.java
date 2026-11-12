@@ -10,14 +10,18 @@ public final class lg0 {
     public final long c;
     public final long d;
 
-    public lg0(long j, long j2, List list) {
-        this.a = yw1.k(list);
-        this.b = j;
-        this.c = j2;
-        long j3 = -9223372036854775807L;
-        if (j != -9223372036854775807L && j2 != -9223372036854775807L) {
-            j3 = j + j2;
-        }
-        this.d = j3;
+    public lg0(long r3, long r5, List r7) {
+        this.a = yw1.k(r7);
+        this.b = r3;
+        this.c = r5;
+        long r0 = -9223372036854775807L;
+        if (r3 != (-9223372036854775807L)) goto L5;
+    L8:
+        this.d = r0;
+        return;
+    L5:
+        if (r5 == (-9223372036854775807L)) goto L8;
+        r0 = r3 + r5;
+        goto L8
     }
 }

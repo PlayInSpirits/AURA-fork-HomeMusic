@@ -8,19 +8,25 @@ import android.view.SoundEffectConstants;
 public final class ka implements wf1 {
     public final ra n;
 
-    public ka(ra raVar) {
-        this.n = raVar;
+    public ka(ra r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        int i = ((o91) obj).a;
-        boolean zBooleanValue = ((Boolean) obj2).booleanValue();
-        Integer numB = r91.b(i);
-        if (numB != null) {
-            int iIntValue = numB.intValue();
-            this.n.playSoundEffect(Build.VERSION.SDK_INT >= 31 ? pe.a.a(iIntValue, zBooleanValue) : SoundEffectConstants.getContantForFocusDirection(iIntValue));
-        }
+    public final Object invoke(Object r3, Object r4) {
+        int r5 = ((o91) r3).a;
+        boolean r6 = ((Boolean) r4).booleanValue();
+        Integer r7 = r91.b(r5);
+        if (r7 == null) goto L10;
+        int r8 = r7.intValue();
+        if (Build.VERSION.SDK_INT < 31) goto L7;
+        int r9 = pe.a.a(r8, r6);
+    L8:
+        this.n.playSoundEffect(r9);
+        goto L10
+    L7:
+        r9 = SoundEffectConstants.getContantForFocusDirection(r8);
+    L10:
         return j15.a;
     }
 }

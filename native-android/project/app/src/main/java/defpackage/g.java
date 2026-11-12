@@ -7,15 +7,15 @@ public final class g {
     public final int b;
     public final int c;
 
-    public g(String str, int i, int i2) {
-        this.b = i;
-        this.c = i2;
-        this.a = str;
+    public g(String r1, int r2, int r3) {
+        this.b = r2;
+        this.c = r3;
+        this.a = r1;
     }
 
-    public g(String str, int i, int i2, int i3, long j) {
-        this.a = str;
-        this.c = i;
-        this.b = i2;
+    public g(String r1, int r2, int r3, int r4, long r5) {
+        this.a = r1;
+        this.c = r2;
+        this.b = r3;
     }
 }

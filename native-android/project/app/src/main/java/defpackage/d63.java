@@ -28,55 +28,49 @@ public final class d63 implements e63 {
     /* JADX WARN: Type inference failed for: r7v8 */
     /* JADX WARN: Type inference failed for: r7v9 */
     @Override // defpackage.e63
-    public final boolean a(cx2 cx2Var) {
-        ?? f13Var = 0;
-        while (true) {
-            int i = 0;
-            if (cx2Var == 0) {
-                return false;
-            }
-            if (cx2Var instanceof rn3) {
-                if (((rn3) cx2Var).z()) {
-                    return true;
-                }
-            } else if ((cx2Var.p & 16) != 0 && (cx2Var instanceof fo0)) {
-                cx2 cx2Var2 = ((fo0) cx2Var).C;
-                while (cx2Var2 != null) {
-                    if ((cx2Var2.p & 16) != 0) {
-                        i++;
-                        if (i == 1) {
-                            f13Var = f13Var;
-                            cx2Var = cx2Var;
-                            f13Var = f13Var;
-                            cx2Var = cx2Var2;
-                        } else {
-                            if (f13Var == 0) {
-                                f13Var = new f13(new cx2[16]);
-                            }
-                            if (cx2Var != 0) {
-                                f13Var.b(cx2Var);
-                                cx2Var = 0;
-                            }
-                            f13Var.b(cx2Var2);
-                        }
-                    } else {
-                        f13Var = f13Var;
-                        cx2Var = cx2Var;
-                    }
-                    cx2Var2 = cx2Var2.s;
-                    f13Var = f13Var;
-                    cx2Var = cx2Var;
-                }
-                if (i == 1) {
-                    f13Var = f13Var;
-                    cx2Var = cx2Var;
-                } else {
-                    f13Var = f13Var;
-                    cx2Var = cx2Var;
-                }
-            }
-            cx2Var = j51.c(f13Var);
-        }
+    public final boolean a(cx2 r7) {
+        ?? r0 = 0;
+    L3:
+        int r1 = 0;
+        if (r7 == 0) goto L30;
+        if ((r7 instanceof rn3) == true) goto L8;
+        if ((r7.p & 16) == 0) goto L29;
+        if ((r7 instanceof fo0) == false) goto L29;
+        cx2 r2 = ((fo0) r7).C;
+        r0 = r0;
+        r7 = r7;
+    L15:
+        if (r2 == null) goto L27;
+        if ((r2.p & 16) == 0) goto L26;
+        r1 = r1 + 1;
+        r0 = r0;
+        if (r1 != 1) goto L21;
+        r7 = r2;
+        goto L26
+    L21:
+        if (r0 != 0) goto L23;
+        r0 = new f13(new cx2[16]);
+    L23:
+        if (r7 == 0) goto L25;
+        r0.b(r7);
+        r7 = 0;
+    L25:
+        r0.b(r2);
+    L26:
+        r2 = r2.s;
+        r0 = r0;
+        r7 = r7;
+        goto L15
+    L27:
+        if (r1 == 1) goto L3;
+    L29:
+        r7 = j51.c(r0);
+        goto L3
+    L8:
+        if (((rn3) r7).z() == false) goto L29;
+        return true;
+    L30:
+        return false;
     }
 
     @Override // defpackage.e63
@@ -85,8 +79,8 @@ public final class d63 implements e63 {
     }
 
     @Override // defpackage.e63
-    public final void i(c72 c72Var, long j, fm1 fm1Var, int i, boolean z) {
-        c72Var.z(j, fm1Var, i, z);
+    public final void i(c72 r1, long r2, fm1 r4, int r5, boolean r6) {
+        r1.z(r2, r4, r5, r6);
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -114,75 +108,72 @@ public final class d63 implements e63 {
     /* JADX WARN: Type inference failed for: r3v9 */
     /* JADX WARN: Type inference failed for: r4v4 */
     @Override // defpackage.e63
-    public final boolean k(fm1 fm1Var, c72 c72Var) {
-        f63 f63Var = (f63) c72Var.Q.e;
-        f63Var.getClass();
-        cx2 cx2VarD0 = f63Var.D0(g63.f(16));
-        if (cx2VarD0 != null && cx2VarD0.A) {
-            if (!cx2VarD0.n.A) {
-                cz1.b("visitLocalDescendants called on an unattached node");
-            }
-            cx2 cx2Var = cx2VarD0.n;
-            if ((cx2Var.q & 16) != 0) {
-                while (cx2Var != null) {
-                    if ((cx2Var.p & 16) != 0) {
-                        ?? C = cx2Var;
-                        ?? f13Var = 0;
-                        while (C != 0) {
-                            if (C instanceof rn3) {
-                                if (((rn3) C).X()) {
-                                    fm1Var.p = fm1Var.n.b - 1;
-                                    return true;
-                                }
-                            } else if ((C.p & 16) != 0 && (C instanceof fo0)) {
-                                cx2 cx2Var2 = ((fo0) C).C;
-                                int i = 0;
-                                while (cx2Var2 != null) {
-                                    if ((cx2Var2.p & 16) != 0) {
-                                        i++;
-                                        if (i == 1) {
-                                            C = C;
-                                            f13Var = f13Var;
-                                            f13Var = f13Var;
-                                            C = cx2Var2;
-                                        } else {
-                                            if (f13Var == 0) {
-                                                f13Var = new f13(new cx2[16]);
-                                            }
-                                            if (C != 0) {
-                                                f13Var.b(C);
-                                                C = 0;
-                                            }
-                                            f13Var.b(cx2Var2);
-                                        }
-                                    } else {
-                                        C = C;
-                                        f13Var = f13Var;
-                                    }
-                                    cx2Var2 = cx2Var2.s;
-                                    C = C;
-                                    f13Var = f13Var;
-                                }
-                                if (i == 1) {
-                                    C = C;
-                                    f13Var = f13Var;
-                                } else {
-                                    C = C;
-                                    f13Var = f13Var;
-                                }
-                            }
-                            C = j51.c(f13Var);
-                        }
-                    }
-                    cx2Var = cx2Var.s;
-                }
-            }
-        }
+    public final boolean k(fm1 r9, c72 r10) {
+        f63 r8 = (f63) r10.Q.e;
+        r8.getClass();
+        cx2 r11 = r8.D0(g63.f(16));
+        if (r11 != null) goto L6;
+    L44:
         return false;
+    L6:
+        if (r11.A == false) goto L44;
+        if (r11.n.A == true) goto L10;
+        cz1.b("visitLocalDescendants called on an unattached node");
+    L10:
+        cx2 r12 = r11.n;
+        if ((r12.q & 16) == 0) goto L44;
+    L12:
+        if (r12 == null) goto L44;
+        if ((r12.p & 16) == 0) goto L43;
+        ?? r2 = r12;
+        ?? r3 = 0;
+    L16:
+        if (r2 == 0) goto L43;
+        if ((r2 instanceof rn3) == true) goto L20;
+        if ((r2.p & 16) == 0) goto L42;
+        if ((r2 instanceof fo0) == false) goto L42;
+        cx2 r4 = ((fo0) r2).C;
+        int r6 = 0;
+        r2 = r2;
+        r3 = r3;
+    L28:
+        if (r4 == null) goto L40;
+        if ((r4.p & 16) == 0) goto L39;
+        r6 = r6 + 1;
+        r3 = r3;
+        if (r6 != 1) goto L34;
+        r2 = r4;
+        goto L39
+    L34:
+        if (r3 != 0) goto L36;
+        r3 = new f13(new cx2[16]);
+    L36:
+        if (r2 == 0) goto L38;
+        r3.b(r2);
+        r2 = 0;
+    L38:
+        r3.b(r4);
+    L39:
+        r4 = r4.s;
+        r2 = r2;
+        r3 = r3;
+        goto L28
+    L40:
+        if (r6 == 1) goto L16;
+    L42:
+        r2 = j51.c(r3);
+        goto L16
+    L20:
+        if (((rn3) r2).X() == false) goto L42;
+        r9.p = r9.n.b - 1;
+        return true;
+    L43:
+        r12 = r12.s;
+        goto L12
     }
 
     @Override // defpackage.e63
-    public final boolean m(c72 c72Var) {
+    public final boolean m(c72 r1) {
         return true;
     }
 }

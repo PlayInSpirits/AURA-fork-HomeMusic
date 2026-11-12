@@ -7,16 +7,16 @@ import java.util.List;
 public interface k51 {
     void a();
 
-    int b(l51 l51Var, t71 t71Var);
+    int b(l51 r1, t71 r2);
 
-    boolean c(l51 l51Var);
+    boolean c(l51 r1);
 
-    void d(long j, long j2);
+    void d(long r1, long r3);
 
     default List e() {
-        vw1 vw1Var = yw1.o;
+        vw1 r0 = yw1.o;
         return gy3.r;
     }
 
-    void f(m51 m51Var);
+    void f(m51 r1);
 }

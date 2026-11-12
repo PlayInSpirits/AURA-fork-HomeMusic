@@ -13,143 +13,89 @@ public final class jz1 {
     public final Serializable f;
 
     /* JADX WARN: Multi-variable type inference failed */
-    public jz1(jz1[] jz1VarArr) {
-        final int i = 0;
+    public jz1(jz1[] r6) {
+        final int r0 = 0;
         this.a = 0;
-        this.f = jz1VarArr;
-        int length = jz1VarArr.length;
-        final rp1[] rp1VarArr = new rp1[length];
-        for (int i2 = 0; i2 < length; i2++) {
-            rp1VarArr[i2] = ((jz1[]) this.f)[i2].b();
-        }
-        final int i3 = 1;
-        this.b = new rp1(1, new wf1() { // from class: v45
-            @Override // defpackage.wf1
-            public final Object invoke(Object obj, Object obj2) {
-                float fD;
-                int i4 = i3;
-                rp1[] rp1VarArr2 = rp1VarArr;
-                ig3 ig3Var = (ig3) obj;
-                float fFloatValue = ((Float) obj2).floatValue();
-                switch (i4) {
-                    case 0:
-                        fD = zz1.d(ig3Var, false, rp1VarArr2, fFloatValue);
-                        break;
-                    default:
-                        fD = zz1.d(ig3Var, true, rp1VarArr2, fFloatValue);
-                        break;
-                }
-                return Float.valueOf(fD);
-            }
-        });
-        int length2 = ((jz1[]) this.f).length;
-        final rp1[] rp1VarArr2 = new rp1[length2];
-        for (int i4 = 0; i4 < length2; i4++) {
-            rp1VarArr2[i4] = ((jz1[]) this.f)[i4].d();
-        }
-        this.c = new rp1(0, new wf1() { // from class: qp1
-            @Override // defpackage.wf1
-            public final Object invoke(Object obj, Object obj2) {
-                float fD;
-                int i5 = i3;
-                rp1[] rp1VarArr3 = rp1VarArr2;
-                ig3 ig3Var = (ig3) obj;
-                float fFloatValue = ((Float) obj2).floatValue();
-                switch (i5) {
-                    case 0:
-                        fD = zz1.d(ig3Var, false, rp1VarArr3, fFloatValue);
-                        break;
-                    default:
-                        fD = zz1.d(ig3Var, true, rp1VarArr3, fFloatValue);
-                        break;
-                }
-                return Float.valueOf(fD);
-            }
-        });
-        int length3 = ((jz1[]) this.f).length;
-        final rp1[] rp1VarArr3 = new rp1[length3];
-        for (int i5 = 0; i5 < length3; i5++) {
-            rp1VarArr3[i5] = ((jz1[]) this.f)[i5].c();
-        }
-        this.d = new rp1(1, new wf1() { // from class: v45
-            @Override // defpackage.wf1
-            public final Object invoke(Object obj, Object obj2) {
-                float fD;
-                int i6 = i;
-                rp1[] rp1VarArr4 = rp1VarArr3;
-                ig3 ig3Var = (ig3) obj;
-                float fFloatValue = ((Float) obj2).floatValue();
-                switch (i6) {
-                    case 0:
-                        fD = zz1.d(ig3Var, false, rp1VarArr4, fFloatValue);
-                        break;
-                    default:
-                        fD = zz1.d(ig3Var, true, rp1VarArr4, fFloatValue);
-                        break;
-                }
-                return Float.valueOf(fD);
-            }
-        });
-        int length4 = ((jz1[]) this.f).length;
-        final rp1[] rp1VarArr4 = new rp1[length4];
-        for (int i6 = 0; i6 < length4; i6++) {
-            rp1VarArr4[i6] = ((jz1[]) this.f)[i6].a();
-        }
-        this.e = new rp1(0, new wf1() { // from class: qp1
-            @Override // defpackage.wf1
-            public final Object invoke(Object obj, Object obj2) {
-                float fD;
-                int i7 = i;
-                rp1[] rp1VarArr5 = rp1VarArr4;
-                ig3 ig3Var = (ig3) obj;
-                float fFloatValue = ((Float) obj2).floatValue();
-                switch (i7) {
-                    case 0:
-                        fD = zz1.d(ig3Var, false, rp1VarArr5, fFloatValue);
-                        break;
-                    default:
-                        fD = zz1.d(ig3Var, true, rp1VarArr5, fFloatValue);
-                        break;
-                }
-                return Float.valueOf(fD);
-            }
-        });
+        this.f = r6;
+        int r7 = r6.length;
+        final rp1[] r1 = new rp1[r7];
+        int r2 = 0;
+    L3:
+        if (r2 >= r7) goto L5;
+        r1[r2] = ((jz1[]) this.f)[r2].b();
+        r2 = r2 + 1;
+        goto L3
+    L5:
+        final int r3 = 1;
+        this.b = new rp1(1, new v45(r1, r3));
+        int r8 = ((jz1[]) this.f).length;
+        final rp1[] r4 = new rp1[r8];
+        int r5 = 0;
+    L6:
+        if (r5 >= r8) goto L8;
+        r4[r5] = ((jz1[]) this.f)[r5].d();
+        r5 = r5 + 1;
+        goto L6
+    L8:
+        this.c = new rp1(0, new qp1(r4, r3));
+        int r9 = ((jz1[]) this.f).length;
+        final rp1[] r10 = new rp1[r9];
+        int r11 = 0;
+    L9:
+        if (r11 >= r9) goto L11;
+        r10[r11] = ((jz1[]) this.f)[r11].c();
+        r11 = r11 + 1;
+        goto L9
+    L11:
+        this.d = new rp1(1, new v45(r10, r0));
+        int r12 = ((jz1[]) this.f).length;
+        final rp1[] r13 = new rp1[r12];
+        int r14 = 0;
+    L12:
+        if (r14 >= r12) goto L14;
+        r13[r14] = ((jz1[]) this.f)[r14].a();
+        r14 = r14 + 1;
+        goto L12
+    L14:
+        this.e = new rp1(0, new qp1(r13, r0));
     }
 
     public final rp1 a() {
-        int i = this.a;
+        int r0 = this.a;
         return this.e;
     }
 
     public final rp1 b() {
-        int i = this.a;
+        int r0 = this.a;
         return this.b;
     }
 
     public final rp1 c() {
-        int i = this.a;
+        int r0 = this.a;
         return this.d;
     }
 
     public final rp1 d() {
-        int i = this.a;
+        int r0 = this.a;
         return this.c;
     }
 
     public final String toString() {
-        int i = this.a;
-        Object obj = this.f;
-        switch (i) {
-            case 0:
-                return ti.n0(57, (jz1[]) obj);
-            default:
-                return xa3.h("RectRulers(", (String) obj, ")");
-        }
+        int r0 = this.a;
+        Object r2 = this.f;
+        switch(r0) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return xa3.h("RectRulers(", (String) r2, ")");
+    L7:
+        return ti.n0(57, (jz1[]) r2);
     }
 
-    public jz1(String str) {
+    public jz1(String r4) {
         this.a = 1;
-        this.f = str;
+        this.f = r4;
         this.b = new rp1(1, null);
         this.c = new rp1(0, null);
         this.d = new rp1(1, null);

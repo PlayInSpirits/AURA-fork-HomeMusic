@@ -9,14 +9,13 @@ public final class cj extends cx3 {
     public final ns3 u;
     public final /* synthetic */ s6 v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public cj(s6 s6Var, ns3 ns3Var) {
-        this.v = s6Var;
-        ConstraintLayout constraintLayout = (ConstraintLayout) ns3Var.o;
-        super(constraintLayout);
-        this.u = ns3Var;
-        constraintLayout.setOnClickListener(new p6(5, this));
-        constraintLayout.setOnLongClickListener(new q6(5, this));
-        ((TextView) ns3Var.q).setSelected(true);
+    public cj(s6 r3, ns3 r4) {
+        this.v = r3;
+        ConstraintLayout r5 = (ConstraintLayout) r4.o;
+        super(r5);
+        this.u = r4;
+        r5.setOnClickListener(new p6(5, this));
+        r5.setOnLongClickListener(new q6(5, this));
+        ((TextView) r4.q).setSelected(true);
     }
 }

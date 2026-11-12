@@ -6,13 +6,13 @@ public final class tn4 implements Comparable {
     public final long n;
     public final byte[] o;
 
-    public tn4(long j, byte[] bArr) {
-        this.n = j;
-        this.o = bArr;
+    public tn4(long r1, byte[] r3) {
+        this.n = r1;
+        this.o = r3;
     }
 
     @Override // java.lang.Comparable
-    public final int compareTo(Object obj) {
-        return Long.compare(this.n, ((tn4) obj).n);
+    public final int compareTo(Object r3) {
+        return Long.compare(this.n, ((tn4) r3).n);
     }
 }

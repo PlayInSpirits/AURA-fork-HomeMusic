@@ -9,11 +9,10 @@ public final class qo1 extends cx3 {
     public final rf2 u;
     public final /* synthetic */ ro1 v;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public qo1(ro1 ro1Var, rf2 rf2Var) {
-        super((ConstraintLayout) rf2Var.n);
-        this.v = ro1Var;
-        this.u = rf2Var;
-        ((CheckBox) rf2Var.o).setOnCheckedChangeListener(new g20(1, this));
+    public qo1(ro1 r2, rf2 r3) {
+        this.v = r2;
+        super((ConstraintLayout) r3.n);
+        this.u = r3;
+        ((CheckBox) r3.o).setOnCheckedChangeListener(new g20(1, this));
     }
 }

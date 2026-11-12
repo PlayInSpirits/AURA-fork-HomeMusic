@@ -4,7 +4,6 @@ import android.util.Log;
 import com.eddyizm.tempus.App;
 import com.eddyizm.tempus.database.AppDatabase;
 import com.eddyizm.tempus.model.Queue;
-import com.eddyizm.tempus.subsonic.models.Child;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -14,73 +13,52 @@ import java.util.stream.Collectors;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class vs3 {
-    public static final ExecutorService b = Executors.newSingleThreadExecutor();
-    public final ns3 a = AppDatabase.y().E();
+    public static final ExecutorService b = null;
+    public final ns3 a;
 
-    public static void d(List list, String str, long j) {
-        Log.d("QueueRepository", "Saving play queue to server - Items: " + list.size() + ", Current: " + str);
-        rm3 rm3VarB = App.f(false).b();
-        rm3VarB.getClass();
+    static {
+        b = Executors.newSingleThreadExecutor();
+    }
+
+    public vs3() {
+        this.a = AppDatabase.y().E();
+    }
+
+    public static void d(List r8, String r9, long r10) {
+        Log.d("QueueRepository", "Saving play queue to server - Items: " + r8.size() + ", Current: " + r9);
+        rm3 r0 = App.f(false).b();
+        r0.getClass();
         Log.d("BookmarksClient", "savePlayQueue()");
-        ((mt) rm3VarB.o).e(((pn4) rm3VarB.n).f(), list, str, j).enqueue(new hh3(8));
+        ((mt) r0.o).e(((pn4) r0.n).f(), r8, r9, r10).enqueue(new hh3(8));
     }
 
     public final Queue a() {
-        lg1 lg1Var = new lg1(22, this.a);
-        Thread thread = new Thread(lg1Var);
-        thread.start();
-        try {
-            thread.join();
-            return (Queue) lg1Var.p;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return null;
-        }
+        lg1 r0 = new lg1(22, this.a);
+        Thread r2 = new Thread(r0);
+        r2.start();
+        r2.join();     // Catch: InterruptedException -> L5
+        return (Queue) r0.p;
+    L5:
+        e = move-exception;
+        e.printStackTrace();
+        return null;
     }
 
     public final List b() {
-        ArrayList arrayList = new ArrayList();
-        lg1 lg1Var = new lg1(23, this.a);
-        Thread thread = new Thread(lg1Var);
-        thread.start();
-        try {
-            thread.join();
-            return (List) ((List) lg1Var.p).stream().map(new bi2(29)).collect(Collectors.toList());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return arrayList;
-        }
+        ArrayList r0 = new ArrayList();
+        lg1 r1 = new lg1(23, this.a);
+        Thread r3 = new Thread(r1);
+        r3.start();
+        r3.join();     // Catch: InterruptedException -> L5
+        return (List) ((List) r1.p).stream().map(new bi2(29)).collect(Collectors.toList());
+    L5:
+        e = move-exception;
+        e.printStackTrace();
+        return r0;
     }
 
-    public final void c(final List list, final boolean z, final int i) {
-        b.execute(new Runnable() { // from class: ts3
-            @Override // java.lang.Runnable
-            public final void run() {
-                int size;
-                vs3 vs3Var = this.n;
-                ns3 ns3Var = vs3Var.a;
-                List arrayList = new ArrayList();
-                int i2 = 0;
-                if (z) {
-                    size = 0;
-                } else {
-                    arrayList = ns3Var.c();
-                    size = i;
-                }
-                if (size < 0) {
-                    size = 0;
-                } else if (size > arrayList.size()) {
-                    size = arrayList.size();
-                }
-                List list2 = (List) new ArrayList(list).stream().filter(new tj(vs3Var, arrayList)).collect(Collectors.toList());
-                for (int i3 = 0; i3 < list2.size(); i3++) {
-                    arrayList.add(size + i3, new Queue((Child) list2.get(i3)));
-                }
-                for (int i4 = 0; i4 < arrayList.size(); i4++) {
-                    ((Queue) arrayList.get(i4)).setTrackOrder(i4);
-                }
-                xl.E((s24) ns3Var.o, false, true, new ls3(ns3Var, arrayList, i2));
-            }
-        });
+    public final void c(final List r2, final boolean r3, final int r4) {
+        Runnable r0 = new ts3(this, r4, r3, r2);
+        b.execute(r0);
     }
 }

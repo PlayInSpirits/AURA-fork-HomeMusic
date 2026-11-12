@@ -19,7 +19,6 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -33,58 +32,69 @@ public class vz3 extends lq {
     public ArrayList O;
     public vz3 P;
     public vz3 Q;
-    public boolean R = true;
+    public boolean R;
     public boolean S;
     public boolean T;
 
     static {
+        g04 r0 = (g04) ((g04) ((g04) new g04().e(xq0.d)).s()).y(true);
     }
 
-    public vz3(a aVar, c04 c04Var, Class cls, Context context) {
-        g04 g04Var;
-        this.J = c04Var;
-        this.K = cls;
-        this.I = context;
-        oi oiVar = c04Var.n.p.f;
-        jx4 jx4Var = (jx4) oiVar.get(cls);
-        if (jx4Var == null) {
-            for (Map.Entry entry : (n60) oiVar.entrySet()) {
-                if (((Class) entry.getKey()).isAssignableFrom(cls)) {
-                    jx4Var = (jx4) entry.getValue();
-                }
-            }
-        }
-        this.M = jx4Var == null ? ii1.k : jx4Var;
-        this.L = aVar.p;
-        Iterator it = c04Var.v.iterator();
-        while (it.hasNext()) {
-            F((zz3) it.next());
-        }
-        synchronized (c04Var) {
-            g04Var = c04Var.w;
-        }
-        a(g04Var);
+    public vz3(a r4, c04 r5, Class r6, Context r7) {
+        this.R = true;
+        this.J = r5;
+        this.K = r6;
+        this.I = r7;
+        oi r8 = r5.n.p.f;
+        jx4 r0 = (jx4) r8.get(r6);
+        if (r0 != null) goto L10;
+        Iterator r9 = ((n60) r8.entrySet()).iterator();
+    L6:
+        if (r9.hasNext() == false) goto L10;
+        Map.Entry r1 = (Map.Entry) r9.next();
+        if (((Class) r1.getKey()).isAssignableFrom(r6) == false) goto L6;
+        r0 = (jx4) r1.getValue();
+    L10:
+        if (r0 != null) goto L12;
+        r0 = ii1.k;
+    L12:
+        this.M = r0;
+        this.L = r4.p;
+        Iterator r10 = r5.v.iterator();
+    L14:
+        if (r10.hasNext() == false) goto L16;
+        F((zz3) r10.next());
+        goto L14
+    L16:
+        monitor-enter(r5);
+        g04 r11 = r5.w;     // Catch: Throwable -> L21
+        monitor-exit(r5);
+        G(r11);
+        return;
+    L21:
+        th = move-exception;
+        throw th;
     }
 
-    public vz3 F(zz3 zz3Var) {
-        if (this.E) {
-            return clone().F(zz3Var);
-        }
-        if (zz3Var != null) {
-            if (this.O == null) {
-                this.O = new ArrayList();
-            }
-            this.O.add(zz3Var);
-        }
+    public vz3 F(zz3 r2) {
+        if (this.E == true) goto L5;
+        if (r2 != null) goto L8;
+    L11:
         u();
         return this;
+    L8:
+        if (this.O != null) goto L10;
+        this.O = new ArrayList();
+    L10:
+        this.O.add(r2);
+        goto L11
+    L5:
+        return I().F(r2);
     }
 
-    @Override // defpackage.lq
-    /* JADX INFO: renamed from: G, reason: merged with bridge method [inline-methods] */
-    public vz3 a(lq lqVar) {
-        h12.e(lqVar);
-        return (vz3) super.a(lqVar);
+    public vz3 G(lq r1) {
+        h12.e(r1);
+        return (vz3) super.a(r1);
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -98,282 +108,359 @@ public class vz3 extends lq {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public final pz3 H(Object obj, wq4 wq4Var, zz3 zz3Var, wz3 wz3Var, jx4 jx4Var, eq3 eq3Var, int i, int i2, lq lqVar, Executor executor) {
-        wz3 wz3Var2;
-        wz3 e21Var;
-        lq lqVar2;
-        pz3 cf4Var;
-        eq3 eq3Var2;
-        if (this.Q != null) {
-            e21Var = new e21(obj, wz3Var);
-            wz3Var2 = e21Var;
-        } else {
-            wz3Var2 = null;
-            e21Var = wz3Var;
-        }
-        vz3 vz3Var = this.P;
-        if (vz3Var == null) {
-            Context context = this.I;
-            ii1 ii1Var = this.L;
-            lqVar2 = lqVar;
-            cf4Var = new cf4(context, ii1Var, obj, this.N, this.K, lqVar2, i, i2, eq3Var, wq4Var, zz3Var, this.O, e21Var, ii1Var.g, jx4Var.n, executor);
-        } else {
-            if (this.T) {
-                kf2.o("You cannot use a request as both the main request and a thumbnail, consider using clone() on the request(s) passed to thumbnail()");
-                return null;
-            }
-            jx4 jx4Var2 = vz3Var.R ? jx4Var : vz3Var.M;
-            if (lq.j(vz3Var.n, 8)) {
-                eq3Var2 = this.P.q;
-            } else {
-                int iOrdinal = eq3Var.ordinal();
-                if (iOrdinal == 0 || iOrdinal == 1) {
-                    eq3Var2 = eq3.n;
-                } else if (iOrdinal == 2) {
-                    eq3Var2 = eq3.o;
-                } else {
-                    if (iOrdinal != 3) {
-                        kf2.l(this.q, "unknown priority: ");
-                        return null;
-                    }
-                    eq3Var2 = eq3.p;
-                }
-            }
-            eq3 eq3Var3 = eq3Var2;
-            vz3 vz3Var2 = this.P;
-            int i3 = vz3Var2.v;
-            int i4 = vz3Var2.u;
-            if (e35.I(i, i2)) {
-                vz3 vz3Var3 = this.P;
-                if (!e35.I(vz3Var3.v, vz3Var3.u)) {
-                    i3 = lqVar.v;
-                    i4 = lqVar.u;
-                }
-            }
-            int i5 = i4;
-            int i6 = i3;
-            tt4 tt4Var = new tt4(obj, e21Var);
-            Context context2 = this.I;
-            ii1 ii1Var2 = this.L;
-            cf4 cf4Var2 = new cf4(context2, ii1Var2, obj, this.N, this.K, lqVar, i, i2, eq3Var, wq4Var, zz3Var, this.O, tt4Var, ii1Var2.g, jx4Var.n, executor);
-            this.T = true;
-            vz3 vz3Var4 = this.P;
-            pz3 pz3VarH = vz3Var4.H(obj, wq4Var, zz3Var, tt4Var, jx4Var2, eq3Var3, i6, i5, vz3Var4, executor);
-            this.T = false;
-            tt4Var.c = cf4Var2;
-            tt4Var.d = pz3VarH;
-            lqVar2 = lqVar;
-            cf4Var = tt4Var;
-        }
-        if (wz3Var2 == null) {
-            return cf4Var;
-        }
-        vz3 vz3Var5 = this.Q;
-        int i7 = vz3Var5.v;
-        int i8 = vz3Var5.u;
-        if (e35.I(i, i2)) {
-            vz3 vz3Var6 = this.Q;
-            if (!e35.I(vz3Var6.v, vz3Var6.u)) {
-                i7 = lqVar2.v;
-                i8 = lqVar2.u;
-            }
-        }
-        vz3 vz3Var7 = this.Q;
-        e21 e21Var2 = wz3Var2;
-        pz3 pz3VarH2 = vz3Var7.H(obj, wq4Var, zz3Var, e21Var2, vz3Var7.M, vz3Var7.q, i7, i8, vz3Var7, executor);
-        e21Var2.c = cf4Var;
-        e21Var2.d = pz3VarH2;
-        return e21Var2;
+    public final pz3 H(Object r24, wq4 r25, zz3 r26, wz3 r27, jx4 r28, eq3 r29, int r30, int r31, lq r32, Executor r33) {
+        if (this.Q == null) goto L5;
+        wz3 r14 = new e21(r24, r27);
+        wz3 r18 = r14;
+    L6:
+        vz3 r2 = this.P;
+        if (r2 != null) goto L9;
+        Context r3 = this.I;
+        ii1 r4 = this.L;
+        lq r7 = r32;
+        pz3 r15 = new cf4(r3, r4, r24, this.N, this.K, r7, r30, r31, r29, r25, r26, this.O, r14, r4.g, r28.n, r33);
+    L39:
+        if (r18 != null) goto L41;
+        return r15;
+    L41:
+        vz3 r1 = this.Q;
+        int r5 = r1.v;
+        int r6 = r1.u;
+        if (e35.I(r30, r31) == false) goto L46;
+        vz3 r8 = this.Q;
+        if (e35.I(r8.v, r8.u) == true) goto L46;
+        r5 = r7.v;
+        r6 = r7.u;
+    L46:
+        vz3 r0 = this.Q;
+        jx4 r9 = r0.M;
+        eq3 r10 = r0.q;
+        e21 r11 = r18;
+        pz3 r12 = r0.H(r24, r25, r26, r11, r9, r10, r5, r6, r0, r33);
+        r11.c = r15;
+        r11.d = r12;
+        return r11;
+    L9:
+        if (this.T == true) goto L36;
+        jx4 r13 = r2.M;
+        if (r2.R == false) goto L13;
+        jx4 r19 = r28;
+    L15:
+        if (lq.j(r2.n, 8) == false) goto L18;
+        eq3 r16 = this.P.q;
+    L17:
+        eq3 r20 = r16;
+        vz3 r17 = this.P;
+        int r21 = r17.v;
+        int r22 = r17.u;
+        if (e35.I(r30, r31) == false) goto L35;
+        vz3 r23 = this.P;
+        if (e35.I(r23.v, r23.u) == true) goto L35;
+        r21 = r32.v;
+        r22 = r32.u;
+    L35:
+        int r210 = r22;
+        int r211 = r21;
+        tt4 r110 = new tt4(r24, r14);
+        Context r34 = this.I;
+        ii1 r35 = this.L;
+        cf4 r36 = new cf4(r34, r35, r24, this.N, this.K, r32, r30, r31, r29, r25, r26, this.O, r110, r35.g, r28.n, r33);
+        this.T = true;
+        vz3 r37 = this.P;
+        pz3 r38 = r37.H(r24, r25, r26, r110, r19, r20, r211, r210, r37, r33);
+        this.T = false;
+        r110.c = r36;
+        r110.d = r38;
+        r7 = r32;
+        r15 = r110;
+        goto L39
+    L18:
+        int r39 = r29.ordinal();
+        if (r39 == 0) goto L29;
+        if (r39 == 1) goto L29;
+        if (r39 != 2) goto L24;
+        r16 = eq3.o;
+        goto L17
+    L24:
+        if (r39 != 3) goto L26;
+        r16 = eq3.p;
+        goto L17
+    L26:
+        kf2.l(this.q, "unknown priority: ");
+        return null;
+    L29:
+        r16 = eq3.n;
+        goto L17
+    L13:
+        r19 = r13;
+        goto L15
+    L36:
+        kf2.o("You cannot use a request as both the main request and a thumbnail, consider using clone() on the request(s) passed to thumbnail()");
+        return null;
+    L5:
+        r18 = null;
+        r14 = r27;
+        goto L6
     }
 
-    @Override // defpackage.lq
-    /* JADX INFO: renamed from: I, reason: merged with bridge method [inline-methods] */
-    public vz3 clone() {
-        vz3 vz3Var = (vz3) super.clone();
-        vz3Var.M = vz3Var.M.clone();
-        if (vz3Var.O != null) {
-            vz3Var.O = new ArrayList(vz3Var.O);
-        }
-        vz3 vz3Var2 = vz3Var.P;
-        if (vz3Var2 != null) {
-            vz3Var.P = vz3Var2.clone();
-        }
-        vz3 vz3Var3 = vz3Var.Q;
-        if (vz3Var3 != null) {
-            vz3Var.Q = vz3Var3.clone();
-        }
-        return vz3Var;
+    public vz3 I() {
+        vz3 r2 = (vz3) super.c();
+        r2.M = r2.M.a();
+        if (r2.O == null) goto L5;
+        r2.O = new ArrayList(r2.O);
+    L5:
+        vz3 r0 = r2.P;
+        if (r0 == null) goto L8;
+        r2.P = r0.I();
+    L8:
+        vz3 r1 = r2.Q;
+        if (r1 == null) goto L11;
+        r2.Q = r1.I();
+    L11:
+        return r2;
     }
 
-    public final void J(wq4 wq4Var, yz3 yz3Var, lq lqVar, Executor executor) {
-        h12.e(wq4Var);
-        if (!this.S) {
-            kf2.n("You must call #load() before calling #into()");
-            return;
-        }
-        pz3 pz3VarH = H(new Object(), wq4Var, yz3Var, null, this.M, lqVar.q, lqVar.v, lqVar.u, lqVar, executor);
-        pz3 pz3VarL = wq4Var.l();
-        if (pz3VarH.e(pz3VarL) && (lqVar.t || !pz3VarL.d())) {
-            h12.f(pz3VarL, "Argument must not be null");
-            if (pz3VarL.isRunning()) {
-                return;
-            }
-            pz3VarL.k();
-            return;
-        }
-        this.J.q(wq4Var);
-        wq4Var.e(pz3VarH);
-        c04 c04Var = this.J;
-        synchronized (c04Var) {
-            c04Var.s.n.add(wq4Var);
-            mf4 mf4Var = c04Var.q;
-            ((Set) mf4Var.p).add(pz3VarH);
-            if (mf4Var.o) {
-                pz3VarH.clear();
-                if (Log.isLoggable("RequestTracker", 2)) {
-                    Log.v("RequestTracker", "Paused, delaying request");
-                }
-                ((HashSet) mf4Var.q).add(pz3VarH);
-            } else {
-                pz3VarH.k();
-            }
-        }
+    public final void J(wq4 r12, yz3 r13, lq r14, Executor r15) {
+        h12.e(r12);
+        if (this.S == false) goto L29;
+        pz3 r1 = H(new Object(), r12, r13, null, this.M, r14.q, r14.v, r14.u, r14, r15);
+        pz3 r3 = r12.l();
+        if (r1.e(r3) == true) goto L7;
+    L15:
+        this.J.q(r12);
+        r12.e(r1);
+        c04 r4 = this.J;
+        monitor-enter(r4);
+        r4.s.n.add(r12);     // Catch: Throwable -> L26
+        mf4 r0 = r4.q;     // Catch: Throwable -> L26
+        ((Set) r0.p).add(r1);     // Catch: Throwable -> L26
+        if (r0.o == true) goto L20;
+        r1.k();     // Catch: Throwable -> L26
+    L24:
+        monitor-exit(r4);
+        return;
+    L20:
+        r1.clear();     // Catch: Throwable -> L26
+        if (Log.isLoggable("RequestTracker", 2) == false) goto L23;
+        Log.v("RequestTracker", "Paused, delaying request");     // Catch: Throwable -> L26
+    L23:
+        ((HashSet) r0.q).add(r1);     // Catch: Throwable -> L26
+    L26:
+        th = move-exception;
+        throw th;
+    L7:
+        if (r14.t == false) goto L9;
+    L11:
+        h12.f(r3, "Argument must not be null");
+        if (r3.isRunning() == true) goto L32;
+        r3.k();
+        return;
+    L32:
+        return;
+    L9:
+        if (r3.d() == false) goto L11;
+    L29:
+        kf2.n("You must call #load() before calling #into()");
     }
 
-    public final void K(ImageView imageView) {
-        lq lqVarM;
-        wq4 wsVar;
+    public final void K(ImageView r4) {
         e35.m();
-        h12.e(imageView);
-        if (!lq.j(this.n, 2048) && imageView.getScaleType() != null) {
-            switch (uz3.a[imageView.getScaleType().ordinal()]) {
-                case 1:
-                    lqVarM = clone().m();
-                    break;
-                case 2:
-                    lqVarM = clone().n();
-                    break;
-                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                case 4:
-                case 5:
-                    lqVarM = clone().o();
-                    break;
-                case 6:
-                    lqVarM = clone().n();
-                    break;
-                default:
-                    lqVarM = this;
-                    break;
-            }
-        } else {
-            lqVarM = this;
-        }
+        h12.e(r4);
+        if (lq.j(this.n, 2048) == false) goto L5;
+        lq r0 = this;
+    L14:
         this.L.c.getClass();
-        Class cls = this.K;
-        if (Bitmap.class.equals(cls)) {
-            wsVar = new ws(imageView, 0);
-        } else {
-            if (!Drawable.class.isAssignableFrom(cls)) {
-                nz2.A(cls, ", try .as*(Class).transcode(ResourceTranscoder)", "Unhandled class: ");
-                return;
-            }
-            wsVar = new ws(imageView, 1);
-        }
-        J(wsVar, null, lqVarM, fh0.g);
+        Class r2 = this.K;
+        if (Bitmap.class.equals(r2) == false) goto L18;
+        wq4 r1 = new ws(r4, 0);
+    L20:
+        J(r1, null, r0, fh0.g);
+        return;
+    L18:
+        if (Drawable.class.isAssignableFrom(r2) == false) goto L22;
+        r1 = new ws(r4, 1);
+        goto L20
+    L22:
+        nz2.A(r2, ", try .as*(Class).transcode(ResourceTranscoder)", "Unhandled class: ");
+        return;
+    L5:
+        if (r4.getScaleType() != null) goto L7;
+        r0 = this;
+        goto L14
+    L7:
+        switch(uz3.a[r4.getScaleType().ordinal()]) {
+            case 1: goto L12;
+            case 2: goto L11;
+            case 3: goto L10;
+            case 4: goto L10;
+            case 5: goto L10;
+            case 6: goto L9;
+            default: goto L25;
+        };
+    L9:
+        r0 = c().n();
+        goto L14
+    L10:
+        r0 = c().o();
+        goto L14
+    L11:
+        r0 = c().n();
+        goto L14
+    L12:
+        r0 = c().m();
+        goto L14
+    L25:
+        r0 = this;
+        goto L14
     }
 
-    public vz3 L(rj rjVar) {
-        if (this.E) {
-            return clone().L(rjVar);
-        }
+    public vz3 L(rj r2) {
+        if (this.E == true) goto L5;
         this.O = null;
-        return F(rjVar);
+        return F(r2);
+    L5:
+        return I().L(r2);
     }
 
-    public vz3 M(vk4 vk4Var) {
-        return Q(vk4Var);
+    public vz3 M(vk4 r1) {
+        return Q(r1);
     }
 
-    public vz3 N(Uri uri) {
-        PackageInfo packageInfo;
-        vz3 vz3VarQ = Q(uri);
-        if (uri == null || !"android.resource".equals(uri.getScheme())) {
-            return vz3VarQ;
-        }
-        Context context = this.I;
-        vz3 vz3Var = (vz3) vz3VarQ.z(context.getTheme());
-        ConcurrentHashMap concurrentHashMap = ai.a;
-        String packageName = context.getPackageName();
-        ConcurrentHashMap concurrentHashMap2 = ai.a;
-        f42 f42Var = (f42) concurrentHashMap2.get(packageName);
-        if (f42Var == null) {
-            try {
-                packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            } catch (PackageManager.NameNotFoundException e) {
-                Log.e("AppVersionSignature", "Cannot resolve info for" + context.getPackageName(), e);
-                packageInfo = null;
-            }
-            s73 s73Var = new s73(packageInfo != null ? String.valueOf(packageInfo.versionCode) : UUID.randomUUID().toString());
-            f42 f42Var2 = (f42) concurrentHashMap2.putIfAbsent(packageName, s73Var);
-            f42Var = f42Var2 == null ? s73Var : f42Var2;
-        }
-        return (vz3) vz3Var.w(new tc(context.getResources().getConfiguration().uiMode & 48, f42Var));
+    public vz3 N(Uri r6) {
+        vz3 r0 = Q(r6);
+        if (r6 != null) goto L5;
+    L22:
+        return r0;
+    L5:
+        if ("android.resource".equals(r6.getScheme()) == false) goto L22;
+        Context r5 = this.I;
+        vz3 r7 = (vz3) r0.z(r5.getTheme());
+        ConcurrentHashMap r1 = ai.a;
+        String r2 = r5.getPackageName();
+        ConcurrentHashMap r3 = ai.a;
+        f42 r4 = (f42) r3.get(r2);
+        if (r4 != null) goto L21;
+        PackageInfo r8 = r5.getPackageManager().getPackageInfo(r5.getPackageName(), 0);     // Catch: PackageManager.NameNotFoundException -> L11
+    L13:
+        if (r8 == null) goto L15;
+        String r9 = String.valueOf(r8.versionCode);
+    L16:
+        s73 r10 = new s73(r9);
+        f42 r11 = (f42) r3.putIfAbsent(r2, r10);
+        if (r11 != null) goto L19;
+        r4 = r10;
+        goto L21
+    L19:
+        r4 = r11;
+        goto L21
+    L15:
+        r9 = UUID.randomUUID().toString();
+    L11:
+        e = move-exception;
+        Log.e("AppVersionSignature", "Cannot resolve info for" + r5.getPackageName(), e);
+        r8 = null;
+    L21:
+        return (vz3) r7.w(new tc(r5.getResources().getConfiguration().uiMode & 48, r4));
     }
 
-    public vz3 O(File file) {
-        return Q(file);
+    public vz3 O(File r1) {
+        return Q(r1);
     }
 
-    public vz3 P(String str) {
-        return Q(str);
+    public vz3 P(String r1) {
+        return Q(r1);
     }
 
-    public final vz3 Q(Object obj) {
-        if (this.E) {
-            return clone().Q(obj);
-        }
-        this.N = obj;
+    public final vz3 Q(Object r2) {
+        if (this.E == true) goto L5;
+        this.N = r2;
         this.S = true;
         u();
         return this;
+    L5:
+        return I().Q(r2);
     }
 
-    public final yz3 R(int i, int i2) {
-        yz3 yz3Var = new yz3(i, i2);
-        J(yz3Var, yz3Var, this, fh0.h);
-        return yz3Var;
+    public final yz3 R(int r2, int r3) {
+        yz3 r0 = new yz3(r2, r3);
+        J(r0, r0, this, fh0.h);
+        return r0;
     }
 
-    public vz3 S(vz3 vz3Var) {
-        if (this.E) {
-            return clone().S(vz3Var);
-        }
-        this.P = vz3Var;
+    public vz3 S(vz3 r2) {
+        if (this.E == true) goto L5;
+        this.P = r2;
         u();
         return this;
+    L5:
+        return I().S(r2);
     }
 
-    public vz3 T(xv0 xv0Var) {
-        if (this.E) {
-            return clone().T(xv0Var);
-        }
-        this.M = xv0Var;
+    public vz3 T(xv0 r2) {
+        if (this.E == true) goto L5;
+        this.M = r2;
         this.R = false;
         u();
         return this;
+    L5:
+        return I().T(r2);
     }
 
     @Override // defpackage.lq
-    public final boolean equals(Object obj) {
-        if (!(obj instanceof vz3)) {
-            return false;
-        }
-        vz3 vz3Var = (vz3) obj;
-        return super.equals(vz3Var) && Objects.equals(this.K, vz3Var.K) && this.M.equals(vz3Var.M) && Objects.equals(this.N, vz3Var.N) && Objects.equals(this.O, vz3Var.O) && Objects.equals(this.P, vz3Var.P) && Objects.equals(this.Q, vz3Var.Q) && this.R == vz3Var.R && this.S == vz3Var.S;
+    public /* bridge */ /* synthetic */ lq a(lq r1) {
+        return G(r1);
+    }
+
+    @Override // defpackage.lq
+    public /* bridge */ /* synthetic */ lq c() {
+        return I();
+    }
+
+    @Override // defpackage.lq
+    public /* bridge */ /* synthetic */ Object clone() {
+        return I();
+    }
+
+    @Override // defpackage.lq
+    public final boolean equals(Object r3) {
+        if ((r3 instanceof vz3) == false) goto L24;
+        vz3 r4 = (vz3) r3;
+        if (super.equals(r4) == true) goto L7;
+        return false;
+    L7:
+        if (Objects.equals(this.K, r4.K) == true) goto L9;
+        return false;
+    L9:
+        if (this.M.equals(r4.M) == true) goto L11;
+        return false;
+    L11:
+        if (Objects.equals(this.N, r4.N) == true) goto L13;
+        return false;
+    L13:
+        if (Objects.equals(this.O, r4.O) == true) goto L15;
+        return false;
+    L15:
+        if (Objects.equals(this.P, r4.P) == true) goto L17;
+        return false;
+    L17:
+        if (Objects.equals(this.Q, r4.Q) == true) goto L19;
+        return false;
+    L19:
+        if (this.R == r4.R) goto L21;
+        return false;
+    L21:
+        if (this.S != r4.S) goto L34;
+        return true;
+    L34:
+        return false;
+    L24:
+        return false;
     }
 
     @Override // defpackage.lq
     public final int hashCode() {
-        return e35.E(this.S ? 1 : 0, e35.E(this.R ? 1 : 0, e35.F(e35.F(e35.F(e35.F(e35.F(e35.F(e35.F(super.hashCode(), this.K), this.M), this.N), this.O), this.P), this.Q), null)));
+        int r0 = e35.F(e35.F(e35.F(e35.F(e35.F(e35.F(e35.F(super.hashCode(), this.K), this.M), this.N), this.O), this.P), this.Q), null);
+        int r1 = e35.E(this.R ? 1 : 0, r0);
+        return e35.E(this.S ? 1 : 0, r1);
     }
 }

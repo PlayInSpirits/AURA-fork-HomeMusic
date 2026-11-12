@@ -9,19 +9,31 @@ import java.nio.ByteBuffer;
 public final class ho0 extends ve4 implements rn4 {
     public final zn4 o;
 
-    public ho0(String str, zn4 zn4Var) {
+    public ho0(String r5, zn4 r6) {
         super(new vn4[2], new wn4[2]);
-        int i = this.g;
-        cj0[] cj0VarArr = this.e;
-        rr2.w(i == cj0VarArr.length);
-        for (cj0 cj0Var : cj0VarArr) {
-            cj0Var.t(1024);
-        }
-        this.o = zn4Var;
+        int r7 = this.g;
+        cj0[] r0 = this.e;
+        int r2 = 0;
+        if (r7 != r0.length) goto L5;
+        boolean r8 = true;
+    L6:
+        rr2.w(r8);
+        int r9 = r0.length;
+    L7:
+        if (r2 >= r9) goto L9;
+        r0[r2].t(1024);
+        r2 = r2 + 1;
+        goto L7
+    L9:
+        this.o = r6;
+        return;
+    L5:
+        r8 = false;
+        goto L6
     }
 
     @Override // defpackage.rn4
-    public final void c(long j) {
+    public final void c(long r1) {
     }
 
     @Override // defpackage.ve4
@@ -35,36 +47,35 @@ public final class ho0 extends ve4 implements rn4 {
     }
 
     @Override // defpackage.ve4
-    public final DecoderException i(Throwable th) {
-        return new SubtitleDecoderException("Unexpected decode error", th);
+    public final DecoderException i(Throwable r2) {
+        return new SubtitleDecoderException("Unexpected decode error", r2);
     }
 
     @Override // defpackage.ve4
-    public final DecoderException j(cj0 cj0Var, dj0 dj0Var, boolean z) {
-        vn4 vn4Var = (vn4) cj0Var;
-        wn4 wn4Var = (wn4) dj0Var;
-        try {
-            ByteBuffer byteBuffer = vn4Var.r;
-            byteBuffer.getClass();
-            byte[] bArrArray = byteBuffer.array();
-            int iLimit = byteBuffer.limit();
-            zn4 zn4Var = this.o;
-            if (z) {
-                zn4Var.reset();
-            }
-            qn4 qn4VarB = zn4Var.b(bArrArray, 0, iLimit);
-            long j = vn4Var.t;
-            long j2 = vn4Var.x;
-            wn4Var.p = j;
-            wn4Var.s = qn4VarB;
-            if (j2 != Long.MAX_VALUE) {
-                j = j2;
-            }
-            wn4Var.t = j;
-            wn4Var.r = false;
-            return null;
-        } catch (SubtitleDecoderException e) {
-            return e;
-        }
+    public final DecoderException j(cj0 r5, dj0 r6, boolean r7) {
+        vn4 r8 = (vn4) r5;
+        wn4 r9 = (wn4) r6;
+        ByteBuffer r0 = r8.r;     // Catch: SubtitleDecoderException -> L13
+        r0.getClass();     // Catch: SubtitleDecoderException -> L13
+        byte[] r1 = r0.array();     // Catch: SubtitleDecoderException -> L13
+        int r2 = r0.limit();     // Catch: SubtitleDecoderException -> L13
+        zn4 r4 = this.o;     // Catch: SubtitleDecoderException -> L13
+        if (r7 == false) goto L6;
+        r4.reset();     // Catch: SubtitleDecoderException -> L13
+    L6:
+        qn4 r10 = r4.b(r1, 0, r2);     // Catch: SubtitleDecoderException -> L13
+        long r3 = r8.t;     // Catch: SubtitleDecoderException -> L13
+        long r11 = r8.x;     // Catch: SubtitleDecoderException -> L13
+        r9.p = r3;     // Catch: SubtitleDecoderException -> L13
+        r9.s = r10;     // Catch: SubtitleDecoderException -> L13
+        if (r11 == Long.MAX_VALUE) goto L10;
+        r3 = r11;
+    L10:
+        r9.t = r3;     // Catch: SubtitleDecoderException -> L13
+        r9.r = false;     // Catch: SubtitleDecoderException -> L13
+        return null;
+    L13:
+        e = move-exception;
+        return e;
     }
 }

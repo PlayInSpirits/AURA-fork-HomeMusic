@@ -12,6 +12,9 @@ public final class ArtistsID3 {
     @ka4("index")
     private List<IndexID3> indices;
 
+    public ArtistsID3() {
+    }
+
     public final String getIgnoredArticles() {
         return this.ignoredArticles;
     }
@@ -20,11 +23,11 @@ public final class ArtistsID3 {
         return this.indices;
     }
 
-    public final void setIgnoredArticles(String str) {
-        this.ignoredArticles = str;
+    public final void setIgnoredArticles(String r1) {
+        this.ignoredArticles = r1;
     }
 
-    public final void setIndices(List<IndexID3> list) {
-        this.indices = list;
+    public final void setIndices(List<IndexID3> r1) {
+        this.indices = r1;
     }
 }

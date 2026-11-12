@@ -9,25 +9,28 @@ public final class Line {
     private Integer start;
     public String value;
 
+    public Line() {
+    }
+
     public final Integer getStart() {
         return this.start;
     }
 
     public final String getValue() {
-        String str = this.value;
-        if (str != null) {
-            return str;
-        }
+        String r0 = this.value;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         h12.Q("value");
         throw null;
     }
 
-    public final void setStart(Integer num) {
-        this.start = num;
+    public final void setStart(Integer r1) {
+        this.start = r1;
     }
 
-    public final void setValue(String str) {
-        str.getClass();
-        this.value = str;
+    public final void setValue(String r1) {
+        r1.getClass();
+        this.value = r1;
     }
 }

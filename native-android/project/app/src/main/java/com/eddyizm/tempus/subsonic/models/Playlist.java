@@ -12,7 +12,7 @@ import java.util.List;
 /* JADX INFO: loaded from: classes.dex */
 public class Playlist implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<Playlist> CREATOR = new b23(14);
+    public static final Parcelable.Creator<Playlist> CREATOR = null;
     private List<String> allowedUsers;
     private Date changed;
     private String comment;
@@ -30,18 +30,21 @@ public class Playlist implements Parcelable {
     private String owner;
     private int songCount;
 
-    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
-    public Playlist(String str, String str2, String str3, String str4, Boolean bool, int i, long j, Date date, Date date2, String str5, List<String> list) {
-        this(str, str2, j, str5);
-        str.getClass();
-        this.comment = str3;
-        this.owner = str4;
-        this.isUniversal = bool;
-        this.songCount = i;
-        this.created = date;
-        this.changed = date2;
-        this.lastPlayed = 0L;
-        this.allowedUsers = list;
+    static {
+        CREATOR = new b23(14);
+    }
+
+    public Playlist(String r7, String r8, String r9, String r10, Boolean r11, int r12, long r13, Date r15, Date r16, String r17, List<String> r18) {
+        r7.getClass();
+        this(r7, r8, r13, r17);
+        this.comment = r9;
+        this.owner = r10;
+        this.isUniversal = r11;
+        this.songCount = r12;
+        this.created = r15;
+        this.changed = r16;
+        this.lastPlayed = 0;
+        this.allowedUsers = r18;
     }
 
     @Override // android.os.Parcelable
@@ -97,73 +100,82 @@ public class Playlist implements Parcelable {
         return this.isUniversal;
     }
 
-    public final void setAllowedUsers(List<String> list) {
-        this.allowedUsers = list;
+    public final void setAllowedUsers(List<String> r1) {
+        this.allowedUsers = r1;
     }
 
-    public final void setChanged(Date date) {
-        this.changed = date;
+    public final void setChanged(Date r1) {
+        this.changed = r1;
     }
 
-    public final void setComment(String str) {
-        this.comment = str;
+    public final void setComment(String r1) {
+        this.comment = r1;
     }
 
-    public final void setCoverArtId(String str) {
-        this.coverArtId = str;
+    public final void setCoverArtId(String r1) {
+        this.coverArtId = r1;
     }
 
-    public final void setCreated(Date date) {
-        this.created = date;
+    public final void setCreated(Date r1) {
+        this.created = r1;
     }
 
-    public final void setDuration(long j) {
-        this.duration = j;
+    public final void setDuration(long r1) {
+        this.duration = r1;
     }
 
-    public void setId(String str) {
-        str.getClass();
-        this.id = str;
+    public void setId(String r1) {
+        r1.getClass();
+        this.id = r1;
     }
 
-    public final void setLastPlayed(long j) {
-        this.lastPlayed = j;
+    public final void setLastPlayed(long r1) {
+        this.lastPlayed = r1;
     }
 
-    public final void setName(String str) {
-        this.name = str;
+    public final void setName(String r1) {
+        this.name = r1;
     }
 
-    public final void setOwner(String str) {
-        this.owner = str;
+    public final void setOwner(String r1) {
+        this.owner = r1;
     }
 
-    public final void setSongCount(int i) {
-        this.songCount = i;
+    public final void setSongCount(int r1) {
+        this.songCount = r1;
     }
 
-    public final void setUniversal(Boolean bool) {
-        this.isUniversal = bool;
+    public final void setUniversal(Boolean r1) {
+        this.isUniversal = r1;
     }
 
     @Override // android.os.Parcelable
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.getClass();
-        parcel.writeString(this.id);
-        parcel.writeString(this.name);
-        parcel.writeLong(this.duration);
-        parcel.writeString(this.coverArtId);
+    public void writeToParcel(Parcel r3, int r4) {
+        r3.getClass();
+        r3.writeString(this.id);
+        r3.writeString(this.name);
+        r3.writeLong(this.duration);
+        r3.writeString(this.coverArtId);
     }
 
-    public /* synthetic */ Playlist(String str, String str2, long j, String str3, int i, xj0 xj0Var) {
-        this(str, (i & 2) != 0 ? null : str2, (i & 4) != 0 ? 0L : j, (i & 8) != 0 ? null : str3);
+    public /* synthetic */ Playlist(String r2, String r3, long r4, String r6, int r7, xj0 r8) {
+        if ((r7 & 2) == 0) goto L6;
+        r3 = null;
+    L6:
+        if ((r7 & 4) == 0) goto L9;
+        r4 = 0;
+    L9:
+        if ((r7 & 8) == 0) goto L11;
+        r6 = null;
+    L11:
+        this(r2, r3, r4, r6);
     }
 
-    public Playlist(String str, String str2, long j, String str3) {
-        str.getClass();
-        this.id = str;
-        this.name = str2;
-        this.duration = j;
-        this.coverArtId = str3;
+    public Playlist(String r1, String r2, long r3, String r5) {
+        r1.getClass();
+        this.id = r1;
+        this.name = r2;
+        this.duration = r3;
+        this.coverArtId = r5;
     }
 }

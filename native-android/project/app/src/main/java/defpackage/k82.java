@@ -5,10 +5,9 @@ package defpackage;
 public final /* synthetic */ class k82 extends or3 implements c42, gf1 {
     public final /* synthetic */ int o;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ k82(int i, int i2, Class cls, Object obj, String str, String str2) {
-        super(obj, cls, str, str2, i);
-        this.o = i2;
+    public /* synthetic */ k82(int r1, int r2, Class r3, Object r4, String r5, String r6) {
+        this.o = r2;
+        super(r4, r3, r5, r6, r1);
     }
 
     @Override // defpackage.jy
@@ -19,11 +18,13 @@ public final /* synthetic */ class k82 extends or3 implements c42, gf1 {
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        switch (this.o) {
-            case 0:
-                return ((kl4) this.receiver).getValue();
-            default:
-                return this.receiver.getClass().getSimpleName();
-        }
+        switch(this.o) {
+            case 0: goto L6;
+            default: goto L7;
+        };
+    L7:
+        return this.receiver.getClass().getSimpleName();
+    L6:
+        return ((kl4) this.receiver).getValue();
     }
 }

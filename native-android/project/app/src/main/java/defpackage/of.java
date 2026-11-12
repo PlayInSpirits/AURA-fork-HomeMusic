@@ -7,22 +7,24 @@ import java.util.concurrent.Executor;
 public final class of implements Executor {
     public final /* synthetic */ int n;
 
-    public /* synthetic */ of(int i) {
-        this.n = i;
+    public /* synthetic */ of(int r1) {
+        this.n = r1;
     }
 
     @Override // java.util.concurrent.Executor
-    public final void execute(Runnable runnable) {
-        switch (this.n) {
-            case 0:
-                new Thread(runnable).start();
-                break;
-            case 1:
-                e35.C().post(runnable);
-                break;
-            default:
-                runnable.run();
-                break;
-        }
+    public final void execute(Runnable r1) {
+        switch(this.n) {
+            case 0: goto L8;
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.run();
+        return;
+    L6:
+        e35.C().post(r1);
+        return;
+    L8:
+        new Thread(r1).start();
     }
 }

@@ -5,15 +5,15 @@ package defpackage;
 public interface wz3 {
     boolean a();
 
-    void b(pz3 pz3Var);
+    void b(pz3 r1);
 
-    void f(pz3 pz3Var);
+    void f(pz3 r1);
 
-    boolean g(pz3 pz3Var);
+    boolean g(pz3 r1);
 
     wz3 getRoot();
 
-    boolean h(pz3 pz3Var);
+    boolean h(pz3 r1);
 
-    boolean i(pz3 pz3Var);
+    boolean i(pz3 r1);
 }

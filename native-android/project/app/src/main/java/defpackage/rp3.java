@@ -16,32 +16,32 @@ public final class rp3 extends cx3 {
     public boolean x;
     public boolean y;
 
-    public rp3(View view) {
-        super(view);
-        SparseArray sparseArray = new SparseArray(4);
-        this.w = sparseArray;
-        TextView textView = (TextView) view.findViewById(R.id.title);
-        sparseArray.put(R.id.title, textView);
-        sparseArray.put(R.id.summary, view.findViewById(R.id.summary));
-        sparseArray.put(R.id.icon, view.findViewById(R.id.icon));
-        sparseArray.put(app.homemusic.R.id.icon_frame, view.findViewById(app.homemusic.R.id.icon_frame));
-        sparseArray.put(R.id.icon_frame, view.findViewById(R.id.icon_frame));
-        this.u = view.getBackground();
-        if (textView != null) {
-            this.v = textView.getTextColors();
-        }
+    public rp3(View r5) {
+        super(r5);
+        SparseArray r0 = new SparseArray(4);
+        this.w = r0;
+        TextView r2 = (TextView) r5.findViewById(R.id.title);
+        r0.put(R.id.title, r2);
+        r0.put(R.id.summary, r5.findViewById(R.id.summary));
+        r0.put(R.id.icon, r5.findViewById(R.id.icon));
+        r0.put(app.homemusic.R.id.icon_frame, r5.findViewById(app.homemusic.R.id.icon_frame));
+        r0.put(R.id.icon_frame, r5.findViewById(R.id.icon_frame));
+        this.u = r5.getBackground();
+        if (r2 == null) goto L6;
+        this.v = r2.getTextColors();
+        return;
     }
 
-    public final View s(int i) {
-        SparseArray sparseArray = this.w;
-        View view = (View) sparseArray.get(i);
-        if (view != null) {
-            return view;
-        }
-        View viewFindViewById = this.a.findViewById(i);
-        if (viewFindViewById != null) {
-            sparseArray.put(i, viewFindViewById);
-        }
-        return viewFindViewById;
+    public final View s(int r3) {
+        SparseArray r0 = this.w;
+        View r1 = (View) r0.get(r3);
+        if (r1 == null) goto L5;
+        return r1;
+    L5:
+        View r2 = this.a.findViewById(r3);
+        if (r2 == null) goto L8;
+        r0.put(r3, r2);
+    L8:
+        return r2;
     }
 }

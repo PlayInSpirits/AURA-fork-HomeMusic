@@ -6,8 +6,9 @@ public final class ul4 {
     public volatile boolean a;
 
     public final void a() {
-        if (this.a) {
-            kf2.o("Already released");
-        }
+        if (this.a == true) goto L5;
+        return;
+    L5:
+        kf2.o("Already released");
     }
 }

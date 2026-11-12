@@ -11,30 +11,29 @@ public final class o51 extends AnimatorListenerAdapter {
     public final /* synthetic */ View b;
     public final /* synthetic */ View c;
 
-    public o51(boolean z, View view, View view2) {
-        this.a = z;
-        this.b = view;
-        this.c = view2;
+    public o51(boolean r1, View r2, View r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationEnd(Animator animator) {
-        if (this.a) {
-            return;
-        }
+    public final void onAnimationEnd(Animator r2) {
+        if (this.a == true) goto L6;
         this.b.setVisibility(4);
-        View view = this.c;
-        view.setAlpha(1.0f);
-        view.setVisibility(0);
+        View r1 = this.c;
+        r1.setAlpha(1.0f);
+        r1.setVisibility(0);
+        return;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationStart(Animator animator) {
-        if (this.a) {
-            this.b.setVisibility(0);
-            View view = this.c;
-            view.setAlpha(0.0f);
-            view.setVisibility(4);
-        }
+    public final void onAnimationStart(Animator r2) {
+        if (this.a == false) goto L6;
+        this.b.setVisibility(0);
+        View r1 = this.c;
+        r1.setAlpha(0.0f);
+        r1.setVisibility(4);
+        return;
     }
 }

@@ -5,5 +5,5 @@ package defpackage;
 public interface e01 {
     Object a();
 
-    boolean b(CharSequence charSequence, int i, int i2, k05 k05Var);
+    boolean b(CharSequence r1, int r2, int r3, k05 r4);
 }

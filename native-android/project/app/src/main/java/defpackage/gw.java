@@ -8,18 +8,18 @@ public abstract class gw {
     public static final /* synthetic */ int a = 0;
 
     static {
-        int i = Build.VERSION.SDK_INT;
-        if (i >= 30) {
-            p3.b(30);
-        }
-        if (i >= 30) {
-            p3.b(31);
-        }
-        if (i >= 30) {
-            p3.b(33);
-        }
-        if (i >= 30) {
-            p3.b(1000000);
-        }
+        int r0 = Build.VERSION.SDK_INT;
+        if (r0 < 30) goto L5;
+        p3.b(30);
+    L5:
+        if (r0 < 30) goto L7;
+        p3.b(31);
+    L7:
+        if (r0 < 30) goto L9;
+        p3.b(33);
+    L9:
+        if (r0 < 30) goto L12;
+        p3.b(1000000);
+        return;
     }
 }

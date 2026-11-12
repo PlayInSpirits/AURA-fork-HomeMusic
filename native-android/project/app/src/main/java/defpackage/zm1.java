@@ -31,265 +31,374 @@ public final class zm1 extends bq {
         hn2.a("media3.exoplayer.hls");
     }
 
-    public zm1(gn2 gn2Var, zh0 zh0Var, xk0 xk0Var, i80 i80Var, ww0 ww0Var, i80 i80Var2, al0 al0Var, long j, boolean z, int i) {
-        this.s = gn2Var;
-        this.q = gn2Var.c;
-        this.i = zh0Var;
-        this.h = xk0Var;
-        this.j = i80Var;
-        this.k = ww0Var;
-        this.l = i80Var2;
-        this.o = al0Var;
-        this.p = j;
-        this.m = z;
-        this.n = i;
+    public zm1(gn2 r1, zh0 r2, xk0 r3, i80 r4, ww0 r5, i80 r6, al0 r7, long r8, boolean r10, int r11) {
+        this.s = r1;
+        this.q = r1.c;
+        this.i = r2;
+        this.h = r3;
+        this.j = r4;
+        this.k = r5;
+        this.l = r6;
+        this.o = r7;
+        this.p = r8;
+        this.m = r10;
+        this.n = r11;
     }
 
-    public static tm1 t(long j, List list) {
-        tm1 tm1Var = null;
-        for (int i = 0; i < list.size(); i++) {
-            tm1 tm1Var2 = (tm1) list.get(i);
-            long j2 = tm1Var2.r;
-            if (j2 > j || !tm1Var2.y) {
-                if (j2 > j) {
-                    break;
-                }
-            } else {
-                tm1Var = tm1Var2;
-            }
-        }
-        return tm1Var;
-    }
-
-    @Override // defpackage.bq
-    public final boolean a(gn2 gn2Var) {
-        gn2 gn2VarH = h();
-        bn2 bn2Var = gn2VarH.b;
-        bn2Var.getClass();
-        bn2 bn2Var2 = gn2Var.b;
-        return bn2Var2 != null && bn2Var2.a.equals(bn2Var.a) && bn2Var2.e.equals(bn2Var.e) && Objects.equals(bn2Var2.c, bn2Var.c) && gn2VarH.c.equals(gn2Var.c);
+    public static tm1 t(long r6, List r8) {
+        tm1 r0 = null;
+        int r1 = 0;
+    L4:
+        if (r1 >= r8.size()) goto L14;
+        tm1 r2 = (tm1) r8.get(r1);
+        long r3 = r2.r;
+        if (r3 > r6) goto L11;
+        if (r2.y == false) goto L11;
+        r0 = r2;
+    L13:
+        r1 = r1 + 1;
+    L11:
+        if (r3 <= r6) goto L13;
+    L14:
+        return r0;
     }
 
     @Override // defpackage.bq
-    public final no2 b(mt2 mt2Var, n9 n9Var, long j) {
-        ue1 ue1Var = new ue1((CopyOnWriteArrayList) this.c.q, 0, mt2Var, 8);
-        sw0 sw0Var = new sw0(this.d.c, 0, mt2Var);
-        rw4 rw4Var = this.r;
-        ik3 ik3Var = this.g;
-        ik3Var.getClass();
-        return new pm1(this.h, this.o, this.i, rw4Var, this.k, sw0Var, this.l, ue1Var, n9Var, this.j, this.m, this.n, ik3Var);
+    public final boolean a(gn2 r5) {
+        gn2 r4 = h();
+        bn2 r0 = r4.b;
+        r0.getClass();
+        bn2 r1 = r5.b;
+        if (r1 != null) goto L5;
+        return false;
+    L5:
+        if (r1.a.equals(r0.a) == true) goto L7;
+        return false;
+    L7:
+        if (r1.e.equals(r0.e) == true) goto L9;
+        return false;
+    L9:
+        if (Objects.equals(r1.c, r0.c) == true) goto L11;
+        return false;
+    L11:
+        if (r4.c.equals(r5.c) == false) goto L19;
+        return true;
+    L19:
+        return false;
+    }
+
+    @Override // defpackage.bq
+    public final no2 b(mt2 r15, n9 r16, long r17) {
+        ue1 r8 = new ue1((CopyOnWriteArrayList) this.c.q, 0, r15, 8);
+        sw0 r6 = new sw0(this.d.c, 0, r15);
+        rw4 r4 = this.r;
+        ik3 r13 = this.g;
+        r13.getClass();
+        return new pm1(this.h, this.o, this.i, r4, this.k, r6, this.l, r8, r16, this.j, this.m, this.n, r13);
     }
 
     @Override // defpackage.bq
     public final synchronized gn2 h() {
-        return this.s;
+        monitor-enter(this);
+        gn2 r0 = this.s;     // Catch: Throwable -> L6
+        monitor-exit(this);
+        return r0;
+    L6:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.bq
-    public final void j() throws IOException {
-        al0 al0Var = this.o;
-        i61 i61Var = al0Var.t;
-        if (i61Var != null) {
-            IOException iOException = (IOException) i61Var.q;
-            if (iOException != null) {
-                throw iOException;
-            }
-            id2 id2Var = (id2) i61Var.p;
-            if (id2Var != null) {
-                int i = id2Var.n;
-                IOException iOException2 = id2Var.r;
-                if (iOException2 != null && id2Var.s > i) {
-                    throw iOException2;
-                }
-            }
-        }
-        Uri uri = al0Var.x;
-        if (uri != null) {
-            zk0 zk0Var = (zk0) al0Var.q.get(uri);
-            i61 i61Var2 = zk0Var.o;
-            IOException iOException3 = (IOException) i61Var2.q;
-            if (iOException3 != null) {
-                throw iOException3;
-            }
-            id2 id2Var2 = (id2) i61Var2.p;
-            if (id2Var2 != null) {
-                int i2 = id2Var2.n;
-                IOException iOException4 = id2Var2.r;
-                if (iOException4 != null && id2Var2.s > i2) {
-                    throw iOException4;
-                }
-            }
-            IOException iOException5 = zk0Var.w;
-            if (iOException5 != null) {
-                throw iOException5;
-            }
-        }
+    public final void j() {
+        al0 r3 = this.o;
+        i61 r0 = r3.t;
+        if (r0 == null) goto L15;
+        IOException r1 = (IOException) r0.q;
+        if (r1 != null) goto L14;
+        id2 r2 = (id2) r0.p;
+        if (r2 == null) goto L15;
+        int r4 = r2.n;
+        IOException r5 = r2.r;
+        if (r5 == null) goto L15;
+        if (r2.s <= r4) goto L15;
+        throw r5;
+    L14:
+        throw r1;
+    L15:
+        Uri r6 = r3.x;
+        if (r6 == null) goto L32;
+        zk0 r7 = (zk0) r3.q.get(r6);
+        i61 r8 = r7.o;
+        IOException r9 = (IOException) r8.q;
+        if (r9 != null) goto L31;
+        id2 r10 = (id2) r8.p;
+        if (r10 == null) goto L27;
+        int r11 = r10.n;
+        IOException r12 = r10.r;
+        if (r12 == null) goto L27;
+        if (r10.s <= r11) goto L27;
+        throw r12;
+    L27:
+        IOException r13 = r7.w;
+        if (r13 == null) goto L33;
+        throw r13;
+    L33:
+        return;
+    L31:
+        throw r9;
     }
 
     @Override // defpackage.bq
-    public final void l(rw4 rw4Var) {
-        this.r = rw4Var;
-        Looper looperMyLooper = Looper.myLooper();
-        looperMyLooper.getClass();
-        ik3 ik3Var = this.g;
-        ik3Var.getClass();
-        ww0 ww0Var = this.k;
-        ww0Var.e(looperMyLooper, ik3Var);
-        ww0Var.b();
-        ue1 ue1Var = new ue1((CopyOnWriteArrayList) this.c.q, 0, (Object) null, 8);
-        bn2 bn2Var = h().b;
-        bn2Var.getClass();
-        Uri uri = bn2Var.a;
-        al0 al0Var = this.o;
-        al0Var.getClass();
-        al0Var.u = f35.p(null);
-        al0Var.s = ue1Var;
-        al0Var.v = this;
-        Map map = Collections.EMPTY_MAP;
-        rr2.s(uri, "The uri must be set.");
-        de3 de3Var = new de3(((bi0) al0Var.n.o).m(), new ii0(uri, 0L, 1, null, map, 0L, -1L, null, 1), al0Var.o.g());
-        rr2.w(al0Var.t == null);
-        i61 i61Var = new i61("DefaultHlsPlaylistTracker:MultivariantPlaylist");
-        al0Var.t = i61Var;
-        i61Var.u(de3Var, al0Var, al0Var.p.D(de3Var.c));
+    public final void l(rw4 r20) {
+        this.r = r20;
+        Looper r1 = Looper.myLooper();
+        r1.getClass();
+        ik3 r2 = this.g;
+        r2.getClass();
+        ww0 r3 = this.k;
+        r3.e(r1, r2);
+        r3.b();
+        boolean r4 = false;
+        ue1 r5 = new ue1((CopyOnWriteArrayList) this.c.q, 0, null, 8);
+        bn2 r6 = h().b;
+        r6.getClass();
+        Uri r7 = r6.a;
+        al0 r8 = this.o;
+        r8.getClass();
+        r8.u = f35.p(null);
+        r8.s = r5;
+        r8.v = this;
+        Map r12 = Collections.EMPTY_MAP;
+        rr2.s(r7, "The uri must be set.");
+        ii0 r9 = new ii0(r7, 0, 1, null, r12, 0, -1, null, 1);
+        de3 r0 = new de3(((bi0) r8.n.o).m(), r9, r8.o.g());
+        if (r8.t != null) goto L5;
+        r4 = true;
+    L5:
+        rr2.w(r4);
+        i61 r10 = new i61("DefaultHlsPlaylistTracker:MultivariantPlaylist");
+        r8.t = r10;
+        r10.u(r0, r8, r8.p.D(r0.c));
     }
 
     @Override // defpackage.bq
-    public final void n(no2 no2Var) {
-        pm1 pm1Var = (pm1) no2Var;
-        pm1Var.o.r.remove(pm1Var);
-        for (ln1 ln1Var : pm1Var.G) {
-            if (ln1Var.Q) {
-                for (kn1 kn1Var : ln1Var.I) {
-                    kn1Var.j();
-                    pw0 pw0Var = kn1Var.h;
-                    if (pw0Var != null) {
-                        pw0Var.d(kn1Var.e);
-                        kn1Var.h = null;
-                        kn1Var.g = null;
-                    }
-                }
-            }
-            km1 km1Var = ln1Var.q;
-            zk0 zk0Var = (zk0) km1Var.g.q.get(km1Var.e[km1Var.r.l()]);
-            if (zk0Var != null) {
-                zk0Var.x = false;
-            }
-            km1Var.n = null;
-            ln1Var.w.p(ln1Var);
-            ln1Var.E.removeCallbacksAndMessages(null);
-            ln1Var.U = true;
-            ln1Var.F.clear();
-        }
-        pm1Var.D = null;
+    public final void n(no2 r12) {
+        pm1 r13 = (pm1) r12;
+        r13.o.r.remove(r13);
+        ln1[] r11 = r13.G;
+        int r0 = r11.length;
+        int r2 = 0;
+    L4:
+        if (r2 >= r0) goto L17;
+        ln1 r4 = r11[r2];
+        if (r4.Q == false) goto L13;
+        kn1[] r5 = r4.I;
+        int r6 = r5.length;
+        int r7 = 0;
+    L8:
+        if (r7 >= r6) goto L13;
+        kn1 r8 = r5[r7];
+        r8.j();
+        pw0 r9 = r8.h;
+        if (r9 == null) goto L12;
+        r9.d(r8.e);
+        r8.h = null;
+        r8.g = null;
+    L12:
+        r7 = r7 + 1;
+    L13:
+        km1 r10 = r4.q;
+        int r14 = r10.r.l();
+        al0 r15 = r10.g;
+        zk0 r16 = (zk0) r15.q.get(r10.e[r14]);
+        if (r16 == null) goto L16;
+        r16.x = false;
+    L16:
+        r10.n = null;
+        r4.w.p(r4);
+        r4.E.removeCallbacksAndMessages(null);
+        r4.U = true;
+        r4.F.clear();
+        r2 = r2 + 1;
+        goto L4
+    L17:
+        r13.D = null;
     }
 
     @Override // defpackage.bq
     public final void p() {
-        al0 al0Var = this.o;
-        al0Var.x = null;
-        al0Var.y = null;
-        al0Var.w = null;
-        al0Var.A = -9223372036854775807L;
-        al0Var.t.p(null);
-        al0Var.t = null;
-        HashMap map = al0Var.q;
-        Iterator it = map.values().iterator();
-        while (it.hasNext()) {
-            ((zk0) it.next()).o.p(null);
-        }
-        al0Var.u.removeCallbacksAndMessages(null);
-        al0Var.u = null;
-        map.clear();
+        al0 r0 = this.o;
+        r0.x = null;
+        r0.y = null;
+        r0.w = null;
+        r0.A = -9223372036854775807L;
+        r0.t.p(null);
+        r0.t = null;
+        HashMap r2 = r0.q;
+        Iterator r3 = r2.values().iterator();
+    L4:
+        if (r3.hasNext() == false) goto L6;
+        ((zk0) r3.next()).o.p(null);
+        goto L4
+    L6:
+        r0.u.removeCallbacksAndMessages(null);
+        r0.u = null;
+        r2.clear();
         this.k.a();
     }
 
     @Override // defpackage.bq
-    public final synchronized void s(gn2 gn2Var) {
-        this.s = gn2Var;
+    public final synchronized void s(gn2 r1) {
+        monitor-enter(this);
+        this.s = r1;     // Catch: Throwable -> L6
+        monitor-exit(this);
+        return;
+    L6:
+        th = move-exception;
+        throw th;
     }
 
-    public final void u(ym1 ym1Var) {
-        long j;
-        bf4 bf4Var;
-        long j2;
-        long jQ;
-        long j3;
-        boolean z = ym1Var.p;
-        boolean z2 = ym1Var.g;
-        yw1 yw1Var = ym1Var.r;
-        long j4 = ym1Var.u;
-        long jQ2 = ym1Var.e;
-        int i = ym1Var.d;
-        long j5 = ym1Var.h;
-        long jI0 = z ? f35.i0(j5) : -9223372036854775807L;
-        long j6 = (i == 2 || i == 1) ? jI0 : -9223372036854775807L;
-        al0 al0Var = this.o;
-        al0Var.w.getClass();
-        y41 y41Var = new y41(26);
-        long j7 = 0;
-        if (al0Var.z) {
-            xm1 xm1Var = ym1Var.v;
-            long j8 = j5 - al0Var.A;
-            boolean z3 = ym1Var.o;
-            long j9 = z3 ? j8 + j4 : -9223372036854775807L;
-            long jQ3 = ym1Var.p ? f35.Q(f35.B(this.p)) - (j5 + j4) : 0L;
-            long j10 = this.q.a;
-            if (j10 != -9223372036854775807L) {
-                jQ = f35.Q(j10);
-            } else {
-                if (jQ2 != -9223372036854775807L) {
-                    j2 = j4 - jQ2;
-                } else {
-                    j2 = xm1Var.d;
-                    if (j2 == -9223372036854775807L || ym1Var.n == -9223372036854775807L) {
-                        j2 = xm1Var.c;
-                        if (j2 == -9223372036854775807L) {
-                            j2 = 3 * ym1Var.m;
-                        }
-                    }
-                }
-                jQ = j2 + jQ3;
-            }
-            long j11 = j4 + jQ3;
-            long jK = f35.k(jQ, jQ3, j11);
-            an2 an2Var = h().c;
-            boolean z4 = an2Var.d == -3.4028235E38f && an2Var.e == -3.4028235E38f && xm1Var.c == -9223372036854775807L && xm1Var.d == -9223372036854775807L;
-            zm2 zm2VarA = this.q.a();
-            zm2VarA.a = f35.i0(jK);
-            zm2VarA.d = z4 ? 1.0f : this.q.d;
-            zm2VarA.e = z4 ? 1.0f : this.q.e;
-            an2 an2Var2 = new an2(zm2VarA);
-            this.q = an2Var2;
-            if (jQ2 == -9223372036854775807L) {
-                jQ2 = j11 - f35.Q(an2Var2.a);
-            }
-            if (z2) {
-                j7 = jQ2;
-            } else {
-                tm1 tm1VarT = t(jQ2, ym1Var.s);
-                if (tm1VarT != null) {
-                    j3 = tm1VarT.r;
-                } else if (!yw1Var.isEmpty()) {
-                    vm1 vm1Var = (vm1) yw1Var.get(f35.d(yw1Var, Long.valueOf(jQ2), true));
-                    tm1 tm1VarT2 = t(jQ2, vm1Var.z);
-                    j3 = tm1VarT2 != null ? tm1VarT2.r : vm1Var.r;
-                }
-                j7 = j3;
-            }
-            bf4Var = new bf4(j6, jI0, j9, ym1Var.u, j8, j7, true, !z3, i == 2 && ym1Var.f, y41Var, h(), this.q);
-        } else {
-            if (jQ2 == -9223372036854775807L || yw1Var.isEmpty()) {
-                j = 0;
-            } else {
-                if (!z2 && jQ2 != j4) {
-                    jQ2 = ((vm1) yw1Var.get(f35.d(yw1Var, Long.valueOf(jQ2), true))).r;
-                }
-                j = jQ2;
-            }
-            long j12 = ym1Var.u;
-            bf4Var = new bf4(j6, jI0, j12, j12, 0L, j, true, false, true, y41Var, h(), null);
-        }
-        m(bf4Var);
+    public final void u(ym1 r40) {
+        boolean r2 = r40.p;
+        boolean r3 = r40.g;
+        yw1 r4 = r40.r;
+        long r5 = r40.u;
+        long r7 = r40.e;
+        int r9 = r40.d;
+        long r10 = r40.h;
+        if (r2 == false) goto L5;
+        long r19 = f35.i0(r10);
+    L7:
+        if (r9 == 2) goto L11;
+        if (r9 == 1) goto L11;
+        long r17 = -9223372036854775807L;
+    L12:
+        al0 r12 = this.o;
+        r12.w.getClass();
+        y41 r15 = new y41(26);
+        long r23 = 0;
+        if (r12.z == false) goto L83;
+        xm1 r13 = r40.v;
+        long r25 = r10 - r12.A;
+        boolean r14 = r40.o;
+        if (r14 == false) goto L17;
+        long r16 = r25 + r5;
+    L19:
+        if (r40.p == false) goto L21;
+        long r35 = f35.Q(f35.B(this.p)) - (r10 + r5);
+    L22:
+        long r6 = this.q.a;
+        if (r6 == (-9223372036854775807L)) goto L27;
+        long r8 = f35.Q(r6);
+    L39:
+        long r37 = r5 + r35;
+        long r11 = f35.k(r8, r35, r37);
+        an2 r18 = h().c;
+        if (r18.d == (-3.4028235E38f)) goto L42;
+    L48:
+        boolean r20 = false;
+    L49:
+        zm2 r21 = this.q.a();
+        r21.a = f35.i0(r11);
+        float r22 = 1.0f;
+        if (r20 == false) goto L52;
+        float r24 = 1.0f;
+    L53:
+        r21.d = r24;
+        if (r20 == true) goto L57;
+        r22 = this.q.e;
+    L57:
+        r21.e = r22;
+        an2 r26 = new an2(r21);
+        this.q = r26;
+        if (r7 != (-9223372036854775807L)) goto L61;
+        r7 = r37 - f35.Q(r26.a);
+    L61:
+        if (r3 == false) goto L64;
+        r23 = r7;
+    L75:
+        if (r9 == 2) goto L77;
+    L79:
+        boolean r31 = false;
+    L80:
+        bf4 r110 = new bf4(r17, r19, r16, r40.u, r25, r23, true, !r14, r31, r15, h(), this.q);
+    L95:
+        m(r110);
+        return;
+    L77:
+        if (r40.f == false) goto L79;
+        r31 = true;
+        goto L80
+    L64:
+        tm1 r27 = t(r7, r40.s);
+        if (r27 == null) goto L69;
+        long r28 = r27.r;
+    L67:
+        r23 = r28;
+        goto L75
+    L69:
+        if (r4.isEmpty() == true) goto L75;
+        vm1 r29 = (vm1) r4.get(f35.d(r4, Long.valueOf(r7), true));
+        tm1 r30 = t(r7, r29.z);
+        if (r30 == null) goto L74;
+        r28 = r30.r;
+        goto L67
+    L74:
+        r28 = r29.r;
+        goto L67
+    L52:
+        r24 = this.q.d;
+        goto L53
+    L42:
+        if (r18.e != (-3.4028235E38f)) goto L48;
+        if (r13.c != (-9223372036854775807L)) goto L48;
+        if (r13.d != (-9223372036854775807L)) goto L48;
+        r20 = true;
+        goto L49
+    L27:
+        if (r7 == (-9223372036854775807L)) goto L29;
+        long r32 = r5 - r7;
+    L38:
+        r8 = r32 + r35;
+        goto L39
+    L29:
+        r32 = r13.d;
+        if (r32 != (-9223372036854775807L)) goto L32;
+    L34:
+        r32 = r13.c;
+        if (r32 != (-9223372036854775807L)) goto L38;
+        r32 = 3 * r40.m;
+        goto L38
+    L32:
+        if (r40.n == (-9223372036854775807L)) goto L34;
+    L21:
+        r35 = 0;
+        goto L22
+    L17:
+        r16 = -9223372036854775807L;
+        goto L19
+    L83:
+        if (r7 != (-9223372036854775807L)) goto L85;
+    L93:
+        long r210 = 0;
+    L94:
+        long r1 = r40.u;
+        r110 = new bf4(r17, r19, r1, r1, 0, r210, true, false, true, r15, h(), null);
+        goto L95
+    L85:
+        if (r4.isEmpty() == true) goto L93;
+        if (r3 == false) goto L89;
+    L92:
+        r210 = r7;
+        goto L94
+    L89:
+        if (r7 == r5) goto L92;
+        r7 = ((vm1) r4.get(f35.d(r4, Long.valueOf(r7), true))).r;
+    L11:
+        r17 = r19;
+        goto L12
+    L5:
+        r19 = -9223372036854775807L;
+        goto L7
     }
 }

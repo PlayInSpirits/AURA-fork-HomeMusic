@@ -9,16 +9,15 @@ public final class c53 extends wd0 {
     public final /* synthetic */ e53 q;
     public int r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public c53(e53 e53Var, wd0 wd0Var) {
-        super(wd0Var);
-        this.q = e53Var;
+    public c53(e53 r1, wd0 r2) {
+        this.q = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.p = obj;
+    public final Object invokeSuspend(Object r7) {
+        this.p = r7;
         this.r |= Integer.MIN_VALUE;
-        return this.q.b0(0L, 0L, this);
+        return this.q.b0(0, 0, this);
     }
 }

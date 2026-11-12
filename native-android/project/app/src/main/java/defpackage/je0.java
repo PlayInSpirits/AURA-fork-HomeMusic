@@ -6,8 +6,8 @@ public final class je0 extends cx2 implements g94 {
     public if1 B;
 
     @Override // defpackage.g94
-    public final void c0(q94 q94Var) {
-        this.B.invoke(q94Var);
+    public final void c0(q94 r1) {
+        this.B.invoke(r1);
     }
 
     @Override // defpackage.g94

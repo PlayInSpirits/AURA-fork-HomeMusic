@@ -6,7 +6,6 @@ import android.animation.ValueAnimator;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.media3.ui.DefaultTimeBar;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -14,129 +13,154 @@ public final class oj3 extends AnimatorListenerAdapter {
     public final /* synthetic */ int a;
     public final /* synthetic */ qj3 b;
 
-    public /* synthetic */ oj3(qj3 qj3Var, int i) {
-        this.a = i;
-        this.b = qj3Var;
+    public /* synthetic */ oj3(qj3 r1, int r2) {
+        this.a = r2;
+        this.b = r1;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public void onAnimationEnd(Animator animator) {
-        int i = this.a;
-        qj3 qj3Var = this.b;
-        switch (i) {
-            case 0:
-                View view = qj3Var.b;
-                if (view != null) {
-                    view.setVisibility(4);
-                }
-                ViewGroup viewGroup = qj3Var.c;
-                if (viewGroup != null) {
-                    viewGroup.setVisibility(4);
-                }
-                ViewGroup viewGroup2 = qj3Var.d;
-                if (viewGroup2 != null) {
-                    viewGroup2.setVisibility(4);
-                }
-                ViewGroup viewGroup3 = qj3Var.f;
-                if (viewGroup3 != null) {
-                    viewGroup3.setVisibility(4);
-                }
-                break;
-            case 1:
-            default:
-                super.onAnimationEnd(animator);
-                break;
-            case 2:
-                qj3Var.i(0);
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                qj3Var.i(0);
-                break;
-            case 4:
-                ViewGroup viewGroup4 = qj3Var.g;
-                if (viewGroup4 != null) {
-                    viewGroup4.setVisibility(4);
-                }
-                break;
-            case 5:
-                ViewGroup viewGroup5 = qj3Var.i;
-                if (viewGroup5 != null) {
-                    viewGroup5.setVisibility(4);
-                }
-                break;
-        }
+    public void onAnimationEnd(Animator r5) {
+        int r0 = this.a;
+        qj3 r3 = this.b;
+        switch(r0) {
+            case 0: goto L18;
+            case 1: goto L4;
+            case 2: goto L16;
+            case 3: goto L14;
+            case 4: goto L10;
+            case 5: goto L6;
+            default: goto L4;
+        };
+    L4:
+        super.onAnimationEnd(r5);
+        return;
+    L6:
+        ViewGroup r4 = r3.i;
+        if (r4 == null) goto L31;
+        r4.setVisibility(4);
+        return;
+    L31:
+        return;
+    L10:
+        ViewGroup r6 = r3.g;
+        if (r6 == null) goto L32;
+        r6.setVisibility(4);
+        return;
+    L32:
+        return;
+    L14:
+        r3.i(0);
+        return;
+    L16:
+        r3.i(0);
+        return;
+    L18:
+        View r7 = r3.b;
+        if (r7 == null) goto L21;
+        r7.setVisibility(4);
+    L21:
+        ViewGroup r8 = r3.c;
+        if (r8 == null) goto L24;
+        r8.setVisibility(4);
+    L24:
+        ViewGroup r9 = r3.d;
+        if (r9 == null) goto L27;
+        r9.setVisibility(4);
+    L27:
+        ViewGroup r10 = r3.f;
+        if (r10 == null) goto L33;
+        r10.setVisibility(4);
+        return;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationStart(Animator animator) {
-        int i = this.a;
-        qj3 qj3Var = this.b;
-        switch (i) {
-            case 0:
-                View view = qj3Var.k;
-                if ((view instanceof DefaultTimeBar) && !qj3Var.B) {
-                    DefaultTimeBar defaultTimeBar = (DefaultTimeBar) view;
-                    ValueAnimator valueAnimator = defaultTimeBar.R;
-                    if (valueAnimator.isStarted()) {
-                        valueAnimator.cancel();
-                    }
-                    valueAnimator.setFloatValues(defaultTimeBar.S, 0.0f);
-                    valueAnimator.setDuration(250L);
-                    valueAnimator.start();
-                    break;
-                }
-                break;
-            case 1:
-                View view2 = qj3Var.b;
-                if (view2 != null) {
-                    view2.setVisibility(0);
-                }
-                ViewGroup viewGroup = qj3Var.c;
-                if (viewGroup != null) {
-                    viewGroup.setVisibility(0);
-                }
-                ViewGroup viewGroup2 = qj3Var.d;
-                if (viewGroup2 != null) {
-                    viewGroup2.setVisibility(0);
-                }
-                ViewGroup viewGroup3 = qj3Var.f;
-                if (viewGroup3 != null) {
-                    viewGroup3.setVisibility(qj3Var.B ? 0 : 4);
-                }
-                View view3 = qj3Var.k;
-                if ((view3 instanceof DefaultTimeBar) && !qj3Var.B) {
-                    DefaultTimeBar defaultTimeBar2 = (DefaultTimeBar) view3;
-                    ValueAnimator valueAnimator2 = defaultTimeBar2.R;
-                    if (valueAnimator2.isStarted()) {
-                        valueAnimator2.cancel();
-                    }
-                    defaultTimeBar2.T = false;
-                    valueAnimator2.setFloatValues(defaultTimeBar2.S, 1.0f);
-                    valueAnimator2.setDuration(250L);
-                    valueAnimator2.start();
-                    break;
-                }
-                break;
-            case 2:
-                qj3Var.i(4);
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                qj3Var.i(4);
-                break;
-            case 4:
-                ViewGroup viewGroup4 = qj3Var.i;
-                if (viewGroup4 != null) {
-                    viewGroup4.setVisibility(0);
-                    viewGroup4.setTranslationX(viewGroup4.getWidth());
-                    viewGroup4.scrollTo(viewGroup4.getWidth(), 0);
-                }
-                break;
-            default:
-                ViewGroup viewGroup5 = qj3Var.g;
-                if (viewGroup5 != null) {
-                    viewGroup5.setVisibility(0);
-                }
-                break;
-        }
+    public final void onAnimationStart(Animator r8) {
+        int r9 = this.a;
+        int r4 = 4;
+        qj3 r7 = this.b;
+        switch(r9) {
+            case 0: goto L40;
+            case 1: goto L16;
+            case 2: goto L14;
+            case 3: goto L12;
+            case 4: goto L8;
+            default: goto L4;
+        };
+    L4:
+        ViewGroup r10 = r7.g;
+        if (r10 == null) goto L49;
+        r10.setVisibility(0);
+        return;
+    L49:
+        return;
+    L8:
+        ViewGroup r11 = r7.i;
+        if (r11 == null) goto L50;
+        r11.setVisibility(0);
+        r11.setTranslationX(r11.getWidth());
+        r11.scrollTo(r11.getWidth(), 0);
+        return;
+    L50:
+        return;
+    L12:
+        r7.i(4);
+        return;
+    L14:
+        r7.i(4);
+        return;
+    L16:
+        View r12 = r7.b;
+        if (r12 == null) goto L19;
+        r12.setVisibility(0);
+    L19:
+        ViewGroup r13 = r7.c;
+        if (r13 == null) goto L22;
+        r13.setVisibility(0);
+    L22:
+        ViewGroup r14 = r7.d;
+        if (r14 == null) goto L25;
+        r14.setVisibility(0);
+    L25:
+        ViewGroup r15 = r7.f;
+        if (r15 != null) goto L28;
+    L31:
+        View r16 = r7.k;
+        if ((r16 instanceof DefaultTimeBar) == true) goto L34;
+        return;
+    L34:
+        if (r7.B == true) goto L52;
+        DefaultTimeBar r17 = (DefaultTimeBar) r16;
+        ValueAnimator r18 = r17.R;
+        if (r18.isStarted() == false) goto L38;
+        r18.cancel();
+    L38:
+        r17.T = false;
+        r18.setFloatValues(new float[]{r17.S, 1.0f});
+        r18.setDuration(250);
+        r18.start();
+        return;
+    L52:
+        return;
+    L28:
+        if (r7.B == false) goto L30;
+        r4 = 0;
+    L30:
+        r15.setVisibility(r4);
+        goto L31
+    L40:
+        View r19 = r7.k;
+        if ((r19 instanceof DefaultTimeBar) == true) goto L43;
+        return;
+    L43:
+        if (r7.B == true) goto L54;
+        DefaultTimeBar r20 = (DefaultTimeBar) r19;
+        ValueAnimator r21 = r20.R;
+        if (r21.isStarted() == false) goto L47;
+        r21.cancel();
+    L47:
+        r21.setFloatValues(new float[]{r20.S, 0.0f});
+        r21.setDuration(250);
+        r21.start();
+        return;
     }
 }

@@ -9,17 +9,26 @@ import defpackage.v14;
 /* JADX INFO: loaded from: classes.dex */
 class MediaBrowserCompat$ItemReceiver extends v14 {
     @Override // defpackage.v14
-    public final void a(int i, Bundle bundle) {
-        if (bundle != null) {
-            bundle = rr2.X(bundle);
-        }
-        if (i != 0 || bundle == null || !bundle.containsKey("media_item")) {
-            throw null;
-        }
-        Parcelable parcelable = bundle.getParcelable("media_item");
-        if (parcelable != null && !(parcelable instanceof MediaBrowserCompat$MediaItem)) {
-            throw null;
-        }
+    public final void a(int r2, Bundle r3) {
+        if (r3 == null) goto L5;
+        r3 = rr2.X(r3);
+    L5:
+        if (r2 != 0) goto L17;
+        if (r3 != null) goto L8;
+        throw null;
+    L8:
+        if (r3.containsKey("media_item") == false) goto L19;
+        Parcelable r4 = r3.getParcelable("media_item");
+        if (r4 != null) goto L12;
+    L15:
+        MediaBrowserCompat$MediaItem r5 = (MediaBrowserCompat$MediaItem) r4;
+        throw null;
+    L12:
+        if ((r4 instanceof MediaBrowserCompat$MediaItem) == true) goto L15;
+        throw null;
+    L19:
+        throw null;
+    L17:
         throw null;
     }
 }

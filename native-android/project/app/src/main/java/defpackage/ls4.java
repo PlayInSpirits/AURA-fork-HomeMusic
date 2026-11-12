@@ -16,48 +16,96 @@ public final class ls4 {
     public final ha1 i;
     public final long j;
 
-    public ls4(he heVar, zs4 zs4Var, List list, int i, boolean z, int i2, oo0 oo0Var, r62 r62Var, ha1 ha1Var, long j) {
-        this.a = heVar;
-        this.b = zs4Var;
-        this.c = list;
-        this.d = i;
-        this.e = z;
-        this.f = i2;
-        this.g = oo0Var;
-        this.h = r62Var;
-        this.i = ha1Var;
-        this.j = j;
+    public ls4(he r1, zs4 r2, List r3, int r4, boolean r5, int r6, oo0 r7, r62 r8, ha1 r9, long r10) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
+        this.j = r10;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof ls4)) {
-            return false;
-        }
-        ls4 ls4Var = (ls4) obj;
-        return h12.c(this.a, ls4Var.a) && h12.c(this.b, ls4Var.b) && this.c.equals(ls4Var.c) && this.d == ls4Var.d && this.e == ls4Var.e && this.f == ls4Var.f && h12.c(this.g, ls4Var.g) && this.h == ls4Var.h && h12.c(this.i, ls4Var.i) && nc0.b(this.j, ls4Var.j);
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof ls4) == false) goto L41;
+        ls4 r4 = (ls4) r3;
+        he r0 = r4.a;
+        if (h12.c(this.a, r0) == true) goto L11;
+        return false;
+    L11:
+        if (h12.c(this.b, r4.b) == true) goto L14;
+        return false;
+    L14:
+        if (this.c.equals(r4.c) == true) goto L17;
+        return false;
+    L17:
+        if (this.d == r4.d) goto L20;
+        return false;
+    L20:
+        if (this.e == r4.e) goto L23;
+        return false;
+    L23:
+        if (this.f == r4.f) goto L25;
+        return false;
+    L25:
+        if (h12.c(this.g, r4.g) == true) goto L28;
+        return false;
+    L28:
+        if (this.h == r4.h) goto L31;
+        return false;
+    L31:
+        if (h12.c(this.i, r4.i) == true) goto L34;
+        return false;
+    L34:
+        if (nc0.b(this.j, r4.j) == false) goto L50;
+        return true;
+    L50:
+        return false;
+    L41:
+        return false;
     }
 
     public final int hashCode() {
-        return Long.hashCode(this.j) + ((this.i.hashCode() + ((this.h.hashCode() + ((this.g.hashCode() + f34.d(this.f, xa3.c((((this.c.hashCode() + ((this.b.hashCode() + (this.a.hashCode() * 31)) * 31)) * 31) + this.d) * 31, 31, this.e), 31)) * 31)) * 31)) * 31);
+        int r0 = this.a.hashCode() * 31;
+        int r2 = (this.b.hashCode() + r0) * 31;
+        int r1 = xa3.c((((this.c.hashCode() + r2) * 31) + this.d) * 31, 31, this.e);
+        int r3 = f34.d(this.f, r1, 31);
+        int r4 = (this.g.hashCode() + r3) * 31;
+        int r5 = (this.h.hashCode() + r4) * 31;
+        int r6 = (this.i.hashCode() + r5) * 31;
+        return Long.hashCode(this.j) + r6;
     }
 
     public final String toString() {
-        String str;
-        int i = this.f;
-        if (i == 1) {
-            str = "Clip";
-        } else if (i == 2) {
-            str = "Ellipsis";
-        } else if (i == 5) {
-            str = "MiddleEllipsis";
-        } else if (i == 3) {
-            str = "Visible";
-        } else {
-            str = i == 4 ? "StartEllipsis" : "Invalid";
-        }
-        return "TextLayoutInput(text=" + ((Object) this.a) + ", style=" + this.b + ", placeholders=" + this.c + ", maxLines=" + this.d + ", softWrap=" + this.e + ", overflow=" + str + ", density=" + this.g + ", layoutDirection=" + this.h + ", fontFamilyResolver=" + this.i + ", constraints=" + nc0.k(this.j) + ")";
+        int r1 = this.f;
+        if (r1 != 1) goto L6;
+        String r0 = "Clip";
+    L19:
+        return "TextLayoutInput(text=" + this.a + ", style=" + this.b + ", placeholders=" + this.c + ", maxLines=" + this.d + ", softWrap=" + this.e + ", overflow=" + r0 + ", density=" + this.g + ", layoutDirection=" + this.h + ", fontFamilyResolver=" + this.i + ", constraints=" + nc0.k(this.j) + ")";
+    L6:
+        if (r1 != 2) goto L9;
+        r0 = "Ellipsis";
+        goto L19
+    L9:
+        if (r1 != 5) goto L12;
+        r0 = "MiddleEllipsis";
+        goto L19
+    L12:
+        if (r1 != 3) goto L15;
+        r0 = "Visible";
+        goto L19
+    L15:
+        if (r1 != 4) goto L17;
+        r0 = "StartEllipsis";
+        goto L19
+    L17:
+        r0 = "Invalid";
+        goto L19
     }
 }

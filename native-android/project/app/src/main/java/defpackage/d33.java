@@ -8,25 +8,25 @@ import android.os.Parcelable;
 public final class d33 extends h33 {
     public final Class r;
 
-    public d33(Class cls) {
+    public d33(Class r4) {
         super(true);
-        if (!Parcelable.class.isAssignableFrom(cls)) {
-            nz2.h(cls, " does not implement Parcelable.");
-            throw null;
-        }
-        try {
-            this.r = Class.forName("[L" + cls.getName() + ';');
-        } catch (ClassNotFoundException e) {
-            er1.m(e);
-            throw null;
-        }
+        if (Parcelable.class.isAssignableFrom(r4) == true) goto L12;
+        nz2.h(r4, " does not implement Parcelable.");
+        throw null;
+    L12:
+        this.r = Class.forName("[L" + r4.getName() + ';');
+        return;
+    L7:
+        e = move-exception;
+        er1.m(e);
+        throw null;
     }
 
     @Override // defpackage.h33
-    public final Object a(String str, Bundle bundle) {
-        bundle.getClass();
-        str.getClass();
-        return (Parcelable[]) bundle.get(str);
+    public final Object a(String r1, Bundle r2) {
+        r2.getClass();
+        r1.getClass();
+        return (Parcelable[]) r2.get(r1);
     }
 
     @Override // defpackage.h33
@@ -35,27 +35,30 @@ public final class d33 extends h33 {
     }
 
     @Override // defpackage.h33
-    public final Object d(String str) {
-        str.getClass();
+    public final Object d(String r1) {
+        r1.getClass();
         throw new UnsupportedOperationException("Arrays don't support default values.");
     }
 
     @Override // defpackage.h33
-    public final void e(Bundle bundle, String str, Object obj) {
-        Parcelable[] parcelableArr = (Parcelable[]) obj;
-        str.getClass();
-        this.r.cast(parcelableArr);
-        bundle.putParcelableArray(str, parcelableArr);
+    public final void e(Bundle r1, String r2, Object r3) {
+        Parcelable[] r4 = (Parcelable[]) r3;
+        r2.getClass();
+        this.r.cast(r4);
+        r1.putParcelableArray(r2, r4);
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || !d33.class.equals(obj.getClass())) {
-            return false;
-        }
-        return h12.c(this.r, ((d33) obj).r);
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if (r3 != null) goto L7;
+        return false;
+    L7:
+        if (d33.class.equals(r3.getClass()) == true) goto L10;
+        return false;
+    L10:
+        return h12.c(this.r, ((d33) r3).r);
     }
 
     public final int hashCode() {

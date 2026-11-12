@@ -5,7 +5,7 @@ import java.util.ArrayDeque;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class l00 implements rn4 {
-    public final ArrayDeque a = new ArrayDeque();
+    public final ArrayDeque a;
     public final ArrayDeque b;
     public final ArrayDeque c;
     public j00 d;
@@ -14,17 +14,26 @@ public abstract class l00 implements rn4 {
     public long g;
 
     public l00() {
-        for (int i = 0; i < 10; i++) {
-            this.a.add(new j00());
-        }
+        this.a = new ArrayDeque();
+        int r0 = 0;
+        int r1 = 0;
+    L4:
+        if (r1 >= 10) goto L6;
+        this.a.add(new j00());
+        r1 = r1 + 1;
+        goto L4
+    L6:
         this.b = new ArrayDeque();
-        for (int i2 = 0; i2 < 2; i2++) {
-            ArrayDeque arrayDeque = this.b;
-            cn cnVar = new cn(1, this);
-            k00 k00Var = new k00();
-            k00Var.u = cnVar;
-            arrayDeque.add(k00Var);
-        }
+    L8:
+        if (r0 >= 2) goto L10;
+        ArrayDeque r2 = this.b;
+        cn r3 = new cn(1, this);
+        k00 r4 = new k00();
+        r4.u = r3;
+        r2.add(r4);
+        r0 = r0 + 1;
+        goto L8
+    L10:
         this.c = new ArrayDeque();
         this.g = -9223372036854775807L;
     }
@@ -34,131 +43,134 @@ public abstract class l00 implements rn4 {
     }
 
     @Override // defpackage.zi0
-    public final void b(long j) {
-        this.g = j;
+    public final void b(long r1) {
+        this.g = r1;
     }
 
     @Override // defpackage.rn4
-    public final void c(long j) {
-        this.e = j;
+    public final void c(long r1) {
+        this.e = r1;
+    }
+
+    @Override // defpackage.zi0
+    public /* bridge */ /* synthetic */ Object d() {
+        return i();
     }
 
     @Override // defpackage.zi0
     public final Object e() {
-        rr2.w(this.d == null);
-        ArrayDeque arrayDeque = this.a;
-        if (arrayDeque.isEmpty()) {
-            return null;
-        }
-        j00 j00Var = (j00) arrayDeque.pollFirst();
-        this.d = j00Var;
-        return j00Var;
+        if (this.d != null) goto L5;
+        boolean r0 = true;
+    L6:
+        rr2.w(r0);
+        ArrayDeque r1 = this.a;
+        if (r1.isEmpty() == false) goto L10;
+        return null;
+    L10:
+        j00 r2 = (j00) r1.pollFirst();
+        this.d = r2;
+        return r2;
+    L5:
+        r0 = false;
+        goto L6
     }
 
-    /* JADX WARN: Code duplicated, block: B:15:0x0033  */
     @Override // defpackage.zi0
-    public final void f(vn4 vn4Var) {
-        rr2.l(vn4Var == this.d);
-        j00 j00Var = (j00) vn4Var;
-        if (j00Var.d(4)) {
-            long j = this.f;
-            this.f = 1 + j;
-            j00Var.y = j;
-            this.c.add(j00Var);
-        } else {
-            long j2 = j00Var.t;
-            if (j2 != Long.MIN_VALUE) {
-                long j3 = this.g;
-                if (j3 == -9223372036854775807L || j2 >= j3) {
-                    long j4 = this.f;
-                    this.f = 1 + j4;
-                    j00Var.y = j4;
-                    this.c.add(j00Var);
-                } else {
-                    j00Var.r();
-                    this.a.add(j00Var);
-                }
-            } else {
-                long j5 = this.f;
-                this.f = 1 + j5;
-                j00Var.y = j5;
-                this.c.add(j00Var);
-            }
-        }
+    public final void f(vn4 r7) {
+        if (r7 != this.d) goto L5;
+        boolean r0 = true;
+    L6:
+        rr2.l(r0);
+        j00 r8 = (j00) r7;
+        if (r8.d(4) == true) goto L15;
+        long r1 = r8.t;
+        if (r1 == Long.MIN_VALUE) goto L15;
+        long r2 = this.g;
+        if (r2 == (-9223372036854775807L)) goto L15;
+        if (r1 >= r2) goto L15;
+        r8.r();
+        this.a.add(r8);
+    L16:
         this.d = null;
+        return;
+    L15:
+        long r3 = this.f;
+        this.f = 1 + r3;
+        r8.y = r3;
+        this.c.add(r8);
+        goto L16
+    L5:
+        r0 = false;
+        goto L6
     }
 
     @Override // defpackage.zi0
     public void flush() {
-        ArrayDeque arrayDeque;
-        this.f = 0L;
-        this.e = 0L;
-        while (true) {
-            ArrayDeque arrayDeque2 = this.c;
-            boolean zIsEmpty = arrayDeque2.isEmpty();
-            arrayDeque = this.a;
-            if (zIsEmpty) {
-                break;
-            }
-            j00 j00Var = (j00) arrayDeque2.poll();
-            String str = f35.a;
-            j00Var.r();
-            arrayDeque.add(j00Var);
-        }
-        j00 j00Var2 = this.d;
-        if (j00Var2 != null) {
-            j00Var2.r();
-            arrayDeque.add(j00Var2);
-            this.d = null;
-        }
+        this.f = 0;
+        this.e = 0;
+    L3:
+        ArrayDeque r0 = this.c;
+        boolean r1 = r0.isEmpty();
+        ArrayDeque r2 = this.a;
+        if (r1 == true) goto L6;
+        j00 r3 = (j00) r0.poll();
+        String r4 = f35.a;
+        r3.r();
+        r2.add(r3);
+        goto L3
+    L6:
+        j00 r5 = this.d;
+        if (r5 == null) goto L11;
+        r5.r();
+        r2.add(r5);
+        this.d = null;
+        return;
     }
 
     public abstract zh0 g();
 
-    public abstract void h(j00 j00Var);
+    public abstract void h(j00 r1);
 
-    @Override // defpackage.zi0
-    /* JADX INFO: renamed from: i, reason: merged with bridge method [inline-methods] */
-    public wn4 d() {
-        ArrayDeque arrayDeque = this.b;
-        if (arrayDeque.isEmpty()) {
-            return null;
-        }
-        while (true) {
-            ArrayDeque arrayDeque2 = this.c;
-            if (arrayDeque2.isEmpty()) {
-                return null;
-            }
-            j00 j00Var = (j00) arrayDeque2.peek();
-            String str = f35.a;
-            if (j00Var.t > this.e) {
-                return null;
-            }
-            j00 j00Var2 = (j00) arrayDeque2.poll();
-            boolean zD = j00Var2.d(4);
-            ArrayDeque arrayDeque3 = this.a;
-            if (zD) {
-                wn4 wn4Var = (wn4) arrayDeque.pollFirst();
-                wn4Var.a(4);
-                j00Var2.r();
-                arrayDeque3.add(j00Var2);
-                return wn4Var;
-            }
-            h(j00Var2);
-            if (j()) {
-                zh0 zh0VarG = g();
-                wn4 wn4Var2 = (wn4) arrayDeque.pollFirst();
-                long j = j00Var2.t;
-                wn4Var2.p = j;
-                wn4Var2.s = zh0VarG;
-                wn4Var2.t = j;
-                j00Var2.r();
-                arrayDeque3.add(j00Var2);
-                return wn4Var2;
-            }
-            j00Var2.r();
-            arrayDeque3.add(j00Var2);
-        }
+    public wn4 i() {
+        ArrayDeque r0 = this.b;
+        if (r0.isEmpty() == true) goto L18;
+    L5:
+        ArrayDeque r1 = this.c;
+        if (r1.isEmpty() == true) goto L24;
+        j00 r2 = (j00) r1.peek();
+        String r3 = f35.a;
+        if (r2.t > this.e) goto L25;
+        j00 r4 = (j00) r1.poll();
+        boolean r5 = r4.d(4);
+        ArrayDeque r6 = this.a;
+        if (r5 == true) goto L11;
+        h(r4);
+        if (j() == true) goto L15;
+        r4.r();
+        r6.add(r4);
+        goto L5
+    L15:
+        zh0 r7 = g();
+        wn4 r8 = (wn4) r0.pollFirst();
+        long r9 = r4.t;
+        r8.p = r9;
+        r8.s = r7;
+        r8.t = r9;
+        r4.r();
+        r6.add(r4);
+        return r8;
+    L11:
+        wn4 r10 = (wn4) r0.pollFirst();
+        r10.a(4);
+        r4.r();
+        r6.add(r4);
+        return r10;
+    L25:
+        return null;
+    L24:
+        return null;
+    L18:
+        return null;
     }
 
     public abstract boolean j();

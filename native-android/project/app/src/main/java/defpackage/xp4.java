@@ -10,22 +10,22 @@ public final class xp4 {
 
     public final void a() {
         this.a = null;
-        ArrayList arrayList = yp4.b;
-        synchronized (arrayList) {
-            try {
-                if (arrayList.size() < 50) {
-                    arrayList.add(this);
-                }
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+        ArrayList r0 = yp4.b;
+        monitor-enter(r0);
+    L7:
+        th = move-exception;
+        throw th;
+    L5:
+        if (r0.size() >= 50) goto L9;
+        r0.add(this);     // Catch: Throwable -> L7
+    L9:
+        monitor-exit(r0);     // Catch: Throwable -> L7
     }
 
     public final void b() {
-        Message message = this.a;
-        message.getClass();
-        message.sendToTarget();
+        Message r0 = this.a;
+        r0.getClass();
+        r0.sendToTarget();
         a();
     }
 }

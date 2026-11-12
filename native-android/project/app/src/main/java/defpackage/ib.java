@@ -5,7 +5,6 @@ import android.os.Trace;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -14,13 +13,12 @@ public final /* synthetic */ class ib implements wf1 {
     public final /* synthetic */ Object o;
     public final /* synthetic */ Object p;
 
-    public /* synthetic */ ib(int i, Object obj, Object obj2) {
-        this.n = i;
-        this.o = obj;
-        this.p = obj2;
+    public /* synthetic */ ib(int r1, Object r2, Object r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
     }
 
-    /* JADX WARN: Code duplicated, block: B:77:0x01e2  */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r28v3, types: [java.util.List] */
     /* JADX WARN: Type inference failed for: r4v49, types: [java.util.ArrayList] */
@@ -28,862 +26,1059 @@ public final /* synthetic */ class ib implements wf1 {
     /* JADX WARN: Type inference failed for: r4v51 */
     /* JADX WARN: Type inference failed for: r9v3, types: [wf1] */
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        boolean z;
-        int i;
-        int i2;
-        int i3;
-        int iMin;
-        h03 h03Var;
-        f82 f82Var;
-        lm0 lm0Var;
-        hb3 hb3Var;
-        int i4;
-        long j;
-        int i5;
-        f82 f82Var2;
-        hb3 hb3Var2;
-        int i6;
-        int i7;
-        int i8;
-        int i9;
-        int i10;
-        hb3 hb3Var3;
-        List arrayList;
-        List list;
-        int i11;
-        ArrayList arrayList2;
-        ln4 ln4Var;
-        long j2;
-        int i12;
-        ArrayList arrayList3;
-        List list2;
-        ?? arrayList4;
-        Object obj3;
-        qc3 qc3Var;
-        f82 f82Var3;
-        int i13;
-        int i14 = this.n;
-        j15 j15Var = j15.a;
-        Object obj4 = this.p;
-        Object obj5 = this.o;
-        switch (i14) {
-            case 0:
-                lb lbVar = (lb) obj4;
-                int iIntValue = ((Integer) obj).intValue();
-                i94 i94Var = (i94) obj2;
-                if (!((j94) obj5).b.c(i94Var.f)) {
-                    lbVar.i(iIntValue, i94Var);
-                    lbVar.u.d(j15Var);
-                }
-                return j15Var;
-            case 1:
-                uy3 uy3Var = (uy3) obj5;
-                lg4 lg4Var = (lg4) obj4;
-                int iIntValue2 = ((Integer) obj).intValue();
-                if (obj2 instanceof u70) {
-                    uy3Var.f.b((u70) obj2);
-                } else if (!(obj2 instanceof a24)) {
-                    if (obj2 instanceof wg1) {
-                        si0.O(lg4Var, iIntValue2, obj2);
-                        uy3Var.e((wg1) obj2);
-                    } else if (obj2 instanceof lv3) {
-                        si0.O(lg4Var, iIntValue2, obj2);
-                        ((lv3) obj2).c();
-                    }
-                }
-                return j15Var;
-            case 2:
-                h72 h72Var = (h72) obj5;
-                ?? r9 = (wf1) obj4;
-                rg1 rg1Var = (rg1) obj;
-                int iIntValue3 = ((Integer) obj2).intValue();
-                if (rg1Var.K(iIntValue3 & 1, (iIntValue3 & 3) != 2)) {
-                    Boolean bool = (Boolean) h72Var.g.getValue();
-                    boolean zBooleanValue = bool.booleanValue();
-                    rg1Var.T(bool);
-                    boolean zF = rg1Var.f(zBooleanValue);
-                    if (zBooleanValue) {
-                        r9.invoke(rg1Var, 0);
-                    } else {
-                        if (rg1Var.l != 0) {
-                            l80.a("No nodes can be emitted before calling deactivateToEndGroup");
-                        }
-                        if (!rg1Var.S) {
-                            if (zF) {
-                                hg4 hg4Var = rg1Var.G;
-                                int i15 = hg4Var.g;
-                                int i16 = hg4Var.h;
-                                k80 k80Var = rg1Var.M;
-                                k80Var.getClass();
-                                k80Var.d(false);
-                                k80Var.b.n.x0(t93.f);
-                                si0.i(i15, i16, rg1Var.s);
-                                rg1Var.G.t();
-                            } else {
-                                rg1Var.M();
-                            }
-                        }
-                    }
-                    if (rg1Var.y && rg1Var.G.i == rg1Var.z) {
-                        rg1Var.z = -1;
-                        z = false;
-                        rg1Var.y = false;
-                    } else {
-                        z = false;
-                    }
-                    rg1Var.o(z);
-                } else {
-                    rg1Var.N();
-                }
-                return j15Var;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                c82 c82Var = (c82) obj5;
-                b82 b82Var = (b82) obj4;
-                Object obj6 = b82Var.a;
-                rg1 rg1Var2 = (rg1) obj;
-                int iIntValue4 = ((Integer) obj2).intValue();
-                if (rg1Var2.K(iIntValue4 & 1, (iIntValue4 & 3) != 2)) {
-                    nc3 nc3Var = (nc3) c82Var.b.invoke();
-                    int i17 = b82Var.b;
-                    if (i17 >= nc3Var.b() || !nc3Var.c(i17).equals(obj6)) {
-                        p03 p03Var = (p03) nc3Var.c.p;
-                        int iD = p03Var.d(obj6);
-                        if (iD >= 0) {
-                            i17 = p03Var.c[iD];
-                            i = -1;
-                        } else {
-                            i17 = -1;
-                            i = -1;
-                        }
-                        if (i17 != i) {
-                            b82Var.b = i17;
-                        }
-                    } else {
-                        i = -1;
-                    }
-                    int i18 = i17;
-                    if (i18 != i) {
-                        rg1Var2.R(-1664741271);
-                        l93.b(nc3Var, c82Var.a, i18, obj6, rg1Var2, 0);
-                        rg1Var2.o(false);
-                    } else {
-                        rg1Var2.R(-1664505826);
-                        rg1Var2.o(false);
-                    }
-                    boolean zG = rg1Var2.g(b82Var);
-                    Object objH = rg1Var2.H();
-                    if (zG || objH == j80.a) {
-                        objH = new x(21, b82Var);
-                        rg1Var2.b0(objH);
-                    }
-                    bu.b(obj6, (if1) objH, rg1Var2);
-                } else {
-                    rg1Var2.N();
-                }
-                return j15Var;
-            case 4:
-                pc3 pc3Var = (pc3) obj4;
-                ln4 ln4Var2 = (ln4) obj;
-                f82 f82Var4 = new f82((c82) obj5, ln4Var2);
-                long j3 = ((nc0) obj2).a;
-                pc3Var.getClass();
-                ac3 ac3Var = pc3Var.b;
-                float f = ac3Var.b;
-                float f2 = ac3Var.a;
-                lm0 lm0Var2 = pc3Var.a;
-                lm0Var2.B.getValue();
-                if (nc0.h(j3) == Integer.MAX_VALUE) {
-                    fz1.c("Horizontally scrollable component was measured with an infinity maximum width constraints, which is disallowed. One of the common reasons is nesting layouts like LazyRow and Row(Modifier.horizontalScroll()). If you want to add a header before the list of items please add a header as a separate item() before the main items() inside the LazyRow scope. There could be other reasons for this to happen: your ComposeView was added into a LinearLayout with some weight, you applied Modifier.wrapContentSize(unbounded = true) or wrote a custom layout. Please try to remove the source of infinite constraints in the hierarchy above the scrolling container.");
-                }
-                r62 layoutDirection = ln4Var2.getLayoutDirection();
-                r62 r62Var = r62.n;
-                int iV = ln4Var2.V((layoutDirection != r62Var ? layoutDirection != r62Var : layoutDirection == r62Var) ? f2 : f);
-                r62 layoutDirection2 = ln4Var2.getLayoutDirection();
-                if (layoutDirection2 != r62Var ? layoutDirection2 == r62Var : layoutDirection2 != r62Var) {
-                    f = f2;
-                }
-                int iV2 = ln4Var2.V(f);
-                int iV3 = ln4Var2.V(0.0f);
-                int iV4 = ln4Var2.V(0.0f) + iV3;
-                int i19 = iV2 + iV;
-                int i20 = i19 - iV;
-                int i21 = -i19;
-                int i22 = -iV4;
-                int iJ = nc0.j(j3) + i21;
-                int i23 = iJ < 0 ? 0 : iJ;
-                int iH = nc0.h(j3);
-                if (iH != Integer.MAX_VALUE && (iH = iH + i21) < 0) {
-                    iH = 0;
-                }
-                int i24 = nc0.i(j3) + i22;
-                if (i24 < 0) {
-                    i24 = 0;
-                }
-                int iG = nc0.g(j3);
-                if (iG == Integer.MAX_VALUE) {
-                    i2 = iG;
-                } else {
-                    i2 = i22 + iG;
-                    if (i2 < 0) {
-                        i2 = 0;
-                    }
-                }
-                long jA = qc0.a(i23, iH, i24, i2);
-                lm0Var2.n = f82Var4;
-                int iV5 = ln4Var2.V(pc3Var.c);
-                int iH2 = nc0.h(j3) - i19;
-                long j4 = (((long) iV3) & 4294967295L) | (((long) iV) << 32);
-                pc3Var.d.getClass();
-                int i25 = iH2 < 0 ? 0 : iH2;
-                qc0.b(i25, nc0.g(jA), 5);
-                nc3 nc3Var2 = (nc3) pc3Var.e.invoke();
-                rv2 rv2Var = pc3Var.h;
-                long j5 = j4;
-                ch4 ch4VarT = ya4.t();
-                if1 if1VarE = ch4VarT != null ? ch4VarT.e() : null;
-                ch4 ch4VarZ = ya4.z(ch4VarT);
-                try {
-                    int iK = lm0Var2.k();
-                    nq nqVar = lm0Var2.d;
-                    int i26 = ud3.i(iK, nc3Var2, nqVar.r);
-                    if (iK != i26) {
-                        ((wd3) nqVar.p).h(i26);
-                        g82 g82Var = (g82) nqVar.s;
-                        if (iK != g82Var.o) {
-                            g82Var.o = iK;
-                            int i27 = (iK / 30) * 30;
-                            g82Var.n.setValue(gb.g0(Math.max(i27 - 100, 0), i27 + 130));
-                        }
-                    }
-                    lm0Var2.k();
-                    float fL = lm0Var2.l();
-                    lm0Var2.n();
-                    rv2Var.getClass();
-                    int i28 = i25 + iV5;
-                    int iL = ji2.L(0.0f - (fL * i28));
-                    ya4.H(ch4VarT, ch4VarZ, if1VarE);
-                    n82 n82Var = lm0Var2.z;
-                    hg3 hg3Var = lm0Var2.v;
-                    rh4 rh4Var = n82Var.n;
-                    rh4Var.getClass();
-                    y1 y1Var = rr2.F(rh4Var).c;
-                    f13 f13Var = (f13) hg3Var.o;
-                    if ((f13Var.p != 0) || !y1Var.isEmpty()) {
-                        h03 h03Var2 = new h03();
-                        if (((f13) hg3Var.o).p != 0) {
-                            int i29 = f13Var.p;
-                            if (i29 != 0) {
-                                Object[] objArr = f13Var.n;
-                                int i30 = ((v72) objArr[0]).a;
-                                int i31 = 0;
-                                while (i31 < i29) {
-                                    int i32 = i31;
-                                    int i33 = ((v72) objArr[i31]).a;
-                                    if (i33 < i30) {
-                                        i30 = i33;
-                                    }
-                                    i31 = i32 + 1;
-                                }
-                                if (i30 < 0) {
-                                    fz1.a("negative minIndex");
-                                }
-                                int i34 = f13Var.p;
-                                if (i34 != 0) {
-                                    Object[] objArr2 = f13Var.n;
-                                    int i35 = ((v72) objArr2[0]).b;
-                                    int i36 = 0;
-                                    while (i36 < i34) {
-                                        int i37 = i30;
-                                        int i38 = ((v72) objArr2[i36]).b;
-                                        if (i38 > i35) {
-                                            i35 = i38;
-                                        }
-                                        i36++;
-                                        i30 = i37;
-                                    }
-                                    iMin = Math.min(i35, nc3Var2.b() - 1);
-                                    i3 = i30;
-                                } else {
-                                    kf2.m("MutableVector is empty.");
-                                }
-                            } else {
-                                kf2.m("MutableVector is empty.");
-                            }
-                            return null;
-                        }
-                        i3 = 1;
-                        iMin = 0;
-                        int iA = y1Var.a();
-                        int i39 = 0;
-                        while (i39 < iA) {
-                            l82 l82Var = (l82) y1Var.get(i39);
-                            y1 y1Var2 = y1Var;
-                            int i40 = ud3.i(l82Var.c, nc3Var2, l82Var.a);
-                            if ((i3 > i40 || i40 > iMin) && i40 >= 0 && i40 < nc3Var2.b()) {
-                                h03Var2.a(i40);
-                            }
-                            i39++;
-                            y1Var = y1Var2;
-                        }
-                        if (i3 <= iMin) {
-                            while (true) {
-                                h03Var2.a(i3);
-                                if (i3 != iMin) {
-                                    i3++;
-                                }
-                            }
-                        }
-                        int i41 = h03Var2.b;
-                        if (i41 != 0) {
-                            int[] iArr = h03Var2.a;
-                            iArr.getClass();
-                            Arrays.sort(iArr, 0, i41);
-                        }
-                        h03Var = h03Var2;
-                    } else {
-                        h03Var = c02.a;
-                        iL = iL;
-                        i28 = i28;
-                    }
-                    int i42 = iV4;
-                    i03 i03Var = new i03();
-                    int iIntValue5 = ((Number) pc3Var.f.invoke()).intValue();
-                    b13 b13Var = lm0Var2.A;
-                    gs gsVar = pc3Var.g;
-                    fs fsVar = fz0.z;
-                    rv2 rv2Var2 = pc3Var.h;
-                    we0 we0Var = pc3Var.i;
-                    if (iV < 0) {
-                        fz1.a("negative beforeContentPadding");
-                    }
-                    if (i20 < 0) {
-                        fz1.a("negative afterContentPadding");
-                    }
-                    gs gsVar2 = gsVar;
-                    int i43 = i28 < 0 ? 0 : i28;
-                    int i44 = iIntValue5 < 0 ? iIntValue5 : 0;
-                    long jB = qc0.b(i25, nc0.g(jA), 5);
-                    int i45 = i25;
-                    v01 v01Var = v01.n;
-                    if (iIntValue5 <= 0) {
-                        qc3Var = new qc3(i45, iV5, i20, -iV, iH2 + i20, i44, rv2Var2, ln4Var2.v(qc0.f(nc0.j(jA) + i19, j3), qc0.e(nc0.i(jA) + i42, j3), v01Var, new or1(24)), we0Var, f82Var4, jB);
-                        ln4Var = ln4Var2;
-                        lm0Var = lm0Var2;
-                        f82Var3 = f82Var4;
-                    } else {
-                        int i46 = iV5;
-                        long j6 = jB;
-                        int i47 = 21;
-                        int i48 = i26;
-                        while (true) {
-                            if (i48 <= 0) {
-                                f82Var = f82Var4;
-                            } else if (iL > 0) {
-                                i48--;
-                                iL -= i43;
-                            }
-                        }
-                        int i49 = iL * (-1);
-                        if (i48 >= iIntValue5) {
-                            i48 = iIntValue5 - 1;
-                            i49 = 0;
-                        }
-                        lm0Var = lm0Var2;
-                        ii iiVar = new ii();
-                        int i50 = -iV;
-                        int i51 = i50 + (i46 < 0 ? i46 : 0);
-                        int i52 = i49 + i51;
-                        int iMax = 0;
-                        while (true) {
-                            hb3Var = hb3.o;
-                            i4 = i44;
-                            j = j5;
-                            i5 = i42;
-                            if (i52 < 0 && i48 > 0) {
-                                i48--;
-                                int i53 = i45;
-                                gs gsVar3 = gsVar2;
-                                ln4 ln4Var3 = ln4Var2;
-                                long j7 = j6;
-                                xi2 xi2VarZ = gb.z(f82Var, i48, j7, nc3Var2, j, hb3Var, fsVar, gsVar3, ln4Var2.getLayoutDirection(), false, i53, i03Var);
-                                iiVar.add(0, xi2VarZ);
-                                iMax = Math.max(iMax, xi2VarZ.j);
-                                i52 += i43;
-                                i46 = i46;
-                                j6 = j7;
-                                ln4Var2 = ln4Var3;
-                                iV = iV;
-                                f82Var = f82Var;
-                                b13Var = b13Var;
-                                j5 = j;
-                                i44 = i4;
-                                i42 = i5;
-                                gsVar2 = gsVar3;
-                                i45 = i53;
-                            }
-                        }
-                        int i54 = i45;
-                        gs gsVar4 = gsVar2;
-                        ln4 ln4Var4 = ln4Var2;
-                        b13 b13Var2 = b13Var;
-                        int i55 = iV;
-                        f82 f82Var5 = f82Var;
-                        long j8 = j6;
-                        int i56 = i46;
-                        if (i52 < i51) {
-                            i52 = i51;
-                        }
-                        int i57 = i52 - i51;
-                        int i58 = iH2 + i20;
-                        int i59 = i58 < 0 ? 0 : i58;
-                        int i60 = iMax;
-                        int i61 = -i57;
-                        int i62 = i57;
-                        int i63 = i48;
-                        int i64 = 0;
-                        boolean z2 = false;
-                        while (i64 < iiVar.p) {
-                            if (i61 >= i59) {
-                                iiVar.b(i64);
-                                z2 = true;
-                            } else {
-                                i63++;
-                                i61 += i43;
-                                i64++;
-                            }
-                        }
-                        int i65 = i48;
-                        int iMax2 = i60;
-                        int i66 = i63;
-                        while (i66 < iIntValue5 && (i61 < i59 || i61 <= 0 || iiVar.isEmpty())) {
-                            int i67 = i59;
-                            f82 f82Var6 = f82Var5;
-                            int i68 = i65;
-                            xi2 xi2VarZ2 = gb.z(f82Var6, i66, j8, nc3Var2, j, hb3Var, fsVar, gsVar4, ln4Var4.getLayoutDirection(), false, i54, i03Var);
-                            f82Var5 = f82Var6;
-                            int i69 = iIntValue5 - 1;
-                            i61 += i66 == i69 ? i54 : i43;
-                            if (i61 > i51 || i66 == i69) {
-                                iMax2 = Math.max(iMax2, xi2VarZ2.j);
-                                iiVar.addLast(xi2VarZ2);
-                                i65 = i68;
-                            } else {
-                                i65 = i66 + 1;
-                                i62 -= i43;
-                                z2 = true;
-                            }
-                            i66++;
-                            i59 = i67;
-                        }
-                        int i70 = i65;
-                        if (i61 < iH2) {
-                            int i71 = iH2 - i61;
-                            int i72 = i61 + i71;
-                            i6 = i62 - i71;
-                            i7 = i70;
-                            while (i6 < i55 && i7 > 0) {
-                                int i73 = i7 - 1;
-                                f82 f82Var7 = f82Var5;
-                                xi2 xi2VarZ3 = gb.z(f82Var7, i73, j8, nc3Var2, j, hb3Var, fsVar, gsVar4, ln4Var4.getLayoutDirection(), false, i54, i03Var);
-                                iiVar.add(0, xi2VarZ3);
-                                iMax2 = Math.max(iMax2, xi2VarZ3.j);
-                                i6 += i43;
-                                i7 = i73;
-                                i72 = i72;
-                                hb3Var = hb3Var;
-                                i66 = i66;
-                                f82Var5 = f82Var7;
-                            }
-                            f82Var2 = f82Var5;
-                            hb3Var2 = hb3Var;
-                            int i74 = i72;
-                            if (i6 < 0) {
-                                i61 = i74 + i6;
-                                i6 = 0;
-                            } else {
-                                i61 = i74;
-                            }
-                        } else {
-                            f82Var2 = f82Var5;
-                            hb3Var2 = hb3Var;
-                            i6 = i62;
-                            i7 = i70;
-                        }
-                        if (i6 < 0) {
-                            fz1.a("invalid currentFirstPageScrollOffset");
-                        }
-                        int i75 = iMax2;
-                        int i76 = -i6;
-                        xi2 xi2Var = (xi2) iiVar.first();
-                        if (i55 > 0 || i56 < 0) {
-                            int iA2 = iiVar.a();
-                            i8 = i7;
-                            int i77 = 0;
-                            while (i77 < iA2 && i6 != 0 && i43 <= i6) {
-                                int i78 = iA2;
-                                if (i77 != iiVar.a() - 1) {
-                                    i6 -= i43;
-                                    i77++;
-                                    xi2Var = (xi2) iiVar.get(i77);
-                                    iA2 = i78;
-                                }
-                            }
-                        } else {
-                            i8 = i7;
-                        }
-                        xi2 xi2Var2 = xi2Var;
-                        int i79 = i6;
-                        int iMax3 = Math.max(0, i8 - i4);
-                        int i80 = i8 - 1;
-                        if (iMax3 <= i80) {
-                            List arrayList5 = null;
-                            while (true) {
-                                if (arrayList5 == null) {
-                                    arrayList5 = new ArrayList();
-                                }
-                                int i81 = i80;
-                                arrayList = arrayList5;
-                                hb3Var3 = hb3Var2;
-                                i10 = i66;
-                                i9 = i43;
-                                arrayList.add(gb.z(f82Var2, i81, j8, nc3Var2, j, hb3Var3, fsVar, gsVar4, ln4Var4.getLayoutDirection(), false, i54, i03Var));
-                                if (i81 != iMax3) {
-                                    hb3Var2 = hb3Var3;
-                                    i66 = i10;
-                                    arrayList5 = arrayList;
-                                    i80 = i81 - 1;
-                                    i43 = i9;
-                                }
-                            }
-                        } else {
-                            i9 = i43;
-                            i10 = i66;
-                            hb3Var3 = hb3Var2;
-                            arrayList = null;
-                        }
-                        int[] iArr2 = h03Var.a;
-                        int i82 = h03Var.b;
-                        int i83 = 0;
-                        while (i83 < i82) {
-                            int i84 = i82;
-                            int i85 = iArr2[i83];
-                            if (i85 < iMax3) {
-                                if (arrayList == null) {
-                                    arrayList = new ArrayList();
-                                }
-                                arrayList.add(gb.z(f82Var2, i85, j8, nc3Var2, j, hb3Var3, fsVar, gsVar4, ln4Var4.getLayoutDirection(), false, i54, i03Var));
-                            }
-                            i83++;
-                            i82 = i84;
-                        }
-                        u01 u01Var = u01.n;
-                        if (arrayList == null) {
-                            arrayList = u01Var;
-                        }
-                        int size = arrayList.size();
-                        int iMax4 = i75;
-                        for (int i86 = 0; i86 < size; i86++) {
-                            iMax4 = Math.max(iMax4, ((xi2) arrayList.get(i86)).j);
-                        }
-                        int i87 = ((xi2) iiVar.last()).a;
-                        int iMin2 = Math.min(i4, (iIntValue5 - i87) - 1) + i87;
-                        int i88 = i87 + 1;
-                        if (i88 <= iMin2) {
-                            ArrayList arrayList6 = null;
-                            while (true) {
-                                if (arrayList6 == null) {
-                                    arrayList6 = new ArrayList();
-                                }
-                                int i89 = i88;
-                                arrayList2 = arrayList6;
-                                i11 = iMax4;
-                                list = arrayList;
-                                arrayList2.add(gb.z(f82Var2, i89, j8, nc3Var2, j, hb3Var3, fsVar, gsVar4, ln4Var4.getLayoutDirection(), false, i54, i03Var));
-                                if (i89 != iMin2) {
-                                    arrayList6 = arrayList2;
-                                    i88 = i89 + 1;
-                                    iMax4 = i11;
-                                    arrayList = list;
-                                }
-                            }
-                        } else {
-                            list = arrayList;
-                            i11 = iMax4;
-                            arrayList2 = null;
-                        }
-                        int[] iArr3 = h03Var.a;
-                        int i90 = h03Var.b;
-                        int i91 = 0;
-                        while (i91 < i90) {
-                            int i92 = i91;
-                            int i93 = iArr3[i92];
-                            ArrayList arrayList7 = arrayList2;
-                            if (iMin2 + 1 > i93 || i93 >= iIntValue5) {
-                                i13 = i92;
-                                arrayList2 = arrayList7;
-                            } else {
-                                arrayList2 = arrayList7 == null ? new ArrayList() : arrayList7;
-                                i13 = i92;
-                                arrayList2.add(gb.z(f82Var2, i93, j8, nc3Var2, j, hb3Var3, fsVar, gsVar4, ln4Var4.getLayoutDirection(), false, i54, i03Var));
-                            }
-                            i91 = i13 + 1;
-                        }
-                        ArrayList arrayList8 = arrayList2;
-                        List list3 = arrayList8 == null ? u01Var : arrayList8;
-                        int size2 = list3.size();
-                        int iMax5 = i11;
-                        for (int i94 = 0; i94 < size2; i94++) {
-                            iMax5 = Math.max(iMax5, ((xi2) list3.get(i94)).j);
-                        }
-                        boolean z3 = h12.c(xi2Var2, iiVar.first()) && list.isEmpty() && list3.isEmpty();
-                        int iF = qc0.f(i61, jA);
-                        int iE = qc0.e(iMax5, jA);
-                        boolean z4 = i61 < Math.min(iF, iH2);
-                        if (z4 && i76 != 0) {
-                            fz1.c("non-zero pagesScrollOffset=" + i76);
-                        }
-                        ArrayList arrayList9 = new ArrayList(list3.size() + list.size() + iiVar.a());
-                        if (z4) {
-                            if (!list.isEmpty() || !list3.isEmpty()) {
-                                fz1.a("No extra pages");
-                            }
-                            int iA3 = iiVar.a();
-                            int[] iArr4 = new int[iA3];
-                            for (int i95 = 0; i95 < iA3; i95++) {
-                                iArr4[i95] = i54;
-                            }
-                            int[] iArr5 = new int[iA3];
-                            ln4Var = ln4Var4;
-                            j2 = j8;
-                            i12 = i56;
-                            float fB = ln4Var.B(i12);
-                            if (iArr4.length != 0) {
-                                int iV6 = f82Var2.V(fB);
-                                int length = iArr4.length;
-                                int i96 = 0;
-                                int iMin3 = 0;
-                                int i97 = 0;
-                                while (i96 < length) {
-                                    int i98 = iArr4[i96];
-                                    int i99 = length;
-                                    int iMin4 = Math.min(iMin3, iF - i98);
-                                    iArr5[i97] = iMin4;
-                                    iMin3 = iArr5[i97] + i98 + Math.min(iV6, (iF - iMin4) - i98);
-                                    i96++;
-                                    i97++;
-                                    length = i99;
-                                }
-                            }
-                            j02 j02Var = new j02(0, iA3 - 1, 1);
-                            int i100 = j02Var.o;
-                            int i101 = j02Var.p;
-                            if ((i101 > 0 && i100 >= 0) || (i101 < 0 && i100 <= 0)) {
-                                int i102 = 0;
-                                while (true) {
-                                    int i103 = iArr5[i102];
-                                    int i104 = i101;
-                                    xi2 xi2Var3 = (xi2) iiVar.get(i102);
-                                    xi2Var3.b(i103, iF, iE);
-                                    arrayList9.add(xi2Var3);
-                                    if (i102 != i100) {
-                                        i102 += i104;
-                                        i101 = i104;
-                                    }
-                                }
-                            }
-                        } else {
-                            f82Var2 = f82Var2;
-                            int i105 = i76;
-                            ln4Var = ln4Var4;
-                            j2 = j8;
-                            i12 = i56;
-                            int size3 = list.size();
-                            int i106 = i105;
-                            int i107 = 0;
-                            while (i107 < size3) {
-                                int i108 = i105;
-                                xi2 xi2Var4 = (xi2) list.get(i107);
-                                i106 -= i28;
-                                xi2Var4.b(i106, iF, iE);
-                                arrayList9.add(xi2Var4);
-                                i107++;
-                                i105 = i108;
-                            }
-                            int i109 = i105;
-                            int iA4 = iiVar.a();
-                            int i110 = i109;
-                            for (int i111 = 0; i111 < iA4; i111++) {
-                                xi2 xi2Var5 = (xi2) iiVar.get(i111);
-                                xi2Var5.b(i110, iF, iE);
-                                arrayList9.add(xi2Var5);
-                                i110 += i28;
-                            }
-                            int size4 = list3.size();
-                            for (int i112 = 0; i112 < size4; i112++) {
-                                xi2 xi2Var6 = (xi2) list3.get(i112);
-                                xi2Var6.b(i110, iF, iE);
-                                arrayList9.add(xi2Var6);
-                                i110 += i28;
-                            }
-                        }
-                        if (z3) {
-                            arrayList3 = arrayList9;
-                        } else {
-                            ArrayList arrayList10 = new ArrayList(arrayList9.size());
-                            int size5 = arrayList9.size();
-                            int i113 = 0;
-                            while (i113 < size5) {
-                                Object obj7 = arrayList9.get(i113);
-                                List list4 = list3;
-                                xi2 xi2Var7 = (xi2) obj7;
-                                int i114 = size5;
-                                int i115 = iF;
-                                if (xi2Var7.a >= ((xi2) iiVar.first()).a && xi2Var7.a <= ((xi2) iiVar.last()).a) {
-                                    arrayList10.add(obj7);
-                                }
-                                i113++;
-                                list3 = list4;
-                                size5 = i114;
-                                iF = i115;
-                            }
-                            arrayList3 = arrayList10;
-                        }
-                        List list5 = list3;
-                        int i116 = iF;
-                        if (list.isEmpty()) {
-                            list2 = u01Var;
-                        } else {
-                            ArrayList arrayList11 = new ArrayList(arrayList9.size());
-                            int size6 = arrayList9.size();
-                            for (int i117 = 0; i117 < size6; i117++) {
-                                Object obj8 = arrayList9.get(i117);
-                                if (((xi2) obj8).a < ((xi2) iiVar.first()).a) {
-                                    arrayList11.add(obj8);
-                                }
-                            }
-                            list2 = arrayList11;
-                        }
-                        if (list5.isEmpty()) {
-                            arrayList4 = u01Var;
-                        } else {
-                            arrayList4 = new ArrayList(arrayList9.size());
-                            int size7 = arrayList9.size();
-                            for (int i118 = 0; i118 < size7; i118++) {
-                                Object obj9 = arrayList9.get(i118);
-                                if (((xi2) obj9).a > ((xi2) iiVar.last()).a) {
-                                    arrayList4.add(obj9);
-                                }
-                            }
-                        }
-                        if (arrayList3.isEmpty()) {
-                            obj3 = null;
-                        } else {
-                            Object obj10 = arrayList3.get(0);
-                            int i119 = ((xi2) obj10).l;
-                            rv2Var2.getClass();
-                            float f3 = -Math.abs(i119 - 0.0f);
-                            int size8 = arrayList3.size() - 1;
-                            if (1 <= size8) {
-                                int i120 = 1;
-                                while (true) {
-                                    Object obj11 = arrayList3.get(i120);
-                                    float f4 = -Math.abs(((xi2) obj11).l - 0.0f);
-                                    if (Float.compare(f3, f4) < 0) {
-                                        obj10 = obj11;
-                                        f3 = f4;
-                                    }
-                                    if (i120 != size8) {
-                                        i120++;
-                                    }
-                                }
-                            }
-                            obj3 = obj10;
-                        }
-                        xi2 xi2Var8 = (xi2) obj3;
-                        rv2Var2.getClass();
-                        f82 f82Var8 = f82Var2;
-                        qc3Var = new qc3(arrayList3, i54, i12, i20, hb3Var3, i50, i58, i4, xi2Var2, xi2Var8, i9 == 0 ? 0.0f : gb.l((0 - (xi2Var8 != null ? xi2Var8.l : 0)) / i9, -0.5f, 0.5f), i79, i10 < iIntValue5 || i61 > iH2, rv2Var2, ln4Var.v(qc0.f(i116 + i19, j3), qc0.e(iE + i5, j3), v01Var, new o(i47, b13Var2, arrayList9)), z2, list2, arrayList4, we0Var, f82Var8, j2);
-                        f82Var3 = f82Var8;
-                    }
-                    qc3 qc3Var2 = qc3Var;
-                    lm0 lm0Var3 = lm0Var;
-                    lm0Var3.h(qc3Var2, ln4Var.K(), false);
-                    fc3 fc3Var = lm0Var3.u;
-                    List list6 = qc3Var2.a;
-                    Trace.beginSection("compose:pager:cache_window:keepAroundItems");
-                    try {
-                        if (fc3Var.h != Integer.MAX_VALUE && fc3Var.i != Integer.MIN_VALUE && !list6.isEmpty()) {
-                            int i121 = ((xi2) q40.w0(list6)).a;
-                            int i122 = ((xi2) q40.C0(list6)).a;
-                            for (int i123 = fc3Var.h; i123 < i121; i123++) {
-                                f82Var3.a(i123);
-                            }
-                            int i124 = i122 + 1;
-                            int i125 = fc3Var.i;
-                            if (i124 <= i125) {
-                                while (true) {
-                                    f82Var3.a(i124);
-                                    if (i124 != i125) {
-                                        i124++;
-                                    }
-                                }
-                            }
-                        }
-                        return qc3Var2;
-                    } finally {
-                        Trace.endSection();
-                    }
-                } catch (Throwable th) {
-                    ya4.H(ch4VarT, ch4VarZ, if1VarE);
-                    throw th;
-                }
-            case 5:
-                r70 r70Var = (r70) obj5;
-                z82 z82Var = (z82) obj4;
-                rg1 rg1Var3 = (rg1) obj;
-                int iIntValue6 = ((Integer) obj2).intValue();
-                if (rg1Var3.K(iIntValue6 & 1, (iIntValue6 & 3) != 2)) {
-                    r70Var.a(z82Var, rg1Var3, 0);
-                } else {
-                    rg1Var3.N();
-                }
-                return j15Var;
-            case 6:
-                f63 f63Var = (f63) obj5;
-                c63 c63Var = (c63) obj4;
-                jz jzVar = (jz) obj;
-                sj1 sj1Var = (sj1) obj2;
-                c72 c72Var = f63Var.H;
-                if (c72Var.H()) {
-                    f63Var.c0 = jzVar;
-                    f63Var.b0 = sj1Var;
-                    ((ra) h12.L(c72Var)).getSnapshotObserver().a.e(f63Var, f63.i0, c63Var);
-                    f63Var.f0 = false;
-                } else {
-                    f63Var.f0 = true;
-                }
-                return j15Var;
-            case 7:
-                ((Integer) obj2).getClass();
-                e35.f((Uri) obj5, (String) obj4, (rg1) obj, xl.O(1));
-                return j15Var;
-            case 8:
-                ((Integer) obj2).getClass();
-                e35.g((String) obj5, (String) obj4, (rg1) obj, xl.O(1));
-                return j15Var;
-            default:
-                gx3 gx3Var = (gx3) obj5;
-                float fFloatValue = ((Float) obj).floatValue();
-                ((Float) obj2).getClass();
-                gx3Var.n += ((q64) ((sm0) obj4).b).a(fFloatValue - gx3Var.n);
-                return j15Var;
-        }
+    public final Object invoke(Object r56, Object r57) {
+        int r2 = this.n;
+        j15 r8 = j15.a;
+        Object r9 = this.p;
+        Object r0 = this.o;
+        switch(r2) {
+            case 0: goto L485;
+            case 1: goto L473;
+            case 2: goto L445;
+            case 3: goto L414;
+            case 4: goto L24;
+            case 5: goto L15;
+            case 6: goto L10;
+            case 7: goto L8;
+            case 8: goto L6;
+            default: goto L4;
+        };
+    L4:
+        gx3 r1 = (gx3) r0;
+        float r3 = ((Float) r56).floatValue();
+        ((Float) r57).getClass();
+        r1.n += ((q64) ((sm0) r9).b).a(r3 - r1.n);
+        return r8;
+    L6:
+        ((Integer) r57).getClass();
+        e35.g((String) r0, (String) r9, (rg1) r56, xl.O(1));
+        return r8;
+    L8:
+        ((Integer) r57).getClass();
+        e35.f((Uri) r0, (String) r9, (rg1) r56, xl.O(1));
+        return r8;
+    L10:
+        f63 r4 = (f63) r0;
+        c63 r10 = (c63) r9;
+        jz r5 = (jz) r56;
+        sj1 r6 = (sj1) r57;
+        c72 r7 = r4.H;
+        if (r7.H() == false) goto L13;
+        r4.c0 = r5;
+        r4.b0 = r6;
+        wb3 r11 = ((ra) h12.L(r7)).getSnapshotObserver();
+        r11.a.e(r4, f63.i0, r10);
+        r4.f0 = false;
+    L14:
+        return r8;
+    L13:
+        r4.f0 = true;
+        goto L14
+    L15:
+        r70 r12 = (r70) r0;
+        z82 r13 = (z82) r9;
+        rg1 r14 = (rg1) r56;
+        int r15 = ((Integer) r57).intValue();
+        if ((r15 & 3) == 2) goto L18;
+        boolean r16 = true;
+    L20:
+        if (r14.K(r15 & 1, r16) == false) goto L22;
+        r12.a(r13, r14, 0);
+    L23:
+        return r8;
+    L22:
+        r14.N();
+        goto L23
+    L18:
+        r16 = false;
+        goto L20
+    L24:
+        pc3 r17 = (pc3) r9;
+        ln4 r18 = (ln4) r56;
+        f82 r19 = new f82((c82) r0, r18);
+        long r20 = ((nc0) r57).a;
+        r17.getClass();
+        ac3 r21 = r17.b;
+        float r22 = r21.b;
+        float r23 = r21.a;
+        lm0 r110 = r17.a;
+        r110.B.getValue();
+        if (nc0.h(r20) != Integer.MAX_VALUE) goto L28;
+        fz1.c("Horizontally scrollable component was measured with an infinity maximum width constraints, which is disallowed. One of the common reasons is nesting layouts like LazyRow and Row(Modifier.horizontalScroll()). If you want to add a header before the list of items please add a header as a separate item() before the main items() inside the LazyRow scope. There could be other reasons for this to happen: your ComposeView was added into a LinearLayout with some weight, you applied Modifier.wrapContentSize(unbounded = true) or wrote a custom layout. Please try to remove the source of infinite constraints in the hierarchy above the scrolling container.");
+    L28:
+        r62 r111 = r18.getLayoutDirection();
+        r62 r112 = r62.n;
+        if (r111 != r112) goto L33;
+        if (r111 != r112) goto L32;
+    L31:
+        float r113 = r23;
+    L35:
+        int r114 = r18.V(r113);
+        r62 r115 = r18.getLayoutDirection();
+        if (r115 != r112) goto L40;
+        if (r115 == r112) goto L42;
+    L39:
+        r22 = r23;
+    L42:
+        int r24 = r18.V(r22);
+        int r116 = r18.V(0.0f);
+        int r117 = r18.V(0.0f) + r116;
+        int r25 = r24 + r114;
+        int r118 = r25 - r114;
+        int r26 = -r25;
+        int r27 = -r117;
+        int r119 = nc0.j(r20) + r26;
+        if (r119 >= 0) goto L46;
+        int r28 = 0;
+    L47:
+        int r29 = nc0.h(r20);
+        if (r29 == Integer.MAX_VALUE) goto L53;
+        r29 = r29 + r26;
+        if (r29 >= 0) goto L53;
+        r29 = 0;
+    L53:
+        int r30 = nc0.i(r20) + r27;
+        if (r30 >= 0) goto L56;
+        r30 = 0;
+    L56:
+        int r31 = nc0.g(r20);
+        if (r31 != Integer.MAX_VALUE) goto L59;
+        int r32 = r31;
+    L62:
+        long r33 = qc0.a(r28, r29, r30, r32);
+        r110.n = r19;
+        int r34 = r18.V(r17.c);
+        int r35 = nc0.h(r20) - r25;
+        long r36 = (((long) r116) & 4294967295L) | (((long) r114) << 32);
+        r17.d.getClass();
+        if (r35 >= 0) goto L65;
+        int r37 = 0;
+    L66:
+        qc0.b(r37, nc0.g(r33), 5);
+        nc3 r120 = (nc3) r17.e.invoke();
+        rv2 r121 = r17.h;
+        long r210 = r36;
+        ch4 r38 = ya4.t();
+        if (r38 == null) goto L70;
+        if1 r39 = r38.e();
+    L71:
+        ch4 r122 = ya4.z(r38);
+        int r123 = r110.k();     // Catch: Throwable -> L411
+        nq r124 = r110.d;     // Catch: Throwable -> L411
+        int r40 = ud3.i(r123, r120, r124.r);     // Catch: Throwable -> L411
+        if (r123 == r40) goto L78;
+        ((wd3) r124.p).h(r40);     // Catch: Throwable -> L411
+        g82 r41 = (g82) r124.s;     // Catch: Throwable -> L411
+        if (r123 == r41.o) goto L78;
+        r41.o = r123;     // Catch: Throwable -> L411
+        int r125 = (r123 / 30) * 30;     // Catch: Throwable -> L411
+        r41.n.setValue(gb.g0(Math.max(r125 - 100, 0), r125 + 130));     // Catch: Throwable -> L411
+    L78:
+        r110.k();     // Catch: Throwable -> L411
+        float r42 = r110.l();     // Catch: Throwable -> L411
+        r110.n();     // Catch: Throwable -> L411
+        r121.getClass();     // Catch: Throwable -> L411
+        int r43 = r37 + r34;     // Catch: Throwable -> L411
+        int r44 = ji2.L(0.0f - (r42 * r43));     // Catch: Throwable -> L411
+        ya4.H(r38, r122, r39);
+        n82 r45 = r110.z;
+        hg3 r46 = r110.v;
+        rh4 r47 = r45.n;
+        r47.getClass();
+        y1 r48 = rr2.F(r47).c;
+        f13 r126 = (f13) r46.o;
+        if (r126.p == 0) goto L82;
+        boolean r127 = true;
+    L83:
+        if (r127 == false) goto L85;
+    L88:
+        h03 r128 = new h03();
+        if (((f13) r46.o).p == 0) goto L113;
+        int r49 = r126.p;
+        if (r49 == 0) goto L112;
+        Object[] r50 = r126.n;
+        int r51 = ((v72) r50[0]).a;
+        int r52 = 0;
+    L93:
+        if (r52 >= r49) goto L98;
+        int r310 = r52;
+        int r53 = ((v72) r50[r52]).a;
+        if (r53 >= r51) goto L97;
+        r51 = r53;
+    L97:
+        r52 = r310 + 1;
+        goto L93
+    L98:
+        if (r51 >= 0) goto L101;
+        fz1.a("negative minIndex");
+    L101:
+        int r54 = r126.p;
+        if (r54 == 0) goto L110;
+        Object[] r55 = r126.n;
+        int r129 = ((v72) r55[0]).b;
+        int r130 = 0;
+    L104:
+        if (r130 >= r54) goto L109;
+        int r311 = r51;
+        int r58 = ((v72) r55[r130]).b;
+        if (r58 <= r129) goto L108;
+        r129 = r58;
+    L108:
+        r130 = r130 + 1;
+        r51 = r311;
+        goto L104
+    L109:
+        int r59 = Math.min(r129, r120.b() - 1);
+        int r60 = r51;
+    L114:
+        int r61 = r48.a();
+        int r131 = 0;
+    L115:
+        if (r131 >= r61) goto L125;
+        l82 r132 = (l82) r48.get(r131);
+        y1 r312 = r48;
+        int r62 = ud3.i(r132.c, r120, r132.a);
+        if (r60 > r62) goto L120;
+        if (r62 > r59) goto L120;
+    L124:
+        r131 = r131 + 1;
+        r48 = r312;
+    L120:
+        if (r62 < 0) goto L124;
+        if (r62 >= r120.b()) goto L124;
+        r128.a(r62);
+        goto L124
+    L125:
+        if (r60 > r59) goto L129;
+    L126:
+        r128.a(r60);
+        if (r60 == r59) goto L129;
+        r60 = r60 + 1;
+    L129:
+        int r63 = r128.b;
+        if (r63 != 0) goto L132;
+    L131:
+        h03 r64 = r128;
+    L87:
+        int r133 = r117;
+        i03 r211 = new i03();
+        int r65 = ((Number) r17.f.invoke()).intValue();
+        b13 r66 = r110.A;
+        gs r67 = r17.g;
+        fs r134 = fz0.z;
+        rv2 r135 = r17.h;
+        we0 r68 = r17.i;
+        if (r114 >= 0) goto L137;
+        fz1.a("negative beforeContentPadding");
+    L137:
+        if (r118 >= 0) goto L140;
+        fz1.a("negative afterContentPadding");
+    L140:
+        gs r313 = r67;
+        if (r43 >= 0) goto L143;
+        int r69 = 0;
+    L145:
+        if (r65 >= 0) goto L148;
+        int r136 = r65;
+    L149:
+        long r70 = qc0.b(r37, nc0.g(r33), 5);
+        int r137 = r37;
+        v01 r71 = v01.n;
+        if (r65 > 0) goto L153;
+        int r72 = nc0.j(r33);
+        int r73 = nc0.i(r33);
+        qc3 r74 = new qc3(r137, r34, r118, -r114, r35 + r118, r136, r135, r18.v(qc0.f(r72 + r25, r20), qc0.e(r73 + r133, r20), r71, new or1(24)), r68, r19, r70);
+        ln4 r75 = r18;
+        lm0 r314 = r110;
+        f82 r138 = r19;
+    L152:
+        qc3 r76 = r74;
+        lm0 r77 = r314;
+        r77.h(r76, r75.K(), false);
+        fc3 r78 = r77.u;
+        List r79 = r76.a;
+        Trace.beginSection("compose:pager:cache_window:keepAroundItems");
+    L405:
+        th = move-exception;
+        Trace.endSection();
+        throw th;
+    L392:
+        if (r78.h != Integer.MAX_VALUE) goto L394;
+    L407:
+        Trace.endSection();
+        return r76;
+    L394:
+        if (r78.i == Integer.MIN_VALUE) goto L407;
+        if (r79.isEmpty() == true) goto L407;
+        int r80 = ((xi2) q40.w0(r79)).a;     // Catch: Throwable -> L405
+        int r81 = ((xi2) q40.C0(r79)).a;     // Catch: Throwable -> L405
+        int r82 = r78.h;     // Catch: Throwable -> L405
+    L398:
+        if (r82 >= r80) goto L400;
+        r138.a(r82);     // Catch: Throwable -> L405
+        r82 = r82 + 1;     // Catch: Throwable -> L405
+        goto L398
+    L400:
+        int r83 = r81 + 1;     // Catch: Throwable -> L405
+        int r84 = r78.i;     // Catch: Throwable -> L405
+        if (r83 > r84) goto L407;
+    L402:
+        r138.a(r83);     // Catch: Throwable -> L405
+        if (r83 == r84) goto L407;
+        r83 = r83 + 1;
+        goto L402
+    L153:
+        int r139 = r34;
+        long r315 = r70;
+        f82 r140 = r19;
+        int r316 = 21;
+        int r141 = r40;
+    L154:
+        if (r141 <= 0) goto L157;
+        if (r44 <= 0) goto L157;
+        r141 = r141 - 1;
+        r44 = r44 - r69;
+    L157:
+        int r142 = r44 * (-1);
+        if (r141 < r65) goto L160;
+        r141 = r65 - 1;
+        r142 = 0;
+    L160:
+        r314 = r110;
+        ii r85 = new ii();
+        int r86 = -r114;
+        if (r139 >= 0) goto L164;
+        int r212 = r139;
+    L165:
+        int r87 = r86 + r212;
+        int r88 = r142 + r87;
+        int r89 = 0;
+    L166:
+        hb3 r143 = hb3.o;
+        int r213 = r136;
+        long r510 = r210;
+        int r214 = r133;
+        if (r88 >= 0) goto L170;
+        if (r141 <= 0) goto L170;
+        r141 = r141 - 1;
+        int r215 = r137;
+        gs r144 = r313;
+        ln4 r511 = r18;
+        long r512 = r315;
+        xi2 r90 = gb.z(r140, r141, r512, r120, r510, r143, r134, r144, r18.getLayoutDirection(), false, r215, r211);
+        r85.add(0, r90);
+        r89 = Math.max(r89, r90.j);
+        r88 = r88 + r69;
+        r139 = r139;
+        r315 = r512;
+        r18 = r511;
+        r114 = r114;
+        r140 = r140;
+        r66 = r66;
+        r210 = r510;
+        r136 = r213;
+        r133 = r214;
+        r313 = r144;
+        r137 = r215;
+    L170:
+        int r216 = r137;
+        gs r145 = r313;
+        ln4 r513 = r18;
+        b13 r410 = r66;
+        int r91 = r114;
+        f82 r217 = r140;
+        long r514 = r315;
+        int r317 = r139;
+        if (r88 >= r87) goto L173;
+        r88 = r87;
+    L173:
+        int r92 = r88 - r87;
+        int r93 = r35 + r118;
+        if (r93 >= 0) goto L177;
+        int r146 = 0;
+    L176:
+        int r318 = r89;
+        int r94 = -r92;
+        int r411 = r92;
+        int r412 = r141;
+        int r95 = 0;
+        boolean r413 = false;
+    L180:
+        if (r95 >= r85.p) goto L184;
+        if (r94 >= r146) goto L182;
+        r412 = r412 + 1;
+        r94 = r94 + r69;
+        r95 = r95 + 1;
+        goto L180
+    L182:
+        r85.b(r95);
+        r413 = true;
+        goto L180
+    L184:
+        int r96 = r141;
+        int r97 = r318;
+        int r147 = r412;
+    L185:
+        if (r147 >= r65) goto L191;
+        if (r94 < r146) goto L190;
+        if (r94 <= 0) goto L190;
+        if (r85.isEmpty() == false) goto L191;
+    L190:
+        int r319 = r146;
+        f82 r148 = r217;
+        int r414 = r96;
+        xi2 r98 = gb.z(r148, r147, r514, r120, r510, r143, r134, r145, r513.getLayoutDirection(), false, r216, r211);
+        r217 = r148;
+        int r149 = r65 - 1;
+        if (r147 != r149) goto L195;
+        int r415 = r216;
+    L196:
+        r94 = r94 + r415;
+        if (r94 > r87) goto L200;
+        if (r147 == r149) goto L200;
+        r96 = r147 + 1;
+        r411 = r411 - r69;
+        r413 = true;
+    L201:
+        r147 = r147 + 1;
+        r146 = r319;
+    L200:
+        r97 = Math.max(r97, r98.j);
+        r85.addLast(r98);
+        r96 = r414;
+        goto L201
+    L195:
+        r415 = r69;
+    L191:
+        int r416 = r96;
+        if (r94 >= r35) goto L211;
+        int r99 = r35 - r94;
+        int r100 = r94 + r99;
+        int r101 = r411 - r99;
+        int r102 = r416;
+    L204:
+        if (r101 >= r91) goto L207;
+        if (r102 <= 0) goto L207;
+        int r103 = r102 - 1;
+        f82 r150 = r217;
+        xi2 r104 = gb.z(r150, r103, r514, r120, r510, r143, r134, r145, r513.getLayoutDirection(), false, r216, r211);
+        hb3 r218 = r143;
+        r85.add(0, r104);
+        r97 = Math.max(r97, r104.j);
+        r101 = r101 + r69;
+        r102 = r103;
+        r100 = r100;
+        r143 = r218;
+        r147 = r147;
+        r217 = r150;
+    L207:
+        f82 r151 = r217;
+        hb3 r219 = r143;
+        int r152 = r100;
+        if (r101 >= 0) goto L210;
+        r94 = r152 + r101;
+        r101 = 0;
+    L212:
+        if (r101 < 0) goto L214;
+    L213:
+        int r320 = r97;
+        int r105 = -r101;
+        xi2 r153 = (xi2) r85.first();
+        if (r91 > 0) goto L221;
+        if (r317 < 0) goto L221;
+        int r417 = r102;
+    L220:
+        xi2 r106 = r153;
+        int r418 = r101;
+        int r107 = Math.max(0, r417 - r213);
+        int r108 = r417 - 1;
+        if (r107 > r108) goto L236;
+        List r154 = null;
+    L231:
+        if (r154 != null) goto L233;
+        r154 = new ArrayList();
+    L233:
+        int r419 = r108;
+        List r109 = r154;
+        hb3 r155 = r219;
+        int r420 = r147;
+        int r421 = r69;
+        r109.add(gb.z(r151, r419, r514, r120, r510, r155, r134, r145, r513.getLayoutDirection(), false, r216, r211));
+        if (r419 == r107) goto L237;
+        r219 = r155;
+        r147 = r420;
+        r154 = r109;
+        r108 = r419 - 1;
+        r69 = r421;
+    L237:
+        int[] r156 = r64.a;
+        int r157 = r64.b;
+        int r158 = 0;
+    L238:
+        if (r158 >= r157) goto L246;
+        int r220 = r157;
+        int r159 = r156[r158];
+        if (r159 >= r107) goto L245;
+        if (r109 != null) goto L243;
+        r109 = new ArrayList();
+    L243:
+        r109.add(gb.z(r151, r159, r514, r120, r510, r155, r134, r145, r513.getLayoutDirection(), false, r216, r211));
+    L245:
+        r158 = r158 + 1;
+        r157 = r220;
+        goto L238
+    L246:
+        u01 r160 = u01.n;
+        if (r109 != null) goto L249;
+        r109 = r160;
+    L249:
+        int r161 = r109.size();
+        int r162 = r320;
+        int r163 = 0;
+    L250:
+        if (r163 >= r161) goto L252;
+        r162 = Math.max(r162, ((xi2) r109.get(r163)).j);
+        r163 = r163 + 1;
+        goto L250
+    L252:
+        int r164 = ((xi2) r85.last()).a;
+        int r165 = Math.min(r213, (r65 - r164) - 1) + r164;
+        int r166 = r164 + 1;
+        if (r166 > r165) goto L260;
+        ArrayList r221 = null;
+    L255:
+        if (r221 != null) goto L257;
+        r221 = new ArrayList();
+    L257:
+        int r422 = r166;
+        ArrayList r167 = r221;
+        int r423 = r162;
+        List r515 = r109;
+        r167.add(gb.z(r151, r422, r514, r120, r510, r155, r134, r145, r513.getLayoutDirection(), false, r216, r211));
+        if (r422 == r165) goto L261;
+        r221 = r167;
+        r166 = r422 + 1;
+        r162 = r423;
+        r109 = r515;
+    L261:
+        int[] r168 = r64.a;
+        int r169 = r64.b;
+        int r170 = 0;
+    L262:
+        if (r170 >= r169) goto L273;
+        int r222 = r170;
+        int r171 = r168[r222];
+        ArrayList r516 = r167;
+        if ((r165 + 1) > r171) goto L271;
+        if (r171 >= r65) goto L271;
+        if (r516 != null) goto L269;
+        r167 = new ArrayList();
+    L270:
+        int r517 = r222;
+        r167.add(gb.z(r151, r171, r514, r120, r510, r155, r134, r145, r513.getLayoutDirection(), false, r216, r211));
+    L272:
+        r170 = r517 + 1;
+        goto L262
+    L269:
+        r167 = r516;
+    L271:
+        r517 = r222;
+        r167 = r516;
+        goto L272
+    L273:
+        ArrayList r518 = r167;
+        if (r518 != null) goto L276;
+        List r172 = r160;
+    L277:
+        int r173 = r172.size();
+        int r174 = r423;
+        int r175 = 0;
+    L278:
+        if (r175 >= r173) goto L281;
+        r174 = Math.max(r174, ((xi2) r172.get(r175)).j);
+        r175 = r175 + 1;
+        goto L278
+    L281:
+        if (h12.c(r106, r85.first()) == true) goto L283;
+    L288:
+        boolean r176 = false;
+    L289:
+        int r177 = qc0.f(r94, r33);
+        int r178 = qc0.e(r174, r33);
+        if (r94 >= Math.min(r177, r35)) goto L292;
+        boolean r179 = true;
+    L293:
+        if (r179 == false) goto L297;
+        if (r105 == 0) goto L297;
+        fz1.c("non-zero pagesScrollOffset=" + r105);
+    L297:
+        ArrayList r180 = new ArrayList(r172.size() + (r515.size() + r85.a()));
+        if (r179 == true) goto L300;
+        r151 = r151;
+        int r181 = r105;
+        r75 = r513;
+        long r321 = r514;
+        int r182 = r317;
+        int r183 = r515.size();
+        int r184 = r181;
+        int r185 = 0;
+    L325:
+        if (r185 >= r183) goto L327;
+        int r223 = r181;
+        xi2 r186 = (xi2) r515.get(r185);
+        r184 = r184 - r43;
+        r186.b(r184, r177, r178);
+        r180.add(r186);
+        r185 = r185 + 1;
+        r181 = r223;
+        goto L325
+    L327:
+        int r224 = r181;
+        int r187 = r85.a();
+        int r188 = r224;
+        int r189 = 0;
+    L328:
+        if (r189 >= r187) goto L330;
+        xi2 r190 = (xi2) r85.get(r189);
+        r190.b(r188, r177, r178);
+        r180.add(r190);
+        r188 = r188 + r43;
+        r189 = r189 + 1;
+        goto L328
+    L330:
+        int r191 = r172.size();
+        int r192 = 0;
+    L331:
+        if (r192 >= r191) goto L333;
+        xi2 r193 = (xi2) r172.get(r192);
+        r193.b(r188, r177, r178);
+        r180.add(r193);
+        r188 = r188 + r43;
+        r192 = r192 + 1;
+    L333:
+        if (r176 == false) goto L336;
+        ArrayList r194 = r180;
+    L335:
+        List r519 = r172;
+        int r225 = r177;
+        if (r515.isEmpty() == false) goto L348;
+        List r226 = r160;
+    L356:
+        if (r519.isEmpty() == false) goto L358;
+        ?? r195 = r160;
+    L365:
+        if (r194.isEmpty() == false) goto L367;
+        Object r196 = null;
+    L376:
+        xi2 r197 = (xi2) r196;
+        r135.getClass();
+        if (r197 == null) goto L379;
+        int r198 = r197.l;
+    L380:
+        if (r421 != 0) goto L382;
+        float r227 = 0.0f;
+    L383:
+        vi2 r228 = r75.v(qc0.f(r225 + r25, r20), qc0.e(r178 + r214, r20), r71, new o(r316, r410, r180));
+        if (r420 < r65) goto L388;
+        if (r94 > r35) goto L388;
+        boolean r229 = false;
+    L389:
+        f82 r322 = r151;
+        r74 = new qc3(r194, r216, r182, r118, r155, r86, r93, r213, r106, r197, r227, r418, r229, r135, r228, r413, r226, r195, r68, r322, r321);
+        r138 = r322;
+    L388:
+        r229 = true;
+        goto L389
+    L382:
+        r227 = gb.l((0 - r198) / r421, -0.5f, 0.5f);
+        goto L383
+    L379:
+        r198 = 0;
+        goto L380
+    L367:
+        Object r199 = r194.get(0);
+        int r200 = ((xi2) r199).l;
+        r135.getClass();
+        float r201 = -Math.abs(r200 - 0.0f);
+        int r202 = r194.size() - 1;
+        if (1 > r202) goto L375;
+        int r203 = 1;
+    L370:
+        Object r1100 = r194.get(r203);
+        float r1101 = -Math.abs(((xi2) r1100).l - 0.0f);
+        if (Float.compare(r201, r1101) >= 0) goto L373;
+        r199 = r1100;
+        r201 = r1101;
+    L373:
+        if (r203 == r202) goto L375;
+        r203 = r203 + 1;
+    L375:
+        r196 = r199;
+        goto L376
+    L358:
+        r195 = new ArrayList(r180.size());
+        int r204 = r180.size();
+        int r205 = 0;
+    L359:
+        if (r205 >= r204) goto L365;
+        Object r206 = r180.get(r205);
+        if (((xi2) r206).a <= ((xi2) r85.last()).a) goto L363;
+        r195.add(r206);
+    L363:
+        r205 = r205 + 1;
+        goto L359
+    L348:
+        ArrayList r207 = new ArrayList(r180.size());
+        int r208 = r180.size();
+        int r209 = 0;
+    L349:
+        if (r209 >= r208) goto L354;
+        Object r230 = r180.get(r209);
+        if (((xi2) r230).a >= ((xi2) r85.first()).a) goto L353;
+        r207.add(r230);
+    L353:
+        r209 = r209 + 1;
+        goto L349
+    L354:
+        r226 = r207;
+        goto L356
+    L336:
+        ArrayList r231 = new ArrayList(r180.size());
+        int r232 = r180.size();
+        int r1102 = 0;
+    L337:
+        if (r1102 >= r232) goto L344;
+        Object r1103 = r180.get(r1102);
+        List r520 = r172;
+        xi2 r233 = (xi2) r1103;
+        int r1104 = r232;
+        int r234 = r177;
+        if (r233.a < ((xi2) r85.first()).a) goto L343;
+        if (r233.a > ((xi2) r85.last()).a) goto L343;
+        r231.add(r1103);
+    L343:
+        r1102 = r1102 + 1;
+        r172 = r520;
+        r232 = r1104;
+        r177 = r234;
+        goto L337
+    L344:
+        r194 = r231;
+        goto L335
+    L300:
+        if (r515.isEmpty() == true) goto L302;
+    L304:
+        fz1.a("No extra pages");
+    L305:
+        int r235 = r85.a();
+        int[] r1105 = new int[r235];
+        int r1106 = 0;
+    L306:
+        if (r1106 >= r235) goto L308;
+        r1105[r1106] = r216;
+        r1106 = r1106 + 1;
+        goto L306
+    L308:
+        int[] r1107 = new int[r235];
+        r75 = r513;
+        r321 = r514;
+        r182 = r317;
+        float r236 = r75.B(r182);
+        if (r1105.length == 0) goto L314;
+        int r237 = r151.V(r236);
+        int r238 = r1105.length;
+        int r1108 = 0;
+        int r1109 = 0;
+        int r239 = 0;
+    L312:
+        if (r1108 >= r238) goto L314;
+        int r240 = r1105[r1108];
+        int r241 = r238;
+        int r242 = Math.min(r1109, r177 - r240);
+        r1107[r239] = r242;
+        r1109 = (r1107[r239] + r240) + Math.min(r237, (r177 - r242) - r240);
+        r1108 = r1108 + 1;
+        r239 = r239 + 1;
+        r238 = r241;
+    L314:
+        j02 r243 = new j02(0, r235 - 1, 1);
+        int r244 = r243.o;
+        int r245 = r243.p;
+        if (r245 <= 0) goto L317;
+        if (r244 < 0) goto L317;
+    L319:
+        int r1110 = 0;
+    L320:
+        int r1111 = r1107[r1110];
+        int r246 = r245;
+        xi2 r247 = (xi2) r85.get(r1110);
+        r247.b(r1111, r177, r178);
+        r180.add(r247);
+        if (r1110 == r244) goto L333;
+        r1110 = r1110 + r246;
+        r245 = r246;
+    L317:
+        if (r245 >= 0) goto L333;
+        if (r244 > 0) goto L333;
+    L302:
+        if (r172.isEmpty() == false) goto L304;
+    L292:
+        r179 = false;
+        goto L293
+    L283:
+        if (r515.isEmpty() == false) goto L288;
+        if (r172.isEmpty() == false) goto L288;
+        r176 = true;
+        goto L289
+    L276:
+        r172 = r518;
+        goto L277
+    L260:
+        r515 = r109;
+        r423 = r162;
+        r167 = null;
+        goto L261
+    L236:
+        r421 = r69;
+        r420 = r147;
+        r155 = r219;
+        r109 = null;
+    L221:
+        int r248 = r85.a();
+        r417 = r102;
+        int r249 = 0;
+    L222:
+        if (r249 >= r248) goto L220;
+        if (r101 == 0) goto L220;
+        if (r69 > r101) goto L220;
+        int r424 = r248;
+        if (r249 == (r85.a() - 1)) goto L220;
+        r101 = r101 - r69;
+        r249 = r249 + 1;
+        r153 = (xi2) r85.get(r249);
+        r248 = r424;
+        goto L222
+    L214:
+        fz1.a("invalid currentFirstPageScrollOffset");
+        goto L213
+    L210:
+        r94 = r152;
+        goto L212
+    L211:
+        r151 = r217;
+        r219 = r143;
+        r101 = r411;
+        r102 = r416;
+        goto L212
+    L177:
+        r146 = r93;
+        goto L176
+    L164:
+        r212 = 0;
+        goto L165
+    L148:
+        r136 = 0;
+        goto L149
+    L143:
+        r69 = r43;
+        goto L145
+    L132:
+        int[] r250 = r128.a;
+        r250.getClass();
+        Arrays.sort(r250, 0, r63);
+        goto L131
+    L110:
+        kf2.m("MutableVector is empty.");
+    L111:
+        return null;
+    L112:
+        kf2.m("MutableVector is empty.");
+        goto L111
+    L113:
+        r60 = 1;
+        r59 = 0;
+        goto L114
+    L85:
+        if (r48.isEmpty() == false) goto L88;
+        r64 = c02.a;
+        r44 = r44;
+        r43 = r43;
+        goto L87
+    L82:
+        r127 = false;
+    L411:
+        th = move-exception;
+        ya4.H(r38, r122, r39);
+        throw th;
+    L70:
+        r39 = null;
+        goto L71
+    L65:
+        r37 = r35;
+        goto L66
+    L59:
+        r32 = r27 + r31;
+        if (r32 >= 0) goto L62;
+        r32 = 0;
+        goto L62
+    L46:
+        r28 = r119;
+        goto L47
+    L40:
+        if (r115 != r112) goto L42;
+    L32:
+        r113 = r22;
+        goto L35
+    L33:
+        if (r111 != r112) goto L31;
+    L414:
+        c82 r251 = (c82) r0;
+        b82 r252 = (b82) r9;
+        Object r1112 = r252.a;
+        rg1 r1113 = (rg1) r56;
+        int r253 = ((Integer) r57).intValue();
+        if ((r253 & 3) == 2) goto L418;
+        boolean r254 = true;
+    L420:
+        if (r1113.K(r253 & 1, r254) == false) goto L443;
+        nc3 r1114 = (nc3) r251.b.invoke();
+        int r255 = r252.b;
+        if (r255 < r1114.b()) goto L424;
+    L428:
+        p03 r256 = (p03) r1114.c.p;
+        int r257 = r256.d(r1112);
+        if (r257 < 0) goto L431;
+        r255 = r256.c[r257];
+        int r258 = -1;
+    L432:
+        if (r255 != r258) goto L433;
+    L427:
+        int r1115 = r255;
+        if (r1115 == r258) goto L436;
+        r1113.R(-1664741271);
+        l93.b(r1114, r251.a, r1115, r1112, r1113, 0);
+        r1113.o(false);
+    L437:
+        boolean r259 = r1113.g(r252);
+        Object r260 = r1113.H();
+        if (r259 == false) goto L440;
+    L441:
+        r260 = new x(21, r252);
+        r1113.b0(r260);
+    L442:
+        bu.b(r1112, (if1) r260, r1113);
+    L444:
+        return r8;
+    L440:
+        if (r260 != j80.a) goto L442;
+    L436:
+        r1113.R(-1664505826);
+        r1113.o(false);
+        goto L437
+    L433:
+        r252.b = r255;
+        goto L427
+    L431:
+        r255 = -1;
+        r258 = -1;
+        goto L432
+    L424:
+        if (r1114.c(r255).equals(r1112) == false) goto L428;
+        r258 = -1;
+        goto L427
+    L443:
+        r1113.N();
+        goto L444
+    L418:
+        r254 = false;
+        goto L420
+    L445:
+        h72 r261 = (h72) r0;
+        ?? r262 = (wf1) r9;
+        rg1 r263 = (rg1) r56;
+        int r264 = ((Integer) r57).intValue();
+        if ((r264 & 3) == 2) goto L449;
+        boolean r265 = true;
+    L451:
+        if (r263.K(r264 & 1, r265) == false) goto L471;
+        Boolean r266 = (Boolean) r261.g.getValue();
+        boolean r267 = r266.booleanValue();
+        r263.T(r266);
+        boolean r268 = r263.f(r267);
+        if (r267 == false) goto L456;
+        r262.invoke(r263, 0);
+    L465:
+        if (r263.y == true) goto L467;
+    L469:
+        boolean r1116 = false;
+    L470:
+        r263.o(r1116);
+    L472:
+        return r8;
+    L467:
+        if (r263.G.i != r263.z) goto L469;
+        r263.z = -1;
+        r1116 = false;
+        r263.y = false;
+        goto L470
+    L456:
+        if (r263.l == 0) goto L460;
+        l80.a("No nodes can be emitted before calling deactivateToEndGroup");
+    L460:
+        if (r263.S == true) goto L465;
+        if (r268 == true) goto L463;
+        r263.M();
+        goto L465
+    L463:
+        hg4 r269 = r263.G;
+        int r270 = r269.g;
+        int r271 = r269.h;
+        k80 r272 = r263.M;
+        r272.getClass();
+        r272.d(false);
+        r272.b.n.x0(t93.f);
+        si0.i(r270, r271, r263.s);
+        r263.G.t();
+        goto L465
+    L471:
+        r263.N();
+        goto L472
+    L449:
+        r265 = false;
+        goto L451
+    L473:
+        uy3 r273 = (uy3) r0;
+        lg4 r274 = (lg4) r9;
+        int r275 = ((Integer) r56).intValue();
+        if ((r57 instanceof u70) == false) goto L477;
+        r273.f.b((u70) r57);
+    L484:
+        return r8;
+    L477:
+        if ((r57 instanceof a24) == true) goto L484;
+        if ((r57 instanceof wg1) == false) goto L482;
+        si0.O(r274, r275, r57);
+        r273.e((wg1) r57);
+        goto L484
+    L482:
+        if ((r57 instanceof lv3) == false) goto L484;
+        si0.O(r274, r275, r57);
+        ((lv3) r57).c();
+        goto L484
+    L485:
+        lb r276 = (lb) r9;
+        int r277 = ((Integer) r56).intValue();
+        i94 r278 = (i94) r57;
+        if (((j94) r0).b.c(r278.f) == true) goto L488;
+        r276.i(r277, r278);
+        r276.u.d(r8);
+    L488:
+        return r8;
     }
 
-    public /* synthetic */ ib(Comparable comparable, String str, int i, int i2) {
-        this.n = i2;
-        this.o = comparable;
-        this.p = str;
+    public /* synthetic */ ib(Comparable r1, String r2, int r3, int r4) {
+        this.n = r4;
+        this.o = r1;
+        this.p = r2;
     }
 }

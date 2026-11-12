@@ -15,33 +15,35 @@ public final class mb2 implements Map.Entry {
     public Object u;
     public int v;
 
-    public mb2(boolean z, mb2 mb2Var, Object obj, mb2 mb2Var2, mb2 mb2Var3) {
-        this.n = mb2Var;
-        this.s = obj;
-        this.t = z;
+    public mb2(boolean r1, mb2 r2, Object r3, mb2 r4, mb2 r5) {
+        this.n = r2;
+        this.s = r3;
+        this.t = r1;
         this.v = 1;
-        this.q = mb2Var2;
-        this.r = mb2Var3;
-        mb2Var3.q = this;
-        mb2Var2.r = this;
+        this.q = r4;
+        this.r = r5;
+        r5.q = this;
+        r4.r = this;
     }
 
     @Override // java.util.Map.Entry
-    public final boolean equals(Object obj) {
-        if (obj instanceof Map.Entry) {
-            Map.Entry entry = (Map.Entry) obj;
-            Object obj2 = this.s;
-            if (obj2 != null ? obj2.equals(entry.getKey()) : entry.getKey() == null) {
-                Object obj3 = this.u;
-                if (obj3 == null) {
-                    if (entry.getValue() == null) {
-                        return true;
-                    }
-                } else if (obj3.equals(entry.getValue())) {
-                    return true;
-                }
-            }
-        }
+    public final boolean equals(Object r4) {
+        if ((r4 instanceof Map.Entry) == false) goto L20;
+        Map.Entry r5 = (Map.Entry) r4;
+        Object r0 = this.s;
+        if (r0 != null) goto L10;
+        if (r5.getKey() != null) goto L20;
+    L11:
+        Object r3 = this.u;
+        if (r3 != null) goto L17;
+        if (r5.getValue() != null) goto L20;
+        return true;
+    L17:
+        if (r3.equals(r5.getValue()) == false) goto L20;
+        return true;
+    L10:
+        if (r0.equals(r5.getKey()) == true) goto L11;
+    L20:
         return false;
     }
 
@@ -57,30 +59,41 @@ public final class mb2 implements Map.Entry {
 
     @Override // java.util.Map.Entry
     public final int hashCode() {
-        Object obj = this.s;
-        int iHashCode = obj == null ? 0 : obj.hashCode();
-        Object obj2 = this.u;
-        return iHashCode ^ (obj2 != null ? obj2.hashCode() : 0);
+        int r0 = 0;
+        Object r1 = this.s;
+        if (r1 != null) goto L5;
+        int r2 = 0;
+    L6:
+        Object r3 = this.u;
+        if (r3 == null) goto L11;
+        r0 = r3.hashCode();
+    L11:
+        return r2 ^ r0;
+    L5:
+        r2 = r1.hashCode();
+        goto L6
     }
 
     @Override // java.util.Map.Entry
-    public final Object setValue(Object obj) {
-        if (obj == null && !this.t) {
-            nz2.n("value == null");
-            return null;
-        }
-        Object obj2 = this.u;
-        this.u = obj;
-        return obj2;
+    public final Object setValue(Object r2) {
+        if (r2 == null) goto L4;
+    L8:
+        Object r0 = this.u;
+        this.u = r2;
+        return r0;
+    L4:
+        if (this.t == true) goto L8;
+        nz2.n("value == null");
+        return null;
     }
 
     public final String toString() {
         return this.s + "=" + this.u;
     }
 
-    public mb2(boolean z) {
+    public mb2(boolean r2) {
         this.s = null;
-        this.t = z;
+        this.t = r2;
         this.r = this;
         this.q = this;
     }

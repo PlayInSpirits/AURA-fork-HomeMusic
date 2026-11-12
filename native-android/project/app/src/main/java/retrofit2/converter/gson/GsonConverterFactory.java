@@ -1,6 +1,7 @@
 package retrofit2.converter.gson;
 
 import com.google.gson.reflect.TypeToken;
+import defpackage.bz4;
 import defpackage.n14;
 import defpackage.nk1;
 import defpackage.nz2;
@@ -15,26 +16,28 @@ import retrofit2.Retrofit;
 public final class GsonConverterFactory extends Converter.Factory {
     private final nk1 gson;
 
-    private GsonConverterFactory(nk1 nk1Var) {
-        this.gson = nk1Var;
+    private GsonConverterFactory(nk1 r1) {
+        this.gson = r1;
     }
 
-    public static GsonConverterFactory create(nk1 nk1Var) {
-        if (nk1Var != null) {
-            return new GsonConverterFactory(nk1Var);
-        }
+    public static GsonConverterFactory create(nk1 r1) {
+        if (r1 != null) goto L4;
         nz2.n("gson == null");
         return null;
+    L4:
+        return new GsonConverterFactory(r1);
     }
 
     @Override // retrofit2.Converter.Factory
-    public Converter<?, tz3> requestBodyConverter(Type type, Annotation[] annotationArr, Annotation[] annotationArr2, Retrofit retrofit) {
-        return new GsonRequestBodyConverter(this.gson, this.gson.g(TypeToken.get(type)));
+    public Converter<?, tz3> requestBodyConverter(Type r1, Annotation[] r2, Annotation[] r3, Retrofit r4) {
+        bz4 r5 = this.gson.g(TypeToken.get(r1));
+        return new GsonRequestBodyConverter(this.gson, r5);
     }
 
     @Override // retrofit2.Converter.Factory
-    public Converter<n14, ?> responseBodyConverter(Type type, Annotation[] annotationArr, Retrofit retrofit) {
-        return new GsonResponseBodyConverter(this.gson, this.gson.g(TypeToken.get(type)));
+    public Converter<n14, ?> responseBodyConverter(Type r1, Annotation[] r2, Retrofit r3) {
+        bz4 r4 = this.gson.g(TypeToken.get(r1));
+        return new GsonResponseBodyConverter(this.gson, r4);
     }
 
     public static GsonConverterFactory create() {

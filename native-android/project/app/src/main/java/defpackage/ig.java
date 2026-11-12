@@ -11,32 +11,35 @@ public final class ig {
     public final TextView a;
     public final zh0 b;
 
-    public ig(TextView textView) {
-        this.a = textView;
-        this.b = new zh0(textView);
+    public ig(TextView r2) {
+        this.a = r2;
+        this.b = new zh0(r2);
     }
 
-    public final InputFilter[] a(InputFilter[] inputFilterArr) {
-        return ((hw) this.b.o).k(inputFilterArr);
+    public final InputFilter[] a(InputFilter[] r1) {
+        return ((hw) this.b.o).k(r1);
     }
 
-    public final void b(AttributeSet attributeSet, int i) {
-        TypedArray typedArrayObtainStyledAttributes = this.a.getContext().obtainStyledAttributes(attributeSet, st3.i, i, 0);
-        try {
-            boolean z = typedArrayObtainStyledAttributes.hasValue(14) ? typedArrayObtainStyledAttributes.getBoolean(14, true) : true;
-            typedArrayObtainStyledAttributes.recycle();
-            d(z);
-        } catch (Throwable th) {
-            typedArrayObtainStyledAttributes.recycle();
-            throw th;
-        }
+    public final void b(AttributeSet r4, int r5) {
+        TypedArray r6 = this.a.getContext().obtainStyledAttributes(r4, st3.i, r5, 0);
+        boolean r1 = true;
+        if (r6.hasValue(14) == false) goto L9;
+        r1 = r6.getBoolean(14, true);     // Catch: Throwable -> L7
+    L9:
+        r6.recycle();
+        d(r1);
+        return;
+    L7:
+        th = move-exception;
+        r6.recycle();
+        throw th;
     }
 
-    public final void c(boolean z) {
-        ((hw) this.b.o).J(z);
+    public final void c(boolean r1) {
+        ((hw) this.b.o).J(r1);
     }
 
-    public final void d(boolean z) {
-        ((hw) this.b.o).K(z);
+    public final void d(boolean r1) {
+        ((hw) this.b.o).K(r1);
     }
 }

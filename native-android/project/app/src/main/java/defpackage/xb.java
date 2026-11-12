@@ -6,24 +6,31 @@ public final class xb {
     public final float a;
     public final float b;
 
-    public xb(float f, float f2) {
-        this.a = f;
-        this.b = f2;
+    public xb(float r1, float r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof xb)) {
-            return false;
-        }
-        xb xbVar = (xb) obj;
-        return Float.compare(this.a, xbVar.a) == 0 && Float.compare(this.b, xbVar.b) == 0;
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if ((r5 instanceof xb) == true) goto L8;
+        return false;
+    L8:
+        xb r6 = (xb) r5;
+        if (Float.compare(this.a, r6.a) == 0) goto L12;
+        return false;
+    L12:
+        if (Float.compare(this.b, r6.b) == 0) goto L14;
+        return false;
+    L14:
+        return true;
     }
 
     public final int hashCode() {
-        return Float.hashCode(this.b) + (Float.hashCode(this.a) * 31);
+        int r0 = Float.hashCode(this.a) * 31;
+        return Float.hashCode(this.b) + r0;
     }
 
     public final String toString() {

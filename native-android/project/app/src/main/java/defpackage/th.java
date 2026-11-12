@@ -9,53 +9,65 @@ import java.lang.reflect.Constructor;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class th {
-    public static final Class[] b = {Context.class, AttributeSet.class};
-    public static final int[] c = {R.attr.onClick};
-    public static final int[] d = {R.attr.accessibilityHeading};
-    public static final int[] e = {R.attr.accessibilityPaneTitle};
-    public static final int[] f = {R.attr.screenReaderFocusable};
-    public static final String[] g = {"android.widget.", "android.view.", "android.webkit."};
-    public static final yd4 h = new yd4(0);
-    public final Object[] a = new Object[2];
+    public static final Class[] b = null;
+    public static final int[] c = null;
+    public static final int[] d = null;
+    public static final int[] e = null;
+    public static final int[] f = null;
+    public static final String[] g = null;
+    public static final yd4 h = null;
+    public final Object[] a;
 
-    public ef a(Context context, AttributeSet attributeSet) {
-        return new ef(context, attributeSet, app.homemusic.R.attr.autoCompleteTextViewStyle);
+    static {
+        b = new Class[]{Context.class, AttributeSet.class};
+        c = new int[]{R.attr.onClick};
+        d = new int[]{R.attr.accessibilityHeading};
+        e = new int[]{R.attr.accessibilityPaneTitle};
+        f = new int[]{R.attr.screenReaderFocusable};
+        g = new String[]{"android.widget.", "android.view.", "android.webkit."};
+        h = new yd4(0);
     }
 
-    public ff b(Context context, AttributeSet attributeSet) {
-        return new ff(context, attributeSet, app.homemusic.R.attr.buttonStyle);
+    public th() {
+        this.a = new Object[2];
     }
 
-    public hf c(Context context, AttributeSet attributeSet) {
-        return new hf(context, attributeSet, app.homemusic.R.attr.checkboxStyle);
+    public ef a(Context r2, AttributeSet r3) {
+        return new ef(r2, r3, app.homemusic.R.attr.autoCompleteTextViewStyle);
     }
 
-    public mg d(Context context, AttributeSet attributeSet) {
-        return new mg(context, attributeSet);
+    public ff b(Context r2, AttributeSet r3) {
+        return new ff(r2, r3, app.homemusic.R.attr.buttonStyle);
     }
 
-    public mh e(Context context, AttributeSet attributeSet) {
-        return new mh(context, attributeSet);
+    public hf c(Context r2, AttributeSet r3) {
+        return new hf(r2, r3, app.homemusic.R.attr.checkboxStyle);
     }
 
-    public final View f(Context context, String str, String str2) {
-        String strConcat;
-        yd4 yd4Var = h;
-        Constructor constructor = (Constructor) yd4Var.get(str);
-        if (constructor == null) {
-            if (str2 != null) {
-                try {
-                    strConcat = str2.concat(str);
-                } catch (Exception unused) {
-                    return null;
-                }
-            } else {
-                strConcat = str;
-            }
-            constructor = Class.forName(strConcat, false, context.getClassLoader()).asSubclass(View.class).getConstructor(b);
-            yd4Var.put(str, constructor);
-        }
-        constructor.setAccessible(true);
-        return (View) constructor.newInstance(this.a);
+    public mg d(Context r1, AttributeSet r2) {
+        return new mg(r1, r2);
+    }
+
+    public mh e(Context r1, AttributeSet r2) {
+        return new mh(r1, r2);
+    }
+
+    public final View f(Context r3, String r4, String r5) {
+        yd4 r0 = h;
+        Constructor r1 = (Constructor) r0.get(r4);
+        if (r1 != null) goto L8;
+        if (r5 != null) goto L12;
+        String r6 = r4;
+    L7:
+        r1 = Class.forName(r6, false, r3.getClassLoader()).asSubclass(View.class).getConstructor(b);     // Catch: Exception -> L10
+        r0.put(r4, r1);     // Catch: Exception -> L10
+        goto L8
+    L12:
+        r6 = r5.concat(r4);     // Catch: Exception -> L10
+    L10:
+        return null;
+    L8:
+        r1.setAccessible(true);     // Catch: Exception -> L10
+        return (View) r1.newInstance(this.a);
     }
 }

@@ -5,19 +5,19 @@ package defpackage;
 public final class ue4 extends Thread {
     public final /* synthetic */ ve4 n;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public ue4(ve4 ve4Var) {
+    public ue4(ve4 r1) {
+        this.n = r1;
         super("ExoPlayer:SimpleDecoder");
-        this.n = ve4Var;
     }
 
     @Override // java.lang.Thread, java.lang.Runnable
     public final void run() {
-        do {
-            try {
-            } catch (InterruptedException e) {
-                throw new IllegalStateException(e);
-            }
-        } while (this.n.k());
+        ve4 r1 = this.n;
+    L10:
+        if (r1.k() == true) goto L10;
+        return;
+    L7:
+        e = move-exception;
+        throw new IllegalStateException(e);
     }
 }

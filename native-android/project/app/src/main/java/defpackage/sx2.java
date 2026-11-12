@@ -5,10 +5,18 @@ package defpackage;
 public final class sx2 {
     public final long a;
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof sx2) {
-            return this.a == ((sx2) obj).a;
-        }
+    public /* synthetic */ sx2(long r1) {
+        this.a = r1;
+    }
+
+    public final boolean equals(Object r3) {
+        if ((r3 instanceof sx2) == false) goto L11;
+        long r0 = ((sx2) r3).a;
+        if (this.a == r0) goto L9;
+        return false;
+    L9:
+        return true;
+    L11:
         return false;
     }
 

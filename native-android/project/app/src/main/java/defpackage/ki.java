@@ -11,85 +11,92 @@ public final class ki implements Iterator, x32 {
     public final /* synthetic */ int q;
     public final /* synthetic */ Object r;
 
-    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
-    public ki(oi oiVar, int i) {
-        this(oiVar.p);
-        this.q = i;
-        switch (i) {
-            case 1:
-                this.r = oiVar;
-                this(oiVar.p);
-                break;
-            default:
-                this.r = oiVar;
-                break;
-        }
+    public ki(oi r1, int r2) {
+        this.q = r2;
+        switch(r2) {
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        this.r = r1;
+        this(r1.p);
+        return;
+    L6:
+        this.r = r1;
+        this(r1.p);
     }
 
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        return this.o < this.n;
+        if (this.o >= this.n) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // java.util.Iterator
     public final Object next() {
-        Object objF;
-        if (!hasNext()) {
-            tb4.k();
-            return null;
-        }
-        int i = this.o;
-        int i2 = this.q;
-        Object obj = this.r;
-        switch (i2) {
-            case 0:
-                objF = ((oi) obj).f(i);
-                break;
-            case 1:
-                objF = ((oi) obj).j(i);
-                break;
-            default:
-                objF = ((qi) obj).o[i];
-                break;
-        }
+        if (hasNext() == false) goto L11;
+        int r0 = this.o;
+        int r1 = this.q;
+        Object r2 = this.r;
+        switch(r1) {
+            case 0: goto L8;
+            case 1: goto L7;
+            default: goto L6;
+        };
+    L6:
+        Object r3 = ((qi) r2).o[r0];
+    L9:
         this.o++;
         this.p = true;
-        return objF;
+        return r3;
+    L7:
+        r3 = ((oi) r2).j(r0);
+        goto L9
+    L8:
+        r3 = ((oi) r2).f(r0);
+        goto L9
+    L11:
+        tb4.k();
+        return null;
     }
 
     @Override // java.util.Iterator
     public final void remove() {
-        if (!this.p) {
-            kf2.o("Call next() before removing an element.");
-            return;
-        }
-        int i = this.o - 1;
-        this.o = i;
-        int i2 = this.q;
-        Object obj = this.r;
-        switch (i2) {
-            case 0:
-                ((oi) obj).h(i);
-                break;
-            case 1:
-                ((oi) obj).h(i);
-                break;
-            default:
-                ((qi) obj).a(i);
-                break;
-        }
+        if (this.p == false) goto L11;
+        int r0 = this.o - 1;
+        this.o = r0;
+        int r1 = this.q;
+        Object r2 = this.r;
+        switch(r1) {
+            case 0: goto L8;
+            case 1: goto L7;
+            default: goto L6;
+        };
+    L6:
+        ((qi) r2).a(r0);
+    L9:
         this.n--;
         this.p = false;
+        return;
+    L7:
+        ((oi) r2).h(r0);
+        goto L9
+    L8:
+        ((oi) r2).h(r0);
+        goto L9
+    L11:
+        kf2.o("Call next() before removing an element.");
     }
 
-    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
-    public ki(qi qiVar) {
-        this(qiVar.p);
+    public ki(qi r2) {
         this.q = 2;
-        this.r = qiVar;
+        this.r = r2;
+        this(r2.p);
     }
 
-    public ki(int i) {
-        this.n = i;
+    public ki(int r1) {
+        this.n = r1;
     }
 }

@@ -10,36 +10,36 @@ import java.util.List;
 public class w3 extends AccessibilityNodeProvider {
     public final zh0 a;
 
-    public w3(zh0 zh0Var) {
-        this.a = zh0Var;
+    public w3(zh0 r1) {
+        this.a = r1;
     }
 
     @Override // android.view.accessibility.AccessibilityNodeProvider
-    public final AccessibilityNodeInfo createAccessibilityNodeInfo(int i) {
-        v3 v3VarZ = this.a.z(i);
-        if (v3VarZ == null) {
-            return null;
-        }
-        return v3VarZ.a;
+    public final AccessibilityNodeInfo createAccessibilityNodeInfo(int r1) {
+        v3 r0 = this.a.z(r1);
+        if (r0 != null) goto L7;
+        return null;
+    L7:
+        return r0.a;
     }
 
     @Override // android.view.accessibility.AccessibilityNodeProvider
-    public final List findAccessibilityNodeInfosByText(String str, int i) {
+    public final List findAccessibilityNodeInfosByText(String r1, int r2) {
         this.a.getClass();
         return null;
     }
 
     @Override // android.view.accessibility.AccessibilityNodeProvider
-    public final AccessibilityNodeInfo findFocus(int i) {
-        v3 v3VarC = this.a.C(i);
-        if (v3VarC == null) {
-            return null;
-        }
-        return v3VarC.a;
+    public final AccessibilityNodeInfo findFocus(int r1) {
+        v3 r0 = this.a.C(r1);
+        if (r0 != null) goto L7;
+        return null;
+    L7:
+        return r0.a;
     }
 
     @Override // android.view.accessibility.AccessibilityNodeProvider
-    public final boolean performAction(int i, int i2, Bundle bundle) {
-        return this.a.F(i, i2, bundle);
+    public final boolean performAction(int r1, int r2, Bundle r3) {
+        return this.a.F(r1, r2, r3);
     }
 }

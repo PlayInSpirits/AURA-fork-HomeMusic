@@ -7,5 +7,5 @@ import java.lang.reflect.InvocationHandler;
 public interface ServiceWorkerControllerBoundaryInterface {
     InvocationHandler getServiceWorkerWebSettings();
 
-    void setServiceWorkerClient(InvocationHandler invocationHandler);
+    void setServiceWorkerClient(InvocationHandler r1);
 }

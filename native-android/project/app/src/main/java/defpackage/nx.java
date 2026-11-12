@@ -6,8 +6,8 @@ public final class nx {
     public final long a;
     public final long b;
 
-    public nx(long j, long j2) {
-        this.a = j;
-        this.b = j2;
+    public nx(long r1, long r3) {
+        this.a = r1;
+        this.b = r3;
     }
 }

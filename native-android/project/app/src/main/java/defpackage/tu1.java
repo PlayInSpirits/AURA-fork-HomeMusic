@@ -14,14 +14,16 @@ public final class tu1 implements uu1 {
     }
 
     @Override // defpackage.uu1
-    public final void o(String[] strArr) {
-        Parcel parcelObtain = Parcel.obtain();
-        try {
-            parcelObtain.writeInterfaceToken(uu1.a);
-            parcelObtain.writeStringArray(strArr);
-            this.e.transact(1, parcelObtain, null, 1);
-        } finally {
-            parcelObtain.recycle();
-        }
+    public final void o(String[] r3) {
+        Parcel r0 = Parcel.obtain();
+        r0.writeInterfaceToken(uu1.a);     // Catch: Throwable -> L6
+        r0.writeStringArray(r3);     // Catch: Throwable -> L6
+        this.e.transact(1, r0, null, 1);     // Catch: Throwable -> L6
+        r0.recycle();
+        return;
+    L6:
+        th = move-exception;
+        r0.recycle();
+        throw th;
     }
 }

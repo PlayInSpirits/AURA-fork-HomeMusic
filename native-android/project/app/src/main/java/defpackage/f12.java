@@ -7,16 +7,16 @@ public final class f12 {
     public final int b;
     public final wo0 c;
 
-    public f12(int i, int i2, wo0 wo0Var) {
-        this.a = i;
-        this.b = i2;
-        this.c = wo0Var;
-        if (i < 0) {
-            fz1.a("startIndex should be >= 0");
-        }
-        if (i2 > 0) {
-            return;
-        }
+    public f12(int r1, int r2, wo0 r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        if (r1 >= 0) goto L6;
+        fz1.a("startIndex should be >= 0");
+    L6:
+        if (r2 <= 0) goto L8;
+        return;
+    L8:
         fz1.a("size should be > 0");
     }
 }

@@ -6,41 +6,53 @@ import java.util.List;
 /* JADX INFO: loaded from: classes.dex */
 public final class hm1 implements xj2 {
     public final long n;
-    public long o = -1;
+    public long o;
     public final List p;
     public final long q;
 
-    public hm1(long j, List list) {
-        this.n = list.size() - 1;
-        this.q = j;
-        this.p = list;
+    public hm1(long r3, List r5) {
+        this.n = r5.size() - 1;
+        this.o = -1;
+        this.q = r3;
+        this.p = r5;
     }
 
     @Override // defpackage.xj2
     public final long j() {
-        long j = this.o;
-        if (j < 0 || j > this.n) {
-            tb4.k();
-            return 0L;
-        }
-        return this.q + ((wm1) this.p.get((int) j)).r;
+        long r0 = this.o;
+        if (r0 >= 0) goto L5;
+    L8:
+        tb4.k();
+        return 0;
+    L5:
+        if (r0 > this.n) goto L8;
+        long r1 = ((wm1) this.p.get((int) r0)).r;
+        return this.q + r1;
     }
 
     @Override // defpackage.xj2
     public final long n() {
-        long j = this.o;
-        if (j < 0 || j > this.n) {
-            tb4.k();
-            return 0L;
-        }
-        wm1 wm1Var = (wm1) this.p.get((int) j);
-        return this.q + wm1Var.r + wm1Var.p;
+        long r0 = this.o;
+        if (r0 >= 0) goto L5;
+    L8:
+        tb4.k();
+        return 0;
+    L5:
+        if (r0 > this.n) goto L8;
+        wm1 r1 = (wm1) this.p.get((int) r0);
+        return (this.q + r1.r) + r1.p;
     }
 
     @Override // defpackage.xj2
     public final boolean next() {
-        long j = this.o + 1;
-        this.o = j;
-        return !(j > this.n);
+        long r0 = this.o + 1;
+        this.o = r0;
+        if (r0 <= this.n) goto L5;
+        boolean r4 = true;
+    L7:
+        return !r4;
+    L5:
+        r4 = false;
+        goto L7
     }
 }

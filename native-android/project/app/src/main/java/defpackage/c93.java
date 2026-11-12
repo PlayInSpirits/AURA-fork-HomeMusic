@@ -3,5 +3,5 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface c93 {
-    void a(dd5 dd5Var, tc0 tc0Var);
+    void a(dd5 r1, tc0 r2);
 }

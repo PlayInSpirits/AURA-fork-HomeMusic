@@ -9,10 +9,10 @@ public final class h71 implements aa4 {
     public final boolean b;
     public final if1 c;
 
-    public h71(aa4 aa4Var, boolean z, if1 if1Var) {
-        this.a = aa4Var;
-        this.b = z;
-        this.c = if1Var;
+    public h71(aa4 r1, boolean r2, if1 r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 
     @Override // defpackage.aa4

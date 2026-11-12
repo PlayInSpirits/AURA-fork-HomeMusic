@@ -8,17 +8,18 @@ public final class s15 extends w15 {
     public final /* synthetic */ Method b;
     public final /* synthetic */ Object c;
 
-    public s15(Method method, Object obj) {
-        this.b = method;
-        this.c = obj;
+    public s15(Method r1, Object r2) {
+        this.b = r1;
+        this.c = r2;
     }
 
     @Override // defpackage.w15
-    public final Object a(Class cls) {
-        String strB = mf4.b(cls);
-        if (strB != null) {
-            throw new AssertionError("UnsafeAllocator is used for non-instantiable type: ".concat(strB));
-        }
-        return this.b.invoke(this.c, cls);
+    public final Object a(Class r2) {
+        String r0 = mf4.b(r2);
+        if (r0 != null) goto L7;
+        Method r1 = this.b;
+        return r1.invoke(this.c, new Object[]{r2});
+    L7:
+        throw new AssertionError("UnsafeAllocator is used for non-instantiable type: ".concat(r0));
     }
 }

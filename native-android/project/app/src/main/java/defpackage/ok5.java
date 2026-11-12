@@ -9,12 +9,15 @@ import com.google.android.gms.common.internal.a;
 /* JADX INFO: loaded from: classes.dex */
 public final class ok5 extends a {
     @Override // com.google.android.gms.common.internal.a
-    public final IInterface a(IBinder iBinder) {
-        if (iBinder == null) {
-            return null;
-        }
-        IInterface iInterfaceQueryLocalInterface = iBinder.queryLocalInterface("com.google.android.gms.fido.fido2.internal.regular.IFido2AppService");
-        return iInterfaceQueryLocalInterface instanceof sk5 ? (sk5) iInterfaceQueryLocalInterface : new sk5(iBinder, "com.google.android.gms.fido.fido2.internal.regular.IFido2AppService");
+    public final IInterface a(IBinder r3) {
+        if (r3 != null) goto L5;
+        return null;
+    L5:
+        IInterface r0 = r3.queryLocalInterface("com.google.android.gms.fido.fido2.internal.regular.IFido2AppService");
+        if ((r0 instanceof sk5) == false) goto L10;
+        return (sk5) r0;
+    L10:
+        return new sk5(r3, "com.google.android.gms.fido.fido2.internal.regular.IFido2AppService");
     }
 
     @Override // com.google.android.gms.common.internal.a

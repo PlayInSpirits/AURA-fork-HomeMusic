@@ -8,9 +8,9 @@ import javax.net.ssl.SSLSocket;
 public interface uh4 {
     boolean a();
 
-    boolean b(SSLSocket sSLSocket);
+    boolean b(SSLSocket r1);
 
-    String c(SSLSocket sSLSocket);
+    String c(SSLSocket r1);
 
-    void d(SSLSocket sSLSocket, String str, List list);
+    void d(SSLSocket r1, String r2, List r3);
 }

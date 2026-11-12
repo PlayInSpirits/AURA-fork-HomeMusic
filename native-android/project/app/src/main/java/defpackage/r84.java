@@ -6,8 +6,8 @@ public final class r84 {
     public final long a;
     public final int b;
 
-    public r84(int i, long j) {
-        this.a = j;
-        this.b = i;
+    public r84(int r1, long r2) {
+        this.a = r2;
+        this.b = r1;
     }
 }

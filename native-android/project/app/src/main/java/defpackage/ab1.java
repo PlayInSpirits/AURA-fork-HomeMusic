@@ -10,10 +10,10 @@ public final class ab1 implements xa1 {
     public final int c;
     public final String d;
 
-    public ab1(ArrayList arrayList, int i, int i2, String str) {
-        this.a = arrayList;
-        this.c = i;
-        this.b = i2;
-        this.d = str;
+    public ab1(ArrayList r1, int r2, int r3, String r4) {
+        this.a = r1;
+        this.c = r2;
+        this.b = r3;
+        this.d = r4;
     }
 }

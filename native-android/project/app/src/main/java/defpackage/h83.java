@@ -6,10 +6,10 @@ public final class h83 extends fz0 {
     public final ng2 k0;
     public final float l0;
 
-    public h83(ng2 ng2Var, float f) {
+    public h83(ng2 r2, float r3) {
         super(0);
-        this.k0 = ng2Var;
-        this.l0 = f;
+        this.k0 = r2;
+        this.l0 = r3;
     }
 
     @Override // defpackage.fz0
@@ -18,7 +18,8 @@ public final class h83 extends fz0 {
     }
 
     @Override // defpackage.fz0
-    public final void j(float f, float f2, float f3, kc4 kc4Var) {
-        this.k0.j(f, f2 - this.l0, f3, kc4Var);
+    public final void j(float r2, float r3, float r4, kc4 r5) {
+        float r6 = r3 - this.l0;
+        this.k0.j(r2, r6, r4, r5);
     }
 }

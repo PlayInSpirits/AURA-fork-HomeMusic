@@ -5,7 +5,7 @@ package defpackage;
 public final class sb2 extends zd2 {
     public final int t;
 
-    public sb2(int i) {
-        this.t = i;
+    public sb2(int r1) {
+        this.t = r1;
     }
 }

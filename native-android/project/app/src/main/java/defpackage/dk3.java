@@ -1,21 +1,14 @@
 package defpackage;
 
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.View;
 import android.widget.Button;
 import com.eddyizm.tempus.homemusic.a;
 import com.eddyizm.tempus.homemusic.b;
-import com.eddyizm.tempus.model.Download;
 import com.eddyizm.tempus.model.Queue;
 import com.eddyizm.tempus.service.MediaService;
 import com.eddyizm.tempus.subsonic.models.Child;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
-import org.json.JSONException;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -23,9 +16,9 @@ public final /* synthetic */ class dk3 implements if1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ hk3 o;
 
-    public /* synthetic */ dk3(hk3 hk3Var, int i) {
-        this.n = i;
-        this.o = hk3Var;
+    public /* synthetic */ dk3(hk3 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -33,253 +26,182 @@ public final /* synthetic */ class dk3 implements if1 {
     /* JADX WARN: Type inference failed for: r0v31, types: [java.util.List] */
     /* JADX WARN: Type inference failed for: r0v32, types: [java.util.ArrayList] */
     @Override // defpackage.if1
-    public final Object invoke(Object obj) throws JSONException {
-        qi3 qi3VarB;
-        ?? arrayList;
-        int i = this.n;
-        final int i2 = 1;
-        final int i3 = 0;
-        j15 j15Var = j15.a;
-        final hk3 hk3Var = this.o;
-        switch (i) {
-            case 0:
-                Child child = (Child) obj;
-                if (!u52.c().a && hk3Var.o0 == null && child != null && !hk3Var.h0().isEmpty()) {
-                    Iterator it = hk3Var.h0().iterator();
-                    while (true) {
-                        if (!it.hasNext()) {
-                            i3 = -1;
-                        } else if (!h12.c(((Child) it.next()).getId(), child.getId())) {
-                            i3++;
-                        }
-                    }
-                    if (i3 >= 0 && i3 != hk3Var.s0.g()) {
-                        hk3Var.k0(i3);
-                    }
-                }
-                break;
-            case 1:
-                int iIntValue = ((Integer) obj).intValue();
-                if (iIntValue == hk3Var.h0().size() && ((Boolean) hk3Var.x0.getValue()).booleanValue() && !u52.c().a) {
-                    MediaService mediaService = is3.c;
-                    if (mediaService != null && (qi3VarB = mediaService.b()) != null) {
-                        if (qi3VarB.f0()) {
-                            qi3VarB.c0();
-                        } else if (!a.j(qi3VarB)) {
-                            is3.e.k(Boolean.TRUE);
-                            if (b.h(qi3VarB)) {
-                                io1.b.post(new u6(14));
-                            } else {
-                                is3.d = false;
-                                is3.a(qi3VarB, mediaService);
-                            }
-                        }
-                    }
-                } else if (iIntValue >= 0 && iIntValue < hk3Var.h0().size()) {
-                    if (!u52.c().a) {
-                        hk3Var.k0(iIntValue);
-                        bj2 bj2Var = hk3Var.o0;
-                        int[] iArr = hk3Var.w0;
-                        iArr.getClass();
-                        Integer numValueOf = (iIntValue < 0 || iIntValue >= iArr.length) ? null : Integer.valueOf(iArr[iIntValue]);
-                        if (bj2Var != null && numValueOf != null && numValueOf.intValue() < bj2Var.Q0() && h12.c(bj2Var.Y(numValueOf.intValue()).a, ((Child) hk3Var.h0().get(iIntValue)).getId())) {
-                            bj2Var.W(numValueOf.intValue());
-                            bj2Var.m0();
-                        } else if (bj2Var == null || bj2Var.Q0() <= 0) {
-                            bl2 bl2Var = hk3Var.n0;
-                            if (bl2Var != null) {
-                                bo2.q(bl2Var, hk3Var.h0(), iIntValue, "queue");
-                            }
-                        } else {
-                            do2 do2VarK0 = bj2Var.K0();
-                            do2VarK0.getClass();
-                            hk3Var.m0(do2VarK0, bj2Var.o0());
-                        }
-                    } else if (u52.k()) {
-                        u52.q("select", iIntValue, iIntValue);
-                    }
-                }
-                break;
-            case 2:
-                List list = (List) obj;
-                bl2 bl2Var2 = hk3Var.n0;
-                if (bl2Var2 != null && list != null) {
-                    bo2.e(bl2Var2, list, true);
-                }
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                final Child child2 = (Child) obj;
-                ey eyVar = hk3Var.l0;
-                if (eyVar != null && child2 != null) {
-                    ((Button) eyVar.e).setOnClickListener(new View.OnClickListener() { // from class: ek3
-                        @Override // android.view.View.OnClickListener
-                        public final void onClick(View view) {
-                            int i4 = i3;
-                            Child child3 = child2;
-                            hk3 hk3Var2 = hk3Var;
-                            switch (i4) {
-                                case 0:
-                                    if (ud3.o() == null) {
-                                        au0.w(hk3Var2.Z()).b(gi1.G(child3), new Download(child3), false);
-                                        return;
-                                    } else {
-                                        i51.a(hk3Var2.Z(), child3);
-                                        return;
-                                    }
-                                case 1:
-                                    ArrayList<? extends Parcelable> arrayList2 = new ArrayList<>();
-                                    arrayList2.add(child3);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putParcelableArrayList("TRACKS_OBJECT", arrayList2);
-                                    fl3 fl3Var = new fl3();
-                                    fl3Var.c0(bundle);
-                                    fl3Var.m0(hk3Var2.X().k(), null);
-                                    return;
-                                default:
-                                    aj3 aj3Var = hk3Var2.m0;
-                                    if (aj3Var == null) {
-                                        h12.Q("playerBottomSheetViewModel");
-                                        throw null;
-                                    }
-                                    le1 le1VarV = hk3Var2.v();
-                                    k03 k03Var = aj3Var.q;
-                                    k03Var.k(Collections.EMPTY_LIST);
-                                    aj3Var.c.o(child3.getId(), fb0.p, 20).e(le1VarV, new g7(k03Var, 0));
-                                    k03Var.e(hk3Var2.v(), new ht1(new dk3(hk3Var2, 2), 1));
-                                    return;
-                            }
-                        }
-                    });
-                    ((Button) eyVar.f).setOnClickListener(new View.OnClickListener() { // from class: ek3
-                        @Override // android.view.View.OnClickListener
-                        public final void onClick(View view) {
-                            int i4 = i2;
-                            Child child3 = child2;
-                            hk3 hk3Var2 = hk3Var;
-                            switch (i4) {
-                                case 0:
-                                    if (ud3.o() == null) {
-                                        au0.w(hk3Var2.Z()).b(gi1.G(child3), new Download(child3), false);
-                                        return;
-                                    } else {
-                                        i51.a(hk3Var2.Z(), child3);
-                                        return;
-                                    }
-                                case 1:
-                                    ArrayList<? extends Parcelable> arrayList2 = new ArrayList<>();
-                                    arrayList2.add(child3);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putParcelableArrayList("TRACKS_OBJECT", arrayList2);
-                                    fl3 fl3Var = new fl3();
-                                    fl3Var.c0(bundle);
-                                    fl3Var.m0(hk3Var2.X().k(), null);
-                                    return;
-                                default:
-                                    aj3 aj3Var = hk3Var2.m0;
-                                    if (aj3Var == null) {
-                                        h12.Q("playerBottomSheetViewModel");
-                                        throw null;
-                                    }
-                                    le1 le1VarV = hk3Var2.v();
-                                    k03 k03Var = aj3Var.q;
-                                    k03Var.k(Collections.EMPTY_LIST);
-                                    aj3Var.c.o(child3.getId(), fb0.p, 20).e(le1VarV, new g7(k03Var, 0));
-                                    k03Var.e(hk3Var2.v(), new ht1(new dk3(hk3Var2, 2), 1));
-                                    return;
-                            }
-                        }
-                    });
-                    final int i4 = 2;
-                    ((Button) eyVar.b).setOnClickListener(new View.OnClickListener() { // from class: ek3
-                        @Override // android.view.View.OnClickListener
-                        public final void onClick(View view) {
-                            int i5 = i4;
-                            Child child3 = child2;
-                            hk3 hk3Var2 = hk3Var;
-                            switch (i5) {
-                                case 0:
-                                    if (ud3.o() == null) {
-                                        au0.w(hk3Var2.Z()).b(gi1.G(child3), new Download(child3), false);
-                                        return;
-                                    } else {
-                                        i51.a(hk3Var2.Z(), child3);
-                                        return;
-                                    }
-                                case 1:
-                                    ArrayList<? extends Parcelable> arrayList2 = new ArrayList<>();
-                                    arrayList2.add(child3);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putParcelableArrayList("TRACKS_OBJECT", arrayList2);
-                                    fl3 fl3Var = new fl3();
-                                    fl3Var.c0(bundle);
-                                    fl3Var.m0(hk3Var2.X().k(), null);
-                                    return;
-                                default:
-                                    aj3 aj3Var = hk3Var2.m0;
-                                    if (aj3Var == null) {
-                                        h12.Q("playerBottomSheetViewModel");
-                                        throw null;
-                                    }
-                                    le1 le1VarV = hk3Var2.v();
-                                    k03 k03Var = aj3Var.q;
-                                    k03Var.k(Collections.EMPTY_LIST);
-                                    aj3Var.c.o(child3.getId(), fb0.p, 20).e(le1VarV, new g7(k03Var, 0));
-                                    k03Var.e(hk3Var2.v(), new ht1(new dk3(hk3Var2, 2), 1));
-                                    return;
-                            }
-                        }
-                    });
-                    ((Button) eyVar.c).setOnClickListener(new fk3(hk3Var, i3));
-                    ((Button) eyVar.d).setOnClickListener(new fk3(hk3Var, i2));
-                }
-                break;
-            case 4:
-                List<Queue> list2 = (List) obj;
-                if (list2 != null) {
-                    arrayList = new ArrayList(r40.k0(list2, 10));
-                    for (Queue queue : list2) {
-                        queue.getClass();
-                        arrayList.add(queue);
-                    }
-                } else {
-                    arrayList = u01.n;
-                }
-                hk3Var.r0 = arrayList;
-                if (!u52.c().a) {
-                    bj2 bj2Var2 = hk3Var.o0;
-                    if (bj2Var2 != null) {
-                        hk3Var.i0(bj2Var2);
-                    } else {
-                        hk3Var.q0.setValue(hk3Var.r0);
-                    }
-                }
-                break;
-            case 5:
-                hk3Var.y0.setValue(Boolean.valueOf(h12.c((Boolean) obj, Boolean.TRUE)));
-                bj2 bj2Var3 = hk3Var.o0;
-                if (bj2Var3 != null) {
-                    hk3Var.i0(bj2Var3);
-                }
-                break;
-            case 6:
-                if (u52.c().a) {
-                    hk3Var.j0();
-                }
-                break;
-            default:
-                if (((v52) obj).a) {
-                    hk3Var.j0();
-                } else {
-                    hk3Var.q0.setValue(hk3Var.r0);
-                    bj2 bj2Var4 = hk3Var.o0;
-                    if (bj2Var4 != null) {
-                        do2 do2VarK1 = bj2Var4.K0();
-                        do2VarK1.getClass();
-                        hk3Var.m0(do2VarK1, bj2Var4.o0());
-                    }
-                }
-                break;
-        }
-        return j15Var;
+    public final Object invoke(Object r8) {
+        int r0 = this.n;
+        final int r1 = 1;
+        final int r2 = 0;
+        j15 r3 = j15.a;
+        final hk3 r7 = this.o;
+        switch(r0) {
+            case 0: goto L95;
+            case 1: goto L44;
+            case 2: goto L39;
+            case 3: goto L33;
+            case 4: goto L19;
+            case 5: goto L15;
+            case 6: goto L11;
+            default: goto L5;
+        };
+    L11:
+        List r9 = (List) r8;
+        if (u52.c().a == false) goto L14;
+        r7.j0();
+    L14:
+        return r3;
+    L15:
+        boolean r10 = h12.c((Boolean) r8, Boolean.TRUE);
+        r7.y0.setValue(Boolean.valueOf(r10));
+        bj2 r11 = r7.o0;
+        if (r11 == null) goto L18;
+        r7.i0(r11);
+    L18:
+        return r3;
+    L19:
+        List r12 = (List) r8;
+        if (r12 == null) goto L25;
+        ?? r4 = new ArrayList(r40.k0(r12, 10));
+        Iterator r13 = r12.iterator();
+    L23:
+        if (r13.hasNext() == false) goto L26;
+        Queue r5 = (Queue) r13.next();
+        r5.getClass();
+        r4.add(r5);
+    L26:
+        r7.r0 = r4;
+        if (u52.c().a == true) goto L32;
+        bj2 r14 = r7.o0;
+        if (r14 == null) goto L31;
+        r7.i0(r14);
+        goto L32
+    L31:
+        List r15 = r7.r0;
+        r7.q0.setValue(r15);
+    L32:
+        return r3;
+    L25:
+        r4 = u01.n;
+        goto L26
+    L33:
+        final Child r16 = (Child) r8;
+        ey r6 = r7.l0;
+        if (r6 == null) goto L38;
+        if (r16 == null) goto L38;
+        ((Button) r6.e).setOnClickListener(new ek3(r7, r16, r2));
+        ((Button) r6.f).setOnClickListener(new ek3(r7, r16, r1));
+        final int r17 = 2;
+        ((Button) r6.b).setOnClickListener(new ek3(r7, r16, r17));
+        ((Button) r6.c).setOnClickListener(new fk3(r7, r2));
+        ((Button) r6.d).setOnClickListener(new fk3(r7, r1));
+    L38:
+        return r3;
+    L39:
+        List r18 = (List) r8;
+        bl2 r19 = r7.n0;
+        if (r19 == null) goto L43;
+        if (r18 == null) goto L43;
+        bo2.e(r19, r18, true);
+    L43:
+        return r3;
+    L44:
+        int r20 = ((Integer) r8).intValue();
+        if (r20 == r7.h0().size()) goto L47;
+    L66:
+        if (r20 >= 0) goto L68;
+    L94:
+        return r3;
+    L68:
+        if (r20 >= r7.h0().size()) goto L94;
+        if (u52.c().a == true) goto L72;
+        r7.k0(r20);
+        bj2 r21 = r7.o0;
+        int[] r22 = r7.w0;
+        r22.getClass();
+        if (r20 >= 0) goto L77;
+    L79:
+        Integer r23 = null;
+    L80:
+        if (r21 == null) goto L87;
+        if (r23 == null) goto L87;
+        if (r23.intValue() >= r21.Q0()) goto L87;
+        if (h12.c(r21.Y(r23.intValue()).a, ((Child) r7.h0().get(r20)).getId()) == false) goto L87;
+        r21.W(r23.intValue());
+        r21.m0();
+    L87:
+        if (r21 != null) goto L89;
+    L91:
+        bl2 r24 = r7.n0;
+        if (r24 == null) goto L94;
+        bo2.q(r24, r7.h0(), r20, "queue");
+        goto L94
+    L89:
+        if (r21.Q0() <= 0) goto L91;
+        do2 r25 = r21.K0();
+        r25.getClass();
+        r7.m0(r25, r21.o0());
+        goto L94
+    L77:
+        if (r20 >= r22.length) goto L79;
+        r23 = Integer.valueOf(r22[r20]);
+        goto L80
+    L72:
+        if (u52.k() == false) goto L94;
+        u52.q("select", r20, r20);
+        goto L94
+    L47:
+        if (((Boolean) r7.x0.getValue()).booleanValue() == false) goto L66;
+        if (u52.c().a == true) goto L66;
+        MediaService r26 = is3.c;
+        if (r26 == null) goto L94;
+        qi3 r27 = r26.b();
+        if (r27 == null) goto L94;
+        if (r27.f0() == false) goto L60;
+        r27.c0();
+        goto L94
+    L60:
+        if (a.j(r27) == true) goto L94;
+        is3.e.k(Boolean.TRUE);
+        if (b.h(r27) == false) goto L65;
+        io1.b.post(new u6(14));
+        goto L94
+    L65:
+        is3.d = false;
+        is3.a(r27, r26);
+        goto L94
+    L95:
+        Child r28 = (Child) r8;
+        if (u52.c().a == false) goto L98;
+    L114:
+        return r3;
+    L98:
+        if (r7.o0 != null) goto L114;
+        if (r28 == null) goto L114;
+        if (r7.h0().isEmpty() == true) goto L114;
+        Iterator r29 = r7.h0().iterator();
+    L104:
+        if (r29.hasNext() == false) goto L109;
+        if (h12.c(((Child) r29.next()).getId(), r28.getId()) == true) goto L110;
+        r2 = r2 + 1;
+    L110:
+        if (r2 < 0) goto L114;
+        if (r2 == r7.s0.g()) goto L114;
+        r7.k0(r2);
+        goto L114
+    L109:
+        r2 = -1;
+        goto L110
+    L5:
+        if (((v52) r8).a == false) goto L7;
+        r7.j0();
+    L10:
+        return r3;
+    L7:
+        List r30 = r7.r0;
+        r7.q0.setValue(r30);
+        bj2 r31 = r7.o0;
+        if (r31 == null) goto L10;
+        do2 r32 = r31.K0();
+        r32.getClass();
+        r7.m0(r32, r31.o0());
+        goto L10
     }
 }

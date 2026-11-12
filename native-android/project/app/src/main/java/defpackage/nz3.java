@@ -7,74 +7,90 @@ import java.util.Map;
 /* JADX INFO: loaded from: classes.dex */
 public final class nz3 {
     public gr1 a;
+    public String b;
+    public sl1 c;
     public tz3 d;
-    public Map e = v01.n;
-    public String b = "GET";
-    public sl1 c = new sl1();
+    public Map e;
 
-    public final void a(String str, String str2) {
-        str2.getClass();
-        sl1 sl1Var = this.c;
-        sl1Var.getClass();
-        e35.G(str);
-        e35.H(str2, str);
-        sl1Var.e(str);
-        e35.p(sl1Var, str, str2);
+    public nz3() {
+        this.e = v01.n;
+        this.b = "GET";
+        this.c = new sl1();
     }
 
-    public final void b(String str, tz3 tz3Var) {
-        str.getClass();
-        if (str.length() <= 0) {
-            kf2.n("method.isEmpty() == true");
-            return;
-        }
-        if (tz3Var == null) {
-            if (str.equals("POST") || str.equals("PUT") || str.equals("PATCH") || str.equals("PROPPATCH") || str.equals("REPORT")) {
-                kf2.e(xa3.h("method ", str, " must have a request body."));
-                return;
-            }
-        } else if (!gb.T(str)) {
-            kf2.e(xa3.h("method ", str, " must not have a request body."));
-            return;
-        }
-        this.b = str;
-        this.d = tz3Var;
+    public final void a(String r1, String r2) {
+        r2.getClass();
+        sl1 r0 = this.c;
+        r0.getClass();
+        e35.G(r1);
+        e35.H(r2, r1);
+        r0.e(r1);
+        e35.p(r0, r1, r2);
     }
 
-    public final void c(Class cls, Object obj) {
-        Map mapF;
-        cls.getClass();
-        i30 i30VarA = kx3.a(cls);
-        Map map = this.e;
-        if (obj == null) {
-            if (map.isEmpty()) {
-                return;
-            }
-            Map map2 = this.e;
-            map2.getClass();
-            jz4.f(map2).remove(i30VarA);
-            return;
-        }
-        if (map.isEmpty()) {
-            mapF = new LinkedHashMap();
-            this.e = mapF;
-        } else {
-            Map map3 = this.e;
-            map3.getClass();
-            mapF = jz4.f(map3);
-        }
-        mapF.put(i30VarA, obj);
+    public final void b(String r3, tz3 r4) {
+        r3.getClass();
+        if (r3.length() > 0) goto L5;
+        kf2.n("method.isEmpty() == true");
+        return;
+    L5:
+        if (r4 != null) goto L20;
+        if (r3.equals("POST") == false) goto L9;
+    L17:
+        kf2.e(xa3.h("method ", r3, " must have a request body."));
+        return;
+    L9:
+        if (r3.equals("PUT") == true) goto L17;
+        if (r3.equals("PATCH") == true) goto L17;
+        if (r3.equals("PROPPATCH") == true) goto L17;
+        if (r3.equals("REPORT") == true) goto L17;
+    L21:
+        this.b = r3;
+        this.d = r4;
+        return;
+    L20:
+        if (gb.T(r3) == true) goto L21;
+        kf2.e(xa3.h("method ", r3, " must not have a request body."));
     }
 
-    public final void d(String str) {
-        str.getClass();
-        if (xm4.k0(str, "ws:", true)) {
-            str = "http:".concat(str.substring(3));
-        } else if (xm4.k0(str, "wss:", true)) {
-            str = "https:".concat(str.substring(4));
-        }
-        fr1 fr1Var = new fr1();
-        fr1Var.e(null, str);
-        this.a = fr1Var.b();
+    public final void c(Class r2, Object r3) {
+        r2.getClass();
+        i30 r4 = kx3.a(r2);
+        Map r0 = this.e;
+        if (r3 != null) goto L9;
+        if (r0.isEmpty() == true) goto L14;
+        Map r1 = this.e;
+        r1.getClass();
+        jz4.f(r1).remove(r4);
+        return;
+    L14:
+        return;
+    L9:
+        if (r0.isEmpty() == false) goto L11;
+        Map r5 = new LinkedHashMap();
+        this.e = r5;
+    L12:
+        r5.put(r4, r3);
+        return;
+    L11:
+        Map r6 = this.e;
+        r6.getClass();
+        r5 = jz4.f(r6);
+        goto L12
+    }
+
+    public final void d(String r3) {
+        r3.getClass();
+        if (xm4.k0(r3, "ws:", true) == false) goto L6;
+        r3 = "http:".concat(r3.substring(3));
+    L8:
+        fr1 r0 = new fr1();
+        r0.e(null, r3);
+        this.a = r0.b();
+        return;
+    L6:
+        if (xm4.k0(r3, "wss:", true) == false) goto L8;
+        r3 = "https:".concat(r3.substring(4));
+        goto L8
     }
 }

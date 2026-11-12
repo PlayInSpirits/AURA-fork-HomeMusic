@@ -6,24 +6,31 @@ public final class qr1 {
     public final String a;
     public final String b;
 
-    public qr1(String str, String str2) {
-        this.a = str;
-        this.b = str2;
+    public qr1(String r1, String r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof qr1)) {
-            return false;
-        }
-        qr1 qr1Var = (qr1) obj;
-        return this.a.equals(qr1Var.a) && this.b.equals(qr1Var.b);
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof qr1) == false) goto L16;
+        qr1 r4 = (qr1) r3;
+        if (this.a.equals(r4.a) == true) goto L11;
+        return false;
+    L11:
+        if (this.b.equals(r4.b) == true) goto L14;
+        return false;
+    L14:
+        return true;
+    L16:
+        return false;
     }
 
     public final int hashCode() {
-        return this.b.hashCode() + (this.a.hashCode() * 31);
+        int r0 = this.a.hashCode() * 31;
+        return this.b.hashCode() + r0;
     }
 
     public final String toString() {

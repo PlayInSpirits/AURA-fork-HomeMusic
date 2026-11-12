@@ -1,7 +1,6 @@
 package defpackage;
 
 import com.google.gson.JsonSyntaxException;
-import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -10,33 +9,35 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class fz4 extends bz4 {
     public final /* synthetic */ int a;
 
-    public /* synthetic */ fz4(int i) {
-        this.a = i;
+    public /* synthetic */ fz4(int r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.bz4
-    public final Object a(l32 l32Var) {
-        switch (this.a) {
-            case 0:
-                return new AtomicBoolean(l32Var.R());
-            default:
-                try {
-                    return new AtomicInteger(l32Var.W());
-                } catch (NumberFormatException e) {
-                    throw new JsonSyntaxException(e);
-                }
-        }
+    public final Object a(l32 r1) {
+        switch(this.a) {
+            case 0: goto L10;
+            default: goto L11;
+        };
+    L11:
+        return new AtomicInteger(r1.W());
+    L6:
+        e = move-exception;
+        throw new JsonSyntaxException(e);
+    L10:
+        return new AtomicBoolean(r1.R());
     }
 
     @Override // defpackage.bz4
-    public final void b(q32 q32Var, Object obj) throws IOException {
-        switch (this.a) {
-            case 0:
-                q32Var.X(((AtomicBoolean) obj).get());
-                break;
-            default:
-                q32Var.M(((AtomicInteger) obj).get());
-                break;
-        }
+    public final void b(q32 r3, Object r4) {
+        switch(this.a) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r3.M(((AtomicInteger) r4).get());
+        return;
+    L6:
+        r3.X(((AtomicBoolean) r4).get());
     }
 }

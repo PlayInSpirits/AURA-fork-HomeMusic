@@ -8,10 +8,19 @@ public final class jm1 {
     public final int c;
     public final boolean d;
 
-    public jm1(wm1 wm1Var, long j, int i) {
-        this.a = wm1Var;
-        this.b = j;
-        this.c = i;
-        this.d = (wm1Var instanceof tm1) && ((tm1) wm1Var).z;
+    public jm1(wm1 r1, long r2, int r4) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r4;
+        if ((r1 instanceof tm1) == true) goto L5;
+    L7:
+        boolean r3 = false;
+    L8:
+        this.d = r3;
+        return;
+    L5:
+        if (((tm1) r1).z == false) goto L7;
+        r3 = true;
+        goto L8
     }
 }

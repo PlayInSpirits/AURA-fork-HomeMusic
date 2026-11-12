@@ -12,64 +12,66 @@ public final class n43 implements e23 {
     public final /* synthetic */ WeakReference b;
     public final /* synthetic */ v23 c;
 
-    public /* synthetic */ n43(WeakReference weakReference, v23 v23Var, int i) {
-        this.a = i;
-        this.b = weakReference;
-        this.c = v23Var;
+    public /* synthetic */ n43(WeakReference r1, v23 r2, int r3) {
+        this.a = r3;
+        this.b = r1;
+        this.c = r2;
     }
 
     @Override // defpackage.e23
-    public final void a(v23 v23Var, r23 r23Var) {
-        int i = this.a;
-        int i2 = 0;
-        v23 v23Var2 = this.c;
-        WeakReference weakReference = this.b;
-        r23Var.getClass();
-        switch (i) {
-            case 0:
-                NavigationView navigationView = (NavigationView) weakReference.get();
-                if (navigationView != null) {
-                    if (!(r23Var instanceof rp0)) {
-                        Menu menu = navigationView.getMenu();
-                        menu.getClass();
-                        int size = menu.size();
-                        while (i2 < size) {
-                            MenuItem item = menu.getItem(i2);
-                            item.getClass();
-                            item.setChecked(uo.y(item.getItemId(), r23Var));
-                            i2++;
-                        }
-                        break;
-                    }
-                } else {
-                    v23Var2.getClass();
-                    v23Var2.p.remove(this);
-                    break;
-                }
-                break;
-            default:
-                s33 s33Var = (s33) weakReference.get();
-                if (s33Var != null) {
-                    if (!(r23Var instanceof rp0)) {
-                        Menu menu2 = s33Var.getMenu();
-                        menu2.getClass();
-                        int size2 = menu2.size();
-                        while (i2 < size2) {
-                            MenuItem item2 = menu2.getItem(i2);
-                            item2.getClass();
-                            if (uo.y(item2.getItemId(), r23Var)) {
-                                item2.setChecked(true);
-                            }
-                            i2++;
-                        }
-                        break;
-                    }
-                } else {
-                    v23Var2.getClass();
-                    v23Var2.p.remove(this);
-                    break;
-                }
-                break;
-        }
+    public final void a(v23 r4, r23 r5) {
+        int r6 = this.a;
+        int r0 = 0;
+        v23 r1 = this.c;
+        WeakReference r2 = this.b;
+        r5.getClass();
+        switch(r6) {
+            case 0: goto L17;
+            default: goto L4;
+        };
+    L4:
+        s33 r7 = (s33) r2.get();
+        if (r7 != null) goto L8;
+        r1.getClass();
+        r1.p.remove(this);
+        return;
+    L8:
+        if ((r5 instanceof rp0) == true) goto L31;
+        Menu r3 = r7.getMenu();
+        r3.getClass();
+        int r8 = r3.size();
+    L11:
+        if (r0 >= r8) goto L32;
+        MenuItem r9 = r3.getItem(r0);
+        r9.getClass();
+        if (uo.y(r9.getItemId(), r5) == false) goto L15;
+        r9.setChecked(true);
+    L15:
+        r0 = r0 + 1;
+        goto L11
+    L32:
+        return;
+    L31:
+        return;
+    L17:
+        NavigationView r10 = (NavigationView) r2.get();
+        if (r10 != null) goto L21;
+        r1.getClass();
+        r1.p.remove(this);
+        return;
+    L21:
+        if ((r5 instanceof rp0) == true) goto L33;
+        Menu r11 = r10.getMenu();
+        r11.getClass();
+        int r12 = r11.size();
+    L24:
+        if (r0 >= r12) goto L34;
+        MenuItem r13 = r11.getItem(r0);
+        r13.getClass();
+        r13.setChecked(uo.y(r13.getItemId(), r5));
+        r0 = r0 + 1;
+        goto L24
+    L34:
+        return;
     }
 }

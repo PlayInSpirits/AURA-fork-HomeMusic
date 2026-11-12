@@ -8,9 +8,9 @@ public final class r80 implements da4 {
     public final da4 n;
     public final yw1 o;
 
-    public r80(da4 da4Var, List list) {
-        this.n = da4Var;
-        this.o = yw1.k(list);
+    public r80(da4 r1, List r2) {
+        this.n = r1;
+        this.o = yw1.k(r2);
     }
 
     @Override // defpackage.da4
@@ -24,8 +24,8 @@ public final class r80 implements da4 {
     }
 
     @Override // defpackage.da4
-    public final boolean o(pd2 pd2Var) {
-        return this.n.o(pd2Var);
+    public final boolean o(pd2 r1) {
+        return this.n.o(r1);
     }
 
     @Override // defpackage.da4
@@ -34,7 +34,7 @@ public final class r80 implements da4 {
     }
 
     @Override // defpackage.da4
-    public final void u(long j) {
-        this.n.u(j);
+    public final void u(long r1) {
+        this.n.u(r1);
     }
 }

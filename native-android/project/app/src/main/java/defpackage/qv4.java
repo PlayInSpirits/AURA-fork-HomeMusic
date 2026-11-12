@@ -1,7 +1,5 @@
 package defpackage;
 
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
-
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class qv4 {
@@ -11,47 +9,78 @@ public final class qv4 {
     public final int d;
     public final byte[] e;
 
-    public qv4(boolean z, String str, int i, byte[] bArr, int i2, int i3, byte[] bArr2) {
-        byte b = 0;
-        int i4 = 1;
-        rr2.l((i == 0) ^ (bArr2 == null));
-        this.a = z;
-        this.b = str;
-        this.d = i;
-        this.e = bArr2;
-        if (str != null) {
-            switch (str.hashCode()) {
-                case 3046605:
-                    if (!str.equals("cbc1")) {
-                        b = -1;
-                    }
-                    break;
-                case 3046671:
-                    b = !str.equals("cbcs") ? (byte) -1 : (byte) 1;
-                    break;
-                case 3049879:
-                    b = !str.equals("cenc") ? (byte) -1 : (byte) 2;
-                    break;
-                case 3049895:
-                    b = !str.equals("cens") ? (byte) -1 : (byte) 3;
-                    break;
-                default:
-                    b = -1;
-                    break;
-            }
-            switch (b) {
-                case 0:
-                case 1:
-                    i4 = 2;
-                    break;
-                case 2:
-                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                    break;
-                default:
-                    l93.q0("TrackEncryptionBox", "Unsupported protection scheme type '" + str + "'. Assuming AES-CTR crypto mode.");
-                    break;
-            }
-        }
-        this.c = new vv4(i4, i2, i3, bArr);
+    public qv4(boolean r5, String r6, int r7, byte[] r8, int r9, int r10, byte[] r11) {
+        byte r0 = 0;
+        int r1 = 1;
+        if (r7 != 0) goto L5;
+        boolean r2 = true;
+    L6:
+        if (r11 != null) goto L8;
+        boolean r3 = true;
+    L9:
+        rr2.l(r2 ^ r3);
+        this.a = r5;
+        this.b = r6;
+        this.d = r7;
+        this.e = r11;
+        if (r6 != null) goto L13;
+    L33:
+        this.c = new vv4(r1, r9, r10, r8);
+        return;
+    L13:
+        switch(r6.hashCode()) {
+            case 3046605: goto L28;
+            case 3046671: goto L24;
+            case 3049879: goto L20;
+            case 3049895: goto L16;
+            default: goto L14;
+        };
+    L14:
+        r0 = -1;
+    L30:
+        switch(r0) {
+            case 0: goto L32;
+            case 1: goto L32;
+            case 2: goto L33;
+            case 3: goto L33;
+            default: goto L31;
+        };
+    L31:
+        l93.q0("TrackEncryptionBox", "Unsupported protection scheme type '" + r6 + "'. Assuming AES-CTR crypto mode.");
+        goto L33
+    L32:
+        r1 = 2;
+        goto L33
+    L16:
+        if (r6.equals("cens") == false) goto L35;
+        r0 = 3;
+        goto L30
+    L35:
+        r0 = -1;
+        goto L30
+    L20:
+        if (r6.equals("cenc") == false) goto L36;
+        r0 = 2;
+        goto L30
+    L36:
+        r0 = -1;
+        goto L30
+    L24:
+        if (r6.equals("cbcs") == false) goto L37;
+        r0 = 1;
+        goto L30
+    L37:
+        r0 = -1;
+        goto L30
+    L28:
+        if (r6.equals("cbc1") == true) goto L30;
+        r0 = -1;
+        goto L30
+    L8:
+        r3 = false;
+        goto L9
+    L5:
+        r2 = false;
+        goto L6
     }
 }

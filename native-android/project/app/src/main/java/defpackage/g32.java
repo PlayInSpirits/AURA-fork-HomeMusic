@@ -5,5 +5,5 @@ import java.lang.reflect.Type;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface g32 {
-    Object a(h32 h32Var, Type type, si1 si1Var);
+    Object a(h32 r1, Type r2, si1 r3);
 }

@@ -7,151 +7,188 @@ import java.util.Map;
 /* JADX INFO: loaded from: classes.dex */
 public final class d72 {
     public final k9 a;
+    public boolean b;
     public boolean c;
     public boolean d;
     public boolean e;
     public k9 f;
+    public final HashMap g;
     public final /* synthetic */ int h;
-    public boolean b = true;
-    public final HashMap g = new HashMap();
 
-    public d72(k9 k9Var, int i) {
-        this.h = i;
-        this.a = k9Var;
+    public d72(k9 r1, int r2) {
+        this.h = r2;
+        this.a = r1;
+        this.b = true;
+        this.g = new HashMap();
     }
 
-    public final void a(pp1 pp1Var, int i, f63 f63Var) {
-        float f = i;
-        long jFloatToRawIntBits = ((long) Float.floatToRawIntBits(f)) << 32;
-        long jFloatToRawIntBits2 = ((long) Float.floatToRawIntBits(f)) & 4294967295L;
-        while (true) {
-            long jZ = jFloatToRawIntBits | jFloatToRawIntBits2;
-            do {
-                switch (this.h) {
-                    case 0:
-                        tb3 tb3Var = f63Var.g0;
-                        if (tb3Var != null) {
-                            vj1 vj1Var = (vj1) tb3Var;
-                            float[] fArrB = vj1Var.b();
-                            if (!vj1Var.F) {
-                                jZ = ya4.A(jZ, fArrB);
-                            }
-                        }
-                        jZ = ji2.z(jZ, f63Var.S);
-                        break;
-                    default:
-                        ef2 ef2VarY0 = f63Var.y0();
-                        ef2VarY0.getClass();
-                        long j = ef2VarY0.I;
-                        jZ = g83.e((((long) Float.floatToRawIntBits((int) (j & 4294967295L))) & 4294967295L) | (((long) Float.floatToRawIntBits((int) (j >> 32))) << 32), jZ);
-                        break;
-                }
-                f63Var = f63Var.J;
-                f63Var.getClass();
-                if (f63Var.equals(this.a.c())) {
-                    int iRound = Math.round(pp1Var instanceof pp1 ? Float.intBitsToFloat((int) (jZ & 4294967295L)) : Float.intBitsToFloat((int) (jZ >> 32)));
-                    HashMap map = this.g;
-                    if (map.containsKey(pp1Var)) {
-                        int iIntValue = ((Number) lg2.V(pp1Var, map)).intValue();
-                        pp1 pp1Var2 = j9.a;
-                        iRound = ((Number) pp1Var.a.invoke(Integer.valueOf(iIntValue), Integer.valueOf(iRound))).intValue();
-                    }
-                    map.put(pp1Var, Integer.valueOf(iRound));
-                    return;
-                }
-            } while (!b(f63Var).containsKey(pp1Var));
-            float fC = c(f63Var, pp1Var);
-            long jFloatToRawIntBits3 = Float.floatToRawIntBits(fC);
-            long jFloatToRawIntBits4 = Float.floatToRawIntBits(fC);
-            jFloatToRawIntBits = jFloatToRawIntBits3 << 32;
-            jFloatToRawIntBits2 = jFloatToRawIntBits4 & 4294967295L;
-        }
+    public final void a(pp1 r9, int r10, f63 r11) {
+        float r12 = r10;
+        long r0 = Float.floatToRawIntBits(r12) << 32;
+        long r2 = ((long) Float.floatToRawIntBits(r12)) & 4294967295L;
+    L3:
+        long r1 = r0 | r2;
+    L5:
+        switch(this.h) {
+            case 0: goto L7;
+            default: goto L6;
+        };
+    L6:
+        ef2 r3 = r11.y0();
+        r3.getClass();
+        long r4 = r3.I;
+        long r6 = Float.floatToRawIntBits((int) (r4 >> 32));
+        r1 = g83.e((((long) Float.floatToRawIntBits((int) (r4 & 4294967295L))) & 4294967295L) | (r6 << 32), r1);
+    L14:
+        r11 = r11.J;
+        r11.getClass();
+        if (r11.equals(this.a.c()) == true) goto L20;
+        if (b(r11).containsKey(r9) == false) goto L5;
+        float r5 = c(r11, r9);
+        long r7 = Float.floatToRawIntBits(r5);
+        long r8 = Float.floatToRawIntBits(r5);
+        r0 = r7 << 32;
+        r2 = r8 & 4294967295L;
+        goto L3
+    L20:
+        if ((r9 instanceof pp1) == false) goto L22;
+        float r13 = Float.intBitsToFloat((int) (r1 & 4294967295L));
+    L23:
+        int r14 = Math.round(r13);
+        HashMap r15 = this.g;
+        if (r15.containsKey(r9) == false) goto L26;
+        int r16 = ((Number) lg2.V(r9, r15)).intValue();
+        pp1 r17 = j9.a;
+        r14 = ((Number) r9.a.invoke(Integer.valueOf(r16), Integer.valueOf(r14))).intValue();
+    L26:
+        r15.put(r9, Integer.valueOf(r14));
+        return;
+    L22:
+        r13 = Float.intBitsToFloat((int) (r1 >> 32));
+        goto L23
+    L7:
+        tb3 r18 = r11.g0;
+        if (r18 == null) goto L13;
+        vj1 r19 = (vj1) r18;
+        float[] r20 = r19.b();
+        if (r19.F == true) goto L13;
+        r1 = ya4.A(r1, r20);
+    L13:
+        r1 = ji2.z(r1, r11.S);
+        goto L14
     }
 
-    public final Map b(f63 f63Var) {
-        switch (this.h) {
-            case 0:
-                return f63Var.h0().a();
-            default:
-                ef2 ef2VarY0 = f63Var.y0();
-                ef2VarY0.getClass();
-                return ef2VarY0.h0().a();
-        }
+    public final Map b(f63 r1) {
+        switch(this.h) {
+            case 0: goto L7;
+            default: goto L4;
+        };
+    L4:
+        ef2 r0 = r1.y0();
+        r0.getClass();
+        return r0.h0().a();
+    L7:
+        return r1.h0().a();
     }
 
-    public final int c(f63 f63Var, pp1 pp1Var) {
-        switch (this.h) {
-            case 0:
-                return f63Var.c0(pp1Var);
-            default:
-                ef2 ef2VarY0 = f63Var.y0();
-                ef2VarY0.getClass();
-                return ef2VarY0.c0(pp1Var);
-        }
+    public final int c(f63 r1, pp1 r2) {
+        switch(this.h) {
+            case 0: goto L7;
+            default: goto L4;
+        };
+    L4:
+        ef2 r0 = r1.y0();
+        r0.getClass();
+        return r0.c0(r2);
+    L7:
+        return r1.c0(r2);
     }
 
     public final boolean d() {
-        return this.c || this.d || this.e;
+        if (this.c == false) goto L5;
+        return true;
+    L5:
+        if (this.d == false) goto L7;
+        return true;
+    L7:
+        if (this.e == true) goto L14;
+        return false;
+    L14:
+        return true;
     }
 
     public final boolean e() {
         h();
-        return this.f != null;
+        if (this.f == null) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     public final void f() {
         this.b = true;
-        k9 k9Var = this.a;
-        k9 k9VarE = k9Var.e();
-        if (k9VarE == null) {
-            return;
-        }
-        if (this.c) {
-            k9VarE.requestLayout();
-        }
-        if (this.d) {
-            k9Var.E();
-        }
-        if (this.e) {
-            k9Var.requestLayout();
-        }
-        k9VarE.a().f();
+        k9 r0 = this.a;
+        k9 r1 = r0.e();
+        if (r1 != null) goto L6;
+        return;
+    L6:
+        if (this.c == false) goto L10;
+        r1.requestLayout();
+    L10:
+        if (this.d == false) goto L13;
+        r0.E();
+    L13:
+        if (this.e == false) goto L15;
+        r0.requestLayout();
+    L15:
+        r1.a().f();
     }
 
     public final void g() {
-        HashMap map = this.g;
-        map.clear();
-        x xVar = new x(2, this);
-        k9 k9Var = this.a;
-        k9Var.s(xVar);
-        map.putAll(b(k9Var.c()));
+        HashMap r0 = this.g;
+        r0.clear();
+        x r1 = new x(2, this);
+        k9 r2 = this.a;
+        r2.s(r1);
+        r0.putAll(b(r2.c()));
         this.b = false;
     }
 
     public final void h() {
-        d72 d72VarA;
-        d72 d72VarA2;
-        boolean zD = d();
-        k9 k9Var = this.a;
-        if (!zD) {
-            k9 k9VarE = k9Var.e();
-            if (k9VarE == null) {
-                return;
-            }
-            k9Var = k9VarE.a().f;
-            if (k9Var == null || !k9Var.a().d()) {
-                k9 k9Var2 = this.f;
-                if (k9Var2 == null || k9Var2.a().d()) {
-                    return;
-                }
-                k9 k9VarE2 = k9Var2.e();
-                if (k9VarE2 != null && (d72VarA2 = k9VarE2.a()) != null) {
-                    d72VarA2.h();
-                }
-                k9 k9VarE3 = k9Var2.e();
-                k9Var = (k9VarE3 == null || (d72VarA = k9VarE3.a()) == null) ? null : d72VarA.f;
-            }
-        }
-        this.f = k9Var;
+        boolean r0 = d();
+        k9 r1 = this.a;
+        if (r0 == true) goto L29;
+        k9 r2 = r1.e();
+        if (r2 == null) goto L32;
+        r1 = r2.a().f;
+        if (r1 != null) goto L11;
+    L13:
+        k9 r3 = this.f;
+        if (r3 != null) goto L16;
+        return;
+    L16:
+        if (r3.a().d() == true) goto L33;
+        k9 r4 = r3.e();
+        if (r4 == null) goto L23;
+        d72 r5 = r4.a();
+        if (r5 == null) goto L23;
+        r5.h();
+    L23:
+        k9 r6 = r3.e();
+        if (r6 == null) goto L28;
+        d72 r7 = r6.a();
+        if (r7 == null) goto L28;
+        r1 = r7.f;
+    L28:
+        r1 = null;
+        goto L29
+    L33:
+        return;
+    L11:
+        if (r1.a().d() == false) goto L13;
+    L32:
+        return;
+    L29:
+        this.f = r1;
     }
 }

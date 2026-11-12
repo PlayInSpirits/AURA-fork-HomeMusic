@@ -17,172 +17,175 @@ import java.util.zip.Inflater;
 public final class rk1 extends i90 {
     public static final /* synthetic */ int w = 0;
     public final FilterInputStream o;
+    public final byte[] p;
     public int q;
-    public final byte[] p = new byte[8192];
-    public Inflater r = new Inflater(true);
-    public final CRC32 s = new CRC32();
-    public boolean t = false;
-    public final byte[] u = new byte[1];
-    public final y41 v = new y41(25);
+    public Inflater r;
+    public final CRC32 s;
+    public boolean t;
+    public final byte[] u;
+    public final y41 v;
 
-    public rk1(ByteArrayInputStream byteArrayInputStream) throws IOException {
-        df0 df0Var = new df0(byteArrayInputStream);
-        if (df0Var.markSupported()) {
-            this.o = df0Var;
-        } else {
-            this.o = new BufferedInputStream(df0Var);
-        }
-        y41 y41Var = this.v;
-        FilterInputStream filterInputStream = this.o;
-        if (filterInputStream.read() != 31 || filterInputStream.read() != 139) {
-            throw new IOException("Input is not in the .gz format");
-        }
-        DataInputStream dataInputStream = new DataInputStream(filterInputStream);
-        int unsignedByte = dataInputStream.readUnsignedByte();
-        if (unsignedByte != 8) {
-            mj0.i(b11.j(unsignedByte, "Unsupported compression method ", " in the .gz header"));
-            return;
-        }
-        int unsignedByte2 = dataInputStream.readUnsignedByte();
-        if ((unsignedByte2 & 224) != 0) {
-            mj0.i("Reserved flags are set in the .gz header");
-            return;
-        }
-        gh0.l(dataInputStream);
-        y41Var.getClass();
-        dataInputStream.readUnsignedByte();
-        dataInputStream.readUnsignedByte();
-        if ((unsignedByte2 & 4) != 0) {
-            int unsignedByte3 = dataInputStream.readUnsignedByte() | (dataInputStream.readUnsignedByte() << 8);
-            while (true) {
-                int i = unsignedByte3 - 1;
-                if (unsignedByte3 <= 0) {
-                    break;
-                }
-                dataInputStream.readUnsignedByte();
-                unsignedByte3 = i;
-            }
-        }
-        if ((unsignedByte2 & 8) != 0) {
-            new String(f(dataInputStream), "ISO-8859-1");
-        }
-        if ((unsignedByte2 & 16) != 0) {
-            new String(f(dataInputStream), "ISO-8859-1");
-        }
-        if ((unsignedByte2 & 2) != 0) {
-            dataInputStream.readShort();
-        }
+    public rk1(ByteArrayInputStream r5) {
+        this.p = new byte[8192];
+        this.r = new Inflater(true);
+        this.s = new CRC32();
+        this.t = false;
+        this.u = new byte[1];
+        this.v = new y41(25);
+        df0 r0 = new df0(r5);
+        if (r0.markSupported() == false) goto L5;
+        this.o = r0;
+    L6:
+        y41 r6 = this.v;
+        FilterInputStream r1 = this.o;
+        if (r1.read() != 31) goto L34;
+        if (r1.read() != 139) goto L34;
+        DataInputStream r2 = new DataInputStream(r1);
+        int r3 = r2.readUnsignedByte();
+        if (r3 != 8) goto L31;
+        int r4 = r2.readUnsignedByte();
+        if ((r4 & 224) != 0) goto L30;
+        gh0.l(r2);
+        r6.getClass();
+        r2.readUnsignedByte();
+        r2.readUnsignedByte();
+        if ((r4 & 4) == 0) goto L21;
+        int r7 = r2.readUnsignedByte() | (r2.readUnsignedByte() << 8);
+    L17:
+        int r8 = r7 - 1;
+        if (r7 <= 0) goto L21;
+        r2.readUnsignedByte();
+        r7 = r8;
+    L21:
+        if ((r4 & 8) == 0) goto L24;
+        new String(f(r2), "ISO-8859-1");
+    L24:
+        if ((r4 & 16) == 0) goto L27;
+        new String(f(r2), "ISO-8859-1");
+    L27:
+        if ((r4 & 2) == 0) goto L29;
+        r2.readShort();
+    L29:
         this.r.reset();
         this.s.reset();
+        return;
+    L30:
+        mj0.i("Reserved flags are set in the .gz header");
+        return;
+    L31:
+        mj0.i(b11.j(r3, "Unsupported compression method ", " in the .gz header"));
+        return;
+    L34:
+        throw new IOException("Input is not in the .gz format");
+    L5:
+        this.o = new BufferedInputStream(r0);
+        goto L6
     }
 
-    public static byte[] f(DataInputStream dataInputStream) throws IOException {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        while (true) {
-            try {
-                int unsignedByte = dataInputStream.readUnsignedByte();
-                if (unsignedByte == 0) {
-                    byte[] byteArray = byteArrayOutputStream.toByteArray();
-                    byteArrayOutputStream.close();
-                    return byteArray;
-                }
-                byteArrayOutputStream.write(unsignedByte);
-            } catch (Throwable th) {
-                try {
-                    throw th;
-                } catch (Throwable th2) {
-                    try {
-                        byteArrayOutputStream.close();
-                    } catch (Throwable th3) {
-                        th.addSuppressed(th3);
-                    }
-                    throw th2;
-                }
-            }
-        }
+    public static byte[] f(DataInputStream r2) {
+        ByteArrayOutputStream r0 = new ByteArrayOutputStream();
+    L22:
+        int r1 = r2.readUnsignedByte();     // Catch: Throwable -> L6
+        if (r1 == 0) goto L8;
+        r0.write(r1);     // Catch: Throwable -> L6
+        goto L22
+    L8:
+        byte[] r3 = r0.toByteArray();     // Catch: Throwable -> L6
+        r0.close();
+        return r3;
+    L6:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L12
+    L12:
+        th = move-exception;
+        r0.close();     // Catch: Throwable -> L15
+    L17:
+        throw th;
+    L15:
+        th = move-exception;
+        th.addSuppressed(th);
+        goto L17
     }
 
     @Override // java.io.InputStream, java.io.Closeable, java.lang.AutoCloseable
-    public final void close() throws IOException {
-        Inflater inflater = this.r;
-        if (inflater != null) {
-            inflater.end();
-            this.r = null;
-        }
-        InputStream inputStream = System.in;
-        FilterInputStream filterInputStream = this.o;
-        if (filterInputStream != inputStream) {
-            filterInputStream.close();
-        }
+    public final void close() {
+        Inflater r0 = this.r;
+        if (r0 == null) goto L5;
+        r0.end();
+        this.r = null;
+    L5:
+        InputStream r1 = System.in;
+        FilterInputStream r2 = this.o;
+        if (r2 == r1) goto L9;
+        r2.close();
+        return;
     }
 
     @Override // java.io.InputStream
-    public final int read(byte[] bArr, int i, int i2) throws IOException {
-        if (i2 == 0) {
-            return 0;
-        }
-        if (!this.t) {
-            int i3 = 0;
-            while (i2 > 0) {
-                boolean zNeedsInput = this.r.needsInput();
-                FilterInputStream filterInputStream = this.o;
-                if (zNeedsInput) {
-                    byte[] bArr2 = this.p;
-                    filterInputStream.mark(bArr2.length);
-                    int i4 = filterInputStream.read(bArr2);
-                    this.q = i4;
-                    if (i4 == -1) {
-                        throw new EOFException();
-                    }
-                    this.r.setInput(bArr2, 0, i4);
-                }
-                try {
-                    int iInflate = this.r.inflate(bArr, i, i2);
-                    CRC32 crc32 = this.s;
-                    crc32.update(bArr, i, iInflate);
-                    i += iInflate;
-                    i2 -= iInflate;
-                    i3 += iInflate;
-                    b(iInflate);
-                    if (this.r.finished()) {
-                        filterInputStream.reset();
-                        long remaining = this.q - this.r.getRemaining();
-                        if (vr1.G(filterInputStream, remaining) != remaining) {
-                            throw new IOException();
-                        }
-                        this.q = 0;
-                        DataInputStream dataInputStream = new DataInputStream(filterInputStream);
-                        if (gh0.l(dataInputStream) != crc32.getValue()) {
-                            mj0.i("Gzip-compressed data is corrupt (CRC32 error)");
-                            return 0;
-                        }
-                        if (gh0.l(dataInputStream) != (this.r.getBytesWritten() & 4294967295L)) {
-                            mj0.i("Gzip-compressed data is corrupt(uncompressed size mismatch)");
-                            return 0;
-                        }
-                        this.r.end();
-                        this.r = null;
-                        this.t = true;
-                        if (i3 != 0) {
-                            return i3;
-                        }
-                    }
-                } catch (DataFormatException unused) {
-                    mj0.i("Gzip-compressed data is corrupt");
-                    return 0;
-                }
-            }
-            return i3;
-        }
+    public final int read(byte[] r9, int r10, int r11) {
+        if (r11 != 0) goto L6;
+        return 0;
+    L6:
+        if (this.t == true) goto L28;
+        int r1 = 0;
+    L9:
+        if (r11 <= 0) goto L38;
+        boolean r3 = this.r.needsInput();
+        FilterInputStream r4 = this.o;
+        if (r3 == false) goto L39;
+        byte[] r5 = this.p;
+        r4.mark(r5.length);
+        int r6 = r4.read(r5);
+        this.q = r6;
+        if (r6 == (-1)) goto L16;
+        this.r.setInput(r5, 0, r6);
+        goto L39
+    L16:
+        throw new EOFException();
+    L39:
+        int r7 = this.r.inflate(r9, r10, r11);     // Catch: DataFormatException -> L36
+        CRC32 r8 = this.s;
+        r8.update(r9, r10, r7);
+        r10 = r10 + r7;
+        r11 = r11 - r7;
+        r1 = r1 + r7;
+        b(r7);
+        if (this.r.finished() == false) goto L9;
+        r4.reset();
+        long r12 = this.q - this.r.getRemaining();
+        if (vr1.G(r4, r12) != r12) goto L35;
+        this.q = 0;
+        DataInputStream r13 = new DataInputStream(r4);
+        if (gh0.l(r13) == r8.getValue()) goto L25;
+        mj0.i("Gzip-compressed data is corrupt (CRC32 error)");
+        return 0;
+    L25:
+        if (gh0.l(r13) != (this.r.getBytesWritten() & 4294967295L)) goto L30;
+        this.r.end();
+        this.r = null;
+        this.t = true;
+        if (r1 == 0) goto L28;
+        return r1;
+    L30:
+        mj0.i("Gzip-compressed data is corrupt(uncompressed size mismatch)");
+        return 0;
+    L35:
+        throw new IOException();
+    L36:
+        mj0.i("Gzip-compressed data is corrupt");
+        return 0;
+    L38:
+        return r1;
+    L28:
         return -1;
     }
 
     @Override // java.io.InputStream
     public final int read() {
-        byte[] bArr = this.u;
-        if (read(bArr, 0, 1) == -1) {
-            return -1;
-        }
-        return bArr[0] & 255;
+        byte[] r1 = this.u;
+        if (read(r1, 0, 1) != (-1)) goto L6;
+        return -1;
+    L6:
+        return r1[0] & 255;
     }
 }

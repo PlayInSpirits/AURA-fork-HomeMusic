@@ -6,7 +6,6 @@ import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
@@ -15,7 +14,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.Process;
-import android.os.RemoteException;
 import android.provider.Settings;
 import android.support.v4.media.MediaBrowserCompat$MediaItem;
 import android.util.Log;
@@ -27,7 +25,6 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.media3.common.ParserException;
 import app.homemusic.R;
 import com.eddyizm.tempus.database.AppDatabase;
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import com.eddyizm.tempus.interfaces.RadioCallback;
 import com.eddyizm.tempus.interfaces.SystemCallback;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -42,820 +39,885 @@ import java.util.WeakHashMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class hg3 implements zw, j4, fc2, PointerInputEventHandler, r83, th2, ci, f51, r34, p5, fi1, RadioCallback, yh0, SystemCallback, jg2 {
-    public static final Object p = new Object();
+    public static final Object p = null;
     public static volatile hg3 q;
     public static hg3 r;
     public final /* synthetic */ int n;
     public Object o;
 
-    public hg3(int i) {
-        this.n = i;
-        switch (i) {
-            case 14:
-                this.o = wr1.m(Looper.getMainLooper());
-                break;
-            case 15:
-                this.o = AppDatabase.y().w();
-                break;
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                this.o = new ArrayList();
-                break;
-            case 25:
-                this.o = new f13(new v72[16]);
-                break;
-            default:
-                this.o = new LinkedHashMap();
-                break;
-        }
+    static {
+        p = new Object();
     }
 
-    public static hg3 C(Context context) {
-        if (r == null) {
-            hg3 hg3Var = new hg3(11, false);
-            hg3Var.o = context.getSharedPreferences(context.getPackageName(), 0);
-            r = hg3Var;
-        }
+    public hg3(int r2) {
+        this.n = r2;
+        switch(r2) {
+            case 14: goto L12;
+            case 15: goto L10;
+            case 16: goto L8;
+            case 25: goto L6;
+            default: goto L4;
+        };
+    L4:
+        this.o = new LinkedHashMap();
+        return;
+    L6:
+        this.o = new f13(new v72[16]);
+        return;
+    L8:
+        this.o = new ArrayList();
+        return;
+    L10:
+        this.o = AppDatabase.y().w();
+        return;
+    L12:
+        this.o = wr1.m(Looper.getMainLooper());
+    }
+
+    public static hg3 C(Context r3) {
+        if (r != null) goto L6;
+        hg3 r0 = new hg3(11, false);
+        r0.o = r3.getSharedPreferences(r3.getPackageName(), 0);
+        r = r0;
+    L6:
         return r;
     }
 
-    public static hg3 E(Context context) {
-        hg3 hg3Var;
-        synchronized (p) {
-            try {
-                if (q == null) {
-                    Context applicationContext = context.getApplicationContext();
-                    hg3 hg3Var2 = new hg3(1, false);
-                    wo0 wo0Var = new wo0();
-                    wo0Var.n = applicationContext;
-                    wo0Var.o = applicationContext.getContentResolver();
-                    hg3Var2.o = wo0Var;
-                    q = hg3Var2;
-                }
-                hg3Var = q;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return hg3Var;
+    public static hg3 E(Context r4) {
+        Object r0 = p;
+        monitor-enter(r0);
+    L7:
+        th = move-exception;
+        throw th;
+    L5:
+        if (q != null) goto L9;
+        Context r5 = r4.getApplicationContext();     // Catch: Throwable -> L7
+        hg3 r1 = new hg3(1, false);     // Catch: Throwable -> L7
+        wo0 r2 = new wo0();     // Catch: Throwable -> L7
+        r2.n = r5;     // Catch: Throwable -> L7
+        r2.o = r5.getContentResolver();     // Catch: Throwable -> L7
+        r1.o = r2;     // Catch: Throwable -> L7
+        q = r1;     // Catch: Throwable -> L7
+    L9:
+        hg3 r6 = q;     // Catch: Throwable -> L7
+        monitor-exit(r0);     // Catch: Throwable -> L7
+        return r6;
     }
 
-    public void A(t20 t20Var) {
-        LinkedHashMap linkedHashMap = (LinkedHashMap) this.o;
-        long[] jArr = t20Var.e;
-        if (jArr.length <= 0 || linkedHashMap.containsKey(Long.valueOf(jArr[0]))) {
-            return;
-        }
-        linkedHashMap.put(Long.valueOf(t20Var.e[0]), t20Var);
+    public void A(t20 r5) {
+        LinkedHashMap r4 = (LinkedHashMap) this.o;
+        long[] r0 = r5.e;
+        if (r0.length > 0) goto L5;
+        return;
+    L5:
+        if (r4.containsKey(Long.valueOf(r0[0])) == true) goto L9;
+        r4.put(Long.valueOf(r5.e[0]), r5);
+        return;
     }
 
-    /* JADX WARN: Code duplicated, block: B:130:0x0297  */
-    public void B(int i, int i2, l51 l51Var) throws ParserException {
-        int i3;
-        int i4;
-        int i5;
-        int i6;
-        int i7;
-        int i8;
-        long j;
-        int i9;
-        int i10;
-        int[] iArr;
-        int i11;
-        int i12;
-        int i13;
-        ni2 ni2Var = (ni2) this.o;
-        k35 k35Var = ni2Var.b;
-        SparseArray sparseArray = ni2Var.c;
-        be3 be3Var = ni2Var.k;
-        be3 be3Var2 = ni2Var.i;
-        int i14 = 2;
-        int i15 = 0;
-        if (i != 161 && i != 163) {
-            if (i == 165) {
-                if (ni2Var.O != 2) {
-                    return;
-                }
-                mi2 mi2Var = (mi2) sparseArray.get(ni2Var.U);
-                int i16 = ni2Var.X;
-                be3 be3Var3 = ni2Var.p;
-                if (i16 != 4 || !"V_VP9".equals(mi2Var.c)) {
-                    l51Var.l(i2);
-                    return;
-                } else {
-                    be3Var3.K(i2);
-                    l51Var.readFully(be3Var3.a, 0, i2);
-                    return;
-                }
-            }
-            if (i == 16877) {
-                ni2Var.h(i);
-                mi2 mi2Var2 = ni2Var.y;
-                int i17 = mi2Var2.h;
-                if (i17 != 1685485123 && i17 != 1685480259) {
-                    l51Var.l(i2);
-                    return;
-                }
-                byte[] bArr = new byte[i2];
-                mi2Var2.P = bArr;
-                l51Var.readFully(bArr, 0, i2);
-                return;
-            }
-            if (i == 16981) {
-                ni2Var.h(i);
-                byte[] bArr2 = new byte[i2];
-                ni2Var.y.j = bArr2;
-                l51Var.readFully(bArr2, 0, i2);
-                return;
-            }
-            if (i == 18402) {
-                byte[] bArr3 = new byte[i2];
-                l51Var.readFully(bArr3, 0, i2);
-                ni2Var.h(i);
-                ni2Var.y.k = new vv4(1, 0, 0, bArr3);
-                return;
-            }
-            if (i == 21419) {
-                Arrays.fill(be3Var.a, (byte) 0);
-                l51Var.readFully(be3Var.a, 4 - i2, i2);
-                be3Var.N(0);
-                ni2Var.A = (int) be3Var.C();
-                return;
-            }
-            if (i == 25506) {
-                ni2Var.h(i);
-                byte[] bArr4 = new byte[i2];
-                ni2Var.y.l = bArr4;
-                l51Var.readFully(bArr4, 0, i2);
-                return;
-            }
-            if (i != 30322) {
-                throw ParserException.a(null, "Unexpected id: " + i);
-            }
-            ni2Var.h(i);
-            byte[] bArr5 = new byte[i2];
-            ni2Var.y.x = bArr5;
-            l51Var.readFully(bArr5, 0, i2);
-            return;
-        }
-        int i18 = 8;
-        if (ni2Var.O == 0) {
-            ni2Var.U = (int) k35Var.b(l51Var, false, true, 8);
-            ni2Var.V = k35Var.b;
-            ni2Var.Q = -9223372036854775807L;
-            ni2Var.O = 1;
-            be3Var2.K(0);
-        }
-        mi2 mi2Var3 = (mi2) sparseArray.get(ni2Var.U);
-        if (mi2Var3 == null) {
-            l51Var.l(i2 - ni2Var.V);
-            ni2Var.O = 0;
-            return;
-        }
-        mi2Var3.a0.getClass();
-        if (ni2Var.O == 1) {
-            ni2Var.l(l51Var, 3);
-            int i19 = (be3Var2.a[2] & 6) >> 1;
-            if (i19 == 0) {
-                ni2Var.S = 1;
-                int[] iArr2 = ni2Var.T;
-                if (iArr2 == null) {
-                    iArr2 = new int[1];
-                } else if (iArr2.length < 1) {
-                    iArr2 = new int[Math.max(iArr2.length * 2, 1)];
-                }
-                ni2Var.T = iArr2;
-                iArr2[0] = (i2 - ni2Var.V) - 3;
-            } else {
-                ni2Var.l(l51Var, 4);
-                int i20 = (be3Var2.a[3] & 255) + 1;
-                ni2Var.S = i20;
-                int[] iArr3 = ni2Var.T;
-                if (iArr3 == null) {
-                    iArr3 = new int[i20];
-                    i3 = 4;
-                } else {
-                    i3 = 4;
-                    if (iArr3.length < i20) {
-                        iArr3 = new int[Math.max(iArr3.length * 2, i20)];
-                    }
-                }
-                ni2Var.T = iArr3;
-                if (i19 == 2) {
-                    int i21 = (i2 - ni2Var.V) - 4;
-                    int i22 = ni2Var.S;
-                    Arrays.fill(iArr3, 0, i22, i21 / i22);
-                } else {
-                    if (i19 == 1) {
-                        int i23 = 0;
-                        int i24 = 0;
-                        int i25 = i3;
-                        while (true) {
-                            i10 = ni2Var.S - 1;
-                            iArr = ni2Var.T;
-                            if (i23 >= i10) {
-                                break;
-                            }
-                            iArr[i23] = 0;
-                            while (true) {
-                                i11 = i25 + 1;
-                                ni2Var.l(l51Var, i11);
-                                int i26 = be3Var2.a[i25] & 255;
-                                int[] iArr4 = ni2Var.T;
-                                i12 = iArr4[i23] + i26;
-                                iArr4[i23] = i12;
-                                if (i26 != 255) {
-                                    break;
-                                } else {
-                                    i25 = i11;
-                                }
-                            }
-                            i24 += i12;
-                            i23++;
-                            i25 = i11;
-                        }
-                        iArr[i10] = ((i2 - ni2Var.V) - i25) - i24;
-                    } else {
-                        if (i19 != 3) {
-                            throw ParserException.a(null, "Unexpected lacing value: " + i19);
-                        }
-                        int i27 = 0;
-                        int i28 = 0;
-                        int i29 = i3;
-                        while (true) {
-                            int i30 = ni2Var.S - 1;
-                            int[] iArr5 = ni2Var.T;
-                            if (i27 >= i30) {
-                                i4 = i14;
-                                i5 = i15;
-                                iArr5[i30] = ((i2 - ni2Var.V) - i29) - i28;
-                                break;
-                            }
-                            iArr5[i27] = i15;
-                            int i31 = i29 + 1;
-                            ni2Var.l(l51Var, i31);
-                            if (be3Var2.a[i29] == 0) {
-                                throw ParserException.a(null, "No valid varint length mask found");
-                            }
-                            int i32 = i15;
-                            while (true) {
-                                if (i32 >= i18) {
-                                    i6 = i18;
-                                    i7 = i14;
-                                    i8 = i15;
-                                    j = 0;
-                                    i9 = i31;
-                                    break;
-                                }
-                                i6 = i18;
-                                int i33 = 1 << (7 - i32);
-                                i8 = i15;
-                                if ((be3Var2.a[i29] & i33) != 0) {
-                                    i9 = i31 + i32;
-                                    ni2Var.l(l51Var, i9);
-                                    i7 = i14;
-                                    j = (~i33) & be3Var2.a[i29] & 255;
-                                    while (i31 < i9) {
-                                        j = (j << i6) | ((long) (be3Var2.a[i31] & 255));
-                                        i31++;
-                                    }
-                                    if (i27 <= 0) {
-                                        break;
-                                    }
-                                    j -= (1 << ((i32 * 7) + 6)) - 1;
-                                    break;
-                                }
-                                i32++;
-                                i15 = i8;
-                                i18 = i6;
-                            }
-                            if (j < -2147483648L || j > 2147483647L) {
-                                throw ParserException.a(null, "EBML lacing sample size out of range.");
-                            }
-                            int i34 = (int) j;
-                            int[] iArr6 = ni2Var.T;
-                            if (i27 != 0) {
-                                i34 += iArr6[i27 - 1];
-                            }
-                            iArr6[i27] = i34;
-                            i28 += i34;
-                            i27++;
-                            i29 = i9;
-                            i15 = i8;
-                            i18 = i6;
-                            i14 = i7;
-                        }
-                    }
-                    byte[] bArr6 = be3Var2.a;
-                    ni2Var.P = ni2Var.n((bArr6[1] & 255) | (bArr6[i5] << 8)) + ni2Var.M;
-                    if (mi2Var3.e != 1 || (i == 163 && (be3Var2.a[i4] & 128) == 128)) {
-                        i13 = 1;
-                    } else {
-                        i13 = i5;
-                    }
-                    ni2Var.W = i13;
-                    ni2Var.O = i4;
-                    ni2Var.R = i5;
-                }
-            }
-            i4 = 2;
-            i5 = 0;
-            byte[] bArr7 = be3Var2.a;
-            ni2Var.P = ni2Var.n((bArr7[1] & 255) | (bArr7[i5] << 8)) + ni2Var.M;
-            if (mi2Var3.e != 1) {
-                i13 = 1;
-            } else {
-                i13 = 1;
-            }
-            ni2Var.W = i13;
-            ni2Var.O = i4;
-            ni2Var.R = i5;
-        }
-        if (i == 163) {
-            while (true) {
-                int i35 = ni2Var.R;
-                if (i35 >= ni2Var.S) {
-                    ni2Var.O = 0;
-                    return;
-                }
-                ni2Var.i(mi2Var3, ((long) ((ni2Var.R * mi2Var3.f) / 1000)) + ni2Var.P, ni2Var.W, ni2Var.o(l51Var, mi2Var3, ni2Var.T[i35], false), 0);
-                ni2Var.R++;
-            }
-        } else {
-            while (true) {
-                int i36 = ni2Var.R;
-                if (i36 >= ni2Var.S) {
-                    return;
-                }
-                int[] iArr7 = ni2Var.T;
-                iArr7[i36] = ni2Var.o(l51Var, mi2Var3, iArr7[i36], true);
-                ni2Var.R++;
-            }
-        }
+    public void B(int r23, int r24, l51 r25) {
+        ni2 r4 = (ni2) this.o;
+        k35 r2 = r4.b;
+        SparseArray r5 = r4.c;
+        be3 r6 = r4.k;
+        be3 r7 = r4.i;
+        int r11 = 2;
+        int r13 = 0;
+        if (r23 == 161) goto L51;
+        if (r23 == 163) goto L51;
+        if (r23 == 165) goto L41;
+        if (r23 != 16877) goto L10;
+        r4.h(r23);
+        mi2 r0 = r4.y;
+        int r3 = r0.h;
+        if (r3 != 1685485123) goto L34;
+    L38:
+        byte[] r8 = new byte[r24];
+        r0.P = r8;
+        r25.readFully(r8, 0, r24);
+        return;
+    L34:
+        if (r3 == 1685480259) goto L38;
+        r25.l(r24);
+        return;
+    L10:
+        if (r23 != 16981) goto L12;
+        r4.h(r23);
+        byte[] r9 = new byte[r24];
+        r4.y.j = r9;
+        r25.readFully(r9, 0, r24);
+        return;
+    L12:
+        if (r23 != 18402) goto L14;
+        byte[] r10 = new byte[r24];
+        r25.readFully(r10, 0, r24);
+        r4.h(r23);
+        r4.y.k = new vv4(1, 0, 0, r10);
+        return;
+    L14:
+        if (r23 != 21419) goto L16;
+        Arrays.fill(r6.a, (byte) 0);
+        r25.readFully(r6.a, 4 - r24, r24);
+        r6.N(0);
+        r4.A = (int) r6.C();
+        return;
+    L16:
+        if (r23 != 25506) goto L18;
+        r4.h(r23);
+        byte[] r12 = new byte[r24];
+        r4.y.l = r12;
+        r25.readFully(r12, 0, r24);
+        return;
+    L18:
+        if (r23 != 30322) goto L22;
+        r4.h(r23);
+        byte[] r14 = new byte[r24];
+        r4.y.x = r14;
+        r25.readFully(r14, 0, r24);
+        return;
+    L22:
+        throw ParserException.a(null, "Unexpected id: " + r23);
+    L41:
+        if (r4.O != 2) goto L144;
+        mi2 r1 = (mi2) r5.get(r4.U);
+        int r15 = r4.X;
+        be3 r16 = r4.p;
+        if (r15 == 4) goto L46;
+    L49:
+        r25.l(r24);
+        return;
+    L46:
+        if ("V_VP9".equals(r1.c) == false) goto L49;
+        r16.K(r24);
+        r25.readFully(r16.a, 0, r24);
+        return;
+    L144:
+        return;
+    L51:
+        int r17 = 8;
+        if (r4.O != 0) goto L54;
+        r4.U = (int) r2.b(r25, false, true, 8);
+        r4.V = r2.b;
+        r4.Q = -9223372036854775807L;
+        r4.O = 1;
+        r7.K(0);
+    L54:
+        mi2 r18 = (mi2) r5.get(r4.U);
+        if (r18 != null) goto L58;
+        r25.l(r24 - r4.V);
+        r4.O = 0;
+        return;
+    L58:
+        r18.a0.getClass();
+        if (r4.O != 1) goto L135;
+        r4.l(r25, 3);
+        int r19 = (r7.a[2] & 6) >> 1;
+        if (r19 != 0) goto L71;
+        r4.S = 1;
+        int[] r20 = r4.T;
+        if (r20 != null) goto L66;
+        r20 = new int[1];
+    L69:
+        r4.T = r20;
+        r20[0] = (r24 - r4.V) - 3;
+    L70:
+        int r110 = 2;
+        int r111 = 0;
+    L122:
+        byte[] r21 = r7.a;
+        int r22 = (r21[1] & 255) | (r21[r111] << 8);
+        r4.P = r4.n(r22) + r4.M;
+        if (r18.e != 1) goto L125;
+    L130:
+        int r26 = 1;
+    L131:
+        r4.W = r26;
+        r4.O = r110;
+        r4.R = r111;
+        goto L135
+    L125:
+        if (r23 == 163) goto L127;
+    L129:
+        r26 = r111;
+        goto L131
+    L127:
+        if ((r7.a[r110] & 128) != 128) goto L129;
+    L66:
+        if (r20.length >= 1) goto L69;
+        r20 = new int[Math.max(r20.length * 2, 1)];
+        goto L69
+    L71:
+        r4.l(r25, 4);
+        int r112 = (r7.a[3] & 255) + 1;
+        r4.S = r112;
+        int[] r27 = r4.T;
+        if (r27 != null) goto L74;
+        r27 = new int[r112];
+        int r113 = 4;
+    L78:
+        r4.T = r27;
+        if (r19 != 2) goto L81;
+        int r28 = (r24 - r4.V) - 4;
+        int r29 = r4.S;
+        Arrays.fill(r27, 0, r29, r28 / r29);
+        goto L70
+    L81:
+        if (r19 != 1) goto L91;
+        int r30 = 0;
+        int r31 = 0;
+        int r114 = r113;
+    L83:
+        int r32 = r4.S - 1;
+        int[] r115 = r4.T;
+        if (r30 >= r32) goto L90;
+        r115[r30] = 0;
+    L86:
+        int r33 = r114 + 1;
+        r4.l(r25, r33);
+        int r116 = r7.a[r114] & 255;
+        int[] r117 = r4.T;
+        int r118 = r117[r30] + r116;
+        r117[r30] = r118;
+        if (r116 != 255) goto L88;
+        r114 = r33;
+        goto L86
+    L88:
+        r31 = r31 + r118;
+        r30 = r30 + 1;
+        r114 = r33;
+        goto L83
+    L90:
+        r115[r32] = ((r24 - r4.V) - r114) - r31;
+        goto L70
+    L91:
+        if (r19 != 3) goto L134;
+        int r34 = 0;
+        int r35 = 0;
+        int r119 = r113;
+    L93:
+        int r36 = r4.S - 1;
+        int[] r120 = r4.T;
+        if (r34 >= r36) goto L121;
+        r120[r34] = r13;
+        int r37 = r119 + 1;
+        r4.l(r25, r37);
+        if (r7.a[r119] == 0) goto L120;
+        int r121 = r13;
+    L98:
+        if (r121 >= r17) goto L107;
+        int r122 = r17;
+        int r38 = 1 << (7 - r121);
+        int r123 = r13;
+        if ((r7.a[r119] & r38) != 0) goto L101;
+        r121 = r121 + 1;
+        r13 = r123;
+        r17 = r122;
+        goto L98
+    L101:
+        int r124 = r37 + r121;
+        r4.l(r25, r124);
+        int r125 = r11;
+        long r126 = (~r38) & (r7.a[r119] & 255);
+    L102:
+        if (r37 >= r124) goto L104;
+        r126 = (r126 << r122) | ((long) (r7.a[r37] & 255));
+        r37 = r37 + 1;
+        goto L102
+    L104:
+        if (r34 <= 0) goto L109;
+        r126 = r126 - ((1 << ((r121 * 7) + 6)) - 1);
+    L109:
+        if (r126 < (-2147483648L)) goto L118;
+        if (r126 > 2147483647L) goto L118;
+        int r39 = (int) r126;
+        int[] r40 = r4.T;
+        if (r34 == 0) goto L116;
+        r39 = r39 + r40[r34 - 1];
+    L116:
+        r40[r34] = r39;
+        r35 = r35 + r39;
+        r34 = r34 + 1;
+        r119 = r124;
+        r13 = r123;
+        r17 = r122;
+        r11 = r125;
+    L118:
+        throw ParserException.a(null, "EBML lacing sample size out of range.");
+    L107:
+        r122 = r17;
+        r125 = r11;
+        r123 = r13;
+        r126 = 0;
+        r124 = r37;
+        goto L109
+    L120:
+        throw ParserException.a(null, "No valid varint length mask found");
+    L121:
+        r110 = r11;
+        r111 = r13;
+        r120[r36] = ((r24 - r4.V) - r119) - r35;
+        goto L122
+    L134:
+        throw ParserException.a(null, "Unexpected lacing value: " + r19);
+    L74:
+        r113 = 4;
+        if (r27.length >= r112) goto L78;
+        r27 = new int[Math.max(r27.length * 2, r112)];
+    L135:
+        if (r23 != 163) goto L141;
+    L136:
+        int r41 = r4.R;
+        if (r41 >= r4.S) goto L139;
+        r4.i(r18, ((long) ((r4.R * r18.f) / 1000)) + r4.P, r4.W, r4.o(r25, r18, r4.T[r41], false), 0);
+        r4.R++;
+        goto L136
+    L139:
+        r4.O = 0;
+        return;
+    L141:
+        int r42 = r4.R;
+        if (r42 >= r4.S) goto L158;
+        int[] r43 = r4.T;
+        r43[r42] = r4.o(r25, r18, r43[r42], true);
+        r4.R++;
+        goto L141
     }
 
-    public Point D(String str, Point point) {
-        SharedPreferences sharedPreferences = (SharedPreferences) this.o;
-        int i = point.x;
-        int i2 = point.y;
-        return new Point(sharedPreferences.getInt(str + "_SELECTOR_X", i), sharedPreferences.getInt(str + "_SELECTOR_Y", i2));
+    public Point D(String r5, Point r6) {
+        SharedPreferences r4 = (SharedPreferences) this.o;
+        int r0 = r6.x;
+        int r7 = r6.y;
+        return new Point(r4.getInt(r5 + "_SELECTOR_X", r0), r4.getInt(r5 + "_SELECTOR_Y", r7));
     }
 
-    public void F(int i, long j) throws ParserException {
-        ni2 ni2Var = (ni2) this.o;
-        if (i == 240) {
-            if (ni2Var.z) {
-                return;
-            }
-            ni2Var.g(i);
-            if (ni2Var.H == -1) {
-                ni2Var.H = j;
-                return;
-            }
-            return;
-        }
-        if (i == 241) {
-            if (ni2Var.z) {
-                return;
-            }
-            ni2Var.g(i);
-            if (ni2Var.G == -1) {
-                ni2Var.G = j;
-                return;
-            }
-            return;
-        }
-        if (i == 20529) {
-            if (j == 0) {
-                return;
-            }
-            throw ParserException.a(null, "ContentEncodingOrder " + j + " not supported");
-        }
-        if (i == 20530) {
-            if (j == 1) {
-                return;
-            }
-            throw ParserException.a(null, "ContentEncodingScope " + j + " not supported");
-        }
-        switch (i) {
-            case 131:
-                int i2 = (int) j;
-                if (i2 == 1) {
-                    ni2Var.h(i);
-                    ni2Var.y.e = 2;
-                    return;
-                }
-                if (i2 == 2) {
-                    ni2Var.h(i);
-                    ni2Var.y.e = 1;
-                    return;
-                } else if (i2 == 17) {
-                    ni2Var.h(i);
-                    ni2Var.y.e = 3;
-                    return;
-                } else if (i2 != 33) {
-                    ni2Var.h(i);
-                    ni2Var.y.e = -1;
-                    return;
-                } else {
-                    ni2Var.h(i);
-                    ni2Var.y.e = 5;
-                    return;
-                }
-            case 136:
-                ni2Var.h(i);
-                ni2Var.y.Y = j == 1;
-                return;
-            case 155:
-                ni2Var.Q = ni2Var.n(j);
-                return;
-            case 159:
-                ni2Var.h(i);
-                ni2Var.y.Q = (int) j;
-                return;
-            case 176:
-                ni2Var.h(i);
-                ni2Var.y.n = (int) j;
-                return;
-            case 179:
-                if (ni2Var.z) {
-                    return;
-                }
-                ni2Var.g(i);
-                ni2Var.E = ni2Var.n(j);
-                return;
-            case 186:
-                ni2Var.h(i);
-                ni2Var.y.o = (int) j;
-                return;
-            case 215:
-                ni2Var.h(i);
-                ni2Var.y.d = (int) j;
-                return;
-            case 231:
-                ni2Var.M = ni2Var.n(j);
-                return;
-            case 238:
-                ni2Var.X = (int) j;
-                return;
-            case 247:
-                if (ni2Var.z) {
-                    return;
-                }
-                ni2Var.g(i);
-                ni2Var.F = (int) j;
-                return;
-            case 251:
-                ni2Var.Y = true;
-                return;
-            case 16871:
-                ni2Var.h(i);
-                ni2Var.y.h = (int) j;
-                return;
-            case 16980:
-                if (j == 3) {
-                    return;
-                }
-                throw ParserException.a(null, "ContentCompAlgo " + j + " not supported");
-            case 17029:
-                if (j < 1 || j > 2) {
-                    throw ParserException.a(null, "DocTypeReadVersion " + j + " not supported");
-                }
-                return;
-            case 17143:
-                if (j == 1) {
-                    return;
-                }
-                throw ParserException.a(null, "EBMLReadVersion " + j + " not supported");
-            case 18401:
-                if (j == 5) {
-                    return;
-                }
-                throw ParserException.a(null, "ContentEncAlgo " + j + " not supported");
-            case 18408:
-                if (j == 1) {
-                    return;
-                }
-                throw ParserException.a(null, "AESSettingsCipherMode " + j + " not supported");
-            case 21420:
-                ni2Var.B = j + ni2Var.s;
-                return;
-            case 21432:
-                int i3 = (int) j;
-                ni2Var.h(i);
-                if (i3 == 0) {
-                    ni2Var.y.y = 0;
-                    return;
-                }
-                if (i3 == 1) {
-                    ni2Var.y.y = 2;
-                    return;
-                } else if (i3 == 3) {
-                    ni2Var.y.y = 1;
-                    return;
-                } else {
-                    if (i3 != 15) {
-                        return;
-                    }
-                    ni2Var.y.y = 3;
-                    return;
-                }
-            case 21680:
-                ni2Var.h(i);
-                ni2Var.y.q = (int) j;
-                return;
-            case 21682:
-                ni2Var.h(i);
-                ni2Var.y.s = (int) j;
-                return;
-            case 21690:
-                ni2Var.h(i);
-                ni2Var.y.r = (int) j;
-                return;
-            case 21930:
-                ni2Var.h(i);
-                ni2Var.y.X = j == 1;
-                return;
-            case 21938:
-                ni2Var.h(i);
-                mi2 mi2Var = ni2Var.y;
-                mi2Var.z = true;
-                mi2Var.p = (int) j;
-                return;
-            case 21998:
-                ni2Var.h(i);
-                ni2Var.y.g = (int) j;
-                return;
-            case 22186:
-                ni2Var.h(i);
-                ni2Var.y.T = j;
-                return;
-            case 22203:
-                ni2Var.h(i);
-                ni2Var.y.U = j;
-                return;
-            case 25188:
-                ni2Var.h(i);
-                ni2Var.y.R = (int) j;
-                return;
-            case 30114:
-                ni2Var.Z = j;
-                return;
-            case 30321:
-                ni2Var.h(i);
-                int i4 = (int) j;
-                if (i4 == 0) {
-                    ni2Var.y.t = 0;
-                    return;
-                }
-                if (i4 == 1) {
-                    ni2Var.y.t = 1;
-                    return;
-                } else if (i4 == 2) {
-                    ni2Var.y.t = 2;
-                    return;
-                } else {
-                    if (i4 != 3) {
-                        return;
-                    }
-                    ni2Var.y.t = 3;
-                    return;
-                }
-            case 2352003:
-                ni2Var.h(i);
-                ni2Var.y.f = (int) j;
-                return;
-            case 2807729:
-                ni2Var.t = j;
-                return;
-            default:
-                switch (i) {
-                    case 21945:
-                        ni2Var.h(i);
-                        int i5 = (int) j;
-                        if (i5 == 1) {
-                            ni2Var.y.C = 2;
-                            return;
-                        } else {
-                            if (i5 != 2) {
-                                return;
-                            }
-                            ni2Var.y.C = 1;
-                            return;
-                        }
-                    case 21946:
-                        ni2Var.h(i);
-                        int iG = c50.g((int) j);
-                        if (iG != -1) {
-                            ni2Var.y.B = iG;
-                            return;
-                        }
-                        return;
-                    case 21947:
-                        ni2Var.h(i);
-                        ni2Var.y.z = true;
-                        int iF = c50.f((int) j);
-                        if (iF != -1) {
-                            ni2Var.y.A = iF;
-                            return;
-                        }
-                        return;
-                    case 21948:
-                        ni2Var.h(i);
-                        ni2Var.y.D = (int) j;
-                        return;
-                    case 21949:
-                        ni2Var.h(i);
-                        ni2Var.y.E = (int) j;
-                        return;
-                    default:
-                        return;
-                }
-        }
+    public void F(int r10, long r11) {
+        ni2 r9 = (ni2) this.o;
+        if (r10 == 240) goto L184;
+        if (r10 == 241) goto L178;
+        if (r10 == 20529) goto L173;
+        if (r10 == 20530) goto L168;
+        boolean r5 = false;
+        switch(r10) {
+            case 131: goto L150;
+            case 136: goto L145;
+            case 155: goto L143;
+            case 159: goto L141;
+            case 176: goto L139;
+            case 179: goto L136;
+            case 186: goto L133;
+            case 215: goto L131;
+            case 231: goto L129;
+            case 238: goto L127;
+            case 247: goto L124;
+            case 251: goto L121;
+            case 16871: goto L119;
+            case 16980: goto L115;
+            case 17029: goto L108;
+            case 17143: goto L103;
+            case 18401: goto L98;
+            case 18408: goto L93;
+            case 21420: goto L90;
+            case 21432: goto L75;
+            case 21680: goto L73;
+            case 21682: goto L71;
+            case 21690: goto L69;
+            case 21930: goto L64;
+            case 21938: goto L62;
+            case 21998: goto L60;
+            case 22186: goto L58;
+            case 22203: goto L56;
+            case 25188: goto L54;
+            case 30114: goto L52;
+            case 30321: goto L38;
+            case 2352003: goto L36;
+            case 2807729: goto L34;
+            default: goto L12;
+        };
+    L12:
+        switch(r10) {
+            case 21945: goto L26;
+            case 21946: goto L22;
+            case 21947: goto L18;
+            case 21948: goto L16;
+            case 21949: goto L14;
+            default: goto L197;
+        };
+    L14:
+        r9.h(r10);
+        r9.y.E = (int) r11;
+        return;
+    L16:
+        r9.h(r10);
+        r9.y.D = (int) r11;
+        return;
+    L18:
+        r9.h(r10);
+        r9.y.z = true;
+        int r12 = c50.f((int) r11);
+        if (r12 == (-1)) goto L189;
+        r9.y.A = r12;
+        return;
+    L189:
+        return;
+    L22:
+        r9.h(r10);
+        int r13 = c50.g((int) r11);
+        if (r13 == (-1)) goto L190;
+        r9.y.B = r13;
+        return;
+    L190:
+        return;
+    L26:
+        r9.h(r10);
+        int r14 = (int) r11;
+        if (r14 == 1) goto L32;
+        if (r14 != 2) goto L198;
+        r9.y.C = 1;
+        return;
+    L198:
+        return;
+    L32:
+        r9.y.C = 2;
+        return;
+    L197:
+        return;
+    L34:
+        r9.t = r11;
+        return;
+    L36:
+        r9.h(r10);
+        r9.y.f = (int) r11;
+        return;
+    L38:
+        r9.h(r10);
+        int r15 = (int) r11;
+        if (r15 == 0) goto L50;
+        if (r15 == 1) goto L48;
+        if (r15 == 2) goto L46;
+        if (r15 != 3) goto L199;
+        r9.y.t = 3;
+        return;
+    L199:
+        return;
+    L46:
+        r9.y.t = 2;
+        return;
+    L48:
+        r9.y.t = 1;
+        return;
+    L50:
+        r9.y.t = 0;
+        return;
+    L52:
+        r9.Z = r11;
+        return;
+    L54:
+        r9.h(r10);
+        r9.y.R = (int) r11;
+        return;
+    L56:
+        r9.h(r10);
+        r9.y.U = r11;
+        return;
+    L58:
+        r9.h(r10);
+        r9.y.T = r11;
+        return;
+    L60:
+        r9.h(r10);
+        r9.y.g = (int) r11;
+        return;
+    L62:
+        r9.h(r10);
+        mi2 r16 = r9.y;
+        r16.z = true;
+        r16.p = (int) r11;
+        return;
+    L64:
+        r9.h(r10);
+        mi2 r17 = r9.y;
+        if (r11 != 1) goto L67;
+        r5 = true;
+    L67:
+        r17.X = r5;
+        return;
+    L69:
+        r9.h(r10);
+        r9.y.r = (int) r11;
+        return;
+    L71:
+        r9.h(r10);
+        r9.y.s = (int) r11;
+        return;
+    L73:
+        r9.h(r10);
+        r9.y.q = (int) r11;
+        return;
+    L75:
+        int r18 = (int) r11;
+        r9.h(r10);
+        if (r18 == 0) goto L88;
+        if (r18 == 1) goto L86;
+        if (r18 != 3) goto L80;
+        r9.y.y = 1;
+        return;
+    L80:
+        if (r18 != 15) goto L200;
+        r9.y.y = 3;
+        return;
+    L200:
+        return;
+    L86:
+        r9.y.y = 2;
+        return;
+    L88:
+        r9.y.y = 0;
+        return;
+    L90:
+        r9.B = r11 + r9.s;
+        return;
+    L119:
+        r9.h(r10);
+        r9.y.h = (int) r11;
+        return;
+    L121:
+        r9.Y = true;
+        return;
+    L127:
+        r9.X = (int) r11;
+        return;
+    L129:
+        r9.M = r9.n(r11);
+        return;
+    L131:
+        r9.h(r10);
+        r9.y.d = (int) r11;
+        return;
+    L133:
+        r9.h(r10);
+        r9.y.o = (int) r11;
+        return;
+    L139:
+        r9.h(r10);
+        r9.y.n = (int) r11;
+        return;
+    L141:
+        r9.h(r10);
+        r9.y.Q = (int) r11;
+        return;
+    L143:
+        r9.Q = r9.n(r11);
+        return;
+    L145:
+        r9.h(r10);
+        mi2 r19 = r9.y;
+        if (r11 != 1) goto L148;
+        r5 = true;
+    L148:
+        r19.Y = r5;
+        return;
+    L150:
+        int r110 = (int) r11;
+        if (r110 == 1) goto L165;
+        if (r110 != 2) goto L154;
+        r9.h(r10);
+        r9.y.e = 1;
+        return;
+    L154:
+        if (r110 != 17) goto L156;
+        r9.h(r10);
+        r9.y.e = 3;
+        return;
+    L156:
+        if (r110 == 33) goto L159;
+        r9.h(r10);
+        r9.y.e = -1;
+        return;
+    L159:
+        r9.h(r10);
+        r9.y.e = 5;
+        return;
+    L165:
+        r9.h(r10);
+        r9.y.e = 2;
+        return;
+    L93:
+        if (r11 != 1) goto L96;
+        return;
+    L96:
+        throw ParserException.a(null, "AESSettingsCipherMode " + r11 + " not supported");
+    L98:
+        if (r11 != 5) goto L101;
+        return;
+    L101:
+        throw ParserException.a(null, "ContentEncAlgo " + r11 + " not supported");
+    L103:
+        if (r11 != 1) goto L106;
+        return;
+    L106:
+        throw ParserException.a(null, "EBMLReadVersion " + r11 + " not supported");
+    L108:
+        if (r11 < 1) goto L113;
+        if (r11 > 2) goto L113;
+        return;
+    L113:
+        throw ParserException.a(null, "DocTypeReadVersion " + r11 + " not supported");
+    L115:
+        if (r11 != 3) goto L118;
+        return;
+    L118:
+        throw ParserException.a(null, "ContentCompAlgo " + r11 + " not supported");
+    L124:
+        if (r9.z == true) goto L191;
+        r9.g(r10);
+        r9.F = (int) r11;
+        return;
+    L191:
+        return;
+    L136:
+        if (r9.z == true) goto L192;
+        r9.g(r10);
+        r9.E = r9.n(r11);
+        return;
+    L192:
+        return;
+    L168:
+        if (r11 != 1) goto L171;
+        return;
+    L171:
+        throw ParserException.a(null, "ContentEncodingScope " + r11 + " not supported");
+    L173:
+        if (r11 != 0) goto L176;
+        return;
+    L176:
+        throw ParserException.a(null, "ContentEncodingOrder " + r11 + " not supported");
+    L178:
+        if (r9.z == true) goto L193;
+        r9.g(r10);
+        if (r9.G != (-1)) goto L194;
+        r9.G = r11;
+        return;
+    L194:
+        return;
+    L193:
+        return;
+    L184:
+        if (r9.z == true) goto L195;
+        r9.g(r10);
+        if (r9.H != (-1)) goto L196;
+        r9.H = r11;
+        return;
+    L196:
+        return;
     }
 
-    public boolean G(ms2 ms2Var) {
-        wo0 wo0Var = (wo0) this.o;
-        os2 os2Var = ms2Var.a;
-        Context context = (Context) wo0Var.n;
-        int i = os2Var.b;
-        String str = os2Var.a;
-        int i2 = os2Var.c;
-        if (context.checkPermission("android.permission.MEDIA_CONTENT_CONTROL", i, i2) == 0) {
-            return true;
-        }
-        try {
-            if (context.getPackageManager().getApplicationInfo(str, 0) != null) {
-                if (wo0Var.B(os2Var, "android.permission.STATUS_BAR_SERVICE") || wo0Var.B(os2Var, "android.permission.MEDIA_CONTENT_CONTROL") || i2 == 1000 || i2 == Process.myUid()) {
-                    return true;
-                }
-                String string = Settings.Secure.getString((ContentResolver) wo0Var.o, "enabled_notification_listeners");
-                if (string != null) {
-                    for (String str2 : string.split(":")) {
-                        ComponentName componentNameUnflattenFromString = ComponentName.unflattenFromString(str2);
-                        if (componentNameUnflattenFromString != null && componentNameUnflattenFromString.getPackageName().equals(str)) {
-                            return true;
-                        }
-                    }
-                }
-            }
-            return false;
-        } catch (PackageManager.NameNotFoundException unused) {
-            l93.A("MediaSessionManager", "Package " + str + " doesn't exist");
-            return false;
-        }
+    public boolean G(ms2 r6) {
+        wo0 r5 = (wo0) this.o;
+        os2 r7 = r6.a;
+        Context r0 = (Context) r5.n;
+        int r1 = r7.b;
+        String r2 = r7.a;
+        int r3 = r7.c;
+        if (r0.checkPermission("android.permission.MEDIA_CONTENT_CONTROL", r1, r3) != 0) goto L33;
+        return true;
+    L33:
+        if (r0.getPackageManager().getApplicationInfo(r2, 0) != null) goto L10;
+    L28:
+        return false;
+    L10:
+        if (r5.B(r7, "android.permission.STATUS_BAR_SERVICE") == false) goto L12;
+        return true;
+    L12:
+        if (r5.B(r7, "android.permission.MEDIA_CONTENT_CONTROL") == false) goto L14;
+        return true;
+    L14:
+        if (r3 != 1000) goto L16;
+        return true;
+    L16:
+        if (r3 == Process.myUid()) goto L41;
+        String r8 = Settings.Secure.getString((ContentResolver) r5.o, "enabled_notification_listeners");
+        if (r8 == null) goto L28;
+        String[] r9 = r8.split(":");
+        int r10 = 0;
+    L21:
+        if (r10 >= r9.length) goto L28;
+        ComponentName r4 = ComponentName.unflattenFromString(r9[r10]);
+        if (r4 == null) goto L27;
+        if (r4.getPackageName().equals(r2) == false) goto L27;
+        return true;
+    L27:
+        r10 = r10 + 1;
+        goto L21
+    L41:
+        return true;
+    L31:
+        l93.A("MediaSessionManager", "Package " + r2 + " doesn't exist");
+        return false;
     }
 
-    public void H(String str, List list, Bundle bundle, Bundle bundle2) throws RemoteException {
-        Bundle bundle3 = new Bundle();
-        bundle3.putString("data_media_item_id", str);
-        bundle3.putBundle("data_options", bundle);
-        bundle3.putBundle("data_notify_children_changed_options", bundle2);
-        if (list != null) {
-            bundle3.putParcelableArrayList("data_media_item_list", uc5.k(list, MediaBrowserCompat$MediaItem.CREATOR));
-        }
-        Message messageObtain = Message.obtain();
-        messageObtain.what = 3;
-        messageObtain.arg1 = 2;
-        messageObtain.setData(bundle3);
-        ((Messenger) this.o).send(messageObtain);
+    public void H(String r3, List r4, Bundle r5, Bundle r6) {
+        Bundle r0 = new Bundle();
+        r0.putString("data_media_item_id", r3);
+        r0.putBundle("data_options", r5);
+        r0.putBundle("data_notify_children_changed_options", r6);
+        if (r4 == null) goto L5;
+        r0.putParcelableArrayList("data_media_item_list", uc5.k(r4, MediaBrowserCompat$MediaItem.CREATOR));
+    L5:
+        Message r7 = Message.obtain();
+        r7.what = 3;
+        r7.arg1 = 2;
+        r7.setData(r0);
+        ((Messenger) this.o).send(r7);
     }
 
-    public void I(int i, long j, long j2) throws ParserException {
-        ni2 ni2Var = (ni2) this.o;
-        ni2Var.j0.getClass();
-        if (i == 160) {
-            ni2Var.Y = false;
-            ni2Var.Z = 0L;
-            return;
-        }
-        if (i == 174) {
-            mi2 mi2Var = new mi2();
-            mi2Var.n = -1;
-            mi2Var.o = -1;
-            mi2Var.p = -1;
-            mi2Var.q = -1;
-            mi2Var.r = -1;
-            mi2Var.s = 0;
-            mi2Var.t = -1;
-            mi2Var.u = 0.0f;
-            mi2Var.v = 0.0f;
-            mi2Var.w = 0.0f;
-            mi2Var.x = null;
-            mi2Var.y = -1;
-            mi2Var.z = false;
-            mi2Var.A = -1;
-            mi2Var.B = -1;
-            mi2Var.C = -1;
-            mi2Var.D = 1000;
-            mi2Var.E = 200;
-            mi2Var.F = -1.0f;
-            mi2Var.G = -1.0f;
-            mi2Var.H = -1.0f;
-            mi2Var.I = -1.0f;
-            mi2Var.J = -1.0f;
-            mi2Var.K = -1.0f;
-            mi2Var.L = -1.0f;
-            mi2Var.M = -1.0f;
-            mi2Var.N = -1.0f;
-            mi2Var.O = -1.0f;
-            mi2Var.Q = 1;
-            mi2Var.R = -1;
-            mi2Var.S = 8000;
-            mi2Var.T = 0L;
-            mi2Var.U = 0L;
-            mi2Var.W = false;
-            mi2Var.Y = true;
-            mi2Var.Z = "eng";
-            ni2Var.y = mi2Var;
-            mi2Var.a = ni2Var.w;
-            return;
-        }
-        if (i == 183) {
-            if (ni2Var.z) {
-                return;
-            }
-            ni2Var.g(i);
-            ni2Var.F = -1;
-            ni2Var.G = -1L;
-            ni2Var.H = -1L;
-            return;
-        }
-        if (i == 187) {
-            if (ni2Var.z) {
-                return;
-            }
-            ni2Var.g(i);
-            ni2Var.E = -9223372036854775807L;
-            return;
-        }
-        if (i == 19899) {
-            ni2Var.A = -1;
-            ni2Var.B = -1L;
-            return;
-        }
-        if (i == 20533) {
-            ni2Var.h(i);
-            ni2Var.y.i = true;
-            return;
-        }
-        if (i == 21968) {
-            ni2Var.h(i);
-            ni2Var.y.z = true;
-            return;
-        }
-        if (i == 408125543) {
-            long j3 = ni2Var.s;
-            if (j3 != -1 && j3 != j) {
-                throw ParserException.a(null, "Multiple Segment elements not supported");
-            }
-            ni2Var.s = j;
-            ni2Var.r = j2;
-            return;
-        }
-        if (i == 475249515) {
-            if (ni2Var.z) {
-                return;
-            }
-            ni2Var.D = true;
-        } else if (i == 524531317 && !ni2Var.z) {
-            if (ni2Var.d && ni2Var.K != -1) {
-                ni2Var.J = true;
-            } else {
-                ni2Var.j0.w(new bo(ni2Var.v));
-                ni2Var.z = true;
-            }
-        }
+    public void I(int r8, long r9, long r11) {
+        ni2 r7 = (ni2) this.o;
+        r7.j0.getClass();
+        if (r8 != 160) goto L5;
+        r7.Y = false;
+        r7.Z = 0;
+        return;
+    L5:
+        if (r8 != 174) goto L7;
+        mi2 r10 = new mi2();
+        r10.n = -1;
+        r10.o = -1;
+        r10.p = -1;
+        r10.q = -1;
+        r10.r = -1;
+        r10.s = 0;
+        r10.t = -1;
+        r10.u = 0.0f;
+        r10.v = 0.0f;
+        r10.w = 0.0f;
+        r10.x = null;
+        r10.y = -1;
+        r10.z = false;
+        r10.A = -1;
+        r10.B = -1;
+        r10.C = -1;
+        r10.D = 1000;
+        r10.E = 200;
+        r10.F = -1.0f;
+        r10.G = -1.0f;
+        r10.H = -1.0f;
+        r10.I = -1.0f;
+        r10.J = -1.0f;
+        r10.K = -1.0f;
+        r10.L = -1.0f;
+        r10.M = -1.0f;
+        r10.N = -1.0f;
+        r10.O = -1.0f;
+        r10.Q = 1;
+        r10.R = -1;
+        r10.S = 8000;
+        r10.T = 0;
+        r10.U = 0;
+        r10.W = false;
+        r10.Y = true;
+        r10.Z = "eng";
+        r7.y = r10;
+        r10.a = r7.w;
+        return;
+    L7:
+        if (r8 == 183) goto L57;
+        if (r8 == 187) goto L53;
+        if (r8 != 19899) goto L13;
+        r7.A = -1;
+        r7.B = -1;
+        return;
+    L13:
+        if (r8 != 20533) goto L15;
+        r7.h(r8);
+        r7.y.i = true;
+        return;
+    L15:
+        if (r8 != 21968) goto L17;
+        r7.h(r8);
+        r7.y.z = true;
+        return;
+    L17:
+        if (r8 != 408125543) goto L19;
+        long r5 = r7.s;
+        if (r5 != (-1)) goto L40;
+    L44:
+        r7.s = r9;
+        r7.r = r11;
+        return;
+    L40:
+        if (r5 == r9) goto L44;
+        throw ParserException.a(null, "Multiple Segment elements not supported");
+    L19:
+        if (r8 == 475249515) goto L34;
+        if (r8 == 524531317) goto L24;
+        return;
+    L24:
+        if (r7.z == false) goto L26;
+        return;
+    L26:
+        if (r7.d == true) goto L28;
+    L31:
+        r7.j0.w(new bo(r7.v));
+        r7.z = true;
+        return;
+    L28:
+        if (r7.K == (-1)) goto L31;
+        r7.J = true;
+        return;
+    L34:
+        if (r7.z == true) goto L65;
+        r7.D = true;
+        return;
+    L65:
+        return;
+    L53:
+        if (r7.z == true) goto L66;
+        r7.g(r8);
+        r7.E = -9223372036854775807L;
+        return;
+    L66:
+        return;
+    L57:
+        if (r7.z == true) goto L67;
+        r7.g(r8);
+        r7.F = -1;
+        r7.G = -1;
+        r7.H = -1;
+        return;
     }
 
-    public void J(int i, String str) throws ParserException {
-        ni2 ni2Var = (ni2) this.o;
-        if (i == 134) {
-            ni2Var.h(i);
-            ni2Var.y.c = str;
-            return;
-        }
-        if (i == 17026) {
-            if ("webm".equals(str) || "matroska".equals(str)) {
-                ni2Var.w = str.equals("webm");
-                return;
-            }
-            throw ParserException.a(null, "DocType " + str + " not supported");
-        }
-        if (i == 21358) {
-            ni2Var.h(i);
-            ni2Var.y.b = str;
-        } else {
-            if (i != 2274716) {
-                return;
-            }
-            ni2Var.h(i);
-            ni2Var.y.Z = str;
-        }
+    public void J(int r2, String r3) {
+        ni2 r1 = (ni2) this.o;
+        if (r2 != 134) goto L5;
+        r1.h(r2);
+        r1.y.c = r3;
+        return;
+    L5:
+        if (r2 == 17026) goto L16;
+        if (r2 != 21358) goto L9;
+        r1.h(r2);
+        r1.y.b = r3;
+        return;
+    L9:
+        if (r2 == 2274716) goto L11;
+        return;
+    L11:
+        r1.h(r2);
+        r1.y.Z = r3;
+        return;
+    L16:
+        if ("webm".equals(r3) == false) goto L18;
+    L22:
+        r1.w = r3.equals("webm");
+        return;
+    L18:
+        if ("matroska".equals(r3) == true) goto L22;
+        throw ParserException.a(null, "DocType " + r3 + " not supported");
     }
 
     @Override // defpackage.fc2
-    public void a(int i, int i2) {
-        ((ni4) this.o).n.c(i, i2);
+    public void a(int r1, int r2) {
+        ((ni4) this.o).n.c(r1, r2);
     }
 
     @Override // defpackage.f51
@@ -865,8 +927,11 @@ public final class hg3 implements zw, j4, fc2, PointerInputEventHandler, r83, th
 
     @Override // defpackage.fi1
     public g04 build() {
-        g04 g04Var = (g04) this.o;
-        return g04Var != null ? g04Var : new g04();
+        g04 r0 = (g04) this.o;
+        if (r0 == null) goto L6;
+        return r0;
+    L6:
+        return new g04();
     }
 
     @Override // defpackage.yh0
@@ -876,57 +941,69 @@ public final class hg3 implements zw, j4, fc2, PointerInputEventHandler, r83, th
 
     @Override // defpackage.f51
     public int d() {
-        ExtendedFloatingActionButton extendedFloatingActionButton = (ExtendedFloatingActionButton) this.o;
-        return (extendedFloatingActionButton.getMeasuredWidth() - (extendedFloatingActionButton.getCollapsedPadding() * 2)) + extendedFloatingActionButton.M + extendedFloatingActionButton.N;
+        ExtendedFloatingActionButton r2 = (ExtendedFloatingActionButton) this.o;
+        return ((r2.getMeasuredWidth() - (r2.getCollapsedPadding() * 2)) + r2.M) + r2.N;
     }
 
     @Override // defpackage.j4
     public boolean e() {
-        ActionBar actionBar = ((Activity) this.o).getActionBar();
-        return (actionBar == null || (actionBar.getDisplayOptions() & 4) == 0) ? false : true;
+        ActionBar r0 = ((Activity) this.o).getActionBar();
+        if (r0 != null) goto L5;
+        return false;
+    L5:
+        if ((r0.getDisplayOptions() & 4) == 0) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     @Override // defpackage.r34
-    public boolean f(gr1 gr1Var) {
-        gr1Var.getClass();
-        return ((gv3) this.o).f(gr1Var);
+    public boolean f(gr1 r1) {
+        r1.getClass();
+        return ((gv3) this.o).f(r1);
     }
 
     @Override // defpackage.jg2
-    public Object g(Object obj, Object obj2) {
-        return ((eg1) this.o).mo77apply(obj2);
+    public Object g(Object r1, Object r2) {
+        return ((eg1) this.o).mo77apply(r2);
     }
 
     @Override // defpackage.j4
     public Context h() {
-        Activity activity = (Activity) this.o;
-        ActionBar actionBar = activity.getActionBar();
-        return actionBar != null ? actionBar.getThemedContext() : activity;
+        Activity r1 = (Activity) this.o;
+        ActionBar r0 = r1.getActionBar();
+        if (r0 != null) goto L5;
+        return r1;
+    L5:
+        return r0.getThemedContext();
     }
 
     @Override // defpackage.p5
-    public void i(Object obj) {
-        o5 o5Var = (o5) obj;
-        ld1 ld1Var = (ld1) this.o;
-        gd1 gd1Var = (gd1) ld1Var.E.pollLast();
-        if (gd1Var == null) {
-            Log.w("FragmentManager", "No Activities were started for result for " + this);
-            return;
-        }
-        String str = gd1Var.n;
-        int i = gd1Var.o;
-        kc1 kc1VarU = ld1Var.c.u(str);
-        if (kc1VarU != null) {
-            kc1VarU.D(i, o5Var.n, o5Var.o);
-            return;
-        }
-        Log.w("FragmentManager", "Activity result delivered for unknown Fragment " + str);
+    public void i(Object r4) {
+        o5 r5 = (o5) r4;
+        ld1 r0 = (ld1) this.o;
+        gd1 r1 = (gd1) r0.E.pollLast();
+        if (r1 != null) goto L6;
+        Log.w("FragmentManager", "No Activities were started for result for " + this);
+        return;
+    L6:
+        String r3 = r1.n;
+        int r2 = r1.o;
+        kc1 r6 = r0.c.u(r3);
+        if (r6 != null) goto L10;
+        Log.w("FragmentManager", "Activity result delivered for unknown Fragment " + r3);
+        return;
+    L10:
+        r6.D(r2, r5.n, r5.o);
     }
 
     @Override // androidx.compose.ui.input.pointer.PointerInputEventHandler
-    public Object invoke(sn3 sn3Var, vd0 vd0Var) {
-        Object objG = xl.g(sn3Var, new sb((tb) this.o, null, 0), vd0Var);
-        return objG == xe0.n ? objG : j15.a;
+    public Object invoke(sn3 r4, vd0 r5) {
+        Object r3 = xl.g(r4, new sb((tb) this.o, null, 0), r5);
+        if (r3 != xe0.n) goto L6;
+        return r3;
+    L6:
+        return j15.a;
     }
 
     @Override // defpackage.r34
@@ -940,20 +1017,20 @@ public final class hg3 implements zw, j4, fc2, PointerInputEventHandler, r83, th
     }
 
     @Override // defpackage.fc2
-    public void k(int i, int i2) {
-        ((ni4) this.o).n.e(i, i2);
+    public void k(int r1, int r2) {
+        ((ni4) this.o).n.e(r1, r2);
     }
 
     @Override // defpackage.yh0
     public Object l() {
-        aw3 aw3Var = (aw3) this.o;
-        aw3Var.reset();
-        return aw3Var;
+        aw3 r0 = (aw3) this.o;
+        r0.reset();
+        return r0;
     }
 
     @Override // defpackage.r34
-    public boolean m(cv3 cv3Var) {
-        return ((gv3) this.o).m(cv3Var);
+    public boolean m(cv3 r1) {
+        return ((gv3) this.o).m(r1);
     }
 
     @Override // defpackage.r34
@@ -968,49 +1045,58 @@ public final class hg3 implements zw, j4, fc2, PointerInputEventHandler, r83, th
 
     @Override // com.eddyizm.tempus.interfaces.RadioCallback
     public void onDismiss() {
-        hp1 hp1Var = (hp1) this.o;
-        hp1Var.n0.c(hp1Var.v());
+        hp1 r1 = (hp1) this.o;
+        r1.n0.c(r1.v());
     }
 
     @Override // com.eddyizm.tempus.interfaces.SystemCallback
-    public void onError(Exception exc) {
-        exc.getClass();
-        oe2.h0((oe2) this.o, cx.h() ? R.string.la_server_toast_connection_failure : R.string.la_server_toast_connection_error, exc.getMessage(), 1);
+    public void onError(Exception r3) {
+        r3.getClass();
+        if (cx.h() == false) goto L5;
+        int r0 = R.string.la_server_toast_connection_failure;
+    L6:
+        oe2.h0((oe2) this.o, r0, r3.getMessage(), 1);
+        return;
+    L5:
+        r0 = R.string.la_server_toast_connection_error;
+        goto L6
     }
 
     @Override // com.eddyizm.tempus.interfaces.SystemCallback
-    public void onNetworkFailure(Exception exc) {
-        exc.getClass();
-        oe2.h0((oe2) this.o, R.string.la_server_toast_connection_error, exc.getMessage(), 1);
+    public void onNetworkFailure(Exception r3) {
+        r3.getClass();
+        oe2.h0((oe2) this.o, R.string.la_server_toast_connection_error, r3.getMessage(), 1);
     }
 
     @Override // com.eddyizm.tempus.interfaces.SystemCallback
-    public void onSuccess(String str, String str2, String str3) {
+    public void onSuccess(String r1, String r2, String r3) {
         oe2.h0((oe2) this.o, R.string.la_server_toast_connection_success, null, 0);
     }
 
     @Override // defpackage.zw
     public int p() {
-        switch (this.n) {
-            case 2:
-                return ((w0) this.o).q();
-            default:
-                return ((qe1) this.o).n();
-        }
+        switch(this.n) {
+            case 2: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return ((qe1) this.o).n();
+    L7:
+        return ((w0) this.o).q();
     }
 
     @Override // defpackage.j4
-    public void q(Drawable drawable, int i) {
-        ActionBar actionBar = ((Activity) this.o).getActionBar();
-        if (actionBar != null) {
-            actionBar.setHomeAsUpIndicator(drawable);
-            actionBar.setHomeActionContentDescription(i);
-        }
+    public void q(Drawable r1, int r2) {
+        ActionBar r0 = ((Activity) this.o).getActionBar();
+        if (r0 == null) goto L6;
+        r0.setHomeAsUpIndicator(r1);
+        r0.setHomeActionContentDescription(r2);
+        return;
     }
 
     @Override // defpackage.fc2
-    public void r(int i, int i2) {
-        ((ni4) this.o).n.f(i, i2);
+    public void r(int r1, int r2) {
+        ((ni4) this.o).n.f(r1, r2);
     }
 
     @Override // defpackage.f51
@@ -1020,18 +1106,18 @@ public final class hg3 implements zw, j4, fc2, PointerInputEventHandler, r83, th
 
     @Override // defpackage.j4
     public Drawable t() {
-        TypedArray typedArrayObtainStyledAttributes = h().obtainStyledAttributes(null, new int[]{android.R.attr.homeAsUpIndicator}, android.R.attr.actionBarStyle, 0);
-        Drawable drawable = typedArrayObtainStyledAttributes.getDrawable(0);
-        typedArrayObtainStyledAttributes.recycle();
-        return drawable;
+        TypedArray r4 = h().obtainStyledAttributes(null, new int[]{android.R.attr.homeAsUpIndicator}, android.R.attr.actionBarStyle, 0);
+        Drawable r0 = r4.getDrawable(0);
+        r4.recycle();
+        return r0;
     }
 
     @Override // defpackage.j4
-    public void u(int i) {
-        ActionBar actionBar = ((Activity) this.o).getActionBar();
-        if (actionBar != null) {
-            actionBar.setHomeActionContentDescription(i);
-        }
+    public void u(int r1) {
+        ActionBar r0 = ((Activity) this.o).getActionBar();
+        if (r0 == null) goto L6;
+        r0.setHomeActionContentDescription(r1);
+        return;
     }
 
     @Override // defpackage.r34
@@ -1045,63 +1131,83 @@ public final class hg3 implements zw, j4, fc2, PointerInputEventHandler, r83, th
     }
 
     @Override // defpackage.r83
-    public pb5 x(View view, pb5 pb5Var) {
-        switch (this.n) {
-            case 7:
-                fr frVar = (fr) this.o;
-                frVar.n = pb5Var.a();
-                frVar.o = pb5Var.b();
-                frVar.p = pb5Var.c();
-                frVar.g();
-                break;
-            default:
-                mb5 mb5Var = pb5Var.a;
-                CoordinatorLayout coordinatorLayout = (CoordinatorLayout) this.o;
-                if (!Objects.equals(coordinatorLayout.z, pb5Var)) {
-                    coordinatorLayout.z = pb5Var;
-                    boolean z = pb5Var.d() > 0;
-                    coordinatorLayout.A = z;
-                    coordinatorLayout.setWillNotDraw(!z && coordinatorLayout.getBackground() == null);
-                    if (!mb5Var.r()) {
-                        int childCount = coordinatorLayout.getChildCount();
-                        for (int i = 0; i < childCount; i++) {
-                            View childAt = coordinatorLayout.getChildAt(i);
-                            WeakHashMap weakHashMap = j65.a;
-                            if (!childAt.getFitsSystemWindows() || ((ge0) childAt.getLayoutParams()).a == null || !mb5Var.r()) {
-                            }
-                        }
-                    }
-                    coordinatorLayout.requestLayout();
-                }
-                break;
-        }
-        return pb5Var;
+    public pb5 x(View r5, pb5 r6) {
+        switch(this.n) {
+            case 7: goto L31;
+            default: goto L4;
+        };
+    L4:
+        mb5 r7 = r6.a;
+        CoordinatorLayout r4 = (CoordinatorLayout) this.o;
+        if (Objects.equals(r4.z, r6) == true) goto L30;
+        r4.z = r6;
+        int r1 = 0;
+        boolean r2 = true;
+        if (r6.d() <= 0) goto L9;
+        boolean r0 = true;
+    L10:
+        r4.A = r0;
+        if (r0 == false) goto L13;
+    L15:
+        r2 = false;
+    L16:
+        r4.setWillNotDraw(r2);
+        if (r7.r() == true) goto L29;
+        int r3 = r4.getChildCount();
+    L20:
+        if (r1 >= r3) goto L29;
+        View r8 = r4.getChildAt(r1);
+        WeakHashMap r9 = j65.a;
+        if (r8.getFitsSystemWindows() == false) goto L28;
+        if (((ge0) r8.getLayoutParams()).a == null) goto L28;
+        if (r7.r() == true) goto L29;
+    L28:
+        r1 = r1 + 1;
+    L29:
+        r4.requestLayout();
+        goto L30
+    L13:
+        if (r4.getBackground() != null) goto L15;
+    L9:
+        r0 = false;
+    L30:
+        return r6;
+    L31:
+        fr r10 = (fr) this.o;
+        r10.n = r6.a();
+        r10.o = r6.b();
+        r10.p = r6.c();
+        r10.g();
+        return r6;
     }
 
     @Override // defpackage.fc2
-    public void y(int i, int i2, Object obj) {
-        ((ni4) this.o).n.d(i, i2, obj);
+    public void y(int r1, int r2, Object r3) {
+        ((ni4) this.o).n.d(r1, r2, r3);
     }
 
     @Override // defpackage.ci
-    public Object z(q64 q64Var, Float f, Float f2, if1 if1Var, vg4 vg4Var) {
-        Object objC = su3.c(q64Var, f.floatValue(), j51.a(0.0f, f2.floatValue(), 28), (ui0) this.o, if1Var, vg4Var);
-        return objC == xe0.n ? objC : (ud) objC;
+    public Object z(q64 r4, Float r5, Float r6, if1 r7, vg4 r8) {
+        Object r3 = su3.c(r4, r5.floatValue(), j51.a(0.0f, r6.floatValue(), 28), (ui0) this.o, r7, r8);
+        if (r3 != xe0.n) goto L6;
+        return r3;
+    L6:
+        return (ud) r3;
     }
 
-    public /* synthetic */ hg3(int i, boolean z) {
-        this.n = i;
+    public /* synthetic */ hg3(int r1, boolean r2) {
+        this.n = r1;
     }
 
-    public hg3(InputStream inputStream, qj0 qj0Var) {
+    public hg3(InputStream r2, qj0 r3) {
         this.n = 24;
-        aw3 aw3Var = new aw3(inputStream, qj0Var);
-        this.o = aw3Var;
-        aw3Var.mark(5242880);
+        aw3 r0 = new aw3(r2, r3);
+        this.o = r0;
+        r0.mark(5242880);
     }
 
-    public /* synthetic */ hg3(int i, Object obj) {
-        this.n = i;
-        this.o = obj;
+    public /* synthetic */ hg3(int r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 }

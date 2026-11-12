@@ -11,9 +11,12 @@ public final class ba1 extends cx2 implements a90, b83, fx2, eo0 {
     public final int E;
     public c12 F;
 
-    public ba1(int i, wf1 wf1Var, int i2) {
-        this.B = (i2 & 4) != 0 ? null : wf1Var;
-        this.E = i;
+    public ba1(int r1, wf1 r2, int r3) {
+        if ((r3 & 4) == 0) goto L5;
+        r2 = null;
+    L5:
+        this.B = r2;
+        this.E = r1;
     }
 
     @Override // defpackage.b83
@@ -30,658 +33,681 @@ public final class ba1 extends cx2 implements a90, b83, fx2, eo0 {
     public final void i0() {
     }
 
-    /* JADX WARN: Code duplicated, block: B:13:0x0025  */
     @Override // defpackage.cx2
     public final void j0() {
-        int iOrdinal = v0().ordinal();
-        if (iOrdinal == 0) {
-            ey eyVar = (ey) ((ra) j51.P(this)).getFocusOwner();
-            eyVar.b(8, true, false);
-            ((s91) eyVar.d).a();
-        } else if (iOrdinal == 1) {
-            ((ra) j51.P(this)).getFocusOwner();
-            te5.p(this);
-        } else if (iOrdinal == 2) {
-            ey eyVar2 = (ey) ((ra) j51.P(this)).getFocusOwner();
-            eyVar2.b(8, true, false);
-            ((s91) eyVar2.d).a();
-        } else if (iOrdinal != 3) {
-            er1.n();
-            return;
-        }
-        c12 c12Var = this.F;
-        if (c12Var != null) {
-            c12Var.k();
-        }
+        int r0 = v0().ordinal();
+        if (r0 == 0) goto L13;
+        if (r0 != 1) goto L6;
+        ((ra) j51.P(this)).getFocusOwner();
+        te5.p(this);
+    L14:
+        c12 r1 = this.F;
+        if (r1 == null) goto L17;
+        r1.k();
+    L17:
         this.F = null;
+        return;
+    L6:
+        if (r0 == 2) goto L13;
+        if (r0 == 3) goto L14;
+        er1.n();
+        return;
+    L13:
+        ey r2 = (ey) ((ra) j51.P(this)).getFocusOwner();
+        r2.b(8, true, false);
+        ((s91) r2.d).a();
+        goto L14
     }
 
     @Override // defpackage.cx2
     public final void k0() {
-        if (v0().a()) {
-            ((ey) ((ra) j51.P(this)).getFocusOwner()).b(8, true, true);
-        }
+        if (v0().a() == false) goto L6;
+        ((ey) ((ra) j51.P(this)).getFocusOwner()).b(8, true, true);
+        return;
     }
 
-    /* JADX WARN: Code duplicated, block: B:165:0x027d  */
-    /* JADX WARN: Code duplicated, block: B:167:0x0284 A[ADDED_TO_REGION, LOOP:9: B:167:0x0284->B:174:0x0296, LOOP_START, PHI: r14
-  0x0284: PHI (r14v3 int) = (r14v2 int), (r14v4 int) binds: [B:166:0x0282, B:174:0x0296] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:168:0x0286  */
-    /* JADX WARN: Code duplicated, block: B:171:0x0291 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:172:0x0293  */
-    /* JADX WARN: Code duplicated, block: B:173:0x0295  */
-    /* JADX WARN: Code duplicated, block: B:175:0x029c  */
-    /* JADX WARN: Code duplicated, block: B:178:0x02a4  */
-    /* JADX WARN: Code duplicated, block: B:182:0x02af A[ORIG_RETURN, RETURN] */
-    /* JADX WARN: Code duplicated, block: B:216:0x021a A[SYNTHETIC] */
     public final boolean q0() {
-        f13 f13Var;
-        int i;
-        ba1 ba1Var;
-        z91 z91Var;
-        w12 w12Var;
-        boolean z;
-        w12 w12Var2;
-        int iOrdinal = uc5.O(this).ordinal();
-        if (iOrdinal == 0) {
-            ey eyVar = (ey) ((ra) j51.P(this)).getFocusOwner();
-            ba1 ba1VarF = eyVar.f();
-            z91 z91VarV0 = v0();
-            if (ba1VarF == this) {
-                r0(z91VarV0, z91VarV0);
-                return true;
-            }
-            if (ba1VarF != null || ((ra) ((ey) ((ra) j51.P(this)).getFocusOwner()).a).B()) {
-                if (ba1VarF != null) {
-                    f13Var = new f13(new ba1[16]);
-                    if (!ba1VarF.n.A) {
-                        cz1.b("visitAncestors called on an unattached node");
-                    }
-                    cx2 cx2Var = ba1VarF.n.r;
-                    c72 c72VarO = j51.O(ba1VarF);
-                    while (c72VarO != null) {
-                        if ((((cx2) c72VarO.Q.g).q & 1024) != 0) {
-                            while (cx2Var != null) {
-                                if ((cx2Var.p & 1024) != 0) {
-                                    cx2 cx2VarC = cx2Var;
-                                    f13 f13Var2 = null;
-                                    while (cx2VarC != null) {
-                                        if (cx2VarC instanceof ba1) {
-                                            f13Var.b((ba1) cx2VarC);
-                                        } else if ((cx2VarC.p & 1024) != 0 && (cx2VarC instanceof fo0)) {
-                                            int i2 = 0;
-                                            for (cx2 cx2Var2 = ((fo0) cx2VarC).C; cx2Var2 != null; cx2Var2 = cx2Var2.s) {
-                                                if ((cx2Var2.p & 1024) != 0) {
-                                                    i2++;
-                                                    if (i2 == 1) {
-                                                        cx2VarC = cx2Var2;
-                                                    } else {
-                                                        if (f13Var2 == null) {
-                                                            f13Var2 = new f13(new cx2[16]);
-                                                        }
-                                                        if (cx2VarC != null) {
-                                                            f13Var2.b(cx2VarC);
-                                                            cx2VarC = null;
-                                                        }
-                                                        f13Var2.b(cx2Var2);
-                                                    }
-                                                }
-                                            }
-                                            if (i2 == 1) {
-                                            }
-                                        }
-                                        cx2VarC = j51.c(f13Var2);
-                                    }
-                                }
-                                cx2Var = cx2Var.r;
-                            }
-                        }
-                        c72VarO = c72VarO.t();
-                        cx2Var = (c72VarO == null || (w12Var2 = c72VarO.Q) == null) ? null : (sq4) w12Var2.f;
-                    }
-                } else {
-                    f13Var = null;
-                }
-                Object[] objArr = new ba1[16];
-                Object[] objArr2 = new ba1[16];
-                if (!this.n.A) {
-                    cz1.b("visitAncestors called on an unattached node");
-                }
-                cx2 cx2Var3 = this.n.r;
-                c72 c72VarO2 = j51.O(this);
-                int i3 = 0;
-                int i4 = 0;
-                boolean z2 = true;
-                while (c72VarO2 != null) {
-                    if ((((cx2) c72VarO2.Q.g).q & 1024) != 0) {
-                        while (cx2Var3 != null) {
-                            if ((cx2Var3.p & 1024) != 0) {
-                                cx2 cx2VarC2 = cx2Var3;
-                                f13 f13Var3 = null;
-                                while (cx2VarC2 != null) {
-                                    if (cx2VarC2 instanceof ba1) {
-                                        ba1 ba1Var2 = (ba1) cx2VarC2;
-                                        if (h12.c(f13Var != null ? Boolean.valueOf(f13Var.j(ba1Var2)) : null, Boolean.TRUE)) {
-                                            int i5 = i3 + 1;
-                                            if (objArr.length < i5) {
-                                                int length = objArr.length;
-                                                Object[] objArr3 = new Object[Math.max(i5, length * 2)];
-                                                System.arraycopy(objArr, 0, objArr3, 0, length);
-                                                objArr = objArr3;
-                                            }
-                                            objArr[i3] = ba1Var2;
-                                            i3 = i5;
-                                        } else {
-                                            eyVar = eyVar;
-                                            int i6 = i4 + 1;
-                                            if (objArr2.length < i6) {
-                                                int length2 = objArr2.length;
-                                                Object[] objArr4 = new Object[Math.max(i6, length2 * 2)];
-                                                System.arraycopy(objArr2, 0, objArr4, 0, length2);
-                                                objArr2 = objArr4;
-                                            }
-                                            objArr2[i4] = ba1Var2;
-                                            i4 = i6;
-                                        }
-                                        if (ba1Var2 == ba1VarF) {
-                                            z2 = false;
-                                        }
-                                        z = false;
-                                    } else {
-                                        eyVar = eyVar;
-                                        z = true;
-                                    }
-                                    if (z && (cx2VarC2.p & 1024) != 0 && (cx2VarC2 instanceof fo0)) {
-                                        int i7 = 0;
-                                        for (cx2 cx2Var4 = ((fo0) cx2VarC2).C; cx2Var4 != null; cx2Var4 = cx2Var4.s) {
-                                            if ((cx2Var4.p & 1024) != 0) {
-                                                int i8 = i7 + 1;
-                                                if (i8 == 1) {
-                                                    cx2VarC2 = cx2Var4;
-                                                    i8 = i8;
-                                                } else {
-                                                    f13 f13Var4 = f13Var3 == null ? new f13(new cx2[16]) : f13Var3;
-                                                    if (cx2VarC2 != null) {
-                                                        f13Var4.b(cx2VarC2);
-                                                        cx2VarC2 = null;
-                                                    }
-                                                    f13Var4.b(cx2Var4);
-                                                    f13Var3 = f13Var4;
-                                                }
-                                                i7 = i8;
-                                            }
-                                        }
-                                        if (i7 != 1) {
-                                            cx2VarC2 = j51.c(f13Var3);
-                                        }
-                                    } else {
-                                        cx2VarC2 = j51.c(f13Var3);
-                                    }
-                                }
-                            }
-                            cx2Var3 = cx2Var3.r;
-                            eyVar = eyVar;
-                        }
-                    }
-                    ey eyVar2 = eyVar;
-                    c72VarO2 = c72VarO2.t();
-                    cx2Var3 = (c72VarO2 == null || (w12Var = c72VarO2.Q) == null) ? null : (sq4) w12Var.f;
-                    eyVar = eyVar2;
-                }
-                ey eyVar3 = eyVar;
-                if (!z2 || ba1VarF == null || uc5.P(ba1VarF, false)) {
-                    j51.F(this, new wc(4, this));
-                    int iOrdinal2 = v0().ordinal();
-                    if (iOrdinal2 != 0) {
-                        if (iOrdinal2 == 1) {
-                            ((ey) ((ra) j51.P(this)).getFocusOwner()).h(this);
-                        } else if (iOrdinal2 != 2) {
-                            if (iOrdinal2 != 3) {
-                                er1.n();
-                                return false;
-                            }
-                            ((ey) ((ra) j51.P(this)).getFocusOwner()).h(this);
-                        }
-                    }
-                    z91 z91Var2 = z91.p;
-                    z91 z91Var3 = z91.n;
-                    if (z2 && ba1VarF != null) {
-                        ba1VarF.r0(z91Var3, z91Var2);
-                    }
-                    z91 z91Var4 = z91.o;
-                    if (f13Var != null) {
-                        int i9 = f13Var.p - 1;
-                        Object[] objArr5 = f13Var.n;
-                        if (i9 < objArr5.length) {
-                            while (i9 >= 0) {
-                                ba1 ba1Var3 = (ba1) objArr5[i9];
-                                if (eyVar3.f() == this) {
-                                    ba1Var3.r0(z91Var4, z91Var2);
-                                    i9--;
-                                }
-                            }
-                            i = i4 - 1;
-                            if (i < objArr2.length) {
-                                while (i >= 0) {
-                                    ba1Var = (ba1) objArr2[i];
-                                    if (eyVar3.f() == this) {
-                                        if (ba1Var == ba1VarF) {
-                                            z91Var = z91Var3;
-                                        } else {
-                                            z91Var = z91Var2;
-                                        }
-                                        ba1Var.r0(z91Var, z91Var4);
-                                        i--;
-                                    }
-                                }
-                                if (eyVar3.f() == this) {
-                                    r0(z91VarV0, z91Var3);
-                                    if (eyVar3.f() != this) {
-                                        return true;
-                                    }
-                                }
-                            } else if (eyVar3.f() == this) {
-                                r0(z91VarV0, z91Var3);
-                                if (eyVar3.f() != this) {
-                                    return true;
-                                }
-                            }
-                        } else {
-                            i = i4 - 1;
-                            if (i < objArr2.length) {
-                                while (i >= 0) {
-                                    ba1Var = (ba1) objArr2[i];
-                                    if (eyVar3.f() == this) {
-                                        if (ba1Var == ba1VarF) {
-                                            z91Var = z91Var3;
-                                        } else {
-                                            z91Var = z91Var2;
-                                        }
-                                        ba1Var.r0(z91Var, z91Var4);
-                                        i--;
-                                    }
-                                }
-                                if (eyVar3.f() == this) {
-                                    r0(z91VarV0, z91Var3);
-                                    if (eyVar3.f() != this) {
-                                        return true;
-                                    }
-                                }
-                            } else if (eyVar3.f() == this) {
-                                r0(z91VarV0, z91Var3);
-                                if (eyVar3.f() != this) {
-                                    return true;
-                                }
-                            }
-                        }
-                    } else {
-                        i = i4 - 1;
-                        if (i < objArr2.length) {
-                            while (i >= 0) {
-                                ba1Var = (ba1) objArr2[i];
-                                if (eyVar3.f() == this) {
-                                    if (ba1Var == ba1VarF) {
-                                        z91Var = z91Var3;
-                                    } else {
-                                        z91Var = z91Var2;
-                                    }
-                                    ba1Var.r0(z91Var, z91Var4);
-                                    i--;
-                                }
-                            }
-                            if (eyVar3.f() == this) {
-                                r0(z91VarV0, z91Var3);
-                                if (eyVar3.f() != this) {
-                                    return true;
-                                }
-                            }
-                        } else if (eyVar3.f() == this) {
-                            r0(z91VarV0, z91Var3);
-                            if (eyVar3.f() != this) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-                return false;
-            }
-        } else if (iOrdinal != 1) {
-            if (iOrdinal == 2) {
-                return true;
-            }
-            if (iOrdinal != 3) {
-                er1.n();
-                return false;
-            }
-        }
+        int r1 = uc5.O(this).ordinal();
+        if (r1 == 0) goto L11;
+        if (r1 == 1) goto L181;
+        if (r1 == 2) goto L220;
+        if (r1 == 3) goto L181;
+        er1.n();
         return false;
+    L220:
+        return true;
+    L181:
+        return false;
+    L11:
+        ey r2 = (ey) ((ra) j51.P(this)).getFocusOwner();
+        ba1 r6 = r2.f();
+        z91 r7 = v0();
+        if (r6 != this) goto L15;
+        r0(r7, r7);
+        return true;
+    L15:
+        if (r6 != null) goto L21;
+        if (((ra) ((ey) ((ra) j51.P(this)).getFocusOwner()).a).B() == false) goto L181;
+    L21:
+        if (r6 == null) goto L65;
+        f13 r11 = new f13(new ba1[16]);
+        if (r6.n.A == true) goto L25;
+        cz1.b("visitAncestors called on an unattached node");
+    L25:
+        cx2 r12 = r6.n.r;
+        c72 r13 = j51.O(r6);
+    L26:
+        if (r13 == null) goto L66;
+        if ((((cx2) r13.Q.g).q & 1024) == 0) goto L58;
+    L29:
+        if (r12 == null) goto L58;
+        if ((r12.p & 1024) == 0) goto L57;
+        cx2 r14 = r12;
+        f13 r15 = null;
+    L33:
+        if (r14 == null) goto L57;
+        if ((r14 instanceof ba1) == false) goto L38;
+        r11.b((ba1) r14);
+    L56:
+        r14 = j51.c(r15);
+        goto L33
+    L38:
+        if ((r14.p & 1024) == 0) goto L56;
+        if ((r14 instanceof fo0) == false) goto L56;
+        cx2 r10 = ((fo0) r14).C;
+        int r3 = 0;
+    L42:
+        if (r10 == null) goto L54;
+        if ((r10.p & 1024) == 0) goto L53;
+        r3 = r3 + 1;
+        if (r3 != 1) goto L48;
+        r14 = r10;
+        goto L53
+    L48:
+        if (r15 != null) goto L50;
+        r15 = new f13(new cx2[16]);
+    L50:
+        if (r14 == null) goto L52;
+        r15.b(r14);
+        r14 = null;
+    L52:
+        r15.b(r10);
+    L53:
+        r10 = r10.s;
+        goto L42
+    L54:
+        if (r3 != 1) goto L56;
+    L57:
+        r12 = r12.r;
+    L58:
+        r13 = r13.t();
+        if (r13 == null) goto L63;
+        w12 r4 = r13.Q;
+        if (r4 == null) goto L63;
+        r12 = (sq4) r4.f;
+    L63:
+        r12 = null;
+    L66:
+        Object[] r5 = new ba1[16];
+        Object[] r8 = new ba1[16];
+        if (this.n.A == true) goto L69;
+        cz1.b("visitAncestors called on an unattached node");
+    L69:
+        cx2 r9 = this.n.r;
+        c72 r16 = j51.O(this);
+        int r17 = 0;
+        int r18 = 0;
+        boolean r19 = true;
+    L70:
+        if (r16 == null) goto L134;
+        if ((((cx2) r16.Q.g).q & 1024) == 0) goto L127;
+    L73:
+        if (r9 == null) goto L127;
+        if ((r9.p & 1024) == 0) goto L126;
+        cx2 r110 = r9;
+        f13 r111 = null;
+    L77:
+        if (r110 == null) goto L126;
+        if ((r110 instanceof ba1) == false) goto L99;
+        ba1 r20 = (ba1) r110;
+        if (r11 == null) goto L83;
+        Boolean r21 = Boolean.valueOf(r11.j(r20));
+    L85:
+        if (h12.c(r21, Boolean.TRUE) == false) goto L91;
+        int r22 = r17 + 1;
+        if (r5.length >= r22) goto L90;
+        int r23 = r5.length;
+        Object[] r24 = new Object[Math.max(r22, r23 * 2)];
+        System.arraycopy(r5, 0, r24, 0, r23);
+        r5 = r24;
+    L90:
+        r5[r17] = r20;
+        r17 = r22;
+    L96:
+        if (r20 != r6) goto L98;
+        r19 = false;
+    L98:
+        boolean r25 = false;
+    L100:
+        if (r25 == false) goto L125;
+        if ((r110.p & 1024) == 0) goto L125;
+        if ((r110 instanceof fo0) == false) goto L125;
+        cx2 r26 = ((fo0) r110).C;
+        int r27 = 0;
+    L106:
+        if (r26 == null) goto L122;
+        if ((r26.p & 1024) == 0) goto L120;
+        int r28 = r27 + 1;
+        if (r28 != 1) goto L112;
+        r110 = r26;
+        r28 = r28;
+    L118:
+        r27 = r28;
+        goto L120
+    L112:
+        if (r111 != null) goto L114;
+        f13 r29 = new f13(new cx2[16]);
+    L115:
+        if (r110 == null) goto L117;
+        r29.b(r110);
+        r110 = null;
+    L117:
+        r29.b(r26);
+        r111 = r29;
+        goto L118
+    L114:
+        r29 = r111;
+    L120:
+        r26 = r26.s;
+        goto L106
+    L122:
+        if (r27 == 1) goto L77;
+    L125:
+        r110 = j51.c(r111);
+        goto L77
+    L91:
+        r2 = r2;
+        int r30 = r18 + 1;
+        if (r8.length >= r30) goto L95;
+        int r31 = r8.length;
+        Object[] r32 = new Object[Math.max(r30, r31 * 2)];
+        System.arraycopy(r8, 0, r32, 0, r31);
+        r8 = r32;
+    L95:
+        r8[r18] = r20;
+        r18 = r30;
+        goto L96
+    L83:
+        r21 = null;
+        goto L85
+    L99:
+        r2 = r2;
+        r25 = true;
+    L126:
+        r9 = r9.r;
+        r2 = r2;
+    L127:
+        ey r210 = r2;
+        r16 = r16.t();
+        if (r16 == null) goto L132;
+        w12 r33 = r16.Q;
+        if (r33 == null) goto L132;
+        r9 = (sq4) r33.f;
+    L133:
+        r2 = r210;
+    L132:
+        r9 = null;
+        goto L133
+    L134:
+        ey r211 = r2;
+        if (r19 == false) goto L140;
+        if (r6 == null) goto L140;
+        if (uc5.P(r6, false) == true) goto L140;
+    L139:
+        return false;
+    L140:
+        j51.F(this, new wc(4, this));
+        int r34 = v0().ordinal();
+        if (r34 != 0) goto L143;
+    L152:
+        z91 r35 = z91.p;
+        z91 r36 = z91.n;
+        if (r19 == false) goto L156;
+        if (r6 == null) goto L156;
+        r6.r0(r36, r35);
+    L156:
+        z91 r37 = z91.o;
+        if (r11 == null) goto L165;
+        int r38 = r11.p - 1;
+        Object[] r39 = r11.n;
+        if (r38 >= r39.length) goto L165;
+    L160:
+        if (r38 < 0) goto L165;
+        ba1 r40 = (ba1) r39[r38];
+        if (r211.f() != this) goto L139;
+        r40.r0(r37, r35);
+        r38 = r38 - 1;
+    L165:
+        int r112 = r18 - 1;
+        if (r112 >= r8.length) goto L176;
+    L167:
+        if (r112 < 0) goto L176;
+        ba1 r41 = (ba1) r8[r112];
+        if (r211.f() != this) goto L139;
+        if (r41 != r6) goto L173;
+        z91 r42 = r36;
+    L174:
+        r41.r0(r42, r37);
+        r112 = r112 - 1;
+        goto L167
+    L173:
+        r42 = r35;
+    L176:
+        if (r211.f() != this) goto L139;
+        r0(r7, r36);
+        if (r211.f() != this) goto L139;
+        return true;
+    L143:
+        if (r34 != 1) goto L145;
+    L151:
+        ((ey) ((ra) j51.P(this)).getFocusOwner()).h(this);
+        goto L152
+    L145:
+        if (r34 == 2) goto L152;
+        if (r34 == 3) goto L151;
+        er1.n();
+        return false;
+    L65:
+        r11 = null;
+        goto L66
     }
 
-    public final void r0(z91 z91Var, z91 z91Var2) {
-        w12 w12Var;
-        wf1 wf1Var;
-        ey eyVar = (ey) ((ra) j51.P(this)).getFocusOwner();
-        ba1 ba1VarF = eyVar.f();
-        if (!z91Var.equals(z91Var2) && (wf1Var = this.B) != null) {
-            wf1Var.invoke(z91Var, z91Var2);
-        }
-        cx2 cx2Var = this.n;
-        if (!cx2Var.A) {
-            cz1.b("visitAncestors called on an unattached node");
-        }
-        cx2 cx2Var2 = this.n;
-        c72 c72VarO = j51.O(this);
-        while (c72VarO != null) {
-            if ((((cx2) c72VarO.Q.g).q & 5120) != 0) {
-                while (cx2Var2 != null) {
-                    int i = cx2Var2.p;
-                    if ((i & 5120) != 0) {
-                        if (cx2Var2 != cx2Var && (i & 1024) != 0) {
-                            return;
-                        }
-                        if ((i & 4096) != 0) {
-                            cx2 cx2VarC = cx2Var2;
-                            f13 f13Var = null;
-                            while (cx2VarC != null) {
-                                if (cx2VarC instanceof xo) {
-                                    xo xoVar = (xo) cx2VarC;
-                                    if (ba1VarF == eyVar.f()) {
-                                        xoVar.r0();
-                                        throw null;
-                                    }
-                                } else if ((cx2VarC.p & 4096) != 0 && (cx2VarC instanceof fo0)) {
-                                    int i2 = 0;
-                                    for (cx2 cx2Var3 = ((fo0) cx2VarC).C; cx2Var3 != null; cx2Var3 = cx2Var3.s) {
-                                        if ((cx2Var3.p & 4096) != 0) {
-                                            i2++;
-                                            if (i2 == 1) {
-                                                cx2VarC = cx2Var3;
-                                            } else {
-                                                if (f13Var == null) {
-                                                    f13Var = new f13(new cx2[16]);
-                                                }
-                                                if (cx2VarC != null) {
-                                                    f13Var.b(cx2VarC);
-                                                    cx2VarC = null;
-                                                }
-                                                f13Var.b(cx2Var3);
-                                            }
-                                        }
-                                    }
-                                    if (i2 == 1) {
-                                    }
-                                }
-                                cx2VarC = j51.c(f13Var);
-                            }
-                        } else {
-                            continue;
-                        }
-                    }
-                    cx2Var2 = cx2Var2.r;
-                }
-            }
-            c72VarO = c72VarO.t();
-            cx2Var2 = (c72VarO == null || (w12Var = c72VarO.Q) == null) ? null : (sq4) w12Var.f;
-        }
+    public final void r0(z91 r10, z91 r11) {
+        ey r0 = (ey) ((ra) j51.P(this)).getFocusOwner();
+        ba1 r1 = r0.f();
+        if (r10.equals(r11) == true) goto L7;
+        wf1 r2 = this.B;
+        if (r2 == null) goto L7;
+        r2.invoke(r10, r11);
+    L7:
+        cx2 r12 = this.n;
+        if (r12.A == true) goto L10;
+        cz1.b("visitAncestors called on an unattached node");
+    L10:
+        cx2 r13 = this.n;
+        c72 r9 = j51.O(this);
+    L11:
+        if (r9 == null) goto L60;
+        if ((((cx2) r9.Q.g).q & 5120) == 0) goto L54;
+    L14:
+        if (r13 == null) goto L54;
+        int r3 = r13.p;
+        if ((r3 & 5120) == 0) goto L53;
+        if (r13 == r12) goto L22;
+        if ((r3 & 1024) == 0) goto L22;
+        return;
+    L22:
+        if ((r3 & 4096) == 0) goto L53;
+        cx2 r4 = r13;
+        f13 r5 = null;
+    L24:
+        if (r4 == null) goto L53;
+        if ((r4 instanceof xo) == true) goto L27;
+        if ((r4.p & 4096) == 0) goto L52;
+        if ((r4 instanceof fo0) == false) goto L52;
+        cx2 r6 = ((fo0) r4).C;
+        int r7 = 0;
+    L38:
+        if (r6 == null) goto L50;
+        if ((r6.p & 4096) == 0) goto L49;
+        r7 = r7 + 1;
+        if (r7 != 1) goto L44;
+        r4 = r6;
+        goto L49
+    L44:
+        if (r5 != null) goto L46;
+        r5 = new f13(new cx2[16]);
+    L46:
+        if (r4 == null) goto L48;
+        r5.b(r4);
+        r4 = null;
+    L48:
+        r5.b(r6);
+    L49:
+        r6 = r6.s;
+        goto L38
+    L50:
+        if (r7 == 1) goto L24;
+    L52:
+        r4 = j51.c(r5);
+        goto L24
+    L27:
+        xo r8 = (xo) r4;
+        if (r1 != r0.f()) goto L52;
+        r8.r0();
+        throw null;
+    L53:
+        r13 = r13.r;
+    L54:
+        r9 = r9.t();
+        if (r9 == null) goto L59;
+        w12 r14 = r9.Q;
+        if (r14 == null) goto L59;
+        r13 = (sq4) r14.f;
+    L59:
+        r13 = null;
+        goto L11
     }
 
     public final x91 s0() {
-        boolean z;
-        w12 w12Var;
-        x91 x91Var = new x91();
-        x91Var.a = true;
-        y91 y91Var = y91.b;
-        x91Var.b = y91Var;
-        x91Var.c = y91Var;
-        x91Var.d = y91Var;
-        x91Var.e = y91Var;
-        x91Var.f = y91Var;
-        x91Var.g = y91Var;
-        x91Var.h = y91Var;
-        x91Var.i = y91Var;
-        x91Var.j = new k2(18, (byte) 0);
-        x91Var.k = new k2(18, (byte) 0);
-        x91Var.l = fz0.a0;
-        int i = this.E;
-        if (i == 1) {
-            z = true;
-        } else if (i == 0) {
-            z = !(((qz1) ((sz1) ((rz1) kb4.q(this, g90.m))).a.getValue()).a == 1);
-        } else {
-            if (i != 2) {
-                kf2.o("Unknown Focusability");
-                return null;
-            }
-            z = false;
-        }
-        x91Var.a = z;
-        cx2 cx2Var = this.n;
-        if (!cx2Var.A) {
-            cz1.b("visitAncestors called on an unattached node");
-        }
-        cx2 cx2Var2 = this.n;
-        c72 c72VarO = j51.O(this);
-        loop0: while (c72VarO != null) {
-            if ((((cx2) c72VarO.Q.g).q & 3072) != 0) {
-                while (cx2Var2 != null) {
-                    int i2 = cx2Var2.p;
-                    if ((i2 & 3072) != 0) {
-                        if (cx2Var2 != cx2Var && (i2 & 1024) != 0) {
-                            break loop0;
-                        }
-                        if ((i2 & 2048) != 0) {
-                            f13 f13Var = null;
-                            cx2 cx2VarC = cx2Var2;
-                            while (cx2VarC != null) {
-                                if (cx2VarC instanceof xo) {
-                                    bx2 bx2Var = ((xo) cx2VarC).B;
-                                    cz1.b("applyFocusProperties called on wrong node");
-                                    bx2Var.getClass();
-                                    kf2.k();
-                                    return null;
-                                }
-                                if ((cx2VarC.p & 2048) != 0 && (cx2VarC instanceof fo0)) {
-                                    int i3 = 0;
-                                    for (cx2 cx2Var3 = ((fo0) cx2VarC).C; cx2Var3 != null; cx2Var3 = cx2Var3.s) {
-                                        if ((cx2Var3.p & 2048) != 0) {
-                                            i3++;
-                                            if (i3 == 1) {
-                                                cx2VarC = cx2Var3;
-                                            } else {
-                                                if (f13Var == null) {
-                                                    f13Var = new f13(new cx2[16]);
-                                                }
-                                                if (cx2VarC != null) {
-                                                    f13Var.b(cx2VarC);
-                                                    cx2VarC = null;
-                                                }
-                                                f13Var.b(cx2Var3);
-                                            }
-                                        }
-                                    }
-                                    if (i3 == 1) {
-                                    }
-                                }
-                                cx2VarC = j51.c(f13Var);
-                            }
-                        } else {
-                            continue;
-                        }
-                    }
-                    cx2Var2 = cx2Var2.r;
-                }
-            }
-            c72VarO = c72VarO.t();
-            cx2Var2 = (c72VarO == null || (w12Var = c72VarO.Q) == null) ? null : (sq4) w12Var.f;
-        }
-        return x91Var;
+        x91 r0 = new x91();
+        r0.a = true;
+        y91 r2 = y91.b;
+        r0.b = r2;
+        r0.c = r2;
+        r0.d = r2;
+        r0.e = r2;
+        r0.f = r2;
+        r0.g = r2;
+        r0.h = r2;
+        r0.i = r2;
+        r0.j = new k2(18, (byte) 0);
+        r0.k = new k2(18, (byte) 0);
+        r0.l = fz0.a0;
+        int r3 = this.E;
+        if (r3 != 1) goto L5;
+        boolean r4 = true;
+    L14:
+        r0.a = r4;
+        cx2 r5 = this.n;
+        if (r5.A == true) goto L17;
+        cz1.b("visitAncestors called on an unattached node");
+    L17:
+        cx2 r6 = this.n;
+        c72 r11 = j51.O(this);
+    L18:
+        if (r11 == null) goto L63;
+        if ((((cx2) r11.Q.g).q & 3072) == 0) goto L57;
+    L21:
+        if (r6 == null) goto L57;
+        int r7 = r6.p;
+        if ((r7 & 3072) == 0) goto L56;
+        if (r6 == r5) goto L29;
+        if ((r7 & 1024) != 0) goto L63;
+    L29:
+        if ((r7 & 2048) == 0) goto L56;
+        f13 r8 = null;
+        cx2 r9 = r6;
+    L31:
+        if (r9 == null) goto L56;
+        if ((r9 instanceof xo) == true) goto L54;
+        if ((r9.p & 2048) == 0) goto L53;
+        if ((r9 instanceof fo0) == false) goto L53;
+        cx2 r10 = ((fo0) r9).C;
+        int r12 = 0;
+    L39:
+        if (r10 == null) goto L51;
+        if ((r10.p & 2048) == 0) goto L50;
+        r12 = r12 + 1;
+        if (r12 != 1) goto L45;
+        r9 = r10;
+        goto L50
+    L45:
+        if (r8 != null) goto L47;
+        r8 = new f13(new cx2[16]);
+    L47:
+        if (r9 == null) goto L49;
+        r8.b(r9);
+        r9 = null;
+    L49:
+        r8.b(r10);
+    L50:
+        r10 = r10.s;
+        goto L39
+    L51:
+        if (r12 == 1) goto L31;
+    L53:
+        r9 = j51.c(r8);
+        goto L31
+    L54:
+        bx2 r13 = ((xo) r9).B;
+        cz1.b("applyFocusProperties called on wrong node");
+        r13.getClass();
+        kf2.k();
+        return null;
+    L56:
+        r6 = r6.r;
+    L57:
+        r11 = r11.t();
+        if (r11 == null) goto L62;
+        w12 r14 = r11.Q;
+        if (r14 == null) goto L62;
+        r6 = (sq4) r14.f;
+    L62:
+        r6 = null;
+    L63:
+        return r0;
+    L5:
+        if (r3 != 0) goto L12;
+        if (((qz1) ((sz1) ((rz1) kb4.q(this, g90.m))).a.getValue()).a != 1) goto L9;
+        boolean r15 = true;
+    L10:
+        r4 = !r15;
+        goto L14
+    L9:
+        r15 = false;
+        goto L10
+    L12:
+        if (r3 != 2) goto L64;
+        r4 = false;
+        goto L14
+    L64:
+        kf2.o("Unknown Focusability");
+        return null;
     }
 
-    public final wv3 t0(q62 q62Var) {
-        wv3 wv3Var = s0().l;
-        if (wv3Var != fz0.a0) {
-            return q62Var == null ? wv3Var : wv3Var.f(q62Var.A(j51.N(this), 0L));
-        }
-        return q62Var != null ? q62Var.C(j51.N(this), false) : bu.d(0L, l93.o0(j51.N(this).p));
+    public final wv3 t0(q62 r5) {
+        wv3 r0 = s0().l;
+        if (r0 == fz0.a0) goto L8;
+        if (r5 != null) goto L7;
+        return r0;
+    L7:
+        return r0.f(r5.A(j51.N(this), 0));
+    L8:
+        if (r5 == null) goto L12;
+        return r5.C(j51.N(this), false);
+    L12:
+        return bu.d(0, l93.o0(j51.N(this).p));
     }
 
     public final z72 u0() {
-        w12 w12Var;
-        Object obj;
-        if (!this.n.A) {
-            cz1.b("visitAncestors called on an unattached node");
-        }
-        cx2 cx2Var = this.n.r;
-        c72 c72VarO = j51.O(this);
-        loop0: while (c72VarO != null) {
-            if ((((cx2) c72VarO.Q.g).q & 8388640) != 0) {
-                while (cx2Var != null) {
-                    int i = cx2Var.p;
-                    if ((i & 8388640) != 0) {
-                        if ((8388608 & i) != 0) {
-                            if (!(cx2Var instanceof z72)) {
-                                if (cx2Var instanceof fo0) {
-                                    cx2Var = null;
-                                    for (cx2 cx2Var2 = ((fo0) cx2Var).C; cx2Var2 != null; cx2Var2 = cx2Var2.s) {
-                                        if (cx2Var2 instanceof z72) {
-                                            cx2Var = cx2Var2;
-                                        }
-                                    }
-                                } else {
-                                    cx2Var = null;
-                                }
-                            }
-                            z72 z72Var = (z72) cx2Var;
-                            if (z72Var != null) {
-                                return z72Var;
-                            }
-                        } else if ((i & 32) != 0) {
-                            if (cx2Var instanceof fx2) {
-                                obj = cx2Var;
-                            } else if (cx2Var instanceof fo0) {
-                                obj = null;
-                                for (cx2 cx2Var3 = ((fo0) cx2Var).C; cx2Var3 != null; cx2Var3 = cx2Var3.s) {
-                                    if (cx2Var3 instanceof fx2) {
-                                        obj = cx2Var3;
-                                    }
-                                }
-                            } else {
-                                obj = null;
-                            }
-                            fx2 fx2Var = (fx2) obj;
-                            if (fx2Var != null) {
-                                fx2Var.E();
-                            }
-                        }
-                    }
-                    cx2Var = cx2Var.r;
-                }
-            }
-            c72VarO = c72VarO.t();
-            cx2Var = (c72VarO == null || (w12Var = c72VarO.Q) == null) ? null : (sq4) w12Var.f;
-        }
+        if (this.n.A == true) goto L5;
+        cz1.b("visitAncestors called on an unattached node");
+    L5:
+        cx2 r0 = this.n.r;
+        c72 r6 = j51.O(this);
+    L7:
+        if (r6 == null) goto L54;
+        if ((((cx2) r6.Q.g).q & 8388640) == 0) goto L48;
+    L10:
+        if (r0 == null) goto L48;
+        int r2 = r0.p;
+        if ((r2 & 8388640) == 0) goto L47;
+        if ((8388608 & r2) != 0) goto L16;
+        if ((r2 & 32) == 0) goto L47;
+        if ((r0 instanceof fx2) == false) goto L36;
+        Object r4 = r0;
+    L44:
+        fx2 r5 = (fx2) r4;
+        if (r5 == null) goto L47;
+        r5.E();
+        goto L47
+    L36:
+        if ((r0 instanceof fo0) == false) goto L43;
+        cx2 r3 = ((fo0) r0).C;
+        r4 = null;
+    L38:
+        if (r3 == null) goto L44;
+        if ((r3 instanceof fx2) == false) goto L42;
+        r4 = r3;
+    L42:
+        r3 = r3.s;
+        goto L38
+    L43:
+        r4 = null;
+        goto L44
+    L16:
+        if ((r0 instanceof z72) == false) goto L19;
+    L27:
+        z72 r1 = (z72) r0;
+        if (r1 == null) goto L54;
+        return r1;
+    L19:
+        if ((r0 instanceof fo0) == false) goto L26;
+        cx2 r7 = ((fo0) r0).C;
+        r0 = null;
+    L21:
+        if (r7 == null) goto L27;
+        if ((r7 instanceof z72) == false) goto L25;
+        r0 = r7;
+    L25:
+        r7 = r7.s;
+        goto L21
+    L26:
+        r0 = null;
+    L47:
+        r0 = r0.r;
+    L48:
+        r6 = r6.t();
+        if (r6 == null) goto L53;
+        w12 r8 = r6.Q;
+        if (r8 == null) goto L53;
+        r0 = (sq4) r8.f;
+    L53:
+        r0 = null;
+    L54:
         return null;
     }
 
     public final z91 v0() {
-        ba1 ba1VarF;
-        w12 w12Var;
-        boolean z = this.A;
-        z91 z91Var = z91.p;
-        if (!z || (ba1VarF = ((ey) ((ra) j51.P(this)).getFocusOwner()).f()) == null) {
-            return z91Var;
-        }
-        if (this == ba1VarF) {
-            return z91.n;
-        }
-        if (ba1VarF.A) {
-            if (!ba1VarF.n.A) {
-                cz1.b("visitAncestors called on an unattached node");
-            }
-            cx2 cx2Var = ba1VarF.n.r;
-            c72 c72VarO = j51.O(ba1VarF);
-            while (c72VarO != null) {
-                if ((((cx2) c72VarO.Q.g).q & 1024) != 0) {
-                    while (cx2Var != null) {
-                        if ((cx2Var.p & 1024) != 0) {
-                            cx2 cx2VarC = cx2Var;
-                            f13 f13Var = null;
-                            while (cx2VarC != null) {
-                                if (cx2VarC instanceof ba1) {
-                                    if (this == ((ba1) cx2VarC)) {
-                                        return z91.o;
-                                    }
-                                } else if ((cx2VarC.p & 1024) != 0 && (cx2VarC instanceof fo0)) {
-                                    int i = 0;
-                                    for (cx2 cx2Var2 = ((fo0) cx2VarC).C; cx2Var2 != null; cx2Var2 = cx2Var2.s) {
-                                        if ((cx2Var2.p & 1024) != 0) {
-                                            i++;
-                                            if (i == 1) {
-                                                cx2VarC = cx2Var2;
-                                            } else {
-                                                if (f13Var == null) {
-                                                    f13Var = new f13(new cx2[16]);
-                                                }
-                                                if (cx2VarC != null) {
-                                                    f13Var.b(cx2VarC);
-                                                    cx2VarC = null;
-                                                }
-                                                f13Var.b(cx2Var2);
-                                            }
-                                        }
-                                    }
-                                    if (i == 1) {
-                                    }
-                                }
-                                cx2VarC = j51.c(f13Var);
-                            }
-                        }
-                        cx2Var = cx2Var.r;
-                    }
-                }
-                c72VarO = c72VarO.t();
-                cx2Var = (c72VarO == null || (w12Var = c72VarO.Q) == null) ? null : (sq4) w12Var.f;
-            }
-        }
-        return z91Var;
+        boolean r0 = this.A;
+        z91 r1 = z91.p;
+        if (r0 == true) goto L5;
+        return r1;
+    L5:
+        ba1 r2 = ((ey) ((ra) j51.P(this)).getFocusOwner()).f();
+        if (r2 != null) goto L8;
+        return r1;
+    L8:
+        if (this != r2) goto L12;
+        return z91.n;
+    L12:
+        if (r2.A == true) goto L14;
+    L59:
+        return r1;
+    L14:
+        if (r2.n.A == true) goto L16;
+        cz1.b("visitAncestors called on an unattached node");
+    L16:
+        cx2 r3 = r2.n.r;
+        c72 r4 = j51.O(r2);
+    L17:
+        if (r4 == null) goto L59;
+        if ((((cx2) r4.Q.g).q & 1024) == 0) goto L53;
+    L20:
+        if (r3 == null) goto L53;
+        if ((r3.p & 1024) == 0) goto L52;
+        cx2 r5 = r3;
+        f13 r6 = null;
+    L24:
+        if (r5 == null) goto L52;
+        if ((r5 instanceof ba1) == true) goto L28;
+        if ((r5.p & 1024) == 0) goto L51;
+        if ((r5 instanceof fo0) == false) goto L51;
+        cx2 r7 = ((fo0) r5).C;
+        int r8 = 0;
+    L37:
+        if (r7 == null) goto L49;
+        if ((r7.p & 1024) == 0) goto L48;
+        r8 = r8 + 1;
+        if (r8 != 1) goto L43;
+        r5 = r7;
+        goto L48
+    L43:
+        if (r6 != null) goto L45;
+        r6 = new f13(new cx2[16]);
+    L45:
+        if (r5 == null) goto L47;
+        r6.b(r5);
+        r5 = null;
+    L47:
+        r6.b(r7);
+    L48:
+        r7 = r7.s;
+        goto L37
+    L49:
+        if (r8 == 1) goto L24;
+    L51:
+        r5 = j51.c(r6);
+        goto L24
+    L28:
+        if (this != ((ba1) r5)) goto L51;
+        return z91.o;
+    L52:
+        r3 = r3.r;
+    L53:
+        r4 = r4.t();
+        if (r4 == null) goto L58;
+        w12 r9 = r4.Q;
+        if (r9 == null) goto L58;
+        r3 = (sq4) r9.f;
+    L58:
+        r3 = null;
+        goto L17
     }
 
     public final void w0() {
-        int iOrdinal = v0().ordinal();
-        if (iOrdinal != 0) {
-            if (iOrdinal == 1) {
-                return;
-            }
-            if (iOrdinal != 2) {
-                if (iOrdinal == 3) {
-                    return;
-                }
-                er1.n();
-                return;
-            }
-        }
-        jx3 jx3Var = new jx3();
-        j51.F(this, new fa(5, jx3Var, this));
-        Object obj = jx3Var.n;
-        if (obj == null) {
-            h12.Q("focusProperties");
-            throw null;
-        }
-        if (((x91) obj).a) {
-            return;
-        }
+        int r0 = v0().ordinal();
+        if (r0 == 0) goto L12;
+        if (r0 != 1) goto L6;
+        return;
+    L6:
+        if (r0 == 2) goto L12;
+        if (r0 == 3) goto L22;
+        er1.n();
+        return;
+    L22:
+        return;
+    L12:
+        jx3 r1 = new jx3();
+        j51.F(this, new fa(5, r1, this));
+        Object r2 = r1.n;
+        if (r2 != null) goto L15;
+        h12.Q("focusProperties");
+        throw null;
+    L15:
+        if (((x91) r2).a == true) goto L21;
         ((ey) ((ra) j51.P(this)).getFocusOwner()).b(8, true, true);
+        return;
     }
 
     public final void x0() {
     }
 
-    public final boolean y0(int i) {
+    public final boolean y0(int r2) {
         Trace.beginSection("FocusTransactions:requestFocus");
-        try {
-            return s0().a ? q0() : kb4.v(this, i, new k2(i));
-        } finally {
-            Trace.endSection();
-        }
+    L11:
+        th = move-exception;
+        Trace.endSection();
+        throw th;
+    L4:
+        if (s0().a == false) goto L8;
+        boolean r1 = q0();     // Catch: Throwable -> L11
+        Trace.endSection();
+        return r1;
+    L8:
+        boolean r3 = kb4.v(this, r2, new k2(r2));     // Catch: Throwable -> L11
+        Trace.endSection();
+        return r3;
     }
 }

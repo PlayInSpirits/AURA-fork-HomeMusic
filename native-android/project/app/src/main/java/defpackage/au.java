@@ -20,171 +20,177 @@ public final class au {
     public Object f;
     public Object g;
 
-    public au(BottomSheetBehavior bottomSheetBehavior, View view, md1 md1Var) {
+    public au(BottomSheetBehavior r3, View r4, md1 r5) {
         this.a = false;
         this.f = new Handler(Looper.getMainLooper());
-        this.b = bottomSheetBehavior;
-        this.c = view;
-        this.d = md1Var;
+        this.b = r3;
+        this.c = r4;
+        this.d = r5;
         this.e = new xi3();
-        bottomSheetBehavior.w(new wt(1, this));
+        r3.w(new wt(1, this));
     }
 
-    public void a(float f) {
-        xi3 xi3Var = (xi3) this.e;
-        if (xi3Var != null) {
-            ns3 ns3Var = xi3Var.o0;
-            ConstraintLayout constraintLayout = ns3Var != null ? (ConstraintLayout) ((ae1) ns3Var.q).b : null;
-            if (constraintLayout != null) {
-                float fMax = Math.max(0.0f, Math.min(0.2f, f - 0.2f)) / 0.2f;
-                constraintLayout.setAlpha(1.0f - fMax);
-                constraintLayout.setVisibility(((double) fMax) > 0.99d ? 8 : 0);
-            }
-        }
+    public void a(float r5) {
+        xi3 r4 = (xi3) this.e;
+        if (r4 == null) goto L15;
+        ns3 r6 = r4.o0;
+        if (r6 == null) goto L7;
+        ConstraintLayout r7 = (ConstraintLayout) ((ae1) r6.q).b;
+    L8:
+        if (r7 == null) goto L16;
+        float r8 = Math.max(0.0f, Math.min(0.2f, r5 - 0.2f)) / 0.2f;
+        r7.setAlpha(1.0f - r8);
+        if (r8 <= 0.99d) goto L12;
+        int r9 = 8;
+    L13:
+        r7.setVisibility(r9);
+        return;
+    L12:
+        r9 = 0;
+        goto L13
+    L16:
+        return;
+    L7:
+        r7 = null;
+        goto L8
     }
 
     public tj0 b() {
-        Context context = (Context) this.b;
+        Context r0 = (Context) this.b;
+        boolean r2 = true;
         rr2.w(!this.a);
         this.a = true;
-        if (((qp4) this.d) == null) {
-            this.d = new qp4(new im[0]);
-        }
-        dn dnVar = (dn) this.f;
-        wo0 wo0Var = (wo0) this.g;
-        if (dnVar == null) {
-            if (wo0Var == null) {
-                this.g = new wo0(context);
-            }
-            if (((fz0) this.e) == null) {
-                this.e = fz0.T;
-            }
-            ss0 ss0Var = new ss0();
-            ss0Var.n = context != null ? context.getApplicationContext() : null;
-            ss0Var.p = fz0.T;
-            if (context == null) {
-                ss0Var.q = nl.c;
-            }
-            nl nlVar = context == null ? (nl) this.c : null;
-            Context context2 = (Context) ss0Var.n;
-            if (context2 == null) {
-                ss0Var.q = nlVar;
-            }
-            wo0 wo0Var2 = (wo0) this.g;
-            ss0Var.o = wo0Var2;
-            ss0Var.p = (fz0) this.e;
-            if (wo0Var2 == null) {
-                ss0Var.o = new wo0(context2);
-            }
-            this.f = new dn(ss0Var);
-        } else {
-            rr2.w(wo0Var == null);
-            rr2.w(((fz0) this.e) == null);
-        }
+        if (((qp4) this.d) != null) goto L5;
+        this.d = new qp4(new im[0]);
+    L5:
+        dn r1 = (dn) this.f;
+        wo0 r4 = (wo0) this.g;
+        if (r1 != null) goto L29;
+        if (r4 != null) goto L10;
+        this.g = new wo0(r0);
+    L10:
+        if (((fz0) this.e) != null) goto L12;
+        this.e = fz0.T;
+    L12:
+        ss0 r3 = new ss0();
+        nl r5 = null;
+        if (r0 == null) goto L15;
+        Context r6 = r0.getApplicationContext();
+    L16:
+        r3.n = r6;
+        r3.p = fz0.T;
+        if (r0 != null) goto L19;
+        r3.q = nl.c;
+    L19:
+        if (r0 != null) goto L22;
+        r5 = (nl) this.c;
+    L22:
+        Context r7 = (Context) r3.n;
+        if (r7 != null) goto L25;
+        r3.q = r5;
+    L25:
+        wo0 r8 = (wo0) this.g;
+        r3.o = r8;
+        r3.p = (fz0) this.e;
+        if (r8 != null) goto L28;
+        r3.o = new wo0(r7);
+    L28:
+        this.f = new dn(r3);
+    L38:
         return new tj0(this);
+    L15:
+        r6 = null;
+        goto L16
+    L29:
+        if (r4 != null) goto L31;
+        boolean r9 = true;
+    L32:
+        rr2.w(r9);
+        if (((fz0) this.e) == null) goto L36;
+        r2 = false;
+    L36:
+        rr2.w(r2);
+        goto L38
+    L31:
+        r9 = false;
+        goto L32
     }
 
-    public lt2 c(int i) {
-        go4 bm0Var;
-        HashMap map = (HashMap) this.d;
-        lt2 lt2Var = (lt2) map.get(Integer.valueOf(i));
-        if (lt2Var != null) {
-            return lt2Var;
-        }
-        HashMap map2 = (HashMap) this.c;
-        go4 slVar = (go4) map2.get(Integer.valueOf(i));
-        if (slVar == null) {
-            final bi0 bi0Var = (bi0) this.e;
-            bi0Var.getClass();
-            final int i2 = 0;
-            if (i != 0) {
-                final int i3 = 1;
-                if (i != 1) {
-                    final int i4 = 2;
-                    if (i == 2) {
-                        final Class clsAsSubclass = HlsMediaSource$Factory.class.asSubclass(lt2.class);
-                        bm0Var = new go4() { // from class: am0
-                            @Override // defpackage.go4
-                            public final Object get() {
-                                switch (i4) {
-                                    case 0:
-                                        break;
-                                    case 1:
-                                        break;
-                                }
-                                return dm0.f(clsAsSubclass, bi0Var);
-                            }
-                        };
-                    } else if (i == 3) {
-                        slVar = new sl(i3, Class.forName("androidx.media3.exoplayer.rtsp.RtspMediaSource$Factory").asSubclass(lt2.class));
-                    } else if (i == 4) {
-                        bm0Var = new bm0(i2, this, bi0Var);
-                    } else {
-                        kf2.n(f34.f(i, "Unrecognized contentType: "));
-                        slVar = null;
-                    }
-                } else {
-                    final Class<? extends U> clsAsSubclass2 = Class.forName("androidx.media3.exoplayer.smoothstreaming.SsMediaSource$Factory").asSubclass(lt2.class);
-                    bm0Var = new go4() { // from class: am0
-                        @Override // defpackage.go4
-                        public final Object get() {
-                            switch (i3) {
-                                case 0:
-                                    break;
-                                case 1:
-                                    break;
-                            }
-                            return dm0.f(clsAsSubclass2, bi0Var);
-                        }
-                    };
-                }
-                slVar = bm0Var;
-            } else {
-                final Class<? extends U> clsAsSubclass3 = Class.forName("androidx.media3.exoplayer.dash.DashMediaSource$Factory").asSubclass(lt2.class);
-                slVar = new go4() { // from class: am0
-                    @Override // defpackage.go4
-                    public final Object get() {
-                        switch (i2) {
-                            case 0:
-                                break;
-                            case 1:
-                                break;
-                        }
-                        return dm0.f(clsAsSubclass3, bi0Var);
-                    }
-                };
-            }
-            map2.put(Integer.valueOf(i), slVar);
-        }
-        lt2 lt2Var2 = (lt2) slVar.get();
-        yc5 yc5Var = (yc5) this.g;
-        if (yc5Var != null) {
-            lt2Var2.e(yc5Var);
-        }
-        lt2Var2.a((om0) this.f);
-        lt2Var2.c(this.a);
-        lt2Var2.b();
-        map.put(Integer.valueOf(i), lt2Var2);
-        return lt2Var2;
+    public lt2 c(int r8) {
+        HashMap r0 = (HashMap) this.d;
+        lt2 r1 = (lt2) r0.get(Integer.valueOf(r8));
+        if (r1 == null) goto L5;
+        return r1;
+    L5:
+        HashMap r2 = (HashMap) this.c;
+        go4 r3 = (go4) r2.get(Integer.valueOf(r8));
+        if (r3 != null) goto L26;
+        final bi0 r4 = (bi0) this.e;
+        r4.getClass();
+        final int r5 = 0;
+        if (r8 == 0) goto L24;
+        final int r6 = 1;
+        if (r8 == 1) goto L23;
+        final int r7 = 2;
+        if (r8 != 2) goto L15;
+        final Class r9 = HlsMediaSource$Factory.class.asSubclass(lt2.class);
+        go4 r10 = new am0(r9, r4, r7);
+    L19:
+        r3 = r10;
+    L25:
+        r2.put(Integer.valueOf(r8), r3);
+        goto L26
+    L15:
+        if (r8 != 3) goto L17;
+        r3 = new sl(r6, Class.forName("androidx.media3.exoplayer.rtsp.RtspMediaSource$Factory").asSubclass(lt2.class));
+        goto L25
+    L17:
+        if (r8 != 4) goto L20;
+        r10 = new bm0(r5, this, r4);
+        goto L19
+    L20:
+        kf2.n(f34.f(r8, "Unrecognized contentType: "));
+        r3 = null;
+        goto L26
+    L23:
+        final Class<? extends U> r11 = Class.forName("androidx.media3.exoplayer.smoothstreaming.SsMediaSource$Factory").asSubclass(lt2.class);
+        r10 = new am0(r11, r4, r6);
+        goto L19
+    L24:
+        final Class<? extends U> r12 = Class.forName("androidx.media3.exoplayer.dash.DashMediaSource$Factory").asSubclass(lt2.class);
+        r3 = new am0(r12, r4, r5);
+    L26:
+        lt2 r13 = (lt2) r3.get();
+        yc5 r14 = (yc5) this.g;
+        if (r14 == null) goto L29;
+        r13.e(r14);
+    L29:
+        r13.a((om0) this.f);
+        r13.c(this.a);
+        r13.b();
+        r0.put(Integer.valueOf(r8), r13);
+        return r13;
     }
 
-    public void d(boolean z) {
-        BottomSheetBehavior bottomSheetBehavior = (BottomSheetBehavior) this.b;
-        if (z || u52.c().a) {
-            bottomSheetBehavior.J(4);
-        } else {
-            bottomSheetBehavior.J(5);
-        }
+    public void d(boolean r1) {
+        BottomSheetBehavior r0 = (BottomSheetBehavior) this.b;
+        if (r1 == false) goto L5;
+    L9:
+        r0.J(4);
+        return;
+    L5:
+        if (u52.c().a == true) goto L9;
+        r0.J(5);
     }
 
-    public au(Context context) {
-        this.b = context;
+    public au(Context r1) {
+        this.b = r1;
         this.c = nl.c;
     }
 
-    public au(n51 n51Var, om0 om0Var) {
-        this.b = n51Var;
-        this.f = om0Var;
+    public au(n51 r1, om0 r2) {
+        this.b = r1;
+        this.f = r2;
         this.c = new HashMap();
         this.d = new HashMap();
         this.a = true;

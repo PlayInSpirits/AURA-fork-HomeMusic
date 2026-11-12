@@ -21,8 +21,11 @@ import java.util.Set;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class SmartSession {
+    public static final int $stable = 0;
+    public static final Companion Companion = null;
     public static final int LOW_WATER = 1;
     public static final int MAX_SONGS = 5000;
+    private static final Set<String> REACTIONS = null;
     private boolean again;
     private final String context;
     private int failures;
@@ -35,44 +38,104 @@ public final class SmartSession {
     private final HashMap<String, String> recs;
     private final String title;
     private final ArrayList<PlayEvent> unsent;
-    public static final Companion Companion = new Companion(null);
-    public static final int $stable = 8;
-    private static final Set<String> REACTIONS = ti.t0(new String[]{PlayEvent.SKIP, PlayEvent.FINISH, PlayEvent.LIKE, PlayEvent.DISLIKE});
 
-    public SmartSession(String str, String str2, String str3, List<String> list) {
-        str.getClass();
-        str2.getClass();
-        list.getClass();
-        this.context = str2;
-        this.title = str3;
-        this.original = list;
-        this.id = str;
-        this.recs = new HashMap<>();
-        HashSet<String> hashSet = new HashSet<>();
-        Iterator<T> it = list.iterator();
-        while (it.hasNext()) {
-            hashSet.add(SmartContexts.INSTANCE.mediaId((String) it.next()));
+    /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+    public static final class Companion {
+        public /* synthetic */ Companion(xj0 r1) {
+            this();
         }
-        this.listed = hashSet;
-        this.ownIds = new HashSet<>(hashSet);
-        this.unsent = new ArrayList<>();
+
+        public final Map<String, Object> startBody(String r2, List<String> r3, String r4, String r5, String r6, String r7) {
+            r2.getClass();
+            r3.getClass();
+            HashMap r1 = new HashMap();
+            r1.put("context", r2);
+            r1.put("songs", q40.L0(r3, SmartSession.MAX_SONGS));
+            if (r4 != null) goto L5;
+        L10:
+            if (r5 != null) goto L12;
+        L17:
+            ux3 r8 = k62.c;
+            String r9 = gi1.b0(r6);
+            if (r9 == null) goto L20;
+            r1.put("origin", r9);
+        L20:
+            if (r7 != null) goto L22;
+        L27:
+            return r1;
+        L22:
+            if (qm4.u0(r7) == false) goto L25;
+            r7 = null;
+        L25:
+            if (r7 == null) goto L27;
+            r1.put("client", qm4.J0(32, r7));
+            goto L27
+        L12:
+            if (qm4.u0(r5) == false) goto L15;
+            r5 = null;
+        L15:
+            if (r5 == null) goto L17;
+            r1.put("title", qm4.J0(256, r5));
+            goto L17
+        L5:
+            if (qm4.u0(r4) == false) goto L8;
+            r4 = null;
+        L8:
+            if (r4 == null) goto L10;
+            r1.put("current", qm4.J0(80, r4));
+            goto L10
+        }
+
+        private Companion() {
+        }
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
-    public static final boolean sent$lambda$1(HashSet hashSet, PlayEvent playEvent) {
-        playEvent.getClass();
-        return hashSet.contains(playEvent.getEventId());
+    static {
+        Companion = new Companion(null);
+        $stable = 8;
+        REACTIONS = ti.t0(new String[]{PlayEvent.SKIP, PlayEvent.FINISH, PlayEvent.LIKE, PlayEvent.DISLIKE});
     }
 
-    public final void accept(String str) {
-        str.getClass();
-        String str2 = this.recs.get(str);
-        if (str2 == null) {
-            return;
-        }
-        this.recs.remove(str);
-        this.recs.remove("hub:".concat(str2));
-        this.ownIds.add(str);
+    public SmartSession(String r1, String r2, String r3, List<String> r4) {
+        r1.getClass();
+        r2.getClass();
+        r4.getClass();
+        this.context = r2;
+        this.title = r3;
+        this.original = r4;
+        this.id = r1;
+        this.recs = new HashMap();
+        HashSet<String> r5 = new HashSet();
+        Iterator<T> r6 = r4.iterator();
+    L4:
+        if (r6.hasNext() == false) goto L6;
+        String r7 = (String) r6.next();
+        r5.add(SmartContexts.INSTANCE.mediaId(r7));
+        goto L4
+    L6:
+        this.listed = r5;
+        this.ownIds = new HashSet(r5);
+        this.unsent = new ArrayList();
+    }
+
+    public static /* synthetic */ boolean a(HashSet r0, PlayEvent r1) {
+        return sent$lambda$1(r0, r1);
+    }
+
+    private static final boolean sent$lambda$1(HashSet r0, PlayEvent r1) {
+        r1.getClass();
+        return r0.contains(r1.getEventId());
+    }
+
+    public final void accept(String r4) {
+        r4.getClass();
+        String r0 = this.recs.get(r4);
+        if (r0 != null) goto L5;
+        return;
+    L5:
+        this.recs.remove(r4);
+        this.recs.remove("hub:".concat(r0));
+        this.ownIds.add(r4);
     }
 
     public final void expire() {
@@ -115,144 +178,128 @@ public final class SmartSession {
         return this.title;
     }
 
-    public final boolean isListed(String str) {
-        return str != null && this.listed.contains(str);
+    public final boolean isListed(String r1) {
+        if (r1 != null) goto L4;
+        return false;
+    L4:
+        if (this.listed.contains(r1) == false) goto L9;
+        return true;
+    L9:
+        return false;
     }
 
-    public final boolean isOwn(String str) {
-        return str != null && this.ownIds.contains(str);
+    public final boolean isOwn(String r1) {
+        if (r1 != null) goto L4;
+        return false;
+    L4:
+        if (this.ownIds.contains(r1) == false) goto L9;
+        return true;
+    L9:
+        return false;
     }
 
-    public final boolean isRec(String str) {
-        return str != null && this.recs.containsKey(str);
+    public final boolean isRec(String r1) {
+        if (r1 != null) goto L4;
+        return false;
+    L4:
+        if (this.recs.containsKey(r1) == false) goto L9;
+        return true;
+    L9:
+        return false;
     }
 
-    public final boolean onEvent(PlayEvent playEvent) {
-        playEvent.getClass();
-        boolean zC = h12.c(playEvent.getContext(), getRecContext());
-        if (!zC && !h12.c(playEvent.getContext(), this.context)) {
-            return false;
-        }
-        if (zC) {
-            this.unsent.add(playEvent);
-        }
-        if (h12.c(playEvent.getKind(), PlayEvent.START)) {
-            return true;
-        }
-        return zC && REACTIONS.contains(playEvent.getKind());
+    public final boolean onEvent(PlayEvent r5) {
+        r5.getClass();
+        boolean r0 = h12.c(r5.getContext(), getRecContext());
+        if (r0 == false) goto L5;
+    L7:
+        if (r0 == false) goto L10;
+        this.unsent.add(r5);
+    L10:
+        if (h12.c(r5.getKind(), PlayEvent.START) == true) goto L16;
+        if (r0 == true) goto L13;
+    L15:
+        return false;
+    L13:
+        if (REACTIONS.contains(r5.getKind()) == false) goto L15;
+        return true;
+    L16:
+        return true;
+    L5:
+        if (h12.c(r5.getContext(), this.context) == true) goto L7;
+        return false;
     }
 
     public final Set<String> recIds() {
-        Set<String> setKeySet = this.recs.keySet();
-        setKeySet.getClass();
-        return q40.T0(setKeySet);
+        Set<String> r0 = this.recs.keySet();
+        r0.getClass();
+        return q40.T0(r0);
     }
 
-    public final String refOf(String str) {
-        str.getClass();
-        return this.recs.get(str);
+    public final String refOf(String r1) {
+        r1.getClass();
+        return this.recs.get(r1);
     }
 
-    public final List<String> register(List<SmartRec> list) {
-        String queueId;
-        list.getClass();
-        ArrayList arrayList = new ArrayList();
-        for (SmartRec smartRec : list) {
-            String ref = smartRec.getRef();
-            String str = null;
-            if (ref != null) {
-                if (qm4.u0(ref)) {
-                    ref = null;
-                }
-                if (ref != null && (queueId = smartRec.getQueueId()) != null) {
-                    this.recs.put(queueId, ref);
-                    this.recs.put("hub:".concat(ref), ref);
-                    str = queueId;
-                }
-            }
-            if (str != null) {
-                arrayList.add(str);
-            }
-        }
-        return arrayList;
+    public final List<String> register(List<SmartRec> r6) {
+        r6.getClass();
+        ArrayList r0 = new ArrayList();
+        Iterator<T> r7 = r6.iterator();
+    L4:
+        if (r7.hasNext() == false) goto L19;
+        SmartRec r1 = (SmartRec) r7.next();
+        String r2 = r1.getRef();
+        String r3 = null;
+        if (r2 != null) goto L8;
+    L17:
+        if (r3 == null) goto L4;
+        r0.add(r3);
+        goto L4
+    L8:
+        if (qm4.u0(r2) == false) goto L11;
+        r2 = null;
+    L11:
+        if (r2 == null) goto L17;
+        String r4 = r1.getQueueId();
+        if (r4 == null) goto L17;
+        this.recs.put(r4, r2);
+        this.recs.put("hub:".concat(r2), r2);
+        r3 = r4;
+        goto L17
+    L19:
+        return r0;
     }
 
-    public final void sent(SmartNextIn smartNextIn) {
-        smartNextIn.getClass();
-        List<PlayEvent> played = smartNextIn.getPlayed();
-        HashSet hashSet = new HashSet();
-        Iterator<T> it = played.iterator();
-        while (it.hasNext()) {
-            hashSet.add(((PlayEvent) it.next()).getEventId());
-        }
-        v40.p0(this.unsent, new kh3(hashSet, 1));
+    public final void sent(SmartNextIn r3) {
+        r3.getClass();
+        List<PlayEvent> r4 = r3.getPlayed();
+        HashSet r0 = new HashSet();
+        Iterator<T> r5 = r4.iterator();
+    L4:
+        if (r5.hasNext() == false) goto L6;
+        r0.add(((PlayEvent) r5.next()).getEventId());
+        goto L4
+    L6:
+        v40.p0(this.unsent, new kh3(r0, 1));
     }
 
-    public final void setAgain(boolean z) {
-        this.again = z;
+    public final void setAgain(boolean r1) {
+        this.again = r1;
     }
 
-    public final void setFailures(int i) {
-        this.failures = i;
+    public final void setFailures(int r1) {
+        this.failures = r1;
     }
 
-    public final void setInFlight(boolean z) {
-        this.inFlight = z;
+    public final void setInFlight(boolean r1) {
+        this.inFlight = r1;
     }
 
-    public final void setPolls(int i) {
-        this.polls = i;
+    public final void setPolls(int r1) {
+        this.polls = r1;
     }
 
-    public final SmartNextIn snapshot(String str) {
-        return new SmartNextIn(q40.Q0(this.unsent), str);
-    }
-
-    /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-    public static final class Companion {
-        public /* synthetic */ Companion(xj0 xj0Var) {
-            this();
-        }
-
-        public final Map<String, Object> startBody(String str, List<String> list, String str2, String str3, String str4, String str5) {
-            str.getClass();
-            list.getClass();
-            HashMap map = new HashMap();
-            map.put("context", str);
-            map.put("songs", q40.L0(list, SmartSession.MAX_SONGS));
-            if (str2 != null) {
-                if (qm4.u0(str2)) {
-                    str2 = null;
-                }
-                if (str2 != null) {
-                    map.put("current", qm4.J0(80, str2));
-                }
-            }
-            if (str3 != null) {
-                if (qm4.u0(str3)) {
-                    str3 = null;
-                }
-                if (str3 != null) {
-                    map.put("title", qm4.J0(256, str3));
-                }
-            }
-            ux3 ux3Var = k62.c;
-            String strB0 = gi1.b0(str4);
-            if (strB0 != null) {
-                map.put("origin", strB0);
-            }
-            if (str5 != null) {
-                if (qm4.u0(str5)) {
-                    str5 = null;
-                }
-                if (str5 != null) {
-                    map.put("client", qm4.J0(32, str5));
-                }
-            }
-            return map;
-        }
-
-        private Companion() {
-        }
+    public final SmartNextIn snapshot(String r2) {
+        return new SmartNextIn(q40.Q0(this.unsent), r2);
     }
 }

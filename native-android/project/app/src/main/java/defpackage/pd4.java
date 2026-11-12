@@ -10,64 +10,71 @@ public final class pd4 {
     public final int[] b;
     public final int[] c;
 
-    public pd4(int[] iArr, Random random) {
-        this.b = iArr;
-        this.a = random;
-        this.c = new int[iArr.length];
-        for (int i = 0; i < iArr.length; i++) {
-            this.c[iArr[i]] = i;
-        }
+    public pd4(int[] r3, Random r4) {
+        this.b = r3;
+        this.a = r4;
+        this.c = new int[r3.length];
+        int r5 = 0;
+    L4:
+        if (r5 >= r3.length) goto L6;
+        this.c[r3[r5]] = r5;
+        r5 = r5 + 1;
+        goto L4
     }
 
-    public final pd4 a(int i, int i2) {
-        int[] iArr;
-        Random random;
-        int[] iArr2 = new int[i2];
-        int[] iArr3 = new int[i2];
-        int i3 = 0;
-        while (true) {
-            iArr = this.b;
-            random = this.a;
-            if (i3 >= i2) {
-                break;
-            }
-            iArr2[i3] = random.nextInt(iArr.length + 1);
-            int i4 = i3 + 1;
-            int iNextInt = random.nextInt(i4);
-            iArr3[i3] = iArr3[iNextInt];
-            iArr3[iNextInt] = i3 + i;
-            i3 = i4;
-        }
-        Arrays.sort(iArr2);
-        int[] iArr4 = new int[iArr.length + i2];
-        int i5 = 0;
-        int i6 = 0;
-        for (int i7 = 0; i7 < iArr.length + i2; i7++) {
-            if (i5 >= i2 || i6 != iArr2[i5]) {
-                int i8 = i6 + 1;
-                int i9 = iArr[i6];
-                iArr4[i7] = i9;
-                if (i9 >= i) {
-                    iArr4[i7] = i9 + i2;
-                }
-                i6 = i8;
-            } else {
-                iArr4[i7] = iArr3[i5];
-                i5++;
-            }
-        }
-        return new pd4(iArr4, new Random(random.nextLong()));
+    public final pd4 a(int r9, int r10) {
+        int[] r0 = new int[r10];
+        int[] r1 = new int[r10];
+        int r2 = 0;
+        int r3 = 0;
+    L3:
+        int[] r4 = this.b;
+        Random r5 = this.a;
+        if (r3 >= r10) goto L6;
+        r0[r3] = r5.nextInt(r4.length + 1);
+        int r6 = r3 + 1;
+        int r7 = r5.nextInt(r6);
+        r1[r3] = r1[r7];
+        r1[r7] = r3 + r9;
+        r3 = r6;
+        goto L3
+    L6:
+        Arrays.sort(r0);
+        int[] r8 = new int[r4.length + r10];
+        int r11 = 0;
+        int r12 = 0;
+    L8:
+        if (r2 >= (r4.length + r10)) goto L19;
+        if (r11 < r10) goto L11;
+    L13:
+        int r13 = r12 + 1;
+        int r14 = r4[r12];
+        r8[r2] = r14;
+        if (r14 < r9) goto L16;
+        r8[r2] = r14 + r10;
+    L16:
+        r12 = r13;
+    L17:
+        r2 = r2 + 1;
+        goto L8
+    L11:
+        if (r12 != r0[r11]) goto L13;
+        r8[r2] = r1[r11];
+        r11 = r11 + 1;
+        goto L17
+    L19:
+        return new pd4(r8, new Random(r5.nextLong()));
     }
 
-    public pd4(int[] iArr, long j) {
-        this(Arrays.copyOf(iArr, iArr.length), new Random(j));
+    public pd4(int[] r2, long r3) {
+        this(Arrays.copyOf(r2, r2.length), new Random(r3));
     }
 
     public pd4() {
         this(new Random());
     }
 
-    public pd4(Random random) {
-        this(new int[0], random);
+    public pd4(Random r2) {
+        this(new int[0], r2);
     }
 }

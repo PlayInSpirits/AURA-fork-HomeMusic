@@ -11,12 +11,12 @@ import com.eddyizm.tempus.ui.fragment.LoginFragment;
 public final class ie2 implements SystemCallback {
     public final /* synthetic */ LoginFragment n;
 
-    public ie2(LoginFragment loginFragment) {
-        this.n = loginFragment;
+    public ie2(LoginFragment r1) {
+        this.n = r1;
     }
 
     @Override // com.eddyizm.tempus.interfaces.SystemCallback
-    public final void onError(Exception exc) {
+    public final void onError(Exception r3) {
         ud3.H0();
         ud3.w0(null);
         ud3.v0(null);
@@ -27,16 +27,18 @@ public final class ie2 implements SystemCallback {
         ud3.o0(false);
         ud3.h0(null);
         App.f(true);
-        LoginFragment loginFragment = this.n;
-        Context contextN = loginFragment.n();
-        if (contextN == null || !loginFragment.y()) {
-            return;
-        }
-        Toast.makeText(contextN, exc.getMessage(), 0).show();
+        LoginFragment r2 = this.n;
+        Context r0 = r2.n();
+        if (r0 != null) goto L5;
+        return;
+    L5:
+        if (r2.y() == false) goto L9;
+        Toast.makeText(r0, r3.getMessage(), 0).show();
+        return;
     }
 
     @Override // com.eddyizm.tempus.interfaces.SystemCallback
-    public final void onSuccess(String str, String str2, String str3) {
+    public final void onSuccess(String r1, String r2, String r3) {
         new mm3().h();
         this.n.m0.v();
     }

@@ -7,71 +7,83 @@ public final class x24 extends ep4 implements wf1 {
     public int p;
     public final /* synthetic */ t24 q;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ x24(t24 t24Var, vd0 vd0Var, int i) {
-        super(2, vd0Var);
-        this.o = i;
-        this.q = t24Var;
+    public /* synthetic */ x24(t24 r1, vd0 r2, int r3) {
+        this.o = r3;
+        this.q = r1;
+        super(2, r2);
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object obj, vd0 vd0Var) {
-        int i = this.o;
-        t24 t24Var = this.q;
-        switch (i) {
-            case 0:
-                return new x24(t24Var, vd0Var, 0);
-            default:
-                return new x24(t24Var, vd0Var, 1);
-        }
+    public final vd0 create(Object r2, vd0 r3) {
+        int r4 = this.o;
+        t24 r1 = this.q;
+        switch(r4) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return new x24(r1, r3, 1);
+    L7:
+        return new x24(r1, r3, 0);
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        int i = this.o;
-        j15 j15Var = j15.a;
-        we0 we0Var = (we0) obj;
-        vd0 vd0Var = (vd0) obj2;
-        switch (i) {
-            case 0:
-                break;
-        }
-        return ((x24) create(we0Var, vd0Var)).invokeSuspend(j15Var);
+    public final Object invoke(Object r3, Object r4) {
+        int r0 = this.o;
+        j15 r1 = j15.a;
+        we0 r5 = (we0) r3;
+        vd0 r6 = (vd0) r4;
+        switch(r0) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return ((x24) create(r5, r6)).invokeSuspend(r1);
+    L7:
+        return ((x24) create(r5, r6)).invokeSuspend(r1);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        int i = this.o;
-        j15 j15Var = j15.a;
-        t24 t24Var = this.q;
-        xe0 xe0Var = xe0.n;
-        switch (i) {
-            case 0:
-                int i2 = this.p;
-                if (i2 == 0) {
-                    kb4.X(obj);
-                    this.p = 1;
-                    return t24.l(t24Var, this) == xe0Var ? xe0Var : j15Var;
-                }
-                if (i2 == 1) {
-                    kb4.X(obj);
-                    return j15Var;
-                }
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            default:
-                int i3 = this.p;
-                if (i3 == 0) {
-                    kb4.X(obj);
-                    this.p = 1;
-                    return t24.l(t24Var, this) == xe0Var ? xe0Var : j15Var;
-                }
-                if (i3 == 1) {
-                    kb4.X(obj);
-                    return j15Var;
-                }
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-        }
+    public final Object invokeSuspend(Object r8) {
+        int r0 = this.o;
+        j15 r1 = j15.a;
+        t24 r2 = this.q;
+        xe0 r5 = xe0.n;
+        switch(r0) {
+            case 0: goto L13;
+            default: goto L4;
+        };
+    L4:
+        int r3 = this.p;
+        if (r3 == 0) goto L9;
+        if (r3 != 1) goto L8;
+        kb4.X(r8);
+        return r1;
+    L8:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L9:
+        kb4.X(r8);
+        this.p = 1;
+        if (t24.l(r2, this) == r5) goto L12;
+        return r1;
+    L12:
+        return r5;
+    L13:
+        int r4 = this.p;
+        if (r4 == 0) goto L18;
+        if (r4 != 1) goto L17;
+        kb4.X(r8);
+        return r1;
+    L17:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L18:
+        kb4.X(r8);
+        this.p = 1;
+        if (t24.l(r2, this) == r5) goto L21;
+        return r1;
+    L21:
+        return r5;
     }
 }

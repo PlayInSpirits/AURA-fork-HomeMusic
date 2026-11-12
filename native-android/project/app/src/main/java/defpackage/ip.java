@@ -5,23 +5,31 @@ package defpackage;
 public abstract class ip implements jb0 {
     public final xb0 a;
 
-    public ip(xb0 xb0Var) {
-        xb0Var.getClass();
-        this.a = xb0Var;
+    public ip(xb0 r1) {
+        r1.getClass();
+        this.a = r1;
     }
 
     @Override // defpackage.jb0
-    public final boolean a(dd5 dd5Var) {
-        return c(dd5Var) && e(this.a.a());
+    public final boolean a(dd5 r1) {
+        if (c(r1) == true) goto L5;
+        return false;
+    L5:
+        if (e(this.a.a()) == false) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     @Override // defpackage.jb0
-    public final ny b(mc0 mc0Var) {
-        mc0Var.getClass();
-        return new ny(new p(this, null, 2), q01.n, -2, wv.n);
+    public final ny b(mc0 r4) {
+        r4.getClass();
+        p r5 = new p(this, null, 2);
+        wv r1 = wv.n;
+        return new ny(r5, q01.n, -2, r1);
     }
 
     public abstract int d();
 
-    public abstract boolean e(Object obj);
+    public abstract boolean e(Object r1);
 }

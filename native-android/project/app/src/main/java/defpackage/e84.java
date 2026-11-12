@@ -9,60 +9,27 @@ public final class e84 implements Runnable {
     public final jv3 o;
     public final RecentSearch p;
 
-    public /* synthetic */ e84(jv3 jv3Var, RecentSearch recentSearch, int i) {
-        this.n = i;
-        this.o = jv3Var;
-        this.p = recentSearch;
+    public /* synthetic */ e84(jv3 r1, RecentSearch r2, int r3) {
+        this.n = r3;
+        this.o = r1;
+        this.p = r2;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        final RecentSearch recentSearch = this.p;
-        final jv3 jv3Var = this.o;
-        final int i2 = 1;
-        final int i3 = 0;
-        switch (i) {
-            case 0:
-                xl.E((s24) jv3Var.n, false, true, new if1() { // from class: iv3
-                    @Override // defpackage.if1
-                    public final Object invoke(Object obj) {
-                        int i4 = i2;
-                        RecentSearch recentSearch2 = recentSearch;
-                        jv3 jv3Var2 = jv3Var;
-                        x34 x34Var = (x34) obj;
-                        switch (i4) {
-                            case 0:
-                                ((q20) jv3Var2.o).I(x34Var, recentSearch2);
-                                break;
-                            default:
-                                ((h61) jv3Var2.p).y(x34Var, recentSearch2);
-                                break;
-                        }
-                        return null;
-                    }
-                });
-                break;
-            default:
-                xl.E((s24) jv3Var.n, false, true, new if1() { // from class: iv3
-                    @Override // defpackage.if1
-                    public final Object invoke(Object obj) {
-                        int i4 = i3;
-                        RecentSearch recentSearch2 = recentSearch;
-                        jv3 jv3Var2 = jv3Var;
-                        x34 x34Var = (x34) obj;
-                        switch (i4) {
-                            case 0:
-                                ((q20) jv3Var2.o).I(x34Var, recentSearch2);
-                                break;
-                            default:
-                                ((h61) jv3Var2.p).y(x34Var, recentSearch2);
-                                break;
-                        }
-                        return null;
-                    }
-                });
-                break;
-        }
+        int r0 = this.n;
+        final RecentSearch r1 = this.p;
+        final jv3 r5 = this.o;
+        final int r2 = 1;
+        final int r3 = 0;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        xl.E((s24) r5.n, false, true, new iv3(r5, r1, r3));
+        return;
+    L6:
+        xl.E((s24) r5.n, false, true, new iv3(r5, r1, r2));
     }
 }

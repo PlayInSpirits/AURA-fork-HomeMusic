@@ -5,8 +5,8 @@ package defpackage;
 public final class x14 extends u22 {
     public final cz u;
 
-    public x14(cz czVar) {
-        this.u = czVar;
+    public x14(cz r1) {
+        this.u = r1;
     }
 
     @Override // defpackage.u22
@@ -15,7 +15,7 @@ public final class x14 extends u22 {
     }
 
     @Override // defpackage.u22
-    public final void s(Throwable th) {
+    public final void s(Throwable r1) {
         this.u.resumeWith(j15.a);
     }
 }

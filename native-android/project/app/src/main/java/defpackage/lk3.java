@@ -14,41 +14,41 @@ import java.util.Arrays;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class lk3 {
-    public static final lk3 H;
-    public static final String I;
-    public static final String J;
-    public static final String K;
-    public static final String L;
-    public static final String M;
-    public static final String N;
-    public static final String O;
-    public static final String P;
-    public static final String Q;
-    public static final String R;
-    public static final String S;
-    public static final String T;
-    public static final String U;
-    public static final String V;
-    public static final String W;
-    public static final String X;
-    public static final String Y;
-    public static final String Z;
-    public static final String a0;
-    public static final String b0;
-    public static final String c0;
-    public static final String d0;
-    public static final String e0;
-    public static final String f0;
-    public static final String g0;
-    public static final String h0;
-    public static final String i0;
-    public static final String j0;
-    public static final String k0;
-    public static final String l0;
-    public static final String m0;
-    public static final String n0;
-    public static final String o0;
-    public static final String p0;
+    public static final lk3 H = null;
+    public static final String I = null;
+    public static final String J = null;
+    public static final String K = null;
+    public static final String L = null;
+    public static final String M = null;
+    public static final String N = null;
+    public static final String O = null;
+    public static final String P = null;
+    public static final String Q = null;
+    public static final String R = null;
+    public static final String S = null;
+    public static final String T = null;
+    public static final String U = null;
+    public static final String V = null;
+    public static final String W = null;
+    public static final String X = null;
+    public static final String Y = null;
+    public static final String Z = null;
+    public static final String a0 = null;
+    public static final String b0 = null;
+    public static final String c0 = null;
+    public static final String d0 = null;
+    public static final String e0 = null;
+    public static final String f0 = null;
+    public static final String g0 = null;
+    public static final String h0 = null;
+    public static final String i0 = null;
+    public static final String j0 = null;
+    public static final String k0 = null;
+    public static final String l0 = null;
+    public static final String m0 = null;
+    public static final String n0 = null;
+    public static final String o0 = null;
+    public static final String p0 = null;
     public final int A;
     public final do2 B;
     public final long C;
@@ -84,14 +84,14 @@ public final class lk3 {
     public final int z;
 
     static {
-        za4 za4Var = za4.l;
-        pi3 pi3Var = za4.k;
-        qh3 qh3Var = qh3.d;
-        s55 s55Var = s55.d;
-        yt4 yt4Var = cu4.a;
-        do2 do2Var = do2.K;
-        H = new lk3(null, 0, za4Var, pi3Var, pi3Var, 0, qh3Var, 0, false, s55Var, yt4Var, 0, do2Var, 1.0f, 1.0f, il.i, 0, jg0.d, hp0.e, 0, false, false, 1, 0, 1, false, false, do2Var, 5000L, 15000L, 3000L, jw4.b, cw4.J);
-        String str = f35.a;
+        za4 r3 = za4.l;
+        pi3 r4 = za4.k;
+        qh3 r7 = qh3.d;
+        s55 r10 = s55.d;
+        yt4 r11 = cu4.a;
+        do2 r13 = do2.K;
+        H = new lk3(null, 0, r3, r4, r4, 0, r7, 0, false, r10, r11, 0, r13, 1.0f, 1.0f, il.i, 0, jg0.d, hp0.e, 0, false, false, 1, 0, 1, false, false, r13, 5000, 15000, 3000, jw4.b, cw4.J);
+        String r0 = f35.a;
         I = Integer.toString(1, 36);
         J = Integer.toString(2, 36);
         K = Integer.toString(3, 36);
@@ -128,394 +128,664 @@ public final class lk3 {
         p0 = Integer.toString(34, 36);
     }
 
-    public lk3(PlaybackException playbackException, int i, za4 za4Var, pi3 pi3Var, pi3 pi3Var2, int i2, qh3 qh3Var, int i3, boolean z, s55 s55Var, cu4 cu4Var, int i4, do2 do2Var, float f, float f2, il ilVar, int i5, jg0 jg0Var, hp0 hp0Var, int i6, boolean z2, boolean z3, int i7, int i8, int i9, boolean z4, boolean z5, do2 do2Var2, long j, long j2, long j3, jw4 jw4Var, cw4 cw4Var) {
-        this.a = playbackException;
-        this.b = i;
-        this.c = za4Var;
-        this.d = pi3Var;
-        this.e = pi3Var2;
-        this.f = i2;
-        this.g = qh3Var;
-        this.h = i3;
-        this.i = z;
-        this.l = s55Var;
-        this.j = cu4Var;
-        this.k = i4;
-        this.m = do2Var;
-        this.n = f;
-        this.o = f2;
-        this.p = i5;
-        this.q = ilVar;
-        this.r = jg0Var;
-        this.s = hp0Var;
-        this.t = i6;
-        this.u = z2;
-        this.v = z3;
-        this.w = i7;
-        this.z = i8;
-        this.A = i9;
-        this.x = z4;
-        this.y = z5;
-        this.B = do2Var2;
-        this.C = j;
-        this.D = j2;
-        this.E = j3;
-        this.F = jw4Var;
-        this.G = cw4Var;
+    public lk3(PlaybackException r1, int r2, za4 r3, pi3 r4, pi3 r5, int r6, qh3 r7, int r8, boolean r9, s55 r10, cu4 r11, int r12, do2 r13, float r14, float r15, il r16, int r17, jg0 r18, hp0 r19, int r20, boolean r21, boolean r22, int r23, int r24, int r25, boolean r26, boolean r27, do2 r28, long r29, long r31, long r33, jw4 r35, cw4 r36) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
+        this.l = r10;
+        this.j = r11;
+        this.k = r12;
+        this.m = r13;
+        this.n = r14;
+        this.o = r15;
+        this.p = r17;
+        this.q = r16;
+        this.r = r18;
+        this.s = r19;
+        this.t = r20;
+        this.u = r21;
+        this.v = r22;
+        this.w = r23;
+        this.z = r24;
+        this.A = r25;
+        this.x = r26;
+        this.y = r27;
+        this.B = r28;
+        this.C = r29;
+        this.D = r31;
+        this.E = r33;
+        this.F = r35;
+        this.G = r36;
     }
 
-    public static lk3 r(int i, Bundle bundle) {
-        PlaybackException playbackException;
-        gy3 gy3VarF;
-        gy3 gy3VarF2;
-        cu4 au4Var;
-        gy3 gy3VarF3;
-        jg0 jg0Var;
-        hp0 hp0VarB;
-        jw4 jw4Var;
-        IBinder binder = bundle.getBinder(o0);
-        if (binder instanceof kk3) {
-            return ((kk3) binder).e;
-        }
-        Bundle bundle2 = bundle.getBundle(a0);
-        Throwable remoteException = null;
-        if (bundle2 == null) {
-            playbackException = null;
-        } else {
-            String string = bundle2.getString(PlaybackException.s);
-            String string2 = bundle2.getString(PlaybackException.t);
-            String string3 = bundle2.getString(PlaybackException.u);
-            if (!TextUtils.isEmpty(string2)) {
-                try {
-                    Class<?> cls = Class.forName(string2, true, PlaybackException.class.getClassLoader());
-                    remoteException = Throwable.class.isAssignableFrom(cls) ? (Throwable) cls.getConstructor(String.class).newInstance(string3) : null;
-                    if (remoteException == null) {
-                        remoteException = new RemoteException(string3);
-                    }
-                } catch (Throwable unused) {
-                    remoteException = new RemoteException(string3);
-                }
-            }
-            Throwable th = remoteException;
-            int i2 = bundle2.getInt(PlaybackException.q, 1000);
-            Bundle bundleN = f35.n(bundle2.getBundle(PlaybackException.v));
-            if (bundleN == null) {
-                bundleN = Bundle.EMPTY;
-            }
-            playbackException = new PlaybackException(string, th, i2, bundleN, bundle2.getLong(PlaybackException.r, SystemClock.elapsedRealtime()));
-        }
-        int i3 = bundle.getInt(c0, 0);
-        Bundle bundle3 = bundle.getBundle(b0);
-        za4 za4VarB = bundle3 == null ? za4.l : za4.b(bundle3);
-        Bundle bundle4 = bundle.getBundle(d0);
-        pi3 pi3VarC = bundle4 == null ? za4.k : pi3.c(bundle4);
-        Bundle bundle5 = bundle.getBundle(e0);
-        pi3 pi3VarC2 = bundle5 == null ? za4.k : pi3.c(bundle5);
-        int i4 = bundle.getInt(f0, 0);
-        Bundle bundle6 = bundle.getBundle(I);
-        qh3 qh3Var = bundle6 == null ? qh3.d : new qh3(bundle6.getFloat(qh3.e, 1.0f), bundle6.getFloat(qh3.f, 1.0f));
-        int i5 = bundle.getInt(J, 0);
-        boolean z = bundle.getBoolean(K, false);
-        Bundle bundle7 = bundle.getBundle(L);
-        if (bundle7 == null) {
-            au4Var = cu4.a;
-        } else {
-            tb4 tb4Var = new tb4(7);
-            IBinder binder2 = bundle7.getBinder(cu4.b);
-            if (binder2 == null) {
-                vw1 vw1Var = yw1.o;
-                gy3VarF = gy3.r;
-            } else {
-                gy3VarF = hw.f(tb4Var, iw.a(binder2));
-            }
-            tb4 tb4Var2 = new tb4(8);
-            IBinder binder3 = bundle7.getBinder(cu4.c);
-            if (binder3 == null) {
-                vw1 vw1Var2 = yw1.o;
-                gy3VarF2 = gy3.r;
-            } else {
-                gy3VarF2 = hw.f(tb4Var2, iw.a(binder3));
-            }
-            int[] intArray = bundle7.getIntArray(cu4.d);
-            if (intArray == null) {
-                int i6 = gy3VarF.q;
-                int[] iArr = new int[i6];
-                for (int i7 = 0; i7 < i6; i7++) {
-                    iArr[i7] = i7;
-                }
-                intArray = iArr;
-            }
-            au4Var = new au4(gy3VarF, gy3VarF2, intArray);
-        }
-        int i8 = bundle.getInt(n0, 0);
-        Bundle bundle8 = bundle.getBundle(M);
-        s55 s55Var = bundle8 == null ? s55.d : new s55(bundle8.getInt(s55.e, 0), bundle8.getFloat(s55.g, 1.0f), bundle8.getInt(s55.f, 0));
-        Bundle bundle9 = bundle.getBundle(N);
-        do2 do2VarB = bundle9 == null ? do2.K : do2.b(bundle9);
-        float f = bundle.getFloat(O, 1.0f);
-        float f2 = bundle.getFloat(P, 1.0f);
-        int i9 = bundle.getInt(p0, 0);
-        Bundle bundle10 = bundle.getBundle(Q);
-        il ilVarA = bundle10 == null ? il.i : il.a(bundle10);
-        Bundle bundle11 = bundle.getBundle(g0);
-        if (bundle11 == null) {
-            jg0Var = jg0.d;
-            do2VarB = do2VarB;
-            f = f;
-            s55Var = s55Var;
-        } else {
-            ArrayList parcelableArrayList = bundle11.getParcelableArrayList(jg0.e);
-            if (parcelableArrayList == null) {
-                gy3VarF3 = gy3.r;
-            } else {
-                uw1 uw1VarJ = yw1.j();
-                for (int i10 = 0; i10 < parcelableArrayList.size(); i10++) {
-                    Bundle bundle12 = (Bundle) parcelableArrayList.get(i10);
-                    bundle12.getClass();
-                    uw1VarJ.c(ig0.a(bundle12));
-                }
-                gy3VarF3 = uw1VarJ.f();
-            }
-            jg0Var = new jg0(bundle11.getLong(jg0.f), gy3VarF3);
-        }
-        Bundle bundle13 = bundle.getBundle(R);
-        if (bundle13 == null) {
-            hp0VarB = hp0.e;
-        } else {
-            int i11 = bundle13.getInt(hp0.f, 0);
-            int i12 = bundle13.getInt(hp0.g, 0);
-            int i13 = bundle13.getInt(hp0.h, 0);
-            String string4 = bundle13.getString(hp0.i);
-            x20 x20Var = new x20(i11);
-            x20Var.b = i12;
-            x20Var.c = i13;
-            rr2.l(i11 != 0 || string4 == null);
-            x20Var.d = string4;
-            hp0VarB = x20Var.b();
-        }
-        int i14 = bundle.getInt(S, 0);
-        boolean z2 = bundle.getBoolean(T, false);
-        boolean z3 = bundle.getBoolean(U, false);
-        int i15 = bundle.getInt(V, 1);
-        int i16 = bundle.getInt(W, 0);
-        int i17 = bundle.getInt(X, 1);
-        boolean z4 = bundle.getBoolean(Y, false);
-        boolean z5 = bundle.getBoolean(Z, false);
-        Bundle bundle14 = bundle.getBundle(h0);
-        do2 do2VarB2 = bundle14 == null ? do2.K : do2.b(bundle14);
-        hp0 hp0Var = hp0VarB;
-        long j = bundle.getLong(i0, i < 4 ? 0L : 5000L);
-        long j2 = bundle.getLong(j0, i < 4 ? 0L : 15000L);
-        long j3 = bundle.getLong(k0, i < 4 ? 0L : 3000L);
-        Bundle bundle15 = bundle.getBundle(m0);
-        if (bundle15 == null) {
-            jw4Var = jw4.b;
-        } else {
-            ArrayList parcelableArrayList2 = bundle15.getParcelableArrayList(jw4.c);
-            jw4Var = new jw4(parcelableArrayList2 == null ? gy3.r : hw.f(new tb4(12), parcelableArrayList2));
-        }
-        Bundle bundle16 = bundle.getBundle(l0);
-        return new lk3(playbackException, i3, za4VarB, pi3VarC, pi3VarC2, i4, qh3Var, i5, z, s55Var, au4Var, i8, do2VarB, f, f2, ilVarA, i9, jg0Var, hp0Var, i14, z2, z3, i15, i16, i17, z4, z5, do2VarB2, j, j2, j3, jw4Var, bundle16 == null ? cw4.J : cw4.b(bundle16));
+    public static lk3 r(int r43, Bundle r44) {
+        IBinder r2 = r44.getBinder(o0);
+        if ((r2 instanceof kk3) == true) goto L5;
+        Bundle r3 = r44.getBundle(a0);
+        Throwable r4 = null;
+        if (r3 != null) goto L9;
+        PlaybackException r7 = null;
+    L23:
+        int r8 = r44.getInt(c0, 0);
+        Bundle r5 = r44.getBundle(b0);
+        if (r5 != null) goto L27;
+        za4 r6 = za4.l;
+    L26:
+        za4 r9 = r6;
+        Bundle r10 = r44.getBundle(d0);
+        if (r10 != null) goto L32;
+        pi3 r11 = za4.k;
+    L31:
+        pi3 r12 = r11;
+        Bundle r13 = r44.getBundle(e0);
+        if (r13 != null) goto L37;
+        pi3 r14 = za4.k;
+    L36:
+        pi3 r15 = r14;
+        int r16 = r44.getInt(f0, 0);
+        Bundle r17 = r44.getBundle(I);
+        if (r17 != null) goto L41;
+        qh3 r18 = qh3.d;
+    L42:
+        int r19 = r44.getInt(J, 0);
+        boolean r110 = r44.getBoolean(K, false);
+        Bundle r20 = r44.getBundle(L);
+        if (r20 != null) goto L45;
+        cu4 r21 = cu4.a;
+    L60:
+        int r22 = r44.getInt(n0, 0);
+        Bundle r23 = r44.getBundle(M);
+        if (r23 != null) goto L63;
+        s55 r24 = s55.d;
+    L64:
+        Bundle r25 = r44.getBundle(N);
+        if (r25 != null) goto L67;
+        do2 r26 = do2.K;
+    L68:
+        float r27 = r44.getFloat(O, 1.0f);
+        float r28 = r44.getFloat(P, 1.0f);
+        int r29 = r44.getInt(p0, 0);
+        Bundle r30 = r44.getBundle(Q);
+        if (r30 != null) goto L72;
+        il r31 = il.i;
+    L71:
+        il r210 = r31;
+        Bundle r32 = r44.getBundle(g0);
+        if (r32 != null) goto L76;
+        jg0 r33 = jg0.d;
+        r26 = r26;
+        r27 = r27;
+        r24 = r24;
+    L85:
+        Bundle r34 = r44.getBundle(R);
+        if (r34 != null) goto L88;
+        hp0 r35 = hp0.e;
+    L95:
+        int r36 = r44.getInt(S, 0);
+        boolean r211 = r44.getBoolean(T, false);
+        boolean r212 = r44.getBoolean(U, false);
+        int r213 = r44.getInt(V, 1);
+        int r37 = r44.getInt(W, 0);
+        int r38 = r44.getInt(X, 1);
+        boolean r39 = r44.getBoolean(Y, false);
+        boolean r310 = r44.getBoolean(Z, false);
+        Bundle r40 = r44.getBundle(h0);
+        if (r40 != null) goto L99;
+        do2 r41 = do2.K;
+    L98:
+        do2 r311 = r41;
+        if (r43 >= 4) goto L104;
+        long r42 = 0;
+    L103:
+        hp0 r111 = r35;
+        long r312 = r44.getLong(i0, r42);
+        if (r43 >= 4) goto L108;
+        long r45 = 0;
+    L109:
+        long r46 = r44.getLong(j0, r45);
+        if (r43 >= 4) goto L112;
+        long r47 = 0;
+    L113:
+        long r313 = r44.getLong(k0, r47);
+        Bundle r48 = r44.getBundle(m0);
+        if (r48 != null) goto L116;
+        jw4 r49 = jw4.b;
+    L121:
+        Bundle r1 = r44.getBundle(l0);
+        if (r1 != null) goto L125;
+        cw4 r50 = cw4.J;
+    L127:
+        return new lk3(r7, r8, r9, r12, r15, r16, r18, r19, r110, r24, r21, r22, r26, r27, r28, r210, r29, r33, r111, r36, r211, r212, r213, r37, r38, r39, r310, r311, r312, r46, r313, r49, r50);
+    L125:
+        r50 = cw4.b(r1);
+        goto L127
+    L116:
+        ArrayList r51 = r48.getParcelableArrayList(jw4.c);
+        if (r51 != null) goto L119;
+        gy3 r52 = gy3.r;
+    L120:
+        r49 = new jw4(r52);
+        goto L121
+    L119:
+        r52 = hw.f(new tb4(12), r51);
+        goto L120
+    L112:
+        r47 = 3000;
+        goto L113
+    L108:
+        r45 = 15000;
+        goto L109
+    L104:
+        r42 = 5000;
+        goto L103
+    L99:
+        r41 = do2.b(r40);
+        goto L98
+    L88:
+        int r53 = r34.getInt(hp0.f, 0);
+        int r54 = r34.getInt(hp0.g, 0);
+        int r55 = r34.getInt(hp0.h, 0);
+        String r56 = r34.getString(hp0.i);
+        x20 r57 = new x20(r53);
+        r57.b = r54;
+        r57.c = r55;
+        if (r53 != 0) goto L93;
+        if (r56 == null) goto L93;
+        boolean r58 = false;
+    L94:
+        rr2.l(r58);
+        r57.d = r56;
+        r35 = r57.b();
+    L93:
+        r58 = true;
+        goto L94
+    L76:
+        ArrayList r59 = r32.getParcelableArrayList(jg0.e);
+        if (r59 != null) goto L79;
+        gy3 r60 = gy3.r;
+    L84:
+        r33 = new jg0(r32.getLong(jg0.f), r60);
+        goto L85
+    L79:
+        uw1 r61 = yw1.j();
+        int r62 = 0;
+    L81:
+        if (r62 >= r59.size()) goto L83;
+        Bundle r63 = (Bundle) r59.get(r62);
+        r63.getClass();
+        r61.c(ig0.a(r63));
+        r62 = r62 + 1;
+        goto L81
+    L83:
+        r60 = r61.f();
+        goto L84
+    L72:
+        r31 = il.a(r30);
+        goto L71
+    L67:
+        r26 = do2.b(r25);
+        goto L68
+    L63:
+        r24 = new s55(r23.getInt(s55.e, 0), r23.getFloat(s55.g, 1.0f), r23.getInt(s55.f, 0));
+        goto L64
+    L45:
+        tb4 r64 = new tb4(7);
+        IBinder r65 = r20.getBinder(cu4.b);
+        if (r65 != null) goto L48;
+        vw1 r66 = yw1.o;
+        gy3 r67 = gy3.r;
+    L49:
+        tb4 r68 = new tb4(8);
+        IBinder r69 = r20.getBinder(cu4.c);
+        if (r69 != null) goto L52;
+        vw1 r70 = yw1.o;
+        gy3 r71 = gy3.r;
+    L53:
+        int[] r72 = r20.getIntArray(cu4.d);
+        if (r72 != null) goto L59;
+        int r73 = r67.q;
+        int[] r74 = new int[r73];
+        int r75 = 0;
+    L56:
+        if (r75 >= r73) goto L58;
+        r74[r75] = r75;
+        r75 = r75 + 1;
+        goto L56
+    L58:
+        r72 = r74;
+    L59:
+        r21 = new au4(r67, r71, r72);
+        goto L60
+    L52:
+        r71 = hw.f(r68, iw.a(r69));
+        goto L53
+    L48:
+        r67 = hw.f(r64, iw.a(r65));
+        goto L49
+    L41:
+        r18 = new qh3(r17.getFloat(qh3.e, 1.0f), r17.getFloat(qh3.f, 1.0f));
+        goto L42
+    L37:
+        r14 = pi3.c(r13);
+        goto L36
+    L32:
+        r11 = pi3.c(r10);
+        goto L31
+    L27:
+        r6 = za4.b(r5);
+        goto L26
+    L9:
+        String r76 = r3.getString(PlaybackException.s);
+        String r77 = r3.getString(PlaybackException.t);
+        String r78 = r3.getString(PlaybackException.u);
+        if (TextUtils.isEmpty(r77) == false) goto L128;
+    L16:
+        Throwable r79 = r4;
+        int r80 = r3.getInt(PlaybackException.q, 1000);
+        Bundle r81 = f35.n(r3.getBundle(PlaybackException.v));
+        if (r81 != null) goto L22;
+        r81 = Bundle.EMPTY;
+    L22:
+        r7 = new PlaybackException(r76, r79, r80, r81, r3.getLong(PlaybackException.r, SystemClock.elapsedRealtime()));
+        goto L23
+    L128:
+        Class<?> r82 = Class.forName(r77, true, PlaybackException.class.getClassLoader());     // Catch: Throwable -> L17
+        if (Throwable.class.isAssignableFrom(r82) == false) goto L14;
+        r4 = (Throwable) r82.getConstructor(new Class[]{String.class}).newInstance(new Object[]{r78});     // Catch: Throwable -> L17
+    L14:
+        if (r4 != null) goto L16;
+        r4 = new RemoteException(r78);
+    L17:
+        r4 = new RemoteException(r78);
+        goto L16
+    L5:
+        return ((kk3) r2).e;
     }
 
-    public final lk3 a(il ilVar) {
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, this.i, this.l, cu4Var, this.k, this.m, this.n, this.o, ilVar, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 a(il r41) {
+        cu4 r11 = this.j;
+        boolean r1 = r11.p();
+        za4 r3 = this.c;
+        if (r1 == false) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r3, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r11, this.k, this.m, this.n, this.o, r41, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L5:
+        if (r3.a.b < r11.o()) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final lk3 b(jw4 jw4Var) {
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, this.i, this.l, cu4Var, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, jw4Var, this.G);
+    public final lk3 b(jw4 r42) {
+        cu4 r11 = this.j;
+        boolean r1 = r11.p();
+        za4 r3 = this.c;
+        if (r1 == false) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r3, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r11, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, r42, this.G);
+    L5:
+        if (r3.a.b < r11.o()) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final lk3 c(int i, boolean z) {
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, this.i, this.l, cu4Var, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, i, z, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 c(int r38, boolean r39) {
+        cu4 r11 = this.j;
+        boolean r1 = r11.p();
+        za4 r3 = this.c;
+        if (r1 == false) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r3, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r11, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, r38, r39, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L5:
+        if (r3.a.b < r11.o()) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final lk3 d(int i, int i2, boolean z) {
-        int i3 = this.A;
-        boolean z2 = i3 == 3 && z && i2 == 0;
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, this.i, this.l, cu4Var, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, z, i, i2, i3, z2, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 d(int r42, int r43, boolean r44) {
+        boolean r2 = false;
+        int r4 = this.A;
+        if (r4 != 3) goto L7;
+        if (r44 == false) goto L7;
+        if (r43 != 0) goto L7;
+        boolean r30 = true;
+    L8:
+        cu4 r15 = this.j;
+        boolean r1 = r15.p();
+        za4 r7 = this.c;
+        if (r1 == false) goto L11;
+    L12:
+        r2 = true;
+    L13:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r7, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r15, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, r44, r42, r43, r4, r30, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L11:
+        if (r7.a.b >= r15.o()) goto L13;
+    L7:
+        r30 = false;
+        goto L8
     }
 
-    public final lk3 e(qh3 qh3Var) {
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, qh3Var, this.h, this.i, this.l, cu4Var, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 e(qh3 r41) {
+        cu4 r11 = this.j;
+        boolean r1 = r11.p();
+        za4 r3 = this.c;
+        if (r1 == false) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r3, this.d, this.e, this.f, r41, this.h, this.i, this.l, r11, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L5:
+        if (r3.a.b < r11.o()) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final lk3 f(int i, PlaybackException playbackException) {
-        boolean z = this.v;
-        int i2 = this.z;
-        boolean z2 = i == 3 && z && i2 == 0;
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(playbackException, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, this.i, this.l, cu4Var, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, z, this.w, i2, i, z2, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 f(int r42, PlaybackException r43) {
+        boolean r2 = false;
+        boolean r4 = this.v;
+        int r5 = this.z;
+        if (r42 != 3) goto L7;
+        if (r4 == false) goto L7;
+        if (r5 != 0) goto L7;
+        boolean r30 = true;
+    L8:
+        cu4 r15 = this.j;
+        boolean r1 = r15.p();
+        za4 r7 = this.c;
+        if (r1 == false) goto L11;
+    L12:
+        r2 = true;
+    L13:
+        rr2.w(r2);
+        return new lk3(r43, this.b, r7, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r15, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, r4, this.w, r5, r42, r30, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L11:
+        if (r7.a.b >= r15.o()) goto L13;
+    L7:
+        r30 = false;
+        goto L8
     }
 
-    public final lk3 g(do2 do2Var) {
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, this.i, this.l, cu4Var, this.k, do2Var, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 g(do2 r41) {
+        cu4 r11 = this.j;
+        boolean r1 = r11.p();
+        za4 r3 = this.c;
+        if (r1 == false) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r3, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r11, this.k, r41, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L5:
+        if (r3.a.b < r11.o()) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final lk3 h(pi3 pi3Var, pi3 pi3Var2, int i) {
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, pi3Var, pi3Var2, i, this.g, this.h, this.i, this.l, cu4Var, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 h(pi3 r38, pi3 r39, int r40) {
+        cu4 r11 = this.j;
+        boolean r1 = r11.p();
+        za4 r3 = this.c;
+        if (r1 == false) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r3, r38, r39, r40, this.g, this.h, this.i, this.l, r11, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L5:
+        if (r3.a.b < r11.o()) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final lk3 i(int i) {
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, i, this.i, this.l, cu4Var, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 i(int r41) {
+        cu4 r11 = this.j;
+        boolean r1 = r11.p();
+        za4 r3 = this.c;
+        if (r1 == false) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r3, this.d, this.e, this.f, this.g, r41, this.i, this.l, r11, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L5:
+        if (r3.a.b < r11.o()) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final lk3 j(za4 za4Var) {
-        cu4 cu4Var = this.j;
-        rr2.w(cu4Var.p() || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, this.i, this.l, cu4Var, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 j(za4 r43) {
+        cu4 r11 = this.j;
+        if (r11.p() == false) goto L5;
+    L8:
+        boolean r1 = true;
+    L9:
+        rr2.w(r1);
+        return new lk3(this.a, this.b, r43, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r11, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L5:
+        if (r43.a.b < r11.o()) goto L8;
+        r1 = false;
+        goto L9
     }
 
-    public final lk3 k(boolean z) {
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, z, this.l, cu4Var, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 k(boolean r41) {
+        cu4 r11 = this.j;
+        boolean r1 = r11.p();
+        za4 r3 = this.c;
+        if (r1 == false) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r3, this.d, this.e, this.f, this.g, this.h, r41, this.l, r11, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L5:
+        if (r3.a.b < r11.o()) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final lk3 l(cu4 cu4Var) {
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, this.i, this.l, cu4Var, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 l(cu4 r40) {
+        boolean r1 = r40.p();
+        za4 r5 = this.c;
+        if (r1 == false) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r5, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r40, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L5:
+        if (r5.a.b < r40.o()) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final lk3 m(xs3 xs3Var, int i) {
-        za4 za4Var = this.c;
-        pi3 pi3Var = za4Var.a;
-        za4 za4Var2 = new za4(new pi3(pi3Var.a, i, pi3Var.c, pi3Var.d, pi3Var.e, pi3Var.f, pi3Var.g, pi3Var.h, pi3Var.i), za4Var.b, za4Var.c, za4Var.d, za4Var.e, za4Var.f, za4Var.g, za4Var.h, za4Var.i, za4Var.j);
-        rr2.w(xs3Var.p() || za4Var2.a.b < xs3Var.o());
-        return new lk3(this.a, this.b, za4Var2, this.d, this.e, this.f, this.g, this.h, this.i, this.l, xs3Var, 0, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 m(xs3 r40, int r41) {
+        za4 r14 = this.c;
+        pi3 r3 = r14.a;
+        za4 r1 = new za4(new pi3(r3.a, r41, r3.c, r3.d, r3.e, r3.f, r3.g, r3.h, r3.i), r14.b, r14.c, r14.d, r14.e, r14.f, r14.g, r14.h, r14.i, r14.j);
+        if (r40.p() == false) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r1, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r40, 0, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L5:
+        if (r1.a.b < r40.o()) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final lk3 n(cu4 cu4Var, za4 za4Var, int i) {
-        rr2.w(cu4Var.p() || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, this.i, this.l, cu4Var, i, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 n(cu4 r40, za4 r41, int r42) {
+        if (r40.p() == false) goto L5;
+    L8:
+        boolean r1 = true;
+    L9:
+        rr2.w(r1);
+        return new lk3(this.a, this.b, r41, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r40, r42, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L5:
+        if (r41.a.b < r40.o()) goto L8;
+        r1 = false;
+        goto L9
     }
 
-    public final lk3 o(cw4 cw4Var) {
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, this.i, this.l, cu4Var, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, cw4Var);
+    public final lk3 o(cw4 r42) {
+        cu4 r11 = this.j;
+        boolean r1 = r11.p();
+        za4 r3 = this.c;
+        if (r1 == false) goto L5;
+    L8:
+        boolean r2 = true;
+    L9:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r3, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r11, this.k, this.m, this.n, this.o, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, r42);
+    L5:
+        if (r3.a.b < r11.o()) goto L8;
+        r2 = false;
+        goto L9
     }
 
-    public final lk3 p(float f) {
-        float f2 = f != 0.0f ? f : this.n;
-        cu4 cu4Var = this.j;
-        boolean zP = cu4Var.p();
-        za4 za4Var = this.c;
-        rr2.w(zP || za4Var.a.b < cu4Var.o());
-        return new lk3(this.a, this.b, za4Var, this.d, this.e, this.f, this.g, this.h, this.i, this.l, cu4Var, this.k, this.m, f, f2, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    public final lk3 p(float r40) {
+        if (r40 == 0.0f) goto L5;
+        float r17 = r40;
+    L6:
+        cu4 r13 = this.j;
+        boolean r1 = r13.p();
+        za4 r5 = this.c;
+        if (r1 == false) goto L9;
+    L12:
+        boolean r2 = true;
+    L13:
+        rr2.w(r2);
+        return new lk3(this.a, this.b, r5, this.d, this.e, this.f, this.g, this.h, this.i, this.l, r13, this.k, this.m, r40, r17, this.q, this.p, this.r, this.s, this.t, this.u, this.v, this.w, this.z, this.A, this.x, this.y, this.B, this.C, this.D, this.E, this.F, this.G);
+    L9:
+        if (r5.a.b < r13.o()) goto L12;
+        r2 = false;
+        goto L13
+    L5:
+        r17 = this.n;
+        goto L6
     }
 
-    public final lk3 q(mi3 mi3Var, boolean z, boolean z2) {
-        float f;
-        float f2;
-        int i;
-        boolean z3;
-        int i2;
-        boolean zA = mi3Var.a(16);
-        boolean zA2 = mi3Var.a(17);
-        za4 za4Var = this.c;
-        za4 za4VarA = za4Var.a(zA, zA2);
-        pi3 pi3VarB = this.d.b(zA, zA2);
-        pi3 pi3VarB2 = this.e.b(zA, zA2);
-        boolean z4 = true;
-        cu4 au4Var = this.j;
-        if (!zA2 && zA && !au4Var.p()) {
-            int i3 = za4Var.a.b;
-            if (au4Var.o() != 1) {
-                bu4 bu4VarM = au4Var.m(i3, new bu4(), 0L);
-                uw1 uw1VarJ = yw1.j();
-                int i4 = bu4VarM.m;
-                while (true) {
-                    i2 = bu4VarM.n;
-                    if (i4 > i2) {
-                        break;
-                    }
-                    zt4 zt4VarF = au4Var.f(i4, new zt4(), true);
-                    zt4VarF.c = 0;
-                    uw1VarJ.c(zt4VarF);
-                    i4++;
-                }
-                bu4VarM.n = i2 - bu4VarM.m;
-                bu4VarM.m = 0;
-                au4Var = new au4(yw1.o(bu4VarM), uw1VarJ.f(), new int[]{0});
-            }
-        } else if (z || !zA2) {
-            au4Var = cu4.a;
-        }
-        cu4 cu4Var = au4Var;
-        do2 do2Var = !mi3Var.a(18) ? do2.K : this.m;
-        if (mi3Var.a(22)) {
-            f = this.n;
-            f2 = this.o;
-        } else {
-            f = 1.0f;
-            f2 = 1.0f;
-        }
-        il ilVar = !mi3Var.a(21) ? il.i : this.q;
-        jg0 jg0Var = !mi3Var.a(28) ? jg0.d : this.r;
-        if (mi3Var.a(23)) {
-            i = this.t;
-            z3 = this.u;
-        } else {
-            i = 0;
-            z3 = false;
-        }
-        do2 do2Var2 = !mi3Var.a(18) ? do2.K : this.B;
-        jw4 jw4Var = (z2 || !mi3Var.a(30)) ? jw4.b : this.F;
-        if (!cu4Var.p() && za4VarA.a.b >= cu4Var.o()) {
-            z4 = false;
-        }
-        rr2.w(z4);
-        return new lk3(this.a, this.b, za4VarA, pi3VarB, pi3VarB2, this.f, this.g, this.h, this.i, this.l, cu4Var, this.k, do2Var, f, f2, ilVar, this.p, jg0Var, this.s, i, z3, this.v, this.w, this.z, this.A, this.x, this.y, do2Var2, this.C, this.D, this.E, jw4Var, this.G);
+    public final lk3 q(mi3 r43, boolean r44, boolean r45) {
+        boolean r2 = r43.a(16);
+        boolean r3 = r43.a(17);
+        za4 r4 = this.c;
+        za4 r8 = r4.a(r2, r3);
+        pi3 r9 = this.d.b(r2, r3);
+        pi3 r10 = this.e.b(r2, r3);
+        boolean r5 = true;
+        cu4 r7 = this.j;
+        if (r3 == true) goto L16;
+        if (r2 == false) goto L16;
+        if (r7.p() == true) goto L16;
+        int r6 = r4.a.b;
+        if (r7.o() == 1) goto L15;
+        bu4 r11 = r7.m(r6, new bu4(), 0);
+        uw1 r12 = yw1.j();
+        int r13 = r11.m;
+    L11:
+        int r14 = r11.n;
+        if (r13 > r14) goto L14;
+        zt4 r15 = r7.f(r13, new zt4(), true);
+        r15.c = 0;
+        r12.c(r15);
+        r13 = r13 + 1;
+        goto L11
+    L14:
+        r11.n = r14 - r11.m;
+        r11.m = 0;
+        r7 = new au4(yw1.o(r11), r12.f(), new int[]{0});
+    L15:
+        cu4 r16 = r7;
+        if (r43.a(18) == true) goto L23;
+        do2 r17 = do2.K;
+    L22:
+        do2 r18 = r17;
+        if (r43.a(22) == true) goto L27;
+        float r19 = 1.0f;
+        float r20 = 1.0f;
+    L29:
+        if (r43.a(21) == true) goto L32;
+        il r21 = il.i;
+    L31:
+        il r22 = r21;
+        if (r43.a(28) == true) goto L37;
+        jg0 r23 = jg0.d;
+    L36:
+        jg0 r24 = r23;
+        if (r43.a(23) == true) goto L41;
+        int r25 = 0;
+        boolean r26 = false;
+    L43:
+        if (r43.a(18) == true) goto L46;
+        do2 r27 = do2.K;
+    L45:
+        do2 r33 = r27;
+        if (r45 == false) goto L49;
+    L53:
+        jw4 r1 = jw4.b;
+    L52:
+        jw4 r40 = r1;
+        if (r16.p() == false) goto L57;
+    L60:
+        rr2.w(r5);
+        return new lk3(this.a, this.b, r8, r9, r10, this.f, this.g, this.h, this.i, this.l, r16, this.k, r18, r19, r20, r22, this.p, r24, this.s, r25, r26, this.v, this.w, this.z, this.A, this.x, this.y, r33, this.C, this.D, this.E, r40, this.G);
+    L57:
+        if (r8.a.b < r16.o()) goto L60;
+        r5 = false;
+        goto L60
+    L49:
+        if (r43.a(30) == false) goto L53;
+        r1 = this.F;
+        goto L52
+    L46:
+        r27 = this.B;
+        goto L45
+    L41:
+        r25 = this.t;
+        r26 = this.u;
+        goto L43
+    L37:
+        r23 = this.r;
+        goto L36
+    L32:
+        r21 = this.q;
+        goto L31
+    L27:
+        r19 = this.n;
+        r20 = this.o;
+        goto L29
+    L23:
+        r17 = this.m;
+    L16:
+        if (r44 == true) goto L18;
+        if (r3 == true) goto L15;
+    L18:
+        r7 = cu4.a;
+        goto L15
     }
 
     public final gn2 s() {
-        cu4 cu4Var = this.j;
-        if (cu4Var.p()) {
-            return null;
-        }
-        return cu4Var.m(this.c.a.b, new bu4(), 0L).b;
+        cu4 r0 = this.j;
+        if (r0.p() == false) goto L7;
+        return null;
+    L7:
+        return r0.m(this.c.a.b, new bu4(), 0).b;
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -531,456 +801,492 @@ public final class lk3 {
     /* JADX WARN: Type inference failed for: r6v19 */
     /* JADX WARN: Type inference failed for: r6v8 */
     /* JADX WARN: Type inference failed for: r6v9 */
-    public final Bundle t(int i) {
-        long j;
-        Bundle bundle;
-        ArrayList arrayList;
-        cu4 cu4Var;
-        zt4 zt4Var;
-        int i2;
-        Bundle bundle2;
-        Bundle bundle3 = new Bundle();
-        PlaybackException playbackException = this.a;
-        if (playbackException != null) {
-            Bundle bundle4 = new Bundle();
-            bundle4.putInt(PlaybackException.q, playbackException.n);
-            bundle4.putLong(PlaybackException.r, playbackException.o);
-            bundle4.putString(PlaybackException.s, playbackException.getMessage());
-            bundle4.putBundle(PlaybackException.v, playbackException.p);
-            Throwable cause = playbackException.getCause();
-            if (cause != null) {
-                bundle4.putString(PlaybackException.t, cause.getClass().getName());
-                bundle4.putString(PlaybackException.u, cause.getMessage());
-            }
-            bundle3.putBundle(a0, bundle4);
-        }
-        int i3 = this.b;
-        if (i3 != 0) {
-            bundle3.putInt(c0, i3);
-        }
-        za4 za4Var = this.c;
-        if (i < 3 || !za4Var.equals(za4.l)) {
-            bundle3.putBundle(b0, za4Var.c(i));
-        }
-        pi3 pi3Var = this.d;
-        if (i < 3 || !za4.k.a(pi3Var)) {
-            bundle3.putBundle(d0, pi3Var.d(i));
-        }
-        pi3 pi3Var2 = this.e;
-        if (i < 3 || !za4.k.a(pi3Var2)) {
-            bundle3.putBundle(e0, pi3Var2.d(i));
-        }
-        int i4 = this.f;
-        if (i4 != 0) {
-            bundle3.putInt(f0, i4);
-        }
-        qh3 qh3Var = qh3.d;
-        qh3 qh3Var2 = this.g;
-        if (!qh3Var2.equals(qh3Var)) {
-            Bundle bundle5 = new Bundle();
-            bundle5.putFloat(qh3.e, qh3Var2.a);
-            bundle5.putFloat(qh3.f, qh3Var2.b);
-            bundle3.putBundle(I, bundle5);
-        }
-        int i5 = this.h;
-        if (i5 != 0) {
-            bundle3.putInt(J, i5);
-        }
-        boolean z = this.i;
-        if (z) {
-            bundle3.putBoolean(K, z);
-        }
-        yt4 yt4Var = cu4.a;
-        cu4 cu4Var2 = this.j;
-        boolean z2 = false;
-        long j2 = 0;
-        if (cu4Var2.equals(yt4Var)) {
-            j = 0;
-        } else {
-            ArrayList arrayList2 = new ArrayList();
-            int iO = cu4Var2.o();
-            bu4 bu4Var = new bu4();
-            int i6 = 0;
-            while (i6 < iO) {
-                bu4 bu4VarM = cu4Var2.m(i6, bu4Var, j2);
-                bu4VarM.getClass();
-                Bundle bundle6 = new Bundle();
-                long j3 = j2;
-                if (!gn2.g.equals(bu4VarM.b)) {
-                    bundle6.putBundle(bu4.s, bu4VarM.b.c(false));
-                }
-                long j4 = bu4VarM.d;
-                if (j4 != -9223372036854775807L) {
-                    bundle6.putLong(bu4.t, j4);
-                }
-                long j5 = bu4VarM.e;
-                if (j5 != r12) {
-                    bundle6.putLong(bu4.u, j5);
-                }
-                long j6 = bu4VarM.f;
-                if (j6 != r12) {
-                    bundle6.putLong(bu4.v, j6);
-                }
-                boolean z3 = bu4VarM.g;
-                if (z3) {
-                    bundle6.putBoolean(bu4.w, z3);
-                }
-                boolean z4 = bu4VarM.h;
-                if (z4) {
-                    bundle6.putBoolean(bu4.x, z4);
-                }
-                an2 an2Var = bu4VarM.i;
-                if (an2Var != null) {
-                    bundle6.putBundle(bu4.y, an2Var.c());
-                }
-                boolean z5 = bu4VarM.j;
-                if (z5) {
-                    bundle6.putBoolean(bu4.z, z5);
-                }
-                long j7 = bu4VarM.k;
-                if (j7 != j3) {
-                    bundle6.putLong(bu4.A, j7);
-                }
-                long j8 = bu4VarM.l;
-                if (j8 != -9223372036854775807) {
-                    bundle6.putLong(bu4.B, j8);
-                }
-                int i7 = bu4VarM.m;
-                if (i7 != 0) {
-                    bundle6.putInt(bu4.C, i7);
-                }
-                int i8 = bu4VarM.n;
-                if (i8 != 0) {
-                    bundle6.putInt(bu4.D, i8);
-                }
-                long j9 = bu4VarM.o;
-                if (j9 != j3) {
-                    bundle6.putLong(bu4.E, j9);
-                }
-                arrayList2.add(bundle6);
-                i6++;
-                j2 = j3;
-            }
-            j = j2;
-            ArrayList arrayList3 = new ArrayList();
-            int iH = cu4Var2.h();
-            zt4 zt4Var2 = new zt4();
-            int i9 = 0;
-            while (i9 < iH) {
-                zt4 zt4VarF = cu4Var2.f(i9, zt4Var2, z2);
-                zt4VarF.getClass();
-                Bundle bundle7 = new Bundle();
-                int i10 = zt4VarF.c;
-                if (i10 != 0) {
-                    bundle7.putInt(zt4.h, i10);
-                }
-                long j10 = zt4VarF.d;
-                if (j10 != -9223372036854775807L) {
-                    bundle7.putLong(zt4.i, j10);
-                }
-                long j11 = zt4VarF.e;
-                if (j11 != j) {
-                    bundle7.putLong(zt4.j, j11);
-                }
-                boolean z6 = zt4VarF.f;
-                if (z6) {
-                    bundle7.putBoolean(zt4.k, z6);
-                }
-                if (zt4VarF.g.equals(z5.f)) {
-                    bundle = bundle3;
-                    arrayList = arrayList2;
-                    cu4Var = cu4Var2;
-                    zt4Var = zt4Var2;
-                    i2 = i9;
-                } else {
-                    String str = zt4.l;
-                    z5 z5Var = zt4VarF.g;
-                    z5Var.getClass();
-                    Bundle bundle8 = new Bundle();
-                    ArrayList<? extends Parcelable> arrayList4 = new ArrayList<>();
-                    x5[] x5VarArr = z5Var.e;
-                    int length = x5VarArr.length;
-                    ?? r6 = z2;
-                    while (r6 < length) {
-                        ?? r23 = r6;
-                        x5 x5Var = x5VarArr[r23 == true ? 1 : 0];
-                        x5Var.getClass();
-                        int i11 = length;
-                        Bundle bundle9 = new Bundle();
-                        zt4 zt4Var3 = zt4Var2;
-                        bundle9.putLong(x5.m, x5Var.a);
-                        bundle9.putInt(x5.n, x5Var.b);
-                        bundle9.putInt(x5.t, x5Var.c);
-                        bundle9.putParcelableArrayList(x5.o, new ArrayList<>(Arrays.asList(x5Var.d)));
-                        String str2 = x5.u;
-                        ArrayList<? extends Parcelable> arrayList5 = new ArrayList<>();
-                        gn2[] gn2VarArr = x5Var.e;
-                        int i12 = i9;
-                        int length2 = gn2VarArr.length;
-                        ?? r10 = z2;
-                        while (true) {
-                            Bundle bundleC = null;
-                            if (r10 >= length2) {
-                                break;
-                            }
-                            ?? r29 = r10;
-                            gn2 gn2Var = gn2VarArr[r29 == true ? 1 : 0];
-                            if (gn2Var != null) {
-                                bundleC = gn2Var.c(true);
-                            }
-                            arrayList5.add(bundleC);
-                            length2 = length2;
-                            r10 = (r29 == true ? 1 : 0) + 1;
-                        }
-                        bundle9.putParcelableArrayList(str2, arrayList5);
-                        bundle9.putIntArray(x5.p, x5Var.f);
-                        bundle9.putLongArray(x5.q, x5Var.g);
-                        bundle9.putLong(x5.r, x5Var.j);
-                        bundle9.putBoolean(x5.s, x5Var.k);
-                        bundle9.putStringArrayList(x5.v, new ArrayList<>(Arrays.asList(x5Var.h)));
-                        String str3 = x5.x;
-                        ArrayList<? extends Parcelable> arrayList6 = new ArrayList<>();
-                        y5[] y5VarArr = x5Var.i;
-                        int length3 = y5VarArr.length;
-                        ?? r11 = z2;
-                        while (r11 < length3) {
-                            ?? r210 = r11;
-                            y5 y5Var = y5VarArr[r210 == true ? 1 : 0];
-                            if (y5Var == null) {
-                                bundle2 = null;
-                            } else {
-                                bundle2 = new Bundle();
-                                bundle2.putLong(y5.d, y5Var.a);
-                                bundle2.putLong(y5.e, y5Var.b);
-                                bundle2.putString(y5.f, y5Var.c);
-                            }
-                            arrayList6.add(bundle2);
-                            length3 = length3;
-                            bundle3 = bundle3;
-                            cu4Var2 = cu4Var2;
-                            arrayList2 = arrayList2;
-                            r11 = (r210 == true ? 1 : 0) + 1;
-                        }
-                        bundle9.putParcelableArrayList(str3, arrayList6);
-                        bundle9.putBoolean(x5.w, x5Var.l);
-                        arrayList4.add(bundle9);
-                        length = i11;
-                        zt4Var2 = zt4Var3;
-                        i9 = i12;
-                        r6 = (r23 == true ? 1 : 0) + 1;
-                    }
-                    bundle = bundle3;
-                    arrayList = arrayList2;
-                    cu4Var = cu4Var2;
-                    zt4Var = zt4Var2;
-                    i2 = i9;
-                    if (!arrayList4.isEmpty()) {
-                        bundle8.putParcelableArrayList(z5.h, arrayList4);
-                    }
-                    long j12 = z5Var.b;
-                    if (j12 != j) {
-                        bundle8.putLong(z5.i, j12);
-                    }
-                    long j13 = z5Var.c;
-                    if (j13 != -9223372036854775807L) {
-                        bundle8.putLong(z5.j, j13);
-                    }
-                    int i13 = z5Var.d;
-                    if (i13 != 0) {
-                        bundle8.putInt(z5.k, i13);
-                    }
-                    bundle7.putBundle(str, bundle8);
-                }
-                arrayList3.add(bundle7);
-                i9 = i2 + 1;
-                z2 = z2;
-                iH = iH;
-                zt4Var2 = zt4Var;
-                bundle3 = bundle;
-                cu4Var2 = cu4Var;
-                arrayList2 = arrayList;
-            }
-            Bundle bundle10 = bundle3;
-            ArrayList arrayList7 = arrayList2;
-            cu4 cu4Var3 = cu4Var2;
-            boolean z7 = z2;
-            int[] iArr = new int[iO];
-            boolean z8 = true;
-            if (iO > 0) {
-                iArr[z7 ? 1 : 0] = cu4Var3.a(true);
-            }
-            int i14 = 1;
-            while (i14 < iO) {
-                iArr[i14] = cu4Var3.e(iArr[i14 - 1], z7 ? 1 : 0, z8);
-                i14++;
-                z8 = true;
-                z7 = false;
-            }
-            Bundle bundle11 = new Bundle();
-            bundle11.putBinder(cu4.b, new iw(arrayList7));
-            bundle11.putBinder(cu4.c, new iw(arrayList3));
-            bundle11.putIntArray(cu4.d, iArr);
-            bundle3 = bundle10;
-            bundle3.putBundle(L, bundle11);
-        }
-        int i15 = this.k;
-        if (i15 != 0) {
-            bundle3.putInt(n0, i15);
-        }
-        s55 s55Var = s55.d;
-        s55 s55Var2 = this.l;
-        if (!s55Var2.equals(s55Var)) {
-            Bundle bundle12 = new Bundle();
-            int i16 = s55Var2.a;
-            if (i16 != 0) {
-                bundle12.putInt(s55.e, i16);
-            }
-            int i17 = s55Var2.b;
-            if (i17 != 0) {
-                bundle12.putInt(s55.f, i17);
-            }
-            float f = s55Var2.c;
-            if (f != 1.0f) {
-                bundle12.putFloat(s55.g, f);
-            }
-            bundle3.putBundle(M, bundle12);
-        }
-        do2 do2Var = do2.K;
-        do2 do2Var2 = this.m;
-        if (!do2Var2.equals(do2Var)) {
-            bundle3.putBundle(N, do2Var2.c());
-        }
-        float f2 = this.n;
-        if (f2 != 1.0f) {
-            bundle3.putFloat(O, f2);
-        }
-        float f3 = this.o;
-        if (f3 != 1.0f) {
-            bundle3.putFloat(P, f3);
-        }
-        int i18 = this.p;
-        if (i18 != 0) {
-            bundle3.putInt(p0, i18);
-        }
-        il ilVar = il.i;
-        il ilVar2 = this.q;
-        if (!ilVar2.equals(ilVar)) {
-            bundle3.putBundle(Q, ilVar2.d());
-        }
-        jg0 jg0Var = jg0.d;
-        jg0 jg0Var2 = this.r;
-        if (!jg0Var2.equals(jg0Var)) {
-            Bundle bundle13 = new Bundle();
-            String str4 = jg0.e;
-            gy3 gy3Var = jg0Var2.a;
-            uw1 uw1VarJ = yw1.j();
-            for (int i19 = 0; i19 < gy3Var.q; i19++) {
-                if (((ig0) gy3Var.get(i19)).d == null) {
-                    uw1VarJ.c((ig0) gy3Var.get(i19));
-                }
-            }
-            gy3 gy3VarF = uw1VarJ.f();
-            ArrayList<? extends Parcelable> arrayList8 = new ArrayList<>(gy3VarF.q);
-            vw1 vw1VarListIterator = gy3VarF.listIterator(0);
-            while (vw1VarListIterator.hasNext()) {
-                ig0 ig0Var = (ig0) vw1VarListIterator.next();
-                Bundle bundleB = ig0Var.b();
-                Bitmap bitmap = ig0Var.d;
-                if (bitmap != null) {
-                    bundleB.putParcelable(ig0.w, bitmap);
-                }
-                arrayList8.add(bundleB);
-            }
-            bundle13.putParcelableArrayList(str4, arrayList8);
-            bundle13.putLong(jg0.f, jg0Var2.b);
-            bundle3.putBundle(g0, bundle13);
-        }
-        hp0 hp0Var = hp0.e;
-        hp0 hp0Var2 = this.s;
-        if (!hp0Var2.equals(hp0Var)) {
-            Bundle bundle14 = new Bundle();
-            int i20 = hp0Var2.a;
-            if (i20 != 0) {
-                bundle14.putInt(hp0.f, i20);
-            }
-            int i21 = hp0Var2.b;
-            if (i21 != 0) {
-                bundle14.putInt(hp0.g, i21);
-            }
-            int i22 = hp0Var2.c;
-            if (i22 != 0) {
-                bundle14.putInt(hp0.h, i22);
-            }
-            String str5 = hp0Var2.d;
-            if (str5 != null) {
-                bundle14.putString(hp0.i, str5);
-            }
-            bundle3.putBundle(R, bundle14);
-        }
-        int i23 = this.t;
-        if (i23 != 0) {
-            bundle3.putInt(S, i23);
-        }
-        boolean z9 = this.u;
-        if (z9) {
-            bundle3.putBoolean(T, z9);
-        }
-        boolean z10 = this.v;
-        if (z10) {
-            bundle3.putBoolean(U, z10);
-        }
-        int i24 = this.w;
-        if (i24 != 1) {
-            bundle3.putInt(V, i24);
-        }
-        int i25 = this.z;
-        if (i25 != 0) {
-            bundle3.putInt(W, i25);
-        }
-        int i26 = this.A;
-        if (i26 != 1) {
-            bundle3.putInt(X, i26);
-        }
-        boolean z11 = this.x;
-        if (z11) {
-            bundle3.putBoolean(Y, z11);
-        }
-        boolean z12 = this.y;
-        if (z12) {
-            bundle3.putBoolean(Z, z12);
-        }
-        do2 do2Var3 = do2.K;
-        do2 do2Var4 = this.B;
-        if (!do2Var4.equals(do2Var3)) {
-            bundle3.putBundle(h0, do2Var4.c());
-        }
-        long j14 = i < 6 ? j : 5000L;
-        long j15 = this.C;
-        if (j15 != j14) {
-            bundle3.putLong(i0, j15);
-        }
-        long j16 = i < 6 ? j : 15000L;
-        long j17 = this.D;
-        if (j17 != j16) {
-            bundle3.putLong(j0, j17);
-        }
-        long j18 = i < 6 ? j : 3000L;
-        long j19 = this.E;
-        if (j19 != j18) {
-            bundle3.putLong(k0, j19);
-        }
-        jw4 jw4Var = jw4.b;
-        jw4 jw4Var2 = this.F;
-        if (!jw4Var2.equals(jw4Var)) {
-            Bundle bundle15 = new Bundle();
-            bundle15.putParcelableArrayList(jw4.c, hw.N(jw4Var2.a, new tb4(11)));
-            bundle3.putBundle(m0, bundle15);
-        }
-        cw4 cw4Var = cw4.J;
-        cw4 cw4Var2 = this.G;
-        if (!cw4Var2.equals(cw4Var)) {
-            bundle3.putBundle(l0, cw4Var2.c());
-        }
-        return bundle3;
+    public final Bundle t(int r35) {
+        Bundle r2 = new Bundle();
+        PlaybackException r3 = this.a;
+        if (r3 == null) goto L8;
+        Bundle r4 = new Bundle();
+        r4.putInt(PlaybackException.q, r3.n);
+        r4.putLong(PlaybackException.r, r3.o);
+        r4.putString(PlaybackException.s, r3.getMessage());
+        r4.putBundle(PlaybackException.v, r3.p);
+        Throwable r5 = r3.getCause();
+        if (r5 == null) goto L7;
+        r4.putString(PlaybackException.t, r5.getClass().getName());
+        r4.putString(PlaybackException.u, r5.getMessage());
+    L7:
+        r2.putBundle(a0, r4);
+    L8:
+        int r6 = this.b;
+        if (r6 == 0) goto L11;
+        r2.putInt(c0, r6);
+    L11:
+        za4 r7 = this.c;
+        if (r35 >= 3) goto L14;
+    L15:
+        r2.putBundle(b0, r7.c(r35));
+    L16:
+        pi3 r8 = this.d;
+        if (r35 >= 3) goto L19;
+    L20:
+        r2.putBundle(d0, r8.d(r35));
+    L21:
+        pi3 r9 = this.e;
+        if (r35 >= 3) goto L24;
+    L25:
+        r2.putBundle(e0, r9.d(r35));
+    L26:
+        int r10 = this.f;
+        if (r10 == 0) goto L29;
+        r2.putInt(f0, r10);
+    L29:
+        qh3 r11 = qh3.d;
+        qh3 r12 = this.g;
+        if (r12.equals(r11) == true) goto L32;
+        Bundle r13 = new Bundle();
+        r13.putFloat(qh3.e, r12.a);
+        r13.putFloat(qh3.f, r12.b);
+        r2.putBundle(I, r13);
+    L32:
+        int r14 = this.h;
+        if (r14 == 0) goto L35;
+        r2.putInt(J, r14);
+    L35:
+        boolean r15 = this.i;
+        if (r15 == false) goto L38;
+        r2.putBoolean(K, r15);
+    L38:
+        yt4 r16 = cu4.a;
+        cu4 r17 = this.j;
+        boolean r18 = false;
+        long r19 = 0;
+        if (r17.equals(r16) == true) goto L143;
+        ArrayList r20 = new ArrayList();
+        int r21 = r17.o();
+        bu4 r110 = new bu4();
+        int r111 = 0;
+    L42:
+        if (r111 >= r21) goto L84;
+        bu4 r112 = r17.m(r111, r110, r19);
+        r112.getClass();
+        Bundle r113 = new Bundle();
+        long r114 = r19;
+        if (gn2.g.equals(r112.b) == true) goto L46;
+        r113.putBundle(bu4.s, r112.b.c(false));
+    L46:
+        long r22 = r112.d;
+        if (r22 == (-9223372036854775807L)) goto L50;
+        r113.putLong(bu4.t, r22);
+    L50:
+        long r23 = r112.e;
+        if (r23 == r12) goto L53;
+        r113.putLong(bu4.u, r23);
+    L53:
+        long r24 = r112.f;
+        if (r24 == r12) goto L56;
+        r113.putLong(bu4.v, r24);
+    L56:
+        boolean r25 = r112.g;
+        if (r25 == false) goto L59;
+        r113.putBoolean(bu4.w, r25);
+    L59:
+        boolean r26 = r112.h;
+        if (r26 == false) goto L62;
+        r113.putBoolean(bu4.x, r26);
+    L62:
+        an2 r27 = r112.i;
+        if (r27 == null) goto L65;
+        r113.putBundle(bu4.y, r27.c());
+    L65:
+        boolean r28 = r112.j;
+        if (r28 == false) goto L68;
+        r113.putBoolean(bu4.z, r28);
+    L68:
+        long r29 = r112.k;
+        if (r29 == r114) goto L71;
+        r113.putLong(bu4.A, r29);
+    L71:
+        long r30 = r112.l;
+        if (r30 == (-9223372036854775807(0x8000000000000001, double:-4.9E-324))) goto L74;
+        r113.putLong(bu4.B, r30);
+    L74:
+        int r31 = r112.m;
+        if (r31 == 0) goto L77;
+        r113.putInt(bu4.C, r31);
+    L77:
+        int r32 = r112.n;
+        if (r32 == 0) goto L80;
+        r113.putInt(bu4.D, r32);
+    L80:
+        long r33 = r112.o;
+        if (r33 == r114) goto L83;
+        r113.putLong(bu4.E, r33);
+    L83:
+        r20.add(r113);
+        r111 = r111 + 1;
+        r19 = r114;
+        goto L42
+    L84:
+        long r115 = r19;
+        ArrayList r34 = new ArrayList();
+        int r36 = r17.h();
+        zt4 r116 = new zt4();
+        int r117 = 0;
+    L85:
+        if (r117 >= r36) goto L135;
+        zt4 r118 = r17.f(r117, r116, r18);
+        r118.getClass();
+        Bundle r119 = new Bundle();
+        int r120 = r118.c;
+        if (r120 == 0) goto L89;
+        r119.putInt(zt4.h, r120);
+    L89:
+        long r121 = r118.d;
+        if (r121 == (-9223372036854775807L)) goto L93;
+        r119.putLong(zt4.i, r121);
+    L93:
+        long r122 = r118.e;
+        if (r122 == r115) goto L96;
+        r119.putLong(zt4.j, r122);
+    L96:
+        boolean r37 = r118.f;
+        if (r37 == false) goto L100;
+        r119.putBoolean(zt4.k, r37);
+    L100:
+        if (r118.g.equals(z5.f) == true) goto L133;
+        String r38 = zt4.l;
+        z5 r123 = r118.g;
+        r123.getClass();
+        Bundle r124 = new Bundle();
+        ArrayList<? extends Parcelable> r125 = new ArrayList();
+        x5[] r39 = r123.e;
+        int r40 = r39.length;
+        ?? r41 = r18;
+    L102:
+        if (r41 >= r40) goto L120;
+        ?? r210 = r41;
+        x5 r42 = r39[r210 == true ? 1 : 0];
+        r42.getClass();
+        int r211 = r40;
+        Bundle r43 = new Bundle();
+        zt4 r212 = r116;
+        r43.putLong(x5.m, r42.a);
+        r43.putInt(x5.n, r42.b);
+        r43.putInt(x5.t, r42.c);
+        r43.putParcelableArrayList(x5.o, new ArrayList(Arrays.asList(r42.d)));
+        String r0 = x5.u;
+        ArrayList<? extends Parcelable> r1 = new ArrayList();
+        gn2[] r126 = r42.e;
+        int r213 = r117;
+        int r127 = r126.length;
+        ?? r128 = r18;
+    L104:
+        Bundle r214 = null;
+        if (r128 >= r127) goto L112;
+        ?? r215 = r128;
+        gn2 r129 = r126[r215 == true ? 1 : 0];
+        if (r129 == null) goto L111;
+        r214 = r129.c(true);
+    L111:
+        r1.add(r214);
+        r127 = r127;
+        r128 = (r215 == true ? 1 : 0) + 1;
+        goto L104
+    L112:
+        r43.putParcelableArrayList(r0, r1);
+        r43.putIntArray(x5.p, r42.f);
+        r43.putLongArray(x5.q, r42.g);
+        r43.putLong(x5.r, r42.j);
+        r43.putBoolean(x5.s, r42.k);
+        r43.putStringArrayList(x5.v, new ArrayList(Arrays.asList(r42.h)));
+        String r44 = x5.x;
+        ArrayList<? extends Parcelable> r45 = new ArrayList();
+        y5[] r130 = r42.i;
+        int r131 = r130.length;
+        ?? r132 = r18;
+    L113:
+        if (r132 >= r131) goto L119;
+        ?? r216 = r132;
+        y5 r133 = r130[r216 == true ? 1 : 0];
+        if (r133 != null) goto L117;
+        Bundle r134 = null;
+    L118:
+        r45.add(r134);
+        r131 = r131;
+        r2 = r2;
+        r17 = r17;
+        r20 = r20;
+        r132 = (r216 == true ? 1 : 0) + 1;
+        goto L113
+    L117:
+        r134 = new Bundle();
+        r134.putLong(y5.d, r133.a);
+        r134.putLong(y5.e, r133.b);
+        r134.putString(y5.f, r133.c);
+        goto L118
+    L119:
+        r43.putParcelableArrayList(r44, r45);
+        r43.putBoolean(x5.w, r42.l);
+        r125.add(r43);
+        r40 = r211;
+        r116 = r212;
+        r117 = r213;
+        r41 = (r210 == true ? 1 : 0) + 1;
+        goto L102
+    L120:
+        Bundle r310 = r2;
+        ArrayList r311 = r20;
+        cu4 r312 = r17;
+        zt4 r217 = r116;
+        int r218 = r117;
+        if (r125.isEmpty() == true) goto L123;
+        r124.putParcelableArrayList(z5.h, r125);
+    L123:
+        long r46 = r123.b;
+        if (r46 == r115) goto L126;
+        r124.putLong(z5.i, r46);
+    L126:
+        long r47 = r123.c;
+        if (r47 == (-9223372036854775807L)) goto L129;
+        r124.putLong(z5.j, r47);
+    L129:
+        int r48 = r123.d;
+        if (r48 == 0) goto L132;
+        r124.putInt(z5.k, r48);
+    L132:
+        r119.putBundle(r38, r124);
+    L134:
+        r34.add(r119);
+        r117 = r218 + 1;
+        r18 = r18;
+        r36 = r36;
+        r116 = r217;
+        r2 = r310;
+        r17 = r312;
+        r20 = r311;
+        goto L85
+    L133:
+        r310 = r2;
+        r311 = r20;
+        r312 = r17;
+        r217 = r116;
+        r218 = r117;
+        goto L134
+    L135:
+        Bundle r313 = r2;
+        ArrayList r314 = r20;
+        cu4 r315 = r17;
+        boolean r219 = r18;
+        int[] r49 = new int[r21];
+        boolean r135 = true;
+        if (r21 <= 0) goto L138;
+        r49[r219 ? 1 : 0] = r315.a(true);
+    L138:
+        int r50 = 1;
+    L139:
+        if (r50 >= r21) goto L141;
+        r49[r50] = r315.e(r49[r50 - 1], r219 ? 1 : 0, r135);
+        r50 = r50 + 1;
+        r135 = true;
+        r219 = false;
+        goto L139
+    L141:
+        Bundle r51 = new Bundle();
+        r51.putBinder(cu4.b, new iw(r314));
+        r51.putBinder(cu4.c, new iw(r34));
+        r51.putIntArray(cu4.d, r49);
+        r2 = r313;
+        r2.putBundle(L, r51);
+    L144:
+        int r52 = this.k;
+        if (r52 == 0) goto L147;
+        r2.putInt(n0, r52);
+    L147:
+        s55 r53 = s55.d;
+        s55 r54 = this.l;
+        if (r54.equals(r53) == true) goto L159;
+        Bundle r55 = new Bundle();
+        int r56 = r54.a;
+        if (r56 == 0) goto L152;
+        r55.putInt(s55.e, r56);
+    L152:
+        int r57 = r54.b;
+        if (r57 == 0) goto L155;
+        r55.putInt(s55.f, r57);
+    L155:
+        float r58 = r54.c;
+        if (r58 == 1.0f) goto L158;
+        r55.putFloat(s55.g, r58);
+    L158:
+        r2.putBundle(M, r55);
+    L159:
+        do2 r59 = do2.K;
+        do2 r60 = this.m;
+        if (r60.equals(r59) == true) goto L162;
+        r2.putBundle(N, r60.c());
+    L162:
+        float r61 = this.n;
+        if (r61 == 1.0f) goto L165;
+        r2.putFloat(O, r61);
+    L165:
+        float r62 = this.o;
+        if (r62 == 1.0f) goto L168;
+        r2.putFloat(P, r62);
+    L168:
+        int r63 = this.p;
+        if (r63 == 0) goto L171;
+        r2.putInt(p0, r63);
+    L171:
+        il r64 = il.i;
+        il r65 = this.q;
+        if (r65.equals(r64) == true) goto L174;
+        r2.putBundle(Q, r65.d());
+    L174:
+        jg0 r66 = jg0.d;
+        jg0 r67 = this.r;
+        if (r67.equals(r66) == true) goto L192;
+        Bundle r68 = new Bundle();
+        String r69 = jg0.e;
+        gy3 r70 = r67.a;
+        uw1 r71 = yw1.j();
+        int r72 = 0;
+    L178:
+        if (r72 >= r70.q) goto L184;
+        if (((ig0) r70.get(r72)).d != null) goto L183;
+        r71.c((ig0) r70.get(r72));
+    L183:
+        r72 = r72 + 1;
+        goto L178
+    L184:
+        gy3 r73 = r71.f();
+        ArrayList<? extends Parcelable> r74 = new ArrayList(r73.q);
+        vw1 r75 = r73.m(0);
+    L186:
+        if (r75.hasNext() == false) goto L191;
+        ig0 r76 = (ig0) r75.next();
+        Bundle r77 = r76.b();
+        Bitmap r78 = r76.d;
+        if (r78 == null) goto L190;
+        r77.putParcelable(ig0.w, r78);
+    L190:
+        r74.add(r77);
+        goto L186
+    L191:
+        r68.putParcelableArrayList(r69, r74);
+        r68.putLong(jg0.f, r67.b);
+        r2.putBundle(g0, r68);
+    L192:
+        hp0 r79 = hp0.e;
+        hp0 r80 = this.s;
+        if (r80.equals(r79) == true) goto L207;
+        Bundle r81 = new Bundle();
+        int r82 = r80.a;
+        if (r82 == 0) goto L197;
+        r81.putInt(hp0.f, r82);
+    L197:
+        int r83 = r80.b;
+        if (r83 == 0) goto L200;
+        r81.putInt(hp0.g, r83);
+    L200:
+        int r84 = r80.c;
+        if (r84 == 0) goto L203;
+        r81.putInt(hp0.h, r84);
+    L203:
+        String r85 = r80.d;
+        if (r85 == null) goto L206;
+        r81.putString(hp0.i, r85);
+    L206:
+        r2.putBundle(R, r81);
+    L207:
+        int r86 = this.t;
+        if (r86 == 0) goto L210;
+        r2.putInt(S, r86);
+    L210:
+        boolean r87 = this.u;
+        if (r87 == false) goto L213;
+        r2.putBoolean(T, r87);
+    L213:
+        boolean r88 = this.v;
+        if (r88 == false) goto L216;
+        r2.putBoolean(U, r88);
+    L216:
+        int r89 = this.w;
+        if (r89 == 1) goto L219;
+        r2.putInt(V, r89);
+    L219:
+        int r90 = this.z;
+        if (r90 == 0) goto L222;
+        r2.putInt(W, r90);
+    L222:
+        int r91 = this.A;
+        if (r91 == 1) goto L225;
+        r2.putInt(X, r91);
+    L225:
+        boolean r92 = this.x;
+        if (r92 == false) goto L228;
+        r2.putBoolean(Y, r92);
+    L228:
+        boolean r93 = this.y;
+        if (r93 == false) goto L231;
+        r2.putBoolean(Z, r93);
+    L231:
+        do2 r94 = do2.K;
+        do2 r95 = this.B;
+        if (r95.equals(r94) == true) goto L235;
+        r2.putBundle(h0, r95.c());
+    L235:
+        if (r35 >= 6) goto L237;
+        long r96 = r115;
+    L238:
+        long r97 = this.C;
+        if (r97 == r96) goto L241;
+        r2.putLong(i0, r97);
+    L241:
+        if (r35 >= 6) goto L243;
+        long r98 = r115;
+    L244:
+        long r99 = this.D;
+        if (r99 == r98) goto L247;
+        r2.putLong(j0, r99);
+    L247:
+        if (r35 >= 6) goto L249;
+        long r100 = r115;
+    L250:
+        long r101 = this.E;
+        if (r101 == r100) goto L253;
+        r2.putLong(k0, r101);
+    L253:
+        jw4 r102 = jw4.b;
+        jw4 r103 = this.F;
+        if (r103.equals(r102) == true) goto L256;
+        Bundle r104 = new Bundle();
+        r104.putParcelableArrayList(jw4.c, hw.N(r103.a, new tb4(11)));
+        r2.putBundle(m0, r104);
+    L256:
+        cw4 r105 = cw4.J;
+        cw4 r106 = this.G;
+        if (r106.equals(r105) == true) goto L259;
+        r2.putBundle(l0, r106.c());
+    L259:
+        return r2;
+    L249:
+        r100 = 3000;
+        goto L250
+    L243:
+        r98 = 15000;
+        goto L244
+    L237:
+        r96 = 5000;
+        goto L238
+    L143:
+        r115 = 0;
+        goto L144
+    L24:
+        if (za4.k.a(r9) == true) goto L26;
+    L19:
+        if (za4.k.a(r8) == true) goto L21;
+    L14:
+        if (r7.equals(za4.l) == true) goto L16;
+        goto L15
     }
 }

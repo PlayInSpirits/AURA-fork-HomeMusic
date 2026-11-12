@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -16,58 +15,79 @@ public final /* synthetic */ class tj implements Predicate {
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ tj(vs3 vs3Var, List list) {
+    public /* synthetic */ tj(vs3 r1, List r2) {
         this.a = 6;
-        this.b = list;
+        this.b = r2;
     }
 
     @Override // java.util.function.Predicate
-    public final boolean test(Object obj) {
-        int i = this.a;
-        boolean zAnyMatch = false;
-        Object obj2 = this.b;
-        switch (i) {
-            case 0:
-                wj wjVar = (wj) obj2;
-                wjVar.getClass();
-                String artistId = ((AlbumID3) obj).getArtistId();
-                String id = wjVar.e.getId();
-                Objects.requireNonNull(id);
-                return Objects.equals(artistId, id);
-            case 1:
-                return !((tj) obj2).test((AlbumID3) obj);
-            case 2:
-                Child child = (Child) obj;
-                String id2 = child.getId();
-                ((eu0) obj2).getClass();
-                if (eu0.d(id2)) {
-                    return false;
-                }
-                return !eu0.e.contains(child.getId());
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                return !((HashSet) obj2).contains(((Child) obj).getId());
-            case 4:
-                im3 im3Var = (im3) obj2;
-                im3Var.getClass();
-                return ((gg3) obj).a.equals(im3Var.e.getId());
-            case 5:
-                return ((gg3) obj).a.equals(((PlaylistRowBottomSheetDialog) obj2).C0.getId());
-            case 6:
-                List list = (List) obj2;
-                Child child2 = (Child) obj;
-                if (list != null && child2 != null) {
-                    zAnyMatch = list.stream().anyMatch(new tj(7, child2));
-                }
-                return !zAnyMatch;
-            default:
-                Child child3 = (Child) obj2;
-                Queue queue = (Queue) obj;
-                return (queue == null || child3.getId() == null || !queue.getId().equals(child3.getId())) ? false : true;
-        }
+    public final boolean test(Object r4) {
+        int r0 = this.a;
+        boolean r1 = false;
+        Object r3 = this.b;
+        switch(r0) {
+            case 0: goto L33;
+            case 1: goto L32;
+            case 2: goto L25;
+            case 3: goto L24;
+            case 4: goto L21;
+            case 5: goto L20;
+            case 6: goto L12;
+            default: goto L4;
+        };
+    L4:
+        Child r5 = (Child) r3;
+        Queue r6 = (Queue) r4;
+        if (r6 != null) goto L7;
+        return false;
+    L7:
+        if (r5.getId() != null) goto L9;
+        return false;
+    L9:
+        if (r6.getId().equals(r5.getId()) == true) goto L11;
+        return false;
+    L11:
+        return true;
+    L12:
+        List r7 = (List) r3;
+        Child r8 = (Child) r4;
+        if (r7 == null) goto L18;
+        if (r8 == null) goto L18;
+        r1 = r7.stream().anyMatch(new tj(7, r8));
+    L18:
+        return !r1;
+    L21:
+        im3 r9 = (im3) r3;
+        r9.getClass();
+        return ((gg3) r4).a.equals(r9.e.getId());
+    L25:
+        Child r10 = (Child) r4;
+        String r2 = r10.getId();
+        ((eu0) r3).getClass();
+        if (eu0.d(r2) == false) goto L28;
+        return false;
+    L28:
+        if (eu0.e.contains(r10.getId()) == false) goto L30;
+        return false;
+    L30:
+        return true;
+    L33:
+        wj r11 = (wj) r3;
+        r11.getClass();
+        String r12 = ((AlbumID3) r4).getArtistId();
+        String r13 = r11.e.getId();
+        Objects.requireNonNull(r13);
+        return Objects.equals(r12, r13);
+    L20:
+        return ((gg3) r4).a.equals(((PlaylistRowBottomSheetDialog) r3).C0.getId());
+    L24:
+        return !((HashSet) r3).contains(((Child) r4).getId());
+    L32:
+        return !((tj) r3).test((AlbumID3) r4);
     }
 
-    public /* synthetic */ tj(int i, Object obj) {
-        this.a = i;
-        this.b = obj;
+    public /* synthetic */ tj(int r1, Object r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

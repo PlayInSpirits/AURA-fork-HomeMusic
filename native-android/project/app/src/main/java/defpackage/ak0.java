@@ -6,7 +6,7 @@ import java.util.Date;
 /* JADX INFO: loaded from: classes.dex */
 public final class ak0 extends bk0 {
     @Override // defpackage.bk0
-    public final Date b(Date date) {
-        return date;
+    public final Date b(Date r1) {
+        return r1;
     }
 }

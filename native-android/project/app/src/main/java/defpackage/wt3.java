@@ -16,11 +16,11 @@ public interface wt3 {
     Call<List<RadioBrowserCountry>> a();
 
     @GET("json/stations/search")
-    Call<List<RadioBrowserStation>> b(@QueryMap Map<String, String> map);
+    Call<List<RadioBrowserStation>> b(@QueryMap Map<String, String> r1);
 
     @GET("json/stations/search")
-    Call<List<RadioBrowserStation>> c(@Query("name") String str, @Query("limit") int i, @Query("order") String str2, @Query("reverse") boolean z);
+    Call<List<RadioBrowserStation>> c(@Query("name") String r1, @Query("limit") int r2, @Query("order") String r3, @Query("reverse") boolean r4);
 
     @GET("json/stations/search")
-    Call<List<RadioBrowserStation>> d(@Query("countryexact") String str, @Query("limit") int i, @Query("order") String str2, @Query("reverse") boolean z);
+    Call<List<RadioBrowserStation>> d(@Query("countryexact") String r1, @Query("limit") int r2, @Query("order") String r3, @Query("reverse") boolean r4);
 }

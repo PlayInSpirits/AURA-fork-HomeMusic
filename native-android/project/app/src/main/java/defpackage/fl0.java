@@ -7,7 +7,7 @@ public interface fl0 {
 
     short d();
 
-    int e(int i, byte[] bArr);
+    int e(int r1, byte[] r2);
 
-    long skip(long j);
+    long skip(long r1);
 }

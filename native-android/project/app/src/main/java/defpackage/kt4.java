@@ -7,99 +7,102 @@ public final class kt4 {
     public final long[] b;
     public final Object[] c;
 
-    public kt4(int i, long[] jArr, Object[] objArr) {
-        this.a = i;
-        this.b = jArr;
-        this.c = objArr;
+    public kt4(int r1, long[] r2, Object[] r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 
-    public final int a(long j) {
-        int i = this.a - 1;
-        if (i != -1) {
-            long[] jArr = this.b;
-            int i2 = 0;
-            if (i != 0) {
-                while (i2 <= i) {
-                    int i3 = (i2 + i) >>> 1;
-                    long j2 = jArr[i3] - j;
-                    if (j2 < 0) {
-                        i2 = i3 + 1;
-                    } else {
-                        if (j2 <= 0) {
-                            return i3;
-                        }
-                        i = i3 - 1;
-                    }
-                }
-                return -(i2 + 1);
-            }
-            long j3 = jArr[0];
-            if (j3 == j) {
-                return 0;
-            }
-            if (j3 > j) {
-                return -2;
-            }
-        }
+    public final int a(long r8) {
+        int r0 = this.a - 1;
+        if (r0 == (-1)) goto L21;
+        long[] r7 = this.b;
+        int r2 = 0;
+        if (r0 == 0) goto L15;
+    L6:
+        if (r2 > r0) goto L14;
+        int r1 = (r2 + r0) >>> 1;
+        long r3 = r7[r1] - r8;
+        if (r3 < 0) goto L9;
+        if (r3 <= 0) goto L12;
+        r0 = r1 - 1;
+        goto L6
+    L12:
+        return r1;
+    L9:
+        r2 = r1 + 1;
+        goto L6
+    L14:
+        return -(r2 + 1);
+    L15:
+        long r4 = r7[0];
+        if (r4 != r8) goto L18;
+        return 0;
+    L18:
+        if (r4 <= r8) goto L21;
+        return -2;
+    L21:
         return -1;
     }
 
-    public final kt4 b(long j, Object obj) {
-        long[] jArr;
-        int i;
-        Object[] objArr = this.c;
-        int i2 = 0;
-        int i3 = 0;
-        for (Object obj2 : objArr) {
-            if (obj2 != null) {
-                i3++;
-            }
-        }
-        int i4 = i3 + 1;
-        long[] jArr2 = new long[i4];
-        Object[] objArr2 = new Object[i4];
-        if (i4 > 1) {
-            int i5 = 0;
-            while (true) {
-                jArr = this.b;
-                i = this.a;
-                if (i2 >= i4 || i5 >= i) {
-                    break;
-                }
-                long j2 = jArr[i5];
-                Object obj3 = objArr[i5];
-                if (j2 > j) {
-                    jArr2[i2] = j;
-                    objArr2[i2] = obj;
-                    i2++;
-                    break;
-                }
-                if (obj3 != null) {
-                    jArr2[i2] = j2;
-                    objArr2[i2] = obj3;
-                    i2++;
-                }
-                i5++;
-            }
-            if (i5 == i) {
-                jArr2[i3] = j;
-                objArr2[i3] = obj;
-            } else {
-                while (i2 < i4) {
-                    long j3 = jArr[i5];
-                    Object obj4 = objArr[i5];
-                    if (obj4 != null) {
-                        jArr2[i2] = j3;
-                        objArr2[i2] = obj4;
-                        i2++;
-                    }
-                    i5++;
-                }
-            }
-        } else {
-            jArr2[0] = j;
-            objArr2[0] = obj;
-        }
-        return new kt4(i4, jArr2, objArr2);
+    public final kt4 b(long r14, Object r16) {
+        Object[] r0 = this.c;
+        int r1 = r0.length;
+        int r2 = 0;
+        int r3 = 0;
+        int r4 = 0;
+    L3:
+        if (r3 >= r1) goto L8;
+        if (r0[r3] == null) goto L7;
+        r4 = r4 + 1;
+    L7:
+        r3 = r3 + 1;
+        goto L3
+    L8:
+        int r5 = r4 + 1;
+        long[] r6 = new long[r5];
+        Object[] r7 = new Object[r5];
+        if (r5 <= 1) goto L27;
+        int r8 = 0;
+    L11:
+        long[] r9 = this.b;
+        int r10 = this.a;
+        if (r2 >= r5) goto L20;
+        if (r8 >= r10) goto L20;
+        long r11 = r9[r8];
+        Object r12 = r0[r8];
+        if (r11 > r14) goto L16;
+        if (r12 == null) goto L19;
+        r6[r2] = r11;
+        r7[r2] = r12;
+        r2 = r2 + 1;
+    L19:
+        r8 = r8 + 1;
+        goto L11
+    L16:
+        r6[r2] = r14;
+        r7[r2] = r16;
+        r2 = r2 + 1;
+    L20:
+        if (r8 != r10) goto L22;
+        r6[r4] = r14;
+        r7[r4] = r16;
+    L29:
+        return new kt4(r5, r6, r7);
+    L22:
+        if (r2 >= r5) goto L29;
+        long r13 = r9[r8];
+        Object r15 = r0[r8];
+        if (r15 == null) goto L26;
+        r6[r2] = r13;
+        r7[r2] = r15;
+        r2 = r2 + 1;
+    L26:
+        r8 = r8 + 1;
+        goto L22
+    L27:
+        r6[0] = r14;
+        r7[0] = r16;
+        goto L29
     }
 }

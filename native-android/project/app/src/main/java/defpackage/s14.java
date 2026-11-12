@@ -7,15 +7,19 @@ import java.io.Serializable;
 public final class s14 implements Serializable {
     public final Throwable n;
 
-    public s14(Throwable th) {
-        th.getClass();
-        this.n = th;
+    public s14(Throwable r1) {
+        r1.getClass();
+        this.n = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof s14) {
-            return h12.c(this.n, ((s14) obj).n);
-        }
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof s14) == false) goto L8;
+        Throwable r3 = ((s14) r2).n;
+        if (h12.c(this.n, r3) == false) goto L10;
+        return true;
+    L10:
+        return false;
+    L8:
         return false;
     }
 

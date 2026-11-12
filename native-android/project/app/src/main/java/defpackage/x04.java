@@ -6,8 +6,8 @@ public final class x04 {
     public final Class a;
     public final w04 b;
 
-    public x04(Class cls, w04 w04Var) {
-        this.a = cls;
-        this.b = w04Var;
+    public x04(Class r1, w04 r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

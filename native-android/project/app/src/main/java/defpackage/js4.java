@@ -10,13 +10,15 @@ import java.util.ArrayList;
 public final class js4 {
     public final View a;
 
-    public js4(View view, ra raVar) {
-        new pz1(view);
-        this.a = view;
-        l93.r(new he("").o.length(), ss4.b);
-        int i = kw1.e;
+    public js4(View r3, ra r4) {
+        new pz1(r3);
+        this.a = r3;
+        long r5 = ss4.b;
+        l93.r(new he("").o.length(), r5);
+        int r6 = kw1.e;
         new ArrayList();
-        rr2.K(b92.n, new wc(28, this));
+        wc r7 = new wc(28, this);
+        rr2.K(b92.n, r7);
         new CursorAnchorInfo.Builder();
         new Matrix();
     }

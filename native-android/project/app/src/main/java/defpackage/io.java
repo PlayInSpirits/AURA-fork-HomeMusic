@@ -6,17 +6,24 @@ public final class io extends gx2 {
     public ho a;
     public x60 b;
 
+    public io() {
+    }
+
     @Override // defpackage.gx2
     public final cx2 d() {
         return new ho(this);
     }
 
     @Override // defpackage.gx2
-    public final /* bridge */ /* synthetic */ void e(cx2 cx2Var) {
+    public final /* bridge */ /* synthetic */ void e(cx2 r1) {
+        ho r2 = (ho) r1;
     }
 
-    public final boolean equals(Object obj) {
-        return obj == this;
+    public final boolean equals(Object r1) {
+        if (r1 != this) goto L5;
+        return true;
+    L5:
+        return false;
     }
 
     public final int hashCode() {

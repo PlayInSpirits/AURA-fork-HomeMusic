@@ -12,7 +12,7 @@ import java.util.WeakHashMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class hc2 implements View.OnTouchListener {
-    public static final int E = ViewConfiguration.getTapTimeout();
+    public static final int E = 0;
     public boolean A;
     public boolean B;
     public boolean C;
@@ -31,194 +31,201 @@ public final class hc2 implements View.OnTouchListener {
     public boolean y;
     public boolean z;
 
-    public hc2(cx0 cx0Var) {
-        qn qnVar = new qn();
-        qnVar.e = Long.MIN_VALUE;
-        qnVar.g = -1L;
-        qnVar.f = 0L;
-        this.n = qnVar;
+    static {
+        E = ViewConfiguration.getTapTimeout();
+    }
+
+    public hc2(cx0 r12) {
+        qn r0 = new qn();
+        r0.e = Long.MIN_VALUE;
+        r0.g = -1;
+        r0.f = 0;
+        this.n = r0;
         this.o = new AccelerateInterpolator();
-        float[] fArr = {0.0f, 0.0f};
-        this.r = fArr;
-        float[] fArr2 = {Float.MAX_VALUE, Float.MAX_VALUE};
-        this.s = fArr2;
-        float[] fArr3 = {0.0f, 0.0f};
-        this.v = fArr3;
-        float[] fArr4 = {0.0f, 0.0f};
-        this.w = fArr4;
-        float[] fArr5 = {Float.MAX_VALUE, Float.MAX_VALUE};
-        this.x = fArr5;
-        this.p = cx0Var;
-        float f = Resources.getSystem().getDisplayMetrics().density;
-        float f2 = ((int) ((1575.0f * f) + 0.5f)) / 1000.0f;
-        fArr5[0] = f2;
-        fArr5[1] = f2;
-        float f3 = ((int) ((f * 315.0f) + 0.5f)) / 1000.0f;
-        fArr4[0] = f3;
-        fArr4[1] = f3;
+        float[] r2 = {0.0f, 0.0f};
+        this.r = r2;
+        float[] r3 = {Float.MAX_VALUE, Float.MAX_VALUE};
+        this.s = r3;
+        float[] r4 = {0.0f, 0.0f};
+        this.v = r4;
+        float[] r5 = {0.0f, 0.0f};
+        this.w = r5;
+        float[] r1 = {Float.MAX_VALUE, Float.MAX_VALUE};
+        this.x = r1;
+        this.p = r12;
+        float r6 = Resources.getSystem().getDisplayMetrics().density;
+        float r7 = ((int) ((1575.0f * r6) + 0.5f)) / 1000.0f;
+        r1[0] = r7;
+        r1[1] = r7;
+        float r8 = ((int) ((r6 * 315.0f) + 0.5f)) / 1000.0f;
+        r5[0] = r8;
+        r5[1] = r8;
         this.t = 1;
-        fArr2[0] = Float.MAX_VALUE;
-        fArr2[1] = Float.MAX_VALUE;
-        fArr[0] = 0.2f;
-        fArr[1] = 0.2f;
-        fArr3[0] = 0.001f;
-        fArr3[1] = 0.001f;
+        r3[0] = Float.MAX_VALUE;
+        r3[1] = Float.MAX_VALUE;
+        r2[0] = 0.2f;
+        r2[1] = 0.2f;
+        r4[0] = 0.001f;
+        r4[1] = 0.001f;
         this.u = E;
-        qnVar.a = SmartPlan.MAX_QUEUE;
-        qnVar.b = SmartPlan.MAX_QUEUE;
-        this.D = cx0Var;
+        r0.a = SmartPlan.MAX_QUEUE;
+        r0.b = SmartPlan.MAX_QUEUE;
+        this.D = r12;
     }
 
-    public static float b(float f, float f2, float f3) {
-        if (f > f3) {
-            return f3;
-        }
-        return f < f2 ? f2 : f;
+    public static float b(float r1, float r2, float r3) {
+        if (r1 <= r3) goto L6;
+        return r3;
+    L6:
+        if (r1 >= r2) goto L8;
+        return r2;
+    L8:
+        return r1;
     }
 
-    /* JADX WARN: Code duplicated, block: B:12:0x003b A[RETURN] */
-    /* JADX WARN: Code duplicated, block: B:13:0x003c  */
-    /* JADX WARN: Code duplicated, block: B:15:0x004b  */
-    /* JADX WARN: Code duplicated, block: B:17:0x0051  */
-    public final float a(int i, float f, float f2, float f3) {
-        float fB;
-        float interpolation;
-        float fB2 = b(this.r[i] * f2, 0.0f, this.s[i]);
-        float fC = c(f2 - f, fB2) - c(f, fB2);
-        AccelerateInterpolator accelerateInterpolator = this.o;
-        if (fC >= 0.0f) {
-            if (fC > 0.0f) {
-                interpolation = accelerateInterpolator.getInterpolation(fC);
-            } else {
-                fB = 0.0f;
-            }
-            if (fB == 0.0f) {
-                return 0.0f;
-            }
-            float f4 = this.v[i];
-            float f5 = this.w[i];
-            float f6 = this.x[i];
-            float f7 = f4 * f3;
-            return fB > 0.0f ? b(fB * f7, f5, f6) : -b((-fB) * f7, f5, f6);
-        }
-        interpolation = -accelerateInterpolator.getInterpolation(-fC);
-        fB = b(interpolation, -1.0f, 1.0f);
-        if (fB == 0.0f) {
-            return 0.0f;
-        }
-        float f8 = this.v[i];
-        float f9 = this.w[i];
-        float f10 = this.x[i];
-        float f11 = f8 * f3;
-        if (fB > 0.0f) {
-        }
+    public final float a(int r4, float r5, float r6, float r7) {
+        float r0 = b(this.r[r4] * r6, 0.0f, this.s[r4]);
+        float r8 = c(r6 - r5, r0) - c(r5, r0);
+        AccelerateInterpolator r1 = this.o;
+        if (r8 >= 0.0f) goto L6;
+        float r9 = -r1.getInterpolation(-r8);
+    L8:
+        float r10 = b(r9, -1.0f, 1.0f);
+    L11:
+        if (r10 != 0.0f) goto L13;
+        return 0.0f;
+    L13:
+        float r2 = this.v[r4];
+        float r3 = this.w[r4];
+        float r11 = this.x[r4];
+        float r12 = r2 * r7;
+        if (r10 <= 0.0f) goto L18;
+        return b(r10 * r12, r3, r11);
+    L18:
+        return -b((-r10) * r12, r3, r11);
+    L6:
+        if (r8 <= 0.0f) goto L9;
+        r9 = r1.getInterpolation(r8);
+        goto L8
+    L9:
+        r10 = 0.0f;
+        goto L11
     }
 
-    public final float c(float f, float f2) {
-        if (f2 != 0.0f) {
-            int i = this.t;
-            if (i == 0 || i == 1) {
-                if (f < f2) {
-                    if (f >= 0.0f) {
-                        return 1.0f - (f / f2);
-                    }
-                    if (this.B && i == 1) {
-                        return 1.0f;
-                    }
-                }
-            } else if (i == 2 && f < 0.0f) {
-                return f / (-f2);
-            }
-        }
+    public final float c(float r6, float r7) {
+        if (r7 == 0.0f) goto L25;
+        int r2 = this.t;
+        if (r2 == 0) goto L16;
+        if (r2 == 1) goto L16;
+        if (r2 != 2) goto L25;
+        if (r6 >= 0.0f) goto L25;
+        return r6 / (-r7);
+    L16:
+        if (r6 >= r7) goto L25;
+        if (r6 < 0.0f) goto L22;
+        return 1.0f - (r6 / r7);
+    L22:
+        if (this.B == false) goto L25;
+        if (r2 != 1) goto L25;
+        return 1.0f;
+    L25:
         return 0.0f;
     }
 
     public final void d() {
-        int i = 0;
-        if (this.z) {
-            this.B = false;
-            return;
-        }
-        long jCurrentAnimationTimeMillis = AnimationUtils.currentAnimationTimeMillis();
-        qn qnVar = this.n;
-        int i2 = (int) (jCurrentAnimationTimeMillis - qnVar.e);
-        int i3 = qnVar.b;
-        if (i2 > i3) {
-            i = i3;
-        } else if (i2 >= 0) {
-            i = i2;
-        }
-        qnVar.i = i;
-        qnVar.h = qnVar.a(jCurrentAnimationTimeMillis);
-        qnVar.g = jCurrentAnimationTimeMillis;
+        int r1 = 0;
+        if (this.z == false) goto L6;
+        this.B = false;
+        return;
+    L6:
+        long r2 = AnimationUtils.currentAnimationTimeMillis();
+        qn r6 = this.n;
+        int r0 = (int) (r2 - r6.e);
+        int r4 = r6.b;
+        if (r0 <= r4) goto L9;
+        r1 = r4;
+    L12:
+        r6.i = r1;
+        r6.h = r6.a(r2);
+        r6.g = r2;
+        return;
+    L9:
+        if (r0 < 0) goto L12;
+        r1 = r0;
+        goto L12
     }
 
     public final boolean e() {
-        cx0 cx0Var;
-        int count;
-        qn qnVar = this.n;
-        float f = qnVar.d;
-        int iAbs = (int) (f / Math.abs(f));
-        Math.abs(qnVar.c);
-        if (iAbs != 0 && (count = (cx0Var = this.D).getCount()) != 0) {
-            int childCount = cx0Var.getChildCount();
-            int firstVisiblePosition = cx0Var.getFirstVisiblePosition();
-            int i = firstVisiblePosition + childCount;
-            if (iAbs <= 0 ? !(iAbs >= 0 || (firstVisiblePosition <= 0 && cx0Var.getChildAt(0).getTop() >= 0)) : !(i >= count && cx0Var.getChildAt(childCount - 1).getBottom() <= cx0Var.getHeight())) {
-                return true;
-            }
-        }
+        qn r0 = this.n;
+        float r1 = r0.d;
+        int r2 = (int) (r1 / Math.abs(r1));
+        Math.abs(r0.c);
+        if (r2 == 0) goto L19;
+        cx0 r7 = this.D;
+        int r3 = r7.getCount();
+        if (r3 == 0) goto L19;
+        int r4 = r7.getChildCount();
+        int r5 = r7.getFirstVisiblePosition();
+        int r6 = r5 + r4;
+        if (r2 <= 0) goto L13;
+        if (r6 >= r3) goto L11;
+    L18:
+        return true;
+    L11:
+        if (r7.getChildAt(r4 - 1).getBottom() > r7.getHeight()) goto L18;
+    L13:
+        if (r2 >= 0) goto L19;
+        if (r5 > 0) goto L18;
+        if (r7.getChildAt(0).getTop() < 0) goto L18;
+    L19:
         return false;
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:10:0x0014, code lost:
-    
-        if (r0 != 3) goto L29;
-     */
     @Override // android.view.View.OnTouchListener
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public final boolean onTouch(View view, MotionEvent motionEvent) {
-        int i;
-        if (this.C) {
-            int actionMasked = motionEvent.getActionMasked();
-            int i2 = 3;
-            if (actionMasked != 0) {
-                if (actionMasked != 1) {
-                    if (actionMasked != 2) {
-                    }
-                }
-                d();
-                return false;
-            }
-            this.A = true;
-            this.y = false;
-            float x = motionEvent.getX();
-            float width = view.getWidth();
-            cx0 cx0Var = this.p;
-            float fA = a(0, x, width, cx0Var.getWidth());
-            float fA2 = a(1, motionEvent.getY(), view.getHeight(), cx0Var.getHeight());
-            qn qnVar = this.n;
-            qnVar.c = fA;
-            qnVar.d = fA2;
-            if (!this.B && e()) {
-                if (this.q == null) {
-                    this.q = new g5(i2, this);
-                }
-                this.B = true;
-                this.z = true;
-                if (this.y || (i = this.u) <= 0) {
-                    this.q.run();
-                } else {
-                    g5 g5Var = this.q;
-                    long j = i;
-                    WeakHashMap weakHashMap = j65.a;
-                    cx0Var.postOnAnimationDelayed(g5Var, j);
-                }
-                this.y = true;
-            }
-        }
+    public final boolean onTouch(View r9, MotionEvent r10) {
+        if (this.C == false) goto L29;
+        int r0 = r10.getActionMasked();
+        int r2 = 3;
+        if (r0 == 0) goto L14;
+        if (r0 != 1) goto L9;
+    L12:
+        d();
+        return false;
+    L9:
+        if (r0 == 2) goto L15;
+        if (r0 == 3) goto L12;
+    L15:
+        float r1 = r10.getX();
+        float r4 = r9.getWidth();
+        cx0 r5 = this.p;
+        float r3 = a(0, r1, r4, r5.getWidth());
+        float r11 = a(1, r10.getY(), r9.getHeight(), r5.getHeight());
+        qn r12 = this.n;
+        r12.c = r3;
+        r12.d = r11;
+        if (this.B == true) goto L29;
+        if (e() == false) goto L29;
+        if (this.q != null) goto L22;
+        this.q = new g5(r2, this);
+    L22:
+        this.B = true;
+        this.z = true;
+        if (this.y == true) goto L27;
+        int r13 = this.u;
+        if (r13 <= 0) goto L27;
+        g5 r14 = this.q;
+        long r6 = r13;
+        WeakHashMap r15 = j65.a;
+        r5.postOnAnimationDelayed(r14, r6);
+    L28:
+        this.y = true;
+    L27:
+        this.q.run();
+        goto L28
+    L14:
+        this.A = true;
+        this.y = false;
+    L29:
         return false;
     }
 }

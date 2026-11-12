@@ -8,12 +8,12 @@ import android.view.View;
 public final class s70 extends ClickableSpan {
     public final ib2 n;
 
-    public s70(ib2 ib2Var) {
-        this.n = ib2Var;
+    public s70(ib2 r1) {
+        this.n = r1;
     }
 
     @Override // android.text.style.ClickableSpan
-    public final void onClick(View view) {
+    public final void onClick(View r1) {
         this.n.getClass();
     }
 }

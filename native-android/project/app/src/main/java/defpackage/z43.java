@@ -7,16 +7,15 @@ public final class z43 extends wd0 {
     public final /* synthetic */ na4 o;
     public int p;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public z43(na4 na4Var, wd0 wd0Var) {
-        super(wd0Var);
-        this.o = na4Var;
+    public z43(na4 r1, wd0 r2) {
+        this.o = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.n = obj;
+    public final Object invokeSuspend(Object r7) {
+        this.n = r7;
         this.p |= Integer.MIN_VALUE;
-        return this.o.l(0L, 0L, this);
+        return this.o.l(0, 0, this);
     }
 }

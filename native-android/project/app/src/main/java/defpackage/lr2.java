@@ -5,10 +5,10 @@ package defpackage;
 public class lr2 extends kr2 {
     @Override // defpackage.kr2
     public final ms2 b() {
-        return new ms2(this.a.getCurrentControllerInfo());
+        return new ms2(sr0.i(this.a));
     }
 
     @Override // defpackage.kr2
-    public final void c(ms2 ms2Var) {
+    public final void c(ms2 r1) {
     }
 }

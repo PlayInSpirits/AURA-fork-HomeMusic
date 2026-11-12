@@ -10,27 +10,25 @@ import com.google.android.gms.common.api.internal.BasePendingResult;
 /* JADX INFO: loaded from: classes.dex */
 public final class eq extends zw2 {
     @Override // defpackage.zw2, android.os.Handler
-    public final void handleMessage(Message message) {
-        int i = message.what;
-        if (i != 1) {
-            if (i != 2) {
-                Log.wtf("BasePendingResult", f34.f(i, "Don't know how to handle message: "), new Exception());
-                return;
-            } else {
-                ((BasePendingResult) message.obj).c(Status.u);
-                return;
-            }
-        }
-        Pair pair = (Pair) message.obj;
-        if (pair.first != null) {
-            kf2.k();
-            return;
-        }
-        try {
-            throw null;
-        } catch (RuntimeException e) {
-            zc zcVar = BasePendingResult.j;
-            throw e;
-        }
+    public final void handleMessage(Message r2) {
+        int r1 = r2.what;
+        if (r1 != 1) goto L5;
+        Pair r3 = (Pair) r2.obj;
+        if (r3.first == null) goto L14;
+        kf2.k();
+        return;
+    L14:
+        t14 r4 = (t14) r3.second;
+        throw null;     // Catch: RuntimeException -> L16
+    L16:
+        e = move-exception;
+        zc r5 = BasePendingResult.j;
+        throw e;
+    L5:
+        if (r1 == 2) goto L8;
+        Log.wtf("BasePendingResult", f34.f(r1, "Don't know how to handle message: "), new Exception());
+        return;
+    L8:
+        ((BasePendingResult) r2.obj).c(Status.u);
     }
 }

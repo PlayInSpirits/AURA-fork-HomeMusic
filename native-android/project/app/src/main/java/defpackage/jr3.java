@@ -9,28 +9,33 @@ public final class jr3 implements lt2 {
     public final i80 d;
     public int e;
 
-    public jr3(bi0 bi0Var, n51 n51Var) {
-        ss2 ss2Var = new ss2(10, n51Var);
-        yc5 yc5Var = new yc5(3);
-        i80 i80Var = new i80(28);
-        this.a = bi0Var;
-        this.b = ss2Var;
-        this.c = yc5Var;
-        this.d = i80Var;
+    public jr3(bi0 r4, n51 r5) {
+        ss2 r0 = new ss2(10, r5);
+        yc5 r6 = new yc5(3);
+        i80 r1 = new i80(28);
+        this.a = r4;
+        this.b = r0;
+        this.c = r6;
+        this.d = r1;
         this.e = 1048576;
     }
 
     @Override // defpackage.lt2
-    public final lt2 e(yc5 yc5Var) {
-        rr2.s(yc5Var, "MediaSource.Factory#setDrmSessionManagerProvider no longer handles null by instantiating a new DefaultDrmSessionManagerProvider. Explicitly construct and pass an instance in order to retain the old behavior.");
-        this.c = yc5Var;
-        return this;
+    public final /* bridge */ /* synthetic */ bq d(gn2 r1) {
+        return f(r1);
     }
 
     @Override // defpackage.lt2
-    /* JADX INFO: renamed from: f, reason: merged with bridge method [inline-methods] */
-    public final kr3 d(gn2 gn2Var) {
-        gn2Var.b.getClass();
-        return new kr3(gn2Var, this.a, this.b, this.c.b(gn2Var), this.d, this.e, null);
+    public final lt2 e(yc5 r2) {
+        rr2.s(r2, "MediaSource.Factory#setDrmSessionManagerProvider no longer handles null by instantiating a new DefaultDrmSessionManagerProvider. Explicitly construct and pass an instance in order to retain the old behavior.");
+        this.c = r2;
+        return this;
+    }
+
+    public final kr3 f(gn2 r10) {
+        r10.b.getClass();
+        ww0 r5 = this.c.b(r10);
+        int r7 = this.e;
+        return new kr3(r10, this.a, this.b, r5, this.d, r7, null);
     }
 }

@@ -6,8 +6,8 @@ import java.util.Random;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class z1 extends ku3 {
     @Override // defpackage.ku3
-    public final int a(int i) {
-        return b().nextInt(i);
+    public final int a(int r1) {
+        return b().nextInt(r1);
     }
 
     public abstract Random b();

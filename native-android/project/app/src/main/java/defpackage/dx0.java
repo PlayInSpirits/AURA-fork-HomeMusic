@@ -11,50 +11,58 @@ public final class dx0 implements AdapterView.OnItemSelectedListener {
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ dx0(int i, Object obj) {
-        this.n = i;
-        this.o = obj;
+    public /* synthetic */ dx0(int r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
-    private final void a(AdapterView adapterView) {
+    private final void a(AdapterView r1) {
     }
 
-    private final void b(AdapterView adapterView) {
+    private final void b(AdapterView r1) {
     }
 
-    private final void c(AdapterView adapterView) {
-    }
-
-    @Override // android.widget.AdapterView.OnItemSelectedListener
-    public final void onItemSelected(AdapterView adapterView, View view, int i, long j) {
-        cx0 cx0Var;
-        int i2 = this.n;
-        Object obj = this.o;
-        switch (i2) {
-            case 0:
-                DropDownPreference dropDownPreference = (DropDownPreference) obj;
-                if (i >= 0) {
-                    String string = dropDownPreference.i0[i].toString();
-                    if (!string.equals(dropDownPreference.j0) && dropDownPreference.a(string)) {
-                        dropDownPreference.H(string);
-                        break;
-                    }
-                }
-                break;
-            case 1:
-                if (i != -1 && (cx0Var = ((bc2) obj).p) != null) {
-                    cx0Var.setListSelectionHidden(false);
-                    break;
-                }
-                break;
-            default:
-                ((SearchView) obj).o(i);
-                break;
-        }
+    private final void c(AdapterView r1) {
     }
 
     @Override // android.widget.AdapterView.OnItemSelectedListener
-    public final void onNothingSelected(AdapterView adapterView) {
-        int i = this.n;
+    public final void onItemSelected(AdapterView r1, View r2, int r3, long r4) {
+        int r5 = this.n;
+        Object r0 = this.o;
+        switch(r5) {
+            case 0: goto L12;
+            case 1: goto L7;
+            default: goto L4;
+        };
+    L4:
+        ((SearchView) r0).o(r3);
+        return;
+    L12:
+        DropDownPreference r6 = (DropDownPreference) r0;
+        if (r3 < 0) goto L22;
+        String r7 = r6.i0[r3].toString();
+        if (r7.equals(r6.j0) == false) goto L17;
+        return;
+    L17:
+        if (r6.a(r7) == false) goto L24;
+        r6.H(r7);
+        return;
+    L24:
+        return;
+    L22:
+        return;
+    L7:
+        if (r3 == (-1)) goto L20;
+        cx0 r8 = ((bc2) r0).p;
+        if (r8 == null) goto L21;
+        r8.setListSelectionHidden(false);
+        return;
+    L21:
+        return;
+    }
+
+    @Override // android.widget.AdapterView.OnItemSelectedListener
+    public final void onNothingSelected(AdapterView r1) {
+        int r0 = this.n;
     }
 }

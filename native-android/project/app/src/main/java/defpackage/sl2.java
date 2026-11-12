@@ -6,30 +6,32 @@ public final /* synthetic */ class sl2 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ bm2 o;
 
-    public /* synthetic */ sl2(bm2 bm2Var, int i) {
-        this.n = i;
-        this.o = bm2Var;
+    public /* synthetic */ sl2(bm2 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        bm2 bm2Var = this.o;
-        switch (i) {
-            case 0:
-                yl2 yl2Var = bm2Var.o;
-                if (yl2Var != null) {
-                    bm2Var.d.unbindService(yl2Var);
-                    bm2Var.o = null;
-                }
-                bm2Var.c.e.clear();
-                break;
-            default:
-                lk3 lk3Var = bm2Var.H;
-                if (lk3Var != null) {
-                    bm2Var.o1(lk3Var, jk3.c);
-                }
-                break;
-        }
+        int r0 = this.n;
+        bm2 r2 = this.o;
+        switch(r0) {
+            case 0: goto L8;
+            default: goto L4;
+        };
+    L4:
+        lk3 r1 = r2.H;
+        if (r1 == null) goto L13;
+        r2.o1(r1, jk3.c);
+        return;
+    L13:
+        return;
+    L8:
+        yl2 r3 = r2.o;
+        if (r3 == null) goto L11;
+        r2.d.unbindService(r3);
+        r2.o = null;
+    L11:
+        r2.c.e.clear();
     }
 }

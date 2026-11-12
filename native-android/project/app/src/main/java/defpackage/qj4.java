@@ -3,14 +3,12 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract /* synthetic */ class qj4 {
-    public static final /* synthetic */ int[] a;
+    public static final /* synthetic */ int[] a = null;
 
     static {
-        int[] iArr = new int[xa3.z(3).length];
-        try {
-            iArr[0] = 1;
-        } catch (NoSuchFieldError unused) {
-        }
-        a = iArr;
+        int[] r0 = new int[xa3.z(3).length];
+        r0[0] = 1;     // Catch: NoSuchFieldError -> L6
+    L4:
+        a = r0;
     }
 }

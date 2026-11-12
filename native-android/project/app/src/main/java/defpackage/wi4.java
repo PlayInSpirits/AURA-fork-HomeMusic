@@ -2,10 +2,12 @@ package defpackage;
 
 import android.util.Log;
 import com.eddyizm.tempus.App;
+import com.eddyizm.tempus.subsonic.base.ApiResponse;
 import com.eddyizm.tempus.subsonic.models.Child;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import retrofit2.Call;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -16,43 +18,42 @@ public final /* synthetic */ class wi4 {
     public final /* synthetic */ int d;
     public final /* synthetic */ String e;
 
-    public /* synthetic */ wi4(xi4 xi4Var, k03 k03Var, HashSet hashSet, int i, String str) {
-        this.a = xi4Var;
-        this.b = k03Var;
-        this.c = hashSet;
-        this.d = i;
-        this.e = str;
+    public /* synthetic */ wi4(xi4 r1, k03 r2, HashSet r3, int r4, String r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
     }
 
-    public final void a(List list) {
-        HashSet hashSet;
-        k03 k03Var = this.b;
-        List list2 = (List) k03Var.d();
-        if (list2 != null) {
-            Iterator it = list.iterator();
-            while (true) {
-                boolean zHasNext = it.hasNext();
-                hashSet = this.c;
-                if (!zHasNext) {
-                    break;
-                }
-                Child child = (Child) it.next();
-                if (!hashSet.contains(child.getId())) {
-                    list2.add(child);
-                    hashSet.add(child.getId());
-                }
-            }
-            int size = list2.size();
-            int i = this.d;
-            if (size >= i / 2) {
-                k03Var.i(list2);
-                return;
-            }
-            eg0 eg0Var = new eg0(hashSet, list2, k03Var, 11);
-            gp3 gp3VarC = App.f(false).c();
-            gp3VarC.getClass();
-            Log.d("BrowsingClient", "getSimilarSongs()");
-            ((ov) gp3VarC.p).g(((pn4) gp3VarC.o).f(), this.e, i).enqueue(new ue1(this.a, i, eg0Var, 14));
-        }
+    public final void a(List r6) {
+        k03 r0 = this.b;
+        List r1 = (List) r0.d();
+        if (r1 == null) goto L21;
+        Iterator r7 = r6.iterator();
+    L5:
+        boolean r2 = r7.hasNext();
+        HashSet r3 = this.c;
+        if (r2 == false) goto L10;
+        Child r4 = (Child) r7.next();
+        if (r3.contains(r4.getId()) == true) goto L5;
+        r1.add(r4);
+        r3.add(r4.getId());
+        goto L5
+    L10:
+        int r8 = r1.size();
+        int r5 = this.d;
+        if (r8 >= (r5 / 2)) goto L14;
+        eg0 r9 = new eg0(r3, r1, r0, 11);
+        gp3 r10 = App.f(false).c();
+        r10.getClass();
+        Log.d("BrowsingClient", "getSimilarSongs()");
+        Call<ApiResponse> r11 = ((ov) r10.p).g(((pn4) r10.o).f(), this.e, r5);
+        xi4 r12 = this.a;
+        r11.enqueue(new ue1(r12, r5, r9, 14));
+        return;
+    L14:
+        r0.i(r1);
+        return;
     }
 }

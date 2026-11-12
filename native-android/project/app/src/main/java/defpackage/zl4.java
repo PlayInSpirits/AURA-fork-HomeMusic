@@ -7,7 +7,7 @@ import com.google.android.gms.common.api.internal.BasePendingResult;
 /* JADX INFO: loaded from: classes.dex */
 public final class zl4 extends BasePendingResult {
     @Override // com.google.android.gms.common.api.internal.BasePendingResult
-    public final /* bridge */ /* synthetic */ t14 b(Status status) {
-        return status;
+    public final /* bridge */ /* synthetic */ t14 b(Status r1) {
+        return r1;
     }
 }

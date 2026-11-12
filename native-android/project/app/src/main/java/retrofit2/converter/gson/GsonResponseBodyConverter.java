@@ -14,28 +14,32 @@ final class GsonResponseBodyConverter<T> implements Converter<n14, T> {
     private final bz4 adapter;
     private final nk1 gson;
 
-    public GsonResponseBodyConverter(nk1 nk1Var, bz4 bz4Var) {
-        this.gson = nk1Var;
-        this.adapter = bz4Var;
+    public GsonResponseBodyConverter(nk1 r1, bz4 r2) {
+        this.gson = r1;
+        this.adapter = r2;
+    }
+
+    /* JADX INFO: renamed from: convert, reason: avoid collision after fix types in other method */
+    public T convert2(n14 r4) {
+        nk1 r0 = this.gson;
+        Reader r1 = r4.charStream();
+        r0.getClass();
+        l32 r2 = new l32(r1);
+        r2.o = r0.g;
+        T r3 = (T) this.adapter.a(r2);
+        if (r2.e0() != 10) goto L9;
+        r4.close();
+        return r3;
+    L9:
+        throw new JsonIOException("JSON document was not fully consumed.");     // Catch: Throwable -> L10
+    L10:
+        th = move-exception;
+        r4.close();
+        throw th;
     }
 
     @Override // retrofit2.Converter
-    public T convert(n14 n14Var) {
-        nk1 nk1Var = this.gson;
-        Reader readerCharStream = n14Var.charStream();
-        nk1Var.getClass();
-        l32 l32Var = new l32(readerCharStream);
-        l32Var.o = nk1Var.g;
-        try {
-            T t = (T) this.adapter.a(l32Var);
-            if (l32Var.e0() != 10) {
-                throw new JsonIOException("JSON document was not fully consumed.");
-            }
-            n14Var.close();
-            return t;
-        } catch (Throwable th) {
-            n14Var.close();
-            throw th;
-        }
+    public /* bridge */ /* synthetic */ Object convert(n14 r1) {
+        return convert2(r1);
     }
 }

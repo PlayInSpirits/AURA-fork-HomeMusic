@@ -6,19 +6,21 @@ public final class hp4 implements oo0, vd0 {
     public final /* synthetic */ ip4 n;
     public final cz o;
     public cz p;
-    public ln3 q = ln3.o;
-    public final q01 r = q01.n;
+    public ln3 q;
+    public final q01 r;
     public final /* synthetic */ ip4 s;
 
-    public hp4(ip4 ip4Var, cz czVar) {
-        this.s = ip4Var;
-        this.n = ip4Var;
-        this.o = czVar;
+    public hp4(ip4 r1, cz r2) {
+        this.s = r1;
+        this.n = r1;
+        this.o = r2;
+        this.q = ln3.o;
+        this.r = q01.n;
     }
 
     @Override // defpackage.oo0
-    public final float D(float f) {
-        return f / this.n.g();
+    public final float D(float r1) {
+        return r1 / this.n.g();
     }
 
     @Override // defpackage.oo0
@@ -27,31 +29,31 @@ public final class hp4 implements oo0, vd0 {
     }
 
     @Override // defpackage.oo0
-    public final float M(float f) {
-        return this.n.g() * f;
+    public final float M(float r1) {
+        return this.n.g() * r1;
     }
 
     @Override // defpackage.oo0
-    public final int V(float f) {
-        return this.n.V(f);
+    public final int V(float r1) {
+        return this.n.V(r1);
     }
 
     @Override // defpackage.oo0
-    public final long Y(long j) {
-        return this.n.Y(j);
+    public final long Y(long r1) {
+        return this.n.Y(r1);
     }
 
-    public final Object a(ln3 ln3Var, jp jpVar) {
-        cz czVar = new cz(1, ya4.x(jpVar));
-        czVar.u();
-        this.q = ln3Var;
-        this.p = czVar;
-        return czVar.q();
+    public final Object a(ln3 r3, jp r4) {
+        cz r0 = new cz(1, ya4.x(r4));
+        r0.u();
+        this.q = r3;
+        this.p = r0;
+        return r0.q();
     }
 
     @Override // defpackage.oo0
-    public final float a0(long j) {
-        return this.n.a0(j);
+    public final float a0(long r1) {
+        return this.n.a0(r1);
     }
 
     @Override // defpackage.oo0
@@ -65,31 +67,36 @@ public final class hp4 implements oo0, vd0 {
     }
 
     @Override // defpackage.oo0
-    public final long h(float f) {
-        return this.n.h(f);
+    public final long h(float r1) {
+        return this.n.h(r1);
     }
 
     @Override // defpackage.oo0
-    public final long i(long j) {
-        return this.n.i(j);
+    public final long i(long r1) {
+        return this.n.i(r1);
     }
 
     @Override // defpackage.oo0
-    public final float o(long j) {
-        return this.n.o(j);
+    public final float o(long r1) {
+        return this.n.o(r1);
     }
 
     @Override // defpackage.vd0
-    public final void resumeWith(Object obj) {
-        ip4 ip4Var = this.s;
-        synchronized (ip4Var.H) {
-            ip4Var.G.j(this);
-        }
-        this.o.resumeWith(obj);
+    public final void resumeWith(Object r3) {
+        ip4 r0 = this.s;
+        f13 r1 = r0.H;
+        monitor-enter(r1);
+        r0.G.j(this);     // Catch: Throwable -> L8
+        monitor-exit(r1);
+        this.o.resumeWith(r3);
+        return;
+    L8:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.oo0
-    public final long w(float f) {
-        return this.n.w(f);
+    public final long w(float r1) {
+        return this.n.w(r1);
     }
 }

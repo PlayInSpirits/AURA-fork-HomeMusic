@@ -13,21 +13,23 @@ public final class eh0 extends fi2 {
     public dh0 K;
 
     @Override // defpackage.fi2
-    public final void f(Canvas canvas) {
-        if (this.K.r.isEmpty()) {
-            super.f(canvas);
-            return;
-        }
-        canvas.save();
-        int i = Build.VERSION.SDK_INT;
-        dh0 dh0Var = this.K;
-        if (i >= 26) {
-            canvas.clipOutRect(dh0Var.r);
-        } else {
-            canvas.clipRect(dh0Var.r, Region.Op.DIFFERENCE);
-        }
-        super.f(canvas);
-        canvas.restore();
+    public final void f(Canvas r4) {
+        if (this.K.r.isEmpty() == false) goto L6;
+        super.f(r4);
+        return;
+    L6:
+        r4.save();
+        int r0 = Build.VERSION.SDK_INT;
+        dh0 r1 = this.K;
+        if (r0 < 26) goto L9;
+        tn.q(r4, r1.r);
+    L10:
+        super.f(r4);
+        r4.restore();
+        return;
+    L9:
+        r4.clipRect(r1.r, Region.Op.DIFFERENCE);
+        goto L10
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
@@ -36,12 +38,16 @@ public final class eh0 extends fi2 {
         return this;
     }
 
-    public final void v(float f, float f2, float f3, float f4) {
-        RectF rectF = this.K.r;
-        if (f == rectF.left && f2 == rectF.top && f3 == rectF.right && f4 == rectF.bottom) {
-            return;
-        }
-        rectF.set(f, f2, f3, f4);
+    public final void v(float r3, float r4, float r5, float r6) {
+        RectF r0 = this.K.r;
+        if (r3 == r0.left) goto L5;
+    L12:
+        r0.set(r3, r4, r5, r6);
         invalidateSelf();
+        return;
+    L5:
+        if (r4 != r0.top) goto L12;
+        if (r5 != r0.right) goto L12;
+        if (r6 != r0.bottom) goto L12;
     }
 }

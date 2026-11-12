@@ -9,12 +9,12 @@ import android.os.Bundle;
 public final class jf2 implements LoudnessCodecController$OnLoudnessCodecUpdateListener {
     public final /* synthetic */ ns3 a;
 
-    public jf2(ns3 ns3Var) {
-        this.a = ns3Var;
+    public jf2(ns3 r1) {
+        this.a = r1;
     }
 
-    public final Bundle onLoudnessCodecUpdate(MediaCodec mediaCodec, Bundle bundle) {
+    public final Bundle onLoudnessCodecUpdate(MediaCodec r1, Bundle r2) {
         ((kf2) this.a.p).getClass();
-        return bundle;
+        return r2;
     }
 }

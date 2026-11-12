@@ -11,20 +11,22 @@ public final /* synthetic */ class wj3 implements Supplier {
     public final /* synthetic */ int a;
     public final /* synthetic */ PlayerControllerFragment b;
 
-    public /* synthetic */ wj3(PlayerControllerFragment playerControllerFragment, int i) {
-        this.a = i;
-        this.b = playerControllerFragment;
+    public /* synthetic */ wj3(PlayerControllerFragment r1, int r2) {
+        this.a = r2;
+        this.b = r1;
     }
 
     @Override // java.util.function.Supplier
     public final Object get() {
-        int i = this.a;
-        PlayerControllerFragment playerControllerFragment = this.b;
-        switch (i) {
-            case 0:
-                return (Child) playerControllerFragment.L0.n.d();
-            default:
-                return ((PlayerControlView) playerControllerFragment.l0.p).getPlayer();
-        }
+        int r0 = this.a;
+        PlayerControllerFragment r1 = this.b;
+        switch(r0) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return ((PlayerControlView) r1.l0.p).getPlayer();
+    L7:
+        return (Child) r1.L0.n.d();
     }
 }

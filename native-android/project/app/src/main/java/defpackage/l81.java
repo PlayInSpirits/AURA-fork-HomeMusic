@@ -12,37 +12,43 @@ public abstract class l81 extends AnimatorListenerAdapter implements ValueAnimat
     public float c;
     public final /* synthetic */ o81 d;
 
-    public l81(o81 o81Var) {
-        this.d = o81Var;
+    public l81(o81 r1) {
+        this.d = r1;
     }
 
     public abstract float a();
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationEnd(Animator animator) {
-        float f = (int) this.c;
-        n81 n81Var = this.d.b;
-        if (n81Var != null) {
-            n81Var.l(f);
-        }
+    public final void onAnimationEnd(Animator r2) {
+        float r3 = (int) this.c;
+        n81 r0 = this.d.b;
+        if (r0 == null) goto L5;
+        r0.l(r3);
+    L5:
         this.a = false;
     }
 
     @Override // android.animation.ValueAnimator.AnimatorUpdateListener
-    public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-        boolean z = this.a;
-        o81 o81Var = this.d;
-        if (!z) {
-            n81 n81Var = o81Var.b;
-            this.b = n81Var == null ? 0.0f : n81Var.n.m;
-            this.c = a();
-            this.a = true;
-        }
-        float f = this.b;
-        float animatedFraction = (int) ((valueAnimator.getAnimatedFraction() * (this.c - f)) + f);
-        n81 n81Var2 = o81Var.b;
-        if (n81Var2 != null) {
-            n81Var2.l(animatedFraction);
-        }
+    public final void onAnimationUpdate(ValueAnimator r3) {
+        boolean r0 = this.a;
+        o81 r1 = this.d;
+        if (r0 == true) goto L9;
+        n81 r2 = r1.b;
+        if (r2 != null) goto L7;
+        float r4 = 0.0f;
+    L8:
+        this.b = r4;
+        this.c = a();
+        this.a = true;
+        goto L9
+    L7:
+        r4 = r2.n.m;
+    L9:
+        float r5 = this.b;
+        float r6 = (int) ((r3.getAnimatedFraction() * (this.c - r5)) + r5);
+        n81 r7 = r1.b;
+        if (r7 == null) goto L13;
+        r7.l(r6);
+        return;
     }
 }

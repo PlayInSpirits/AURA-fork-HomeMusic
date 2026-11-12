@@ -6,9 +6,9 @@ public final class ro0 implements oo0 {
     public final float n;
     public final float o;
 
-    public ro0(float f, float f2) {
-        this.n = f;
-        this.o = f2;
+    public ro0(float r1, float r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // defpackage.oo0
@@ -16,15 +16,21 @@ public final class ro0 implements oo0 {
         return this.o;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof ro0)) {
-            return false;
-        }
-        ro0 ro0Var = (ro0) obj;
-        return Float.compare(this.n, ro0Var.n) == 0 && Float.compare(this.o, ro0Var.o) == 0;
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if ((r5 instanceof ro0) == true) goto L8;
+        return false;
+    L8:
+        ro0 r6 = (ro0) r5;
+        if (Float.compare(this.n, r6.n) == 0) goto L12;
+        return false;
+    L12:
+        if (Float.compare(this.o, r6.o) == 0) goto L14;
+        return false;
+    L14:
+        return true;
     }
 
     @Override // defpackage.oo0
@@ -33,7 +39,8 @@ public final class ro0 implements oo0 {
     }
 
     public final int hashCode() {
-        return Float.hashCode(this.o) + (Float.hashCode(this.n) * 31);
+        int r0 = Float.hashCode(this.n) * 31;
+        return Float.hashCode(this.o) + r0;
     }
 
     public final String toString() {

@@ -5,8 +5,8 @@ package defpackage;
 public final /* synthetic */ class yd5 implements ga2, fg1 {
     public final /* synthetic */ u80 a;
 
-    public yd5(u80 u80Var) {
-        this.a = u80Var;
+    public yd5(u80 r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.fg1
@@ -14,11 +14,14 @@ public final /* synthetic */ class yd5 implements ga2, fg1 {
         return new ig1(1, 0, u80.class, this.a, "scheduleFrameEndCallback", "scheduleFrameEndCallback(Lkotlin/jvm/functions/Function0;)Landroidx/compose/runtime/CancellationHandle;");
     }
 
-    public final boolean equals(Object obj) {
-        if ((obj instanceof ga2) && (obj instanceof fg1)) {
-            return a().equals(((fg1) obj).a());
-        }
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof ga2) == true) goto L5;
         return false;
+    L5:
+        if ((r2 instanceof fg1) == true) goto L7;
+        return false;
+    L7:
+        return a().equals(((fg1) r2).a());
     }
 
     public final int hashCode() {

@@ -8,13 +8,19 @@ public final class k11 {
     public final cf4 a;
     public final Executor b;
 
-    public k11(cf4 cf4Var, Executor executor) {
-        this.a = cf4Var;
-        this.b = executor;
+    public k11(cf4 r1, Executor r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
-    public final boolean equals(Object obj) {
-        return (obj instanceof k11) && this.a == ((k11) obj).a;
+    public final boolean equals(Object r3) {
+        if ((r3 instanceof k11) == true) goto L5;
+        return false;
+    L5:
+        if (this.a == ((k11) r3).a) goto L7;
+        return false;
+    L7:
+        return true;
     }
 
     public final int hashCode() {

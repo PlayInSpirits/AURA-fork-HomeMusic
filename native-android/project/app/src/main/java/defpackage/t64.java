@@ -4,7 +4,7 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class t64 implements q64 {
     @Override // defpackage.q64
-    public final float a(float f) {
-        return f;
+    public final float a(float r1) {
+        return r1;
     }
 }

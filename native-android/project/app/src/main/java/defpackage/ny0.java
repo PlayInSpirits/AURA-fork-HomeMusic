@@ -5,20 +5,26 @@ package defpackage;
 public final class ny0 implements j35 {
     public final zd3 a;
 
-    public ny0(zd3 zd3Var) {
-        this.a = zd3Var;
+    public ny0(zd3 r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.j35
-    public final Object a(mf3 mf3Var) {
+    public final Object a(mf3 r1) {
         return this.a.getValue();
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof ny0) && this.a == ((ny0) obj).a;
+    public final boolean equals(Object r4) {
+        if (this != r4) goto L6;
+        return true;
+    L6:
+        if ((r4 instanceof ny0) == true) goto L9;
+        return false;
+    L9:
+        if (this.a == ((ny0) r4).a) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     public final int hashCode() {

@@ -9,27 +9,35 @@ public final class kw extends gb3 implements Serializable {
     public final eg1 n;
     public final gb3 o;
 
-    public kw(eg1 eg1Var, gb3 gb3Var) {
-        this.n = eg1Var;
-        this.o = gb3Var;
+    public kw(eg1 r1, gb3 r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // java.util.Comparator
-    public final int compare(Object obj, Object obj2) {
-        eg1 eg1Var = this.n;
-        return this.o.compare(eg1Var.mo77apply(obj), eg1Var.mo77apply(obj2));
+    public final int compare(Object r2, Object r3) {
+        eg1 r0 = this.n;
+        Object r4 = r0.mo77apply(r2);
+        Object r5 = r0.mo77apply(r3);
+        return this.o.compare(r4, r5);
     }
 
     @Override // java.util.Comparator
-    public final boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof kw)) {
-            return false;
-        }
-        kw kwVar = (kw) obj;
-        return this.n.equals(kwVar.n) && this.o.equals(kwVar.o);
+    public final boolean equals(Object r3) {
+        if (r3 != this) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof kw) == false) goto L12;
+        kw r4 = (kw) r3;
+        if (this.n.equals(r4.n) == true) goto L9;
+        return false;
+    L9:
+        if (this.o.equals(r4.o) == false) goto L16;
+        return true;
+    L16:
+        return false;
+    L12:
+        return false;
     }
 
     public final int hashCode() {

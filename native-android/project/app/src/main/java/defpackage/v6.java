@@ -41,12 +41,10 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicBoolean;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -56,61 +54,58 @@ public final /* synthetic */ class v6 implements Runnable {
     public final /* synthetic */ Object p;
     public final /* synthetic */ Object q;
 
-    public /* synthetic */ v6(pn2 pn2Var, fr2 fr2Var, uj2 uj2Var, String str) {
+    public /* synthetic */ v6(pn2 r1, fr2 r2, uj2 r3, String r4) {
         this.n = 26;
-        this.o = pn2Var;
-        this.p = fr2Var;
-        this.q = uj2Var;
+        this.o = r1;
+        this.p = r2;
+        this.q = r3;
     }
 
     private final void a() {
-        Bitmap bitmap;
-        ic2 ic2Var = (ic2) this.o;
-        lb4 lb4Var = (lb4) this.p;
-        gn2 gn2Var = (gn2) this.q;
-        try {
-            bitmap = (Bitmap) hw.j(ic2Var);
-        } catch (CancellationException | ExecutionException e) {
-            l93.B("MLSLegacyStub", "failed to get bitmap", e);
-            bitmap = null;
-        }
-        lb4Var.l(f92.a(gn2Var, bitmap));
+        ic2 r0 = (ic2) this.o;
+        lb4 r1 = (lb4) this.p;
+        gn2 r4 = (gn2) this.q;
+        Bitmap r2 = (Bitmap) hw.j(r0);     // Catch: ExecutionException -> L5 Throwable -> L7
+    L9:
+        r1.l(f92.a(r4, r2));
+        return;
+    L7:
+        e = move-exception;
+        l93.B("MLSLegacyStub", "failed to get bitmap", e);
+        r2 = null;
+        goto L9
     }
 
     private final void b() {
-        pn2 pn2Var = (pn2) this.o;
-        fr2 fr2Var = (fr2) this.p;
-        uj2 uj2Var = (uj2) this.q;
-        if (!pn2Var.x.I(fr2Var, 50004)) {
-            uj2Var.f(null);
-            return;
-        }
-        tn2 tn2Var = pn2Var.z;
-        pq pqVar = tn2Var.D;
-        tn2Var.B(fr2Var);
-        pqVar.getClass();
-        mw1 mw1Var = new mw1(m92.b(-6));
-        int i = 0;
-        mw1Var.f(new sn2(tn2Var, mw1Var, fr2Var, i), new rn2(tn2Var, i));
-        lb4 lb4VarH0 = f35.h0(mw1Var, new ln2(pn2Var, i));
-        lb4VarH0.f(new nn2(lb4VarH0, uj2Var, i), gq0.n);
+        pn2 r0 = (pn2) this.o;
+        fr2 r1 = (fr2) this.p;
+        uj2 r6 = (uj2) this.q;
+        if (r0.x.I(r1, 50004) == true) goto L6;
+        r6.f(null);
+        return;
+    L6:
+        tn2 r2 = r0.z;
+        pq r3 = r2.D;
+        r2.B(r1);
+        r3.getClass();
+        mw1 r4 = new mw1(m92.b(-6));
+        int r5 = 0;
+        r4.f(new sn2(r2, r4, r1, r5), new rn2(r2, r5));
+        lb4 r7 = f35.h0(r4, new ln2(r0, r5));
+        r7.f(new nn2(r7, r6, r5), gq0.n);
     }
 
     private final void c() {
-        tn2 tn2Var = (tn2) this.o;
-        fr2 fr2Var = (fr2) this.p;
-        String str = (String) this.q;
-        tn2Var.getClass();
-        er2 er2Var = fr2Var.d;
-        er2Var.getClass();
-        tn2Var.E.remove(str, fr2Var);
-        tn2Var.F.remove(er2Var, str);
+        tn2 r0 = (tn2) this.o;
+        fr2 r1 = (fr2) this.p;
+        String r4 = (String) this.q;
+        r0.getClass();
+        er2 r2 = r1.d;
+        r2.getClass();
+        r0.E.remove(r4, r1);
+        r0.F.remove(r2, r4);
     }
 
-    /* JADX WARN: Code duplicated, block: B:125:0x02cb A[Catch: all -> 0x028d, TryCatch #8 {all -> 0x028d, blocks: (B:105:0x025e, B:107:0x0286, B:122:0x02bd, B:123:0x02c5, B:125:0x02cb, B:126:0x02cd, B:112:0x028f, B:113:0x0293, B:115:0x0299, B:117:0x02a5, B:119:0x02a9, B:120:0x02b5, B:121:0x02bc), top: B:471:0x025e }] */
-    /* JADX WARN: Code duplicated, block: B:148:0x0367  */
-    /* JADX WARN: Code duplicated, block: B:163:0x038e  */
-    /* JADX WARN: Code duplicated, block: B:260:0x0674 A[Catch: all -> 0x0635, TryCatch #2 {all -> 0x0635, blocks: (B:240:0x0606, B:242:0x062e, B:257:0x0666, B:258:0x066e, B:260:0x0674, B:261:0x0676, B:247:0x0637, B:248:0x063b, B:250:0x0641, B:252:0x064d, B:254:0x0651, B:255:0x065e, B:256:0x0665), top: B:460:0x0606 }] */
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
     java.lang.UnsupportedOperationException: ArgType.getObject(), call class: class jadx.core.dex.instructions.args.ArgType$PrimitiveArg
     	at jadx.core.dex.instructions.args.ArgType.getObject(ArgType.java:596)
@@ -123,794 +118,868 @@ public final /* synthetic */ class v6 implements Runnable {
      */
     @Override // java.lang.Runnable
     public final void run() {
-        a00 a00Var;
-        boolean zF;
-        String message;
-        Object s14Var;
-        Object s14Var2;
-        SmartOut smartOutV;
-        List<SmartRec> recs;
-        SmartSession smartSession;
-        Long lAfterFailure;
-        ao2 ao2Var;
-        Object s14Var3;
-        WaveOut waveOutZ;
-        List<WaveTrack> tracks;
-        Long lAfterFailure2;
-        String string;
-        int i = 12;
-        va4 va4Var = null;
-        final int i2 = 1;
-        int i3 = 0;
-        switch (this.n) {
-            case 0:
-                ArrayList arrayList = (ArrayList) this.o;
-                s24 s24Var = (s24) ((ss0) this.p).n;
-                int[] iArr = (int[]) this.q;
-                int size = arrayList.size();
-                int i4 = 0;
-                while (i4 < size) {
-                    Object obj = arrayList.get(i4);
-                    i4++;
-                    w6 w6Var = (w6) obj;
-                    String str = w6Var.a;
-                    String str2 = w6Var.b;
-                    int iIntValue = ((Integer) xl.E(s24Var, true, false, new ps0(0, str, str2))).intValue();
-                    if (iIntValue > 0) {
-                        Log.w("AlbumArtistBackfill", "Left album " + str + " alone, " + iIntValue + " unfilled rows under it are not filed as " + str2);
-                    } else if (((Integer) xl.E(s24Var, false, true, new qs0(w6Var.c, str, str2, 0))).intValue() > 0) {
-                        iArr[0] = iArr[0] + 1;
-                    } else {
-                        Log.w("AlbumArtistBackfill", "Album " + str + " changed no row as " + str2);
-                    }
-                }
-                return;
-            case 1:
-                xc5 xc5Var = (xc5) this.o;
-                tb1 tb1Var = (tb1) this.p;
-                ej0 ej0Var = (ej0) this.q;
-                qm qmVar = (qm) xc5Var.p;
-                String str3 = f35.a;
-                qmVar.y(tb1Var, ej0Var);
-                return;
-            case 2:
-                AudioTrack audioTrack = (AudioTrack) this.o;
-                Handler handler = (Handler) this.p;
-                tc2 tc2Var = (tc2) this.q;
-                int i5 = 9;
-                try {
-                    audioTrack.flush();
-                    audioTrack.release();
-                    if (handler.getLooper().getThread().isAlive()) {
-                        handler.post(new a0(i5, tc2Var));
-                    }
-                    synchronized (an.r) {
-                        try {
-                            int i6 = an.t - 1;
-                            an.t = i6;
-                            if (i6 == 0) {
-                                ScheduledExecutorService scheduledExecutorService = an.s;
-                                scheduledExecutorService.getClass();
-                                scheduledExecutorService.shutdown();
-                                an.s = null;
-                            }
-                        } catch (Throwable th) {
-                            throw th;
-                        }
-                        break;
-                    }
-                    return;
-                } catch (Throwable th2) {
-                    if (handler.getLooper().getThread().isAlive()) {
-                        handler.post(new a0(i5, tc2Var));
-                    }
-                    synchronized (an.r) {
-                        try {
-                            int i7 = an.t - 1;
-                            an.t = i7;
-                            if (i7 == 0) {
-                                ScheduledExecutorService scheduledExecutorService2 = an.s;
-                                scheduledExecutorService2.getClass();
-                                scheduledExecutorService2.shutdown();
-                                an.s = null;
-                            }
-                            throw th2;
-                        } catch (Throwable th3) {
-                            throw th3;
-                        }
-                    }
-                }
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                MediaService mediaService = (MediaService) this.o;
-                List<kd3> list = (List) this.p;
-                qi3 qi3Var = (qi3) this.q;
-                if (mediaService.D) {
-                    return;
-                }
-                for (kd3 kd3Var : list) {
-                    int iIntValue2 = ((Number) kd3Var.n).intValue();
-                    Object obj2 = kd3Var.o;
-                    obj2.getClass();
-                    gn2 gn2Var = (gn2) obj2;
-                    if (iIntValue2 > qi3Var.o0() && iIntValue2 < qi3Var.Q0() && h12.c(qi3Var.Y(iIntValue2).a, gn2Var.a)) {
-                        qi3Var.z0(iIntValue2, gn2Var);
-                    }
-                }
-                return;
-            case 4:
-                WorkDatabase workDatabase = (WorkDatabase) this.o;
-                String str4 = (String) this.p;
-                sc5 sc5Var = (sc5) this.q;
-                fd5 fd5VarA = workDatabase.A();
-                fd5VarA.getClass();
-                w24 w24VarB = w24.b(1, "SELECT id FROM workspec WHERE state NOT IN (2, 3, 5) AND id IN (SELECT work_spec_id FROM workname WHERE name=?)");
-                w24VarB.h(1, str4);
-                WorkDatabase_Impl workDatabase_Impl = fd5VarA.a;
-                workDatabase_Impl.b();
-                Cursor cursorH = xl.H(workDatabase_Impl, w24VarB);
-                try {
-                    ArrayList arrayList2 = new ArrayList(cursorH.getCount());
-                    while (cursorH.moveToNext()) {
-                        arrayList2.add(cursorH.getString(0));
-                    }
-                    cursorH.close();
-                    w24VarB.j();
-                    int size2 = arrayList2.size();
-                    int i8 = 0;
-                    while (i8 < size2) {
-                        Object obj3 = arrayList2.get(i8);
-                        i8++;
-                        wr1.h(sc5Var, (String) obj3);
-                    }
-                    return;
-                } catch (Throwable th4) {
-                    cursorH.close();
-                    w24VarB.j();
-                    throw th4;
-                }
-            case 5:
-                String str5 = (String) this.o;
-                vz vzVar = (vz) this.p;
-                yz yzVar = (yz) this.q;
-                b00 b00Var = b00.a;
-                kd3 kd3VarB = b00.b();
-                if (h12.c(kd3VarB != null ? (String) kd3VarB.n : null, str5)) {
-                    synchronized (b00Var) {
-                        a00Var = (a00) b00.f.remove(vzVar.f);
-                    }
-                    if (a00Var != null) {
-                        n61.l(a00Var.c);
-                        zF = n61.f(1, a00Var.a, a00Var.b);
-                    } else {
-                        zF = vzVar.e;
-                    }
-                    Map mapX = lg2.X(new kd3("ref", vzVar.c), new kd3("star", Boolean.valueOf(zF)));
-                    nk1 nk1Var = rr1.c;
-                    WebView webView = hw.g;
-                    if (webView != null) {
-                        webView.evaluateJavascript(f34.h("window.dispatchEvent(new CustomEvent(", nk1Var.j("hm:hub-favorite"), ", {detail: ", nk1Var.j(mapX), "}));"), null);
-                    }
-                    Context contextA = App.a();
-                    HubException hubException = yzVar.c;
-                    if (hubException == null || (message = hubException.getMessage()) == null) {
-                        message = "";
-                    }
-                    Toast.makeText(contextA, contextA.getString(R.string.homemusic_hub_action_failed, message), 1).show();
-                    return;
-                }
-                return;
-            case 6:
-                xm0 xm0Var = (xm0) this.o;
-                View view = (View) this.p;
-                tm0 tm0Var = (tm0) this.q;
-                xm0Var.a.endViewTransition(view);
-                tm0Var.d();
-                return;
-            case 7:
-                sw0 sw0Var = (sw0) this.o;
-                ((tw0) this.p).c(sw0Var.a, sw0Var.b, (Exception) this.q);
-                return;
-            case 8:
-                sw0 sw0Var2 = (sw0) this.o;
-                ((tw0) this.p).D(sw0Var2.a, sw0Var2.b, (tv1) this.q);
-                return;
-            case 9:
-                vj vjVar = (vj) this.o;
-                bu buVar = (bu) this.p;
-                ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) this.q;
-                try {
-                    sa1 sa1VarO = si0.o(vjVar.n);
-                    if (sa1VarO == null) {
-                        throw new RuntimeException("EmojiCompat font provider not available on this device.");
-                    }
-                    ra1 ra1Var = (ra1) ((sz0) sa1VarO.b);
-                    synchronized (ra1Var.q) {
-                        ra1Var.s = threadPoolExecutor;
-                        break;
-                    }
-                    ((sz0) sa1VarO.b).a(new vz0(buVar, threadPoolExecutor));
-                    return;
-                } catch (Throwable th5) {
-                    buVar.u(th5);
-                    threadPoolExecutor.shutdown();
-                    return;
-                }
-            case 10:
-                gf1 gf1Var = (gf1) this.o;
-                fo1 fo1Var = (fo1) this.p;
-                gf1 gf1Var2 = (gf1) this.q;
-                try {
-                    s14Var = gf1Var.invoke();
-                    break;
-                } catch (Throwable th6) {
-                    s14Var = new s14(th6);
-                }
-                io1.b.post(new v6(fo1Var, s14Var, gf1Var2, i));
-                return;
-            case 11:
-                fo1 fo1Var2 = (fo1) this.o;
-                Object obj4 = this.p;
-                String str6 = (String) this.q;
-                if (fo1Var2.c()) {
-                    fo1Var2.r(false);
-                    if (!(obj4 instanceof s14)) {
-                        if (obj4 != null) {
-                            kf2.k();
-                            return;
-                        }
-                        ((uc1) fo1Var2.c).c.setText((CharSequence) null);
-                        fo1Var2.h = str6;
-                        System.currentTimeMillis();
-                        throw null;
-                    }
-                    Throwable thA = bb3.a(obj4);
-                    if (thA != null) {
-                        String message2 = thA.getMessage();
-                        if (message2 == null) {
-                            message2 = fo1Var2.v(R.string.homemusic_login_no_hub, new Object[0]);
-                        }
-                        fo1Var2.t(message2);
-                        return;
-                    }
-                    return;
-                }
-                return;
-            case 12:
-                fo1 fo1Var3 = (fo1) this.o;
-                Object obj5 = this.p;
-                gf1 gf1Var3 = (gf1) this.q;
-                if (fo1Var3.c()) {
-                    if (!(obj5 instanceof s14)) {
-                        kd3 kd3Var2 = (kd3) obj5;
-                        fo1Var3.u((String) kd3Var2.n, (String) kd3Var2.o);
-                    }
-                    Throwable thA2 = bb3.a(obj5);
-                    if (thA2 != null) {
-                        fo1Var3.r(false);
-                        if ((thA2 instanceof HubException) && ((HubException) thA2).n == 409 && gf1Var3 != null) {
-                            gf1Var3.invoke();
-                            return;
-                        }
-                        String message3 = thA2.getMessage();
-                        if (message3 == null) {
-                            message3 = fo1Var3.v(R.string.homemusic_login_no_hub, new Object[0]);
-                        }
-                        fo1Var3.t(message3);
-                        return;
-                    }
-                    return;
-                }
-                return;
-            case 13:
-                cp1 cp1Var = (cp1) this.o;
-                HubMixToday hubMixToday = (HubMixToday) this.p;
-                View view2 = (View) this.q;
-                if (cp1Var.T == null || hubMixToday == null) {
-                    return;
-                }
-                view2.setTag(hubMixToday);
-                ud3.E0(view2, hubMixToday);
-                return;
-            case 14:
-                cp1 cp1Var2 = (cp1) this.o;
-                boolean[] zArr = (boolean[]) this.p;
-                List list2 = (List) this.q;
-                if (zArr[0]) {
-                    return;
-                }
-                bo2.o(cp1Var2.F0, list2, 0);
-                zArr[0] = true;
-                return;
-            case 15:
-                vb4 vb4Var = (vb4) this.o;
-                Preference preference = (Preference) this.p;
-                String str7 = (String) this.q;
-                if (vb4Var.y()) {
-                    preference.x(str7);
-                    return;
-                }
-                return;
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                HubShareActivity hubShareActivity = (HubShareActivity) this.o;
-                jx3 jx3Var = (jx3) this.p;
-                String str8 = (String) this.q;
-                ux3 ux3Var = HubShareActivity.P;
-                Object obj6 = jx3Var.n;
-                obj6.getClass();
-                String str9 = (String) obj6;
-                String str10 = qm4.u0(str8) ? null : str8;
-                if (hubShareActivity.isFinishing() || hubShareActivity.isDestroyed()) {
-                    return;
-                }
-                if (str10 != null) {
-                    Toast.makeText(hubShareActivity, str10, 1).show();
-                }
-                hubShareActivity.startActivity(new Intent(hubShareActivity, (Class<?>) MainActivity.class).addFlags(872415232).putExtra("homemusic_hub_route", str9));
-                hubShareActivity.finish();
-                return;
-            case 17:
-                SmartNextIn smartNextIn = (SmartNextIn) this.o;
-                final String str11 = (String) this.p;
-                SmartSession smartSession2 = (SmartSession) this.q;
-                final jx3 jx3Var2 = new jx3();
-                jx3Var2.n = smartNextIn;
-                WeakReference weakReference = a.a;
-                try {
-                    b00 b00Var2 = b00.a;
-                    String strA = b00.a();
-                    rr1 rr1Var = rr1.a;
-                    SmartNextIn smartNextInCompatible = smartNextIn.compatible(rr1.e().contains("typed_favorites_v1"), rr1.e().contains("favorite_compensation_chains_v1"), strA);
-                    jx3Var2.n = smartNextInCompatible;
-                    List<PlayEvent> played = smartNextInCompatible.getPlayed();
-                    if (played == null || !played.isEmpty()) {
-                        Iterator<T> it = played.iterator();
-                        while (true) {
-                            if (it.hasNext()) {
-                                if (((PlayEvent) it.next()).getAccount() != null) {
-                                    rr1 rr1Var2 = rr1.a;
-                                    if (strA == null) {
-                                        throw new IllegalArgumentException("Required value was null.");
-                                    }
-                                    final int i9 = 0;
-                                    smartOutV = (SmartOut) rr1.B(strA, new gf1() { // from class: bt1
-                                        @Override // defpackage.gf1
-                                        public final Object invoke() {
-                                            int i10 = i9;
-                                            jx3 jx3Var3 = jx3Var2;
-                                            String str12 = str11;
-                                            switch (i10) {
-                                                case 0:
-                                                    return rr1.v(str12, (SmartNextIn) jx3Var3.n);
-                                                default:
-                                                    return rr1.z(str12, (WaveNextIn) jx3Var3.n);
-                                            }
-                                        }
-                                    });
-                                }
-                            }
-                        }
-                        recs = smartOutV.getRecs();
-                        if (recs == null) {
-                            recs = u01.n;
-                        }
-                        s14Var2 = new kd3(smartOutV, a.l(recs));
-                        io1.b.post(new v6(smartSession2, jx3Var2, s14Var2, 18));
-                        return;
-                    }
-                    smartOutV = rr1.v(str11, (SmartNextIn) jx3Var2.n);
-                    recs = smartOutV.getRecs();
-                    if (recs == null) {
-                        recs = u01.n;
-                    }
-                    s14Var2 = new kd3(smartOutV, a.l(recs));
-                } catch (Throwable th7) {
-                    s14Var2 = new s14(th7);
-                }
-                io1.b.post(new v6(smartSession2, jx3Var2, s14Var2, 18));
-                return;
-            case 18:
-                SmartSession smartSession3 = (SmartSession) this.o;
-                jx3 jx3Var3 = (jx3) this.p;
-                Serializable serializable = (Serializable) this.q;
-                WeakReference weakReference2 = a.a;
-                SmartNextIn smartNextIn2 = (SmartNextIn) jx3Var3.n;
-                smartSession3.setInFlight(false);
-                if (a.b != smartSession3) {
-                    return;
-                }
-                if (serializable instanceof s14) {
-                    smartSession = null;
-                } else {
-                    kd3 kd3Var3 = (kd3) serializable;
-                    SmartOut smartOut = (SmartOut) kd3Var3.n;
-                    List list3 = (List) kd3Var3.o;
-                    smartSession3.sent(smartNextIn2);
-                    smartSession3.setFailures(0);
-                    if (list3.isEmpty() || (ao2Var = (ao2) a.a.get()) == null) {
-                        smartSession = null;
-                    } else {
-                        qi3 qi3VarH = a.h();
-                        if (qi3VarH != null) {
-                            if (!a.j(qi3VarH)) {
-                                qi3VarH = null;
-                            }
-                            if (qi3VarH == null || a.b != smartSession3) {
-                                qi3VarH = null;
-                            }
-                        } else {
-                            qi3VarH = null;
-                        }
-                        if (qi3VarH == null) {
-                            smartSession = null;
-                        } else {
-                            ArrayList arrayListE = a.e(qi3VarH);
-                            smartSession = null;
-                            ArrayList arrayList3 = new ArrayList(r40.k0(arrayListE, 10));
-                            int size3 = arrayListE.size();
-                            int i10 = 0;
-                            while (i10 < size3) {
-                                Object obj7 = arrayListE.get(i10);
-                                i10++;
-                                gn2 gn2Var2 = (gn2) obj7;
-                                String str12 = gn2Var2.a;
-                                str12.getClass();
-                                arrayList3.add(new s11(str12, smartSession3.isRec(gn2Var2.a)));
-                            }
-                            SmartPlan smartPlan = SmartPlan.INSTANCE;
-                            int iO0 = qi3VarH.o0();
-                            ArrayList arrayList4 = new ArrayList(r40.k0(list3, 10));
-                            Iterator it2 = list3.iterator();
-                            while (it2.hasNext()) {
-                                arrayList4.add(((dt1) it2.next()).a);
-                            }
-                            List<kd3> listInsertions = smartPlan.insertions(arrayList3, iO0, arrayList4);
-                            if (!listInsertions.isEmpty()) {
-                                int iW = lg2.W(r40.k0(list3, 10));
-                                if (iW < 16) {
-                                    iW = 16;
-                                }
-                                LinkedHashMap linkedHashMap = new LinkedHashMap(iW);
-                                for (Object obj8 : list3) {
-                                    linkedHashMap.put(((dt1) obj8).a.getQueueId(), obj8);
-                                }
-                                ArrayList arrayList5 = new ArrayList(r40.k0(listInsertions, 10));
-                                Iterator<T> it3 = listInsertions.iterator();
-                                while (it3.hasNext()) {
-                                    arrayList5.add((SmartRec) ((kd3) it3.next()).o);
-                                }
-                                List<String> listRegister = smartSession3.register(arrayList5);
-                                rs1 rs1Var = rs1.a;
-                                int iW2 = lg2.W(r40.k0(listRegister, 10));
-                                LinkedHashMap linkedHashMap2 = new LinkedHashMap(iW2 >= 16 ? iW2 : 16);
-                                for (Object obj9 : listRegister) {
-                                    linkedHashMap2.put(obj9, smartSession3.getRecContext());
-                                }
-                                rs1.b(linkedHashMap2, a.f(smartSession3));
-                                for (kd3 kd3Var4 : listInsertions) {
-                                    int iIntValue3 = ((Number) kd3Var4.n).intValue();
-                                    dt1 dt1Var = (dt1) linkedHashMap.get(((SmartRec) kd3Var4.o).getQueueId());
-                                    if (dt1Var != null) {
-                                        bo2.h(ao2Var, iIntValue3, gb.O(dt1Var.b), gb.O(dt1Var.c));
-                                    }
-                                }
-                                String id = smartSession3.getId();
-                                ArrayList arrayList6 = new ArrayList(r40.k0(listInsertions, 10));
-                                Iterator<T> it4 = listInsertions.iterator();
-                                while (it4.hasNext()) {
-                                    arrayList6.add(((SmartRec) ((kd3) it4.next()).o).getRef());
-                                }
-                                ArrayList arrayList7 = new ArrayList(r40.k0(listInsertions, 10));
-                                Iterator<T> it5 = listInsertions.iterator();
-                                while (it5.hasNext()) {
-                                    arrayList7.add(((SmartRec) ((kd3) it5.next()).o).getAfter());
-                                }
-                                Log.i("HubSmart", "next " + id + ": " + arrayList6 + " after " + arrayList7);
-                            }
-                        }
-                    }
-                    if (smartSession3.getAgain()) {
-                        a.b();
-                        return;
-                    }
-                    if (list3.isEmpty() && smartOut.getPending()) {
-                        smartSession3.setPolls(smartSession3.getPolls() + 1);
-                        Long lAfterPending = WaveRetry.INSTANCE.afterPending(smartSession3.getPolls());
-                        if (lAfterPending != null) {
-                            long jLongValue = lAfterPending.longValue();
-                            a.d();
-                            u6 u6Var = new u6(11);
-                            a.c = u6Var;
-                            io1.b.postDelayed(u6Var, jLongValue);
-                        }
-                    } else {
-                        smartSession3.setPolls(0);
-                    }
-                }
-                Throwable thA3 = bb3.a(serializable);
-                if (thA3 != null) {
-                    boolean z = thA3 instanceof HubException;
-                    if (z && ((HubException) thA3).n == 404) {
-                        smartSession3.expire();
-                        a.b = smartSession;
-                        a.d();
-                        a.c();
-                        return;
-                    }
-                    Log.w("HubSmart", "next " + smartSession3.getId() + ": " + thA3.getMessage());
-                    if (!z) {
-                        rr1.m();
-                    }
-                    smartSession3.setFailures(smartSession3.getFailures() + 1);
-                    if (!smartSession3.getAgain() || (lAfterFailure = WaveRetry.INSTANCE.afterFailure(smartSession3.getFailures())) == null) {
-                        return;
-                    }
-                    long jLongValue2 = lAfterFailure.longValue();
-                    a.d();
-                    u6 u6Var2 = new u6(11);
-                    a.c = u6Var2;
-                    io1.b.postDelayed(u6Var2, jLongValue2);
-                    return;
-                }
-                return;
-            case 19:
-                Object obj10 = this.o;
-                Context context = (Context) this.p;
-                String str13 = (String) this.q;
-                if (!(obj10 instanceof s14)) {
-                    obj10.getClass();
-                    kf2.k();
-                    return;
-                }
-                Throwable thA4 = bb3.a(obj10);
-                if (thA4 != null) {
-                    Log.w("HubTracks", "download ".concat(str13), thA4);
-                    String message4 = thA4.getMessage();
-                    if (message4 == null) {
-                        message4 = "";
-                    }
-                    Toast.makeText(context, context.getString(R.string.homemusic_hub_action_failed, message4), 1).show();
-                    return;
-                }
-                return;
-            case 20:
-                WaveNextIn waveNextIn = (WaveNextIn) this.o;
-                final String str14 = (String) this.p;
-                WaveSession waveSession = (WaveSession) this.q;
-                final jx3 jx3Var4 = new jx3();
-                jx3Var4.n = waveNextIn;
-                WeakReference weakReference3 = b.a;
-                try {
-                    b00 b00Var3 = b00.a;
-                    String strA2 = b00.a();
-                    rr1 rr1Var3 = rr1.a;
-                    WaveNextIn waveNextInCompatible = waveNextIn.compatible(rr1.e().contains("typed_favorites_v1"), rr1.e().contains("favorite_compensation_chains_v1"), strA2);
-                    jx3Var4.n = waveNextInCompatible;
-                    List<PlayEvent> played2 = waveNextInCompatible.getPlayed();
-                    if (played2 == null || !played2.isEmpty()) {
-                        Iterator<T> it6 = played2.iterator();
-                        while (true) {
-                            if (it6.hasNext()) {
-                                if (((PlayEvent) it6.next()).getAccount() != null) {
-                                    rr1 rr1Var4 = rr1.a;
-                                    if (strA2 == null) {
-                                        throw new IllegalArgumentException("Required value was null.");
-                                    }
-                                    waveOutZ = (WaveOut) rr1.B(strA2, new gf1() { // from class: bt1
-                                        @Override // defpackage.gf1
-                                        public final Object invoke() {
-                                            int i11 = i2;
-                                            jx3 jx3Var5 = jx3Var4;
-                                            String str15 = str14;
-                                            switch (i11) {
-                                                case 0:
-                                                    return rr1.v(str15, (SmartNextIn) jx3Var5.n);
-                                                default:
-                                                    return rr1.z(str15, (WaveNextIn) jx3Var5.n);
-                                            }
-                                        }
-                                    });
-                                }
-                            }
-                        }
-                        tracks = waveOutZ.getTracks();
-                        if (tracks == null) {
-                            tracks = u01.n;
-                        }
-                        s14Var3 = new kd3(waveOutZ, b.k(waveSession.getContext(), tracks));
-                        io1.b.post(new v6(waveSession, jx3Var4, s14Var3, 21));
-                        return;
-                    }
-                    waveOutZ = rr1.z(str14, (WaveNextIn) jx3Var4.n);
-                    tracks = waveOutZ.getTracks();
-                    if (tracks == null) {
-                        tracks = u01.n;
-                    }
-                    s14Var3 = new kd3(waveOutZ, b.k(waveSession.getContext(), tracks));
-                } catch (Throwable th8) {
-                    s14Var3 = new s14(th8);
-                }
-                io1.b.post(new v6(waveSession, jx3Var4, s14Var3, 21));
-                return;
-            case 21:
-                WaveSession waveSession2 = (WaveSession) this.o;
-                jx3 jx3Var5 = (jx3) this.p;
-                Serializable serializable2 = (Serializable) this.q;
-                WeakReference weakReference4 = b.a;
-                WaveNextIn waveNextIn2 = (WaveNextIn) jx3Var5.n;
-                waveSession2.setInFlight(false);
-                if (b.b != waveSession2) {
-                    return;
-                }
-                if (!(serializable2 instanceof s14)) {
-                    kd3 kd3Var5 = (kd3) serializable2;
-                    WaveOut waveOut = (WaveOut) kd3Var5.n;
-                    List list4 = (List) kd3Var5.o;
-                    waveSession2.sent(waveNextIn2);
-                    waveSession2.setFailures(0);
-                    b.b(waveSession2, list4);
-                    waveSession2.setSettledFor(waveSession2.getAskedFor());
-                    if (waveSession2.getAgain()) {
-                        b.c();
-                        return;
-                    }
-                    b.f(waveSession2);
-                    qi3 qi3VarJ = b.j(waveSession2);
-                    if (qi3VarJ == null) {
-                        return;
-                    }
-                    int size4 = b.a(qi3VarJ, waveSession2).size();
-                    if (list4.isEmpty() && waveOut.getPending() && size4 <= 2) {
-                        waveSession2.setPolls(waveSession2.getPolls() + 1);
-                        Long lAfterPending2 = WaveRetry.INSTANCE.afterPending(waveSession2.getPolls());
-                        if (lAfterPending2 != null) {
-                            long jLongValue3 = lAfterPending2.longValue();
-                            b.e();
-                            u6 u6Var3 = new u6(i);
-                            b.c = u6Var3;
-                            io1.b.postDelayed(u6Var3, jLongValue3);
-                        }
-                    } else {
-                        waveSession2.setPolls(0);
-                    }
-                }
-                Throwable thA5 = bb3.a(serializable2);
-                if (thA5 != null) {
-                    boolean z2 = thA5 instanceof HubException;
-                    if (z2 && ((HubException) thA5).n == 404) {
-                        String id2 = waveSession2.getId();
-                        waveSession2.setInFlight(true);
-                        io1.a.execute(new ws1(waveSession2, id2, 5));
-                        return;
-                    }
-                    Log.w("HubWave", "next " + waveSession2.getId() + ": " + thA5.getMessage());
-                    if (!z2) {
-                        rr1.m();
-                    }
-                    waveSession2.setFailures(waveSession2.getFailures() + 1);
-                    b.f(waveSession2);
-                    qi3 qi3VarJ2 = b.j(waveSession2);
-                    if (qi3VarJ2 != null) {
-                        int size5 = b.a(qi3VarJ2, waveSession2).size();
-                        if ((waveSession2.getAgain() || size5 <= 2) && (lAfterFailure2 = WaveRetry.INSTANCE.afterFailure(waveSession2.getFailures())) != null) {
-                            long jLongValue4 = lAfterFailure2.longValue();
-                            b.e();
-                            u6 u6Var4 = new u6(i);
-                            b.c = u6Var4;
-                            io1.b.postDelayed(u6Var4, jLongValue4);
-                            return;
-                        }
-                        return;
-                    }
-                    return;
-                }
-                return;
-            case 22:
-                MainActivity mainActivity = (MainActivity) this.o;
-                Object obj11 = this.p;
-                Runnable runnable = (Runnable) this.q;
-                if (mainActivity.isFinishing() || mainActivity.isDestroyed()) {
-                    return;
-                }
-                if (!(obj11 instanceof s14)) {
-                    b.i(mainActivity, (WaveOut) obj11);
-                }
-                Throwable thA6 = bb3.a(obj11);
-                if (thA6 != null) {
-                    Log.w("HubWave", PlayEvent.START, thA6);
-                    if (runnable != null) {
-                        runnable.run();
-                        return;
-                    }
-                    HubException hubException2 = thA6 instanceof HubException ? (HubException) thA6 : null;
-                    if (hubException2 == null || (string = hubException2.getMessage()) == null) {
-                        string = mainActivity.getString(R.string.homemusic_wave_failed);
-                        string.getClass();
-                    }
-                    Toast.makeText(mainActivity, string, 1).show();
-                    return;
-                }
-                return;
-            case 23:
-                fx3 fx3Var = (fx3) this.o;
-                fx3 fx3Var2 = (fx3) this.p;
-                f9 f9Var = (f9) this.q;
-                fx3Var.n = false;
-                if (fx3Var2.n) {
-                    return;
-                }
-                f9Var.setTitle(R.string.lan_connection_error);
-                return;
-            case 24:
-                AtomicBoolean atomicBoolean = (AtomicBoolean) this.o;
-                oy oyVar = (oy) this.p;
-                uy1 uy1Var = (uy1) this.q;
-                if (atomicBoolean.get()) {
-                    return;
-                }
-                try {
-                    uy1Var.invoke();
-                    oyVar.a(null);
-                    return;
-                } catch (Throwable th9) {
-                    oyVar.b(th9);
-                    return;
-                }
-            case 25:
-                a();
-                return;
-            case 26:
-                b();
-                return;
-            case 27:
-                pn2 pn2Var = (pn2) this.o;
-                fr2 fr2Var = (fr2) this.p;
-                String str15 = (String) this.q;
-                if (pn2Var.x.I(fr2Var, 50002)) {
-                    pn2Var.z.z(fr2Var, str15);
-                    return;
-                }
-                return;
-            case 28:
-                c();
-                return;
-            default:
-                sk2 sk2Var = (sk2) this.o;
-                String str16 = (String) this.p;
-                Bundle bundle = (Bundle) this.q;
-                sk2Var.c1();
-                rk2 rk2Var = sk2Var.d;
-                o15 it7 = (!rk2Var.Y() ? wa4.b : rk2Var.P0()).a.iterator();
-                while (it7.hasNext()) {
-                    va4 va4Var2 = (va4) it7.next();
-                    if (va4Var2.a == 0 && va4Var2.b.equals(str16)) {
-                        va4Var = va4Var2;
-                        if (va4Var == null || j60.n(str16)) {
-                            ic2 ic2VarB1 = sk2Var.b1(new va4(str16, bundle), Bundle.EMPTY);
-                            ic2VarB1.f(new lg1(i3, ic2VarB1, new vc0(str16)), gq0.n);
-                            return;
-                        }
-                        return;
-                    }
-                }
-                if (va4Var == null) {
-                }
-                ic2 ic2VarB2 = sk2Var.b1(new va4(str16, bundle), Bundle.EMPTY);
-                ic2VarB2.f(new lg1(i3, ic2VarB2, new vc0(str16)), gq0.n);
-                return;
-        }
+        int r5 = 12;
+        HubException r6 = null;
+        va4 r7 = null;
+        final int r8 = 1;
+        int r9 = 0;
+        switch(this.n) {
+            case 0: goto L446;
+            case 1: goto L444;
+            case 2: goto L413;
+            case 3: goto L399;
+            case 4: goto L385;
+            case 5: goto L360;
+            case 6: goto L358;
+            case 7: goto L356;
+            case 8: goto L354;
+            case 9: goto L336;
+            case 10: goto L329;
+            case 11: goto L313;
+            case 12: goto L294;
+            case 13: goto L288;
+            case 14: goto L283;
+            case 15: goto L279;
+            case 16: goto L266;
+            case 17: goto L239;
+            case 18: goto L141;
+            case 19: goto L131;
+            case 20: goto L104;
+            case 21: goto L66;
+            case 22: goto L44;
+            case 23: goto L40;
+            case 24: goto L32;
+            case 25: goto L30;
+            case 26: goto L28;
+            case 27: goto L23;
+            case 28: goto L21;
+            default: goto L4;
+        };
+    L4:
+        sk2 r1 = (sk2) this.o;
+        String r2 = (String) this.p;
+        Bundle r0 = (Bundle) this.q;
+        r1.c1();
+        rk2 r3 = r1.d;
+        if (r3.Y() == true) goto L7;
+        wa4 r4 = wa4.b;
+    L8:
+        o15 r10 = r4.a.h();
+    L10:
+        if (r10.hasNext() == false) goto L16;
+        va4 r11 = (va4) r10.next();
+        if (r11.a != 0) goto L10;
+        if (r11.b.equals(r2) == false) goto L10;
+        r7 = r11;
+    L16:
+        if (r7 == null) goto L18;
+    L19:
+        ic2 r12 = r1.b1(new va4(r2, r0), Bundle.EMPTY);
+        vc0 r13 = new vc0(r2);
+        r12.f(new lg1(r9, r12, r13), gq0.n);
+        return;
+    L18:
+        if (j60.n(r2) == true) goto L19;
+        return;
+    L7:
+        r4 = r3.P0();
+        goto L8
+    L21:
+        c();
+        return;
+    L23:
+        pn2 r14 = (pn2) this.o;
+        fr2 r15 = (fr2) this.p;
+        String r16 = (String) this.q;
+        if (r14.x.I(r15, 50002) == false) goto L521;
+        r14.z.z(r15, r16);
+        return;
+    L521:
+        return;
+    L28:
+        b();
+        return;
+    L30:
+        a();
+        return;
+    L32:
+        AtomicBoolean r17 = (AtomicBoolean) this.o;
+        oy r18 = (oy) this.p;
+        uy1 r19 = (uy1) this.q;
+        if (r17.get() == true) goto L522;
+        r19.invoke();     // Catch: Throwable -> L37
+        r18.a(null);     // Catch: Throwable -> L37
+        return;
+    L37:
+        th = move-exception;
+        r18.b(th);
+        return;
+    L522:
+        return;
+    L40:
+        fx3 r20 = (fx3) this.o;
+        fx3 r21 = (fx3) this.p;
+        f9 r22 = (f9) this.q;
+        r20.n = false;
+        if (r21.n == true) goto L524;
+        r22.setTitle(R.string.lan_connection_error);
+        return;
+    L524:
+        return;
+    L44:
+        MainActivity r23 = (MainActivity) this.o;
+        Object r24 = this.p;
+        Runnable r25 = (Runnable) this.q;
+        if (r23.isFinishing() == false) goto L47;
+        return;
+    L47:
+        if (r23.isDestroyed() == false) goto L50;
+        return;
+    L50:
+        if ((r24 instanceof s14) == true) goto L52;
+        b.i(r23, (WaveOut) r24);
+    L52:
+        Throwable r26 = bb3.a(r24);
+        if (r26 == null) goto L526;
+        Log.w("HubWave", PlayEvent.START, r26);
+        if (r25 == null) goto L58;
+        r25.run();
+        return;
+    L58:
+        if ((r26 instanceof HubException) == false) goto L60;
+        r6 = (HubException) r26;
+    L60:
+        if (r6 == null) goto L63;
+        String r27 = r6.getMessage();
+        if (r27 == null) goto L63;
+    L64:
+        Toast.makeText(r23, r27, 1).show();
+        return;
+    L63:
+        r27 = r23.getString(R.string.homemusic_wave_failed);
+        r27.getClass();
+        goto L64
+    L526:
+        return;
+    L66:
+        WaveSession r28 = (WaveSession) this.o;
+        jx3 r29 = (jx3) this.p;
+        Serializable r30 = (Serializable) this.q;
+        WeakReference r31 = b.a;
+        WaveNextIn r32 = (WaveNextIn) r29.n;
+        r28.setInFlight(false);
+        if (b.b == r28) goto L70;
+        return;
+    L70:
+        if ((r30 instanceof s14) == true) goto L85;
+        kd3 r33 = (kd3) r30;
+        WaveOut r34 = (WaveOut) r33.n;
+        List r35 = (List) r33.o;
+        r28.sent(r32);
+        r28.setFailures(0);
+        b.b(r28, r35);
+        r28.setSettledFor(r28.getAskedFor());
+        if (r28.getAgain() == false) goto L74;
+        b.c();
+        return;
+    L74:
+        b.f(r28);
+        qi3 r36 = b.j(r28);
+        if (r36 == null) goto L530;
+        int r37 = b.a(r36, r28).size();
+        if (r35.isEmpty() == true) goto L79;
+    L84:
+        r28.setPolls(0);
+        goto L85
+    L79:
+        if (r34.getPending() == false) goto L84;
+        if (r37 > 2) goto L84;
+        r28.setPolls(r28.getPolls() + 1);
+        Long r38 = WaveRetry.INSTANCE.afterPending(r28.getPolls());
+        if (r38 == null) goto L85;
+        long r39 = r38.longValue();
+        b.e();
+        u6 r40 = new u6(r5);
+        b.c = r40;
+        io1.b.postDelayed(r40, r39);
+        goto L85
+    L530:
+        return;
+    L85:
+        Throwable r41 = bb3.a(r30);
+        if (r41 == null) goto L531;
+        boolean r42 = r41 instanceof HubException;
+        if (r42 == true) goto L90;
+    L92:
+        Log.w("HubWave", "next " + r28.getId() + ": " + r41.getMessage());
+        if (r42 == true) goto L95;
+        rr1.m();
+    L95:
+        r28.setFailures(r28.getFailures() + 1);
+        b.f(r28);
+        qi3 r43 = b.j(r28);
+        if (r43 == null) goto L533;
+        int r44 = b.a(r43, r28).size();
+        if (r28.getAgain() == true) goto L100;
+        if (r44 <= 2) goto L100;
+        return;
+    L100:
+        Long r45 = WaveRetry.INSTANCE.afterFailure(r28.getFailures());
+        if (r45 == null) goto L535;
+        long r46 = r45.longValue();
+        b.e();
+        u6 r47 = new u6(r5);
+        b.c = r47;
+        io1.b.postDelayed(r47, r46);
+        return;
+    L535:
+        return;
+    L533:
+        return;
+    L90:
+        if (((HubException) r41).n != 404) goto L92;
+        String r48 = r28.getId();
+        r28.setInFlight(true);
+        io1.a.execute(new ws1(r28, r48, 5));
+        return;
+    L531:
+        return;
+    L104:
+        WaveNextIn r49 = (WaveNextIn) this.o;
+        final String r50 = (String) this.p;
+        WaveSession r51 = (WaveSession) this.q;
+        final jx3 r52 = new jx3();
+        r52.n = r49;
+        WeakReference r53 = b.a;
+        b00 r54 = b00.a;     // Catch: Throwable -> L110
+        String r55 = b00.a();     // Catch: Throwable -> L110
+        rr1 r56 = rr1.a;     // Catch: Throwable -> L110
+        WaveNextIn r57 = r49.compatible(rr1.e().contains("typed_favorites_v1"), rr1.e().contains("favorite_compensation_chains_v1"), r55);     // Catch: Throwable -> L110
+        r52.n = r57;     // Catch: Throwable -> L110
+        List<PlayEvent> r58 = r57.getPlayed();     // Catch: Throwable -> L110
+        if (r58 != null) goto L108;
+    L112:
+        Iterator<T> r59 = r58.iterator();     // Catch: Throwable -> L110
+    L114:
+        if (r59.hasNext() == false) goto L122;
+        if (((PlayEvent) r59.next()).getAccount() == null) goto L114;
+        rr1 r60 = rr1.a;     // Catch: Throwable -> L110
+        if (r55 == null) goto L121;
+        WaveOut r61 = (WaveOut) rr1.B(r55, new bt1(r50, r52, r8));     // Catch: Throwable -> L110
+    L123:
+        List<WaveTrack> r62 = r61.getTracks();     // Catch: Throwable -> L110
+        if (r62 != null) goto L126;
+        r62 = u01.n;     // Catch: Throwable -> L110
+    L126:
+        Object r63 = new kd3(r61, b.k(r51.getContext(), r62));     // Catch: Throwable -> L110
+    L129:
+        io1.b.post(new v6(r51, r52, r63, 21));
+        return;
+    L121:
+        throw new IllegalArgumentException("Required value was null.");     // Catch: Throwable -> L110
+    L122:
+        r61 = rr1.z(r50, (WaveNextIn) r52.n);     // Catch: Throwable -> L110
+        goto L123
+    L108:
+        if (r58.isEmpty() == false) goto L112;
+    L110:
+        th = move-exception;
+        r63 = new s14(th);
+        goto L129
+    L131:
+        Object r64 = this.o;
+        Context r65 = (Context) this.p;
+        String r66 = (String) this.q;
+        if ((r64 instanceof s14) == false) goto L139;
+        Throwable r67 = bb3.a(r64);
+        if (r67 == null) goto L537;
+        Log.w("HubTracks", "download ".concat(r66), r67);
+        String r68 = r67.getMessage();
+        if (r68 != null) goto L138;
+        r68 = "";
+    L138:
+        Toast.makeText(r65, r65.getString(R.string.homemusic_hub_action_failed, new Object[]{r68}), 1).show();
+        return;
+    L537:
+        return;
+    L139:
+        r64.getClass();
+        kf2.k();
+        return;
+    L141:
+        SmartSession r69 = (SmartSession) this.o;
+        jx3 r70 = (jx3) this.p;
+        Serializable r71 = (Serializable) this.q;
+        WeakReference r72 = a.a;
+        SmartNextIn r73 = (SmartNextIn) r70.n;
+        r69.setInFlight(false);
+        if (a.b == r69) goto L145;
+        return;
+    L145:
+        if ((r71 instanceof s14) == true) goto L222;
+        kd3 r110 = (kd3) r71;
+        SmartOut r111 = (SmartOut) r110.n;
+        List r112 = (List) r110.o;
+        r69.sent(r73);
+        r69.setFailures(0);
+        if (r112.isEmpty() == false) goto L149;
+    L148:
+        SmartSession r113 = null;
+    L212:
+        if (r69.getAgain() == false) goto L215;
+        a.b();
+        return;
+    L215:
+        if (r112.isEmpty() == true) goto L217;
+    L221:
+        r69.setPolls(0);
+    L223:
+        Throwable r74 = bb3.a(r71);
+        if (r74 == null) goto L540;
+        boolean r75 = r74 instanceof HubException;
+        if (r75 == true) goto L228;
+    L230:
+        Log.w("HubSmart", "next " + r69.getId() + ": " + r74.getMessage());
+        if (r75 == true) goto L233;
+        rr1.m();
+    L233:
+        r69.setFailures(r69.getFailures() + 1);
+        if (r69.getAgain() == false) goto L542;
+        Long r76 = WaveRetry.INSTANCE.afterFailure(r69.getFailures());
+        if (r76 == null) goto L543;
+        long r77 = r76.longValue();
+        a.d();
+        u6 r78 = new u6(11);
+        a.c = r78;
+        io1.b.postDelayed(r78, r77);
+        return;
+    L543:
+        return;
+    L542:
+        return;
+    L228:
+        if (((HubException) r74).n != 404) goto L230;
+        r69.expire();
+        a.b = r113;
+        a.d();
+        a.c();
+        return;
+    L540:
+        return;
+    L217:
+        if (r111.getPending() == false) goto L221;
+        r69.setPolls(r69.getPolls() + 1);
+        Long r79 = WaveRetry.INSTANCE.afterPending(r69.getPolls());
+        if (r79 == null) goto L223;
+        long r80 = r79.longValue();
+        a.d();
+        u6 r81 = new u6(11);
+        a.c = r81;
+        io1.b.postDelayed(r81, r80);
+        goto L223
+    L149:
+        ao2 r82 = (ao2) a.a.get();
+        if (r82 == null) goto L148;
+        qi3 r114 = a.h();
+        if (r114 != null) goto L156;
+    L163:
+        r114 = null;
+    L164:
+        if (r114 == null) goto L148;
+        ArrayList r115 = a.e(r114);
+        r113 = null;
+        ArrayList r116 = new ArrayList(r40.k0(r115, 10));
+        int r83 = r115.size();
+        int r84 = 0;
+    L167:
+        if (r84 >= r83) goto L169;
+        Object r117 = r115.get(r84);
+        r84 = r84 + 1;
+        gn2 r85 = (gn2) r117;
+        String r86 = r85.a;
+        r86.getClass();
+        r116.add(new s11(r86, r69.isRec(r85.a)));
+        goto L167
+    L169:
+        SmartPlan r87 = SmartPlan.INSTANCE;
+        int r88 = r114.o0();
+        ArrayList r89 = new ArrayList(r40.k0(r112, 10));
+        Iterator r90 = r112.iterator();
+    L171:
+        if (r90.hasNext() == false) goto L173;
+        r89.add(((dt1) r90.next()).a);
+        goto L171
+    L173:
+        List<kd3> r91 = r87.insertions(r116, r88, r89);
+        if (r91.isEmpty() == true) goto L212;
+        int r92 = lg2.W(r40.k0(r112, 10));
+        int r93 = 16;
+        if (r92 >= 16) goto L179;
+        r92 = 16;
+    L179:
+        LinkedHashMap r94 = new LinkedHashMap(r92);
+        Iterator r95 = r112.iterator();
+    L181:
+        if (r95.hasNext() == false) goto L183;
+        Object r118 = r95.next();
+        r94.put(((dt1) r118).a.getQueueId(), r118);
+        goto L181
+    L183:
+        ArrayList r96 = new ArrayList(r40.k0(r91, 10));
+        Iterator<T> r119 = r91.iterator();
+    L185:
+        if (r119.hasNext() == false) goto L187;
+        r96.add((SmartRec) ((kd3) r119.next()).o);
+        goto L185
+    L187:
+        List<String> r97 = r69.register(r96);
+        rs1 r120 = rs1.a;
+        int r121 = lg2.W(r40.k0(r97, 10));
+        if (r121 < 16) goto L191;
+        r93 = r121;
+    L191:
+        LinkedHashMap r122 = new LinkedHashMap(r93);
+        Iterator<T> r98 = r97.iterator();
+    L193:
+        if (r98.hasNext() == false) goto L195;
+        Object r99 = r98.next();
+        String r123 = (String) r99;
+        r122.put(r99, r69.getRecContext());
+        goto L193
+    L195:
+        rs1.b(r122, a.f(r69));
+        Iterator<kd3> r100 = r91.iterator();
+    L197:
+        if (r100.hasNext() == false) goto L202;
+        kd3 r101 = r100.next();
+        int r124 = ((Number) r101.n).intValue();
+        dt1 r102 = (dt1) r94.get(((SmartRec) r101.o).getQueueId());
+        if (r102 == null) goto L197;
+        bo2.h(r82, r124, gb.O(r102.b), gb.O(r102.c));
+        goto L197
+    L202:
+        String r103 = r69.getId();
+        ArrayList r104 = new ArrayList(r40.k0(r91, 10));
+        Iterator<T> r105 = r91.iterator();
+    L204:
+        if (r105.hasNext() == false) goto L206;
+        r104.add(((SmartRec) ((kd3) r105.next()).o).getRef());
+        goto L204
+    L206:
+        ArrayList r106 = new ArrayList(r40.k0(r91, 10));
+        Iterator<T> r107 = r91.iterator();
+    L208:
+        if (r107.hasNext() == false) goto L210;
+        r106.add(((SmartRec) ((kd3) r107.next()).o).getAfter());
+        goto L208
+    L210:
+        Log.i("HubSmart", "next " + r103 + ": " + r104 + " after " + r106);
+        goto L212
+    L156:
+        if (a.j(r114) == true) goto L159;
+        r114 = null;
+    L159:
+        if (r114 == null) goto L163;
+        if (a.b != r69) goto L163;
+    L222:
+        r113 = null;
+        goto L223
+    L239:
+        SmartNextIn r108 = (SmartNextIn) this.o;
+        final String r109 = (String) this.p;
+        SmartSession r125 = (SmartSession) this.q;
+        final jx3 r126 = new jx3();
+        r126.n = r108;
+        WeakReference r127 = a.a;
+        b00 r128 = b00.a;     // Catch: Throwable -> L245
+        String r129 = b00.a();     // Catch: Throwable -> L245
+        rr1 r130 = rr1.a;     // Catch: Throwable -> L245
+        SmartNextIn r131 = r108.compatible(rr1.e().contains("typed_favorites_v1"), rr1.e().contains("favorite_compensation_chains_v1"), r129);     // Catch: Throwable -> L245
+        r126.n = r131;     // Catch: Throwable -> L245
+        List<PlayEvent> r132 = r131.getPlayed();     // Catch: Throwable -> L245
+        if (r132 != null) goto L243;
+    L247:
+        Iterator<T> r133 = r132.iterator();     // Catch: Throwable -> L245
+    L249:
+        if (r133.hasNext() == false) goto L257;
+        if (((PlayEvent) r133.next()).getAccount() == null) goto L249;
+        rr1 r134 = rr1.a;     // Catch: Throwable -> L245
+        if (r129 == null) goto L256;
+        final int r135 = 0;
+        SmartOut r136 = (SmartOut) rr1.B(r129, new bt1(r109, r126, r135));     // Catch: Throwable -> L245
+    L258:
+        List<SmartRec> r137 = r136.getRecs();     // Catch: Throwable -> L245
+        if (r137 != null) goto L261;
+        r137 = u01.n;     // Catch: Throwable -> L245
+    L261:
+        Object r138 = new kd3(r136, a.l(r137));     // Catch: Throwable -> L245
+    L264:
+        io1.b.post(new v6(r125, r126, r138, 18));
+        return;
+    L256:
+        throw new IllegalArgumentException("Required value was null.");     // Catch: Throwable -> L245
+    L257:
+        r136 = rr1.v(r109, (SmartNextIn) r126.n);     // Catch: Throwable -> L245
+        goto L258
+    L243:
+        if (r132.isEmpty() == false) goto L247;
+    L245:
+        th = move-exception;
+        r138 = new s14(th);
+        goto L264
+    L266:
+        HubShareActivity r139 = (HubShareActivity) this.o;
+        jx3 r140 = (jx3) this.p;
+        String r141 = (String) this.q;
+        ux3 r142 = HubShareActivity.P;
+        Object r143 = r140.n;
+        r143.getClass();
+        String r144 = (String) r143;
+        if (qm4.u0(r141) == false) goto L269;
+        String r145 = null;
+    L271:
+        if (r139.isFinishing() == false) goto L273;
+        return;
+    L273:
+        if (r139.isDestroyed() == true) goto L546;
+        if (r145 == null) goto L277;
+        Toast.makeText(r139, r145, 1).show();
+    L277:
+        r139.startActivity(new Intent(r139, MainActivity.class).addFlags(872415232).putExtra("homemusic_hub_route", r144));
+        r139.finish();
+        return;
+    L546:
+        return;
+    L269:
+        r145 = r141;
+        goto L271
+    L279:
+        vb4 r146 = (vb4) this.o;
+        Preference r147 = (Preference) this.p;
+        String r148 = (String) this.q;
+        if (r146.y() == false) goto L547;
+        r147.x(r148);
+        return;
+    L547:
+        return;
+    L283:
+        cp1 r149 = (cp1) this.o;
+        boolean[] r150 = (boolean[]) this.p;
+        List r151 = (List) this.q;
+        if (r150[0] == true) goto L548;
+        bo2.o(r149.F0, r151, 0);
+        r150[0] = true;
+        return;
+    L548:
+        return;
+    L288:
+        cp1 r152 = (cp1) this.o;
+        HubMixToday r153 = (HubMixToday) this.p;
+        View r154 = (View) this.q;
+        if (r152.T == null) goto L549;
+        if (r153 == null) goto L550;
+        r154.setTag(r153);
+        ud3.E0(r154, r153);
+        return;
+    L550:
+        return;
+    L549:
+        return;
+    L294:
+        fo1 r155 = (fo1) this.o;
+        Object r156 = this.p;
+        gf1 r157 = (gf1) this.q;
+        if (r155.c() == true) goto L298;
+        return;
+    L298:
+        if ((r156 instanceof s14) == true) goto L300;
+        kd3 r158 = (kd3) r156;
+        r155.u((String) r158.n, (String) r158.o);
+    L300:
+        Throwable r159 = bb3.a(r156);
+        if (r159 == null) goto L551;
+        r155.r(false);
+        if ((r159 instanceof HubException) == true) goto L305;
+    L308:
+        String r160 = r159.getMessage();
+        if (r160 != null) goto L311;
+        r160 = r155.v(R.string.homemusic_login_no_hub, new Object[0]);
+    L311:
+        r155.t(r160);
+        return;
+    L305:
+        if (((HubException) r159).n != 409) goto L308;
+        if (r157 == null) goto L308;
+        r157.invoke();
+        return;
+    L551:
+        return;
+    L313:
+        fo1 r161 = (fo1) this.o;
+        Object r162 = this.p;
+        String r163 = (String) this.q;
+        if (r161.c() == false) goto L556;
+        r161.r(false);
+        if ((r162 instanceof s14) == false) goto L324;
+        Throwable r164 = bb3.a(r162);
+        if (r164 == null) goto L554;
+        String r165 = r164.getMessage();
+        if (r165 != null) goto L323;
+        r165 = r161.v(R.string.homemusic_login_no_hub, new Object[0]);
+    L323:
+        r161.t(r165);
+        return;
+    L554:
+        return;
+    L324:
+        if (r162 == null) goto L327;
+        kf2.k();
+        return;
+    L327:
+        ((uc1) r161.c).c.setText(null);
+        r161.h = r163;
+        System.currentTimeMillis();
+        throw null;
+    L556:
+        return;
+    L329:
+        gf1 r166 = (gf1) this.o;
+        fo1 r167 = (fo1) this.p;
+        gf1 r168 = (gf1) this.q;
+        Object r169 = r166.invoke();     // Catch: Throwable -> L332
+    L334:
+        io1.b.post(new v6(r167, r169, r168, r5));
+        return;
+    L332:
+        th = move-exception;
+        r169 = new s14(th);
+        goto L334
+    L336:
+        vj r170 = (vj) this.o;
+        bu r171 = (bu) this.p;
+        ThreadPoolExecutor r172 = (ThreadPoolExecutor) this.q;
+        sa1 r173 = si0.o(r170.n);     // Catch: Throwable -> L345
+        if (r173 == null) goto L351;
+        ra1 r174 = (ra1) ((sz0) r173.b);     // Catch: Throwable -> L345
+        Object r175 = r174.q;     // Catch: Throwable -> L345
+        monitor-enter(r175);     // Catch: Throwable -> L345
+        r174.s = r172;     // Catch: Throwable -> L347
+        monitor-exit(r175);     // Catch: Throwable -> L347
+        ((sz0) r173.b).a(new vz0(r171, r172));     // Catch: Throwable -> L345
+        return;
+    L347:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L345
+    L351:
+        throw new RuntimeException("EmojiCompat font provider not available on this device.");     // Catch: Throwable -> L345
+    L345:
+        th = move-exception;
+        r171.u(th);
+        r172.shutdown();
+        return;
+    L354:
+        sw0 r176 = (sw0) this.o;
+        ((tw0) this.p).D(r176.a, r176.b, (tv1) this.q);
+        return;
+    L356:
+        sw0 r177 = (sw0) this.o;
+        ((tw0) this.p).c(r177.a, r177.b, (Exception) this.q);
+        return;
+    L358:
+        xm0 r178 = (xm0) this.o;
+        View r179 = (View) this.p;
+        tm0 r180 = (tm0) this.q;
+        r178.a.endViewTransition(r179);
+        r180.d();
+        return;
+    L360:
+        String r181 = (String) this.o;
+        vz r182 = (vz) this.p;
+        yz r183 = (yz) this.q;
+        b00 r184 = b00.a;
+        kd3 r185 = b00.b();
+        if (r185 == null) goto L363;
+        String r186 = (String) r185.n;
+    L365:
+        if (h12.c(r186, r181) == false) goto L384;
+        monitor-enter(r184);
+        a00 r187 = (a00) b00.f.remove(r182.f);     // Catch: Throwable -> L381
+        monitor-exit(r184);
+        if (r187 == null) goto L371;
+        n61.l(r187.c);
+        boolean r188 = n61.f(1, r187.a, r187.b);
+    L372:
+        Map r189 = lg2.X(new kd3[]{new kd3("ref", r182.c), new kd3("star", Boolean.valueOf(r188))});
+        nk1 r190 = rr1.c;
+        WebView r191 = hw.g;
+        if (r191 == null) goto L375;
+        r191.evaluateJavascript(f34.h("window.dispatchEvent(new CustomEvent(", r190.j("hm:hub-favorite"), ", {detail: ", r190.j(r189), "}));"), null);
+    L375:
+        Context r192 = App.a();
+        HubException r193 = r183.c;
+        if (r193 == null) goto L379;
+        String r194 = r193.getMessage();
+        if (r194 == null) goto L379;
+    L380:
+        Toast.makeText(r192, r192.getString(R.string.homemusic_hub_action_failed, new Object[]{r194}), 1).show();
+        return;
+    L379:
+        r194 = "";
+        goto L380
+    L371:
+        r188 = r182.e;
+    L381:
+        th = move-exception;
+        throw th;
+    L384:
+        return;
+    L363:
+        r186 = null;
+        goto L365
+    L385:
+        WorkDatabase r195 = (WorkDatabase) this.o;
+        String r196 = (String) this.p;
+        sc5 r197 = (sc5) this.q;
+        fd5 r198 = r195.A();
+        r198.getClass();
+        w24 r199 = w24.b(1, "SELECT id FROM workspec WHERE state NOT IN (2, 3, 5) AND id IN (SELECT work_spec_id FROM workname WHERE name=?)");
+        r199.h(1, r196);
+        WorkDatabase_Impl r200 = r198.a;
+        r200.b();
+        Cursor r201 = xl.H(r200, r199);
+        ArrayList r202 = new ArrayList(r201.getCount());     // Catch: Throwable -> L391
+    L388:
+        if (r201.moveToNext() == false) goto L393;
+        r202.add(r201.getString(0));     // Catch: Throwable -> L391
+        goto L388
+    L393:
+        r201.close();
+        r199.j();
+        int r203 = r202.size();
+        int r204 = 0;
+    L394:
+        if (r204 >= r203) goto L396;
+        Object r205 = r202.get(r204);
+        r204 = r204 + 1;
+        wr1.h(r197, (String) r205);
+        goto L394
+    L396:
+        return;
+    L391:
+        th = move-exception;
+        r201.close();
+        r199.j();
+        throw th;
+    L399:
+        MediaService r206 = (MediaService) this.o;
+        List r207 = (List) this.p;
+        qi3 r208 = (qi3) this.q;
+        if (r206.D == true) goto L412;
+        Iterator r209 = r207.iterator();
+    L404:
+        if (r209.hasNext() == false) goto L559;
+        kd3 r210 = (kd3) r209.next();
+        int r211 = ((Number) r210.n).intValue();
+        Object r212 = r210.o;
+        r212.getClass();
+        gn2 r213 = (gn2) r212;
+        if (r211 <= r208.o0()) goto L404;
+        if (r211 >= r208.Q0()) goto L404;
+        if (h12.c(r208.Y(r211).a, r213.a) == false) goto L404;
+        r208.z0(r211, r213);
+        goto L404
+    L559:
+        return;
+    L412:
+        return;
+    L413:
+        AudioTrack r214 = (AudioTrack) this.o;
+        Handler r215 = (Handler) this.p;
+        tc2 r216 = (tc2) this.q;
+        int r217 = 9;
+        r214.flush();     // Catch: Throwable -> L429
+        r214.release();     // Catch: Throwable -> L429
+        if (r215.getLooper().getThread().isAlive() == false) goto L418;
+        r215.post(new a0(r217, r216));
+    L418:
+        Object r218 = an.r;
+        monitor-enter(r218);
+        int r219 = an.t - 1;     // Catch: Throwable -> L423
+        an.t = r219;     // Catch: Throwable -> L423
+        if (r219 != 0) goto L425;
+        ScheduledExecutorService r220 = an.s;     // Catch: Throwable -> L423
+        r220.getClass();     // Catch: Throwable -> L423
+        r220.shutdown();     // Catch: Throwable -> L423
+        an.s = null;     // Catch: Throwable -> L423
+    L425:
+        monitor-exit(r218);     // Catch: Throwable -> L423
+        return;
+    L423:
+        th = move-exception;
+        throw th;
+    L429:
+        th = move-exception;
+        if (r215.getLooper().getThread().isAlive() == false) goto L434;
+        r215.post(new a0(r217, r216));
+    L434:
+        monitor-enter(an.r);
+        int r221 = an.t - 1;     // Catch: Throwable -> L438
+        an.t = r221;     // Catch: Throwable -> L438
+        if (r221 != 0) goto L440;
+        ScheduledExecutorService r222 = an.s;     // Catch: Throwable -> L438
+        r222.getClass();     // Catch: Throwable -> L438
+        r222.shutdown();     // Catch: Throwable -> L438
+        an.s = null;     // Catch: Throwable -> L438
+    L440:
+        throw th;
+    L438:
+        th = move-exception;
+        throw th;
+    L444:
+        xc5 r223 = (xc5) this.o;
+        tb1 r224 = (tb1) this.p;
+        ej0 r225 = (ej0) this.q;
+        qm r226 = (qm) r223.p;
+        String r227 = f35.a;
+        r226.y(r224, r225);
+        return;
+    L446:
+        ArrayList r228 = (ArrayList) this.o;
+        s24 r229 = (s24) ((ss0) this.p).n;
+        int[] r230 = (int[]) this.q;
+        int r231 = r228.size();
+        int r232 = 0;
+    L447:
+        if (r232 >= r231) goto L455;
+        Object r233 = r228.get(r232);
+        r232 = r232 + 1;
+        w6 r234 = (w6) r233;
+        String r235 = r234.a;
+        String r236 = r234.b;
+        int r237 = ((Integer) xl.E(r229, true, false, new ps0(0, r235, r236))).intValue();
+        if (r237 > 0) goto L450;
+        if (((Integer) xl.E(r229, false, true, new qs0(r234.c, r235, r236, 0))).intValue() > 0) goto L453;
+        Log.w("AlbumArtistBackfill", "Album " + r235 + " changed no row as " + r236);
+        goto L447
+    L453:
+        r230[0] = r230[0] + 1;
+        goto L447
+    L450:
+        Log.w("AlbumArtistBackfill", "Left album " + r235 + " alone, " + r237 + " unfilled rows under it are not filed as " + r236);
+        goto L447
     }
 
-    public /* synthetic */ v6(lo2 lo2Var, sk2 sk2Var, String str, Bundle bundle) {
+    public /* synthetic */ v6(lo2 r1, sk2 r2, String r3, Bundle r4) {
         this.n = 29;
-        this.o = sk2Var;
-        this.p = str;
-        this.q = bundle;
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
     }
 
-    public /* synthetic */ v6(Object obj, Object obj2, Object obj3, int i) {
-        this.n = i;
-        this.o = obj;
-        this.p = obj2;
-        this.q = obj3;
+    public /* synthetic */ v6(Object r1, Object r2, Object r3, int r4) {
+        this.n = r4;
+        this.o = r1;
+        this.p = r2;
+        this.q = r3;
     }
 }

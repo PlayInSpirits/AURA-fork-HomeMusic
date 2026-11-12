@@ -17,6 +17,9 @@ public final class PlayQueue {
     private Long position;
     private String username;
 
+    public PlayQueue() {
+    }
+
     public final Date getChanged() {
         return this.changed;
     }
@@ -41,27 +44,27 @@ public final class PlayQueue {
         return this.username;
     }
 
-    public final void setChanged(Date date) {
-        this.changed = date;
+    public final void setChanged(Date r1) {
+        this.changed = r1;
     }
 
-    public final void setChangedBy(String str) {
-        this.changedBy = str;
+    public final void setChangedBy(String r1) {
+        this.changedBy = r1;
     }
 
-    public final void setCurrent(String str) {
-        this.current = str;
+    public final void setCurrent(String r1) {
+        this.current = r1;
     }
 
-    public final void setEntries(List<? extends Child> list) {
-        this.entries = list;
+    public final void setEntries(List<? extends Child> r1) {
+        this.entries = r1;
     }
 
-    public final void setPosition(Long l) {
-        this.position = l;
+    public final void setPosition(Long r1) {
+        this.position = r1;
     }
 
-    public final void setUsername(String str) {
-        this.username = str;
+    public final void setUsername(String r1) {
+        this.username = r1;
     }
 }

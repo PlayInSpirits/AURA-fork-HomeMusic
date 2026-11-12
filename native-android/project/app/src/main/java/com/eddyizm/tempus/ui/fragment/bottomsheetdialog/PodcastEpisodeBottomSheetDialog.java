@@ -5,30 +5,27 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import app.homemusic.R;
 import com.bumptech.glide.a;
-import com.eddyizm.tempus.App;
 import com.eddyizm.tempus.service.MediaService;
 import com.eddyizm.tempus.subsonic.models.PodcastEpisode;
-import com.eddyizm.tempus.ui.activity.MainActivity;
-import com.eddyizm.tempus.ui.fragment.bottomsheetdialog.PodcastEpisodeBottomSheetDialog;
 import defpackage.aj2;
 import defpackage.b11;
 import defpackage.b75;
 import defpackage.bj2;
 import defpackage.bl2;
 import defpackage.bq4;
+import defpackage.c04;
 import defpackage.cb4;
 import defpackage.e75;
 import defpackage.f35;
 import defpackage.fi0;
+import defpackage.fn3;
 import defpackage.gh0;
 import defpackage.gn3;
 import defpackage.i30;
@@ -43,7 +40,6 @@ import defpackage.x7;
 import defpackage.xc5;
 import defpackage.xv0;
 import defpackage.zt;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -52,354 +48,91 @@ public class PodcastEpisodeBottomSheetDialog extends zt implements View.OnClickL
     public PodcastEpisode C0;
     public bl2 D0;
 
+    public PodcastEpisodeBottomSheetDialog() {
+    }
+
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        final int i = 0;
-        View viewInflate = layoutInflater.inflate(R.layout.bottom_sheet_podcast_episode_dialog, viewGroup, false);
-        Bundle bundle2 = this.s;
-        if (bundle2 != null) {
-            PodcastEpisode podcastEpisode = (PodcastEpisode) bundle2.getParcelable("PODCAST_OBJECT");
-            this.C0 = podcastEpisode;
-            if (podcastEpisode != null) {
-                nc1 nc1VarX = X();
-                e75 e75VarD = nc1VarX.d();
-                b75 b75VarR = gh0.r(nc1VarX);
-                bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
-                i30 i30VarA = kx3.a(gn3.class);
-                String strB = i30VarA.b();
-                if (strB == null) {
-                    kf2.n("Local and anonymous classes can not be ViewModels");
-                    return null;
-                }
-                gn3 gn3Var = (gn3) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-                this.B0 = gn3Var;
-                gn3Var.d = this.C0;
-                ImageView imageView = (ImageView) viewInflate.findViewById(R.id.podcast_cover_image_view);
-                Context contextZ = Z();
-                String coverArtId = this.B0.d.getCoverArtId();
-                vz3 vz3VarT = b11.g(contextZ, coverArtId, 7, a.c(contextZ), coverArtId != null ? wg0.b(ud3.t(), coverArtId) : null).T(xv0.b());
-                if (ud3.R()) {
-                    vz3VarT = (vz3) vz3VarT.l();
-                }
-                vz3VarT.K(imageView);
-                TextView textView = (TextView) viewInflate.findViewById(R.id.podcast_title_text_view);
-                textView.setText(this.B0.d.getTitle());
-                final int i2 = 1;
-                textView.setSelected(true);
-                ((TextView) viewInflate.findViewById(R.id.play_next_text_view)).setOnClickListener(new View.OnClickListener(this) { // from class: fn3
-                    public final /* synthetic */ PodcastEpisodeBottomSheetDialog o;
-
-                    {
-                        this.o = this;
-                    }
-
-                    @Override // android.view.View.OnClickListener
-                    public final void onClick(View view) {
-                        int i3 = i;
-                        PodcastEpisodeBottomSheetDialog podcastEpisodeBottomSheetDialog = this.o;
-                        switch (i3) {
-                            case 0:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 1:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 2:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 4:
-                                gn3 gn3Var2 = podcastEpisodeBottomSheetDialog.B0;
-                                PodcastEpisode podcastEpisode2 = gn3Var2.d;
-                                if (podcastEpisode2 != null && podcastEpisode2.getId() != null) {
-                                    hh3 hh3Var = gn3Var2.c;
-                                    String id = gn3Var2.d.getId();
-                                    hh3Var.getClass();
-                                    wo0 wo0VarH = App.f(false).h();
-                                    wo0VarH.getClass();
-                                    Log.d("PodcastClient", "deletePodcastEpisode()");
-                                    ((hn3) wo0VarH.o).e(((pn4) wo0VarH.n).f(), id).enqueue(new rm2(9, gn3Var2));
-                                }
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            default:
-                                Toast.makeText(podcastEpisodeBottomSheetDialog.Z(), "Open the channel", 0).show();
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                        }
-                    }
-                });
-                ((TextView) viewInflate.findViewById(R.id.add_to_queue_text_view)).setOnClickListener(new View.OnClickListener(this) { // from class: fn3
-                    public final /* synthetic */ PodcastEpisodeBottomSheetDialog o;
-
-                    {
-                        this.o = this;
-                    }
-
-                    @Override // android.view.View.OnClickListener
-                    public final void onClick(View view) {
-                        int i3 = i2;
-                        PodcastEpisodeBottomSheetDialog podcastEpisodeBottomSheetDialog = this.o;
-                        switch (i3) {
-                            case 0:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 1:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 2:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 4:
-                                gn3 gn3Var2 = podcastEpisodeBottomSheetDialog.B0;
-                                PodcastEpisode podcastEpisode2 = gn3Var2.d;
-                                if (podcastEpisode2 != null && podcastEpisode2.getId() != null) {
-                                    hh3 hh3Var = gn3Var2.c;
-                                    String id = gn3Var2.d.getId();
-                                    hh3Var.getClass();
-                                    wo0 wo0VarH = App.f(false).h();
-                                    wo0VarH.getClass();
-                                    Log.d("PodcastClient", "deletePodcastEpisode()");
-                                    ((hn3) wo0VarH.o).e(((pn4) wo0VarH.n).f(), id).enqueue(new rm2(9, gn3Var2));
-                                }
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            default:
-                                Toast.makeText(podcastEpisodeBottomSheetDialog.Z(), "Open the channel", 0).show();
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                        }
-                    }
-                });
-                final int i3 = 2;
-                ((TextView) viewInflate.findViewById(R.id.download_text_view)).setOnClickListener(new View.OnClickListener(this) { // from class: fn3
-                    public final /* synthetic */ PodcastEpisodeBottomSheetDialog o;
-
-                    {
-                        this.o = this;
-                    }
-
-                    @Override // android.view.View.OnClickListener
-                    public final void onClick(View view) {
-                        int i4 = i3;
-                        PodcastEpisodeBottomSheetDialog podcastEpisodeBottomSheetDialog = this.o;
-                        switch (i4) {
-                            case 0:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 1:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 2:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 4:
-                                gn3 gn3Var2 = podcastEpisodeBottomSheetDialog.B0;
-                                PodcastEpisode podcastEpisode2 = gn3Var2.d;
-                                if (podcastEpisode2 != null && podcastEpisode2.getId() != null) {
-                                    hh3 hh3Var = gn3Var2.c;
-                                    String id = gn3Var2.d.getId();
-                                    hh3Var.getClass();
-                                    wo0 wo0VarH = App.f(false).h();
-                                    wo0VarH.getClass();
-                                    Log.d("PodcastClient", "deletePodcastEpisode()");
-                                    ((hn3) wo0VarH.o).e(((pn4) wo0VarH.n).f(), id).enqueue(new rm2(9, gn3Var2));
-                                }
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            default:
-                                Toast.makeText(podcastEpisodeBottomSheetDialog.Z(), "Open the channel", 0).show();
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                        }
-                    }
-                });
-                final int i4 = 3;
-                ((TextView) viewInflate.findViewById(R.id.remove_text_view)).setOnClickListener(new View.OnClickListener(this) { // from class: fn3
-                    public final /* synthetic */ PodcastEpisodeBottomSheetDialog o;
-
-                    {
-                        this.o = this;
-                    }
-
-                    @Override // android.view.View.OnClickListener
-                    public final void onClick(View view) {
-                        int i5 = i4;
-                        PodcastEpisodeBottomSheetDialog podcastEpisodeBottomSheetDialog = this.o;
-                        switch (i5) {
-                            case 0:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 1:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 2:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 4:
-                                gn3 gn3Var2 = podcastEpisodeBottomSheetDialog.B0;
-                                PodcastEpisode podcastEpisode2 = gn3Var2.d;
-                                if (podcastEpisode2 != null && podcastEpisode2.getId() != null) {
-                                    hh3 hh3Var = gn3Var2.c;
-                                    String id = gn3Var2.d.getId();
-                                    hh3Var.getClass();
-                                    wo0 wo0VarH = App.f(false).h();
-                                    wo0VarH.getClass();
-                                    Log.d("PodcastClient", "deletePodcastEpisode()");
-                                    ((hn3) wo0VarH.o).e(((pn4) wo0VarH.n).f(), id).enqueue(new rm2(9, gn3Var2));
-                                }
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            default:
-                                Toast.makeText(podcastEpisodeBottomSheetDialog.Z(), "Open the channel", 0).show();
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                        }
-                    }
-                });
-                final int i5 = 4;
-                ((TextView) viewInflate.findViewById(R.id.delete_text_view)).setOnClickListener(new View.OnClickListener(this) { // from class: fn3
-                    public final /* synthetic */ PodcastEpisodeBottomSheetDialog o;
-
-                    {
-                        this.o = this;
-                    }
-
-                    @Override // android.view.View.OnClickListener
-                    public final void onClick(View view) {
-                        int i6 = i5;
-                        PodcastEpisodeBottomSheetDialog podcastEpisodeBottomSheetDialog = this.o;
-                        switch (i6) {
-                            case 0:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 1:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 2:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 4:
-                                gn3 gn3Var2 = podcastEpisodeBottomSheetDialog.B0;
-                                PodcastEpisode podcastEpisode2 = gn3Var2.d;
-                                if (podcastEpisode2 != null && podcastEpisode2.getId() != null) {
-                                    hh3 hh3Var = gn3Var2.c;
-                                    String id = gn3Var2.d.getId();
-                                    hh3Var.getClass();
-                                    wo0 wo0VarH = App.f(false).h();
-                                    wo0VarH.getClass();
-                                    Log.d("PodcastClient", "deletePodcastEpisode()");
-                                    ((hn3) wo0VarH.o).e(((pn4) wo0VarH.n).f(), id).enqueue(new rm2(9, gn3Var2));
-                                }
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            default:
-                                Toast.makeText(podcastEpisodeBottomSheetDialog.Z(), "Open the channel", 0).show();
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                        }
-                    }
-                });
-                final int i6 = 5;
-                ((TextView) viewInflate.findViewById(R.id.go_to_channel_text_view)).setOnClickListener(new View.OnClickListener(this) { // from class: fn3
-                    public final /* synthetic */ PodcastEpisodeBottomSheetDialog o;
-
-                    {
-                        this.o = this;
-                    }
-
-                    @Override // android.view.View.OnClickListener
-                    public final void onClick(View view) {
-                        int i7 = i6;
-                        PodcastEpisodeBottomSheetDialog podcastEpisodeBottomSheetDialog = this.o;
-                        switch (i7) {
-                            case 0:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 1:
-                                ((au) ((MainActivity) podcastEpisodeBottomSheetDialog.X()).V.n).d(true);
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 2:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            case 4:
-                                gn3 gn3Var2 = podcastEpisodeBottomSheetDialog.B0;
-                                PodcastEpisode podcastEpisode2 = gn3Var2.d;
-                                if (podcastEpisode2 != null && podcastEpisode2.getId() != null) {
-                                    hh3 hh3Var = gn3Var2.c;
-                                    String id = gn3Var2.d.getId();
-                                    hh3Var.getClass();
-                                    wo0 wo0VarH = App.f(false).h();
-                                    wo0VarH.getClass();
-                                    Log.d("PodcastClient", "deletePodcastEpisode()");
-                                    ((hn3) wo0VarH.o).e(((pn4) wo0VarH.n).f(), id).enqueue(new rm2(9, gn3Var2));
-                                }
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                            default:
-                                Toast.makeText(podcastEpisodeBottomSheetDialog.Z(), "Open the channel", 0).show();
-                                podcastEpisodeBottomSheetDialog.h0();
-                                break;
-                        }
-                    }
-                });
-                return viewInflate;
-            }
-        }
+    public final View H(LayoutInflater r6, ViewGroup r7, Bundle r8) {
+        final int r0 = 0;
+        View r9 = r6.inflate(R.layout.bottom_sheet_podcast_episode_dialog, r7, false);
+        Bundle r10 = this.s;
+        if (r10 == null) goto L19;
+        PodcastEpisode r11 = (PodcastEpisode) r10.getParcelable("PODCAST_OBJECT");
+        this.C0 = r11;
+        if (r11 == null) goto L19;
+        nc1 r12 = X();
+        e75 r13 = r12.d();
+        b75 r1 = gh0.r(r12);
+        bq4 r2 = new bq4(r13, r1, b11.e(r12, r1));
+        i30 r14 = kx3.a(gn3.class);
+        String r15 = r14.b();
+        String r3 = null;
+        if (r15 == null) goto L17;
+        gn3 r16 = (gn3) r2.l(r14, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r15));
+        this.B0 = r16;
+        r16.d = this.C0;
+        ImageView r17 = (ImageView) r9.findViewById(R.id.podcast_cover_image_view);
+        Context r18 = Z();
+        String r4 = this.B0.d.getCoverArtId();
+        c04 r5 = a.c(r18);
+        if (r4 == null) goto L12;
+        r3 = wg0.b(ud3.t(), r4);
+    L12:
+        vz3 r19 = b11.g(r18, r4, 7, r5, r3).T(xv0.b());
+        if (ud3.R() == false) goto L15;
+        r19 = (vz3) r19.l();
+    L15:
+        r19.K(r17);
+        TextView r20 = (TextView) r9.findViewById(R.id.podcast_title_text_view);
+        r20.setText(this.B0.d.getTitle());
+        final int r21 = 1;
+        r20.setSelected(true);
+        ((TextView) r9.findViewById(R.id.play_next_text_view)).setOnClickListener(new fn3(this, r0));
+        ((TextView) r9.findViewById(R.id.add_to_queue_text_view)).setOnClickListener(new fn3(this, r21));
+        final int r22 = 2;
+        ((TextView) r9.findViewById(R.id.download_text_view)).setOnClickListener(new fn3(this, r22));
+        final int r23 = 3;
+        ((TextView) r9.findViewById(R.id.remove_text_view)).setOnClickListener(new fn3(this, r23));
+        final int r24 = 4;
+        ((TextView) r9.findViewById(R.id.delete_text_view)).setOnClickListener(new fn3(this, r24));
+        final int r25 = 5;
+        ((TextView) r9.findViewById(R.id.go_to_channel_text_view)).setOnClickListener(new fn3(this, r25));
+        return r9;
+    L17:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L19:
         n0();
-        return viewInflate;
+        return r9;
     }
 
     @Override // defpackage.pp0, defpackage.kc1
     public final void R() {
         super.R();
-        if (this.C0 != null) {
-            Context contextZ = Z();
-            cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
-            Bundle bundle = Bundle.EMPTY;
-            aj2 aj2Var = new aj2();
-            Looper looperX = f35.x();
-            bl2 bl2Var = new bl2(looperX);
-            b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, cb4Var.a.e() ? new xc5(4, new fi0(new x7(contextZ))) : null), new Handler(looperX));
-            this.D0 = bl2Var;
-        }
+        if (this.C0 == null) goto L11;
+        Context r2 = Z();
+        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
+        Bundle r4 = Bundle.EMPTY;
+        aj2 r5 = new aj2();
+        Looper r6 = f35.x();
+        bl2 r7 = new bl2(r6);
+        if (r3.a.e() == false) goto L8;
+        xc5 r0 = new xc5(4, new fi0(new x7(r2)));
+    L9:
+        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
+        this.D0 = r7;
+        return;
+    L8:
+        r0 = null;
+        goto L9
     }
 
     @Override // defpackage.pp0, defpackage.kc1
     public final void S() {
-        bl2 bl2Var = this.D0;
-        if (bl2Var != null) {
-            sk2.Z0(bl2Var);
-        }
+        bl2 r0 = this.D0;
+        if (r0 == null) goto L5;
+        sk2.Z0(r0);
+    L5:
         super.S();
     }
 }

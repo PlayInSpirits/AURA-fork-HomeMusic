@@ -10,17 +10,17 @@ public final class ww extends OutputStream {
     }
 
     @Override // java.io.OutputStream
-    public final void write(byte[] bArr, int i, int i2) {
-        bArr.getClass();
-        rr2.u(i, i2 + i, bArr.length);
+    public final void write(byte[] r1, int r2, int r3) {
+        r1.getClass();
+        rr2.u(r2, r3 + r2, r1.length);
     }
 
     @Override // java.io.OutputStream
-    public final void write(byte[] bArr) {
-        bArr.getClass();
+    public final void write(byte[] r1) {
+        r1.getClass();
     }
 
     @Override // java.io.OutputStream
-    public final void write(int i) {
+    public final void write(int r1) {
     }
 }

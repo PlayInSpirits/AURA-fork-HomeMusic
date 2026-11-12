@@ -12,42 +12,51 @@ public final class ti0 implements rd {
     public final Object g;
     public final long h;
 
-    public ti0(ui0 ui0Var, Object obj, ce ceVar) {
-        na4 na4Var = new na4(ui0Var.a);
-        this.a = na4Var;
-        hd5 hd5Var = p35.a;
-        this.b = hd5Var;
-        this.c = obj;
-        ce ceVar2 = (ce) ((if1) hd5Var.o).invoke(obj);
-        this.d = ceVar2;
-        this.e = kb4.n(ceVar);
-        this.g = ((if1) hd5Var.p).invoke(na4Var.D(ceVar2, ceVar));
-        if (((ce) na4Var.p) == null) {
-            na4Var.p = ceVar2.c();
-        }
-        ce ceVar3 = (ce) na4Var.p;
-        if (ceVar3 == null) {
-            h12.Q("velocityVector");
-            throw null;
-        }
-        int iB = ceVar3.b();
-        long jMax = 0;
-        for (int i = 0; i < iB; i++) {
-            rm2 rm2Var = (rm2) na4Var.n;
-            ceVar2.getClass();
-            jMax = Math.max(jMax, ((long) (Math.exp(((yx0) rm2Var.o).b(ceVar.a(i)) / (((double) a81.a) - 1.0d)) * 1000.0d)) * 1000000);
-        }
-        this.h = jMax;
-        ce ceVarN = kb4.n(this.a.E(jMax, this.d, ceVar));
-        this.f = ceVarN;
-        int iB2 = ceVarN.b();
-        for (int i2 = 0; i2 < iB2; i2++) {
-            ce ceVar4 = this.f;
-            float fA = ceVar4.a(i2);
-            this.a.getClass();
-            this.a.getClass();
-            ceVar4.d(i2, gb.l(fA, -0.0f, 0.0f));
-        }
+    public ti0(ui0 r12, Object r13, ce r14) {
+        na4 r0 = new na4(r12.a);
+        this.a = r0;
+        hd5 r15 = p35.a;
+        this.b = r15;
+        this.c = r13;
+        ce r16 = (ce) ((if1) r15.o).invoke(r13);
+        this.d = r16;
+        this.e = kb4.n(r14);
+        this.g = ((if1) r15.p).invoke(r0.D(r16, r14));
+        if (((ce) r0.p) != null) goto L5;
+        r0.p = r16.c();
+    L5:
+        ce r17 = (ce) r0.p;
+        if (r17 == null) goto L14;
+        int r18 = r17.b();
+        int r1 = 0;
+        long r2 = 0;
+        int r4 = 0;
+    L8:
+        if (r4 >= r18) goto L10;
+        rm2 r5 = (rm2) r0.n;
+        r16.getClass();
+        r2 = Math.max(r2, ((long) (Math.exp(((yx0) r5.o).b(r14.a(r4)) / (((double) a81.a) - 1.0d)) * 1000.0d)) * 1000000);
+        r4 = r4 + 1;
+        goto L8
+    L10:
+        this.h = r2;
+        ce r19 = kb4.n(this.a.E(r2, this.d, r14));
+        this.f = r19;
+        int r110 = r19.b();
+    L11:
+        if (r1 >= r110) goto L13;
+        ce r111 = this.f;
+        float r112 = r111.a(r1);
+        this.a.getClass();
+        this.a.getClass();
+        r111.d(r1, gb.l(r112, -0.0f, 0.0f));
+        r1 = r1 + 1;
+        goto L11
+    L13:
+        return;
+    L14:
+        h12.Q("velocityVector");
+        throw null;
     }
 
     @Override // defpackage.rd
@@ -66,53 +75,61 @@ public final class ti0 implements rd {
     }
 
     @Override // defpackage.rd
-    public final ce d(long j) {
-        if (e(j)) {
-            return this.f;
-        }
-        return this.a.E(j, this.d, this.e);
+    public final ce d(long r3) {
+        if (e(r3) == true) goto L7;
+        ce r0 = this.d;
+        ce r1 = this.e;
+        return this.a.E(r3, r0, r1);
+    L7:
+        return this.f;
     }
 
     @Override // defpackage.rd
-    public final Object f(long j) {
-        if (e(j)) {
-            return this.g;
-        }
-        if1 if1Var = (if1) this.b.p;
-        na4 na4Var = this.a;
-        ce ceVar = (ce) na4Var.o;
-        ce ceVar2 = this.d;
-        if (ceVar == null) {
-            na4Var.o = ceVar2.c();
-        }
-        ce ceVar3 = (ce) na4Var.o;
-        if (ceVar3 == null) {
-            h12.Q("valueVector");
-            throw null;
-        }
-        int iB = ceVar3.b();
-        int i = 0;
-        while (true) {
-            ce ceVar4 = (ce) na4Var.o;
-            if (i >= iB) {
-                if (ceVar4 != null) {
-                    return if1Var.invoke(ceVar4);
-                }
-                h12.Q("valueVector");
-                throw null;
-            }
-            if (ceVar4 == null) {
-                h12.Q("valueVector");
-                throw null;
-            }
-            rm2 rm2Var = (rm2) na4Var.n;
-            float fA = ceVar2.a(i);
-            long j2 = j / 1000000;
-            z71 z71VarA = ((yx0) rm2Var.o).a(this.e.a(i));
-            long j3 = z71VarA.c;
-            ceVar4.d(i, (Math.signum(z71VarA.a) * z71VarA.b * yb.a(j3 > 0 ? j2 / j3 : 1.0f).a) + fA);
-            i++;
-        }
+    public final Object f(long r19) {
+        if (e(r19) == true) goto L28;
+        if1 r1 = (if1) this.b.p;
+        na4 r2 = this.a;
+        ce r3 = (ce) r2.o;
+        ce r4 = this.d;
+        if (r3 != null) goto L7;
+        r2.o = r4.c();
+    L7:
+        ce r5 = (ce) r2.o;
+        if (r5 == null) goto L25;
+        int r6 = r5.b();
+        int r7 = 0;
+    L10:
+        ce r8 = (ce) r2.o;
+        if (r7 >= r6) goto L20;
+        if (r8 == null) goto L18;
+        rm2 r9 = (rm2) r2.n;
+        float r10 = r4.a(r7);
+        long r12 = r19 / 1000000;
+        z71 r11 = ((yx0) r9.o).a(this.e.a(r7));
+        long r14 = r11.c;
+        if (r14 <= 0) goto L16;
+        float r13 = r12 / r14;
+    L17:
+        r8.d(r7, ((Math.signum(r11.a) * r11.b) * yb.a(r13).a) + r10);
+        r7 = r7 + 1;
+        goto L10
+    L16:
+        r13 = 1.0f;
+        goto L17
+    L18:
+        h12.Q("valueVector");
+        throw null;
+    L20:
+        if (r8 != null) goto L22;
+        h12.Q("valueVector");
+        throw null;
+    L22:
+        return r1.invoke(r8);
+    L25:
+        h12.Q("valueVector");
+        throw null;
+    L28:
+        return this.g;
     }
 
     @Override // defpackage.rd

@@ -84,33 +84,33 @@ public interface WebSettingsBoundaryInterface {
 
     boolean isAlgorithmicDarkeningAllowed();
 
-    void setAlgorithmicDarkeningAllowed(boolean z);
+    void setAlgorithmicDarkeningAllowed(boolean r1);
 
-    void setAttributionBehavior(int i);
+    void setAttributionBehavior(int r1);
 
-    void setBackForwardCacheEnabled(boolean z);
+    void setBackForwardCacheEnabled(boolean r1);
 
-    void setDisabledActionModeMenuItems(int i);
+    void setDisabledActionModeMenuItems(int r1);
 
-    void setEnterpriseAuthenticationAppLinkPolicyEnabled(boolean z);
+    void setEnterpriseAuthenticationAppLinkPolicyEnabled(boolean r1);
 
-    void setForceDark(int i);
+    void setForceDark(int r1);
 
-    void setForceDarkBehavior(int i);
+    void setForceDarkBehavior(int r1);
 
-    void setOffscreenPreRaster(boolean z);
+    void setOffscreenPreRaster(boolean r1);
 
-    void setRequestedWithHeaderOriginAllowList(Set<String> set);
+    void setRequestedWithHeaderOriginAllowList(Set<String> r1);
 
-    void setSafeBrowsingEnabled(boolean z);
+    void setSafeBrowsingEnabled(boolean r1);
 
-    void setSpeculativeLoadingStatus(int i);
+    void setSpeculativeLoadingStatus(int r1);
 
-    void setUserAgentMetadataFromMap(Map<String, Object> map);
+    void setUserAgentMetadataFromMap(Map<String, Object> r1);
 
-    void setWebViewMediaIntegrityApiStatus(int i, Map<String, Integer> map);
+    void setWebViewMediaIntegrityApiStatus(int r1, Map<String, Integer> r2);
 
-    void setWebauthnSupport(int i);
+    void setWebauthnSupport(int r1);
 
-    void setWillSuppressErrorPage(boolean z);
+    void setWillSuppressErrorPage(boolean r1);
 }

@@ -6,8 +6,8 @@ public final class qm2 {
     public final byte[] a;
     public final ed2 b;
 
-    public qm2(qr2 qr2Var) {
-        this.a = (byte[]) qr2Var.o;
-        this.b = (ed2) qr2Var.p;
+    public qm2(qr2 r2) {
+        this.a = (byte[]) r2.o;
+        this.b = (ed2) r2.p;
     }
 }

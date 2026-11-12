@@ -9,21 +9,23 @@ import java.io.Serializable;
 public final class e33 extends h33 {
     public final Class r;
 
-    public e33(Class cls) {
+    public e33(Class r2) {
         super(true);
-        if (Parcelable.class.isAssignableFrom(cls) || Serializable.class.isAssignableFrom(cls)) {
-            this.r = cls;
-        } else {
-            nz2.h(cls, " does not implement Parcelable or Serializable.");
-            throw null;
-        }
+        if (Parcelable.class.isAssignableFrom(r2) == false) goto L5;
+    L9:
+        this.r = r2;
+        return;
+    L5:
+        if (Serializable.class.isAssignableFrom(r2) == true) goto L9;
+        nz2.h(r2, " does not implement Parcelable or Serializable.");
+        throw null;
     }
 
     @Override // defpackage.h33
-    public final Object a(String str, Bundle bundle) {
-        bundle.getClass();
-        str.getClass();
-        return bundle.get(str);
+    public final Object a(String r1, Bundle r2) {
+        r2.getClass();
+        r1.getClass();
+        return r2.get(r1);
     }
 
     @Override // defpackage.h33
@@ -32,30 +34,37 @@ public final class e33 extends h33 {
     }
 
     @Override // defpackage.h33
-    public final Object d(String str) {
-        str.getClass();
+    public final Object d(String r1) {
+        r1.getClass();
         throw new UnsupportedOperationException("Parcelables don't support default values.");
     }
 
     @Override // defpackage.h33
-    public final void e(Bundle bundle, String str, Object obj) {
-        str.getClass();
-        this.r.cast(obj);
-        if (obj == null || (obj instanceof Parcelable)) {
-            bundle.putParcelable(str, (Parcelable) obj);
-        } else if (obj instanceof Serializable) {
-            bundle.putSerializable(str, (Serializable) obj);
-        }
+    public final void e(Bundle r1, String r2, Object r3) {
+        r2.getClass();
+        this.r.cast(r3);
+        if (r3 != null) goto L5;
+    L11:
+        r1.putParcelable(r2, (Parcelable) r3);
+        return;
+    L5:
+        if ((r3 instanceof Parcelable) == true) goto L11;
+        if ((r3 instanceof Serializable) == false) goto L13;
+        r1.putSerializable(r2, (Serializable) r3);
+        return;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || !e33.class.equals(obj.getClass())) {
-            return false;
-        }
-        return h12.c(this.r, ((e33) obj).r);
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if (r3 != null) goto L7;
+        return false;
+    L7:
+        if (e33.class.equals(r3.getClass()) == true) goto L10;
+        return false;
+    L10:
+        return h12.c(this.r, ((e33) r3).r);
     }
 
     public final int hashCode() {

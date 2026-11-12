@@ -13,20 +13,22 @@ public final class x8 extends ArrayAdapter {
     public final /* synthetic */ AlertController$RecycleListView n;
     public final /* synthetic */ a9 o;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public x8(a9 a9Var, ContextThemeWrapper contextThemeWrapper, int i, CharSequence[] charSequenceArr, AlertController$RecycleListView alertController$RecycleListView) {
-        super(contextThemeWrapper, i, R.id.text1, charSequenceArr);
-        this.o = a9Var;
-        this.n = alertController$RecycleListView;
+    public x8(a9 r1, ContextThemeWrapper r2, int r3, CharSequence[] r4, AlertController$RecycleListView r5) {
+        this.o = r1;
+        this.n = r5;
+        super(r2, r3, R.id.text1, r4);
     }
 
     @Override // android.widget.ArrayAdapter, android.widget.Adapter
-    public final View getView(int i, View view, ViewGroup viewGroup) {
-        View view2 = super.getView(i, view, viewGroup);
-        boolean[] zArr = this.o.t;
-        if (zArr != null && zArr[i]) {
-            this.n.setItemChecked(i, true);
-        }
-        return view2;
+    public final View getView(int r1, View r2, ViewGroup r3) {
+        View r4 = super.getView(r1, r2, r3);
+        boolean[] r5 = this.o.t;
+        if (r5 != null) goto L5;
+    L7:
+        return r4;
+    L5:
+        if (r5[r1] == false) goto L7;
+        this.n.setItemChecked(r1, true);
+        goto L7
     }
 }

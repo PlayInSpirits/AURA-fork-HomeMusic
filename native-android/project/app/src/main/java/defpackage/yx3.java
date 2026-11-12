@@ -5,7 +5,7 @@ package defpackage;
 public interface yx3 {
     int a();
 
-    void b(xx3 xx3Var);
+    void b(xx3 r1);
 
     void c();
 }

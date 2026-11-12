@@ -12,13 +12,13 @@ public final class bf2 implements vi2 {
     public final /* synthetic */ if1 e;
     public final /* synthetic */ cf2 f;
 
-    public bf2(int i, int i2, Map map, if1 if1Var, if1 if1Var2, cf2 cf2Var) {
-        this.a = i;
-        this.b = i2;
-        this.c = map;
-        this.d = if1Var;
-        this.e = if1Var2;
-        this.f = cf2Var;
+    public bf2(int r1, int r2, Map r3, if1 r4, if1 r5, cf2 r6) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
     }
 
     @Override // defpackage.vi2
@@ -33,7 +33,8 @@ public final class bf2 implements vi2 {
 
     @Override // defpackage.vi2
     public final void c() {
-        this.e.invoke(this.f.C);
+        df2 r0 = this.f.C;
+        this.e.invoke(r0);
     }
 
     @Override // defpackage.vi2

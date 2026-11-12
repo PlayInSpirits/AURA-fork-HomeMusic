@@ -7,7 +7,7 @@ import java.util.concurrent.CancellationException;
 public final class zb0 extends CancellationException {
     public final int n;
 
-    public zb0(int i) {
-        this.n = i;
+    public zb0(int r1) {
+        this.n = r1;
     }
 }

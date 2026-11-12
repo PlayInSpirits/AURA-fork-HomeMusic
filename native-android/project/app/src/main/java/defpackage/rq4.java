@@ -1,6 +1,7 @@
 package defpackage;
 
 import java.util.AbstractSet;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
@@ -12,56 +13,74 @@ public final class rq4 {
     public final Set c;
     public final Set d;
 
-    public rq4(String str, Map map, AbstractSet abstractSet, AbstractSet abstractSet2) {
-        abstractSet.getClass();
-        this.a = str;
-        this.b = map;
-        this.c = abstractSet;
-        this.d = abstractSet2;
+    public rq4(String r1, Map r2, AbstractSet r3, AbstractSet r4) {
+        r3.getClass();
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
     }
 
-    public static final rq4 a(we1 we1Var, String str) {
-        return gi1.T(new po4(we1Var), str);
+    public static final rq4 a(we1 r1, String r2) {
+        return gi1.T(new po4(r1), r2);
     }
 
-    public static final rq4 b(x34 x34Var, String str) {
-        return gi1.T(x34Var, str);
+    public static final rq4 b(x34 r0, String r1) {
+        return gi1.T(r0, r1);
     }
 
-    public final boolean equals(Object obj) {
-        Set set;
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof rq4)) {
-            return false;
-        }
-        rq4 rq4Var = (rq4) obj;
-        if (!this.a.equals(rq4Var.a) || !this.b.equals(rq4Var.b) || !h12.c(this.c, rq4Var.c)) {
-            return false;
-        }
-        Set set2 = this.d;
-        if (set2 == null || (set = rq4Var.d) == null) {
-            return true;
-        }
-        return set2.equals(set);
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof rq4) == false) goto L26;
+        rq4 r4 = (rq4) r3;
+        String r0 = r4.a;
+        if (this.a.equals(r0) == true) goto L11;
+        return false;
+    L11:
+        if (this.b.equals(r4.b) == true) goto L14;
+        return false;
+    L14:
+        if (h12.c(this.c, r4.c) == true) goto L17;
+        return false;
+    L17:
+        Set r2 = this.d;
+        if (r2 == null) goto L24;
+        Set r5 = r4.d;
+        if (r5 != null) goto L23;
+        return true;
+    L23:
+        return r2.equals(r5);
+    L24:
+        return true;
+    L26:
+        return false;
     }
 
     public final int hashCode() {
-        return this.c.hashCode() + ((this.b.hashCode() + (this.a.hashCode() * 31)) * 31);
+        int r0 = this.a.hashCode() * 31;
+        int r1 = (this.b.hashCode() + r0) * 31;
+        return this.c.hashCode() + r1;
     }
 
     public final String toString() {
-        StringBuilder sb = new StringBuilder("\n            |TableInfo {\n            |    name = '");
-        sb.append(this.a);
-        sb.append("',\n            |    columns = {");
-        sb.append(vr1.r(q40.K0(this.b.values(), new jb2(6))));
-        sb.append("\n            |    foreignKeys = {");
-        sb.append(vr1.r(this.c));
-        sb.append("\n            |    indices = {");
-        Set set = this.d;
-        sb.append(vr1.r(set != null ? q40.K0(set, new jb2(7)) : u01.n));
-        sb.append("\n            |}\n        ");
-        return rm4.d0(sb.toString());
+        StringBuilder r0 = new StringBuilder("\n            |TableInfo {\n            |    name = '");
+        r0.append(this.a);
+        r0.append("',\n            |    columns = {");
+        r0.append(vr1.r(q40.K0(this.b.values(), new jb2(6))));
+        r0.append("\n            |    foreignKeys = {");
+        r0.append(vr1.r(this.c));
+        r0.append("\n            |    indices = {");
+        Set r4 = this.d;
+        if (r4 == null) goto L5;
+        Collection r5 = q40.K0(r4, new jb2(7));
+    L6:
+        r0.append(vr1.r(r5));
+        r0.append("\n            |}\n        ");
+        return rm4.d0(r0.toString());
+    L5:
+        r5 = u01.n;
+        goto L6
     }
 }

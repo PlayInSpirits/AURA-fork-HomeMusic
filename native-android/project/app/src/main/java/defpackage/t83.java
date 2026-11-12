@@ -8,86 +8,93 @@ import android.window.OnBackAnimationCallback;
 public final class t83 implements OnBackAnimationCallback {
     public final /* synthetic */ s83 a;
 
-    public t83(s83 s83Var) {
-        this.a = s83Var;
+    public t83(s83 r1) {
+        this.a = r1;
     }
 
     public final void onBackCancelled() {
-        s83 s83Var = this.a;
-        bq4 bq4Var = s83Var.a;
-        if (bq4Var == null) {
-            kf2.o("This input is not added to any dispatcher.");
-            return;
-        }
-        if (!s83Var.b) {
-            bq4Var.g(s83Var, null);
-        }
-        w33 w33Var = (w33) bq4Var.o;
-        w33Var.getClass();
-        if (s83Var.equals(w33Var.h) && -1 == w33Var.g) {
-            u83 u83VarC = w33Var.f;
-            if (u83VarC == null) {
-                u83VarC = w33Var.c(-1);
-            }
-            w33Var.f = null;
-            w33Var.g = 0;
-            w33Var.h = null;
-            if (u83VarC != null) {
-                u83VarC.d.getClass();
-            }
-            nl4 nl4Var = w33Var.a;
-            x33 x33Var = x33.p;
-            nl4Var.getClass();
-            nl4Var.j(null, x33Var);
-        }
-        s83Var.b = false;
+        s83 r5 = this.a;
+        bq4 r0 = r5.a;
+        if (r0 != null) goto L5;
+        kf2.o("This input is not added to any dispatcher.");
+        return;
+    L5:
+        if (r5.b == true) goto L7;
+        r0.g(r5, null);
+    L7:
+        w33 r1 = (w33) r0.o;
+        r1.getClass();
+        if (r5.equals(r1.h) == true) goto L10;
+    L19:
+        r5.b = false;
+        return;
+    L10:
+        if ((-1) != r1.g) goto L19;
+        u83 r2 = r1.f;
+        if (r2 != null) goto L15;
+        r2 = r1.c(-1);
+    L15:
+        r1.f = null;
+        r1.g = 0;
+        r1.h = null;
+        if (r2 == null) goto L18;
+        r2.d.getClass();
+    L18:
+        nl4 r3 = r1.a;
+        x33 r4 = x33.p;
+        r3.getClass();
+        r3.j(null, r4);
+        goto L19
     }
 
     public final void onBackInvoked() {
         this.a.a();
     }
 
-    public final void onBackProgressed(BackEvent backEvent) {
-        backEvent.getClass();
-        t33 t33VarA = xl.a(backEvent);
-        s83 s83Var = this.a;
-        bq4 bq4Var = s83Var.a;
-        if (bq4Var == null) {
-            kf2.o("This input is not added to any dispatcher.");
-            return;
-        }
-        if (s83Var.b) {
-            w33 w33Var = (w33) bq4Var.o;
-            w33Var.getClass();
-            if (s83Var.equals(w33Var.h) && -1 == w33Var.g) {
-                u83 u83VarC = w33Var.f;
-                if (u83VarC == null) {
-                    u83VarC = w33Var.c(-1);
-                }
-                if (u83VarC != null) {
-                    u83VarC.d.getClass();
-                }
-                nl4 nl4Var = w33Var.a;
-                y33 y33Var = new y33(t33VarA);
-                nl4Var.getClass();
-                nl4Var.j(null, y33Var);
-            }
-        }
+    public final void onBackProgressed(BackEvent r3) {
+        r3.getClass();
+        t33 r4 = xl.a(r3);
+        s83 r2 = this.a;
+        bq4 r0 = r2.a;
+        if (r0 != null) goto L5;
+        kf2.o("This input is not added to any dispatcher.");
+        return;
+    L5:
+        if (r2.b == false) goto L20;
+        w33 r1 = (w33) r0.o;
+        r1.getClass();
+        if (r2.equals(r1.h) == true) goto L9;
+        return;
+    L9:
+        if ((-1) != r1.g) goto L22;
+        u83 r5 = r1.f;
+        if (r5 != null) goto L14;
+        r5 = r1.c(-1);
+    L14:
+        if (r5 == null) goto L16;
+        r5.d.getClass();
+    L16:
+        nl4 r6 = r1.a;
+        y33 r7 = new y33(r4);
+        r6.getClass();
+        r6.j(null, r7);
+        return;
+    L22:
+        return;
     }
 
-    public final void onBackStarted(BackEvent backEvent) {
-        backEvent.getClass();
-        t33 t33VarA = xl.a(backEvent);
-        s83 s83Var = this.a;
-        bq4 bq4Var = s83Var.a;
-        if (bq4Var == null) {
-            kf2.o("This input is not added to any dispatcher.");
-        } else {
-            if (s83Var.b) {
-                return;
-            }
-            bq4Var.g(s83Var, t33VarA);
-            s83Var.b = true;
-        }
+    public final void onBackStarted(BackEvent r3) {
+        r3.getClass();
+        t33 r4 = xl.a(r3);
+        s83 r2 = this.a;
+        bq4 r0 = r2.a;
+        if (r0 != null) goto L5;
+        kf2.o("This input is not added to any dispatcher.");
+        return;
+    L5:
+        if (r2.b == true) goto L10;
+        r0.g(r2, r4);
+        r2.b = true;
+        return;
     }
 }

@@ -11,41 +11,41 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface ov {
     @GET("getSimilarSongs2")
-    Call<ApiResponse> a(@QueryMap Map<String, String> map, @Query("id") String str, @Query("count") int i);
+    Call<ApiResponse> a(@QueryMap Map<String, String> r1, @Query("id") String r2, @Query("count") int r3);
 
     @GET("getIndexes")
-    Call<ApiResponse> b(@QueryMap Map<String, String> map, @Query("musicFolderId") String str, @Query("ifModifiedSince") Long l);
+    Call<ApiResponse> b(@QueryMap Map<String, String> r1, @Query("musicFolderId") String r2, @Query("ifModifiedSince") Long r3);
 
     @GET("getSong")
-    Call<ApiResponse> c(@QueryMap Map<String, String> map, @Query("id") String str);
+    Call<ApiResponse> c(@QueryMap Map<String, String> r1, @Query("id") String r2);
 
     @GET("getAlbumInfo2")
-    Call<ApiResponse> d(@QueryMap Map<String, String> map, @Query("id") String str);
+    Call<ApiResponse> d(@QueryMap Map<String, String> r1, @Query("id") String r2);
 
     @GET("getArtist")
-    Call<ApiResponse> e(@QueryMap Map<String, String> map, @Query("id") String str);
+    Call<ApiResponse> e(@QueryMap Map<String, String> r1, @Query("id") String r2);
 
     @GET("getAlbum")
-    Call<ApiResponse> f(@QueryMap Map<String, String> map, @Query("id") String str);
+    Call<ApiResponse> f(@QueryMap Map<String, String> r1, @Query("id") String r2);
 
     @GET("getSimilarSongs")
-    Call<ApiResponse> g(@QueryMap Map<String, String> map, @Query("id") String str, @Query("count") int i);
+    Call<ApiResponse> g(@QueryMap Map<String, String> r1, @Query("id") String r2, @Query("count") int r3);
 
     @GET("getMusicDirectory")
-    Call<ApiResponse> h(@QueryMap Map<String, String> map, @Query("id") String str);
+    Call<ApiResponse> h(@QueryMap Map<String, String> r1, @Query("id") String r2);
 
     @GET("getGenres")
-    Call<ApiResponse> i(@QueryMap Map<String, String> map);
+    Call<ApiResponse> i(@QueryMap Map<String, String> r1);
 
     @GET("getTopSongs")
-    Call<ApiResponse> j(@QueryMap Map<String, String> map, @Query("artist") String str, @Query("count") int i);
+    Call<ApiResponse> j(@QueryMap Map<String, String> r1, @Query("artist") String r2, @Query("count") int r3);
 
     @GET("getArtists")
-    Call<ApiResponse> k(@QueryMap Map<String, String> map, @Query("musicFolderId") String str);
+    Call<ApiResponse> k(@QueryMap Map<String, String> r1, @Query("musicFolderId") String r2);
 
     @GET("getMusicFolders")
-    Call<ApiResponse> l(@QueryMap Map<String, String> map);
+    Call<ApiResponse> l(@QueryMap Map<String, String> r1);
 
     @GET("getArtistInfo2")
-    Call<ApiResponse> m(@QueryMap Map<String, String> map, @Query("id") String str);
+    Call<ApiResponse> m(@QueryMap Map<String, String> r1, @Query("id") String r2);
 }

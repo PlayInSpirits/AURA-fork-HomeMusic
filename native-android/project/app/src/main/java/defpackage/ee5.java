@@ -1,7 +1,6 @@
 package defpackage;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import org.tukaani.xz.MemoryLimitException;
 import org.tukaani.xz.SingleXZInputStream;
@@ -12,14 +11,18 @@ import org.tukaani.xz.XZ;
 public final class ee5 extends i90 {
     public final InputStream o;
 
-    public ee5(ByteArrayInputStream byteArrayInputStream) {
-        this.o = new SingleXZInputStream(new df0(byteArrayInputStream), -1);
+    public ee5(ByteArrayInputStream r3) {
+        this.o = new SingleXZInputStream(new df0(r3), -1);
     }
 
     public static void f() {
-        if (XZ.HEADER_MAGIC.length <= 0 && XZ.HEADER_MAGIC.length > 0) {
-            throw null;
-        }
+        if (XZ.HEADER_MAGIC.length <= 0) goto L6;
+        return;
+    L6:
+        if (XZ.HEADER_MAGIC.length > 0) goto L9;
+        return;
+    L9:
+        throw null;
     }
 
     @Override // java.io.InputStream
@@ -28,45 +31,42 @@ public final class ee5 extends i90 {
     }
 
     @Override // java.io.InputStream, java.io.Closeable, java.lang.AutoCloseable
-    public final void close() throws IOException {
+    public final void close() {
         this.o.close();
     }
 
     @Override // java.io.InputStream
-    public final int read() throws IOException {
-        try {
-            int i = this.o.read();
-            int i2 = -1;
-            if (i != -1) {
-                i2 = 1;
-            }
-            b(i2);
-            return i;
-        } catch (MemoryLimitException e) {
-            throw new org.apache.commons.compress.MemoryLimitException(e.getMemoryNeeded(), e.getMemoryLimit(), e);
-        }
+    public final int read() {
+        int r0 = this.o.read();     // Catch: MemoryLimitException -> L8
+        int r1 = -1;
+        if (r0 == (-1)) goto L6;
+        r1 = 1;
+    L6:
+        b(r1);     // Catch: MemoryLimitException -> L8
+        return r0;
+    L8:
+        e = move-exception;
+        throw new org.apache.commons.compress.MemoryLimitException(e.getMemoryNeeded(), e.getMemoryLimit(), e);
     }
 
     @Override // java.io.InputStream
-    public final long skip(long j) throws org.apache.commons.compress.MemoryLimitException {
-        try {
-            return vr1.G(this.o, j);
-        } catch (MemoryLimitException e) {
-            throw new org.apache.commons.compress.MemoryLimitException(e.getMemoryNeeded(), e.getMemoryLimit(), e);
-        }
+    public final long skip(long r3) {
+        return vr1.G(this.o, r3);
+    L4:
+        e = move-exception;
+        throw new org.apache.commons.compress.MemoryLimitException(e.getMemoryNeeded(), e.getMemoryLimit(), e);
     }
 
     @Override // java.io.InputStream
-    public final int read(byte[] bArr, int i, int i2) throws IOException {
-        if (i2 == 0) {
-            return 0;
-        }
-        try {
-            int i3 = this.o.read(bArr, i, i2);
-            b(i3);
-            return i3;
-        } catch (MemoryLimitException e) {
-            throw new org.apache.commons.compress.MemoryLimitException(e.getMemoryNeeded(), e.getMemoryLimit(), e);
-        }
+    public final int read(byte[] r2, int r3, int r4) {
+        if (r4 != 0) goto L10;
+        return 0;
+    L10:
+        int r5 = this.o.read(r2, r3, r4);     // Catch: MemoryLimitException -> L7
+        b(r5);     // Catch: MemoryLimitException -> L7
+        return r5;
+    L7:
+        e = move-exception;
+        throw new org.apache.commons.compress.MemoryLimitException(e.getMemoryNeeded(), e.getMemoryLimit(), e);
     }
 }

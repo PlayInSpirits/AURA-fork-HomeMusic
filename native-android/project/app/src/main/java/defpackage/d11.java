@@ -6,8 +6,8 @@ public final class d11 {
     public final Class a;
     public final c11 b;
 
-    public d11(Class cls, c11 c11Var) {
-        this.a = cls;
-        this.b = c11Var;
+    public d11(Class r1, c11 r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

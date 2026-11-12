@@ -6,10 +6,10 @@ import java.util.function.IntUnaryOperator;
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class qa0 implements IntUnaryOperator {
     @Override // java.util.function.IntUnaryOperator
-    public final int applyAsInt(int i) {
-        if (i > 0) {
-            return i - 1;
-        }
+    public final int applyAsInt(int r1) {
+        if (r1 > 0) goto L4;
         return 0;
+    L4:
+        return r1 - 1;
     }
 }

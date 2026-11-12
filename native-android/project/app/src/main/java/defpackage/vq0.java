@@ -18,12 +18,15 @@ import java.util.List;
 /* JADX INFO: loaded from: classes.dex */
 public final class vq0 extends dw3 {
     public final cp1 q;
-    public int s = 800;
-    public int t = 400;
-    public List r = Collections.EMPTY_LIST;
+    public List r;
+    public int s;
+    public int t;
 
-    public vq0(cp1 cp1Var) {
-        this.q = cp1Var;
+    public vq0(cp1 r2) {
+        this.s = 800;
+        this.t = 400;
+        this.q = r2;
+        this.r = Collections.EMPTY_LIST;
     }
 
     @Override // defpackage.dw3
@@ -32,86 +35,99 @@ public final class vq0 extends dw3 {
     }
 
     @Override // defpackage.dw3
-    public final void g(cx3 cx3Var, int i) {
-        uq0 uq0Var = (uq0) cx3Var;
-        na4 na4Var = uq0Var.u;
-        ViewGroup.LayoutParams layoutParams = ((ImageView) na4Var.p).getLayoutParams();
-        layoutParams.width = this.s;
-        layoutParams.height = this.t;
-        ((ImageView) na4Var.p).setLayoutParams(layoutParams);
-        Child child = (Child) this.r.get(i);
-        ((TextView) na4Var.q).setText(child.getTitle());
-        ((TextView) na4Var.o).setText(child.getAlbum());
-        Context context = uq0Var.a.getContext();
-        String coverArtId = child.getCoverArtId();
-        vz3 vz3VarT = b11.g(context, coverArtId, 9, a.c(context), coverArtId != null ? wg0.b(ud3.t(), coverArtId) : null).T(xv0.b());
-        if (ud3.R()) {
-            vz3VarT = (vz3) vz3VarT.l();
-        }
-        vz3VarT.K((ImageView) na4Var.p);
+    public final void g(cx3 r4, int r5) {
+        uq0 r6 = (uq0) r4;
+        na4 r0 = r6.u;
+        ViewGroup.LayoutParams r1 = ((ImageView) r0.p).getLayoutParams();
+        r1.width = this.s;
+        r1.height = this.t;
+        ((ImageView) r0.p).setLayoutParams(r1);
+        Child r3 = (Child) this.r.get(r5);
+        ((TextView) r0.q).setText(r3.getTitle());
+        ((TextView) r0.o).setText(r3.getAlbum());
+        Context r7 = r6.a.getContext();
+        String r8 = r3.getCoverArtId();
+        c04 r9 = a.c(r7);
+        if (r8 == null) goto L5;
+        String r2 = wg0.b(ud3.t(), r8);
+    L6:
+        vz3 r10 = b11.g(r7, r8, 9, r9, r2).T(xv0.b());
+        if (ud3.R() == false) goto L9;
+        r10 = (vz3) r10.l();
+    L9:
+        r10.K((ImageView) r0.p);
+        return;
+    L5:
+        r2 = null;
+        goto L6
     }
 
     @Override // defpackage.dw3
-    public final cx3 i(ViewGroup viewGroup, int i) {
-        float f;
-        View viewI = b11.i(viewGroup, R.layout.item_home_discover_song, viewGroup, false);
-        int i2 = R.id.album_discover_song_label;
-        TextView textView = (TextView) uo.s(viewI, R.id.album_discover_song_label);
-        if (textView != null) {
-            i2 = R.id.discover_song_cover_image_view;
-            ImageView imageView = (ImageView) uo.s(viewI, R.id.discover_song_cover_image_view);
-            if (imageView != null) {
-                i2 = R.id.title_discover_song_label;
-                TextView textView2 = (TextView) uo.s(viewI, R.id.title_discover_song_label);
-                if (textView2 != null) {
-                    na4 na4Var = new na4((ConstraintLayout) viewI, textView, imageView, textView2);
-                    ut4 ut4VarC = ut4.c();
-                    Context context = viewGroup.getContext();
-                    ut4VarC.getClass();
-                    DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-                    float f2 = displayMetrics.widthPixels;
-                    float f3 = displayMetrics.heightPixels;
-                    int iMax = Math.max(2, Math.min(6, ud3.I()));
-                    if (iMax == 3) {
-                        f = 1.25f;
-                    } else if (iMax == 4) {
-                        f = 1.5f;
-                    } else if (iMax != 5) {
-                        f = iMax != 6 ? 1.0f : 2.0f;
-                    } else {
-                        f = 1.75f;
-                    }
-                    int iRound = Math.round(Math.min(f2, f3) / f) - 50;
-                    ut4VarC.f = iRound;
-                    ut4VarC.g = Math.round(iRound * 0.6f);
-                    ut4VarC.j = true;
-                    ut4 ut4VarC2 = ut4.c();
-                    Context context2 = viewGroup.getContext();
-                    if (!ut4VarC2.j) {
-                        ut4VarC2.b(context2);
-                    }
-                    this.s = ut4VarC2.f;
-                    ut4 ut4VarC3 = ut4.c();
-                    Context context3 = viewGroup.getContext();
-                    if (!ut4VarC3.j) {
-                        ut4VarC3.b(context3);
-                    }
-                    this.t = ut4VarC3.g;
-                    return new uq0(this, na4Var);
-                }
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewI.getResources().getResourceName(i2)));
+    public final cx3 i(ViewGroup r7, int r8) {
+        View r9 = b11.i(r7, R.layout.item_home_discover_song, r7, false);
+        int r0 = R.id.album_discover_song_label;
+        TextView r1 = (TextView) uo.s(r9, R.id.album_discover_song_label);
+        if (r1 == null) goto L28;
+        r0 = R.id.discover_song_cover_image_view;
+        ImageView r2 = (ImageView) uo.s(r9, R.id.discover_song_cover_image_view);
+        if (r2 == null) goto L28;
+        r0 = R.id.title_discover_song_label;
+        TextView r3 = (TextView) uo.s(r9, R.id.title_discover_song_label);
+        if (r3 == null) goto L28;
+        na4 r4 = new na4((ConstraintLayout) r9, r1, r2, r3);
+        ut4 r10 = ut4.c();
+        Context r5 = r7.getContext();
+        r10.getClass();
+        DisplayMetrics r6 = r5.getResources().getDisplayMetrics();
+        float r11 = r6.widthPixels;
+        float r12 = r6.heightPixels;
+        int r13 = Math.max(2, Math.min(6, ud3.I()));
+        if (r13 != 3) goto L11;
+        float r14 = 1.25f;
+    L20:
+        int r15 = Math.round(Math.min(r11, r12) / r14) - 50;
+        r10.f = r15;
+        r10.g = Math.round(r15 * 0.6f);
+        r10.j = true;
+        ut4 r16 = ut4.c();
+        Context r17 = r7.getContext();
+        if (r16.j == true) goto L23;
+        r16.b(r17);
+    L23:
+        this.s = r16.f;
+        ut4 r18 = ut4.c();
+        Context r19 = r7.getContext();
+        if (r18.j == true) goto L26;
+        r18.b(r19);
+    L26:
+        this.t = r18.g;
+        return new uq0(this, r4);
+    L11:
+        if (r13 != 4) goto L13;
+        r14 = 1.5f;
+        goto L20
+    L13:
+        if (r13 == 5) goto L17;
+        if (r13 == 6) goto L16;
+        r14 = 1.0f;
+        goto L20
+    L16:
+        r14 = 2.0f;
+        goto L20
+    L17:
+        r14 = 1.75f;
+    L28:
+        nz2.n("Missing required view with ID: ".concat(r9.getResources().getResourceName(r0)));
         return null;
     }
 
     @Override // defpackage.dw3
-    public final void l(cx3 cx3Var) {
-        ((ImageView) ((uq0) cx3Var).u.p).animate().setDuration(20000L).setStartDelay(10L).setInterpolator(new AccelerateDecelerateInterpolator()).scaleX(1.4f).scaleY(1.4f).start();
+    public final void l(cx3 r3) {
+        ((ImageView) ((uq0) r3).u.p).animate().setDuration(20000).setStartDelay(10).setInterpolator(new AccelerateDecelerateInterpolator()).scaleX(1.4f).scaleY(1.4f).start();
     }
 
     @Override // defpackage.dw3
-    public final void m(cx3 cx3Var) {
-        ((ImageView) ((uq0) cx3Var).u.p).animate().cancel();
+    public final void m(cx3 r1) {
+        ((ImageView) ((uq0) r1).u.p).animate().cancel();
     }
 }

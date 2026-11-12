@@ -7,7 +7,11 @@ import android.media.MediaCodec;
 public final class al {
     public int a;
     public int b;
-    public final MediaCodec.CryptoInfo c = new MediaCodec.CryptoInfo();
+    public final MediaCodec.CryptoInfo c;
     public long d;
     public int e;
+
+    public al() {
+        this.c = new MediaCodec.CryptoInfo();
+    }
 }

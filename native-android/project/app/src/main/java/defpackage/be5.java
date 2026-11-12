@@ -5,11 +5,11 @@ package defpackage;
 public abstract class be5 extends p80 {
     public final bq k;
 
-    public be5(bq bqVar) {
-        this.k = bqVar;
+    public be5(bq r1) {
+        this.k = r1;
     }
 
-    public abstract void A(cu4 cu4Var);
+    public abstract void A(cu4 r1);
 
     public final void B() {
         x(null, this.k);
@@ -20,13 +20,13 @@ public abstract class be5 extends p80 {
     }
 
     @Override // defpackage.bq
-    public boolean a(gn2 gn2Var) {
-        return this.k.a(gn2Var);
+    public boolean a(gn2 r1) {
+        return this.k.a(r1);
     }
 
     @Override // defpackage.bq
-    public no2 b(mt2 mt2Var, n9 n9Var, long j) {
-        return this.k.b(mt2Var, n9Var, j);
+    public no2 b(mt2 r1, n9 r2, long r3) {
+        return this.k.b(r1, r2, r3);
     }
 
     @Override // defpackage.bq
@@ -45,43 +45,47 @@ public abstract class be5 extends p80 {
     }
 
     @Override // defpackage.bq
-    public final void l(rw4 rw4Var) {
-        this.j = rw4Var;
+    public final void l(rw4 r1) {
+        this.j = r1;
         this.i = f35.p(null);
         C();
     }
 
     @Override // defpackage.bq
-    public void n(no2 no2Var) {
-        this.k.n(no2Var);
+    public void n(no2 r1) {
+        this.k.n(r1);
     }
 
     @Override // defpackage.bq
-    public void s(gn2 gn2Var) {
-        this.k.s(gn2Var);
+    public void s(gn2 r1) {
+        this.k.s(r1);
     }
 
     @Override // defpackage.p80
-    public final mt2 t(Object obj, mt2 mt2Var) {
-        return z(mt2Var);
+    public final mt2 t(Object r1, mt2 r2) {
+        Void r3 = (Void) r1;
+        return z(r2);
     }
 
     @Override // defpackage.p80
-    public final long u(long j, Object obj) {
-        return j;
+    public final long u(long r1, Object r3) {
+        Void r4 = (Void) r3;
+        return r1;
     }
 
     @Override // defpackage.p80
-    public final int v(int i, Object obj) {
-        return i;
+    public final int v(int r1, Object r2) {
+        Void r3 = (Void) r2;
+        return r1;
     }
 
     @Override // defpackage.p80
-    public final void w(Object obj, bq bqVar, cu4 cu4Var) {
-        A(cu4Var);
+    public final void w(Object r1, bq r2, cu4 r3) {
+        Void r4 = (Void) r1;
+        A(r3);
     }
 
-    public mt2 z(mt2 mt2Var) {
-        return mt2Var;
+    public mt2 z(mt2 r1) {
+        return r1;
     }
 }

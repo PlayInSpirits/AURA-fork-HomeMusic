@@ -6,28 +6,30 @@ public final /* synthetic */ class by2 implements gf1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ y00 o;
 
-    public /* synthetic */ by2(y00 y00Var, int i) {
-        this.n = i;
-        this.o = y00Var;
+    public /* synthetic */ by2(y00 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        int i = this.n;
-        y00 y00Var = this.o;
-        switch (i) {
-            case 0:
-                Object objG = y00Var.g();
-                if (objG instanceof i10) {
-                    objG = null;
-                }
-                return (cy2) objG;
-            default:
-                Object objG2 = y00Var.g();
-                if (objG2 instanceof i10) {
-                    objG2 = null;
-                }
-                return (fw4) objG2;
-        }
+        int r0 = this.n;
+        y00 r1 = this.o;
+        switch(r0) {
+            case 0: goto L10;
+            default: goto L4;
+        };
+    L4:
+        Object r2 = r1.g();
+        if ((r2 instanceof i10) == false) goto L9;
+        r2 = null;
+    L9:
+        return (fw4) r2;
+    L10:
+        Object r3 = r1.g();
+        if ((r3 instanceof i10) == false) goto L15;
+        r3 = null;
+    L15:
+        return (cy2) r3;
     }
 }

@@ -8,16 +8,16 @@ import android.content.DialogInterface;
 public final class lp0 implements DialogInterface.OnCancelListener {
     public final /* synthetic */ pp0 n;
 
-    public lp0(pp0 pp0Var) {
-        this.n = pp0Var;
+    public lp0(pp0 r1) {
+        this.n = r1;
     }
 
     @Override // android.content.DialogInterface.OnCancelListener
-    public final void onCancel(DialogInterface dialogInterface) {
-        pp0 pp0Var = this.n;
-        Dialog dialog = pp0Var.w0;
-        if (dialog != null) {
-            pp0Var.onCancel(dialog);
-        }
+    public final void onCancel(DialogInterface r1) {
+        pp0 r0 = this.n;
+        Dialog r2 = r0.w0;
+        if (r2 == null) goto L6;
+        r0.onCancel(r2);
+        return;
     }
 }

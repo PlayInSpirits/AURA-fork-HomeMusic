@@ -12,37 +12,42 @@ import com.google.android.gms.common.internal.a;
 public final class rg5 extends a {
     public final qg5 L;
 
-    public rg5(Context context, Looper looper, ml3 ml3Var, qg5 qg5Var, gf5 gf5Var, gf5 gf5Var2) {
-        super(context, looper, 68, ml3Var, gf5Var, gf5Var2, 0);
-        qg5Var = qg5Var == null ? qg5.p : qg5Var;
-        rf2 rf2Var = new rf2();
-        rf2Var.n = Boolean.FALSE;
-        qg5 qg5Var2 = qg5.p;
-        qg5Var.getClass();
-        rf2Var.n = Boolean.valueOf(qg5Var.n);
-        rf2Var.o = qg5Var.o;
-        rf2Var.o = mg5.a();
-        this.L = new qg5(rf2Var);
+    public rg5(Context r9, Looper r10, ml3 r11, qg5 r12, gf5 r13, gf5 r14) {
+        super(r9, r10, 68, r11, r13, r14, 0);
+        if (r12 != null) goto L5;
+        r12 = qg5.p;
+    L5:
+        rf2 r8 = new rf2();
+        r8.n = Boolean.FALSE;
+        qg5 r15 = qg5.p;
+        r12.getClass();
+        r8.n = Boolean.valueOf(r12.n);
+        r8.o = r12.o;
+        r8.o = mg5.a();
+        this.L = new qg5(r8);
     }
 
     @Override // com.google.android.gms.common.internal.a
-    public final IInterface a(IBinder iBinder) {
-        if (iBinder == null) {
-            return null;
-        }
-        IInterface iInterfaceQueryLocalInterface = iBinder.queryLocalInterface("com.google.android.gms.auth.api.credentials.internal.ICredentialsService");
-        return iInterfaceQueryLocalInterface instanceof tg5 ? (tg5) iInterfaceQueryLocalInterface : new tg5(iBinder, "com.google.android.gms.auth.api.credentials.internal.ICredentialsService", 1);
+    public final IInterface a(IBinder r3) {
+        if (r3 != null) goto L5;
+        return null;
+    L5:
+        IInterface r0 = r3.queryLocalInterface("com.google.android.gms.auth.api.credentials.internal.ICredentialsService");
+        if ((r0 instanceof tg5) == false) goto L10;
+        return (tg5) r0;
+    L10:
+        return new tg5(r3, "com.google.android.gms.auth.api.credentials.internal.ICredentialsService", 1);
     }
 
     @Override // com.google.android.gms.common.internal.a
     public final Bundle d() {
-        qg5 qg5Var = this.L;
-        qg5Var.getClass();
-        Bundle bundle = new Bundle();
-        bundle.putString("consumer_package", null);
-        bundle.putBoolean("force_save_dialog", qg5Var.n);
-        bundle.putString("log_session_id", qg5Var.o);
-        return bundle;
+        qg5 r3 = this.L;
+        r3.getClass();
+        Bundle r0 = new Bundle();
+        r0.putString("consumer_package", null);
+        r0.putBoolean("force_save_dialog", r3.n);
+        r0.putString("log_session_id", r3.o);
+        return r0;
     }
 
     @Override // com.google.android.gms.common.internal.a

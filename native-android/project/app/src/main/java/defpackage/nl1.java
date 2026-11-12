@@ -20,8 +20,8 @@ public final class nl1 extends q1 {
     }
 
     @Override // defpackage.q1, defpackage.qz2
-    public final Collection get(Object obj) {
-        return (Set) super.get(obj);
+    public final Collection get(Object r1) {
+        return (Set) super.get(r1);
     }
 
     @Override // defpackage.q1
@@ -30,11 +30,11 @@ public final class nl1 extends q1 {
     }
 
     @Override // defpackage.q1
-    public final Collection k(Object obj, Collection collection) {
-        return new p1(this, obj, (Set) collection);
+    public final Collection k(Object r2, Collection r3) {
+        return new p1(this, r2, (Set) r3);
     }
 
-    public final Set l(Object obj) {
-        return (Set) super.get(obj);
+    public final Set l(Object r1) {
+        return (Set) super.get(r1);
     }
 }

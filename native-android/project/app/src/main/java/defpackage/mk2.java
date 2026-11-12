@@ -14,8 +14,8 @@ public final class mk2 {
     public o55 f;
     public int g;
 
-    public mk2(Context context) {
-        this.a = context;
-        this.c = new oj1(context, 1);
+    public mk2(Context r3) {
+        this.a = r3;
+        this.c = new oj1(r3, 1);
     }
 }

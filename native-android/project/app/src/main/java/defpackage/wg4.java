@@ -6,144 +6,149 @@ public final class wg4 implements y71 {
     public final rf2 a;
     public final ui0 b;
     public final ck4 c;
-    public final sq0 d = v64.b;
+    public final sq0 d;
 
-    public wg4(rf2 rf2Var, ui0 ui0Var, ck4 ck4Var) {
-        this.a = rf2Var;
-        this.b = ui0Var;
-        this.c = ck4Var;
+    public wg4(rf2 r1, ui0 r2, ck4 r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = v64.b;
     }
 
-    /* JADX WARN: Code duplicated, block: B:8:0x0014  */
-    public static final Object b(wg4 wg4Var, q64 q64Var, float f, float f2, tg4 tg4Var, wd0 wd0Var) {
-        vg4 vg4Var;
-        if (wd0Var instanceof vg4) {
-            vg4Var = (vg4) wd0Var;
-            int i = vg4Var.p;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                vg4Var.p = i - Integer.MIN_VALUE;
-            } else {
-                vg4Var = new vg4(wg4Var, wd0Var);
-            }
-        } else {
-            vg4Var = new vg4(wg4Var, wd0Var);
-        }
-        vg4 vg4Var2 = vg4Var;
-        Object objZ = vg4Var2.n;
-        int i2 = vg4Var2.p;
-        if (i2 == 0) {
-            kb4.X(objZ);
-            int i3 = 28;
-            if (Math.abs(f) == 0.0f || Math.abs(f2) == 0.0f) {
-                return j51.a(f, f2, 28);
-            }
-            vg4Var2.p = 1;
-            ui0 ui0Var = wg4Var.b;
-            objZ = (Math.abs(((zd) new na4(ui0Var.a).D(new zd(0.0f), new zd(f2))).a) >= Math.abs(f) ? new hg3(13, ui0Var) : new pz1(i3, wg4Var.c)).z(q64Var, new Float(f), new Float(f2), tg4Var, vg4Var2);
-            xe0 xe0Var = xe0.n;
-            if (objZ == xe0Var) {
-                return xe0Var;
-            }
-        } else {
-            if (i2 != 1) {
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            }
-            kb4.X(objZ);
-        }
-        return ((ud) objZ).b;
+    public static final Object b(wg4 r5, q64 r6, float r7, float r8, tg4 r9, wd0 r10) {
+        if ((r10 instanceof vg4) == false) goto L8;
+        vg4 r0 = (vg4) r10;
+        int r1 = r0.p;
+        if ((r1 & Integer.MIN_VALUE) == 0) goto L8;
+        r0.p = r1 - Integer.MIN_VALUE;
+    L7:
+        vg4 r11 = r0;
+        Object r2 = r11.n;
+        int r3 = r11.p;
+        if (r3 == 0) goto L15;
+        if (r3 != 1) goto L13;
+        kb4.X(r2);
+    L31:
+        return ((ud) r2).b;
+    L13:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L15:
+        kb4.X(r2);
+        int r4 = 28;
+        if (Math.abs(r7) == 0.0f) goto L21;
+        if (Math.abs(r8) == 0.0f) goto L21;
+        r11.p = 1;
+        ui0 r12 = r5.b;
+        if (Math.abs(((zd) new na4(r12.a).D(new zd(0.0f), new zd(r8))).a) < Math.abs(r7)) goto L26;
+        ci r13 = new hg3(13, r12);
+    L27:
+        r2 = r13.z(r6, new Float(r7), new Float(r8), r9, r11);
+        xe0 r14 = xe0.n;
+        if (r2 != r14) goto L31;
+        return r14;
+    L26:
+        r13 = new pz1(r4, r5.c);
+    L21:
+        return j51.a(r7, r8, 28);
+    L8:
+        r0 = new vg4(r5, r10);
+        goto L7
     }
 
     @Override // defpackage.y71
-    public Object a(c74 c74Var, float f, vd0 vd0Var) {
-        return d(c74Var, f, q05.c, (wd0) vd0Var);
+    public Object a(c74 r2, float r3, vd0 r4) {
+        return d(r2, r3, q05.c, (wd0) r4);
     }
 
-    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
-    public final Object c(q64 q64Var, float f, if1 if1Var, wd0 wd0Var) throws Throwable {
-        sg4 sg4Var;
-        if1 if1Var2;
-        if (wd0Var instanceof sg4) {
-            sg4Var = (sg4) wd0Var;
-            int i = sg4Var.q;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                sg4Var.q = i - Integer.MIN_VALUE;
-            } else {
-                sg4Var = new sg4(this, wd0Var);
-            }
-        } else {
-            sg4Var = new sg4(this, wd0Var);
-        }
-        Object objP = sg4Var.o;
-        int i2 = sg4Var.q;
-        if (i2 == 0) {
-            kb4.X(objP);
-            tk0 tk0Var = new tk0(this, f, if1Var, q64Var, null);
-            sg4Var.n = if1Var;
-            sg4Var.q = 1;
-            objP = fu.P(this.d, tk0Var, sg4Var);
-            xe0 xe0Var = xe0.n;
-            if (objP == xe0Var) {
-                return xe0Var;
-            }
-            if1Var2 = if1Var;
-        } else {
-            if (i2 != 1) {
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            }
-            if1Var2 = sg4Var.n;
-            kb4.X(objP);
-        }
-        ud udVar = (ud) objP;
-        if1Var2.invoke(new Float(0.0f));
-        return udVar;
+    public final Object c(q64 r10, float r11, if1 r12, wd0 r13) {
+        if ((r13 instanceof sg4) == false) goto L7;
+        sg4 r0 = (sg4) r13;
+        int r1 = r0.q;
+        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
+        r0.q = r1 - Integer.MIN_VALUE;
+    L8:
+        Object r14 = r0.o;
+        int r2 = r0.q;
+        if (r2 == 0) goto L14;
+        if (r2 != 1) goto L12;
+        if1 r15 = r0.n;
+        kb4.X(r14);
+    L18:
+        ud r16 = (ud) r14;
+        r15.invoke(new Float(0.0f));
+        return r16;
+    L12:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L14:
+        kb4.X(r14);
+        tk0 r3 = new tk0(this, r11, r12, r10, null);
+        r0.n = r12;
+        r0.q = 1;
+        r14 = fu.P(this.d, r3, r0);
+        xe0 r9 = xe0.n;
+        if (r14 != r9) goto L17;
+        return r9;
+    L17:
+        r15 = r12;
+    L7:
+        r0 = new sg4(this, r13);
+        goto L8
     }
 
-    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
-    public final Object d(q64 q64Var, float f, if1 if1Var, wd0 wd0Var) throws Throwable {
-        ug4 ug4Var;
-        if (wd0Var instanceof ug4) {
-            ug4Var = (ug4) wd0Var;
-            int i = ug4Var.p;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                ug4Var.p = i - Integer.MIN_VALUE;
-            } else {
-                ug4Var = new ug4(this, wd0Var);
-            }
-        } else {
-            ug4Var = new ug4(this, wd0Var);
-        }
-        Object objC = ug4Var.n;
-        int i2 = ug4Var.p;
-        if (i2 == 0) {
-            kb4.X(objC);
-            ug4Var.p = 1;
-            objC = c(q64Var, f, if1Var, ug4Var);
-            Object obj = xe0.n;
-            if (objC == obj) {
-                return obj;
-            }
-        } else {
-            if (i2 != 1) {
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            }
-            kb4.X(objC);
-        }
-        ud udVar = (ud) objC;
-        return new Float(udVar.a.floatValue() != 0.0f ? ((Number) udVar.b.a()).floatValue() : 0.0f);
+    public final Object d(q64 r5, float r6, if1 r7, wd0 r8) {
+        if ((r8 instanceof ug4) == false) goto L7;
+        ug4 r0 = (ug4) r8;
+        int r1 = r0.p;
+        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
+        r0.p = r1 - Integer.MIN_VALUE;
+    L8:
+        Object r9 = r0.n;
+        int r2 = r0.p;
+        if (r2 == 0) goto L14;
+        if (r2 != 1) goto L12;
+        kb4.X(r9);
+    L17:
+        ud r10 = (ud) r9;
+        float r4 = r10.a.floatValue();
+        xd r11 = r10.b;
+        float r12 = 0.0f;
+        if (r4 == 0.0f) goto L22;
+        r12 = ((Number) r11.a()).floatValue();
+    L22:
+        return new Float(r12);
+    L12:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L14:
+        kb4.X(r9);
+        r0.p = 1;
+        r9 = c(r5, r6, r7, r0);
+        Object r13 = xe0.n;
+        if (r9 != r13) goto L17;
+        return r13;
+    L7:
+        r0 = new ug4(this, r8);
+        goto L8
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof wg4) {
-            wg4 wg4Var = (wg4) obj;
-            return wg4Var.c.equals(this.c) && h12.c(wg4Var.b, this.b) && wg4Var.a == this.a;
-        }
+    public final boolean equals(Object r4) {
+        if ((r4 instanceof wg4) == false) goto L13;
+        wg4 r5 = (wg4) r4;
+        if (r5.c.equals(this.c) == false) goto L13;
+        if (h12.c(r5.b, this.b) == false) goto L13;
+        if (r5.a == this.a) goto L11;
+        return false;
+    L11:
+        return true;
+    L13:
         return false;
     }
 
     public final int hashCode() {
-        return this.a.hashCode() + ((this.b.hashCode() + (this.c.hashCode() * 31)) * 31);
+        int r0 = this.c.hashCode() * 31;
+        int r1 = (this.b.hashCode() + r0) * 31;
+        return this.a.hashCode() + r1;
     }
 }

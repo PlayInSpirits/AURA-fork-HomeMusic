@@ -9,14 +9,14 @@ import androidx.room.MultiInstanceInvalidationService;
 public final class az2 extends RemoteCallbackList {
     public final /* synthetic */ MultiInstanceInvalidationService a;
 
-    public az2(MultiInstanceInvalidationService multiInstanceInvalidationService) {
-        this.a = multiInstanceInvalidationService;
+    public az2(MultiInstanceInvalidationService r1) {
+        this.a = r1;
     }
 
     @Override // android.os.RemoteCallbackList
-    public final void onCallbackDied(IInterface iInterface, Object obj) {
-        ((uu1) iInterface).getClass();
-        obj.getClass();
-        this.a.o.remove((Integer) obj);
+    public final void onCallbackDied(IInterface r1, Object r2) {
+        ((uu1) r1).getClass();
+        r2.getClass();
+        this.a.o.remove((Integer) r2);
     }
 }

@@ -15,14 +15,15 @@ public final class bz2 implements sh0, rh0 {
     public List s;
     public boolean t;
 
-    public bz2(ArrayList arrayList, io3 io3Var) {
-        this.o = io3Var;
-        if (arrayList.isEmpty()) {
-            kf2.n("Must not be empty.");
-            throw null;
-        }
-        this.n = arrayList;
+    public bz2(ArrayList r1, io3 r2) {
+        this.o = r2;
+        if (r1.isEmpty() == true) goto L6;
+        this.n = r1;
         this.p = 0;
+        return;
+    L6:
+        kf2.n("Must not be empty.");
+        throw null;
     }
 
     @Override // defpackage.sh0
@@ -31,52 +32,54 @@ public final class bz2 implements sh0, rh0 {
     }
 
     @Override // defpackage.rh0
-    public final void b(Exception exc) {
-        List list = this.s;
-        h12.f(list, "Argument must not be null");
-        list.add(exc);
+    public final void b(Exception r3) {
+        List r0 = this.s;
+        h12.f(r0, "Argument must not be null");
+        r0.add(r3);
         g();
     }
 
     @Override // defpackage.sh0
     public final void c() {
-        List list = this.s;
-        if (list != null) {
-            this.o.a(list);
-        }
+        List r0 = this.s;
+        if (r0 == null) goto L5;
+        this.o.a(r0);
+    L5:
         this.s = null;
-        ArrayList arrayList = this.n;
-        int size = arrayList.size();
-        int i = 0;
-        while (i < size) {
-            Object obj = arrayList.get(i);
-            i++;
-            ((sh0) obj).c();
-        }
+        ArrayList r3 = this.n;
+        int r1 = r3.size();
+        int r2 = 0;
+    L6:
+        if (r2 >= r1) goto L8;
+        Object r4 = r3.get(r2);
+        r2 = r2 + 1;
+        ((sh0) r4).c();
+        goto L6
     }
 
     @Override // defpackage.sh0
     public final void cancel() {
         this.t = true;
-        ArrayList arrayList = this.n;
-        int size = arrayList.size();
-        int i = 0;
-        while (i < size) {
-            Object obj = arrayList.get(i);
-            i++;
-            ((sh0) obj).cancel();
-        }
+        ArrayList r3 = this.n;
+        int r0 = r3.size();
+        int r1 = 0;
+    L3:
+        if (r1 >= r0) goto L5;
+        Object r2 = r3.get(r1);
+        r1 = r1 + 1;
+        ((sh0) r2).cancel();
+        goto L3
     }
 
     @Override // defpackage.sh0
-    public final void d(eq3 eq3Var, rh0 rh0Var) {
-        this.q = eq3Var;
-        this.r = rh0Var;
+    public final void d(eq3 r2, rh0 r3) {
+        this.q = r2;
+        this.r = r3;
         this.s = (List) this.o.b();
-        ((sh0) this.n.get(this.p)).d(eq3Var, this);
-        if (this.t) {
-            cancel();
-        }
+        ((sh0) this.n.get(this.p)).d(r2, this);
+        if (this.t == false) goto L6;
+        cancel();
+        return;
     }
 
     @Override // defpackage.sh0
@@ -85,24 +88,24 @@ public final class bz2 implements sh0, rh0 {
     }
 
     @Override // defpackage.rh0
-    public final void f(Object obj) {
-        if (obj != null) {
-            this.r.f(obj);
-        } else {
-            g();
-        }
+    public final void f(Object r1) {
+        if (r1 == null) goto L5;
+        this.r.f(r1);
+        return;
+    L5:
+        g();
     }
 
     public final void g() {
-        if (this.t) {
-            return;
-        }
-        if (this.p < this.n.size() - 1) {
-            this.p++;
-            d(this.q, this.r);
-        } else {
-            h12.e(this.s);
-            this.r.b(new GlideException("Fetch failed", new ArrayList(this.s)));
-        }
+        if (this.t == false) goto L6;
+        return;
+    L6:
+        if (this.p >= (this.n.size() - 1)) goto L9;
+        this.p++;
+        d(this.q, this.r);
+        return;
+    L9:
+        h12.e(this.s);
+        this.r.b(new GlideException("Fetch failed", new ArrayList(this.s)));
     }
 }

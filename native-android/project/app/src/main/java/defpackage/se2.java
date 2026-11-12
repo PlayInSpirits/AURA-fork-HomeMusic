@@ -9,8 +9,8 @@ public class se2 extends hd {
     public final pz1 c;
     public Server d;
 
-    public se2(Application application) {
-        super(application);
+    public se2(Application r2) {
+        super(r2);
         this.d = null;
         this.c = new pz1(20);
     }

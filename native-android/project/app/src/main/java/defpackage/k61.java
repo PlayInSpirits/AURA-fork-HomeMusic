@@ -8,13 +8,14 @@ public final class k61 {
     public final boolean c;
     public final String d;
     public String e;
-    public boolean f = true;
+    public boolean f;
 
-    public k61(String str, int i, String str2, boolean z) {
-        this.a = i;
-        this.b = str;
-        this.c = z;
-        this.d = str2;
-        this.e = str2;
+    public k61(String r2, int r3, String r4, boolean r5) {
+        this.f = true;
+        this.a = r3;
+        this.b = r2;
+        this.c = r5;
+        this.d = r4;
+        this.e = r4;
     }
 }

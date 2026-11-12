@@ -12,141 +12,151 @@ public final class n80 implements st2, tw0 {
     public sw0 p;
     public final /* synthetic */ p80 q;
 
-    public n80(p80 p80Var, Object obj) {
-        this.q = p80Var;
-        this.o = new ue1((CopyOnWriteArrayList) p80Var.c.q, 0, (Object) null, 8);
-        this.p = new sw0(p80Var.d.c, 0, null);
-        this.n = obj;
+    public n80(p80 r6, Object r7) {
+        this.q = r6;
+        int r3 = 0;
+        Object r4 = null;
+        this.o = new ue1((CopyOnWriteArrayList) r6.c.q, r3, r4, 8);
+        this.p = new sw0(r6.d.c, 0, null);
+        this.n = r7;
     }
 
     @Override // defpackage.tw0
-    public final void D(int i, mt2 mt2Var, tv1 tv1Var) {
-        if (a(i, mt2Var)) {
-            this.p.a(tv1Var);
-        }
+    public final void D(int r1, mt2 r2, tv1 r3) {
+        if (a(r1, r2) == false) goto L6;
+        this.p.a(r3);
+        return;
     }
 
     @Override // defpackage.tw0
-    public final void M(int i, mt2 mt2Var) {
-        if (a(i, mt2Var)) {
-            this.p.e();
-        }
+    public final void M(int r1, mt2 r2) {
+        if (a(r1, r2) == false) goto L6;
+        this.p.e();
+        return;
     }
 
     @Override // defpackage.st2
-    public final void U(int i, mt2 mt2Var, ed2 ed2Var, un2 un2Var, int i2) {
-        if (a(i, mt2Var)) {
-            ue1 ue1Var = this.o;
-            un2 un2VarB = b(un2Var, mt2Var);
-            ue1Var.getClass();
-            ue1Var.i(new ot2(ue1Var, ed2Var, un2VarB, i2));
-        }
+    public final void U(int r1, mt2 r2, ed2 r3, un2 r4, int r5) {
+        if (a(r1, r2) == false) goto L6;
+        ue1 r6 = this.o;
+        un2 r0 = b(r4, r2);
+        r6.getClass();
+        r6.i(new ot2(r6, r3, r0, r5));
+        return;
     }
 
-    public final boolean a(int i, mt2 mt2Var) {
-        mt2 mt2VarT;
-        Object obj = this.n;
-        p80 p80Var = this.q;
-        if (mt2Var != null) {
-            mt2VarT = p80Var.t(obj, mt2Var);
-            if (mt2VarT == null) {
-                return false;
-            }
-        } else {
-            mt2VarT = null;
-        }
-        int iV = p80Var.v(i, obj);
-        ue1 ue1Var = this.o;
-        if (ue1Var.o != iV || !Objects.equals((mt2) ue1Var.p, mt2VarT)) {
-            this.o = new ue1((CopyOnWriteArrayList) p80Var.c.q, iV, mt2VarT, 8);
-        }
-        sw0 sw0Var = this.p;
-        if (sw0Var.a == iV && Objects.equals(sw0Var.b, mt2VarT)) {
-            return true;
-        }
-        this.p = new sw0(p80Var.d.c, iV, mt2VarT);
+    public final boolean a(int r5, mt2 r6) {
+        Object r0 = this.n;
+        p80 r1 = this.q;
+        if (r6 == null) goto L8;
+        mt2 r7 = r1.t(r0, r6);
+        if (r7 != null) goto L9;
+        return false;
+    L9:
+        int r8 = r1.v(r5, r0);
+        ue1 r2 = this.o;
+        if (r2.o == r8) goto L12;
+    L13:
+        this.o = new ue1((CopyOnWriteArrayList) r1.c.q, r8, r7, 8);
+    L14:
+        sw0 r3 = this.p;
+        if (r3.a == r8) goto L17;
+    L18:
+        this.p = new sw0(r1.d.c, r8, r7);
         return true;
+    L17:
+        if (Objects.equals(r3.b, r7) == false) goto L18;
+        return true;
+    L12:
+        if (Objects.equals((mt2) r2.p, r7) == true) goto L14;
+    L8:
+        r7 = null;
+        goto L9
     }
 
-    public final un2 b(un2 un2Var, mt2 mt2Var) {
-        long j = un2Var.f;
-        p80 p80Var = this.q;
-        Object obj = this.n;
-        long jU = p80Var.u(j, obj);
-        long j2 = un2Var.g;
-        long jU2 = p80Var.u(j2, obj);
-        return (jU == j && jU2 == j2) ? un2Var : new un2(un2Var.a, un2Var.b, un2Var.c, un2Var.d, un2Var.e, jU, jU2);
-    }
-
-    @Override // defpackage.tw0
-    public final void c(int i, mt2 mt2Var, Exception exc) {
-        if (a(i, mt2Var)) {
-            this.p.d(exc);
-        }
-    }
-
-    @Override // defpackage.st2
-    public final void l(int i, mt2 mt2Var, un2 un2Var) {
-        if (a(i, mt2Var)) {
-            ue1 ue1Var = this.o;
-            un2 un2VarB = b(un2Var, mt2Var);
-            ue1Var.getClass();
-            ue1Var.i(new bt2(ue1Var, un2VarB));
-        }
-    }
-
-    @Override // defpackage.st2
-    public final void m(int i, mt2 mt2Var, un2 un2Var) {
-        if (a(i, mt2Var)) {
-            ue1 ue1Var = this.o;
-            un2 un2VarB = b(un2Var, mt2Var);
-            mt2 mt2Var2 = (mt2) ue1Var.p;
-            mt2Var2.getClass();
-            ue1Var.i(new eg0(ue1Var, mt2Var2, un2VarB, 10));
-        }
+    public final un2 b(un2 r13, mt2 r14) {
+        long r0 = r13.f;
+        p80 r15 = this.q;
+        Object r12 = this.n;
+        long r8 = r15.u(r0, r12);
+        long r2 = r13.g;
+        long r10 = r15.u(r2, r12);
+        if (r8 != r0) goto L8;
+        if (r10 != r2) goto L8;
+        return r13;
+    L8:
+        return new un2(r13.a, r13.b, r13.c, r13.d, r13.e, r8, r10);
     }
 
     @Override // defpackage.tw0
-    public final void p(int i, mt2 mt2Var, int i2) {
-        if (a(i, mt2Var)) {
-            this.p.c(i2);
-        }
+    public final void c(int r1, mt2 r2, Exception r3) {
+        if (a(r1, r2) == false) goto L6;
+        this.p.d(r3);
+        return;
     }
 
     @Override // defpackage.st2
-    public final void u(int i, mt2 mt2Var, ed2 ed2Var, un2 un2Var) {
-        if (a(i, mt2Var)) {
-            ue1 ue1Var = this.o;
-            un2 un2VarB = b(un2Var, mt2Var);
-            ue1Var.getClass();
-            ue1Var.i(new pt2(ue1Var, ed2Var, un2VarB, 1));
-        }
+    public final void l(int r1, mt2 r2, un2 r3) {
+        if (a(r1, r2) == false) goto L6;
+        ue1 r4 = this.o;
+        un2 r0 = b(r3, r2);
+        r4.getClass();
+        r4.i(new bt2(r4, r0));
+        return;
     }
 
     @Override // defpackage.st2
-    public final void w(int i, mt2 mt2Var, ed2 ed2Var, un2 un2Var) {
-        if (a(i, mt2Var)) {
-            ue1 ue1Var = this.o;
-            un2 un2VarB = b(un2Var, mt2Var);
-            ue1Var.getClass();
-            ue1Var.i(new pt2(ue1Var, ed2Var, un2VarB, 0));
-        }
-    }
-
-    @Override // defpackage.st2
-    public final void y(int i, mt2 mt2Var, ed2 ed2Var, un2 un2Var, IOException iOException, boolean z) {
-        if (a(i, mt2Var)) {
-            ue1 ue1Var = this.o;
-            un2 un2VarB = b(un2Var, mt2Var);
-            ue1Var.getClass();
-            ue1Var.i(new qt2(ue1Var, ed2Var, un2VarB, iOException, z));
-        }
+    public final void m(int r2, mt2 r3, un2 r4) {
+        if (a(r2, r3) == false) goto L6;
+        ue1 r5 = this.o;
+        un2 r1 = b(r4, r3);
+        mt2 r6 = (mt2) r5.p;
+        r6.getClass();
+        r5.i(new eg0(r5, r6, r1, 10));
+        return;
     }
 
     @Override // defpackage.tw0
-    public final void z(int i, mt2 mt2Var) {
-        if (a(i, mt2Var)) {
-            this.p.b();
-        }
+    public final void p(int r1, mt2 r2, int r3) {
+        if (a(r1, r2) == false) goto L6;
+        this.p.c(r3);
+        return;
+    }
+
+    @Override // defpackage.st2
+    public final void u(int r1, mt2 r2, ed2 r3, un2 r4) {
+        if (a(r1, r2) == false) goto L6;
+        ue1 r5 = this.o;
+        un2 r0 = b(r4, r2);
+        r5.getClass();
+        r5.i(new pt2(r5, r3, r0, 1));
+        return;
+    }
+
+    @Override // defpackage.st2
+    public final void w(int r1, mt2 r2, ed2 r3, un2 r4) {
+        if (a(r1, r2) == false) goto L6;
+        ue1 r5 = this.o;
+        un2 r0 = b(r4, r2);
+        r5.getClass();
+        r5.i(new pt2(r5, r3, r0, 0));
+        return;
+    }
+
+    @Override // defpackage.st2
+    public final void y(int r7, mt2 r8, ed2 r9, un2 r10, IOException r11, boolean r12) {
+        if (a(r7, r8) == false) goto L6;
+        ue1 r1 = this.o;
+        un2 r3 = b(r10, r8);
+        r1.getClass();
+        r1.i(new qt2(r1, r9, r3, r11, r12));
+        return;
+    }
+
+    @Override // defpackage.tw0
+    public final void z(int r1, mt2 r2) {
+        if (a(r1, r2) == false) goto L6;
+        this.p.b();
+        return;
     }
 }

@@ -12,17 +12,17 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface mt {
     @GET("getPlayQueue")
-    Call<ApiResponse> a(@QueryMap Map<String, String> map);
+    Call<ApiResponse> a(@QueryMap Map<String, String> r1);
 
     @GET("createBookmark")
-    Call<ApiResponse> b(@QueryMap Map<String, String> map, @Query("id") String str, @Query("position") long j);
+    Call<ApiResponse> b(@QueryMap Map<String, String> r1, @Query("id") String r2, @Query("position") long r3);
 
     @GET("getBookmarks")
-    Call<ApiResponse> c(@QueryMap Map<String, String> map);
+    Call<ApiResponse> c(@QueryMap Map<String, String> r1);
 
     @GET("deleteBookmark")
-    Call<ApiResponse> d(@QueryMap Map<String, String> map, @Query("id") String str);
+    Call<ApiResponse> d(@QueryMap Map<String, String> r1, @Query("id") String r2);
 
     @GET("savePlayQueue")
-    Call<ApiResponse> e(@QueryMap Map<String, String> map, @Query("id") List<String> list, @Query("current") String str, @Query("position") long j);
+    Call<ApiResponse> e(@QueryMap Map<String, String> r1, @Query("id") List<String> r2, @Query("current") String r3, @Query("position") long r4);
 }

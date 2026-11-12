@@ -7,8 +7,8 @@ import defpackage.ne0;
 public final class DiagnosticCoroutineContextException extends RuntimeException {
     public final transient ne0 n;
 
-    public DiagnosticCoroutineContextException(ne0 ne0Var) {
-        this.n = ne0Var;
+    public DiagnosticCoroutineContextException(ne0 r1) {
+        this.n = r1;
     }
 
     @Override // java.lang.Throwable

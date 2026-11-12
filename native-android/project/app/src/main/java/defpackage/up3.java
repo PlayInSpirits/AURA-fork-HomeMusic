@@ -12,12 +12,12 @@ public final class up3 {
     public boolean e;
     public final /* synthetic */ vp3 f;
 
-    public up3(vp3 vp3Var, List list) {
-        this.f = vp3Var;
-        this.a = list;
-        this.b = new List[list.size()];
-        if (list.isEmpty()) {
-            fz1.a("NestedPrefetchController shouldn't be created with no states");
-        }
+    public up3(vp3 r1, List r2) {
+        this.f = r1;
+        this.a = r2;
+        this.b = new List[r2.size()];
+        if (r2.isEmpty() == false) goto L6;
+        fz1.a("NestedPrefetchController shouldn't be created with no states");
+        return;
     }
 }

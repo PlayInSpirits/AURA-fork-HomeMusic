@@ -5,698 +5,887 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.ResultReceiver;
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.internal.SignInConfiguration;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.fido.common.Transport;
-import com.google.android.gms.fido.fido2.api.common.Attachment$UnsupportedAttachmentException;
-import com.google.android.gms.fido.fido2.api.common.AttestationConveyancePreference$UnsupportedAttestationConveyancePreferenceException;
-import com.google.android.gms.fido.fido2.api.common.PublicKeyCredentialType$UnsupportedPublicKeyCredTypeException;
-import com.google.android.gms.fido.fido2.api.common.ResidentKeyRequirement$UnsupportedResidentKeyRequirementException;
-import com.google.android.gms.fido.fido2.api.common.TokenBinding$UnsupportedTokenBindingStatusException;
-import com.google.android.gms.fido.fido2.api.common.zzbc;
 import java.util.ArrayList;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ch5 implements Parcelable.Creator {
     public final /* synthetic */ int a;
 
-    public /* synthetic */ ch5(int i) {
-        this.a = i;
+    public /* synthetic */ ch5(int r1) {
+        this.a = r1;
     }
 
     @Override // android.os.Parcelable.Creator
-    public final Object createFromParcel(Parcel parcel) {
-        int iW = 0;
-        boolean zV = false;
-        int iW2 = 0;
-        int iW3 = 0;
-        int iW4 = 0;
-        boolean zV2 = false;
-        boolean zV3 = false;
-        boolean zV4 = false;
-        String strX = null;
-        ArrayList arrayListZ = null;
-        PendingIntent pendingIntent = null;
-        String strX2 = null;
-        String strX3 = null;
-        String strX4 = null;
-        byte[] bArrV = null;
-        String strX5 = null;
-        String strX6 = null;
-        String strX7 = null;
-        String strX8 = null;
-        String strX9 = null;
-        switch (this.a) {
-            case 0:
-                int iP0 = l93.p0(parcel);
-                GoogleSignInOptions googleSignInOptions = null;
-                while (parcel.dataPosition() < iP0) {
-                    int i = parcel.readInt();
-                    char c = (char) i;
-                    if (c == 2) {
-                        strX = l93.x(parcel, i);
-                    } else if (c != 5) {
-                        l93.m0(parcel, i);
-                    } else {
-                        googleSignInOptions = (GoogleSignInOptions) l93.w(parcel, i, GoogleSignInOptions.CREATOR);
-                    }
-                }
-                l93.H(parcel, iP0);
-                return new SignInConfiguration(strX, googleSignInOptions);
-            case 1:
-                int iP1 = l93.p0(parcel);
-                String strX10 = null;
-                String strX11 = null;
-                String strX12 = null;
-                String strX13 = null;
-                Uri uri = null;
-                String strX14 = null;
-                String strX15 = null;
-                String strX16 = null;
-                vr3 vr3Var = null;
-                while (parcel.dataPosition() < iP1) {
-                    int i2 = parcel.readInt();
-                    switch ((char) i2) {
-                        case 1:
-                            strX10 = l93.x(parcel, i2);
-                            break;
-                        case 2:
-                            strX11 = l93.x(parcel, i2);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            strX12 = l93.x(parcel, i2);
-                            break;
-                        case 4:
-                            strX13 = l93.x(parcel, i2);
-                            break;
-                        case 5:
-                            uri = (Uri) l93.w(parcel, i2, Uri.CREATOR);
-                            break;
-                        case 6:
-                            strX14 = l93.x(parcel, i2);
-                            break;
-                        case 7:
-                            strX15 = l93.x(parcel, i2);
-                            break;
-                        case '\b':
-                            strX16 = l93.x(parcel, i2);
-                            break;
-                        case '\t':
-                            vr3Var = (vr3) l93.w(parcel, i2, vr3.CREATOR);
-                            break;
-                        default:
-                            l93.m0(parcel, i2);
-                            break;
-                    }
-                }
-                l93.H(parcel, iP1);
-                return new td4(strX10, strX11, strX12, strX13, uri, strX14, strX15, strX16, vr3Var);
-            case 2:
-                int iP2 = l93.p0(parcel);
-                String strX17 = null;
-                while (parcel.dataPosition() < iP2) {
-                    int i3 = parcel.readInt();
-                    char c2 = (char) i3;
-                    if (c2 == 1) {
-                        strX9 = l93.x(parcel, i3);
-                    } else if (c2 != 2) {
-                        l93.m0(parcel, i3);
-                    } else {
-                        strX17 = l93.x(parcel, i3);
-                    }
-                }
-                l93.H(parcel, iP2);
-                return new vd4(strX9, strX17);
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                try {
-                    return gl.a(parcel.readString());
-                } catch (Attachment$UnsupportedAttachmentException e) {
-                    er1.m(e);
-                    return null;
-                }
-            case 4:
-                int iP3 = l93.p0(parcel);
-                while (parcel.dataPosition() < iP3) {
-                    int i4 = parcel.readInt();
-                    char c3 = (char) i4;
-                    if (c3 == 1) {
-                        iW = l93.W(parcel, i4);
-                    } else if (c3 != 2) {
-                        l93.m0(parcel, i4);
-                    } else {
-                        strX8 = l93.x(parcel, i4);
-                    }
-                }
-                l93.H(parcel, iP3);
-                return new Scope(iW, strX8);
-            case 5:
-                int iP4 = l93.p0(parcel);
-                while (parcel.dataPosition() < iP4) {
-                    int i5 = parcel.readInt();
-                    if (((char) i5) != 1) {
-                        l93.m0(parcel, i5);
-                    } else {
-                        zV4 = l93.V(parcel, i5);
-                    }
-                }
-                l93.H(parcel, iP4);
-                return new wk5(zV4);
-            case 6:
-                int iP5 = l93.p0(parcel);
-                long jX = 0;
-                while (parcel.dataPosition() < iP5) {
-                    int i6 = parcel.readInt();
-                    if (((char) i6) != 1) {
-                        l93.m0(parcel, i6);
-                    } else {
-                        jX = l93.X(parcel, i6);
-                    }
-                }
-                l93.H(parcel, iP5);
-                return new gh5(jX);
-            case 7:
-                int iP6 = l93.p0(parcel);
-                while (parcel.dataPosition() < iP6) {
-                    int i7 = parcel.readInt();
-                    if (((char) i7) != 1) {
-                        l93.m0(parcel, i7);
-                    } else {
-                        zV3 = l93.V(parcel, i7);
-                    }
-                }
-                l93.H(parcel, iP6);
-                return new hh5(zV3);
-            case 8:
-                int iP7 = l93.p0(parcel);
-                while (parcel.dataPosition() < iP7) {
-                    int i8 = parcel.readInt();
-                    if (((char) i8) != 1) {
-                        l93.m0(parcel, i8);
-                    } else {
-                        zV2 = l93.V(parcel, i8);
-                    }
-                }
-                l93.H(parcel, iP7);
-                return new pj1(zV2);
-            case 9:
-                int iP8 = l93.p0(parcel);
-                while (parcel.dataPosition() < iP8) {
-                    int i9 = parcel.readInt();
-                    if (((char) i9) != 1) {
-                        l93.m0(parcel, i9);
-                    } else {
-                        strX7 = l93.x(parcel, i9);
-                    }
-                }
-                l93.H(parcel, iP8);
-                return new kh5(strX7);
-            case 10:
-                int iP9 = l93.p0(parcel);
-                byte[] bArrV2 = null;
-                byte[] bArrV3 = null;
-                byte[] bArrV4 = null;
-                while (parcel.dataPosition() < iP9) {
-                    int i10 = parcel.readInt();
-                    char c4 = (char) i10;
-                    if (c4 == 1) {
-                        bArrV2 = l93.v(parcel, i10);
-                    } else if (c4 == 2) {
-                        bArrV3 = l93.v(parcel, i10);
-                    } else if (c4 == 3) {
-                        bArrV4 = l93.v(parcel, i10);
-                    } else if (c4 != 4) {
-                        l93.m0(parcel, i10);
-                    } else {
-                        iW4 = l93.W(parcel, i10);
-                    }
-                }
-                l93.H(parcel, iP9);
-                return new lh5(bArrV2 == null ? null : rj5.i(bArrV2.length, bArrV2), bArrV3 == null ? null : rj5.i(bArrV3.length, bArrV3), bArrV4 != null ? rj5.i(bArrV4.length, bArrV4) : null, iW4);
-            case 11:
-                int iP10 = l93.p0(parcel);
-                int iW5 = 0;
-                boolean zV5 = false;
-                boolean zV6 = false;
-                int iW6 = 0;
-                int iW7 = 0;
-                while (parcel.dataPosition() < iP10) {
-                    int i11 = parcel.readInt();
-                    char c5 = (char) i11;
-                    if (c5 == 1) {
-                        iW5 = l93.W(parcel, i11);
-                    } else if (c5 == 2) {
-                        zV5 = l93.V(parcel, i11);
-                    } else if (c5 == 3) {
-                        zV6 = l93.V(parcel, i11);
-                    } else if (c5 == 4) {
-                        iW6 = l93.W(parcel, i11);
-                    } else if (c5 != 5) {
-                        l93.m0(parcel, i11);
-                    } else {
-                        iW7 = l93.W(parcel, i11);
-                    }
-                }
-                l93.H(parcel, iP10);
-                return new e34(iW5, zV5, zV6, iW6, iW7);
-            case 12:
-                int iP11 = l93.p0(parcel);
-                while (true) {
-                    byte[][] bArr = null;
-                    while (true) {
-                        if (parcel.dataPosition() >= iP11) {
-                            l93.H(parcel, iP11);
-                            return new mh5(bArr);
-                        }
-                        int i12 = parcel.readInt();
-                        if (((char) i12) != 1) {
-                            l93.m0(parcel, i12);
-                        } else {
-                            int iZ = l93.Z(parcel, i12);
-                            int iDataPosition = parcel.dataPosition();
-                            if (iZ == 0) {
-                            }
-                            int i13 = parcel.readInt();
-                            byte[][] bArr2 = new byte[i13][];
-                            for (int i14 = 0; i14 < i13; i14++) {
-                                bArr2[i14] = parcel.createByteArray();
-                            }
-                            parcel.setDataPosition(iDataPosition + iZ);
-                            bArr = bArr2;
-                        }
-                        break;
-                    }
-                }
-                break;
-            case 13:
-                int iP12 = l93.p0(parcel);
-                as3 as3Var = null;
-                cs3 cs3Var = null;
-                byte[] bArrV5 = null;
-                ArrayList arrayListZ2 = null;
-                Double dValueOf = null;
-                ArrayList arrayListZ3 = null;
-                nn nnVar = null;
-                Integer numValueOf = null;
-                su4 su4Var = null;
-                String strX18 = null;
-                gn gnVar = null;
-                String strX19 = null;
-                ResultReceiver resultReceiver = null;
-                while (parcel.dataPosition() < iP12) {
-                    int i15 = parcel.readInt();
-                    switch ((char) i15) {
-                        case 2:
-                            as3Var = (as3) l93.w(parcel, i15, as3.CREATOR);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            cs3Var = (cs3) l93.w(parcel, i15, cs3.CREATOR);
-                            break;
-                        case 4:
-                            bArrV5 = l93.v(parcel, i15);
-                            break;
-                        case 5:
-                            arrayListZ2 = l93.z(parcel, i15, zr3.CREATOR);
-                            break;
-                        case 6:
-                            int iZ2 = l93.Z(parcel, i15);
-                            if (iZ2 == 0) {
-                                dValueOf = null;
-                            } else {
-                                l93.s0(parcel, iZ2, 8);
-                                dValueOf = Double.valueOf(parcel.readDouble());
-                            }
-                            break;
-                        case 7:
-                            arrayListZ3 = l93.z(parcel, i15, yr3.CREATOR);
-                            break;
-                        case '\b':
-                            nnVar = (nn) l93.w(parcel, i15, nn.CREATOR);
-                            break;
-                        case '\t':
-                            int iZ3 = l93.Z(parcel, i15);
-                            if (iZ3 == 0) {
-                                numValueOf = null;
-                            } else {
-                                l93.s0(parcel, iZ3, 4);
-                                numValueOf = Integer.valueOf(parcel.readInt());
-                            }
-                            break;
-                        case '\n':
-                            su4Var = (su4) l93.w(parcel, i15, su4.CREATOR);
-                            break;
-                        case 11:
-                            strX18 = l93.x(parcel, i15);
-                            break;
-                        case '\f':
-                            gnVar = (gn) l93.w(parcel, i15, gn.CREATOR);
-                            break;
-                        case '\r':
-                            strX19 = l93.x(parcel, i15);
-                            break;
-                        case 14:
-                            resultReceiver = (ResultReceiver) l93.w(parcel, i15, ResultReceiver.CREATOR);
-                            break;
-                        default:
-                            l93.m0(parcel, i15);
-                            break;
-                    }
-                }
-                l93.H(parcel, iP12);
-                return new xr3(as3Var, cs3Var, bArrV5, arrayListZ2, dValueOf, arrayListZ3, nnVar, numValueOf, su4Var, strX18, gnVar, strX19, resultReceiver);
-            case 14:
-                int iP13 = l93.p0(parcel);
-                String strX20 = null;
-                String strX21 = null;
-                byte[] bArrV6 = null;
-                kn knVar = null;
-                jn jnVar = null;
-                ln lnVar = null;
-                hn hnVar = null;
-                String strX22 = null;
-                while (parcel.dataPosition() < iP13) {
-                    int i16 = parcel.readInt();
-                    switch ((char) i16) {
-                        case 1:
-                            strX20 = l93.x(parcel, i16);
-                            break;
-                        case 2:
-                            strX21 = l93.x(parcel, i16);
-                            break;
-                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                            bArrV6 = l93.v(parcel, i16);
-                            break;
-                        case 4:
-                            knVar = (kn) l93.w(parcel, i16, kn.CREATOR);
-                            break;
-                        case 5:
-                            jnVar = (jn) l93.w(parcel, i16, jn.CREATOR);
-                            break;
-                        case 6:
-                            lnVar = (ln) l93.w(parcel, i16, ln.CREATOR);
-                            break;
-                        case 7:
-                            hnVar = (hn) l93.w(parcel, i16, hn.CREATOR);
-                            break;
-                        case '\b':
-                            strX22 = l93.x(parcel, i16);
-                            break;
-                        case '\t':
-                            l93.x(parcel, i16);
-                            break;
-                        default:
-                            l93.m0(parcel, i16);
-                            break;
-                    }
-                }
-                l93.H(parcel, iP13);
-                return new vr3(strX20, strX21, bArrV6, knVar, jnVar, lnVar, hnVar, strX22);
-            case 15:
-                int iP14 = l93.p0(parcel);
-                byte[] bArrV7 = null;
-                ArrayList arrayListZ4 = null;
-                while (parcel.dataPosition() < iP14) {
-                    int i17 = parcel.readInt();
-                    char c6 = (char) i17;
-                    if (c6 == 2) {
-                        strX6 = l93.x(parcel, i17);
-                    } else if (c6 == 3) {
-                        bArrV7 = l93.v(parcel, i17);
-                    } else if (c6 != 4) {
-                        l93.m0(parcel, i17);
-                    } else {
-                        arrayListZ4 = l93.z(parcel, i17, Transport.CREATOR);
-                    }
-                }
-                l93.H(parcel, iP14);
-                return new yr3(strX6, bArrV7, arrayListZ4);
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                int iP15 = l93.p0(parcel);
-                String strX23 = null;
-                Integer numValueOf2 = null;
-                while (parcel.dataPosition() < iP15) {
-                    int i18 = parcel.readInt();
-                    char c7 = (char) i18;
-                    if (c7 == 2) {
-                        strX23 = l93.x(parcel, i18);
-                    } else if (c7 != 3) {
-                        l93.m0(parcel, i18);
-                    } else {
-                        int iZ4 = l93.Z(parcel, i18);
-                        if (iZ4 == 0) {
-                            numValueOf2 = null;
-                        } else {
-                            l93.s0(parcel, iZ4, 4);
-                            numValueOf2 = Integer.valueOf(parcel.readInt());
-                        }
-                    }
-                }
-                l93.H(parcel, iP15);
-                return new zr3(numValueOf2.intValue(), strX23);
-            case 17:
-                int iP16 = l93.p0(parcel);
-                String strX24 = null;
-                String strX25 = null;
-                while (parcel.dataPosition() < iP16) {
-                    int i19 = parcel.readInt();
-                    char c8 = (char) i19;
-                    if (c8 == 2) {
-                        strX5 = l93.x(parcel, i19);
-                    } else if (c8 == 3) {
-                        strX24 = l93.x(parcel, i19);
-                    } else if (c8 != 4) {
-                        l93.m0(parcel, i19);
-                    } else {
-                        strX25 = l93.x(parcel, i19);
-                    }
-                }
-                l93.H(parcel, iP16);
-                return new as3(strX5, strX24, strX25);
-            case 18:
-                try {
-                    return bs3.a(parcel.readString());
-                } catch (PublicKeyCredentialType$UnsupportedPublicKeyCredTypeException e2) {
-                    er1.m(e2);
-                    return null;
-                }
-            case 19:
-                int iP17 = l93.p0(parcel);
-                String strX26 = null;
-                String strX27 = null;
-                String strX28 = null;
-                while (parcel.dataPosition() < iP17) {
-                    int i20 = parcel.readInt();
-                    char c9 = (char) i20;
-                    if (c9 == 2) {
-                        bArrV = l93.v(parcel, i20);
-                    } else if (c9 == 3) {
-                        strX26 = l93.x(parcel, i20);
-                    } else if (c9 == 4) {
-                        strX27 = l93.x(parcel, i20);
-                    } else if (c9 != 5) {
-                        l93.m0(parcel, i20);
-                    } else {
-                        strX28 = l93.x(parcel, i20);
-                    }
-                }
-                l93.H(parcel, iP17);
-                return new cs3(strX26, strX27, strX28, bArrV);
-            case 20:
-                String string = parcel.readString();
-                if (string == null) {
-                    string = "";
-                }
-                try {
-                    return l04.a(string);
-                } catch (ResidentKeyRequirement$UnsupportedResidentKeyRequirementException e3) {
-                    er1.m(e3);
-                    return null;
-                }
-            case 21:
-                int iP18 = l93.p0(parcel);
-                while (parcel.dataPosition() < iP18) {
-                    int i21 = parcel.readInt();
-                    if (((char) i21) != 1) {
-                        l93.m0(parcel, i21);
-                    } else {
-                        strX4 = l93.x(parcel, i21);
-                    }
-                }
-                l93.H(parcel, iP18);
-                return new nh5(strX4);
-            case 22:
-                try {
-                    return ru4.a(parcel.readString());
-                } catch (TokenBinding$UnsupportedTokenBindingStatusException e4) {
-                    er1.m(e4);
-                    return null;
-                }
-            case 23:
-                int iP19 = l93.p0(parcel);
-                String strX29 = null;
-                while (parcel.dataPosition() < iP19) {
-                    int i22 = parcel.readInt();
-                    char c10 = (char) i22;
-                    if (c10 == 2) {
-                        strX3 = l93.x(parcel, i22);
-                    } else if (c10 != 3) {
-                        l93.m0(parcel, i22);
-                    } else {
-                        strX29 = l93.x(parcel, i22);
-                    }
-                }
-                l93.H(parcel, iP19);
-                return new su4(strX3, strX29);
-            case 24:
-                int iP20 = l93.p0(parcel);
-                PendingIntent pendingIntent2 = null;
-                ka0 ka0Var = null;
-                while (parcel.dataPosition() < iP20) {
-                    int i23 = parcel.readInt();
-                    char c11 = (char) i23;
-                    if (c11 == 1) {
-                        iW3 = l93.W(parcel, i23);
-                    } else if (c11 == 2) {
-                        strX2 = l93.x(parcel, i23);
-                    } else if (c11 == 3) {
-                        pendingIntent2 = (PendingIntent) l93.w(parcel, i23, PendingIntent.CREATOR);
-                    } else if (c11 != 4) {
-                        l93.m0(parcel, i23);
-                    } else {
-                        ka0Var = (ka0) l93.w(parcel, i23, ka0.CREATOR);
-                    }
-                }
-                l93.H(parcel, iP20);
-                return new Status(iW3, strX2, pendingIntent2, ka0Var);
-            case 25:
-                try {
-                    return hl.a(parcel.readString());
-                } catch (AttestationConveyancePreference$UnsupportedAttestationConveyancePreferenceException e5) {
-                    er1.m(e5);
-                    return null;
-                }
-            case 26:
-                int iP21 = l93.p0(parcel);
-                int iW8 = 0;
-                String strX30 = null;
-                while (parcel.dataPosition() < iP21) {
-                    int i24 = parcel.readInt();
-                    char c12 = (char) i24;
-                    if (c12 == 1) {
-                        iW2 = l93.W(parcel, i24);
-                    } else if (c12 == 2) {
-                        iW8 = l93.W(parcel, i24);
-                    } else if (c12 == 3) {
-                        pendingIntent = (PendingIntent) l93.w(parcel, i24, PendingIntent.CREATOR);
-                    } else if (c12 != 4) {
-                        l93.m0(parcel, i24);
-                    } else {
-                        strX30 = l93.x(parcel, i24);
-                    }
-                }
-                l93.H(parcel, iP21);
-                return new ka0(iW2, iW8, pendingIntent, strX30);
-            case 27:
-                int iP22 = l93.p0(parcel);
-                while (parcel.dataPosition() < iP22) {
-                    int i25 = parcel.readInt();
-                    if (((char) i25) != 1) {
-                        l93.m0(parcel, i25);
-                    } else {
-                        zV = l93.V(parcel, i25);
-                    }
-                }
-                l93.H(parcel, iP22);
-                return new y25(zV);
-            case 28:
-                try {
-                    return z25.a(parcel.readString());
-                } catch (zzbc e6) {
-                    er1.m(e6);
-                    return null;
-                }
-            default:
-                int iP23 = l93.p0(parcel);
-                while (parcel.dataPosition() < iP23) {
-                    int i26 = parcel.readInt();
-                    if (((char) i26) != 1) {
-                        l93.m0(parcel, i26);
-                    } else {
-                        arrayListZ = l93.z(parcel, i26, h35.CREATOR);
-                    }
-                }
-                l93.H(parcel, iP23);
-                return new g35(arrayListZ);
-        }
+    public final Object createFromParcel(Parcel r24) {
+        int r5 = 0;
+        boolean r6 = false;
+        int r7 = 0;
+        int r8 = 0;
+        int r9 = 0;
+        boolean r10 = false;
+        boolean r11 = false;
+        boolean r12 = false;
+        String r13 = null;
+        ArrayList r14 = null;
+        PendingIntent r15 = null;
+        String r16 = null;
+        String r17 = null;
+        String r18 = null;
+        byte[] r19 = null;
+        String r20 = null;
+        String r21 = null;
+        rj5 r22 = null;
+        String r23 = null;
+        String r25 = null;
+        String r26 = null;
+        switch(this.a) {
+            case 0: goto L352;
+            case 1: goto L335;
+            case 2: goto L324;
+            case 3: goto L367;
+            case 4: goto L307;
+            case 5: goto L298;
+            case 6: goto L289;
+            case 7: goto L280;
+            case 8: goto L271;
+            case 9: goto L262;
+            case 10: goto L237;
+            case 11: goto L220;
+            case 12: goto L204;
+            case 13: goto L177;
+            case 14: goto L160;
+            case 15: goto L147;
+            case 16: goto L133;
+            case 17: goto L120;
+            case 18: goto L369;
+            case 19: goto L99;
+            case 20: goto L90;
+            case 21: goto L81;
+            case 22: goto L371;
+            case 23: goto L64;
+            case 24: goto L49;
+            case 25: goto L365;
+            case 26: goto L28;
+            case 27: goto L19;
+            case 28: goto L373;
+            default: goto L4;
+        };
+    L4:
+        int r0 = l93.p0(r24);
+    L6:
+        if (r24.dataPosition() >= r0) goto L11;
+        int r2 = r24.readInt();
+        if (((char) r2) != 1) goto L9;
+        r14 = l93.z(r24, r2, h35.CREATOR);
+        goto L6
+    L9:
+        l93.m0(r24, r2);
+        goto L6
+    L11:
+        l93.H(r24, r0);
+        return new g35(r14);
+    L19:
+        int r1 = l93.p0(r24);
+    L21:
+        if (r24.dataPosition() >= r1) goto L26;
+        int r3 = r24.readInt();
+        if (((char) r3) != 1) goto L24;
+        r6 = l93.V(r24, r3);
+        goto L21
+    L24:
+        l93.m0(r24, r3);
+        goto L21
+    L26:
+        l93.H(r24, r1);
+        return new y25(r6);
+    L28:
+        int r4 = l93.p0(r24);
+        int r27 = 0;
+        String r28 = null;
+    L30:
+        if (r24.dataPosition() >= r4) goto L41;
+        int r110 = r24.readInt();
+        char r111 = (char) r110;
+        if (r111 != 1) goto L33;
+        r7 = l93.W(r24, r110);
+        goto L30
+    L33:
+        if (r111 != 2) goto L34;
+        r27 = l93.W(r24, r110);
+        goto L30
+    L34:
+        if (r111 != 3) goto L35;
+        r15 = (PendingIntent) l93.w(r24, r110, PendingIntent.CREATOR);
+        goto L30
+    L35:
+        if (r111 != 4) goto L36;
+        r28 = l93.x(r24, r110);
+        goto L30
+    L36:
+        l93.m0(r24, r110);
+        goto L30
+    L41:
+        l93.H(r24, r4);
+        return new ka0(r7, r27, r15, r28);
+    L49:
+        int r29 = l93.p0(r24);
+        PendingIntent r30 = null;
+        ka0 r31 = null;
+    L51:
+        if (r24.dataPosition() >= r29) goto L62;
+        int r112 = r24.readInt();
+        char r113 = (char) r112;
+        if (r113 != 1) goto L54;
+        r8 = l93.W(r24, r112);
+        goto L51
+    L54:
+        if (r113 != 2) goto L55;
+        r16 = l93.x(r24, r112);
+        goto L51
+    L55:
+        if (r113 != 3) goto L56;
+        r30 = (PendingIntent) l93.w(r24, r112, PendingIntent.CREATOR);
+        goto L51
+    L56:
+        if (r113 != 4) goto L57;
+        r31 = (ka0) l93.w(r24, r112, ka0.CREATOR);
+        goto L51
+    L57:
+        l93.m0(r24, r112);
+        goto L51
+    L62:
+        l93.H(r24, r29);
+        return new Status(r8, r16, r30, r31);
+    L64:
+        int r32 = l93.p0(r24);
+        String r33 = null;
+    L66:
+        if (r24.dataPosition() >= r32) goto L73;
+        int r34 = r24.readInt();
+        char r35 = (char) r34;
+        if (r35 != 2) goto L69;
+        r17 = l93.x(r24, r34);
+        goto L66
+    L69:
+        if (r35 != 3) goto L70;
+        r33 = l93.x(r24, r34);
+        goto L66
+    L70:
+        l93.m0(r24, r34);
+        goto L66
+    L73:
+        l93.H(r24, r32);
+        return new su4(r17, r33);
+    L81:
+        int r36 = l93.p0(r24);
+    L83:
+        if (r24.dataPosition() >= r36) goto L88;
+        int r37 = r24.readInt();
+        if (((char) r37) != 1) goto L86;
+        r18 = l93.x(r24, r37);
+        goto L83
+    L86:
+        l93.m0(r24, r37);
+        goto L83
+    L88:
+        l93.H(r24, r36);
+        return new nh5(r18);
+    L90:
+        String r38 = r24.readString();
+        if (r38 != null) goto L363;
+        r38 = "";
+    L363:
+        return l04.a(r38);
+    L93:
+        e = move-exception;
+        er1.m(e);
+        return null;
+    L99:
+        int r39 = l93.p0(r24);
+        String r40 = null;
+        String r41 = null;
+        String r42 = null;
+    L101:
+        if (r24.dataPosition() >= r39) goto L112;
+        int r114 = r24.readInt();
+        char r115 = (char) r114;
+        if (r115 != 2) goto L104;
+        r19 = l93.v(r24, r114);
+        goto L101
+    L104:
+        if (r115 != 3) goto L105;
+        r40 = l93.x(r24, r114);
+        goto L101
+    L105:
+        if (r115 != 4) goto L106;
+        r41 = l93.x(r24, r114);
+        goto L101
+    L106:
+        if (r115 != 5) goto L107;
+        r42 = l93.x(r24, r114);
+        goto L101
+    L107:
+        l93.m0(r24, r114);
+        goto L101
+    L112:
+        l93.H(r24, r39);
+        return new cs3(r40, r41, r42, r19);
+    L120:
+        int r43 = l93.p0(r24);
+        String r44 = null;
+        String r45 = null;
+    L122:
+        if (r24.dataPosition() >= r43) goto L131;
+        int r46 = r24.readInt();
+        char r47 = (char) r46;
+        if (r47 != 2) goto L125;
+        r20 = l93.x(r24, r46);
+        goto L122
+    L125:
+        if (r47 != 3) goto L126;
+        r44 = l93.x(r24, r46);
+        goto L122
+    L126:
+        if (r47 != 4) goto L127;
+        r45 = l93.x(r24, r46);
+        goto L122
+    L127:
+        l93.m0(r24, r46);
+        goto L122
+    L131:
+        l93.H(r24, r43);
+        return new as3(r20, r44, r45);
+    L133:
+        int r48 = l93.p0(r24);
+        String r49 = null;
+        Integer r50 = null;
+    L135:
+        if (r24.dataPosition() >= r48) goto L145;
+        int r51 = r24.readInt();
+        char r52 = (char) r51;
+        if (r52 != 2) goto L138;
+        r49 = l93.x(r24, r51);
+        goto L135
+    L138:
+        if (r52 != 3) goto L139;
+        int r53 = l93.Z(r24, r51);
+        if (r53 == 0) goto L142;
+        l93.s0(r24, r53, 4);
+        r50 = Integer.valueOf(r24.readInt());
+        goto L135
+    L142:
+        r50 = null;
+        goto L135
+    L139:
+        l93.m0(r24, r51);
+        goto L135
+    L145:
+        l93.H(r24, r48);
+        return new zr3(r50.intValue(), r49);
+    L147:
+        int r54 = l93.p0(r24);
+        byte[] r55 = null;
+        ArrayList r56 = null;
+    L149:
+        if (r24.dataPosition() >= r54) goto L158;
+        int r57 = r24.readInt();
+        char r58 = (char) r57;
+        if (r58 != 2) goto L152;
+        r21 = l93.x(r24, r57);
+        goto L149
+    L152:
+        if (r58 != 3) goto L153;
+        r55 = l93.v(r24, r57);
+        goto L149
+    L153:
+        if (r58 != 4) goto L154;
+        r56 = l93.z(r24, r57, Transport.CREATOR);
+        goto L149
+    L154:
+        l93.m0(r24, r57);
+        goto L149
+    L158:
+        l93.H(r24, r54);
+        return new yr3(r21, r55, r56);
+    L160:
+        int r59 = l93.p0(r24);
+        String r116 = null;
+        String r117 = null;
+        byte[] r118 = null;
+        kn r119 = null;
+        jn r120 = null;
+        ln r121 = null;
+        hn r122 = null;
+        String r123 = null;
+    L162:
+        if (r24.dataPosition() >= r59) goto L175;
+        int r60 = r24.readInt();
+        switch(((char) r60)) {
+            case 1: goto L174;
+            case 2: goto L173;
+            case 3: goto L172;
+            case 4: goto L171;
+            case 5: goto L170;
+            case 6: goto L169;
+            case 7: goto L168;
+            case 8: goto L167;
+            case 9: goto L166;
+            default: goto L165;
+        };
+    L166:
+        l93.x(r24, r60);
+        goto L162
+    L167:
+        r123 = l93.x(r24, r60);
+        goto L162
+    L168:
+        r122 = (hn) l93.w(r24, r60, hn.CREATOR);
+        goto L162
+    L169:
+        r121 = (ln) l93.w(r24, r60, ln.CREATOR);
+        goto L162
+    L170:
+        r120 = (jn) l93.w(r24, r60, jn.CREATOR);
+        goto L162
+    L171:
+        r119 = (kn) l93.w(r24, r60, kn.CREATOR);
+        goto L162
+    L172:
+        r118 = l93.v(r24, r60);
+        goto L162
+    L173:
+        r117 = l93.x(r24, r60);
+        goto L162
+    L174:
+        r116 = l93.x(r24, r60);
+        goto L162
+    L165:
+        l93.m0(r24, r60);
+        goto L162
+    L175:
+        l93.H(r24, r59);
+        return new vr3(r116, r117, r118, r119, r120, r121, r122, r123);
+    L177:
+        int r61 = l93.p0(r24);
+        as3 r124 = null;
+        cs3 r125 = null;
+        byte[] r126 = null;
+        ArrayList r127 = null;
+        Double r128 = null;
+        ArrayList r129 = null;
+        nn r130 = null;
+        Integer r131 = null;
+        su4 r132 = null;
+        String r133 = null;
+        gn r210 = null;
+        String r211 = null;
+        ResultReceiver r212 = null;
+    L179:
+        if (r24.dataPosition() >= r61) goto L202;
+        int r62 = r24.readInt();
+        switch(((char) r62)) {
+            case 2: goto L201;
+            case 3: goto L200;
+            case 4: goto L199;
+            case 5: goto L198;
+            case 6: goto L194;
+            case 7: goto L193;
+            case 8: goto L192;
+            case 9: goto L188;
+            case 10: goto L187;
+            case 11: goto L186;
+            case 12: goto L185;
+            case 13: goto L184;
+            case 14: goto L183;
+            default: goto L182;
+        };
+    L183:
+        r212 = (ResultReceiver) l93.w(r24, r62, ResultReceiver.CREATOR);
+        goto L179
+    L184:
+        r211 = l93.x(r24, r62);
+        goto L179
+    L185:
+        r210 = (gn) l93.w(r24, r62, gn.CREATOR);
+        goto L179
+    L186:
+        r133 = l93.x(r24, r62);
+        goto L179
+    L187:
+        r132 = (su4) l93.w(r24, r62, su4.CREATOR);
+        goto L179
+    L188:
+        int r63 = l93.Z(r24, r62);
+        if (r63 == 0) goto L190;
+        l93.s0(r24, r63, 4);
+        r131 = Integer.valueOf(r24.readInt());
+        goto L179
+    L190:
+        r131 = null;
+        goto L179
+    L192:
+        r130 = (nn) l93.w(r24, r62, nn.CREATOR);
+        goto L179
+    L193:
+        r129 = l93.z(r24, r62, yr3.CREATOR);
+        goto L179
+    L194:
+        int r64 = l93.Z(r24, r62);
+        if (r64 == 0) goto L196;
+        l93.s0(r24, r64, 8);
+        r128 = Double.valueOf(r24.readDouble());
+        goto L179
+    L196:
+        r128 = null;
+        goto L179
+    L198:
+        r127 = l93.z(r24, r62, zr3.CREATOR);
+        goto L179
+    L199:
+        r126 = l93.v(r24, r62);
+        goto L179
+    L200:
+        r125 = (cs3) l93.w(r24, r62, cs3.CREATOR);
+        goto L179
+    L201:
+        r124 = (as3) l93.w(r24, r62, as3.CREATOR);
+        goto L179
+    L182:
+        l93.m0(r24, r62);
+        goto L179
+    L202:
+        l93.H(r24, r61);
+        return new xr3(r124, r125, r126, r127, r128, r129, r130, r131, r132, r133, r210, r211, r212);
+    L204:
+        int r65 = l93.p0(r24);
+    L205:
+        byte[][] r66 = null;
+    L207:
+        if (r24.dataPosition() >= r65) goto L218;
+        int r67 = r24.readInt();
+        if (((char) r67) != 1) goto L210;
+        int r68 = l93.Z(r24, r67);
+        int r69 = r24.dataPosition();
+        if (r68 == 0) goto L205;
+        int r70 = r24.readInt();
+        byte[][] r71 = new byte[r70][];
+        int r72 = 0;
+    L215:
+        if (r72 >= r70) goto L217;
+        r71[r72] = r24.createByteArray();
+        r72 = r72 + 1;
+        goto L215
+    L217:
+        r24.setDataPosition(r69 + r68);
+        r66 = r71;
+        goto L207
+    L210:
+        l93.m0(r24, r67);
+        goto L207
+    L218:
+        l93.H(r24, r65);
+        return new mh5(r66);
+    L220:
+        int r73 = l93.p0(r24);
+        int r74 = 0;
+        boolean r134 = false;
+        boolean r135 = false;
+        int r136 = 0;
+        int r137 = 0;
+    L222:
+        if (r24.dataPosition() >= r73) goto L235;
+        int r75 = r24.readInt();
+        char r76 = (char) r75;
+        if (r76 != 1) goto L225;
+        r74 = l93.W(r24, r75);
+        goto L222
+    L225:
+        if (r76 != 2) goto L226;
+        r134 = l93.V(r24, r75);
+        goto L222
+    L226:
+        if (r76 != 3) goto L227;
+        r135 = l93.V(r24, r75);
+        goto L222
+    L227:
+        if (r76 != 4) goto L228;
+        r136 = l93.W(r24, r75);
+        goto L222
+    L228:
+        if (r76 != 5) goto L229;
+        r137 = l93.W(r24, r75);
+        goto L222
+    L229:
+        l93.m0(r24, r75);
+        goto L222
+    L235:
+        l93.H(r24, r73);
+        return new e34(r74, r134, r135, r136, r137);
+    L237:
+        int r77 = l93.p0(r24);
+        byte[] r78 = null;
+        byte[] r79 = null;
+        byte[] r138 = null;
+    L239:
+        if (r24.dataPosition() >= r77) goto L250;
+        int r139 = r24.readInt();
+        char r140 = (char) r139;
+        if (r140 != 1) goto L242;
+        r78 = l93.v(r24, r139);
+        goto L239
+    L242:
+        if (r140 != 2) goto L243;
+        r79 = l93.v(r24, r139);
+        goto L239
+    L243:
+        if (r140 != 3) goto L244;
+        r138 = l93.v(r24, r139);
+        goto L239
+    L244:
+        if (r140 != 4) goto L245;
+        r9 = l93.W(r24, r139);
+        goto L239
+    L245:
+        l93.m0(r24, r139);
+        goto L239
+    L250:
+        l93.H(r24, r77);
+        if (r78 != null) goto L253;
+        rj5 r80 = null;
+    L254:
+        if (r79 != null) goto L256;
+        rj5 r81 = null;
+    L257:
+        if (r138 == null) goto L261;
+        r22 = rj5.i(r138.length, r138);
+    L261:
+        return new lh5(r80, r81, r22, r9);
+    L256:
+        r81 = rj5.i(r79.length, r79);
+        goto L257
+    L253:
+        r80 = rj5.i(r78.length, r78);
+        goto L254
+    L262:
+        int r82 = l93.p0(r24);
+    L264:
+        if (r24.dataPosition() >= r82) goto L269;
+        int r83 = r24.readInt();
+        if (((char) r83) != 1) goto L267;
+        r23 = l93.x(r24, r83);
+        goto L264
+    L267:
+        l93.m0(r24, r83);
+        goto L264
+    L269:
+        l93.H(r24, r82);
+        return new kh5(r23);
+    L271:
+        int r84 = l93.p0(r24);
+    L273:
+        if (r24.dataPosition() >= r84) goto L278;
+        int r85 = r24.readInt();
+        if (((char) r85) != 1) goto L276;
+        r10 = l93.V(r24, r85);
+        goto L273
+    L276:
+        l93.m0(r24, r85);
+        goto L273
+    L278:
+        l93.H(r24, r84);
+        return new pj1(r10);
+    L280:
+        int r86 = l93.p0(r24);
+    L282:
+        if (r24.dataPosition() >= r86) goto L287;
+        int r87 = r24.readInt();
+        if (((char) r87) != 1) goto L285;
+        r11 = l93.V(r24, r87);
+        goto L282
+    L285:
+        l93.m0(r24, r87);
+        goto L282
+    L287:
+        l93.H(r24, r86);
+        return new hh5(r11);
+    L289:
+        int r88 = l93.p0(r24);
+        long r89 = 0;
+    L291:
+        if (r24.dataPosition() >= r88) goto L296;
+        int r90 = r24.readInt();
+        if (((char) r90) != 1) goto L294;
+        r89 = l93.X(r24, r90);
+        goto L291
+    L294:
+        l93.m0(r24, r90);
+        goto L291
+    L296:
+        l93.H(r24, r88);
+        return new gh5(r89);
+    L298:
+        int r91 = l93.p0(r24);
+    L300:
+        if (r24.dataPosition() >= r91) goto L305;
+        int r92 = r24.readInt();
+        if (((char) r92) != 1) goto L303;
+        r12 = l93.V(r24, r92);
+        goto L300
+    L303:
+        l93.m0(r24, r92);
+        goto L300
+    L305:
+        l93.H(r24, r91);
+        return new wk5(r12);
+    L307:
+        int r93 = l93.p0(r24);
+    L309:
+        if (r24.dataPosition() >= r93) goto L316;
+        int r94 = r24.readInt();
+        char r95 = (char) r94;
+        if (r95 != 1) goto L312;
+        r5 = l93.W(r24, r94);
+        goto L309
+    L312:
+        if (r95 != 2) goto L313;
+        r25 = l93.x(r24, r94);
+        goto L309
+    L313:
+        l93.m0(r24, r94);
+        goto L309
+    L316:
+        l93.H(r24, r93);
+        return new Scope(r5, r25);
+    L324:
+        int r96 = l93.p0(r24);
+        String r97 = null;
+    L326:
+        if (r24.dataPosition() >= r96) goto L333;
+        int r98 = r24.readInt();
+        char r99 = (char) r98;
+        if (r99 != 1) goto L329;
+        r26 = l93.x(r24, r98);
+        goto L326
+    L329:
+        if (r99 != 2) goto L330;
+        r97 = l93.x(r24, r98);
+        goto L326
+    L330:
+        l93.m0(r24, r98);
+        goto L326
+    L333:
+        l93.H(r24, r96);
+        return new vd4(r26, r97);
+    L335:
+        int r100 = l93.p0(r24);
+        String r141 = null;
+        String r142 = null;
+        String r143 = null;
+        String r144 = null;
+        Uri r145 = null;
+        String r146 = null;
+        String r147 = null;
+        String r148 = null;
+        vr3 r149 = null;
+    L337:
+        if (r24.dataPosition() >= r100) goto L350;
+        int r101 = r24.readInt();
+        switch(((char) r101)) {
+            case 1: goto L349;
+            case 2: goto L348;
+            case 3: goto L347;
+            case 4: goto L346;
+            case 5: goto L345;
+            case 6: goto L344;
+            case 7: goto L343;
+            case 8: goto L342;
+            case 9: goto L341;
+            default: goto L340;
+        };
+    L341:
+        r149 = (vr3) l93.w(r24, r101, vr3.CREATOR);
+        goto L337
+    L342:
+        r148 = l93.x(r24, r101);
+        goto L337
+    L343:
+        r147 = l93.x(r24, r101);
+        goto L337
+    L344:
+        r146 = l93.x(r24, r101);
+        goto L337
+    L345:
+        r145 = (Uri) l93.w(r24, r101, Uri.CREATOR);
+        goto L337
+    L346:
+        r144 = l93.x(r24, r101);
+        goto L337
+    L347:
+        r143 = l93.x(r24, r101);
+        goto L337
+    L348:
+        r142 = l93.x(r24, r101);
+        goto L337
+    L349:
+        r141 = l93.x(r24, r101);
+        goto L337
+    L340:
+        l93.m0(r24, r101);
+        goto L337
+    L350:
+        l93.H(r24, r100);
+        return new td4(r141, r142, r143, r144, r145, r146, r147, r148, r149);
+    L352:
+        int r102 = l93.p0(r24);
+        GoogleSignInOptions r103 = null;
+    L354:
+        if (r24.dataPosition() >= r102) goto L361;
+        int r104 = r24.readInt();
+        char r105 = (char) r104;
+        if (r105 != 2) goto L357;
+        r13 = l93.x(r24, r104);
+        goto L354
+    L357:
+        if (r105 != 5) goto L358;
+        r103 = (GoogleSignInOptions) l93.w(r24, r104, GoogleSignInOptions.CREATOR);
+        goto L354
+    L358:
+        l93.m0(r24, r104);
+        goto L354
+    L361:
+        l93.H(r24, r102);
+        return new SignInConfiguration(r13, r103);
+    L373:
+        return z25.a(r24.readString());
+    L16:
+        e = move-exception;
+        er1.m(e);
+        return null;
+    L365:
+        return hl.a(r24.readString());
+    L46:
+        e = move-exception;
+        er1.m(e);
+        return null;
+    L371:
+        return ru4.a(r24.readString());
+    L78:
+        e = move-exception;
+        er1.m(e);
+        return null;
+    L369:
+        return bs3.a(r24.readString());
+    L117:
+        e = move-exception;
+        er1.m(e);
+        return null;
+    L367:
+        return gl.a(r24.readString());
+    L321:
+        e = move-exception;
+        er1.m(e);
+        return null;
     }
 
     @Override // android.os.Parcelable.Creator
-    public final /* synthetic */ Object[] newArray(int i) {
-        switch (this.a) {
-            case 0:
-                return new SignInConfiguration[i];
-            case 1:
-                return new td4[i];
-            case 2:
-                return new vd4[i];
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                return new gl[i];
-            case 4:
-                return new Scope[i];
-            case 5:
-                return new wk5[i];
-            case 6:
-                return new gh5[i];
-            case 7:
-                return new hh5[i];
-            case 8:
-                return new pj1[i];
-            case 9:
-                return new kh5[i];
-            case 10:
-                return new lh5[i];
-            case 11:
-                return new e34[i];
-            case 12:
-                return new mh5[i];
-            case 13:
-                return new xr3[i];
-            case 14:
-                return new vr3[i];
-            case 15:
-                return new yr3[i];
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                return new zr3[i];
-            case 17:
-                return new as3[i];
-            case 18:
-                return new bs3[i];
-            case 19:
-                return new cs3[i];
-            case 20:
-                return new l04[i];
-            case 21:
-                return new nh5[i];
-            case 22:
-                return new ru4[i];
-            case 23:
-                return new su4[i];
-            case 24:
-                return new Status[i];
-            case 25:
-                return new hl[i];
-            case 26:
-                return new ka0[i];
-            case 27:
-                return new y25[i];
-            case 28:
-                return new z25[i];
-            default:
-                return new g35[i];
-        }
+    public final /* synthetic */ Object[] newArray(int r1) {
+        switch(this.a) {
+            case 0: goto L63;
+            case 1: goto L61;
+            case 2: goto L59;
+            case 3: goto L57;
+            case 4: goto L55;
+            case 5: goto L53;
+            case 6: goto L51;
+            case 7: goto L49;
+            case 8: goto L47;
+            case 9: goto L45;
+            case 10: goto L43;
+            case 11: goto L41;
+            case 12: goto L39;
+            case 13: goto L37;
+            case 14: goto L35;
+            case 15: goto L33;
+            case 16: goto L31;
+            case 17: goto L29;
+            case 18: goto L27;
+            case 19: goto L25;
+            case 20: goto L23;
+            case 21: goto L21;
+            case 22: goto L19;
+            case 23: goto L17;
+            case 24: goto L15;
+            case 25: goto L13;
+            case 26: goto L11;
+            case 27: goto L9;
+            case 28: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return new g35[r1];
+    L7:
+        return new z25[r1];
+    L9:
+        return new y25[r1];
+    L11:
+        return new ka0[r1];
+    L13:
+        return new hl[r1];
+    L15:
+        return new Status[r1];
+    L17:
+        return new su4[r1];
+    L19:
+        return new ru4[r1];
+    L21:
+        return new nh5[r1];
+    L23:
+        return new l04[r1];
+    L25:
+        return new cs3[r1];
+    L27:
+        return new bs3[r1];
+    L29:
+        return new as3[r1];
+    L31:
+        return new zr3[r1];
+    L33:
+        return new yr3[r1];
+    L35:
+        return new vr3[r1];
+    L37:
+        return new xr3[r1];
+    L39:
+        return new mh5[r1];
+    L41:
+        return new e34[r1];
+    L43:
+        return new lh5[r1];
+    L45:
+        return new kh5[r1];
+    L47:
+        return new pj1[r1];
+    L49:
+        return new hh5[r1];
+    L51:
+        return new gh5[r1];
+    L53:
+        return new wk5[r1];
+    L55:
+        return new Scope[r1];
+    L57:
+        return new gl[r1];
+    L59:
+        return new vd4[r1];
+    L61:
+        return new td4[r1];
+    L63:
+        return new SignInConfiguration[r1];
     }
 }

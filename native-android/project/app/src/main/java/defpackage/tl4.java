@@ -6,11 +6,11 @@ public abstract class tl4 {
     public long a;
     public tl4 b;
 
-    public tl4(long j) {
-        this.a = j;
+    public tl4(long r1) {
+        this.a = r1;
     }
 
-    public abstract void a(tl4 tl4Var);
+    public abstract void a(tl4 r1);
 
-    public abstract tl4 b(long j);
+    public abstract tl4 b(long r1);
 }

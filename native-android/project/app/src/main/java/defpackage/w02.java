@@ -9,27 +9,26 @@ import com.google.android.gms.common.api.Status;
 public final class w02 extends ef5 {
     public final /* synthetic */ cr4 f;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public w02(cr4 cr4Var) {
+    public w02(cr4 r2) {
+        this.f = r2;
         super(2, "com.google.android.gms.auth.blockstore.restorecredential.internal.IGetRestoreCredentialCallback");
-        this.f = cr4Var;
     }
 
     @Override // defpackage.ef5
-    public final boolean K0(Parcel parcel, int i) {
-        if (i != 1) {
-            return false;
-        }
-        Status status = (Status) yh5.a(parcel, Status.CREATOR);
-        rh1 rh1Var = (rh1) yh5.a(parcel, rh1.CREATOR);
-        int i2 = yh5.a;
-        int iDataAvail = parcel.dataAvail();
-        if (iDataAvail > 0) {
-            throw new BadParcelableException(f34.f(iDataAvail, "Parcel data not fully consumed, unread size: "));
-        }
-        status.getClass();
-        rh1Var.getClass();
-        g12.R(status, rh1Var, this.f);
+    public final boolean K0(Parcel r4, int r5) {
+        if (r5 != 1) goto L10;
+        Status r6 = (Status) yh5.a(r4, Status.CREATOR);
+        rh1 r1 = (rh1) yh5.a(r4, rh1.CREATOR);
+        int r2 = yh5.a;
+        int r7 = r4.dataAvail();
+        if (r7 > 0) goto L9;
+        r6.getClass();
+        r1.getClass();
+        g12.R(r6, r1, this.f);
         return true;
+    L9:
+        throw new BadParcelableException(f34.f(r7, "Parcel data not fully consumed, unread size: "));
+    L10:
+        return false;
     }
 }

@@ -5,7 +5,7 @@ package defpackage;
 public final class u4 extends s4 {
     public final /* synthetic */ y4 a;
 
-    public u4(y4 y4Var) {
-        this.a = y4Var;
+    public u4(y4 r1) {
+        this.a = r1;
     }
 }

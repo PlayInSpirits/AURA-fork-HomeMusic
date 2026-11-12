@@ -5,19 +5,25 @@ package defpackage;
 public final class lu0 {
     public final float a;
 
-    public lu0(float f) {
-        this.a = f;
+    public lu0(float r1) {
+        this.a = r1;
     }
 
-    public final float a(long j, oo0 oo0Var) {
-        return oo0Var.M(this.a);
+    public final float a(long r1, oo0 r3) {
+        return r3.M(this.a);
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof lu0) && ku0.b(this.a, ((lu0) obj).a);
+    public final boolean equals(Object r2) {
+        if (this != r2) goto L5;
+        return true;
+    L5:
+        if ((r2 instanceof lu0) == true) goto L8;
+        return false;
+    L8:
+        if (ku0.b(this.a, ((lu0) r2).a) == true) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     public final int hashCode() {

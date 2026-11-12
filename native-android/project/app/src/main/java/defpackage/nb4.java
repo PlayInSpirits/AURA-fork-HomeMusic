@@ -9,40 +9,43 @@ public final class nb4 implements ScanCallback {
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ nb4(int i, Object obj) {
-        this.n = i;
-        this.o = obj;
+    public /* synthetic */ nb4(int r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // com.eddyizm.tempus.interfaces.ScanCallback
-    public final void onError(Exception exc) {
-        int i = this.n;
-        Object obj = this.o;
-        switch (i) {
-            case 0:
-                ((nb4) obj).onError(exc);
-                break;
-            default:
-                ((vb4) obj).h0("scan_library").x(exc.getMessage());
-                break;
-        }
+    public final void onError(Exception r2) {
+        int r0 = this.n;
+        Object r1 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((vb4) r1).h0("scan_library").x(r2.getMessage());
+        return;
+    L6:
+        ((nb4) r1).onError(r2);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ScanCallback
-    public final void onSuccess(boolean z, long j) {
-        int i = this.n;
-        Object obj = this.o;
-        switch (i) {
-            case 0:
-                ((nb4) obj).onSuccess(z, j);
-                break;
-            default:
-                vb4 vb4Var = (vb4) obj;
-                vb4Var.h0("scan_library").x(vb4Var.t(R.string.settings_scan_result, Long.valueOf(j)));
-                if (z) {
-                    vb4.k0(vb4Var);
-                }
-                break;
-        }
+    public final void onSuccess(boolean r2, long r3) {
+        int r0 = this.n;
+        Object r1 = this.o;
+        switch(r0) {
+            case 0: goto L8;
+            default: goto L4;
+        };
+    L4:
+        vb4 r4 = (vb4) r1;
+        r4.h0("scan_library").x(r4.t(R.string.settings_scan_result, new Object[]{Long.valueOf(r3)}));
+        if (r2 == false) goto L10;
+        vb4.k0(r4);
+        return;
+    L10:
+        return;
+    L8:
+        ((nb4) r1).onSuccess(r2, r3);
     }
 }

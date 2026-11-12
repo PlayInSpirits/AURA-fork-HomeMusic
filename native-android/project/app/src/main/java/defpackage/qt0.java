@@ -7,21 +7,22 @@ public final class qt0 implements Runnable {
     public final ss0 o;
     public final String p;
 
-    public /* synthetic */ qt0(ss0 ss0Var, String str, int i) {
-        this.n = i;
-        this.o = ss0Var;
-        this.p = str;
+    public /* synthetic */ qt0(ss0 r1, String r2, int r3) {
+        this.n = r3;
+        this.o = r1;
+        this.p = r2;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        switch (this.n) {
-            case 0:
-                xl.E((s24) this.o.n, false, true, new rs0(1, this.p));
-                break;
-            default:
-                xl.E((s24) this.o.n, false, true, new rs0(2, this.p));
-                break;
-        }
+        switch(this.n) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        xl.E((s24) this.o.n, false, true, new rs0(2, this.p));
+        return;
+    L6:
+        xl.E((s24) this.o.n, false, true, new rs0(1, this.p));
     }
 }

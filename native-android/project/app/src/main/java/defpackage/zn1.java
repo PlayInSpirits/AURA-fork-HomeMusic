@@ -11,31 +11,38 @@ public final /* synthetic */ class zn1 implements TextView.OnEditorActionListene
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ zn1(int i, Object obj) {
-        this.a = i;
-        this.b = obj;
+    public /* synthetic */ zn1(int r1, Object r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
     @Override // android.widget.TextView.OnEditorActionListener
-    public final boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-        int i2 = this.a;
-        Object obj = this.b;
-        switch (i2) {
-            case 0:
-                gf1 gf1Var = (gf1) obj;
-                if (i != 2 && i != 6) {
-                    return false;
-                }
-                gf1Var.invoke();
-                return true;
-            default:
-                SearchFragment searchFragment = (SearchFragment) obj;
-                String string = ((SearchView) searchFragment.l0.m).getText().toString();
-                if (string.equals("") || string.trim().length() <= 1) {
-                    return false;
-                }
-                searchFragment.h0(string);
-                return true;
-        }
+    public final boolean onEditorAction(TextView r2, int r3, KeyEvent r4) {
+        int r5 = this.a;
+        Object r1 = this.b;
+        switch(r5) {
+            case 0: goto L10;
+            default: goto L4;
+        };
+    L4:
+        SearchFragment r6 = (SearchFragment) r1;
+        String r7 = ((SearchView) r6.l0.m).getText().toString();
+        if (r7.equals("") == false) goto L7;
+        return false;
+    L7:
+        if (r7.trim().length() <= 1) goto L18;
+        r6.h0(r7);
+        return true;
+    L18:
+        return false;
+    L10:
+        gf1 r8 = (gf1) r1;
+        if (r3 != 2) goto L13;
+    L15:
+        r8.invoke();
+        return true;
+    L13:
+        if (r3 == 6) goto L15;
+        return false;
     }
 }

@@ -8,34 +8,37 @@ public final /* synthetic */ class tr2 implements yr2, ks2 {
     public final /* synthetic */ Object p;
     public final /* synthetic */ Object q;
 
-    public /* synthetic */ tr2(ls2 ls2Var, gn2 gn2Var, boolean z, boolean z2) {
-        this.p = ls2Var;
-        this.q = gn2Var;
-        this.n = z;
-        this.o = z2;
+    public /* synthetic */ tr2(ls2 r1, gn2 r2, boolean r3, boolean r4) {
+        this.p = r1;
+        this.q = r2;
+        this.n = r3;
+        this.o = r4;
     }
 
     @Override // defpackage.ks2
-    public void b(fr2 fr2Var) {
-        ls2 ls2Var = (ls2) this.p;
-        lb4 lb4VarX = ls2Var.g.x(fr2Var, yw1.o((gn2) this.q), -1, -9223372036854775807L);
-        la0 la0Var = new la0();
-        la0Var.q = ls2Var;
-        la0Var.p = fr2Var;
-        la0Var.n = this.n;
-        la0Var.o = this.o;
-        lb4VarX.f(new lg1(0, lb4VarX, la0Var), gq0.n);
+    public void b(fr2 r9) {
+        ls2 r0 = (ls2) this.p;
+        gn2 r1 = (gn2) this.q;
+        lb4 r10 = r0.g.x(r9, yw1.o(r1), -1, -9223372036854775807L);
+        la0 r2 = new la0();
+        r2.q = r0;
+        r2.p = r9;
+        r2.n = this.n;
+        r2.o = this.o;
+        r10.f(new lg1(0, r10, r2), gq0.n);
     }
 
     @Override // defpackage.yr2
-    public void f(er2 er2Var, int i) {
-        er2Var.B(i, (za4) this.p, this.n, this.o, ((fr2) this.q).c);
+    public void f(er2 r8, int r9) {
+        za4 r3 = (za4) this.p;
+        int r6 = ((fr2) this.q).c;
+        r8.B(r9, r3, this.n, this.o, r6);
     }
 
-    public /* synthetic */ tr2(za4 za4Var, boolean z, boolean z2, fr2 fr2Var) {
-        this.p = za4Var;
-        this.n = z;
-        this.o = z2;
-        this.q = fr2Var;
+    public /* synthetic */ tr2(za4 r1, boolean r2, boolean r3, fr2 r4) {
+        this.p = r1;
+        this.n = r2;
+        this.o = r3;
+        this.q = r4;
     }
 }

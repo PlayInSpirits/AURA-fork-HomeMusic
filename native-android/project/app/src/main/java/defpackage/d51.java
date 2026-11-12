@@ -10,10 +10,9 @@ public final class d51 extends dq {
     public boolean g;
     public final /* synthetic */ ExtendedFloatingActionButton h;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public d51(ExtendedFloatingActionButton extendedFloatingActionButton, d34 d34Var) {
-        super(extendedFloatingActionButton, d34Var);
-        this.h = extendedFloatingActionButton;
+    public d51(ExtendedFloatingActionButton r1, d34 r2) {
+        this.h = r1;
+        super(r1, r2);
     }
 
     @Override // defpackage.dq
@@ -30,26 +29,25 @@ public final class d51 extends dq {
     @Override // defpackage.dq
     public final void e() {
         this.d.o = null;
-        ExtendedFloatingActionButton extendedFloatingActionButton = this.h;
-        extendedFloatingActionButton.G = 0;
-        if (this.g) {
-            return;
-        }
-        extendedFloatingActionButton.setVisibility(8);
+        ExtendedFloatingActionButton r1 = this.h;
+        r1.G = 0;
+        if (this.g == true) goto L6;
+        r1.setVisibility(8);
+        return;
     }
 
     @Override // defpackage.dq
-    public final void f(Animator animator) {
-        d34 d34Var = this.d;
-        Animator animator2 = (Animator) d34Var.o;
-        if (animator2 != null) {
-            animator2.cancel();
-        }
-        d34Var.o = animator;
+    public final void f(Animator r3) {
+        d34 r0 = this.d;
+        Animator r1 = (Animator) r0.o;
+        if (r1 == null) goto L5;
+        r1.cancel();
+    L5:
+        r0.o = r3;
         this.g = false;
-        ExtendedFloatingActionButton extendedFloatingActionButton = this.h;
-        extendedFloatingActionButton.setVisibility(0);
-        extendedFloatingActionButton.G = 1;
+        ExtendedFloatingActionButton r2 = this.h;
+        r2.setVisibility(0);
+        r2.G = 1;
     }
 
     @Override // defpackage.dq
@@ -59,17 +57,17 @@ public final class d51 extends dq {
 
     @Override // defpackage.dq
     public final boolean h() {
-        r00 r00Var = ExtendedFloatingActionButton.V;
-        ExtendedFloatingActionButton extendedFloatingActionButton = this.h;
-        int visibility = extendedFloatingActionButton.getVisibility();
-        int i = extendedFloatingActionButton.G;
-        if (visibility == 0) {
-            if (i != 1) {
-                return false;
-            }
-        } else if (i == 2) {
-            return false;
-        }
+        r00 r0 = ExtendedFloatingActionButton.V;
+        ExtendedFloatingActionButton r2 = this.h;
+        int r1 = r2.getVisibility();
+        int r3 = r2.G;
+        if (r1 != 0) goto L7;
+        if (r3 == 1) goto L8;
+        return false;
+    L8:
         return true;
+    L7:
+        if (r3 != 2) goto L8;
+        return false;
     }
 }

@@ -15,52 +15,54 @@ public final class li1 implements ExecutorService, AutoCloseable {
     public static volatile int o;
     public final ThreadPoolExecutor n;
 
-    public li1(ThreadPoolExecutor threadPoolExecutor) {
-        this.n = threadPoolExecutor;
+    public li1(ThreadPoolExecutor r1) {
+        this.n = r1;
     }
 
     @Override // java.util.concurrent.ExecutorService
-    public final boolean awaitTermination(long j, TimeUnit timeUnit) {
-        return this.n.awaitTermination(j, timeUnit);
+    public final boolean awaitTermination(long r1, TimeUnit r3) {
+        return this.n.awaitTermination(r1, r3);
     }
 
     @Override // java.lang.AutoCloseable
     public final void close() {
-        ThreadPoolExecutor threadPoolExecutor;
-        boolean zIsTerminated;
-        if (this == ForkJoinPool.commonPool() || (zIsTerminated = (threadPoolExecutor = this.n).isTerminated())) {
-            return;
-        }
+        if (this == ForkJoinPool.commonPool()) goto L26;
+        ThreadPoolExecutor r0 = this.n;
+        boolean r1 = r0.isTerminated();
+        if (r1 == true) goto L24;
         shutdown();
-        boolean z = false;
-        while (!zIsTerminated) {
-            try {
-                zIsTerminated = threadPoolExecutor.awaitTermination(1L, TimeUnit.DAYS);
-            } catch (InterruptedException unused) {
-                if (!z) {
-                    shutdownNow();
-                    z = true;
-                }
-            }
-        }
-        if (z) {
-            Thread.currentThread().interrupt();
-        }
+        boolean r2 = false;
+    L8:
+        if (r1 == true) goto L13;
+        r1 = r0.awaitTermination(1, TimeUnit.DAYS);     // Catch: InterruptedException -> L11
+    L11:
+        if (r2 == true) goto L8;
+        shutdownNow();
+        r2 = true;
+        goto L8
+    L13:
+        if (r2 == false) goto L25;
+        Thread.currentThread().interrupt();
+        return;
+    L25:
+        return;
+    L24:
+        return;
     }
 
     @Override // java.util.concurrent.Executor
-    public final void execute(Runnable runnable) {
-        this.n.execute(runnable);
+    public final void execute(Runnable r1) {
+        this.n.execute(r1);
     }
 
     @Override // java.util.concurrent.ExecutorService
-    public final List invokeAll(Collection collection) {
-        return this.n.invokeAll(collection);
+    public final List invokeAll(Collection r1) {
+        return this.n.invokeAll(r1);
     }
 
     @Override // java.util.concurrent.ExecutorService
-    public final Object invokeAny(Collection collection) {
-        return this.n.invokeAny(collection);
+    public final Object invokeAny(Collection r1) {
+        return this.n.invokeAny(r1);
     }
 
     @Override // java.util.concurrent.ExecutorService
@@ -84,8 +86,8 @@ public final class li1 implements ExecutorService, AutoCloseable {
     }
 
     @Override // java.util.concurrent.ExecutorService
-    public final Future submit(Runnable runnable) {
-        return this.n.submit(runnable);
+    public final Future submit(Runnable r1) {
+        return this.n.submit(r1);
     }
 
     public final String toString() {
@@ -93,22 +95,22 @@ public final class li1 implements ExecutorService, AutoCloseable {
     }
 
     @Override // java.util.concurrent.ExecutorService
-    public final List invokeAll(Collection collection, long j, TimeUnit timeUnit) {
-        return this.n.invokeAll(collection, j, timeUnit);
+    public final List invokeAll(Collection r1, long r2, TimeUnit r4) {
+        return this.n.invokeAll(r1, r2, r4);
     }
 
     @Override // java.util.concurrent.ExecutorService
-    public final Object invokeAny(Collection collection, long j, TimeUnit timeUnit) {
-        return this.n.invokeAny(collection, j, timeUnit);
+    public final Object invokeAny(Collection r1, long r2, TimeUnit r4) {
+        return this.n.invokeAny(r1, r2, r4);
     }
 
     @Override // java.util.concurrent.ExecutorService
-    public final Future submit(Runnable runnable, Object obj) {
-        return this.n.submit(runnable, obj);
+    public final Future submit(Runnable r1, Object r2) {
+        return this.n.submit(r1, r2);
     }
 
     @Override // java.util.concurrent.ExecutorService
-    public final Future submit(Callable callable) {
-        return this.n.submit(callable);
+    public final Future submit(Callable r1) {
+        return this.n.submit(r1);
     }
 }

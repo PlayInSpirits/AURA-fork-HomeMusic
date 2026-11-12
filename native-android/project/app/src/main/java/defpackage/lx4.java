@@ -5,9 +5,16 @@ import android.os.Build;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class lx4 {
-    public static final boolean a;
+    public static final boolean a = false;
 
     static {
-        a = Build.VERSION.SDK_INT >= 28;
+        if (Build.VERSION.SDK_INT < 28) goto L5;
+        boolean r0 = true;
+    L6:
+        a = r0;
+        return;
+    L5:
+        r0 = false;
+        goto L6
     }
 }

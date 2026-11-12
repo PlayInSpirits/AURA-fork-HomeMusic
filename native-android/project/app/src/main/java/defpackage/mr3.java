@@ -8,10 +8,17 @@ public final class mr3 {
     public final int c;
     public final boolean d;
 
-    public mr3(lr3 lr3Var, lr3 lr3Var2, int i) {
-        this.a = lr3Var;
-        this.b = lr3Var2;
-        this.c = i;
-        this.d = lr3Var == lr3Var2;
+    public mr3(lr3 r1, lr3 r2, int r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        if (r1 != r2) goto L5;
+        boolean r4 = true;
+    L6:
+        this.d = r4;
+        return;
+    L5:
+        r4 = false;
+        goto L6
     }
 }

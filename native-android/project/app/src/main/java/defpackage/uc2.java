@@ -9,27 +9,28 @@ public final class uc2 extends yw4 implements ListIterator {
     public final /* synthetic */ int o;
     public final /* synthetic */ AbstractList p;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ uc2(AbstractList abstractList, ListIterator listIterator, int i) {
-        super(listIterator);
-        this.o = i;
-        this.p = abstractList;
+    public /* synthetic */ uc2(AbstractList r1, ListIterator r2, int r3) {
+        this.o = r3;
+        this.p = r1;
+        super(r2);
     }
 
     @Override // defpackage.yw4
-    public final Object a(Object obj) {
-        int i = this.o;
-        AbstractList abstractList = this.p;
-        switch (i) {
-            case 0:
-                return ((vc2) abstractList).o.mo77apply(obj);
-            default:
-                return ((wc2) abstractList).o.mo77apply(obj);
-        }
+    public final Object a(Object r2) {
+        int r0 = this.o;
+        AbstractList r1 = this.p;
+        switch(r0) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return ((wc2) r1).o.mo77apply(r2);
+    L7:
+        return ((vc2) r1).o.mo77apply(r2);
     }
 
     @Override // java.util.ListIterator
-    public final void add(Object obj) {
+    public final void add(Object r1) {
         throw new UnsupportedOperationException();
     }
 
@@ -54,7 +55,7 @@ public final class uc2 extends yw4 implements ListIterator {
     }
 
     @Override // java.util.ListIterator
-    public final void set(Object obj) {
+    public final void set(Object r1) {
         throw new UnsupportedOperationException();
     }
 }

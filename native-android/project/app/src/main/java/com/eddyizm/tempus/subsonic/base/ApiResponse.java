@@ -13,17 +13,17 @@ public final class ApiResponse {
     private SubsonicResponse subsonicResponse;
 
     public ApiResponse() {
-        SubsonicResponse subsonicResponse = new SubsonicResponse();
-        subsonicResponse.setStatus(ResponseStatus.FAILED);
-        this.subsonicResponse = subsonicResponse;
+        SubsonicResponse r0 = new SubsonicResponse();
+        r0.setStatus(ResponseStatus.FAILED);
+        this.subsonicResponse = r0;
     }
 
     public final SubsonicResponse getSubsonicResponse() {
         return this.subsonicResponse;
     }
 
-    public final void setSubsonicResponse(SubsonicResponse subsonicResponse) {
-        subsonicResponse.getClass();
-        this.subsonicResponse = subsonicResponse;
+    public final void setSubsonicResponse(SubsonicResponse r1) {
+        r1.getClass();
+        this.subsonicResponse = r1;
     }
 }

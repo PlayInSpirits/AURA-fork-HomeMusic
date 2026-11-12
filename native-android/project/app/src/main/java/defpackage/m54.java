@@ -3,7 +3,7 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface m54 {
-    Object f(Object obj);
+    Object f(Object r1);
 
-    Object h(t44 t44Var, Object obj);
+    Object h(t44 r1, Object r2);
 }

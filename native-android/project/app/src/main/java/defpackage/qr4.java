@@ -12,21 +12,23 @@ public final class qr4 extends h12 {
     public final /* synthetic */ h12 g;
     public final /* synthetic */ rr4 h;
 
-    public qr4(rr4 rr4Var, Context context, TextPaint textPaint, h12 h12Var) {
-        this.h = rr4Var;
-        this.e = context;
-        this.f = textPaint;
-        this.g = h12Var;
+    public qr4(rr4 r1, Context r2, TextPaint r3, h12 r4) {
+        this.h = r1;
+        this.e = r2;
+        this.f = r3;
+        this.g = r4;
     }
 
     @Override // defpackage.h12
-    public final void H(int i) {
-        this.g.H(i);
+    public final void H(int r1) {
+        this.g.H(r1);
     }
 
     @Override // defpackage.h12
-    public final void I(Typeface typeface, boolean z) {
-        this.h.g(this.e, this.f, typeface);
-        this.g.I(typeface, z);
+    public final void I(Typeface r4, boolean r5) {
+        Context r0 = this.e;
+        TextPaint r1 = this.f;
+        this.h.g(r0, r1, r4);
+        this.g.I(r4, r5);
     }
 }

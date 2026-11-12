@@ -11,19 +11,22 @@ public final class pm4 implements uw2 {
     public final /* synthetic */ int a;
     public final uw2 b;
 
-    public /* synthetic */ pm4(uw2 uw2Var, int i) {
-        this.a = i;
-        this.b = uw2Var;
+    public /* synthetic */ pm4(uw2 r1, int r2) {
+        this.a = r2;
+        this.b = r1;
     }
 
     @Override // defpackage.uw2
-    public final /* bridge */ /* synthetic */ boolean a(Object obj) {
-        switch (this.a) {
-            case 0:
-                break;
-            default:
-                break;
-        }
+    public final /* bridge */ /* synthetic */ boolean a(Object r1) {
+        switch(this.a) {
+            case 0: goto L7;
+            default: goto L4;
+        };
+    L4:
+        URL r2 = (URL) r1;
+        return true;
+    L7:
+        String r3 = (String) r1;
         return true;
     }
 
@@ -38,27 +41,38 @@ public final class pm4 implements uw2 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
     @Override // defpackage.uw2
-    public final tw2 b(Object obj, int i, int i2, db3 db3Var) {
-        Uri uriFromFile;
-        int i3 = this.a;
-        uw2 uw2Var = this.b;
-        switch (i3) {
-            case 0:
-                String str = (String) obj;
-                if (TextUtils.isEmpty(str)) {
-                    uriFromFile = null;
-                } else if (str.charAt(0) == '/') {
-                    uriFromFile = Uri.fromFile(new File(str));
-                } else {
-                    Uri uri = Uri.parse(str);
-                    uriFromFile = uri.getScheme() == null ? Uri.fromFile(new File(str)) : uri;
-                }
-                if (uriFromFile == null || !uw2Var.a(uriFromFile)) {
-                    return null;
-                }
-                return uw2Var.b(uriFromFile, i, i2, db3Var);
-            default:
-                return uw2Var.b(new qi1((URL) obj), i, i2, db3Var);
-        }
+    public final tw2 b(Object r4, int r5, int r6, db3 r7) {
+        int r0 = this.a;
+        uw2 r3 = this.b;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L5;
+        };
+    L6:
+        String r8 = (String) r4;
+        if (TextUtils.isEmpty(r8) == false) goto L10;
+        Uri r9 = null;
+    L16:
+        if (r9 != null) goto L18;
+        return null;
+    L18:
+        if (r3.a(r9) == true) goto L21;
+        return null;
+    L21:
+        return r3.b(r9, r5, r6, r7);
+    L10:
+        if (r8.charAt(0) != '/') goto L12;
+        r9 = Uri.fromFile(new File(r8));
+        goto L16
+    L12:
+        Uri r1 = Uri.parse(r8);
+        if (r1.getScheme() != null) goto L15;
+        r9 = Uri.fromFile(new File(r8));
+        goto L16
+    L15:
+        r9 = r1;
+        goto L16
+    L5:
+        return r3.b(new qi1((URL) r4), r5, r6, r7);
     }
 }

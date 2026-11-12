@@ -2,8 +2,10 @@ package defpackage;
 
 import android.app.Notification;
 import android.content.Context;
+import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.HandlerThread;
@@ -38,268 +40,365 @@ public final class gc {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public gc(s63 s63Var) {
-        ArrayList arrayList;
-        int i;
-        int i2;
-        ArrayList arrayList2;
-        int i3;
+    public gc(s63 r20) {
         this.d = new Bundle();
-        this.c = s63Var;
-        Context context = s63Var.a;
-        ArrayList arrayList3 = s63Var.x;
-        ArrayList arrayList4 = s63Var.c;
-        ArrayList arrayList5 = s63Var.d;
-        if (Build.VERSION.SDK_INT >= 26) {
-            this.b = r50.b(context, s63Var.s);
-        } else {
-            this.b = new Notification.Builder(context);
-        }
-        Notification notification = s63Var.v;
+        this.c = r20;
+        Context r2 = r20.a;
+        ArrayList r3 = r20.x;
+        ArrayList r4 = r20.c;
+        ArrayList r5 = r20.d;
+        if (Build.VERSION.SDK_INT < 26) goto L5;
+        this.b = r50.b(r2, r20.s);
+    L6:
+        Notification r6 = r20.v;
         ?? r10 = 0;
-        ((Notification.Builder) this.b).setWhen(notification.when).setSmallIcon(notification.icon, notification.iconLevel).setContent(notification.contentView).setTicker(notification.tickerText, null).setVibrate(notification.vibrate).setLights(notification.ledARGB, notification.ledOnMS, notification.ledOffMS).setOngoing((notification.flags & 2) != 0).setOnlyAlertOnce((notification.flags & 8) != 0).setAutoCancel((notification.flags & 16) != 0).setDefaults(notification.defaults).setContentTitle(s63Var.e).setContentText(s63Var.f).setContentInfo(null).setContentIntent(s63Var.g).setDeleteIntent(notification.deleteIntent).setFullScreenIntent(null, (notification.flags & 128) != 0).setNumber(0).setProgress(s63Var.m, s63Var.n, false);
-        Notification.Builder builder = (Notification.Builder) this.b;
-        IconCompat iconCompat = s63Var.h;
-        builder.setLargeIcon(iconCompat == null ? null : iconCompat.e(context));
-        ((Notification.Builder) this.b).setSubText(null).setUsesChronometer(s63Var.k).setPriority(s63Var.i);
-        ArrayList arrayList6 = s63Var.b;
-        int size = arrayList6.size();
-        int i4 = 0;
-        while (i4 < size) {
-            Object obj = arrayList6.get(i4);
-            i4++;
-            q63 q63Var = (q63) obj;
-            if (q63Var.b == null && (i3 = q63Var.e) != 0) {
-                q63Var.b = IconCompat.b(r10, "", i3);
-            }
-            IconCompat iconCompat2 = q63Var.b;
-            boolean z = q63Var.c;
-            Bundle bundle = q63Var.a;
-            ArrayList arrayList7 = arrayList6;
-            Notification.Action.Builder builder2 = new Notification.Action.Builder(iconCompat2 != 0 ? iconCompat2.e(r10) : r10, q63Var.f, q63Var.g);
-            Bundle bundle2 = bundle != null ? new Bundle(bundle) : new Bundle();
-            bundle2.putBoolean("android.support.allowGeneratedReplies", z);
-            builder2.setAllowGeneratedReplies(z);
-            bundle2.putInt("android.support.action.semanticAction", 0);
-            int i5 = Build.VERSION.SDK_INT;
-            if (i5 >= 28) {
-                ne.s(builder2);
-            }
-            if (i5 >= 29) {
-                yh.o(builder2);
-            }
-            if (i5 >= 31) {
-                qe.e(builder2);
-            }
-            bundle2.putBoolean("android.support.action.showsUserInterface", q63Var.d);
-            builder2.addExtras(bundle2);
-            ((Notification.Builder) this.b).addAction(builder2.build());
-            arrayList6 = arrayList7;
-            r10 = 0;
-        }
-        Bundle bundle3 = s63Var.q;
-        if (bundle3 != null) {
-            ((Bundle) this.d).putAll(bundle3);
-        }
-        ((Notification.Builder) this.b).setShowWhen(s63Var.j);
-        ((Notification.Builder) this.b).setLocalOnly(s63Var.p);
-        ((Notification.Builder) this.b).setGroup(s63Var.o);
+        Notification.Builder r8 = ((Notification.Builder) this.b).setWhen(r6.when).setSmallIcon(r6.icon, r6.iconLevel).setContent(r6.contentView).setTicker(r6.tickerText, null).setVibrate(r6.vibrate).setLights(r6.ledARGB, r6.ledOnMS, r6.ledOffMS);
+        if ((r6.flags & 2) == 0) goto L9;
+        boolean r9 = true;
+    L10:
+        Notification.Builder r11 = r8.setOngoing(r9);
+        if ((r6.flags & 8) == 0) goto L13;
+        boolean r12 = true;
+    L14:
+        Notification.Builder r13 = r11.setOnlyAlertOnce(r12);
+        if ((r6.flags & 16) == 0) goto L17;
+        boolean r14 = true;
+    L18:
+        Notification.Builder r15 = r13.setAutoCancel(r14).setDefaults(r6.defaults).setContentTitle(r20.e).setContentText(r20.f).setContentInfo(null).setContentIntent(r20.g).setDeleteIntent(r6.deleteIntent);
+        if ((r6.flags & 128) == 0) goto L21;
+        boolean r16 = true;
+    L22:
+        r15.setFullScreenIntent(null, r16).setNumber(0).setProgress(r20.m, r20.n, false);
+        Notification.Builder r17 = (Notification.Builder) this.b;
+        IconCompat r18 = r20.h;
+        if (r18 != null) goto L25;
+        Icon r7 = null;
+    L26:
+        r17.setLargeIcon(r7);
+        ((Notification.Builder) this.b).setSubText(null).setUsesChronometer(r20.k).setPriority(r20.i);
+        ArrayList r19 = r20.b;
+        int r21 = r19.size();
+        int r22 = 0;
+    L28:
+        if (r22 >= r21) goto L52;
+        Object r110 = r19.get(r22);
+        r22 = r22 + 1;
+        q63 r111 = (q63) r110;
+        if (r111.b != null) goto L34;
+        int r112 = r111.e;
+        if (r112 == 0) goto L34;
+        r111.b = IconCompat.b(r10, "", r112);
+    L34:
+        IconCompat r113 = r111.b;
+        boolean r114 = r111.c;
+        Bundle r23 = r111.a;
+        if (r113 == 0) goto L37;
+        Icon r115 = r113.e(r10);
+    L38:
+        ArrayList r116 = r19;
+        Notification.Action.Builder r117 = new Notification.Action.Builder(r115, r111.f, r111.g);
+        if (r23 == null) goto L41;
+        Bundle r24 = new Bundle(r23);
+    L42:
+        r24.putBoolean("android.support.allowGeneratedReplies", r114);
+        r117.setAllowGeneratedReplies(r114);
+        r24.putInt("android.support.action.semanticAction", 0);
+        int r25 = Build.VERSION.SDK_INT;
+        if (r25 < 28) goto L46;
+        ne.s(r117);
+    L46:
+        if (r25 < 29) goto L49;
+        yh.o(r117);
+    L49:
+        if (r25 < 31) goto L51;
+        qe.e(r117);
+    L51:
+        r24.putBoolean("android.support.action.showsUserInterface", r111.d);
+        r117.addExtras(r24);
+        ((Notification.Builder) this.b).addAction(r117.build());
+        r19 = r116;
+        r10 = 0;
+        goto L28
+    L41:
+        r24 = new Bundle();
+        goto L42
+    L37:
+        r115 = r10;
+        goto L38
+    L52:
+        Bundle r26 = r20.q;
+        if (r26 == null) goto L55;
+        ((Bundle) this.d).putAll(r26);
+    L55:
+        ((Notification.Builder) this.b).setShowWhen(r20.j);
+        ((Notification.Builder) this.b).setLocalOnly(r20.p);
+        ((Notification.Builder) this.b).setGroup(r20.o);
         ((Notification.Builder) this.b).setSortKey(null);
         ((Notification.Builder) this.b).setGroupSummary(false);
         this.a = 0;
         ((Notification.Builder) this.b).setCategory(null);
         ((Notification.Builder) this.b).setColor(0);
-        ((Notification.Builder) this.b).setVisibility(s63Var.r);
+        ((Notification.Builder) this.b).setVisibility(r20.r);
         ((Notification.Builder) this.b).setPublicVersion(null);
-        ((Notification.Builder) this.b).setSound(notification.sound, notification.audioAttributes);
-        if (Build.VERSION.SDK_INT < 28) {
-            if (arrayList4 == null) {
-                arrayList2 = null;
-            } else {
-                arrayList2 = new ArrayList(arrayList4.size());
-                Iterator it = arrayList4.iterator();
-                if (it.hasNext()) {
-                    throw xa3.d(it);
-                }
-            }
-            if (arrayList2 != null) {
-                if (arrayList3 == null) {
-                    arrayList3 = arrayList2;
-                } else {
-                    qi qiVar = new qi(arrayList3.size() + arrayList2.size());
-                    qiVar.addAll(arrayList2);
-                    qiVar.addAll(arrayList3);
-                    arrayList3 = new ArrayList(qiVar);
-                }
-            }
-        }
-        if (arrayList3 != null && !arrayList3.isEmpty()) {
-            int size2 = arrayList3.size();
-            int i6 = 0;
-            while (i6 < size2) {
-                Object obj2 = arrayList3.get(i6);
-                i6++;
-                ((Notification.Builder) this.b).addPerson((String) obj2);
-            }
-        }
-        if (arrayList5.size() > 0) {
-            if (s63Var.q == null) {
-                s63Var.q = new Bundle();
-            }
-            Bundle bundle4 = s63Var.q.getBundle("android.car.EXTENSIONS");
-            bundle4 = bundle4 == null ? new Bundle() : bundle4;
-            Bundle bundle5 = new Bundle(bundle4);
-            Bundle bundle6 = new Bundle();
-            int i7 = 0;
-            while (i7 < arrayList5.size()) {
-                String string = Integer.toString(i7);
-                q63 q63Var2 = (q63) arrayList5.get(i7);
-                Bundle bundle7 = new Bundle();
-                if (q63Var2.b == null && (i2 = q63Var2.e) != 0) {
-                    q63Var2.b = IconCompat.b(null, "", i2);
-                }
-                IconCompat iconCompat3 = q63Var2.b;
-                Bundle bundle8 = q63Var2.a;
-                ArrayList arrayList8 = arrayList5;
-                bundle7.putInt("icon", iconCompat3 != null ? iconCompat3.c() : 0);
-                bundle7.putCharSequence("title", q63Var2.f);
-                bundle7.putParcelable("actionIntent", q63Var2.g);
-                Bundle bundle9 = bundle8 != null ? new Bundle(bundle8) : new Bundle();
-                bundle9.putBoolean("android.support.allowGeneratedReplies", q63Var2.c);
-                bundle7.putBundle("extras", bundle9);
-                bundle7.putParcelableArray("remoteInputs", null);
-                bundle7.putBoolean("showsUserInterface", q63Var2.d);
-                bundle7.putInt("semanticAction", 0);
-                bundle6.putBundle(string, bundle7);
-                i7++;
-                arrayList4 = arrayList4;
-                arrayList5 = arrayList8;
-            }
-            arrayList = arrayList4;
-            bundle4.putBundle("invisible_actions", bundle6);
-            bundle5.putBundle("invisible_actions", bundle6);
-            if (s63Var.q == null) {
-                s63Var.q = new Bundle();
-            }
-            s63Var.q.putBundle("android.car.EXTENSIONS", bundle4);
-            ((Bundle) this.d).putBundle("android.car.EXTENSIONS", bundle5);
-        } else {
-            arrayList = arrayList4;
-        }
-        ((Notification.Builder) this.b).setExtras(s63Var.q);
+        ((Notification.Builder) this.b).setSound(r6.sound, r6.audioAttributes);
+        if (Build.VERSION.SDK_INT >= 28) goto L68;
+        if (r4 != null) goto L59;
+        ArrayList r27 = null;
+    L61:
+        if (r27 == null) goto L68;
+        if (r3 != null) goto L65;
+        r3 = r27;
+        goto L68
+    L65:
+        qi r28 = new qi(r3.size() + r27.size());
+        r28.addAll(r27);
+        r28.addAll(r3);
+        r3 = new ArrayList(r28);
+        goto L68
+    L59:
+        r27 = new ArrayList(r4.size());
+        Iterator r29 = r4.iterator();
+        if (r29.hasNext() == false) goto L61;
+        throw xa3.d(r29);
+    L68:
+        if (r3 == null) goto L75;
+        if (r3.isEmpty() == true) goto L75;
+        int r30 = r3.size();
+        int r31 = 0;
+    L72:
+        if (r31 >= r30) goto L75;
+        Object r32 = r3.get(r31);
+        r31 = r31 + 1;
+        ((Notification.Builder) this.b).addPerson((String) r32);
+    L75:
+        if (r5.size() > 0) goto L77;
+        ArrayList r118 = r4;
+    L106:
+        ((Notification.Builder) this.b).setExtras(r20.q);
         ((Notification.Builder) this.b).setRemoteInputHistory(null);
-        int i8 = Build.VERSION.SDK_INT;
-        if (i8 >= 26) {
-            r50.l((Notification.Builder) this.b);
-            r50.r((Notification.Builder) this.b);
-            r50.s((Notification.Builder) this.b);
-            r50.t((Notification.Builder) this.b);
-            r50.n((Notification.Builder) this.b, 0);
-            if (!TextUtils.isEmpty(s63Var.s)) {
-                ((Notification.Builder) this.b).setSound(null).setDefaults(0).setLights(0, 0, 0).setVibrate(null);
-            }
-        }
-        if (i8 >= 28) {
-            Iterator it2 = arrayList.iterator();
-            if (it2.hasNext()) {
-                throw xa3.d(it2);
-            }
-        }
-        if (i8 >= 29) {
-            yh.m((Notification.Builder) this.b, s63Var.u);
-            yh.n((Notification.Builder) this.b);
-        }
-        if (i8 >= 31 && (i = s63Var.t) != 0) {
-            qe.f((Notification.Builder) this.b, i);
-        }
-        if (i8 >= 36) {
-            r3.e((Notification.Builder) this.b);
-        }
-        if (s63Var.w) {
-            ((s63) this.c).getClass();
-            this.a = 1;
-            ((Notification.Builder) this.b).setVibrate(null);
-            ((Notification.Builder) this.b).setSound(null);
-            int i9 = notification.defaults & (-4);
-            notification.defaults = i9;
-            ((Notification.Builder) this.b).setDefaults(i9);
-            if (i8 >= 26) {
-                if (TextUtils.isEmpty(((s63) this.c).o)) {
-                    ((Notification.Builder) this.b).setGroup("silent");
-                }
-                r50.n((Notification.Builder) this.b, 1);
-            }
-        }
+        int r33 = Build.VERSION.SDK_INT;
+        if (r33 < 26) goto L112;
+        r50.l((Notification.Builder) this.b);
+        r50.r((Notification.Builder) this.b);
+        r50.s((Notification.Builder) this.b);
+        r50.t((Notification.Builder) this.b);
+        r50.n((Notification.Builder) this.b, 0);
+        if (TextUtils.isEmpty(r20.s) == true) goto L112;
+        ((Notification.Builder) this.b).setSound(null).setDefaults(0).setLights(0, 0, 0).setVibrate(null);
+    L112:
+        if (r33 < 28) goto L118;
+        Iterator r34 = r118.iterator();
+        if (r34.hasNext() == false) goto L118;
+        throw xa3.d(r34);
+    L118:
+        if (r33 < 29) goto L121;
+        yh.m((Notification.Builder) this.b, r20.u);
+        yh.n((Notification.Builder) this.b);
+    L121:
+        if (r33 < 31) goto L126;
+        int r35 = r20.t;
+        if (r35 == 0) goto L126;
+        qe.f((Notification.Builder) this.b, r35);
+    L126:
+        if (r33 < 36) goto L129;
+        r3.e((Notification.Builder) this.b);
+    L129:
+        if (r20.w == false) goto L144;
+        ((s63) this.c).getClass();
+        this.a = 1;
+        ((Notification.Builder) this.b).setVibrate(null);
+        ((Notification.Builder) this.b).setSound(null);
+        int r1 = r6.defaults & (-4);
+        r6.defaults = r1;
+        ((Notification.Builder) this.b).setDefaults(r1);
+        if (r33 >= 26) goto L133;
+        return;
+    L133:
+        if (TextUtils.isEmpty(((s63) this.c).o) == false) goto L135;
+        ((Notification.Builder) this.b).setGroup("silent");
+    L135:
+        r50.n((Notification.Builder) this.b, 1);
+        return;
+    L144:
+        return;
+    L77:
+        if (r20.q != null) goto L79;
+        r20.q = new Bundle();
+    L79:
+        Bundle r36 = r20.q.getBundle("android.car.EXTENSIONS");
+        if (r36 != null) goto L82;
+        r36 = new Bundle();
+    L82:
+        Bundle r37 = new Bundle(r36);
+        Bundle r38 = new Bundle();
+        int r119 = 0;
+    L84:
+        if (r119 >= r5.size()) goto L101;
+        String r39 = Integer.toString(r119);
+        q63 r120 = (q63) r5.get(r119);
+        Bundle r121 = new Bundle();
+        if (r120.b != null) goto L91;
+        int r122 = r120.e;
+        if (r122 == 0) goto L91;
+        r120.b = IconCompat.b(null, "", r122);
+    L91:
+        IconCompat r40 = r120.b;
+        Bundle r123 = r120.a;
+        if (r40 == null) goto L95;
+        int r41 = r40.c();
+    L94:
+        ArrayList r124 = r5;
+        r121.putInt("icon", r41);
+        r121.putCharSequence("title", r120.f);
+        r121.putParcelable("actionIntent", r120.g);
+        if (r123 == null) goto L99;
+        Bundle r42 = new Bundle(r123);
+    L100:
+        r42.putBoolean("android.support.allowGeneratedReplies", r120.c);
+        r121.putBundle("extras", r42);
+        r121.putParcelableArray("remoteInputs", null);
+        r121.putBoolean("showsUserInterface", r120.d);
+        r121.putInt("semanticAction", 0);
+        r38.putBundle(r39, r121);
+        r119 = r119 + 1;
+        r4 = r4;
+        r5 = r124;
+        goto L84
+    L99:
+        r42 = new Bundle();
+        goto L100
+    L95:
+        r41 = 0;
+        goto L94
+    L101:
+        r118 = r4;
+        r36.putBundle("invisible_actions", r38);
+        r37.putBundle("invisible_actions", r38);
+        if (r20.q != null) goto L104;
+        r20.q = new Bundle();
+    L104:
+        r20.q.putBundle("android.car.EXTENSIONS", r36);
+        ((Bundle) this.d).putBundle("android.car.EXTENSIONS", r37);
+        goto L106
+    L25:
+        r7 = r18.e(r2);
+        goto L26
+    L21:
+        r16 = false;
+        goto L22
+    L17:
+        r14 = false;
+        goto L18
+    L13:
+        r12 = false;
+        goto L14
+    L9:
+        r9 = false;
+        goto L10
+    L5:
+        this.b = new Notification.Builder(r2);
+        goto L6
     }
 
     public long a() {
-        Paint paint = (Paint) this.b;
-        return Build.VERSION.SDK_INT >= 29 ? xd5.a.a(paint) : e35.b(paint.getColor());
+        Paint r2 = (Paint) this.b;
+        if (Build.VERSION.SDK_INT < 29) goto L7;
+        return xd5.a.a(r2);
+    L7:
+        return e35.b(r2.getColor());
     }
 
     public int b() {
-        int i = this.a;
-        if (i != 2) {
-            return i != 3 ? 0 : 512;
-        }
+        int r1 = this.a;
+        if (r1 != 2) goto L5;
         return 2048;
+    L5:
+        if (r1 == 3) goto L8;
+        return 0;
+    L8:
+        return 512;
     }
 
     public void c() {
-        HandlerThread handlerThread;
-        synchronized (this.b) {
-            try {
-                rr2.w(this.a > 0);
-                int i = this.a - 1;
-                this.a = i;
-                if (i == 0 && (handlerThread = (HandlerThread) this.d) != null) {
-                    handlerThread.quit();
-                    this.d = null;
-                    this.c = null;
-                }
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+        Object r0 = this.b;
+        monitor-enter(r0);
+    L13:
+        th = move-exception;
+        throw th;
+    L5:
+        if (this.a <= 0) goto L7;
+        boolean r1 = true;
+    L8:
+        rr2.w(r1);     // Catch: Throwable -> L13
+        int r2 = this.a - 1;     // Catch: Throwable -> L13
+        this.a = r2;     // Catch: Throwable -> L13
+        if (r2 != 0) goto L15;
+        HandlerThread r3 = (HandlerThread) this.d;     // Catch: Throwable -> L13
+        if (r3 == null) goto L15;
+        r3.quit();     // Catch: Throwable -> L13
+        this.d = null;     // Catch: Throwable -> L13
+        this.c = null;     // Catch: Throwable -> L13
+    L15:
+        monitor-exit(r0);     // Catch: Throwable -> L13
+        return;
+    L7:
+        r1 = false;
+        goto L8
     }
 
-    public void d(float f) {
-        ((Paint) this.b).setAlpha((int) Math.rint(f * 255.0f));
+    public void d(float r3) {
+        ((Paint) this.b).setAlpha((int) Math.rint(r3 * 255.0f));
     }
 
-    public void e(int i) {
-        if (this.a == i) {
-            return;
-        }
-        this.a = i;
-        Paint paint = (Paint) this.b;
-        if (Build.VERSION.SDK_INT >= 29) {
-            xd5.a.b(paint, i);
-        } else {
-            paint.setXfermode(new PorterDuffXfermode(q05.B(i)));
-        }
+    public void e(int r3) {
+        if (this.a != r3) goto L5;
+        return;
+    L5:
+        this.a = r3;
+        Paint r2 = (Paint) this.b;
+        if (Build.VERSION.SDK_INT < 29) goto L9;
+        xd5.a.b(r2, r3);
+        return;
+    L9:
+        r2.setXfermode(new PorterDuffXfermode(q05.B(r3)));
     }
 
-    public void f(long j) {
-        Paint paint = (Paint) this.b;
-        if (Build.VERSION.SDK_INT >= 29) {
-            xd5.a.c(paint, j);
-        } else {
-            paint.setColor(e35.U(j));
-        }
+    public void f(long r3) {
+        Paint r2 = (Paint) this.b;
+        if (Build.VERSION.SDK_INT < 29) goto L6;
+        xd5.a.c(r2, r3);
+        return;
+    L6:
+        r2.setColor(e35.U(r3));
     }
 
-    public void g(dt dtVar) {
-        this.d = dtVar;
-        ((Paint) this.b).setColorFilter(dtVar != null ? dtVar.a : null);
+    public void g(dt r1) {
+        this.d = r1;
+        Paint r0 = (Paint) this.b;
+        if (r1 == null) goto L5;
+        ColorFilter r2 = r1.a;
+    L6:
+        r0.setColorFilter(r2);
+        return;
+    L5:
+        r2 = null;
+        goto L6
     }
 
-    public void h(int i) {
-        ((Paint) this.b).setStyle(i == 1 ? Paint.Style.STROKE : Paint.Style.FILL);
+    public void h(int r2) {
+        Paint r1 = (Paint) this.b;
+        if (r2 != 1) goto L5;
+        Paint.Style r3 = Paint.Style.STROKE;
+    L6:
+        r1.setStyle(r3);
+        return;
+    L5:
+        r3 = Paint.Style.FILL;
+        goto L6
     }
 
-    public gc(Paint paint) {
-        this.b = paint;
+    public gc(Paint r1) {
+        this.b = r1;
         this.a = 3;
     }
 
@@ -310,47 +409,48 @@ public final class gc {
         this.a = 0;
     }
 
-    public gc(int i, String str, int i2, ArrayList arrayList, byte[] bArr) {
-        List listUnmodifiableList;
-        this.b = str;
-        this.a = i2;
-        if (arrayList == null) {
-            listUnmodifiableList = Collections.EMPTY_LIST;
-        } else {
-            listUnmodifiableList = Collections.unmodifiableList(arrayList);
-        }
-        this.c = listUnmodifiableList;
-        this.d = bArr;
+    public gc(int r1, String r2, int r3, ArrayList r4, byte[] r5) {
+        this.b = r2;
+        this.a = r3;
+        if (r4 != null) goto L5;
+        List r6 = Collections.EMPTY_LIST;
+    L6:
+        this.c = r6;
+        this.d = r5;
+        return;
+    L5:
+        r6 = Collections.unmodifiableList(r4);
+        goto L6
     }
 
-    public gc(UUID uuid, int i, byte[] bArr, UUID[] uuidArr) {
-        this.b = uuid;
-        this.a = i;
-        this.c = bArr;
-        this.d = uuidArr;
+    public gc(UUID r1, int r2, byte[] r3, UUID[] r4) {
+        this.b = r1;
+        this.a = r2;
+        this.c = r3;
+        this.d = r4;
     }
 
-    public gc(List list) {
-        this.a = ((j50) list.get(list.size() - 1)).c + 1;
-        HashSet hashSet = new HashSet();
-        Iterator it = list.iterator();
-        while (it.hasNext()) {
-            hashSet.add(Short.valueOf(((j50) it.next()).c));
-        }
+    public gc(List r7) {
+        this.a = ((j50) r7.get(r7.size() - 1)).c + 1;
+        HashSet r0 = new HashSet();
+        Iterator r1 = r7.iterator();
+    L4:
+        if (r1.hasNext() == false) goto L6;
+        r0.add(Short.valueOf(((j50) r1.next()).c));
+        goto L4
+    L6:
         this.c = new int[this.a];
-        short s = 0;
-        while (true) {
-            int i = this.a;
-            if (s < i) {
-                if (hashSet.contains(Short.valueOf(s))) {
-                    ((int[]) this.c)[s] = 1073741824;
-                }
-                s = (short) (s + 1);
-            } else {
-                this.b = new m50((i * 4) + 16, (short) 514, (short) 16);
-                this.d = new ew4(list, hashSet, i);
-                return;
-            }
-        }
+        short r2 = 0;
+    L7:
+        int r3 = this.a;
+        if (r2 >= r3) goto L13;
+        if (r0.contains(Short.valueOf(r2)) == false) goto L12;
+        ((int[]) this.c)[r2] = 1073741824;
+    L12:
+        r2 = (short) (r2 + 1);
+        goto L7
+    L13:
+        this.b = new m50((r3 * 4) + 16, 514, 16);
+        this.d = new ew4(r7, r0, r3);
     }
 }

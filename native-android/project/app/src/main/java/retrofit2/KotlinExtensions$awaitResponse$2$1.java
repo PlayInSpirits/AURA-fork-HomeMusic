@@ -9,19 +9,18 @@ import defpackage.q42;
 public final class KotlinExtensions$awaitResponse$2$1 extends q42 implements if1 {
     final /* synthetic */ Call<T> $this_awaitResponse;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public KotlinExtensions$awaitResponse$2$1(Call<T> call) {
+    public KotlinExtensions$awaitResponse$2$1(Call<T> r1) {
+        this.$this_awaitResponse = r1;
         super(1);
-        this.$this_awaitResponse = call;
     }
 
     @Override // defpackage.if1
-    public /* bridge */ /* synthetic */ Object invoke(Object obj) {
-        invoke((Throwable) obj);
+    public /* bridge */ /* synthetic */ Object invoke(Object r1) {
+        invoke((Throwable) r1);
         return j15.a;
     }
 
-    public final void invoke(Throwable th) {
+    public final void invoke(Throwable r1) {
         this.$this_awaitResponse.cancel();
     }
 }

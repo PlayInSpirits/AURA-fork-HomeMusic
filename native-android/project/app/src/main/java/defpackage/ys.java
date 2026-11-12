@@ -5,32 +5,37 @@ package defpackage;
 public final class ys extends hd3 {
     public final cc e;
     public final long f;
-    public int g = 1;
+    public int g;
     public final long h;
     public float i;
     public dt j;
 
-    public ys(cc ccVar, long j) {
-        int i;
-        this.e = ccVar;
-        this.f = j;
-        int i2 = (int) (j >> 32);
-        if (i2 < 0 || (i = (int) (4294967295L & j)) < 0 || i2 > ccVar.a.getWidth() || i > ccVar.a.getHeight()) {
-            kf2.n("Failed requirement.");
-            throw null;
-        }
-        this.h = j;
+    public ys(cc r4, long r5) {
+        this.e = r4;
+        this.f = r5;
+        this.g = 1;
+        int r0 = (int) (r5 >> 32);
+        if (r0 < 0) goto L12;
+        int r1 = (int) (4294967295L & r5);
+        if (r1 < 0) goto L12;
+        if (r0 > r4.a.getWidth()) goto L12;
+        if (r1 > r4.a.getHeight()) goto L12;
+        this.h = r5;
         this.i = 1.0f;
+        return;
+    L12:
+        kf2.n("Failed requirement.");
+        throw null;
     }
 
     @Override // defpackage.hd3
-    public final void a(float f) {
-        this.i = f;
+    public final void a(float r1) {
+        this.i = r1;
     }
 
     @Override // defpackage.hd3
-    public final void b(dt dtVar) {
-        this.j = dtVar;
+    public final void b(dt r1) {
+        this.j = r1;
     }
 
     @Override // defpackage.hd3
@@ -39,40 +44,67 @@ public final class ys extends hd3 {
     }
 
     @Override // defpackage.hd3
-    public final void e(e72 e72Var) {
-        mz mzVar = e72Var.n;
-        sv0.p(e72Var, this.e, this.f, (((long) Math.round(Float.intBitsToFloat((int) (mzVar.P() >> 32)))) << 32) | (((long) Math.round(Float.intBitsToFloat((int) (mzVar.P() & 4294967295L)))) & 4294967295L), this.i, this.j, this.g, 328);
+    public final void e(e72 r11) {
+        mz r2 = r11.n;
+        int r3 = Math.round(Float.intBitsToFloat((int) (r2.P() >> 32)));
+        long r4 = (((long) r3) << 32) | (((long) Math.round(Float.intBitsToFloat((int) (r2.P() & 4294967295L)))) & 4294967295L);
+        float r6 = this.i;
+        dt r7 = this.j;
+        int r8 = this.g;
+        sv0.p(r11, this.e, this.f, r4, r6, r7, r8, 328);
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof ys)) {
-            return false;
-        }
-        ys ysVar = (ys) obj;
-        return h12.c(this.e, ysVar.e) && g02.a(0L, 0L) && n02.a(this.f, ysVar.f) && this.g == ysVar.g;
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L5;
+        return true;
+    L5:
+        if ((r5 instanceof ys) == false) goto L23;
+        ys r6 = (ys) r5;
+        cc r0 = r6.e;
+        if (h12.c(this.e, r0) == true) goto L11;
+        return false;
+    L11:
+        if (g02.a(0, 0) == true) goto L14;
+        return false;
+    L14:
+        if (n02.a(this.f, r6.f) == true) goto L17;
+        return false;
+    L17:
+        if (this.g != r6.g) goto L20;
+        return true;
+    L20:
+        return false;
+    L23:
+        return false;
     }
 
     public final int hashCode() {
-        return Integer.hashCode(this.g) + xa3.b(xa3.b(this.e.hashCode() * 31, 31, 0L), 31, this.f);
+        int r0 = xa3.b(xa3.b(this.e.hashCode() * 31, 31, 0), 31, this.f);
+        return Integer.hashCode(this.g) + r0;
     }
 
     public final String toString() {
-        String str;
-        String strD = g02.d(0L);
-        String strB = n02.b(this.f);
-        int i = this.g;
-        if (i == 0) {
-            str = "None";
-        } else if (i == 1) {
-            str = "Low";
-        } else if (i == 2) {
-            str = "Medium";
-        } else {
-            str = i == 3 ? "High" : "Unknown";
-        }
-        return "BitmapPainter(image=" + this.e + ", srcOffset=" + strD + ", srcSize=" + strB + ", filterQuality=" + str + ")";
+        String r0 = g02.d(0);
+        String r1 = n02.b(this.f);
+        int r2 = this.g;
+        if (r2 != 0) goto L6;
+        String r3 = "None";
+    L16:
+        return "BitmapPainter(image=" + this.e + ", srcOffset=" + r0 + ", srcSize=" + r1 + ", filterQuality=" + r3 + ")";
+    L6:
+        if (r2 != 1) goto L9;
+        r3 = "Low";
+        goto L16
+    L9:
+        if (r2 != 2) goto L12;
+        r3 = "Medium";
+        goto L16
+    L12:
+        if (r2 != 3) goto L14;
+        r3 = "High";
+        goto L16
+    L14:
+        r3 = "Unknown";
+        goto L16
     }
 }

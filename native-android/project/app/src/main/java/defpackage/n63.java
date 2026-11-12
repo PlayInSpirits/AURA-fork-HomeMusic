@@ -3,10 +3,14 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class n63 implements q81 {
-    public static final n63 n = new n63();
+    public static final n63 n = null;
+
+    static {
+        n = new n63();
+    }
 
     @Override // defpackage.q81
-    public final Object b(Object obj, vd0 vd0Var) {
+    public final Object b(Object r1, vd0 r2) {
         return j15.a;
     }
 }

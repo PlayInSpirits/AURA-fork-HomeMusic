@@ -14,89 +14,110 @@ public final class xv4 {
     public final long i;
     public final boolean j;
 
-    public xv4(pv4 pv4Var, long[] jArr, int[] iArr, int i, long[] jArr2, int[] iArr2, int[] iArr3, boolean z, long j, int i2) {
-        rr2.l(iArr.length == jArr2.length);
-        rr2.l(jArr.length == jArr2.length);
-        rr2.l(iArr2.length == jArr2.length);
-        this.a = pv4Var;
-        this.c = jArr;
-        this.d = iArr;
-        this.e = i;
-        this.f = jArr2;
-        this.g = iArr2;
-        this.h = iArr3;
-        this.j = z;
-        this.i = j;
-        this.b = i2;
-        if (iArr2.length > 0) {
-            int length = iArr2.length - 1;
-            iArr2[length] = iArr2[length] | 536870912;
-        }
+    public xv4(pv4 r5, long[] r6, int[] r7, int r8, long[] r9, int[] r10, int[] r11, boolean r12, long r13, int r15) {
+        boolean r2 = false;
+        if (r7.length != r9.length) goto L5;
+        boolean r0 = true;
+    L6:
+        rr2.l(r0);
+        if (r6.length != r9.length) goto L9;
+        boolean r1 = true;
+    L10:
+        rr2.l(r1);
+        if (r10.length != r9.length) goto L13;
+        r2 = true;
+    L13:
+        rr2.l(r2);
+        this.a = r5;
+        this.c = r6;
+        this.d = r7;
+        this.e = r8;
+        this.f = r9;
+        this.g = r10;
+        this.h = r11;
+        this.j = r12;
+        this.i = r13;
+        this.b = r15;
+        if (r10.length <= 0) goto L17;
+        int r4 = r10.length - 1;
+        r10[r4] = r10[r4] | 536870912;
+        return;
+    L17:
+        return;
+    L9:
+        r1 = false;
+        goto L10
+    L5:
+        r0 = false;
+        goto L6
     }
 
-    public final int a(long j) {
-        boolean z = this.j;
-        int i = 0;
-        long[] jArr = this.f;
-        if (z) {
-            return f35.f(jArr, j, false);
-        }
-        int[] iArr = this.h;
-        int length = iArr.length - 1;
-        int i2 = -1;
-        while (i <= length) {
-            int i3 = ((length - i) / 2) + i;
-            if (jArr[iArr[i3]] <= j) {
-                i = i3 + 1;
-                i2 = i3;
-            } else {
-                length = i3 - 1;
-            }
-        }
-        if (i2 == -1) {
-            return -1;
-        }
-        long j2 = jArr[iArr[i2]];
-        if (j2 == j) {
-            while (i2 > 0 && jArr[iArr[i2 - 1]] == j2) {
-                i2--;
-            }
-        }
-        return iArr[i2];
+    public final int a(long r9) {
+        boolean r0 = this.j;
+        int r1 = 0;
+        long[] r2 = this.f;
+        if (r0 == true) goto L5;
+        int[] r8 = this.h;
+        int r3 = r8.length - 1;
+        int r4 = -1;
+    L7:
+        if (r1 > r3) goto L12;
+        int r5 = ((r3 - r1) / 2) + r1;
+        if (r2[r8[r5]] <= r9) goto L10;
+        r3 = r5 - 1;
+        goto L7
+    L10:
+        r1 = r5 + 1;
+        r4 = r5;
+        goto L7
+    L12:
+        if (r4 != (-1)) goto L14;
+        return -1;
+    L14:
+        long r6 = r2[r8[r4]];
+        if (r6 != r9) goto L21;
+    L16:
+        if (r4 <= 0) goto L21;
+        if (r2[r8[r4 - 1]] != r6) goto L21;
+        r4 = r4 - 1;
+    L21:
+        return r8[r4];
+    L5:
+        return f35.f(r2, r9, false);
     }
 
-    public final int b(long j) {
-        boolean z = this.j;
-        long[] jArr = this.f;
-        if (z) {
-            return f35.b(jArr, j, true);
-        }
-        int[] iArr = this.h;
-        int length = iArr.length - 1;
-        int i = 0;
-        int i2 = -1;
-        while (i <= length) {
-            int i3 = ((length - i) / 2) + i;
-            if (jArr[iArr[i3]] >= j) {
-                length = i3 - 1;
-                i2 = i3;
-            } else {
-                i = i3 + 1;
-            }
-        }
-        if (i2 == -1) {
-            return -1;
-        }
-        long j2 = jArr[iArr[i2]];
-        if (j2 == j) {
-            while (i2 < iArr.length - 1) {
-                int i4 = i2 + 1;
-                if (jArr[iArr[i4]] != j2) {
-                    break;
-                }
-                i2 = i4;
-            }
-        }
-        return iArr[i2];
+    public final int b(long r10) {
+        boolean r0 = this.j;
+        long[] r1 = this.f;
+        if (r0 == true) goto L5;
+        int[] r9 = this.h;
+        int r2 = r9.length - 1;
+        int r3 = 0;
+        int r5 = -1;
+    L7:
+        if (r3 > r2) goto L12;
+        int r6 = ((r2 - r3) / 2) + r3;
+        if (r1[r9[r6]] >= r10) goto L10;
+        r3 = r6 + 1;
+        goto L7
+    L10:
+        r2 = r6 - 1;
+        r5 = r6;
+        goto L7
+    L12:
+        if (r5 != (-1)) goto L14;
+        return -1;
+    L14:
+        long r4 = r1[r9[r5]];
+        if (r4 != r10) goto L22;
+    L17:
+        if (r5 >= (r9.length - 1)) goto L22;
+        int r11 = r5 + 1;
+        if (r1[r9[r11]] != r4) goto L22;
+        r5 = r11;
+    L22:
+        return r9[r5];
+    L5:
+        return f35.b(r1, r10, true);
     }
 }

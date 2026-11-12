@@ -6,10 +6,19 @@ public abstract class bf3 {
     public final boolean a;
     public final boolean b;
 
-    public bf3(int i) {
-        boolean z = (i & 1) == 0;
-        boolean z2 = (i & 2) == 0;
-        this.a = z;
-        this.b = z2;
+    public bf3(int r4) {
+        boolean r1 = true;
+        if ((r4 & 1) == 0) goto L5;
+        boolean r0 = false;
+    L7:
+        if ((r4 & 2) == 0) goto L9;
+        r1 = false;
+    L9:
+        this.a = r0;
+        this.b = r1;
+        return;
+    L5:
+        r0 = true;
+        goto L7
     }
 }

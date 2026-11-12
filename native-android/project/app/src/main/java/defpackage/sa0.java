@@ -12,63 +12,68 @@ public final class sa0 implements x34, l13 {
     public ne0 p;
     public Throwable q;
 
-    public sa0(x34 x34Var) {
-        n13 n13Var = new n13();
-        x34Var.getClass();
-        this.n = x34Var;
-        this.o = n13Var;
+    public sa0(x34 r2) {
+        n13 r0 = new n13();
+        r2.getClass();
+        this.n = r2;
+        this.o = r0;
     }
 
     @Override // defpackage.x34
-    public final z34 U(String str) {
-        str.getClass();
-        return this.n.U(str);
+    public final z34 U(String r1) {
+        r1.getClass();
+        return this.n.U(r1);
     }
 
     @Override // defpackage.l13
-    public final Object b(wd0 wd0Var) {
-        return this.o.b(wd0Var);
+    public final Object b(wd0 r1) {
+        return this.o.b(r1);
     }
 
     @Override // java.lang.AutoCloseable
-    public final void close() throws Exception {
+    public final void close() {
         this.n.close();
     }
 
     @Override // defpackage.l13
-    public final void f(Object obj) {
+    public final void f(Object r1) {
         this.o.f(null);
     }
 
-    public final void j(StringBuilder sb) {
-        if (this.p == null && this.q == null) {
-            sb.append("\t\tStatus: Free connection");
-            sb.append('\n');
-            return;
-        }
-        sb.append("\t\tStatus: Acquired connection");
-        sb.append('\n');
-        ne0 ne0Var = this.p;
-        if (ne0Var != null) {
-            sb.append("\t\tCoroutine: " + ne0Var);
-            sb.append('\n');
-        }
-        Throwable th = this.q;
-        if (th != null) {
-            sb.append("\t\tAcquired:");
-            sb.append('\n');
-            StringWriter stringWriter = new StringWriter();
-            PrintWriter printWriter = new PrintWriter(stringWriter);
-            th.printStackTrace(printWriter);
-            printWriter.flush();
-            String string = stringWriter.toString();
-            string.getClass();
-            Iterator it = q40.u0(qm4.w0(string), 1).iterator();
-            while (it.hasNext()) {
-                sb.append("\t\t" + ((String) it.next()));
-                sb.append('\n');
-            }
-        }
+    public final void j(StringBuilder r5) {
+        if (this.p == null) goto L5;
+    L9:
+        r5.append("\t\tStatus: Acquired connection");
+        r5.append('\n');
+        ne0 r0 = this.p;
+        if (r0 == null) goto L12;
+        r5.append("\t\tCoroutine: " + r0);
+        r5.append('\n');
+    L12:
+        Throwable r4 = this.q;
+        if (r4 == null) goto L18;
+        r5.append("\t\tAcquired:");
+        r5.append('\n');
+        StringWriter r1 = new StringWriter();
+        PrintWriter r2 = new PrintWriter(r1);
+        r4.printStackTrace(r2);
+        r2.flush();
+        String r6 = r1.toString();
+        r6.getClass();
+        Iterator r7 = q40.u0(qm4.w0(r6), 1).iterator();
+    L16:
+        if (r7.hasNext() == false) goto L20;
+        r5.append("\t\t" + ((String) r7.next()));
+        r5.append('\n');
+        goto L16
+    L20:
+        return;
+    L18:
+        return;
+    L5:
+        if (this.q != null) goto L9;
+        r5.append("\t\tStatus: Free connection");
+        r5.append('\n');
     }
 
     public final String toString() {

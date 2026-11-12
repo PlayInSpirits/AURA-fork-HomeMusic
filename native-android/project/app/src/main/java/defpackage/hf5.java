@@ -8,17 +8,26 @@ public final class hf5 {
     public final ve a;
     public final p61 b;
 
-    public /* synthetic */ hf5(ve veVar, p61 p61Var) {
-        this.a = veVar;
-        this.b = p61Var;
+    public /* synthetic */ hf5(ve r1, p61 r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
-    public final boolean equals(Object obj) {
-        if (obj == null || !(obj instanceof hf5)) {
-            return false;
-        }
-        hf5 hf5Var = (hf5) obj;
-        return au0.n(this.a, hf5Var.a) && au0.n(this.b, hf5Var.b);
+    public final boolean equals(Object r3) {
+        if (r3 != null) goto L4;
+        return false;
+    L4:
+        if ((r3 instanceof hf5) == false) goto L13;
+        hf5 r4 = (hf5) r3;
+        if (au0.n(this.a, r4.a) == true) goto L8;
+        return false;
+    L8:
+        if (au0.n(this.b, r4.b) == false) goto L15;
+        return true;
+    L15:
+        return false;
+    L13:
+        return false;
     }
 
     public final int hashCode() {
@@ -26,9 +35,9 @@ public final class hf5 {
     }
 
     public final String toString() {
-        qr2 qr2Var = new qr2(this);
-        qr2Var.c(this.a, "key");
-        qr2Var.c(this.b, "feature");
-        return qr2Var.toString();
+        qr2 r0 = new qr2(this);
+        r0.c(this.a, "key");
+        r0.c(this.b, "feature");
+        return r0.toString();
     }
 }

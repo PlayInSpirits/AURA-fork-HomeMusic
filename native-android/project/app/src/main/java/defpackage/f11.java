@@ -8,29 +8,28 @@ import com.google.android.material.textfield.TextInputLayout;
 public final class f11 {
     public final /* synthetic */ g11 a;
 
-    public f11(g11 g11Var) {
-        this.a = g11Var;
+    public f11(g11 r1) {
+        this.a = r1;
     }
 
-    public final void a(TextInputLayout textInputLayout) {
-        g11 g11Var = this.a;
-        e11 e11Var = g11Var.I;
-        if (g11Var.F == textInputLayout.getEditText()) {
-            return;
-        }
-        EditText editText = g11Var.F;
-        if (editText != null) {
-            editText.removeTextChangedListener(e11Var);
-            if (g11Var.F.getOnFocusChangeListener() == g11Var.a().e()) {
-                g11Var.F.setOnFocusChangeListener(null);
-            }
-        }
-        EditText editText2 = textInputLayout.getEditText();
-        g11Var.F = editText2;
-        if (editText2 != null) {
-            editText2.addTextChangedListener(e11Var);
-        }
-        g11Var.a().l(g11Var.F);
-        g11Var.i(g11Var.a());
+    public final void a(TextInputLayout r4) {
+        g11 r3 = this.a;
+        e11 r0 = r3.I;
+        if (r3.F != r4.getEditText()) goto L5;
+        return;
+    L5:
+        EditText r1 = r3.F;
+        if (r1 == null) goto L10;
+        r1.removeTextChangedListener(r0);
+        if (r3.F.getOnFocusChangeListener() != r3.a().e()) goto L10;
+        r3.F.setOnFocusChangeListener(null);
+    L10:
+        EditText r5 = r4.getEditText();
+        r3.F = r5;
+        if (r5 == null) goto L13;
+        r5.addTextChangedListener(r0);
+    L13:
+        r3.a().l(r3.F);
+        r3.i(r3.a());
     }
 }

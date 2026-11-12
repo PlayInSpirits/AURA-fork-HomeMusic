@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import androidx.mediarouter.app.MediaRouteVolumeSlider;
@@ -18,12 +19,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class jq2 extends dw3 {
-    public final ArrayList q = new ArrayList();
+    public final ArrayList q;
     public final LayoutInflater r;
     public final Drawable s;
     public final Drawable t;
@@ -34,15 +36,16 @@ public final class jq2 extends dw3 {
     public final AccelerateDecelerateInterpolator y;
     public final /* synthetic */ lq2 z;
 
-    public jq2(lq2 lq2Var) {
-        this.z = lq2Var;
-        Context context = lq2Var.B;
-        this.r = LayoutInflater.from(context);
-        this.s = fu.y(context, R.attr.mediaRouteDefaultIconDrawable);
-        this.t = fu.y(context, R.attr.mediaRouteTvIconDrawable);
-        this.u = fu.y(context, R.attr.mediaRouteSpeakerIconDrawable);
-        this.v = fu.y(context, R.attr.mediaRouteSpeakerGroupIconDrawable);
-        this.x = context.getResources().getInteger(R.integer.mr_cast_volume_slider_layout_animation_duration_ms);
+    public jq2(lq2 r2) {
+        this.z = r2;
+        this.q = new ArrayList();
+        Context r3 = r2.B;
+        this.r = LayoutInflater.from(r3);
+        this.s = fu.y(r3, R.attr.mediaRouteDefaultIconDrawable);
+        this.t = fu.y(r3, R.attr.mediaRouteTvIconDrawable);
+        this.u = fu.y(r3, R.attr.mediaRouteSpeakerIconDrawable);
+        this.v = fu.y(r3, R.attr.mediaRouteSpeakerGroupIconDrawable);
+        this.x = r3.getResources().getInteger(R.integer.mr_cast_volume_slider_layout_animation_duration_ms);
         this.y = new AccelerateDecelerateInterpolator();
         s();
     }
@@ -53,258 +56,336 @@ public final class jq2 extends dw3 {
     }
 
     @Override // defpackage.dw3
-    public final int c(int i) {
-        hq2 hq2Var;
-        if (i == 0) {
-            hq2Var = this.w;
-        } else {
-            hq2Var = (hq2) this.q.get(i - 1);
-        }
-        return hq2Var.b;
+    public final int c(int r1) {
+        if (r1 != 0) goto L4;
+        hq2 r0 = this.w;
+    L6:
+        return r0.b;
+    L4:
+        r0 = (hq2) this.q.get(r1 - 1);
+        goto L6
     }
 
     @Override // defpackage.dw3
-    public final void g(cx3 cx3Var, int i) {
-        tq2 tq2VarA;
-        mq2 mq2Var;
-        ArrayList arrayList = this.q;
-        int i2 = (i == 0 ? this.w : (hq2) arrayList.get(i - 1)).b;
-        boolean z = true;
-        hq2 hq2Var = i == 0 ? this.w : (hq2) arrayList.get(i - 1);
-        lq2 lq2Var = this.z;
-        int i3 = 0;
-        if (i2 == 1) {
-            lq2Var.J.put(((wq2) hq2Var.a).c, (dq2) cx3Var);
-            fq2 fq2Var = (fq2) cx3Var;
-            View view = fq2Var.a;
-            lq2 lq2Var2 = fq2Var.A.z;
-            if (lq2Var2.f0 && Collections.unmodifiableList(lq2Var2.w.v).size() > 1) {
-                i3 = fq2Var.z;
-            }
-            ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-            layoutParams.height = i3;
-            view.setLayoutParams(layoutParams);
-            wq2 wq2Var = (wq2) hq2Var.a;
-            fq2Var.s(wq2Var);
-            fq2Var.y.setText(wq2Var.d);
-            return;
-        }
-        if (i2 == 2) {
-            ((gq2) cx3Var).u.setText(hq2Var.a.toString());
-            return;
-        }
-        if (i2 != 3) {
-            if (i2 != 4) {
-                tb4.a();
-                return;
-            }
-            eq2 eq2Var = (eq2) cx3Var;
-            View view2 = eq2Var.u;
-            wq2 wq2Var2 = (wq2) hq2Var.a;
-            eq2Var.z = wq2Var2;
-            ImageView imageView = eq2Var.v;
-            imageView.setVisibility(0);
-            eq2Var.w.setVisibility(4);
-            jq2 jq2Var = eq2Var.A;
-            List listUnmodifiableList = Collections.unmodifiableList(jq2Var.z.w.v);
-            view2.setAlpha((listUnmodifiableList.size() == 1 && listUnmodifiableList.get(0) == wq2Var2) ? eq2Var.y : 1.0f);
-            view2.setOnClickListener(new i4(8, eq2Var));
-            imageView.setImageDrawable(jq2Var.q(wq2Var2));
-            eq2Var.x.setText(wq2Var2.d);
-            return;
-        }
-        lq2Var.J.put(((wq2) hq2Var.a).c, (dq2) cx3Var);
-        iq2 iq2Var = (iq2) cx3Var;
-        float f = iq2Var.E;
-        i4 i4Var = iq2Var.G;
-        ImageView imageView2 = iq2Var.z;
-        View view3 = iq2Var.y;
-        CheckBox checkBox = iq2Var.D;
-        wq2 wq2Var3 = (wq2) hq2Var.a;
-        jq2 jq2Var2 = iq2Var.H;
-        lq2 lq2Var3 = jq2Var2.z;
-        if (wq2Var3 == lq2Var3.w && Collections.unmodifiableList(wq2Var3.v).size() > 0) {
-            for (wq2 wq2Var4 : Collections.unmodifiableList(wq2Var3.v)) {
-                if (!lq2Var3.y.contains(wq2Var4)) {
-                    wq2Var3 = wq2Var4;
-                    break;
-                }
-            }
-        }
-        iq2Var.s(wq2Var3);
-        imageView2.setImageDrawable(jq2Var2.q(wq2Var3));
-        iq2Var.B.setText(wq2Var3.d);
-        checkBox.setVisibility(0);
-        boolean zU = iq2Var.u(wq2Var3);
-        boolean z2 = !lq2Var3.A.contains(wq2Var3) && (!iq2Var.u(wq2Var3) || Collections.unmodifiableList(lq2Var3.w.v).size() >= 2) && !(iq2Var.u(wq2Var3) && ((tq2VarA = lq2Var3.w.a()) == null || (mq2Var = (mq2) tq2VarA.x.get(wq2Var3.c)) == null || !mq2Var.c));
-        checkBox.setChecked(zU);
-        iq2Var.A.setVisibility(4);
-        imageView2.setVisibility(0);
-        view3.setEnabled(z2);
-        checkBox.setEnabled(z2);
-        iq2Var.v.setEnabled(z2 || zU);
-        MediaRouteVolumeSlider mediaRouteVolumeSlider = iq2Var.w;
-        if (!z2 && !zU) {
-            z = false;
-        }
-        mediaRouteVolumeSlider.setEnabled(z);
-        view3.setOnClickListener(i4Var);
-        checkBox.setOnClickListener(i4Var);
-        RelativeLayout relativeLayout = iq2Var.C;
-        if (zU && !iq2Var.u.e()) {
-            i3 = iq2Var.F;
-        }
-        ViewGroup.LayoutParams layoutParams2 = relativeLayout.getLayoutParams();
-        layoutParams2.height = i3;
-        relativeLayout.setLayoutParams(layoutParams2);
-        view3.setAlpha((z2 || zU) ? 1.0f : f);
-        checkBox.setAlpha((z2 || !zU) ? 1.0f : f);
+    public final void g(cx3 r17, int r18) {
+        ArrayList r1 = this.q;
+        if (r18 != 0) goto L5;
+        hq2 r2 = this.w;
+    L6:
+        int r3 = r2.b;
+        boolean r4 = true;
+        if (r18 != 0) goto L9;
+        hq2 r5 = this.w;
+    L10:
+        lq2 r0 = this.z;
+        int r6 = 0;
+        if (r3 != 1) goto L13;
+        r0.J.put(((wq2) r5.a).c, (dq2) r17);
+        fq2 r7 = (fq2) r17;
+        View r8 = r7.a;
+        lq2 r9 = r7.A.z;
+        if (r9.f0 == true) goto L89;
+    L91:
+        ViewGroup.LayoutParams r10 = r8.getLayoutParams();
+        r10.height = r6;
+        r8.setLayoutParams(r10);
+        wq2 r11 = (wq2) r5.a;
+        r7.s(r11);
+        r7.y.setText(r11.d);
+        return;
+    L89:
+        if (Collections.unmodifiableList(r9.w.v).size() <= 1) goto L91;
+        r6 = r7.z;
+        goto L91
+    L13:
+        if (r3 != 2) goto L15;
+        ((gq2) r17).u.setText(r5.a.toString());
+        return;
+    L15:
+        if (r3 == 3) goto L27;
+        if (r3 != 4) goto L25;
+        eq2 r12 = (eq2) r17;
+        View r13 = r12.u;
+        wq2 r14 = (wq2) r5.a;
+        r12.z = r14;
+        ImageView r15 = r12.v;
+        r15.setVisibility(0);
+        r12.w.setVisibility(4);
+        jq2 r16 = r12.A;
+        List r19 = Collections.unmodifiableList(r16.z.w.v);
+        if (r19.size() == 1) goto L20;
+    L22:
+        float r20 = 1.0f;
+    L23:
+        r13.setAlpha(r20);
+        r13.setOnClickListener(new i4(8, r12));
+        r15.setImageDrawable(r16.q(r14));
+        r12.x.setText(r14.d);
+        return;
+    L20:
+        if (r19.get(0) != r14) goto L22;
+        r20 = r12.y;
+        goto L23
+    L25:
+        tb4.a();
+        return;
+    L27:
+        r0.J.put(((wq2) r5.a).c, (dq2) r17);
+        iq2 r21 = (iq2) r17;
+        float r22 = r21.E;
+        i4 r23 = r21.G;
+        ImageView r24 = r21.z;
+        View r110 = r21.y;
+        CheckBox r111 = r21.D;
+        wq2 r25 = (wq2) r5.a;
+        jq2 r112 = r21.H;
+        lq2 r113 = r112.z;
+        if (r25 == r113.w) goto L30;
+    L37:
+        r21.s(r25);
+        r24.setImageDrawable(r112.q(r25));
+        r21.B.setText(r25.d);
+        r111.setVisibility(0);
+        boolean r26 = r21.u(r25);
+        if (r113.A.contains(r25) == false) goto L41;
+    L39:
+        boolean r27 = false;
+    L54:
+        r111.setChecked(r26);
+        r21.A.setVisibility(4);
+        r24.setVisibility(0);
+        r110.setEnabled(r27);
+        r111.setEnabled(r27);
+        ImageButton r28 = r21.v;
+        if (r27 == true) goto L59;
+        if (r26 == true) goto L59;
+        boolean r29 = false;
+    L60:
+        r28.setEnabled(r29);
+        MediaRouteVolumeSlider r30 = r21.w;
+        if (r27 == true) goto L65;
+        if (r26 == true) goto L65;
+        r4 = false;
+    L65:
+        r30.setEnabled(r4);
+        r110.setOnClickListener(r23);
+        r111.setOnClickListener(r23);
+        RelativeLayout r31 = r21.C;
+        if (r26 == true) goto L68;
+    L70:
+        ViewGroup.LayoutParams r32 = r31.getLayoutParams();
+        r32.height = r6;
+        r31.setLayoutParams(r32);
+        if (r27 == true) goto L75;
+        if (r26 == true) goto L75;
+        float r33 = r22;
+    L76:
+        r110.setAlpha(r33);
+        if (r27 == true) goto L81;
+        if (r26 == false) goto L81;
+        float r34 = r22;
+    L82:
+        r111.setAlpha(r34);
+        return;
+    L81:
+        r34 = 1.0f;
+    L75:
+        r33 = 1.0f;
+        goto L76
+    L68:
+        if (r21.u.e() == true) goto L70;
+        r6 = r21.F;
+    L59:
+        r29 = true;
+        goto L60
+    L41:
+        if (r21.u(r25) == false) goto L46;
+        if (Collections.unmodifiableList(r113.w.v).size() < 2) goto L39;
+    L46:
+        if (r21.u(r25) == false) goto L53;
+        tq2 r35 = r113.w.a();
+        if (r35 == null) goto L39;
+        mq2 r36 = (mq2) r35.x.get(r25.c);
+        if (r36 == null) goto L39;
+        if (r36.c == false) goto L39;
+    L53:
+        r27 = true;
+        goto L54
+    L30:
+        if (Collections.unmodifiableList(r25.v).size() <= 0) goto L37;
+        Iterator r114 = Collections.unmodifiableList(r25.v).iterator();
+    L33:
+        if (r114.hasNext() == false) goto L37;
+        wq2 r115 = (wq2) r114.next();
+        if (r113.y.contains(r115) == true) goto L33;
+        r25 = r115;
+        goto L37
+    L9:
+        r5 = (hq2) r1.get(r18 - 1);
+        goto L10
+    L5:
+        r2 = (hq2) r1.get(r18 - 1);
+        goto L6
     }
 
     @Override // defpackage.dw3
-    public final cx3 i(ViewGroup viewGroup, int i) {
-        LayoutInflater layoutInflater = this.r;
-        if (i == 1) {
-            return new fq2(this, layoutInflater.inflate(R.layout.mr_cast_group_volume_item, viewGroup, false));
-        }
-        if (i == 2) {
-            return new gq2(layoutInflater.inflate(R.layout.mr_cast_header_item, viewGroup, false));
-        }
-        if (i == 3) {
-            return new iq2(this, layoutInflater.inflate(R.layout.mr_cast_route_item, viewGroup, false));
-        }
-        if (i == 4) {
-            return new eq2(this, layoutInflater.inflate(R.layout.mr_cast_group_item, viewGroup, false));
-        }
+    public final cx3 i(ViewGroup r4, int r5) {
+        LayoutInflater r2 = this.r;
+        if (r5 == 1) goto L19;
+        if (r5 == 2) goto L17;
+        if (r5 == 3) goto L15;
+        if (r5 == 4) goto L11;
         tb4.a();
         return null;
+    L11:
+        return new eq2(this, r2.inflate(R.layout.mr_cast_group_item, r4, false));
+    L15:
+        return new iq2(this, r2.inflate(R.layout.mr_cast_route_item, r4, false));
+    L17:
+        return new gq2(r2.inflate(R.layout.mr_cast_header_item, r4, false));
+    L19:
+        return new fq2(this, r2.inflate(R.layout.mr_cast_group_volume_item, r4, false));
     }
 
     @Override // defpackage.dw3
-    public final void n(cx3 cx3Var) {
-        this.z.J.values().remove(cx3Var);
+    public final void n(cx3 r1) {
+        this.z.J.values().remove(r1);
     }
 
-    public final void p(View view, int i) {
-        jp2 jp2Var = new jp2(i, view.getLayoutParams().height, 1, view);
-        jp2Var.setAnimationListener(new gp2(2, this));
-        jp2Var.setDuration(this.x);
-        jp2Var.setInterpolator(this.y);
-        view.startAnimation(jp2Var);
+    public final void p(View r5, int r6) {
+        jp2 r1 = new jp2(r6, r5.getLayoutParams().height, 1, r5);
+        r1.setAnimationListener(new gp2(2, this));
+        r1.setDuration(this.x);
+        r1.setInterpolator(this.y);
+        r5.startAnimation(r1);
     }
 
-    public final Drawable q(wq2 wq2Var) {
-        Uri uri = wq2Var.f;
-        if (uri != null) {
-            try {
-                Drawable drawableCreateFromStream = Drawable.createFromStream(this.z.B.getContentResolver().openInputStream(uri), null);
-                if (drawableCreateFromStream != null) {
-                    return drawableCreateFromStream;
-                }
-            } catch (IOException e) {
-                Log.w("MediaRouteCtrlDialog", "Failed to load " + uri, e);
-            }
-        }
-        int i = wq2Var.n;
-        if (i == 1) {
-            return this.t;
-        }
-        if (i != 2) {
-            return wq2Var.e() ? this.v : this.s;
-        }
+    public final Drawable q(wq2 r5) {
+        Uri r0 = r5.f;
+        if (r0 != null) goto L20;
+    L9:
+        int r1 = r5.n;
+        if (r1 == 1) goto L19;
+        if (r1 == 2) goto L24;
+        if (r5.e() == false) goto L23;
+        return this.v;
+    L23:
+        return this.s;
+    L24:
         return this.u;
+    L19:
+        return this.t;
+    L20:
+        Drawable r2 = Drawable.createFromStream(this.z.B.getContentResolver().openInputStream(r0), null);     // Catch: IOException -> L7
+        if (r2 == null) goto L9;
+        return r2;
+    L7:
+        e = move-exception;
+        Log.w("MediaRouteCtrlDialog", "Failed to load " + r0, e);
+        goto L9
     }
 
     public final void r() {
-        lq2 lq2Var = this.z;
-        ArrayList arrayList = lq2Var.A;
-        arrayList.clear();
-        ArrayList arrayList2 = lq2Var.y;
-        ArrayList arrayList3 = new ArrayList();
-        tq2 tq2VarA = lq2Var.w.a();
-        if (tq2VarA != null) {
-            vq2 vq2Var = lq2Var.w.a;
-            vq2Var.getClass();
-            yq2.b();
-            for (wq2 wq2Var : Collections.unmodifiableList(vq2Var.b)) {
-                if (tq2VarA.n(wq2Var)) {
-                    arrayList3.add(wq2Var);
-                }
-            }
-        }
-        HashSet hashSet = new HashSet(arrayList2);
-        hashSet.removeAll(arrayList3);
-        arrayList.addAll(hashSet);
+        lq2 r0 = this.z;
+        ArrayList r1 = r0.A;
+        r1.clear();
+        ArrayList r2 = r0.y;
+        ArrayList r3 = new ArrayList();
+        tq2 r4 = r0.w.a();
+        if (r4 == null) goto L10;
+        vq2 r5 = r0.w.a;
+        r5.getClass();
+        yq2.b();
+        Iterator r6 = Collections.unmodifiableList(r5.b).iterator();
+    L6:
+        if (r6.hasNext() == false) goto L10;
+        wq2 r7 = (wq2) r6.next();
+        if (r4.n(r7) == false) goto L6;
+        r3.add(r7);
+    L10:
+        HashSet r8 = new HashSet(r2);
+        r8.removeAll(r3);
+        r1.addAll(r8);
         d();
     }
 
     public final void s() {
-        ArrayList arrayList = this.q;
-        arrayList.clear();
-        lq2 lq2Var = this.z;
-        ArrayList arrayList2 = lq2Var.z;
-        Context context = lq2Var.B;
-        ArrayList arrayList3 = lq2Var.y;
-        this.w = new hq2(1, lq2Var.w);
-        ArrayList arrayList4 = lq2Var.x;
-        boolean z = false;
-        if (arrayList4.isEmpty()) {
-            arrayList.add(new hq2(3, lq2Var.w));
-        } else {
-            int size = arrayList4.size();
-            int i = 0;
-            while (i < size) {
-                Object obj = arrayList4.get(i);
-                i++;
-                arrayList.add(new hq2(3, (wq2) obj));
-            }
-        }
-        if (!arrayList3.isEmpty()) {
-            int size2 = arrayList3.size();
-            boolean z2 = false;
-            int i2 = 0;
-            while (i2 < size2) {
-                Object obj2 = arrayList3.get(i2);
-                i2++;
-                wq2 wq2Var = (wq2) obj2;
-                if (!arrayList4.contains(wq2Var)) {
-                    if (!z2) {
-                        lq2Var.w.getClass();
-                        nq2 nq2VarB = wq2.b();
-                        String strJ = nq2VarB != null ? nq2VarB.j() : null;
-                        if (TextUtils.isEmpty(strJ)) {
-                            strJ = context.getString(R.string.mr_dialog_groupable_header);
-                        }
-                        arrayList.add(new hq2(2, strJ));
-                        z2 = true;
-                    }
-                    arrayList.add(new hq2(3, wq2Var));
-                }
-            }
-        }
-        if (!arrayList2.isEmpty()) {
-            int size3 = arrayList2.size();
-            int i3 = 0;
-            while (i3 < size3) {
-                Object obj3 = arrayList2.get(i3);
-                i3++;
-                wq2 wq2Var2 = (wq2) obj3;
-                wq2 wq2Var3 = lq2Var.w;
-                if (wq2Var3 != wq2Var2) {
-                    if (!z) {
-                        wq2Var3.getClass();
-                        nq2 nq2VarB2 = wq2.b();
-                        String strK = nq2VarB2 != null ? nq2VarB2.k() : null;
-                        if (TextUtils.isEmpty(strK)) {
-                            strK = context.getString(R.string.mr_dialog_transferable_header);
-                        }
-                        arrayList.add(new hq2(2, strK));
-                        z = true;
-                    }
-                    arrayList.add(new hq2(4, wq2Var2));
-                }
-            }
-        }
+        ArrayList r1 = this.q;
+        r1.clear();
+        lq2 r3 = this.z;
+        ArrayList r4 = r3.z;
+        Context r5 = r3.B;
+        ArrayList r6 = r3.y;
+        this.w = new hq2(1, r3.w);
+        ArrayList r2 = r3.x;
+        boolean r10 = false;
+        if (r2.isEmpty() == true) goto L7;
+        int r7 = r2.size();
+        int r11 = 0;
+    L5:
+        if (r11 >= r7) goto L9;
+        Object r12 = r2.get(r11);
+        r11 = r11 + 1;
+        r1.add(new hq2(3, (wq2) r12));
+    L9:
+        if (r6.isEmpty() == true) goto L26;
+        int r8 = r6.size();
+        boolean r13 = false;
+        int r14 = 0;
+    L11:
+        if (r14 >= r8) goto L26;
+        Object r15 = r6.get(r14);
+        r14 = r14 + 1;
+        wq2 r16 = (wq2) r15;
+        if (r2.contains(r16) == true) goto L11;
+        if (r13 == true) goto L23;
+        r3.w.getClass();
+        nq2 r17 = wq2.b();
+        if (r17 == null) goto L18;
+        String r18 = r17.j();
+    L20:
+        if (TextUtils.isEmpty(r18) == false) goto L22;
+        r18 = r5.getString(R.string.mr_dialog_groupable_header);
+    L22:
+        r1.add(new hq2(2, r18));
+        r13 = true;
+        goto L23
+    L18:
+        r18 = null;
+    L23:
+        r1.add(new hq2(3, r16));
+    L26:
+        if (r4.isEmpty() == true) goto L41;
+        int r9 = r4.size();
+        int r19 = 0;
+    L28:
+        if (r19 >= r9) goto L41;
+        Object r20 = r4.get(r19);
+        r19 = r19 + 1;
+        wq2 r21 = (wq2) r20;
+        wq2 r22 = r3.w;
+        if (r22 == r21) goto L28;
+        if (r10 == true) goto L40;
+        r22.getClass();
+        nq2 r23 = wq2.b();
+        if (r23 == null) goto L35;
+        String r24 = r23.k();
+    L37:
+        if (TextUtils.isEmpty(r24) == false) goto L39;
+        r24 = r5.getString(R.string.mr_dialog_transferable_header);
+    L39:
+        r1.add(new hq2(2, r24));
+        r10 = true;
+        goto L40
+    L35:
+        r24 = null;
+    L40:
+        r1.add(new hq2(4, r21));
+    L41:
         r();
+        return;
+    L7:
+        r1.add(new hq2(3, r3.w));
+        goto L9
     }
 }

@@ -9,63 +9,77 @@ import org.json.JSONObject;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class hn extends h2 {
-    public static final Parcelable.Creator<hn> CREATOR = new rh5(1);
+    public static final Parcelable.Creator<hn> CREATOR = null;
     public final g35 n;
     public final zi5 o;
     public final in p;
     public final sj5 q;
     public final String r;
 
-    public hn(g35 g35Var, zi5 zi5Var, in inVar, sj5 sj5Var, String str) {
-        this.n = g35Var;
-        this.o = zi5Var;
-        this.p = inVar;
-        this.q = sj5Var;
-        this.r = str;
+    static {
+        CREATOR = new rh5(1);
+    }
+
+    public hn(g35 r1, zi5 r2, in r3, sj5 r4, String r5) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
+        this.r = r5;
     }
 
     public final JSONObject b() {
-        try {
-            JSONObject jSONObject = new JSONObject();
-            in inVar = this.p;
-            if (inVar != null) {
-                try {
-                    JSONObject jSONObject2 = new JSONObject();
-                    jSONObject2.put("rk", inVar.n);
-                    jSONObject.put("credProps", jSONObject2);
-                } catch (JSONException e) {
-                    throw new RuntimeException("Error encoding AuthenticationExtensionsCredPropsOutputs to JSON object", e);
-                }
-            }
-            g35 g35Var = this.n;
-            if (g35Var != null) {
-                jSONObject.put("uvm", g35Var.b());
-            }
-            sj5 sj5Var = this.q;
-            if (sj5Var != null) {
-                jSONObject.put("prf", sj5Var.b());
-            }
-            String str = this.r;
-            if (str != null) {
-                jSONObject.put("txAuthSimple", str);
-            }
-            return jSONObject;
-        } catch (JSONException e2) {
-            nz2.s("Error encoding AuthenticationExtensionsClientOutputs to JSON object", e2);
-            return null;
-        }
+        JSONObject r0 = new JSONObject();     // Catch: JSONException -> L20
+        in r1 = this.p;     // Catch: JSONException -> L20
+        if (r1 != null) goto L24;
+    L10:
+        g35 r2 = this.n;     // Catch: JSONException -> L20
+        if (r2 == null) goto L13;
+        r0.put("uvm", r2.b());     // Catch: JSONException -> L20
+    L13:
+        sj5 r3 = this.q;     // Catch: JSONException -> L20
+        if (r3 == null) goto L16;
+        r0.put("prf", r3.b());     // Catch: JSONException -> L20
+    L16:
+        String r5 = this.r;     // Catch: JSONException -> L20
+        if (r5 == null) goto L19;
+        r0.put("txAuthSimple", r5);     // Catch: JSONException -> L20
+    L19:
+        return r0;
+    L24:
+        JSONObject r4 = new JSONObject();     // Catch: JSONException -> L7
+        r4.put("rk", r1.n);     // Catch: JSONException -> L7
+        r0.put("credProps", r4);     // Catch: JSONException -> L20
+        goto L10
+    L7:
+        e = move-exception;
+        throw new RuntimeException("Error encoding AuthenticationExtensionsCredPropsOutputs to JSON object", e);     // Catch: JSONException -> L20
+    L20:
+        e = move-exception;
+        nz2.s("Error encoding AuthenticationExtensionsClientOutputs to JSON object", e);
+        return null;
     }
 
-    public final boolean equals(Object obj) {
-        if (!(obj instanceof hn)) {
-            return false;
-        }
-        hn hnVar = (hn) obj;
-        return au0.n(this.n, hnVar.n) && au0.n(this.o, hnVar.o) && au0.n(this.p, hnVar.p) && au0.n(this.q, hnVar.q) && au0.n(this.r, hnVar.r);
+    public final boolean equals(Object r4) {
+        if ((r4 instanceof hn) == true) goto L5;
+        return false;
+    L5:
+        hn r5 = (hn) r4;
+        if (au0.n(this.n, r5.n) == true) goto L8;
+    L17:
+        return false;
+    L8:
+        if (au0.n(this.o, r5.o) == false) goto L17;
+        if (au0.n(this.p, r5.p) == false) goto L17;
+        if (au0.n(this.q, r5.q) == false) goto L17;
+        if (au0.n(this.r, r5.r) == false) goto L17;
+        return true;
     }
 
     public final int hashCode() {
-        return Arrays.hashCode(new Object[]{this.n, this.o, this.p, this.q, this.r});
+        sj5 r0 = this.q;
+        String r1 = this.r;
+        return Arrays.hashCode(new Object[]{this.n, this.o, this.p, r0, r1});
     }
 
     public final String toString() {
@@ -73,13 +87,13 @@ public final class hn extends h2 {
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        int iR0 = ud3.R0(parcel, 20293);
-        ud3.M0(parcel, 1, this.n, i);
-        ud3.M0(parcel, 2, this.o, i);
-        ud3.M0(parcel, 3, this.p, i);
-        ud3.M0(parcel, 4, this.q, i);
-        ud3.O0(parcel, 5, this.r);
-        ud3.S0(parcel, iR0);
+    public final void writeToParcel(Parcel r4, int r5) {
+        int r0 = ud3.R0(r4, 20293);
+        ud3.M0(r4, 1, this.n, r5);
+        ud3.M0(r4, 2, this.o, r5);
+        ud3.M0(r4, 3, this.p, r5);
+        ud3.M0(r4, 4, this.q, r5);
+        ud3.O0(r4, 5, this.r);
+        ud3.S0(r4, r0);
     }
 }

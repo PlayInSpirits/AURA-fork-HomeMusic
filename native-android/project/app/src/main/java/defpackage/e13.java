@@ -9,32 +9,38 @@ public final class e13 implements ListIterator, x32 {
     public final List n;
     public int o;
 
-    public e13(List list, int i) {
-        this.n = list;
-        this.o = i;
+    public e13(List r1, int r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // java.util.ListIterator
-    public final void add(Object obj) {
-        this.n.add(this.o, obj);
+    public final void add(Object r3) {
+        this.n.add(this.o, r3);
         this.o++;
     }
 
     @Override // java.util.ListIterator, java.util.Iterator
     public final boolean hasNext() {
-        return this.o < this.n.size();
+        if (this.o >= this.n.size()) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // java.util.ListIterator
     public final boolean hasPrevious() {
-        return this.o > 0;
+        if (this.o <= 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // java.util.ListIterator, java.util.Iterator
     public final Object next() {
-        int i = this.o;
-        this.o = i + 1;
-        return this.n.get(i);
+        int r0 = this.o;
+        this.o = r0 + 1;
+        return this.n.get(r0);
     }
 
     @Override // java.util.ListIterator
@@ -44,9 +50,9 @@ public final class e13 implements ListIterator, x32 {
 
     @Override // java.util.ListIterator
     public final Object previous() {
-        int i = this.o - 1;
-        this.o = i;
-        return this.n.get(i);
+        int r0 = this.o - 1;
+        this.o = r0;
+        return this.n.get(r0);
     }
 
     @Override // java.util.ListIterator
@@ -56,13 +62,13 @@ public final class e13 implements ListIterator, x32 {
 
     @Override // java.util.ListIterator, java.util.Iterator
     public final void remove() {
-        int i = this.o - 1;
-        this.o = i;
-        this.n.remove(i);
+        int r0 = this.o - 1;
+        this.o = r0;
+        this.n.remove(r0);
     }
 
     @Override // java.util.ListIterator
-    public final void set(Object obj) {
-        this.n.set(this.o, obj);
+    public final void set(Object r2) {
+        this.n.set(this.o, r2);
     }
 }

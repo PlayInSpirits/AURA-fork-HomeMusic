@@ -8,9 +8,9 @@ import java.lang.reflect.InvocationHandler;
 public interface WebMessagePortBoundaryInterface {
     void close();
 
-    void postMessage(InvocationHandler invocationHandler);
+    void postMessage(InvocationHandler r1);
 
-    void setWebMessageCallback(InvocationHandler invocationHandler);
+    void setWebMessageCallback(InvocationHandler r1);
 
-    void setWebMessageCallback(InvocationHandler invocationHandler, Handler handler);
+    void setWebMessageCallback(InvocationHandler r1, Handler r2);
 }

@@ -13,68 +13,74 @@ public final class kw0 extends AnimatorListenerAdapter {
     public final /* synthetic */ Object b;
     public final /* synthetic */ Object c;
 
-    public kw0(dx4 dx4Var, oi oiVar) {
+    public kw0(dx4 r2, oi r3) {
         this.a = 1;
-        this.c = dx4Var;
-        this.b = oiVar;
+        this.c = r2;
+        this.b = r3;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public void onAnimationCancel(Animator animator) {
-        switch (this.a) {
-            case 2:
-                ((u75) this.b).a();
-                break;
-            default:
-                super.onAnimationCancel(animator);
-                break;
-        }
+    public void onAnimationCancel(Animator r2) {
+        switch(this.a) {
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        super.onAnimationCancel(r2);
+        return;
+    L6:
+        ((u75) this.b).a();
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationEnd(Animator animator) {
-        int i = this.a;
-        Object obj = this.c;
-        Object obj2 = this.b;
-        switch (i) {
-            case 0:
-                DrawerLayout drawerLayout = (DrawerLayout) obj2;
-                drawerLayout.c((NavigationView) obj, false);
-                drawerLayout.setScrimColor(-1728053248);
-                break;
-            case 1:
-                ((oi) obj2).remove(animator);
-                ((dx4) obj).z.remove(animator);
-                break;
-            case 2:
-                ((u75) obj2).c();
-                break;
-            default:
-                ta5 ta5Var = (ta5) obj2;
-                ta5Var.a.e(1.0f);
-                pa5.f((View) obj, ta5Var);
-                break;
-        }
+    public final void onAnimationEnd(Animator r3) {
+        int r0 = this.a;
+        Object r1 = this.c;
+        Object r2 = this.b;
+        switch(r0) {
+            case 0: goto L10;
+            case 1: goto L8;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ta5 r4 = (ta5) r2;
+        r4.a.e(1.0f);
+        pa5.f((View) r1, r4);
+        return;
+    L6:
+        ((u75) r2).c();
+        return;
+    L8:
+        ((oi) r2).remove(r3);
+        ((dx4) r1).z.remove(r3);
+        return;
+    L10:
+        DrawerLayout r5 = (DrawerLayout) r2;
+        r5.c((NavigationView) r1, false);
+        r5.setScrimColor(-1728053248);
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public void onAnimationStart(Animator animator) {
-        switch (this.a) {
-            case 1:
-                ((dx4) this.c).z.add(animator);
-                break;
-            case 2:
-                ((u75) this.b).b();
-                break;
-            default:
-                super.onAnimationStart(animator);
-                break;
-        }
+    public void onAnimationStart(Animator r2) {
+        switch(this.a) {
+            case 1: goto L8;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        super.onAnimationStart(r2);
+        return;
+    L6:
+        ((u75) this.b).b();
+        return;
+    L8:
+        ((dx4) this.c).z.add(r2);
     }
 
-    public /* synthetic */ kw0(int i, View view, Object obj) {
-        this.a = i;
-        this.b = obj;
-        this.c = view;
+    public /* synthetic */ kw0(int r1, View r2, Object r3) {
+        this.a = r1;
+        this.b = r3;
+        this.c = r2;
     }
 }

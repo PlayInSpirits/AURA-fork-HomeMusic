@@ -5,19 +5,22 @@ package defpackage;
 public final class f10 extends a10 {
     public final xf1 r;
 
-    public f10(xf1 xf1Var, p81 p81Var, ne0 ne0Var, int i, wv wvVar) {
-        super(p81Var, ne0Var, i, wvVar);
-        this.r = xf1Var;
+    public f10(xf1 r1, p81 r2, ne0 r3, int r4, wv r5) {
+        super(r2, r3, r4, r5);
+        this.r = r1;
     }
 
     @Override // defpackage.z00
-    public final z00 d(ne0 ne0Var, int i, wv wvVar) {
-        return new f10(this.r, this.q, ne0Var, i, wvVar);
+    public final z00 d(ne0 r7, int r8, wv r9) {
+        return new f10(this.r, this.q, r7, r8, r9);
     }
 
     @Override // defpackage.a10
-    public final Object f(q81 q81Var, vd0 vd0Var) {
-        Object objJ = te5.j(new c10(this, q81Var, null), vd0Var);
-        return objJ == xe0.n ? objJ : j15.a;
+    public final Object f(q81 r3, vd0 r4) {
+        Object r2 = te5.j(new c10(this, r3, null), r4);
+        if (r2 != xe0.n) goto L6;
+        return r2;
+    L6:
+        return j15.a;
     }
 }

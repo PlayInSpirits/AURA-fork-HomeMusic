@@ -9,14 +9,13 @@ public final class dj extends cx3 {
     public final r20 u;
     public final /* synthetic */ ej v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public dj(ej ejVar, r20 r20Var) {
-        this.v = ejVar;
-        ConstraintLayout constraintLayout = (ConstraintLayout) r20Var.o;
-        super(constraintLayout);
-        this.u = r20Var;
-        ((TextView) r20Var.q).setSelected(true);
-        constraintLayout.setOnClickListener(new p6(6, this));
-        constraintLayout.setOnLongClickListener(new q6(6, this));
+    public dj(ej r2, r20 r3) {
+        this.v = r2;
+        ConstraintLayout r4 = (ConstraintLayout) r3.o;
+        super(r4);
+        this.u = r3;
+        ((TextView) r3.q).setSelected(true);
+        r4.setOnClickListener(new p6(6, this));
+        r4.setOnLongClickListener(new q6(6, this));
     }
 }

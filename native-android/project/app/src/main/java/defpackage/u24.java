@@ -6,13 +6,13 @@ public final class u24 {
     public final boolean a;
     public final String b;
 
-    public u24(String str, boolean z) {
-        this.b = str;
-        this.a = z;
+    public u24(String r1, boolean r2) {
+        this.b = r1;
+        this.a = r2;
     }
 
-    public /* synthetic */ u24(boolean z, String str) {
-        this.a = z;
-        this.b = str;
+    public /* synthetic */ u24(boolean r1, String r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

@@ -10,16 +10,18 @@ public final class dv1 implements ev1 {
     public IBinder e;
 
     @Override // defpackage.ev1
-    public final void J0(int i, Bundle bundle) {
-        Parcel parcelObtain = Parcel.obtain();
-        try {
-            parcelObtain.writeInterfaceToken(ev1.d);
-            parcelObtain.writeInt(i);
-            parcelObtain.writeTypedObject(bundle, 0);
-            this.e.transact(1, parcelObtain, null, 1);
-        } finally {
-            parcelObtain.recycle();
-        }
+    public final void J0(int r3, Bundle r4) {
+        Parcel r0 = Parcel.obtain();
+        r0.writeInterfaceToken(ev1.d);     // Catch: Throwable -> L6
+        r0.writeInt(r3);     // Catch: Throwable -> L6
+        r0.writeTypedObject(r4, 0);     // Catch: Throwable -> L6
+        this.e.transact(1, r0, null, 1);     // Catch: Throwable -> L6
+        r0.recycle();
+        return;
+    L6:
+        th = move-exception;
+        r0.recycle();
+        throw th;
     }
 
     @Override // android.os.IInterface

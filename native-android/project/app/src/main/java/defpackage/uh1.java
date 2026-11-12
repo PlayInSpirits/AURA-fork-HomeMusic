@@ -5,14 +5,13 @@ package defpackage;
 public final class uh1 extends nh1 {
     public final String d;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public uh1(String str) {
-        super(au0.V(str), au0.V(str), z01.n);
-        str.getClass();
-        this.d = str;
-        if (str.length() > 0) {
-            return;
-        }
+    public uh1(String r4) {
+        r4.getClass();
+        super(au0.V(r4), au0.V(r4), z01.n);
+        this.d = r4;
+        if (r4.length() <= 0) goto L5;
+        return;
+    L5:
         kf2.n("serverClientId should not be empty");
         throw null;
     }

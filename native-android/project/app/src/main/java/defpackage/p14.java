@@ -8,11 +8,14 @@ import com.google.android.gms.common.internal.a;
 /* JADX INFO: loaded from: classes.dex */
 public final class p14 extends a {
     @Override // com.google.android.gms.common.internal.a
-    public final IInterface a(IBinder iBinder) {
-        iBinder.getClass();
-        int i = bv1.f;
-        IInterface iInterfaceQueryLocalInterface = iBinder.queryLocalInterface("com.google.android.gms.auth.blockstore.restorecredential.internal.IRestoreCredentialService");
-        return iInterfaceQueryLocalInterface instanceof cv1 ? (cv1) iInterfaceQueryLocalInterface : new av1(iBinder);
+    public final IInterface a(IBinder r2) {
+        r2.getClass();
+        int r1 = bv1.f;
+        IInterface r3 = r2.queryLocalInterface("com.google.android.gms.auth.blockstore.restorecredential.internal.IRestoreCredentialService");
+        if ((r3 instanceof cv1) == false) goto L7;
+        return (cv1) r3;
+    L7:
+        return new av1(r2);
     }
 
     @Override // com.google.android.gms.common.internal.a

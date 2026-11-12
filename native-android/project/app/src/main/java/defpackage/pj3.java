@@ -11,56 +11,62 @@ public final class pj3 extends AnimatorListenerAdapter {
     public final /* synthetic */ PlayerControlView b;
     public final /* synthetic */ qj3 c;
 
-    public /* synthetic */ pj3(qj3 qj3Var, PlayerControlView playerControlView, int i) {
-        this.a = i;
-        this.c = qj3Var;
-        this.b = playerControlView;
+    public /* synthetic */ pj3(qj3 r1, PlayerControlView r2, int r3) {
+        this.a = r3;
+        this.c = r1;
+        this.b = r2;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationEnd(Animator animator) {
-        int i = this.a;
-        PlayerControlView playerControlView = this.b;
-        qj3 qj3Var = this.c;
-        switch (i) {
-            case 0:
-                qj3Var.i(1);
-                if (qj3Var.C) {
-                    playerControlView.post(qj3Var.t);
-                    qj3Var.C = false;
-                }
-                break;
-            case 1:
-                qj3Var.i(2);
-                if (qj3Var.C) {
-                    playerControlView.post(qj3Var.t);
-                    qj3Var.C = false;
-                }
-                break;
-            default:
-                qj3Var.i(2);
-                if (qj3Var.C) {
-                    playerControlView.post(qj3Var.t);
-                    qj3Var.C = false;
-                }
-                break;
-        }
+    public final void onAnimationEnd(Animator r4) {
+        int r5 = this.a;
+        PlayerControlView r2 = this.b;
+        qj3 r3 = this.c;
+        switch(r5) {
+            case 0: goto L12;
+            case 1: goto L8;
+            default: goto L4;
+        };
+    L4:
+        r3.i(2);
+        if (r3.C == false) goto L16;
+        r2.post(r3.t);
+        r3.C = false;
+        return;
+    L16:
+        return;
+    L8:
+        r3.i(2);
+        if (r3.C == false) goto L17;
+        r2.post(r3.t);
+        r3.C = false;
+        return;
+    L17:
+        return;
+    L12:
+        r3.i(1);
+        if (r3.C == false) goto L18;
+        r2.post(r3.t);
+        r3.C = false;
+        return;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationStart(Animator animator) {
-        int i = this.a;
-        qj3 qj3Var = this.c;
-        switch (i) {
-            case 0:
-                qj3Var.i(3);
-                break;
-            case 1:
-                qj3Var.i(3);
-                break;
-            default:
-                qj3Var.i(3);
-                break;
-        }
+    public final void onAnimationStart(Animator r2) {
+        int r3 = this.a;
+        qj3 r1 = this.c;
+        switch(r3) {
+            case 0: goto L8;
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.i(3);
+        return;
+    L6:
+        r1.i(3);
+        return;
+    L8:
+        r1.i(3);
     }
 }

@@ -7,14 +7,14 @@ import android.database.sqlite.SQLiteProgram;
 public class cf1 implements vo4 {
     public final SQLiteProgram n;
 
-    public cf1(SQLiteProgram sQLiteProgram) {
-        sQLiteProgram.getClass();
-        this.n = sQLiteProgram;
+    public cf1(SQLiteProgram r1) {
+        r1.getClass();
+        this.n = r1;
     }
 
     @Override // defpackage.vo4
-    public final void c(int i, long j) {
-        this.n.bindLong(i, j);
+    public final void c(int r1, long r2) {
+        this.n.bindLong(r1, r2);
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
@@ -23,23 +23,23 @@ public class cf1 implements vo4 {
     }
 
     @Override // defpackage.vo4
-    public final void d(double d, int i) {
-        this.n.bindDouble(i, d);
+    public final void d(double r1, int r3) {
+        this.n.bindDouble(r3, r1);
     }
 
     @Override // defpackage.vo4
-    public final void e(int i) {
-        this.n.bindNull(i);
+    public final void e(int r1) {
+        this.n.bindNull(r1);
     }
 
     @Override // defpackage.vo4
-    public final void h(int i, String str) {
-        str.getClass();
-        this.n.bindString(i, str);
+    public final void h(int r1, String r2) {
+        r2.getClass();
+        this.n.bindString(r1, r2);
     }
 
     @Override // defpackage.vo4
-    public final void x(int i, byte[] bArr) {
-        this.n.bindBlob(i, bArr);
+    public final void x(int r1, byte[] r2) {
+        this.n.bindBlob(r1, r2);
     }
 }

@@ -6,8 +6,8 @@ public final class uu4 {
     public final gy0 a;
     public final int b;
 
-    public uu4(gy0 gy0Var, int i) {
-        this.a = gy0Var;
-        this.b = i;
+    public uu4(gy0 r1, int r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

@@ -12,70 +12,82 @@ public final class li2 implements m84 {
     public final long c;
     public final int d;
 
-    public li2(SparseArray sparseArray, long j, int i, long j2, long j3) {
-        t20 t20Var;
-        int i2;
-        this.b = sparseArray;
-        this.c = j;
-        this.d = i;
-        List list = (List) sparseArray.get(i);
-        if (list == null || list.isEmpty()) {
-            t20Var = null;
-        } else {
-            int size = list.size();
-            int[] iArrCopyOf = new int[size];
-            long[] jArrCopyOf = new long[size];
-            long[] jArrCopyOf2 = new long[size];
-            long[] jArrCopyOf3 = new long[size];
-            int i3 = 0;
-            for (int i4 = 0; i4 < size; i4++) {
-                ki2 ki2Var = (ki2) list.get(i4);
-                jArrCopyOf3[i4] = ki2Var.n;
-                jArrCopyOf[i4] = ki2Var.o;
-            }
-            while (true) {
-                i2 = size - 1;
-                if (i3 >= i2) {
-                    break;
-                }
-                int i5 = i3 + 1;
-                iArrCopyOf[i3] = (int) (jArrCopyOf[i5] - jArrCopyOf[i3]);
-                jArrCopyOf2[i3] = jArrCopyOf3[i5] - jArrCopyOf3[i3];
-                i3 = i5;
-            }
-            int i6 = i2;
-            while (i6 > 0 && jArrCopyOf3[i6] >= j) {
-                i6--;
-            }
-            iArrCopyOf[i6] = (int) ((j2 + j3) - jArrCopyOf[i6]);
-            jArrCopyOf2[i6] = j - jArrCopyOf3[i6];
-            if (i6 < i2) {
-                l93.q0("MatroskaExtractor", "Discarding trailing cue points with timestamps greater than total duration.");
-                int i7 = i6 + 1;
-                iArrCopyOf = Arrays.copyOf(iArrCopyOf, i7);
-                jArrCopyOf = Arrays.copyOf(jArrCopyOf, i7);
-                jArrCopyOf2 = Arrays.copyOf(jArrCopyOf2, i7);
-                jArrCopyOf3 = Arrays.copyOf(jArrCopyOf3, i7);
-            }
-            t20Var = new t20(iArrCopyOf, jArrCopyOf, jArrCopyOf2, jArrCopyOf3);
-        }
-        this.a = t20Var;
+    public li2(SparseArray r13, long r14, int r16, long r17, long r19) {
+        this.b = r13;
+        this.c = r14;
+        this.d = r16;
+        List r15 = (List) r13.get(r16);
+        if (r15 != null) goto L5;
+    L22:
+        t20 r18 = null;
+    L23:
+        this.a = r18;
+        return;
+    L5:
+        if (r15.isEmpty() == true) goto L22;
+        int r2 = r15.size();
+        int[] r3 = new int[r2];
+        long[] r4 = new long[r2];
+        long[] r5 = new long[r2];
+        long[] r6 = new long[r2];
+        int r7 = 0;
+        int r8 = 0;
+    L8:
+        if (r8 >= r2) goto L10;
+        ki2 r9 = (ki2) r15.get(r8);
+        r6[r8] = r9.n;
+        r4[r8] = r9.o;
+        r8 = r8 + 1;
+    L10:
+        int r110 = r2 - 1;
+        if (r7 >= r110) goto L13;
+        int r111 = r7 + 1;
+        r3[r7] = (int) (r4[r111] - r4[r7]);
+        r5[r7] = r6[r111] - r6[r7];
+        r7 = r111;
+        goto L10
+    L13:
+        int r10 = r110;
+    L14:
+        if (r10 <= 0) goto L18;
+        if (r6[r10] < r14) goto L18;
+        r10 = r10 - 1;
+    L18:
+        r3[r10] = (int) ((r17 + r19) - r4[r10]);
+        r5[r10] = r14 - r6[r10];
+        if (r10 >= r110) goto L21;
+        l93.q0("MatroskaExtractor", "Discarding trailing cue points with timestamps greater than total duration.");
+        int r11 = r10 + 1;
+        r3 = Arrays.copyOf(r3, r11);
+        r4 = Arrays.copyOf(r4, r11);
+        r5 = Arrays.copyOf(r5, r11);
+        r6 = Arrays.copyOf(r6, r11);
+    L21:
+        r18 = new t20(r3, r4, r5, r6);
+        goto L23
     }
 
     @Override // defpackage.m84
     public final boolean b() {
-        List list = (List) this.b.get(this.d);
-        return (list == null || list.isEmpty()) ? false : true;
+        int r0 = this.d;
+        List r1 = (List) this.b.get(r0);
+        if (r1 != null) goto L5;
+        return false;
+    L5:
+        if (r1.isEmpty() == true) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     @Override // defpackage.m84
-    public final l84 e(long j) {
-        t20 t20Var = this.a;
-        if (t20Var != null) {
-            return t20Var.e(j);
-        }
-        o84 o84Var = o84.c;
-        return new l84(o84Var, o84Var);
+    public final l84 e(long r1) {
+        t20 r0 = this.a;
+        if (r0 != null) goto L5;
+        o84 r2 = o84.c;
+        return new l84(r2, r2);
+    L5:
+        return r0.e(r1);
     }
 
     @Override // defpackage.m84

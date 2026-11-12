@@ -15,7 +15,7 @@ import java.util.List;
 /* JADX INFO: loaded from: classes.dex */
 public final class Share implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<Share> CREATOR = new j84(2);
+    public static final Parcelable.Creator<Share> CREATOR = null;
     private Date created;
     private String description;
 
@@ -28,46 +28,79 @@ public final class Share implements Parcelable {
     private String username;
     private int visitCount;
 
-    public /* synthetic */ Share(List list, String str, String str2, String str3, String str4, Date date, Date date2, Date date3, int i, int i2, xj0 xj0Var) {
-        this((i2 & 1) != 0 ? null : list, (i2 & 2) != 0 ? null : str, (i2 & 4) != 0 ? null : str2, (i2 & 8) != 0 ? null : str3, (i2 & 16) != 0 ? null : str4, (i2 & 32) != 0 ? null : date, (i2 & 64) != 0 ? null : date2, (i2 & 128) != 0 ? null : date3, (i2 & 256) != 0 ? 0 : i);
+    static {
+        CREATOR = new j84(2);
+    }
+
+    public /* synthetic */ Share(List r2, String r3, String r4, String r5, String r6, Date r7, Date r8, Date r9, int r10, int r11, xj0 r12) {
+        if ((r11 & 1) == 0) goto L6;
+        r2 = null;
+    L6:
+        if ((r11 & 2) == 0) goto L9;
+        r3 = null;
+    L9:
+        if ((r11 & 4) == 0) goto L12;
+        r4 = null;
+    L12:
+        if ((r11 & 8) == 0) goto L15;
+        r5 = null;
+    L15:
+        if ((r11 & 16) == 0) goto L18;
+        r6 = null;
+    L18:
+        if ((r11 & 32) == 0) goto L21;
+        r7 = null;
+    L21:
+        if ((r11 & 64) == 0) goto L24;
+        r8 = null;
+    L24:
+        if ((r11 & 128) == 0) goto L27;
+        r9 = null;
+    L27:
+        if ((r11 & 256) == 0) goto L29;
+        r10 = 0;
+    L29:
+        this(r2, r3, r4, r5, r6, r7, r8, r9, r10);
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    public static /* synthetic */ Share copy$default(Share share, List list, String str, String str2, String str3, String str4, Date date, Date date2, Date date3, int i, int i2, Object obj) {
-        if ((i2 & 1) != 0) {
-            list = share.entries;
-        }
-        if ((i2 & 2) != 0) {
-            str = share.id;
-        }
-        if ((i2 & 4) != 0) {
-            str2 = share.url;
-        }
-        if ((i2 & 8) != 0) {
-            str3 = share.description;
-        }
-        if ((i2 & 16) != 0) {
-            str4 = share.username;
-        }
-        if ((i2 & 32) != 0) {
-            date = share.created;
-        }
-        if ((i2 & 64) != 0) {
-            date2 = share.expires;
-        }
-        if ((i2 & 128) != 0) {
-            date3 = share.lastVisited;
-        }
-        if ((i2 & 256) != 0) {
-            i = share.visitCount;
-        }
-        Date date4 = date3;
-        int i3 = i;
-        Date date5 = date;
-        Date date6 = date2;
-        String str5 = str4;
-        String str6 = str2;
-        return share.copy(list, str, str6, str3, str5, date5, date6, date4, i3);
+    public static /* synthetic */ Share copy$default(Share r0, List r1, String r2, String r3, String r4, String r5, Date r6, Date r7, Date r8, int r9, int r10, Object r11) {
+        if ((r10 & 1) == 0) goto L6;
+        r1 = r0.entries;
+    L6:
+        if ((r10 & 2) == 0) goto L9;
+        r2 = r0.id;
+    L9:
+        if ((r10 & 4) == 0) goto L12;
+        r3 = r0.url;
+    L12:
+        if ((r10 & 8) == 0) goto L15;
+        r4 = r0.description;
+    L15:
+        if ((r10 & 16) == 0) goto L18;
+        r5 = r0.username;
+    L18:
+        if ((r10 & 32) == 0) goto L21;
+        r6 = r0.created;
+    L21:
+        if ((r10 & 64) == 0) goto L24;
+        r7 = r0.expires;
+    L24:
+        if ((r10 & 128) == 0) goto L27;
+        r8 = r0.lastVisited;
+    L27:
+        if ((r10 & 256) == 0) goto L29;
+        r9 = r0.visitCount;
+    L29:
+        Date r12 = r8;
+        int r13 = r9;
+        Date r14 = r6;
+        Date r15 = r7;
+        String r16 = r4;
+        String r17 = r5;
+        String r18 = r3;
+        List r19 = r1;
+        return r0.copy(r19, r2, r18, r16, r17, r14, r15, r12, r13);
     }
 
     public final List<Child> component1() {
@@ -106,8 +139,8 @@ public final class Share implements Parcelable {
         return this.visitCount;
     }
 
-    public final Share copy(List<? extends Child> list, String str, String str2, String str3, String str4, Date date, Date date2, Date date3, int i) {
-        return new Share(list, str, str2, str3, str4, date, date2, date3, i);
+    public final Share copy(List<? extends Child> r1, String r2, String r3, String r4, String r5, Date r6, Date r7, Date r8, int r9) {
+        return new Share(r1, r2, r3, r4, r5, r6, r7, r8, r9);
     }
 
     @Override // android.os.Parcelable
@@ -115,15 +148,42 @@ public final class Share implements Parcelable {
         return 0;
     }
 
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Share)) {
-            return false;
-        }
-        Share share = (Share) obj;
-        return h12.c(this.entries, share.entries) && h12.c(this.id, share.id) && h12.c(this.url, share.url) && h12.c(this.description, share.description) && h12.c(this.username, share.username) && h12.c(this.created, share.created) && h12.c(this.expires, share.expires) && h12.c(this.lastVisited, share.lastVisited) && this.visitCount == share.visitCount;
+    public boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if ((r5 instanceof Share) == true) goto L8;
+        return false;
+    L8:
+        Share r6 = (Share) r5;
+        if (h12.c(this.entries, r6.entries) == true) goto L12;
+        return false;
+    L12:
+        if (h12.c(this.id, r6.id) == true) goto L15;
+        return false;
+    L15:
+        if (h12.c(this.url, r6.url) == true) goto L18;
+        return false;
+    L18:
+        if (h12.c(this.description, r6.description) == true) goto L21;
+        return false;
+    L21:
+        if (h12.c(this.username, r6.username) == true) goto L24;
+        return false;
+    L24:
+        if (h12.c(this.created, r6.created) == true) goto L27;
+        return false;
+    L27:
+        if (h12.c(this.expires, r6.expires) == true) goto L30;
+        return false;
+    L30:
+        if (h12.c(this.lastVisited, r6.lastVisited) == true) goto L33;
+        return false;
+    L33:
+        if (this.visitCount == r6.visitCount) goto L35;
+        return false;
+    L35:
+        return true;
     }
 
     public final Date getCreated() {
@@ -163,124 +223,181 @@ public final class Share implements Parcelable {
     }
 
     public int hashCode() {
-        List<? extends Child> list = this.entries;
-        int iHashCode = (list == null ? 0 : list.hashCode()) * 31;
-        String str = this.id;
-        int iHashCode2 = (iHashCode + (str == null ? 0 : str.hashCode())) * 31;
-        String str2 = this.url;
-        int iHashCode3 = (iHashCode2 + (str2 == null ? 0 : str2.hashCode())) * 31;
-        String str3 = this.description;
-        int iHashCode4 = (iHashCode3 + (str3 == null ? 0 : str3.hashCode())) * 31;
-        String str4 = this.username;
-        int iHashCode5 = (iHashCode4 + (str4 == null ? 0 : str4.hashCode())) * 31;
-        Date date = this.created;
-        int iHashCode6 = (iHashCode5 + (date == null ? 0 : date.hashCode())) * 31;
-        Date date2 = this.expires;
-        int iHashCode7 = (iHashCode6 + (date2 == null ? 0 : date2.hashCode())) * 31;
-        Date date3 = this.lastVisited;
-        return Integer.hashCode(this.visitCount) + ((iHashCode7 + (date3 != null ? date3.hashCode() : 0)) * 31);
+        List<? extends Child> r0 = this.entries;
+        int r1 = 0;
+        if (r0 != null) goto L5;
+        int r2 = 0;
+    L6:
+        int r3 = r2 * 31;
+        String r4 = this.id;
+        if (r4 != null) goto L9;
+        int r5 = 0;
+    L10:
+        int r6 = (r3 + r5) * 31;
+        String r7 = this.url;
+        if (r7 != null) goto L13;
+        int r8 = 0;
+    L14:
+        int r9 = (r6 + r8) * 31;
+        String r10 = this.description;
+        if (r10 != null) goto L17;
+        int r11 = 0;
+    L18:
+        int r12 = (r9 + r11) * 31;
+        String r13 = this.username;
+        if (r13 != null) goto L21;
+        int r14 = 0;
+    L22:
+        int r15 = (r12 + r14) * 31;
+        Date r16 = this.created;
+        if (r16 != null) goto L25;
+        int r17 = 0;
+    L26:
+        int r18 = (r15 + r17) * 31;
+        Date r19 = this.expires;
+        if (r19 != null) goto L29;
+        int r20 = 0;
+    L30:
+        int r21 = (r18 + r20) * 31;
+        Date r22 = this.lastVisited;
+        if (r22 == null) goto L35;
+        r1 = r22.hashCode();
+    L35:
+        return Integer.hashCode(this.visitCount) + ((r21 + r1) * 31);
+    L29:
+        r20 = r19.hashCode();
+        goto L30
+    L25:
+        r17 = r16.hashCode();
+        goto L26
+    L21:
+        r14 = r13.hashCode();
+        goto L22
+    L17:
+        r11 = r10.hashCode();
+        goto L18
+    L13:
+        r8 = r7.hashCode();
+        goto L14
+    L9:
+        r5 = r4.hashCode();
+        goto L10
+    L5:
+        r2 = r0.hashCode();
+        goto L6
     }
 
-    public final void setCreated(Date date) {
-        this.created = date;
+    public final void setCreated(Date r1) {
+        this.created = r1;
     }
 
-    public final void setDescription(String str) {
-        this.description = str;
+    public final void setDescription(String r1) {
+        this.description = r1;
     }
 
-    public final void setEntries(List<? extends Child> list) {
-        this.entries = list;
+    public final void setEntries(List<? extends Child> r1) {
+        this.entries = r1;
     }
 
-    public final void setExpires(Date date) {
-        this.expires = date;
+    public final void setExpires(Date r1) {
+        this.expires = r1;
     }
 
-    public final void setId(String str) {
-        this.id = str;
+    public final void setId(String r1) {
+        this.id = r1;
     }
 
-    public final void setLastVisited(Date date) {
-        this.lastVisited = date;
+    public final void setLastVisited(Date r1) {
+        this.lastVisited = r1;
     }
 
-    public final void setUrl(String str) {
-        this.url = str;
+    public final void setUrl(String r1) {
+        this.url = r1;
     }
 
-    public final void setUsername(String str) {
-        this.username = str;
+    public final void setUsername(String r1) {
+        this.username = r1;
     }
 
-    public final void setVisitCount(int i) {
-        this.visitCount = i;
+    public final void setVisitCount(int r1) {
+        this.visitCount = r1;
     }
 
     public String toString() {
-        List<? extends Child> list = this.entries;
-        String str = this.id;
-        String str2 = this.url;
-        String str3 = this.description;
-        String str4 = this.username;
-        Date date = this.created;
-        Date date2 = this.expires;
-        Date date3 = this.lastVisited;
-        int i = this.visitCount;
-        StringBuilder sb = new StringBuilder("Share(entries=");
-        sb.append(list);
-        sb.append(", id=");
-        sb.append(str);
-        sb.append(", url=");
-        f34.n(sb, str2, ", description=", str3, ", username=");
-        sb.append(str4);
-        sb.append(", created=");
-        sb.append(date);
-        sb.append(", expires=");
-        sb.append(date2);
-        sb.append(", lastVisited=");
-        sb.append(date3);
-        sb.append(", visitCount=");
-        return f34.i(sb, i, ")");
+        List<? extends Child> r0 = this.entries;
+        String r1 = this.id;
+        String r2 = this.url;
+        String r3 = this.description;
+        String r4 = this.username;
+        Date r5 = this.created;
+        Date r6 = this.expires;
+        Date r7 = this.lastVisited;
+        int r10 = this.visitCount;
+        StringBuilder r8 = new StringBuilder("Share(entries=");
+        r8.append(r0);
+        r8.append(", id=");
+        r8.append(r1);
+        r8.append(", url=");
+        f34.n(r8, r2, ", description=", r3, ", username=");
+        r8.append(r4);
+        r8.append(", created=");
+        r8.append(r5);
+        r8.append(", expires=");
+        r8.append(r6);
+        r8.append(", lastVisited=");
+        r8.append(r7);
+        r8.append(", visitCount=");
+        return f34.i(r8, r10, ")");
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        parcel.getClass();
-        List<? extends Child> list = this.entries;
-        if (list == null) {
-            parcel.writeInt(0);
-        } else {
-            parcel.writeInt(1);
-            parcel.writeInt(list.size());
-            Iterator<? extends Child> it = list.iterator();
-            while (it.hasNext()) {
-                parcel.writeParcelable(it.next(), i);
-            }
-        }
-        parcel.writeString(this.id);
-        parcel.writeString(this.url);
-        parcel.writeString(this.description);
-        parcel.writeString(this.username);
-        parcel.writeSerializable(this.created);
-        parcel.writeSerializable(this.expires);
-        parcel.writeSerializable(this.lastVisited);
-        parcel.writeInt(this.visitCount);
+    public final void writeToParcel(Parcel r3, int r4) {
+        r3.getClass();
+        List<? extends Child> r0 = this.entries;
+        if (r0 != null) goto L5;
+        r3.writeInt(0);
+    L9:
+        r3.writeString(this.id);
+        r3.writeString(this.url);
+        r3.writeString(this.description);
+        r3.writeString(this.username);
+        r3.writeSerializable(this.created);
+        r3.writeSerializable(this.expires);
+        r3.writeSerializable(this.lastVisited);
+        r3.writeInt(this.visitCount);
+        return;
+    L5:
+        r3.writeInt(1);
+        r3.writeInt(r0.size());
+        Iterator<? extends Child> r1 = r0.iterator();
+    L7:
+        if (r1.hasNext() == false) goto L9;
+        r3.writeParcelable(r1.next(), r4);
+        goto L7
     }
 
-    public Share(List<? extends Child> list, String str, String str2, String str3, String str4, Date date, Date date2, Date date3, int i) {
-        this.entries = list;
-        this.id = str;
-        this.url = str2;
-        this.description = str3;
-        this.username = str4;
-        this.created = date;
-        this.expires = date2;
-        this.lastVisited = date3;
-        this.visitCount = i;
+    public Share(List<? extends Child> r1, String r2, String r3, String r4, String r5, Date r6, Date r7, Date r8, int r9) {
+        this.entries = r1;
+        this.id = r2;
+        this.url = r3;
+        this.description = r4;
+        this.username = r5;
+        this.created = r6;
+        this.expires = r7;
+        this.lastVisited = r8;
+        this.visitCount = r9;
     }
 
     public Share() {
-        this(null, null, null, null, null, null, null, null, 0, 511, null);
+        List r1 = null;
+        String r2 = null;
+        String r3 = null;
+        String r4 = null;
+        String r5 = null;
+        Date r6 = null;
+        Date r7 = null;
+        Date r8 = null;
+        int r9 = 0;
+        this(r1, r2, r3, r4, r5, r6, r7, r8, r9, 511, null);
     }
 }

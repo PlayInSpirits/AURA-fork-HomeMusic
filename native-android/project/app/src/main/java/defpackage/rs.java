@@ -14,99 +14,114 @@ public final class rs implements t04 {
     public final Object b;
     public final Object c;
 
-    public rs(Resources resources, t04 t04Var) {
+    public rs(Resources r2, t04 r3) {
         this.a = 0;
-        this.c = resources;
-        this.b = t04Var;
+        this.c = r2;
+        this.b = r3;
     }
 
     @Override // defpackage.t04
-    public final boolean a(Object obj, db3 db3Var) {
-        switch (this.a) {
-            case 0:
-                return ((t04) this.b).a(obj, db3Var);
-            case 1:
-                return "android.resource".equals(((Uri) obj).getScheme());
-            default:
-                return true;
-        }
+    public final boolean a(Object r2, db3 r3) {
+        switch(this.a) {
+            case 0: goto L9;
+            case 1: goto L7;
+            default: goto L4;
+        };
+    L4:
+        InputStream r4 = (InputStream) r2;
+        return true;
+    L7:
+        return "android.resource".equals(((Uri) r2).getScheme());
+    L9:
+        return ((t04) this.b).a(r2, r3);
     }
 
     @Override // defpackage.t04
-    public final q04 b(Object obj, int i, int i2, db3 db3Var) {
-        boolean z;
-        aw3 aw3Var;
-        n21 n21Var;
-        switch (this.a) {
-            case 0:
-                q04 q04VarB = ((t04) this.b).b(obj, i, i2, db3Var);
-                Resources resources = (Resources) this.c;
-                if (q04VarB == null) {
-                    return null;
-                }
-                return new at(resources, q04VarB);
-            case 1:
-                q04 q04VarC = ((v04) this.b).c((Uri) obj, db3Var);
-                if (q04VarC == null) {
-                    return null;
-                }
-                return vv0.a((zs) this.c, (Drawable) ((wh1) q04VarC).get(), i, i2);
-            default:
-                InputStream inputStream = (InputStream) obj;
-                if (inputStream instanceof aw3) {
-                    aw3Var = (aw3) inputStream;
-                    z = false;
-                } else {
-                    z = true;
-                    aw3Var = new aw3(inputStream, (qj0) this.c);
-                }
-                ArrayDeque arrayDeque = n21.p;
-                synchronized (arrayDeque) {
-                    n21Var = (n21) arrayDeque.poll();
-                    break;
-                }
-                if (n21Var == null) {
-                    n21Var = new n21();
-                }
-                n21 n21Var2 = n21Var;
-                n21Var2.n = aw3Var;
-                mg2 mg2Var = new mg2(n21Var2);
-                wo0 wo0Var = new wo0(aw3Var, n21Var2);
-                try {
-                    iu0 iu0Var = (iu0) this.b;
-                    ArrayList arrayList = iu0Var.d;
-                    qj0 qj0Var = iu0Var.c;
-                    yc5 yc5Var = new yc5();
-                    h12.f(qj0Var, "Argument must not be null");
-                    yc5Var.o = qj0Var;
-                    h12.f(arrayList, "Argument must not be null");
-                    yc5Var.p = arrayList;
-                    yc5Var.n = new hg3(mg2Var, qj0Var);
-                    at atVarA = iu0Var.a(yc5Var, i, i2, db3Var, wo0Var);
-                    n21Var2.o = null;
-                    n21Var2.n = null;
-                    synchronized (arrayDeque) {
-                        arrayDeque.offer(n21Var2);
-                        break;
-                    }
-                    return atVarA;
-                } finally {
-                    n21Var2.o = null;
-                    n21Var2.n = null;
-                    ArrayDeque arrayDeque2 = n21.p;
-                    synchronized (arrayDeque2) {
-                        arrayDeque2.offer(n21Var2);
-                        if (z) {
-                            aw3Var.f();
-                        }
-                    }
-                }
-        }
+    public final q04 b(Object r12, int r13, int r14, db3 r15) {
+        switch(this.a) {
+            case 0: goto L48;
+            case 1: goto L43;
+            default: goto L4;
+        };
+    L4:
+        InputStream r16 = (InputStream) r12;
+        if ((r16 instanceof aw3) == false) goto L7;
+        aw3 r17 = (aw3) r16;
+        boolean r2 = false;
+    L8:
+        ArrayDeque r3 = n21.p;
+        monitor-enter(r3);
+        n21 r0 = (n21) r3.poll();     // Catch: Throwable -> L39
+        monitor-exit(r3);     // Catch: Throwable -> L39
+        if (r0 != null) goto L14;
+        r0 = new n21();
+    L14:
+        n21 r4 = r0;
+        r4.n = r17;
+        mg2 r1 = new mg2(r4);
+        wo0 r10 = new wo0(r17, r4);
+        iu0 r5 = (iu0) this.b;     // Catch: Throwable -> L27
+        ArrayList r11 = r5.d;     // Catch: Throwable -> L27
+        qj0 r7 = r5.c;     // Catch: Throwable -> L27
+        yc5 r6 = new yc5();     // Catch: Throwable -> L27
+        h12.f(r7, "Argument must not be null");     // Catch: Throwable -> L27
+        r6.o = r7;     // Catch: Throwable -> L27
+        h12.f(r11, "Argument must not be null");     // Catch: Throwable -> L27
+        r6.p = r11;     // Catch: Throwable -> L27
+        r6.n = new hg3(r1, r7);     // Catch: Throwable -> L27
+        at r18 = r5.a(r6, r13, r14, r15, r10);     // Catch: Throwable -> L27
+        r4.o = null;
+        r4.n = null;
+        monitor-enter(r3);
+        r3.offer(r4);     // Catch: Throwable -> L23
+        monitor-exit(r3);     // Catch: Throwable -> L23
+        if (r2 == false) goto L22;
+        r17.f();
+    L22:
+        return r18;
+    L23:
+        th = move-exception;
+        throw th;
+    L27:
+        th = move-exception;
+        r4.o = null;
+        r4.n = null;
+        ArrayDeque r19 = n21.p;
+        monitor-enter(r19);
+        r19.offer(r4);     // Catch: Throwable -> L35
+        if (r2 == false) goto L61;
+        r17.f();
+        throw th;
+    L61:
+        throw th;
+    L35:
+        th = move-exception;
+        throw th;
+    L39:
+        th = move-exception;
+        throw th;
+    L7:
+        r2 = true;
+        r17 = new aw3(r16, (qj0) this.c);
+        goto L8
+    L43:
+        q04 r110 = ((v04) this.b).c((Uri) r12, r15);
+        if (r110 != null) goto L47;
+        return null;
+    L47:
+        return vv0.a((zs) this.c, (Drawable) ((wh1) r110).get(), r13, r14);
+    L48:
+        q04 r111 = ((t04) this.b).b(r12, r13, r14, r15);
+        Resources r112 = (Resources) this.c;
+        if (r111 != null) goto L52;
+        return null;
+    L52:
+        return new at(r112, r111);
     }
 
-    public /* synthetic */ rs(int i, Object obj, Object obj2) {
-        this.a = i;
-        this.b = obj;
-        this.c = obj2;
+    public /* synthetic */ rs(int r1, Object r2, Object r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 }

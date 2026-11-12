@@ -5,91 +5,85 @@ package defpackage;
 public final class mz2 {
     public final w03 a;
 
-    public /* synthetic */ mz2(w03 w03Var) {
-        this.a = w03Var;
+    public /* synthetic */ mz2(w03 r1) {
+        this.a = r1;
     }
 
-    public static final Object a(w03 w03Var) {
-        Object objG = w03Var.g(null);
-        if (objG == null) {
-            return null;
-        }
-        if (!(objG instanceof q03)) {
-            w03Var.j(null);
-            return objG;
-        }
-        q03 q03Var = (q03) objG;
-        if (q03Var.h()) {
-            kf2.m("List is empty.");
-            return null;
-        }
-        int i = q03Var.b - 1;
-        Object objF = q03Var.f(i);
-        q03Var.k(i);
-        objF.getClass();
-        if (q03Var.h()) {
-            w03Var.j(null);
-        }
-        if (q03Var.b == 1) {
-            w03Var.l(null, q03Var.e());
-        }
-        return objF;
+    public static final Object a(w03 r5) {
+        Object r1 = r5.g(null);
+        if (r1 != null) goto L6;
+        return null;
+    L6:
+        if ((r1 instanceof q03) == false) goto L18;
+        q03 r2 = (q03) r1;
+        if (r2.h() == true) goto L16;
+        int r3 = r2.b - 1;
+        Object r4 = r2.f(r3);
+        r2.k(r3);
+        r4.getClass();
+        if (r2.h() == false) goto L13;
+        r5.j(null);
+    L13:
+        if (r2.b != 1) goto L15;
+        r5.l(null, r2.e());
+    L15:
+        return r4;
+    L16:
+        kf2.m("List is empty.");
+        return null;
+    L18:
+        r5.j(null);
+        return r1;
     }
 
-    /* JADX WARN: Code duplicated, block: B:21:0x005c A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:22:0x005e A[LOOP:0: B:9:0x001c->B:22:0x005e, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:25:0x0061 A[EDGE_INSN: B:25:0x0061->B:23:0x0061 BREAK  A[LOOP:0: B:9:0x001c->B:22:0x005e], SYNTHETIC] */
-    public static final q03 b(w03 w03Var) {
-        if (w03Var.i()) {
-            q03 q03Var = t73.b;
-            q03Var.getClass();
-            return q03Var;
-        }
-        q03 q03Var2 = new q03();
-        Object[] objArr = w03Var.c;
-        long[] jArr = w03Var.a;
-        int length = jArr.length - 2;
-        if (length >= 0) {
-            int i = 0;
-            while (true) {
-                long j = jArr[i];
-                if ((((~j) << 7) & j & (-9187201950435737472L)) == -9187201950435737472L) {
-                    if (i != length) {
-                        break;
-                        break;
-                    }
-                    i++;
-                } else {
-                    int i2 = 8 - ((~(i - length)) >>> 31);
-                    for (int i3 = 0; i3 < i2; i3++) {
-                        if ((255 & j) < 128) {
-                            Object obj = objArr[(i << 3) + i3];
-                            if (obj instanceof q03) {
-                                q03Var2.b((q03) obj);
-                            } else {
-                                obj.getClass();
-                                q03Var2.a(obj);
-                            }
-                        }
-                        j >>= 8;
-                    }
-                    if (i2 != 8) {
-                        break;
-                    }
-                    if (i != length) {
-                        break;
-                    }
-                    i++;
-                }
-            }
-        }
-        return q03Var2;
+    public static final q03 b(w03 r14) {
+        if (r14.i() == false) goto L6;
+        q03 r15 = t73.b;
+        r15.getClass();
+        return r15;
+    L6:
+        q03 r0 = new q03();
+        Object[] r1 = r14.c;
+        long[] r16 = r14.a;
+        int r2 = r16.length - 2;
+        if (r2 < 0) goto L23;
+        int r4 = 0;
+    L9:
+        long r5 = r16[r4];
+        if (((((~r5) << 7) & r5) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L21;
+        int r7 = 8 - ((~(r4 - r2)) >>> 31);
+        int r9 = 0;
+    L12:
+        if (r9 >= r7) goto L20;
+        if ((255 & r5) >= 128) goto L19;
+        Object r10 = r1[(r4 << 3) + r9];
+        if ((r10 instanceof q03) == false) goto L18;
+        r0.b((q03) r10);
+        goto L19
+    L18:
+        r10.getClass();
+        r0.a(r10);
+    L19:
+        r5 = r5 >> 8;
+        r9 = r9 + 1;
+        goto L12
+    L20:
+        if (r7 != 8) goto L23;
+    L21:
+        if (r4 == r2) goto L23;
+        r4 = r4 + 1;
+    L23:
+        return r0;
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof mz2) {
-            return this.a.equals(((mz2) obj).a);
-        }
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof mz2) == false) goto L11;
+        w03 r3 = ((mz2) r2).a;
+        if (this.a.equals(r3) == true) goto L9;
+        return false;
+    L9:
+        return true;
+    L11:
         return false;
     }
 

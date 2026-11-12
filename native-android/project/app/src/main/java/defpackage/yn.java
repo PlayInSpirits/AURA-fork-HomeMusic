@@ -19,101 +19,99 @@ public final class yn {
     public final float k;
     public final String l;
 
-    public yn(ArrayList arrayList, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, float f, String str) {
-        this.a = arrayList;
-        this.b = i;
-        this.c = i2;
-        this.d = i3;
-        this.e = i4;
-        this.f = i5;
-        this.g = i6;
-        this.h = i7;
-        this.i = i8;
-        this.j = i9;
-        this.k = f;
-        this.l = str;
+    public yn(ArrayList r1, int r2, int r3, int r4, int r5, int r6, int r7, int r8, int r9, int r10, float r11, String r12) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r6;
+        this.g = r7;
+        this.h = r8;
+        this.i = r9;
+        this.j = r10;
+        this.k = r11;
+        this.l = r12;
     }
 
-    public static yn a(be3 be3Var) {
-        String str;
-        int i;
-        int i2;
-        int i3;
-        int i4;
-        int i5;
-        int i6;
-        float f;
-        int i7;
-        int i8;
-        try {
-            be3Var.O(4);
-            int iA = (be3Var.A() & 3) + 1;
-            if (iA == 3) {
-                throw new IllegalStateException();
-            }
-            ArrayList arrayList = new ArrayList();
-            int iA2 = be3Var.A() & 31;
-            for (int i9 = 0; i9 < iA2; i9++) {
-                int iH = be3Var.H();
-                int i10 = be3Var.b;
-                be3Var.O(iH);
-                byte[] bArr = be3Var.a;
-                byte[] bArr2 = new byte[iH + 4];
-                System.arraycopy(i40.a, 0, bArr2, 0, 4);
-                System.arraycopy(bArr, i10, bArr2, 4, iH);
-                arrayList.add(bArr2);
-            }
-            int iA3 = be3Var.A();
-            for (int i11 = 0; i11 < iA3; i11++) {
-                int iH2 = be3Var.H();
-                int i12 = be3Var.b;
-                be3Var.O(iH2);
-                byte[] bArr3 = be3Var.a;
-                byte[] bArr4 = new byte[iH2 + 4];
-                System.arraycopy(i40.a, 0, bArr4, 0, 4);
-                System.arraycopy(bArr3, i12, bArr4, 4, iH2);
-                arrayList.add(bArr4);
-            }
-            if (iA2 > 0) {
-                u13 u13VarL = uc5.L((byte[]) arrayList.get(0), 4, ((byte[]) arrayList.get(0)).length);
-                int i13 = u13VarL.e;
-                int i14 = u13VarL.f;
-                int i15 = u13VarL.h + 8;
-                int i16 = u13VarL.i + 8;
-                int i17 = u13VarL.p;
-                int i18 = u13VarL.q;
-                int i19 = u13VarL.r;
-                int i20 = u13VarL.s;
-                float f2 = u13VarL.g;
-                int i21 = u13VarL.a;
-                int i22 = u13VarL.b;
-                int i23 = u13VarL.c;
-                byte[] bArr5 = i40.a;
-                str = String.format("avc1.%02X%02X%02X", Integer.valueOf(i21), Integer.valueOf(i22), Integer.valueOf(i23));
-                i4 = i18;
-                i5 = i19;
-                i6 = i20;
-                f = f2;
-                i2 = i14;
-                i3 = i15;
-                i7 = i16;
-                i8 = i17;
-                i = i13;
-            } else {
-                str = null;
-                i = -1;
-                i2 = -1;
-                i3 = -1;
-                i4 = -1;
-                i5 = -1;
-                i6 = 16;
-                f = 1.0f;
-                i7 = -1;
-                i8 = -1;
-            }
-            return new yn(arrayList, iA, i, i2, i3, i7, i8, i4, i5, i6, f, str);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw ParserException.a(e, "Error parsing AVC config");
-        }
+    public static yn a(be3 r17) {
+        r17.O(4);     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r6 = (r17.A() & 3) + 1;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        if (r6 == 3) goto L18;
+        ArrayList r5 = new ArrayList();     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r2 = r17.A() & 31;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r4 = 0;
+    L6:
+        if (r4 >= r2) goto L8;
+        int r7 = r17.H();     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r8 = r17.b;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        r17.O(r7);     // Catch: ArrayIndexOutOfBoundsException -> L19
+        byte[] r9 = r17.a;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        byte[] r11 = new byte[r7 + 4];     // Catch: ArrayIndexOutOfBoundsException -> L19
+        System.arraycopy(i40.a, 0, r11, 0, 4);     // Catch: ArrayIndexOutOfBoundsException -> L19
+        System.arraycopy(r9, r8, r11, 4, r7);     // Catch: ArrayIndexOutOfBoundsException -> L19
+        r5.add(r11);     // Catch: ArrayIndexOutOfBoundsException -> L19
+        r4 = r4 + 1;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        goto L6
+    L8:
+        int r10 = r17.A();     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r12 = 0;
+    L9:
+        if (r12 >= r10) goto L11;
+        int r13 = r17.H();     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r14 = r17.b;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        r17.O(r13);     // Catch: ArrayIndexOutOfBoundsException -> L19
+        byte[] r15 = r17.a;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        byte[] r16 = new byte[r13 + 4];     // Catch: ArrayIndexOutOfBoundsException -> L19
+        System.arraycopy(i40.a, 0, r16, 0, 4);     // Catch: ArrayIndexOutOfBoundsException -> L19
+        System.arraycopy(r15, r14, r16, 4, r13);     // Catch: ArrayIndexOutOfBoundsException -> L19
+        r5.add(r16);     // Catch: ArrayIndexOutOfBoundsException -> L19
+        r12 = r12 + 1;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        goto L9
+    L11:
+        if (r2 <= 0) goto L14;
+        u13 r0 = uc5.L((byte[]) r5.get(0), 4, ((byte[]) r5.get(0)).length);     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r1 = r0.e;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r3 = r0.f;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r18 = r0.h + 8;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r19 = r0.i + 8;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r20 = r0.p;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r21 = r0.q;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r22 = r0.r;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r110 = r0.s;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        float r111 = r0.g;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r112 = r0.a;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r113 = r0.b;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r23 = r0.c;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        byte[] r114 = i40.a;     // Catch: ArrayIndexOutOfBoundsException -> L19
+        String r24 = String.format("avc1.%02X%02X%02X", new Object[]{Integer.valueOf(r112), Integer.valueOf(r113), Integer.valueOf(r23)});     // Catch: ArrayIndexOutOfBoundsException -> L19
+        int r115 = r21;
+        int r116 = r22;
+        int r117 = r110;
+        float r118 = r111;
+        int r25 = r3;
+        int r26 = r18;
+        int r119 = r19;
+        int r120 = r20;
+        int r27 = r1;
+    L16:
+        return new yn(r5, r6, r27, r25, r26, r119, r120, r115, r116, r117, r118, r24);
+    L14:
+        r24 = null;
+        r27 = -1;
+        r25 = -1;
+        r26 = -1;
+        r115 = -1;
+        r116 = -1;
+        r117 = 16;
+        r118 = 1.0f;
+        r119 = -1;
+        r120 = -1;
+        goto L16
+    L18:
+        throw new IllegalStateException();     // Catch: ArrayIndexOutOfBoundsException -> L19
+    L19:
+        e = move-exception;
+        throw ParserException.a(e, "Error parsing AVC config");
     }
 }

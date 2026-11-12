@@ -7,48 +7,55 @@ import android.view.WindowInsets;
 public class va5 extends bb5 {
     public final WindowInsets.Builder e;
 
-    public va5(pb5 pb5Var) {
-        super(pb5Var);
-        WindowInsets windowInsetsF = pb5Var.f();
-        this.e = windowInsetsF != null ? lm4.j(windowInsetsF) : ek2.k();
+    public va5(pb5 r1) {
+        super(r1);
+        WindowInsets r2 = r1.f();
+        if (r2 == null) goto L5;
+        WindowInsets.Builder r3 = lm4.j(r2);
+    L6:
+        this.e = r3;
+        return;
+    L5:
+        r3 = ek2.k();
+        goto L6
     }
 
     @Override // defpackage.bb5
     public pb5 b() {
         a();
-        pb5 pb5VarG = pb5.g(this.e.build(), null);
-        vz1[] vz1VarArr = this.b;
-        mb5 mb5Var = pb5VarG.a;
-        mb5Var.v(vz1VarArr);
-        mb5Var.u(null);
-        mb5Var.z(this.c);
-        mb5Var.A(this.d);
-        return pb5VarG;
+        pb5 r0 = pb5.g(lm4.k(this.e), null);
+        vz1[] r2 = this.b;
+        mb5 r3 = r0.a;
+        r3.v(r2);
+        r3.u(null);
+        r3.z(this.c);
+        r3.A(this.d);
+        return r0;
     }
 
     @Override // defpackage.bb5
-    public void e(vz1 vz1Var) {
-        this.e.setMandatorySystemGestureInsets(vz1Var.d());
+    public void e(vz1 r1) {
+        lm4.C(this.e, r1.d());
     }
 
     @Override // defpackage.bb5
-    public void f(vz1 vz1Var) {
-        this.e.setStableInsets(vz1Var.d());
+    public void f(vz1 r1) {
+        lm4.A(this.e, r1.d());
     }
 
     @Override // defpackage.bb5
-    public void g(vz1 vz1Var) {
-        this.e.setSystemGestureInsets(vz1Var.d());
+    public void g(vz1 r1) {
+        lm4.B(this.e, r1.d());
     }
 
     @Override // defpackage.bb5
-    public void h(vz1 vz1Var) {
-        this.e.setSystemWindowInsets(vz1Var.d());
+    public void h(vz1 r1) {
+        lm4.w(this.e, r1.d());
     }
 
     @Override // defpackage.bb5
-    public void i(vz1 vz1Var) {
-        this.e.setTappableElementInsets(vz1Var.d());
+    public void i(vz1 r1) {
+        lm4.D(this.e, r1.d());
     }
 
     public va5() {

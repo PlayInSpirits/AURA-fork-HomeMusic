@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class nm1 extends s20 {
-    public static final AtomicInteger M = new AtomicInteger();
+    public static final AtomicInteger M = null;
     public final boolean A;
     public final boolean B;
     public jw C;
@@ -48,72 +48,98 @@ public final class nm1 extends s20 {
     public final mv1 y;
     public final be3 z;
 
-    public nm1(xk0 xk0Var, ci0 ci0Var, ii0 ii0Var, tb1 tb1Var, boolean z, ci0 ci0Var2, ii0 ii0Var2, boolean z2, Uri uri, List list, int i, Object obj, long j, long j2, long j3, int i2, boolean z3, int i3, boolean z4, boolean z5, iu4 iu4Var, ow0 ow0Var, jw jwVar, mv1 mv1Var, be3 be3Var, boolean z6, boolean z7, ik3 ik3Var) {
-        super(ci0Var, ii0Var, 1, tb1Var, i, obj, j, j2);
-        tb1Var.getClass();
-        this.j = j3;
-        this.A = z;
-        this.o = i2;
-        this.K = z3 ? j2 - j : -9223372036854775807L;
-        this.l = i3;
-        this.q = ii0Var2;
-        this.p = ci0Var2;
-        this.F = ii0Var2 != null;
-        this.B = z2;
-        this.m = uri;
-        this.s = z5;
-        this.u = iu4Var;
-        this.t = z4;
-        this.v = xk0Var;
-        this.w = list;
-        this.x = ow0Var;
-        this.r = jwVar;
-        this.y = mv1Var;
-        this.z = be3Var;
-        this.L = z6;
-        this.n = z7;
-        vw1 vw1Var = yw1.o;
-        this.I = gy3.r;
-        this.k = M.getAndIncrement();
+    static {
+        M = new AtomicInteger();
     }
 
-    public static byte[] d(String str) {
-        if (rr2.U(str).startsWith("0x")) {
-            str = str.substring(2);
-        }
-        byte[] byteArray = new BigInteger(str, 16).toByteArray();
-        byte[] bArr = new byte[16];
-        int length = byteArray.length > 16 ? byteArray.length - 16 : 0;
-        System.arraycopy(byteArray, length, bArr, (16 - byteArray.length) + length, byteArray.length - length);
-        return bArr;
+    public nm1(xk0 r13, ci0 r14, ii0 r15, tb1 r16, boolean r17, ci0 r18, ii0 r19, boolean r20, Uri r21, List r22, int r23, Object r24, long r25, long r27, long r29, int r31, boolean r32, int r33, boolean r34, boolean r35, iu4 r36, ow0 r37, jw r38, mv1 r39, be3 r40, boolean r41, boolean r42, ik3 r43) {
+        super(r14, r15, 1, r16, r23, r24, r25, r27);
+        r16.getClass();
+        this.j = r29;
+        this.A = r17;
+        this.o = r31;
+        if (r32 == false) goto L5;
+        long r110 = r27 - r25;
+    L6:
+        this.K = r110;
+        this.l = r33;
+        this.q = r19;
+        this.p = r18;
+        if (r19 == null) goto L9;
+        boolean r111 = true;
+    L10:
+        this.F = r111;
+        this.B = r20;
+        this.m = r21;
+        this.s = r35;
+        this.u = r36;
+        this.t = r34;
+        this.v = r13;
+        this.w = r22;
+        this.x = r37;
+        this.r = r38;
+        this.y = r39;
+        this.z = r40;
+        this.L = r41;
+        this.n = r42;
+        vw1 r112 = yw1.o;
+        this.I = gy3.r;
+        this.k = M.getAndIncrement();
+        return;
+    L9:
+        r111 = false;
+        goto L10
+    L5:
+        r110 = -9223372036854775807L;
+        goto L6
+    }
+
+    public static byte[] d(String r4) {
+        if (rr2.U(r4).startsWith("0x") == false) goto L5;
+        r4 = r4.substring(2);
+    L5:
+        byte[] r5 = new BigInteger(r4, 16).toByteArray();
+        byte[] r0 = new byte[16];
+        if (r5.length <= 16) goto L8;
+        int r2 = r5.length - 16;
+    L9:
+        System.arraycopy(r5, r2, r0, (16 - r5.length) + r2, r5.length - r2);
+        return r0;
+    L8:
+        r2 = 0;
+        goto L9
     }
 
     @Override // defpackage.jd2
     public final void a() {
-        jw jwVar;
         this.D.getClass();
-        if (this.C == null && (jwVar = this.r) != null) {
-            k51 k51Var = (k51) jwVar.o;
-            if ((k51Var instanceof qy4) || (k51Var instanceof oe1)) {
-                this.C = jwVar;
-                this.F = false;
-            }
-        }
-        ii0 ii0Var = this.q;
-        ci0 ci0Var = this.p;
-        if (this.F) {
-            ci0Var.getClass();
-            ii0Var.getClass();
-            c(ci0Var, ii0Var, this.B, false);
-            this.E = 0;
-            this.F = false;
-        }
-        if (this.G) {
-            return;
-        }
-        if (!this.t) {
-            c(this.i, this.b, this.A, true);
-        }
+        if (this.C != null) goto L11;
+        jw r0 = this.r;
+        if (r0 == null) goto L11;
+        k51 r2 = (k51) r0.o;
+        if ((r2 instanceof qy4) == false) goto L9;
+    L10:
+        this.C = r0;
+        this.F = false;
+        goto L11
+    L9:
+        if ((r2 instanceof oe1) == true) goto L10;
+    L11:
+        ii0 r1 = this.q;
+        ci0 r3 = this.p;
+        if (this.F == false) goto L16;
+        r3.getClass();
+        r1.getClass();
+        c(r3, r1, this.B, false);
+        this.E = 0;
+        this.F = false;
+    L16:
+        if (this.G == false) goto L18;
+        return;
+    L18:
+        if (this.t == true) goto L20;
+        c(this.i, this.b, this.A, true);
+    L20:
         this.H = !this.G;
     }
 
@@ -122,70 +148,73 @@ public final class nm1 extends s20 {
         this.G = true;
     }
 
-    public final void c(ci0 ci0Var, ii0 ii0Var, boolean z, boolean z2) {
-        ii0 ii0VarB;
-        boolean z3;
-        long j;
-        int i = this.E;
-        if (z) {
-            z3 = i != 0;
-            ii0VarB = ii0Var;
-        } else {
-            long j2 = i;
-            long j3 = ii0Var.g;
-            ii0VarB = ii0Var.b(j2, j3 != -1 ? j3 - j2 : -1L);
-            z3 = false;
-        }
-        try {
-            rk0 rk0VarG = g(ci0Var, ii0VarB, z2);
-            if (z3) {
-                rk0VarG.d(this.E, false);
-            }
-            while (!this.G && ((k51) this.C.o).b(rk0VarG, jw.s) == 0) {
-                try {
-                    try {
-                    } catch (EOFException e) {
-                        if ((this.d.f & 16384) == 0) {
-                            throw e;
-                        }
-                        ((k51) this.C.o).d(0L, 0L);
-                        j = rk0VarG.q;
-                    }
-                } catch (Throwable th) {
-                    this.E = (int) (rk0VarG.q - ii0Var.f);
-                    throw th;
-                }
-            }
-            j = rk0VarG.q;
-            this.E = (int) (j - ii0Var.f);
-            fu.k(ci0Var);
-        } catch (Throwable th2) {
-            fu.k(ci0Var);
-            throw th2;
-        }
+    public final void c(ci0 r9, ii0 r10, boolean r11, boolean r12) {
+        int r0 = this.E;
+        if (r11 == false) goto L8;
+        if (r0 == 0) goto L6;
+        boolean r13 = true;
+    L7:
+        boolean r1 = r13;
+        ii0 r14 = r10;
+    L45:
+        rk0 r15 = g(r9, r14, r12);     // Catch: Throwable -> L17
+        if (r1 == false) goto L43;
+        r15.d(this.E, false);     // Catch: Throwable -> L17
+    L43:
+    L26:
+        e = move-exception;
+        if ((this.d.f & 16384) == 0) goto L38;
+        ((k51) this.C.o).d(0, 0);     // Catch: Throwable -> L24
+        long r16 = r15.q;     // Catch: Throwable -> L17
+    L35:
+        this.E = (int) (r16 - r10.f);     // Catch: Throwable -> L17
+        fu.k(r9);
+        return;
+    L38:
+        throw e;     // Catch: Throwable -> L24
+    L24:
+        th = move-exception;
+        this.E = (int) (r15.q - r10.f);     // Catch: Throwable -> L17
+        throw th;     // Catch: Throwable -> L17
+    L20:
+        if (this.G == true) goto L28;
+        if (((k51) this.C.o).b(r15, jw.s) != 0) goto L28;
+    L28:
+        r16 = r15.q;     // Catch: Throwable -> L17
+    L17:
+        th = move-exception;
+        fu.k(r9);
+        throw th;
+    L6:
+        r13 = false;
+        goto L7
+    L8:
+        long r2 = r0;
+        long r4 = r10.g;
+        long r6 = -1;
+        if (r4 == (-1)) goto L12;
+        r6 = r4 - r2;
+    L12:
+        r14 = r10.b(r2, r6);
+        r1 = false;
+        goto L45
     }
 
-    public final int e(int i) {
+    public final int e(int r2) {
         rr2.w(!this.L);
-        if (i >= this.I.size()) {
-            return 0;
-        }
-        return ((Integer) this.I.get(i)).intValue();
+        if (r2 < this.I.size()) goto L7;
+        return 0;
+    L7:
+        return ((Integer) this.I.get(r2)).intValue();
     }
 
     public final boolean f() {
-        return this.K != -9223372036854775807L;
+        if (this.K == (-9223372036854775807L)) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
-    /* JADX WARN: Code duplicated, block: B:128:0x02c5  */
-    /* JADX WARN: Code duplicated, block: B:137:0x02dc  */
-    /* JADX WARN: Code duplicated, block: B:138:0x02e1  */
-    /* JADX WARN: Code duplicated, block: B:141:0x02e7  */
-    /* JADX WARN: Code duplicated, block: B:142:0x02ea  */
-    /* JADX WARN: Code duplicated, block: B:23:0x0084 A[PHI: r16 r36
-  0x0084: PHI (r16v1 long) = (r16v0 long), (r16v3 long), (r16v3 long) binds: [B:40:0x00d6, B:22:0x0082, B:37:0x00bb] A[DONT_GENERATE, DONT_INLINE]
-  0x0084: PHI (r36v2 rk0) = (r36v1 rk0), (r36v4 rk0), (r36v4 rk0) binds: [B:40:0x00d6, B:22:0x0082, B:37:0x00bb] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:31:0x00af  */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r19v0 */
     /* JADX WARN: Type inference failed for: r19v1, types: [java.lang.Object, k51] */
@@ -205,356 +234,384 @@ public final class nm1 extends s20 {
     /* JADX WARN: Type inference failed for: r5v40 */
     /* JADX WARN: Type inference failed for: r5v41 */
     /* JADX WARN: Type inference failed for: r5v6, types: [java.lang.Object, k51] */
-    public final rk0 g(ci0 ci0Var, ii0 ii0Var, boolean z) throws IOException {
-        int i;
-        rk0 rk0Var;
-        long j;
-        long jU;
-        jw jwVar;
-        iu4 iu4Var;
-        ?? oe1Var;
-        boolean zC;
-        om0 om0Var;
-        boolean z2;
-        Object obj;
-        pv2 pv2Var;
-        int i2;
-        xn4 xn4Var;
-        List list;
-        List listSingletonList;
-        int i3;
-        k51 ky2Var;
-        pv2 pv2Var2;
-        long jB = ci0Var.b(ii0Var);
-        long j2 = this.g;
-        iu4 iu4Var2 = this.u;
-        if (z) {
-            try {
-                iu4Var2.g(this.s, j2);
-            } catch (InterruptedException unused) {
-                throw new InterruptedIOException();
-            } catch (TimeoutException e) {
-                throw new IOException(e);
-            }
-        }
-        rk0 rk0Var2 = new rk0(ci0Var, ii0Var.f, jB);
-        if (this.C == null) {
-            be3 be3Var = this.z;
-            rk0Var2.s = 0;
-            try {
-                be3Var.K(10);
-                rk0Var2.e(be3Var.a, 0, 10, false);
-                if (be3Var.D() != 4801587) {
-                    rk0Var = null;
-                    jU = -9223372036854775807L;
-                    j = -9223372036854775807L;
-                } else {
-                    be3Var.O(3);
-                    int iZ = be3Var.z();
-                    int i4 = iZ + 10;
-                    rk0Var = null;
-                    byte[] bArr = be3Var.a;
-                    j = -9223372036854775807L;
-                    if (i4 > bArr.length) {
-                        be3Var.K(i4);
-                        System.arraycopy(bArr, 0, be3Var.a, 0, 10);
-                    }
-                    rk0Var2.e(be3Var.a, 10, iZ, false);
-                    qv2 qv2VarO = this.y.O(iZ, be3Var.a);
-                    if (qv2VarO == null) {
-                        jU = j;
-                    } else {
-                        pv2[] pv2VarArr = qv2VarO.a;
-                        int length = pv2VarArr.length;
-                        int i5 = 0;
-                        while (true) {
-                            if (i5 >= length) {
-                                pv2Var2 = null;
-                                break;
-                            }
-                            pv2 pv2Var3 = pv2VarArr[i5];
-                            if (hq3.class.isAssignableFrom(pv2Var3.getClass())) {
-                                pv2Var2 = (pv2) hq3.class.cast(pv2Var3);
-                                if (!((hq3) pv2Var2).b.equals("com.apple.streaming.transportStreamTimestamp")) {
-                                    pv2Var2 = null;
-                                }
-                            } else {
-                                pv2Var2 = null;
-                            }
-                            if (pv2Var2 != null) {
-                                break;
-                            }
-                            i5++;
-                        }
-                        hq3 hq3Var = (hq3) pv2Var2;
-                        if (hq3Var == null) {
-                            jU = j;
-                        } else {
-                            System.arraycopy(hq3Var.c, 0, be3Var.a, 0, 8);
-                            be3Var.N(0);
-                            be3Var.M(8);
-                            jU = be3Var.u() & 8589934591L;
-                        }
-                    }
-                }
-            } catch (EOFException unused2) {
-                rk0Var = null;
-                j = -9223372036854775807L;
-            }
-            rk0Var2.s = 0;
-            jw jwVar2 = this.r;
-            if (jwVar2 == null) {
-                Uri uri = ii0Var.a;
-                Map mapJ = ci0Var.j();
-                xk0 xk0Var = this.v;
-                xk0Var.getClass();
-                tb1 tb1Var = this.d;
-                int iX = h12.x(tb1Var.n);
-                List list2 = (List) mapJ.get("Content-Type");
-                int iX2 = h12.x((list2 == null || list2.isEmpty()) ? rk0Var : (String) list2.get(0));
-                int iY = h12.y(uri);
-                ArrayList arrayList = new ArrayList(7);
-                xk0.e(iX, arrayList);
-                xk0.e(iX2, arrayList);
-                xk0.e(iY, arrayList);
-                int i6 = 0;
-                for (int i7 = 7; i6 < i7; i7 = 7) {
-                    xk0.e(xk0.q[i6], arrayList);
-                    i6++;
-                }
-                rk0Var2.s = 0;
-                ?? r19 = rk0Var;
-                int i8 = 0;
-                while (true) {
-                    int size = arrayList.size();
-                    iu4 iu4Var3 = this.u;
-                    if (i8 >= size) {
-                        j2 = j2;
-                        i = 0;
-                        r19.getClass();
-                        jwVar = new jw(r19, tb1Var, iu4Var3, (om0) xk0Var.p, xk0Var.o);
-                        break;
-                    }
-                    int iIntValue = ((Integer) arrayList.get(i8)).intValue();
-                    int i9 = i8;
-                    if (iIntValue == 0) {
-                        iu4Var = iu4Var3;
-                        oe1Var = new r2();
-                    } else if (iIntValue == 1) {
-                        iu4Var = iu4Var3;
-                        oe1Var = new t2();
-                    } else if (iIntValue == 2) {
-                        iu4Var = iu4Var3;
-                        oe1Var = new h6(0);
-                    } else if (iIntValue != 7) {
-                        List list3 = this.w;
-                        xi4 xi4Var = xn4.m;
-                        if (iIntValue == 8) {
-                            iu4Var = iu4Var3;
-                            om0 om0Var2 = (om0) xk0Var.p;
-                            boolean z3 = xk0Var.o;
-                            qv2 qv2Var = tb1Var.l;
-                            if (qv2Var == null) {
-                                om0Var = om0Var2;
-                                z2 = z3;
-                            } else {
-                                pv2[] pv2VarArr2 = qv2Var.a;
-                                int length2 = pv2VarArr2.length;
-                                om0Var = om0Var2;
-                                int i10 = 0;
-                                while (true) {
-                                    if (i10 >= length2) {
-                                        z2 = z3;
-                                        obj = rk0Var;
-                                        break;
-                                    }
-                                    int i11 = i10;
-                                    pv2 pv2Var4 = pv2VarArr2[i11];
-                                    z2 = z3;
-                                    pv2[] pv2VarArr3 = pv2VarArr2;
-                                    if (nn1.class.isAssignableFrom(pv2Var4.getClass())) {
-                                        pv2Var = (pv2) nn1.class.cast(pv2Var4);
-                                        if (((nn1) pv2Var).c.isEmpty()) {
-                                            obj = pv2Var;
-                                            obj = rk0Var;
-                                        }
-                                    } else {
-                                        obj = pv2Var;
-                                        obj = rk0Var;
-                                    }
-                                    if (obj != null) {
-                                        break;
-                                    }
-                                    i10 = i11 + 1;
-                                    z3 = z2;
-                                    pv2VarArr2 = pv2VarArr3;
-                                }
-                                i2 = obj != null ? 4 : 0;
-                                if (z2) {
-                                    xn4Var = om0Var;
-                                } else {
-                                    i2 |= 32;
-                                    xn4Var = xi4Var;
-                                }
-                                if (list3 != null) {
-                                    list = list3;
-                                } else {
-                                    list = gy3.r;
-                                }
-                                oe1Var = new oe1(xn4Var, i2, iu4Var, list);
-                            }
-                            if (z2) {
-                                i2 |= 32;
-                                xn4Var = xi4Var;
-                            } else {
-                                xn4Var = om0Var;
-                            }
-                            if (list3 != null) {
-                                list = list3;
-                            } else {
-                                list = gy3.r;
-                            }
-                            oe1Var = new oe1(xn4Var, i2, iu4Var, list);
-                        } else if (iIntValue == 11) {
-                            om0 om0Var3 = (om0) xk0Var.p;
-                            boolean z4 = xk0Var.o;
-                            if (list3 != null) {
-                                i3 = 48;
-                                listSingletonList = list3;
-                            } else {
-                                sb1 sb1Var = new sb1();
-                                sb1Var.m = lw2.m("application/cea-608");
-                                listSingletonList = Collections.singletonList(new tb1(sb1Var));
-                                i3 = 16;
-                            }
-                            String str = tb1Var.k;
-                            if (!TextUtils.isEmpty(str)) {
-                                if (lw2.b(str, "audio/mp4a-latm") == null) {
-                                    i3 |= 2;
-                                }
-                                if (lw2.b(str, "video/avc") == null) {
-                                    i3 |= 4;
-                                }
-                            }
-                            iu4Var = iu4Var3;
-                            oe1Var = new qy4(2, !z4 ? 1 : 0, !z4 ? xi4Var : om0Var3, iu4Var3, new qn0(listSingletonList, i3));
-                        } else if (iIntValue != 13) {
-                            iu4Var = iu4Var3;
-                            oe1Var = rk0Var;
-                        } else {
-                            oe1Var = new x95(tb1Var.d, iu4Var3, (om0) xk0Var.p, xk0Var.o);
-                            iu4Var = iu4Var3;
-                        }
-                    } else {
-                        iu4Var = iu4Var3;
-                        oe1Var = new ky2(0L);
-                    }
-                    oe1Var.getClass();
-                    try {
-                        zC = oe1Var.c(rk0Var2);
-                        i = 0;
-                        rk0Var2.s = 0;
-                    } catch (EOFException unused3) {
-                        i = 0;
-                        rk0Var2.s = 0;
-                        zC = false;
-                    } catch (Throwable th) {
-                        rk0Var2.s = 0;
-                        throw th;
-                    }
-                    if (zC) {
-                        jwVar = new jw(oe1Var, tb1Var, iu4Var, (om0) xk0Var.p, xk0Var.o);
-                        break;
-                    }
-                    tb1 tb1Var2 = tb1Var;
-                    if (r19 == 0 && (iIntValue == iX || iIntValue == iX2 || iIntValue == iY || iIntValue == 11)) {
-                        r19 = oe1Var;
-                    }
-                    i8 = i9 + 1;
-                    tb1Var = tb1Var2;
-                    arrayList = arrayList;
-                    j2 = j2;
-                    r19 = r19;
-                }
-            } else {
-                k51 k51Var = (k51) jwVar2.o;
-                rr2.w(!((k51Var instanceof qy4) || (k51Var instanceof oe1)));
-                if (k51Var instanceof x95) {
-                    ky2Var = new x95(((tb1) jwVar2.p).d, (iu4) jwVar2.q, (xn4) jwVar2.r, jwVar2.n);
-                } else if (k51Var instanceof h6) {
-                    ky2Var = new h6(0);
-                } else if (k51Var instanceof r2) {
-                    ky2Var = new r2();
-                } else if (k51Var instanceof t2) {
-                    ky2Var = new t2();
-                } else {
-                    if (!(k51Var instanceof ky2)) {
-                        kf2.o("Unexpected extractor type for recreation: ".concat(k51Var.getClass().getSimpleName()));
-                        return rk0Var;
-                    }
-                    ky2Var = new ky2(0);
-                }
-                jwVar = new jw(ky2Var, (tb1) jwVar2.p, (iu4) jwVar2.q, (xn4) jwVar2.r, jwVar2.n);
-                j2 = j2;
-                i = 0;
-            }
-            jw jwVar3 = jwVar;
-            this.C = jwVar3;
-            k51 k51Var2 = (k51) jwVar3.o;
-            if ((k51Var2 instanceof h6) || (k51Var2 instanceof r2) || (k51Var2 instanceof t2) || (k51Var2 instanceof ky2)) {
-                ln1 ln1Var = this.D;
-                long jB2 = jU != j ? iu4Var2.b(jU) : j2;
-                if (ln1Var.i0 != jB2) {
-                    ln1Var.i0 = jB2;
-                    kn1[] kn1VarArr = ln1Var.I;
-                    int length3 = kn1VarArr.length;
-                    for (int i12 = i; i12 < length3; i12++) {
-                        kn1 kn1Var = kn1VarArr[i12];
-                        if (kn1Var.F != jB2) {
-                            kn1Var.F = jB2;
-                            kn1Var.z = true;
-                        }
-                    }
-                }
-            } else {
-                ln1 ln1Var2 = this.D;
-                if (ln1Var2.i0 != 0) {
-                    ln1Var2.i0 = 0L;
-                    kn1[] kn1VarArr2 = ln1Var2.I;
-                    int length4 = kn1VarArr2.length;
-                    for (int i13 = i; i13 < length4; i13++) {
-                        kn1 kn1Var2 = kn1VarArr2[i13];
-                        if (kn1Var2.F != 0) {
-                            kn1Var2.F = 0L;
-                            kn1Var2.z = true;
-                        }
-                    }
-                }
-            }
-            this.D.K.clear();
-            ((k51) this.C.o).f(this.D);
-        } else {
-            i = 0;
-        }
-        ln1 ln1Var3 = this.D;
-        ow0 ow0Var = ln1Var3.j0;
-        ow0 ow0Var2 = this.x;
-        if (!Objects.equals(ow0Var, ow0Var2)) {
-            ln1Var3.j0 = ow0Var2;
-            int i14 = i;
-            while (true) {
-                kn1[] kn1VarArr3 = ln1Var3.I;
-                if (i14 >= kn1VarArr3.length) {
-                    break;
-                }
-                if (ln1Var3.b0[i14]) {
-                    kn1 kn1Var3 = kn1VarArr3[i14];
-                    kn1Var3.I = ow0Var2;
-                    kn1Var3.z = true;
-                }
-                i14++;
-            }
-        }
-        return rk0Var2;
+    public final rk0 g(ci0 r34, ii0 r35, boolean r36) {
+        long r6 = r34.b(r35);
+        long r8 = this.g;
+        iu4 r10 = this.u;
+        if (r36 == true) goto L213;
+    L11:
+        rk0 r2 = new rk0(r34, r35.f, r6);
+        if (this.C != null) goto L197;
+        be3 r3 = this.z;
+        r2.s = 0;
+        r3.K(10);     // Catch: EOFException -> L40
+        r2.e(r3.a, 0, 10, false);     // Catch: EOFException -> L40
+        if (r3.D() == 4801587) goto L18;
+        rk0 r37 = null;
+        long r11 = -9223372036854775807L;
+        long r16 = -9223372036854775807L;
+    L41:
+        r2.s = 0;
+        jw r4 = this.r;
+        if (r4 == null) goto L70;
+        k51 r1 = (k51) r4.o;
+        if ((r1 instanceof qy4) == false) goto L46;
+    L49:
+        boolean r7 = true;
+    L50:
+        rr2.w(!r7);
+        if ((r1 instanceof x95) == false) goto L55;
+        k51 r5 = new x95(((tb1) r4.p).d, (iu4) r4.q, (xn4) r4.r, r4.n);
+    L66:
+        jw r18 = new jw(r5, (tb1) r4.p, (iu4) r4.q, (xn4) r4.r, r4.n);
+        r8 = r8;
+        int r9 = 0;
+    L67:
+        jw r12 = r18;
+        this.C = r12;
+        k51 r13 = (k51) r12.o;
+        if ((r13 instanceof h6) == false) goto L170;
+    L184:
+        ln1 r14 = this.D;
+        if (r11 == r16) goto L187;
+        long r15 = r10.b(r11);
+    L189:
+        if (r14.i0 == r15) goto L196;
+        r14.i0 = r15;
+        kn1[] r17 = r14.I;
+        int r19 = r17.length;
+        int r20 = r9;
+    L191:
+        if (r20 >= r19) goto L196;
+        kn1 r21 = r17[r20];
+        if (r21.F == r15) goto L195;
+        r21.F = r15;
+        r21.z = true;
+    L195:
+        r20 = r20 + 1;
+    L196:
+        this.D.K.clear();
+        jw r22 = this.C;
+        ((k51) r22.o).f(this.D);
+    L198:
+        ln1 r23 = this.D;
+        ow0 r24 = r23.j0;
+        ow0 r0 = this.x;
+        if (Objects.equals(r24, r0) == true) goto L208;
+        r23.j0 = r0;
+        int r25 = r9;
+    L201:
+        kn1[] r26 = r23.I;
+        if (r25 >= r26.length) goto L208;
+        if (r23.b0[r25] == false) goto L207;
+        kn1 r27 = r26[r25];
+        r27.I = r0;
+        r27.z = true;
+    L207:
+        r25 = r25 + 1;
+    L208:
+        return r2;
+    L187:
+        r15 = r8;
+        goto L189
+    L170:
+        if ((r13 instanceof r2) == true) goto L184;
+        if ((r13 instanceof t2) == true) goto L184;
+        if ((r13 instanceof ky2) == true) goto L184;
+        ln1 r28 = this.D;
+        if (r28.i0 == 0) goto L196;
+        r28.i0 = 0;
+        kn1[] r29 = r28.I;
+        int r30 = r29.length;
+        int r31 = r9;
+    L179:
+        if (r31 >= r30) goto L196;
+        kn1 r32 = r29[r31];
+        if (r32.F == 0) goto L183;
+        r32.F = 0;
+        r32.z = true;
+    L183:
+        r31 = r31 + 1;
+        goto L179
+    L55:
+        if ((r1 instanceof h6) == false) goto L58;
+        r5 = new h6(0);
+        goto L66
+    L58:
+        if ((r1 instanceof r2) == false) goto L61;
+        r5 = new r2();
+        goto L66
+    L61:
+        if ((r1 instanceof t2) == false) goto L64;
+        r5 = new t2();
+        goto L66
+    L64:
+        if ((r1 instanceof ky2) == false) goto L68;
+        r5 = new ky2(0);
+        goto L66
+    L68:
+        kf2.o("Unexpected extractor type for recreation: ".concat(r1.getClass().getSimpleName()));
+        return r37;
+    L46:
+        if ((r1 instanceof oe1) == true) goto L49;
+        r7 = false;
+        goto L50
+    L70:
+        Uri r33 = r35.a;
+        Map r38 = r34.j();
+        xk0 r39 = this.v;
+        r39.getClass();
+        tb1 r110 = this.d;
+        int r111 = h12.x(r110.n);
+        List r40 = (List) r38.get("Content-Type");
+        if (r40 != null) goto L73;
+    L76:
+        ?? r41 = r37;
+    L77:
+        int r42 = h12.x(r41);
+        int r43 = h12.y(r33);
+        int r44 = 7;
+        ArrayList r112 = new ArrayList(7);
+        xk0.e(r111, r112);
+        xk0.e(r42, r112);
+        xk0.e(r43, r112);
+        int r45 = 0;
+    L78:
+        if (r45 >= r44) goto L80;
+        xk0.e(xk0.q[r45], r112);
+        r45 = r45 + 1;
+        r44 = 7;
+        goto L78
+    L80:
+        r2.s = 0;
+        ?? r113 = r37;
+        int r46 = 0;
+    L81:
+        int r47 = r112.size();
+        iu4 r48 = this.u;
+        if (r46 >= r47) goto L166;
+        int r49 = ((Integer) r112.get(r46)).intValue();
+        int r210 = r46;
+        if (r49 != 0) goto L86;
+        iu4 r50 = r48;
+        ?? r51 = new r2();
+    L148:
+        r51.getClass();
+        boolean r52 = r51.c(r2);     // Catch: Throwable -> L151 EOFException -> L154
+        r9 = 0;
+        r2.s = 0;
+    L155:
+        if (r52 == true) goto L156;
+        tb1 r211 = r110;
+        if (r113 != 0) goto L165;
+        if (r49 == r111) goto L164;
+        if (r49 == r42) goto L164;
+        if (r49 == r43) goto L164;
+        if (r49 != 11) goto L165;
+    L164:
+        r113 = r51;
+    L165:
+        r46 = r210 + 1;
+        r110 = r211;
+        r112 = r112;
+        r8 = r8;
+        r113 = r113;
+        goto L81
+    L156:
+        ?? r114 = r51;
+        tb1 r212 = r110;
+        r18 = new jw(r114, r212, r50, (om0) r39.p, r39.o);
+        goto L67
+    L154:
+        r9 = 0;
+        r2.s = 0;
+        r52 = false;
+    L151:
+        th = move-exception;
+        r2.s = 0;
+        throw th;
+    L86:
+        if (r49 != 1) goto L88;
+        r50 = r48;
+        r51 = new t2();
+        goto L148
+    L88:
+        if (r49 != 2) goto L90;
+        r50 = r48;
+        r51 = new h6(0);
+        goto L148
+    L90:
+        if (r49 == 7) goto L144;
+        List r53 = this.w;
+        xi4 r213 = xn4.m;
+        if (r49 != 8) goto L94;
+        r50 = r48;
+        om0 r54 = (om0) r39.p;
+        boolean r55 = r39.o;
+        qv2 r56 = r110.l;
+        if (r56 != null) goto L121;
+        om0 r214 = r54;
+        boolean r215 = r55;
+    L135:
+        int r57 = 0;
+    L136:
+        if (r215 == true) goto L138;
+        r57 = r57 | 32;
+        xn4 r58 = r213;
+    L140:
+        if (r53 == null) goto L142;
+        List r115 = r53;
+    L143:
+        r51 = new oe1(r58, r57, r50, r115);
+        goto L148
+    L142:
+        r115 = gy3.r;
+        goto L143
+    L138:
+        r58 = r214;
+        goto L140
+    L121:
+        pv2[] r59 = r56.a;
+        int r116 = r59.length;
+        r214 = r54;
+        int r60 = 0;
+    L122:
+        if (r60 >= r116) goto L132;
+        int r216 = r60;
+        pv2 r61 = r59[r216];
+        r215 = r55;
+        pv2[] r217 = r59;
+        if (nn1.class.isAssignableFrom(r61.getClass()) == false) goto L128;
+        pv2 r62 = (pv2) nn1.class.cast(r61);
+        boolean r63 = ((nn1) r62).c.isEmpty();
+        Object r64 = r62;
+        if (r63 == true) goto L128;
+    L129:
+        if (r64 != null) goto L133;
+        r60 = r216 + 1;
+        r55 = r215;
+        r59 = r217;
+    L133:
+        if (r64 == null) goto L135;
+        r57 = 4;
+    L128:
+        r64 = r37;
+        goto L129
+    L132:
+        r215 = r55;
+        r64 = r37;
+        goto L133
+    L94:
+        if (r49 != 11) goto L96;
+        om0 r65 = (om0) r39.p;
+        boolean r66 = r39.o;
+        if (r53 == null) goto L103;
+        int r117 = 48;
+        List r67 = r53;
+    L104:
+        String r68 = r110.k;
+        if (TextUtils.isEmpty(r68) == false) goto L107;
+    L114:
+        if (r66 == true) goto L116;
+        xn4 r218 = r213;
+    L117:
+        r50 = r48;
+        r51 = new qy4(2, !r66 ? 1 : 0, r218, r48, new qn0(r67, r117));
+        goto L148
+    L116:
+        r218 = r65;
+        goto L117
+    L107:
+        if (lw2.b(r68, "audio/mp4a-latm") != null) goto L111;
+        r117 = r117 | 2;
+    L111:
+        if (lw2.b(r68, "video/avc") != null) goto L114;
+        r117 = r117 | 4;
+        goto L114
+    L103:
+        sb1 r69 = new sb1();
+        r69.m = lw2.m("application/cea-608");
+        r67 = Collections.singletonList(new tb1(r69));
+        r117 = 16;
+        goto L104
+    L96:
+        if (r49 == 13) goto L98;
+        r50 = r48;
+        r51 = r37;
+        goto L148
+    L98:
+        r51 = new x95(r110.d, r48, (om0) r39.p, r39.o);
+        r50 = r48;
+        goto L148
+    L144:
+        r50 = r48;
+        r51 = new ky2(0);
+        goto L148
+    L166:
+        r8 = r8;
+        r9 = 0;
+        r113.getClass();
+        r18 = new jw(r113, r110, r48, (om0) r39.p, r39.o);
+        goto L67
+    L73:
+        if (r40.isEmpty() == true) goto L76;
+        r41 = (String) r40.get(0);
+        goto L77
+    L18:
+        r3.O(3);
+        int r118 = r3.z();
+        int r119 = r118 + 10;
+        r37 = null;
+        byte[] r70 = r3.a;
+        r16 = -9223372036854775807L;
+        if (r119 <= r70.length) goto L21;
+        r3.K(r119);
+        System.arraycopy(r70, 0, r3.a, 0, 10);
+    L21:
+        r2.e(r3.a, 10, r118, false);
+        qv2 r71 = this.y.O(r118, r3.a);
+        if (r71 != null) goto L24;
+    L23:
+        r11 = r16;
+        goto L41
+    L24:
+        pv2[] r72 = r71.a;
+        int r120 = r72.length;
+        int r121 = 0;
+    L25:
+        if (r121 >= r120) goto L35;
+        pv2 r122 = r72[r121];
+        if (hq3.class.isAssignableFrom(r122.getClass()) == false) goto L31;
+        pv2 r123 = (pv2) hq3.class.cast(r122);
+        if (((hq3) r123).b.equals("com.apple.streaming.transportStreamTimestamp") == false) goto L31;
+    L32:
+        if (r123 != null) goto L36;
+        r121 = r121 + 1;
+    L36:
+        hq3 r124 = (hq3) r123;
+        if (r124 == null) goto L23;
+        System.arraycopy(r124.c, 0, r3.a, 0, 8);
+        r3.N(0);
+        r3.M(8);
+        r11 = r3.u() & 8589934591L;
+    L31:
+        r123 = null;
+        goto L32
+    L35:
+        r123 = null;
+    L40:
+        r37 = null;
+        r16 = -9223372036854775807L;
+        goto L23
+    L197:
+        r9 = 0;
+        goto L198
+    L213:
+        r10.g(this.s, r8);     // Catch: TimeoutException -> L6 InterruptedException -> L9
+    L6:
+        e = move-exception;
+        throw new IOException(e);
+    L10:
+        throw new InterruptedIOException();
     }
 }

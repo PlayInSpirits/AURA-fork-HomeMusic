@@ -8,14 +8,14 @@ import android.os.ResultReceiver;
 /* JADX INFO: loaded from: classes.dex */
 public final class c implements Parcelable.Creator {
     @Override // android.os.Parcelable.Creator
-    public final Object createFromParcel(Parcel parcel) {
-        MediaSessionCompat$ResultReceiverWrapper mediaSessionCompat$ResultReceiverWrapper = new MediaSessionCompat$ResultReceiverWrapper();
-        mediaSessionCompat$ResultReceiverWrapper.n = (ResultReceiver) ResultReceiver.CREATOR.createFromParcel(parcel);
-        return mediaSessionCompat$ResultReceiverWrapper;
+    public final Object createFromParcel(Parcel r2) {
+        MediaSessionCompat$ResultReceiverWrapper r1 = new MediaSessionCompat$ResultReceiverWrapper();
+        r1.n = (ResultReceiver) ResultReceiver.CREATOR.createFromParcel(r2);
+        return r1;
     }
 
     @Override // android.os.Parcelable.Creator
-    public final Object[] newArray(int i) {
-        return new MediaSessionCompat$ResultReceiverWrapper[i];
+    public final Object[] newArray(int r1) {
+        return new MediaSessionCompat$ResultReceiverWrapper[r1];
     }
 }

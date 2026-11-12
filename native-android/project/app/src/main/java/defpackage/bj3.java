@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
@@ -14,7 +13,6 @@ import android.widget.PopupMenu;
 import androidx.media3.ui.PlayerControlView;
 import app.homemusic.R;
 import com.eddyizm.tempus.App;
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import com.eddyizm.tempus.interfaces.PodcastCallback;
 import com.eddyizm.tempus.subsonic.models.Child;
 import com.eddyizm.tempus.subsonic.models.MusicFolder;
@@ -31,7 +29,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -39,261 +36,270 @@ public final /* synthetic */ class bj3 implements View.OnClickListener {
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ bj3(int i, Object obj) {
-        this.n = i;
-        this.o = obj;
+    public /* synthetic */ bj3(int r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // android.view.View.OnClickListener
-    public final void onClick(View view) {
-        int i = this.n;
-        int i2 = 0;
-        Object obj = this.o;
-        switch (i) {
-            case 0:
-                PlayerControlView playerControlView = ((cj3) obj).t;
-                qi3 qi3Var = playerControlView.D0;
-                if (qi3Var != null && qi3Var.S0(29)) {
-                    cw4 cw4VarE0 = playerControlView.D0.E0();
-                    qi3 qi3Var2 = playerControlView.D0;
-                    String str = f35.a;
-                    qi3Var2.M(cw4VarE0.a().d(1).l(1, false).b());
-                    playerControlView.z.r[1] = playerControlView.getResources().getString(R.string.exo_track_selection_auto);
-                    playerControlView.E.dismiss();
-                    break;
-                }
-                break;
-            case 1:
-                ij3 ij3Var = (ij3) obj;
-                PlayerControlView playerControlView2 = ij3Var.x;
-                int iC = ij3Var.c();
-                View view2 = playerControlView2.T;
-                if (iC == 0) {
-                    gj3 gj3Var = playerControlView2.A;
-                    view2.getClass();
-                    playerControlView2.d(gj3Var, view2);
-                } else if (iC == 1) {
-                    cj3 cj3Var = playerControlView2.C;
-                    view2.getClass();
-                    playerControlView2.d(cj3Var, view2);
-                } else {
-                    playerControlView2.E.dismiss();
-                }
-                break;
-            case 2:
-                PlayerControlView playerControlView3 = ((cj3) obj).t;
-                qi3 qi3Var3 = playerControlView3.D0;
-                if (qi3Var3 != null && qi3Var3.S0(29)) {
-                    playerControlView3.D0.M(playerControlView3.D0.E0().a().d(3).g().i().k().b());
-                    playerControlView3.E.dismiss();
-                    break;
-                }
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                qj3 qj3Var = (qj3) obj;
-                qj3Var.g();
-                if (view.getId() == R.id.exo_overflow_show) {
-                    qj3Var.r.start();
-                } else if (view.getId() == R.id.exo_overflow_hide) {
-                    qj3Var.s.start();
-                }
-                break;
-            case 4:
-                xk3 xk3Var = (xk3) obj;
-                Bundle bundle = new Bundle();
-                yk3 yk3Var = xk3Var.v;
-                bundle.putParcelableArrayList("TRACKS_OBJECT", new ArrayList<>(yk3Var.s));
-                bundle.putInt("ITEM_POSITION", xk3Var.c());
-                yk3Var.q.onMediaClick(bundle);
-                break;
-            case 5:
-                nl3 nl3Var = (nl3) obj;
-                Bundle bundle2 = new Bundle();
-                zd0 zd0Var = nl3Var.v;
-                bundle2.putParcelable("PLAYLIST_OBJECT", (Parcelable) zd0Var.r.get(nl3Var.c()));
-                ((fl3) zd0Var.s).onPlaylistClick(bundle2);
-                break;
-            case 6:
-                ol3 ol3Var = (ol3) obj;
-                final int iC2 = ol3Var.c();
-                if (iC2 != -1) {
-                    final PlaylistEditorFragment playlistEditorFragment = (PlaylistEditorFragment) ol3Var.v.s;
-                    wl3 wl3Var = playlistEditorFragment.m0;
-                    if (!wl3Var.i) {
-                        List list = (List) wl3Var.g.d();
-                        Objects.requireNonNull(list);
-                        final Child child = (Child) list.remove(iC2);
-                        playlistEditorFragment.n0.n.f(iC2, 1);
-                        MainActivity mainActivity = (MainActivity) playlistEditorFragment.X();
-                        qp4 qp4Var = mainActivity.R;
-                        if (qp4Var != null) {
-                            final boolean[] zArr = {false};
-                            FrameLayout frameLayout = (FrameLayout) qp4Var.c;
-                            int[] iArr = qg4.E;
-                            qg4 qg4VarH = qg4.h(frameLayout, frameLayout.getResources().getText(R.string.playlist_editor_removed_track), 0);
-                            qg4VarH.e(mainActivity.u());
-                            qg4VarH.i(R.string.song_bottom_sheet_undo, new View.OnClickListener() { // from class: ul3
-                                @Override // android.view.View.OnClickListener
-                                public final void onClick(View view3) {
-                                    int iMin;
-                                    Child child2;
-                                    PlaylistEditorFragment playlistEditorFragment2 = playlistEditorFragment;
-                                    if (playlistEditorFragment2.n0 != null) {
-                                        boolean[] zArr2 = zArr;
-                                        if (zArr2[0]) {
-                                            return;
-                                        }
-                                        wl3 wl3Var2 = playlistEditorFragment2.m0;
-                                        if (wl3Var2.i) {
-                                            return;
-                                        }
-                                        zArr2[0] = true;
-                                        List list2 = (List) wl3Var2.g.d();
-                                        if (list2 == null || (child2 = child) == null) {
-                                            iMin = -1;
-                                        } else {
-                                            iMin = Math.min(Math.max(iC2, 0), list2.size());
-                                            list2.add(iMin, child2);
-                                        }
-                                        if (iMin >= 0) {
-                                            playlistEditorFragment2.n0.n.e(iMin, 1);
-                                        }
-                                    }
-                                }
-                            });
-                            playlistEditorFragment.p0 = qg4VarH;
-                            qg4VarH.j();
-                            break;
-                        }
-                    }
-                }
-                break;
-            case 7:
-                q05.l((PlaylistEditorFragment) obj).o();
-                break;
-            case 8:
-                PlaylistPageFragment playlistPageFragment = (PlaylistPageFragment) obj;
-                ((InputMethodManager) playlistPageFragment.X().getSystemService("input_method")).hideSoftInputFromWindow(view.getWindowToken(), 0);
-                playlistPageFragment.m0.T.o();
-                break;
-            case 9:
-                PodcastChannelBottomSheetDialog podcastChannelBottomSheetDialog = (PodcastChannelBottomSheetDialog) obj;
-                um3 um3Var = podcastChannelBottomSheetDialog.B0;
-                PodcastChannel podcastChannel = um3Var.d;
-                if (podcastChannel != null && podcastChannel.getId() != null) {
-                    hh3 hh3Var = um3Var.c;
-                    String id = um3Var.d.getId();
-                    hh3Var.getClass();
-                    wo0 wo0VarH = App.f(false).h();
-                    wo0VarH.getClass();
-                    Log.d("PodcastClient", "deletePodcastChannel()");
-                    ((hn3) wo0VarH.o).a(((pn4) wo0VarH.n).f(), id).enqueue(new si1(16, um3Var));
-                }
-                podcastChannelBottomSheetDialog.h0();
-                break;
-            case 10:
-                vm3 vm3Var = (vm3) obj;
-                Bundle bundle3 = new Bundle();
-                ej ejVar = vm3Var.v;
-                bundle3.putParcelable("PODCAST_CHANNEL_OBJECT", (Parcelable) ejVar.r.get(vm3Var.c()));
-                ((PodcastChannelCatalogueFragment) ejVar.t).onPodcastChannelClick(bundle3);
-                break;
-            case 11:
-                PodcastChannelCatalogueFragment podcastChannelCatalogueFragment = (PodcastChannelCatalogueFragment) obj;
-                podcastChannelCatalogueFragment.h0(view);
-                podcastChannelCatalogueFragment.m0.T.o();
-                break;
-            case 12:
-                sl3 sl3Var = (sl3) obj;
-                Editable text = ((TextInputEditText) ((hd5) sl3Var.D0).p).getText();
-                Objects.requireNonNull(text);
-                String strTrim = text.toString().trim();
-                sl3Var.C0 = strTrim;
-                if (TextUtils.isEmpty(strTrim)) {
-                    ((TextInputEditText) ((hd5) sl3Var.D0).p).setError(sl3Var.s(R.string.error_required));
-                } else {
-                    xm3 xm3Var = (xm3) sl3Var.E0;
-                    String str2 = sl3Var.C0;
-                    xm3Var.e.k(null);
-                    xm3Var.d.k(Boolean.FALSE);
-                    xm3Var.c.getClass();
-                    wo0 wo0VarH2 = App.f(false).h();
-                    wo0VarH2.getClass();
-                    Log.d("PodcastClient", "createPodcastChannel()");
-                    ((hn3) wo0VarH2.o).d(((pn4) wo0VarH2.n).f(), str2).enqueue(new om1(19, xm3Var));
-                    ((PodcastCallback) sl3Var.F0).onDismiss();
-                    Dialog dialog = sl3Var.w0;
-                    Objects.requireNonNull(dialog);
-                    dialog.dismiss();
-                }
-                break;
-            case 13:
-                la4 la4Var = (la4) obj;
-                Bundle bundle4 = new Bundle();
-                zd0 zd0Var2 = la4Var.v;
-                bundle4.putParcelable("server_object", (Parcelable) zd0Var2.r.get(la4Var.c()));
-                ((LoginFragment) zd0Var2.s).onServerClick(bundle4);
-                break;
-            case 14:
-                ((SettingsFragment) obj).l0.T.o();
-                break;
-            case 15:
-                xd4 xd4Var = (xd4) obj;
-                Bundle bundle5 = new Bundle();
-                s6 s6Var = xd4Var.v;
-                bundle5.putParcelable("TRACK_OBJECT", (Parcelable) s6Var.r.get(xd4Var.c()));
-                bundle5.putBoolean("MEDIA_MIX", true);
-                ((cp1) s6Var.t).onMediaClick(bundle5);
-                break;
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                final ToolbarFragment toolbarFragment = (ToolbarFragment) obj;
-                ArrayList arrayList = toolbarFragment.p0;
-                PopupMenu popupMenu = new PopupMenu(toolbarFragment.Z(), view);
-                String strK = ud3.k();
-                int i3 = strK == null ? 0 : -1;
-                popupMenu.getMenu().add(1, 0, 0, R.string.settings_music_library_all);
-                for (int i4 = 0; i4 < arrayList.size(); i4++) {
-                    MusicFolder musicFolder = (MusicFolder) arrayList.get(i4);
-                    if (musicFolder.getId() != null) {
-                        int i5 = i4 + 1;
-                        popupMenu.getMenu().add(1, i5, i5, musicFolder.getName() != null ? musicFolder.getName() : musicFolder.getId());
-                        if (musicFolder.getId().equals(strK)) {
-                            i3 = i5;
-                        }
-                    }
-                }
-                popupMenu.getMenu().setGroupCheckable(1, true, true);
-                if (i3 != -1) {
-                    popupMenu.getMenu().findItem(i3).setChecked(true);
-                }
-                final ArrayList arrayList2 = new ArrayList();
-                int size = arrayList.size();
-                while (i2 < size) {
-                    Object obj2 = arrayList.get(i2);
-                    i2++;
-                    arrayList2.add(((MusicFolder) obj2).getId());
-                }
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() { // from class: ev4
-                    @Override // android.widget.PopupMenu.OnMenuItemClickListener
-                    public final boolean onMenuItemClick(MenuItem menuItem) {
-                        int itemId = menuItem.getItemId() - 1;
-                        String str3 = itemId < 0 ? "default" : (String) arrayList2.get(itemId);
-                        if (str3 == null) {
-                            return true;
-                        }
-                        toolbarFragment.o0.d(str3);
-                        return true;
-                    }
-                });
-                popupMenu.show();
-                break;
-            default:
-                he5 he5Var = (he5) obj;
-                Bundle bundleH = b11.h("MEDIA_BY_YEAR", "MEDIA_BY_YEAR");
-                uc4 uc4Var = he5Var.v;
-                bundleH.putInt("year_object", ((Integer) uc4Var.s.get(he5Var.c())).intValue());
-                uc4Var.r.onYearClick(bundleH);
-                break;
-        }
+    public final void onClick(View r12) {
+        int r0 = this.n;
+        int r5 = 0;
+        Object r11 = this.o;
+        switch(r0) {
+            case 0: goto L92;
+            case 1: goto L85;
+            case 2: goto L79;
+            case 3: goto L72;
+            case 4: goto L70;
+            case 5: goto L68;
+            case 6: goto L58;
+            case 7: goto L56;
+            case 8: goto L54;
+            case 9: goto L47;
+            case 10: goto L45;
+            case 11: goto L43;
+            case 12: goto L38;
+            case 13: goto L36;
+            case 14: goto L34;
+            case 15: goto L32;
+            case 16: goto L6;
+            default: goto L4;
+        };
+    L4:
+        he5 r13 = (he5) r11;
+        Bundle r14 = b11.h("MEDIA_BY_YEAR", "MEDIA_BY_YEAR");
+        uc4 r1 = r13.v;
+        r14.putInt("year_object", ((Integer) r1.s.get(r13.c())).intValue());
+        r1.r.onYearClick(r14);
+        return;
+    L6:
+        final ToolbarFragment r15 = (ToolbarFragment) r11;
+        ArrayList r2 = r15.p0;
+        PopupMenu r3 = new PopupMenu(r15.Z(), r12);
+        String r16 = ud3.k();
+        if (r16 != null) goto L9;
+        int r4 = 0;
+    L10:
+        r3.getMenu().add(1, 0, 0, R.string.settings_music_library_all);
+        int r6 = 0;
+    L12:
+        if (r6 >= r2.size()) goto L24;
+        MusicFolder r7 = (MusicFolder) r2.get(r6);
+        if (r7.getId() == null) goto L23;
+        if (r7.getName() == null) goto L19;
+        String r8 = r7.getName();
+    L20:
+        int r10 = r6 + 1;
+        r3.getMenu().add(1, r10, r10, r8);
+        if (r7.getId().equals(r16) == false) goto L23;
+        r4 = r10;
+        goto L23
+    L19:
+        r8 = r7.getId();
+    L23:
+        r6 = r6 + 1;
+        goto L12
+    L24:
+        r3.getMenu().setGroupCheckable(1, true, true);
+        if (r4 == (-1)) goto L27;
+        r3.getMenu().findItem(r4).setChecked(true);
+    L27:
+        final ArrayList r17 = new ArrayList();
+        int r9 = r2.size();
+    L28:
+        if (r5 >= r9) goto L30;
+        Object r18 = r2.get(r5);
+        r5 = r5 + 1;
+        r17.add(((MusicFolder) r18).getId());
+        goto L28
+    L30:
+        r3.setOnMenuItemClickListener(new ev4(r15, r17));
+        r3.show();
+        return;
+    L9:
+        r4 = -1;
+        goto L10
+    L32:
+        xd4 r19 = (xd4) r11;
+        Bundle r110 = new Bundle();
+        s6 r20 = r19.v;
+        r110.putParcelable("TRACK_OBJECT", (Parcelable) r20.r.get(r19.c()));
+        r110.putBoolean("MEDIA_MIX", true);
+        ((cp1) r20.t).onMediaClick(r110);
+        return;
+    L34:
+        ((SettingsFragment) r11).l0.T.o();
+        return;
+    L36:
+        la4 r111 = (la4) r11;
+        Bundle r112 = new Bundle();
+        zd0 r21 = r111.v;
+        r112.putParcelable("server_object", (Parcelable) r21.r.get(r111.c()));
+        ((LoginFragment) r21.s).onServerClick(r112);
+        return;
+    L38:
+        sl3 r113 = (sl3) r11;
+        Editable r114 = ((TextInputEditText) ((hd5) r113.D0).p).getText();
+        Objects.requireNonNull(r114);
+        String r115 = r114.toString().trim();
+        r113.C0 = r115;
+        if (TextUtils.isEmpty(r115) == false) goto L41;
+        ((TextInputEditText) ((hd5) r113.D0).p).setError(r113.s(R.string.error_required));
+        return;
+    L41:
+        xm3 r116 = (xm3) r113.E0;
+        String r22 = r113.C0;
+        r116.e.k(null);
+        r116.d.k(Boolean.FALSE);
+        r116.c.getClass();
+        wo0 r23 = App.f(false).h();
+        r23.getClass();
+        Log.d("PodcastClient", "createPodcastChannel()");
+        ((hn3) r23.o).d(((pn4) r23.n).f(), r22).enqueue(new om1(19, r116));
+        ((PodcastCallback) r113.F0).onDismiss();
+        Dialog r117 = r113.w0;
+        Objects.requireNonNull(r117);
+        r117.dismiss();
+        return;
+    L43:
+        PodcastChannelCatalogueFragment r118 = (PodcastChannelCatalogueFragment) r11;
+        r118.h0(r12);
+        r118.m0.T.o();
+        return;
+    L45:
+        vm3 r119 = (vm3) r11;
+        Bundle r120 = new Bundle();
+        ej r24 = r119.v;
+        r120.putParcelable("PODCAST_CHANNEL_OBJECT", (Parcelable) r24.r.get(r119.c()));
+        ((PodcastChannelCatalogueFragment) r24.t).onPodcastChannelClick(r120);
+        return;
+    L47:
+        PodcastChannelBottomSheetDialog r121 = (PodcastChannelBottomSheetDialog) r11;
+        um3 r122 = r121.B0;
+        PodcastChannel r25 = r122.d;
+        if (r25 != null) goto L50;
+    L52:
+        r121.h0();
+        return;
+    L50:
+        if (r25.getId() == null) goto L52;
+        hh3 r26 = r122.c;
+        String r27 = r122.d.getId();
+        r26.getClass();
+        wo0 r28 = App.f(false).h();
+        r28.getClass();
+        Log.d("PodcastClient", "deletePodcastChannel()");
+        ((hn3) r28.o).a(((pn4) r28.n).f(), r27).enqueue(new si1(16, r122));
+        goto L52
+    L54:
+        PlaylistPageFragment r123 = (PlaylistPageFragment) r11;
+        ((InputMethodManager) r123.X().getSystemService("input_method")).hideSoftInputFromWindow(r12.getWindowToken(), 0);
+        r123.m0.T.o();
+        return;
+    L56:
+        q05.l((PlaylistEditorFragment) r11).o();
+        return;
+    L58:
+        ol3 r124 = (ol3) r11;
+        final int r125 = r124.c();
+        if (r125 == (-1)) goto L105;
+        final PlaylistEditorFragment r126 = (PlaylistEditorFragment) r124.v.s;
+        wl3 r29 = r126.m0;
+        if (r29.i == true) goto L106;
+        List r30 = (List) r29.g.d();
+        Objects.requireNonNull(r30);
+        final Child r31 = (Child) r30.remove(r125);
+        r126.n0.n.f(r125, 1);
+        MainActivity r32 = (MainActivity) r126.X();
+        qp4 r33 = r32.R;
+        if (r33 == null) goto L107;
+        final boolean[] r34 = {false};
+        FrameLayout r35 = (FrameLayout) r33.c;
+        int[] r36 = qg4.E;
+        qg4 r37 = qg4.h(r35, r35.getResources().getText(R.string.playlist_editor_removed_track), 0);
+        r37.e(r32.u());
+        r37.i(R.string.song_bottom_sheet_undo, new ul3(r126, r34, r125, r31));
+        r126.p0 = r37;
+        r37.j();
+        return;
+    L107:
+        return;
+    L106:
+        return;
+    L105:
+        return;
+    L68:
+        nl3 r127 = (nl3) r11;
+        Bundle r128 = new Bundle();
+        zd0 r38 = r127.v;
+        r128.putParcelable("PLAYLIST_OBJECT", (Parcelable) r38.r.get(r127.c()));
+        ((fl3) r38.s).onPlaylistClick(r128);
+        return;
+    L70:
+        xk3 r129 = (xk3) r11;
+        Bundle r130 = new Bundle();
+        yk3 r39 = r129.v;
+        r130.putParcelableArrayList("TRACKS_OBJECT", new ArrayList(r39.s));
+        r130.putInt("ITEM_POSITION", r129.c());
+        r39.q.onMediaClick(r130);
+        return;
+    L72:
+        qj3 r131 = (qj3) r11;
+        r131.g();
+        if (r12.getId() != R.id.exo_overflow_show) goto L76;
+        r131.r.start();
+        return;
+    L76:
+        if (r12.getId() != R.id.exo_overflow_hide) goto L109;
+        r131.s.start();
+        return;
+    L109:
+        return;
+    L79:
+        PlayerControlView r132 = ((cj3) r11).t;
+        qi3 r133 = r132.D0;
+        if (r133 != null) goto L82;
+        return;
+    L82:
+        if (r133.S0(29) == false) goto L111;
+        r132.D0.M(r132.D0.E0().a().d(3).g().i().k().b());
+        r132.E.dismiss();
+        return;
+    L111:
+        return;
+    L85:
+        ij3 r134 = (ij3) r11;
+        PlayerControlView r135 = r134.x;
+        int r136 = r134.c();
+        View r40 = r135.T;
+        if (r136 != 0) goto L88;
+        gj3 r137 = r135.A;
+        r40.getClass();
+        r135.d(r137, r40);
+        return;
+    L88:
+        if (r136 != 1) goto L90;
+        cj3 r138 = r135.C;
+        r40.getClass();
+        r135.d(r138, r40);
+        return;
+    L90:
+        r135.E.dismiss();
+        return;
+    L92:
+        PlayerControlView r139 = ((cj3) r11).t;
+        qi3 r140 = r139.D0;
+        if (r140 != null) goto L95;
+        return;
+    L95:
+        if (r140.S0(29) == false) goto L115;
+        cw4 r141 = r139.D0.E0();
+        qi3 r41 = r139.D0;
+        String r42 = f35.a;
+        r41.M(r141.a().d(1).l(1, false).b());
+        r139.z.r[1] = r139.getResources().getString(R.string.exo_track_selection_auto);
+        r139.E.dismiss();
+        return;
     }
 }

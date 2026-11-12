@@ -7,54 +7,60 @@ import android.view.Window;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class xp2 implements View.OnClickListener {
-    public final /* synthetic */ int n = 1;
+    public final /* synthetic */ int n;
     public final Object o;
     public final /* synthetic */ Object p;
 
-    public xp2(gv4 gv4Var) {
-        this.p = gv4Var;
-        Context context = gv4Var.a.getContext();
-        CharSequence charSequence = gv4Var.h;
-        q4 q4Var = new q4();
-        q4Var.e = 4096;
-        q4Var.g = 4096;
-        q4Var.l = null;
-        q4Var.m = null;
-        q4Var.n = false;
-        q4Var.o = false;
-        q4Var.p = 16;
-        q4Var.i = context;
-        q4Var.a = charSequence;
-        this.o = q4Var;
+    public xp2(gv4 r4) {
+        this.n = 1;
+        this.p = r4;
+        Context r1 = r4.a.getContext();
+        CharSequence r5 = r4.h;
+        q4 r0 = new q4();
+        r0.e = 4096;
+        r0.g = 4096;
+        r0.l = null;
+        r0.m = null;
+        r0.n = false;
+        r0.o = false;
+        r0.p = 16;
+        r0.i = r1;
+        r0.a = r5;
+        this.o = r0;
     }
 
     @Override // android.view.View.OnClickListener
-    public final void onClick(View view) {
-        int i = this.n;
-        Object obj = this.o;
-        Object obj2 = this.p;
-        switch (i) {
-            case 0:
-                yp2 yp2Var = (yp2) obj2;
-                wq2 wq2Var = (wq2) obj;
-                yp2Var.y.w.B = wq2Var;
-                wq2Var.k(true);
-                yp2Var.v.setVisibility(4);
-                yp2Var.w.setVisibility(0);
-                break;
-            default:
-                gv4 gv4Var = (gv4) obj2;
-                Window.Callback callback = gv4Var.k;
-                if (callback != null && gv4Var.l) {
-                    callback.onMenuItemSelected(0, (q4) obj);
-                    break;
-                }
-                break;
-        }
+    public final void onClick(View r3) {
+        int r4 = this.n;
+        Object r0 = this.o;
+        Object r2 = this.p;
+        switch(r4) {
+            case 0: goto L10;
+            default: goto L4;
+        };
+    L4:
+        gv4 r5 = (gv4) r2;
+        Window.Callback r6 = r5.k;
+        if (r6 != null) goto L7;
+        return;
+    L7:
+        if (r5.l == false) goto L13;
+        r6.onMenuItemSelected(0, (q4) r0);
+        return;
+    L13:
+        return;
+    L10:
+        yp2 r7 = (yp2) r2;
+        wq2 r1 = (wq2) r0;
+        r7.y.w.B = r1;
+        r1.k(true);
+        r7.v.setVisibility(4);
+        r7.w.setVisibility(0);
     }
 
-    public xp2(yp2 yp2Var, wq2 wq2Var) {
-        this.p = yp2Var;
-        this.o = wq2Var;
+    public xp2(yp2 r2, wq2 r3) {
+        this.n = 0;
+        this.p = r2;
+        this.o = r3;
     }
 }

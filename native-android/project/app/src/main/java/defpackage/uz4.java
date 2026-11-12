@@ -13,11 +13,10 @@ public final class uz4 extends t12 {
     public final Constructor p;
     public final /* synthetic */ TypeToken q;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public uz4(TypeToken typeToken, Constructor constructor) {
-        super(constructor);
-        this.q = typeToken;
-        this.p = constructor;
+    public uz4(TypeToken r1, Constructor r2) {
+        this.q = r1;
+        super(r2);
+        this.p = r2;
     }
 
     @Override // defpackage.t12
@@ -25,44 +24,50 @@ public final class uz4 extends t12 {
         return this.q;
     }
 
-    /* JADX WARN: Code duplicated, block: B:6:0x002f  */
     public final String toString() {
-        boolean z;
-        StringBuilder sb = new StringBuilder();
-        TypeToken typeToken = this.q;
-        sb.append(typeToken);
-        sb.append("(");
-        uc0 uc0Var = new uc0(", ");
-        sz4 invariantTypeResolver = typeToken.getInvariantTypeResolver();
-        Constructor constructor = this.p;
-        Type[] genericParameterTypes = constructor.getGenericParameterTypes();
-        if (genericParameterTypes.length > 0) {
-            Class declaringClass = constructor.getDeclaringClass();
-            if (declaringClass.getEnclosingConstructor() == null) {
-                Method enclosingMethod = declaringClass.getEnclosingMethod();
-                if (enclosingMethod != null) {
-                    z = !Modifier.isStatic(enclosingMethod.getModifiers());
-                } else if (declaringClass.getEnclosingClass() == null || Modifier.isStatic(declaringClass.getModifiers())) {
-                    z = false;
-                } else {
-                    z = true;
-                }
-            } else {
-                z = true;
-            }
-            if (z) {
-                Class<?>[] parameterTypes = constructor.getParameterTypes();
-                if (genericParameterTypes.length == parameterTypes.length && parameterTypes[0] == this.o.getDeclaringClass().getEnclosingClass()) {
-                    genericParameterTypes = (Type[]) Arrays.copyOfRange(genericParameterTypes, 1, genericParameterTypes.length);
-                }
-            }
-        }
-        invariantTypeResolver.getClass();
-        for (int i = 0; i < genericParameterTypes.length; i++) {
-            genericParameterTypes[i] = invariantTypeResolver.b(genericParameterTypes[i]);
-        }
-        sb.append(uc0Var.b(Arrays.asList(genericParameterTypes)));
-        sb.append(")");
-        return sb.toString();
+        StringBuilder r0 = new StringBuilder();
+        TypeToken r1 = this.q;
+        r0.append(r1);
+        r0.append("(");
+        uc0 r2 = new uc0(", ");
+        sz4 r3 = TypeToken.access$100(r1);
+        Constructor r4 = this.p;
+        Type[] r5 = r4.getGenericParameterTypes();
+        int r6 = 0;
+        if (r5.length <= 0) goto L22;
+        Class r7 = r4.getDeclaringClass();
+        if (r7.getEnclosingConstructor() == null) goto L7;
+    L6:
+        boolean r8 = true;
+    L16:
+        if (r8 == false) goto L22;
+        Class<?>[] r9 = r4.getParameterTypes();
+        if (r5.length != r9.length) goto L22;
+        if (r9[0] != this.o.getDeclaringClass().getEnclosingClass()) goto L22;
+        r5 = (Type[]) Arrays.copyOfRange(r5, 1, r5.length);
+        goto L22
+    L7:
+        Method r10 = r7.getEnclosingMethod();
+        if (r10 == null) goto L11;
+        r8 = !Modifier.isStatic(r10.getModifiers());
+        goto L16
+    L11:
+        if (r7.getEnclosingClass() != null) goto L13;
+    L15:
+        r8 = false;
+        goto L16
+    L13:
+        if (Modifier.isStatic(r7.getModifiers()) == true) goto L15;
+    L22:
+        r3.getClass();
+    L24:
+        if (r6 >= r5.length) goto L26;
+        r5[r6] = r3.b(r5[r6]);
+        r6 = r6 + 1;
+        goto L24
+    L26:
+        r0.append(r2.b(Arrays.asList(r5)));
+        r0.append(")");
+        return r0.toString();
     }
 }

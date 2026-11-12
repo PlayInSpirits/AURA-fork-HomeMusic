@@ -9,24 +9,26 @@ public final class o60 extends r1 {
     public int o;
     public final /* synthetic */ p60 p;
 
-    public o60(p60 p60Var, int i) {
-        this.p = p60Var;
-        Object obj = p60.w;
-        this.n = p60Var.j()[i];
-        this.o = i;
+    public o60(p60 r2, int r3) {
+        this.p = r2;
+        Object r0 = p60.w;
+        this.n = r2.j()[r3];
+        this.o = r3;
     }
 
     public final void a() {
-        int i = this.o;
-        Object obj = this.n;
-        p60 p60Var = this.p;
-        if (i != -1 && i < p60Var.size()) {
-            if (si0.s(obj, p60Var.j()[this.o])) {
-                return;
-            }
-        }
-        Object obj2 = p60.w;
-        this.o = p60Var.e(obj);
+        int r0 = this.o;
+        Object r2 = this.n;
+        p60 r3 = this.p;
+        if (r0 != (-1)) goto L5;
+    L10:
+        Object r1 = p60.w;
+        this.o = r3.e(r2);
+        return;
+    L5:
+        if (r0 >= r3.size()) goto L10;
+        int r4 = this.o;
+        if (si0.s(r2, r3.j()[r4]) == false) goto L10;
     }
 
     @Override // java.util.Map.Entry
@@ -36,35 +38,36 @@ public final class o60 extends r1 {
 
     @Override // java.util.Map.Entry
     public final Object getValue() {
-        p60 p60Var = this.p;
-        Map mapC = p60Var.c();
-        if (mapC != null) {
-            return mapC.get(this.n);
-        }
+        p60 r0 = this.p;
+        Map r1 = r0.c();
+        if (r1 != null) goto L5;
         a();
-        int i = this.o;
-        if (i == -1) {
-            return null;
-        }
-        return p60Var.k()[i];
+        int r2 = this.o;
+        if (r2 != (-1)) goto L11;
+        return null;
+    L11:
+        return r0.k()[r2];
+    L5:
+        return r1.get(this.n);
     }
 
     @Override // defpackage.r1, java.util.Map.Entry
-    public final Object setValue(Object obj) {
-        p60 p60Var = this.p;
-        Map mapC = p60Var.c();
-        Object obj2 = this.n;
-        if (mapC != null) {
-            return mapC.put(obj2, obj);
-        }
+    public final Object setValue(Object r5) {
+        p60 r0 = this.p;
+        Map r1 = r0.c();
+        Object r2 = this.n;
+        if (r1 != null) goto L5;
         a();
-        int i = this.o;
-        if (i == -1) {
-            p60Var.put(obj2, obj);
-            return null;
-        }
-        Object obj3 = p60Var.k()[i];
-        p60Var.k()[this.o] = obj;
-        return obj3;
+        int r3 = this.o;
+        if (r3 != (-1)) goto L10;
+        r0.put(r2, r5);
+        return null;
+    L10:
+        Object r4 = r0.k()[r3];
+        int r6 = this.o;
+        r0.k()[r6] = r5;
+        return r4;
+    L5:
+        return r1.put(r2, r5);
     }
 }

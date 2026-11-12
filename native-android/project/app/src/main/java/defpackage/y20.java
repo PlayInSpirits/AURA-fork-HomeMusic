@@ -13,69 +13,98 @@ public final class y20 extends mw0 {
     public float e;
     public float f;
 
-    public y20(g30 g30Var) {
-        super(g30Var);
+    public y20(g30 r1) {
+        super(r1);
         this.c = 1;
     }
 
     @Override // defpackage.mw0
-    public final void a(Canvas canvas, Rect rect, float f) {
-        float fWidth = rect.width() / g();
-        float fHeight = rect.height() / g();
-        g30 g30Var = (g30) this.a;
-        float f2 = (g30Var.g / 2.0f) + g30Var.h;
-        canvas.translate((f2 * fWidth) + rect.left, (f2 * fHeight) + rect.top);
-        canvas.scale(fWidth, fHeight);
-        canvas.rotate(-90.0f);
-        float f3 = -f2;
-        canvas.clipRect(f3, f3, f2, f2);
-        this.c = g30Var.i == 0 ? 1 : -1;
-        int i = g30Var.a;
-        this.d = i * f;
-        this.e = g30Var.b * f;
-        this.f = (g30Var.g - i) / 2.0f;
-        if ((this.b.d() && g30Var.e == 2) || (this.b.c() && g30Var.f == 1)) {
-            this.f = (((1.0f - f) * g30Var.a) / 2.0f) + this.f;
-        } else if ((this.b.d() && g30Var.e == 1) || (this.b.c() && g30Var.f == 2)) {
-            this.f -= ((1.0f - f) * g30Var.a) / 2.0f;
-        }
+    public final void a(Canvas r9, Rect r10, float r11) {
+        float r0 = r10.width() / g();
+        float r1 = r10.height() / g();
+        g30 r2 = (g30) this.a;
+        float r3 = (r2.g / 2.0f) + r2.h;
+        r9.translate((r3 * r0) + r10.left, (r3 * r1) + r10.top);
+        r9.scale(r0, r1);
+        r9.rotate(-90.0f);
+        float r12 = -r3;
+        r9.clipRect(r12, r12, r3, r3);
+        if (r2.i != 0) goto L5;
+        int r13 = 1;
+    L6:
+        this.c = r13;
+        int r14 = r2.a;
+        this.d = r14 * r11;
+        this.e = r2.b * r11;
+        this.f = (r2.g - r14) / 2.0f;
+        if (this.b.d() == false) goto L11;
+        if (r2.e != 2) goto L11;
+    L14:
+        this.f = (((1.0f - r11) * r2.a) / 2.0f) + this.f;
+        return;
+    L11:
+        if (this.b.c() == false) goto L17;
+        if (r2.f == 1) goto L14;
+    L17:
+        if (this.b.d() == false) goto L21;
+        if (r2.e != 1) goto L21;
+    L24:
+        this.f -= ((1.0f - r11) * r2.a) / 2.0f;
+        return;
+    L21:
+        if (this.b.c() == true) goto L23;
+        return;
+    L23:
+        if (r2.f == 2) goto L24;
+        return;
+    L5:
+        r13 = -1;
+        goto L6
     }
 
     @Override // defpackage.mw0
-    public final void b(Canvas canvas, Paint paint, float f, float f2, int i) {
-        if (f == f2) {
-            return;
-        }
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeCap(Paint.Cap.BUTT);
-        paint.setAntiAlias(true);
-        paint.setColor(i);
-        paint.setStrokeWidth(this.d);
-        float f3 = this.c;
-        float f4 = f * 360.0f * f3;
-        float f5 = (f2 >= f ? f2 - f : (1.0f + f2) - f) * 360.0f * f3;
-        float f6 = this.f;
-        float f7 = -f6;
-        canvas.drawArc(new RectF(f7, f7, f6, f6), f4, f5, false, paint);
-        if (this.e <= 0.0f || Math.abs(f5) >= 360.0f) {
-            return;
-        }
-        paint.setStyle(Paint.Style.FILL);
-        f(canvas, paint, this.d, this.e, f4);
-        f(canvas, paint, this.d, this.e, f4 + f5);
+    public final void b(Canvas r9, Paint r10, float r11, float r12, int r13) {
+        if (r11 == r12) goto L18;
+        r10.setStyle(Paint.Style.STROKE);
+        r10.setStrokeCap(Paint.Cap.BUTT);
+        r10.setAntiAlias(true);
+        r10.setColor(r13);
+        r10.setStrokeWidth(this.d);
+        float r3 = this.c;
+        float r5 = (r11 * 360.0f) * r3;
+        if (r12 < r11) goto L9;
+        float r1 = r12 - r11;
+    L8:
+        float r2 = (r1 * 360.0f) * r3;
+        float r4 = this.f;
+        float r6 = -r4;
+        r9.drawArc(new RectF(r6, r6, r4, r4), r5, r2, false, r10);
+        if (this.e > 0.0f) goto L13;
+        return;
+    L13:
+        if (Math.abs(r2) >= 360.0f) goto L17;
+        r10.setStyle(Paint.Style.FILL);
+        f(r9, r10, this.d, this.e, r5);
+        f(r9, r10, this.d, this.e, r5 + r2);
+        return;
+    L17:
+        return;
+    L9:
+        r1 = (1.0f + r12) - r11;
+        goto L8
     }
 
     @Override // defpackage.mw0
-    public final void c(Canvas canvas, Paint paint) {
-        int iL = g12.l(((g30) this.a).d, this.b.w);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeCap(Paint.Cap.BUTT);
-        paint.setAntiAlias(true);
-        paint.setColor(iL);
-        paint.setStrokeWidth(this.d);
-        float f = this.f;
-        float f2 = -f;
-        canvas.drawArc(new RectF(f2, f2, f, f), 0.0f, 360.0f, false, paint);
+    public final void c(Canvas r8, Paint r9) {
+        int r0 = g12.l(((g30) this.a).d, this.b.w);
+        r9.setStyle(Paint.Style.STROKE);
+        r9.setStrokeCap(Paint.Cap.BUTT);
+        r9.setAntiAlias(true);
+        r9.setColor(r0);
+        r9.setStrokeWidth(this.d);
+        float r7 = this.f;
+        float r1 = -r7;
+        r8.drawArc(new RectF(r1, r1, r7, r7), 0.0f, 360.0f, false, r9);
     }
 
     @Override // defpackage.mw0
@@ -88,17 +117,18 @@ public final class y20 extends mw0 {
         return g();
     }
 
-    public final void f(Canvas canvas, Paint paint, float f, float f2, float f3) {
-        canvas.save();
-        canvas.rotate(f3);
-        float f4 = this.f;
-        float f5 = f / 2.0f;
-        canvas.drawRoundRect(new RectF(f4 - f5, f2, f4 + f5, -f2), f2, f2, paint);
-        canvas.restore();
+    public final void f(Canvas r2, Paint r3, float r4, float r5, float r6) {
+        r2.save();
+        r2.rotate(r6);
+        float r1 = this.f;
+        float r7 = r4 / 2.0f;
+        r2.drawRoundRect(new RectF(r1 - r7, r5, r1 + r7, -r5), r5, r5, r3);
+        r2.restore();
     }
 
     public final int g() {
-        jq jqVar = this.a;
-        return (((g30) jqVar).h * 2) + ((g30) jqVar).g;
+        jq r1 = this.a;
+        int r0 = ((g30) r1).g;
+        return (((g30) r1).h * 2) + r0;
     }
 }

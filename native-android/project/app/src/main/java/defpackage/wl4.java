@@ -4,7 +4,13 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class wl4 extends qr3 {
     @Override // defpackage.qr3
-    public final rr3 a(Object obj) {
-        return new rr3(this, obj, obj == null, null, null, false);
+    public final rr3 a(Object r8) {
+        if (r8 != null) goto L6;
+        boolean r1 = true;
+    L8:
+        return new rr3(this, r8, r1, null, null, false);
+    L6:
+        r1 = false;
+        goto L8
     }
 }

@@ -9,18 +9,27 @@ public final class jg4 implements w80, Iterable, x32 {
     public final int o;
     public final int p;
 
-    public jg4(ig4 ig4Var, int i, int i2) {
-        this.n = ig4Var;
-        this.o = i;
-        this.p = i2;
+    public jg4(ig4 r1, int r2, int r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
     }
 
-    public final boolean equals(Object obj) {
-        if (!(obj instanceof jg4)) {
-            return false;
-        }
-        jg4 jg4Var = (jg4) obj;
-        return jg4Var.o == this.o && jg4Var.p == this.p && jg4Var.n == this.n;
+    public final boolean equals(Object r3) {
+        if ((r3 instanceof jg4) == false) goto L13;
+        jg4 r4 = (jg4) r3;
+        if (r4.o == this.o) goto L7;
+        return false;
+    L7:
+        if (r4.p == this.p) goto L9;
+        return false;
+    L9:
+        if (r4.n != this.n) goto L17;
+        return true;
+    L17:
+        return false;
+    L13:
+        return false;
     }
 
     public final int hashCode() {
@@ -29,12 +38,12 @@ public final class jg4 implements w80, Iterable, x32 {
 
     @Override // java.lang.Iterable
     public final Iterator iterator() {
-        ig4 ig4Var = this.n;
-        if (ig4Var.u != this.p) {
-            kg4.f();
-        }
-        int i = this.o;
-        ig4Var.g(i);
-        return new ik1(ig4Var, i + 1, ig4Var.n[(i * 5) + 3] + i);
+        ig4 r0 = this.n;
+        if (r0.u == this.p) goto L5;
+        kg4.f();
+    L5:
+        int r5 = this.o;
+        r0.g(r5);
+        return new ik1(r0, r5 + 1, r0.n[(r5 * 5) + 3] + r5);
     }
 }

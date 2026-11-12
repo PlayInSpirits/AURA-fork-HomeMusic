@@ -1,5 +1,6 @@
 package defpackage;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.ComponentCallbacks;
 import android.content.Context;
@@ -33,7 +34,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMenuListener, ba2, f75, ml1, j54 {
-    public static final Object k0 = new Object();
+    public static final Object k0 = null;
     public boolean A;
     public boolean B;
     public boolean C;
@@ -41,6 +42,7 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
     public int E;
     public ld1 F;
     public mc1 G;
+    public md1 H;
     public kc1 I;
     public int J;
     public int K;
@@ -49,10 +51,12 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
     public boolean N;
     public boolean O;
     public boolean P;
+    public boolean Q;
     public boolean R;
     public ViewGroup S;
     public View T;
     public boolean U;
+    public boolean V;
     public hc1 W;
     public boolean X;
     public LayoutInflater Y;
@@ -67,24 +71,32 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
     public final AtomicInteger h0;
     public final ArrayList i0;
     public final ec1 j0;
+    public int n;
     public Bundle o;
     public SparseArray p;
     public Bundle q;
+    public String r;
     public Bundle s;
     public kc1 t;
+    public String u;
     public int v;
+    public Boolean w;
     public boolean x;
     public boolean y;
     public boolean z;
-    public int n = -1;
-    public String r = UUID.randomUUID().toString();
-    public String u = null;
-    public Boolean w = null;
-    public md1 H = new md1();
-    public boolean Q = true;
-    public boolean V = true;
+
+    static {
+        k0 = new Object();
+    }
 
     public kc1() {
+        this.n = -1;
+        this.r = UUID.randomUUID().toString();
+        this.u = null;
+        this.w = null;
+        this.H = new md1();
+        this.Q = true;
+        this.V = true;
         new g5(12, this);
         this.b0 = r92.r;
         this.e0 = new k03();
@@ -95,58 +107,85 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
     }
 
     public final boolean A() {
-        return this.E > 0;
+        if (this.E <= 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     public final boolean B() {
-        View view;
-        return (!y() || z() || (view = this.T) == null || view.getWindowToken() == null || this.T.getVisibility() != 0) ? false : true;
+        if (y() == true) goto L5;
+        return false;
+    L5:
+        if (z() == true) goto L16;
+        View r0 = this.T;
+        if (r0 != null) goto L9;
+        return false;
+    L9:
+        if (r0.getWindowToken() != null) goto L11;
+        return false;
+    L11:
+        if (this.T.getVisibility() != 0) goto L19;
+        return true;
+    L19:
+        return false;
+    L16:
+        return false;
     }
 
     public void C() {
         this.R = true;
     }
 
-    public void D(int i, int i2, Intent intent) {
-        if (ld1.I(2)) {
-            Log.v("FragmentManager", "Fragment " + this + " received the following in onActivityResult(): requestCode: " + i + " resultCode: " + i2 + " data: " + intent);
-        }
+    public void D(int r3, int r4, Intent r5) {
+        if (ld1.I(2) == false) goto L6;
+        Log.v("FragmentManager", "Fragment " + this + " received the following in onActivityResult(): requestCode: " + r3 + " resultCode: " + r4 + " data: " + r5);
+        return;
     }
 
-    public void E(Context context) {
+    public void E(Context r2) {
         this.R = true;
-        mc1 mc1Var = this.G;
-        if ((mc1Var == null ? null : mc1Var.A) != null) {
-            this.R = true;
-        }
-    }
-
-    public void F(Bundle bundle) {
-        Bundle bundle2;
+        mc1 r0 = this.G;
+        if (r0 != null) goto L5;
+        nc1 r1 = null;
+    L6:
+        if (r1 == null) goto L9;
         this.R = true;
-        Bundle bundle3 = this.o;
-        if (bundle3 != null && (bundle2 = bundle3.getBundle("childFragmentManager")) != null) {
-            this.H.V(bundle2);
-            md1 md1Var = this.H;
-            md1Var.G = false;
-            md1Var.H = false;
-            md1Var.N.g = false;
-            md1Var.t(1);
-        }
-        md1 md1Var2 = this.H;
-        if (md1Var2.u >= 1) {
-            return;
-        }
-        md1Var2.G = false;
-        md1Var2.H = false;
-        md1Var2.N.g = false;
-        md1Var2.t(1);
+        return;
+    L9:
+        return;
+    L5:
+        r1 = r0.A;
+        goto L6
     }
 
-    public void G(Menu menu, MenuInflater menuInflater) {
+    public void F(Bundle r4) {
+        this.R = true;
+        Bundle r0 = this.o;
+        if (r0 == null) goto L7;
+        Bundle r1 = r0.getBundle("childFragmentManager");
+        if (r1 == null) goto L7;
+        this.H.V(r1);
+        md1 r2 = this.H;
+        r2.G = false;
+        r2.H = false;
+        r2.N.g = false;
+        r2.t(1);
+    L7:
+        md1 r3 = this.H;
+        if (r3.u < 1) goto L10;
+        return;
+    L10:
+        r3.G = false;
+        r3.H = false;
+        r3.N.g = false;
+        r3.t(1);
     }
 
-    public View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+    public void G(Menu r1, MenuInflater r2) {
+    }
+
+    public View H(LayoutInflater r1, ViewGroup r2, Bundle r3) {
         return null;
     }
 
@@ -162,27 +201,35 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
         this.R = true;
     }
 
-    public LayoutInflater L(Bundle bundle) {
-        mc1 mc1Var = this.G;
-        if (mc1Var == null) {
-            kf2.o("onGetLayoutInflater() cannot be executed until the Fragment is attached to the FragmentManager.");
-            return null;
-        }
-        nc1 nc1Var = mc1Var.E;
-        LayoutInflater layoutInflaterCloneInContext = nc1Var.getLayoutInflater().cloneInContext(nc1Var);
-        layoutInflaterCloneInContext.setFactory2(this.H.f);
-        return layoutInflaterCloneInContext;
+    public LayoutInflater L(Bundle r2) {
+        mc1 r3 = this.G;
+        if (r3 == null) goto L6;
+        nc1 r4 = r3.E;
+        LayoutInflater r5 = r4.getLayoutInflater().cloneInContext(r4);
+        r5.setFactory2(this.H.f);
+        return r5;
+    L6:
+        kf2.o("onGetLayoutInflater() cannot be executed until the Fragment is attached to the FragmentManager.");
+        return null;
     }
 
-    public void M(Context context, AttributeSet attributeSet, Bundle bundle) {
+    public void M(Context r1, AttributeSet r2, Bundle r3) {
         this.R = true;
-        mc1 mc1Var = this.G;
-        if ((mc1Var == null ? null : mc1Var.A) != null) {
-            this.R = true;
-        }
+        mc1 r4 = this.G;
+        if (r4 != null) goto L5;
+        nc1 r5 = null;
+    L6:
+        if (r5 == null) goto L9;
+        this.R = true;
+        return;
+    L9:
+        return;
+    L5:
+        r5 = r4.A;
+        goto L6
     }
 
-    public boolean N(MenuItem menuItem) {
+    public boolean N(MenuItem r1) {
         return false;
     }
 
@@ -194,7 +241,7 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
         this.R = true;
     }
 
-    public void Q(Bundle bundle) {
+    public void Q(Bundle r1) {
     }
 
     public void R() {
@@ -205,216 +252,249 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
         this.R = true;
     }
 
-    public void T(View view, Bundle bundle) {
+    public void T(View r1, Bundle r2) {
     }
 
-    public void U(Bundle bundle) {
+    public void U(Bundle r1) {
         this.R = true;
     }
 
-    public void V(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+    public void V(LayoutInflater r5, ViewGroup r6, Bundle r7) {
         this.H.P();
         this.D = true;
         this.d0 = new le1(this, d(), new qa1(1, this));
-        View viewH = H(layoutInflater, viewGroup, bundle);
-        this.T = viewH;
-        le1 le1Var = this.d0;
-        if (viewH == null) {
-            if (le1Var.r == null) {
-                this.d0 = null;
-                return;
-            } else {
-                kf2.o("Called getViewLifecycleOwner() but onCreateView() returned null");
-                return;
-            }
-        }
-        le1Var.e();
-        if (ld1.I(3)) {
-            Log.d("FragmentManager", "Setting ViewLifecycleOwner on View " + this.T + " for Fragment " + this);
-        }
-        View view = this.T;
-        le1 le1Var2 = this.d0;
-        view.getClass();
-        view.setTag(R.id.view_tree_lifecycle_owner, le1Var2);
-        View view2 = this.T;
-        le1 le1Var3 = this.d0;
-        view2.getClass();
-        view2.setTag(R.id.view_tree_view_model_store_owner, le1Var3);
-        View view3 = this.T;
-        le1 le1Var4 = this.d0;
-        view3.getClass();
-        view3.setTag(R.id.view_tree_saved_state_registry_owner, le1Var4);
+        View r8 = H(r5, r6, r7);
+        this.T = r8;
+        le1 r9 = this.d0;
+        if (r8 == null) goto L10;
+        r9.e();
+        if (ld1.I(3) == false) goto L7;
+        Log.d("FragmentManager", "Setting ViewLifecycleOwner on View " + this.T + " for Fragment " + this);
+    L7:
+        View r10 = this.T;
+        le1 r11 = this.d0;
+        r10.getClass();
+        r10.setTag(R.id.view_tree_lifecycle_owner, r11);
+        View r12 = this.T;
+        le1 r13 = this.d0;
+        r12.getClass();
+        r12.setTag(R.id.view_tree_view_model_store_owner, r13);
+        View r14 = this.T;
+        le1 r15 = this.d0;
+        r14.getClass();
+        r14.setTag(R.id.view_tree_saved_state_registry_owner, r15);
         this.e0.k(this.d0);
+        return;
+    L10:
+        if (r9.r != null) goto L13;
+        this.d0 = null;
+        return;
+    L13:
+        kf2.o("Called getViewLifecycleOwner() but onCreateView() returned null");
     }
 
-    public final dc1 W(p5 p5Var, su3 su3Var) {
-        zg5 zg5Var = new zg5(this);
-        if (this.n > 1) {
-            kf2.o(b11.l("Fragment ", this, " is attempting to registerForActivityResult after being created. Fragments must call registerForActivityResult() before they are created (i.e. initialization, onAttach(), or onCreate())."));
-            return null;
-        }
-        AtomicReference atomicReference = new AtomicReference();
-        gc1 gc1Var = new gc1(this, zg5Var, atomicReference, su3Var, p5Var);
-        if (this.n >= 0) {
-            gc1Var.a();
-        } else {
-            this.i0.add(gc1Var);
-        }
-        return new dc1(atomicReference);
+    public final dc1 W(p5 r7, su3 r8) {
+        zg5 r2 = new zg5(this);
+        if (this.n > 1) goto L10;
+        AtomicReference r3 = new AtomicReference();
+        gc1 r0 = new gc1(this, r2, r3, r8, r7);
+        if (this.n < 0) goto L7;
+        r0.a();
+    L9:
+        return new dc1(r3);
+    L7:
+        this.i0.add(r0);
+        goto L9
+    L10:
+        kf2.o(b11.l("Fragment ", this, " is attempting to registerForActivityResult after being created. Fragments must call registerForActivityResult() before they are created (i.e. initialization, onAttach(), or onCreate())."));
+        return null;
     }
 
     public final nc1 X() {
-        nc1 nc1VarE = e();
-        if (nc1VarE != null) {
-            return nc1VarE;
-        }
+        nc1 r0 = l();
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         kf2.o(b11.l("Fragment ", this, " not attached to an activity."));
         return null;
     }
 
     public final Bundle Y() {
-        Bundle bundle = this.s;
-        if (bundle != null) {
-            return bundle;
-        }
+        Bundle r0 = this.s;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         kf2.o(b11.l("Fragment ", this, " does not have any arguments."));
         return null;
     }
 
     public final Context Z() {
-        Context contextN = n();
-        if (contextN != null) {
-            return contextN;
-        }
+        Context r0 = n();
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         kf2.o(b11.l("Fragment ", this, " not attached to a context."));
         return null;
     }
 
     @Override // defpackage.ml1
     public final b75 a() {
-        Application application = null;
-        if (this.F == null) {
-            kf2.o("Can't access ViewModels from detached fragment");
-            return null;
-        }
-        if (this.f0 == null) {
-            for (Context applicationContext = Z().getApplicationContext(); applicationContext instanceof ContextWrapper; applicationContext = ((ContextWrapper) applicationContext).getBaseContext()) {
-                if (applicationContext instanceof Application) {
-                    application = (Application) applicationContext;
-                    break;
-                }
-            }
-            if (application == null && ld1.I(3)) {
-                Log.d("FragmentManager", "Could not find Application instance from Context " + Z().getApplicationContext() + ", you will need CreationExtras to use AndroidViewModel with the default ViewModelProvider.Factory");
-            }
-            this.f0 = new k54(application, this, this.s);
-        }
+        Application r1 = null;
+        if (this.F != null) goto L5;
+        kf2.o("Can't access ViewModels from detached fragment");
+        return null;
+    L5:
+        if (this.f0 != null) goto L19;
+        Context r0 = Z().getApplicationContext();
+    L8:
+        if ((r0 instanceof ContextWrapper) == false) goto L13;
+        if ((r0 instanceof Application) == true) goto L11;
+        r0 = ((ContextWrapper) r0).getBaseContext();
+        goto L8
+    L11:
+        r1 = (Application) r0;
+    L13:
+        if (r1 == null) goto L15;
+    L17:
+        this.f0 = new k54(r1, this, this.s);
+        goto L19
+    L15:
+        if (ld1.I(3) == false) goto L17;
+        Log.d("FragmentManager", "Could not find Application instance from Context " + Z().getApplicationContext() + ", you will need CreationExtras to use AndroidViewModel with the default ViewModelProvider.Factory");
+    L19:
         return this.f0;
     }
 
     public final View a0() {
-        View view = this.T;
-        if (view != null) {
-            return view;
-        }
+        View r0 = this.T;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         kf2.o(b11.l("Fragment ", this, " did not return a View from onCreateView() or this was called before onCreateView()."));
         return null;
     }
 
     @Override // defpackage.ml1
     public final f03 b() {
-        Application application;
-        Context applicationContext = Z().getApplicationContext();
-        while (true) {
-            if (!(applicationContext instanceof ContextWrapper)) {
-                application = null;
-                break;
-            }
-            if (applicationContext instanceof Application) {
-                application = (Application) applicationContext;
-                break;
-            }
-            applicationContext = ((ContextWrapper) applicationContext).getBaseContext();
-        }
-        if (application == null && ld1.I(3)) {
-            Log.d("FragmentManager", "Could not find Application instance from Context " + Z().getApplicationContext() + ", you will not be able to use AndroidViewModel with the default ViewModelProvider.Factory");
-        }
-        f03 f03Var = new f03(0);
-        LinkedHashMap linkedHashMap = f03Var.a;
-        if (application != null) {
-            linkedHashMap.put(a75.d, application);
-        }
-        linkedHashMap.put(e54.a, this);
-        linkedHashMap.put(e54.b, this);
-        Bundle bundle = this.s;
-        if (bundle != null) {
-            linkedHashMap.put(e54.c, bundle);
-        }
-        return f03Var;
+        Context r0 = Z().getApplicationContext();
+    L4:
+        if ((r0 instanceof ContextWrapper) == false) goto L9;
+        if ((r0 instanceof Application) == true) goto L7;
+        r0 = ((ContextWrapper) r0).getBaseContext();
+        goto L4
+    L7:
+        Application r1 = (Application) r0;
+    L10:
+        if (r1 == null) goto L12;
+    L14:
+        f03 r2 = new f03(0);
+        LinkedHashMap r3 = r2.a;
+        if (r1 == null) goto L17;
+        r3.put(a75.d, r1);
+    L17:
+        r3.put(e54.a, this);
+        r3.put(e54.b, this);
+        Bundle r4 = this.s;
+        if (r4 == null) goto L20;
+        r3.put(e54.c, r4);
+    L20:
+        return r2;
+    L12:
+        if (ld1.I(3) == false) goto L14;
+        Log.d("FragmentManager", "Could not find Application instance from Context " + Z().getApplicationContext() + ", you will not be able to use AndroidViewModel with the default ViewModelProvider.Factory");
+        goto L14
+    L9:
+        r1 = null;
+        goto L10
     }
 
-    public final void b0(int i, int i2, int i3, int i4) {
-        if (this.W == null && i == 0 && i2 == 0 && i3 == 0 && i4 == 0) {
-            return;
-        }
-        k().b = i;
-        k().c = i2;
-        k().d = i3;
-        k().e = i4;
+    public final void b0(int r2, int r3, int r4, int r5) {
+        if (this.W != null) goto L9;
+        if (r2 != 0) goto L9;
+        if (r3 != 0) goto L9;
+        if (r4 != 0) goto L9;
+        if (r5 != 0) goto L9;
+        return;
+    L9:
+        k().b = r2;
+        k().c = r3;
+        k().d = r4;
+        k().e = r5;
     }
 
-    public final void c0(Bundle bundle) {
-        ld1 ld1Var = this.F;
-        if (ld1Var != null) {
-            if (ld1Var == null ? false : ld1Var.N()) {
-                kf2.o("Fragment already added and state has been saved");
-                return;
-            }
-        }
-        this.s = bundle;
+    public final void c0(Bundle r2) {
+        ld1 r0 = this.F;
+        if (r0 == null) goto L11;
+        if (r0 != null) goto L6;
+        boolean r1 = false;
+    L7:
+        if (r1 == false) goto L11;
+        kf2.o("Fragment already added and state has been saved");
+        return;
+    L6:
+        r1 = r0.N();
+    L11:
+        this.s = r2;
     }
 
     @Override // defpackage.f75
     public final e75 d() {
-        if (this.F == null) {
-            kf2.o("Can't access ViewModels from detached fragment");
-            return null;
-        }
-        if (p() == 1) {
-            kf2.o("Calling getViewModelStore() before a Fragment reaches onCreate() when using setMaxLifecycle(INITIALIZED) is not supported");
-            return null;
-        }
-        HashMap map = this.F.N.d;
-        e75 e75Var = (e75) map.get(this.r);
-        if (e75Var != null) {
-            return e75Var;
-        }
-        e75 e75Var2 = new e75();
-        map.put(this.r, e75Var2);
-        return e75Var2;
+        if (this.F != null) goto L5;
+        kf2.o("Can't access ViewModels from detached fragment");
+        return null;
+    L5:
+        if (p() == 1) goto L10;
+        HashMap r0 = this.F.N.d;
+        e75 r1 = (e75) r0.get(this.r);
+        if (r1 != null) goto L14;
+        e75 r2 = new e75();
+        r0.put(this.r, r2);
+        return r2;
+    L14:
+        return r1;
+    L10:
+        kf2.o("Calling getViewModelStore() before a Fragment reaches onCreate() when using setMaxLifecycle(INITIALIZED) is not supported");
+        return null;
     }
 
     public final void d0() {
-        if (!this.P) {
-            this.P = true;
-            if (!y() || z()) {
-                return;
-            }
-            this.G.E.invalidateOptionsMenu();
-        }
+        if (this.P == true) goto L10;
+        this.P = true;
+        if (y() == true) goto L7;
+        return;
+    L7:
+        if (z() == true) goto L12;
+        this.G.E.invalidateOptionsMenu();
+        return;
+    L12:
+        return;
     }
 
-    public final void e0(boolean z) {
-        if (this.Q != z) {
-            this.Q = z;
-            if (this.P && y() && !z()) {
-                this.G.E.invalidateOptionsMenu();
-            }
-        }
+    public /* synthetic */ Activity e() {
+        return l();
     }
 
-    public final boolean equals(Object obj) {
-        return this == obj;
+    public final void e0(boolean r2) {
+        if (this.Q == r2) goto L12;
+        this.Q = r2;
+        if (this.P == true) goto L7;
+        return;
+    L7:
+        if (y() == true) goto L9;
+        return;
+    L9:
+        if (z() == true) goto L15;
+        this.G.E.invalidateOptionsMenu();
+        return;
+    L15:
+        return;
+    }
+
+    public final boolean equals(Object r1) {
+        if (this == r1) goto L5;
+        return false;
+    L5:
+        return true;
     }
 
     @Override // defpackage.j54
@@ -422,43 +502,60 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
         return (rm3) this.g0.p;
     }
 
-    public final void f0(kc1 kc1Var) {
-        if (kc1Var != null) {
-            ge1 ge1Var = he1.a;
-            he1.b(new SetTargetFragmentUsageViolation(this, "Attempting to set target fragment " + kc1Var + " with request code 0 for fragment " + this));
-            he1.a(this).getClass();
-        }
-        ld1 ld1Var = this.F;
-        ld1 ld1Var2 = kc1Var != null ? kc1Var.F : null;
-        if (ld1Var != null && ld1Var2 != null && ld1Var != ld1Var2) {
-            kf2.n(b11.l("Fragment ", kc1Var, " must share the same FragmentManager to be set as a target fragment"));
-            return;
-        }
-        for (kc1 kc1VarU = kc1Var; kc1VarU != null; kc1VarU = kc1VarU.u(false)) {
-            if (kc1VarU == this) {
-                throw new IllegalArgumentException("Setting " + kc1Var + " as the target of " + this + " would create a target cycle");
-            }
-        }
-        if (kc1Var == null) {
-            this.u = null;
-            this.t = null;
-        } else if (this.F == null || kc1Var.F == null) {
-            this.u = null;
-            this.t = kc1Var;
-        } else {
-            this.u = kc1Var.r;
-            this.t = null;
-        }
+    public final void f0(kc1 r4) {
+        if (r4 == null) goto L4;
+        ge1 r0 = he1.a;
+        he1.b(new SetTargetFragmentUsageViolation(this, "Attempting to set target fragment " + r4 + " with request code 0 for fragment " + this));
+        he1.a(this).getClass();
+    L4:
+        ld1 r1 = this.F;
+        if (r4 == null) goto L7;
+        ld1 r2 = r4.F;
+    L8:
+        if (r1 == null) goto L14;
+        if (r2 == null) goto L14;
+        if (r1 == r2) goto L14;
+        kf2.n(b11.l("Fragment ", r4, " must share the same FragmentManager to be set as a target fragment"));
+        return;
+    L14:
+        kc1 r3 = r4;
+    L16:
+        if (r3 == null) goto L21;
+        if (r3 == this) goto L20;
+        r3 = r3.u(false);
+        goto L16
+    L20:
+        throw new IllegalArgumentException("Setting " + r4 + " as the target of " + this + " would create a target cycle");
+    L21:
+        if (r4 != null) goto L24;
+        this.u = null;
+        this.t = null;
+    L29:
         this.v = 0;
+        return;
+    L24:
+        if (this.F != null) goto L26;
+    L28:
+        this.u = null;
+        this.t = r4;
+        goto L29
+    L26:
+        if (r4.F == null) goto L28;
+        this.u = r4.r;
+        this.t = null;
+        goto L29
+    L7:
+        r2 = null;
+        goto L8
     }
 
-    public final void g0(Intent intent) {
-        mc1 mc1Var = this.G;
-        if (mc1Var != null) {
-            mc1Var.B.startActivity(intent, null);
-        } else {
-            kf2.o(b11.l("Fragment ", this, " not attached to Activity"));
-        }
+    public final void g0(Intent r2) {
+        mc1 r0 = this.G;
+        if (r0 == null) goto L6;
+        r0.B.startActivity(r2, null);
+        return;
+    L6:
+        kf2.o(b11.l("Fragment ", this, " not attached to Activity"));
     }
 
     @Override // defpackage.ba2
@@ -470,194 +567,246 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
         return new fc1(this);
     }
 
-    public void j(String str, FileDescriptor fileDescriptor, PrintWriter printWriter, String[] strArr) {
-        printWriter.print(str);
-        printWriter.print("mFragmentId=#");
-        printWriter.print(Integer.toHexString(this.J));
-        printWriter.print(" mContainerId=#");
-        printWriter.print(Integer.toHexString(this.K));
-        printWriter.print(" mTag=");
-        printWriter.println(this.L);
-        printWriter.print(str);
-        printWriter.print("mState=");
-        printWriter.print(this.n);
-        printWriter.print(" mWho=");
-        printWriter.print(this.r);
-        printWriter.print(" mBackStackNesting=");
-        printWriter.println(this.E);
-        printWriter.print(str);
-        printWriter.print("mAdded=");
-        printWriter.print(this.x);
-        printWriter.print(" mRemoving=");
-        printWriter.print(this.y);
-        printWriter.print(" mFromLayout=");
-        printWriter.print(this.A);
-        printWriter.print(" mInLayout=");
-        printWriter.println(this.B);
-        printWriter.print(str);
-        printWriter.print("mHidden=");
-        printWriter.print(this.M);
-        printWriter.print(" mDetached=");
-        printWriter.print(this.N);
-        printWriter.print(" mMenuVisible=");
-        printWriter.print(this.Q);
-        printWriter.print(" mHasMenu=");
-        printWriter.println(this.P);
-        printWriter.print(str);
-        printWriter.print("mRetainInstance=");
-        printWriter.print(this.O);
-        printWriter.print(" mUserVisibleHint=");
-        printWriter.println(this.V);
-        if (this.F != null) {
-            printWriter.print(str);
-            printWriter.print("mFragmentManager=");
-            printWriter.println(this.F);
-        }
-        if (this.G != null) {
-            printWriter.print(str);
-            printWriter.print("mHost=");
-            printWriter.println(this.G);
-        }
-        if (this.I != null) {
-            printWriter.print(str);
-            printWriter.print("mParentFragment=");
-            printWriter.println(this.I);
-        }
-        if (this.s != null) {
-            printWriter.print(str);
-            printWriter.print("mArguments=");
-            printWriter.println(this.s);
-        }
-        if (this.o != null) {
-            printWriter.print(str);
-            printWriter.print("mSavedFragmentState=");
-            printWriter.println(this.o);
-        }
-        if (this.p != null) {
-            printWriter.print(str);
-            printWriter.print("mSavedViewState=");
-            printWriter.println(this.p);
-        }
-        if (this.q != null) {
-            printWriter.print(str);
-            printWriter.print("mSavedViewRegistryState=");
-            printWriter.println(this.q);
-        }
-        kc1 kc1VarU = u(false);
-        if (kc1VarU != null) {
-            printWriter.print(str);
-            printWriter.print("mTarget=");
-            printWriter.print(kc1VarU);
-            printWriter.print(" mTargetRequestCode=");
-            printWriter.println(this.v);
-        }
-        printWriter.print(str);
-        printWriter.print("mPopDirection=");
-        hc1 hc1Var = this.W;
-        printWriter.println(hc1Var == null ? false : hc1Var.a);
-        hc1 hc1Var2 = this.W;
-        if ((hc1Var2 == null ? 0 : hc1Var2.b) != 0) {
-            printWriter.print(str);
-            printWriter.print("getEnterAnim=");
-            hc1 hc1Var3 = this.W;
-            printWriter.println(hc1Var3 == null ? 0 : hc1Var3.b);
-        }
-        hc1 hc1Var4 = this.W;
-        if ((hc1Var4 == null ? 0 : hc1Var4.c) != 0) {
-            printWriter.print(str);
-            printWriter.print("getExitAnim=");
-            hc1 hc1Var5 = this.W;
-            printWriter.println(hc1Var5 == null ? 0 : hc1Var5.c);
-        }
-        hc1 hc1Var6 = this.W;
-        if ((hc1Var6 == null ? 0 : hc1Var6.d) != 0) {
-            printWriter.print(str);
-            printWriter.print("getPopEnterAnim=");
-            hc1 hc1Var7 = this.W;
-            printWriter.println(hc1Var7 == null ? 0 : hc1Var7.d);
-        }
-        hc1 hc1Var8 = this.W;
-        if ((hc1Var8 == null ? 0 : hc1Var8.e) != 0) {
-            printWriter.print(str);
-            printWriter.print("getPopExitAnim=");
-            hc1 hc1Var9 = this.W;
-            printWriter.println(hc1Var9 != null ? hc1Var9.e : 0);
-        }
-        if (this.S != null) {
-            printWriter.print(str);
-            printWriter.print("mContainer=");
-            printWriter.println(this.S);
-        }
-        if (this.T != null) {
-            printWriter.print(str);
-            printWriter.print("mView=");
-            printWriter.println(this.T);
-        }
-        if (n() != null) {
-            new qr2(this, d()).g(str, printWriter);
-        }
-        printWriter.print(str);
-        printWriter.println("Child " + this.H + ":");
-        this.H.v(str.concat("  "), fileDescriptor, printWriter, strArr);
+    public void j(String r4, FileDescriptor r5, PrintWriter r6, String[] r7) {
+        r6.print(r4);
+        r6.print("mFragmentId=#");
+        r6.print(Integer.toHexString(this.J));
+        r6.print(" mContainerId=#");
+        r6.print(Integer.toHexString(this.K));
+        r6.print(" mTag=");
+        r6.println(this.L);
+        r6.print(r4);
+        r6.print("mState=");
+        r6.print(this.n);
+        r6.print(" mWho=");
+        r6.print(this.r);
+        r6.print(" mBackStackNesting=");
+        r6.println(this.E);
+        r6.print(r4);
+        r6.print("mAdded=");
+        r6.print(this.x);
+        r6.print(" mRemoving=");
+        r6.print(this.y);
+        r6.print(" mFromLayout=");
+        r6.print(this.A);
+        r6.print(" mInLayout=");
+        r6.println(this.B);
+        r6.print(r4);
+        r6.print("mHidden=");
+        r6.print(this.M);
+        r6.print(" mDetached=");
+        r6.print(this.N);
+        r6.print(" mMenuVisible=");
+        r6.print(this.Q);
+        r6.print(" mHasMenu=");
+        r6.println(this.P);
+        r6.print(r4);
+        r6.print("mRetainInstance=");
+        r6.print(this.O);
+        r6.print(" mUserVisibleHint=");
+        r6.println(this.V);
+        if (this.F == null) goto L6;
+        r6.print(r4);
+        r6.print("mFragmentManager=");
+        r6.println(this.F);
+    L6:
+        if (this.G == null) goto L9;
+        r6.print(r4);
+        r6.print("mHost=");
+        r6.println(this.G);
+    L9:
+        if (this.I == null) goto L12;
+        r6.print(r4);
+        r6.print("mParentFragment=");
+        r6.println(this.I);
+    L12:
+        if (this.s == null) goto L15;
+        r6.print(r4);
+        r6.print("mArguments=");
+        r6.println(this.s);
+    L15:
+        if (this.o == null) goto L18;
+        r6.print(r4);
+        r6.print("mSavedFragmentState=");
+        r6.println(this.o);
+    L18:
+        if (this.p == null) goto L21;
+        r6.print(r4);
+        r6.print("mSavedViewState=");
+        r6.println(this.p);
+    L21:
+        if (this.q == null) goto L23;
+        r6.print(r4);
+        r6.print("mSavedViewRegistryState=");
+        r6.println(this.q);
+    L23:
+        int r0 = 0;
+        kc1 r1 = u(false);
+        if (r1 == null) goto L26;
+        r6.print(r4);
+        r6.print("mTarget=");
+        r6.print(r1);
+        r6.print(" mTargetRequestCode=");
+        r6.println(this.v);
+    L26:
+        r6.print(r4);
+        r6.print("mPopDirection=");
+        hc1 r2 = this.W;
+        if (r2 != null) goto L29;
+        boolean r3 = false;
+    L30:
+        r6.println(r3);
+        hc1 r8 = this.W;
+        if (r8 != null) goto L33;
+        int r9 = 0;
+    L34:
+        if (r9 == 0) goto L40;
+        r6.print(r4);
+        r6.print("getEnterAnim=");
+        hc1 r10 = this.W;
+        if (r10 != null) goto L38;
+        int r11 = 0;
+    L39:
+        r6.println(r11);
+        goto L40
+    L38:
+        r11 = r10.b;
+    L40:
+        hc1 r12 = this.W;
+        if (r12 != null) goto L43;
+        int r13 = 0;
+    L44:
+        if (r13 == 0) goto L50;
+        r6.print(r4);
+        r6.print("getExitAnim=");
+        hc1 r14 = this.W;
+        if (r14 != null) goto L48;
+        int r15 = 0;
+    L49:
+        r6.println(r15);
+        goto L50
+    L48:
+        r15 = r14.c;
+    L50:
+        hc1 r16 = this.W;
+        if (r16 != null) goto L53;
+        int r17 = 0;
+    L54:
+        if (r17 == 0) goto L60;
+        r6.print(r4);
+        r6.print("getPopEnterAnim=");
+        hc1 r18 = this.W;
+        if (r18 != null) goto L58;
+        int r19 = 0;
+    L59:
+        r6.println(r19);
+        goto L60
+    L58:
+        r19 = r18.d;
+    L60:
+        hc1 r20 = this.W;
+        if (r20 != null) goto L63;
+        int r21 = 0;
+    L64:
+        if (r21 == 0) goto L71;
+        r6.print(r4);
+        r6.print("getPopExitAnim=");
+        hc1 r22 = this.W;
+        if (r22 == null) goto L69;
+        r0 = r22.e;
+    L69:
+        r6.println(r0);
+    L71:
+        if (this.S == null) goto L74;
+        r6.print(r4);
+        r6.print("mContainer=");
+        r6.println(this.S);
+    L74:
+        if (this.T == null) goto L77;
+        r6.print(r4);
+        r6.print("mView=");
+        r6.println(this.T);
+    L77:
+        if (n() == null) goto L79;
+        new qr2(this, d()).g(r4, r6);
+    L79:
+        r6.print(r4);
+        r6.println("Child " + this.H + ":");
+        this.H.v(r4.concat("  "), r5, r6, r7);
+        return;
+    L63:
+        r21 = r20.e;
+        goto L64
+    L53:
+        r17 = r16.d;
+        goto L54
+    L43:
+        r13 = r12.c;
+        goto L44
+    L33:
+        r9 = r8.b;
+        goto L34
+    L29:
+        r3 = r2.a;
+        goto L30
     }
 
     public final hc1 k() {
-        if (this.W == null) {
-            hc1 hc1Var = new hc1();
-            Object obj = k0;
-            hc1Var.g = obj;
-            hc1Var.h = obj;
-            hc1Var.i = obj;
-            hc1Var.j = 1.0f;
-            hc1Var.k = null;
-            this.W = hc1Var;
-        }
+        if (this.W != null) goto L6;
+        hc1 r0 = new hc1();
+        Object r1 = k0;
+        r0.g = r1;
+        r0.h = r1;
+        r0.i = r1;
+        r0.j = 1.0f;
+        r0.k = null;
+        this.W = r0;
+    L6:
         return this.W;
     }
 
-    /* JADX INFO: renamed from: l, reason: merged with bridge method [inline-methods] */
-    public final nc1 e() {
-        mc1 mc1Var = this.G;
-        if (mc1Var == null) {
-            return null;
-        }
-        return mc1Var.A;
+    public final nc1 l() {
+        mc1 r0 = this.G;
+        if (r0 != null) goto L7;
+        return null;
+    L7:
+        return r0.A;
     }
 
     public final ld1 m() {
-        if (this.G != null) {
-            return this.H;
-        }
+        if (this.G != null) goto L5;
         kf2.o(b11.l("Fragment ", this, " has not been attached yet."));
         return null;
+    L5:
+        return this.H;
     }
 
     public final Context n() {
-        mc1 mc1Var = this.G;
-        if (mc1Var == null) {
-            return null;
-        }
-        return mc1Var.B;
+        mc1 r0 = this.G;
+        if (r0 != null) goto L7;
+        return null;
+    L7:
+        return r0.B;
     }
 
     public final LayoutInflater o() {
-        LayoutInflater layoutInflater = this.Y;
-        if (layoutInflater != null) {
-            return layoutInflater;
-        }
-        LayoutInflater layoutInflaterL = L(null);
-        this.Y = layoutInflaterL;
-        return layoutInflaterL;
+        LayoutInflater r0 = this.Y;
+        if (r0 != null) goto L6;
+        LayoutInflater r1 = L(null);
+        this.Y = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     @Override // android.content.ComponentCallbacks
-    public void onConfigurationChanged(Configuration configuration) {
+    public void onConfigurationChanged(Configuration r1) {
         this.R = true;
     }
 
     @Override // android.view.View.OnCreateContextMenuListener
-    public final void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-        X().onCreateContextMenu(contextMenu, view, contextMenuInfo);
+    public final void onCreateContextMenu(ContextMenu r1, View r2, ContextMenu.ContextMenuInfo r3) {
+        X().onCreateContextMenu(r1, r2, r3);
     }
 
     @Override // android.content.ComponentCallbacks
@@ -666,15 +815,19 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
     }
 
     public final int p() {
-        r92 r92Var = this.b0;
-        return (r92Var == r92.o || this.I == null) ? r92Var.ordinal() : Math.min(r92Var.ordinal(), this.I.p());
+        r92 r0 = this.b0;
+        if (r0 == r92.o) goto L10;
+        if (this.I == null) goto L10;
+        return Math.min(r0.ordinal(), this.I.p());
+    L10:
+        return r0.ordinal();
     }
 
     public final ld1 q() {
-        ld1 ld1Var = this.F;
-        if (ld1Var != null) {
-            return ld1Var;
-        }
+        ld1 r0 = this.F;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         kf2.o(b11.l("Fragment ", this, " not associated with a fragment manager."));
         return null;
     }
@@ -683,80 +836,83 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
         return Z().getResources();
     }
 
-    public final String s(int i) {
-        return r().getString(i);
+    public final String s(int r1) {
+        return r().getString(r1);
     }
 
-    public final void startActivityForResult(Intent intent, int i) {
-        if (this.G == null) {
-            kf2.o(b11.l("Fragment ", this, " not attached to Activity"));
-            return;
-        }
-        ld1 ld1VarQ = q();
-        if (ld1VarQ.B != null) {
-            String str = this.r;
-            gd1 gd1Var = new gd1();
-            gd1Var.n = str;
-            gd1Var.o = i;
-            ld1VarQ.E.addLast(gd1Var);
-            ld1VarQ.B.a(intent);
-            return;
-        }
-        mc1 mc1Var = ld1VarQ.v;
-        if (i == -1) {
-            mc1Var.B.startActivity(intent, null);
-        } else {
-            mc1Var.getClass();
-            kf2.o("Starting activity with a requestCode requires a FragmentActivity host");
-        }
+    public final void startActivityForResult(Intent r3, int r4) {
+        if (this.G == null) goto L14;
+        ld1 r0 = q();
+        if (r0.B == null) goto L8;
+        String r2 = this.r;
+        gd1 r1 = new gd1();
+        r1.n = r2;
+        r1.o = r4;
+        r0.E.addLast(r1);
+        r0.B.a(r3);
+        return;
+    L8:
+        mc1 r5 = r0.v;
+        if (r4 != (-1)) goto L12;
+        r5.B.startActivity(r3, null);
+        return;
+    L12:
+        r5.getClass();
+        kf2.o("Starting activity with a requestCode requires a FragmentActivity host");
+        return;
+    L14:
+        kf2.o(b11.l("Fragment ", this, " not attached to Activity"));
     }
 
-    public final String t(int i, Object... objArr) {
-        return r().getString(i, objArr);
+    public final String t(int r1, Object... r2) {
+        return r().getString(r1, r2);
     }
 
     public final String toString() {
-        StringBuilder sb = new StringBuilder(128);
-        sb.append(getClass().getSimpleName());
-        sb.append("{");
-        sb.append(Integer.toHexString(System.identityHashCode(this)));
-        sb.append("} (");
-        sb.append(this.r);
-        if (this.J != 0) {
-            sb.append(" id=0x");
-            sb.append(Integer.toHexString(this.J));
-        }
-        if (this.L != null) {
-            sb.append(" tag=");
-            sb.append(this.L);
-        }
-        sb.append(")");
-        return sb.toString();
+        StringBuilder r0 = new StringBuilder(128);
+        r0.append(getClass().getSimpleName());
+        r0.append("{");
+        r0.append(Integer.toHexString(System.identityHashCode(this)));
+        r0.append("} (");
+        r0.append(this.r);
+        if (this.J == 0) goto L6;
+        r0.append(" id=0x");
+        r0.append(Integer.toHexString(this.J));
+    L6:
+        if (this.L == null) goto L8;
+        r0.append(" tag=");
+        r0.append(this.L);
+    L8:
+        r0.append(")");
+        return r0.toString();
     }
 
-    public final kc1 u(boolean z) {
-        String str;
-        if (z) {
-            ge1 ge1Var = he1.a;
-            he1.b(new GetTargetFragmentUsageViolation(this, "Attempting to get target fragment from fragment " + this));
-            he1.a(this).getClass();
-        }
-        kc1 kc1Var = this.t;
-        if (kc1Var != null) {
-            return kc1Var;
-        }
-        ld1 ld1Var = this.F;
-        if (ld1Var == null || (str = this.u) == null) {
-            return null;
-        }
-        return ld1Var.c.t(str);
+    public final kc1 u(boolean r3) {
+        if (r3 == false) goto L4;
+        ge1 r4 = he1.a;
+        he1.b(new GetTargetFragmentUsageViolation(this, "Attempting to get target fragment from fragment " + this));
+        he1.a(this).getClass();
+    L4:
+        kc1 r5 = this.t;
+        if (r5 == null) goto L7;
+        return r5;
+    L7:
+        ld1 r6 = this.F;
+        if (r6 == null) goto L13;
+        String r2 = this.u;
+        if (r2 != null) goto L12;
+        return null;
+    L12:
+        return r6.c.t(r2);
+    L13:
+        return null;
     }
 
     public final le1 v() {
-        le1 le1Var = this.d0;
-        if (le1Var != null) {
-            return le1Var;
-        }
+        le1 r0 = this.d0;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         kf2.o(b11.l("Can't access the Fragment View's LifecycleOwner for ", this, " when getView() is null i.e., before onCreateView() or after onDestroyView()"));
         return null;
     }
@@ -765,16 +921,16 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
         this.c0 = new ea2(this, true);
         this.g0 = new gp3(new xm2(this, new wc(22, this)));
         this.f0 = null;
-        ArrayList arrayList = this.i0;
-        ec1 ec1Var = this.j0;
-        if (arrayList.contains(ec1Var)) {
-            return;
-        }
-        if (this.n >= 0) {
-            ec1Var.a();
-        } else {
-            arrayList.add(ec1Var);
-        }
+        ArrayList r0 = this.i0;
+        ec1 r1 = this.j0;
+        if (r0.contains(r1) == false) goto L5;
+        return;
+    L5:
+        if (this.n < 0) goto L8;
+        r1.a();
+        return;
+    L8:
+        r0.add(r1);
     }
 
     public final void x() {
@@ -798,21 +954,31 @@ public abstract class kc1 implements ComponentCallbacks, View.OnCreateContextMen
     }
 
     public final boolean y() {
-        return this.G != null && this.x;
+        if (this.G != null) goto L5;
+        return false;
+    L5:
+        if (this.x == false) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     public final boolean z() {
-        if (this.M) {
-            return true;
-        }
-        ld1 ld1Var = this.F;
-        if (ld1Var != null) {
-            kc1 kc1Var = this.I;
-            ld1Var.getClass();
-            if (kc1Var == null ? false : kc1Var.z()) {
-                return true;
-            }
-        }
+        if (this.M == true) goto L13;
+        ld1 r0 = this.F;
+        if (r0 == null) goto L12;
+        kc1 r2 = this.I;
+        r0.getClass();
+        if (r2 != null) goto L9;
+        boolean r3 = false;
+    L10:
+        if (r3 == false) goto L12;
+        return true;
+    L9:
+        r3 = r2.z();
+    L12:
         return false;
+    L13:
+        return true;
     }
 }

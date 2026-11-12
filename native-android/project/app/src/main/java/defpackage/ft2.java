@@ -10,39 +10,60 @@ public final class ft2 implements er2 {
     public final ju1 n;
     public final int o;
 
-    public ft2(ju1 ju1Var, int i) {
-        this.n = ju1Var;
-        this.o = i;
+    public ft2(ju1 r1, int r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // defpackage.er2
-    public final void A(int i, lk3 lk3Var, mi3 mi3Var, boolean z, boolean z2) {
-        Bundle bundleT;
-        int i2 = this.o;
-        rr2.w(i2 != 0);
-        boolean z3 = z || !mi3Var.a(17);
-        boolean z4 = z2 || !mi3Var.a(30);
-        ju1 ju1Var = this.n;
-        if (i2 < 2) {
-            ju1Var.u0(i, lk3Var.q(mi3Var, z, true).t(i2), z3);
-            return;
-        }
-        lk3 lk3VarQ = lk3Var.q(mi3Var, z, z2);
-        if (ju1Var instanceof mm2) {
-            bundleT = new Bundle();
-            bundleT.putBinder(lk3.o0, new kk3(lk3VarQ));
-        } else {
-            bundleT = lk3VarQ.t(i2);
-        }
-        Bundle bundle = new Bundle();
-        bundle.putBoolean(jk3.d, z3);
-        bundle.putBoolean(jk3.e, z4);
-        ju1Var.I(i, bundleT, bundle);
+    public final void A(int r6, lk3 r7, mi3 r8, boolean r9, boolean r10) {
+        boolean r0 = false;
+        int r2 = this.o;
+        if (r2 == 0) goto L5;
+        boolean r3 = true;
+    L6:
+        rr2.w(r3);
+        if (r9 == false) goto L9;
+    L12:
+        boolean r4 = true;
+    L13:
+        if (r10 == false) goto L15;
+    L16:
+        r0 = true;
+    L17:
+        ju1 r5 = this.n;
+        if (r2 < 2) goto L25;
+        lk3 r11 = r7.q(r8, r9, r10);
+        if ((r5 instanceof mm2) == false) goto L22;
+        Bundle r12 = new Bundle();
+        r12.putBinder(lk3.o0, new kk3(r11));
+    L23:
+        Bundle r13 = new Bundle();
+        r13.putBoolean(jk3.d, r4);
+        r13.putBoolean(jk3.e, r0);
+        r5.I(r6, r12, r13);
+        return;
+    L22:
+        r12 = r11.t(r2);
+        goto L23
+    L25:
+        r5.u0(r6, r7.q(r8, r9, true).t(r2), r4);
+        return;
+    L15:
+        if (r8.a(30) == true) goto L17;
+    L9:
+        if (r8.a(17) == false) goto L12;
+        r4 = false;
+        goto L13
+    L5:
+        r3 = false;
+        goto L6
     }
 
     @Override // defpackage.er2
-    public final void B(int i, za4 za4Var, boolean z, boolean z2, int i2) {
-        this.n.C(i, za4Var.a(z, z2).c(i2));
+    public final void B(int r1, za4 r2, boolean r3, boolean r4, int r5) {
+        Bundle r6 = r2.a(r3, r4).c(r5);
+        this.n.C(r1, r6);
     }
 
     @Override // defpackage.er2
@@ -51,112 +72,132 @@ public final class ft2 implements er2 {
     }
 
     @Override // defpackage.er2
-    public final void e(int i) {
-        this.n.e(i);
+    public final void e(int r1) {
+        this.n.e(r1);
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || obj.getClass() != ft2.class) {
-            return false;
-        }
-        return Objects.equals(this.n.asBinder(), ((ft2) obj).n.asBinder());
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if (r3 != null) goto L7;
+        return false;
+    L7:
+        if (r3.getClass() == ft2.class) goto L10;
+        return false;
+    L10:
+        return Objects.equals(this.n.asBinder(), ((ft2) r3).n.asBinder());
     }
 
     public final int hashCode() {
-        return Objects.hash(this.n.asBinder());
+        return Objects.hash(new Object[]{this.n.asBinder()});
     }
 
     @Override // defpackage.er2
-    public final void i(int i, int i2, int i3) {
-        this.n.i(i, i2, i3);
+    public final void i(int r1, int r2, int r3) {
+        this.n.i(r1, r2, r3);
     }
 
     @Override // defpackage.er2
-    public final void k(List list, int i) {
-        int i2 = this.o;
-        int i3 = 0;
-        ju1 ju1Var = this.n;
-        if (i2 >= 7) {
-            uw1 uw1VarJ = yw1.j();
-            while (i3 < list.size()) {
-                uw1VarJ.c(((j60) list.get(i3)).o());
-                i3++;
-            }
-            ju1Var.n(uw1VarJ.f(), i);
-            return;
-        }
-        gy3 gy3VarJ = j60.j(list, true, true);
-        uw1 uw1VarJ2 = yw1.j();
-        while (i3 < gy3VarJ.q) {
-            uw1VarJ2.c(((j60) gy3VarJ.get(i3)).o());
-            i3++;
-        }
-        ju1Var.s0(uw1VarJ2.f(), i);
+    public final void k(List r4, int r5) {
+        int r0 = this.o;
+        int r2 = 0;
+        ju1 r3 = this.n;
+        if (r0 < 7) goto L10;
+        uw1 r1 = yw1.j();
+    L6:
+        if (r2 >= r4.size()) goto L8;
+        r1.c(((j60) r4.get(r2)).o());
+        r2 = r2 + 1;
+        goto L6
+    L8:
+        r3.n(r1.f(), r5);
+        return;
+    L10:
+        gy3 r6 = j60.j(r4, true, true);
+        uw1 r7 = yw1.j();
+    L12:
+        if (r2 >= r6.q) goto L14;
+        r7.c(((j60) r6.get(r2)).o());
+        r2 = r2 + 1;
+        goto L12
+    L14:
+        r3.s0(r7.f(), r5);
     }
 
     @Override // defpackage.er2
-    public final void l(int i, va4 va4Var) {
-        this.n.E(i, va4Var.b(), Bundle.EMPTY);
-    }
-
-    /* JADX WARN: Code restructure failed: missing block: B:18:0x0046, code lost:
-    
-        if (r2 != 4) goto L26;
-     */
-    @Override // defpackage.er2
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public final void r(int i, m92 m92Var) {
-        String str = m92.j;
-        Object obj = m92Var.c;
-        int i2 = m92Var.d;
-        Bundle bundle = new Bundle();
-        bundle.putInt(m92.g, m92Var.a);
-        bundle.putLong(m92.h, m92Var.b);
-        jn2 jn2Var = m92Var.e;
-        if (jn2Var != null) {
-            bundle.putBundle(m92.i, jn2Var.b());
-        }
-        xa4 xa4Var = m92Var.f;
-        if (xa4Var != null) {
-            bundle.putBundle(m92.l, xa4Var.b());
-        }
-        bundle.putInt(m92.k, i2);
-        if (obj != null) {
-            if (i2 != 1) {
-                if (i2 == 2) {
-                    bundle.putBundle(str, ((gn2) obj).c(false));
-                } else if (i2 == 3) {
-                    yw1 yw1Var = (yw1) obj;
-                    uw1 uw1VarJ = yw1.j();
-                    for (int i3 = 0; i3 < yw1Var.size(); i3++) {
-                        uw1VarJ.c(((gn2) yw1Var.get(i3)).c(false));
-                    }
-                    bundle.putBinder(str, new iw(uw1VarJ.f()));
-                }
-            }
-            tb4.a();
-            return;
-        }
-        this.n.O(i, bundle);
+    public final void l(int r2, va4 r3) {
+        Bundle r0 = Bundle.EMPTY;
+        this.n.E(r2, r3.b(), r0);
     }
 
     @Override // defpackage.er2
-    public final void t(int i, mi3 mi3Var) {
-        this.n.z(i, mi3Var.c());
+    public final void r(int r8, m92 r9) {
+        String r0 = m92.j;
+        Object r1 = r9.c;
+        int r2 = r9.d;
+        Bundle r3 = new Bundle();
+        r3.putInt(m92.g, r9.a);
+        r3.putLong(m92.h, r9.b);
+        jn2 r4 = r9.e;
+        if (r4 == null) goto L5;
+        r3.putBundle(m92.i, r4.b());
+    L5:
+        xa4 r10 = r9.f;
+        if (r10 == null) goto L8;
+        r3.putBundle(m92.l, r10.b());
+    L8:
+        r3.putInt(m92.k, r2);
+        if (r1 != null) goto L12;
+    L26:
+        this.n.O(r8, r3);
+        return;
+    L12:
+        if (r2 != 1) goto L14;
+    L28:
+        tb4.a();
+        return;
+    L14:
+        if (r2 != 2) goto L16;
+        r3.putBundle(r0, ((gn2) r1).c(false));
+        goto L26
+    L16:
+        if (r2 != 3) goto L18;
+        yw1 r5 = (yw1) r1;
+        uw1 r6 = yw1.j();
+        int r7 = 0;
+    L22:
+        if (r7 >= r5.size()) goto L24;
+        r6.c(((gn2) r5.get(r7)).c(false));
+        r7 = r7 + 1;
+        goto L22
+    L24:
+        r3.putBinder(r0, new iw(r6.f()));
+        goto L26
+    L18:
+        if (r2 == 4) goto L28;
+        goto L28
     }
 
     @Override // defpackage.er2
-    public final void v(int i, ab4 ab4Var) {
-        this.n.I0(i, ab4Var.b());
+    public final void t(int r1, mi3 r2) {
+        this.n.z(r1, r2.c());
     }
 
     @Override // defpackage.er2
-    public final void z(int i, String str, jn2 jn2Var) {
-        this.n.w0(i, str, Integer.MAX_VALUE, jn2Var == null ? null : jn2Var.b());
+    public final void v(int r1, ab4 r2) {
+        this.n.I0(r1, r2.b());
+    }
+
+    @Override // defpackage.er2
+    public final void z(int r2, String r3, jn2 r4) {
+        if (r4 != null) goto L4;
+        Bundle r5 = null;
+    L5:
+        this.n.w0(r2, r3, Integer.MAX_VALUE, r5);
+        return;
+    L4:
+        r5 = r4.b();
+        goto L5
     }
 }

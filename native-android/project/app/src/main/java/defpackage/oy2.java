@@ -10,34 +10,42 @@ public final class oy2 extends uv {
     public final ArrayList q;
     public final ArrayList r;
 
-    public oy2(int i, long j) {
-        super(i, 2);
-        this.p = j;
+    public oy2(int r2, long r3) {
+        super(r2, 2);
+        this.p = r3;
         this.q = new ArrayList();
         this.r = new ArrayList();
     }
 
-    public final oy2 r(int i) {
-        ArrayList arrayList = this.r;
-        int size = arrayList.size();
-        for (int i2 = 0; i2 < size; i2++) {
-            oy2 oy2Var = (oy2) arrayList.get(i2);
-            if (oy2Var.o == i) {
-                return oy2Var;
-            }
-        }
+    public final oy2 r(int r5) {
+        ArrayList r4 = this.r;
+        int r0 = r4.size();
+        int r1 = 0;
+    L3:
+        if (r1 >= r0) goto L8;
+        oy2 r2 = (oy2) r4.get(r1);
+        if (r2.o == r5) goto L6;
+        r1 = r1 + 1;
+        goto L3
+    L6:
+        return r2;
+    L8:
         return null;
     }
 
-    public final py2 s(int i) {
-        ArrayList arrayList = this.q;
-        int size = arrayList.size();
-        for (int i2 = 0; i2 < size; i2++) {
-            py2 py2Var = (py2) arrayList.get(i2);
-            if (py2Var.o == i) {
-                return py2Var;
-            }
-        }
+    public final py2 s(int r5) {
+        ArrayList r4 = this.q;
+        int r0 = r4.size();
+        int r1 = 0;
+    L3:
+        if (r1 >= r0) goto L8;
+        py2 r2 = (py2) r4.get(r1);
+        if (r2.o == r5) goto L6;
+        r1 = r1 + 1;
+        goto L3
+    L6:
+        return r2;
+    L8:
         return null;
     }
 

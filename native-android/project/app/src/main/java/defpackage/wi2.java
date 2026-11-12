@@ -7,11 +7,11 @@ import java.util.Map;
 public interface wi2 extends oo0 {
     boolean K();
 
-    vi2 T(int i, int i2, Map map, if1 if1Var, if1 if1Var2);
+    vi2 T(int r1, int r2, Map r3, if1 r4, if1 r5);
 
     r62 getLayoutDirection();
 
-    default vi2 v(int i, int i2, Map map, if1 if1Var) {
-        return T(i, i2, map, null, if1Var);
+    default vi2 v(int r7, int r8, Map r9, if1 r10) {
+        return T(r7, r8, r9, null, r10);
     }
 }

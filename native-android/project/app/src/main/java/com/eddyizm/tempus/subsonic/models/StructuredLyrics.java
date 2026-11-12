@@ -13,6 +13,9 @@ public final class StructuredLyrics {
     private int offset;
     private boolean synced;
 
+    public StructuredLyrics() {
+    }
+
     public final String getDisplayArtist() {
         return this.displayArtist;
     }
@@ -37,27 +40,27 @@ public final class StructuredLyrics {
         return this.synced;
     }
 
-    public final void setDisplayArtist(String str) {
-        this.displayArtist = str;
+    public final void setDisplayArtist(String r1) {
+        this.displayArtist = r1;
     }
 
-    public final void setDisplayTitle(String str) {
-        this.displayTitle = str;
+    public final void setDisplayTitle(String r1) {
+        this.displayTitle = r1;
     }
 
-    public final void setLang(String str) {
-        this.lang = str;
+    public final void setLang(String r1) {
+        this.lang = r1;
     }
 
-    public final void setLine(List<Line> list) {
-        this.line = list;
+    public final void setLine(List<Line> r1) {
+        this.line = r1;
     }
 
-    public final void setOffset(int i) {
-        this.offset = i;
+    public final void setOffset(int r1) {
+        this.offset = r1;
     }
 
-    public final void setSynced(boolean z) {
-        this.synced = z;
+    public final void setSynced(boolean r1) {
+        this.synced = r1;
     }
 }

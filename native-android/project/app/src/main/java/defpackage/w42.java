@@ -6,28 +6,38 @@ import java.util.ArrayDeque;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class w42 {
-    public static final w42 a = new w42();
-    public static final ArrayDeque b = new ArrayDeque();
+    public static final w42 a = null;
+    public static final ArrayDeque b = null;
 
-    public final synchronized void a(String str, Exception exc) {
-        String str2;
-        try {
-            String strD0 = fa4.d0(fa4.e0(fa4.c0(new or1(28), exc), 6), " -> ", new or1(29), 30);
-            long jCurrentTimeMillis = System.currentTimeMillis();
-            if (strD0.length() == 0) {
-                str2 = "";
-            } else {
-                str2 = " [" + strD0 + "]";
-            }
-            String str3 = jCurrentTimeMillis + " " + str + str2;
-            ArrayDeque arrayDeque = b;
-            if (arrayDeque.size() == 200) {
-                arrayDeque.removeFirst();
-            }
-            arrayDeque.addLast(str3);
-            Log.d("TempusLAN", str3);
-        } catch (Throwable th) {
-            throw th;
-        }
+    static {
+        a = new w42();
+        b = new ArrayDeque();
+    }
+
+    public static /* synthetic */ void b(String r2) {
+        a.a(r2, null);
+    }
+
+    public final synchronized void a(String r5, Exception r6) {
+        monitor-enter(this);
+        String r7 = fa4.d0(fa4.e0(fa4.c0(new or1(28), r6), 6), " -> ", new or1(29), 30);     // Catch: Throwable -> L7
+        long r1 = System.currentTimeMillis();     // Catch: Throwable -> L7
+        if (r7.length() != 0) goto L9;
+        String r8 = "";
+    L10:
+        String r9 = r1 + " " + r5 + r8;     // Catch: Throwable -> L7
+        ArrayDeque r10 = b;     // Catch: Throwable -> L7
+        if (r10.size() != 200) goto L13;
+        r10.removeFirst();     // Catch: Throwable -> L7
+    L13:
+        r10.addLast(r9);     // Catch: Throwable -> L7
+        Log.d("TempusLAN", r9);     // Catch: Throwable -> L7
+        monitor-exit(this);
+        return;
+    L9:
+        r8 = " [" + r7 + "]";     // Catch: Throwable -> L7
+    L7:
+        th = move-exception;
+        throw th;
     }
 }

@@ -9,10 +9,10 @@ public final class ky3 extends yw1 {
     public final transient int q;
     public final transient int r;
 
-    public ky3(Object[] objArr, int i, int i2) {
-        this.p = objArr;
-        this.q = i;
-        this.r = i2;
+    public ky3(Object[] r1, int r2, int r3) {
+        this.p = r1;
+        this.q = r2;
+        this.r = r3;
     }
 
     @Override // defpackage.rw1
@@ -21,11 +21,12 @@ public final class ky3 extends yw1 {
     }
 
     @Override // java.util.List
-    public final Object get(int i) {
-        rr2.q(i, this.r);
-        Object obj = this.p[(i * 2) + this.q];
-        Objects.requireNonNull(obj);
-        return obj;
+    public final Object get(int r2) {
+        rr2.q(r2, this.r);
+        int r3 = (r2 * 2) + this.q;
+        Object r1 = this.p[r3];
+        Objects.requireNonNull(r1);
+        return r1;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List

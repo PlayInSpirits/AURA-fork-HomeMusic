@@ -5,14 +5,18 @@ package defpackage;
 public final class sg1 implements w80 {
     public final t80 n;
 
-    public sg1(t80 t80Var) {
-        this.n = t80Var;
+    public sg1(t80 r1) {
+        this.n = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof sg1) {
-            return this.n.equals(((sg1) obj).n);
-        }
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof sg1) == false) goto L8;
+        t80 r3 = ((sg1) r2).n;
+        if (this.n.equals(r3) == false) goto L10;
+        return true;
+    L10:
+        return false;
+    L8:
         return false;
     }
 

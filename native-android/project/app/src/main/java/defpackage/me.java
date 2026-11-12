@@ -9,15 +9,15 @@ public interface me {
 
     Set Z();
 
-    void a0(String str);
+    void a0(String r1);
 
-    void b0(h45 h45Var);
+    void b0(h45 r1);
 
     boolean c0();
 
     void d0();
 
-    void e0(pp ppVar);
+    void e0(pp r1);
 
     int f0();
 
@@ -27,5 +27,5 @@ public interface me {
 
     boolean i0();
 
-    void j0(eu1 eu1Var, Set set);
+    void j0(eu1 r1, Set r2);
 }

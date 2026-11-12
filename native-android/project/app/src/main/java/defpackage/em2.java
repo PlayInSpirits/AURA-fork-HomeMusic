@@ -5,17 +5,17 @@ package defpackage;
 public final /* synthetic */ class em2 implements qc2, rc2 {
     public final /* synthetic */ im2 n;
 
-    public /* synthetic */ em2(im2 im2Var) {
-        this.n = im2Var;
+    public /* synthetic */ em2(im2 r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.rc2
-    public void f(Object obj, w71 w71Var) {
-        ((oi3) obj).B(this.n.a1(), new ni3(w71Var));
+    public void f(Object r2, w71 r3) {
+        ((oi3) r2).B(this.n.a1(), new ni3(r3));
     }
 
     @Override // defpackage.qc2
-    public void invoke(Object obj) {
-        ((oi3) obj).F(((lk3) this.n.p.a).B);
+    public void invoke(Object r1) {
+        ((oi3) r1).F(((lk3) this.n.p.a).B);
     }
 }

@@ -10,50 +10,53 @@ public final class h93 implements ViewTreeObserver.OnPreDrawListener, View.OnAtt
     public ViewTreeObserver o;
     public final Runnable p;
 
-    public h93(View view, Runnable runnable) {
-        this.n = view;
-        this.o = view.getViewTreeObserver();
-        this.p = runnable;
+    public h93(View r1, Runnable r2) {
+        this.n = r1;
+        this.o = r1.getViewTreeObserver();
+        this.p = r2;
     }
 
-    public static void a(View view, Runnable runnable) {
-        if (view == null) {
-            nz2.n("view == null");
-            return;
-        }
-        h93 h93Var = new h93(view, runnable);
-        view.getViewTreeObserver().addOnPreDrawListener(h93Var);
-        view.addOnAttachStateChangeListener(h93Var);
+    public static void a(View r1, Runnable r2) {
+        if (r1 == null) goto L5;
+        h93 r0 = new h93(r1, r2);
+        r1.getViewTreeObserver().addOnPreDrawListener(r0);
+        r1.addOnAttachStateChangeListener(r0);
+        return;
+    L5:
+        nz2.n("view == null");
     }
 
     @Override // android.view.ViewTreeObserver.OnPreDrawListener
     public final boolean onPreDraw() {
-        boolean zIsAlive = this.o.isAlive();
-        View view = this.n;
-        if (zIsAlive) {
-            this.o.removeOnPreDrawListener(this);
-        } else {
-            view.getViewTreeObserver().removeOnPreDrawListener(this);
-        }
-        view.removeOnAttachStateChangeListener(this);
+        boolean r0 = this.o.isAlive();
+        View r1 = this.n;
+        if (r0 == false) goto L5;
+        this.o.removeOnPreDrawListener(this);
+    L6:
+        r1.removeOnAttachStateChangeListener(this);
         this.p.run();
         return true;
+    L5:
+        r1.getViewTreeObserver().removeOnPreDrawListener(this);
+        goto L6
     }
 
     @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewAttachedToWindow(View view) {
-        this.o = view.getViewTreeObserver();
+    public final void onViewAttachedToWindow(View r1) {
+        this.o = r1.getViewTreeObserver();
     }
 
     @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewDetachedFromWindow(View view) {
-        boolean zIsAlive = this.o.isAlive();
-        View view2 = this.n;
-        if (zIsAlive) {
-            this.o.removeOnPreDrawListener(this);
-        } else {
-            view2.getViewTreeObserver().removeOnPreDrawListener(this);
-        }
-        view2.removeOnAttachStateChangeListener(this);
+    public final void onViewDetachedFromWindow(View r2) {
+        boolean r3 = this.o.isAlive();
+        View r0 = this.n;
+        if (r3 == false) goto L5;
+        this.o.removeOnPreDrawListener(this);
+    L6:
+        r0.removeOnAttachStateChangeListener(this);
+        return;
+    L5:
+        r0.getViewTreeObserver().removeOnPreDrawListener(this);
+        goto L6
     }
 }

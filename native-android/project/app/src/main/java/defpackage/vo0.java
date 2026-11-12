@@ -3,296 +3,327 @@ package defpackage;
 import android.net.NetworkRequest;
 import android.os.Build;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Set;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class vo0 extends rx1 {
     public final /* synthetic */ int d;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public vo0(s24 s24Var) {
-        super(s24Var);
+    public vo0(s24 r2) {
         this.d = 1;
-        s24Var.getClass();
+        r2.getClass();
+        super(r2);
     }
 
     @Override // defpackage.rx1
     public final String e() {
-        switch (this.d) {
-            case 0:
-                return "INSERT OR IGNORE INTO `Dependency` (`work_spec_id`,`prerequisite_id`) VALUES (?,?)";
-            case 1:
-                return "INSERT OR REPLACE INTO `Preference` (`key`,`long_value`) VALUES (?,?)";
-            case 2:
-                return "INSERT OR REPLACE INTO `SystemIdInfo` (`work_spec_id`,`generation`,`system_id`) VALUES (?,?,?)";
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                return "INSERT OR IGNORE INTO `WorkName` (`name`,`work_spec_id`) VALUES (?,?)";
-            case 4:
-                return "INSERT OR REPLACE INTO `WorkProgress` (`work_spec_id`,`progress`) VALUES (?,?)";
-            case 5:
-                return "INSERT OR IGNORE INTO `WorkSpec` (`id`,`state`,`worker_class_name`,`input_merger_class_name`,`input`,`output`,`initial_delay`,`interval_duration`,`flex_duration`,`run_attempt_count`,`backoff_policy`,`backoff_delay_duration`,`last_enqueue_time`,`minimum_retention_duration`,`schedule_requested_at`,`run_in_foreground`,`out_of_quota_policy`,`period_count`,`generation`,`next_schedule_time_override`,`next_schedule_time_override_generation`,`stop_reason`,`trace_tag`,`required_network_type`,`required_network_request`,`requires_charging`,`requires_device_idle`,`requires_battery_not_low`,`requires_storage_not_low`,`trigger_content_update_delay`,`trigger_max_content_delay`,`content_uri_triggers`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            default:
-                return "INSERT OR IGNORE INTO `WorkTag` (`tag`,`work_spec_id`) VALUES (?,?)";
-        }
+        switch(this.d) {
+            case 0: goto L16;
+            case 1: goto L14;
+            case 2: goto L12;
+            case 3: goto L10;
+            case 4: goto L8;
+            case 5: goto L6;
+            default: goto L4;
+        };
+    L4:
+        return "INSERT OR IGNORE INTO `WorkTag` (`tag`,`work_spec_id`) VALUES (?,?)";
+    L6:
+        return "INSERT OR IGNORE INTO `WorkSpec` (`id`,`state`,`worker_class_name`,`input_merger_class_name`,`input`,`output`,`initial_delay`,`interval_duration`,`flex_duration`,`run_attempt_count`,`backoff_policy`,`backoff_delay_duration`,`last_enqueue_time`,`minimum_retention_duration`,`schedule_requested_at`,`run_in_foreground`,`out_of_quota_policy`,`period_count`,`generation`,`next_schedule_time_override`,`next_schedule_time_override_generation`,`stop_reason`,`trace_tag`,`required_network_type`,`required_network_request`,`requires_charging`,`requires_device_idle`,`requires_battery_not_low`,`requires_storage_not_low`,`trigger_content_update_delay`,`trigger_max_content_delay`,`content_uri_triggers`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    L8:
+        return "INSERT OR REPLACE INTO `WorkProgress` (`work_spec_id`,`progress`) VALUES (?,?)";
+    L10:
+        return "INSERT OR IGNORE INTO `WorkName` (`name`,`work_spec_id`) VALUES (?,?)";
+    L12:
+        return "INSERT OR REPLACE INTO `SystemIdInfo` (`work_spec_id`,`generation`,`system_id`) VALUES (?,?,?)";
+    L14:
+        return "INSERT OR REPLACE INTO `Preference` (`key`,`long_value`) VALUES (?,?)";
+    L16:
+        return "INSERT OR IGNORE INTO `Dependency` (`work_spec_id`,`prerequisite_id`) VALUES (?,?)";
     }
 
-    public final void l(df1 df1Var, Object obj) throws IOException {
-        int i;
-        int i2;
-        int[] iArrP0;
-        int[] iArrP1;
-        byte[] byteArray;
-        byte[] byteArray2;
-        int i3 = 3;
-        switch (this.d) {
-            case 0:
-                to0 to0Var = (to0) obj;
-                df1Var.h(1, to0Var.a);
-                df1Var.h(2, to0Var.b);
-                return;
-            case 1:
-                fp3 fp3Var = (fp3) obj;
-                df1Var.h(1, fp3Var.a);
-                df1Var.c(2, fp3Var.b.longValue());
-                return;
-            case 2:
-                zp4 zp4Var = (zp4) obj;
-                df1Var.h(1, zp4Var.a);
-                df1Var.c(2, zp4Var.b);
-                df1Var.c(3, zp4Var.c);
-                return;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                wc5 wc5Var = (wc5) obj;
-                df1Var.h(1, wc5Var.a);
-                df1Var.h(2, wc5Var.b);
-                return;
-            case 4:
-                throw new ClassCastException();
-            case 5:
-                dd5 dd5Var = (dd5) obj;
-                df1Var.h(1, dd5Var.a);
-                df1Var.c(2, uc5.X(dd5Var.b));
-                df1Var.h(3, dd5Var.c);
-                df1Var.h(4, dd5Var.d);
-                oh0 oh0Var = dd5Var.e;
-                oh0 oh0Var2 = oh0.b;
-                df1Var.x(5, bu.E(oh0Var));
-                df1Var.x(6, bu.E(dd5Var.f));
-                df1Var.c(7, dd5Var.g);
-                df1Var.c(8, dd5Var.h);
-                df1Var.c(9, dd5Var.i);
-                df1Var.c(10, dd5Var.k);
-                int i4 = dd5Var.l;
-                if (i4 == 0) {
-                    throw null;
-                }
-                int iW = xa3.w(i4);
-                if (iW == 0) {
-                    i = 0;
-                } else {
-                    if (iW != 1) {
-                        er1.n();
-                        return;
-                    }
-                    i = 1;
-                }
-                df1Var.c(11, i);
-                df1Var.c(12, dd5Var.m);
-                df1Var.c(13, dd5Var.n);
-                df1Var.c(14, dd5Var.o);
-                df1Var.c(15, dd5Var.p);
-                df1Var.c(16, dd5Var.q ? 1L : 0L);
-                int i5 = dd5Var.r;
-                if (i5 == 0) {
-                    throw null;
-                }
-                int iW2 = xa3.w(i5);
-                if (iW2 == 0) {
-                    i2 = 0;
-                } else {
-                    if (iW2 != 1) {
-                        er1.n();
-                        return;
-                    }
-                    i2 = 1;
-                }
-                df1Var.c(17, i2);
-                df1Var.c(18, dd5Var.s);
-                df1Var.c(19, dd5Var.t);
-                df1Var.c(20, dd5Var.u);
-                df1Var.c(21, dd5Var.v);
-                df1Var.c(22, dd5Var.w);
-                String str = dd5Var.x;
-                if (str == null) {
-                    df1Var.e(23);
-                } else {
-                    df1Var.h(23, str);
-                }
-                mc0 mc0Var = dd5Var.j;
-                int i6 = mc0Var.a;
-                if (i6 == 0) {
-                    throw null;
-                }
-                int iW3 = xa3.w(i6);
-                if (iW3 == 0) {
-                    i3 = 0;
-                } else if (iW3 == 1) {
-                    i3 = 1;
-                } else if (iW3 == 2) {
-                    i3 = 2;
-                } else if (iW3 != 3) {
-                    if (iW3 == 4) {
-                        i3 = 4;
-                    } else if (Build.VERSION.SDK_INT < 30 || i6 != 6) {
-                        nz2.t(b11.y(i6), " to int", "Could not convert ");
-                        i3 = 0;
-                    } else {
-                        i3 = 5;
-                    }
-                }
-                df1Var.c(24, i3);
-                o53 o53Var = mc0Var.b;
-                o53Var.getClass();
-                int i7 = Build.VERSION.SDK_INT;
-                if (i7 < 28) {
-                    byteArray = new byte[0];
-                } else {
-                    NetworkRequest networkRequest = (NetworkRequest) o53Var.a;
-                    if (networkRequest == null) {
-                        byteArray = new byte[0];
-                    } else {
-                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                        try {
-                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-                            try {
-                                if (i7 >= 31) {
-                                    iArrP0 = networkRequest.getTransportTypes();
-                                    iArrP0.getClass();
-                                } else {
-                                    int[] iArr = {2, 0, 3, 6, 9, 8, 4, 1, 5};
-                                    ArrayList arrayList = new ArrayList();
-                                    for (int i8 = 0; i8 < 9; i8++) {
-                                        int i9 = iArr[i8];
-                                        if (networkRequest.hasTransport(i9)) {
-                                            arrayList.add(Integer.valueOf(i9));
-                                        }
-                                    }
-                                    iArrP0 = q40.P0(arrayList);
-                                }
-                                if (Build.VERSION.SDK_INT >= 31) {
-                                    iArrP1 = networkRequest.getCapabilities();
-                                    iArrP1.getClass();
-                                } else {
-                                    int[] iArr2 = {17, 5, 2, 10, 29, 19, 3, 32, 7, 4, 12, 23, 0, 33, 20, 11, 13, 18, 21, 15, 35, 34, 8, 1, 25, 14, 16, 6, 9};
-                                    ArrayList arrayList2 = new ArrayList();
-                                    for (int i10 = 0; i10 < 29; i10++) {
-                                        int i11 = iArr2[i10];
-                                        if (networkRequest.hasCapability(i11)) {
-                                            arrayList2.add(Integer.valueOf(i11));
-                                        }
-                                    }
-                                    iArrP1 = q40.P0(arrayList2);
-                                }
-                                objectOutputStream.writeInt(iArrP0.length);
-                                for (int i12 : iArrP0) {
-                                    objectOutputStream.writeInt(i12);
-                                }
-                                objectOutputStream.writeInt(iArrP1.length);
-                                for (int i13 : iArrP1) {
-                                    objectOutputStream.writeInt(i13);
-                                }
-                                objectOutputStream.close();
-                                byteArrayOutputStream.close();
-                                byteArray = byteArrayOutputStream.toByteArray();
-                                byteArray.getClass();
-                            } catch (Throwable th) {
-                                try {
-                                    throw th;
-                                } catch (Throwable th2) {
-                                    q05.h(objectOutputStream, th);
-                                    throw th2;
-                                }
-                            }
-                        } catch (Throwable th3) {
-                            try {
-                                throw th3;
-                            } catch (Throwable th4) {
-                                q05.h(byteArrayOutputStream, th3);
-                                throw th4;
-                            }
-                        }
-                    }
-                }
-                df1Var.x(25, byteArray);
-                df1Var.c(26, mc0Var.c ? 1L : 0L);
-                df1Var.c(27, mc0Var.d ? 1L : 0L);
-                df1Var.c(28, mc0Var.e ? 1L : 0L);
-                df1Var.c(29, mc0Var.f ? 1L : 0L);
-                df1Var.c(30, mc0Var.g);
-                df1Var.c(31, mc0Var.h);
-                Set<lc0> set = mc0Var.i;
-                set.getClass();
-                if (set.isEmpty()) {
-                    byteArray2 = new byte[0];
-                } else {
-                    ByteArrayOutputStream byteArrayOutputStream2 = new ByteArrayOutputStream();
-                    try {
-                        ObjectOutputStream objectOutputStream2 = new ObjectOutputStream(byteArrayOutputStream2);
-                        try {
-                            objectOutputStream2.writeInt(set.size());
-                            for (lc0 lc0Var : set) {
-                                objectOutputStream2.writeUTF(lc0Var.a.toString());
-                                objectOutputStream2.writeBoolean(lc0Var.b);
-                            }
-                            objectOutputStream2.close();
-                            byteArrayOutputStream2.close();
-                            byteArray2 = byteArrayOutputStream2.toByteArray();
-                            byteArray2.getClass();
-                        } catch (Throwable th5) {
-                            try {
-                                throw th5;
-                            } catch (Throwable th6) {
-                                q05.h(objectOutputStream2, th5);
-                                throw th6;
-                            }
-                        }
-                    } catch (Throwable th7) {
-                        try {
-                            throw th7;
-                        } catch (Throwable th8) {
-                            q05.h(byteArrayOutputStream2, th7);
-                            throw th8;
-                        }
-                    }
-                }
-                df1Var.x(32, byteArray2);
-                return;
-            default:
-                gd5 gd5Var = (gd5) obj;
-                df1Var.h(1, gd5Var.a);
-                df1Var.h(2, gd5Var.b);
-                return;
-        }
+    public final void l(df1 r12, Object r13) {
+        int r0 = 3;
+        switch(this.d) {
+            case 0: goto L129;
+            case 1: goto L127;
+            case 2: goto L125;
+            case 3: goto L123;
+            case 4: goto L122;
+            case 5: goto L6;
+            default: goto L4;
+        };
+    L4:
+        gd5 r14 = (gd5) r13;
+        r12.h(1, r14.a);
+        r12.h(2, r14.b);
+        return;
+    L6:
+        dd5 r15 = (dd5) r13;
+        r12.h(1, r15.a);
+        r12.c(2, uc5.X(r15.b));
+        r12.h(3, r15.c);
+        r12.h(4, r15.d);
+        oh0 r11 = r15.e;
+        oh0 r4 = oh0.b;
+        r12.x(5, bu.E(r11));
+        r12.x(6, bu.E(r15.f));
+        r12.c(7, r15.g);
+        r12.c(8, r15.h);
+        r12.c(9, r15.i);
+        r12.c(10, r15.k);
+        int r6 = r15.l;
+        if (r6 == 0) goto L120;
+        int r7 = xa3.w(r6);
+        if (r7 == 0) goto L13;
+        if (r7 != 1) goto L12;
+        int r8 = 1;
+    L14:
+        r12.c(11, r8);
+        r12.c(12, r15.m);
+        r12.c(13, r15.n);
+        r12.c(14, r15.o);
+        r12.c(15, r15.p);
+        r12.c(16, r15.q ? 1 : 0);
+        int r9 = r15.r;
+        if (r9 == 0) goto L119;
+        int r10 = xa3.w(r9);
+        if (r10 == 0) goto L21;
+        if (r10 != 1) goto L20;
+        int r16 = 1;
+    L22:
+        r12.c(17, r16);
+        r12.c(18, r15.s);
+        r12.c(19, r15.t);
+        r12.c(20, r15.u);
+        r12.c(21, r15.v);
+        r12.c(22, r15.w);
+        String r17 = r15.x;
+        if (r17 != null) goto L25;
+        r12.e(23);
+    L26:
+        mc0 r18 = r15.j;
+        int r19 = r18.a;
+        if (r19 == 0) goto L118;
+        int r20 = xa3.w(r19);
+        if (r20 == 0) goto L39;
+        if (r20 == 1) goto L42;
+        if (r20 == 2) goto L41;
+        if (r20 == 3) goto L43;
+        if (r20 != 4) goto L35;
+        r0 = 4;
+        goto L43
+    L35:
+        if (Build.VERSION.SDK_INT < 30) goto L38;
+        if (r19 != 6) goto L38;
+        r0 = 5;
+    L38:
+        nz2.t(b11.y(r19), " to int", "Could not convert ");
+    L43:
+        r12.c(24, r0);
+        o53 r1 = r18.b;
+        r1.getClass();
+        int r2 = Build.VERSION.SDK_INT;
+        if (r2 >= 28) goto L46;
+        byte[] r110 = new byte[0];
+    L82:
+        r12.x(25, r110);
+        r12.c(26, r18.c ? 1 : 0);
+        r12.c(27, r18.d ? 1 : 0);
+        r12.c(28, r18.e ? 1 : 0);
+        r12.c(29, r18.f ? 1 : 0);
+        r12.c(30, r18.g);
+        r12.c(31, r18.h);
+        Set r111 = r18.i;
+        r111.getClass();
+        if (r111.isEmpty() == false) goto L85;
+        byte[] r112 = new byte[0];
+    L96:
+        r12.x(32, r112);
+        return;
+    L85:
+        ByteArrayOutputStream r113 = new ByteArrayOutputStream();
+        ObjectOutputStream r3 = new ObjectOutputStream(r113);     // Catch: Throwable -> L98
+        r3.writeInt(r111.size());     // Catch: Throwable -> L92
+        Iterator r114 = r111.iterator();     // Catch: Throwable -> L92
+    L89:
+        if (r114.hasNext() == false) goto L94;
+        lc0 r5 = (lc0) r114.next();     // Catch: Throwable -> L92
+        r3.writeUTF(r5.a.toString());     // Catch: Throwable -> L92
+        r3.writeBoolean(r5.b);     // Catch: Throwable -> L92
+    L94:
+        r3.close();     // Catch: Throwable -> L98
+        r113.close();
+        r112 = r113.toByteArray();
+        r112.getClass();
+    L92:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L101
+    L101:
+        th = move-exception;
+        q05.h(r3, th);     // Catch: Throwable -> L98
+        throw th;     // Catch: Throwable -> L98
+    L98:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L105
+    L105:
+        th = move-exception;
+        q05.h(r113, th);
+        throw th;
+    L46:
+        NetworkRequest r21 = (NetworkRequest) r1.a;
+        if (r21 != null) goto L49;
+        r110 = new byte[0];
+        goto L82
+    L49:
+        ByteArrayOutputStream r22 = new ByteArrayOutputStream();
+        ObjectOutputStream r23 = new ObjectOutputStream(r22);     // Catch: Throwable -> L108
+        if (r2 < 31) goto L54;
+        int[] r115 = go2.z(r21);     // Catch: Throwable -> L74
+        r115.getClass();     // Catch: Throwable -> L74
+    L62:
+        if (Build.VERSION.SDK_INT < 31) goto L64;
+        int[] r24 = go2.D(r21);     // Catch: Throwable -> L74
+        r24.getClass();     // Catch: Throwable -> L74
+    L71:
+        r23.writeInt(r115.length);     // Catch: Throwable -> L74
+        int r25 = r115.length;     // Catch: Throwable -> L74
+        int r26 = 0;
+    L72:
+        if (r26 >= r25) goto L76;
+        r23.writeInt(r115[r26]);     // Catch: Throwable -> L74
+        r26 = r26 + 1;     // Catch: Throwable -> L74
+        goto L72
+    L76:
+        r23.writeInt(r24.length);     // Catch: Throwable -> L74
+        int r116 = r24.length;     // Catch: Throwable -> L74
+        int r27 = 0;
+    L77:
+        if (r27 >= r116) goto L80;
+        r23.writeInt(r24[r27]);     // Catch: Throwable -> L74
+        r27 = r27 + 1;
+        goto L77
+    L80:
+        r23.close();     // Catch: Throwable -> L108
+        r22.close();
+        r110 = r22.toByteArray();
+        r110.getClass();
+        goto L82
+    L64:
+        int[] r28 = {17, 5, 2, 10, 29, 19, 3, 32, 7, 4, 12, 23, 0, 33, 20, 11, 13, 18, 21, 15, 35, 34, 8, 1, 25, 14, 16, 6, 9};     // Catch: Throwable -> L74
+        ArrayList r29 = new ArrayList();     // Catch: Throwable -> L74
+        int r30 = 0;
+    L65:
+        if (r30 >= 29) goto L70;
+        int r31 = r28[r30];     // Catch: Throwable -> L74
+        if (sr0.A(r21, r31) == false) goto L69;
+        r29.add(Integer.valueOf(r31));     // Catch: Throwable -> L74
+    L69:
+        r30 = r30 + 1;     // Catch: Throwable -> L74
+        goto L65
+    L70:
+        r24 = q40.P0(r29);     // Catch: Throwable -> L74
+        goto L71
+    L54:
+        int[] r32 = {2, 0, 3, 6, 9, 8, 4, 1, 5};     // Catch: Throwable -> L74
+        ArrayList r33 = new ArrayList();     // Catch: Throwable -> L74
+        int r34 = 0;
+    L55:
+        if (r34 >= 9) goto L60;
+        int r35 = r32[r34];     // Catch: Throwable -> L74
+        if (sr0.s(r21, r35) == false) goto L59;
+        r33.add(Integer.valueOf(r35));     // Catch: Throwable -> L74
+    L59:
+        r34 = r34 + 1;     // Catch: Throwable -> L74
+        goto L55
+    L60:
+        r115 = q40.P0(r33);     // Catch: Throwable -> L74
+    L74:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L111
+    L111:
+        th = move-exception;
+        q05.h(r23, th);     // Catch: Throwable -> L108
+        throw th;     // Catch: Throwable -> L108
+    L108:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L115
+    L115:
+        th = move-exception;
+        q05.h(r22, th);
+        throw th;
+    L41:
+        r0 = 2;
+        goto L43
+    L42:
+        r0 = 1;
+    L39:
+        r0 = 0;
+        goto L43
+    L118:
+        throw null;
+    L25:
+        r12.h(23, r17);
+        goto L26
+    L20:
+        er1.n();
+        return;
+    L21:
+        r16 = 0;
+        goto L22
+    L119:
+        throw null;
+    L12:
+        er1.n();
+        return;
+    L13:
+        r8 = 0;
+        goto L14
+    L120:
+        throw null;
+    L123:
+        wc5 r117 = (wc5) r13;
+        r12.h(1, r117.a);
+        r12.h(2, r117.b);
+        return;
+    L125:
+        zp4 r118 = (zp4) r13;
+        r12.h(1, r118.a);
+        r12.c(2, r118.b);
+        r12.c(3, r118.c);
+        return;
+    L127:
+        fp3 r119 = (fp3) r13;
+        r12.h(1, r119.a);
+        r12.c(2, r119.b.longValue());
+        return;
+    L129:
+        to0 r120 = (to0) r13;
+        r12.h(1, r120.a);
+        r12.h(2, r120.b);
+        return;
+    L122:
+        throw new ClassCastException();
     }
 
-    public final void m(Object obj) {
-        df1 df1VarA = a();
-        try {
-            l(df1VarA, obj);
-            df1VarA.o.executeInsert();
-        } finally {
-            h(df1VarA);
-        }
+    public final void m(Object r2) {
+        df1 r0 = a();
+        l(r0, r2);     // Catch: Throwable -> L6
+        r0.o.executeInsert();     // Catch: Throwable -> L6
+        h(r0);
+        return;
+    L6:
+        th = move-exception;
+        h(r0);
+        throw th;
     }
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ vo0(s24 s24Var, int i) {
-        super(s24Var);
-        this.d = i;
+    public /* synthetic */ vo0(s24 r1, int r2) {
+        this.d = r2;
+        super(r1);
     }
 }

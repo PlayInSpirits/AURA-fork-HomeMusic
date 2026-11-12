@@ -11,11 +11,14 @@ public final class Songs {
     @ka4("song")
     private List<? extends Child> songs;
 
+    public Songs() {
+    }
+
     public final List<Child> getSongs() {
         return this.songs;
     }
 
-    public final void setSongs(List<? extends Child> list) {
-        this.songs = list;
+    public final void setSongs(List<? extends Child> r1) {
+        this.songs = r1;
     }
 }

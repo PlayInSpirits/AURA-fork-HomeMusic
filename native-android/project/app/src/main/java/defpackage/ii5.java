@@ -8,35 +8,35 @@ import java.util.Map;
 public final class ii5 extends gi5 {
     public final /* synthetic */ ji5 q;
 
-    public ii5(ji5 ji5Var) {
-        this.q = ji5Var;
+    public ii5(ji5 r1) {
+        this.q = r1;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean contains(Object obj) {
-        if (obj instanceof Map.Entry) {
-            Map.Entry entry = (Map.Entry) obj;
-            Object obj2 = this.q.get(entry.getKey());
-            if (obj2 != null && obj2.equals(entry.getValue())) {
-                return true;
-            }
-        }
+    public final boolean contains(Object r3) {
+        if ((r3 instanceof Map.Entry) == false) goto L10;
+        Map.Entry r4 = (Map.Entry) r3;
+        Object r2 = this.q.get(r4.getKey());
+        if (r2 == null) goto L10;
+        if (r2.equals(r4.getValue()) == false) goto L10;
+        return true;
+    L10:
         return false;
     }
 
     @Override // defpackage.wh5
     public final o15 e() {
-        return i().listIterator(0);
+        return i().k(0);
     }
 
     @Override // defpackage.gi5, java.util.Collection, java.util.Set
     public final int hashCode() {
-        return gh0.M(this.q.entrySet());
+        return gh0.M(this.q.a());
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.lang.Iterable, java.util.Set
     public final /* synthetic */ Iterator iterator() {
-        return i().listIterator(0);
+        return i().k(0);
     }
 
     @Override // defpackage.gi5

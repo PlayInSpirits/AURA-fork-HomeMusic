@@ -11,26 +11,29 @@ public final class gm1 extends s20 {
 
     @Override // defpackage.jd2
     public final void a() {
-        try {
-            this.i.b(this.b);
-            int i = 0;
-            int i2 = 0;
-            while (i != -1 && !this.k) {
-                byte[] bArr = this.j;
-                if (bArr.length < i2 + 16384) {
-                    this.j = Arrays.copyOf(bArr, bArr.length + 16384);
-                }
-                i = this.i.read(this.j, i2, 16384);
-                if (i != -1) {
-                    i2 += i;
-                }
-            }
-            if (!this.k) {
-                this.l = Arrays.copyOf(this.j, i2);
-            }
-        } finally {
-            fu.k(this.i);
-        }
+        this.i.b(this.b);     // Catch: Throwable -> L13
+        int r0 = 0;
+        int r1 = 0;
+    L4:
+        if (r0 == (-1)) goto L16;
+        if (this.k == true) goto L16;
+        byte[] r2 = this.j;     // Catch: Throwable -> L13
+        if (r2.length >= (r1 + 16384)) goto L10;
+        this.j = Arrays.copyOf(r2, r2.length + 16384);     // Catch: Throwable -> L13
+    L10:
+        r0 = this.i.read(this.j, r1, 16384);     // Catch: Throwable -> L13
+        if (r0 == (-1)) goto L4;
+        r1 = r1 + r0;     // Catch: Throwable -> L13
+    L16:
+        if (this.k == true) goto L18;
+        this.l = Arrays.copyOf(this.j, r1);     // Catch: Throwable -> L13
+    L18:
+        fu.k(this.i);
+        return;
+    L13:
+        th = move-exception;
+        fu.k(this.i);
+        throw th;
     }
 
     @Override // defpackage.jd2

@@ -5,8 +5,8 @@ package defpackage;
 public final class dm4 implements ao {
     public final tb1 a;
 
-    public dm4(tb1 tb1Var) {
-        this.a = tb1Var;
+    public dm4(tb1 r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.ao

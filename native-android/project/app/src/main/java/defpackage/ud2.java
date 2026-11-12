@@ -7,18 +7,21 @@ import java.util.Locale;
 public final class ud2 {
     public final Locale a;
 
-    public ud2(Locale locale) {
-        this.a = locale;
+    public ud2(Locale r1) {
+        this.a = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (obj == null || !(obj instanceof ud2)) {
-            return false;
-        }
-        if (this == obj) {
-            return true;
-        }
-        return h12.c(this.a.toLanguageTag(), ((ud2) obj).a.toLanguageTag());
+    public final boolean equals(Object r3) {
+        if (r3 != null) goto L6;
+        return false;
+    L6:
+        if ((r3 instanceof ud2) == true) goto L8;
+        return false;
+    L8:
+        if (this != r3) goto L12;
+        return true;
+    L12:
+        return h12.c(this.a.toLanguageTag(), ((ud2) r3).a.toLanguageTag());
     }
 
     public final int hashCode() {

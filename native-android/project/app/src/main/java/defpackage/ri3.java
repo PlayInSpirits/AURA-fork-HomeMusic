@@ -10,36 +10,37 @@ public final /* synthetic */ class ri3 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ xi3 o;
 
-    public /* synthetic */ ri3(xi3 xi3Var, int i) {
-        this.n = i;
-        this.o = xi3Var;
+    public /* synthetic */ ri3(xi3 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        xi3 xi3Var = this.o;
-        switch (i) {
-            case 0:
-                try {
-                    bj2 bj2Var = (bj2) xi3Var.q0.get();
-                    App.b().getClass();
-                    bj2Var.s(App.c().getBoolean("shuffle_mode", false));
-                    App.b().getClass();
-                    bj2Var.p0(App.c().getInt("repeat_mode", 0));
-                    xi3Var.j0(bj2Var);
-                    a.f.e(xi3Var.v(), new si3(xi3Var, 1));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return;
-                }
-                break;
-            default:
-                ns3 ns3Var = xi3Var.o0;
-                if (ns3Var != null) {
-                    ((ImageButton) ((ae1) ns3Var.q).e).setVisibility(8);
-                }
-                break;
-        }
+        int r0 = this.n;
+        xi3 r4 = this.o;
+        switch(r0) {
+            case 0: goto L13;
+            default: goto L4;
+        };
+    L4:
+        ns3 r5 = r4.o0;
+        if (r5 == null) goto L15;
+        ((ImageButton) ((ae1) r5.q).e).setVisibility(8);
+        return;
+    L15:
+        return;
+    L13:
+        bj2 r1 = (bj2) r4.q0.get();     // Catch: Exception -> L10
+        App.b().getClass();     // Catch: Exception -> L10
+        r1.s(App.c().getBoolean("shuffle_mode", false));     // Catch: Exception -> L10
+        App.b().getClass();     // Catch: Exception -> L10
+        r1.p0(App.c().getInt("repeat_mode", 0));     // Catch: Exception -> L10
+        r4.j0(r1);     // Catch: Exception -> L10
+        a.f.e(r4.v(), new si3(r4, 1));     // Catch: Exception -> L10
+        return;
+    L10:
+        e = move-exception;
+        e.printStackTrace();
     }
 }

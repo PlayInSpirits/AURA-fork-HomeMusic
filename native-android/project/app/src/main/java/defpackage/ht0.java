@@ -9,9 +9,9 @@ public final class ht0 {
     public final boolean b;
     public final ArrayList c;
 
-    public ht0(ns0 ns0Var, boolean z, ArrayList arrayList, Exception exc) {
-        this.a = ns0Var;
-        this.b = z;
-        this.c = arrayList;
+    public ht0(ns0 r1, boolean r2, ArrayList r3, Exception r4) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 }

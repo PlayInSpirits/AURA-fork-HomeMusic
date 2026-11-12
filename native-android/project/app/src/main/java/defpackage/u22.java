@@ -25,17 +25,17 @@ public abstract class u22 extends zd2 implements as0, mx1 {
     }
 
     public final a32 q() {
-        a32 a32Var = this.t;
-        if (a32Var != null) {
-            return a32Var;
-        }
+        a32 r0 = this.t;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         h12.Q("job");
         throw null;
     }
 
     public abstract boolean r();
 
-    public abstract void s(Throwable th);
+    public abstract void s(Throwable r1);
 
     @Override // defpackage.zd2
     public final String toString() {

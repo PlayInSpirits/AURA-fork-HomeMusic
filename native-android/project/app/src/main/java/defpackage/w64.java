@@ -8,16 +8,15 @@ public final class w64 extends wd0 {
     public final /* synthetic */ xk0 p;
     public int q;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public w64(xk0 xk0Var, wd0 wd0Var) {
-        super(wd0Var);
-        this.p = xk0Var;
+    public w64(xk0 r1, wd0 r2) {
+        this.p = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.o = obj;
+    public final Object invokeSuspend(Object r7) {
+        this.o = r7;
         this.q |= Integer.MIN_VALUE;
-        return this.p.b0(0L, 0L, this);
+        return this.p.b0(0, 0, this);
     }
 }

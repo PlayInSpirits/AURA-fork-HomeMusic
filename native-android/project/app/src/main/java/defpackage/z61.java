@@ -9,36 +9,37 @@ import java.util.HashMap;
 /* JADX INFO: loaded from: classes.dex */
 public final class z61 {
     public final String a;
-    public final HashMap b = new HashMap();
+    public final HashMap b;
 
-    public z61(String str) {
-        this.a = str;
+    public z61(String r2) {
+        this.b = new HashMap();
+        this.a = r2;
     }
 
-    public final File a(Uri uri) {
-        String encodedPath = uri.getEncodedPath();
-        int iIndexOf = encodedPath.indexOf(47, 1);
-        if (iIndexOf == -1) {
-            mj0.l(uri, "Unable to find path from root: ");
-            return null;
-        }
-        String strDecode = Uri.decode(encodedPath.substring(1, iIndexOf));
-        String strDecode2 = Uri.decode(encodedPath.substring(iIndexOf + 1));
-        File file = (File) this.b.get(strDecode);
-        if (file == null) {
-            mj0.l(uri, "Unable to find configured root for ");
-            return null;
-        }
-        File file2 = new File(file, strDecode2);
-        try {
-            File canonicalFile = file2.getCanonicalFile();
-            if (a71.a(canonicalFile.getPath()).startsWith(a71.a(file.getPath()).concat("/"))) {
-                return canonicalFile;
-            }
-            throw new SecurityException("Resolved path jumped beyond configured root");
-        } catch (IOException unused) {
-            mj0.l(file2, "Failed to resolve canonical path for ");
-            return null;
-        }
+    public final File a(Uri r6) {
+        String r0 = r6.getEncodedPath();
+        int r1 = r0.indexOf(47, 1);
+        if (r1 == (-1)) goto L17;
+        String r3 = Uri.decode(r0.substring(1, r1));
+        String r2 = Uri.decode(r0.substring(r1 + 1));
+        File r5 = (File) this.b.get(r3);
+        if (r5 == null) goto L15;
+        File r7 = new File(r5, r2);
+        File r8 = r7.getCanonicalFile();     // Catch: IOException -> L13
+        String r4 = r8.getPath();
+        String r9 = r5.getPath();
+        if (a71.a(r4).startsWith(a71.a(r9).concat("/")) == false) goto L12;
+        return r8;
+    L12:
+        throw new SecurityException("Resolved path jumped beyond configured root");
+    L13:
+        mj0.l(r7, "Failed to resolve canonical path for ");
+        return null;
+    L15:
+        mj0.l(r6, "Unable to find configured root for ");
+        return null;
+    L17:
+        mj0.l(r6, "Unable to find path from root: ");
+        return null;
     }
 }

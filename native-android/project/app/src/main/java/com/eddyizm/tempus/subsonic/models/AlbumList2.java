@@ -11,11 +11,14 @@ public final class AlbumList2 {
     @ka4("album")
     private List<? extends AlbumID3> albums;
 
+    public AlbumList2() {
+    }
+
     public final List<AlbumID3> getAlbums() {
         return this.albums;
     }
 
-    public final void setAlbums(List<? extends AlbumID3> list) {
-        this.albums = list;
+    public final void setAlbums(List<? extends AlbumID3> r1) {
+        this.albums = r1;
     }
 }

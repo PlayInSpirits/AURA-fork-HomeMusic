@@ -5,11 +5,11 @@ import java.util.LinkedHashMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ge1 {
-    public static final ge1 a;
+    public static final ge1 a = null;
 
     static {
-        ge1 ge1Var = new ge1();
+        ge1 r0 = new ge1();
         new LinkedHashMap();
-        a = ge1Var;
+        a = r0;
     }
 }

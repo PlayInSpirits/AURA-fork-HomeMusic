@@ -14,35 +14,37 @@ public final /* synthetic */ class pi4 implements View.OnClickListener {
     public final /* synthetic */ int n;
     public final /* synthetic */ SongListPageFragment o;
 
-    public /* synthetic */ pi4(SongListPageFragment songListPageFragment, int i) {
-        this.n = i;
-        this.o = songListPageFragment;
+    public /* synthetic */ pi4(SongListPageFragment r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // android.view.View.OnClickListener
-    public final void onClick(View view) {
-        int i = this.n;
-        SongListPageFragment songListPageFragment = this.o;
-        switch (i) {
-            case 0:
-                songListPageFragment.h0(view);
-                songListPageFragment.m0.T.o();
-                break;
-            case 1:
-                ArrayList arrayList = new ArrayList(songListPageFragment.p0.u);
-                qo2 qo2Var = new qo2(songListPageFragment, arrayList, v13.c(songListPageFragment.n0.e), 15);
-                if (!"MEDIA_STARRED".equals(songListPageFragment.n0.e)) {
-                    qo2Var.run();
-                } else {
-                    a.m(songListPageFragment.m0, SmartContexts.LIKED, null, arrayList, qo2Var);
-                }
-                break;
-            default:
-                PopupMenu popupMenu = new PopupMenu(songListPageFragment.Z(), view);
-                popupMenu.getMenuInflater().inflate(R.menu.sort_song_popup_menu, popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new v7(9, songListPageFragment));
-                popupMenu.show();
-                break;
-        }
+    public final void onClick(View r4) {
+        int r0 = this.n;
+        SongListPageFragment r3 = this.o;
+        switch(r0) {
+            case 0: goto L11;
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        PopupMenu r1 = new PopupMenu(r3.Z(), r4);
+        r1.getMenuInflater().inflate(R.menu.sort_song_popup_menu, r1.getMenu());
+        r1.setOnMenuItemClickListener(new v7(9, r3));
+        r1.show();
+        return;
+    L6:
+        ArrayList r5 = new ArrayList(r3.p0.u);
+        qo2 r2 = new qo2(r3, r5, v13.c(r3.n0.e), 15);
+        if ("MEDIA_STARRED".equals(r3.n0.e) == false) goto L9;
+        a.m(r3.m0, SmartContexts.LIKED, null, r5, r2);
+        return;
+    L9:
+        r2.run();
+        return;
+    L11:
+        r3.h0(r4);
+        r3.m0.T.o();
     }
 }

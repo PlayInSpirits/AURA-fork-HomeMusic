@@ -23,29 +23,96 @@ public final class ne5 {
     public final Integer p;
     public final ArrayList q;
 
-    public /* synthetic */ ne5(ge3 ge3Var, boolean z, String str, long j, long j2, long j3, int i, long j4, int i2, int i3, Long l, Long l2, Long l3, int i4) {
-        this(ge3Var, z, (i4 & 4) != 0 ? "" : str, (i4 & 8) != 0 ? -1L : j, (i4 & 16) != 0 ? -1L : j2, (i4 & 32) != 0 ? -1L : j3, (i4 & 64) != 0 ? -1 : i, (i4 & 128) != 0 ? -1L : j4, (i4 & 256) != 0 ? -1 : i2, (i4 & 512) != 0 ? -1 : i3, (i4 & 1024) != 0 ? null : l, (i4 & 2048) != 0 ? null : l2, (i4 & 4096) != 0 ? null : l3, null, null, null);
+    public /* synthetic */ ne5(ge3 r24, boolean r25, String r26, long r27, long r29, long r31, int r33, long r34, int r36, int r37, Long r38, Long r39, Long r40, int r41) {
+        if ((r41 & 4) == 0) goto L5;
+        String r5 = "";
+    L7:
+        if ((r41 & 8) == 0) goto L9;
+        long r6 = -1;
+    L11:
+        if ((r41 & 16) == 0) goto L13;
+        long r8 = -1;
+    L15:
+        if ((r41 & 32) == 0) goto L17;
+        long r10 = -1;
+    L19:
+        if ((r41 & 64) == 0) goto L21;
+        int r12 = -1;
+    L23:
+        if ((r41 & 128) == 0) goto L25;
+        long r13 = -1;
+    L27:
+        if ((r41 & 256) == 0) goto L29;
+        int r15 = -1;
+    L31:
+        if ((r41 & 512) == 0) goto L33;
+        int r16 = -1;
+    L35:
+        if ((r41 & 1024) == 0) goto L37;
+        Long r17 = null;
+    L39:
+        if ((r41 & 2048) == 0) goto L41;
+        Long r18 = null;
+    L43:
+        if ((r41 & 4096) == 0) goto L45;
+        Long r19 = null;
+    L46:
+        this(r24, r25, r5, r6, r8, r10, r12, r13, r15, r16, r17, r18, r19, null, null, null);
+        return;
+    L45:
+        r19 = r40;
+        goto L46
+    L41:
+        r18 = r39;
+        goto L43
+    L37:
+        r17 = r38;
+        goto L39
+    L33:
+        r16 = r37;
+        goto L35
+    L29:
+        r15 = r36;
+        goto L31
+    L25:
+        r13 = r34;
+        goto L27
+    L21:
+        r12 = r33;
+        goto L23
+    L17:
+        r10 = r31;
+        goto L19
+    L13:
+        r8 = r29;
+        goto L15
+    L9:
+        r6 = r27;
+        goto L11
+    L5:
+        r5 = r26;
+        goto L7
     }
 
-    public ne5(ge3 ge3Var, boolean z, String str, long j, long j2, long j3, int i, long j4, int i2, int i3, Long l, Long l2, Long l3, Integer num, Integer num2, Integer num3) {
-        ge3Var.getClass();
-        str.getClass();
-        this.a = ge3Var;
-        this.b = z;
-        this.c = str;
-        this.d = j;
-        this.e = j2;
-        this.f = j3;
-        this.g = i;
-        this.h = j4;
-        this.i = i2;
-        this.j = i3;
-        this.k = l;
-        this.l = l2;
-        this.m = l3;
-        this.n = num;
-        this.o = num2;
-        this.p = num3;
+    public ne5(ge3 r1, boolean r2, String r3, long r4, long r6, long r8, int r10, long r11, int r13, int r14, Long r15, Long r16, Long r17, Integer r18, Integer r19, Integer r20) {
+        r1.getClass();
+        r3.getClass();
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r6;
+        this.f = r8;
+        this.g = r10;
+        this.h = r11;
+        this.i = r13;
+        this.j = r14;
+        this.k = r15;
+        this.l = r16;
+        this.m = r17;
+        this.n = r18;
+        this.o = r19;
+        this.p = r20;
         this.q = new ArrayList();
     }
 }

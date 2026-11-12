@@ -9,31 +9,30 @@ public final class v84 extends w34 {
     public final /* synthetic */ ii0 v;
     public final /* synthetic */ mm1 w;
 
-    public v84(mm1 mm1Var, lx lxVar, ii0 ii0Var) {
-        this.w = mm1Var;
-        this.u = lxVar;
-        this.v = ii0Var;
+    public v84(mm1 r1, lx r2, ii0 r3) {
+        this.w = r1;
+        this.u = r2;
+        this.v = r3;
     }
 
     @Override // defpackage.w34
     public final Object c() {
-        ce3 ce3Var = this.w.d;
-        lx lxVar = this.u;
-        yl4 yl4Var = new yl4(lxVar);
+        ce3 r0 = this.w.d;
+        lx r2 = this.u;
+        yl4 r1 = new yl4(r2);
         ed2.g.getAndIncrement();
-        yl4Var.o = 0L;
-        gi0 gi0Var = new gi0(yl4Var, this.v);
-        try {
-            gi0Var.b();
-            Uri uri = lxVar.v;
-            uri.getClass();
-            dn1 dn1VarA = ce3Var.a(uri, gi0Var);
-            f35.h(gi0Var);
-            dn1VarA.getClass();
-            return dn1VarA;
-        } catch (Throwable th) {
-            f35.h(gi0Var);
-            throw th;
-        }
+        r1.o = 0;
+        gi0 r3 = new gi0(r1, this.v);
+        r3.b();     // Catch: Throwable -> L6
+        Uri r5 = r2.v;     // Catch: Throwable -> L6
+        r5.getClass();     // Catch: Throwable -> L6
+        dn1 r6 = r0.a(r5, r3);     // Catch: Throwable -> L6
+        f35.h(r3);
+        r6.getClass();
+        return r6;
+    L6:
+        th = move-exception;
+        f35.h(r3);
+        throw th;
     }
 }

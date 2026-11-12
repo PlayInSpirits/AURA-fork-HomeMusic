@@ -13,67 +13,96 @@ public final class g34 {
     public final long h;
 
     static {
-        wr1.a(0.0f, 0.0f, 0.0f, 0.0f, 0L);
+        wr1.a(0.0f, 0.0f, 0.0f, 0.0f, 0);
     }
 
-    public g34(float f, float f2, float f3, float f4, long j, long j2, long j3, long j4) {
-        this.a = f;
-        this.b = f2;
-        this.c = f3;
-        this.d = f4;
-        this.e = j;
-        this.f = j2;
-        this.g = j3;
-        this.h = j4;
+    public g34(float r1, float r2, float r3, float r4, long r5, long r7, long r9, long r11) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
+        this.f = r7;
+        this.g = r9;
+        this.h = r11;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof g34)) {
-            return false;
-        }
-        g34 g34Var = (g34) obj;
-        return Float.compare(this.a, g34Var.a) == 0 && Float.compare(this.b, g34Var.b) == 0 && Float.compare(this.c, g34Var.c) == 0 && Float.compare(this.d, g34Var.d) == 0 && ud3.g(this.e, g34Var.e) && ud3.g(this.f, g34Var.f) && ud3.g(this.g, g34Var.g) && ud3.g(this.h, g34Var.h);
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L5;
+        return true;
+    L5:
+        if ((r5 instanceof g34) == false) goto L34;
+        g34 r6 = (g34) r5;
+        if (Float.compare(this.a, r6.a) == 0) goto L11;
+        return false;
+    L11:
+        if (Float.compare(this.b, r6.b) == 0) goto L14;
+        return false;
+    L14:
+        if (Float.compare(this.c, r6.c) == 0) goto L17;
+        return false;
+    L17:
+        if (Float.compare(this.d, r6.d) == 0) goto L20;
+        return false;
+    L20:
+        if (ud3.g(this.e, r6.e) == true) goto L23;
+        return false;
+    L23:
+        if (ud3.g(this.f, r6.f) == true) goto L26;
+        return false;
+    L26:
+        if (ud3.g(this.g, r6.g) == true) goto L29;
+        return false;
+    L29:
+        if (ud3.g(this.h, r6.h) == true) goto L32;
+        return false;
+    L32:
+        return true;
+    L34:
+        return false;
     }
 
     public final int hashCode() {
-        return Long.hashCode(this.h) + xa3.b(xa3.b(xa3.b(b11.d(b11.d(b11.d(Float.hashCode(this.a) * 31, this.b, 31), this.c, 31), this.d, 31), 31, this.e), 31, this.f), 31, this.g);
+        int r0 = xa3.b(xa3.b(xa3.b(b11.d(b11.d(b11.d(Float.hashCode(this.a) * 31, this.b, 31), this.c, 31), this.d, 31), 31, this.e), 31, this.f), 31, this.g);
+        return Long.hashCode(this.h) + r0;
     }
 
     public final String toString() {
-        String strF = gh0.F(this.a);
-        String strF2 = gh0.F(this.b);
-        String strF3 = gh0.F(this.c);
-        String strF4 = gh0.F(this.d);
-        StringBuilder sb = new StringBuilder();
-        sb.append(strF);
-        sb.append(", ");
-        sb.append(strF2);
-        sb.append(", ");
-        sb.append(strF3);
-        String strQ = b11.q(sb, ", ", strF4);
-        long j = this.e;
-        long j2 = this.f;
-        boolean zG = ud3.g(j, j2);
-        long j3 = this.g;
-        long j4 = this.h;
-        if (zG && ud3.g(j2, j3) && ud3.g(j3, j4)) {
-            int i = (int) (j >> 32);
-            int i2 = (int) (j & 4294967295L);
-            if (Float.intBitsToFloat(i) == Float.intBitsToFloat(i2)) {
-                return f34.h("RoundRect(rect=", strQ, ", radius=", gh0.F(Float.intBitsToFloat(i)), ")");
-            }
-            String strF5 = gh0.F(Float.intBitsToFloat(i));
-            return b11.q(b11.u("RoundRect(rect=", strQ, ", x=", strF5, ", y="), gh0.F(Float.intBitsToFloat(i2)), ")");
-        }
-        String strI0 = ud3.I0(j);
-        String strI1 = ud3.I0(j2);
-        String strI2 = ud3.I0(j3);
-        String strI3 = ud3.I0(j4);
-        StringBuilder sbU = b11.u("RoundRect(rect=", strQ, ", topLeft=", strI0, ", topRight=");
-        f34.n(sbU, strI1, ", bottomRight=", strI2, ", bottomLeft=");
-        return b11.q(sbU, strI3, ")");
+        String r0 = gh0.F(this.a);
+        String r1 = gh0.F(this.b);
+        String r2 = gh0.F(this.c);
+        String r3 = gh0.F(this.d);
+        StringBuilder r4 = new StringBuilder();
+        r4.append(r0);
+        r4.append(", ");
+        r4.append(r1);
+        r4.append(", ");
+        r4.append(r2);
+        String r5 = b11.q(r4, ", ", r3);
+        long r6 = this.e;
+        long r7 = this.f;
+        boolean r8 = ud3.g(r6, r7);
+        long r9 = this.g;
+        long r10 = this.h;
+        if (r8 == true) goto L5;
+    L14:
+        String r12 = ud3.I0(r6);
+        String r11 = ud3.I0(r7);
+        String r13 = ud3.I0(r9);
+        String r14 = ud3.I0(r10);
+        StringBuilder r15 = b11.u("RoundRect(rect=", r5, ", topLeft=", r12, ", topRight=");
+        f34.n(r15, r11, ", bottomRight=", r13, ", bottomLeft=");
+        return b11.q(r15, r14, ")");
+    L5:
+        if (ud3.g(r7, r9) == false) goto L14;
+        if (ud3.g(r9, r10) == false) goto L14;
+        int r16 = (int) (r6 >> 32);
+        int r17 = (int) (r6 & 4294967295L);
+        if (Float.intBitsToFloat(r16) == Float.intBitsToFloat(r17)) goto L11;
+        String r18 = gh0.F(Float.intBitsToFloat(r16));
+        String r19 = gh0.F(Float.intBitsToFloat(r17));
+        return b11.q(b11.u("RoundRect(rect=", r5, ", x=", r18, ", y="), r19, ")");
+    L11:
+        return f34.h("RoundRect(rect=", r5, ", radius=", gh0.F(Float.intBitsToFloat(r16)), ")");
     }
 }

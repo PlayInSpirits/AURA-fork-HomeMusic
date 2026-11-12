@@ -10,8 +10,8 @@ public final class lo1 extends ee1 {
     public final ArrayList B;
     public final ArrayList z;
 
-    public lo1(HomeFragment homeFragment) {
-        super(homeFragment.m(), homeFragment.c0);
+    public lo1(HomeFragment r2) {
+        super(r2.m(), r2.c0);
         this.z = new ArrayList();
         this.A = new ArrayList();
         this.B = new ArrayList();
@@ -23,13 +23,13 @@ public final class lo1 extends ee1 {
     }
 
     @Override // defpackage.ee1
-    public final kc1 r(int i) {
-        return (kc1) this.z.get(i);
+    public final kc1 r(int r1) {
+        return (kc1) this.z.get(r1);
     }
 
-    public final void w(int i, kc1 kc1Var, String str) {
-        this.z.add(kc1Var);
-        this.A.add(str);
-        this.B.add(Integer.valueOf(i));
+    public final void w(int r2, kc1 r3, String r4) {
+        this.z.add(r3);
+        this.A.add(r4);
+        this.B.add(Integer.valueOf(r2));
     }
 }

@@ -9,11 +9,11 @@ public final class r53 extends xb0 {
     public final ConnectivityManager f;
     public final oy1 g;
 
-    public r53(bq4 bq4Var, Context context) {
-        super(bq4Var, context);
-        Object systemService = this.b.getSystemService("connectivity");
-        systemService.getClass();
-        this.f = (ConnectivityManager) systemService;
+    public r53(bq4 r1, Context r2) {
+        super(r1, r2);
+        Object r3 = this.b.getSystemService("connectivity");
+        r3.getClass();
+        this.f = (ConnectivityManager) r3;
         this.g = new oy1(1, this);
     }
 
@@ -24,33 +24,37 @@ public final class r53 extends xb0 {
 
     @Override // defpackage.xb0
     public final void c() {
-        try {
-            cx.f().b(s53.a, "Registering network callback");
-            ConnectivityManager connectivityManager = this.f;
-            oy1 oy1Var = this.g;
-            connectivityManager.getClass();
-            oy1Var.getClass();
-            connectivityManager.registerDefaultNetworkCallback(oy1Var);
-        } catch (IllegalArgumentException e) {
-            cx.f().e(s53.a, "Received exception while registering network callback", e);
-        } catch (SecurityException e2) {
-            cx.f().e(s53.a, "Received exception while registering network callback", e2);
-        }
+        cx.f().b(s53.a, "Registering network callback");     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        ConnectivityManager r1 = this.f;     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        oy1 r4 = this.g;     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        r1.getClass();     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        r4.getClass();     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        r1.registerDefaultNetworkCallback(r4);     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        return;
+    L7:
+        e = move-exception;
+        cx.f().e(s53.a, "Received exception while registering network callback", e);
+        return;
+    L5:
+        e = move-exception;
+        cx.f().e(s53.a, "Received exception while registering network callback", e);
     }
 
     @Override // defpackage.xb0
     public final void d() {
-        try {
-            cx.f().b(s53.a, "Unregistering network callback");
-            ConnectivityManager connectivityManager = this.f;
-            oy1 oy1Var = this.g;
-            connectivityManager.getClass();
-            oy1Var.getClass();
-            connectivityManager.unregisterNetworkCallback(oy1Var);
-        } catch (IllegalArgumentException e) {
-            cx.f().e(s53.a, "Received exception while unregistering network callback", e);
-        } catch (SecurityException e2) {
-            cx.f().e(s53.a, "Received exception while unregistering network callback", e2);
-        }
+        cx.f().b(s53.a, "Unregistering network callback");     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        ConnectivityManager r1 = this.f;     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        oy1 r4 = this.g;     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        r1.getClass();     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        r4.getClass();     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        r1.unregisterNetworkCallback(r4);     // Catch: SecurityException -> L5 IllegalArgumentException -> L7
+        return;
+    L7:
+        e = move-exception;
+        cx.f().e(s53.a, "Received exception while unregistering network callback", e);
+        return;
+    L5:
+        e = move-exception;
+        cx.f().e(s53.a, "Received exception while unregistering network callback", e);
     }
 }

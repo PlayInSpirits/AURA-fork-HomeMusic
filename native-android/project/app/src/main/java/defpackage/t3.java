@@ -7,11 +7,11 @@ import android.view.accessibility.AccessibilityNodeInfo;
 public final class t3 {
     public Object a;
 
-    public /* synthetic */ t3(Object obj) {
-        this.a = obj;
+    public /* synthetic */ t3(Object r1) {
+        this.a = r1;
     }
 
-    public static t3 a(int i, int i2, int i3) {
-        return new t3(AccessibilityNodeInfo.CollectionInfo.obtain(i, i2, false, i3));
+    public static t3 a(int r2, int r3, int r4) {
+        return new t3(AccessibilityNodeInfo.CollectionInfo.obtain(r2, r3, false, r4));
     }
 }

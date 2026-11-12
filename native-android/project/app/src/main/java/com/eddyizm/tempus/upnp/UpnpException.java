@@ -5,8 +5,8 @@ package com.eddyizm.tempus.upnp;
 public final class UpnpException extends Exception {
     public final int n;
 
-    public UpnpException(int i, String str) {
-        super("UPnP error " + i + ": " + str);
-        this.n = i;
+    public UpnpException(int r3, String r4) {
+        super("UPnP error " + r3 + ": " + r4);
+        this.n = r3;
     }
 }

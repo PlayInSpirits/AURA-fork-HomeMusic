@@ -10,8 +10,8 @@ public final class t55 extends rp {
     public boolean f;
     public int g;
 
-    public t55(wv4 wv4Var) {
-        super(wv4Var);
+    public t55(wv4 r2) {
+        super(r2);
         this.b = new be3(uc5.c);
         this.c = new be3(4);
     }

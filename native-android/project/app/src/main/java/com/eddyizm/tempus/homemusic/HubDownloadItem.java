@@ -8,6 +8,9 @@ public final class HubDownloadItem {
     private boolean star;
     private String status;
 
+    public HubDownloadItem() {
+    }
+
     public final long getId() {
         return this.id;
     }
@@ -20,15 +23,15 @@ public final class HubDownloadItem {
         return this.status;
     }
 
-    public final void setId(long j) {
-        this.id = j;
+    public final void setId(long r1) {
+        this.id = r1;
     }
 
-    public final void setStar(boolean z) {
-        this.star = z;
+    public final void setStar(boolean r1) {
+        this.star = r1;
     }
 
-    public final void setStatus(String str) {
-        this.status = str;
+    public final void setStatus(String r1) {
+        this.status = r1;
     }
 }

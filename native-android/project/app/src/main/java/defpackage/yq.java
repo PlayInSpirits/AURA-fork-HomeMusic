@@ -15,104 +15,110 @@ import java.util.WeakHashMap;
 public final class yq implements Handler.Callback {
     public final /* synthetic */ int n;
 
-    public /* synthetic */ yq(int i) {
-        this.n = i;
+    public /* synthetic */ yq(int r1) {
+        this.n = r1;
     }
 
     /* JADX WARN: Multi-variable type inference failed */
     @Override // android.os.Handler.Callback
-    public final boolean handleMessage(Message message) {
-        List<AccessibilityServiceInfo> enabledAccessibilityServiceList;
-        int height = 0;
-        Object[] objArr = 0;
-        Object[] objArr2 = 0;
-        Object[] objArr3 = 0;
-        Object[] objArr4 = 0;
-        switch (this.n) {
-            case 0:
-                int i = message.what;
-                int i2 = 2;
-                if (i != 0) {
-                    if (i != 1) {
-                        return false;
-                    }
-                    fr frVar = (fr) message.obj;
-                    int i3 = message.arg1;
-                    er erVar = frVar.i;
-                    AccessibilityManager accessibilityManager = frVar.u;
-                    if ((accessibilityManager != null && ((enabledAccessibilityServiceList = accessibilityManager.getEnabledAccessibilityServiceList(1)) == null || !enabledAccessibilityServiceList.isEmpty())) || erVar.getVisibility() != 0) {
-                        frVar.c();
-                        return true;
-                    }
-                    if (erVar.getAnimationMode() == 1) {
-                        ValueAnimator valueAnimatorOfFloat = ValueAnimator.ofFloat(1.0f, 0.0f);
-                        valueAnimatorOfFloat.setInterpolator(frVar.d);
-                        valueAnimatorOfFloat.addUpdateListener(new xq(frVar, objArr4 == true ? 1 : 0, objArr3 == true ? 1 : 0));
-                        valueAnimatorOfFloat.setDuration(frVar.b);
-                        valueAnimatorOfFloat.addListener(new wq(frVar, i3, objArr2 == true ? 1 : 0));
-                        valueAnimatorOfFloat.start();
-                        return true;
-                    }
-                    ValueAnimator valueAnimator = new ValueAnimator();
-                    er erVar2 = frVar.i;
-                    int height2 = erVar2.getHeight();
-                    ViewGroup.LayoutParams layoutParams = erVar2.getLayoutParams();
-                    if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
-                        height2 += ((ViewGroup.MarginLayoutParams) layoutParams).bottomMargin;
-                    }
-                    valueAnimator.setIntValues(0, height2);
-                    valueAnimator.setInterpolator(frVar.e);
-                    valueAnimator.setDuration(frVar.c);
-                    valueAnimator.addListener(new wq(frVar, i3, i2));
-                    valueAnimator.addUpdateListener(new xq(frVar, 3, objArr == true ? 1 : 0));
-                    valueAnimator.start();
-                    return true;
-                }
-                fr frVar2 = (fr) message.obj;
-                er erVar3 = frVar2.i;
-                ViewGroup viewGroup = frVar2.g;
-                if (erVar3.getParent() == null) {
-                    ViewGroup.LayoutParams layoutParams2 = erVar3.getLayoutParams();
-                    if (layoutParams2 instanceof ge0) {
-                        ge0 ge0Var = (ge0) layoutParams2;
-                        BaseTransientBottomBar$Behavior baseTransientBottomBar$Behavior = new BaseTransientBottomBar$Behavior();
-                        d34 d34Var = baseTransientBottomBar$Behavior.v;
-                        d34Var.getClass();
-                        d34Var.o = frVar2.v;
-                        baseTransientBottomBar$Behavior.o = new zg5(frVar2);
-                        ge0Var.b(baseTransientBottomBar$Behavior);
-                        if (frVar2.b() == null) {
-                            ge0Var.g = 80;
-                        }
-                    }
-                    erVar3.x = true;
-                    viewGroup.addView(erVar3);
-                    erVar3.x = false;
-                    if (frVar2.b() != null) {
-                        int[] iArr = new int[2];
-                        frVar2.b().getLocationOnScreen(iArr);
-                        int i4 = iArr[1];
-                        int[] iArr2 = new int[2];
-                        viewGroup.getLocationOnScreen(iArr2);
-                        height = (viewGroup.getHeight() + iArr2[1]) - i4;
-                    }
-                    frVar2.q = height;
-                    frVar2.g();
-                    erVar3.setVisibility(4);
-                }
-                WeakHashMap weakHashMap = j65.a;
-                if (erVar3.isLaidOut()) {
-                    frVar2.f();
-                    return true;
-                }
-                frVar2.t = true;
-                return true;
-            default:
-                if (message.what != 1) {
-                    return false;
-                }
-                ((q04) message.obj).b();
-                return true;
-        }
+    public final boolean handleMessage(Message r9) {
+        int r1 = 0;
+        Object[] r2 = 0;
+        Object[] r3 = 0;
+        Object[] r4 = 0;
+        Object[] r5 = 0;
+        switch(this.n) {
+            case 0: goto L9;
+            default: goto L5;
+        };
+    L9:
+        int r8 = r9.what;
+        int r6 = 2;
+        if (r8 == 0) goto L30;
+        if (r8 != 1) goto L48;
+        fr r10 = (fr) r9.obj;
+        int r11 = r9.arg1;
+        er r7 = r10.i;
+        AccessibilityManager r12 = r10.u;
+        if (r12 == null) goto L21;
+        List<AccessibilityServiceInfo> r13 = r12.getEnabledAccessibilityServiceList(1);
+        if (r13 != null) goto L19;
+    L29:
+        r10.c();
+        return true;
+    L19:
+        if (r13.isEmpty() == false) goto L29;
+    L21:
+        if (r7.getVisibility() != 0) goto L29;
+        if (r7.getAnimationMode() != 1) goto L25;
+        ValueAnimator r14 = ValueAnimator.ofFloat(new float[]{1.0f, 0.0f});
+        r14.setInterpolator(r10.d);
+        r14.addUpdateListener(new xq(r10, r5 == true ? 1 : 0, r4 == true ? 1 : 0));
+        r14.setDuration(r10.b);
+        r14.addListener(new wq(r10, r11, r3 == true ? 1 : 0));
+        r14.start();
+        return true;
+    L25:
+        ValueAnimator r15 = new ValueAnimator();
+        er r16 = r10.i;
+        int r17 = r16.getHeight();
+        ViewGroup.LayoutParams r18 = r16.getLayoutParams();
+        if ((r18 instanceof ViewGroup.MarginLayoutParams) == false) goto L28;
+        r17 = r17 + ((ViewGroup.MarginLayoutParams) r18).bottomMargin;
+    L28:
+        r15.setIntValues(new int[]{0, r17});
+        r15.setInterpolator(r10.e);
+        r15.setDuration(r10.c);
+        r15.addListener(new wq(r10, r11, r6));
+        r15.addUpdateListener(new xq(r10, 3, r2 == true ? 1 : 0));
+        r15.start();
+        return true;
+    L48:
+        return false;
+    L30:
+        fr r19 = (fr) r9.obj;
+        er r20 = r19.i;
+        ViewGroup r21 = r19.g;
+        if (r20.getParent() != null) goto L42;
+        ViewGroup.LayoutParams r22 = r20.getLayoutParams();
+        if ((r22 instanceof ge0) == false) goto L37;
+        ge0 r23 = (ge0) r22;
+        BaseTransientBottomBar$Behavior r24 = new BaseTransientBottomBar$Behavior();
+        d34 r25 = r24.v;
+        r25.getClass();
+        r25.o = r19.v;
+        r24.o = new zg5(r19);
+        r23.b(r24);
+        if (r19.b() != null) goto L37;
+        r23.g = 80;
+    L37:
+        r20.x = true;
+        r21.addView(r20);
+        r20.x = false;
+        if (r19.b() == null) goto L41;
+        int[] r26 = new int[2];
+        r19.b().getLocationOnScreen(r26);
+        int r27 = r26[1];
+        int[] r28 = new int[2];
+        r21.getLocationOnScreen(r28);
+        r1 = (r21.getHeight() + r28[1]) - r27;
+    L41:
+        r19.q = r1;
+        r19.g();
+        r20.setVisibility(4);
+    L42:
+        WeakHashMap r29 = j65.a;
+        if (r20.isLaidOut() == false) goto L45;
+        r19.f();
+        return true;
+    L45:
+        r19.t = true;
+        return true;
+    L5:
+        if (r9.what != 1) goto L8;
+        ((q04) r9.obj).b();
+        return true;
+    L8:
+        return false;
     }
 }

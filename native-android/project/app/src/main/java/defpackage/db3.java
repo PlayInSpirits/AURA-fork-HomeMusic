@@ -5,38 +5,43 @@ import java.security.MessageDigest;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class db3 implements f42 {
-    public final yx b = new yx(0);
+    public final yx b;
 
-    @Override // defpackage.f42
-    public final void b(MessageDigest messageDigest) {
-        int i = 0;
-        while (true) {
-            yx yxVar = this.b;
-            if (i >= yxVar.p) {
-                return;
-            }
-            ab3 ab3Var = (ab3) yxVar.f(i);
-            Object objJ = this.b.j(i);
-            za3 za3Var = ab3Var.b;
-            if (ab3Var.d == null) {
-                ab3Var.d = ab3Var.c.getBytes(f42.a);
-            }
-            za3Var.e(ab3Var.d, objJ, messageDigest);
-            i++;
-        }
-    }
-
-    public final Object c(ab3 ab3Var) {
-        yx yxVar = this.b;
-        return yxVar.containsKey(ab3Var) ? yxVar.get(ab3Var) : ab3Var.a;
+    public db3() {
+        this.b = new yx(0);
     }
 
     @Override // defpackage.f42
-    public final boolean equals(Object obj) {
-        if (obj instanceof db3) {
-            return this.b.equals(((db3) obj).b);
-        }
+    public final void b(MessageDigest r7) {
+        int r0 = 0;
+    L3:
+        yx r1 = this.b;
+        if (r0 >= r1.p) goto L9;
+        ab3 r2 = (ab3) r1.f(r0);
+        Object r3 = this.b.j(r0);
+        za3 r4 = r2.b;
+        if (r2.d != null) goto L8;
+        r2.d = r2.c.getBytes(f42.a);
+    L8:
+        r4.e(r2.d, r3, r7);
+        r0 = r0 + 1;
+        goto L3
+    }
+
+    public final Object c(ab3 r2) {
+        yx r1 = this.b;
+        if (r1.containsKey(r2) == false) goto L7;
+        return r1.get(r2);
+    L7:
+        return r2.a;
+    }
+
+    @Override // defpackage.f42
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof db3) == true) goto L5;
         return false;
+    L5:
+        return this.b.equals(((db3) r2).b);
     }
 
     @Override // defpackage.f42

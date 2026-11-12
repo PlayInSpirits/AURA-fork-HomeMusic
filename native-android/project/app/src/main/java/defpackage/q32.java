@@ -2,7 +2,6 @@ package defpackage;
 
 import java.io.Closeable;
 import java.io.Flushable;
-import java.io.IOException;
 import java.io.Writer;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -15,9 +14,9 @@ import java.util.regex.Pattern;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class q32 implements Closeable, Flushable {
-    public static final Pattern v = Pattern.compile("-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][-+]?[0-9]+)?");
-    public static final String[] w = new String[128];
-    public static final String[] x;
+    public static final Pattern v = null;
+    public static final String[] w = null;
+    public static final String[] x = null;
     public final Writer n;
     public int[] o;
     public int p;
@@ -28,295 +27,347 @@ public class q32 implements Closeable, Flushable {
     public boolean u;
 
     static {
-        for (int i = 0; i <= 31; i++) {
-            w[i] = String.format("\\u%04x", Integer.valueOf(i));
-        }
-        String[] strArr = w;
-        strArr[34] = "\\\"";
-        strArr[92] = "\\\\";
-        strArr[9] = "\\t";
-        strArr[8] = "\\b";
-        strArr[10] = "\\n";
-        strArr[13] = "\\r";
-        strArr[12] = "\\f";
-        String[] strArr2 = (String[]) strArr.clone();
-        x = strArr2;
-        strArr2[60] = "\\u003c";
-        strArr2[62] = "\\u003e";
-        strArr2[38] = "\\u0026";
-        strArr2[61] = "\\u003d";
-        strArr2[39] = "\\u0027";
+        v = Pattern.compile("-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][-+]?[0-9]+)?");
+        w = new String[128];
+        int r0 = 0;
+    L4:
+        if (r0 > 31) goto L6;
+        w[r0] = String.format("\\u%04x", new Object[]{Integer.valueOf(r0)});
+        r0 = r0 + 1;
+        goto L4
+    L6:
+        String[] r1 = w;
+        r1[34] = "\\\"";
+        r1[92] = "\\\\";
+        r1[9] = "\\t";
+        r1[8] = "\\b";
+        r1[10] = "\\n";
+        r1[13] = "\\r";
+        r1[12] = "\\f";
+        String[] r2 = (String[]) r1.clone();
+        x = r2;
+        r2[60] = "\\u003c";
+        r2[62] = "\\u003e";
+        r2[38] = "\\u0026";
+        r2[61] = "\\u003d";
+        r2[39] = "\\u0027";
     }
 
-    public q32(Writer writer) {
-        int[] iArr = new int[32];
-        this.o = iArr;
+    public q32(Writer r4) {
+        int[] r0 = new int[32];
+        this.o = r0;
         this.p = 0;
-        if (iArr.length == 0) {
-            this.o = Arrays.copyOf(iArr, 0);
-        }
-        int[] iArr2 = this.o;
-        int i = this.p;
-        this.p = i + 1;
-        iArr2[i] = 6;
+        if (r0.length != 0) goto L5;
+        this.o = Arrays.copyOf(r0, 0);
+    L5:
+        int[] r1 = this.o;
+        int r2 = this.p;
+        this.p = r2 + 1;
+        r1[r2] = 6;
         this.q = ":";
         this.u = true;
-        Objects.requireNonNull(writer, "out == null");
-        this.n = writer;
+        Objects.requireNonNull(r4, "out == null");
+        this.n = r4;
     }
 
-    public q32 F() throws IOException {
-        if (this.t != null) {
-            if (!this.u) {
-                this.t = null;
-                return this;
-            }
-            Y();
-        }
+    public q32 F() {
+        if (this.t != null) goto L5;
+    L9:
         b();
         this.n.write("null");
+        return this;
+    L5:
+        if (this.u == false) goto L7;
+        Y();
+        goto L9
+    L7:
+        this.t = null;
         return this;
     }
 
     public final int H() {
-        int i = this.p;
-        if (i != 0) {
-            return this.o[i - 1];
-        }
+        int r0 = this.p;
+        if (r0 != 0) goto L5;
         kf2.o("JsonWriter is closed.");
         return 0;
+    L5:
+        return this.o[r0 - 1];
     }
 
-    /* JADX WARN: Code duplicated, block: B:20:0x0034  */
-    public final void J(String str) throws IOException {
-        String str2;
-        String[] strArr = this.s ? x : w;
-        Writer writer = this.n;
-        writer.write(34);
-        int length = str.length();
-        int i = 0;
-        for (int i2 = 0; i2 < length; i2++) {
-            char cCharAt = str.charAt(i2);
-            if (cCharAt < 128) {
-                str2 = strArr[cCharAt];
-                if (str2 != null) {
-                    if (i < i2) {
-                        writer.write(str, i, i2 - i);
-                    }
-                    writer.write(str2);
-                    i = i2 + 1;
-                }
-            } else {
-                if (cCharAt == 8232) {
-                    str2 = "\\u2028";
-                } else if (cCharAt == 8233) {
-                    str2 = "\\u2029";
-                }
-                if (i < i2) {
-                    writer.write(str, i, i2 - i);
-                }
-                writer.write(str2);
-                i = i2 + 1;
-            }
-        }
-        if (i < length) {
-            writer.write(str, i, length - i);
-        }
-        writer.write(34);
+    public final void J(String r8) {
+        if (this.s == false) goto L5;
+        String[] r0 = x;
+    L6:
+        Writer r7 = this.n;
+        r7.write(34);
+        int r2 = r8.length();
+        int r3 = 0;
+        int r4 = 0;
+    L7:
+        if (r3 >= r2) goto L23;
+        char r5 = r8.charAt(r3);
+        if (r5 >= 128) goto L14;
+        String r6 = r0[r5];
+        if (r6 == null) goto L22;
+    L19:
+        if (r4 >= r3) goto L21;
+        r7.write(r8, r4, r3 - r4);
+    L21:
+        r7.write(r6);
+        r4 = r3 + 1;
+    L22:
+        r3 = r3 + 1;
+        goto L7
+    L14:
+        if (r5 != 8232) goto L17;
+        r6 = "\\u2028";
+        goto L19
+    L17:
+        if (r5 != 8233) goto L22;
+        r6 = "\\u2029";
+        goto L19
+    L23:
+        if (r4 >= r2) goto L25;
+        r7.write(r8, r4, r2 - r4);
+    L25:
+        r7.write(34);
+        return;
+    L5:
+        r0 = w;
+        goto L6
     }
 
-    public void K(double d) throws IOException {
+    public void K(double r3) {
         Y();
-        if (this.r || !(Double.isNaN(d) || Double.isInfinite(d))) {
-            b();
-            this.n.append((CharSequence) Double.toString(d));
-        } else {
-            throw new IllegalArgumentException("Numeric values must be finite, but was " + d);
-        }
+        if (this.r == false) goto L5;
+    L11:
+        b();
+        this.n.append(Double.toString(r3));
+        return;
+    L5:
+        if (Double.isNaN(r3) == true) goto L10;
+        if (Double.isInfinite(r3) == false) goto L11;
+    L10:
+        throw new IllegalArgumentException("Numeric values must be finite, but was " + r3);
     }
 
-    public void M(long j) throws IOException {
+    public void M(long r1) {
         Y();
         b();
-        this.n.write(Long.toString(j));
+        this.n.write(Long.toString(r1));
     }
 
-    public void R(Boolean bool) throws IOException {
-        if (bool == null) {
-            F();
-            return;
-        }
+    public void R(Boolean r1) {
+        if (r1 != null) goto L5;
+        F();
+        return;
+    L5:
         Y();
         b();
-        this.n.write(bool.booleanValue() ? "true" : "false");
+        if (r1.booleanValue() == false) goto L8;
+        String r2 = "true";
+    L9:
+        this.n.write(r2);
+        return;
+    L8:
+        r2 = "false";
+        goto L9
     }
 
-    public void T(Number number) throws IOException {
-        if (number == null) {
-            F();
-            return;
-        }
+    public void T(Number r3) {
+        if (r3 != null) goto L5;
+        F();
+        return;
+    L5:
         Y();
-        String string = number.toString();
-        if (!string.equals("-Infinity") && !string.equals("Infinity") && !string.equals("NaN")) {
-            Class<?> cls = number.getClass();
-            if (cls != Integer.class && cls != Long.class && cls != Double.class && cls != Float.class && cls != Byte.class && cls != Short.class && cls != BigDecimal.class && cls != BigInteger.class && cls != AtomicInteger.class && cls != AtomicLong.class && !v.matcher(string).matches()) {
-                tb4.h("String created by ", cls, " is not a valid JSON number: ", string);
-                return;
-            }
-        } else if (!this.r) {
-            kf2.n("Numeric values must be finite, but was ".concat(string));
-            return;
-        }
+        String r0 = r3.toString();
+        if (r0.equals("-Infinity") == true) goto L39;
+        if (r0.equals("Infinity") == true) goto L39;
+        if (r0.equals("NaN") == true) goto L39;
+        Class<?> r4 = r3.getClass();
+        if (r4 != Integer.class) goto L15;
+    L40:
         b();
-        this.n.append((CharSequence) string);
+        this.n.append(r0);
+        return;
+    L15:
+        if (r4 == Long.class) goto L40;
+        if (r4 == Double.class) goto L40;
+        if (r4 == Float.class) goto L40;
+        if (r4 == Byte.class) goto L40;
+        if (r4 == Short.class) goto L40;
+        if (r4 == BigDecimal.class) goto L40;
+        if (r4 == BigInteger.class) goto L40;
+        if (r4 == AtomicInteger.class) goto L40;
+        if (r4 == AtomicLong.class) goto L40;
+        if (v.matcher(r0).matches() == true) goto L40;
+        tb4.h("String created by ", r4, " is not a valid JSON number: ", r0);
+        return;
+    L39:
+        if (this.r == true) goto L40;
+        kf2.n("Numeric values must be finite, but was ".concat(r0));
     }
 
-    public void W(String str) throws IOException {
-        if (str == null) {
-            F();
-            return;
-        }
+    public void W(String r1) {
+        if (r1 != null) goto L5;
+        F();
+        return;
+    L5:
         Y();
         b();
-        J(str);
+        J(r1);
     }
 
-    public void X(boolean z) throws IOException {
+    public void X(boolean r1) {
         Y();
         b();
-        this.n.write(z ? "true" : "false");
+        if (r1 == false) goto L5;
+        String r2 = "true";
+    L6:
+        this.n.write(r2);
+        return;
+    L5:
+        r2 = "false";
+        goto L6
     }
 
-    public final void Y() throws IOException {
-        if (this.t != null) {
-            int iH = H();
-            if (iH == 5) {
-                this.n.write(44);
-            } else if (iH != 3) {
-                kf2.o("Nesting problem.");
-                return;
-            }
-            v();
-            this.o[this.p - 1] = 4;
-            J(this.t);
-            this.t = null;
-        }
+    public final void Y() {
+        if (this.t == null) goto L13;
+        int r0 = H();
+        if (r0 != 5) goto L8;
+        this.n.write(44);
+    L9:
+        v();
+        this.o[this.p - 1] = 4;
+        J(this.t);
+        this.t = null;
+        return;
+    L8:
+        if (r0 == 3) goto L9;
+        kf2.o("Nesting problem.");
+        return;
     }
 
-    public final void b() throws IOException {
-        int iH = H();
-        if (iH == 1) {
-            this.o[this.p - 1] = 2;
-            v();
-            return;
-        }
-        Writer writer = this.n;
-        if (iH == 2) {
-            writer.append(',');
-            v();
-            return;
-        }
-        if (iH == 4) {
-            writer.append((CharSequence) this.q);
-            this.o[this.p - 1] = 5;
-            return;
-        }
-        if (iH != 6) {
-            if (iH != 7) {
-                kf2.o("Nesting problem.");
-                return;
-            } else if (!this.r) {
-                kf2.o("JSON must have only one top-level value.");
-                return;
-            }
-        }
+    public final void b() {
+        int r0 = H();
+        if (r0 == 1) goto L24;
+        Writer r3 = this.n;
+        if (r0 != 2) goto L7;
+        r3.append(',');
+        v();
+        return;
+    L7:
+        if (r0 != 4) goto L9;
+        r3.append(this.q);
+        this.o[this.p - 1] = 5;
+        return;
+    L9:
+        if (r0 == 6) goto L18;
+        if (r0 == 7) goto L12;
+        kf2.o("Nesting problem.");
+        return;
+    L12:
+        if (this.r == true) goto L18;
+        kf2.o("JSON must have only one top-level value.");
+        return;
+    L18:
         this.o[this.p - 1] = 7;
+        return;
+    L24:
+        this.o[this.p - 1] = 2;
+        v();
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
-    public void close() throws IOException {
+    public void close() {
         this.n.close();
-        int i = this.p;
-        if (i > 1 || (i == 1 && this.o[i - 1] != 7)) {
-            mj0.i("Incomplete document");
-        } else {
-            this.p = 0;
-        }
+        int r0 = this.p;
+        if (r0 > 1) goto L9;
+        if (r0 == 1) goto L6;
+    L7:
+        this.p = 0;
+        return;
+    L6:
+        if (this.o[r0 - 1] == 7) goto L7;
+    L9:
+        mj0.i("Incomplete document");
     }
 
-    public void f() throws IOException {
+    public void f() {
         Y();
         b();
-        int i = this.p;
-        int[] iArr = this.o;
-        if (i == iArr.length) {
-            this.o = Arrays.copyOf(iArr, i * 2);
-        }
-        int[] iArr2 = this.o;
-        int i2 = this.p;
-        this.p = i2 + 1;
-        iArr2[i2] = 1;
+        int r0 = this.p;
+        int[] r1 = this.o;
+        if (r0 != r1.length) goto L5;
+        this.o = Arrays.copyOf(r1, r0 * 2);
+    L5:
+        int[] r2 = this.o;
+        int r3 = this.p;
+        this.p = r3 + 1;
+        r2[r3] = 1;
         this.n.write(91);
     }
 
-    public void flush() throws IOException {
-        if (this.p != 0) {
-            this.n.flush();
-        } else {
-            kf2.o("JsonWriter is closed.");
-        }
+    public void flush() {
+        if (this.p == 0) goto L6;
+        this.n.flush();
+        return;
+    L6:
+        kf2.o("JsonWriter is closed.");
     }
 
-    public void j() throws IOException {
+    public void j() {
         Y();
         b();
-        int i = this.p;
-        int[] iArr = this.o;
-        if (i == iArr.length) {
-            this.o = Arrays.copyOf(iArr, i * 2);
-        }
-        int[] iArr2 = this.o;
-        int i2 = this.p;
-        this.p = i2 + 1;
-        iArr2[i2] = 3;
+        int r0 = this.p;
+        int[] r1 = this.o;
+        if (r0 != r1.length) goto L5;
+        this.o = Arrays.copyOf(r1, r0 * 2);
+    L5:
+        int[] r2 = this.o;
+        int r3 = this.p;
+        this.p = r3 + 1;
+        r2[r3] = 3;
         this.n.write(123);
     }
 
-    public final void n(int i, int i2, char c) throws IOException {
-        int iH = H();
-        if (iH != i2 && iH != i) {
-            kf2.o("Nesting problem.");
-            return;
-        }
-        if (this.t != null) {
-            nz2.x(this.t, "Dangling name: ");
-            return;
-        }
+    public final void n(int r2, int r3, char r4) {
+        int r0 = H();
+        if (r0 == r3) goto L9;
+        if (r0 == r2) goto L9;
+        kf2.o("Nesting problem.");
+        return;
+    L9:
+        if (this.t != null) goto L15;
         this.p--;
-        if (iH == i2) {
-            v();
-        }
-        this.n.write(c);
+        if (r0 != r3) goto L13;
+        v();
+    L13:
+        this.n.write(r4);
+        return;
+    L15:
+        nz2.x(this.t, "Dangling name: ");
     }
 
-    public void q() throws IOException {
+    public void q() {
         n(1, 2, ']');
     }
 
-    public void s() throws IOException {
+    public void s() {
         n(3, 5, '}');
     }
 
-    public void u(String str) {
-        Objects.requireNonNull(str, "name == null");
-        if (this.t != null) {
-            tb4.a();
-        } else if (this.p != 0) {
-            this.t = str;
-        } else {
-            kf2.o("JsonWriter is closed.");
-        }
+    public void u(String r2) {
+        Objects.requireNonNull(r2, "name == null");
+        if (this.t == null) goto L5;
+        tb4.a();
+        return;
+    L5:
+        if (this.p == 0) goto L8;
+        this.t = r2;
+        return;
+    L8:
+        kf2.o("JsonWriter is closed.");
     }
 
     public final void v() {

@@ -10,30 +10,31 @@ public final class nq1 extends q42 implements gf1 {
     public final /* synthetic */ tv p;
     public final /* synthetic */ int q;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public nq1(rq1 rq1Var, int i, tv tvVar, int i2, boolean z) {
+    public nq1(rq1 r1, int r2, tv r3, int r4, boolean r5) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
         super(0);
-        this.n = rq1Var;
-        this.o = i;
-        this.p = tvVar;
-        this.q = i2;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        rq1 rq1Var = this.n;
-        int i = this.o;
-        tv tvVar = this.p;
-        int i2 = this.q;
-        try {
-            rq1Var.x.getClass();
-            tvVar.skip(i2);
-            rq1Var.J.u(i, b21.CANCEL);
-            synchronized (rq1Var) {
-                rq1Var.L.remove(Integer.valueOf(i));
-            }
-        } catch (IOException unused) {
-        }
+        rq1 r0 = this.n;
+        int r1 = this.o;
+        tv r2 = this.p;
+        int r5 = this.q;
+        r0.x.getClass();     // Catch: IOException -> L13
+        r2.skip(r5);     // Catch: IOException -> L13
+        r0.J.u(r1, b21.u);     // Catch: IOException -> L13
+        monitor-enter(r0);     // Catch: IOException -> L13
+        r0.L.remove(Integer.valueOf(r1));     // Catch: Throwable -> L8
+        monitor-exit(r0);     // Catch: IOException -> L13
+        goto L12
+    L8:
+        th = move-exception;
+        throw th;     // Catch: IOException -> L13
+    L12:
         return j15.a;
     }
 }

@@ -12,10 +12,10 @@ public abstract class bi5 {
         bi5.class.getClassLoader();
     }
 
-    public static Parcelable a(Parcel parcel, Parcelable.Creator creator) {
-        if (parcel.readInt() == 0) {
-            return null;
-        }
-        return (Parcelable) creator.createFromParcel(parcel);
+    public static Parcelable a(Parcel r1, Parcelable.Creator r2) {
+        if (r1.readInt() != 0) goto L7;
+        return null;
+    L7:
+        return (Parcelable) r2.createFromParcel(r1);
     }
 }

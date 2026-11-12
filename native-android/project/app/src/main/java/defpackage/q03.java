@@ -8,234 +8,281 @@ public final class q03 {
     public Object[] a;
     public int b;
 
-    public q03(int i) {
-        this.a = i == 0 ? t73.a : new Object[i];
+    public q03(int r1) {
+        if (r1 != 0) goto L5;
+        Object[] r2 = t73.a;
+    L6:
+        this.a = r2;
+        return;
+    L5:
+        r2 = new Object[r1];
+        goto L6
     }
 
-    public final void a(Object obj) {
-        int i = this.b + 1;
-        Object[] objArr = this.a;
-        if (objArr.length < i) {
-            m(i, objArr);
-        }
-        Object[] objArr2 = this.a;
-        int i2 = this.b;
-        objArr2[i2] = obj;
-        this.b = i2 + 1;
+    public final void a(Object r4) {
+        int r0 = this.b + 1;
+        Object[] r1 = this.a;
+        if (r1.length >= r0) goto L5;
+        m(r0, r1);
+    L5:
+        Object[] r2 = this.a;
+        int r3 = this.b;
+        r2[r3] = r4;
+        this.b = r3 + 1;
     }
 
-    public final void b(q03 q03Var) {
-        q03Var.getClass();
-        if (q03Var.h()) {
-            return;
-        }
-        int i = this.b + q03Var.b;
-        Object[] objArr = this.a;
-        if (objArr.length < i) {
-            m(i, objArr);
-        }
-        ti.Z(this.b, 0, q03Var.b, q03Var.a, this.a);
-        this.b += q03Var.b;
+    public final void b(q03 r6) {
+        r6.getClass();
+        if (r6.h() == true) goto L10;
+        int r0 = this.b + r6.b;
+        Object[] r1 = this.a;
+        if (r1.length >= r0) goto L8;
+        m(r0, r1);
+    L8:
+        Object[] r2 = this.a;
+        ti.Z(this.b, 0, r6.b, r6.a, r2);
+        this.b += r6.b;
+        return;
     }
 
-    public final void c(List list) {
-        if (list.isEmpty()) {
-            return;
-        }
-        int i = this.b;
-        int size = list.size() + i;
-        Object[] objArr = this.a;
-        if (objArr.length < size) {
-            m(size, objArr);
-        }
-        Object[] objArr2 = this.a;
-        int size2 = list.size();
-        for (int i2 = 0; i2 < size2; i2++) {
-            objArr2[i2 + i] = list.get(i2);
-        }
-        this.b = list.size() + this.b;
+    public final void c(List r7) {
+        if (r7.isEmpty() == true) goto L14;
+        int r0 = this.b;
+        int r1 = r7.size() + r0;
+        Object[] r2 = this.a;
+        if (r2.length >= r1) goto L8;
+        m(r1, r2);
+    L8:
+        Object[] r3 = this.a;
+        int r4 = r7.size();
+        int r5 = 0;
+    L9:
+        if (r5 >= r4) goto L11;
+        r3[r5 + r0] = r7.get(r5);
+        r5 = r5 + 1;
+        goto L9
+    L11:
+        int r6 = this.b;
+        this.b = r7.size() + r6;
+        return;
     }
 
     public final void d() {
-        ti.f0(0, this.b, null, this.a);
+        Object[] r0 = this.a;
+        ti.f0(0, this.b, null, r0);
         this.b = 0;
     }
 
     public final Object e() {
-        if (!h()) {
-            return this.a[0];
-        }
+        if (h() == false) goto L5;
         kf2.m("ObjectList is empty.");
         return null;
+    L5:
+        return this.a[0];
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof q03) {
-            q03 q03Var = (q03) obj;
-            int i = q03Var.b;
-            int i2 = this.b;
-            if (i == i2) {
-                Object[] objArr = this.a;
-                Object[] objArr2 = q03Var.a;
-                j02 j02VarG0 = gb.g0(0, i2);
-                int i3 = j02VarG0.n;
-                int i4 = j02VarG0.o;
-                if (i3 > i4) {
-                    return true;
-                }
-                while (h12.c(objArr[i3], objArr2[i3])) {
-                    if (i3 == i4) {
-                        return true;
-                    }
-                    i3++;
-                }
-                return false;
-            }
-        }
+    public final boolean equals(Object r6) {
+        if ((r6 instanceof q03) == false) goto L16;
+        q03 r7 = (q03) r6;
+        int r0 = r7.b;
+        int r2 = this.b;
+        if (r0 != r2) goto L16;
+        Object[] r5 = this.a;
+        Object[] r8 = r7.a;
+        j02 r1 = gb.g0(0, r2);
+        int r3 = r1.n;
+        int r4 = r1.o;
+        if (r3 <= r4) goto L10;
+        return true;
+    L10:
+        if (h12.c(r5[r3], r8[r3]) == false) goto L11;
+        if (r3 == r4) goto L19;
+        r3 = r3 + 1;
+        goto L10
+    L19:
+        return true;
+    L11:
+        return false;
+    L16:
         return false;
     }
 
-    public final Object f(int i) {
-        if (i >= 0 && i < this.b) {
-            return this.a[i];
-        }
-        o(i);
+    public final Object f(int r2) {
+        if (r2 >= 0) goto L4;
+    L7:
+        o(r2);
         throw null;
+    L4:
+        if (r2 >= this.b) goto L7;
+        return this.a[r2];
     }
 
-    public final int g(Object obj) {
-        Object[] objArr = this.a;
-        int i = 0;
-        if (obj == null) {
-            int i2 = this.b;
-            while (i < i2) {
-                if (objArr[i] == null) {
-                    return i;
-                }
-                i++;
-            }
-            return -1;
-        }
-        int i3 = this.b;
-        while (i < i3) {
-            if (obj.equals(objArr[i])) {
-                return i;
-            }
-            i++;
-        }
+    public final int g(Object r4) {
+        Object[] r0 = this.a;
+        int r1 = 0;
+        if (r4 != null) goto L10;
+        int r3 = this.b;
+    L5:
+        if (r1 >= r3) goto L16;
+        if (r0[r1] == null) goto L8;
+        r1 = r1 + 1;
+        goto L5
+    L8:
+        return r1;
+    L16:
+        return -1;
+    L10:
+        int r5 = this.b;
+    L11:
+        if (r1 >= r5) goto L22;
+        if (r4.equals(r0[r1]) == true) goto L14;
+        r1 = r1 + 1;
+        goto L11
+    L14:
+        return r1;
+    L22:
         return -1;
     }
 
     public final boolean h() {
-        return this.b == 0;
+        if (this.b != 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     public final int hashCode() {
-        Object[] objArr = this.a;
-        int i = this.b;
-        int iHashCode = 0;
-        for (int i2 = 0; i2 < i; i2++) {
-            Object obj = objArr[i2];
-            iHashCode += (obj != null ? obj.hashCode() : 0) * 31;
-        }
-        return iHashCode;
+        Object[] r0 = this.a;
+        int r5 = this.b;
+        int r2 = 0;
+        int r3 = 0;
+    L3:
+        if (r2 >= r5) goto L9;
+        Object r4 = r0[r2];
+        if (r4 == null) goto L7;
+        int r6 = r4.hashCode();
+    L8:
+        r3 = r3 + (r6 * 31);
+        r2 = r2 + 1;
+        goto L3
+    L7:
+        r6 = 0;
+        goto L8
+    L9:
+        return r3;
     }
 
     public final boolean i() {
-        return this.b != 0;
-    }
-
-    public final boolean j(Object obj) {
-        int iG = g(obj);
-        if (iG < 0) {
-            return false;
-        }
-        k(iG);
+        if (this.b == 0) goto L6;
         return true;
+    L6:
+        return false;
     }
 
-    public final Object k(int i) {
-        int i2;
-        if (i < 0 || i >= (i2 = this.b)) {
-            o(i);
-            throw null;
-        }
-        Object[] objArr = this.a;
-        Object obj = objArr[i];
-        if (i != i2 - 1) {
-            ti.Z(i, i + 1, i2, objArr, objArr);
-        }
-        int i3 = this.b - 1;
-        this.b = i3;
-        objArr[i3] = null;
-        return obj;
+    public final boolean j(Object r1) {
+        int r2 = g(r1);
+        if (r2 < 0) goto L6;
+        k(r2);
+        return true;
+    L6:
+        return false;
     }
 
-    public final void l(int i, int i2) {
-        int i3;
-        if (i < 0 || i > (i3 = this.b) || i2 < 0 || i2 > i3) {
-            StringBuilder sbT = b11.t("Start (", ") and end (", i, i2, ") must be in 0..");
-            sbT.append(this.b);
-            throw new IndexOutOfBoundsException(sbT.toString());
-        }
-        if (i2 < i) {
-            throw new IllegalArgumentException("Start (" + i + ") is more than end (" + i2 + ')');
-        }
-        if (i2 != i) {
-            if (i2 < i3) {
-                Object[] objArr = this.a;
-                ti.Z(i, i2, i3, objArr, objArr);
-            }
-            int i4 = this.b;
-            int i5 = i4 - (i2 - i);
-            ti.f0(i5, i4, null, this.a);
-            this.b = i5;
-        }
+    public final Object k(int r6) {
+        if (r6 < 0) goto L11;
+        int r1 = this.b;
+        if (r6 >= r1) goto L11;
+        Object[] r2 = this.a;
+        Object r3 = r2[r6];
+        if (r6 == (r1 - 1)) goto L9;
+        ti.Z(r6, r6 + 1, r1, r2, r2);
+    L9:
+        int r7 = this.b - 1;
+        this.b = r7;
+        r2[r7] = null;
+        return r3;
+    L11:
+        o(r6);
+        throw null;
     }
 
-    public final void m(int i, Object[] objArr) {
-        objArr.getClass();
-        int length = objArr.length;
-        Object[] objArr2 = new Object[Math.max(i, (length * 3) / 2)];
-        ti.Z(0, 0, length, objArr, objArr2);
-        this.a = objArr2;
+    public final void l(int r4, int r5) {
+        if (r4 < 0) goto L16;
+        int r1 = this.b;
+        if (r4 > r1) goto L16;
+        if (r5 < 0) goto L16;
+        if (r5 > r1) goto L16;
+        if (r5 < r4) goto L15;
+        if (r5 == r4) goto L18;
+        if (r5 >= r1) goto L12;
+        Object[] r0 = this.a;
+        ti.Z(r4, r5, r1, r0, r0);
+    L12:
+        int r2 = this.b;
+        int r6 = r2 - (r5 - r4);
+        ti.f0(r6, r2, null, this.a);
+        this.b = r6;
+        return;
+    L18:
+        return;
+    L15:
+        throw new IllegalArgumentException("Start (" + r4 + ") is more than end (" + r5 + ')');
+    L16:
+        StringBuilder r7 = b11.t("Start (", ") and end (", r4, r5, ") must be in 0..");
+        r7.append(this.b);
+        throw new IndexOutOfBoundsException(r7.toString());
     }
 
-    public final Object n(int i, Object obj) {
-        if (i < 0 || i >= this.b) {
-            o(i);
-            throw null;
-        }
-        Object[] objArr = this.a;
-        Object obj2 = objArr[i];
-        objArr[i] = obj;
-        return obj2;
+    public final void m(int r3, Object[] r4) {
+        r4.getClass();
+        int r0 = r4.length;
+        Object[] r5 = new Object[Math.max(r3, (r0 * 3) / 2)];
+        ti.Z(0, 0, r0, r4, r5);
+        this.a = r5;
     }
 
-    public final void o(int i) {
-        StringBuilder sbJ = f34.j(i, "Index ", " must be in 0..");
-        sbJ.append(this.b - 1);
-        throw new IndexOutOfBoundsException(sbJ.toString());
+    public final Object n(int r2, Object r3) {
+        if (r2 >= 0) goto L4;
+    L7:
+        o(r2);
+        throw null;
+    L4:
+        if (r2 >= this.b) goto L7;
+        Object[] r1 = this.a;
+        Object r0 = r1[r2];
+        r1[r2] = r3;
+        return r0;
+    }
+
+    public final void o(int r3) {
+        StringBuilder r4 = f34.j(r3, "Index ", " must be in 0..");
+        r4.append(this.b - 1);
+        throw new IndexOutOfBoundsException(r4.toString());
     }
 
     public final String toString() {
-        ir0 ir0Var = new ir0(4, this);
-        StringBuilder sb = new StringBuilder("[");
-        Object[] objArr = this.a;
-        int i = this.b;
-        for (int i2 = 0; i2 < i; i2++) {
-            Object obj = objArr[i2];
-            if (i2 == -1) {
-                sb.append((CharSequence) "...");
-                return sb.toString();
-            }
-            if (i2 != 0) {
-                sb.append((CharSequence) ", ");
-            }
-            sb.append((CharSequence) ir0Var.invoke(obj));
-        }
-        sb.append((CharSequence) "]");
-        return sb.toString();
+        ir0 r0 = new ir0(4, this);
+        StringBuilder r1 = new StringBuilder("[");
+        Object[] r2 = this.a;
+        int r6 = this.b;
+        int r3 = 0;
+    L3:
+        if (r3 >= r6) goto L10;
+        Object r4 = r2[r3];
+        if (r3 == (-1)) goto L6;
+        if (r3 == 0) goto L9;
+        r1.append(", ");
+    L9:
+        r1.append((CharSequence) r0.invoke(r4));
+        r3 = r3 + 1;
+        goto L3
+    L6:
+        r1.append("...");
+    L12:
+        return r1.toString();
+    L10:
+        r1.append("]");
+        goto L12
     }
 
     public /* synthetic */ q03() {

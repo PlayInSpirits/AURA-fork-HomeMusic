@@ -6,13 +6,13 @@ import java.util.Objects;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class vl1 extends lu3 {
-    public static final String d;
-    public static final String e;
+    public static final String d = null;
+    public static final String e = null;
     public final boolean b;
     public final boolean c;
 
     static {
-        String str = f35.a;
+        String r0 = f35.a;
         d = Integer.toString(1, 36);
         e = Integer.toString(2, 36);
     }
@@ -29,27 +29,33 @@ public final class vl1 extends lu3 {
 
     @Override // defpackage.lu3
     public final Bundle c() {
-        Bundle bundle = new Bundle();
-        bundle.putInt(lu3.a, 0);
-        bundle.putBoolean(d, this.b);
-        bundle.putBoolean(e, this.c);
-        return bundle;
+        Bundle r0 = new Bundle();
+        r0.putInt(lu3.a, 0);
+        r0.putBoolean(d, this.b);
+        r0.putBoolean(e, this.c);
+        return r0;
     }
 
-    public final boolean equals(Object obj) {
-        if (!(obj instanceof vl1)) {
-            return false;
-        }
-        vl1 vl1Var = (vl1) obj;
-        return this.c == vl1Var.c && this.b == vl1Var.b;
+    public final boolean equals(Object r3) {
+        if ((r3 instanceof vl1) == false) goto L14;
+        vl1 r4 = (vl1) r3;
+        if (this.c == r4.c) goto L8;
+        return false;
+    L8:
+        if (this.b != r4.b) goto L13;
+        return true;
+    L13:
+        return false;
+    L14:
+        return false;
     }
 
     public final int hashCode() {
-        return Objects.hash(Boolean.valueOf(this.b), Boolean.valueOf(this.c));
+        return Objects.hash(new Object[]{Boolean.valueOf(this.b), Boolean.valueOf(this.c)});
     }
 
-    public vl1(boolean z) {
+    public vl1(boolean r2) {
         this.b = true;
-        this.c = z;
+        this.c = r2;
     }
 }

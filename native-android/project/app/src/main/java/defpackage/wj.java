@@ -14,21 +14,21 @@ public class wj extends hd {
     public final k03 f;
     public final k03 g;
 
-    public wj(Application application) {
-        super(application);
+    public wj(Application r2) {
+        super(r2);
         this.f = new k03();
         this.g = new k03();
         this.c = new pa(12);
         this.d = new d34(25);
     }
 
-    public final k03 c(String str) {
+    public final k03 c(String r4) {
         this.c.getClass();
-        k03 k03Var = new k03(null);
-        gp3 gp3VarC = App.f(false).c();
-        gp3VarC.getClass();
+        k03 r3 = new k03(null);
+        gp3 r0 = App.f(false).c();
+        r0.getClass();
         Log.d("BrowsingClient", "getArtistInfo2()");
-        ((ov) gp3VarC.p).m(((pn4) gp3VarC.o).f(), str).enqueue(new q8(k03Var, 1));
-        return k03Var;
+        ((ov) r0.p).m(((pn4) r0.o).f(), r4).enqueue(new q8(r3, 1));
+        return r3;
     }
 }

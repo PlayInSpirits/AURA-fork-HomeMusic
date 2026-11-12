@@ -15,16 +15,18 @@ public final class ru1 implements su1 {
     }
 
     @Override // defpackage.su1
-    public final void k0(ju1 ju1Var, Bundle bundle) {
-        Parcel parcelObtain = Parcel.obtain();
-        try {
-            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaSessionService");
-            parcelObtain.writeStrongInterface(ju1Var);
-            parcelObtain.writeInt(1);
-            bundle.writeToParcel(parcelObtain, 0);
-            this.e.transact(3001, parcelObtain, null, 1);
-        } finally {
-            parcelObtain.recycle();
-        }
+    public final void k0(ju1 r3, Bundle r4) {
+        Parcel r0 = Parcel.obtain();
+        r0.writeInterfaceToken("androidx.media3.session.IMediaSessionService");     // Catch: Throwable -> L6
+        r0.writeStrongInterface(r3);     // Catch: Throwable -> L6
+        r0.writeInt(1);     // Catch: Throwable -> L6
+        r4.writeToParcel(r0, 0);     // Catch: Throwable -> L6
+        this.e.transact(3001, r0, null, 1);     // Catch: Throwable -> L6
+        r0.recycle();
+        return;
+    L6:
+        th = move-exception;
+        r0.recycle();
+        throw th;
     }
 }

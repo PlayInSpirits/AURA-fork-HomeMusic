@@ -6,10 +6,11 @@ import android.graphics.Typeface;
 /* JADX INFO: loaded from: classes.dex */
 public final class n05 implements kl4 {
     public final Object n;
-    public final boolean o = true;
+    public final boolean o;
 
-    public n05(Typeface typeface) {
-        this.n = typeface;
+    public n05(Typeface r1) {
+        this.n = r1;
+        this.o = true;
     }
 
     @Override // defpackage.kl4

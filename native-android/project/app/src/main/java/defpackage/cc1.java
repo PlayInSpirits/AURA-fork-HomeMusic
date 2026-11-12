@@ -1,6 +1,5 @@
 package defpackage;
 
-import java.io.InterruptedIOException;
 import java.util.concurrent.TimeUnit;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -8,9 +7,9 @@ import java.util.concurrent.TimeUnit;
 public final class cc1 extends fu4 {
     public fu4 e;
 
-    public cc1(fu4 fu4Var) {
-        fu4Var.getClass();
-        this.e = fu4Var;
+    public cc1(fu4 r1) {
+        r1.getClass();
+        this.e = r1;
     }
 
     @Override // defpackage.fu4
@@ -29,8 +28,8 @@ public final class cc1 extends fu4 {
     }
 
     @Override // defpackage.fu4
-    public final fu4 d(long j) {
-        return this.e.d(j);
+    public final fu4 d(long r1) {
+        return this.e.d(r1);
     }
 
     @Override // defpackage.fu4
@@ -39,13 +38,13 @@ public final class cc1 extends fu4 {
     }
 
     @Override // defpackage.fu4
-    public final void f() throws InterruptedIOException {
+    public final void f() {
         this.e.f();
     }
 
     @Override // defpackage.fu4
-    public final fu4 g(long j, TimeUnit timeUnit) {
-        timeUnit.getClass();
-        return this.e.g(j, timeUnit);
+    public final fu4 g(long r1, TimeUnit r3) {
+        r3.getClass();
+        return this.e.g(r1, r3);
     }
 }

@@ -21,12 +21,24 @@ import java.util.ArrayList;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class m81 {
+    public static final int A = 0;
+    public static final int B = 0;
+    public static final int[] C = null;
+    public static final int[] D = null;
+    public static final int[] E = null;
+    public static final int[] F = null;
+    public static final int[] G = null;
+    public static final int[] H = null;
+    public static final a61 x = null;
+    public static final int y = 0;
+    public static final int z = 0;
     public bc4 a;
     public n81 b;
     public RippleDrawable c;
     public nt d;
     public RippleDrawable e;
     public boolean f;
+    public boolean g;
     public float h;
     public float i;
     public float j;
@@ -34,187 +46,211 @@ public abstract class m81 {
     public Animator l;
     public zx2 m;
     public zx2 n;
+    public float o;
     public int p;
+    public int q;
     public final FloatingActionButton r;
     public final zh0 s;
-    public static final a61 x = yd.c;
-    public static final int y = R.attr.motionDurationLong2;
-    public static final int z = R.attr.motionEasingEmphasizedInterpolator;
-    public static final int A = R.attr.motionDurationMedium1;
-    public static final int B = R.attr.motionEasingEmphasizedAccelerateInterpolator;
-    public static final int[] C = {android.R.attr.state_pressed, android.R.attr.state_enabled};
-    public static final int[] D = {android.R.attr.state_hovered, android.R.attr.state_focused, android.R.attr.state_enabled};
-    public static final int[] E = {android.R.attr.state_focused, android.R.attr.state_enabled};
-    public static final int[] F = {android.R.attr.state_hovered, android.R.attr.state_enabled};
-    public static final int[] G = {android.R.attr.state_enabled};
-    public static final int[] H = new int[0];
-    public boolean g = true;
-    public float o = 1.0f;
-    public int q = 0;
-    public final Rect t = new Rect();
-    public final RectF u = new RectF();
-    public final RectF v = new RectF();
-    public final Matrix w = new Matrix();
+    public final Rect t;
+    public final RectF u;
+    public final RectF v;
+    public final Matrix w;
 
-    public m81(FloatingActionButton floatingActionButton, zh0 zh0Var) {
-        int i = 0;
-        this.r = floatingActionButton;
-        this.s = zh0Var;
-        hd5 hd5Var = new hd5(20);
-        o81 o81Var = (o81) this;
-        hd5Var.f(d(new k81(o81Var, 1)));
-        hd5Var.f(d(new k81(o81Var, i)));
-        hd5Var.f(d(new k81(o81Var, i)));
-        hd5Var.f(d(new k81(o81Var, i)));
-        hd5Var.f(d(new k81(o81Var, 2)));
-        hd5Var.f(d(new j81(o81Var)));
-        floatingActionButton.getRotation();
+    static {
+        x = yd.c;
+        y = R.attr.motionDurationLong2;
+        z = R.attr.motionEasingEmphasizedInterpolator;
+        A = R.attr.motionDurationMedium1;
+        B = R.attr.motionEasingEmphasizedAccelerateInterpolator;
+        C = new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled};
+        D = new int[]{android.R.attr.state_hovered, android.R.attr.state_focused, android.R.attr.state_enabled};
+        E = new int[]{android.R.attr.state_focused, android.R.attr.state_enabled};
+        F = new int[]{android.R.attr.state_hovered, android.R.attr.state_enabled};
+        G = new int[]{android.R.attr.state_enabled};
+        H = new int[0];
     }
 
-    public static ValueAnimator d(l81 l81Var) {
-        ValueAnimator valueAnimator = new ValueAnimator();
-        valueAnimator.setInterpolator(x);
-        valueAnimator.setDuration(100L);
-        valueAnimator.addListener(l81Var);
-        valueAnimator.addUpdateListener(l81Var);
-        valueAnimator.setFloatValues(0.0f, 1.0f);
-        return valueAnimator;
+    public m81(FloatingActionButton r4, zh0 r5) {
+        this.g = true;
+        this.o = 1.0f;
+        int r1 = 0;
+        this.q = 0;
+        this.t = new Rect();
+        this.u = new RectF();
+        this.v = new RectF();
+        this.w = new Matrix();
+        this.r = r4;
+        this.s = r5;
+        hd5 r6 = new hd5(20);
+        o81 r3 = (o81) this;
+        r6.f(d(new k81(r3, 1)));
+        r6.f(d(new k81(r3, r1)));
+        r6.f(d(new k81(r3, r1)));
+        r6.f(d(new k81(r3, r1)));
+        r6.f(d(new k81(r3, 2)));
+        r6.f(d(new j81(r3)));
+        r4.getRotation();
     }
 
-    public final void a(float f, Matrix matrix) {
-        matrix.reset();
-        Drawable drawable = this.r.getDrawable();
-        if (drawable == null || this.p == 0) {
-            return;
-        }
-        float intrinsicWidth = drawable.getIntrinsicWidth();
-        float intrinsicHeight = drawable.getIntrinsicHeight();
-        RectF rectF = this.u;
-        rectF.set(0.0f, 0.0f, intrinsicWidth, intrinsicHeight);
-        float f2 = this.p;
-        RectF rectF2 = this.v;
-        rectF2.set(0.0f, 0.0f, f2, f2);
-        matrix.setRectToRect(rectF, rectF2, Matrix.ScaleToFit.CENTER);
-        float f3 = this.p / 2.0f;
-        matrix.postScale(f, f, f3, f3);
+    public static ValueAnimator d(l81 r3) {
+        ValueAnimator r0 = new ValueAnimator();
+        r0.setInterpolator(x);
+        r0.setDuration(100);
+        r0.addListener(r3);
+        r0.addUpdateListener(r3);
+        r0.setFloatValues(new float[]{0.0f, 1.0f});
+        return r0;
     }
 
-    public final AnimatorSet b(zx2 zx2Var, float f, float f2, float f3) {
-        ArrayList arrayList = new ArrayList();
-        Property property = View.ALPHA;
-        float[] fArr = {f};
-        FloatingActionButton floatingActionButton = this.r;
-        ObjectAnimator objectAnimatorOfFloat = ObjectAnimator.ofFloat(floatingActionButton, (Property<FloatingActionButton, Float>) property, fArr);
-        zx2Var.f("opacity").a(objectAnimatorOfFloat);
-        arrayList.add(objectAnimatorOfFloat);
-        ObjectAnimator objectAnimatorOfFloat2 = ObjectAnimator.ofFloat(floatingActionButton, (Property<FloatingActionButton, Float>) View.SCALE_X, f2);
-        zx2Var.f("scale").a(objectAnimatorOfFloat2);
-        int i = Build.VERSION.SDK_INT;
-        if (i == 26) {
-            i81 i81Var = new i81();
-            i81Var.b = new FloatEvaluator();
-            objectAnimatorOfFloat2.setEvaluator(i81Var);
-        }
-        arrayList.add(objectAnimatorOfFloat2);
-        ObjectAnimator objectAnimatorOfFloat3 = ObjectAnimator.ofFloat(floatingActionButton, (Property<FloatingActionButton, Float>) View.SCALE_Y, f2);
-        zx2Var.f("scale").a(objectAnimatorOfFloat3);
-        if (i == 26) {
-            i81 i81Var2 = new i81();
-            i81Var2.b = new FloatEvaluator();
-            objectAnimatorOfFloat3.setEvaluator(i81Var2);
-        }
-        arrayList.add(objectAnimatorOfFloat3);
-        Matrix matrix = this.w;
-        a(f3, matrix);
-        ObjectAnimator objectAnimatorOfObject = ObjectAnimator.ofObject(floatingActionButton, new cq(), new g81(this), new Matrix(matrix));
-        zx2Var.f("iconScale").a(objectAnimatorOfObject);
-        arrayList.add(objectAnimatorOfObject);
-        AnimatorSet animatorSet = new AnimatorSet();
-        gi1.R(animatorSet, arrayList);
-        return animatorSet;
+    public final void a(float r5, Matrix r6) {
+        r6.reset();
+        Drawable r0 = this.r.getDrawable();
+        if (r0 != null) goto L5;
+        return;
+    L5:
+        if (this.p == 0) goto L9;
+        float r1 = r0.getIntrinsicWidth();
+        float r2 = r0.getIntrinsicHeight();
+        RectF r3 = this.u;
+        r3.set(0.0f, 0.0f, r1, r2);
+        float r4 = this.p;
+        RectF r7 = this.v;
+        r7.set(0.0f, 0.0f, r4, r4);
+        r6.setRectToRect(r3, r7, Matrix.ScaleToFit.CENTER);
+        float r8 = this.p / 2.0f;
+        r6.postScale(r5, r5, r8, r8);
+        return;
     }
 
-    public final AnimatorSet c(float f, float f2, float f3, int i, int i2) {
-        AnimatorSet animatorSet = new AnimatorSet();
-        ArrayList arrayList = new ArrayList();
-        ValueAnimator valueAnimatorOfFloat = ValueAnimator.ofFloat(0.0f, 1.0f);
-        FloatingActionButton floatingActionButton = this.r;
-        valueAnimatorOfFloat.addUpdateListener(new h81(this, floatingActionButton.getAlpha(), f, floatingActionButton.getScaleX(), f2, floatingActionButton.getScaleY(), this.o, f3, new Matrix(this.w)));
-        arrayList.add(valueAnimatorOfFloat);
-        gi1.R(animatorSet, arrayList);
-        animatorSet.setDuration(g12.N(floatingActionButton.getContext(), i, floatingActionButton.getContext().getResources().getInteger(R.integer.material_motion_duration_long_1)));
-        animatorSet.setInterpolator(g12.O(floatingActionButton.getContext(), i2, yd.b));
-        return animatorSet;
+    public final AnimatorSet b(zx2 r10, float r11, float r12, float r13) {
+        ArrayList r0 = new ArrayList();
+        Property r1 = View.ALPHA;
+        float[] r3 = {r11};
+        FloatingActionButton r14 = this.r;
+        ObjectAnimator r2 = ObjectAnimator.ofFloat(r14, r1, r3);
+        r10.f("opacity").a(r2);
+        r0.add(r2);
+        ObjectAnimator r4 = ObjectAnimator.ofFloat(r14, View.SCALE_X, new float[]{r12});
+        r10.f("scale").a(r4);
+        int r5 = Build.VERSION.SDK_INT;
+        if (r5 != 26) goto L6;
+        i81 r7 = new i81();
+        r7.b = new FloatEvaluator();
+        r4.setEvaluator(r7);
+    L6:
+        r0.add(r4);
+        ObjectAnimator r15 = ObjectAnimator.ofFloat(r14, View.SCALE_Y, new float[]{r12});
+        r10.f("scale").a(r15);
+        if (r5 != 26) goto L10;
+        i81 r6 = new i81();
+        r6.b = new FloatEvaluator();
+        r15.setEvaluator(r6);
+    L10:
+        r0.add(r15);
+        Matrix r16 = this.w;
+        a(r13, r16);
+        ObjectAnimator r9 = ObjectAnimator.ofObject(r14, new cq(), new g81(this), new Matrix[]{new Matrix(r16)});
+        r10.f("iconScale").a(r9);
+        r0.add(r9);
+        AnimatorSet r17 = new AnimatorSet();
+        gi1.R(r17, r0);
+        return r17;
     }
 
-    public abstract void e(float f, float f2, float f3);
+    public final AnimatorSet c(float r15, float r16, float r17, int r18, int r19) {
+        AnimatorSet r0 = new AnimatorSet();
+        ArrayList r1 = new ArrayList();
+        ValueAnimator r2 = ValueAnimator.ofFloat(new float[]{0.0f, 1.0f});
+        FloatingActionButton r3 = this.r;
+        r2.addUpdateListener(new h81(this, r3.getAlpha(), r15, r3.getScaleX(), r16, r3.getScaleY(), this.o, r17, new Matrix(this.w)));
+        r1.add(r2);
+        gi1.R(r0, r1);
+        r0.setDuration(g12.N(r3.getContext(), r18, r3.getContext().getResources().getInteger(R.integer.material_motion_duration_long_1)));
+        r0.setInterpolator(g12.O(r3.getContext(), r19, yd.b));
+        return r0;
+    }
+
+    public abstract void e(float r1, float r2, float r3);
 
     public final void f() {
     }
 
-    public final void g(bc4 bc4Var) {
-        this.a = bc4Var;
-        n81 n81Var = this.b;
-        if (n81Var != null) {
-            n81Var.setShapeAppearanceModel(bc4Var);
-        }
-        Drawable.Callback callback = this.c;
-        if (callback instanceof lc4) {
-            ((lc4) callback).setShapeAppearanceModel(bc4Var);
-        }
-        nt ntVar = this.d;
-        if (ntVar != null) {
-            ntVar.o = bc4Var;
-            ntVar.invalidateSelf();
-        }
+    public final void g(bc4 r3) {
+        this.a = r3;
+        n81 r0 = this.b;
+        if (r0 == null) goto L5;
+        r0.setShapeAppearanceModel(r3);
+    L5:
+        Drawable.Callback r1 = this.c;
+        if ((r1 instanceof lc4) == false) goto L8;
+        ((lc4) r1).setShapeAppearanceModel(r3);
+    L8:
+        nt r2 = this.d;
+        if (r2 == null) goto L12;
+        r2.o = r3;
+        r2.invalidateSelf();
+        return;
     }
 
-    /* JADX WARN: Code duplicated, block: B:16:0x0061  */
     public final void h() {
-        o81 o81Var = (o81) this;
-        zh0 zh0Var = o81Var.s;
-        boolean z2 = ((FloatingActionButton) zh0Var.o).x;
-        boolean z3 = o81Var.f;
-        Rect rect = this.t;
-        FloatingActionButton floatingActionButton = o81Var.r;
-        if (z2) {
-            int iMax = z3 ? Math.max((o81Var.k - floatingActionButton.getSizeDimension()) / 2, 0) : 0;
-            float elevation = o81Var.g ? floatingActionButton.getElevation() + o81Var.j : 0.0f;
-            int iMax2 = Math.max(iMax, (int) Math.ceil(elevation));
-            int iMax3 = Math.max(iMax, (int) Math.ceil(elevation * 1.5f));
-            rect.set(iMax2, iMax3, iMax2, iMax3);
-        } else if (z3) {
-            int sizeDimension = floatingActionButton.getSizeDimension();
-            int i = o81Var.k;
-            if (sizeDimension >= i) {
-                rect.set(0, 0, 0, 0);
-            } else {
-                int sizeDimension2 = (i - floatingActionButton.getSizeDimension()) / 2;
-                rect.set(sizeDimension2, sizeDimension2, sizeDimension2, sizeDimension2);
-            }
-        } else {
-            rect.set(0, 0, 0, 0);
-        }
+        o81 r0 = (o81) this;
+        zh0 r1 = r0.s;
+        boolean r2 = ((FloatingActionButton) r1.o).x;
+        boolean r3 = r0.f;
+        Rect r4 = this.t;
+        FloatingActionButton r5 = r0.r;
+        int r6 = 0;
+        if (r2 == false) goto L11;
+        if (r3 == false) goto L7;
+        r6 = Math.max((r0.k - r5.getSizeDimension()) / 2, 0);
+    L7:
+        if (r0.g == false) goto L9;
+        float r7 = r5.getElevation() + r0.j;
+    L10:
+        int r8 = Math.max(r6, (int) Math.ceil(r7));
+        int r9 = Math.max(r6, (int) Math.ceil(r7 * 1.5f));
+        r4.set(r8, r9, r8, r9);
+    L17:
         l93.m(this.e, "Didn't initialize content background");
-        boolean z4 = ((FloatingActionButton) zh0Var.o).x;
-        zh0 zh0Var2 = this.s;
-        if (z4 || (o81Var.f && floatingActionButton.getSizeDimension() < o81Var.k)) {
-            super/*android.view.View*/.setBackgroundDrawable(new InsetDrawable((Drawable) this.e, rect.left, rect.top, rect.right, rect.bottom));
-        } else {
-            RippleDrawable rippleDrawable = this.e;
-            if (rippleDrawable != null) {
-                super/*android.view.View*/.setBackgroundDrawable(rippleDrawable);
-            } else {
-                zh0Var2.getClass();
-            }
-        }
-        int i2 = rect.left;
-        int i3 = rect.top;
-        int i4 = rect.right;
-        int i5 = rect.bottom;
-        FloatingActionButton floatingActionButton2 = (FloatingActionButton) zh0Var2.o;
-        floatingActionButton2.y.set(i2, i3, i4, i5);
-        int i6 = floatingActionButton2.v;
-        floatingActionButton2.setPadding(i2 + i6, i3 + i6, i4 + i6, i5 + i6);
+        boolean r10 = ((FloatingActionButton) r1.o).x;
+        zh0 r11 = this.s;
+        if (r10 == false) goto L20;
+    L27:
+        FloatingActionButton.b((FloatingActionButton) r11.o, new InsetDrawable(this.e, r4.left, r4.top, r4.right, r4.bottom));
+    L28:
+        int r12 = r4.left;
+        int r13 = r4.top;
+        int r14 = r4.right;
+        int r15 = r4.bottom;
+        FloatingActionButton r16 = (FloatingActionButton) r11.o;
+        r16.y.set(r12, r13, r14, r15);
+        int r17 = r16.v;
+        r16.setPadding(r12 + r17, r13 + r17, r14 + r17, r15 + r17);
+        return;
+    L20:
+        if (r0.f == true) goto L22;
+    L23:
+        RippleDrawable r18 = this.e;
+        if (r18 == null) goto L26;
+        FloatingActionButton.b((FloatingActionButton) r11.o, r18);
+        goto L28
+    L26:
+        r11.getClass();
+        goto L28
+    L22:
+        if (r5.getSizeDimension() < r0.k) goto L27;
+    L9:
+        r7 = 0.0f;
+        goto L10
+    L11:
+        if (r3 == false) goto L16;
+        int r19 = r5.getSizeDimension();
+        int r20 = r0.k;
+        if (r19 >= r20) goto L16;
+        int r21 = (r20 - r5.getSizeDimension()) / 2;
+        r4.set(r21, r21, r21, r21);
+    L16:
+        r4.set(0, 0, 0, 0);
+        goto L17
     }
 }

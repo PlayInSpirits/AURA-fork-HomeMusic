@@ -6,25 +6,32 @@ public final class ne3 extends bf3 {
     public final float c;
     public final float d;
 
-    public ne3(float f, float f2) {
+    public ne3(float r2, float r3) {
         super(3);
-        this.c = f;
-        this.d = f2;
+        this.c = r2;
+        this.d = r3;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof ne3)) {
-            return false;
-        }
-        ne3 ne3Var = (ne3) obj;
-        return Float.compare(this.c, ne3Var.c) == 0 && Float.compare(this.d, ne3Var.d) == 0;
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if ((r5 instanceof ne3) == true) goto L8;
+        return false;
+    L8:
+        ne3 r6 = (ne3) r5;
+        if (Float.compare(this.c, r6.c) == 0) goto L12;
+        return false;
+    L12:
+        if (Float.compare(this.d, r6.d) == 0) goto L14;
+        return false;
+    L14:
+        return true;
     }
 
     public final int hashCode() {
-        return Float.hashCode(this.d) + (Float.hashCode(this.c) * 31);
+        int r0 = Float.hashCode(this.c) * 31;
+        return Float.hashCode(this.d) + r0;
     }
 
     public final String toString() {

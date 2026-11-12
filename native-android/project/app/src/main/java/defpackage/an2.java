@@ -5,12 +5,12 @@ import android.os.Bundle;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class an2 {
-    public static final an2 f = new an2(new zm2());
-    public static final String g;
-    public static final String h;
-    public static final String i;
-    public static final String j;
-    public static final String k;
+    public static final an2 f = null;
+    public static final String g = null;
+    public static final String h = null;
+    public static final String i = null;
+    public static final String j = null;
+    public static final String k = null;
     public final long a;
     public final long b;
     public final long c;
@@ -18,7 +18,8 @@ public final class an2 {
     public final float e;
 
     static {
-        String str = f35.a;
+        f = new an2(new zm2());
+        String r0 = f35.a;
         g = Integer.toString(0, 36);
         h = Integer.toString(1, 36);
         i = Integer.toString(2, 36);
@@ -26,91 +27,110 @@ public final class an2 {
         k = Integer.toString(4, 36);
     }
 
-    public an2(zm2 zm2Var) {
-        long j2 = zm2Var.a;
-        long j3 = zm2Var.b;
-        long j4 = zm2Var.c;
-        float f2 = zm2Var.d;
-        float f3 = zm2Var.e;
-        this.a = j2;
-        this.b = j3;
-        this.c = j4;
-        this.d = f2;
-        this.e = f3;
+    public an2(zm2 r8) {
+        long r0 = r8.a;
+        long r2 = r8.b;
+        long r4 = r8.c;
+        float r6 = r8.d;
+        float r9 = r8.e;
+        this.a = r0;
+        this.b = r2;
+        this.c = r4;
+        this.d = r6;
+        this.e = r9;
     }
 
-    public static an2 b(Bundle bundle) {
-        zm2 zm2Var = new zm2();
-        an2 an2Var = f;
-        zm2Var.a = bundle.getLong(g, an2Var.a);
-        zm2Var.b = bundle.getLong(h, an2Var.b);
-        zm2Var.c = bundle.getLong(i, an2Var.c);
-        zm2Var.d = bundle.getFloat(j, an2Var.d);
-        zm2Var.e = bundle.getFloat(k, an2Var.e);
-        return new an2(zm2Var);
+    public static an2 b(Bundle r5) {
+        zm2 r0 = new zm2();
+        an2 r1 = f;
+        long r2 = r1.a;
+        r0.a = r5.getLong(g, r2);
+        r0.b = r5.getLong(h, r1.b);
+        r0.c = r5.getLong(i, r1.c);
+        r0.d = r5.getFloat(j, r1.d);
+        r0.e = r5.getFloat(k, r1.e);
+        return new an2(r0);
     }
 
     public final zm2 a() {
-        zm2 zm2Var = new zm2();
-        zm2Var.a = this.a;
-        zm2Var.b = this.b;
-        zm2Var.c = this.c;
-        zm2Var.d = this.d;
-        zm2Var.e = this.e;
-        return zm2Var;
+        zm2 r0 = new zm2();
+        r0.a = this.a;
+        r0.b = this.b;
+        r0.c = this.c;
+        r0.d = this.d;
+        r0.e = this.e;
+        return r0;
     }
 
     public final Bundle c() {
-        Bundle bundle = new Bundle();
-        an2 an2Var = f;
-        long j2 = an2Var.a;
-        long j3 = this.a;
-        if (j3 != j2) {
-            bundle.putLong(g, j3);
-        }
-        long j4 = an2Var.b;
-        long j5 = this.b;
-        if (j5 != j4) {
-            bundle.putLong(h, j5);
-        }
-        long j6 = an2Var.c;
-        long j7 = this.c;
-        if (j7 != j6) {
-            bundle.putLong(i, j7);
-        }
-        float f2 = an2Var.d;
-        float f3 = this.d;
-        if (f3 != f2) {
-            bundle.putFloat(j, f3);
-        }
-        float f4 = an2Var.e;
-        float f5 = this.e;
-        if (f5 != f4) {
-            bundle.putFloat(k, f5);
-        }
-        return bundle;
+        Bundle r0 = new Bundle();
+        an2 r1 = f;
+        long r2 = r1.a;
+        long r4 = this.a;
+        if (r4 == r2) goto L5;
+        r0.putLong(g, r4);
+    L5:
+        long r3 = r1.b;
+        long r5 = this.b;
+        if (r5 == r3) goto L8;
+        r0.putLong(h, r5);
+    L8:
+        long r6 = r1.c;
+        long r7 = this.c;
+        if (r7 == r6) goto L11;
+        r0.putLong(i, r7);
+    L11:
+        float r8 = r1.d;
+        float r9 = this.d;
+        if (r9 == r8) goto L14;
+        r0.putFloat(j, r9);
+    L14:
+        float r10 = r1.e;
+        float r11 = this.e;
+        if (r11 == r10) goto L17;
+        r0.putFloat(k, r11);
+    L17:
+        return r0;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof an2)) {
-            return false;
-        }
-        an2 an2Var = (an2) obj;
-        return this.a == an2Var.a && this.b == an2Var.b && this.c == an2Var.c && this.d == an2Var.d && this.e == an2Var.e;
+    public final boolean equals(Object r8) {
+        if (this != r8) goto L6;
+        return true;
+    L6:
+        if ((r8 instanceof an2) == true) goto L8;
+        return false;
+    L8:
+        an2 r9 = (an2) r8;
+        if (this.a == r9.a) goto L11;
+    L19:
+        return false;
+    L11:
+        if (this.b != r9.b) goto L19;
+        if (this.c != r9.c) goto L19;
+        if (this.d != r9.d) goto L19;
+        if (this.e != r9.e) goto L19;
+        return true;
     }
 
     public final int hashCode() {
-        long j2 = this.a;
-        long j3 = this.b;
-        int i2 = ((((int) (j2 ^ (j2 >>> 32))) * 31) + ((int) (j3 ^ (j3 >>> 32)))) * 31;
-        long j4 = this.c;
-        int i3 = (i2 + ((int) ((j4 >>> 32) ^ j4))) * 31;
-        float f2 = this.d;
-        int iFloatToIntBits = (i3 + (f2 != 0.0f ? Float.floatToIntBits(f2) : 0)) * 31;
-        float f3 = this.e;
-        return iFloatToIntBits + (f3 != 0.0f ? Float.floatToIntBits(f3) : 0);
+        long r0 = this.a;
+        long r3 = this.b;
+        int r1 = ((((int) (r0 ^ (r0 >>> 32))) * 31) + ((int) (r3 ^ (r3 >>> 32)))) * 31;
+        long r4 = this.c;
+        int r2 = (r1 + ((int) ((r4 >>> 32) ^ r4))) * 31;
+        float r5 = this.d;
+        int r6 = 0;
+        if (r5 == 0.0f) goto L5;
+        int r7 = Float.floatToIntBits(r5);
+    L6:
+        int r8 = (r2 + r7) * 31;
+        float r9 = this.e;
+        if (r9 == 0.0f) goto L10;
+        r6 = Float.floatToIntBits(r9);
+    L10:
+        return r8 + r6;
+    L5:
+        r7 = 0;
+        goto L6
     }
 }

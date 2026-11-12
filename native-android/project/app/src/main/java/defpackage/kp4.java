@@ -9,60 +9,62 @@ public final class kp4 implements Animation.AnimationListener {
     public final /* synthetic */ int a;
     public final /* synthetic */ SwipeRefreshLayout b;
 
-    public /* synthetic */ kp4(SwipeRefreshLayout swipeRefreshLayout, int i) {
-        this.a = i;
-        this.b = swipeRefreshLayout;
+    public /* synthetic */ kp4(SwipeRefreshLayout r1, int r2) {
+        this.a = r2;
+        this.b = r1;
     }
 
-    private final void a(Animation animation) {
+    private final void a(Animation r1) {
     }
 
-    private final void b(Animation animation) {
+    private final void b(Animation r1) {
     }
 
-    private final void c(Animation animation) {
+    private final void c(Animation r1) {
     }
 
-    private final void d(Animation animation) {
-    }
-
-    @Override // android.view.animation.Animation.AnimationListener
-    public final void onAnimationEnd(Animation animation) {
-        np4 np4Var;
-        int i = this.a;
-        SwipeRefreshLayout swipeRefreshLayout = this.b;
-        switch (i) {
-            case 0:
-                if (!swipeRefreshLayout.p) {
-                    swipeRefreshLayout.l();
-                } else {
-                    swipeRefreshLayout.M.setAlpha(255);
-                    swipeRefreshLayout.M.start();
-                    if (swipeRefreshLayout.R && (np4Var = swipeRefreshLayout.o) != null) {
-                        np4Var.j();
-                    }
-                    swipeRefreshLayout.A = swipeRefreshLayout.G.getTop();
-                }
-                break;
-            default:
-                lp4 lp4Var = new lp4(swipeRefreshLayout, 1);
-                swipeRefreshLayout.O = lp4Var;
-                lp4Var.setDuration(150L);
-                w20 w20Var = swipeRefreshLayout.G;
-                w20Var.n = null;
-                w20Var.clearAnimation();
-                swipeRefreshLayout.G.startAnimation(swipeRefreshLayout.O);
-                break;
-        }
+    private final void d(Animation r1) {
     }
 
     @Override // android.view.animation.Animation.AnimationListener
-    public final void onAnimationRepeat(Animation animation) {
-        int i = this.a;
+    public final void onAnimationEnd(Animation r3) {
+        int r4 = this.a;
+        SwipeRefreshLayout r2 = this.b;
+        switch(r4) {
+            case 0: goto L7;
+            default: goto L4;
+        };
+    L4:
+        lp4 r5 = new lp4(r2, 1);
+        r2.O = r5;
+        r5.setDuration(150);
+        w20 r6 = r2.G;
+        r6.n = null;
+        r6.clearAnimation();
+        r2.G.startAnimation(r2.O);
+        return;
+    L7:
+        if (r2.p == false) goto L14;
+        r2.M.setAlpha(255);
+        r2.M.start();
+        if (r2.R == false) goto L13;
+        np4 r7 = r2.o;
+        if (r7 == null) goto L13;
+        r7.j();
+    L13:
+        r2.A = r2.G.getTop();
+        return;
+    L14:
+        r2.l();
     }
 
     @Override // android.view.animation.Animation.AnimationListener
-    public final void onAnimationStart(Animation animation) {
-        int i = this.a;
+    public final void onAnimationRepeat(Animation r1) {
+        int r0 = this.a;
+    }
+
+    @Override // android.view.animation.Animation.AnimationListener
+    public final void onAnimationStart(Animation r1) {
+        int r0 = this.a;
     }
 }

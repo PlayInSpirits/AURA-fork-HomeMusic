@@ -6,60 +6,64 @@ public final class gx1 extends jx1 {
     public final /* synthetic */ int q;
     public final /* synthetic */ hx1 r;
 
-    public /* synthetic */ gx1(hx1 hx1Var, int i) {
-        this.q = i;
-        this.r = hx1Var;
+    public /* synthetic */ gx1(hx1 r1, int r2) {
+        this.q = r2;
+        this.r = r1;
     }
 
     @Override // defpackage.rw1
-    public final int b(int i, Object[] objArr) {
-        return a().b(i, objArr);
+    public final int b(int r1, Object[] r2) {
+        return a().b(r1, r2);
     }
 
     @Override // defpackage.rw1, java.util.AbstractCollection, java.util.Collection
-    public final boolean contains(Object obj) {
-        int i = this.q;
-        hx1 hx1Var = this.r;
-        switch (i) {
-            case 0:
-                if (obj instanceof p73) {
-                    p73 p73Var = (p73) obj;
-                    if (p73Var.a() > 0) {
-                        if (((my3) hx1Var).r.b(p73Var.a) == p73Var.a()) {
-                            return true;
-                        }
-                    }
-                }
-                return false;
-            default:
-                return ((my3) hx1Var).contains(obj);
-        }
+    public final boolean contains(Object r2) {
+        int r0 = this.q;
+        hx1 r1 = this.r;
+        switch(r0) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return ((my3) r1).contains(r2);
+    L7:
+        if ((r2 instanceof p73) == false) goto L14;
+        p73 r3 = (p73) r2;
+        if (r3.a() <= 0) goto L14;
+        Object r4 = r3.a;
+        if (((my3) r1).r.b(r4) != r3.a()) goto L14;
+        return true;
+    L14:
+        return false;
     }
 
     @Override // defpackage.rw1
     public final boolean g() {
-        switch (this.q) {
-            case 0:
-                return false;
-            default:
-                return true;
-        }
+        switch(this.q) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        return true;
+    L6:
+        return false;
     }
 
     @Override // defpackage.rw1
-    /* JADX INFO: renamed from: h */
-    public final o15 iterator() {
-        return a().listIterator(0);
+    public final o15 h() {
+        return a().m(0);
     }
 
     @Override // defpackage.jx1, java.util.Collection, java.util.Set
     public int hashCode() {
-        switch (this.q) {
-            case 0:
-                return this.r.hashCode();
-            default:
-                return super.hashCode();
-        }
+        switch(this.q) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return super.hashCode();
+    L7:
+        return this.r.hashCode();
     }
 
     @Override // defpackage.jx1
@@ -69,13 +73,15 @@ public final class gx1 extends jx1 {
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
     public final int size() {
-        int i = this.q;
-        hx1 hx1Var = this.r;
-        switch (i) {
-            case 0:
-                return hx1Var.i().size();
-            default:
-                return ((my3) hx1Var).r.c;
-        }
+        int r0 = this.q;
+        hx1 r1 = this.r;
+        switch(r0) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return ((my3) r1).r.c;
+    L7:
+        return r1.i().size();
     }
 }

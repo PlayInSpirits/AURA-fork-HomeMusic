@@ -8,11 +8,11 @@ public abstract class ar4 {
     public fr4 c;
     public long d;
 
-    public ar4(String str) {
-        str.getClass();
-        this.a = str;
+    public ar4(String r3) {
+        r3.getClass();
+        this.a = r3;
         this.b = true;
-        this.d = -1L;
+        this.d = -1;
     }
 
     public abstract long a();

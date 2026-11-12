@@ -9,18 +9,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class oc2 {
     public final Context a;
     public final WorkerParameters b;
-    public final AtomicInteger c = new AtomicInteger(-256);
+    public final AtomicInteger c;
     public boolean d;
 
-    public oc2(Context context, WorkerParameters workerParameters) {
-        this.a = context;
-        this.b = workerParameters;
+    public oc2(Context r3, WorkerParameters r4) {
+        this.c = new AtomicInteger(-256);
+        this.a = r3;
+        this.b = r4;
     }
 
     public abstract ry a();
 
     public final boolean b() {
-        return this.c.get() != -256;
+        if (this.c.get() == (-256)) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     public abstract ry c();

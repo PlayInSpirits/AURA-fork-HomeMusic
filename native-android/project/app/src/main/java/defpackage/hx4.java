@@ -14,370 +14,255 @@ public final class hx4 implements ViewTreeObserver.OnPreDrawListener, View.OnAtt
     public dx4 n;
     public ViewGroup o;
 
-    /* JADX WARN: Code duplicated, block: B:101:0x0216  */
-    /* JADX WARN: Code duplicated, block: B:102:0x0222  */
-    /* JADX WARN: Code duplicated, block: B:106:0x0236  */
-    /* JADX WARN: Code duplicated, block: B:133:0x01e0 A[EDGE_INSN: B:133:0x01e0->B:89:0x01e0 BREAK  A[LOOP:1: B:18:0x0084->B:88:0x01d9], SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:14:0x004c  */
-    /* JADX WARN: Code duplicated, block: B:163:0x0200 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:16:0x0053 A[LOOP:0: B:15:0x0051->B:16:0x0053, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:20:0x0089  */
-    /* JADX WARN: Code duplicated, block: B:22:0x008d  */
-    /* JADX WARN: Code duplicated, block: B:24:0x0090  */
-    /* JADX WARN: Code duplicated, block: B:26:0x0093  */
-    /* JADX WARN: Code duplicated, block: B:29:0x009a  */
-    /* JADX WARN: Code duplicated, block: B:31:0x00a9  */
-    /* JADX WARN: Code duplicated, block: B:43:0x00ef  */
-    /* JADX WARN: Code duplicated, block: B:44:0x00f2  */
-    /* JADX WARN: Code duplicated, block: B:46:0x00fa  */
-    /* JADX WARN: Code duplicated, block: B:48:0x010b  */
-    /* JADX WARN: Code duplicated, block: B:61:0x014e  */
-    /* JADX WARN: Code duplicated, block: B:63:0x015d  */
-    /* JADX WARN: Code duplicated, block: B:76:0x01a0  */
-    /* JADX WARN: Code duplicated, block: B:78:0x01a8  */
-    /* JADX WARN: Code duplicated, block: B:92:0x01e7  */
-    /* JADX WARN: Code duplicated, block: B:94:0x01f5  */
-    /* JADX WARN: Code duplicated, block: B:99:0x0208  */
     @Override // android.view.ViewTreeObserver.OnPreDrawListener
     public final boolean onPreDraw() {
-        ArrayList arrayList;
-        int i;
-        bq4 bq4Var;
-        bq4 bq4Var2;
-        oi oiVar;
-        oi oiVar2;
-        int i2;
-        int[] iArr;
-        boolean z;
-        int i3;
-        int i4;
-        oi oiVarN;
-        int i5;
-        Animator animator;
-        ax4 ax4Var;
-        View view;
-        mx4 mx4Var;
-        mx4 mx4Var2;
-        int i6;
-        boolean z2;
-        int i7;
-        View view2;
-        mx4 mx4Var3;
-        oi oiVar3;
-        int i8;
-        int i9;
-        View view3;
-        View view4;
-        SparseArray sparseArray;
-        int size;
-        int i10;
-        View view5;
-        View view6;
-        xe2 xe2Var;
-        int iH;
-        int i11;
-        View view7;
-        boolean z3;
-        int size2;
-        int i12;
-        dx4 dx4Var = this.n;
-        ViewGroup viewGroup = this.o;
-        viewGroup.getViewTreeObserver().removeOnPreDrawListener(this);
-        viewGroup.removeOnAttachStateChangeListener(this);
-        boolean z4 = true;
-        if (!ix4.c.remove(viewGroup)) {
-            return true;
-        }
-        oi oiVarB = ix4.b();
-        ArrayList arrayList2 = (ArrayList) oiVarB.get(viewGroup);
-        if (arrayList2 != null) {
-            arrayList = arrayList2.size() > 0 ? new ArrayList(arrayList2) : null;
-            arrayList2.add(dx4Var);
-            dx4Var.a(new gx4(this, oiVarB));
-            i = 0;
-            dx4Var.g(viewGroup, false);
-            if (arrayList != null) {
-                size2 = arrayList.size();
-                i12 = 0;
-                while (i12 < size2) {
-                    Object obj = arrayList.get(i12);
-                    i12++;
-                    ((dx4) obj).v(viewGroup);
-                }
-            }
-            dx4Var.x = new ArrayList();
-            dx4Var.y = new ArrayList();
-            bq4Var = dx4Var.t;
-            bq4Var2 = dx4Var.u;
-            oiVar = new oi((oi) bq4Var.n);
-            oiVar2 = new oi((oi) bq4Var2.n);
-            i2 = 0;
-            while (true) {
-                iArr = dx4Var.w;
-                if (i2 < iArr.length) {
-                    break;
-                }
-                i6 = iArr[i2];
-                if (i6 != z4) {
-                    z2 = z4;
-                    for (i7 = oiVar.p - 1; i7 >= 0; i7--) {
-                        view2 = (View) oiVar.f(i7);
-                        if (view2 == null && dx4Var.r(view2) && (mx4Var3 = (mx4) oiVar2.remove(view2)) != null && dx4Var.r(mx4Var3.b)) {
-                            dx4Var.x.add((mx4) oiVar.h(i7));
-                            dx4Var.y.add(mx4Var3);
-                        }
-                    }
-                } else if (i6 != 2) {
-                    z2 = z4;
-                    oiVar3 = (oi) bq4Var.q;
-                    oi oiVar4 = (oi) bq4Var2.q;
-                    i8 = oiVar3.p;
-                    for (i9 = 0; i9 < i8; i9++) {
-                        view3 = (View) oiVar3.j(i9);
-                        if (view3 == null && dx4Var.r(view3) && (view4 = (View) oiVar4.get(oiVar3.f(i9))) != null && dx4Var.r(view4)) {
-                            mx4 mx4Var4 = (mx4) oiVar.get(view3);
-                            mx4 mx4Var5 = (mx4) oiVar2.get(view4);
-                            if (mx4Var4 != null && mx4Var5 != null) {
-                                dx4Var.x.add(mx4Var4);
-                                dx4Var.y.add(mx4Var5);
-                                oiVar.remove(view3);
-                                oiVar2.remove(view4);
-                            }
-                        }
-                    }
-                } else if (i6 != 3) {
-                    if (i6 == 4) {
-                        xe2Var = (xe2) bq4Var.p;
-                        xe2 xe2Var2 = (xe2) bq4Var2.p;
-                        iH = xe2Var.h();
-                        i11 = i;
-                        while (i11 < iH) {
-                            view7 = (View) xe2Var.i(i11);
-                            if (view7 == null && dx4Var.r(view7)) {
-                                boolean z5 = z4;
-                                View view8 = (View) xe2Var2.b(xe2Var.e(i11));
-                                if (view8 == null || !dx4Var.r(view8)) {
-                                    z3 = z5;
-                                } else {
-                                    mx4 mx4Var6 = (mx4) oiVar.get(view7);
-                                    mx4 mx4Var7 = (mx4) oiVar2.get(view8);
-                                    if (mx4Var6 == null || mx4Var7 == null) {
-                                        z3 = z5;
-                                    } else {
-                                        z3 = z5;
-                                        dx4Var.x.add(mx4Var6);
-                                        dx4Var.y.add(mx4Var7);
-                                        oiVar.remove(view7);
-                                        oiVar2.remove(view8);
-                                    }
-                                }
-                            } else {
-                                z3 = z4;
-                            }
-                            i11++;
-                            z4 = z3;
-                        }
-                    }
-                    z2 = z4;
-                } else {
-                    z2 = z4;
-                    sparseArray = (SparseArray) bq4Var.o;
-                    SparseArray sparseArray2 = (SparseArray) bq4Var2.o;
-                    size = sparseArray.size();
-                    for (i10 = 0; i10 < size; i10++) {
-                        view5 = (View) sparseArray.valueAt(i10);
-                        if (view5 == null && dx4Var.r(view5) && (view6 = (View) sparseArray2.get(sparseArray.keyAt(i10))) != null && dx4Var.r(view6)) {
-                            mx4 mx4Var8 = (mx4) oiVar.get(view5);
-                            mx4 mx4Var9 = (mx4) oiVar2.get(view6);
-                            if (mx4Var8 != null && mx4Var9 != null) {
-                                dx4Var.x.add(mx4Var8);
-                                dx4Var.y.add(mx4Var9);
-                                oiVar.remove(view5);
-                                oiVar2.remove(view6);
-                            }
-                        }
-                    }
-                }
-                i2++;
-                z4 = z2;
-                i = 0;
-            }
-            z = z4;
-            for (i3 = 0; i3 < oiVar.p; i3++) {
-                mx4Var2 = (mx4) oiVar.j(i3);
-                if (dx4Var.r(mx4Var2.b)) {
-                    dx4Var.x.add(mx4Var2);
-                    dx4Var.y.add(null);
-                }
-            }
-            for (i4 = 0; i4 < oiVar2.p; i4++) {
-                mx4Var = (mx4) oiVar2.j(i4);
-                if (dx4Var.r(mx4Var.b)) {
-                    dx4Var.y.add(mx4Var);
-                    dx4Var.x.add(null);
-                }
-            }
-            oiVarN = dx4.n();
-            int i13 = oiVarN.p;
-            f85 f85Var = d85.a;
-            WindowId windowId = viewGroup.getWindowId();
-            i5 = i13 - 1;
-            while (i5 >= 0) {
-                animator = (Animator) oiVarN.f(i5);
-                if (animator == null && (ax4Var = (ax4) oiVarN.get(animator)) != null && (view = ax4Var.a) != null && ax4Var.d.a.equals(windowId)) {
-                    mx4 mx4Var10 = ax4Var.c;
-                    boolean z6 = z;
-                    mx4 mx4VarP = dx4Var.p(view, z6);
-                    mx4 mx4VarM = dx4Var.m(view, z6);
-                    if (mx4VarP == null && mx4VarM == null) {
-                        mx4VarM = (mx4) ((oi) dx4Var.u.n).get(view);
-                    }
-                    if ((mx4VarP != null || mx4VarM != null) && ax4Var.e.q(mx4Var10, mx4VarM)) {
-                        if (animator.isRunning() || animator.isStarted()) {
-                            animator.cancel();
-                        } else {
-                            oiVarN.remove(animator);
-                        }
-                    }
-                }
-                i5--;
-                z = true;
-            }
-            dx4Var.k(viewGroup, dx4Var.t, dx4Var.u, dx4Var.x, dx4Var.y);
-            dx4Var.w();
-            return true;
-        }
-        arrayList2 = new ArrayList();
-        oiVarB.put(viewGroup, arrayList2);
-        arrayList2.add(dx4Var);
-        dx4Var.a(new gx4(this, oiVarB));
-        i = 0;
-        dx4Var.g(viewGroup, false);
-        if (arrayList != null) {
-            size2 = arrayList.size();
-            i12 = 0;
-            while (i12 < size2) {
-                Object obj2 = arrayList.get(i12);
-                i12++;
-                ((dx4) obj2).v(viewGroup);
-            }
-        }
-        dx4Var.x = new ArrayList();
-        dx4Var.y = new ArrayList();
-        bq4Var = dx4Var.t;
-        bq4Var2 = dx4Var.u;
-        oiVar = new oi((oi) bq4Var.n);
-        oiVar2 = new oi((oi) bq4Var2.n);
-        i2 = 0;
-        while (true) {
-            iArr = dx4Var.w;
-            if (i2 < iArr.length) {
-                break;
-                break;
-            }
-            i6 = iArr[i2];
-            if (i6 != z4) {
-                z2 = z4;
-                while (i7 >= 0) {
-                    view2 = (View) oiVar.f(i7);
-                    if (view2 == null) {
-                    }
-                }
-            } else if (i6 != 2) {
-                z2 = z4;
-                oiVar3 = (oi) bq4Var.q;
-                oi oiVar5 = (oi) bq4Var2.q;
-                i8 = oiVar3.p;
-                while (i9 < i8) {
-                    view3 = (View) oiVar3.j(i9);
-                    if (view3 == null) {
-                    }
-                }
-            } else if (i6 != 3) {
-                if (i6 == 4) {
-                    xe2Var = (xe2) bq4Var.p;
-                    xe2 xe2Var3 = (xe2) bq4Var2.p;
-                    iH = xe2Var.h();
-                    i11 = i;
-                    while (i11 < iH) {
-                        view7 = (View) xe2Var.i(i11);
-                        if (view7 == null) {
-                            z3 = z4;
-                        } else {
-                            z3 = z4;
-                        }
-                        i11++;
-                        z4 = z3;
-                    }
-                }
-                z2 = z4;
-            } else {
-                z2 = z4;
-                sparseArray = (SparseArray) bq4Var.o;
-                SparseArray sparseArray3 = (SparseArray) bq4Var2.o;
-                size = sparseArray.size();
-                while (i10 < size) {
-                    view5 = (View) sparseArray.valueAt(i10);
-                    if (view5 == null) {
-                    }
-                }
-            }
-            i2++;
-            z4 = z2;
-            i = 0;
-        }
-        z = z4;
-        while (i3 < oiVar.p) {
-            mx4Var2 = (mx4) oiVar.j(i3);
-            if (dx4Var.r(mx4Var2.b)) {
-                dx4Var.x.add(mx4Var2);
-                dx4Var.y.add(null);
-            }
-        }
-        while (i4 < oiVar2.p) {
-            mx4Var = (mx4) oiVar2.j(i4);
-            if (dx4Var.r(mx4Var.b)) {
-                dx4Var.y.add(mx4Var);
-                dx4Var.x.add(null);
-            }
-        }
-        oiVarN = dx4.n();
-        int i14 = oiVarN.p;
-        f85 f85Var2 = d85.a;
-        WindowId windowId2 = viewGroup.getWindowId();
-        i5 = i14 - 1;
-        while (i5 >= 0) {
-            animator = (Animator) oiVarN.f(i5);
-            if (animator == null) {
-            }
-            i5--;
-            z = true;
-        }
-        dx4Var.k(viewGroup, dx4Var.t, dx4Var.u, dx4Var.x, dx4Var.y);
-        dx4Var.w();
+        dx4 r1 = this.n;
+        ViewGroup r2 = this.o;
+        r2.getViewTreeObserver().removeOnPreDrawListener(this);
+        r2.removeOnAttachStateChangeListener(this);
+        boolean r6 = true;
+        if (ix4.c.remove(r2) == true) goto L5;
         return true;
+    L5:
+        oi r3 = ix4.b();
+        ArrayList r4 = (ArrayList) r3.get(r2);
+        if (r4 != null) goto L10;
+        r4 = new ArrayList();
+        r3.put(r2, r4);
+    L8:
+        ArrayList r7 = null;
+    L12:
+        r4.add(r1);
+        r1.a(new gx4(this, r3));
+        int r0 = 0;
+        r1.g(r2, false);
+        if (r7 == null) goto L17;
+        int r5 = r7.size();
+        int r8 = 0;
+    L15:
+        if (r8 >= r5) goto L17;
+        Object r9 = r7.get(r8);
+        r8 = r8 + 1;
+        ((dx4) r9).v(r2);
+    L17:
+        r1.x = new ArrayList();
+        r1.y = new ArrayList();
+        bq4 r10 = r1.t;
+        bq4 r11 = r1.u;
+        oi r12 = new oi((oi) r10.n);
+        oi r13 = new oi((oi) r11.n);
+        int r14 = 0;
+    L18:
+        int[] r15 = r1.w;
+        if (r14 >= r15.length) goto L89;
+        int r16 = r15[r14];
+        if (r16 != r6) goto L23;
+        boolean r17 = r6;
+        int r18 = r12.p - 1;
+    L77:
+        if (r18 < 0) goto L88;
+        View r19 = (View) r12.f(r18);
+        if (r19 == null) goto L87;
+        if (r1.r(r19) == false) goto L87;
+        mx4 r20 = (mx4) r13.remove(r19);
+        if (r20 == null) goto L87;
+        if (r1.r(r20.b) == false) goto L87;
+        r1.x.add((mx4) r12.h(r18));
+        r1.y.add(r20);
+    L87:
+        r18 = r18 - 1;
+    L88:
+        r14 = r14 + 1;
+        r6 = r17;
+        r0 = 0;
+        goto L18
+    L23:
+        if (r16 != 2) goto L25;
+        r17 = r6;
+        oi r21 = (oi) r10.q;
+        oi r22 = (oi) r11.q;
+        int r23 = r21.p;
+        int r110 = 0;
+    L62:
+        if (r110 >= r23) goto L88;
+        View r111 = (View) r21.j(r110);
+        if (r111 == null) goto L75;
+        if (r1.r(r111) == false) goto L75;
+        View r112 = (View) r22.get(r21.f(r110));
+        if (r112 == null) goto L75;
+        if (r1.r(r112) == false) goto L75;
+        mx4 r113 = (mx4) r12.get(r111);
+        mx4 r114 = (mx4) r13.get(r112);
+        if (r113 == null) goto L75;
+        if (r114 == null) goto L75;
+        r1.x.add(r113);
+        r1.y.add(r114);
+        r12.remove(r111);
+        r13.remove(r112);
+    L75:
+        r110 = r110 + 1;
+        goto L62
+    L25:
+        if (r16 != 3) goto L27;
+        r17 = r6;
+        SparseArray r24 = (SparseArray) r10.o;
+        SparseArray r25 = (SparseArray) r11.o;
+        int r26 = r24.size();
+        int r115 = 0;
+    L47:
+        if (r115 >= r26) goto L88;
+        View r116 = (View) r24.valueAt(r115);
+        if (r116 == null) goto L60;
+        if (r1.r(r116) == false) goto L60;
+        View r117 = (View) r25.get(r24.keyAt(r115));
+        if (r117 == null) goto L60;
+        if (r1.r(r117) == false) goto L60;
+        mx4 r118 = (mx4) r12.get(r116);
+        mx4 r119 = (mx4) r13.get(r117);
+        if (r118 == null) goto L60;
+        if (r119 == null) goto L60;
+        r1.x.add(r118);
+        r1.y.add(r119);
+        r12.remove(r116);
+        r13.remove(r117);
+    L60:
+        r115 = r115 + 1;
+        goto L47
+    L27:
+        if (r16 == 4) goto L29;
+    L28:
+        r17 = r6;
+        goto L88
+    L29:
+        xe2 r120 = (xe2) r10.p;
+        xe2 r121 = (xe2) r11.p;
+        int r122 = r120.h();
+        int r123 = r0;
+    L30:
+        if (r123 >= r122) goto L28;
+        View r124 = (View) r120.i(r123);
+        if (r124 != null) goto L34;
+    L44:
+        boolean r125 = r6;
+    L45:
+        r123 = r123 + 1;
+        r6 = r125;
+        goto L30
+    L34:
+        if (r1.r(r124) == false) goto L44;
+        boolean r126 = r6;
+        View r27 = (View) r121.b(r120.e(r123));
+        if (r27 != null) goto L38;
+    L43:
+        r125 = r126;
+        goto L45
+    L38:
+        if (r1.r(r27) == false) goto L43;
+        mx4 r28 = (mx4) r12.get(r124);
+        mx4 r29 = (mx4) r13.get(r27);
+        if (r28 == null) goto L43;
+        if (r29 == null) goto L43;
+        r125 = r126;
+        r1.x.add(r28);
+        r1.y.add(r29);
+        r12.remove(r124);
+        r13.remove(r27);
+        goto L45
+    L89:
+        boolean r127 = r6;
+        int r30 = 0;
+    L91:
+        if (r30 >= r12.p) goto L96;
+        mx4 r31 = (mx4) r12.j(r30);
+        if (r1.r(r31.b) == false) goto L95;
+        r1.x.add(r31);
+        r1.y.add(null);
+    L95:
+        r30 = r30 + 1;
+        goto L91
+    L96:
+        int r32 = 0;
+    L98:
+        if (r32 >= r13.p) goto L104;
+        mx4 r33 = (mx4) r13.j(r32);
+        if (r1.r(r33.b) == false) goto L103;
+        r1.y.add(r33);
+        r1.x.add(null);
+    L103:
+        r32 = r32 + 1;
+        goto L98
+    L104:
+        oi r34 = dx4.n();
+        int r35 = r34.p;
+        f85 r36 = d85.a;
+        WindowId r37 = r2.getWindowId();
+        int r38 = r35 - 1;
+    L105:
+        if (r38 < 0) goto L130;
+        Animator r39 = (Animator) r34.f(r38);
+        if (r39 == null) goto L129;
+        ax4 r40 = (ax4) r34.get(r39);
+        if (r40 == null) goto L129;
+        View r41 = r40.a;
+        if (r41 == null) goto L129;
+        if (r40.d.a.equals(r37) == false) goto L129;
+        mx4 r42 = r40.c;
+        boolean r128 = r127;
+        mx4 r43 = r1.p(r41, r128);
+        mx4 r129 = r1.m(r41, r128);
+        if (r43 != null) goto L118;
+        if (r129 != null) goto L118;
+        r129 = (mx4) ((oi) r1.u.n).get(r41);
+    L118:
+        if (r43 != null) goto L121;
+        if (r129 == null) goto L129;
+    L121:
+        if (r40.e.q(r42, r129) == false) goto L129;
+        if (r39.isRunning() == false) goto L125;
+    L128:
+        r39.cancel();
+        goto L129
+    L125:
+        if (r39.isStarted() == true) goto L128;
+        r34.remove(r39);
+    L129:
+        r38 = r38 - 1;
+        r127 = true;
+        goto L105
+    L130:
+        r1.k(r2, r1.t, r1.u, r1.x, r1.y);
+        r1.w();
+        return true;
+    L10:
+        if (r4.size() <= 0) goto L8;
+        r7 = new ArrayList(r4);
+        goto L12
     }
 
     @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewAttachedToWindow(View view) {
+    public final void onViewAttachedToWindow(View r1) {
     }
 
     @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewDetachedFromWindow(View view) {
-        ViewGroup viewGroup = this.o;
-        viewGroup.getViewTreeObserver().removeOnPreDrawListener(this);
-        viewGroup.removeOnAttachStateChangeListener(this);
-        ix4.c.remove(viewGroup);
-        ArrayList arrayList = (ArrayList) ix4.b().get(viewGroup);
-        if (arrayList != null && arrayList.size() > 0) {
-            int size = arrayList.size();
-            int i = 0;
-            while (i < size) {
-                Object obj = arrayList.get(i);
-                i++;
-                ((dx4) obj).v(viewGroup);
-            }
-        }
+    public final void onViewDetachedFromWindow(View r5) {
+        ViewGroup r6 = this.o;
+        r6.getViewTreeObserver().removeOnPreDrawListener(this);
+        r6.removeOnAttachStateChangeListener(this);
+        ix4.c.remove(r6);
+        ArrayList r0 = (ArrayList) ix4.b().get(r6);
+        if (r0 != null) goto L5;
+    L9:
         this.n.h(true);
+        return;
+    L5:
+        if (r0.size() <= 0) goto L9;
+        int r1 = r0.size();
+        int r2 = 0;
+    L7:
+        if (r2 >= r1) goto L9;
+        Object r3 = r0.get(r2);
+        r2 = r2 + 1;
+        ((dx4) r3).v(r6);
+        goto L7
     }
 }

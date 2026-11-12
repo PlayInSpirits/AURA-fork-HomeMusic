@@ -6,20 +6,27 @@ public final class py3 extends e35 {
     public final e35 p;
     public final int q;
 
-    public py3(e35 e35Var, int i) {
-        this.p = e35Var;
-        this.q = i;
+    public py3(e35 r1, int r2) {
+        this.p = r1;
+        this.q = r2;
     }
 
-    public final boolean equals(Object obj) {
-        if (!(obj instanceof py3)) {
-            return false;
-        }
-        py3 py3Var = (py3) obj;
-        return py3Var.p.equals(this.p) && py3Var.q == this.q;
+    public final boolean equals(Object r3) {
+        if ((r3 instanceof py3) == false) goto L10;
+        py3 r4 = (py3) r3;
+        if (r4.p.equals(this.p) == true) goto L7;
+        return false;
+    L7:
+        if (r4.q != this.q) goto L13;
+        return true;
+    L13:
+        return false;
+    L10:
+        return false;
     }
 
     public final int hashCode() {
-        return this.p.hashCode() + (this.q * 31);
+        int r0 = this.q * 31;
+        return this.p.hashCode() + r0;
     }
 }

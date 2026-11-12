@@ -9,32 +9,34 @@ import android.view.View;
 public final class m01 implements TransformationMethod {
     public final TransformationMethod n;
 
-    public m01(TransformationMethod transformationMethod) {
-        this.n = transformationMethod;
+    public m01(TransformationMethod r1) {
+        this.n = r1;
     }
 
     @Override // android.text.method.TransformationMethod
-    public final CharSequence getTransformation(CharSequence charSequence, View view) {
-        if (view.isInEditMode()) {
-            return charSequence;
-        }
-        TransformationMethod transformationMethod = this.n;
-        if (transformationMethod != null) {
-            charSequence = transformationMethod.getTransformation(charSequence, view);
-        }
-        if (charSequence == null || tz0.a().b() != 1) {
-            return charSequence;
-        }
-        tz0 tz0VarA = tz0.a();
-        tz0VarA.getClass();
-        return tz0VarA.f(0, charSequence.length(), 0, charSequence);
+    public final CharSequence getTransformation(CharSequence r2, View r3) {
+        if (r3.isInEditMode() == false) goto L5;
+        return r2;
+    L5:
+        TransformationMethod r1 = this.n;
+        if (r1 == null) goto L8;
+        r2 = r1.getTransformation(r2, r3);
+    L8:
+        if (r2 != null) goto L10;
+    L14:
+        return r2;
+    L10:
+        if (tz0.a().b() != 1) goto L14;
+        tz0 r4 = tz0.a();
+        r4.getClass();
+        return r4.f(0, r2.length(), 0, r2);
     }
 
     @Override // android.text.method.TransformationMethod
-    public final void onFocusChanged(View view, CharSequence charSequence, boolean z, int i, Rect rect) {
-        TransformationMethod transformationMethod = this.n;
-        if (transformationMethod != null) {
-            transformationMethod.onFocusChanged(view, charSequence, z, i, rect);
-        }
+    public final void onFocusChanged(View r1, CharSequence r2, boolean r3, int r4, Rect r5) {
+        TransformationMethod r0 = this.n;
+        if (r0 == null) goto L6;
+        r0.onFocusChanged(r1, r2, r3, r4, r5);
+        return;
     }
 }

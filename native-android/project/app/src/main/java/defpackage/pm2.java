@@ -10,7 +10,7 @@ import android.os.Parcelable;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class pm2 implements Parcelable {
-    public static final Parcelable.Creator<pm2> CREATOR = new hz0(19);
+    public static final Parcelable.Creator<pm2> CREATOR = null;
     public final String n;
     public final CharSequence o;
     public final CharSequence p;
@@ -22,73 +22,75 @@ public final class pm2 implements Parcelable {
     public final Uri v;
     public MediaDescription w;
 
-    public pm2(String str, CharSequence charSequence, CharSequence charSequence2, CharSequence charSequence3, Bitmap bitmap, Uri uri, Bundle bundle, Uri uri2) {
-        this.n = str;
-        this.o = charSequence;
-        this.p = charSequence2;
-        this.q = charSequence3;
-        this.r = bitmap;
-        this.t = uri;
-        this.u = bundle;
-        this.v = uri2;
+    static {
+        CREATOR = new hz0(19);
     }
 
-    /* JADX WARN: Code duplicated, block: B:19:0x0053  */
-    public static pm2 a(MediaDescription mediaDescription) {
-        Uri mediaUri;
-        String mediaId = mediaDescription.getMediaId();
-        CharSequence title = mediaDescription.getTitle();
-        CharSequence subtitle = mediaDescription.getSubtitle();
-        CharSequence description = mediaDescription.getDescription();
-        Bitmap iconBitmap = mediaDescription.getIconBitmap();
-        Uri iconUri = mediaDescription.getIconUri();
-        Bundle bundleN = f35.n(mediaDescription.getExtras());
-        if (bundleN != null) {
-            bundleN = new Bundle(bundleN);
-        }
-        Bundle bundle = null;
-        if (bundleN != null) {
-            mediaUri = (Uri) bundleN.getParcelable("android.support.v4.media.description.MEDIA_URI");
-            if (mediaUri != null) {
-                if (!bundleN.containsKey("android.support.v4.media.description.NULL_BUNDLE_FLAG") || bundleN.size() != 2) {
-                    bundleN.remove("android.support.v4.media.description.MEDIA_URI");
-                    bundleN.remove("android.support.v4.media.description.NULL_BUNDLE_FLAG");
-                }
-            }
-            if (mediaUri == null) {
-                mediaUri = mediaDescription.getMediaUri();
-            }
-            pm2 pm2Var = new pm2(mediaId, title, subtitle, description, iconBitmap, iconUri, bundle, mediaUri);
-            pm2Var.w = mediaDescription;
-            return pm2Var;
-        }
-        mediaUri = null;
-        bundle = bundleN;
-        if (mediaUri == null) {
-            mediaUri = mediaDescription.getMediaUri();
-        }
-        pm2 pm2Var2 = new pm2(mediaId, title, subtitle, description, iconBitmap, iconUri, bundle, mediaUri);
-        pm2Var2.w = mediaDescription;
-        return pm2Var2;
+    public pm2(String r1, CharSequence r2, CharSequence r3, CharSequence r4, Bitmap r5, Uri r6, Bundle r7, Uri r8) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
+        this.r = r5;
+        this.t = r6;
+        this.u = r7;
+        this.v = r8;
+    }
+
+    public static pm2 a(MediaDescription r13) {
+        String r1 = r13.getMediaId();
+        CharSequence r2 = r13.getTitle();
+        CharSequence r3 = r13.getSubtitle();
+        CharSequence r4 = r13.getDescription();
+        Bitmap r5 = r13.getIconBitmap();
+        Uri r6 = r13.getIconUri();
+        Bundle r0 = f35.n(r13.getExtras());
+        if (r0 == null) goto L5;
+        r0 = new Bundle(r0);
+    L5:
+        Bundle r7 = null;
+        if (r0 == null) goto L16;
+        Uri r9 = (Uri) r0.getParcelable("android.support.v4.media.description.MEDIA_URI");
+        if (r9 != null) goto L10;
+    L15:
+        r7 = r0;
+    L17:
+        if (r9 != null) goto L20;
+        r9 = r13.getMediaUri();
+    L20:
+        pm2 r8 = new pm2(r1, r2, r3, r4, r5, r6, r7, r9);
+        r8.w = r13;
+        return r8;
+    L10:
+        if (r0.containsKey("android.support.v4.media.description.NULL_BUNDLE_FLAG") == true) goto L12;
+    L14:
+        r0.remove("android.support.v4.media.description.MEDIA_URI");
+        r0.remove("android.support.v4.media.description.NULL_BUNDLE_FLAG");
+        goto L15
+    L12:
+        if (r0.size() != 2) goto L14;
+    L16:
+        r9 = null;
+        goto L15
     }
 
     public final MediaDescription b() {
-        MediaDescription mediaDescription = this.w;
-        if (mediaDescription != null) {
-            return mediaDescription;
-        }
-        MediaDescription.Builder builder = new MediaDescription.Builder();
-        builder.setMediaId(this.n);
-        builder.setTitle(this.o);
-        builder.setSubtitle(this.p);
-        builder.setDescription(this.q);
-        builder.setIconBitmap(this.r);
-        builder.setIconUri(this.t);
-        builder.setExtras(this.u);
-        builder.setMediaUri(this.v);
-        MediaDescription mediaDescriptionBuild = builder.build();
-        this.w = mediaDescriptionBuild;
-        return mediaDescriptionBuild;
+        MediaDescription r0 = this.w;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        MediaDescription.Builder r1 = new MediaDescription.Builder();
+        r1.setMediaId(this.n);
+        r1.setTitle(this.o);
+        r1.setSubtitle(this.p);
+        r1.setDescription(this.q);
+        r1.setIconBitmap(this.r);
+        r1.setIconUri(this.t);
+        r1.setExtras(this.u);
+        r1.setMediaUri(this.v);
+        MediaDescription r2 = r1.build();
+        this.w = r2;
+        return r2;
     }
 
     @Override // android.os.Parcelable
@@ -97,11 +99,11 @@ public final class pm2 implements Parcelable {
     }
 
     public final String toString() {
-        return ((Object) this.o) + ", " + ((Object) this.p) + ", " + ((Object) this.q);
+        return this.o + ", " + this.p + ", " + this.q;
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        b().writeToParcel(parcel, i);
+    public final void writeToParcel(Parcel r1, int r2) {
+        b().writeToParcel(r1, r2);
     }
 }

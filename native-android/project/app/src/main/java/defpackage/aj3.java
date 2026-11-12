@@ -36,8 +36,8 @@ public class aj3 extends hd {
     public String u;
     public final d8 v;
 
-    public aj3(Application application) {
-        super(application);
+    public aj3(Application r3) {
+        super(r3);
         this.j = new k03(null);
         this.k = new k03(null);
         this.l = new k03(Boolean.FALSE);
@@ -58,280 +58,258 @@ public class aj3 extends hd {
         this.i = new om1(5, (byte) 0);
     }
 
-    public static boolean d(LyricsList lyricsList) {
-        return (lyricsList == null || lyricsList.getStructuredLyrics() == null || lyricsList.getStructuredLyrics().isEmpty() || lyricsList.getStructuredLyrics().get(0) == null || lyricsList.getStructuredLyrics().get(0).getLine() == null || lyricsList.getStructuredLyrics().get(0).getLine().isEmpty()) ? false : true;
+    public static boolean d(LyricsList r2) {
+        if (r2 != null) goto L5;
+    L16:
+        return false;
+    L5:
+        if (r2.getStructuredLyrics() == null) goto L16;
+        if (r2.getStructuredLyrics().isEmpty() == true) goto L16;
+        if (r2.getStructuredLyrics().get(0) == null) goto L16;
+        if (r2.getStructuredLyrics().get(0).getLine() == null) goto L16;
+        if (r2.getStructuredLyrics().get(0).getLine().isEmpty() == true) goto L16;
+        return true;
     }
 
     public final k03 c() {
         this.f.getClass();
-        k03 k03Var = new k03();
+        k03 r3 = new k03();
         Log.d("QueueRepository", "Getting play queue from server...");
-        rm3 rm3VarB = App.f(false).b();
-        rm3VarB.getClass();
+        rm3 r0 = App.f(false).b();
+        r0.getClass();
         Log.d("BookmarksClient", "getPlayQueue()");
-        ((mt) rm3VarB.o).a(((pn4) rm3VarB.n).f()).enqueue(new p8(k03Var, 3));
-        return k03Var;
+        ((mt) r0.o).a(((pn4) r0.n).f()).enqueue(new p8(r3, 3));
+        return r3;
     }
 
-    public final void e(LyricsCache lyricsCache) {
-        k03 k03Var = this.l;
-        if (lyricsCache == null) {
-            k03Var.i(Boolean.FALSE);
-            return;
-        }
-        k03Var.i(Boolean.TRUE);
-        boolean zIsEmpty = TextUtils.isEmpty(lyricsCache.getStructuredLyrics());
-        k03 k03Var2 = this.j;
-        k03 k03Var3 = this.k;
-        if (zIsEmpty) {
-            k03Var3.i(null);
-            k03Var2.i(lyricsCache.getLyrics());
-            return;
-        }
-        try {
-            k03Var3.i((LyricsList) this.r.d(LyricsList.class, lyricsCache.getStructuredLyrics()));
-            k03Var2.i(null);
-        } catch (Exception unused) {
-            k03Var3.i(null);
-            k03Var2.i(lyricsCache.getLyrics());
-        }
+    public final void e(LyricsCache r6) {
+        k03 r0 = this.l;
+        if (r6 != null) goto L6;
+        r0.i(Boolean.FALSE);
+        return;
+    L6:
+        r0.i(Boolean.TRUE);
+        boolean r1 = TextUtils.isEmpty(r6.getStructuredLyrics());
+        k03 r2 = this.j;
+        k03 r3 = this.k;
+        if (r1 == false) goto L14;
+        r3.i(null);
+        r2.i(r6.getLyrics());
+        return;
+    L14:
+        r3.i((LyricsList) this.r.d(LyricsList.class, r6.getStructuredLyrics()));     // Catch: Exception -> L10
+        r2.i(null);     // Catch: Exception -> L10
+        return;
+    L10:
+        r3.i(null);
+        r2.i(r6.getLyrics());
     }
 
-    public final void f(ba2 ba2Var, final Child child) {
-        LyricsCache lyricsCache;
+    public final void f(ba2 r9, final Child r10) {
         this.j.i(null);
         this.k.i(null);
         this.l.i(Boolean.FALSE);
-        t24 t24Var = this.t;
-        d8 d8Var = this.v;
-        if (t24Var != null) {
-            t24Var.j(d8Var);
-            this.t = null;
-        }
-        String id = child != null ? child.getId() : this.u;
-        if (TextUtils.isEmpty(id) || ba2Var == null) {
-            return;
-        }
-        this.u = id;
-        boolean zIsEmpty = TextUtils.isEmpty(id);
-        om1 om1Var = this.i;
-        if (!zIsEmpty) {
-            t24 t24VarA = ((s24) ((rf2) om1Var.o).n).i().a(new String[]{"lyrics_cache"}, new rs0(9, id));
-            this.t = t24VarA;
-            t24VarA.e(ba2Var, d8Var);
-        }
-        rf2 rf2Var = (rf2) om1Var.o;
-        int i = 3;
-        pb0 pb0Var = new pb0(rf2Var, id, i);
-        Thread thread = new Thread(pb0Var);
-        thread.start();
-        try {
-            thread.join();
-            lyricsCache = (LyricsCache) pb0Var.q;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            lyricsCache = null;
-        }
-        if (lyricsCache != null) {
-            e(lyricsCache);
-        }
-        if (hw.t() || child == null) {
-            return;
-        }
-        final int i2 = 0;
-        if (a.a("songLyrics") != null) {
-            String id2 = child.getId();
-            this.h.getClass();
-            k03 k03Var = new k03();
-            pn4 pn4VarF = App.f(false);
-            if (pn4VarF.o == null) {
-                pn4VarF.o = new xc5(pn4VarF, 16);
-            }
-            xc5 xc5Var = pn4VarF.o;
-            xc5Var.getClass();
-            Log.d("OpenClient", "getLyricsBySongId()");
-            ((n93) xc5Var.p).a(((pn4) xc5Var.o).f(), id2).enqueue(new q8(k03Var, i));
-            k03Var.e(ba2Var, new a83(this) { // from class: yi3
-                public final /* synthetic */ aj3 b;
-
-                {
-                    this.b = this;
-                }
-
-                @Override // defpackage.a83
-                public final void b(Object obj) {
-                    int i3 = i2;
-                    Child child2 = child;
-                    aj3 aj3Var = this.b;
-                    switch (i3) {
-                        case 0:
-                            LyricsList lyricsList = (LyricsList) obj;
-                            aj3Var.k.i(lyricsList);
-                            aj3Var.j.i(null);
-                            if (ud3.O() && aj3.d(lyricsList)) {
-                                aj3Var.g(child2, null, lyricsList);
-                                break;
-                            }
-                            break;
-                        default:
-                            String str = (String) obj;
-                            aj3Var.j.i(str);
-                            aj3Var.k.i(null);
-                            if (ud3.O() && !TextUtils.isEmpty(str)) {
-                                aj3Var.g(child2, str, null);
-                                break;
-                            }
-                            break;
-                    }
-                }
-            });
-            return;
-        }
+        t24 r0 = this.t;
+        d8 r2 = this.v;
+        if (r0 == null) goto L5;
+        r0.j(r2);
+        this.t = null;
+    L5:
+        if (r10 == null) goto L7;
+        String r1 = r10.getId();
+    L9:
+        if (TextUtils.isEmpty(r1) == true) goto L40;
+        if (r9 == null) goto L43;
+        this.u = r1;
+        boolean r3 = TextUtils.isEmpty(r1);
+        om1 r4 = this.i;
+        if (r3 == true) goto L16;
+        t24 r5 = ((s24) ((rf2) r4.o).n).i().a(new String[]{"lyrics_cache"}, new rs0(9, r1));
+        this.t = r5;
+        r5.e(r9, r2);
+    L16:
+        rf2 r6 = (rf2) r4.o;
+        int r7 = 3;
+        pb0 r8 = new pb0(r6, r1, r7);
+        Thread r11 = new Thread(r8);
+        r11.start();
+        r11.join();     // Catch: InterruptedException -> L19
+        LyricsCache r12 = (LyricsCache) r8.q;     // Catch: InterruptedException -> L19
+    L21:
+        if (r12 == null) goto L24;
+        e(r12);
+    L24:
+        if (hw.t() == true) goto L41;
+        if (r10 == null) goto L44;
+        final int r13 = 0;
+        if (a.a("songLyrics") == null) goto L33;
+        String r14 = r10.getId();
+        this.h.getClass();
+        k03 r15 = new k03();
+        pn4 r16 = App.f(false);
+        if (r16.o != null) goto L32;
+        r16.o = new xc5(r16, 16);
+    L32:
+        xc5 r17 = r16.o;
+        r17.getClass();
+        Log.d("OpenClient", "getLyricsBySongId()");
+        ((n93) r17.p).a(((pn4) r17.o).f(), r14).enqueue(new q8(r15, r7));
+        r15.e(r9, new yi3(this, r10, r13));
+        return;
+    L33:
         this.c.getClass();
-        k03 k03Var2 = new k03(null);
-        pn4 pn4VarF2 = App.f(false);
-        if (pn4VarF2.e == null) {
-            pn4VarF2.e = new xc5(pn4VarF2, 14);
-        }
-        xc5 xc5Var2 = pn4VarF2.e;
-        String artist = child.getArtist();
-        String title = child.getTitle();
-        xc5Var2.getClass();
+        k03 r18 = new k03(null);
+        pn4 r19 = App.f(false);
+        if (r19.e != null) goto L36;
+        r19.e = new xc5(r19, 14);
+    L36:
+        xc5 r20 = r19.e;
+        String r21 = r10.getArtist();
+        String r22 = r10.getTitle();
+        r20.getClass();
         Log.d("MediaRetrievalClient", "getLyrics()");
-        ((so2) xc5Var2.p).a(((pn4) xc5Var2.o).f(), artist, title).enqueue(new p8(k03Var2, 6));
-        final int i3 = 1;
-        k03Var2.e(ba2Var, new a83(this) { // from class: yi3
-            public final /* synthetic */ aj3 b;
-
-            {
-                this.b = this;
-            }
-
-            @Override // defpackage.a83
-            public final void b(Object obj) {
-                int i4 = i3;
-                Child child2 = child;
-                aj3 aj3Var = this.b;
-                switch (i4) {
-                    case 0:
-                        LyricsList lyricsList = (LyricsList) obj;
-                        aj3Var.k.i(lyricsList);
-                        aj3Var.j.i(null);
-                        if (ud3.O() && aj3.d(lyricsList)) {
-                            aj3Var.g(child2, null, lyricsList);
-                            break;
-                        }
-                        break;
-                    default:
-                        String str = (String) obj;
-                        aj3Var.j.i(str);
-                        aj3Var.k.i(null);
-                        if (ud3.O() && !TextUtils.isEmpty(str)) {
-                            aj3Var.g(child2, str, null);
-                            break;
-                        }
-                        break;
-                }
-            }
-        });
+        ((so2) r20.p).a(((pn4) r20.o).f(), r21, r22).enqueue(new p8(r18, 6));
+        final int r23 = 1;
+        r18.e(r9, new yi3(this, r10, r23));
+        return;
+    L44:
+        return;
+    L41:
+        return;
+    L19:
+        e = move-exception;
+        e.printStackTrace();
+        r12 = null;
+        goto L21
+    L43:
+        return;
+    L40:
+        return;
+    L7:
+        r1 = this.u;
+        goto L9
     }
 
-    public final void g(Child child, String str, LyricsList lyricsList) {
-        if (child == null) {
-            return;
-        }
-        if ((lyricsList == null || !d(lyricsList)) && TextUtils.isEmpty(str)) {
-            return;
-        }
-        LyricsCache lyricsCache = new LyricsCache(child.getId());
-        lyricsCache.setArtist(child.getArtist());
-        lyricsCache.setTitle(child.getTitle());
-        lyricsCache.setUpdatedAt(System.currentTimeMillis());
-        if (lyricsList == null || !d(lyricsList)) {
-            lyricsCache.setLyrics(str);
-            lyricsCache.setStructuredLyrics(null);
-        } else {
-            lyricsCache.setStructuredLyrics(this.r.j(lyricsList));
-            lyricsCache.setLyrics(null);
-        }
-        new Thread(new lg1(18, (rf2) this.i.o, lyricsCache)).start();
+    public final void g(Child r4, String r5, LyricsList r6) {
+        if (r4 == null) goto L18;
+        if (r6 == null) goto L8;
+        if (d(r6) == false) goto L8;
+    L10:
+        LyricsCache r0 = new LyricsCache(r4.getId());
+        r0.setArtist(r4.getArtist());
+        r0.setTitle(r4.getTitle());
+        r0.setUpdatedAt(System.currentTimeMillis());
+        if (r6 != null) goto L13;
+    L15:
+        r0.setLyrics(r5);
+        r0.setStructuredLyrics(null);
+    L16:
+        int r7 = 18;
+        new Thread(new lg1(r7, (rf2) this.i.o, r0)).start();
         this.l.i(Boolean.TRUE);
+        return;
+    L13:
+        if (d(r6) == false) goto L15;
+        r0.setStructuredLyrics(this.r.j(r6));
+        r0.setLyrics(null);
+    L8:
+        if (TextUtils.isEmpty(r5) == false) goto L10;
+        return;
     }
 
-    public final void h(Context context, Child child) {
-        if (child != null && ot1.c(child.getId())) {
-            ot1.e(context, child);
-            return;
-        }
-        if (child != null) {
-            int i = 1;
-            int i2 = 0;
-            boolean zF = n61.f(1, child.getId(), child.getStarred() != null);
-            d34 d34Var = this.g;
-            if (zF) {
-                if (hw.t()) {
-                    d34Var.J(child.getId(), null, false, null);
-                    child.setStarred(null);
-                    return;
-                }
-                String id = child.getId();
-                zi3 zi3Var = new zi3(this, child, i2);
-                d34Var.getClass();
-                d34.K(id, null, null, zi3Var);
-                child.setStarred(null);
-                return;
-            }
-            if (hw.t()) {
-                d34Var.J(child.getId(), null, true, null);
-                child.setStarred(new Date());
-                return;
-            }
-            String id2 = child.getId();
-            zi3 zi3Var2 = new zi3(this, child, i);
-            d34Var.getClass();
-            d34.I(id2, null, null, zi3Var2);
-            child.setStarred(new Date());
-            if (ud3.X() && ud3.o() == null) {
-                au0.w(context).b(gi1.G(child), new Download(child), false);
-            }
-        }
+    public final void h(Context r7, Child r8) {
+        if (r8 != null) goto L4;
+    L7:
+        if (r8 == null) goto L30;
+        String r0 = r8.getId();
+        int r2 = 1;
+        int r3 = 0;
+        if (r8.getStarred() == null) goto L11;
+        boolean r1 = true;
+    L12:
+        boolean r4 = n61.f(1, r0, r1);
+        d34 r5 = this.g;
+        if (r4 == false) goto L21;
+        if (hw.t() == false) goto L18;
+        r5.J(r8.getId(), null, false, null);
+        r8.setStarred(null);
+        return;
+    L18:
+        String r9 = r8.getId();
+        zi3 r6 = new zi3(this, r8, r3);
+        r5.getClass();
+        d34.K(r9, null, null, r6);
+        r8.setStarred(null);
+        return;
+    L21:
+        if (hw.t() == false) goto L24;
+        r5.J(r8.getId(), null, true, null);
+        r8.setStarred(new Date());
+        return;
+    L24:
+        String r10 = r8.getId();
+        zi3 r11 = new zi3(this, r8, r2);
+        r5.getClass();
+        d34.I(r10, null, null, r11);
+        r8.setStarred(new Date());
+        if (ud3.X() == true) goto L27;
+        return;
+    L27:
+        if (ud3.o() != null) goto L32;
+        au0.w(r7).b(gi1.G(r8), new Download(r8), false);
+        return;
+    L32:
+        return;
+    L11:
+        r1 = false;
+        goto L12
+    L30:
+        return;
+    L4:
+        if (ot1.c(r8.getId()) == false) goto L7;
+        ot1.e(r7, r8);
     }
 
-    public final void i(le1 le1Var, String str, String str2) {
-        this.u = str2;
-        if (TextUtils.isEmpty(str2)) {
-            t24 t24Var = this.t;
-            if (t24Var != null) {
-                t24Var.j(this.v);
-                this.t = null;
-            }
-            this.j.i(null);
-            this.k.i(null);
-            this.l.i(Boolean.FALSE);
-        } else {
-            f(le1Var, null);
-        }
-        k03 k03Var = this.n;
-        if (str == null) {
-            k03Var.i(null);
-            return;
-        }
-        if (str.equals("podcast")) {
-            k03Var.i(null);
-            return;
-        }
-        if (!str.equals("music")) {
-            k03Var.i(null);
-            return;
-        }
-        if (ot1.c(str2)) {
-            k03Var.i(ot1.h(str2));
-        } else if (TextUtils.isEmpty(str2)) {
-            k03Var.i(null);
-        } else {
-            this.c.getClass();
-            xi4.r(str2).e(le1Var, new f7(3, this, str2));
-        }
+    public final void i(le1 r4, String r5, String r6) {
+        this.u = r6;
+        if (TextUtils.isEmpty(r6) == true) goto L5;
+        f(r4, null);
+    L9:
+        k03 r0 = this.n;
+        if (r5 != null) goto L12;
+        r0.i(null);
+        return;
+    L12:
+        if (r5.equals("podcast") == false) goto L14;
+        r0.i(null);
+        return;
+    L14:
+        if (r5.equals("music") == true) goto L18;
+        r0.i(null);
+        return;
+    L18:
+        if (ot1.c(r6) == false) goto L21;
+        r0.i(ot1.h(r6));
+    L24:
         this.m.i(null);
+        return;
+    L21:
+        if (TextUtils.isEmpty(r6) == true) goto L23;
+        this.c.getClass();
+        xi4.r(r6).e(r4, new f7(3, this, r6));
+        goto L24
+    L23:
+        r0.i(null);
+        goto L24
+    L5:
+        t24 r1 = this.t;
+        if (r1 == null) goto L8;
+        r1.j(this.v);
+        this.t = null;
+    L8:
+        this.j.i(null);
+        this.k.i(null);
+        this.l.i(Boolean.FALSE);
+        goto L9
     }
 }

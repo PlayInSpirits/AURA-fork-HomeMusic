@@ -8,13 +8,19 @@ import android.view.ViewGroup;
 public final class ag4 extends rr2 {
     public final /* synthetic */ int c;
 
+    public /* synthetic */ ag4(int r1) {
+        this.c = r1;
+    }
+
     @Override // defpackage.bg4
-    public final float a(ViewGroup viewGroup, View view) {
-        switch (this.c) {
-            case 0:
-                return view.getTranslationY() - viewGroup.getHeight();
-            default:
-                return view.getTranslationY() + viewGroup.getHeight();
-        }
+    public final float a(ViewGroup r1, View r2) {
+        switch(this.c) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return r2.getTranslationY() + r1.getHeight();
+    L7:
+        return r2.getTranslationY() - r1.getHeight();
     }
 }

@@ -7,30 +7,31 @@ import java.util.ArrayList;
 public class eq0 extends yo0 {
     public int m;
 
-    public eq0(ba5 ba5Var) {
-        super(ba5Var);
-        if (ba5Var instanceof up1) {
-            this.e = 2;
-        } else {
-            this.e = 3;
-        }
+    public eq0(ba5 r1) {
+        super(r1);
+        if ((r1 instanceof up1) == false) goto L6;
+        this.e = 2;
+        return;
+    L6:
+        this.e = 3;
     }
 
     @Override // defpackage.yo0
-    public final void d(int i) {
-        if (this.j) {
-            return;
-        }
+    public final void d(int r3) {
+        if (this.j == true) goto L8;
         this.j = true;
-        this.g = i;
-        ArrayList arrayList = this.k;
-        int size = arrayList.size();
-        int i2 = 0;
-        while (i2 < size) {
-            Object obj = arrayList.get(i2);
-            i2++;
-            uo0 uo0Var = (uo0) obj;
-            uo0Var.a(uo0Var);
-        }
+        this.g = r3;
+        ArrayList r2 = this.k;
+        int r4 = r2.size();
+        int r0 = 0;
+    L6:
+        if (r0 >= r4) goto L10;
+        Object r1 = r2.get(r0);
+        r0 = r0 + 1;
+        uo0 r5 = (uo0) r1;
+        r5.a(r5);
+        goto L6
+    L10:
+        return;
     }
 }

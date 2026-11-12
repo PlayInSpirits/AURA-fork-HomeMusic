@@ -3,90 +3,81 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class yb {
-    public static final float[] a;
+    public static final float[] a = null;
 
     static {
-        float f;
-        float f2;
-        float f3;
-        float f4;
-        float f5;
-        float f6;
-        float f7;
-        float f8;
-        float f9;
-        float[] fArr = new float[101];
-        a = fArr;
-        float[] fArr2 = new float[101];
-        float f10 = 0.0f;
-        int i = 0;
-        float f11 = 0.0f;
-        while (true) {
-            float f12 = 1.0f;
-            if (i >= 100) {
-                fArr2[100] = 1.0f;
-                fArr[100] = 1.0f;
-                return;
-            }
-            float f13 = i / 100.0f;
-            float f14 = 1.0f;
-            while (true) {
-                f = ((f14 - f10) / 2.0f) + f10;
-                f2 = f12 - f;
-                f3 = f * 3.0f * f2;
-                f4 = f * f * f;
-                float f15 = (((f * 0.35000002f) + (f2 * 0.175f)) * f3) + f4;
-                f5 = f12;
-                if (Math.abs(f15 - f13) < 1.0E-5d) {
-                    break;
-                }
-                if (f15 > f13) {
-                    f14 = f;
-                } else {
-                    f10 = f;
-                }
-                f12 = f5;
-            }
-            float f16 = 0.5f;
-            fArr[i] = (((f2 * 0.5f) + f) * f3) + f4;
-            float f17 = f5;
-            while (true) {
-                f6 = ((f17 - f11) / 2.0f) + f11;
-                f7 = f5 - f6;
-                f8 = f6 * 3.0f * f7;
-                f9 = f6 * f6 * f6;
-                float f18 = (((f7 * f16) + f6) * f8) + f9;
-                float f19 = f17;
-                if (Math.abs(f18 - f13) >= 1.0E-5d) {
-                    if (f18 > f13) {
-                        f17 = f6;
-                    } else {
-                        f11 = f6;
-                        f17 = f19;
-                    }
-                    f16 = 0.5f;
-                }
-            }
-            fArr2[i] = (((f6 * 0.35000002f) + (f7 * 0.175f)) * f8) + f9;
-            i++;
-        }
+        float[] r1 = new float[101];
+        a = r1;
+        float[] r0 = new float[101];
+        float r2 = 0.0f;
+        int r4 = 0;
+        float r3 = 0.0f;
+    L3:
+        float r6 = 1.0f;
+        if (r4 >= 100) goto L22;
+        float r5 = r4 / 100.0f;
+        float r7 = 1.0f;
+    L6:
+        float r8 = ((r7 - r2) / 2.0f) + r2;
+        float r12 = r6 - r8;
+        float r11 = (r8 * 3.0f) * r12;
+        float r14 = (r8 * r8) * r8;
+        float r16 = (((r8 * 0.35000002f) + (r12 * 0.175f)) * r11) + r14;
+        float r18 = r6;
+        if (Math.abs(r16 - r5) < 1.0E-5d) goto L13;
+        if (r16 <= r5) goto L12;
+        r7 = r8;
+    L11:
+        r6 = r18;
+        goto L6
+    L12:
+        r2 = r8;
+        goto L11
+    L13:
+        float r9 = 0.5f;
+        r1[r4] = (((r12 * 0.5f) + r8) * r11) + r14;
+        float r10 = r18;
+    L14:
+        float r13 = ((r10 - r3) / 2.0f) + r3;
+        float r15 = r18 - r13;
+        float r17 = (r13 * 3.0f) * r15;
+        float r19 = (r13 * r13) * r13;
+        float r110 = (((r15 * r9) + r13) * r17) + r19;
+        float r22 = r10;
+        if (Math.abs(r110 - r5) < 1.0E-5d) goto L21;
+        if (r110 <= r5) goto L20;
+        r10 = r13;
+    L19:
+        r9 = 0.5f;
+        goto L14
+    L20:
+        r3 = r13;
+        r10 = r22;
+        goto L19
+    L21:
+        r0[r4] = (((r13 * 0.35000002f) + (r15 * 0.175f)) * r17) + r19;
+        r4 = r4 + 1;
+        goto L3
+    L22:
+        r0[100] = 1.0f;
+        r1[100] = 1.0f;
     }
 
-    public static xb a(float f) {
-        float f2 = 0.0f;
-        float f3 = 1.0f;
-        float fL = gb.l(f, 0.0f, 1.0f);
-        int i = (int) (100.0f * fL);
-        if (i < 100) {
-            float f4 = i / 100.0f;
-            int i2 = i + 1;
-            float[] fArr = a;
-            float f5 = fArr[i];
-            float f6 = (fArr[i2] - f5) / ((i2 / 100.0f) - f4);
-            float fA = xa3.a(fL, f4, f6, f5);
-            f2 = f6;
-            f3 = fA;
-        }
-        return new xb(f3, f2);
+    public static xb a(float r5) {
+        float r0 = 0.0f;
+        float r1 = 1.0f;
+        float r6 = gb.l(r5, 0.0f, 1.0f);
+        int r3 = (int) (100.0f * r6);
+        if (r3 >= 100) goto L6;
+        float r2 = r3 / 100.0f;
+        int r4 = r3 + 1;
+        float[] r7 = a;
+        float r8 = r7[r3];
+        float r9 = (r7[r4] - r8) / ((r4 / 100.0f) - r2);
+        float r10 = xa3.a(r6, r2, r9, r8);
+        r0 = r9;
+        r1 = r10;
+    L6:
+        return new xb(r1, r0);
     }
 }

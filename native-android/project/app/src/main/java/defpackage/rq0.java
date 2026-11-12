@@ -7,8 +7,8 @@ import android.app.Application;
 public class rq0 extends hd {
     public final om0 c;
 
-    public rq0(Application application) {
-        super(application);
+    public rq0(Application r2) {
+        super(r2);
         this.c = new om0(5);
     }
 }

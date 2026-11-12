@@ -8,81 +8,73 @@ public final class ou implements ui2 {
     public final hs a;
     public final boolean b;
 
-    public ou(hs hsVar, boolean z) {
-        this.a = hsVar;
-        this.b = z;
+    public ou(hs r1, boolean r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
     @Override // defpackage.ui2
-    public final vi2 a(final cf2 cf2Var, final List list, long j) {
-        boolean zIsEmpty = list.isEmpty();
-        v01 v01Var = v01.n;
-        if (zIsEmpty) {
-            return cf2Var.v(nc0.j(j), nc0.i(j), v01Var, new or1(24));
-        }
-        long j2 = this.b ? j : j & (-8589934589L);
-        if (list.size() == 1) {
-            final pi2 pi2Var = (pi2) list.get(0);
-            pi2Var.t();
-            final jg3 jg3VarR = pi2Var.r(j2);
-            final int iMax = Math.max(nc0.j(j), jg3VarR.n);
-            final int iMax2 = Math.max(nc0.i(j), jg3VarR.o);
-            return cf2Var.v(iMax, iMax2, v01Var, new if1() { // from class: mu
-                @Override // defpackage.if1
-                public final Object invoke(Object obj) {
-                    lu.a((ig3) obj, jg3VarR, pi2Var, cf2Var.getLayoutDirection(), iMax, iMax2, this.a);
-                    return j15.a;
-                }
-            });
-        }
-        final jg3[] jg3VarArr = new jg3[list.size()];
-        final hx3 hx3Var = new hx3();
-        hx3Var.n = nc0.j(j);
-        final hx3 hx3Var2 = new hx3();
-        hx3Var2.n = nc0.i(j);
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            pi2 pi2Var2 = (pi2) list.get(i);
-            pi2Var2.t();
-            jg3 jg3VarR2 = pi2Var2.r(j2);
-            jg3VarArr[i] = jg3VarR2;
-            hx3Var.n = Math.max(hx3Var.n, jg3VarR2.n);
-            hx3Var2.n = Math.max(hx3Var2.n, jg3VarR2.o);
-        }
-        return cf2Var.v(hx3Var.n, hx3Var2.n, v01Var, new if1() { // from class: nu
-            @Override // defpackage.if1
-            public final Object invoke(Object obj) {
-                ig3 ig3Var = (ig3) obj;
-                jg3[] jg3VarArr2 = jg3VarArr;
-                int length = jg3VarArr2.length;
-                int i2 = 0;
-                int i3 = 0;
-                while (i3 < length) {
-                    int i4 = i2;
-                    jg3 jg3Var = jg3VarArr2[i3];
-                    jg3Var.getClass();
-                    lu.a(ig3Var, jg3Var, (pi2) list.get(i4), cf2Var.getLayoutDirection(), hx3Var.n, hx3Var2.n, this.a);
-                    i3++;
-                    i2 = i4 + 1;
-                }
-                return j15.a;
-            }
-        });
+    public final vi2 a(final cf2 r14, final List r15, long r16) {
+        boolean r0 = r15.isEmpty();
+        v01 r7 = v01.n;
+        if (r0 == false) goto L7;
+        return r14.v(nc0.j(r16), nc0.i(r16), r7, new or1(24));
+    L7:
+        if (this.b == false) goto L9;
+        long r1 = r16;
+    L11:
+        if (r15.size() != 1) goto L14;
+        final pi2 r2 = (pi2) r15.get(0);
+        r2.t();
+        final jg3 r3 = r2.r(r1);
+        final int r4 = Math.max(nc0.j(r16), r3.n);
+        final int r5 = Math.max(nc0.i(r16), r3.o);
+        return r14.v(r4, r5, r7, new mu(r3, r2, r14, r4, r5, this));
+    L14:
+        final jg3[] r6 = new jg3[r15.size()];
+        final hx3 r8 = new hx3();
+        r8.n = nc0.j(r16);
+        int r9 = 0;
+        final hx3 r10 = new hx3();
+        r10.n = nc0.i(r16);
+        int r11 = r15.size();
+    L15:
+        if (r9 >= r11) goto L18;
+        pi2 r12 = (pi2) r15.get(r9);
+        r12.t();
+        jg3 r13 = r12.r(r1);
+        r6[r9] = r13;
+        r8.n = Math.max(r8.n, r13.n);
+        r10.n = Math.max(r10.n, r13.o);
+        r9 = r9 + 1;
+        goto L15
+    L18:
+        return r14.v(r8.n, r10.n, r7, new nu(r6, r15, r14, r8, r10, this));
+    L9:
+        r1 = r16 & (-8589934589L);
+        goto L11
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof ou)) {
-            return false;
-        }
-        ou ouVar = (ou) obj;
-        return this.a.equals(ouVar.a) && this.b == ouVar.b;
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if ((r3 instanceof ou) == false) goto L16;
+        ou r4 = (ou) r3;
+        if (this.a.equals(r4.a) == true) goto L11;
+        return false;
+    L11:
+        if (this.b == r4.b) goto L14;
+        return false;
+    L14:
+        return true;
+    L16:
+        return false;
     }
 
     public final int hashCode() {
-        return Boolean.hashCode(this.b) + (this.a.hashCode() * 31);
+        int r0 = this.a.hashCode() * 31;
+        return Boolean.hashCode(this.b) + r0;
     }
 
     public final String toString() {

@@ -8,28 +8,47 @@ public final class yc0 {
     public final zc0 c;
     public final oz4 d;
 
-    public yc0(int i, long j, zc0 zc0Var, oz4 oz4Var) {
-        this.a = i;
-        this.b = j;
-        this.c = zc0Var;
-        this.d = oz4Var;
+    public yc0(int r1, long r2, zc0 r4, oz4 r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r4;
+        this.d = r5;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof yc0)) {
-            return false;
-        }
-        yc0 yc0Var = (yc0) obj;
-        return this.a == yc0Var.a && this.b == yc0Var.b && this.c == yc0Var.c && h12.c(this.d, yc0Var.d);
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L5;
+        return true;
+    L5:
+        if ((r5 instanceof yc0) == false) goto L22;
+        yc0 r6 = (yc0) r5;
+        if (this.a == r6.a) goto L11;
+        return false;
+    L11:
+        if (this.b == r6.b) goto L14;
+        return false;
+    L14:
+        if (this.c == r6.c) goto L17;
+        return false;
+    L17:
+        if (h12.c(this.d, r6.d) == true) goto L20;
+        return false;
+    L20:
+        return true;
+    L22:
+        return false;
     }
 
     public final int hashCode() {
-        int iHashCode = (this.c.hashCode() + xa3.b(Integer.hashCode(this.a) * 31, 31, this.b)) * 31;
-        oz4 oz4Var = this.d;
-        return iHashCode + (oz4Var == null ? 0 : oz4Var.hashCode());
+        int r0 = xa3.b(Integer.hashCode(this.a) * 31, 31, this.b);
+        int r2 = (this.c.hashCode() + r0) * 31;
+        oz4 r4 = this.d;
+        if (r4 != null) goto L5;
+        int r5 = 0;
+    L7:
+        return r2 + r5;
+    L5:
+        r5 = r4.hashCode();
+        goto L7
     }
 
     public final String toString() {

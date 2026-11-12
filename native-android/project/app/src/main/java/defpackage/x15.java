@@ -10,16 +10,19 @@ public final class x15 implements r72, Serializable {
 
     @Override // defpackage.r72
     public final Object getValue() {
-        if (this.o == rv2.H) {
-            gf1 gf1Var = this.n;
-            gf1Var.getClass();
-            this.o = gf1Var.invoke();
-            this.n = null;
-        }
+        if (this.o != rv2.H) goto L6;
+        gf1 r0 = this.n;
+        r0.getClass();
+        this.o = r0.invoke();
+        this.n = null;
+    L6:
         return this.o;
     }
 
     public final String toString() {
-        return this.o != rv2.H ? String.valueOf(getValue()) : "Lazy value not initialized yet.";
+        if (this.o != rv2.H) goto L5;
+        return "Lazy value not initialized yet.";
+    L5:
+        return String.valueOf(getValue());
     }
 }

@@ -9,8 +9,8 @@ public class gn3 extends hd {
     public final hh3 c;
     public PodcastEpisode d;
 
-    public gn3(Application application) {
-        super(application);
+    public gn3(Application r2) {
+        super(r2);
         this.c = new hh3(1);
     }
 }

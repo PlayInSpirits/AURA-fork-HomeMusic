@@ -9,36 +9,38 @@ public final class ir extends MetricAffectingSpan {
     public final /* synthetic */ int n;
     public final float o;
 
-    public /* synthetic */ ir(int i, float f) {
-        this.n = i;
-        this.o = f;
+    public /* synthetic */ ir(int r1, float r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // android.text.style.CharacterStyle
-    public final void updateDrawState(TextPaint textPaint) {
-        int i = this.n;
-        float f = this.o;
-        switch (i) {
-            case 0:
-                textPaint.baselineShift += (int) Math.ceil(textPaint.ascent() * f);
-                break;
-            default:
-                textPaint.setTextSkewX(textPaint.getTextSkewX() + f);
-                break;
-        }
+    public final void updateDrawState(TextPaint r4) {
+        int r0 = this.n;
+        float r3 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r4.setTextSkewX(r4.getTextSkewX() + r3);
+        return;
+    L6:
+        r4.baselineShift += (int) Math.ceil(r4.ascent() * r3);
     }
 
     @Override // android.text.style.MetricAffectingSpan
-    public final void updateMeasureState(TextPaint textPaint) {
-        int i = this.n;
-        float f = this.o;
-        switch (i) {
-            case 0:
-                textPaint.baselineShift += (int) Math.ceil(textPaint.ascent() * f);
-                break;
-            default:
-                textPaint.setTextSkewX(textPaint.getTextSkewX() + f);
-                break;
-        }
+    public final void updateMeasureState(TextPaint r4) {
+        int r0 = this.n;
+        float r3 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r4.setTextSkewX(r4.getTextSkewX() + r3);
+        return;
+    L6:
+        r4.baselineShift += (int) Math.ceil(r4.ascent() * r3);
     }
 }

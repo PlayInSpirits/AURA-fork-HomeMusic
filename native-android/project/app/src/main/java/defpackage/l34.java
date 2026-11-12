@@ -6,8 +6,11 @@ public abstract class l34 {
     public static final /* synthetic */ int a = 0;
 
     static {
-        if (50.0f < 0.0f || 50.0f > 100.0f) {
-            fz1.a("The percent should be in the range of [0, 100]");
-        }
+        if (50.0f >= 0.0f) goto L5;
+    L6:
+        fz1.a("The percent should be in the range of [0, 100]");
+        return;
+    L5:
+        if (50.0f > 100.0f) goto L6;
     }
 }

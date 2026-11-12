@@ -5,20 +5,20 @@ package defpackage;
 public final class zp3 extends bb3 {
     public final Object n;
 
-    public zp3(Object obj) {
-        this.n = obj;
+    public zp3(Object r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.bb3
-    public final Object b(m91 m91Var) {
+    public final Object b(m91 r1) {
         return this.n;
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof zp3) {
-            return this.n.equals(((zp3) obj).n);
-        }
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof zp3) == true) goto L5;
         return false;
+    L5:
+        return this.n.equals(((zp3) r2).n);
     }
 
     public final int hashCode() {

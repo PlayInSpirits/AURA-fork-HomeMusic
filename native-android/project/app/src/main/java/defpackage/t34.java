@@ -12,25 +12,25 @@ public final class t34 {
     public boolean g;
     public boolean h;
 
-    public final void a(int i, int i2) {
-        this.c = i;
-        this.d = i2;
+    public final void a(int r3, int r4) {
+        this.c = r3;
+        this.d = r4;
         this.h = true;
-        if (this.g) {
-            if (i2 != Integer.MIN_VALUE) {
-                this.a = i2;
-            }
-            if (i != Integer.MIN_VALUE) {
-                this.b = i;
-                return;
-            }
-            return;
-        }
-        if (i != Integer.MIN_VALUE) {
-            this.a = i;
-        }
-        if (i2 != Integer.MIN_VALUE) {
-            this.b = i2;
-        }
+        if (this.g == false) goto L9;
+        if (r4 == Integer.MIN_VALUE) goto L6;
+        this.a = r4;
+    L6:
+        if (r3 == Integer.MIN_VALUE) goto L14;
+        this.b = r3;
+        return;
+    L14:
+        return;
+    L9:
+        if (r3 == Integer.MIN_VALUE) goto L11;
+        this.a = r3;
+    L11:
+        if (r4 == Integer.MIN_VALUE) goto L15;
+        this.b = r4;
+        return;
     }
 }

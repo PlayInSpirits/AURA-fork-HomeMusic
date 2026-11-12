@@ -11,6 +11,9 @@ public final class HubPlayEventsResult {
     private int duplicates;
     private List<? extends Map<String, ? extends Object>> rejected;
 
+    public HubPlayEventsResult() {
+    }
+
     public final int getAccepted() {
         return this.accepted;
     }
@@ -23,15 +26,15 @@ public final class HubPlayEventsResult {
         return this.rejected;
     }
 
-    public final void setAccepted(int i) {
-        this.accepted = i;
+    public final void setAccepted(int r1) {
+        this.accepted = r1;
     }
 
-    public final void setDuplicates(int i) {
-        this.duplicates = i;
+    public final void setDuplicates(int r1) {
+        this.duplicates = r1;
     }
 
-    public final void setRejected(List<? extends Map<String, ? extends Object>> list) {
-        this.rejected = list;
+    public final void setRejected(List<? extends Map<String, ? extends Object>> r1) {
+        this.rejected = r1;
     }
 }

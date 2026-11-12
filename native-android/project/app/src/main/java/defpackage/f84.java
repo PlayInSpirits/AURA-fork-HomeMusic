@@ -11,5 +11,5 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface f84 {
     @GET("search3")
-    Call<ApiResponse> a(@QueryMap Map<String, String> map, @Query("query") String str, @Query("songCount") int i, @Query("songOffset") int i2, @Query("albumCount") int i3, @Query("albumOffset") int i4, @Query("artistCount") int i5, @Query("artistOffset") int i6, @Query("musicFolderId") String str2);
+    Call<ApiResponse> a(@QueryMap Map<String, String> r1, @Query("query") String r2, @Query("songCount") int r3, @Query("songOffset") int r4, @Query("albumCount") int r5, @Query("albumOffset") int r6, @Query("artistCount") int r7, @Query("artistOffset") int r8, @Query("musicFolderId") String r9);
 }

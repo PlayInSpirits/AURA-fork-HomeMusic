@@ -12,160 +12,172 @@ public final class m45 {
     public final float[] g;
     public final float[] h;
 
-    public m45(boolean z, l45 l45Var) {
-        int i;
-        this.a = z;
-        this.b = l45Var;
-        if (z && l45Var.equals(l45.n)) {
-            kf2.o("Lsq2 not (yet) supported for differential axes");
-            throw null;
-        }
-        int iOrdinal = l45Var.ordinal();
-        if (iOrdinal == 0) {
-            i = 3;
-        } else {
-            if (iOrdinal != 1) {
-                er1.n();
-                throw null;
-            }
-            i = 2;
-        }
-        this.c = i;
+    public m45(boolean r3, l45 r4) {
+        this.a = r3;
+        this.b = r4;
+        if (r3 == true) goto L5;
+    L9:
+        int r5 = r4.ordinal();
+        if (r5 != 0) goto L12;
+        int r6 = 3;
+    L17:
+        this.c = r6;
         this.d = new vh0[20];
         this.f = new float[20];
         this.g = new float[20];
         this.h = new float[3];
+        return;
+    L12:
+        if (r5 != 1) goto L14;
+        r6 = 2;
+        goto L17
+    L14:
+        er1.n();
+        throw null;
+    L5:
+        if (r4.equals(l45.n) == false) goto L9;
+        kf2.o("Lsq2 not (yet) supported for differential axes");
+        throw null;
     }
 
-    public final void a(long j, float f) {
-        int i = (this.e + 1) % 20;
-        this.e = i;
-        vh0[] vh0VarArr = this.d;
-        vh0 vh0Var = vh0VarArr[i];
-        if (vh0Var != null) {
-            vh0Var.a = j;
-            vh0Var.b = f;
-        } else {
-            vh0 vh0Var2 = new vh0();
-            vh0Var2.a = j;
-            vh0Var2.b = f;
-            vh0VarArr[i] = vh0Var2;
-        }
+    public final void a(long r3, float r5) {
+        int r0 = (this.e + 1) % 20;
+        this.e = r0;
+        vh0[] r2 = this.d;
+        vh0 r1 = r2[r0];
+        if (r1 != null) goto L6;
+        vh0 r4 = new vh0();
+        r4.a = r3;
+        r4.b = r5;
+        r2[r0] = r4;
+        return;
+    L6:
+        r1.a = r3;
+        r1.b = r5;
     }
 
-    public final float b(float f) {
-        l45 l45Var;
-        float[] fArr;
-        float[] fArr2;
-        float f2;
-        boolean z;
-        int i;
-        float f3;
-        float fSignum;
-        float f4 = 0.0f;
-        if (f <= 0.0f) {
-            cz1.b("maximumVelocity should be a positive value. You specified=" + f);
-        }
-        int i2 = this.e;
-        vh0[] vh0VarArr = this.d;
-        vh0 vh0Var = vh0VarArr[i2];
-        if (vh0Var == null) {
-            f3 = 0.0f;
-            f2 = 0.0f;
-        } else {
-            int i3 = 0;
-            vh0 vh0Var2 = vh0Var;
-            while (true) {
-                vh0 vh0Var3 = vh0VarArr[i2];
-                boolean z2 = this.a;
-                l45Var = this.b;
-                fArr = this.f;
-                fArr2 = this.g;
-                if (vh0Var3 == null) {
-                    f2 = f4;
-                    z = z2;
-                    i = 1;
-                    break;
-                }
-                long j = vh0Var.a;
-                f2 = f4;
-                int i4 = i2;
-                long j2 = vh0Var3.a;
-                float f5 = j - j2;
-                z = z2;
-                i = 1;
-                float fAbs = Math.abs(j2 - vh0Var2.a);
-                vh0Var2 = (l45Var == l45.n || z) ? vh0Var3 : vh0Var;
-                if (f5 > 100.0f || fAbs > 40.0f) {
-                    break;
-                }
-                fArr[i3] = vh0Var3.b;
-                fArr2[i3] = -f5;
-                i2 = (i4 == 0 ? 20 : i4) - 1;
-                i3++;
-                if (i3 >= 20) {
-                    break;
-                }
-                f4 = f2;
-            }
-            if (i3 >= this.c) {
-                int iOrdinal = l45Var.ordinal();
-                if (iOrdinal == 0) {
-                    try {
-                        float[] fArr3 = this.h;
-                        xl.G(fArr2, fArr, i3, fArr3);
-                        fSignum = fArr3[1];
-                    } catch (IllegalArgumentException unused) {
-                        fSignum = f2;
-                    }
-                } else {
-                    if (iOrdinal != i) {
-                        er1.n();
-                        return f2;
-                    }
-                    int i5 = i3 - i;
-                    float f6 = fArr2[i5];
-                    int i6 = i5;
-                    float fAbs2 = f2;
-                    while (i6 > 0) {
-                        int i7 = i6 - 1;
-                        float f7 = fArr2[i7];
-                        if (f6 != f7) {
-                            float f8 = (z ? -fArr[i7] : fArr[i6] - fArr[i7]) / (f6 - f7);
-                            fAbs2 += Math.abs(f8) * (f8 - (Math.signum(fAbs2) * ((float) Math.sqrt(Math.abs(fAbs2) * 2.0f))));
-                            if (i6 == i5) {
-                                fAbs2 *= 0.5f;
-                            }
-                        }
-                        i6--;
-                        f6 = f7;
-                    }
-                    fSignum = Math.signum(fAbs2) * ((float) Math.sqrt(Math.abs(fAbs2) * 2.0f));
-                }
-                f3 = fSignum * 1000.0f;
-            } else {
-                f3 = f2;
-            }
-        }
-        if (f3 == f2 || Float.isNaN(f3)) {
-            return f2;
-        }
-        if (f3 <= f2) {
-            float f9 = -f;
-            if (f3 < f9) {
-                return f9;
-            }
-        } else if (f3 > f) {
-            f3 = f;
-        }
-        return f3;
+    public final float b(float r20) {
+        float r2 = 0.0f;
+        if (r20 > 0.0f) goto L6;
+        cz1.b("maximumVelocity should be a positive value. You specified=" + r20);
+    L6:
+        int r3 = this.e;
+        vh0[] r4 = this.d;
+        vh0 r5 = r4[r3];
+        if (r5 != null) goto L9;
+        float r0 = 0.0f;
+        float r16 = 0.0f;
+    L59:
+        if (r0 == r16) goto L84;
+        if (Float.isNaN(r0) == true) goto L84;
+        if (r0 > r16) goto L67;
+        float r1 = -r20;
+        if (r0 < r1) goto L73;
+    L85:
+        return r0;
+    L73:
+        return r1;
+    L67:
+        if (r0 <= r20) goto L85;
+        r0 = r20;
+    L84:
+        return r16;
+    L9:
+        int r6 = 0;
+        vh0 r7 = r5;
+    L10:
+        vh0 r8 = r4[r3];
+        boolean r10 = this.a;
+        l45 r11 = this.b;
+        float[] r12 = this.f;
+        float[] r13 = this.g;
+        if (r8 == null) goto L12;
+        long r14 = r5.a;
+        r16 = r2;
+        int r17 = r3;
+        long r9 = r8.a;
+        float r15 = r14 - r9;
+        boolean r18 = r10;
+        int r19 = 1;
+        float r21 = Math.abs(r9 - r7.a);
+        if (r11 == l45.n) goto L18;
+        if (r18 == true) goto L18;
+        r7 = r5;
+    L20:
+        if (r15 > 100.0f) goto L33;
+        if (r21 > 40.0f) goto L33;
+        r12[r6] = r8.b;
+        r13[r6] = -r15;
+        if (r17 != 0) goto L27;
+        int r22 = 20;
+    L28:
+        r3 = r22 - 1;
+        r6 = r6 + 1;
+        if (r6 >= 20) goto L33;
+        r2 = r16;
+        goto L10
+    L27:
+        r22 = r17;
+    L33:
+        if (r6 < this.c) goto L57;
+        int r23 = r11.ordinal();
+        if (r23 == 0) goto L74;
+        if (r23 != r19) goto L51;
+        int r24 = r6 - r19;
+        float r25 = r13[r24];
+        int r26 = r24;
+        float r27 = r16;
+    L39:
+        if (r26 <= 0) goto L50;
+        int r28 = r26 - 1;
+        float r29 = r13[r28];
+        if (r25 == r29) goto L49;
+        if (r18 == false) goto L45;
+        float r30 = -r12[r28];
+    L46:
+        float r31 = r30 / (r25 - r29);
+        r27 = r27 + (Math.abs(r31) * (r31 - (Math.signum(r27) * ((float) Math.sqrt(Math.abs(r27) * 2.0f)))));
+        if (r26 != r24) goto L49;
+        r27 = r27 * 0.5f;
+        goto L49
+    L45:
+        r30 = r12[r26] - r12[r28];
+    L49:
+        r26 = r26 - 1;
+        r25 = r29;
+        goto L39
+    L50:
+        float r32 = Math.signum(r27) * ((float) Math.sqrt(Math.abs(r27) * 2.0f));
+    L56:
+        r0 = r32 * 1000.0f;
+        goto L59
+    L51:
+        er1.n();
+        return r16;
+    L74:
+        float[] r33 = this.h;     // Catch: IllegalArgumentException -> L55
+        xl.G(r13, r12, r6, r33);     // Catch: IllegalArgumentException -> L55
+        r32 = r33[1];     // Catch: IllegalArgumentException -> L55
+    L55:
+        r32 = r16;
+        goto L56
+    L57:
+        r0 = r16;
+    L18:
+        r7 = r8;
+        goto L20
+    L12:
+        r16 = r2;
+        r18 = r10;
+        r19 = 1;
+        goto L33
     }
 
     public /* synthetic */ m45() {
         this(false, l45.n);
     }
 
-    public m45(int i) {
+    public m45(int r2) {
         this(true, l45.o);
     }
 }

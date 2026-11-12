@@ -16,76 +16,105 @@ import java.util.concurrent.atomic.AtomicReference;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class BasePendingResult<R extends t14> {
-    public static final zc j = new zc(3);
+    public static final zc j = null;
+    public final Object a;
+    public final CountDownLatch b;
+    public final ArrayList c;
+    public final AtomicReference d;
     public t14 e;
     public Status f;
     public volatile boolean g;
     public boolean h;
-    public final Object a = new Object();
-    public final CountDownLatch b = new CountDownLatch(1);
-    public final ArrayList c = new ArrayList();
-    public final AtomicReference d = new AtomicReference();
-    public boolean i = false;
+    public boolean i;
 
-    public BasePendingResult(if5 if5Var) {
-        new eq(if5Var != null ? if5Var.a.f : Looper.getMainLooper(), 2);
-        new WeakReference(if5Var);
+    static {
+        j = new zc(3);
     }
 
-    public final void a(cf5 cf5Var) {
-        synchronized (this.a) {
-            try {
-                if (d()) {
-                    cf5Var.a(this.f);
-                } else {
-                    this.c.add(cf5Var);
-                }
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+    public BasePendingResult(if5 r3) {
+        this.a = new Object();
+        this.b = new CountDownLatch(1);
+        this.c = new ArrayList();
+        this.d = new AtomicReference();
+        this.i = false;
+        if (r3 == null) goto L5;
+        Looper r2 = r3.a.f;
+    L6:
+        new eq(r2, 2);
+        new WeakReference(r3);
+        return;
+    L5:
+        r2 = Looper.getMainLooper();
+        goto L6
     }
 
-    public abstract t14 b(Status status);
+    public final void a(cf5 r3) {
+        Object r0 = this.a;
+        monitor-enter(r0);
+    L7:
+        th = move-exception;
+        throw th;
+    L5:
+        if (d() == false) goto L9;
+        r3.a(this.f);     // Catch: Throwable -> L7
+    L10:
+        monitor-exit(r0);     // Catch: Throwable -> L7
+        return;
+    L9:
+        this.c.add(r3);     // Catch: Throwable -> L7
+        goto L10
+    }
 
-    public final void c(Status status) {
-        synchronized (this.a) {
-            try {
-                if (!d()) {
-                    e(b(status));
-                    this.h = true;
-                }
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+    public abstract t14 b(Status r1);
+
+    public final void c(Status r3) {
+        Object r0 = this.a;
+        monitor-enter(r0);
+    L7:
+        th = move-exception;
+        throw th;
+    L5:
+        if (d() == true) goto L9;
+        e(b(r3));     // Catch: Throwable -> L7
+        this.h = true;     // Catch: Throwable -> L7
+    L9:
+        monitor-exit(r0);     // Catch: Throwable -> L7
     }
 
     public final boolean d() {
-        return this.b.getCount() == 0;
+        if (this.b.getCount() != 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
-    public final void e(t14 t14Var) {
-        synchronized (this.a) {
-            try {
-                if (this.h) {
-                    return;
-                }
-                d();
-                ji2.o("Results have already been set", !d());
-                ji2.o("Result has already been consumed", !this.g);
-                this.e = t14Var;
-                this.f = t14Var.a();
-                this.b.countDown();
-                ArrayList arrayList = this.c;
-                int size = arrayList.size();
-                for (int i = 0; i < size; i++) {
-                    ((cf5) arrayList.get(i)).a(this.f);
-                }
-                arrayList.clear();
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+    public final void e(t14 r6) {
+        Object r0 = this.a;
+        monitor-enter(r0);
+    L12:
+        th = move-exception;
+        throw th;
+    L5:
+        if (this.h == true) goto L14;
+        d();     // Catch: Throwable -> L12
+        ji2.o("Results have already been set", !d());     // Catch: Throwable -> L12
+        ji2.o("Result has already been consumed", !this.g);     // Catch: Throwable -> L12
+        this.e = r6;     // Catch: Throwable -> L12
+        this.f = r6.a();     // Catch: Throwable -> L12
+        this.b.countDown();     // Catch: Throwable -> L12
+        ArrayList r7 = this.c;     // Catch: Throwable -> L12
+        int r1 = r7.size();     // Catch: Throwable -> L12
+        int r2 = 0;
+    L7:
+        if (r2 >= r1) goto L9;
+        ((cf5) r7.get(r2)).a(this.f);     // Catch: Throwable -> L12
+        r2 = r2 + 1;     // Catch: Throwable -> L12
+        goto L7
+    L9:
+        r7.clear();     // Catch: Throwable -> L12
+        monitor-exit(r0);     // Catch: Throwable -> L12
+        return;
+    L14:
+        monitor-exit(r0);     // Catch: Throwable -> L12
     }
 }

@@ -7,9 +7,9 @@ public final class tz {
     public final qu2 b;
     public final int c;
 
-    public tz(ev2 ev2Var, qu2 qu2Var, int i) {
-        this.a = ev2Var;
-        this.b = qu2Var;
-        this.c = i;
+    public tz(ev2 r1, qu2 r2, int r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 }

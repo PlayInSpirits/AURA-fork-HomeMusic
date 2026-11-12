@@ -17,79 +17,82 @@ public final class hk implements a83 {
     public final /* synthetic */ k03 b;
     public final /* synthetic */ c12 c;
 
-    public /* synthetic */ hk(c12 c12Var, k03 k03Var, int i) {
-        this.a = i;
-        this.c = c12Var;
-        this.b = k03Var;
+    public /* synthetic */ hk(c12 r1, k03 r2, int r3) {
+        this.a = r3;
+        this.c = r1;
+        this.b = r2;
     }
 
     @Override // defpackage.a83
-    public final void b(Object obj) {
-        int i = this.a;
-        k03 k03Var = this.b;
-        c12 c12Var = this.c;
-        switch (i) {
-            case 0:
-                Child child = (Child) obj;
-                k03Var.j(this);
-                MainActivity mainActivity = (MainActivity) c12Var.o;
-                if (child != null) {
-                    mainActivity.getClass();
-                    e75 e75VarD = mainActivity.d();
-                    b75 b75VarR = gh0.r(mainActivity);
-                    tf0 tf0VarQ = gh0.q(mainActivity);
-                    b75VarR.getClass();
-                    tf0VarQ.getClass();
-                    bq4 bq4Var = new bq4(e75VarD, b75VarR, tf0VarQ);
-                    i30 i30VarA = kx3.a(ii4.class);
-                    String strB = i30VarA.b();
-                    if (strB == null) {
-                        kf2.n("Local and anonymous classes can not be ViewModels");
-                    } else {
-                        ((ii4) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB))).h = child;
-                        SongBottomSheetDialog songBottomSheetDialog = new SongBottomSheetDialog();
-                        Bundle bundle = new Bundle();
-                        bundle.putParcelable("TRACK_OBJECT", child);
-                        songBottomSheetDialog.c0(bundle);
-                        songBottomSheetDialog.m0(mainActivity.k(), null);
-                    }
-                } else {
-                    Toast.makeText(mainActivity, R.string.asset_link_error_song, 0).show();
-                }
-                break;
-            case 1:
-                AlbumID3 albumID3 = (AlbumID3) obj;
-                k03Var.j(this);
-                if (albumID3 != null) {
-                    Bundle bundle2 = new Bundle();
-                    bundle2.putParcelable("ALBUM_OBJECT", albumID3.strippedForNav());
-                    c12Var.g(R.id.albumPageFragment, bundle2);
-                } else {
-                    Toast.makeText((MainActivity) c12Var.o, R.string.asset_link_error_album, 0).show();
-                }
-                break;
-            case 2:
-                ArtistID3 artistID3 = (ArtistID3) obj;
-                k03Var.j(this);
-                if (artistID3 != null) {
-                    Bundle bundle3 = new Bundle();
-                    bundle3.putParcelable("ARTIST_OBJECT", artistID3.strippedForNav());
-                    c12Var.g(R.id.artistPageFragment, bundle3);
-                } else {
-                    Toast.makeText((MainActivity) c12Var.o, R.string.asset_link_error_artist, 0).show();
-                }
-                break;
-            default:
-                Playlist playlist = (Playlist) obj;
-                k03Var.j(this);
-                if (playlist != null) {
-                    Bundle bundle4 = new Bundle();
-                    bundle4.putParcelable("PLAYLIST_OBJECT", playlist);
-                    c12Var.g(R.id.playlistPageFragment, bundle4);
-                } else {
-                    Toast.makeText((MainActivity) c12Var.o, R.string.asset_link_error_playlist, 0).show();
-                }
-                break;
-        }
+    public final void b(Object r5) {
+        int r0 = this.a;
+        k03 r2 = this.b;
+        c12 r3 = this.c;
+        switch(r0) {
+            case 0: goto L19;
+            case 1: goto L14;
+            case 2: goto L9;
+            default: goto L4;
+        };
+    L4:
+        Playlist r6 = (Playlist) r5;
+        r2.j(this);
+        if (r6 != null) goto L7;
+        Toast.makeText((MainActivity) r3.o, R.string.asset_link_error_playlist, 0).show();
+        return;
+    L7:
+        Bundle r4 = new Bundle();
+        r4.putParcelable("PLAYLIST_OBJECT", r6);
+        r3.g(R.id.playlistPageFragment, r4);
+        return;
+    L9:
+        ArtistID3 r7 = (ArtistID3) r5;
+        r2.j(this);
+        if (r7 != null) goto L12;
+        Toast.makeText((MainActivity) r3.o, R.string.asset_link_error_artist, 0).show();
+        return;
+    L12:
+        Bundle r8 = new Bundle();
+        r8.putParcelable("ARTIST_OBJECT", r7.strippedForNav());
+        r3.g(R.id.artistPageFragment, r8);
+        return;
+    L14:
+        AlbumID3 r9 = (AlbumID3) r5;
+        r2.j(this);
+        if (r9 != null) goto L17;
+        Toast.makeText((MainActivity) r3.o, R.string.asset_link_error_album, 0).show();
+        return;
+    L17:
+        Bundle r10 = new Bundle();
+        r10.putParcelable("ALBUM_OBJECT", r9.strippedForNav());
+        r3.g(R.id.albumPageFragment, r10);
+        return;
+    L19:
+        Child r11 = (Child) r5;
+        r2.j(this);
+        MainActivity r12 = (MainActivity) r3.o;
+        if (r11 != null) goto L22;
+        Toast.makeText(r12, R.string.asset_link_error_song, 0).show();
+        return;
+    L22:
+        r12.getClass();
+        e75 r1 = r12.d();
+        b75 r13 = gh0.r(r12);
+        tf0 r14 = gh0.q(r12);
+        r13.getClass();
+        r14.getClass();
+        bq4 r15 = new bq4(r1, r13, r14);
+        i30 r16 = kx3.a(ii4.class);
+        String r17 = r16.b();
+        if (r17 == null) goto L25;
+        ((ii4) r15.l(r16, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r17))).h = r11;
+        SongBottomSheetDialog r18 = new SongBottomSheetDialog();
+        Bundle r19 = new Bundle();
+        r19.putParcelable("TRACK_OBJECT", r11);
+        r18.c0(r19);
+        r18.m0(r12.k(), null);
+        return;
+    L25:
+        kf2.n("Local and anonymous classes can not be ViewModels");
     }
 }

@@ -1,6 +1,5 @@
 package defpackage;
 
-import android.graphics.ImageDecoder;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 
@@ -10,38 +9,44 @@ public final class ow implements t04 {
     public final /* synthetic */ int a;
     public final vs b;
 
-    public ow(int i) {
-        this.a = i;
-        switch (i) {
-            case 1:
-                this.b = new vs();
-                break;
-            default:
-                this.b = new vs();
-                break;
-        }
+    public ow(int r1) {
+        this.a = r1;
+        switch(r1) {
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        this.b = new vs();
+        return;
+    L6:
+        this.b = new vs();
     }
 
     @Override // defpackage.t04
-    public final /* bridge */ /* synthetic */ boolean a(Object obj, db3 db3Var) {
-        switch (this.a) {
-            case 0:
-                break;
-            default:
-                break;
-        }
+    public final /* bridge */ /* synthetic */ boolean a(Object r1, db3 r2) {
+        switch(this.a) {
+            case 0: goto L7;
+            default: goto L4;
+        };
+    L4:
+        InputStream r3 = (InputStream) r1;
+        return true;
+    L7:
+        ByteBuffer r4 = (ByteBuffer) r1;
         return true;
     }
 
     @Override // defpackage.t04
-    public final q04 b(Object obj, int i, int i2, db3 db3Var) {
-        int i3 = this.a;
-        vs vsVar = this.b;
-        switch (i3) {
-            case 0:
-                return vsVar.c(ImageDecoder.createSource((ByteBuffer) obj), i, i2, db3Var);
-            default:
-                return vsVar.c(ImageDecoder.createSource(vw.b((InputStream) obj)), i, i2, db3Var);
-        }
+    public final q04 b(Object r2, int r3, int r4, db3 r5) {
+        int r0 = this.a;
+        vs r1 = this.b;
+        switch(r0) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return r1.c(i3.e(vw.b((InputStream) r2)), r3, r4, r5);
+    L7:
+        return r1.c(i3.e((ByteBuffer) r2), r3, r4, r5);
     }
 }

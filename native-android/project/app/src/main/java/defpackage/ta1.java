@@ -15,35 +15,35 @@ public final class ta1 implements Callable {
     public final /* synthetic */ int d;
     public final /* synthetic */ Object e;
 
-    public /* synthetic */ ta1(String str, Context context, Object obj, int i, int i2) {
-        this.a = i2;
-        this.b = str;
-        this.c = context;
-        this.e = obj;
-        this.d = i;
+    public /* synthetic */ ta1(String r1, Context r2, Object r3, int r4, int r5) {
+        this.a = r5;
+        this.b = r1;
+        this.c = r2;
+        this.e = r3;
+        this.d = r4;
     }
 
     @Override // java.util.concurrent.Callable
     public final Object call() {
-        int i = this.a;
-        int i2 = this.d;
-        Object obj = this.e;
-        Context context = this.c;
-        String str = this.b;
-        switch (i) {
-            case 0:
-                Object[] objArr = {(pa1) obj};
-                ArrayList arrayList = new ArrayList(1);
-                Object obj2 = objArr[0];
-                Objects.requireNonNull(obj2);
-                arrayList.add(obj2);
-                return wa1.b(str, context, Collections.unmodifiableList(arrayList), i2);
-            default:
-                try {
-                    return wa1.b(str, context, (ArrayList) obj, i2);
-                } catch (Throwable unused) {
-                    return new va1(-3);
-                }
-        }
+        int r0 = this.a;
+        int r1 = this.d;
+        Object r2 = this.e;
+        Context r3 = this.c;
+        String r5 = this.b;
+        switch(r0) {
+            case 0: goto L8;
+            default: goto L10;
+        };
+    L8:
+        Object[] r4 = {(pa1) r2};
+        ArrayList r6 = new ArrayList(1);
+        Object r7 = r4[0];
+        Objects.requireNonNull(r7);
+        r6.add(r7);
+        return wa1.b(r5, r3, Collections.unmodifiableList(r6), r1);
+    L10:
+        return wa1.b(r5, r3, (ArrayList) r2, r1);
+    L7:
+        return new va1(-3);
     }
 }

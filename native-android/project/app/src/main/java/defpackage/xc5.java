@@ -9,18 +9,15 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.PowerManager;
-import android.os.RemoteException;
 import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
-import android.view.View;
 import android.view.animation.Animation;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import androidx.work.impl.WorkDatabase_Impl;
 import app.homemusic.R;
 import com.eddyizm.tempus.App;
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import com.eddyizm.tempus.interfaces.StarCallback;
 import com.eddyizm.tempus.subsonic.models.Bookmarks;
 import com.eddyizm.tempus.subsonic.models.Child;
@@ -35,6 +32,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -53,440 +51,496 @@ public final class xc5 implements xs, Callback, in4, ps, m54, g84 {
     public Object o;
     public Object p;
 
-    public xc5(pn4 pn4Var, int i) {
-        String str;
-        gr1 gr1Var;
-        gr1 gr1VarB;
-        dz4 dz4VarA;
-        dz4 dz4VarA2;
-        gr1 gr1VarB2;
-        dz4 dz4VarA3;
-        dz4 dz4VarA4;
-        gr1 gr1VarB3;
-        dz4 dz4VarA5;
-        dz4 dz4VarA6;
-        gr1 gr1VarB4;
-        dz4 dz4VarA7;
-        dz4 dz4VarA8;
-        this.n = i;
-        TimeUnit timeUnit = TimeUnit.SECONDS;
-        TimeUnit timeUnit2 = TimeUnit.MINUTES;
-        String str2 = "https://localhost/rest/";
-        switch (i) {
-            case 11:
-                this.o = pn4Var;
-                ok1 ok1Var = new ok1();
-                ok1Var.a(Date.class, new r01());
-                ok1Var.a(Bookmarks.class, new lt());
-                ok1Var.j = true;
-                ArrayList arrayList = ok1Var.e;
-                int size = arrayList.size();
-                ArrayList arrayList2 = ok1Var.f;
-                ArrayList arrayList3 = new ArrayList(arrayList2.size() + size + 3);
-                arrayList3.addAll(arrayList);
-                Collections.reverse(arrayList3);
-                ArrayList arrayList4 = new ArrayList(arrayList2);
-                Collections.reverse(arrayList4);
-                arrayList3.addAll(arrayList4);
-                int i2 = ok1Var.g;
-                int i3 = ok1Var.h;
-                ak0 ak0Var = bk0.b;
-                boolean z = gk4.a;
-                if (i2 != 2 && i3 != 2) {
-                    dz4 dz4VarA9 = ak0Var.a(i2, i3);
-                    if (z) {
-                        dz4VarA2 = gk4.c.a(i2, i3);
-                        dz4VarA = gk4.b.a(i2, i3);
-                    } else {
-                        dz4VarA = null;
-                        dz4VarA2 = null;
-                    }
-                    arrayList3.add(dz4VarA9);
-                    if (z) {
-                        arrayList3.add(dz4VarA2);
-                        arrayList3.add(dz4VarA);
-                    }
-                }
-                u21 u21Var = ok1Var.a;
-                int i4 = ok1Var.c;
-                HashMap map = new HashMap(ok1Var.d);
-                boolean z2 = ok1Var.i;
-                boolean z3 = ok1Var.j;
-                boolean z4 = ok1Var.k;
-                int i5 = ok1Var.b;
-                new ArrayList(arrayList);
-                new ArrayList(arrayList2);
-                nk1 nk1Var = new nk1(u21Var, i4, map, z2, z3, z4, i5, arrayList3, ok1Var.l, ok1Var.m, new ArrayList(ok1Var.n));
-                Retrofit.Builder builder = new Retrofit.Builder();
-                String strJ = pn4Var.j();
-                String string = strJ != null ? qm4.K0(strJ).toString() : null;
-                str = string != null ? string : "";
-                try {
-                    fr1 fr1Var = new fr1();
-                    gr1Var = null;
-                    try {
-                        fr1Var.e(null, str);
-                        gr1VarB = fr1Var.b();
-                    } catch (IllegalArgumentException unused) {
-                        gr1VarB = gr1Var;
-                    }
-                } catch (IllegalArgumentException unused2) {
-                    gr1Var = null;
-                }
-                if (gr1VarB != null && gr1VarB.d.length() > 0) {
-                    str2 = str;
-                }
-                Retrofit.Builder builderAddConverterFactory = builder.baseUrl(str2).addConverterFactory(GsonConverterFactory.create(nk1Var));
-                cx cxVar = new cx();
-                rx rxVar = new rx(cxVar);
-                cxVar.a = 2592000;
-                n83 n83Var = new n83();
-                n83Var.a(2L, timeUnit2);
-                n83Var.b(20L, timeUnit);
-                n83Var.z = ze5.b(30L, timeUnit);
-                n83Var.A = ze5.b(30L, timeUnit);
-                dr1 dr1Var = new dr1();
-                dr1Var.b = cr1.n;
-                n83Var.c.add(dr1Var);
-                n83Var.c.add(rxVar);
-                File cacheDir = App.a().getCacheDir();
-                cacheDir.getClass();
-                n83Var.l = new hx(cacheDir);
-                SSLSocketFactory sSLSocketFactory = x30.b;
-                if (sSLSocketFactory != null) {
-                    n83Var.c(sSLSocketFactory, x30.a);
-                }
-                Retrofit retrofitBuild = builderAddConverterFactory.client(new o83(n83Var)).build();
-                retrofitBuild.getClass();
-                this.p = (x02) retrofitBuild.create(x02.class);
-                break;
-            case 14:
-                this.o = pn4Var;
-                ok1 ok1Var2 = new ok1();
-                ok1Var2.a(Date.class, new r01());
-                ok1Var2.a(Bookmarks.class, new lt());
-                ok1Var2.j = true;
-                ArrayList arrayList5 = ok1Var2.e;
-                int size2 = arrayList5.size();
-                ArrayList arrayList6 = ok1Var2.f;
-                ArrayList arrayList7 = new ArrayList(arrayList6.size() + size2 + 3);
-                arrayList7.addAll(arrayList5);
-                Collections.reverse(arrayList7);
-                ArrayList arrayList8 = new ArrayList(arrayList6);
-                Collections.reverse(arrayList8);
-                arrayList7.addAll(arrayList8);
-                int i6 = ok1Var2.g;
-                int i7 = ok1Var2.h;
-                ak0 ak0Var2 = bk0.b;
-                boolean z5 = gk4.a;
-                if (i6 != 2 && i7 != 2) {
-                    dz4 dz4VarA10 = ak0Var2.a(i6, i7);
-                    if (z5) {
-                        dz4VarA4 = gk4.c.a(i6, i7);
-                        dz4VarA3 = gk4.b.a(i6, i7);
-                    } else {
-                        dz4VarA3 = null;
-                        dz4VarA4 = null;
-                    }
-                    arrayList7.add(dz4VarA10);
-                    if (z5) {
-                        arrayList7.add(dz4VarA4);
-                        arrayList7.add(dz4VarA3);
-                    }
-                }
-                u21 u21Var2 = ok1Var2.a;
-                int i8 = ok1Var2.c;
-                HashMap map2 = new HashMap(ok1Var2.d);
-                boolean z6 = ok1Var2.i;
-                boolean z7 = ok1Var2.j;
-                boolean z8 = ok1Var2.k;
-                int i9 = ok1Var2.b;
-                new ArrayList(arrayList5);
-                new ArrayList(arrayList6);
-                nk1 nk1Var2 = new nk1(u21Var2, i8, map2, z6, z7, z8, i9, arrayList7, ok1Var2.l, ok1Var2.m, new ArrayList(ok1Var2.n));
-                Retrofit.Builder builder2 = new Retrofit.Builder();
-                String strJ2 = pn4Var.j();
-                String string2 = strJ2 != null ? qm4.K0(strJ2).toString() : null;
-                str = string2 != null ? string2 : "";
-                try {
-                    fr1 fr1Var2 = new fr1();
-                    fr1Var2.e(null, str);
-                    gr1VarB2 = fr1Var2.b();
-                } catch (IllegalArgumentException unused3) {
-                    gr1VarB2 = null;
-                }
-                if (gr1VarB2 != null && gr1VarB2.d.length() > 0) {
-                    str2 = str;
-                }
-                Retrofit.Builder builderAddConverterFactory2 = builder2.baseUrl(str2).addConverterFactory(GsonConverterFactory.create(nk1Var2));
-                cx cxVar2 = new cx();
-                rx rxVar2 = new rx(cxVar2);
-                cxVar2.a = 2592000;
-                n83 n83Var2 = new n83();
-                n83Var2.a(2L, timeUnit2);
-                n83Var2.b(20L, timeUnit);
-                n83Var2.z = ze5.b(30L, timeUnit);
-                n83Var2.A = ze5.b(30L, timeUnit);
-                dr1 dr1Var2 = new dr1();
-                dr1Var2.b = cr1.n;
-                n83Var2.c.add(dr1Var2);
-                n83Var2.c.add(rxVar2);
-                File cacheDir2 = App.a().getCacheDir();
-                cacheDir2.getClass();
-                n83Var2.l = new hx(cacheDir2);
-                SSLSocketFactory sSLSocketFactory2 = x30.b;
-                if (sSLSocketFactory2 != null) {
-                    n83Var2.c(sSLSocketFactory2, x30.a);
-                }
-                Retrofit retrofitBuild2 = builderAddConverterFactory2.client(new o83(n83Var2)).build();
-                retrofitBuild2.getClass();
-                this.p = (so2) retrofitBuild2.create(so2.class);
-                break;
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                this.o = pn4Var;
-                ok1 ok1Var3 = new ok1();
-                ok1Var3.a(Date.class, new r01());
-                ok1Var3.a(Bookmarks.class, new lt());
-                ok1Var3.j = true;
-                ArrayList arrayList9 = ok1Var3.e;
-                int size3 = arrayList9.size();
-                ArrayList arrayList10 = ok1Var3.f;
-                ArrayList arrayList11 = new ArrayList(arrayList10.size() + size3 + 3);
-                arrayList11.addAll(arrayList9);
-                Collections.reverse(arrayList11);
-                ArrayList arrayList12 = new ArrayList(arrayList10);
-                Collections.reverse(arrayList12);
-                arrayList11.addAll(arrayList12);
-                int i10 = ok1Var3.g;
-                int i11 = ok1Var3.h;
-                ak0 ak0Var3 = bk0.b;
-                boolean z9 = gk4.a;
-                if (i10 != 2 && i11 != 2) {
-                    dz4 dz4VarA11 = ak0Var3.a(i10, i11);
-                    if (z9) {
-                        dz4VarA6 = gk4.c.a(i10, i11);
-                        dz4VarA5 = gk4.b.a(i10, i11);
-                    } else {
-                        dz4VarA5 = null;
-                        dz4VarA6 = null;
-                    }
-                    arrayList11.add(dz4VarA11);
-                    if (z9) {
-                        arrayList11.add(dz4VarA6);
-                        arrayList11.add(dz4VarA5);
-                    }
-                }
-                u21 u21Var3 = ok1Var3.a;
-                int i12 = ok1Var3.c;
-                HashMap map3 = new HashMap(ok1Var3.d);
-                boolean z10 = ok1Var3.i;
-                boolean z11 = ok1Var3.j;
-                boolean z12 = ok1Var3.k;
-                int i13 = ok1Var3.b;
-                new ArrayList(arrayList9);
-                new ArrayList(arrayList10);
-                nk1 nk1Var3 = new nk1(u21Var3, i12, map3, z10, z11, z12, i13, arrayList11, ok1Var3.l, ok1Var3.m, new ArrayList(ok1Var3.n));
-                Retrofit.Builder builder3 = new Retrofit.Builder();
-                String strJ3 = pn4Var.j();
-                String string3 = strJ3 != null ? qm4.K0(strJ3).toString() : null;
-                str = string3 != null ? string3 : "";
-                try {
-                    fr1 fr1Var3 = new fr1();
-                    fr1Var3.e(null, str);
-                    gr1VarB3 = fr1Var3.b();
-                } catch (IllegalArgumentException unused4) {
-                    gr1VarB3 = null;
-                }
-                if (gr1VarB3 != null && gr1VarB3.d.length() > 0) {
-                    str2 = str;
-                }
-                Retrofit.Builder builderAddConverterFactory3 = builder3.baseUrl(str2).addConverterFactory(GsonConverterFactory.create(nk1Var3));
-                cx cxVar3 = new cx();
-                rx rxVar3 = new rx(cxVar3);
-                cxVar3.a = 2592000;
-                n83 n83Var3 = new n83();
-                n83Var3.a(2L, timeUnit2);
-                n83Var3.b(20L, timeUnit);
-                n83Var3.z = ze5.b(30L, timeUnit);
-                n83Var3.A = ze5.b(30L, timeUnit);
-                dr1 dr1Var3 = new dr1();
-                dr1Var3.b = cr1.n;
-                n83Var3.c.add(dr1Var3);
-                n83Var3.c.add(rxVar3);
-                File cacheDir3 = App.a().getCacheDir();
-                cacheDir3.getClass();
-                n83Var3.l = new hx(cacheDir3);
-                SSLSocketFactory sSLSocketFactory3 = x30.b;
-                if (sSLSocketFactory3 != null) {
-                    n83Var3.c(sSLSocketFactory3, x30.a);
-                }
-                Retrofit retrofitBuild3 = builderAddConverterFactory3.client(new o83(n83Var3)).build();
-                retrofitBuild3.getClass();
-                this.p = (n93) retrofitBuild3.create(n93.class);
-                break;
-            default:
-                this.o = pn4Var;
-                ok1 ok1Var4 = new ok1();
-                ok1Var4.a(Date.class, new r01());
-                ok1Var4.a(Bookmarks.class, new lt());
-                ok1Var4.j = true;
-                ArrayList arrayList13 = ok1Var4.e;
-                int size4 = arrayList13.size();
-                ArrayList arrayList14 = ok1Var4.f;
-                ArrayList arrayList15 = new ArrayList(arrayList14.size() + size4 + 3);
-                arrayList15.addAll(arrayList13);
-                Collections.reverse(arrayList15);
-                ArrayList arrayList16 = new ArrayList(arrayList14);
-                Collections.reverse(arrayList16);
-                arrayList15.addAll(arrayList16);
-                int i14 = ok1Var4.g;
-                int i15 = ok1Var4.h;
-                ak0 ak0Var4 = bk0.b;
-                boolean z13 = gk4.a;
-                if (i14 != 2 && i15 != 2) {
-                    dz4 dz4VarA12 = ak0Var4.a(i14, i15);
-                    if (z13) {
-                        dz4VarA8 = gk4.c.a(i14, i15);
-                        dz4VarA7 = gk4.b.a(i14, i15);
-                    } else {
-                        dz4VarA7 = null;
-                        dz4VarA8 = null;
-                    }
-                    arrayList15.add(dz4VarA12);
-                    if (z13) {
-                        arrayList15.add(dz4VarA8);
-                        arrayList15.add(dz4VarA7);
-                    }
-                }
-                u21 u21Var4 = ok1Var4.a;
-                int i16 = ok1Var4.c;
-                HashMap map4 = new HashMap(ok1Var4.d);
-                boolean z14 = ok1Var4.i;
-                boolean z15 = ok1Var4.j;
-                boolean z16 = ok1Var4.k;
-                int i17 = ok1Var4.b;
-                new ArrayList(arrayList13);
-                new ArrayList(arrayList14);
-                nk1 nk1Var4 = new nk1(u21Var4, i16, map4, z14, z15, z16, i17, arrayList15, ok1Var4.l, ok1Var4.m, new ArrayList(ok1Var4.n));
-                Retrofit.Builder builder4 = new Retrofit.Builder();
-                String strJ4 = pn4Var.j();
-                String string4 = strJ4 != null ? qm4.K0(strJ4).toString() : null;
-                str = string4 != null ? string4 : "";
-                try {
-                    fr1 fr1Var4 = new fr1();
-                    fr1Var4.e(null, str);
-                    gr1VarB4 = fr1Var4.b();
-                } catch (IllegalArgumentException unused5) {
-                    gr1VarB4 = null;
-                }
-                if (gr1VarB4 != null && gr1VarB4.d.length() > 0) {
-                    str2 = str;
-                }
-                Retrofit.Builder builderAddConverterFactory4 = builder4.baseUrl(str2).addConverterFactory(GsonConverterFactory.create(nk1Var4));
-                cx cxVar4 = new cx();
-                rx rxVar4 = new rx(cxVar4);
-                cxVar4.a = 2592000;
-                n83 n83Var4 = new n83();
-                n83Var4.a(2L, timeUnit2);
-                n83Var4.b(20L, timeUnit);
-                n83Var4.z = ze5.b(30L, timeUnit);
-                n83Var4.A = ze5.b(30L, timeUnit);
-                dr1 dr1Var4 = new dr1();
-                dr1Var4.b = cr1.n;
-                n83Var4.c.add(dr1Var4);
-                n83Var4.c.add(rxVar4);
-                File cacheDir4 = App.a().getCacheDir();
-                cacheDir4.getClass();
-                n83Var4.l = new hx(cacheDir4);
-                SSLSocketFactory sSLSocketFactory4 = x30.b;
-                if (sSLSocketFactory4 != null) {
-                    n83Var4.c(sSLSocketFactory4, x30.a);
-                }
-                Retrofit retrofitBuild4 = builderAddConverterFactory4.client(new o83(n83Var4)).build();
-                retrofitBuild4.getClass();
-                this.p = (w8) retrofitBuild4.create(w8.class);
-                break;
-        }
+    public xc5(pn4 r29, int r30) {
+        this.n = r30;
+        TimeUnit r5 = TimeUnit.SECONDS;
+        TimeUnit r8 = TimeUnit.MINUTES;
+        String r12 = "https://localhost/rest/";
+        String r13 = "";
+        switch(r30) {
+            case 11: goto L91;
+            case 14: goto L62;
+            case 16: goto L33;
+            default: goto L4;
+        };
+    L4:
+        this.o = r29;
+        ok1 r2 = new ok1();
+        r2.a(Date.class, new r01());
+        r2.a(Bookmarks.class, new lt());
+        r2.j = true;
+        ArrayList r4 = r2.e;
+        int r6 = r4.size();
+        ArrayList r7 = r2.f;
+        ArrayList r3 = new ArrayList((r7.size() + r6) + 3);
+        r3.addAll(r4);
+        Collections.reverse(r3);
+        ArrayList r9 = new ArrayList(r7);
+        Collections.reverse(r9);
+        r3.addAll(r9);
+        int r10 = r2.g;
+        int r11 = r2.h;
+        ak0 r14 = bk0.b;
+        boolean r16 = gk4.a;
+        if (r10 == 2) goto L14;
+        if (r11 == 2) goto L14;
+        dz4 r15 = r14.a(r10, r11);
+        if (r16 == false) goto L10;
+        dz4 r17 = gk4.c.a(r10, r11);
+        dz4 r18 = gk4.b.a(r10, r11);
+    L11:
+        r3.add(r15);
+        if (r16 == false) goto L14;
+        r3.add(r17);
+        r3.add(r18);
+        goto L14
+    L10:
+        r18 = null;
+        r17 = null;
+    L14:
+        u21 r19 = r2.a;
+        int r20 = r2.c;
+        HashMap r110 = new HashMap(r2.d);
+        boolean r111 = r2.i;
+        boolean r112 = r2.j;
+        boolean r113 = r2.k;
+        int r21 = r2.b;
+        new ArrayList(r4);
+        new ArrayList(r7);
+        nk1 r114 = new nk1(r19, r20, r110, r111, r112, r113, r21, r3, r2.l, r2.m, new ArrayList(r2.n));
+        Retrofit.Builder r22 = new Retrofit.Builder();
+        String r1 = r29.j();
+        if (r1 == null) goto L17;
+        String r23 = qm4.K0(r1).toString();
+    L18:
+        if (r23 == null) goto L128;
+        r13 = r23;
+    L128:
+        fr1 r24 = new fr1();     // Catch: IllegalArgumentException -> L23
+        r24.e(null, r13);     // Catch: IllegalArgumentException -> L23
+        gr1 r115 = r24.b();     // Catch: IllegalArgumentException -> L23
+    L24:
+        if (r115 != null) goto L26;
+    L28:
+        Retrofit.Builder r25 = r22.baseUrl(r12).addConverterFactory(GsonConverterFactory.create(r114));
+        cx r26 = new cx();
+        rx r27 = new rx(r26);
+        r26.a = 2592000;
+        n83 r28 = new n83();
+        r28.a(2, r8);
+        r28.b(20, r5);
+        r28.z = ze5.b(30, r5);
+        r28.A = ze5.b(30, r5);
+        dr1 r31 = new dr1();
+        r31.b = cr1.n;
+        r28.c.add(r31);
+        r28.c.add(r27);
+        File r32 = App.a().getCacheDir();
+        r32.getClass();
+        r28.l = new hx(r32);
+        SSLSocketFactory r33 = x30.b;
+        if (r33 == null) goto L31;
+        r28.c(r33, x30.a);
+    L31:
+        Retrofit r34 = r25.client(new o83(r28)).build();
+        r34.getClass();
+        this.p = (w8) r34.create(w8.class);
+        return;
+    L26:
+        if (r115.d.length() <= 0) goto L28;
+        r12 = r13;
+    L23:
+        r115 = null;
+        goto L24
+    L17:
+        r23 = null;
+        goto L18
+    L33:
+        this.o = r29;
+        ok1 r35 = new ok1();
+        r35.a(Date.class, new r01());
+        r35.a(Bookmarks.class, new lt());
+        r35.j = true;
+        ArrayList r36 = r35.e;
+        int r37 = r36.size();
+        ArrayList r38 = r35.f;
+        ArrayList r39 = new ArrayList((r38.size() + r37) + 3);
+        r39.addAll(r36);
+        Collections.reverse(r39);
+        ArrayList r40 = new ArrayList(r38);
+        Collections.reverse(r40);
+        r39.addAll(r40);
+        int r41 = r35.g;
+        int r42 = r35.h;
+        ak0 r116 = bk0.b;
+        boolean r117 = gk4.a;
+        if (r41 == 2) goto L43;
+        if (r42 == 2) goto L43;
+        dz4 r118 = r116.a(r41, r42);
+        if (r117 == false) goto L39;
+        dz4 r119 = gk4.c.a(r41, r42);
+        dz4 r43 = gk4.b.a(r41, r42);
+    L40:
+        r39.add(r118);
+        if (r117 == false) goto L43;
+        r39.add(r119);
+        r39.add(r43);
+        goto L43
+    L39:
+        r43 = null;
+        r119 = null;
+    L43:
+        u21 r44 = r35.a;
+        int r45 = r35.c;
+        HashMap r120 = new HashMap(r35.d);
+        boolean r121 = r35.i;
+        boolean r122 = r35.j;
+        boolean r123 = r35.k;
+        int r46 = r35.b;
+        new ArrayList(r36);
+        new ArrayList(r38);
+        nk1 r124 = new nk1(r44, r45, r120, r121, r122, r123, r46, r39, r35.l, r35.m, new ArrayList(r35.n));
+        Retrofit.Builder r47 = new Retrofit.Builder();
+        String r48 = r29.j();
+        if (r48 == null) goto L46;
+        String r49 = qm4.K0(r48).toString();
+    L47:
+        if (r49 == null) goto L124;
+        r13 = r49;
+    L124:
+        fr1 r50 = new fr1();     // Catch: IllegalArgumentException -> L52
+        r50.e(null, r13);     // Catch: IllegalArgumentException -> L52
+        gr1 r125 = r50.b();     // Catch: IllegalArgumentException -> L52
+    L53:
+        if (r125 != null) goto L55;
+    L57:
+        Retrofit.Builder r51 = r47.baseUrl(r12).addConverterFactory(GsonConverterFactory.create(r124));
+        cx r52 = new cx();
+        rx r53 = new rx(r52);
+        r52.a = 2592000;
+        n83 r54 = new n83();
+        r54.a(2, r8);
+        r54.b(20, r5);
+        r54.z = ze5.b(30, r5);
+        r54.A = ze5.b(30, r5);
+        dr1 r55 = new dr1();
+        r55.b = cr1.n;
+        r54.c.add(r55);
+        r54.c.add(r53);
+        File r56 = App.a().getCacheDir();
+        r56.getClass();
+        r54.l = new hx(r56);
+        SSLSocketFactory r57 = x30.b;
+        if (r57 == null) goto L60;
+        r54.c(r57, x30.a);
+    L60:
+        Retrofit r58 = r51.client(new o83(r54)).build();
+        r58.getClass();
+        this.p = (n93) r58.create(n93.class);
+        return;
+    L55:
+        if (r125.d.length() <= 0) goto L57;
+        r12 = r13;
+    L52:
+        r125 = null;
+        goto L53
+    L46:
+        r49 = null;
+        goto L47
+    L62:
+        this.o = r29;
+        ok1 r59 = new ok1();
+        r59.a(Date.class, new r01());
+        r59.a(Bookmarks.class, new lt());
+        r59.j = true;
+        ArrayList r60 = r59.e;
+        int r61 = r60.size();
+        ArrayList r62 = r59.f;
+        ArrayList r63 = new ArrayList((r62.size() + r61) + 3);
+        r63.addAll(r60);
+        Collections.reverse(r63);
+        ArrayList r64 = new ArrayList(r62);
+        Collections.reverse(r64);
+        r63.addAll(r64);
+        int r65 = r59.g;
+        int r66 = r59.h;
+        ak0 r126 = bk0.b;
+        boolean r127 = gk4.a;
+        if (r65 == 2) goto L72;
+        if (r66 == 2) goto L72;
+        dz4 r128 = r126.a(r65, r66);
+        if (r127 == false) goto L68;
+        dz4 r129 = gk4.c.a(r65, r66);
+        dz4 r67 = gk4.b.a(r65, r66);
+    L69:
+        r63.add(r128);
+        if (r127 == false) goto L72;
+        r63.add(r129);
+        r63.add(r67);
+        goto L72
+    L68:
+        r67 = null;
+        r129 = null;
+    L72:
+        u21 r68 = r59.a;
+        int r69 = r59.c;
+        HashMap r130 = new HashMap(r59.d);
+        boolean r131 = r59.i;
+        boolean r132 = r59.j;
+        boolean r133 = r59.k;
+        int r70 = r59.b;
+        new ArrayList(r60);
+        new ArrayList(r62);
+        nk1 r134 = new nk1(r68, r69, r130, r131, r132, r133, r70, r63, r59.l, r59.m, new ArrayList(r59.n));
+        Retrofit.Builder r71 = new Retrofit.Builder();
+        String r72 = r29.j();
+        if (r72 == null) goto L75;
+        String r73 = qm4.K0(r72).toString();
+    L76:
+        if (r73 == null) goto L132;
+        r13 = r73;
+    L132:
+        fr1 r74 = new fr1();     // Catch: IllegalArgumentException -> L81
+        r74.e(null, r13);     // Catch: IllegalArgumentException -> L81
+        gr1 r135 = r74.b();     // Catch: IllegalArgumentException -> L81
+    L82:
+        if (r135 != null) goto L84;
+    L86:
+        Retrofit.Builder r75 = r71.baseUrl(r12).addConverterFactory(GsonConverterFactory.create(r134));
+        cx r76 = new cx();
+        rx r77 = new rx(r76);
+        r76.a = 2592000;
+        n83 r78 = new n83();
+        r78.a(2, r8);
+        r78.b(20, r5);
+        r78.z = ze5.b(30, r5);
+        r78.A = ze5.b(30, r5);
+        dr1 r79 = new dr1();
+        r79.b = cr1.n;
+        r78.c.add(r79);
+        r78.c.add(r77);
+        File r80 = App.a().getCacheDir();
+        r80.getClass();
+        r78.l = new hx(r80);
+        SSLSocketFactory r81 = x30.b;
+        if (r81 == null) goto L89;
+        r78.c(r81, x30.a);
+    L89:
+        Retrofit r82 = r75.client(new o83(r78)).build();
+        r82.getClass();
+        this.p = (so2) r82.create(so2.class);
+        return;
+    L84:
+        if (r135.d.length() <= 0) goto L86;
+        r12 = r13;
+    L81:
+        r135 = null;
+        goto L82
+    L75:
+        r73 = null;
+        goto L76
+    L91:
+        this.o = r29;
+        ok1 r83 = new ok1();
+        r83.a(Date.class, new r01());
+        r83.a(Bookmarks.class, new lt());
+        r83.j = true;
+        ArrayList r84 = r83.e;
+        int r85 = r84.size();
+        ArrayList r86 = r83.f;
+        ArrayList r87 = new ArrayList((r86.size() + r85) + 3);
+        r87.addAll(r84);
+        Collections.reverse(r87);
+        ArrayList r88 = new ArrayList(r86);
+        Collections.reverse(r88);
+        r87.addAll(r88);
+        int r89 = r83.g;
+        int r90 = r83.h;
+        ak0 r136 = bk0.b;
+        boolean r137 = gk4.a;
+        if (r89 == 2) goto L101;
+        if (r90 == 2) goto L101;
+        dz4 r138 = r136.a(r89, r90);
+        if (r137 == false) goto L97;
+        dz4 r139 = gk4.c.a(r89, r90);
+        dz4 r91 = gk4.b.a(r89, r90);
+    L98:
+        r87.add(r138);
+        if (r137 == false) goto L101;
+        r87.add(r139);
+        r87.add(r91);
+        goto L101
+    L97:
+        r91 = null;
+        r139 = null;
+    L101:
+        u21 r92 = r83.a;
+        int r93 = r83.c;
+        HashMap r140 = new HashMap(r83.d);
+        boolean r141 = r83.i;
+        boolean r142 = r83.j;
+        boolean r143 = r83.k;
+        int r94 = r83.b;
+        new ArrayList(r84);
+        new ArrayList(r86);
+        nk1 r144 = new nk1(r92, r93, r140, r141, r142, r143, r94, r87, r83.l, r83.m, new ArrayList(r83.n));
+        Retrofit.Builder r95 = new Retrofit.Builder();
+        String r96 = r29.j();
+        if (r96 == null) goto L104;
+        String r97 = qm4.K0(r96).toString();
+    L105:
+        if (r97 == null) goto L130;
+        r13 = r97;
+    L130:
+        fr1 r98 = new fr1();     // Catch: IllegalArgumentException -> L112
+        gr1 r99 = null;
+        r98.e(null, r13);     // Catch: IllegalArgumentException -> L123
+        gr1 r145 = r98.b();     // Catch: IllegalArgumentException -> L123
+    L114:
+        if (r145 != null) goto L116;
+    L118:
+        Retrofit.Builder r100 = r95.baseUrl(r12).addConverterFactory(GsonConverterFactory.create(r144));
+        cx r101 = new cx();
+        rx r102 = new rx(r101);
+        r101.a = 2592000;
+        n83 r103 = new n83();
+        r103.a(2, r8);
+        r103.b(20, r5);
+        r103.z = ze5.b(30, r5);
+        r103.A = ze5.b(30, r5);
+        dr1 r104 = new dr1();
+        r104.b = cr1.n;
+        r103.c.add(r104);
+        r103.c.add(r102);
+        File r105 = App.a().getCacheDir();
+        r105.getClass();
+        r103.l = new hx(r105);
+        SSLSocketFactory r106 = x30.b;
+        if (r106 == null) goto L121;
+        r103.c(r106, x30.a);
+    L121:
+        Retrofit r107 = r100.client(new o83(r103)).build();
+        r107.getClass();
+        this.p = (x02) r107.create(x02.class);
+        return;
+    L116:
+        if (r145.d.length() <= 0) goto L118;
+        r12 = r13;
+    L113:
+        r145 = r99;
+    L112:
+        r99 = null;
+        goto L113
+    L104:
+        r97 = null;
+        goto L105
     }
 
-    public static void l(xc5 xc5Var, boolean z, boolean z2) {
-        synchronized (xc5Var) {
-            boolean z3 = false;
-            if (z) {
-                if (((PowerManager.WakeLock) xc5Var.p) == null) {
-                    if (((Context) xc5Var.o).checkSelfPermission("android.permission.WAKE_LOCK") != 0) {
-                        l93.q0("WakeLockManager", "WAKE_LOCK permission not granted, can't acquire wake lock for playback");
-                        return;
-                    }
-                    PowerManager powerManager = (PowerManager) ((Context) xc5Var.o).getSystemService("power");
-                    if (powerManager == null) {
-                        l93.q0("WakeLockManager", "PowerManager is null, therefore not creating the WakeLock.");
-                        return;
-                    } else {
-                        PowerManager.WakeLock wakeLockNewWakeLock = powerManager.newWakeLock(1, "ExoPlayer:WakeLockManager");
-                        xc5Var.p = wakeLockNewWakeLock;
-                        wakeLockNewWakeLock.setReferenceCounted(false);
-                    }
-                }
-            }
-            PowerManager.WakeLock wakeLock = (PowerManager.WakeLock) xc5Var.p;
-            if (wakeLock == null) {
-                return;
-            }
-            if (z && z2) {
-                z3 = true;
-            }
-            if (z3) {
-                wakeLock.acquire();
-            } else {
-                wakeLock.release();
-            }
-        }
+    public static void l(xc5 r4, boolean r5, boolean r6) {
+        monitor-enter(r4);
+        boolean r0 = false;
+        if (r5 == true) goto L34;
+    L20:
+        PowerManager.WakeLock r2 = (PowerManager.WakeLock) r4.p;     // Catch: Throwable -> L12
+        if (r2 != null) goto L24;
+        monitor-exit(r4);
+        return;
+    L24:
+        if (r5 == false) goto L27;
+        if (r6 == false) goto L27;
+        r0 = true;
+    L27:
+        if (r0 == false) goto L29;
+        r2.acquire();     // Catch: Throwable -> L12
+    L30:
+        monitor-exit(r4);
+        return;
+    L29:
+        r2.release();     // Catch: Throwable -> L12
+        goto L30
+    L34:
+    L12:
+        th = move-exception;
+        throw th;
+    L6:
+        if (((PowerManager.WakeLock) r4.p) != null) goto L20;
+        if (((Context) r4.o).checkSelfPermission("android.permission.WAKE_LOCK") == 0) goto L14;
+        l93.q0("WakeLockManager", "WAKE_LOCK permission not granted, can't acquire wake lock for playback");     // Catch: Throwable -> L12
+        monitor-exit(r4);
+        return;
+    L14:
+        PowerManager r3 = (PowerManager) ((Context) r4.o).getSystemService("power");     // Catch: Throwable -> L12
+        if (r3 != null) goto L19;
+        l93.q0("WakeLockManager", "PowerManager is null, therefore not creating the WakeLock.");     // Catch: Throwable -> L12
+        monitor-exit(r4);
+        return;
+    L19:
+        PowerManager.WakeLock r7 = r3.newWakeLock(1, "ExoPlayer:WakeLockManager");     // Catch: Throwable -> L12
+        r4.p = r7;     // Catch: Throwable -> L12
+        r7.setReferenceCounted(false);     // Catch: Throwable -> L12
+        goto L20
     }
 
-    public static int r(int i, int i2) {
-        int i3 = 0;
-        int i4 = 0;
-        for (int i5 = 0; i5 < i; i5++) {
-            i3++;
-            if (i3 == i2) {
-                i4++;
-                i3 = 0;
-            } else if (i3 > i2) {
-                i4++;
-                i3 = 1;
-            }
-        }
-        return i3 + 1 > i2 ? i4 + 1 : i4;
+    public static int r(int r5, int r6) {
+        int r1 = 0;
+        int r2 = 0;
+        int r3 = 0;
+    L4:
+        if (r1 >= r5) goto L12;
+        r2 = r2 + 1;
+        if (r2 != r6) goto L8;
+        r3 = r3 + 1;
+        r2 = 0;
+    L10:
+        r1 = r1 + 1;
+        goto L4
+    L8:
+        if (r2 <= r6) goto L10;
+        r3 = r3 + 1;
+        r2 = 1;
+        goto L10
+    L12:
+        if ((r2 + 1) > r6) goto L14;
+        return r3;
+    L14:
+        return r3 + 1;
     }
 
     @Override // defpackage.g84
-    public void a(be3 be3Var) {
-        qy4 qy4Var = (qy4) this.p;
-        SparseArray sparseArray = qy4Var.h;
-        h00 h00Var = (h00) this.o;
-        if (be3Var.A() == 0 && (be3Var.A() & 128) != 0) {
-            be3Var.O(6);
-            int iA = be3Var.a() / 4;
-            for (int i = 0; i < iA; i++) {
-                be3Var.k(h00Var.b, 0, 4);
-                h00Var.q(0);
-                int i2 = h00Var.i(16);
-                h00Var.t(3);
-                if (i2 == 0) {
-                    h00Var.t(13);
-                } else {
-                    int i3 = h00Var.i(13);
-                    if (sparseArray.get(i3) == null) {
-                        sparseArray.put(i3, new h84(new ew4(qy4Var, i3)));
-                        qy4Var.n++;
-                    }
-                }
-            }
-            if (qy4Var.a != 2) {
-                sparseArray.remove(0);
-            }
-        }
+    public void a(be3 r10) {
+        qy4 r0 = (qy4) this.p;
+        SparseArray r1 = r0.h;
+        h00 r9 = (h00) this.o;
+        if (r10.A() == 0) goto L6;
+        return;
+    L6:
+        if ((r10.A() & 128) == 0) goto L27;
+        r10.O(6);
+        int r2 = r10.a() / 4;
+        int r5 = 0;
+    L9:
+        if (r5 >= r2) goto L18;
+        r10.k(r9.b, 0, 4);
+        r9.q(0);
+        int r6 = r9.i(16);
+        r9.t(3);
+        if (r6 != 0) goto L13;
+        r9.t(13);
+    L16:
+        r5 = r5 + 1;
+        goto L9
+    L13:
+        int r7 = r9.i(13);
+        if (r1.get(r7) != null) goto L16;
+        r1.put(r7, new h84(new ew4(r0, r7)));
+        r0.n++;
+        goto L16
+    L18:
+        if (r0.a == 2) goto L25;
+        r1.remove(0);
+        return;
+    L25:
+        return;
     }
 
     @Override // defpackage.in4
@@ -495,87 +549,85 @@ public final class xc5 implements xs, Callback, in4, ps, m54, g84 {
     }
 
     @Override // defpackage.g84
-    public void b(iu4 iu4Var, m51 m51Var, sy4 sy4Var) {
+    public void b(iu4 r1, m51 r2, sy4 r3) {
     }
 
-    /* JADX WARN: Code duplicated, block: B:39:0x00e4  */
     @Override // defpackage.ps
-    public os c(l51 l51Var, long j) {
-        int iA;
-        long position = l51Var.getPosition();
-        int iMin = (int) Math.min(20000L, l51Var.getLength() - position);
-        be3 be3Var = (be3) this.p;
-        be3Var.K(iMin);
-        l51Var.n(be3Var.a, 0, iMin);
-        int i = -1;
-        int i2 = -1;
-        long j2 = -9223372036854775807L;
-        while (be3Var.a() >= 4) {
-            if (r71.a(be3Var.b, be3Var.a) != 442) {
-                be3Var.O(1);
-            } else {
-                be3Var.O(4);
-                long jC = sr3.c(be3Var);
-                if (jC != -9223372036854775807L) {
-                    long jB = ((iu4) this.o).b(jC);
-                    if (jB > j) {
-                        return j2 == -9223372036854775807L ? new os(-1, jB, position) : new os(0, -9223372036854775807L, position + ((long) i2));
-                    }
-                    j2 = jB;
-                    long j3 = 100000 + j2;
-                    i2 = be3Var.b;
-                    if (j3 > j) {
-                        return new os(0, -9223372036854775807L, position + ((long) i2));
-                    }
-                }
-                int i3 = be3Var.c;
-                if (be3Var.a() >= 10) {
-                    be3Var.O(9);
-                    int iA2 = be3Var.A() & 7;
-                    if (be3Var.a() >= iA2) {
-                        be3Var.O(iA2);
-                        if (be3Var.a() >= 4) {
-                            if (r71.a(be3Var.b, be3Var.a) != 443) {
-                                while (be3Var.a() >= 4) {
-                                    iA = r71.a(be3Var.b, be3Var.a);
-                                    if (iA == 442) {
-                                        break;
-                                    }
-                                    break;
-                                }
-                            }
-                            be3Var.O(4);
-                            int iH = be3Var.H();
-                            if (be3Var.a() < iH) {
-                                be3Var.N(i3);
-                            } else {
-                                be3Var.O(iH);
-                                while (be3Var.a() >= 4) {
-                                    iA = r71.a(be3Var.b, be3Var.a);
-                                    if (iA == 442 || iA == 441 || (iA >>> 8) != 1) {
-                                        break;
-                                    }
-                                    be3Var.O(4);
-                                    if (be3Var.a() < 2) {
-                                        be3Var.N(i3);
-                                        break;
-                                    }
-                                    be3Var.N(Math.min(be3Var.c, be3Var.b + be3Var.H()));
-                                }
-                            }
-                        } else {
-                            be3Var.N(i3);
-                        }
-                    } else {
-                        be3Var.N(i3);
-                    }
-                } else {
-                    be3Var.N(i3);
-                }
-                i = be3Var.b;
-            }
-        }
-        return j2 != -9223372036854775807L ? new os(-2, j2, position + ((long) i)) : os.e;
+    public os c(l51 r17, long r18) {
+        long r4 = r17.getPosition();
+        int r1 = (int) Math.min(20000, r17.getLength() - r4);
+        be3 r2 = (be3) this.p;
+        r2.K(r1);
+        r17.n(r2.a, 0, r1);
+        int r3 = -1;
+        int r5 = -1;
+        long r10 = -9223372036854775807L;
+    L4:
+        if (r2.a() < 4) goto L53;
+        if (r71.a(r2.b, r2.a) != 442) goto L7;
+        r2.O(4);
+        long r14 = sr3.c(r2);
+        if (r14 == (-9223372036854775807L)) goto L22;
+        long r15 = ((iu4) this.o).b(r14);
+        if (r15 > r18) goto L13;
+        r10 = r15;
+        long r16 = 100000 + r10;
+        r5 = r2.b;
+        if (r16 <= r18) goto L22;
+        return new os(0, -9223372036854775807L, r4 + ((long) r5));
+    L13:
+        if (r10 != (-9223372036854775807L)) goto L17;
+        return new os(-1, r15, r4);
+    L17:
+        return new os(0, -9223372036854775807L, r4 + ((long) r5));
+    L22:
+        int r6 = r2.c;
+        if (r2.a() >= 10) goto L25;
+        r2.N(r6);
+    L51:
+        r3 = r2.b;
+        goto L4
+    L25:
+        r2.O(9);
+        int r8 = r2.A() & 7;
+        if (r2.a() >= r8) goto L28;
+        r2.N(r6);
+        goto L51
+    L28:
+        r2.O(r8);
+        if (r2.a() >= 4) goto L32;
+        r2.N(r6);
+        goto L51
+    L32:
+        if (r71.a(r2.b, r2.a) != 443) goto L38;
+        r2.O(4);
+        int r9 = r2.H();
+        if (r2.a() >= r9) goto L36;
+        r2.N(r6);
+        goto L51
+    L36:
+        r2.O(r9);
+    L38:
+        if (r2.a() < 4) goto L51;
+        int r11 = r71.a(r2.b, r2.a);
+        if (r11 == 442) goto L51;
+        if (r11 == 441) goto L51;
+        if ((r11 >>> 8) != 1) goto L51;
+        r2.O(4);
+        if (r2.a() < 2) goto L49;
+        r2.N(Math.min(r2.c, r2.b + r2.H()));
+        goto L38
+    L49:
+        r2.N(r6);
+        goto L51
+    L7:
+        r2.O(1);
+        goto L4
+    L53:
+        if (r10 == (-9223372036854775807L)) goto L57;
+        return new os(-2, r10, r4 + ((long) r3));
+    L57:
+        return os.e;
     }
 
     @Override // defpackage.in4
@@ -588,237 +640,229 @@ public final class xc5 implements xs, Callback, in4, ps, m54, g84 {
     }
 
     @Override // defpackage.in4
-    public boolean e(bt2 bt2Var) {
+    public boolean e(bt2 r1) {
         return true;
     }
 
     @Override // defpackage.m54
-    public Object f(Object obj) {
-        return ((if1) this.p).invoke(obj);
+    public Object f(Object r1) {
+        return ((if1) this.p).invoke(r1);
     }
 
     @Override // defpackage.xs
-    public ic2 g(Uri uri) {
-        Uri uri2;
-        r20 r20Var = (r20) this.p;
-        if (r20Var == null || (uri2 = (Uri) r20Var.p) == null || !uri2.equals(uri)) {
-            ic2 ic2VarG = ((xs) this.o).g(uri);
-            this.p = new r20(uri, ic2VarG);
-            return ic2VarG;
-        }
-        ic2 ic2Var = (ic2) ((r20) this.p).q;
-        ic2Var.getClass();
-        return ic2Var;
+    public ic2 g(Uri r3) {
+        r20 r0 = (r20) this.p;
+        if (r0 == null) goto L10;
+        Uri r1 = (Uri) r0.p;
+        if (r1 == null) goto L10;
+        if (r1.equals(r3) == false) goto L10;
+        ic2 r2 = (ic2) ((r20) this.p).q;
+        r2.getClass();
+        return r2;
+    L10:
+        ic2 r4 = ((xs) this.o).g(r3);
+        this.p = new r20(r3, r4);
+        return r4;
     }
 
     @Override // defpackage.m54
-    public Object h(t44 t44Var, Object obj) {
-        return ((wf1) this.o).invoke(t44Var, obj);
+    public Object h(t44 r1, Object r2) {
+        return ((wf1) this.o).invoke(r1, r2);
     }
 
     @Override // defpackage.xs
-    public ic2 i(do2 do2Var) {
-        Uri uri;
-        byte[] bArr;
-        r20 r20Var = (r20) this.p;
-        if (r20Var != null && (((uri = (Uri) r20Var.p) != null && uri.equals(do2Var.m)) || ((bArr = (byte[]) r20Var.o) != null && Arrays.equals(bArr, do2Var.k)))) {
-            ic2 ic2Var = (ic2) ((r20) this.p).q;
-            ic2Var.getClass();
-            return ic2Var;
-        }
-        ic2 ic2VarI = ((xs) this.o).i(do2Var);
-        if (ic2VarI == null) {
-            return null;
-        }
-        this.p = new r20(do2Var, ic2VarI);
-        return ic2VarI;
+    public ic2 i(do2 r4) {
+        r20 r0 = (r20) this.p;
+        if (r0 == null) goto L14;
+        Uri r1 = (Uri) r0.p;
+        if (r1 != null) goto L7;
+    L8:
+        byte[] r2 = (byte[]) r0.o;
+        if (r2 == null) goto L14;
+        if (Arrays.equals(r2, r4.k) == false) goto L14;
+    L12:
+        ic2 r3 = (ic2) ((r20) this.p).q;
+        r3.getClass();
+        return r3;
+    L7:
+        if (r1.equals(r4.m) == true) goto L12;
+    L14:
+        ic2 r5 = ((xs) this.o).i(r4);
+        if (r5 != null) goto L18;
+        return null;
+    L18:
+        this.p = new r20(r4, r5);
+        return r5;
     }
 
     @Override // defpackage.xs
-    public ic2 j(byte[] bArr) {
-        byte[] bArr2;
-        r20 r20Var = (r20) this.p;
-        if (r20Var == null || (bArr2 = (byte[]) r20Var.o) == null || !Arrays.equals(bArr2, bArr)) {
-            ic2 ic2VarJ = ((xs) this.o).j(bArr);
-            this.p = new r20(bArr, ic2VarJ);
-            return ic2VarJ;
-        }
-        ic2 ic2Var = (ic2) ((r20) this.p).q;
-        ic2Var.getClass();
-        return ic2Var;
+    public ic2 j(byte[] r3) {
+        r20 r0 = (r20) this.p;
+        if (r0 == null) goto L10;
+        byte[] r1 = (byte[]) r0.o;
+        if (r1 == null) goto L10;
+        if (Arrays.equals(r1, r3) == false) goto L10;
+        ic2 r2 = (ic2) ((r20) this.p).q;
+        r2.getClass();
+        return r2;
+    L10:
+        ic2 r4 = ((xs) this.o).j(r3);
+        this.p = new r20(r3, r4);
+        return r4;
     }
 
     @Override // defpackage.ps
     public void k() {
-        be3 be3Var = (be3) this.p;
-        byte[] bArr = f35.b;
-        be3Var.getClass();
-        be3Var.L(bArr.length, bArr);
+        be3 r2 = (be3) this.p;
+        byte[] r0 = f35.b;
+        r2.getClass();
+        r2.L(r0.length, r0);
     }
 
-    public void m(Object obj, String str) {
-        HashMap map = (HashMap) this.o;
-        obj.getClass();
-        map.put(str, obj);
-        ((ArrayList) this.p).remove(str);
+    public void m(Object r2, String r3) {
+        HashMap r0 = (HashMap) this.o;
+        r2.getClass();
+        r0.put(r3, r2);
+        ((ArrayList) this.p).remove(r3);
     }
 
     public void n() {
-        int[] iArr = (int[]) this.o;
-        if (iArr != null) {
-            Arrays.fill(iArr, -1);
-        }
+        int[] r0 = (int[]) this.o;
+        if (r0 == null) goto L5;
+        Arrays.fill(r0, -1);
+    L5:
         this.p = null;
     }
 
-    public void o(bj0 bj0Var) {
-        synchronized (bj0Var) {
-        }
-        Handler handler = (Handler) this.o;
-        if (handler != null) {
-            handler.post(new km(this, bj0Var, 0));
-        }
+    public void o(bj0 r4) {
+        monitor-enter(r4);
+        monitor-exit(r4);
+        Handler r0 = (Handler) this.o;
+        if (r0 == null) goto L8;
+        r0.post(new km(this, r4, 0));
+        return;
     }
 
     @Override // retrofit2.Callback
-    public void onFailure(Call call, Throwable th) {
-        switch (this.n) {
-            case 8:
-                d34.r((l61) this.o, (StarCallback) this.p);
-                break;
-            default:
-                ((hq1) this.o).l();
-                break;
-        }
+    public void onFailure(Call r1, Throwable r2) {
+        switch(this.n) {
+            case 8: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((hq1) this.o).l();
+        return;
+    L6:
+        d34.r((l61) this.o, (StarCallback) this.p);
     }
 
     @Override // retrofit2.Callback
-    public void onResponse(Call call, Response response) {
-        Playlist playlist;
-        switch (this.n) {
-            case 8:
-                l61 l61Var = (l61) this.o;
-                StarCallback starCallback = (StarCallback) this.p;
-                if (response.isSuccessful() && !d34.w(response)) {
-                    n61.a(l61Var);
-                    starCallback.onSuccess();
-                } else if (!d34.w(response)) {
-                    d34.r(l61Var, starCallback);
-                } else {
-                    n61.j(l61Var);
-                    starCallback.onRefused();
-                }
-                break;
-            default:
-                hq1 hq1Var = (hq1) this.o;
-                if (mm3.f(response)) {
-                    ((mm3) this.p).g();
-                }
-                if (!mm3.f(response)) {
-                    hq1Var.l();
-                    break;
-                } else {
-                    String str = (String) hq1Var.c;
-                    im3 im3Var = (im3) hq1Var.g;
-                    k03 k03Var = im3Var.j;
-                    List list = (List) k03Var.d();
-                    if (list == ((ArrayList) hq1Var.b) || (playlist = im3Var.e) == null || !playlist.getId().equals(str)) {
-                        im3Var.f = null;
-                    } else {
-                        List list2 = (List) hq1Var.d;
-                        if (list == null || list.size() != list2.size()) {
-                            im3.c(im3Var, str, true);
-                        } else {
-                            int i = 0;
-                            while (true) {
-                                if (i >= list.size()) {
-                                    im3Var.f = null;
-                                    int i2 = im3Var.h + 1;
-                                    im3Var.h = i2;
-                                    im3Var.i = i2;
-                                    ArrayList arrayList = new ArrayList(list);
-                                    arrayList.remove(hq1Var.a);
-                                    k03Var.k(arrayList);
-                                } else if (((Child) list.get(i)).getId().equals(((Child) list2.get(i)).getId())) {
-                                    i++;
-                                } else {
-                                    im3.c(im3Var, str, true);
-                                }
-                            }
-                        }
-                    }
-                    final ew4 ew4Var = (ew4) hq1Var.e;
-                    final MainActivity mainActivity = (MainActivity) ew4Var.p;
-                    qp4 qp4Var = mainActivity.R;
-                    if (qp4Var != null) {
-                        FrameLayout frameLayout = (FrameLayout) qp4Var.c;
-                        int[] iArr = qg4.E;
-                        qg4 qg4VarH = qg4.h(frameLayout, frameLayout.getResources().getText(R.string.playlist_chooser_dialog_toast_remove_success), 0);
-                        qg4VarH.e(mainActivity.u());
-                        final im3 im3Var2 = (im3) ew4Var.q;
-                        final String str2 = (String) ew4Var.r;
-                        final Child child = (Child) ew4Var.s;
-                        final int i3 = ew4Var.o;
-                        qg4VarH.i(R.string.song_bottom_sheet_undo, new View.OnClickListener(ew4Var, im3Var2, str2, child, i3, mainActivity) { // from class: gi4
-                            public final /* synthetic */ im3 n;
-                            public final /* synthetic */ String o;
-                            public final /* synthetic */ Child p;
-                            public final /* synthetic */ int q;
-                            public final /* synthetic */ MainActivity r;
-
-                            {
-                                this.n = im3Var2;
-                                this.o = str2;
-                                this.p = child;
-                                this.q = i3;
-                                this.r = mainActivity;
-                            }
-
-                            @Override // android.view.View.OnClickListener
-                            public final void onClick(View view) {
-                                pz1 pz1Var = new pz1(23, this.r);
-                                im3 im3Var3 = this.n;
-                                if (im3Var3.f != null) {
-                                    pz1Var.g();
-                                    return;
-                                }
-                                String str3 = this.o;
-                                im3Var3.f = str3;
-                                im3Var3.e(str3);
-                                k03 k03VarC = im3Var3.c.c(str3, false, new em3(im3Var3, str3, 2));
-                                k03VarC.f(new gm3(im3Var3, k03VarC, pz1Var, this.q, this.p, str3));
-                            }
-                        });
-                        qg4VarH.j();
-                        break;
-                    }
-                }
-                break;
-        }
+    public void onResponse(Call r12, Response r13) {
+        switch(this.n) {
+            case 8: goto L37;
+            default: goto L4;
+        };
+    L4:
+        hq1 r14 = (hq1) this.o;
+        if (mm3.f(r13) == false) goto L8;
+        ((mm3) this.p).g();
+    L8:
+        if (mm3.f(r13) == false) goto L35;
+        String r11 = (String) r14.c;
+        im3 r15 = (im3) r14.g;
+        k03 r0 = r15.j;
+        List r1 = (List) r0.d();
+        if (r1 == ((ArrayList) r14.b)) goto L30;
+        Playlist r2 = r15.e;
+        if (r2 == null) goto L30;
+        if (r2.getId().equals(r11) == false) goto L30;
+        List r3 = (List) r14.d;
+        if (r1 != null) goto L19;
+    L29:
+        im3.c(r15, r11, true);
+    L31:
+        final ew4 r5 = (ew4) r14.e;
+        final MainActivity r10 = (MainActivity) r5.p;
+        qp4 r16 = r10.R;
+        if (r16 == null) goto L50;
+        FrameLayout r17 = (FrameLayout) r16.c;
+        int[] r18 = qg4.E;
+        qg4 r19 = qg4.h(r17, r17.getResources().getText(R.string.playlist_chooser_dialog_toast_remove_success), 0);
+        r19.e(r10.u());
+        final im3 r6 = (im3) r5.q;
+        final String r7 = (String) r5.r;
+        final Child r8 = (Child) r5.s;
+        final int r9 = r5.o;
+        r19.i(R.string.song_bottom_sheet_undo, new gi4(r5, r6, r7, r8, r9, r10));
+        r19.j();
+        return;
+    L50:
+        return;
+    L19:
+        if (r1.size() != r3.size()) goto L29;
+        int r20 = 0;
+    L23:
+        if (r20 >= r1.size()) goto L28;
+        if (((Child) r1.get(r20)).getId().equals(((Child) r3.get(r20)).getId()) == false) goto L29;
+        r20 = r20 + 1;
+        goto L23
+    L28:
+        r15.f = null;
+        int r110 = r15.h + 1;
+        r15.h = r110;
+        r15.i = r110;
+        ArrayList r111 = new ArrayList(r1);
+        r111.remove(r14.a);
+        r0.k(r111);
+    L30:
+        r15.f = null;
+        goto L31
+    L35:
+        r14.l();
+        return;
+    L37:
+        l61 r112 = (l61) this.o;
+        StarCallback r113 = (StarCallback) this.p;
+        if (r13.isSuccessful() == false) goto L43;
+        if (d34.w(r13) == true) goto L43;
+        n61.a(r112);
+        r113.onSuccess();
+        return;
+    L43:
+        if (d34.w(r13) == false) goto L45;
+        n61.j(r112);
+        r113.onRefused();
+        return;
+    L45:
+        d34.r(r112, r113);
     }
 
-    public void p(int i) {
-        int[] iArr = (int[]) this.o;
-        if (iArr == null) {
-            int[] iArr2 = new int[Math.max(i, 10) + 1];
-            this.o = iArr2;
-            Arrays.fill(iArr2, -1);
-        } else if (i >= iArr.length) {
-            int length = iArr.length;
-            while (length <= i) {
-                length *= 2;
-            }
-            int[] iArr3 = new int[length];
-            this.o = iArr3;
-            System.arraycopy(iArr, 0, iArr3, 0, iArr.length);
-            int[] iArr4 = (int[]) this.o;
-            Arrays.fill(iArr4, iArr.length, iArr4.length, -1);
-        }
+    public void p(int r5) {
+        int[] r0 = (int[]) this.o;
+        if (r0 != null) goto L7;
+        int[] r6 = new int[Math.max(r5, 10) + 1];
+        this.o = r6;
+        Arrays.fill(r6, -1);
+        return;
+    L7:
+        if (r5 < r0.length) goto L14;
+        int r2 = r0.length;
+    L9:
+        if (r2 > r5) goto L11;
+        r2 = r2 * 2;
+        goto L9
+    L11:
+        int[] r7 = new int[r2];
+        this.o = r7;
+        System.arraycopy(r0, 0, r7, 0, r0.length);
+        int[] r4 = (int[]) this.o;
+        Arrays.fill(r4, r0.length, r4.length, -1);
+        return;
     }
 
-    public Call q(String str, int i, int i2, Integer num, Integer num2) {
+    public Call q(String r10, int r11, int r12, Integer r13, Integer r14) {
         Log.d("BrowsingClient", "getAlbumList2()");
-        return ((w8) this.p).b(((pn4) this.o).f(), str, i, i2, num, num2, ud3.k());
+        return ((w8) this.p).b(((pn4) this.o).f(), r10, r11, r12, r13, r14, ud3.k());
     }
 
     public Call s() {
@@ -830,203 +874,235 @@ public final class xc5 implements xs, Callback, in4, ps, m54, g84 {
         ((SparseIntArray) this.o).clear();
     }
 
-    public void u(int i, int i2) {
-        int[] iArr = (int[]) this.o;
-        if (iArr == null || i >= iArr.length) {
-            return;
-        }
-        int i3 = i + i2;
-        p(i3);
-        int[] iArr2 = (int[]) this.o;
-        System.arraycopy(iArr2, i, iArr2, i3, (iArr2.length - i) - i2);
-        Arrays.fill((int[]) this.o, i, i3, -1);
-        ArrayList arrayList = (ArrayList) this.p;
-        if (arrayList == null) {
-            return;
-        }
-        for (int size = arrayList.size() - 1; size >= 0; size--) {
-            pk4 pk4Var = (pk4) ((ArrayList) this.p).get(size);
-            int i4 = pk4Var.n;
-            if (i4 >= i) {
-                pk4Var.n = i4 + i2;
-            }
-        }
+    public void u(int r4, int r5) {
+        int[] r0 = (int[]) this.o;
+        if (r0 != null) goto L5;
+        return;
+    L5:
+        if (r4 >= r0.length) goto L21;
+        int r1 = r4 + r5;
+        p(r1);
+        int[] r2 = (int[]) this.o;
+        System.arraycopy(r2, r4, r2, r1, (r2.length - r4) - r5);
+        Arrays.fill((int[]) this.o, r4, r1, -1);
+        ArrayList r3 = (ArrayList) this.p;
+        if (r3 == null) goto L22;
+        int r6 = r3.size() - 1;
+    L11:
+        if (r6 < 0) goto L23;
+        pk4 r7 = (pk4) ((ArrayList) this.p).get(r6);
+        int r8 = r7.n;
+        if (r8 < r4) goto L16;
+        r7.n = r8 + r5;
+    L16:
+        r6 = r6 - 1;
+        goto L11
+    L23:
+        return;
+    L22:
+        return;
     }
 
-    public void v(int i, int i2) {
-        int[] iArr = (int[]) this.o;
-        if (iArr == null || i >= iArr.length) {
-            return;
-        }
-        int i3 = i + i2;
-        p(i3);
-        int[] iArr2 = (int[]) this.o;
-        System.arraycopy(iArr2, i3, iArr2, i, (iArr2.length - i) - i2);
-        int[] iArr3 = (int[]) this.o;
-        Arrays.fill(iArr3, iArr3.length - i2, iArr3.length, -1);
-        ArrayList arrayList = (ArrayList) this.p;
-        if (arrayList == null) {
-            return;
-        }
-        for (int size = arrayList.size() - 1; size >= 0; size--) {
-            pk4 pk4Var = (pk4) ((ArrayList) this.p).get(size);
-            int i4 = pk4Var.n;
-            if (i4 >= i) {
-                if (i4 < i3) {
-                    ((ArrayList) this.p).remove(size);
-                } else {
-                    pk4Var.n = i4 - i2;
-                }
-            }
-        }
+    public void v(int r6, int r7) {
+        int[] r0 = (int[]) this.o;
+        if (r0 != null) goto L5;
+        return;
+    L5:
+        if (r6 >= r0.length) goto L24;
+        int r1 = r6 + r7;
+        p(r1);
+        int[] r2 = (int[]) this.o;
+        System.arraycopy(r2, r1, r2, r6, (r2.length - r6) - r7);
+        int[] r3 = (int[]) this.o;
+        Arrays.fill(r3, r3.length - r7, r3.length, -1);
+        ArrayList r4 = (ArrayList) this.p;
+        if (r4 == null) goto L25;
+        int r5 = r4.size() - 1;
+    L11:
+        if (r5 < 0) goto L26;
+        pk4 r8 = (pk4) ((ArrayList) this.p).get(r5);
+        int r9 = r8.n;
+        if (r9 < r6) goto L18;
+        if (r9 >= r1) goto L17;
+        ((ArrayList) this.p).remove(r5);
+        goto L18
+    L17:
+        r8.n = r9 - r7;
+    L18:
+        r5 = r5 - 1;
+        goto L11
+    L26:
+        return;
+    L25:
+        return;
     }
 
-    public void w(int i, Bundle bundle, Messenger messenger) throws RemoteException {
-        Message messageObtain = Message.obtain();
-        messageObtain.what = i;
-        messageObtain.arg1 = 1;
-        if (bundle != null) {
-            messageObtain.setData(bundle);
-        }
-        messageObtain.replyTo = messenger;
-        ((Messenger) this.o).send(messageObtain);
+    public void w(int r2, Bundle r3, Messenger r4) {
+        Message r0 = Message.obtain();
+        r0.what = r2;
+        r0.arg1 = 1;
+        if (r3 == null) goto L5;
+        r0.setData(r3);
+    L5:
+        r0.replyTo = r4;
+        ((Messenger) this.o).send(r0);
     }
 
-    public void x(boolean z, Status status) {
-        HashMap map;
-        HashMap map2;
-        synchronized (((Map) this.o)) {
-            map = new HashMap((Map) this.o);
-        }
-        synchronized (((Map) this.p)) {
-            map2 = new HashMap((Map) this.p);
-        }
-        for (Map.Entry entry : map.entrySet()) {
-            if (z || ((Boolean) entry.getValue()).booleanValue()) {
-                ((BasePendingResult) entry.getKey()).c(status);
-            }
-        }
-        for (Map.Entry entry2 : map2.entrySet()) {
-            if (z || ((Boolean) entry2.getValue()).booleanValue()) {
-                ((cr4) entry2.getKey()).c(new ApiException(status));
-            }
-        }
+    public void x(boolean r4, Status r5) {
+        Map r0 = (Map) this.o;
+        monitor-enter(r0);
+        HashMap r1 = new HashMap((Map) this.o);     // Catch: Throwable -> L30
+        monitor-exit(r0);     // Catch: Throwable -> L30
+        Map r2 = (Map) this.p;
+        monitor-enter(r2);
+        HashMap r3 = new HashMap((Map) this.p);     // Catch: Throwable -> L27
+        monitor-exit(r2);     // Catch: Throwable -> L27
+        Iterator r6 = r1.entrySet().iterator();
+    L12:
+        if (r6.hasNext() == false) goto L18;
+        Map.Entry r7 = (Map.Entry) r6.next();
+        if (r4 == true) goto L17;
+        if (((Boolean) r7.getValue()).booleanValue() == false) goto L12;
+    L17:
+        ((BasePendingResult) r7.getKey()).c(r5);
+        goto L12
+    L18:
+        Iterator r8 = r3.entrySet().iterator();
+    L20:
+        if (r8.hasNext() == false) goto L26;
+        Map.Entry r9 = (Map.Entry) r8.next();
+        if (r4 == true) goto L25;
+        if (((Boolean) r9.getValue()).booleanValue() == false) goto L20;
+    L25:
+        ((cr4) r9.getKey()).c(new ApiException(r5));
+        goto L20
+    L26:
+        return;
+    L27:
+        th = move-exception;
+        throw th;
+    L30:
+        th = move-exception;
+        throw th;
     }
 
-    public /* synthetic */ xc5(int i, Object obj, Object obj2) {
-        this.n = i;
-        this.o = obj;
-        this.p = obj2;
+    public /* synthetic */ xc5(int r1, Object r2, Object r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
     }
 
-    public /* synthetic */ xc5(int i, boolean z) {
-        this.n = i;
+    public /* synthetic */ xc5(int r1, boolean r2) {
+        this.n = r1;
     }
 
-    public /* synthetic */ xc5(int i, Object obj) {
-        this.n = i;
-        this.o = obj;
+    public /* synthetic */ xc5(int r1, Object r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
-    public xc5(WorkDatabase_Impl workDatabase_Impl) {
+    public xc5(WorkDatabase_Impl r3) {
         this.n = 0;
-        this.o = workDatabase_Impl;
-        this.p = new vo0(workDatabase_Impl, 3);
+        this.o = r3;
+        this.p = new vo0(r3, 3);
     }
 
-    public xc5(iu4 iu4Var) {
+    public xc5(iu4 r2) {
         this.n = 18;
-        this.o = iu4Var;
+        this.o = r2;
         this.p = new be3();
     }
 
-    public xc5(int i) {
-        this.n = i;
-        switch (i) {
-            case 10:
-                this.o = new SparseIntArray();
-                this.p = new SparseIntArray();
-                break;
-            case 23:
-                this.o = Collections.synchronizedMap(new WeakHashMap());
-                this.p = Collections.synchronizedMap(new WeakHashMap());
-                break;
-            default:
-                this.o = new HashMap();
-                this.p = new ArrayList();
-                break;
-        }
+    public xc5(int r1) {
+        this.n = r1;
+        switch(r1) {
+            case 10: goto L8;
+            case 23: goto L6;
+            default: goto L4;
+        };
+    L4:
+        this.o = new HashMap();
+        this.p = new ArrayList();
+        return;
+    L6:
+        this.o = Collections.synchronizedMap(new WeakHashMap());
+        this.p = Collections.synchronizedMap(new WeakHashMap());
+        return;
+    L8:
+        this.o = new SparseIntArray();
+        this.p = new SparseIntArray();
     }
 
-    public xc5(Animation animation) {
+    public xc5(Animation r2) {
         this.n = 9;
-        this.o = animation;
+        this.o = r2;
         this.p = null;
     }
 
-    public xc5(Handler handler, qm qmVar) {
+    public xc5(Handler r2, qm r3) {
         this.n = 3;
-        if (qmVar != null) {
-            handler.getClass();
-        } else {
-            handler = null;
-        }
-        this.o = handler;
-        this.p = qmVar;
+        if (r3 == null) goto L5;
+        r2.getClass();
+    L6:
+        this.o = r2;
+        this.p = r3;
+        return;
+    L5:
+        r2 = null;
+        goto L6
     }
 
-    public xc5(Animator animator) {
+    public xc5(Animator r2) {
         this.n = 9;
         this.o = null;
-        this.p = animator;
+        this.p = r2;
     }
 
-    public xc5(EditText editText) {
+    public xc5(EditText r5) {
         this.n = 7;
-        this.o = editText;
-        l01 l01Var = new l01(editText);
-        this.p = l01Var;
-        editText.addTextChangedListener(l01Var);
-        if (yz0.b == null) {
-            synchronized (yz0.a) {
-                try {
-                    if (yz0.b == null) {
-                        yz0 yz0Var = new yz0();
-                        try {
-                            yz0.c = Class.forName("android.text.DynamicLayout$ChangeWatcher", false, yz0.class.getClassLoader());
-                        } catch (Throwable unused) {
-                        }
-                        yz0.b = yz0Var;
-                    }
-                } catch (Throwable th) {
-                    throw th;
-                }
-            }
-        }
-        editText.setEditableFactory(yz0.b);
+        this.o = r5;
+        l01 r0 = new l01(r5);
+        this.p = r0;
+        r5.addTextChangedListener(r0);
+        if (yz0.b != null) goto L17;
+        Object r4 = yz0.a;
+        monitor-enter(r4);
+    L11:
+        th = move-exception;
+        throw th;
+    L7:
+        if (yz0.b != null) goto L13;
+        yz0 r1 = new yz0();     // Catch: Throwable -> L11
+        yz0.c = Class.forName("android.text.DynamicLayout$ChangeWatcher", false, yz0.class.getClassLoader());     // Catch: Throwable -> L19
+    L10:
+        yz0.b = r1;     // Catch: Throwable -> L11
+    L13:
+        monitor-exit(r4);     // Catch: Throwable -> L11
+    L17:
+        r5.setEditableFactory(yz0.b);
     }
 
-    public xc5(gy3 gy3Var, int[] iArr) {
+    public xc5(gy3 r2, int[] r3) {
         this.n = 15;
-        this.o = yw1.k(gy3Var);
-        this.p = iArr;
+        this.o = yw1.k(r2);
+        this.p = r3;
     }
 
-    public xc5(mm3 mm3Var, hq1 hq1Var) {
+    public xc5(mm3 r2, hq1 r3) {
         this.n = 17;
-        this.p = mm3Var;
-        this.o = hq1Var;
+        this.p = r2;
+        this.o = r3;
     }
 
-    public xc5(qy4 qy4Var) {
+    public xc5(qy4 r3) {
         this.n = 21;
-        this.p = qy4Var;
+        this.p = r3;
         this.o = new h00(4, new byte[4]);
     }
 
-    public xc5(IBinder iBinder, Bundle bundle) {
+    public xc5(IBinder r2, Bundle r3) {
         this.n = 13;
-        this.o = new Messenger(iBinder);
-        this.p = bundle;
+        this.o = new Messenger(r2);
+        this.p = r3;
     }
 }

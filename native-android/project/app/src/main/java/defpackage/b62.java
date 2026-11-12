@@ -10,7 +10,6 @@ import com.eddyizm.tempus.App;
 import com.eddyizm.tempus.lan.LanReceiverService;
 import com.eddyizm.tempus.ui.fragment.PlayerControllerFragment;
 import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -19,89 +18,87 @@ public final /* synthetic */ class b62 implements DialogInterface.OnClickListene
     public final /* synthetic */ kc1 o;
     public final /* synthetic */ Object p;
 
-    public /* synthetic */ b62(kc1 kc1Var, Object obj, int i) {
-        this.n = i;
-        this.o = kc1Var;
-        this.p = obj;
+    public /* synthetic */ b62(kc1 r1, Object r2, int r3) {
+        this.n = r3;
+        this.o = r1;
+        this.p = r2;
     }
 
-    /* JADX WARN: Code duplicated, block: B:34:0x010a  */
     @Override // android.content.DialogInterface.OnClickListener
-    public final void onClick(DialogInterface dialogInterface, int i) throws JSONException {
-        pz1 pz1Var;
-        SharedPreferences sharedPreferencesC = null;
-        switch (this.n) {
-            case 0:
-                h62 h62Var = (h62) this.o;
-                h52 h52Var = (h52) this.p;
-                boolean z = LanReceiverService.y;
-                Context context = h62Var.t0;
-                if (context == null) {
-                    h12.Q("app");
-                    throw null;
-                }
-                if (LanReceiverService.y) {
-                    long jElapsedRealtime = SystemClock.elapsedRealtime();
-                    long j = LanReceiverService.A;
-                    long j2 = h52Var.d;
-                    if (jElapsedRealtime >= j || jElapsedRealtime < j2 || jElapsedRealtime - j2 >= 120000) {
-                        h62Var.s0(R.string.lan_pairing_expired);
-                    } else {
-                        ConcurrentHashMap concurrentHashMap = LanReceiverService.B;
-                        if (h12.c(concurrentHashMap.get(h52Var.a), h52Var)) {
-                            context.getSharedPreferences("lan-playback", 0).edit().putStringSet("trusted", kb4.Q(kb4.a0(context), h52Var.a)).putString("peer-".concat(h52Var.a), h52Var.b).apply();
-                            concurrentHashMap.remove(h52Var.a);
-                            w42 w42Var = w42.a;
-                            w42.a.a("Receiver approved controller", null);
-                        } else {
-                            h62Var.s0(R.string.lan_pairing_expired);
-                        }
-                    }
-                } else {
-                    h62Var.s0(R.string.lan_pairing_expired);
-                }
-                h62Var.U0 = null;
-                h62Var.p0();
-                return;
-            default:
-                xf4 xf4Var = (xf4) this.o;
-                String strTrim = ((EditText) this.p).getText().toString().trim();
-                if (strTrim.isEmpty()) {
-                    return;
-                }
-                try {
-                    int i2 = Integer.parseInt(strTrim);
-                    if (i2 <= 0 || (pz1Var = xf4Var.B0) == null) {
-                        return;
-                    }
-                    if (u52.c().a) {
-                        u52.s(i2, "minutes");
-                        return;
-                    }
-                    yf4 yf4VarC = yf4.c();
-                    yf4VarC.a(false);
-                    yf4VarC.g = false;
-                    yf4VarC.e = (((long) i2) * 60000) + System.currentTimeMillis();
-                    yf4VarC.f = true;
-                    try {
-                        App.b().getClass();
-                        sharedPreferencesC = App.c();
-                        break;
-                    } catch (Exception unused) {
-                    }
-                    if (sharedPreferencesC != null) {
-                        sharedPreferencesC.edit().putLong("sleep_timer_end_time_ms", yf4VarC.e).putBoolean("sleep_timer_end_of_track", yf4VarC.g).apply();
-                    }
-                    jq3 jq3Var = new jq3(8, yf4VarC);
-                    yf4VarC.b = jq3Var;
-                    yf4VarC.a.postDelayed(jq3Var, 1000L);
-                    PlayerControllerFragment playerControllerFragment = (PlayerControllerFragment) pz1Var.o;
-                    yf4.c().h = new vj3(playerControllerFragment);
-                    playerControllerFragment.x0();
-                    return;
-                } catch (NumberFormatException unused2) {
-                    return;
-                }
-        }
+    public final void onClick(DialogInterface r9, int r10) {
+        SharedPreferences r11 = null;
+        switch(this.n) {
+            case 0: goto L20;
+            default: goto L4;
+        };
+    L4:
+        xf4 r12 = (xf4) this.o;
+        String r8 = ((EditText) this.p).getText().toString().trim();
+        if (r8.isEmpty() == true) goto L44;
+        int r13 = Integer.parseInt(r8);     // Catch: NumberFormatException -> L40
+        if (r13 <= 0) goto L45;
+        pz1 r14 = r12.B0;     // Catch: NumberFormatException -> L40
+        if (r14 != null) goto L11;
+        return;
+    L11:
+        if (u52.c().a == false) goto L13;
+        u52.s(r13, "minutes");     // Catch: NumberFormatException -> L40
+        return;
+    L13:
+        yf4 r1 = yf4.c();     // Catch: NumberFormatException -> L40
+        r1.a(false);     // Catch: NumberFormatException -> L40
+        r1.g = false;     // Catch: NumberFormatException -> L40
+        long r4 = ((long) r13) * 60000;     // Catch: NumberFormatException -> L40
+        r1.e = r4 + System.currentTimeMillis();     // Catch: NumberFormatException -> L40
+        r1.f = true;     // Catch: NumberFormatException -> L40
+        App.b().getClass();     // Catch: Exception -> L39
+        r11 = App.c();     // Catch: Exception -> L39
+    L15:
+        if (r11 == null) goto L18;
+        r11.edit().putLong("sleep_timer_end_time_ms", r1.e).putBoolean("sleep_timer_end_of_track", r1.g).apply();     // Catch: NumberFormatException -> L40
+    L18:
+        jq3 r15 = new jq3(8, r1);     // Catch: NumberFormatException -> L40
+        r1.b = r15;     // Catch: NumberFormatException -> L40
+        r1.a.postDelayed(r15, 1000);     // Catch: NumberFormatException -> L40
+        PlayerControllerFragment r16 = (PlayerControllerFragment) r14.o;     // Catch: NumberFormatException -> L40
+        yf4 r17 = yf4.c();     // Catch: NumberFormatException -> L40
+        r17.h = new vj3(r16);     // Catch: NumberFormatException -> L40
+        r16.x0();     // Catch: NumberFormatException -> L40
+        return;
+    L45:
+        return;
+    L48:
+        return;
+    L44:
+        return;
+    L20:
+        h62 r18 = (h62) this.o;
+        h52 r19 = (h52) this.p;
+        boolean r2 = LanReceiverService.y;
+        Context r3 = r18.t0;
+        if (r3 != null) goto L23;
+        h12.Q("app");
+        throw null;
+    L23:
+        if (LanReceiverService.y == false) goto L34;
+        long r5 = SystemClock.elapsedRealtime();
+        long r6 = LanReceiverService.A;
+        long r7 = r19.d;
+        if (r5 >= r6) goto L34;
+        if (r5 < r7) goto L34;
+        if ((r5 - r7) >= 120000) goto L34;
+        ConcurrentHashMap r20 = LanReceiverService.B;
+        if (h12.c(r20.get(r19.a), r19) == false) goto L34;
+        r3.getSharedPreferences("lan-playback", 0).edit().putStringSet("trusted", kb4.Q(kb4.a0(r3), r19.a)).putString("peer-".concat(r19.a), r19.b).apply();
+        r20.remove(r19.a);
+        w42 r21 = w42.a;
+        w42.b("Receiver approved controller");
+    L35:
+        r18.U0 = null;
+        r18.p0();
+        return;
+    L34:
+        r18.s0(R.string.lan_pairing_expired);
+        goto L35
     }
 }

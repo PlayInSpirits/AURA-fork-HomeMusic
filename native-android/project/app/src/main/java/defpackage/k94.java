@@ -6,8 +6,8 @@ public final class k94 {
     public final i94 a;
     public final k02 b;
 
-    public k94(i94 i94Var, k02 k02Var) {
-        this.a = i94Var;
-        this.b = k02Var;
+    public k94(i94 r1, k02 r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

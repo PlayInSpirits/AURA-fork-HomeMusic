@@ -9,11 +9,11 @@ public final class lm1 implements z84 {
     public long d;
     public long e;
 
-    public lm1(kx kxVar) {
-        en1 en1Var = new en1();
-        this.a = kxVar;
-        this.b = en1Var;
-        this.c = 20000L;
+    public lm1(kx r3) {
+        en1 r0 = new en1();
+        this.a = r3;
+        this.b = r0;
+        this.c = 20000;
         this.e = -9223372036854775807L;
     }
 }

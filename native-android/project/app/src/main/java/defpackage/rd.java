@@ -9,13 +9,16 @@ public interface rd {
 
     hd5 c();
 
-    ce d(long j);
+    ce d(long r1);
 
-    default boolean e(long j) {
-        return j >= b();
+    default boolean e(long r3) {
+        if (r3 < b()) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
-    Object f(long j);
+    Object f(long r1);
 
     Object g();
 }

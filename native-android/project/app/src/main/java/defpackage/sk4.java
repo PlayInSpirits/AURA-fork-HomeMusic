@@ -4,8 +4,8 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public class sk4 extends c0 {
     @Override // defpackage.a32
-    public final boolean I(Throwable th) {
-        uc5.s(this.r, th);
+    public final boolean I(Throwable r1) {
+        uc5.s(this.r, r1);
         return true;
     }
 }

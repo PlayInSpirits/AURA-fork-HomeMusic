@@ -7,8 +7,8 @@ public final class k00 extends wn4 {
 
     @Override // defpackage.dj0
     public final void s() {
-        l00 l00Var = (l00) this.u.o;
+        l00 r0 = (l00) this.u.o;
         r();
-        l00Var.b.add(this);
+        r0.b.add(this);
     }
 }

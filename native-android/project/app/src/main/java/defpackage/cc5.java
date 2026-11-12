@@ -8,7 +8,14 @@ public final class cc5 implements bc5 {
     public final po0 b;
 
     public cc5() {
-        this.b = Build.VERSION.SDK_INT >= 34 ? qo0.n : fz0.V;
-        gb.d(1, 2, 4, 8, 16, 32, 64, 128);
+        if (Build.VERSION.SDK_INT < 34) goto L5;
+        po0 r0 = qo0.n;
+    L6:
+        this.b = r0;
+        gb.d(new Integer[]{1, 2, 4, 8, 16, 32, 64, 128});
+        return;
+    L5:
+        r0 = fz0.V;
+        goto L6
     }
 }

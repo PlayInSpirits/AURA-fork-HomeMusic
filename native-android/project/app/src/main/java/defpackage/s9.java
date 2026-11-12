@@ -12,107 +12,132 @@ import javax.net.ssl.X509TrustManager;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class s9 extends qg3 {
-    public static final boolean d;
+    public static final boolean d = false;
     public final ArrayList c;
 
     static {
-        d = au0.J() && Build.VERSION.SDK_INT >= 29;
+        if (au0.J() == true) goto L5;
+    L7:
+        boolean r0 = false;
+    L8:
+        d = r0;
+        return;
+    L5:
+        if (Build.VERSION.SDK_INT < 29) goto L7;
+        r0 = true;
+        goto L8
     }
 
     public s9() {
-        int i = 0;
-        ArrayList arrayListI0 = ti.i0(new uh4[]{(!au0.J() || Build.VERSION.SDK_INT < 29) ? null : new t9(), new wn0(uc.e), new wn0(db0.a), new wn0(eu.a)});
-        ArrayList arrayList = new ArrayList();
-        int size = arrayListI0.size();
-        while (i < size) {
-            Object obj = arrayListI0.get(i);
-            i++;
-            if (((uh4) obj).a()) {
-                arrayList.add(obj);
-            }
-        }
-        this.c = arrayList;
+        if (au0.J() == true) goto L5;
+    L7:
+        t9 r0 = null;
+    L8:
+        int r5 = 0;
+        ArrayList r1 = ti.i0(new uh4[]{r0, new wn0(uc.e), new wn0(db0.a), new wn0(eu.a)});
+        ArrayList r2 = new ArrayList();
+        int r3 = r1.size();
+    L9:
+        if (r5 >= r3) goto L13;
+        Object r4 = r1.get(r5);
+        r5 = r5 + 1;
+        if (((uh4) r4).a() == false) goto L9;
+        r2.add(r4);
+        goto L9
+    L13:
+        this.c = r2;
+        return;
+    L5:
+        if (Build.VERSION.SDK_INT < 29) goto L7;
+        r0 = new t9();
+        goto L8
     }
 
     @Override // defpackage.qg3
-    public final rr2 b(X509TrustManager x509TrustManager) {
-        X509TrustManagerExtensions x509TrustManagerExtensions;
-        x509TrustManager.getClass();
-        try {
-            x509TrustManagerExtensions = new X509TrustManagerExtensions(x509TrustManager);
-        } catch (IllegalArgumentException unused) {
-            x509TrustManagerExtensions = null;
-        }
-        ca caVar = x509TrustManagerExtensions != null ? new ca(x509TrustManager, x509TrustManagerExtensions) : null;
-        return caVar != null ? caVar : super.b(x509TrustManager);
+    public final rr2 b(X509TrustManager r3) {
+        r3.getClass();
+        ca r0 = null;
+        X509TrustManagerExtensions r1 = new X509TrustManagerExtensions(r3);     // Catch: IllegalArgumentException -> L5
+    L6:
+        if (r1 == null) goto L8;
+        r0 = new ca(r3, r1);
+    L8:
+        if (r0 == null) goto L11;
+        return r0;
+    L11:
+        return super.b(r3);
+    L5:
+        r1 = null;
+        goto L6
     }
 
     @Override // defpackage.qg3
-    public final void d(SSLSocket sSLSocket, String str, List list) {
-        Object obj;
-        list.getClass();
-        ArrayList arrayList = this.c;
-        int size = arrayList.size();
-        int i = 0;
-        do {
-            if (i >= size) {
-                obj = null;
-                break;
-            } else {
-                obj = arrayList.get(i);
-                i++;
-            }
-        } while (!((uh4) obj).b(sSLSocket));
-        uh4 uh4Var = (uh4) obj;
-        if (uh4Var != null) {
-            uh4Var.d(sSLSocket, str, list);
-        }
+    public final void d(SSLSocket r5, String r6, List r7) {
+        r7.getClass();
+        ArrayList r4 = this.c;
+        int r0 = r4.size();
+        int r1 = 0;
+    L3:
+        if (r1 >= r0) goto L7;
+        Object r2 = r4.get(r1);
+        r1 = r1 + 1;
+        if (((uh4) r2).b(r5) == false) goto L3;
+    L8:
+        uh4 r3 = (uh4) r2;
+        if (r3 == null) goto L15;
+        r3.d(r5, r6, r7);
+        return;
+    L15:
+        return;
+    L7:
+        r2 = null;
+        goto L8
     }
 
     @Override // defpackage.qg3
-    public final String f(SSLSocket sSLSocket) {
-        Object obj;
-        ArrayList arrayList = this.c;
-        int size = arrayList.size();
-        int i = 0;
-        do {
-            if (i >= size) {
-                obj = null;
-                break;
-            }
-            obj = arrayList.get(i);
-            i++;
-        } while (!((uh4) obj).b(sSLSocket));
-        uh4 uh4Var = (uh4) obj;
-        if (uh4Var != null) {
-            return uh4Var.c(sSLSocket);
-        }
+    public final String f(SSLSocket r6) {
+        ArrayList r5 = this.c;
+        int r0 = r5.size();
+        int r1 = 0;
+    L4:
+        if (r1 >= r0) goto L8;
+        Object r3 = r5.get(r1);
+        r1 = r1 + 1;
+        if (((uh4) r3).b(r6) == false) goto L4;
+    L9:
+        uh4 r4 = (uh4) r3;
+        if (r4 != null) goto L12;
         return null;
+    L12:
+        return r4.c(r6);
+    L8:
+        r3 = null;
+        goto L9
     }
 
     @Override // defpackage.qg3
     public final Object g() {
-        if (Build.VERSION.SDK_INT < 30) {
-            return super.g();
-        }
-        CloseGuard closeGuardK = l3.k();
-        closeGuardK.open("response.body().close()");
-        return closeGuardK;
+        if (Build.VERSION.SDK_INT < 30) goto L7;
+        CloseGuard r2 = l3.k();
+        l3.w(r2);
+        return r2;
+    L7:
+        return super.g();
     }
 
     @Override // defpackage.qg3
-    public final boolean h(String str) {
-        str.getClass();
-        return NetworkSecurityPolicy.getInstance().isCleartextTrafficPermitted(str);
+    public final boolean h(String r1) {
+        r1.getClass();
+        return NetworkSecurityPolicy.getInstance().isCleartextTrafficPermitted(r1);
     }
 
     @Override // defpackage.qg3
-    public final void j(Object obj, String str) {
-        if (Build.VERSION.SDK_INT < 30) {
-            super.j(obj, str);
-        } else {
-            obj.getClass();
-            l3.l(obj).warnIfOpen();
-        }
+    public final void j(Object r3, String r4) {
+        if (Build.VERSION.SDK_INT < 30) goto L6;
+        r3.getClass();
+        l3.D(l3.l(r3));
+        return;
+    L6:
+        super.j(r3, r4);
     }
 }

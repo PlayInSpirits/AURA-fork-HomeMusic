@@ -5,89 +5,121 @@ package defpackage;
 public abstract class j21 implements Runnable, Comparable, as0 {
     private volatile Object _heap;
     public long n;
-    public int o = -1;
+    public int o;
 
-    public j21(long j) {
-        this.n = j;
+    public j21(long r1) {
+        this.n = r1;
+        this.o = -1;
     }
 
     @Override // defpackage.as0
     public final void a() {
-        synchronized (this) {
-            try {
-                Object obj = this._heap;
-                f01 f01Var = hw.b;
-                if (obj == f01Var) {
-                    return;
-                }
-                k21 k21Var = obj instanceof k21 ? (k21) obj : null;
-                if (k21Var != null) {
-                    synchronized (k21Var) {
-                        Object obj2 = this._heap;
-                        if ((obj2 instanceof lt4 ? (lt4) obj2 : null) != null) {
-                            k21Var.b(this.o);
-                        }
-                    }
-                }
-                this._heap = f01Var;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+        monitor-enter(this);
+        Object r0 = this._heap;     // Catch: Throwable -> L10
+        f01 r1 = hw.b;     // Catch: Throwable -> L10
+        if (r0 != r1) goto L7;
+        monitor-exit(this);
+        return;
+    L7:
+        lt4 r3 = null;
+        if ((r0 instanceof k21) == false) goto L12;
+        k21 r2 = (k21) r0;     // Catch: Throwable -> L10
+    L13:
+        if (r2 == null) goto L26;
+        monitor-enter(r2);     // Catch: Throwable -> L10
+        Object r4 = this._heap;     // Catch: Throwable -> L23
+        if ((r4 instanceof lt4) == false) goto L18;
+        r3 = (lt4) r4;     // Catch: Throwable -> L23
+    L18:
+        if (r3 == null) goto L21;
+        r2.b(this.o);     // Catch: Throwable -> L23
+    L21:
+        monitor-exit(r2);     // Catch: Throwable -> L10
+    L23:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L10
+    L26:
+        this._heap = r1;     // Catch: Throwable -> L10
+        monitor-exit(this);
+        return;
+    L12:
+        r2 = null;
+    L10:
+        th = move-exception;
+        throw th;
     }
 
-    public final int b(long j, k21 k21Var, l21 l21Var) {
-        synchronized (this) {
-            if (this._heap == hw.b) {
-                return 2;
-            }
-            synchronized (k21Var) {
-                try {
-                    j21[] j21VarArr = k21Var.a;
-                    j21 j21Var = j21VarArr != null ? j21VarArr[0] : null;
-                    if (l21.v.get(l21Var) != 0) {
-                        return 1;
-                    }
-                    if (j21Var == null) {
-                        k21Var.c = j;
-                    } else {
-                        long j2 = j21Var.n;
-                        if (j2 - j < 0) {
-                            j = j2;
-                        }
-                        if (j - k21Var.c > 0) {
-                            k21Var.c = j;
-                        }
-                    }
-                    long j3 = this.n;
-                    long j4 = k21Var.c;
-                    if (j3 - j4 < 0) {
-                        this.n = j4;
-                    }
-                    k21Var.a(this);
-                    return 0;
-                } catch (Throwable th) {
-                    throw th;
-                }
-            }
-        }
+    public final int b(long r9, k21 r11, l21 r12) {
+        monitor-enter(this);
+    L22:
+        th = move-exception;
+        throw th;
+    L4:
+        if (this._heap != hw.b) goto L8;
+        monitor-exit(this);
+        return 2;
+    L8:
+        monitor-enter(r11);     // Catch: Throwable -> L22
+        j21[] r0 = r11.a;     // Catch: Throwable -> L27
+        if (r0 == null) goto L12;
+        j21 r1 = r0[0];     // Catch: Throwable -> L27
+    L15:
+        if (l21.v.get(r12) == 0) goto L17;
+        boolean r13 = true;
+    L18:
+        if (r13 == false) goto L25;
+        monitor-exit(r11);     // Catch: Throwable -> L22
+        monitor-exit(this);
+        return 1;
+    L25:
+        if (r1 != null) goto L29;
+        r11.c = r9;     // Catch: Throwable -> L27
+    L36:
+        long r10 = this.n;     // Catch: Throwable -> L27
+        long r4 = r11.c;     // Catch: Throwable -> L27
+        if ((r10 - r4) >= 0) goto L39;
+        this.n = r4;     // Catch: Throwable -> L27
+    L39:
+        r11.a(this);     // Catch: Throwable -> L27
+        monitor-exit(r11);     // Catch: Throwable -> L22
+        monitor-exit(this);
+        return 0;
+    L29:
+        long r5 = r1.n;     // Catch: Throwable -> L27
+        if ((r5 - r9) >= 0) goto L34;
+        r9 = r5;
+    L34:
+        if ((r9 - r11.c) <= 0) goto L36;
+        r11.c = r9;     // Catch: Throwable -> L27
+        goto L36
+    L17:
+        r13 = false;
+        goto L18
+    L12:
+        r1 = null;
+    L27:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L22
     }
 
     @Override // java.lang.Comparable
-    public final int compareTo(Object obj) {
-        long j = this.n - ((j21) obj).n;
-        if (j > 0) {
-            return 1;
-        }
-        return j < 0 ? -1 : 0;
+    public final int compareTo(Object r3) {
+        long r0 = this.n - ((j21) r3).n;
+        if (r0 <= 0) goto L6;
+        return 1;
+    L6:
+        if (r0 >= 0) goto L9;
+        return -1;
+    L9:
+        return 0;
     }
 
-    public final void d(k21 k21Var) {
-        if (this._heap != hw.b) {
-            this._heap = k21Var;
-        } else {
-            kf2.n("Failed requirement.");
-        }
+    public final void d(k21 r3) {
+        if (this._heap == hw.b) goto L6;
+        this._heap = r3;
+        return;
+    L6:
+        kf2.n("Failed requirement.");
     }
 
     public String toString() {

@@ -7,48 +7,62 @@ public final class cq1 implements of4 {
     public boolean o;
     public final /* synthetic */ hq1 p;
 
-    public cq1(hq1 hq1Var) {
-        this.p = hq1Var;
-        this.n = new cc1(((ew) hq1Var.e).timeout());
+    public cq1(hq1 r2) {
+        this.p = r2;
+        this.n = new cc1(((ew) r2.e).timeout());
     }
 
     @Override // defpackage.of4
-    public final void L(tv tvVar, long j) {
-        ew ewVar = (ew) this.p.e;
-        if (this.o) {
-            kf2.o("closed");
-        } else {
-            if (j == 0) {
-                return;
-            }
-            ewVar.C(j);
-            ewVar.y("\r\n");
-            ewVar.L(tvVar, j);
-            ewVar.y("\r\n");
-        }
+    public final void L(tv r4, long r5) {
+        ew r0 = (ew) this.p.e;
+        if (this.o == false) goto L5;
+        kf2.o("closed");
+        return;
+    L5:
+        if (r5 != 0) goto L7;
+        return;
+    L7:
+        r0.C(r5);
+        r0.y("\r\n");
+        r0.L(r4, r5);
+        r0.y("\r\n");
     }
 
     @Override // defpackage.of4, java.io.Closeable, java.lang.AutoCloseable
     public final synchronized void close() {
-        if (this.o) {
-            return;
-        }
-        this.o = true;
-        ((ew) this.p.e).y("0\r\n\r\n");
-        cc1 cc1Var = this.n;
-        fu4 fu4Var = cc1Var.e;
-        cc1Var.e = fu4.d;
-        fu4Var.a();
-        fu4Var.b();
-        this.p.a = 3;
+        monitor-enter(this);
+    L11:
+        th = move-exception;
+        throw th;
+    L4:
+        if (this.o == false) goto L8;
+        monitor-exit(this);
+        return;
+    L8:
+        this.o = true;     // Catch: Throwable -> L11
+        ((ew) this.p.e).y("0\r\n\r\n");     // Catch: Throwable -> L11
+        cc1 r0 = this.n;     // Catch: Throwable -> L11
+        fu4 r1 = r0.e;     // Catch: Throwable -> L11
+        r0.e = fu4.d;     // Catch: Throwable -> L11
+        r1.a();     // Catch: Throwable -> L11
+        r1.b();     // Catch: Throwable -> L11
+        this.p.a = 3;     // Catch: Throwable -> L11
+        monitor-exit(this);
     }
 
     @Override // defpackage.of4, java.io.Flushable
     public final synchronized void flush() {
-        if (this.o) {
-            return;
-        }
-        ((ew) this.p.e).flush();
+        monitor-enter(this);
+    L10:
+        th = move-exception;
+        throw th;
+    L4:
+        if (this.o == false) goto L7;
+        monitor-exit(this);
+        return;
+    L7:
+        ((ew) this.p.e).flush();     // Catch: Throwable -> L10
+        monitor-exit(this);
     }
 
     @Override // defpackage.of4

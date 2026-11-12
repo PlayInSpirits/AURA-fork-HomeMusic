@@ -8,41 +8,43 @@ public final /* synthetic */ class p70 implements wf1 {
     public final /* synthetic */ int p;
     public final /* synthetic */ Object q;
 
-    public /* synthetic */ p70(r70 r70Var, Object obj, int i) {
+    public /* synthetic */ p70(r70 r2, Object r3, int r4) {
         this.n = 0;
-        this.o = r70Var;
-        this.q = obj;
-        this.p = i;
+        this.o = r2;
+        this.q = r3;
+        this.p = r4;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        int i = this.n;
-        j15 j15Var = j15.a;
-        int i2 = this.p;
-        r70 r70Var = this.o;
-        Object obj3 = this.q;
-        switch (i) {
-            case 0:
-                ((Integer) obj2).getClass();
-                r70Var.c(obj3, (rg1) obj, xl.O(i2) | 1);
-                break;
-            case 1:
-                ((Integer) obj2).getClass();
-                gi1.b((rr3[]) obj3, r70Var, (rg1) obj, xl.O(i2 | 1));
-                break;
-            default:
-                ((Integer) obj2).getClass();
-                gi1.a((rr3) obj3, r70Var, (rg1) obj, xl.O(i2 | 1));
-                break;
-        }
-        return j15Var;
+    public final Object invoke(Object r5, Object r6) {
+        int r0 = this.n;
+        j15 r1 = j15.a;
+        int r2 = this.p;
+        r70 r3 = this.o;
+        Object r4 = this.q;
+        switch(r0) {
+            case 0: goto L8;
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((Integer) r6).getClass();
+        gi1.a((rr3) r4, r3, (rg1) r5, xl.O(r2 | 1));
+        return r1;
+    L6:
+        ((Integer) r6).getClass();
+        gi1.b((rr3[]) r4, r3, (rg1) r5, xl.O(r2 | 1));
+        return r1;
+    L8:
+        ((Integer) r6).getClass();
+        r3.c(r4, (rg1) r5, xl.O(r2) | 1);
+        return r1;
     }
 
-    public /* synthetic */ p70(Object obj, r70 r70Var, int i, int i2) {
-        this.n = i2;
-        this.q = obj;
-        this.o = r70Var;
-        this.p = i;
+    public /* synthetic */ p70(Object r1, r70 r2, int r3, int r4) {
+        this.n = r4;
+        this.q = r1;
+        this.o = r2;
+        this.p = r3;
     }
 }

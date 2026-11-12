@@ -7,12 +7,12 @@ import java.util.Iterator;
 public abstract class yw4 implements Iterator {
     public final Iterator n;
 
-    public yw4(Iterator it) {
-        it.getClass();
-        this.n = it;
+    public yw4(Iterator r1) {
+        r1.getClass();
+        this.n = r1;
     }
 
-    public abstract Object a(Object obj);
+    public abstract Object a(Object r1);
 
     @Override // java.util.Iterator
     public final boolean hasNext() {

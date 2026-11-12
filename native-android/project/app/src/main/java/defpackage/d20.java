@@ -5,13 +5,13 @@ package defpackage;
 public final class d20 extends u22 implements c20 {
     public final a32 u;
 
-    public d20(a32 a32Var) {
-        this.u = a32Var;
+    public d20(a32 r1) {
+        this.u = r1;
     }
 
     @Override // defpackage.c20
-    public final boolean c(Throwable th) {
-        return q().y(th);
+    public final boolean c(Throwable r1) {
+        return q().y(r1);
     }
 
     @Override // defpackage.u22
@@ -20,7 +20,7 @@ public final class d20 extends u22 implements c20 {
     }
 
     @Override // defpackage.u22
-    public final void s(Throwable th) {
+    public final void s(Throwable r1) {
         this.u.o(q());
     }
 }

@@ -26,65 +26,67 @@ public final class c15 extends kp {
     public c15() {
         super(true);
         this.r = 8000;
-        byte[] bArr = new byte[2000];
-        this.s = bArr;
-        this.t = new DatagramPacket(bArr, 0, 2000);
+        byte[] r1 = new byte[2000];
+        this.s = r1;
+        this.t = new DatagramPacket(r1, 0, 2000);
     }
 
     @Override // defpackage.ci0
-    public final long b(ii0 ii0Var) throws UdpDataSource$UdpDataSourceException {
-        Uri uri = ii0Var.a;
-        this.u = uri;
-        String host = uri.getHost();
-        host.getClass();
-        int port = this.u.getPort();
-        q(ii0Var);
-        try {
-            this.x = InetAddress.getByName(host);
-            InetSocketAddress inetSocketAddress = new InetSocketAddress(this.x, port);
-            if (this.x.isMulticastAddress()) {
-                MulticastSocket multicastSocket = new MulticastSocket(inetSocketAddress);
-                this.w = multicastSocket;
-                multicastSocket.joinGroup(this.x);
-                this.v = this.w;
-            } else {
-                this.v = new DatagramSocket(inetSocketAddress);
-            }
-            this.v.setSoTimeout(this.r);
-            this.y = true;
-            r(ii0Var);
-            return -1L;
-        } catch (IOException e) {
-            throw new UdpDataSource$UdpDataSourceException(e, 2001);
-        } catch (SecurityException e2) {
-            throw new UdpDataSource$UdpDataSourceException(e2, 2006);
-        }
+    public final long b(ii0 r4) {
+        Uri r0 = r4.a;
+        this.u = r0;
+        String r1 = r0.getHost();
+        r1.getClass();
+        int r2 = this.u.getPort();
+        q(r4);
+        this.x = InetAddress.getByName(r1);     // Catch: IOException -> L10 SecurityException -> L13
+        InetSocketAddress r3 = new InetSocketAddress(this.x, r2);     // Catch: IOException -> L10 SecurityException -> L13
+        if (this.x.isMulticastAddress() == false) goto L6;
+        MulticastSocket r5 = new MulticastSocket(r3);     // Catch: IOException -> L10 SecurityException -> L13
+        this.w = r5;     // Catch: IOException -> L10 SecurityException -> L13
+        r5.joinGroup(this.x);     // Catch: IOException -> L10 SecurityException -> L13
+        this.v = this.w;     // Catch: IOException -> L10 SecurityException -> L13
+    L7:
+        this.v.setSoTimeout(this.r);     // Catch: IOException -> L10 SecurityException -> L13
+        this.y = true;
+        r(r4);
+        return -1;
+    L6:
+        this.v = new DatagramSocket(r3);     // Catch: IOException -> L10 SecurityException -> L13
+    L10:
+        e = move-exception;
+        throw new UdpDataSource$UdpDataSourceException(e, 2001);
+    L13:
+        e = move-exception;
+        throw new UdpDataSource$UdpDataSourceException(e, 2006);
     }
 
     @Override // defpackage.ci0
     public final void close() {
         this.u = null;
-        MulticastSocket multicastSocket = this.w;
-        if (multicastSocket != null) {
-            try {
-                InetAddress inetAddress = this.x;
-                inetAddress.getClass();
-                multicastSocket.leaveGroup(inetAddress);
-            } catch (IOException unused) {
-            }
-            this.w = null;
-        }
-        DatagramSocket datagramSocket = this.v;
-        if (datagramSocket != null) {
-            datagramSocket.close();
-            this.v = null;
-        }
+        MulticastSocket r1 = this.w;
+        if (r1 != null) goto L14;
+    L6:
+        DatagramSocket r2 = this.v;
+        if (r2 == null) goto L9;
+        r2.close();
+        this.v = null;
+    L9:
         this.x = null;
         this.z = 0;
-        if (this.y) {
-            this.y = false;
-            p();
-        }
+        if (this.y == false) goto L16;
+        this.y = false;
+        p();
+        return;
+    L16:
+        return;
+    L14:
+        InetAddress r3 = this.x;     // Catch: IOException -> L13
+        r3.getClass();     // Catch: IOException -> L13
+        r1.leaveGroup(r3);     // Catch: IOException -> L13
+    L5:
+        this.w = null;
+        goto L6
     }
 
     @Override // defpackage.ci0
@@ -93,31 +95,33 @@ public final class c15 extends kp {
     }
 
     @Override // defpackage.wh0
-    public final int read(byte[] bArr, int i, int i2) throws UdpDataSource$UdpDataSourceException {
-        if (i2 == 0) {
-            return 0;
-        }
-        int i3 = this.z;
-        DatagramPacket datagramPacket = this.t;
-        if (i3 == 0) {
-            try {
-                DatagramSocket datagramSocket = this.v;
-                datagramSocket.getClass();
-                datagramSocket.receive(datagramPacket);
-                int length = datagramPacket.getLength();
-                this.z = length;
-                o(length);
-            } catch (SocketTimeoutException e) {
-                throw new UdpDataSource$UdpDataSourceException(e, 2002);
-            } catch (IOException e2) {
-                throw new UdpDataSource$UdpDataSourceException(e2, 2001);
-            }
-        }
-        int length2 = datagramPacket.getLength();
-        int i4 = this.z;
-        int iMin = Math.min(i4, i2);
-        System.arraycopy(this.s, length2 - i4, bArr, i, iMin);
-        this.z -= iMin;
-        return iMin;
+    public final int read(byte[] r3, int r4, int r5) {
+        if (r5 != 0) goto L5;
+        return 0;
+    L5:
+        int r0 = this.z;
+        DatagramPacket r1 = this.t;
+        if (r0 == 0) goto L17;
+    L15:
+        int r2 = r1.getLength();
+        int r6 = this.z;
+        int r7 = Math.min(r6, r5);
+        System.arraycopy(this.s, r2 - r6, r3, r4, r7);
+        this.z -= r7;
+        return r7;
+    L17:
+        DatagramSocket r8 = this.v;     // Catch: IOException -> L9 SocketTimeoutException -> L12
+        r8.getClass();     // Catch: IOException -> L9 SocketTimeoutException -> L12
+        r8.receive(r1);     // Catch: IOException -> L9 SocketTimeoutException -> L12
+        int r9 = r1.getLength();
+        this.z = r9;
+        o(r9);
+        goto L15
+    L12:
+        e = move-exception;
+        throw new UdpDataSource$UdpDataSourceException(e, 2002);
+    L9:
+        e = move-exception;
+        throw new UdpDataSource$UdpDataSourceException(e, 2001);
     }
 }

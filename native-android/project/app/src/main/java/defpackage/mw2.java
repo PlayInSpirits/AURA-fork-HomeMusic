@@ -9,14 +9,16 @@ public final class mw2 {
     public final ro0 c;
     public final ha1 d;
     public final zs4 e;
-    public float f = Float.NaN;
-    public float g = Float.NaN;
+    public float f;
+    public float g;
 
-    public mw2(r62 r62Var, zs4 zs4Var, ro0 ro0Var, ha1 ha1Var) {
-        this.a = r62Var;
-        this.b = zs4Var;
-        this.c = ro0Var;
-        this.d = ha1Var;
-        this.e = ud3.g0(zs4Var, r62Var);
+    public mw2(r62 r1, zs4 r2, ro0 r3, ha1 r4) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = ud3.g0(r2, r1);
+        this.f = Float.NaN;
+        this.g = Float.NaN;
     }
 }

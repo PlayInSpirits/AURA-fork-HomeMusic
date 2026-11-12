@@ -9,47 +9,47 @@ public final class zj3 implements oi3 {
     public final /* synthetic */ bj2 n;
     public final /* synthetic */ PlayerControllerFragment o;
 
-    public zj3(PlayerControllerFragment playerControllerFragment, bj2 bj2Var) {
-        this.o = playerControllerFragment;
-        this.n = bj2Var;
+    public zj3(PlayerControllerFragment r1, bj2 r2) {
+        this.o = r1;
+        this.n = r2;
     }
 
     @Override // defpackage.oi3
-    public final void A(jw4 jw4Var) {
+    public final void A(jw4 r1) {
         this.o.o0();
     }
 
     @Override // defpackage.oi3
-    public final void B(qi3 qi3Var, ni3 ni3Var) {
-        i61 i61Var = this.o.l0;
-        if (i61Var != null) {
-            fu.K((LinearLayout) i61Var.o, qi3Var);
-        }
+    public final void B(qi3 r1, ni3 r2) {
+        i61 r0 = this.o.l0;
+        if (r0 == null) goto L6;
+        fu.K((LinearLayout) r0.o, r1);
+        return;
     }
 
     @Override // defpackage.oi3
-    public final void F(do2 do2Var) {
-        bj2 bj2Var = this.n;
-        PlayerControllerFragment playerControllerFragment = this.o;
-        playerControllerFragment.n0(bj2Var);
-        playerControllerFragment.q0(do2Var);
-        playerControllerFragment.p0(do2Var);
+    public final void F(do2 r2) {
+        bj2 r0 = this.n;
+        PlayerControllerFragment r1 = this.o;
+        r1.n0(r0);
+        r1.q0(r2);
+        r1.p0(r2);
     }
 
     @Override // defpackage.oi3
-    public final void f(int i) {
-        ud3.t0(i);
+    public final void f(int r1) {
+        ud3.t0(r1);
     }
 
     @Override // defpackage.oi3
-    public final void v(int i) {
-        if (i == 3) {
-            this.o.o0();
-        }
+    public final void v(int r2) {
+        if (r2 != 3) goto L6;
+        this.o.o0();
+        return;
     }
 
     @Override // defpackage.oi3
-    public final void x(boolean z) {
-        ud3.x0(z);
+    public final void x(boolean r1) {
+        ud3.x0(r1);
     }
 }

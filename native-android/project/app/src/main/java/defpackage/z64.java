@@ -41,301 +41,296 @@ public final class z64 extends fo0 implements j42, g94, rn3, my1, a90, mv0 {
     public final ba1 g0;
     public final gd0 h0;
 
-    public z64(tb tbVar, fv fvVar, y71 y71Var, rm2 rm2Var, hb3 hb3Var, a74 a74Var, boolean z, boolean z2) {
-        k2 k2Var = uo.p;
-        this.D = hb3Var;
-        this.E = k2Var;
-        this.F = z;
-        this.G = rm2Var;
-        this.M = 0L;
+    public z64(tb r12, fv r13, y71 r14, rm2 r15, hb3 r16, a74 r17, boolean r18, boolean r19) {
+        k2 r1 = uo.p;
+        this.D = r16;
+        this.E = r1;
+        this.F = r18;
+        this.G = r15;
+        this.M = 0;
         this.W = new na4(10);
-        uk0 uk0Var = new uk0(new ui0(new rm2(v64.c)));
-        this.d0 = uk0Var;
-        g74 g74Var = new g74(a74Var, tbVar, y71Var == null ? uk0Var : y71Var, hb3Var, z2, this.W, this, new x64(this, 0));
-        this.e0 = g74Var;
-        xk0 xk0Var = new xk0(g74Var, z, 7);
-        this.f0 = xk0Var;
-        ba1 ba1Var = new ba1(2, null, 10);
-        q0(ba1Var);
-        this.g0 = ba1Var;
-        gd0 gd0Var = new gd0(hb3Var, g74Var, z2, fvVar, new x64(this, 1));
-        q0(gd0Var);
-        this.h0 = gd0Var;
-        q0(new e53(xk0Var, this.W));
-        cv cvVar = new cv();
-        cvVar.B = gd0Var;
-        q0(cvVar);
+        uk0 r110 = new uk0(new ui0(new rm2(v64.c)));
+        this.d0 = r110;
+        if (r14 != null) goto L5;
+        y71 r5 = r110;
+    L6:
+        g74 r2 = new g74(r17, r12, r5, r16, r19, this.W, this, new x64(this, 0));
+        this.e0 = r2;
+        xk0 r111 = new xk0(r2, r18, 7);
+        this.f0 = r111;
+        ba1 r112 = new ba1(2, null, 10);
+        q0(r112);
+        this.g0 = r112;
+        gd0 r3 = new gd0(r16, r2, r19, r13, new x64(this, 1));
+        q0(r3);
+        this.h0 = r3;
+        q0(new e53(r111, this.W));
+        cv r113 = new cv();
+        r113.B = r3;
+        q0(r113);
+        return;
+    L5:
+        r5 = r14;
+        goto L6
     }
 
-    /* JADX WARN: Code duplicated, block: B:25:0x0056  */
-    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
-    public static final Object t0(z64 z64Var, wd0 wd0Var) throws Throwable {
-        ev0 ev0Var;
-        zu0 zu0Var;
-        if (wd0Var instanceof ev0) {
-            ev0Var = (ev0) wd0Var;
-            int i = ev0Var.p;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                ev0Var.p = i - Integer.MIN_VALUE;
-            } else {
-                ev0Var = new ev0(z64Var, wd0Var);
-            }
-        } else {
-            ev0Var = new ev0(z64Var, wd0Var);
-        }
-        Object obj = ev0Var.n;
-        int i2 = ev0Var.p;
-        vd0 vd0Var = null;
-        if (i2 == 0) {
-            kb4.X(obj);
-            jv0 jv0Var = z64Var.I;
-            if (jv0Var != null) {
-                rm2 rm2Var = z64Var.G;
-                if (rm2Var != null) {
-                    iv0 iv0Var = new iv0(jv0Var);
-                    ev0Var.p = 1;
-                    Object objE = rm2Var.e(iv0Var, ev0Var);
-                    xe0 xe0Var = xe0.n;
-                    if (objE == xe0Var) {
-                        return xe0Var;
-                    }
-                }
-            }
-            zu0Var = new zu0(false, 0L);
-            if (z64Var.A) {
-                fu.G(z64Var.W.x(), null, null, new p(zu0Var, z64Var, vd0Var, 16), 3);
-            }
-            return j15.a;
-        }
-        if (i2 != 1) {
-            kf2.o("call to 'resume' before 'invoke' with coroutine");
-            return null;
-        }
-        kb4.X(obj);
-        z64Var.I = null;
-        zu0Var = new zu0(false, 0L);
-        if (z64Var.A) {
-            fu.G(z64Var.W.x(), null, null, new p(zu0Var, z64Var, vd0Var, 16), 3);
-        }
+    public static final Object t0(z64 r5, wd0 r6) {
+        if ((r6 instanceof ev0) == false) goto L7;
+        ev0 r0 = (ev0) r6;
+        int r1 = r0.p;
+        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
+        r0.p = r1 - Integer.MIN_VALUE;
+    L8:
+        Object r7 = r0.n;
+        int r2 = r0.p;
+        vd0 r3 = null;
+        if (r2 == 0) goto L14;
+        if (r2 != 1) goto L12;
+        kb4.X(r7);
+    L21:
+        r5.I = null;
+    L22:
+        zu0 r8 = new zu0(false, 0);
+        if (r5.A == false) goto L27;
+        fu.G(r5.W.x(), null, null, new p(r8, r5, r3, 16), 3);
+    L27:
         return j15.a;
+    L12:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L14:
+        kb4.X(r7);
+        jv0 r9 = r5.I;
+        if (r9 == null) goto L22;
+        rm2 r4 = r5.G;
+        if (r4 == null) goto L21;
+        iv0 r10 = new iv0(r9);
+        r0.p = 1;
+        Object r11 = r4.e(r10, r0);
+        xe0 r12 = xe0.n;
+        if (r11 != r12) goto L21;
+        return r12;
+    L7:
+        r0 = new ev0(r5, r6);
+        goto L8
     }
 
-    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
-    public static final Object u0(z64 z64Var, yu0 yu0Var, wd0 wd0Var) {
-        fv0 fv0Var;
-        rm2 rm2Var;
-        jv0 jv0Var;
-        yu0 yu0Var2;
-        jv0 jv0Var2;
-        if (wd0Var instanceof fv0) {
-            fv0Var = (fv0) wd0Var;
-            int i = fv0Var.r;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                fv0Var.r = i - Integer.MIN_VALUE;
-            } else {
-                fv0Var = new fv0(z64Var, wd0Var);
-            }
-        } else {
-            fv0Var = new fv0(z64Var, wd0Var);
-        }
-        Object obj = fv0Var.p;
-        int i2 = fv0Var.r;
-        xe0 xe0Var = xe0.n;
-        if (i2 == 0) {
-            kb4.X(obj);
-            jv0 jv0Var3 = z64Var.I;
-            if (jv0Var3 != null && (rm2Var = z64Var.G) != null) {
-                iv0 iv0Var = new iv0(jv0Var3);
-                fv0Var.n = yu0Var;
-                fv0Var.r = 1;
-                if (rm2Var.e(iv0Var, fv0Var) != xe0Var) {
-                }
-                return xe0Var;
-            }
-            z64Var.I = jv0Var;
-            long j = yu0Var.a;
-            return j15.a;
-        }
-        if (i2 == 1) {
-            yu0Var = fv0Var.n;
-            kb4.X(obj);
-        } else {
-            if (i2 != 2) {
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            }
-            jv0Var2 = fv0Var.o;
-            yu0Var2 = fv0Var.n;
-            kb4.X(obj);
-        }
-        jv0Var = jv0Var2;
-        yu0Var = yu0Var2;
-        z64Var.I = jv0Var;
-        long j2 = yu0Var.a;
+    public static final Object u0(z64 r6, yu0 r7, wd0 r8) {
+        if ((r8 instanceof fv0) == false) goto L7;
+        fv0 r0 = (fv0) r8;
+        int r1 = r0.r;
+        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
+        r0.r = r1 - Integer.MIN_VALUE;
+    L8:
+        Object r9 = r0.p;
+        int r2 = r0.r;
+        xe0 r4 = xe0.n;
+        if (r2 == 0) goto L16;
+        if (r2 == 1) goto L15;
+        if (r2 != 2) goto L13;
+        jv0 r10 = r0.o;
+        yu0 r3 = r0.n;
+        kb4.X(r9);
+    L29:
+        jv0 r11 = r10;
+        r7 = r3;
+    L30:
+        r6.I = r11;
+        long r12 = r7.a;
         return j15.a;
-        jv0Var = new jv0();
-        rm2 rm2Var2 = z64Var.G;
-        if (rm2Var2 != null) {
-            fv0Var.n = yu0Var;
-            fv0Var.o = jv0Var;
-            fv0Var.r = 2;
-            if (rm2Var2.e(jv0Var, fv0Var) != xe0Var) {
-                yu0Var2 = yu0Var;
-                jv0Var2 = jv0Var;
-                jv0Var = jv0Var2;
-                yu0Var = yu0Var2;
-            }
-            return xe0Var;
-        }
-        z64Var.I = jv0Var;
-        long j3 = yu0Var.a;
-        return j15.a;
+    L13:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L15:
+        r7 = r0.n;
+        kb4.X(r9);
+    L23:
+        r11 = new jv0();
+        rm2 r5 = r6.G;
+        if (r5 == null) goto L30;
+        r0.n = r7;
+        r0.o = r11;
+        r0.r = 2;
+        if (r5.e(r11, r0) != r4) goto L28;
+    L27:
+        return r4;
+    L28:
+        r3 = r7;
+        r10 = r11;
+        goto L29
+    L16:
+        kb4.X(r9);
+        jv0 r13 = r6.I;
+        if (r13 == null) goto L23;
+        rm2 r14 = r6.G;
+        if (r14 == null) goto L23;
+        iv0 r15 = new iv0(r13);
+        r0.n = r7;
+        r0.r = 1;
+        if (r14.e(r15, r0) != r4) goto L23;
+    L7:
+        r0 = new fv0(r6, r8);
+        goto L8
     }
 
-    /* JADX WARN: Code duplicated, block: B:25:0x0052  */
-    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
-    public static final Object v0(z64 z64Var, zu0 zu0Var, wd0 wd0Var) throws Throwable {
-        gv0 gv0Var;
-        if (wd0Var instanceof gv0) {
-            gv0Var = (gv0) wd0Var;
-            int i = gv0Var.q;
-            if ((i & Integer.MIN_VALUE) != 0) {
-                gv0Var.q = i - Integer.MIN_VALUE;
-            } else {
-                gv0Var = new gv0(z64Var, wd0Var);
-            }
-        } else {
-            gv0Var = new gv0(z64Var, wd0Var);
-        }
-        Object obj = gv0Var.o;
-        int i2 = gv0Var.q;
-        vd0 vd0Var = null;
-        if (i2 == 0) {
-            kb4.X(obj);
-            jv0 jv0Var = z64Var.I;
-            if (jv0Var != null) {
-                rm2 rm2Var = z64Var.G;
-                if (rm2Var != null) {
-                    kv0 kv0Var = new kv0(jv0Var);
-                    gv0Var.n = zu0Var;
-                    gv0Var.q = 1;
-                    Object objE = rm2Var.e(kv0Var, gv0Var);
-                    xe0 xe0Var = xe0.n;
-                    if (objE == xe0Var) {
-                        return xe0Var;
-                    }
-                }
-            }
-            if (z64Var.A) {
-                fu.G(z64Var.W.x(), null, null, new p(zu0Var, z64Var, vd0Var, 16), 3);
-            }
-            return j15.a;
-        }
-        if (i2 != 1) {
-            kf2.o("call to 'resume' before 'invoke' with coroutine");
-            return null;
-        }
-        zu0Var = gv0Var.n;
-        kb4.X(obj);
-        z64Var.I = null;
-        if (z64Var.A) {
-            fu.G(z64Var.W.x(), null, null, new p(zu0Var, z64Var, vd0Var, 16), 3);
-        }
+    public static final Object v0(z64 r5, zu0 r6, wd0 r7) {
+        if ((r7 instanceof gv0) == false) goto L7;
+        gv0 r0 = (gv0) r7;
+        int r1 = r0.q;
+        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
+        r0.q = r1 - Integer.MIN_VALUE;
+    L8:
+        Object r8 = r0.o;
+        int r2 = r0.q;
+        vd0 r3 = null;
+        if (r2 == 0) goto L14;
+        if (r2 != 1) goto L12;
+        r6 = r0.n;
+        kb4.X(r8);
+    L21:
+        r5.I = null;
+    L23:
+        if (r5.A == false) goto L27;
+        fu.G(r5.W.x(), null, null, new p(r6, r5, r3, 16), 3);
+    L27:
         return j15.a;
+    L12:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L14:
+        kb4.X(r8);
+        jv0 r9 = r5.I;
+        if (r9 == null) goto L23;
+        rm2 r4 = r5.G;
+        if (r4 == null) goto L21;
+        kv0 r10 = new kv0(r9);
+        r0.n = r6;
+        r0.q = 1;
+        Object r11 = r4.e(r10, r0);
+        xe0 r12 = xe0.n;
+        if (r11 != r12) goto L21;
+        return r12;
+    L7:
+        r0 = new gv0(r5, r7);
+        goto L8
     }
 
-    public static void z0(z64 z64Var, on3 on3Var, long j, long j2, int i) {
-        if ((i & 4) != 0) {
-            j2 = 0;
-        }
-        uu0 uu0Var = z64Var.Q;
-        if (uu0Var == null) {
-            uu0Var = new uu0();
-            uu0Var.f = null;
-            uu0Var.g = Long.MAX_VALUE;
-            uu0Var.h = false;
-            z64Var.Q = uu0Var;
-        }
-        uu0Var.f = on3Var;
-        uu0Var.g = j;
-        e20 e20Var = z64Var.U;
-        hb3 hb3Var = z64Var.D;
-        if (e20Var == null) {
-            z64Var.U = new e20(hb3Var, 0);
-        } else {
-            e20Var.p = hb3Var;
-            e20Var.o = j2;
-        }
-        uu0Var.h = false;
-        z64Var.S = uu0Var;
+    public static void z0(z64 r3, on3 r4, long r5, long r7, int r9) {
+        if ((r9 & 4) == 0) goto L5;
+        r7 = 0;
+    L5:
+        uu0 r10 = r3.Q;
+        if (r10 != null) goto L8;
+        r10 = new uu0();
+        r10.f = null;
+        r10.g = Long.MAX_VALUE;
+        r10.h = false;
+        r3.Q = r10;
+    L8:
+        r10.f = r4;
+        r10.g = r5;
+        e20 r6 = r3.U;
+        hb3 r8 = r3.D;
+        if (r6 != null) goto L11;
+        r3.U = new e20(r8, 0);
+    L12:
+        r10.h = false;
+        r3.S = r10;
+        return;
+    L11:
+        r6.p = r8;
+        r6.o = r7;
+        goto L12
     }
 
     @Override // defpackage.ih1
     public final String A() {
-        if (!this.F) {
-            return "idle";
-        }
-        ya4 ya4Var = this.S;
-        if (ya4Var instanceof su0) {
-            return ((su0) ya4Var).h ? "waiting" : "idle";
-        }
-        if ((ya4Var instanceof uu0) || (ya4Var instanceof tu0)) {
-            return "waiting";
-        }
-        return ya4Var instanceof vu0 ? "recognized" : "idle";
+        if (this.F == false) goto L20;
+        ya4 r1 = this.S;
+        if ((r1 instanceof su0) == false) goto L10;
+        if (((su0) r1).h == false) goto L24;
+        return "waiting";
+    L24:
+        return "idle";
+    L10:
+        if ((r1 instanceof uu0) == false) goto L13;
+        return "waiting";
+    L13:
+        if ((r1 instanceof tu0) == false) goto L17;
+        return "waiting";
+    L17:
+        if ((r1 instanceof vu0) == false) goto L25;
+        return "recognized";
+    L25:
+        return "idle";
+    L20:
+        return "idle";
     }
 
-    public final void A0(av0 av0Var) {
-        if ((av0Var instanceof yu0) && !this.J) {
-            this.J = true;
-            F0();
-        }
-        B0().d(av0Var);
+    public final void A0(av0 r2) {
+        if ((r2 instanceof yu0) == true) goto L5;
+    L7:
+        B0().d(r2);
+        return;
+    L5:
+        if (this.J == true) goto L7;
+        this.J = true;
+        F0();
+        goto L7
     }
 
     public final y00 B0() {
-        aw awVar = this.H;
-        if (awVar != null) {
-            return awVar;
-        }
+        aw r0 = this.H;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         kf2.n("Events channel not initialized.");
         return null;
     }
 
     public final rm2 C0() {
-        rm2 rm2Var = this.T;
-        if (rm2Var != null) {
-            return rm2Var;
-        }
+        rm2 r0 = this.T;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         kf2.n("Velocity Tracker not initialized.");
         return null;
     }
 
-    public final void D0(on3 on3Var, long j) {
-        this.M = g83.e(this.M, j);
-        xl.e(C0(), on3Var);
-        B0().d(new xu0(false, j));
+    public final void D0(on3 r3, long r4) {
+        this.M = g83.e(this.M, r4);
+        xl.e(C0(), r3);
+        B0().d(new xu0(false, r4));
     }
 
-    public final void E0(on3 on3Var, on3 on3Var2, long j) {
-        if (this.T == null) {
-            this.T = new rm2(28);
-        }
-        xl.e(C0(), on3Var);
-        long jD = g83.d(on3Var2.c, j);
-        k2 k2Var = this.E;
-        int i = on3Var.i;
-        k2Var.getClass();
-        if (i == 2) {
-            return;
-        }
-        if (!this.J) {
-            if (this.H == null) {
-                this.H = su3.a(Integer.MAX_VALUE, 6, null);
-            }
-            F0();
-        }
-        B0().d(new yu0(jD));
+    public final void E0(on3 r3, on3 r4, long r5) {
+        if (this.T != null) goto L5;
+        this.T = new rm2(28);
+    L5:
+        xl.e(C0(), r3);
+        long r6 = g83.d(r4.c, r5);
+        k2 r7 = this.E;
+        int r8 = r3.i;
+        r7.getClass();
+        if (r8 != 2) goto L8;
+        boolean r9 = true;
+    L9:
+        if (r9 == false) goto L11;
+        return;
+    L11:
+        if (this.J == false) goto L13;
+    L16:
+        B0().d(new yu0(r6));
+        return;
+    L13:
+        if (this.H != null) goto L15;
+        this.H = su3.a(Integer.MAX_VALUE, 6, null);
+    L15:
+        F0();
+        goto L16
+    L8:
+        r9 = false;
+        goto L9
     }
 
     @Override // defpackage.mv0
@@ -345,587 +340,609 @@ public final class z64 extends fo0 implements j42, g94, rn3, my1, a90, mv0 {
 
     public final void F0() {
         this.J = true;
-        if (this.H == null) {
-            this.H = su3.a(Integer.MAX_VALUE, 6, null);
-        }
+        if (this.H != null) goto L5;
+        this.H = su3.a(Integer.MAX_VALUE, 6, null);
+    L5:
         fu.G(e0(), null, null, new hv0(this, null), 3);
     }
 
-    /* JADX WARN: Code duplicated, block: B:42:0x00b4  */
     @Override // defpackage.my1
-    public final void G(ue1 ue1Var, ln3 ln3Var) {
-        Object obj;
-        float f;
-        Object obj2;
-        char c;
-        float fIntBitsToFloat;
-        boolean z;
-        ln3 ln3Var2;
-        Object obj3;
-        Object obj4;
-        Object obj5;
-        fy1 fy1Var;
-        int i = ue1Var.o;
-        ArrayList arrayList = (ArrayList) ue1Var.p;
-        if (this.F) {
-            if (this.V == null) {
-                this.V = new ly1(this);
-            }
-            if (this.O == null) {
-                ly1 ly1Var = this.V;
-                ly1Var.getClass();
-                jh1 jh1Var = new jh1(ly1Var);
-                q0(jh1Var);
-                this.O = jh1Var;
-            }
-            ly1 ly1Var2 = this.V;
-            if (ly1Var2 != null) {
-                z64 z64Var = ly1Var2.n;
-                if (ly1Var2.s == null) {
-                    gy1 gy1Var = ly1Var2.o;
-                    if (gy1Var == null) {
-                        gy1Var = new gy1();
-                        gy1Var.j = fy1.p;
-                        gy1Var.k = false;
-                        gy1Var.l = false;
-                        ly1Var2.o = gy1Var;
-                    }
-                    ly1Var2.s = gy1Var;
-                }
-                wr1 wr1Var = ly1Var2.s;
-                if (wr1Var == null) {
-                    kf2.n("currentDragState should not be null");
-                    return;
-                }
-                boolean z2 = wr1Var instanceof gy1;
-                ln3 ln3Var3 = ln3.n;
-                ln3 ln3Var4 = ln3.o;
-                if (z2) {
-                    gy1 gy1Var2 = (gy1) wr1Var;
-                    if (arrayList.isEmpty()) {
-                        return;
-                    }
-                    int size = arrayList.size();
-                    for (int i2 = 0; i2 < size; i2++) {
-                        if (!zz1.h((ey1) arrayList.get(i2))) {
-                            return;
-                        }
-                    }
-                    ey1 ey1Var = (ey1) q40.w0(arrayList);
-                    int i3 = ky1.a[gy1Var2.j.ordinal()];
-                    fy1 fy1Var2 = fy1.o;
-                    fy1 fy1Var3 = fy1.n;
-                    if (i3 == 1) {
-                        g74 g74Var = z64Var.e0;
-                        if (g74Var.a.a()) {
-                            fy1Var = fy1Var2;
-                        } else {
-                            tb tbVar = g74Var.b;
-                            if (tbVar != null ? tbVar.e() : false) {
-                                fy1Var = fy1Var2;
-                            } else {
-                                fy1Var = fy1Var3;
-                            }
-                        }
-                    } else {
-                        fy1Var = gy1Var2.j;
-                    }
-                    gy1Var2.j = fy1Var;
-                    if (ln3Var == ln3Var3) {
-                        if (fy1Var == fy1Var2) {
-                            ey1Var.i = true;
-                            gy1Var2.k = true;
-                        }
-                        gy1Var2.l = true;
-                    }
-                    if (ln3Var == ln3Var4) {
-                        if (fy1Var == fy1Var3) {
-                            ly1.c(ly1Var2, ey1Var, ey1Var.a, 0L, 12);
-                            return;
-                        }
-                        if (gy1Var2.k) {
-                            ly1Var2.f(ey1Var, ey1Var, new dy1(i), 0L);
-                            ly1Var2.e(ey1Var, new dy1(i), 0L);
-                            long j = ey1Var.a;
-                            jy1 jy1Var = ly1Var2.p;
-                            if (jy1Var == null) {
-                                jy1Var = new jy1();
-                                jy1Var.j = Long.MAX_VALUE;
-                                ly1Var2.p = jy1Var;
-                            }
-                            jy1Var.j = j;
-                            ly1Var2.s = jy1Var;
-                            return;
-                        }
-                        return;
-                    }
-                    return;
-                }
-                boolean z3 = wr1Var instanceof iy1;
-                ln3 ln3Var5 = ln3.p;
-                if (z3) {
-                    iy1 iy1Var = (iy1) wr1Var;
-                    if (ln3Var == ln3Var3) {
-                        return;
-                    }
-                    int size2 = arrayList.size();
-                    int i4 = 0;
-                    while (true) {
-                        if (i4 >= size2) {
-                            ln3Var2 = ln3Var4;
-                            obj3 = null;
-                            break;
-                        }
-                        obj3 = arrayList.get(i4);
-                        ln3Var2 = ln3Var4;
-                        if (vr1.n(((ey1) obj3).a, iy1Var.k)) {
-                            break;
-                        }
-                        i4++;
-                        ln3Var4 = ln3Var2;
-                    }
-                    ey1 ey1Var2 = (ey1) obj3;
-                    if (ey1Var2 == null) {
-                        int size3 = arrayList.size();
-                        int i5 = 0;
-                        while (true) {
-                            if (i5 >= size3) {
-                                obj5 = null;
-                                break;
-                            }
-                            obj5 = arrayList.get(i5);
-                            if (((ey1) obj5).d) {
-                                break;
-                            } else {
-                                i5++;
-                            }
-                        }
-                        ey1Var2 = (ey1) obj5;
-                        if (ey1Var2 == null) {
-                            ly1Var2.a();
-                            return;
-                        }
-                        iy1Var.k = ey1Var2.a;
-                    }
-                    ey1 ey1Var3 = ey1Var2;
-                    if (ln3Var == ln3Var2) {
-                        if (ey1Var3.i) {
-                            ey1 ey1Var4 = iy1Var.j;
-                            if (ey1Var4 == null) {
-                                kf2.n("AwaitTouchSlop.initialDown was not initialized");
-                                return;
-                            }
-                            long j2 = iy1Var.k;
-                            e20 e20Var = ly1Var2.u;
-                            if (e20Var == null) {
-                                kf2.n("AwaitTouchSlop.touchSlopDetector was not initialized");
-                                return;
-                            }
-                            ly1Var2.b(ey1Var4, j2, e20Var);
-                        } else if (zz1.b(ey1Var3)) {
-                            int size4 = arrayList.size();
-                            int i6 = 0;
-                            while (true) {
-                                if (i6 >= size4) {
-                                    obj4 = null;
-                                    break;
-                                }
-                                Object obj6 = arrayList.get(i6);
-                                if (((ey1) obj6).d) {
-                                    obj4 = obj6;
-                                    break;
-                                }
-                                i6++;
-                            }
-                            ey1 ey1Var5 = (ey1) obj4;
-                            if (ey1Var5 == null) {
-                                ly1Var2.a();
-                            } else {
-                                iy1Var.k = ey1Var5.a;
-                            }
-                        } else {
-                            m65 m65Var = (m65) kb4.q(z64Var, g90.t);
-                            float f2 = bv0.a;
-                            float fC = m65Var.c();
-                            e20 e20Var2 = ly1Var2.u;
-                            if (e20Var2 == null) {
-                                kf2.n("Touch slop detector not initialized.");
-                                return;
-                            }
-                            long jU = e20.u(e20Var2, zz1.A(ey1Var3, z64Var.D, new dy1(i), true), fC);
-                            if ((9223372034707292159L & jU) != 9205357640488583168L) {
-                                ey1Var3.i = true;
-                                ey1 ey1Var6 = iy1Var.j;
-                                ey1Var6.getClass();
-                                ly1Var2.f(ey1Var6, ey1Var3, new dy1(i), jU);
-                                ly1Var2.e(ey1Var3, new dy1(i), jU);
-                                long j3 = ey1Var3.a;
-                                jy1 jy1Var2 = ly1Var2.p;
-                                if (jy1Var2 == null) {
-                                    jy1Var2 = new jy1();
-                                    jy1Var2.j = Long.MAX_VALUE;
-                                    ly1Var2.p = jy1Var2;
-                                }
-                                jy1Var2.j = j3;
-                                ly1Var2.s = jy1Var2;
-                            } else {
-                                iy1Var.l = true;
-                            }
-                        }
-                    }
-                    if (ln3Var == ln3Var5 && iy1Var.l) {
-                        if (!ey1Var3.i) {
-                            iy1Var.l = false;
-                            return;
-                        }
-                        ey1 ey1Var7 = iy1Var.j;
-                        if (ey1Var7 == null) {
-                            kf2.n("AwaitTouchSlop.initialDown was not initialized");
-                            return;
-                        }
-                        long j4 = iy1Var.k;
-                        e20 e20Var3 = ly1Var2.u;
-                        if (e20Var3 != null) {
-                            ly1Var2.b(ey1Var7, j4, e20Var3);
-                            return;
-                        } else {
-                            kf2.n("AwaitTouchSlop.touchSlopDetector was not initialized");
-                            return;
-                        }
-                    }
-                    return;
-                }
-                if (wr1Var instanceof hy1) {
-                    hy1 hy1Var = (hy1) wr1Var;
-                    if (ln3Var != ln3Var5) {
-                        return;
-                    }
-                    int size5 = arrayList.size();
-                    int i7 = 0;
-                    while (true) {
-                        if (i7 >= size5) {
-                            z = true;
-                            break;
-                        } else {
-                            if (((ey1) arrayList.get(i7)).i) {
-                                z = false;
-                                break;
-                            }
-                            i7++;
-                        }
-                    }
-                    int size6 = arrayList.size();
-                    for (int i8 = 0; i8 < size6; i8++) {
-                        if (((ey1) arrayList.get(i8)).d) {
-                            if (arrayList.isEmpty()) {
-                                break;
-                            }
-                            if (z) {
-                                long jB = zz1.B((ey1) q40.w0(arrayList), z64Var.D, new dy1(i));
-                                ey1 ey1Var8 = hy1Var.j;
-                                ey1Var8.getClass();
-                                long jD = g83.d(jB, zz1.B(ey1Var8, z64Var.D, new dy1(i)));
-                                ey1 ey1Var9 = hy1Var.j;
-                                if (ey1Var9 != null) {
-                                    ly1.c(ly1Var2, ey1Var9, hy1Var.k, jD, 8);
-                                    return;
-                                } else {
-                                    kf2.n("AwaitGesturePickup.initialDown was not initialized.");
-                                    return;
-                                }
-                            }
-                            return;
-                        }
-                    }
-                    ly1Var2.a();
-                    return;
-                }
-                if (!(wr1Var instanceof jy1)) {
-                    er1.n();
-                    return;
-                }
-                jy1 jy1Var3 = (jy1) wr1Var;
-                if (ln3Var != ln3Var4) {
-                    return;
-                }
-                long j5 = jy1Var3.j;
-                int size7 = arrayList.size();
-                int i9 = 0;
-                while (true) {
-                    if (i9 >= size7) {
-                        obj = null;
-                        break;
-                    }
-                    obj = arrayList.get(i9);
-                    if (vr1.n(((ey1) obj).a, j5)) {
-                        break;
-                    } else {
-                        i9++;
-                    }
-                }
-                ey1 ey1Var10 = (ey1) obj;
-                if (ey1Var10 == null) {
-                    return;
-                }
-                long j6 = ey1Var10.c;
-                boolean zB = zz1.b(ey1Var10);
-                wu0 wu0Var = wu0.a;
-                if (!zB) {
-                    if (ey1Var10.i) {
-                        z64Var.A0(wu0Var);
-                        return;
-                    } else {
-                        if (g83.c(zz1.A(ey1Var10, z64Var.D, new dy1(i), true)) == 0.0f) {
-                            return;
-                        }
-                        ly1Var2.e(ey1Var10, new dy1(i), zz1.A(ey1Var10, z64Var.D, new dy1(i), false));
-                        ey1Var10.i = true;
-                        return;
-                    }
-                }
-                int size8 = arrayList.size();
-                int i10 = 0;
-                while (true) {
-                    if (i10 >= size8) {
-                        f = 0.0f;
-                        obj2 = null;
-                        break;
-                    } else {
-                        obj2 = arrayList.get(i10);
-                        f = 0.0f;
-                        if (((ey1) obj2).d) {
-                            break;
-                        } else {
-                            i10++;
-                        }
-                    }
-                }
-                ey1 ey1Var11 = (ey1) obj2;
-                if (ey1Var11 != null) {
-                    jy1Var3.j = ey1Var11.a;
-                    return;
-                }
-                if (ey1Var10.i || !zz1.b(ey1Var10)) {
-                    z64Var.A0(wu0Var);
-                } else {
-                    rm2 rm2VarD = ly1Var2.d();
-                    hb3 hb3Var = z64Var.D;
-                    x7 x7Var = ly1Var2.v;
-                    q03 q03Var = (q03) x7Var.p;
-                    char c2 = ' ';
-                    float fIntBitsToFloat2 = Float.intBitsToFloat((int) (j6 >> 32));
-                    float fIntBitsToFloat3 = Float.intBitsToFloat((int) (j6 & 4294967295L));
-                    if (zz1.h(ey1Var10)) {
-                        x7Var.o = 0;
-                        q03Var.d();
-                    }
-                    if (zz1.b(ey1Var10) || zz1.h(ey1Var10)) {
-                        c = ' ';
-                    } else {
-                        if (q03Var.b == 3) {
-                            int i11 = x7Var.o;
-                            x7Var.o = i11 + 1;
-                            q03Var.n(i11, ey1Var10);
-                        } else {
-                            q03Var.a(ey1Var10);
-                        }
-                        if (x7Var.o == 3) {
-                            x7Var.o = 0;
-                        }
-                        Object[] objArr = q03Var.a;
-                        int i12 = q03Var.b;
-                        float fIntBitsToFloat4 = f;
-                        int i13 = 0;
-                        while (i13 < i12) {
-                            char c3 = c2;
-                            fIntBitsToFloat4 = Float.intBitsToFloat((int) (((ey1) objArr[i13]).c >> c3)) + fIntBitsToFloat4;
-                            i13++;
-                            c2 = c3;
-                        }
-                        c = c2;
-                        int i14 = q03Var.b;
-                        fIntBitsToFloat2 = fIntBitsToFloat4 / i14;
-                        Object[] objArr2 = q03Var.a;
-                        float fIntBitsToFloat5 = f;
-                        for (int i15 = 0; i15 < i14; i15++) {
-                            fIntBitsToFloat5 += Float.intBitsToFloat((int) (((ey1) objArr2[i15]).c & 4294967295L));
-                        }
-                        fIntBitsToFloat3 = fIntBitsToFloat5 / q03Var.b;
-                    }
-                    long jFloatToRawIntBits = (((long) Float.floatToRawIntBits(fIntBitsToFloat2)) << c) | (((long) Float.floatToRawIntBits(fIntBitsToFloat3)) & 4294967295L);
-                    if (hb3Var != null) {
-                        if (i == 1) {
-                            fIntBitsToFloat = Float.intBitsToFloat((int) (jFloatToRawIntBits >> c));
-                        } else if (i == 2) {
-                            fIntBitsToFloat = Float.intBitsToFloat((int) (jFloatToRawIntBits & 4294967295L));
-                        }
-                        jFloatToRawIntBits = hb3Var == hb3.o ? (((long) Float.floatToRawIntBits(f)) & 4294967295L) | (((long) Float.floatToRawIntBits(fIntBitsToFloat)) << c) : (((long) Float.floatToRawIntBits(f)) << c) | (((long) Float.floatToRawIntBits(fIntBitsToFloat)) & 4294967295L);
-                    }
-                    ((qf2) rm2VarD.o).a(ey1Var10.b, jFloatToRawIntBits);
-                    float fB = ((m65) kb4.q(z64Var, g90.t)).b();
-                    long jC = ly1Var2.d().c(e35.h(fB, fB));
-                    qf2 qf2Var = (qf2) ly1Var2.d().o;
-                    m45 m45Var = qf2Var.a;
-                    vh0[] vh0VarArr = m45Var.d;
-                    ti.f0(0, vh0VarArr.length, null, vh0VarArr);
-                    m45Var.e = 0;
-                    m45 m45Var2 = qf2Var.b;
-                    vh0[] vh0VarArr2 = m45Var2.d;
-                    ti.f0(0, vh0VarArr2.length, null, vh0VarArr2);
-                    m45Var2.e = 0;
-                    qf2Var.c = 0L;
-                    z64Var.A0(new zu0(true, ov0.a(jC)));
-                }
-                ly1Var2.a();
-            }
-        }
+    public final void G(ue1 r21, ln3 r22) {
+        int r3 = r21.o;
+        ArrayList r1 = (ArrayList) r21.p;
+        if (this.F == true) goto L5;
+        return;
+    L5:
+        if (this.V != null) goto L8;
+        this.V = new ly1(this);
+    L8:
+        if (this.O != null) goto L10;
+        ly1 r4 = this.V;
+        r4.getClass();
+        jh1 r5 = new jh1(r4);
+        q0(r5);
+        this.O = r5;
+    L10:
+        ly1 r6 = this.V;
+        if (r6 == null) goto L273;
+        z64 r0 = r6.n;
+        if (r6.s != null) goto L18;
+        gy1 r7 = r6.o;
+        if (r7 != null) goto L17;
+        r7 = new gy1();
+        r7.j = fy1.p;
+        r7.k = false;
+        r7.l = false;
+        r6.o = r7;
+    L17:
+        r6.s = r7;
+    L18:
+        wr1 r8 = r6.s;
+        if (r8 == null) goto L252;
+        boolean r9 = r8 instanceof gy1;
+        ln3 r10 = ln3.n;
+        ln3 r11 = ln3.o;
+        if (r9 == false) goto L60;
+        gy1 r12 = (gy1) r8;
+        if (r1.isEmpty() == true) goto L279;
+        int r13 = r1.size();
+        int r14 = 0;
+    L26:
+        if (r14 >= r13) goto L31;
+        if (zz1.h((ey1) r1.get(r14)) == false) goto L285;
+        r14 = r14 + 1;
+        goto L26
+    L285:
+        return;
+    L31:
+        ey1 r15 = (ey1) q40.w0(r1);
+        int r2 = ky1.a[r12.j.ordinal()];
+        fy1 r16 = fy1.o;
+        fy1 r17 = fy1.n;
+        if (r2 != 1) goto L43;
+        g74 r18 = r0.e0;
+        if (r18.a.a() == true) goto L42;
+        tb r19 = r18.b;
+        if (r19 == null) goto L38;
+        boolean r20 = r19.e();
+    L39:
+        if (r20 == true) goto L42;
+        fy1 r23 = r17;
+    L44:
+        r12.j = r23;
+        if (r22 != r10) goto L49;
+        if (r23 != r16) goto L48;
+        r15.i = true;
+        r12.k = true;
+    L48:
+        r12.l = true;
+    L49:
+        if (r22 != r11) goto L274;
+        if (r23 != r17) goto L54;
+        ly1.c(r6, r15, r15.a, 0, 12);
+        return;
+    L54:
+        if (r12.k == false) goto L275;
+        r6.f(r15, r15, new dy1(r3), 0);
+        r6.e(r15, new dy1(r3), 0);
+        long r24 = r15.a;
+        jy1 r25 = r6.p;
+        if (r25 != null) goto L58;
+        r25 = new jy1();
+        r25.j = Long.MAX_VALUE;
+        r6.p = r25;
+    L58:
+        r25.j = r24;
+        r6.s = r25;
+        return;
+    L275:
+        return;
+    L274:
+        return;
+    L38:
+        r20 = false;
+    L42:
+        r23 = r16;
+        goto L44
+    L43:
+        r23 = r12.j;
+        goto L44
+    L279:
+        return;
+    L60:
+        boolean r26 = r8 instanceof iy1;
+        ln3 r27 = ln3.p;
+        if (r26 == false) goto L142;
+        iy1 r28 = (iy1) r8;
+        if (r22 == r10) goto L280;
+        int r29 = r1.size();
+        int r30 = 0;
+    L66:
+        if (r30 >= r29) goto L71;
+        Object r110 = r1.get(r30);
+        ln3 r111 = r11;
+        if (vr1.n(((ey1) r110).a, r28.k) == true) goto L72;
+        r30 = r30 + 1;
+        r11 = r111;
+    L72:
+        ey1 r112 = (ey1) r110;
+        if (r112 != null) goto L86;
+        int r31 = r1.size();
+        int r32 = 0;
+    L75:
+        if (r32 >= r31) goto L80;
+        Object r33 = r1.get(r32);
+        if (((ey1) r33).d == true) goto L81;
+        r32 = r32 + 1;
+    L81:
+        r112 = (ey1) r33;
+        if (r112 != null) goto L85;
+        r6.a();
+        return;
+    L85:
+        r28.k = r112.a;
+        goto L86
+    L80:
+        r33 = null;
+    L86:
+        ey1 r34 = r112;
+        if (r22 != r111) goto L124;
+        if (r34.i == false) goto L91;
+        ey1 r35 = r28.j;
+        if (r35 == null) goto L122;
+        long r36 = r28.k;
+        e20 r37 = r6.u;
+        if (r37 == null) goto L120;
+        r6.b(r35, r36, r37);
+        goto L124
+    L120:
+        kf2.n("AwaitTouchSlop.touchSlopDetector was not initialized");
+        return;
+    L122:
+        kf2.n("AwaitTouchSlop.initialDown was not initialized");
+        return;
+    L91:
+        if (zz1.b(r34) == false) goto L104;
+        int r38 = r1.size();
+        int r39 = 0;
+    L93:
+        if (r39 >= r38) goto L98;
+        Object r40 = r1.get(r39);
+        if (((ey1) r40).d == true) goto L96;
+        r39 = r39 + 1;
+        goto L93
+    L96:
+        Object r113 = r40;
+    L99:
+        ey1 r114 = (ey1) r113;
+        if (r114 != null) goto L103;
+        r6.a();
+        goto L124
+    L103:
+        r28.k = r114.a;
+        goto L124
+    L98:
+        r113 = null;
+        goto L99
+    L104:
+        m65 r41 = (m65) kb4.q(r0, g90.t);
+        float r42 = bv0.a;
+        float r43 = r41.c();
+        e20 r44 = r6.u;
+        if (r44 == null) goto L113;
+        long r115 = e20.u(r44, zz1.A(r34, r0.D, new dy1(r3), true), r43);
+        if ((9223372034707292159L & r115) == 9205357640488583168L) goto L112;
+        r34.i = true;
+        ey1 r45 = r28.j;
+        r45.getClass();
+        r6.f(r45, r34, new dy1(r3), r115);
+        r6.e(r34, new dy1(r3), r115);
+        long r46 = r34.a;
+        jy1 r47 = r6.p;
+        if (r47 != null) goto L111;
+        r47 = new jy1();
+        r47.j = Long.MAX_VALUE;
+        r6.p = r47;
+    L111:
+        r47.j = r46;
+        r6.s = r47;
+        goto L124
+    L112:
+        r28.l = true;
+        goto L124
+    L113:
+        kf2.n("Touch slop detector not initialized.");
+        return;
+    L124:
+        if (r22 == r27) goto L126;
+        return;
+    L126:
+        if (r28.l == true) goto L128;
+        return;
+    L128:
+        if (r34.i == false) goto L139;
+        ey1 r48 = r28.j;
+        if (r48 == null) goto L137;
+        long r49 = r28.k;
+        e20 r50 = r6.u;
+        if (r50 == null) goto L135;
+        r6.b(r48, r49, r50);
+        return;
+    L135:
+        kf2.n("AwaitTouchSlop.touchSlopDetector was not initialized");
+        return;
+    L137:
+        kf2.n("AwaitTouchSlop.initialDown was not initialized");
+        return;
+    L139:
+        r28.l = false;
+        return;
+    L71:
+        r111 = r11;
+        r110 = null;
+        goto L72
+    L280:
+        return;
+    L142:
+        if ((r8 instanceof hy1) == false) goto L171;
+        hy1 r51 = (hy1) r8;
+        if (r22 != r27) goto L281;
+        int r52 = r1.size();
+        int r53 = 0;
+    L147:
+        if (r53 >= r52) goto L152;
+        if (((ey1) r1.get(r53)).i == true) goto L150;
+        r53 = r53 + 1;
+        goto L147
+    L150:
+        boolean r54 = false;
+    L153:
+        int r55 = r1.size();
+        int r56 = 0;
+    L154:
+        if (r56 >= r55) goto L168;
+        if (((ey1) r1.get(r56)).d == true) goto L158;
+        r56 = r56 + 1;
+        goto L154
+    L158:
+        if (r1.isEmpty() == true) goto L168;
+        if (r54 == false) goto L278;
+        long r57 = zz1.B((ey1) q40.w0(r1), r0.D, new dy1(r3));
+        ey1 r58 = r51.j;
+        r58.getClass();
+        long r116 = g83.d(r57, zz1.B(r58, r0.D, new dy1(r3)));
+        ey1 r59 = r51.j;
+        if (r59 == null) goto L165;
+        ly1.c(r6, r59, r51.k, r116, 8);
+        return;
+    L165:
+        kf2.n("AwaitGesturePickup.initialDown was not initialized.");
+        return;
+    L278:
+        return;
+    L168:
+        r6.a();
+        return;
+    L152:
+        r54 = true;
+        goto L153
+    L281:
+        return;
+    L171:
+        if ((r8 instanceof jy1) == false) goto L250;
+        jy1 r60 = (jy1) r8;
+        if (r22 != r11) goto L282;
+        long r61 = r60.j;
+        int r62 = r1.size();
+        int r63 = 0;
+    L176:
+        if (r63 >= r62) goto L181;
+        Object r64 = r1.get(r63);
+        if (vr1.n(((ey1) r64).a, r61) == true) goto L182;
+        r63 = r63 + 1;
+    L182:
+        ey1 r65 = (ey1) r64;
+        if (r65 == null) goto L283;
+        long r66 = r65.c;
+        boolean r67 = zz1.b(r65);
+        wu0 r68 = wu0.a;
+        if (r67 == false) goto L242;
+        int r69 = r1.size();
+        int r117 = 0;
+    L188:
+        if (r117 >= r69) goto L193;
+        Object r118 = r1.get(r117);
+        float r210 = 0.0f;
+        if (((ey1) r118).d == true) goto L194;
+        r117 = r117 + 1;
+    L194:
+        ey1 r119 = (ey1) r118;
+        if (r119 == null) goto L197;
+        r60.j = r119.a;
+        return;
+    L197:
+        if (r65.i == false) goto L199;
+    L236:
+        r0.A0(r68);
+    L237:
+        r6.a();
+        return;
+    L199:
+        if (zz1.b(r65) == false) goto L236;
+        rm2 r70 = r6.d();
+        hb3 r71 = r0.D;
+        x7 r72 = r6.v;
+        q03 r73 = (q03) r72.p;
+        char r120 = ' ';
+        float r121 = Float.intBitsToFloat((int) (r66 >> 32));
+        float r74 = Float.intBitsToFloat((int) (r66 & 4294967295L));
+        if (zz1.h(r65) == false) goto L204;
+        r72.o = 0;
+        r73.d();
+    L204:
+        if (zz1.b(r65) == false) goto L206;
+    L221:
+        char r122 = ' ';
+    L222:
+        long r75 = (Float.floatToRawIntBits(r121) << r122) | (((long) Float.floatToRawIntBits(r74)) & 4294967295L);
+        if (r71 != null) goto L226;
+    L235:
+        ((qf2) r70.o).a(r65.b, r75);
+        float r76 = ((m65) kb4.q(r0, g90.t)).b();
+        long r77 = r6.d().c(e35.h(r76, r76));
+        qf2 r78 = (qf2) r6.d().o;
+        m45 r79 = r78.a;
+        ti.h0(r79.d, null);
+        r79.e = 0;
+        m45 r80 = r78.b;
+        ti.h0(r80.d, null);
+        r80.e = 0;
+        r78.c = 0;
+        r0.A0(new zu0(true, ov0.a(r77)));
+        goto L237
+    L226:
+        if (r3 != 1) goto L229;
+        float r81 = Float.intBitsToFloat((int) (r75 >> r122));
+    L232:
+        if (r71 != hb3.o) goto L234;
+        long r82 = Float.floatToRawIntBits(r81);
+        r75 = (((long) Float.floatToRawIntBits(r210)) & 4294967295L) | (r82 << r122);
+        goto L235
+    L234:
+        r75 = (Float.floatToRawIntBits(r210) << r122) | (((long) Float.floatToRawIntBits(r81)) & 4294967295L);
+        goto L235
+    L229:
+        if (r3 != 2) goto L235;
+        r81 = Float.intBitsToFloat((int) (r75 & 4294967295L));
+        goto L232
+    L206:
+        if (zz1.h(r65) == true) goto L221;
+        if (r73.b != 3) goto L210;
+        int r83 = r72.o;
+        r72.o = r83 + 1;
+        r73.n(r83, r65);
+    L212:
+        if (r72.o != 3) goto L214;
+        r72.o = 0;
+    L214:
+        Object[] r84 = r73.a;
+        int r85 = r73.b;
+        float r123 = r210;
+        int r86 = 0;
+    L215:
+        if (r86 >= r85) goto L217;
+        char r124 = r120;
+        r123 = Float.intBitsToFloat((int) (((ey1) r84[r86]).c >> r124)) + r123;
+        r86 = r86 + 1;
+        r120 = r124;
+        goto L215
+    L217:
+        r122 = r120;
+        int r87 = r73.b;
+        r121 = r123 / r87;
+        Object[] r88 = r73.a;
+        float r125 = r210;
+        int r89 = 0;
+    L218:
+        if (r89 >= r87) goto L220;
+        r125 = r125 + Float.intBitsToFloat((int) (((ey1) r88[r89]).c & 4294967295L));
+        r89 = r89 + 1;
+        goto L218
+    L220:
+        r74 = r125 / r73.b;
+        goto L222
+    L210:
+        r73.a(r65);
+        goto L212
+    L193:
+        r210 = 0.0f;
+        r118 = null;
+        goto L194
+    L242:
+        if (r65.i == false) goto L246;
+        r0.A0(r68);
+        return;
+    L246:
+        if (g83.c(zz1.A(r65, r0.D, new dy1(r3), true)) == 0.0f) goto L284;
+        r6.e(r65, new dy1(r3), zz1.A(r65, r0.D, new dy1(r3), false));
+        r65.i = true;
+        return;
+    L284:
+        return;
+    L283:
+        return;
+    L181:
+        r64 = null;
+        goto L182
+    L282:
+        return;
+    L250:
+        er1.n();
+        return;
+    L252:
+        kf2.n("currentDragState should not be null");
+        return;
     }
 
-    public final void G0(tb tbVar, fv fvVar, y71 y71Var, rm2 rm2Var, hb3 hb3Var, a74 a74Var, boolean z, boolean z2) {
-        boolean z3;
-        if (this.F != z) {
-            this.f0.o = z;
-            this.X = null;
-            this.Y = null;
-            fu.C(this);
-        }
-        if (y71Var == null) {
-            y71Var = this.d0;
-        }
-        g74 g74Var = this.e0;
-        boolean z4 = true;
-        if (h12.c(g74Var.a, a74Var)) {
-            z3 = false;
-        } else {
-            g74Var.a = a74Var;
-            z3 = true;
-        }
-        g74Var.b = tbVar;
-        if (g74Var.d != hb3Var) {
-            g74Var.d = hb3Var;
-            z3 = true;
-        }
-        if (g74Var.e != z2) {
-            g74Var.e = z2;
-            z3 = true;
-        }
-        g74Var.c = y71Var;
-        g74Var.f = this.W;
-        gd0 gd0Var = this.h0;
-        gd0Var.B = hb3Var;
-        gd0Var.D = z2;
-        gd0Var.E = fvVar;
-        k2 k2Var = uo.p;
-        hb3 hb3Var2 = g74Var.d;
-        hb3 hb3Var3 = hb3.n;
-        if (hb3Var2 != hb3Var3) {
-            hb3Var3 = hb3.o;
-        }
-        this.E = k2Var;
-        if (this.F != z) {
-            this.F = z;
-            if (!z) {
-                jh1 jh1Var = this.O;
-                if (jh1Var != null) {
-                    r0(jh1Var);
-                }
-                jh1 jh1Var2 = this.N;
-                if (jh1Var2 != null) {
-                    r0(jh1Var2);
-                }
-                this.O = null;
-                this.N = null;
-                w0();
-                this.V = null;
-            }
-            z3 = true;
-        }
-        if (!h12.c(this.G, rm2Var)) {
-            w0();
-            this.G = rm2Var;
-        }
-        if (this.D != hb3Var3) {
-            this.D = hb3Var3;
-        } else {
-            z4 = z3;
-        }
-        if (z4) {
-            boolean z5 = this.K;
-            wu0 wu0Var = wu0.a;
-            if (z5) {
-                x0();
-                if (this.J) {
-                    B0().d(wu0Var);
-                }
-                this.T = null;
-            }
-            ly1 ly1Var = this.V;
-            if (ly1Var != null) {
-                ly1Var.a();
-                z64 z64Var = ly1Var.n;
-                if (z64Var.J) {
-                    z64Var.A0(wu0Var);
-                }
-                ly1Var.t = null;
-                x7 x7Var = ly1Var.w;
-                x7Var.o = 0;
-                ((l03) x7Var.p).b = 0;
-            }
-        }
+    public final void G0(tb r6, fv r7, y71 r8, rm2 r9, hb3 r10, a74 r11, boolean r12, boolean r13) {
+        if (this.F == r12) goto L5;
+        this.f0.o = r12;
+        this.X = null;
+        this.Y = null;
+        fu.C(this);
+    L5:
+        if (r8 != null) goto L7;
+        r8 = this.d0;
+    L7:
+        g74 r0 = this.e0;
+        boolean r4 = true;
+        if (h12.c(r0.a, r11) == true) goto L10;
+        r0.a = r11;
+        boolean r14 = true;
+    L11:
+        r0.b = r6;
+        if (r0.d == r10) goto L15;
+        r0.d = r10;
+        r14 = true;
+    L15:
+        if (r0.e == r13) goto L17;
+        r0.e = r13;
+        r14 = true;
+    L17:
+        r0.c = r8;
+        r0.f = this.W;
+        gd0 r15 = this.h0;
+        r15.B = r10;
+        r15.D = r13;
+        r15.E = r7;
+        k2 r16 = uo.p;
+        hb3 r17 = r0.d;
+        hb3 r18 = hb3.n;
+        if (r17 == r18) goto L21;
+        r18 = hb3.o;
+    L21:
+        this.E = r16;
+        if (this.F == r12) goto L34;
+        this.F = r12;
+        if (r12 == true) goto L32;
+        jh1 r19 = this.O;
+        if (r19 == null) goto L28;
+        r0(r19);
+    L28:
+        jh1 r20 = this.N;
+        if (r20 == null) goto L31;
+        r0(r20);
+    L31:
+        this.O = null;
+        this.N = null;
+        w0();
+        this.V = null;
+    L32:
+        r14 = true;
+    L34:
+        if (h12.c(this.G, r9) == true) goto L37;
+        w0();
+        this.G = r9;
+    L37:
+        if (this.D == r18) goto L39;
+        this.D = r18;
+    L40:
+        if (r4 == false) goto L54;
+        boolean r21 = this.K;
+        wu0 r22 = wu0.a;
+        if (r21 == false) goto L47;
+        x0();
+        if (this.J == false) goto L46;
+        B0().d(r22);
+    L46:
+        this.T = null;
+    L47:
+        ly1 r5 = this.V;
+        if (r5 == null) goto L55;
+        r5.a();
+        z64 r23 = r5.n;
+        if (r23.J == false) goto L52;
+        r23.A0(r22);
+    L52:
+        r5.t = null;
+        x7 r24 = r5.w;
+        r24.o = 0;
+        ((l03) r24.p).b = 0;
+        return;
+    L55:
+        return;
+    L54:
+        return;
+    L39:
+        r4 = r14;
+        goto L40
+    L10:
+        r14 = false;
+        goto L11
     }
 
     @Override // defpackage.my1
     public final void N() {
-        ly1 ly1Var = this.V;
-        if (ly1Var != null) {
-            ly1Var.a();
-            z64 z64Var = ly1Var.n;
-            if (z64Var.J) {
-                z64Var.A0(wu0.a);
-            }
-            ly1Var.t = null;
-            x7 x7Var = ly1Var.w;
-            x7Var.o = 0;
-            ((l03) x7Var.p).b = 0;
-        }
+        ly1 r2 = this.V;
+        if (r2 == null) goto L9;
+        r2.a();
+        z64 r0 = r2.n;
+        if (r0.J == false) goto L7;
+        r0.A0(wu0.a);
+    L7:
+        r2.t = null;
+        x7 r3 = r2.w;
+        r3.o = 0;
+        ((l03) r3.p).b = 0;
+        return;
     }
 
     @Override // defpackage.eo0, defpackage.rn3
     public final void b() {
         t();
-        hy2 hy2Var = this.b0;
-        if (hy2Var != null) {
-            hy2Var.d = j51.O(this).J;
-        }
-        hw4 hw4Var = this.c0;
-        if (hw4Var != null) {
-            hw4Var.d = j51.O(this).J;
-        }
+        hy2 r0 = this.b0;
+        if (r0 == null) goto L5;
+        r0.d = j51.O(this).J;
+    L5:
+        hw4 r1 = this.c0;
+        if (r1 == null) goto L8;
+        r1.d = j51.O(this).J;
+    L8:
         t();
-        if (this.A) {
-            oo0 oo0Var = j51.O(this).J;
-            uk0 uk0Var = this.d0;
-            uk0Var.getClass();
-            uk0Var.a = new ui0(new rm2(oo0Var));
-        }
+        if (this.A == true) goto L11;
+        return;
+    L11:
+        oo0 r2 = j51.O(this).J;
+        uk0 r3 = this.d0;
+        r3.getClass();
+        r3.a = new ui0(new rm2(r2));
     }
 
     @Override // defpackage.g94
-    public final void c0(q94 q94Var) {
-        if (this.F && (this.X == null || this.Y == null)) {
-            this.X = new z(1, this);
-            this.Y = new j2(this, null);
-        }
-        z zVar = this.X;
-        if (zVar != null) {
-            c42[] c42VarArr = o94.a;
-            q94Var.a(d94.d, new w2(null, zVar));
-        }
-        j2 j2Var = this.Y;
-        if (j2Var != null) {
-            c42[] c42VarArr2 = o94.a;
-            q94Var.a(d94.e, j2Var);
-        }
+    public final void c0(q94 r5) {
+        if (this.F == true) goto L5;
+    L9:
+        z r0 = this.X;
+        if (r0 == null) goto L12;
+        c42[] r2 = o94.a;
+        r5.a(d94.d, new w2(null, r0));
+    L12:
+        j2 r4 = this.Y;
+        if (r4 == null) goto L16;
+        c42[] r1 = o94.a;
+        r5.a(d94.e, r4);
+        return;
+    L16:
+        return;
+    L5:
+        if (this.X != null) goto L7;
+    L8:
+        this.X = new z(1, this);
+        this.Y = new j2(this, null);
+        goto L9
+    L7:
+        if (this.Y != null) goto L9;
+        goto L8
     }
 
     @Override // defpackage.cx2
@@ -935,87 +952,39 @@ public final class z64 extends fo0 implements j42, g94, rn3, my1, a90, mv0 {
 
     @Override // defpackage.cx2
     public final void i0() {
-        hy2 hy2Var = this.b0;
-        if (hy2Var != null) {
-            hy2Var.d = j51.O(this).J;
-        }
-        hw4 hw4Var = this.c0;
-        if (hw4Var != null) {
-            hw4Var.d = j51.O(this).J;
-        }
-        if (this.A) {
-            oo0 oo0Var = j51.O(this).J;
-            uk0 uk0Var = this.d0;
-            uk0Var.getClass();
-            uk0Var.a = new ui0(new rm2(oo0Var));
-        }
+        hy2 r0 = this.b0;
+        if (r0 == null) goto L5;
+        r0.d = j51.O(this).J;
+    L5:
+        hw4 r1 = this.c0;
+        if (r1 == null) goto L9;
+        r1.d = j51.O(this).J;
+    L9:
+        if (this.A == true) goto L11;
+        return;
+    L11:
+        oo0 r2 = j51.O(this).J;
+        uk0 r3 = this.d0;
+        r3.getClass();
+        r3.a = new ui0(new rm2(r2));
     }
 
     @Override // defpackage.cx2
     public final void j0() {
         this.J = false;
         w0();
-        jh1 jh1Var = this.O;
-        if (jh1Var != null) {
-            r0(jh1Var);
-        }
-        jh1 jh1Var2 = this.N;
-        if (jh1Var2 != null) {
-            r0(jh1Var2);
-        }
+        jh1 r0 = this.O;
+        if (r0 == null) goto L5;
+        r0(r0);
+    L5:
+        jh1 r1 = this.N;
+        if (r1 == null) goto L8;
+        r0(r1);
+    L8:
         this.O = null;
         this.N = null;
     }
 
-    /* JADX WARN: Code duplicated, block: B:100:0x017d  */
-    /* JADX WARN: Code duplicated, block: B:101:0x0182  */
-    /* JADX WARN: Code duplicated, block: B:103:0x0191  */
-    /* JADX WARN: Code duplicated, block: B:104:0x0199  */
-    /* JADX WARN: Code duplicated, block: B:107:0x01a1  */
-    /* JADX WARN: Code duplicated, block: B:109:0x01ba  */
-    /* JADX WARN: Code duplicated, block: B:111:0x01f5  */
-    /* JADX WARN: Code duplicated, block: B:112:0x01f7  */
-    /* JADX WARN: Code duplicated, block: B:125:0x0222  */
-    /* JADX WARN: Code duplicated, block: B:128:0x0231  */
-    /* JADX WARN: Code duplicated, block: B:130:0x023f A[ADDED_TO_REGION, LOOP:7: B:130:0x023f->B:177:0x02da, LOOP_START, PHI: r1 r3 r5 r7 r11
-  0x023f: PHI (r1v77 cx2) = (r1v66 cx2), (r1v78 cx2) binds: [B:129:0x023d, B:177:0x02da] A[DONT_GENERATE, DONT_INLINE]
-  0x023f: PHI (r3v48 java.lang.String) = (r3v45 java.lang.String), (r3v49 java.lang.String) binds: [B:129:0x023d, B:177:0x02da] A[DONT_GENERATE, DONT_INLINE]
-  0x023f: PHI (r5v22 java.lang.String) = (r5v19 java.lang.String), (r5v24 java.lang.String) binds: [B:129:0x023d, B:177:0x02da] A[DONT_GENERATE, DONT_INLINE]
-  0x023f: PHI (r7v37 boolean) = (r7v33 boolean), (r7v39 boolean) binds: [B:129:0x023d, B:177:0x02da] A[DONT_GENERATE, DONT_INLINE]
-  0x023f: PHI (r11v22 if1) = (r11v17 if1), (r11v24 if1) binds: [B:129:0x023d, B:177:0x02da] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:131:0x0241  */
-    /* JADX WARN: Code duplicated, block: B:133:0x0249  */
-    /* JADX WARN: Code duplicated, block: B:135:0x024d  */
-    /* JADX WARN: Code duplicated, block: B:137:0x0253  */
-    /* JADX WARN: Code duplicated, block: B:139:0x025f  */
-    /* JADX WARN: Code duplicated, block: B:140:0x0261  */
-    /* JADX WARN: Code duplicated, block: B:142:0x0265  */
-    /* JADX WARN: Code duplicated, block: B:145:0x026c  */
-    /* JADX WARN: Code duplicated, block: B:156:0x028b  */
-    /* JADX WARN: Code duplicated, block: B:183:0x0303  */
-    /* JADX WARN: Code duplicated, block: B:190:0x031e  */
-    /* JADX WARN: Code duplicated, block: B:192:0x0332  */
-    /* JADX WARN: Code duplicated, block: B:194:0x0345  */
-    /* JADX WARN: Code duplicated, block: B:195:0x035b  */
-    /* JADX WARN: Code duplicated, block: B:197:0x0361  */
-    /* JADX WARN: Code duplicated, block: B:199:0x036b  */
-    /* JADX WARN: Code duplicated, block: B:201:0x0371  */
-    /* JADX WARN: Code duplicated, block: B:202:0x0375  */
-    /* JADX WARN: Code duplicated, block: B:204:0x0379  */
-    /* JADX WARN: Code duplicated, block: B:388:0x016d A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:389:0x016e A[EDGE_INSN: B:389:0x016e->B:96:0x016e BREAK  A[LOOP:5: B:90:0x015c->B:94:0x016a], SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:390:0x0285 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:391:0x0314 A[EDGE_INSN: B:391:0x0314->B:186:0x0314 BREAK  A[LOOP:6: B:127:0x022f->B:184:0x0304, LOOP_LABEL: LOOP:6: B:127:0x022f->B:184:0x0304], SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:392:0x030e A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:396:0x02da A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:42:0x00a2  */
-    /* JADX WARN: Code duplicated, block: B:85:0x014b  */
-    /* JADX WARN: Code duplicated, block: B:87:0x0151  */
-    /* JADX WARN: Code duplicated, block: B:89:0x0157  */
-    /* JADX WARN: Code duplicated, block: B:91:0x015e  */
-    /* JADX WARN: Code duplicated, block: B:94:0x016a A[LOOP:5: B:90:0x015c->B:94:0x016a, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:98:0x0172  */
-    /* JADX WARN: Code duplicated, block: B:99:0x0175  */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r15v10 */
     /* JADX WARN: Type inference failed for: r15v11 */
@@ -1045,1006 +1014,717 @@ public final class z64 extends fo0 implements j42, g94, rn3, my1, a90, mv0 {
     /* JADX WARN: Type inference failed for: r3v91 */
     /* JADX WARN: Type inference failed for: r5v30 */
     @Override // defpackage.rn3
-    public final void n(kn3 kn3Var, ln3 ln3Var, long j) {
-        ln3 ln3Var2;
-        ln3 ln3Var3;
-        int i;
-        Object obj;
-        Object obj2;
-        boolean z;
-        ln3 ln3Var4;
-        Object obj3;
-        String str;
-        String str2;
-        String str3;
-        String str4;
-        on3 on3Var;
-        long j2;
-        e20 e20Var;
-        m65 m65Var;
-        int i2;
-        float fC;
-        e20 e20Var2;
-        long jU;
-        hb3 hb3Var;
-        boolean z2;
-        if1 if1Var;
-        cx2 cx2Var;
-        c72 c72VarO;
-        boolean z3;
-        vu0 vu0Var;
-        w12 w12Var;
-        ?? r15;
-        ?? r3;
-        ?? f13Var;
-        ?? C;
-        if1 if1Var2;
-        rx4 rx4Var;
-        ih1 ih1Var;
-        boolean zBooleanValue;
-        int size;
-        int i3;
-        Object obj4;
-        on3 on3Var2;
-        Object obj5;
-        ru0 ru0Var;
-        z64 z64Var = this;
-        kn3 kn3Var2 = kn3Var;
-        List list = kn3Var2.a;
-        int size2 = list.size();
-        int i4 = 0;
-        while (true) {
-            ln3 ln3Var5 = ln3.o;
-            ln3 ln3Var6 = ln3.n;
-            if (i4 < size2) {
-                on3 on3Var3 = (on3) list.get(i4);
-                k2 k2Var = z64Var.E;
-                int i5 = on3Var3.i;
-                k2Var.getClass();
-                if (i5 == 2) {
-                    i4++;
-                    kn3Var2 = kn3Var;
-                } else {
-                    z64Var.K = true;
-                    if (!z64Var.F) {
-                        break;
-                    }
-                    if (z64Var.N == null) {
-                        jh1 jh1Var = new jh1(z64Var);
-                        z64Var.q0(jh1Var);
-                        z64Var.N = jh1Var;
-                    }
-                    if (z64Var.S == null) {
-                        su0 su0Var = z64Var.L;
-                        if (su0Var == null) {
-                            su0Var = new su0();
-                            su0Var.f = ru0.p;
-                            su0Var.g = false;
-                            su0Var.h = false;
-                            z64Var.L = su0Var;
-                        }
-                        z64Var.S = su0Var;
-                    }
-                    ya4 ya4Var = z64Var.S;
-                    if (ya4Var == null) {
-                        kf2.n("currentDragState should not be null");
-                        return;
-                    }
-                    if (!(ya4Var instanceof su0)) {
-                        boolean z4 = ya4Var instanceof uu0;
-                        ln3 ln3Var7 = ln3.p;
-                        if (!z4) {
-                            ln3Var2 = ln3Var5;
-                            ln3Var3 = ln3Var6;
-                            if (!(ya4Var instanceof tu0)) {
-                                if (!(ya4Var instanceof vu0)) {
-                                    er1.n();
-                                    return;
-                                }
-                                vu0 vu0Var2 = (vu0) ya4Var;
-                                if (ln3Var != ln3Var2) {
-                                    break;
-                                }
-                                long j3 = vu0Var2.f;
-                                int size3 = list.size();
-                                int i6 = 0;
-                                while (true) {
-                                    if (i6 >= size3) {
-                                        obj = null;
-                                        break;
-                                    }
-                                    obj = list.get(i6);
-                                    if (vr1.n(((on3) obj).a, j3)) {
-                                        break;
-                                    } else {
-                                        i6++;
-                                    }
-                                }
-                                on3 on3Var4 = (on3) obj;
-                                if (on3Var4 == null) {
-                                    break;
-                                }
-                                boolean zI = gi1.i(on3Var4);
-                                wu0 wu0Var = wu0.a;
-                                if (!zI) {
-                                    if (!on3Var4.c()) {
-                                        if (g83.c(gi1.S(on3Var4, true)) != 0.0f) {
-                                            z64Var.D0(on3Var4, gi1.S(on3Var4, false));
-                                            on3Var4.a();
-                                            break;
-                                        }
-                                        break;
-                                    }
-                                    z64Var.B0().d(wu0Var);
-                                } else {
-                                    int size4 = list.size();
-                                    int i7 = 0;
-                                    while (true) {
-                                        if (i7 >= size4) {
-                                            obj2 = null;
-                                            break;
-                                        }
-                                        obj2 = list.get(i7);
-                                        if (((on3) obj2).d) {
-                                            break;
-                                        } else {
-                                            i7++;
-                                        }
-                                    }
-                                    on3 on3Var5 = (on3) obj2;
-                                    if (on3Var5 == null) {
-                                        if (on3Var4.c() || !gi1.i(on3Var4)) {
-                                            z64Var.B0().d(wu0Var);
-                                        } else {
-                                            float fB = ((m65) kb4.q(z64Var, g90.t)).b();
-                                            xl.e(z64Var.C0(), on3Var4);
-                                            long jC = z64Var.C0().c(e35.h(fB, fB));
-                                            qf2 qf2Var = (qf2) z64Var.C0().o;
-                                            m45 m45Var = qf2Var.a;
-                                            vh0[] vh0VarArr = m45Var.d;
-                                            ti.f0(0, vh0VarArr.length, null, vh0VarArr);
-                                            m45Var.e = 0;
-                                            m45 m45Var2 = qf2Var.b;
-                                            vh0[] vh0VarArr2 = m45Var2.d;
-                                            ti.f0(0, vh0VarArr2.length, null, vh0VarArr2);
-                                            m45Var2.e = 0;
-                                            qf2Var.c = 0L;
-                                            z64Var.B0().d(new zu0(false, ov0.a(jC)));
-                                            z64Var.K = false;
-                                        }
-                                        z64Var.x0();
-                                    } else {
-                                        vu0Var2.f = on3Var5.a;
-                                    }
-                                }
-                            } else {
-                                tu0 tu0Var = (tu0) ya4Var;
-                                if (ln3Var == ln3Var7) {
-                                    int size5 = list.size();
-                                    int i8 = 0;
-                                    while (true) {
-                                        if (i8 >= size5) {
-                                            z = true;
-                                            break;
-                                        } else {
-                                            if (((on3) list.get(i8)).c()) {
-                                                z = false;
-                                                break;
-                                            }
-                                            i8++;
-                                        }
-                                    }
-                                    int size6 = list.size();
-                                    int i9 = 0;
-                                    while (true) {
-                                        if (i9 < size6) {
-                                            if (((on3) list.get(i9)).d) {
-                                                if (!list.isEmpty()) {
-                                                    if (!z) {
-                                                        break;
-                                                    }
-                                                    long j4 = ((on3) q40.w0(list)).c;
-                                                    on3 on3Var6 = tu0Var.f;
-                                                    on3Var6.getClass();
-                                                    long jD = g83.d(j4, on3Var6.c);
-                                                    on3 on3Var7 = tu0Var.f;
-                                                    if (on3Var7 != null) {
-                                                        z0(z64Var, on3Var7, tu0Var.g, jD, 8);
-                                                        break;
-                                                    } else {
-                                                        kf2.n("AwaitGesturePickup.initialDown was not initialized.");
-                                                        return;
-                                                    }
-                                                }
-                                                break;
-                                            }
-                                            i9++;
-                                        }
-                                        z64Var.x0();
-                                        break;
-                                    }
-                                }
-                            }
-                            break;
-                            break;
-                        }
-                        uu0 uu0Var = (uu0) ya4Var;
-                        if (ln3Var != ln3Var6) {
-                            int size7 = list.size();
-                            int i10 = 0;
-                            while (true) {
-                                if (i10 >= size7) {
-                                    ln3Var4 = ln3Var5;
-                                    obj3 = null;
-                                    break;
-                                }
-                                obj3 = list.get(i10);
-                                ln3Var4 = ln3Var5;
-                                if (vr1.n(((on3) obj3).a, uu0Var.g)) {
-                                    break;
-                                }
-                                i10++;
-                                ln3Var5 = ln3Var4;
-                            }
-                            on3 on3Var8 = (on3) obj3;
-                            if (on3Var8 != null) {
-                                str = "AwaitTouchSlop.touchSlopDetector was not initialized";
-                                str2 = "AwaitTouchSlop.initialDown was not initialized";
-                                ln3Var2 = ln3Var4;
-                                if (ln3Var != ln3Var2) {
-                                    str3 = "AwaitTouchSlop.touchSlopDetector was not initialized";
-                                    str4 = "AwaitTouchSlop.initialDown was not initialized";
-                                    ln3Var3 = ln3Var6;
-                                } else if (!on3Var8.c()) {
-                                    str3 = "AwaitTouchSlop.touchSlopDetector was not initialized";
-                                    str4 = "AwaitTouchSlop.initialDown was not initialized";
-                                    ln3Var3 = ln3Var6;
-                                    on3Var = uu0Var.f;
-                                    if (on3Var != null) {
-                                        kf2.n(str4);
-                                        return;
-                                    }
-                                    j2 = uu0Var.g;
-                                    e20Var = z64Var.U;
-                                    if (e20Var != null) {
-                                        kf2.n(str3);
-                                        return;
-                                    }
-                                    z64Var.y0(on3Var, j2, e20Var);
-                                } else if (gi1.i(on3Var8)) {
-                                    size = list.size();
-                                    i3 = 0;
-                                    while (true) {
-                                        if (i3 < size) {
-                                            obj4 = null;
-                                            break;
-                                        }
-                                        obj4 = list.get(i3);
-                                        if (((on3) obj4).d) {
-                                            break;
-                                            break;
-                                        }
-                                        i3++;
-                                    }
-                                    on3Var2 = (on3) obj4;
-                                    if (on3Var2 == null) {
-                                        z64Var.x0();
-                                    } else {
-                                        uu0Var.g = on3Var2.a;
-                                    }
-                                    str3 = "AwaitTouchSlop.touchSlopDetector was not initialized";
-                                    str4 = "AwaitTouchSlop.initialDown was not initialized";
-                                    ln3Var3 = ln3Var6;
-                                } else {
-                                    m65Var = (m65) kb4.q(z64Var, g90.t);
-                                    i2 = on3Var8.i;
-                                    float f = bv0.a;
-                                    if (i2 == 2) {
-                                        fC = m65Var.c() * bv0.a;
-                                    } else {
-                                        fC = m65Var.c();
-                                    }
-                                    e20Var2 = z64Var.U;
-                                    if (e20Var2 != null) {
-                                        kf2.n("Touch slop detector not initialized.");
-                                        return;
-                                    }
-                                    jU = e20.u(e20Var2, gi1.S(on3Var8, true), fC);
-                                    if ((jU & 9223372034707292159L) != 9205357640488583168L) {
-                                        ln3Var3 = ln3Var6;
-                                        long jE = g83.e(z64Var.M, gi1.S(on3Var8, false));
-                                        z64Var.M = jE;
-                                        final float fAtan2 = ((float) Math.atan2(Math.abs(Float.intBitsToFloat((int) (z64Var.M & 4294967295L))), Math.abs(Float.intBitsToFloat((int) (jE >> 32))))) * 57.29578f;
-                                        hb3Var = z64Var.D;
-                                        if (hb3Var == null) {
-                                            z2 = true;
-                                        } else {
-                                            int i11 = ov0.a;
-                                            z2 = hb3Var == hb3.o ? false : false;
-                                        }
-                                        final fx3 fx3Var = new fx3();
-                                        if1Var = new if1() { // from class: cv0
-                                            /* JADX WARN: Code duplicated, block: B:4:0x0014  */
-                                            @Override // defpackage.if1
-                                            public final Object invoke(Object obj6) {
-                                                boolean z5;
-                                                mv0 mv0Var = (mv0) obj6;
-                                                boolean zC = h12.c(mv0Var.A(), "waiting");
-                                                boolean z6 = false;
-                                                if (mv0Var.F() == null) {
-                                                    z5 = false;
-                                                } else {
-                                                    hb3 hb3VarF = mv0Var.F();
-                                                    hb3VarF.getClass();
-                                                    int i12 = ov0.a;
-                                                    hb3 hb3Var2 = hb3.o;
-                                                    float f2 = fAtan2;
-                                                    if (hb3VarF != hb3Var2 ? f2 <= 30.0f || f2 > 90.0f : f2 > 30.0f) {
-                                                        z5 = false;
-                                                    } else {
-                                                        z5 = true;
-                                                    }
-                                                }
-                                                fx3 fx3Var2 = fx3Var;
-                                                if (fx3Var2.n || (zC && z5)) {
-                                                    z6 = true;
-                                                }
-                                                fx3Var2.n = z6;
-                                                return Boolean.valueOf(!z6);
-                                            }
-                                        };
-                                        int i12 = ov0.a;
-                                        if (!z64Var.n.A) {
-                                            cz1.b("visitAncestors called on an unattached node");
-                                        }
-                                        cx2Var = z64Var.n.r;
-                                        c72VarO = j51.O(z64Var);
-                                        loop6: while (true) {
-                                            if (c72VarO != null) {
-                                                str3 = str;
-                                                str4 = str2;
-                                                z3 = z2;
-                                                break;
-                                            }
-                                            if ((((cx2) c72VarO.Q.g).q & 262144) != 0) {
-                                                while (cx2Var != null) {
-                                                    str3 = str;
-                                                    if ((cx2Var.p & 262144) != 0) {
-                                                        r15 = 0;
-                                                        r3 = cx2Var;
-                                                        while (r3 != 0) {
-                                                            str4 = str2;
-                                                            if (r3 instanceof rx4) {
-                                                                rx4Var = (rx4) r3;
-                                                                z3 = z2;
-                                                                if (jh1.C == rx4Var.f()) {
-                                                                    zBooleanValue = true;
-                                                                } else {
-                                                                    if (rx4Var instanceof jh1) {
-                                                                        kf2.o("Node is not a GestureNode instance");
-                                                                        return;
-                                                                    }
-                                                                    ih1Var = ((jh1) rx4Var).B;
-                                                                    if (ih1Var == null) {
-                                                                        ih1Var = null;
-                                                                    }
-                                                                    if (ih1Var == null) {
-                                                                        zBooleanValue = true;
-                                                                    } else {
-                                                                        zBooleanValue = ((Boolean) if1Var.invoke(ih1Var)).booleanValue();
-                                                                    }
-                                                                }
-                                                                if (!zBooleanValue) {
-                                                                    break loop6;
-                                                                    break loop6;
-                                                                }
-                                                            } else {
-                                                                z3 = z2;
-                                                                if ((r3.p & 262144) == 0) {
-                                                                }
-                                                                str2 = str4;
-                                                                z2 = z3;
-                                                                if1Var = if1Var2;
-                                                                r3 = C;
-                                                                r15 = f13Var;
-                                                            }
-                                                            if1Var2 = if1Var;
-                                                            f13Var = r15;
-                                                            C = j51.c(f13Var);
-                                                            str2 = str4;
-                                                            z2 = z3;
-                                                            if1Var = if1Var2;
-                                                            r3 = C;
-                                                            r15 = f13Var;
-                                                        }
-                                                    }
-                                                    cx2Var = cx2Var.r;
-                                                    str = str3;
-                                                    str2 = str2;
-                                                    z2 = z2;
-                                                    if1Var = if1Var;
-                                                }
-                                            }
-                                            String str5 = str;
-                                            String str6 = str2;
-                                            boolean z5 = z2;
-                                            if1 if1Var3 = if1Var;
-                                            c72VarO = c72VarO.t();
-                                            if (c72VarO != null) {
-                                                cx2Var = null;
-                                            } else {
-                                                cx2Var = null;
-                                            }
-                                            str = str5;
-                                            str2 = str6;
-                                            z2 = z5;
-                                            if1Var = if1Var3;
-                                        }
-                                        if (z3) {
-                                            on3Var8.a();
-                                            on3 on3Var9 = uu0Var.f;
-                                            on3Var9.getClass();
-                                            z64Var.E0(on3Var9, on3Var8, jU);
-                                            z64Var.D0(on3Var8, jU);
-                                            long j5 = on3Var8.a;
-                                            vu0Var = z64Var.P;
-                                            if (vu0Var == null) {
-                                                vu0Var = new vu0();
-                                                vu0Var.f = Long.MAX_VALUE;
-                                                z64Var.P = vu0Var;
-                                            }
-                                            vu0Var.f = j5;
-                                            z64Var.S = vu0Var;
-                                        } else {
-                                            on3Var8.a();
-                                            on3 on3Var10 = uu0Var.f;
-                                            on3Var10.getClass();
-                                            z64Var.E0(on3Var10, on3Var8, jU);
-                                            z64Var.D0(on3Var8, jU);
-                                            long j6 = on3Var8.a;
-                                            vu0Var = z64Var.P;
-                                            if (vu0Var == null) {
-                                                vu0Var = new vu0();
-                                                vu0Var.f = Long.MAX_VALUE;
-                                                z64Var.P = vu0Var;
-                                            }
-                                            vu0Var.f = j6;
-                                            z64Var.S = vu0Var;
-                                        }
-                                    } else {
-                                        str3 = "AwaitTouchSlop.touchSlopDetector was not initialized";
-                                        str4 = "AwaitTouchSlop.initialDown was not initialized";
-                                        ln3Var3 = ln3Var6;
-                                        uu0Var.h = true;
-                                        z64Var.M = g83.e(z64Var.M, gi1.S(on3Var8, true));
-                                    }
-                                }
-                                if (ln3Var == ln3Var7) {
-                                    break;
-                                    break;
-                                } else {
-                                    break;
-                                    break;
-                                }
-                            }
-                            int size8 = list.size();
-                            int i13 = 0;
-                            while (true) {
-                                if (i13 >= size8) {
-                                    obj5 = null;
-                                    break;
-                                }
-                                obj5 = list.get(i13);
-                                if (((on3) obj5).d) {
-                                    break;
-                                } else {
-                                    i13++;
-                                }
-                            }
-                            on3Var8 = (on3) obj5;
-                            if (on3Var8 != null) {
-                                uu0Var.g = on3Var8.a;
-                                str = "AwaitTouchSlop.touchSlopDetector was not initialized";
-                                str2 = "AwaitTouchSlop.initialDown was not initialized";
-                                ln3Var2 = ln3Var4;
-                                if (ln3Var != ln3Var2) {
-                                    str3 = "AwaitTouchSlop.touchSlopDetector was not initialized";
-                                    str4 = "AwaitTouchSlop.initialDown was not initialized";
-                                    ln3Var3 = ln3Var6;
-                                } else if (!on3Var8.c()) {
-                                    str3 = "AwaitTouchSlop.touchSlopDetector was not initialized";
-                                    str4 = "AwaitTouchSlop.initialDown was not initialized";
-                                    ln3Var3 = ln3Var6;
-                                    on3Var = uu0Var.f;
-                                    if (on3Var != null) {
-                                        kf2.n(str4);
-                                        return;
-                                    }
-                                    j2 = uu0Var.g;
-                                    e20Var = z64Var.U;
-                                    if (e20Var != null) {
-                                        kf2.n(str3);
-                                        return;
-                                    }
-                                    z64Var.y0(on3Var, j2, e20Var);
-                                } else if (gi1.i(on3Var8)) {
-                                    size = list.size();
-                                    i3 = 0;
-                                    while (true) {
-                                        if (i3 < size) {
-                                            obj4 = null;
-                                            break;
-                                        }
-                                        obj4 = list.get(i3);
-                                        if (((on3) obj4).d) {
-                                            break;
-                                        } else {
-                                            i3++;
-                                        }
-                                    }
-                                    on3Var2 = (on3) obj4;
-                                    if (on3Var2 == null) {
-                                        z64Var.x0();
-                                    } else {
-                                        uu0Var.g = on3Var2.a;
-                                    }
-                                    str3 = "AwaitTouchSlop.touchSlopDetector was not initialized";
-                                    str4 = "AwaitTouchSlop.initialDown was not initialized";
-                                    ln3Var3 = ln3Var6;
-                                } else {
-                                    m65Var = (m65) kb4.q(z64Var, g90.t);
-                                    i2 = on3Var8.i;
-                                    float f2 = bv0.a;
-                                    if (i2 == 2) {
-                                        fC = m65Var.c() * bv0.a;
-                                    } else {
-                                        fC = m65Var.c();
-                                    }
-                                    e20Var2 = z64Var.U;
-                                    if (e20Var2 != null) {
-                                        kf2.n("Touch slop detector not initialized.");
-                                        return;
-                                    }
-                                    jU = e20.u(e20Var2, gi1.S(on3Var8, true), fC);
-                                    if ((jU & 9223372034707292159L) != 9205357640488583168L) {
-                                        ln3Var3 = ln3Var6;
-                                        long jE2 = g83.e(z64Var.M, gi1.S(on3Var8, false));
-                                        z64Var.M = jE2;
-                                        final float fAtan3 = ((float) Math.atan2(Math.abs(Float.intBitsToFloat((int) (z64Var.M & 4294967295L))), Math.abs(Float.intBitsToFloat((int) (jE2 >> 32))))) * 57.29578f;
-                                        hb3Var = z64Var.D;
-                                        if (hb3Var == null) {
-                                            z2 = true;
-                                        } else {
-                                            int i14 = ov0.a;
-                                            if (hb3Var == hb3.o ? !(fAtan3 <= 30.0f || fAtan3 > 90.0f) : fAtan3 <= 30.0f) {
-                                                z2 = true;
-                                            }
-                                        }
-                                        final fx3 fx3Var2 = new fx3();
-                                        if1Var = new if1() { // from class: cv0
-                                            /* JADX WARN: Code duplicated, block: B:4:0x0014  */
-                                            @Override // defpackage.if1
-                                            public final Object invoke(Object obj6) {
-                                                boolean z6;
-                                                mv0 mv0Var = (mv0) obj6;
-                                                boolean zC = h12.c(mv0Var.A(), "waiting");
-                                                boolean z7 = false;
-                                                if (mv0Var.F() == null) {
-                                                    z6 = false;
-                                                } else {
-                                                    hb3 hb3VarF = mv0Var.F();
-                                                    hb3VarF.getClass();
-                                                    int i15 = ov0.a;
-                                                    hb3 hb3Var2 = hb3.o;
-                                                    float f3 = fAtan3;
-                                                    if (hb3VarF != hb3Var2 ? f3 <= 30.0f || f3 > 90.0f : f3 > 30.0f) {
-                                                        z6 = false;
-                                                    } else {
-                                                        z6 = true;
-                                                    }
-                                                }
-                                                fx3 fx3Var3 = fx3Var2;
-                                                if (fx3Var3.n || (zC && z6)) {
-                                                    z7 = true;
-                                                }
-                                                fx3Var3.n = z7;
-                                                return Boolean.valueOf(!z7);
-                                            }
-                                        };
-                                        int i15 = ov0.a;
-                                        if (!z64Var.n.A) {
-                                            cz1.b("visitAncestors called on an unattached node");
-                                        }
-                                        cx2Var = z64Var.n.r;
-                                        c72VarO = j51.O(z64Var);
-                                        loop6: while (true) {
-                                            if (c72VarO != null) {
-                                                str3 = str;
-                                                str4 = str2;
-                                                z3 = z2;
-                                                break;
-                                            }
-                                            if ((((cx2) c72VarO.Q.g).q & 262144) != 0) {
-                                                while (cx2Var != null) {
-                                                    str3 = str;
-                                                    if ((cx2Var.p & 262144) != 0) {
-                                                        r15 = 0;
-                                                        r3 = cx2Var;
-                                                        while (r3 != 0) {
-                                                            str4 = str2;
-                                                            if (r3 instanceof rx4) {
-                                                                rx4Var = (rx4) r3;
-                                                                z3 = z2;
-                                                                if (jh1.C == rx4Var.f()) {
-                                                                    zBooleanValue = true;
-                                                                } else {
-                                                                    if (rx4Var instanceof jh1) {
-                                                                        kf2.o("Node is not a GestureNode instance");
-                                                                        return;
-                                                                    }
-                                                                    ih1Var = ((jh1) rx4Var).B;
-                                                                    if (ih1Var == null) {
-                                                                        ih1Var = null;
-                                                                    }
-                                                                    if (ih1Var == null && (ih1Var instanceof mv0)) {
-                                                                        zBooleanValue = ((Boolean) if1Var.invoke(ih1Var)).booleanValue();
-                                                                    } else {
-                                                                        zBooleanValue = true;
-                                                                    }
-                                                                }
-                                                                if (!zBooleanValue) {
-                                                                    break loop6;
-                                                                }
-                                                            } else {
-                                                                z3 = z2;
-                                                                if ((r3.p & 262144) == 0 && (r3 instanceof fo0)) {
-                                                                    cx2 cx2Var2 = ((fo0) r3).C;
-                                                                    int i16 = 0;
-                                                                    while (cx2Var2 != null) {
-                                                                        if1 if1Var4 = if1Var;
-                                                                        if ((cx2Var2.p & 262144) != 0) {
-                                                                            i16++;
-                                                                            if (i16 == 1) {
-                                                                                C = r3;
-                                                                                f13Var = r15;
-                                                                                f13Var = f13Var;
-                                                                                C = cx2Var2;
-                                                                            } else {
-                                                                                if (f13Var == 0) {
-                                                                                    f13Var = new f13(new cx2[16]);
-                                                                                }
-                                                                                if (C != 0) {
-                                                                                    f13Var.b(C);
-                                                                                    C = 0;
-                                                                                }
-                                                                                f13Var.b(cx2Var2);
-                                                                            }
-                                                                        } else {
-                                                                            C = r3;
-                                                                            f13Var = r15;
-                                                                        }
-                                                                        cx2Var2 = cx2Var2.s;
-                                                                        if1Var = if1Var4;
-                                                                        C = C;
-                                                                        f13Var = f13Var;
-                                                                    }
-                                                                    C = r3;
-                                                                    f13Var = r15;
-                                                                    if1Var2 = if1Var;
-                                                                    f13Var = f13Var;
-                                                                    if (i16 == 1) {
-                                                                    }
-                                                                    str2 = str4;
-                                                                    z2 = z3;
-                                                                    if1Var = if1Var2;
-                                                                    r3 = C;
-                                                                    r15 = f13Var;
-                                                                }
-                                                                C = j51.c(f13Var);
-                                                                str2 = str4;
-                                                                z2 = z3;
-                                                                if1Var = if1Var2;
-                                                                r3 = C;
-                                                                r15 = f13Var;
-                                                            }
-                                                            if1Var2 = if1Var;
-                                                            f13Var = r15;
-                                                            C = j51.c(f13Var);
-                                                            str2 = str4;
-                                                            z2 = z3;
-                                                            if1Var = if1Var2;
-                                                            r3 = C;
-                                                            r15 = f13Var;
-                                                        }
-                                                    }
-                                                    cx2Var = cx2Var.r;
-                                                    str = str3;
-                                                    str2 = str2;
-                                                    z2 = z2;
-                                                    if1Var = if1Var;
-                                                }
-                                            }
-                                            String str7 = str;
-                                            String str8 = str2;
-                                            boolean z6 = z2;
-                                            if1 if1Var5 = if1Var;
-                                            c72VarO = c72VarO.t();
-                                            if (c72VarO != null || (w12Var = c72VarO.Q) == null) {
-                                                cx2Var = null;
-                                            } else {
-                                                cx2Var = (sq4) w12Var.f;
-                                            }
-                                            str = str7;
-                                            str2 = str8;
-                                            z2 = z6;
-                                            if1Var = if1Var5;
-                                        }
-                                        if (z3 || !fx3Var2.n) {
-                                            on3Var8.a();
-                                            on3 on3Var11 = uu0Var.f;
-                                            on3Var11.getClass();
-                                            z64Var.E0(on3Var11, on3Var8, jU);
-                                            z64Var.D0(on3Var8, jU);
-                                            long j7 = on3Var8.a;
-                                            vu0Var = z64Var.P;
-                                            if (vu0Var == null) {
-                                                vu0Var = new vu0();
-                                                vu0Var.f = Long.MAX_VALUE;
-                                                z64Var.P = vu0Var;
-                                            }
-                                            vu0Var.f = j7;
-                                            z64Var.S = vu0Var;
-                                        } else {
-                                            uu0Var.h = true;
-                                        }
-                                    } else {
-                                        str3 = "AwaitTouchSlop.touchSlopDetector was not initialized";
-                                        str4 = "AwaitTouchSlop.initialDown was not initialized";
-                                        ln3Var3 = ln3Var6;
-                                        uu0Var.h = true;
-                                        z64Var.M = g83.e(z64Var.M, gi1.S(on3Var8, true));
-                                    }
-                                }
-                                if (ln3Var == ln3Var7 || !uu0Var.h) {
-                                    break;
-                                }
-                                if (!on3Var8.c()) {
-                                    uu0Var.h = false;
-                                    break;
-                                }
-                                on3 on3Var12 = uu0Var.f;
-                                if (on3Var12 == null) {
-                                    kf2.n(str4);
-                                    return;
-                                }
-                                long j8 = uu0Var.g;
-                                e20 e20Var3 = z64Var.U;
-                                if (e20Var3 == null) {
-                                    kf2.n(str3);
-                                    return;
-                                }
-                                z64Var.y0(on3Var12, j8, e20Var3);
-                            } else {
-                                z64Var.x0();
-                                ln3Var3 = ln3Var6;
-                                ln3Var2 = ln3Var4;
-                            }
-                            break;
-                        }
-                        break;
-                    }
-                    su0 su0Var2 = (su0) ya4Var;
-                    if (!list.isEmpty() && vq4.b(kn3Var2, false)) {
-                        on3 on3Var13 = (on3) q40.w0(list);
-                        int i17 = dv0.a[su0Var2.f.ordinal()];
-                        ru0 ru0Var2 = ru0.o;
-                        ru0 ru0Var3 = ru0.n;
-                        if (i17 == 1) {
-                            g74 g74Var = z64Var.e0;
-                            if (g74Var.a.a()) {
-                                ru0Var = ru0Var2;
-                            } else {
-                                tb tbVar = g74Var.b;
-                                if (tbVar != null ? tbVar.e() : false) {
-                                    ru0Var = ru0Var2;
-                                } else {
-                                    ru0Var = ru0Var3;
-                                }
-                            }
-                        } else {
-                            ru0Var = su0Var2.f;
-                        }
-                        su0Var2.f = ru0Var;
-                        if (ln3Var == ln3Var6) {
-                            if (ru0Var == ru0Var2) {
-                                on3Var13.a();
-                                su0Var2.g = true;
-                            }
-                            su0Var2.h = true;
-                        }
-                        if (ln3Var == ln3Var5) {
-                            if (ru0Var == ru0Var3) {
-                                z0(z64Var, on3Var13, on3Var13.a, 0L, 12);
-                            } else if (su0Var2.g) {
-                                z64Var.E0(on3Var13, on3Var13, 0L);
-                                z64Var.D0(on3Var13, 0L);
-                                long j9 = on3Var13.a;
-                                vu0 vu0Var3 = z64Var.P;
-                                if (vu0Var3 == null) {
-                                    vu0Var3 = new vu0();
-                                    vu0Var3.f = Long.MAX_VALUE;
-                                    z64Var.P = vu0Var3;
-                                }
-                                vu0Var3.f = j9;
-                                z64Var.S = vu0Var3;
-                            }
-                        }
-                    }
-                }
-            }
-            ln3Var2 = ln3Var5;
-            ln3Var3 = ln3Var6;
-            break;
-        }
-        if (z64Var.F) {
-            if (z64Var.N == null) {
-                jh1 jh1Var2 = new jh1(z64Var);
-                z64Var.q0(jh1Var2);
-                z64Var.N = jh1Var2;
-            }
-            int i18 = 12;
-            ln3 ln3Var8 = ln3Var3;
-            if (ln3Var == ln3Var8 && kn3Var.c == 6) {
-                if (!z64Var.Z) {
-                    if (!z64Var.n.A) {
-                        cz1.b("Cannot get View because the Modifier node is not currently attached.");
-                    }
-                    z64Var = this;
-                    z64Var.b0 = new hy2(z64Var.e0, new zh0(4, ViewConfiguration.get(((View) h12.L(j51.O(z64Var))).getContext())), new q70(2, this, z64.class, "onMouseWheelScrollStopped", "onMouseWheelScrollStopped-TH1AsA0(J)V", 4, 1), j51.O(z64Var).J);
-                    z64Var.Z = true;
-                }
-                hy2 hy2Var = z64Var.b0;
-                if (hy2Var != null) {
-                    we0 we0VarE0 = z64Var.e0();
-                    if (hy2Var.h == null) {
-                        hy2Var.h = fu.G(we0VarE0, null, null, new p(hy2Var, null, i18), 3);
-                    }
-                }
-            }
-            hy2 hy2Var2 = z64Var.b0;
-            if (hy2Var2 != null && kn3Var.c == 6) {
-                List list2 = kn3Var.a;
-                int size9 = list2.size();
-                int i19 = 0;
-                while (true) {
-                    if (i19 >= size9) {
-                        if (ln3Var == ln3Var8 && hy2Var2.a) {
-                            hy2Var2.H(kn3Var);
-                            ir2.a(kn3Var);
-                        }
-                        if (ln3Var != ln3Var2 || hy2Var2.a || !hy2Var2.H(kn3Var)) {
-                            break;
-                            break;
-                            break;
-                        } else {
-                            ir2.a(kn3Var);
-                            break;
-                        }
-                    }
-                    if (((on3) list2.get(i19)).c()) {
-                        break;
-                    } else {
-                        i19++;
-                    }
-                }
-            }
-            if (ln3Var == ln3Var8 && ((i = kn3Var.c) == 10 || i == 11 || i == 12)) {
-                if (!z64Var.a0) {
-                    z64Var = this;
-                    z64Var.c0 = new hw4(z64Var.e0, new q70(2, this, z64.class, "onTrackpadScrollStopped", "onTrackpadScrollStopped-TH1AsA0(J)V", 4, 2), j51.O(z64Var).J);
-                    z64Var.a0 = true;
-                }
-                hw4 hw4Var = z64Var.c0;
-                if (hw4Var != null) {
-                    we0 we0VarE1 = z64Var.e0();
-                    if (hw4Var.g == null) {
-                        hw4Var.g = fu.G(we0VarE1, null, null, new x70(hw4Var, null), 3);
-                    }
-                }
-            }
-            hw4 hw4Var2 = z64Var.c0;
-            if (hw4Var2 != null) {
-                int i20 = kn3Var.c;
-                if (i20 == 10 || i20 == 11 || i20 == 12) {
-                    List list3 = kn3Var.a;
-                    int size10 = list3.size();
-                    for (int i21 = 0; i21 < size10; i21++) {
-                        if (((on3) list3.get(i21)).c()) {
-                            return;
-                        }
-                    }
-                    if (ln3Var == ln3Var8 && hw4Var2.a) {
-                        hw4Var2.F(kn3Var);
-                        ir2.a(kn3Var);
-                    }
-                    if (ln3Var == ln3Var2 && !hw4Var2.a && hw4Var2.F(kn3Var)) {
-                        ir2.a(kn3Var);
-                    }
-                }
-            }
-        }
+    public final void n(kn3 r24, ln3 r25, long r26) {
+        z64 r0 = this;
+        kn3 r8 = r24;
+        List r1 = r8.a;
+        int r2 = r1.size();
+        int r3 = 0;
+    L3:
+        ln3 r11 = ln3.o;
+        ln3 r12 = ln3.n;
+        if (r3 >= r2) goto L295;
+        on3 r4 = (on3) r1.get(r3);
+        k2 r5 = r0.E;
+        int r6 = r4.i;
+        r5.getClass();
+        if (r6 != 2) goto L8;
+        boolean r7 = true;
+    L9:
+        if (r7 == false) goto L10;
+        r3 = r3 + 1;
+        r8 = r24;
+        goto L3
+    L10:
+        r0.K = true;
+        if (r0.F == false) goto L295;
+        if (r0.N != null) goto L16;
+        jh1 r9 = new jh1(r0);
+        r0.q0(r9);
+        r0.N = r9;
+    L16:
+        if (r0.S != null) goto L21;
+        su0 r10 = r0.L;
+        if (r10 != null) goto L20;
+        r10 = new su0();
+        r10.f = ru0.p;
+        r10.g = false;
+        r10.h = false;
+        r0.L = r10;
+    L20:
+        r0.S = r10;
+    L21:
+        ya4 r13 = r0.S;
+        if (r13 != null) goto L24;
+        kf2.n("currentDragState should not be null");
+        return;
+    L24:
+        if ((r13 instanceof su0) == false) goto L58;
+        su0 r14 = (su0) r13;
+        if (r1.isEmpty() == true) goto L295;
+        if (vq4.b(r8, false) == false) goto L295;
+        on3 r15 = (on3) q40.w0(r1);
+        int r16 = dv0.a[r14.f.ordinal()];
+        ru0 r17 = ru0.o;
+        ru0 r18 = ru0.n;
+        if (r16 != 1) goto L43;
+        g74 r19 = r0.e0;
+        if (r19.a.a() == true) goto L42;
+        tb r20 = r19.b;
+        if (r20 == null) goto L38;
+        boolean r21 = r20.e();
+    L39:
+        if (r21 == true) goto L42;
+        ru0 r22 = r18;
+    L44:
+        r14.f = r22;
+        if (r25 != r12) goto L49;
+        if (r22 != r17) goto L48;
+        r15.a();
+        r14.g = true;
+    L48:
+        r14.h = true;
+    L49:
+        if (r25 != r11) goto L295;
+        if (r22 != r18) goto L53;
+        z0(r0, r15, r15.a, 0, 12);
+        goto L295
+    L53:
+        if (r14.g == false) goto L295;
+        r0.E0(r15, r15, 0);
+        r0.D0(r15, 0);
+        long r23 = r15.a;
+        vu0 r27 = r0.P;
+        if (r27 != null) goto L57;
+        r27 = new vu0();
+        r27.f = Long.MAX_VALUE;
+        r0.P = r27;
+    L57:
+        r27.f = r23;
+        r0.S = r27;
+        goto L295
+    L38:
+        r21 = false;
+    L42:
+        r22 = r17;
+        goto L44
+    L43:
+        r22 = r14.f;
+        goto L44
+    L58:
+        boolean r28 = r13 instanceof uu0;
+        ln3 r29 = ln3.p;
+        if (r28 == false) goto L222;
+        uu0 r30 = (uu0) r13;
+        if (r25 == r12) goto L295;
+        int r31 = r1.size();
+        int r32 = 0;
+    L64:
+        if (r32 >= r31) goto L69;
+        Object r33 = r1.get(r32);
+        ln3 r110 = r11;
+        if (vr1.n(((on3) r33).a, r30.g) == true) goto L70;
+        r32 = r32 + 1;
+        r11 = r110;
+    L70:
+        on3 r34 = (on3) r33;
+        if (r34 != null) goto L83;
+        int r35 = r1.size();
+        int r36 = 0;
+    L73:
+        if (r36 >= r35) goto L78;
+        Object r37 = r1.get(r36);
+        if (((on3) r37).d == true) goto L79;
+        r36 = r36 + 1;
+    L79:
+        r34 = (on3) r37;
+        if (r34 != null) goto L82;
+        r0.x0();
+        ln3 r210 = r12;
+        ln3 r111 = r110;
+    L297:
+        if (r0.F == true) goto L299;
+        return;
+    L299:
+        if (r0.N != null) goto L301;
+        jh1 r38 = new jh1(r0);
+        r0.q0(r38);
+        r0.N = r38;
+    L301:
+        int r112 = 12;
+        ln3 r113 = r210;
+        if (r25 == r113) goto L304;
+    L316:
+        hy2 r39 = r0.b0;
+        if (r39 == null) goto L337;
+        if (r24.c != 6) goto L337;
+        List r40 = r24.a;
+        int r41 = r40.size();
+        int r42 = 0;
+    L321:
+        if (r42 >= r41) goto L326;
+        if (((on3) r40.get(r42)).c() == true) goto L337;
+        r42 = r42 + 1;
+        goto L321
+    L326:
+        if (r25 == r113) goto L328;
+    L330:
+        if (r25 != r111) goto L337;
+        if (r39.a == true) goto L337;
+        if (r39.H(r24) == false) goto L337;
+        ir2.a(r24);
+        goto L337
+    L328:
+        if (r39.a == false) goto L330;
+        r39.H(r24);
+        ir2.a(r24);
+    L337:
+        if (r25 != r113) goto L352;
+        int r43 = r24.c;
+        if (r43 == 10) goto L345;
+        if (r43 == 11) goto L345;
+        if (r43 != 12) goto L352;
+    L345:
+        if (r0.a0 == true) goto L347;
+        r0 = this;
+        r0.c0 = new hw4(r0.e0, new q70(2, this, z64.class, "onTrackpadScrollStopped", "onTrackpadScrollStopped-TH1AsA0(J)V", 4, 2), j51.O(r0).J);
+        r0.a0 = true;
+    L347:
+        hw4 r44 = r0.c0;
+        if (r44 == null) goto L352;
+        we0 r45 = r0.e0();
+        if (r44.g != null) goto L352;
+        r44.g = fu.G(r45, null, null, new x70(r44, null), 3);
+    L352:
+        hw4 r46 = r0.c0;
+        if (r46 == null) goto L413;
+        int r47 = r24.c;
+        if (r47 == 10) goto L361;
+        if (r47 == 11) goto L361;
+        if (r47 == 12) goto L361;
+        return;
+    L361:
+        List r48 = r24.a;
+        int r49 = r48.size();
+        int r50 = 0;
+    L362:
+        if (r50 >= r49) goto L367;
+        if (((on3) r48.get(r50)).c() == true) goto L418;
+        r50 = r50 + 1;
+        goto L362
+    L418:
+        return;
+    L367:
+        if (r25 == r113) goto L369;
+    L371:
+        if (r25 == r111) goto L373;
+        return;
+    L373:
+        if (r46.a == false) goto L375;
+        return;
+    L375:
+        if (r46.F(r24) == false) goto L417;
+        ir2.a(r24);
+        return;
+    L417:
+        return;
+    L369:
+        if (r46.a == false) goto L371;
+        r46.F(r24);
+        ir2.a(r24);
+        goto L371
+    L413:
+        return;
+    L304:
+        if (r24.c != 6) goto L316;
+        if (r0.Z == false) goto L308;
+    L311:
+        hy2 r51 = r0.b0;
+        if (r51 == null) goto L316;
+        we0 r52 = r0.e0();
+        if (r51.h != null) goto L316;
+        r51.h = fu.G(r52, null, null, new p(r51, null, r112), 3);
+        goto L316
+    L308:
+        if (r0.n.A == true) goto L310;
+        cz1.b("Cannot get View because the Modifier node is not currently attached.");
+    L310:
+        r0 = this;
+        r0.b0 = new hy2(r0.e0, new zh0(4, ViewConfiguration.get(((View) h12.L(j51.O(r0))).getContext())), new q70(2, this, z64.class, "onMouseWheelScrollStopped", "onMouseWheelScrollStopped-TH1AsA0(J)V", 4, 1), j51.O(r0).J);
+        r0.Z = true;
+        goto L311
+    L82:
+        r30.g = r34.a;
+        goto L83
+    L78:
+        r37 = null;
+    L83:
+        String r53 = "AwaitTouchSlop.touchSlopDetector was not initialized";
+        String r54 = "AwaitTouchSlop.initialDown was not initialized";
+        r111 = r110;
+        if (r25 == r111) goto L86;
+    L99:
+        String r114 = "AwaitTouchSlop.touchSlopDetector was not initialized";
+        String r211 = "AwaitTouchSlop.initialDown was not initialized";
+        r210 = r12;
+    L206:
+        if (r25 != r29) goto L297;
+        if (r30.h == false) goto L297;
+        if (r34.c() == false) goto L220;
+        on3 r55 = r30.f;
+        if (r55 == null) goto L218;
+        long r56 = r30.g;
+        e20 r57 = r0.U;
+        if (r57 == null) goto L216;
+        r0.y0(r55, r56, r57);
+        goto L297
+    L216:
+        kf2.n(r114);
+        return;
+    L218:
+        kf2.n(r211);
+        return;
+    L220:
+        r30.h = false;
+        goto L297
+    L86:
+        if (r34.c() == false) goto L88;
+        r114 = "AwaitTouchSlop.touchSlopDetector was not initialized";
+        r211 = "AwaitTouchSlop.initialDown was not initialized";
+        r210 = r12;
+        on3 r58 = r30.f;
+        if (r58 == null) goto L204;
+        long r59 = r30.g;
+        e20 r60 = r0.U;
+        if (r60 == null) goto L202;
+        r0.y0(r58, r59, r60);
+        goto L206
+    L202:
+        kf2.n(r114);
+        return;
+    L204:
+        kf2.n(r211);
+        return;
+    L88:
+        if (gi1.i(r34) == false) goto L101;
+        int r61 = r1.size();
+        int r115 = 0;
+    L90:
+        if (r115 >= r61) goto L95;
+        Object r116 = r1.get(r115);
+        if (((on3) r116).d == true) goto L96;
+        r115 = r115 + 1;
+    L96:
+        on3 r117 = (on3) r116;
+        if (r117 != null) goto L100;
+        r0.x0();
+        goto L99
+    L100:
+        r30.g = r117.a;
+        goto L99
+    L95:
+        r116 = null;
+        goto L96
+    L101:
+        m65 r62 = (m65) kb4.q(r0, g90.t);
+        int r63 = r34.i;
+        float r118 = bv0.a;
+        if (r63 != 2) goto L104;
+        float r64 = r62.c() * bv0.a;
+    L105:
+        e20 r65 = r0.U;
+        if (r65 == null) goto L195;
+        long r119 = e20.u(r65, gi1.S(r34, true), r64);
+        if ((r119 & 9223372034707292159L) == 9205357640488583168L) goto L194;
+        r210 = r12;
+        long r66 = g83.e(r0.M, gi1.S(r34, false));
+        r0.M = r66;
+        final float r67 = ((float) Math.atan2(Math.abs(Float.intBitsToFloat((int) (r0.M & 4294967295L))), Math.abs(Float.intBitsToFloat((int) (r66 >> 32))))) * 57.29578f;
+        hb3 r68 = r0.D;
+        if (r68 != null) goto L112;
+    L111:
+        boolean r69 = true;
+    L123:
+        final fx3 r70 = new fx3();
+        if1 r120 = new cv0(r67, r70);
+        int r71 = ov0.a;
+        if (r0.n.A == true) goto L126;
+        cz1.b("visitAncestors called on an unattached node");
+    L126:
+        cx2 r72 = r0.n.r;
+        c72 r121 = j51.O(r0);
+    L127:
+        if (r121 == null) goto L185;
+        if ((((cx2) r121.Q.g).q & 262144) == 0) goto L178;
+    L130:
+        if (r72 == null) goto L178;
+        r114 = r53;
+        if ((r72.p & 262144) == 0) goto L177;
+        ?? r122 = 0;
+        ?? r73 = r72;
+    L134:
+        if (r73 == 0) goto L177;
+        r211 = r54;
+        if ((r73 instanceof rx4) == false) goto L156;
+        rx4 r74 = (rx4) r73;
+        boolean r212 = r69;
+        if (jh1.C == r74.f()) goto L141;
+    L139:
+        boolean r75 = true;
+    L151:
+        if (r75 == false) goto L186;
+    L153:
+        if1 r213 = r120;
+        ?? r123 = r122;
+    L176:
+        ?? r76 = j51.c(r123);
+    L175:
+        r54 = r211;
+        r69 = r212;
+        r120 = r213;
+        r73 = r76;
+        r122 = r123;
+    L186:
+        if (r212 == false) goto L188;
+    L190:
+        r34.a();
+        on3 r77 = r30.f;
+        r77.getClass();
+        r0.E0(r77, r34, r119);
+        r0.D0(r34, r119);
+        long r78 = r34.a;
+        vu0 r79 = r0.P;
+        if (r79 != null) goto L193;
+        r79 = new vu0();
+        r79.f = Long.MAX_VALUE;
+        r0.P = r79;
+    L193:
+        r79.f = r78;
+        r0.S = r79;
+        goto L206
+    L188:
+        if (r70.n == false) goto L190;
+        r30.h = true;
+        goto L206
+    L141:
+        if ((r74 instanceof jh1) == false) goto L154;
+        ih1 r80 = ((jh1) r74).B;
+        if (r80 != null) goto L146;
+        r80 = null;
+    L146:
+        if (r80 == null) goto L139;
+        if ((r80 instanceof mv0) == false) goto L139;
+        r75 = ((Boolean) r120.invoke(r80)).booleanValue();
+        goto L151
+    L154:
+        kf2.o("Node is not a GestureNode instance");
+        return;
+    L156:
+        r212 = r69;
+        if ((r73.p & 262144) == 0) goto L153;
+        if ((r73 instanceof fo0) == false) goto L153;
+        cx2 r81 = ((fo0) r73).C;
+        int r82 = 0;
+        r76 = r73;
+        r123 = r122;
+    L161:
+        if (r81 == null) goto L173;
+        if1 r214 = r120;
+        if ((r81.p & 262144) == 0) goto L172;
+        r82 = r82 + 1;
+        r123 = r123;
+        if (r82 != 1) goto L167;
+        r76 = r81;
+        goto L172
+    L167:
+        if (r123 != 0) goto L169;
+        r123 = new f13(new cx2[16]);
+    L169:
+        if (r76 == 0) goto L171;
+        r123.b(r76);
+        r76 = 0;
+    L171:
+        r123.b(r81);
+    L172:
+        r81 = r81.s;
+        r120 = r214;
+        r76 = r76;
+        r123 = r123;
+        goto L161
+    L173:
+        r213 = r120;
+        r123 = r123;
+        if (r82 != 1) goto L176;
+    L177:
+        r72 = r72.r;
+        r53 = r114;
+        r54 = r54;
+        r69 = r69;
+        r120 = r120;
+    L178:
+        String r124 = r53;
+        String r215 = r54;
+        boolean r216 = r69;
+        if1 r217 = r120;
+        r121 = r121.t();
+        if (r121 == null) goto L183;
+        w12 r83 = r121.Q;
+        if (r83 == null) goto L183;
+        r72 = (sq4) r83.f;
+    L184:
+        r53 = r124;
+        r54 = r215;
+        r69 = r216;
+        r120 = r217;
+    L183:
+        r72 = null;
+        goto L184
+    L185:
+        r114 = r53;
+        r211 = r54;
+        r212 = r69;
+        goto L186
+    L112:
+        int r84 = ov0.a;
+        if (r68 != hb3.o) goto L118;
+        if (r67 <= 30.0f) goto L111;
+    L122:
+        r69 = false;
+        goto L123
+    L118:
+        if (r67 <= 30.0f) goto L122;
+        if (r67 > 90.0f) goto L122;
+    L194:
+        r114 = "AwaitTouchSlop.touchSlopDetector was not initialized";
+        r211 = "AwaitTouchSlop.initialDown was not initialized";
+        r210 = r12;
+        r30.h = true;
+        r0.M = g83.e(r0.M, gi1.S(r34, true));
+        goto L206
+    L195:
+        kf2.n("Touch slop detector not initialized.");
+        return;
+    L104:
+        r64 = r62.c();
+        goto L105
+    L69:
+        r110 = r11;
+        r33 = null;
+        goto L70
+    L222:
+        r111 = r11;
+        r210 = r12;
+        if ((r13 instanceof tu0) == false) goto L250;
+        tu0 r85 = (tu0) r13;
+        if (r25 != r29) goto L297;
+        int r86 = r1.size();
+        int r87 = 0;
+    L228:
+        if (r87 >= r86) goto L233;
+        if (((on3) r1.get(r87)).c() == true) goto L231;
+        r87 = r87 + 1;
+        goto L228
+    L231:
+        boolean r88 = false;
+    L234:
+        int r89 = r1.size();
+        int r90 = 0;
+    L235:
+        if (r90 >= r89) goto L248;
+        if (((on3) r1.get(r90)).d == true) goto L239;
+        r90 = r90 + 1;
+        goto L235
+    L239:
+        if (r1.isEmpty() == true) goto L248;
+        if (r88 == false) goto L297;
+        long r91 = ((on3) q40.w0(r1)).c;
+        on3 r92 = r85.f;
+        r92.getClass();
+        long r93 = g83.d(r91, r92.c);
+        on3 r94 = r85.f;
+        if (r94 == null) goto L245;
+        z0(r0, r94, r85.g, r93, 8);
+        goto L297
+    L245:
+        kf2.n("AwaitGesturePickup.initialDown was not initialized.");
+        return;
+    L248:
+        r0.x0();
+        goto L297
+    L233:
+        r88 = true;
+        goto L234
+    L250:
+        if ((r13 instanceof vu0) == false) goto L290;
+        vu0 r95 = (vu0) r13;
+        if (r25 != r111) goto L297;
+        long r96 = r95.f;
+        int r97 = r1.size();
+        int r98 = 0;
+    L255:
+        if (r98 >= r97) goto L260;
+        Object r125 = r1.get(r98);
+        if (vr1.n(((on3) r125).a, r96) == true) goto L261;
+        r98 = r98 + 1;
+    L261:
+        on3 r126 = (on3) r125;
+        if (r126 == null) goto L297;
+        boolean r99 = gi1.i(r126);
+        wu0 r100 = wu0.a;
+        if (r99 == false) goto L284;
+        int r101 = r1.size();
+        int r102 = 0;
+    L267:
+        if (r102 >= r101) goto L272;
+        Object r103 = r1.get(r102);
+        if (((on3) r103).d == true) goto L273;
+        r102 = r102 + 1;
+    L273:
+        on3 r104 = (on3) r103;
+        if (r104 == null) goto L276;
+        r95.f = r104.a;
+        goto L297
+    L276:
+        if (r126.c() == false) goto L278;
+    L280:
+        r0.B0().d(r100);
+    L281:
+        r0.x0();
+        goto L297
+    L278:
+        if (gi1.i(r126) == false) goto L280;
+        float r105 = ((m65) kb4.q(r0, g90.t)).b();
+        xl.e(r0.C0(), r126);
+        long r106 = r0.C0().c(e35.h(r105, r105));
+        qf2 r107 = (qf2) r0.C0().o;
+        m45 r108 = r107.a;
+        ti.h0(r108.d, null);
+        r108.e = 0;
+        m45 r109 = r107.b;
+        ti.h0(r109.d, null);
+        r109.e = 0;
+        r107.c = 0;
+        r0.B0().d(new zu0(false, ov0.a(r106)));
+        r0.K = false;
+        goto L281
+    L272:
+        r103 = null;
+        goto L273
+    L284:
+        if (r126.c() == false) goto L287;
+        r0.B0().d(r100);
+        goto L297
+    L287:
+        if (g83.c(gi1.S(r126, true)) == 0.0f) goto L297;
+        r0.D0(r126, gi1.S(r126, false));
+        r126.a();
+        goto L297
+    L260:
+        r125 = null;
+        goto L261
+    L290:
+        er1.n();
+        return;
+    L8:
+        r7 = false;
+    L295:
+        r111 = r11;
+        r210 = r12;
+        goto L297
     }
 
     @Override // defpackage.j42
-    public final boolean q(KeyEvent keyEvent) {
-        long jFloatToRawIntBits;
-        if (!this.F || ((!g42.a(fh0.a(keyEvent.getKeyCode()), g42.n) && !g42.a(fh0.a(keyEvent.getKeyCode()), g42.m)) || hw.n(keyEvent) != 2 || keyEvent.isCtrlPressed())) {
-            return false;
-        }
-        boolean z = this.e0.d == hb3.n;
-        gd0 gd0Var = this.h0;
-        if (z) {
-            int iR0 = (int) (gd0Var.r0() & 4294967295L);
-            jFloatToRawIntBits = (((long) Float.floatToRawIntBits(0.0f)) << 32) | (4294967295L & ((long) Float.floatToRawIntBits(g42.a(fh0.a(keyEvent.getKeyCode()), g42.m) ? iR0 : -iR0)));
-        } else {
-            int iR1 = (int) (gd0Var.r0() >> 32);
-            jFloatToRawIntBits = (((long) Float.floatToRawIntBits(0.0f)) & 4294967295L) | (((long) Float.floatToRawIntBits(g42.a(fh0.a(keyEvent.getKeyCode()), g42.m) ? iR1 : -iR1)) << 32);
-        }
-        fu.G(e0(), null, null, new j2(this, jFloatToRawIntBits, null, 1), 3);
+    public final boolean q(KeyEvent r11) {
+        boolean r1 = false;
+        if (this.F == true) goto L5;
+    L30:
+        return false;
+    L5:
+        if (g42.a(fh0.a(r11.getKeyCode()), g42.n) == true) goto L9;
+        if (g42.a(fh0.a(r11.getKeyCode()), g42.m) == false) goto L30;
+    L9:
+        if (hw.n(r11) != 2) goto L30;
+        if (r11.isCtrlPressed() == true) goto L30;
+        if (this.e0.d != hb3.n) goto L15;
+        r1 = true;
+    L15:
+        gd0 r6 = this.h0;
+        if (r1 == false) goto L23;
+        int r2 = (int) (r6.r0() & 4294967295L);
+        if (g42.a(fh0.a(r11.getKeyCode()), g42.m) == false) goto L20;
+        float r12 = r2;
+    L21:
+        long r0 = (Float.floatToRawIntBits(0.0f) << 32) | (4294967295L & ((long) Float.floatToRawIntBits(r12)));
+    L28:
+        fu.G(e0(), null, null, new j2(this, r0, null, 1), 3);
         return true;
+    L20:
+        r12 = -r2;
+        goto L21
+    L23:
+        int r3 = (int) (r6.r0() >> 32);
+        if (g42.a(fh0.a(r11.getKeyCode()), g42.m) == false) goto L26;
+        float r13 = r3;
+    L27:
+        long r7 = Float.floatToRawIntBits(r13);
+        r0 = (((long) Float.floatToRawIntBits(0.0f)) & 4294967295L) | (r7 << 32);
+        goto L28
+    L26:
+        r13 = -r3;
+        goto L27
     }
 
     @Override // defpackage.rn3
     public final void t() {
-        if (this.K) {
-            x0();
-            if (this.J) {
-                B0().d(wu0.a);
-            }
-            this.T = null;
-        }
+        if (this.K == false) goto L8;
+        x0();
+        if (this.J == false) goto L7;
+        B0().d(wu0.a);
+    L7:
+        this.T = null;
+    L8:
         this.K = false;
     }
 
     public final void w0() {
-        jv0 jv0Var = this.I;
-        if (jv0Var != null) {
-            rm2 rm2Var = this.G;
-            if (rm2Var != null) {
-                rm2Var.l(new iv0(jv0Var));
-            }
-            this.I = null;
-        }
+        jv0 r0 = this.I;
+        if (r0 == null) goto L9;
+        rm2 r1 = this.G;
+        if (r1 == null) goto L7;
+        r1.l(new iv0(r0));
+    L7:
+        this.I = null;
+        return;
     }
 
     public final void x0() {
-        this.M = 0L;
-        su0 su0Var = this.L;
-        ru0 ru0Var = ru0.p;
-        if (su0Var == null) {
-            su0Var = new su0();
-            su0Var.f = ru0Var;
-            su0Var.g = false;
-            su0Var.h = false;
-            this.L = su0Var;
-        }
-        su0Var.f = ru0Var;
-        su0Var.g = false;
-        su0Var.h = false;
-        this.S = su0Var;
+        this.M = 0;
+        su0 r0 = this.L;
+        ru0 r1 = ru0.p;
+        if (r0 != null) goto L5;
+        r0 = new su0();
+        r0.f = r1;
+        r0.g = false;
+        r0.h = false;
+        this.L = r0;
+    L5:
+        r0.f = r1;
+        r0.g = false;
+        r0.h = false;
+        this.S = r0;
     }
 
-    public final void y0(on3 on3Var, long j, e20 e20Var) {
-        tu0 tu0Var = this.R;
-        if (tu0Var == null) {
-            tu0Var = new tu0();
-            tu0Var.f = null;
-            tu0Var.g = Long.MAX_VALUE;
-            this.R = tu0Var;
-        }
-        tu0Var.f = on3Var;
-        tu0Var.g = j;
-        e20Var.o = 0L;
-        this.S = tu0Var;
+    public final void y0(on3 r4, long r5, e20 r7) {
+        tu0 r0 = this.R;
+        if (r0 != null) goto L5;
+        r0 = new tu0();
+        r0.f = null;
+        r0.g = Long.MAX_VALUE;
+        this.R = r0;
+    L5:
+        r0.f = r4;
+        r0.g = r5;
+        r7.o = 0;
+        this.S = r0;
     }
 }

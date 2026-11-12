@@ -10,10 +10,10 @@ public final class l61 {
     public boolean e;
     public final k61 f;
 
-    public l61(String str, boolean z, l61 l61Var, k61 k61Var) {
-        this.a = str;
-        this.b = z;
-        this.c = l61Var;
-        this.f = k61Var;
+    public l61(String r1, boolean r2, l61 r3, k61 r4) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.f = r4;
     }
 }

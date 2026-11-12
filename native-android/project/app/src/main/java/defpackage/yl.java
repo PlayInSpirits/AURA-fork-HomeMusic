@@ -8,14 +8,25 @@ public final class yl {
     public boolean c;
 
     public zl a() {
-        if (this.a || !(this.b || this.c)) {
-            return new zl(this);
-        }
+        if (this.a == true) goto L12;
+        if (this.b == false) goto L7;
+    L9:
         kf2.o("Secondary offload attribute fields are true but primary isFormatSupported is false");
         return null;
+    L7:
+        if (this.c == true) goto L9;
+    L12:
+        return new zl(this);
     }
 
     public boolean b() {
-        return (this.c || this.b) && this.a;
+        if (this.c == true) goto L7;
+        if (this.b == true) goto L7;
+        return false;
+    L7:
+        if (this.a == false) goto L12;
+        return true;
+    L12:
+        return false;
     }
 }

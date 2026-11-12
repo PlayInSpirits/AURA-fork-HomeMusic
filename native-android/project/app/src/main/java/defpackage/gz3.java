@@ -3,5 +3,5 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface gz3 {
-    void k(long j, be3 be3Var);
+    void k(long r1, be3 r3);
 }

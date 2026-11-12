@@ -8,124 +8,158 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class r94 {
-    public static final Comparator[] a;
-    public static final m94 b;
+    public static final Comparator[] a = null;
+    public static final m94 b = null;
 
     static {
-        int i = 2;
-        Comparator[] comparatorArr = new Comparator[2];
-        int i2 = 0;
-        while (i2 < 2) {
-            comparatorArr[i2] = new hh2(i, new hh2(1, i2 == 0 ? ca1.u : ca1.p));
-            i2++;
-        }
-        a = comparatorArr;
+        int r0 = 2;
+        Comparator[] r1 = new Comparator[2];
+        int r2 = 0;
+    L3:
+        if (r2 >= 2) goto L8;
+        if (r2 != 0) goto L6;
+        ca1 r3 = ca1.u;
+    L7:
+        r1[r2] = new hh2(r0, new hh2(1, r3));
+        r2 = r2 + 1;
+        goto L3
+    L6:
+        r3 = ca1.p;
+        goto L7
+    L8:
+        a = r1;
         b = new m94(9);
     }
 
-    public static final void a(i94 i94Var, ArrayList arrayList, x xVar, x xVar2, i03 i03Var) {
-        e94 e94Var = i94Var.d;
-        Object objG = e94Var.n.g(n94.m);
-        if (objG == null) {
-            objG = Boolean.FALSE;
-        }
-        boolean zBooleanValue = ((Boolean) objG).booleanValue();
-        if ((zBooleanValue || ((Boolean) xVar2.invoke(i94Var)).booleanValue()) && ((Boolean) xVar.invoke(i94Var)).booleanValue()) {
-            arrayList.add(i94Var);
-        }
-        if (zBooleanValue) {
-            i03Var.i(i94Var.f, b(i94Var, xVar, xVar2, i94Var.i((4 & 1) != 0 ? !i94Var.b : false, (4 & 2) == 0)));
-            return;
-        }
-        List listI = i94Var.i((4 & 1) != 0 ? !i94Var.b : false, (4 & 2) == 0);
-        int size = listI.size();
-        for (int i = 0; i < size; i++) {
-            a((i94) listI.get(i), arrayList, xVar, xVar2, i03Var);
-        }
+    public static final void a(i94 r3, ArrayList r4, x r5, x r6, i03 r7) {
+        e94 r0 = r3.d;
+        p94 r1 = n94.m;
+        Object r2 = r0.n.g(r1);
+        if (r2 != null) goto L5;
+        r2 = Boolean.FALSE;
+    L5:
+        boolean r8 = ((Boolean) r2).booleanValue();
+        if (r8 == true) goto L10;
+        if (((Boolean) r6.invoke(r3)).booleanValue() == true) goto L10;
+    L13:
+        if (r8 == false) goto L16;
+        r7.i(r3.f, b(r3, r5, r6, i94.j(7, r3)));
+        return;
+    L16:
+        List r9 = i94.j(7, r3);
+        int r10 = r9.size();
+        int r11 = 0;
+    L17:
+        if (r11 >= r10) goto L19;
+        a((i94) r9.get(r11), r4, r5, r6, r7);
+        r11 = r11 + 1;
+        goto L17
+    L19:
+        return;
+    L10:
+        if (((Boolean) r5.invoke(r3)).booleanValue() == false) goto L13;
+        r4.add(r3);
+        goto L13
     }
 
-    /* JADX WARN: Code duplicated, block: B:32:0x00d5  */
-    public static final ArrayList b(i94 i94Var, x xVar, x xVar2, List list) {
-        int i;
-        i03 i03Var = f02.a;
-        i03 i03Var2 = new i03();
-        ArrayList arrayList = new ArrayList();
-        int size = list.size();
-        for (int i2 = 0; i2 < size; i2++) {
-            a((i94) list.get(i2), arrayList, xVar, xVar2, i03Var2);
-        }
-        int i3 = 1;
-        char c = i94Var.c.K == r62.o ? (char) 1 : (char) 0;
-        ArrayList arrayList2 = new ArrayList(arrayList.size() / 2);
-        int size2 = arrayList.size() - 1;
-        if (size2 >= 0) {
-            int i4 = 0;
-            while (true) {
-                i94 i94Var2 = (i94) arrayList.get(i4);
-                if (i4 == 0) {
-                    i = i3;
-                    arrayList2.add(new kd3(i94Var2.h(), gb.Q(i94Var2)));
-                    break;
-                }
-                float f = i94Var2.h().b;
-                float f2 = i94Var2.h().d;
-                int i5 = f >= f2 ? i3 : 0;
-                int size3 = arrayList2.size() - i3;
-                if (size3 >= 0) {
-                    int i6 = 0;
-                    while (true) {
-                        wv3 wv3Var = (wv3) ((kd3) arrayList2.get(i6)).n;
-                        float f3 = wv3Var.b;
-                        i = i3;
-                        float f4 = wv3Var.d;
-                        int i7 = f3 >= f4 ? i : 0;
-                        if (i5 == 0 && i7 == 0 && Math.max(f, f3) < Math.min(f2, f4)) {
-                            arrayList2.set(i6, new kd3(new wv3(Math.max(wv3Var.a, 0.0f), Math.max(wv3Var.b, f), Math.min(wv3Var.c, Float.POSITIVE_INFINITY), Math.min(f4, f2)), ((kd3) arrayList2.get(i6)).o));
-                            ((List) ((kd3) arrayList2.get(i6)).o).add(i94Var2);
-                            break;
-                        }
-                        if (i6 != size3) {
-                            i6++;
-                            i3 = i;
-                        }
-                    }
-                } else {
-                    i = i3;
-                }
-                arrayList2.add(new kd3(i94Var2.h(), gb.Q(i94Var2)));
-                break;
-                if (i4 == size2) {
-                    break;
-                }
-                i4++;
-                i3 = i;
-            }
-        }
-        u40.m0(arrayList2, ca1.v);
-        ArrayList arrayList3 = new ArrayList();
-        Comparator comparator = a[c ^ 1];
-        int size4 = arrayList2.size();
-        for (int i8 = 0; i8 < size4; i8++) {
-            kd3 kd3Var = (kd3) arrayList2.get(i8);
-            u40.m0((List) kd3Var.o, comparator);
-            arrayList3.addAll((Collection) kd3Var.o);
-        }
-        u40.m0(arrayList3, new n7(19));
-        int size5 = 0;
-        while (size5 <= arrayList3.size() - 1) {
-            List list2 = (List) i03Var2.b(((i94) arrayList3.get(size5)).f);
-            if (list2 != null) {
-                if (((Boolean) xVar2.invoke(arrayList3.get(size5))).booleanValue()) {
-                    size5++;
-                } else {
-                    arrayList3.remove(size5);
-                }
-                arrayList3.addAll(size5, list2);
-                size5 += list2.size();
-            } else {
-                size5++;
-            }
-        }
-        return arrayList3;
+    public static final ArrayList b(i94 r17, x r18, x r19, List r20) {
+        i03 r1 = f02.a;
+        i03 r2 = new i03();
+        ArrayList r3 = new ArrayList();
+        int r4 = r20.size();
+        int r5 = 0;
+    L3:
+        if (r5 >= r4) goto L5;
+        a((i94) r20.get(r5), r3, r18, r19, r2);
+        r5 = r5 + 1;
+        goto L3
+    L5:
+        int r6 = 1;
+        if (r17.c.K != r62.o) goto L8;
+        char r7 = 1;
+    L9:
+        ArrayList r8 = new ArrayList(r3.size() / 2);
+        int r9 = r3.size() - 1;
+        if (r9 < 0) goto L37;
+        int r10 = 0;
+    L12:
+        i94 r11 = (i94) r3.get(r10);
+        if (r10 == 0) goto L32;
+        float r12 = r11.h().b;
+        float r13 = r11.h().d;
+        if (r12 < r13) goto L17;
+        int r14 = r6;
+    L18:
+        int r15 = r8.size() - r6;
+        if (r15 < 0) goto L32;
+        int r16 = 0;
+    L21:
+        wv3 r110 = (wv3) ((kd3) r8.get(r16)).n;
+        float r21 = r110.b;
+        int r111 = r6;
+        float r22 = r110.d;
+        if (r21 < r22) goto L24;
+        int r112 = r111;
+    L25:
+        if (r14 != 0) goto L30;
+        if (r112 != 0) goto L30;
+        if (Math.max(r12, r21) >= Math.min(r13, r22)) goto L30;
+        r8.set(r16, new kd3(new wv3(Math.max(r110.a, 0.0f), Math.max(r110.b, r12), Math.min(r110.c, Float.POSITIVE_INFINITY), Math.min(r22, r13)), ((kd3) r8.get(r16)).o));
+        ((List) ((kd3) r8.get(r16)).o).add(r11);
+    L34:
+        if (r10 == r9) goto L37;
+        r10 = r10 + 1;
+        r6 = r111;
+    L30:
+        if (r16 == r15) goto L33;
+        r16 = r16 + 1;
+        r6 = r111;
+    L33:
+        r8.add(new kd3(r11.h(), gb.Q(new i94[]{r11})));
+        goto L34
+    L24:
+        r112 = 0;
+        goto L25
+    L17:
+        r14 = 0;
+    L32:
+        r111 = r6;
+    L37:
+        u40.m0(r8, ca1.v);
+        ArrayList r23 = new ArrayList();
+        Comparator r24 = a[r7 ^ 1];
+        int r25 = r8.size();
+        int r26 = 0;
+    L38:
+        if (r26 >= r25) goto L40;
+        kd3 r27 = (kd3) r8.get(r26);
+        u40.m0((List) r27.o, r24);
+        r23.addAll((Collection) r27.o);
+        r26 = r26 + 1;
+        goto L38
+    L40:
+        u40.m0(r23, new n7(19));
+        int r28 = 0;
+    L42:
+        if (r28 > (r23.size() - 1)) goto L51;
+        List r29 = (List) r2.b(((i94) r23.get(r28)).f);
+        if (r29 != null) goto L46;
+        r28 = r28 + 1;
+        goto L42
+    L46:
+        if (((Boolean) r19.invoke(r23.get(r28))).booleanValue() == true) goto L48;
+        r23.remove(r28);
+    L49:
+        r23.addAll(r28, r29);
+        r28 = r28 + r29.size();
+        goto L42
+    L48:
+        r28 = r28 + 1;
+        goto L49
+    L51:
+        return r23;
+    L8:
+        r7 = 0;
+        goto L9
     }
 }

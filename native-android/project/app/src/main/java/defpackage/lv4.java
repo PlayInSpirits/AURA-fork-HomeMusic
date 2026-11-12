@@ -21,7 +21,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.work.impl.WorkDatabase;
 import app.homemusic.R;
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import java.util.ArrayList;
@@ -30,9 +29,9 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class lv4 implements zn4 {
-    public static final byte[] u = {0, 7, 8, 15};
-    public static final byte[] v = {0, 119, -120, -1};
-    public static final byte[] w = {0, 17, 34, 51, 68, 85, 102, 119, -120, -103, -86, -69, -52, -35, -18, -1};
+    public static final byte[] u = null;
+    public static final byte[] v = null;
+    public static final byte[] w = null;
     public final Object n;
     public Object o;
     public Object p;
@@ -41,967 +40,1062 @@ public final class lv4 implements zn4 {
     public Object s;
     public Object t;
 
-    public lv4(List list) {
-        be3 be3Var = new be3((byte[]) list.get(0));
-        int iH = be3Var.H();
-        int iH2 = be3Var.H();
-        Paint paint = new Paint();
-        this.n = paint;
-        paint.setStyle(Paint.Style.FILL_AND_STROKE);
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-        paint.setPathEffect(null);
-        Paint paint2 = new Paint();
-        this.o = paint2;
-        paint2.setStyle(Paint.Style.FILL);
-        paint2.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
-        paint2.setPathEffect(null);
+    static {
+        u = new byte[]{0, 7, 8, 15};
+        v = new byte[]{0, 119, -120, -1};
+        w = new byte[]{0, 17, 34, 51, 68, 85, 102, 119, -120, -103, -86, -69, -52, -35, -18, -1};
+    }
+
+    public lv4(List r11) {
+        be3 r0 = new be3((byte[]) r11.get(0));
+        int r12 = r0.H();
+        int r1 = r0.H();
+        Paint r2 = new Paint();
+        this.n = r2;
+        r2.setStyle(Paint.Style.FILL_AND_STROKE);
+        r2.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+        r2.setPathEffect(null);
+        Paint r3 = new Paint();
+        this.o = r3;
+        r3.setStyle(Paint.Style.FILL);
+        r3.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
+        r3.setPathEffect(null);
         this.p = new Canvas();
         this.q = new qx0(719, 575, 0, 719, 0, 575);
         this.r = new px0(0, new int[]{0, -1, -16777216, -8421505}, d(), e());
-        this.s = new vx0(iH, iH2);
+        this.s = new vx0(r12, r1);
     }
 
-    public static byte[] a(int i, int i2, h00 h00Var) {
-        byte[] bArr = new byte[i];
-        for (int i3 = 0; i3 < i; i3++) {
-            bArr[i3] = (byte) h00Var.i(i2);
-        }
-        return bArr;
+    public static byte[] a(int r3, int r4, h00 r5) {
+        byte[] r0 = new byte[r3];
+        int r1 = 0;
+    L3:
+        if (r1 >= r3) goto L5;
+        r0[r1] = (byte) r5.i(r4);
+        r1 = r1 + 1;
+        goto L3
+    L5:
+        return r0;
     }
 
     public static int[] d() {
-        int[] iArr = new int[16];
-        iArr[0] = 0;
-        for (int i = 1; i < 16; i++) {
-            if (i < 8) {
-                iArr[i] = f(255, (i & 1) != 0 ? 255 : 0, (i & 2) != 0 ? 255 : 0, (i & 4) != 0 ? 255 : 0);
-            } else {
-                iArr[i] = f(255, (i & 1) != 0 ? 127 : 0, (i & 2) != 0 ? 127 : 0, (i & 4) == 0 ? 0 : 127);
-            }
-        }
-        return iArr;
+        int[] r1 = new int[16];
+        r1[0] = 0;
+        int r3 = 1;
+    L3:
+        if (r3 >= 16) goto L33;
+        if (r3 < 8) goto L7;
+        int r6 = 127;
+        if ((r3 & 1) == 0) goto L22;
+        int r4 = 127;
+    L24:
+        if ((r3 & 2) == 0) goto L26;
+        int r7 = 127;
+    L28:
+        if ((r3 & 4) != 0) goto L31;
+        r6 = 0;
+    L31:
+        r1[r3] = f(255, r4, r7, r6);
+    L32:
+        r3 = r3 + 1;
+        goto L3
+    L26:
+        r7 = 0;
+        goto L28
+    L22:
+        r4 = 0;
+        goto L24
+    L7:
+        if ((r3 & 1) == 0) goto L9;
+        int r5 = 255;
+    L11:
+        if ((r3 & 2) == 0) goto L13;
+        int r8 = 255;
+    L15:
+        if ((r3 & 4) == 0) goto L17;
+        int r9 = 255;
+    L18:
+        r1[r3] = f(255, r5, r8, r9);
+        goto L32
+    L17:
+        r9 = 0;
+        goto L18
+    L13:
+        r8 = 0;
+        goto L15
+    L9:
+        r5 = 0;
+        goto L11
+    L33:
+        return r1;
     }
 
     public static int[] e() {
-        int[] iArr = new int[256];
-        iArr[0] = 0;
-        for (int i = 0; i < 256; i++) {
-            if (i < 8) {
-                iArr[i] = f(63, (i & 1) != 0 ? 255 : 0, (i & 2) != 0 ? 255 : 0, (i & 4) == 0 ? 0 : 255);
-            } else {
-                int i2 = i & 136;
-                if (i2 == 0) {
-                    iArr[i] = f(255, ((i & 1) != 0 ? 85 : 0) + ((i & 16) != 0 ? 170 : 0), ((i & 2) != 0 ? 85 : 0) + ((i & 32) != 0 ? 170 : 0), ((i & 4) == 0 ? 0 : 85) + ((i & 64) == 0 ? 0 : 170));
-                } else if (i2 == 8) {
-                    iArr[i] = f(127, ((i & 1) != 0 ? 85 : 0) + ((i & 16) != 0 ? 170 : 0), ((i & 2) != 0 ? 85 : 0) + ((i & 32) != 0 ? 170 : 0), ((i & 4) == 0 ? 0 : 85) + ((i & 64) == 0 ? 0 : 170));
-                } else if (i2 == 128) {
-                    iArr[i] = f(255, ((i & 1) != 0 ? 43 : 0) + 127 + ((i & 16) != 0 ? 85 : 0), ((i & 2) != 0 ? 43 : 0) + 127 + ((i & 32) != 0 ? 85 : 0), ((i & 4) == 0 ? 0 : 43) + 127 + ((i & 64) == 0 ? 0 : 85));
-                } else if (i2 == 136) {
-                    iArr[i] = f(255, ((i & 1) != 0 ? 43 : 0) + ((i & 16) != 0 ? 85 : 0), ((i & 2) != 0 ? 43 : 0) + ((i & 32) != 0 ? 85 : 0), ((i & 4) == 0 ? 0 : 43) + ((i & 64) == 0 ? 0 : 85));
-                }
-            }
-        }
-        return iArr;
+        int[] r1 = new int[256];
+        r1[0] = 0;
+        int r3 = 0;
+    L3:
+        if (r3 >= 256) goto L129;
+        int r5 = 255;
+        if (r3 < 8) goto L7;
+        int r6 = r3 & 136;
+        int r7 = 170;
+        int r8 = 85;
+        if (r6 == 0) goto L104;
+        if (r6 == 8) goto L79;
+        int r9 = 43;
+        if (r6 == 128) goto L54;
+        if (r6 != 136) goto L128;
+        if ((r3 & 1) == 0) goto L31;
+        int r4 = 43;
+    L33:
+        if ((r3 & 16) == 0) goto L35;
+        int r10 = 85;
+    L36:
+        int r11 = r4 + r10;
+        if ((r3 & 2) == 0) goto L39;
+        int r12 = 43;
+    L41:
+        if ((r3 & 32) == 0) goto L43;
+        int r13 = 85;
+    L44:
+        int r14 = r12 + r13;
+        if ((r3 & 4) != 0) goto L49;
+        r9 = 0;
+    L49:
+        if ((r3 & 64) != 0) goto L52;
+        r8 = 0;
+    L52:
+        r1[r3] = f(255, r11, r14, r9 + r8);
+        goto L128
+    L43:
+        r13 = 0;
+        goto L44
+    L39:
+        r12 = 0;
+        goto L41
+    L35:
+        r10 = 0;
+        goto L36
+    L31:
+        r4 = 0;
+    L128:
+        r3 = r3 + 1;
+        goto L3
+    L54:
+        if ((r3 & 1) == 0) goto L56;
+        int r15 = 43;
+    L57:
+        int r16 = r15 + 127;
+        if ((r3 & 16) == 0) goto L60;
+        int r17 = 85;
+    L61:
+        int r18 = r16 + r17;
+        if ((r3 & 2) == 0) goto L64;
+        int r19 = 43;
+    L65:
+        int r20 = r19 + 127;
+        if ((r3 & 32) == 0) goto L68;
+        int r110 = 85;
+    L69:
+        int r21 = r20 + r110;
+        if ((r3 & 4) != 0) goto L73;
+        r9 = 0;
+    L73:
+        int r22 = r9 + 127;
+        if ((r3 & 64) != 0) goto L77;
+        r8 = 0;
+    L77:
+        r1[r3] = f(255, r18, r21, r22 + r8);
+        goto L128
+    L68:
+        r110 = 0;
+        goto L69
+    L64:
+        r19 = 0;
+        goto L65
+    L60:
+        r17 = 0;
+        goto L61
+    L56:
+        r15 = 0;
+        goto L57
+    L79:
+        if ((r3 & 1) == 0) goto L81;
+        int r23 = 85;
+    L83:
+        if ((r3 & 16) == 0) goto L85;
+        int r24 = 170;
+    L86:
+        int r25 = r23 + r24;
+        if ((r3 & 2) == 0) goto L89;
+        int r26 = 85;
+    L91:
+        if ((r3 & 32) == 0) goto L93;
+        int r27 = 170;
+    L94:
+        int r28 = r26 + r27;
+        if ((r3 & 4) != 0) goto L99;
+        r8 = 0;
+    L99:
+        if ((r3 & 64) != 0) goto L102;
+        r7 = 0;
+    L102:
+        r1[r3] = f(127, r25, r28, r8 + r7);
+        goto L128
+    L93:
+        r27 = 0;
+        goto L94
+    L89:
+        r26 = 0;
+        goto L91
+    L85:
+        r24 = 0;
+        goto L86
+    L81:
+        r23 = 0;
+        goto L83
+    L104:
+        if ((r3 & 1) == 0) goto L106;
+        int r29 = 85;
+    L108:
+        if ((r3 & 16) == 0) goto L110;
+        int r30 = 170;
+    L111:
+        int r31 = r29 + r30;
+        if ((r3 & 2) == 0) goto L114;
+        int r32 = 85;
+    L116:
+        if ((r3 & 32) == 0) goto L118;
+        int r33 = 170;
+    L119:
+        int r34 = r32 + r33;
+        if ((r3 & 4) != 0) goto L124;
+        r8 = 0;
+    L124:
+        if ((r3 & 64) != 0) goto L127;
+        r7 = 0;
+    L127:
+        r1[r3] = f(255, r31, r34, r8 + r7);
+        goto L128
+    L118:
+        r33 = 0;
+        goto L119
+    L114:
+        r32 = 0;
+        goto L116
+    L110:
+        r30 = 0;
+        goto L111
+    L106:
+        r29 = 0;
+        goto L108
+    L7:
+        if ((r3 & 1) == 0) goto L9;
+        int r35 = 255;
+    L11:
+        if ((r3 & 2) == 0) goto L13;
+        int r36 = 255;
+    L15:
+        if ((r3 & 4) != 0) goto L18;
+        r5 = 0;
+    L18:
+        r1[r3] = f(63, r35, r36, r5);
+        goto L128
+    L13:
+        r36 = 0;
+        goto L15
+    L9:
+        r35 = 0;
+        goto L11
+    L129:
+        return r1;
     }
 
-    public static int f(int i, int i2, int i3, int i4) {
-        return (i << 24) | (i2 << 16) | (i3 << 8) | i4;
+    public static int f(int r0, int r1, int r2, int r3) {
+        return (((r0 << 24) | (r1 << 16)) | (r2 << 8)) | r3;
     }
 
-    /* JADX WARN: Code duplicated, block: B:115:0x01f5  */
-    /* JADX WARN: Code duplicated, block: B:119:0x0203 A[LOOP:3: B:87:0x0156->B:119:0x0203, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:133:0x01ff A[SYNTHETIC] */
-    public static void g(byte[] bArr, int[] iArr, int i, int i2, int i3, Paint paint, Canvas canvas) {
-        byte[] bArr2;
-        char c;
-        char c2;
-        int i4;
-        int i5;
-        boolean z;
-        int i6;
-        int i7;
-        int i8;
-        int i9;
-        int i10;
-        boolean z2;
-        int i11;
-        h00 h00Var = new h00(bArr.length, bArr);
-        int i12 = i2;
-        int i13 = i3;
-        byte[] bArrA = null;
-        byte[] bArrA2 = null;
-        byte[] bArrA3 = null;
-        while (h00Var.b() != 0) {
-            int i14 = 8;
-            int i15 = h00Var.i(8);
-            if (i15 != 240) {
-                int i16 = 3;
-                int i17 = 2;
-                int i18 = 4;
-                switch (i15) {
-                    case WaveRetry.MAX_FAILURES /* 16 */:
-                        if (i == 3) {
-                            bArr2 = bArrA == null ? v : bArrA;
-                        } else if (i == 2) {
-                            bArr2 = bArrA3 == null ? u : bArrA3;
-                        } else {
-                            bArr2 = null;
-                        }
-                        boolean z3 = false;
-                        while (true) {
-                            int i19 = h00Var.i(2);
-                            if (i19 != 0) {
-                                i4 = i19;
-                                i5 = 1;
-                            } else {
-                                if (h00Var.h()) {
-                                    int i20 = h00Var.i(3) + 3;
-                                    i4 = h00Var.i(2);
-                                    i5 = i20;
-                                } else {
-                                    if (h00Var.h()) {
-                                        i5 = 1;
-                                        c = '\b';
-                                        c2 = 4;
-                                    } else {
-                                        int i21 = h00Var.i(2);
-                                        if (i21 == 0) {
-                                            c = '\b';
-                                            c2 = 4;
-                                            z3 = true;
-                                        } else if (i21 == 1) {
-                                            c = '\b';
-                                            c2 = 4;
-                                            i5 = 2;
-                                        } else if (i21 == 2) {
-                                            c = '\b';
-                                            c2 = 4;
-                                            i5 = h00Var.i(4) + 12;
-                                            i4 = h00Var.i(2);
-                                            z3 = z3;
-                                        } else if (i21 != 3) {
-                                            z3 = z3;
-                                            c = '\b';
-                                            c2 = 4;
-                                        } else {
-                                            c = '\b';
-                                            int i22 = h00Var.i(8) + 29;
-                                            i4 = h00Var.i(2);
-                                            z3 = z3;
-                                            i5 = i22;
-                                            c2 = 4;
-                                        }
-                                        i4 = 0;
-                                        i5 = 0;
-                                    }
-                                    i4 = 0;
-                                }
-                                if (i5 == 0 && paint != null) {
-                                    if (bArr2 != 0) {
-                                        i4 = bArr2[i4];
-                                    }
-                                    paint.setColor(iArr[i4]);
-                                    canvas.drawRect(i12, i13, i12 + i5, i13 + 1, paint);
-                                }
-                                i12 += i5;
-                                if (z3) {
-                                    h00Var.c();
-                                } else {
-                                    paint = paint;
-                                    z3 = z3;
-                                }
-                            }
-                            c = '\b';
-                            c2 = 4;
-                            if (i5 == 0) {
-                            }
-                            i12 += i5;
-                            if (z3) {
-                                h00Var.c();
-                            } else {
-                                paint = paint;
-                                z3 = z3;
-                            }
-                            break;
-                        }
-                        break;
-                    case 17:
-                        byte[] bArr3 = i == 3 ? bArrA2 == null ? w : bArrA2 : null;
-                        boolean z4 = false;
-                        while (true) {
-                            int i23 = h00Var.i(i18);
-                            if (i23 != 0) {
-                                z = z4;
-                                i8 = i23;
-                                i6 = 1;
-                            } else if (h00Var.h()) {
-                                if (h00Var.h()) {
-                                    int i24 = h00Var.i(i17);
-                                    if (i24 == 0) {
-                                        z = z4;
-                                        i6 = 1;
-                                    } else if (i24 != 1) {
-                                        if (i24 == i17) {
-                                            i6 = h00Var.i(i18) + 9;
-                                            i7 = h00Var.i(i18);
-                                        } else if (i24 != i16) {
-                                            z = z4;
-                                            i6 = 0;
-                                        } else {
-                                            i6 = h00Var.i(i14) + 25;
-                                            i7 = h00Var.i(i18);
-                                        }
-                                        i8 = i7;
-                                    } else {
-                                        z = z4;
-                                        i6 = i17;
-                                    }
-                                    i8 = 0;
-                                } else {
-                                    i6 = h00Var.i(i17) + 4;
-                                    i8 = h00Var.i(i18);
-                                }
-                                z = z4;
-                            } else {
-                                int i25 = h00Var.i(i16);
-                                if (i25 != 0) {
-                                    i6 = i25 + 2;
-                                    z = z4;
-                                } else {
-                                    z = true;
-                                    i6 = 0;
-                                }
-                                i8 = 0;
-                            }
-                            if (i6 == 0 || paint == 0) {
-                                i9 = i16;
-                                i10 = i17;
-                            } else {
-                                if (bArr3 != 0) {
-                                    i8 = bArr3[i8];
-                                }
-                                paint.setColor(iArr[i8]);
-                                i9 = i16;
-                                i10 = 2;
-                                canvas.drawRect(i12, i13, i12 + i6, i13 + 1, paint);
-                            }
-                            i12 += i6;
-                            if (z) {
-                                h00Var.c();
-                            } else {
-                                z4 = z;
-                                i16 = i9;
-                                i17 = i10;
-                                i18 = 4;
-                                i14 = 8;
-                            }
-                            break;
-                        }
-                        break;
-                    case 18:
-                        boolean z5 = false;
-                        while (true) {
-                            int i26 = h00Var.i(8);
-                            if (i26 != 0) {
-                                z2 = z5;
-                                i11 = 1;
-                            } else if (h00Var.h()) {
-                                z2 = z5;
-                                i11 = h00Var.i(7);
-                                i26 = h00Var.i(8);
-                            } else {
-                                int i27 = h00Var.i(7);
-                                if (i27 != 0) {
-                                    z2 = z5;
-                                    i11 = i27;
-                                    i26 = 0;
-                                } else {
-                                    z2 = true;
-                                    i26 = 0;
-                                    i11 = 0;
-                                }
-                            }
-                            if (i11 != 0 && paint != 0) {
-                                paint.setColor(iArr[i26]);
-                                canvas.drawRect(i12, i13, i12 + i11, i13 + 1, paint);
-                            }
-                            i12 += i11;
-                            if (!z2) {
-                                z5 = z2;
-                            }
-                            break;
-                        }
-                        break;
-                    default:
-                        switch (i15) {
-                            case 32:
-                                bArrA3 = a(4, 4, h00Var);
-                                break;
-                            case 33:
-                                bArrA = a(4, 8, h00Var);
-                                break;
-                            case 34:
-                                bArrA2 = a(16, 8, h00Var);
-                                break;
-                        }
-                        break;
-                }
-            } else {
-                i13 += 2;
-                i12 = i2;
-            }
-        }
+    public static void g(byte[] r21, int[] r22, int r23, int r24, int r25, Paint r26, Canvas r27) {
+        h00 r8 = new h00(r21.length, r21);
+        int r2 = r24;
+        int r9 = r25;
+        byte[] r10 = null;
+        byte[] r11 = null;
+        byte[] r12 = null;
+    L4:
+        if (r8.b() == 0) goto L122;
+        int r13 = 8;
+        int r3 = r8.i(8);
+        if (r3 == 240) goto L120;
+        int r4 = 3;
+        int r5 = 2;
+        int r6 = 4;
+        switch(r3) {
+            case 16: goto L77;
+            case 17: goto L33;
+            case 18: goto L14;
+            default: goto L9;
+        };
+    L9:
+        switch(r3) {
+            case 32: goto L13;
+            case 33: goto L12;
+            case 34: goto L11;
+            default: goto L4;
+        };
+    L11:
+        r11 = a(16, 8, r8);
+        goto L4
+    L12:
+        r10 = a(4, 8, r8);
+        goto L4
+    L13:
+        r12 = a(4, 4, r8);
+        goto L4
+    L14:
+        boolean r7 = false;
+    L15:
+        int r14 = r8.i(8);
+        if (r14 == 0) goto L19;
+        boolean r16 = r7;
+        int r17 = 1;
+    L25:
+        if (r17 == 0) goto L29;
+        if (r26 == 0) goto L29;
+        r26.setColor(r22[r14]);
+        r27.drawRect(r2, r9, r2 + r17, r9 + 1, r26);
+    L29:
+        r2 = r2 + r17;
+        if (r16 == true) goto L4;
+        r7 = r16;
+        goto L15
+    L19:
+        if (r8.h() == true) goto L24;
+        int r15 = r8.i(7);
+        if (r15 == 0) goto L23;
+        r16 = r7;
+        r17 = r15;
+        r14 = 0;
+        goto L25
+    L23:
+        r16 = true;
+        r14 = 0;
+        r17 = 0;
+        goto L25
+    L24:
+        r16 = r7;
+        r17 = r8.i(7);
+        r14 = r8.i(8);
+        goto L25
+    L33:
+        if (r23 != 3) goto L38;
+        if (r11 != null) goto L36;
+        byte[] r18 = w;
+    L37:
+        byte[] r19 = r18;
+    L39:
+        boolean r20 = false;
+    L40:
+        int r110 = r8.i(r6);
+        if (r110 == 0) goto L44;
+        boolean r0 = r20;
+        int r111 = r110;
+        int r112 = 1;
+    L66:
+        if (r112 == 0) goto L71;
+        if (r26 == 0) goto L71;
+        if (r19 == 0) goto L70;
+        r111 = r19[r111];
+    L70:
+        r26.setColor(r22[r111]);
+        int r113 = r4;
+        int r114 = 2;
+        r27.drawRect(r2, r9, r2 + r112, r9 + 1, r26);
+    L72:
+        r2 = r2 + r112;
+        if (r0 == true) goto L74;
+        r20 = r0;
+        r4 = r113;
+        r5 = r114;
+        r6 = 4;
+        r13 = 8;
+        goto L40
+    L74:
+        r8.c();
+    L71:
+        r113 = r4;
+        r114 = r5;
+        goto L72
+    L44:
+        if (r8.h() == true) goto L52;
+        int r115 = r8.i(r4);
+        if (r115 == 0) goto L49;
+        r112 = r115 + 2;
+        r0 = r20;
+    L48:
+        r111 = 0;
+        goto L66
+    L49:
+        r0 = true;
+    L50:
+        r112 = 0;
+        goto L48
+    L52:
+        if (r8.h() == true) goto L55;
+        r112 = r8.i(r5) + 4;
+        r111 = r8.i(r6);
+    L54:
+        r0 = r20;
+        goto L66
+    L55:
+        int r1 = r8.i(r5);
+        if (r1 == 0) goto L65;
+        if (r1 == 1) goto L64;
+        if (r1 == r5) goto L63;
+        if (r1 == r4) goto L61;
+        r0 = r20;
+        goto L50
+    L61:
+        r112 = r8.i(r13) + 25;
+        int r28 = r8.i(r6);
+    L62:
+        r111 = r28;
+        goto L54
+    L63:
+        r112 = r8.i(r6) + 9;
+        r28 = r8.i(r6);
+        goto L62
+    L64:
+        r0 = r20;
+        r112 = r5;
+        goto L48
+    L65:
+        r0 = r20;
+        r112 = 1;
+        goto L48
+    L36:
+        r18 = r11;
+        goto L37
+    L38:
+        r19 = null;
+        goto L39
+    L77:
+        if (r23 != 3) goto L81;
+        if (r10 != null) goto L80;
+        byte[] r29 = v;
+    L86:
+        boolean r30 = false;
+    L87:
+        int r31 = r8.i(2);
+        if (r31 == 0) goto L93;
+        int r32 = r31;
+        int r116 = 1;
+    L90:
+        char r33 = '\b';
+    L91:
+        char r34 = 4;
+    L110:
+        if (r116 == 0) goto L116;
+        if (r26 == null) goto L116;
+        if (r29 == 0) goto L114;
+        r32 = r29[r32];
+    L114:
+        r26.setColor(r22[r32]);
+        r27.drawRect(r2, r9, r2 + r116, r9 + 1, r26);
+    L116:
+        r2 = r2 + r116;
+        if (r30 == true) goto L118;
+        r26 = r26;
+        r30 = r30;
+        goto L87
+    L118:
+        r8.c();
+        goto L4
+    L93:
+        if (r8.h() == false) goto L96;
+        int r35 = r8.i(3) + 3;
+        r32 = r8.i(2);
+        r116 = r35;
+        goto L90
+    L96:
+        if (r8.h() == false) goto L99;
+        r116 = 1;
+        r33 = '\b';
+        r34 = 4;
+    L98:
+        r32 = 0;
+        goto L110
+    L99:
+        int r36 = r8.i(2);
+        if (r36 == 0) goto L109;
+        if (r36 == 1) goto L108;
+        if (r36 == 2) goto L107;
+        if (r36 == 3) goto L106;
+        r30 = r30;
+        r33 = '\b';
+        r34 = 4;
+    L105:
+        r32 = 0;
+        r116 = 0;
+        goto L110
+    L106:
+        r33 = '\b';
+        int r37 = r8.i(8) + 29;
+        r32 = r8.i(2);
+        r30 = r30;
+        r116 = r37;
+        goto L91
+    L107:
+        r33 = '\b';
+        r34 = 4;
+        r116 = r8.i(4) + 12;
+        r32 = r8.i(2);
+        r30 = r30;
+        goto L110
+    L108:
+        r33 = '\b';
+        r34 = 4;
+        r116 = 2;
+        goto L98
+    L109:
+        r33 = '\b';
+        r34 = 4;
+        r30 = true;
+        goto L105
+    L80:
+        r29 = r10;
+        goto L86
+    L81:
+        if (r23 != 2) goto L85;
+        if (r12 != null) goto L84;
+        r29 = u;
+        goto L86
+    L84:
+        r29 = r12;
+        goto L86
+    L85:
+        r29 = null;
+        goto L86
+    L120:
+        r9 = r9 + 2;
+        r2 = r24;
+        goto L4
     }
 
-    public static px0 h(h00 h00Var, int i) {
-        int[] iArr;
-        int i2;
-        int i3;
-        int i4;
-        int i5;
-        int i6;
-        int i7 = 8;
-        int i8 = h00Var.i(8);
-        h00Var.t(8);
-        int i9 = 2;
-        int i10 = i - 2;
-        int i11 = 0;
-        int[] iArr2 = {0, -1, -16777216, -8421505};
-        int[] iArrD = d();
-        int[] iArrE = e();
-        while (i10 > 0) {
-            int i12 = h00Var.i(i7);
-            int i13 = h00Var.i(i7);
-            if ((i13 & 128) != 0) {
-                iArr = iArr2;
-            } else {
-                iArr = (i13 & 64) != 0 ? iArrD : iArrE;
-            }
-            if ((i13 & 1) != 0) {
-                i5 = h00Var.i(i7);
-                i6 = h00Var.i(i7);
-                i2 = h00Var.i(i7);
-                i4 = h00Var.i(i7);
-                i3 = i10 - 6;
-            } else {
-                int i14 = h00Var.i(6) << i9;
-                int i15 = h00Var.i(4) << 4;
-                i2 = h00Var.i(4) << 4;
-                i3 = i10 - 4;
-                i4 = h00Var.i(i9) << 6;
-                i5 = i14;
-                i6 = i15;
-            }
-            if (i5 == 0) {
-                i6 = i11;
-                i2 = i6;
-                i4 = 255;
-            }
-            double d = i5;
-            double d2 = i6 - 128;
-            double d3 = i2 - 128;
-            iArr[i12] = f((byte) (255 - (i4 & 255)), f35.j((int) ((1.402d * d2) + d), 0, 255), f35.j((int) ((d - (0.34414d * d3)) - (d2 * 0.71414d)), 0, 255), f35.j((int) ((d3 * 1.772d) + d), 0, 255));
-            i10 = i3;
-            i11 = 0;
-            i8 = i8;
-            iArrE = iArrE;
-            i7 = 8;
-            i9 = 2;
-        }
-        return new px0(i8, iArr2, iArrD, iArrE);
+    public static px0 h(h00 r24, int r25) {
+        int r1 = 8;
+        int r2 = r24.i(8);
+        r24.t(8);
+        int r3 = 2;
+        int r4 = r25 - 2;
+        int r7 = 0;
+        int[] r5 = {0, -1, -16777216, -8421505};
+        int[] r6 = d();
+        int[] r8 = e();
+    L3:
+        if (r4 <= 0) goto L20;
+        int r9 = r24.i(r1);
+        int r10 = r24.i(r1);
+        if ((r10 & 128) == 0) goto L8;
+        int[] r11 = r5;
+    L12:
+        if ((r10 & 1) == 0) goto L14;
+        int r12 = r24.i(r1);
+        int r13 = r24.i(r1);
+        int r14 = r24.i(r1);
+        int r15 = r24.i(r1);
+        int r16 = r4 - 6;
+    L16:
+        if (r12 != 0) goto L18;
+        r13 = r7;
+        r14 = r13;
+        r15 = 255;
+    L18:
+        double r17 = r12;
+        int r18 = r2;
+        double r19 = r13 - 128;
+        double r20 = r14 - 128;
+        r11[r9] = f((byte) (255 - (r15 & 255)), f35.j((int) ((1.402d * r19) + r17), 0, 255), f35.j((int) ((r17 - (0.34414d * r20)) - (r19 * 0.71414d)), 0, 255), f35.j((int) ((r20 * 1.772d) + r17), 0, 255));
+        r4 = r16;
+        r7 = 0;
+        r2 = r18;
+        r8 = r8;
+        r1 = 8;
+        r3 = 2;
+        goto L3
+    L14:
+        int r110 = r24.i(6) << r3;
+        int r111 = r24.i(4) << 4;
+        r14 = r24.i(4) << 4;
+        r16 = r4 - 4;
+        r15 = r24.i(r3) << 6;
+        r12 = r110;
+        r13 = r111;
+        goto L16
+    L8:
+        if ((r10 & 64) == 0) goto L10;
+        r11 = r6;
+        goto L12
+    L10:
+        r11 = r8;
+        goto L12
+    L20:
+        return new px0(r2, r5, r6, r8);
     }
 
-    public static rx0 i(h00 h00Var) {
-        byte[] bArr;
-        int i = h00Var.i(16);
-        h00Var.t(4);
-        int i2 = h00Var.i(2);
-        boolean zH = h00Var.h();
-        h00Var.t(1);
-        byte[] bArr2 = f35.b;
-        if (i2 != 1) {
-            if (i2 == 0) {
-                int i3 = h00Var.i(16);
-                int i4 = h00Var.i(16);
-                if (i3 > 0) {
-                    bArr2 = new byte[i3];
-                    h00Var.l(i3, bArr2);
-                }
-                if (i4 > 0) {
-                    bArr = new byte[i4];
-                    h00Var.l(i4, bArr);
-                }
-            }
-            return new rx0(i, zH, bArr2, bArr);
-        }
-        h00Var.t(h00Var.i(8) * 16);
-        bArr = bArr2;
-        return new rx0(i, zH, bArr2, bArr);
+    public static rx0 i(h00 r6) {
+        int r1 = r6.i(16);
+        r6.t(4);
+        int r2 = r6.i(2);
+        boolean r3 = r6.h();
+        r6.t(1);
+        byte[] r5 = f35.b;
+        if (r2 != 1) goto L5;
+        r6.t(r6.i(8) * 16);
+    L11:
+        byte[] r4 = r5;
+    L13:
+        return new rx0(r1, r3, r5, r4);
+    L5:
+        if (r2 != 0) goto L11;
+        int r7 = r6.i(16);
+        int r0 = r6.i(16);
+        if (r7 <= 0) goto L9;
+        r5 = new byte[r7];
+        r6.l(r7, r5);
+    L9:
+        if (r0 <= 0) goto L11;
+        r4 = new byte[r0];
+        r6.l(r0, r4);
+        goto L13
     }
 
-    /* JADX WARN: Code duplicated, block: B:101:0x02fd  */
-    /* JADX WARN: Code duplicated, block: B:103:0x0301  */
-    /* JADX WARN: Code duplicated, block: B:106:0x0316  */
-    /* JADX WARN: Code duplicated, block: B:108:0x031c  */
-    /* JADX WARN: Code duplicated, block: B:110:0x031f  */
-    /* JADX WARN: Code duplicated, block: B:111:0x0322  */
-    /* JADX WARN: Code duplicated, block: B:113:0x0346  */
-    /* JADX WARN: Code duplicated, block: B:117:0x0372  */
-    /* JADX WARN: Code duplicated, block: B:119:0x0377  */
-    /* JADX WARN: Code duplicated, block: B:120:0x037f  */
-    /* JADX WARN: Code duplicated, block: B:122:0x0382  */
-    /* JADX WARN: Code duplicated, block: B:123:0x0389  */
-    /* JADX WARN: Code duplicated, block: B:125:0x03a6  */
-    /* JADX WARN: Code duplicated, block: B:86:0x0276  */
-    /* JADX WARN: Code duplicated, block: B:94:0x02d3  */
-    /* JADX WARN: Code duplicated, block: B:96:0x02ed  */
-    /* JADX WARN: Code duplicated, block: B:99:0x02f9  */
     @Override // defpackage.zn4
-    public void c(byte[] bArr, int i, int i2, yn4 yn4Var, wc0 wc0Var) {
-        int i3;
-        ArrayList arrayList;
-        SparseArray sparseArray;
-        int i4;
-        lg0 lg0Var;
-        tx0 tx0Var;
-        int i5;
-        int i6;
-        int i7;
-        int i8;
-        int i9;
-        int i10;
-        px0 px0Var;
-        SparseArray sparseArray2;
-        int i11;
-        tx0 tx0Var2;
-        int i12;
-        int i13;
-        char c;
-        char c2;
-        int i14;
-        int i15;
-        char c3;
-        int i16;
-        int iKeyAt;
-        ux0 ux0Var;
-        rx0 rx0Var;
-        rx0 rx0Var2;
-        tx0 tx0Var3;
-        int i17;
-        int i18;
-        int i19;
-        Paint paint;
-        int i20;
-        int[] iArr;
-        tx0 tx0Var4;
-        int i21;
-        int i22;
-        int i23;
-        int i24;
-        h00 h00Var = new h00(i + i2, bArr);
-        h00Var.q(i);
-        Paint paint2 = (Paint) this.o;
-        Canvas canvas = (Canvas) this.p;
-        vx0 vx0Var = (vx0) this.s;
-        while (h00Var.b() >= 48 && h00Var.i(8) == 15) {
-            int i25 = h00Var.i(8);
-            int i26 = 16;
-            int i27 = h00Var.i(16);
-            int i28 = h00Var.i(16);
-            int iF = h00Var.f() + i28;
-            if (i28 * 8 > h00Var.b()) {
-                l93.q0("DvbParser", "Data field length exceeds limit");
-                h00Var.t(h00Var.b());
-            } else {
-                int i29 = 4;
-                switch (i25) {
-                    case WaveRetry.MAX_FAILURES /* 16 */:
-                        if (i27 == vx0Var.a) {
-                            j83 j83Var = vx0Var.i;
-                            int i30 = 8;
-                            h00Var.i(8);
-                            int i31 = h00Var.i(4);
-                            int i32 = h00Var.i(2);
-                            h00Var.t(2);
-                            int i33 = i28 - 2;
-                            SparseArray sparseArray3 = new SparseArray();
-                            while (i33 > 0) {
-                                int i34 = h00Var.i(i30);
-                                h00Var.t(i30);
-                                i33 -= 6;
-                                sparseArray3.put(i34, new sx0(h00Var.i(16), h00Var.i(16)));
-                                i30 = 8;
-                            }
-                            j83 j83Var2 = new j83();
-                            j83Var2.n = i31;
-                            j83Var2.o = i32;
-                            j83Var2.p = sparseArray3;
-                            if (i32 != 0) {
-                                vx0Var.i = j83Var2;
-                                vx0Var.c.clear();
-                                vx0Var.d.clear();
-                                vx0Var.e.clear();
-                            } else if (j83Var != null && j83Var.n != i31) {
-                                vx0Var.i = j83Var2;
-                            }
-                        }
-                        break;
-                    case 17:
-                        j83 j83Var3 = vx0Var.i;
-                        SparseArray sparseArray4 = vx0Var.c;
-                        if (i27 == vx0Var.a && j83Var3 != null) {
-                            int i35 = h00Var.i(8);
-                            h00Var.t(4);
-                            boolean zH = h00Var.h();
-                            h00Var.t(3);
-                            int i36 = h00Var.i(16);
-                            int i37 = h00Var.i(16);
-                            h00Var.i(3);
-                            int i38 = h00Var.i(3);
-                            h00Var.t(2);
-                            int i39 = h00Var.i(8);
-                            int i40 = h00Var.i(8);
-                            int i41 = h00Var.i(4);
-                            int i42 = h00Var.i(2);
-                            h00Var.t(2);
-                            int i43 = i28 - 10;
-                            SparseArray sparseArray5 = new SparseArray();
-                            while (i43 > 0) {
-                                int i44 = h00Var.i(i26);
-                                int i45 = h00Var.i(2);
-                                h00Var.i(2);
-                                int i46 = h00Var.i(12);
-                                h00Var.t(i29);
-                                int i47 = h00Var.i(12);
-                                int i48 = i43 - 6;
-                                if (i45 == 1 || i45 == 2) {
-                                    h00Var.i(8);
-                                    h00Var.i(8);
-                                    i43 -= 8;
-                                } else {
-                                    i43 = i48;
-                                }
-                                sparseArray5.put(i44, new ux0(i46, i47));
-                                i29 = 4;
-                                i26 = 16;
-                            }
-                            tx0 tx0Var5 = new tx0(i35, zH, i36, i37, i38, i39, i40, i41, i42, sparseArray5);
-                            if (j83Var3.o == 0 && (tx0Var4 = (tx0) sparseArray4.get(i35)) != null) {
-                                SparseArray sparseArray6 = tx0Var4.j;
-                                for (int i49 = 0; i49 < sparseArray6.size(); i49++) {
-                                    tx0Var5.j.put(sparseArray6.keyAt(i49), (ux0) sparseArray6.valueAt(i49));
-                                }
-                            }
-                            sparseArray4.put(tx0Var5.a, tx0Var5);
-                        }
-                        break;
-                    case 18:
-                        if (i27 == vx0Var.a) {
-                            px0 px0VarH = h(h00Var, i28);
-                            vx0Var.d.put(px0VarH.a, px0VarH);
-                        } else if (i27 == vx0Var.b) {
-                            px0 px0VarH2 = h(h00Var, i28);
-                            vx0Var.f.put(px0VarH2.a, px0VarH2);
-                        }
-                        break;
-                    case 19:
-                        if (i27 == vx0Var.a) {
-                            rx0 rx0VarI = i(h00Var);
-                            vx0Var.e.put(rx0VarI.a, rx0VarI);
-                        } else if (i27 == vx0Var.b) {
-                            rx0 rx0VarI2 = i(h00Var);
-                            vx0Var.g.put(rx0VarI2.a, rx0VarI2);
-                        }
-                        break;
-                    case 20:
-                        if (i27 == vx0Var.a) {
-                            h00Var.t(4);
-                            boolean zH2 = h00Var.h();
-                            h00Var.t(3);
-                            int i50 = h00Var.i(16);
-                            int i51 = h00Var.i(16);
-                            if (zH2) {
-                                int i52 = h00Var.i(16);
-                                i21 = h00Var.i(16);
-                                i24 = h00Var.i(16);
-                                i22 = h00Var.i(16);
-                                i23 = i52;
-                            } else {
-                                i21 = i50;
-                                i22 = i51;
-                                i23 = 0;
-                                i24 = 0;
-                            }
-                            vx0Var.h = new qx0(i50, i51, i23, i21, i24, i22);
-                        }
-                        break;
-                }
-                h00Var.u(iF - h00Var.f());
-            }
-        }
-        j83 j83Var4 = vx0Var.i;
-        if (j83Var4 == null) {
-            vw1 vw1Var = yw1.o;
-            lg0Var = new lg0(-9223372036854775807L, -9223372036854775807L, gy3.r);
-        } else {
-            qx0 qx0Var = vx0Var.h;
-            if (qx0Var == null) {
-                qx0Var = (qx0) this.q;
-            }
-            Bitmap bitmap = (Bitmap) this.t;
-            if (bitmap != null) {
-                i3 = 1;
-                if (qx0Var.a + 1 != bitmap.getWidth() || qx0Var.b + 1 != ((Bitmap) this.t).getHeight()) {
-                }
-                arrayList = new ArrayList();
-                sparseArray = (SparseArray) j83Var4.p;
-                i4 = 0;
-                while (i4 < sparseArray.size()) {
-                    canvas.save();
-                    sx0 sx0Var = (sx0) sparseArray.valueAt(i4);
-                    tx0Var = (tx0) vx0Var.c.get(sparseArray.keyAt(i4));
-                    i5 = sx0Var.a + qx0Var.c;
-                    i6 = sx0Var.b + qx0Var.e;
-                    i7 = tx0Var.c;
-                    int i53 = tx0Var.f;
-                    i8 = tx0Var.d;
-                    i9 = i5 + i7;
-                    i10 = i6 + i8;
-                    SparseArray sparseArray7 = sparseArray;
-                    canvas.clipRect(i5, i6, Math.min(i9, qx0Var.d), Math.min(i10, qx0Var.f));
-                    px0Var = (px0) vx0Var.d.get(i53);
-                    if (px0Var == null && (px0Var = (px0) vx0Var.f.get(i53)) == null) {
-                        px0Var = (px0) this.r;
-                    }
-                    sparseArray2 = tx0Var.j;
-                    qx0 qx0Var2 = qx0Var;
-                    i11 = 0;
-                    while (i11 < sparseArray2.size()) {
-                        iKeyAt = sparseArray2.keyAt(i11);
-                        int i54 = i4;
-                        ux0Var = (ux0) sparseArray2.valueAt(i11);
-                        SparseArray sparseArray8 = sparseArray2;
-                        rx0Var = (rx0) vx0Var.e.get(iKeyAt);
-                        if (rx0Var == null) {
-                            rx0Var = (rx0) vx0Var.g.get(iKeyAt);
-                        }
-                        rx0Var2 = rx0Var;
-                        if (rx0Var2 != null) {
-                            if (rx0Var2.b) {
-                                paint = null;
-                            } else {
-                                paint = (Paint) this.n;
-                            }
-                            int i55 = i5;
-                            i20 = tx0Var.e;
-                            int i56 = i55 + ux0Var.a;
-                            int i57 = ux0Var.b + i6;
-                            if (i20 == 3) {
-                                iArr = px0Var.d;
-                            } else if (i20 == 2) {
-                                iArr = px0Var.c;
-                            } else {
-                                iArr = px0Var.b;
-                            }
-                            int i58 = i8;
-                            Paint paint3 = paint;
-                            tx0 tx0Var6 = tx0Var;
-                            int[] iArr2 = iArr;
-                            tx0Var3 = tx0Var6;
-                            i17 = i55;
-                            i18 = i11;
-                            i19 = i58;
-                            g(rx0Var2.c, iArr2, i20, i56, i57, paint3, canvas);
-                            g(rx0Var2.d, iArr2, i20, i56, i57 + 1, paint3, canvas);
-                        } else {
-                            tx0Var3 = tx0Var;
-                            i17 = i5;
-                            i18 = i11;
-                            i19 = i8;
-                        }
-                        i11 = i18 + 1;
-                        tx0Var = tx0Var3;
-                        i5 = i17;
-                        sparseArray2 = sparseArray8;
-                        i4 = i54;
-                        vx0Var = vx0Var;
-                        i7 = i7;
-                        i8 = i19;
-                    }
-                    vx0 vx0Var2 = vx0Var;
-                    int i59 = i4;
-                    tx0Var2 = tx0Var;
-                    i12 = i5;
-                    int i60 = i7;
-                    int i61 = i8;
-                    if (tx0Var2.b) {
-                        i15 = tx0Var2.e;
-                        if (i15 == 3) {
-                            i16 = px0Var.d[tx0Var2.g];
-                            c3 = 2;
-                        } else {
-                            c3 = 2;
-                            if (i15 == 2) {
-                                i16 = px0Var.c[tx0Var2.h];
-                            } else {
-                                i16 = px0Var.b[tx0Var2.i];
-                            }
-                        }
-                        paint2.setColor(i16);
-                        i13 = i12;
-                        c2 = c3;
-                        i14 = 0;
-                        c = 3;
-                        canvas.drawRect(i13, i6, i9, i10, paint2);
-                    } else {
-                        i13 = i12;
-                        c = 3;
-                        c2 = 2;
-                        i14 = 0;
-                    }
-                    Bitmap bitmapCreateBitmap = Bitmap.createBitmap((Bitmap) this.t, i13, i6, i60, i61);
-                    float f = qx0Var2.a;
-                    float f2 = i6;
-                    float f3 = qx0Var2.b;
-                    arrayList.add(new ig0(null, null, null, bitmapCreateBitmap, f2 / f3, 0, 0, i13 / f, 0, Integer.MIN_VALUE, -3.4028235E38f, i60 / f, i61 / f3, false, -16777216, Integer.MIN_VALUE, 0.0f, 0));
-                    canvas.drawColor(i14, PorterDuff.Mode.CLEAR);
-                    canvas.restore();
-                    i4 = i59 + 1;
-                    qx0Var = qx0Var2;
-                    arrayList = arrayList;
-                    sparseArray = sparseArray7;
-                    vx0Var = vx0Var2;
-                }
-                lg0Var = new lg0(-9223372036854775807L, -9223372036854775807L, arrayList);
-            } else {
-                i3 = 1;
-            }
-            Bitmap bitmapCreateBitmap2 = Bitmap.createBitmap(qx0Var.a + i3, qx0Var.b + i3, Bitmap.Config.ARGB_8888);
-            this.t = bitmapCreateBitmap2;
-            canvas.setBitmap(bitmapCreateBitmap2);
-            arrayList = new ArrayList();
-            sparseArray = (SparseArray) j83Var4.p;
-            i4 = 0;
-            while (i4 < sparseArray.size()) {
-                canvas.save();
-                sx0 sx0Var2 = (sx0) sparseArray.valueAt(i4);
-                tx0Var = (tx0) vx0Var.c.get(sparseArray.keyAt(i4));
-                i5 = sx0Var2.a + qx0Var.c;
-                i6 = sx0Var2.b + qx0Var.e;
-                i7 = tx0Var.c;
-                int i510 = tx0Var.f;
-                i8 = tx0Var.d;
-                i9 = i5 + i7;
-                i10 = i6 + i8;
-                SparseArray sparseArray9 = sparseArray;
-                canvas.clipRect(i5, i6, Math.min(i9, qx0Var.d), Math.min(i10, qx0Var.f));
-                px0Var = (px0) vx0Var.d.get(i510);
-                if (px0Var == null) {
-                    px0Var = (px0) this.r;
-                }
-                sparseArray2 = tx0Var.j;
-                qx0 qx0Var3 = qx0Var;
-                i11 = 0;
-                while (i11 < sparseArray2.size()) {
-                    iKeyAt = sparseArray2.keyAt(i11);
-                    int i511 = i4;
-                    ux0Var = (ux0) sparseArray2.valueAt(i11);
-                    SparseArray sparseArray10 = sparseArray2;
-                    rx0Var = (rx0) vx0Var.e.get(iKeyAt);
-                    if (rx0Var == null) {
-                        rx0Var = (rx0) vx0Var.g.get(iKeyAt);
-                    }
-                    rx0Var2 = rx0Var;
-                    if (rx0Var2 != null) {
-                        if (rx0Var2.b) {
-                            paint = null;
-                        } else {
-                            paint = (Paint) this.n;
-                        }
-                        int i512 = i5;
-                        i20 = tx0Var.e;
-                        int i513 = i512 + ux0Var.a;
-                        int i514 = ux0Var.b + i6;
-                        if (i20 == 3) {
-                            iArr = px0Var.d;
-                        } else if (i20 == 2) {
-                            iArr = px0Var.c;
-                        } else {
-                            iArr = px0Var.b;
-                        }
-                        int i515 = i8;
-                        Paint paint4 = paint;
-                        tx0 tx0Var7 = tx0Var;
-                        int[] iArr3 = iArr;
-                        tx0Var3 = tx0Var7;
-                        i17 = i512;
-                        i18 = i11;
-                        i19 = i515;
-                        g(rx0Var2.c, iArr3, i20, i513, i514, paint4, canvas);
-                        g(rx0Var2.d, iArr3, i20, i513, i514 + 1, paint4, canvas);
-                    } else {
-                        tx0Var3 = tx0Var;
-                        i17 = i5;
-                        i18 = i11;
-                        i19 = i8;
-                    }
-                    i11 = i18 + 1;
-                    tx0Var = tx0Var3;
-                    i5 = i17;
-                    sparseArray2 = sparseArray10;
-                    i4 = i511;
-                    vx0Var = vx0Var;
-                    i7 = i7;
-                    i8 = i19;
-                }
-                vx0 vx0Var3 = vx0Var;
-                int i516 = i4;
-                tx0Var2 = tx0Var;
-                i12 = i5;
-                int i62 = i7;
-                int i63 = i8;
-                if (tx0Var2.b) {
-                    i15 = tx0Var2.e;
-                    if (i15 == 3) {
-                        i16 = px0Var.d[tx0Var2.g];
-                        c3 = 2;
-                    } else {
-                        c3 = 2;
-                        if (i15 == 2) {
-                            i16 = px0Var.c[tx0Var2.h];
-                        } else {
-                            i16 = px0Var.b[tx0Var2.i];
-                        }
-                    }
-                    paint2.setColor(i16);
-                    i13 = i12;
-                    c2 = c3;
-                    i14 = 0;
-                    c = 3;
-                    canvas.drawRect(i13, i6, i9, i10, paint2);
-                } else {
-                    i13 = i12;
-                    c = 3;
-                    c2 = 2;
-                    i14 = 0;
-                }
-                Bitmap bitmapCreateBitmap3 = Bitmap.createBitmap((Bitmap) this.t, i13, i6, i62, i63);
-                float f4 = qx0Var3.a;
-                float f5 = i6;
-                float f6 = qx0Var3.b;
-                arrayList.add(new ig0(null, null, null, bitmapCreateBitmap3, f5 / f6, 0, 0, i13 / f4, 0, Integer.MIN_VALUE, -3.4028235E38f, i62 / f4, i63 / f6, false, -16777216, Integer.MIN_VALUE, 0.0f, 0));
-                canvas.drawColor(i14, PorterDuff.Mode.CLEAR);
-                canvas.restore();
-                i4 = i516 + 1;
-                qx0Var = qx0Var3;
-                arrayList = arrayList;
-                sparseArray = sparseArray9;
-                vx0Var = vx0Var3;
-            }
-            lg0Var = new lg0(-9223372036854775807L, -9223372036854775807L, arrayList);
-        }
-        wc0Var.accept(lg0Var);
+    public void c(byte[] r44, int r45, int r46, yn4 r47, wc0 r48) {
+        h00 r2 = new h00(r45 + r46, r44);
+        r2.q(r45);
+        Paint r8 = (Paint) this.o;
+        Canvas r15 = (Canvas) this.p;
+        vx0 r1 = (vx0) this.s;
+    L4:
+        if (r2.b() < 48) goto L66;
+        if (r2.i(8) != 15) goto L66;
+        int r4 = r2.i(8);
+        int r10 = 16;
+        int r11 = r2.i(16);
+        int r12 = r2.i(16);
+        int r13 = r2.f() + r12;
+        if ((r12 * 8) > r2.b()) goto L9;
+        int r7 = 4;
+        switch(r4) {
+            case 16: goto L54;
+            case 17: goto L32;
+            case 18: goto L27;
+            case 19: goto L21;
+            case 20: goto L14;
+            default: goto L65;
+        };
+    L32:
+        j83 r5 = r1.i;
+        SparseArray r14 = r1.c;
+        if (r11 != r1.a) goto L65;
+        if (r5 == null) goto L65;
+        int r17 = r2.i(8);
+        r2.t(4);
+        boolean r18 = r2.h();
+        r2.t(3);
+        int r19 = r2.i(16);
+        int r20 = r2.i(16);
+        r2.i(3);
+        int r21 = r2.i(3);
+        r2.t(2);
+        int r22 = r2.i(8);
+        int r23 = r2.i(8);
+        int r24 = r2.i(4);
+        int r25 = r2.i(2);
+        r2.t(2);
+        int r16 = r12 - 10;
+        SparseArray r6 = new SparseArray();
+    L36:
+        if (r16 <= 0) goto L44;
+        int r9 = r2.i(r10);
+        int r110 = r2.i(2);
+        r2.i(2);
+        int r3 = r2.i(12);
+        r2.t(r7);
+        int r111 = r2.i(12);
+        int r112 = r16 - 6;
+        if (r110 == 1) goto L42;
+        if (r110 == 2) goto L42;
+        r16 = r112;
+    L43:
+        r6.put(r9, new ux0(r3, r111));
+        r7 = 4;
+        r10 = 16;
+    L42:
+        r2.i(8);
+        r2.i(8);
+        r16 = r16 - 8;
+        goto L43
+    L44:
+        tx0 r113 = new tx0(r17, r18, r19, r20, r21, r22, r23, r24, r25, r6);
+        if (r5.o != 0) goto L52;
+        tx0 r26 = (tx0) r14.get(r17);
+        if (r26 == null) goto L52;
+        SparseArray r27 = r26.j;
+        int r28 = 0;
+    L50:
+        if (r28 >= r27.size()) goto L52;
+        r113.j.put(r27.keyAt(r28), (ux0) r27.valueAt(r28));
+        r28 = r28 + 1;
+    L52:
+        r14.put(r113.a, r113);
+    L65:
+        r2.u(r13 - r2.f());
+        goto L4
+    L14:
+        if (r11 != r1.a) goto L65;
+        r2.t(4);
+        boolean r29 = r2.h();
+        r2.t(3);
+        int r114 = r2.i(16);
+        int r115 = r2.i(16);
+        if (r29 == false) goto L18;
+        int r30 = r2.i(16);
+        int r31 = r2.i(16);
+        int r210 = r31;
+        int r211 = r2.i(16);
+        int r212 = r2.i(16);
+        int r116 = r30;
+    L19:
+        r1.h = new qx0(r114, r115, r116, r210, r211, r212);
+        goto L65
+    L18:
+        r210 = r114;
+        r212 = r115;
+        r116 = 0;
+        r211 = 0;
+        goto L19
+    L21:
+        if (r11 != r1.a) goto L24;
+        rx0 r32 = i(r2);
+        r1.e.put(r32.a, r32);
+        goto L65
+    L24:
+        if (r11 != r1.b) goto L65;
+        rx0 r33 = i(r2);
+        r1.g.put(r33.a, r33);
+        goto L65
+    L27:
+        if (r11 != r1.a) goto L30;
+        px0 r34 = h(r2, r12);
+        r1.d.put(r34.a, r34);
+        goto L65
+    L30:
+        if (r11 != r1.b) goto L65;
+        px0 r35 = h(r2, r12);
+        r1.f.put(r35.a, r35);
+        goto L65
+    L54:
+        if (r11 != r1.a) goto L65;
+        j83 r36 = r1.i;
+        int r37 = 8;
+        r2.i(8);
+        int r38 = r2.i(4);
+        int r39 = r2.i(2);
+        r2.t(2);
+        int r117 = r12 - 2;
+        SparseArray r40 = new SparseArray();
+    L56:
+        if (r117 <= 0) goto L58;
+        int r41 = r2.i(r37);
+        r2.t(r37);
+        r117 = r117 - 6;
+        r40.put(r41, new sx0(r2.i(16), r2.i(16)));
+        r37 = 8;
+        goto L56
+    L58:
+        j83 r42 = new j83();
+        r42.n = r38;
+        r42.o = r39;
+        r42.p = r40;
+        if (r39 == 0) goto L61;
+        r1.i = r42;
+        r1.c.clear();
+        r1.d.clear();
+        r1.e.clear();
+        goto L65
+    L61:
+        if (r36 == null) goto L65;
+        if (r36.n == r38) goto L65;
+        r1.i = r42;
+        goto L65
+    L9:
+        l93.q0("DvbParser", "Data field length exceeds limit");
+        r2.t(r2.b());
+    L66:
+        j83 r43 = r1.i;
+        if (r43 != null) goto L70;
+        vw1 r0 = yw1.o;
+        lg0 r49 = new lg0(-9223372036854775807L, -9223372036854775807L, gy3.r);
+    L128:
+        r48.accept(r49);
+        return;
+    L70:
+        qx0 r50 = r1.h;
+        if (r50 != null) goto L74;
+        r50 = (qx0) this.q;
+    L74:
+        Bitmap r51 = (Bitmap) this.t;
+        if (r51 == null) goto L81;
+        int r52 = 1;
+        if ((r50.a + 1) == r51.getWidth()) goto L79;
+    L82:
+        Bitmap r53 = Bitmap.createBitmap(r50.a + r52, r50.b + r52, Bitmap.Config.ARGB_8888);
+        this.t = r53;
+        r15.setBitmap(r53);
+    L83:
+        ArrayList r213 = new ArrayList();
+        SparseArray r54 = (SparseArray) r43.p;
+        int r55 = 0;
+    L85:
+        if (r55 >= r54.size()) goto L127;
+        r15.save();
+        sx0 r56 = (sx0) r54.valueAt(r55);
+        tx0 r118 = (tx0) r1.c.get(r54.keyAt(r55));
+        int r119 = r56.a + r50.c;
+        int r57 = r56.b + r50.e;
+        int r120 = r118.c;
+        int r121 = r118.f;
+        int r122 = r118.d;
+        int r58 = r119 + r120;
+        int r59 = r57 + r122;
+        SparseArray r123 = r54;
+        r15.clipRect(r119, r57, Math.min(r58, r50.d), Math.min(r59, r50.f));
+        px0 r60 = (px0) r1.d.get(r121);
+        if (r60 != null) goto L91;
+        r60 = (px0) r1.f.get(r121);
+        if (r60 != null) goto L91;
+        r60 = (px0) this.r;
+    L91:
+        SparseArray r61 = r118.j;
+        qx0 r124 = r50;
+        int r125 = 0;
+    L93:
+        if (r125 >= r61.size()) goto L115;
+        int r62 = r61.keyAt(r125);
+        int r126 = r55;
+        ux0 r63 = (ux0) r61.valueAt(r125);
+        SparseArray r127 = r61;
+        rx0 r64 = (rx0) r1.e.get(r62);
+        if (r64 != null) goto L97;
+        r64 = (rx0) r1.g.get(r62);
+    L97:
+        rx0 r65 = r64;
+        if (r65 != null) goto L100;
+        tx0 r66 = r118;
+        int r67 = r119;
+        int r214 = r125;
+        int r215 = r122;
+    L114:
+        r125 = r214 + 1;
+        r118 = r66;
+        r119 = r67;
+        r61 = r127;
+        r55 = r126;
+        r1 = r1;
+        r120 = r120;
+        r122 = r215;
+        goto L93
+    L100:
+        if (r65.b == false) goto L103;
+        Paint r68 = null;
+    L102:
+        int r216 = r119;
+        int r128 = r118.e;
+        int r69 = r216 + r63.a;
+        int r70 = r63.b + r57;
+        if (r128 != 3) goto L109;
+        int[] r71 = r60.d;
+    L107:
+        int r217 = r122;
+        Paint r129 = r68;
+        tx0 r218 = r118;
+        int[] r130 = r71;
+        r66 = r218;
+        r67 = r216;
+        r214 = r125;
+        r215 = r217;
+        g(r65.c, r130, r128, r69, r70, r129, r15);
+        g(r65.d, r130, r128, r69, r70 + 1, r129, r15);
+        goto L114
+    L109:
+        if (r128 != 2) goto L111;
+        r71 = r60.c;
+        goto L107
+    L111:
+        r71 = r60.b;
+        goto L107
+    L103:
+        r68 = (Paint) this.n;
+        goto L102
+    L115:
+        vx0 r219 = r1;
+        int r131 = r55;
+        tx0 r72 = r118;
+        int r73 = r119;
+        int r220 = r120;
+        int r221 = r122;
+        if (r72.b == false) goto L125;
+        int r74 = r72.e;
+        if (r74 != 3) goto L120;
+        int r75 = r60.d[r72.g];
+        char r132 = 2;
+    L124:
+        r8.setColor(r75);
+        int r133 = r73;
+        char r134 = r132;
+        int r135 = 0;
+        char r136 = 3;
+        r15.drawRect(r133, r57, r58, r59, r8);
+    L126:
+        Bitmap r222 = Bitmap.createBitmap((Bitmap) this.t, r133, r57, r220, r221);
+        float r76 = r124.a;
+        float r77 = r57;
+        float r78 = r124.b;
+        r213.add(new ig0(null, null, null, r222, r77 / r78, 0, 0, r133 / r76, 0, Integer.MIN_VALUE, -3.4028235E38f, r220 / r76, r221 / r78, false, -16777216, Integer.MIN_VALUE, 0.0f, 0));
+        r15.drawColor(r135, PorterDuff.Mode.CLEAR);
+        r15.restore();
+        r55 = r131 + 1;
+        r50 = r124;
+        r213 = r213;
+        r54 = r123;
+        r1 = r219;
+        goto L85
+    L120:
+        r132 = 2;
+        if (r74 != 2) goto L123;
+        r75 = r60.c[r72.h];
+        goto L124
+    L123:
+        r75 = r60.b[r72.i];
+        goto L124
+    L125:
+        r133 = r73;
+        r136 = 3;
+        r134 = 2;
+        r135 = 0;
+        goto L126
+    L127:
+        r49 = new lg0(-9223372036854775807L, -9223372036854775807L, r213);
+        goto L128
+    L79:
+        if ((r50.b + 1) == ((Bitmap) this.t).getHeight()) goto L83;
+    L81:
+        r52 = 1;
+        goto L82
     }
 
     @Override // defpackage.zn4
     public void reset() {
-        vx0 vx0Var = (vx0) this.s;
-        vx0Var.c.clear();
-        vx0Var.d.clear();
-        vx0Var.e.clear();
-        vx0Var.f.clear();
-        vx0Var.g.clear();
-        vx0Var.h = null;
-        vx0Var.i = null;
+        vx0 r1 = (vx0) this.s;
+        r1.c.clear();
+        r1.d.clear();
+        r1.e.clear();
+        r1.f.clear();
+        r1.g.clear();
+        r1.h = null;
+        r1.i = null;
     }
 
-    public /* synthetic */ lv4(ConstraintLayout constraintLayout, View view, View view2, TextView textView, View view3, TextView textView2, View view4) {
-        this.n = constraintLayout;
-        this.o = view;
-        this.q = view2;
-        this.p = textView;
-        this.r = view3;
-        this.s = textView2;
-        this.t = view4;
+    public /* synthetic */ lv4(ConstraintLayout r1, View r2, View r3, TextView r4, View r5, TextView r6, View r7) {
+        this.n = r1;
+        this.o = r2;
+        this.q = r3;
+        this.p = r4;
+        this.r = r5;
+        this.s = r6;
+        this.t = r7;
     }
 
-    public lv4(ConstraintLayout constraintLayout, TextView textView, ImageView imageView, TextView textView2, ImageView imageView2, ImageView imageView3, TextView textView3) {
-        this.n = constraintLayout;
-        this.p = textView;
-        this.o = imageView;
-        this.q = textView2;
-        this.r = imageView2;
-        this.s = imageView3;
-        this.t = textView3;
+    public lv4(ConstraintLayout r1, TextView r2, ImageView r3, TextView r4, ImageView r5, ImageView r6, TextView r7) {
+        this.n = r1;
+        this.p = r2;
+        this.o = r3;
+        this.q = r4;
+        this.r = r5;
+        this.s = r6;
+        this.t = r7;
     }
 
-    public lv4(LinearLayout linearLayout, RecyclerView recyclerView, ConstraintLayout constraintLayout, ProgressBar progressBar, Button button, TextView textView, AppBarLayout appBarLayout, MaterialToolbar materialToolbar) {
-        this.n = recyclerView;
-        this.o = constraintLayout;
-        this.q = progressBar;
-        this.r = button;
-        this.p = textView;
-        this.s = appBarLayout;
-        this.t = materialToolbar;
+    public lv4(LinearLayout r1, RecyclerView r2, ConstraintLayout r3, ProgressBar r4, Button r5, TextView r6, AppBarLayout r7, MaterialToolbar r8) {
+        this.n = r2;
+        this.o = r3;
+        this.q = r4;
+        this.r = r5;
+        this.p = r6;
+        this.s = r7;
+        this.t = r8;
     }
 
-    public lv4(Context context) {
-        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-        this.q = layoutParams;
+    public lv4(Context r5) {
+        WindowManager.LayoutParams r0 = new WindowManager.LayoutParams();
+        this.q = r0;
         this.r = new Rect();
         this.s = new int[2];
         this.t = new int[2];
-        this.n = context;
-        View viewInflate = LayoutInflater.from(context).inflate(R.layout.abc_tooltip, (ViewGroup) null);
-        this.o = viewInflate;
-        this.p = (TextView) viewInflate.findViewById(R.id.message);
-        layoutParams.setTitle(lv4.class.getSimpleName());
-        layoutParams.packageName = context.getPackageName();
-        layoutParams.type = 1002;
-        layoutParams.width = -2;
-        layoutParams.height = -2;
-        layoutParams.format = -3;
-        layoutParams.windowAnimations = R.style.Animation_AppCompat_Tooltip;
-        layoutParams.flags = 24;
+        this.n = r5;
+        View r1 = LayoutInflater.from(r5).inflate(R.layout.abc_tooltip, null);
+        this.o = r1;
+        this.p = (TextView) r1.findViewById(R.id.message);
+        r0.setTitle(lv4.class.getSimpleName());
+        r0.packageName = r5.getPackageName();
+        r0.type = 1002;
+        r0.width = -2;
+        r0.height = -2;
+        r0.format = -3;
+        r0.windowAnimations = R.style.Animation_AppCompat_Tooltip;
+        r0.flags = 24;
     }
 
-    public /* synthetic */ lv4(ViewGroup viewGroup, View view, View view2, View view3, View view4, View view5, View view6, ViewGroup viewGroup2) {
-        this.n = view;
-        this.o = view2;
-        this.p = view3;
-        this.q = view4;
-        this.r = view5;
-        this.s = view6;
-        this.t = viewGroup2;
+    public /* synthetic */ lv4(ViewGroup r1, View r2, View r3, View r4, View r5, View r6, View r7, ViewGroup r8) {
+        this.n = r2;
+        this.o = r3;
+        this.p = r4;
+        this.q = r5;
+        this.r = r6;
+        this.s = r7;
+        this.t = r8;
     }
 
-    public lv4(Context context, r90 r90Var, bq4 bq4Var, pq3 pq3Var, WorkDatabase workDatabase, dd5 dd5Var, ArrayList arrayList) {
-        context.getClass();
-        this.o = r90Var;
-        this.p = bq4Var;
-        this.q = pq3Var;
-        this.r = workDatabase;
-        this.s = dd5Var;
-        this.t = arrayList;
-        Context applicationContext = context.getApplicationContext();
-        applicationContext.getClass();
-        this.n = applicationContext;
+    public lv4(Context r1, r90 r2, bq4 r3, pq3 r4, WorkDatabase r5, dd5 r6, ArrayList r7) {
+        r1.getClass();
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
+        this.r = r5;
+        this.s = r6;
+        this.t = r7;
+        Context r8 = r1.getApplicationContext();
+        r8.getClass();
+        this.n = r8;
     }
 
-    public lv4(gr4 gr4Var) {
-        gr4Var.getClass();
-        this.n = gr4Var;
+    public lv4(gr4 r1) {
+        r1.getClass();
+        this.n = r1;
         this.s = kq1.a;
         this.t = r81.a;
     }
 
-    public lv4(li1 li1Var, li1 li1Var2, li1 li1Var3, li1 li1Var4, i11 i11Var, i11 i11Var2) {
+    public lv4(li1 r3, li1 r4, li1 r5, li1 r6, i11 r7, i11 r8) {
         this.t = s51.a(150, new d34(24, this));
-        this.n = li1Var;
-        this.o = li1Var2;
-        this.p = li1Var3;
-        this.q = li1Var4;
-        this.r = i11Var;
-        this.s = i11Var2;
+        this.n = r3;
+        this.o = r4;
+        this.p = r5;
+        this.q = r6;
+        this.r = r7;
+        this.s = r8;
     }
 }

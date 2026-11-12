@@ -6,9 +6,9 @@ public final class eg5 {
     public final int a;
     public final ka0 b;
 
-    public eg5(ka0 ka0Var, int i) {
-        ji2.m(ka0Var);
-        this.b = ka0Var;
-        this.a = i;
+    public eg5(ka0 r1, int r2) {
+        ji2.m(r1);
+        this.b = r1;
+        this.a = r2;
     }
 }

@@ -16,19 +16,19 @@ public final class rc1 {
     public final Button d;
     public final MaterialToolbar e;
 
-    public rc1(LinearLayout linearLayout, ConstraintLayout constraintLayout, AppBarLayout appBarLayout, RecyclerView recyclerView, Button button, MaterialToolbar materialToolbar) {
-        this.a = constraintLayout;
-        this.b = appBarLayout;
-        this.c = recyclerView;
-        this.d = button;
-        this.e = materialToolbar;
+    public rc1(LinearLayout r1, ConstraintLayout r2, AppBarLayout r3, RecyclerView r4, Button r5, MaterialToolbar r6) {
+        this.a = r2;
+        this.b = r3;
+        this.c = r4;
+        this.d = r5;
+        this.e = r6;
     }
 
-    public rc1(LinearLayout linearLayout, AppBarLayout appBarLayout, RecyclerView recyclerView, ConstraintLayout constraintLayout, Button button, MaterialToolbar materialToolbar) {
-        this.b = appBarLayout;
-        this.c = recyclerView;
-        this.a = constraintLayout;
-        this.d = button;
-        this.e = materialToolbar;
+    public rc1(LinearLayout r1, AppBarLayout r2, RecyclerView r3, ConstraintLayout r4, Button r5, MaterialToolbar r6) {
+        this.b = r2;
+        this.c = r3;
+        this.a = r4;
+        this.d = r5;
+        this.e = r6;
     }
 }

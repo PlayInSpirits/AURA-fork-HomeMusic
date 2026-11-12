@@ -15,17 +15,16 @@ public final class ij3 extends cx3 {
     public final ImageView w;
     public final /* synthetic */ PlayerControlView x;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public ij3(PlayerControlView playerControlView, View view) {
-        super(view);
-        this.x = playerControlView;
-        int i = 1;
-        if (Build.VERSION.SDK_INT < 26) {
-            view.setFocusable(true);
-        }
-        this.u = (TextView) view.findViewById(R.id.exo_main_text);
-        this.v = (TextView) view.findViewById(R.id.exo_sub_text);
-        this.w = (ImageView) view.findViewById(R.id.exo_icon);
-        view.setOnClickListener(new bj3(i, this));
+    public ij3(PlayerControlView r3, View r4) {
+        this.x = r3;
+        super(r4);
+        int r1 = 1;
+        if (Build.VERSION.SDK_INT >= 26) goto L5;
+        r4.setFocusable(true);
+    L5:
+        this.u = (TextView) r4.findViewById(R.id.exo_main_text);
+        this.v = (TextView) r4.findViewById(R.id.exo_sub_text);
+        this.w = (ImageView) r4.findViewById(R.id.exo_icon);
+        r4.setOnClickListener(new bj3(r1, this));
     }
 }

@@ -12,75 +12,83 @@ public final class le4 extends cu4 {
     public final int[] g;
     public final HashMap h;
 
-    public le4(List list) {
-        int size = list.size();
-        this.e = yw1.k(list);
-        this.f = new int[size];
-        int i = 0;
-        int i2 = 0;
-        while (true) {
-            int size2 = 1;
-            if (i >= size) {
-                break;
-            }
-            he4 he4Var = (he4) list.get(i);
-            this.f[i] = i2;
-            if (!he4Var.p.isEmpty()) {
-                size2 = he4Var.p.size();
-            }
-            i2 += size2;
-            i++;
-        }
-        this.g = new int[i2];
+    public le4(List r11) {
+        int r0 = r11.size();
+        this.e = yw1.k(r11);
+        this.f = new int[r0];
+        int r2 = 0;
+        int r3 = 0;
+    L3:
+        int r4 = 1;
+        if (r2 >= r0) goto L10;
+        he4 r5 = (he4) r11.get(r2);
+        this.f[r2] = r3;
+        if (r5.p.isEmpty() == true) goto L9;
+        r4 = r5.p.size();
+    L9:
+        r3 = r3 + r4;
+        r2 = r2 + 1;
+        goto L3
+    L10:
+        this.g = new int[r3];
         this.h = new HashMap();
-        int i3 = 0;
-        for (int i4 = 0; i4 < size; i4++) {
-            he4 he4Var2 = (he4) list.get(i4);
-            int i5 = 0;
-            while (true) {
-                if (i5 < (he4Var2.p.isEmpty() ? 1 : he4Var2.p.size())) {
-                    this.h.put(he4.a(he4Var2, i5), Integer.valueOf(i3));
-                    this.g[i3] = i4;
-                    i3++;
-                    i5++;
-                }
-            }
-        }
+        int r6 = 0;
+        int r7 = 0;
+    L11:
+        if (r6 >= r0) goto L20;
+        he4 r8 = (he4) r11.get(r6);
+        int r9 = 0;
+    L14:
+        if (r8.p.isEmpty() == false) goto L16;
+        int r10 = 1;
+    L17:
+        if (r9 >= r10) goto L19;
+        this.h.put(he4.a(r8, r9), Integer.valueOf(r7));
+        this.g[r7] = r6;
+        r7 = r7 + 1;
+        r9 = r9 + 1;
+        goto L14
+    L19:
+        r6 = r6 + 1;
+        goto L11
+    L16:
+        r10 = r8.p.size();
+        goto L17
     }
 
     @Override // defpackage.cu4
-    public final int b(Object obj) {
-        Integer num = (Integer) this.h.get(obj);
-        if (num == null) {
-            return -1;
-        }
-        return num.intValue();
+    public final int b(Object r1) {
+        Integer r0 = (Integer) this.h.get(r1);
+        if (r0 != null) goto L7;
+        return -1;
+    L7:
+        return r0.intValue();
     }
 
     @Override // defpackage.cu4
-    public final zt4 f(int i, zt4 zt4Var, boolean z) {
-        int i2 = this.g[i];
-        int i3 = i - this.f[i2];
-        he4 he4Var = (he4) this.e.get(i2);
-        yw1 yw1Var = he4Var.p;
-        if (yw1Var.isEmpty()) {
-            Object obj = he4Var.a;
-            long j = he4Var.n;
-            zt4Var.i(obj, obj, i2, he4Var.m + j, -j, z5.f, he4Var.o);
-            return zt4Var;
-        }
-        je4 je4Var = (je4) yw1Var.get(i3);
-        Object obj2 = je4Var.a;
-        zt4Var.i(obj2, Pair.create(he4Var.a, obj2), i2, je4Var.b, he4Var.q[i3], je4Var.c, je4Var.d);
-        return zt4Var;
+    public final zt4 f(int r13, zt4 r14, boolean r15) {
+        int r3 = this.g[r13];
+        int r16 = r13 - this.f[r3];
+        he4 r12 = (he4) this.e.get(r3);
+        yw1 r17 = r12.p;
+        if (r17.isEmpty() == false) goto L5;
+        Object r1 = r12.a;
+        long r4 = r12.n;
+        r14.i(r1, r1, r3, r12.m + r4, -r4, z5.f, r12.o);
+        return r14;
+    L5:
+        je4 r18 = (je4) r17.get(r16);
+        Object r2 = r18.a;
+        r14.i(r2, Pair.create(r12.a, r2), r3, r18.b, r12.q[r16], r18.c, r18.d);
+        return r14;
     }
 
     @Override // defpackage.cu4
-    public final zt4 g(Object obj, zt4 zt4Var) {
-        Integer num = (Integer) this.h.get(obj);
-        num.getClass();
-        f(num.intValue(), zt4Var, true);
-        return zt4Var;
+    public final zt4 g(Object r2, zt4 r3) {
+        Integer r4 = (Integer) this.h.get(r2);
+        r4.getClass();
+        f(r4.intValue(), r3, true);
+        return r3;
     }
 
     @Override // defpackage.cu4
@@ -89,19 +97,26 @@ public final class le4 extends cu4 {
     }
 
     @Override // defpackage.cu4
-    public final Object l(int i) {
-        int i2 = this.g[i];
-        return he4.a((he4) this.e.get(i2), i - this.f[i2]);
+    public final Object l(int r3) {
+        int r0 = this.g[r3];
+        int r4 = r3 - this.f[r0];
+        return he4.a((he4) this.e.get(r0), r4);
     }
 
     @Override // defpackage.cu4
-    public final bu4 m(int i, bu4 bu4Var, long j) {
-        he4 he4Var = (he4) this.e.get(i);
-        int i2 = this.f[i];
-        yw1 yw1Var = he4Var.p;
-        bu4Var.b(he4Var.a, he4Var.c, he4Var.e, he4Var.g, he4Var.h, he4Var.i, he4Var.j, he4Var.k, he4Var.f, he4Var.l, he4Var.m, i2, (i2 + (yw1Var.isEmpty() ? 1 : yw1Var.size())) - 1, he4Var.n);
-        bu4Var.j = he4Var.o;
-        return bu4Var;
+    public final bu4 m(int r25, bu4 r26, long r27) {
+        he4 r2 = (he4) this.e.get(r25);
+        int r17 = this.f[r25];
+        yw1 r0 = r2.p;
+        if (r0.isEmpty() == false) goto L5;
+        int r1 = 1;
+    L6:
+        r26.b(r2.a, r2.c, r2.e, r2.g, r2.h, r2.i, r2.j, r2.k, r2.f, r2.l, r2.m, r17, (r17 + r1) - 1, r2.n);
+        r26.j = r2.o;
+        return r26;
+    L5:
+        r1 = r0.size();
+        goto L6
     }
 
     @Override // defpackage.cu4

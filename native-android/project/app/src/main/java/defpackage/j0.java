@@ -11,67 +11,66 @@ public final class j0 extends g12 {
     public final AtomicReferenceFieldUpdater l;
     public final AtomicReferenceFieldUpdater m;
 
-    public j0(AtomicReferenceFieldUpdater atomicReferenceFieldUpdater, AtomicReferenceFieldUpdater atomicReferenceFieldUpdater2, AtomicReferenceFieldUpdater atomicReferenceFieldUpdater3, AtomicReferenceFieldUpdater atomicReferenceFieldUpdater4, AtomicReferenceFieldUpdater atomicReferenceFieldUpdater5) {
-        this.i = atomicReferenceFieldUpdater;
-        this.j = atomicReferenceFieldUpdater2;
-        this.k = atomicReferenceFieldUpdater3;
-        this.l = atomicReferenceFieldUpdater4;
-        this.m = atomicReferenceFieldUpdater5;
+    public j0(AtomicReferenceFieldUpdater r1, AtomicReferenceFieldUpdater r2, AtomicReferenceFieldUpdater r3, AtomicReferenceFieldUpdater r4, AtomicReferenceFieldUpdater r5) {
+        this.i = r1;
+        this.j = r2;
+        this.k = r3;
+        this.l = r4;
+        this.m = r5;
     }
 
     @Override // defpackage.g12
-    public final void K(t0 t0Var, t0 t0Var2) {
-        this.j.lazySet(t0Var, t0Var2);
+    public final void K(t0 r1, t0 r2) {
+        this.j.lazySet(r1, r2);
     }
 
     @Override // defpackage.g12
-    public final void L(t0 t0Var, Thread thread) {
-        this.i.lazySet(t0Var, thread);
+    public final void L(t0 r1, Thread r2) {
+        this.i.lazySet(r1, r2);
     }
 
     @Override // defpackage.g12
-    public final boolean g(u0 u0Var, i0 i0Var, i0 i0Var2) {
-        AtomicReferenceFieldUpdater atomicReferenceFieldUpdater;
-        do {
-            atomicReferenceFieldUpdater = this.l;
-            if (atomicReferenceFieldUpdater.compareAndSet(u0Var, i0Var, i0Var2)) {
-                return true;
-            }
-        } while (atomicReferenceFieldUpdater.get(u0Var) == i0Var);
+    public final boolean g(u0 r3, i0 r4, i0 r5) {
+    L2:
+        AtomicReferenceFieldUpdater r0 = this.l;
+        if (r0.compareAndSet(r3, r4, r5) == true) goto L4;
+        if (r0.get(r3) == r4) goto L2;
         return false;
+    L4:
+        return true;
     }
 
     @Override // defpackage.g12
-    public final boolean h(u0 u0Var, Object obj, Object obj2) {
-        AtomicReferenceFieldUpdater atomicReferenceFieldUpdater;
-        do {
-            atomicReferenceFieldUpdater = this.m;
-            if (atomicReferenceFieldUpdater.compareAndSet(u0Var, obj, obj2)) {
-                return true;
-            }
-        } while (atomicReferenceFieldUpdater.get(u0Var) == obj);
+    public final boolean h(u0 r3, Object r4, Object r5) {
+    L2:
+        AtomicReferenceFieldUpdater r0 = this.m;
+        if (r0.compareAndSet(r3, r4, r5) == true) goto L4;
+        if (r0.get(r3) == r4) goto L2;
         return false;
+    L4:
+        return true;
     }
 
     @Override // defpackage.g12
-    public final boolean i(u0 u0Var, t0 t0Var, t0 t0Var2) {
-        AtomicReferenceFieldUpdater atomicReferenceFieldUpdater;
-        do {
-            atomicReferenceFieldUpdater = this.k;
-            if (atomicReferenceFieldUpdater.compareAndSet(u0Var, t0Var, t0Var2)) {
-                return true;
-            }
-        } while (atomicReferenceFieldUpdater.get(u0Var) == t0Var);
+    public final boolean i(u0 r3, t0 r4, t0 r5) {
+    L2:
+        AtomicReferenceFieldUpdater r0 = this.k;
+        if (r0.compareAndSet(r3, r4, r5) == true) goto L4;
+        if (r0.get(r3) == r4) goto L2;
         return false;
+    L4:
+        return true;
     }
 
     @Override // defpackage.g12
-    public final i0 p(u0 u0Var) {
-        return (i0) this.l.getAndSet(u0Var, i0.d);
+    public final i0 p(u0 r2) {
+        i0 r0 = i0.d;
+        return (i0) this.l.getAndSet(r2, r0);
     }
 
     @Override // defpackage.g12
-    public final t0 q(u0 u0Var) {
-        return (t0) this.k.getAndSet(u0Var, t0.c);
+    public final t0 q(u0 r2) {
+        t0 r0 = t0.c;
+        return (t0) this.k.getAndSet(r2, r0);
     }
 }

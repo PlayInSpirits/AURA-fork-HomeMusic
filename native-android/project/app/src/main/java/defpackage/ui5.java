@@ -12,73 +12,82 @@ public final class ui5 extends ef5 {
     public a f;
     public final int g;
 
-    public ui5(a aVar, int i) {
+    public ui5(a r3, int r4) {
         super(3, "com.google.android.gms.common.internal.IGmsCallbacks");
-        this.f = aVar;
-        this.g = i;
+        this.f = r3;
+        this.g = r4;
     }
 
     @Override // defpackage.ef5
-    public final boolean O0(int i, Parcel parcel, Parcel parcel2) {
-        if (i == 1) {
-            int i2 = parcel.readInt();
-            IBinder strongBinder = parcel.readStrongBinder();
-            Bundle bundle = (Bundle) zh5.a(parcel, Bundle.CREATOR);
-            zh5.b(parcel);
-            ji2.n(this.f, "onPostInitComplete can be called only once per call to getRemoteService");
-            a aVar = this.f;
-            int i3 = this.g;
-            aVar.getClass();
-            xi5 xi5Var = new xi5(aVar, i2, strongBinder, bundle);
-            qh5 qh5Var = aVar.r;
-            qh5Var.sendMessage(qh5Var.obtainMessage(1, i3, -1, xi5Var));
-            this.f = null;
-        } else if (i == 2) {
-            parcel.readInt();
-            zh5.b(parcel);
-            Log.wtf("GmsClient", "received deprecated onAccountValidationComplete callback, ignoring", new Exception());
-        } else {
-            if (i != 3) {
-                return false;
-            }
-            int i4 = parcel.readInt();
-            IBinder strongBinder2 = parcel.readStrongBinder();
-            jk5 jk5Var = (jk5) zh5.a(parcel, jk5.CREATOR);
-            zh5.b(parcel);
-            a aVar2 = this.f;
-            ji2.n(aVar2, "onPostInitCompleteWithConnectionInfo can be called only once per call togetRemoteService");
-            ji2.m(jk5Var);
-            aVar2.H = jk5Var;
-            if (aVar2.i()) {
-                pa0 pa0Var = jk5Var.q;
-                d34 d34VarE = d34.E();
-                e34 e34Var = pa0Var == null ? null : pa0Var.n;
-                synchronized (d34VarE) {
-                    try {
-                        if (e34Var == null) {
-                            e34Var = d34.q;
-                        } else {
-                            e34 e34Var2 = (e34) d34VarE.o;
-                            if (e34Var2 == null || e34Var2.n < e34Var.n) {
-                            }
-                        }
-                        d34VarE.o = e34Var;
-                    } catch (Throwable th) {
-                        throw th;
-                    }
-                }
-            }
-            Bundle bundle2 = jk5Var.n;
-            ji2.n(this.f, "onPostInitComplete can be called only once per call to getRemoteService");
-            a aVar3 = this.f;
-            int i5 = this.g;
-            aVar3.getClass();
-            xi5 xi5Var2 = new xi5(aVar3, i4, strongBinder2, bundle2);
-            qh5 qh5Var2 = aVar3.r;
-            qh5Var2.sendMessage(qh5Var2.obtainMessage(1, i5, -1, xi5Var2));
-            this.f = null;
-        }
-        parcel2.writeNoException();
+    public final boolean O0(int r9, Parcel r10, Parcel r11) {
+        if (r9 != 1) goto L5;
+        int r12 = r10.readInt();
+        IBinder r3 = r10.readStrongBinder();
+        Bundle r4 = (Bundle) zh5.a(r10, Bundle.CREATOR);
+        zh5.b(r10);
+        ji2.n(this.f, "onPostInitComplete can be called only once per call to getRemoteService");
+        a r13 = this.f;
+        int r5 = this.g;
+        r13.getClass();
+        xi5 r6 = new xi5(r13, r12, r3, r4);
+        qh5 r14 = r13.r;
+        r14.sendMessage(r14.obtainMessage(1, r5, -1, r6));
+        this.f = null;
+    L34:
+        r11.writeNoException();
         return true;
+    L5:
+        if (r9 != 2) goto L7;
+        r10.readInt();
+        Bundle r8 = (Bundle) zh5.a(r10, Bundle.CREATOR);
+        zh5.b(r10);
+        Log.wtf("GmsClient", "received deprecated onAccountValidationComplete callback, ignoring", new Exception());
+        goto L34
+    L7:
+        if (r9 == 3) goto L10;
+        return false;
+    L10:
+        int r15 = r10.readInt();
+        IBinder r7 = r10.readStrongBinder();
+        jk5 r16 = (jk5) zh5.a(r10, jk5.CREATOR);
+        zh5.b(r10);
+        a r17 = this.f;
+        ji2.n(r17, "onPostInitCompleteWithConnectionInfo can be called only once per call togetRemoteService");
+        ji2.m(r16);
+        r17.H = r16;
+        if (r17.i() == false) goto L31;
+        pa0 r18 = r16.q;
+        d34 r19 = d34.E();
+        if (r18 != null) goto L15;
+        e34 r110 = null;
+    L16:
+        monitor-enter(r19);
+        if (r110 != null) goto L24;
+        r110 = d34.q;     // Catch: Throwable -> L22
+    L19:
+        r19.o = r110;     // Catch: Throwable -> L22
+    L20:
+        monitor-exit(r19);
+        goto L31
+    L24:
+        e34 r20 = (e34) r19.o;     // Catch: Throwable -> L22
+        if (r20 == null) goto L19;
+        if (r20.n >= r110.n) goto L20;
+    L22:
+        th = move-exception;
+        throw th;
+    L15:
+        r110 = r18.n;
+    L31:
+        Bundle r111 = r16.n;
+        ji2.n(this.f, "onPostInitComplete can be called only once per call to getRemoteService");
+        a r21 = this.f;
+        int r22 = this.g;
+        r21.getClass();
+        xi5 r23 = new xi5(r21, r15, r7, r111);
+        qh5 r24 = r21.r;
+        r24.sendMessage(r24.obtainMessage(1, r22, -1, r23));
+        this.f = null;
+        goto L34
     }
 }

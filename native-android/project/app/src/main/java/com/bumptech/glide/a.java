@@ -11,6 +11,7 @@ import android.text.format.Formatter;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import defpackage.c04;
+import defpackage.d04;
 import defpackage.d34;
 import defpackage.e04;
 import defpackage.e20;
@@ -61,286 +62,348 @@ public final class a implements ComponentCallbacks2 {
     public final qj0 q;
     public final e04 r;
     public final i80 s;
-    public final ArrayList t = new ArrayList();
+    public final ArrayList t;
 
-    public a(Context context, i11 i11Var, pf2 pf2Var, zs zsVar, qj0 qj0Var, e04 e04Var, i80 i80Var, int i, fi1 fi1Var, oi oiVar, List list, List list2, g12 g12Var, d34 d34Var) {
-        this.n = zsVar;
-        this.q = qj0Var;
-        this.o = pf2Var;
-        this.r = e04Var;
-        this.s = i80Var;
-        this.p = new ii1(context, qj0Var, new ll(this, list2, g12Var), new tv1(), fi1Var, oiVar, list, i11Var, d34Var, i);
+    public a(Context r2, i11 r3, pf2 r4, zs r5, qj0 r6, e04 r7, i80 r8, int r9, fi1 r10, oi r11, List r12, List r13, g12 r14, d34 r15) {
+        this.t = new ArrayList();
+        this.n = r5;
+        this.q = r6;
+        this.o = r4;
+        this.r = r7;
+        this.s = r8;
+        this.p = new ii1(r2, r6, new ll(this, r13, r14), new tv1(), r10, r11, r12, r3, r15, r9);
     }
 
-    public static a a(Context context) {
-        if (u == null) {
-            GeneratedAppGlideModule generatedAppGlideModule = null;
-            try {
-                generatedAppGlideModule = (GeneratedAppGlideModule) GeneratedAppGlideModuleImpl.class.getDeclaredConstructor(Context.class).newInstance(context.getApplicationContext().getApplicationContext());
-            } catch (ClassNotFoundException unused) {
-                if (Log.isLoggable("Glide", 5)) {
-                    Log.w("Glide", "Failed to find GeneratedAppGlideModule. You should include an annotationProcessor compile dependency on com.github.bumptech.glide:compiler in your application and a @GlideModule annotated AppGlideModule implementation or LibraryGlideModules will be silently ignored");
-                }
-            } catch (IllegalAccessException e) {
-                mj0.j("GeneratedAppGlideModuleImpl is implemented incorrectly. If you've manually implemented this class, remove your implementation. The Annotation processor will generate a correct implementation.", e);
-                return null;
-            } catch (InstantiationException e2) {
-                mj0.j("GeneratedAppGlideModuleImpl is implemented incorrectly. If you've manually implemented this class, remove your implementation. The Annotation processor will generate a correct implementation.", e2);
-                return null;
-            } catch (NoSuchMethodException e3) {
-                mj0.j("GeneratedAppGlideModuleImpl is implemented incorrectly. If you've manually implemented this class, remove your implementation. The Annotation processor will generate a correct implementation.", e3);
-                return null;
-            } catch (InvocationTargetException e4) {
-                mj0.j("GeneratedAppGlideModuleImpl is implemented incorrectly. If you've manually implemented this class, remove your implementation. The Annotation processor will generate a correct implementation.", e4);
-                return null;
-            }
-            synchronized (a.class) {
-                if (u == null) {
-                    if (v) {
-                        throw new IllegalStateException("Glide has been called recursively, this is probably an internal library error!");
-                    }
-                    v = true;
-                    try {
-                        b(context, generatedAppGlideModule);
-                        v = false;
-                    } catch (Throwable th) {
-                        v = false;
-                        throw th;
-                    }
-                }
-            }
-        }
+    public static a a(Context r5) {
+        if (u != null) goto L47;
+        Context r0 = r5.getApplicationContext();
+        GeneratedAppGlideModule r2 = null;
+        r2 = (GeneratedAppGlideModule) GeneratedAppGlideModuleImpl.class.getDeclaredConstructor(new Class[]{Context.class}).newInstance(new Object[]{r0.getApplicationContext()});     // Catch: InvocationTargetException -> L7 NoSuchMethodException -> L9 IllegalAccessException -> L11 InstantiationException -> L13 ClassNotFoundException -> L23
+    L27:
+        monitor-enter(a.class);
+    L43:
+        th = move-exception;
+        throw th;
+    L29:
+        if (u == null) goto L31;
+    L41:
+        monitor-exit(a.class);     // Catch: Throwable -> L43
+        goto L47
+    L31:
+        if (v == true) goto L40;
+        v = true;     // Catch: Throwable -> L43
+        b(r5, r2);     // Catch: Throwable -> L36
+        v = false;     // Catch: Throwable -> L43
+        goto L41
+    L36:
+        th = move-exception;
+        v = false;     // Catch: Throwable -> L43
+        throw th;     // Catch: Throwable -> L43
+    L40:
+        throw new IllegalStateException("Glide has been called recursively, this is probably an internal library error!");     // Catch: Throwable -> L43
+    L11:
+        e = move-exception;
+        mj0.j("GeneratedAppGlideModuleImpl is implemented incorrectly. If you've manually implemented this class, remove your implementation. The Annotation processor will generate a correct implementation.", e);
+        return null;
+    L13:
+        e = move-exception;
+        mj0.j("GeneratedAppGlideModuleImpl is implemented incorrectly. If you've manually implemented this class, remove your implementation. The Annotation processor will generate a correct implementation.", e);
+        return null;
+    L9:
+        e = move-exception;
+        mj0.j("GeneratedAppGlideModuleImpl is implemented incorrectly. If you've manually implemented this class, remove your implementation. The Annotation processor will generate a correct implementation.", e);
+        return null;
+    L7:
+        e = move-exception;
+        mj0.j("GeneratedAppGlideModuleImpl is implemented incorrectly. If you've manually implemented this class, remove your implementation. The Annotation processor will generate a correct implementation.", e);
+        return null;
+    L24:
+        if (Log.isLoggable("Glide", 5) == false) goto L27;
+        Log.w("Glide", "Failed to find GeneratedAppGlideModule. You should include an annotationProcessor compile dependency on com.github.bumptech.glide:compiler in your application and a @GlideModule annotated AppGlideModule implementation or LibraryGlideModules will be silently ignored");
+    L47:
         return u;
     }
 
-    public static void b(Context context, GeneratedAppGlideModule generatedAppGlideModule) {
-        hi1 hi1Var = new hi1();
-        Context applicationContext = context.getApplicationContext();
-        List list = Collections.EMPTY_LIST;
-        if (generatedAppGlideModule != null) {
-            generatedAppGlideModule.G();
-        }
-        if (Log.isLoggable("ManifestParser", 3)) {
-            Log.d("ManifestParser", "Loading Glide modules");
-        }
-        ArrayList arrayList = new ArrayList();
-        try {
-            ApplicationInfo applicationInfo = applicationContext.getPackageManager().getApplicationInfo(applicationContext.getPackageName(), 128);
-            if (applicationInfo != null && applicationInfo.metaData != null) {
-                if (Log.isLoggable("ManifestParser", 2)) {
-                    Log.v("ManifestParser", "Got app info metadata: " + applicationInfo.metaData);
-                }
-                for (String str : applicationInfo.metaData.keySet()) {
-                    if ("GlideModule".equals(applicationInfo.metaData.get(str))) {
-                        j51.G(str);
-                        throw null;
-                    }
-                }
-                if (Log.isLoggable("ManifestParser", 3)) {
-                    Log.d("ManifestParser", "Finished loading Glide modules");
-                }
-            } else if (Log.isLoggable("ManifestParser", 3)) {
-                Log.d("ManifestParser", "Got null app info metadata");
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            if (Log.isLoggable("ManifestParser", 6)) {
-                Log.e("ManifestParser", "Failed to parse glide modules", e);
-            }
-        }
-        if (generatedAppGlideModule != null && !generatedAppGlideModule.V().isEmpty()) {
-            generatedAppGlideModule.V();
-            Iterator it = arrayList.iterator();
-            if (it.hasNext()) {
-                throw xa3.d(it);
-            }
-        }
-        if (Log.isLoggable("Glide", 3)) {
-            Iterator it2 = arrayList.iterator();
-            if (it2.hasNext()) {
-                throw xa3.d(it2);
-            }
-        }
-        hi1Var.n = generatedAppGlideModule != null ? generatedAppGlideModule.W() : null;
-        Iterator it3 = arrayList.iterator();
-        if (it3.hasNext()) {
-            throw xa3.d(it3);
-        }
-        if (generatedAppGlideModule != null) {
-            generatedAppGlideModule.e(applicationContext, hi1Var);
-        }
-        int i = 1;
-        if (hi1Var.g == null) {
-            h5 h5Var = new h5(i);
-            if (li1.o == 0) {
-                li1.o = Math.min(4, Runtime.getRuntime().availableProcessors());
-            }
-            int i2 = li1.o;
-            if (TextUtils.isEmpty("source")) {
-                kf2.n("Name must be non-null and non-empty, but given: source");
-                return;
-            }
-            hi1Var.g = new li1(new ThreadPoolExecutor(i2, i2, 0L, TimeUnit.MILLISECONDS, new PriorityBlockingQueue(), new ki1(h5Var, "source", false)));
-        }
-        if (hi1Var.h == null) {
-            h5 h5Var2 = new h5(i);
-            if (TextUtils.isEmpty("disk-cache")) {
-                kf2.n("Name must be non-null and non-empty, but given: disk-cache");
-                return;
-            }
-            hi1Var.h = new li1(new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new PriorityBlockingQueue(), new ki1(h5Var2, "disk-cache", true)));
-        }
-        if (hi1Var.o == null) {
-            if (li1.o == 0) {
-                li1.o = Math.min(4, Runtime.getRuntime().availableProcessors());
-            }
-            int i3 = li1.o >= 4 ? 2 : 1;
-            h5 h5Var3 = new h5(i);
-            if (TextUtils.isEmpty("animation")) {
-                kf2.n("Name must be non-null and non-empty, but given: animation");
-                return;
-            }
-            hi1Var.o = new li1(new ThreadPoolExecutor(i3, i3, 0L, TimeUnit.MILLISECONDS, new PriorityBlockingQueue(), new ki1(h5Var3, "animation", true)));
-        }
-        if (hi1Var.j == null) {
-            mu2 mu2Var = new mu2(applicationContext);
-            v2 v2Var = new v2();
-            Context context2 = mu2Var.a;
-            float f = mu2Var.d;
-            ActivityManager activityManager = mu2Var.b;
-            int i4 = activityManager.isLowRamDevice() ? 2097152 : 4194304;
-            v2Var.c = i4;
-            int iRound = Math.round(activityManager.getMemoryClass() * 1048576 * (activityManager.isLowRamDevice() ? 0.33f : 0.4f));
-            DisplayMetrics displayMetrics = (DisplayMetrics) mu2Var.c.o;
-            float f2 = displayMetrics.widthPixels * displayMetrics.heightPixels * 4;
-            int iRound2 = Math.round(f2 * f);
-            int iRound3 = Math.round(f2 * 2.0f);
-            int i5 = iRound - i4;
-            int i6 = iRound3 + iRound2;
-            if (i6 <= i5) {
-                v2Var.b = iRound3;
-                v2Var.a = iRound2;
-            } else {
-                float f3 = i5 / (f + 2.0f);
-                v2Var.b = Math.round(f3 * 2.0f);
-                v2Var.a = Math.round(f3 * f);
-            }
-            if (Log.isLoggable("MemorySizeCalculator", 3)) {
-                StringBuilder sb = new StringBuilder("Calculation complete, Calculated memory cache size: ");
-                sb.append(Formatter.formatFileSize(context2, v2Var.b));
-                sb.append(", pool size: ");
-                sb.append(Formatter.formatFileSize(context2, v2Var.a));
-                sb.append(", byte array size: ");
-                sb.append(Formatter.formatFileSize(context2, i4));
-                sb.append(", memory class limited? ");
-                sb.append(i6 > iRound);
-                sb.append(", max size: ");
-                sb.append(Formatter.formatFileSize(context2, iRound));
-                sb.append(", memoryClass: ");
-                sb.append(activityManager.getMemoryClass());
-                sb.append(", isLowMemoryDevice: ");
-                sb.append(activityManager.isLowRamDevice());
-                Log.d("MemorySizeCalculator", sb.toString());
-            }
-            hi1Var.j = v2Var;
-        }
-        if (hi1Var.k == null) {
-            hi1Var.k = new i80(25);
-        }
-        if (hi1Var.d == null) {
-            int i7 = hi1Var.j.a;
-            if (i7 > 0) {
-                hi1Var.d = new nf2(i7);
-            } else {
-                hi1Var.d = new pa(19);
-            }
-        }
-        if (hi1Var.e == null) {
-            hi1Var.e = new qj0(hi1Var.j.c);
-        }
-        if (hi1Var.f == null) {
-            hi1Var.f = new pf2(hi1Var.j.b);
-        }
-        if (hi1Var.i == null) {
-            hi1Var.i = new e20(applicationContext, "image_manager_disk_cache", 262144000L);
-        }
-        if (hi1Var.c == null) {
-            hi1Var.c = new i11(hi1Var.f, hi1Var.i, hi1Var.h, hi1Var.g, new li1(new ThreadPoolExecutor(0, Integer.MAX_VALUE, 10000L, TimeUnit.MILLISECONDS, new SynchronousQueue(), new ki1(new h5(1), "source-unlimited", false))), hi1Var.o);
-        }
-        List list2 = hi1Var.p;
-        if (list2 == null) {
-            hi1Var.p = Collections.EMPTY_LIST;
-        } else {
-            hi1Var.p = Collections.unmodifiableList(list2);
-        }
-        zg5 zg5Var = hi1Var.b;
-        zg5Var.getClass();
-        a aVar = new a(applicationContext, hi1Var.c, hi1Var.f, hi1Var.d, hi1Var.e, new e04(hi1Var.n), hi1Var.k, hi1Var.l, hi1Var.m, hi1Var.a, hi1Var.p, arrayList, generatedAppGlideModule, new d34(zg5Var));
-        applicationContext.registerComponentCallbacks(aVar);
-        u = aVar;
+    public static void b(Context r26, GeneratedAppGlideModule r27) {
+        hi1 r1 = new hi1();
+        Context r2 = r26.getApplicationContext();
+        List r0 = Collections.EMPTY_LIST;
+        if (r27 == null) goto L6;
+        r27.G();
+    L6:
+        if (Log.isLoggable("ManifestParser", 3) == false) goto L8;
+        Log.d("ManifestParser", "Loading Glide modules");
+    L8:
+        ArrayList r12 = new ArrayList();
+        d04 r6 = null;
+        ApplicationInfo r7 = r2.getPackageManager().getApplicationInfo(r2.getPackageName(), 128);     // Catch: PackageManager.NameNotFoundException -> L17
+        if (r7 == null) goto L31;
+        if (r7.metaData == null) goto L31;
+        if (Log.isLoggable("ManifestParser", 2) == false) goto L19;
+        Log.v("ManifestParser", "Got app info metadata: " + r7.metaData);     // Catch: PackageManager.NameNotFoundException -> L17
+    L19:
+        Iterator<String> r3 = r7.metaData.keySet().iterator();     // Catch: PackageManager.NameNotFoundException -> L17
+    L21:
+        if (r3.hasNext() == false) goto L28;
+        String r8 = r3.next();     // Catch: PackageManager.NameNotFoundException -> L17
+        if ("GlideModule".equals(r7.metaData.get(r8)) == false) goto L21;
+        j51.G(r8);     // Catch: PackageManager.NameNotFoundException -> L17
+        throw null;     // Catch: PackageManager.NameNotFoundException -> L17
+    L28:
+        if (Log.isLoggable("ManifestParser", 3) == false) goto L37;
+        Log.d("ManifestParser", "Finished loading Glide modules");     // Catch: PackageManager.NameNotFoundException -> L17
+    L37:
+        if (r27 == null) goto L46;
+        if (r27.V().isEmpty() == true) goto L46;
+        r27.V();
+        Iterator r4 = r12.iterator();
+        if (r4.hasNext() == false) goto L46;
+        throw xa3.d(r4);
+    L46:
+        if (Log.isLoggable("Glide", 3) == false) goto L52;
+        Iterator r5 = r12.iterator();
+        if (r5.hasNext() == false) goto L52;
+        throw xa3.d(r5);
+    L52:
+        if (r27 == null) goto L54;
+        r6 = r27.W();
+    L54:
+        r1.n = r6;
+        Iterator r9 = r12.iterator();
+        if (r9.hasNext() == true) goto L139;
+        if (r27 == null) goto L58;
+        r27.e(r2, r1);
+    L58:
+        int r10 = 1;
+        if (r1.g != null) goto L69;
+        h5 r11 = new h5(r10);
+        if (li1.o != 0) goto L63;
+        li1.o = Math.min(4, Runtime.getRuntime().availableProcessors());
+    L63:
+        int r15 = li1.o;
+        if (TextUtils.isEmpty("source") == true) goto L66;
+        r1.g = new li1(new ThreadPoolExecutor(r15, r15, 0, TimeUnit.MILLISECONDS, new PriorityBlockingQueue(), new ki1(r11, "source", false)));
+        goto L69
+    L66:
+        kf2.n("Name must be non-null and non-empty, but given: source");
+        return;
+    L69:
+        if (r1.h != null) goto L76;
+        h5 r13 = new h5(r10);
+        if (TextUtils.isEmpty("disk-cache") == true) goto L73;
+        r1.h = new li1(new ThreadPoolExecutor(1, 1, 0, TimeUnit.MILLISECONDS, new PriorityBlockingQueue(), new ki1(r13, "disk-cache", true)));
+        goto L76
+    L73:
+        kf2.n("Name must be non-null and non-empty, but given: disk-cache");
+        return;
+    L76:
+        if (r1.o != null) goto L90;
+        if (li1.o != 0) goto L81;
+        li1.o = Math.min(4, Runtime.getRuntime().availableProcessors());
+    L81:
+        if (li1.o < 4) goto L83;
+        int r16 = 2;
+    L84:
+        h5 r14 = new h5(r10);
+        if (TextUtils.isEmpty("animation") == true) goto L87;
+        int r17 = r16;
+        r1.o = new li1(new ThreadPoolExecutor(r16, r17, 0, TimeUnit.MILLISECONDS, new PriorityBlockingQueue(), new ki1(r14, "animation", true)));
+        goto L90
+    L87:
+        kf2.n("Name must be non-null and non-empty, but given: animation");
+        return;
+    L83:
+        r16 = 1;
+    L90:
+        if (r1.j != null) goto L112;
+        mu2 r18 = new mu2(r2);
+        v2 r19 = new v2();
+        Context r20 = r18.a;
+        float r21 = r18.d;
+        ActivityManager r110 = r18.b;
+        if (r110.isLowRamDevice() == false) goto L94;
+        int r111 = 2097152;
+    L95:
+        r19.c = r111;
+        float r112 = r110.getMemoryClass() * 1048576;
+        if (r110.isLowRamDevice() == false) goto L98;
+        float r113 = 0.33f;
+    L99:
+        int r114 = Math.round(r112 * r113);
+        DisplayMetrics r22 = (DisplayMetrics) r18.c.o;
+        float r23 = (r22.widthPixels * r22.heightPixels) * 4;
+        int r24 = Math.round(r23 * r21);
+        int r25 = Math.round(r23 * 2.0f);
+        int r115 = r114 - r111;
+        int r28 = r25 + r24;
+        if (r28 > r115) goto L102;
+        r19.b = r25;
+        r19.a = r24;
+    L104:
+        if (Log.isLoggable("MemorySizeCalculator", 3) == false) goto L110;
+        StringBuilder r29 = new StringBuilder("Calculation complete, Calculated memory cache size: ");
+        r29.append(Formatter.formatFileSize(r20, r19.b));
+        r29.append(", pool size: ");
+        r29.append(Formatter.formatFileSize(r20, r19.a));
+        r29.append(", byte array size: ");
+        r29.append(Formatter.formatFileSize(r20, r111));
+        r29.append(", memory class limited? ");
+        if (r28 <= r114) goto L108;
+        boolean r30 = true;
+    L109:
+        r29.append(r30);
+        r29.append(", max size: ");
+        r29.append(Formatter.formatFileSize(r20, r114));
+        r29.append(", memoryClass: ");
+        r29.append(r110.getMemoryClass());
+        r29.append(", isLowMemoryDevice: ");
+        r29.append(r110.isLowRamDevice());
+        Log.d("MemorySizeCalculator", r29.toString());
+        goto L110
+    L108:
+        r30 = false;
+    L110:
+        r1.j = r19;
+        goto L112
+    L102:
+        float r31 = r115 / (r21 + 2.0f);
+        r19.b = Math.round(r31 * 2.0f);
+        r19.a = Math.round(r31 * r21);
+        goto L104
+    L98:
+        r113 = 0.4f;
+        goto L99
+    L94:
+        r111 = 4194304;
+    L112:
+        if (r1.k != null) goto L115;
+        r1.k = new i80(25);
+    L115:
+        if (r1.d != null) goto L121;
+        int r32 = r1.j.a;
+        if (r32 <= 0) goto L119;
+        r1.d = new nf2(r32);
+        goto L121
+    L119:
+        r1.d = new pa(19);
+    L121:
+        if (r1.e != null) goto L124;
+        r1.e = new qj0(r1.j.c);
+    L124:
+        if (r1.f != null) goto L127;
+        r1.f = new pf2(r1.j.b);
+    L127:
+        if (r1.i != null) goto L130;
+        r1.i = new e20(r2, "image_manager_disk_cache", 262144000);
+    L130:
+        if (r1.c != null) goto L132;
+        r1.c = new i11(r1.f, r1.i, r1.h, r1.g, new li1(new ThreadPoolExecutor(0, Integer.MAX_VALUE, 10000, TimeUnit.MILLISECONDS, new SynchronousQueue(), new ki1(new h5(1), "source-unlimited", false))), r1.o);
+    L132:
+        List r33 = r1.p;
+        if (r33 != null) goto L135;
+        r1.p = Collections.EMPTY_LIST;
+    L136:
+        zg5 r34 = r1.b;
+        r34.getClass();
+        d34 r116 = new d34(r34);
+        a r35 = new a(r2, r1.c, r1.f, r1.d, r1.e, new e04(r1.n), r1.k, r1.l, r1.m, r1.a, r1.p, r12, r27, r116);
+        r2.registerComponentCallbacks(r35);
+        u = r35;
+        return;
+    L135:
+        r1.p = Collections.unmodifiableList(r33);
+        goto L136
+    L139:
+        throw xa3.d(r9);
+    L31:
+        if (Log.isLoggable("ManifestParser", 3) == false) goto L37;
+        Log.d("ManifestParser", "Got null app info metadata");     // Catch: PackageManager.NameNotFoundException -> L17
+    L17:
+        e = move-exception;
+        if (Log.isLoggable("ManifestParser", 6) == false) goto L37;
+        Log.e("ManifestParser", "Failed to parse glide modules", e);
+        goto L37
     }
 
-    public static c04 c(Context context) {
-        h12.f(context, "You cannot start a load on a not yet attached View or a Fragment where getActivity() returns null (which usually occurs when getActivity() is called before the Fragment is attached or after the Fragment is destroyed).");
-        return a(context).r.b(context);
+    public static c04 c(Context r1) {
+        h12.f(r1, "You cannot start a load on a not yet attached View or a Fragment where getActivity() returns null (which usually occurs when getActivity() is called before the Fragment is attached or after the Fragment is destroyed).");
+        return a(r1).r.b(r1);
     }
 
     @Override // android.content.ComponentCallbacks
-    public final void onConfigurationChanged(Configuration configuration) {
+    public final void onConfigurationChanged(Configuration r1) {
     }
 
     @Override // android.content.ComponentCallbacks
     public final void onLowMemory() {
         e35.m();
-        this.o.f(0L);
+        this.o.f(0);
         this.n.k();
-        qj0 qj0Var = this.q;
-        synchronized (qj0Var) {
-            qj0Var.c(0);
-        }
+        qj0 r3 = this.q;
+        monitor-enter(r3);
+        r3.c(0);     // Catch: Throwable -> L8
+        monitor-exit(r3);
+        return;
+    L8:
+        th = move-exception;
+        throw th;
     }
 
     @Override // android.content.ComponentCallbacks2
-    public final void onTrimMemory(int i) {
-        long j;
+    public final void onTrimMemory(int r10) {
         e35.m();
-        synchronized (this.t) {
-            try {
-                ArrayList arrayList = this.t;
-                int size = arrayList.size();
-                int i2 = 0;
-                while (i2 < size) {
-                    Object obj = arrayList.get(i2);
-                    i2++;
-                    ((c04) obj).getClass();
-                }
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        pf2 pf2Var = this.o;
-        pf2Var.getClass();
-        if (i >= 40) {
-            pf2Var.f(0L);
-        } else if (i >= 20 || i == 15) {
-            synchronized (pf2Var) {
-                j = pf2Var.a;
-            }
-            pf2Var.f(j / 2);
-        }
-        this.n.j(i);
-        qj0 qj0Var = this.q;
-        synchronized (qj0Var) {
-            try {
-                if (i >= 40) {
-                    synchronized (qj0Var) {
-                        qj0Var.c(0);
-                    }
-                } else if (i >= 20 || i == 15) {
-                    qj0Var.c(qj0Var.a / 2);
-                }
-            } catch (Throwable th2) {
-                throw th2;
-            }
-        }
+        ArrayList r0 = this.t;
+        monitor-enter(r0);
+        ArrayList r1 = this.t;     // Catch: Throwable -> L7
+        int r2 = r1.size();     // Catch: Throwable -> L7
+        int r4 = 0;
+    L5:
+        if (r4 >= r2) goto L9;
+        Object r5 = r1.get(r4);     // Catch: Throwable -> L7
+        r4 = r4 + 1;     // Catch: Throwable -> L7
+        ((c04) r5).getClass();     // Catch: Throwable -> L7
+        goto L5
+    L9:
+        monitor-exit(r0);     // Catch: Throwable -> L7
+        pf2 r3 = this.o;
+        r3.getClass();
+        if (r10 < 40) goto L13;
+        r3.f(0);
+    L19:
+        this.n.j(r10);
+        qj0 r9 = this.q;
+        monitor-enter(r9);
+        if (r10 < 40) goto L29;
+        monitor-enter(r9);     // Catch: Throwable -> L34
+        r9.c(0);     // Catch: Throwable -> L26
+        monitor-exit(r9);     // Catch: Throwable -> L34
+    L32:
+        monitor-exit(r9);
+        return;
+    L26:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L34
+    L29:
+        if (r10 >= 20) goto L31;
+        if (r10 != 15) goto L32;
+    L31:
+        r9.c(r9.a / 2);     // Catch: Throwable -> L34
+    L34:
+        th = move-exception;
+        throw th;
+    L13:
+        if (r10 >= 20) goto L15;
+        if (r10 != 15) goto L19;
+    L15:
+        monitor-enter(r3);
+        long r6 = r3.a;     // Catch: Throwable -> L37
+        monitor-exit(r3);
+        r3.f(r6 / 2);
+    L37:
+        th = move-exception;
+        throw th;
+    L7:
+        th = move-exception;
+        throw th;
     }
 }

@@ -5,38 +5,51 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class gc2 {
-    public static String a(List list, String str, k52 k52Var, int i) {
-        if ((i & 1) != 0) {
-            str = ", ";
-        }
-        if ((i & 32) != 0) {
-            k52Var = null;
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append((CharSequence) "");
-        int size = list.size();
-        int i2 = 0;
-        for (int i3 = 0; i3 < size; i3++) {
-            Object obj = list.get(i3);
-            i2++;
-            if (i2 > 1) {
-                sb.append((CharSequence) str);
-            }
-            if (k52Var != null) {
-                sb.append((CharSequence) k52Var.invoke(obj));
-            } else if (obj != null ? obj instanceof CharSequence : true) {
-                sb.append((CharSequence) obj);
-            } else if (obj instanceof Character) {
-                sb.append(((Character) obj).charValue());
-            } else {
-                sb.append((CharSequence) obj.toString());
-            }
-        }
-        sb.append((CharSequence) "");
-        return sb.toString();
+    public static String a(List r6, String r7, k52 r8, int r9) {
+        if ((r9 & 1) == 0) goto L6;
+        r7 = ", ";
+    L6:
+        if ((r9 & 32) == 0) goto L8;
+        r8 = null;
+    L8:
+        StringBuilder r10 = new StringBuilder();
+        r10.append("");
+        int r1 = r6.size();
+        int r2 = 0;
+        int r3 = 0;
+    L9:
+        if (r2 >= r1) goto L25;
+        Object r4 = r6.get(r2);
+        boolean r5 = true;
+        r3 = r3 + 1;
+        if (r3 <= 1) goto L13;
+        r10.append(r7);
+    L13:
+        if (r8 == null) goto L15;
+        r10.append((CharSequence) r8.invoke(r4));
+    L24:
+        r2 = r2 + 1;
+        goto L9
+    L15:
+        if (r4 == null) goto L18;
+        r5 = r4 instanceof CharSequence;
+    L18:
+        if (r5 == false) goto L21;
+        r10.append((CharSequence) r4);
+        goto L24
+    L21:
+        if ((r4 instanceof Character) == false) goto L23;
+        r10.append(((Character) r4).charValue());
+        goto L24
+    L23:
+        r10.append(r4.toString());
+        goto L24
+    L25:
+        r10.append("");
+        return r10.toString();
     }
 
-    public static final void b(String str) {
-        throw new UnsupportedOperationException(str);
+    public static final void b(String r1) {
+        throw new UnsupportedOperationException(r1);
     }
 }

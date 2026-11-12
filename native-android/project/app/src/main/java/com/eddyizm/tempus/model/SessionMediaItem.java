@@ -79,69 +79,68 @@ public final class SessionMediaItem {
     private Integer userRating;
     private Integer year;
 
-    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
-    public SessionMediaItem(Child child) {
+    public SessionMediaItem(Child r2) {
+        r2.getClass();
         this();
-        child.getClass();
-        this.id = child.getId();
-        this.parentId = child.getParentId();
-        this.isDir = child.isDir();
-        this.title = child.getTitle();
-        this.album = child.getAlbum();
-        this.artist = child.getArtist();
-        this.track = child.getTrack();
-        this.year = child.getYear();
-        this.genre = child.getGenre();
-        this.coverArtId = child.getCoverArtId();
-        this.size = child.getSize();
-        this.contentType = child.getContentType();
-        this.suffix = child.getSuffix();
-        this.transcodedContentType = child.getTranscodedContentType();
-        this.transcodedSuffix = child.getTranscodedSuffix();
-        this.duration = child.getDuration();
-        this.bitrate = child.getBitrate();
-        this.path = child.getPath();
-        this.isVideo = child.isVideo();
-        this.userRating = child.getUserRating();
-        this.averageRating = child.getAverageRating();
-        this.playCount = child.getPlayCount();
-        this.discNumber = child.getDiscNumber();
-        this.created = child.getCreated();
-        this.starred = child.getStarred();
-        this.albumId = child.getAlbumId();
-        this.artistId = child.getArtistId();
+        this.id = r2.getId();
+        this.parentId = r2.getParentId();
+        this.isDir = r2.isDir();
+        this.title = r2.getTitle();
+        this.album = r2.getAlbum();
+        this.artist = r2.getArtist();
+        this.track = r2.getTrack();
+        this.year = r2.getYear();
+        this.genre = r2.getGenre();
+        this.coverArtId = r2.getCoverArtId();
+        this.size = r2.getSize();
+        this.contentType = r2.getContentType();
+        this.suffix = r2.getSuffix();
+        this.transcodedContentType = r2.getTranscodedContentType();
+        this.transcodedSuffix = r2.getTranscodedSuffix();
+        this.duration = r2.getDuration();
+        this.bitrate = r2.getBitrate();
+        this.path = r2.getPath();
+        this.isVideo = r2.isVideo();
+        this.userRating = r2.getUserRating();
+        this.averageRating = r2.getAverageRating();
+        this.playCount = r2.getPlayCount();
+        this.discNumber = r2.getDiscNumber();
+        this.created = r2.getCreated();
+        this.starred = r2.getStarred();
+        this.albumId = r2.getAlbumId();
+        this.artistId = r2.getArtistId();
         this.type = "music";
-        this.bookmarkPosition = child.getBookmarkPosition();
-        this.originalWidth = child.getOriginalWidth();
-        this.originalHeight = child.getOriginalHeight();
-        this.replayGain = child.getReplayGain();
+        this.bookmarkPosition = r2.getBookmarkPosition();
+        this.originalWidth = r2.getOriginalWidth();
+        this.originalHeight = r2.getOriginalHeight();
+        this.replayGain = r2.getReplayGain();
     }
 
     private final Uri getStreamUri() {
-        String str = this.type;
-        if (str != null) {
-            int iHashCode = str.hashCode();
-            if (iHashCode != -405568764) {
-                if (iHashCode != 104263205) {
-                    if (iHashCode == 108270587 && str.equals(WaveOrigin.RADIO)) {
-                        Uri uri = Uri.parse(this.streamUrl);
-                        uri.getClass();
-                        return uri;
-                    }
-                } else if (str.equals("music")) {
-                    Uri uriJ = e03.j(0, this.id);
-                    uriJ.getClass();
-                    return uriJ;
-                }
-            } else if (str.equals("podcast")) {
-                Uri uriJ2 = e03.j(0, this.streamId);
-                uriJ2.getClass();
-                return uriJ2;
-            }
-        }
-        Uri uriJ3 = e03.j(0, this.id);
-        uriJ3.getClass();
-        return uriJ3;
+        String r0 = this.type;
+        if (r0 == null) goto L26;
+        int r2 = r0.hashCode();
+        if (r2 == (-405568764)) goto L22;
+        if (r2 == 104263205) goto L17;
+        if (r2 != 108270587) goto L26;
+        if (r0.equals(WaveOrigin.RADIO) == false) goto L26;
+        Uri r4 = Uri.parse(this.streamUrl);
+        r4.getClass();
+        return r4;
+    L17:
+        if (r0.equals("music") == false) goto L26;
+        Uri r5 = e03.j(0, this.id);
+        r5.getClass();
+        return r5;
+    L22:
+        if (r0.equals("podcast") == false) goto L26;
+        Uri r6 = e03.j(0, this.streamId);
+        r6.getClass();
+        return r6;
+    L26:
+        Uri r7 = e03.j(0, this.id);
+        r7.getClass();
+        return r7;
     }
 
     public final String getAlbum() {
@@ -205,94 +204,221 @@ public final class SessionMediaItem {
     }
 
     public final gn2 getMediaItem() {
-        boolean zF;
-        Uri streamUri = getStreamUri();
-        String str = this.coverArtId;
-        Uri uriA = str != null ? AlbumArtContentProvider.a(str) : null;
-        Bundle bundle = new Bundle();
-        bundle.putString("id", this.id);
-        bundle.putString("parentId", this.parentId);
-        bundle.putBoolean("isDir", this.isDir);
-        bundle.putString("title", this.title);
-        bundle.putString("album", this.album);
-        bundle.putString("artist", this.artist);
-        Integer num = this.track;
-        bundle.putInt("track", num != null ? num.intValue() : 0);
-        Integer num2 = this.year;
-        bundle.putInt("year", num2 != null ? num2.intValue() : 0);
-        bundle.putString("genre", this.genre);
-        bundle.putString("coverArtId", this.coverArtId);
-        Long l = this.size;
-        bundle.putLong("size", l != null ? l.longValue() : 0L);
-        bundle.putString("contentType", this.contentType);
-        bundle.putString("suffix", this.suffix);
-        bundle.putString("transcodedContentType", this.transcodedContentType);
-        bundle.putString("transcodedSuffix", this.transcodedSuffix);
-        Integer num3 = this.duration;
-        bundle.putInt("duration", num3 != null ? num3.intValue() : 0);
-        Integer num4 = this.bitrate;
-        bundle.putInt("bitrate", num4 != null ? num4.intValue() : 0);
-        bundle.putString("path", this.path);
-        bundle.putBoolean("isVideo", this.isVideo);
-        Integer num5 = this.userRating;
-        bundle.putInt("userRating", num5 != null ? num5.intValue() : 0);
-        Double d = this.averageRating;
-        bundle.putDouble("averageRating", d != null ? d.doubleValue() : 0.0d);
-        Long l2 = this.playCount;
-        bundle.putLong("playCount", l2 != null ? l2.longValue() : 0L);
-        Integer num6 = this.discNumber;
-        bundle.putInt("discNumber", num6 != null ? num6.intValue() : 0);
-        Date date = this.created;
-        bundle.putLong("created", date != null ? date.getTime() : 0L);
-        Date date2 = this.starred;
-        bundle.putLong("starred", date2 != null ? date2.getTime() : 0L);
-        bundle.putString("albumId", this.albumId);
-        bundle.putString("artistId", this.artistId);
-        bundle.putString("type", this.type);
-        Long l3 = this.bookmarkPosition;
-        bundle.putLong("bookmarkPosition", l3 != null ? l3.longValue() : 0L);
-        Integer num7 = this.originalWidth;
-        bundle.putInt("originalWidth", num7 != null ? num7.intValue() : 0);
-        Integer num8 = this.originalHeight;
-        bundle.putInt("originalHeight", num8 != null ? num8.intValue() : 0);
-        bundle.putString("uri", streamUri.toString());
-        si0.Z(bundle, this.replayGain);
-        um2 um2Var = new um2();
-        xm2 xm2Var = new xm2();
-        List list = Collections.EMPTY_LIST;
-        gy3 gy3Var = gy3.r;
-        zm2 zm2Var = new zm2();
-        cn2 cn2Var = cn2.d;
-        String str2 = this.id;
-        str2.getClass();
-        co2 co2Var = new co2();
-        co2Var.a = this.title;
-        Integer num9 = this.track;
-        co2Var.n = Integer.valueOf(num9 != null ? num9.intValue() : 0);
-        Integer num10 = this.discNumber;
-        co2Var.B = Integer.valueOf(num10 != null ? num10.intValue() : 0);
-        Integer num11 = this.year;
-        co2Var.v = Integer.valueOf(num11 != null ? num11.intValue() : 0);
-        co2Var.c = this.album;
-        co2Var.b = this.artist;
-        co2Var.m = uriA;
-        if (h12.c(this.type, "music")) {
-            zF = n61.f(1, this.id, this.starred != null);
-        } else {
-            zF = this.starred != null;
-        }
-        co2Var.i = new vl1(zF);
-        co2Var.I = yw1.k(gb.P("android.media3.session.demo.HEART_ON", "android.media3.session.demo.HEART_OFF"));
-        co2Var.H = bundle;
-        co2Var.q = Boolean.FALSE;
-        co2Var.r = Boolean.TRUE;
-        do2 do2Var = new do2(co2Var);
-        yc5 yc5Var = new yc5();
-        yc5Var.n = streamUri;
-        yc5Var.p = bundle;
-        cn2 cn2Var2 = new cn2(yc5Var);
-        rr2.w(((Uri) xm2Var.e) == null || ((UUID) xm2Var.d) != null);
-        return new gn2(str2, new wm2(um2Var), new bn2(streamUri, "audio", ((UUID) xm2Var.d) != null ? new ym2(xm2Var) : null, null, list, null, gy3Var, -9223372036854775807L), new an2(zm2Var), do2Var, cn2Var2);
+        Uri r1 = getStreamUri();
+        String r2 = this.coverArtId;
+        ym2 r3 = null;
+        if (r2 == null) goto L5;
+        Uri r4 = AlbumArtContentProvider.a(r2);
+    L6:
+        Bundle r5 = new Bundle();
+        r5.putString("id", this.id);
+        r5.putString("parentId", this.parentId);
+        r5.putBoolean("isDir", this.isDir);
+        r5.putString("title", this.title);
+        r5.putString("album", this.album);
+        r5.putString("artist", this.artist);
+        Integer r6 = this.track;
+        boolean r7 = false;
+        if (r6 == null) goto L9;
+        int r8 = r6.intValue();
+    L10:
+        r5.putInt("track", r8);
+        Integer r9 = this.year;
+        if (r9 == null) goto L13;
+        int r10 = r9.intValue();
+    L14:
+        r5.putInt("year", r10);
+        r5.putString("genre", this.genre);
+        r5.putString("coverArtId", this.coverArtId);
+        Long r11 = this.size;
+        long r12 = 0;
+        if (r11 == null) goto L17;
+        long r13 = r11.longValue();
+    L18:
+        r5.putLong("size", r13);
+        r5.putString("contentType", this.contentType);
+        r5.putString("suffix", this.suffix);
+        r5.putString("transcodedContentType", this.transcodedContentType);
+        r5.putString("transcodedSuffix", this.transcodedSuffix);
+        Integer r14 = this.duration;
+        if (r14 == null) goto L21;
+        int r15 = r14.intValue();
+    L22:
+        r5.putInt("duration", r15);
+        Integer r16 = this.bitrate;
+        if (r16 == null) goto L25;
+        int r17 = r16.intValue();
+    L26:
+        r5.putInt("bitrate", r17);
+        r5.putString("path", this.path);
+        r5.putBoolean("isVideo", this.isVideo);
+        Integer r18 = this.userRating;
+        if (r18 == null) goto L29;
+        int r19 = r18.intValue();
+    L30:
+        r5.putInt("userRating", r19);
+        Double r20 = this.averageRating;
+        if (r20 == null) goto L33;
+        double r21 = r20.doubleValue();
+    L34:
+        r5.putDouble("averageRating", r21);
+        Long r22 = this.playCount;
+        if (r22 == null) goto L37;
+        long r23 = r22.longValue();
+    L38:
+        r5.putLong("playCount", r23);
+        Integer r24 = this.discNumber;
+        if (r24 == null) goto L41;
+        int r25 = r24.intValue();
+    L42:
+        r5.putInt("discNumber", r25);
+        Date r26 = this.created;
+        if (r26 == null) goto L45;
+        long r27 = r26.getTime();
+    L46:
+        r5.putLong("created", r27);
+        Date r28 = this.starred;
+        if (r28 == null) goto L49;
+        long r29 = r28.getTime();
+    L50:
+        r5.putLong("starred", r29);
+        r5.putString("albumId", this.albumId);
+        r5.putString("artistId", this.artistId);
+        r5.putString("type", this.type);
+        Long r30 = this.bookmarkPosition;
+        if (r30 == null) goto L53;
+        r12 = r30.longValue();
+    L53:
+        r5.putLong("bookmarkPosition", r12);
+        Integer r31 = this.originalWidth;
+        if (r31 == null) goto L56;
+        int r32 = r31.intValue();
+    L57:
+        r5.putInt("originalWidth", r32);
+        Integer r33 = this.originalHeight;
+        if (r33 == null) goto L60;
+        int r34 = r33.intValue();
+    L61:
+        r5.putInt("originalHeight", r34);
+        r5.putString("uri", r1.toString());
+        si0.Z(r5, this.replayGain);
+        um2 r110 = new um2();
+        xm2 r35 = new xm2();
+        List r36 = Collections.EMPTY_LIST;
+        gy3 r37 = gy3.r;
+        zm2 r111 = new zm2();
+        cn2 r38 = cn2.d;
+        String r112 = this.id;
+        r112.getClass();
+        co2 r39 = new co2();
+        r39.a = this.title;
+        Integer r113 = this.track;
+        if (r113 == null) goto L64;
+        int r114 = r113.intValue();
+    L65:
+        r39.n = Integer.valueOf(r114);
+        Integer r115 = this.discNumber;
+        if (r115 == null) goto L68;
+        int r116 = r115.intValue();
+    L69:
+        r39.B = Integer.valueOf(r116);
+        Integer r117 = this.year;
+        if (r117 == null) goto L72;
+        int r118 = r117.intValue();
+    L73:
+        r39.v = Integer.valueOf(r118);
+        r39.c = this.album;
+        r39.b = this.artist;
+        r39.m = r4;
+        if (h12.c(this.type, "music") == false) goto L81;
+        String r119 = this.id;
+        if (this.starred == null) goto L78;
+        boolean r0 = true;
+    L79:
+        boolean r40 = n61.f(1, r119, r0);
+    L84:
+        r39.i = new vl1(r40);
+        r39.I = yw1.k(gb.P(new String[]{"android.media3.session.demo.HEART_ON", "android.media3.session.demo.HEART_OFF"}));
+        r39.H = r5;
+        r39.q = Boolean.FALSE;
+        r39.r = Boolean.TRUE;
+        do2 r120 = new do2(r39);
+        yc5 r41 = new yc5();
+        r41.n = r1;
+        r41.p = r5;
+        cn2 r121 = new cn2(r41);
+        if (((Uri) r35.e) != null) goto L87;
+    L88:
+        r7 = true;
+    L89:
+        rr2.w(r7);
+        if (((UUID) r35.d) == null) goto L93;
+        r3 = new ym2(r35);
+    L93:
+        return new gn2(r112, new wm2(r110), new bn2(r1, "audio", r3, null, r36, null, r37, -9223372036854775807L), new an2(r111), r120, r121);
+    L87:
+        if (((UUID) r35.d) == null) goto L89;
+    L78:
+        r0 = false;
+        goto L79
+    L81:
+        if (this.starred == null) goto L83;
+        r40 = true;
+        goto L84
+    L83:
+        r40 = false;
+        goto L84
+    L72:
+        r118 = 0;
+        goto L73
+    L68:
+        r116 = 0;
+        goto L69
+    L64:
+        r114 = 0;
+        goto L65
+    L60:
+        r34 = 0;
+        goto L61
+    L56:
+        r32 = 0;
+        goto L57
+    L49:
+        r29 = 0;
+        goto L50
+    L45:
+        r27 = 0;
+        goto L46
+    L41:
+        r25 = 0;
+        goto L42
+    L37:
+        r23 = 0;
+        goto L38
+    L33:
+        r21 = 0.0d;
+        goto L34
+    L29:
+        r19 = 0;
+        goto L30
+    L25:
+        r17 = 0;
+        goto L26
+    L21:
+        r15 = 0;
+        goto L22
+    L17:
+        r13 = 0;
+        goto L18
+    L13:
+        r10 = 0;
+        goto L14
+    L9:
+        r8 = 0;
+        goto L10
+    L5:
+        r4 = null;
+        goto L6
     }
 
     public final Integer getOriginalHeight() {
@@ -379,195 +505,198 @@ public final class SessionMediaItem {
         return this.isVideo;
     }
 
-    public final void setAlbum(String str) {
-        this.album = str;
+    public final void setAlbum(String r1) {
+        this.album = r1;
     }
 
-    public final void setAlbumId(String str) {
-        this.albumId = str;
+    public final void setAlbumId(String r1) {
+        this.albumId = r1;
     }
 
-    public final void setArtist(String str) {
-        this.artist = str;
+    public final void setArtist(String r1) {
+        this.artist = r1;
     }
 
-    public final void setArtistId(String str) {
-        this.artistId = str;
+    public final void setArtistId(String r1) {
+        this.artistId = r1;
     }
 
-    public final void setAverageRating(Double d) {
-        this.averageRating = d;
+    public final void setAverageRating(Double r1) {
+        this.averageRating = r1;
     }
 
-    public final void setBitrate(Integer num) {
-        this.bitrate = num;
+    public final void setBitrate(Integer r1) {
+        this.bitrate = r1;
     }
 
-    public final void setBookmarkPosition(Long l) {
-        this.bookmarkPosition = l;
+    public final void setBookmarkPosition(Long r1) {
+        this.bookmarkPosition = r1;
     }
 
-    public final void setContentType(String str) {
-        this.contentType = str;
+    public final void setContentType(String r1) {
+        this.contentType = r1;
     }
 
-    public final void setCoverArtId(String str) {
-        this.coverArtId = str;
+    public final void setCoverArtId(String r1) {
+        this.coverArtId = r1;
     }
 
-    public final void setCreated(Date date) {
-        this.created = date;
+    public final void setCreated(Date r1) {
+        this.created = r1;
     }
 
-    public final void setDir(boolean z) {
-        this.isDir = z;
+    public final void setDir(boolean r1) {
+        this.isDir = r1;
     }
 
-    public final void setDiscNumber(Integer num) {
-        this.discNumber = num;
+    public final void setDiscNumber(Integer r1) {
+        this.discNumber = r1;
     }
 
-    public final void setDuration(Integer num) {
-        this.duration = num;
+    public final void setDuration(Integer r1) {
+        this.duration = r1;
     }
 
-    public final void setGenre(String str) {
-        this.genre = str;
+    public final void setGenre(String r1) {
+        this.genre = r1;
     }
 
-    public final void setId(String str) {
-        this.id = str;
+    public final void setId(String r1) {
+        this.id = r1;
     }
 
-    public final void setIndex(int i) {
-        this.index = i;
+    public final void setIndex(int r1) {
+        this.index = r1;
     }
 
-    public final void setOriginalHeight(Integer num) {
-        this.originalHeight = num;
+    public final void setOriginalHeight(Integer r1) {
+        this.originalHeight = r1;
     }
 
-    public final void setOriginalWidth(Integer num) {
-        this.originalWidth = num;
+    public final void setOriginalWidth(Integer r1) {
+        this.originalWidth = r1;
     }
 
-    public final void setParentId(String str) {
-        this.parentId = str;
+    public final void setParentId(String r1) {
+        this.parentId = r1;
     }
 
-    public final void setPath(String str) {
-        this.path = str;
+    public final void setPath(String r1) {
+        this.path = r1;
     }
 
-    public final void setPlayCount(Long l) {
-        this.playCount = l;
+    public final void setPlayCount(Long r1) {
+        this.playCount = r1;
     }
 
-    public final void setReplayGain(ReplayGainInfo replayGainInfo) {
-        this.replayGain = replayGainInfo;
+    public final void setReplayGain(ReplayGainInfo r1) {
+        this.replayGain = r1;
     }
 
-    public final void setSize(Long l) {
-        this.size = l;
+    public final void setSize(Long r1) {
+        this.size = r1;
     }
 
-    public final void setStarred(Date date) {
-        this.starred = date;
+    public final void setStarred(Date r1) {
+        this.starred = r1;
     }
 
-    public final void setStreamId(String str) {
-        this.streamId = str;
+    public final void setStreamId(String r1) {
+        this.streamId = r1;
     }
 
-    public final void setStreamUrl(String str) {
-        this.streamUrl = str;
+    public final void setStreamUrl(String r1) {
+        this.streamUrl = r1;
     }
 
-    public final void setSuffix(String str) {
-        this.suffix = str;
+    public final void setSuffix(String r1) {
+        this.suffix = r1;
     }
 
-    public final void setTimestamp(Long l) {
-        this.timestamp = l;
+    public final void setTimestamp(Long r1) {
+        this.timestamp = r1;
     }
 
-    public final void setTitle(String str) {
-        this.title = str;
+    public final void setTitle(String r1) {
+        this.title = r1;
     }
 
-    public final void setTrack(Integer num) {
-        this.track = num;
+    public final void setTrack(Integer r1) {
+        this.track = r1;
     }
 
-    public final void setTranscodedContentType(String str) {
-        this.transcodedContentType = str;
+    public final void setTranscodedContentType(String r1) {
+        this.transcodedContentType = r1;
     }
 
-    public final void setTranscodedSuffix(String str) {
-        this.transcodedSuffix = str;
+    public final void setTranscodedSuffix(String r1) {
+        this.transcodedSuffix = r1;
     }
 
-    public final void setType(String str) {
-        this.type = str;
+    public final void setType(String r1) {
+        this.type = r1;
     }
 
-    public final void setUserRating(Integer num) {
-        this.userRating = num;
+    public final void setUserRating(Integer r1) {
+        this.userRating = r1;
     }
 
-    public final void setVideo(boolean z) {
-        this.isVideo = z;
+    public final void setVideo(boolean r1) {
+        this.isVideo = r1;
     }
 
-    public final void setYear(Integer num) {
-        this.year = num;
+    public final void setYear(Integer r1) {
+        this.year = r1;
     }
 
     public SessionMediaItem() {
     }
 
-    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
-    public SessionMediaItem(PodcastEpisode podcastEpisode) {
+    public SessionMediaItem(PodcastEpisode r2) {
+        r2.getClass();
         this();
-        podcastEpisode.getClass();
-        this.id = podcastEpisode.getId();
-        this.parentId = podcastEpisode.getParentId();
-        this.isDir = podcastEpisode.isDir();
-        this.title = podcastEpisode.getTitle();
-        this.album = podcastEpisode.getAlbum();
-        this.artist = podcastEpisode.getArtist();
-        this.year = podcastEpisode.getYear();
-        this.genre = podcastEpisode.getGenre();
-        this.coverArtId = podcastEpisode.getCoverArtId();
-        this.size = podcastEpisode.getSize();
-        this.contentType = podcastEpisode.getContentType();
-        this.suffix = podcastEpisode.getSuffix();
-        this.duration = podcastEpisode.getDuration();
-        this.bitrate = podcastEpisode.getBitrate();
-        this.path = podcastEpisode.getPath();
-        this.isVideo = podcastEpisode.isVideo();
-        this.created = podcastEpisode.getCreated();
-        this.artistId = podcastEpisode.getArtistId();
-        this.streamId = podcastEpisode.getStreamId();
+        this.id = r2.getId();
+        this.parentId = r2.getParentId();
+        this.isDir = r2.isDir();
+        this.title = r2.getTitle();
+        this.album = r2.getAlbum();
+        this.artist = r2.getArtist();
+        this.year = r2.getYear();
+        this.genre = r2.getGenre();
+        this.coverArtId = r2.getCoverArtId();
+        this.size = r2.getSize();
+        this.contentType = r2.getContentType();
+        this.suffix = r2.getSuffix();
+        this.duration = r2.getDuration();
+        this.bitrate = r2.getBitrate();
+        this.path = r2.getPath();
+        this.isVideo = r2.isVideo();
+        this.created = r2.getCreated();
+        this.artistId = r2.getArtistId();
+        this.streamId = r2.getStreamId();
         this.type = "podcast";
     }
 
-    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
-    public SessionMediaItem(InternetRadioStation internetRadioStation) {
+    public SessionMediaItem(InternetRadioStation r2) {
+        r2.getClass();
         this();
-        internetRadioStation.getClass();
-        this.id = internetRadioStation.getId();
-        this.title = internetRadioStation.getName();
-        this.streamUrl = internetRadioStation.getStreamUrl();
+        this.id = r2.getId();
+        this.title = r2.getName();
+        this.streamUrl = r2.getStreamUrl();
         this.type = WaveOrigin.RADIO;
-        String homePageUrl = internetRadioStation.getHomePageUrl();
-        if (homePageUrl == null || homePageUrl.length() <= 0 || !e03.n(homePageUrl)) {
-            return;
-        }
-        Charset charset = StandardCharsets.UTF_8;
-        charset.getClass();
-        byte[] bytes = homePageUrl.getBytes(charset);
-        bytes.getClass();
-        this.coverArtId = xa3.g("ir_", Base64.encodeToString(bytes, 10));
+        String r3 = r2.getHomePageUrl();
+        if (r3 != null) goto L5;
+        return;
+    L5:
+        if (r3.length() > 0) goto L7;
+        return;
+    L7:
+        if (e03.n(r3) == false) goto L12;
+        Charset r0 = StandardCharsets.UTF_8;
+        r0.getClass();
+        byte[] r4 = r3.getBytes(r0);
+        r4.getClass();
+        this.coverArtId = xa3.g("ir_", Base64.encodeToString(r4, 10));
+        return;
     }
 }

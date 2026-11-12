@@ -15,10 +15,10 @@ public abstract class jk implements sh0 {
     public final Comparable p;
     public final Object q;
 
-    public /* synthetic */ jk(int i, Comparable comparable, Object obj) {
-        this.n = i;
-        this.q = obj;
-        this.p = comparable;
+    public /* synthetic */ jk(int r1, Comparable r2, Object r3) {
+        this.n = r1;
+        this.q = r3;
+        this.p = r2;
     }
 
     private final void b() {
@@ -29,80 +29,83 @@ public abstract class jk implements sh0 {
 
     @Override // defpackage.sh0
     public final void c() {
-        switch (this.n) {
-            case 0:
-                Object obj = this.o;
-                if (obj != null) {
-                    try {
-                        g(obj);
-                    } catch (IOException unused) {
-                        return;
-                    }
-                    break;
-                }
-                break;
-            default:
-                Object obj2 = this.o;
-                if (obj2 != null) {
-                    try {
-                        g(obj2);
-                    } catch (IOException unused2) {
-                        return;
-                    }
-                }
-                break;
-        }
+        switch(this.n) {
+            case 0: goto L8;
+            default: goto L4;
+        };
+    L4:
+        Object r0 = this.o;
+        if (r0 == null) goto L19;
+        g(r0);     // Catch: IOException -> L13
+        return;
+    L20:
+        return;
+    L19:
+        return;
+    L8:
+        Object r1 = this.o;
+        if (r1 == null) goto L21;
+        g(r1);     // Catch: IOException -> L14
+        return;
+    L22:
+        return;
     }
 
     @Override // defpackage.sh0
     public final void cancel() {
-        int i = this.n;
+        int r0 = this.n;
     }
 
     @Override // defpackage.sh0
-    public final void d(eq3 eq3Var, rh0 rh0Var) {
-        int i = this.n;
-        Object obj = this.q;
-        Comparable comparable = this.p;
-        switch (i) {
-            case 0:
-                try {
-                    Object objI = i((AssetManager) obj, (String) comparable);
-                    this.o = objI;
-                    rh0Var.f(objI);
-                } catch (IOException e) {
-                    if (Log.isLoggable("AssetPathFetcher", 3)) {
-                        Log.d("AssetPathFetcher", "Failed to load data from asset manager", e);
-                    }
-                    rh0Var.b(e);
-                }
-                break;
-            default:
-                try {
-                    Object objH = h((ContentResolver) obj, (Uri) comparable);
-                    this.o = objH;
-                    rh0Var.f(objH);
-                } catch (FileNotFoundException e2) {
-                    if (Log.isLoggable("LocalUriFetcher", 3)) {
-                        Log.d("LocalUriFetcher", "Failed to open Uri", e2);
-                    }
-                    rh0Var.b(e2);
-                    return;
-                }
-                break;
-        }
+    public final void d(eq3 r4, rh0 r5) {
+        int r6 = this.n;
+        Object r1 = this.q;
+        Comparable r2 = this.p;
+        switch(r6) {
+            case 0: goto L20;
+            default: goto L22;
+        };
+    L20:
+        Object r7 = i((AssetManager) r1, (String) r2);     // Catch: IOException -> L14
+        this.o = r7;     // Catch: IOException -> L14
+        r5.f(r7);     // Catch: IOException -> L14
+        return;
+    L14:
+        e = move-exception;
+        if (Log.isLoggable("AssetPathFetcher", 3) == false) goto L18;
+        Log.d("AssetPathFetcher", "Failed to load data from asset manager", e);
+    L18:
+        r5.b(e);
+        return;
+    L22:
+        ContentResolver r3 = (ContentResolver) r1;     // Catch: FileNotFoundException -> L6
+        Object r8 = h(r3, (Uri) r2);     // Catch: FileNotFoundException -> L6
+        this.o = r8;     // Catch: FileNotFoundException -> L6
+        r5.f(r8);     // Catch: FileNotFoundException -> L6
+        return;
+    L6:
+        e = move-exception;
+        if (Log.isLoggable("LocalUriFetcher", 3) == false) goto L10;
+        Log.d("LocalUriFetcher", "Failed to open Uri", e);
+    L10:
+        r5.b(e);
     }
 
     @Override // defpackage.sh0
     public final int e() {
-        switch (this.n) {
-        }
+        switch(this.n) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        return 1;
+    L6:
         return 1;
     }
 
-    public abstract void g(Object obj);
+    public abstract void g(Object r1);
 
-    public abstract Object h(ContentResolver contentResolver, Uri uri);
+    public abstract Object h(ContentResolver r1, Uri r2);
 
-    public abstract Object i(AssetManager assetManager, String str);
+    public abstract Object i(AssetManager r1, String r2);
 }

@@ -5,17 +5,17 @@ package defpackage;
 public final class du4 extends bc1 {
     public final gn2 f;
 
-    public du4(cu4 cu4Var, gn2 gn2Var) {
-        super(cu4Var);
-        this.f = gn2Var;
+    public du4(cu4 r1, gn2 r2) {
+        super(r1);
+        this.f = r2;
     }
 
     @Override // defpackage.bc1, defpackage.cu4
-    public final bu4 m(int i, bu4 bu4Var, long j) {
-        super.m(i, bu4Var, j);
-        gn2 gn2Var = this.f;
-        bu4Var.b = gn2Var;
-        bn2 bn2Var = gn2Var.b;
-        return bu4Var;
+    public final bu4 m(int r1, bu4 r2, long r3) {
+        super.m(r1, r2, r3);
+        gn2 r0 = this.f;
+        r2.b = r0;
+        bn2 r4 = r0.b;
+        return r2;
     }
 }

@@ -17,29 +17,45 @@ public final class ew1 {
     public final List i;
     public final ArrayList j;
 
-    public ew1(String str, float f, float f2, float f3, float f4, float f5, float f6, float f7, List list, int i) {
-        str = (i & 1) != 0 ? "" : str;
-        f = (i & 2) != 0 ? 0.0f : f;
-        f2 = (i & 4) != 0 ? 0.0f : f2;
-        f3 = (i & 8) != 0 ? 0.0f : f3;
-        f4 = (i & 16) != 0 ? 1.0f : f4;
-        f5 = (i & 32) != 0 ? 1.0f : f5;
-        f6 = (i & 64) != 0 ? 0.0f : f6;
-        f7 = (i & 128) != 0 ? 0.0f : f7;
-        if ((i & 256) != 0) {
-            int i2 = c45.a;
-            list = u01.n;
-        }
-        ArrayList arrayList = new ArrayList();
-        this.a = str;
-        this.b = f;
-        this.c = f2;
-        this.d = f3;
-        this.e = f4;
-        this.f = f5;
-        this.g = f6;
-        this.h = f7;
-        this.i = list;
-        this.j = arrayList;
+    public ew1(String r4, float r5, float r6, float r7, float r8, float r9, float r10, float r11, List r12, int r13) {
+        if ((r13 & 1) == 0) goto L6;
+        r4 = "";
+    L6:
+        if ((r13 & 2) == 0) goto L9;
+        r5 = 0.0f;
+    L9:
+        if ((r13 & 4) == 0) goto L12;
+        r6 = 0.0f;
+    L12:
+        if ((r13 & 8) == 0) goto L15;
+        r7 = 0.0f;
+    L15:
+        if ((r13 & 16) == 0) goto L18;
+        r8 = 1.0f;
+    L18:
+        if ((r13 & 32) == 0) goto L21;
+        r9 = 1.0f;
+    L21:
+        if ((r13 & 64) == 0) goto L24;
+        r10 = 0.0f;
+    L24:
+        if ((r13 & 128) == 0) goto L27;
+        r11 = 0.0f;
+    L27:
+        if ((r13 & 256) == 0) goto L29;
+        int r14 = c45.a;
+        r12 = u01.n;
+    L29:
+        ArrayList r15 = new ArrayList();
+        this.a = r4;
+        this.b = r5;
+        this.c = r6;
+        this.d = r7;
+        this.e = r8;
+        this.f = r9;
+        this.g = r10;
+        this.h = r11;
+        this.i = r12;
+        this.j = r15;
     }
 }

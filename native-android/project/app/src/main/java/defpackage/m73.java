@@ -10,36 +10,41 @@ public final class m73 implements cz4 {
     public final /* synthetic */ int n;
     public final /* synthetic */ bz4 o;
 
-    public /* synthetic */ m73(bz4 bz4Var, int i) {
-        this.n = i;
-        this.o = bz4Var;
+    public /* synthetic */ m73(bz4 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.cz4
-    public final bz4 a(nk1 nk1Var, TypeToken typeToken) {
-        int i = this.n;
-        bz4 bz4Var = this.o;
-        switch (i) {
-            case 0:
-                if (typeToken.getRawType() == Number.class) {
-                    return (n73) bz4Var;
-                }
-                return null;
-            default:
-                Class rawType = typeToken.getRawType();
-                if (rawType == Calendar.class || rawType == GregorianCalendar.class) {
-                    return (lk1) bz4Var;
-                }
-                return null;
-        }
+    public final bz4 a(nk1 r2, TypeToken r3) {
+        int r4 = this.n;
+        bz4 r1 = this.o;
+        switch(r4) {
+            case 0: goto L11;
+            default: goto L4;
+        };
+    L4:
+        Class r5 = r3.getRawType();
+        if (r5 == Calendar.class) goto L9;
+        if (r5 == GregorianCalendar.class) goto L9;
+        return null;
+    L9:
+        return (lk1) r1;
+    L11:
+        if (r3.getRawType() == Number.class) goto L13;
+        return null;
+    L13:
+        return (n73) r1;
     }
 
     public String toString() {
-        switch (this.n) {
-            case 1:
-                return "Factory[type=" + Calendar.class.getName() + "+" + GregorianCalendar.class.getName() + ",adapter=" + ((lk1) this.o) + "]";
-            default:
-                return super.toString();
-        }
+        switch(this.n) {
+            case 1: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return super.toString();
+    L7:
+        return "Factory[type=" + Calendar.class.getName() + "+" + GregorianCalendar.class.getName() + ",adapter=" + ((lk1) this.o) + "]";
     }
 }

@@ -5,7 +5,7 @@ package defpackage;
 public final class iv0 implements q02 {
     public final jv0 a;
 
-    public iv0(jv0 jv0Var) {
-        this.a = jv0Var;
+    public iv0(jv0 r1) {
+        this.a = r1;
     }
 }

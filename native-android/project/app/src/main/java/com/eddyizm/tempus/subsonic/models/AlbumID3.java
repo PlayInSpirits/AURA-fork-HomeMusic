@@ -14,7 +14,7 @@ import java.util.List;
 /* JADX INFO: loaded from: classes.dex */
 public class AlbumID3 implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<AlbumID3> CREATOR = new w4(2);
+    public static final Parcelable.Creator<AlbumID3> CREATOR = null;
     private String artist;
     private String artistId;
     private List<? extends ArtistID3> artists;
@@ -44,10 +44,167 @@ public class AlbumID3 implements Parcelable {
     private Integer userRating;
     private int year;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public /* synthetic */ AlbumID3(String str, String str2, String str3, String str4, String str5, Integer num, Integer num2, Long l, Date date, Date date2, int i, String str6, Date date3, Integer num3, List list, String str7, List list2, List list3, String str8, List list4, List list5, String str9, ItemDate itemDate, ItemDate itemDate2, Boolean bool, List list6, int i2, xj0 xj0Var) {
-        Integer num4 = 0;
-        this((i2 & 1) != 0 ? null : str, (i2 & 2) != 0 ? null : str2, (i2 & 4) != 0 ? null : str3, (i2 & 8) != 0 ? null : str4, (i2 & 16) != 0 ? null : str5, (i2 & 32) != 0 ? num4 : num, (i2 & 64) != 0 ? num4 : num2, (i2 & 128) != 0 ? 0L : l, (i2 & 256) != 0 ? null : date, (i2 & 512) != 0 ? null : date2, (i2 & 1024) != 0 ? 0 : i, (i2 & 2048) != 0 ? null : str6, (i2 & 4096) != 0 ? new Date(0L) : date3, (i2 & 8192) == 0 ? num3 : 0, (i2 & 16384) != 0 ? null : list, (32768 & i2) != 0 ? null : str7, (i2 & 65536) != 0 ? null : list2, (i2 & 131072) != 0 ? null : list3, (i2 & 262144) != 0 ? null : str8, (i2 & 524288) != 0 ? null : list4, (i2 & 1048576) != 0 ? null : list5, (i2 & 2097152) != 0 ? null : str9, (i2 & 4194304) != 0 ? null : itemDate, (i2 & 8388608) != 0 ? null : itemDate2, (i2 & 16777216) != 0 ? null : bool, (i2 & 33554432) != 0 ? null : list6);
+    static {
+        CREATOR = new w4(2);
+    }
+
+    public /* synthetic */ AlbumID3(String r27, String r28, String r29, String r30, String r31, Integer r32, Integer r33, Long r34, Date r35, Date r36, int r37, String r38, Date r39, Integer r40, List r41, String r42, List r43, List r44, String r45, List r46, List r47, String r48, ItemDate r49, ItemDate r50, Boolean r51, List r52, int r53, xj0 r54) {
+        Integer r2 = 0;
+        if ((r53 & 1) == 0) goto L5;
+        String r3 = null;
+    L7:
+        if ((r53 & 2) == 0) goto L9;
+        String r5 = null;
+    L11:
+        if ((r53 & 4) == 0) goto L13;
+        String r6 = null;
+    L15:
+        if ((r53 & 8) == 0) goto L17;
+        String r7 = null;
+    L19:
+        if ((r53 & 16) == 0) goto L21;
+        String r8 = null;
+    L23:
+        if ((r53 & 32) == 0) goto L25;
+        Integer r9 = r2;
+    L27:
+        if ((r53 & 64) == 0) goto L29;
+        Integer r10 = r2;
+    L31:
+        if ((r53 & 128) == 0) goto L33;
+        Long r11 = 0L;
+    L35:
+        if ((r53 & 256) == 0) goto L37;
+        Date r14 = null;
+    L39:
+        if ((r53 & 512) == 0) goto L41;
+        Date r15 = null;
+    L43:
+        if ((r53 & 1024) == 0) goto L45;
+        int r1 = 0;
+    L47:
+        if ((r53 & 2048) == 0) goto L49;
+        String r4 = null;
+    L51:
+        if ((r53 & 4096) == 0) goto L53;
+        Date r12 = new Date(0);
+    L55:
+        if ((r53 & 8192) != 0) goto L59;
+        r2 = r40;
+    L59:
+        if ((r53 & 16384) == 0) goto L61;
+        List r13 = null;
+    L63:
+        if ((32768 & r53) == 0) goto L65;
+        String r16 = null;
+    L67:
+        if ((r53 & 65536) == 0) goto L69;
+        List r17 = null;
+    L71:
+        if ((r53 & 131072) == 0) goto L73;
+        List r18 = null;
+    L75:
+        if ((r53 & 262144) == 0) goto L77;
+        String r19 = null;
+    L79:
+        if ((r53 & 524288) == 0) goto L81;
+        List r110 = null;
+    L83:
+        if ((r53 & 1048576) == 0) goto L85;
+        List r20 = null;
+    L87:
+        if ((r53 & 2097152) == 0) goto L89;
+        String r21 = null;
+    L91:
+        if ((r53 & 4194304) == 0) goto L93;
+        ItemDate r22 = null;
+    L95:
+        if ((r53 & 8388608) == 0) goto L97;
+        ItemDate r23 = null;
+    L99:
+        if ((r53 & 16777216) == 0) goto L101;
+        Boolean r24 = null;
+    L103:
+        if ((r53 & 33554432) == 0) goto L106;
+        List r55 = null;
+    L107:
+        this(r3, r5, r6, r7, r8, r9, r10, r11, r14, r15, r1, r4, r12, r2, r13, r16, r17, r18, r19, r110, r20, r21, r22, r23, r24, r55);
+        return;
+    L106:
+        r55 = r52;
+        goto L107
+    L101:
+        r24 = r51;
+        goto L103
+    L97:
+        r23 = r50;
+        goto L99
+    L93:
+        r22 = r49;
+        goto L95
+    L89:
+        r21 = r48;
+        goto L91
+    L85:
+        r20 = r47;
+        goto L87
+    L81:
+        r110 = r46;
+        goto L83
+    L77:
+        r19 = r45;
+        goto L79
+    L73:
+        r18 = r44;
+        goto L75
+    L69:
+        r17 = r43;
+        goto L71
+    L65:
+        r16 = r42;
+        goto L67
+    L61:
+        r13 = r41;
+        goto L63
+    L53:
+        r12 = r39;
+        goto L55
+    L49:
+        r4 = r38;
+        goto L51
+    L45:
+        r1 = r37;
+        goto L47
+    L41:
+        r15 = r36;
+        goto L43
+    L37:
+        r14 = r35;
+        goto L39
+    L33:
+        r11 = r34;
+        goto L35
+    L29:
+        r10 = r33;
+        goto L31
+    L25:
+        r9 = r32;
+        goto L27
+    L21:
+        r8 = r31;
+        goto L23
+    L17:
+        r7 = r30;
+        goto L19
+    L13:
+        r6 = r29;
+        goto L15
+    L9:
+        r5 = r28;
+        goto L11
+    L5:
+        r3 = r27;
+        goto L7
     }
 
     @Override // android.os.Parcelable
@@ -159,242 +316,284 @@ public class AlbumID3 implements Parcelable {
         return this.isCompilation;
     }
 
-    public final void setArtist(String str) {
-        this.artist = str;
+    public final void setArtist(String r1) {
+        this.artist = r1;
     }
 
-    public final void setArtistId(String str) {
-        this.artistId = str;
+    public final void setArtistId(String r1) {
+        this.artistId = r1;
     }
 
-    public final void setArtists(List<? extends ArtistID3> list) {
-        this.artists = list;
+    public final void setArtists(List<? extends ArtistID3> r1) {
+        this.artists = r1;
     }
 
-    public final void setCompilation(Boolean bool) {
-        this.isCompilation = bool;
+    public final void setCompilation(Boolean r1) {
+        this.isCompilation = r1;
     }
 
-    public final void setCoverArtId(String str) {
-        this.coverArtId = str;
+    public final void setCoverArtId(String r1) {
+        this.coverArtId = r1;
     }
 
-    public final void setCreated(Date date) {
-        this.created = date;
+    public final void setCreated(Date r1) {
+        this.created = r1;
     }
 
-    public final void setDiscTitles(List<? extends DiscTitle> list) {
-        this.discTitles = list;
+    public final void setDiscTitles(List<? extends DiscTitle> r1) {
+        this.discTitles = r1;
     }
 
-    public final void setDisplayArtist(String str) {
-        this.displayArtist = str;
+    public final void setDisplayArtist(String r1) {
+        this.displayArtist = r1;
     }
 
-    public final void setDuration(Integer num) {
-        this.duration = num;
+    public final void setDuration(Integer r1) {
+        this.duration = r1;
     }
 
-    public final void setGenre(String str) {
-        this.genre = str;
+    public final void setGenre(String r1) {
+        this.genre = r1;
     }
 
-    public final void setGenres(List<? extends ItemGenre> list) {
-        this.genres = list;
+    public final void setGenres(List<? extends ItemGenre> r1) {
+        this.genres = r1;
     }
 
-    public final void setId(String str) {
-        this.id = str;
+    public final void setId(String r1) {
+        this.id = r1;
     }
 
-    public final void setMoods(List<String> list) {
-        this.moods = list;
+    public final void setMoods(List<String> r1) {
+        this.moods = r1;
     }
 
-    public final void setMusicBrainzId(String str) {
-        this.musicBrainzId = str;
+    public final void setMusicBrainzId(String r1) {
+        this.musicBrainzId = r1;
     }
 
-    public final void setName(String str) {
-        this.name = str;
+    public final void setName(String r1) {
+        this.name = r1;
     }
 
-    public final void setOriginalReleaseDate(ItemDate itemDate) {
-        this.originalReleaseDate = itemDate;
+    public final void setOriginalReleaseDate(ItemDate r1) {
+        this.originalReleaseDate = r1;
     }
 
-    public final void setPlayCount(Long l) {
-        this.playCount = l;
+    public final void setPlayCount(Long r1) {
+        this.playCount = r1;
     }
 
-    public final void setPlayed(Date date) {
-        this.played = date;
+    public final void setPlayed(Date r1) {
+        this.played = r1;
     }
 
-    public final void setRecordLabels(List<? extends RecordLabel> list) {
-        this.recordLabels = list;
+    public final void setRecordLabels(List<? extends RecordLabel> r1) {
+        this.recordLabels = r1;
     }
 
-    public final void setReleaseDate(ItemDate itemDate) {
-        this.releaseDate = itemDate;
+    public final void setReleaseDate(ItemDate r1) {
+        this.releaseDate = r1;
     }
 
-    public final void setReleaseTypes(List<String> list) {
-        this.releaseTypes = list;
+    public final void setReleaseTypes(List<String> r1) {
+        this.releaseTypes = r1;
     }
 
-    public final void setSongCount(Integer num) {
-        this.songCount = num;
+    public final void setSongCount(Integer r1) {
+        this.songCount = r1;
     }
 
-    public final void setSortName(String str) {
-        this.sortName = str;
+    public final void setSortName(String r1) {
+        this.sortName = r1;
     }
 
-    public final void setStarred(Date date) {
-        this.starred = date;
+    public final void setStarred(Date r1) {
+        this.starred = r1;
     }
 
-    public final void setUserRating(Integer num) {
-        this.userRating = num;
+    public final void setUserRating(Integer r1) {
+        this.userRating = r1;
     }
 
-    public final void setYear(int i) {
-        this.year = i;
+    public final void setYear(int r1) {
+        this.year = r1;
     }
 
     public final AlbumID3 strippedForNav() {
-        return new AlbumID3(this.id, this.name, this.artist, this.artistId, this.coverArtId, this.songCount, this.duration, this.playCount, this.created, this.starred, this.year, this.genre, this.played, this.userRating, null, this.musicBrainzId, null, null, this.displayArtist, null, null, this.sortName, this.originalReleaseDate, this.releaseDate, this.isCompilation, this.discTitles, 1785856, null);
+        List r15 = null;
+        List r17 = null;
+        List r18 = null;
+        List r20 = null;
+        List r21 = null;
+        return new AlbumID3(this.id, this.name, this.artist, this.artistId, this.coverArtId, this.songCount, this.duration, this.playCount, this.created, this.starred, this.year, this.genre, this.played, this.userRating, r15, this.musicBrainzId, r17, r18, this.displayArtist, r20, r21, this.sortName, this.originalReleaseDate, this.releaseDate, this.isCompilation, this.discTitles, 1785856, null);
     }
 
     @Override // android.os.Parcelable
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.getClass();
-        parcel.writeString(this.id);
-        parcel.writeString(this.name);
-        parcel.writeString(this.artist);
-        parcel.writeString(this.artistId);
-        parcel.writeString(this.coverArtId);
-        Integer num = this.songCount;
-        if (num == null) {
-            parcel.writeInt(0);
-        } else {
-            xa3.q(parcel, 1, num);
-        }
-        Integer num2 = this.duration;
-        if (num2 == null) {
-            parcel.writeInt(0);
-        } else {
-            xa3.q(parcel, 1, num2);
-        }
-        Long l = this.playCount;
-        if (l == null) {
-            parcel.writeInt(0);
-        } else {
-            parcel.writeInt(1);
-            parcel.writeLong(l.longValue());
-        }
-        parcel.writeSerializable(this.created);
-        parcel.writeSerializable(this.starred);
-        parcel.writeInt(this.year);
-        parcel.writeString(this.genre);
-        parcel.writeSerializable(this.played);
-        Integer num3 = this.userRating;
-        if (num3 == null) {
-            parcel.writeInt(0);
-        } else {
-            xa3.q(parcel, 1, num3);
-        }
-        List<? extends RecordLabel> list = this.recordLabels;
-        if (list == null) {
-            parcel.writeInt(0);
-        } else {
-            parcel.writeInt(1);
-            parcel.writeInt(list.size());
-            Iterator<? extends RecordLabel> it = list.iterator();
-            while (it.hasNext()) {
-                parcel.writeParcelable(it.next(), i);
-            }
-        }
-        parcel.writeString(this.musicBrainzId);
-        List<? extends ItemGenre> list2 = this.genres;
-        if (list2 == null) {
-            parcel.writeInt(0);
-        } else {
-            parcel.writeInt(1);
-            parcel.writeInt(list2.size());
-            Iterator<? extends ItemGenre> it2 = list2.iterator();
-            while (it2.hasNext()) {
-                parcel.writeParcelable(it2.next(), i);
-            }
-        }
-        List<? extends ArtistID3> list3 = this.artists;
-        if (list3 == null) {
-            parcel.writeInt(0);
-        } else {
-            parcel.writeInt(1);
-            parcel.writeInt(list3.size());
-            Iterator<? extends ArtistID3> it3 = list3.iterator();
-            while (it3.hasNext()) {
-                parcel.writeParcelable(it3.next(), i);
-            }
-        }
-        parcel.writeString(this.displayArtist);
-        parcel.writeStringList(this.releaseTypes);
-        parcel.writeStringList(this.moods);
-        parcel.writeString(this.sortName);
-        parcel.writeParcelable(this.originalReleaseDate, i);
-        parcel.writeParcelable(this.releaseDate, i);
-        Boolean bool = this.isCompilation;
-        if (bool == null) {
-            parcel.writeInt(0);
-        } else {
-            parcel.writeInt(1);
-            parcel.writeInt(bool.booleanValue() ? 1 : 0);
-        }
-        List<? extends DiscTitle> list4 = this.discTitles;
-        if (list4 == null) {
-            parcel.writeInt(0);
-            return;
-        }
-        parcel.writeInt(1);
-        parcel.writeInt(list4.size());
-        Iterator<? extends DiscTitle> it4 = list4.iterator();
-        while (it4.hasNext()) {
-            parcel.writeParcelable(it4.next(), i);
-        }
+    public void writeToParcel(Parcel r6, int r7) {
+        r6.getClass();
+        r6.writeString(this.id);
+        r6.writeString(this.name);
+        r6.writeString(this.artist);
+        r6.writeString(this.artistId);
+        r6.writeString(this.coverArtId);
+        Integer r0 = this.songCount;
+        if (r0 != null) goto L5;
+        r6.writeInt(0);
+    L6:
+        Integer r1 = this.duration;
+        if (r1 != null) goto L9;
+        r6.writeInt(0);
+    L10:
+        Long r2 = this.playCount;
+        if (r2 != null) goto L13;
+        r6.writeInt(0);
+    L14:
+        r6.writeSerializable(this.created);
+        r6.writeSerializable(this.starred);
+        r6.writeInt(this.year);
+        r6.writeString(this.genre);
+        r6.writeSerializable(this.played);
+        Integer r3 = this.userRating;
+        if (r3 != null) goto L17;
+        r6.writeInt(0);
+    L18:
+        List<? extends RecordLabel> r4 = this.recordLabels;
+        if (r4 != null) goto L21;
+        r6.writeInt(0);
+    L25:
+        r6.writeString(this.musicBrainzId);
+        List<? extends ItemGenre> r5 = this.genres;
+        if (r5 != null) goto L28;
+        r6.writeInt(0);
+    L32:
+        List<? extends ArtistID3> r8 = this.artists;
+        if (r8 != null) goto L35;
+        r6.writeInt(0);
+    L39:
+        r6.writeString(this.displayArtist);
+        r6.writeStringList(this.releaseTypes);
+        r6.writeStringList(this.moods);
+        r6.writeString(this.sortName);
+        r6.writeParcelable(this.originalReleaseDate, r7);
+        r6.writeParcelable(this.releaseDate, r7);
+        Boolean r9 = this.isCompilation;
+        if (r9 != null) goto L42;
+        r6.writeInt(0);
+    L43:
+        List<? extends DiscTitle> r10 = this.discTitles;
+        if (r10 != null) goto L47;
+        r6.writeInt(0);
+        return;
+    L47:
+        r6.writeInt(1);
+        r6.writeInt(r10.size());
+        Iterator<? extends DiscTitle> r11 = r10.iterator();
+    L49:
+        if (r11.hasNext() == false) goto L51;
+        r6.writeParcelable(r11.next(), r7);
+        goto L49
+    L51:
+        return;
+    L42:
+        r6.writeInt(1);
+        r6.writeInt(r9.booleanValue() ? 1 : 0);
+        goto L43
+    L35:
+        r6.writeInt(1);
+        r6.writeInt(r8.size());
+        Iterator<? extends ArtistID3> r12 = r8.iterator();
+    L37:
+        if (r12.hasNext() == false) goto L39;
+        r6.writeParcelable(r12.next(), r7);
+        goto L37
+    L28:
+        r6.writeInt(1);
+        r6.writeInt(r5.size());
+        Iterator<? extends ItemGenre> r13 = r5.iterator();
+    L30:
+        if (r13.hasNext() == false) goto L32;
+        r6.writeParcelable(r13.next(), r7);
+        goto L30
+    L21:
+        r6.writeInt(1);
+        r6.writeInt(r4.size());
+        Iterator<? extends RecordLabel> r14 = r4.iterator();
+    L23:
+        if (r14.hasNext() == false) goto L25;
+        r6.writeParcelable(r14.next(), r7);
+        goto L23
+    L17:
+        xa3.q(r6, 1, r3);
+        goto L18
+    L13:
+        r6.writeInt(1);
+        r6.writeLong(r2.longValue());
+        goto L14
+    L9:
+        xa3.q(r6, 1, r1);
+        goto L10
+    L5:
+        xa3.q(r6, 1, r0);
+        goto L6
     }
 
-    public AlbumID3(String str, String str2, String str3, String str4, String str5, Integer num, Integer num2, Long l, Date date, Date date2, int i, String str6, Date date3, Integer num3, List<? extends RecordLabel> list, String str7, List<? extends ItemGenre> list2, List<? extends ArtistID3> list3, String str8, List<String> list4, List<String> list5, String str9, ItemDate itemDate, ItemDate itemDate2, Boolean bool, List<? extends DiscTitle> list6) {
-        this.id = str;
-        this.name = str2;
-        this.artist = str3;
-        this.artistId = str4;
-        this.coverArtId = str5;
-        this.songCount = num;
-        this.duration = num2;
-        this.playCount = l;
-        this.created = date;
-        this.starred = date2;
-        this.year = i;
-        this.genre = str6;
-        this.played = date3;
-        this.userRating = num3;
-        this.recordLabels = list;
-        this.musicBrainzId = str7;
-        this.genres = list2;
-        this.artists = list3;
-        this.displayArtist = str8;
-        this.releaseTypes = list4;
-        this.moods = list5;
-        this.sortName = str9;
-        this.originalReleaseDate = itemDate;
-        this.releaseDate = itemDate2;
-        this.isCompilation = bool;
-        this.discTitles = list6;
+    public AlbumID3(String r1, String r2, String r3, String r4, String r5, Integer r6, Integer r7, Long r8, Date r9, Date r10, int r11, String r12, Date r13, Integer r14, List<? extends RecordLabel> r15, String r16, List<? extends ItemGenre> r17, List<? extends ArtistID3> r18, String r19, List<String> r20, List<String> r21, String r22, ItemDate r23, ItemDate r24, Boolean r25, List<? extends DiscTitle> r26) {
+        this.id = r1;
+        this.name = r2;
+        this.artist = r3;
+        this.artistId = r4;
+        this.coverArtId = r5;
+        this.songCount = r6;
+        this.duration = r7;
+        this.playCount = r8;
+        this.created = r9;
+        this.starred = r10;
+        this.year = r11;
+        this.genre = r12;
+        this.played = r13;
+        this.userRating = r14;
+        this.recordLabels = r15;
+        this.musicBrainzId = r16;
+        this.genres = r17;
+        this.artists = r18;
+        this.displayArtist = r19;
+        this.releaseTypes = r20;
+        this.moods = r21;
+        this.sortName = r22;
+        this.originalReleaseDate = r23;
+        this.releaseDate = r24;
+        this.isCompilation = r25;
+        this.discTitles = r26;
     }
 
     public AlbumID3() {
-        this(null, null, null, null, null, null, null, null, null, null, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 67108863, null);
+        String r1 = null;
+        String r2 = null;
+        String r3 = null;
+        String r4 = null;
+        String r5 = null;
+        Integer r6 = null;
+        Integer r7 = null;
+        Long r8 = null;
+        Date r9 = null;
+        Date r10 = null;
+        int r11 = 0;
+        String r12 = null;
+        Date r13 = null;
+        Integer r14 = null;
+        List r15 = null;
+        String r16 = null;
+        List r17 = null;
+        List r18 = null;
+        String r19 = null;
+        List r20 = null;
+        List r21 = null;
+        String r22 = null;
+        ItemDate r23 = null;
+        ItemDate r24 = null;
+        Boolean r25 = null;
+        List r26 = null;
+        this(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, 67108863, null);
     }
 }

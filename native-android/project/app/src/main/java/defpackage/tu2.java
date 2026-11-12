@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import java.util.ArrayList;
 
@@ -21,6 +20,7 @@ import java.util.ArrayList;
 public final class tu2 implements oo4 {
     public e5 A;
     public MenuItem.OnActionExpandListener B;
+    public boolean C;
     public final int a;
     public final int b;
     public final int c;
@@ -29,55 +29,64 @@ public final class tu2 implements oo4 {
     public CharSequence f;
     public Intent g;
     public char h;
+    public int i;
     public char j;
+    public int k;
     public Drawable l;
+    public int m;
     public final qu2 n;
     public en4 o;
     public MenuItem.OnMenuItemClickListener p;
     public CharSequence q;
     public CharSequence r;
+    public ColorStateList s;
+    public PorterDuff.Mode t;
+    public boolean u;
+    public boolean v;
+    public boolean w;
+    public int x;
     public int y;
     public View z;
-    public int i = 4096;
-    public int k = 4096;
-    public int m = 0;
-    public ColorStateList s = null;
-    public PorterDuff.Mode t = null;
-    public boolean u = false;
-    public boolean v = false;
-    public boolean w = false;
-    public int x = 16;
-    public boolean C = false;
 
-    public tu2(qu2 qu2Var, int i, int i2, int i3, int i4, CharSequence charSequence, int i5) {
-        this.n = qu2Var;
-        this.a = i2;
-        this.b = i;
-        this.c = i3;
-        this.d = i4;
-        this.e = charSequence;
-        this.y = i5;
+    public tu2(qu2 r3, int r4, int r5, int r6, int r7, CharSequence r8, int r9) {
+        this.i = 4096;
+        this.k = 4096;
+        this.m = 0;
+        this.s = null;
+        this.t = null;
+        this.u = false;
+        this.v = false;
+        this.w = false;
+        this.x = 16;
+        this.C = false;
+        this.n = r3;
+        this.a = r5;
+        this.b = r4;
+        this.c = r6;
+        this.d = r7;
+        this.e = r8;
+        this.y = r9;
     }
 
-    public static void c(int i, int i2, String str, StringBuilder sb) {
-        if ((i & i2) == i2) {
-            sb.append(str);
-        }
+    public static void c(int r0, int r1, String r2, StringBuilder r3) {
+        if ((r0 & r1) != r1) goto L6;
+        r3.append(r2);
+        return;
     }
 
     @Override // defpackage.oo4
-    public final oo4 a(e5 e5Var) {
-        e5 e5Var2 = this.A;
-        if (e5Var2 != null) {
-            e5Var2.b = null;
-        }
+    public final oo4 a(e5 r3) {
+        e5 r0 = this.A;
+        if (r0 == null) goto L5;
+        r0.b = null;
+    L5:
         this.z = null;
-        this.A = e5Var;
+        this.A = r3;
         this.n.p(true);
-        e5 e5Var3 = this.A;
-        if (e5Var3 != null) {
-            e5Var3.h(new om1(11, this));
-        }
+        e5 r4 = this.A;
+        if (r4 == null) goto L8;
+        r4.h(new om1(11, this));
+    L8:
         return this;
     }
 
@@ -88,67 +97,89 @@ public final class tu2 implements oo4 {
 
     @Override // android.view.MenuItem
     public final boolean collapseActionView() {
-        if ((this.y & 8) == 0) {
-            return false;
-        }
-        if (this.z == null) {
-            return true;
-        }
-        MenuItem.OnActionExpandListener onActionExpandListener = this.B;
-        if (onActionExpandListener == null || onActionExpandListener.onMenuItemActionCollapse(this)) {
-            return this.n.d(this);
-        }
+        if ((this.y & 8) != 0) goto L6;
         return false;
+    L6:
+        if (this.z != null) goto L9;
+        return true;
+    L9:
+        MenuItem.OnActionExpandListener r0 = this.B;
+        if (r0 == null) goto L17;
+        if (r0.onMenuItemActionCollapse(this) == true) goto L17;
+        return false;
+    L17:
+        return this.n.d(this);
     }
 
-    public final Drawable d(Drawable drawable) {
-        if (drawable != null && this.w && (this.u || this.v)) {
-            drawable = drawable.mutate();
-            if (this.u) {
-                drawable.setTintList(this.s);
-            }
-            if (this.v) {
-                drawable.setTintMode(this.t);
-            }
-            this.w = false;
-        }
-        return drawable;
+    public final Drawable d(Drawable r2) {
+        if (r2 != null) goto L4;
+    L16:
+        return r2;
+    L4:
+        if (this.w == false) goto L16;
+        if (this.u == false) goto L8;
+    L9:
+        r2 = r2.mutate();
+        if (this.u == false) goto L13;
+        r2.setTintList(this.s);
+    L13:
+        if (this.v == false) goto L15;
+        r2.setTintMode(this.t);
+    L15:
+        this.w = false;
+        goto L16
+    L8:
+        if (this.v == false) goto L16;
+        goto L9
     }
 
     public final boolean e() {
-        e5 e5Var;
-        if ((this.y & 8) == 0) {
-            return false;
-        }
-        if (this.z == null && (e5Var = this.A) != null) {
-            this.z = e5Var.d(this);
-        }
-        return this.z != null;
+        if ((this.y & 8) != 0) goto L5;
+        return false;
+    L5:
+        if (this.z != null) goto L10;
+        e5 r0 = this.A;
+        if (r0 == null) goto L10;
+        this.z = r0.d(this);
+    L10:
+        if (this.z == null) goto L15;
+        return true;
+    L15:
+        return false;
     }
 
     @Override // android.view.MenuItem
     public final boolean expandActionView() {
-        if (!e()) {
-            return false;
-        }
-        MenuItem.OnActionExpandListener onActionExpandListener = this.B;
-        if (onActionExpandListener == null || onActionExpandListener.onMenuItemActionExpand(this)) {
-            return this.n.f(this);
-        }
+        if (e() == false) goto L14;
+        MenuItem.OnActionExpandListener r0 = this.B;
+        if (r0 == null) goto L13;
+        if (r0.onMenuItemActionExpand(this) == true) goto L13;
+        return false;
+    L13:
+        return this.n.f(this);
+    L14:
         return false;
     }
 
-    public final void f(boolean z) {
-        this.x = (z ? 4 : 0) | (this.x & (-5));
+    public final void f(boolean r2) {
+        int r0 = this.x & (-5);
+        if (r2 == false) goto L5;
+        int r3 = 4;
+    L6:
+        this.x = r3 | r0;
+        return;
+    L5:
+        r3 = 0;
+        goto L6
     }
 
-    public final void g(boolean z) {
-        int i = this.x;
-        if (z) {
-            this.x = i | 32;
-        } else {
-            this.x = i & (-33);
-        }
+    public final void g(boolean r2) {
+        int r0 = this.x;
+        if (r2 == false) goto L6;
+        this.x = r0 | 32;
+        return;
+    L6:
+        this.x = r0 & (-33);
     }
 
     @Override // android.view.MenuItem
@@ -158,17 +189,17 @@ public final class tu2 implements oo4 {
 
     @Override // android.view.MenuItem
     public final View getActionView() {
-        View view = this.z;
-        if (view != null) {
-            return view;
-        }
-        e5 e5Var = this.A;
-        if (e5Var == null) {
-            return null;
-        }
-        View viewD = e5Var.d(this);
-        this.z = viewD;
-        return viewD;
+        View r0 = this.z;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        e5 r1 = this.A;
+        if (r1 == null) goto L9;
+        View r2 = r1.d(this);
+        this.z = r2;
+        return r2;
+    L9:
+        return null;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
@@ -193,18 +224,18 @@ public final class tu2 implements oo4 {
 
     @Override // android.view.MenuItem
     public final Drawable getIcon() {
-        Drawable drawable = this.l;
-        if (drawable != null) {
-            return d(drawable);
-        }
-        int i = this.m;
-        if (i == 0) {
-            return null;
-        }
-        Drawable drawableR = zz1.r(this.n.a, i);
+        Drawable r0 = this.l;
+        if (r0 != null) goto L5;
+        int r1 = this.m;
+        if (r1 == 0) goto L10;
+        Drawable r2 = zz1.r(this.n.a, r1);
         this.m = 0;
-        this.l = drawableR;
-        return d(drawableR);
+        this.l = r2;
+        return d(r2);
+    L10:
+        return null;
+    L5:
+        return d(r0);
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
@@ -259,8 +290,11 @@ public final class tu2 implements oo4 {
 
     @Override // android.view.MenuItem
     public final CharSequence getTitleCondensed() {
-        CharSequence charSequence = this.f;
-        return charSequence != null ? charSequence : this.e;
+        CharSequence r0 = this.f;
+        if (r0 == null) goto L6;
+        return r0;
+    L6:
+        return this.e;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
@@ -270,7 +304,10 @@ public final class tu2 implements oo4 {
 
     @Override // android.view.MenuItem
     public final boolean hasSubMenu() {
-        return this.o != null;
+        if (this.o == null) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // android.view.MenuItem
@@ -280,134 +317,183 @@ public final class tu2 implements oo4 {
 
     @Override // android.view.MenuItem
     public final boolean isCheckable() {
-        return (this.x & 1) == 1;
+        if ((this.x & 1) != 1) goto L5;
+        return true;
+    L5:
+        return false;
     }
 
     @Override // android.view.MenuItem
     public final boolean isChecked() {
-        return (this.x & 2) == 2;
+        if ((this.x & 2) != 2) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // android.view.MenuItem
     public final boolean isEnabled() {
-        return (this.x & 16) != 0;
+        if ((this.x & 16) == 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // android.view.MenuItem
     public final boolean isVisible() {
-        e5 e5Var = this.A;
-        if (e5Var == null || !e5Var.g()) {
-            return (this.x & 8) == 0;
-        }
-        return (this.x & 8) == 0 && this.A.b();
+        e5 r0 = this.A;
+        if (r0 == null) goto L12;
+        if (r0.g() == false) goto L12;
+        if ((this.x & 8) == 0) goto L9;
+        return false;
+    L9:
+        if (this.A.b() == false) goto L18;
+        return true;
+    L18:
+        return false;
+    L12:
+        if ((this.x & 8) != 0) goto L19;
+        return true;
+    L19:
+        return false;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setActionProvider(ActionProvider actionProvider) {
+    public final MenuItem setActionProvider(ActionProvider r1) {
         throw new UnsupportedOperationException("This is not supported, use MenuItemCompat.setActionProvider()");
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setActionView(int i) {
-        int i2;
-        qu2 qu2Var = this.n;
-        Context context = qu2Var.a;
-        View viewInflate = LayoutInflater.from(context).inflate(i, (ViewGroup) new LinearLayout(context), false);
-        this.z = viewInflate;
+    public final MenuItem setActionView(int r5) {
+        qu2 r0 = this.n;
+        Context r1 = r0.a;
+        View r6 = LayoutInflater.from(r1).inflate(r5, new LinearLayout(r1), false);
+        this.z = r6;
         this.A = null;
-        if (viewInflate != null && viewInflate.getId() == -1 && (i2 = this.a) > 0) {
-            viewInflate.setId(i2);
-        }
-        qu2Var.k = true;
-        qu2Var.p(true);
+        if (r6 != null) goto L5;
+    L9:
+        r0.k = true;
+        r0.p(true);
+        return this;
+    L5:
+        if (r6.getId() != (-1)) goto L9;
+        int r2 = this.a;
+        if (r2 <= 0) goto L9;
+        r6.setId(r2);
+        goto L9
+    }
+
+    @Override // defpackage.oo4, android.view.MenuItem
+    public final MenuItem setAlphabeticShortcut(char r2, int r3) {
+        if (this.j == r2) goto L5;
+    L7:
+        this.j = Character.toLowerCase(r2);
+        this.k = KeyEvent.normalizeMetaState(r3);
+        this.n.p(false);
+        return this;
+    L5:
+        if (this.k != r3) goto L7;
+        return this;
+    }
+
+    @Override // android.view.MenuItem
+    public final MenuItem setCheckable(boolean r3) {
+        int r0 = this.x;
+        int r4 = r3 ? 1 : 0;
+        int r5 = r4 | (r0 & (-2));
+        this.x = r5;
+        if (r0 == r5) goto L5;
+        this.n.p(false);
+    L5:
+        return this;
+    }
+
+    @Override // android.view.MenuItem
+    public final MenuItem setChecked(boolean r10) {
+        int r0 = this.x;
+        int r1 = r0 & 4;
+        int r2 = 2;
+        qu2 r3 = this.n;
+        if (r1 == 0) goto L26;
+        ArrayList r11 = r3.f;
+        int r4 = r11.size();
+        r3.y();
+        int r5 = 0;
+    L5:
+        if (r5 >= r4) goto L24;
+        tu2 r6 = (tu2) r11.get(r5);
+        if (r6.b != this.b) goto L23;
+        if ((r6.x & 4) == 0) goto L23;
+        if (r6.isCheckable() == false) goto L23;
+        if (r6 != this) goto L15;
+        boolean r7 = true;
+    L16:
+        int r8 = r6.x;
+        int r9 = r8 & (-3);
+        if (r7 == false) goto L19;
+        int r12 = 2;
+    L20:
+        int r13 = r12 | r9;
+        r6.x = r13;
+        if (r8 == r13) goto L23;
+        r6.n.p(false);
+        goto L23
+    L19:
+        r12 = 0;
+        goto L20
+    L15:
+        r7 = false;
+    L23:
+        r5 = r5 + 1;
+        goto L5
+    L24:
+        r3.x();
+        return this;
+    L26:
+        int r14 = r0 & (-3);
+        if (r10 == true) goto L30;
+        r2 = 0;
+    L30:
+        int r15 = r14 | r2;
+        this.x = r15;
+        if (r0 == r15) goto L33;
+        r3.p(false);
+    L33:
         return this;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final MenuItem setAlphabeticShortcut(char c, int i) {
-        if (this.j == c && this.k == i) {
-            return this;
-        }
-        this.j = Character.toLowerCase(c);
-        this.k = KeyEvent.normalizeMetaState(i);
+    public final oo4 setContentDescription(CharSequence r2) {
+        this.q = r2;
         this.n.p(false);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setCheckable(boolean z) {
-        int i = this.x;
-        int i2 = (z ? 1 : 0) | (i & (-2));
-        this.x = i2;
-        if (i != i2) {
-            this.n.p(false);
-        }
-        return this;
-    }
-
-    @Override // android.view.MenuItem
-    public final MenuItem setChecked(boolean z) {
-        int i = this.x;
-        int i2 = i & 4;
-        qu2 qu2Var = this.n;
-        if (i2 == 0) {
-            int i3 = (i & (-3)) | (z ? 2 : 0);
-            this.x = i3;
-            if (i != i3) {
-                qu2Var.p(false);
-            }
-            return this;
-        }
-        ArrayList arrayList = qu2Var.f;
-        int size = arrayList.size();
-        qu2Var.y();
-        for (int i4 = 0; i4 < size; i4++) {
-            tu2 tu2Var = (tu2) arrayList.get(i4);
-            if (tu2Var.b == this.b && (tu2Var.x & 4) != 0 && tu2Var.isCheckable()) {
-                boolean z2 = tu2Var == this;
-                int i5 = tu2Var.x;
-                int i6 = (z2 ? 2 : 0) | (i5 & (-3));
-                tu2Var.x = i6;
-                if (i5 != i6) {
-                    tu2Var.n.p(false);
-                }
-            }
-        }
-        qu2Var.x();
-        return this;
-    }
-
-    @Override // defpackage.oo4, android.view.MenuItem
-    public final oo4 setContentDescription(CharSequence charSequence) {
-        this.q = charSequence;
+    public final MenuItem setEnabled(boolean r2) {
+        int r0 = this.x;
+        if (r2 == false) goto L5;
+        this.x = r0 | 16;
+    L6:
         this.n.p(false);
         return this;
+    L5:
+        this.x = r0 & (-17);
+        goto L6
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setEnabled(boolean z) {
-        int i = this.x;
-        if (z) {
-            this.x = i | 16;
-        } else {
-            this.x = i & (-17);
-        }
-        this.n.p(false);
-        return this;
-    }
-
-    @Override // android.view.MenuItem
-    public final MenuItem setIcon(int i) {
+    public final MenuItem setIcon(int r2) {
         this.l = null;
-        this.m = i;
+        this.m = r2;
         this.w = true;
         this.n.p(false);
         return this;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final MenuItem setIconTintList(ColorStateList colorStateList) {
-        this.s = colorStateList;
+    public final MenuItem setIconTintList(ColorStateList r2) {
+        this.s = r2;
         this.u = true;
         this.w = true;
         this.n.p(false);
@@ -415,8 +501,8 @@ public final class tu2 implements oo4 {
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final MenuItem setIconTintMode(PorterDuff.Mode mode) {
-        this.t = mode;
+    public final MenuItem setIconTintMode(PorterDuff.Mode r2) {
+        this.t = r2;
         this.v = true;
         this.w = true;
         this.n.p(false);
@@ -424,175 +510,190 @@ public final class tu2 implements oo4 {
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setIntent(Intent intent) {
-        this.g = intent;
+    public final MenuItem setIntent(Intent r1) {
+        this.g = r1;
         return this;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final MenuItem setNumericShortcut(char c, int i) {
-        if (this.h == c && this.i == i) {
-            return this;
-        }
-        this.h = c;
-        this.i = KeyEvent.normalizeMetaState(i);
+    public final MenuItem setNumericShortcut(char r2, int r3) {
+        if (this.h == r2) goto L5;
+    L7:
+        this.h = r2;
+        this.i = KeyEvent.normalizeMetaState(r3);
         this.n.p(false);
         return this;
-    }
-
-    @Override // android.view.MenuItem
-    public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener onActionExpandListener) {
-        this.B = onActionExpandListener;
+    L5:
+        if (this.i != r3) goto L7;
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener onMenuItemClickListener) {
-        this.p = onMenuItemClickListener;
+    public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener r1) {
+        this.B = r1;
+        return this;
+    }
+
+    @Override // android.view.MenuItem
+    public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener r1) {
+        this.p = r1;
         return this;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final MenuItem setShortcut(char c, char c2, int i, int i2) {
-        this.h = c;
-        this.i = KeyEvent.normalizeMetaState(i);
-        this.j = Character.toLowerCase(c2);
-        this.k = KeyEvent.normalizeMetaState(i2);
+    public final MenuItem setShortcut(char r1, char r2, int r3, int r4) {
+        this.h = r1;
+        this.i = KeyEvent.normalizeMetaState(r3);
+        this.j = Character.toLowerCase(r2);
+        this.k = KeyEvent.normalizeMetaState(r4);
         this.n.p(false);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final void setShowAsAction(int i) {
-        int i2 = i & 3;
-        if (i2 != 0 && i2 != 1 && i2 != 2) {
-            kf2.n("SHOW_AS_ACTION_ALWAYS, SHOW_AS_ACTION_IF_ROOM, and SHOW_AS_ACTION_NEVER are mutually exclusive.");
-            return;
-        }
-        this.y = i;
-        qu2 qu2Var = this.n;
-        qu2Var.k = true;
-        qu2Var.p(true);
+    public final void setShowAsAction(int r4) {
+        int r0 = r4 & 3;
+        if (r0 == 0) goto L10;
+        if (r0 == 1) goto L10;
+        if (r0 == 2) goto L10;
+        kf2.n("SHOW_AS_ACTION_ALWAYS, SHOW_AS_ACTION_IF_ROOM, and SHOW_AS_ACTION_NEVER are mutually exclusive.");
+        return;
+    L10:
+        this.y = r4;
+        qu2 r3 = this.n;
+        r3.k = true;
+        r3.p(true);
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setShowAsActionFlags(int i) {
-        setShowAsAction(i);
+    public final MenuItem setShowAsActionFlags(int r1) {
+        setShowAsAction(r1);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setTitle(CharSequence charSequence) {
-        this.e = charSequence;
+    public final MenuItem setTitle(CharSequence r3) {
+        this.e = r3;
         this.n.p(false);
-        en4 en4Var = this.o;
-        if (en4Var != null) {
-            en4Var.setHeaderTitle(charSequence);
-        }
+        en4 r0 = this.o;
+        if (r0 == null) goto L5;
+        r0.setHeaderTitle(r3);
+    L5:
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setTitleCondensed(CharSequence charSequence) {
-        this.f = charSequence;
+    public final MenuItem setTitleCondensed(CharSequence r2) {
+        this.f = r2;
         this.n.p(false);
         return this;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final oo4 setTooltipText(CharSequence charSequence) {
-        this.r = charSequence;
+    public final oo4 setTooltipText(CharSequence r2) {
+        this.r = r2;
         this.n.p(false);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setVisible(boolean z) {
-        int i = this.x;
-        int i2 = (z ? 0 : 8) | (i & (-9));
-        this.x = i2;
-        if (i != i2) {
-            qu2 qu2Var = this.n;
-            qu2Var.h = true;
-            qu2Var.p(true);
-        }
+    public final MenuItem setVisible(boolean r3) {
+        int r0 = this.x;
+        int r1 = r0 & (-9);
+        if (r3 == false) goto L5;
+        int r4 = 0;
+    L6:
+        int r5 = r4 | r1;
+        this.x = r5;
+        if (r0 == r5) goto L9;
+        qu2 r6 = this.n;
+        r6.h = true;
+        r6.p(true);
+    L9:
         return this;
+    L5:
+        r4 = 8;
+        goto L6
     }
 
     public final String toString() {
-        CharSequence charSequence = this.e;
-        if (charSequence != null) {
-            return charSequence.toString();
-        }
+        CharSequence r0 = this.e;
+        if (r0 != null) goto L5;
         return null;
+    L5:
+        return r0.toString();
     }
 
     @Override // android.view.MenuItem
-    public final /* bridge */ /* synthetic */ MenuItem setContentDescription(CharSequence charSequence) {
-        setContentDescription(charSequence);
+    public final /* bridge */ /* synthetic */ MenuItem setContentDescription(CharSequence r1) {
+        setContentDescription(r1);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final /* bridge */ /* synthetic */ MenuItem setTooltipText(CharSequence charSequence) {
-        setTooltipText(charSequence);
+    public final /* bridge */ /* synthetic */ MenuItem setTooltipText(CharSequence r1) {
+        setTooltipText(r1);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setIcon(Drawable drawable) {
+    public final MenuItem setIcon(Drawable r2) {
         this.m = 0;
-        this.l = drawable;
+        this.l = r2;
         this.w = true;
         this.n.p(false);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setTitle(int i) {
-        setTitle(this.n.a.getString(i));
+    public final MenuItem setTitle(int r2) {
+        setTitle(this.n.a.getString(r2));
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setNumericShortcut(char c) {
-        if (this.h == c) {
-            return this;
-        }
-        this.h = c;
+    public final MenuItem setNumericShortcut(char r2) {
+        if (this.h != r2) goto L5;
+        return this;
+    L5:
+        this.h = r2;
         this.n.p(false);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setShortcut(char c, char c2) {
-        this.h = c;
-        this.j = Character.toLowerCase(c2);
+    public final MenuItem setShortcut(char r1, char r2) {
+        this.h = r1;
+        this.j = Character.toLowerCase(r2);
         this.n.p(false);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setAlphabeticShortcut(char c) {
-        if (this.j == c) {
-            return this;
-        }
-        this.j = Character.toLowerCase(c);
+    public final MenuItem setAlphabeticShortcut(char r2) {
+        if (this.j != r2) goto L5;
+        return this;
+    L5:
+        this.j = Character.toLowerCase(r2);
         this.n.p(false);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setActionView(View view) {
-        int i;
-        this.z = view;
+    public final MenuItem setActionView(View r3) {
+        this.z = r3;
         this.A = null;
-        if (view != null && view.getId() == -1 && (i = this.a) > 0) {
-            view.setId(i);
-        }
-        qu2 qu2Var = this.n;
-        qu2Var.k = true;
-        qu2Var.p(true);
+        if (r3 != null) goto L5;
+    L9:
+        qu2 r4 = this.n;
+        r4.k = true;
+        r4.p(true);
         return this;
+    L5:
+        if (r3.getId() != (-1)) goto L9;
+        int r0 = this.a;
+        if (r0 <= 0) goto L9;
+        r3.setId(r0);
+        goto L9
     }
 }

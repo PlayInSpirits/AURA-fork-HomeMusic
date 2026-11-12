@@ -7,8 +7,8 @@ import java.io.Serializable;
 public final class bj5 extends cj5 implements Serializable {
     public final byte[] o;
 
-    public bj5(byte[] bArr) {
-        bArr.getClass();
-        this.o = bArr;
+    public bj5(byte[] r1) {
+        r1.getClass();
+        this.o = r1;
     }
 }

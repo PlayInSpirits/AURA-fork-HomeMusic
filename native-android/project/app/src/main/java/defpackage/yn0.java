@@ -1,7 +1,6 @@
 package defpackage;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
 
@@ -12,10 +11,10 @@ public final class yn0 extends i90 {
     public final InflaterInputStream o;
     public final Inflater p;
 
-    public yn0(ByteArrayInputStream byteArrayInputStream) {
-        Inflater inflater = new Inflater(false);
-        this.p = inflater;
-        this.o = new InflaterInputStream(new df0(byteArrayInputStream), inflater);
+    public yn0(ByteArrayInputStream r4) {
+        Inflater r0 = new Inflater(false);
+        this.p = r0;
+        this.o = new InflaterInputStream(new df0(r4), r0);
     }
 
     @Override // java.io.InputStream
@@ -25,33 +24,41 @@ public final class yn0 extends i90 {
 
     @Override // java.io.InputStream, java.io.Closeable, java.lang.AutoCloseable
     public final void close() {
-        Inflater inflater = this.p;
-        try {
-            this.o.close();
-        } finally {
-            inflater.end();
-        }
+        Inflater r0 = this.p;
+        this.o.close();     // Catch: Throwable -> L6
+        r0.end();
+        return;
+    L6:
+        th = move-exception;
+        r0.end();
+        throw th;
     }
 
     @Override // java.io.InputStream
-    public final int read() throws IOException {
-        int i = this.o.read();
-        b(i == -1 ? 0 : 1);
-        return i;
+    public final int read() {
+        int r0 = this.o.read();
+        if (r0 != (-1)) goto L5;
+        int r1 = 0;
+    L6:
+        b(r1);
+        return r0;
+    L5:
+        r1 = 1;
+        goto L6
     }
 
     @Override // java.io.InputStream
-    public final long skip(long j) {
-        return vr1.G(this.o, j);
+    public final long skip(long r1) {
+        return vr1.G(this.o, r1);
     }
 
     @Override // java.io.InputStream
-    public final int read(byte[] bArr, int i, int i2) throws IOException {
-        if (i2 == 0) {
-            return 0;
-        }
-        int i3 = this.o.read(bArr, i, i2);
-        b(i3);
-        return i3;
+    public final int read(byte[] r2, int r3, int r4) {
+        if (r4 != 0) goto L5;
+        return 0;
+    L5:
+        int r5 = this.o.read(r2, r3, r4);
+        b(r5);
+        return r5;
     }
 }

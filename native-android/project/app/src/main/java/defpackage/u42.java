@@ -13,23 +13,25 @@ public final class u42 implements NsdManager.ResolveListener {
     public final /* synthetic */ f9 d;
     public final /* synthetic */ nc1 e;
 
-    public u42(Handler handler, fx3 fx3Var, fx3 fx3Var2, f9 f9Var, nc1 nc1Var) {
-        this.a = handler;
-        this.b = fx3Var;
-        this.c = fx3Var2;
-        this.d = f9Var;
-        this.e = nc1Var;
+    public u42(Handler r1, fx3 r2, fx3 r3, f9 r4, nc1 r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
     }
 
     @Override // android.net.nsd.NsdManager.ResolveListener
-    public final void onResolveFailed(NsdServiceInfo nsdServiceInfo, int i) {
-        nsdServiceInfo.getClass();
-        this.a.post(new v6(this.b, this.c, this.d, 23));
+    public final void onResolveFailed(NsdServiceInfo r4, int r5) {
+        r4.getClass();
+        v6 r6 = new v6(this.b, this.c, this.d, 23);
+        this.a.post(r6);
     }
 
     @Override // android.net.nsd.NsdManager.ResolveListener
-    public final void onServiceResolved(NsdServiceInfo nsdServiceInfo) {
-        nsdServiceInfo.getClass();
-        this.a.post(new t6(this.c, this.e, nsdServiceInfo, this.d, 11));
+    public final void onServiceResolved(NsdServiceInfo r7) {
+        r7.getClass();
+        t6 r0 = new t6(this.c, this.e, r7, this.d, 11);
+        this.a.post(r0);
     }
 }

@@ -7,7 +7,7 @@ import android.view.View;
 public final class y75 {
     public final View a;
 
-    public y75(View view) {
-        this.a = view;
+    public y75(View r1) {
+        this.a = r1;
     }
 }

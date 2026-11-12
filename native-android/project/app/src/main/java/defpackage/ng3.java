@@ -13,52 +13,52 @@ public final class ng3 extends ReplacementSpan {
     public boolean q;
 
     public final Paint.FontMetricsInt a() {
-        Paint.FontMetricsInt fontMetricsInt = this.n;
-        if (fontMetricsInt != null) {
-            return fontMetricsInt;
-        }
+        Paint.FontMetricsInt r0 = this.n;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
         h12.Q("fontMetrics");
         throw null;
     }
 
     public final int b() {
-        if (!this.q) {
-            dz1.b("PlaceholderSpan is not laid out yet.");
-        }
+        if (this.q == true) goto L6;
+        dz1.b("PlaceholderSpan is not laid out yet.");
+    L6:
         return this.p;
     }
 
     public final int c() {
-        if (!this.q) {
-            dz1.b("PlaceholderSpan is not laid out yet.");
-        }
+        if (this.q == true) goto L6;
+        dz1.b("PlaceholderSpan is not laid out yet.");
+    L6:
         return this.o;
     }
 
     @Override // android.text.style.ReplacementSpan
-    public final void draw(Canvas canvas, CharSequence charSequence, int i, int i2, float f, int i3, int i4, int i5, Paint paint) {
+    public final void draw(Canvas r1, CharSequence r2, int r3, int r4, float r5, int r6, int r7, int r8, Paint r9) {
     }
 
     @Override // android.text.style.ReplacementSpan
-    public final int getSize(Paint paint, CharSequence charSequence, int i, int i2, Paint.FontMetricsInt fontMetricsInt) {
+    public final int getSize(Paint r1, CharSequence r2, int r3, int r4, Paint.FontMetricsInt r5) {
         this.q = true;
-        paint.getTextSize();
-        this.n = paint.getFontMetricsInt();
-        if (a().descent <= a().ascent) {
-            dz1.a("Invalid fontMetrics: line height can not be negative.");
-        }
+        r1.getTextSize();
+        this.n = r1.getFontMetricsInt();
+        if (a().descent > a().ascent) goto L6;
+        dz1.a("Invalid fontMetrics: line height can not be negative.");
+    L6:
         this.o = (int) Math.ceil(0.0d);
         this.p = (int) Math.ceil(0.0d);
-        if (fontMetricsInt != null) {
-            fontMetricsInt.ascent = a().ascent;
-            fontMetricsInt.descent = a().descent;
-            fontMetricsInt.leading = a().leading;
-            if (fontMetricsInt.ascent > (-b())) {
-                fontMetricsInt.ascent = -b();
-            }
-            fontMetricsInt.top = Math.min(a().top, fontMetricsInt.ascent);
-            fontMetricsInt.bottom = Math.max(a().bottom, fontMetricsInt.descent);
-        }
+        if (r5 == null) goto L13;
+        r5.ascent = a().ascent;
+        r5.descent = a().descent;
+        r5.leading = a().leading;
+        if (r5.ascent <= (-b())) goto L11;
+        r5.ascent = -b();
+    L11:
+        r5.top = Math.min(a().top, r5.ascent);
+        r5.bottom = Math.max(a().bottom, r5.descent);
+    L13:
         return c();
     }
 }

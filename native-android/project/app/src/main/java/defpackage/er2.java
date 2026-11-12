@@ -5,36 +5,36 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface er2 {
-    default void A(int i, lk3 lk3Var, mi3 mi3Var, boolean z, boolean z2) {
+    default void A(int r1, lk3 r2, mi3 r3, boolean r4, boolean r5) {
     }
 
-    default void B(int i, za4 za4Var, boolean z, boolean z2, int i2) {
+    default void B(int r1, za4 r2, boolean r3, boolean r4, int r5) {
     }
 
     default void c() {
     }
 
-    default void e(int i) {
+    default void e(int r1) {
     }
 
-    default void i(int i, int i2, int i3) {
+    default void i(int r1, int r2, int r3) {
     }
 
-    default void k(List list, int i) {
+    default void k(List r1, int r2) {
     }
 
-    default void l(int i, va4 va4Var) {
+    default void l(int r1, va4 r2) {
     }
 
-    default void r(int i, m92 m92Var) {
+    default void r(int r1, m92 r2) {
     }
 
-    default void t(int i, mi3 mi3Var) {
+    default void t(int r1, mi3 r2) {
     }
 
-    default void v(int i, ab4 ab4Var) {
+    default void v(int r1, ab4 r2) {
     }
 
-    default void z(int i, String str, jn2 jn2Var) {
+    default void z(int r1, String r2, jn2 r3) {
     }
 }

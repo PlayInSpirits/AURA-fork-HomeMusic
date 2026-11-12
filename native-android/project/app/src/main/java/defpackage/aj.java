@@ -12,20 +12,20 @@ import java.util.stream.Collectors;
 public final class aj implements dk, pi1 {
     public final /* synthetic */ Context n;
 
-    public /* synthetic */ aj(Context context) {
-        this.n = context;
+    public /* synthetic */ aj(Context r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.dk
-    public void e(ArrayList arrayList) {
-        Log.d("ArtistSync", "Callback triggered with songs: " + arrayList.size());
-        if (arrayList.isEmpty()) {
-            Log.d("ArtistSync", "No songs to download");
-            return;
-        }
-        Log.d("ArtistSync", "Starting download of " + arrayList.size() + " songs");
-        au0.w(this.n).a(gi1.H(arrayList), (List) arrayList.stream().map(new hu3(6)).collect(Collectors.toList()), false);
+    public void e(ArrayList r5) {
+        Log.d("ArtistSync", "Callback triggered with songs: " + r5.size());
+        if (r5.isEmpty() == true) goto L6;
+        Log.d("ArtistSync", "Starting download of " + r5.size() + " songs");
+        au0.w(this.n).a(gi1.H(r5), (List) r5.stream().map(new hu3(6)).collect(Collectors.toList()), false);
         Log.d("ArtistSync", "Download started successfully");
+        return;
+    L6:
+        Log.d("ArtistSync", "No songs to download");
     }
 
     @Override // defpackage.pi1

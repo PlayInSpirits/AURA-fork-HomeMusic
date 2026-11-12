@@ -23,59 +23,71 @@ public final class v03 implements vw4 {
     }
 
     @Override // defpackage.vw4
-    public void a(Canvas canvas, Paint paint, RectF rectF) {
-        Path path = new Path();
-        float f = this.b;
-        float f2 = this.c;
-        float f3 = this.d;
-        float f4 = this.e;
-        path.addRoundRect(rectF, new float[]{f, f, f2, f2, f3, f3, f4, f4}, Path.Direction.CW);
-        canvas.drawPath(path, paint);
+    public void a(Canvas r7, Paint r8, RectF r9) {
+        Path r0 = new Path();
+        float r1 = this.b;
+        float r2 = this.c;
+        float r3 = this.d;
+        float r6 = this.e;
+        r0.addRoundRect(r9, new float[]{r1, r1, r2, r2, r3, r3, r6, r6}, Path.Direction.CW);
+        r7.drawPath(r0, r8);
     }
 
-    public void b(float f, float f2, float f3, float f4) {
-        this.b = Math.max(f, this.b);
-        this.c = Math.max(f2, this.c);
-        this.d = Math.min(f3, this.d);
-        this.e = Math.min(f4, this.e);
+    public void b(float r2, float r3, float r4, float r5) {
+        this.b = Math.max(r2, this.b);
+        this.c = Math.max(r3, this.c);
+        this.d = Math.min(r4, this.d);
+        this.e = Math.min(r5, this.e);
     }
 
     public boolean c() {
-        return (this.b >= this.d) | (this.c >= this.e);
+        boolean r1 = false;
+        if (this.b < this.d) goto L5;
+        boolean r0 = true;
+    L7:
+        if (this.c < this.e) goto L10;
+        r1 = true;
+    L10:
+        return r0 | r1;
+    L5:
+        r0 = false;
+        goto L7
     }
 
-    public void d(long j) {
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (j >> 32));
-        float fIntBitsToFloat2 = Float.intBitsToFloat((int) (j & 4294967295L));
-        this.b += fIntBitsToFloat;
-        this.c += fIntBitsToFloat2;
-        this.d += fIntBitsToFloat;
-        this.e += fIntBitsToFloat2;
+    public void d(long r4) {
+        float r0 = Float.intBitsToFloat((int) (r4 >> 32));
+        float r5 = Float.intBitsToFloat((int) (r4 & 4294967295L));
+        this.b += r0;
+        this.c += r5;
+        this.d += r0;
+        this.e += r5;
     }
 
     public String toString() {
-        switch (this.a) {
-            case 0:
-                String strF = gh0.F(this.b);
-                String strF2 = gh0.F(this.c);
-                String strF3 = gh0.F(this.d);
-                String strF4 = gh0.F(this.e);
-                StringBuilder sbU = b11.u("MutableRect(", strF, ", ", strF2, ", ");
-                sbU.append(strF3);
-                sbU.append(", ");
-                sbU.append(strF4);
-                sbU.append(")");
-                return sbU.toString();
-            default:
-                return super.toString();
-        }
+        switch(this.a) {
+            case 0: goto L6;
+            default: goto L5;
+        };
+    L6:
+        String r0 = gh0.F(this.b);
+        String r1 = gh0.F(this.c);
+        String r2 = gh0.F(this.d);
+        String r5 = gh0.F(this.e);
+        StringBuilder r3 = b11.u("MutableRect(", r0, ", ", r1, ", ");
+        r3.append(r2);
+        r3.append(", ");
+        r3.append(r5);
+        r3.append(")");
+        return r3.toString();
+    L5:
+        return super.toString();
     }
 
-    public v03(float f, float f2, float f3, float f4) {
+    public v03(float r2, float r3, float r4, float r5) {
         this.a = 1;
-        this.b = f;
-        this.c = f2;
-        this.d = f3;
-        this.e = f4;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
     }
 }

@@ -10,65 +10,61 @@ public final class eq1 extends bq1 {
     public long q;
     public final /* synthetic */ hq1 r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public eq1(hq1 hq1Var, long j) {
-        super(hq1Var);
-        this.r = hq1Var;
-        this.q = j;
-        if (j == 0) {
-            b();
-        }
+    public eq1(hq1 r3, long r4) {
+        this.r = r3;
+        super(r3);
+        this.q = r4;
+        if (r4 != 0) goto L6;
+        b();
+        return;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
     public final void close() {
-        boolean zH;
-        if (this.o) {
-            return;
-        }
-        if (this.q != 0) {
-            tl1 tl1Var = ze5.a;
-            TimeUnit.MILLISECONDS.getClass();
-            try {
-                zH = ze5.h(this, 100);
-            } catch (IOException unused) {
-                zH = false;
-            }
-            if (!zH) {
-                ((q21) this.r.c).a();
-                b();
-            }
-        }
+        if (this.o == false) goto L6;
+        return;
+    L6:
+        if (this.q == 0) goto L13;
+        tl1 r0 = ze5.a;
+        TimeUnit.MILLISECONDS.getClass();
+        boolean r1 = ze5.h(this, 100);     // Catch: IOException -> L10
+    L11:
+        if (r1 == true) goto L13;
+        ((q21) this.r.c).a();
+        b();
+    L10:
+        r1 = false;
+    L13:
         this.o = true;
     }
 
     @Override // defpackage.bq1, defpackage.ej4
-    public final long read(tv tvVar, long j) throws IOException {
-        tvVar.getClass();
-        if (j < 0) {
-            kf2.e(b11.k("byteCount < 0: ", j));
-            return 0L;
-        }
-        if (this.o) {
-            kf2.o("closed");
-            return 0L;
-        }
-        long j2 = this.q;
-        if (j2 == 0) {
-            return -1L;
-        }
-        long j3 = super.read(tvVar, Math.min(j2, j));
-        if (j3 == -1) {
-            ((q21) this.r.c).a();
-            ProtocolException protocolException = new ProtocolException("unexpected end of stream");
-            b();
-            throw protocolException;
-        }
-        long j4 = this.q - j3;
-        this.q = j4;
-        if (j4 == 0) {
-            b();
-        }
-        return j3;
+    public final long read(tv r8, long r9) {
+        r8.getClass();
+        if (r9 >= 0) goto L5;
+        kf2.e(b11.k("byteCount < 0: ", r9));
+        return 0;
+    L5:
+        if (this.o == true) goto L17;
+        long r2 = this.q;
+        if (r2 != 0) goto L9;
+        return -1;
+    L9:
+        long r10 = super.read(r8, Math.min(r2, r9));
+        if (r10 == (-1)) goto L15;
+        long r3 = this.q - r10;
+        this.q = r3;
+        if (r3 != 0) goto L14;
+        b();
+    L14:
+        return r10;
+    L15:
+        ((q21) this.r.c).a();
+        ProtocolException r11 = new ProtocolException("unexpected end of stream");
+        b();
+        throw r11;
+    L17:
+        kf2.o("closed");
+        return 0;
     }
 }

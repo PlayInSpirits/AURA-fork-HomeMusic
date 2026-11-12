@@ -8,17 +8,17 @@ public final class c31 {
     public final int c;
     public final int d;
 
-    public c31(String str, int i, int i2) {
-        this.b = str;
-        this.a = i;
-        this.c = i2;
+    public c31(String r1, int r2, int r3) {
+        this.b = r1;
+        this.a = r2;
+        this.c = r3;
         this.d = -1;
     }
 
-    public c31(String str, int i, int i2, int i3) {
-        this.b = str;
-        this.a = i;
-        this.c = i2;
-        this.d = i3;
+    public c31(String r1, int r2, int r3, int r4) {
+        this.b = r1;
+        this.a = r2;
+        this.c = r3;
+        this.d = r4;
     }
 }

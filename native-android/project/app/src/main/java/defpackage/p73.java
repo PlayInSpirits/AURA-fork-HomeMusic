@@ -7,47 +7,58 @@ public final class p73 {
     public int b;
     public final /* synthetic */ q73 c;
 
-    public p73(q73 q73Var, int i) {
-        this.c = q73Var;
-        this.a = q73Var.a[i];
-        this.b = i;
+    public p73(q73 r1, int r2) {
+        this.c = r1;
+        this.a = r1.a[r2];
+        this.b = r2;
     }
 
     public final int a() {
-        int i = this.b;
-        Object obj = this.a;
-        q73 q73Var = this.c;
-        if (i == -1 || i >= q73Var.c || !si0.s(obj, q73Var.a[i])) {
-            this.b = q73Var.c(obj);
-        }
-        int i2 = this.b;
-        if (i2 == -1) {
-            return 0;
-        }
-        return q73Var.b[i2];
+        int r0 = this.b;
+        Object r1 = this.a;
+        q73 r2 = this.c;
+        if (r0 != (-1)) goto L5;
+    L8:
+        this.b = r2.c(r1);
+    L9:
+        int r5 = this.b;
+        if (r5 != (-1)) goto L14;
+        return 0;
+    L14:
+        return r2.b[r5];
+    L5:
+        if (r0 >= r2.c) goto L8;
+        if (si0.s(r1, r2.a[r0]) == true) goto L9;
+        goto L8
     }
 
-    public final boolean equals(Object obj) {
-        if (obj instanceof p73) {
-            p73 p73Var = (p73) obj;
-            if (a() == p73Var.a() && si0.s(this.a, p73Var.a)) {
-                return true;
-            }
-        }
+    public final boolean equals(Object r4) {
+        if ((r4 instanceof p73) == false) goto L10;
+        p73 r5 = (p73) r4;
+        if (a() != r5.a()) goto L10;
+        if (si0.s(this.a, r5.a) == false) goto L10;
+        return true;
+    L10:
         return false;
     }
 
     public final int hashCode() {
-        Object obj = this.a;
-        return a() ^ (obj == null ? 0 : obj.hashCode());
+        Object r0 = this.a;
+        if (r0 != null) goto L5;
+        int r1 = 0;
+    L7:
+        return a() ^ r1;
+    L5:
+        r1 = r0.hashCode();
+        goto L7
     }
 
     public final String toString() {
-        String strValueOf = String.valueOf(this.a);
-        int iA = a();
-        if (iA == 1) {
-            return strValueOf;
-        }
-        return strValueOf + " x " + iA;
+        String r0 = String.valueOf(this.a);
+        int r2 = a();
+        if (r2 != 1) goto L6;
+        return r0;
+    L6:
+        return r0 + " x " + r2;
     }
 }

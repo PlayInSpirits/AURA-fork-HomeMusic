@@ -8,53 +8,56 @@ public final /* synthetic */ class jm2 implements lm2, it2 {
     public final /* synthetic */ int p;
     public final /* synthetic */ jn2 q;
 
-    public /* synthetic */ jm2(String str, int i, int i2, jn2 jn2Var) {
+    public /* synthetic */ jm2(String r1, int r2, int r3, jn2 r4) {
         this.n = 2;
-        this.o = str;
-        this.p = i2;
-        this.q = jn2Var;
+        this.o = r1;
+        this.p = r3;
+        this.q = r4;
     }
 
     @Override // defpackage.lm2
-    public void c(bm2 bm2Var) {
-        int i = 10;
-        switch (this.n) {
-            case 0:
-                kj2 kj2Var = (kj2) bm2Var;
-                if (kj2Var.Y()) {
-                    bj2 bj2Var = kj2Var.J;
-                    er1 er1Var = new er1(kj2Var, this.o, this.p, this.q, 16);
-                    aj2 aj2Var = (aj2) bj2Var.e;
-                    if (aj2Var != null) {
-                        f35.W(bj2Var.f, new ws1(i, er1Var, aj2Var));
-                    }
-                    break;
-                }
-                break;
-            default:
-                kj2 kj2Var2 = (kj2) bm2Var;
-                if (kj2Var2.Y()) {
-                    bj2 bj2Var2 = kj2Var2.J;
-                    er1 er1Var2 = new er1(kj2Var2, this.o, this.p, this.q, 17);
-                    aj2 aj2Var2 = (aj2) bj2Var2.e;
-                    if (aj2Var2 != null) {
-                        f35.W(bj2Var2.f, new ws1(i, er1Var2, aj2Var2));
-                    }
-                    break;
-                }
-                break;
-        }
+    public void c(bm2 r10) {
+        int r1 = 10;
+        switch(this.n) {
+            case 0: goto L11;
+            default: goto L4;
+        };
+    L4:
+        kj2 r3 = (kj2) r10;
+        if (r3.Y() == false) goto L19;
+        bj2 r11 = r3.J;
+        er1 r2 = new er1(r3, this.o, this.p, this.q, 17);
+        aj2 r9 = (aj2) r11.e;
+        if (r9 == null) goto L18;
+        f35.W(r11.f, new ws1(r1, r2, r9));
+        return;
+    L18:
+        return;
+    L19:
+        return;
+    L11:
+        kj2 r4 = (kj2) r10;
+        if (r4.Y() == false) goto L21;
+        bj2 r12 = r4.J;
+        er1 r5 = new er1(r4, this.o, this.p, this.q, 16);
+        aj2 r13 = (aj2) r12.e;
+        if (r13 == null) goto L20;
+        f35.W(r12.f, new ws1(r1, r5, r13));
+        return;
+    L20:
+        return;
     }
 
     @Override // defpackage.it2
-    public Object h(tn2 tn2Var, fr2 fr2Var, int i) {
-        return tn2Var.r(fr2Var, this.o, this.p, this.q);
+    public Object h(tn2 r2, fr2 r3, int r4) {
+        jn2 r5 = this.q;
+        return r2.r(r3, this.o, this.p, r5);
     }
 
-    public /* synthetic */ jm2(String str, int i, jn2 jn2Var, int i2) {
-        this.n = i2;
-        this.o = str;
-        this.p = i;
-        this.q = jn2Var;
+    public /* synthetic */ jm2(String r1, int r2, jn2 r3, int r4) {
+        this.n = r4;
+        this.o = r1;
+        this.p = r2;
+        this.q = r3;
     }
 }

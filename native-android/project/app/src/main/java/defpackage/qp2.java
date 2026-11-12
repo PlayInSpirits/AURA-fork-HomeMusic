@@ -25,7 +25,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -41,7 +40,7 @@ import java.util.HashSet;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class qp2 extends f9 {
-    public static final int B0;
+    public static final int B0 = 0;
     public Button A;
     public final g5 A0;
     public Button B;
@@ -107,225 +106,248 @@ public final class qp2 extends f9 {
         B0 = 30000;
     }
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public qp2(Context context) {
-        boolean z = true;
-        ContextThemeWrapper contextThemeWrapperO = fu.o(context, true);
-        int iB = fu.B(contextThemeWrapperO, R.attr.mediaRouteTheme);
-        super(contextThemeWrapperO, iB == 0 ? fu.z(contextThemeWrapperO) : iB);
+    public qp2(Context r5) {
+        boolean r0 = true;
+        ContextThemeWrapper r6 = fu.o(r5, true);
+        int r1 = fu.B(r6, R.attr.mediaRouteTheme);
+        if (r1 != 0) goto L5;
+        r1 = fu.z(r6);
+    L5:
+        super(r6, r1);
         this.L = true;
         this.A0 = new g5(21, this);
-        Context context2 = getContext();
-        this.x = context2;
+        Context r2 = getContext();
+        this.x = r2;
         this.f0 = new np2(this, 0);
-        this.u = yq2.d(context2);
-        if (yq2.c == null) {
-            z = false;
-        } else {
-            yq2.c().getClass();
-        }
-        this.M = z;
+        this.u = yq2.d(r2);
+        if (yq2.c != null) goto L8;
+        r0 = false;
+    L9:
+        this.M = r0;
         this.v = new ap2(this, 2);
         yq2.b();
         this.w = yq2.c().g();
         s();
-        this.d0 = context2.getResources().getDimensionPixelSize(R.dimen.mr_controller_volume_group_list_padding_top);
-        this.z0 = (AccessibilityManager) context2.getSystemService("accessibility");
-        this.x0 = AnimationUtils.loadInterpolator(contextThemeWrapperO, R.interpolator.mr_linear_out_slow_in);
-        this.y0 = AnimationUtils.loadInterpolator(contextThemeWrapperO, R.interpolator.mr_fast_out_slow_in);
+        this.d0 = r2.getResources().getDimensionPixelSize(R.dimen.mr_controller_volume_group_list_padding_top);
+        this.z0 = (AccessibilityManager) r2.getSystemService("accessibility");
+        this.x0 = AnimationUtils.loadInterpolator(r6, R.interpolator.mr_linear_out_slow_in);
+        this.y0 = AnimationUtils.loadInterpolator(r6, R.interpolator.mr_fast_out_slow_in);
+        return;
+    L8:
+        yq2.c().getClass();
+        goto L9
     }
 
-    public static void r(View view, int i) {
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.height = i;
-        view.setLayoutParams(layoutParams);
+    public static void r(View r1, int r2) {
+        ViewGroup.LayoutParams r0 = r1.getLayoutParams();
+        r0.height = r2;
+        r1.setLayoutParams(r0);
     }
 
-    public final void k(View view, int i) {
-        jp2 jp2Var = new jp2(view.getLayoutParams().height, i, 0, view);
-        jp2Var.setDuration(this.t0);
-        jp2Var.setInterpolator(this.w0);
-        view.startAnimation(jp2Var);
+    public final void k(View r5, int r6) {
+        jp2 r1 = new jp2(r5.getLayoutParams().height, r6, 0, r5);
+        r1.setDuration(this.t0);
+        r1.setInterpolator(this.w0);
+        r5.startAnimation(r1);
     }
 
     public final boolean l() {
-        return (this.h0 == null && this.g0 == null) ? false : true;
+        if (this.h0 == null) goto L5;
+        return true;
+    L5:
+        if (this.g0 != null) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
-    public final void m(boolean z) {
-        OverlayListView overlayListView;
-        HashSet hashSet;
-        int firstVisiblePosition = this.R.getFirstVisiblePosition();
-        int i = 0;
-        while (true) {
-            int childCount = this.R.getChildCount();
-            overlayListView = this.R;
-            if (i >= childCount) {
-                break;
-            }
-            View childAt = overlayListView.getChildAt(i);
-            wq2 wq2Var = (wq2) this.S.getItem(firstVisiblePosition + i);
-            if (!z || (hashSet = this.U) == null || !hashSet.contains(wq2Var)) {
-                ((LinearLayout) childAt.findViewById(R.id.volume_item_container)).setVisibility(0);
-                AnimationSet animationSet = new AnimationSet(true);
-                AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 1.0f);
-                alphaAnimation.setDuration(0L);
-                animationSet.addAnimation(alphaAnimation);
-                new TranslateAnimation(0.0f, 0.0f, 0.0f, 0.0f).setDuration(0L);
-                animationSet.setFillAfter(true);
-                animationSet.setFillEnabled(true);
-                childAt.clearAnimation();
-                childAt.startAnimation(animationSet);
-            }
-            i++;
-        }
-        ArrayList arrayList = overlayListView.n;
-        int size = arrayList.size();
-        int i2 = 0;
-        while (i2 < size) {
-            Object obj = arrayList.get(i2);
-            i2++;
-            pb3 pb3Var = (pb3) obj;
-            pb3Var.j = true;
-            pb3Var.k = true;
-            hd5 hd5Var = pb3Var.l;
-            if (hd5Var != null) {
-                qp2 qp2Var = (qp2) hd5Var.p;
-                qp2Var.W.remove((wq2) hd5Var.o);
-                qp2Var.S.notifyDataSetChanged();
-            }
-        }
-        if (z) {
-            return;
-        }
+    public final void m(boolean r11) {
+        int r0 = this.R.getFirstVisiblePosition();
+        int r2 = 0;
+    L3:
+        int r3 = this.R.getChildCount();
+        OverlayListView r4 = this.R;
+        if (r2 >= r3) goto L14;
+        View r5 = r4.getChildAt(r2);
+        wq2 r6 = (wq2) this.S.getItem(r0 + r2);
+        if (r11 == false) goto L12;
+        HashSet r7 = this.U;
+        if (r7 == null) goto L12;
+        if (r7.contains(r6) == false) goto L12;
+    L13:
+        r2 = r2 + 1;
+    L12:
+        ((LinearLayout) r5.findViewById(R.id.volume_item_container)).setVisibility(0);
+        AnimationSet r8 = new AnimationSet(true);
+        AlphaAnimation r9 = new AlphaAnimation(1.0f, 1.0f);
+        r9.setDuration(0);
+        r8.addAnimation(r9);
+        new TranslateAnimation(0.0f, 0.0f, 0.0f, 0.0f).setDuration(0);
+        r8.setFillAfter(true);
+        r8.setFillEnabled(true);
+        r5.clearAnimation();
+        r5.startAnimation(r8);
+        goto L13
+    L14:
+        ArrayList r1 = r4.n;
+        int r10 = r1.size();
+        int r12 = 0;
+    L15:
+        if (r12 >= r10) goto L19;
+        Object r13 = r1.get(r12);
+        r12 = r12 + 1;
+        pb3 r14 = (pb3) r13;
+        r14.j = true;
+        r14.k = true;
+        hd5 r15 = r14.l;
+        if (r15 == null) goto L15;
+        qp2 r16 = (qp2) r15.p;
+        r16.W.remove((wq2) r15.o);
+        r16.S.notifyDataSetChanged();
+        goto L15
+    L19:
+        if (r11 == true) goto L30;
         n(false);
+        return;
     }
 
-    public final void n(boolean z) {
+    public final void n(boolean r3) {
         this.U = null;
         this.V = null;
         this.r0 = false;
-        if (this.s0) {
-            this.s0 = false;
-            w(z);
-        }
+        if (this.s0 == false) goto L5;
+        this.s0 = false;
+        w(r3);
+    L5:
         this.R.setEnabled(true);
     }
 
-    public final int o(int i, int i2) {
-        float f;
-        float f2;
-        int i3 = this.z;
-        if (i >= i2) {
-            f = i3 * i2;
-            f2 = i;
-        } else {
-            f = i3 * 9.0f;
-            f2 = 16.0f;
-        }
-        return (int) ((f / f2) + 0.5f);
+    public final int o(int r2, int r3) {
+        int r1 = this.z;
+        if (r2 < r3) goto L7;
+        float r4 = r1 * r3;
+        float r5 = r2;
+    L6:
+        return (int) ((r4 / r5) + 0.5f);
+    L7:
+        r4 = r1 * 9.0f;
+        r5 = 16.0f;
+        goto L6
     }
 
     @Override // android.app.Dialog, android.view.Window.Callback
     public final void onAttachedToWindow() {
         super.onAttachedToWindow();
-        this.u.a(rq2.c, this.v, 2);
-        ui1 ui1Var = yq2.c;
+        rq2 r0 = rq2.c;
+        ap2 r1 = this.v;
+        this.u.a(r0, r1, 2);
+        ui1 r2 = yq2.c;
         s();
     }
 
     @Override // defpackage.f9, defpackage.dg, defpackage.n70, android.app.Dialog
-    public final void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
+    public final void onCreate(Bundle r11) {
+        super.onCreate(r11);
         getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         setContentView(R.layout.mr_controller_material_dialog_b);
         findViewById(android.R.id.button3).setVisibility(8);
-        lp2 lp2Var = new lp2(this, 0);
-        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.mr_expandable_area);
-        this.E = frameLayout;
-        frameLayout.setOnClickListener(new lp2(this, 1));
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.mr_dialog_area);
-        this.F = linearLayout;
-        linearLayout.setOnClickListener(new hp2());
-        Context context = this.x;
-        int iA = fu.A(context, 0, R.attr.colorPrimary);
-        if (v50.d(iA, fu.A(context, 0, android.R.attr.colorBackground)) < 3.0d) {
-            iA = fu.A(context, 0, R.attr.colorAccent);
-        }
-        Button button = (Button) findViewById(android.R.id.button2);
-        this.A = button;
-        button.setText(R.string.mr_controller_disconnect);
-        this.A.setTextColor(iA);
-        this.A.setOnClickListener(lp2Var);
-        Button button2 = (Button) findViewById(android.R.id.button1);
-        this.B = button2;
-        button2.setText(R.string.mr_controller_stop_casting);
-        this.B.setTextColor(iA);
-        this.B.setOnClickListener(lp2Var);
+        lp2 r12 = new lp2(this, 0);
+        FrameLayout r2 = (FrameLayout) findViewById(R.id.mr_expandable_area);
+        this.E = r2;
+        r2.setOnClickListener(new lp2(this, 1));
+        LinearLayout r3 = (LinearLayout) findViewById(R.id.mr_dialog_area);
+        this.F = r3;
+        r3.setOnClickListener(new hp2());
+        Context r4 = this.x;
+        int r5 = fu.A(r4, 0, R.attr.colorPrimary);
+        if (v50.d(r5, fu.A(r4, 0, android.R.attr.colorBackground)) >= 3.0d) goto L5;
+        r5 = fu.A(r4, 0, R.attr.colorAccent);
+    L5:
+        Button r6 = (Button) findViewById(android.R.id.button2);
+        this.A = r6;
+        r6.setText(R.string.mr_controller_disconnect);
+        this.A.setTextColor(r5);
+        this.A.setOnClickListener(r12);
+        Button r7 = (Button) findViewById(android.R.id.button1);
+        this.B = r7;
+        r7.setText(R.string.mr_controller_stop_casting);
+        this.B.setTextColor(r5);
+        this.B.setOnClickListener(r12);
         this.K = (TextView) findViewById(R.id.mr_name);
-        ((ImageButton) findViewById(R.id.mr_close)).setOnClickListener(lp2Var);
+        ((ImageButton) findViewById(R.id.mr_close)).setOnClickListener(r12);
+        FrameLayout r8 = (FrameLayout) findViewById(R.id.mr_custom_control);
         this.G = (FrameLayout) findViewById(R.id.mr_default_control);
-        lp2 lp2Var2 = new lp2(this, 2);
-        ImageView imageView = (ImageView) findViewById(R.id.mr_art);
-        this.H = imageView;
-        imageView.setOnClickListener(lp2Var2);
-        findViewById(R.id.mr_control_title_container).setOnClickListener(lp2Var2);
+        lp2 r9 = new lp2(this, 2);
+        ImageView r10 = (ImageView) findViewById(R.id.mr_art);
+        this.H = r10;
+        r10.setOnClickListener(r9);
+        findViewById(R.id.mr_control_title_container).setOnClickListener(r9);
         this.N = (LinearLayout) findViewById(R.id.mr_media_main_control);
         this.Q = findViewById(R.id.mr_control_divider);
         this.O = (RelativeLayout) findViewById(R.id.mr_playback_control);
         this.I = (TextView) findViewById(R.id.mr_control_title);
         this.J = (TextView) findViewById(R.id.mr_control_subtitle);
-        ImageButton imageButton = (ImageButton) findViewById(R.id.mr_control_playback_ctrl);
-        this.C = imageButton;
-        imageButton.setOnClickListener(lp2Var);
-        LinearLayout linearLayout2 = (LinearLayout) findViewById(R.id.mr_volume_control);
-        this.P = linearLayout2;
-        linearLayout2.setVisibility(8);
-        SeekBar seekBar = (SeekBar) findViewById(R.id.mr_volume_slider);
-        this.X = seekBar;
-        wq2 wq2Var = this.w;
-        seekBar.setTag(wq2Var);
-        op2 op2Var = new op2(this);
-        this.Y = op2Var;
-        this.X.setOnSeekBarChangeListener(op2Var);
+        ImageButton r13 = (ImageButton) findViewById(R.id.mr_control_playback_ctrl);
+        this.C = r13;
+        r13.setOnClickListener(r12);
+        LinearLayout r14 = (LinearLayout) findViewById(R.id.mr_volume_control);
+        this.P = r14;
+        r14.setVisibility(8);
+        SeekBar r15 = (SeekBar) findViewById(R.id.mr_volume_slider);
+        this.X = r15;
+        wq2 r0 = this.w;
+        r15.setTag(r0);
+        op2 r16 = new op2(this);
+        this.Y = r16;
+        this.X.setOnSeekBarChangeListener(r16);
         this.R = (OverlayListView) findViewById(R.id.mr_volume_group_list);
         this.T = new ArrayList();
-        pp2 pp2Var = new pp2(this, this.R.getContext(), this.T);
-        this.S = pp2Var;
-        this.R.setAdapter((ListAdapter) pp2Var);
+        pp2 r17 = new pp2(this, this.R.getContext(), this.T);
+        this.S = r17;
+        this.R.setAdapter(r17);
         this.W = new HashSet();
-        LinearLayout linearLayout3 = this.N;
-        OverlayListView overlayListView = this.R;
-        boolean zQ = q();
-        int iA2 = fu.A(context, 0, R.attr.colorPrimary);
-        int iA3 = fu.A(context, 0, R.attr.colorPrimaryDark);
-        if (zQ && fu.u(context, 0) == -570425344) {
-            iA3 = iA2;
-            iA2 = -1;
-        }
-        linearLayout3.setBackgroundColor(iA2);
-        overlayListView.setBackgroundColor(iA3);
-        linearLayout3.setTag(Integer.valueOf(iA2));
-        overlayListView.setTag(Integer.valueOf(iA3));
-        MediaRouteVolumeSlider mediaRouteVolumeSlider = (MediaRouteVolumeSlider) this.X;
-        LinearLayout linearLayout4 = this.N;
-        int iU = fu.u(context, 0);
-        if (Color.alpha(iU) != 255) {
-            iU = v50.g(iU, ((Integer) linearLayout4.getTag()).intValue());
-        }
-        mediaRouteVolumeSlider.a(iU, iU);
-        HashMap map = new HashMap();
-        this.e0 = map;
-        map.put(wq2Var, this.X);
-        MediaRouteExpandCollapseButton mediaRouteExpandCollapseButton = (MediaRouteExpandCollapseButton) findViewById(R.id.mr_group_expand_collapse);
-        this.D = mediaRouteExpandCollapseButton;
-        mediaRouteExpandCollapseButton.v = new lp2(this, 3);
-        this.w0 = this.q0 ? this.x0 : this.y0;
-        this.t0 = context.getResources().getInteger(R.integer.mr_controller_volume_group_list_animation_duration_ms);
-        this.u0 = context.getResources().getInteger(R.integer.mr_controller_volume_group_list_fade_in_duration_ms);
-        this.v0 = context.getResources().getInteger(R.integer.mr_controller_volume_group_list_fade_out_duration_ms);
+        LinearLayout r18 = this.N;
+        OverlayListView r19 = this.R;
+        boolean r20 = q();
+        int r21 = fu.A(r4, 0, R.attr.colorPrimary);
+        int r22 = fu.A(r4, 0, R.attr.colorPrimaryDark);
+        if (r20 == true) goto L8;
+    L10:
+        r18.setBackgroundColor(r21);
+        r19.setBackgroundColor(r22);
+        r18.setTag(Integer.valueOf(r21));
+        r19.setTag(Integer.valueOf(r22));
+        MediaRouteVolumeSlider r110 = (MediaRouteVolumeSlider) this.X;
+        LinearLayout r23 = this.N;
+        int r1 = fu.u(r4, 0);
+        if (Color.alpha(r1) == 255) goto L13;
+        r1 = v50.g(r1, ((Integer) r23.getTag()).intValue());
+    L13:
+        r110.a(r1, r1);
+        HashMap r111 = new HashMap();
+        this.e0 = r111;
+        r111.put(r0, this.X);
+        MediaRouteExpandCollapseButton r112 = (MediaRouteExpandCollapseButton) findViewById(R.id.mr_group_expand_collapse);
+        this.D = r112;
+        r112.v = new lp2(this, 3);
+        if (this.q0 == false) goto L16;
+        Interpolator r113 = this.x0;
+    L17:
+        this.w0 = r113;
+        this.t0 = r4.getResources().getInteger(R.integer.mr_controller_volume_group_list_animation_duration_ms);
+        this.u0 = r4.getResources().getInteger(R.integer.mr_controller_volume_group_list_fade_in_duration_ms);
+        this.v0 = r4.getResources().getInteger(R.integer.mr_controller_volume_group_list_fade_out_duration_ms);
         this.y = true;
         v();
+        return;
+    L16:
+        r113 = this.y0;
+        goto L17
+    L8:
+        if (fu.u(r4, 0) != (-570425344)) goto L10;
+        r22 = r21;
+        r21 = -1;
+        goto L10
     }
 
     @Override // android.app.Dialog, android.view.Window.Callback
@@ -336,341 +358,374 @@ public final class qp2 extends f9 {
     }
 
     @Override // defpackage.f9, android.app.Dialog, android.view.KeyEvent.Callback
-    public final boolean onKeyDown(int i, KeyEvent keyEvent) {
-        oq2 oq2VarF;
-        if (i != 25 && i != 24) {
-            return super.onKeyDown(i, keyEvent);
-        }
-        if (this.M || !this.q0) {
-            int i2 = i == 25 ? -1 : 1;
-            wq2 wq2Var = this.w;
-            wq2Var.getClass();
-            yq2.b();
-            if (i2 != 0 && (oq2VarF = yq2.c().f(wq2Var)) != null) {
-                oq2VarF.i(i2);
-            }
-        }
+    public final boolean onKeyDown(int r3, KeyEvent r4) {
+        if (r3 == 25) goto L10;
+        if (r3 == 24) goto L10;
+        return super.onKeyDown(r3, r4);
+    L10:
+        if (this.M == false) goto L12;
+    L13:
+        if (r3 != 25) goto L15;
+        int r5 = -1;
+    L16:
+        wq2 r2 = this.w;
+        r2.getClass();
+        yq2.b();
+        if (r5 == 0) goto L21;
+        oq2 r6 = yq2.c().f(r2);
+        if (r6 == null) goto L21;
+        r6.i(r5);
+    L21:
         return true;
+    L15:
+        r5 = 1;
+        goto L16
+    L12:
+        if (this.q0 == true) goto L21;
+        goto L13
     }
 
     @Override // defpackage.f9, android.app.Dialog, android.view.KeyEvent.Callback
-    public final boolean onKeyUp(int i, KeyEvent keyEvent) {
-        if (i == 25 || i == 24) {
-            return true;
-        }
-        return super.onKeyUp(i, keyEvent);
+    public final boolean onKeyUp(int r2, KeyEvent r3) {
+        if (r2 != 25) goto L5;
+        return true;
+    L5:
+        if (r2 != 24) goto L8;
+        return true;
+    L8:
+        return super.onKeyUp(r2, r3);
     }
 
-    public final int p(boolean z) {
-        if (!z && this.P.getVisibility() != 0) {
-            return 0;
-        }
-        int paddingBottom = this.N.getPaddingBottom() + this.N.getPaddingTop();
-        if (z) {
-            paddingBottom += this.O.getMeasuredHeight();
-        }
-        if (this.P.getVisibility() == 0) {
-            paddingBottom += this.P.getMeasuredHeight();
-        }
-        return (z && this.P.getVisibility() == 0) ? this.Q.getMeasuredHeight() + paddingBottom : paddingBottom;
+    public final int p(boolean r3) {
+        if (r3 == false) goto L4;
+    L8:
+        int r0 = this.N.getPaddingTop();
+        int r1 = this.N.getPaddingBottom() + r0;
+        if (r3 == false) goto L12;
+        r1 = r1 + this.O.getMeasuredHeight();
+    L12:
+        if (this.P.getVisibility() != 0) goto L14;
+        r1 = r1 + this.P.getMeasuredHeight();
+    L14:
+        if (r3 == true) goto L16;
+    L19:
+        return r1;
+    L16:
+        if (this.P.getVisibility() != 0) goto L19;
+        return this.Q.getMeasuredHeight() + r1;
+    L4:
+        if (this.P.getVisibility() == 0) goto L8;
+        return 0;
     }
 
     public final boolean q() {
-        wq2 wq2Var = this.w;
-        return wq2Var.e() && Collections.unmodifiableList(wq2Var.v).size() > 1;
+        wq2 r1 = this.w;
+        if (r1.e() == true) goto L5;
+        return false;
+    L5:
+        if (Collections.unmodifiableList(r1.v).size() <= 1) goto L9;
+        return true;
+    L9:
+        return false;
     }
 
     public final void s() {
     }
 
-    /* JADX WARN: Code duplicated, block: B:102:0x016e  */
-    /* JADX WARN: Code duplicated, block: B:108:0x018b A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:109:0x018d  */
-    /* JADX WARN: Code duplicated, block: B:112:0x019f A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:113:0x01a1  */
-    /* JADX WARN: Code duplicated, block: B:116:0x01b3  */
-    /* JADX WARN: Code duplicated, block: B:120:0x01bb  */
-    /* JADX WARN: Code duplicated, block: B:123:0x01c1  */
-    /* JADX WARN: Code duplicated, block: B:56:0x00e5  */
-    /* JADX WARN: Code duplicated, block: B:88:0x014f  */
-    /* JADX WARN: Code duplicated, block: B:89:0x0151  */
-    /* JADX WARN: Code duplicated, block: B:92:0x0159  */
-    /* JADX WARN: Code duplicated, block: B:93:0x015b  */
-    /* JADX WARN: Code duplicated, block: B:96:0x0163  */
-    public final void t(boolean z) {
-        int i;
-        boolean z2;
-        boolean z3;
-        int i2;
-        int i3;
-        PlaybackStateCompat playbackStateCompat;
-        int i4;
-        boolean z4;
-        Context context;
-        int i5;
-        int i6;
-        boolean z5 = true;
-        if (this.Z != null) {
-            this.o0 = true;
-            this.p0 = z | this.p0;
-            return;
-        }
+    public final void t(boolean r13) {
+        boolean r1 = true;
+        if (this.Z == null) goto L6;
+        this.o0 = true;
+        this.p0 = r13 | this.p0;
+        return;
+    L6:
+        int r0 = 0;
         this.o0 = false;
         this.p0 = false;
-        wq2 wq2Var = this.w;
-        if (!wq2Var.g() || wq2Var.d()) {
-            dismiss();
-            return;
-        }
-        if (this.y) {
-            this.K.setText(wq2Var.d);
-            this.A.setVisibility(wq2Var.j ? 0 : 8);
-            if (this.l0) {
-                Bitmap bitmap = this.m0;
-                if (bitmap == null || !bitmap.isRecycled()) {
-                    this.H.setImageBitmap(this.m0);
-                    this.H.setBackgroundColor(this.n0);
-                } else {
-                    Log.w("MediaRouteCtrlDialog", "Can't set artwork image with recycled bitmap: " + this.m0);
-                }
-                this.l0 = false;
-                this.m0 = null;
-                this.n0 = 0;
-            }
-            boolean z6 = this.M;
-            if (!z6 && q()) {
-                this.P.setVisibility(8);
-                this.q0 = true;
-                this.R.setVisibility(0);
-                this.w0 = this.q0 ? this.x0 : this.y0;
-                w(false);
-            } else if ((!this.q0 || z6) && this.L) {
-                if (!wq2Var.e()) {
-                    i = wq2Var.o;
-                } else if (yq2.c == null) {
-                    i = 0;
-                } else {
-                    yq2.c().getClass();
-                    i = wq2Var.o;
-                }
-                if (i != 1) {
-                    this.P.setVisibility(8);
-                } else if (this.P.getVisibility() == 8) {
-                    this.P.setVisibility(0);
-                    this.X.setMax(wq2Var.q);
-                    this.X.setProgress(wq2Var.p);
-                    this.D.setVisibility(q() ? 0 : 8);
-                }
-            } else {
-                this.P.setVisibility(8);
-            }
-            if (l()) {
-                MediaDescriptionCompat mediaDescriptionCompat = this.h0;
-                CharSequence charSequence = mediaDescriptionCompat == null ? null : mediaDescriptionCompat.o;
-                boolean zIsEmpty = TextUtils.isEmpty(charSequence);
-                MediaDescriptionCompat mediaDescriptionCompat2 = this.h0;
-                CharSequence charSequence2 = mediaDescriptionCompat2 != null ? mediaDescriptionCompat2.p : null;
-                boolean zIsEmpty2 = TextUtils.isEmpty(charSequence2);
-                if (wq2Var.r != -1) {
-                    this.I.setText(R.string.mr_controller_casting_screen);
-                } else {
-                    PlaybackStateCompat playbackStateCompat2 = this.g0;
-                    if (playbackStateCompat2 == null || playbackStateCompat2.n == 0) {
-                        this.I.setText(R.string.mr_controller_no_media_selected);
-                    } else {
-                        if (zIsEmpty && zIsEmpty2) {
-                            this.I.setText(R.string.mr_controller_no_info_available);
-                        } else {
-                            if (zIsEmpty) {
-                                z2 = false;
-                            } else {
-                                this.I.setText(charSequence);
-                                z2 = true;
-                            }
-                            if (zIsEmpty2) {
-                                z3 = false;
-                            } else {
-                                this.J.setText(charSequence2);
-                                z3 = true;
-                            }
-                        }
-                        TextView textView = this.I;
-                        if (z2) {
-                            i2 = 0;
-                        } else {
-                            i2 = 8;
-                        }
-                        textView.setVisibility(i2);
-                        TextView textView2 = this.J;
-                        if (z3) {
-                            i3 = 0;
-                        } else {
-                            i3 = 8;
-                        }
-                        textView2.setVisibility(i3);
-                        playbackStateCompat = this.g0;
-                        if (playbackStateCompat != null) {
-                            i4 = playbackStateCompat.n;
-                            if (i4 != 6 || i4 == 3) {
-                                z4 = true;
-                            } else {
-                                z4 = false;
-                            }
-                            context = this.C.getContext();
-                            if (!z4 && (this.g0.r & 514) != 0) {
-                                i5 = R.attr.mediaRoutePauseDrawable;
-                                i6 = R.string.mr_controller_pause;
-                            } else if (!z4 && (this.g0.r & 1) != 0) {
-                                i5 = R.attr.mediaRouteStopDrawable;
-                                i6 = R.string.mr_controller_stop;
-                            } else if (!z4 || (this.g0.r & 516) == 0) {
-                                z5 = false;
-                                i5 = 0;
-                                i6 = 0;
-                            } else {
-                                i5 = R.attr.mediaRoutePlayDrawable;
-                                i6 = R.string.mr_controller_play;
-                            }
-                            this.C.setVisibility(z5 ? 0 : 8);
-                            if (z5) {
-                                this.C.setImageResource(fu.B(context, i5));
-                                this.C.setContentDescription(context.getResources().getText(i6));
-                            }
-                        }
-                    }
-                }
-                z3 = false;
-                z2 = true;
-                TextView textView3 = this.I;
-                if (z2) {
-                    i2 = 0;
-                } else {
-                    i2 = 8;
-                }
-                textView3.setVisibility(i2);
-                TextView textView4 = this.J;
-                if (z3) {
-                    i3 = 0;
-                } else {
-                    i3 = 8;
-                }
-                textView4.setVisibility(i3);
-                playbackStateCompat = this.g0;
-                if (playbackStateCompat != null) {
-                    i4 = playbackStateCompat.n;
-                    if (i4 != 6) {
-                        z4 = true;
-                    } else {
-                        z4 = true;
-                    }
-                    context = this.C.getContext();
-                    if (!z4) {
-                        if (!z4) {
-                            if (z4) {
-                                z5 = false;
-                                i5 = 0;
-                                i6 = 0;
-                            } else {
-                                z5 = false;
-                                i5 = 0;
-                                i6 = 0;
-                            }
-                        } else if (z4) {
-                            z5 = false;
-                            i5 = 0;
-                            i6 = 0;
-                        } else {
-                            z5 = false;
-                            i5 = 0;
-                            i6 = 0;
-                        }
-                    } else if (!z4) {
-                        if (z4) {
-                            z5 = false;
-                            i5 = 0;
-                            i6 = 0;
-                        } else {
-                            z5 = false;
-                            i5 = 0;
-                            i6 = 0;
-                        }
-                    } else if (z4) {
-                        z5 = false;
-                        i5 = 0;
-                        i6 = 0;
-                    } else {
-                        z5 = false;
-                        i5 = 0;
-                        i6 = 0;
-                    }
-                    this.C.setVisibility(z5 ? 0 : 8);
-                    if (z5) {
-                        this.C.setImageResource(fu.B(context, i5));
-                        this.C.setContentDescription(context.getResources().getText(i6));
-                    }
-                }
-            }
-            w(z);
-        }
+        wq2 r2 = this.w;
+        if (r2.g() == true) goto L9;
+    L126:
+        dismiss();
+        return;
+    L9:
+        if (r2.d() == true) goto L126;
+        if (this.y == true) goto L14;
+        return;
+    L14:
+        this.K.setText(r2.d);
+        Button r3 = this.A;
+        if (r2.j == false) goto L17;
+        int r4 = 0;
+    L18:
+        r3.setVisibility(r4);
+        CharSequence r5 = null;
+        if (this.l0 == false) goto L27;
+        Bitmap r6 = this.m0;
+        if (r6 != null) goto L23;
+    L25:
+        this.H.setImageBitmap(this.m0);
+        this.H.setBackgroundColor(this.n0);
+    L26:
+        this.l0 = false;
+        this.m0 = null;
+        this.n0 = 0;
+        goto L27
+    L23:
+        if (r6.isRecycled() == false) goto L25;
+        Log.w("MediaRouteCtrlDialog", "Can't set artwork image with recycled bitmap: " + this.m0);
+    L27:
+        boolean r7 = this.M;
+        if (r7 == true) goto L37;
+        if (q() == false) goto L37;
+        this.P.setVisibility(8);
+        this.q0 = true;
+        this.R.setVisibility(0);
+        if (this.q0 == false) goto L34;
+        Interpolator r8 = this.x0;
+    L35:
+        this.w0 = r8;
+        w(false);
+    L58:
+        if (l() == false) goto L124;
+        MediaDescriptionCompat r9 = this.h0;
+        if (r9 != null) goto L62;
+        CharSequence r10 = null;
+    L63:
+        boolean r11 = TextUtils.isEmpty(r10);
+        MediaDescriptionCompat r12 = this.h0;
+        if (r12 == null) goto L67;
+        r5 = r12.p;
+    L67:
+        boolean r14 = TextUtils.isEmpty(r5);
+        if (r2.r == (-1)) goto L71;
+        this.I.setText(R.string.mr_controller_casting_screen);
+    L70:
+        boolean r15 = false;
+        boolean r16 = true;
+    L86:
+        TextView r17 = this.I;
+        if (r16 == false) goto L89;
+        int r18 = 0;
+    L90:
+        r17.setVisibility(r18);
+        TextView r19 = this.J;
+        if (r15 == false) goto L93;
+        int r20 = 0;
+    L94:
+        r19.setVisibility(r20);
+        PlaybackStateCompat r21 = this.g0;
+        if (r21 == null) goto L124;
+        int r22 = r21.n;
+        if (r22 != 6) goto L99;
+    L102:
+        boolean r23 = true;
+    L103:
+        Context r24 = this.C.getContext();
+        if (r23 == true) goto L106;
+    L108:
+        if (r23 == true) goto L110;
+    L112:
+        if (r23 == false) goto L114;
+    L116:
+        r1 = false;
+        int r25 = 0;
+        int r26 = 0;
+    L117:
+        ImageButton r27 = this.C;
+        if (r1 == true) goto L121;
+        r0 = 8;
+    L121:
+        r27.setVisibility(r0);
+        if (r1 == false) goto L124;
+        this.C.setImageResource(fu.B(r24, r25));
+        this.C.setContentDescription(r24.getResources().getText(r26));
+        goto L124
+    L114:
+        if ((this.g0.r & 516) == 0) goto L116;
+        r25 = R.attr.mediaRoutePlayDrawable;
+        r26 = R.string.mr_controller_play;
+        goto L117
+    L110:
+        if ((this.g0.r & 1) == 0) goto L112;
+        r25 = R.attr.mediaRouteStopDrawable;
+        r26 = R.string.mr_controller_stop;
+        goto L117
+    L106:
+        if ((this.g0.r & 514) == 0) goto L108;
+        r25 = R.attr.mediaRoutePauseDrawable;
+        r26 = R.string.mr_controller_pause;
+        goto L117
+    L99:
+        if (r22 == 3) goto L102;
+        r23 = false;
+        goto L103
+    L93:
+        r20 = 8;
+        goto L94
+    L89:
+        r18 = 8;
+        goto L90
+    L71:
+        PlaybackStateCompat r28 = this.g0;
+        if (r28 != null) goto L74;
+    L85:
+        this.I.setText(R.string.mr_controller_no_media_selected);
+        goto L70
+    L74:
+        if (r28.n == 0) goto L85;
+        if (r11 == false) goto L79;
+        if (r14 == false) goto L79;
+        this.I.setText(R.string.mr_controller_no_info_available);
+    L79:
+        if (r11 == true) goto L81;
+        this.I.setText(r10);
+        r16 = true;
+    L82:
+        if (r14 == true) goto L84;
+        this.J.setText(r5);
+        r15 = true;
+        goto L86
+    L84:
+        r15 = false;
+        goto L86
+    L81:
+        r16 = false;
+        goto L82
+    L62:
+        r10 = r9.o;
+    L124:
+        w(r13);
+        return;
+    L34:
+        r8 = this.y0;
+    L37:
+        if (this.q0 == false) goto L40;
+        if (r7 == true) goto L40;
+    L56:
+        this.P.setVisibility(8);
+    L40:
+        if (this.L == false) goto L56;
+        if (r2.e() == true) goto L44;
+    L47:
+        int r29 = r2.o;
+    L48:
+        if (r29 != 1) goto L56;
+        if (this.P.getVisibility() != 8) goto L58;
+        this.P.setVisibility(0);
+        this.X.setMax(r2.q);
+        this.X.setProgress(r2.p);
+        MediaRouteExpandCollapseButton r30 = this.D;
+        if (q() == false) goto L54;
+        int r31 = 0;
+    L55:
+        r30.setVisibility(r31);
+        goto L58
+    L54:
+        r31 = 8;
+        goto L55
+    L44:
+        if (yq2.c != null) goto L46;
+        r29 = 0;
+        goto L48
+    L46:
+        yq2.c().getClass();
+        goto L47
+    L17:
+        r4 = 8;
+        goto L18
     }
 
     public final void u() {
-        MediaDescriptionCompat mediaDescriptionCompat = this.h0;
-        Bitmap bitmap = mediaDescriptionCompat == null ? null : mediaDescriptionCompat.r;
-        Uri uri = mediaDescriptionCompat != null ? mediaDescriptionCompat.s : null;
-        mp2 mp2Var = this.i0;
-        Bitmap bitmap2 = mp2Var == null ? this.j0 : mp2Var.a;
-        Uri uri2 = mp2Var == null ? this.k0 : mp2Var.b;
-        if (bitmap2 == bitmap) {
-            if (bitmap2 != null) {
-                return;
-            }
-            if (uri2 != null && uri2.equals(uri)) {
-                return;
-            }
-            if (uri2 == null && uri == null) {
-                return;
-            }
-        }
-        if (!q() || this.M) {
-            mp2 mp2Var2 = this.i0;
-            if (mp2Var2 != null) {
-                mp2Var2.cancel(true);
-            }
-            mp2 mp2Var3 = new mp2(this);
-            this.i0 = mp2Var3;
-            mp2Var3.execute(new Void[0]);
-        }
+        MediaDescriptionCompat r0 = this.h0;
+        Uri r1 = null;
+        if (r0 != null) goto L5;
+        Bitmap r2 = null;
+    L6:
+        if (r0 == null) goto L9;
+        r1 = r0.s;
+    L9:
+        mp2 r3 = this.i0;
+        if (r3 != null) goto L12;
+        Bitmap r4 = this.j0;
+    L13:
+        if (r3 != null) goto L15;
+        Uri r5 = this.k0;
+    L16:
+        if (r4 != r2) goto L27;
+        if (r4 != null) goto L36;
+        if (r5 != null) goto L21;
+    L23:
+        if (r5 != null) goto L27;
+        if (r1 != null) goto L27;
+        return;
+    L21:
+        if (r5.equals(r1) == false) goto L23;
+        return;
+    L36:
+        return;
+    L27:
+        if (q() == true) goto L29;
+    L31:
+        mp2 r6 = this.i0;
+        if (r6 == null) goto L34;
+        r6.cancel(true);
+    L34:
+        mp2 r7 = new mp2(this);
+        this.i0 = r7;
+        r7.execute(new Void[0]);
+        return;
+    L29:
+        if (this.M == true) goto L31;
+        return;
+    L15:
+        r5 = r3.b;
+        goto L16
+    L12:
+        r4 = r3.a;
+        goto L13
+    L5:
+        r2 = r0.r;
+        goto L6
     }
 
     public final void v() {
-        Context context = this.x;
-        int iP = xl.p(context);
-        getWindow().setLayout(iP, -2);
-        View decorView = getWindow().getDecorView();
-        this.z = (iP - decorView.getPaddingLeft()) - decorView.getPaddingRight();
-        Resources resources = context.getResources();
-        this.a0 = resources.getDimensionPixelSize(R.dimen.mr_controller_volume_group_list_item_icon_size);
-        this.b0 = resources.getDimensionPixelSize(R.dimen.mr_controller_volume_group_list_item_height);
-        this.c0 = resources.getDimensionPixelSize(R.dimen.mr_controller_volume_group_list_max_height);
+        Context r0 = this.x;
+        int r1 = xl.p(r0);
+        getWindow().setLayout(r1, -2);
+        View r2 = getWindow().getDecorView();
+        this.z = (r1 - r2.getPaddingLeft()) - r2.getPaddingRight();
+        Resources r3 = r0.getResources();
+        this.a0 = r3.getDimensionPixelSize(R.dimen.mr_controller_volume_group_list_item_icon_size);
+        this.b0 = r3.getDimensionPixelSize(R.dimen.mr_controller_volume_group_list_item_height);
+        this.c0 = r3.getDimensionPixelSize(R.dimen.mr_controller_volume_group_list_max_height);
         this.j0 = null;
         this.k0 = null;
         u();
         t(false);
     }
 
-    public final void w(boolean z) {
+    public final void w(boolean r3) {
         this.G.requestLayout();
-        this.G.getViewTreeObserver().addOnGlobalLayoutListener(new ip2(this, z));
+        this.G.getViewTreeObserver().addOnGlobalLayoutListener(new ip2(this, r3));
     }
 
-    public final void x(boolean z) {
-        int i = 0;
-        this.Q.setVisibility((this.P.getVisibility() == 0 && z) ? 0 : 8);
-        LinearLayout linearLayout = this.N;
-        if (this.P.getVisibility() == 8 && !z) {
-            i = 8;
-        }
-        linearLayout.setVisibility(i);
+    public final void x(boolean r5) {
+        View r0 = this.Q;
+        int r2 = 0;
+        if (this.P.getVisibility() != 0) goto L6;
+        if (r5 == false) goto L6;
+        int r1 = 0;
+    L7:
+        r0.setVisibility(r1);
+        LinearLayout r3 = this.N;
+        if (this.P.getVisibility() != 8) goto L11;
+        if (r5 == true) goto L11;
+        r2 = 8;
+    L11:
+        r3.setVisibility(r2);
+        return;
+    L6:
+        r1 = 8;
+        goto L7
     }
 }

@@ -7,25 +7,34 @@ public final /* synthetic */ class ds2 implements Runnable {
     public final /* synthetic */ ls2 o;
     public final /* synthetic */ al3 p;
 
-    public /* synthetic */ ds2(ls2 ls2Var, al3 al3Var, int i) {
-        this.n = i;
-        this.o = ls2Var;
-        this.p = al3Var;
+    public /* synthetic */ ds2(ls2 r1, al3 r2, int r3) {
+        this.n = r3;
+        this.o = r1;
+        this.p = r2;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        al3 al3Var = this.p;
-        ls2 ls2Var = this.o;
-        switch (i) {
-            case 0:
-                ls2Var.m.v(ls2Var.H(al3Var));
-                ls2Var.i.y(al3Var.o().a(17) ? al3Var.x0() : cu4.a);
-                break;
-            default:
-                ls2Var.m.v(ls2Var.H(al3Var));
-                break;
-        }
+        int r0 = this.n;
+        al3 r1 = this.p;
+        ls2 r3 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r3.m.v(r3.H(r1));
+        return;
+    L6:
+        r3.m.v(r3.H(r1));
+        lr0 r4 = r3.i;
+        if (r1.o().a(17) == false) goto L9;
+        cu4 r2 = r1.x0();
+    L10:
+        r4.y(r2);
+        return;
+    L9:
+        r2 = cu4.a;
+        goto L10
     }
 }

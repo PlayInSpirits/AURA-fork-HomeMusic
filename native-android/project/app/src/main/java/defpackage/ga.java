@@ -6,22 +6,23 @@ public final /* synthetic */ class ga implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ gf1 o;
 
-    public /* synthetic */ ga(int i, gf1 gf1Var) {
-        this.n = i;
-        this.o = gf1Var;
+    public /* synthetic */ ga(int r1, gf1 r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        gf1 gf1Var = this.o;
-        switch (i) {
-            case 0:
-                gf1Var.invoke();
-                break;
-            default:
-                gf1Var.invoke();
-                break;
-        }
+        int r0 = this.n;
+        gf1 r1 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.invoke();
+        return;
+    L6:
+        r1.invoke();
     }
 }

@@ -7,17 +7,23 @@ import android.view.View;
 public final /* synthetic */ class ep1 implements View.OnClickListener {
     public final /* synthetic */ int n;
 
+    public /* synthetic */ ep1(int r1) {
+        this.n = r1;
+    }
+
     @Override // android.view.View.OnClickListener
-    public final void onClick(View view) {
-        String str;
-        switch (this.n) {
-            case 0:
-                str = "podcast_section_visibility";
-                break;
-            default:
-                str = "radio_section_visibility";
-                break;
-        }
-        xa3.t(str, false);
+    public final void onClick(View r1) {
+        switch(this.n) {
+            case 0: goto L7;
+            default: goto L4;
+        };
+    L4:
+        String r0 = "radio_section_visibility";
+    L5:
+        xa3.t(r0, false);
+        return;
+    L7:
+        r0 = "podcast_section_visibility";
+        goto L5
     }
 }

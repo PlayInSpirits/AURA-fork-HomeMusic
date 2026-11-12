@@ -10,24 +10,25 @@ public final /* synthetic */ class tj3 implements View.OnClickListener {
     public final /* synthetic */ PlayerControllerFragment o;
     public final /* synthetic */ ik p;
 
-    public /* synthetic */ tj3(PlayerControllerFragment playerControllerFragment, ik ikVar, int i) {
-        this.n = i;
-        this.o = playerControllerFragment;
-        this.p = ikVar;
+    public /* synthetic */ tj3(PlayerControllerFragment r1, ik r2, int r3) {
+        this.n = r3;
+        this.o = r1;
+        this.p = r2;
     }
 
     @Override // android.view.View.OnClickListener
-    public final void onClick(View view) {
-        int i = this.n;
-        ik ikVar = this.p;
-        PlayerControllerFragment playerControllerFragment = this.o;
-        switch (i) {
-            case 0:
-                playerControllerFragment.K0.F(ikVar, !"song".equals(ikVar.c));
-                break;
-            default:
-                playerControllerFragment.K0.F(ikVar, true);
-                break;
-        }
+    public final void onClick(View r4) {
+        int r5 = this.n;
+        ik r1 = this.p;
+        PlayerControllerFragment r3 = this.o;
+        switch(r5) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r3.K0.F(r1, true);
+        return;
+    L6:
+        r3.K0.F(r1, !"song".equals(r1.c));
     }
 }

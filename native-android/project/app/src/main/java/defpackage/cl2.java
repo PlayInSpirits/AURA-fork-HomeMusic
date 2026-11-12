@@ -1,98 +1,111 @@
 package defpackage;
 
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
-
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class cl2 implements xl2, qc2, rc2 {
     public final /* synthetic */ int n;
     public final /* synthetic */ bm2 o;
 
-    public /* synthetic */ cl2(bm2 bm2Var, int i) {
-        this.n = i;
-        this.o = bm2Var;
+    public /* synthetic */ cl2(bm2 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.xl2
-    public void d(pu1 pu1Var, int i) {
-        int i2 = this.n;
-        bm2 bm2Var = this.o;
-        switch (i2) {
-            case 0:
-                pu1Var.R(bm2Var.c, i);
-                break;
-            case 1:
-            case 2:
-            default:
-                pu1Var.A0(bm2Var.c, i);
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                pu1Var.d(bm2Var.c, i);
-                break;
-            case 4:
-                pu1Var.q(bm2Var.c, i);
-                break;
-            case 5:
-                pu1Var.C0(bm2Var.c, i);
-                break;
-            case 6:
-                pu1Var.e0(bm2Var.c, i);
-                break;
-            case 7:
-                pu1Var.a0(bm2Var.c, i);
-                break;
-            case 8:
-                pu1Var.B(bm2Var.c, i);
-                break;
-            case 9:
-                pu1Var.W(bm2Var.c, i);
-                break;
-            case 10:
-                pu1Var.v0(bm2Var.c, i);
-                break;
-            case 11:
-                pu1Var.H(bm2Var.c, i);
-                break;
-            case 12:
-                pu1Var.y(bm2Var.c, i);
-                break;
-            case 13:
-                cb4 cb4Var = bm2Var.n;
-                cb4Var.getClass();
-                int iF = cb4Var.a.f();
-                mm2 mm2Var = bm2Var.c;
-                if (iF < 6) {
-                    pu1Var.x(mm2Var, i, 0.0f);
-                } else {
-                    pu1Var.k(mm2Var, i);
-                }
-                break;
-            case 14:
-                pu1Var.v(bm2Var.c, i);
-                break;
-            case 15:
-                pu1Var.g0(bm2Var.c, i);
-                break;
-        }
+    public void d(pu1 r3, int r4) {
+        int r0 = this.n;
+        bm2 r2 = this.o;
+        switch(r0) {
+            case 0: goto L35;
+            case 1: goto L4;
+            case 2: goto L4;
+            case 3: goto L33;
+            case 4: goto L31;
+            case 5: goto L29;
+            case 6: goto L27;
+            case 7: goto L25;
+            case 8: goto L23;
+            case 9: goto L21;
+            case 10: goto L19;
+            case 11: goto L17;
+            case 12: goto L15;
+            case 13: goto L10;
+            case 14: goto L8;
+            case 15: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r3.A0(r2.c, r4);
+        return;
+    L6:
+        r3.g0(r2.c, r4);
+        return;
+    L8:
+        r3.v(r2.c, r4);
+        return;
+    L10:
+        cb4 r1 = r2.n;
+        r1.getClass();
+        int r5 = r1.a.f();
+        mm2 r6 = r2.c;
+        if (r5 < 6) goto L13;
+        r3.k(r6, r4);
+        return;
+    L13:
+        r3.x(r6, r4, 0.0f);
+        return;
+    L15:
+        r3.y(r2.c, r4);
+        return;
+    L17:
+        r3.H(r2.c, r4);
+        return;
+    L19:
+        r3.v0(r2.c, r4);
+        return;
+    L21:
+        r3.W(r2.c, r4);
+        return;
+    L23:
+        r3.B(r2.c, r4);
+        return;
+    L25:
+        r3.a0(r2.c, r4);
+        return;
+    L27:
+        r3.e0(r2.c, r4);
+        return;
+    L29:
+        r3.C0(r2.c, r4);
+        return;
+    L31:
+        r3.q(r2.c, r4);
+        return;
+    L33:
+        r3.d(r2.c, r4);
+        return;
+    L35:
+        r3.R(r2.c, r4);
     }
 
     @Override // defpackage.rc2
-    public void f(Object obj, w71 w71Var) {
-        ((oi3) obj).B(this.o.f1(), new ni3(w71Var));
+    public void f(Object r2, w71 r3) {
+        ((oi3) r2).B(this.o.f1(), new ni3(r3));
     }
 
     @Override // defpackage.qc2
-    public void invoke(Object obj) {
-        int i = this.n;
-        bm2 bm2Var = this.o;
-        oi3 oi3Var = (oi3) obj;
-        switch (i) {
-            case 1:
-                oi3Var.O(bm2Var.z);
-                break;
-            default:
-                oi3Var.O(bm2Var.z);
-                break;
-        }
+    public void invoke(Object r2) {
+        int r0 = this.n;
+        bm2 r1 = this.o;
+        oi3 r3 = (oi3) r2;
+        switch(r0) {
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r3.O(r1.z);
+        return;
+    L6:
+        r3.O(r1.z);
     }
 }

@@ -5,25 +5,31 @@ package defpackage;
 public final class ua2 implements bb1 {
     public final float a;
 
-    public ua2(float f) {
-        this.a = f;
+    public ua2(float r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.bb1
-    public final float a(float f) {
-        return f / this.a;
+    public final float a(float r1) {
+        return r1 / this.a;
     }
 
     @Override // defpackage.bb1
-    public final float b(float f) {
-        return f * this.a;
+    public final float b(float r1) {
+        return r1 * this.a;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof ua2) && Float.compare(this.a, ((ua2) obj).a) == 0;
+    public final boolean equals(Object r4) {
+        if (this != r4) goto L6;
+        return true;
+    L6:
+        if ((r4 instanceof ua2) == true) goto L9;
+        return false;
+    L9:
+        if (Float.compare(this.a, ((ua2) r4).a) == 0) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     public final int hashCode() {

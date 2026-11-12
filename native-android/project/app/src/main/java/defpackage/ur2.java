@@ -24,7 +24,6 @@ import com.bumptech.glide.a;
 import com.eddyizm.tempus.App;
 import com.eddyizm.tempus.database.AppDatabase;
 import com.eddyizm.tempus.database.AppDatabase_Impl;
-import com.eddyizm.tempus.homemusic.WaveRetry;
 import com.eddyizm.tempus.subsonic.base.ApiResponse;
 import com.eddyizm.tempus.subsonic.models.Child;
 import com.eddyizm.tempus.subsonic.models.Playlist;
@@ -41,7 +40,6 @@ import java.util.List;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 import retrofit2.Response;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -51,510 +49,519 @@ public final /* synthetic */ class ur2 implements Runnable {
     public final /* synthetic */ Object o;
     public final /* synthetic */ Object p;
 
-    public /* synthetic */ ur2(hh3 hh3Var, List list, k03 k03Var) {
+    public /* synthetic */ ur2(hh3 r1, List r2, k03 r3) {
         this.n = 17;
-        this.o = list;
-        this.p = k03Var;
+        this.o = r2;
+        this.p = r3;
     }
 
-    /* JADX WARN: Code duplicated, block: B:162:0x04de  */
-    /* JADX WARN: Code duplicated, block: B:177:0x0504  */
-    /* JADX WARN: Code duplicated, block: B:178:0x0506  */
-    /* JADX WARN: Code duplicated, block: B:179:0x0508  */
-    /* JADX WARN: Code duplicated, block: B:181:0x050f  */
-    /* JADX WARN: Code duplicated, block: B:182:0x0511  */
-    /* JADX WARN: Code duplicated, block: B:184:0x0517  */
-    /* JADX WARN: Code duplicated, block: B:185:0x0519  */
     @Override // java.lang.Runnable
     public final void run() {
-        ab4 ab4Var;
-        SearchResult3 searchResult3;
-        int i = 4;
-        int i2 = 2;
-        long jIntValue = 0;
-        int i3 = 8;
-        int i4 = 1;
-        int i5 = 0;
-        switch (this.n) {
-            case 0:
-                tn2 tn2Var = (tn2) this.o;
-                Runnable runnable = (Runnable) this.p;
-                tn2Var.getClass();
-                runnable.run();
-                return;
-            case 1:
-                ic2 ic2Var = (ic2) this.o;
-                ResultReceiver resultReceiver = (ResultReceiver) this.p;
-                try {
-                    ab4Var = (ab4) ic2Var.get();
-                    rr2.s(ab4Var, "SessionResult must not be null");
-                    break;
-                } catch (InterruptedException e) {
-                    e = e;
-                    l93.r0("MediaSessionLegacyStub", "Custom command failed", e);
-                    ab4Var = new ab4(-1);
-                } catch (CancellationException e2) {
-                    l93.r0("MediaSessionLegacyStub", "Custom command cancelled", e2);
-                    ab4Var = new ab4(1);
-                } catch (ExecutionException e3) {
-                    e = e3;
-                    l93.r0("MediaSessionLegacyStub", "Custom command failed", e);
-                    ab4Var = new ab4(-1);
-                }
-                resultReceiver.send(ab4Var.a, ab4Var.b);
-                return;
-            case 2:
-                tn2 tn2Var2 = (tn2) this.o;
-                Intent intent = (Intent) this.p;
-                int i6 = MediaLibraryService.t;
-                fr2 fr2VarG = tn2Var2.g();
-                if (fr2VarG == null) {
-                    ComponentName component = intent.getComponent();
-                    fr2VarG = new fr2(new ms2(component != null ? component.getPackageName() : "androidx.media3.session.MediaSessionService", -1, -1), 1009002300, 8, false, null, Bundle.EMPTY);
-                }
-                if (tn2Var2.t(fr2VarG, intent)) {
-                    return;
-                }
-                l93.A("MSessionService", "Ignored unrecognized media button intent.");
-                return;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                kt2 kt2Var = (kt2) this.o;
-                ju1 ju1Var = (ju1) this.p;
-                na4 na4Var = kt2Var.f;
-                fr2 fr2VarW = na4Var.w(ju1Var.asBinder());
-                if (fr2VarW != null) {
-                    na4Var.N(fr2VarW);
-                    return;
-                }
-                return;
-            case 4:
-                ((kt2) this.o).f.s((fr2) this.p);
-                return;
-            case 5:
-                ((wc0) this.o).accept((st2) this.p);
-                return;
-            case 6:
-                v53 v53Var = (v53) this.o;
-                Context context = (Context) this.p;
-                IntentFilter intentFilter = new IntentFilter();
-                intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-                context.registerReceiver(new v9(i3, v53Var), intentFilter);
-                return;
-            case 7:
-                v9 v9Var = (v9) this.o;
-                Context context2 = (Context) this.p;
-                v53 v53Var2 = (v53) v9Var.b;
-                ConnectivityManager connectivityManager = (ConnectivityManager) context2.getSystemService("connectivity");
-                if (connectivityManager == null) {
-                    i = 0;
-                } else {
-                    try {
-                        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-                        if (activeNetworkInfo == null || !activeNetworkInfo.isConnected()) {
-                            i = 1;
-                        } else {
-                            int type = activeNetworkInfo.getType();
-                            if (type == 0) {
-                                switch (activeNetworkInfo.getSubtype()) {
-                                    case 1:
-                                    case 2:
-                                        i = 3;
-                                        break;
-                                    case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                    case 4:
-                                    case 5:
-                                    case 6:
-                                    case 7:
-                                    case 8:
-                                    case 9:
-                                    case 10:
-                                    case 11:
-                                    case 12:
-                                    case 14:
-                                    case 15:
-                                    case 17:
-                                        break;
-                                    case 13:
-                                        i = 5;
-                                        break;
-                                    case WaveRetry.MAX_FAILURES /* 16 */:
-                                    case 19:
-                                    default:
-                                        i = 6;
-                                        break;
-                                    case 18:
-                                        i = 2;
-                                        break;
-                                    case 20:
-                                        if (Build.VERSION.SDK_INT >= 29) {
-                                            i = 9;
-                                        } else {
-                                            i = 0;
-                                        }
-                                        break;
-                                }
-                            } else if (type == 1) {
-                                i = 2;
-                            } else if (type == 4 || type == 5) {
-                                switch (activeNetworkInfo.getSubtype()) {
-                                    case 1:
-                                    case 2:
-                                        i = 3;
-                                        break;
-                                    case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                                    case 4:
-                                    case 5:
-                                    case 6:
-                                    case 7:
-                                    case 8:
-                                    case 9:
-                                    case 10:
-                                    case 11:
-                                    case 12:
-                                    case 14:
-                                    case 15:
-                                    case 17:
-                                        break;
-                                    case 13:
-                                        i = 5;
-                                        break;
-                                    case WaveRetry.MAX_FAILURES /* 16 */:
-                                    case 19:
-                                    default:
-                                        i = 6;
-                                        break;
-                                    case 18:
-                                        i = 2;
-                                        break;
-                                    case 20:
-                                        if (Build.VERSION.SDK_INT >= 29) {
-                                            i = 9;
-                                        } else {
-                                            i = 0;
-                                        }
-                                        break;
-                                }
-                            } else if (type != 6) {
-                                i = type != 9 ? 8 : 7;
-                            } else {
-                                i = 5;
-                            }
-                        }
-                    } catch (SecurityException unused) {
-                    }
-                }
-                if (Build.VERSION.SDK_INT < 31 || i != 5) {
-                    v53Var2.c(i);
-                    return;
-                }
-                try {
-                    TelephonyManager telephonyManager = (TelephonyManager) context2.getSystemService("phone");
-                    telephonyManager.getClass();
-                    t53 t53Var = new t53(v53Var2);
-                    telephonyManager.registerTelephonyCallback(v53Var2.a, t53Var);
-                    telephonyManager.unregisterTelephonyCallback(t53Var);
-                    return;
-                } catch (RuntimeException unused2) {
-                    v53Var2.c(5);
-                    return;
-                }
-            case 8:
-                xi3 xi3Var = (xi3) this.o;
-                xi3Var.n0((bj2) this.p);
-                xi3Var.r0.postDelayed(xi3Var.s0, 1000L);
-                return;
-            case 9:
-                bl2 bl2Var = (bl2) this.o;
-                hk3 hk3Var = (hk3) this.p;
-                try {
-                    bj2 bj2Var = (bj2) bl2Var.get();
-                    hk3Var.o0 = bj2Var;
-                    bj2Var.getClass();
-                    do2 do2VarK0 = bj2Var.K0();
-                    do2VarK0.getClass();
-                    hk3Var.m0(do2VarK0, bj2Var.o0());
-                    bj2Var.v(new gk3(hk3Var, bj2Var));
-                    return;
-                } catch (Exception e4) {
-                    e4.printStackTrace();
-                    return;
-                }
-            case 10:
-                yk3 yk3Var = (yk3) this.o;
-                xk3 xk3Var = (xk3) this.p;
-                try {
-                    bj2 bj2Var2 = (bj2) yk3Var.r.get();
-                    int iC = xk3Var.c();
-                    Child child = (Child) yk3Var.s.get(iC);
-                    String str = yk3Var.t;
-                    if (str == null || !str.equals(child.getId())) {
-                        bj2Var2.n(iC, 0L);
-                        bj2Var2.m0();
-                    } else if (yk3Var.u) {
-                        bj2Var2.c();
-                    } else {
-                        bj2Var2.m0();
-                    }
-                    return;
-                } catch (Exception e5) {
-                    Log.w("PlayerSongQueueAdapter", "Error obtaining MediaBrowser", e5);
-                    return;
-                }
-            case 11:
-                mm3 mm3Var = (mm3) this.o;
-                List list = (List) this.p;
-                ml3 ml3Var = mm3Var.b;
-                s24 s24Var = (s24) ml3Var.a;
-                List<Playlist> list2 = (List) xl.E(s24Var, true, false, new kl3(i5, ml3Var));
-                if (list2 != null) {
-                    HashSet hashSet = new HashSet();
-                    Iterator it = list.iterator();
-                    while (it.hasNext()) {
-                        hashSet.add(((Playlist) it.next()).getId());
-                    }
-                    String strD = ud3.D();
-                    for (Playlist playlist : list2) {
-                        if (!hashSet.contains(playlist.getId())) {
-                            mm3Var.c.B(playlist.getId());
-                            xl.E((s24) mm3Var.a.o, false, true, new rs0(11, playlist.getId()));
-                            if (strD != null) {
-                                mm3Var.d.o(playlist.getId(), strD);
-                            }
-                            xl.E(s24Var, false, true, new hl3(ml3Var, playlist, i4));
-                            Log.d("PlaylistRepository", "Removed orphaned playlist " + playlist.getId() + " from local DB.");
-                        }
-                    }
-                }
-                xl.E(s24Var, false, true, new o(22, ml3Var, list));
-                Log.d("PlaylistRepository", "Cached " + list.size() + " playlists to local DB.");
-                return;
-            case 12:
-                pq3 pq3Var = (pq3) this.o;
-                rc5 rc5Var = (rc5) this.p;
-                synchronized (pq3Var.k) {
-                    try {
-                        ArrayList arrayList = pq3Var.j;
-                        int size = arrayList.size();
-                        int i7 = 0;
-                        while (i7 < size) {
-                            Object obj = arrayList.get(i7);
-                            i7++;
-                            ((w21) obj).b(rc5Var, false);
-                        }
-                    } catch (Throwable th) {
-                        throw th;
-                    }
-                    break;
-                }
-                return;
-            case 13:
-                ((hr3) this.o).E((m84) this.p);
-                return;
-            case 14:
-                xl.E((s24) ((vs3) this.o).a.o, false, true, new jl3(1, System.currentTimeMillis(), (String) this.p));
-                return;
-            case 15:
-                String str2 = (String) this.o;
-                String strB = (String) this.p;
-                try {
-                    File fileE = xt3.e(str2);
-                    if (!strB.startsWith("http://") && !strB.startsWith("https://")) {
-                        strB = wg0.b(ud3.t(), strB);
-                    }
-                    if (strB.contains("/rest/getCoverArt")) {
-                        xt3.d(fileE, strB);
-                        return;
-                    } else {
-                        xt3.c(fileE, strB);
-                        return;
-                    }
-                } catch (Exception e6) {
-                    Log.e("RadioCoverArtDownloader", "Failed to download cover art for station " + str2, e6);
-                    return;
-                }
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                String str3 = (String) this.o;
-                fu3 fu3Var = (fu3) this.p;
-                xl.E((AppDatabase_Impl) AppDatabase.y().z().o, false, true, new rs0(i3, str3));
-                xt3.a.execute(new kt1(i, str3));
-                new Handler(Looper.getMainLooper()).post(fu3Var);
-                return;
-            case 17:
-                List list3 = (List) this.o;
-                k03 k03Var = (k03) this.p;
-                List list4 = (List) ((List) xl.E((AppDatabase_Impl) AppDatabase.y().z().o, true, false, new or1(26))).stream().map(new hu3(i5)).collect(Collectors.toList());
-                ArrayList arrayList2 = new ArrayList(list3);
-                arrayList2.addAll(list4);
-                arrayList2.sort(Comparator.comparing(new hu3(i2), String.CASE_INSENSITIVE_ORDER));
-                k03Var.i(arrayList2);
-                return;
-            case 18:
-                gn2 gn2Var = (gn2) this.o;
-                ArrayList arrayList3 = (ArrayList) this.p;
-                qi3 qi3Var = (qi3) jz3.f.get();
-                if (qi3Var == null) {
-                    return;
-                }
-                gn2 gn2VarA = qi3Var.a();
-                if (gn2VarA != null && gn2Var.a.equals(gn2VarA.a)) {
-                    float fK = jz3.k(qi3Var, arrayList3);
-                    if (fK != 0.0f) {
-                        float fC = jz3.c(fK, jz3.l(qi3Var, arrayList3));
-                        Log.d("ReplayGainUtil", "Late prefetch for current track " + gn2Var.a + " — applying gain immediately totalGain=" + fC);
-                        jz3.e.n(fC);
-                    } else {
-                        Log.d("ReplayGainUtil", "Late prefetch for current track " + gn2Var.a + " — empty gains, skipping setGainImmediate");
-                    }
-                }
-                jz3.h(qi3Var);
-                return;
-            case 19:
-                ((au0) this.o).N((Typeface) this.p);
-                return;
-            case 20:
-                String str4 = (String) this.o;
-                SearchFragment searchFragment = (SearchFragment) this.p;
-                ArrayList arrayList4 = new ArrayList();
-                boolean z = true;
-                int size2 = 0;
-                while (z) {
-                    try {
-                        pn4 pn4VarF = App.f(false);
-                        if (pn4VarF.g == null) {
-                            pn4VarF.g = new hd5(pn4VarF);
-                        }
-                        Response responseExecute = pn4VarF.g.m(str4, 1000, size2, 0, 0).execute();
-                        if (responseExecute.isSuccessful() && responseExecute.body() != null && (searchResult3 = ((ApiResponse) responseExecute.body()).getSubsonicResponse().getSearchResult3()) != null && searchResult3.getSongs() != null && !searchResult3.getSongs().isEmpty()) {
-                            List<Child> songs = searchResult3.getSongs();
-                            arrayList4.addAll(songs);
-                            size2 += songs.size();
-                            if (songs.size() == 1000) {
-                                z = true;
-                            }
-                        }
-                    } catch (IOException e7) {
-                        e7.printStackTrace();
-                    }
-                    z = false;
-                }
-                PlaylistWithSongs playlistWithSongs = new PlaylistWithSongs("allsongs", arrayList4);
-                playlistWithSongs.setSongCount(arrayList4.size());
-                ArrayList arrayList5 = new ArrayList();
-                arrayList5.add(playlistWithSongs);
-                int size3 = arrayList4.size();
-                while (i5 < size3) {
-                    Object obj2 = arrayList4.get(i5);
-                    i5++;
-                    Child child2 = (Child) obj2;
-                    if (child2 != null && child2.getDuration() != null) {
-                        jIntValue += (long) child2.getDuration().intValue();
-                    }
-                }
-                playlistWithSongs.setDuration(jIntValue);
-                new Handler(Looper.getMainLooper()).post(new t6(searchFragment, playlistWithSongs, arrayList4, arrayList5, 29));
-                return;
-            case 21:
-                qe4 qe4Var = (qe4) this.o;
-                ic2 ic2Var2 = (ic2) this.p;
-                qe4Var.getClass();
-                String str5 = f35.a;
-                HashSet hashSet2 = qe4Var.f;
-                hashSet2.remove(ic2Var2);
-                if (!hashSet2.isEmpty() || qe4Var.i) {
-                    return;
-                }
-                qe4Var.D1(qe4Var.i1(), false, false);
-                return;
-            case 22:
-                sj4 sj4Var = (sj4) this.o;
-                SurfaceTexture surfaceTexture = (SurfaceTexture) this.p;
-                SurfaceTexture surfaceTexture2 = sj4Var.t;
-                Surface surface = sj4Var.u;
-                Surface surface2 = new Surface(surfaceTexture);
-                sj4Var.t = surfaceTexture;
-                sj4Var.u = surface2;
-                Iterator it2 = sj4Var.n.iterator();
-                while (it2.hasNext()) {
-                    ((d41) it2.next()).n.t1(surface2);
-                }
-                if (surfaceTexture2 != null) {
-                    surfaceTexture2.release();
-                }
-                if (surface != null) {
-                    surface.release();
-                    return;
-                }
-                return;
-            case 23:
-                ns3 ns3Var = (ns3) this.o;
-                Uri uri = (Uri) this.p;
-                if (((LruCache) ns3Var.p).get(uri) != null) {
-                    return;
-                }
-                try {
-                    ((LruCache) ns3Var.p).put(uri, (Bitmap) a.c((Context) ns3Var.o).g().N(uri).R(512, 512).get());
-                    return;
-                } catch (Exception unused3) {
-                    return;
-                }
-            case 24:
-                ((rm3) ((na4) this.o).o).R((gl4) this.p, 3);
-                return;
-            case 25:
-                Runnable runnable2 = (Runnable) this.p;
-                ia4 ia4Var = (ia4) this.o;
-                try {
-                    runnable2.run();
-                    return;
-                } finally {
-                    ia4Var.a();
-                }
-            case 26:
-                rf2 rf2Var = (rf2) this.o;
-                h40 h40Var = (h40) this.p;
-                o55 o55Var = (o55) rf2Var.o;
-                String str6 = f35.a;
-                o55Var.r(h40Var);
-                return;
-            case 27:
-                rf2 rf2Var2 = (rf2) this.o;
-                s55 s55Var = (s55) this.p;
-                o55 o55Var2 = (o55) rf2Var2.o;
-                String str7 = f35.a;
-                o55Var2.a(s55Var);
-                return;
-            case 28:
-                rf2 rf2Var3 = (rf2) this.o;
-                Exception exc = (Exception) this.p;
-                o55 o55Var3 = (o55) rf2Var3.o;
-                String str8 = f35.a;
-                o55Var3.t(exc);
-                return;
-            default:
-                rf2 rf2Var4 = (rf2) this.o;
-                String str9 = (String) this.p;
-                o55 o55Var4 = (o55) rf2Var4.o;
-                String str10 = f35.a;
-                o55Var4.c(str9);
-                return;
-        }
+        int r3 = 4;
+        int r4 = 2;
+        long r5 = 0;
+        int r8 = 8;
+        int r9 = 1;
+        int r10 = 0;
+        switch(this.n) {
+            case 0: goto L229;
+            case 1: goto L216;
+            case 2: goto L205;
+            case 3: goto L201;
+            case 4: goto L199;
+            case 5: goto L197;
+            case 6: goto L195;
+            case 7: goto L160;
+            case 8: goto L158;
+            case 9: goto L152;
+            case 10: goto L138;
+            case 11: goto L121;
+            case 12: goto L110;
+            case 13: goto L108;
+            case 14: goto L106;
+            case 15: goto L90;
+            case 16: goto L88;
+            case 17: goto L86;
+            case 18: goto L73;
+            case 19: goto L71;
+            case 20: goto L41;
+            case 21: goto L35;
+            case 22: goto L26;
+            case 23: goto L21;
+            case 24: goto L19;
+            case 25: goto L12;
+            case 26: goto L10;
+            case 27: goto L8;
+            case 28: goto L6;
+            default: goto L4;
+        };
+    L4:
+        rf2 r1 = (rf2) this.o;
+        String r0 = (String) this.p;
+        o55 r2 = (o55) r1.o;
+        String r6 = f35.a;
+        r2.c(r0);
+        return;
+    L6:
+        rf2 r7 = (rf2) this.o;
+        Exception r11 = (Exception) this.p;
+        o55 r12 = (o55) r7.o;
+        String r13 = f35.a;
+        r12.t(r11);
+        return;
+    L8:
+        rf2 r14 = (rf2) this.o;
+        s55 r15 = (s55) this.p;
+        o55 r16 = (o55) r14.o;
+        String r17 = f35.a;
+        r16.a(r15);
+        return;
+    L10:
+        rf2 r18 = (rf2) this.o;
+        h40 r19 = (h40) this.p;
+        o55 r20 = (o55) r18.o;
+        String r21 = f35.a;
+        r20.r(r19);
+        return;
+    L12:
+        Runnable r22 = (Runnable) this.p;
+        ia4 r23 = (ia4) this.o;
+        r22.run();     // Catch: Throwable -> L16
+        r23.a();
+        return;
+    L16:
+        th = move-exception;
+        r23.a();
+        throw th;
+    L19:
+        na4 r24 = (na4) this.o;
+        ((rm3) r24.o).R((gl4) this.p, 3);
+        return;
+    L21:
+        ns3 r25 = (ns3) this.o;
+        Uri r26 = (Uri) this.p;
+        if (((LruCache) r25.p).get(r26) != null) goto L279;
+        ((LruCache) r25.p).put(r26, (Bitmap) a.c((Context) r25.o).g().N(r26).R(512, 512).get());     // Catch: Exception -> L231
+        return;
+    L280:
+        return;
+    L279:
+        return;
+    L26:
+        sj4 r27 = (sj4) this.o;
+        SurfaceTexture r28 = (SurfaceTexture) this.p;
+        SurfaceTexture r29 = r27.t;
+        Surface r30 = r27.u;
+        Surface r31 = new Surface(r28);
+        r27.t = r28;
+        r27.u = r31;
+        Iterator r32 = r27.n.iterator();
+    L28:
+        if (r32.hasNext() == false) goto L30;
+        ((d41) r32.next()).n.t1(r31);
+        goto L28
+    L30:
+        if (r29 == null) goto L32;
+        r29.release();
+    L32:
+        if (r30 == null) goto L281;
+        r30.release();
+        return;
+    L281:
+        return;
+    L35:
+        qe4 r33 = (qe4) this.o;
+        ic2 r34 = (ic2) this.p;
+        r33.getClass();
+        String r35 = f35.a;
+        HashSet r36 = r33.f;
+        r36.remove(r34);
+        if (r36.isEmpty() == true) goto L38;
+        return;
+    L38:
+        if (r33.i == true) goto L283;
+        r33.D1(r33.i1(), false, false);
+        return;
+    L283:
+        return;
+    L41:
+        String r110 = (String) this.o;
+        SearchFragment r37 = (SearchFragment) this.p;
+        ArrayList r38 = new ArrayList();
+        boolean r39 = true;
+        int r111 = 0;
+    L42:
+        if (r39 == false) goto L62;
+        pn4 r40 = App.f(false);     // Catch: IOException -> L59
+        if (r40.g != null) goto L46;
+        r40.g = new hd5(r40);     // Catch: IOException -> L59
+    L46:
+        Response r41 = r40.g.m(r110, 1000, r111, 0, 0).execute();     // Catch: IOException -> L59
+        if (r41.isSuccessful() == false) goto L61;
+        if (r41.body() == null) goto L61;
+        SearchResult3 r42 = ((ApiResponse) r41.body()).getSubsonicResponse().getSearchResult3();     // Catch: IOException -> L59
+        if (r42 == null) goto L61;
+        if (r42.getSongs() == null) goto L61;
+        if (r42.getSongs().isEmpty() == true) goto L61;
+        List<Child> r43 = r42.getSongs();     // Catch: IOException -> L59
+        r38.addAll(r43);     // Catch: IOException -> L59
+        r111 = r111 + r43.size();     // Catch: IOException -> L59
+        if (r43.size() != 1000) goto L61;
+        r39 = true;
+    L61:
+        r39 = false;
+    L59:
+        e = move-exception;
+        e.printStackTrace();
+        goto L61
+    L62:
+        PlaylistWithSongs r112 = new PlaylistWithSongs("allsongs", r38);
+        r112.setSongCount(r38.size());
+        ArrayList r44 = new ArrayList();
+        r44.add(r112);
+        int r45 = r38.size();
+    L63:
+        if (r10 >= r45) goto L69;
+        Object r46 = r38.get(r10);
+        r10 = r10 + 1;
+        Child r47 = (Child) r46;
+        if (r47 == null) goto L63;
+        if (r47.getDuration() == null) goto L63;
+        r5 = r5 + ((long) r47.getDuration().intValue());
+        goto L63
+    L69:
+        r112.setDuration(r5);
+        new Handler(Looper.getMainLooper()).post(new t6(r37, r112, r38, r44, 29));
+        return;
+    L71:
+        ((au0) this.o).N((Typeface) this.p);
+        return;
+    L73:
+        gn2 r48 = (gn2) this.o;
+        ArrayList r49 = (ArrayList) this.p;
+        qi3 r50 = (qi3) jz3.f.get();
+        if (r50 == null) goto L284;
+        gn2 r51 = r50.a();
+        if (r51 != null) goto L79;
+    L84:
+        jz3.h(r50);
+        return;
+    L79:
+        if (r48.a.equals(r51.a) == false) goto L84;
+        float r52 = jz3.k(r50, r49);
+        if (r52 == 0.0f) goto L83;
+        float r53 = jz3.c(r52, jz3.l(r50, r49));
+        Log.d("ReplayGainUtil", "Late prefetch for current track " + r48.a + " — applying gain immediately totalGain=" + r53);
+        jz3.e.n(r53);
+        goto L84
+    L83:
+        Log.d("ReplayGainUtil", "Late prefetch for current track " + r48.a + " — empty gains, skipping setGainImmediate");
+        goto L84
+    L284:
+        return;
+    L86:
+        List r54 = (List) this.o;
+        k03 r55 = (k03) this.p;
+        List r56 = (List) ((List) xl.E((AppDatabase_Impl) AppDatabase.y().z().o, true, false, new or1(26))).stream().map(new hu3(r10)).collect(Collectors.toList());
+        ArrayList r57 = new ArrayList(r54);
+        r57.addAll(r56);
+        r57.sort(Comparator.comparing(new hu3(r4), String.CASE_INSENSITIVE_ORDER));
+        r55.i(r57);
+        return;
+    L88:
+        String r58 = (String) this.o;
+        fu3 r59 = (fu3) this.p;
+        xl.E((AppDatabase_Impl) AppDatabase.y().z().o, false, true, new rs0(r8, r58));
+        xt3.a.execute(new kt1(r3, r58));
+        new Handler(Looper.getMainLooper()).post(r59);
+        return;
+    L90:
+        String r60 = (String) this.o;
+        String r61 = (String) this.p;
+        File r62 = xt3.e(r60);     // Catch: Exception -> L100
+        if (r61.startsWith("http://") == true) goto L98;
+        if (r61.startsWith("https://") == true) goto L98;
+        r61 = wg0.b(ud3.t(), r61);     // Catch: Exception -> L100
+    L98:
+        if (r61.contains("/rest/getCoverArt") == false) goto L102;
+        xt3.d(r62, r61);     // Catch: Exception -> L100
+        return;
+    L102:
+        xt3.c(r62, r61);     // Catch: Exception -> L100
+        return;
+    L100:
+        e = move-exception;
+        Log.e("RadioCoverArtDownloader", "Failed to download cover art for station " + r60, e);
+        return;
+    L106:
+        vs3 r63 = (vs3) this.o;
+        String r64 = (String) this.p;
+        xl.E((s24) r63.a.o, false, true, new jl3(1, System.currentTimeMillis(), r64));
+        return;
+    L108:
+        ((hr3) this.o).E((m84) this.p);
+        return;
+    L110:
+        pq3 r65 = (pq3) this.o;
+        rc5 r66 = (rc5) this.p;
+        Object r67 = r65.k;
+        monitor-enter(r67);
+        ArrayList r68 = r65.j;     // Catch: Throwable -> L115
+        int r69 = r68.size();     // Catch: Throwable -> L115
+        int r70 = 0;
+    L113:
+        if (r70 >= r69) goto L117;
+        Object r71 = r68.get(r70);     // Catch: Throwable -> L115
+        r70 = r70 + 1;     // Catch: Throwable -> L115
+        ((w21) r71).b(r66, false);     // Catch: Throwable -> L115
+        goto L113
+    L117:
+        monitor-exit(r67);     // Catch: Throwable -> L115
+        return;
+    L115:
+        th = move-exception;
+        throw th;
+    L121:
+        mm3 r72 = (mm3) this.o;
+        List r73 = (List) this.p;
+        ml3 r74 = r72.b;
+        s24 r75 = (s24) r74.a;
+        List r76 = (List) xl.E(r75, true, false, new kl3(r10, r74));
+        if (r76 == null) goto L136;
+        HashSet r77 = new HashSet();
+        Iterator r78 = r73.iterator();
+    L125:
+        if (r78.hasNext() == false) goto L127;
+        r77.add(((Playlist) r78.next()).getId());
+        goto L125
+    L127:
+        String r79 = ud3.D();
+        Iterator r80 = r76.iterator();
+    L129:
+        if (r80.hasNext() == false) goto L136;
+        Playlist r81 = (Playlist) r80.next();
+        if (r77.contains(r81.getId()) == true) goto L129;
+        r72.c.B(r81.getId());
+        xl.E((s24) r72.a.o, false, true, new rs0(11, r81.getId()));
+        if (r79 == null) goto L135;
+        r72.d.o(r81.getId(), r79);
+    L135:
+        xl.E(r75, false, true, new hl3(r74, r81, r9));
+        Log.d("PlaylistRepository", "Removed orphaned playlist " + r81.getId() + " from local DB.");
+    L136:
+        xl.E(r75, false, true, new o(22, r74, r73));
+        Log.d("PlaylistRepository", "Cached " + r73.size() + " playlists to local DB.");
+        return;
+    L138:
+        yk3 r82 = (yk3) this.o;
+        xk3 r83 = (xk3) this.p;
+        bj2 r84 = (bj2) r82.r.get();     // Catch: Exception -> L149
+        int r85 = r83.c();     // Catch: Exception -> L149
+        Child r86 = (Child) r82.s.get(r85);     // Catch: Exception -> L149
+        String r87 = r82.t;     // Catch: Exception -> L149
+        if (r87 != null) goto L142;
+    L147:
+        r84.n(r85, 0);     // Catch: Exception -> L149
+        r84.m0();     // Catch: Exception -> L149
+    L236:
+        return;
+    L142:
+        if (r87.equals(r86.getId()) == false) goto L147;
+        if (r82.u == false) goto L146;
+        r84.c();     // Catch: Exception -> L149
+        goto L236
+    L146:
+        r84.m0();     // Catch: Exception -> L149
+    L149:
+        e = move-exception;
+        Log.w("PlayerSongQueueAdapter", "Error obtaining MediaBrowser", e);
+        return;
+    L152:
+        bl2 r88 = (bl2) this.o;
+        hk3 r89 = (hk3) this.p;
+        bj2 r90 = (bj2) r88.get();     // Catch: Exception -> L155
+        r89.o0 = r90;     // Catch: Exception -> L155
+        r90.getClass();     // Catch: Exception -> L155
+        do2 r91 = r90.K0();     // Catch: Exception -> L155
+        r91.getClass();     // Catch: Exception -> L155
+        r89.m0(r91, r90.o0());     // Catch: Exception -> L155
+        r90.v(new gk3(r89, r90));     // Catch: Exception -> L155
+        return;
+    L155:
+        e = move-exception;
+        e.printStackTrace();
+        return;
+    L158:
+        xi3 r92 = (xi3) this.o;
+        r92.n0((bj2) this.p);
+        r92.r0.postDelayed(r92.s0, 1000);
+        return;
+    L160:
+        v9 r93 = (v9) this.o;
+        Context r94 = (Context) this.p;
+        v53 r95 = (v53) r93.b;
+        ConnectivityManager r96 = (ConnectivityManager) r94.getSystemService("connectivity");
+        if (r96 != null) goto L247;
+    L162:
+        r3 = 0;
+    L188:
+        if (Build.VERSION.SDK_INT < 31) goto L193;
+        if (r3 != 5) goto L193;
+        TelephonyManager r97 = (TelephonyManager) r94.getSystemService("phone");     // Catch: RuntimeException -> L192
+        r97.getClass();     // Catch: RuntimeException -> L192
+        t53 r98 = new t53(r95);     // Catch: RuntimeException -> L192
+        go2.t(r97, r95.a, r98);     // Catch: RuntimeException -> L192
+        go2.s(r97, r98);     // Catch: RuntimeException -> L192
+        return;
+    L192:
+        r95.c(5);
+        return;
+    L193:
+        r95.c(r3);
+        return;
+    L247:
+        NetworkInfo r99 = r96.getActiveNetworkInfo();     // Catch: SecurityException -> L232
+        if (r99 != null) goto L166;
+    L186:
+        r3 = 1;
+        goto L188
+    L166:
+        if (r99.isConnected() == false) goto L186;
+        int r100 = r99.getType();
+        if (r100 == 0) goto L180;
+        if (r100 == 1) goto L178;
+        if (r100 == 4) goto L180;
+        if (r100 == 5) goto L180;
+        if (r100 == 6) goto L177;
+        if (r100 == 9) goto L176;
+        r3 = 8;
+        goto L188
+    L176:
+        r3 = 7;
+    L177:
+        r3 = 5;
+    L178:
+        r3 = 2;
+    L180:
+        switch(r99.getSubtype()) {
+            case 1: goto L185;
+            case 2: goto L185;
+            case 3: goto L188;
+            case 4: goto L188;
+            case 5: goto L188;
+            case 6: goto L188;
+            case 7: goto L188;
+            case 8: goto L188;
+            case 9: goto L188;
+            case 10: goto L188;
+            case 11: goto L188;
+            case 12: goto L188;
+            case 13: goto L177;
+            case 14: goto L188;
+            case 15: goto L188;
+            case 16: goto L181;
+            case 17: goto L188;
+            case 18: goto L178;
+            case 19: goto L181;
+            case 20: goto L183;
+            default: goto L181;
+        };
+    L181:
+        r3 = 6;
+        goto L188
+    L185:
+        r3 = 3;
+        goto L188
+    L183:
+        if (Build.VERSION.SDK_INT < 29) goto L162;
+        r3 = 9;
+        goto L188
+    L195:
+        v53 r101 = (v53) this.o;
+        Context r102 = (Context) this.p;
+        IntentFilter r103 = new IntentFilter();
+        r103.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        r102.registerReceiver(new v9(r8, r101), r103);
+        return;
+    L197:
+        ((wc0) this.o).accept((st2) this.p);
+        return;
+    L199:
+        kt2 r104 = (kt2) this.o;
+        r104.f.s((fr2) this.p);
+        return;
+    L201:
+        kt2 r105 = (kt2) this.o;
+        ju1 r106 = (ju1) this.p;
+        na4 r107 = r105.f;
+        fr2 r108 = r107.w(r106.asBinder());
+        if (r108 == null) goto L291;
+        r107.N(r108);
+        return;
+    L291:
+        return;
+    L205:
+        tn2 r109 = (tn2) this.o;
+        Intent r113 = (Intent) this.p;
+        int r114 = MediaLibraryService.t;
+        fr2 r115 = r109.g();
+        if (r115 != null) goto L213;
+        ComponentName r116 = r113.getComponent();
+        if (r116 == null) goto L210;
+        String r117 = r116.getPackageName();
+    L211:
+        r115 = new fr2(new ms2(r117, -1, -1), 1009002300, 8, false, null, Bundle.EMPTY);
+        goto L213
+    L210:
+        r117 = "androidx.media3.session.MediaSessionService";
+    L213:
+        if (r109.t(r115, r113) == true) goto L292;
+        l93.A("MSessionService", "Ignored unrecognized media button intent.");
+        return;
+    L292:
+        return;
+    L216:
+        ic2 r118 = (ic2) this.o;
+        ResultReceiver r119 = (ResultReceiver) this.p;
+        ab4 r120 = (ab4) r118.get();     // Catch: InterruptedException -> L219 ExecutionException -> L221 CancellationException -> L223
+        rr2.s(r120, "SessionResult must not be null");     // Catch: InterruptedException -> L219 ExecutionException -> L221 CancellationException -> L223
+    L227:
+        r119.send(r120.a, r120.b);
+        return;
+    L219:
+        e = e;
+    L225:
+        l93.r0("MediaSessionLegacyStub", "Custom command failed", e);
+        r120 = new ab4(-1);
+    L223:
+        e = move-exception;
+        l93.r0("MediaSessionLegacyStub", "Custom command cancelled", e);
+        r120 = new ab4(1);
+    L221:
+        e = e;
+        goto L225
+    L229:
+        tn2 r121 = (tn2) this.o;
+        Runnable r122 = (Runnable) this.p;
+        r121.getClass();
+        r122.run();
     }
 
-    public /* synthetic */ ur2(tn2 tn2Var, fr2 fr2Var, Runnable runnable) {
+    public /* synthetic */ ur2(tn2 r1, fr2 r2, Runnable r3) {
         this.n = 0;
-        this.o = tn2Var;
-        this.p = runnable;
+        this.o = r1;
+        this.p = r3;
     }
 
-    public /* synthetic */ ur2(int i, Object obj, Object obj2) {
-        this.n = i;
-        this.o = obj;
-        this.p = obj2;
+    public /* synthetic */ ur2(int r1, Object r2, Object r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
     }
 
-    public /* synthetic */ ur2(Runnable runnable, ia4 ia4Var) {
+    public /* synthetic */ ur2(Runnable r2, ia4 r3) {
         this.n = 25;
-        this.p = runnable;
-        this.o = ia4Var;
+        this.p = r2;
+        this.o = r3;
     }
 }

@@ -9,14 +9,13 @@ public final class xk3 extends cx3 {
     public final lo u;
     public final /* synthetic */ yk3 v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public xk3(yk3 yk3Var, lo loVar) {
-        this.v = yk3Var;
-        ConstraintLayout constraintLayout = (ConstraintLayout) loVar.a;
-        super(constraintLayout);
-        this.u = loVar;
-        ((TextView) loVar.k).setSelected(true);
-        ((TextView) loVar.j).setSelected(true);
-        constraintLayout.setOnClickListener(new bj3(4, this));
+    public xk3(yk3 r3, lo r4) {
+        this.v = r3;
+        ConstraintLayout r5 = (ConstraintLayout) r4.a;
+        super(r5);
+        this.u = r4;
+        ((TextView) r4.k).setSelected(true);
+        ((TextView) r4.j).setSelected(true);
+        r5.setOnClickListener(new bj3(4, this));
     }
 }

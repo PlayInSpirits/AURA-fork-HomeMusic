@@ -11,28 +11,52 @@ public final class hh1 extends nv1 {
     public final String d;
     public final byte[] e;
 
-    public hh1(String str, String str2, String str3, byte[] bArr) {
+    public hh1(String r2, String r3, String r4, byte[] r5) {
         super("GEOB");
-        this.b = str;
-        this.c = str2;
-        this.d = str3;
-        this.e = bArr;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || hh1.class != obj.getClass()) {
-            return false;
-        }
-        hh1 hh1Var = (hh1) obj;
-        return Objects.equals(this.b, hh1Var.b) && this.c.equals(hh1Var.c) && this.d.equals(hh1Var.d) && Arrays.equals(this.e, hh1Var.e);
+    public final boolean equals(Object r3) {
+        if (this == r3) goto L20;
+        if (r3 != null) goto L6;
+        return false;
+    L6:
+        if (hh1.class != r3.getClass()) goto L25;
+        hh1 r4 = (hh1) r3;
+        if (Objects.equals(this.b, r4.b) == true) goto L11;
+        return false;
+    L11:
+        if (this.c.equals(r4.c) == true) goto L13;
+        return false;
+    L13:
+        if (this.d.equals(r4.d) == true) goto L15;
+        return false;
+    L15:
+        if (Arrays.equals(this.e, r4.e) == false) goto L24;
+        return true;
+    L24:
+        return false;
+    L25:
+        return false;
+    L20:
+        return true;
     }
 
     public final int hashCode() {
-        String str = this.b;
-        return Arrays.hashCode(this.e) + f34.e(this.d, f34.e(this.c, (527 + (str != null ? str.hashCode() : 0)) * 31, 31), 31);
+        String r0 = this.b;
+        if (r0 == null) goto L5;
+        int r1 = r0.hashCode();
+    L6:
+        String r2 = this.c;
+        int r3 = f34.e(r2, (527 + r1) * 31, 31);
+        int r4 = f34.e(this.d, r3, 31);
+        return Arrays.hashCode(this.e) + r4;
+    L5:
+        r1 = 0;
+        goto L6
     }
 
     @Override // defpackage.nv1

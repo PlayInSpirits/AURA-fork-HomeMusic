@@ -13,32 +13,42 @@ public final class er0 {
     public ll f;
     public final /* synthetic */ kr0 g;
 
-    public er0(kr0 kr0Var, String str) {
-        this.g = kr0Var;
-        this.a = str;
-        int i = kr0Var.t;
-        File file = kr0Var.n;
-        this.b = new long[i];
-        this.c = new File[i];
-        this.d = new File[i];
-        StringBuilder sb = new StringBuilder(str);
-        sb.append('.');
-        int length = sb.length();
-        for (int i2 = 0; i2 < i; i2++) {
-            sb.append(i2);
-            this.c[i2] = new File(file, sb.toString());
-            sb.append(".tmp");
-            this.d[i2] = new File(file, sb.toString());
-            sb.setLength(length);
-        }
+    public er0(kr0 r7, String r8) {
+        this.g = r7;
+        this.a = r8;
+        int r0 = r7.t;
+        File r9 = r7.n;
+        this.b = new long[r0];
+        this.c = new File[r0];
+        this.d = new File[r0];
+        StringBuilder r1 = new StringBuilder(r8);
+        r1.append('.');
+        int r10 = r1.length();
+        int r2 = 0;
+    L3:
+        if (r2 >= r0) goto L5;
+        r1.append(r2);
+        this.c[r2] = new File(r9, r1.toString());
+        r1.append(".tmp");
+        this.d[r2] = new File(r9, r1.toString());
+        r1.setLength(r10);
+        r2 = r2 + 1;
+        goto L3
     }
 
     public final String a() {
-        StringBuilder sb = new StringBuilder();
-        for (long j : this.b) {
-            sb.append(' ');
-            sb.append(j);
-        }
-        return sb.toString();
+        StringBuilder r0 = new StringBuilder();
+        long[] r6 = this.b;
+        int r1 = r6.length;
+        int r2 = 0;
+    L3:
+        if (r2 >= r1) goto L6;
+        long r3 = r6[r2];
+        r0.append(' ');
+        r0.append(r3);
+        r2 = r2 + 1;
+        goto L3
+    L6:
+        return r0.toString();
     }
 }

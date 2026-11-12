@@ -16,41 +16,43 @@ public final class gm3 implements a83 {
     public final /* synthetic */ String e;
     public final /* synthetic */ im3 f;
 
-    public gm3(im3 im3Var, k03 k03Var, pz1 pz1Var, int i, Child child, String str) {
-        this.f = im3Var;
-        this.a = k03Var;
-        this.b = pz1Var;
-        this.c = i;
-        this.d = child;
-        this.e = str;
+    public gm3(im3 r1, k03 r2, pz1 r3, int r4, Child r5, String r6) {
+        this.f = r1;
+        this.a = r2;
+        this.b = r3;
+        this.c = r4;
+        this.d = r5;
+        this.e = r6;
     }
 
     @Override // defpackage.a83
-    public final void b(Object obj) {
-        List list = (List) obj;
+    public final void b(Object r9) {
+        List r10 = (List) r9;
         this.a.j(this);
-        im3 im3Var = this.f;
-        if (list == null) {
-            im3Var.f = null;
-            this.b.g();
-            return;
-        }
-        ArrayList arrayList = new ArrayList(list);
-        arrayList.add(Math.min(this.c, arrayList.size()), this.d);
-        ArrayList<String> arrayList2 = new ArrayList<>(arrayList.size());
-        int size = arrayList.size();
-        int i = 0;
-        while (i < size) {
-            Object obj2 = arrayList.get(i);
-            i++;
-            arrayList2.add(((Child) obj2).getId());
-        }
-        mm3 mm3Var = im3Var.c;
-        gp3 gp3Var = new gp3(this, arrayList, false, 17);
-        mm3Var.getClass();
-        rm3 rm3VarG = App.f(false).g();
-        rm3VarG.getClass();
+        im3 r1 = this.f;
+        if (r10 != null) goto L6;
+        r1.f = null;
+        this.b.g();
+        return;
+    L6:
+        ArrayList r2 = new ArrayList(r10);
+        r2.add(Math.min(this.c, r2.size()), this.d);
+        ArrayList<String> r11 = new ArrayList(r2.size());
+        int r3 = r2.size();
+        int r5 = 0;
+    L7:
+        if (r5 >= r3) goto L9;
+        Object r6 = r2.get(r5);
+        r5 = r5 + 1;
+        r11.add(((Child) r6).getId());
+        goto L7
+    L9:
+        mm3 r4 = r1.c;
+        gp3 r7 = new gp3(this, r2, false, 17);
+        r4.getClass();
+        rm3 r8 = App.f(false).g();
+        r8.getClass();
         Log.d("BrowsingClient", "createPlaylist()");
-        ((qm3) rm3VarG.o).a(((pn4) rm3VarG.n).f(), this.e, null, arrayList2).enqueue(new hd5(mm3Var, gp3Var, false, 17));
+        ((qm3) r8.o).a(((pn4) r8.n).f(), this.e, null, r11).enqueue(new hd5(r4, r7, false, 17));
     }
 }

@@ -15,44 +15,50 @@ public final class v42 implements NsdManager.DiscoveryListener {
     public final /* synthetic */ LinkedHashMap d;
     public final /* synthetic */ ArrayAdapter e;
 
-    public v42(Handler handler, fx3 fx3Var, f9 f9Var, LinkedHashMap linkedHashMap, ArrayAdapter arrayAdapter) {
-        this.a = handler;
-        this.b = fx3Var;
-        this.c = f9Var;
-        this.d = linkedHashMap;
-        this.e = arrayAdapter;
+    public v42(Handler r1, fx3 r2, f9 r3, LinkedHashMap r4, ArrayAdapter r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
+        this.e = r5;
     }
 
     @Override // android.net.nsd.NsdManager.DiscoveryListener
-    public final void onDiscoveryStarted(String str) {
-        str.getClass();
+    public final void onDiscoveryStarted(String r1) {
+        r1.getClass();
     }
 
     @Override // android.net.nsd.NsdManager.DiscoveryListener
-    public final void onDiscoveryStopped(String str) {
-        str.getClass();
+    public final void onDiscoveryStopped(String r1) {
+        r1.getClass();
     }
 
     @Override // android.net.nsd.NsdManager.DiscoveryListener
-    public final void onServiceFound(NsdServiceInfo nsdServiceInfo) {
-        nsdServiceInfo.getClass();
-        this.a.post(new mr(this.b, this.d, nsdServiceInfo, this.e, this.c, 5));
+    public final void onServiceFound(NsdServiceInfo r8) {
+        r8.getClass();
+        mr r0 = new mr(this.b, this.d, r8, this.e, this.c, 5);
+        this.a.post(r0);
     }
 
     @Override // android.net.nsd.NsdManager.DiscoveryListener
-    public final void onServiceLost(NsdServiceInfo nsdServiceInfo) {
-        nsdServiceInfo.getClass();
-        this.a.post(new t6(this.b, this.d, nsdServiceInfo, this.e, 12));
+    public final void onServiceLost(NsdServiceInfo r7) {
+        r7.getClass();
+        fx3 r1 = this.b;
+        LinkedHashMap r2 = this.d;
+        ArrayAdapter r4 = this.e;
+        t6 r0 = new t6(r1, r2, r7, r4, 12);
+        this.a.post(r0);
     }
 
     @Override // android.net.nsd.NsdManager.DiscoveryListener
-    public final void onStartDiscoveryFailed(String str, int i) {
-        str.getClass();
-        this.a.post(new ws1(7, this.b, this.c));
+    public final void onStartDiscoveryFailed(String r3, int r4) {
+        r3.getClass();
+        ws1 r5 = new ws1(7, this.b, this.c);
+        this.a.post(r5);
     }
 
     @Override // android.net.nsd.NsdManager.DiscoveryListener
-    public final void onStopDiscoveryFailed(String str, int i) {
-        str.getClass();
+    public final void onStopDiscoveryFailed(String r1, int r2) {
+        r1.getClass();
     }
 }

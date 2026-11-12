@@ -5,7 +5,7 @@ package defpackage;
 public final class je1 {
     public int a;
     public kc1 b;
-    public boolean c = false;
+    public boolean c;
     public int d;
     public int e;
     public int f;
@@ -13,19 +13,21 @@ public final class je1 {
     public r92 h;
     public r92 i;
 
-    public je1(int i, kc1 kc1Var) {
-        this.a = i;
-        this.b = kc1Var;
-        r92 r92Var = r92.r;
-        this.h = r92Var;
-        this.i = r92Var;
+    public je1(int r1, kc1 r2) {
+        this.a = r1;
+        this.b = r2;
+        this.c = false;
+        r92 r3 = r92.r;
+        this.h = r3;
+        this.i = r3;
     }
 
-    public je1(int i, kc1 kc1Var, int i2) {
-        this.a = i;
-        this.b = kc1Var;
-        r92 r92Var = r92.r;
-        this.h = r92Var;
-        this.i = r92Var;
+    public je1(int r1, kc1 r2, int r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = true;
+        r92 r4 = r92.r;
+        this.h = r4;
+        this.i = r4;
     }
 }

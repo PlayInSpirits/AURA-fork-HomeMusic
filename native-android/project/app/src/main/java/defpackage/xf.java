@@ -2,7 +2,6 @@ package defpackage;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ActionMode;
 import android.view.KeyEvent;
@@ -33,105 +32,114 @@ public final class xf implements Window.Callback {
     public boolean r;
     public final /* synthetic */ bg s;
 
-    public xf(bg bgVar, Window.Callback callback) {
-        this.s = bgVar;
-        if (callback != null) {
-            this.n = callback;
-        } else {
-            kf2.n("Window callback may not be null");
-            throw null;
-        }
+    public xf(bg r1, Window.Callback r2) {
+        this.s = r1;
+        if (r2 == null) goto L6;
+        this.n = r2;
+        return;
+    L6:
+        kf2.n("Window callback may not be null");
+        throw null;
     }
 
-    public final void a(Window.Callback callback) {
-        try {
-            this.p = true;
-            callback.onContentChanged();
-        } finally {
-            this.p = false;
-        }
+    public final void a(Window.Callback r3) {
+        this.p = true;     // Catch: Throwable -> L6
+        r3.onContentChanged();     // Catch: Throwable -> L6
+        this.p = false;
+        return;
+    L6:
+        th = move-exception;
+        this.p = false;
+        throw th;
     }
 
-    public final boolean b(int i, Menu menu) {
-        return this.n.onMenuOpened(i, menu);
+    public final boolean b(int r1, Menu r2) {
+        return this.n.onMenuOpened(r1, r2);
     }
 
-    public final void c(int i, Menu menu) {
-        this.n.onPanelClosed(i, menu);
+    public final void c(int r1, Menu r2) {
+        this.n.onPanelClosed(r1, r2);
     }
 
-    public final void d(List list, Menu menu, int i) {
-        ea5.a(this.n, list, menu, i);
-    }
-
-    @Override // android.view.Window.Callback
-    public final boolean dispatchGenericMotionEvent(MotionEvent motionEvent) {
-        return this.n.dispatchGenericMotionEvent(motionEvent);
+    public final void d(List r1, Menu r2, int r3) {
+        ea5.a(this.n, r1, r2, r3);
     }
 
     @Override // android.view.Window.Callback
-    public final boolean dispatchKeyEvent(KeyEvent keyEvent) {
-        boolean z = this.q;
-        Window.Callback callback = this.n;
-        if (z) {
-            return callback.dispatchKeyEvent(keyEvent);
-        }
-        return this.s.z(keyEvent) || callback.dispatchKeyEvent(keyEvent);
+    public final boolean dispatchGenericMotionEvent(MotionEvent r1) {
+        return this.n.dispatchGenericMotionEvent(r1);
     }
 
     @Override // android.view.Window.Callback
-    public final boolean dispatchKeyShortcutEvent(KeyEvent keyEvent) {
-        if (!this.n.dispatchKeyShortcutEvent(keyEvent)) {
-            int keyCode = keyEvent.getKeyCode();
-            bg bgVar = this.s;
-            bgVar.G();
-            l93 l93Var = bgVar.A;
-            if (l93Var == null || !l93Var.P(keyCode, keyEvent)) {
-                ag agVar = bgVar.Z;
-                if (agVar == null || !bgVar.L(agVar, keyEvent.getKeyCode(), keyEvent)) {
-                    if (bgVar.Z == null) {
-                        ag agVarF = bgVar.F(0);
-                        bgVar.M(agVarF, keyEvent);
-                        boolean zL = bgVar.L(agVarF, keyEvent.getKeyCode(), keyEvent);
-                        agVarF.k = false;
-                        if (zL) {
-                        }
-                    }
-                    return false;
-                }
-                ag agVar2 = bgVar.Z;
-                if (agVar2 != null) {
-                    agVar2.l = true;
-                    return true;
-                }
-            }
-        }
+    public final boolean dispatchKeyEvent(KeyEvent r3) {
+        boolean r0 = this.q;
+        Window.Callback r1 = this.n;
+        if (r0 == false) goto L7;
+        return r1.dispatchKeyEvent(r3);
+    L7:
+        if (this.s.z(r3) == false) goto L9;
+        return true;
+    L9:
+        if (r1.dispatchKeyEvent(r3) == true) goto L15;
+        return false;
+    L15:
         return true;
     }
 
     @Override // android.view.Window.Callback
-    public final boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent accessibilityEvent) {
-        return this.n.dispatchPopulateAccessibilityEvent(accessibilityEvent);
+    public final boolean dispatchKeyShortcutEvent(KeyEvent r5) {
+        if (this.n.dispatchKeyShortcutEvent(r5) == true) goto L23;
+        int r0 = r5.getKeyCode();
+        bg r4 = this.s;
+        r4.G();
+        l93 r2 = r4.A;
+        if (r2 != null) goto L7;
+    L9:
+        ag r1 = r4.Z;
+        if (r1 == null) goto L18;
+        if (r4.L(r1, r5.getKeyCode(), r5) == false) goto L18;
+        ag r6 = r4.Z;
+        if (r6 == null) goto L23;
+        r6.l = true;
+        return true;
+    L18:
+        if (r4.Z != null) goto L22;
+        ag r3 = r4.F(0);
+        r4.M(r3, r5);
+        boolean r7 = r4.L(r3, r5.getKeyCode(), r5);
+        r3.k = false;
+        if (r7 == true) goto L23;
+    L22:
+        return false;
+    L7:
+        if (r2.P(r0, r5) == false) goto L9;
+    L23:
+        return true;
     }
 
     @Override // android.view.Window.Callback
-    public final boolean dispatchTouchEvent(MotionEvent motionEvent) {
-        return this.n.dispatchTouchEvent(motionEvent);
+    public final boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent r1) {
+        return this.n.dispatchPopulateAccessibilityEvent(r1);
     }
 
     @Override // android.view.Window.Callback
-    public final boolean dispatchTrackballEvent(MotionEvent motionEvent) {
-        return this.n.dispatchTrackballEvent(motionEvent);
+    public final boolean dispatchTouchEvent(MotionEvent r1) {
+        return this.n.dispatchTouchEvent(r1);
     }
 
     @Override // android.view.Window.Callback
-    public final void onActionModeFinished(ActionMode actionMode) {
-        this.n.onActionModeFinished(actionMode);
+    public final boolean dispatchTrackballEvent(MotionEvent r1) {
+        return this.n.dispatchTrackballEvent(r1);
     }
 
     @Override // android.view.Window.Callback
-    public final void onActionModeStarted(ActionMode actionMode) {
-        this.n.onActionModeStarted(actionMode);
+    public final void onActionModeFinished(ActionMode r1) {
+        this.n.onActionModeFinished(r1);
+    }
+
+    @Override // android.view.Window.Callback
+    public final void onActionModeStarted(ActionMode r1) {
+        this.n.onActionModeStarted(r1);
     }
 
     @Override // android.view.Window.Callback
@@ -141,29 +149,33 @@ public final class xf implements Window.Callback {
 
     @Override // android.view.Window.Callback
     public final void onContentChanged() {
-        if (this.p) {
-            this.n.onContentChanged();
-        }
+        if (this.p == false) goto L6;
+        this.n.onContentChanged();
+        return;
     }
 
     @Override // android.view.Window.Callback
-    public final boolean onCreatePanelMenu(int i, Menu menu) {
-        if (i != 0 || (menu instanceof qu2)) {
-            return this.n.onCreatePanelMenu(i, menu);
-        }
+    public final boolean onCreatePanelMenu(int r2, Menu r3) {
+        if (r2 != 0) goto L8;
+        if ((r3 instanceof qu2) == true) goto L8;
         return false;
+    L8:
+        return this.n.onCreatePanelMenu(r2, r3);
     }
 
     @Override // android.view.Window.Callback
-    public final View onCreatePanelView(int i) {
-        om1 om1Var = this.o;
-        if (om1Var != null) {
-            View view = i == 0 ? new View(((cv4) om1Var.o).d.a.getContext()) : null;
-            if (view != null) {
-                return view;
-            }
-        }
-        return this.n.onCreatePanelView(i);
+    public final View onCreatePanelView(int r3) {
+        om1 r0 = this.o;
+        if (r0 == null) goto L10;
+        if (r3 != 0) goto L6;
+        View r1 = new View(((cv4) r0.o).d.a.getContext());
+    L7:
+        if (r1 == null) goto L10;
+        return r1;
+    L6:
+        r1 = null;
+    L10:
+        return this.n.onCreatePanelView(r3);
     }
 
     @Override // android.view.Window.Callback
@@ -172,216 +184,227 @@ public final class xf implements Window.Callback {
     }
 
     @Override // android.view.Window.Callback
-    public final boolean onMenuItemSelected(int i, MenuItem menuItem) {
-        return this.n.onMenuItemSelected(i, menuItem);
+    public final boolean onMenuItemSelected(int r1, MenuItem r2) {
+        return this.n.onMenuItemSelected(r1, r2);
     }
 
     @Override // android.view.Window.Callback
-    public final boolean onMenuOpened(int i, Menu menu) {
-        b(i, menu);
-        if (i == 108) {
-            bg bgVar = this.s;
-            bgVar.G();
-            l93 l93Var = bgVar.A;
-            if (l93Var != null) {
-                l93Var.D(true);
-            }
-        }
+    public final boolean onMenuOpened(int r2, Menu r3) {
+        b(r2, r3);
+        if (r2 != 108) goto L7;
+        bg r1 = this.s;
+        r1.G();
+        l93 r4 = r1.A;
+        if (r4 == null) goto L7;
+        r4.D(true);
+    L7:
         return true;
     }
 
     @Override // android.view.Window.Callback
-    public final void onPanelClosed(int i, Menu menu) {
-        if (this.r) {
-            this.n.onPanelClosed(i, menu);
-            return;
-        }
-        c(i, menu);
-        bg bgVar = this.s;
-        if (i == 108) {
-            bgVar.G();
-            l93 l93Var = bgVar.A;
-            if (l93Var != null) {
-                l93Var.D(false);
-                return;
-            }
-            return;
-        }
-        if (i == 0) {
-            ag agVarF = bgVar.F(i);
-            if (agVarF.m) {
-                bgVar.w(agVarF, false);
-            }
-        }
+    public final void onPanelClosed(int r2, Menu r3) {
+        if (this.r == false) goto L6;
+        this.n.onPanelClosed(r2, r3);
+        return;
+    L6:
+        c(r2, r3);
+        bg r1 = this.s;
+        if (r2 != 108) goto L12;
+        r1.G();
+        l93 r4 = r1.A;
+        if (r4 == null) goto L17;
+        r4.D(false);
+        return;
+    L17:
+        return;
+    L12:
+        if (r2 != 0) goto L18;
+        ag r5 = r1.F(r2);
+        if (r5.m == false) goto L19;
+        r1.w(r5, false);
+        return;
+    L19:
+        return;
     }
 
     @Override // android.view.Window.Callback
-    public final void onPointerCaptureChanged(boolean z) {
-        fa5.a(this.n, z);
+    public final void onPointerCaptureChanged(boolean r1) {
+        fa5.a(this.n, r1);
     }
 
     @Override // android.view.Window.Callback
-    public final boolean onPreparePanel(int i, View view, Menu menu) {
-        qu2 qu2Var = menu instanceof qu2 ? (qu2) menu : null;
-        if (i == 0 && qu2Var == null) {
-            return false;
-        }
-        if (qu2Var != null) {
-            qu2Var.x = true;
-        }
-        om1 om1Var = this.o;
-        if (om1Var != null && i == 0) {
-            cv4 cv4Var = (cv4) om1Var.o;
-            if (!cv4Var.g) {
-                cv4Var.d.l = true;
-                cv4Var.g = true;
-            }
-        }
-        boolean zOnPreparePanel = this.n.onPreparePanel(i, view, menu);
-        if (qu2Var != null) {
-            qu2Var.x = false;
-        }
-        return zOnPreparePanel;
+    public final boolean onPreparePanel(int r6, View r7, Menu r8) {
+        if ((r8 instanceof qu2) == false) goto L5;
+        qu2 r0 = (qu2) r8;
+    L7:
+        if (r6 != 0) goto L11;
+        if (r0 != null) goto L11;
+        return false;
+    L11:
+        if (r0 == null) goto L13;
+        r0.x = true;
+    L13:
+        om1 r3 = this.o;
+        if (r3 == null) goto L19;
+        if (r6 != 0) goto L19;
+        cv4 r4 = (cv4) r3.o;
+        if (r4.g == true) goto L19;
+        r4.d.l = true;
+        r4.g = true;
+    L19:
+        boolean r5 = this.n.onPreparePanel(r6, r7, r8);
+        if (r0 == null) goto L22;
+        r0.x = false;
+    L22:
+        return r5;
+    L5:
+        r0 = null;
+        goto L7
     }
 
     @Override // android.view.Window.Callback
-    public final void onProvideKeyboardShortcuts(List list, Menu menu, int i) {
-        qu2 qu2Var = this.s.F(0).h;
-        if (qu2Var != null) {
-            d(list, qu2Var, i);
-        } else {
-            d(list, menu, i);
-        }
+    public final void onProvideKeyboardShortcuts(List r3, Menu r4, int r5) {
+        qu2 r0 = this.s.F(0).h;
+        if (r0 == null) goto L6;
+        d(r3, r0, r5);
+        return;
+    L6:
+        d(r3, r4, r5);
     }
 
     @Override // android.view.Window.Callback
-    public final boolean onSearchRequested(SearchEvent searchEvent) {
-        return da5.a(this.n, searchEvent);
+    public final boolean onSearchRequested(SearchEvent r1) {
+        return da5.a(this.n, r1);
     }
 
     @Override // android.view.Window.Callback
-    public final void onWindowAttributesChanged(WindowManager.LayoutParams layoutParams) {
-        this.n.onWindowAttributesChanged(layoutParams);
+    public final void onWindowAttributesChanged(WindowManager.LayoutParams r1) {
+        this.n.onWindowAttributesChanged(r1);
     }
 
     @Override // android.view.Window.Callback
-    public final void onWindowFocusChanged(boolean z) {
-        this.n.onWindowFocusChanged(z);
+    public final void onWindowFocusChanged(boolean r1) {
+        this.n.onWindowFocusChanged(r1);
     }
 
     @Override // android.view.Window.Callback
-    public final ActionMode onWindowStartingActionMode(ActionMode.Callback callback, int i) {
-        ViewGroup viewGroup;
-        bg bgVar = this.s;
-        Context context = bgVar.x;
-        if (!bgVar.L || i != 0) {
-            return da5.b(this.n, callback, i);
-        }
-        bq4 bq4Var = new bq4(context, callback);
-        d5 d5Var = bgVar.G;
-        if (d5Var != null) {
-            d5Var.a();
-        }
-        rm3 rm3Var = new rm3(bgVar, bq4Var);
-        bgVar.G();
-        l93 l93Var = bgVar.A;
-        if (l93Var != null) {
-            bgVar.G = l93Var.n0(rm3Var);
-        }
-        if (bgVar.G == null) {
-            s75 s75Var = bgVar.K;
-            if (s75Var != null) {
-                s75Var.b();
-            }
-            d5 d5Var2 = bgVar.G;
-            if (d5Var2 != null) {
-                d5Var2.a();
-            }
-            int i2 = 1;
-            if (bgVar.H == null) {
-                if (bgVar.V) {
-                    TypedValue typedValue = new TypedValue();
-                    Resources.Theme theme = context.getTheme();
-                    theme.resolveAttribute(R.attr.actionBarTheme, typedValue, true);
-                    if (typedValue.resourceId != 0) {
-                        Resources.Theme themeNewTheme = context.getResources().newTheme();
-                        themeNewTheme.setTo(theme);
-                        themeNewTheme.applyStyle(typedValue.resourceId, true);
-                        ud0 ud0Var = new ud0(context, 0);
-                        ud0Var.getTheme().setTo(themeNewTheme);
-                        context = ud0Var;
-                    }
-                    bgVar.H = new ActionBarContextView(context);
-                    PopupWindow popupWindow = new PopupWindow(context, (AttributeSet) null, R.attr.actionModePopupWindowStyle);
-                    bgVar.I = popupWindow;
-                    popupWindow.setWindowLayoutType(2);
-                    bgVar.I.setContentView(bgVar.H);
-                    bgVar.I.setWidth(-1);
-                    context.getTheme().resolveAttribute(R.attr.actionBarSize, typedValue, true);
-                    bgVar.H.setContentHeight(TypedValue.complexToDimensionPixelSize(typedValue.data, context.getResources().getDisplayMetrics()));
-                    bgVar.I.setHeight(-2);
-                    bgVar.J = new qf(bgVar, i2);
-                } else {
-                    ViewStubCompat viewStubCompat = (ViewStubCompat) bgVar.N.findViewById(R.id.action_mode_bar_stub);
-                    if (viewStubCompat != null) {
-                        viewStubCompat.setLayoutInflater(LayoutInflater.from(bgVar.D()));
-                        bgVar.H = (ActionBarContextView) viewStubCompat.a();
-                    }
-                }
-            }
-            if (bgVar.H != null) {
-                s75 s75Var2 = bgVar.K;
-                if (s75Var2 != null) {
-                    s75Var2.b();
-                }
-                bgVar.H.e();
-                Context context2 = bgVar.H.getContext();
-                ActionBarContextView actionBarContextView = bgVar.H;
-                rk4 rk4Var = new rk4();
-                rk4Var.p = context2;
-                rk4Var.q = actionBarContextView;
-                rk4Var.r = rm3Var;
-                qu2 qu2Var = new qu2(actionBarContextView.getContext());
-                qu2Var.l = 1;
-                rk4Var.u = qu2Var;
-                qu2Var.e = rk4Var;
-                if (((bq4) rm3Var.n).s(rk4Var, qu2Var)) {
-                    rk4Var.g();
-                    bgVar.H.c(rk4Var);
-                    bgVar.G = rk4Var;
-                    boolean z = bgVar.M && (viewGroup = bgVar.N) != null && viewGroup.isLaidOut();
-                    ActionBarContextView actionBarContextView2 = bgVar.H;
-                    if (z) {
-                        actionBarContextView2.setAlpha(0.0f);
-                        s75 s75VarA = j65.a(bgVar.H);
-                        s75VarA.a(1.0f);
-                        bgVar.K = s75VarA;
-                        s75VarA.d(new sf(i2, bgVar));
-                    } else {
-                        actionBarContextView2.setAlpha(1.0f);
-                        bgVar.H.setVisibility(0);
-                        if (bgVar.H.getParent() instanceof View) {
-                            View view = (View) bgVar.H.getParent();
-                            WeakHashMap weakHashMap = j65.a;
-                            view.requestApplyInsets();
-                        }
-                    }
-                    if (bgVar.I != null) {
-                        bgVar.y.getDecorView().post(bgVar.J);
-                    }
-                } else {
-                    bgVar.G = null;
-                }
-            }
-            bgVar.O();
-            bgVar.G = bgVar.G;
-        }
-        bgVar.O();
-        d5 d5Var3 = bgVar.G;
-        if (d5Var3 != null) {
-            return bq4Var.i(d5Var3);
-        }
+    public final ActionMode onWindowStartingActionMode(ActionMode.Callback r8, int r9) {
+        bg r0 = this.s;
+        Context r1 = r0.x;
+        if (r0.L == false) goto L62;
+        if (r9 != 0) goto L62;
+        bq4 r7 = new bq4(r1, r8);
+        d5 r10 = r0.G;
+        if (r10 == null) goto L9;
+        r10.a();
+    L9:
+        rm3 r11 = new rm3(r0, r7);
+        r0.G();
+        l93 r12 = r0.A;
+        if (r12 == null) goto L13;
+        r0.G = r12.n0(r11);
+    L13:
+        if (r0.G != null) goto L57;
+        s75 r13 = r0.K;
+        if (r13 == null) goto L17;
+        r13.b();
+    L17:
+        d5 r14 = r0.G;
+        if (r14 == null) goto L20;
+        r14.a();
+    L20:
+        int r3 = 1;
+        if (r0.H != null) goto L32;
+        if (r0.V == false) goto L28;
+        TypedValue r15 = new TypedValue();
+        Resources.Theme r5 = r1.getTheme();
+        r5.resolveAttribute(R.attr.actionBarTheme, r15, true);
+        if (r15.resourceId == 0) goto L27;
+        Resources.Theme r6 = r1.getResources().newTheme();
+        r6.setTo(r5);
+        r6.applyStyle(r15.resourceId, true);
+        ud0 r16 = new ud0(r1, 0);
+        r16.getTheme().setTo(r6);
+        r1 = r16;
+    L27:
+        r0.H = new ActionBarContextView(r1);
+        PopupWindow r17 = new PopupWindow(r1, null, R.attr.actionModePopupWindowStyle);
+        r0.I = r17;
+        r17.setWindowLayoutType(2);
+        r0.I.setContentView(r0.H);
+        r0.I.setWidth(-1);
+        r1.getTheme().resolveAttribute(R.attr.actionBarSize, r15, true);
+        r0.H.setContentHeight(TypedValue.complexToDimensionPixelSize(r15.data, r1.getResources().getDisplayMetrics()));
+        r0.I.setHeight(-2);
+        r0.J = new qf(r0, r3);
+        goto L32
+    L28:
+        ViewStubCompat r18 = (ViewStubCompat) r0.N.findViewById(R.id.action_mode_bar_stub);
+        if (r18 == null) goto L32;
+        r18.setLayoutInflater(LayoutInflater.from(r0.D()));
+        r0.H = (ActionBarContextView) r18.a();
+    L32:
+        if (r0.H == null) goto L56;
+        s75 r19 = r0.K;
+        if (r19 == null) goto L36;
+        r19.b();
+    L36:
+        r0.H.e();
+        Context r2 = r0.H.getContext();
+        ActionBarContextView r20 = r0.H;
+        rk4 r21 = new rk4();
+        r21.p = r2;
+        r21.q = r20;
+        r21.r = r11;
+        qu2 r4 = new qu2(r20.getContext());
+        r4.l = 1;
+        r21.u = r4;
+        r4.e = r21;
+        if (((bq4) r11.n).s(r21, r4) == false) goto L55;
+        r21.g();
+        r0.H.c(r21);
+        r0.G = r21;
+        if (r0.M == false) goto L45;
+        ViewGroup r22 = r0.N;
+        if (r22 == null) goto L45;
+        if (r22.isLaidOut() == false) goto L45;
+        boolean r23 = true;
+    L46:
+        ActionBarContextView r24 = r0.H;
+        if (r23 == false) goto L49;
+        r24.setAlpha(0.0f);
+        s75 r25 = j65.a(r0.H);
+        r25.a(1.0f);
+        r0.K = r25;
+        r25.d(new sf(r3, r0));
+    L53:
+        if (r0.I == null) goto L56;
+        r0.y.getDecorView().post(r0.J);
+        goto L56
+    L49:
+        r24.setAlpha(1.0f);
+        r0.H.setVisibility(0);
+        if ((r0.H.getParent() instanceof View) == false) goto L53;
+        View r26 = (View) r0.H.getParent();
+        WeakHashMap r27 = j65.a;
+        r26.requestApplyInsets();
+    L45:
+        r23 = false;
+        goto L46
+    L55:
+        r0.G = null;
+    L56:
+        r0.O();
+        r0.G = r0.G;
+    L57:
+        r0.O();
+        d5 r28 = r0.G;
+        if (r28 != null) goto L60;
         return null;
+    L60:
+        return r7.i(r28);
+    L62:
+        return da5.b(this.n, r8, r9);
     }
 
     @Override // android.view.Window.Callback
@@ -390,7 +413,7 @@ public final class xf implements Window.Callback {
     }
 
     @Override // android.view.Window.Callback
-    public final ActionMode onWindowStartingActionMode(ActionMode.Callback callback) {
+    public final ActionMode onWindowStartingActionMode(ActionMode.Callback r1) {
         return null;
     }
 }

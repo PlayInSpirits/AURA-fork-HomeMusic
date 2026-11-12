@@ -11,43 +11,58 @@ import java.lang.ref.WeakReference;
 public final class wk2 extends ResultReceiver {
     public final WeakReference n;
 
-    public wk2(xk2 xk2Var) {
+    public wk2(xk2 r2) {
         super(null);
-        this.n = new WeakReference(xk2Var);
+        this.n = new WeakReference(r2);
     }
 
     @Override // android.os.ResultReceiver
-    public final void onReceiveResult(int i, Bundle bundle) {
-        qu1 qu1Var;
-        xk2 xk2Var = (xk2) this.n.get();
-        if (xk2Var == null || bundle == null) {
-            return;
-        }
-        synchronized (xk2Var.b) {
-            pr2 pr2Var = xk2Var.e;
-            IBinder binder = bundle.getBinder("android.support.v4.media.session.EXTRA_BINDER");
-            int i2 = jr2.f;
-            if (binder == null) {
-                qu1Var = null;
-            } else {
-                IInterface iInterfaceQueryLocalInterface = binder.queryLocalInterface("android.support.v4.media.session.IMediaSession");
-                if (iInterfaceQueryLocalInterface == null || !(iInterfaceQueryLocalInterface instanceof qu1)) {
-                    mu1 mu1Var = new mu1();
-                    mu1Var.e = binder;
-                    qu1Var = mu1Var;
-                } else {
-                    qu1Var = (qu1) iInterfaceQueryLocalInterface;
-                }
-            }
-            synchronized (pr2Var.n) {
-                pr2Var.p = qu1Var;
-            }
-            pr2 pr2Var2 = xk2Var.e;
-            u45 u45VarL = ud3.L(bundle);
-            synchronized (pr2Var2.n) {
-                pr2Var2.q = u45VarL;
-            }
-            xk2Var.a();
-        }
+    public final void onReceiveResult(int r5, Bundle r6) {
+        xk2 r4 = (xk2) this.n.get();
+        if (r4 == null) goto L38;
+        if (r6 == null) goto L44;
+        Object r7 = r4.b;
+        monitor-enter(r7);
+        pr2 r0 = r4.e;     // Catch: Throwable -> L28
+        IBinder r1 = r6.getBinder("android.support.v4.media.session.EXTRA_BINDER");     // Catch: Throwable -> L28
+        int r2 = jr2.f;     // Catch: Throwable -> L28
+        if (r1 != null) goto L11;
+        qu1 r3 = null;
+    L17:
+        Object r8 = r0.n;     // Catch: Throwable -> L28
+        monitor-enter(r8);     // Catch: Throwable -> L28
+        r0.p = r3;     // Catch: Throwable -> L33
+        monitor-exit(r8);     // Catch: Throwable -> L33
+        pr2 r9 = r4.e;     // Catch: Throwable -> L28
+        u45 r10 = ud3.L(r6);     // Catch: Throwable -> L28
+        Object r11 = r9.n;     // Catch: Throwable -> L28
+        monitor-enter(r11);     // Catch: Throwable -> L28
+        r9.q = r10;     // Catch: Throwable -> L30
+        monitor-exit(r11);     // Catch: Throwable -> L30
+        r4.a();     // Catch: Throwable -> L28
+        monitor-exit(r7);     // Catch: Throwable -> L28
+        return;
+    L30:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L28
+    L33:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L28
+    L11:
+        IInterface r12 = r1.queryLocalInterface("android.support.v4.media.session.IMediaSession");     // Catch: Throwable -> L28
+        if (r12 != null) goto L14;
+    L16:
+        mu1 r13 = new mu1();     // Catch: Throwable -> L28
+        r13.e = r1;     // Catch: Throwable -> L28
+        r3 = r13;
+        goto L17
+    L14:
+        if ((r12 instanceof qu1) == false) goto L16;
+        r3 = (qu1) r12;     // Catch: Throwable -> L28
+    L28:
+        th = move-exception;
+        throw th;
+    L44:
+        return;
     }
 }

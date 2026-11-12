@@ -8,21 +8,20 @@ import java.util.ListIterator;
 public final class n1 extends e1 implements ListIterator {
     public final /* synthetic */ o1 r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public n1(o1 o1Var, int i) {
-        super(o1Var, ((List) o1Var.o).listIterator(i));
-        this.r = o1Var;
+    public n1(o1 r2, int r3) {
+        this.r = r2;
+        super(r2, ((List) r2.o).listIterator(r3));
     }
 
     @Override // java.util.ListIterator
-    public final void add(Object obj) {
-        o1 o1Var = this.r;
-        boolean zIsEmpty = o1Var.isEmpty();
-        c().add(obj);
-        o1Var.s.s++;
-        if (zIsEmpty) {
-            o1Var.a();
-        }
+    public final void add(Object r3) {
+        o1 r0 = this.r;
+        boolean r1 = r0.isEmpty();
+        c().add(r3);
+        r0.s.s++;
+        if (r1 == false) goto L6;
+        r0.a();
+        return;
     }
 
     public final ListIterator c() {
@@ -51,13 +50,12 @@ public final class n1 extends e1 implements ListIterator {
     }
 
     @Override // java.util.ListIterator
-    public final void set(Object obj) {
-        c().set(obj);
+    public final void set(Object r1) {
+        c().set(r1);
     }
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public n1(o1 o1Var) {
-        super(o1Var);
-        this.r = o1Var;
+    public n1(o1 r1) {
+        this.r = r1;
+        super(r1);
     }
 }

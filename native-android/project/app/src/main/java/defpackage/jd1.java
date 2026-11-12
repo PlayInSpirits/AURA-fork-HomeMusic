@@ -9,18 +9,23 @@ public final class jd1 implements id1 {
     public final int b;
     public final /* synthetic */ ld1 c;
 
-    public jd1(ld1 ld1Var, String str, int i) {
-        this.c = ld1Var;
-        this.a = str;
-        this.b = i;
+    public jd1(ld1 r1, String r2, int r3) {
+        this.c = r1;
+        this.a = r2;
+        this.b = r3;
     }
 
     @Override // defpackage.id1
-    public final boolean a(ArrayList arrayList, ArrayList arrayList2) {
-        kc1 kc1Var = this.c.y;
-        if (kc1Var != null && this.b < 0 && this.a == null && kc1Var.m().R(-1, 0)) {
-            return false;
-        }
-        return this.c.S(arrayList, arrayList2, this.a, this.b, 1);
+    public final boolean a(ArrayList r10, ArrayList r11) {
+        kc1 r0 = this.c.y;
+        if (r0 != null) goto L5;
+    L11:
+        int r7 = this.b;
+        return this.c.S(r10, r11, this.a, r7, 1);
+    L5:
+        if (this.b >= 0) goto L11;
+        if (this.a != null) goto L11;
+        if (r0.m().R(-1, 0) == false) goto L11;
+        return false;
     }
 }

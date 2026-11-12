@@ -8,27 +8,30 @@ public final /* synthetic */ class vf implements OnBackInvokedCallback {
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ vf(int i, Object obj) {
-        this.a = i;
-        this.b = obj;
+    public /* synthetic */ vf(int r1, Object r2) {
+        this.a = r1;
+        this.b = r2;
     }
 
     public final void onBackInvoked() {
-        int i = this.a;
-        Object obj = this.b;
-        switch (i) {
-            case 0:
-                ((bg) obj).J();
-                break;
-            case 1:
-                ((zg2) obj).a();
-                break;
-            case 2:
-                ((s83) obj).a();
-                break;
-            default:
-                ((Runnable) obj).run();
-                break;
-        }
+        int r0 = this.a;
+        Object r1 = this.b;
+        switch(r0) {
+            case 0: goto L10;
+            case 1: goto L8;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((Runnable) r1).run();
+        return;
+    L6:
+        ((s83) r1).a();
+        return;
+    L8:
+        ((zg2) r1).a();
+        return;
+    L10:
+        ((bg) r1).J();
     }
 }

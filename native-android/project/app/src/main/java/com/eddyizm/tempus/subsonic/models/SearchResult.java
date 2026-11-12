@@ -10,6 +10,9 @@ public final class SearchResult {
     private int offset;
     private int totalHits;
 
+    public SearchResult() {
+    }
+
     public final List<Child> getMatches() {
         return this.matches;
     }
@@ -22,15 +25,15 @@ public final class SearchResult {
         return this.totalHits;
     }
 
-    public final void setMatches(List<? extends Child> list) {
-        this.matches = list;
+    public final void setMatches(List<? extends Child> r1) {
+        this.matches = r1;
     }
 
-    public final void setOffset(int i) {
-        this.offset = i;
+    public final void setOffset(int r1) {
+        this.offset = r1;
     }
 
-    public final void setTotalHits(int i) {
-        this.totalHits = i;
+    public final void setTotalHits(int r1) {
+        this.totalHits = r1;
     }
 }

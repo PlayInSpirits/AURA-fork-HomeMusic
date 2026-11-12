@@ -10,12 +10,12 @@ public final class za1 {
     public final int e;
     public final int f;
 
-    public za1(int i, int i2, int i3, String str, String str2, boolean z) {
-        this.a = str;
-        this.b = i;
-        this.c = z;
-        this.d = str2;
-        this.e = i2;
-        this.f = i3;
+    public za1(int r1, int r2, int r3, String r4, String r5, boolean r6) {
+        this.a = r4;
+        this.b = r1;
+        this.c = r6;
+        this.d = r5;
+        this.e = r2;
+        this.f = r3;
     }
 }

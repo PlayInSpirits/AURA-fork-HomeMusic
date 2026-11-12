@@ -9,104 +9,113 @@ public final class w43 extends a13 {
     public final a13 o;
     public boolean p;
 
-    public w43(long j, gh4 gh4Var, if1 if1Var, if1 if1Var2, a13 a13Var) {
-        super(j, gh4Var, if1Var, if1Var2);
-        this.o = a13Var;
-        a13Var.k();
+    public w43(long r1, gh4 r3, if1 r4, if1 r5, a13 r6) {
+        super(r1, r3, r4, r5);
+        this.o = r6;
+        r6.k();
     }
 
     @Override // defpackage.a13, defpackage.ch4
     public final void c() {
-        if (this.c) {
-            return;
-        }
+        if (this.c == true) goto L8;
         super.c();
-        if (this.p) {
-            return;
-        }
+        if (this.p == true) goto L9;
         this.p = true;
         this.o.l();
+        return;
+    L9:
+        return;
     }
 
     @Override // defpackage.a13
     public final jz4 w() {
-        w43 w43Var;
-        a13 a13Var = this.o;
-        if (a13Var.m || a13Var.c) {
-            return new dh4(this);
-        }
-        x03 x03Var = this.h;
-        long j = this.b;
-        HashMap mapB = x03Var != null ? jh4.b(a13Var.g(), this, this.o.d()) : null;
-        Object obj = jh4.c;
-        synchronized (obj) {
-            try {
-                jh4.c(this);
-                if (x03Var == null || x03Var.d == 0) {
-                    w43Var = this;
-                    w43Var.a();
-                } else {
-                    w43Var = this;
-                    jz4 jz4VarZ = w43Var.z(this.o.g(), x03Var, mapB, this.o.d());
-                    if (!jz4VarZ.equals(eh4.j)) {
-                        return jz4VarZ;
-                    }
-                    x03 x03VarX = w43Var.o.x();
-                    if (x03VarX != null) {
-                        x03VarX.j(x03Var);
-                    } else {
-                        w43Var.o.B(x03Var);
-                        w43Var.h = null;
-                    }
-                }
-                if (h12.k(w43Var.o.g(), j) < 0) {
-                    w43Var.o.v();
-                }
-                a13 a13Var2 = w43Var.o;
-                a13Var2.r(a13Var2.d().b(j).a(w43Var.j));
-                w43Var.o.A(j);
-                a13 a13Var3 = w43Var.o;
-                int i = w43Var.d;
-                w43Var.d = -1;
-                if (i >= 0) {
-                    int[] iArr = a13Var3.k;
-                    iArr.getClass();
-                    int length = iArr.length;
-                    int[] iArrCopyOf = Arrays.copyOf(iArr, length + 1);
-                    iArrCopyOf[length] = i;
-                    a13Var3.k = iArrCopyOf;
-                } else {
-                    a13Var3.getClass();
-                }
-                a13 a13Var4 = w43Var.o;
-                gh4 gh4Var = w43Var.j;
-                a13Var4.getClass();
-                synchronized (obj) {
-                    a13Var4.j = a13Var4.j.e(gh4Var);
-                    a13 a13Var5 = w43Var.o;
-                    int[] iArr2 = w43Var.k;
-                    a13Var5.getClass();
-                    if (iArr2.length != 0) {
-                        int[] iArr3 = a13Var5.k;
-                        if (iArr3.length != 0) {
-                            int length2 = iArr3.length;
-                            int length3 = iArr2.length;
-                            int[] iArrCopyOf2 = Arrays.copyOf(iArr3, length2 + length3);
-                            System.arraycopy(iArr2, 0, iArrCopyOf2, length2, length3);
-                            iArr2 = iArrCopyOf2;
-                        }
-                        a13Var5.k = iArr2;
-                    }
-                }
-                w43Var.m = true;
-                if (!w43Var.p) {
-                    w43Var.p = true;
-                    w43Var.o.l();
-                }
-                return eh4.j;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
+        a13 r0 = this.o;
+        if (r0.m == true) goto L61;
+        if (r0.c == true) goto L61;
+        x03 r5 = this.h;
+        long r8 = this.b;
+        if (r5 == null) goto L10;
+        HashMap r6 = jh4.b(r0.g(), this, this.o.d());
+    L11:
+        Object r10 = jh4.c;
+        monitor-enter(r10);
+        jh4.c(this);     // Catch: Throwable -> L25
+        if (r5 != null) goto L16;
+    L17:
+        w43 r2 = this;
+        r2.a();     // Catch: Throwable -> L25
+    L30:
+        if (h12.k(r2.o.g(), r8) >= 0) goto L32;
+        r2.o.v();     // Catch: Throwable -> L25
+    L32:
+        a13 r11 = r2.o;     // Catch: Throwable -> L25
+        r11.r(r11.d().b(r8).a(r2.j));     // Catch: Throwable -> L25
+        r2.o.A(r8);     // Catch: Throwable -> L25
+        a13 r12 = r2.o;     // Catch: Throwable -> L25
+        int r1 = r2.d;     // Catch: Throwable -> L25
+        r2.d = -1;     // Catch: Throwable -> L25
+        if (r1 < 0) goto L35;
+        int[] r3 = r12.k;     // Catch: Throwable -> L25
+        r3.getClass();     // Catch: Throwable -> L25
+        int r4 = r3.length;     // Catch: Throwable -> L25
+        int[] r7 = Arrays.copyOf(r3, r4 + 1);     // Catch: Throwable -> L25
+        r7[r4] = r1;     // Catch: Throwable -> L25
+        r12.k = r7;     // Catch: Throwable -> L25
+    L36:
+        a13 r13 = r2.o;     // Catch: Throwable -> L25
+        gh4 r9 = r2.j;     // Catch: Throwable -> L25
+        r13.getClass();     // Catch: Throwable -> L25
+        monitor-enter(r10);     // Catch: Throwable -> L25
+        r13.j = r13.j.e(r9);     // Catch: Throwable -> L54
+        monitor-exit(r10);     // Catch: Throwable -> L25
+        a13 r14 = r2.o;     // Catch: Throwable -> L25
+        int[] r15 = r2.k;     // Catch: Throwable -> L25
+        r14.getClass();     // Catch: Throwable -> L25
+        if (r15.length == 0) goto L48;
+        int[] r16 = r14.k;     // Catch: Throwable -> L25
+        if (r16.length == 0) goto L47;
+        int r17 = r16.length;     // Catch: Throwable -> L25
+        int r18 = r15.length;     // Catch: Throwable -> L25
+        int[] r19 = Arrays.copyOf(r16, r17 + r18);     // Catch: Throwable -> L25
+        System.arraycopy(r15, 0, r19, r17, r18);     // Catch: Throwable -> L25
+        r15 = r19;
+    L47:
+        r14.k = r15;     // Catch: Throwable -> L25
+    L48:
+        monitor-exit(r10);
+        r2.m = true;
+        if (r2.p == true) goto L53;
+        r2.p = true;
+        r2.o.l();
+    L53:
+        return eh4.j;
+    L54:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L25
+    L35:
+        r12.getClass();     // Catch: Throwable -> L25
+        goto L36
+    L16:
+        if (r5.d == 0) goto L17;
+        r2 = this;
+        jz4 r110 = r2.z(this.o.g(), r5, r6, this.o.d());     // Catch: Throwable -> L25
+        if (r110.equals(eh4.j) == true) goto L22;
+        monitor-exit(r10);
+        return r110;
+    L22:
+        x03 r111 = r2.o.x();     // Catch: Throwable -> L25
+        if (r111 == null) goto L27;
+        r111.j(r5);     // Catch: Throwable -> L25
+        goto L30
+    L27:
+        r2.o.B(r5);     // Catch: Throwable -> L25
+        r2.h = null;     // Catch: Throwable -> L25
+    L25:
+        th = move-exception;
+        throw th;
+    L10:
+        r6 = null;
+    L61:
+        return new dh4(this);
     }
 }

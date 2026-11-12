@@ -6,7 +6,6 @@ import android.content.res.XmlResourceParser;
 import android.util.Log;
 import android.util.Xml;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -18,36 +17,48 @@ public final class nb0 {
     public final float d;
     public final int e;
 
-    public nb0(Context context, XmlResourceParser xmlResourceParser) {
+    public nb0(Context r7, XmlResourceParser r8) {
         this.a = Float.NaN;
         this.b = Float.NaN;
         this.c = Float.NaN;
         this.d = Float.NaN;
         this.e = -1;
-        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(Xml.asAttributeSet(xmlResourceParser), kt3.j);
-        int indexCount = typedArrayObtainStyledAttributes.getIndexCount();
-        for (int i = 0; i < indexCount; i++) {
-            int index = typedArrayObtainStyledAttributes.getIndex(i);
-            if (index == 0) {
-                int resourceId = typedArrayObtainStyledAttributes.getResourceId(index, this.e);
-                this.e = resourceId;
-                String resourceTypeName = context.getResources().getResourceTypeName(resourceId);
-                context.getResources().getResourceName(resourceId);
-                if ("layout".equals(resourceTypeName)) {
-                    new wb0().b((ConstraintLayout) LayoutInflater.from(context).inflate(resourceId, (ViewGroup) null));
-                }
-            } else if (index == 1) {
-                this.d = typedArrayObtainStyledAttributes.getDimension(index, this.d);
-            } else if (index == 2) {
-                this.b = typedArrayObtainStyledAttributes.getDimension(index, this.b);
-            } else if (index == 3) {
-                this.c = typedArrayObtainStyledAttributes.getDimension(index, this.c);
-            } else if (index == 4) {
-                this.a = typedArrayObtainStyledAttributes.getDimension(index, this.a);
-            } else {
-                Log.v("ConstraintLayoutStates", "Unknown tag");
-            }
-        }
-        typedArrayObtainStyledAttributes.recycle();
+        TypedArray r9 = r7.obtainStyledAttributes(Xml.asAttributeSet(r8), kt3.j);
+        int r0 = r9.getIndexCount();
+        int r1 = 0;
+    L3:
+        if (r1 >= r0) goto L23;
+        int r2 = r9.getIndex(r1);
+        if (r2 != 0) goto L10;
+        int r3 = r9.getResourceId(r2, this.e);
+        this.e = r3;
+        String r4 = r7.getResources().getResourceTypeName(r3);
+        r7.getResources().getResourceName(r3);
+        if ("layout".equals(r4) == false) goto L22;
+        new wb0().b((ConstraintLayout) LayoutInflater.from(r7).inflate(r3, null));
+    L22:
+        r1 = r1 + 1;
+        goto L3
+    L10:
+        if (r2 != 1) goto L13;
+        this.d = r9.getDimension(r2, this.d);
+        goto L22
+    L13:
+        if (r2 != 2) goto L16;
+        this.b = r9.getDimension(r2, this.b);
+        goto L22
+    L16:
+        if (r2 != 3) goto L19;
+        this.c = r9.getDimension(r2, this.c);
+        goto L22
+    L19:
+        if (r2 != 4) goto L21;
+        this.a = r9.getDimension(r2, this.a);
+        goto L22
+    L21:
+        Log.v("ConstraintLayoutStates", "Unknown tag");
+        goto L22
+    L23:
+        r9.recycle();
     }
 }

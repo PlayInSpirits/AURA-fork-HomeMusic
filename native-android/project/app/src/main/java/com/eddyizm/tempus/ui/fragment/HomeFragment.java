@@ -39,20 +39,23 @@ public class HomeFragment extends kc1 {
     public AppBarLayout p0;
     public TabLayout q0;
 
+    public HomeFragment() {
+    }
+
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        MainActivity mainActivity = (MainActivity) e();
-        this.m0 = mainActivity;
-        this.n0 = mainActivity.U;
-        View viewInflate = layoutInflater.inflate(R.layout.fragment_home, viewGroup, false);
-        ViewPager2 viewPager2 = (ViewPager2) uo.s(viewInflate, R.id.homeViewPager);
-        if (viewPager2 == null) {
-            nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(R.id.homeViewPager)));
-            return null;
-        }
-        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) viewInflate;
-        this.l0 = new hd5(9, coordinatorLayout, viewPager2);
-        return coordinatorLayout;
+    public final View H(LayoutInflater r2, ViewGroup r3, Bundle r4) {
+        MainActivity r5 = (MainActivity) l();
+        this.m0 = r5;
+        this.n0 = r5.U;
+        View r6 = r2.inflate(R.layout.fragment_home, r3, false);
+        ViewPager2 r7 = (ViewPager2) uo.s(r6, R.id.homeViewPager);
+        if (r7 == null) goto L6;
+        CoordinatorLayout r8 = (CoordinatorLayout) r6;
+        this.l0 = new hd5(9, r8, r7);
+        return r8;
+    L6:
+        nz2.n("Missing required view with ID: ".concat(r6.getResources().getResourceName(R.id.homeViewPager)));
+        return null;
     }
 
     @Override // defpackage.kc1
@@ -69,40 +72,45 @@ public class HomeFragment extends kc1 {
     }
 
     @Override // defpackage.kc1
-    public final void T(View view, Bundle bundle) {
+    public final void T(View r9, Bundle r10) {
         this.p0 = (AppBarLayout) ((CoordinatorLayout) this.l0.o).findViewById(R.id.toolbar_fragment);
-        MaterialToolbar materialToolbar = (MaterialToolbar) ((CoordinatorLayout) this.l0.o).findViewById(R.id.toolbar);
-        this.o0 = materialToolbar;
-        this.m0.o(materialToolbar);
+        MaterialToolbar r11 = (MaterialToolbar) ((CoordinatorLayout) this.l0.o).findViewById(R.id.toolbar);
+        this.o0 = r11;
+        this.m0.o(r11);
         this.n0.n(this.m0, this.o0);
-        Drawable overflowIcon = this.o0.getOverflowIcon();
-        Objects.requireNonNull(overflowIcon);
-        overflowIcon.setTint(Z().getResources().getColor(R.color.titleTextColor, null));
-        TabLayout tabLayout = new TabLayout(Z());
-        this.q0 = tabLayout;
-        int i = 0;
-        tabLayout.setTabGravity(0);
+        Drawable r12 = this.o0.getOverflowIcon();
+        Objects.requireNonNull(r12);
+        r12.setTint(Z().getResources().getColor(R.color.titleTextColor, null));
+        TabLayout r13 = new TabLayout(Z());
+        this.q0 = r13;
+        int r14 = 0;
+        r13.setTabGravity(0);
         this.q0.setTabMode(1);
         this.p0.addView(this.q0);
-        lo1 lo1Var = new lo1(this);
-        lo1Var.w(R.drawable.ic_home, new cp1(), s(R.string.home_section_music));
+        lo1 r15 = new lo1(this);
+        r15.w(R.drawable.ic_home, new cp1(), s(R.string.home_section_music));
         App.b().getClass();
-        if (App.c().getBoolean("podcast_section_visibility", true)) {
-            lo1Var.w(R.drawable.ic_graphic_eq, new gp1(), s(R.string.home_section_podcast));
-        }
-        if (xa3.u("radio_section_visibility", true)) {
-            lo1Var.w(R.drawable.ic_play_for_work, new hp1(), s(R.string.home_section_radio));
-        }
-        ((ViewPager2) this.l0.p).setAdapter(lo1Var);
+        if (App.c().getBoolean("podcast_section_visibility", true) == false) goto L6;
+        r15.w(R.drawable.ic_graphic_eq, new gp1(), s(R.string.home_section_podcast));
+    L6:
+        if (xa3.u("radio_section_visibility", true) == false) goto L8;
+        r15.w(R.drawable.ic_play_for_work, new hp1(), s(R.string.home_section_radio));
+    L8:
+        ((ViewPager2) this.l0.p).setAdapter(r15);
         ((ViewPager2) this.l0.p).setOffscreenPageLimit(3);
         ((ViewPager2) this.l0.p).setUserInputEnabled(false);
-        new jw(this.q0, (ViewPager2) this.l0.p, new cn(15, lo1Var)).l();
-        TabLayout tabLayout2 = this.q0;
-        if (!xa3.u("podcast_section_visibility", true) && !xa3.u("radio_section_visibility", true)) {
-            i = 8;
-        }
-        tabLayout2.setVisibility(i);
-        ViewPager2 viewPager2 = (ViewPager2) this.l0.p;
-        ((ArrayList) viewPager2.p.b).add(new q80(2, this));
+        new jw(this.q0, (ViewPager2) this.l0.p, new cn(15, r15)).l();
+        TabLayout r16 = this.q0;
+        if (xa3.u("podcast_section_visibility", true) == false) goto L11;
+    L14:
+        r16.setVisibility(r14);
+        ViewPager2 r17 = (ViewPager2) this.l0.p;
+        q80 r18 = new q80(2, this);
+        ((ArrayList) r17.p.b).add(r18);
+        return;
+    L11:
+        if (xa3.u("radio_section_visibility", true) == true) goto L14;
+        r14 = 8;
+        goto L14
     }
 }

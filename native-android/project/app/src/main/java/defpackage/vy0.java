@@ -9,7 +9,7 @@ import android.widget.EdgeEffect;
 public final class vy0 {
     public final Context a;
     public final int b;
-    public long c = 0;
+    public long c;
     public EdgeEffect d;
     public EdgeEffect e;
     public EdgeEffect f;
@@ -19,78 +19,94 @@ public final class vy0 {
     public EdgeEffect j;
     public EdgeEffect k;
 
-    public vy0(Context context, int i) {
-        this.a = context;
-        this.b = i;
+    public vy0(Context r1, int r2) {
+        this.a = r1;
+        this.b = r2;
+        this.c = 0;
     }
 
-    public static boolean f(EdgeEffect edgeEffect) {
-        if (edgeEffect == null) {
-            return false;
-        }
-        return !edgeEffect.isFinished();
+    public static boolean f(EdgeEffect r0) {
+        if (r0 != null) goto L6;
+        return false;
+    L6:
+        return !r0.isFinished();
     }
 
-    public static boolean g(EdgeEffect edgeEffect) {
-        if (edgeEffect == null) {
-            return false;
-        }
-        return !((Build.VERSION.SDK_INT >= 31 ? qe.b(edgeEffect) : 0.0f) == 0.0f);
+    public static boolean g(EdgeEffect r4) {
+        boolean r0 = false;
+        if (r4 != null) goto L6;
+        return false;
+    L6:
+        if (Build.VERSION.SDK_INT < 31) goto L8;
+        float r5 = qe.b(r4);
+    L10:
+        if (r5 != 0.0f) goto L13;
+        r0 = true;
+    L13:
+        return !r0;
+    L8:
+        r5 = 0.0f;
+        goto L10
     }
 
-    public final EdgeEffect a(hb3 hb3Var) {
-        int i = Build.VERSION.SDK_INT;
-        Context context = this.a;
-        EdgeEffect edgeEffectA = i >= 31 ? qe.a(context) : new aj1(context);
-        edgeEffectA.setColor(this.b);
-        if (!n02.a(this.c, 0L)) {
-            long j = this.c;
-            if (hb3Var == hb3.n) {
-                edgeEffectA.setSize((int) (j >> 32), (int) (j & 4294967295L));
-                return edgeEffectA;
-            }
-            edgeEffectA.setSize((int) (4294967295L & j), (int) (j >> 32));
-        }
-        return edgeEffectA;
+    public final EdgeEffect a(hb3 r7) {
+        int r0 = Build.VERSION.SDK_INT;
+        Context r2 = this.a;
+        if (r0 < 31) goto L5;
+        EdgeEffect r1 = qe.a(r2);
+    L6:
+        r1.setColor(this.b);
+        if (n02.a(this.c, 0) == true) goto L13;
+        long r3 = this.c;
+        if (r7 != hb3.n) goto L12;
+        r1.setSize((int) (r3 >> 32), (int) (r3 & 4294967295L));
+        return r1;
+    L12:
+        r1.setSize((int) (4294967295L & r3), (int) (r3 >> 32));
+    L13:
+        return r1;
+    L5:
+        r1 = new aj1(r2);
+        goto L6
     }
 
     public final EdgeEffect b() {
-        EdgeEffect edgeEffect = this.e;
-        if (edgeEffect != null) {
-            return edgeEffect;
-        }
-        EdgeEffect edgeEffectA = a(hb3.n);
-        this.e = edgeEffectA;
-        return edgeEffectA;
+        EdgeEffect r0 = this.e;
+        if (r0 != null) goto L6;
+        EdgeEffect r1 = a(hb3.n);
+        this.e = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     public final EdgeEffect c() {
-        EdgeEffect edgeEffect = this.f;
-        if (edgeEffect != null) {
-            return edgeEffect;
-        }
-        EdgeEffect edgeEffectA = a(hb3.o);
-        this.f = edgeEffectA;
-        return edgeEffectA;
+        EdgeEffect r0 = this.f;
+        if (r0 != null) goto L6;
+        EdgeEffect r1 = a(hb3.o);
+        this.f = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     public final EdgeEffect d() {
-        EdgeEffect edgeEffect = this.g;
-        if (edgeEffect != null) {
-            return edgeEffect;
-        }
-        EdgeEffect edgeEffectA = a(hb3.o);
-        this.g = edgeEffectA;
-        return edgeEffectA;
+        EdgeEffect r0 = this.g;
+        if (r0 != null) goto L6;
+        EdgeEffect r1 = a(hb3.o);
+        this.g = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     public final EdgeEffect e() {
-        EdgeEffect edgeEffect = this.d;
-        if (edgeEffect != null) {
-            return edgeEffect;
-        }
-        EdgeEffect edgeEffectA = a(hb3.n);
-        this.d = edgeEffectA;
-        return edgeEffectA;
+        EdgeEffect r0 = this.d;
+        if (r0 != null) goto L6;
+        EdgeEffect r1 = a(hb3.n);
+        this.d = r1;
+        return r1;
+    L6:
+        return r0;
     }
 }

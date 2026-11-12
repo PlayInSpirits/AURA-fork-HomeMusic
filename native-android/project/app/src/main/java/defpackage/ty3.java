@@ -9,13 +9,13 @@ public final class ty3 implements Executor {
     public final /* synthetic */ Executor n;
     public final /* synthetic */ er1 o;
 
-    public ty3(ExecutorService executorService, er1 er1Var) {
-        this.n = executorService;
-        this.o = er1Var;
+    public ty3(ExecutorService r1, er1 r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // java.util.concurrent.Executor
-    public final void execute(Runnable runnable) {
-        this.n.execute(runnable);
+    public final void execute(Runnable r1) {
+        this.n.execute(r1);
     }
 }

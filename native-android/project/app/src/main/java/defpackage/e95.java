@@ -11,13 +11,13 @@ public final class e95 implements m84 {
     public final long d;
     public final long e;
 
-    public e95(uu uuVar, int i, long j, long j2) {
-        this.a = uuVar;
-        this.b = i;
-        this.c = j;
-        long j3 = (j2 - j) / ((long) uuVar.p);
-        this.d = j3;
-        this.e = h(j3);
+    public e95(uu r1, int r2, long r3, long r5) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        long r6 = (r5 - r3) / ((long) r1.p);
+        this.d = r6;
+        this.e = h(r6);
     }
 
     @Override // defpackage.m84
@@ -26,20 +26,22 @@ public final class e95 implements m84 {
     }
 
     @Override // defpackage.m84
-    public final l84 e(long j) {
-        uu uuVar = this.a;
-        long j2 = (((long) uuVar.o) * j) / (((long) this.b) * 1000000);
-        long j3 = this.d - 1;
-        long jK = f35.k(j2, 0L, j3);
-        int i = uuVar.p;
-        long j4 = this.c;
-        long jH = h(jK);
-        o84 o84Var = new o84(jH, (((long) i) * jK) + j4);
-        if (jH >= j || jK == j3) {
-            return new l84(o84Var, o84Var);
-        }
-        long j5 = jK + 1;
-        return new l84(o84Var, new o84(h(j5), (((long) i) * j5) + j4));
+    public final l84 e(long r15) {
+        uu r0 = this.a;
+        long r5 = (((long) r0.o) * r15) / (((long) this.b) * 1000000);
+        long r9 = this.d - 1;
+        long r1 = f35.k(r5, 0, r9);
+        int r2 = r0.p;
+        long r7 = this.c;
+        long r11 = h(r1);
+        o84 r13 = new o84(r11, (((long) r2) * r1) + r7);
+        if (r11 >= r15) goto L10;
+        if (r1 == r9) goto L10;
+        long r3 = r1 + 1;
+        long r4 = (((long) r2) * r3) + r7;
+        return new l84(r13, new o84(h(r3), r4));
+    L10:
+        return new l84(r13, r13);
     }
 
     @Override // defpackage.m84
@@ -47,10 +49,10 @@ public final class e95 implements m84 {
         return this.e;
     }
 
-    public final long h(long j) {
-        long j2 = j * ((long) this.b);
-        long j3 = this.a.o;
-        String str = f35.a;
-        return f35.a0(j2, 1000000L, j3, RoundingMode.DOWN);
+    public final long h(long r10) {
+        long r2 = r10 * ((long) this.b);
+        long r6 = this.a.o;
+        String r9 = f35.a;
+        return f35.a0(r2, 1000000, r6, RoundingMode.DOWN);
     }
 }

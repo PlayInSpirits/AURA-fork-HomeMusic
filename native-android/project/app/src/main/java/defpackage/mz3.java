@@ -14,104 +14,114 @@ public class mz3 extends Fragment {
 
     /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
     public static final class a implements Application.ActivityLifecycleCallbacks {
-        public static final lz3 Companion = new lz3();
+        public static final lz3 Companion = null;
 
-        public static final void registerIn(Activity activity) {
+        static {
+            Companion = new lz3();
+        }
+
+        public a() {
+        }
+
+        public static final void registerIn(Activity r1) {
             Companion.getClass();
-            activity.getClass();
-            activity.registerActivityLifecycleCallbacks(new a());
+            r1.getClass();
+            ek2.n(r1, new a());
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityCreated(Activity activity, Bundle bundle) {
-            activity.getClass();
+        public void onActivityCreated(Activity r1, Bundle r2) {
+            r1.getClass();
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityDestroyed(Activity activity) {
-            activity.getClass();
+        public void onActivityDestroyed(Activity r1) {
+            r1.getClass();
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityPaused(Activity activity) {
-            activity.getClass();
+        public void onActivityPaused(Activity r1) {
+            r1.getClass();
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityPostCreated(Activity activity, Bundle bundle) {
-            activity.getClass();
-            int i = mz3.o;
-            kz3.a(activity, q92.ON_CREATE);
+        public void onActivityPostCreated(Activity r1, Bundle r2) {
+            r1.getClass();
+            int r0 = mz3.o;
+            kz3.a(r1, q92.ON_CREATE);
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityPostResumed(Activity activity) {
-            activity.getClass();
-            int i = mz3.o;
-            kz3.a(activity, q92.ON_RESUME);
+        public void onActivityPostResumed(Activity r1) {
+            r1.getClass();
+            int r0 = mz3.o;
+            kz3.a(r1, q92.ON_RESUME);
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityPostStarted(Activity activity) {
-            activity.getClass();
-            int i = mz3.o;
-            kz3.a(activity, q92.ON_START);
+        public void onActivityPostStarted(Activity r1) {
+            r1.getClass();
+            int r0 = mz3.o;
+            kz3.a(r1, q92.ON_START);
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityPreDestroyed(Activity activity) {
-            activity.getClass();
-            int i = mz3.o;
-            kz3.a(activity, q92.ON_DESTROY);
+        public void onActivityPreDestroyed(Activity r1) {
+            r1.getClass();
+            int r0 = mz3.o;
+            kz3.a(r1, q92.ON_DESTROY);
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityPrePaused(Activity activity) {
-            activity.getClass();
-            int i = mz3.o;
-            kz3.a(activity, q92.ON_PAUSE);
+        public void onActivityPrePaused(Activity r1) {
+            r1.getClass();
+            int r0 = mz3.o;
+            kz3.a(r1, q92.ON_PAUSE);
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityPreStopped(Activity activity) {
-            activity.getClass();
-            int i = mz3.o;
-            kz3.a(activity, q92.ON_STOP);
+        public void onActivityPreStopped(Activity r1) {
+            r1.getClass();
+            int r0 = mz3.o;
+            kz3.a(r1, q92.ON_STOP);
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityResumed(Activity activity) {
-            activity.getClass();
+        public void onActivityResumed(Activity r1) {
+            r1.getClass();
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
-            activity.getClass();
-            bundle.getClass();
+        public void onActivitySaveInstanceState(Activity r1, Bundle r2) {
+            r1.getClass();
+            r2.getClass();
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityStarted(Activity activity) {
-            activity.getClass();
+        public void onActivityStarted(Activity r1) {
+            r1.getClass();
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityStopped(Activity activity) {
-            activity.getClass();
+        public void onActivityStopped(Activity r1) {
+            r1.getClass();
         }
     }
 
-    public final void a(q92 q92Var) {
-        if (Build.VERSION.SDK_INT < 29) {
-            Activity activity = getActivity();
-            activity.getClass();
-            kz3.a(activity, q92Var);
-        }
+    public mz3() {
+    }
+
+    public final void a(q92 r3) {
+        if (Build.VERSION.SDK_INT >= 29) goto L6;
+        Activity r2 = getActivity();
+        r2.getClass();
+        kz3.a(r2, r3);
+        return;
     }
 
     @Override // android.app.Fragment
-    public final void onActivityCreated(Bundle bundle) {
-        super.onActivityCreated(bundle);
+    public final void onActivityCreated(Bundle r1) {
+        super.onActivityCreated(r1);
         a(q92.ON_CREATE);
     }
 
@@ -131,26 +141,26 @@ public class mz3 extends Fragment {
     @Override // android.app.Fragment
     public final void onResume() {
         super.onResume();
-        si1 si1Var = this.n;
-        if (si1Var != null) {
-            ((lq3) si1Var.o).a();
-        }
+        si1 r0 = this.n;
+        if (r0 == null) goto L5;
+        ((lq3) r0.o).a();
+    L5:
         a(q92.ON_RESUME);
     }
 
     @Override // android.app.Fragment
     public final void onStart() {
         super.onStart();
-        si1 si1Var = this.n;
-        if (si1Var != null) {
-            lq3 lq3Var = (lq3) si1Var.o;
-            int i = lq3Var.n + 1;
-            lq3Var.n = i;
-            if (i == 1 && lq3Var.q) {
-                lq3Var.s.d(q92.ON_START);
-                lq3Var.q = false;
-            }
-        }
+        si1 r0 = this.n;
+        if (r0 == null) goto L9;
+        lq3 r1 = (lq3) r0.o;
+        int r2 = r1.n + 1;
+        r1.n = r2;
+        if (r2 != 1) goto L9;
+        if (r1.q == false) goto L9;
+        r1.s.d(q92.ON_START);
+        r1.q = false;
+    L9:
         a(q92.ON_START);
     }
 

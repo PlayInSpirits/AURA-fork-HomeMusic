@@ -12,21 +12,31 @@ public final class hs3 implements uw2 {
     public final uw2 c;
     public final Class d;
 
-    public hs3(Context context, uw2 uw2Var, uw2 uw2Var2, Class cls) {
-        this.a = context.getApplicationContext();
-        this.b = uw2Var;
-        this.c = uw2Var2;
-        this.d = cls;
+    public hs3(Context r1, uw2 r2, uw2 r3, Class r4) {
+        this.a = r1.getApplicationContext();
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
     }
 
     @Override // defpackage.uw2
-    public final boolean a(Object obj) {
-        return Build.VERSION.SDK_INT >= 29 && hw.s((Uri) obj);
+    public final boolean a(Object r2) {
+        Uri r3 = (Uri) r2;
+        if (Build.VERSION.SDK_INT >= 29) goto L5;
+        return false;
+    L5:
+        if (hw.s(r3) == false) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     @Override // defpackage.uw2
-    public final tw2 b(Object obj, int i, int i2, db3 db3Var) {
-        Uri uri = (Uri) obj;
-        return new tw2(new s73(uri), new gs3(this.a, this.b, this.c, uri, i, i2, db3Var, this.d));
+    public final tw2 b(Object r11, int r12, int r13, db3 r14) {
+        Uri r4 = (Uri) r11;
+        s73 r9 = new s73(r4);
+        uw2 r3 = this.c;
+        Class r8 = this.d;
+        return new tw2(r9, new gs3(this.a, this.b, r3, r4, r12, r13, r14, r8));
     }
 }

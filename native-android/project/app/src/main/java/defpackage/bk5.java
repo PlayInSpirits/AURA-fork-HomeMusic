@@ -6,8 +6,8 @@ public final class bk5 {
     public final byte a;
     public final byte b;
 
-    public bk5(int i) {
-        this.a = (byte) (i & 224);
-        this.b = (byte) (i & 31);
+    public bk5(int r2) {
+        this.a = (byte) (r2 & 224);
+        this.b = (byte) (r2 & 31);
     }
 }

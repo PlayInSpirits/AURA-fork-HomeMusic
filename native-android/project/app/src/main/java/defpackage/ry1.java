@@ -13,126 +13,147 @@ public final /* synthetic */ class ry1 implements if1 {
     public final /* synthetic */ Object q;
     public final /* synthetic */ Object r;
 
-    public /* synthetic */ ry1(gx3 gx3Var, hy2 hy2Var, e74 e74Var, ey2 ey2Var) {
+    public /* synthetic */ ry1(gx3 r2, hy2 r3, e74 r4, ey2 r5) {
         this.n = 2;
-        this.q = gx3Var;
-        this.o = hy2Var;
-        this.p = e74Var;
-        this.r = ey2Var;
+        this.q = r2;
+        this.o = r3;
+        this.p = r4;
+        this.r = r5;
     }
 
-    /* JADX WARN: Code duplicated, block: B:14:0x009c  */
     @Override // defpackage.if1
-    public final Object invoke(Object obj) {
-        int i = this.n;
-        j15 j15Var = j15.a;
-        Object obj2 = this.o;
-        Object obj3 = this.r;
-        Object obj4 = this.q;
-        Object obj5 = this.p;
-        switch (i) {
-            case 0:
-                ty1 ty1Var = (ty1) obj5;
-                gx3 gx3Var = (gx3) obj4;
-                we0 we0Var = (we0) obj3;
-                long jLongValue = ((Long) obj).longValue();
-                kl4 kl4Var = (kl4) ((b13) obj2).getValue();
-                long jLongValue2 = kl4Var != null ? ((Number) kl4Var.getValue()).longValue() : jLongValue;
-                long j = ty1Var.c;
-                f13 f13Var = ty1Var.a;
-                if (j == Long.MIN_VALUE || gx3Var.n != j51.v(we0Var.e())) {
-                    ty1Var.c = jLongValue;
-                    Object[] objArr = f13Var.n;
-                    int i2 = f13Var.p;
-                    for (int i3 = 0; i3 < i2; i3++) {
-                        ((qy1) objArr[i3]).s = true;
-                    }
-                    gx3Var.n = j51.v(we0Var.e());
-                }
-                float f = gx3Var.n;
-                if (f == 0.0f) {
-                    Object[] objArr2 = f13Var.n;
-                    int i4 = f13Var.p;
-                    for (int i5 = 0; i5 < i4; i5++) {
-                        qy1 qy1Var = (qy1) objArr2[i5];
-                        qy1Var.p.setValue(qy1Var.q.c);
-                        qy1Var.s = true;
-                    }
-                } else {
-                    long j2 = (long) ((jLongValue2 - ty1Var.c) / f);
-                    Object[] objArr3 = f13Var.n;
-                    int i6 = f13Var.p;
-                    boolean z = true;
-                    for (int i7 = 0; i7 < i6; i7++) {
-                        qy1 qy1Var2 = (qy1) objArr3[i7];
-                        if (!qy1Var2.r) {
-                            qy1Var2.u.b.setValue(Boolean.FALSE);
-                            if (qy1Var2.s) {
-                                qy1Var2.s = false;
-                                qy1Var2.t = j2;
-                            }
-                            long j3 = j2 - qy1Var2.t;
-                            qy1Var2.p.setValue(qy1Var2.q.f(j3));
-                            qy1Var2.r = qy1Var2.q.e(j3);
-                        }
-                        if (!qy1Var2.r) {
-                            z = false;
-                        }
-                    }
-                    ty1Var.d.setValue(Boolean.valueOf(!z));
-                }
-                return j15Var;
-            case 1:
-                q82 q82Var = (q82) obj2;
-                q82Var.c = new ll((c82) obj5, (kn4) obj4, (wp3) obj3);
-                return new a82(1, q82Var);
-            case 2:
-                gx3 gx3Var2 = (gx3) obj4;
-                hy2 hy2Var = (hy2) obj2;
-                e74 e74Var = (e74) obj5;
-                ey2 ey2Var = (ey2) obj3;
-                vd vdVar = (vd) obj;
-                float fFloatValue = ((Number) vdVar.e.getValue()).floatValue() - gx3Var2.n;
-                if (h12.b(fFloatValue)) {
-                    if (((Boolean) ey2Var.invoke(Float.valueOf(gx3Var2.n))).booleanValue()) {
-                        vdVar.a();
-                    }
-                } else if (h12.b(fFloatValue - hy2Var.G(e74Var, fFloatValue))) {
-                    gx3Var2.n += fFloatValue;
-                    if (((Boolean) ey2Var.invoke(Float.valueOf(gx3Var2.n))).booleanValue()) {
-                        vdVar.a();
-                    }
-                } else {
-                    vdVar.a();
-                }
-                return j15Var;
-            default:
-                Context context = (Context) obj5;
-                Uri uri = (Uri) obj4;
-                ((yr0) obj).getClass();
-                wq4 i73Var = new i73((b13) obj2, 0);
-                vz3 vz3VarA = a.c(context).g().N(uri).a(wg0.a(8, context, (String) obj3));
-                vz3VarA.getClass();
-                vz3 vz3VarA2 = xt3.a(vz3VarA, uri);
-                vz3VarA2.getClass();
-                vz3VarA2.J(i73Var, null, vz3VarA2, fh0.g);
-                return new vy1(2, context, i73Var);
-        }
+    public final Object invoke(Object r17) {
+        int r1 = this.n;
+        j15 r3 = j15.a;
+        int r4 = 0;
+        Object r5 = this.o;
+        Object r6 = this.r;
+        Object r7 = this.q;
+        Object r0 = this.p;
+        switch(r1) {
+            case 0: goto L18;
+            case 1: goto L16;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        Context r2 = (Context) r0;
+        Uri r8 = (Uri) r7;
+        ((yr0) r17).getClass();
+        wq4 r9 = new i73((b13) r5, 0);
+        vz3 r10 = a.c(r2).g().N(r8).G(wg0.a(8, r2, (String) r6));
+        r10.getClass();
+        vz3 r11 = xt3.a(r10, r8);
+        r11.getClass();
+        r11.J(r9, null, r11, fh0.g);
+        return new vy1(2, r2, r9);
+    L6:
+        gx3 r12 = (gx3) r7;
+        hy2 r13 = (hy2) r5;
+        e74 r14 = (e74) r0;
+        ey2 r15 = (ey2) r6;
+        vd r16 = (vd) r17;
+        float r18 = ((Number) r16.e.getValue()).floatValue() - r12.n;
+        if (h12.b(r18) == true) goto L13;
+        if (h12.b(r18 - r13.G(r14, r18)) == true) goto L11;
+        r16.a();
+    L15:
+        return r3;
+    L11:
+        r12.n += r18;
+    L13:
+        if (((Boolean) r15.invoke(Float.valueOf(r12.n))).booleanValue() == false) goto L15;
+        r16.a();
+        goto L15
+    L16:
+        q82 r19 = (q82) r5;
+        yr0 r20 = (yr0) r17;
+        r19.c = new ll((c82) r0, (kn4) r7, (wp3) r6);
+        return new a82(1, r19);
+    L18:
+        ty1 r21 = (ty1) r0;
+        gx3 r22 = (gx3) r7;
+        we0 r23 = (we0) r6;
+        long r24 = ((Long) r17).longValue();
+        kl4 r25 = (kl4) ((b13) r5).getValue();
+        if (r25 == null) goto L21;
+        long r110 = ((Number) r25.getValue()).longValue();
+    L22:
+        long r111 = r21.c;
+        f13 r26 = r21.a;
+        if (r111 != Long.MIN_VALUE) goto L25;
+    L27:
+        r21.c = r24;
+        Object[] r27 = r26.n;
+        int r28 = r26.p;
+        int r29 = 0;
+    L28:
+        if (r29 >= r28) goto L30;
+        ((qy1) r27[r29]).s = true;
+        r29 = r29 + 1;
+        goto L28
+    L30:
+        r22.n = j51.v(r23.e());
+    L31:
+        float r30 = r22.n;
+        if (r30 != 0.0f) goto L36;
+        Object[] r31 = r26.n;
+        int r32 = r26.p;
+    L34:
+        if (r4 >= r32) goto L49;
+        qy1 r33 = (qy1) r31[r4];
+        r33.p.setValue(r33.q.c);
+        r33.s = true;
+        r4 = r4 + 1;
+    L49:
+        return r3;
+    L36:
+        long r34 = (long) ((r110 - r21.c) / r30);
+        Object[] r35 = r26.n;
+        int r36 = r26.p;
+        boolean r37 = true;
+        int r38 = 0;
+    L37:
+        if (r38 >= r36) goto L48;
+        qy1 r112 = (qy1) r35[r38];
+        if (r112.r == true) goto L45;
+        r112.u.b.setValue(Boolean.FALSE);
+        if (r112.s == false) goto L43;
+        r112.s = false;
+        r112.t = r34;
+    L43:
+        long r113 = r34 - r112.t;
+        r112.p.setValue(r112.q.f(r113));
+        r112.r = r112.q.e(r113);
+    L45:
+        if (r112.r == true) goto L47;
+        r37 = false;
+    L47:
+        r38 = r38 + 1;
+        goto L37
+    L48:
+        r21.d.setValue(Boolean.valueOf(!r37));
+        goto L49
+    L25:
+        if (r22.n != j51.v(r23.e())) goto L27;
+    L21:
+        r110 = r24;
+        goto L22
     }
 
-    public /* synthetic */ ry1(Context context, Uri uri, String str, b13 b13Var) {
+    public /* synthetic */ ry1(Context r2, Uri r3, String r4, b13 r5) {
         this.n = 3;
-        this.p = context;
-        this.q = uri;
-        this.r = str;
-        this.o = b13Var;
+        this.p = r2;
+        this.q = r3;
+        this.r = r4;
+        this.o = r5;
     }
 
-    public /* synthetic */ ry1(Object obj, Object obj2, Object obj3, Object obj4, int i) {
-        this.n = i;
-        this.o = obj;
-        this.p = obj2;
-        this.q = obj3;
-        this.r = obj4;
+    public /* synthetic */ ry1(Object r1, Object r2, Object r3, Object r4, int r5) {
+        this.n = r5;
+        this.o = r1;
+        this.p = r2;
+        this.q = r3;
+        this.r = r4;
     }
 }

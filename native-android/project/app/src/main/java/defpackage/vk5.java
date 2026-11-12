@@ -10,8 +10,8 @@ import android.os.Parcel;
 public final class vk5 implements eu1, IInterface {
     public final IBinder e;
 
-    public vk5(IBinder iBinder) {
-        this.e = iBinder;
+    public vk5(IBinder r1) {
+        this.e = r1;
     }
 
     @Override // android.os.IInterface
@@ -20,24 +20,22 @@ public final class vk5 implements eu1, IInterface {
     }
 
     public final Account m() {
-        Parcel parcelObtain = Parcel.obtain();
-        parcelObtain.writeInterfaceToken("com.google.android.gms.common.internal.IAccountAccessor");
-        Parcel parcelObtain2 = Parcel.obtain();
-        try {
-            try {
-                this.e.transact(2, parcelObtain, parcelObtain2, 0);
-                parcelObtain2.readException();
-                parcelObtain.recycle();
-                Account account = (Account) zh5.a(parcelObtain2, Account.CREATOR);
-                parcelObtain2.recycle();
-                return account;
-            } catch (RuntimeException e) {
-                parcelObtain2.recycle();
-                throw e;
-            }
-        } catch (Throwable th) {
-            parcelObtain.recycle();
-            throw th;
-        }
+        Parcel r0 = Parcel.obtain();
+        r0.writeInterfaceToken("com.google.android.gms.common.internal.IAccountAccessor");
+        Parcel r1 = Parcel.obtain();
+        this.e.transact(2, r0, r1, 0);     // Catch: Throwable -> L6 RuntimeException -> L8
+        r1.readException();     // Catch: Throwable -> L6 RuntimeException -> L8
+        r0.recycle();
+        Account r4 = (Account) zh5.a(r1, Account.CREATOR);
+        r1.recycle();
+        return r4;
+    L8:
+        e = move-exception;
+        r1.recycle();     // Catch: Throwable -> L6
+        throw e;     // Catch: Throwable -> L6
+    L6:
+        th = move-exception;
+        r0.recycle();
+        throw th;
     }
 }

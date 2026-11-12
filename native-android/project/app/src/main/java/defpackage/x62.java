@@ -5,7 +5,7 @@ package defpackage;
 public final class x62 implements m65 {
     @Override // defpackage.m65
     public final long a() {
-        return 0L;
+        return 0;
     }
 
     @Override // defpackage.m65

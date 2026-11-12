@@ -1,15 +1,13 @@
 package defpackage;
 
-import java.io.IOException;
-
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class ac1 implements ej4 {
     private final ej4 delegate;
 
-    public ac1(ej4 ej4Var) {
-        ej4Var.getClass();
-        this.delegate = ej4Var;
+    public ac1(ej4 r1) {
+        r1.getClass();
+        this.delegate = r1;
     }
 
     @zo0
@@ -19,7 +17,7 @@ public abstract class ac1 implements ej4 {
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
-    public void close() throws IOException {
+    public void close() {
         this.delegate.close();
     }
 
@@ -28,9 +26,9 @@ public abstract class ac1 implements ej4 {
     }
 
     @Override // defpackage.ej4
-    public long read(tv tvVar, long j) {
-        tvVar.getClass();
-        return this.delegate.read(tvVar, j);
+    public long read(tv r1, long r2) {
+        r1.getClass();
+        return this.delegate.read(r1, r2);
     }
 
     @Override // defpackage.ej4

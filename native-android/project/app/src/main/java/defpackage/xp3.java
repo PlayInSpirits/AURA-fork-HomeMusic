@@ -4,6 +4,6 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class xp3 implements wp3 {
     @Override // defpackage.wp3
-    public final void a(vp3 vp3Var) {
+    public final void a(vp3 r1) {
     }
 }

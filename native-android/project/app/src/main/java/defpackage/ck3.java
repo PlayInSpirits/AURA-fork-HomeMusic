@@ -8,8 +8,8 @@ import java.util.HashMap;
 public final class ck3 extends ee1 {
     public final HashMap z;
 
-    public ck3(xi3 xi3Var) {
-        super(xi3Var.m(), xi3Var.c0);
+    public ck3(xi3 r2) {
+        super(r2.m(), r2.c0);
         this.z = new HashMap();
     }
 
@@ -19,20 +19,20 @@ public final class ck3 extends ee1 {
     }
 
     @Override // defpackage.ee1
-    public final kc1 r(int i) {
-        HashMap map = this.z;
-        if (i == 0) {
-            PlayerControllerFragment playerControllerFragment = new PlayerControllerFragment();
-            map.put(Integer.valueOf(i), playerControllerFragment);
-            return playerControllerFragment;
-        }
-        if (i != 1) {
-            PlayerControllerFragment playerControllerFragment2 = new PlayerControllerFragment();
-            map.put(Integer.valueOf(i), playerControllerFragment2);
-            return playerControllerFragment2;
-        }
-        wk3 wk3Var = new wk3();
-        map.put(Integer.valueOf(i), wk3Var);
-        return wk3Var;
+    public final kc1 r(int r2) {
+        HashMap r1 = this.z;
+        if (r2 != 0) goto L5;
+        PlayerControllerFragment r0 = new PlayerControllerFragment();
+        r1.put(Integer.valueOf(r2), r0);
+        return r0;
+    L5:
+        if (r2 == 1) goto L8;
+        PlayerControllerFragment r3 = new PlayerControllerFragment();
+        r1.put(Integer.valueOf(r2), r3);
+        return r3;
+    L8:
+        wk3 r4 = new wk3();
+        r1.put(Integer.valueOf(r2), r4);
+        return r4;
     }
 }

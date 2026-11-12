@@ -7,54 +7,59 @@ import java.util.concurrent.atomic.AtomicReference;
 public final class dr3 implements wv4 {
     public final p44 a;
     public final p44 b;
-    public final tq0 c = new tq0();
-    public final AtomicReference d = new AtomicReference(cr3.n);
+    public final tq0 c;
+    public final AtomicReference d;
 
-    public dr3(p44 p44Var) {
-        this.a = p44Var;
-        this.b = p44Var;
+    public dr3(p44 r2) {
+        this.a = r2;
+        this.b = r2;
+        this.c = new tq0();
+        this.d = new AtomicReference(cr3.n);
     }
 
     @Override // defpackage.wv4
-    public final void a(long j, int i, int i2, int i3, vv4 vv4Var) {
-        h().a(j, i, i2, i3, vv4Var);
-        AtomicReference atomicReference = this.d;
-        if (atomicReference.get() == cr3.o) {
-            this.b.x(false);
-            atomicReference.set(cr3.p);
-        }
+    public final void a(long r8, int r10, int r11, int r12, vv4 r13) {
+        h().a(r8, r10, r11, r12, r13);
+        AtomicReference r9 = this.d;
+        if (r9.get() != cr3.o) goto L6;
+        this.b.x(false);
+        r9.set(cr3.p);
+        return;
     }
 
     @Override // defpackage.wv4
-    public final void b(be3 be3Var, int i, int i2) {
-        h().b(be3Var, i, i2);
+    public final void b(be3 r1, int r2, int r3) {
+        h().b(r1, r2, r3);
     }
 
     @Override // defpackage.wv4
-    public final int c(wh0 wh0Var, int i, boolean z) {
-        return h().c(wh0Var, i, z);
+    public final int c(wh0 r1, int r2, boolean r3) {
+        return h().c(r1, r2, r3);
     }
 
     @Override // defpackage.wv4
-    public final void d(long j) {
+    public final void d(long r1) {
     }
 
     @Override // defpackage.wv4
-    public final void e(int i, be3 be3Var) {
-        h().e(i, be3Var);
+    public final void e(int r1, be3 r2) {
+        h().e(r1, r2);
     }
 
     @Override // defpackage.wv4
-    public final int f(wh0 wh0Var, int i, boolean z) {
-        return h().f(wh0Var, i, z);
+    public final int f(wh0 r1, int r2, boolean r3) {
+        return h().f(r1, r2, r3);
     }
 
     @Override // defpackage.wv4
-    public final void g(tb1 tb1Var) {
-        this.a.g(tb1Var);
+    public final void g(tb1 r1) {
+        this.a.g(r1);
     }
 
     public final wv4 h() {
-        return this.d.get() == cr3.p ? this.c : this.b;
+        if (this.d.get() != cr3.p) goto L7;
+        return this.c;
+    L7:
+        return this.b;
     }
 }

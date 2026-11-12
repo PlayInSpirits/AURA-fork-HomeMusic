@@ -8,26 +8,34 @@ public final /* synthetic */ class vu4 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ Toolbar o;
 
-    public /* synthetic */ vu4(Toolbar toolbar, int i) {
-        this.n = i;
-        this.o = toolbar;
+    public /* synthetic */ vu4(Toolbar r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        Toolbar toolbar = this.o;
-        switch (i) {
-            case 0:
-                yu4 yu4Var = toolbar.c0;
-                tu2 tu2Var = yu4Var == null ? null : yu4Var.o;
-                if (tu2Var != null) {
-                    tu2Var.collapseActionView();
-                }
-                break;
-            default:
-                toolbar.n();
-                break;
-        }
+        int r0 = this.n;
+        Toolbar r1 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r1.n();
+        return;
+    L6:
+        yu4 r2 = r1.c0;
+        if (r2 != null) goto L9;
+        tu2 r3 = null;
+    L10:
+        if (r3 == null) goto L13;
+        r3.collapseActionView();
+        return;
+    L13:
+        return;
+    L9:
+        r3 = r2.o;
+        goto L10
     }
 }

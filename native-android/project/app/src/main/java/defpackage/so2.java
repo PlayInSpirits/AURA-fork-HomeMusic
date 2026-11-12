@@ -11,5 +11,5 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface so2 {
     @GET("getLyrics")
-    Call<ApiResponse> a(@QueryMap Map<String, String> map, @Query("artist") String str, @Query("title") String str2);
+    Call<ApiResponse> a(@QueryMap Map<String, String> r1, @Query("artist") String r2, @Query("title") String r3);
 }

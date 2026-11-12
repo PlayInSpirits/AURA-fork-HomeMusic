@@ -9,26 +9,42 @@ public final class my2 implements pv2 {
     public final ly2 b;
     public final ly2 c;
 
-    public my2(float f, ly2 ly2Var, ly2 ly2Var2) {
-        this.a = f;
-        this.b = ly2Var;
-        this.c = ly2Var2;
+    public my2(float r1, ly2 r2, ly2 r3) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 
-    public final boolean equals(Object obj) {
-        if (!(obj instanceof my2)) {
-            return false;
-        }
-        my2 my2Var = (my2) obj;
-        return Float.compare(this.a, my2Var.a) == 0 && Objects.equals(this.b, my2Var.b) && Objects.equals(this.c, my2Var.c);
+    public final boolean equals(Object r4) {
+        if ((r4 instanceof my2) == true) goto L5;
+        return false;
+    L5:
+        my2 r5 = (my2) r4;
+        if (Float.compare(this.a, r5.a) == 0) goto L8;
+    L13:
+        return false;
+    L8:
+        if (Objects.equals(this.b, r5.b) == false) goto L13;
+        if (Objects.equals(this.c, r5.c) == false) goto L13;
+        return true;
     }
 
     public final int hashCode() {
-        int iHashCode = Float.hashCode(this.a) * 31;
-        ly2 ly2Var = this.b;
-        int iHashCode2 = (iHashCode + (ly2Var != null ? ly2Var.hashCode() : 0)) * 31;
-        ly2 ly2Var2 = this.c;
-        return iHashCode2 + (ly2Var2 != null ? ly2Var2.hashCode() : 0);
+        int r0 = Float.hashCode(this.a) * 31;
+        int r1 = 0;
+        ly2 r2 = this.b;
+        if (r2 == null) goto L5;
+        int r3 = r2.hashCode();
+    L6:
+        int r4 = (r0 + r3) * 31;
+        ly2 r5 = this.c;
+        if (r5 == null) goto L10;
+        r1 = r5.hashCode();
+    L10:
+        return r4 + r1;
+    L5:
+        r3 = 0;
+        goto L6
     }
 
     public final String toString() {

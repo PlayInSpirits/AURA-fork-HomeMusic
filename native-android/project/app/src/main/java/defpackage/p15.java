@@ -4,7 +4,10 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class p15 extends xi4 {
     @Override // defpackage.xi4
-    public final boolean t(CharSequence charSequence) {
-        return vl4.i(charSequence);
+    public final boolean t(CharSequence r1) {
+        if (vl4.i(r1) == true) goto L6;
+        return false;
+    L6:
+        return true;
     }
 }

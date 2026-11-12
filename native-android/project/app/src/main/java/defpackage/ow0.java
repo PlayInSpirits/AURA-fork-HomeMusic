@@ -10,33 +10,43 @@ import java.util.UUID;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ow0 implements Comparator, Parcelable {
-    public static final Parcelable.Creator<ow0> CREATOR = new w4(28);
+    public static final Parcelable.Creator<ow0> CREATOR = null;
     public final nw0[] n;
     public int o;
     public final String p;
     public final int q;
 
-    public ow0(Parcel parcel) {
-        this.p = parcel.readString();
-        nw0[] nw0VarArr = (nw0[]) parcel.createTypedArray(nw0.CREATOR);
-        String str = f35.a;
-        this.n = nw0VarArr;
-        this.q = nw0VarArr.length;
+    static {
+        CREATOR = new w4(28);
     }
 
-    public final ow0 a(String str) {
-        return Objects.equals(this.p, str) ? this : new ow0(str, false, this.n);
+    public ow0(Parcel r2) {
+        this.p = r2.readString();
+        nw0[] r3 = (nw0[]) r2.createTypedArray(nw0.CREATOR);
+        String r0 = f35.a;
+        this.n = r3;
+        this.q = r3.length;
+    }
+
+    public final ow0 a(String r3) {
+        if (Objects.equals(this.p, r3) == false) goto L6;
+        return this;
+    L6:
+        return new ow0(r3, false, this.n);
     }
 
     @Override // java.util.Comparator
-    public final int compare(Object obj, Object obj2) {
-        nw0 nw0Var = (nw0) obj;
-        nw0 nw0Var2 = (nw0) obj2;
-        UUID uuid = ax.a;
-        if (uuid.equals(nw0Var.o)) {
-            return uuid.equals(nw0Var2.o) ? 0 : 1;
-        }
-        return nw0Var.o.compareTo(nw0Var2.o);
+    public final int compare(Object r2, Object r3) {
+        nw0 r4 = (nw0) r2;
+        nw0 r5 = (nw0) r3;
+        UUID r1 = ax.a;
+        if (r1.equals(r4.o) == false) goto L11;
+        if (r1.equals(r5.o) == false) goto L8;
+        return 0;
+    L8:
+        return 1;
+    L11:
+        return r4.o.compareTo(r5.o);
     }
 
     @Override // android.os.Parcelable
@@ -45,38 +55,48 @@ public final class ow0 implements Comparator, Parcelable {
     }
 
     @Override // java.util.Comparator
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj != null && ow0.class == obj.getClass()) {
-            ow0 ow0Var = (ow0) obj;
-            if (Objects.equals(this.p, ow0Var.p) && Arrays.equals(this.n, ow0Var.n)) {
-                return true;
-            }
-        }
+    public final boolean equals(Object r5) {
+        if (this != r5) goto L6;
+        return true;
+    L6:
+        if (r5 != null) goto L8;
+    L15:
         return false;
+    L8:
+        if (ow0.class != r5.getClass()) goto L15;
+        ow0 r6 = (ow0) r5;
+        if (Objects.equals(this.p, r6.p) == false) goto L15;
+        if (Arrays.equals(this.n, r6.n) == false) goto L15;
+        return true;
     }
 
     public final int hashCode() {
-        if (this.o == 0) {
-            String str = this.p;
-            this.o = ((str == null ? 0 : str.hashCode()) * 31) + Arrays.hashCode(this.n);
-        }
+        if (this.o != 0) goto L10;
+        String r0 = this.p;
+        if (r0 != null) goto L7;
+        int r1 = 0;
+    L8:
+        this.o = (r1 * 31) + Arrays.hashCode(this.n);
+        goto L10
+    L7:
+        r1 = r0.hashCode();
+    L10:
         return this.o;
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.p);
-        parcel.writeTypedArray(this.n, 0);
+    public final void writeToParcel(Parcel r1, int r2) {
+        r1.writeString(this.p);
+        r1.writeTypedArray(this.n, 0);
     }
 
-    public ow0(String str, boolean z, nw0... nw0VarArr) {
-        this.p = str;
-        nw0VarArr = z ? (nw0[]) nw0VarArr.clone() : nw0VarArr;
-        this.n = nw0VarArr;
-        this.q = nw0VarArr.length;
-        Arrays.sort(nw0VarArr, this);
+    public ow0(String r1, boolean r2, nw0... r3) {
+        this.p = r1;
+        if (r2 == false) goto L5;
+        r3 = (nw0[]) r3.clone();
+    L5:
+        this.n = r3;
+        this.q = r3.length;
+        Arrays.sort(r3, this);
     }
 }

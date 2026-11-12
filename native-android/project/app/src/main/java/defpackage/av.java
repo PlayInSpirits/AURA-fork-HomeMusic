@@ -7,16 +7,17 @@ public final /* synthetic */ class av extends ig1 implements gf1 {
     public final /* synthetic */ f63 o;
     public final /* synthetic */ fa p;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public av(cv cvVar, f63 f63Var, fa faVar) {
+    public av(cv r7, f63 r8, fa r9) {
+        this.n = r7;
+        this.o = r8;
+        this.p = r9;
         super(0, g12.class, "localRect", "bringIntoView$localRect(Landroidx/compose/foundation/relocation/BringIntoViewResponderNode;Landroidx/compose/ui/layout/LayoutCoordinates;Lkotlin/jvm/functions/Function0;)Landroidx/compose/ui/geometry/Rect;", 0);
-        this.n = cvVar;
-        this.o = f63Var;
-        this.p = faVar;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        return cv.q0(this.n, this.o, this.p);
+        f63 r0 = this.o;
+        fa r1 = this.p;
+        return cv.q0(this.n, r0, r1);
     }
 }

@@ -25,502 +25,568 @@ public final class kt2 extends Binder implements pu1 {
     public int i;
     public jt2 j;
 
-    public kt2(tn2 tn2Var) {
+    public kt2(tn2 r2) {
         attachInterface(this, "androidx.media3.session.IMediaSession");
-        this.e = new WeakReference(tn2Var);
-        this.f = new na4(tn2Var);
+        this.e = new WeakReference(r2);
+        this.f = new na4(r2);
         this.g = Collections.synchronizedSet(new HashSet());
         this.h = fy3.v;
     }
 
-    public static ic2 K0(tn2 tn2Var, fr2 fr2Var, int i, it2 it2Var, wc0 wc0Var) {
-        if (tn2Var.l()) {
-            return mw1.o;
-        }
-        ic2 ic2Var = (ic2) it2Var.h(tn2Var, fr2Var, i);
-        lb4 lb4Var = new lb4();
-        ic2Var.f(new t6(tn2Var, lb4Var, wc0Var, ic2Var, 24), gq0.n);
-        return lb4Var;
+    public static ic2 K0(tn2 r6, fr2 r7, int r8, it2 r9, wc0 r10) {
+        if (r6.l() == true) goto L5;
+        ic2 r4 = (ic2) r9.h(r6, r7, r8);
+        lb4 r2 = new lb4();
+        r4.f(new t6(r6, r2, r10, r4, 24), gq0.n);
+        return r2;
+    L5:
+        return mw1.o;
     }
 
-    public static void P0(tn2 tn2Var, fr2 fr2Var, int i, ab4 ab4Var) {
-        try {
-            er2 er2Var = fr2Var.d;
-            er2Var.getClass();
-            er2Var.v(i, ab4Var);
-            tn2Var.c.a(true, true);
-        } catch (RemoteException e) {
-            l93.r0("MediaSessionStub", "Failed to send result to controller " + fr2Var, e);
-        }
+    public static void P0(tn2 r1, fr2 r2, int r3, ab4 r4) {
+        er2 r0 = r2.d;     // Catch: RemoteException -> L4
+        r0.getClass();     // Catch: RemoteException -> L4
+        r0.v(r3, r4);     // Catch: RemoteException -> L4
+        r1.c.a(true, true);     // Catch: RemoteException -> L4
+        return;
+    L4:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Failed to send result to controller " + r2, e);
     }
 
-    public static ss2 Q0(wc0 wc0Var) {
-        return new ss2(2, new ss2(3, wc0Var));
-    }
-
-    @Override // defpackage.pu1
-    public final void A(ju1 ju1Var, int i, Bundle bundle) {
-        if (ju1Var == null || bundle == null) {
-            return;
-        }
-        try {
-            N0(ju1Var, i, 29, Q0(new ef0(23, this, cw4.b(bundle))));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for TrackSelectionParameters", e);
-        }
+    public static ss2 Q0(wc0 r2) {
+        ss2 r0 = new ss2(3, r2);
+        return new ss2(2, r0);
     }
 
     @Override // defpackage.pu1
-    public final void A0(ju1 ju1Var, int i) {
-        fr2 fr2VarW;
-        if (ju1Var == null || (fr2VarW = this.f.w(ju1Var.asBinder())) == null) {
-            return;
-        }
-        O0(fr2VarW, i, 7, Q0(new zr2(6)));
+    public final void A(ju1 r3, int r4, Bundle r5) {
+        if (r3 == null) goto L13;
+        if (r5 == null) goto L14;
+        N0(r3, r4, 29, Q0(new ef0(23, this, cw4.b(r5))));
+        return;
+    L8:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for TrackSelectionParameters", e);
+        return;
+    L14:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void B(ju1 ju1Var, int i) {
-        fr2 fr2VarW;
-        if (ju1Var == null || (fr2VarW = this.f.w(ju1Var.asBinder())) == null) {
-            return;
-        }
-        O0(fr2VarW, i, 12, Q0(new zr2(9)));
+    public final void A0(ju1 r3, int r4) {
+        if (r3 == null) goto L9;
+        fr2 r5 = this.f.w(r3.asBinder());
+        if (r5 == null) goto L8;
+        O0(r5, r4, 7, Q0(new zr2(6)));
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void B0(ju1 ju1Var, int i, boolean z) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 26, Q0(new t31(4, z)));
+    public final void B(ju1 r3, int r4) {
+        if (r3 == null) goto L9;
+        fr2 r5 = this.f.w(r3.asBinder());
+        if (r5 == null) goto L8;
+        O0(r5, r4, 12, Q0(new zr2(9)));
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void C0(ju1 ju1Var, int i) {
-        fr2 fr2VarW;
-        if (ju1Var == null || (fr2VarW = this.f.w(ju1Var.asBinder())) == null) {
-            return;
-        }
-        O0(fr2VarW, i, 3, Q0(new zr2(14)));
+    public final void B0(ju1 r3, int r4, boolean r5) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 26, Q0(new t31(4, r5)));
     }
 
     @Override // defpackage.pu1
-    public final void D(ju1 ju1Var, int i, int i2, Bundle bundle) {
-        if (ju1Var == null || bundle == null || i2 < 0) {
-            return;
-        }
-        try {
-            int i3 = 1;
-            N0(ju1Var, i, 20, new at2(new bt2(new vs2(0, gn2.b(bundle)), new us2(this, i2, i3)), i3));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
-        }
+    public final void C0(ju1 r3, int r4) {
+        if (r3 == null) goto L9;
+        fr2 r5 = this.f.w(r3.asBinder());
+        if (r5 == null) goto L8;
+        O0(r5, r4, 3, Q0(new zr2(14)));
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void D0(ju1 ju1Var, int i, int i2) {
-        if (ju1Var == null) {
-            return;
-        }
-        if (i2 == 2 || i2 == 0 || i2 == 1) {
-            N0(ju1Var, i, 15, Q0(new ij0(i2, 8)));
-        }
+    public final void D(ju1 r3, int r4, int r5, Bundle r6) {
+        if (r3 == null) goto L14;
+        if (r6 == null) goto L15;
+        if (r5 < 0) goto L16;
+        vs2 r0 = new vs2(0, gn2.b(r6));
+        int r1 = 1;
+        N0(r3, r4, 20, new at2(new bt2(r0, new us2(this, r5, r1)), r1));
+        return;
+    L9:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
+        return;
+    L16:
+        return;
+    L15:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void E0(ju1 ju1Var, int i, final int i2, final int i3, final int i4) {
-        if (ju1Var == null || i2 < 0 || i3 < i2 || i4 < 0) {
-            return;
-        }
-        N0(ju1Var, i, 20, Q0(new wc0() { // from class: ws2
-            @Override // defpackage.wc0
-            public final void accept(Object obj) {
-                ((al3) obj).u0(i2, i3, i4);
-            }
-        }));
+    public final void D0(ju1 r3, int r4, int r5) {
+        if (r3 != null) goto L5;
+        return;
+    L5:
+        if (r5 == 2) goto L10;
+        if (r5 == 0) goto L10;
+        if (r5 == 1) goto L10;
+        return;
+    L10:
+        N0(r3, r4, 15, Q0(new ij0(r5, 8)));
     }
 
     @Override // defpackage.pu1
-    public final void F(ju1 ju1Var, int i, int i2) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 34, Q0(new ij0(i2, 7)));
+    public final void E0(ju1 r2, int r3, final int r4, final int r5, final int r6) {
+        if (r2 == null) goto L9;
+        if (r4 < 0) goto L10;
+        if (r5 < r4) goto L11;
+        if (r6 < 0) goto L12;
+        N0(r2, r3, 20, Q0(new ws2(r4, r5, r6)));
+        return;
+    L12:
+        return;
+    L11:
+        return;
+    L10:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void F0(ju1 ju1Var, int i, int i2, int i3) {
-        if (ju1Var == null || i2 < 0 || i3 < 0) {
-            return;
-        }
-        N0(ju1Var, i, 20, Q0(new v31(i2, i3, 5)));
+    public final void F(ju1 r3, int r4, int r5) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 34, Q0(new ij0(r5, 7)));
     }
 
     @Override // defpackage.pu1
-    public final void G(ju1 ju1Var, int i, Bundle bundle) {
-        if (ju1Var == null || bundle == null) {
-            return;
-        }
-        try {
-            N0(ju1Var, i, 20, new at2(new bt2(new vs2(2, gn2.b(bundle)), new zr2(13)), 1));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
-        }
+    public final void F0(ju1 r3, int r4, int r5, int r6) {
+        if (r3 == null) goto L8;
+        if (r5 < 0) goto L9;
+        if (r6 < 0) goto L10;
+        N0(r3, r4, 20, Q0(new v31(r5, r6, 5)));
+        return;
+    L10:
+        return;
+    L9:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void G0(ju1 ju1Var, int i, int i2, Bundle bundle) {
-        if (ju1Var == null || bundle == null || i2 < 0) {
-            return;
-        }
-        try {
-            int i3 = 1;
-            N0(ju1Var, i, 20, new at2(new bt2(new vs2(i3, gn2.b(bundle)), new us2(this, i2, 2)), i3));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
-        }
+    public final void G(ju1 r3, int r4, Bundle r5) {
+        if (r3 == null) goto L13;
+        if (r5 == null) goto L14;
+        N0(r3, r4, 20, new at2(new bt2(new vs2(2, gn2.b(r5)), new zr2(13)), 1));
+        return;
+    L8:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
+        return;
+    L14:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void H(ju1 ju1Var, int i) {
-        fr2 fr2VarW;
-        if (ju1Var == null || (fr2VarW = this.f.w(ju1Var.asBinder())) == null) {
-            return;
-        }
-        O0(fr2VarW, i, 11, Q0(new zr2(5)));
+    public final void G0(ju1 r4, int r5, int r6, Bundle r7) {
+        if (r4 == null) goto L14;
+        if (r7 == null) goto L15;
+        if (r6 < 0) goto L16;
+        int r1 = 1;
+        N0(r4, r5, 20, new at2(new bt2(new vs2(r1, gn2.b(r7)), new us2(this, r6, 2)), r1));
+        return;
+    L9:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
+        return;
+    L16:
+        return;
+    L15:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void H0(ju1 ju1Var, int i, boolean z) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 14, Q0(new t31(5, z)));
+    public final void H(ju1 r3, int r4) {
+        if (r3 == null) goto L9;
+        fr2 r5 = this.f.w(r3.asBinder());
+        if (r5 == null) goto L8;
+        O0(r5, r4, 11, Q0(new zr2(5)));
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void J(ju1 ju1Var, int i, iw iwVar) {
-        L(ju1Var, i, iwVar, true);
+    public final void H0(ju1 r3, int r4, boolean r5) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 14, Q0(new t31(5, r5)));
     }
 
     @Override // defpackage.pu1
-    public final void K(ju1 ju1Var, int i, int i2) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 34, Q0(new ij0(i2, 6)));
+    public final void J(ju1 r2, int r3, iw r4) {
+        L(r2, r3, r4, true);
     }
 
     @Override // defpackage.pu1
-    public final void L(ju1 ju1Var, int i, IBinder iBinder, boolean z) {
-        if (ju1Var == null || iBinder == null) {
-            return;
-        }
-        try {
-            yw1 yw1VarA = iw.a(iBinder);
-            uw1 uw1VarJ = yw1.j();
-            for (int i2 = 0; i2 < yw1VarA.size(); i2++) {
-                Bundle bundle = (Bundle) yw1VarA.get(i2);
-                bundle.getClass();
-                uw1VarJ.c(gn2.b(bundle));
-            }
-            N0(ju1Var, i, 20, new at2(new ef0(29, new ts2(uw1VarJ.f(), z, 2), new zr2(20)), 1));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
-        }
-    }
-
-    public final int L0(fr2 fr2Var, al3 al3Var, int i) {
-        if (al3Var.S0(17)) {
-            na4 na4Var = this.f;
-            if (!na4Var.H(fr2Var, 17) && na4Var.H(fr2Var, 16)) {
-                return al3Var.o0() + i;
-            }
-        }
-        return i;
+    public final void K(ju1 r3, int r4, int r5) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 34, Q0(new ij0(r5, 6)));
     }
 
     @Override // defpackage.pu1
-    public final void M(ju1 ju1Var, int i, int i2, int i3) {
-        if (ju1Var == null || i2 < 0 || i3 < i2) {
-            return;
-        }
-        N0(ju1Var, i, 20, new ss2(2, new rs2(this, i2, i3)));
+    public final void L(ju1 r4, int r5, IBinder r6, boolean r7) {
+        if (r4 == null) goto L18;
+        if (r6 == null) goto L19;
+        yw1 r8 = iw.a(r6);     // Catch: RuntimeException -> L12
+        uw1 r0 = yw1.j();     // Catch: RuntimeException -> L12
+        int r1 = 0;
+    L7:
+        if (r1 >= r8.size()) goto L9;
+        Bundle r2 = (Bundle) r8.get(r1);     // Catch: RuntimeException -> L12
+        r2.getClass();     // Catch: RuntimeException -> L12
+        r0.c(gn2.b(r2));     // Catch: RuntimeException -> L12
+        r1 = r1 + 1;     // Catch: RuntimeException -> L12
+        goto L7
+    L9:
+        int r3 = 29;
+        N0(r4, r5, 20, new at2(new ef0(r3, new ts2(r0.f(), r7, 2), new zr2(20)), 1));
+        return;
+    L12:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
+        return;
+    L19:
+        return;
     }
 
-    public final void M0(fr2 fr2Var, int i) {
-        O0(fr2Var, i, 1, Q0(new ef0(25, this, fr2Var)));
-    }
-
-    @Override // defpackage.pu1
-    public final void N(ju1 ju1Var, int i, int i2) {
-        if (ju1Var == null || i2 < 0) {
-            return;
-        }
-        N0(ju1Var, i, 20, new ss2(2, new us2(this, i2, 4)));
-    }
-
-    public final void N0(ju1 ju1Var, int i, int i2, it2 it2Var) {
-        fr2 fr2VarW = this.f.w(ju1Var.asBinder());
-        if (fr2VarW != null) {
-            O0(fr2VarW, i, i2, it2Var);
-        }
-    }
-
-    public final void O0(final fr2 fr2Var, final int i, final int i2, final it2 it2Var) {
-        long jClearCallingIdentity = Binder.clearCallingIdentity();
-        try {
-            final tn2 tn2Var = (tn2) this.e.get();
-            if (tn2Var != null && !tn2Var.l()) {
-                f35.W(tn2Var.l, new Runnable() { // from class: zs2
-                    @Override // java.lang.Runnable
-                    public final void run() {
-                        na4 na4Var = this.n.f;
-                        final fr2 fr2Var2 = fr2Var;
-                        int i3 = i2;
-                        boolean zH = na4Var.H(fr2Var2, i3);
-                        final tn2 tn2Var2 = tn2Var;
-                        final int i4 = i;
-                        if (!zH) {
-                            kt2.P0(tn2Var2, fr2Var2, i4, new ab4(-4));
-                            return;
-                        }
-                        pq pqVar = tn2Var2.e;
-                        tn2Var2.B(fr2Var2);
-                        pqVar.getClass();
-                        final it2 it2Var2 = it2Var;
-                        if (i3 != 27) {
-                            na4Var.d(fr2Var2, i3, new aa0() { // from class: dt2
-                                @Override // defpackage.aa0
-                                public final ic2 run() {
-                                    return (ic2) it2Var2.h(tn2Var2, fr2Var2, i4);
-                                }
-                            });
-                        } else {
-                            it2Var2.h(tn2Var2, fr2Var2, i4);
-                            na4Var.d(fr2Var2, i3, new ct2());
-                        }
-                    }
-                });
-            }
-        } finally {
-            Binder.restoreCallingIdentity(jClearCallingIdentity);
-        }
+    public final int L0(fr2 r3, al3 r4, int r5) {
+        if (r4.S0(17) == false) goto L10;
+        na4 r2 = this.f;
+        if (r2.H(r3, 17) == true) goto L10;
+        if (r2.H(r3, 16) == false) goto L10;
+        return r4.o0() + r5;
+    L10:
+        return r5;
     }
 
     @Override // defpackage.pu1
-    public final void P(ju1 ju1Var, int i, int i2, int i3, IBinder iBinder) {
-        if (ju1Var == null || iBinder == null || i2 < 0 || i3 < i2) {
-            return;
-        }
-        try {
-            yw1 yw1VarA = iw.a(iBinder);
-            uw1 uw1VarJ = yw1.j();
-            for (int i4 = 0; i4 < yw1VarA.size(); i4++) {
-                Bundle bundle = (Bundle) yw1VarA.get(i4);
-                bundle.getClass();
-                uw1VarJ.c(gn2.b(bundle));
-            }
-            N0(ju1Var, i, 20, new at2(new bt2(new vr2(uw1VarJ.f()), new rs2(this, i2, i3)), 1));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
-        }
+    public final void M(ju1 r2, int r3, int r4, int r5) {
+        if (r2 == null) goto L8;
+        if (r4 < 0) goto L9;
+        if (r5 < r4) goto L10;
+        rs2 r0 = new rs2(this, r4, r5);
+        N0(r2, r3, 20, new ss2(2, r0));
+        return;
+    L10:
+        return;
+    L9:
+        return;
+    }
+
+    public final void M0(fr2 r3, int r4) {
+        O0(r3, r4, 1, Q0(new ef0(25, this, r3)));
     }
 
     @Override // defpackage.pu1
-    public final void Q(ju1 ju1Var, int i, int i2, int i3) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 27, Q0(new rs2(this, i2, i3)));
+    public final void N(ju1 r3, int r4, int r5) {
+        if (r3 == null) goto L7;
+        if (r5 < 0) goto L8;
+        us2 r0 = new us2(this, r5, 4);
+        N0(r3, r4, 20, new ss2(2, r0));
+        return;
+    L8:
+        return;
+    }
+
+    public final void N0(ju1 r2, int r3, int r4, it2 r5) {
+        fr2 r6 = this.f.w(r2.asBinder());
+        if (r6 == null) goto L6;
+        O0(r6, r3, r4, r5);
+        return;
+    }
+
+    public final void O0(final fr2 r11, final int r12, final int r13, final it2 r14) {
+        long r1 = Binder.clearCallingIdentity();
+        final tn2 r7 = (tn2) this.e.get();     // Catch: Throwable -> L11
+        if (r7 != null) goto L6;
+    L13:
+        Binder.restoreCallingIdentity(r1);
+        return;
+    L6:
+        if (r7.l() == true) goto L13;
+        f35.W(r7.l, new zs2(this, r11, r13, r7, r12, r14));     // Catch: Throwable -> L11
+        Binder.restoreCallingIdentity(r1);
+        return;
+    L11:
+        th = move-exception;
+        Binder.restoreCallingIdentity(r1);
+        throw th;
     }
 
     @Override // defpackage.pu1
-    public final void R(ju1 ju1Var, int i) {
-        fr2 fr2VarW;
-        if (ju1Var == null || (fr2VarW = this.f.w(ju1Var.asBinder())) == null) {
-            return;
-        }
-        O0(fr2VarW, i, 9, Q0(new zr2(10)));
+    public final void P(ju1 r4, int r5, int r6, int r7, IBinder r8) {
+        if (r4 == null) goto L20;
+        if (r8 == null) goto L21;
+        if (r6 < 0) goto L22;
+        if (r7 < r6) goto L23;
+        yw1 r9 = iw.a(r8);     // Catch: RuntimeException -> L14
+        uw1 r0 = yw1.j();     // Catch: RuntimeException -> L14
+        int r1 = 0;
+    L9:
+        if (r1 >= r9.size()) goto L11;
+        Bundle r2 = (Bundle) r9.get(r1);     // Catch: RuntimeException -> L14
+        r2.getClass();     // Catch: RuntimeException -> L14
+        r0.c(gn2.b(r2));     // Catch: RuntimeException -> L14
+        r1 = r1 + 1;     // Catch: RuntimeException -> L14
+        goto L9
+    L11:
+        N0(r4, r5, 20, new at2(new bt2(new vr2(r0.f()), new rs2(this, r6, r7)), 1));
+        return;
+    L14:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
+        return;
+    L23:
+        return;
+    L22:
+        return;
+    L21:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void S(ju1 ju1Var, int i, int i2, long j) {
-        if (ju1Var == null || i2 < 0) {
-            return;
-        }
-        N0(ju1Var, i, 10, new ss2(2, new lj0(j, this, i2)));
+    public final void Q(ju1 r2, int r3, int r4, int r5) {
+        if (r2 != null) goto L4;
+        return;
+    L4:
+        N0(r2, r3, 27, Q0(new rs2(this, r4, r5)));
     }
 
     @Override // defpackage.pu1
-    public final void T(ju1 ju1Var, int i, IBinder iBinder) {
-        if (ju1Var == null || iBinder == null) {
-            return;
-        }
-        try {
-            yw1 yw1VarA = iw.a(iBinder);
-            uw1 uw1VarJ = yw1.j();
-            for (int i2 = 0; i2 < yw1VarA.size(); i2++) {
-                Bundle bundle = (Bundle) yw1VarA.get(i2);
-                bundle.getClass();
-                uw1VarJ.c(gn2.b(bundle));
-            }
-            N0(ju1Var, i, 20, new at2(new bt2(new c41(uw1VarJ.f(), 2), new zr2(12)), 1));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
-        }
-    }
-
-    public final void U(ju1 ju1Var, final int i, final va4 va4Var, final int i2, final it2 it2Var) {
-        long jClearCallingIdentity = Binder.clearCallingIdentity();
-        try {
-            final tn2 tn2Var = (tn2) this.e.get();
-            if (tn2Var != null && !tn2Var.l()) {
-                final fr2 fr2VarW = this.f.w(ju1Var.asBinder());
-                if (fr2VarW == null) {
-                    return;
-                }
-                f35.W(tn2Var.l, new Runnable() { // from class: ys2
-                    @Override // java.lang.Runnable
-                    public final void run() {
-                        na4 na4Var = this.n.f;
-                        fr2 fr2Var = fr2VarW;
-                        if (na4Var.F(fr2Var)) {
-                            va4 va4Var2 = va4Var;
-                            tn2 tn2Var2 = tn2Var;
-                            int i3 = i;
-                            if (va4Var2 != null) {
-                                if (!na4Var.J(fr2Var, va4Var2)) {
-                                    kt2.P0(tn2Var2, fr2Var, i3, new ab4(-4));
-                                    return;
-                                }
-                            } else if (!na4Var.I(fr2Var, i2)) {
-                                kt2.P0(tn2Var2, fr2Var, i3, new ab4(-4));
-                                return;
-                            }
-                            it2Var.h(tn2Var2, fr2Var, i3);
-                        }
-                    }
-                });
-            }
-        } finally {
-            Binder.restoreCallingIdentity(jClearCallingIdentity);
-        }
+    public final void R(ju1 r3, int r4) {
+        if (r3 == null) goto L9;
+        fr2 r5 = this.f.w(r3.asBinder());
+        if (r5 == null) goto L8;
+        O0(r5, r4, 9, Q0(new zr2(10)));
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void W(ju1 ju1Var, int i) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 4, Q0(new zr2(16)));
-    }
-
-    public final lk3 X(lk3 lk3Var) {
-        yw1 yw1Var = lk3Var.F.a;
-        uw1 uw1VarJ = yw1.j();
-        nw1 nw1Var = new nw1(4);
-        for (int i = 0; i < yw1Var.size(); i++) {
-            iw4 iw4Var = (iw4) yw1Var.get(i);
-            sv4 sv4Var = iw4Var.b;
-            String string = (String) this.h.get(sv4Var);
-            if (string == null) {
-                StringBuilder sb = new StringBuilder();
-                int i2 = this.i;
-                this.i = i2 + 1;
-                String str = f35.a;
-                sb.append(Integer.toString(i2, 36));
-                sb.append("-");
-                sb.append(sv4Var.b);
-                string = sb.toString();
-            }
-            nw1Var.F(sv4Var, string);
-            uw1VarJ.c(new iw4(new sv4(string, iw4Var.b.d), iw4Var.c, iw4Var.d, iw4Var.e));
-        }
-        this.h = nw1Var.o == 0 ? fy3.v : new fy3(nw1Var.o, (Object[]) nw1Var.p);
-        lk3 lk3VarB = lk3Var.b(new jw4(uw1VarJ.f()));
-        cw4 cw4Var = lk3VarB.G;
-        if (cw4Var.H.isEmpty()) {
-            return lk3VarB;
-        }
-        bw4 bw4VarC = cw4Var.a().c();
-        o15 it = cw4Var.H.values().iterator();
-        while (it.hasNext()) {
-            yv4 yv4Var = (yv4) it.next();
-            sv4 sv4Var2 = yv4Var.a;
-            String str2 = (String) this.h.get(sv4Var2);
-            if (str2 != null) {
-                bw4VarC.a(new yv4(new sv4(str2, sv4Var2.d), yv4Var.b));
-            } else {
-                bw4VarC.a(yv4Var);
-            }
-        }
-        return lk3VarB.o(bw4VarC.b());
+    public final void S(ju1 r2, int r3, int r4, long r5) {
+        if (r2 == null) goto L7;
+        if (r4 < 0) goto L8;
+        lj0 r0 = new lj0(r5, this, r4);
+        N0(r2, r3, 10, new ss2(2, r0));
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void Z(ju1 ju1Var, int i, int i2, IBinder iBinder) {
-        if (ju1Var == null || iBinder == null || i2 < 0) {
-            return;
-        }
-        try {
-            yw1 yw1VarA = iw.a(iBinder);
-            uw1 uw1VarJ = yw1.j();
-            for (int i3 = 0; i3 < yw1VarA.size(); i3++) {
-                Bundle bundle = (Bundle) yw1VarA.get(i3);
-                bundle.getClass();
-                uw1VarJ.c(gn2.b(bundle));
-            }
-            int i4 = 1;
-            N0(ju1Var, i, 20, new at2(new bt2(new c41(uw1VarJ.f(), i4), new us2(this, i2, 3)), i4));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
-        }
+    public final void T(ju1 r4, int r5, IBinder r6) {
+        if (r4 == null) goto L18;
+        if (r6 == null) goto L19;
+        yw1 r7 = iw.a(r6);     // Catch: RuntimeException -> L12
+        uw1 r0 = yw1.j();     // Catch: RuntimeException -> L12
+        int r1 = 0;
+    L7:
+        if (r1 >= r7.size()) goto L9;
+        Bundle r2 = (Bundle) r7.get(r1);     // Catch: RuntimeException -> L12
+        r2.getClass();     // Catch: RuntimeException -> L12
+        r0.c(gn2.b(r2));     // Catch: RuntimeException -> L12
+        r1 = r1 + 1;     // Catch: RuntimeException -> L12
+        goto L7
+    L9:
+        N0(r4, r5, 20, new at2(new bt2(new c41(r0.f(), 2), new zr2(12)), 1));
+        return;
+    L12:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
+        return;
+    L19:
+        return;
+    }
+
+    public final void U(ju1 r12, final int r13, final va4 r14, final int r15, final it2 r16) {
+        long r1 = Binder.clearCallingIdentity();
+        final tn2 r7 = (tn2) this.e.get();     // Catch: Throwable -> L15
+        if (r7 != null) goto L6;
+    L17:
+        Binder.restoreCallingIdentity(r1);
+        return;
+    L6:
+        if (r7.l() == true) goto L17;
+        final fr2 r5 = this.f.w(r12.asBinder());     // Catch: Throwable -> L15
+        if (r5 != null) goto L12;
+        Binder.restoreCallingIdentity(r1);
+        return;
+    L12:
+        f35.W(r7.l, new ys2(this, r5, r14, r7, r13, r15, r16));     // Catch: Throwable -> L15
+        Binder.restoreCallingIdentity(r1);
+        return;
+    L15:
+        th = move-exception;
+        Binder.restoreCallingIdentity(r1);
+        throw th;
     }
 
     @Override // defpackage.pu1
-    public final void a(ju1 ju1Var, int i, Bundle bundle) {
-        ba0 ba0Var;
-        if (ju1Var == null || bundle == null) {
-            return;
-        }
-        try {
-            ab4 ab4VarA = ab4.a(bundle);
-            long jClearCallingIdentity = Binder.clearCallingIdentity();
-            try {
-                na4 na4Var = this.f;
-                IBinder iBinderAsBinder = ju1Var.asBinder();
-                synchronized (na4Var.n) {
-                    try {
-                        fr2 fr2VarW = na4Var.w(iBinderAsBinder);
-                        ba0Var = fr2VarW != null ? (ba0) ((oi) na4Var.p).get(fr2VarW) : null;
-                    } catch (Throwable th) {
-                        throw th;
-                    }
-                }
-                yk ykVar = ba0Var != null ? ba0Var.b : null;
-                if (ykVar == null) {
-                    Binder.restoreCallingIdentity(jClearCallingIdentity);
-                } else {
-                    ykVar.y(i, ab4VarA);
-                    Binder.restoreCallingIdentity(jClearCallingIdentity);
-                }
-            } catch (Throwable th2) {
-                Binder.restoreCallingIdentity(jClearCallingIdentity);
-                throw th2;
-            }
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for SessionResult", e);
-        }
+    public final void W(ju1 r3, int r4) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 4, Q0(new zr2(16)));
+    }
+
+    public final lk3 X(lk3 r10) {
+        yw1 r0 = r10.F.a;
+        uw1 r1 = yw1.j();
+        nw1 r2 = new nw1(4);
+        int r3 = 0;
+    L4:
+        if (r3 >= r0.size()) goto L10;
+        iw4 r4 = (iw4) r0.get(r3);
+        sv4 r5 = r4.b;
+        String r6 = (String) this.h.get(r5);
+        if (r6 != null) goto L8;
+        StringBuilder r7 = new StringBuilder();
+        int r8 = this.i;
+        this.i = r8 + 1;
+        String r9 = f35.a;
+        r7.append(Integer.toString(r8, 36));
+        r7.append("-");
+        r7.append(r5.b);
+        r6 = r7.toString();
+    L8:
+        r2.F(r5, r6);
+        r1.c(new iw4(new sv4(r6, r4.b.d), r4.c, r4.d, r4.e));
+        r3 = r3 + 1;
+        goto L4
+    L10:
+        if (r2.o != 0) goto L12;
+        fy3 r11 = fy3.v;
+    L13:
+        this.h = r11;
+        lk3 r12 = r10.b(new jw4(r1.f()));
+        cw4 r13 = r12.G;
+        if (r13.H.isEmpty() == false) goto L16;
+        return r12;
+    L16:
+        bw4 r14 = r13.a().c();
+        o15 r15 = r13.H.f().h();
+    L18:
+        if (r15.hasNext() == false) goto L24;
+        yv4 r16 = (yv4) r15.next();
+        sv4 r17 = r16.a;
+        String r18 = (String) this.h.get(r17);
+        if (r18 != null) goto L21;
+        r14.a(r16);
+        goto L18
+    L21:
+        r14.a(new yv4(new sv4(r18, r17.d), r16.b));
+        goto L18
+    L24:
+        return r12.o(r14.b());
+    L12:
+        Object[] r19 = (Object[]) r2.p;
+        r11 = new fy3(r2.o, r19);
+        goto L13
     }
 
     @Override // defpackage.pu1
-    public final void a0(ju1 ju1Var, int i) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 6, Q0(new zr2(7)));
+    public final void Z(ju1 r4, int r5, int r6, IBinder r7) {
+        if (r4 == null) goto L19;
+        if (r7 == null) goto L20;
+        if (r6 < 0) goto L21;
+        yw1 r8 = iw.a(r7);     // Catch: RuntimeException -> L13
+        uw1 r0 = yw1.j();     // Catch: RuntimeException -> L13
+        int r1 = 0;
+    L8:
+        if (r1 >= r8.size()) goto L10;
+        Bundle r2 = (Bundle) r8.get(r1);     // Catch: RuntimeException -> L13
+        r2.getClass();     // Catch: RuntimeException -> L13
+        r0.c(gn2.b(r2));     // Catch: RuntimeException -> L13
+        r1 = r1 + 1;     // Catch: RuntimeException -> L13
+        goto L8
+    L10:
+        int r3 = 1;
+        N0(r4, r5, 20, new at2(new bt2(new c41(r0.f(), r3), new us2(this, r6, 3)), r3));
+        return;
+    L13:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
+        return;
+    L21:
+        return;
+    L20:
+        return;
+    }
+
+    @Override // defpackage.pu1
+    public final void a(ju1 r5, int r6, Bundle r7) {
+        if (r5 == null) goto L38;
+        if (r7 == null) goto L39;
+        ab4 r8 = ab4.a(r7);     // Catch: RuntimeException -> L30
+        long r0 = Binder.clearCallingIdentity();
+        na4 r4 = this.f;     // Catch: Throwable -> L24
+        IBinder r9 = r5.asBinder();     // Catch: Throwable -> L24
+        Object r2 = r4.n;     // Catch: Throwable -> L24
+        monitor-enter(r2);     // Catch: Throwable -> L24
+        fr2 r10 = r4.w(r9);     // Catch: Throwable -> L12
+        yk r3 = null;
+        if (r10 == null) goto L14;
+        ba0 r11 = (ba0) ((oi) r4.p).get(r10);     // Catch: Throwable -> L12
+    L15:
+        monitor-exit(r2);     // Catch: Throwable -> L12
+        if (r11 == null) goto L18;
+        r3 = r11.b;     // Catch: Throwable -> L24
+    L18:
+        if (r3 != null) goto L21;
+        Binder.restoreCallingIdentity(r0);
+        return;
+    L21:
+        r3.y(r6, r8);     // Catch: Throwable -> L24
+        Binder.restoreCallingIdentity(r0);
+        return;
+    L14:
+        r11 = null;
+    L12:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L24
+    L24:
+        th = move-exception;
+        Binder.restoreCallingIdentity(r0);
+        throw th;
+    L30:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for SessionResult", e);
+        return;
+    L39:
+        return;
+    }
+
+    @Override // defpackage.pu1
+    public final void a0(ju1 r3, int r4) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 6, Q0(new zr2(7)));
     }
 
     @Override // android.os.IInterface
@@ -529,742 +595,928 @@ public final class kt2 extends Binder implements pu1 {
     }
 
     @Override // defpackage.pu1
-    public final void b(ju1 ju1Var, int i, Bundle bundle, boolean z) {
-        if (ju1Var == null || bundle == null) {
-            return;
-        }
-        try {
-            N0(ju1Var, i, 35, Q0(new ts2(il.a(bundle), z, 1)));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for AudioAttributes", e);
-        }
+    public final void b(ju1 r3, int r4, Bundle r5, boolean r6) {
+        if (r3 == null) goto L13;
+        if (r5 == null) goto L14;
+        N0(r3, r4, 35, Q0(new ts2(il.a(r5), r6, 1)));
+        return;
+    L8:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for AudioAttributes", e);
+        return;
+    L14:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void d(ju1 ju1Var, int i) {
-        fr2 fr2VarW;
-        if (ju1Var == null || (fr2VarW = this.f.w(ju1Var.asBinder())) == null) {
-            return;
-        }
-        O0(fr2VarW, i, 1, Q0(new zr2(2)));
+    public final void d(ju1 r3, int r4) {
+        if (r3 == null) goto L9;
+        fr2 r5 = this.f.w(r3.asBinder());
+        if (r5 == null) goto L8;
+        O0(r5, r4, 1, Q0(new zr2(2)));
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void d0(ju1 ju1Var, int i, long j) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 5, Q0(new xm(j)));
+    public final void d0(ju1 r2, int r3, long r4) {
+        if (r2 != null) goto L4;
+        return;
+    L4:
+        N0(r2, r3, 5, Q0(new xm(r4)));
     }
 
     @Override // defpackage.pu1
-    public final void e0(ju1 ju1Var, int i) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 2, Q0(new zr2(17)));
+    public final void e0(ju1 r3, int r4) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 2, Q0(new zr2(17)));
     }
 
     @Override // defpackage.pu1
-    public final void f0(ju1 ju1Var, int i, int i2) {
-        if (ju1Var == null || i2 < 0) {
-            return;
-        }
-        N0(ju1Var, i, 10, new ss2(2, new us2(this, i2, 0)));
+    public final void f0(ju1 r3, int r4, int r5) {
+        if (r3 == null) goto L7;
+        if (r5 < 0) goto L8;
+        us2 r0 = new us2(this, r5, 0);
+        N0(r3, r4, 10, new ss2(2, r0));
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void g0(ju1 ju1Var, int i) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 26, Q0(new zr2(11)));
+    public final void g0(ju1 r3, int r4) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 26, Q0(new zr2(11)));
     }
 
     @Override // defpackage.pu1
-    public final void h0(ju1 ju1Var, int i, boolean z) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 1, Q0(new t31(3, z)));
+    public final void h0(ju1 r3, int r4, boolean r5) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 1, Q0(new t31(3, r5)));
     }
 
     @Override // defpackage.pu1
-    public final void i0(ju1 ju1Var, int i, Bundle bundle) {
-        o0(ju1Var, i, bundle, true);
+    public final void i0(ju1 r2, int r3, Bundle r4) {
+        o0(r2, r3, r4, true);
     }
 
     @Override // defpackage.pu1
-    public final void j0(ju1 ju1Var, int i) {
-        if (ju1Var == null) {
-            return;
-        }
-        long jClearCallingIdentity = Binder.clearCallingIdentity();
-        try {
-            tn2 tn2Var = (tn2) this.e.get();
-            if (tn2Var != null && !tn2Var.l()) {
-                f35.W(tn2Var.l, new ur2(3, this, ju1Var));
-            }
-        } finally {
-            Binder.restoreCallingIdentity(jClearCallingIdentity);
-        }
+    public final void j0(ju1 r5, int r6) {
+        if (r5 != null) goto L4;
+        return;
+    L4:
+        long r0 = Binder.clearCallingIdentity();
+        tn2 r7 = (tn2) this.e.get();     // Catch: Throwable -> L13
+        if (r7 != null) goto L8;
+    L15:
+        Binder.restoreCallingIdentity(r0);
+        return;
+    L8:
+        if (r7.l() == true) goto L15;
+        f35.W(r7.l, new ur2(3, this, r5));     // Catch: Throwable -> L13
+        Binder.restoreCallingIdentity(r0);
+        return;
+    L13:
+        th = move-exception;
+        Binder.restoreCallingIdentity(r0);
+        throw th;
     }
 
     @Override // defpackage.pu1
-    public final void k(ju1 ju1Var, int i) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 24, Q0(new zr2(1)));
+    public final void k(ju1 r3, int r4) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 24, Q0(new zr2(1)));
     }
 
     @Override // defpackage.pu1
-    public final void l(ju1 ju1Var, int i, Bundle bundle, long j) {
-        if (ju1Var == null || bundle == null) {
-            return;
-        }
-        try {
-            N0(ju1Var, i, 31, new at2(new ef0(29, new ll2(j, gn2.b(bundle)), new zr2(20)), 1));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
-        }
+    public final void l(ju1 r2, int r3, Bundle r4, long r5) {
+        if (r2 == null) goto L13;
+        if (r4 == null) goto L14;
+        int r6 = 29;
+        N0(r2, r3, 31, new at2(new ef0(r6, new ll2(r5, gn2.b(r4)), new zr2(20)), 1));
+        return;
+    L8:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
+        return;
+    L14:
+        return;
     }
 
-    public final void m(ju1 ju1Var, fr2 fr2Var) {
-        if (ju1Var == null) {
-            au0.k(ju1Var);
-            return;
-        }
-        tn2 tn2Var = (tn2) this.e.get();
-        if (tn2Var == null || tn2Var.l()) {
-            au0.k(ju1Var);
-        } else {
-            this.g.add(fr2Var);
-            f35.W(tn2Var.l, new t6(this, fr2Var, tn2Var, ju1Var, 23));
-        }
-    }
-
-    @Override // defpackage.pu1
-    public final void m0(ju1 ju1Var, int i, Surface surface) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 27, Q0(new ef0(27, this, surface)));
+    public final void m(ju1 r8, fr2 r9) {
+        if (r8 == null) goto L12;
+        tn2 r4 = (tn2) this.e.get();
+        if (r4 == null) goto L10;
+        if (r4.l() == true) goto L10;
+        this.g.add(r9);
+        f35.W(r4.l, new t6(this, r9, r4, r8, 23));
+        return;
+    L10:
+        au0.k(r8);
+        return;
+    L12:
+        au0.k(r8);
     }
 
     @Override // defpackage.pu1
-    public final void n0(ju1 ju1Var, int i, Bundle bundle) {
-        tn2 tn2Var = (tn2) this.e.get();
-        if (ju1Var == null || bundle == null || tn2Var == null) {
-            au0.k(ju1Var);
-            return;
-        }
-        try {
-            MediaService mediaService = tn2Var.f;
-            ja0 ja0VarA = ja0.a(bundle);
-            int callingUid = Binder.getCallingUid();
-            int callingPid = Binder.getCallingPid();
-            String str = ja0VarA.c;
-            if (au0.f(callingUid, mediaService, str) == 1) {
-                l93.q0("MediaSessionStub", "Ignoring connection from invalid package name " + str + " (uid=" + callingUid + ")");
-                au0.k(ju1Var);
-                return;
-            }
-            long jClearCallingIdentity = Binder.clearCallingIdentity();
-            if (callingPid == 0) {
-                callingPid = ja0VarA.d;
-            }
-            try {
-                ms2 ms2Var = new ms2(str, callingPid, callingUid);
-                boolean zG = hg3.E(mediaService).G(ms2Var);
-                int i2 = ja0VarA.a;
-                int i3 = ja0VarA.b;
-                m(ju1Var, new fr2(ms2Var, i2, i3, zG, new ft2(ju1Var, i3), ja0VarA.e));
-            } finally {
-                Binder.restoreCallingIdentity(jClearCallingIdentity);
-            }
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for ConnectionRequest", e);
-        }
+    public final void m0(ju1 r3, int r4, Surface r5) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 27, Q0(new ef0(27, this, r5)));
     }
 
     @Override // defpackage.pu1
-    public final void o0(ju1 ju1Var, int i, Bundle bundle, boolean z) {
-        if (ju1Var == null || bundle == null) {
-            return;
-        }
-        try {
-            gn2 gn2VarB = gn2.b(bundle);
-            fr2 fr2VarW = this.f.w(ju1Var.asBinder());
-            if (fr2VarW != null) {
-                O0(fr2VarW, i, 31, new at2(new ef0(29, new ts2(gn2VarB, z, 0), new zr2(20)), 1));
-            }
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
-        }
+    public final void n0(ju1 r18, int r19, Bundle r20) {
+        tn2 r3 = (tn2) this.e.get();
+        if (r18 == null) goto L25;
+        if (r20 == null) goto L25;
+        if (r3 == null) goto L25;
+        MediaService r4 = r3.f;     // Catch: RuntimeException -> L22
+        ja0 r5 = ja0.a(r20);     // Catch: RuntimeException -> L22
+        int r6 = Binder.getCallingUid();
+        int r7 = Binder.getCallingPid();
+        String r8 = r5.c;
+        if (au0.f(r6, r4, r8) != 1) goto L12;
+        l93.q0("MediaSessionStub", "Ignoring connection from invalid package name " + r8 + " (uid=" + r6 + ")");
+        au0.k(r18);
+        return;
+    L12:
+        long r9 = Binder.clearCallingIdentity();
+        if (r7 != 0) goto L29;
+        r7 = r5.d;
+    L29:
+        ms2 r11 = new ms2(r8, r7, r6);     // Catch: Throwable -> L19
+        boolean r14 = hg3.E(r4).G(r11);     // Catch: Throwable -> L19
+        int r12 = r5.a;     // Catch: Throwable -> L19
+        int r13 = r5.b;     // Catch: Throwable -> L19
+        m(r18, new fr2(r11, r12, r13, r14, new ft2(r18, r13), r5.e));     // Catch: Throwable -> L19
+        Binder.restoreCallingIdentity(r9);
+        return;
+    L19:
+        th = move-exception;
+        Binder.restoreCallingIdentity(r9);
+        throw th;
+    L22:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for ConnectionRequest", e);
+        return;
+    L25:
+        au0.k(r18);
+    }
+
+    @Override // defpackage.pu1
+    public final void o0(ju1 r3, int r4, Bundle r5, boolean r6) {
+        if (r3 == null) goto L15;
+        if (r5 == null) goto L17;
+        gn2 r7 = gn2.b(r5);     // Catch: RuntimeException -> L10
+        fr2 r8 = this.f.w(r3.asBinder());
+        if (r8 == null) goto L16;
+        int r1 = 29;
+        O0(r8, r4, 31, new at2(new ef0(r1, new ts2(r7, r6, 0), new zr2(20)), 1));
+        return;
+    L16:
+        return;
+    L10:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
+        return;
+    L17:
+        return;
     }
 
     @Override // android.os.Binder
-    public final boolean onTransact(int i, Parcel parcel, Parcel parcel2, int i2) {
-        int i3 = 1;
-        if (i >= 1 && i <= 16777215) {
-            parcel.enforceInterface("androidx.media3.session.IMediaSession");
-        }
-        if (i == 1598968902) {
-            parcel2.writeString("androidx.media3.session.IMediaSession");
-            return true;
-        }
-        boolean z = false;
-        switch (i) {
-            case 3002:
-                x(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readFloat());
-                return true;
-            case 3003:
-                q0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt());
-                return true;
-            case 3004:
-                y(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3005:
-                g0(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3006:
-                B0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt() != 0);
-                return true;
-            case 3007:
-                o0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR), true);
-                return true;
-            case 3008:
-                l(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR), parcel.readLong());
-                return true;
-            case 3009:
-                o0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR), parcel.readInt() != 0);
-                return true;
-            case 3010:
-                L(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readStrongBinder(), true);
-                return true;
-            case 3011:
-                L(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readStrongBinder(), parcel.readInt() != 0);
-                return true;
-            case 3012:
-                u(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readStrongBinder(), parcel.readInt(), parcel.readLong());
-                return true;
-            case 3013:
-                h0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt() != 0);
-                return true;
-            case 3014:
-                a(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR));
-                return true;
-            case 3015:
-                n0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR));
-                return true;
-            case 3016:
-                ju1 ju1VarM = mm2.m(parcel.readStrongBinder());
-                int i4 = parcel.readInt();
-                Parcelable.Creator creator = Bundle.CREATOR;
-                s(ju1VarM, i4, (Bundle) si0.d(parcel, creator), (Bundle) si0.d(parcel, creator), false);
-                return true;
-            case 3017:
-                D0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt());
-                return true;
-            case 3018:
-                H0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt() != 0);
-                return true;
-            case 3019:
-                N(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt());
-                return true;
-            case 3020:
-                M(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt(), parcel.readInt());
-                return true;
-            case 3021:
-                v0(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3022:
-                F0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt(), parcel.readInt());
-                return true;
-            case 3023:
-                E0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt(), parcel.readInt(), parcel.readInt());
-                return true;
-            case 3024:
-                q(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3025:
-                d(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3026:
-                e0(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3027:
-                r0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR));
-                return true;
-            case 3028:
-                w(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readFloat());
-                return true;
-            case 3029:
-                G(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR));
-                return true;
-            case 3030:
-                D(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR));
-                return true;
-            case 3031:
-                T(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readStrongBinder());
-                return true;
-            case 3032:
-                Z(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt(), parcel.readStrongBinder());
-                return true;
-            case 3033:
-                y0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR));
-                return true;
-            case 3034:
-                C0(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3035:
-                j0(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3036:
-                W(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3037:
-                f0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt());
-                return true;
-            case 3038:
-                d0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readLong());
-                return true;
-            case 3039:
-                S(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt(), parcel.readLong());
-                return true;
-            case 3040:
-                H(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3041:
-                B(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3042:
-                a0(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3043:
-                v(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3044:
-                m0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Surface) si0.d(parcel, Surface.CREATOR));
-                return true;
-            case 3045:
-                p0(mm2.m(parcel.readStrongBinder()));
-                return true;
-            case 3046:
-                A0(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3047:
-                R(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3048:
-                A(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR));
-                return true;
-            case 3049:
-                ju1 ju1VarM2 = mm2.m(parcel.readStrongBinder());
-                int i5 = parcel.readInt();
-                String string = parcel.readString();
-                Bundle bundle = (Bundle) si0.d(parcel, Bundle.CREATOR);
-                if (ju1VarM2 != null && string != null && bundle != null) {
-                    if (TextUtils.isEmpty(string)) {
-                        l93.q0("MediaSessionStub", "setRatingWithMediaId(): Ignoring empty mediaId");
-                    } else {
-                        try {
-                            U(ju1VarM2, i5, null, 40010, new at2(new ef0(26, string, lu3.a(bundle)), i3));
-                        } catch (RuntimeException e) {
-                            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for Rating", e);
-                        }
-                    }
-                }
-                return true;
-            case 3050:
-                ju1 ju1VarM3 = mm2.m(parcel.readStrongBinder());
-                int i6 = parcel.readInt();
-                Bundle bundle2 = (Bundle) si0.d(parcel, Bundle.CREATOR);
-                if (ju1VarM3 != null && bundle2 != null) {
-                    try {
-                        U(ju1VarM3, i6, null, 40010, new at2(new ss2(4, lu3.a(bundle2)), i3));
-                    } catch (RuntimeException e2) {
-                        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for Rating", e2);
-                    }
-                }
-                return true;
-            case 3051:
-                t(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt(), parcel.readInt());
-                return true;
-            case 3052:
-                F(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt());
-                return true;
-            case 3053:
-                K(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt());
-                return true;
-            case 3054:
-                x0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt() != 0, parcel.readInt());
-                return true;
-            case 3055:
-                G0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR));
-                return true;
-            case 3056:
-                P(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt(), parcel.readInt(), parcel.readStrongBinder());
-                return true;
-            case 3057:
-                b(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Bundle) si0.d(parcel, Bundle.CREATOR), parcel.readInt() != 0);
-                return true;
-            case 3058:
-                k(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3059:
-                p(mm2.m(parcel.readStrongBinder()), parcel.readInt());
-                return true;
-            case 3060:
-                ju1 ju1VarM4 = mm2.m(parcel.readStrongBinder());
-                int i7 = parcel.readInt();
-                Parcelable.Creator creator2 = Bundle.CREATOR;
-                s(ju1VarM4, i7, (Bundle) si0.d(parcel, creator2), (Bundle) si0.d(parcel, creator2), parcel.readInt() != 0);
-                return true;
-            case 3061:
-                z0(mm2.m(parcel.readStrongBinder()), parcel.readInt(), (Surface) si0.d(parcel, Surface.CREATOR), parcel.readInt(), parcel.readInt());
-                return true;
-            case 3062:
-                Q(mm2.m(parcel.readStrongBinder()), parcel.readInt(), parcel.readInt(), parcel.readInt());
-                return true;
-            default:
-                jn2 jn2VarA = null;
-                switch (i) {
-                    case 4001:
-                        ju1 ju1VarM5 = mm2.m(parcel.readStrongBinder());
-                        int i8 = parcel.readInt();
-                        Bundle bundle3 = (Bundle) si0.d(parcel, Bundle.CREATOR);
-                        if (ju1VarM5 != null) {
-                            if (bundle3 != null) {
-                                try {
-                                    jn2VarA = jn2.a(bundle3);
-                                } catch (RuntimeException e3) {
-                                    l93.r0("MediaSessionStub", "Ignoring malformed Bundle for LibraryParams", e3);
-                                }
-                            }
-                            U(ju1VarM5, i8, null, 50000, new at2(new ss2(i3, jn2VarA), z ? 1 : 0));
-                            break;
-                        }
-                        return true;
-                    case 4002:
-                        ju1 ju1VarM6 = mm2.m(parcel.readStrongBinder());
-                        int i9 = parcel.readInt();
-                        String string2 = parcel.readString();
-                        if (ju1VarM6 != null) {
-                            if (TextUtils.isEmpty(string2)) {
-                                l93.q0("MediaSessionStub", "getItem(): Ignoring empty mediaId");
-                                return true;
-                            }
-                            U(ju1VarM6, i9, null, 50004, new at2(new zr2(string2), z ? 1 : 0));
-                            return true;
-                        }
-                        return true;
-                    case 4003:
-                        ju1 ju1VarM7 = mm2.m(parcel.readStrongBinder());
-                        int i10 = parcel.readInt();
-                        String string3 = parcel.readString();
-                        int i11 = parcel.readInt();
-                        int i12 = parcel.readInt();
-                        Bundle bundle4 = (Bundle) si0.d(parcel, Bundle.CREATOR);
-                        if (ju1VarM7 != null) {
-                            if (TextUtils.isEmpty(string3)) {
-                                l93.q0("MediaSessionStub", "getChildren(): Ignoring empty parentId");
-                            } else if (i11 < 0) {
-                                l93.q0("MediaSessionStub", "getChildren(): Ignoring negative page");
-                            } else if (i12 < 1) {
-                                l93.q0("MediaSessionStub", "getChildren(): Ignoring pageSize less than 1");
-                            } else {
-                                if (bundle4 != null) {
-                                    try {
-                                        jn2VarA = jn2.a(bundle4);
-                                    } catch (RuntimeException e4) {
-                                        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for LibraryParams", e4);
-                                    }
-                                }
-                                U(ju1VarM7, i10, null, 50003, new at2(new jm2(string3, i11, i12, jn2VarA), z ? 1 : 0));
-                            }
-                            break;
-                        }
-                        return true;
-                    case 4004:
-                        ju1 ju1VarM8 = mm2.m(parcel.readStrongBinder());
-                        int i13 = parcel.readInt();
-                        String string4 = parcel.readString();
-                        Bundle bundle5 = (Bundle) si0.d(parcel, Bundle.CREATOR);
-                        if (ju1VarM8 != null) {
-                            if (TextUtils.isEmpty(string4)) {
-                                l93.q0("MediaSessionStub", "search(): Ignoring empty query");
-                            } else {
-                                if (bundle5 != null) {
-                                    try {
-                                        jn2VarA = jn2.a(bundle5);
-                                    } catch (RuntimeException e5) {
-                                        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for LibraryParams", e5);
-                                    }
-                                }
-                                U(ju1VarM8, i13, null, 50005, new at2(new zr2(string4, jn2VarA), z ? 1 : 0));
-                            }
-                            break;
-                        }
-                        return true;
-                    case 4005:
-                        ju1 ju1VarM9 = mm2.m(parcel.readStrongBinder());
-                        int i14 = parcel.readInt();
-                        String string5 = parcel.readString();
-                        int i15 = parcel.readInt();
-                        int i16 = parcel.readInt();
-                        Bundle bundle6 = (Bundle) si0.d(parcel, Bundle.CREATOR);
-                        if (ju1VarM9 != null) {
-                            if (TextUtils.isEmpty(string5)) {
-                                l93.q0("MediaSessionStub", "getSearchResult(): Ignoring empty query");
-                            } else if (i15 < 0) {
-                                l93.q0("MediaSessionStub", "getSearchResult(): Ignoring negative page");
-                            } else if (i16 < 1) {
-                                l93.q0("MediaSessionStub", "getSearchResult(): Ignoring pageSize less than 1");
-                            } else {
-                                if (bundle6 != null) {
-                                    try {
-                                        jn2VarA = jn2.a(bundle6);
-                                    } catch (RuntimeException e6) {
-                                        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for LibraryParams", e6);
-                                    }
-                                }
-                                U(ju1VarM9, i14, null, 50006, new at2(new ij0(string5, i15, i16, jn2VarA), z ? 1 : 0));
-                            }
-                            break;
-                        }
-                        return true;
-                    case 4006:
-                        ju1 ju1VarM10 = mm2.m(parcel.readStrongBinder());
-                        int i17 = parcel.readInt();
-                        String string6 = parcel.readString();
-                        Bundle bundle7 = (Bundle) si0.d(parcel, Bundle.CREATOR);
-                        if (ju1VarM10 != null) {
-                            if (TextUtils.isEmpty(string6)) {
-                                l93.q0("MediaSessionStub", "subscribe(): Ignoring empty parentId");
-                            } else {
-                                if (bundle7 != null) {
-                                    try {
-                                        jn2VarA = jn2.a(bundle7);
-                                    } catch (RuntimeException e7) {
-                                        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for LibraryParams", e7);
-                                    }
-                                }
-                                U(ju1VarM10, i17, null, 50001, new at2(new ef0(28, string6, jn2VarA), z ? 1 : 0));
-                            }
-                            break;
-                        }
-                        return true;
-                    case 4007:
-                        ju1 ju1VarM11 = mm2.m(parcel.readStrongBinder());
-                        int i18 = parcel.readInt();
-                        String string7 = parcel.readString();
-                        if (ju1VarM11 != null) {
-                            if (TextUtils.isEmpty(string7)) {
-                                l93.q0("MediaSessionStub", "unsubscribe(): Ignoring empty parentId");
-                                return true;
-                            }
-                            U(ju1VarM11, i18, null, 50002, new at2(new ss2(z ? 1 : 0, string7), z ? 1 : 0));
-                            return true;
-                        }
-                        return true;
-                    default:
-                        return super.onTransact(i, parcel, parcel2, i2);
-                }
-        }
+    public final boolean onTransact(int r13, Parcel r14, Parcel r15, int r16) {
+        int r7 = 1;
+        if (r13 < 1) goto L8;
+        if (r13 > 16777215) goto L8;
+        r14.enforceInterface("androidx.media3.session.IMediaSession");
+    L8:
+        if (r13 != 1598968902) goto L11;
+        r15.writeString("androidx.media3.session.IMediaSession");
+        return true;
+    L11:
+        boolean r4 = false;
+        boolean r5 = false;
+        boolean r6 = false;
+        boolean r8 = false;
+        boolean r9 = false;
+        boolean r10 = false;
+        boolean r11 = false;
+        switch(r13) {
+            case 3002: goto L263;
+            case 3003: goto L261;
+            case 3004: goto L259;
+            case 3005: goto L257;
+            case 3006: goto L252;
+            case 3007: goto L250;
+            case 3008: goto L248;
+            case 3009: goto L243;
+            case 3010: goto L241;
+            case 3011: goto L236;
+            case 3012: goto L234;
+            case 3013: goto L229;
+            case 3014: goto L227;
+            case 3015: goto L225;
+            case 3016: goto L223;
+            case 3017: goto L221;
+            case 3018: goto L216;
+            case 3019: goto L214;
+            case 3020: goto L212;
+            case 3021: goto L210;
+            case 3022: goto L208;
+            case 3023: goto L206;
+            case 3024: goto L204;
+            case 3025: goto L202;
+            case 3026: goto L200;
+            case 3027: goto L198;
+            case 3028: goto L196;
+            case 3029: goto L194;
+            case 3030: goto L192;
+            case 3031: goto L190;
+            case 3032: goto L188;
+            case 3033: goto L186;
+            case 3034: goto L184;
+            case 3035: goto L182;
+            case 3036: goto L180;
+            case 3037: goto L178;
+            case 3038: goto L176;
+            case 3039: goto L174;
+            case 3040: goto L172;
+            case 3041: goto L170;
+            case 3042: goto L168;
+            case 3043: goto L166;
+            case 3044: goto L164;
+            case 3045: goto L162;
+            case 3046: goto L160;
+            case 3047: goto L158;
+            case 3048: goto L156;
+            case 3049: goto L143;
+            case 3050: goto L135;
+            case 3051: goto L133;
+            case 3052: goto L131;
+            case 3053: goto L129;
+            case 3054: goto L124;
+            case 3055: goto L122;
+            case 3056: goto L120;
+            case 3057: goto L115;
+            case 3058: goto L113;
+            case 3059: goto L111;
+            case 3060: goto L104;
+            case 3061: goto L102;
+            case 3062: goto L100;
+            default: goto L13;
+        };
+    L13:
+        jn2 r12 = null;
+        switch(r13) {
+            case 4001: goto L91;
+            case 4002: goto L82;
+            case 4003: goto L66;
+            case 4004: goto L54;
+            case 4005: goto L38;
+            case 4006: goto L26;
+            case 4007: goto L17;
+            default: goto L16;
+        };
+    L17:
+        ju1 r0 = mm2.m(r14.readStrongBinder());
+        int r2 = r14.readInt();
+        String r1 = r14.readString();
+        if (r0 != null) goto L21;
+    L155:
+        return true;
+    L21:
+        if (TextUtils.isEmpty(r1) == false) goto L24;
+        l93.q0("MediaSessionStub", "unsubscribe(): Ignoring empty parentId");
+        return true;
+    L24:
+        U(r0, r2, null, 50002, new at2(new ss2(r4 ? 1 : 0, r1), r4 ? 1 : 0));
+        return true;
+    L26:
+        ju1 r3 = mm2.m(r14.readStrongBinder());
+        int r17 = r14.readInt();
+        String r18 = r14.readString();
+        Bundle r19 = (Bundle) si0.d(r14, Bundle.CREATOR);
+        if (r3 == null) goto L155;
+        if (TextUtils.isEmpty(r18) == false) goto L32;
+        l93.q0("MediaSessionStub", "subscribe(): Ignoring empty parentId");
+        goto L155
+    L32:
+        if (r19 != null) goto L265;
+    L35:
+        U(r3, r17, null, 50001, new at2(new ef0(28, r18, r12), r4 ? 1 : 0));
+        goto L155
+    L265:
+        r12 = jn2.a(r19);     // Catch: RuntimeException -> L36
+    L36:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for LibraryParams", e);
+        goto L155
+    L38:
+        ju1 r20 = mm2.m(r14.readStrongBinder());
+        int r21 = r14.readInt();
+        String r22 = r14.readString();
+        int r23 = r14.readInt();
+        int r110 = r14.readInt();
+        Bundle r24 = (Bundle) si0.d(r14, Bundle.CREATOR);
+        if (r20 == null) goto L155;
+        if (TextUtils.isEmpty(r22) == false) goto L44;
+        l93.q0("MediaSessionStub", "getSearchResult(): Ignoring empty query");
+        goto L155
+    L44:
+        if (r23 >= 0) goto L46;
+        l93.q0("MediaSessionStub", "getSearchResult(): Ignoring negative page");
+        goto L155
+    L46:
+        if (r110 >= 1) goto L48;
+        l93.q0("MediaSessionStub", "getSearchResult(): Ignoring pageSize less than 1");
+        goto L155
+    L48:
+        if (r24 != null) goto L269;
+    L51:
+        U(r20, r21, null, 50006, new at2(new ij0(r22, r23, r110, r12), r4 ? 1 : 0));
+        goto L155
+    L269:
+        r12 = jn2.a(r24);     // Catch: RuntimeException -> L52
+    L52:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for LibraryParams", e);
+        goto L155
+    L54:
+        ju1 r25 = mm2.m(r14.readStrongBinder());
+        int r26 = r14.readInt();
+        String r27 = r14.readString();
+        Bundle r28 = (Bundle) si0.d(r14, Bundle.CREATOR);
+        if (r25 == null) goto L155;
+        if (TextUtils.isEmpty(r27) == false) goto L60;
+        l93.q0("MediaSessionStub", "search(): Ignoring empty query");
+        goto L155
+    L60:
+        if (r28 != null) goto L277;
+    L63:
+        U(r25, r26, null, 50005, new at2(new zr2(r27, r12), r4 ? 1 : 0));
+        goto L155
+    L277:
+        r12 = jn2.a(r28);     // Catch: RuntimeException -> L64
+    L64:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for LibraryParams", e);
+        goto L155
+    L66:
+        ju1 r29 = mm2.m(r14.readStrongBinder());
+        int r30 = r14.readInt();
+        String r31 = r14.readString();
+        int r32 = r14.readInt();
+        int r111 = r14.readInt();
+        Bundle r33 = (Bundle) si0.d(r14, Bundle.CREATOR);
+        if (r29 == null) goto L155;
+        if (TextUtils.isEmpty(r31) == false) goto L72;
+        l93.q0("MediaSessionStub", "getChildren(): Ignoring empty parentId");
+        goto L155
+    L72:
+        if (r32 >= 0) goto L74;
+        l93.q0("MediaSessionStub", "getChildren(): Ignoring negative page");
+        goto L155
+    L74:
+        if (r111 >= 1) goto L76;
+        l93.q0("MediaSessionStub", "getChildren(): Ignoring pageSize less than 1");
+        goto L155
+    L76:
+        if (r33 != null) goto L273;
+    L79:
+        U(r29, r30, null, 50003, new at2(new jm2(r31, r32, r111, r12), r4 ? 1 : 0));
+        goto L155
+    L273:
+        r12 = jn2.a(r33);     // Catch: RuntimeException -> L80
+    L80:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for LibraryParams", e);
+        goto L155
+    L82:
+        ju1 r34 = mm2.m(r14.readStrongBinder());
+        int r35 = r14.readInt();
+        String r36 = r14.readString();
+        if (r34 == null) goto L155;
+        if (TextUtils.isEmpty(r36) == false) goto L89;
+        l93.q0("MediaSessionStub", "getItem(): Ignoring empty mediaId");
+        return true;
+    L89:
+        U(r34, r35, null, 50004, new at2(new zr2(r36), r4 ? 1 : 0));
+        return true;
+    L91:
+        ju1 r37 = mm2.m(r14.readStrongBinder());
+        int r38 = r14.readInt();
+        Bundle r39 = (Bundle) si0.d(r14, Bundle.CREATOR);
+        if (r37 == null) goto L155;
+        if (r39 != null) goto L267;
+    L97:
+        U(r37, r38, null, 50000, new at2(new ss2(r7, r12), r4 ? 1 : 0));
+        goto L155
+    L267:
+        r12 = jn2.a(r39);     // Catch: RuntimeException -> L98
+    L98:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for LibraryParams", e);
+        goto L155
+    L16:
+        return super.onTransact(r13, r14, r15, r16);
+    L100:
+        Q(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt(), r14.readInt());
+        return true;
+    L102:
+        z0(mm2.m(r14.readStrongBinder()), r14.readInt(), (Surface) si0.d(r14, Surface.CREATOR), r14.readInt(), r14.readInt());
+        return true;
+    L104:
+        ju1 r40 = mm2.m(r14.readStrongBinder());
+        int r41 = r14.readInt();
+        Parcelable.Creator r42 = Bundle.CREATOR;
+        Bundle r43 = (Bundle) si0.d(r14, r42);
+        Bundle r44 = (Bundle) si0.d(r14, r42);
+        if (r14.readInt() == 0) goto L108;
+        boolean r45 = true;
+    L109:
+        s(r40, r41, r43, r44, r45);
+        return true;
+    L108:
+        r45 = false;
+        goto L109
+    L111:
+        p(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L113:
+        k(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L115:
+        ju1 r46 = mm2.m(r14.readStrongBinder());
+        int r47 = r14.readInt();
+        Bundle r48 = (Bundle) si0.d(r14, Bundle.CREATOR);
+        if (r14.readInt() == 0) goto L118;
+        r5 = true;
+    L118:
+        b(r46, r47, r48, r5);
+        return true;
+    L120:
+        P(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt(), r14.readInt(), r14.readStrongBinder());
+        return true;
+    L122:
+        G0(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt(), (Bundle) si0.d(r14, Bundle.CREATOR));
+        return true;
+    L124:
+        ju1 r49 = mm2.m(r14.readStrongBinder());
+        int r50 = r14.readInt();
+        if (r14.readInt() == 0) goto L127;
+        r6 = true;
+    L127:
+        x0(r49, r50, r6, r14.readInt());
+        return true;
+    L129:
+        K(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt());
+        return true;
+    L131:
+        F(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt());
+        return true;
+    L133:
+        t(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt(), r14.readInt());
+        return true;
+    L135:
+        ju1 r51 = mm2.m(r14.readStrongBinder());
+        int r52 = r14.readInt();
+        Bundle r53 = (Bundle) si0.d(r14, Bundle.CREATOR);
+        if (r51 == null) goto L155;
+        if (r53 == null) goto L155;
+        U(r51, r52, null, 40010, new at2(new ss2(4, lu3.a(r53)), r7));
+    L141:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for Rating", e);
+        goto L155
+    L143:
+        ju1 r54 = mm2.m(r14.readStrongBinder());
+        int r55 = r14.readInt();
+        String r56 = r14.readString();
+        Bundle r57 = (Bundle) si0.d(r14, Bundle.CREATOR);
+        if (r54 == null) goto L155;
+        if (r56 == null) goto L155;
+        if (r57 == null) goto L155;
+        if (TextUtils.isEmpty(r56) == false) goto L275;
+        l93.q0("MediaSessionStub", "setRatingWithMediaId(): Ignoring empty mediaId");
+        goto L155
+    L275:
+        U(r54, r55, null, 40010, new at2(new ef0(26, r56, lu3.a(r57)), r7));
+    L153:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for Rating", e);
+        goto L155
+    L156:
+        A(mm2.m(r14.readStrongBinder()), r14.readInt(), (Bundle) si0.d(r14, Bundle.CREATOR));
+        return true;
+    L158:
+        R(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L160:
+        A0(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L162:
+        p0(mm2.m(r14.readStrongBinder()));
+        return true;
+    L164:
+        m0(mm2.m(r14.readStrongBinder()), r14.readInt(), (Surface) si0.d(r14, Surface.CREATOR));
+        return true;
+    L166:
+        v(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L168:
+        a0(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L170:
+        B(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L172:
+        H(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L174:
+        S(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt(), r14.readLong());
+        return true;
+    L176:
+        d0(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readLong());
+        return true;
+    L178:
+        f0(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt());
+        return true;
+    L180:
+        W(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L182:
+        j0(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L184:
+        C0(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L186:
+        y0(mm2.m(r14.readStrongBinder()), r14.readInt(), (Bundle) si0.d(r14, Bundle.CREATOR));
+        return true;
+    L188:
+        Z(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt(), r14.readStrongBinder());
+        return true;
+    L190:
+        T(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readStrongBinder());
+        return true;
+    L192:
+        D(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt(), (Bundle) si0.d(r14, Bundle.CREATOR));
+        return true;
+    L194:
+        G(mm2.m(r14.readStrongBinder()), r14.readInt(), (Bundle) si0.d(r14, Bundle.CREATOR));
+        return true;
+    L196:
+        w(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readFloat());
+        return true;
+    L198:
+        r0(mm2.m(r14.readStrongBinder()), r14.readInt(), (Bundle) si0.d(r14, Bundle.CREATOR));
+        return true;
+    L200:
+        e0(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L202:
+        d(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L204:
+        q(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L206:
+        E0(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt(), r14.readInt(), r14.readInt());
+        return true;
+    L208:
+        F0(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt(), r14.readInt());
+        return true;
+    L210:
+        v0(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L212:
+        M(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt(), r14.readInt());
+        return true;
+    L214:
+        N(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt());
+        return true;
+    L216:
+        ju1 r58 = mm2.m(r14.readStrongBinder());
+        int r59 = r14.readInt();
+        if (r14.readInt() == 0) goto L219;
+        r8 = true;
+    L219:
+        H0(r58, r59, r8);
+        return true;
+    L221:
+        D0(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt());
+        return true;
+    L223:
+        ju1 r60 = mm2.m(r14.readStrongBinder());
+        int r61 = r14.readInt();
+        Parcelable.Creator r62 = Bundle.CREATOR;
+        s(r60, r61, (Bundle) si0.d(r14, r62), (Bundle) si0.d(r14, r62), false);
+        return true;
+    L225:
+        n0(mm2.m(r14.readStrongBinder()), r14.readInt(), (Bundle) si0.d(r14, Bundle.CREATOR));
+        return true;
+    L227:
+        a(mm2.m(r14.readStrongBinder()), r14.readInt(), (Bundle) si0.d(r14, Bundle.CREATOR));
+        return true;
+    L229:
+        ju1 r63 = mm2.m(r14.readStrongBinder());
+        int r64 = r14.readInt();
+        if (r14.readInt() == 0) goto L232;
+        r9 = true;
+    L232:
+        h0(r63, r64, r9);
+        return true;
+    L234:
+        u(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readStrongBinder(), r14.readInt(), r14.readLong());
+        return true;
+    L236:
+        ju1 r65 = mm2.m(r14.readStrongBinder());
+        int r66 = r14.readInt();
+        IBinder r67 = r14.readStrongBinder();
+        if (r14.readInt() == 0) goto L239;
+        r10 = true;
+    L239:
+        L(r65, r66, r67, r10);
+        return true;
+    L241:
+        L(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readStrongBinder(), true);
+        return true;
+    L243:
+        ju1 r68 = mm2.m(r14.readStrongBinder());
+        int r69 = r14.readInt();
+        Bundle r70 = (Bundle) si0.d(r14, Bundle.CREATOR);
+        if (r14.readInt() == 0) goto L246;
+        r11 = true;
+    L246:
+        o0(r68, r69, r70, r11);
+        return true;
+    L248:
+        l(mm2.m(r14.readStrongBinder()), r14.readInt(), (Bundle) si0.d(r14, Bundle.CREATOR), r14.readLong());
+        return true;
+    L250:
+        o0(mm2.m(r14.readStrongBinder()), r14.readInt(), (Bundle) si0.d(r14, Bundle.CREATOR), true);
+        return true;
+    L252:
+        ju1 r71 = mm2.m(r14.readStrongBinder());
+        int r72 = r14.readInt();
+        if (r14.readInt() == 0) goto L255;
+        r4 = true;
+    L255:
+        B0(r71, r72, r4);
+        return true;
+    L257:
+        g0(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L259:
+        y(mm2.m(r14.readStrongBinder()), r14.readInt());
+        return true;
+    L261:
+        q0(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readInt());
+        return true;
+    L263:
+        x(mm2.m(r14.readStrongBinder()), r14.readInt(), r14.readFloat());
+        return true;
     }
 
     @Override // defpackage.pu1
-    public final void p(ju1 ju1Var, int i) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 24, Q0(new zr2(15)));
+    public final void p(ju1 r3, int r4) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 24, Q0(new zr2(15)));
     }
 
     @Override // defpackage.pu1
-    public final void p0(ju1 ju1Var) {
-        if (ju1Var == null) {
-            return;
-        }
-        long jClearCallingIdentity = Binder.clearCallingIdentity();
-        try {
-            tn2 tn2Var = (tn2) this.e.get();
-            if (tn2Var != null && !tn2Var.l()) {
-                fr2 fr2VarW = this.f.w(ju1Var.asBinder());
-                if (fr2VarW != null) {
-                    f35.W(tn2Var.l, new ur2(4, this, fr2VarW));
-                }
-            }
-        } finally {
-            Binder.restoreCallingIdentity(jClearCallingIdentity);
-        }
+    public final void p0(ju1 r6) {
+        if (r6 != null) goto L4;
+        return;
+    L4:
+        long r0 = Binder.clearCallingIdentity();
+        tn2 r2 = (tn2) this.e.get();     // Catch: Throwable -> L14
+        if (r2 != null) goto L8;
+    L18:
+        Binder.restoreCallingIdentity(r0);
+        return;
+    L8:
+        if (r2.l() == true) goto L18;
+        fr2 r7 = this.f.w(r6.asBinder());     // Catch: Throwable -> L14
+        if (r7 == null) goto L16;
+        f35.W(r2.l, new ur2(4, this, r7));     // Catch: Throwable -> L14
+    L16:
+        Binder.restoreCallingIdentity(r0);
+        return;
+    L14:
+        th = move-exception;
+        Binder.restoreCallingIdentity(r0);
+        throw th;
     }
 
     @Override // defpackage.pu1
-    public final void q(ju1 ju1Var, int i) {
-        fr2 fr2VarW;
-        if (ju1Var == null || (fr2VarW = this.f.w(ju1Var.asBinder())) == null) {
-            return;
-        }
-        M0(fr2VarW, i);
+    public final void q(ju1 r2, int r3) {
+        if (r2 == null) goto L9;
+        fr2 r4 = this.f.w(r2.asBinder());
+        if (r4 == null) goto L8;
+        M0(r4, r3);
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void q0(ju1 ju1Var, int i, int i2) {
-        if (ju1Var == null || i2 < 0) {
-            return;
-        }
-        N0(ju1Var, i, 25, Q0(new ij0(i2, 10)));
+    public final void q0(ju1 r3, int r4, int r5) {
+        if (r3 == null) goto L7;
+        if (r5 < 0) goto L8;
+        N0(r3, r4, 25, Q0(new ij0(r5, 10)));
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void r0(ju1 ju1Var, int i, Bundle bundle) {
-        if (ju1Var == null || bundle == null) {
-            return;
-        }
-        try {
-            N0(ju1Var, i, 13, Q0(new ql2(new qh3(bundle.getFloat(qh3.e, 1.0f), bundle.getFloat(qh3.f, 1.0f)), 2)));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for PlaybackParameters", e);
-        }
+    public final void r0(ju1 r4, int r5, Bundle r6) {
+        if (r4 == null) goto L13;
+        if (r6 == null) goto L14;
+        N0(r4, r5, 13, Q0(new ql2(new qh3(r6.getFloat(qh3.e, 1.0f), r6.getFloat(qh3.f, 1.0f)), 2)));
+        return;
+    L8:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for PlaybackParameters", e);
+        return;
+    L14:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void s(ju1 ju1Var, int i, Bundle bundle, Bundle bundle2, boolean z) {
-        Bundle bundleN = f35.n(bundle2);
-        if (ju1Var == null || bundle == null || bundleN == null) {
-            return;
-        }
-        try {
-            va4 va4VarA = va4.a(bundle);
-            if (!j60.n(va4VarA.b)) {
-                U(ju1Var, i, va4VarA, 0, new at2(new ef0(z, va4VarA, bundleN), 1));
-                return;
-            }
-            long jClearCallingIdentity = Binder.clearCallingIdentity();
-            try {
-                tn2 tn2Var = (tn2) this.e.get();
-                if (tn2Var != null && !tn2Var.l()) {
-                    fr2 fr2VarW = this.f.w(ju1Var.asBinder());
-                    if (fr2VarW == null) {
-                        return;
-                    }
-                    f35.W(tn2Var.l, new ls1(this, fr2VarW, va4VarA, tn2Var, i, ju1Var));
-                }
-            } finally {
-                Binder.restoreCallingIdentity(jClearCallingIdentity);
-            }
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for SessionCommand", e);
-        }
+    public final void s(ju1 r8, int r9, Bundle r10, Bundle r11, boolean r12) {
+        Bundle r13 = f35.n(r11);
+        if (r8 == null) goto L38;
+        if (r10 == null) goto L39;
+        if (r13 == null) goto L40;
+        va4 r3 = va4.a(r10);     // Catch: RuntimeException -> L31
+        if (j60.n(r3.b) == false) goto L29;
+        long r14 = Binder.clearCallingIdentity();
+        tn2 r4 = (tn2) this.e.get();     // Catch: Throwable -> L23
+        if (r4 != null) goto L14;
+    L25:
+        Binder.restoreCallingIdentity(r14);
+        return;
+    L14:
+        if (r4.l() == true) goto L25;
+        fr2 r2 = this.f.w(r8.asBinder());     // Catch: Throwable -> L23
+        if (r2 != null) goto L20;
+        Binder.restoreCallingIdentity(r14);
+        return;
+    L20:
+        f35.W(r4.l, new ls1(this, r2, r3, r4, r9, r8));     // Catch: Throwable -> L23
+        Binder.restoreCallingIdentity(r14);
+        return;
+    L23:
+        th = move-exception;
+        Binder.restoreCallingIdentity(r14);
+        throw th;
+    L29:
+        U(r8, r9, r3, 0, new at2(new ef0(r12, r3, r13), 1));
+        return;
+    L31:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for SessionCommand", e);
+        return;
+    L40:
+        return;
+    L39:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void t(ju1 ju1Var, int i, int i2, int i3) {
-        if (ju1Var == null || i2 < 0) {
-            return;
-        }
-        N0(ju1Var, i, 33, Q0(new v31(i2, i3, 4)));
+    public final void t(ju1 r3, int r4, int r5, int r6) {
+        if (r3 == null) goto L7;
+        if (r5 < 0) goto L8;
+        N0(r3, r4, 33, Q0(new v31(r5, r6, 4)));
+        return;
+    L8:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void t0(ju1 ju1Var, int i, Bundle bundle, Bundle bundle2) {
-        s(ju1Var, i, bundle, bundle2, false);
+    public final void t0(ju1 r7, int r8, Bundle r9, Bundle r10) {
+        s(r7, r8, r9, r10, false);
     }
 
     @Override // defpackage.pu1
-    public final void u(ju1 ju1Var, int i, IBinder iBinder, int i2, long j) {
-        if (ju1Var == null || iBinder == null) {
-            return;
-        }
-        if (i2 == -1 || i2 >= 0) {
-            try {
-                yw1 yw1VarA = iw.a(iBinder);
-                uw1 uw1VarJ = yw1.j();
-                for (int i3 = 0; i3 < yw1VarA.size(); i3++) {
-                    Bundle bundle = (Bundle) yw1VarA.get(i3);
-                    bundle.getClass();
-                    uw1VarJ.c(gn2.b(bundle));
-                }
-                N0(ju1Var, i, 20, new at2(new ef0(29, new lj0(j, uw1VarJ.f(), i2), new zr2(20)), 1));
-            } catch (RuntimeException e) {
-                l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
-            }
-        }
+    public final void u(ju1 r4, int r5, IBinder r6, int r7, long r8) {
+        if (r4 == null) goto L21;
+        if (r6 != null) goto L5;
+        return;
+    L5:
+        if (r7 == (-1)) goto L18;
+        if (r7 >= 0) goto L18;
+        return;
+    L18:
+        yw1 r9 = iw.a(r6);     // Catch: RuntimeException -> L15
+        uw1 r0 = yw1.j();     // Catch: RuntimeException -> L15
+        int r1 = 0;
+    L10:
+        if (r1 >= r9.size()) goto L12;
+        Bundle r2 = (Bundle) r9.get(r1);     // Catch: RuntimeException -> L15
+        r2.getClass();     // Catch: RuntimeException -> L15
+        r0.c(gn2.b(r2));     // Catch: RuntimeException -> L15
+        r1 = r1 + 1;     // Catch: RuntimeException -> L15
+        goto L10
+    L12:
+        int r10 = 29;
+        N0(r4, r5, 20, new at2(new ef0(r10, new lj0(r8, r0.f(), r7), new zr2(20)), 1));
+        return;
+    L15:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaItem", e);
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void v(ju1 ju1Var, int i) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 8, Q0(new zr2(3)));
+    public final void v(ju1 r3, int r4) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 8, Q0(new zr2(3)));
     }
 
     @Override // defpackage.pu1
-    public final void v0(ju1 ju1Var, int i) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 20, Q0(new zr2(18)));
+    public final void v0(ju1 r3, int r4) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 20, Q0(new zr2(18)));
     }
 
     @Override // defpackage.pu1
-    public final void w(ju1 ju1Var, int i, float f) {
-        if (ju1Var == null || f <= 0.0f) {
-            return;
-        }
-        N0(ju1Var, i, 13, Q0(new w31(3, f)));
+    public final void w(ju1 r3, int r4, float r5) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        if (r5 <= 0.0f) goto L9;
+        N0(r3, r4, 13, Q0(new w31(3, r5)));
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void x(ju1 ju1Var, int i, float f) {
-        if (ju1Var == null || f < 0.0f || f > 1.0f) {
-            return;
-        }
-        N0(ju1Var, i, 24, Q0(new w31(4, f)));
+    public final void x(ju1 r3, int r4, float r5) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        if (r5 >= 0.0f) goto L6;
+        return;
+    L6:
+        if (r5 > 1.0f) goto L12;
+        N0(r3, r4, 24, Q0(new w31(4, r5)));
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void x0(ju1 ju1Var, int i, final boolean z, final int i2) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 34, Q0(new wc0() { // from class: xs2
-            @Override // defpackage.wc0
-            public final void accept(Object obj) {
-                ((al3) obj).E(i2, z);
-            }
-        }));
+    public final void x0(ju1 r2, int r3, final boolean r4, final int r5) {
+        if (r2 != null) goto L4;
+        return;
+    L4:
+        N0(r2, r3, 34, Q0(new xs2(r5, r4)));
     }
 
     @Override // defpackage.pu1
-    public final void y(ju1 ju1Var, int i) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 26, Q0(new zr2(4)));
+    public final void y(ju1 r3, int r4) {
+        if (r3 != null) goto L4;
+        return;
+    L4:
+        N0(r3, r4, 26, Q0(new zr2(4)));
     }
 
     @Override // defpackage.pu1
-    public final void y0(ju1 ju1Var, int i, Bundle bundle) {
-        if (ju1Var == null || bundle == null) {
-            return;
-        }
-        try {
-            N0(ju1Var, i, 19, Q0(new r31(do2.b(bundle), 2)));
-        } catch (RuntimeException e) {
-            l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaMetadata", e);
-        }
+    public final void y0(ju1 r3, int r4, Bundle r5) {
+        if (r3 == null) goto L13;
+        if (r5 == null) goto L14;
+        N0(r3, r4, 19, Q0(new r31(do2.b(r5), 2)));
+        return;
+    L8:
+        e = move-exception;
+        l93.r0("MediaSessionStub", "Ignoring malformed Bundle for MediaMetadata", e);
+        return;
+    L14:
+        return;
     }
 
     @Override // defpackage.pu1
-    public final void z0(ju1 ju1Var, int i, Surface surface, int i2, int i3) {
-        if (ju1Var == null) {
-            return;
-        }
-        N0(ju1Var, i, 27, Q0(new hl2(this, surface, i2, i3, 2)));
+    public final void z0(ju1 r7, int r8, Surface r9, int r10, int r11) {
+        if (r7 != null) goto L4;
+        return;
+    L4:
+        N0(r7, r8, 27, Q0(new hl2(this, r9, r10, r11, 2)));
     }
 }

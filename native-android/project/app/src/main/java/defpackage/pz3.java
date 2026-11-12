@@ -11,7 +11,7 @@ public interface pz3 {
 
     boolean d();
 
-    boolean e(pz3 pz3Var);
+    boolean e(pz3 r1);
 
     boolean isRunning();
 

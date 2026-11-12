@@ -8,22 +8,24 @@ public final /* synthetic */ class km0 implements gf1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ List o;
 
-    public /* synthetic */ km0(List list, int i) {
-        this.n = i;
-        this.o = list;
+    public /* synthetic */ km0(List r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        int i = this.n;
-        List list = this.o;
-        switch (i) {
-            case 0:
-                Object obj = list.get(2);
-                obj.getClass();
-                return (Integer) obj;
-            default:
-                return rr1.r(list);
-        }
+        int r0 = this.n;
+        List r1 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L5;
+        };
+    L6:
+        Object r2 = r1.get(2);
+        r2.getClass();
+        return (Integer) r2;
+    L5:
+        return rr1.r(r1);
     }
 }

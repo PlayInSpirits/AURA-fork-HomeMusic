@@ -14,34 +14,32 @@ public final class mj2 extends uj2 {
     public final /* synthetic */ Bundle h;
     public final /* synthetic */ pn2 i;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public mj2(pn2 pn2Var, String str, oj2 oj2Var, String str2, Bundle bundle, Bundle bundle2) {
-        super(str);
-        this.i = pn2Var;
-        this.e = oj2Var;
-        this.f = str2;
-        this.g = bundle;
-        this.h = bundle2;
+    public mj2(pn2 r1, String r2, oj2 r3, String r4, Bundle r5, Bundle r6) {
+        this.i = r1;
+        this.e = r3;
+        this.f = r4;
+        this.g = r5;
+        this.h = r6;
+        super(r2);
     }
 
     @Override // defpackage.uj2
-    public final void d(Object obj) {
-        List list = (List) obj;
-        oi oiVar = this.i.r;
-        oj2 oj2Var = this.e;
-        hg3 hg3Var = oj2Var.e;
-        String str = oj2Var.a;
-        hg3Var.getClass();
-        Object obj2 = oiVar.get(((Messenger) hg3Var.o).getBinder());
-        String str2 = this.f;
-        if (obj2 != oj2Var) {
-            l93.A("MBServiceCompat", "Not sending onLoadChildren result for connection that has been disconnected. pkg=" + str + " id=" + str2);
-            return;
-        }
-        try {
-            hg3Var.H(str2, list, this.g, this.h);
-        } catch (RemoteException unused) {
-            l93.q0("MBServiceCompat", "Calling onLoadChildren() failed for id=" + str2 + " package=" + str);
-        }
+    public final void d(Object r7) {
+        List r8 = (List) r7;
+        oi r0 = this.i.r;
+        oj2 r1 = this.e;
+        hg3 r2 = r1.e;
+        String r3 = r1.a;
+        r2.getClass();
+        Object r4 = r0.get(((Messenger) r2.o).getBinder());
+        String r5 = this.f;
+        if (r4 == r1) goto L10;
+        l93.A("MBServiceCompat", "Not sending onLoadChildren result for connection that has been disconnected. pkg=" + r3 + " id=" + r5);
+        return;
+    L10:
+        r2.H(r5, r8, this.g, this.h);     // Catch: RemoteException -> L8
+        return;
+    L8:
+        l93.q0("MBServiceCompat", "Calling onLoadChildren() failed for id=" + r5 + " package=" + r3);
     }
 }

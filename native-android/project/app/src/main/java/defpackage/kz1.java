@@ -11,21 +11,22 @@ import android.view.inputmethod.InputContentInfo;
 public final class kz1 extends InputConnectionWrapper {
     public final /* synthetic */ cn a;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public kz1(InputConnection inputConnection, cn cnVar) {
-        super(inputConnection, false);
-        this.a = cnVar;
+    public kz1(InputConnection r1, cn r2) {
+        this.a = r2;
+        super(r1, false);
     }
 
     @Override // android.view.inputmethod.InputConnectionWrapper, android.view.inputmethod.InputConnection
-    public final boolean commitContent(InputContentInfo inputContentInfo, int i, Bundle bundle) {
-        om1 om1Var = null;
-        if (inputContentInfo != null && Build.VERSION.SDK_INT >= 25) {
-            om1Var = new om1(2, new mz1(inputContentInfo));
-        }
-        if (this.a.b(om1Var, i, bundle)) {
-            return true;
-        }
-        return super.commitContent(inputContentInfo, i, bundle);
+    public final boolean commitContent(InputContentInfo r4, int r5, Bundle r6) {
+        om1 r0 = null;
+        if (r4 == null) goto L10;
+        if (Build.VERSION.SDK_INT < 25) goto L10;
+        int r2 = 2;
+        r0 = new om1(r2, new mz1(r4));
+    L10:
+        if (this.a.b(r0, r5, r6) == false) goto L14;
+        return true;
+    L14:
+        return super.commitContent(r4, r5, r6);
     }
 }

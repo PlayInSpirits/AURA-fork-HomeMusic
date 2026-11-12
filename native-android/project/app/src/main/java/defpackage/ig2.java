@@ -6,7 +6,7 @@ import java.util.Map;
 /* JADX INFO: loaded from: classes.dex */
 public final class ig2 extends yw4 {
     @Override // defpackage.yw4
-    public final Object a(Object obj) {
-        return ((Map.Entry) obj).getValue();
+    public final Object a(Object r1) {
+        return ((Map.Entry) r1).getValue();
     }
 }

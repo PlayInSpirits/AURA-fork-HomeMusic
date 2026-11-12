@@ -8,8 +8,8 @@ import java.lang.reflect.Method;
 public final class wz0 implements Runnable {
     public final /* synthetic */ int n;
 
-    public /* synthetic */ wz0(int i) {
-        this.n = i;
+    public /* synthetic */ wz0(int r1) {
+        this.n = r1;
     }
 
     private final void a() {
@@ -17,22 +17,24 @@ public final class wz0 implements Runnable {
 
     @Override // java.lang.Runnable
     public final void run() {
-        switch (this.n) {
-            case 0:
-                try {
-                    Method method = ov4.b;
-                    Trace.beginSection("EmojiCompat.EmojiCompatInitializer.run");
-                    if (tz0.c()) {
-                        tz0.a().d();
-                        break;
-                    }
-                    return;
-                } finally {
-                    Method method2 = ov4.b;
-                    Trace.endSection();
-                }
-            default:
-                return;
-        }
+        switch(this.n) {
+            case 0: goto L13;
+            default: goto L4;
+        };
+    L4:
+        return;
+    L13:
+        Method r0 = ov4.b;     // Catch: Throwable -> L10
+        Trace.beginSection("EmojiCompat.EmojiCompatInitializer.run");     // Catch: Throwable -> L10
+        if (tz0.c() == false) goto L8;
+        tz0.a().d();     // Catch: Throwable -> L10
+    L8:
+        Trace.endSection();
+        return;
+    L10:
+        th = move-exception;
+        Method r1 = ov4.b;
+        Trace.endSection();
+        throw th;
     }
 }

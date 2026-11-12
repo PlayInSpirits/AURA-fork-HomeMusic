@@ -10,45 +10,45 @@ public final class jm4 implements ci0 {
     public ii0 o;
     public String p;
 
-    public jm4(lx lxVar) {
-        this.n = lxVar;
+    public jm4(lx r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.ci0
-    public final long b(ii0 ii0Var) {
-        ii0Var.getClass();
-        lx lxVar = this.n;
-        this.p = lxVar.r.d(ii0Var);
-        long jB = lxVar.b(ii0Var);
-        this.o = ii0Var;
-        return jB;
+    public final long b(ii0 r3) {
+        r3.getClass();
+        lx r0 = this.n;
+        this.p = r0.r.d(r3);
+        long r1 = r0.b(r3);
+        this.o = r3;
+        return r1;
     }
 
     @Override // defpackage.ci0
-    public final void c(rw4 rw4Var) {
-        rw4Var.getClass();
-        this.n.c(rw4Var);
+    public final void c(rw4 r1) {
+        r1.getClass();
+        this.n.c(r1);
     }
 
     @Override // defpackage.ci0
     public final void close() {
-        lx lxVar = this.n;
-        se4 se4Var = lxVar.n;
-        lxVar.close();
-        ii0 ii0Var = this.o;
-        if (ii0Var != null) {
-            String strD = this.p;
-            if (strD == null) {
-                strD = lxVar.r.d(ii0Var);
-                strD.getClass();
-            }
-            if (nd0.a(se4Var.i(strD)) == -1) {
-                Log.d("StreamingCacheDataSource", "Removing partial cache for ".concat(strD));
-                se4Var.m(strD);
-            } else {
-                Log.d("StreamingCacheDataSource", "Key " + strD + " has been fully cached");
-            }
-        }
+        lx r0 = this.n;
+        se4 r1 = r0.n;
+        r0.close();
+        ii0 r2 = this.o;
+        if (r2 == null) goto L13;
+        String r6 = this.p;
+        if (r6 != null) goto L8;
+        r6 = r0.r.d(r2);
+        r6.getClass();
+    L8:
+        if (nd0.a(r1.i(r6)) != (-1)) goto L11;
+        Log.d("StreamingCacheDataSource", "Removing partial cache for ".concat(r6));
+        r1.m(r6);
+        return;
+    L11:
+        Log.d("StreamingCacheDataSource", "Key " + r6 + " has been fully cached");
+        return;
     }
 
     @Override // defpackage.ci0
@@ -57,8 +57,8 @@ public final class jm4 implements ci0 {
     }
 
     @Override // defpackage.wh0
-    public final int read(byte[] bArr, int i, int i2) {
-        bArr.getClass();
-        return this.n.read(bArr, i, i2);
+    public final int read(byte[] r1, int r2, int r3) {
+        r1.getClass();
+        return this.n.read(r1, r2, r3);
     }
 }

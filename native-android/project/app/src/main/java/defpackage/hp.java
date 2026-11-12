@@ -6,8 +6,8 @@ public final class hp {
     public final /* synthetic */ ip a;
     public final /* synthetic */ rq3 b;
 
-    public hp(ip ipVar, rq3 rq3Var) {
-        this.a = ipVar;
-        this.b = rq3Var;
+    public hp(ip r1, rq3 r2) {
+        this.a = r1;
+        this.b = r2;
     }
 }

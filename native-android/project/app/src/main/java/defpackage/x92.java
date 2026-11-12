@@ -11,7 +11,7 @@ public interface x92 {
 
     Activity e();
 
-    void g(df5 df5Var);
+    void g(df5 r1);
 
-    void startActivityForResult(Intent intent, int i);
+    void startActivityForResult(Intent r1, int r2);
 }

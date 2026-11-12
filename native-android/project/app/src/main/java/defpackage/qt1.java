@@ -12,24 +12,25 @@ public final /* synthetic */ class qt1 implements DialogInterface.OnClickListene
     public final /* synthetic */ Activity o;
     public final /* synthetic */ HubAppRelease p;
 
-    public /* synthetic */ qt1(Activity activity, HubAppRelease hubAppRelease, int i) {
-        this.n = i;
-        this.o = activity;
-        this.p = hubAppRelease;
+    public /* synthetic */ qt1(Activity r1, HubAppRelease r2, int r3) {
+        this.n = r3;
+        this.o = r1;
+        this.p = r2;
     }
 
     @Override // android.content.DialogInterface.OnClickListener
-    public final void onClick(DialogInterface dialogInterface, int i) {
-        int i2 = this.n;
-        HubAppRelease hubAppRelease = this.p;
-        Activity activity = this.o;
-        switch (i2) {
-            case 0:
-                HubUpdater.download$lambda$0$1$1$0(activity, hubAppRelease, dialogInterface, i);
-                break;
-            default:
-                HubUpdater.offer$lambda$3(activity, hubAppRelease, dialogInterface, i);
-                break;
-        }
+    public final void onClick(DialogInterface r3, int r4) {
+        int r0 = this.n;
+        HubAppRelease r1 = this.p;
+        Activity r2 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        HubUpdater.h(r2, r1, r3, r4);
+        return;
+    L6:
+        HubUpdater.d(r2, r1, r3, r4);
     }
 }

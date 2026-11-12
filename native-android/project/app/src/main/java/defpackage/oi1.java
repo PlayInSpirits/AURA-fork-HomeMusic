@@ -8,15 +8,19 @@ import java.io.File;
 /* JADX INFO: loaded from: classes.dex */
 public final class oi1 extends c04 {
     @Override // defpackage.c04
-    public final void a(g04 g04Var) {
-        synchronized (this) {
-            super.a(g04Var);
-        }
+    public final void a(g04 r1) {
+        monitor-enter(this);
+        super.a(r1);     // Catch: Throwable -> L6
+        monitor-exit(this);
+        return;
+    L6:
+        th = move-exception;
+        throw th;
     }
 
     @Override // defpackage.c04
-    public final vz3 f(Class cls) {
-        return new ni1(this.n, this, cls, this.o);
+    public final vz3 f(Class r4) {
+        return new ni1(this.n, this, r4, this.o);
     }
 
     @Override // defpackage.c04
@@ -35,26 +39,26 @@ public final class oi1 extends c04 {
     }
 
     @Override // defpackage.c04
-    public final vz3 r(Uri uri) {
-        return (ni1) super.r(uri);
+    public final vz3 r(Uri r1) {
+        return (ni1) super.r(r1);
     }
 
     @Override // defpackage.c04
-    public final vz3 s(File file) {
-        return (ni1) super.s(file);
+    public final vz3 s(File r1) {
+        return (ni1) super.s(r1);
     }
 
     @Override // defpackage.c04
-    public final vz3 t(String str) {
-        return (ni1) super.t(str);
+    public final vz3 t(String r1) {
+        return (ni1) super.t(r1);
     }
 
     @Override // defpackage.c04
-    public final void w(g04 g04Var) {
-        if (g04Var instanceof mi1) {
-            super.w(g04Var);
-        } else {
-            super.w(new mi1().F(g04Var));
-        }
+    public final void w(g04 r2) {
+        if ((r2 instanceof mi1) == false) goto L6;
+        super.w(r2);
+        return;
+    L6:
+        super.w(new mi1().F(r2));
     }
 }

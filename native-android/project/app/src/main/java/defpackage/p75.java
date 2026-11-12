@@ -11,10 +11,9 @@ import androidx.viewpager2.widget.ViewPager2;
 public final class p75 extends RecyclerView {
     public final /* synthetic */ ViewPager2 Y0;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public p75(ViewPager2 viewPager2, Context context) {
-        super(context);
-        this.Y0 = viewPager2;
+    public p75(ViewPager2 r1, Context r2) {
+        this.Y0 = r1;
+        super(r2);
     }
 
     @Override // androidx.recyclerview.widget.RecyclerView, android.view.ViewGroup, android.view.View
@@ -24,22 +23,34 @@ public final class p75 extends RecyclerView {
     }
 
     @Override // android.view.View
-    public final void onInitializeAccessibilityEvent(AccessibilityEvent accessibilityEvent) {
-        super.onInitializeAccessibilityEvent(accessibilityEvent);
-        ViewPager2 viewPager2 = this.Y0;
-        accessibilityEvent.setFromIndex(viewPager2.q);
-        accessibilityEvent.setToIndex(viewPager2.q);
-        accessibilityEvent.setSource((ViewPager2) viewPager2.G.q);
-        accessibilityEvent.setClassName("androidx.viewpager.widget.ViewPager");
+    public final void onInitializeAccessibilityEvent(AccessibilityEvent r2) {
+        super.onInitializeAccessibilityEvent(r2);
+        ViewPager2 r1 = this.Y0;
+        r2.setFromIndex(r1.q);
+        r2.setToIndex(r1.q);
+        r2.setSource((ViewPager2) r1.G.q);
+        r2.setClassName("androidx.viewpager.widget.ViewPager");
     }
 
     @Override // androidx.recyclerview.widget.RecyclerView, android.view.ViewGroup
-    public final boolean onInterceptTouchEvent(MotionEvent motionEvent) {
-        return this.Y0.E && super.onInterceptTouchEvent(motionEvent);
+    public final boolean onInterceptTouchEvent(MotionEvent r2) {
+        if (this.Y0.E == true) goto L5;
+        return false;
+    L5:
+        if (super.onInterceptTouchEvent(r2) == false) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     @Override // androidx.recyclerview.widget.RecyclerView, android.view.View
-    public final boolean onTouchEvent(MotionEvent motionEvent) {
-        return this.Y0.E && super.onTouchEvent(motionEvent);
+    public final boolean onTouchEvent(MotionEvent r2) {
+        if (this.Y0.E == true) goto L5;
+        return false;
+    L5:
+        if (super.onTouchEvent(r2) == false) goto L10;
+        return true;
+    L10:
+        return false;
     }
 }

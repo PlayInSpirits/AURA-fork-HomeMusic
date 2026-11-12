@@ -9,9 +9,14 @@ import java.util.Map;
 /* JADX INFO: loaded from: classes.dex */
 public final class HubNotifier$State {
     public static final int $stable = 8;
+    private List<Long> doneItems;
     private boolean initialized;
-    private List<Long> doneItems = new ArrayList();
-    private Map<String, String> tasks = new LinkedHashMap();
+    private Map<String, String> tasks;
+
+    public HubNotifier$State() {
+        this.doneItems = new ArrayList();
+        this.tasks = new LinkedHashMap();
+    }
 
     public final List<Long> getDoneItems() {
         return this.doneItems;
@@ -25,17 +30,17 @@ public final class HubNotifier$State {
         return this.tasks;
     }
 
-    public final void setDoneItems(List<Long> list) {
-        list.getClass();
-        this.doneItems = list;
+    public final void setDoneItems(List<Long> r1) {
+        r1.getClass();
+        this.doneItems = r1;
     }
 
-    public final void setInitialized(boolean z) {
-        this.initialized = z;
+    public final void setInitialized(boolean r1) {
+        this.initialized = r1;
     }
 
-    public final void setTasks(Map<String, String> map) {
-        map.getClass();
-        this.tasks = map;
+    public final void setTasks(Map<String, String> r1) {
+        r1.getClass();
+        this.tasks = r1;
     }
 }

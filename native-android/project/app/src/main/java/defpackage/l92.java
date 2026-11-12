@@ -8,36 +8,44 @@ public final /* synthetic */ class l92 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ LibraryFragment o;
 
-    public /* synthetic */ l92(LibraryFragment libraryFragment, int i) {
-        this.n = i;
-        this.o = libraryFragment;
+    public /* synthetic */ l92(LibraryFragment r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        n92 n92Var;
-        int i = this.n;
-        LibraryFragment libraryFragment = this.o;
-        switch (i) {
-            case 0:
-                if (libraryFragment.T != null && libraryFragment.l0 != null && (n92Var = libraryFragment.o0) != null) {
-                    n92Var.f(libraryFragment.v());
-                    break;
-                }
-                break;
-            case 1:
-                xc1 xc1Var = libraryFragment.l0;
-                if (xc1Var != null) {
-                    xc1Var.p.setVisibility(8);
-                }
-                break;
-            default:
-                xc1 xc1Var2 = libraryFragment.l0;
-                if (xc1Var2 != null) {
-                    xc1Var2.p.setVisibility(8);
-                    break;
-                }
-                break;
-        }
+        int r0 = this.n;
+        LibraryFragment r2 = this.o;
+        switch(r0) {
+            case 0: goto L14;
+            case 1: goto L9;
+            default: goto L4;
+        };
+    L4:
+        xc1 r3 = r2.l0;
+        if (r3 == null) goto L21;
+        r3.p.setVisibility(8);
+        return;
+    L21:
+        return;
+    L9:
+        xc1 r4 = r2.l0;
+        if (r4 == null) goto L22;
+        r4.p.setVisibility(8);
+        return;
+    L22:
+        return;
+    L14:
+        if (r2.T != null) goto L16;
+        return;
+    L16:
+        if (r2.l0 == null) goto L24;
+        n92 r1 = r2.o0;
+        if (r1 == null) goto L25;
+        r1.f(r2.v());
+        return;
+    L25:
+        return;
     }
 }

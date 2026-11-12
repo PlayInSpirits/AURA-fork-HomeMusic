@@ -3,61 +3,74 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class cp0 extends tl4 {
-    public static final Object h = new Object();
+    public static final Object h = null;
     public long c;
     public int d;
     public p03 e;
     public Object f;
     public int g;
 
-    public cp0(long j) {
-        super(j);
-        p03 p03Var = r73.a;
-        p03Var.getClass();
-        this.e = p03Var;
+    static {
+        h = new Object();
+    }
+
+    public cp0(long r1) {
+        super(r1);
+        p03 r2 = r73.a;
+        r2.getClass();
+        this.e = r2;
         this.f = h;
     }
 
     @Override // defpackage.tl4
-    public final void a(tl4 tl4Var) {
-        tl4Var.getClass();
-        cp0 cp0Var = (cp0) tl4Var;
-        this.e = cp0Var.e;
-        this.f = cp0Var.f;
-        this.g = cp0Var.g;
+    public final void a(tl4 r2) {
+        r2.getClass();
+        cp0 r3 = (cp0) r2;
+        this.e = r3.e;
+        this.f = r3.f;
+        this.g = r3.g;
     }
 
     @Override // defpackage.tl4
-    public final tl4 b(long j) {
-        return new cp0(j);
+    public final tl4 b(long r1) {
+        return new cp0(r1);
     }
 
-    public final boolean c(dp0 dp0Var, ch4 ch4Var) {
-        boolean z;
-        boolean z2;
-        Object obj = jh4.c;
-        synchronized (obj) {
-            z = true;
-            z2 = (this.c == ch4Var.g() && this.d == ch4Var.h()) ? false : true;
-        }
-        if (this.f == h || (z2 && this.g != d(dp0Var, ch4Var))) {
-            z = false;
-        }
-        if (!z || !z2) {
-            return z;
-        }
-        synchronized (obj) {
-            this.c = ch4Var.g();
-            this.d = ch4Var.h();
-        }
-        return z;
+    public final boolean c(dp0 r7, ch4 r8) {
+        Object r0 = jh4.c;
+        monitor-enter(r0);
+        boolean r2 = true;
+        if (this.c != r8.g()) goto L12;
+        if (this.d != r8.h()) goto L12;
+        boolean r1 = false;
+    L13:
+        monitor-exit(r0);
+        if (this.f == h) goto L20;
+        if (r1 == true) goto L18;
+    L21:
+        if (r2 == false) goto L30;
+        if (r1 == false) goto L30;
+        monitor-enter(r0);
+        this.c = r8.g();     // Catch: Throwable -> L27
+        this.d = r8.h();     // Catch: Throwable -> L27
+        monitor-exit(r0);
+        return r2;
+    L27:
+        th = move-exception;
+        throw th;
+    L30:
+        return r2;
+    L18:
+        if (this.g == d(r7, r8)) goto L21;
+    L20:
+        r2 = false;
+    L12:
+        r1 = true;
+    L10:
+        th = move-exception;
+        throw th;
     }
 
-    /* JADX WARN: Code duplicated, block: B:41:0x00d8 A[PHI: r11
-  0x00d8: PHI (r11v1 int) = (r11v0 int), (r11v2 int) binds: [B:30:0x00a9, B:40:0x00d6] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:44:0x00de A[Catch: all -> 0x00cc, LOOP:3: B:29:0x009c->B:44:0x00de, LOOP_END, TryCatch #0 {all -> 0x00cc, blocks: (B:12:0x0025, B:15:0x0032, B:17:0x0041, B:19:0x004f, B:21:0x0059, B:24:0x0076, B:26:0x007a, B:29:0x009c, B:31:0x00ab, B:33:0x00b5, B:35:0x00bb, B:38:0x00cf, B:47:0x00f8, B:44:0x00de, B:46:0x00e8), top: B:74:0x0025 }] */
-    /* JADX WARN: Code duplicated, block: B:63:0x014c A[LOOP:5: B:62:0x014a->B:63:0x014c, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:84:0x00f8 A[EDGE_INSN: B:84:0x00f8->B:47:0x00f8 BREAK  A[LOOP:3: B:29:0x009c->B:44:0x00de], SYNTHETIC] */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r13v10, types: [cp0] */
     /* JADX WARN: Type inference failed for: r13v5, types: [tl4] */
@@ -74,182 +87,168 @@ public final class cp0 extends tl4 {
     /* JADX WARN: Type inference failed for: r3v12 */
     /* JADX WARN: Type inference failed for: r3v7 */
     /* JADX WARN: Type inference failed for: r3v8, types: [int] */
-    public final int d(dp0 dp0Var, ch4 ch4Var) {
-        p03 p03Var;
-        int iIdentityHashCode;
-        Object[] objArr;
-        int i;
-        int i2;
-        long[] jArr;
-        int i3;
-        Object[] objArr2;
-        long[] jArr2;
-        ?? r25;
-        Object[] objArr3;
-        long j;
-        long j2;
-        int i4;
-        ?? r26;
-        ?? I;
-        synchronized (jh4.c) {
-            p03Var = this.e;
-        }
-        int i5 = 7;
-        if (p03Var.e == 0) {
-            return 7;
-        }
-        f13 f13VarN = uc5.n();
-        Object[] objArr4 = f13VarN.n;
-        int i6 = f13VarN.p;
-        boolean z = false;
-        for (int i7 = 0; i7 < i6; i7++) {
-            ((qg1) objArr4[i7]).b();
-        }
-        try {
-            Object[] objArr5 = p03Var.b;
-            int[] iArr = p03Var.c;
-            long[] jArr3 = p03Var.a;
-            int length = jArr3.length - 2;
-            if (length >= 0) {
-                iIdentityHashCode = 7;
-                int i8 = 0;
-                while (true) {
-                    long j3 = jArr3[i8];
-                    long j4 = -9187201950435737472L;
-                    if ((((~j3) << i5) & j3 & (-9187201950435737472L)) != -9187201950435737472L) {
-                        int i9 = 8;
-                        int i10 = 8 - ((~(i8 - length)) >>> 31);
-                        i3 = i5;
-                        ?? r3 = z;
-                        while (r3 < i10) {
-                            if ((j3 & 255) < 128) {
-                                ?? r18 = (i8 << 3) + r3;
-                                j2 = j4;
-                                rl4 rl4Var = (rl4) objArr5[r18];
-                                int i11 = i9;
-                                if (iArr[r18] != 1) {
-                                    jArr2 = jArr3;
-                                    r25 = r3;
-                                    objArr3 = objArr5;
-                                    j = j3;
-                                } else {
-                                    if (rl4Var instanceof dp0) {
-                                        dp0 dp0Var2 = (dp0) rl4Var;
-                                        I = dp0Var2.g((cp0) jh4.i(dp0Var2.q, ch4Var), ch4Var, z, dp0Var2.o);
-                                        p03 p03Var2 = I.e;
-                                        Object[] objArr6 = p03Var2.b;
-                                        long[] jArr4 = p03Var2.a;
-                                        int length2 = jArr4.length - 2;
-                                        jArr2 = jArr3;
-                                        r26 = r3;
-                                        objArr3 = objArr5;
-                                        if (length2 >= 0) {
-                                            int i12 = 0;
-                                            while (true) {
-                                                long j5 = jArr4[i12];
-                                                j = j3;
-                                                int iIdentityHashCode2 = iIdentityHashCode;
-                                                if ((((~j5) << i3) & j5 & j2) == j2) {
-                                                    iIdentityHashCode = iIdentityHashCode2;
-                                                    if (i12 != length2) {
-                                                        break;
-                                                        break;
-                                                    }
-                                                    i12++;
-                                                    j3 = j;
-                                                    i11 = 8;
-                                                } else {
-                                                    int i13 = 8 - ((~(i12 - length2)) >>> 31);
-                                                    for (int i14 = 0; i14 < i13; i14++) {
-                                                        if ((j5 & 255) < 128) {
-                                                            iIdentityHashCode2 = (iIdentityHashCode2 * 31) + System.identityHashCode((rl4) objArr6[(i12 << 3) + i14]);
-                                                        }
-                                                        j5 >>= i11;
-                                                    }
-                                                    if (i13 != i11) {
-                                                        iIdentityHashCode = iIdentityHashCode2;
-                                                        break;
-                                                    }
-                                                    iIdentityHashCode = iIdentityHashCode2;
-                                                    if (i12 != length2) {
-                                                        break;
-                                                    }
-                                                    i12++;
-                                                    j3 = j;
-                                                    i11 = 8;
-                                                }
-                                            }
-                                        } else {
-                                            j = j3;
-                                        }
-                                    } else {
-                                        jArr2 = jArr3;
-                                        r26 = r3;
-                                        objArr3 = objArr5;
-                                        j = j3;
-                                        I = jh4.i(rl4Var.a(), ch4Var);
-                                    }
-                                    iIdentityHashCode = (((iIdentityHashCode * 31) + System.identityHashCode(I)) * 31) + Long.hashCode(I.a);
-                                    r25 = r26;
-                                }
-                                i4 = 8;
-                            } else {
-                                jArr2 = jArr3;
-                                r25 = r3;
-                                objArr3 = objArr5;
-                                j = j3;
-                                j2 = j4;
-                                i4 = i9;
-                            }
-                            j3 = j >> i4;
-                            i9 = i4;
-                            j4 = j2;
-                            objArr5 = objArr3;
-                            z = false;
-                            r3 = r25 + 1;
-                            jArr3 = jArr2;
-                        }
-                        jArr = jArr3;
-                        objArr2 = objArr5;
-                        if (i10 != i9) {
-                            break;
-                        }
-                    } else {
-                        jArr = jArr3;
-                        i3 = i5;
-                        objArr2 = objArr5;
-                    }
-                    if (i8 != length) {
-                        i8++;
-                        i5 = i3;
-                        jArr3 = jArr;
-                        objArr5 = objArr2;
-                        z = false;
-                    } else {
-                        i5 = iIdentityHashCode;
-                    }
-                }
-                objArr = f13VarN.n;
-                i = f13VarN.p;
-                for (i2 = 0; i2 < i; i2++) {
-                    ((qg1) objArr[i2]).a();
-                }
-                return iIdentityHashCode;
-            }
-            iIdentityHashCode = i5;
-            objArr = f13VarN.n;
-            i = f13VarN.p;
-            while (i2 < i) {
-                ((qg1) objArr[i2]).a();
-            }
-            return iIdentityHashCode;
-        } catch (Throwable th) {
-            Object[] objArr7 = f13VarN.n;
-            int i15 = f13VarN.p;
-            for (int i16 = 0; i16 < i15; i16++) {
-                ((qg1) objArr7[i16]).a();
-            }
-            throw th;
-        }
+    public final int d(dp0 r31, ch4 r32) {
+        Object r1 = jh4.c;
+        monitor-enter(r1);
+        p03 r2 = this.e;     // Catch: Throwable -> L71
+        monitor-exit(r1);
+        int r3 = 7;
+        if (r2.e == 0) goto L70;
+        f13 r4 = uc5.n();
+        Object[] r5 = r4.n;
+        int r6 = r4.p;
+        boolean r7 = false;
+        int r8 = 0;
+    L10:
+        if (r8 >= r6) goto L74;
+        ((qg1) r5[r8]).b();
+        r8 = r8 + 1;
+        goto L10
+    L74:
+        Object[] r9 = r2.b;     // Catch: Throwable -> L36
+        int[] r10 = r2.c;     // Catch: Throwable -> L36
+        long[] r11 = r2.a;     // Catch: Throwable -> L36
+        int r12 = r11.length - 2;     // Catch: Throwable -> L36
+        if (r12 < 0) goto L60;
+        int r13 = 7;
+        int r14 = 0;
+    L15:
+        long r15 = r11[r14];     // Catch: Throwable -> L36
+        long r16 = -9187201950435737472L;
+        if (((((~r15) << r3) & r15) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L55;
+        int r17 = 8;
+        int r18 = 8 - ((~(r14 - r12)) >>> 31);     // Catch: Throwable -> L36
+        int r30 = r3;
+        ?? r19 = r7;
+    L18:
+        if (r19 >= r18) goto L52;
+        if ((r15 & 255) >= 128) goto L50;
+        ?? r110 = (r14 << 3) + r19;     // Catch: Throwable -> L36
+        long r22 = r16;
+        rl4 r111 = (rl4) r9[r110];     // Catch: Throwable -> L36
+        int r33 = r17;
+        if (r10[r110] == 1) goto L25;
+        long[] r112 = r11;
+        ?? r25 = r19;
+        Object[] r24 = r9;
+        long r26 = r15;
+    L49:
+        int r20 = 8;
+    L51:
+        r15 = r26 >> r20;
+        r17 = r20;
+        r16 = r22;
+        r9 = r24;
+        r7 = false;
+        r19 = r25 + 1;
+        r11 = r112;
+        goto L18
+    L25:
+        if ((r111 instanceof dp0) == false) goto L46;
+        dp0 r113 = (dp0) r111;     // Catch: Throwable -> L36
+        ?? r114 = r113.g((cp0) jh4.i(r113.q, r32), r32, r7, r113.o);     // Catch: Throwable -> L36
+        p03 r115 = r114.e;     // Catch: Throwable -> L36
+        Object[] r116 = r115.b;     // Catch: Throwable -> L36
+        long[] r117 = r115.a;     // Catch: Throwable -> L36
+        int r21 = r117.length - 2;     // Catch: Throwable -> L36
+        r112 = r11;
+        ?? r27 = r19;
+        r24 = r9;
+        if (r21 < 0) goto L45;
+        int r23 = 0;
+    L29:
+        long r28 = r117[r23];     // Catch: Throwable -> L36
+        r26 = r15;
+        int r118 = r13;
+        if (((((~r28) << r30) & r28) & r22) == r22) goto L41;
+        int r29 = 8 - ((~(r23 - r21)) >>> 31);     // Catch: Throwable -> L36
+        int r119 = 0;
+    L32:
+        if (r119 >= r29) goto L40;
+        if ((r28 & 255) >= 128) goto L38;
+        r118 = (r118 * 31) + System.identityHashCode((rl4) r116[(r23 << 3) + r119]);     // Catch: Throwable -> L36
+    L38:
+        r28 = r28 >> r33;     // Catch: Throwable -> L36
+        r119 = r119 + 1;     // Catch: Throwable -> L36
+        goto L32
+    L40:
+        if (r29 == r33) goto L41;
+        r13 = r118;
+    L48:
+        r13 = (((r13 * 31) + System.identityHashCode(r114)) * 31) + Long.hashCode(r114.a);
+        r25 = r27;
+    L41:
+        r13 = r118;
+        if (r23 == r21) goto L48;
+        r23 = r23 + 1;     // Catch: Throwable -> L36
+        r15 = r26;
+        r33 = 8;
+        goto L29
+    L45:
+        r26 = r15;
+        goto L48
+    L46:
+        r112 = r11;
+        r27 = r19;
+        r24 = r9;
+        r26 = r15;
+        r114 = jh4.i(r111.a(), r32);     // Catch: Throwable -> L36
+        goto L48
+    L50:
+        r112 = r11;
+        r25 = r19;
+        r24 = r9;
+        r26 = r15;
+        r22 = r16;
+        r20 = r17;
+        goto L51
+    L52:
+        long[] r120 = r11;
+        Object[] r210 = r9;
+        if (r18 != r17) goto L61;
+    L56:
+        if (r14 == r12) goto L58;
+        r14 = r14 + 1;
+        r3 = r30;
+        r11 = r120;
+        r9 = r210;
+        r7 = false;
+        goto L15
+    L58:
+        r3 = r13;
+    L61:
+        Object[] r0 = r4.n;
+        int r34 = r4.p;
+        int r35 = 0;
+    L62:
+        if (r35 >= r34) goto L64;
+        ((qg1) r0[r35]).a();
+        r35 = r35 + 1;
+        goto L62
+    L64:
+        return r13;
+    L55:
+        r120 = r11;
+        r30 = r3;
+        r210 = r9;
+    L60:
+        r13 = r3;
+    L36:
+        th = move-exception;
+        Object[] r36 = r4.n;
+        int r37 = r4.p;
+        int r38 = 0;
+    L66:
+        if (r38 >= r37) goto L68;
+        ((qg1) r36[r38]).a();
+        r38 = r38 + 1;
+        goto L66
+    L68:
+        throw th;
+    L70:
+        return 7;
+    L71:
+        th = move-exception;
+        throw th;
     }
 }

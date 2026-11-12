@@ -11,40 +11,46 @@ public final class ft extends cx2 implements u62, g94 {
     }
 
     @Override // defpackage.g94
-    public final void c0(q94 q94Var) {
-        ac4 ac4Var;
-        boolean z;
-        f63 f63VarM = j51.M(this, 2);
-        if (f63VarM.a0) {
-            ac4Var = f63VarM.W;
-            z = f63VarM.Z;
-        } else {
-            b24 b24Var = au0.w;
-            if (b24Var == null) {
-                au0.w = new b24();
-            } else {
-                b24Var.a();
-            }
-            b24 b24Var2 = au0.w;
-            b24Var2.getClass();
-            b24Var2.z = f63VarM.H.J;
-            b24Var2.x = l93.o0(f63VarM.p);
-            ch4 ch4VarT = ya4.t();
-            if1 if1VarE = ch4VarT != null ? ch4VarT.e() : null;
-            ch4 ch4VarZ = ya4.z(ch4VarT);
-            try {
-                this.B.invoke(b24Var2);
-                ya4.H(ch4VarT, ch4VarZ, if1VarE);
-                ac4Var = b24Var2.v;
-                z = b24Var2.w;
-            } catch (Throwable th) {
-                ya4.H(ch4VarT, ch4VarZ, if1VarE);
-                throw th;
-            }
-        }
-        if (z) {
-            o94.b(q94Var, ac4Var);
-        }
+    public final void c0(q94 r5) {
+        f63 r0 = j51.M(this, 2);
+        if (r0.a0 == true) goto L18;
+        b24 r1 = au0.w;
+        if (r1 != null) goto L7;
+        au0.w = new b24();
+    L8:
+        b24 r2 = au0.w;
+        r2.getClass();
+        r2.z = r0.H.J;
+        r2.x = l93.o0(r0.p);
+        ch4 r3 = ya4.t();
+        if (r3 == null) goto L11;
+        if1 r4 = r3.e();
+    L12:
+        ch4 r6 = ya4.z(r3);
+        this.B.invoke(r2);     // Catch: Throwable -> L15
+        ya4.H(r3, r6, r4);
+        ac4 r7 = r2.v;
+        boolean r8 = r2.w;
+    L19:
+        if (r8 == true) goto L21;
+        return;
+    L21:
+        o94.b(r5, r7);
+        return;
+    L15:
+        th = move-exception;
+        ya4.H(r3, r6, r4);
+        throw th;
+    L11:
+        r4 = null;
+        goto L12
+    L7:
+        r1.a();
+        goto L8
+    L18:
+        r7 = r0.W;
+        r8 = r0.Z;
+        goto L19
     }
 
     @Override // defpackage.cx2
@@ -53,9 +59,12 @@ public final class ft extends cx2 implements u62, g94 {
     }
 
     @Override // defpackage.u62
-    public final vi2 r(cf2 cf2Var, pi2 pi2Var, long j) {
-        jg3 jg3VarR = pi2Var.r(j);
-        return cf2Var.v(jg3VarR.n, jg3VarR.o, v01.n, new o(2, jg3VarR, this));
+    public final vi2 r(cf2 r3, pi2 r4, long r5) {
+        jg3 r6 = r4.r(r5);
+        int r7 = r6.n;
+        int r8 = r6.o;
+        o r0 = new o(2, r6, this);
+        return r3.v(r7, r8, v01.n, r0);
     }
 
     public final String toString() {

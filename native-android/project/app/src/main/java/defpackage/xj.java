@@ -11,29 +11,32 @@ public final /* synthetic */ class xj implements dk {
     public final /* synthetic */ int n;
     public final /* synthetic */ k03 o;
 
-    public /* synthetic */ xj(k03 k03Var, int i) {
-        this.n = i;
-        this.o = k03Var;
+    public /* synthetic */ xj(k03 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // defpackage.dk
-    public final void e(ArrayList arrayList) {
-        int i = this.n;
-        k03 k03Var = this.o;
-        switch (i) {
-            case 0:
-                k03Var.i(arrayList);
-                break;
-            case 1:
-                Collections.shuffle(arrayList);
-                k03Var.k((List) arrayList.stream().limit(50L).collect(Collectors.toList()));
-                break;
-            case 2:
-                k03Var.i(arrayList);
-                break;
-            default:
-                k03Var.i(arrayList);
-                break;
-        }
+    public final void e(ArrayList r3) {
+        int r0 = this.n;
+        k03 r2 = this.o;
+        switch(r0) {
+            case 0: goto L10;
+            case 1: goto L8;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r2.i(r3);
+        return;
+    L6:
+        r2.i(r3);
+        return;
+    L8:
+        Collections.shuffle(r3);
+        r2.k((List) r3.stream().limit(50).collect(Collectors.toList()));
+        return;
+    L10:
+        r2.i(r3);
     }
 }

@@ -9,16 +9,16 @@ public abstract class oq2 {
     public void e() {
     }
 
-    public void f(int i) {
+    public void f(int r1) {
     }
 
     public void g() {
     }
 
-    public void h(int i) {
+    public void h(int r1) {
         g();
     }
 
-    public void i(int i) {
+    public void i(int r1) {
     }
 }

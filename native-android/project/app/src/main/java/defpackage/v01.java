@@ -8,7 +8,11 @@ import java.util.Set;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class v01 implements Map, Serializable, x32 {
-    public static final v01 n = new v01();
+    public static final v01 n = null;
+
+    static {
+        n = new v01();
+    }
 
     @Override // java.util.Map
     public final void clear() {
@@ -16,12 +20,12 @@ public final class v01 implements Map, Serializable, x32 {
     }
 
     @Override // java.util.Map
-    public final boolean containsKey(Object obj) {
+    public final boolean containsKey(Object r1) {
         return false;
     }
 
     @Override // java.util.Map
-    public final /* bridge */ boolean containsValue(Object obj) {
+    public final /* bridge */ boolean containsValue(Object r1) {
         return false;
     }
 
@@ -31,12 +35,18 @@ public final class v01 implements Map, Serializable, x32 {
     }
 
     @Override // java.util.Map
-    public final boolean equals(Object obj) {
-        return (obj instanceof Map) && ((Map) obj).isEmpty();
+    public final boolean equals(Object r1) {
+        if ((r1 instanceof Map) == true) goto L5;
+        return false;
+    L5:
+        if (((Map) r1).isEmpty() == false) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     @Override // java.util.Map
-    public final /* bridge */ /* synthetic */ Object get(Object obj) {
+    public final /* bridge */ /* synthetic */ Object get(Object r1) {
         return null;
     }
 
@@ -56,17 +66,17 @@ public final class v01 implements Map, Serializable, x32 {
     }
 
     @Override // java.util.Map
-    public final /* bridge */ /* synthetic */ Object put(Object obj, Object obj2) {
+    public final /* bridge */ /* synthetic */ Object put(Object r1, Object r2) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final void putAll(Map map) {
+    public final void putAll(Map r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final Object remove(Object obj) {
+    public final Object remove(Object r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -85,7 +95,7 @@ public final class v01 implements Map, Serializable, x32 {
     }
 
     @Override // java.util.Map
-    public final boolean remove(Object obj, Object obj2) {
+    public final boolean remove(Object r1, Object r2) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 }

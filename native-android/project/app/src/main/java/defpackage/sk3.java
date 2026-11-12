@@ -12,25 +12,33 @@ public final class sk3 {
     public final Looper e;
     public boolean f;
 
-    public sk3(q41 q41Var, rk3 rk3Var, cu4 cu4Var, int i, Looper looper) {
-        this.b = q41Var;
-        this.a = rk3Var;
-        this.e = looper;
+    public sk3(q41 r1, rk3 r2, cu4 r3, int r4, Looper r5) {
+        this.b = r1;
+        this.a = r2;
+        this.e = r5;
     }
 
-    public final synchronized void a(boolean z) {
-        notifyAll();
+    public final synchronized void a(boolean r1) {
+        monitor-enter(this);
+        notifyAll();     // Catch: Throwable -> L6
+        monitor-exit(this);
+        return;
+    L6:
+        th = move-exception;
+        throw th;
     }
 
     public final void b() {
         rr2.w(!this.f);
         this.f = true;
-        q41 q41Var = this.b;
-        if (!q41Var.X && q41Var.w.getThread().isAlive()) {
-            q41Var.u.b(14, this).b();
-        } else {
-            l93.q0("ExoPlayerImplInternal", "Ignoring messages sent after release.");
-            a(false);
-        }
+        q41 r0 = this.b;
+        if (r0.X == false) goto L5;
+    L9:
+        l93.q0("ExoPlayerImplInternal", "Ignoring messages sent after release.");
+        a(false);
+        return;
+    L5:
+        if (r0.w.getThread().isAlive() == false) goto L9;
+        r0.u.b(14, this).b();
     }
 }

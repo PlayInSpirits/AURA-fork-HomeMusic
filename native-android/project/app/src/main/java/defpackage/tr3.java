@@ -5,14 +5,15 @@ package defpackage;
 public final class tr3 {
     public final mz0 a;
     public final iu4 b;
-    public final h00 c = new h00(64, new byte[64]);
+    public final h00 c;
     public boolean d;
     public boolean e;
     public boolean f;
     public long g;
 
-    public tr3(mz0 mz0Var, iu4 iu4Var) {
-        this.a = mz0Var;
-        this.b = iu4Var;
+    public tr3(mz0 r2, iu4 r3) {
+        this.a = r2;
+        this.b = r3;
+        this.c = new h00(64, new byte[64]);
     }
 }

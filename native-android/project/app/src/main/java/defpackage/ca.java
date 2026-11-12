@@ -13,14 +13,20 @@ public final class ca extends rr2 {
     public final X509TrustManager c;
     public final X509TrustManagerExtensions d;
 
-    public ca(X509TrustManager x509TrustManager, X509TrustManagerExtensions x509TrustManagerExtensions) {
-        x509TrustManager.getClass();
-        this.c = x509TrustManager;
-        this.d = x509TrustManagerExtensions;
+    public ca(X509TrustManager r1, X509TrustManagerExtensions r2) {
+        r1.getClass();
+        this.c = r1;
+        this.d = r2;
     }
 
-    public final boolean equals(Object obj) {
-        return (obj instanceof ca) && ((ca) obj).c == this.c;
+    public final boolean equals(Object r2) {
+        if ((r2 instanceof ca) == true) goto L5;
+        return false;
+    L5:
+        if (((ca) r2).c != this.c) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
     public final int hashCode() {
@@ -28,17 +34,17 @@ public final class ca extends rr2 {
     }
 
     @Override // defpackage.rr2
-    public final List x(String str, List list) throws SSLPeerUnverifiedException {
-        list.getClass();
-        str.getClass();
-        try {
-            List<X509Certificate> listCheckServerTrusted = this.d.checkServerTrusted((X509Certificate[]) list.toArray(new X509Certificate[0]), "RSA", str);
-            listCheckServerTrusted.getClass();
-            return listCheckServerTrusted;
-        } catch (CertificateException e) {
-            SSLPeerUnverifiedException sSLPeerUnverifiedException = new SSLPeerUnverifiedException(e.getMessage());
-            sSLPeerUnverifiedException.initCause(e);
-            throw sSLPeerUnverifiedException;
-        }
+    public final List x(String r2, List r3) {
+        r3.getClass();
+        r2.getClass();
+        X509Certificate[] r4 = (X509Certificate[]) r3.toArray(new X509Certificate[0]);
+        List<X509Certificate> r1 = this.d.checkServerTrusted(r4, "RSA", r2);     // Catch: CertificateException -> L5
+        r1.getClass();     // Catch: CertificateException -> L5
+        return r1;
+    L5:
+        e = move-exception;
+        SSLPeerUnverifiedException r5 = new SSLPeerUnverifiedException(e.getMessage());
+        r5.initCause(e);
+        throw r5;
     }
 }

@@ -12,11 +12,11 @@ public final class j85 extends fx4 {
     public final /* synthetic */ View c;
     public final /* synthetic */ l85 d;
 
-    public j85(l85 l85Var, ViewGroup viewGroup, View view, View view2) {
-        this.d = l85Var;
-        this.a = viewGroup;
-        this.b = view;
-        this.c = view2;
+    public j85(l85 r1, ViewGroup r2, View r3, View r4) {
+        this.d = r1;
+        this.a = r2;
+        this.b = r3;
+        this.c = r4;
     }
 
     @Override // defpackage.fx4, defpackage.bx4
@@ -25,19 +25,19 @@ public final class j85 extends fx4 {
     }
 
     @Override // defpackage.bx4
-    public final void c(dx4 dx4Var) {
+    public final void c(dx4 r4) {
         this.c.setTag(R.id.save_overlay_view, null);
         this.a.getOverlay().remove(this.b);
-        dx4Var.u(this);
+        r4.u(this);
     }
 
     @Override // defpackage.fx4, defpackage.bx4
     public final void e() {
-        View view = this.b;
-        if (view.getParent() == null) {
-            this.a.getOverlay().add(view);
-        } else {
-            this.d.cancel();
-        }
+        View r0 = this.b;
+        if (r0.getParent() != null) goto L6;
+        this.a.getOverlay().add(r0);
+        return;
+    L6:
+        this.d.cancel();
     }
 }

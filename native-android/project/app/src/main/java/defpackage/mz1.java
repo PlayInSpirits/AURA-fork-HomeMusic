@@ -9,8 +9,8 @@ import android.view.inputmethod.InputContentInfo;
 public final class mz1 implements nz1 {
     public final InputContentInfo n;
 
-    public mz1(Uri uri, ClipDescription clipDescription, Uri uri2) {
-        this.n = new InputContentInfo(uri, clipDescription, uri2);
+    public mz1(Uri r2, ClipDescription r3, Uri r4) {
+        this.n = new InputContentInfo(r2, r3, r4);
     }
 
     @Override // defpackage.nz1
@@ -38,7 +38,7 @@ public final class mz1 implements nz1 {
         return this.n.getDescription();
     }
 
-    public mz1(Object obj) {
-        this.n = (InputContentInfo) obj;
+    public mz1(Object r1) {
+        this.n = (InputContentInfo) r1;
     }
 }

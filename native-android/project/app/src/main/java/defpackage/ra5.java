@@ -7,33 +7,33 @@ import android.view.WindowInsetsAnimation;
 public final class ra5 extends sa5 {
     public final WindowInsetsAnimation e;
 
-    public ra5(WindowInsetsAnimation windowInsetsAnimation) {
-        super(0, null, 0L);
-        this.e = windowInsetsAnimation;
+    public ra5(WindowInsetsAnimation r5) {
+        super(0, null, 0);
+        this.e = r5;
     }
 
     @Override // defpackage.sa5
     public final float a() {
-        return this.e.getAlpha();
+        return xq2.a(this.e);
     }
 
     @Override // defpackage.sa5
     public final long b() {
-        return this.e.getDurationMillis();
+        return xq2.f(this.e);
     }
 
     @Override // defpackage.sa5
     public final float c() {
-        return this.e.getInterpolatedFraction();
+        return xq2.y(this.e);
     }
 
     @Override // defpackage.sa5
     public final int d() {
-        return this.e.getTypeMask();
+        return xq2.e(this.e);
     }
 
     @Override // defpackage.sa5
-    public final void e(float f) {
-        this.e.setFraction(f);
+    public final void e(float r1) {
+        xq2.u(this.e, r1);
     }
 }

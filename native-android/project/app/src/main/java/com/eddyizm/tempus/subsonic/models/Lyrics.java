@@ -8,6 +8,9 @@ public final class Lyrics {
     private String title;
     private String value;
 
+    public Lyrics() {
+    }
+
     public final String getArtist() {
         return this.artist;
     }
@@ -20,15 +23,15 @@ public final class Lyrics {
         return this.value;
     }
 
-    public final void setArtist(String str) {
-        this.artist = str;
+    public final void setArtist(String r1) {
+        this.artist = r1;
     }
 
-    public final void setTitle(String str) {
-        this.title = str;
+    public final void setTitle(String r1) {
+        this.title = r1;
     }
 
-    public final void setValue(String str) {
-        this.value = str;
+    public final void setValue(String r1) {
+        this.value = r1;
     }
 }

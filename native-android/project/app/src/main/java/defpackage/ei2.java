@@ -27,7 +27,7 @@ public class ei2 extends Drawable.ConstantState {
     public int p;
     public final Paint.Style q;
 
-    public ei2(ei2 ei2Var) {
+    public ei2(ei2 r3) {
         this.c = null;
         this.d = null;
         this.e = null;
@@ -42,25 +42,25 @@ public class ei2 extends Drawable.ConstantState {
         this.o = 0;
         this.p = 0;
         this.q = Paint.Style.FILL_AND_STROKE;
-        this.a = ei2Var.a;
-        this.b = ei2Var.b;
-        this.j = ei2Var.j;
-        this.c = ei2Var.c;
-        this.d = ei2Var.d;
-        this.f = ei2Var.f;
-        this.e = ei2Var.e;
-        this.k = ei2Var.k;
-        this.h = ei2Var.h;
-        this.p = ei2Var.p;
-        this.n = ei2Var.n;
-        this.i = ei2Var.i;
-        this.l = ei2Var.l;
-        this.m = ei2Var.m;
-        this.o = ei2Var.o;
-        this.q = ei2Var.q;
-        if (ei2Var.g != null) {
-            this.g = new Rect(ei2Var.g);
-        }
+        this.a = r3.a;
+        this.b = r3.b;
+        this.j = r3.j;
+        this.c = r3.c;
+        this.d = r3.d;
+        this.f = r3.f;
+        this.e = r3.e;
+        this.k = r3.k;
+        this.h = r3.h;
+        this.p = r3.p;
+        this.n = r3.n;
+        this.i = r3.i;
+        this.l = r3.l;
+        this.m = r3.m;
+        this.o = r3.o;
+        this.q = r3.q;
+        if (r3.g == null) goto L6;
+        this.g = new Rect(r3.g);
+        return;
     }
 
     @Override // android.graphics.drawable.Drawable.ConstantState
@@ -70,12 +70,12 @@ public class ei2 extends Drawable.ConstantState {
 
     @Override // android.graphics.drawable.Drawable.ConstantState
     public Drawable newDrawable() {
-        fi2 fi2Var = new fi2(this);
-        fi2Var.r = true;
-        return fi2Var;
+        fi2 r0 = new fi2(this);
+        r0.r = true;
+        return r0;
     }
 
-    public ei2(bc4 bc4Var) {
+    public ei2(bc4 r3) {
         this.c = null;
         this.d = null;
         this.e = null;
@@ -90,7 +90,7 @@ public class ei2 extends Drawable.ConstantState {
         this.o = 0;
         this.p = 0;
         this.q = Paint.Style.FILL_AND_STROKE;
-        this.a = bc4Var;
+        this.a = r3;
         this.b = null;
     }
 }

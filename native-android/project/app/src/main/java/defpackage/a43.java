@@ -6,11 +6,11 @@ import android.view.SubMenu;
 /* JADX INFO: loaded from: classes.dex */
 public final class a43 extends qu2 {
     @Override // defpackage.qu2, android.view.Menu
-    public final SubMenu addSubMenu(int i, int i2, int i3, CharSequence charSequence) {
-        tu2 tu2VarA = a(i, i2, i3, charSequence);
-        m43 m43Var = new m43(this.a, this, tu2VarA);
-        tu2VarA.o = m43Var;
-        m43Var.setHeaderTitle(tu2VarA.e);
-        return m43Var;
+    public final SubMenu addSubMenu(int r1, int r2, int r3, CharSequence r4) {
+        tu2 r5 = a(r1, r2, r3, r4);
+        m43 r6 = new m43(this.a, this, r5);
+        r5.o = r6;
+        r6.setHeaderTitle(r5.e);
+        return r6;
     }
 }

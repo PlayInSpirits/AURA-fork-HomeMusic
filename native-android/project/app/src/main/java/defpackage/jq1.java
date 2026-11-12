@@ -4,7 +4,7 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class jq1 extends kq1 {
     @Override // defpackage.kq1
-    public final void d(yq1 yq1Var) {
-        yq1Var.c(b21.REFUSED_STREAM, null);
+    public final void d(yq1 r2) {
+        r2.c(b21.t, null);
     }
 }

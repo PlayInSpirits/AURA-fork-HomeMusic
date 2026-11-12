@@ -11,33 +11,42 @@ public final class dt {
     public final long b;
     public final int c;
 
-    public dt(int i, long j) {
-        ColorFilter porterDuffColorFilter;
-        if (Build.VERSION.SDK_INT >= 29) {
-            z9.i();
-            porterDuffColorFilter = z9.e(e35.U(j), q05.A(i));
-        } else {
-            porterDuffColorFilter = new PorterDuffColorFilter(e35.U(j), q05.B(i));
-        }
-        this.a = porterDuffColorFilter;
-        this.b = j;
-        this.c = i;
+    public dt(int r4, long r5) {
+        if (Build.VERSION.SDK_INT < 29) goto L5;
+        z9.i();
+        ColorFilter r0 = z9.e(e35.U(r5), q05.A(r4));
+    L6:
+        this.a = r0;
+        this.b = r5;
+        this.c = r4;
+        return;
+    L5:
+        r0 = new PorterDuffColorFilter(e35.U(r5), q05.B(r4));
+        goto L6
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof dt)) {
-            return false;
-        }
-        dt dtVar = (dt) obj;
-        return x40.c(this.b, dtVar.b) && this.c == dtVar.c;
+    public final boolean equals(Object r8) {
+        if (this != r8) goto L6;
+        return true;
+    L6:
+        if ((r8 instanceof dt) == true) goto L8;
+        return false;
+    L8:
+        dt r9 = (dt) r8;
+        long r3 = r9.b;
+        if (x40.c(this.b, r3) == true) goto L12;
+        return false;
+    L12:
+        if (this.c != r9.c) goto L14;
+        return true;
+    L14:
+        return false;
     }
 
     public final int hashCode() {
-        int i = x40.h;
-        return Integer.hashCode(this.c) + (Long.hashCode(this.b) * 31);
+        int r0 = x40.h;
+        int r1 = Long.hashCode(this.b) * 31;
+        return Integer.hashCode(this.c) + r1;
     }
 
     public final String toString() {

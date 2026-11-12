@@ -8,8 +8,8 @@ import java.util.Iterator;
 public final class l11 implements Iterable {
     public final ArrayList n;
 
-    public l11(ArrayList arrayList) {
-        this.n = arrayList;
+    public l11(ArrayList r1) {
+        this.n = r1;
     }
 
     @Override // java.lang.Iterable

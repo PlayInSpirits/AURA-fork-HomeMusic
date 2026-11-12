@@ -35,660 +35,731 @@ import java.util.Map;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ss0 implements xx, j45 {
-    public static final String[] r = {"id", "key", "metadata"};
+    public static final String[] r = null;
     public Object n;
     public Object o;
     public Object p;
     public Object q;
 
-    public ss0(int i) {
-        switch (i) {
-            case 5:
-                this.n = new ArrayList();
-                this.o = new HashMap();
-                this.p = new HashMap();
-                break;
-            default:
-                this.n = new jo3(10);
-                this.o = new yd4(0);
-                this.p = new ArrayList();
-                this.q = new HashSet();
-                break;
-        }
+    static {
+        r = new String[]{"id", "key", "metadata"};
     }
 
-    public static ss0 C(LayoutInflater layoutInflater, ViewGroup viewGroup) {
-        View viewInflate = layoutInflater.inflate(R.layout.item_library_catalogue_album, viewGroup, false);
-        int i = R.id.album_catalogue_cover_image_view;
-        ImageView imageView = (ImageView) uo.s(viewInflate, R.id.album_catalogue_cover_image_view);
-        if (imageView != null) {
-            i = R.id.album_name_label;
-            TextView textView = (TextView) uo.s(viewInflate, R.id.album_name_label);
-            if (textView != null) {
-                i = R.id.artist_name_label;
-                TextView textView2 = (TextView) uo.s(viewInflate, R.id.artist_name_label);
-                if (textView2 != null) {
-                    return new ss0((ConstraintLayout) viewInflate, imageView, textView, textView2);
-                }
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i)));
+    public ss0(int r2) {
+        switch(r2) {
+            case 5: goto L5;
+            default: goto L3;
+        };
+    L3:
+        this.n = new jo3(10);
+        this.o = new yd4(0);
+        this.p = new ArrayList();
+        this.q = new HashSet();
+        return;
+    L5:
+        this.n = new ArrayList();
+        this.o = new HashMap();
+        this.p = new HashMap();
+    }
+
+    public static ss0 C(LayoutInflater r3, ViewGroup r4) {
+        View r5 = r3.inflate(R.layout.item_library_catalogue_album, r4, false);
+        int r6 = R.id.album_catalogue_cover_image_view;
+        ImageView r0 = (ImageView) uo.s(r5, R.id.album_catalogue_cover_image_view);
+        if (r0 == null) goto L10;
+        r6 = R.id.album_name_label;
+        TextView r1 = (TextView) uo.s(r5, R.id.album_name_label);
+        if (r1 == null) goto L10;
+        r6 = R.id.artist_name_label;
+        TextView r2 = (TextView) uo.s(r5, R.id.artist_name_label);
+        if (r2 == null) goto L10;
+        return new ss0((ConstraintLayout) r5, r0, r1, r2);
+    L10:
+        nz2.n("Missing required view with ID: ".concat(r5.getResources().getResourceName(r6)));
         return null;
     }
 
-    public double A(ol1 ol1Var) {
-        double dDoubleValue = ((Double) ((HashMap) B()).get((ol1) ((ArrayList) z()).get(((ArrayList) z()).size() - 1))).doubleValue() - ((Double) ((HashMap) B()).get((ol1) ((ArrayList) z()).get(0))).doubleValue();
-        double dDoubleValue2 = ((Double) ((HashMap) B()).get(ol1Var)).doubleValue() - ((Double) ((HashMap) B()).get((ol1) ((ArrayList) z()).get(0))).doubleValue();
-        if (dDoubleValue == 0.0d) {
-            return 0.5d;
-        }
-        return dDoubleValue2 / dDoubleValue;
+    public double A(ol1 r6) {
+        Map r0 = B();
+        HashMap r1 = (HashMap) r0;
+        double r2 = ((Double) r1.get((ol1) ((ArrayList) z()).get(((ArrayList) z()).size() - 1))).doubleValue() - ((Double) ((HashMap) B()).get((ol1) ((ArrayList) z()).get(0))).doubleValue();
+        double r3 = ((Double) ((HashMap) B()).get(r6)).doubleValue() - ((Double) ((HashMap) B()).get((ol1) ((ArrayList) z()).get(0))).doubleValue();
+        if (r2 != 0.0d) goto L7;
+        return 0.5d;
+    L7:
+        return r3 / r2;
     }
 
     public Map B() {
-        HashMap map = (HashMap) this.q;
-        if (map != null) {
-            return map;
-        }
-        ArrayList arrayList = new ArrayList(y());
-        arrayList.add((ol1) this.n);
-        HashMap map2 = new HashMap();
-        int size = arrayList.size();
-        int i = 0;
-        while (i < size) {
-            Object obj = arrayList.get(i);
-            i++;
-            ol1 ol1Var = (ol1) obj;
-            double[] dArrC = h12.C(ol1Var.d);
-            double degrees = Math.toDegrees(Math.atan2(dArrC[2], dArrC[1])) % 360.0d;
-            if (degrees < 0.0d) {
-                degrees += 360.0d;
-            }
-            double dPow = Math.pow(Math.hypot(dArrC[1], dArrC[2]), 1.07d) * 0.02d;
-            double d = (degrees - 50.0d) % 360.0d;
-            if (d < 0.0d) {
-                d += 360.0d;
-            }
-            map2.put(ol1Var, Double.valueOf((Math.cos(Math.toRadians(d)) * dPow) - 0.5d));
-        }
-        this.q = map2;
-        return map2;
+        HashMap r1 = (HashMap) this.q;
+        if (r1 == null) goto L5;
+        return r1;
+    L5:
+        ArrayList r2 = new ArrayList(y());
+        r2.add((ol1) this.n);
+        HashMap r3 = new HashMap();
+        int r4 = r2.size();
+        int r5 = 0;
+    L6:
+        if (r5 >= r4) goto L14;
+        Object r6 = r2.get(r5);
+        r5 = r5 + 1;
+        ol1 r7 = (ol1) r6;
+        double[] r8 = h12.C(r7.d);
+        double r9 = Math.toDegrees(Math.atan2(r8[2], r8[1])) % 360.0d;
+        if (r9 >= 0.0d) goto L10;
+        r9 = r9 + 360.0d;
+    L10:
+        double r10 = Math.pow(Math.hypot(r8[1], r8[2]), 1.07d) * 0.02d;
+        double r16 = (r9 - 50.0d) % 360.0d;
+        if (r16 >= 0.0d) goto L13;
+        r16 = r16 + 360.0d;
+    L13:
+        r3.put(r7, Double.valueOf((Math.cos(Math.toRadians(r16)) * r10) - 0.5d));
+        goto L6
+    L14:
+        this.q = r3;
+        return r3;
     }
 
-    public void D(SQLiteDatabase sQLiteDatabase) {
-        String str = (String) this.p;
-        str.getClass();
-        r45.b(sQLiteDatabase, 1, str, 1);
-        String str2 = (String) this.q;
-        str2.getClass();
-        sQLiteDatabase.execSQL("DROP TABLE IF EXISTS ".concat(str2));
-        sQLiteDatabase.execSQL("CREATE TABLE " + ((String) this.q) + " (id INTEGER PRIMARY KEY NOT NULL,key TEXT NOT NULL,metadata BLOB NOT NULL)");
+    public void D(SQLiteDatabase r3) {
+        String r0 = (String) this.p;
+        r0.getClass();
+        r45.b(r3, 1, r0, 1);
+        String r1 = (String) this.q;
+        r1.getClass();
+        r3.execSQL("DROP TABLE IF EXISTS ".concat(r1));
+        r3.execSQL("CREATE TABLE " + ((String) this.q) + " (id INTEGER PRIMARY KEY NOT NULL,key TEXT NOT NULL,metadata BLOB NOT NULL)");
     }
 
-    public void E(fe1 fe1Var) {
-        kc1 kc1Var = fe1Var.c;
-        String str = kc1Var.r;
-        HashMap map = (HashMap) this.o;
-        if (map.get(str) != null) {
-            return;
-        }
-        map.put(kc1Var.r, fe1Var);
-        if (ld1.I(2)) {
-            Log.v("FragmentManager", "Added fragment to active set " + kc1Var);
-        }
+    public void E(fe1 r3) {
+        kc1 r0 = r3.c;
+        String r1 = r0.r;
+        HashMap r2 = (HashMap) this.o;
+        if (r2.get(r1) == null) goto L5;
+        return;
+    L5:
+        r2.put(r0.r, r3);
+        if (ld1.I(2) == false) goto L9;
+        Log.v("FragmentManager", "Added fragment to active set " + r0);
+        return;
     }
 
-    public void F(fe1 fe1Var) {
-        HashMap map = (HashMap) this.o;
-        kc1 kc1Var = fe1Var.c;
-        if (kc1Var.O) {
-            ((od1) this.q).f(kc1Var);
-        }
-        if (map.get(kc1Var.r) == fe1Var && ((fe1) map.put(kc1Var.r, null)) != null && ld1.I(2)) {
-            Log.v("FragmentManager", "Removed fragment from active set " + kc1Var);
-        }
+    public void F(fe1 r4) {
+        HashMap r0 = (HashMap) this.o;
+        kc1 r1 = r4.c;
+        if (r1.O == false) goto L6;
+        ((od1) this.q).f(r1);
+    L6:
+        if (r0.get(r1.r) == r4) goto L9;
+        return;
+    L9:
+        if (((fe1) r0.put(r1.r, null)) != null) goto L12;
+        return;
+    L12:
+        if (ld1.I(2) == false) goto L15;
+        Log.v("FragmentManager", "Removed fragment from active set " + r1);
+        return;
     }
 
-    public Bundle G(String str, Bundle bundle) {
-        HashMap map = (HashMap) this.p;
-        return bundle != null ? (Bundle) map.put(str, bundle) : (Bundle) map.remove(str);
+    public Bundle G(String r1, Bundle r2) {
+        HashMap r0 = (HashMap) this.p;
+        if (r2 == null) goto L7;
+        return (Bundle) r0.put(r1, r2);
+    L7:
+        return (Bundle) r0.remove(r1);
     }
 
     public void H() {
-        int iA;
-        h45 h45Var = (h45) this.o;
-        rm2 rm2Var = (rm2) this.n;
-        ViewPager2 viewPager2 = (ViewPager2) this.q;
-        int i = android.R.id.accessibilityActionPageLeft;
-        j65.l(viewPager2, android.R.id.accessibilityActionPageLeft);
-        j65.i(viewPager2, 0);
-        j65.l(viewPager2, android.R.id.accessibilityActionPageRight);
-        j65.i(viewPager2, 0);
-        j65.l(viewPager2, android.R.id.accessibilityActionPageUp);
-        j65.i(viewPager2, 0);
-        j65.l(viewPager2, android.R.id.accessibilityActionPageDown);
-        j65.i(viewPager2, 0);
-        if (viewPager2.getAdapter() == null || (iA = viewPager2.getAdapter().a()) == 0 || !viewPager2.E) {
-            return;
-        }
-        if (viewPager2.getOrientation() != 0) {
-            if (viewPager2.q < iA - 1) {
-                j65.m(viewPager2, new o3(android.R.id.accessibilityActionPageDown, (String) null), rm2Var);
-            }
-            if (viewPager2.q > 0) {
-                j65.m(viewPager2, new o3(android.R.id.accessibilityActionPageUp, (String) null), h45Var);
-                return;
-            }
-            return;
-        }
-        boolean z = viewPager2.t.b.getLayoutDirection() == 1;
-        int i2 = z ? 16908360 : 16908361;
-        if (z) {
-            i = 16908361;
-        }
-        if (viewPager2.q < iA - 1) {
-            j65.m(viewPager2, new o3(i2, (String) null), rm2Var);
-        }
-        if (viewPager2.q > 0) {
-            j65.m(viewPager2, new o3(i, (String) null), h45Var);
-        }
+        h45 r0 = (h45) this.o;
+        rm2 r1 = (rm2) this.n;
+        ViewPager2 r11 = (ViewPager2) this.q;
+        int r2 = android.R.id.accessibilityActionPageLeft;
+        j65.l(r11, android.R.id.accessibilityActionPageLeft);
+        boolean r3 = false;
+        j65.i(r11, 0);
+        j65.l(r11, android.R.id.accessibilityActionPageRight);
+        j65.i(r11, 0);
+        j65.l(r11, android.R.id.accessibilityActionPageUp);
+        j65.i(r11, 0);
+        j65.l(r11, android.R.id.accessibilityActionPageDown);
+        j65.i(r11, 0);
+        if (r11.getAdapter() == null) goto L37;
+        int r7 = r11.getAdapter().a();
+        if (r7 != 0) goto L9;
+        return;
+    L9:
+        if (r11.E == true) goto L12;
+        return;
+    L12:
+        if (r11.getOrientation() != 0) goto L29;
+        if (r11.t.b.getLayoutDirection() != 1) goto L16;
+        r3 = true;
+    L16:
+        if (r3 == false) goto L18;
+        int r5 = 16908360;
+    L19:
+        if (r3 == false) goto L22;
+        r2 = 16908361;
+    L22:
+        if (r11.q >= (r7 - 1)) goto L25;
+        j65.m(r11, new o3(r5, null), r1);
+    L25:
+        if (r11.q <= 0) goto L35;
+        j65.m(r11, new o3(r2, null), r0);
+        return;
+    L35:
+        return;
+    L18:
+        r5 = 16908361;
+        goto L19
+    L29:
+        if (r11.q >= (r7 - 1)) goto L32;
+        j65.m(r11, new o3(android.R.id.accessibilityActionPageDown, null), r1);
+    L32:
+        if (r11.q <= 0) goto L36;
+        j65.m(r11, new o3(android.R.id.accessibilityActionPageUp, null), r0);
+        return;
+    L36:
+        return;
     }
 
     @Override // defpackage.xx
-    public void b(HashMap map) throws DatabaseIOException {
-        try {
-            SQLiteDatabase writableDatabase = ((tk4) this.n).getWritableDatabase();
-            writableDatabase.beginTransactionNonExclusive();
-            try {
-                D(writableDatabase);
-                Iterator it = map.values().iterator();
-                while (it.hasNext()) {
-                    q(writableDatabase, (wx) it.next());
-                }
-                writableDatabase.setTransactionSuccessful();
-                ((SparseArray) this.o).clear();
-            } finally {
-                writableDatabase.endTransaction();
-            }
-        } catch (SQLException e) {
-            throw new DatabaseIOException(e);
-        }
+    public void b(HashMap r3) {
+        SQLiteDatabase r0 = ((tk4) this.n).getWritableDatabase();     // Catch: SQLException -> L14
+        r0.beginTransactionNonExclusive();     // Catch: SQLException -> L14
+        D(r0);     // Catch: Throwable -> L7
+        Iterator r4 = r3.values().iterator();     // Catch: Throwable -> L7
+    L5:
+        if (r4.hasNext() == false) goto L9;
+        q(r0, (wx) r4.next());     // Catch: Throwable -> L7
+        goto L5
+    L9:
+        r0.setTransactionSuccessful();     // Catch: Throwable -> L7
+        ((SparseArray) this.o).clear();     // Catch: Throwable -> L7
+        r0.endTransaction();     // Catch: SQLException -> L14
+        return;
+    L7:
+        th = move-exception;
+        r0.endTransaction();     // Catch: SQLException -> L14
+        throw th;     // Catch: SQLException -> L14
+    L14:
+        e = move-exception;
+        throw new DatabaseIOException(e);
     }
 
     @Override // defpackage.xx
-    public void c(wx wxVar, boolean z) {
-        SparseArray sparseArray = (SparseArray) this.o;
-        int i = wxVar.a;
-        if (z) {
-            sparseArray.delete(i);
-        } else {
-            sparseArray.put(i, null);
-        }
+    public void c(wx r1, boolean r2) {
+        SparseArray r0 = (SparseArray) this.o;
+        int r3 = r1.a;
+        if (r2 == false) goto L6;
+        r0.delete(r3);
+        return;
+    L6:
+        r0.put(r3, null);
     }
 
     @Override // defpackage.g45
-    public ce d(long j, ce ceVar, ce ceVar2, ce ceVar3) {
-        if (((ce) this.p) == null) {
-            this.p = ceVar3.c();
-        }
-        ce ceVar4 = (ce) this.p;
-        if (ceVar4 == null) {
-            h12.Q("velocityVector");
-            throw null;
-        }
-        int iB = ceVar4.b();
-        int i = 0;
-        while (true) {
-            ce ceVar5 = (ce) this.p;
-            if (i >= iB) {
-                if (ceVar5 != null) {
-                    return ceVar5;
-                }
-                h12.Q("velocityVector");
-                throw null;
-            }
-            if (ceVar5 == null) {
-                h12.Q("velocityVector");
-                throw null;
-            }
-            ceVar5.d(i, ((de) this.n).get(i).b(j, ceVar.a(i), ceVar2.a(i), ceVar3.a(i)));
-            i++;
-        }
+    public ce d(long r15, ce r17, ce r18, ce r19) {
+        if (((ce) this.p) != null) goto L5;
+        this.p = r19.c();
+    L5:
+        ce r0 = (ce) this.p;
+        if (r0 == null) goto L18;
+        int r1 = r0.b();
+        int r3 = 0;
+    L8:
+        ce r4 = (ce) this.p;
+        if (r3 >= r1) goto L14;
+        if (r4 == null) goto L12;
+        r4.d(r3, ((de) this.n).get(r3).b(r15, r17.a(r3), r18.a(r3), r19.a(r3)));
+        r3 = r3 + 1;
+        goto L8
+    L12:
+        h12.Q("velocityVector");
+        throw null;
+    L14:
+        if (r4 == null) goto L16;
+        return r4;
+    L16:
+        h12.Q("velocityVector");
+        throw null;
+    L18:
+        h12.Q("velocityVector");
+        throw null;
     }
 
     @Override // defpackage.xx
-    public void e(wx wxVar) {
-        ((SparseArray) this.o).put(wxVar.a, wxVar);
+    public void e(wx r2) {
+        ((SparseArray) this.o).put(r2.a, r2);
     }
 
     @Override // defpackage.xx
-    public boolean f() throws DatabaseIOException {
-        try {
-            SQLiteDatabase readableDatabase = ((tk4) this.n).getReadableDatabase();
-            String str = (String) this.p;
-            str.getClass();
-            return r45.a(readableDatabase, 1, str) != -1;
-        } catch (SQLException e) {
-            throw new DatabaseIOException(e);
-        }
+    public boolean f() {
+        SQLiteDatabase r0 = ((tk4) this.n).getReadableDatabase();     // Catch: SQLException -> L8
+        String r2 = (String) this.p;     // Catch: SQLException -> L8
+        r2.getClass();     // Catch: SQLException -> L8
+        if (r45.a(r0, 1, r2) == (-1)) goto L6;
+        return true;
+    L6:
+        return false;
+    L8:
+        e = move-exception;
+        throw new DatabaseIOException(e);
     }
 
     @Override // defpackage.xx
-    public void g(HashMap map) throws DatabaseIOException {
-        SparseArray sparseArray = (SparseArray) this.o;
-        if (sparseArray.size() == 0) {
-            return;
-        }
-        try {
-            SQLiteDatabase writableDatabase = ((tk4) this.n).getWritableDatabase();
-            writableDatabase.beginTransactionNonExclusive();
-            for (int i = 0; i < sparseArray.size(); i++) {
-                try {
-                    wx wxVar = (wx) sparseArray.valueAt(i);
-                    if (wxVar == null) {
-                        int iKeyAt = sparseArray.keyAt(i);
-                        String str = (String) this.q;
-                        str.getClass();
-                        writableDatabase.delete(str, "id = ?", new String[]{Integer.toString(iKeyAt)});
-                    } else {
-                        q(writableDatabase, wxVar);
-                    }
-                } catch (Throwable th) {
-                    writableDatabase.endTransaction();
-                    throw th;
-                }
-            }
-            writableDatabase.setTransactionSuccessful();
-            sparseArray.clear();
-            writableDatabase.endTransaction();
-        } catch (SQLException e) {
-            throw new DatabaseIOException(e);
-        }
+    public void g(HashMap r6) {
+        SparseArray r7 = (SparseArray) this.o;
+        if (r7.size() != 0) goto L24;
+        return;
+    L24:
+        SQLiteDatabase r0 = ((tk4) this.n).getWritableDatabase();     // Catch: SQLException -> L21
+        r0.beginTransactionNonExclusive();     // Catch: SQLException -> L21
+        int r1 = 0;
+    L25:
+    L12:
+        th = move-exception;
+        r0.endTransaction();     // Catch: SQLException -> L21
+        throw th;     // Catch: SQLException -> L21
+    L8:
+        if (r1 >= r7.size()) goto L16;
+        wx r2 = (wx) r7.valueAt(r1);     // Catch: Throwable -> L12
+        if (r2 != null) goto L14;
+        int r3 = r7.keyAt(r1);     // Catch: Throwable -> L12
+        String r4 = (String) this.q;     // Catch: Throwable -> L12
+        r4.getClass();     // Catch: Throwable -> L12
+        r0.delete(r4, "id = ?", new String[]{Integer.toString(r3)});     // Catch: Throwable -> L12
+    L15:
+        r1 = r1 + 1;     // Catch: Throwable -> L12
+        goto L25
+    L14:
+        q(r0, r2);     // Catch: Throwable -> L12
+        goto L15
+    L16:
+        r0.setTransactionSuccessful();     // Catch: Throwable -> L12
+        r7.clear();     // Catch: Throwable -> L12
+        r0.endTransaction();     // Catch: SQLException -> L21
+        return;
+    L21:
+        e = move-exception;
+        throw new DatabaseIOException(e);
     }
 
     @Override // defpackage.xx
-    public void h(long j) {
-        String hexString = Long.toHexString(j);
-        this.p = hexString;
-        this.q = xa3.g("ExoPlayerCacheIndex", hexString);
+    public void h(long r1) {
+        String r2 = Long.toHexString(r1);
+        this.p = r2;
+        this.q = xa3.g("ExoPlayerCacheIndex", r2);
     }
 
     @Override // defpackage.xx
-    public void i(HashMap map, SparseArray sparseArray) throws DatabaseIOException {
-        tk4 tk4Var = (tk4) this.n;
-        rr2.w(((SparseArray) this.o).size() == 0);
-        try {
-            SQLiteDatabase readableDatabase = tk4Var.getReadableDatabase();
-            String str = (String) this.p;
-            str.getClass();
-            if (r45.a(readableDatabase, 1, str) != 1) {
-                SQLiteDatabase writableDatabase = tk4Var.getWritableDatabase();
-                writableDatabase.beginTransactionNonExclusive();
-                try {
-                    D(writableDatabase);
-                    writableDatabase.setTransactionSuccessful();
-                    writableDatabase.endTransaction();
-                } catch (Throwable th) {
-                    writableDatabase.endTransaction();
-                    throw th;
-                }
-            }
-            SQLiteDatabase readableDatabase2 = tk4Var.getReadableDatabase();
-            String str2 = (String) this.q;
-            str2.getClass();
-            Cursor cursorQuery = readableDatabase2.query(str2, r, null, null, null, null, null);
-            while (cursorQuery.moveToNext()) {
-                try {
-                    int i = cursorQuery.getInt(0);
-                    String string = cursorQuery.getString(1);
-                    string.getClass();
-                    map.put(string, new wx(i, string, ml3.f(new DataInputStream(new ByteArrayInputStream(cursorQuery.getBlob(2))))));
-                    sparseArray.put(i, string);
-                } catch (Throwable th2) {
-                    if (cursorQuery == null) {
-                        throw th2;
-                    }
-                    try {
-                        cursorQuery.close();
-                        throw th2;
-                    } catch (Throwable th3) {
-                        th2.addSuppressed(th3);
-                        throw th2;
-                    }
-                }
-            }
-            cursorQuery.close();
-        } catch (SQLiteException e) {
-            map.clear();
-            sparseArray.clear();
-            throw new DatabaseIOException(e);
-        }
+    public void i(HashMap r13, SparseArray r14) {
+        tk4 r0 = (tk4) this.n;
+        if (((SparseArray) this.o).size() != 0) goto L5;
+        boolean r1 = true;
+    L6:
+        rr2.w(r1);
+        SQLiteDatabase r2 = r0.getReadableDatabase();     // Catch: SQLiteException -> L12
+        String r4 = (String) this.p;     // Catch: SQLiteException -> L12
+        r4.getClass();     // Catch: SQLiteException -> L12
+        if (r45.a(r2, 1, r4) == 1) goto L17;
+        SQLiteDatabase r3 = r0.getWritableDatabase();     // Catch: SQLiteException -> L12
+        r3.beginTransactionNonExclusive();     // Catch: SQLiteException -> L12
+        D(r3);     // Catch: Throwable -> L14
+        r3.setTransactionSuccessful();     // Catch: Throwable -> L14
+        r3.endTransaction();     // Catch: SQLiteException -> L12
+        goto L17
+    L14:
+        th = move-exception;
+        r3.endTransaction();     // Catch: SQLiteException -> L12
+        throw th;     // Catch: SQLiteException -> L12
+    L17:
+        SQLiteDatabase r5 = r0.getReadableDatabase();     // Catch: SQLiteException -> L12
+        String r6 = (String) this.q;     // Catch: SQLiteException -> L12
+        r6.getClass();     // Catch: SQLiteException -> L12
+        Cursor r12 = r5.query(r6, r, null, null, null, null, null);     // Catch: SQLiteException -> L12
+    L38:
+    L22:
+        th = move-exception;
+        if (r12 == null) goto L44;
+        r12.close();     // Catch: Throwable -> L29
+    L45:
+        throw th;     // Catch: SQLiteException -> L12
+    L29:
+        th = move-exception;
+        th.addSuppressed(th);     // Catch: SQLiteException -> L12
+        throw th;     // Catch: SQLiteException -> L12
+    L44:
+        throw th;     // Catch: SQLiteException -> L12
+    L19:
+        if (r12.moveToNext() == false) goto L24;
+        int r7 = r12.getInt(0);     // Catch: Throwable -> L22
+        String r8 = r12.getString(1);     // Catch: Throwable -> L22
+        r8.getClass();     // Catch: Throwable -> L22
+        r13.put(r8, new wx(r7, r8, ml3.f(new DataInputStream(new ByteArrayInputStream(r12.getBlob(2))))));     // Catch: Throwable -> L22
+        r14.put(r7, r8);     // Catch: Throwable -> L22
+    L24:
+        r12.close();     // Catch: SQLiteException -> L12
+        return;
+    L12:
+        e = move-exception;
+        r13.clear();
+        r14.clear();
+        throw new DatabaseIOException(e);
+    L5:
+        r1 = false;
+        goto L6
     }
 
     @Override // defpackage.xx
-    public void j() throws DatabaseIOException {
-        tk4 tk4Var = (tk4) this.n;
-        String str = (String) this.p;
-        str.getClass();
-        try {
-            String strConcat = "ExoPlayerCacheIndex".concat(str);
-            SQLiteDatabase writableDatabase = tk4Var.getWritableDatabase();
-            writableDatabase.beginTransactionNonExclusive();
-            try {
-                int i = r45.a;
-                try {
-                    if (f35.f0(writableDatabase, "ExoPlayerVersions")) {
-                        writableDatabase.delete("ExoPlayerVersions", "feature = ? AND instance_uid = ?", new String[]{Integer.toString(1), str});
-                    }
-                    writableDatabase.execSQL("DROP TABLE IF EXISTS ".concat(strConcat));
-                    writableDatabase.setTransactionSuccessful();
-                    writableDatabase.endTransaction();
-                } catch (SQLException e) {
-                    throw new DatabaseIOException(e);
-                }
-            } catch (Throwable th) {
-                writableDatabase.endTransaction();
-                throw th;
-            }
-        } catch (SQLException e2) {
-            throw new DatabaseIOException(e2);
-        }
+    public void j() {
+        tk4 r2 = (tk4) this.n;
+        String r6 = (String) this.p;
+        r6.getClass();
+        String r1 = "ExoPlayerCacheIndex".concat(r6);     // Catch: SQLException -> L19
+        SQLiteDatabase r3 = r2.getWritableDatabase();     // Catch: SQLException -> L19
+        r3.beginTransactionNonExclusive();     // Catch: SQLException -> L19
+        int r4 = r45.a;     // Catch: Throwable -> L12
+    L14:
+        e = move-exception;
+        throw new DatabaseIOException(e);     // Catch: Throwable -> L12
+    L6:
+        if (f35.f0(r3, "ExoPlayerVersions") == false) goto L9;
+        r3.delete("ExoPlayerVersions", "feature = ? AND instance_uid = ?", new String[]{Integer.toString(1), r6});     // Catch: Throwable -> L12 SQLException -> L14
+    L9:
+        r3.execSQL("DROP TABLE IF EXISTS ".concat(r1));     // Catch: Throwable -> L12
+        r3.setTransactionSuccessful();     // Catch: Throwable -> L12
+        r3.endTransaction();     // Catch: SQLException -> L19
+        return;
+    L12:
+        th = move-exception;
+        r3.endTransaction();     // Catch: SQLException -> L19
+        throw th;     // Catch: SQLException -> L19
+    L19:
+        e = move-exception;
+        throw new DatabaseIOException(e);
     }
 
     @Override // defpackage.g45
-    public ce k(long j, ce ceVar, ce ceVar2, ce ceVar3) {
-        if (((ce) this.o) == null) {
-            this.o = ceVar.c();
-        }
-        ce ceVar4 = (ce) this.o;
-        if (ceVar4 == null) {
-            h12.Q("valueVector");
-            throw null;
-        }
-        int iB = ceVar4.b();
-        int i = 0;
-        while (true) {
-            ce ceVar5 = (ce) this.o;
-            if (i >= iB) {
-                if (ceVar5 != null) {
-                    return ceVar5;
-                }
-                h12.Q("valueVector");
-                throw null;
-            }
-            if (ceVar5 == null) {
-                h12.Q("valueVector");
-                throw null;
-            }
-            ceVar5.d(i, ((de) this.n).get(i).e(j, ceVar.a(i), ceVar2.a(i), ceVar3.a(i)));
-            i++;
-        }
+    public ce k(long r15, ce r17, ce r18, ce r19) {
+        if (((ce) this.o) != null) goto L5;
+        this.o = r17.c();
+    L5:
+        ce r0 = (ce) this.o;
+        if (r0 == null) goto L18;
+        int r1 = r0.b();
+        int r3 = 0;
+    L8:
+        ce r4 = (ce) this.o;
+        if (r3 >= r1) goto L14;
+        if (r4 == null) goto L12;
+        r4.d(r3, ((de) this.n).get(r3).e(r15, r17.a(r3), r18.a(r3), r19.a(r3)));
+        r3 = r3 + 1;
+        goto L8
+    L12:
+        h12.Q("valueVector");
+        throw null;
+    L14:
+        if (r4 == null) goto L16;
+        return r4;
+    L16:
+        h12.Q("valueVector");
+        throw null;
+    L18:
+        h12.Q("valueVector");
+        throw null;
     }
 
     @Override // defpackage.g45
-    public ce l(ce ceVar, ce ceVar2, ce ceVar3) {
-        if (((ce) this.q) == null) {
-            this.q = ceVar3.c();
-        }
-        ce ceVar4 = (ce) this.q;
-        if (ceVar4 == null) {
-            h12.Q("endVelocityVector");
-            throw null;
-        }
-        int iB = ceVar4.b();
-        int i = 0;
-        while (true) {
-            ce ceVar5 = (ce) this.q;
-            if (i >= iB) {
-                if (ceVar5 != null) {
-                    return ceVar5;
-                }
-                h12.Q("endVelocityVector");
-                throw null;
-            }
-            if (ceVar5 == null) {
-                h12.Q("endVelocityVector");
-                throw null;
-            }
-            ceVar5.d(i, ((de) this.n).get(i).d(ceVar.a(i), ceVar2.a(i), ceVar3.a(i)));
-            i++;
-        }
+    public ce l(ce r10, ce r11, ce r12) {
+        if (((ce) this.q) != null) goto L5;
+        this.q = r12.c();
+    L5:
+        ce r0 = (ce) this.q;
+        if (r0 == null) goto L18;
+        int r1 = r0.b();
+        int r3 = 0;
+    L8:
+        ce r4 = (ce) this.q;
+        if (r3 >= r1) goto L14;
+        if (r4 == null) goto L12;
+        r4.d(r3, ((de) this.n).get(r3).d(r10.a(r3), r11.a(r3), r12.a(r3)));
+        r3 = r3 + 1;
+        goto L8
+    L12:
+        h12.Q("endVelocityVector");
+        throw null;
+    L14:
+        if (r4 == null) goto L16;
+        return r4;
+    L16:
+        h12.Q("endVelocityVector");
+        throw null;
+    L18:
+        h12.Q("endVelocityVector");
+        throw null;
     }
 
     @Override // defpackage.g45
-    public long m(ce ceVar, ce ceVar2, ce ceVar3) {
-        int iB = ceVar.b();
-        long jMax = 0;
-        for (int i = 0; i < iB; i++) {
-            jMax = Math.max(jMax, ((de) this.n).get(i).c(ceVar.a(i), ceVar2.a(i), ceVar3.a(i)));
-        }
-        return jMax;
+    public long m(ce r9, ce r10, ce r11) {
+        int r0 = r9.b();
+        long r1 = 0;
+        int r3 = 0;
+    L3:
+        if (r3 >= r0) goto L5;
+        r1 = Math.max(r1, ((de) this.n).get(r3).c(r9.a(r3), r10.a(r3), r11.a(r3)));
+        r3 = r3 + 1;
+        goto L3
+    L5:
+        return r1;
     }
 
-    public void n(ArrayList arrayList) {
-        if (arrayList == null) {
-            kf2.n("filters must not be null");
-            return;
-        }
-        if (arrayList.isEmpty()) {
-            return;
-        }
-        int size = arrayList.size();
-        int i = 0;
-        while (i < size) {
-            Object obj = arrayList.get(i);
-            i++;
-            IntentFilter intentFilter = (IntentFilter) obj;
-            if (intentFilter != null) {
-                ArrayList arrayList2 = (ArrayList) this.p;
-                if (!arrayList2.contains(intentFilter)) {
-                    arrayList2.add(intentFilter);
-                }
-            }
-        }
+    public void n(ArrayList r6) {
+        if (r6 != null) goto L4;
+        kf2.n("filters must not be null");
+        return;
+    L4:
+        if (r6.isEmpty() == true) goto L12;
+        int r0 = r6.size();
+        int r1 = 0;
+    L6:
+        if (r1 >= r0) goto L22;
+        Object r2 = r6.get(r1);
+        r1 = r1 + 1;
+        IntentFilter r3 = (IntentFilter) r2;
+        if (r3 == null) goto L6;
+        ArrayList r4 = (ArrayList) this.p;
+        if (r4.contains(r3) == true) goto L6;
+        r4.add(r3);
+        goto L6
+    L22:
+        return;
     }
 
-    public void o(kc1 kc1Var) {
-        if (((ArrayList) this.n).contains(kc1Var)) {
-            er1.o(kc1Var, "Fragment already added: ");
-            return;
-        }
-        synchronized (((ArrayList) this.n)) {
-            ((ArrayList) this.n).add(kc1Var);
-        }
-        kc1Var.x = true;
+    public void o(kc1 r2) {
+        if (((ArrayList) this.n).contains(r2) == true) goto L13;
+        ArrayList r0 = (ArrayList) this.n;
+        monitor-enter(r0);
+        ((ArrayList) this.n).add(r2);     // Catch: Throwable -> L10
+        monitor-exit(r0);     // Catch: Throwable -> L10
+        r2.x = true;
+        return;
+    L10:
+        th = move-exception;
+        throw th;
+    L13:
+        er1.o(r2, "Fragment already added: ");
     }
 
-    public void p(ArrayList arrayList) {
-        if (arrayList.isEmpty()) {
-            return;
-        }
-        int size = arrayList.size();
-        int i = 0;
-        while (i < size) {
-            Object obj = arrayList.get(i);
-            i++;
-            String str = (String) obj;
-            ArrayList arrayList2 = (ArrayList) this.o;
-            if (TextUtils.isEmpty(str)) {
-                kf2.n("groupMemberId must not be empty");
-                return;
-            } else if (!arrayList2.contains(str)) {
-                arrayList2.add(str);
-            }
-        }
+    public void p(ArrayList r6) {
+        if (r6.isEmpty() == true) goto L19;
+        int r0 = r6.size();
+        int r1 = 0;
+    L5:
+        if (r1 >= r0) goto L20;
+        Object r2 = r6.get(r1);
+        r1 = r1 + 1;
+        String r3 = (String) r2;
+        ArrayList r4 = (ArrayList) this.o;
+        if (TextUtils.isEmpty(r3) == true) goto L11;
+        if (r4.contains(r3) == true) goto L5;
+        r4.add(r3);
+        goto L5
+    L11:
+        kf2.n("groupMemberId must not be empty");
+        return;
+    L20:
+        return;
     }
 
-    public void q(SQLiteDatabase sQLiteDatabase, wx wxVar) {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ml3.g(wxVar.e, new DataOutputStream(byteArrayOutputStream));
-        byte[] byteArray = byteArrayOutputStream.toByteArray();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("id", Integer.valueOf(wxVar.a));
-        contentValues.put("key", wxVar.b);
-        contentValues.put("metadata", byteArray);
-        String str = (String) this.q;
-        str.getClass();
-        sQLiteDatabase.replaceOrThrow(str, null, contentValues);
+    public void q(SQLiteDatabase r5, wx r6) {
+        ByteArrayOutputStream r0 = new ByteArrayOutputStream();
+        ml3.g(r6.e, new DataOutputStream(r0));
+        byte[] r1 = r0.toByteArray();
+        ContentValues r2 = new ContentValues();
+        r2.put("id", Integer.valueOf(r6.a));
+        r2.put("key", r6.b);
+        r2.put("metadata", r1);
+        String r4 = (String) this.q;
+        r4.getClass();
+        r5.replaceOrThrow(r4, null, r2);
     }
 
     public sp2 r() {
-        Bundle bundle = (Bundle) this.n;
-        bundle.putParcelableArrayList("controlFilters", new ArrayList<>((ArrayList) this.p));
-        bundle.putStringArrayList("groupMemberIds", new ArrayList<>((ArrayList) this.o));
-        bundle.putStringArrayList("allowedPackages", new ArrayList<>((HashSet) this.q));
-        return new sp2(bundle);
+        Bundle r0 = (Bundle) this.n;
+        r0.putParcelableArrayList("controlFilters", new ArrayList((ArrayList) this.p));
+        r0.putStringArrayList("groupMemberIds", new ArrayList((ArrayList) this.o));
+        r0.putStringArrayList("allowedPackages", new ArrayList((HashSet) this.q));
+        return new sp2(r0);
     }
 
-    public void s(Object obj, ArrayList arrayList, HashSet hashSet) {
-        if (arrayList.contains(obj)) {
-            return;
-        }
-        if (hashSet.contains(obj)) {
-            tb4.e("This graph contains cyclic dependencies");
-            return;
-        }
-        hashSet.add(obj);
-        ArrayList arrayList2 = (ArrayList) ((yd4) this.o).get(obj);
-        if (arrayList2 != null) {
-            int size = arrayList2.size();
-            for (int i = 0; i < size; i++) {
-                s(arrayList2.get(i), arrayList, hashSet);
-            }
-        }
-        hashSet.remove(obj);
-        arrayList.add(obj);
+    public void s(Object r5, ArrayList r6, HashSet r7) {
+        if (r6.contains(r5) == false) goto L6;
+        return;
+    L6:
+        if (r7.contains(r5) == true) goto L14;
+        r7.add(r5);
+        ArrayList r0 = (ArrayList) ((yd4) this.o).get(r5);
+        if (r0 == null) goto L12;
+        int r1 = r0.size();
+        int r2 = 0;
+    L10:
+        if (r2 >= r1) goto L12;
+        s(r0.get(r2), r6, r7);
+        r2 = r2 + 1;
+    L12:
+        r7.remove(r5);
+        r6.add(r5);
+        return;
+    L14:
+        tb4.e("This graph contains cyclic dependencies");
     }
 
-    public kc1 t(String str) {
-        fe1 fe1Var = (fe1) ((HashMap) this.o).get(str);
-        if (fe1Var != null) {
-            return fe1Var.c;
-        }
+    public kc1 t(String r1) {
+        fe1 r0 = (fe1) ((HashMap) this.o).get(r1);
+        if (r0 != null) goto L5;
         return null;
+    L5:
+        return r0.c;
     }
 
-    public kc1 u(String str) {
-        for (fe1 fe1Var : ((HashMap) this.o).values()) {
-            if (fe1Var != null) {
-                kc1 kc1VarU = fe1Var.c;
-                if (!str.equals(kc1VarU.r)) {
-                    kc1VarU = kc1VarU.H.c.u(str);
-                }
-                if (kc1VarU != null) {
-                    return kc1VarU;
-                }
-            }
-        }
+    public kc1 u(String r3) {
+        Iterator r2 = ((HashMap) this.o).values().iterator();
+    L4:
+        if (r2.hasNext() == false) goto L13;
+        fe1 r0 = (fe1) r2.next();
+        if (r0 == null) goto L4;
+        kc1 r1 = r0.c;
+        if (r3.equals(r1.r) == true) goto L11;
+        r1 = r1.H.c.u(r3);
+    L11:
+        if (r1 == null) goto L4;
+        return r1;
+    L13:
         return null;
     }
 
     public ArrayList v() {
-        ArrayList arrayList = new ArrayList();
-        for (fe1 fe1Var : ((HashMap) this.o).values()) {
-            if (fe1Var != null) {
-                arrayList.add(fe1Var);
-            }
-        }
-        return arrayList;
+        ArrayList r0 = new ArrayList();
+        Iterator r2 = ((HashMap) this.o).values().iterator();
+    L4:
+        if (r2.hasNext() == false) goto L8;
+        fe1 r1 = (fe1) r2.next();
+        if (r1 == null) goto L4;
+        r0.add(r1);
+        goto L4
+    L8:
+        return r0;
     }
 
     public ArrayList w() {
-        ArrayList arrayList = new ArrayList();
-        for (fe1 fe1Var : ((HashMap) this.o).values()) {
-            if (fe1Var != null) {
-                arrayList.add(fe1Var.c);
-            } else {
-                arrayList.add(null);
-            }
-        }
-        return arrayList;
+        ArrayList r0 = new ArrayList();
+        Iterator r2 = ((HashMap) this.o).values().iterator();
+    L4:
+        if (r2.hasNext() == false) goto L9;
+        fe1 r1 = (fe1) r2.next();
+        if (r1 != null) goto L7;
+        r0.add(null);
+        goto L4
+    L7:
+        r0.add(r1.c);
+        goto L4
+    L9:
+        return r0;
     }
 
     public List x() {
-        ArrayList arrayList;
-        if (((ArrayList) this.n).isEmpty()) {
-            return Collections.EMPTY_LIST;
-        }
-        synchronized (((ArrayList) this.n)) {
-            arrayList = new ArrayList((ArrayList) this.n);
-        }
-        return arrayList;
+        if (((ArrayList) this.n).isEmpty() == true) goto L5;
+        ArrayList r0 = (ArrayList) this.n;
+        monitor-enter(r0);
+        ArrayList r1 = new ArrayList((ArrayList) this.n);     // Catch: Throwable -> L11
+        monitor-exit(r0);     // Catch: Throwable -> L11
+        return r1;
+    L11:
+        th = move-exception;
+        throw th;
+    L5:
+        return Collections.EMPTY_LIST;
     }
 
     public List y() {
-        List list = (List) this.p;
-        if (list != null) {
-            return list;
-        }
-        ArrayList arrayList = new ArrayList();
-        for (double d = 0.0d; d <= 360.0d; d += 1.0d) {
-            ol1 ol1Var = (ol1) this.n;
-            arrayList.add(ol1.a(d, ol1Var.b, ol1Var.c));
-        }
-        List listUnmodifiableList = Collections.unmodifiableList(arrayList);
-        this.p = listUnmodifiableList;
-        return listUnmodifiableList;
+        List r0 = (List) this.p;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        ArrayList r1 = new ArrayList();
+        double r3 = 0.0d;
+    L7:
+        if (r3 > 360.0d) goto L9;
+        ol1 r2 = (ol1) this.n;
+        r1.add(ol1.a(r3, r2.b, r2.c));
+        r3 = r3 + 1.0d;
+        goto L7
+    L9:
+        List r4 = Collections.unmodifiableList(r1);
+        this.p = r4;
+        return r4;
     }
 
     public List z() {
-        ArrayList arrayList = (ArrayList) this.o;
-        if (arrayList != null) {
-            return arrayList;
-        }
-        ArrayList arrayList2 = new ArrayList(y());
-        arrayList2.add((ol1) this.n);
-        Collections.sort(arrayList2, Comparator.comparing(new t8(3, this), new n7(22)));
-        this.o = arrayList2;
-        return arrayList2;
+        ArrayList r0 = (ArrayList) this.o;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        ArrayList r1 = new ArrayList(y());
+        r1.add((ol1) this.n);
+        Collections.sort(r1, Comparator.comparing(new t8(3, this), new n7(22)));
+        this.o = r1;
+        return r1;
     }
 
-    public /* synthetic */ ss0(Object obj) {
-        this.n = obj;
+    public /* synthetic */ ss0(Object r1) {
+        this.n = r1;
     }
 
-    public /* synthetic */ ss0(ConstraintLayout constraintLayout, View view, TextView textView, TextView textView2) {
-        this.n = constraintLayout;
-        this.o = view;
-        this.p = textView;
-        this.q = textView2;
+    public /* synthetic */ ss0(ConstraintLayout r1, View r2, TextView r3, TextView r4) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
     }
 
-    public ss0(gy3 gy3Var, xc5 xc5Var, hd5 hd5Var, wo0 wo0Var) {
-        Object objK;
-        if (gy3Var != null) {
-            objK = yw1.k(gy3Var);
-        } else {
-            vw1 vw1Var = yw1.o;
-            objK = gy3.r;
-        }
-        this.n = objK;
-        this.o = xc5Var;
-        this.p = hd5Var;
-        this.q = wo0Var;
+    public ss0(gy3 r1, xc5 r2, hd5 r3, wo0 r4) {
+        if (r1 == null) goto L5;
+        Object r5 = yw1.k(r1);
+    L6:
+        this.n = r5;
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
+        return;
+    L5:
+        vw1 r6 = yw1.o;
+        r5 = gy3.r;
+        goto L6
     }
 
-    public ss0(String str, String str2) {
+    public ss0(String r3, String r4) {
         this.o = new ArrayList();
         this.p = new ArrayList();
         this.q = new HashSet();
-        Bundle bundle = new Bundle();
-        this.n = bundle;
-        if (str != null) {
-            bundle.putString("id", str);
-            if (str2 != null) {
-                bundle.putString("name", str2);
-                return;
-            } else {
-                nz2.n("name must not be null");
-                throw null;
-            }
-        }
+        Bundle r0 = new Bundle();
+        this.n = r0;
+        if (r3 == null) goto L10;
+        r0.putString("id", r3);
+        if (r4 == null) goto L8;
+        r0.putString("name", r4);
+        return;
+    L8:
+        nz2.n("name must not be null");
+        throw null;
+    L10:
         nz2.n("id must not be null");
         throw null;
     }
 
-    public ss0(c81 c81Var) {
-        this(new oz4(c81Var));
+    public ss0(c81 r2) {
+        this(new oz4(r2));
     }
 }

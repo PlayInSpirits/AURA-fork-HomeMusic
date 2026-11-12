@@ -9,23 +9,28 @@ import com.google.android.material.internal.NavigationMenuView;
 public final class i43 extends ex3 {
     public final /* synthetic */ l43 s;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public i43(l43 l43Var, NavigationMenuView navigationMenuView) {
-        super(navigationMenuView);
-        this.s = l43Var;
+    public i43(l43 r1, NavigationMenuView r2) {
+        this.s = r1;
+        super(r2);
     }
 
     @Override // defpackage.ex3, defpackage.z2
-    public final void d(View view, v3 v3Var) {
-        super.d(view, v3Var);
-        l43 l43Var = this.s.r.t;
-        int i = 0;
-        for (int i2 = 0; i2 < l43Var.r.q.size(); i2++) {
-            int iC = l43Var.r.c(i2);
-            if (iC == 0 || iC == 1) {
-                i++;
-            }
-        }
-        v3Var.a.setCollectionInfo(AccessibilityNodeInfo.CollectionInfo.obtain(i, 1, false));
+    public final void d(View r5, v3 r6) {
+        super.d(r5, r6);
+        l43 r4 = this.s.r.t;
+        int r0 = 0;
+        int r1 = 0;
+    L4:
+        if (r0 >= r4.r.q.size()) goto L10;
+        int r2 = r4.r.c(r0);
+        if (r2 == 0) goto L8;
+        if (r2 == 1) goto L8;
+    L9:
+        r0 = r0 + 1;
+    L8:
+        r1 = r1 + 1;
+        goto L9
+    L10:
+        r6.a.setCollectionInfo(AccessibilityNodeInfo.CollectionInfo.obtain(r1, 1, false));
     }
 }

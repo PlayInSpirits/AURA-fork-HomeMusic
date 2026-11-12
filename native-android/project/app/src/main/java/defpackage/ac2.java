@@ -9,27 +9,33 @@ import android.view.View;
 public final class ac2 implements View.OnTouchListener {
     public final /* synthetic */ bc2 n;
 
-    public ac2(bc2 bc2Var) {
-        this.n = bc2Var;
+    public ac2(bc2 r1) {
+        this.n = r1;
     }
 
     @Override // android.view.View.OnTouchListener
-    public final boolean onTouch(View view, MotionEvent motionEvent) {
-        bc2 bc2Var = this.n;
-        yb2 yb2Var = bc2Var.E;
-        Handler handler = bc2Var.I;
-        lg lgVar = bc2Var.M;
-        int action = motionEvent.getAction();
-        int x = (int) motionEvent.getX();
-        int y = (int) motionEvent.getY();
-        if (action == 0 && lgVar != null && lgVar.isShowing() && x >= 0 && x < lgVar.getWidth() && y >= 0 && y < lgVar.getHeight()) {
-            handler.postDelayed(yb2Var, 250L);
-            return false;
-        }
-        if (action != 1) {
-            return false;
-        }
-        handler.removeCallbacks(yb2Var);
+    public final boolean onTouch(View r5, MotionEvent r6) {
+        bc2 r4 = this.n;
+        yb2 r7 = r4.E;
+        Handler r0 = r4.I;
+        lg r8 = r4.M;
+        int r1 = r6.getAction();
+        int r2 = (int) r6.getX();
+        int r9 = (int) r6.getY();
+        if (r1 != 0) goto L15;
+        if (r8 == null) goto L15;
+        if (r8.isShowing() == false) goto L15;
+        if (r2 < 0) goto L15;
+        if (r2 >= r8.getWidth()) goto L15;
+        if (r9 < 0) goto L15;
+        if (r9 >= r8.getHeight()) goto L15;
+        r0.postDelayed(r7, 250);
+        return false;
+    L15:
+        if (r1 != 1) goto L20;
+        r0.removeCallbacks(r7);
+        return false;
+    L20:
         return false;
     }
 }

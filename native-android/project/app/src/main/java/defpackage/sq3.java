@@ -5,5 +5,5 @@ package defpackage;
 public interface sq3 {
     void c();
 
-    void e(int i, Object obj);
+    void e(int r1, Object r2);
 }

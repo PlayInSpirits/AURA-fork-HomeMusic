@@ -1,7 +1,6 @@
 package defpackage;
 
 import android.os.Bundle;
-import android.view.View;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.eddyizm.tempus.subsonic.models.AlbumID3;
 
@@ -11,70 +10,23 @@ public final class a8 extends cx3 {
     public final x12 u;
     public final /* synthetic */ b8 v;
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public a8(b8 b8Var, x12 x12Var) {
-        this.v = b8Var;
-        ConstraintLayout constraintLayout = x12Var.a;
-        super(constraintLayout);
-        this.u = x12Var;
-        final int i = 1;
-        x12Var.e.setSelected(true);
-        final int i2 = 0;
-        constraintLayout.setOnClickListener(new View.OnClickListener(this) { // from class: z7
-            public final /* synthetic */ a8 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view) {
-                int i3 = i2;
-                a8 a8Var = this.o;
-                switch (i3) {
-                    case 0:
-                        Bundle bundle = new Bundle();
-                        b8 b8Var2 = a8Var.v;
-                        bundle.putParcelable("ALBUM_OBJECT", ((AlbumID3) b8Var2.t.get(a8Var.c())).strippedForNav());
-                        b8Var2.r.onAlbumClick(bundle);
-                        break;
-                    default:
-                        a8Var.s();
-                        break;
-                }
-            }
-        });
-        constraintLayout.setOnLongClickListener(new q6(3, this));
-        x12Var.d.setOnClickListener(new View.OnClickListener(this) { // from class: z7
-            public final /* synthetic */ a8 o;
-
-            {
-                this.o = this;
-            }
-
-            @Override // android.view.View.OnClickListener
-            public final void onClick(View view) {
-                int i3 = i;
-                a8 a8Var = this.o;
-                switch (i3) {
-                    case 0:
-                        Bundle bundle = new Bundle();
-                        b8 b8Var2 = a8Var.v;
-                        bundle.putParcelable("ALBUM_OBJECT", ((AlbumID3) b8Var2.t.get(a8Var.c())).strippedForNav());
-                        b8Var2.r.onAlbumClick(bundle);
-                        break;
-                    default:
-                        a8Var.s();
-                        break;
-                }
-            }
-        });
+    public a8(b8 r4, x12 r5) {
+        this.v = r4;
+        ConstraintLayout r6 = r5.a;
+        super(r6);
+        this.u = r5;
+        final int r1 = 1;
+        r5.e.setSelected(true);
+        final int r2 = 0;
+        r6.setOnClickListener(new z7(this, r2));
+        r6.setOnLongClickListener(new q6(3, this));
+        r5.d.setOnClickListener(new z7(this, r1));
     }
 
     public final void s() {
-        Bundle bundle = new Bundle();
-        b8 b8Var = this.v;
-        bundle.putParcelable("ALBUM_OBJECT", ((AlbumID3) b8Var.t.get(c())).strippedForNav());
-        b8Var.r.onAlbumLongClick(bundle);
+        Bundle r0 = new Bundle();
+        b8 r1 = this.v;
+        r0.putParcelable("ALBUM_OBJECT", ((AlbumID3) r1.t.get(c())).strippedForNav());
+        r1.r.onAlbumLongClick(r0);
     }
 }

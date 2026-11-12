@@ -13,86 +13,98 @@ public final class wr2 extends Handler {
     public boolean b;
     public final /* synthetic */ tn2 c;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public wr2(tn2 tn2Var, Looper looper) {
-        super(looper);
-        this.c = tn2Var;
+    public wr2(tn2 r1, Looper r2) {
+        this.c = r1;
+        super(r2);
         this.a = true;
         this.b = true;
     }
 
-    public final void a(boolean z, boolean z2) {
-        boolean z3 = false;
-        this.a = this.a && z;
-        if (this.b && z2) {
-            z3 = true;
-        }
-        this.b = z3;
-        if (hasMessages(1)) {
-            return;
-        }
+    public final void a(boolean r4, boolean r5) {
+        boolean r1 = false;
+        if (this.a == false) goto L6;
+        if (r4 == false) goto L6;
+        boolean r6 = true;
+    L7:
+        this.a = r6;
+        if (this.b == false) goto L11;
+        if (r5 == false) goto L11;
+        r1 = true;
+    L11:
+        this.b = r1;
+        if (hasMessages(1) == true) goto L15;
         sendEmptyMessage(1);
+        return;
+    L15:
+        return;
+    L6:
+        r6 = false;
+        goto L7
     }
 
     @Override // android.os.Handler
-    public final void handleMessage(Message message) {
-        fr2 fr2Var;
-        int iS;
-        tn2 tn2Var = this.c;
-        kt2 kt2Var = tn2Var.g;
-        if (message.what != 1) {
-            zr2.c(message.what, "Invalid message what=");
-            return;
-        }
-        lk3 lk3VarN = tn2Var.r.n(tn2Var.s.Z0(), tn2Var.s.X0(), tn2Var.r.k);
-        tn2Var.r = lk3VarN;
-        boolean z = this.a;
-        boolean z2 = this.b;
-        lk3 lk3VarX = kt2Var.X(lk3VarN);
-        na4 na4Var = kt2Var.f;
-        yw1 yw1VarU = na4Var.u();
-        for (int i = 0; i < yw1VarU.size(); i++) {
-            fr2 fr2Var2 = (fr2) yw1VarU.get(i);
-            try {
-                yk ykVarC = na4Var.C(fr2Var2);
-                if (ykVarC != null) {
-                    iS = ykVarC.s();
-                } else if (!tn2Var.j(fr2Var2)) {
-                    break;
-                } else {
-                    iS = 0;
-                }
-                lk3 lk3VarB = na4Var.B(fr2Var2);
-                if (lk3VarB == null) {
-                    na4Var.A(fr2Var2);
-                    mi3 mi3VarD = ju2.d(na4Var.t(fr2Var2), tn2Var.s.o());
-                    fr2Var = fr2Var2;
-                    try {
-                        er2 er2Var = fr2Var.d;
-                        er2Var.getClass();
-                        try {
-                            er2Var.A(iS, lk3VarB == null ? lk3VarX : lk3VarB, mi3VarD, z, z2);
-                        } catch (DeadObjectException unused) {
-                            kt2Var.f.N(fr2Var);
-                        } catch (RemoteException e) {
-                            e = e;
-                            l93.r0("MediaSessionImpl", "Exception in " + fr2Var, e);
-                        }
-                    } catch (DeadObjectException unused2) {
-                        fr2Var = fr2Var;
-                    } catch (RemoteException e2) {
-                        e = e2;
-                        fr2Var = fr2Var;
-                    }
-                }
-            } catch (DeadObjectException unused3) {
-                fr2Var = fr2Var2;
-            } catch (RemoteException e3) {
-                e = e3;
-                fr2Var = fr2Var2;
-            }
-        }
+    public final void handleMessage(Message r17) {
+        tn2 r2 = this.c;
+        kt2 r3 = r2.g;
+        if (r17.what != 1) goto L39;
+        lk3 r0 = r2.r.n(r2.s.Z0(), r2.s.X0(), r2.r.k);
+        r2.r = r0;
+        boolean r10 = this.a;
+        boolean r11 = this.b;
+        lk3 r4 = r3.X(r0);
+        na4 r12 = r3.f;
+        yw1 r13 = r12.u();
+        int r15 = 0;
+    L6:
+        if (r15 >= r13.size()) goto L37;
+        fr2 r6 = (fr2) r13.get(r15);
+        yk r1 = r12.C(r6);     // Catch: RemoteException -> L11 DeadObjectException -> L13
+        if (r1 == null) goto L15;
+        int r7 = r1.s();     // Catch: RemoteException -> L11 DeadObjectException -> L13
+    L18:
+        lk3 r5 = r12.B(r6);     // Catch: RemoteException -> L11 DeadObjectException -> L13
+        if (r5 != null) goto L36;
+        r12.A(r6);     // Catch: RemoteException -> L11 DeadObjectException -> L13
+        mi3 r9 = ju2.d(r12.t(r6), r2.s.o());     // Catch: RemoteException -> L11 DeadObjectException -> L13
+        fr2 r14 = r6;
+        er2 r8 = r14.d;     // Catch: RemoteException -> L31 DeadObjectException -> L33
+        r8.getClass();     // Catch: RemoteException -> L31 DeadObjectException -> L33
+        if (r5 != null) goto L26;
+        lk3 r16 = r4;
+    L42:
+        r8.A(r7, r16, r9, r10, r11);     // Catch: RemoteException -> L29 DeadObjectException -> L41
+    L29:
+        e = e;
+    L34:
+        l93.r0("MediaSessionImpl", "Exception in " + r14, e);
+    L35:
+        r3.f.N(r14);
+        goto L36
+    L26:
+        r16 = r5;
+        goto L42
+    L33:
+        r14 = r14;
+    L31:
+        e = e;
+        r14 = r14;
+    L36:
+        r15 = r15 + 1;
+        goto L6
+    L15:
+        if (r2.j(r6) == false) goto L37;
+        r7 = 0;
+        goto L18
+    L13:
+        r14 = r6;
+    L11:
+        e = e;
+        r14 = r6;
+    L37:
         this.a = true;
         this.b = true;
+        return;
+    L39:
+        zr2.c(r17.what, "Invalid message what=");
     }
 }

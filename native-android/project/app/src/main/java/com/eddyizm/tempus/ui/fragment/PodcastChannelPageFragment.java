@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,10 +22,10 @@ import com.eddyizm.tempus.service.MediaService;
 import com.eddyizm.tempus.subsonic.models.PodcastChannel;
 import com.eddyizm.tempus.subsonic.models.PodcastEpisode;
 import com.eddyizm.tempus.ui.activity.MainActivity;
-import com.eddyizm.tempus.ui.fragment.PodcastChannelPageFragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import defpackage.aj2;
+import defpackage.an3;
 import defpackage.au;
 import defpackage.b11;
 import defpackage.b75;
@@ -77,143 +76,103 @@ public class PodcastChannelPageFragment extends kc1 implements ClickCallback {
     public en3 o0;
     public bl2 p0;
 
+    public PodcastChannelPageFragment() {
+    }
+
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        v23 v23Var;
-        this.m0 = (MainActivity) e();
-        final int i = 0;
-        View viewInflate = layoutInflater.inflate(R.layout.fragment_podcast_channel_page, viewGroup, false);
-        int i2 = R.id.app_bar_layout;
-        if (((AppBarLayout) uo.s(viewInflate, R.id.app_bar_layout)) != null) {
-            LinearLayout linearLayout = (LinearLayout) viewInflate;
-            i2 = R.id.podcast_channel_description_label;
-            if (((TextView) uo.s(viewInflate, R.id.podcast_channel_description_label)) != null) {
-                i2 = R.id.podcast_channel_description_text_view;
-                TextView textView = (TextView) uo.s(viewInflate, R.id.podcast_channel_description_text_view);
-                if (textView != null) {
-                    i2 = R.id.podcast_channel_page_info_sector;
-                    if (((ConstraintLayout) uo.s(viewInflate, R.id.podcast_channel_page_info_sector)) != null) {
-                        i2 = R.id.podcast_episodes_filter_image_view;
-                        Button button = (Button) uo.s(viewInflate, R.id.podcast_episodes_filter_image_view);
-                        if (button != null) {
-                            i2 = R.id.podcast_episodes_recycler_view;
-                            RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate, R.id.podcast_episodes_recycler_view);
-                            if (recyclerView != null) {
-                                i2 = R.id.podcast_episodes_section_label;
-                                if (((TextView) uo.s(viewInflate, R.id.podcast_episodes_section_label)) != null) {
-                                    i2 = R.id.toolbar;
-                                    MaterialToolbar materialToolbar = (MaterialToolbar) uo.s(viewInflate, R.id.toolbar);
-                                    if (materialToolbar != null) {
-                                        i2 = R.id.upper_button_divider;
-                                        View viewS = uo.s(viewInflate, R.id.upper_button_divider);
-                                        if (viewS != null) {
-                                            this.l0 = new z40(linearLayout, textView, button, recyclerView, materialToolbar, viewS);
-                                            nc1 nc1VarX = X();
-                                            e75 e75VarD = nc1VarX.d();
-                                            b75 b75VarR = gh0.r(nc1VarX);
-                                            bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
-                                            i30 i30VarA = kx3.a(bn3.class);
-                                            String strB = i30VarA.b();
-                                            if (strB == null) {
-                                                kf2.n("Local and anonymous classes can not be ViewModels");
-                                                return null;
-                                            }
-                                            this.n0 = (bn3) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-                                            Bundle bundle2 = this.s;
-                                            PodcastChannel podcastChannel = bundle2 != null ? (PodcastChannel) bundle2.getParcelable("PODCAST_CHANNEL_OBJECT") : null;
-                                            if (podcastChannel == null) {
-                                                MainActivity mainActivity = this.m0;
-                                                if (mainActivity != null && (v23Var = mainActivity.T) != null) {
-                                                    v23Var.o();
-                                                }
-                                                return linearLayout;
-                                            }
-                                            this.n0.d = podcastChannel;
-                                            this.m0.o((MaterialToolbar) this.l0.q);
-                                            final int i3 = 1;
-                                            if (this.m0.n() != null) {
-                                                this.m0.n().f0(true);
-                                                this.m0.n().g0();
-                                            }
-                                            ((MaterialToolbar) this.l0.q).setTitle(this.n0.d.getTitle());
-                                            ((MaterialToolbar) this.l0.q).setNavigationOnClickListener(new View.OnClickListener(this) { // from class: an3
-                                                public final /* synthetic */ PodcastChannelPageFragment o;
-
-                                                {
-                                                    this.o = this;
-                                                }
-
-                                                @Override // android.view.View.OnClickListener
-                                                public final void onClick(View view) {
-                                                    int i4 = i3;
-                                                    PodcastChannelPageFragment podcastChannelPageFragment = this.o;
-                                                    switch (i4) {
-                                                        case 0:
-                                                            PopupMenu popupMenu = new PopupMenu(podcastChannelPageFragment.Z(), view);
-                                                            popupMenu.getMenuInflater().inflate(R.menu.filter_podcast_episode_popup_menu, popupMenu.getMenu());
-                                                            popupMenu.setOnMenuItemClickListener(new v7(8, podcastChannelPageFragment));
-                                                            popupMenu.show();
-                                                            break;
-                                                        default:
-                                                            podcastChannelPageFragment.m0.T.o();
-                                                            break;
-                                                    }
-                                                }
-                                            });
-                                            ((MaterialToolbar) this.l0.q).setTitle(this.n0.d.getTitle());
-                                            String strC = e03.c(this.n0.d.getDescription());
-                                            z40 z40Var = this.l0;
-                                            if (z40Var != null) {
-                                                ((TextView) z40Var.n).setVisibility(!strC.trim().isEmpty() ? 0 : 8);
-                                                ((TextView) this.l0.n).setText(strC);
-                                                ((Button) this.l0.o).setOnClickListener(new View.OnClickListener(this) { // from class: an3
-                                                    public final /* synthetic */ PodcastChannelPageFragment o;
-
-                                                    {
-                                                        this.o = this;
-                                                    }
-
-                                                    @Override // android.view.View.OnClickListener
-                                                    public final void onClick(View view) {
-                                                        int i4 = i;
-                                                        PodcastChannelPageFragment podcastChannelPageFragment = this.o;
-                                                        switch (i4) {
-                                                            case 0:
-                                                                PopupMenu popupMenu = new PopupMenu(podcastChannelPageFragment.Z(), view);
-                                                                popupMenu.getMenuInflater().inflate(R.menu.filter_podcast_episode_popup_menu, popupMenu.getMenu());
-                                                                popupMenu.setOnMenuItemClickListener(new v7(8, podcastChannelPageFragment));
-                                                                popupMenu.show();
-                                                                break;
-                                                            default:
-                                                                podcastChannelPageFragment.m0.T.o();
-                                                                break;
-                                                        }
-                                                    }
-                                                });
-                                            }
-                                            RecyclerView recyclerView2 = (RecyclerView) this.l0.p;
-                                            Z();
-                                            recyclerView2.setLayoutManager(new LinearLayoutManager(1));
-                                            ((RecyclerView) this.l0.p).i(g12.v(Z()));
-                                            en3 en3Var = new en3(this);
-                                            this.o0 = en3Var;
-                                            ((RecyclerView) this.l0.p).setAdapter(en3Var);
-                                            bn3 bn3Var = this.n0;
-                                            hh3 hh3Var = bn3Var.c;
-                                            String id = bn3Var.d.getId();
-                                            hh3Var.getClass();
-                                            hh3.l(id, true).e(v(), new d8(23, this));
-                                            return linearLayout;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i2)));
+    public final View H(LayoutInflater r10, ViewGroup r11, Bundle r12) {
+        this.m0 = (MainActivity) l();
+        final int r0 = 0;
+        View r13 = r10.inflate(R.layout.fragment_podcast_channel_page, r11, false);
+        int r14 = R.id.app_bar_layout;
+        PodcastChannel r1 = null;
+        if (((AppBarLayout) uo.s(r13, R.id.app_bar_layout)) == null) goto L46;
+        LinearLayout r3 = (LinearLayout) r13;
+        r14 = R.id.podcast_channel_description_label;
+        if (((TextView) uo.s(r13, R.id.podcast_channel_description_label)) == null) goto L46;
+        r14 = R.id.podcast_channel_description_text_view;
+        TextView r4 = (TextView) uo.s(r13, R.id.podcast_channel_description_text_view);
+        if (r4 == null) goto L46;
+        r14 = R.id.podcast_channel_page_info_sector;
+        if (((ConstraintLayout) uo.s(r13, R.id.podcast_channel_page_info_sector)) == null) goto L46;
+        r14 = R.id.podcast_episodes_filter_image_view;
+        Button r5 = (Button) uo.s(r13, R.id.podcast_episodes_filter_image_view);
+        if (r5 == null) goto L46;
+        r14 = R.id.podcast_episodes_recycler_view;
+        RecyclerView r6 = (RecyclerView) uo.s(r13, R.id.podcast_episodes_recycler_view);
+        if (r6 == null) goto L46;
+        r14 = R.id.podcast_episodes_section_label;
+        if (((TextView) uo.s(r13, R.id.podcast_episodes_section_label)) == null) goto L46;
+        r14 = R.id.toolbar;
+        MaterialToolbar r7 = (MaterialToolbar) uo.s(r13, R.id.toolbar);
+        if (r7 == null) goto L46;
+        r14 = R.id.upper_button_divider;
+        View r8 = uo.s(r13, R.id.upper_button_divider);
+        if (r8 == null) goto L46;
+        this.l0 = new z40(r3, r4, r5, r6, r7, r8);
+        nc1 r15 = X();
+        e75 r16 = r15.d();
+        b75 r17 = gh0.r(r15);
+        bq4 r2 = new bq4(r16, r17, b11.e(r15, r17));
+        i30 r18 = kx3.a(bn3.class);
+        String r19 = r18.b();
+        if (r19 == null) goto L44;
+        this.n0 = (bn3) r2.l(r18, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r19));
+        Bundle r110 = this.s;
+        if (r110 == null) goto L25;
+        r1 = (PodcastChannel) r110.getParcelable("PODCAST_CHANNEL_OBJECT");
+    L25:
+        if (r1 != null) goto L32;
+        MainActivity r9 = this.m0;
+        if (r9 == null) goto L31;
+        v23 r20 = r9.T;
+        if (r20 == null) goto L31;
+        r20.o();
+    L31:
+        return r3;
+    L32:
+        this.n0.d = r1;
+        this.m0.o((MaterialToolbar) this.l0.q);
+        final int r111 = 1;
+        if (this.m0.n() == null) goto L35;
+        this.m0.n().f0(true);
+        this.m0.n().g0();
+    L35:
+        ((MaterialToolbar) this.l0.q).setTitle(this.n0.d.getTitle());
+        ((MaterialToolbar) this.l0.q).setNavigationOnClickListener(new an3(this, r111));
+        ((MaterialToolbar) this.l0.q).setTitle(this.n0.d.getTitle());
+        String r112 = e03.c(this.n0.d.getDescription());
+        z40 r113 = this.l0;
+        if (r113 == null) goto L42;
+        TextView r114 = (TextView) r113.n;
+        if (r112.trim().isEmpty() == true) goto L40;
+        int r21 = 0;
+    L41:
+        r114.setVisibility(r21);
+        ((TextView) this.l0.n).setText(r112);
+        ((Button) this.l0.o).setOnClickListener(new an3(this, r0));
+        goto L42
+    L40:
+        r21 = 8;
+    L42:
+        RecyclerView r115 = (RecyclerView) this.l0.p;
+        Z();
+        r115.setLayoutManager(new LinearLayoutManager(1));
+        ((RecyclerView) this.l0.p).i(g12.v(Z()));
+        en3 r116 = new en3(this);
+        this.o0 = r116;
+        ((RecyclerView) this.l0.p).setAdapter(r116);
+        bn3 r117 = this.n0;
+        hh3 r118 = r117.c;
+        String r119 = r117.d.getId();
+        r118.getClass();
+        hh3.l(r119, true).e(v(), new d8(23, this));
+        return r3;
+    L44:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L46:
+        nz2.n("Missing required view with ID: ".concat(r13.getResources().getResourceName(r14)));
         return null;
     }
 
@@ -226,14 +185,21 @@ public class PodcastChannelPageFragment extends kc1 implements ClickCallback {
     @Override // defpackage.kc1
     public final void R() {
         this.R = true;
-        Context contextZ = Z();
-        cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
-        Bundle bundle = Bundle.EMPTY;
-        aj2 aj2Var = new aj2();
-        Looper looperX = f35.x();
-        bl2 bl2Var = new bl2(looperX);
-        b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, cb4Var.a.e() ? new xc5(4, new fi0(new x7(contextZ))) : null), new Handler(looperX));
-        this.p0 = bl2Var;
+        Context r2 = Z();
+        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
+        Bundle r4 = Bundle.EMPTY;
+        aj2 r5 = new aj2();
+        Looper r6 = f35.x();
+        bl2 r7 = new bl2(r6);
+        if (r3.a.e() == false) goto L6;
+        xc5 r0 = new xc5(4, new fi0(new x7(r2)));
+    L7:
+        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
+        this.p0 = r7;
+        return;
+    L6:
+        r0 = null;
+        goto L7
     }
 
     @Override // defpackage.kc1
@@ -243,41 +209,48 @@ public class PodcastChannelPageFragment extends kc1 implements ClickCallback {
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onPodcastEpisodeAltClick(Bundle bundle) {
-        PodcastEpisode podcastEpisode = (PodcastEpisode) bundle.getParcelable("PODCAST_OBJECT");
-        bn3 bn3Var = this.n0;
-        bn3Var.getClass();
-        if (podcastEpisode != null && podcastEpisode.getId() != null) {
-            hh3 hh3Var = bn3Var.c;
-            String id = podcastEpisode.getId();
-            hh3Var.getClass();
-            wo0 wo0VarH = App.f(false).h();
-            wo0VarH.getClass();
-            Log.d("PodcastClient", "downloadPodcastEpisode()");
-            ((hn3) wo0VarH.o).b(((pn4) wo0VarH.n).f(), id).enqueue(new pz1(14, podcastEpisode));
-        }
-        View viewA0 = a0();
-        int[] iArr = qg4.E;
-        qg4 qg4VarH = qg4.h(viewA0, viewA0.getResources().getText(R.string.podcast_episode_download_request_snackbar), -1);
-        qg4VarH.e(this.m0.u());
-        qg4VarH.j();
+    public final void onPodcastEpisodeAltClick(Bundle r5) {
+        PodcastEpisode r6 = (PodcastEpisode) r5.getParcelable("PODCAST_OBJECT");
+        bn3 r0 = this.n0;
+        r0.getClass();
+        if (r6 != null) goto L5;
+    L7:
+        View r7 = a0();
+        int[] r1 = qg4.E;
+        qg4 r8 = qg4.h(r7, r7.getResources().getText(R.string.podcast_episode_download_request_snackbar), -1);
+        r8.e(this.m0.u());
+        r8.j();
+        return;
+    L5:
+        if (r6.getId() == null) goto L7;
+        hh3 r2 = r0.c;
+        String r3 = r6.getId();
+        r2.getClass();
+        wo0 r4 = App.f(false).h();
+        r4.getClass();
+        Log.d("PodcastClient", "downloadPodcastEpisode()");
+        ((hn3) r4.o).b(((pn4) r4.n).f(), r3).enqueue(new pz1(14, r6));
+        goto L7
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onPodcastEpisodeClick(Bundle bundle) {
-        bl2 bl2Var = this.p0;
-        PodcastEpisode podcastEpisode = (PodcastEpisode) bundle.getParcelable("PODCAST_OBJECT");
-        WeakReference weakReference = bo2.a;
-        if (u52.c().a) {
-            u52.h(R.string.lan_music_only);
-        } else if (bl2Var != null) {
-            bl2Var.f(new ws1(17, bl2Var, podcastEpisode), gq0.n);
-        }
+    public final void onPodcastEpisodeClick(Bundle r4) {
+        bl2 r0 = this.p0;
+        PodcastEpisode r5 = (PodcastEpisode) r4.getParcelable("PODCAST_OBJECT");
+        WeakReference r1 = bo2.a;
+        if (u52.c().a == true) goto L6;
+        if (r0 == null) goto L7;
+        r0.f(new ws1(17, r0, r5), gq0.n);
+    L7:
         ((au) this.m0.V.n).d(true);
+        return;
+    L6:
+        u52.h(R.string.lan_music_only);
+        goto L7
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onPodcastEpisodeLongClick(Bundle bundle) {
-        gb.x(a0()).m(R.id.podcastEpisodeBottomSheetDialog, bundle, null);
+    public final void onPodcastEpisodeLongClick(Bundle r3) {
+        gb.x(a0()).m(R.id.podcastEpisodeBottomSheetDialog, r3, null);
     }
 }

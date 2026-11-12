@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
@@ -28,35 +29,35 @@ import java.util.zip.CRC32;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class f31 {
-    public static final byte[] A;
-    public static final String[] B;
-    public static final int[] C;
-    public static final byte[] D;
-    public static final c31 E;
-    public static final c31[][] F;
-    public static final c31[] G;
-    public static final HashMap[] H;
-    public static final HashMap[] I;
-    public static final HashSet J;
-    public static final HashMap K;
-    public static final Charset L;
-    public static final byte[] M;
-    public static final byte[] N;
-    public static final boolean l = Log.isLoggable("ExifInterface", 3);
-    public static final int[] m;
-    public static final int[] n;
-    public static final byte[] o;
-    public static final byte[] p;
-    public static final byte[] q;
-    public static final byte[] r;
-    public static final byte[] s;
-    public static final byte[] t;
-    public static final byte[] u;
-    public static final byte[] v;
-    public static final byte[] w;
-    public static final byte[] x;
-    public static final byte[] y;
-    public static final byte[] z;
+    public static final byte[] A = null;
+    public static final String[] B = null;
+    public static final int[] C = null;
+    public static final byte[] D = null;
+    public static final c31 E = null;
+    public static final c31[][] F = null;
+    public static final c31[] G = null;
+    public static final HashMap[] H = null;
+    public static final HashMap[] I = null;
+    public static final HashSet J = null;
+    public static final HashMap K = null;
+    public static final Charset L = null;
+    public static final byte[] M = null;
+    public static final byte[] N = null;
+    public static final boolean l = false;
+    public static final int[] m = null;
+    public static final int[] n = null;
+    public static final byte[] o = null;
+    public static final byte[] p = null;
+    public static final byte[] q = null;
+    public static final byte[] r = null;
+    public static final byte[] s = null;
+    public static final byte[] t = null;
+    public static final byte[] u = null;
+    public static final byte[] v = null;
+    public static final byte[] w = null;
+    public static final byte[] x = null;
+    public static final byte[] y = null;
+    public static final byte[] z = null;
     public final FileDescriptor a;
     public final AssetManager.AssetInputStream b;
     public int c;
@@ -70,8 +71,9 @@ public final class f31 {
     public int k;
 
     static {
-        Arrays.asList(1, 6, 3, 8);
-        Arrays.asList(2, 7, 4, 5);
+        l = Log.isLoggable("ExifInterface", 3);
+        Arrays.asList(new Integer[]{1, 6, 3, 8});
+        Arrays.asList(new Integer[]{2, 7, 4, 5});
         m = new int[]{8, 8, 8};
         n = new int[]{8};
         o = new byte[]{-1, -40, -1};
@@ -95,1747 +97,1567 @@ public final class f31 {
         B = new String[]{"", "BYTE", "STRING", "USHORT", "ULONG", "URATIONAL", "SBYTE", "UNDEFINED", "SSHORT", "SLONG", "SRATIONAL", "SINGLE", "DOUBLE", "IFD"};
         C = new int[]{0, 1, 1, 2, 4, 8, 1, 1, 2, 4, 8, 4, 8, 1};
         D = new byte[]{65, 83, 67, 73, 73, 0, 0, 0};
-        c31[] c31VarArr = {new c31("NewSubfileType", 254, 4), new c31("SubfileType", 255, 4), new c31("ImageWidth", 256, 3, 4), new c31("ImageLength", 257, 3, 4), new c31("BitsPerSample", 258, 3), new c31("Compression", 259, 3), new c31("PhotometricInterpretation", 262, 3), new c31("ImageDescription", 270, 2), new c31("Make", 271, 2), new c31("Model", 272, 2), new c31("StripOffsets", 273, 3, 4), new c31("Orientation", 274, 3), new c31("SamplesPerPixel", 277, 3), new c31("RowsPerStrip", 278, 3, 4), new c31("StripByteCounts", 279, 3, 4), new c31("XResolution", 282, 5), new c31("YResolution", 283, 5), new c31("PlanarConfiguration", 284, 3), new c31("ResolutionUnit", 296, 3), new c31("TransferFunction", 301, 3), new c31("Software", 305, 2), new c31("DateTime", 306, 2), new c31("Artist", 315, 2), new c31("WhitePoint", 318, 5), new c31("PrimaryChromaticities", 319, 5), new c31("SubIFDPointer", 330, 4), new c31("JPEGInterchangeFormat", 513, 4), new c31("JPEGInterchangeFormatLength", 514, 4), new c31("YCbCrCoefficients", 529, 5), new c31("YCbCrSubSampling", 530, 3), new c31("YCbCrPositioning", 531, 3), new c31("ReferenceBlackWhite", 532, 5), new c31("Copyright", 33432, 2), new c31("ExifIFDPointer", 34665, 4), new c31("GPSInfoIFDPointer", 34853, 4), new c31("SensorTopBorder", 4, 4), new c31("SensorLeftBorder", 5, 4), new c31("SensorBottomBorder", 6, 4), new c31("SensorRightBorder", 7, 4), new c31("ISO", 23, 3), new c31("JpgFromRaw", 46, 7), new c31("Xmp", 700, 1)};
-        c31[] c31VarArr2 = {new c31("ExposureTime", 33434, 5), new c31("FNumber", 33437, 5), new c31("ExposureProgram", 34850, 3), new c31("SpectralSensitivity", 34852, 2), new c31("PhotographicSensitivity", 34855, 3), new c31("OECF", 34856, 7), new c31("SensitivityType", 34864, 3), new c31("StandardOutputSensitivity", 34865, 4), new c31("RecommendedExposureIndex", 34866, 4), new c31("ISOSpeed", 34867, 4), new c31("ISOSpeedLatitudeyyy", 34868, 4), new c31("ISOSpeedLatitudezzz", 34869, 4), new c31("ExifVersion", 36864, 2), new c31("DateTimeOriginal", 36867, 2), new c31("DateTimeDigitized", 36868, 2), new c31("OffsetTime", 36880, 2), new c31("OffsetTimeOriginal", 36881, 2), new c31("OffsetTimeDigitized", 36882, 2), new c31("ComponentsConfiguration", 37121, 7), new c31("CompressedBitsPerPixel", 37122, 5), new c31("ShutterSpeedValue", 37377, 10), new c31("ApertureValue", 37378, 5), new c31("BrightnessValue", 37379, 10), new c31("ExposureBiasValue", 37380, 10), new c31("MaxApertureValue", 37381, 5), new c31("SubjectDistance", 37382, 5), new c31("MeteringMode", 37383, 3), new c31("LightSource", 37384, 3), new c31("Flash", 37385, 3), new c31("FocalLength", 37386, 5), new c31("SubjectArea", 37396, 3), new c31("MakerNote", 37500, 7), new c31("UserComment", 37510, 7), new c31("SubSecTime", 37520, 2), new c31("SubSecTimeOriginal", 37521, 2), new c31("SubSecTimeDigitized", 37522, 2), new c31("FlashpixVersion", 40960, 7), new c31("ColorSpace", 40961, 3), new c31("PixelXDimension", 40962, 3, 4), new c31("PixelYDimension", 40963, 3, 4), new c31("RelatedSoundFile", 40964, 2), new c31("InteroperabilityIFDPointer", 40965, 4), new c31("FlashEnergy", 41483, 5), new c31("SpatialFrequencyResponse", 41484, 7), new c31("FocalPlaneXResolution", 41486, 5), new c31("FocalPlaneYResolution", 41487, 5), new c31("FocalPlaneResolutionUnit", 41488, 3), new c31("SubjectLocation", 41492, 3), new c31("ExposureIndex", 41493, 5), new c31("SensingMethod", 41495, 3), new c31("FileSource", 41728, 7), new c31("SceneType", 41729, 7), new c31("CFAPattern", 41730, 7), new c31("CustomRendered", 41985, 3), new c31("ExposureMode", 41986, 3), new c31("WhiteBalance", 41987, 3), new c31("DigitalZoomRatio", 41988, 5), new c31("FocalLengthIn35mmFilm", 41989, 3), new c31("SceneCaptureType", 41990, 3), new c31("GainControl", 41991, 3), new c31("Contrast", 41992, 3), new c31("Saturation", 41993, 3), new c31("Sharpness", 41994, 3), new c31("DeviceSettingDescription", 41995, 7), new c31("SubjectDistanceRange", 41996, 3), new c31("ImageUniqueID", 42016, 2), new c31("CameraOwnerName", 42032, 2), new c31("BodySerialNumber", 42033, 2), new c31("LensSpecification", 42034, 5), new c31("LensMake", 42035, 2), new c31("LensModel", 42036, 2), new c31("Gamma", 42240, 5), new c31("DNGVersion", 50706, 1), new c31("DefaultCropSize", 50720, 3, 4)};
-        c31[] c31VarArr3 = {new c31("GPSVersionID", 0, 1), new c31("GPSLatitudeRef", 1, 2), new c31("GPSLatitude", 2, 5, 10), new c31("GPSLongitudeRef", 3, 2), new c31("GPSLongitude", 4, 5, 10), new c31("GPSAltitudeRef", 5, 1), new c31("GPSAltitude", 6, 5), new c31("GPSTimeStamp", 7, 5), new c31("GPSSatellites", 8, 2), new c31("GPSStatus", 9, 2), new c31("GPSMeasureMode", 10, 2), new c31("GPSDOP", 11, 5), new c31("GPSSpeedRef", 12, 2), new c31("GPSSpeed", 13, 5), new c31("GPSTrackRef", 14, 2), new c31("GPSTrack", 15, 5), new c31("GPSImgDirectionRef", 16, 2), new c31("GPSImgDirection", 17, 5), new c31("GPSMapDatum", 18, 2), new c31("GPSDestLatitudeRef", 19, 2), new c31("GPSDestLatitude", 20, 5), new c31("GPSDestLongitudeRef", 21, 2), new c31("GPSDestLongitude", 22, 5), new c31("GPSDestBearingRef", 23, 2), new c31("GPSDestBearing", 24, 5), new c31("GPSDestDistanceRef", 25, 2), new c31("GPSDestDistance", 26, 5), new c31("GPSProcessingMethod", 27, 7), new c31("GPSAreaInformation", 28, 7), new c31("GPSDateStamp", 29, 2), new c31("GPSDifferential", 30, 3), new c31("GPSHPositioningError", 31, 5)};
-        c31[] c31VarArr4 = {new c31("InteroperabilityIndex", 1, 2)};
-        c31[] c31VarArr5 = {new c31("NewSubfileType", 254, 4), new c31("SubfileType", 255, 4), new c31("ThumbnailImageWidth", 256, 3, 4), new c31("ThumbnailImageLength", 257, 3, 4), new c31("BitsPerSample", 258, 3), new c31("Compression", 259, 3), new c31("PhotometricInterpretation", 262, 3), new c31("ImageDescription", 270, 2), new c31("Make", 271, 2), new c31("Model", 272, 2), new c31("StripOffsets", 273, 3, 4), new c31("ThumbnailOrientation", 274, 3), new c31("SamplesPerPixel", 277, 3), new c31("RowsPerStrip", 278, 3, 4), new c31("StripByteCounts", 279, 3, 4), new c31("XResolution", 282, 5), new c31("YResolution", 283, 5), new c31("PlanarConfiguration", 284, 3), new c31("ResolutionUnit", 296, 3), new c31("TransferFunction", 301, 3), new c31("Software", 305, 2), new c31("DateTime", 306, 2), new c31("Artist", 315, 2), new c31("WhitePoint", 318, 5), new c31("PrimaryChromaticities", 319, 5), new c31("SubIFDPointer", 330, 4), new c31("JPEGInterchangeFormat", 513, 4), new c31("JPEGInterchangeFormatLength", 514, 4), new c31("YCbCrCoefficients", 529, 5), new c31("YCbCrSubSampling", 530, 3), new c31("YCbCrPositioning", 531, 3), new c31("ReferenceBlackWhite", 532, 5), new c31("Copyright", 33432, 2), new c31("ExifIFDPointer", 34665, 4), new c31("GPSInfoIFDPointer", 34853, 4), new c31("DNGVersion", 50706, 1), new c31("DefaultCropSize", 50720, 3, 4)};
+        c31[] r69 = {new c31("NewSubfileType", 254, 4), new c31("SubfileType", 255, 4), new c31("ImageWidth", 256, 3, 4), new c31("ImageLength", 257, 3, 4), new c31("BitsPerSample", 258, 3), new c31("Compression", 259, 3), new c31("PhotometricInterpretation", 262, 3), new c31("ImageDescription", 270, 2), new c31("Make", 271, 2), new c31("Model", 272, 2), new c31("StripOffsets", 273, 3, 4), new c31("Orientation", 274, 3), new c31("SamplesPerPixel", 277, 3), new c31("RowsPerStrip", 278, 3, 4), new c31("StripByteCounts", 279, 3, 4), new c31("XResolution", 282, 5), new c31("YResolution", 283, 5), new c31("PlanarConfiguration", 284, 3), new c31("ResolutionUnit", 296, 3), new c31("TransferFunction", 301, 3), new c31("Software", 305, 2), new c31("DateTime", 306, 2), new c31("Artist", 315, 2), new c31("WhitePoint", 318, 5), new c31("PrimaryChromaticities", 319, 5), new c31("SubIFDPointer", 330, 4), new c31("JPEGInterchangeFormat", 513, 4), new c31("JPEGInterchangeFormatLength", 514, 4), new c31("YCbCrCoefficients", 529, 5), new c31("YCbCrSubSampling", 530, 3), new c31("YCbCrPositioning", 531, 3), new c31("ReferenceBlackWhite", 532, 5), new c31("Copyright", 33432, 2), new c31("ExifIFDPointer", 34665, 4), new c31("GPSInfoIFDPointer", 34853, 4), new c31("SensorTopBorder", 4, 4), new c31("SensorLeftBorder", 5, 4), new c31("SensorBottomBorder", 6, 4), new c31("SensorRightBorder", 7, 4), new c31("ISO", 23, 3), new c31("JpgFromRaw", 46, 7), new c31("Xmp", 700, 1)};
+        c31[] r70 = {new c31("ExposureTime", 33434, 5), new c31("FNumber", 33437, 5), new c31("ExposureProgram", 34850, 3), new c31("SpectralSensitivity", 34852, 2), new c31("PhotographicSensitivity", 34855, 3), new c31("OECF", 34856, 7), new c31("SensitivityType", 34864, 3), new c31("StandardOutputSensitivity", 34865, 4), new c31("RecommendedExposureIndex", 34866, 4), new c31("ISOSpeed", 34867, 4), new c31("ISOSpeedLatitudeyyy", 34868, 4), new c31("ISOSpeedLatitudezzz", 34869, 4), new c31("ExifVersion", 36864, 2), new c31("DateTimeOriginal", 36867, 2), new c31("DateTimeDigitized", 36868, 2), new c31("OffsetTime", 36880, 2), new c31("OffsetTimeOriginal", 36881, 2), new c31("OffsetTimeDigitized", 36882, 2), new c31("ComponentsConfiguration", 37121, 7), new c31("CompressedBitsPerPixel", 37122, 5), new c31("ShutterSpeedValue", 37377, 10), new c31("ApertureValue", 37378, 5), new c31("BrightnessValue", 37379, 10), new c31("ExposureBiasValue", 37380, 10), new c31("MaxApertureValue", 37381, 5), new c31("SubjectDistance", 37382, 5), new c31("MeteringMode", 37383, 3), new c31("LightSource", 37384, 3), new c31("Flash", 37385, 3), new c31("FocalLength", 37386, 5), new c31("SubjectArea", 37396, 3), new c31("MakerNote", 37500, 7), new c31("UserComment", 37510, 7), new c31("SubSecTime", 37520, 2), new c31("SubSecTimeOriginal", 37521, 2), new c31("SubSecTimeDigitized", 37522, 2), new c31("FlashpixVersion", 40960, 7), new c31("ColorSpace", 40961, 3), new c31("PixelXDimension", 40962, 3, 4), new c31("PixelYDimension", 40963, 3, 4), new c31("RelatedSoundFile", 40964, 2), new c31("InteroperabilityIFDPointer", 40965, 4), new c31("FlashEnergy", 41483, 5), new c31("SpatialFrequencyResponse", 41484, 7), new c31("FocalPlaneXResolution", 41486, 5), new c31("FocalPlaneYResolution", 41487, 5), new c31("FocalPlaneResolutionUnit", 41488, 3), new c31("SubjectLocation", 41492, 3), new c31("ExposureIndex", 41493, 5), new c31("SensingMethod", 41495, 3), new c31("FileSource", 41728, 7), new c31("SceneType", 41729, 7), new c31("CFAPattern", 41730, 7), new c31("CustomRendered", 41985, 3), new c31("ExposureMode", 41986, 3), new c31("WhiteBalance", 41987, 3), new c31("DigitalZoomRatio", 41988, 5), new c31("FocalLengthIn35mmFilm", 41989, 3), new c31("SceneCaptureType", 41990, 3), new c31("GainControl", 41991, 3), new c31("Contrast", 41992, 3), new c31("Saturation", 41993, 3), new c31("Sharpness", 41994, 3), new c31("DeviceSettingDescription", 41995, 7), new c31("SubjectDistanceRange", 41996, 3), new c31("ImageUniqueID", 42016, 2), new c31("CameraOwnerName", 42032, 2), new c31("BodySerialNumber", 42033, 2), new c31("LensSpecification", 42034, 5), new c31("LensMake", 42035, 2), new c31("LensModel", 42036, 2), new c31("Gamma", 42240, 5), new c31("DNGVersion", 50706, 1), new c31("DefaultCropSize", 50720, 3, 4)};
+        c31[] r71 = {new c31("GPSVersionID", 0, 1), new c31("GPSLatitudeRef", 1, 2), new c31("GPSLatitude", 2, 5, 10), new c31("GPSLongitudeRef", 3, 2), new c31("GPSLongitude", 4, 5, 10), new c31("GPSAltitudeRef", 5, 1), new c31("GPSAltitude", 6, 5), new c31("GPSTimeStamp", 7, 5), new c31("GPSSatellites", 8, 2), new c31("GPSStatus", 9, 2), new c31("GPSMeasureMode", 10, 2), new c31("GPSDOP", 11, 5), new c31("GPSSpeedRef", 12, 2), new c31("GPSSpeed", 13, 5), new c31("GPSTrackRef", 14, 2), new c31("GPSTrack", 15, 5), new c31("GPSImgDirectionRef", 16, 2), new c31("GPSImgDirection", 17, 5), new c31("GPSMapDatum", 18, 2), new c31("GPSDestLatitudeRef", 19, 2), new c31("GPSDestLatitude", 20, 5), new c31("GPSDestLongitudeRef", 21, 2), new c31("GPSDestLongitude", 22, 5), new c31("GPSDestBearingRef", 23, 2), new c31("GPSDestBearing", 24, 5), new c31("GPSDestDistanceRef", 25, 2), new c31("GPSDestDistance", 26, 5), new c31("GPSProcessingMethod", 27, 7), new c31("GPSAreaInformation", 28, 7), new c31("GPSDateStamp", 29, 2), new c31("GPSDifferential", 30, 3), new c31("GPSHPositioningError", 31, 5)};
+        c31[] r72 = {new c31("InteroperabilityIndex", 1, 2)};
+        c31[] r73 = {new c31("NewSubfileType", 254, 4), new c31("SubfileType", 255, 4), new c31("ThumbnailImageWidth", 256, 3, 4), new c31("ThumbnailImageLength", 257, 3, 4), new c31("BitsPerSample", 258, 3), new c31("Compression", 259, 3), new c31("PhotometricInterpretation", 262, 3), new c31("ImageDescription", 270, 2), new c31("Make", 271, 2), new c31("Model", 272, 2), new c31("StripOffsets", 273, 3, 4), new c31("ThumbnailOrientation", 274, 3), new c31("SamplesPerPixel", 277, 3), new c31("RowsPerStrip", 278, 3, 4), new c31("StripByteCounts", 279, 3, 4), new c31("XResolution", 282, 5), new c31("YResolution", 283, 5), new c31("PlanarConfiguration", 284, 3), new c31("ResolutionUnit", 296, 3), new c31("TransferFunction", 301, 3), new c31("Software", 305, 2), new c31("DateTime", 306, 2), new c31("Artist", 315, 2), new c31("WhitePoint", 318, 5), new c31("PrimaryChromaticities", 319, 5), new c31("SubIFDPointer", 330, 4), new c31("JPEGInterchangeFormat", 513, 4), new c31("JPEGInterchangeFormatLength", 514, 4), new c31("YCbCrCoefficients", 529, 5), new c31("YCbCrSubSampling", 530, 3), new c31("YCbCrPositioning", 531, 3), new c31("ReferenceBlackWhite", 532, 5), new c31("Copyright", 33432, 2), new c31("ExifIFDPointer", 34665, 4), new c31("GPSInfoIFDPointer", 34853, 4), new c31("DNGVersion", 50706, 1), new c31("DefaultCropSize", 50720, 3, 4)};
         E = new c31("StripOffsets", 273, 3);
-        F = new c31[][]{c31VarArr, c31VarArr2, c31VarArr3, c31VarArr4, c31VarArr5, c31VarArr, new c31[]{new c31("ThumbnailImage", 256, 7), new c31("CameraSettingsIFDPointer", 8224, 4), new c31("ImageProcessingIFDPointer", 8256, 4)}, new c31[]{new c31("PreviewImageStart", 257, 4), new c31("PreviewImageLength", 258, 4)}, new c31[]{new c31("AspectFrame", 4371, 3)}, new c31[]{new c31("ColorSpace", 55, 3)}};
+        F = new c31[][]{r69, r70, r71, r72, r73, r69, new c31[]{new c31("ThumbnailImage", 256, 7), new c31("CameraSettingsIFDPointer", 8224, 4), new c31("ImageProcessingIFDPointer", 8256, 4)}, new c31[]{new c31("PreviewImageStart", 257, 4), new c31("PreviewImageLength", 258, 4)}, new c31[]{new c31("AspectFrame", 4371, 3)}, new c31[]{new c31("ColorSpace", 55, 3)}};
         G = new c31[]{new c31("SubIFDPointer", 330, 4), new c31("ExifIFDPointer", 34665, 4), new c31("GPSInfoIFDPointer", 34853, 4), new c31("InteroperabilityIFDPointer", 40965, 4), new c31("CameraSettingsIFDPointer", 8224, 1), new c31("ImageProcessingIFDPointer", 8256, 1)};
         H = new HashMap[10];
         I = new HashMap[10];
-        J = new HashSet(Arrays.asList("FNumber", "DigitalZoomRatio", "ExposureTime", "SubjectDistance", "GPSTimeStamp"));
+        J = new HashSet(Arrays.asList(new String[]{"FNumber", "DigitalZoomRatio", "ExposureTime", "SubjectDistance", "GPSTimeStamp"}));
         K = new HashMap();
-        Charset charsetForName = Charset.forName("US-ASCII");
-        L = charsetForName;
-        M = "Exif\u0000\u0000".getBytes(charsetForName);
-        N = "http://ns.adobe.com/xap/1.0/\u0000".getBytes(charsetForName);
-        Locale locale = Locale.US;
-        new SimpleDateFormat("yyyy:MM:dd HH:mm:ss", locale).setTimeZone(TimeZone.getTimeZone("UTC"));
-        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", locale).setTimeZone(TimeZone.getTimeZone("UTC"));
-        int i = 0;
-        while (true) {
-            c31[][] c31VarArr6 = F;
-            if (i >= c31VarArr6.length) {
-                HashMap map = K;
-                c31[] c31VarArr7 = G;
-                map.put(Integer.valueOf(c31VarArr7[0].a), 5);
-                map.put(Integer.valueOf(c31VarArr7[1].a), 1);
-                map.put(Integer.valueOf(c31VarArr7[2].a), 2);
-                map.put(Integer.valueOf(c31VarArr7[3].a), 3);
-                map.put(Integer.valueOf(c31VarArr7[4].a), 7);
-                map.put(Integer.valueOf(c31VarArr7[5].a), 8);
-                Pattern.compile(".*[1-9].*");
-                Pattern.compile("^(\\d{2}):(\\d{2}):(\\d{2})$");
-                Pattern.compile("^(\\d{4}):(\\d{2}):(\\d{2})\\s(\\d{2}):(\\d{2}):(\\d{2})$");
-                Pattern.compile("^(\\d{4})-(\\d{2})-(\\d{2})\\s(\\d{2}):(\\d{2}):(\\d{2})$");
-                return;
-            }
-            H[i] = new HashMap();
-            I[i] = new HashMap();
-            for (c31 c31Var : c31VarArr6[i]) {
-                H[i].put(Integer.valueOf(c31Var.a), c31Var);
-                I[i].put(c31Var.b, c31Var);
-            }
-            i++;
-        }
+        Charset r0 = Charset.forName("US-ASCII");
+        L = r0;
+        M = "Exif\u0000\u0000".getBytes(r0);
+        N = "http://ns.adobe.com/xap/1.0/\u0000".getBytes(r0);
+        Locale r1 = Locale.US;
+        new SimpleDateFormat("yyyy:MM:dd HH:mm:ss", r1).setTimeZone(TimeZone.getTimeZone("UTC"));
+        new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", r1).setTimeZone(TimeZone.getTimeZone("UTC"));
+        int r2 = 0;
+    L3:
+        c31[][] r3 = F;
+        if (r2 >= r3.length) goto L9;
+        H[r2] = new HashMap();
+        I[r2] = new HashMap();
+        c31[] r4 = r3[r2];
+        int r5 = r4.length;
+        int r6 = 0;
+    L6:
+        if (r6 >= r5) goto L8;
+        c31 r7 = r4[r6];
+        H[r2].put(Integer.valueOf(r7.a), r7);
+        I[r2].put(r7.b, r7);
+        r6 = r6 + 1;
+        goto L6
+    L8:
+        r2 = r2 + 1;
+        goto L3
+    L9:
+        HashMap r8 = K;
+        c31[] r9 = G;
+        r8.put(Integer.valueOf(r9[0].a), 5);
+        r8.put(Integer.valueOf(r9[1].a), 1);
+        r8.put(Integer.valueOf(r9[2].a), 2);
+        r8.put(Integer.valueOf(r9[3].a), 3);
+        r8.put(Integer.valueOf(r9[4].a), 7);
+        r8.put(Integer.valueOf(r9[5].a), 8);
+        Pattern.compile(".*[1-9].*");
+        Pattern.compile("^(\\d{2}):(\\d{2}):(\\d{2})$");
+        Pattern.compile("^(\\d{4}):(\\d{2}):(\\d{2})\\s(\\d{2}):(\\d{2}):(\\d{2})$");
+        Pattern.compile("^(\\d{4})-(\\d{2})-(\\d{2})\\s(\\d{2}):(\\d{2}):(\\d{2})$");
     }
 
-    /* JADX WARN: Code duplicated, block: B:53:0x00d8 A[Catch: all -> 0x005e, TRY_ENTER, TRY_LEAVE, TryCatch #3 {all -> 0x005e, blocks: (B:14:0x004f, B:16:0x0052, B:23:0x0067, B:29:0x0084, B:31:0x008f, B:39:0x00a5, B:34:0x0096, B:37:0x009e, B:38:0x00a2, B:40:0x00af, B:42:0x00b8, B:44:0x00be, B:46:0x00c4, B:48:0x00ca, B:53:0x00d8), top: B:65:0x004f }] */
-    /* JADX WARN: Code duplicated, block: B:68:? A[RETURN, SYNTHETIC] */
-    public f31(InputStream inputStream) throws IOException {
-        c31[][] c31VarArr = F;
-        this.d = new HashMap[c31VarArr.length];
-        this.e = new HashSet(c31VarArr.length);
+    public f31(InputStream r10) {
+        c31[][] r0 = F;
+        this.d = new HashMap[r0.length];
+        this.e = new HashSet(r0.length);
         this.f = ByteOrder.BIG_ENDIAN;
-        boolean z2 = inputStream instanceof AssetManager.AssetInputStream;
-        boolean z3 = l;
-        if (z2) {
-            this.b = (AssetManager.AssetInputStream) inputStream;
-            this.a = null;
-        } else if (inputStream instanceof FileInputStream) {
-            FileInputStream fileInputStream = (FileInputStream) inputStream;
-            try {
-                h31.c(fileInputStream.getFD(), 0L, OsConstants.SEEK_CUR);
-                this.b = null;
-                this.a = fileInputStream.getFD();
-            } catch (Exception unused) {
-                if (z3) {
-                    Log.d("ExifInterface", "The file descriptor for the given input is not seekable");
-                }
-                this.b = null;
-                this.a = null;
-            }
-        } else {
-            this.b = null;
-            this.a = null;
-        }
-        for (int i = 0; i < c31VarArr.length; i++) {
-            try {
-                try {
-                    this.d[i] = new HashMap();
-                } catch (Throwable th) {
-                    a();
-                    if (z3) {
-                        p();
-                    }
-                    throw th;
-                }
-            } catch (IOException e) {
-                e = e;
-                if (z3) {
-                    Log.w("ExifInterface", "Invalid image: ExifInterface got an unsupported image format file(ExifInterface supports JPEG and some RAW image formats only) or a corrupted JPEG file to ExifInterface.", e);
-                }
-                a();
-                if (!z3) {
-                    return;
-                }
-            } catch (UnsupportedOperationException e2) {
-                e = e2;
-                if (z3) {
-                    Log.w("ExifInterface", "Invalid image: ExifInterface got an unsupported image format file(ExifInterface supports JPEG and some RAW image formats only) or a corrupted JPEG file to ExifInterface.", e);
-                }
-                a();
-                if (!z3) {
-                    return;
-                }
-            }
-        }
-        BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream, SmartSession.MAX_SONGS);
-        int iF = f(bufferedInputStream);
-        this.c = iF;
-        if (iF == 4 || iF == 9 || iF == 13 || iF == 14) {
-            a31 a31Var = new a31(bufferedInputStream);
-            int i2 = this.c;
-            if (i2 == 4) {
-                e(a31Var, 0, 0);
-            } else if (i2 == 13) {
-                h(a31Var);
-            } else if (i2 == 9) {
-                i(a31Var);
-            } else if (i2 == 14) {
-                l(a31Var);
-            }
-        } else {
-            e31 e31Var = new e31(bufferedInputStream);
-            int i3 = this.c;
-            if (i3 == 12) {
-                d(e31Var);
-            } else if (i3 == 7) {
-                g(e31Var);
-            } else if (i3 == 10) {
-                k(e31Var);
-            } else {
-                j(e31Var);
-            }
-            e31Var.f(this.h);
-            u(e31Var);
-        }
+        boolean r1 = r10 instanceof AssetManager.AssetInputStream;
+        boolean r2 = l;
+        if (r1 == false) goto L6;
+        this.b = (AssetManager.AssetInputStream) r10;
+        this.a = null;
+    L13:
+        int r4 = 0;
+    L65:
+    L17:
+        th = move-exception;
         a();
-        if (!z3) {
-            return;
-        }
+        if (r2 == false) goto L58;
         p();
+    L58:
+        throw th;
+    L21:
+        e = e;
+    L52:
+        if (r2 == false) goto L59;
+        Log.w("ExifInterface", "Invalid image: ExifInterface got an unsupported image format file(ExifInterface supports JPEG and some RAW image formats only) or a corrupted JPEG file to ExifInterface.", e);     // Catch: Throwable -> L17
+    L59:
+        a();
+        if (r2 == false) goto L68;
+    L51:
+        p();
+        return;
+    L68:
+        return;
+    L19:
+        e = e;
+        goto L52
+    L15:
+        if (r4 >= r0.length) goto L23;
+        this.d[r4] = new HashMap();     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        r4 = r4 + 1;     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        goto L65
+    L23:
+        BufferedInputStream r3 = new BufferedInputStream(r10, SmartSession.MAX_SONGS);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        int r11 = f(r3);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        this.c = r11;     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        if (r11 == 4) goto L40;
+        if (r11 == 9) goto L40;
+        if (r11 == 13) goto L40;
+        if (r11 == 14) goto L40;
+        e31 r12 = new e31(r3);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        int r5 = this.c;     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        if (r5 != 12) goto L33;
+        d(r12);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+    L39:
+        r12.f(this.h);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        u(r12);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+    L49:
+        a();
+        if (r2 == true) goto L51;
+        return;
+    L33:
+        if (r5 != 7) goto L36;
+        g(r12);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        goto L39
+    L36:
+        if (r5 != 10) goto L38;
+        k(r12);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        goto L39
+    L38:
+        j(r12);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+    L40:
+        a31 r13 = new a31(r3);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        int r6 = this.c;     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        if (r6 != 4) goto L43;
+        e(r13, 0, 0);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        goto L49
+    L43:
+        if (r6 != 13) goto L45;
+        h(r13);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        goto L49
+    L45:
+        if (r6 != 9) goto L47;
+        i(r13);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        goto L49
+    L47:
+        if (r6 != 14) goto L49;
+        l(r13);     // Catch: Throwable -> L17 UnsupportedOperationException -> L19 IOException -> L21
+        goto L49
+    L6:
+        if ((r10 instanceof FileInputStream) == false) goto L12;
+        FileInputStream r7 = (FileInputStream) r10;
+        h31.c(r7.getFD(), 0, OsConstants.SEEK_CUR);     // Catch: Exception -> L10
+        this.b = null;
+        this.a = r7.getFD();
+    L10:
+        if (r2 == false) goto L12;
+        Log.d("ExifInterface", "The file descriptor for the given input is not seekable");
+    L12:
+        this.b = null;
+        this.a = null;
+        goto L13
     }
 
-    public static ByteOrder q(a31 a31Var) throws IOException {
-        short s2 = a31Var.readShort();
-        boolean z2 = l;
-        if (s2 == 18761) {
-            if (z2) {
-                Log.d("ExifInterface", "readExifSegment: Byte Align II");
-            }
-            return ByteOrder.LITTLE_ENDIAN;
-        }
-        if (s2 != 19789) {
-            mj0.m(Integer.toHexString(s2), "Invalid byte order: ");
-            return null;
-        }
-        if (z2) {
-            Log.d("ExifInterface", "readExifSegment: Byte Align MM");
-        }
+    public static ByteOrder q(a31 r3) {
+        short r4 = r3.readShort();
+        boolean r2 = l;
+        if (r4 != 18761) goto L5;
+        if (r2 == false) goto L15;
+        Log.d("ExifInterface", "readExifSegment: Byte Align II");
+    L15:
+        return ByteOrder.LITTLE_ENDIAN;
+    L5:
+        if (r4 != 19789) goto L10;
+        if (r2 == false) goto L9;
+        Log.d("ExifInterface", "readExifSegment: Byte Align MM");
+    L9:
         return ByteOrder.BIG_ENDIAN;
+    L10:
+        mj0.m(Integer.toHexString(r4), "Invalid byte order: ");
+        return null;
     }
 
     public final void a() {
-        String strB = b("DateTimeOriginal");
-        HashMap[] mapArr = this.d;
-        if (strB != null && b("DateTime") == null) {
-            HashMap map = mapArr[0];
-            byte[] bytes = strB.concat("\u0000").getBytes(L);
-            map.put("DateTime", new b31(bytes, 2, bytes.length));
-        }
-        if (b("ImageWidth") == null) {
-            mapArr[0].put("ImageWidth", b31.a(0L, this.f));
-        }
-        if (b("ImageLength") == null) {
-            mapArr[0].put("ImageLength", b31.a(0L, this.f));
-        }
-        if (b("Orientation") == null) {
-            mapArr[0].put("Orientation", b31.a(0L, this.f));
-        }
-        if (b("LightSource") == null) {
-            mapArr[1].put("LightSource", b31.a(0L, this.f));
-        }
+        String r0 = b("DateTimeOriginal");
+        HashMap[] r2 = this.d;
+        if (r0 == null) goto L8;
+        if (b("DateTime") != null) goto L8;
+        HashMap r4 = r2[0];
+        byte[] r1 = r0.concat("\u0000").getBytes(L);
+        r4.put("DateTime", new b31(r1, 2, r1.length));
+    L8:
+        if (b("ImageWidth") != null) goto L11;
+        r2[0].put("ImageWidth", b31.a(0, this.f));
+    L11:
+        if (b("ImageLength") != null) goto L14;
+        r2[0].put("ImageLength", b31.a(0, this.f));
+    L14:
+        if (b("Orientation") != null) goto L17;
+        r2[0].put("Orientation", b31.a(0, this.f));
+    L17:
+        if (b("LightSource") != null) goto L20;
+        r2[1].put("LightSource", b31.a(0, this.f));
+        return;
     }
 
-    public final String b(String str) {
-        b31 b31VarC = c(str);
-        if (b31VarC != null) {
-            int i = b31VarC.a;
-            if (!J.contains(str)) {
-                return b31VarC.f(this.f);
-            }
-            if (str.equals("GPSTimeStamp")) {
-                if (i != 5 && i != 10) {
-                    Log.w("ExifInterface", "GPS Timestamp format is not rational. format=" + i);
-                    return null;
-                }
-                d31[] d31VarArr = (d31[]) b31VarC.g(this.f);
-                if (d31VarArr == null || d31VarArr.length != 3) {
-                    Log.w("ExifInterface", "Invalid GPS Timestamp array. array=" + Arrays.toString(d31VarArr));
-                    return null;
-                }
-                d31 d31Var = d31VarArr[0];
-                Integer numValueOf = Integer.valueOf((int) (d31Var.a / d31Var.b));
-                d31 d31Var2 = d31VarArr[1];
-                Integer numValueOf2 = Integer.valueOf((int) (d31Var2.a / d31Var2.b));
-                d31 d31Var3 = d31VarArr[2];
-                return String.format("%02d:%02d:%02d", numValueOf, numValueOf2, Integer.valueOf((int) (d31Var3.a / d31Var3.b)));
-            }
-            try {
-                return Double.toString(b31VarC.d(this.f));
-            } catch (NumberFormatException unused) {
-            }
-        }
+    public final String b(String r5) {
+        b31 r0 = c(r5);
+        if (r0 == null) goto L27;
+        int r2 = r0.a;
+        if (J.contains(r5) == true) goto L9;
+        return r0.f(this.f);
+    L9:
+        if (r5.equals("GPSTimeStamp") == true) goto L11;
+        return Double.toString(r0.d(this.f));
+    L11:
+        if (r2 != 5) goto L13;
+    L16:
+        d31[] r4 = (d31[]) r0.g(this.f);
+        if (r4 != null) goto L19;
+    L23:
+        Log.w("ExifInterface", "Invalid GPS Timestamp array. array=" + Arrays.toString(r4));
+        return null;
+    L19:
+        if (r4.length != 3) goto L23;
+        d31 r6 = r4[0];
+        Integer r7 = Integer.valueOf((int) (r6.a / r6.b));
+        d31 r1 = r4[1];
+        Integer r3 = Integer.valueOf((int) (r1.a / r1.b));
+        d31 r8 = r4[2];
+        return String.format("%02d:%02d:%02d", new Object[]{r7, r3, Integer.valueOf((int) (r8.a / r8.b))});
+    L13:
+        if (r2 == 10) goto L16;
+        Log.w("ExifInterface", "GPS Timestamp format is not rational. format=" + r2);
+        return null;
+    L27:
         return null;
     }
 
-    public final b31 c(String str) {
-        if ("ISOSpeedRatings".equals(str)) {
-            if (l) {
-                Log.d("ExifInterface", "getExifAttribute: Replacing TAG_ISO_SPEED_RATINGS with TAG_PHOTOGRAPHIC_SENSITIVITY.");
-            }
-            str = "PhotographicSensitivity";
-        }
-        for (int i = 0; i < F.length; i++) {
-            b31 b31Var = (b31) this.d[i].get(str);
-            if (b31Var != null) {
-                return b31Var;
-            }
-        }
+    public final b31 c(String r3) {
+        if ("ISOSpeedRatings".equals(r3) == true) goto L5;
+    L8:
+        int r0 = 0;
+    L10:
+        if (r0 >= F.length) goto L15;
+        b31 r1 = (b31) this.d[r0].get(r3);
+        if (r1 != null) goto L13;
+        r0 = r0 + 1;
+        goto L10
+    L13:
+        return r1;
+    L15:
         return null;
+    L5:
+        if (l == false) goto L7;
+        Log.d("ExifInterface", "getExifAttribute: Replacing TAG_ISO_SPEED_RATINGS with TAG_PHOTOGRAPHIC_SENSITIVITY.");
+    L7:
+        r3 = "PhotographicSensitivity";
+        goto L8
     }
 
-    public final void d(e31 e31Var) throws IOException {
-        String strExtractMetadata;
-        String strExtractMetadata2;
-        String strExtractMetadata3;
-        int i;
-        if (Build.VERSION.SDK_INT < 28) {
-            er1.l("Reading EXIF from HEIF files is supported from SDK 28 and above");
-            return;
-        }
-        MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
-        try {
-            try {
-                i31.a(mediaMetadataRetriever, new z21(e31Var));
-                String strExtractMetadata4 = mediaMetadataRetriever.extractMetadata(33);
-                String strExtractMetadata5 = mediaMetadataRetriever.extractMetadata(34);
-                String strExtractMetadata6 = mediaMetadataRetriever.extractMetadata(26);
-                String strExtractMetadata7 = mediaMetadataRetriever.extractMetadata(17);
-                if ("yes".equals(strExtractMetadata6)) {
-                    strExtractMetadata = mediaMetadataRetriever.extractMetadata(29);
-                    strExtractMetadata2 = mediaMetadataRetriever.extractMetadata(30);
-                    strExtractMetadata3 = mediaMetadataRetriever.extractMetadata(31);
-                } else if ("yes".equals(strExtractMetadata7)) {
-                    strExtractMetadata = mediaMetadataRetriever.extractMetadata(18);
-                    strExtractMetadata2 = mediaMetadataRetriever.extractMetadata(19);
-                    strExtractMetadata3 = mediaMetadataRetriever.extractMetadata(24);
-                } else {
-                    strExtractMetadata = null;
-                    strExtractMetadata2 = null;
-                    strExtractMetadata3 = null;
-                }
-                HashMap[] mapArr = this.d;
-                if (strExtractMetadata != null) {
-                    mapArr[0].put("ImageWidth", b31.c(Integer.parseInt(strExtractMetadata), this.f));
-                }
-                if (strExtractMetadata2 != null) {
-                    mapArr[0].put("ImageLength", b31.c(Integer.parseInt(strExtractMetadata2), this.f));
-                }
-                if (strExtractMetadata3 != null) {
-                    int i2 = Integer.parseInt(strExtractMetadata3);
-                    if (i2 == 90) {
-                        i = 6;
-                    } else if (i2 != 180) {
-                        i = i2 != 270 ? 1 : 8;
-                    } else {
-                        i = 3;
-                    }
-                    mapArr[0].put("Orientation", b31.c(i, this.f));
-                }
-                if (strExtractMetadata4 != null && strExtractMetadata5 != null) {
-                    int i3 = Integer.parseInt(strExtractMetadata4);
-                    int i4 = Integer.parseInt(strExtractMetadata5);
-                    if (i4 <= 6) {
-                        throw new IOException("Invalid exif length");
-                    }
-                    e31Var.f(i3);
-                    byte[] bArr = new byte[6];
-                    if (e31Var.read(bArr) != 6) {
-                        throw new IOException("Can't read identifier");
-                    }
-                    int i5 = i3 + 6;
-                    int i6 = i4 - 6;
-                    if (!Arrays.equals(bArr, M)) {
-                        throw new IOException("Invalid identifier");
-                    }
-                    byte[] bArr2 = new byte[i6];
-                    if (e31Var.read(bArr2) != i6) {
-                        throw new IOException("Can't read exif");
-                    }
-                    this.h = i5;
-                    r(0, bArr2);
-                }
-                if (l) {
-                    Log.d("ExifInterface", "Heif meta: " + strExtractMetadata + "x" + strExtractMetadata2 + ", rotation " + strExtractMetadata3);
-                }
-                mediaMetadataRetriever.release();
-            } catch (RuntimeException unused) {
-                throw new UnsupportedOperationException("Failed to read EXIF from HEIF file. Given stream is either malformed or unsupported.");
-            }
-        } catch (Throwable th) {
-            mediaMetadataRetriever.release();
-            throw th;
-        }
+    public final void d(e31 r14) {
+        if (Build.VERSION.SDK_INT < 28) goto L61;
+        MediaMetadataRetriever r2 = new MediaMetadataRetriever();
+        i31.a(r2, new z21(r14));     // Catch: Throwable -> L8 RuntimeException -> L57
+        String r3 = r2.extractMetadata(33);     // Catch: Throwable -> L8 RuntimeException -> L57
+        String r4 = r2.extractMetadata(34);     // Catch: Throwable -> L8 RuntimeException -> L57
+        String r5 = r2.extractMetadata(26);     // Catch: Throwable -> L8 RuntimeException -> L57
+        String r6 = r2.extractMetadata(17);     // Catch: Throwable -> L8 RuntimeException -> L57
+        if ("yes".equals(r5) == false) goto L11;
+        String r0 = r2.extractMetadata(29);     // Catch: Throwable -> L8 RuntimeException -> L57
+        String r7 = r2.extractMetadata(30);     // Catch: Throwable -> L8 RuntimeException -> L57
+        String r8 = r2.extractMetadata(31);     // Catch: Throwable -> L8 RuntimeException -> L57
+    L15:
+        HashMap[] r9 = this.d;
+        if (r0 == null) goto L18;
+        r9[0].put("ImageWidth", b31.c(Integer.parseInt(r0), this.f));     // Catch: Throwable -> L8 RuntimeException -> L57
+    L18:
+        if (r7 == null) goto L21;
+        r9[0].put("ImageLength", b31.c(Integer.parseInt(r7), this.f));     // Catch: Throwable -> L8 RuntimeException -> L57
+    L21:
+        if (r8 == null) goto L33;
+        int r10 = Integer.parseInt(r8);     // Catch: Throwable -> L8 RuntimeException -> L57
+        if (r10 != 90) goto L25;
+        int r11 = 6;
+    L32:
+        r9[0].put("Orientation", b31.c(r11, this.f));     // Catch: Throwable -> L8 RuntimeException -> L57
+        goto L33
+    L25:
+        if (r10 != 180) goto L27;
+        r11 = 3;
+        goto L32
+    L27:
+        if (r10 == 270) goto L29;
+        r11 = 1;
+        goto L32
+    L29:
+        r11 = 8;
+    L33:
+        if (r3 == null) goto L53;
+        if (r4 == null) goto L53;
+        int r12 = Integer.parseInt(r3);     // Catch: Throwable -> L8 RuntimeException -> L57
+        int r13 = Integer.parseInt(r4);     // Catch: Throwable -> L8 RuntimeException -> L57
+        if (r13 <= 6) goto L51;
+        r14.f(r12);     // Catch: Throwable -> L8 RuntimeException -> L57
+        byte[] r15 = new byte[6];     // Catch: Throwable -> L8 RuntimeException -> L57
+        if (r14.read(r15) != 6) goto L49;
+        int r16 = r12 + 6;     // Catch: Throwable -> L8 RuntimeException -> L57
+        int r17 = r13 - 6;     // Catch: Throwable -> L8 RuntimeException -> L57
+        if (Arrays.equals(r15, M) == false) goto L47;
+        byte[] r18 = new byte[r17];     // Catch: Throwable -> L8 RuntimeException -> L57
+        if (r14.read(r18) != r17) goto L45;
+        this.h = r16;     // Catch: Throwable -> L8 RuntimeException -> L57
+        r(0, r18);     // Catch: Throwable -> L8 RuntimeException -> L57
+        goto L53
+    L45:
+        throw new IOException("Can't read exif");     // Catch: Throwable -> L8 RuntimeException -> L57
+    L47:
+        throw new IOException("Invalid identifier");     // Catch: Throwable -> L8 RuntimeException -> L57
+    L49:
+        throw new IOException("Can't read identifier");     // Catch: Throwable -> L8 RuntimeException -> L57
+    L51:
+        throw new IOException("Invalid exif length");     // Catch: Throwable -> L8 RuntimeException -> L57
+    L53:
+        if (l == false) goto L55;
+        Log.d("ExifInterface", "Heif meta: " + r0 + "x" + r7 + ", rotation " + r8);     // Catch: Throwable -> L8 RuntimeException -> L57
+    L55:
+        r2.release();
+        return;
+    L11:
+        if ("yes".equals(r6) == false) goto L14;
+        r0 = r2.extractMetadata(18);     // Catch: Throwable -> L8 RuntimeException -> L57
+        r7 = r2.extractMetadata(19);     // Catch: Throwable -> L8 RuntimeException -> L57
+        r8 = r2.extractMetadata(24);     // Catch: Throwable -> L8 RuntimeException -> L57
+        goto L15
+    L14:
+        r0 = null;
+        r7 = null;
+        r8 = null;
+        goto L15
+    L58:
+        throw new UnsupportedOperationException("Failed to read EXIF from HEIF file. Given stream is either malformed or unsupported.");     // Catch: Throwable -> L8
+    L8:
+        th = move-exception;
+        r2.release();
+        throw th;
+    L61:
+        er1.l("Reading EXIF from HEIF files is supported from SDK 28 and above");
     }
 
-    /* JADX WARN: Code duplicated, block: B:103:0x0147 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:104:0x0188 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:34:0x00ac A[FALL_THROUGH] */
-    /* JADX WARN: Code duplicated, block: B:36:0x00b3  */
-    /* JADX WARN: Code duplicated, block: B:37:0x00b6  */
-    /* JADX WARN: Code duplicated, block: B:40:0x00ca  */
-    /* JADX WARN: Code duplicated, block: B:41:0x00cd  */
-    /* JADX WARN: Code duplicated, block: B:71:0x013d  */
-    /* JADX WARN: Code duplicated, block: B:74:0x0144 A[LOOP:2: B:69:0x013a->B:74:0x0144, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:77:0x0156  */
-    /*  JADX ERROR: UnsupportedOperationException in pass: RegionMakerVisitor
-        java.lang.UnsupportedOperationException
-        	at java.base/java.util.Collections$UnmodifiableCollection.add(Collections.java:1068)
-        	at jadx.core.dex.visitors.regions.maker.SwitchRegionMaker$1.leaveRegion(SwitchRegionMaker.java:419)
-        	at jadx.core.dex.visitors.regions.DepthRegionTraversal.traverseInternal(DepthRegionTraversal.java:91)
-        	at jadx.core.dex.visitors.regions.DepthRegionTraversal.traverse(DepthRegionTraversal.java:31)
-        	at jadx.core.dex.visitors.regions.maker.SwitchRegionMaker.insertBreaksForCase(SwitchRegionMaker.java:399)
-        	at jadx.core.dex.visitors.regions.maker.SwitchRegionMaker.insertBreaks(SwitchRegionMaker.java:89)
-        	at jadx.core.dex.visitors.regions.PostProcessRegions.leaveRegion(PostProcessRegions.java:31)
-        	at jadx.core.dex.visitors.regions.DepthRegionTraversal.traverseInternal(DepthRegionTraversal.java:91)
-        	at jadx.core.dex.visitors.regions.DepthRegionTraversal.traverse(DepthRegionTraversal.java:27)
-        	at jadx.core.dex.visitors.regions.PostProcessRegions.process(PostProcessRegions.java:21)
-        	at jadx.core.dex.visitors.regions.RegionMakerVisitor.visit(RegionMakerVisitor.java:31)
-        */
-    public final void e(defpackage.a31 r23, int r24, int r25) throws java.io.IOException {
-        /*
-            Method dump skipped, instruction units count: 492
-            To view this dump add '--comments-level debug' option
-        */
-        throw new UnsupportedOperationException("Method not decompiled: defpackage.f31.e(a31, int, int):void");
+    public final void e(a31 r23, int r24, int r25) {
+        boolean r4 = l;
+        if (r4 == false) goto L5;
+        Log.d("ExifInterface", "getJpegAttributes starting with: " + r23);
+    L5:
+        r23.o = ByteOrder.BIG_ENDIAN;
+        byte r5 = r23.readByte();
+        byte r7 = -1;
+        if (r5 == (-1)) goto L8;
+        mj0.m(Integer.toHexString(r5 & 255), "Invalid marker: ");
+        return;
+    L8:
+        if (r23.readByte() != (-40)) goto L91;
+        int r6 = 2;
+        int r8 = 2;
+    L10:
+        byte r9 = r23.readByte();
+        if (r9 != r7) goto L89;
+        byte r10 = r23.readByte();
+        if (r4 == false) goto L16;
+        Log.d("ExifInterface", "Found JPEG segment indicator: " + Integer.toHexString(r10 & 255));
+    L16:
+        if (r10 == (-39)) goto L87;
+        if (r10 == (-38)) goto L87;
+        int r11 = r23.readUnsignedShort();
+        int r12 = r11 - 2;
+        int r13 = r8 + 4;
+        if (r4 == false) goto L24;
+        Log.d("ExifInterface", "JPEG segment: " + Integer.toHexString(r10 & 255) + " (length: " + r11 + ")");
+    L24:
+        if (r12 < 0) goto L85;
+        int r14 = 0;
+        HashMap[] r15 = this.d;
+        if (r10 != (-31)) goto L28;
+        byte[] r16 = new byte[r12];
+        r23.readFully(r16);
+        int r17 = r13 + r12;
+        byte[] r18 = M;
+        if (r18 != null) goto L55;
+    L62:
+        byte[] r19 = N;
+        if (r19 != null) goto L66;
+    L80:
+        r13 = r17;
+        r12 = 0;
+    L81:
+        if (r12 < 0) goto L83;
+        r23.b(r12);
+        r8 = r13 + r12;
+        r6 = 2;
+        r7 = -1;
+        goto L10
+    L83:
+        mj0.i("Invalid length");
+        return;
+    L66:
+        if (r12 < r19.length) goto L80;
+        int r20 = r14;
+    L70:
+        if (r20 >= r19.length) goto L75;
+        if (r16[r20] != r19[r20]) goto L80;
+        r20 = r20 + 1;
+        goto L70
+    L75:
+        int r21 = r13 + r19.length;
+        byte[] r22 = Arrays.copyOfRange(r16, r19.length, r12);
+        if (b("Xmp") != null) goto L80;
+        r15[r14].put("Xmp", new b31(r21, r22, 1, r22.length));
+        goto L80
+    L55:
+        if (r12 < r18.length) goto L62;
+        int r110 = 0;
+    L59:
+        if (r110 >= r18.length) goto L79;
+        if (r16[r110] != r18[r110]) goto L62;
+        r110 = r110 + 1;
+        r14 = 0;
+        goto L59
+    L79:
+        byte[] r26 = Arrays.copyOfRange(r16, r18.length, r12);
+        this.h = (r24 + r13) + r18.length;
+        r(r25, r26);
+        u(new a31(r26));
+        goto L80
+    L28:
+        if (r10 == (-2)) goto L43;
+        switch(r10) {
+            case -64: goto L34;
+            case -63: goto L34;
+            case -62: goto L34;
+            case -61: goto L34;
+            default: goto L30;
+        };
+    L30:
+        switch(r10) {
+            case -59: goto L34;
+            case -58: goto L34;
+            case -57: goto L34;
+            default: goto L31;
+        };
+    L31:
+        switch(r10) {
+            case -55: goto L34;
+            case -54: goto L34;
+            case -53: goto L34;
+            default: goto L32;
+        };
+    L32:
+        switch(r10) {
+            case -51: goto L34;
+            case -50: goto L34;
+            case -49: goto L34;
+            default: goto L81;
+        };
+    L34:
+        r23.b(1);
+        HashMap r27 = r15[r25];
+        if (r25 == 4) goto L37;
+        String r28 = "ImageLength";
+    L38:
+        r27.put(r28, b31.a(r23.readUnsignedShort(), this.f));
+        HashMap r29 = r15[r25];
+        if (r25 == 4) goto L41;
+        String r30 = "ImageWidth";
+    L42:
+        r29.put(r30, b31.a(r23.readUnsignedShort(), this.f));
+        r12 = r11 - 7;
+        goto L81
+    L41:
+        r30 = "ThumbnailImageWidth";
+        goto L42
+    L37:
+        r28 = "ThumbnailImageLength";
+        goto L38
+    L43:
+        byte[] r31 = new byte[r12];
+        if (r23.read(r31) != r12) goto L49;
+        if (b("UserComment") != null) goto L48;
+        HashMap r32 = r15[1];
+        Charset r111 = L;
+        byte[] r33 = new String(r31, r111).concat("\u0000").getBytes(r111);
+        r32.put("UserComment", new b31(r33, r6, r33.length));
+    L48:
+        r12 = 0;
+        goto L81
+    L49:
+        mj0.i("Invalid exif");
+        return;
+    L85:
+        mj0.i("Invalid length");
+        return;
+    L87:
+        r23.o = this.f;
+        return;
+    L89:
+        mj0.m(Integer.toHexString(r9 & 255), "Invalid marker:");
+        return;
+    L91:
+        mj0.m(Integer.toHexString(r5 & 255), "Invalid marker: ");
     }
 
-    /* JADX WARN: Code duplicated, block: B:109:0x013f A[RETURN] */
-    /* JADX WARN: Code duplicated, block: B:111:0x0142  */
-    /* JADX WARN: Code duplicated, block: B:114:0x0149  */
-    /* JADX WARN: Code duplicated, block: B:119:0x0156  */
-    /* JADX WARN: Code duplicated, block: B:122:0x015d A[LOOP:3: B:117:0x0151->B:122:0x015d, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:126:0x0167  */
-    /* JADX WARN: Code duplicated, block: B:129:0x0171 A[LOOP:4: B:124:0x0162->B:129:0x0171, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:132:0x0177 A[LOOP:2: B:112:0x0144->B:132:0x0177, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:136:0x017f  */
-    /* JADX WARN: Code duplicated, block: B:152:0x010e A[EXC_TOP_SPLITTER, SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:163:0x017a A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:164:0x014f A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:165:0x0160 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:166:0x0170 A[EDGE_INSN: B:166:0x0170->B:128:0x0170 BREAK  A[LOOP:3: B:117:0x0151->B:122:0x015d], SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:167:0x0174 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:168:0x0170 A[EDGE_INSN: B:168:0x0170->B:128:0x0170 BREAK  A[LOOP:3: B:117:0x0151->B:122:0x015d], SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:64:0x00ca A[Catch: all -> 0x0065, TRY_LEAVE, TryCatch #1 {all -> 0x0065, blocks: (B:14:0x0039, B:19:0x005a, B:30:0x0076, B:33:0x007c, B:34:0x0082, B:38:0x008c, B:44:0x009b, B:47:0x00a5, B:62:0x00c6, B:64:0x00ca), top: B:145:0x0034 }] */
-    /* JADX WARN: Code duplicated, block: B:71:0x00e9  */
-    /* JADX WARN: Code duplicated, block: B:75:0x00f1  */
-    /* JADX WARN: Code duplicated, block: B:89:0x010c A[RETURN] */
-    /* JADX WARN: Code duplicated, block: B:96:0x0124  */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r4v5 */
     /* JADX WARN: Type inference failed for: r4v6, types: [java.io.InputStream] */
     /* JADX WARN: Type inference failed for: r4v7 */
     /* JADX WARN: Type inference failed for: r7v0 */
-    public final int f(BufferedInputStream bufferedInputStream) throws Throwable {
-        int i;
-        a31 a31Var;
-        a31 a31Var2;
-        int i2;
-        int i3;
-        int i4;
-        byte[] bArr;
-        int i5;
-        byte[] bArr2;
-        int i6;
-        byte[] bArr3;
-        a31 a31Var3;
-        short s2;
-        long j;
-        bufferedInputStream.mark(SmartSession.MAX_SONGS);
-        byte[] bArr4 = new byte[SmartSession.MAX_SONGS];
-        bufferedInputStream.read(bArr4);
-        bufferedInputStream.reset();
-        int i7 = 0;
-        while (true) {
-            byte[] bArr5 = o;
-            if (i7 >= bArr5.length) {
-                return 4;
-            }
-            if (bArr4[i7] != bArr5[i7]) {
-                byte[] bytes = "FUJIFILMCCD-RAW".getBytes(Charset.defaultCharset());
-                for (int i8 = 0; i8 < bytes.length; i8++) {
-                    byte b = bArr4[i8];
-                    ?? r7 = bytes[i8];
-                    if (b != r7) {
-                        ?? r4 = 0;
-                        a31 a31Var4 = null;
-                        a31 a31Var5 = null;
-                        a31 a31Var6 = null;
-                        try {
-                            try {
-                                try {
-                                    try {
-                                        a31Var = new a31(bArr4);
-                                        try {
-                                            long j2 = a31Var.readInt();
-                                            byte[] bArr6 = new byte[4];
-                                            a31Var.read(bArr6);
-                                            if (Arrays.equals(bArr6, p)) {
-                                                if (j2 == 1) {
-                                                    j2 = a31Var.readLong();
-                                                    j = 16;
-                                                    if (j2 < 16) {
-                                                    }
-                                                } else {
-                                                    j = 8;
-                                                }
-                                                if (j2 > 5000) {
-                                                    j2 = 5000;
-                                                }
-                                                long j3 = j2 - j;
-                                                if (j3 >= 8) {
-                                                    byte[] bArr7 = new byte[4];
-                                                    long j4 = 0;
-                                                    boolean z2 = false;
-                                                    boolean z3 = false;
-                                                    while (true) {
-                                                        if (j4 >= j3 / 4) {
-                                                            i = 0;
-                                                            break;
-                                                        }
-                                                        i = 0;
-                                                        try {
-                                                            if (a31Var.read(bArr7) != 4) {
-                                                                break;
-                                                            }
-                                                            if (j4 != 1) {
-                                                                if (Arrays.equals(bArr7, q)) {
-                                                                    z2 = true;
-                                                                } else if (Arrays.equals(bArr7, r)) {
-                                                                    z3 = true;
-                                                                }
-                                                                if (z2 && z3) {
-                                                                    a31Var.close();
-                                                                    return 12;
-                                                                }
-                                                            }
-                                                            j4++;
-                                                        } catch (Exception e) {
-                                                            e = e;
-                                                            if (l) {
-                                                                Log.d("ExifInterface", "Exception parsing HEIF file type box.", e);
-                                                            }
-                                                            if (a31Var != null) {
-                                                                break;
-                                                            }
-                                                            a31Var2 = new a31(bArr4);
-                                                            ByteOrder byteOrderQ = q(a31Var2);
-                                                            this.f = byteOrderQ;
-                                                            a31Var2.o = byteOrderQ;
-                                                            s2 = a31Var2.readShort();
-                                                            if (s2 != 20306) {
-                                                                i2 = 1;
-                                                            } else {
-                                                                i2 = 1;
-                                                            }
-                                                            a31Var2.close();
-                                                            if (i2 != 0) {
-                                                                return 7;
-                                                            }
-                                                            try {
-                                                                a31Var3 = new a31(bArr4);
-                                                                try {
-                                                                    ByteOrder byteOrderQ2 = q(a31Var3);
-                                                                    this.f = byteOrderQ2;
-                                                                    a31Var3.o = byteOrderQ2;
-                                                                    i3 = a31Var3.readShort() != 85 ? i : 1;
-                                                                    a31Var3.close();
-                                                                } catch (Exception unused) {
-                                                                    a31Var4 = a31Var3;
-                                                                    if (a31Var4 != null) {
-                                                                        a31Var4.close();
-                                                                    }
-                                                                    i3 = i;
-                                                                } catch (Throwable th) {
-                                                                    th = th;
-                                                                    a31Var5 = a31Var3;
-                                                                    if (a31Var5 != null) {
-                                                                        a31Var5.close();
-                                                                    }
-                                                                    throw th;
-                                                                }
-                                                            } catch (Exception unused2) {
-                                                            } catch (Throwable th2) {
-                                                                th = th2;
-                                                            }
-                                                            if (i3 != 0) {
-                                                                return 10;
-                                                            }
-                                                            i4 = i;
-                                                            while (true) {
-                                                                bArr = u;
-                                                                if (i4 < bArr.length) {
-                                                                    return 13;
-                                                                }
-                                                                if (bArr4[i4] != bArr[i4]) {
-                                                                    i5 = i;
-                                                                    while (true) {
-                                                                        bArr2 = y;
-                                                                        if (i5 < bArr2.length) {
-                                                                            i6 = i;
-                                                                            while (true) {
-                                                                                bArr3 = z;
-                                                                                if (i6 < bArr3.length) {
-                                                                                    return 14;
-                                                                                }
-                                                                                if (bArr4[bArr2.length + i6 + 4] != bArr3[i6]) {
-                                                                                    break;
-                                                                                }
-                                                                                i6++;
-                                                                            }
-                                                                        } else {
-                                                                            if (bArr4[i5] != bArr2[i5]) {
-                                                                                break;
-                                                                            }
-                                                                            i5++;
-                                                                        }
-                                                                    }
-                                                                    return i;
-                                                                }
-                                                                i4++;
-                                                            }
-                                                        }
-                                                    }
-                                                    a31Var.close();
-                                                    a31Var2 = new a31(bArr4);
-                                                    ByteOrder byteOrderQ3 = q(a31Var2);
-                                                    this.f = byteOrderQ3;
-                                                    a31Var2.o = byteOrderQ3;
-                                                    s2 = a31Var2.readShort();
-                                                    if (s2 != 20306 || s2 == 21330) {
-                                                        i2 = 1;
-                                                    } else {
-                                                        i2 = i;
-                                                    }
-                                                    a31Var2.close();
-                                                    if (i2 != 0) {
-                                                        return 7;
-                                                    }
-                                                    a31Var3 = new a31(bArr4);
-                                                    ByteOrder byteOrderQ4 = q(a31Var3);
-                                                    this.f = byteOrderQ4;
-                                                    a31Var3.o = byteOrderQ4;
-                                                    if (a31Var3.readShort() != 85) {
-                                                    }
-                                                    a31Var3.close();
-                                                    if (i3 != 0) {
-                                                        return 10;
-                                                    }
-                                                    i4 = i;
-                                                    while (true) {
-                                                        bArr = u;
-                                                        if (i4 < bArr.length) {
-                                                            return 13;
-                                                        }
-                                                        if (bArr4[i4] != bArr[i4]) {
-                                                            i5 = i;
-                                                            while (true) {
-                                                                bArr2 = y;
-                                                                if (i5 < bArr2.length) {
-                                                                    i6 = i;
-                                                                    while (true) {
-                                                                        bArr3 = z;
-                                                                        if (i6 < bArr3.length) {
-                                                                            return 14;
-                                                                        }
-                                                                        if (bArr4[bArr2.length + i6 + 4] != bArr3[i6]) {
-                                                                            break;
-                                                                            break;
-                                                                        }
-                                                                        i6++;
-                                                                    }
-                                                                } else {
-                                                                    if (bArr4[i5] != bArr2[i5]) {
-                                                                        break;
-                                                                        break;
-                                                                    }
-                                                                    i5++;
-                                                                }
-                                                            }
-                                                            return i;
-                                                        }
-                                                        i4++;
-                                                    }
-                                                }
-                                                if (l) {
-                                                    Log.d("ExifInterface", "Exception parsing HEIF file type box.", e);
-                                                }
-                                                if (a31Var != null) {
-                                                    a31Var.close();
-                                                }
-                                                a31Var2 = new a31(bArr4);
-                                                ByteOrder byteOrderQ5 = q(a31Var2);
-                                                this.f = byteOrderQ5;
-                                                a31Var2.o = byteOrderQ5;
-                                                s2 = a31Var2.readShort();
-                                                if (s2 != 20306) {
-                                                    i2 = 1;
-                                                } else {
-                                                    i2 = 1;
-                                                }
-                                                a31Var2.close();
-                                                if (i2 != 0) {
-                                                    return 7;
-                                                }
-                                                a31Var3 = new a31(bArr4);
-                                                ByteOrder byteOrderQ6 = q(a31Var3);
-                                                this.f = byteOrderQ6;
-                                                a31Var3.o = byteOrderQ6;
-                                                if (a31Var3.readShort() != 85) {
-                                                }
-                                                a31Var3.close();
-                                                if (i3 != 0) {
-                                                    return 10;
-                                                }
-                                                i4 = i;
-                                                while (true) {
-                                                    bArr = u;
-                                                    if (i4 < bArr.length) {
-                                                        return 13;
-                                                    }
-                                                    if (bArr4[i4] != bArr[i4]) {
-                                                        i5 = i;
-                                                        while (true) {
-                                                            bArr2 = y;
-                                                            if (i5 < bArr2.length) {
-                                                                i6 = i;
-                                                                while (true) {
-                                                                    bArr3 = z;
-                                                                    if (i6 < bArr3.length) {
-                                                                        return 14;
-                                                                    }
-                                                                    if (bArr4[bArr2.length + i6 + 4] != bArr3[i6]) {
-                                                                        break;
-                                                                        break;
-                                                                    }
-                                                                    i6++;
-                                                                }
-                                                            } else {
-                                                                if (bArr4[i5] != bArr2[i5]) {
-                                                                    break;
-                                                                    break;
-                                                                }
-                                                                i5++;
-                                                            }
-                                                        }
-                                                        return i;
-                                                    }
-                                                    i4++;
-                                                }
-                                            }
-                                            a31Var.close();
-                                            i = 0;
-                                        } catch (Exception e2) {
-                                            e = e2;
-                                            i = 0;
-                                        }
-                                    } catch (Throwable th3) {
-                                        th = th3;
-                                        r4 = r7;
-                                        if (r4 != 0) {
-                                            r4.close();
-                                        }
-                                        throw th;
-                                    }
-                                } catch (Exception e3) {
-                                    e = e3;
-                                    i = 0;
-                                    a31Var = null;
-                                } catch (Throwable th4) {
-                                    th = th4;
-                                    if (r4 != 0) {
-                                        r4.close();
-                                    }
-                                    throw th;
-                                }
-                                ByteOrder byteOrderQ7 = q(a31Var2);
-                                this.f = byteOrderQ7;
-                                a31Var2.o = byteOrderQ7;
-                                s2 = a31Var2.readShort();
-                                if (s2 != 20306) {
-                                    i2 = 1;
-                                } else {
-                                    i2 = 1;
-                                }
-                                a31Var2.close();
-                            } catch (Exception unused3) {
-                                if (a31Var2 != null) {
-                                    a31Var2.close();
-                                }
-                                i2 = i;
-                            } catch (Throwable th5) {
-                                th = th5;
-                                a31Var6 = a31Var2;
-                                if (a31Var6 != null) {
-                                    a31Var6.close();
-                                }
-                                throw th;
-                            }
-                            a31Var2 = new a31(bArr4);
-                        } catch (Exception unused4) {
-                            a31Var2 = null;
-                        } catch (Throwable th6) {
-                            th = th6;
-                        }
-                        if (i2 != 0) {
-                            return 7;
-                        }
-                        a31Var3 = new a31(bArr4);
-                        ByteOrder byteOrderQ8 = q(a31Var3);
-                        this.f = byteOrderQ8;
-                        a31Var3.o = byteOrderQ8;
-                        if (a31Var3.readShort() != 85) {
-                        }
-                        a31Var3.close();
-                        if (i3 != 0) {
-                            return 10;
-                        }
-                        i4 = i;
-                        while (true) {
-                            bArr = u;
-                            if (i4 < bArr.length) {
-                                return 13;
-                            }
-                            if (bArr4[i4] != bArr[i4]) {
-                                i5 = i;
-                                while (true) {
-                                    bArr2 = y;
-                                    if (i5 < bArr2.length) {
-                                        i6 = i;
-                                        while (true) {
-                                            bArr3 = z;
-                                            if (i6 < bArr3.length) {
-                                                return 14;
-                                            }
-                                            if (bArr4[bArr2.length + i6 + 4] != bArr3[i6]) {
-                                                break;
-                                                break;
-                                            }
-                                            i6++;
-                                        }
-                                    } else {
-                                        if (bArr4[i5] != bArr2[i5]) {
-                                            break;
-                                            break;
-                                        }
-                                        i5++;
-                                    }
-                                }
-                                return i;
-                            }
-                            i4++;
-                        }
-                    }
-                }
-                return 9;
-            }
-            i7++;
-        }
+    public final int f(BufferedInputStream r19) {
+        r19.mark(SmartSession.MAX_SONGS);
+        byte[] r2 = new byte[SmartSession.MAX_SONGS];
+        r19.read(r2);
+        r19.reset();
+        int r0 = 0;
+    L3:
+        byte[] r4 = o;
+        if (r0 >= r4.length) goto L142;
+        if (r2[r0] != r4[r0]) goto L7;
+        r0 = r0 + 1;
+        goto L3
+    L7:
+        byte[] r1 = "FUJIFILMCCD-RAW".getBytes(Charset.defaultCharset());
+        int r5 = 0;
+    L9:
+        if (r5 >= r1.length) goto L139;
+        byte r6 = r2[r5];
+        ?? r7 = r1[r5];
+        if (r6 != r7) goto L12;
+        r5 = r5 + 1;
+        goto L9
+    L12:
+        ?? r8 = 0;
+        a31 r9 = null;
+        a31 r10 = null;
+        a31 r11 = null;
+        int r12 = 1;
+        a31 r13 = new a31(r2);     // Catch: Throwable -> L58 Exception -> L60
+        long r14 = r13.readInt();     // Catch: Throwable -> L22 Exception -> L24
+        byte[] r3 = new byte[4];     // Catch: Throwable -> L22 Exception -> L24
+        r13.read(r3);     // Catch: Throwable -> L22 Exception -> L24
+        if (Arrays.equals(r3, p) == true) goto L18;
+    L16:
+        r13.close();
+        int r110 = 0;
+    L154:
+        a31 r15 = new a31(r2);     // Catch: Throwable -> L79 Exception -> L81
+    L156:
+        ByteOrder r16 = q(r15);     // Catch: Throwable -> L77 Exception -> L144
+        this.f = r16;     // Catch: Throwable -> L77 Exception -> L144
+        r15.o = r16;     // Catch: Throwable -> L77 Exception -> L144
+        short r17 = r15.readShort();     // Catch: Throwable -> L77 Exception -> L144
+        goto L85
+    L70:
+        if (r17 != 20306) goto L72;
+    L75:
+        int r18 = 1;
+    L76:
+        r15.close();
+    L88:
+        if (r18 == 0) goto L152;
+        return 7;
+    L152:
+        a31 r20 = new a31(r2);     // Catch: Throwable -> L101 Exception -> L143
+        ByteOrder r21 = q(r20);     // Catch: Throwable -> L98 Exception -> L100
+        this.f = r21;     // Catch: Throwable -> L98 Exception -> L100
+        r20.o = r21;     // Catch: Throwable -> L98 Exception -> L100
+    L94:
+        if (r20.readShort() == 85) goto L97;
+        r12 = r110;
+    L97:
+        r20.close();
+    L108:
+        if (r12 == 0) goto L111;
+        return 10;
+    L111:
+        int r22 = r110;
+    L112:
+        byte[] r23 = u;
+        if (r22 >= r23.length) goto L133;
+        if (r2[r22] != r23[r22]) goto L116;
+        r22 = r22 + 1;
+        goto L112
+    L116:
+        int r24 = r110;
+    L117:
+        byte[] r25 = y;
+        if (r24 >= r25.length) goto L123;
+        if (r2[r24] != r25[r24]) goto L128;
+        r24 = r24 + 1;
+    L128:
+        return r110;
+    L123:
+        int r26 = r110;
+    L124:
+        byte[] r27 = z;
+        if (r26 >= r27.length) goto L130;
+        if (r2[(r25.length + r26) + 4] != r27[r26]) goto L128;
+        r26 = r26 + 1;
+        goto L124
+    L130:
+        return 14;
+    L133:
+        return 13;
+    L100:
+        r9 = r20;
+    L98:
+        th = th;
+        r10 = r20;
+    L102:
+        if (r10 == null) goto L104;
+        r10.close();
+    L104:
+        throw th;
+    L101:
+        th = th;
+    L105:
+        if (r9 == null) goto L107;
+        r9.close();
+    L107:
+        r12 = r110;
+        goto L108
+    L72:
+        if (r17 == 21330) goto L75;
+        r18 = r110;
+    L77:
+        th = th;
+        r11 = r15;
+    L82:
+        if (r11 == null) goto L84;
+        r11.close();
+    L84:
+        throw th;
+    L85:
+        if (r15 == null) goto L87;
+        r15.close();
+    L87:
+        r18 = r110;
+    L81:
+        r15 = null;
+    L79:
+        th = th;
+        goto L82
+    L18:
+        if (r14 != 1) goto L26;
+        r14 = r13.readLong();     // Catch: Throwable -> L22 Exception -> L24
+        long r111 = 16;
+        if (r14 < 16) goto L16;
+    L28:
+        if (r14 <= 5000) goto L30;
+        r14 = 5000;
+    L30:
+        long r28 = r14 - r111;     // Catch: Throwable -> L22 Exception -> L24
+        if (r28 < 8) goto L16;
+        byte[] r29 = new byte[4];     // Catch: Throwable -> L22 Exception -> L24
+        long r112 = 0;
+        boolean r113 = false;
+        boolean r114 = false;
+    L34:
+        if (r112 >= (r28 / 4)) goto L57;
+        r110 = 0;
+    L55:
+        e = e;
+    L63:
+        if (l == false) goto L65;
+        Log.d("ExifInterface", "Exception parsing HEIF file type box.", e);     // Catch: Throwable -> L22
+    L65:
+        if (r13 == null) goto L154;
+    L40:
+        r13.close();
+        goto L154
+    L39:
+        if (r13.read(r29) != 4) goto L40;
+        if (r112 == 1) goto L54;
+        if (Arrays.equals(r29, q) == false) goto L47;
+        r113 = true;
+    L50:
+        if (r113 == false) goto L54;
+        if (r114 == false) goto L54;
+        r13.close();
+        return 12;
+    L47:
+        if (Arrays.equals(r29, r) == false) goto L50;
+        r114 = true;
+    L54:
+        r112 = r112 + 1;
+        goto L34
+    L57:
+        r110 = 0;
+        goto L40
+    L26:
+        r111 = 8;
+    L24:
+        e = e;
+        r110 = 0;
+        goto L63
+    L22:
+        th = th;
+        r8 = r7;
+    L135:
+        if (r8 == 0) goto L137;
+        r8.close();
+    L137:
+        throw th;
+    L60:
+        e = e;
+        r110 = 0;
+        r13 = null;
+    L58:
+        th = th;
+        goto L135
+    L139:
+        return 9;
+    L142:
+        return 4;
     }
 
-    public final void g(e31 e31Var) throws IOException {
-        int i;
-        int i2;
-        j(e31Var);
-        HashMap[] mapArr = this.d;
-        b31 b31Var = (b31) mapArr[1].get("MakerNote");
-        if (b31Var != null) {
-            e31 e31Var2 = new e31(b31Var.d);
-            e31Var2.o = this.f;
-            byte[] bArr = s;
-            byte[] bArr2 = new byte[bArr.length];
-            e31Var2.readFully(bArr2);
-            e31Var2.f(0L);
-            byte[] bArr3 = t;
-            byte[] bArr4 = new byte[bArr3.length];
-            e31Var2.readFully(bArr4);
-            if (Arrays.equals(bArr2, bArr)) {
-                e31Var2.f(8L);
-            } else if (Arrays.equals(bArr4, bArr3)) {
-                e31Var2.f(12L);
-            }
-            s(e31Var2, 6);
-            b31 b31Var2 = (b31) mapArr[7].get("PreviewImageStart");
-            b31 b31Var3 = (b31) mapArr[7].get("PreviewImageLength");
-            if (b31Var2 != null && b31Var3 != null) {
-                mapArr[5].put("JPEGInterchangeFormat", b31Var2);
-                mapArr[5].put("JPEGInterchangeFormatLength", b31Var3);
-            }
-            b31 b31Var4 = (b31) mapArr[8].get("AspectFrame");
-            if (b31Var4 != null) {
-                int[] iArr = (int[]) b31Var4.g(this.f);
-                if (iArr == null || iArr.length != 4) {
-                    Log.w("ExifInterface", "Invalid aspect frame values. frame=" + Arrays.toString(iArr));
-                    return;
-                }
-                int i3 = iArr[2];
-                int i4 = iArr[0];
-                if (i3 <= i4 || (i = iArr[3]) <= (i2 = iArr[1])) {
-                    return;
-                }
-                int i5 = (i3 - i4) + 1;
-                int i6 = (i - i2) + 1;
-                if (i5 < i6) {
-                    int i7 = i5 + i6;
-                    i6 = i7 - i6;
-                    i5 = i7 - i6;
-                }
-                b31 b31VarC = b31.c(i5, this.f);
-                b31 b31VarC2 = b31.c(i6, this.f);
-                mapArr[0].put("ImageWidth", b31VarC);
-                mapArr[0].put("ImageLength", b31VarC2);
-            }
-        }
+    public final void g(e31 r7) {
+        j(r7);
+        HashMap[] r8 = this.d;
+        b31 r1 = (b31) r8[1].get("MakerNote");
+        if (r1 == null) goto L32;
+        e31 r2 = new e31(r1.d);
+        r2.o = this.f;
+        byte[] r3 = s;
+        byte[] r4 = new byte[r3.length];
+        r2.readFully(r4);
+        r2.f(0);
+        byte[] r5 = t;
+        byte[] r6 = new byte[r5.length];
+        r2.readFully(r6);
+        if (Arrays.equals(r4, r3) == false) goto L8;
+        r2.f(8);
+    L10:
+        s(r2, 6);
+        b31 r9 = (b31) r8[7].get("PreviewImageStart");
+        b31 r10 = (b31) r8[7].get("PreviewImageLength");
+        if (r9 == null) goto L14;
+        if (r10 == null) goto L14;
+        r8[5].put("JPEGInterchangeFormat", r9);
+        r8[5].put("JPEGInterchangeFormatLength", r10);
+    L14:
+        b31 r11 = (b31) r8[8].get("AspectFrame");
+        if (r11 == null) goto L33;
+        int[] r12 = (int[]) r11.g(this.f);
+        if (r12 != null) goto L19;
+    L30:
+        Log.w("ExifInterface", "Invalid aspect frame values. frame=" + Arrays.toString(r12));
+        return;
+    L19:
+        if (r12.length != 4) goto L30;
+        int r13 = r12[2];
+        int r14 = r12[0];
+        if (r13 <= r14) goto L34;
+        int r15 = r12[3];
+        int r16 = r12[1];
+        if (r15 <= r16) goto L35;
+        int r17 = (r13 - r14) + 1;
+        int r18 = (r15 - r16) + 1;
+        if (r17 >= r18) goto L28;
+        int r19 = r17 + r18;
+        r18 = r19 - r18;
+        r17 = r19 - r18;
+    L28:
+        b31 r0 = b31.c(r17, this.f);
+        b31 r20 = b31.c(r18, this.f);
+        r8[0].put("ImageWidth", r0);
+        r8[0].put("ImageLength", r20);
+        return;
+    L35:
+        return;
+    L34:
+        return;
+    L33:
+        return;
+    L8:
+        if (Arrays.equals(r6, r5) == false) goto L10;
+        r2.f(12);
+        goto L10
     }
 
-    public final void h(a31 a31Var) throws IOException {
-        if (l) {
-            Log.d("ExifInterface", "getPngAttributes starting with: " + a31Var);
-        }
-        a31Var.o = ByteOrder.BIG_ENDIAN;
-        byte[] bArr = u;
-        a31Var.b(bArr.length);
-        int length = bArr.length;
-        while (true) {
-            try {
-                int i = a31Var.readInt();
-                byte[] bArr2 = new byte[4];
-                if (a31Var.read(bArr2) != 4) {
-                    throw new IOException("Encountered invalid length while parsing PNG chunktype");
-                }
-                int i2 = length + 8;
-                if (i2 == 16 && !Arrays.equals(bArr2, w)) {
-                    throw new IOException("Encountered invalid PNG file--IHDR chunk should appearas the first chunk");
-                }
-                if (Arrays.equals(bArr2, x)) {
-                    return;
-                }
-                if (Arrays.equals(bArr2, v)) {
-                    byte[] bArr3 = new byte[i];
-                    if (a31Var.read(bArr3) != i) {
-                        throw new IOException("Failed to read given length for given PNG chunk type: " + gi1.f(bArr2));
-                    }
-                    int i3 = a31Var.readInt();
-                    CRC32 crc32 = new CRC32();
-                    crc32.update(bArr2);
-                    crc32.update(bArr3);
-                    if (((int) crc32.getValue()) == i3) {
-                        this.h = i2;
-                        r(0, bArr3);
-                        x();
-                        u(new a31(bArr3));
-                        return;
-                    }
-                    throw new IOException("Encountered invalid CRC value for PNG-EXIF chunk.\n recorded CRC value: " + i3 + ", calculated CRC value: " + crc32.getValue());
-                }
-                int i4 = i + 4;
-                a31Var.b(i4);
-                length = i2 + i4;
-            } catch (EOFException unused) {
-                mj0.i("Encountered corrupt PNG file.");
-                return;
-            }
-        }
+    public final void h(a31 r6) {
+        if (l == false) goto L5;
+        Log.d("ExifInterface", "getPngAttributes starting with: " + r6);
+    L5:
+        r6.o = ByteOrder.BIG_ENDIAN;
+        byte[] r0 = u;
+        r6.b(r0.length);
+        int r1 = r0.length;
+    L35:
+        int r2 = r6.readInt();     // Catch: EOFException -> L33
+        byte[] r3 = new byte[4];     // Catch: EOFException -> L33
+        if (r6.read(r3) != 4) goto L32;
+        int r4 = r1 + 8;     // Catch: EOFException -> L33
+        if (r4 != 16) goto L16;
+        if (Arrays.equals(r3, w) == true) goto L16;
+        throw new IOException("Encountered invalid PNG file--IHDR chunk should appearas the first chunk");     // Catch: EOFException -> L33
+    L16:
+        if (Arrays.equals(r3, x) == true) goto L17;
+        if (Arrays.equals(r3, v) == true) goto L20;
+        int r5 = r2 + 4;     // Catch: EOFException -> L33
+        r6.b(r5);     // Catch: EOFException -> L33
+        r1 = r4 + r5;     // Catch: EOFException -> L33
+        goto L35
+    L20:
+        byte[] r7 = new byte[r2];     // Catch: EOFException -> L33
+        if (r6.read(r7) != r2) goto L29;
+        int r8 = r6.readInt();     // Catch: EOFException -> L33
+        CRC32 r9 = new CRC32();     // Catch: EOFException -> L33
+        r9.update(r3);     // Catch: EOFException -> L33
+        r9.update(r7);     // Catch: EOFException -> L33
+        if (((int) r9.getValue()) != r8) goto L27;
+        this.h = r4;     // Catch: EOFException -> L33
+        r(0, r7);     // Catch: EOFException -> L33
+        x();     // Catch: EOFException -> L33
+        u(new a31(r7));     // Catch: EOFException -> L33
+        return;
+    L27:
+        throw new IOException("Encountered invalid CRC value for PNG-EXIF chunk.\n recorded CRC value: " + r8 + ", calculated CRC value: " + r9.getValue());     // Catch: EOFException -> L33
+    L29:
+        throw new IOException("Failed to read given length for given PNG chunk type: " + gi1.f(r3));     // Catch: EOFException -> L33
+    L17:
+        return;
+    L32:
+        throw new IOException("Encountered invalid length while parsing PNG chunktype");     // Catch: EOFException -> L33
+    L33:
+        mj0.i("Encountered corrupt PNG file.");
     }
 
-    public final void i(a31 a31Var) throws IOException {
-        boolean z2 = l;
-        if (z2) {
-            Log.d("ExifInterface", "getRafAttributes starting with: " + a31Var);
-        }
-        a31Var.b(84);
-        byte[] bArr = new byte[4];
-        byte[] bArr2 = new byte[4];
-        byte[] bArr3 = new byte[4];
-        a31Var.read(bArr);
-        a31Var.read(bArr2);
-        a31Var.read(bArr3);
-        int i = ByteBuffer.wrap(bArr).getInt();
-        int i2 = ByteBuffer.wrap(bArr2).getInt();
-        int i3 = ByteBuffer.wrap(bArr3).getInt();
-        byte[] bArr4 = new byte[i2];
-        a31Var.b(i - a31Var.p);
-        a31Var.read(bArr4);
-        e(new a31(bArr4), i, 5);
-        a31Var.b(i3 - a31Var.p);
-        a31Var.o = ByteOrder.BIG_ENDIAN;
-        int i4 = a31Var.readInt();
-        if (z2) {
-            Log.d("ExifInterface", "numberOfDirectoryEntry: " + i4);
-        }
-        for (int i5 = 0; i5 < i4; i5++) {
-            int unsignedShort = a31Var.readUnsignedShort();
-            int unsignedShort2 = a31Var.readUnsignedShort();
-            if (unsignedShort == E.a) {
-                short s2 = a31Var.readShort();
-                short s3 = a31Var.readShort();
-                b31 b31VarC = b31.c(s2, this.f);
-                b31 b31VarC2 = b31.c(s3, this.f);
-                HashMap[] mapArr = this.d;
-                mapArr[0].put("ImageLength", b31VarC);
-                mapArr[0].put("ImageWidth", b31VarC2);
-                if (z2) {
-                    Log.d("ExifInterface", "Updated to length: " + ((int) s2) + ", width: " + ((int) s3));
-                    return;
-                }
-                return;
-            }
-            a31Var.b(unsignedShort2);
-        }
+    public final void i(a31 r9) {
+        boolean r1 = l;
+        if (r1 == false) goto L5;
+        Log.d("ExifInterface", "getRafAttributes starting with: " + r9);
+    L5:
+        r9.b(84);
+        byte[] r3 = new byte[4];
+        byte[] r4 = new byte[4];
+        byte[] r2 = new byte[4];
+        r9.read(r3);
+        r9.read(r4);
+        r9.read(r2);
+        int r5 = ByteBuffer.wrap(r3).getInt();
+        int r6 = ByteBuffer.wrap(r4).getInt();
+        int r7 = ByteBuffer.wrap(r2).getInt();
+        byte[] r8 = new byte[r6];
+        r9.b(r5 - r9.p);
+        r9.read(r8);
+        e(new a31(r8), r5, 5);
+        r9.b(r7 - r9.p);
+        r9.o = ByteOrder.BIG_ENDIAN;
+        int r10 = r9.readInt();
+        if (r1 == false) goto L8;
+        Log.d("ExifInterface", "numberOfDirectoryEntry: " + r10);
+    L8:
+        int r11 = 0;
+    L9:
+        if (r11 >= r10) goto L20;
+        int r12 = r9.readUnsignedShort();
+        int r13 = r9.readUnsignedShort();
+        if (r12 == E.a) goto L12;
+        r9.b(r13);
+        r11 = r11 + 1;
+        goto L9
+    L12:
+        short r14 = r9.readShort();
+        short r15 = r9.readShort();
+        b31 r16 = b31.c(r14, this.f);
+        b31 r17 = b31.c(r15, this.f);
+        HashMap[] r18 = this.d;
+        r18[0].put("ImageLength", r16);
+        r18[0].put("ImageWidth", r17);
+        if (r1 == false) goto L17;
+        Log.d("ExifInterface", "Updated to length: " + r14 + ", width: " + r15);
+        return;
+    L17:
+        return;
     }
 
-    public final void j(e31 e31Var) throws IOException {
-        o(e31Var);
-        s(e31Var, 0);
-        w(e31Var, 0);
-        w(e31Var, 5);
-        w(e31Var, 4);
+    public final void j(e31 r4) {
+        o(r4);
+        s(r4, 0);
+        w(r4, 0);
+        w(r4, 5);
+        w(r4, 4);
         x();
-        if (this.c == 8) {
-            HashMap[] mapArr = this.d;
-            b31 b31Var = (b31) mapArr[1].get("MakerNote");
-            if (b31Var != null) {
-                e31 e31Var2 = new e31(b31Var.d);
-                e31Var2.o = this.f;
-                e31Var2.b(6);
-                s(e31Var2, 9);
-                b31 b31Var2 = (b31) mapArr[9].get("ColorSpace");
-                if (b31Var2 != null) {
-                    mapArr[1].put("ColorSpace", b31Var2);
-                }
-            }
-        }
+        if (this.c != 8) goto L10;
+        HashMap[] r5 = this.d;
+        b31 r1 = (b31) r5[1].get("MakerNote");
+        if (r1 == null) goto L11;
+        e31 r2 = new e31(r1.d);
+        r2.o = this.f;
+        r2.b(6);
+        s(r2, 9);
+        b31 r3 = (b31) r5[9].get("ColorSpace");
+        if (r3 == null) goto L12;
+        r5[1].put("ColorSpace", r3);
+        return;
+    L12:
+        return;
+    L11:
+        return;
     }
 
-    public final void k(e31 e31Var) throws IOException {
-        if (l) {
-            Log.d("ExifInterface", "getRw2Attributes starting with: " + e31Var);
-        }
-        j(e31Var);
-        HashMap[] mapArr = this.d;
-        b31 b31Var = (b31) mapArr[0].get("JpgFromRaw");
-        if (b31Var != null) {
-            e(new a31(b31Var.d), (int) b31Var.c, 5);
-        }
-        b31 b31Var2 = (b31) mapArr[0].get("ISO");
-        b31 b31Var3 = (b31) mapArr[1].get("PhotographicSensitivity");
-        if (b31Var2 == null || b31Var3 != null) {
-            return;
-        }
-        mapArr[1].put("PhotographicSensitivity", b31Var2);
+    public final void k(e31 r6) {
+        if (l == false) goto L5;
+        Log.d("ExifInterface", "getRw2Attributes starting with: " + r6);
+    L5:
+        j(r6);
+        HashMap[] r7 = this.d;
+        b31 r1 = (b31) r7[0].get("JpgFromRaw");
+        if (r1 == null) goto L8;
+        e(new a31(r1.d), (int) r1.c, 5);
+    L8:
+        b31 r5 = (b31) r7[0].get("ISO");
+        b31 r2 = (b31) r7[1].get("PhotographicSensitivity");
+        if (r5 == null) goto L13;
+        if (r2 != null) goto L14;
+        r7[1].put("PhotographicSensitivity", r5);
+        return;
+    L14:
+        return;
     }
 
-    public final void l(a31 a31Var) throws IOException {
-        if (l) {
-            Log.d("ExifInterface", "getWebpAttributes starting with: " + a31Var);
-        }
-        a31Var.o = ByteOrder.LITTLE_ENDIAN;
-        a31Var.b(y.length);
-        int i = a31Var.readInt() + 8;
-        byte[] bArr = z;
-        a31Var.b(bArr.length);
-        int length = bArr.length + 8;
-        while (true) {
-            try {
-                byte[] bArr2 = new byte[4];
-                if (a31Var.read(bArr2) != 4) {
-                    throw new IOException("Encountered invalid length while parsing WebP chunktype");
-                }
-                int i2 = a31Var.readInt();
-                int i3 = length + 8;
-                if (Arrays.equals(A, bArr2)) {
-                    byte[] bArr3 = new byte[i2];
-                    if (a31Var.read(bArr3) == i2) {
-                        this.h = i3;
-                        r(0, bArr3);
-                        u(new a31(bArr3));
-                        return;
-                    } else {
-                        throw new IOException("Failed to read given length for given PNG chunk type: " + gi1.f(bArr2));
-                    }
-                }
-                if (i2 % 2 == 1) {
-                    i2++;
-                }
-                length = i3 + i2;
-                if (length == i) {
-                    return;
-                }
-                if (length > i) {
-                    throw new IOException("Encountered WebP file with invalid chunk size");
-                }
-                a31Var.b(i2);
-            } catch (EOFException unused) {
-                mj0.i("Encountered corrupt WebP file.");
-                return;
-            }
-        }
+    public final void l(a31 r6) {
+        if (l == false) goto L5;
+        Log.d("ExifInterface", "getWebpAttributes starting with: " + r6);
+    L5:
+        r6.o = ByteOrder.LITTLE_ENDIAN;
+        r6.b(y.length);
+        int r0 = r6.readInt() + 8;
+        byte[] r1 = z;
+        r6.b(r1.length);
+        int r2 = r1.length + 8;
+    L31:
+        byte[] r3 = new byte[4];     // Catch: EOFException -> L29
+        if (r6.read(r3) != 4) goto L28;
+        int r4 = r6.readInt();     // Catch: EOFException -> L29
+        int r5 = r2 + 8;     // Catch: EOFException -> L29
+        if (Arrays.equals(A, r3) == true) goto L11;
+        if ((r4 % 2) != 1) goto L20;
+        r4 = r4 + 1;     // Catch: EOFException -> L29
+    L20:
+        r2 = r5 + r4;     // Catch: EOFException -> L29
+        if (r2 == r0) goto L22;
+        if (r2 > r0) goto L26;
+        r6.b(r4);     // Catch: EOFException -> L29
+        goto L31
+    L26:
+        throw new IOException("Encountered WebP file with invalid chunk size");     // Catch: EOFException -> L29
+    L22:
+        return;
+    L11:
+        byte[] r7 = new byte[r4];     // Catch: EOFException -> L29
+        if (r6.read(r7) != r4) goto L16;
+        this.h = r5;     // Catch: EOFException -> L29
+        r(0, r7);     // Catch: EOFException -> L29
+        u(new a31(r7));     // Catch: EOFException -> L29
+        return;
+    L16:
+        throw new IOException("Failed to read given length for given PNG chunk type: " + gi1.f(r3));     // Catch: EOFException -> L29
+    L28:
+        throw new IOException("Encountered invalid length while parsing WebP chunktype");     // Catch: EOFException -> L29
+    L29:
+        mj0.i("Encountered corrupt WebP file.");
     }
 
-    public final void m(a31 a31Var, HashMap map) throws IOException {
-        b31 b31Var = (b31) map.get("JPEGInterchangeFormat");
-        b31 b31Var2 = (b31) map.get("JPEGInterchangeFormatLength");
-        if (b31Var == null || b31Var2 == null) {
-            return;
-        }
-        int iE = b31Var.e(this.f);
-        int iE2 = b31Var2.e(this.f);
-        if (this.c == 7) {
-            iE += this.i;
-        }
-        if (iE > 0 && iE2 > 0 && this.b == null && this.a == null) {
-            a31Var.skip(iE);
-            a31Var.read(new byte[iE2]);
-        }
-        if (l) {
-            Log.d("ExifInterface", "Setting thumbnail attributes with offset: " + iE + ", length: " + iE2);
-        }
+    public final void m(a31 r4, HashMap r5) {
+        b31 r0 = (b31) r5.get("JPEGInterchangeFormat");
+        b31 r6 = (b31) r5.get("JPEGInterchangeFormatLength");
+        if (r0 == null) goto L19;
+        if (r6 == null) goto L20;
+        int r1 = r0.e(this.f);
+        int r7 = r6.e(this.f);
+        if (this.c != 7) goto L8;
+        r1 = r1 + this.i;
+    L8:
+        if (r1 <= 0) goto L16;
+        if (r7 <= 0) goto L16;
+        if (this.b != null) goto L16;
+        if (this.a != null) goto L16;
+        r4.skip(r1);
+        r4.read(new byte[r7]);
+    L16:
+        if (l == false) goto L21;
+        Log.d("ExifInterface", "Setting thumbnail attributes with offset: " + r1 + ", length: " + r7);
+        return;
+    L21:
+        return;
+    L20:
+        return;
     }
 
-    public final boolean n(HashMap map) {
-        b31 b31Var = (b31) map.get("ImageLength");
-        b31 b31Var2 = (b31) map.get("ImageWidth");
-        if (b31Var == null || b31Var2 == null) {
-            return false;
-        }
-        return b31Var.e(this.f) <= 512 && b31Var2.e(this.f) <= 512;
+    public final boolean n(HashMap r3) {
+        b31 r0 = (b31) r3.get("ImageLength");
+        b31 r4 = (b31) r3.get("ImageWidth");
+        if (r0 == null) goto L10;
+        if (r4 == null) goto L12;
+        int r1 = r0.e(this.f);
+        int r2 = r4.e(this.f);
+        if (r1 > 512) goto L13;
+        if (r2 > 512) goto L14;
+        return true;
+    L14:
+        return false;
+    L13:
+        return false;
+    L12:
+        return false;
+    L10:
+        return false;
     }
 
-    public final void o(e31 e31Var) throws IOException {
-        ByteOrder byteOrderQ = q(e31Var);
-        this.f = byteOrderQ;
-        e31Var.o = byteOrderQ;
-        int unsignedShort = e31Var.readUnsignedShort();
-        int i = this.c;
-        if (i != 7 && i != 10 && unsignedShort != 42) {
-            mj0.m(Integer.toHexString(unsignedShort), "Invalid start code: ");
-            return;
-        }
-        int i2 = e31Var.readInt();
-        if (i2 < 8) {
-            mj0.i(f34.f(i2, "Invalid first Ifd offset: "));
-            return;
-        }
-        int i3 = i2 - 8;
-        if (i3 > 0) {
-            e31Var.b(i3);
-        }
+    public final void o(e31 r3) {
+        ByteOrder r0 = q(r3);
+        this.f = r0;
+        r3.o = r0;
+        int r1 = r3.readUnsignedShort();
+        int r2 = this.c;
+        if (r2 != 7) goto L5;
+    L11:
+        int r4 = r3.readInt();
+        if (r4 < 8) goto L17;
+        int r5 = r4 - 8;
+        if (r5 <= 0) goto L19;
+        r3.b(r5);
+        return;
+    L19:
+        return;
+    L17:
+        mj0.i(f34.f(r4, "Invalid first Ifd offset: "));
+        return;
+    L5:
+        if (r2 == 10) goto L11;
+        if (r1 == 42) goto L11;
+        mj0.m(Integer.toHexString(r1), "Invalid start code: ");
     }
 
     public final void p() {
-        int i = 0;
-        while (true) {
-            HashMap[] mapArr = this.d;
-            if (i >= mapArr.length) {
-                return;
-            }
-            StringBuilder sbJ = f34.j(i, "The size of tag group[", "]: ");
-            sbJ.append(mapArr[i].size());
-            Log.d("ExifInterface", sbJ.toString());
-            for (Map.Entry entry : mapArr[i].entrySet()) {
-                b31 b31Var = (b31) entry.getValue();
-                Log.d("ExifInterface", "tagName: " + ((String) entry.getKey()) + ", tagType: " + b31Var.toString() + ", tagValue: '" + b31Var.f(this.f) + "'");
-            }
-            i++;
-        }
+        int r0 = 0;
+    L3:
+        HashMap[] r1 = this.d;
+        if (r0 >= r1.length) goto L10;
+        StringBuilder r2 = f34.j(r0, "The size of tag group[", "]: ");
+        r2.append(r1[r0].size());
+        Log.d("ExifInterface", r2.toString());
+        Iterator r3 = r1[r0].entrySet().iterator();
+    L7:
+        if (r3.hasNext() == false) goto L9;
+        Map.Entry r4 = (Map.Entry) r3.next();
+        b31 r5 = (b31) r4.getValue();
+        Log.d("ExifInterface", "tagName: " + ((String) r4.getKey()) + ", tagType: " + r5.toString() + ", tagValue: '" + r5.f(this.f) + "'");
+        goto L7
+    L9:
+        r0 = r0 + 1;
+        goto L3
     }
 
-    public final void r(int i, byte[] bArr) throws IOException {
-        e31 e31Var = new e31(bArr);
-        o(e31Var);
-        s(e31Var, i);
+    public final void r(int r2, byte[] r3) {
+        e31 r0 = new e31(r3);
+        o(r0);
+        s(r0, r2);
     }
 
-    /* JADX WARN: Code duplicated, block: B:101:0x020f  */
-    /* JADX WARN: Code duplicated, block: B:103:0x0213  */
-    /* JADX WARN: Code duplicated, block: B:108:0x0220  */
-    /* JADX WARN: Code duplicated, block: B:109:0x0225  */
-    /* JADX WARN: Code duplicated, block: B:110:0x0231  */
-    /* JADX WARN: Code duplicated, block: B:112:0x0238  */
-    /* JADX WARN: Code duplicated, block: B:115:0x024f  */
-    /* JADX WARN: Code duplicated, block: B:117:0x025a  */
-    /* JADX WARN: Code duplicated, block: B:119:0x0267 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:120:0x0269  */
-    /* JADX WARN: Code duplicated, block: B:121:0x0288 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:122:0x028a  */
-    /* JADX WARN: Code duplicated, block: B:124:0x02a0  */
-    /* JADX WARN: Code duplicated, block: B:126:0x02cc  */
-    /* JADX WARN: Code duplicated, block: B:129:0x02d7  */
-    /* JADX WARN: Code duplicated, block: B:131:0x02df  */
-    /* JADX WARN: Code duplicated, block: B:140:0x0309  */
-    /* JADX WARN: Code duplicated, block: B:167:0x030c A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:71:0x014b  */
-    /* JADX WARN: Code duplicated, block: B:72:0x0152  */
-    /* JADX WARN: Code duplicated, block: B:74:0x015a  */
-    /* JADX WARN: Code duplicated, block: B:76:0x0160  */
-    /* JADX WARN: Code duplicated, block: B:77:0x0174  */
-    /* JADX WARN: Code duplicated, block: B:80:0x017b  */
-    /* JADX WARN: Code duplicated, block: B:82:0x0185  */
-    /* JADX WARN: Code duplicated, block: B:83:0x0187  */
-    /* JADX WARN: Code duplicated, block: B:84:0x018c  */
-    /* JADX WARN: Code duplicated, block: B:86:0x018f  */
-    /* JADX WARN: Code duplicated, block: B:90:0x01d4  */
-    /* JADX WARN: Code duplicated, block: B:93:0x01e8  */
-    /* JADX WARN: Code duplicated, block: B:95:0x0203  */
-    /* JADX WARN: Code duplicated, block: B:97:0x0208  */
-    /* JADX WARN: Code duplicated, block: B:99:0x020b  */
-    /* JADX WARN: Instruction removed from duplicated block: B:120:0x0269, please report this as an issue */
-    /* JADX WARN: Instruction removed from duplicated block: B:122:0x028a, please report this as an issue */
-    /* JADX WARN: Instruction removed from duplicated block: B:76:0x0160, please report this as an issue */
-    /* JADX WARN: Instruction removed from duplicated block: B:93:0x01e8, please report this as an issue */
-    public final void s(e31 e31Var, int i) throws IOException {
-        HashMap[] mapArr;
-        long j;
-        long j2;
-        boolean z2;
-        int i2;
-        long j3;
-        Integer num;
-        long j4;
-        String str;
-        int i3;
-        int unsignedShort;
-        long j5;
-        int i4;
-        Integer numValueOf = Integer.valueOf(e31Var.p);
-        HashSet hashSet = this.e;
-        hashSet.add(numValueOf);
-        short s2 = e31Var.readShort();
-        boolean z3 = l;
-        if (z3) {
-            Log.d("ExifInterface", "numberOfDirectoryEntry: " + ((int) s2));
-        }
-        if (s2 <= 0) {
-            return;
-        }
-        short s3 = 0;
-        while (true) {
-            mapArr = this.d;
-            if (s3 >= s2) {
-                break;
-            }
-            int unsignedShort2 = e31Var.readUnsignedShort();
-            int unsignedShort3 = e31Var.readUnsignedShort();
-            int i5 = e31Var.readInt();
-            long j6 = ((long) e31Var.p) + 4;
-            c31 c31Var = (c31) H[i].get(Integer.valueOf(unsignedShort2));
-            if (z3) {
-                Log.d("ExifInterface", String.format("ifdType: %d, tagNumber: %d, tagName: %s, dataFormat: %d, numberOfComponents: %d", Integer.valueOf(i), Integer.valueOf(unsignedShort2), c31Var != null ? c31Var.b : null, Integer.valueOf(unsignedShort3), Integer.valueOf(i5)));
-            }
-            if (c31Var != null) {
-                if (unsignedShort3 > 0) {
-                    int[] iArr = C;
-                    if (unsignedShort3 < iArr.length) {
-                        int i6 = c31Var.c;
-                        if (i6 == 7 || unsignedShort3 == 7 || i6 == unsignedShort3 || (i2 = c31Var.d) == unsignedShort3 || (((i6 == 4 || i2 == 4) && unsignedShort3 == 3) || (((i6 == 9 || i2 == 9) && unsignedShort3 == 8) || ((i6 == 12 || i2 == 12) && unsignedShort3 == 11)))) {
-                            if (unsignedShort3 == 7) {
-                                unsignedShort3 = i6;
-                            }
-                            j = j6;
-                            j2 = ((long) i5) * ((long) iArr[unsignedShort3]);
-                            if (j2 < 0 || j2 > 2147483647L) {
-                                if (z3 != 0) {
-                                    Log.d("ExifInterface", "Skip the tag entry since the number of components is invalid: " + i5);
-                                }
-                                z2 = false;
-                            } else {
-                                z2 = true;
-                            }
-                        } else if (z3 != 0) {
-                            Log.d("ExifInterface", "Skip the tag entry since data format (" + B[unsignedShort3] + ") is unexpected for tag: " + c31Var.b);
-                        }
-                    }
-                    if (z2) {
-                        j3 = j;
-                        if (j2 > 4) {
-                            i4 = e31Var.readInt();
-                            if (z3 != 0) {
-                                Log.d("ExifInterface", "seek to data offset: " + i4);
-                            }
-                            if (this.c == 7) {
-                                if ("MakerNote".equals(c31Var.b)) {
-                                    this.i = i4;
-                                } else if (i != 6 && "ThumbnailImage".equals(c31Var.b)) {
-                                    this.j = i4;
-                                    this.k = i5;
-                                    b31 b31VarC = b31.c(6, this.f);
-                                    b31 b31VarA = b31.a(this.j, this.f);
-                                    b31 b31VarA2 = b31.a(this.k, this.f);
-                                    mapArr[4].put("Compression", b31VarC);
-                                    mapArr[4].put("JPEGInterchangeFormat", b31VarA);
-                                    mapArr[4].put("JPEGInterchangeFormatLength", b31VarA2);
-                                }
-                            }
-                            e31Var.f(i4);
-                        } else {
-                            j3 = j3;
-                            unsignedShort2 = unsignedShort2;
-                            unsignedShort3 = unsignedShort3;
-                        }
-                        num = (Integer) K.get(Integer.valueOf(unsignedShort2));
-                        if (z3 != 0) {
-                            Log.d("ExifInterface", "nextIfdType: " + num + " byteCount: " + j2);
-                        }
-                        if (num != null) {
-                            i3 = unsignedShort3;
-                            if (i3 != 3) {
-                                if (i3 == 4) {
-                                    j5 = ((long) e31Var.readInt()) & 4294967295L;
-                                } else if (i3 == 8) {
-                                    unsignedShort = e31Var.readShort();
-                                } else if (i3 != 9 || i3 == 13) {
-                                    unsignedShort = e31Var.readInt();
-                                } else {
-                                    j5 = -1;
-                                }
-                                if (z3 != 0) {
-                                    Log.d("ExifInterface", String.format("Offset: %d, tagName: %s", Long.valueOf(j5), c31Var.b));
-                                }
-                                if (j5 > 0) {
-                                    if (!hashSet.contains(Integer.valueOf((int) j5))) {
-                                        e31Var.f(j5);
-                                        s(e31Var, num.intValue());
-                                    } else if (z3 != 0) {
-                                        Log.d("ExifInterface", "Skip jump into the IFD since it has already been read: IfdType " + num + " (at " + j5 + ")");
-                                    }
-                                } else if (z3 != 0) {
-                                    Log.d("ExifInterface", "Skip jump into the IFD since its offset is invalid: " + j5);
-                                }
-                                e31Var.f(j3);
-                            } else {
-                                unsignedShort = e31Var.readUnsignedShort();
-                            }
-                            j5 = unsignedShort;
-                            if (z3 != 0) {
-                                Log.d("ExifInterface", String.format("Offset: %d, tagName: %s", Long.valueOf(j5), c31Var.b));
-                            }
-                            if (j5 > 0) {
-                                if (!hashSet.contains(Integer.valueOf((int) j5))) {
-                                    e31Var.f(j5);
-                                    s(e31Var, num.intValue());
-                                } else if (z3 != 0) {
-                                    Log.d("ExifInterface", "Skip jump into the IFD since it has already been read: IfdType " + num + " (at " + j5 + ")");
-                                }
-                            } else if (z3 != 0) {
-                                Log.d("ExifInterface", "Skip jump into the IFD since its offset is invalid: " + j5);
-                            }
-                            e31Var.f(j3);
-                        } else {
-                            j4 = j3;
-                            int i7 = e31Var.p + this.h;
-                            byte[] bArr = new byte[(int) j2];
-                            e31Var.readFully(bArr);
-                            b31 b31Var = new b31(i7, bArr, unsignedShort3, i5);
-                            HashMap map = mapArr[i];
-                            str = c31Var.b;
-                            map.put(str, b31Var);
-                            if ("DNGVersion".equals(str)) {
-                                this.c = 3;
-                            }
-                            if (((!"Make".equals(str) || "Model".equals(str)) && b31Var.f(this.f).contains("PENTAX")) || ("Compression".equals(str) && b31Var.e(this.f) == 65535)) {
-                                this.c = 8;
-                            }
-                            if (e31Var.p != j4) {
-                                e31Var.f(j4);
-                            }
-                        }
-                    } else {
-                        e31Var.f(j);
-                    }
-                    s3 = (short) (s3 + 1);
-                    s2 = s2;
-                    z3 = z3;
-                }
-                j = j6;
-                if (z3 != 0) {
-                    Log.d("ExifInterface", "Skip the tag entry since data format is invalid: " + unsignedShort3);
-                }
-                j2 = 0;
-                z2 = false;
-                if (z2) {
-                    e31Var.f(j);
-                } else {
-                    j3 = j;
-                    if (j2 > 4) {
-                        i4 = e31Var.readInt();
-                        if (z3 != 0) {
-                            Log.d("ExifInterface", "seek to data offset: " + i4);
-                        }
-                        if (this.c == 7) {
-                            if ("MakerNote".equals(c31Var.b)) {
-                                this.i = i4;
-                            } else if (i != 6) {
-                            }
-                        }
-                        e31Var.f(i4);
-                    } else {
-                        j3 = j3;
-                        unsignedShort2 = unsignedShort2;
-                        unsignedShort3 = unsignedShort3;
-                    }
-                    num = (Integer) K.get(Integer.valueOf(unsignedShort2));
-                    if (z3 != 0) {
-                        Log.d("ExifInterface", "nextIfdType: " + num + " byteCount: " + j2);
-                    }
-                    if (num != null) {
-                        i3 = unsignedShort3;
-                        if (i3 != 3) {
-                            if (i3 == 4) {
-                                j5 = ((long) e31Var.readInt()) & 4294967295L;
-                            } else if (i3 == 8) {
-                                if (i3 != 9) {
-                                }
-                                unsignedShort = e31Var.readInt();
-                            } else {
-                                unsignedShort = e31Var.readShort();
-                            }
-                            if (z3 != 0) {
-                                Log.d("ExifInterface", String.format("Offset: %d, tagName: %s", Long.valueOf(j5), c31Var.b));
-                            }
-                            if (j5 > 0) {
-                                if (!hashSet.contains(Integer.valueOf((int) j5))) {
-                                    e31Var.f(j5);
-                                    s(e31Var, num.intValue());
-                                } else if (z3 != 0) {
-                                    Log.d("ExifInterface", "Skip jump into the IFD since it has already been read: IfdType " + num + " (at " + j5 + ")");
-                                }
-                            } else if (z3 != 0) {
-                                Log.d("ExifInterface", "Skip jump into the IFD since its offset is invalid: " + j5);
-                            }
-                            e31Var.f(j3);
-                        } else {
-                            unsignedShort = e31Var.readUnsignedShort();
-                        }
-                        j5 = unsignedShort;
-                        if (z3 != 0) {
-                            Log.d("ExifInterface", String.format("Offset: %d, tagName: %s", Long.valueOf(j5), c31Var.b));
-                        }
-                        if (j5 > 0) {
-                            if (!hashSet.contains(Integer.valueOf((int) j5))) {
-                                e31Var.f(j5);
-                                s(e31Var, num.intValue());
-                            } else if (z3 != 0) {
-                                Log.d("ExifInterface", "Skip jump into the IFD since it has already been read: IfdType " + num + " (at " + j5 + ")");
-                            }
-                        } else if (z3 != 0) {
-                            Log.d("ExifInterface", "Skip jump into the IFD since its offset is invalid: " + j5);
-                        }
-                        e31Var.f(j3);
-                    } else {
-                        j4 = j3;
-                        int i8 = e31Var.p + this.h;
-                        byte[] bArr2 = new byte[(int) j2];
-                        e31Var.readFully(bArr2);
-                        b31 b31Var2 = new b31(i8, bArr2, unsignedShort3, i5);
-                        HashMap map2 = mapArr[i];
-                        str = c31Var.b;
-                        map2.put(str, b31Var2);
-                        if ("DNGVersion".equals(str)) {
-                            this.c = 3;
-                        }
-                        if (!"Make".equals(str)) {
-                        }
-                        this.c = 8;
-                        if (e31Var.p != j4) {
-                            e31Var.f(j4);
-                        }
-                    }
-                }
-                s3 = (short) (s3 + 1);
-                s2 = s2;
-                z3 = z3;
-            } else if (z3) {
-                Log.d("ExifInterface", "Skip the tag entry since tag number is not defined: " + unsignedShort2);
-            }
-            j = j6;
-            j2 = 0;
-            z2 = false;
-            if (z2) {
-                e31Var.f(j);
-            } else {
-                j3 = j;
-                if (j2 > 4) {
-                    i4 = e31Var.readInt();
-                    if (z3 != 0) {
-                        Log.d("ExifInterface", "seek to data offset: " + i4);
-                    }
-                    if (this.c == 7) {
-                        if ("MakerNote".equals(c31Var.b)) {
-                            this.i = i4;
-                        } else if (i != 6) {
-                        }
-                    }
-                    e31Var.f(i4);
-                } else {
-                    j3 = j3;
-                    unsignedShort2 = unsignedShort2;
-                    unsignedShort3 = unsignedShort3;
-                }
-                num = (Integer) K.get(Integer.valueOf(unsignedShort2));
-                if (z3 != 0) {
-                    Log.d("ExifInterface", "nextIfdType: " + num + " byteCount: " + j2);
-                }
-                if (num != null) {
-                    i3 = unsignedShort3;
-                    if (i3 != 3) {
-                        if (i3 == 4) {
-                            j5 = ((long) e31Var.readInt()) & 4294967295L;
-                        } else if (i3 == 8) {
-                            if (i3 != 9) {
-                            }
-                            unsignedShort = e31Var.readInt();
-                        } else {
-                            unsignedShort = e31Var.readShort();
-                        }
-                        if (z3 != 0) {
-                            Log.d("ExifInterface", String.format("Offset: %d, tagName: %s", Long.valueOf(j5), c31Var.b));
-                        }
-                        if (j5 > 0) {
-                            if (!hashSet.contains(Integer.valueOf((int) j5))) {
-                                e31Var.f(j5);
-                                s(e31Var, num.intValue());
-                            } else if (z3 != 0) {
-                                Log.d("ExifInterface", "Skip jump into the IFD since it has already been read: IfdType " + num + " (at " + j5 + ")");
-                            }
-                        } else if (z3 != 0) {
-                            Log.d("ExifInterface", "Skip jump into the IFD since its offset is invalid: " + j5);
-                        }
-                        e31Var.f(j3);
-                    } else {
-                        unsignedShort = e31Var.readUnsignedShort();
-                    }
-                    j5 = unsignedShort;
-                    if (z3 != 0) {
-                        Log.d("ExifInterface", String.format("Offset: %d, tagName: %s", Long.valueOf(j5), c31Var.b));
-                    }
-                    if (j5 > 0) {
-                        if (!hashSet.contains(Integer.valueOf((int) j5))) {
-                            e31Var.f(j5);
-                            s(e31Var, num.intValue());
-                        } else if (z3 != 0) {
-                            Log.d("ExifInterface", "Skip jump into the IFD since it has already been read: IfdType " + num + " (at " + j5 + ")");
-                        }
-                    } else if (z3 != 0) {
-                        Log.d("ExifInterface", "Skip jump into the IFD since its offset is invalid: " + j5);
-                    }
-                    e31Var.f(j3);
-                } else {
-                    j4 = j3;
-                    int i9 = e31Var.p + this.h;
-                    byte[] bArr3 = new byte[(int) j2];
-                    e31Var.readFully(bArr3);
-                    b31 b31Var3 = new b31(i9, bArr3, unsignedShort3, i5);
-                    HashMap map3 = mapArr[i];
-                    str = c31Var.b;
-                    map3.put(str, b31Var3);
-                    if ("DNGVersion".equals(str)) {
-                        this.c = 3;
-                    }
-                    if (!"Make".equals(str)) {
-                    }
-                    this.c = 8;
-                    if (e31Var.p != j4) {
-                        e31Var.f(j4);
-                    }
-                }
-            }
-            s3 = (short) (s3 + 1);
-            s2 = s2;
-            z3 = z3;
-        }
-        boolean z4 = z3;
-        int i10 = e31Var.readInt();
-        if (z4) {
-            Log.d("ExifInterface", String.format("nextIfdOffset: %d", Integer.valueOf(i10)));
-        }
-        long j7 = i10;
-        if (j7 <= 0) {
-            if (z4) {
-                Log.d("ExifInterface", "Stop reading file since a wrong offset may cause an infinite loop: " + i10);
-                return;
-            }
-            return;
-        }
-        if (hashSet.contains(Integer.valueOf(i10))) {
-            if (z4) {
-                Log.d("ExifInterface", "Stop reading file since re-reading an IFD may cause an infinite loop: " + i10);
-                return;
-            }
-            return;
-        }
-        e31Var.f(j7);
-        if (mapArr[4].isEmpty()) {
-            s(e31Var, 4);
-        } else if (mapArr[5].isEmpty()) {
-            s(e31Var, 5);
-        }
+    public final void s(e31 r29, int r30) {
+        Integer r3 = Integer.valueOf(r29.p);
+        HashSet r4 = this.e;
+        r4.add(r3);
+        short r5 = r29.readShort();
+        boolean r6 = l;
+        if (r6 == false) goto L5;
+        Log.d("ExifInterface", "numberOfDirectoryEntry: " + r5);
+    L5:
+        if (r5 <= 0) goto L171;
+        short r8 = 0;
+    L8:
+        HashMap[] r11 = this.d;
+        if (r8 >= r5) goto L142;
+        int r13 = r29.readUnsignedShort();
+        int r14 = r29.readUnsignedShort();
+        int r15 = r29.readInt();
+        long r9 = ((long) r29.p) + 4;
+        c31 r7 = (c31) H[r30].get(Integer.valueOf(r13));
+        if (r6 == false) goto L20;
+        Integer r12 = Integer.valueOf(r30);
+        Integer r10 = Integer.valueOf(r13);
+        if (r7 == null) goto L16;
+        String r16 = r7.b;
+    L17:
+        Log.d("ExifInterface", String.format("ifdType: %d, tagNumber: %d, tagName: %s, dataFormat: %d, numberOfComponents: %d", new Object[]{r12, r10, r16, Integer.valueOf(r14), Integer.valueOf(r15)}));
+        goto L20
+    L16:
+        r16 = null;
+    L20:
+        if (r7 != null) goto L24;
+        if (r6 == false) goto L23;
+        Log.d("ExifInterface", "Skip the tag entry since tag number is not defined: " + r13);
+    L23:
+        long r26 = r9;
+    L69:
+        long r17 = 0;
+    L66:
+        boolean r18 = false;
+    L70:
+        if (r18 == true) goto L72;
+        r29.f(r26);
+    L141:
+        r8 = (short) (r8 + 1);
+        r5 = r5;
+        r6 = r6;
+        goto L8
+    L72:
+        long r19 = r26;
+        if (r17 <= 4) goto L90;
+        int r20 = r29.readInt();
+        if (r6 == 0) goto L79;
+        Log.d("ExifInterface", "seek to data offset: " + r20);
+    L79:
+        if (this.c != 7) goto L89;
+        if ("MakerNote".equals(r7.b) == false) goto L85;
+        this.i = r20;
+        goto L89
+    L85:
+        if (r30 != 6) goto L89;
+        if ("ThumbnailImage".equals(r7.b) == false) goto L89;
+        this.j = r20;
+        this.k = r15;
+        b31 r21 = b31.c(6, this.f);
+        b31 r22 = b31.a(this.j, this.f);
+        b31 r110 = b31.a(this.k, this.f);
+        r11[4].put("Compression", r21);
+        r11[4].put("JPEGInterchangeFormat", r22);
+        r11[4].put("JPEGInterchangeFormatLength", r110);
+    L89:
+        r29.f(r20);
+    L91:
+        Integer r23 = (Integer) K.get(Integer.valueOf(r13));
+        if (r6 == 0) goto L94;
+        Log.d("ExifInterface", "nextIfdType: " + r23 + " byteCount: " + r17);
+    L94:
+        if (r23 == null) goto L124;
+        int r111 = r14;
+        if (r111 != 3) goto L98;
+        int r24 = r29.readUnsignedShort();
+    L107:
+        long r25 = r24;
+    L111:
+        if (r6 == 0) goto L114;
+        Log.d("ExifInterface", String.format("Offset: %d, tagName: %s", new Object[]{Long.valueOf(r25), r7.b}));
+    L114:
+        if (r25 > 0) goto L116;
+        if (r6 == 0) goto L123;
+        Log.d("ExifInterface", "Skip jump into the IFD since its offset is invalid: " + r25);
+    L123:
+        r29.f(r19);
+        goto L141
+    L116:
+        if (r4.contains(Integer.valueOf((int) r25)) == true) goto L119;
+        r29.f(r25);
+        s(r29, r23.intValue());
+        goto L123
+    L119:
+        if (r6 == 0) goto L123;
+        Log.d("ExifInterface", "Skip jump into the IFD since it has already been read: IfdType " + r23 + " (at " + r25 + ")");
+        goto L123
+    L98:
+        if (r111 != 4) goto L100;
+        r25 = ((long) r29.readInt()) & 4294967295L;
+        goto L111
+    L100:
+        if (r111 != 8) goto L102;
+        r24 = r29.readShort();
+        goto L107
+    L102:
+        if (r111 != 9) goto L104;
+    L106:
+        r24 = r29.readInt();
+        goto L107
+    L104:
+        if (r111 == 13) goto L106;
+        r25 = -1;
+        goto L111
+    L124:
+        long r27 = r19;
+        int r28 = r29.p + this.h;
+        byte[] r112 = new byte[(int) r17];
+        r29.readFully(r112);
+        b31 r113 = new b31(r28, r112, r14, r15);
+        HashMap r31 = r11[r30];
+        String r32 = r7.b;
+        r31.put(r32, r113);
+        if ("DNGVersion".equals(r32) == false) goto L128;
+        this.c = 3;
+    L128:
+        if ("Make".equals(r32) == true) goto L132;
+        if ("Model".equals(r32) == true) goto L132;
+    L134:
+        if ("Compression".equals(r32) == false) goto L139;
+        if (r113.e(this.f) != 65535) goto L139;
+    L137:
+        this.c = 8;
+    L139:
+        if (r29.p == r27) goto L141;
+        r29.f(r27);
+    L132:
+        if (r113.f(this.f).contains("PENTAX") == true) goto L137;
+    L90:
+        r19 = r19;
+        r13 = r13;
+        r14 = r14;
+        goto L91
+    L24:
+        if (r14 <= 0) goto L27;
+        int[] r33 = C;
+        if (r14 >= r33.length) goto L27;
+        int r114 = r7.c;
+        if (r114 == 7) goto L56;
+        if (r14 == 7) goto L56;
+        if (r114 == r14) goto L56;
+        int r115 = r7.d;
+        if (r115 == r14) goto L56;
+        if (r114 == 4) goto L41;
+        if (r115 == 4) goto L41;
+    L43:
+        if (r114 == 9) goto L46;
+        if (r115 == 9) goto L46;
+    L49:
+        if (r114 == 12) goto L52;
+        if (r115 == 12) goto L52;
+    L54:
+        if (r6 == 0) goto L23;
+        Log.d("ExifInterface", "Skip the tag entry since data format (" + B[r14] + ") is unexpected for tag: " + r7.b);
+    L52:
+        if (r14 != 11) goto L54;
+    L46:
+        if (r14 != 8) goto L49;
+    L41:
+        if (r14 != 3) goto L43;
+    L56:
+        if (r14 != 7) goto L58;
+        r14 = r114;
+    L58:
+        r26 = r9;
+        r17 = ((long) r15) * ((long) r33[r14]);
+        if (r17 >= 0) goto L61;
+    L64:
+        if (r6 == 0) goto L66;
+        Log.d("ExifInterface", "Skip the tag entry since the number of components is invalid: " + r15);
+        goto L66
+    L61:
+        if (r17 > 2147483647L) goto L64;
+        r18 = true;
+    L27:
+        r26 = r9;
+        if (r6 == 0) goto L69;
+        Log.d("ExifInterface", "Skip the tag entry since data format is invalid: " + r14);
+        goto L69
+    L142:
+        boolean r210 = r6;
+        int r2 = r29.readInt();
+        if (r210 == false) goto L145;
+        Log.d("ExifInterface", String.format("nextIfdOffset: %d", new Object[]{Integer.valueOf(r2)}));
+    L145:
+        long r34 = r2;
+        if (r34 > 0) goto L148;
+        if (r210 == false) goto L170;
+        Log.d("ExifInterface", "Stop reading file since a wrong offset may cause an infinite loop: " + r2);
+        return;
+    L170:
+        return;
+    L148:
+        if (r4.contains(Integer.valueOf(r2)) == true) goto L157;
+        r29.f(r34);
+        if (r11[4].isEmpty() == false) goto L154;
+        s(r29, 4);
+        return;
+    L154:
+        if (r11[5].isEmpty() == false) goto L168;
+        s(r29, 5);
+        return;
+    L168:
+        return;
+    L157:
+        if (r210 == false) goto L169;
+        Log.d("ExifInterface", "Stop reading file since re-reading an IFD may cause an infinite loop: " + r2);
+        return;
+    L169:
+        return;
     }
 
-    public final void t(int i, String str, String str2) {
-        HashMap[] mapArr = this.d;
-        if (mapArr[i].isEmpty() || mapArr[i].get(str) == null) {
-            return;
-        }
-        HashMap map = mapArr[i];
-        map.put(str2, map.get(str));
-        mapArr[i].remove(str);
+    public final void t(int r3, String r4, String r5) {
+        HashMap[] r2 = this.d;
+        if (r2[r3].isEmpty() == false) goto L5;
+        return;
+    L5:
+        if (r2[r3].get(r4) == null) goto L9;
+        HashMap r0 = r2[r3];
+        r0.put(r5, r0.get(r4));
+        r2[r3].remove(r4);
+        return;
     }
 
-    public final void u(a31 a31Var) throws IOException {
-        b31 b31Var;
-        int iE;
-        HashMap map = this.d[4];
-        b31 b31Var2 = (b31) map.get("Compression");
-        if (b31Var2 == null) {
-            m(a31Var, map);
-            return;
-        }
-        int iE2 = b31Var2.e(this.f);
-        if (iE2 != 1) {
-            if (iE2 == 6) {
-                m(a31Var, map);
-                return;
-            } else if (iE2 != 7) {
-                return;
-            }
-        }
-        b31 b31Var3 = (b31) map.get("BitsPerSample");
-        if (b31Var3 != null) {
-            int[] iArr = (int[]) b31Var3.g(this.f);
-            int[] iArr2 = m;
-            if (Arrays.equals(iArr2, iArr) || (this.c == 3 && (b31Var = (b31) map.get("PhotometricInterpretation")) != null && (((iE = b31Var.e(this.f)) == 1 && Arrays.equals(iArr, n)) || (iE == 6 && Arrays.equals(iArr, iArr2))))) {
-                b31 b31Var4 = (b31) map.get("StripOffsets");
-                b31 b31Var5 = (b31) map.get("StripByteCounts");
-                if (b31Var4 == null || b31Var5 == null) {
-                    return;
-                }
-                long[] jArrL = gi1.l(b31Var4.g(this.f));
-                long[] jArrL2 = gi1.l(b31Var5.g(this.f));
-                if (jArrL == null || jArrL.length == 0) {
-                    Log.w("ExifInterface", "stripOffsets should not be null or have zero length.");
-                    return;
-                }
-                if (jArrL2 == null || jArrL2.length == 0) {
-                    Log.w("ExifInterface", "stripByteCounts should not be null or have zero length.");
-                    return;
-                }
-                if (jArrL.length != jArrL2.length) {
-                    Log.w("ExifInterface", "stripOffsets and stripByteCounts should have same length.");
-                    return;
-                }
-                long j = 0;
-                for (long j2 : jArrL2) {
-                    j += j2;
-                }
-                byte[] bArr = new byte[(int) j];
-                this.g = true;
-                int i = 0;
-                int i2 = 0;
-                for (int i3 = 0; i3 < jArrL.length; i3++) {
-                    int i4 = (int) jArrL[i3];
-                    int i5 = (int) jArrL2[i3];
-                    if (i3 < jArrL.length - 1 && i4 + i5 != jArrL[i3 + 1]) {
-                        this.g = false;
-                    }
-                    int i6 = i4 - i;
-                    if (i6 < 0) {
-                        Log.d("ExifInterface", "Invalid strip offset value");
-                        return;
-                    }
-                    long j3 = i6;
-                    if (a31Var.skip(j3) != j3) {
-                        Log.d("ExifInterface", "Failed to skip " + i6 + " bytes.");
-                        return;
-                    }
-                    int i7 = i + i6;
-                    byte[] bArr2 = new byte[i5];
-                    if (a31Var.read(bArr2) != i5) {
-                        Log.d("ExifInterface", "Failed to read " + i5 + " bytes.");
-                        return;
-                    }
-                    i = i7 + i5;
-                    System.arraycopy(bArr2, 0, bArr, i2, i5);
-                    i2 += i5;
-                }
-                if (this.g) {
-                    long j4 = jArrL[0];
-                    return;
-                }
-                return;
-            }
-        }
-        if (l) {
-            Log.d("ExifInterface", "Unsupported data type value");
-        }
+    public final void u(a31 r18) {
+        HashMap r2 = this.d[4];
+        b31 r3 = (b31) r2.get("Compression");
+        if (r3 == null) goto L80;
+        int r4 = r3.e(this.f);
+        if (r4 == 1) goto L12;
+        if (r4 != 6) goto L8;
+        m(r18, r2);
+        return;
+    L8:
+        if (r4 == 7) goto L12;
+        return;
+    L12:
+        b31 r5 = (b31) r2.get("BitsPerSample");
+        if (r5 == null) goto L77;
+        int[] r6 = (int[]) r5.g(this.f);
+        int[] r7 = m;
+        if (Arrays.equals(r7, r6) == false) goto L18;
+    L28:
+        b31 r8 = (b31) r2.get("StripOffsets");
+        b31 r9 = (b31) r2.get("StripByteCounts");
+        if (r8 == null) goto L87;
+        if (r9 == null) goto L88;
+        long[] r10 = gi1.l(r8.g(this.f));
+        long[] r11 = gi1.l(r9.g(this.f));
+        if (r10 != null) goto L34;
+    L74:
+        Log.w("ExifInterface", "stripOffsets should not be null or have zero length.");
+        return;
+    L34:
+        if (r10.length == 0) goto L74;
+        if (r11 != null) goto L38;
+    L72:
+        Log.w("ExifInterface", "stripByteCounts should not be null or have zero length.");
+        return;
+    L38:
+        if (r11.length == 0) goto L72;
+        if (r10.length == r11.length) goto L44;
+        Log.w("ExifInterface", "stripOffsets and stripByteCounts should have same length.");
+        return;
+    L44:
+        int r12 = r11.length;
+        long r13 = 0;
+        int r14 = 0;
+    L45:
+        if (r14 >= r12) goto L47;
+        r13 = r13 + r11[r14];
+        r14 = r14 + 1;
+        goto L45
+    L47:
+        byte[] r15 = new byte[(int) r13];
+        this.g = true;
+        int r16 = 0;
+        int r17 = 0;
+        int r19 = 0;
+    L49:
+        if (r16 >= r10.length) goto L69;
+        int r110 = (int) r10[r16];
+        int r111 = (int) r11[r16];
+        if (r16 < (r10.length - 1)) goto L53;
+    L55:
+        int r112 = r110 - r17;
+        if (r112 < 0) goto L57;
+        long r113 = r112;
+        if (r18.skip(r113) != r113) goto L61;
+        int r20 = r17 + r112;
+        byte[] r114 = new byte[r111];
+        if (r18.read(r114) != r111) goto L65;
+        r17 = r20 + r111;
+        System.arraycopy(r114, 0, r15, r19, r111);
+        r19 = r19 + r111;
+        r16 = r16 + 1;
+        goto L49
+    L65:
+        Log.d("ExifInterface", "Failed to read " + r111 + " bytes.");
+        return;
+    L61:
+        Log.d("ExifInterface", "Failed to skip " + r112 + " bytes.");
+        return;
+    L57:
+        Log.d("ExifInterface", "Invalid strip offset value");
+        return;
+    L53:
+        if ((r110 + r111) == r10[r16 + 1]) goto L55;
+        this.g = false;
+        goto L55
+    L69:
+        if (this.g == false) goto L89;
+        long r0 = r10[0];
+        return;
+    L89:
+        return;
+    L88:
+        return;
+    L87:
+        return;
+    L18:
+        if (this.c != 3) goto L77;
+        b31 r21 = (b31) r2.get("PhotometricInterpretation");
+        if (r21 == null) goto L77;
+        int r22 = r21.e(this.f);
+        if (r22 == 1) goto L24;
+    L25:
+        if (r22 != 6) goto L77;
+        if (Arrays.equals(r6, r7) == false) goto L77;
+    L24:
+        if (Arrays.equals(r6, n) == true) goto L28;
+    L77:
+        if (l == false) goto L90;
+        Log.d("ExifInterface", "Unsupported data type value");
+        return;
+    L90:
+        return;
+    L80:
+        m(r18, r2);
     }
 
-    public final void v(int i, int i2) {
-        HashMap[] mapArr = this.d;
-        boolean zIsEmpty = mapArr[i].isEmpty();
-        boolean z2 = l;
-        if (zIsEmpty || mapArr[i2].isEmpty()) {
-            if (z2) {
-                Log.d("ExifInterface", "Cannot perform swap since only one image data exists");
-                return;
-            }
-            return;
-        }
-        b31 b31Var = (b31) mapArr[i].get("ImageLength");
-        b31 b31Var2 = (b31) mapArr[i].get("ImageWidth");
-        b31 b31Var3 = (b31) mapArr[i2].get("ImageLength");
-        b31 b31Var4 = (b31) mapArr[i2].get("ImageWidth");
-        if (b31Var == null || b31Var2 == null) {
-            if (z2) {
-                Log.d("ExifInterface", "First image does not contain valid size information");
-                return;
-            }
-            return;
-        }
-        if (b31Var3 == null || b31Var4 == null) {
-            if (z2) {
-                Log.d("ExifInterface", "Second image does not contain valid size information");
-                return;
-            }
-            return;
-        }
-        int iE = b31Var.e(this.f);
-        int iE2 = b31Var2.e(this.f);
-        int iE3 = b31Var3.e(this.f);
-        int iE4 = b31Var4.e(this.f);
-        if (iE >= iE3 || iE2 >= iE4) {
-            return;
-        }
-        HashMap map = mapArr[i];
-        mapArr[i] = mapArr[i2];
-        mapArr[i2] = map;
+    public final void v(int r9, int r10) {
+        HashMap[] r0 = this.d;
+        boolean r1 = r0[r9].isEmpty();
+        boolean r3 = l;
+        if (r1 == false) goto L5;
+    L25:
+        if (r3 == false) goto L32;
+        Log.d("ExifInterface", "Cannot perform swap since only one image data exists");
+        return;
+    L32:
+        return;
+    L5:
+        if (r0[r10].isEmpty() == true) goto L25;
+        b31 r2 = (b31) r0[r9].get("ImageLength");
+        b31 r5 = (b31) r0[r9].get("ImageWidth");
+        b31 r4 = (b31) r0[r10].get("ImageLength");
+        b31 r6 = (b31) r0[r10].get("ImageWidth");
+        if (r2 == null) goto L22;
+        if (r5 == null) goto L22;
+        if (r4 == null) goto L19;
+        if (r6 == null) goto L19;
+        int r7 = r2.e(this.f);
+        int r8 = r5.e(this.f);
+        int r11 = r4.e(this.f);
+        int r12 = r6.e(this.f);
+        if (r7 >= r11) goto L28;
+        if (r8 >= r12) goto L29;
+        HashMap r13 = r0[r9];
+        r0[r9] = r0[r10];
+        r0[r10] = r13;
+        return;
+    L29:
+        return;
+    L28:
+        return;
+    L19:
+        if (r3 == false) goto L30;
+        Log.d("ExifInterface", "Second image does not contain valid size information");
+        return;
+    L30:
+        return;
+    L22:
+        if (r3 == false) goto L31;
+        Log.d("ExifInterface", "First image does not contain valid size information");
+        return;
     }
 
-    public final void w(e31 e31Var, int i) throws IOException {
-        b31 b31VarC;
-        b31 b31VarC2;
-        HashMap[] mapArr = this.d;
-        b31 b31Var = (b31) mapArr[i].get("DefaultCropSize");
-        b31 b31Var2 = (b31) mapArr[i].get("SensorTopBorder");
-        b31 b31Var3 = (b31) mapArr[i].get("SensorLeftBorder");
-        b31 b31Var4 = (b31) mapArr[i].get("SensorBottomBorder");
-        b31 b31Var5 = (b31) mapArr[i].get("SensorRightBorder");
-        if (b31Var != null) {
-            int i2 = b31Var.a;
-            ByteOrder byteOrder = this.f;
-            if (i2 == 5) {
-                d31[] d31VarArr = (d31[]) b31Var.g(byteOrder);
-                if (d31VarArr == null || d31VarArr.length != 2) {
-                    Log.w("ExifInterface", "Invalid crop size values. cropSize=" + Arrays.toString(d31VarArr));
-                    return;
-                }
-                b31VarC = b31.b(d31VarArr[0], this.f);
-                b31VarC2 = b31.b(d31VarArr[1], this.f);
-            } else {
-                int[] iArr = (int[]) b31Var.g(byteOrder);
-                if (iArr == null || iArr.length != 2) {
-                    Log.w("ExifInterface", "Invalid crop size values. cropSize=" + Arrays.toString(iArr));
-                    return;
-                }
-                b31VarC = b31.c(iArr[0], this.f);
-                b31VarC2 = b31.c(iArr[1], this.f);
-            }
-            mapArr[i].put("ImageWidth", b31VarC);
-            mapArr[i].put("ImageLength", b31VarC2);
-            return;
-        }
-        if (b31Var2 != null && b31Var3 != null && b31Var4 != null && b31Var5 != null) {
-            int iE = b31Var2.e(this.f);
-            int iE2 = b31Var4.e(this.f);
-            int iE3 = b31Var5.e(this.f);
-            int iE4 = b31Var3.e(this.f);
-            if (iE2 <= iE || iE3 <= iE4) {
-                return;
-            }
-            b31 b31VarC3 = b31.c(iE2 - iE, this.f);
-            b31 b31VarC4 = b31.c(iE3 - iE4, this.f);
-            mapArr[i].put("ImageLength", b31VarC3);
-            mapArr[i].put("ImageWidth", b31VarC4);
-            return;
-        }
-        b31 b31Var6 = (b31) mapArr[i].get("ImageLength");
-        b31 b31Var7 = (b31) mapArr[i].get("ImageWidth");
-        if (b31Var6 == null || b31Var7 == null) {
-            b31 b31Var8 = (b31) mapArr[i].get("JPEGInterchangeFormat");
-            b31 b31Var9 = (b31) mapArr[i].get("JPEGInterchangeFormatLength");
-            if (b31Var8 == null || b31Var9 == null) {
-                return;
-            }
-            int iE5 = b31Var8.e(this.f);
-            int iE6 = b31Var8.e(this.f);
-            e31Var.f(iE5);
-            byte[] bArr = new byte[iE6];
-            e31Var.read(bArr);
-            e(new a31(bArr), iE5, i);
-        }
+    public final void w(e31 r12, int r13) {
+        HashMap[] r0 = this.d;
+        b31 r1 = (b31) r0[r13].get("DefaultCropSize");
+        b31 r2 = (b31) r0[r13].get("SensorTopBorder");
+        b31 r3 = (b31) r0[r13].get("SensorLeftBorder");
+        b31 r4 = (b31) r0[r13].get("SensorBottomBorder");
+        b31 r5 = (b31) r0[r13].get("SensorRightBorder");
+        if (r1 == null) goto L24;
+        int r14 = r1.a;
+        ByteOrder r6 = this.f;
+        if (r14 != 5) goto L14;
+        d31[] r15 = (d31[]) r1.g(r6);
+        if (r15 != null) goto L9;
+    L12:
+        Log.w("ExifInterface", "Invalid crop size values. cropSize=" + Arrays.toString(r15));
+        return;
+    L9:
+        if (r15.length != 2) goto L12;
+        b31 r7 = b31.b(r15[0], this.f);
+        b31 r11 = b31.b(r15[1], this.f);
+    L20:
+        r0[r13].put("ImageWidth", r7);
+        r0[r13].put("ImageLength", r11);
+        return;
+    L14:
+        int[] r16 = (int[]) r1.g(r6);
+        if (r16 != null) goto L17;
+    L22:
+        Log.w("ExifInterface", "Invalid crop size values. cropSize=" + Arrays.toString(r16));
+        return;
+    L17:
+        if (r16.length != 2) goto L22;
+        r7 = b31.c(r16[0], this.f);
+        r11 = b31.c(r16[1], this.f);
+        goto L20
+    L24:
+        if (r2 == null) goto L33;
+        if (r3 == null) goto L33;
+        if (r4 == null) goto L33;
+        if (r5 == null) goto L33;
+        int r17 = r2.e(this.f);
+        int r8 = r4.e(this.f);
+        int r9 = r5.e(this.f);
+        int r10 = r3.e(this.f);
+        if (r8 <= r17) goto L41;
+        if (r9 <= r10) goto L42;
+        b31 r18 = b31.c(r8 - r17, this.f);
+        b31 r19 = b31.c(r9 - r10, this.f);
+        r0[r13].put("ImageLength", r18);
+        r0[r13].put("ImageWidth", r19);
+        return;
+    L42:
+        return;
+    L41:
+        return;
+    L33:
+        b31 r20 = (b31) r0[r13].get("ImageLength");
+        b31 r21 = (b31) r0[r13].get("ImageWidth");
+        if (r20 == null) goto L36;
+        if (r21 == null) goto L36;
+        return;
+    L36:
+        b31 r22 = (b31) r0[r13].get("JPEGInterchangeFormat");
+        b31 r23 = (b31) r0[r13].get("JPEGInterchangeFormatLength");
+        if (r22 == null) goto L44;
+        if (r23 == null) goto L45;
+        int r24 = r22.e(this.f);
+        int r25 = r22.e(this.f);
+        r12.f(r24);
+        byte[] r26 = new byte[r25];
+        r12.read(r26);
+        e(new a31(r26), r24, r13);
+        return;
+    L45:
+        return;
     }
 
     public final void x() {
         v(0, 5);
         v(0, 4);
         v(5, 4);
-        HashMap[] mapArr = this.d;
-        b31 b31Var = (b31) mapArr[1].get("PixelXDimension");
-        b31 b31Var2 = (b31) mapArr[1].get("PixelYDimension");
-        if (b31Var != null && b31Var2 != null) {
-            mapArr[0].put("ImageWidth", b31Var);
-            mapArr[0].put("ImageLength", b31Var2);
-        }
-        if (mapArr[4].isEmpty() && n(mapArr[5])) {
-            mapArr[4] = mapArr[5];
-            mapArr[5] = new HashMap();
-        }
-        if (!n(mapArr[4])) {
-            Log.d("ExifInterface", "No image meets the size requirements of a thumbnail image.");
-        }
+        HashMap[] r3 = this.d;
+        b31 r5 = (b31) r3[1].get("PixelXDimension");
+        b31 r4 = (b31) r3[1].get("PixelYDimension");
+        if (r5 == null) goto L7;
+        if (r4 == null) goto L7;
+        r3[0].put("ImageWidth", r5);
+        r3[0].put("ImageLength", r4);
+    L7:
+        if (r3[4].isEmpty() == false) goto L12;
+        if (n(r3[5]) == false) goto L12;
+        r3[4] = r3[5];
+        r3[5] = new HashMap();
+    L12:
+        if (n(r3[4]) == true) goto L14;
+        Log.d("ExifInterface", "No image meets the size requirements of a thumbnail image.");
+    L14:
         t(0, "ThumbnailOrientation", "Orientation");
         t(0, "ThumbnailImageLength", "ImageLength");
         t(0, "ThumbnailImageWidth", "ImageWidth");

@@ -20,8 +20,6 @@ import android.view.View;
 import app.homemusic.R;
 import com.eddyizm.tempus.App;
 import com.eddyizm.tempus.homemusic.SmartPlan;
-import com.eddyizm.tempus.homemusic.WaveOrigin;
-import com.eddyizm.tempus.subsonic.models.Child;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
@@ -33,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ForkJoinPool;
@@ -43,197 +42,253 @@ import org.xmlpull.v1.XmlPullParserException;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class e35 {
+    public static final char[] a = null;
+    public static final char[] b = null;
     public static volatile Handler c = null;
+    public static final char[] d = null;
+    public static final int[] e = null;
+    public static final int[] f = null;
+    public static final int[] g = null;
+    public static final int[] h = null;
+    public static final int[] i = null;
+    public static final int[] j = null;
+    public static final int[] k = null;
+    public static final int[] l = null;
+    public static final int[] m = null;
     public static final long n = Long.MIN_VALUE;
     public static final /* synthetic */ int o = 0;
-    public static final char[] a = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
-    public static final char[] b = new char[64];
-    public static final char[] d = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
-    public static final int[] e = {1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 7, 8, 8};
-    public static final int[] f = {-1, 8000, 16000, 32000, -1, -1, 11025, 22050, 44100, -1, -1, 12000, 24000, 48000, -1, -1};
-    public static final int[] g = {64, 112, 128, 192, 224, 256, 384, 448, 512, 640, 768, 896, 1024, 1152, 1280, 1536, 1920, 2048, 2304, 2560, 2688, 2816, 2823, 2944, 3072, 3840, 4096, 6144, 7680};
-    public static final int[] h = {8000, 16000, 32000, 64000, 128000, 22050, 44100, 88200, 176400, 352800, 12000, 24000, 48000, 96000, 192000, 384000};
-    public static final int[] i = {5, 8, 10, 12};
-    public static final int[] j = {6, 9, 12, 15};
-    public static final int[] k = {2, 4, 6, 8};
-    public static final int[] l = {9, 11, 13, 16};
-    public static final int[] m = {5, 8, 10, 12};
 
-    public static h00 A(byte[] bArr) {
-        byte[] bArr2;
-        byte b2 = bArr[0];
-        if (b2 == 127 || b2 == 100 || b2 == 64 || b2 == 113) {
-            return new h00(bArr.length, bArr);
-        }
-        byte[] bArrCopyOf = Arrays.copyOf(bArr, bArr.length);
-        byte b3 = bArrCopyOf[0];
-        if (b3 == -2 || b3 == -1 || b3 == 37 || b3 == -14 || b3 == -24) {
-            for (int i2 = 0; i2 < bArrCopyOf.length - 1; i2 += 2) {
-                byte b4 = bArrCopyOf[i2];
-                int i3 = i2 + 1;
-                bArrCopyOf[i2] = bArrCopyOf[i3];
-                bArrCopyOf[i3] = b4;
-            }
-        }
-        h00 h00Var = new h00(bArrCopyOf.length, bArrCopyOf);
-        if (bArrCopyOf[0] == 31) {
-            h00 h00Var2 = new h00(bArrCopyOf.length, bArrCopyOf);
-            while (h00Var2.b() >= 16) {
-                h00Var2.t(2);
-                int i4 = h00Var2.i(14) & 16383;
-                int iMin = Math.min(8 - h00Var.d, 14);
-                int i5 = h00Var.d;
-                int i6 = (8 - i5) - iMin;
-                byte[] bArr3 = h00Var.b;
-                int i7 = h00Var.c;
-                byte b5 = (byte) (((65280 >> i5) | ((1 << i6) - 1)) & bArr3[i7]);
-                bArr3[i7] = b5;
-                int i8 = 14 - iMin;
-                bArr3[i7] = (byte) (b5 | ((i4 >>> i8) << i6));
-                int i9 = i7 + 1;
-                while (true) {
-                    bArr2 = h00Var.b;
-                    if (i8 > 8) {
-                        bArr2[i9] = (byte) (i4 >>> (i8 - 8));
-                        i8 -= 8;
-                        i9++;
-                    }
-                }
-                int i10 = 8 - i8;
-                byte b6 = (byte) (bArr2[i9] & ((1 << i10) - 1));
-                bArr2[i9] = b6;
-                bArr2[i9] = (byte) (((i4 & ((1 << i8) - 1)) << i10) | b6);
-                h00Var.t(14);
-                h00Var.a();
-            }
-        }
-        h00Var.o(bArrCopyOf.length, bArrCopyOf);
-        return h00Var;
+    static {
+        a = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+        b = new char[64];
+        d = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+        e = new int[]{1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 7, 8, 8};
+        f = new int[]{-1, 8000, 16000, 32000, -1, -1, 11025, 22050, 44100, -1, -1, 12000, 24000, 48000, -1, -1};
+        g = new int[]{64, 112, 128, 192, 224, 256, 384, 448, 512, 640, 768, 896, 1024, 1152, 1280, 1536, 1920, 2048, 2304, 2560, 2688, 2816, 2823, 2944, 3072, 3840, 4096, 6144, 7680};
+        h = new int[]{8000, 16000, 32000, 64000, 128000, 22050, 44100, 88200, 176400, 352800, 12000, 24000, 48000, 96000, 192000, 384000};
+        i = new int[]{5, 8, 10, 12};
+        j = new int[]{6, 9, 12, 15};
+        k = new int[]{2, 4, 6, 8};
+        l = new int[]{9, 11, 13, 16};
+        m = new int[]{5, 8, 10, 12};
     }
 
-    public static ArrayList B(Collection collection) {
-        ArrayList arrayList = new ArrayList(collection.size());
-        for (Object obj : collection) {
-            if (obj != null) {
-                arrayList.add(obj);
-            }
-        }
-        return arrayList;
+    public static h00 A(byte[] r12) {
+        byte r1 = r12[0];
+        if (r1 == 127) goto L38;
+        if (r1 == 100) goto L38;
+        if (r1 == 64) goto L38;
+        if (r1 == 113) goto L38;
+        byte[] r13 = Arrays.copyOf(r12, r12.length);
+        byte r2 = r13[0];
+        if (r2 != (-2)) goto L14;
+    L21:
+        int r3 = 0;
+    L23:
+        if (r3 >= (r13.length - 1)) goto L25;
+        byte r4 = r13[r3];
+        int r5 = r3 + 1;
+        r13[r3] = r13[r5];
+        r13[r5] = r4;
+        r3 = r3 + 2;
+    L25:
+        h00 r6 = new h00(r13.length, r13);
+        if (r13[0] != 31) goto L35;
+        h00 r0 = new h00(r13.length, r13);
+    L29:
+        if (r0.b() < 16) goto L35;
+        r0.t(2);
+        int r7 = r0.i(14) & 16383;
+        int r8 = Math.min(8 - r6.d, 14);
+        int r9 = r6.d;
+        int r10 = (8 - r9) - r8;
+        byte[] r11 = r6.b;
+        int r14 = r6.c;
+        byte r15 = (byte) (((65280 >> r9) | ((1 << r10) - 1)) & r11[r14]);
+        r11[r14] = r15;
+        int r16 = 14 - r8;
+        r11[r14] = (byte) (r15 | ((r7 >>> r16) << r10));
+        int r17 = r14 + 1;
+    L31:
+        byte[] r18 = r6.b;
+        if (r16 <= 8) goto L34;
+        r18[r17] = (byte) (r7 >>> (r16 - 8));
+        r16 = r16 - 8;
+        r17 = r17 + 1;
+        goto L31
+    L34:
+        int r19 = 8 - r16;
+        byte r20 = (byte) (r18[r17] & ((1 << r19) - 1));
+        r18[r17] = r20;
+        r18[r17] = (byte) (((r7 & ((1 << r16) - 1)) << r19) | r20);
+        r6.t(14);
+        r6.a();
+    L35:
+        r6.o(r13.length, r13);
+        return r6;
+    L14:
+        if (r2 == (-1)) goto L21;
+        if (r2 == 37) goto L21;
+        if (r2 == (-14)) goto L21;
+        if (r2 != (-24)) goto L25;
+    L38:
+        return new h00(r12.length, r12);
+    }
+
+    public static ArrayList B(Collection r2) {
+        ArrayList r0 = new ArrayList(r2.size());
+        Iterator r3 = r2.iterator();
+    L4:
+        if (r3.hasNext() == false) goto L8;
+        Object r1 = r3.next();
+        if (r1 == null) goto L4;
+        r0.add(r1);
+        goto L4
+    L8:
+        return r0;
     }
 
     public static Handler C() {
-        if (c == null) {
-            synchronized (e35.class) {
-                try {
-                    if (c == null) {
-                        c = new Handler(Looper.getMainLooper());
-                    }
-                } catch (Throwable th) {
-                    throw th;
-                }
-            }
-        }
+        if (c != null) goto L16;
+        monitor-enter(e35.class);
+    L9:
+        th = move-exception;
+        throw th;
+    L7:
+        if (c != null) goto L11;
+        c = new Handler(Looper.getMainLooper());     // Catch: Throwable -> L9
+    L11:
+        monitor-exit(e35.class);     // Catch: Throwable -> L9
+    L16:
         return c;
     }
 
-    public static int D(int i2, float f2) {
-        return E(Float.floatToIntBits(f2), i2);
+    public static int D(int r0, float r1) {
+        return E(Float.floatToIntBits(r1), r0);
     }
 
-    public static int E(int i2, int i3) {
-        return (i3 * 31) + i2;
+    public static int E(int r0, int r1) {
+        return (r1 * 31) + r0;
     }
 
-    public static int F(int i2, Object obj) {
-        return E(obj == null ? 0 : obj.hashCode(), i2);
+    public static int F(int r0, Object r1) {
+        if (r1 != null) goto L4;
+        int r2 = 0;
+    L6:
+        return E(r2, r0);
+    L4:
+        r2 = r1.hashCode();
+        goto L6
     }
 
-    public static final void G(String str) {
-        str.getClass();
-        if (str.length() <= 0) {
-            kf2.n("name is empty");
-            return;
-        }
-        int length = str.length();
-        for (int i2 = 0; i2 < length; i2++) {
-            char cCharAt = str.charAt(i2);
-            if ('!' > cCharAt || cCharAt >= 127) {
-                StringBuilder sb = new StringBuilder("Unexpected char 0x");
-                ya4.g(16);
-                String string = Integer.toString(cCharAt, 16);
-                string.getClass();
-                if (string.length() < 2) {
-                    string = "0".concat(string);
-                }
-                sb.append(string);
-                sb.append(" at ");
-                sb.append(i2);
-                sb.append(" in header name: ");
-                sb.append(str);
-                throw new IllegalArgumentException(sb.toString().toString());
-            }
-        }
+    public static final void G(String r5) {
+        r5.getClass();
+        if (r5.length() <= 0) goto L17;
+        int r0 = r5.length();
+        int r1 = 0;
+    L5:
+        if (r1 >= r0) goto L16;
+        char r2 = r5.charAt(r1);
+        if ('!' > r2) goto L11;
+        if (r2 >= 127) goto L11;
+        r1 = r1 + 1;
+    L11:
+        StringBuilder r3 = new StringBuilder("Unexpected char 0x");
+        ya4.g(16);
+        String r4 = Integer.toString(r2, 16);
+        r4.getClass();
+        if (r4.length() >= 2) goto L14;
+        r4 = "0".concat(r4);
+    L14:
+        r3.append(r4);
+        r3.append(" at ");
+        r3.append(r1);
+        r3.append(" in header name: ");
+        r3.append(r5);
+        throw new IllegalArgumentException(r3.toString().toString());
+    L16:
+        return;
+    L17:
+        kf2.n("name is empty");
     }
 
-    public static final void H(String str, String str2) {
-        str.getClass();
-        str2.getClass();
-        int length = str.length();
-        for (int i2 = 0; i2 < length; i2++) {
-            char cCharAt = str.charAt(i2);
-            if (cCharAt != '\t' && (' ' > cCharAt || cCharAt >= 127)) {
-                StringBuilder sb = new StringBuilder("Unexpected char 0x");
-                ya4.g(16);
-                String string = Integer.toString(cCharAt, 16);
-                string.getClass();
-                if (string.length() < 2) {
-                    string = "0".concat(string);
-                }
-                sb.append(string);
-                sb.append(" at ");
-                sb.append(i2);
-                sb.append(" in ");
-                sb.append(str2);
-                sb.append(" value");
-                sb.append(xe5.l(str2) ? "" : ": ".concat(str));
-                throw new IllegalArgumentException(sb.toString().toString());
-            }
-        }
+    public static final void H(String r5, String r6) {
+        r5.getClass();
+        r6.getClass();
+        int r0 = r5.length();
+        int r1 = 0;
+    L3:
+        if (r1 >= r0) goto L21;
+        char r2 = r5.charAt(r1);
+        if (r2 == '\t') goto L20;
+        if (' ' > r2) goto L11;
+        if (r2 < 127) goto L20;
+    L11:
+        StringBuilder r3 = new StringBuilder("Unexpected char 0x");
+        ya4.g(16);
+        String r4 = Integer.toString(r2, 16);
+        r4.getClass();
+        if (r4.length() >= 2) goto L14;
+        r4 = "0".concat(r4);
+    L14:
+        r3.append(r4);
+        r3.append(" at ");
+        r3.append(r1);
+        r3.append(" in ");
+        r3.append(r6);
+        r3.append(" value");
+        if (xe5.l(r6) == false) goto L17;
+        String r7 = "";
+    L18:
+        r3.append(r7);
+        throw new IllegalArgumentException(r3.toString().toString());
+    L17:
+        r7 = ": ".concat(r5);
+    L20:
+        r1 = r1 + 1;
+        goto L3
     }
 
-    public static boolean I(int i2, int i3) {
-        if (i2 > 0 || i2 == Integer.MIN_VALUE) {
-            return i3 > 0 || i3 == Integer.MIN_VALUE;
-        }
+    public static boolean I(int r1, int r2) {
+        if (r1 > 0) goto L5;
+        if (r1 == Integer.MIN_VALUE) goto L5;
         return false;
+    L5:
+        if (r2 > 0) goto L10;
+        if (r2 == Integer.MIN_VALUE) goto L13;
+        return false;
+    L13:
+        return true;
+    L10:
+        return true;
     }
 
-    public static void J(MediaFormat mediaFormat, String str, int i2) {
-        if (i2 != -1) {
-            mediaFormat.setInteger(str, i2);
-        }
+    public static void J(MediaFormat r1, String r2, int r3) {
+        if (r3 == (-1)) goto L6;
+        r1.setInteger(r2, r3);
+        return;
     }
 
-    public static final String K(String str) {
-        String string = str != null ? qm4.K0(str).toString() : null;
-        if (string == null) {
-            string = "";
-        }
-        if (string.length() == 0) {
-            return null;
-        }
-        if (!xm4.k0(string, "http://", true) && !xm4.k0(string, "https://", true)) {
-            string = "https://".concat(string);
-        }
-        return qm4.L0(qm4.H0(string, '#'), '/');
+    public static final String K(String r3) {
+        if (r3 == null) goto L5;
+        String r4 = qm4.K0(r3).toString();
+    L6:
+        if (r4 != null) goto L9;
+        r4 = "";
+    L9:
+        if (r4.length() != 0) goto L12;
+        return null;
+    L12:
+        if (xm4.k0(r4, "http://", true) == true) goto L17;
+        if (xm4.k0(r4, "https://", true) == true) goto L17;
+        r4 = "https://".concat(r4);
+    L17:
+        return qm4.L0(qm4.H0(r4, '#'), new char[]{'/'});
+    L5:
+        r4 = null;
+        goto L6
     }
 
-    /* JADX WARN: Code duplicated, block: B:159:0x011d A[EXC_TOP_SPLITTER, SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:195:? A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:68:0x0121 A[Catch: all -> 0x015b, TryCatch #4 {all -> 0x015b, blocks: (B:66:0x011d, B:68:0x0121, B:70:0x0125, B:72:0x012e, B:74:0x0134, B:77:0x013a, B:82:0x0148, B:80:0x0141, B:83:0x0150, B:84:0x0154), top: B:159:0x011d, inners: #1 }] */
-    /* JADX WARN: Code duplicated, block: B:70:0x0125 A[Catch: all -> 0x015b, TryCatch #4 {all -> 0x015b, blocks: (B:66:0x011d, B:68:0x0121, B:70:0x0125, B:72:0x012e, B:74:0x0134, B:77:0x013a, B:82:0x0148, B:80:0x0141, B:83:0x0150, B:84:0x0154), top: B:159:0x011d, inners: #1 }] */
-    /* JADX WARN: Code duplicated, block: B:83:0x0150 A[Catch: all -> 0x015b, TryCatch #4 {all -> 0x015b, blocks: (B:66:0x011d, B:68:0x0121, B:70:0x0125, B:72:0x012e, B:74:0x0134, B:77:0x013a, B:82:0x0148, B:80:0x0141, B:83:0x0150, B:84:0x0154), top: B:159:0x011d, inners: #1 }] */
-    /* JADX WARN: Code duplicated, block: B:84:0x0154 A[Catch: all -> 0x015b, TRY_LEAVE, TryCatch #4 {all -> 0x015b, blocks: (B:66:0x011d, B:68:0x0121, B:70:0x0125, B:72:0x012e, B:74:0x0134, B:77:0x013a, B:82:0x0148, B:80:0x0141, B:83:0x0150, B:84:0x0154), top: B:159:0x011d, inners: #1 }] */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r4v19 */
     /* JADX WARN: Type inference failed for: r4v20 */
@@ -247,1798 +302,1774 @@ public abstract class e35 {
     /* JADX WARN: Type inference failed for: r4v30 */
     /* JADX WARN: Type inference failed for: r8v11 */
     /* JADX WARN: Type inference failed for: r8v13 */
-    public static xa1 L(XmlResourceParser xmlResourceParser, Resources resources) throws Exception {
-        int next;
-        int i2;
-        int i3;
-        ?? r4;
-        long j2;
-        Throwable th;
-        ?? r5;
-        ExecutorService executorService;
-        boolean zIsTerminated;
-        boolean zIsTerminated2;
-        TimeUnit timeUnit = TimeUnit.DAYS;
-        do {
-            next = xmlResourceParser.next();
-            i2 = 2;
-            if (next == 2) {
-                break;
-            }
-        } while (next != 1);
-        if (next != 2) {
-            throw new XmlPullParserException("No start tag found");
-        }
-        xmlResourceParser.require(2, null, "font-family");
-        if (!xmlResourceParser.getName().equals("font-family")) {
-            T(xmlResourceParser);
-            return null;
-        }
-        TypedArray typedArrayObtainAttributes = resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), mt3.b);
-        int i4 = 0;
-        String string = typedArrayObtainAttributes.getString(0);
-        String string2 = typedArrayObtainAttributes.getString(5);
-        String string3 = typedArrayObtainAttributes.getString(6);
-        String string4 = typedArrayObtainAttributes.getString(2);
-        int resourceId = typedArrayObtainAttributes.getResourceId(1, 0);
-        int i5 = 3;
-        int integer = typedArrayObtainAttributes.getInteger(3, 1);
-        int integer2 = typedArrayObtainAttributes.getInteger(4, SmartPlan.MAX_QUEUE);
-        String string5 = typedArrayObtainAttributes.getString(7);
-        typedArrayObtainAttributes.recycle();
-        if (string == null || string2 == null) {
-            ArrayList arrayList = new ArrayList();
-            while (xmlResourceParser.next() != 3) {
-                if (xmlResourceParser.getEventType() == 2) {
-                    if (xmlResourceParser.getName().equals("font")) {
-                        TypedArray typedArrayObtainAttributes2 = resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), mt3.c);
-                        int i6 = typedArrayObtainAttributes2.getInt(typedArrayObtainAttributes2.hasValue(8) ? 8 : 1, 400);
-                        boolean z = 1 == typedArrayObtainAttributes2.getInt(typedArrayObtainAttributes2.hasValue(6) ? 6 : 2, 0);
-                        int i7 = typedArrayObtainAttributes2.hasValue(9) ? 9 : 3;
-                        String string6 = typedArrayObtainAttributes2.getString(typedArrayObtainAttributes2.hasValue(7) ? 7 : 4);
-                        int i8 = typedArrayObtainAttributes2.getInt(i7, 0);
-                        int i9 = typedArrayObtainAttributes2.hasValue(5) ? 5 : 0;
-                        int resourceId2 = typedArrayObtainAttributes2.getResourceId(i9, 0);
-                        String string7 = typedArrayObtainAttributes2.getString(i9);
-                        typedArrayObtainAttributes2.recycle();
-                        while (xmlResourceParser.next() != 3) {
-                            T(xmlResourceParser);
-                        }
-                        arrayList.add(new za1(i6, i8, resourceId2, string7, string6, z));
-                    } else {
-                        T(xmlResourceParser);
-                    }
-                }
-            }
-            if (arrayList.isEmpty()) {
-                return null;
-            }
-            return new ya1((za1[]) arrayList.toArray(new za1[0]));
-        }
-        List listP = P(resources, resourceId);
-        ArrayList arrayList2 = new ArrayList();
-        while (xmlResourceParser.next() != i5) {
-            if (xmlResourceParser.getEventType() == i2) {
-                if (xmlResourceParser.getName().equals("fallback")) {
-                    TypedArray typedArrayObtainAttributes3 = resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), mt3.d);
-                    int i10 = integer;
-                    int i11 = 3;
-                    try {
-                        String string8 = typedArrayObtainAttributes3.getString(i4);
-                        String string9 = typedArrayObtainAttributes3.getString(1);
-                        String string10 = typedArrayObtainAttributes3.getString(i2);
-                        if (string8 == null) {
-                            r4 = typedArrayObtainAttributes3;
-                            j2 = 1;
-                            throw new XmlPullParserException("query attribute must be set in fallback element");
-                        }
-                        while (true) {
-                            int i12 = i11;
-                            if (xmlResourceParser.next() == i12) {
-                                break;
-                            }
-                            try {
-                                T(xmlResourceParser);
-                                i11 = i12;
-                            } catch (Throwable th2) {
-                                th = th2;
-                                r5 = typedArrayObtainAttributes3;
-                                j2 = 1;
-                            }
-                        }
-                        try {
-                            r4 = typedArrayObtainAttributes3;
-                            i3 = i10;
-                            j2 = 1;
-                            try {
-                                pa1 pa1Var = new pa1(string, listP, string2, string8, string9, string10);
-                                if (r4 instanceof AutoCloseable) {
-                                    ((AutoCloseable) r4).close();
-                                } else if (r4 instanceof ExecutorService) {
-                                    ExecutorService executorService2 = (ExecutorService) r4;
-                                    if (executorService2 != ForkJoinPool.commonPool() && !(zIsTerminated2 = executorService2.isTerminated())) {
-                                        executorService2.shutdown();
-                                        boolean z2 = false;
-                                        while (!zIsTerminated2) {
-                                            try {
-                                                zIsTerminated2 = executorService2.awaitTermination(1L, timeUnit);
-                                            } catch (InterruptedException unused) {
-                                                if (!z2) {
-                                                    executorService2.shutdownNow();
-                                                    z2 = true;
-                                                }
-                                            }
-                                        }
-                                        if (z2) {
-                                            Thread.currentThread().interrupt();
-                                        }
-                                    }
-                                } else {
-                                    r4.recycle();
-                                }
-                                arrayList2.add(pa1Var);
-                            } catch (Throwable th3) {
-                                th = th3;
-                            }
-                        } catch (Throwable th4) {
-                            th = th4;
-                            r4 = typedArrayObtainAttributes3;
-                            j2 = 1;
-                            th = th;
-                            r5 = r4;
-                            if (r5 != 0) {
-                                throw th;
-                            }
-                            try {
-                                if (!(r5 instanceof AutoCloseable)) {
-                                    ((AutoCloseable) r5).close();
-                                    throw th;
-                                }
-                                if (r5 instanceof ExecutorService) {
-                                    r5.recycle();
-                                    throw th;
-                                }
-                                executorService = (ExecutorService) r5;
-                                if (executorService != ForkJoinPool.commonPool()) {
-                                    throw th;
-                                }
-                                throw th;
-                            } catch (Throwable th5) {
-                                th.addSuppressed(th5);
-                                throw th;
-                            }
-                        }
-                        th = th3;
-                    } catch (Throwable th6) {
-                        th = th6;
-                        r4 = typedArrayObtainAttributes3;
-                    }
-                    th = th;
-                    r5 = r4;
-                    if (r5 != 0) {
-                        throw th;
-                    }
-                    if (!(r5 instanceof AutoCloseable)) {
-                        ((AutoCloseable) r5).close();
-                        throw th;
-                    }
-                    if (r5 instanceof ExecutorService) {
-                        r5.recycle();
-                        throw th;
-                    }
-                    executorService = (ExecutorService) r5;
-                    if (executorService != ForkJoinPool.commonPool() || (zIsTerminated = executorService.isTerminated())) {
-                        throw th;
-                    }
-                    executorService.shutdown();
-                    boolean z3 = false;
-                    while (!zIsTerminated) {
-                        try {
-                            zIsTerminated = executorService.awaitTermination(j2, timeUnit);
-                        } catch (InterruptedException unused2) {
-                            if (!z3) {
-                                executorService.shutdownNow();
-                                z3 = true;
-                            }
-                        }
-                    }
-                    if (!z3) {
-                        throw th;
-                    }
-                    Thread.currentThread().interrupt();
-                    throw th;
-                }
-                i3 = integer;
-                T(xmlResourceParser);
-                integer = i3;
-                integer2 = integer2;
-                string5 = string5;
-                i2 = 2;
-                i4 = 0;
-                i5 = 3;
-            }
-        }
-        int i13 = integer2;
-        String str = string5;
-        int i14 = integer;
-        if (!arrayList2.isEmpty()) {
-            return new ab1(arrayList2, i14, i13, str);
-        }
-        if (string3 == null) {
-            kf2.n("The provider font XML requires query attribute or fallback children.");
-            return null;
-        }
-        arrayList2.add(new pa1(string, listP, string2, string3, null, null));
-        if (string4 != null) {
-            arrayList2.add(new pa1(string, listP, string2, string4, null, null));
-        }
-        return new ab1(arrayList2, i14, i13, str);
+    public static xa1 L(XmlResourceParser r29, Resources r30) {
+        TimeUnit r1 = TimeUnit.DAYS;
+    L3:
+        int r2 = r29.next();
+        int r4 = 2;
+        if (r2 == 2) goto L7;
+        if (r2 != 1) goto L3;
+    L7:
+        if (r2 != 2) goto L150;
+        r29.require(2, null, "font-family");
+        if (r29.getName().equals("font-family") == false) goto L147;
+        TypedArray r5 = r30.obtainAttributes(Xml.asAttributeSet(r29), mt3.b);
+        int r7 = 0;
+        String r9 = r5.getString(0);
+        String r11 = r5.getString(5);
+        String r15 = r5.getString(6);
+        String r16 = r5.getString(2);
+        int r12 = r5.getResourceId(1, 0);
+        int r13 = 3;
+        int r14 = r5.getInteger(3, 1);
+        int r3 = r5.getInteger(4, SmartPlan.MAX_QUEUE);
+        String r6 = r5.getString(7);
+        r5.recycle();
+        if (r9 == null) goto L103;
+        if (r11 == null) goto L103;
+        List r10 = P(r30, r12);
+        ArrayList r8 = new ArrayList();
+    L15:
+        if (r29.next() == r13) goto L91;
+        if (r29.getEventType() != r4) goto L15;
+        if (r29.getName().equals("fallback") == false) goto L89;
+        TypedArray r17 = r30.obtainAttributes(Xml.asAttributeSet(r29), mt3.d);
+        int r19 = r14;
+        int r18 = 3;
+        String r110 = r17.getString(r7);     // Catch: Throwable -> L60
+        String r111 = r17.getString(1);     // Catch: Throwable -> L60
+        String r112 = r17.getString(r4);     // Catch: Throwable -> L60
+        if (r110 == null) goto L62;
+    L24:
+        int r20 = r18;
+        if (r29.next() == r20) goto L155;
+        T(r29);     // Catch: Throwable -> L29
+        r18 = r20;
+    L29:
+        th = move-exception;
+        Throwable r21 = th;
+        ?? r22 = r17;
+        long r23 = 1;
+    L65:
+        if (r22 == 0) goto L195;
+    L86:
+        th = move-exception;
+        r21.addSuppressed(th);
+        throw r21;
+    L67:
+        if ((r22 instanceof AutoCloseable) == false) goto L69;
+        ((AutoCloseable) r22).close();     // Catch: Throwable -> L86
+        throw r21;
+    L69:
+        if ((r22 instanceof ExecutorService) == false) goto L83;
+        ExecutorService r24 = (ExecutorService) r22;     // Catch: Throwable -> L86
+        if (r24 == ForkJoinPool.commonPool()) goto L196;
+        boolean r0 = r24.isTerminated();     // Catch: Throwable -> L86
+        if (r0 == true) goto L197;
+        r24.shutdown();     // Catch: Throwable -> L86
+        boolean r25 = false;
+    L76:
+        if (r0 == true) goto L81;
+        r0 = r24.awaitTermination(r23, r1);     // Catch: InterruptedException -> L79 Throwable -> L86
+    L79:
+        if (r25 == true) goto L76;
+        r24.shutdownNow();     // Catch: Throwable -> L86
+        r25 = true;
+        goto L76
+    L81:
+        if (r25 == false) goto L198;
+        Thread.currentThread().interrupt();     // Catch: Throwable -> L86
+        throw r21;
+    L198:
+        throw r21;
+    L197:
+        throw r21;
+    L196:
+        throw r21;
+    L83:
+        r22.recycle();     // Catch: Throwable -> L86
+        throw r21;
+    L195:
+        throw r21;
+    L155:
+        ?? r26 = r17;
+        int r27 = r19;
+        r23 = 1;
+        pa1 r28 = new pa1(r9, r10, r11, r110, r111, r112);     // Catch: Throwable -> L55
+        if ((r26 instanceof AutoCloseable) == false) goto L39;
+        ((AutoCloseable) r26).close();
+    L54:
+        r8.add(r28);
+    L90:
+        r14 = r27;
+        r3 = r3;
+        r6 = r6;
+        r4 = 2;
+        r7 = 0;
+        r13 = 3;
+        goto L15
+    L39:
+        if ((r26 instanceof ExecutorService) == false) goto L53;
+        ExecutorService r31 = (ExecutorService) r26;
+        if (r31 == ForkJoinPool.commonPool()) goto L54;
+        boolean r113 = r31.isTerminated();
+        if (r113 == true) goto L54;
+        r31.shutdown();
+        boolean r114 = false;
+    L46:
+        if (r113 == true) goto L51;
+        r113 = r31.awaitTermination(1, r1);     // Catch: InterruptedException -> L49
+    L49:
+        if (r114 == true) goto L46;
+        r31.shutdownNow();
+        r114 = true;
+        goto L46
+    L51:
+        if (r114 == false) goto L54;
+        Thread.currentThread().interrupt();
+        goto L54
+    L53:
+        r26.recycle();
+    L55:
+        th = th;
+    L56:
+        r21 = th;
+        r22 = r26;
+    L57:
+        th = th;
+        r26 = r17;
+    L59:
+        r23 = 1;
+        goto L56
+    L62:
+        r26 = r17;
+        r23 = 1;
+        throw new XmlPullParserException("query attribute must be set in fallback element");     // Catch: Throwable -> L55
+    L60:
+        th = th;
+        r26 = r17;
+        goto L59
+    L89:
+        r27 = r14;
+        T(r29);
+        goto L90
+    L91:
+        int r210 = r3;
+        String r211 = r6;
+        int r32 = r14;
+        if (r8.isEmpty() == true) goto L95;
+        return new ab1(r8, r32, r210, r211);
+    L95:
+        if (r15 == null) goto L101;
+        r8.add(new pa1(r9, r10, r11, r15, null, null));
+        if (r16 == null) goto L100;
+        r8.add(new pa1(r9, r10, r11, r16, null, null));
+    L100:
+        return new ab1(r8, r32, r210, r211);
+    L101:
+        kf2.n("The provider font XML requires query attribute or fallback children.");
+        return null;
+    L103:
+        ArrayList r33 = new ArrayList();
+    L105:
+        if (r29.next() == 3) goto L143;
+        if (r29.getEventType() != 2) goto L105;
+        if (r29.getName().equals("font") == true) goto L111;
+        T(r29);
+        goto L105
+    L111:
+        TypedArray r34 = r30.obtainAttributes(Xml.asAttributeSet(r29), mt3.c);
+        int r115 = 8;
+        if (r34.hasValue(8) == true) goto L115;
+        r115 = 1;
+    L115:
+        int r212 = r34.getInt(r115, 400);
+        if (r34.hasValue(6) == false) goto L119;
+        int r35 = 6;
+    L121:
+        if (1 != r34.getInt(r35, 0)) goto L123;
+        boolean r213 = true;
+    L124:
+        int r36 = 9;
+        if (r34.hasValue(9) == true) goto L129;
+        r36 = 3;
+    L129:
+        if (r34.hasValue(7) == false) goto L131;
+        int r37 = 7;
+    L132:
+        String r214 = r34.getString(r37);
+        int r215 = r34.getInt(r36, 0);
+        if (r34.hasValue(5) == false) goto L135;
+        int r38 = 5;
+    L136:
+        int r216 = r34.getResourceId(r38, 0);
+        String r217 = r34.getString(r38);
+        r34.recycle();
+    L138:
+        if (r29.next() == 3) goto L140;
+        T(r29);
+        goto L138
+    L140:
+        r33.add(new za1(r212, r215, r216, r217, r214, r213));
+        goto L105
+    L135:
+        r38 = 0;
+        goto L136
+    L131:
+        r37 = 4;
+        goto L132
+    L123:
+        r213 = false;
+        goto L124
+    L119:
+        r35 = 2;
+        goto L121
+    L143:
+        if (r33.isEmpty() == false) goto L146;
+        return null;
+    L146:
+        return new ya1((za1[]) r33.toArray(new za1[0]));
+    L147:
+        T(r29);
+        return null;
+    L150:
+        throw new XmlPullParserException("No start tag found");
     }
 
-    public static h32 M(l32 l32Var) {
-        boolean z = l32Var.o;
-        l32Var.o = true;
-        try {
-            try {
-                try {
-                    h32 h32VarQ = fh0.q(l32Var);
-                    l32Var.o = z;
-                    return h32VarQ;
-                } catch (StackOverflowError e2) {
-                    throw new JsonParseException("Failed parsing JSON source: " + l32Var + " to Json", e2);
-                }
-            } catch (OutOfMemoryError e3) {
-                throw new JsonParseException("Failed parsing JSON source: " + l32Var + " to Json", e3);
-            }
-        } catch (Throwable th) {
-            l32Var.o = z;
-            throw th;
-        }
+    public static h32 M(l32 r6) {
+        boolean r2 = r6.o;
+        r6.o = true;
+        h32 r0 = fh0.q(r6);     // Catch: Throwable -> L6 OutOfMemoryError -> L8 StackOverflowError -> L11
+        r6.o = r2;
+        return r0;
+    L6:
+        th = move-exception;
+        r6.o = r2;
+        throw th;
+    L11:
+        e = move-exception;
+        throw new JsonParseException("Failed parsing JSON source: " + r6 + " to Json", e);     // Catch: Throwable -> L6
+    L8:
+        e = move-exception;
+        throw new JsonParseException("Failed parsing JSON source: " + r6 + " to Json", e);     // Catch: Throwable -> L6
     }
 
-    public static h32 N(String str) {
-        try {
-            l32 l32Var = new l32(new StringReader(str));
-            h32 h32VarM = M(l32Var);
-            h32VarM.getClass();
-            if (!(h32VarM instanceof i32) && l32Var.e0() != 10) {
-                throw new JsonSyntaxException("Did not consume the entire document.");
-            }
-            return h32VarM;
-        } catch (MalformedJsonException e2) {
-            throw new JsonSyntaxException(e2);
-        } catch (IOException e3) {
-            throw new JsonIOException(e3);
-        } catch (NumberFormatException e4) {
-            throw new JsonSyntaxException(e4);
-        }
+    public static h32 N(String r2) {
+        l32 r3 = new l32(new StringReader(r2));     // Catch: NumberFormatException -> L11 IOException -> L14 MalformedJsonException -> L17
+        h32 r0 = M(r3);     // Catch: NumberFormatException -> L11 IOException -> L14 MalformedJsonException -> L17
+        r0.getClass();     // Catch: NumberFormatException -> L11 IOException -> L14 MalformedJsonException -> L17
+        if ((r0 instanceof i32) == false) goto L6;
+    L10:
+        return r0;
+    L6:
+        if (r3.e0() == 10) goto L10;
+        throw new JsonSyntaxException("Did not consume the entire document.");     // Catch: NumberFormatException -> L11 IOException -> L14 MalformedJsonException -> L17
+    L17:
+        e = move-exception;
+        throw new JsonSyntaxException(e);
+    L14:
+        e = move-exception;
+        throw new JsonIOException(e);
+    L11:
+        e = move-exception;
+        throw new JsonSyntaxException(e);
     }
 
-    public static int O(h00 h00Var, int[] iArr) {
-        int i2 = 0;
-        for (int i3 = 0; i3 < 3 && h00Var.h(); i3++) {
-            i2++;
-        }
-        int i4 = 0;
-        for (int i5 = 0; i5 < i2; i5++) {
-            i4 += 1 << iArr[i5];
-        }
-        return h00Var.i(iArr[i2]) + i4;
+    public static int O(h00 r5, int[] r6) {
+        int r0 = 0;
+        int r1 = 0;
+        int r2 = 0;
+    L4:
+        if (r1 >= 3) goto L8;
+        if (r5.h() == false) goto L8;
+        r2 = r2 + 1;
+        r1 = r1 + 1;
+    L8:
+        int r3 = 0;
+    L9:
+        if (r0 >= r2) goto L12;
+        r3 = r3 + (1 << r6[r0]);
+        r0 = r0 + 1;
+        goto L9
+    L12:
+        return r5.i(r6[r2]) + r3;
     }
 
-    public static List P(Resources resources, int i2) {
-        if (i2 == 0) {
-            return Collections.EMPTY_LIST;
-        }
-        TypedArray typedArrayObtainTypedArray = resources.obtainTypedArray(i2);
-        try {
-            if (typedArrayObtainTypedArray.length() == 0) {
-                return Collections.EMPTY_LIST;
-            }
-            ArrayList arrayList = new ArrayList();
-            if (typedArrayObtainTypedArray.getType(0) == 1) {
-                for (int i3 = 0; i3 < typedArrayObtainTypedArray.length(); i3++) {
-                    int resourceId = typedArrayObtainTypedArray.getResourceId(i3, 0);
-                    if (resourceId != 0) {
-                        String[] stringArray = resources.getStringArray(resourceId);
-                        ArrayList arrayList2 = new ArrayList();
-                        for (String str : stringArray) {
-                            arrayList2.add(Base64.decode(str, 0));
-                        }
-                        arrayList.add(arrayList2);
-                    }
-                }
-            } else {
-                String[] stringArray2 = resources.getStringArray(i2);
-                ArrayList arrayList3 = new ArrayList();
-                for (String str2 : stringArray2) {
-                    arrayList3.add(Base64.decode(str2, 0));
-                }
-                arrayList.add(arrayList3);
-            }
-            return arrayList;
-        } finally {
-            typedArrayObtainTypedArray.recycle();
-        }
+    public static List P(Resources r8, int r9) {
+        if (r9 == 0) goto L4;
+        TypedArray r0 = r8.obtainTypedArray(r9);
+    L11:
+        th = move-exception;
+        r0.recycle();
+        throw th;
+    L7:
+        if (r0.length() != 0) goto L13;
+        List r10 = Collections.EMPTY_LIST;     // Catch: Throwable -> L11
+        r0.recycle();
+        return r10;
+    L13:
+        ArrayList r1 = new ArrayList();     // Catch: Throwable -> L11
+        if (r0.getType(0) != 1) goto L25;
+        int r11 = 0;
+    L17:
+        if (r11 >= r0.length()) goto L29;
+        int r3 = r0.getResourceId(r11, 0);     // Catch: Throwable -> L11
+        if (r3 == 0) goto L24;
+        String[] r4 = r8.getStringArray(r3);     // Catch: Throwable -> L11
+        ArrayList r5 = new ArrayList();     // Catch: Throwable -> L11
+        int r6 = r4.length;     // Catch: Throwable -> L11
+        int r7 = 0;
+    L21:
+        if (r7 >= r6) goto L23;
+        r5.add(Base64.decode(r4[r7], 0));     // Catch: Throwable -> L11
+        r7 = r7 + 1;     // Catch: Throwable -> L11
+        goto L21
+    L23:
+        r1.add(r5);     // Catch: Throwable -> L11
+    L24:
+        r11 = r11 + 1;     // Catch: Throwable -> L11
+    L29:
+        r0.recycle();
+        return r1;
+    L25:
+        String[] r12 = r8.getStringArray(r9);     // Catch: Throwable -> L11
+        ArrayList r13 = new ArrayList();     // Catch: Throwable -> L11
+        int r14 = r12.length;     // Catch: Throwable -> L11
+        int r15 = 0;
+    L26:
+        if (r15 >= r14) goto L28;
+        r13.add(Base64.decode(r12[r15], 0));     // Catch: Throwable -> L11
+        r15 = r15 + 1;     // Catch: Throwable -> L11
+        goto L26
+    L28:
+        r1.add(r13);     // Catch: Throwable -> L11
+        goto L29
+    L4:
+        return Collections.EMPTY_LIST;
     }
 
     public static final String Q() {
         App.b().getClass();
-        SharedPreferences sharedPreferencesC = App.c();
-        sharedPreferencesC.getClass();
-        String strK = K(sharedPreferencesC.getString("homemusic_hub_url", null));
-        if (strK != null) {
-            return strK;
-        }
-        String strK2 = K("https://146.103.112.215:8445");
-        return strK2 == null ? "" : strK2;
+        SharedPreferences r0 = App.c();
+        r0.getClass();
+        String r1 = K(r0.getString("homemusic_hub_url", null));
+        if (r1 != null) goto L8;
+        String r2 = K("https://146.103.112.215:8445");
+        if (r2 != null) goto L9;
+        return "";
+    L9:
+        return r2;
+    L8:
+        return r1;
     }
 
-    public static void R(MediaFormat mediaFormat, List list) {
-        for (int i2 = 0; i2 < list.size(); i2++) {
-            mediaFormat.setByteBuffer(f34.f(i2, "csd-"), ByteBuffer.wrap((byte[]) list.get(i2)));
-        }
+    public static void R(MediaFormat r3, List r4) {
+        int r0 = 0;
+    L4:
+        if (r0 >= r4.size()) goto L6;
+        r3.setByteBuffer(f34.f(r0, "csd-"), ByteBuffer.wrap((byte[]) r4.get(r0)));
+        r0 = r0 + 1;
+        goto L4
     }
 
-    public static void S(View view, CharSequence charSequence) {
-        if (Build.VERSION.SDK_INT >= 26) {
-            hv4.a(view, charSequence);
-            return;
-        }
-        jv4 jv4Var = jv4.x;
-        if (jv4Var != null && jv4Var.n == view) {
-            jv4.b(null);
-        }
-        if (!TextUtils.isEmpty(charSequence)) {
-            new jv4(view, charSequence);
-            return;
-        }
-        jv4 jv4Var2 = jv4.y;
-        if (jv4Var2 != null && jv4Var2.n == view) {
-            jv4Var2.a();
-        }
-        view.setOnLongClickListener(null);
-        view.setLongClickable(false);
-        view.setOnHoverListener(null);
+    public static void S(View r2, CharSequence r3) {
+        if (Build.VERSION.SDK_INT < 26) goto L6;
+        hv4.a(r2, r3);
+        return;
+    L6:
+        jv4 r0 = jv4.x;
+        if (r0 == null) goto L12;
+        if (r0.n != r2) goto L12;
+        jv4.b(null);
+    L12:
+        if (TextUtils.isEmpty(r3) == false) goto L20;
+        jv4 r4 = jv4.y;
+        if (r4 != null) goto L16;
+    L18:
+        r2.setOnLongClickListener(null);
+        r2.setLongClickable(false);
+        r2.setOnHoverListener(null);
+        return;
+    L16:
+        if (r4.n != r2) goto L18;
+        r4.a();
+        goto L18
+    L20:
+        new jv4(r2, r3);
     }
 
-    public static void T(XmlPullParser xmlPullParser) throws XmlPullParserException, IOException {
-        int i2 = 1;
-        while (i2 > 0) {
-            int next = xmlPullParser.next();
-            if (next == 2) {
-                i2++;
-            } else if (next == 3) {
-                i2--;
-            }
-        }
+    public static void T(XmlPullParser r3) {
+        int r0 = 1;
+    L3:
+        if (r0 <= 0) goto L11;
+        int r1 = r3.next();
+        if (r1 != 2) goto L7;
+        r0 = r0 + 1;
+        goto L3
+    L7:
+        if (r1 != 3) goto L3;
+        r0 = r0 - 1;
+        goto L3
     }
 
-    public static final int U(long j2) {
-        float[] fArr = s50.a;
-        return (int) (x40.a(j2, s50.e) >>> 32);
+    public static final int U(long r1) {
+        float[] r0 = s50.a;
+        return (int) (x40.a(r1, s50.e) >>> 32);
     }
 
-    public static final long V(int i2) {
-        ox0 ox0Var = ox0.SECONDS;
-        if (ox0Var.compareTo(ox0Var) > 0) {
-            return W(i2, ox0Var);
-        }
-        long jConvert = TimeUnit.NANOSECONDS.convert(i2, TimeUnit.SECONDS);
-        om0 om0Var = mx0.n;
-        long j2 = jConvert << 1;
-        int i3 = nx0.a;
-        return j2;
+    public static final long V(int r3) {
+        ox0 r0 = ox0.q;
+        if (r0.compareTo(r0) > 0) goto L7;
+        long r1 = TimeUnit.NANOSECONDS.convert(r3, TimeUnit.SECONDS);
+        om0 r4 = mx0.n;
+        long r2 = r1 << 1;
+        int r5 = nx0.a;
+        return r2;
+    L7:
+        return W(r3, r0);
     }
 
-    /* JADX WARN: Code duplicated, block: B:32:0x006d A[PHI: r4
-  0x006d: PHI (r4v5 long) = (r4v3 long), (r4v4 long), (r4v4 long), (r4v4 long), (r4v4 long) binds: [B:31:0x006b, B:47:0x0099, B:50:0x009f, B:42:0x0085, B:36:0x007a] A[DONT_GENERATE, DONT_INLINE]] */
-    public static final long W(long j2, ox0 ox0Var) {
-        long j3;
-        TimeUnit timeUnit = ox0Var.n;
-        TimeUnit timeUnit2 = TimeUnit.NANOSECONDS;
-        long jConvert = timeUnit.convert(4611686018426999999L, timeUnit2);
-        if ((-jConvert) <= j2 && j2 <= jConvert) {
-            long jConvert2 = timeUnit2.convert(j2, timeUnit);
-            om0 om0Var = mx0.n;
-            long j4 = jConvert2 << 1;
-            int i2 = nx0.a;
-            return j4;
-        }
-        if (ox0Var.compareTo(ox0.MILLISECONDS) < 0) {
-            return u(gb.n(TimeUnit.MILLISECONDS.convert(j2, timeUnit), -4611686018427387903L, 4611686018427387903L));
-        }
-        long jSignum = Long.signum(j2);
-        if (j2 < -9223372036854775807L) {
-            j2 = -9223372036854775807L;
-        }
-        long jAbs = Math.abs(j2);
-        int iOrdinal = ox0Var.ordinal();
-        long j5 = 0;
-        if (iOrdinal == 2) {
-            j3 = 1;
-        } else if (iOrdinal == 3) {
-            j3 = 1000;
-        } else if (iOrdinal == 4) {
-            j3 = 60000;
-        } else if (iOrdinal == 5) {
-            j3 = 3600000;
-        } else {
-            if (iOrdinal != 6) {
-                mj0.g(ox0Var, "Wrong unit for millisMultiplier: ");
-                return 0L;
-            }
-            j3 = 86400000;
-        }
-        if (jAbs == 0) {
-            jAbs = j5;
-        } else {
-            j5 = 4611686018427387903L;
-            if (jAbs == 1) {
-                if (j3 > 4611686018427387903L) {
-                    jAbs = j5;
-                } else {
-                    jAbs = j3;
-                }
-            } else if (j3 != 1) {
-                int iNumberOfLeadingZeros = (128 - Long.numberOfLeadingZeros(jAbs)) - Long.numberOfLeadingZeros(j3);
-                if (iNumberOfLeadingZeros < 63) {
-                    jAbs *= j3;
-                } else if (iNumberOfLeadingZeros > 63) {
-                    jAbs = j5;
-                } else {
-                    jAbs *= j3;
-                    if (jAbs > 4611686018427387903L) {
-                        jAbs = j5;
-                    }
-                }
-            } else if (jAbs > 4611686018427387903L) {
-                jAbs = j5;
-            }
-        }
-        return u(jSignum * jAbs);
+    public static final long W(long r8, ox0 r10) {
+        TimeUnit r0 = r10.n;
+        TimeUnit r3 = TimeUnit.NANOSECONDS;
+        long r1 = r0.convert(4611686018426999999L, r3);
+        if ((-r1) > r8) goto L9;
+        if (r8 > r1) goto L9;
+        long r9 = r3.convert(r8, r0);
+        om0 r11 = mx0.n;
+        long r12 = r9 << 1;
+        int r13 = nx0.a;
+        return r12;
+    L9:
+        if (r10.compareTo(ox0.p) < 0) goto L55;
+        long r2 = Long.signum(r8);
+        if (r8 >= (-9223372036854775807L)) goto L13;
+        r8 = -9223372036854775807L;
+    L13:
+        long r14 = Math.abs(r8);
+        int r4 = r10.ordinal();
+        long r5 = 0;
+        if (r4 != 2) goto L16;
+        long r6 = 1;
+    L31:
+        if (r14 != 0) goto L33;
+    L32:
+        r14 = r5;
+    L53:
+        return u(r2 * r14);
+    L33:
+        r5 = 4611686018427387903L;
+        if (r14 != 1) goto L40;
+        if (r6 > 4611686018427387903L) goto L32;
+        r14 = r6;
+        goto L53
+    L40:
+        if (r6 == 1) goto L42;
+        int r15 = (128 - Long.numberOfLeadingZeros(r14)) - Long.numberOfLeadingZeros(r6);
+        if (r15 >= 63) goto L47;
+        r14 = r14 * r6;
+        goto L53
+    L47:
+        if (r15 > 63) goto L32;
+        r14 = r14 * r6;
+        if (r14 <= 4611686018427387903L) goto L53;
+    L42:
+        if (r14 <= 4611686018427387903L) goto L53;
+    L16:
+        if (r4 != 3) goto L18;
+        r6 = 1000;
+        goto L31
+    L18:
+        if (r4 != 4) goto L20;
+        r6 = 60000;
+        goto L31
+    L20:
+        if (r4 != 5) goto L22;
+        r6 = 3600000;
+        goto L31
+    L22:
+        if (r4 != 6) goto L24;
+        r6 = 86400000;
+        goto L31
+    L24:
+        mj0.g(r10, "Wrong unit for millisMultiplier: ");
+        return 0;
+    L55:
+        return u(gb.n(TimeUnit.MILLISECONDS.convert(r8, r0), -4611686018427387903L, 4611686018427387903L));
     }
 
-    public static String X(int i2) {
-        if (i2 == 0) {
-            return "Clear";
-        }
-        if (i2 == 1) {
-            return "Src";
-        }
-        if (i2 == 2) {
-            return "Dst";
-        }
-        if (i2 == 3) {
-            return "SrcOver";
-        }
-        if (i2 == 4) {
-            return "DstOver";
-        }
-        if (i2 == 5) {
-            return "SrcIn";
-        }
-        if (i2 == 6) {
-            return "DstIn";
-        }
-        if (i2 == 7) {
-            return "SrcOut";
-        }
-        if (i2 == 8) {
-            return "DstOut";
-        }
-        if (i2 == 9) {
-            return "SrcAtop";
-        }
-        if (i2 == 10) {
-            return "DstAtop";
-        }
-        if (i2 == 11) {
-            return "Xor";
-        }
-        if (i2 == 12) {
-            return "Plus";
-        }
-        if (i2 == 13) {
-            return "Modulate";
-        }
-        if (i2 == 14) {
-            return "Screen";
-        }
-        if (i2 == 15) {
-            return "Overlay";
-        }
-        if (i2 == 16) {
-            return "Darken";
-        }
-        if (i2 == 17) {
-            return "Lighten";
-        }
-        if (i2 == 18) {
-            return "ColorDodge";
-        }
-        if (i2 == 19) {
-            return "ColorBurn";
-        }
-        if (i2 == 20) {
-            return "HardLight";
-        }
-        if (i2 == 21) {
-            return "Softlight";
-        }
-        if (i2 == 22) {
-            return "Difference";
-        }
-        if (i2 == 23) {
-            return "Exclusion";
-        }
-        if (i2 == 24) {
-            return "Multiply";
-        }
-        if (i2 == 25) {
-            return "Hue";
-        }
-        if (i2 == 26) {
-            return "Saturation";
-        }
-        if (i2 == 27) {
-            return "Color";
-        }
-        return i2 == 28 ? "Luminosity" : "Unknown";
+    public static String X(int r1) {
+        if (r1 != 0) goto L6;
+        return "Clear";
+    L6:
+        if (r1 != 1) goto L10;
+        return "Src";
+    L10:
+        if (r1 != 2) goto L14;
+        return "Dst";
+    L14:
+        if (r1 != 3) goto L18;
+        return "SrcOver";
+    L18:
+        if (r1 != 4) goto L22;
+        return "DstOver";
+    L22:
+        if (r1 != 5) goto L26;
+        return "SrcIn";
+    L26:
+        if (r1 != 6) goto L30;
+        return "DstIn";
+    L30:
+        if (r1 != 7) goto L34;
+        return "SrcOut";
+    L34:
+        if (r1 != 8) goto L38;
+        return "DstOut";
+    L38:
+        if (r1 != 9) goto L42;
+        return "SrcAtop";
+    L42:
+        if (r1 != 10) goto L46;
+        return "DstAtop";
+    L46:
+        if (r1 != 11) goto L50;
+        return "Xor";
+    L50:
+        if (r1 != 12) goto L54;
+        return "Plus";
+    L54:
+        if (r1 != 13) goto L58;
+        return "Modulate";
+    L58:
+        if (r1 != 14) goto L62;
+        return "Screen";
+    L62:
+        if (r1 != 15) goto L66;
+        return "Overlay";
+    L66:
+        if (r1 != 16) goto L70;
+        return "Darken";
+    L70:
+        if (r1 != 17) goto L74;
+        return "Lighten";
+    L74:
+        if (r1 != 18) goto L78;
+        return "ColorDodge";
+    L78:
+        if (r1 != 19) goto L82;
+        return "ColorBurn";
+    L82:
+        if (r1 != 20) goto L86;
+        return "HardLight";
+    L86:
+        if (r1 != 21) goto L90;
+        return "Softlight";
+    L90:
+        if (r1 != 22) goto L94;
+        return "Difference";
+    L94:
+        if (r1 != 23) goto L98;
+        return "Exclusion";
+    L98:
+        if (r1 != 24) goto L102;
+        return "Multiply";
+    L102:
+        if (r1 != 25) goto L106;
+        return "Hue";
+    L106:
+        if (r1 != 26) goto L110;
+        return "Saturation";
+    L110:
+        if (r1 != 27) goto L114;
+        return "Color";
+    L114:
+        if (r1 != 28) goto L117;
+        return "Luminosity";
+    L117:
+        return "Unknown";
     }
 
-    /* JADX WARN: Code duplicated, block: B:101:0x0145  */
-    /* JADX WARN: Code duplicated, block: B:106:0x015c  */
-    /* JADX WARN: Code duplicated, block: B:110:0x0163  */
-    /* JADX WARN: Code duplicated, block: B:113:0x0170 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:114:0x0172  */
-    /* JADX WARN: Code duplicated, block: B:116:0x0177  */
-    /* JADX WARN: Code duplicated, block: B:118:0x017b  */
-    /* JADX WARN: Code duplicated, block: B:119:0x017f A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:120:0x0181 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:121:0x0183  */
-    /* JADX WARN: Code duplicated, block: B:123:0x018c  */
-    /* JADX WARN: Code duplicated, block: B:125:0x0191  */
-    /* JADX WARN: Code duplicated, block: B:126:0x0193  */
-    /* JADX WARN: Code duplicated, block: B:128:0x0199  */
-    /* JADX WARN: Code duplicated, block: B:130:0x01a2  */
-    /* JADX WARN: Code duplicated, block: B:135:0x01b0  */
-    /* JADX WARN: Code duplicated, block: B:139:0x01b7  */
-    /* JADX WARN: Code duplicated, block: B:76:0x00fa  */
-    /* JADX WARN: Code duplicated, block: B:80:0x0101  */
-    /* JADX WARN: Code duplicated, block: B:83:0x010f A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:84:0x0111  */
-    /* JADX WARN: Code duplicated, block: B:85:0x0114  */
-    /* JADX WARN: Code duplicated, block: B:87:0x0117  */
-    /* JADX WARN: Code duplicated, block: B:89:0x011b  */
-    /* JADX WARN: Code duplicated, block: B:90:0x011f A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:91:0x0121 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:92:0x0123  */
-    /* JADX WARN: Code duplicated, block: B:94:0x012c  */
-    /* JADX WARN: Code duplicated, block: B:96:0x0132  */
-    /* JADX WARN: Code duplicated, block: B:97:0x0135  */
-    /* JADX WARN: Code duplicated, block: B:99:0x013b  */
-    public static final long a(float f2, float f3, float f4, float f5, p50 p50Var) {
-        int i2;
-        int i3;
-        int i4;
-        float fB;
-        float fA;
-        int iFloatToRawIntBits;
-        int i5;
-        int i6;
-        int i7;
-        int i8;
-        int i9;
-        int i10;
-        int i11;
-        int i12;
-        float fB2;
-        float fA2;
-        int iFloatToRawIntBits2;
-        int i13;
-        int i14;
-        int i15;
-        int i16;
-        int i17;
-        int i18;
-        int i19;
-        int i20;
-        float f6;
-        if (p50Var.c()) {
-            float f7 = f5 < 0.0f ? 0.0f : f5;
-            if (f7 > 1.0f) {
-                f7 = 1.0f;
-            }
-            int i21 = ((int) ((f7 * 255.0f) + 0.5f)) << 24;
-            float f8 = f2 < 0.0f ? 0.0f : f2;
-            if (f8 > 1.0f) {
-                f8 = 1.0f;
-            }
-            int i22 = i21 | (((int) ((f8 * 255.0f) + 0.5f)) << 16);
-            float f9 = f3 < 0.0f ? 0.0f : f3;
-            if (f9 > 1.0f) {
-                f9 = 1.0f;
-            }
-            int i23 = i22 | (((int) ((f9 * 255.0f) + 0.5f)) << 8);
-            f6 = f4 >= 0.0f ? f4 : 0.0f;
-            long j2 = ((long) (i23 | ((int) (((f6 <= 1.0f ? f6 : 1.0f) * 255.0f) + 0.5f)))) << 32;
-            int i24 = x40.h;
-            return j2;
-        }
-        if (((int) (p50Var.b >> 32)) != 3) {
-            bz1.a("Color only works with ColorSpaces with 3 components");
-        }
-        int i25 = p50Var.c;
-        if (i25 == -1) {
-            bz1.a("Unknown color space, please use a color space in ColorSpaces");
-        }
-        int i26 = 0;
-        float fB3 = p50Var.b(0);
-        float fA3 = p50Var.a(0);
-        if (f2 >= fB3) {
-            fB3 = f2;
-        }
-        if (fB3 <= fA3) {
-            fA3 = fB3;
-        }
-        int iFloatToRawIntBits3 = Float.floatToRawIntBits(fA3);
-        int i27 = iFloatToRawIntBits3 >>> 31;
-        int i28 = (iFloatToRawIntBits3 >>> 23) & 255;
-        int i29 = iFloatToRawIntBits3 & 8388607;
-        if (i28 == 255) {
-            i3 = i29 != 0 ? 512 : 0;
-            i2 = 31;
-        } else {
-            i2 = i28 - 112;
-            if (i2 >= 31) {
-                i3 = 0;
-                i2 = 49;
-            } else {
-                if (i2 > 0) {
-                    int i30 = i29 >> 13;
-                    if ((iFloatToRawIntBits3 & 4096) != 0) {
-                        i4 = (((i2 << 10) | i30) + 1) | (i27 << 15);
-                    } else {
-                        i3 = i30;
-                    }
-                    short s = (short) i4;
-                    fB = p50Var.b(1);
-                    fA = p50Var.a(1);
-                    if (f3 >= fB) {
-                        fB = f3;
-                    }
-                    if (fB <= fA) {
-                        fA = fB;
-                    }
-                    iFloatToRawIntBits = Float.floatToRawIntBits(fA);
-                    i5 = iFloatToRawIntBits >>> 31;
-                    i6 = (iFloatToRawIntBits >>> 23) & 255;
-                    i7 = iFloatToRawIntBits & 8388607;
-                    if (i6 == 255) {
-                        if (i7 != 0) {
-                            i10 = 512;
-                        } else {
-                            i10 = 0;
-                        }
-                        i8 = 31;
-                    } else {
-                        i8 = i6 - 112;
-                        if (i8 >= 31) {
-                            i10 = 0;
-                            i8 = 49;
-                        } else {
-                            if (i8 <= 0) {
-                                i9 = i7 >> 13;
-                                if ((iFloatToRawIntBits & 4096) != 0) {
-                                    i11 = (((i8 << 10) | i9) + 1) | (i5 << 15);
-                                } else {
-                                    i10 = i9;
-                                }
-                                short s2 = (short) i11;
-                                fB2 = p50Var.b(2);
-                                fA2 = p50Var.a(2);
-                                if (f4 >= fB2) {
-                                    fB2 = f4;
-                                }
-                                if (fB2 <= fA2) {
-                                    fA2 = fB2;
-                                }
-                                iFloatToRawIntBits2 = Float.floatToRawIntBits(fA2);
-                                i13 = iFloatToRawIntBits2 >>> 31;
-                                i14 = (iFloatToRawIntBits2 >>> 23) & 255;
-                                i15 = 8388607 & iFloatToRawIntBits2;
-                                if (i14 == 255) {
-                                    i18 = i15 != 0 ? 512 : 0;
-                                    i26 = 31;
-                                } else {
-                                    i16 = i14 - 112;
-                                    if (i16 >= 31) {
-                                        i18 = 0;
-                                        i26 = 49;
-                                    } else {
-                                        if (i16 <= 0) {
-                                            i17 = i15 >> 13;
-                                            if ((iFloatToRawIntBits2 & 4096) != 0) {
-                                                i19 = (((i16 << 10) | i17) + 1) | (i13 << 15);
-                                            } else {
-                                                i18 = i17;
-                                                i26 = i16;
-                                            }
-                                            short s3 = (short) i19;
-                                            f6 = f5 >= 0.0f ? f5 : 0.0f;
-                                            long j3 = (((long) i25) & 63) | ((((long) s) & 65535) << 48) | ((((long) s2) & 65535) << 32) | ((65535 & ((long) s3)) << 16) | ((((long) ((int) (((f6 <= 1.0f ? f6 : 1.0f) * 1023.0f) + 0.5f))) & 1023) << 6);
-                                            int i31 = x40.h;
-                                            return j3;
-                                        }
-                                        if (i16 >= -10) {
-                                            i20 = (i15 | 8388608) >> (1 - i16);
-                                            if ((i20 & 4096) != 0) {
-                                                i20 += 8192;
-                                            }
-                                            i18 = i20 >> 13;
-                                        } else {
-                                            i18 = 0;
-                                        }
-                                    }
-                                }
-                                i19 = i18 | (i13 << 15) | (i26 << 10);
-                                short s4 = (short) i19;
-                                if (f5 >= 0.0f) {
-                                }
-                                long j4 = (((long) i25) & 63) | ((((long) s) & 65535) << 48) | ((((long) s2) & 65535) << 32) | ((65535 & ((long) s4)) << 16) | ((((long) ((int) (((f6 <= 1.0f ? f6 : 1.0f) * 1023.0f) + 0.5f))) & 1023) << 6);
-                                int i32 = x40.h;
-                                return j4;
-                            }
-                            if (i8 >= -10) {
-                                i12 = (i7 | 8388608) >> (1 - i8);
-                                if ((i12 & 4096) != 0) {
-                                    i12 += 8192;
-                                }
-                                i10 = i12 >> 13;
-                                i8 = 0;
-                            } else {
-                                i10 = 0;
-                                i8 = 0;
-                            }
-                        }
-                    }
-                    i11 = i10 | (i5 << 15) | (i8 << 10);
-                    short s5 = (short) i11;
-                    fB2 = p50Var.b(2);
-                    fA2 = p50Var.a(2);
-                    if (f4 >= fB2) {
-                        fB2 = f4;
-                    }
-                    if (fB2 <= fA2) {
-                        fA2 = fB2;
-                    }
-                    iFloatToRawIntBits2 = Float.floatToRawIntBits(fA2);
-                    i13 = iFloatToRawIntBits2 >>> 31;
-                    i14 = (iFloatToRawIntBits2 >>> 23) & 255;
-                    i15 = 8388607 & iFloatToRawIntBits2;
-                    if (i14 == 255) {
-                        i18 = i15 != 0 ? 512 : 0;
-                        i26 = 31;
-                    } else {
-                        i16 = i14 - 112;
-                        if (i16 >= 31) {
-                            i18 = 0;
-                            i26 = 49;
-                        } else {
-                            if (i16 <= 0) {
-                                i17 = i15 >> 13;
-                                if ((iFloatToRawIntBits2 & 4096) != 0) {
-                                    i19 = (((i16 << 10) | i17) + 1) | (i13 << 15);
-                                } else {
-                                    i18 = i17;
-                                    i26 = i16;
-                                }
-                                short s6 = (short) i19;
-                                if (f5 >= 0.0f) {
-                                }
-                                long j5 = (((long) i25) & 63) | ((((long) s) & 65535) << 48) | ((((long) s5) & 65535) << 32) | ((65535 & ((long) s6)) << 16) | ((((long) ((int) (((f6 <= 1.0f ? f6 : 1.0f) * 1023.0f) + 0.5f))) & 1023) << 6);
-                                int i33 = x40.h;
-                                return j5;
-                            }
-                            if (i16 >= -10) {
-                                i20 = (i15 | 8388608) >> (1 - i16);
-                                if ((i20 & 4096) != 0) {
-                                    i20 += 8192;
-                                }
-                                i18 = i20 >> 13;
-                            } else {
-                                i18 = 0;
-                            }
-                        }
-                    }
-                    i19 = i18 | (i13 << 15) | (i26 << 10);
-                    short s7 = (short) i19;
-                    if (f5 >= 0.0f) {
-                    }
-                    long j6 = (((long) i25) & 63) | ((((long) s) & 65535) << 48) | ((((long) s5) & 65535) << 32) | ((65535 & ((long) s7)) << 16) | ((((long) ((int) (((f6 <= 1.0f ? f6 : 1.0f) * 1023.0f) + 0.5f))) & 1023) << 6);
-                    int i34 = x40.h;
-                    return j6;
-                }
-                if (i2 >= -10) {
-                    int i35 = (i29 | 8388608) >> (1 - i2);
-                    if ((i35 & 4096) != 0) {
-                        i35 += 8192;
-                    }
-                    i3 = i35 >> 13;
-                    i2 = 0;
-                } else {
-                    i3 = 0;
-                    i2 = 0;
-                }
-            }
-        }
-        i4 = i3 | (i27 << 15) | (i2 << 10);
-        short s8 = (short) i4;
-        fB = p50Var.b(1);
-        fA = p50Var.a(1);
-        if (f3 >= fB) {
-            fB = f3;
-        }
-        if (fB <= fA) {
-            fA = fB;
-        }
-        iFloatToRawIntBits = Float.floatToRawIntBits(fA);
-        i5 = iFloatToRawIntBits >>> 31;
-        i6 = (iFloatToRawIntBits >>> 23) & 255;
-        i7 = iFloatToRawIntBits & 8388607;
-        if (i6 == 255) {
-            if (i7 != 0) {
-                i10 = 512;
-            } else {
-                i10 = 0;
-            }
-            i8 = 31;
-        } else {
-            i8 = i6 - 112;
-            if (i8 >= 31) {
-                i10 = 0;
-                i8 = 49;
-            } else {
-                if (i8 <= 0) {
-                    i9 = i7 >> 13;
-                    if ((iFloatToRawIntBits & 4096) != 0) {
-                        i11 = (((i8 << 10) | i9) + 1) | (i5 << 15);
-                    } else {
-                        i10 = i9;
-                    }
-                    short s9 = (short) i11;
-                    fB2 = p50Var.b(2);
-                    fA2 = p50Var.a(2);
-                    if (f4 >= fB2) {
-                        fB2 = f4;
-                    }
-                    if (fB2 <= fA2) {
-                        fA2 = fB2;
-                    }
-                    iFloatToRawIntBits2 = Float.floatToRawIntBits(fA2);
-                    i13 = iFloatToRawIntBits2 >>> 31;
-                    i14 = (iFloatToRawIntBits2 >>> 23) & 255;
-                    i15 = 8388607 & iFloatToRawIntBits2;
-                    if (i14 == 255) {
-                        i18 = i15 != 0 ? 512 : 0;
-                        i26 = 31;
-                    } else {
-                        i16 = i14 - 112;
-                        if (i16 >= 31) {
-                            i18 = 0;
-                            i26 = 49;
-                        } else {
-                            if (i16 <= 0) {
-                                i17 = i15 >> 13;
-                                if ((iFloatToRawIntBits2 & 4096) != 0) {
-                                    i19 = (((i16 << 10) | i17) + 1) | (i13 << 15);
-                                } else {
-                                    i18 = i17;
-                                    i26 = i16;
-                                }
-                                short s10 = (short) i19;
-                                if (f5 >= 0.0f) {
-                                }
-                                long j7 = (((long) i25) & 63) | ((((long) s8) & 65535) << 48) | ((((long) s9) & 65535) << 32) | ((65535 & ((long) s10)) << 16) | ((((long) ((int) (((f6 <= 1.0f ? f6 : 1.0f) * 1023.0f) + 0.5f))) & 1023) << 6);
-                                int i36 = x40.h;
-                                return j7;
-                            }
-                            if (i16 >= -10) {
-                                i20 = (i15 | 8388608) >> (1 - i16);
-                                if ((i20 & 4096) != 0) {
-                                    i20 += 8192;
-                                }
-                                i18 = i20 >> 13;
-                            } else {
-                                i18 = 0;
-                            }
-                        }
-                    }
-                    i19 = i18 | (i13 << 15) | (i26 << 10);
-                    short s11 = (short) i19;
-                    if (f5 >= 0.0f) {
-                    }
-                    long j8 = (((long) i25) & 63) | ((((long) s8) & 65535) << 48) | ((((long) s9) & 65535) << 32) | ((65535 & ((long) s11)) << 16) | ((((long) ((int) (((f6 <= 1.0f ? f6 : 1.0f) * 1023.0f) + 0.5f))) & 1023) << 6);
-                    int i37 = x40.h;
-                    return j8;
-                }
-                if (i8 >= -10) {
-                    i12 = (i7 | 8388608) >> (1 - i8);
-                    if ((i12 & 4096) != 0) {
-                        i12 += 8192;
-                    }
-                    i10 = i12 >> 13;
-                    i8 = 0;
-                } else {
-                    i10 = 0;
-                    i8 = 0;
-                }
-            }
-        }
-        i11 = i10 | (i5 << 15) | (i8 << 10);
-        short s12 = (short) i11;
-        fB2 = p50Var.b(2);
-        fA2 = p50Var.a(2);
-        if (f4 >= fB2) {
-            fB2 = f4;
-        }
-        if (fB2 <= fA2) {
-            fA2 = fB2;
-        }
-        iFloatToRawIntBits2 = Float.floatToRawIntBits(fA2);
-        i13 = iFloatToRawIntBits2 >>> 31;
-        i14 = (iFloatToRawIntBits2 >>> 23) & 255;
-        i15 = 8388607 & iFloatToRawIntBits2;
-        if (i14 == 255) {
-            i18 = i15 != 0 ? 512 : 0;
-            i26 = 31;
-        } else {
-            i16 = i14 - 112;
-            if (i16 >= 31) {
-                i18 = 0;
-                i26 = 49;
-            } else {
-                if (i16 <= 0) {
-                    i17 = i15 >> 13;
-                    if ((iFloatToRawIntBits2 & 4096) != 0) {
-                        i19 = (((i16 << 10) | i17) + 1) | (i13 << 15);
-                    } else {
-                        i18 = i17;
-                        i26 = i16;
-                    }
-                    short s13 = (short) i19;
-                    if (f5 >= 0.0f) {
-                    }
-                    long j9 = (((long) i25) & 63) | ((((long) s8) & 65535) << 48) | ((((long) s12) & 65535) << 32) | ((65535 & ((long) s13)) << 16) | ((((long) ((int) (((f6 <= 1.0f ? f6 : 1.0f) * 1023.0f) + 0.5f))) & 1023) << 6);
-                    int i38 = x40.h;
-                    return j9;
-                }
-                if (i16 >= -10) {
-                    i20 = (i15 | 8388608) >> (1 - i16);
-                    if ((i20 & 4096) != 0) {
-                        i20 += 8192;
-                    }
-                    i18 = i20 >> 13;
-                } else {
-                    i18 = 0;
-                }
-            }
-        }
-        i19 = i18 | (i13 << 15) | (i26 << 10);
-        short s14 = (short) i19;
-        if (f5 >= 0.0f) {
-        }
-        long j10 = (((long) i25) & 63) | ((((long) s8) & 65535) << 48) | ((((long) s12) & 65535) << 32) | ((65535 & ((long) s14)) << 16) | ((((long) ((int) (((f6 <= 1.0f ? f6 : 1.0f) * 1023.0f) + 0.5f))) & 1023) << 6);
-        int i39 = x40.h;
-        return j10;
+    public static final long a(float r21, float r22, float r23, float r24, p50 r25) {
+        float r5 = 1.0f;
+        float r6 = 0.0f;
+        if (r25.c() == false) goto L36;
+        if (r24 >= 0.0f) goto L7;
+        float r0 = 0.0f;
+    L9:
+        if (r0 <= 1.0f) goto L11;
+        r0 = 1.0f;
+    L11:
+        int r1 = ((int) ((r0 * 255.0f) + 0.5f)) << 24;
+        if (r21 >= 0.0f) goto L14;
+        float r7 = 0.0f;
+    L16:
+        if (r7 <= 1.0f) goto L18;
+        r7 = 1.0f;
+    L18:
+        int r2 = r1 | (((int) ((r7 * 255.0f) + 0.5f)) << 16);
+        if (r22 >= 0.0f) goto L21;
+        float r3 = 0.0f;
+    L23:
+        if (r3 <= 1.0f) goto L25;
+        r3 = 1.0f;
+    L25:
+        int r4 = r2 | (((int) ((r3 * 255.0f) + 0.5f)) << 8);
+        if (r23 < 0.0f) goto L30;
+        r6 = r23;
+    L30:
+        if (r6 > 1.0f) goto L33;
+        r5 = r6;
+    L33:
+        long r8 = ((long) (r4 | ((int) ((r5 * 255.0f) + 0.5f)))) << 32;
+        int r9 = x40.h;
+        return r8;
+    L21:
+        r3 = r22;
+        goto L23
+    L14:
+        r7 = r21;
+        goto L16
+    L7:
+        r0 = r24;
+        goto L9
+    L36:
+        if (((int) (r25.b >> 32)) == 3) goto L39;
+        bz1.a("Color only works with ColorSpaces with 3 components");
+    L39:
+        int r10 = r25.c;
+        if (r10 != (-1)) goto L43;
+        bz1.a("Unknown color space, please use a color space in ColorSpaces");
+    L43:
+        int r11 = 0;
+        float r12 = r25.b(0);
+        float r13 = r25.a(0);
+        if (r21 < r12) goto L48;
+        r12 = r21;
+    L48:
+        if (r12 > r13) goto L51;
+        r13 = r12;
+    L51:
+        int r14 = Float.floatToRawIntBits(r13);
+        int r15 = r14 >>> 31;
+        int r16 = (r14 >>> 23) & 255;
+        int r17 = r14 & 8388607;
+        if (r16 != 255) goto L57;
+        if (r17 == 0) goto L55;
+        int r18 = 512;
+    L56:
+        int r19 = 31;
+    L72:
+        int r20 = r18 | ((r15 << 15) | (r19 << 10));
+    L70:
+        short r26 = (short) r20;
+        float r27 = r25.b(1);
+        float r110 = r25.a(1);
+        if (r22 < r27) goto L78;
+        r27 = r22;
+    L78:
+        if (r27 > r110) goto L81;
+        r110 = r27;
+    L81:
+        int r28 = Float.floatToRawIntBits(r110);
+        int r111 = r28 >>> 31;
+        int r112 = (r28 >>> 23) & 255;
+        int r29 = r28 & 8388607;
+        if (r112 != 255) goto L87;
+        if (r29 == 0) goto L85;
+        int r30 = 512;
+    L86:
+        int r113 = 31;
+    L102:
+        int r31 = r30 | ((r111 << 15) | (r113 << 10));
+    L100:
+        short r32 = (short) r31;
+        float r114 = r25.b(2);
+        float r33 = r25.a(2);
+        if (r23 < r114) goto L108;
+        r114 = r23;
+    L108:
+        if (r114 > r33) goto L111;
+        r33 = r114;
+    L111:
+        int r34 = Float.floatToRawIntBits(r33);
+        int r115 = r34 >>> 31;
+        int r116 = (r34 >>> 23) & 255;
+        int r117 = 8388607 & r34;
+        if (r116 != 255) goto L116;
+        if (r117 == 0) goto L115;
+        r11 = 512;
+    L115:
+        int r35 = r11;
+        r11 = 31;
+    L131:
+        int r36 = r35 | ((r115 << 15) | (r11 << 10));
+    L129:
+        short r37 = (short) r36;
+        if (r24 < 0.0f) goto L137;
+        r6 = r24;
+    L137:
+        if (r6 > 1.0f) goto L140;
+        r5 = r6;
+    L140:
+        long r38 = (((long) r10) & 63) | (((((((long) r26) & 65535) << 48) | ((((long) r32) & 65535) << 32)) | ((65535 & ((long) r37)) << 16)) | ((((long) ((int) ((r5 * 1023.0f) + 0.5f))) & 1023) << 6));
+        int r39 = x40.h;
+        return r38;
+    L116:
+        int r118 = r116 - 112;
+        if (r118 < 31) goto L119;
+        r35 = 0;
+        r11 = 49;
+        goto L131
+    L119:
+        if (r118 > 0) goto L126;
+        if (r118 < (-10)) goto L125;
+        int r40 = (r117 | 8388608) >> (1 - r118);
+        if ((r40 & 4096) == 0) goto L124;
+        r40 = r40 + 8192;
+    L124:
+        r35 = r40 >> 13;
+        goto L131
+    L125:
+        r35 = 0;
+        goto L131
+    L126:
+        int r41 = r117 >> 13;
+        if ((r34 & 4096) == 0) goto L130;
+        r36 = (((r118 << 10) | r41) + 1) | (r115 << 15);
+        goto L129
+    L130:
+        r35 = r41;
+        r11 = r118;
+        goto L131
+    L85:
+        r30 = 0;
+        goto L86
+    L87:
+        r113 = r112 - 112;
+        if (r113 < 31) goto L90;
+        r30 = 0;
+        r113 = 49;
+        goto L102
+    L90:
+        if (r113 > 0) goto L97;
+        if (r113 < (-10)) goto L96;
+        int r42 = (r29 | 8388608) >> (1 - r113);
+        if ((r42 & 4096) == 0) goto L95;
+        r42 = r42 + 8192;
+    L95:
+        r30 = r42 >> 13;
+        r113 = 0;
+        goto L102
+    L96:
+        r30 = 0;
+        r113 = 0;
+        goto L102
+    L97:
+        int r210 = r29 >> 13;
+        if ((r28 & 4096) == 0) goto L101;
+        r31 = (((r113 << 10) | r210) + 1) | (r111 << 15);
+        goto L100
+    L101:
+        r30 = r210;
+        goto L102
+    L55:
+        r18 = 0;
+        goto L56
+    L57:
+        r19 = r16 - 112;
+        if (r19 < 31) goto L60;
+        r18 = 0;
+        r19 = 49;
+        goto L72
+    L60:
+        if (r19 > 0) goto L67;
+        if (r19 < (-10)) goto L66;
+        int r43 = (r17 | 8388608) >> (1 - r19);
+        if ((r43 & 4096) == 0) goto L65;
+        r43 = r43 + 8192;
+    L65:
+        r18 = r43 >> 13;
+        r19 = 0;
+        goto L72
+    L66:
+        r18 = 0;
+        r19 = 0;
+        goto L72
+    L67:
+        int r119 = r17 >> 13;
+        if ((r14 & 4096) == 0) goto L71;
+        r20 = (((r19 << 10) | r119) + 1) | (r15 << 15);
+        goto L70
+    L71:
+        r18 = r119;
+        goto L72
     }
 
-    public static final long b(int i2) {
-        long j2 = ((long) i2) << 32;
-        int i3 = x40.h;
-        return j2;
+    public static final long b(int r2) {
+        long r0 = ((long) r2) << 32;
+        int r3 = x40.h;
+        return r0;
     }
 
-    public static final long c(long j2) {
-        long j3 = j2 << 32;
-        int i2 = x40.h;
-        return j3;
+    public static final long c(long r1) {
+        long r2 = r1 << 32;
+        int r0 = x40.h;
+        return r2;
     }
 
-    public static final void d(int i2, rg1 rg1Var) {
-        rg1 rg1Var2;
-        y50 y50Var;
-        rg1 rg1Var3 = rg1Var;
-        rg1Var3.S(-2092244638);
-        if (rg1Var3.K(i2 & 1, i2 != 0)) {
-            Object objH = rg1Var3.H();
-            Object obj = j80.a;
-            if (objH == obj) {
-                objH = new ty1();
-                rg1Var3.b0(objH);
-            }
-            ty1 ty1Var = (ty1) objH;
-            ty1Var.a(0, rg1Var3);
-            py1 py1Var = new py1(au0.T(800, null, 6), hz3.o);
-            Float fValueOf = Float.valueOf(0.08f);
-            Float fValueOf2 = Float.valueOf(0.2f);
-            Object objH2 = rg1Var3.H();
-            if (objH2 == obj) {
-                objH2 = new qy1(ty1Var, fValueOf, fValueOf2, py1Var);
-                rg1Var3.b0(objH2);
-            }
-            qy1 qy1Var = (qy1) objH2;
-            boolean zG = rg1Var3.g(py1Var);
-            Object objH3 = rg1Var3.H();
-            if (zG || objH3 == obj) {
-                objH3 = new uy1(fValueOf, qy1Var, fValueOf2, py1Var);
-                rg1Var3.b0(objH3);
-            }
-            ya3 ya3Var = rg1Var3.M.b.n;
-            ya3Var.x0(ma3.f);
-            rr2.R(ya3Var, 0, (gf1) objH3);
-            boolean zG2 = rg1Var3.g(ty1Var);
-            Object objH4 = rg1Var3.H();
-            if (zG2 || objH4 == obj) {
-                objH4 = new o(12, ty1Var, qy1Var);
-                rg1Var3.b0(objH4);
-            }
-            bu.b(qy1Var, (if1) objH4, rg1Var3);
-            d71 d71Var = ji2.b;
-            long j2 = x40.c;
-            dx2 dx2VarI = kb4.i(d71Var, x40.b(j2, ((Number) qy1Var.p.getValue()).floatValue()));
-            hs hsVar = fz0.s;
-            Object ouVar = (ui2) lu.a.g(hsVar);
-            if (ouVar == null) {
-                ouVar = new ou(hsVar, false);
-            }
-            int iHashCode = Long.hashCode(rg1Var3.T);
-            mf3 mf3VarK = rg1Var3.k();
-            dx2 dx2VarE = j51.E(rg1Var3, dx2VarI);
-            e80.e.getClass();
-            rg1Var3.U();
-            if (rg1Var3.S) {
-                rg1Var3.j();
-            } else {
-                rg1Var3.e0();
-            }
-            d60 d60Var = fz0.I;
-            l93.c0(d60Var, rg1Var3, ouVar);
-            d60 d60Var2 = fz0.H;
-            l93.c0(d60Var2, rg1Var3, mf3VarK);
-            Integer numValueOf = Integer.valueOf(iHashCode);
-            d60 d60Var3 = fz0.J;
-            l93.c0(d60Var3, rg1Var3, numValueOf);
-            l93.a0(rg1Var3);
-            d60 d60Var4 = fz0.G;
-            l93.c0(d60Var4, rg1Var3, dx2VarE);
-            fs fsVar = fz0.z;
-            y50 y50Var2 = w50.a;
-            if (fsVar.equals(fz0.y)) {
-                rg1Var3.R(-1446604504);
-                rg1Var3.o(false);
-                y50Var = w50.a;
-            } else {
-                rg1Var3.R(-1446550657);
-                boolean zE = rg1Var3.e(gi.a);
-                Object objH5 = rg1Var3.H();
-                if (zE || objH5 == obj) {
-                    objH5 = new y50(fsVar);
-                    rg1Var3.b0(objH5);
-                }
-                rg1Var3.o(false);
-                y50Var = (y50) objH5;
-            }
-            int iHashCode2 = Long.hashCode(rg1Var3.T);
-            mf3 mf3VarK2 = rg1Var3.k();
-            dx2 dx2VarE2 = j51.E(rg1Var3, ax2.a);
-            rg1Var3.U();
-            if (rg1Var3.S) {
-                rg1Var3.j();
-            } else {
-                rg1Var3.e0();
-            }
-            l93.c0(d60Var, rg1Var3, y50Var);
-            l93.c0(d60Var2, rg1Var3, mf3VarK2);
-            l93.c0(d60Var3, rg1Var3, Integer.valueOf(iHashCode2));
-            l93.a0(rg1Var3);
-            l93.c0(d60Var4, rg1Var3, dx2VarE2);
-            gi1.c(bu.x(R.drawable.ic_placeholder_song, rg1Var3), null, au0.G(new uf4(96.0f, 96.0f, 96.0f, 96.0f), null, 1044475), null, null, 0.0f, rg1Var3, 440, 120);
-            uf4 uf4Var = new uf4(Float.NaN, 16.0f, Float.NaN, 16.0f);
-            w01 w01Var = w01.e;
-            int iHashCode3 = Long.hashCode(rg1Var3.T);
-            dx2 dx2VarE3 = j51.E(rg1Var3, uf4Var);
-            mf3 mf3VarK3 = rg1Var3.k();
-            rg1Var3.U();
-            if (rg1Var3.S) {
-                rg1Var3.j();
-            } else {
-                rg1Var3.e0();
-            }
-            l93.c0(d60Var, rg1Var3, w01Var);
-            l93.c0(d60Var2, rg1Var3, mf3VarK3);
-            l93.a0(rg1Var3);
-            l93.c0(d60Var4, rg1Var3, dx2VarE3);
-            l93.c0(d60Var3, rg1Var3, Integer.valueOf(iHashCode3));
-            rg1Var3.o(true);
-            jz4.a(((Resources) rg1Var3.i(hb.c)).getString(R.string.homemusic_player_next_loading), null, new zs4(16744444, j2, su3.v(15)), 0, false, 0, 0, rg1Var, 0);
-            rg1 rg1Var4 = rg1Var;
-            rg1Var4.o(true);
-            rg1Var4.o(true);
-            rg1Var2 = rg1Var4;
-        } else {
-            rg1Var3.N();
-            rg1Var2 = rg1Var3;
-        }
-        lv3 lv3VarP = rg1Var2.p();
-        if (lv3VarP != null) {
-            lv3VarP.d = new d60(i2);
-        }
+    public static final void d(int r17, rg1 r18) {
+        rg1 r7 = r18;
+        r7.S(-2092244638);
+        if (r17 == 0) goto L5;
+        boolean r2 = true;
+    L7:
+        if (r7.K(r17 & 1, r2) == false) goto L46;
+        Object r3 = r7.H();
+        Object r4 = j80.a;
+        if (r3 != r4) goto L11;
+        r3 = new ty1();
+        r7.b0(r3);
+    L11:
+        ty1 r5 = (ty1) r3;
+        r5.a(0, r7);
+        py1 r6 = new py1(au0.T(800, null, 6), hz3.o);
+        Float r8 = Float.valueOf(0.08f);
+        Float r9 = Float.valueOf(0.2f);
+        Object r10 = r7.H();
+        if (r10 != r4) goto L14;
+        r10 = new qy1(r5, r8, r9, r6);
+        r7.b0(r10);
+    L14:
+        qy1 r11 = (qy1) r10;
+        boolean r12 = r7.g(r6);
+        Object r13 = r7.H();
+        if (r12 == true) goto L17;
+        if (r13 == r4) goto L17;
+    L18:
+        ya3 r14 = r7.M.b.n;
+        r14.x0(ma3.f);
+        rr2.R(r14, 0, (gf1) r13);
+        boolean r15 = r7.g(r5);
+        Object r16 = r7.H();
+        if (r15 == true) goto L21;
+        if (r16 == r4) goto L21;
+    L22:
+        bu.b(r11, (if1) r16, r7);
+        d71 r19 = ji2.b;
+        long r110 = x40.c;
+        dx2 r20 = kb4.i(r19, x40.b(r110, ((Number) r11.p.getValue()).floatValue()));
+        hs r21 = fz0.s;
+        Object r22 = (ui2) lu.a.g(r21);
+        if (r22 != null) goto L25;
+        r22 = new ou(r21, false);
+    L25:
+        int r23 = Long.hashCode(r7.T);
+        mf3 r24 = r7.k();
+        dx2 r25 = j51.E(r7, r20);
+        e80.e.getClass();
+        r7.U();
+        if (r7.S == false) goto L28;
+        r7.j();
+    L29:
+        d60 r111 = fz0.I;
+        l93.c0(r111, r7, r22);
+        d60 r112 = fz0.H;
+        l93.c0(r112, r7, r24);
+        Integer r26 = Integer.valueOf(r23);
+        d60 r113 = fz0.J;
+        l93.c0(r113, r7, r26);
+        l93.a0(r7);
+        d60 r27 = fz0.G;
+        l93.c0(r27, r7, r25);
+        fs r28 = fz0.z;
+        y50 r29 = w50.a;
+        if (r28.equals(fz0.y) == false) goto L32;
+        r7.R(-1446604504);
+        r7.o(false);
+        y50 r1 = w50.a;
+    L37:
+        int r30 = Long.hashCode(r7.T);
+        mf3 r31 = r7.k();
+        dx2 r32 = j51.E(r7, ax2.a);
+        r7.U();
+        if (r7.S == false) goto L40;
+        r7.j();
+    L41:
+        l93.c0(r111, r7, r1);
+        l93.c0(r112, r7, r31);
+        l93.c0(r113, r7, Integer.valueOf(r30));
+        l93.a0(r7);
+        l93.c0(r27, r7, r32);
+        gi1.c(bu.x(R.drawable.ic_placeholder_song, r7), null, au0.G(new uf4(96.0f, 96.0f, 96.0f, 96.0f), null, 1044475), null, null, 0.0f, r7, 440, 120);
+        uf4 r33 = new uf4(Float.NaN, 16.0f, Float.NaN, 16.0f);
+        w01 r34 = w01.e;
+        int r35 = Long.hashCode(r7.T);
+        dx2 r36 = j51.E(r7, r33);
+        mf3 r37 = r7.k();
+        r7.U();
+        if (r7.S == false) goto L44;
+        r7.j();
+    L45:
+        l93.c0(r111, r7, r34);
+        l93.c0(r112, r7, r37);
+        l93.a0(r7);
+        l93.c0(r27, r7, r36);
+        l93.c0(r113, r7, Integer.valueOf(r35));
+        r7.o(true);
+        jz4.a(((Resources) r7.i(hb.c)).getString(R.string.homemusic_player_next_loading), null, new zs4(16744444, r110, su3.v(15)), 0, false, 0, 0, r18, 0);
+        rg1 r38 = r18;
+        r38.o(true);
+        r38.o(true);
+        rg1 r39 = r38;
+    L47:
+        lv3 r40 = r39.p();
+        if (r40 == null) goto L51;
+        r40.d = new d60(r17);
+        return;
+    L51:
+        return;
+    L44:
+        r7.e0();
+        goto L45
+    L40:
+        r7.e0();
+        goto L41
+    L32:
+        r7.R(-1446550657);
+        boolean r41 = r7.e(gi.a);
+        Object r42 = r7.H();
+        if (r41 == true) goto L35;
+        if (r42 == r4) goto L35;
+    L36:
+        r7.o(false);
+        r1 = (y50) r42;
+    L35:
+        r42 = new y50(r28);
+        r7.b0(r42);
+        goto L36
+    L28:
+        r7.e0();
+    L21:
+        r16 = new o(12, r5, r11);
+        r7.b0(r16);
+    L17:
+        r13 = new uy1(r8, r11, r9, r6);
+        r7.b0(r13);
+        goto L18
+    L46:
+        r7.N();
+        r39 = r7;
+        goto L47
+    L5:
+        r2 = false;
+        goto L7
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    public static final void e(final List list, final int i2, final boolean z, final Uri uri, final String str, final boolean z2, final boolean z3, final if1 if1Var, final gf1 gf1Var, rg1 rg1Var, final int i3) {
-        int iM;
-        final int i4;
-        lm0 lm0Var;
-        final boolean z4;
-        lm0 lm0Var2;
-        int i5;
-        final float f2;
-        list.getClass();
-        rg1Var.S(321351878);
-        int i6 = i3 | (rg1Var.g(list) ? 4 : 2) | (rg1Var.d(i2) ? 32 : 16) | (rg1Var.f(z) ? 256 : 128) | (rg1Var.g(uri) ? 2048 : 1024) | (rg1Var.e(str) ? 16384 : 8192) | (rg1Var.f(z2) ? 131072 : 65536) | (rg1Var.f(z3) ? 1048576 : 524288) | (rg1Var.g(if1Var) ? 8388608 : 4194304) | (rg1Var.g(gf1Var) ? 67108864 : 33554432);
-        if (rg1Var.K(i6 & 1, (38347923 & i6) != 38347922)) {
-            b13 b13VarS = uc5.S(Integer.valueOf(i2), rg1Var);
-            b13 b13VarS2 = uc5.S(if1Var, rg1Var);
-            uc5.S(gf1Var, rg1Var);
-            int i7 = (!z2 || z || list.isEmpty()) ? 0 : 1;
-            int size = (z || list.isEmpty()) ? 1 : list.size() + i7;
-            b13 b13VarS3 = uc5.S(Integer.valueOf(size), rg1Var);
-            if (z) {
-                i4 = 0;
-            } else {
-                if (i7 == 0 || !z3) {
-                    int i8 = size - 1;
-                    iM = gb.m(i2, 0, i8 < 0 ? 0 : i8);
-                } else {
-                    iM = list.size();
-                }
-                i4 = iM;
-            }
-            final int i9 = size;
-            boolean zD = rg1Var.d(i9);
-            Object objH = rg1Var.H();
-            Object obj = j80.a;
-            Object obj2 = objH;
-            if (zD || objH == obj) {
-                Object obj3 = new gf1() { // from class: y63
-                    @Override // defpackage.gf1
-                    public final Object invoke() {
-                        return Integer.valueOf(i9);
-                    }
-                };
-                rg1Var.b0(obj3);
-                obj2 = obj3;
-            }
-            final gf1 gf1Var2 = (gf1) obj2;
-            dd3 dd3Var = ed3.a;
-            Object[] objArr = new Object[0];
-            xc5 xc5Var = lm0.H;
-            boolean zD2 = rg1Var.d(i4) | rg1Var.c(0.0f) | rg1Var.e(gf1Var2);
-            Object objH2 = rg1Var.H();
-            Object obj4 = objH2;
-            if (zD2 || objH2 == obj) {
-                Object obj5 = new gf1() { // from class: bd3
-                    @Override // defpackage.gf1
-                    public final Object invoke() {
-                        return new lm0(i4, 0.0f, gf1Var2);
-                    }
-                };
-                rg1Var.b0(obj5);
-                obj4 = obj5;
-            }
-            lm0 lm0Var3 = (lm0) gh0.z(objArr, xc5Var, (gf1) obj4, rg1Var, 0);
-            lm0Var3.G.setValue(gf1Var2);
-            Object obj6 = lm0Var3.p;
-            Object objH3 = rg1Var.H();
-            Object obj7 = objH3;
-            if (objH3 == obj) {
-                Object objB = uc5.B(Boolean.FALSE);
-                rg1Var.b0(objB);
-                obj7 = objB;
-            }
-            b13 b13Var = (b13) obj7;
-            boolean zE = rg1Var.e(obj6);
-            Object objH4 = rg1Var.H();
-            vd0 vd0Var = null;
-            Object obj8 = objH4;
-            if (zE || objH4 == obj) {
-                Object pVar = new p(obj6, b13Var, vd0Var, 9);
-                rg1Var.b0(pVar);
-                obj8 = pVar;
-            }
-            bu.c((wf1) obj8, rg1Var, obj6);
-            Object objH5 = rg1Var.H();
-            Object obj9 = objH5;
-            if (objH5 == obj) {
-                Object objB2 = uc5.B(Boolean.FALSE);
-                rg1Var.b0(objB2);
-                obj9 = objB2;
-            }
-            b13 b13Var2 = (b13) obj9;
-            Boolean bool = (Boolean) b13Var.getValue();
-            bool.getClass();
-            boolean zE2 = rg1Var.e(b13Var);
-            Object objH6 = rg1Var.H();
-            Object obj10 = objH6;
-            if (zE2 || objH6 == obj) {
-                Object e73Var = new e73(b13Var, b13Var2, null);
-                rg1Var.b0(e73Var);
-                obj10 = e73Var;
-            }
-            bu.c((wf1) obj10, rg1Var, bool);
-            Integer numValueOf = Integer.valueOf(i4);
-            boolean zE3 = rg1Var.e(b13Var) | rg1Var.d(i9) | rg1Var.d(i4) | rg1Var.e(lm0Var3);
-            Object objH7 = rg1Var.H();
-            if (zE3 || objH7 == obj) {
-                objH7 = new f73(i4, i9, lm0Var3, b13Var, null);
-                lm0Var = lm0Var3;
-                rg1Var.b0(objH7);
-            } else {
-                lm0Var = lm0Var3;
-            }
-            bu.c((wf1) objH7, rg1Var, numValueOf);
-            int i10 = i6 & 896;
-            boolean zE4 = rg1Var.e(lm0Var) | (i10 == 256) | rg1Var.e(b13VarS3) | rg1Var.e(b13VarS) | rg1Var.e(b13VarS2);
-            Object objH8 = rg1Var.H();
-            if (zE4 || objH8 == obj) {
-                z4 = z;
-                lm0Var2 = lm0Var;
-                i5 = 1;
-                Object h73Var = new h73(lm0Var2, z4, b13Var2, b13VarS3, b13VarS, b13VarS2, null);
-                rg1Var.b0(h73Var);
-                objH8 = h73Var;
-            } else {
-                z4 = z;
-                lm0Var2 = lm0Var;
-                i5 = 1;
-            }
-            bu.c((wf1) objH8, rg1Var, lm0Var2);
-            App.b().getClass();
-            if (App.c().getBoolean("rounded_corner", false)) {
-                App.b().getClass();
-                String string = App.c().getString("rounded_corner_size", "12");
-                string.getClass();
-                f2 = Integer.parseInt(string);
-            } else {
-                f2 = 0.0f;
-            }
-            final lm0 lm0Var4 = lm0Var2;
-            d71 d71Var = ji2.b;
-            ac3 ac3VarB = q05.b(2);
-            boolean z5 = (z4 || i9 <= i5) ? 0 : i5;
-            int i11 = (rg1Var.g(list) ? 1 : 0) | (i10 == 256 ? i5 : 0);
-            Object objH9 = rg1Var.H();
-            Object obj11 = objH9;
-            if (i11 != 0 || objH9 == obj) {
-                Object obj12 = new if1() { // from class: z63
-                    @Override // defpackage.if1
-                    public final Object invoke(Object obj13) {
-                        String id;
-                        int iIntValue = ((Integer) obj13).intValue();
-                        if (z4) {
-                            return WaveOrigin.RADIO;
-                        }
-                        Child child = (Child) q40.y0(list, iIntValue);
-                        if (child == null || (id = child.getId()) == null) {
-                            id = "loading";
-                        }
-                        return id + "_" + iIntValue;
-                    }
-                };
-                rg1Var.b0(obj12);
-                obj11 = obj12;
-            }
-            if1 if1Var2 = (if1) obj11;
-            final boolean z6 = z4;
-            uc5.a(lm0Var4, d71Var, ac3VarB, null, 16.0f, null, null, z5, if1Var2, null, null, null, fh0.w(325113351, new yf1() { // from class: a73
-                @Override // defpackage.yf1
-                public final Object d(Object obj13, Object obj14, Object obj15, Object obj16) {
-                    final int iIntValue = ((Integer) obj14).intValue();
-                    rg1 rg1Var2 = (rg1) obj15;
-                    int iIntValue2 = ((Integer) obj16).intValue();
-                    ((rc3) obj13).getClass();
-                    final lm0 lm0Var5 = lm0Var4;
-                    float fAbs = Math.abs(lm0Var5.l() + (lm0Var5.k() - iIntValue));
-                    float fL = 1.0f - gb.l(fAbs, 0.0f, 1.0f);
-                    final float f3 = (fL * 1.0f) + ((1.0f - fL) * 0.92f);
-                    float fL2 = 1.0f - gb.l(fAbs, 0.0f, 1.0f);
-                    final float f4 = (fL2 * 1.0f) + ((1.0f - fL2) * 0.7f);
-                    d71 d71Var2 = ji2.b;
-                    boolean zC = rg1Var2.c(f3) | rg1Var2.c(f4);
-                    Object objH10 = rg1Var2.H();
-                    i80 i80Var = j80.a;
-                    if (zC || objH10 == i80Var) {
-                        objH10 = new if1() { // from class: c73
-                            @Override // defpackage.if1
-                            public final Object invoke(Object obj17) {
-                                b24 b24Var = (b24) obj17;
-                                b24Var.getClass();
-                                float f5 = f3;
-                                b24Var.c(f5);
-                                b24Var.e(f5);
-                                b24Var.b(f4);
-                                return j15.a;
-                            }
-                        };
-                        rg1Var2.b0(objH10);
-                    }
-                    dx2 dx2VarF = au0.F(d71Var2, (if1) objH10);
-                    int i12 = l34.a;
-                    lu0 lu0Var = new lu0(f2);
-                    dx2 dx2VarG = au0.G(dx2VarF, new k34(lu0Var, lu0Var, lu0Var, lu0Var), 1042431);
-                    boolean zE5 = ((((iIntValue2 & 112) ^ 48) > 32 && rg1Var2.d(iIntValue)) || (iIntValue2 & 48) == 32) | rg1Var2.e(lm0Var5);
-                    final gf1 gf1Var3 = gf1Var;
-                    boolean zE6 = zE5 | rg1Var2.e(gf1Var3);
-                    Object objH11 = rg1Var2.H();
-                    if (zE6 || objH11 == i80Var) {
-                        objH11 = new gf1() { // from class: d73
-                            @Override // defpackage.gf1
-                            public final Object invoke() {
-                                if (iIntValue == lm0Var5.k()) {
-                                    gf1Var3.invoke();
-                                }
-                                return j15.a;
-                            }
-                        };
-                        rg1Var2.b0(objH11);
-                    }
-                    dx2 dx2VarJ = wr1.j(dx2VarG, (gf1) objH11);
-                    hs hsVar = fz0.s;
-                    Object ouVar = (ui2) lu.a.g(hsVar);
-                    if (ouVar == null) {
-                        ouVar = new ou(hsVar, false);
-                    }
-                    int iHashCode = Long.hashCode(rg1Var2.T);
-                    mf3 mf3VarK = rg1Var2.k();
-                    dx2 dx2VarE = j51.E(rg1Var2, dx2VarJ);
-                    e80.e.getClass();
-                    rg1Var2.U();
-                    if (rg1Var2.S) {
-                        rg1Var2.j();
-                    } else {
-                        rg1Var2.e0();
-                    }
-                    l93.c0(fz0.I, rg1Var2, ouVar);
-                    l93.c0(fz0.H, rg1Var2, mf3VarK);
-                    l93.c0(fz0.J, rg1Var2, Integer.valueOf(iHashCode));
-                    l93.a0(rg1Var2);
-                    l93.c0(fz0.G, rg1Var2, dx2VarE);
-                    if (z6) {
-                        rg1Var2.R(-974337395);
-                        e35.f(uri, str, rg1Var2, 0);
-                        rg1Var2.o(false);
-                    } else {
-                        List list2 = list;
-                        if (iIntValue >= list2.size()) {
-                            rg1Var2.R(-974206203);
-                            e35.d(0, rg1Var2);
-                            rg1Var2.o(false);
-                        } else {
-                            rg1Var2.R(-974149659);
-                            Child child = (Child) q40.y0(list2, iIntValue);
-                            e35.g(child != null ? child.getCoverArtId() : null, child != null ? child.getTitle() : null, rg1Var2, 0);
-                            rg1Var2.o(false);
-                        }
-                    }
-                    rg1Var2.o(true);
-                    return j15.a;
-                }
-            }, rg1Var), rg1Var, 197040);
-        } else {
-            rg1Var.N();
-        }
-        lv3 lv3VarP = rg1Var.p();
-        if (lv3VarP != null) {
-            lv3VarP.d = new wf1(list, i2, z, uri, str, z2, z3, if1Var, gf1Var, i3) { // from class: b73
-                public final /* synthetic */ List n;
-                public final /* synthetic */ int o;
-                public final /* synthetic */ boolean p;
-                public final /* synthetic */ Uri q;
-                public final /* synthetic */ String r;
-                public final /* synthetic */ boolean s;
-                public final /* synthetic */ boolean t;
-                public final /* synthetic */ if1 u;
-                public final /* synthetic */ gf1 v;
-
-                @Override // defpackage.wf1
-                public final Object invoke(Object obj13, Object obj14) {
-                    ((Integer) obj14).getClass();
-                    int iO = xl.O(1);
-                    e35.e(this.n, this.o, this.p, this.q, this.r, this.s, this.t, this.u, this.v, (rg1) obj13, iO);
-                    return j15.a;
-                }
-            };
-        }
+    public static final void e(final List r25, final int r26, final boolean r27, final Uri r28, final String r29, final boolean r30, final boolean r31, final if1 r32, final gf1 r33, rg1 r34, final int r35) {
+        r25.getClass();
+        r34.S(321351878);
+        if (r34.g(r25) == false) goto L5;
+        int r4 = 4;
+    L6:
+        int r5 = r35 | r4;
+        if (r34.d(r26) == false) goto L9;
+        int r6 = 32;
+    L10:
+        int r7 = r5 | r6;
+        if (r34.f(r27) == false) goto L13;
+        int r8 = 256;
+    L14:
+        int r9 = r7 | r8;
+        if (r34.g(r28) == false) goto L17;
+        int r10 = 2048;
+    L18:
+        int r11 = r9 | r10;
+        if (r34.e(r29) == false) goto L21;
+        int r12 = 16384;
+    L22:
+        int r13 = r11 | r12;
+        if (r34.f(r30) == false) goto L25;
+        int r14 = 131072;
+    L26:
+        int r15 = r13 | r14;
+        if (r34.f(r31) == false) goto L29;
+        int r16 = 1048576;
+    L30:
+        int r17 = r15 | r16;
+        if (r34.g(r32) == false) goto L33;
+        int r18 = 8388608;
+    L34:
+        int r19 = r17 | r18;
+        if (r34.g(r33) == false) goto L37;
+        int r110 = 67108864;
+    L38:
+        int r20 = r19 | r110;
+        if ((38347923 & r20) == 38347922) goto L41;
+        boolean r111 = true;
+    L43:
+        if (r34.K(r20 & 1, r111) == false) goto L126;
+        b13 r112 = uc5.S(Integer.valueOf(r26), r34);
+        b13 r113 = uc5.S(r32, r34);
+        uc5.S(r33, r34);
+        if (r30 == false) goto L50;
+        if (r27 == true) goto L50;
+        if (r25.isEmpty() == true) goto L50;
+        int r114 = 1;
+    L51:
+        if (r27 == false) goto L53;
+    L56:
+        int r21 = 1;
+    L57:
+        b13 r115 = uc5.S(Integer.valueOf(r21), r34);
+        if (r27 == false) goto L61;
+        final int r22 = 0;
+    L60:
+        final int r23 = r21;
+        boolean r116 = r34.d(r23);
+        Object r0 = r34.H();
+        Object r1 = j80.a;
+        Object r2 = r0;
+        if (r116 == true) goto L73;
+        if (r0 == r1) goto L73;
+    L74:
+        final gf1 r3 = (gf1) r2;
+        dd3 r117 = ed3.a;
+        Object[] r24 = new Object[0];
+        xc5 r36 = lm0.H;
+        boolean r118 = (r34.d(r22) | r34.c(0.0f)) | r34.e(r3);
+        Object r37 = r34.H();
+        Object r38 = r37;
+        if (r118 == true) goto L77;
+        if (r37 == r1) goto L77;
+    L78:
+        lm0 r119 = (lm0) gh0.z(r24, r36, (gf1) r38, r34, 0);
+        r119.G.setValue(r3);
+        Object r39 = r119.p;
+        Object r40 = r34.H();
+        Object r41 = r40;
+        if (r40 != r1) goto L81;
+        Object r42 = uc5.B(Boolean.FALSE);
+        r34.b0(r42);
+        r41 = r42;
+    L81:
+        b13 r43 = (b13) r41;
+        boolean r44 = r34.e(r39);
+        Object r45 = r34.H();
+        vd0 r46 = null;
+        Object r47 = r45;
+        if (r44 == true) goto L84;
+        if (r45 == r1) goto L84;
+    L85:
+        bu.c((wf1) r47, r34, r39);
+        Object r48 = r34.H();
+        Object r49 = r48;
+        if (r48 != r1) goto L88;
+        Object r50 = uc5.B(Boolean.FALSE);
+        r34.b0(r50);
+        r49 = r50;
+    L88:
+        b13 r51 = (b13) r49;
+        Boolean r52 = (Boolean) r43.getValue();
+        r52.getClass();
+        boolean r120 = r34.e(r43);
+        Object r53 = r34.H();
+        Object r54 = r53;
+        if (r120 == true) goto L91;
+        if (r53 == r1) goto L91;
+    L92:
+        bu.c((wf1) r54, r34, r52);
+        Integer r55 = Integer.valueOf(r22);
+        boolean r56 = ((r34.e(r43) | r34.d(r23)) | r34.d(r22)) | r34.e(r119);
+        Object r121 = r34.H();
+        if (r56 == true) goto L97;
+        if (r121 == r1) goto L97;
+        lm0 r57 = r119;
+    L98:
+        bu.c((wf1) r121, r34, r55);
+        boolean r58 = r34.e(r57);
+        int r59 = r20 & 896;
+        if (r59 != 256) goto L101;
+        boolean r60 = true;
+    L102:
+        boolean r61 = (((r58 | r60) | r34.e(r115)) | r34.e(r112)) | r34.e(r113);
+        Object r62 = r34.H();
+        if (r61 == true) goto L107;
+        if (r62 == r1) goto L107;
+        final boolean r122 = r27;
+        lm0 r123 = r57;
+        int r63 = 1;
+    L108:
+        bu.c((wf1) r62, r34, r123);
+        App.b().getClass();
+        if (App.c().getBoolean("rounded_corner", false) == false) goto L112;
+        App.b().getClass();
+        String r64 = App.c().getString("rounded_corner_size", "12");
+        r64.getClass();
+        final float r65 = Integer.parseInt(r64);
+    L111:
+        final lm0 r210 = r123;
+        d71 r124 = ji2.b;
+        ac3 r66 = q05.b(2);
+        if (r122 == true) goto L117;
+        if (r23 <= r63) goto L117;
+        boolean r125 = r63;
+    L118:
+        if (r59 != 256) goto L120;
+        int r126 = r63;
+    L121:
+        int r67 = (r34.g(r25) ? 1 : 0) | r126;
+        Object r68 = r34.H();
+        Object r69 = r68;
+        if (r67 != 0) goto L124;
+        if (r68 == r1) goto L124;
+    L125:
+        if1 r127 = (if1) r69;
+        final boolean r70 = r122;
+        uc5.a(r210, r124, r66, null, 16.0f, null, null, r125, r127, null, null, null, fh0.w(325113351, new a73(r210, r65, r33, r70, r28, r29, r25), r34), r34, 197040);
+    L127:
+        lv3 r128 = r34.p();
+        if (r128 == null) goto L131;
+        r128.d = new b73(r25, r26, r27, r28, r29, r30, r31, r32, r33, r35);
+        return;
+    L131:
+        return;
+    L124:
+        Object r71 = new z63(r25, r122);
+        r34.b0(r71);
+        r69 = r71;
+        goto L125
+    L120:
+        r126 = 0;
+    L117:
+        r125 = 0;
+        goto L118
+    L112:
+        r65 = 0.0f;
+    L107:
+        r122 = r27;
+        r123 = r57;
+        r63 = 1;
+        Object r72 = new h73(r123, r122, r51, r115, r112, r113, null);
+        r34.b0(r72);
+        r62 = r72;
+        goto L108
+    L101:
+        r60 = false;
+    L97:
+        r121 = new f73(r22, r23, r119, r43, null);
+        r57 = r119;
+        r34.b0(r121);
+    L91:
+        Object r73 = new e73(r43, r51, null);
+        r34.b0(r73);
+        r54 = r73;
+    L84:
+        Object r74 = new p(r39, r43, r46, 9);
+        r34.b0(r74);
+        r47 = r74;
+    L77:
+        Object r75 = new bd3(r22, r3);
+        r34.b0(r75);
+        r38 = r75;
+    L73:
+        Object r76 = new y63(r23);
+        r34.b0(r76);
+        r2 = r76;
+        goto L74
+    L61:
+        if (r114 == 0) goto L65;
+        if (r31 == false) goto L65;
+        int r129 = r25.size();
+    L64:
+        r22 = r129;
+    L65:
+        int r130 = r21 - 1;
+        if (r130 >= 0) goto L68;
+        int r77 = 0;
+    L69:
+        r129 = gb.m(r26, 0, r77);
+        goto L64
+    L68:
+        r77 = r130;
+        goto L69
+    L53:
+        if (r25.isEmpty() == true) goto L56;
+        r21 = r25.size() + r114;
+    L50:
+        r114 = 0;
+        goto L51
+    L126:
+        r34.N();
+        goto L127
+    L41:
+        r111 = false;
+        goto L43
+    L37:
+        r110 = 33554432;
+        goto L38
+    L33:
+        r18 = 4194304;
+        goto L34
+    L29:
+        r16 = 524288;
+        goto L30
+    L25:
+        r14 = 65536;
+        goto L26
+    L21:
+        r12 = 8192;
+        goto L22
+    L17:
+        r10 = 1024;
+        goto L18
+    L13:
+        r8 = 128;
+        goto L14
+    L9:
+        r6 = 16;
+        goto L10
+    L5:
+        r4 = 2;
+        goto L6
     }
 
-    public static final void f(Uri uri, String str, rg1 rg1Var, int i2) {
-        rg1Var.S(1374447570);
-        int i3 = (rg1Var.g(uri) ? 4 : 2) | i2 | (rg1Var.e(str) ? 32 : 16);
-        if (rg1Var.K(i3 & 1, (i3 & 19) != 18)) {
-            Context applicationContext = ((Context) rg1Var.i(hb.b)).getApplicationContext();
-            int i4 = i3 & 112;
-            boolean zE = rg1Var.e(uri) | (i4 == 32);
-            Object objH = rg1Var.H();
-            Object obj = j80.a;
-            if (zE || objH == obj) {
-                objH = uc5.B(null);
-                rg1Var.b0(objH);
-            }
-            b13 b13Var = (b13) objH;
-            boolean zE2 = rg1Var.e(b13Var) | rg1Var.g(applicationContext) | rg1Var.g(uri) | (i4 == 32);
-            Object objH2 = rg1Var.H();
-            if (zE2 || objH2 == obj) {
-                objH2 = new ry1(applicationContext, uri, str, b13Var);
-                rg1Var.b0(objH2);
-            }
-            if1 if1Var = (if1) objH2;
-            boolean zE3 = rg1Var.e(uri) | rg1Var.e(str);
-            Object objH3 = rg1Var.H();
-            if (zE3 || objH3 == obj) {
-                objH3 = new wr0(if1Var);
-                rg1Var.b0(objH3);
-            }
-            Bitmap bitmap = (Bitmap) b13Var.getValue();
-            if (bitmap != null) {
-                rg1Var.R(-2049573095);
-                gi1.d(new cc(bitmap), null, ji2.b, rg1Var, 25008);
-                rg1Var.o(false);
-            } else {
-                rg1Var.R(-2049353088);
-                gi1.c(bu.x(R.drawable.ic_placeholder_radio, rg1Var), null, ji2.b, null, od0.a, 0.0f, rg1Var, 25016, 104);
-                rg1Var.o(false);
-            }
-        } else {
-            rg1Var.N();
-        }
-        lv3 lv3VarP = rg1Var.p();
-        if (lv3VarP != null) {
-            lv3VarP.d = new ib(uri, str, i2, 7);
-        }
+    public static final void f(Uri r12, String r13, rg1 r14, int r15) {
+        r14.S(1374447570);
+        if (r14.g(r12) == false) goto L5;
+        int r0 = 4;
+    L6:
+        int r1 = r0 | r15;
+        if (r14.e(r13) == false) goto L9;
+        int r2 = 32;
+    L10:
+        int r3 = r1 | r2;
+        boolean r4 = true;
+        if ((r3 & 19) == 18) goto L13;
+        boolean r5 = true;
+    L15:
+        if (r14.K(r3 & 1, r5) == false) goto L40;
+        Context r6 = ((Context) r14.i(hb.b)).getApplicationContext();
+        boolean r7 = r14.e(r12);
+        int r8 = r3 & 112;
+        if (r8 != 32) goto L19;
+        boolean r9 = true;
+    L20:
+        boolean r10 = r7 | r9;
+        Object r11 = r14.H();
+        Object r16 = j80.a;
+        if (r10 == true) goto L23;
+        if (r11 == r16) goto L23;
+    L24:
+        b13 r17 = (b13) r11;
+        boolean r18 = (r14.e(r17) | r14.g(r6)) | r14.g(r12);
+        if (r8 == 32) goto L28;
+        r4 = false;
+    L28:
+        boolean r19 = r18 | r4;
+        Object r20 = r14.H();
+        if (r19 == true) goto L31;
+        if (r20 == r16) goto L31;
+    L32:
+        if1 r21 = (if1) r20;
+        boolean r22 = r14.e(r12) | r14.e(r13);
+        Object r23 = r14.H();
+        if (r22 == true) goto L35;
+        if (r23 == r16) goto L35;
+    L36:
+        wr0 r24 = (wr0) r23;
+        Bitmap r25 = (Bitmap) r17.getValue();
+        if (r25 == null) goto L39;
+        r14.R(-2049573095);
+        gi1.d(new cc(r25), null, ji2.b, r14, 25008);
+        r14.o(false);
+    L41:
+        lv3 r26 = r14.p();
+        if (r26 == null) goto L45;
+        r26.d = new ib(r12, r13, r15, 7);
+        return;
+    L45:
+        return;
+    L39:
+        r14.R(-2049353088);
+        gi1.c(bu.x(R.drawable.ic_placeholder_radio, r14), null, ji2.b, null, od0.a, 0.0f, r14, 25016, 104);
+        r14.o(false);
+    L35:
+        r23 = new wr0(r21);
+        r14.b0(r23);
+    L31:
+        r20 = new ry1(r6, r12, r13, r17);
+        r14.b0(r20);
+    L23:
+        r11 = uc5.B(null);
+        r14.b0(r11);
+        goto L24
+    L19:
+        r9 = false;
+        goto L20
+    L40:
+        r14.N();
+        goto L41
+    L13:
+        r5 = false;
+        goto L15
+    L9:
+        r2 = 16;
+        goto L10
+    L5:
+        r0 = 2;
+        goto L6
     }
 
-    public static final void g(String str, String str2, rg1 rg1Var, int i2) {
-        rg1Var.S(-299945073);
-        int i3 = 4;
-        int i4 = (rg1Var.e(str) ? 4 : 2) | i2 | (rg1Var.e(str2) ? 32 : 16);
-        if (rg1Var.K(i4 & 1, (i4 & 19) != 18)) {
-            Object applicationContext = ((Context) rg1Var.i(hb.b)).getApplicationContext();
-            int i5 = i4 & 14;
-            boolean z = i5 == 4;
-            Object objH = rg1Var.H();
-            Object obj = j80.a;
-            if (z || objH == obj) {
-                objH = uc5.B(null);
-                rg1Var.b0(objH);
-            }
-            b13 b13Var = (b13) objH;
-            boolean zE = rg1Var.e(b13Var) | (i5 == 4) | rg1Var.g(applicationContext);
-            Object objH2 = rg1Var.H();
-            if (zE || objH2 == obj) {
-                objH2 = new dd0(str, applicationContext, b13Var, i3);
-                rg1Var.b0(objH2);
-            }
-            bu.b(str, (if1) objH2, rg1Var);
-            Bitmap bitmap = (Bitmap) b13Var.getValue();
-            if (bitmap != null) {
-                rg1Var.R(-2130593189);
-                gi1.d(new cc(bitmap), str2, ji2.b, rg1Var, (i4 & 112) | 24960);
-                rg1Var.o(false);
-            } else {
-                rg1Var.R(-2130372221);
-                gi1.c(bu.x(R.drawable.ic_placeholder_song, rg1Var), str2, ji2.b, null, od0.a, 0.0f, rg1Var, 24968 | (i4 & 112), 104);
-                rg1Var.o(false);
-            }
-        } else {
-            rg1Var.N();
-        }
-        lv3 lv3VarP = rg1Var.p();
-        if (lv3VarP != null) {
-            lv3VarP.d = new ib(str, str2, i2, 8);
-        }
+    public static final void g(String r12, String r13, rg1 r14, int r15) {
+        r14.S(-299945073);
+        int r2 = 4;
+        if (r14.e(r12) == false) goto L5;
+        int r0 = 4;
+    L6:
+        int r1 = r0 | r15;
+        if (r14.e(r13) == false) goto L9;
+        int r3 = 32;
+    L10:
+        int r4 = r1 | r3;
+        boolean r5 = true;
+        if ((r4 & 19) == 18) goto L13;
+        boolean r6 = true;
+    L15:
+        if (r14.K(r4 & 1, r6) == false) goto L36;
+        Object r7 = ((Context) r14.i(hb.b)).getApplicationContext();
+        int r8 = r4 & 14;
+        if (r8 != 4) goto L19;
+        boolean r9 = true;
+    L20:
+        Object r10 = r14.H();
+        Object r11 = j80.a;
+        if (r9 == true) goto L23;
+        if (r10 == r11) goto L23;
+    L24:
+        b13 r16 = (b13) r10;
+        if (r8 == 4) goto L28;
+        r5 = false;
+    L28:
+        boolean r17 = (r14.e(r16) | r5) | r14.g(r7);
+        Object r18 = r14.H();
+        if (r17 == true) goto L31;
+        if (r18 == r11) goto L31;
+    L32:
+        bu.b(r12, (if1) r18, r14);
+        Bitmap r19 = (Bitmap) r16.getValue();
+        if (r19 == null) goto L35;
+        r14.R(-2130593189);
+        gi1.d(new cc(r19), r13, ji2.b, r14, (r4 & 112) | 24960);
+        r14.o(false);
+    L37:
+        lv3 r20 = r14.p();
+        if (r20 == null) goto L41;
+        r20.d = new ib(r12, r13, r15, 8);
+        return;
+    L41:
+        return;
+    L35:
+        r14.R(-2130372221);
+        gi1.c(bu.x(R.drawable.ic_placeholder_song, r14), r13, ji2.b, null, od0.a, 0.0f, r14, 24968 | (r4 & 112), 104);
+        r14.o(false);
+    L31:
+        r18 = new dd0(r12, r7, r16, r2);
+        r14.b0(r18);
+    L23:
+        r10 = uc5.B(null);
+        r14.b0(r10);
+        goto L24
+    L19:
+        r9 = false;
+        goto L20
+    L36:
+        r14.N();
+        goto L37
+    L13:
+        r6 = false;
+        goto L15
+    L9:
+        r3 = 16;
+        goto L10
+    L5:
+        r0 = 2;
+        goto L6
     }
 
-    public static final long h(float f2, float f3) {
-        return (((long) Float.floatToRawIntBits(f3)) & 4294967295L) | (Float.floatToRawIntBits(f2) << 32);
+    public static final long h(float r4, float r5) {
+        long r0 = Float.floatToRawIntBits(r4);
+        return (((long) Float.floatToRawIntBits(r5)) & 4294967295L) | (r0 << 32);
     }
 
-    public static final long i(long j2, long j3) {
-        if (j2 != 4611686018427387903L && j2 != -4611686018427387903L) {
-            return (j3 == 4611686018427387903L || j3 == -4611686018427387903L) ? j3 : gb.n(j2 + j3, -4611686018427387903L, 4611686018427387903L);
-        }
-        if ((-4611686018427387903L >= j3 || j3 >= 4611686018427387903L) && (j3 ^ j2) < 0) {
-            return 9223372036854759646L;
-        }
-        return j2;
+    public static final long i(long r7, long r9) {
+        if (r7 == 4611686018427387903L) goto L16;
+        if (r7 == (-4611686018427387903L)) goto L16;
+        if (r9 != 4611686018427387903L) goto L10;
+    L14:
+        return r9;
+    L10:
+        if (r9 == (-4611686018427387903L)) goto L14;
+        return gb.n(r7 + r9, -4611686018427387903L, 4611686018427387903L);
+    L16:
+        if ((-4611686018427387903L) >= r9) goto L21;
+        if (r9 >= 4611686018427387903L) goto L21;
+    L22:
+        return r7;
+    L21:
+        if ((r9 ^ r7) >= 0) goto L22;
+        return 9223372036854759646L;
     }
 
-    public static final int j(char c2) {
-        if ('0' <= c2 && c2 < ':') {
-            return c2 - '0';
-        }
-        if ('a' <= c2 && c2 < 'g') {
-            return c2 - 'W';
-        }
-        if ('A' <= c2 && c2 < 'G') {
-            return c2 - '7';
-        }
-        throw new IllegalArgumentException("Unexpected hex digit: " + c2);
+    public static final int j(char r3) {
+        if ('0' > r3) goto L9;
+        if (r3 >= ':') goto L9;
+        return r3 - '0';
+    L9:
+        if ('a' > r3) goto L15;
+        if (r3 >= 'g') goto L15;
+        return r3 - 'W';
+    L15:
+        if ('A' > r3) goto L21;
+        if (r3 >= 'G') goto L21;
+        return r3 - '7';
+    L21:
+        throw new IllegalArgumentException("Unexpected hex digit: " + r3);
     }
 
-    public static final void k(v3 v3Var, i94 i94Var) {
-        e94 e94Var = i94Var.d;
-        w03 w03Var = e94Var.n;
-        Object objG = e94Var.n.g(n94.w);
-        if (objG == null) {
-            objG = null;
-        }
-        if (xl.b(i94Var)) {
-            Object objG2 = w03Var.g(d94.x);
-            if (objG2 == null) {
-                objG2 = null;
-            }
-            w2 w2Var = (w2) objG2;
-            if (w2Var != null) {
-                v3Var.b(new o3(android.R.id.accessibilityActionPageUp, w2Var.a));
-            }
-            Object objG3 = w03Var.g(d94.z);
-            if (objG3 == null) {
-                objG3 = null;
-            }
-            w2 w2Var2 = (w2) objG3;
-            if (w2Var2 != null) {
-                v3Var.b(new o3(android.R.id.accessibilityActionPageDown, w2Var2.a));
-            }
-            Object objG4 = w03Var.g(d94.y);
-            if (objG4 == null) {
-                objG4 = null;
-            }
-            w2 w2Var3 = (w2) objG4;
-            if (w2Var3 != null) {
-                v3Var.b(new o3(android.R.id.accessibilityActionPageLeft, w2Var3.a));
-            }
-            Object objG5 = w03Var.g(d94.A);
-            w2 w2Var4 = (w2) (objG5 != null ? objG5 : null);
-            if (w2Var4 != null) {
-                v3Var.b(new o3(android.R.id.accessibilityActionPageRight, w2Var4.a));
-            }
-        }
+    public static final void k(v3 r4, i94 r5) {
+        e94 r0 = r5.d;
+        w03 r1 = r0.n;
+        Object r2 = r0.n.g(n94.w);
+        Object r3 = null;
+        if (r2 != null) goto L5;
+        r2 = null;
+    L5:
+        m24 r6 = (m24) r2;
+        if (xl.b(r5) == false) goto L33;
+        Object r7 = r1.g(d94.x);
+        if (r7 != null) goto L10;
+        r7 = null;
+    L10:
+        w2 r8 = (w2) r7;
+        if (r8 == null) goto L13;
+        r4.b(new o3(android.R.id.accessibilityActionPageUp, r8.a));
+    L13:
+        Object r9 = r1.g(d94.z);
+        if (r9 != null) goto L16;
+        r9 = null;
+    L16:
+        w2 r10 = (w2) r9;
+        if (r10 == null) goto L19;
+        r4.b(new o3(android.R.id.accessibilityActionPageDown, r10.a));
+    L19:
+        Object r11 = r1.g(d94.y);
+        if (r11 != null) goto L22;
+        r11 = null;
+    L22:
+        w2 r12 = (w2) r11;
+        if (r12 == null) goto L25;
+        r4.b(new o3(android.R.id.accessibilityActionPageLeft, r12.a));
+    L25:
+        Object r13 = r1.g(d94.A);
+        if (r13 == null) goto L29;
+        r3 = r13;
+    L29:
+        w2 r14 = (w2) r3;
+        if (r14 == null) goto L34;
+        r4.b(new o3(android.R.id.accessibilityActionPageRight, r14.a));
+        return;
+    L34:
+        return;
     }
 
-    public static void l(lg4 lg4Var, List list, z80 z80Var) {
-        if (list.isEmpty()) {
-            return;
-        }
-        int size = list.size();
-        for (int i2 = 0; i2 < size; i2++) {
-            int iC = lg4Var.c((mg1) list.get(i2));
-            int iN = lg4Var.N(lg4Var.b, lg4Var.r(iC));
-            Object obj = iN < lg4Var.g(lg4Var.b, lg4Var.r(iC + 1)) ? lg4Var.c[lg4Var.h(iN)] : j80.a;
-            lv3 lv3Var = obj instanceof lv3 ? (lv3) obj : null;
-            if (lv3Var != null) {
-                lv3Var.a = z80Var;
-            }
-        }
+    public static void l(lg4 r5, List r6, z80 r7) {
+        if (r6.isEmpty() == true) goto L17;
+        int r0 = r6.size();
+        int r1 = 0;
+    L5:
+        if (r1 >= r0) goto L21;
+        int r2 = r5.c((mg1) r6.get(r1));
+        int r3 = r5.r(r2);
+        int r4 = r5.N(r5.b, r3);
+        if (r4 >= r5.g(r5.b, r5.r(r2 + 1))) goto L9;
+        int r8 = r5.h(r4);
+        Object r9 = r5.c[r8];
+    L11:
+        if ((r9 instanceof lv3) == false) goto L13;
+        lv3 r10 = (lv3) r9;
+    L14:
+        if (r10 == null) goto L16;
+        r10.a = r7;
+    L16:
+        r1 = r1 + 1;
+        goto L5
+    L13:
+        r10 = null;
+        goto L14
+    L9:
+        r9 = j80.a;
+        goto L11
+    L21:
+        return;
     }
 
     public static void m() {
-        if (Looper.myLooper() == Looper.getMainLooper()) {
-            return;
-        }
+        if (Looper.myLooper() != Looper.getMainLooper()) goto L5;
+        return;
+    L5:
         kf2.n("You must call this method on the main thread");
     }
 
-    public static boolean n(Object obj, Object obj2) {
-        if (obj == null) {
-            return obj2 == null;
-        }
-        return obj.equals(obj2);
+    public static boolean n(Object r0, Object r1) {
+        if (r0 != null) goto L9;
+        if (r1 != null) goto L6;
+        return true;
+    L6:
+        return false;
+    L9:
+        return r0.equals(r1);
     }
 
-    public static final void o(int i2) {
-        if (i2 >= 1) {
-            return;
-        }
-        kf2.e(f34.f(i2, "Expected positive parallelism level, but got "));
+    public static final void o(int r1) {
+        if (r1 < 1) goto L5;
+        return;
+    L5:
+        kf2.e(f34.f(r1, "Expected positive parallelism level, but got "));
     }
 
-    public static final void p(sl1 sl1Var, String str, String str2) {
-        sl1Var.getClass();
-        str.getClass();
-        str2.getClass();
-        ArrayList arrayList = sl1Var.a;
-        arrayList.add(str);
-        arrayList.add(qm4.K0(str2).toString());
+    public static final void p(sl1 r0, String r1, String r2) {
+        r0.getClass();
+        r1.getClass();
+        r2.getClass();
+        ArrayList r3 = r0.a;
+        r3.add(r1);
+        r3.add(qm4.K0(r2).toString());
     }
 
-    public static int q(yw3 yw3Var, qz0 qz0Var, View view, View view2, mw3 mw3Var, boolean z) {
-        if (mw3Var.v() == 0 || yw3Var.b() == 0 || view == null || view2 == null) {
-            return 0;
-        }
-        if (!z) {
-            return Math.abs(mw3.I(view) - mw3.I(view2)) + 1;
-        }
-        return Math.min(qz0Var.n(), qz0Var.d(view2) - qz0Var.g(view));
-    }
-
-    public static int r(yw3 yw3Var, qz0 qz0Var, View view, View view2, mw3 mw3Var, boolean z, boolean z2) {
-        if (mw3Var.v() == 0 || yw3Var.b() == 0 || view == null || view2 == null) {
-            return 0;
-        }
-        int iMax = z2 ? Math.max(0, (yw3Var.b() - Math.max(mw3.I(view), mw3.I(view2))) - 1) : Math.max(0, Math.min(mw3.I(view), mw3.I(view2)));
-        if (z) {
-            return Math.round((iMax * (Math.abs(qz0Var.d(view2) - qz0Var.g(view)) / (Math.abs(mw3.I(view) - mw3.I(view2)) + 1))) + (qz0Var.m() - qz0Var.g(view)));
-        }
-        return iMax;
-    }
-
-    public static int s(yw3 yw3Var, qz0 qz0Var, View view, View view2, mw3 mw3Var, boolean z) {
-        if (mw3Var.v() == 0 || yw3Var.b() == 0 || view == null || view2 == null) {
-            return 0;
-        }
-        if (!z) {
-            return yw3Var.b();
-        }
-        return (int) (((qz0Var.d(view2) - qz0Var.g(view)) / (Math.abs(mw3.I(view) - mw3.I(view2)) + 1)) * yw3Var.b());
-    }
-
-    public static final long t(ad3 ad3Var) {
-        return ji2.M(ad3Var.l() * ad3Var.p()) + (((long) ad3Var.k()) * ((long) ad3Var.p()));
-    }
-
-    public static final long u(long j2) {
-        long j3 = (j2 << 1) + 1;
-        mx0.n.getClass();
-        int i2 = nx0.a;
-        return j3;
-    }
-
-    public static int v(Bitmap bitmap) {
-        if (!bitmap.isRecycled()) {
-            try {
-                return bitmap.getAllocationByteCount();
-            } catch (NullPointerException unused) {
-                return bitmap.getRowBytes() * bitmap.getHeight();
-            }
-        }
-        StringBuilder sb = new StringBuilder("Cannot obtain size for recycled Bitmap: ");
-        sb.append(bitmap);
-        int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
-        Bitmap.Config config = bitmap.getConfig();
-        sb.append("[");
-        sb.append(width);
-        sb.append("x");
-        sb.append(height);
-        sb.append("] ");
-        sb.append(config);
-        throw new IllegalStateException(sb.toString());
-    }
-
-    public static int w(Bitmap.Config config) {
-        if (config == null) {
-            config = Bitmap.Config.ARGB_8888;
-        }
-        int i2 = c35.a[config.ordinal()];
-        int i3 = 1;
-        if (i2 != 1) {
-            i3 = 2;
-            if (i2 != 2 && i2 != 3) {
-                return i2 != 4 ? 4 : 8;
-            }
-        }
-        return i3;
-    }
-
-    public static final int x(Cursor cursor, String str) {
-        String strN0;
-        cursor.getClass();
-        int columnIndex = cursor.getColumnIndex(str);
-        if (columnIndex < 0) {
-            columnIndex = cursor.getColumnIndex("`" + str + '`');
-            if (columnIndex < 0) {
-                if (Build.VERSION.SDK_INT <= 25 && str.length() != 0) {
-                    String[] columnNames = cursor.getColumnNames();
-                    columnNames.getClass();
-                    String strConcat = ".".concat(str);
-                    String str2 = "." + str + '`';
-                    int length = columnNames.length;
-                    int i2 = 0;
-                    int i3 = 0;
-                    while (true) {
-                        if (i3 < length) {
-                            String str3 = columnNames[i3];
-                            int i4 = i2 + 1;
-                            if (str3.length() < str.length() + 2 || !(xm4.e0(str3, strConcat, false) || (str3.charAt(0) == '`' && xm4.e0(str3, str2, false)))) {
-                                i3++;
-                                i2 = i4;
-                            } else {
-                                columnIndex = i2;
-                            }
-                        } else {
-                            columnIndex = -1;
-                        }
-                    }
-                } else {
-                    columnIndex = -1;
-                }
-            }
-        }
-        if (columnIndex >= 0) {
-            return columnIndex;
-        }
-        try {
-            String[] columnNames2 = cursor.getColumnNames();
-            columnNames2.getClass();
-            strN0 = ti.n0(63, columnNames2);
-        } catch (Exception e2) {
-            Log.d("RoomCursorUtil", "Cannot collect column names for debug purposes", e2);
-            strN0 = "unknown";
-        }
-        tb4.h("column '", str, "' does not exist. Available columns: ", strN0);
+    public static int q(yw3 r0, qz0 r1, View r2, View r3, mw3 r4, boolean r5) {
+        if (r4.v() != 0) goto L5;
+        return 0;
+    L5:
+        if (r0.b() == 0) goto L16;
+        if (r2 == null) goto L17;
+        if (r3 == null) goto L18;
+        if (r5 == false) goto L11;
+        int r6 = r1.d(r3) - r1.g(r2);
+        return Math.min(r1.n(), r6);
+    L11:
+        return Math.abs(mw3.I(r2) - mw3.I(r3)) + 1;
+    L18:
+        return 0;
+    L17:
+        return 0;
+    L16:
         return 0;
     }
 
-    /* JADX WARN: Code duplicated, block: B:15:0x0060  */
-    /* JADX WARN: Code duplicated, block: B:17:? A[RETURN, SYNTHETIC] */
-    public static int y(byte[] bArr) {
-        int i2;
-        byte b2;
-        int i3;
-        int i4;
-        byte b3;
-        boolean z = false;
-        byte b4 = bArr[0];
-        if (b4 != -2) {
-            if (b4 == -1) {
-                i4 = ((bArr[7] & 3) << 12) | ((bArr[6] & 255) << 4);
-                b3 = bArr[9];
-            } else if (b4 != 31) {
-                i2 = ((bArr[5] & 3) << 12) | ((bArr[6] & 255) << 4);
-                b2 = bArr[7];
-            } else {
-                i4 = ((bArr[6] & 3) << 12) | ((bArr[7] & 255) << 4);
-                b3 = bArr[8];
-            }
-            i3 = (((b3 & 60) >> 2) | i4) + 1;
-            z = true;
-            if (z) {
-                return (i3 * 16) / 14;
-            }
-            return i3;
-        }
-        i2 = ((bArr[4] & 3) << 12) | ((bArr[7] & 255) << 4);
-        b2 = bArr[6];
-        i3 = (((b2 & 240) >> 4) | i2) + 1;
-        if (z) {
-            return (i3 * 16) / 14;
-        }
-        return i3;
+    public static int r(yw3 r3, qz0 r4, View r5, View r6, mw3 r7, boolean r8, boolean r9) {
+        if (r7.v() != 0) goto L5;
+    L17:
+        return 0;
+    L5:
+        if (r3.b() == 0) goto L17;
+        if (r5 == null) goto L17;
+        if (r6 == null) goto L17;
+        int r10 = Math.min(mw3.I(r5), mw3.I(r6));
+        int r1 = Math.max(mw3.I(r5), mw3.I(r6));
+        if (r9 == false) goto L12;
+        int r11 = Math.max(0, (r3.b() - r1) - 1);
+    L13:
+        if (r8 == true) goto L16;
+        return r11;
+    L16:
+        return Math.round((r11 * (Math.abs(r4.d(r6) - r4.g(r5)) / (Math.abs(mw3.I(r5) - mw3.I(r6)) + 1))) + (r4.m() - r4.g(r5)));
+    L12:
+        r11 = Math.max(0, r10);
+        goto L13
     }
 
-    public static int z(int i2) {
-        if (i2 == 2147385345 || i2 == -25230976 || i2 == 536864768 || i2 == -14745368) {
-            return 1;
-        }
-        if (i2 == 1683496997 || i2 == 622876772) {
-            return 2;
-        }
-        if (i2 == 1078008818 || i2 == -233094848) {
-            return 3;
-        }
-        return (i2 == 1908687592 || i2 == -398277519) ? 4 : 0;
+    public static int s(yw3 r0, qz0 r1, View r2, View r3, mw3 r4, boolean r5) {
+        if (r4.v() != 0) goto L5;
+        return 0;
+    L5:
+        if (r0.b() == 0) goto L16;
+        if (r2 == null) goto L17;
+        if (r3 == null) goto L18;
+        if (r5 == true) goto L13;
+        return r0.b();
+    L13:
+        return (int) (((r1.d(r3) - r1.g(r2)) / (Math.abs(mw3.I(r2) - mw3.I(r3)) + 1)) * r0.b());
+    L18:
+        return 0;
+    L17:
+        return 0;
+    L16:
+        return 0;
+    }
+
+    public static final long t(ad3 r4) {
+        return ji2.M(r4.l() * r4.p()) + (((long) r4.k()) * ((long) r4.p()));
+    }
+
+    public static final long u(long r3) {
+        long r4 = (r3 << 1) + 1;
+        mx0.n.getClass();
+        int r0 = nx0.a;
+        return r4;
+    }
+
+    public static int v(Bitmap r5) {
+        if (r5.isRecycled() == false) goto L10;
+        StringBuilder r1 = new StringBuilder("Cannot obtain size for recycled Bitmap: ");
+        r1.append(r5);
+        int r2 = r5.getWidth();
+        int r3 = r5.getHeight();
+        Bitmap.Config r6 = r5.getConfig();
+        r1.append("[");
+        r1.append(r2);
+        r1.append("x");
+        r1.append(r3);
+        r1.append("] ");
+        r1.append(r6);
+        throw new IllegalStateException(r1.toString());
+    L10:
+        return r5.getAllocationByteCount();
+    L6:
+        int r0 = r5.getHeight();
+        return r5.getRowBytes() * r0;
+    }
+
+    public static int w(Bitmap.Config r2) {
+        if (r2 != null) goto L4;
+        r2 = Bitmap.Config.ARGB_8888;
+    L4:
+        int r3 = c35.a[r2.ordinal()];
+        int r0 = 1;
+        if (r3 == 1) goto L15;
+        r0 = 2;
+        if (r3 == 2) goto L15;
+        if (r3 == 3) goto L15;
+        if (r3 == 4) goto L13;
+        return 4;
+    L13:
+        return 8;
+    L15:
+        return r0;
+    }
+
+    public static final int x(Cursor r12, String r13) {
+        r12.getClass();
+        int r0 = r12.getColumnIndex(r13);
+        if (r0 >= 0) goto L28;
+        r0 = r12.getColumnIndex("`" + r13 + '`');
+        if (r0 >= 0) goto L28;
+        if (Build.VERSION.SDK_INT <= 25) goto L12;
+    L27:
+        r0 = -1;
+        goto L28
+    L12:
+        if (r13.length() == 0) goto L27;
+        String[] r1 = r12.getColumnNames();
+        r1.getClass();
+        String r4 = ".".concat(r13);
+        String r3 = "." + r13 + '`';
+        int r5 = r1.length;
+        int r6 = 0;
+        int r7 = 0;
+    L15:
+        if (r7 >= r5) goto L27;
+        String r8 = r1[r7];
+        int r9 = r6 + 1;
+        if (r8.length() < (r13.length() + 2)) goto L26;
+        if (xm4.e0(r8, r4, false) == true) goto L25;
+        if (r8.charAt(0) != '`') goto L26;
+        if (xm4.e0(r8, r3, false) == false) goto L26;
+    L25:
+        r0 = r6;
+    L26:
+        r7 = r7 + 1;
+        r6 = r9;
+    L28:
+        if (r0 < 0) goto L36;
+        return r0;
+    L36:
+        String[] r14 = r12.getColumnNames();     // Catch: Exception -> L32
+        r14.getClass();     // Catch: Exception -> L32
+        String r15 = ti.n0(63, r14);     // Catch: Exception -> L32
+    L34:
+        tb4.h("column '", r13, "' does not exist. Available columns: ", r15);
+        return 0;
+    L32:
+        e = move-exception;
+        Log.d("RoomCursorUtil", "Cannot collect column names for debug purposes", e);
+        r15 = "unknown";
+        goto L34
+    }
+
+    public static int y(byte[] r7) {
+        boolean r0 = false;
+        byte r1 = r7[0];
+        if (r1 != (-2)) goto L5;
+        int r2 = ((r7[4] & 3) << 12) | ((r7[7] & 255) << 4);
+        byte r8 = r7[6];
+    L9:
+        int r9 = (((r8 & 240) >> 4) | r2) + 1;
+    L14:
+        if (r0 == true) goto L16;
+        return r9;
+    L16:
+        return (r9 * 16) / 14;
+    L5:
+        if (r1 != (-1)) goto L7;
+        int r3 = ((r7[7] & 3) << 12) | ((r7[6] & 255) << 4);
+        byte r10 = r7[9];
+    L11:
+        r9 = (((r10 & 60) >> 2) | r3) + 1;
+        r0 = true;
+        goto L14
+    L7:
+        if (r1 == 31) goto L10;
+        r2 = ((r7[5] & 3) << 12) | ((r7[6] & 255) << 4);
+        r8 = r7[7];
+        goto L9
+    L10:
+        r3 = ((r7[6] & 3) << 12) | ((r7[7] & 255) << 4);
+        r10 = r7[8];
+        goto L11
+    }
+
+    public static int z(int r1) {
+        if (r1 != 2147385345) goto L5;
+        return 1;
+    L5:
+        if (r1 != (-25230976)) goto L7;
+        return 1;
+    L7:
+        if (r1 != 536864768) goto L9;
+        return 1;
+    L9:
+        if (r1 != (-14745368)) goto L12;
+        return 1;
+    L12:
+        if (r1 != 1683496997) goto L14;
+        return 2;
+    L14:
+        if (r1 != 622876772) goto L17;
+        return 2;
+    L17:
+        if (r1 != 1078008818) goto L19;
+        return 3;
+    L19:
+        if (r1 != (-233094848)) goto L22;
+        return 3;
+    L22:
+        if (r1 != 1908687592) goto L24;
+        return 4;
+    L24:
+        if (r1 == (-398277519)) goto L36;
+        return 0;
+    L36:
+        return 4;
     }
 }

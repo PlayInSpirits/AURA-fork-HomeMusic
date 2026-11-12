@@ -15,6 +15,9 @@ public final class Indexes {
     private long lastModified;
     private List<Artist> shortcuts;
 
+    public Indexes() {
+    }
+
     public final List<Child> getChildren() {
         return this.children;
     }
@@ -35,23 +38,23 @@ public final class Indexes {
         return this.shortcuts;
     }
 
-    public final void setChildren(List<? extends Child> list) {
-        this.children = list;
+    public final void setChildren(List<? extends Child> r1) {
+        this.children = r1;
     }
 
-    public final void setIgnoredArticles(String str) {
-        this.ignoredArticles = str;
+    public final void setIgnoredArticles(String r1) {
+        this.ignoredArticles = r1;
     }
 
-    public final void setIndices(List<Index> list) {
-        this.indices = list;
+    public final void setIndices(List<Index> r1) {
+        this.indices = r1;
     }
 
-    public final void setLastModified(long j) {
-        this.lastModified = j;
+    public final void setLastModified(long r1) {
+        this.lastModified = r1;
     }
 
-    public final void setShortcuts(List<Artist> list) {
-        this.shortcuts = list;
+    public final void setShortcuts(List<Artist> r1) {
+        this.shortcuts = r1;
     }
 }

@@ -3,9 +3,9 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface jh {
-    void c(int i);
+    void c(int r1);
 
-    void f(int i);
+    void f(int r1);
 
-    void h(int i, float f);
+    void h(int r1, float r2);
 }

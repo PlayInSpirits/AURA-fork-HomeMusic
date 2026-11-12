@@ -1,7 +1,6 @@
 package defpackage;
 
 import android.view.ViewGroup;
-import java.io.IOException;
 import java.util.List;
 import kotlin.KotlinNothingValueException;
 
@@ -24,10 +23,10 @@ public final class o72 implements u70 {
     public final w03 y;
     public final f13 z;
 
-    public o72(c72 c72Var, wo0 wo0Var) {
-        this.n = c72Var;
-        this.p = wo0Var;
-        long[] jArr = v54.a;
+    public o72(c72 r1, wo0 r2) {
+        this.n = r1;
+        this.p = r2;
+        long[] r3 = v54.a;
         this.s = new w03();
         this.t = new w03();
         this.u = new j72(this);
@@ -38,106 +37,97 @@ public final class o72 implements u70 {
         this.z = new f13(new Object[16]);
     }
 
-    public static final void c(o72 o72Var, Object obj) {
-        c72 c72Var = o72Var.n;
-        o72Var.h();
-        c72 c72Var2 = (c72) o72Var.w.j(obj);
-        if (c72Var2 != null) {
-            if (o72Var.B <= 0) {
-                cz1.b("No pre-composed items to dispose");
-            }
-            int i = ((c13) c72Var.o()).n.i(c72Var2);
-            if (i < ((c13) c72Var.o()).n.p - o72Var.B) {
-                cz1.b("Item is not in pre-composed item range");
-            }
-            o72Var.A++;
-            o72Var.B--;
-            h72 h72Var = (h72) o72Var.s.g(c72Var2);
-            if (h72Var != null) {
-                e(h72Var);
-            }
-            int i2 = (((c13) c72Var.o()).n.p - o72Var.B) - o72Var.A;
-            o72Var.j(i, i2);
-            o72Var.g(i2);
-        }
-        if (o72Var.z.h(obj)) {
-            c72.W(c72Var, true, 6);
-        }
+    public static final void c(o72 r6, Object r7) {
+        c72 r0 = r6.n;
+        r6.h();
+        c72 r1 = (c72) r6.w.j(r7);
+        if (r1 == null) goto L17;
+        if (r6.B > 0) goto L8;
+        cz1.b("No pre-composed items to dispose");
+    L8:
+        int r3 = ((c13) r0.o()).n.i(r1);
+        if (r3 >= (((c13) r0.o()).n.p - r6.B)) goto L12;
+        cz1.b("Item is not in pre-composed item range");
+    L12:
+        r6.A++;
+        r6.B--;
+        h72 r2 = (h72) r6.s.g(r1);
+        if (r2 == null) goto L15;
+        e(r2);
+    L15:
+        int r4 = (((c13) r0.o()).n.p - r6.B) - r6.A;
+        r6.j(r3, r4);
+        r6.g(r4);
+    L17:
+        if (r6.z.h(r7) == false) goto L20;
+        c72.W(r0, true, 6);
+        return;
     }
 
-    public static void e(h72 h72Var) {
-        x03 x03Var;
-        ef3 ef3Var = h72Var.f;
-        if (ef3Var != null) {
-            ef3Var.h.set(gf3.o);
-            uy3 uy3Var = ef3Var.k;
-            if (uy3Var.d.h()) {
-                x03Var = uy3Var.d;
-                x03 x03Var2 = w54.a;
-                uy3Var.d = new x03();
-                uy3Var.c.g();
-            } else {
-                x03Var = null;
-            }
-            uy3Var.b();
-            z80 z80Var = ef3Var.a;
-            z80Var.D = null;
-            if (x03Var != null) {
-                z80Var.H.k = x03Var;
-                z80Var.J = 2;
-            }
-            h72Var.f = null;
-            z80 z80Var2 = h72Var.c;
-            if (z80Var2 != null) {
-                z80Var2.m();
-            }
-            h72Var.c = null;
-        }
+    public static void e(h72 r5) {
+        ef3 r0 = r5.f;
+        if (r0 == null) goto L16;
+        r0.h.set(gf3.o);
+        uy3 r1 = r0.k;
+        if (r1.d.h() == false) goto L7;
+        x03 r2 = r1.d;
+        x03 r4 = w54.a;
+        r1.d = new x03();
+        r1.c.g();
+    L8:
+        r1.b();
+        z80 r3 = r0.a;
+        r3.D = null;
+        if (r2 == null) goto L11;
+        r3.H.k = r2;
+        r3.J = 2;
+    L11:
+        r5.f = null;
+        z80 r6 = r5.c;
+        if (r6 == null) goto L14;
+        r6.m();
+    L14:
+        r5.c = null;
+        return;
+    L7:
+        r2 = null;
+        goto L8
     }
 
-    /* JADX WARN: Code duplicated, block: B:16:0x004d A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:17:0x004f A[LOOP:0: B:5:0x0014->B:17:0x004f, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:21:0x0052 A[EDGE_INSN: B:21:0x0052->B:18:0x0052 BREAK  A[LOOP:0: B:5:0x0014->B:17:0x004f], SYNTHETIC] */
     @Override // defpackage.u70
     public final void a() {
-        z80 z80Var;
-        c72 c72Var = this.n;
-        c72Var.C = true;
-        w03 w03Var = this.s;
-        Object[] objArr = w03Var.c;
-        long[] jArr = w03Var.a;
-        int length = jArr.length - 2;
-        if (length >= 0) {
-            int i = 0;
-            while (true) {
-                long j = jArr[i];
-                if ((((~j) << 7) & j & (-9187201950435737472L)) == -9187201950435737472L) {
-                    if (i != length) {
-                        break;
-                        break;
-                    }
-                    i++;
-                } else {
-                    int i2 = 8 - ((~(i - length)) >>> 31);
-                    for (int i3 = 0; i3 < i2; i3++) {
-                        if ((255 & j) < 128 && (z80Var = ((h72) objArr[(i << 3) + i3]).c) != null) {
-                            z80Var.m();
-                        }
-                        j >>= 8;
-                    }
-                    if (i2 != 8) {
-                        break;
-                    } else if (i != length) {
-                        break;
-                    } else {
-                        i++;
-                    }
-                }
-            }
-        }
-        c72Var.Q();
-        c72Var.C = false;
-        w03Var.a();
+        c72 r2 = this.n;
+        r2.C = true;
+        w03 r1 = this.s;
+        Object[] r3 = r1.c;
+        long[] r4 = r1.a;
+        int r5 = r4.length - 2;
+        if (r5 < 0) goto L18;
+        int r7 = 0;
+    L5:
+        long r8 = r4[r7];
+        if (((((~r8) << 7) & r8) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L16;
+        int r10 = 8 - ((~(r7 - r5)) >>> 31);
+        int r12 = 0;
+    L8:
+        if (r12 >= r10) goto L15;
+        if ((255 & r8) >= 128) goto L14;
+        z80 r13 = ((h72) r3[(r7 << 3) + r12]).c;
+        if (r13 == null) goto L14;
+        r13.m();
+    L14:
+        r8 = r8 >> 8;
+        r12 = r12 + 1;
+        goto L8
+    L15:
+        if (r10 != 8) goto L18;
+    L16:
+        if (r7 == r5) goto L18;
+        r7 = r7 + 1;
+    L18:
+        r2.Q();
+        r2.C = false;
+        r1.a();
         this.t.a();
         this.B = 0;
         this.A = 0;
@@ -150,275 +140,304 @@ public final class o72 implements u70 {
         i(true);
     }
 
-    public final void d(h72 h72Var, boolean z) {
-        ef3 ef3Var = h72Var.f;
-        if (ef3Var != null) {
-            ch4 ch4VarT = ya4.t();
-            if1 if1VarE = ch4VarT != null ? ch4VarT.e() : null;
-            ch4 ch4VarZ = ya4.z(ch4VarT);
-            try {
-                c72 c72Var = this.n;
-                c72Var.C = true;
-                if (z) {
-                    while (!ef3Var.c()) {
-                        try {
-                            ef3Var.e(new er1(12));
-                        } catch (Throwable th) {
-                            throw th;
-                        }
-                    }
-                }
-                ef3Var.a();
-                h72Var.f = null;
-                c72Var.C = false;
-                ya4.H(ch4VarT, ch4VarZ, if1VarE);
-            } catch (Throwable th2) {
-                ya4.H(ch4VarT, ch4VarZ, if1VarE);
-                throw th2;
-            }
-        }
+    public final void d(h72 r7, boolean r8) {
+        ef3 r0 = r7.f;
+        if (r0 == null) goto L25;
+        ch4 r1 = ya4.t();
+        if (r1 == null) goto L7;
+        if1 r3 = r1.e();
+    L8:
+        ch4 r4 = ya4.z(r1);
+        c72 r6 = this.n;     // Catch: Throwable -> L20
+        r6.C = true;     // Catch: Throwable -> L20
+        if (r8 == true) goto L27;
+    L16:
+        r0.a();     // Catch: Throwable -> L14
+        r7.f = null;     // Catch: Throwable -> L20
+        r6.C = false;     // Catch: Throwable -> L20
+        ya4.H(r1, r4, r3);
+        return;
+    L14:
+        th = move-exception;
+        throw th;     // Catch: Throwable -> L20
+    L27:
+        if (r0.c() == true) goto L16;
+        r0.e(new er1(12));     // Catch: Throwable -> L14
+    L20:
+        th = move-exception;
+        ya4.H(r1, r4, r3);
+        throw th;
+    L7:
+        r3 = null;
+        goto L8
     }
 
-    public final jn4 f(Object obj) {
-        return !this.n.G() ? new m72() : new n72(this, obj);
+    public final jn4 f(Object r2) {
+        if (this.n.G() == true) goto L7;
+        return new m72();
+    L7:
+        return new n72(this, r2);
     }
 
-    public final void g(int i) {
-        boolean z;
-        boolean z2 = false;
+    public final void g(int r19) {
+        boolean r2 = false;
         this.A = 0;
-        List listO = this.n.o();
-        c13 c13Var = (c13) listO;
-        int i2 = (c13Var.n.p - this.B) - 1;
-        if (i <= i2) {
-            this.x.clear();
-            if (i <= i2) {
-                int i3 = i;
-                while (true) {
-                    Object objG = this.s.g((c72) c13Var.get(i3));
-                    objG.getClass();
-                    ((r03) this.x.o).a(((h72) objG).a);
-                    if (i3 == i2) {
-                        break;
-                    } else {
-                        i3++;
-                    }
-                }
-            }
-            wo0 wo0Var = this.p;
-            mn4 mn4Var = this.x;
-            p03 p03Var = (p03) wo0Var.o;
-            p03Var.a();
-            r03 r03Var = (r03) mn4Var.o;
-            Object[] objArr = r03Var.b;
-            long[] jArr = r03Var.c;
-            int i4 = r03Var.e;
-            while (true) {
-                if (i4 == Integer.MAX_VALUE) {
-                    break;
-                }
-                int i5 = (int) ((jArr[i4] >> 31) & 2147483647L);
-                Object obj = objArr[i4];
-                ((c82) wo0Var.n).b(obj);
-                int iD = p03Var.d(null);
-                int i6 = iD >= 0 ? p03Var.c[iD] : 0;
-                if (i6 == 7) {
-                    mn4Var.remove(obj);
-                } else {
-                    p03Var.g(i6 + 1, null);
-                }
-                i4 = i5;
-            }
-            ch4 ch4VarT = ya4.t();
-            if1 if1VarE = ch4VarT != null ? ch4VarT.e() : null;
-            ch4 ch4VarZ = ya4.z(ch4VarT);
-            z = false;
-            while (i2 >= i) {
-                try {
-                    c72 c72Var = (c72) ((c13) listO).get(i2);
-                    Object objG2 = this.s.g(c72Var);
-                    objG2.getClass();
-                    h72 h72Var = (h72) objG2;
-                    Object obj2 = h72Var.a;
-                    if (((r03) this.x.o).c(obj2)) {
-                        this.A++;
-                        if (((Boolean) h72Var.g.getValue()).booleanValue()) {
-                            f72 f72Var = c72Var.R;
-                            ti2 ti2Var = f72Var.p;
-                            a72 a72Var = a72.p;
-                            ti2Var.y = a72Var;
-                            if2 if2Var = f72Var.q;
-                            if (if2Var != null) {
-                                if2Var.w = a72Var;
-                            }
-                            l(h72Var, false);
-                            if (h72Var.h) {
-                                z = true;
-                            }
-                        }
-                    } else {
-                        c72 c72Var2 = this.n;
-                        c72Var2.C = true;
-                        this.s.j(c72Var);
-                        z80 z80Var = h72Var.c;
-                        if (z80Var != null) {
-                            z80Var.m();
-                        }
-                        this.n.R(i2, 1);
-                        c72Var2.C = false;
-                    }
-                    this.t.j(obj2);
-                    i2--;
-                } catch (Throwable th) {
-                    ya4.H(ch4VarT, ch4VarZ, if1VarE);
-                    throw th;
-                }
-            }
-            ya4.H(ch4VarT, ch4VarZ, if1VarE);
-        } else {
-            z = false;
-        }
-        if (z) {
-            synchronized (jh4.c) {
-                x03 x03Var = jh4.j.h;
-                if (x03Var != null && x03Var.h()) {
-                    z2 = true;
-                }
-            }
-            if (z2) {
-                jh4.a();
-            }
-        }
+        List r3 = this.n.o();
+        c13 r4 = (c13) r3;
+        int r5 = (r4.n.p - this.B) - 1;
+        if (r19 > r5) goto L48;
+        this.x.clear();
+        if (r19 > r5) goto L10;
+        int r7 = r19;
+    L7:
+        Object r8 = this.s.g((c72) r4.get(r7));
+        r8.getClass();
+        ((r03) this.x.o).a(((h72) r8).a);
+        if (r7 == r5) goto L10;
+        r7 = r7 + 1;
+    L10:
+        wo0 r6 = this.p;
+        mn4 r9 = this.x;
+        p03 r10 = (p03) r6.o;
+        r10.a();
+        r03 r11 = (r03) r9.o;
+        Object[] r12 = r11.b;
+        long[] r13 = r11.c;
+        int r14 = r11.e;
+    L11:
+        if1 r15 = null;
+        if (r14 == Integer.MAX_VALUE) goto L22;
+        int r16 = (int) ((r13[r14] >> 31) & 2147483647L);
+        Object r17 = r12[r14];
+        ((c82) r6.n).b(r17);
+        int r18 = r10.d(null);
+        if (r18 < 0) goto L16;
+        int r110 = r10.c[r18];
+    L18:
+        if (r110 != 7) goto L20;
+        r9.remove(r17);
+    L21:
+        r14 = r16;
+        goto L11
+    L20:
+        r10.g(r110 + 1, null);
+        goto L21
+    L16:
+        r110 = 0;
+        goto L18
+    L22:
+        ch4 r20 = ya4.t();
+        if (r20 == null) goto L25;
+        r15 = r20.e();
+    L25:
+        ch4 r21 = ya4.z(r20);
+        boolean r22 = false;
+    L26:
+        if (r5 < r19) goto L47;
+        c72 r23 = (c72) ((c13) r3).get(r5);     // Catch: Throwable -> L37
+        Object r111 = this.s.g(r23);     // Catch: Throwable -> L37
+        r111.getClass();     // Catch: Throwable -> L37
+        h72 r112 = (h72) r111;     // Catch: Throwable -> L37
+        Object r113 = r112.a;     // Catch: Throwable -> L37
+        if (((r03) this.x.o).c(r113) == false) goto L39;
+        this.A++;     // Catch: Throwable -> L37
+        if (((Boolean) r112.g.getValue()).booleanValue() == false) goto L43;
+        f72 r24 = r23.R;     // Catch: Throwable -> L37
+        ti2 r114 = r24.p;     // Catch: Throwable -> L37
+        a72 r115 = a72.p;     // Catch: Throwable -> L37
+        r114.y = r115;     // Catch: Throwable -> L37
+        if2 r25 = r24.q;     // Catch: Throwable -> L37
+        if (r25 == null) goto L34;
+        r25.w = r115;     // Catch: Throwable -> L37
+    L34:
+        l(r112, false);     // Catch: Throwable -> L37
+        if (r112.h == false) goto L43;
+        r22 = true;
+    L43:
+        this.t.j(r113);     // Catch: Throwable -> L37
+        r5 = r5 - 1;
+        goto L26
+    L39:
+        c72 r116 = this.n;     // Catch: Throwable -> L37
+        r116.C = true;     // Catch: Throwable -> L37
+        this.s.j(r23);     // Catch: Throwable -> L37
+        z80 r26 = r112.c;     // Catch: Throwable -> L37
+        if (r26 == null) goto L42;
+        r26.m();     // Catch: Throwable -> L37
+    L42:
+        this.n.R(r5, 1);     // Catch: Throwable -> L37
+        r116.C = false;     // Catch: Throwable -> L37
+    L37:
+        th = move-exception;
+        ya4.H(r20, r21, r15);
+        throw th;
+    L47:
+        ya4.H(r20, r21, r15);
+    L49:
+        if (r22 == false) goto L63;
+        Object r1 = jh4.c;
+        monitor-enter(r1);
+        x03 r27 = jh4.j.h;     // Catch: Throwable -> L60
+        if (r27 == null) goto L57;
+        if (r27.h() != true) goto L57;
+        r2 = true;
+    L57:
+        monitor-exit(r1);
+        if (r2 == false) goto L63;
+        jh4.a();
+    L60:
+        th = move-exception;
+        throw th;
+    L63:
         h();
+        return;
+    L48:
+        r22 = false;
+        goto L49
     }
 
     public final void h() {
-        int i = ((c13) this.n.o()).n.p;
-        int i2 = this.s.e;
-        if (i2 != i) {
-            cz1.a("Inconsistency between the count of nodes tracked by the state (" + i2 + ") and the children count on the SubcomposeLayout (" + i + "). Are you trying to use the state of the disposed SubcomposeLayout?");
-        }
-        int i3 = this.A;
-        int i4 = this.B;
-        if ((i - i3) - i4 < 0) {
-            StringBuilder sbT = b11.t("Incorrect state. Total children ", ". Reusable children ", i, i3, ". Precomposed children ");
-            sbT.append(i4);
-            cz1.a(sbT.toString());
-        }
-        int i5 = this.w.e;
-        int i6 = this.B;
-        if (i5 == i6) {
-            return;
-        }
-        cz1.a("Incorrect state. Precomposed children " + i6 + ". Map size " + i5);
+        int r0 = ((c13) this.n.o()).n.p;
+        int r1 = this.s.e;
+        if (r1 == r0) goto L6;
+        cz1.a("Inconsistency between the count of nodes tracked by the state (" + r1 + ") and the children count on the SubcomposeLayout (" + r0 + "). Are you trying to use the state of the disposed SubcomposeLayout?");
+    L6:
+        int r2 = this.A;
+        int r3 = this.B;
+        if (((r0 - r2) - r3) >= 0) goto L10;
+        StringBuilder r4 = b11.t("Incorrect state. Total children ", ". Reusable children ", r0, r2, ". Precomposed children ");
+        r4.append(r3);
+        cz1.a(r4.toString());
+    L10:
+        int r5 = this.w.e;
+        int r6 = this.B;
+        if (r5 != r6) goto L13;
+        return;
+    L13:
+        cz1.a("Incorrect state. Precomposed children " + r6 + ". Map size " + r5);
     }
 
-    public final void i(boolean z) {
+    public final void i(boolean r11) {
+        int r0 = 0;
         this.B = 0;
         this.w.a();
-        List listO = this.n.o();
-        int i = ((c13) listO).n.p;
-        if (this.A != i) {
-            this.A = i;
-            ch4 ch4VarT = ya4.t();
-            if1 if1VarE = ch4VarT != null ? ch4VarT.e() : null;
-            ch4 ch4VarZ = ya4.z(ch4VarT);
-            for (int i2 = 0; i2 < i; i2++) {
-                try {
-                    c72 c72Var = (c72) ((c13) listO).get(i2);
-                    h72 h72Var = (h72) this.s.g(c72Var);
-                    if (h72Var != null && ((Boolean) h72Var.g.getValue()).booleanValue()) {
-                        f72 f72Var = c72Var.R;
-                        ti2 ti2Var = f72Var.p;
-                        a72 a72Var = a72.p;
-                        ti2Var.y = a72Var;
-                        if2 if2Var = f72Var.q;
-                        if (if2Var != null) {
-                            if2Var.w = a72Var;
-                        }
-                        l(h72Var, z);
-                        h72Var.a = gn4.a;
-                    }
-                } catch (Throwable th) {
-                    ya4.H(ch4VarT, ch4VarZ, if1VarE);
-                    throw th;
-                }
-            }
-            ya4.H(ch4VarT, ch4VarZ, if1VarE);
-            this.t.a();
-        }
+        List r1 = this.n.o();
+        int r2 = ((c13) r1).n.p;
+        if (this.A == r2) goto L25;
+        this.A = r2;
+        ch4 r3 = ya4.t();
+        if (r3 == null) goto L7;
+        if1 r4 = r3.e();
+    L8:
+        ch4 r5 = ya4.z(r3);
+    L9:
+        if (r0 >= r2) goto L24;
+        c72 r6 = (c72) ((c13) r1).get(r0);     // Catch: Throwable -> L19
+        h72 r7 = (h72) this.s.g(r6);     // Catch: Throwable -> L19
+        if (r7 == null) goto L21;
+        if (((Boolean) r7.g.getValue()).booleanValue() == false) goto L21;
+        f72 r8 = r6.R;     // Catch: Throwable -> L19
+        ti2 r9 = r8.p;     // Catch: Throwable -> L19
+        a72 r10 = a72.p;     // Catch: Throwable -> L19
+        r9.y = r10;     // Catch: Throwable -> L19
+        if2 r12 = r8.q;     // Catch: Throwable -> L19
+        if (r12 == null) goto L17;
+        r12.w = r10;     // Catch: Throwable -> L19
+    L17:
+        l(r7, r11);     // Catch: Throwable -> L19
+        r7.a = gn4.a;     // Catch: Throwable -> L19
+    L21:
+        r0 = r0 + 1;
+    L19:
+        th = move-exception;
+        ya4.H(r3, r5, r4);
+        throw th;
+    L24:
+        ya4.H(r3, r5, r4);
+        this.t.a();
+        goto L25
+    L7:
+        r4 = null;
+    L25:
         h();
     }
 
-    public final void j(int i, int i2) throws IOException {
-        c72 c72Var = this.n;
-        c72Var.C = true;
-        c72Var.K(i, i2, 1);
-        c72Var.C = false;
+    public final void j(int r2, int r3) {
+        c72 r1 = this.n;
+        r1.C = true;
+        r1.K(r2, r3, 1);
+        r1.C = false;
     }
 
-    public final void k(Object obj, wf1 wf1Var, boolean z) throws IOException {
-        c72 c72Var = this.n;
-        if (c72Var.G()) {
-            h();
-            if (this.t.c(obj)) {
-                return;
-            }
-            this.y.j(obj);
-            w03 w03Var = this.w;
-            Object objG = w03Var.g(obj);
-            if (objG == null) {
-                objG = n(obj);
-                if (objG != null) {
-                    j(((c13) c72Var.o()).n.i(objG), ((c13) c72Var.o()).n.p);
-                    this.B++;
-                } else {
-                    int i = ((c13) c72Var.o()).n.p;
-                    c72 c72Var2 = new c72(2);
-                    c72Var.C = true;
-                    c72Var.A(i, c72Var2);
-                    c72Var.C = false;
-                    this.B++;
-                    objG = c72Var2;
-                }
-                w03Var.l(obj, objG);
-            }
-            m((c72) objG, obj, z, wf1Var);
-        }
+    public final void k(Object r7, wf1 r8, boolean r9) {
+        c72 r0 = this.n;
+        if (r0.G() == false) goto L17;
+        h();
+        if (this.t.c(r7) == true) goto L16;
+        this.y.j(r7);
+        w03 r1 = this.w;
+        Object r2 = r1.g(r7);
+        if (r2 != null) goto L14;
+        r2 = n(r7);
+        if (r2 == null) goto L12;
+        j(((c13) r0.o()).n.i(r2), ((c13) r0.o()).n.p);
+        this.B++;
+    L13:
+        r1.l(r7, r2);
+        goto L14
+    L12:
+        int r3 = ((c13) r0.o()).n.p;
+        c72 r4 = new c72(2);
+        r0.C = true;
+        r0.A(r3, r4);
+        r0.C = false;
+        this.B++;
+        r2 = r4;
+    L14:
+        m((c72) r2, r7, r9, r8);
+        return;
+    L16:
+        return;
     }
 
-    public final void l(h72 h72Var, boolean z) {
-        z80 z80Var;
-        if (z || !h72Var.h) {
-            h72Var.g = uc5.B(Boolean.FALSE);
-        } else {
-            h72Var.g.setValue(Boolean.FALSE);
-        }
-        if (h72Var.f != null) {
-            e(h72Var);
-            return;
-        }
-        if (z) {
-            z80 z80Var2 = h72Var.c;
-            if (z80Var2 != null) {
-                z80Var2.l();
-                return;
-            }
-            return;
-        }
-        lb3 outOfFrameExecutor = ((ra) h12.L(this.n)).getOutOfFrameExecutor();
-        if (outOfFrameExecutor != null) {
-            ((ra) outOfFrameExecutor).C(new wc(11, h72Var));
-        } else {
-            if (h72Var.h || (z80Var = h72Var.c) == null) {
-                return;
-            }
-            z80Var.l();
-        }
+    public final void l(h72 r3, boolean r4) {
+        if (r4 == false) goto L4;
+    L6:
+        r3.g = uc5.B(Boolean.FALSE);
+    L8:
+        if (r3.f == null) goto L11;
+        e(r3);
+        return;
+    L11:
+        if (r4 == false) goto L16;
+        z80 r2 = r3.c;
+        if (r2 == null) goto L26;
+        r2.l();
+        return;
+    L26:
+        return;
+    L16:
+        lb3 r5 = ((ra) h12.L(this.n)).getOutOfFrameExecutor();
+        if (r5 == null) goto L21;
+        ra r6 = (ra) r5;
+        r6.C(new wc(11, r3));
+        return;
+    L21:
+        if (r3.h == true) goto L27;
+        z80 r7 = r3.c;
+        if (r7 == null) goto L28;
+        r7.l();
+        return;
+    L28:
+        return;
+    L27:
+        return;
+    L4:
+        if (r3.h == false) goto L6;
+        r3.g.setValue(Boolean.FALSE);
+        goto L8
     }
 
-    /* JADX WARN: Code duplicated, block: B:56:0x0092 A[Catch: all -> 0x008d, TryCatch #0 {all -> 0x008d, blocks: (B:44:0x0076, B:47:0x0082, B:59:0x00ad, B:61:0x00bf, B:64:0x00d4, B:66:0x00d8, B:78:0x011c, B:67:0x00e5, B:68:0x00f0, B:70:0x00f4, B:72:0x0109, B:76:0x0113, B:75:0x010e, B:77:0x0119, B:62:0x00c2, B:56:0x0092, B:58:0x00a0, B:81:0x0126, B:82:0x0130), top: B:85:0x0076 }] */
-    /* JADX WARN: Code duplicated, block: B:58:0x00a0 A[Catch: all -> 0x008d, TryCatch #0 {all -> 0x008d, blocks: (B:44:0x0076, B:47:0x0082, B:59:0x00ad, B:61:0x00bf, B:64:0x00d4, B:66:0x00d8, B:78:0x011c, B:67:0x00e5, B:68:0x00f0, B:70:0x00f4, B:72:0x0109, B:76:0x0113, B:75:0x010e, B:77:0x0119, B:62:0x00c2, B:56:0x0092, B:58:0x00a0, B:81:0x0126, B:82:0x0130), top: B:85:0x0076 }] */
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
     java.lang.UnsupportedOperationException: ArgType.getObject(), call class: class jadx.core.dex.instructions.args.ArgType$UnknownArg
     	at jadx.core.dex.instructions.args.ArgType.getObject(ArgType.java:596)
@@ -429,178 +448,203 @@ public final class o72 implements u70 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public final void m(c72 c72Var, Object obj, boolean z, wf1 wf1Var) {
-        boolean z2;
-        z80 z80Var;
-        w03 w03Var = this.s;
-        Object objG = w03Var.g(c72Var);
-        Object obj2 = objG;
-        if (objG == null) {
-            r70 r70Var = ji2.a;
-            h72 h72Var = new h72();
-            h72Var.a = obj;
-            h72Var.b = r70Var;
-            h72Var.c = null;
-            h72Var.g = uc5.B(Boolean.TRUE);
-            w03Var.l(c72Var, h72Var);
-            obj2 = h72Var;
-        }
-        h72 h72Var2 = (h72) obj2;
-        boolean z3 = h72Var2.b != wf1Var;
-        if (h72Var2.f != null) {
-            if (z3) {
-                e(h72Var2);
-            } else if (z) {
-                return;
-            } else {
-                d(h72Var2, true);
-            }
-        }
-        z80 z80Var2 = h72Var2.c;
-        if (z80Var2 != null) {
-            synchronized (z80Var2.q) {
-                z2 = z80Var2.A.e > 0;
-            }
-        } else {
-            z2 = true;
-        }
-        if (z3 || z2 || h72Var2.d) {
-            h72Var2.b = wf1Var;
-            if (h72Var2.f != null) {
-                cz1.a("new subcompose call while paused composition is still active");
-            }
-            ch4 ch4VarT = ya4.t();
-            if1 if1VarE = ch4VarT != null ? ch4VarT.e() : null;
-            ch4 ch4VarZ = ya4.z(ch4VarT);
-            try {
-                c72 c72Var2 = this.n;
-                c72Var2.C = true;
-                z80 z80Var3 = h72Var2.c;
-                u80 u80Var = this.o;
-                if (u80Var == null) {
-                    cz1.c("parent composition reference not set");
-                    throw new KotlinNothingValueException();
-                }
-                if (z80Var3 == null) {
-                    if (z) {
-                        ViewGroup.LayoutParams layoutParams = zd5.a;
-                        z80Var = new z80(u80Var, new d15(c72Var));
-                    } else {
-                        ViewGroup.LayoutParams layoutParams2 = zd5.a;
-                        z80Var = new z80(u80Var, new d15(c72Var));
-                    }
-                    z80Var3 = z80Var;
-                } else {
-                    if (z80Var3.J == 3) {
-                        if (z) {
-                            ViewGroup.LayoutParams layoutParams3 = zd5.a;
-                            z80Var = new z80(u80Var, new d15(c72Var));
-                        } else {
-                            ViewGroup.LayoutParams layoutParams4 = zd5.a;
-                            z80Var = new z80(u80Var, new d15(c72Var));
-                        }
-                        z80Var3 = z80Var;
-                    }
-                }
-                h72Var2.c = z80Var3;
-                wf1 r70Var2 = h72Var2.b;
-                if (((ra) h12.L(this.n)).getOutOfFrameExecutor() != null) {
-                    h72Var2.h = false;
-                } else {
-                    h72Var2.h = true;
-                    r70Var2 = new r70(1524156494, true, new ib(2, h72Var2, r70Var2));
-                }
-                if (z) {
-                    if (h72Var2.e) {
-                        z80Var3.i();
-                        z80Var3.q();
-                        h72Var2.f = z80Var3.k(true, r70Var2);
-                    } else {
-                        h72Var2.f = z80Var3.k(z80Var3.i(), r70Var2);
-                    }
-                } else if (h72Var2.e) {
-                    z80Var3.i();
-                    z80Var3.q();
-                    rg1 rg1Var = z80Var3.I;
-                    rg1Var.z = 0;
-                    rg1Var.y = true;
-                    z80Var3.n.a(z80Var3, r70Var2);
-                    if (rg1Var.F || rg1Var.z != 0) {
-                        oo3.a("Cannot disable reuse from root if it was caused by other groups");
-                    }
-                    rg1Var.z = -1;
-                    rg1Var.y = false;
-                } else {
-                    z80Var3.A(r70Var2);
-                }
-                h72Var2.e = false;
-                c72Var2.C = false;
-                ya4.H(ch4VarT, ch4VarZ, if1VarE);
-                h72Var2.d = false;
-            } catch (Throwable th) {
-                ya4.H(ch4VarT, ch4VarZ, if1VarE);
-                throw th;
-            }
-        }
+    public final void m(c72 r10, Object r11, boolean r12, wf1 r13) {
+        w03 r0 = this.s;
+        Object r1 = r0.g(r10);
+        if1 r2 = null;
+        Object r3 = r1;
+        if (r1 != null) goto L5;
+        r70 r4 = ji2.a;
+        h72 r5 = new h72();
+        r5.a = r11;
+        r5.b = r4;
+        r5.c = null;
+        r5.g = uc5.B(Boolean.TRUE);
+        r0.l(r10, r5);
+        r3 = r5;
+    L5:
+        h72 r6 = (h72) r3;
+        if (r6.b == r13) goto L8;
+        boolean r14 = true;
+    L10:
+        if (r6.f == null) goto L16;
+        if (r14 == false) goto L13;
+        e(r6);
+        goto L16
+    L13:
+        if (r12 == true) goto L88;
+        d(r6, true);
+        goto L16
+    L88:
+        return;
+    L16:
+        z80 r7 = r6.c;
+        if (r7 == null) goto L29;
+        Object r8 = r7.q;
+        monitor-enter(r8);
+        if (r7.A.e <= 0) goto L23;
+        boolean r9 = true;
+    L24:
+        monitor-exit(r8);
+    L30:
+        if (r14 == true) goto L36;
+        if (r9 == true) goto L36;
+        if (r6.d == true) goto L36;
+        return;
+    L36:
+        r6.b = r13;
+        if (r6.f == null) goto L40;
+        cz1.a("new subcompose call while paused composition is still active");
+    L40:
+        ch4 r15 = ya4.t();
+        if (r15 == null) goto L43;
+        r2 = r15.e();
+    L43:
+        ch4 r16 = ya4.z(r15);
+        c72 r17 = this.n;     // Catch: Throwable -> L53
+        r17.C = true;     // Catch: Throwable -> L53
+        z80 r18 = r6.c;     // Catch: Throwable -> L53
+        u80 r19 = this.o;     // Catch: Throwable -> L53
+        if (r19 == null) goto L81;
+        if (r18 != null) goto L48;
+    L55:
+        if (r12 == false) goto L58;
+        ViewGroup.LayoutParams r20 = zd5.a;     // Catch: Throwable -> L53
+        z80 r110 = new z80(r19, new d15(r10));     // Catch: Throwable -> L53
+    L57:
+        r18 = r110;
+    L59:
+        r6.c = r18;     // Catch: Throwable -> L53
+        wf1 r111 = r6.b;     // Catch: Throwable -> L53
+        if (((ra) h12.L(this.n)).getOutOfFrameExecutor() == null) goto L62;
+        r6.h = false;     // Catch: Throwable -> L53
+    L63:
+        if (r12 == false) goto L69;
+        if (r6.e == false) goto L67;
+        r18.i();     // Catch: Throwable -> L53
+        r18.q();     // Catch: Throwable -> L53
+        r6.f = r18.k(true, r111);     // Catch: Throwable -> L53
+    L78:
+        r6.e = false;     // Catch: Throwable -> L53
+        r17.C = false;     // Catch: Throwable -> L53
+        ya4.H(r15, r16, r2);
+        r6.d = false;
+        return;
+    L67:
+        r6.f = r18.k(r18.i(), r111);     // Catch: Throwable -> L53
+        goto L78
+    L69:
+        if (r6.e == false) goto L77;
+        r18.i();     // Catch: Throwable -> L53
+        r18.q();     // Catch: Throwable -> L53
+        rg1 r21 = r18.I;     // Catch: Throwable -> L53
+        r21.z = 0;     // Catch: Throwable -> L53
+        r21.y = true;     // Catch: Throwable -> L53
+        r18.n.a(r18, r111);     // Catch: Throwable -> L53
+        if (r21.F == false) goto L73;
+    L75:
+        oo3.a("Cannot disable reuse from root if it was caused by other groups");     // Catch: Throwable -> L53
+    L76:
+        r21.z = -1;     // Catch: Throwable -> L53
+        r21.y = false;     // Catch: Throwable -> L53
+        goto L78
+    L73:
+        if (r21.z != 0) goto L75;
+    L77:
+        r18.A(r111);     // Catch: Throwable -> L53
+        goto L78
+    L62:
+        r6.h = true;     // Catch: Throwable -> L53
+        r111 = new r70(1524156494, true, new ib(2, r6, r111));     // Catch: Throwable -> L53
+        goto L63
+    L58:
+        ViewGroup.LayoutParams r22 = zd5.a;     // Catch: Throwable -> L53
+        r110 = new z80(r19, new d15(r10));     // Catch: Throwable -> L53
+        goto L57
+    L48:
+        if (r18.J != 3) goto L50;
+        boolean r23 = true;
+    L51:
+        if (r23 == false) goto L59;
+    L50:
+        r23 = false;
+        goto L51
+    L81:
+        cz1.c("parent composition reference not set");     // Catch: Throwable -> L53
+        throw new KotlinNothingValueException();     // Catch: Throwable -> L53
+    L53:
+        th = move-exception;
+        ya4.H(r15, r16, r2);
+        throw th;
+    L23:
+        r9 = false;
+    L26:
+        th = move-exception;
+        throw th;
+    L29:
+        r9 = true;
+        goto L30
+    L8:
+        r14 = false;
+        goto L10
     }
 
-    public final c72 n(Object obj) throws IOException {
-        w03 w03Var;
-        int i;
-        if (this.A == 0) {
-            return null;
-        }
-        c13 c13Var = (c13) this.n.o();
-        int i2 = c13Var.n.p - this.B;
-        int i3 = i2 - this.A;
-        int i4 = i2 - 1;
-        int i5 = i4;
-        while (true) {
-            w03Var = this.s;
-            if (i5 < i3) {
-                i = -1;
-                break;
-            }
-            Object objG = w03Var.g((c72) c13Var.get(i5));
-            objG.getClass();
-            if (((h72) objG).a.equals(obj)) {
-                i = i5;
-                break;
-            }
-            i5--;
-        }
-        if (i != -1) {
-            i4 = i;
-        } else if (i4 >= i3) {
-            Object objG2 = w03Var.g((c72) c13Var.get(i4));
-            objG2.getClass();
-            h72 h72Var = (h72) objG2;
-            Object obj2 = h72Var.a;
-            if (obj2 != gn4.a) {
-                c82 c82Var = (c82) this.p.n;
-                c82Var.b(obj);
-                c82Var.b(obj2);
-            }
-            h72Var.a = obj;
-            i5 = i4;
-        } else {
-            i5 = i4;
-            i4 = i;
-        }
-        if (i4 == -1) {
-            return null;
-        }
-        if (i5 != i3) {
-            j(i5, i3);
-        }
+    public final c72 n(Object r10) {
+        if (this.A == 0) goto L30;
+        c13 r0 = (c13) this.n.o();
+        int r1 = r0.n.p - this.B;
+        int r2 = r1 - this.A;
+        int r3 = r1 - 1;
+        int r4 = r3;
+    L6:
+        w03 r5 = this.s;
+        if (r4 < r2) goto L12;
+        Object r7 = r5.g((c72) r0.get(r4));
+        r7.getClass();
+        if (((h72) r7).a.equals(r10) == true) goto L10;
+        r4 = r4 - 1;
+        goto L6
+    L10:
+        int r8 = r4;
+    L13:
+        if (r8 != (-1)) goto L20;
+        if (r3 < r2) goto L19;
+        Object r6 = r5.g((c72) r0.get(r3));
+        r6.getClass();
+        h72 r9 = (h72) r6;
+        Object r11 = r9.a;
+        if (r11 == gn4.a) goto L18;
+        c82 r12 = (c82) this.p.n;
+        r12.b(r10);
+        r12.b(r11);
+    L18:
+        r9.a = r10;
+        r4 = r3;
+    L21:
+        if (r3 != (-1)) goto L24;
+        return null;
+    L24:
+        if (r4 == r2) goto L26;
+        j(r4, r2);
+    L26:
         this.A--;
-        c72 c72Var = (c72) c13Var.get(i3);
-        Object objG3 = w03Var.g(c72Var);
-        objG3.getClass();
-        h72 h72Var2 = (h72) objG3;
-        h72Var2.g = uc5.B(Boolean.TRUE);
-        h72Var2.e = true;
-        h72Var2.d = true;
-        return c72Var;
+        c72 r13 = (c72) r0.get(r2);
+        Object r14 = r5.g(r13);
+        r14.getClass();
+        h72 r15 = (h72) r14;
+        r15.g = uc5.B(Boolean.TRUE);
+        r15.e = true;
+        r15.d = true;
+        return r13;
+    L19:
+        r4 = r3;
+    L20:
+        r3 = r8;
+        goto L21
+    L12:
+        r8 = -1;
+        goto L13
+    L30:
+        return null;
     }
 }

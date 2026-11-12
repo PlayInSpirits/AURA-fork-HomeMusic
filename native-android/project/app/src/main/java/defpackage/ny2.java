@@ -5,15 +5,21 @@ package defpackage;
 public final class ny2 implements pv2 {
     public final int a;
 
-    public ny2(int i) {
-        this.a = i;
+    public ny2(int r1) {
+        this.a = r1;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        return (obj instanceof ny2) && this.a == ((ny2) obj).a;
+    public final boolean equals(Object r4) {
+        if (this != r4) goto L6;
+        return true;
+    L6:
+        if ((r4 instanceof ny2) == true) goto L9;
+        return false;
+    L9:
+        if (this.a != ((ny2) r4).a) goto L11;
+        return true;
+    L11:
+        return false;
     }
 
     public final int hashCode() {

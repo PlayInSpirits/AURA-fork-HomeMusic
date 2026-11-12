@@ -12,88 +12,89 @@ public final class fd {
     public Object d;
     public Object e;
 
-    public int a(long j) {
-        int i = this.a + 1;
-        long[] jArr = (long[]) this.c;
-        int length = jArr.length;
-        if (i > length) {
-            int i2 = length * 2;
-            long[] jArr2 = new long[i2];
-            int[] iArr = new int[i2];
-            ti.a0(jArr, jArr2, 0, 0, jArr.length);
-            ti.b0(0, 0, 14, (int[]) this.d, iArr);
-            this.c = jArr2;
-            this.d = iArr;
-        }
-        int i3 = this.a;
-        this.a = i3 + 1;
-        int length2 = ((int[]) this.e).length;
-        if (this.b >= length2) {
-            int i4 = length2 * 2;
-            int[] iArr2 = new int[i4];
-            int i5 = 0;
-            while (i5 < i4) {
-                int i6 = i5 + 1;
-                iArr2[i5] = i6;
-                i5 = i6;
-            }
-            ti.b0(0, 0, 14, (int[]) this.e, iArr2);
-            this.e = iArr2;
-        }
-        int i7 = this.b;
-        int[] iArr3 = (int[]) this.e;
-        this.b = iArr3[i7];
-        long[] jArr3 = (long[]) this.c;
-        jArr3[i3] = j;
-        ((int[]) this.d)[i3] = i7;
-        iArr3[i7] = i3;
-        while (i3 > 0) {
-            int i8 = ((i3 + 1) >> 1) - 1;
-            if (h12.k(jArr3[i8], j) <= 0) {
-                break;
-            }
-            d(i8, i3);
-            i3 = i8;
-        }
-        return i7;
+    public int a(long r8) {
+        int r0 = this.a + 1;
+        long[] r1 = (long[]) this.c;
+        int r2 = r1.length;
+        if (r0 <= r2) goto L6;
+        int r3 = r2 * 2;
+        long[] r4 = new long[r3];
+        int[] r5 = new int[r3];
+        ti.a0(r1, r4, 0, 0, r1.length);
+        ti.b0(0, 0, 14, (int[]) this.d, r5);
+        this.c = r4;
+        this.d = r5;
+    L6:
+        int r6 = this.a;
+        this.a = r6 + 1;
+        int r7 = ((int[]) this.e).length;
+        if (this.b < r7) goto L12;
+        int r9 = r7 * 2;
+        int[] r10 = new int[r9];
+        int r11 = 0;
+    L9:
+        if (r11 >= r9) goto L11;
+        int r12 = r11 + 1;
+        r10[r11] = r12;
+        r11 = r12;
+        goto L9
+    L11:
+        ti.b0(0, 0, 14, (int[]) this.e, r10);
+        this.e = r10;
+    L12:
+        int r13 = this.b;
+        int[] r14 = (int[]) this.e;
+        this.b = r14[r13];
+        long[] r15 = (long[]) this.c;
+        r15[r6] = r8;
+        ((int[]) this.d)[r6] = r13;
+        r14[r13] = r6;
+    L13:
+        if (r6 <= 0) goto L17;
+        int r16 = ((r6 + 1) >> 1) - 1;
+        if (h12.k(r15[r16], r8) <= 0) goto L17;
+        d(r16, r6);
+        r6 = r16;
+    L17:
+        return r13;
     }
 
-    public float b(TypedArray typedArray, String str, int i, float f) {
-        if (gi1.u((XmlPullParser) this.c, str)) {
-            f = typedArray.getFloat(i, f);
-        }
-        e(typedArray.getChangingConfigurations());
-        return f;
+    public float b(TypedArray r2, String r3, int r4, float r5) {
+        if (gi1.u((XmlPullParser) this.c, r3) == false) goto L6;
+        r5 = r2.getFloat(r4, r5);
+    L6:
+        e(r2.getChangingConfigurations());
+        return r5;
     }
 
-    public void c(int i) {
-        int i2 = this.b;
-        boolean z = false;
-        if (i >= 0 && i < i2) {
-            z = true;
-        }
-        if (z) {
-            return;
-        }
-        dz1.a("lineIndex(" + i + ") is out of bounds [0, " + i2 + ")");
+    public void c(int r3) {
+        int r2 = this.b;
+        boolean r0 = false;
+        if (r3 < 0) goto L6;
+        if (r3 >= r2) goto L6;
+        r0 = true;
+    L6:
+        if (r0 == true) goto L9;
+        dz1.a("lineIndex(" + r3 + ") is out of bounds [0, " + r2 + ")");
+        return;
     }
 
-    public void d(int i, int i2) {
-        long[] jArr = (long[]) this.c;
-        int[] iArr = (int[]) this.d;
-        int[] iArr2 = (int[]) this.e;
-        long j = jArr[i];
-        jArr[i] = jArr[i2];
-        jArr[i2] = j;
-        int i3 = iArr[i];
-        int i4 = iArr[i2];
-        iArr[i] = i4;
-        iArr[i2] = i3;
-        iArr2[i4] = i;
-        iArr2[i3] = i2;
+    public void d(int r7, int r8) {
+        long[] r0 = (long[]) this.c;
+        int[] r1 = (int[]) this.d;
+        int[] r6 = (int[]) this.e;
+        long r2 = r0[r7];
+        r0[r7] = r0[r8];
+        r0[r8] = r2;
+        int r3 = r1[r7];
+        int r4 = r1[r8];
+        r1[r7] = r4;
+        r1[r8] = r3;
+        r6[r4] = r7;
+        r6[r3] = r8;
     }
 
-    public void e(int i) {
-        this.a = i | this.a;
+    public void e(int r2) {
+        this.a = r2 | this.a;
     }
 }

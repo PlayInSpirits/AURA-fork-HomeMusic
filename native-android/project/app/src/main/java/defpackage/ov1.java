@@ -11,127 +11,144 @@ import java.util.regex.Pattern;
 public final class ov1 implements zn4 {
     public final be3 n;
 
-    public ov1(int i) {
-        switch (i) {
-            case 1:
-                this.n = new be3();
-                break;
-            default:
-                this.n = new be3(10);
-                break;
-        }
+    public ov1(int r2) {
+        switch(r2) {
+            case 1: goto L5;
+            default: goto L3;
+        };
+    L3:
+        this.n = new be3(10);
+        return;
+    L5:
+        this.n = new be3();
     }
 
-    public qv2 a(l51 l51Var, kv1 kv1Var, int i) {
-        be3 be3Var;
-        int i2;
-        int i3 = 0;
-        qv2 qv2VarO = null;
-        while (true) {
-            int i4 = 0;
-            while (true) {
-                int i5 = i4 % 10;
-                int i6 = i5 + 10;
-                be3Var = this.n;
-                if (i5 == 0 && i4 != 0) {
-                    byte[] bArr = be3Var.a;
-                    System.arraycopy(bArr, 10, bArr, 0, 9);
-                }
-                int i7 = i4 == 0 ? 10 : 1;
-                try {
-                    l51Var.n(be3Var.a, i6 - i7, i7);
-                    be3Var.N(i5);
-                    be3Var.M(i6);
-                    if (be3Var.a() < 3) {
-                        er1.h(be3Var.b, be3Var.c);
-                        return null;
-                    }
-                    int iD = be3Var.D();
-                    i2 = be3Var.b - 3;
-                    be3Var.b = i2;
-                    if (iD == 4801587) {
-                        break;
-                    }
-                    if (jz4.v(be3Var.i()) == -1) {
-                        if (i4 == 0) {
-                            be3Var.c(20);
-                        }
-                        i4++;
-                        if (i4 > i) {
-                        }
-                    }
-                    l51Var.k();
-                    l51Var.g(i3);
-                    return qv2VarO;
-                } catch (EOFException unused) {
-                }
-            }
-            be3Var.O(6);
-            int iZ = be3Var.z();
-            int i8 = iZ + 10;
-            if (qv2VarO == null) {
-                byte[] bArr2 = new byte[i8];
-                System.arraycopy(be3Var.a, i2, bArr2, 0, 10);
-                l51Var.n(bArr2, 10, iZ);
-                qv2VarO = new mv1(kv1Var).O(i8, bArr2);
-            } else {
-                l51Var.g(iZ);
-            }
-            i3 += i8;
-        }
+    public qv2 a(l51 r13, kv1 r14, int r15) {
+        int r2 = 0;
+        qv2 r3 = null;
+    L3:
+        int r4 = 0;
+    L4:
+        int r5 = r4 % 10;
+        int r6 = r5 + 10;
+        be3 r7 = this.n;
+        if (r5 != 0) goto L8;
+        if (r4 == 0) goto L8;
+        byte[] r9 = r7.a;
+        System.arraycopy(r9, 10, r9, 0, 9);
+    L8:
+        if (r4 != 0) goto L10;
+        int r10 = 10;
+    L34:
+        r13.n(r7.a, r6 - r10, r10);     // Catch: EOFException -> L33
+        r7.N(r5);
+        r7.M(r6);
+        if (r7.a() < 3) goto L29;
+        int r8 = r7.D();
+        int r11 = r7.b - 3;
+        r7.b = r11;
+        if (r8 == 4801587) goto L16;
+        if (jz4.v(r7.i()) != (-1)) goto L31;
+        if (r4 != 0) goto L26;
+        r7.c(20);
+    L26:
+        r4 = r4 + 1;
+        if (r4 <= r15) goto L4;
+    L16:
+        r7.O(6);
+        int r12 = r7.z();
+        int r16 = r12 + 10;
+        if (r3 != null) goto L19;
+        byte[] r17 = new byte[r16];
+        System.arraycopy(r7.a, r11, r17, 0, 10);
+        r13.n(r17, 10, r12);
+        r3 = new mv1(r14).O(r16, r17);
+    L20:
+        r2 = r2 + r16;
+        goto L3
+    L19:
+        r13.g(r12);
+        goto L20
+    L29:
+        er1.h(r7.b, r7.c);
+        return null;
+    L31:
+        r13.k();
+        r13.g(r2);
+        return r3;
+    L10:
+        r10 = 1;
+        goto L34
     }
 
     @Override // defpackage.zn4
-    public void c(byte[] bArr, int i, int i2, yn4 yn4Var, wc0 wc0Var) {
-        ig0 ig0VarA;
-        be3 be3Var = this.n;
-        be3Var.L(i2 + i, bArr);
-        be3Var.N(i);
-        ArrayList arrayList = new ArrayList();
-        while (be3Var.a() > 0) {
-            rr2.k("Incomplete Mp4Webvtt Top Level box header found.", be3Var.a() >= 8);
-            int iM = be3Var.m();
-            if (be3Var.m() == 1987343459) {
-                int i3 = iM - 8;
-                CharSequence charSequenceF = null;
-                hg0 hg0VarA = null;
-                while (i3 > 0) {
-                    rr2.k("Incomplete vtt cue box header found.", i3 >= 8);
-                    int iM2 = be3Var.m();
-                    int iM3 = be3Var.m();
-                    int i4 = iM2 - 8;
-                    byte[] bArr2 = be3Var.a;
-                    int i5 = be3Var.b;
-                    String str = f35.a;
-                    String str2 = new String(bArr2, i5, i4, StandardCharsets.UTF_8);
-                    be3Var.O(i4);
-                    i3 = (i3 - 8) - i4;
-                    if (iM3 == 1937011815) {
-                        v95 v95Var = new v95();
-                        w95.e(str2, v95Var);
-                        hg0VarA = v95Var.a();
-                    } else if (iM3 == 1885436268) {
-                        charSequenceF = w95.f(null, str2.trim(), Collections.EMPTY_LIST);
-                    }
-                }
-                if (charSequenceF == null) {
-                    charSequenceF = "";
-                }
-                if (hg0VarA != null) {
-                    hg0VarA.a = charSequenceF;
-                    hg0VarA.b = null;
-                    ig0VarA = hg0VarA.a();
-                } else {
-                    Pattern pattern = w95.a;
-                    v95 v95Var2 = new v95();
-                    v95Var2.c = charSequenceF;
-                    ig0VarA = v95Var2.a().a();
-                }
-                arrayList.add(ig0VarA);
-            } else {
-                be3Var.O(iM - 8);
-            }
-        }
-        wc0Var.accept(new lg0(-9223372036854775807L, -9223372036854775807L, arrayList));
+    public void c(byte[] r11, int r12, int r13, yn4 r14, wc0 r15) {
+        be3 r10 = this.n;
+        r10.L(r13 + r12, r11);
+        r10.N(r12);
+        ArrayList r5 = new ArrayList();
+    L4:
+        if (r10.a() <= 0) goto L29;
+        if (r10.a() < 8) goto L8;
+        boolean r16 = true;
+    L9:
+        rr2.k("Incomplete Mp4Webvtt Top Level box header found.", r16);
+        int r17 = r10.m();
+        if (r10.m() == 1987343459) goto L11;
+        r10.O(r17 - 8);
+        goto L4
+    L11:
+        int r18 = r17 - 8;
+        CharSequence r1 = null;
+        hg0 r2 = null;
+    L12:
+        if (r18 <= 0) goto L22;
+        if (r18 < 8) goto L15;
+        boolean r3 = true;
+    L16:
+        rr2.k("Incomplete vtt cue box header found.", r3);
+        int r4 = r10.m();
+        int r6 = r10.m();
+        int r7 = r4 - 8;
+        byte[] r8 = r10.a;
+        int r9 = r10.b;
+        String r19 = f35.a;
+        String r20 = new String(r8, r9, r7, StandardCharsets.UTF_8);
+        r10.O(r7);
+        r18 = (r18 - 8) - r7;
+        if (r6 == 1937011815) goto L18;
+        if (r6 != 1885436268) goto L12;
+        r1 = w95.f(null, r20.trim(), Collections.EMPTY_LIST);
+        goto L12
+    L18:
+        v95 r21 = new v95();
+        w95.e(r20, r21);
+        r2 = r21.a();
+        goto L12
+    L15:
+        r3 = false;
+        goto L16
+    L22:
+        if (r1 != null) goto L24;
+        r1 = "";
+    L24:
+        if (r2 == null) goto L26;
+        r2.a = r1;
+        r2.b = null;
+        ig0 r110 = r2.a();
+    L27:
+        r5.add(r110);
+        goto L4
+    L26:
+        Pattern r111 = w95.a;
+        v95 r112 = new v95();
+        r112.c = r1;
+        r110 = r112.a().a();
+        goto L27
+    L8:
+        r16 = false;
+        goto L9
+    L29:
+        r15.accept(new lg0(-9223372036854775807L, -9223372036854775807L, r5));
     }
 }

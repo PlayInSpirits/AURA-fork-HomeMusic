@@ -9,24 +9,25 @@ public final class fj2 implements Runnable {
     public final /* synthetic */ si1 o;
     public final /* synthetic */ Bundle p;
 
-    public /* synthetic */ fj2(si1 si1Var, String str, Bundle bundle, int i) {
-        this.n = i;
-        this.o = si1Var;
-        this.p = bundle;
+    public /* synthetic */ fj2(si1 r1, String r2, Bundle r3, int r4) {
+        this.n = r4;
+        this.o = r1;
+        this.p = r3;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        Bundle bundle = this.p;
-        si1 si1Var = this.o;
-        switch (i) {
-            case 0:
-                si1Var.I(bundle, null);
-                break;
-            default:
-                si1Var.I(bundle, null);
-                break;
-        }
+        int r0 = this.n;
+        Bundle r2 = this.p;
+        si1 r3 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        r3.I(r2, null);
+        return;
+    L6:
+        r3.I(r2, null);
     }
 }

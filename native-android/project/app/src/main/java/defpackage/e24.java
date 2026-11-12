@@ -7,8 +7,8 @@ import java.io.Serializable;
 public final class e24 extends gb3 implements Serializable {
     public final gb3 n;
 
-    public e24(gb3 gb3Var) {
-        this.n = gb3Var;
+    public e24(gb3 r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.gb3
@@ -17,19 +17,19 @@ public final class e24 extends gb3 implements Serializable {
     }
 
     @Override // java.util.Comparator
-    public final int compare(Object obj, Object obj2) {
-        return this.n.compare(obj2, obj);
+    public final int compare(Object r1, Object r2) {
+        return this.n.compare(r2, r1);
     }
 
     @Override // java.util.Comparator
-    public final boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj instanceof e24) {
-            return this.n.equals(((e24) obj).n);
-        }
+    public final boolean equals(Object r2) {
+        if (r2 != this) goto L6;
+        return true;
+    L6:
+        if ((r2 instanceof e24) == true) goto L8;
         return false;
+    L8:
+        return this.n.equals(((e24) r2).n);
     }
 
     public final int hashCode() {

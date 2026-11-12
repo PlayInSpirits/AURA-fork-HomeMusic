@@ -12,60 +12,77 @@ public final class zw4 implements Iterator, x32 {
     public Iterator o;
     public final Object p;
 
-    public zw4(tq4 tq4Var) {
+    public zw4(tq4 r2) {
         this.n = 0;
-        this.p = tq4Var;
-        this.o = ((aa4) tq4Var.b).iterator();
+        this.p = r2;
+        this.o = ((aa4) r2.b).iterator();
     }
 
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        switch (this.n) {
-            case 0:
-                break;
-        }
+        switch(this.n) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return this.o.hasNext();
+    L7:
         return this.o.hasNext();
     }
 
     @Override // java.util.Iterator
     public final Object next() {
-        int i = this.n;
-        Object obj = this.p;
-        switch (i) {
-            case 0:
-                return ((tq4) obj).c.invoke(this.o.next());
-            default:
-                Object next = this.o.next();
-                ArrayList arrayList = (ArrayList) obj;
-                View view = (View) next;
-                ViewGroup viewGroup = view instanceof ViewGroup ? (ViewGroup) view : null;
-                x0 x0Var = viewGroup != null ? new x0(3, viewGroup) : null;
-                if (x0Var == null || !x0Var.hasNext()) {
-                    while (!this.o.hasNext() && !arrayList.isEmpty()) {
-                        this.o = (Iterator) q40.C0(arrayList);
-                        v40.q0(arrayList);
-                    }
-                } else {
-                    arrayList.add(this.o);
-                    this.o = x0Var;
-                }
-                return next;
-        }
+        int r0 = this.n;
+        Object r1 = this.p;
+        switch(r0) {
+            case 0: goto L21;
+            default: goto L4;
+        };
+    L4:
+        Object r2 = this.o.next();
+        ArrayList r3 = (ArrayList) r1;
+        View r4 = (View) r2;
+        x0 r5 = null;
+        if ((r4 instanceof ViewGroup) == false) goto L7;
+        ViewGroup r6 = (ViewGroup) r4;
+    L8:
+        if (r6 == null) goto L10;
+        r5 = new x0(3, r6);
+    L10:
+        if (r5 == null) goto L15;
+        if (r5.hasNext() == false) goto L15;
+        r3.add(this.o);
+        this.o = r5;
+    L19:
+        return r2;
+    L15:
+        if (this.o.hasNext() == true) goto L19;
+        if (r3.isEmpty() == true) goto L19;
+        this.o = (Iterator) q40.C0(r3);
+        v40.q0(r3);
+        goto L15
+    L7:
+        r6 = null;
+        goto L8
+    L21:
+        return ((tq4) r1).c.invoke(this.o.next());
     }
 
     @Override // java.util.Iterator
     public final void remove() {
-        switch (this.n) {
-            case 0:
-                throw new UnsupportedOperationException("Operation is not supported for read-only collection");
-            default:
-                throw new UnsupportedOperationException("Operation is not supported for read-only collection");
-        }
+        switch(this.n) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        throw new UnsupportedOperationException("Operation is not supported for read-only collection");
+    L7:
+        throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
-    public zw4(x0 x0Var) {
+    public zw4(x0 r2) {
         this.n = 1;
         this.p = new ArrayList();
-        this.o = x0Var;
+        this.o = r2;
     }
 }

@@ -15,11 +15,11 @@ public abstract class h11 {
     public final Context c;
     public final CheckableImageButton d;
 
-    public h11(g11 g11Var) {
-        this.a = g11Var.n;
-        this.b = g11Var;
-        this.c = g11Var.getContext();
-        this.d = g11Var.t;
+    public h11(g11 r2) {
+        this.a = r2.n;
+        this.b = r2;
+        this.c = r2.getContext();
+        this.d = r2.t;
     }
 
     public void a() {
@@ -52,7 +52,7 @@ public abstract class h11 {
         return null;
     }
 
-    public boolean i(int i) {
+    public boolean i(int r1) {
         return true;
     }
 
@@ -64,16 +64,16 @@ public abstract class h11 {
         return false;
     }
 
-    public void l(EditText editText) {
+    public void l(EditText r1) {
     }
 
-    public void m(v3 v3Var) {
+    public void m(v3 r1) {
     }
 
-    public void n(AccessibilityEvent accessibilityEvent) {
+    public void n(AccessibilityEvent r1) {
     }
 
-    public void o(boolean z) {
+    public void o(boolean r1) {
     }
 
     public final void p() {

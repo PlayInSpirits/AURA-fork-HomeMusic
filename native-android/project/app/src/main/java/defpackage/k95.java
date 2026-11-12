@@ -2,8 +2,6 @@ package defpackage;
 
 import android.content.pm.PackageInfo;
 import android.os.Build;
-import android.webkit.WebView;
-import java.lang.reflect.InvocationTargetException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,31 +17,38 @@ public final class k95 extends ue {
 
     @Override // defpackage.ue
     public final boolean a() {
-        return Build.VERSION.SDK_INT >= 33;
+        if (Build.VERSION.SDK_INT < 33) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     @Override // defpackage.ue
     public final boolean b() {
-        int i;
-        PackageInfo packageInfoA;
-        boolean zB = super.b();
-        if (!zB || (i = Build.VERSION.SDK_INT) >= 29) {
-            return zB;
-        }
-        int i2 = j95.a;
-        if (i >= 26) {
-            packageInfoA = WebView.getCurrentWebViewPackage();
-        } else {
-            try {
-                packageInfoA = j95.a();
-            } catch (ClassNotFoundException | IllegalAccessException | NoSuchMethodException | InvocationTargetException unused) {
-                packageInfoA = null;
-            }
-        }
-        if (packageInfoA == null) {
-            return false;
-        }
-        Matcher matcher = this.d.matcher(packageInfoA.versionName);
-        return matcher.find() && Integer.parseInt(packageInfoA.versionName.substring(matcher.start(), matcher.end())) >= 105;
+        boolean r0 = super.b();
+        if (r0 == false) goto L22;
+        int r1 = Build.VERSION.SDK_INT;
+        if (r1 >= 29) goto L22;
+        int r2 = j95.a;
+        if (r1 < 26) goto L23;
+        PackageInfo r3 = j3.c();
+    L14:
+        if (r3 != null) goto L16;
+        return false;
+    L16:
+        Matcher r4 = this.d.matcher(r3.versionName);
+        if (r4.find() == true) goto L19;
+        return false;
+    L19:
+        if (Integer.parseInt(r3.versionName.substring(r4.start(), r4.end())) < 105) goto L26;
+        return true;
+    L26:
+        return false;
+    L23:
+        r3 = j95.a();     // Catch: Throwable -> L12
+    L12:
+        r3 = null;
+    L22:
+        return r0;
     }
 }

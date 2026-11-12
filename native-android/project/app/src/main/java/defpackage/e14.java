@@ -11,9 +11,16 @@ public final class e14 {
     public final Configuration b;
     public final int c;
 
-    public e14(ColorStateList colorStateList, Configuration configuration, Resources.Theme theme) {
-        this.a = colorStateList;
-        this.b = configuration;
-        this.c = theme == null ? 0 : theme.hashCode();
+    public e14(ColorStateList r1, Configuration r2, Resources.Theme r3) {
+        this.a = r1;
+        this.b = r2;
+        if (r3 != null) goto L5;
+        int r4 = 0;
+    L6:
+        this.c = r4;
+        return;
+    L5:
+        r4 = r3.hashCode();
+        goto L6
     }
 }

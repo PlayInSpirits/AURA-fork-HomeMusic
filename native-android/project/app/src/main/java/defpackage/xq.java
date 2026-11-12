@@ -8,40 +8,43 @@ public final class xq implements ValueAnimator.AnimatorUpdateListener {
     public final /* synthetic */ int a;
     public final /* synthetic */ fr b;
 
-    public xq(fr frVar, int i) {
+    public xq(fr r1, int r2) {
         this.a = 2;
-        this.b = frVar;
+        this.b = r1;
     }
 
     @Override // android.animation.ValueAnimator.AnimatorUpdateListener
-    public final void onAnimationUpdate(ValueAnimator valueAnimator) {
-        int i = this.a;
-        fr frVar = this.b;
-        switch (i) {
-            case 0:
-                frVar.i.setAlpha(((Float) valueAnimator.getAnimatedValue()).floatValue());
-                break;
-            case 1:
-                float fFloatValue = ((Float) valueAnimator.getAnimatedValue()).floatValue();
-                er erVar = frVar.i;
-                erVar.setScaleX(fFloatValue);
-                erVar.setScaleY(fFloatValue);
-                break;
-            case 2:
-                int iIntValue = ((Integer) valueAnimator.getAnimatedValue()).intValue();
-                a61 a61Var = fr.w;
-                frVar.i.setTranslationY(iIntValue);
-                break;
-            default:
-                int iIntValue2 = ((Integer) valueAnimator.getAnimatedValue()).intValue();
-                a61 a61Var2 = fr.w;
-                frVar.i.setTranslationY(iIntValue2);
-                break;
-        }
+    public final void onAnimationUpdate(ValueAnimator r2) {
+        int r0 = this.a;
+        fr r1 = this.b;
+        switch(r0) {
+            case 0: goto L10;
+            case 1: goto L8;
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        int r3 = ((Integer) r2.getAnimatedValue()).intValue();
+        a61 r4 = fr.w;
+        r1.i.setTranslationY(r3);
+        return;
+    L6:
+        int r5 = ((Integer) r2.getAnimatedValue()).intValue();
+        a61 r6 = fr.w;
+        r1.i.setTranslationY(r5);
+        return;
+    L8:
+        float r7 = ((Float) r2.getAnimatedValue()).floatValue();
+        er r8 = r1.i;
+        r8.setScaleX(r7);
+        r8.setScaleY(r7);
+        return;
+    L10:
+        r1.i.setAlpha(((Float) r2.getAnimatedValue()).floatValue());
     }
 
-    public /* synthetic */ xq(fr frVar, int i, byte b) {
-        this.a = i;
-        this.b = frVar;
+    public /* synthetic */ xq(fr r1, int r2, byte r3) {
+        this.a = r2;
+        this.b = r1;
     }
 }

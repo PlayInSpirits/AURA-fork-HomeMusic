@@ -5,15 +5,19 @@ package defpackage;
 public final class hs0 implements p81 {
     public final p81 n;
 
-    public hs0(p81 p81Var) {
-        this.n = p81Var;
+    public hs0(p81 r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.p81
-    public final Object a(q81 q81Var, vd0 vd0Var) {
-        jx3 jx3Var = new jx3();
-        jx3Var.n = xl.e;
-        Object objA = this.n.a(new gs0(this, jx3Var, q81Var), vd0Var);
-        return objA == xe0.n ? objA : j15.a;
+    public final Object a(q81 r3, vd0 r4) {
+        jx3 r0 = new jx3();
+        r0.n = xl.e;
+        gs0 r1 = new gs0(this, r0, r3);
+        Object r2 = this.n.a(r1, r4);
+        if (r2 != xe0.n) goto L6;
+        return r2;
+    L6:
+        return j15.a;
     }
 }

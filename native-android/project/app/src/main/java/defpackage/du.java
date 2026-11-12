@@ -6,13 +6,13 @@ import javax.net.ssl.SSLSocket;
 /* JADX INFO: loaded from: classes.dex */
 public final class du implements vn0 {
     @Override // defpackage.vn0
-    public final boolean b(SSLSocket sSLSocket) {
-        boolean z = cu.d;
+    public final boolean b(SSLSocket r1) {
+        boolean r0 = cu.d;
         return false;
     }
 
     @Override // defpackage.vn0
-    public final uh4 g(SSLSocket sSLSocket) {
+    public final uh4 g(SSLSocket r1) {
         return new eu();
     }
 }

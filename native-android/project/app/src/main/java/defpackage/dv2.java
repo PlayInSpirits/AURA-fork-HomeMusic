@@ -16,73 +16,88 @@ public final class dv2 extends cx0 {
     public tu2 C;
     public final int z;
 
-    public dv2(Context context, boolean z) {
-        super(context, z);
-        if (1 == context.getResources().getConfiguration().getLayoutDirection()) {
-            this.z = 21;
-            this.A = 22;
-        } else {
-            this.z = 22;
-            this.A = 21;
-        }
+    public dv2(Context r3, boolean r4) {
+        super(r3, r4);
+        if (1 != r3.getResources().getConfiguration().getLayoutDirection()) goto L6;
+        this.z = 21;
+        this.A = 22;
+        return;
+    L6:
+        this.z = 22;
+        this.A = 21;
     }
 
     @Override // defpackage.cx0, android.view.View
-    public final boolean onHoverEvent(MotionEvent motionEvent) {
-        nu2 nu2Var;
-        int headersCount;
-        int iPointToPosition;
-        int i;
-        if (this.B != null) {
-            ListAdapter adapter = getAdapter();
-            if (adapter instanceof HeaderViewListAdapter) {
-                HeaderViewListAdapter headerViewListAdapter = (HeaderViewListAdapter) adapter;
-                headersCount = headerViewListAdapter.getHeadersCount();
-                nu2Var = (nu2) headerViewListAdapter.getWrappedAdapter();
-            } else {
-                nu2Var = (nu2) adapter;
-                headersCount = 0;
-            }
-            tu2 tu2VarB = (motionEvent.getAction() == 10 || (iPointToPosition = pointToPosition((int) motionEvent.getX(), (int) motionEvent.getY())) == -1 || (i = iPointToPosition - headersCount) < 0 || i >= nu2Var.getCount()) ? null : nu2Var.getItem(i);
-            tu2 tu2Var = this.C;
-            if (tu2Var != tu2VarB) {
-                qu2 qu2Var = nu2Var.n;
-                if (tu2Var != null) {
-                    this.B.a(qu2Var, tu2Var);
-                }
-                this.C = tu2VarB;
-                if (tu2VarB != null) {
-                    this.B.l(qu2Var, tu2VarB);
-                }
-            }
-        }
-        return super.onHoverEvent(motionEvent);
+    public final boolean onHoverEvent(MotionEvent r5) {
+        if (this.B == null) goto L27;
+        ListAdapter r0 = getAdapter();
+        if ((r0 instanceof HeaderViewListAdapter) == false) goto L7;
+        HeaderViewListAdapter r1 = (HeaderViewListAdapter) r0;
+        int r2 = r1.getHeadersCount();
+        nu2 r3 = (nu2) r1.getWrappedAdapter();
+    L9:
+        if (r5.getAction() == 10) goto L17;
+        int r4 = pointToPosition((int) r5.getX(), (int) r5.getY());
+        if (r4 == (-1)) goto L17;
+        int r6 = r4 - r2;
+        if (r6 < 0) goto L17;
+        if (r6 >= r3.getCount()) goto L17;
+        tu2 r7 = r3.b(r6);
+    L18:
+        tu2 r8 = this.C;
+        if (r8 == r7) goto L27;
+        qu2 r9 = r3.n;
+        if (r8 == null) goto L23;
+        this.B.a(r9, r8);
+    L23:
+        this.C = r7;
+        if (r7 == null) goto L27;
+        this.B.l(r9, r7);
+    L17:
+        r7 = null;
+        goto L18
+    L7:
+        r3 = (nu2) r0;
+        r2 = 0;
+    L27:
+        return super.onHoverEvent(r5);
     }
 
     @Override // android.widget.ListView, android.widget.AbsListView, android.view.View, android.view.KeyEvent.Callback
-    public final boolean onKeyDown(int i, KeyEvent keyEvent) {
-        ListMenuItemView listMenuItemView = (ListMenuItemView) getSelectedView();
-        if (listMenuItemView != null && i == this.z) {
-            if (listMenuItemView.isEnabled() && listMenuItemView.getItemData().hasSubMenu()) {
-                performItemClick(listMenuItemView, getSelectedItemPosition(), getSelectedItemId());
-            }
-            return true;
-        }
-        if (listMenuItemView == null || i != this.A) {
-            return super.onKeyDown(i, keyEvent);
-        }
+    public final boolean onKeyDown(int r5, KeyEvent r6) {
+        ListMenuItemView r0 = (ListMenuItemView) getSelectedView();
+        if (r0 != null) goto L5;
+    L12:
+        if (r0 == null) goto L22;
+        if (r5 != this.A) goto L22;
         setSelection(-1);
-        ListAdapter adapter = getAdapter();
-        (adapter instanceof HeaderViewListAdapter ? (nu2) ((HeaderViewListAdapter) adapter).getWrappedAdapter() : (nu2) adapter).n.c(false);
+        ListAdapter r4 = getAdapter();
+        if ((r4 instanceof HeaderViewListAdapter) == false) goto L18;
+        nu2 r7 = (nu2) ((HeaderViewListAdapter) r4).getWrappedAdapter();
+    L19:
+        r7.n.c(false);
         return true;
+    L18:
+        r7 = (nu2) r4;
+    L22:
+        return super.onKeyDown(r5, r6);
+    L5:
+        if (r5 != this.z) goto L12;
+        if (r0.isEnabled() == true) goto L9;
+    L11:
+        return true;
+    L9:
+        if (r0.getItemData().hasSubMenu() == false) goto L11;
+        performItemClick(r0, getSelectedItemPosition(), getSelectedItemId());
+        goto L11
     }
 
-    public void setHoverListener(su2 su2Var) {
-        this.B = su2Var;
+    public void setHoverListener(su2 r1) {
+        this.B = r1;
     }
 
     @Override // defpackage.cx0, android.widget.AbsListView
-    public /* bridge */ /* synthetic */ void setSelector(Drawable drawable) {
-        super.setSelector(drawable);
+    public /* bridge */ /* synthetic */ void setSelector(Drawable r1) {
+        super.setSelector(r1);
     }
 }

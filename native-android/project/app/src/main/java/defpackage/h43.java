@@ -6,7 +6,7 @@ public final class h43 implements f43 {
     public final tu2 a;
     public boolean b;
 
-    public h43(tu2 tu2Var) {
-        this.a = tu2Var;
+    public h43(tu2 r1) {
+        this.a = r1;
     }
 }

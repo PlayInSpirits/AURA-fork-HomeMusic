@@ -19,19 +19,19 @@ public final class dp extends kb0 {
         return this.u;
     }
 
-    public void setAllowsGoneWidget(boolean z) {
-        this.w.s0 = z;
+    public void setAllowsGoneWidget(boolean r1) {
+        this.w.s0 = r1;
     }
 
-    public void setDpMargin(int i) {
-        this.w.t0 = (int) ((i * getResources().getDisplayMetrics().density) + 0.5f);
+    public void setDpMargin(int r2) {
+        this.w.t0 = (int) ((r2 * getResources().getDisplayMetrics().density) + 0.5f);
     }
 
-    public void setMargin(int i) {
-        this.w.t0 = i;
+    public void setMargin(int r1) {
+        this.w.t0 = r1;
     }
 
-    public void setType(int i) {
-        this.u = i;
+    public void setType(int r1) {
+        this.u = r1;
     }
 }

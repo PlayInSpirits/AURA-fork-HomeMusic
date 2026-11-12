@@ -5,5 +5,5 @@ package defpackage;
 public interface xh0 {
     Class a();
 
-    yh0 b(Object obj);
+    yh0 b(Object r1);
 }

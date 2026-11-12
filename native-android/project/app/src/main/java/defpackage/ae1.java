@@ -32,35 +32,35 @@ public final class ae1 {
     public final View l;
     public final View m;
 
-    public ae1(ConstraintLayout constraintLayout, View view, View view2, ImageButton imageButton, ToggleButton toggleButton, ImageButton imageButton2, TextView textView, ImageView imageView, TextView textView2, ImageButton imageButton3, AppCompatImageButton appCompatImageButton, ImageButton imageButton4, SeekBar seekBar) {
-        this.b = constraintLayout;
-        this.c = view;
-        this.d = view2;
-        this.e = imageButton;
-        this.f = toggleButton;
-        this.g = imageButton2;
-        this.a = textView;
-        this.h = imageView;
-        this.i = textView2;
-        this.j = imageButton3;
-        this.k = appCompatImageButton;
-        this.l = imageButton4;
-        this.m = seekBar;
+    public ae1(ConstraintLayout r1, View r2, View r3, ImageButton r4, ToggleButton r5, ImageButton r6, TextView r7, ImageView r8, TextView r9, ImageButton r10, AppCompatImageButton r11, ImageButton r12, SeekBar r13) {
+        this.b = r1;
+        this.c = r2;
+        this.d = r3;
+        this.e = r4;
+        this.f = r5;
+        this.g = r6;
+        this.a = r7;
+        this.h = r8;
+        this.i = r9;
+        this.j = r10;
+        this.k = r11;
+        this.l = r12;
+        this.m = r13;
     }
 
-    public ae1(CoordinatorLayout coordinatorLayout, TextView textView, RecyclerView recyclerView, LinearLayout linearLayout, LinearLayout linearLayout2, LinearLayout linearLayout3, SearchBar searchBar, RecyclerView recyclerView2, RecyclerView recyclerView3, LinearLayout linearLayout4, RecyclerView recyclerView4, LinearLayout linearLayout5, SearchView searchView, LinearLayout linearLayout6) {
-        this.a = textView;
-        this.b = recyclerView;
-        this.f = linearLayout;
-        this.g = linearLayout2;
-        this.h = linearLayout3;
-        this.l = searchBar;
-        this.c = recyclerView2;
-        this.d = recyclerView3;
-        this.i = linearLayout4;
-        this.e = recyclerView4;
-        this.j = linearLayout5;
-        this.m = searchView;
-        this.k = linearLayout6;
+    public ae1(CoordinatorLayout r1, TextView r2, RecyclerView r3, LinearLayout r4, LinearLayout r5, LinearLayout r6, SearchBar r7, RecyclerView r8, RecyclerView r9, LinearLayout r10, RecyclerView r11, LinearLayout r12, SearchView r13, LinearLayout r14) {
+        this.a = r2;
+        this.b = r3;
+        this.f = r4;
+        this.g = r5;
+        this.h = r6;
+        this.l = r7;
+        this.c = r8;
+        this.d = r9;
+        this.i = r10;
+        this.e = r11;
+        this.j = r12;
+        this.m = r13;
+        this.k = r14;
     }
 }

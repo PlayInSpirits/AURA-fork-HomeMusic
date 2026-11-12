@@ -42,10 +42,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import javax.net.ssl.SSLSocket;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 import org.json.JSONObject;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -55,118 +53,136 @@ public final /* synthetic */ class ws1 implements Runnable {
     public final /* synthetic */ Object o;
     public final /* synthetic */ Object p;
 
-    public /* synthetic */ ws1(int i, Object obj, Object obj2) {
-        this.n = i;
-        this.o = obj;
-        this.p = obj2;
+    public /* synthetic */ ws1(int r1, Object r2, Object r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
     }
 
     private final void a() {
-        List list = (List) this.o;
-        bj2 bj2Var = (bj2) this.p;
-        ArrayList arrayListM = gi1.M(list);
-        Queue queueA = new vs3().a();
-        int i = -1;
-        if (queueA != null) {
-            String id = queueA.getId();
-            for (int i2 = 0; i2 < arrayListM.size(); i2++) {
-                if (((gn2) arrayListM.get(i2)).a.equals(id)) {
-                    i = i2;
-                    break;
-                }
-            }
-        }
-        int i3 = i >= 0 ? i : 0;
-        long j = 0;
-        if (i >= 0) {
-            String id2 = queueA.getId();
-            id2.getClass();
-            sp3 sp3Var = (sp3) ud3.A().get(id2);
-            long jMax = sp3Var != null ? sp3Var.b : 0L;
-            if (jMax == 0) {
-                jMax = Math.max(0L, queueA.getPlayingChanged());
-            }
-            j = jMax;
-        }
-        new Handler(Looper.getMainLooper()).post(new wn2(bj2Var, arrayListM, i3, j, 0));
+        List r0 = (List) this.o;
+        bj2 r2 = (bj2) this.p;
+        ArrayList r3 = gi1.M(r0);
+        Queue r8 = new vs3().a();
+        int r1 = -1;
+        if (r8 == null) goto L11;
+        String r4 = r8.getId();
+        int r5 = 0;
+    L6:
+        if (r5 >= r3.size()) goto L11;
+        if (((gn2) r3.get(r5)).a.equals(r4) == true) goto L9;
+        r5 = r5 + 1;
+        goto L6
+    L9:
+        r1 = r5;
+    L11:
+        if (r1 < 0) goto L13;
+        int r6 = r1;
+    L14:
+        long r7 = 0;
+        if (r1 < 0) goto L24;
+        String r9 = r8.getId();
+        r9.getClass();
+        sp3 r10 = (sp3) ud3.A().get(r9);
+        if (r10 == null) goto L19;
+        long r11 = r10.b;
+    L21:
+        if (r11 == 0) goto L23;
+    L22:
+        r7 = r11;
+        goto L24
+    L23:
+        r11 = Math.max(0, r8.getPlayingChanged());
+        goto L22
+    L19:
+        r11 = 0;
+    L24:
+        new Handler(Looper.getMainLooper()).post(new wn2(r2, r3, r6, r7, 0));
+        return;
+    L13:
+        r6 = 0;
+        goto L14
     }
 
     private final void b() {
-        ic2 ic2Var = (ic2) this.o;
-        gn2 gn2Var = (gn2) this.p;
-        try {
-            if (!ic2Var.isDone()) {
-                return;
-            }
-            try {
-                if (u52.c().a) {
-                    return;
-                }
-                bj2 bj2Var = (bj2) ic2Var.get();
-                int i = 1;
-                bo2.b.set(true);
-                bj2Var.s0(gn2Var);
-                bj2Var.b();
-                bj2Var.m0();
-                vs3 vs3Var = new vs3();
-                ExecutorService executorService = vs3.b;
-                ns3 ns3Var = vs3Var.a;
-                Objects.requireNonNull(ns3Var);
-                executorService.execute(new jq3(i, ns3Var));
-                return;
-            } catch (InterruptedException e) {
-                e = e;
-            }
-        } catch (InterruptedException | ExecutionException e2) {
-            e = e2;
-        }
+        ic2 r0 = (ic2) this.o;
+        gn2 r3 = (gn2) this.p;
+    L14:
+        e = e;
+    L15:
         e.printStackTrace();
+        return;
+    L4:
+        if (r0.isDone() == true) goto L19;
+        return;
+    L19:
+    L11:
+        e = e;
+        goto L15
+    L6:
+        if (u52.c().a == true) goto L20;
+        bj2 r1 = (bj2) r0.get();     // Catch: Throwable -> L14 Throwable -> L14
+        int r2 = 1;
+        bo2.b.set(true);     // Catch: Throwable -> L14 Throwable -> L14
+        r1.s0(r3);     // Catch: Throwable -> L14 Throwable -> L14
+        r1.b();     // Catch: Throwable -> L14 Throwable -> L14
+        r1.m0();     // Catch: Throwable -> L14 Throwable -> L14
+        vs3 r4 = new vs3();     // Catch: InterruptedException -> L11 Throwable -> L14
+        ExecutorService r5 = vs3.b;     // Catch: InterruptedException -> L11 Throwable -> L14
+        ns3 r6 = r4.a;     // Catch: InterruptedException -> L11 Throwable -> L14
+        Objects.requireNonNull(r6);     // Catch: InterruptedException -> L11 Throwable -> L14
+        r5.execute(new jq3(r2, r6));     // Catch: InterruptedException -> L11 Throwable -> L14
+        return;
     }
 
     private final void c() {
-        ic2 ic2Var = (ic2) this.o;
-        InternetRadioStation internetRadioStation = (InternetRadioStation) this.p;
-        try {
-            if (!ic2Var.isDone()) {
-                return;
-            }
-            try {
-                if (u52.c().a) {
-                    return;
-                }
-                bj2 bj2Var = (bj2) ic2Var.get();
-                bo2.b.set(true);
-                bj2Var.s0(gi1.I(internetRadioStation));
-                bj2Var.b();
-                bj2Var.m0();
-                return;
-            } catch (InterruptedException e) {
-                e = e;
-            }
-        } catch (InterruptedException | ExecutionException e2) {
-            e = e2;
-        }
+        ic2 r0 = (ic2) this.o;
+        InternetRadioStation r3 = (InternetRadioStation) this.p;
+    L13:
+        e = e;
+    L14:
         e.printStackTrace();
+        return;
+    L4:
+        if (r0.isDone() == true) goto L18;
+        return;
+    L18:
+        if (u52.c().a == true) goto L20;
+        bj2 r1 = (bj2) r0.get();     // Catch: Throwable -> L13 Throwable -> L13
+        bo2.b.set(true);     // Catch: Throwable -> L13 Throwable -> L13
+        r1.s0(gi1.I(r3));     // Catch: Throwable -> L13 Throwable -> L13
+        r1.b();     // Catch: Throwable -> L13 Throwable -> L13
+        r1.m0();     // Catch: Throwable -> L13 Throwable -> L13
+        return;
+    L20:
+        return;
+    L10:
+        e = e;
+        goto L14
     }
 
     private final void d() {
-        ho2 ho2Var = (ho2) this.o;
-        ho2Var.d.reportNetworkEvent((NetworkEvent) this.p);
+        ho2 r0 = (ho2) this.o;
+        NetworkEvent r1 = (NetworkEvent) this.p;
+        fo2.q(r0.d, r1);
     }
 
     private final void e() {
-        ho2 ho2Var = (ho2) this.o;
-        ho2Var.d.reportPlaybackErrorEvent((PlaybackErrorEvent) this.p);
+        ho2 r0 = (ho2) this.o;
+        PlaybackErrorEvent r1 = (PlaybackErrorEvent) this.p;
+        fo2.r(r0.d, r1);
     }
 
     private final void f() {
-        ho2 ho2Var = (ho2) this.o;
-        ho2Var.d.reportPlaybackMetrics((PlaybackMetrics) this.p);
+        ho2 r0 = (ho2) this.o;
+        PlaybackMetrics r1 = (PlaybackMetrics) this.p;
+        fo2.s(r0.d, r1);
     }
 
     private final void g() {
-        ho2 ho2Var = (ho2) this.o;
-        ho2Var.d.reportPlaybackStateEvent((PlaybackStateEvent) this.p);
+        ho2 r0 = (ho2) this.o;
+        PlaybackStateEvent r1 = (PlaybackStateEvent) this.p;
+        fo2.t(r0.d, r1);
     }
 
     private final void h() {
@@ -175,471 +191,548 @@ public final /* synthetic */ class ws1 implements Runnable {
 
     @Override // java.lang.Runnable
     public final void run() {
-        Object s14Var;
-        String string;
-        Object s14Var2;
-        String str;
-        int i = 19;
-        s14 s14Var3 = null;
-        int i2 = 0;
-        int i3 = 1;
-        switch (this.n) {
-            case 0:
-                String str2 = (String) this.o;
-                MainActivity mainActivity = (MainActivity) this.p;
-                if (str2 != null) {
-                    try {
-                        na4 na4VarG = AppDatabase.y().G();
-                        xl.E((s24) na4VarG.n, false, true, new ma4(na4VarG, new Server(str2, "", "", "", "", null, 0L, false, null), 1));
-                        s14Var = j15.a;
-                    } catch (Throwable th) {
-                        s14Var = new s14(th);
-                    }
-                    Throwable thA = bb3.a(s14Var);
-                    if (thA != null) {
-                        Log.w("HubSettings", "Cannot forget the account", thA);
-                    }
-                    break;
-                }
-                io1.b.post(new xs1(mainActivity, i2));
-                return;
-            case 1:
-                HubShareActivity hubShareActivity = (HubShareActivity) this.o;
-                Exception exc = (Exception) this.p;
-                ux3 ux3Var = HubShareActivity.P;
-                String message = exc.getMessage();
-                if (message == null) {
-                    message = hubShareActivity.getString(R.string.homemusic_share_failed);
-                    message.getClass();
-                }
-                hubShareActivity.p(message);
-                return;
-            case 2:
-                HubShareActivity hubShareActivity2 = (HubShareActivity) this.p;
-                String str3 = (String) this.o;
-                ux3 ux3Var2 = HubShareActivity.P;
-                if (hubShareActivity2.isFinishing() || hubShareActivity2.isDestroyed()) {
-                    return;
-                }
-                jv3 jv3Var = hubShareActivity2.N;
-                if (jv3Var != null) {
-                    ((TextView) jv3Var.p).setText(str3);
-                    return;
-                } else {
-                    h12.Q("bind");
-                    throw null;
-                }
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                Object obj = this.o;
-                Context context = (Context) this.p;
-                if (!(obj instanceof s14)) {
-                    Toast.makeText(context, R.string.homemusic_smart_hidden, 0).show();
-                }
-                Throwable thA2 = bb3.a(obj);
-                if (thA2 != null) {
-                    Log.w("HubSmart", "hide", thA2);
-                    HubException hubException = thA2 instanceof HubException ? (HubException) thA2 : null;
-                    if (hubException == null || (string = hubException.getMessage()) == null) {
-                        string = context.getString(R.string.homemusic_smart_failed);
-                        string.getClass();
-                    }
-                    Toast.makeText(context, string, 1).show();
-                    return;
-                }
-                return;
-            case 4:
-                String str4 = (String) this.o;
-                Context context2 = (Context) this.p;
-                try {
-                    rr1.g(str4);
-                    break;
-                } catch (Throwable th2) {
-                    s14Var3 = new s14(th2);
-                }
-                io1.b.post(new v6(s14Var3, context2, str4, i));
-                return;
-            case 5:
-                WaveSession waveSession = (WaveSession) this.p;
-                String str5 = (String) this.o;
-                WeakReference weakReference = b.a;
-                try {
-                    rr1 rr1Var = rr1.a;
-                    boolean zContains = rr1.e().contains("wave_origin_v1");
-                    WaveSession.Companion companion = WaveSession.Companion;
-                    Map<String, ? extends Object> seed = waveSession.getSeed();
-                    String mode = waveSession.getMode();
-                    String str6 = WaveOrigin.RESTART;
-                    if (!zContains) {
-                        str6 = null;
-                    }
-                    WaveOut waveOutA = rr1.A(companion.startBody(seed, mode, str6, zContains ? str5 : null, zContains ? rs1.f() : null));
-                    List<WaveTrack> tracks = waveOutA.getTracks();
-                    if (tracks == null) {
-                        tracks = u01.n;
-                    }
-                    ArrayList arrayList = new ArrayList();
-                    for (Object obj2 : tracks) {
-                        if (!h12.c(((WaveTrack) obj2).getGenerator(), WaveTrack.SEED)) {
-                            arrayList.add(obj2);
-                        }
-                    }
-                    String sessionId = waveOutA.getSessionId();
-                    if (sessionId == null) {
-                        throw new HubException("Пустой ответ Хаба");
-                    }
-                    s14Var2 = new ly4(sessionId, waveOutA, b.k(WaveSession.CONTEXT_PREFIX + sessionId, arrayList));
-                    io1.b.post(new ws1(6, waveSession, s14Var2));
-                    return;
-                } catch (Throwable th3) {
-                    s14Var2 = new s14(th3);
-                }
-                break;
-            case 6:
-                WaveSession waveSession2 = (WaveSession) this.o;
-                Serializable serializable = (Serializable) this.p;
-                WeakReference weakReference2 = b.a;
-                waveSession2.setInFlight(false);
-                if (b.b != waveSession2) {
-                    return;
-                }
-                if (!(serializable instanceof s14)) {
-                    ly4 ly4Var = (ly4) serializable;
-                    String str7 = ly4Var.n;
-                    List list = (List) ly4Var.p;
-                    waveSession2.renew(str7);
-                    rs1 rs1Var = rs1.a;
-                    Set<String> setIds = waveSession2.ids();
-                    int iW = lg2.W(r40.k0(setIds, 10));
-                    if (iW < 16) {
-                        iW = 16;
-                    }
-                    LinkedHashMap linkedHashMap = new LinkedHashMap(iW);
-                    for (Object obj3 : setIds) {
-                        linkedHashMap.put(obj3, waveSession2.getContext());
-                    }
-                    rs1.b(linkedHashMap, b.g(waveSession2));
-                    b.b(waveSession2, list);
-                    if (waveSession2.getAgain()) {
-                        b.c();
-                    } else {
-                        b.f(waveSession2);
-                    }
-                }
-                Throwable thA3 = bb3.a(serializable);
-                if (thA3 != null) {
-                    Log.w("HubWave", "renew: " + thA3.getMessage());
-                    waveSession2.setFailures(waveSession2.getFailures() + 1);
-                    Long lAfterFailure = WaveRetry.INSTANCE.afterFailure(waveSession2.getFailures());
-                    if (lAfterFailure != null) {
-                        long jLongValue = lAfterFailure.longValue();
-                        b.e();
-                        u6 u6Var = new u6(12);
-                        b.c = u6Var;
-                        io1.b.postDelayed(u6Var, jLongValue);
-                        return;
-                    }
-                    return;
-                }
-                return;
-            case 7:
-                fx3 fx3Var = (fx3) this.o;
-                f9 f9Var = (f9) this.p;
-                if (fx3Var.n) {
-                    return;
-                }
-                f9Var.setTitle(R.string.lan_discovery_error);
-                return;
-            case 8:
-                LanReceiverService lanReceiverService = (LanReceiverService) this.o;
-                SSLSocket sSLSocket = (SSLSocket) this.p;
-                boolean z = LanReceiverService.y;
-                try {
-                    try {
-                        w42 w42Var = w42.a;
-                        w42.a.a("Receiver accepted connection; starting TLS", null);
-                        sSLSocket.startHandshake();
-                        try {
-                            w42.a.a("Receiver TLS established", null);
-                            LanReceiverService.z = null;
-                            String strM = fz0.m(sSLSocket);
-                            if (strM.equals(fz0.l(sSLSocket))) {
-                                throw new IllegalArgumentException("Failed requirement.");
-                            }
-                            JSONObject jSONObjectN = fz0.n(sSLSocket);
-                            String strOptString = jSONObjectN.optString("command");
-                            if (!kb4.a0(lanReceiverService).contains(strM)) {
-                                w42.a.a("Receiver unpaired request; windowOpen=" + (SystemClock.elapsedRealtime() < LanReceiverService.A), null);
-                                strOptString.getClass();
-                                long jElapsedRealtime = SystemClock.elapsedRealtime();
-                                long j = LanReceiverService.A;
-                                if (!strOptString.equals("hello") || jElapsedRealtime >= j) {
-                                    throw new IllegalArgumentException("Failed requirement.");
-                                }
-                                ConcurrentHashMap concurrentHashMap = LanReceiverService.B;
-                                Set setEntrySet = concurrentHashMap.entrySet();
-                                setEntrySet.getClass();
-                                Iterator it = setEntrySet.iterator();
-                                while (it.hasNext()) {
-                                    Map.Entry entry = (Map.Entry) it.next();
-                                    entry.getClass();
-                                    if (SystemClock.elapsedRealtime() - ((h52) entry.getValue()).d > 120000) {
-                                        it.remove();
-                                    }
-                                }
-                                if (concurrentHashMap.size() >= 4 && !concurrentHashMap.containsKey(strM)) {
-                                    throw new IllegalArgumentException("Failed requirement.");
-                                }
-                                String strD = fz0.d(strM, fz0.l(sSLSocket));
-                                String strOptString2 = jSONObjectN.optString("name");
-                                strOptString2.getClass();
-                                concurrentHashMap.put(strM, new h52(strM, qm4.J0(40, strOptString2), SystemClock.elapsedRealtime(), strD));
-                                JSONObject jSONObjectPut = new JSONObject().put("pair", strD);
-                                jSONObjectPut.getClass();
-                                fz0.p(sSLSocket, jSONObjectPut);
-                                w42.a.a("Receiver pairing code sent; awaiting approval", null);
-                            } else {
-                                if (!h12.c(ud3.D(), lanReceiverService.w) || (str = lanReceiverService.w) == null || str.length() == 0) {
-                                    throw new IllegalArgumentException("Failed requirement.");
-                                }
-                                if (!h12.c(strOptString, "watch")) {
-                                    fz0.p(sSLSocket, h12.c(strOptString, "queue") ? lanReceiverService.c(jSONObjectN, strM) : h12.c(strOptString, "edit") ? lanReceiverService.b(jSONObjectN, strM) : (JSONObject) lanReceiverService.d(new uy1(lanReceiverService, strM, strOptString, jSONObjectN, 1)));
-                                } else {
-                                    if (!lanReceiverService.q.tryAcquire()) {
-                                        throw new IllegalArgumentException("Failed requirement.");
-                                    }
-                                    try {
-                                        lanReceiverService.g(sSLSocket, strM);
-                                        lanReceiverService.q.release();
-                                    } catch (Throwable th4) {
-                                        lanReceiverService.q.release();
-                                        throw th4;
-                                    }
-                                }
-                            }
-                            lanReceiverService.s.remove(sSLSocket);
-                            try {
-                                sSLSocket.close();
-                                return;
-                            } catch (Throwable unused) {
-                                return;
-                            }
-                        } catch (Exception e) {
-                            e = e;
-                            i2 = 1;
-                            w42.a.a("Receiver failed at ".concat(i2 != 0 ? "request" : "TLS"), e);
-                            if (i2 == 0 && lanReceiverService.o) {
-                                LanReceiverService.z = lanReceiverService.getString(R.string.lan_tls_error);
-                            }
-                            if (i2 != 0) {
-                                try {
-                                    JSONObject jSONObjectPut2 = new JSONObject().put("error", "unavailable");
-                                    jSONObjectPut2.getClass();
-                                    String string2 = jSONObjectPut2.toString();
-                                    string2.getClass();
-                                    byte[] bytes = string2.getBytes(w10.a);
-                                    bytes.getClass();
-                                    int length = bytes.length;
-                                    if (1 > length || length >= 131073) {
-                                        throw new IllegalArgumentException("Failed requirement.");
-                                    }
-                                    DataOutputStream dataOutputStream = new DataOutputStream(sSLSocket.getOutputStream());
-                                    dataOutputStream.writeInt(bytes.length);
-                                    dataOutputStream.write(bytes);
-                                    dataOutputStream.flush();
-                                } catch (Throwable unused2) {
-                                }
-                            }
-                        }
-                    } catch (Exception e2) {
-                        e = e2;
-                    }
-                } catch (Throwable th5) {
-                    lanReceiverService.s.remove(sSLSocket);
-                    try {
-                        sSLSocket.close();
-                        break;
-                    } catch (Throwable unused3) {
-                    }
-                    throw th5;
-                }
-                break;
-            case 9:
-                LanReceiverService.a((LanReceiverService) this.o, (j52) this.p);
-                return;
-            case 10:
-                ((wc0) this.o).accept((aj2) this.p);
-                return;
-            case 11:
-                bl2 bl2Var = (bl2) this.o;
-                bj2 bj2Var = (bj2) this.p;
-                bl2Var.v = bj2Var;
-                if (bl2Var.w) {
-                    bl2Var.l(bj2Var);
-                }
-                bl2Var.f(new pk2(bl2Var, bj2Var, i3), new h41(i3, bl2Var));
-                return;
-            case 12:
-                gk2 gk2Var = (gk2) this.o;
-                gk2Var.Q.set(gk2Var.z((gp3) this.p, gk2Var.K, 0));
-                return;
-            case 13:
-                im2 im2Var = (im2) this.o;
-                wo0 wo0Var = new wo0(im2Var.a, (pr2) this.p);
-                im2Var.i = wo0Var;
-                gm2 gm2Var = im2Var.e;
-                Handler handler = im2Var.a1().f;
-                if (!((Set) wo0Var.o).add(gm2Var)) {
-                    l93.q0("MediaControllerCompat", "the callback has already been registered");
-                    return;
-                }
-                if (handler == null) {
-                    handler = new Handler();
-                }
-                gm2Var.d(handler);
-                xk2 xk2Var = (xk2) wo0Var.n;
-                MediaController mediaController = xk2Var.a;
-                uk2 uk2Var = gm2Var.a;
-                uk2Var.getClass();
-                mediaController.registerCallback(uk2Var, handler);
-                synchronized (xk2Var.b) {
-                    qu1 qu1VarA = xk2Var.e.a();
-                    if (qu1VarA != null) {
-                        tk2 tk2Var = new tk2(gm2Var);
-                        xk2Var.d.put(gm2Var, tk2Var);
-                        gm2Var.c = tk2Var;
-                        try {
-                            qu1VarA.l0(tk2Var);
-                            gm2Var.c(13, null);
-                        } catch (RemoteException | SecurityException e3) {
-                            l93.G("MediaControllerCompat", "Dead object in registerCallback.", e3);
-                        }
-                    } else {
-                        gm2Var.c = null;
-                        xk2Var.c.add(gm2Var);
-                    }
-                    break;
-                }
-                return;
-            case 14:
-                bm2 bm2Var = (bm2) this.o;
-                lm2 lm2Var = (lm2) this.p;
-                if (bm2Var.p) {
-                    return;
-                }
-                lm2Var.c(bm2Var);
-                return;
-            case 15:
-                ic2 ic2Var = (ic2) this.o;
-                nj2 nj2Var = (nj2) this.p;
-                try {
-                    ab4 ab4Var = (ab4) ic2Var.get();
-                    rr2.s(ab4Var, "SessionResult must not be null");
-                    nj2Var.f(ab4Var.b);
-                    return;
-                } catch (InterruptedException | CancellationException | ExecutionException e4) {
-                    l93.r0("MLSLegacyStub", "Custom action failed", e4);
-                    nj2Var.e();
-                    return;
-                }
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                lb4 lb4Var = (lb4) this.o;
-                ArrayList arrayList2 = (ArrayList) this.p;
-                if (lb4Var.n instanceof f0) {
-                    for (int i4 = 0; i4 < arrayList2.size(); i4++) {
-                        if (arrayList2.get(i4) != null) {
-                            ((ic2) arrayList2.get(i4)).cancel(false);
-                        }
-                    }
-                    return;
-                }
-                return;
-            case 17:
-                ic2 ic2Var2 = (ic2) this.o;
-                PodcastEpisode podcastEpisode = (PodcastEpisode) this.p;
-                try {
-                    if (!ic2Var2.isDone()) {
-                        return;
-                    }
-                    try {
-                        if (u52.c().a) {
-                            return;
-                        }
-                        bj2 bj2Var2 = (bj2) ic2Var2.get();
-                        bo2.b.set(true);
-                        bj2Var2.s0(gi1.L(podcastEpisode));
-                        bj2Var2.b();
-                        bj2Var2.m0();
-                        return;
-                    } catch (InterruptedException e5) {
-                        e = e5;
-                    }
-                } catch (InterruptedException | ExecutionException e6) {
-                    e = e6;
-                }
-                e.printStackTrace();
-                return;
-            case 18:
-                ic2 ic2Var3 = (ic2) this.o;
-                List list2 = (List) this.p;
-                try {
-                    if (ic2Var3.isDone()) {
-                        bo2.d.execute(new ws1(i, list2, (bj2) ic2Var3.get()));
-                        return;
-                    }
-                    return;
-                } catch (InterruptedException | ExecutionException e7) {
-                    e7.printStackTrace();
-                    return;
-                }
-            case 19:
-                a();
-                return;
-            case 20:
-                ic2 ic2Var4 = (ic2) this.o;
-                si1 si1Var = (si1) this.p;
-                try {
-                    if (ic2Var4.isDone()) {
-                        si1Var.onRecovery(((bj2) ic2Var4.get()).o0());
-                        return;
-                    }
-                    return;
-                } catch (InterruptedException | ExecutionException e8) {
-                    e8.printStackTrace();
-                    return;
-                }
-            case 21:
-                b();
-                return;
-            case 22:
-                c();
-                return;
-            case 23:
-                ((ho2) this.o).d.reportTrackChangeEvent((TrackChangeEvent) this.p);
-                return;
-            case 24:
-                d();
-                return;
-            case 25:
-                e();
-                return;
-            case 26:
-                f();
-                return;
-            case 27:
-                g();
-                return;
-            case 28:
-                h();
-                return;
-            default:
-                ((lb4) this.p).l(Boolean.valueOf(((tn2) this.o).u()));
-                return;
-        }
+        int r2 = 19;
+        HubException r3 = null;
+        s14 r4 = null;
+        int r5 = 0;
+        boolean r6 = false;
+        int r7 = 1;
+        switch(this.n) {
+            case 0: goto L296;
+            case 1: goto L291;
+            case 2: goto L280;
+            case 3: goto L264;
+            case 4: goto L257;
+            case 5: goto L226;
+            case 6: goto L204;
+            case 7: goto L200;
+            case 8: goto L112;
+            case 9: goto L110;
+            case 10: goto L108;
+            case 11: goto L103;
+            case 12: goto L101;
+            case 13: goto L78;
+            case 14: goto L73;
+            case 15: goto L63;
+            case 16: goto L53;
+            case 17: goto L40;
+            case 18: goto L32;
+            case 19: goto L30;
+            case 20: goto L22;
+            case 21: goto L20;
+            case 22: goto L18;
+            case 23: goto L16;
+            case 24: goto L14;
+            case 25: goto L12;
+            case 26: goto L10;
+            case 27: goto L8;
+            case 28: goto L6;
+            default: goto L4;
+        };
+    L4:
+        ((lb4) this.p).l(Boolean.valueOf(((tn2) this.o).u()));
+        return;
+    L6:
+        h();
+        return;
+    L8:
+        g();
+        return;
+    L10:
+        f();
+        return;
+    L12:
+        e();
+        return;
+    L14:
+        d();
+        return;
+    L16:
+        ho2 r1 = (ho2) this.o;
+        go2.m(r1.d, (TrackChangeEvent) this.p);
+        return;
+    L18:
+        c();
+        return;
+    L20:
+        b();
+        return;
+    L22:
+        ic2 r8 = (ic2) this.o;
+        si1 r0 = (si1) this.p;
+    L27:
+        e = move-exception;
+        e.printStackTrace();
+        return;
+    L24:
+        if (r8.isDone() == false) goto L351;
+        r0.onRecovery(((bj2) r8.get()).o0());     // Catch: Throwable -> L27
+        return;
+    L351:
+        return;
+    L30:
+        a();
+        return;
+    L32:
+        ic2 r9 = (ic2) this.o;
+        List r10 = (List) this.p;
+    L37:
+        e = move-exception;
+        e.printStackTrace();
+        return;
+    L34:
+        if (r9.isDone() == false) goto L353;
+        bo2.d.execute(new ws1(r2, r10, (bj2) r9.get()));     // Catch: Throwable -> L37
+        return;
+    L353:
+        return;
+    L40:
+        ic2 r11 = (ic2) this.o;
+        PodcastEpisode r12 = (PodcastEpisode) this.p;
+    L50:
+        e = e;
+    L51:
+        e.printStackTrace();
+        return;
+    L42:
+        if (r11.isDone() == false) goto L355;
+        if (u52.c().a == true) goto L356;
+        bj2 r13 = (bj2) r11.get();     // Catch: Throwable -> L50 Throwable -> L50
+        bo2.b.set(true);     // Catch: Throwable -> L50 Throwable -> L50
+        r13.s0(gi1.L(r12));     // Catch: Throwable -> L50 Throwable -> L50
+        r13.b();     // Catch: Throwable -> L50 Throwable -> L50
+        r13.m0();     // Catch: Throwable -> L50 Throwable -> L50
+        return;
+    L356:
+        return;
+    L48:
+        e = e;
+        goto L51
+    L355:
+        return;
+    L53:
+        lb4 r14 = (lb4) this.o;
+        ArrayList r15 = (ArrayList) this.p;
+        if ((r14.n instanceof f0) == false) goto L62;
+        int r16 = 0;
+    L57:
+        if (r16 >= r15.size()) goto L358;
+        if (r15.get(r16) == null) goto L61;
+        ((ic2) r15.get(r16)).cancel(false);
+    L61:
+        r16 = r16 + 1;
+        goto L57
+    L358:
+        return;
+    L62:
+        return;
+    L63:
+        ic2 r17 = (ic2) this.o;
+        nj2 r18 = (nj2) this.p;
+        ab4 r19 = (ab4) r17.get();     // Catch: InterruptedException -> L66 Throwable -> L68 CancellationException -> L70
+        rr2.s(r19, "SessionResult must not be null");     // Catch: InterruptedException -> L66 Throwable -> L68 CancellationException -> L70
+        r18.f(r19.b);     // Catch: InterruptedException -> L66 Throwable -> L68 CancellationException -> L70
+        return;
+    L68:
+        e = move-exception;
+        l93.r0("MLSLegacyStub", "Custom action failed", e);
+        r18.e();
+        return;
+    L73:
+        bm2 r20 = (bm2) this.o;
+        lm2 r21 = (lm2) this.p;
+        if (r20.p == true) goto L360;
+        r21.c(r20);
+        return;
+    L360:
+        return;
+    L78:
+        im2 r22 = (im2) this.o;
+        wo0 r23 = new wo0(r22.a, (pr2) this.p);
+        r22.i = r23;
+        gm2 r24 = r22.e;
+        Handler r25 = r22.a1().f;
+        if (((Set) r23.o).add(r24) == true) goto L81;
+        l93.q0("MediaControllerCompat", "the callback has already been registered");
+        return;
+    L81:
+        if (r25 != null) goto L83;
+        r25 = new Handler();
+    L83:
+        r24.d(r25);
+        xk2 r26 = (xk2) r23.n;
+        MediaController r27 = r26.a;
+        uk2 r28 = r24.a;
+        r28.getClass();
+        r27.registerCallback(r28, r25);
+        Object r29 = r26.b;
+        monitor-enter(r29);
+        qu1 r30 = r26.e.a();     // Catch: Throwable -> L90
+        if (r30 == null) goto L96;
+        tk2 r31 = new tk2(r24);     // Catch: Throwable -> L90
+        r26.d.put(r24, r31);     // Catch: Throwable -> L90
+        r24.c = r31;     // Catch: Throwable -> L90
+        r30.l0(r31);     // Catch: Throwable -> L90 Throwable -> L92 RemoteException -> L94
+        r24.c(13, null);     // Catch: Throwable -> L90 Throwable -> L92 RemoteException -> L94
+    L97:
+        monitor-exit(r29);     // Catch: Throwable -> L90
+        return;
+    L92:
+        e = move-exception;
+        l93.G("MediaControllerCompat", "Dead object in registerCallback.", e);     // Catch: Throwable -> L90
+        goto L97
+    L96:
+        r24.c = null;     // Catch: Throwable -> L90
+        r26.c.add(r24);     // Catch: Throwable -> L90
+    L90:
+        th = move-exception;
+        throw th;
+    L101:
+        gk2 r32 = (gk2) this.o;
+        r32.Q.set(r32.z((gp3) this.p, r32.K, 0));
+        return;
+    L103:
+        bl2 r33 = (bl2) this.o;
+        bj2 r34 = (bj2) this.p;
+        r33.v = r34;
+        if (r33.w == false) goto L106;
+        r33.l(r34);
+    L106:
+        r33.f(new pk2(r33, r34, r7), new h41(r7, r33));
+        return;
+    L108:
+        ((wc0) this.o).accept((aj2) this.p);
+        return;
+    L110:
+        LanReceiverService.a((LanReceiverService) this.o, (j52) this.p);
+        return;
+    L112:
+        LanReceiverService r35 = (LanReceiverService) this.o;
+        SSLSocket r36 = (SSLSocket) this.p;
+        boolean r37 = LanReceiverService.y;
+        w42 r38 = w42.a;     // Catch: Throwable -> L139 Exception -> L178
+        w42.b("Receiver accepted connection; starting TLS");     // Catch: Throwable -> L139 Exception -> L178
+        r36.startHandshake();     // Catch: Throwable -> L139 Exception -> L178
+        w42.b("Receiver TLS established");     // Catch: Throwable -> L139 Exception -> L141
+        LanReceiverService.z = null;     // Catch: Throwable -> L139 Exception -> L141
+        String r39 = fz0.m(r36);     // Catch: Throwable -> L139 Exception -> L141
+        if (r39.equals(fz0.l(r36)) == true) goto L177;
+        JSONObject r110 = fz0.n(r36);     // Catch: Throwable -> L139 Exception -> L141
+        String r40 = r110.optString("command");     // Catch: Throwable -> L139 Exception -> L141
+        if (kb4.a0(r35).contains(r39) == true) goto L150;
+        if (SystemClock.elapsedRealtime() >= LanReceiverService.A) goto L121;
+        r6 = true;
+    L121:
+        w42.b("Receiver unpaired request; windowOpen=" + r6);     // Catch: Throwable -> L139 Exception -> L141
+        r40.getClass();     // Catch: Throwable -> L139 Exception -> L141
+        long r41 = SystemClock.elapsedRealtime();     // Catch: Throwable -> L139 Exception -> L141
+        long r111 = LanReceiverService.A;     // Catch: Throwable -> L139 Exception -> L141
+        if (r40.equals("hello") == false) goto L148;
+        if (r41 >= r111) goto L148;
+        ConcurrentHashMap r42 = LanReceiverService.B;     // Catch: Throwable -> L139 Exception -> L141
+        Set r43 = r42.entrySet();     // Catch: Throwable -> L139 Exception -> L141
+        r43.getClass();     // Catch: Throwable -> L139 Exception -> L141
+        Iterator r44 = r43.iterator();     // Catch: Throwable -> L139 Exception -> L141
+    L127:
+        if (r44.hasNext() == false) goto L133;
+        Map.Entry r45 = (Map.Entry) r44.next();     // Catch: Throwable -> L139 Exception -> L141
+        r45.getClass();     // Catch: Throwable -> L139 Exception -> L141
+        if ((SystemClock.elapsedRealtime() - ((h52) r45.getValue()).d) <= 120000) goto L127;
+        r44.remove();     // Catch: Throwable -> L139 Exception -> L141
+        goto L127
+    L133:
+        if (r42.size() >= 4) goto L135;
+    L143:
+        String r112 = fz0.d(r39, fz0.l(r36));     // Catch: Throwable -> L139 Exception -> L141
+        String r46 = r110.optString("name");     // Catch: Throwable -> L139 Exception -> L141
+        r46.getClass();     // Catch: Throwable -> L139 Exception -> L141
+        r42.put(r39, new h52(r39, qm4.J0(40, r46), SystemClock.elapsedRealtime(), r112));     // Catch: Throwable -> L139 Exception -> L141
+        JSONObject r47 = new JSONObject().put("pair", r112);     // Catch: Throwable -> L139 Exception -> L141
+        r47.getClass();     // Catch: Throwable -> L139 Exception -> L141
+        fz0.p(r36, r47);     // Catch: Throwable -> L139 Exception -> L141
+        w42.b("Receiver pairing code sent; awaiting approval");     // Catch: Throwable -> L139 Exception -> L141
+    L144:
+        r35.s.remove(r36);
+        r36.close();     // Catch: Throwable -> L308
+        return;
+    L362:
+        return;
+    L135:
+        if (r42.containsKey(r39) == true) goto L143;
+        throw new IllegalArgumentException("Failed requirement.");     // Catch: Throwable -> L139 Exception -> L141
+    L148:
+        throw new IllegalArgumentException("Failed requirement.");     // Catch: Throwable -> L139 Exception -> L141
+    L150:
+        if (h12.c(ud3.D(), r35.w) == false) goto L175;
+        String r48 = r35.w;     // Catch: Throwable -> L139 Exception -> L141
+        if (r48 == null) goto L175;
+        if (r48.length() == 0) goto L175;
+        if (h12.c(r40, "watch") == false) goto L167;
+        if (r35.q.tryAcquire() == false) goto L165;
+        r35.g(r36, r39);     // Catch: Throwable -> L161
+        r35.q.release();     // Catch: Throwable -> L139 Exception -> L141
+    L161:
+        th = move-exception;
+        r35.q.release();     // Catch: Throwable -> L139 Exception -> L141
+        throw th;     // Catch: Throwable -> L139 Exception -> L141
+    L165:
+        throw new IllegalArgumentException("Failed requirement.");     // Catch: Throwable -> L139 Exception -> L141
+    L167:
+        if (h12.c(r40, "queue") == false) goto L170;
+        JSONObject r49 = r35.c(r110, r39);     // Catch: Throwable -> L139 Exception -> L141
+    L173:
+        fz0.p(r36, r49);     // Catch: Throwable -> L139 Exception -> L141
+        goto L144
+    L170:
+        if (h12.c(r40, "edit") == false) goto L172;
+        r49 = r35.b(r110, r39);     // Catch: Throwable -> L139 Exception -> L141
+        goto L173
+    L172:
+        r49 = (JSONObject) r35.d(new uy1(r35, r39, r40, r110, 1));     // Catch: Throwable -> L139 Exception -> L141
+    L175:
+        throw new IllegalArgumentException("Failed requirement.");     // Catch: Throwable -> L139 Exception -> L141
+    L177:
+        throw new IllegalArgumentException("Failed requirement.");     // Catch: Throwable -> L139 Exception -> L141
+    L141:
+        e = e;
+        r5 = 1;
+    L179:
+        w42 r50 = w42.a;     // Catch: Throwable -> L139
+        if (r5 == 0) goto L182;
+        String r51 = "request";
+    L183:
+        r50.a("Receiver failed at ".concat(r51), e);     // Catch: Throwable -> L139
+        if (r5 == 0) goto L186;
+    L188:
+        if (r5 == 0) goto L144;
+        JSONObject r52 = new JSONObject().put("error", "unavailable");     // Catch: Throwable -> L307
+        r52.getClass();     // Catch: Throwable -> L307
+        String r53 = r52.toString();     // Catch: Throwable -> L307
+        r53.getClass();     // Catch: Throwable -> L307
+        byte[] r54 = r53.getBytes(w10.a);     // Catch: Throwable -> L307
+        r54.getClass();     // Catch: Throwable -> L307
+        int r55 = r54.length;     // Catch: Throwable -> L307
+        if (1 > r55) goto L195;
+        if (r55 >= 131073) goto L195;
+        DataOutputStream r56 = new DataOutputStream(r36.getOutputStream());     // Catch: Throwable -> L307
+        r56.writeInt(r54.length);     // Catch: Throwable -> L307
+        r56.write(r54);     // Catch: Throwable -> L307
+        r56.flush();     // Catch: Throwable -> L307
+    L195:
+        throw new IllegalArgumentException("Failed requirement.");     // Catch: Throwable -> L307
+    L186:
+        if (r35.o == false) goto L188;
+        LanReceiverService.z = r35.getString(R.string.lan_tls_error);     // Catch: Throwable -> L139
+        goto L188
+    L182:
+        r51 = "TLS";
+    L178:
+        e = e;
+    L139:
+        th = move-exception;
+        r35.s.remove(r36);
+        r36.close();     // Catch: Throwable -> L309
+    L199:
+        throw th;
+    L200:
+        fx3 r57 = (fx3) this.o;
+        f9 r58 = (f9) this.p;
+        if (r57.n == true) goto L363;
+        r58.setTitle(R.string.lan_discovery_error);
+        return;
+    L363:
+        return;
+    L204:
+        WaveSession r59 = (WaveSession) this.o;
+        Serializable r60 = (Serializable) this.p;
+        WeakReference r61 = b.a;
+        r59.setInFlight(false);
+        if (b.b == r59) goto L208;
+        return;
+    L208:
+        if ((r60 instanceof s14) == true) goto L220;
+        ly4 r62 = (ly4) r60;
+        String r63 = r62.n;
+        List r64 = (List) r62.p;
+        r59.renew(r63);
+        rs1 r65 = rs1.a;
+        Set<String> r66 = r59.ids();
+        int r67 = lg2.W(r40.k0(r66, 10));
+        if (r67 >= 16) goto L212;
+        r67 = 16;
+    L212:
+        LinkedHashMap r68 = new LinkedHashMap(r67);
+        Iterator<T> r69 = r66.iterator();
+    L214:
+        if (r69.hasNext() == false) goto L216;
+        Object r70 = r69.next();
+        String r71 = (String) r70;
+        r68.put(r70, r59.getContext());
+        goto L214
+    L216:
+        rs1.b(r68, b.g(r59));
+        b.b(r59, r64);
+        if (r59.getAgain() == false) goto L219;
+        b.c();
+        goto L220
+    L219:
+        b.f(r59);
+    L220:
+        Throwable r72 = bb3.a(r60);
+        if (r72 == null) goto L364;
+        Log.w("HubWave", "renew: " + r72.getMessage());
+        r59.setFailures(r59.getFailures() + 1);
+        Long r73 = WaveRetry.INSTANCE.afterFailure(r59.getFailures());
+        if (r73 == null) goto L365;
+        long r74 = r73.longValue();
+        b.e();
+        u6 r75 = new u6(12);
+        b.c = r75;
+        io1.b.postDelayed(r75, r74);
+        return;
+    L365:
+        return;
+    L364:
+        return;
+    L226:
+        WaveSession r76 = (WaveSession) this.p;
+        String r77 = (String) this.o;
+        WeakReference r78 = b.a;
+        rr1 r79 = rr1.a;     // Catch: Throwable -> L241
+        boolean r80 = rr1.e().contains("wave_origin_v1");     // Catch: Throwable -> L241
+        WaveSession.Companion r81 = WaveSession.Companion;     // Catch: Throwable -> L241
+        Map<String, ? extends Object> r82 = r76.getSeed();     // Catch: Throwable -> L241
+        String r83 = r76.getMode();     // Catch: Throwable -> L241
+        String r84 = WaveOrigin.RESTART;
+        if (r80 == true) goto L231;
+        r84 = null;
+    L231:
+        if (r80 == false) goto L233;
+        String r85 = r77;
+    L234:
+        String r86 = rs1.f();     // Catch: Throwable -> L241
+        if (r80 == false) goto L237;
+        String r87 = r86;
+    L238:
+        WaveOut r88 = rr1.A(r81.startBody(r82, r83, r84, r85, r87));     // Catch: Throwable -> L241
+        List<WaveTrack> r89 = r88.getTracks();     // Catch: Throwable -> L241
+        if (r89 != null) goto L243;
+        r89 = u01.n;     // Catch: Throwable -> L241
+    L243:
+        ArrayList r90 = new ArrayList();     // Catch: Throwable -> L241
+        Iterator<T> r91 = r89.iterator();     // Catch: Throwable -> L241
+    L245:
+        if (r91.hasNext() == false) goto L249;
+        Object r92 = r91.next();     // Catch: Throwable -> L241
+        if (h12.c(((WaveTrack) r92).getGenerator(), WaveTrack.SEED) == true) goto L245;
+        r90.add(r92);     // Catch: Throwable -> L241
+        goto L245
+    L249:
+        String r93 = r88.getSessionId();     // Catch: Throwable -> L241
+        if (r93 == null) goto L253;
+        Object r94 = new ly4(r93, r88, b.k(WaveSession.CONTEXT_PREFIX + r93, r90));     // Catch: Throwable -> L241
+    L255:
+        io1.b.post(new ws1(6, r76, r94));
+        return;
+    L253:
+        throw new HubException("Пустой ответ Хаба");     // Catch: Throwable -> L241
+    L237:
+        r87 = null;
+        goto L238
+    L233:
+        r85 = null;
+    L241:
+        th = move-exception;
+        r94 = new s14(th);
+        goto L255
+    L257:
+        String r95 = (String) this.o;
+        Context r96 = (Context) this.p;
+        rr1.g(r95);     // Catch: Throwable -> L260
+    L262:
+        io1.b.post(new v6(r4, r96, r95, r2));
+        return;
+    L260:
+        th = move-exception;
+        r4 = new s14(th);
+        goto L262
+    L264:
+        Object r97 = this.o;
+        Context r98 = (Context) this.p;
+        if ((r97 instanceof s14) == true) goto L267;
+        j15 r99 = (j15) r97;
+        Toast.makeText(r98, R.string.homemusic_smart_hidden, 0).show();
+    L267:
+        Throwable r100 = bb3.a(r97);
+        if (r100 == null) goto L367;
+        Log.w("HubSmart", "hide", r100);
+        if ((r100 instanceof HubException) == false) goto L272;
+        r3 = (HubException) r100;
+    L272:
+        if (r3 == null) goto L277;
+        String r101 = r3.getMessage();
+        if (r101 == null) goto L277;
+    L278:
+        Toast.makeText(r98, r101, 1).show();
+        return;
+    L277:
+        r101 = r98.getString(R.string.homemusic_smart_failed);
+        r101.getClass();
+        goto L278
+    L367:
+        return;
+    L280:
+        HubShareActivity r102 = (HubShareActivity) this.p;
+        String r103 = (String) this.o;
+        ux3 r104 = HubShareActivity.P;
+        if (r102.isFinishing() == false) goto L283;
+        return;
+    L283:
+        if (r102.isDestroyed() == true) goto L369;
+        jv3 r105 = r102.N;
+        if (r105 == null) goto L288;
+        ((TextView) r105.p).setText(r103);
+        return;
+    L288:
+        h12.Q("bind");
+        throw null;
+    L369:
+        return;
+    L291:
+        HubShareActivity r106 = (HubShareActivity) this.o;
+        Exception r107 = (Exception) this.p;
+        ux3 r108 = HubShareActivity.P;
+        String r109 = r107.getMessage();
+        if (r109 != null) goto L294;
+        r109 = r106.getString(R.string.homemusic_share_failed);
+        r109.getClass();
+    L294:
+        r106.p(r109);
+        return;
+    L296:
+        String r113 = (String) this.o;
+        MainActivity r114 = (MainActivity) this.p;
+        if (r113 != null) goto L310;
+    L305:
+        io1.b.post(new xs1(r114, r5));
+        return;
+    L310:
+        na4 r115 = AppDatabase.y().G();     // Catch: Throwable -> L300
+        xl.E((s24) r115.n, false, true, new ma4(r115, new Server(r113, "", "", "", "", null, 0, false, null), 1));     // Catch: Throwable -> L300
+        Object r116 = j15.a;     // Catch: Throwable -> L300
+    L302:
+        Throwable r117 = bb3.a(r116);
+        if (r117 == null) goto L305;
+        Log.w("HubSettings", "Cannot forget the account", r117);
+    L300:
+        th = move-exception;
+        r116 = new s14(th);
+        goto L302
     }
 
-    public /* synthetic */ ws1(Object obj, String str, int i) {
-        this.n = i;
-        this.p = obj;
-        this.o = str;
+    public /* synthetic */ ws1(Object r1, String r2, int r3) {
+        this.n = r3;
+        this.p = r1;
+        this.o = r2;
     }
 }

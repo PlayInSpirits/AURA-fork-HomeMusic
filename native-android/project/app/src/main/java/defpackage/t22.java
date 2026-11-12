@@ -5,28 +5,36 @@ package defpackage;
 public class t22 extends a32 {
     public final boolean r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public t22(s22 s22Var) {
+    public t22(s22 r5) {
+        boolean r0 = true;
         super(true);
-        boolean z = true;
-        N(s22Var);
-        c20 c20VarG = G();
-        d20 d20Var = c20VarG instanceof d20 ? (d20) c20VarG : null;
-        if (d20Var == null) {
-            z = false;
-            break;
-        }
-        a32 a32VarQ = d20Var.q();
-        while (!a32VarQ.D()) {
-            c20 c20VarG2 = a32VarQ.G();
-            d20 d20Var2 = c20VarG2 instanceof d20 ? (d20) c20VarG2 : null;
-            if (d20Var2 == null) {
-                z = false;
-                break;
-            }
-            a32VarQ = d20Var2.q();
-        }
-        this.r = z;
+        N(r5);
+        c20 r6 = G();
+        if ((r6 instanceof d20) == false) goto L5;
+        d20 r7 = (d20) r6;
+    L7:
+        if (r7 == null) goto L18;
+        a32 r8 = r7.q();
+    L10:
+        if (r8.D() == true) goto L19;
+        c20 r9 = r8.G();
+        if ((r9 instanceof d20) == false) goto L15;
+        d20 r10 = (d20) r9;
+    L16:
+        if (r10 == null) goto L18;
+        r8 = r10.q();
+        goto L10
+    L15:
+        r10 = null;
+    L19:
+        this.r = r0;
+        return;
+    L18:
+        r0 = false;
+        goto L19
+    L5:
+        r7 = null;
+        goto L7
     }
 
     @Override // defpackage.a32

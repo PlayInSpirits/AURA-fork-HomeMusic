@@ -8,14 +8,14 @@ public final class zu4 extends ViewGroup.MarginLayoutParams {
     public int a;
     public int b;
 
-    public zu4(zu4 zu4Var) {
-        super((ViewGroup.MarginLayoutParams) zu4Var);
+    public zu4(zu4 r2) {
+        super(r2);
         this.a = 0;
-        this.a = zu4Var.a;
+        this.a = r2.a;
     }
 
-    public zu4(ViewGroup.LayoutParams layoutParams) {
-        super(layoutParams);
+    public zu4(ViewGroup.LayoutParams r1) {
+        super(r1);
         this.a = 0;
     }
 }

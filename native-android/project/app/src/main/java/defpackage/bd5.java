@@ -11,12 +11,12 @@ public abstract class bd5 {
     public final dd5 b;
     public final Set c;
 
-    public bd5(UUID uuid, dd5 dd5Var, LinkedHashSet linkedHashSet) {
-        uuid.getClass();
-        dd5Var.getClass();
-        linkedHashSet.getClass();
-        this.a = uuid;
-        this.b = dd5Var;
-        this.c = linkedHashSet;
+    public bd5(UUID r1, dd5 r2, LinkedHashSet r3) {
+        r1.getClass();
+        r2.getClass();
+        r3.getClass();
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
     }
 }

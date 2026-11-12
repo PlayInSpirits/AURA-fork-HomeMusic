@@ -12,61 +12,69 @@ public final class p23 implements Comparable {
     public final boolean r;
     public final int s;
 
-    public p23(r23 r23Var, Bundle bundle, boolean z, int i, boolean z2, int i2) {
-        this.n = r23Var;
-        this.o = bundle;
-        this.p = z;
-        this.q = i;
-        this.r = z2;
-        this.s = i2;
+    public p23(r23 r1, Bundle r2, boolean r3, int r4, boolean r5, int r6) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
+        this.q = r4;
+        this.r = r5;
+        this.s = r6;
+    }
+
+    public final int a(p23 r7) {
+        r7.getClass();
+        boolean r0 = r7.r;
+        boolean r1 = r7.p;
+        Bundle r2 = r7.o;
+        boolean r4 = this.p;
+        if (r4 == false) goto L7;
+        if (r1 == true) goto L7;
+        return 1;
+    L7:
+        if (r4 == true) goto L10;
+        if (r1 == false) goto L10;
+        return -1;
+    L10:
+        int r3 = this.q - r7.q;
+        if (r3 <= 0) goto L13;
+        return 1;
+    L13:
+        if (r3 >= 0) goto L15;
+        return -1;
+    L15:
+        Bundle r5 = this.o;
+        if (r5 == null) goto L19;
+        if (r2 != null) goto L19;
+        return 1;
+    L19:
+        if (r5 != null) goto L22;
+        if (r2 == null) goto L22;
+        return -1;
+    L22:
+        if (r5 == null) goto L28;
+        int r6 = r5.size();
+        r2.getClass();
+        int r8 = r6 - r2.size();
+        if (r8 <= 0) goto L26;
+        return 1;
+    L26:
+        if (r8 >= 0) goto L28;
+        return -1;
+    L28:
+        boolean r9 = this.r;
+        if (r9 == false) goto L32;
+        if (r0 == true) goto L32;
+        return 1;
+    L32:
+        if (r9 == true) goto L36;
+        if (r0 == false) goto L36;
+        return -1;
+    L36:
+        return this.s - r7.s;
     }
 
     @Override // java.lang.Comparable
-    /* JADX INFO: renamed from: a, reason: merged with bridge method [inline-methods] */
-    public final int compareTo(p23 p23Var) {
-        p23Var.getClass();
-        boolean z = p23Var.r;
-        boolean z2 = p23Var.p;
-        Bundle bundle = p23Var.o;
-        boolean z3 = this.p;
-        if (z3 && !z2) {
-            return 1;
-        }
-        if (!z3 && z2) {
-            return -1;
-        }
-        int i = this.q - p23Var.q;
-        if (i > 0) {
-            return 1;
-        }
-        if (i < 0) {
-            return -1;
-        }
-        Bundle bundle2 = this.o;
-        if (bundle2 != null && bundle == null) {
-            return 1;
-        }
-        if (bundle2 == null && bundle != null) {
-            return -1;
-        }
-        if (bundle2 != null) {
-            int size = bundle2.size();
-            bundle.getClass();
-            int size2 = size - bundle.size();
-            if (size2 > 0) {
-                return 1;
-            }
-            if (size2 < 0) {
-                return -1;
-            }
-        }
-        boolean z4 = this.r;
-        if (z4 && !z) {
-            return 1;
-        }
-        if (z4 || !z) {
-            return this.s - p23Var.s;
-        }
-        return -1;
+    public final /* bridge */ /* synthetic */ int compareTo(Object r1) {
+        return a((p23) r1);
     }
 }

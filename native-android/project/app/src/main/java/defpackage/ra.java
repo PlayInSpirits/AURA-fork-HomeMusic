@@ -29,10 +29,8 @@ import android.view.autofill.AutofillId;
 import android.view.autofill.AutofillValue;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
-import android.view.translation.TranslationRequestValue;
 import android.view.translation.ViewTranslationRequest;
 import app.homemusic.R;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,7 +48,7 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
     public static Class U0;
     public static Method V0;
     public static Method W0;
-    public static final q03 X0 = new q03();
+    public static final q03 X0 = null;
     public static u6 Y0;
     public static Method Z0;
     public static Method a1;
@@ -137,178 +135,206 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
     public final ey z;
     public MotionEvent z0;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public ra(Context context, h80 h80Var) {
-        y9 y9Var;
-        r62 r62Var;
-        super(context);
-        ra raVar = this;
-        raVar.n = uc5.B(h80Var);
-        raVar.o = 9205357640488583168L;
-        int i = 1;
-        raVar.p = true;
-        raVar.u = fz0.b0;
-        raVar.v = new ii();
-        int i2 = 0;
-        raVar.w = new ia(raVar, i2);
-        raVar.x = new zd3(bu.a(context), rv2.A);
-        raVar.z = new ey(raVar, raVar);
-        raVar.A = h80Var.c().j();
-        raVar.B = new qb();
-        raVar.C = uc5.B(Boolean.FALSE);
-        int i3 = 2;
-        da daVar = new da(raVar, i3);
-        z05 z05Var = ph4.a;
-        raVar.D = new dp0(daVar, null);
-        raVar.E = new xz1();
-        int i4 = 3;
-        c72 c72Var = new c72(3);
-        ui2 ui2Var = c72Var.I;
-        c34 c34Var = c34.b;
-        if (!h12.c(ui2Var, c34Var)) {
-            c72Var.I = c34Var;
-            c72Var.D();
-        }
-        c72Var.a0(raVar.getDensity());
-        c72Var.e0(raVar.getViewConfiguration());
-        c72Var.d0(new qa(raVar).c((w91) ((ey) raVar.getFocusOwner()).e).c(raVar.getDragAndDropManager().c));
-        raVar.F = c72Var;
-        i03 i03Var = f02.a;
-        raVar.G = new i03();
-        raVar.H = new yv3(raVar.getLayoutNodes(), raVar);
-        raVar.I = new l94(raVar.getRoot(), new x01(), raVar.getLayoutNodes());
-        ya yaVar = new ya(raVar);
-        raVar.J = yaVar;
-        raVar.K = new lb(raVar, new na(0, raVar, gb.class, "getContentCaptureSessionCompat", "getContentCaptureSessionCompat(Landroid/view/View;)Landroidx/compose/ui/contentcapture/ContentCaptureSessionWrapper;", 1, 0));
-        jw jwVar = new jw();
-        jwVar.o = raVar;
-        jwVar.p = new Object();
-        ac acVar = new ac();
-        jwVar.r = acVar;
-        if (raVar.isAttachedToWindow()) {
-            Context context2 = raVar.getContext();
-            if (!jwVar.n) {
-                context2.getApplicationContext().registerComponentCallbacks(acVar);
-                jwVar.n = true;
-            }
-        }
-        raVar.addOnAttachStateChangeListener(new bc(i2, jwVar));
-        raVar.L = jwVar;
-        raVar.M = new wn();
-        raVar.N = new q03();
-        raVar.Q = new tx2();
-        c72 root = raVar.getRoot();
-        jw jwVar2 = new jw();
-        jwVar2.o = root;
-        jwVar2.p = new cm1((iz1) root.Q.d);
-        int i5 = 15;
-        jwVar2.q = new pz1(15);
-        jwVar2.r = new fm1();
-        raVar.R = jwVar2;
-        raVar.S = uc5.B(new Configuration(context.getResources().getConfiguration()));
-        raVar.T = new dp0(new da(raVar, i4), null);
-        raVar.U = d() ? new x9(raVar, raVar.getAutofillTree()) : null;
-        if (d()) {
-            y9Var = new y9(new qr2(i5, context), getSemanticsOwner(), this, getRectManager(), context.getPackageName());
-            raVar = this;
-        } else {
-            y9Var = null;
-        }
-        raVar.V = y9Var;
-        raVar.a0 = new wb3(new ja(raVar, i2));
-        raVar.f0 = new ri2(raVar.getRoot());
-        raVar.g0 = 9223372034707292159L;
-        raVar.h0 = new int[]{0, 0};
-        raVar.i0 = ya4.h();
-        raVar.j0 = new Matrix();
-        raVar.k0 = ya4.h();
-        raVar.l0 = ya4.h();
-        raVar.m0 = -1L;
-        raVar.o0 = 9187343241974906880L;
-        raVar.s0 = new AtomicReference(null);
-        raVar.u0 = h80Var.p;
-        int layoutDirection = context.getResources().getConfiguration().getLayoutDirection();
-        int[] iArr = r91.a;
-        r62 r62Var2 = r62.n;
-        if (layoutDirection != 0) {
-            r62Var = layoutDirection != 1 ? null : r62.o;
-        } else {
-            r62Var = r62Var2;
-        }
-        raVar.v0 = uc5.B(r62Var != null ? r62Var : r62Var2);
-        raVar.x0 = new ex2();
-        raVar.B0 = new hd5(22);
-        raVar.C0 = new q03();
-        raVar.D0 = Float.NaN;
-        raVar.E0 = Float.NaN;
-        raVar.F0 = Float.NaN;
-        raVar.G0 = Float.NaN;
-        raVar.H0 = new g5(i3, raVar);
-        raVar.I0 = new ia(raVar, i);
-        raVar.K0 = new ka(raVar);
-        raVar.L0 = new bk(context, new ja(raVar, i));
-        raVar.M0 = new da(raVar, 4);
-        raVar.N0 = new da(raVar, i2);
-        raVar.addOnAttachStateChangeListener(raVar.K);
-        raVar.setWillNotDraw(false);
-        raVar.setFocusable(true);
-        int i6 = Build.VERSION.SDK_INT;
-        if (i6 >= 26) {
-            fb.a.a(raVar, 1, false);
-        }
-        raVar.setFocusableInTouchMode(true);
-        raVar.setClipChildren(false);
-        j65.o(raVar, yaVar);
-        raVar.setOnDragListener(raVar.getDragAndDropManager());
-        if (i6 >= 29) {
-            ab.a.a(raVar);
-        }
-        if (l()) {
-            View view = new View(context);
-            view.setLayoutParams(new ViewGroup.LayoutParams(1, 1));
-            view.setTag(R.id.hide_in_inspector_tag, Boolean.TRUE);
-            raVar.y = view;
-            raVar.addView(view, -1);
-        }
-        raVar.R0 = i6 >= 31 ? new rm2(15) : null;
-        raVar.T0 = new pa(raVar);
+    static {
+        X0 = new q03();
     }
 
-    public static boolean c(ra raVar, KeyEvent keyEvent) {
-        return super.dispatchKeyEvent(keyEvent);
+    public ra(Context r17, h80 r18) {
+        ra r2 = this;
+        super(r17);
+        r2.n = uc5.B(r18);
+        r2.o = 9205357640488583168L;
+        int r9 = 1;
+        r2.p = true;
+        r2.u = fz0.b0;
+        r2.v = new ii();
+        int r10 = 0;
+        r2.w = new ia(r2, r10);
+        r2.x = new zd3(bu.a(r17), rv2.A);
+        r2.z = new ey(r2, r2);
+        r2.A = r18.c().j();
+        r2.B = new qb();
+        r2.C = uc5.B(Boolean.FALSE);
+        int r11 = 2;
+        da r0 = new da(r2, r11);
+        z05 r1 = ph4.a;
+        rm2 r12 = null;
+        r2.D = new dp0(r0, null);
+        r2.E = new xz1();
+        int r13 = 3;
+        c72 r3 = new c72(3);
+        ui2 r4 = r3.I;
+        c34 r5 = c34.b;
+        if (h12.c(r4, r5) == true) goto L5;
+        r3.I = r5;
+        r3.D();
+    L5:
+        r3.a0(r2.getDensity());
+        r3.e0(r2.getViewConfiguration());
+        r3.d0(new qa(r2).c((w91) ((ey) r2.getFocusOwner()).e).c(r2.m72getDragAndDropManager().c));
+        r2.F = r3;
+        i03 r6 = f02.a;
+        r2.G = new i03();
+        r2.H = new yv3(r2.m74getLayoutNodes(), r2);
+        r2.I = new l94(r2.getRoot(), new x01(), r2.m74getLayoutNodes());
+        ya r14 = new ya(r2);
+        r2.J = r14;
+        r2.K = new lb(r2, new na(0, r2, gb.class, "getContentCaptureSessionCompat", "getContentCaptureSessionCompat(Landroid/view/View;)Landroidx/compose/ui/contentcapture/ContentCaptureSessionWrapper;", 1, 0));
+        jw r7 = new jw();
+        r7.o = r2;
+        r7.p = new Object();
+        ac r8 = new ac();
+        r7.r = r8;
+        if (r2.isAttachedToWindow() == false) goto L10;
+        Context r15 = r2.getContext();
+        if (r7.n == true) goto L10;
+        r15.getApplicationContext().registerComponentCallbacks(r8);
+        r7.n = true;
+    L10:
+        r2.addOnAttachStateChangeListener(new bc(r10, r7));
+        r2.L = r7;
+        r2.M = new wn();
+        r2.N = new q03();
+        r2.Q = new tx2();
+        c72 r16 = r2.getRoot();
+        jw r19 = new jw();
+        r19.o = r16;
+        r19.p = new cm1((iz1) r16.Q.d);
+        int r20 = 15;
+        r19.q = new pz1(15);
+        r19.r = new fm1();
+        r2.R = r19;
+        r2.S = uc5.B(new Configuration(r17.getResources().getConfiguration()));
+        r2.T = new dp0(new da(r2, r13), null);
+        if (d() == false) goto L13;
+        x9 r21 = new x9(r2, r2.getAutofillTree());
+    L14:
+        r2.U = r21;
+        if (d() == false) goto L17;
+        y9 r22 = new y9(new qr2(r20, r17), getSemanticsOwner(), this, getRectManager(), r17.getPackageName());
+        r2 = this;
+    L18:
+        r2.V = r22;
+        r2.a0 = new wb3(new ja(r2, r10));
+        r2.f0 = new ri2(r2.getRoot());
+        r2.g0 = 9223372034707292159L;
+        r2.h0 = new int[]{0, 0};
+        r2.i0 = ya4.h();
+        r2.j0 = new Matrix();
+        r2.k0 = ya4.h();
+        r2.l0 = ya4.h();
+        r2.m0 = -1;
+        r2.o0 = 9187343241974906880L;
+        r2.s0 = new AtomicReference(null);
+        r2.u0 = r18.p;
+        int r23 = r17.getResources().getConfiguration().getLayoutDirection();
+        int[] r24 = r91.a;
+        r62 r25 = r62.n;
+        if (r23 == 0) goto L23;
+        if (r23 == 1) goto L22;
+        r62 r26 = null;
+    L24:
+        if (r26 == null) goto L27;
+        r25 = r26;
+    L27:
+        r2.v0 = uc5.B(r25);
+        r2.x0 = new ex2();
+        r2.B0 = new hd5(22);
+        r2.C0 = new q03();
+        r2.D0 = Float.NaN;
+        r2.E0 = Float.NaN;
+        r2.F0 = Float.NaN;
+        r2.G0 = Float.NaN;
+        r2.H0 = new g5(r11, r2);
+        r2.I0 = new ia(r2, r9);
+        r2.K0 = new ka(r2);
+        r2.L0 = new bk(r17, new ja(r2, r9));
+        r2.M0 = new da(r2, 4);
+        r2.N0 = new da(r2, r10);
+        r2.addOnAttachStateChangeListener(r2.K);
+        r2.setWillNotDraw(false);
+        r2.setFocusable(true);
+        int r27 = Build.VERSION.SDK_INT;
+        if (r27 < 26) goto L30;
+        fb.a.a(r2, 1, false);
+    L30:
+        r2.setFocusableInTouchMode(true);
+        r2.setClipChildren(false);
+        j65.o(r2, r14);
+        r2.setOnDragListener(r2.m72getDragAndDropManager());
+        if (r27 < 29) goto L34;
+        ab.a.a(r2);
+    L34:
+        if (l() == false) goto L37;
+        View r28 = new View(r17);
+        r28.setLayoutParams(new ViewGroup.LayoutParams(1, 1));
+        r28.setTag(R.id.hide_in_inspector_tag, Boolean.TRUE);
+        r2.y = r28;
+        r2.addView(r28, -1);
+    L37:
+        if (r27 < 31) goto L39;
+        r12 = new rm2(15);
+    L39:
+        r2.R0 = r12;
+        r2.T0 = new pa(r2);
+        return;
+    L22:
+        r26 = r62.o;
+        goto L24
+    L23:
+        r26 = r25;
+        goto L24
+    L17:
+        r22 = null;
+        goto L18
+    L13:
+        r21 = null;
+        goto L14
+    }
+
+    public static boolean c(ra r0, KeyEvent r1) {
+        return super.dispatchKeyEvent(r1);
     }
 
     public static boolean d() {
-        return Build.VERSION.SDK_INT >= 26;
+        if (Build.VERSION.SDK_INT < 26) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
-    public static void e(ViewGroup viewGroup) {
-        int childCount = viewGroup.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            View childAt = viewGroup.getChildAt(i);
-            if (childAt instanceof ra) {
-                ((ra) childAt).s();
-            } else if (childAt instanceof ViewGroup) {
-                e((ViewGroup) childAt);
-            }
-        }
+    public static void e(ViewGroup r4) {
+        int r0 = r4.getChildCount();
+        int r1 = 0;
+    L3:
+        if (r1 >= r0) goto L11;
+        View r2 = r4.getChildAt(r1);
+        if ((r2 instanceof ra) == false) goto L8;
+        ((ra) r2).s();
+    L10:
+        r1 = r1 + 1;
+        goto L3
+    L8:
+        if ((r2 instanceof ViewGroup) == false) goto L10;
+        e((ViewGroup) r2);
+        goto L10
     }
 
-    public static long f(int i) {
-        int mode = View.MeasureSpec.getMode(i);
-        int size = View.MeasureSpec.getSize(i);
-        if (mode == Integer.MIN_VALUE) {
-            return size;
-        }
-        if (mode == 0) {
-            return 2147483647L;
-        }
-        if (mode == 1073741824) {
-            long j = size;
-            return j | (j << 32);
-        }
+    public static long f(int r4) {
+        int r0 = View.MeasureSpec.getMode(r4);
+        int r5 = View.MeasureSpec.getSize(r4);
+        if (r0 == Integer.MIN_VALUE) goto L14;
+        if (r0 != 0) goto L6;
+        return 2147483647L;
+    L6:
+        if (r0 != 1073741824) goto L9;
+        long r1 = r5;
+        return r1 | (r1 << 32);
+    L9:
         tb4.a();
-        return 0L;
+        return 0;
+    L14:
+        return r5;
     }
 
     private final nz getCanvasHolder() {
@@ -327,13 +353,13 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
     }
 
     private final js4 getLegacyTextInputServiceAndroid() {
-        js4 js4Var = this.q0;
-        if (js4Var != null) {
-            return js4Var;
-        }
-        js4 js4Var2 = new js4(getView(), this);
-        this.q0 = js4Var2;
-        return js4Var2;
+        js4 r0 = this.q0;
+        if (r0 != null) goto L6;
+        js4 r1 = new js4(getView(), this);
+        this.q0 = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     public static /* synthetic */ void getPlayNavigationSoundEffect$ui$annotations() {
@@ -357,699 +383,948 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
         return (h80) this.n.getValue();
     }
 
-    public static void i(c72 c72Var) {
-        c72Var.C();
-        f13 f13VarY = c72Var.y();
-        Object[] objArr = f13VarY.n;
-        int i = f13VarY.p;
-        for (int i2 = 0; i2 < i; i2++) {
-            i((c72) objArr[i2]);
-        }
+    public static void i(c72 r3) {
+        r3.C();
+        f13 r4 = r3.y();
+        Object[] r0 = r4.n;
+        int r5 = r4.p;
+        int r1 = 0;
+    L3:
+        if (r1 >= r5) goto L5;
+        i((c72) r0[r1]);
+        r1 = r1 + 1;
+        goto L3
     }
 
     public static boolean l() {
-        return Build.VERSION.SDK_INT >= 35;
+        if (Build.VERSION.SDK_INT < 35) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
-    public static boolean m(MotionEvent motionEvent) {
-        boolean z = (Float.floatToRawIntBits(motionEvent.getX()) & Integer.MAX_VALUE) >= 2139095040 || (Float.floatToRawIntBits(motionEvent.getY()) & Integer.MAX_VALUE) >= 2139095040 || (Float.floatToRawIntBits(motionEvent.getRawX()) & Integer.MAX_VALUE) >= 2139095040 || (Float.floatToRawIntBits(motionEvent.getRawY()) & Integer.MAX_VALUE) >= 2139095040;
-        if (!z) {
-            int pointerCount = motionEvent.getPointerCount();
-            for (int i = 1; i < pointerCount; i++) {
-                z = (Float.floatToRawIntBits(motionEvent.getX(i)) & Integer.MAX_VALUE) >= 2139095040 || (Float.floatToRawIntBits(motionEvent.getY(i)) & Integer.MAX_VALUE) >= 2139095040 || (Build.VERSION.SDK_INT >= 29 && !ux2.a.a(motionEvent, i));
-                if (z) {
-                    break;
-                }
-            }
-        }
-        return z;
+    public static boolean m(MotionEvent r8) {
+        if ((Float.floatToRawIntBits(r8.getX()) & Integer.MAX_VALUE) < 2139095040) goto L5;
+    L11:
+        boolean r0 = true;
+    L12:
+        if (r0 == true) goto L28;
+        int r5 = r8.getPointerCount();
+        int r6 = 1;
+    L14:
+        if (r6 >= r5) goto L28;
+        if ((Float.floatToRawIntBits(r8.getX(r6)) & Integer.MAX_VALUE) < 2139095040) goto L18;
+    L25:
+        r0 = true;
+    L26:
+        if (r0 == true) goto L28;
+        r6 = r6 + 1;
+        goto L14
+    L18:
+        if ((Float.floatToRawIntBits(r8.getY(r6)) & Integer.MAX_VALUE) >= 2139095040) goto L25;
+        if (Build.VERSION.SDK_INT >= 29) goto L22;
+    L24:
+        r0 = false;
+        goto L26
+    L22:
+        if (ux2.a.a(r8, r6) == true) goto L24;
+    L28:
+        return r0;
+    L5:
+        if ((Float.floatToRawIntBits(r8.getY()) & Integer.MAX_VALUE) >= 2139095040) goto L11;
+        if ((Float.floatToRawIntBits(r8.getRawX()) & Integer.MAX_VALUE) >= 2139095040) goto L11;
+        if ((Float.floatToRawIntBits(r8.getRawY()) & Integer.MAX_VALUE) >= 2139095040) goto L11;
+        r0 = false;
+        goto L12
     }
 
-    private final void setAttached(boolean z) {
-        this.C.setValue(Boolean.valueOf(z));
+    private final void setAttached(boolean r1) {
+        this.C.setValue(Boolean.valueOf(r1));
     }
 
-    private void setDensity(oo0 oo0Var) {
-        this.x.setValue(oo0Var);
+    private void setDensity(oo0 r1) {
+        this.x.setValue(r1);
     }
 
-    private void setLayoutDirection(r62 r62Var) {
-        this.v0.setValue(r62Var);
+    private void setLayoutDirection(r62 r1) {
+        this.v0.setValue(r1);
     }
 
-    private final void set_composeViewContext(h80 h80Var) {
-        this.n.setValue(h80Var);
+    private final void set_composeViewContext(h80 r1) {
+        this.n.setValue(r1);
     }
 
     public final void A() {
-        int i = Build.VERSION.SDK_INT;
-        float[] fArr = this.k0;
-        int[] iArr = this.h0;
-        if (i >= 29) {
-            ay.a.a(this, fArr, this.j0, iArr);
-        } else {
-            ya4.G(fArr);
-            gi1.Y(this, fArr, this.i0, iArr);
-        }
-        q05.q(fArr, this.l0);
+        int r0 = Build.VERSION.SDK_INT;
+        float[] r2 = this.k0;
+        int[] r3 = this.h0;
+        if (r0 < 29) goto L5;
+        ay.a.a(this, r2, this.j0, r3);
+    L6:
+        q05.q(r2, this.l0);
+        return;
+    L5:
+        ya4.G(r2);
+        gi1.Y(this, r2, this.i0, r3);
+        goto L6
     }
 
     public final boolean B() {
-        if (isFocused()) {
-            return true;
-        }
+        if (isFocused() == false) goto L7;
+        return true;
+    L7:
         return super.requestFocus(130, null);
     }
 
-    public final void C(gf1 gf1Var) {
-        ii iiVar = this.v;
-        boolean zIsEmpty = iiVar.isEmpty();
-        iiVar.addLast(gf1Var);
-        if (zIsEmpty) {
-            Handler handler = getHandler();
-            if (handler != null) {
-                handler.postAtFrontOfQueue(this.w);
-            } else {
-                kf2.n("schedule is called when outOfFrameExecutor is not available (view is detached)");
-            }
-        }
+    public final void C(gf1 r3) {
+        ii r0 = this.v;
+        boolean r1 = r0.isEmpty();
+        r0.addLast(r3);
+        if (r1 == false) goto L10;
+        Handler r4 = getHandler();
+        if (r4 == null) goto L8;
+        r4.postAtFrontOfQueue(this.w);
+        return;
+    L8:
+        kf2.n("schedule is called when outOfFrameExecutor is not available (view is detached)");
+        return;
     }
 
-    public final void D(c72 c72Var) {
-        if (isLayoutRequested() || !isAttachedToWindow()) {
-            return;
-        }
-        if (c72Var != null) {
-            while (c72Var != null && c72Var.r() == a72.n) {
-                if (!this.e0) {
-                    c72 c72VarT = c72Var.t();
-                    if (c72VarT == null) {
-                        break;
-                    }
-                    long j = ((iz1) c72VarT.Q.d).q;
-                    if (nc0.f(j) && nc0.e(j)) {
-                        break;
-                    }
-                }
-                c72Var = c72Var.t();
-            }
-            if (c72Var == getRoot()) {
-                requestLayout();
-                return;
-            }
-        }
-        if (getWidth() == 0 || getHeight() == 0) {
-            requestLayout();
-        } else {
-            invalidate();
-        }
+    public final void D(c72 r4) {
+        if (isLayoutRequested() == false) goto L5;
+        return;
+    L5:
+        if (isAttachedToWindow() == false) goto L41;
+        if (r4 == null) goto L25;
+    L7:
+        if (r4 == null) goto L21;
+        if (r4.r() != a72.n) goto L21;
+        if (this.e0 == true) goto L19;
+        c72 r0 = r4.t();
+        if (r0 == null) goto L21;
+        long r1 = ((iz1) r0.Q.d).q;
+        if (nc0.f(r1) == false) goto L19;
+        if (nc0.e(r1) == true) goto L21;
+    L19:
+        r4 = r4.t();
+    L21:
+        if (r4 != getRoot()) goto L25;
+        requestLayout();
+        return;
+    L25:
+        if (getWidth() != 0) goto L27;
+    L31:
+        requestLayout();
+        return;
+    L27:
+        if (getHeight() == 0) goto L31;
+        invalidate();
+        return;
     }
 
-    public final long E(long j) {
+    public final long E(long r7) {
         y();
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (j >> 32)) - Float.intBitsToFloat((int) (this.o0 >> 32));
-        return ya4.A((((long) Float.floatToRawIntBits(Float.intBitsToFloat((int) (j & 4294967295L)) - Float.intBitsToFloat((int) (this.o0 & 4294967295L)))) & 4294967295L) | (Float.floatToRawIntBits(fIntBitsToFloat) << 32), this.l0);
+        float r1 = Float.intBitsToFloat((int) (r7 >> 32)) - Float.intBitsToFloat((int) (this.o0 >> 32));
+        float r8 = Float.intBitsToFloat((int) (r7 & 4294967295L)) - Float.intBitsToFloat((int) (this.o0 & 4294967295L));
+        long r4 = Float.floatToRawIntBits(r1);
+        return ya4.A((((long) Float.floatToRawIntBits(r8)) & 4294967295L) | (r4 << 32), this.l0);
     }
 
-    public final int F(MotionEvent motionEvent) {
-        Object obj;
-        if (this.O0) {
-            this.O0 = false;
-            om1 om1Var = getComposeViewContext().t;
-            int metaState = motionEvent.getMetaState();
-            om1Var.getClass();
-            la5.n.setValue(new tn3(metaState));
-        }
-        tx2 tx2Var = this.Q;
-        rf2 rf2VarC = tx2Var.c(motionEvent, this);
-        int actionMasked = motionEvent.getActionMasked();
-        jw jwVar = this.R;
-        if (rf2VarC == null) {
-            if (!jwVar.n) {
-                ((xe2) ((pz1) jwVar.q).o).a();
-                ((cm1) jwVar.p).c();
-            }
-            return 0;
-        }
-        List list = (List) rf2VarC.n;
-        int size = list.size() - 1;
-        if (size < 0) {
-            obj = null;
-            break;
-        }
-        while (true) {
-            int i = size - 1;
-            obj = list.get(size);
-            if (((qn3) obj).e && (actionMasked == 0 || actionMasked == 5)) {
-                break;
-            }
-            if (i < 0) {
-                obj = null;
-                break;
-            }
-            size = i;
-        }
-        qn3 qn3Var = (qn3) obj;
-        if (qn3Var != null) {
-            this.o = qn3Var.d;
-        }
-        int iS = jwVar.s(rf2VarC, this, n(motionEvent));
-        rf2VarC.o = null;
-        if ((actionMasked != 0 && actionMasked != 5) || (iS & 1) != 0) {
-            return iS;
-        }
-        int pointerId = motionEvent.getPointerId(motionEvent.getActionIndex());
-        tx2Var.c.delete(pointerId);
-        tx2Var.b.delete(pointerId);
-        return iS;
+    public final int F(MotionEvent r11) {
+        if (this.O0 == false) goto L5;
+        this.O0 = false;
+        om1 r0 = getComposeViewContext().t;
+        int r2 = r11.getMetaState();
+        r0.getClass();
+        la5.n.setValue(new tn3(r2));
+    L5:
+        tx2 r1 = this.Q;
+        rf2 r3 = r1.c(r11, this);
+        int r4 = r11.getActionMasked();
+        jw r5 = this.R;
+        if (r3 == null) goto L30;
+        List r6 = (List) r3.n;
+        int r7 = r6.size() - 1;
+        if (r7 < 0) goto L17;
+    L9:
+        int r8 = r7 - 1;
+        Object r9 = r6.get(r7);
+        if (((qn3) r9).e == false) goto L14;
+        if (r4 == 0) goto L18;
+        if (r4 != 5) goto L14;
+    L18:
+        qn3 r10 = (qn3) r9;
+        if (r10 == null) goto L21;
+        this.o = r10.d;
+    L21:
+        int r12 = r5.s(r3, this, n(r11));
+        r3.o = null;
+        if (r4 == 0) goto L25;
+        if (r4 == 5) goto L25;
+    L26:
+        return r12;
+    L25:
+        if ((r12 & 1) != 0) goto L26;
+        int r13 = r11.getPointerId(r11.getActionIndex());
+        r1.c.delete(r13);
+        r1.b.delete(r13);
+        return r12;
+    L14:
+        if (r8 < 0) goto L17;
+        r7 = r8;
+    L17:
+        r9 = null;
+        goto L18
+    L30:
+        if (r5.n == true) goto L32;
+        ((xe2) ((pz1) r5.q).o).a();
+        ((cm1) r5.p).c();
+    L32:
+        return 0;
     }
 
-    public final void G(MotionEvent motionEvent, int i, long j, boolean z) {
-        int actionMasked = motionEvent.getActionMasked();
-        int actionIndex = -1;
-        if (actionMasked != 1) {
-            if (actionMasked == 6) {
-                actionIndex = motionEvent.getActionIndex();
-            }
-        } else if (i != 9 && i != 10) {
-            actionIndex = 0;
-        }
-        int pointerCount = motionEvent.getPointerCount() - (actionIndex >= 0 ? 1 : 0);
-        if (pointerCount == 0) {
-            return;
-        }
-        MotionEvent.PointerProperties[] pointerPropertiesArr = new MotionEvent.PointerProperties[pointerCount];
-        for (int i2 = 0; i2 < pointerCount; i2++) {
-            pointerPropertiesArr[i2] = new MotionEvent.PointerProperties();
-        }
-        MotionEvent.PointerCoords[] pointerCoordsArr = new MotionEvent.PointerCoords[pointerCount];
-        for (int i3 = 0; i3 < pointerCount; i3++) {
-            pointerCoordsArr[i3] = new MotionEvent.PointerCoords();
-        }
-        int i4 = 0;
-        while (i4 < pointerCount) {
-            int i5 = ((actionIndex < 0 || actionIndex > i4) ? 0 : 1) + i4;
-            motionEvent.getPointerProperties(i5, pointerPropertiesArr[i4]);
-            MotionEvent.PointerCoords pointerCoords = pointerCoordsArr[i4];
-            motionEvent.getPointerCoords(i5, pointerCoords);
-            float f = pointerCoords.x;
-            long jP = p((((long) Float.floatToRawIntBits(pointerCoords.y)) & 4294967295L) | (((long) Float.floatToRawIntBits(f)) << 32));
-            pointerCoords.x = Float.intBitsToFloat((int) (jP >> 32));
-            pointerCoords.y = Float.intBitsToFloat((int) (jP & 4294967295L));
-            i4++;
-        }
-        MotionEvent motionEventObtain = MotionEvent.obtain(motionEvent.getDownTime() == motionEvent.getEventTime() ? j : motionEvent.getDownTime(), j, i, pointerCount, pointerPropertiesArr, pointerCoordsArr, motionEvent.getMetaState(), z ? 0 : motionEvent.getButtonState(), motionEvent.getXPrecision(), motionEvent.getYPrecision(), motionEvent.getDeviceId(), motionEvent.getEdgeFlags(), motionEvent.getSource(), motionEvent.getFlags());
-        rf2 rf2VarC = this.Q.c(motionEventObtain, this);
-        rf2VarC.getClass();
-        this.R.s(rf2VarC, this, true);
-        motionEventObtain.recycle();
+    public final void G(MotionEvent r18, int r19, long r20, boolean r22) {
+        int r2 = r18.getActionMasked();
+        int r3 = -1;
+        if (r2 == 1) goto L9;
+        if (r2 != 6) goto L13;
+        r3 = r18.getActionIndex();
+    L13:
+        int r4 = r18.getPointerCount();
+        if (r3 < 0) goto L16;
+        int r7 = 1;
+    L17:
+        int r5 = r4 - r7;
+        if (r5 != 0) goto L20;
+        return;
+    L20:
+        MotionEvent.PointerProperties[] r8 = new MotionEvent.PointerProperties[r5];
+        int r9 = 0;
+    L21:
+        if (r9 >= r5) goto L23;
+        r8[r9] = new MotionEvent.PointerProperties();
+        r9 = r9 + 1;
+        goto L21
+    L23:
+        MotionEvent.PointerCoords[] r10 = new MotionEvent.PointerCoords[r5];
+        int r11 = 0;
+    L24:
+        if (r11 >= r5) goto L26;
+        r10[r11] = new MotionEvent.PointerCoords();
+        r11 = r11 + 1;
+        goto L24
+    L26:
+        int r12 = 0;
+    L27:
+        if (r12 >= r5) goto L33;
+        if (r3 < 0) goto L31;
+        if (r3 > r12) goto L31;
+        int r13 = 1;
+    L32:
+        int r14 = r13 + r12;
+        r18.getPointerProperties(r14, r8[r12]);
+        MotionEvent.PointerCoords r15 = r10[r12];
+        r18.getPointerCoords(r14, r15);
+        float r16 = r15.x;
+        float r17 = r15.y;
+        long r110 = Float.floatToRawIntBits(r16);
+        long r6 = p((((long) Float.floatToRawIntBits(r17)) & 4294967295L) | (r110 << 32));
+        r15.x = Float.intBitsToFloat((int) (r6 >> 32));
+        r15.y = Float.intBitsToFloat((int) (r6 & 4294967295L));
+        r12 = r12 + 1;
+    L31:
+        r13 = 0;
+        goto L32
+    L33:
+        if (r22 == false) goto L35;
+        int r111 = 0;
+    L37:
+        if (r18.getDownTime() != r18.getEventTime()) goto L39;
+        long r21 = r20;
+    L40:
+        MotionEvent r1 = MotionEvent.obtain(r21, r20, r19, r5, r8, r10, r18.getMetaState(), r111, r18.getXPrecision(), r18.getYPrecision(), r18.getDeviceId(), r18.getEdgeFlags(), r18.getSource(), r18.getFlags());
+        rf2 r23 = this.Q.c(r1, this);
+        r23.getClass();
+        this.R.s(r23, this, true);
+        r1.recycle();
+        return;
+    L39:
+        r21 = r18.getDownTime();
+        goto L40
+    L35:
+        r111 = r18.getButtonState();
+        goto L37
+    L16:
+        r7 = 0;
+        goto L17
+    L9:
+        if (r19 == 9) goto L13;
+        if (r19 == 10) goto L13;
+        r3 = 0;
+        goto L13
     }
 
-    public final void H(Configuration configuration) {
-        Configuration configuration2 = getConfiguration();
-        if (h12.c(configuration2, configuration)) {
-            return;
-        }
-        setConfiguration(new Configuration(configuration));
-        if (configuration2.fontScale == configuration.fontScale && configuration2.densityDpi == configuration.densityDpi) {
-            return;
-        }
+    public final void H(Configuration r4) {
+        Configuration r0 = getConfiguration();
+        if (h12.c(r0, r4) == true) goto L10;
+        setConfiguration(new Configuration(r4));
+        if (r0.fontScale == r4.fontScale) goto L7;
+    L8:
         setDensity(bu.a(getContext()));
+        return;
+    L7:
+        if (r0.densityDpi != r4.densityDpi) goto L8;
+        return;
     }
 
-    /* JADX WARN: Code duplicated, block: B:15:0x0056  */
     public final void I() {
-        boolean z;
-        int i;
-        int[] iArr = this.h0;
-        getLocationOnScreen(iArr);
-        long j = this.g0;
-        int i2 = (int) (j >> 32);
-        int i3 = (int) (j & 4294967295L);
-        int i4 = iArr[0];
-        if (i2 == i4 && i3 == iArr[1] && this.m0 >= 0) {
-            z = false;
-        } else {
-            this.g0 = (4294967295L & ((long) iArr[1])) | (((long) i4) << 32);
-            if (i2 == Integer.MAX_VALUE || i3 == Integer.MAX_VALUE) {
-                z = false;
-            } else {
-                f13 f13VarY = getRoot().y();
-                Object[] objArr = f13VarY.n;
-                int i5 = f13VarY.p;
-                for (int i6 = 0; i6 < i5; i6++) {
-                    ((c72) objArr[i6]).R.p.e0();
-                }
-                z = true;
-            }
-        }
+        int[] r1 = this.h0;
+        getLocationOnScreen(r1);
+        long r2 = this.g0;
+        int r5 = (int) (r2 >> 32);
+        int r3 = (int) (r2 & 4294967295L);
+        boolean r4 = false;
+        int r8 = r1[0];
+        if (r5 == r8) goto L5;
+    L8:
+        this.g0 = (4294967295L & ((long) r1[1])) | (((long) r8) << 32);
+        if (r5 == Integer.MAX_VALUE) goto L15;
+        if (r3 == Integer.MAX_VALUE) goto L15;
+        f13 r6 = getRoot().y();
+        Object[] r7 = r6.n;
+        int r9 = r6.p;
+        int r10 = 0;
+    L12:
+        if (r10 >= r9) goto L14;
+        ((c72) r7[r10]).R.p.e0();
+        r10 = r10 + 1;
+        goto L12
+    L14:
+        boolean r11 = true;
+    L16:
         y();
-        View rootView = this.S0;
-        if (rootView == null) {
-            rootView = getRootView();
-            this.S0 = rootView;
-        }
-        yv3 rectManager = getRectManager();
-        long j2 = this.g0;
-        long jK = ji2.K(this.o0);
-        int width = rootView.getWidth();
-        int height = rootView.getHeight();
-        rectManager.getClass();
-        float[] fArr = this.k0;
-        if (fArr.length < 16) {
-            i = 0;
-        } else {
-            i = ((((((((((fArr[0] == 1.0f ? 1 : 0) & (fArr[1] == 0.0f ? 1 : 0)) & (fArr[2] == 0.0f ? 1 : 0)) & (fArr[4] == 0.0f ? 1 : 0)) & (fArr[5] == 1.0f ? 1 : 0)) & (fArr[6] == 0.0f ? 1 : 0)) & (fArr[8] == 0.0f ? 1 : 0)) & (fArr[9] == 0.0f ? 1 : 0)) & (fArr[10] == 1.0f ? 1 : 0)) << 1) | ((fArr[15] == 1.0f ? 1 : 0) & (fArr[12] == 0.0f ? 1 : 0) & (fArr[13] == 0.0f ? 1 : 0) & (fArr[14] == 0.0f ? 1 : 0));
-        }
-        pt4 pt4Var = rectManager.d;
-        if ((i & 2) != 0) {
-            fArr = null;
-        }
-        rectManager.g = pt4Var.b(j2, jK, fArr, width, height) || rectManager.g;
-        this.f0.b(z);
+        View r12 = this.S0;
+        if (r12 != null) goto L19;
+        r12 = getRootView();
+        this.S0 = r12;
+    L19:
+        yv3 r13 = getRectManager();
+        long r14 = this.g0;
+        long r15 = ji2.K(this.o0);
+        int r16 = r12.getWidth();
+        int r17 = r12.getHeight();
+        r13.getClass();
+        float[] r18 = this.k0;
+        if (r18.length >= 16) goto L23;
+        int r19 = 0;
+    L75:
+        pt4 r110 = r13.d;
+        if ((r19 & 2) == 0) goto L80;
+        r18 = null;
+    L80:
+        if (r110.b(r14, r15, r18, r16, r17) == false) goto L82;
+    L83:
+        r4 = true;
+    L84:
+        r13.g = r4;
+        this.f0.b(r11);
         getRectManager().a();
+        return;
+    L82:
+        if (r13.g == false) goto L84;
+    L23:
+        if (r18[0] != 1.0f) goto L25;
+        int r20 = 1;
+    L27:
+        if (r18[1] != 0.0f) goto L29;
+        int r21 = 1;
+    L30:
+        int r22 = r20 & r21;
+        if (r18[2] != 0.0f) goto L33;
+        int r23 = 1;
+    L34:
+        int r24 = r22 & r23;
+        if (r18[4] != 0.0f) goto L37;
+        int r25 = 1;
+    L38:
+        int r26 = r24 & r25;
+        if (r18[5] != 1.0f) goto L41;
+        int r27 = 1;
+    L42:
+        int r28 = r26 & r27;
+        if (r18[6] != 0.0f) goto L45;
+        int r29 = 1;
+    L46:
+        int r30 = r28 & r29;
+        if (r18[8] != 0.0f) goto L49;
+        int r31 = 1;
+    L50:
+        int r32 = r30 & r31;
+        if (r18[9] != 0.0f) goto L53;
+        int r33 = 1;
+    L54:
+        int r34 = r32 & r33;
+        if (r18[10] != 1.0f) goto L57;
+        int r35 = 1;
+    L58:
+        int r36 = r34 & r35;
+        if (r18[12] != 0.0f) goto L61;
+        int r37 = 1;
+    L63:
+        if (r18[13] != 0.0f) goto L65;
+        int r111 = 1;
+    L66:
+        int r38 = r37 & r111;
+        if (r18[14] != 0.0f) goto L69;
+        int r112 = 1;
+    L70:
+        int r39 = r38 & r112;
+        if (r18[15] != 1.0f) goto L73;
+        int r40 = 1;
+    L74:
+        r19 = (r36 << 1) | (r40 & r39);
+        goto L75
+    L73:
+        r40 = 0;
+        goto L74
+    L69:
+        r112 = 0;
+        goto L70
+    L65:
+        r111 = 0;
+        goto L66
+    L61:
+        r37 = 0;
+        goto L63
+    L57:
+        r35 = 0;
+        goto L58
+    L53:
+        r33 = 0;
+        goto L54
+    L49:
+        r31 = 0;
+        goto L50
+    L45:
+        r29 = 0;
+        goto L46
+    L41:
+        r27 = 0;
+        goto L42
+    L37:
+        r25 = 0;
+        goto L38
+    L33:
+        r23 = 0;
+        goto L34
+    L29:
+        r21 = 0;
+        goto L30
+    L25:
+        r20 = 0;
+    L15:
+        r11 = false;
+        goto L16
+    L5:
+        if (r3 != r1[1]) goto L8;
+        if (this.m0 >= 0) goto L15;
+        goto L8
     }
 
-    public final void J(float f) {
-        if (l()) {
-            if (f > 0.0f) {
-                if (Float.isNaN(this.D0) || f > this.D0) {
-                    this.D0 = f;
-                    return;
-                }
-                return;
-            }
-            if (f < 0.0f) {
-                if (Float.isNaN(this.E0) || f < this.E0) {
-                    this.E0 = f;
-                }
-            }
-        }
+    public final void J(float r3) {
+        if (l() == true) goto L5;
+        return;
+    L5:
+        if (r3 <= 0.0f) goto L13;
+        if (Float.isNaN(this.D0) == false) goto L9;
+    L10:
+        this.D0 = r3;
+        return;
+    L9:
+        if (r3 > this.D0) goto L10;
+        return;
+    L13:
+        if (r3 < 0.0f) goto L15;
+        return;
+    L15:
+        if (Float.isNaN(this.E0) == false) goto L17;
+    L18:
+        this.E0 = r3;
+        return;
+    L17:
+        if (r3 < this.E0) goto L18;
     }
 
     @Override // defpackage.t91
-    public final void a(ba1 ba1Var, ba1 ba1Var2) {
-        w12 w12Var;
-        boolean z;
-        w12 w12Var2;
-        boolean z2;
-        if (ba1Var != null) {
-            ba1 ba1Var3 = ba1Var;
-            if (!ba1Var3.n.A) {
-                cz1.b("visitAncestors called on an unattached node");
-            }
-            cx2 cx2Var = ba1Var3.n;
-            c72 c72VarO = j51.O(ba1Var);
-            x03 x03Var = null;
-            ArrayList arrayList = null;
-            while (c72VarO != null) {
-                if ((((cx2) c72VarO.Q.g).q & 2097152) != 0) {
-                    while (cx2Var != null) {
-                        if ((cx2Var.p & 2097152) != 0) {
-                            cx2 cx2VarC = cx2Var;
-                            f13 f13Var = null;
-                            while (cx2VarC != null) {
-                                if (cx2VarC instanceof my1) {
-                                    if (arrayList == null) {
-                                        arrayList = new ArrayList();
-                                    }
-                                    arrayList.add(cx2VarC);
-                                    z2 = false;
-                                } else {
-                                    z2 = true;
-                                }
-                                if (z2 && (cx2VarC.p & 2097152) != 0 && (cx2VarC instanceof fo0)) {
-                                    int i = 0;
-                                    for (cx2 cx2Var2 = ((fo0) cx2VarC).C; cx2Var2 != null; cx2Var2 = cx2Var2.s) {
-                                        if ((cx2Var2.p & 2097152) != 0) {
-                                            i++;
-                                            if (i == 1) {
-                                                cx2VarC = cx2Var2;
-                                            } else {
-                                                if (f13Var == null) {
-                                                    f13Var = new f13(new cx2[16]);
-                                                }
-                                                if (cx2VarC != null) {
-                                                    f13Var.b(cx2VarC);
-                                                    cx2VarC = null;
-                                                }
-                                                f13Var.b(cx2Var2);
-                                            }
-                                        }
-                                    }
-                                    if (i == 1) {
-                                    }
-                                }
-                                cx2VarC = j51.c(f13Var);
-                            }
-                        }
-                        cx2Var = cx2Var.r;
-                    }
-                }
-                c72VarO = c72VarO.t();
-                cx2Var = (c72VarO == null || (w12Var2 = c72VarO.Q) == null) ? null : (sq4) w12Var2.f;
-            }
-            if (arrayList == null) {
-                return;
-            }
-            if (ba1Var2 != null) {
-                if (!ba1Var2.n.A) {
-                    cz1.b("visitAncestors called on an unattached node");
-                }
-                cx2 cx2Var3 = ba1Var2.n;
-                c72 c72VarO2 = j51.O(ba1Var2);
-                x03 x03Var2 = null;
-                while (c72VarO2 != null) {
-                    if ((((cx2) c72VarO2.Q.g).q & 2097152) != 0) {
-                        while (cx2Var3 != null) {
-                            if ((cx2Var3.p & 2097152) != 0) {
-                                cx2 cx2VarC2 = cx2Var3;
-                                f13 f13Var2 = null;
-                                while (cx2VarC2 != null) {
-                                    if (cx2VarC2 instanceof my1) {
-                                        if (x03Var2 == null) {
-                                            x03 x03Var3 = w54.a;
-                                            x03Var2 = new x03();
-                                        }
-                                        x03Var2.a(cx2VarC2);
-                                        z = false;
-                                    } else {
-                                        z = true;
-                                    }
-                                    if (z && (cx2VarC2.p & 2097152) != 0 && (cx2VarC2 instanceof fo0)) {
-                                        int i2 = 0;
-                                        for (cx2 cx2Var4 = ((fo0) cx2VarC2).C; cx2Var4 != null; cx2Var4 = cx2Var4.s) {
-                                            if ((cx2Var4.p & 2097152) != 0) {
-                                                i2++;
-                                                if (i2 == 1) {
-                                                    cx2VarC2 = cx2Var4;
-                                                } else {
-                                                    if (f13Var2 == null) {
-                                                        f13Var2 = new f13(new cx2[16]);
-                                                    }
-                                                    if (cx2VarC2 != null) {
-                                                        f13Var2.b(cx2VarC2);
-                                                        cx2VarC2 = null;
-                                                    }
-                                                    f13Var2.b(cx2Var4);
-                                                }
-                                            }
-                                        }
-                                        if (i2 == 1) {
-                                        }
-                                    }
-                                    cx2VarC2 = j51.c(f13Var2);
-                                }
-                            }
-                            cx2Var3 = cx2Var3.r;
-                        }
-                    }
-                    c72VarO2 = c72VarO2.t();
-                    cx2Var3 = (c72VarO2 == null || (w12Var = c72VarO2.Q) == null) ? null : (sq4) w12Var.f;
-                }
-                x03Var = x03Var2;
-            }
-            int size = arrayList.size();
-            for (int i3 = 0; i3 < size; i3++) {
-                my1 my1Var = (my1) arrayList.get(i3);
-                if (!(x03Var != null ? x03Var.c(my1Var) : false)) {
-                    my1Var.N();
-                }
-            }
-        }
+    public final void a(ba1 r13, ba1 r14) {
+        if (r13 == null) goto L109;
+        ba1 r12 = r13;
+        if (r12.n.A == true) goto L6;
+        cz1.b("visitAncestors called on an unattached node");
+    L6:
+        cx2 r15 = r12.n;
+        c72 r16 = j51.O(r13);
+        x03 r0 = null;
+        ArrayList r2 = null;
+    L8:
+        if (r16 == null) goto L50;
+        if ((((cx2) r16.Q.g).q & 2097152) == 0) goto L44;
+    L11:
+        if (r15 == null) goto L44;
+        if ((r15.p & 2097152) == 0) goto L43;
+        cx2 r7 = r15;
+        f13 r8 = null;
+    L15:
+        if (r7 == null) goto L43;
+        if ((r7 instanceof my1) == false) goto L21;
+        if (r2 != null) goto L20;
+        r2 = new ArrayList();
+    L20:
+        r2.add(r7);
+        boolean r9 = false;
+    L22:
+        if (r9 == false) goto L42;
+        if ((r7.p & 2097152) == 0) goto L42;
+        if ((r7 instanceof fo0) == false) goto L42;
+        cx2 r10 = ((fo0) r7).C;
+        int r11 = 0;
+    L28:
+        if (r10 == null) goto L40;
+        if ((r10.p & 2097152) == 0) goto L39;
+        r11 = r11 + 1;
+        if (r11 != 1) goto L34;
+        r7 = r10;
+        goto L39
+    L34:
+        if (r8 != null) goto L36;
+        r8 = new f13(new cx2[16]);
+    L36:
+        if (r7 == null) goto L38;
+        r8.b(r7);
+        r7 = null;
+    L38:
+        r8.b(r10);
+    L39:
+        r10 = r10.s;
+        goto L28
+    L40:
+        if (r11 == 1) goto L15;
+    L42:
+        r7 = j51.c(r8);
+        goto L15
+    L21:
+        r9 = true;
+    L43:
+        r15 = r15.r;
+    L44:
+        r16 = r16.t();
+        if (r16 == null) goto L49;
+        w12 r17 = r16.Q;
+        if (r17 == null) goto L49;
+        r15 = (sq4) r17.f;
+    L49:
+        r15 = null;
+        goto L8
+    L50:
+        if (r2 == null) goto L155;
+        if (r14 != null) goto L54;
+    L100:
+        int r18 = r2.size();
+        int r19 = 0;
+    L101:
+        if (r19 >= r18) goto L156;
+        my1 r110 = (my1) r2.get(r19);
+        if (r0 == null) goto L105;
+        boolean r1 = r0.c(r110);
+    L106:
+        if (r1 == true) goto L108;
+        r110.N();
+    L108:
+        r19 = r19 + 1;
+        goto L101
+    L105:
+        r1 = false;
+        goto L106
+    L156:
+        return;
+    L54:
+        if (r14.n.A == true) goto L56;
+        cz1.b("visitAncestors called on an unattached node");
+    L56:
+        cx2 r111 = r14.n;
+        c72 r112 = j51.O(r14);
+        x03 r113 = null;
+    L57:
+        if (r112 == null) goto L99;
+        if ((((cx2) r112.Q.g).q & 2097152) == 0) goto L93;
+    L60:
+        if (r111 == null) goto L93;
+        if ((r111.p & 2097152) == 0) goto L92;
+        cx2 r3 = r111;
+        f13 r20 = null;
+    L64:
+        if (r3 == null) goto L92;
+        if ((r3 instanceof my1) == false) goto L70;
+        if (r113 != null) goto L69;
+        x03 r114 = w54.a;
+        r113 = new x03();
+    L69:
+        r113.a(r3);
+        boolean r21 = false;
+    L71:
+        if (r21 == false) goto L91;
+        if ((r3.p & 2097152) == 0) goto L91;
+        if ((r3 instanceof fo0) == false) goto L91;
+        cx2 r22 = ((fo0) r3).C;
+        int r23 = 0;
+    L77:
+        if (r22 == null) goto L89;
+        if ((r22.p & 2097152) == 0) goto L88;
+        r23 = r23 + 1;
+        if (r23 != 1) goto L83;
+        r3 = r22;
+        goto L88
+    L83:
+        if (r20 != null) goto L85;
+        r20 = new f13(new cx2[16]);
+    L85:
+        if (r3 == null) goto L87;
+        r20.b(r3);
+        r3 = null;
+    L87:
+        r20.b(r22);
+    L88:
+        r22 = r22.s;
+        goto L77
+    L89:
+        if (r23 == 1) goto L64;
+    L91:
+        r3 = j51.c(r20);
+        goto L64
+    L70:
+        r21 = true;
+    L92:
+        r111 = r111.r;
+    L93:
+        r112 = r112.t();
+        if (r112 == null) goto L98;
+        w12 r115 = r112.Q;
+        if (r115 == null) goto L98;
+        r111 = (sq4) r115.f;
+    L98:
+        r111 = null;
+        goto L57
+    L99:
+        r0 = r113;
+        goto L100
+    L155:
+        return;
     }
 
     @Override // android.view.ViewGroup, android.view.View
-    public final void addFocusables(ArrayList arrayList, int i, int i2) {
-        ba1 ba1Var = (ba1) ((ey) getFocusOwner()).c;
-        if (!ba1Var.A) {
-            return;
-        }
-        if (!ba1Var.n.A) {
-            cz1.b("visitSubtreeIf called on an unattached node");
-        }
-        f13 f13Var = new f13(new cx2[16]);
-        cx2 cx2Var = ba1Var.n;
-        cx2 cx2Var2 = cx2Var.s;
-        if (cx2Var2 == null) {
-            j51.b(f13Var, cx2Var);
-        } else {
-            f13Var.b(cx2Var2);
-        }
-        while (true) {
-            int i3 = f13Var.p;
-            if (i3 == 0) {
-                return;
-            }
-            cx2 cx2Var3 = (cx2) f13Var.k(i3 - 1);
-            if ((cx2Var3.q & 1024) != 0) {
-                for (cx2 cx2Var4 = cx2Var3; cx2Var4 != null && cx2Var4.A; cx2Var4 = cx2Var4.s) {
-                    if ((cx2Var4.p & 1024) != 0) {
-                        cx2 cx2VarC = cx2Var4;
-                        f13 f13Var2 = null;
-                        while (cx2VarC != null) {
-                            int i4 = 0;
-                            if (cx2VarC instanceof ba1) {
-                                ba1 ba1Var2 = (ba1) cx2VarC;
-                                if (ba1Var2.A && ba1Var2.s0().a) {
-                                    super.addFocusables(arrayList, i, i2);
-                                    ba1 ba1Var3 = (ba1) ((ey) getFocusOwner()).c;
-                                    if (ba1Var3.A) {
-                                        if (!ba1Var3.n.A) {
-                                            cz1.b("visitSubtreeIf called on an unattached node");
-                                        }
-                                        f13 f13Var3 = new f13(new cx2[16]);
-                                        cx2 cx2Var5 = ba1Var3.n;
-                                        cx2 cx2Var6 = cx2Var5.s;
-                                        if (cx2Var6 == null) {
-                                            j51.b(f13Var3, cx2Var5);
-                                        } else {
-                                            f13Var3.b(cx2Var6);
-                                        }
-                                        while (true) {
-                                            int i5 = f13Var3.p;
-                                            if (i5 == 0) {
-                                                break;
-                                            }
-                                            cx2 cx2Var7 = (cx2) f13Var3.k(i5 - 1);
-                                            if ((cx2Var7.q & 1024) != 0) {
-                                                for (cx2 cx2Var8 = cx2Var7; cx2Var8 != null && cx2Var8.A; cx2Var8 = cx2Var8.s) {
-                                                    if ((cx2Var8.p & 1024) != 0) {
-                                                        cx2 cx2VarC2 = cx2Var8;
-                                                        f13 f13Var4 = null;
-                                                        while (cx2VarC2 != null) {
-                                                            if (cx2VarC2 instanceof ba1) {
-                                                                ba1 ba1Var4 = (ba1) cx2VarC2;
-                                                                if (ba1Var4.A) {
-                                                                    x91 x91VarS0 = ba1Var4.s0();
-                                                                    if (ba1Var4.A && x91VarS0.a) {
-                                                                        return;
-                                                                    }
-                                                                }
-                                                            } else if ((cx2VarC2.p & 1024) != 0 && (cx2VarC2 instanceof fo0)) {
-                                                                int i6 = 0;
-                                                                for (cx2 cx2Var9 = ((fo0) cx2VarC2).C; cx2Var9 != null; cx2Var9 = cx2Var9.s) {
-                                                                    if ((cx2Var9.p & 1024) != 0) {
-                                                                        i6++;
-                                                                        if (i6 == 1) {
-                                                                            cx2VarC2 = cx2Var9;
-                                                                        } else {
-                                                                            if (f13Var4 == null) {
-                                                                                f13Var4 = new f13(new cx2[16]);
-                                                                            }
-                                                                            if (cx2VarC2 != null) {
-                                                                                f13Var4.b(cx2VarC2);
-                                                                                cx2VarC2 = null;
-                                                                            }
-                                                                            f13Var4.b(cx2Var9);
-                                                                        }
-                                                                    }
-                                                                }
-                                                                if (i6 == 1) {
-                                                                }
-                                                            }
-                                                            cx2VarC2 = j51.c(f13Var4);
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            j51.b(f13Var3, cx2Var7);
-                                        }
-                                    }
-                                    if (arrayList != null) {
-                                        arrayList.remove(this);
-                                        return;
-                                    }
-                                    return;
-                                }
-                            } else if ((cx2VarC.p & 1024) != 0 && (cx2VarC instanceof fo0)) {
-                                for (cx2 cx2Var10 = ((fo0) cx2VarC).C; cx2Var10 != null; cx2Var10 = cx2Var10.s) {
-                                    if ((cx2Var10.p & 1024) != 0) {
-                                        i4++;
-                                        if (i4 == 1) {
-                                            cx2VarC = cx2Var10;
-                                        } else {
-                                            if (f13Var2 == null) {
-                                                f13Var2 = new f13(new cx2[16]);
-                                            }
-                                            if (cx2VarC != null) {
-                                                f13Var2.b(cx2VarC);
-                                                cx2VarC = null;
-                                            }
-                                            f13Var2.b(cx2Var10);
-                                        }
-                                    }
-                                }
-                                if (i4 == 1) {
-                                }
-                            }
-                            cx2VarC = j51.c(f13Var2);
-                        }
-                    }
-                }
-            }
-            j51.b(f13Var, cx2Var3);
-        }
+    public final void addFocusables(ArrayList r13, int r14, int r15) {
+        ba1 r0 = (ba1) ((ey) getFocusOwner()).c;
+        if (r0.A == true) goto L6;
+        return;
+    L6:
+        if (r0.n.A == true) goto L8;
+        cz1.b("visitSubtreeIf called on an unattached node");
+    L8:
+        f13 r1 = new f13(new cx2[16]);
+        cx2 r2 = r0.n;
+        cx2 r4 = r2.s;
+        if (r4 != null) goto L11;
+        j51.b(r1, r2);
+    L12:
+        int r3 = r1.p;
+        if (r3 == 0) goto L149;
+        cx2 r5 = (cx2) r1.k(r3 - 1);
+        if ((r5.q & 1024) == 0) goto L108;
+        cx2 r6 = r5;
+    L17:
+        if (r6 == null) goto L108;
+        if (r6.A == false) goto L108;
+        if ((r6.p & 1024) == 0) goto L107;
+        cx2 r7 = r6;
+        f13 r8 = null;
+    L23:
+        if (r7 == null) goto L107;
+        int r10 = 0;
+        if ((r7 instanceof ba1) == true) goto L26;
+        if ((r7.p & 1024) == 0) goto L106;
+        if ((r7 instanceof fo0) == false) goto L106;
+        cx2 r9 = ((fo0) r7).C;
+    L92:
+        if (r9 == null) goto L104;
+        if ((r9.p & 1024) == 0) goto L103;
+        r10 = r10 + 1;
+        if (r10 != 1) goto L98;
+        r7 = r9;
+        goto L103
+    L98:
+        if (r8 != null) goto L100;
+        r8 = new f13(new cx2[16]);
+    L100:
+        if (r7 == null) goto L102;
+        r8.b(r7);
+        r7 = null;
+    L102:
+        r8.b(r9);
+    L103:
+        r9 = r9.s;
+        goto L92
+    L104:
+        if (r10 == 1) goto L23;
+    L106:
+        r7 = j51.c(r8);
+        goto L23
+    L26:
+        ba1 r11 = (ba1) r7;
+        if (r11.A == false) goto L106;
+        if (r11.s0().a == false) goto L106;
+        super.addFocusables(r13, r14, r15);
+        ba1 r16 = (ba1) ((ey) getFocusOwner()).c;
+        if (r16.A == true) goto L34;
+    L84:
+        if (r13 == null) goto L109;
+        r13.remove(this);
+        return;
+    L109:
+        return;
+    L34:
+        if (r16.n.A == true) goto L36;
+        cz1.b("visitSubtreeIf called on an unattached node");
+    L36:
+        f13 r17 = new f13(new cx2[16]);
+        cx2 r18 = r16.n;
+        cx2 r12 = r18.s;
+        if (r12 != null) goto L39;
+        j51.b(r17, r18);
+    L40:
+        int r19 = r17.p;
+        if (r19 == 0) goto L84;
+        cx2 r110 = (cx2) r17.k(r19 - 1);
+        if ((r110.q & 1024) == 0) goto L83;
+        cx2 r20 = r110;
+    L45:
+        if (r20 == null) goto L83;
+        if (r20.A == false) goto L83;
+        if ((r20.p & 1024) == 0) goto L82;
+        cx2 r21 = r20;
+        f13 r22 = null;
+    L51:
+        if (r21 == null) goto L82;
+        if ((r21 instanceof ba1) == true) goto L54;
+        if ((r21.p & 1024) == 0) goto L81;
+        if ((r21 instanceof fo0) == false) goto L81;
+        cx2 r23 = ((fo0) r21).C;
+        int r24 = 0;
+    L67:
+        if (r23 == null) goto L79;
+        if ((r23.p & 1024) == 0) goto L78;
+        r24 = r24 + 1;
+        if (r24 != 1) goto L73;
+        r21 = r23;
+        goto L78
+    L73:
+        if (r22 != null) goto L75;
+        r22 = new f13(new cx2[16]);
+    L75:
+        if (r21 == null) goto L77;
+        r22.b(r21);
+        r21 = null;
+    L77:
+        r22.b(r23);
+    L78:
+        r23 = r23.s;
+        goto L67
+    L79:
+        if (r24 == 1) goto L51;
+    L81:
+        r21 = j51.c(r22);
+        goto L51
+    L54:
+        ba1 r25 = (ba1) r21;
+        if (r25.A == false) goto L81;
+        x91 r26 = r25.s0();
+        if (r25.A == false) goto L81;
+        if (r26.a == false) goto L81;
+        return;
+    L82:
+        r20 = r20.s;
+    L83:
+        j51.b(r17, r110);
+        goto L40
+    L39:
+        r17.b(r12);
+    L107:
+        r6 = r6.s;
+    L108:
+        j51.b(r1, r5);
+        goto L12
+    L149:
+        return;
+    L11:
+        r1.b(r4);
+        goto L12
     }
 
     @Override // android.view.ViewGroup
-    public final void addView(View view, int i) {
-        view.getClass();
-        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        if (layoutParams == null) {
-            layoutParams = generateDefaultLayoutParams();
-        }
-        addViewInLayout(view, i, layoutParams, true);
+    public final void addView(View r3, int r4) {
+        r3.getClass();
+        ViewGroup.LayoutParams r0 = r3.getLayoutParams();
+        if (r0 != null) goto L5;
+        r0 = generateDefaultLayoutParams();
+    L5:
+        addViewInLayout(r3, r4, r0, true);
     }
 
     @Override // android.view.View
-    public final void autofill(SparseArray sparseArray) {
-        e94 e94VarV;
-        if1 if1Var;
-        if1 if1Var2;
-        if (d()) {
-            y9 autofillManager = getAutofillManager();
-            if (autofillManager != null) {
-                int size = sparseArray.size();
-                for (int i = 0; i < size; i++) {
-                    int iKeyAt = sparseArray.keyAt(i);
-                    AutofillValue autofillValueN = j3.n(sparseArray.get(iKeyAt));
-                    c72 c72Var = (c72) autofillManager.o.c.b(iKeyAt);
-                    if (c72Var != null && (e94VarV = c72Var.v()) != null) {
-                        w03 w03Var = e94VarV.n;
-                        Object objG = w03Var.g(d94.g);
-                        if (objG == null) {
-                            objG = null;
-                        }
-                        w2 w2Var = (w2) objG;
-                        if (w2Var != null && (if1Var2 = (if1) w2Var.b) != null) {
-                        }
-                        Object objG2 = w03Var.g(d94.h);
-                        w2 w2Var2 = (w2) (objG2 != null ? objG2 : null);
-                        if (w2Var2 != null && (if1Var = (if1) w2Var2.b) != null) {
-                        }
-                    }
-                }
-            }
-            x9 autofill = getAutofill();
-            if (autofill != null) {
-                wn wnVar = autofill.b;
-                if (wnVar.a.isEmpty()) {
-                    return;
-                }
-                int size2 = sparseArray.size();
-                for (int i2 = 0; i2 < size2; i2++) {
-                    int iKeyAt2 = sparseArray.keyAt(i2);
-                    AutofillValue autofillValueN2 = j3.n(sparseArray.get(iKeyAt2));
-                    if (autofillValueN2.isText()) {
-                        autofillValueN2.getTextValue().toString();
-                        if (wnVar.a.get(Integer.valueOf(iKeyAt2)) != null) {
-                            kf2.k();
-                            return;
-                        }
-                    } else {
-                        if (autofillValueN2.isDate()) {
-                            throw new p63("An operation is not implemented: b/138604541: Add onFill() callback for date");
-                        }
-                        if (autofillValueN2.isList()) {
-                            throw new p63("An operation is not implemented: b/138604541: Add onFill() callback for list");
-                        }
-                        if (autofillValueN2.isToggle()) {
-                            throw new p63("An operation is not implemented: b/138604541:  Add onFill() callback for toggle");
-                        }
-                    }
-                }
-            }
-        }
+    public final void autofill(SparseArray r11) {
+        if (d() == false) goto L57;
+        y9 r0 = m71getAutofillManager();
+        int r1 = 0;
+        if (r0 == null) goto L30;
+        int r2 = r11.size();
+        int r3 = 0;
+    L7:
+        if (r3 >= r2) goto L30;
+        int r4 = r11.keyAt(r3);
+        AutofillValue r5 = j3.n(r11.get(r4));
+        c72 r6 = (c72) r0.o.c.b(r4);
+        if (r6 == null) goto L29;
+        e94 r7 = r6.v();
+        if (r7 == null) goto L29;
+        w03 r8 = r7.n;
+        Object r9 = r8.g(d94.g);
+        Object r10 = null;
+        if (r9 != null) goto L15;
+        r9 = null;
+    L15:
+        w2 r12 = (w2) r9;
+        if (r12 == null) goto L20;
+        if1 r13 = (if1) r12.b;
+        if (r13 == null) goto L20;
+        Boolean r14 = (Boolean) r13.invoke(new he(tn.i(r5).toString()));
+    L20:
+        Object r15 = r8.g(d94.h);
+        if (r15 == null) goto L24;
+        r10 = r15;
+    L24:
+        w2 r16 = (w2) r10;
+        if (r16 == null) goto L29;
+        if1 r17 = (if1) r16.b;
+        if (r17 == null) goto L29;
+        Boolean r18 = (Boolean) r17.invoke(new wb(r5));
+    L29:
+        r3 = r3 + 1;
+    L30:
+        x9 r19 = m70getAutofill();
+        if (r19 == null) goto L71;
+        wn r110 = r19.b;
+        if (r110.a.isEmpty() == true) goto L72;
+        int r20 = r11.size();
+    L36:
+        if (r1 >= r20) goto L73;
+        int r21 = r11.keyAt(r1);
+        AutofillValue r22 = j3.n(r11.get(r21));
+        if (tn.C(r22) == false) goto L45;
+        tn.i(r22).toString();
+        if (r110.a.get(Integer.valueOf(r21)) == null) goto L50;
+        kf2.k();
+        return;
+    L50:
+        r1 = r1 + 1;
+        goto L36
+    L45:
+        if (tn.D(r22) == true) goto L56;
+        if (tn.B(r22) == true) goto L54;
+        if (tn.z(r22) == false) goto L50;
+        throw new p63("An operation is not implemented: b/138604541:  Add onFill() callback for toggle");
+    L54:
+        throw new p63("An operation is not implemented: b/138604541: Add onFill() callback for list");
+    L56:
+        throw new p63("An operation is not implemented: b/138604541: Add onFill() callback for date");
+    L73:
+        return;
+    L72:
+        return;
+    L71:
+        return;
     }
 
     @Override // android.view.View
-    public final boolean canScrollHorizontally(int i) {
-        return this.J.m(i, this.o, false);
+    public final boolean canScrollHorizontally(int r4) {
+        long r1 = this.o;
+        return this.J.m(r4, r1, false);
     }
 
     @Override // android.view.View
-    public final boolean canScrollVertically(int i) {
-        return this.J.m(i, this.o, true);
+    public final boolean canScrollVertically(int r4) {
+        long r1 = this.o;
+        return this.J.m(r4, r1, true);
     }
 
     @Override // android.view.ViewGroup, android.view.View
-    public final void dispatchDraw(Canvas canvas) {
-        q03 q03Var = this.N;
-        if (!isAttachedToWindow()) {
-            i(getRoot());
-        }
+    public final void dispatchDraw(Canvas r7) {
+        q03 r0 = this.N;
+        if (isAttachedToWindow() == true) goto L5;
+        i(getRoot());
+    L5:
         q(true);
         jh4.j().m();
         this.P = true;
         Trace.beginSection("AndroidOwner:draw");
-        try {
-            nz canvasHolder = getCanvasHolder();
-            aa aaVar = canvasHolder.a;
-            Canvas canvas2 = aaVar.a;
-            aaVar.a = canvas;
-            getRoot().i(aaVar, null);
-            canvasHolder.a.a = canvas2;
-            if (q03Var.i()) {
-                int i = q03Var.b;
-                for (int i2 = 0; i2 < i; i2++) {
-                    ((vj1) ((tb3) q03Var.f(i2))).g();
-                }
-            }
-            int i3 = u65.n;
-            q03Var.d();
-            this.P = false;
-            Trace.endSection();
-            q03 q03Var2 = this.O;
-            if (q03Var2 != null) {
-                q03Var.b(q03Var2);
-                q03Var2.d();
-            }
-            if (l()) {
-                if (Float.compare(this.D0, this.F0) != 0) {
-                    float f = this.D0;
-                    this.F0 = f;
-                    re.a(this, f);
-                }
-                View view = this.y;
-                if (view != null) {
-                    if (Float.compare(this.E0, this.G0) != 0) {
-                        float f2 = this.E0;
-                        this.G0 = f2;
-                        re.a(view, f2);
-                    }
-                    if (!Float.isNaN(this.E0)) {
-                        view.invalidate();
-                        drawChild(canvas, view, getDrawingTime());
-                    }
-                }
-                this.D0 = Float.NaN;
-                this.E0 = Float.NaN;
-            }
-        } catch (Throwable th) {
-            Trace.endSection();
-            throw th;
-        }
+        nz r1 = getCanvasHolder();     // Catch: Throwable -> L30
+        aa r2 = r1.a;     // Catch: Throwable -> L30
+        Canvas r3 = r2.a;     // Catch: Throwable -> L30
+        r2.a = r7;     // Catch: Throwable -> L30
+        getRoot().i(r2, null);     // Catch: Throwable -> L30
+        r1.a.a = r3;     // Catch: Throwable -> L30
+        if (r0.i() == false) goto L11;
+        int r4 = r0.b;     // Catch: Throwable -> L30
+        int r5 = 0;
+    L9:
+        if (r5 >= r4) goto L11;
+        ((vj1) ((tb3) r0.f(r5))).g();     // Catch: Throwable -> L30
+        r5 = r5 + 1;     // Catch: Throwable -> L30
+    L11:
+        int r6 = u65.n;     // Catch: Throwable -> L30
+        r0.d();     // Catch: Throwable -> L30
+        this.P = false;     // Catch: Throwable -> L30
+        Trace.endSection();
+        q03 r8 = this.O;
+        if (r8 == null) goto L16;
+        r0.b(r8);
+        r8.d();
+    L16:
+        if (l() == true) goto L18;
+        return;
+    L18:
+        if (Float.compare(this.D0, this.F0) == 0) goto L20;
+        float r9 = this.D0;
+        this.F0 = r9;
+        re.a(this, r9);
+    L20:
+        View r10 = this.y;
+        if (r10 != null) goto L23;
+    L28:
+        this.D0 = Float.NaN;
+        this.E0 = Float.NaN;
+        return;
+    L23:
+        if (Float.compare(this.E0, this.G0) == 0) goto L26;
+        float r11 = this.E0;
+        this.G0 = r11;
+        re.a(r10, r11);
+    L26:
+        if (Float.isNaN(this.E0) == true) goto L28;
+        r10.invalidate();
+        drawChild(r7, r10, getDrawingTime());
+    L30:
+        th = move-exception;
+        Trace.endSection();
+        throw th;
     }
 
     /* JADX WARN: Failed to calculate best type for var: r5v12 ??
@@ -1127,6 +1402,29 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
         */
     @Override // android.view.View
     public final boolean dispatchGenericMotionEvent(android.view.MotionEvent r43) {
+        /*  JADX ERROR: Simple mode code generation failed
+            jadx.core.utils.exceptions.CodegenException: Error generate insn: 0x014d: MOVE (r13v12 ?? I:??[int, float, boolean, short, byte, char, OBJECT, ARRAY]) = (0 ??[int, float, boolean, short, byte, char, OBJECT, ARRAY]) A[DECLARE_VAR] (LINE:334) in method: ra.dispatchGenericMotionEvent(android.view.MotionEvent):boolean, file: classes.dex
+            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:310)
+            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:273)
+            	at jadx.core.codegen.MethodGen.generateSimpleCode(MethodGen.java:348)
+            	at jadx.core.codegen.MethodGen.addSimpleMethodCode(MethodGen.java:316)
+            	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:279)
+            	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:420)
+            	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:345)
+            	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$3(ClassGen.java:299)
+            	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+            	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+            	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
+            	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258)
+            Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.ArgType.getPrimitiveType()" because "type" is null
+            	at jadx.core.codegen.ClassGen.useType(ClassGen.java:564)
+            	at jadx.core.codegen.InsnGen.useType(InsnGen.java:269)
+            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:166)
+            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:159)
+            	at jadx.core.codegen.InsnGen.assignVar(InsnGen.java:152)
+            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:299)
+            	... 11 more
+            */
         /*
             Method dump skipped, instruction units count: 2005
             To view this dump add '--comments-level debug' option
@@ -1134,333 +1432,426 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
         throw new UnsupportedOperationException("Method not decompiled: defpackage.ra.dispatchGenericMotionEvent(android.view.MotionEvent):boolean");
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:71:0x0164, code lost:
-    
-        if (o(r25) == false) goto L72;
-     */
     /* JADX WARN: Multi-variable type inference failed */
     @Override // android.view.ViewGroup, android.view.View
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-    */
-    public final boolean dispatchHoverEvent(MotionEvent motionEvent) {
-        int i;
-        boolean zDispatchGenericMotionEvent;
-        int iA;
-        boolean z = this.J0;
-        ia iaVar = this.I0;
-        if (z) {
-            removeCallbacks(iaVar);
-            iaVar.run();
-        }
-        if (!m(motionEvent) && isAttachedToWindow()) {
-            ya yaVar = this.J;
-            ra raVar = yaVar.q;
-            AccessibilityManager accessibilityManager = yaVar.t;
-            if (accessibilityManager.isEnabled() && accessibilityManager.isTouchExplorationEnabled()) {
-                int action = motionEvent.getAction();
-                if (action == 7 || action == 9) {
-                    float x = motionEvent.getX();
-                    float y = motionEvent.getY();
-                    raVar.q(true);
-                    fm1 fm1Var = new fm1();
-                    i = 1;
-                    c72 root = raVar.getRoot();
-                    long jFloatToRawIntBits = (((long) Float.floatToRawIntBits(x)) << 32) | (((long) Float.floatToRawIntBits(y)) & 4294967295L);
-                    w12 w12Var = root.Q;
-                    f63 f63Var = (f63) w12Var.e;
-                    k52 k52Var = f63.h0;
-                    ((f63) w12Var.e).G0(f63.m0, f63Var.x0(jFloatToRawIntBits), fm1Var, 1, true);
-                    q03 q03Var = fm1Var.n;
-                    int i2 = q03Var.b;
-                    while (true) {
-                        i2--;
-                        if (-1 >= i2) {
-                            iA = Integer.MIN_VALUE;
-                            break;
-                        }
-                        Object objF = q03Var.f(i2);
-                        objF.getClass();
-                        c72 c72VarO = j51.O((cx2) objF);
-                        if (raVar.getAndroidViewsHandler$ui().getLayoutNodeToHolder().get(c72VarO) != null) {
-                            kf2.k();
-                            return false;
-                        }
-                        if (c72VarO.Q.d(8)) {
-                            iA = yaVar.A(c72VarO.o);
-                            i94 i94VarA = hw.a(c72VarO, false);
-                            if (wr1.I(i94VarA) && !fh0.p(i94VarA)) {
-                                break;
-                            }
-                        }
-                    }
-                    boolean zDispatchGenericMotionEvent2 = raVar.getAndroidViewsHandler$ui().dispatchGenericMotionEvent(motionEvent);
-                    int i3 = yaVar.r;
-                    if (i3 != iA) {
-                        yaVar.r = iA;
-                        ya.E(yaVar, iA, 128, null, 12);
-                        ya.E(yaVar, i3, 256, null, 12);
-                    }
-                    zDispatchGenericMotionEvent = iA == Integer.MIN_VALUE ? zDispatchGenericMotionEvent2 : true;
-                } else {
-                    if (action != 10) {
-                        zDispatchGenericMotionEvent = false;
-                    } else {
-                        int i4 = yaVar.r;
-                        if (i4 != Integer.MIN_VALUE) {
-                            if (i4 != Integer.MIN_VALUE) {
-                                yaVar.r = Integer.MIN_VALUE;
-                                ya.E(yaVar, Integer.MIN_VALUE, 128, null, 12);
-                                ya.E(yaVar, i4, 256, null, 12);
-                            }
-                            zDispatchGenericMotionEvent = true;
-                            i = 1;
-                        } else {
-                            zDispatchGenericMotionEvent = raVar.getAndroidViewsHandler$ui().dispatchGenericMotionEvent(motionEvent);
-                        }
-                    }
-                    i = 1;
-                }
-            } else {
-                i = 1;
-                zDispatchGenericMotionEvent = false;
-            }
-            int actionMasked = motionEvent.getActionMasked();
-            if (actionMasked != 7) {
-                if (actionMasked == 10 && n(motionEvent)) {
-                    if (motionEvent.getToolType(0) != 3 || motionEvent.getButtonState() == 0) {
-                        MotionEvent motionEvent2 = this.z0;
-                        if (motionEvent2 != null) {
-                            motionEvent2.recycle();
-                        }
-                        this.z0 = MotionEvent.obtainNoHistory(motionEvent);
-                        this.J0 = i;
-                        postDelayed(iaVar, 8L);
-                        return zDispatchGenericMotionEvent;
-                    }
-                    return zDispatchGenericMotionEvent;
-                }
-                if ((h(motionEvent) & i) != 0 || zDispatchGenericMotionEvent) {
-                    return i;
-                }
-            }
-        }
+    public final boolean dispatchHoverEvent(MotionEvent r25) {
+        boolean r2 = this.J0;
+        ia r3 = this.I0;
+        if (r2 == false) goto L6;
+        removeCallbacks(r3);
+        r3.run();
+    L6:
+        if (m(r25) == false) goto L8;
+    L78:
+        return false;
+    L8:
+        if (isAttachedToWindow() == false) goto L78;
+        ya r4 = this.J;
+        ra r5 = r4.q;
+        AccessibilityManager r6 = r4.t;
+        if (r6.isEnabled() == true) goto L13;
+    L52:
+        int r23 = 1;
+        boolean r7 = false;
+    L53:
+        int r8 = r25.getActionMasked();
+        if (r8 == 7) goto L71;
+        if (r8 == 10) goto L59;
+    L74:
+        if ((h(r25) & r23) != 0) goto L77;
+        if (r7 == false) goto L78;
+    L77:
+        return r23;
+    L59:
+        if (n(r25) == false) goto L74;
+        if (r25.getToolType(0) == 3) goto L63;
+    L65:
+        MotionEvent r9 = this.z0;
+        if (r9 == null) goto L68;
+        r9.recycle();
+    L68:
+        this.z0 = MotionEvent.obtainNoHistory(r25);
+        this.J0 = r23;
+        postDelayed(r3, 8);
+        return r7;
+    L63:
+        if (r25.getButtonState() == 0) goto L65;
+    L72:
+        return r7;
+    L71:
+        if (o(r25) == true) goto L74;
+    L13:
+        if (r6.isTouchExplorationEnabled() == false) goto L52;
+        int r10 = r25.getAction();
+        if (r10 != 7) goto L17;
+    L28:
+        float r11 = r25.getX();
+        float r15 = r25.getY();
+        r5.q(true);
+        fm1 r20 = new fm1();
+        r23 = 1;
+        c72 r12 = r5.getRoot();
+        long r13 = (Float.floatToRawIntBits(r11) << 32) | (((long) Float.floatToRawIntBits(r15)) & 4294967295L);
+        w12 r14 = r12.Q;
+        f63 r16 = (f63) r14.e;
+        k52 r17 = f63.h0;
+        ((f63) r14.e).G0(f63.m0, r16.x0(r13), r20, 1, true);
+        q03 r18 = r20.n;
+        int r19 = r18.b;
+    L29:
+        r19 = r19 - 1;
+        if ((-1) >= r19) goto L44;
+        Object r21 = r18.f(r19);
+        r21.getClass();
+        c72 r22 = j51.O((cx2) r21);
+        if (r5.getAndroidViewsHandler$ui().getLayoutNodeToHolder().get(r22) != null) goto L42;
+        if (r22.Q.d(8) == false) goto L29;
+        int r110 = r4.A(r22.o);
+        i94 r24 = hw.a(r22, false);
+        if (wr1.I(r24) == false) goto L29;
+        if (fh0.p(r24) == true) goto L29;
+    L45:
+        boolean r26 = r5.getAndroidViewsHandler$ui().dispatchGenericMotionEvent(r25);
+        int r27 = r4.r;
+        if (r27 == r110) goto L49;
+        r4.r = r110;
+        ya.E(r4, r110, 128, null, 12);
+        ya.E(r4, r27, 256, null, 12);
+    L49:
+        if (r110 != Integer.MIN_VALUE) goto L51;
+        r7 = r26;
+        goto L53
+    L51:
+        r7 = true;
+        goto L53
+    L42:
+        kf2.k();
+        return false;
+    L44:
+        r110 = Integer.MIN_VALUE;
+        goto L45
+    L17:
+        if (r10 == 9) goto L28;
+        if (r10 == 10) goto L21;
+        r7 = false;
+    L20:
+        r23 = 1;
+        goto L53
+    L21:
+        int r28 = r4.r;
+        if (r28 == Integer.MIN_VALUE) goto L27;
+        if (r28 == Integer.MIN_VALUE) goto L26;
+        r4.r = Integer.MIN_VALUE;
+        ya.E(r4, Integer.MIN_VALUE, 128, null, 12);
+        ya.E(r4, r28, 256, null, 12);
+    L26:
+        r7 = true;
+        r23 = 1;
+        goto L53
+    L27:
+        r7 = r5.getAndroidViewsHandler$ui().dispatchGenericMotionEvent(r25);
+        goto L20
+    }
+
+    @Override // android.view.ViewGroup, android.view.View
+    public final boolean dispatchKeyEvent(KeyEvent r5) {
+        int r1 = 0;
+        if (isFocused() == false) goto L12;
+        om1 r0 = getComposeViewContext().t;
+        int r2 = r5.getMetaState();
+        r0.getClass();
+        la5.n.setValue(new tn3(r2));
+        u91 r3 = getFocusOwner();
+        ey r4 = (ey) r3;
+        if (r4.d(r5, new e90(4)) == false) goto L7;
+        return true;
+    L7:
+        if (super.dispatchKeyEvent(r5) == true) goto L14;
+        return false;
+    L14:
+        return true;
+    L12:
+        u91 r6 = getFocusOwner();
+        ey r7 = (ey) r6;
+        return r7.d(r5, new fa(r1, this, r5));
+    }
+
+    @Override // android.view.ViewGroup, android.view.View
+    public final boolean dispatchKeyEventPreIme(KeyEvent r12) {
+        if (isFocused() == false) goto L49;
+        ey r0 = (ey) getFocusOwner();
+        if (((s91) r0.d).e == false) goto L7;
+        System.out.println("FocusRelatedWarning: Dispatching intercepted soft keyboard event while the focus system is invalidated.");
+        goto L49
+    L7:
+        ba1 r1 = te5.p((ba1) r0.c);
+        if (r1 == null) goto L49;
+        if (r1.n.A == true) goto L12;
+        cz1.b("visitAncestors called on an unattached node");
+    L12:
+        cx2 r3 = r1.n;
+        c72 r2 = j51.O(r1);
+    L13:
+        if (r2 == null) goto L49;
+        if ((((cx2) r2.Q.g).q & 131072) == 0) goto L42;
+    L16:
+        if (r3 == null) goto L42;
+        if ((r3.p & 131072) == 0) goto L41;
+        cx2 r4 = r3;
+        f13 r7 = null;
+    L20:
+        if (r4 == null) goto L41;
+        if ((r4.p & 131072) == 0) goto L40;
+        if ((r4 instanceof fo0) == false) goto L40;
+        cx2 r8 = ((fo0) r4).C;
+        int r9 = 0;
+    L26:
+        if (r8 == null) goto L38;
+        if ((r8.p & 131072) == 0) goto L37;
+        r9 = r9 + 1;
+        if (r9 != 1) goto L32;
+        r4 = r8;
+        goto L37
+    L32:
+        if (r7 != null) goto L34;
+        r7 = new f13(new cx2[16]);
+    L34:
+        if (r4 == null) goto L36;
+        r7.b(r4);
+        r4 = null;
+    L36:
+        r7.b(r8);
+    L37:
+        r8 = r8.s;
+        goto L26
+    L38:
+        if (r9 == 1) goto L20;
+    L40:
+        r4 = j51.c(r7);
+    L41:
+        r3 = r3.r;
+    L42:
+        r2 = r2.t();
+        if (r2 == null) goto L47;
+        w12 r5 = r2.Q;
+        if (r5 == null) goto L47;
+        r3 = (sq4) r5.f;
+    L47:
+        r3 = null;
+    L49:
+        if (super.dispatchKeyEventPreIme(r12) == false) goto L51;
+        return true;
+    L51:
         return false;
     }
 
     @Override // android.view.ViewGroup, android.view.View
-    public final boolean dispatchKeyEvent(KeyEvent keyEvent) {
-        int i = 0;
-        if (!isFocused()) {
-            return ((ey) getFocusOwner()).d(keyEvent, new fa(i, this, keyEvent));
-        }
-        om1 om1Var = getComposeViewContext().t;
-        int metaState = keyEvent.getMetaState();
-        om1Var.getClass();
-        la5.n.setValue(new tn3(metaState));
-        return ((ey) getFocusOwner()).d(keyEvent, new e90(4)) || super.dispatchKeyEvent(keyEvent);
+    public final void dispatchProvideAutofillStructure(ViewStructure r2, int r3) {
+        if (d() == true) goto L5;
+        return;
+    L5:
+        this.Q0 = true;
+        super.dispatchProvideAutofillStructure(r2, r3);     // Catch: Throwable -> L9
+        this.Q0 = false;
+        x(r2);
+        return;
+    L9:
+        th = move-exception;
+        this.Q0 = false;
+        throw th;
     }
 
     @Override // android.view.ViewGroup, android.view.View
-    public final boolean dispatchKeyEventPreIme(KeyEvent keyEvent) {
-        w12 w12Var;
-        if (isFocused()) {
-            ey eyVar = (ey) getFocusOwner();
-            if (((s91) eyVar.d).e) {
-                System.out.println((Object) "FocusRelatedWarning: Dispatching intercepted soft keyboard event while the focus system is invalidated.");
-            } else {
-                ba1 ba1VarP = te5.p((ba1) eyVar.c);
-                if (ba1VarP != null) {
-                    if (!ba1VarP.n.A) {
-                        cz1.b("visitAncestors called on an unattached node");
-                    }
-                    cx2 cx2Var = ba1VarP.n;
-                    c72 c72VarO = j51.O(ba1VarP);
-                    while (c72VarO != null) {
-                        if ((((cx2) c72VarO.Q.g).q & 131072) != 0) {
-                            while (cx2Var != null) {
-                                if ((cx2Var.p & 131072) != 0) {
-                                    cx2 cx2VarC = cx2Var;
-                                    f13 f13Var = null;
-                                    while (cx2VarC != null) {
-                                        if ((cx2VarC.p & 131072) != 0 && (cx2VarC instanceof fo0)) {
-                                            int i = 0;
-                                            for (cx2 cx2Var2 = ((fo0) cx2VarC).C; cx2Var2 != null; cx2Var2 = cx2Var2.s) {
-                                                if ((cx2Var2.p & 131072) != 0) {
-                                                    i++;
-                                                    if (i == 1) {
-                                                        cx2VarC = cx2Var2;
-                                                    } else {
-                                                        if (f13Var == null) {
-                                                            f13Var = new f13(new cx2[16]);
-                                                        }
-                                                        if (cx2VarC != null) {
-                                                            f13Var.b(cx2VarC);
-                                                            cx2VarC = null;
-                                                        }
-                                                        f13Var.b(cx2Var2);
-                                                    }
-                                                }
-                                            }
-                                            if (i == 1) {
-                                            }
-                                        }
-                                        cx2VarC = j51.c(f13Var);
-                                    }
-                                }
-                                cx2Var = cx2Var.r;
-                            }
-                        }
-                        c72VarO = c72VarO.t();
-                        cx2Var = (c72VarO == null || (w12Var = c72VarO.Q) == null) ? null : (sq4) w12Var.f;
-                    }
-                }
-            }
-        }
-        return super.dispatchKeyEventPreIme(keyEvent);
+    public final void dispatchProvideStructure(ViewStructure r3) {
+        if (Build.VERSION.SDK_INT >= 28) goto L6;
+        za.a.a(r3, getView());
+        return;
+    L6:
+        super.dispatchProvideStructure(r3);
     }
 
     @Override // android.view.ViewGroup, android.view.View
-    public final void dispatchProvideAutofillStructure(ViewStructure viewStructure, int i) {
-        if (d()) {
-            this.Q0 = true;
-            try {
-                super.dispatchProvideAutofillStructure(viewStructure, i);
-                this.Q0 = false;
-                x(viewStructure);
-            } catch (Throwable th) {
-                this.Q0 = false;
-                throw th;
-            }
-        }
-    }
-
-    @Override // android.view.ViewGroup, android.view.View
-    public final void dispatchProvideStructure(ViewStructure viewStructure) {
-        if (Build.VERSION.SDK_INT < 28) {
-            za.a.a(viewStructure, getView());
-        } else {
-            super.dispatchProvideStructure(viewStructure);
-        }
-    }
-
-    @Override // android.view.ViewGroup, android.view.View
-    public final boolean dispatchTouchEvent(MotionEvent motionEvent) throws Throwable {
-        Object onVar;
-        ba1 ba1VarF;
-        if (this.J0) {
-            ia iaVar = this.I0;
-            removeCallbacks(iaVar);
-            MotionEvent motionEvent2 = this.z0;
-            motionEvent2.getClass();
-            if (motionEvent.getActionMasked() == 0 && motionEvent2.getSource() == motionEvent.getSource() && motionEvent2.getToolType(0) == motionEvent.getToolType(0)) {
-                this.J0 = false;
-            } else {
-                iaVar.run();
-            }
-        }
-        if (!m(motionEvent) && isAttachedToWindow() && (motionEvent.getActionMasked() != 2 || o(motionEvent))) {
-            int iH = h(motionEvent);
-            int i = 1;
-            if ((iH & 2) != 0) {
-                getParent().requestDisallowInterceptTouchEvent(true);
-            }
-            boolean z = motionEvent.getActionMasked() == 0 || motionEvent.getActionMasked() == 5;
-            boolean z2 = motionEvent.isFromSource(8194) || motionEvent.isFromSource(1048584);
-            if (z && z2) {
-                Object parent = getParent();
-                View view = parent instanceof View ? (View) parent : null;
-                if (view == null || (onVar = view.getTag(R.id.auto_clear_focus_behavior_tag)) == null) {
-                    onVar = new on(i);
-                }
-                if (onVar.equals(new on(i)) && (ba1VarF = ((ey) getFocusOwner()).f()) != null) {
-                    f63 f63VarN = j51.N(ba1VarF);
-                    wv3 wv3VarC = wr1.n(f63VarN).C(f63VarN, true);
-                    long jFloatToRawIntBits = (((long) Float.floatToRawIntBits(motionEvent.getX())) << 32) | (((long) Float.floatToRawIntBits(motionEvent.getY())) & 4294967295L);
-                    float fIntBitsToFloat = Float.intBitsToFloat((int) (jFloatToRawIntBits >> 32));
-                    float fIntBitsToFloat2 = Float.intBitsToFloat((int) (jFloatToRawIntBits & 4294967295L));
-                    if (!((fIntBitsToFloat < wv3VarC.c) & (fIntBitsToFloat >= wv3VarC.a) & (fIntBitsToFloat2 >= wv3VarC.b) & (fIntBitsToFloat2 < wv3VarC.d))) {
-                        ((ey) getFocusOwner()).b(8, false, true);
-                    }
-                }
-            }
-            if ((iH & 1) != 0) {
-                return true;
-            }
-        }
+    public final boolean dispatchTouchEvent(MotionEvent r11) {
+        if (this.J0 == false) goto L14;
+        ia r0 = this.I0;
+        removeCallbacks(r0);
+        MotionEvent r2 = this.z0;
+        r2.getClass();
+        if (r11.getActionMasked() == 0) goto L7;
+    L12:
+        r0.run();
+        goto L14
+    L7:
+        if (r2.getSource() != r11.getSource()) goto L12;
+        if (r2.getToolType(0) != r11.getToolType(0)) goto L12;
+        this.J0 = false;
+    L14:
+        if (m(r11) == false) goto L16;
+    L76:
         return false;
+    L16:
+        if (isAttachedToWindow() == false) goto L76;
+        if (r11.getActionMasked() == 2) goto L21;
+    L23:
+        int r1 = h(r11);
+        int r3 = 1;
+        if ((r1 & 2) == 0) goto L27;
+        getParent().requestDisallowInterceptTouchEvent(true);
+    L27:
+        if (r11.getActionMasked() != 0) goto L29;
+    L32:
+        boolean r4 = true;
+    L34:
+        if (r11.isFromSource(8194) == false) goto L36;
+    L39:
+        boolean r5 = true;
+    L40:
+        if (r4 == false) goto L74;
+        if (r5 == false) goto L74;
+        Object r6 = getParent();
+        if ((r6 instanceof View) == false) goto L45;
+        View r7 = (View) r6;
+    L46:
+        if (r7 == null) goto L49;
+        Object r8 = r7.getTag(R.id.auto_clear_focus_behavior_tag);
+        if (r8 == null) goto L49;
+    L51:
+        if (r8.equals(new on(r3)) == false) goto L74;
+        ba1 r9 = ((ey) getFocusOwner()).f();
+        if (r9 == null) goto L74;
+        f63 r10 = j51.N(r9);
+        wv3 r12 = wr1.n(r10).C(r10, true);
+        float r13 = r11.getX();
+        float r14 = r11.getY();
+        long r15 = (Float.floatToRawIntBits(r13) << 32) | (((long) Float.floatToRawIntBits(r14)) & 4294967295L);
+        float r16 = Float.intBitsToFloat((int) (r15 >> 32));
+        float r17 = Float.intBitsToFloat((int) (r15 & 4294967295L));
+        if (r16 < r12.a) goto L57;
+        boolean r18 = true;
+    L59:
+        if (r16 >= r12.c) goto L61;
+        boolean r19 = true;
+    L62:
+        boolean r110 = r19 & r18;
+        if (r17 < r12.b) goto L65;
+        boolean r20 = true;
+    L66:
+        boolean r111 = r110 & r20;
+        if (r17 >= r12.d) goto L69;
+        boolean r21 = true;
+    L71:
+        if ((r111 & r21) == true) goto L74;
+        ((ey) getFocusOwner()).b(8, false, true);
+        goto L74
+    L69:
+        r21 = false;
+        goto L71
+    L65:
+        r20 = false;
+        goto L66
+    L61:
+        r19 = false;
+        goto L62
+    L57:
+        r18 = false;
+    L49:
+        r8 = new on(r3);
+        goto L51
+    L45:
+        r7 = null;
+    L74:
+        if ((r1 & 1) == 0) goto L76;
+        return true;
+    L36:
+        if (r11.isFromSource(1048584) == true) goto L39;
+        r5 = false;
+        goto L40
+    L29:
+        if (r11.getActionMasked() == 5) goto L32;
+        r4 = false;
+        goto L34
+    L21:
+        if (o(r11) == true) goto L23;
+        goto L23
     }
 
-    public final View findViewByAccessibilityIdTraversal(int i) throws IllegalAccessException, InvocationTargetException {
-        try {
-            if (Build.VERSION.SDK_INT < 29) {
-                return te5.q(this, i);
-            }
-            Method declaredMethod = View.class.getDeclaredMethod("findViewByAccessibilityIdTraversal", Integer.TYPE);
-            declaredMethod.setAccessible(true);
-            Object objInvoke = declaredMethod.invoke(this, Integer.valueOf(i));
-            if (objInvoke instanceof View) {
-                return (View) objInvoke;
-            }
-            return null;
-        } catch (NoSuchMethodException unused) {
-            return null;
-        }
+    public final View findViewByAccessibilityIdTraversal(int r7) {
+        if (Build.VERSION.SDK_INT < 29) goto L9;
+        Method r0 = View.class.getDeclaredMethod("findViewByAccessibilityIdTraversal", new Class[]{Integer.TYPE});     // Catch: NoSuchMethodException -> L12
+        r0.setAccessible(true);     // Catch: NoSuchMethodException -> L12
+        Object r6 = r0.invoke(this, new Object[]{Integer.valueOf(r7)});     // Catch: NoSuchMethodException -> L12
+        if ((r6 instanceof View) == true) goto L7;
+        return null;
+    L7:
+        return (View) r6;
+    L9:
+        return te5.q(this, r7);
+    L14:
+        return null;
     }
 
     @Override // android.view.ViewGroup, android.view.ViewParent
-    public final View focusSearch(View view, int i) {
-        wv3 wv3VarA;
-        if (view == null || this.f0.c) {
-            return super.focusSearch(view, i);
-        }
-        View rootView = getRootView();
-        rootView.getClass();
-        View viewFindNextFocus = FocusFinder.getInstance().findNextFocus((ViewGroup) rootView, view, i);
-        if (viewFindNextFocus != null && !viewFindNextFocus.equals(this)) {
-            ViewParent parent = viewFindNextFocus.getParent();
-            while (true) {
-                if (parent == null) {
-                    viewFindNextFocus = null;
-                    break;
-                }
-                if (parent == this) {
-                    break;
-                }
-                parent = parent.getParent();
-            }
-        } else {
-            viewFindNextFocus = null;
-            break;
-        }
-        if (view == this) {
-            ba1 ba1VarP = te5.p((ba1) ((ey) getFocusOwner()).c);
-            wv3VarA = ba1VarP != null ? te5.r(ba1VarP) : null;
-            if (wv3VarA == null) {
-                wv3VarA = r91.a(view, this);
-            }
-        } else {
-            wv3VarA = r91.a(view, this);
-        }
-        o91 o91VarC = r91.c(i);
-        int i2 = o91VarC != null ? o91VarC.a : 6;
-        jx3 jx3Var = new jx3();
-        if (((ey) getFocusOwner()).e(i2, wv3VarA, new ea(0, jx3Var)) == null) {
-            return view;
-        }
-        Object obj = jx3Var.n;
-        if (obj == null) {
-            if (viewFindNextFocus == null) {
-                return super.focusSearch(view, i);
-            }
-        } else if (viewFindNextFocus == null || i2 == 1 || i2 == 2 || kb4.F(te5.r((ba1) obj), r91.a(viewFindNextFocus, this), wv3VarA, i2)) {
-            return this;
-        }
-        return viewFindNextFocus;
+    public final View focusSearch(View r8, int r9) {
+        if (r8 == null) goto L49;
+        if (this.f0.c == true) goto L49;
+        View r0 = getRootView();
+        r0.getClass();
+        View r1 = FocusFinder.getInstance().findNextFocus((ViewGroup) r0, r8, r9);
+        wv3 r2 = null;
+        if (r1 != null) goto L9;
+    L16:
+        r1 = null;
+    L17:
+        if (r8 != this) goto L23;
+        ba1 r3 = te5.p((ba1) ((ey) getFocusOwner()).c);
+        if (r3 == null) goto L21;
+        r2 = te5.r(r3);
+    L21:
+        if (r2 != null) goto L24;
+        r2 = r91.a(r8, this);
+    L24:
+        o91 r4 = r91.c(r9);
+        if (r4 == null) goto L27;
+        int r5 = r4.a;
+    L28:
+        jx3 r6 = new jx3();
+        if (((ey) getFocusOwner()).e(r5, r2, new ea(0, r6)) != null) goto L31;
+        return r8;
+    L31:
+        Object r7 = r6.n;
+        if (r7 != null) goto L36;
+        if (r1 == null) goto L35;
+    L47:
+        return r1;
+    L35:
+        return super.focusSearch(r8, r9);
+    L36:
+        if (r1 != null) goto L39;
+    L46:
+        return this;
+    L39:
+        if (r5 == 1) goto L46;
+        if (r5 == 2) goto L46;
+        if (kb4.F(te5.r((ba1) r7), r91.a(r1, this), r2, r5) == false) goto L47;
+    L27:
+        r5 = 6;
+        goto L28
+    L23:
+        r2 = r91.a(r8, this);
+        goto L24
+    L9:
+        if (r1.equals(this) == true) goto L16;
+        ViewParent r10 = r1.getParent();
+    L12:
+        if (r10 == null) goto L16;
+        if (r10 == this) goto L17;
+        r10 = r10.getParent();
+    L49:
+        return super.focusSearch(r8, r9);
     }
 
-    public final void g(c72 c72Var, boolean z) {
-        this.f0.g(c72Var, z);
+    public final void g(c72 r1, boolean r2) {
+        this.f0.g(r1, r2);
     }
 
     public f3 getAccessibilityManager() {
@@ -1468,15 +1859,23 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
     }
 
     public final id getAndroidViewsHandler$ui() {
-        if (this.c0 == null) {
-            id idVar = new id(getContext());
-            this.c0 = idVar;
-            addView(idVar, -1);
-            requestLayout();
-        }
-        id idVar2 = this.c0;
-        idVar2.getClass();
-        return idVar2;
+        if (this.c0 != null) goto L5;
+        id r0 = new id(getContext());
+        this.c0 = r0;
+        addView(r0, -1);
+        requestLayout();
+    L5:
+        id r2 = this.c0;
+        r2.getClass();
+        return r2;
+    }
+
+    public /* bridge */ /* synthetic */ sn getAutofill() {
+        return m70getAutofill();
+    }
+
+    public /* bridge */ /* synthetic */ vn getAutofillManager() {
+        return m71getAutofillManager();
     }
 
     public wn getAutofillTree() {
@@ -1515,19 +1914,23 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
         return (oo0) this.x.getValue();
     }
 
+    public /* bridge */ /* synthetic */ nu0 getDragAndDropManager() {
+        return m72getDragAndDropManager();
+    }
+
     public wv3 getEmbeddedViewFocusRect() {
-        if (isFocused()) {
-            ba1 ba1VarP = te5.p((ba1) ((ey) getFocusOwner()).c);
-            if (ba1VarP != null) {
-                return te5.r(ba1VarP);
-            }
-            return null;
-        }
-        View viewFindFocus = findFocus();
-        if (viewFindFocus != null) {
-            return r91.a(viewFindFocus, this);
-        }
+        if (isFocused() == false) goto L9;
+        ba1 r2 = te5.p((ba1) ((ey) getFocusOwner()).c);
+        if (r2 != null) goto L7;
         return null;
+    L7:
+        return te5.r(r2);
+    L9:
+        View r0 = findFocus();
+        if (r0 != null) goto L12;
+        return null;
+    L12:
+        return r91.a(r0, this);
     }
 
     public u91 getFocusOwner() {
@@ -1535,20 +1938,22 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
     }
 
     @Override // android.view.View
-    public final void getFocusedRect(Rect rect) {
-        wv3 embeddedViewFocusRect = getEmbeddedViewFocusRect();
-        if (embeddedViewFocusRect != null) {
-            rect.left = Math.round(embeddedViewFocusRect.a);
-            rect.top = Math.round(embeddedViewFocusRect.b);
-            rect.right = Math.round(embeddedViewFocusRect.c);
-            rect.bottom = Math.round(embeddedViewFocusRect.d);
-            return;
-        }
-        if (h12.c(((ey) getFocusOwner()).e(6, null, new k2(1, (byte) 0)), Boolean.TRUE)) {
-            super.getFocusedRect(rect);
-        } else {
-            rect.set(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE);
-        }
+    public final void getFocusedRect(Rect r5) {
+        wv3 r0 = getEmbeddedViewFocusRect();
+        if (r0 == null) goto L6;
+        r5.left = Math.round(r0.a);
+        r5.top = Math.round(r0.b);
+        r5.right = Math.round(r0.c);
+        r5.bottom = Math.round(r0.d);
+        return;
+    L6:
+        u91 r1 = getFocusOwner();
+        ey r2 = (ey) r1;
+        if (h12.c(r2.e(6, null, new k2(1, 0)), Boolean.TRUE) == true) goto L10;
+        r5.set(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE);
+        return;
+    L10:
+        super.getFocusedRect(r5);
     }
 
     public ha1 getFontFamilyResolver() {
@@ -1572,7 +1977,13 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
     }
 
     public boolean getHasPendingMeasureOrLayout() {
-        return this.f0.b.o() || !this.v.isEmpty();
+        if (this.f0.b.o() == false) goto L5;
+        return true;
+    L5:
+        if (this.v.isEmpty() == false) goto L11;
+        return false;
+    L11:
+        return true;
     }
 
     @Override // android.view.View
@@ -1580,13 +1991,22 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
         return 1;
     }
 
-    public sz1 getInputModeManager() {
-        sz1 sz1Var = this.w0;
-        if (sz1Var == null) {
-            sz1Var = new sz1(isInTouchMode() ? 1 : 2);
-            this.w0 = sz1Var;
-        }
-        return sz1Var;
+    /* JADX INFO: renamed from: getInputModeManager, reason: collision with other method in class */
+    public sz1 m73getInputModeManager() {
+        sz1 r0 = this.w0;
+        if (r0 == null) goto L5;
+    L9:
+        return r0;
+    L5:
+        if (isInTouchMode() == false) goto L7;
+        int r1 = 1;
+    L8:
+        r0 = new sz1(r1);
+        this.w0 = r0;
+        goto L9
+    L7:
+        r1 = 2;
+        goto L8
     }
 
     public final xz1 getInsetsListener() {
@@ -1602,31 +2022,36 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
         return (r62) this.v0.getValue();
     }
 
+    public /* bridge */ /* synthetic */ e02 getLayoutNodes() {
+        return m74getLayoutNodes();
+    }
+
     public vd2 getLocaleList() {
         return (vd2) this.T.getValue();
     }
 
     public long getMeasureIteration() {
-        ri2 ri2Var = this.f0;
-        if (!ri2Var.c) {
-            cz1.a("measureIteration should be only used during the measure/layout pass");
-        }
-        return ri2Var.g;
+        ri2 r2 = this.f0;
+        if (r2.c == true) goto L6;
+        cz1.a("measureIteration should be only used during the measure/layout pass");
+    L6:
+        return r2.g;
     }
 
     public ex2 getModifierLocalManager() {
         return this.x0;
     }
 
-    public ra getOutOfFrameExecutor() {
-        if (isAttachedToWindow()) {
-            return this;
-        }
+    /* JADX INFO: renamed from: getOutOfFrameExecutor, reason: collision with other method in class */
+    public ra m75getOutOfFrameExecutor() {
+        if (isAttachedToWindow() == false) goto L5;
+        return this;
+    L5:
         return null;
     }
 
     public ig3 getPlacementScope() {
-        k52 k52Var = kg3.a;
+        k52 r0 = kg3.a;
         return new df2(1, this);
     }
 
@@ -1661,61 +2086,73 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
 
     /* JADX WARN: Multi-variable type inference failed */
     public final bs0 getSavedStateRegistry() {
-        bs0 bs0Var = this.t;
-        if (bs0Var != null) {
-            return bs0Var;
-        }
-        h80 composeViewContext = getComposeViewContext();
-        composeViewContext.g();
-        j54 j54Var = composeViewContext.e;
-        j54Var.getClass();
-        ViewParent parent = getParent();
-        parent.getClass();
-        View view = (View) parent;
-        Object tag = view.getTag(R.id.compose_view_saveable_id_tag);
-        LinkedHashMap linkedHashMap = null;
-        String strValueOf = tag instanceof String ? (String) tag : null;
-        if (strValueOf == null) {
-            strValueOf = String.valueOf(view.getId());
-        }
-        String strG = xa3.g("SaveableStateRegistry:", strValueOf);
-        rm3 rm3VarF = j54Var.f();
-        Bundle bundleA = rm3VarF.A(strG);
-        if (bundleA != null) {
-            linkedHashMap = new LinkedHashMap();
-            for (String str : bundleA.keySet()) {
-                ArrayList parcelableArrayList = bundleA.getParcelableArrayList(str);
-                parcelableArrayList.getClass();
-                linkedHashMap.put(str, parcelableArrayList);
-            }
-        }
-        boolean z = false;
-        z = false;
-        k2 k2Var = new k2(13, z ? (byte) 1 : (byte) 0);
-        wl4 wl4Var = z44.a;
-        y44 y44Var = new y44(linkedHashMap, k2Var);
-        if (rm3VarF.G(strG) == null) {
-            try {
-                rm3VarF.L(strG, new cs0(z ? 1 : 0, y44Var));
-                z = true;
-            } catch (IllegalArgumentException unused) {
-            }
-        }
-        bs0 bs0Var2 = new bs0(y44Var, new ds0(z, rm3VarF, strG));
-        this.t = bs0Var2;
-        return bs0Var2;
+        bs0 r0 = this.t;
+        if (r0 != null) goto L23;
+        h80 r1 = getComposeViewContext();
+        r1.g();
+        j54 r2 = r1.e;
+        r2.getClass();
+        ViewParent r3 = getParent();
+        r3.getClass();
+        View r4 = (View) r3;
+        Object r5 = r4.getTag(R.id.compose_view_saveable_id_tag);
+        LinkedHashMap r6 = null;
+        if ((r5 instanceof String) == false) goto L7;
+        String r7 = (String) r5;
+    L8:
+        if (r7 != null) goto L10;
+        r7 = String.valueOf(r4.getId());
+    L10:
+        String r8 = xa3.g("SaveableStateRegistry:", r7);
+        rm3 r9 = r2.f();
+        Bundle r10 = r9.A(r8);
+        if (r10 == null) goto L16;
+        r6 = new LinkedHashMap();
+        Iterator<T> r11 = r10.keySet().iterator();
+    L14:
+        if (r11.hasNext() == false) goto L16;
+        String r12 = (String) r11.next();
+        ArrayList r13 = r10.getParcelableArrayList(r12);
+        r13.getClass();
+        r6.put(r12, r13);
+    L16:
+        boolean r14 = false;
+        r14 = false;
+        k2 r15 = new k2(13, r14 ? 1 : 0);
+        wl4 r16 = z44.a;
+        y44 r17 = new y44(r6, r15);
+        if (r9.G(r8) == null) goto L25;
+    L21:
+        bs0 r18 = new bs0(r17, new ds0(r14, r9, r8));
+        this.t = r18;
+        return r18;
+    L25:
+        r9.L(r8, new cs0(r14 ? 1 : 0, r17));     // Catch: IllegalArgumentException -> L24
+        r14 = true;
+        goto L21
+    L7:
+        r7 = null;
+        goto L8
+    L23:
+        return r0;
     }
 
     public final boolean getScrollCaptureInProgress() {
-        rm2 rm2Var;
-        if (Build.VERSION.SDK_INT >= 31 && (rm2Var = this.R0) != null && ((Boolean) ((zd3) rm2Var.o).getValue()).booleanValue()) {
-            return true;
-        }
-        for (ViewParent parent = getParent(); parent != null; parent = parent.getParent()) {
-            if (parent instanceof ra) {
-                return ((ra) parent).getScrollCaptureInProgress();
-            }
-        }
+        if (Build.VERSION.SDK_INT < 31) goto L9;
+        rm2 r0 = this.R0;
+        if (r0 == null) goto L9;
+        if (((Boolean) ((zd3) r0.o).getValue()).booleanValue() != true) goto L9;
+        return true;
+    L9:
+        ViewParent r2 = getParent();
+    L10:
+        if (r2 == null) goto L16;
+        if ((r2 instanceof ra) == true) goto L14;
+        r2 = r2.getParent();
+        goto L10
+    L14:
+        return ((ra) r2).getScrollCaptureInProgress();
+    L16:
         return false;
     }
 
@@ -1728,7 +2165,10 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
     }
 
     public boolean getShowLayoutBounds() {
-        return Build.VERSION.SDK_INT >= 30 ? oe.a.a(this) : this.b0;
+        if (Build.VERSION.SDK_INT < 30) goto L7;
+        return oe.a.a(this);
+    L7:
+        return this.b0;
     }
 
     public wb3 getSnapshotObserver() {
@@ -1736,36 +2176,36 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
     }
 
     public wh4 getSoftwareKeyboardController() {
-        om0 om0Var = this.t0;
-        if (om0Var != null) {
-            return om0Var;
-        }
+        om0 r0 = this.t0;
+        if (r0 != null) goto L6;
         getTextInputService();
-        om0 om0Var2 = new om0(4);
-        this.t0 = om0Var2;
-        return om0Var2;
+        om0 r1 = new om0(4);
+        this.t0 = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     public is4 getTextInputService() {
-        is4 is4Var = this.r0;
-        if (is4Var != null) {
-            return is4Var;
-        }
+        is4 r0 = this.r0;
+        if (r0 != null) goto L6;
         getLegacyTextInputServiceAndroid();
-        is4 is4Var2 = new is4();
+        is4 r1 = new is4();
         new AtomicReference(null);
-        this.r0 = is4Var2;
-        return is4Var2;
+        this.r0 = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     public at4 getTextToolbar() {
-        pa paVar = this.y0;
-        if (paVar != null) {
-            return paVar;
-        }
-        pa paVar2 = new pa(4);
-        this.y0 = paVar2;
-        return paVar2;
+        pa r0 = this.y0;
+        if (r0 != null) goto L6;
+        pa r1 = new pa(4);
+        this.y0 = r1;
+        return r1;
+    L6:
+        return r0;
     }
 
     public final a34 getUncaughtExceptionHandler$ui() {
@@ -1784,587 +2224,456 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
         return getComposeViewContext().t;
     }
 
-    /* JADX WARN: Code duplicated, block: B:101:0x013f  */
-    /* JADX WARN: Code duplicated, block: B:104:0x0144 A[Catch: all -> 0x002b, TryCatch #1 {all -> 0x002b, blocks: (B:4:0x0018, B:6:0x0021, B:54:0x00b6, B:56:0x00bc, B:64:0x00cd, B:69:0x00da, B:70:0x00dd, B:72:0x00e1, B:74:0x00e7, B:76:0x00eb, B:78:0x00f1, B:81:0x00f9, B:84:0x0101, B:85:0x010d, B:87:0x0113, B:89:0x0119, B:91:0x011f, B:93:0x0125, B:95:0x0129, B:96:0x012d, B:102:0x0140, B:104:0x0144, B:106:0x014b, B:113:0x015c, B:114:0x0166, B:116:0x016e, B:117:0x0171, B:118:0x0178), top: B:146:0x0018 }] */
-    /* JADX WARN: Code duplicated, block: B:105:0x0149  */
-    /* JADX WARN: Code duplicated, block: B:108:0x0153  */
-    /* JADX WARN: Code duplicated, block: B:109:0x0155  */
-    /* JADX WARN: Code duplicated, block: B:111:0x0158 A[ADDED_TO_REGION] */
-    /* JADX WARN: Code duplicated, block: B:112:0x015a A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:113:0x015c A[Catch: all -> 0x002b, TryCatch #1 {all -> 0x002b, blocks: (B:4:0x0018, B:6:0x0021, B:54:0x00b6, B:56:0x00bc, B:64:0x00cd, B:69:0x00da, B:70:0x00dd, B:72:0x00e1, B:74:0x00e7, B:76:0x00eb, B:78:0x00f1, B:81:0x00f9, B:84:0x0101, B:85:0x010d, B:87:0x0113, B:89:0x0119, B:91:0x011f, B:93:0x0125, B:95:0x0129, B:96:0x012d, B:102:0x0140, B:104:0x0144, B:106:0x014b, B:113:0x015c, B:114:0x0166, B:116:0x016e, B:117:0x0171, B:118:0x0178), top: B:146:0x0018 }] */
-    /* JADX WARN: Code duplicated, block: B:116:0x016e A[Catch: all -> 0x002b, TryCatch #1 {all -> 0x002b, blocks: (B:4:0x0018, B:6:0x0021, B:54:0x00b6, B:56:0x00bc, B:64:0x00cd, B:69:0x00da, B:70:0x00dd, B:72:0x00e1, B:74:0x00e7, B:76:0x00eb, B:78:0x00f1, B:81:0x00f9, B:84:0x0101, B:85:0x010d, B:87:0x0113, B:89:0x0119, B:91:0x011f, B:93:0x0125, B:95:0x0129, B:96:0x012d, B:102:0x0140, B:104:0x0144, B:106:0x014b, B:113:0x015c, B:114:0x0166, B:116:0x016e, B:117:0x0171, B:118:0x0178), top: B:146:0x0018 }] */
-    /* JADX WARN: Code duplicated, block: B:117:0x0171 A[Catch: all -> 0x002b, TryCatch #1 {all -> 0x002b, blocks: (B:4:0x0018, B:6:0x0021, B:54:0x00b6, B:56:0x00bc, B:64:0x00cd, B:69:0x00da, B:70:0x00dd, B:72:0x00e1, B:74:0x00e7, B:76:0x00eb, B:78:0x00f1, B:81:0x00f9, B:84:0x0101, B:85:0x010d, B:87:0x0113, B:89:0x0119, B:91:0x011f, B:93:0x0125, B:95:0x0129, B:96:0x012d, B:102:0x0140, B:104:0x0144, B:106:0x014b, B:113:0x015c, B:114:0x0166, B:116:0x016e, B:117:0x0171, B:118:0x0178), top: B:146:0x0018 }] */
-    /* JADX WARN: Code duplicated, block: B:120:0x0180 A[Catch: all -> 0x0076, TRY_ENTER, TryCatch #0 {all -> 0x0076, blocks: (B:14:0x0034, B:16:0x003e, B:22:0x004e, B:38:0x007d, B:40:0x0081, B:41:0x0093, B:50:0x00a6, B:52:0x00ac, B:120:0x0180, B:121:0x018c, B:25:0x0056, B:31:0x0062, B:34:0x006a), top: B:144:0x0034 }] */
-    /* JADX WARN: Code duplicated, block: B:124:0x0197  */
-    /* JADX WARN: Code duplicated, block: B:128:0x01a4 A[Catch: all -> 0x01bf, TryCatch #3 {all -> 0x01bf, blocks: (B:122:0x0190, B:126:0x019c, B:128:0x01a4, B:130:0x01ae, B:129:0x01a7), top: B:149:0x0190 }] */
-    /* JADX WARN: Code duplicated, block: B:129:0x01a7 A[Catch: all -> 0x01bf, TryCatch #3 {all -> 0x01bf, blocks: (B:122:0x0190, B:126:0x019c, B:128:0x01a4, B:130:0x01ae, B:129:0x01a7), top: B:149:0x0190 }] */
-    /* JADX WARN: Code duplicated, block: B:37:0x007b  */
-    /* JADX WARN: Code duplicated, block: B:43:0x0099  */
-    /* JADX WARN: Code duplicated, block: B:44:0x009b  */
-    /* JADX WARN: Code duplicated, block: B:55:0x00ba  */
-    /* JADX WARN: Code duplicated, block: B:58:0x00c2  */
-    /* JADX WARN: Code duplicated, block: B:59:0x00c4  */
-    /* JADX WARN: Code duplicated, block: B:67:0x00d7  */
-    /* JADX WARN: Code duplicated, block: B:69:0x00da A[Catch: all -> 0x002b, TryCatch #1 {all -> 0x002b, blocks: (B:4:0x0018, B:6:0x0021, B:54:0x00b6, B:56:0x00bc, B:64:0x00cd, B:69:0x00da, B:70:0x00dd, B:72:0x00e1, B:74:0x00e7, B:76:0x00eb, B:78:0x00f1, B:81:0x00f9, B:84:0x0101, B:85:0x010d, B:87:0x0113, B:89:0x0119, B:91:0x011f, B:93:0x0125, B:95:0x0129, B:96:0x012d, B:102:0x0140, B:104:0x0144, B:106:0x014b, B:113:0x015c, B:114:0x0166, B:116:0x016e, B:117:0x0171, B:118:0x0178), top: B:146:0x0018 }] */
-    /* JADX WARN: Code duplicated, block: B:76:0x00eb A[Catch: all -> 0x002b, TryCatch #1 {all -> 0x002b, blocks: (B:4:0x0018, B:6:0x0021, B:54:0x00b6, B:56:0x00bc, B:64:0x00cd, B:69:0x00da, B:70:0x00dd, B:72:0x00e1, B:74:0x00e7, B:76:0x00eb, B:78:0x00f1, B:81:0x00f9, B:84:0x0101, B:85:0x010d, B:87:0x0113, B:89:0x0119, B:91:0x011f, B:93:0x0125, B:95:0x0129, B:96:0x012d, B:102:0x0140, B:104:0x0144, B:106:0x014b, B:113:0x015c, B:114:0x0166, B:116:0x016e, B:117:0x0171, B:118:0x0178), top: B:146:0x0018 }] */
-    /* JADX WARN: Code duplicated, block: B:77:0x00f0  */
-    /* JADX WARN: Code duplicated, block: B:85:0x010d A[Catch: all -> 0x002b, TryCatch #1 {all -> 0x002b, blocks: (B:4:0x0018, B:6:0x0021, B:54:0x00b6, B:56:0x00bc, B:64:0x00cd, B:69:0x00da, B:70:0x00dd, B:72:0x00e1, B:74:0x00e7, B:76:0x00eb, B:78:0x00f1, B:81:0x00f9, B:84:0x0101, B:85:0x010d, B:87:0x0113, B:89:0x0119, B:91:0x011f, B:93:0x0125, B:95:0x0129, B:96:0x012d, B:102:0x0140, B:104:0x0144, B:106:0x014b, B:113:0x015c, B:114:0x0166, B:116:0x016e, B:117:0x0171, B:118:0x0178), top: B:146:0x0018 }] */
-    /* JADX WARN: Code duplicated, block: B:87:0x0113 A[Catch: all -> 0x002b, TryCatch #1 {all -> 0x002b, blocks: (B:4:0x0018, B:6:0x0021, B:54:0x00b6, B:56:0x00bc, B:64:0x00cd, B:69:0x00da, B:70:0x00dd, B:72:0x00e1, B:74:0x00e7, B:76:0x00eb, B:78:0x00f1, B:81:0x00f9, B:84:0x0101, B:85:0x010d, B:87:0x0113, B:89:0x0119, B:91:0x011f, B:93:0x0125, B:95:0x0129, B:96:0x012d, B:102:0x0140, B:104:0x0144, B:106:0x014b, B:113:0x015c, B:114:0x0166, B:116:0x016e, B:117:0x0171, B:118:0x0178), top: B:146:0x0018 }] */
-    /* JADX WARN: Code duplicated, block: B:91:0x011f A[Catch: all -> 0x002b, TryCatch #1 {all -> 0x002b, blocks: (B:4:0x0018, B:6:0x0021, B:54:0x00b6, B:56:0x00bc, B:64:0x00cd, B:69:0x00da, B:70:0x00dd, B:72:0x00e1, B:74:0x00e7, B:76:0x00eb, B:78:0x00f1, B:81:0x00f9, B:84:0x0101, B:85:0x010d, B:87:0x0113, B:89:0x0119, B:91:0x011f, B:93:0x0125, B:95:0x0129, B:96:0x012d, B:102:0x0140, B:104:0x0144, B:106:0x014b, B:113:0x015c, B:114:0x0166, B:116:0x016e, B:117:0x0171, B:118:0x0178), top: B:146:0x0018 }] */
-    /* JADX WARN: Code duplicated, block: B:92:0x0124  */
-    /* JADX WARN: Code duplicated, block: B:95:0x0129 A[Catch: all -> 0x002b, TryCatch #1 {all -> 0x002b, blocks: (B:4:0x0018, B:6:0x0021, B:54:0x00b6, B:56:0x00bc, B:64:0x00cd, B:69:0x00da, B:70:0x00dd, B:72:0x00e1, B:74:0x00e7, B:76:0x00eb, B:78:0x00f1, B:81:0x00f9, B:84:0x0101, B:85:0x010d, B:87:0x0113, B:89:0x0119, B:91:0x011f, B:93:0x0125, B:95:0x0129, B:96:0x012d, B:102:0x0140, B:104:0x0144, B:106:0x014b, B:113:0x015c, B:114:0x0166, B:116:0x016e, B:117:0x0171, B:118:0x0178), top: B:146:0x0018 }] */
-    /* JADX WARN: Code duplicated, block: B:98:0x0139  */
-    public final int h(MotionEvent motionEvent) throws Throwable {
-        int actionMasked;
-        MotionEvent motionEvent2;
-        boolean z;
-        ra raVar;
-        boolean z2;
-        boolean z3;
-        MotionEvent motionEvent3;
-        int iF;
-        cm1 cm1Var;
-        ra raVar2;
-        MotionEvent motionEvent4;
-        int pointerId;
-        int action;
-        tx2 tx2Var;
-        MotionEvent motionEvent5;
-        float x;
-        float x2;
-        boolean z4;
-        MotionEvent motionEvent6;
-        long eventTime;
-        boolean z5;
-        cm1 cm1Var2;
-        ra raVar3 = this;
-        raVar3.removeCallbacks(raVar3.H0);
-        try {
-            z(motionEvent);
-            raVar3.n0 = true;
-            raVar3.q(false);
-            Trace.beginSection("AndroidOwner:onTouch");
-            try {
-                int actionMasked2 = motionEvent.getActionMasked();
-                MotionEvent motionEvent7 = raVar3.z0;
-                boolean z6 = motionEvent7 != null && motionEvent7.getToolType(0) == 3;
-                jw jwVar = raVar3.R;
-                if (motionEvent7 == null) {
-                    motionEvent2 = motionEvent7;
-                    if (motionEvent.getToolType(0) == 3) {
-                        z = true;
-                    } else {
-                        z = false;
-                    }
-                    if (z6) {
-                        raVar = this;
-                    } else {
-                        raVar = this;
-                    }
-                    if (motionEvent.getButtonState() != 0) {
-                        z2 = true;
-                    } else {
-                        z2 = false;
-                    }
-                    if (actionMasked2 == 8) {
-                        z3 = false;
-                    } else {
-                        z3 = false;
-                    }
-                    if (motionEvent2 != null) {
-                        motionEvent2.recycle();
-                    }
-                    motionEvent3 = raVar.z0;
-                    if (motionEvent3 != null) {
-                        motionEvent4 = raVar.z0;
-                        if (motionEvent4 != null) {
-                            pointerId = motionEvent4.getPointerId(0);
-                        } else {
-                            pointerId = -1;
-                        }
-                        action = motionEvent.getAction();
-                        tx2Var = raVar.Q;
-                        if (action == 9) {
-                            if (motionEvent.getAction() == 0) {
-                                motionEvent5 = raVar.z0;
-                                if (motionEvent5 != null) {
-                                    x = motionEvent5.getX();
-                                } else {
-                                    x = Float.NaN;
-                                }
-                                MotionEvent motionEvent8 = raVar.z0;
-                                if (motionEvent8 != null) {
-                                }
-                                x2 = motionEvent.getX();
-                                float y = motionEvent.getY();
-                                if (x == x2) {
-                                    z4 = true;
-                                } else {
-                                    z4 = true;
-                                }
-                                motionEvent6 = raVar.z0;
-                                if (motionEvent6 != null) {
-                                    eventTime = motionEvent6.getEventTime();
-                                } else {
-                                    eventTime = -1;
-                                }
-                                if (eventTime != motionEvent.getEventTime()) {
-                                    z5 = true;
-                                } else {
-                                    z5 = false;
-                                }
-                                if (z4) {
-                                    if (pointerId >= 0) {
-                                        tx2Var.c.delete(pointerId);
-                                        tx2Var.b.delete(pointerId);
-                                    }
-                                    cm1Var2 = (cm1) jwVar.p;
-                                    if (cm1Var2.d) {
-                                        cm1Var2.d = true;
-                                    } else {
-                                        cm1Var2.g.a.g();
-                                    }
-                                } else {
-                                    if (pointerId >= 0) {
-                                        tx2Var.c.delete(pointerId);
-                                        tx2Var.b.delete(pointerId);
-                                    }
-                                    cm1Var2 = (cm1) jwVar.p;
-                                    if (cm1Var2.d) {
-                                        cm1Var2.d = true;
-                                    } else {
-                                        cm1Var2.g.a.g();
-                                    }
-                                }
-                            }
-                        } else if (motionEvent.getAction() == 0) {
-                            motionEvent5 = raVar.z0;
-                            if (motionEvent5 != null) {
-                                x = motionEvent5.getX();
-                            } else {
-                                x = Float.NaN;
-                            }
-                            MotionEvent motionEvent9 = raVar.z0;
-                            if (motionEvent9 != null) {
-                            }
-                            x2 = motionEvent.getX();
-                            float y2 = motionEvent.getY();
-                            if (x == x2) {
-                                z4 = true;
-                            } else {
-                                z4 = true;
-                            }
-                            motionEvent6 = raVar.z0;
-                            if (motionEvent6 != null) {
-                                eventTime = motionEvent6.getEventTime();
-                            } else {
-                                eventTime = -1;
-                            }
-                            if (eventTime != motionEvent.getEventTime()) {
-                                z5 = true;
-                            } else {
-                                z5 = false;
-                            }
-                            if (z4) {
-                                if (pointerId >= 0) {
-                                    tx2Var.c.delete(pointerId);
-                                    tx2Var.b.delete(pointerId);
-                                }
-                                cm1Var2 = (cm1) jwVar.p;
-                                if (cm1Var2.d) {
-                                    cm1Var2.d = true;
-                                } else {
-                                    cm1Var2.g.a.g();
-                                }
-                            } else {
-                                if (pointerId >= 0) {
-                                    tx2Var.c.delete(pointerId);
-                                    tx2Var.b.delete(pointerId);
-                                }
-                                cm1Var2 = (cm1) jwVar.p;
-                                if (cm1Var2.d) {
-                                    cm1Var2.d = true;
-                                } else {
-                                    cm1Var2.g.a.g();
-                                }
-                            }
-                        }
-                    }
-                    raVar.z0 = MotionEvent.obtainNoHistory(motionEvent);
-                    if (z3) {
-                        raVar.G(motionEvent, 10, motionEvent.getEventTime(), true);
-                    }
-                    iF = F(motionEvent);
-                    Trace.endSection();
-                    if ((iF & 4) != 0) {
-                        raVar2 = this;
-                    } else {
-                        cm1Var = (cm1) jwVar.p;
-                        if (cm1Var.d) {
-                            cm1Var.d = true;
-                        } else {
-                            cm1Var.g.a.g();
-                        }
-                        raVar2 = this;
-                        raVar2.G(motionEvent, 9, motionEvent.getEventTime(), true);
-                    }
-                    raVar2.n0 = false;
-                    return iF;
-                }
-                try {
-                    if (!((motionEvent7.getSource() == motionEvent.getSource() && motionEvent7.getToolType(0) == motionEvent.getToolType(0)) ? false : true)) {
-                        motionEvent2 = motionEvent7;
-                    } else if (motionEvent7.getButtonState() != 0 || (actionMasked = motionEvent7.getActionMasked()) == 0 || actionMasked == 2 || actionMasked == 6) {
-                        motionEvent2 = motionEvent7;
-                        if (!jwVar.n) {
-                            ((xe2) ((pz1) jwVar.q).o).a();
-                            ((cm1) jwVar.p).c();
-                        }
-                    } else if (motionEvent7.getActionMasked() == 10 || !z6) {
-                        motionEvent2 = motionEvent7;
-                    } else {
-                        raVar3.G(motionEvent7, 10, motionEvent7.getEventTime(), true);
-                        motionEvent2 = motionEvent7;
-                    }
-                    if (motionEvent.getToolType(0) == 3) {
-                        z = true;
-                    } else {
-                        z = false;
-                    }
-                    if (z6 || !z || actionMasked2 == 3 || actionMasked2 == 9 || !n(motionEvent)) {
-                        raVar = this;
-                    } else {
-                        raVar = this;
-                        raVar.G(motionEvent, 9, motionEvent.getEventTime(), true);
-                    }
-                    if (motionEvent.getButtonState() != 0) {
-                        z2 = true;
-                    } else {
-                        z2 = false;
-                    }
-                    if (actionMasked2 == 8 || z2 || motionEvent2 == null || motionEvent2.isFromSource(4098)) {
-                        z3 = false;
-                    } else {
-                        z3 = true;
-                    }
-                    if (motionEvent2 != null) {
-                        motionEvent2.recycle();
-                    }
-                    motionEvent3 = raVar.z0;
-                    if (motionEvent3 != null && motionEvent3.getAction() == 10) {
-                        motionEvent4 = raVar.z0;
-                        if (motionEvent4 != null) {
-                            pointerId = motionEvent4.getPointerId(0);
-                        } else {
-                            pointerId = -1;
-                        }
-                        action = motionEvent.getAction();
-                        tx2Var = raVar.Q;
-                        if (action == 9 || motionEvent.getHistorySize() != 0) {
-                            if (motionEvent.getAction() == 0 && motionEvent.getHistorySize() == 0) {
-                                motionEvent5 = raVar.z0;
-                                if (motionEvent5 != null) {
-                                    x = motionEvent5.getX();
-                                } else {
-                                    x = Float.NaN;
-                                }
-                                MotionEvent motionEvent10 = raVar.z0;
-                                float y3 = motionEvent10 != null ? motionEvent10.getY() : Float.NaN;
-                                x2 = motionEvent.getX();
-                                float y4 = motionEvent.getY();
-                                if (x == x2 || y3 != y4) {
-                                    z4 = true;
-                                } else {
-                                    z4 = false;
-                                }
-                                motionEvent6 = raVar.z0;
-                                if (motionEvent6 != null) {
-                                    eventTime = motionEvent6.getEventTime();
-                                } else {
-                                    eventTime = -1;
-                                }
-                                if (eventTime != motionEvent.getEventTime()) {
-                                    z5 = true;
-                                } else {
-                                    z5 = false;
-                                }
-                                if (z4 || z5) {
-                                    if (pointerId >= 0) {
-                                        tx2Var.c.delete(pointerId);
-                                        tx2Var.b.delete(pointerId);
-                                    }
-                                    cm1Var2 = (cm1) jwVar.p;
-                                    if (cm1Var2.d) {
-                                        cm1Var2.d = true;
-                                    } else {
-                                        cm1Var2.g.a.g();
-                                    }
-                                }
-                            }
-                        } else if (pointerId >= 0) {
-                            tx2Var.c.delete(pointerId);
-                            tx2Var.b.delete(pointerId);
-                        }
-                    }
-                    raVar.z0 = MotionEvent.obtainNoHistory(motionEvent);
-                    if (z3) {
-                        raVar.G(motionEvent, 10, motionEvent.getEventTime(), true);
-                    }
-                    iF = F(motionEvent);
-                    try {
-                        Trace.endSection();
-                        if ((iF & 4) != 0 && z3) {
-                            cm1Var = (cm1) jwVar.p;
-                            if (cm1Var.d) {
-                                cm1Var.d = true;
-                            } else {
-                                cm1Var.g.a.g();
-                            }
-                            raVar2 = this;
-                            raVar2.G(motionEvent, 9, motionEvent.getEventTime(), true);
-                        } else {
-                            raVar2 = this;
-                        }
-                        raVar2.n0 = false;
-                        return iF;
-                    } catch (Throwable th) {
-                        th = th;
-                        raVar3 = this;
-                    }
-                } catch (Throwable th2) {
-                    th = th2;
-                    Trace.endSection();
-                    throw th;
-                }
-            } catch (Throwable th3) {
-                th = th3;
-            }
-        } catch (Throwable th4) {
-            th = th4;
-        }
-        raVar3.n0 = false;
+    public final int h(MotionEvent r17) {
+        ra r1 = this;
+        r1.removeCallbacks(r1.H0);
+        z(r17);     // Catch: Throwable -> L134
+        r1.n0 = true;     // Catch: Throwable -> L134
+        r1.q(false);     // Catch: Throwable -> L134
+        Trace.beginSection("AndroidOwner:onTouch");     // Catch: Throwable -> L134
+        int r9 = r17.getActionMasked();     // Catch: Throwable -> L10
+        MotionEvent r2 = r1.z0;     // Catch: Throwable -> L10
+        if (r2 != null) goto L7;
+    L9:
+        boolean r11 = false;
+    L12:
+        jw r13 = r1.R;
+        if (r2 != null) goto L144;
+    L37:
+        MotionEvent r14 = r2;
+    L42:
+        if (r17.getToolType(0) != 3) goto L44;
+        boolean r3 = true;
+    L46:
+        if (r11 == true) goto L55;
+        if (r3 == false) goto L55;
+        if (r9 == 3) goto L55;
+        if (r9 == 9) goto L55;
+        if (n(r17) == false) goto L55;
+        ra r4 = this;
+        r4.G(r17, 9, r17.getEventTime(), true);     // Catch: Throwable -> L10
+    L57:
+        if (r17.getButtonState() == 0) goto L59;
+        boolean r0 = true;
+    L61:
+        if (r9 != 8) goto L67;
+        if (r0 == true) goto L67;
+        if (r14 == null) goto L67;
+        if (r14.isFromSource(4098) == true) goto L67;
+        boolean r5 = true;
+    L68:
+        if (r14 == null) goto L70;
+        r14.recycle();     // Catch: Throwable -> L10
+    L70:
+        MotionEvent r6 = r4.z0;     // Catch: Throwable -> L10
+        if (r6 != null) goto L73;
+    L118:
+        r4.z0 = MotionEvent.obtainNoHistory(r17);     // Catch: Throwable -> L10
+        if (r5 == false) goto L121;
+        r4.G(r17, 10, r17.getEventTime(), true);     // Catch: Throwable -> L35
+    L121:
+        int r10 = F(r17);     // Catch: Throwable -> L35
+        Trace.endSection();     // Catch: Throwable -> L136
+        if ((r10 & 4) == 0) goto L125;
+    L124:
+        ra r7 = this;
+    L138:
+        r7.n0 = false;
+        return r10;
+    L125:
+        if (r5 == false) goto L124;
+        cm1 r8 = (cm1) r13.p;     // Catch: Throwable -> L136
+        if (r8.d == false) goto L129;
+        r8.d = true;     // Catch: Throwable -> L136
+    L130:
+        r7 = this;
+        r7.G(r17, 9, r17.getEventTime(), true);     // Catch: Throwable -> L134
+        goto L138
+    L129:
+        r8.g.a.g();     // Catch: Throwable -> L136
+    L136:
+        th = th;
+        r1 = this;
+    L142:
+        r1.n0 = false;
         throw th;
+    L35:
+        th = th;
+    L140:
+        Trace.endSection();     // Catch: Throwable -> L134
+        throw th;     // Catch: Throwable -> L134
+    L73:
+        if (r6.getAction() != 10) goto L118;
+        MotionEvent r12 = r4.z0;     // Catch: Throwable -> L10
+        if (r12 == null) goto L77;
+        int r15 = r12.getPointerId(0);     // Catch: Throwable -> L10
+    L78:
+        int r16 = r17.getAction();     // Catch: Throwable -> L10
+        tx2 r18 = r4.Q;
+        if (r16 != 9) goto L86;
+        if (r17.getHistorySize() != 0) goto L86;
+        if (r15 < 0) goto L118;
+        r18.c.delete(r15);     // Catch: Throwable -> L10
+        r18.b.delete(r15);     // Catch: Throwable -> L10
+    L86:
+        if (r17.getAction() != 0) goto L118;
+        if (r17.getHistorySize() != 0) goto L118;
+        MotionEvent r19 = r4.z0;     // Catch: Throwable -> L10
+        float r20 = Float.NaN;
+        if (r19 == null) goto L92;
+        float r21 = r19.getX();     // Catch: Throwable -> L10
+    L93:
+        MotionEvent r22 = r4.z0;     // Catch: Throwable -> L10
+        if (r22 == null) goto L96;
+        r20 = r22.getY();     // Catch: Throwable -> L10
+    L96:
+        float r23 = r17.getX();     // Catch: Throwable -> L10
+        float r24 = r17.getY();     // Catch: Throwable -> L10
+        if (r21 == r23) goto L99;
+    L101:
+        boolean r25 = true;
+    L102:
+        MotionEvent r26 = r4.z0;     // Catch: Throwable -> L10
+        if (r26 == null) goto L105;
+        long r27 = r26.getEventTime();     // Catch: Throwable -> L10
+    L107:
+        if (r27 == r17.getEventTime()) goto L109;
+        boolean r28 = true;
+    L110:
+        if (r25 == true) goto L112;
+        if (r28 == false) goto L118;
+    L112:
+        if (r15 < 0) goto L114;
+        r18.c.delete(r15);     // Catch: Throwable -> L10
+        r18.b.delete(r15);     // Catch: Throwable -> L10
+    L114:
+        cm1 r29 = (cm1) r13.p;     // Catch: Throwable -> L10
+        if (r29.d == false) goto L117;
+        r29.d = true;     // Catch: Throwable -> L10
+        goto L118
+    L117:
+        r29.g.a.g();     // Catch: Throwable -> L10
+        goto L118
+    L109:
+        r28 = false;
+        goto L110
+    L105:
+        r27 = -1;
+        goto L107
+    L99:
+        if (r20 != r24) goto L101;
+        r25 = false;
+        goto L102
+    L92:
+        r21 = Float.NaN;
+        goto L93
+    L77:
+        r15 = -1;
+    L67:
+        r5 = false;
+        goto L68
+    L59:
+        r0 = false;
+    L55:
+        r4 = this;
+        goto L57
+    L44:
+        r3 = false;
+        goto L46
+    L144:
+        if (r2.getSource() == r17.getSource()) goto L17;
+    L20:
+        boolean r30 = true;
+    L21:
+        if (r30 == false) goto L37;
+        if (r2.getButtonState() == 0) goto L25;
+    L24:
+        r14 = r2;
+        if (r13.n == true) goto L42;
+        ((xe2) ((pz1) r13.q).o).a();     // Catch: Throwable -> L35
+        ((cm1) r13.p).c();     // Catch: Throwable -> L35
+        goto L42
+    L25:
+        int r31 = r2.getActionMasked();     // Catch: Throwable -> L35
+        if (r31 == 0) goto L24;
+        if (r31 == 2) goto L24;
+        if (r31 == 6) goto L24;
+        if (r2.getActionMasked() == 10) goto L37;
+        if (r11 == false) goto L37;
+        r1.G(r2, 10, r2.getEventTime(), true);     // Catch: Throwable -> L35
+        r14 = r2;
+        goto L42
+    L17:
+        if (r2.getToolType(0) != r17.getToolType(0)) goto L20;
+        r30 = false;
+        goto L21
+    L7:
+        if (r2.getToolType(0) != 3) goto L9;
+        r11 = true;
+    L10:
+        th = th;
+    L134:
+        th = th;
+        goto L142
     }
 
     @Override // defpackage.rl0
-    public final void j(ba2 ba2Var) {
-        ez ezVarS;
-        if (Build.VERSION.SDK_INT < 30) {
-            setShowLayoutBounds(te5.v());
-        }
-        ha2 ha2Var = this.s;
-        if (ha2Var != null) {
-            ga2 ga2Var = this.r;
-            ga2Var.getClass();
-            pz1 pz1Var = ha2Var.a;
-            wf2 wf2Var = (wf2) pz1Var.o;
-            if (!wf2Var.n || wf2Var.p) {
-                return;
-            }
-            try {
-                ezVarS = ((yd5) ga2Var).a.s(new wc(13, ha2Var));
-            } catch (CancellationException unused) {
-                wf2 wf2Var2 = (wf2) pz1Var.o;
-                if (!wf2Var2.o) {
-                    if (wf2Var2.p) {
-                        po3.a("ManagedValuesStore tried to enter composition twice. Did you attempt to install the same store multiple times or into two compositions?");
-                    }
-                    wf2Var2.a();
-                    wf2Var2.p = true;
-                }
-                ezVarS = null;
-            }
-            ez ezVar = ha2Var.d;
-            if (ezVar != null) {
-                ezVar.cancel();
-            }
-            ha2Var.d = ezVarS;
-        }
+    public final void j(ba2 r4) {
+        if (Build.VERSION.SDK_INT >= 30) goto L5;
+        setShowLayoutBounds(te5.v());
+    L5:
+        ha2 r5 = this.s;
+        if (r5 == null) goto L28;
+        ga2 r3 = this.r;
+        r3.getClass();
+        pz1 r0 = r5.a;
+        wf2 r1 = (wf2) r0.o;
+        if (r1.n == true) goto L10;
+        return;
+    L10:
+        if (r1.p == true) goto L30;
+        wc r2 = new wc(13, r5);     // Catch: CancellationException -> L13
+        ez r6 = ((yd5) r3).a.s(r2);     // Catch: CancellationException -> L13
+    L21:
+        ez r7 = r5.d;
+        if (r7 == null) goto L24;
+        r7.cancel();
+    L24:
+        r5.d = r6;
+        return;
+    L13:
+        wf2 r8 = (wf2) r0.o;
+        if (r8.o == false) goto L17;
+    L20:
+        r6 = null;
+        goto L21
+    L17:
+        if (r8.p == false) goto L19;
+        po3.a("ManagedValuesStore tried to enter composition twice. Did you attempt to install the same store multiple times or into two compositions?");
+    L19:
+        r8.a();
+        r8.p = true;
+        goto L20
+    L30:
+        return;
     }
 
-    public final void k(c72 c72Var) {
-        this.f0.r(c72Var, false);
-        f13 f13VarY = c72Var.y();
-        Object[] objArr = f13VarY.n;
-        int i = f13VarY.p;
-        for (int i2 = 0; i2 < i; i2++) {
-            k((c72) objArr[i2]);
-        }
+    public final void k(c72 r4) {
+        int r1 = 0;
+        this.f0.r(r4, false);
+        f13 r5 = r4.y();
+        Object[] r0 = r5.n;
+        int r6 = r5.p;
+    L3:
+        if (r1 >= r6) goto L5;
+        k((c72) r0[r1]);
+        r1 = r1 + 1;
+        goto L3
     }
 
-    public final boolean n(MotionEvent motionEvent) {
-        float x = motionEvent.getX();
-        float y = motionEvent.getY();
-        return 0.0f <= x && x <= ((float) getWidth()) && 0.0f <= y && y <= ((float) getHeight());
+    public final boolean n(MotionEvent r4) {
+        float r0 = r4.getX();
+        float r5 = r4.getY();
+        if (0.0f <= r0) goto L5;
+        return false;
+    L5:
+        if (r0 <= getWidth()) goto L7;
+        return false;
+    L7:
+        if (0.0f <= r5) goto L9;
+        return false;
+    L9:
+        if (r5 > getHeight()) goto L16;
+        return true;
+    L16:
+        return false;
     }
 
-    public final boolean o(MotionEvent motionEvent) {
-        MotionEvent motionEvent2;
-        return (motionEvent.getPointerCount() == 1 && (motionEvent2 = this.z0) != null && motionEvent2.getPointerCount() == motionEvent.getPointerCount() && motionEvent.getRawX() == motionEvent2.getRawX() && motionEvent.getRawY() == motionEvent2.getRawY()) ? false : true;
+    public final boolean o(MotionEvent r4) {
+        if (r4.getPointerCount() != 1) goto L15;
+        MotionEvent r3 = this.z0;
+        if (r3 == null) goto L15;
+        if (r3.getPointerCount() != r4.getPointerCount()) goto L15;
+        if (r4.getRawX() != r3.getRawX()) goto L15;
+        if (r4.getRawY() != r3.getRawY()) goto L15;
+        return false;
+    L15:
+        return true;
     }
 
     @Override // android.view.ViewGroup, android.view.View
     public final void onAttachedToWindow() {
-        y14 y14Var;
-        Object obj;
         super.onAttachedToWindow();
-        if (!getRoot().G()) {
-            getRoot().d(this);
-        }
-        int i = 1;
+        if (getRoot().G() == true) goto L5;
+        getRoot().d(this);
+    L5:
+        int r0 = 1;
         setAttached(true);
-        if (Build.VERSION.SDK_INT < 30) {
-            setShowLayoutBounds(te5.v());
-        }
+        if (Build.VERSION.SDK_INT >= 30) goto L8;
+        setShowLayoutBounds(te5.v());
+    L8:
         this.E.onViewAttachedToWindow(this);
-        if (!this.P0) {
-            getComposeViewContext().e();
-        }
-        int i2 = 0;
+        if (this.P0 == true) goto L11;
+        getComposeViewContext().e();
+    L11:
+        int r1 = 0;
         this.P0 = false;
         k(getRoot());
         i(getRoot());
-        pp3 pp3Var = getSnapshotObserver().a;
-        z zVar = (z) pp3Var.e;
+        pp3 r2 = getSnapshotObserver().a;
+        z r3 = (z) r2.e;
         jh4.e(jh4.a);
-        synchronized (jh4.c) {
-            jh4.h = q40.F0(zVar, jh4.h);
-        }
-        pp3Var.i = new ss2(18, zVar);
-        ra outOfFrameExecutor = getOutOfFrameExecutor();
-        if (outOfFrameExecutor == null) {
-            kf2.o("Expected the view to be attached to window.");
-            return;
-        }
-        outOfFrameExecutor.C(new da(this, i));
+        Object r4 = jh4.c;
+        monitor-enter(r4);
+        jh4.h = q40.F0(r3, jh4.h);     // Catch: Throwable -> L59
+        monitor-exit(r4);
+        r2.i = new ss2(18, r3);
+        ra r5 = m75getOutOfFrameExecutor();
+        if (r5 == null) goto L57;
+        r5.C(new da(this, r0));
         getComposeViewContext().d();
-        h80 composeViewContext = getComposeViewContext();
-        composeViewContext.g();
-        f75 f75Var = composeViewContext.f;
-        ga2 ga2Var = this.r;
-        if (f75Var == null || ga2Var == null) {
-            y14Var = null;
-        } else {
-            e75 e75VarD = f75Var.d();
-            c75 c75Var = new c75();
-            sf0 sf0Var = sf0.b;
-            e75VarD.getClass();
-            sf0Var.getClass();
-            bq4 bq4Var = new bq4(e75VarD, c75Var, sf0Var);
-            i30 i30VarA = kx3.a(ia2.class);
-            String strB = i30VarA.b();
-            if (strB == null) {
-                kf2.n("Local and anonymous classes can not be ViewModels");
-                return;
-            }
-            ia2 ia2Var = (ia2) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-            Object parent = getParent();
-            parent.getClass();
-            int id = ((View) parent).getId();
-            i03 i03Var = ia2Var.b;
-            Object objB = i03Var.b(id);
-            if (objB == null) {
-                objB = new q03(1);
-                i03Var.i(id, objB);
-            }
-            q03 q03Var = (q03) objB;
-            Object[] objArr = q03Var.a;
-            int i3 = q03Var.b;
-            while (true) {
-                if (i2 >= i3) {
-                    obj = null;
-                    break;
-                }
-                obj = objArr[i2];
-                if (!((ha2) obj).c) {
-                    break;
-                } else {
-                    i2++;
-                }
-            }
-            ha2 ha2Var = (ha2) obj;
-            if (ha2Var == null) {
-                ha2Var = new ha2();
-                q03Var.a(ha2Var);
-            }
-            ha2Var.c = true;
-            this.s = ha2Var;
-            y14Var = ha2Var.b;
-        }
-        if (y14Var == null) {
-            y14Var = fz0.b0;
-        }
-        this.u = y14Var;
-        if1 if1Var = this.p0;
-        if (if1Var != null) {
-            if1Var.invoke(getComposeViewContext());
-            this.p0 = null;
-        }
-        ea2 ea2VarH = getComposeViewContext().d().h();
-        ea2VarH.a(this);
-        ea2VarH.a(this.K);
-        getInputModeManager().a.setValue(new qz1(isInTouchMode() ? 1 : 2));
+        h80 r6 = getComposeViewContext();
+        r6.g();
+        f75 r7 = r6.f;
+        ga2 r8 = this.r;
+        if (r7 == null) goto L39;
+        if (r8 == null) goto L39;
+        e75 r9 = r7.d();
+        c75 r10 = new c75();
+        sf0 r11 = sf0.b;
+        r9.getClass();
+        r11.getClass();
+        bq4 r12 = new bq4(r9, r10, r11);
+        i30 r13 = kx3.a(ia2.class);
+        String r14 = r13.b();
+        if (r14 == null) goto L37;
+        ia2 r15 = (ia2) r12.l(r13, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r14));
+        Object r16 = getParent();
+        r16.getClass();
+        int r17 = ((View) r16).getId();
+        i03 r18 = r15.b;
+        Object r19 = r18.b(r17);
+        if (r19 != null) goto L26;
+        r19 = new q03(1);
+        r18.i(r17, r19);
+    L26:
+        q03 r20 = (q03) r19;
+        Object[] r21 = r20.a;
+        int r22 = r20.b;
+    L27:
+        if (r1 >= r22) goto L32;
+        Object r23 = r21[r1];
+        if (((ha2) r23).c == false) goto L33;
+        r1 = r1 + 1;
+    L33:
+        ha2 r24 = (ha2) r23;
+        if (r24 != null) goto L36;
+        r24 = new ha2();
+        r20.a(r24);
+    L36:
+        r24.c = true;
+        this.s = r24;
+        y14 r25 = r24.b;
+    L40:
+        if (r25 != null) goto L42;
+        r25 = fz0.b0;
+    L42:
+        this.u = r25;
+        if1 r26 = this.p0;
+        if (r26 == null) goto L45;
+        r26.invoke(getComposeViewContext());
+        this.p0 = null;
+    L45:
+        ea2 r27 = getComposeViewContext().d().h();
+        r27.a(this);
+        r27.a(this.K);
+        sz1 r28 = m73getInputModeManager();
+        if (isInTouchMode() == true) goto L49;
+        r0 = 2;
+    L49:
+        r28.a.setValue(new qz1(r0));
         getViewTreeObserver().addOnGlobalLayoutListener(this);
         getViewTreeObserver().addOnScrollChangedListener(this);
         getViewTreeObserver().addOnTouchModeChangeListener(this);
-        if (Build.VERSION.SDK_INT >= 31) {
-            eb.a.b(this);
-        }
-        y9 autofillManager = getAutofillManager();
-        if (autofillManager != null) {
-            ((q03) ((ey) getFocusOwner()).g).a(autofillManager);
-            getSemanticsOwner().d.a(autofillManager);
-        }
+        if (Build.VERSION.SDK_INT < 31) goto L52;
+        eb.a.b(this);
+    L52:
+        y9 r29 = m71getAutofillManager();
+        if (r29 == null) goto L55;
+        ((q03) ((ey) getFocusOwner()).g).a(r29);
+        getSemanticsOwner().d.a(r29);
+    L55:
         ((q03) ((ey) getFocusOwner()).g).a(this);
+        return;
+    L32:
+        r23 = null;
+        goto L33
+    L37:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return;
+    L39:
+        r25 = null;
+        goto L40
+    L57:
+        kf2.o("Expected the view to be attached to window.");
+        return;
+    L59:
+        th = move-exception;
+        throw th;
     }
 
     @Override // android.view.View
     public final boolean onCheckIsTextEditor() {
-        if (this.s0.get() == null) {
-            getLegacyTextInputServiceAndroid().getClass();
-            return false;
-        }
+        if (this.s0.get() != null) goto L7;
+        getLegacyTextInputServiceAndroid().getClass();
+        return false;
+    L7:
         kf2.k();
         return false;
     }
 
     @Override // android.view.View
-    public final void onConfigurationChanged(Configuration configuration) {
-        super.onConfigurationChanged(configuration);
-        H(configuration);
+    public final void onConfigurationChanged(Configuration r1) {
+        super.onConfigurationChanged(r1);
+        H(r1);
     }
 
     @Override // android.view.View
-    public final InputConnection onCreateInputConnection(EditorInfo editorInfo) {
-        if (this.s0.get() == null) {
-            getLegacyTextInputServiceAndroid().getClass();
-            return null;
-        }
+    public final InputConnection onCreateInputConnection(EditorInfo r1) {
+        if (this.s0.get() != null) goto L7;
+        getLegacyTextInputServiceAndroid().getClass();
+        return null;
+    L7:
         kf2.k();
         return null;
     }
 
     @Override // android.view.View
-    public final void onCreateVirtualViewTranslationRequests(long[] jArr, int[] iArr, Consumer consumer) {
-        i94 i94Var;
-        lb lbVar = this.K;
-        lbVar.getClass();
-        for (long j : jArr) {
-            k94 k94Var = (k94) lbVar.d().b((int) j);
-            if (k94Var != null && (i94Var = k94Var.a) != null) {
-                db.p();
-                ViewTranslationRequest.Builder builderL = db.l(lbVar.n.getAutofillId(), i94Var.f);
-                Object objG = i94Var.d.n.g(n94.z);
-                if (objG == null) {
-                    objG = null;
-                }
-                List list = (List) objG;
-                if (list != null) {
-                    builderL.setValue("android:text", TranslationRequestValue.forText(new he(gc2.a(list, "\n", null, 62))));
-                    consumer.accept(builderL.build());
-                }
-            }
-        }
+    public final void onCreateVirtualViewTranslationRequests(long[] r7, int[] r8, Consumer r9) {
+        lb r6 = this.K;
+        r6.getClass();
+        int r10 = r7.length;
+        int r0 = 0;
+    L3:
+        if (r0 >= r10) goto L16;
+        k94 r1 = (k94) r6.d().b((int) r7[r0]);
+        if (r1 == null) goto L15;
+        i94 r2 = r1.a;
+        if (r2 == null) goto L15;
+        db.p();
+        ViewTranslationRequest.Builder r3 = db.l(j3.m(r6.n), r2.f);
+        e94 r4 = r2.d;
+        Object r5 = r4.n.g(n94.z);
+        if (r5 != null) goto L12;
+        r5 = null;
+    L12:
+        List r11 = (List) r5;
+        if (r11 == null) goto L15;
+        db.y(r3, db.j(new he(gc2.a(r11, "\n", null, 62))));
+        r9.accept(db.m(r3));
+    L15:
+        r0 = r0 + 1;
+        goto L3
     }
 
     @Override // android.view.ViewGroup, android.view.View
@@ -2372,219 +2681,268 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
         super.onDetachedFromWindow();
         setAttached(false);
         this.E.onViewDetachedFromWindow(this);
-        View view = this.y;
-        if (l() && view != null) {
-            removeView(view);
-        }
-        if (Build.VERSION.SDK_INT > 28) {
-            q03 q03Var = X0;
-            synchronized (q03Var) {
-                q03Var.j(this);
-            }
-        }
+        View r1 = this.y;
+        if (l() == false) goto L7;
+        if (r1 == null) goto L7;
+        removeView(r1);
+    L7:
+        if (Build.VERSION.SDK_INT <= 28) goto L17;
+        q03 r2 = X0;
+        monitor-enter(r2);
+        r2.j(this);     // Catch: Throwable -> L13
+        monitor-exit(r2);
+    L13:
+        th = move-exception;
+        throw th;
+    L17:
         getComposeViewContext().b();
-        wb3 snapshotObserver = getSnapshotObserver();
-        ss2 ss2Var = (ss2) snapshotObserver.a.i;
-        if (ss2Var != null) {
-            ss2Var.d();
-        }
-        pp3 pp3Var = snapshotObserver.a;
-        synchronized (pp3Var.h) {
-            f13 f13Var = (f13) pp3Var.g;
-            Object[] objArr = f13Var.n;
-            int i = f13Var.p;
-            for (int i2 = 0; i2 < i; i2++) {
-                sh4 sh4Var = (sh4) objArr[i2];
-                sh4Var.e.a();
-                sh4Var.f.a();
-                sh4Var.l.a();
-                sh4Var.m.clear();
-            }
-        }
-        ea2 ea2VarH = getComposeViewContext().d().h();
-        ea2VarH.f(this.K);
-        ea2VarH.f(this);
+        wb3 r3 = getSnapshotObserver();
+        ss2 r4 = (ss2) r3.a.i;
+        if (r4 == null) goto L20;
+        r4.d();
+    L20:
+        pp3 r5 = r3.a;
+        Object r6 = r5.h;
+        monitor-enter(r6);
+        f13 r7 = (f13) r5.g;     // Catch: Throwable -> L26
+        Object[] r8 = r7.n;     // Catch: Throwable -> L26
+        int r9 = r7.p;     // Catch: Throwable -> L26
+        int r10 = 0;
+    L23:
+        if (r10 >= r9) goto L28;
+        sh4 r11 = (sh4) r8[r10];     // Catch: Throwable -> L26
+        r11.e.a();     // Catch: Throwable -> L26
+        r11.f.a();     // Catch: Throwable -> L26
+        r11.l.a();     // Catch: Throwable -> L26
+        r11.m.clear();     // Catch: Throwable -> L26
+        r10 = r10 + 1;
+        goto L23
+    L28:
+        monitor-exit(r6);
+        ea2 r12 = getComposeViewContext().d().h();
+        r12.f(this.K);
+        r12.f(this);
         getViewTreeObserver().removeOnGlobalLayoutListener(this);
         getViewTreeObserver().removeOnScrollChangedListener(this);
         getViewTreeObserver().removeOnTouchModeChangeListener(this);
-        ha2 ha2Var = this.s;
-        if (ha2Var != null) {
-            ha2Var.c = false;
-        }
+        ha2 r13 = this.s;
+        if (r13 == null) goto L32;
+        r13.c = false;
+    L32:
         this.s = null;
-        if (Build.VERSION.SDK_INT >= 31) {
-            eb.a.a(this);
-        }
-        y9 autofillManager = getAutofillManager();
-        if (autofillManager != null) {
-            getSemanticsOwner().d.j(autofillManager);
-            ((q03) ((ey) getFocusOwner()).g).j(autofillManager);
-        }
-        yv3 rectManager = getRectManager();
-        rectManager.g = rectManager.d.b(0L, 0L, null, 0, 0);
+        if (Build.VERSION.SDK_INT < 31) goto L35;
+        eb.a.a(this);
+    L35:
+        y9 r14 = m71getAutofillManager();
+        if (r14 == null) goto L38;
+        getSemanticsOwner().d.j(r14);
+        ((q03) ((ey) getFocusOwner()).g).j(r14);
+    L38:
+        yv3 r15 = getRectManager();
+        r15.g = r15.d.b(0, 0, null, 0, 0);
         getRectManager().a();
-        yv3 rectManager2 = getRectManager();
-        ga gaVar = rectManager2.i;
-        if (gaVar != null) {
-            rectManager2.b.removeCallbacks(gaVar);
-            rectManager2.i = null;
-        }
+        yv3 r16 = getRectManager();
+        ga r17 = r16.i;
+        if (r17 == null) goto L41;
+        r16.b.removeCallbacks(r17);
+        r16.i = null;
+    L41:
         ((q03) ((ey) getFocusOwner()).g).j(this);
+        return;
+    L26:
+        th = move-exception;
+        throw th;
     }
 
     @Override // android.view.View
-    public final void onDraw(Canvas canvas) {
+    public final void onDraw(Canvas r1) {
     }
 
     @Override // android.view.View
-    public final void onFocusChanged(boolean z, int i, Rect rect) {
-        super.onFocusChanged(z, i, rect);
-        if (z || hasFocus()) {
-            return;
-        }
-        ey eyVar = (ey) getFocusOwner();
-        uc5.P((ba1) eyVar.c, true);
-        if (eyVar.f() != null) {
-            ba1 ba1VarF = eyVar.f();
-            eyVar.h(null);
-            if (ba1VarF != null) {
-                ba1VarF.r0(z91.n, z91.p);
-            }
-        }
+    public final void onFocusChanged(boolean r1, int r2, Rect r3) {
+        super.onFocusChanged(r1, r2, r3);
+        if (r1 == false) goto L5;
+        return;
+    L5:
+        if (hasFocus() == true) goto L13;
+        ey r0 = (ey) getFocusOwner();
+        uc5.P((ba1) r0.c, true);
+        if (r0.f() == null) goto L14;
+        ba1 r4 = r0.f();
+        r0.h(null);
+        if (r4 == null) goto L15;
+        r4.r0(z91.n, z91.p);
+        return;
+    L15:
+        return;
+    L14:
+        return;
     }
 
     @Override // android.view.ViewTreeObserver.OnGlobalLayoutListener
     public final void onGlobalLayout() {
-        this.m0 = 0L;
+        this.m0 = 0;
         I();
-        int i = Build.VERSION.SDK_INT;
-        if (32 > i || i >= 34) {
-            return;
-        }
+        int r0 = Build.VERSION.SDK_INT;
+        if (32 <= r0) goto L5;
+        return;
+    L5:
+        if (r0 >= 34) goto L9;
         H(getResources().getConfiguration());
+        return;
     }
 
     @Override // android.view.ViewGroup, android.view.View
-    public final void onLayout(boolean z, int i, int i2, int i3, int i4) {
+    public final void onLayout(boolean r3, int r4, int r5, int r6, int r7) {
         Trace.beginSection("AndroidOwner:onLayout");
-        try {
-            this.m0 = 0L;
-            this.f0.l(this.M0);
-            this.d0 = null;
-            I();
-            if (this.c0 != null) {
-                Trace.beginSection("AndroidOwner:viewLayout");
-                try {
-                    getAndroidViewsHandler$ui().layout(0, 0, i3 - i, i4 - i2);
-                    Trace.endSection();
-                } finally {
-                    Trace.endSection();
-                }
-            }
-        } catch (Throwable th) {
-            Trace.endSection();
-            throw th;
-        }
+        this.m0 = 0;     // Catch: Throwable -> L13
+        this.f0.l(this.M0);     // Catch: Throwable -> L13
+        this.d0 = null;     // Catch: Throwable -> L13
+        I();     // Catch: Throwable -> L13
+        if (this.c0 == null) goto L11;
+        Trace.beginSection("AndroidOwner:viewLayout");     // Catch: Throwable -> L13
+        getAndroidViewsHandler$ui().layout(0, 0, r6 - r4, r7 - r5);     // Catch: Throwable -> L8
+        Trace.endSection();     // Catch: Throwable -> L13
+        goto L11
+    L8:
+        th = move-exception;
+        Trace.endSection();     // Catch: Throwable -> L13
+        throw th;     // Catch: Throwable -> L13
+    L11:
+        Trace.endSection();
+        return;
+    L13:
+        th = move-exception;
+        Trace.endSection();
+        throw th;
     }
 
     @Override // android.view.View
-    public final void onMeasure(int i, int i2) {
-        ri2 ri2Var = this.f0;
+    public final void onMeasure(int r9, int r10) {
+        ri2 r0 = this.f0;
         Trace.beginSection("AndroidOwner:onMeasure");
-        try {
-            if (!getRoot().G()) {
-                getRoot().d(this);
-            }
-            if (!isAttachedToWindow()) {
-                k(getRoot());
-            }
-            long jF = f(i);
-            long jF2 = f(i2);
-            long jL = zz1.l((int) (jF >>> 32), (int) (jF & 4294967295L), (int) (jF2 >>> 32), (int) (4294967295L & jF2));
-            nc0 nc0Var = this.d0;
-            if (nc0Var == null) {
-                this.d0 = new nc0(jL);
-                this.e0 = false;
-            } else if (!nc0.b(nc0Var.a, jL)) {
-                this.e0 = true;
-            }
-            ri2Var.s(jL);
-            ri2Var.n();
-            setMeasuredDimension(getRoot().R.p.n, getRoot().R.p.o);
-            if (this.c0 != null) {
-                Trace.beginSection("AndroidOwner:androidViewMeasure");
-                try {
-                    getAndroidViewsHandler$ui().measure(View.MeasureSpec.makeMeasureSpec(getRoot().R.p.n, 1073741824), View.MeasureSpec.makeMeasureSpec(getRoot().R.p.o, 1073741824));
-                    Trace.endSection();
-                } finally {
-                    Trace.endSection();
-                }
-            }
-        } catch (Throwable th) {
-            Trace.endSection();
-            throw th;
-        }
+    L25:
+        th = move-exception;
+        Trace.endSection();
+        throw th;
+    L4:
+        if (getRoot().G() == true) goto L7;
+        getRoot().d(this);     // Catch: Throwable -> L25
+    L7:
+        if (isAttachedToWindow() == true) goto L9;
+        k(getRoot());     // Catch: Throwable -> L25
+    L9:
+        long r1 = f(r9);     // Catch: Throwable -> L25
+        long r6 = f(r10);     // Catch: Throwable -> L25
+        long r11 = zz1.l((int) (r1 >>> 32), (int) (r1 & 4294967295L), (int) (r6 >>> 32), (int) (4294967295L & r6));     // Catch: Throwable -> L25
+        nc0 r2 = this.d0;     // Catch: Throwable -> L25
+        if (r2 != null) goto L13;
+        this.d0 = new nc0(r11);     // Catch: Throwable -> L25
+        this.e0 = false;     // Catch: Throwable -> L25
+    L15:
+        r0.s(r11);     // Catch: Throwable -> L25
+        r0.n();     // Catch: Throwable -> L25
+        setMeasuredDimension(getRoot().R.p.n, getRoot().R.p.o);     // Catch: Throwable -> L25
+        if (this.c0 == null) goto L23;
+        Trace.beginSection("AndroidOwner:androidViewMeasure");     // Catch: Throwable -> L25
+        getAndroidViewsHandler$ui().measure(View.MeasureSpec.makeMeasureSpec(getRoot().R.p.n, 1073741824), View.MeasureSpec.makeMeasureSpec(getRoot().R.p.o, 1073741824));     // Catch: Throwable -> L20
+        Trace.endSection();     // Catch: Throwable -> L25
+        goto L23
+    L20:
+        th = move-exception;
+        Trace.endSection();     // Catch: Throwable -> L25
+        throw th;     // Catch: Throwable -> L25
+    L23:
+        Trace.endSection();
+        return;
+    L13:
+        if (nc0.b(r2.a, r11) == true) goto L15;
+        this.e0 = true;     // Catch: Throwable -> L25
+        goto L15
     }
 
     @Override // android.view.View
-    public final void onProvideAutofillVirtualStructure(ViewStructure viewStructure, int i) {
-        if (!d() || viewStructure == null || this.Q0) {
-            return;
-        }
-        x(viewStructure);
+    public final void onProvideAutofillVirtualStructure(ViewStructure r1, int r2) {
+        if (d() == false) goto L9;
+        if (r1 != null) goto L6;
+        return;
+    L6:
+        if (this.Q0 == true) goto L11;
+        x(r1);
+        return;
+    L11:
+        return;
     }
 
     @Override // android.view.ViewGroup, android.view.View
-    public final PointerIcon onResolvePointerIcon(MotionEvent motionEvent, int i) {
-        int toolType = motionEvent.getToolType(i);
-        if (!motionEvent.isFromSource(8194) && motionEvent.isFromSource(16386) && (toolType == 2 || toolType == 4)) {
-            getPointerIconService().getClass();
-        }
-        return super.onResolvePointerIcon(motionEvent, i);
+    public final PointerIcon onResolvePointerIcon(MotionEvent r3, int r4) {
+        int r0 = r3.getToolType(r4);
+        if (r3.isFromSource(8194) == true) goto L12;
+        if (r3.isFromSource(16386) == false) goto L12;
+        if (r0 != 2) goto L9;
+    L10:
+        getPointerIconService().getClass();
+        goto L12
+    L9:
+        if (r0 == 4) goto L10;
+    L12:
+        return super.onResolvePointerIcon(r3, r4);
     }
 
     @Override // android.view.View
-    public final void onRtlPropertiesChanged(int i) {
-        r62 r62Var;
-        if (this.p) {
-            int[] iArr = r91.a;
-            r62 r62Var2 = r62.n;
-            if (i != 0) {
-                r62Var = i != 1 ? null : r62.o;
-            } else {
-                r62Var = r62Var2;
-            }
-            if (r62Var != null) {
-                r62Var2 = r62Var;
-            }
-            setLayoutDirection(r62Var2);
-        }
+    public final void onRtlPropertiesChanged(int r3) {
+        if (this.p == false) goto L16;
+        int[] r0 = r91.a;
+        r62 r1 = r62.n;
+        if (r3 != 0) goto L7;
+        r62 r4 = r1;
+    L11:
+        if (r4 == null) goto L14;
+        r1 = r4;
+    L14:
+        setLayoutDirection(r1);
+        return;
+    L7:
+        if (r3 == 1) goto L9;
+        r4 = null;
+        goto L11
+    L9:
+        r4 = r62.o;
+        goto L11
     }
 
     @Override // android.view.View
-    public final void onScrollCaptureSearch(Rect rect, Point point, Consumer consumer) {
-        rm2 rm2Var;
-        if (Build.VERSION.SDK_INT < 31 || (rm2Var = this.R0) == null) {
-            return;
-        }
-        l94 semanticsOwner = getSemanticsOwner();
-        ne0 coroutineContext = getCoroutineContext();
-        f13 f13Var = new f13(new j64[16]);
-        gb.h0(semanticsOwner.a(), 0, new i64(1, 8, f13.class, f13Var, "add", "add(Ljava/lang/Object;)Z"));
-        Arrays.sort(f13Var.n, 0, f13Var.p, new w60(1, new if1[]{new o54(10), new o54(11)}));
-        int i = f13Var.p;
-        j64 j64Var = (j64) (i == 0 ? null : f13Var.n[i - 1]);
-        if (j64Var == null) {
-            return;
-        }
-        k02 k02Var = j64Var.c;
-        a80 a80Var = new a80(j64Var.a, k02Var, te5.a(coroutineContext), rm2Var, this);
-        f63 f63Var = j64Var.d;
-        wv3 wv3VarC = wr1.n(f63Var).C(f63Var, true);
-        long j = (((long) k02Var.a) << 32) | (((long) k02Var.b) & 4294967295L);
-        ScrollCaptureTarget scrollCaptureTargetH = go2.h(this, uo.U(rr2.Q(wv3VarC)), new Point((int) (j >> 32), (int) (j & 4294967295L)), a80Var);
-        scrollCaptureTargetH.setScrollBounds(uo.U(k02Var));
-        consumer.accept(scrollCaptureTargetH);
+    public final void onScrollCaptureSearch(Rect r13, Point r14, Consumer r15) {
+        if (Build.VERSION.SDK_INT < 31) goto L15;
+        rm2 r4 = this.R0;
+        if (r4 == null) goto L16;
+        l94 r16 = getSemanticsOwner();
+        ne0 r17 = getCoroutineContext();
+        f13 r9 = new f13(new j64[16]);
+        gb.h0(r16.a(), 0, new i64(1, 8, f13.class, r9, "add", "add(Ljava/lang/Object;)Z"));
+        Arrays.sort(r9.n, 0, r9.p, new w60(1, new if1[]{new o54(10), new o54(11)}));
+        int r0 = r9.p;
+        if (r0 != 0) goto L9;
+        Object r1 = null;
+    L10:
+        j64 r6 = (j64) r1;
+        if (r6 == null) goto L17;
+        k02 r2 = r6.c;
+        a80 r3 = new a80(r6.a, r2, te5.a(r17), r4, this);
+        f63 r12 = r6.d;
+        wv3 r18 = wr1.n(r12).C(r12, true);
+        long r5 = (((long) r2.a) << 32) | (((long) r2.b) & 4294967295L);
+        ScrollCaptureTarget r19 = go2.h(this, uo.U(rr2.Q(r18)), new Point((int) (r5 >> 32), (int) (r5 & 4294967295L)), r3);
+        go2.u(r19, uo.U(r2));
+        r15.accept(r19);
+        return;
+    L17:
+        return;
+    L9:
+        r1 = r9.n[r0 - 1];
+        goto L10
+    L16:
+        return;
     }
 
     @Override // android.view.ViewTreeObserver.OnScrollChangedListener
@@ -2593,271 +2951,326 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
     }
 
     @Override // defpackage.rl0
-    public final void onStop(ba2 ba2Var) {
-        ha2 ha2Var = this.s;
-        if (ha2Var != null) {
-            wf2 wf2Var = (wf2) ha2Var.a.o;
-            if (wf2Var.n && !wf2Var.p) {
-                ez ezVar = ha2Var.d;
-                if (ezVar != null) {
-                    ezVar.cancel();
-                }
-                ha2Var.d = null;
-                return;
-            }
-            if (wf2Var.o) {
-                return;
-            }
-            if (!wf2Var.p) {
-                po3.a("ManagedValuesStore tried to leave composition twice. Is the store installed in multiple places?");
-            }
-            if (!wf2Var.q.i()) {
-                po3.a("Attempted to start retaining exited values with pending exited values");
-            }
-            wf2Var.p = false;
-        }
+    public final void onStop(ba2 r2) {
+        ha2 r1 = this.s;
+        if (r1 == null) goto L24;
+        wf2 r3 = (wf2) r1.a.o;
+        if (r3.n == false) goto L14;
+        if (r3.p == true) goto L14;
+        ez r4 = r1.d;
+        if (r4 == null) goto L11;
+        r4.cancel();
+    L11:
+        r1.d = null;
+        return;
+    L14:
+        if (r3.o == false) goto L17;
+        return;
+    L17:
+        if (r3.p == true) goto L20;
+        po3.a("ManagedValuesStore tried to leave composition twice. Is the store installed in multiple places?");
+    L20:
+        if (r3.q.i() == true) goto L22;
+        po3.a("Attempted to start retaining exited values with pending exited values");
+    L22:
+        r3.p = false;
+        return;
     }
 
     @Override // android.view.ViewTreeObserver.OnTouchModeChangeListener
-    public final void onTouchModeChanged(boolean z) {
-        getInputModeManager().a.setValue(new qz1(z ? 1 : 2));
+    public final void onTouchModeChanged(boolean r2) {
+        sz1 r1 = m73getInputModeManager();
+        if (r2 == false) goto L5;
+        int r3 = 1;
+    L6:
+        r1.a.setValue(new qz1(r3));
+        return;
+    L5:
+        r3 = 2;
+        goto L6
     }
 
     @Override // android.view.View
-    public final void onVirtualViewTranslationResponses(LongSparseArray longSparseArray) {
-        lb lbVar = this.K;
-        lbVar.getClass();
-        if (Build.VERSION.SDK_INT < 31) {
-            return;
-        }
-        if (h12.c(Looper.getMainLooper().getThread(), Thread.currentThread())) {
-            uo.p(lbVar, longSparseArray);
-        } else {
-            lbVar.n.post(new k6(1, lbVar, longSparseArray));
-        }
+    public final void onVirtualViewTranslationResponses(LongSparseArray r4) {
+        lb r3 = this.K;
+        r3.getClass();
+        if (Build.VERSION.SDK_INT >= 31) goto L6;
+        return;
+    L6:
+        if (h12.c(Looper.getMainLooper().getThread(), Thread.currentThread()) == false) goto L9;
+        uo.p(r3, r4);
+        return;
+    L9:
+        r3.n.post(new k6(1, r3, r4));
     }
 
     @Override // android.view.View
-    public final void onWindowFocusChanged(boolean z) {
-        boolean zV;
+    public final void onWindowFocusChanged(boolean r2) {
         this.O0 = true;
-        super.onWindowFocusChanged(z);
-        if (!z || Build.VERSION.SDK_INT >= 30 || getShowLayoutBounds() == (zV = te5.v())) {
-            return;
-        }
-        setShowLayoutBounds(zV);
+        super.onWindowFocusChanged(r2);
+        if (r2 == true) goto L5;
+        return;
+    L5:
+        if (Build.VERSION.SDK_INT >= 30) goto L11;
+        boolean r3 = te5.v();
+        if (getShowLayoutBounds() == r3) goto L12;
+        setShowLayoutBounds(r3);
         i(getRoot());
+        return;
+    L12:
+        return;
     }
 
-    public final long p(long j) {
+    public final long p(long r8) {
         y();
-        long jA = ya4.A(j, this.k0);
-        float fIntBitsToFloat = Float.intBitsToFloat((int) (this.o0 >> 32)) + Float.intBitsToFloat((int) (jA >> 32));
-        float fIntBitsToFloat2 = Float.intBitsToFloat((int) (this.o0 & 4294967295L)) + Float.intBitsToFloat((int) (jA & 4294967295L));
-        return (((long) Float.floatToRawIntBits(fIntBitsToFloat)) << 32) | (((long) Float.floatToRawIntBits(fIntBitsToFloat2)) & 4294967295L);
+        long r9 = ya4.A(r8, this.k0);
+        float r2 = Float.intBitsToFloat((int) (this.o0 >> 32)) + Float.intBitsToFloat((int) (r9 >> 32));
+        float r7 = Float.intBitsToFloat((int) (this.o0 & 4294967295L)) + Float.intBitsToFloat((int) (r9 & 4294967295L));
+        return (Float.floatToRawIntBits(r2) << 32) | (Float.floatToRawIntBits(r7) & 4294967295L);
     }
 
-    public final void q(boolean z) {
-        ri2 ri2Var = this.f0;
-        if (ri2Var.b.o() || ((f13) ri2Var.e.n).p != 0) {
-            Trace.beginSection("AndroidOwner:measureAndLayout");
-            try {
-                if (ri2Var.l(z ? this.M0 : this.N0)) {
-                    requestLayout();
-                }
-                ri2Var.b(false);
-                getRectManager().a();
-                Trace.endSection();
-            } catch (Throwable th) {
-                Trace.endSection();
-                throw th;
-            }
-        }
-    }
-
-    public final void r(c72 c72Var, long j) {
-        ri2 ri2Var = this.f0;
+    public final void q(boolean r3) {
+        ri2 r0 = this.f0;
+        if (r0.b.o() == false) goto L5;
+    L8:
         Trace.beginSection("AndroidOwner:measureAndLayout");
-        try {
-            ri2Var.m(c72Var, j);
-            if (!ri2Var.b.o()) {
-                ri2Var.b(false);
-                getRectManager().a();
-                this.N0.invoke();
-            }
-        } finally {
-            Trace.endSection();
-        }
+        if (r3 == false) goto L11;
+        da r4 = this.M0;     // Catch: Throwable -> L18
+    L13:
+        if (r0.l(r4) == false) goto L15;
+        requestLayout();     // Catch: Throwable -> L18
+    L15:
+        r0.b(false);     // Catch: Throwable -> L18
+        getRectManager().a();     // Catch: Throwable -> L18
+        Trace.endSection();
+        return;
+    L11:
+        r4 = this.N0;     // Catch: Throwable -> L18
+    L18:
+        th = move-exception;
+        Trace.endSection();
+        throw th;
+    L5:
+        if (((f13) r0.e.n).p != 0) goto L8;
+    }
+
+    public final void r(c72 r3, long r4) {
+        ri2 r0 = this.f0;
+        Trace.beginSection("AndroidOwner:measureAndLayout");
+        r0.m(r3, r4);     // Catch: Throwable -> L8
+        if (r0.b.o() == true) goto L6;
+        r0.b(false);     // Catch: Throwable -> L8
+        getRectManager().a();     // Catch: Throwable -> L8
+        this.N0.invoke();     // Catch: Throwable -> L8
+    L6:
+        Trace.endSection();
+        return;
+    L8:
+        th = move-exception;
+        Trace.endSection();
+        throw th;
     }
 
     @Override // android.view.ViewGroup, android.view.View
-    public final boolean requestFocus(int i, Rect rect) {
-        int i2 = 1;
-        if (!isFocused()) {
-            o91 o91VarC = r91.c(i);
-            int i3 = o91VarC != null ? o91VarC.a : 7;
-            Boolean boolE = ((ey) getFocusOwner()).e(i3, rect != null ? new wv3(rect.left, rect.top, rect.right, rect.bottom) : null, new ha(i3, 0));
-            Boolean bool = Boolean.TRUE;
-            if (!h12.c(boolE, bool)) {
-                if (!h12.c(((ey) getFocusOwner()).e(i3, null, new ha(i3, i2)), bool)) {
-                    if (hasFocus() && (i3 == 1 || i3 == 2)) {
-                        return ((ey) getFocusOwner()).g(i3);
-                    }
-                    return false;
-                }
-            }
-        }
+    public final boolean requestFocus(int r8, Rect r9) {
+        int r1 = 1;
+        if (isFocused() == true) goto L18;
+        o91 r10 = r91.c(r8);
+        if (r10 == null) goto L8;
+        int r11 = r10.a;
+    L9:
+        u91 r0 = getFocusOwner();
+        if (r9 == null) goto L12;
+        wv3 r3 = new wv3(r9.left, r9.top, r9.right, r9.bottom);
+    L13:
+        Boolean r12 = ((ey) r0).e(r11, r3, new ha(r11, 0));
+        Boolean r2 = Boolean.TRUE;
+        if (h12.c(r12, r2) == true) goto L18;
+        if (h12.c(((ey) getFocusOwner()).e(r11, null, new ha(r11, r1)), r2) == true) goto L18;
+        if (hasFocus() == false) goto L27;
+        if (r11 == 1) goto L26;
+        if (r11 != 2) goto L27;
+    L26:
+        return ((ey) getFocusOwner()).g(r11);
+    L27:
+        return false;
+    L12:
+        r3 = null;
+        goto L13
+    L8:
+        r11 = 7;
+    L18:
         return true;
     }
 
     public final void s() {
-        q03 q03Var;
-        y9 autofillManager;
-        Object[] objArr;
-        if (this.W) {
-            pp3 pp3Var = getSnapshotObserver().a;
-            k52 k52Var = new k52(25);
-            synchronized (pp3Var.h) {
-                try {
-                    f13 f13Var = (f13) pp3Var.g;
-                    int i = f13Var.p;
-                    int i2 = 0;
-                    int i3 = 0;
-                    while (true) {
-                        objArr = f13Var.n;
-                        if (i2 >= i) {
-                            break;
-                        }
-                        sh4 sh4Var = (sh4) objArr[i2];
-                        sh4Var.c(k52Var);
-                        if (!(sh4Var.f.e != 0)) {
-                            i3++;
-                        } else if (i3 > 0) {
-                            Object[] objArr2 = f13Var.n;
-                            objArr2[i2 - i3] = objArr2[i2];
-                        }
-                        i2++;
-                    }
-                    int i4 = i - i3;
-                    Arrays.fill(objArr, i4, i, (Object) null);
-                    f13Var.p = i4;
-                } catch (Throwable th) {
-                    throw th;
-                }
-            }
-            this.W = false;
-        }
-        id idVar = this.c0;
-        if (idVar != null) {
-            e(idVar);
-        }
-        if (d() && (autofillManager = getAutofillManager()) != null) {
-            j03 j03Var = autofillManager.t;
-            if (j03Var.d == 0 && autofillManager.u) {
-                autofillManager.n.k().commit();
-                autofillManager.u = false;
-            }
-            if (j03Var.d != 0) {
-                autofillManager.u = true;
-            }
-        }
-        while (this.C0.i() && this.C0.f(0) != null) {
-            int i5 = this.C0.b;
-            int i6 = 0;
-            while (true) {
-                q03Var = this.C0;
-                if (i6 < i5) {
-                    gf1 gf1Var = (gf1) q03Var.f(i6);
-                    this.C0.n(i6, null);
-                    if (gf1Var != null) {
-                        gf1Var.invoke();
-                    }
-                    i6++;
-                }
-            }
-            q03Var.l(0, i5);
-        }
+        if (this.W == false) goto L26;
+        pp3 r0 = getSnapshotObserver().a;
+        k52 r4 = new k52(25);
+        Object r5 = r0.h;
+        monitor-enter(r5);
+        f13 r1 = (f13) r0.g;     // Catch: Throwable -> L18
+        int r6 = r1.p;     // Catch: Throwable -> L18
+        int r7 = 0;
+        int r8 = 0;
+    L8:
+        Object[] r9 = r1.n;
+        if (r7 >= r6) goto L21;
+        sh4 r10 = (sh4) r9[r7];     // Catch: Throwable -> L18
+        r10.c(r4);     // Catch: Throwable -> L18
+        if (r10.f.e == 0) goto L13;
+        boolean r11 = true;
+    L14:
+        if (r11 == true) goto L16;
+        r8 = r8 + 1;     // Catch: Throwable -> L18
+    L20:
+        r7 = r7 + 1;     // Catch: Throwable -> L18
+        goto L8
+    L16:
+        if (r8 <= 0) goto L20;
+        Object[] r12 = r1.n;     // Catch: Throwable -> L18
+        r12[r7 - r8] = r12[r7];     // Catch: Throwable -> L18
+        goto L20
+    L13:
+        r11 = false;
+        goto L14
+    L21:
+        int r13 = r6 - r8;     // Catch: Throwable -> L18
+        Arrays.fill(r9, r13, r6, null);     // Catch: Throwable -> L18
+        r1.p = r13;     // Catch: Throwable -> L18
+        monitor-exit(r5);
+        this.W = false;
+    L18:
+        th = move-exception;
+        throw th;
+    L26:
+        id r2 = this.c0;
+        if (r2 == null) goto L30;
+        e(r2);
+    L30:
+        if (d() == false) goto L42;
+        y9 r3 = m71getAutofillManager();
+        if (r3 == null) goto L42;
+        j03 r14 = r3.t;
+        if (r14.d != 0) goto L39;
+        if (r3.u == false) goto L39;
+        gm0.t(r3.n.k());
+        r3.u = false;
+    L39:
+        if (r14.d == 0) goto L42;
+        r3.u = true;
+    L42:
+        if (this.C0.i() == false) goto L53;
+        if (this.C0.f(0) == null) goto L66;
+        int r15 = this.C0.b;
+        int r16 = 0;
+    L46:
+        q03 r17 = this.C0;
+        if (r16 >= r15) goto L52;
+        gf1 r18 = (gf1) r17.f(r16);
+        this.C0.n(r16, null);
+        if (r18 == null) goto L51;
+        r18.invoke();
+    L51:
+        r16 = r16 + 1;
+        goto L46
+    L52:
+        r17.l(0, r15);
+        goto L42
+    L66:
+        return;
     }
 
-    public void setAccessibilityEventBatchIntervalMillis(long j) {
-        this.J.u = j;
+    public void setAccessibilityEventBatchIntervalMillis(long r1) {
+        this.J.u = r1;
     }
 
-    public final void setComposeViewContext(h80 h80Var) {
-        if (getCoroutineContext() != h80Var.c().j() && !((c13) getRoot().n()).isEmpty()) {
-            cz1.a("Changing ComposeViewContext cannot change the coroutine context without disposing of the composition first.");
-        }
-        ch4 ch4VarT = ya4.t();
-        if1 if1VarE = ch4VarT != null ? ch4VarT.e() : null;
-        ch4 ch4VarZ = ya4.z(ch4VarT);
-        try {
-            h80 h80Var2 = get_composeViewContext();
-            ya4.H(ch4VarT, ch4VarZ, if1VarE);
-            if (h80Var != h80Var2) {
-                if (isAttachedToWindow()) {
-                    h80Var2.b();
-                    h80Var.e();
-                }
-                set_composeViewContext(h80Var);
-                setCoroutineContext(h80Var.c().j());
-            }
-        } catch (Throwable th) {
-            ya4.H(ch4VarT, ch4VarZ, if1VarE);
-            throw th;
-        }
+    public final void setComposeViewContext(h80 r5) {
+        if (getCoroutineContext() != r5.c().j()) goto L5;
+    L8:
+        ch4 r0 = ya4.t();
+        if (r0 == null) goto L11;
+        if1 r1 = r0.e();
+    L12:
+        ch4 r2 = ya4.z(r0);
+        h80 r3 = get_composeViewContext();     // Catch: Throwable -> L21
+        ya4.H(r0, r2, r1);
+        if (r5 != r3) goto L17;
+        return;
+    L17:
+        if (isAttachedToWindow() == false) goto L19;
+        r3.b();
+        r5.e();
+    L19:
+        set_composeViewContext(r5);
+        setCoroutineContext(r5.c().j());
+        return;
+    L21:
+        th = move-exception;
+        ya4.H(r0, r2, r1);
+        throw th;
+    L11:
+        r1 = null;
+        goto L12
+    L5:
+        if (((c13) getRoot().n()).isEmpty() == true) goto L8;
+        cz1.a("Changing ComposeViewContext cannot change the coroutine context without disposing of the composition first.");
+        goto L8
     }
 
-    public final void setComposeViewContextIncrementedDuringInit$ui(boolean z) {
-        this.P0 = z;
+    public final void setComposeViewContextIncrementedDuringInit$ui(boolean r1) {
+        this.P0 = r1;
     }
 
-    public final void setConfiguration(Configuration configuration) {
-        this.S.setValue(configuration);
+    public final void setConfiguration(Configuration r1) {
+        this.S.setValue(r1);
     }
 
-    public final void setContentCaptureManager$ui(lb lbVar) {
-        this.K = lbVar;
+    public final void setContentCaptureManager$ui(lb r1) {
+        this.K = r1;
     }
 
-    public void setCoroutineContext(ne0 ne0Var) {
-        this.A = ne0Var;
+    public void setCoroutineContext(ne0 r1) {
+        this.A = r1;
     }
 
-    public final void setFrameEndScheduler$ui(ga2 ga2Var) {
-        this.r = ga2Var;
+    public final void setFrameEndScheduler$ui(ga2 r1) {
+        this.r = r1;
     }
 
-    public final void setLastMatrixRecalculationAnimationTime$ui(long j) {
-        this.m0 = j;
+    public final void setLastMatrixRecalculationAnimationTime$ui(long r1) {
+        this.m0 = r1;
     }
 
-    public final void setOnReadyForComposition(if1 if1Var) {
+    public final void setOnReadyForComposition(if1 r2) {
         getDerivedIsAttached();
-        if (isAttachedToWindow() || this.P0) {
-            if1Var.invoke(getComposeViewContext());
-        } else {
-            this.p0 = if1Var;
-        }
+        if (isAttachedToWindow() == false) goto L5;
+    L9:
+        r2.invoke(getComposeViewContext());
+        return;
+    L5:
+        if (this.P0 == true) goto L9;
+        this.p0 = r2;
     }
 
-    public final void setPlayNavigationSoundEffect$ui(wf1 wf1Var) {
-        this.K0 = wf1Var;
+    public final void setPlayNavigationSoundEffect$ui(wf1 r1) {
+        this.K0 = r1;
     }
 
     /* JADX INFO: renamed from: setPrimaryDirectionalMotionAxisOverride-r2epLt8$ui, reason: not valid java name */
-    public final void m69setPrimaryDirectionalMotionAxisOverrider2epLt8$ui(dy1 dy1Var) {
-        this.q = dy1Var;
+    public final void m69setPrimaryDirectionalMotionAxisOverrider2epLt8$ui(dy1 r1) {
+        this.q = r1;
     }
 
-    public void setShowLayoutBounds(boolean z) {
-        this.b0 = z;
+    public void setShowLayoutBounds(boolean r1) {
+        this.b0 = r1;
     }
 
-    public void setUncaughtExceptionHandler(a34 a34Var) {
+    public void setUncaughtExceptionHandler(a34 r1) {
         this.f0.getClass();
     }
 
-    public final void setUncaughtExceptionHandler$ui(a34 a34Var) {
+    public final void setUncaughtExceptionHandler$ui(a34 r1) {
     }
 
     @Override // android.view.ViewGroup
@@ -2865,302 +3278,414 @@ public final class ra extends ViewGroup implements ub3, b34, rl0, lb3, ViewTreeO
         return false;
     }
 
-    public final void t(c72 c72Var) {
-        ya yaVar = this.J;
-        yaVar.K = true;
-        if (yaVar.v()) {
-            yaVar.w(c72Var);
-        }
-        lb lbVar = this.K;
-        lbVar.t = true;
-        if (lbVar.e()) {
-            lbVar.u.d(j15.a);
-        }
+    public final void t(c72 r4) {
+        ya r0 = this.J;
+        r0.K = true;
+        if (r0.v() == false) goto L6;
+        r0.w(r4);
+    L6:
+        lb r3 = this.K;
+        r3.t = true;
+        if (r3.e() == false) goto L10;
+        r3.u.d(j15.a);
+        return;
     }
 
-    public final void u(c72 c72Var, boolean z, boolean z2, boolean z3) {
-        c72 c72VarT;
-        c72 c72VarT2;
-        ri2 ri2Var = this.f0;
-        if (!z) {
-            if (ri2Var.r(c72Var, z2) && z3) {
-                D(c72Var);
-                return;
-            }
-            return;
-        }
-        i61 i61Var = ri2Var.b;
-        c72 c72Var2 = c72Var.u;
-        f72 f72Var = c72Var.R;
-        if (c72Var2 == null) {
-            cz1.b("Error: requestLookaheadRemeasure cannot be called on a node outside LookaheadScope");
-        }
-        int iOrdinal = f72Var.d.ordinal();
-        if (iOrdinal != 0) {
-            if (iOrdinal == 1) {
-                return;
-            }
-            if (iOrdinal != 2 && iOrdinal != 3) {
-                if (iOrdinal != 4) {
-                    er1.n();
-                    return;
-                }
-                if (!f72Var.e || z2) {
-                    f72Var.e = true;
-                    f72Var.p.E = true;
-                    if (c72Var.Z) {
-                        return;
-                    }
-                    if ((h12.c(c72Var.I(), Boolean.TRUE) || ri2.i(c72Var)) && ((c72VarT = c72Var.t()) == null || !c72VarT.R.e)) {
-                        i61Var.c(c72Var, n12.n);
-                    } else if ((c72Var.H() || ri2.j(c72Var)) && ((c72VarT2 = c72Var.t()) == null || !c72VarT2.q())) {
-                        i61Var.c(c72Var, n12.p);
-                    }
-                    if (ri2Var.d || !z3) {
-                        return;
-                    }
-                    D(c72Var);
-                    return;
-                }
-                return;
-            }
-        }
-        ri2Var.h.b(new qi2(c72Var, true, z2));
+    public final void u(c72 r6, boolean r7, boolean r8, boolean r9) {
+        ri2 r0 = this.f0;
+        if (r7 == false) goto L53;
+        i61 r10 = r0.b;
+        c72 r1 = r6.u;
+        f72 r2 = r6.R;
+        if (r1 != null) goto L8;
+        cz1.b("Error: requestLookaheadRemeasure cannot be called on a node outside LookaheadScope");
+    L8:
+        int r3 = r2.d.ordinal();
+        if (r3 == 0) goto L50;
+        if (r3 != 1) goto L12;
+        return;
+    L12:
+        if (r3 == 2) goto L50;
+        if (r3 == 3) goto L50;
+        if (r3 == 4) goto L18;
+        er1.n();
+        return;
+    L18:
+        if (r2.e == false) goto L21;
+        if (r8 == true) goto L21;
+        return;
+    L21:
+        r2.e = true;
+        r2.p.E = true;
+        if (r6.Z == false) goto L25;
+        return;
+    L25:
+        if (h12.c(r6.I(), Boolean.TRUE) == false) goto L27;
+    L28:
+        c72 r11 = r6.t();
+        if (r11 != null) goto L31;
+    L42:
+        r10.c(r6, n12.n);
+    L44:
+        if (r0.d == true) goto L58;
+        if (r9 == false) goto L59;
+        D(r6);
+        return;
+    L59:
+        return;
+    L58:
+        return;
+    L31:
+        if (r11.R.e != true) goto L42;
+    L33:
+        if (r6.H() == false) goto L35;
+    L36:
+        c72 r12 = r6.t();
+        if (r12 != null) goto L39;
+    L41:
+        r10.c(r6, n12.p);
+        goto L44
+    L39:
+        if (r12.q() != true) goto L41;
+    L35:
+        if (ri2.j(r6) == false) goto L44;
+    L27:
+        if (ri2.i(r6) == false) goto L33;
+    L50:
+        r0.h.b(new qi2(r6, true, r8));
+        return;
+    L53:
+        if (r0.r(r6, r8) == false) goto L60;
+        if (r9 == false) goto L61;
+        D(r6);
+        return;
+    L61:
+        return;
     }
 
-    public final void v(c72 c72Var, boolean z, boolean z2) {
-        f72 f72Var = c72Var.R;
-        n12 n12Var = n12.q;
-        ri2 ri2Var = this.f0;
-        if (!z) {
-            ri2Var.getClass();
-            int iOrdinal = f72Var.d.ordinal();
-            if (iOrdinal == 0 || iOrdinal == 1 || iOrdinal == 2 || iOrdinal == 3) {
-                return;
-            }
-            if (iOrdinal != 4) {
-                er1.n();
-                return;
-            }
-            c72 c72VarT = c72Var.t();
-            boolean z3 = c72VarT == null || c72VarT.H();
-            if (!z2) {
-                if (c72Var.q()) {
-                    return;
-                }
-                if (c72Var.p() && c72Var.H() == z3 && c72Var.H() == f72Var.p.D) {
-                    return;
-                }
-            }
-            ti2 ti2Var = f72Var.p;
-            ti2Var.F = true;
-            ti2Var.G = true;
-            if (!c72Var.Z && ti2Var.D && z3) {
-                if ((c72VarT == null || !c72VarT.p()) && (c72VarT == null || !c72VarT.q())) {
-                    ri2Var.b.c(c72Var, n12Var);
-                }
-                if (ri2Var.d) {
-                    return;
-                }
-                D(null);
-                return;
-            }
-            return;
-        }
-        i61 i61Var = ri2Var.b;
-        int iOrdinal2 = f72Var.d.ordinal();
-        if (iOrdinal2 != 0) {
-            if (iOrdinal2 == 1) {
-                return;
-            }
-            if (iOrdinal2 != 2) {
-                if (iOrdinal2 == 3) {
-                    return;
-                }
-                if (iOrdinal2 != 4) {
-                    er1.n();
-                    return;
-                }
-            }
-        }
-        if ((f72Var.e || f72Var.f) && !z2) {
-            return;
-        }
-        f72Var.f = true;
-        f72Var.g = true;
-        ti2 ti2Var2 = f72Var.p;
-        ti2Var2.F = true;
-        ti2Var2.G = true;
-        if (c72Var.Z) {
-            return;
-        }
-        c72 c72VarT2 = c72Var.t();
-        if (h12.c(c72Var.I(), Boolean.TRUE) && ((c72VarT2 == null || !c72VarT2.R.e) && (c72VarT2 == null || !c72VarT2.R.f))) {
-            i61Var.c(c72Var, n12.o);
-        } else if (c72Var.H() && ((c72VarT2 == null || !c72VarT2.p()) && (c72VarT2 == null || !c72VarT2.q()))) {
-            i61Var.c(c72Var, n12Var);
-        }
-        if (ri2Var.d) {
-            return;
-        }
+    public final void v(c72 r10, boolean r11, boolean r12) {
+        f72 r0 = r10.R;
+        n12 r2 = n12.q;
+        ri2 r7 = this.f0;
+        if (r11 == false) goto L48;
+        i61 r13 = r7.b;
+        int r8 = r0.d.ordinal();
+        if (r8 == 0) goto L14;
+        if (r8 == 1) goto L92;
+        if (r8 == 2) goto L14;
+        if (r8 == 3) goto L93;
+        if (r8 == 4) goto L14;
+        er1.n();
+        return;
+    L93:
+        return;
+    L92:
+        return;
+    L14:
+        if (r0.e == false) goto L16;
+    L17:
+        if (r12 == false) goto L103;
+    L19:
+        r0.f = true;
+        r0.g = true;
+        ti2 r14 = r0.p;
+        r14.F = true;
+        r14.G = true;
+        if (r10.Z == true) goto L104;
+        c72 r15 = r10.t();
+        if (h12.c(r10.I(), Boolean.TRUE) == false) goto L34;
+        if (r15 != null) goto L26;
+    L28:
+        if (r15 != null) goto L30;
+    L32:
+        r13.c(r10, n12.o);
+    L45:
+        if (r7.d == true) goto L94;
         D(null);
+        return;
+    L94:
+        return;
+    L30:
+        if (r15.R.f != true) goto L32;
+    L26:
+        if (r15.R.e != true) goto L28;
+    L34:
+        if (r10.H() == false) goto L45;
+        if (r15 != null) goto L37;
+    L39:
+        if (r15 != null) goto L41;
+    L43:
+        r13.c(r10, r2);
+        goto L45
+    L41:
+        if (r15.q() != true) goto L43;
+    L37:
+        if (r15.p() != true) goto L39;
+    L104:
+        return;
+    L103:
+        return;
+    L16:
+        if (r0.f == false) goto L19;
+    L48:
+        r7.getClass();
+        int r16 = r0.d.ordinal();
+        if (r16 == 0) goto L95;
+        if (r16 == 1) goto L96;
+        if (r16 == 2) goto L97;
+        if (r16 == 3) goto L98;
+        if (r16 != 4) goto L90;
+        c72 r17 = r10.t();
+        if (r17 != null) goto L57;
+    L60:
+        boolean r3 = true;
+    L61:
+        if (r12 == false) goto L63;
+    L71:
+        ti2 r18 = r0.p;
+        r18.F = true;
+        r18.G = true;
+        if (r10.Z == false) goto L75;
+        return;
+    L75:
+        if (r18.D == false) goto L100;
+        if (r3 == false) goto L101;
+        if (r17 != null) goto L79;
+    L81:
+        if (r17 != null) goto L83;
+    L85:
+        r7.b.c(r10, r2);
+    L87:
+        if (r7.d == true) goto L102;
+        D(null);
+        return;
+    L102:
+        return;
+    L83:
+        if (r17.q() != true) goto L85;
+    L79:
+        if (r17.p() != true) goto L81;
+    L101:
+        return;
+    L100:
+        return;
+    L63:
+        if (r10.q() == false) goto L65;
+        return;
+    L65:
+        if (r10.p() == false) goto L71;
+        if (r10.H() != r3) goto L71;
+        if (r10.H() != r0.p.D) goto L71;
+        return;
+    L57:
+        if (r17.H() == true) goto L60;
+        r3 = false;
+        goto L61
+    L90:
+        er1.n();
+        return;
+    L98:
+        return;
+    L97:
+        return;
+    L96:
+        return;
     }
 
     public final void w() {
-        ya yaVar = this.J;
-        yaVar.K = true;
-        Handler handler = yaVar.q.getHandler();
-        if (yaVar.v() && !yaVar.V && handler != null) {
-            yaVar.V = true;
-            handler.post(yaVar.X);
-        }
-        lb lbVar = this.K;
-        lbVar.t = true;
-        Handler handler2 = lbVar.n.getHandler();
-        if (!lbVar.e() || lbVar.z || handler2 == null) {
-            return;
-        }
-        lbVar.z = true;
-        handler2.post(lbVar.A);
+        ya r0 = this.J;
+        r0.K = true;
+        Handler r2 = r0.q.getHandler();
+        if (r0.v() == true) goto L5;
+    L8:
+        lb r4 = this.K;
+        r4.t = true;
+        Handler r1 = r4.n.getHandler();
+        if (r4.e() == true) goto L11;
+        return;
+    L11:
+        if (r4.z == true) goto L16;
+        if (r1 == null) goto L17;
+        r4.z = true;
+        r1.post(r4.A);
+        return;
+    L17:
+        return;
+    L16:
+        return;
+    L5:
+        if (r0.V == true) goto L8;
+        if (r2 == null) goto L8;
+        r0.V = true;
+        r2.post(r0.X);
+        goto L8
     }
 
-    /* JADX WARN: Code duplicated, block: B:31:0x00ae  */
-    public final void x(ViewStructure viewStructure) {
-        y9 autofillManager = getAutofillManager();
-        if (autofillManager != null) {
-            c72 c72Var = autofillManager.o.a;
-            AutofillId autofillId = autofillManager.s;
-            String str = autofillManager.r;
-            yv3 yv3Var = autofillManager.q;
-            zz1.z(viewStructure, c72Var, autofillId, str, yv3Var);
-            Object[] objArr = t73.a;
-            q03 q03Var = new q03(2);
-            q03Var.a(c72Var);
-            q03Var.a(viewStructure);
-            while (q03Var.i()) {
-                Object objK = q03Var.k(q03Var.b - 1);
-                objK.getClass();
-                ViewStructure viewStructure2 = (ViewStructure) objK;
-                Object objK2 = q03Var.k(q03Var.b - 1);
-                objK2.getClass();
-                c13 c13Var = (c13) ((c72) objK2).n();
-                int i = c13Var.n.p;
-                for (int i2 = 0; i2 < i; i2++) {
-                    c72 c72Var2 = (c72) c13Var.get(i2);
-                    if (!c72Var2.Z && c72Var2.G() && c72Var2.H()) {
-                        e94 e94VarV = c72Var2.v();
-                        if (e94VarV != null) {
-                            w03 w03Var = e94VarV.n;
-                            if (w03Var.b(d94.g) || w03Var.b(d94.h) || w03Var.b(n94.q) || w03Var.b(n94.r) || (Build.VERSION.SDK_INT >= 34 && w03Var.b(zz1.m))) {
-                                ViewStructure viewStructureNewChild = viewStructure2.newChild(viewStructure2.addChildCount(1));
-                                zz1.z(viewStructureNewChild, c72Var2, autofillManager.s, str, yv3Var);
-                                q03Var.a(c72Var2);
-                                q03Var.a(viewStructureNewChild);
-                            } else {
-                                q03Var.a(c72Var2);
-                                q03Var.a(viewStructure2);
-                            }
-                        } else {
-                            q03Var.a(c72Var2);
-                            q03Var.a(viewStructure2);
-                        }
-                    }
-                }
-            }
-        }
-        x9 autofill = getAutofill();
-        if (autofill != null) {
-            wn wnVar = autofill.b;
-            LinkedHashMap linkedHashMap = wnVar.a;
-            LinkedHashMap linkedHashMap2 = wnVar.a;
-            if (linkedHashMap.isEmpty()) {
-                return;
-            }
-            int iAddChildCount = viewStructure.addChildCount(linkedHashMap2.size());
-            Iterator it = linkedHashMap2.entrySet().iterator();
-            if (it.hasNext()) {
-                Map.Entry entry = (Map.Entry) it.next();
-                int iIntValue = ((Number) entry.getKey()).intValue();
-                if (entry.getValue() != null) {
-                    kf2.k();
-                    return;
-                }
-                ViewStructure viewStructureNewChild2 = viewStructure.newChild(iAddChildCount);
-                viewStructureNewChild2.setAutofillId(autofill.c, iIntValue);
-                viewStructureNewChild2.setId(iIntValue, autofill.a.getContext().getPackageName(), null, null);
-                viewStructureNewChild2.setAutofillType(1);
-                throw null;
-            }
-        }
+    public final void x(ViewStructure r14) {
+        y9 r0 = m71getAutofillManager();
+        if (r0 == null) goto L33;
+        c72 r2 = r0.o.a;
+        AutofillId r3 = r0.s;
+        String r4 = r0.r;
+        yv3 r5 = r0.q;
+        zz1.z(r14, r2, r3, r4, r5);
+        Object[] r6 = t73.a;
+        q03 r7 = new q03(2);
+        r7.a(r2);
+        r7.a(r14);
+    L6:
+        if (r7.i() == false) goto L33;
+        Object r8 = r7.k(r7.b - 1);
+        r8.getClass();
+        ViewStructure r9 = (ViewStructure) r8;
+        Object r10 = r7.k(r7.b - 1);
+        r10.getClass();
+        c13 r11 = (c13) ((c72) r10).n();
+        int r12 = r11.n.p;
+        int r13 = 0;
+    L8:
+        if (r13 >= r12) goto L6;
+        c72 r15 = (c72) r11.get(r13);
+        if (r15.Z == false) goto L12;
+    L32:
+        r13 = r13 + 1;
+        goto L8
+    L12:
+        if (r15.G() == false) goto L32;
+        if (r15.H() == false) goto L32;
+        e94 r16 = r15.v();
+        if (r16 == null) goto L31;
+        w03 r17 = r16.n;
+        if (r17.b(d94.g) == false) goto L21;
+    L30:
+        ViewStructure r18 = r9.newChild(r9.addChildCount(1));
+        zz1.z(r18, r15, r0.s, r4, r5);
+        r7.a(r15);
+        r7.a(r18);
+        goto L32
+    L21:
+        if (r17.b(d94.h) == true) goto L30;
+        if (r17.b(n94.q) == true) goto L30;
+        if (r17.b(n94.r) == true) goto L30;
+        if (Build.VERSION.SDK_INT < 34) goto L31;
+        if (r17.b(zz1.m) == true) goto L30;
+    L31:
+        r7.a(r15);
+        r7.a(r9);
+    L33:
+        x9 r19 = m70getAutofill();
+        if (r19 == null) goto L47;
+        wn r1 = r19.b;
+        LinkedHashMap r20 = r1.a;
+        LinkedHashMap r21 = r1.a;
+        if (r20.isEmpty() == true) goto L52;
+        int r22 = r14.addChildCount(r21.size());
+        Iterator r23 = r21.entrySet().iterator();
+        if (r23.hasNext() == false) goto L53;
+        Map.Entry r24 = (Map.Entry) r23.next();
+        int r25 = ((Number) r24.getKey()).intValue();
+        if (r24.getValue() == null) goto L45;
+        kf2.k();
+        return;
+    L45:
+        ViewStructure r110 = r14.newChild(r22);
+        j3.u(r110, r19.c, r25);
+        r110.setId(r25, r19.a.getContext().getPackageName(), null, null);
+        tn.r(r110, 1);
+        throw null;
+    L53:
+        return;
+    L52:
+        return;
     }
 
     public final void y() {
-        if (this.n0) {
-            return;
-        }
-        long jCurrentAnimationTimeMillis = AnimationUtils.currentAnimationTimeMillis();
-        if (jCurrentAnimationTimeMillis != this.m0) {
-            this.m0 = jCurrentAnimationTimeMillis;
-            A();
-            ViewParent parent = getParent();
-            View view = this;
-            while (parent instanceof ViewGroup) {
-                view = (View) parent;
-                parent = ((ViewGroup) view).getParent();
-            }
-            int[] iArr = this.h0;
-            view.getLocationOnScreen(iArr);
-            float f = iArr[0];
-            float f2 = iArr[1];
-            view.getLocationInWindow(iArr);
-            this.o0 = (((long) Float.floatToRawIntBits(f - iArr[0])) << 32) | (((long) Float.floatToRawIntBits(f2 - iArr[1])) & 4294967295L);
-        }
+        if (this.n0 == true) goto L13;
+        long r0 = AnimationUtils.currentAnimationTimeMillis();
+        if (r0 == this.m0) goto L14;
+        this.m0 = r0;
+        A();
+        ViewParent r1 = getParent();
+        View r2 = this;
+    L8:
+        if ((r1 instanceof ViewGroup) == false) goto L10;
+        r2 = (View) r1;
+        r1 = ((ViewGroup) r2).getParent();
+        goto L8
+    L10:
+        int[] r3 = this.h0;
+        r2.getLocationOnScreen(r3);
+        float r4 = r3[0];
+        float r5 = r3[1];
+        r2.getLocationInWindow(r3);
+        float r6 = r3[0];
+        float r7 = r5 - r3[1];
+        this.o0 = (Float.floatToRawIntBits(r4 - r6) << 32) | (((long) Float.floatToRawIntBits(r7)) & 4294967295L);
+        return;
+    L14:
+        return;
     }
 
-    public final void z(MotionEvent motionEvent) {
+    public final void z(MotionEvent r10) {
         this.m0 = AnimationUtils.currentAnimationTimeMillis();
         A();
-        float x = motionEvent.getX();
-        long jA = ya4.A((((long) Float.floatToRawIntBits(motionEvent.getY())) & 4294967295L) | (Float.floatToRawIntBits(x) << 32), this.k0);
-        this.o0 = (((long) Float.floatToRawIntBits(motionEvent.getRawX() - Float.intBitsToFloat((int) (jA >> 32)))) << 32) | (((long) Float.floatToRawIntBits(motionEvent.getRawY() - Float.intBitsToFloat((int) (jA & 4294967295L)))) & 4294967295L);
+        float r0 = r10.getX();
+        float r1 = r10.getY();
+        long r2 = Float.floatToRawIntBits(r0);
+        long r3 = ya4.A((((long) Float.floatToRawIntBits(r1)) & 4294967295L) | (r2 << 32), this.k0);
+        float r4 = r10.getRawX() - Float.intBitsToFloat((int) (r3 >> 32));
+        float r11 = r10.getRawY() - Float.intBitsToFloat((int) (r3 & 4294967295L));
+        this.o0 = (Float.floatToRawIntBits(r4) << 32) | (((long) Float.floatToRawIntBits(r11)) & 4294967295L);
     }
 
-    public x9 getAutofill() {
+    /* JADX INFO: renamed from: getAutofill, reason: collision with other method in class */
+    public x9 m70getAutofill() {
         return this.U;
     }
 
-    public y9 getAutofillManager() {
+    /* JADX INFO: renamed from: getAutofillManager, reason: collision with other method in class */
+    public y9 m71getAutofillManager() {
         return this.V;
     }
 
-    public qb getDragAndDropManager() {
+    /* JADX INFO: renamed from: getDragAndDropManager, reason: collision with other method in class */
+    public qb m72getDragAndDropManager() {
         return this.B;
     }
 
-    public i03 getLayoutNodes() {
+    /* JADX INFO: renamed from: getLayoutNodes, reason: collision with other method in class */
+    public i03 m74getLayoutNodes() {
         return this.G;
     }
 
-    @Override // android.view.ViewGroup
-    public final void addView(View view) {
-        addView(view, -1);
+    public /* bridge */ /* synthetic */ lb3 getOutOfFrameExecutor() {
+        return m75getOutOfFrameExecutor();
     }
 
     @Override // android.view.ViewGroup
-    public final void addView(View view, int i, int i2) {
-        ViewGroup.LayoutParams layoutParamsGenerateDefaultLayoutParams = generateDefaultLayoutParams();
-        layoutParamsGenerateDefaultLayoutParams.width = i;
-        layoutParamsGenerateDefaultLayoutParams.height = i2;
-        addViewInLayout(view, -1, layoutParamsGenerateDefaultLayoutParams, true);
+    public final void addView(View r2) {
+        addView(r2, -1);
     }
 
     @Override // android.view.ViewGroup
-    public final void addView(View view, int i, ViewGroup.LayoutParams layoutParams) {
-        addViewInLayout(view, i, layoutParams, true);
+    public final void addView(View r2, int r3, int r4) {
+        ViewGroup.LayoutParams r0 = generateDefaultLayoutParams();
+        r0.width = r3;
+        r0.height = r4;
+        addViewInLayout(r2, -1, r0, true);
+    }
+
+    public /* bridge */ /* synthetic */ rz1 getInputModeManager() {
+        return m73getInputModeManager();
+    }
+
+    @Override // android.view.ViewGroup
+    public final void addView(View r2, int r3, ViewGroup.LayoutParams r4) {
+        addViewInLayout(r2, r3, r4, true);
     }
 
     @Override // android.view.ViewGroup, android.view.ViewManager
-    public final void addView(View view, ViewGroup.LayoutParams layoutParams) {
-        addViewInLayout(view, -1, layoutParams, true);
+    public final void addView(View r3, ViewGroup.LayoutParams r4) {
+        addViewInLayout(r3, -1, r4, true);
     }
 }

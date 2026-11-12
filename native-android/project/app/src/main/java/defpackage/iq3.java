@@ -10,53 +10,57 @@ public final class iq3 extends uj4 {
     public final long b;
     public final long c;
 
-    public iq3(int i, long j, long j2) {
-        this.a = i;
-        switch (i) {
-            case 2:
-                this.b = j;
-                this.c = j2;
-                break;
-            default:
-                this.b = j2;
-                this.c = j;
-                break;
-        }
+    public iq3(int r1, long r2, long r4) {
+        this.a = r1;
+        switch(r1) {
+            case 2: goto L6;
+            default: goto L4;
+        };
+    L4:
+        this.b = r4;
+        this.c = r2;
+        return;
+    L6:
+        this.b = r2;
+        this.c = r4;
     }
 
-    public static long d(long j, be3 be3Var) {
-        long jA = be3Var.A();
-        if ((128 & jA) != 0) {
-            return 8589934591L & ((((jA & 1) << 32) | be3Var.C()) + j);
-        }
+    public static long d(long r6, be3 r8) {
+        long r0 = r8.A();
+        if ((128 & r0) != 0) goto L5;
         return -9223372036854775807L;
+    L5:
+        return 8589934591L & ((((r0 & 1) << 32) | r8.C()) + r6);
     }
 
     @Override // defpackage.uj4
     public final String toString() {
-        switch (this.a) {
-            case 0:
-                StringBuilder sb = new StringBuilder("SCTE-35 PrivateCommand { ptsAdjustment=");
-                sb.append(this.b);
-                sb.append(", identifier= ");
-                return b11.p(sb, this.c, " }");
-            case 1:
-                StringBuilder sb2 = new StringBuilder("SCTE-35 SpliceInsertCommand { programSplicePts=");
-                sb2.append(this.b);
-                sb2.append(", programSplicePlaybackPositionUs= ");
-                return b11.p(sb2, this.c, " }");
-            default:
-                StringBuilder sb3 = new StringBuilder("SCTE-35 TimeSignalCommand { ptsTime=");
-                sb3.append(this.b);
-                sb3.append(", playbackPositionUs= ");
-                return b11.p(sb3, this.c, " }");
-        }
+        switch(this.a) {
+            case 0: goto L8;
+            case 1: goto L6;
+            default: goto L4;
+        };
+    L4:
+        StringBuilder r0 = new StringBuilder("SCTE-35 TimeSignalCommand { ptsTime=");
+        r0.append(this.b);
+        r0.append(", playbackPositionUs= ");
+        return b11.p(r0, this.c, " }");
+    L6:
+        StringBuilder r1 = new StringBuilder("SCTE-35 SpliceInsertCommand { programSplicePts=");
+        r1.append(this.b);
+        r1.append(", programSplicePlaybackPositionUs= ");
+        return b11.p(r1, this.c, " }");
+    L8:
+        StringBuilder r2 = new StringBuilder("SCTE-35 PrivateCommand { ptsAdjustment=");
+        r2.append(this.b);
+        r2.append(", identifier= ");
+        return b11.p(r2, this.c, " }");
     }
 
-    public iq3(long j, long j2, List list) {
+    public iq3(long r2, long r4, List r6) {
         this.a = 1;
-        this.b = j;
-        this.c = j2;
-        Collections.unmodifiableList(list);
+        this.b = r2;
+        this.c = r4;
+        Collections.unmodifiableList(r6);
     }
 }

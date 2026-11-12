@@ -10,66 +10,73 @@ import android.view.Display;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class kb3 implements SensorEventListener {
-    public final float[] a = new float[16];
-    public final float[] b = new float[16];
-    public final float[] c = new float[16];
-    public final float[] d = new float[3];
+    public final float[] a;
+    public final float[] b;
+    public final float[] c;
+    public final float[] d;
     public final Display e;
     public final jb3[] f;
     public boolean g;
 
-    public kb3(Display display, jb3... jb3VarArr) {
-        this.e = display;
-        this.f = jb3VarArr;
+    public kb3(Display r3, jb3... r4) {
+        this.a = new float[16];
+        this.b = new float[16];
+        this.c = new float[16];
+        this.d = new float[3];
+        this.e = r3;
+        this.f = r4;
     }
 
     @Override // android.hardware.SensorEventListener
-    public final void onAccuracyChanged(Sensor sensor, int i) {
+    public final void onAccuracyChanged(Sensor r1, int r2) {
     }
 
     @Override // android.hardware.SensorEventListener
-    public final void onSensorChanged(SensorEvent sensorEvent) {
-        int i;
-        float[] fArr = sensorEvent.values;
-        float[] fArr2 = this.a;
-        SensorManager.getRotationMatrixFromVector(fArr2, fArr);
-        int rotation = this.e.getRotation();
-        float[] fArr3 = this.b;
-        if (rotation != 0) {
-            int i2 = 129;
-            if (rotation != 1) {
-                i = 130;
-                if (rotation != 2) {
-                    if (rotation != 3) {
-                        tb4.a();
-                        return;
-                    } else {
-                        i2 = 130;
-                        i = 1;
-                    }
-                }
-            } else {
-                i = 129;
-                i2 = 2;
-            }
-            System.arraycopy(fArr2, 0, fArr3, 0, fArr3.length);
-            SensorManager.remapCoordinateSystem(fArr3, i2, i, fArr2);
-        }
-        SensorManager.remapCoordinateSystem(fArr2, 1, 131, fArr3);
-        float[] fArr4 = this.d;
-        SensorManager.getOrientation(fArr3, fArr4);
-        float f = fArr4[2];
-        Matrix.rotateM(fArr2, 0, 90.0f, 1.0f, 0.0f, 0.0f);
-        boolean z = this.g;
-        float[] fArr5 = this.c;
-        if (!z) {
-            ll.c(fArr5, fArr2);
-            this.g = true;
-        }
-        System.arraycopy(fArr2, 0, fArr3, 0, fArr3.length);
-        Matrix.multiplyMM(fArr2, 0, fArr3, 0, fArr5, 0);
-        for (int i3 = 0; i3 < 2; i3++) {
-            this.f[i3].a(f, fArr2);
-        }
+    public final void onSensorChanged(SensorEvent r11) {
+        float[] r12 = r11.values;
+        float[] r0 = this.a;
+        SensorManager.getRotationMatrixFromVector(r0, r12);
+        int r13 = this.e.getRotation();
+        float[] r6 = this.b;
+        int r7 = 0;
+        if (r13 == 0) goto L15;
+        int r1 = 129;
+        if (r13 == 1) goto L13;
+        int r2 = 130;
+        if (r13 != 2) goto L9;
+    L14:
+        System.arraycopy(r0, 0, r6, 0, r6.length);
+        SensorManager.remapCoordinateSystem(r6, r1, r2, r0);
+        goto L15
+    L9:
+        if (r13 != 3) goto L11;
+        r1 = 130;
+        r2 = 1;
+        goto L14
+    L11:
+        tb4.a();
+        return;
+    L13:
+        r2 = 129;
+        r1 = 2;
+    L15:
+        SensorManager.remapCoordinateSystem(r0, 1, 131, r6);
+        float[] r14 = this.d;
+        SensorManager.getOrientation(r6, r14);
+        float r15 = r14[2];
+        Matrix.rotateM(r0, 0, 90.0f, 1.0f, 0.0f, 0.0f);
+        boolean r3 = this.g;
+        float[] r4 = this.c;
+        if (r3 == true) goto L18;
+        ll.c(r4, r0);
+        this.g = true;
+    L18:
+        System.arraycopy(r0, 0, r6, 0, r6.length);
+        Matrix.multiplyMM(r0, 0, r6, 0, r4, 0);
+    L19:
+        if (r7 >= 2) goto L21;
+        this.f[r7].a(r15, r0);
+        r7 = r7 + 1;
+        goto L19
     }
 }

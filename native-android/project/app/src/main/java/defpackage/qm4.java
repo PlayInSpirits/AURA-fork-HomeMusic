@@ -7,383 +7,450 @@ import java.util.List;
 
 /* JADX INFO: loaded from: classes.dex */
 public abstract class qm4 extends xm4 {
-    public static final void A0(int i) {
-        if (i >= 0) {
-            return;
-        }
-        kf2.e(f34.f(i, "Limit must be non-negative, but was "));
+    public static final void A0(int r1) {
+        if (r1 < 0) goto L4;
+        return;
+    L4:
+        kf2.e(f34.f(r1, "Limit must be non-negative, but was "));
     }
 
-    public static final List B0(String str, CharSequence charSequence, int i) {
-        A0(i);
-        int iQ0 = q0(charSequence, str, 0, false);
-        if (iQ0 == -1 || i == 1) {
-            return gb.O(charSequence.toString());
-        }
-        boolean z = i > 0;
-        int i2 = 10;
-        if (z && i <= 10) {
-            i2 = i;
-        }
-        ArrayList arrayList = new ArrayList(i2);
-        int length = 0;
-        do {
-            arrayList.add(charSequence.subSequence(length, iQ0).toString());
-            length = str.length() + iQ0;
-            if (z && arrayList.size() == i - 1) {
-                break;
-            }
-            iQ0 = q0(charSequence, str, length, false);
-        } while (iQ0 != -1);
-        arrayList.add(charSequence.subSequence(length, charSequence.length()).toString());
-        return arrayList;
+    public static final List B0(String r8, CharSequence r9, int r10) {
+        A0(r10);
+        int r1 = q0(r9, r8, 0, false);
+        if (r1 == (-1)) goto L25;
+        if (r10 == 1) goto L25;
+        if (r10 <= 0) goto L9;
+        boolean r4 = true;
+    L10:
+        int r6 = 10;
+        if (r4 == false) goto L15;
+        if (r10 > 10) goto L15;
+        r6 = r10;
+    L15:
+        ArrayList r5 = new ArrayList(r6);
+        int r7 = 0;
+    L16:
+        r5.add(r9.subSequence(r7, r1).toString());
+        r7 = r8.length() + r1;
+        if (r4 == true) goto L19;
+    L20:
+        r1 = q0(r9, r8, r7, false);
+        if (r1 != (-1)) goto L16;
+    L22:
+        r5.add(r9.subSequence(r7, r9.length()).toString());
+        return r5;
+    L19:
+        if (r5.size() == (r10 - 1)) goto L22;
+    L9:
+        r4 = false;
+    L25:
+        return gb.O(r9.toString());
     }
 
-    public static List C0(CharSequence charSequence, String[] strArr, int i) {
-        int i2 = (i & 4) != 0 ? 0 : 2;
-        charSequence.getClass();
-        if (strArr.length == 1) {
-            String str = strArr[0];
-            if (str.length() != 0) {
-                return B0(str, charSequence, i2);
-            }
-        }
-        A0(i2);
-        List listAsList = Arrays.asList(strArr);
-        listAsList.getClass();
-        ha4 ha4Var = new ha4(new mo0(charSequence, i2, new z(15, listAsList)));
-        ArrayList arrayList = new ArrayList(r40.k0(ha4Var, 10));
-        Iterator it = ha4Var.iterator();
-        while (true) {
-            lo0 lo0Var = (lo0) it;
-            if (!lo0Var.hasNext()) {
-                return arrayList;
-            }
-            j02 j02Var = (j02) lo0Var.next();
-            j02Var.getClass();
-            arrayList.add(charSequence.subSequence(j02Var.n, j02Var.o + 1).toString());
-        }
+    public static List C0(CharSequence r4, String[] r5, int r6) {
+        if ((r6 & 4) == 0) goto L5;
+        int r7 = 0;
+    L6:
+        r4.getClass();
+        if (r5.length != 1) goto L13;
+        String r0 = r5[0];
+        if (r0.length() == 0) goto L13;
+        return B0(r0, r4, r7);
+    L13:
+        A0(r7);
+        List r8 = Arrays.asList(r5);
+        r8.getClass();
+        ha4 r9 = new ha4(new mo0(r4, r7, new z(15, r8)));
+        ArrayList r10 = new ArrayList(r40.k0(r9, 10));
+        Iterator r11 = r9.iterator();
+    L14:
+        lo0 r1 = (lo0) r11;
+        if (r1.hasNext() == false) goto L17;
+        j02 r2 = (j02) r1.next();
+        r2.getClass();
+        r10.add(r4.subSequence(r2.n, r2.o + 1).toString());
+        goto L14
+    L17:
+        return r10;
+    L5:
+        r7 = 2;
+        goto L6
     }
 
-    public static List D0(String str, char[] cArr) {
-        str.getClass();
-        if (cArr.length == 1) {
-            return B0(String.valueOf(cArr[0]), str, 0);
-        }
+    public static List D0(String r5, char[] r6) {
+        r5.getClass();
+        if (r6.length == 1) goto L5;
         A0(0);
-        ha4 ha4Var = new ha4(new mo0(str, 0, new z(14, cArr)));
-        ArrayList arrayList = new ArrayList(r40.k0(ha4Var, 10));
-        Iterator it = ha4Var.iterator();
-        while (true) {
-            lo0 lo0Var = (lo0) it;
-            if (!lo0Var.hasNext()) {
-                return arrayList;
-            }
-            j02 j02Var = (j02) lo0Var.next();
-            j02Var.getClass();
-            arrayList.add(str.subSequence(j02Var.n, j02Var.o + 1).toString());
-        }
+        ha4 r7 = new ha4(new mo0(r5, 0, new z(14, r6)));
+        ArrayList r0 = new ArrayList(r40.k0(r7, 10));
+        Iterator r8 = r7.iterator();
+    L7:
+        lo0 r1 = (lo0) r8;
+        if (r1.hasNext() == false) goto L10;
+        j02 r2 = (j02) r1.next();
+        r2.getClass();
+        r0.add(r5.subSequence(r2.n, r2.o + 1).toString());
+        goto L7
+    L10:
+        return r0;
+    L5:
+        return B0(String.valueOf(r6[0]), r5, 0);
     }
 
-    public static String E0(String str, char c) {
-        int iR0 = r0(str, c, 0, 6);
-        return iR0 == -1 ? str : str.substring(iR0 + 1, str.length());
+    public static String E0(String r2, char r3) {
+        int r4 = r0(r2, r3, 0, 6);
+        if (r4 != (-1)) goto L6;
+        return r2;
+    L6:
+        return r2.substring(r4 + 1, r2.length());
     }
 
-    public static String F0(String str, String str2) {
-        str.getClass();
-        str.getClass();
-        int iS0 = s0(str, str2, 0, 6);
-        return iS0 == -1 ? str : str.substring(str2.length() + iS0, str.length());
+    public static String F0(String r2, String r3) {
+        r2.getClass();
+        r2.getClass();
+        int r0 = s0(r2, r3, 0, 6);
+        if (r0 != (-1)) goto L6;
+        return r2;
+    L6:
+        return r2.substring(r3.length() + r0, r2.length());
     }
 
-    public static String G0(String str, char c, String str2) {
-        str.getClass();
-        str2.getClass();
-        int iV0 = v0(str, c, 0, 6);
-        return iV0 == -1 ? str2 : str.substring(iV0 + 1, str.length());
+    public static String G0(String r2, char r3, String r4) {
+        r2.getClass();
+        r4.getClass();
+        int r5 = v0(r2, r3, 0, 6);
+        if (r5 != (-1)) goto L6;
+        return r4;
+    L6:
+        return r2.substring(r5 + 1, r2.length());
     }
 
-    public static String H0(String str, char c) {
-        str.getClass();
-        str.getClass();
-        int iR0 = r0(str, c, 0, 6);
-        return iR0 == -1 ? str : str.substring(0, iR0);
+    public static String H0(String r2, char r3) {
+        r2.getClass();
+        r2.getClass();
+        int r4 = r0(r2, r3, 0, 6);
+        if (r4 != (-1)) goto L6;
+        return r2;
+    L6:
+        return r2.substring(0, r4);
     }
 
-    public static CharSequence I0(int i, String str) {
-        str.getClass();
-        if (i < 0) {
-            kf2.e(b11.j(i, "Requested character count ", " is less than zero."));
-            return null;
-        }
-        int length = str.length();
-        if (i > length) {
-            i = length;
-        }
-        return str.subSequence(0, i);
+    public static CharSequence I0(int r1, String r2) {
+        r2.getClass();
+        if (r1 < 0) goto L9;
+        int r0 = r2.length();
+        if (r1 <= r0) goto L8;
+        r1 = r0;
+    L8:
+        return r2.subSequence(0, r1);
+    L9:
+        kf2.e(b11.j(r1, "Requested character count ", " is less than zero."));
+        return null;
     }
 
-    public static String J0(int i, String str) {
-        str.getClass();
-        if (i < 0) {
-            kf2.e(b11.j(i, "Requested character count ", " is less than zero."));
-            return null;
-        }
-        int length = str.length();
-        if (i > length) {
-            i = length;
-        }
-        return str.substring(0, i);
+    public static String J0(int r1, String r2) {
+        r2.getClass();
+        if (r1 < 0) goto L9;
+        int r0 = r2.length();
+        if (r1 <= r0) goto L8;
+        r1 = r0;
+    L8:
+        return r2.substring(0, r1);
+    L9:
+        kf2.e(b11.j(r1, "Requested character count ", " is less than zero."));
+        return null;
     }
 
-    public static CharSequence K0(CharSequence charSequence) {
-        charSequence.getClass();
-        int length = charSequence.length() - 1;
-        int i = 0;
-        boolean z = false;
-        while (i <= length) {
-            boolean zY = ya4.y(charSequence.charAt(!z ? i : length));
-            if (z) {
-                if (!zY) {
-                    break;
-                }
-                length--;
-            } else if (zY) {
-                i++;
-            } else {
-                z = true;
-            }
-        }
-        return charSequence.subSequence(i, length + 1);
+    public static CharSequence K0(CharSequence r5) {
+        r5.getClass();
+        int r0 = r5.length() - 1;
+        int r2 = 0;
+        boolean r3 = false;
+    L3:
+        if (r2 > r0) goto L16;
+        if (r3 == true) goto L6;
+        int r4 = r2;
+    L7:
+        boolean r6 = ya4.y(r5.charAt(r4));
+        if (r3 == false) goto L9;
+        if (r6 == false) goto L16;
+        r0 = r0 - 1;
+        goto L3
+    L9:
+        if (r6 == false) goto L10;
+        r2 = r2 + 1;
+        goto L3
+    L10:
+        r3 = true;
+        goto L3
+    L6:
+        r4 = r0;
+    L16:
+        return r5.subSequence(r2, r0 + 1);
     }
 
-    public static String L0(String str, char... cArr) {
-        CharSequence charSequenceSubSequence;
-        str.getClass();
-        int length = str.length() - 1;
-        if (length < 0) {
-            charSequenceSubSequence = "";
-            break;
-        }
-        while (true) {
-            int i = length - 1;
-            char cCharAt = str.charAt(length);
-            int length2 = cArr.length;
-            int i2 = 0;
-            while (true) {
-                if (i2 >= length2) {
-                    i2 = -1;
-                    break;
-                }
-                if (cCharAt == cArr[i2]) {
-                    break;
-                }
-                i2++;
-            }
-            if (i2 < 0) {
-                charSequenceSubSequence = str.subSequence(0, length + 1);
-                break;
-            }
-            if (i < 0) {
-                charSequenceSubSequence = "";
-                break;
-            }
-            length = i;
-        }
-        return charSequenceSubSequence.toString();
+    public static String L0(String r8, char... r9) {
+        r8.getClass();
+        int r0 = r8.length() - 1;
+        if (r0 < 0) goto L16;
+    L4:
+        int r2 = r0 - 1;
+        char r3 = r8.charAt(r0);
+        int r4 = r9.length;
+        int r6 = 0;
+    L5:
+        if (r6 >= r4) goto L10;
+        if (r3 == r9[r6]) goto L11;
+        r6 = r6 + 1;
+    L11:
+        if (r6 < 0) goto L15;
+        if (r2 < 0) goto L16;
+        r0 = r2;
+        goto L4
+    L15:
+        CharSequence r10 = r8.subSequence(0, r0 + 1);
+    L18:
+        return r10.toString();
+    L10:
+        r6 = -1;
+    L16:
+        r10 = "";
+        goto L18
     }
 
-    public static boolean n0(CharSequence charSequence, char c) {
-        charSequence.getClass();
-        return r0(charSequence, c, 0, 2) >= 0;
+    public static boolean n0(CharSequence r2, char r3) {
+        r2.getClass();
+        if (r0(r2, r3, 0, 2) < 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
-    public static boolean o0(CharSequence charSequence, String str) {
-        charSequence.getClass();
-        str.getClass();
-        return s0(charSequence, str, 0, 2) >= 0;
+    public static boolean o0(CharSequence r2, String r3) {
+        r2.getClass();
+        r3.getClass();
+        if (s0(r2, r3, 0, 2) < 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
-    public static boolean p0(CharSequence charSequence, String str) {
-        return charSequence instanceof String ? xm4.e0((String) charSequence, str, false) : y0(charSequence, charSequence.length() - str.length(), str, 0, str.length(), false);
+    public static boolean p0(CharSequence r8, String r9) {
+        if ((r8 instanceof String) == false) goto L7;
+        return xm4.e0((String) r8, r9, false);
+    L7:
+        return y0(r8, r8.length() - r9.length(), r9, 0, r9.length(), false);
     }
 
-    public static final int q0(CharSequence charSequence, String str, int i, boolean z) {
-        charSequence.getClass();
-        str.getClass();
-        if (!z && (charSequence instanceof String)) {
-            return ((String) charSequence).indexOf(str, i);
-        }
-        int length = charSequence.length();
-        if (i < 0) {
-            i = 0;
-        }
-        int length2 = charSequence.length();
-        if (length > length2) {
-            length = length2;
-        }
-        j02 j02Var = new j02(i, length, 1);
-        boolean z2 = charSequence instanceof String;
-        int i2 = j02Var.p;
-        int i3 = j02Var.o;
-        int i4 = j02Var.n;
-        if (!z2 || !(str instanceof String)) {
-            boolean z3 = z;
-            if ((i2 > 0 && i4 <= i3) || (i2 < 0 && i3 <= i4)) {
-                while (true) {
-                    CharSequence charSequence2 = charSequence;
-                    boolean z4 = z3;
-                    int i5 = i4;
-                    if (y0(str, 0, charSequence2, i5, str.length(), z4)) {
-                        return i5;
-                    }
-                    if (i5 != i3) {
-                        i4 = i5 + i2;
-                        charSequence = charSequence2;
-                        z3 = z4;
-                    }
-                }
-            }
-        } else if ((i2 > 0 && i4 <= i3) || (i2 < 0 && i3 <= i4)) {
-            int i6 = i4;
-            while (true) {
-                String str2 = str;
-                boolean z5 = z;
-                if (xm4.g0(0, i6, str.length(), str2, (String) charSequence, z5)) {
-                    return i6;
-                }
-                if (i6 != i3) {
-                    i6 += i2;
-                    str = str2;
-                    z = z5;
-                }
-            }
-        }
+    public static final int q0(CharSequence r11, String r12, int r13, boolean r14) {
+        r11.getClass();
+        r12.getClass();
+        if (r14 == false) goto L5;
+    L9:
+        int r0 = r11.length();
+        if (r13 >= 0) goto L12;
+        r13 = 0;
+    L12:
+        int r2 = r11.length();
+        if (r0 <= r2) goto L15;
+        r0 = r2;
+    L15:
+        j02 r1 = new j02(r13, r0, 1);
+        boolean r15 = r11 instanceof String;
+        int r3 = r1.p;
+        int r4 = r1.o;
+        int r5 = r1.n;
+        if (r15 == true) goto L18;
+    L29:
+        boolean r8 = r14;
+        if (r3 <= 0) goto L32;
+        if (r5 > r4) goto L32;
+    L34:
+        CharSequence r7 = r11;
+        boolean r10 = r8;
+        int r9 = r5;
+        if (y0(r12, 0, r7, r9, r12.length(), r10) == true) goto L46;
+        if (r9 == r4) goto L39;
+        r5 = r9 + r3;
+        r11 = r7;
+        r8 = r10;
+    L39:
+        return -1;
+    L46:
+        return r9;
+    L32:
+        if (r3 >= 0) goto L39;
+        if (r4 > r5) goto L39;
+    L18:
+        if ((r12 instanceof String) == false) goto L29;
+        if (r3 <= 0) goto L21;
+        if (r5 > r4) goto L21;
+    L23:
+        int r6 = r5;
+    L24:
+        int r16 = r12.length();
+        String r17 = r12;
+        boolean r18 = r14;
+        if (xm4.g0(0, r6, r16, r17, (String) r11, r18) == true) goto L47;
+        if (r6 == r4) goto L39;
+        r6 = r6 + r3;
+        r12 = r17;
+        r14 = r18;
+        goto L24
+    L47:
+        return r6;
+    L21:
+        if (r3 >= 0) goto L39;
+        if (r4 > r5) goto L39;
+    L5:
+        if ((r11 instanceof String) == false) goto L9;
+        return ((String) r11).indexOf(r12, r13);
+    }
+
+    public static int r0(CharSequence r1, char r2, int r3, int r4) {
+        if ((r4 & 2) == 0) goto L5;
+        r3 = 0;
+    L5:
+        r1.getClass();
+        if ((r1 instanceof String) == true) goto L10;
+        return t0(r1, new char[]{r2}, r3, false);
+    L10:
+        return ((String) r1).indexOf(r2, r3);
+    }
+
+    public static /* synthetic */ int s0(CharSequence r1, String r2, int r3, int r4) {
+        if ((r4 & 2) == 0) goto L6;
+        r3 = 0;
+    L6:
+        return q0(r1, r2, r3, false);
+    }
+
+    public static final int t0(CharSequence r6, char[] r7, int r8, boolean r9) {
+        r6.getClass();
+        if (r9 == true) goto L11;
+        if (r7.length != 1) goto L11;
+        if ((r6 instanceof String) == false) goto L11;
+        return ((String) r6).indexOf(ti.o0(r7), r8);
+    L11:
+        if (r8 >= 0) goto L13;
+        r8 = 0;
+    L13:
+        int r2 = r6.length() - 1;
+        if (r8 > r2) goto L23;
+    L15:
+        char r0 = r6.charAt(r8);
+        int r3 = r7.length;
+        int r4 = 0;
+    L16:
+        if (r4 >= r3) goto L21;
+        if (ya4.o(r7[r4], r0, r9) == true) goto L19;
+        r4 = r4 + 1;
+        goto L16
+    L19:
+        return r8;
+    L21:
+        if (r8 == r2) goto L28;
+        r8 = r8 + 1;
+        goto L15
+    L28:
+        return -1;
+    L23:
         return -1;
     }
 
-    public static int r0(CharSequence charSequence, char c, int i, int i2) {
-        if ((i2 & 2) != 0) {
-            i = 0;
-        }
-        charSequence.getClass();
-        return !(charSequence instanceof String) ? t0(charSequence, new char[]{c}, i, false) : ((String) charSequence).indexOf(c, i);
-    }
-
-    public static /* synthetic */ int s0(CharSequence charSequence, String str, int i, int i2) {
-        if ((i2 & 2) != 0) {
-            i = 0;
-        }
-        return q0(charSequence, str, i, false);
-    }
-
-    public static final int t0(CharSequence charSequence, char[] cArr, int i, boolean z) {
-        charSequence.getClass();
-        if (!z && cArr.length == 1 && (charSequence instanceof String)) {
-            return ((String) charSequence).indexOf(ti.o0(cArr), i);
-        }
-        if (i < 0) {
-            i = 0;
-        }
-        int length = charSequence.length() - 1;
-        if (i > length) {
-            return -1;
-        }
-        while (true) {
-            char cCharAt = charSequence.charAt(i);
-            for (char c : cArr) {
-                if (ya4.o(c, cCharAt, z)) {
-                    return i;
-                }
-            }
-            if (i == length) {
-                return -1;
-            }
-            i++;
-        }
-    }
-
-    public static boolean u0(CharSequence charSequence) {
-        charSequence.getClass();
-        for (int i = 0; i < charSequence.length(); i++) {
-            if (!ya4.y(charSequence.charAt(i))) {
-                return false;
-            }
-        }
+    public static boolean u0(CharSequence r3) {
+        r3.getClass();
+        int r1 = 0;
+    L4:
+        if (r1 >= r3.length()) goto L9;
+        if (ya4.y(r3.charAt(r1)) == false) goto L7;
+        r1 = r1 + 1;
+        goto L4
+    L7:
+        return false;
+    L9:
         return true;
     }
 
-    public static int v0(String str, char c, int i, int i2) {
-        if ((i2 & 2) != 0) {
-            str.getClass();
-            i = str.length() - 1;
-        }
-        str.getClass();
-        return str.lastIndexOf(c, i);
+    public static int v0(String r0, char r1, int r2, int r3) {
+        if ((r3 & 2) == 0) goto L5;
+        r0.getClass();
+        r2 = r0.length() - 1;
+    L5:
+        r0.getClass();
+        return r0.lastIndexOf(r1, r2);
     }
 
-    public static List w0(String str) {
-        fb2 fb2Var = new fb2(str);
-        if (!fb2Var.hasNext()) {
-            return u01.n;
-        }
-        Object next = fb2Var.next();
-        if (!fb2Var.hasNext()) {
-            return gb.O(next);
-        }
-        ArrayList arrayList = new ArrayList();
-        arrayList.add(next);
-        while (fb2Var.hasNext()) {
-            arrayList.add(fb2Var.next());
-        }
-        return arrayList;
+    public static List w0(String r2) {
+        fb2 r0 = new fb2(r2);
+        if (r0.hasNext() == false) goto L5;
+        Object r3 = r0.next();
+        if (r0.hasNext() == false) goto L9;
+        ArrayList r1 = new ArrayList();
+        r1.add(r3);
+    L12:
+        if (r0.hasNext() == false) goto L14;
+        r1.add(r0.next());
+        goto L12
+    L14:
+        return r1;
+    L9:
+        return gb.O(r3);
+    L5:
+        return u01.n;
     }
 
-    public static String x0(int i, String str) {
-        CharSequence charSequenceSubSequence;
-        str.getClass();
-        if (i < 0) {
-            kf2.n(b11.j(i, "Desired length ", " is less than zero."));
-            return null;
-        }
-        if (i <= str.length()) {
-            charSequenceSubSequence = str.subSequence(0, str.length());
-        } else {
-            StringBuilder sb = new StringBuilder(i);
-            int length = i - str.length();
-            int i2 = 1;
-            if (1 <= length) {
-                while (true) {
-                    sb.append('0');
-                    if (i2 == length) {
-                        break;
-                    }
-                    i2++;
-                }
-            }
-            sb.append((CharSequence) str);
-            charSequenceSubSequence = sb;
-        }
-        return charSequenceSubSequence.toString();
+    public static String x0(int r3, String r4) {
+        r4.getClass();
+        if (r3 >= 0) goto L5;
+        kf2.n(b11.j(r3, "Desired length ", " is less than zero."));
+        return null;
+    L5:
+        if (r3 > r4.length()) goto L7;
+        CharSequence r5 = r4.subSequence(0, r4.length());
+    L14:
+        return r5.toString();
+    L7:
+        StringBuilder r0 = new StringBuilder(r3);
+        int r6 = r3 - r4.length();
+        int r1 = 1;
+        if (1 > r6) goto L12;
+    L9:
+        r0.append('0');
+        if (r1 == r6) goto L12;
+        r1 = r1 + 1;
+    L12:
+        r0.append(r4);
+        r5 = r0;
+        goto L14
     }
 
-    public static final boolean y0(CharSequence charSequence, int i, CharSequence charSequence2, int i2, int i3, boolean z) {
-        charSequence.getClass();
-        charSequence2.getClass();
-        if (i2 < 0 || i < 0 || i > charSequence.length() - i3 || i2 > charSequence2.length() - i3) {
-            return false;
-        }
-        for (int i4 = 0; i4 < i3; i4++) {
-            if (!ya4.o(charSequence.charAt(i + i4), charSequence2.charAt(i2 + i4), z)) {
-                return false;
-            }
-        }
+    public static final boolean y0(CharSequence r4, int r5, CharSequence r6, int r7, int r8, boolean r9) {
+        r4.getClass();
+        r6.getClass();
+        if (r7 < 0) goto L18;
+        if (r5 < 0) goto L18;
+        if (r5 > (r4.length() - r8)) goto L18;
+        if (r7 > (r6.length() - r8)) goto L18;
+        int r1 = 0;
+    L11:
+        if (r1 >= r8) goto L16;
+        if (ya4.o(r4.charAt(r5 + r1), r6.charAt(r7 + r1), r9) == false) goto L14;
+        r1 = r1 + 1;
+        goto L11
+    L14:
+        return false;
+    L16:
         return true;
+    L18:
+        return false;
     }
 
-    public static String z0(String str, String str2) {
-        str.getClass();
-        return xm4.k0(str, str2, false) ? str.substring(str2.length()) : str;
+    public static String z0(String r1, String r2) {
+        r1.getClass();
+        if (xm4.k0(r1, r2, false) == true) goto L5;
+        return r1;
+    L5:
+        return r1.substring(r2.length());
     }
 }

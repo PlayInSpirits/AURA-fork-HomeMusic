@@ -8,34 +8,35 @@ import java.util.concurrent.RunnableFuture;
 public final class py4 extends k91 implements RunnableFuture {
     public volatile oy4 u;
 
-    public py4(Callable callable) {
-        this.u = new oy4(this, callable);
+    public py4(Callable r2) {
+        this.u = new oy4(this, r2);
     }
 
     @Override // defpackage.u0
     public final void b() {
-        oy4 oy4Var;
-        if (p() && (oy4Var = this.u) != null) {
-            oy4Var.c();
-        }
+        if (p() == false) goto L7;
+        oy4 r0 = this.u;
+        if (r0 == null) goto L7;
+        r0.c();
+    L7:
         this.u = null;
     }
 
     @Override // defpackage.u0
     public final String j() {
-        oy4 oy4Var = this.u;
-        if (oy4Var == null) {
-            return super.j();
-        }
-        return "task=[" + oy4Var + "]";
+        oy4 r0 = this.u;
+        if (r0 == null) goto L7;
+        return "task=[" + r0 + "]";
+    L7:
+        return super.j();
     }
 
     @Override // java.util.concurrent.RunnableFuture, java.lang.Runnable
     public final void run() {
-        oy4 oy4Var = this.u;
-        if (oy4Var != null) {
-            oy4Var.run();
-        }
+        oy4 r0 = this.u;
+        if (r0 == null) goto L5;
+        r0.run();
+    L5:
         this.u = null;
     }
 }

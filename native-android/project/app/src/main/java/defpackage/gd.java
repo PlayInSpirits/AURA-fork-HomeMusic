@@ -7,8 +7,8 @@ import android.view.ViewConfiguration;
 public final class gd implements m65 {
     public final ViewConfiguration a;
 
-    public gd(ViewConfiguration viewConfiguration) {
-        this.a = viewConfiguration;
+    public gd(ViewConfiguration r1) {
+        this.a = r1;
     }
 
     @Override // defpackage.m65

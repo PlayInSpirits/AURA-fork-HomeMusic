@@ -5,8 +5,8 @@ import android.graphics.RectF;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class kd4 {
-    public final float[] a = new float[4];
-    public final int[] b = new int[4];
+    public final float[] a;
+    public final int[] b;
     public int c;
     public int d;
     public int e;
@@ -27,6 +27,8 @@ public final class kd4 {
     public long t;
 
     public kd4() {
+        this.a = new float[4];
+        this.b = new int[4];
         new RectF();
         this.c = 0;
         this.d = -1;
@@ -44,6 +46,6 @@ public final class kd4 {
         this.p = true;
         this.q = -1;
         this.r = 1;
-        this.s = 1000L;
+        this.s = 1000;
     }
 }

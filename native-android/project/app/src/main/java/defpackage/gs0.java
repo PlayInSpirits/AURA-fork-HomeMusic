@@ -3,102 +3,101 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class gs0 implements q81 {
-    public final /* synthetic */ int n = 0;
+    public final /* synthetic */ int n;
     public final /* synthetic */ q81 o;
     public final /* synthetic */ jx3 p;
 
-    public gs0(hs0 hs0Var, jx3 jx3Var, q81 q81Var) {
-        this.p = jx3Var;
-        this.o = q81Var;
+    public gs0(hs0 r1, jx3 r2, q81 r3) {
+        this.n = 0;
+        this.p = r2;
+        this.o = r3;
     }
 
-    /* JADX WARN: Code duplicated, block: B:31:0x0061  */
-    /* JADX WARN: Code duplicated, block: B:9:0x0022  */
     /* JADX WARN: Multi-variable type inference failed */
     @Override // defpackage.q81
-    public final Object b(Object obj, vd0 vd0Var) {
-        fs0 fs0Var;
-        v81 v81Var;
-        int i = this.n;
-        Object obj2 = j15.a;
-        q81 q81Var = this.o;
-        xe0 xe0Var = xe0.n;
-        switch (i) {
-            case 0:
-                if (vd0Var instanceof fs0) {
-                    fs0Var = (fs0) vd0Var;
-                    int i2 = fs0Var.p;
-                    if ((i2 & Integer.MIN_VALUE) != 0) {
-                        fs0Var.p = i2 - Integer.MIN_VALUE;
-                    } else {
-                        fs0Var = new fs0(this, vd0Var);
-                    }
-                } else {
-                    fs0Var = new fs0(this, vd0Var);
-                }
-                Object obj3 = fs0Var.n;
-                int i3 = fs0Var.p;
-                if (i3 != 0) {
-                    if (i3 == 1) {
-                        kb4.X(obj3);
-                        return obj2;
-                    }
-                    kf2.o("call to 'resume' before 'invoke' with coroutine");
-                    return null;
-                }
-                kb4.X(obj3);
-                jx3 jx3Var = this.p;
-                Object obj4 = jx3Var.n;
-                if (obj4 != xl.e && h12.c(obj4, obj)) {
-                    return obj2;
-                }
-                jx3Var.n = obj;
-                fs0Var.p = 1;
-                return q81Var.b(obj, fs0Var) == xe0Var ? xe0Var : obj2;
-            default:
-                if (vd0Var instanceof v81) {
-                    v81Var = (v81) vd0Var;
-                    int i4 = v81Var.q;
-                    if ((i4 & Integer.MIN_VALUE) != 0) {
-                        v81Var.q = i4 - Integer.MIN_VALUE;
-                    } else {
-                        v81Var = new v81(this, vd0Var);
-                    }
-                } else {
-                    v81Var = new v81(this, vd0Var);
-                }
-                Object obj5 = v81Var.o;
-                int i5 = v81Var.q;
-                try {
-                    if (i5 == 0) {
-                        kb4.X(obj5);
-                        v81Var.n = this;
-                        v81Var.q = 1;
-                        Object objB = q81Var.b(obj, v81Var);
-                        this = objB;
-                        if (objB == xe0Var) {
-                            obj2 = xe0Var;
-                            this = objB;
-                        }
-                    } else {
-                        if (i5 != 1) {
-                            kf2.o("call to 'resume' before 'invoke' with coroutine");
-                            return null;
-                        }
-                        gs0 gs0Var = v81Var.n;
-                        kb4.X(obj5);
-                        this = gs0Var;
-                    }
-                    return obj2;
-                } catch (Throwable th) {
-                    this.p.n = th;
-                    throw th;
-                }
-        }
+    public final Object b(Object r11, vd0 r12) {
+        int r0 = this.n;
+        Object r1 = j15.a;
+        q81 r2 = this.o;
+        xe0 r5 = xe0.n;
+        switch(r0) {
+            case 0: goto L27;
+            default: goto L5;
+        };
+    L5:
+        if ((r12 instanceof v81) == false) goto L9;
+        v81 r3 = (v81) r12;
+        int r8 = r3.q;
+        if ((r8 & Integer.MIN_VALUE) == 0) goto L9;
+        r3.q = r8 - Integer.MIN_VALUE;
+    L10:
+        Object r13 = r3.o;
+        int r6 = r3.q;
+        if (r6 == 0) goto L19;
+        if (r6 != 1) goto L18;
+        gs0 r10 = r3.n;
+        kb4.X(r13);     // Catch: Throwable -> L16
+        gs0 this = r10;
+    L45:
+        return r1;
+    L18:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L19:
+        kb4.X(r13);
+        r3.n = this;     // Catch: Throwable -> L16
+        r3.q = 1;     // Catch: Throwable -> L16
+        Object r14 = r2.b(r11, r3);     // Catch: Throwable -> L16
+        this = r14;
+        if (r14 != r5) goto L45;
+        r1 = r5;
+        this = r14;
+    L16:
+        th = move-exception;
+        this.p.n = th;
+        throw th;
+    L9:
+        r3 = new v81(this, r12);
+        goto L10
+    L27:
+        if ((r12 instanceof fs0) == false) goto L31;
+        fs0 r4 = (fs0) r12;
+        int r9 = r4.p;
+        if ((r9 & Integer.MIN_VALUE) == 0) goto L31;
+        r4.p = r9 - Integer.MIN_VALUE;
+    L32:
+        Object r15 = r4.n;
+        int r7 = r4.p;
+        if (r7 == 0) goto L37;
+        if (r7 != 1) goto L36;
+        kb4.X(r15);
+        return r1;
+    L36:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L37:
+        kb4.X(r15);
+        jx3 r16 = this.p;
+        Object r17 = r16.n;
+        if (r17 != xl.e) goto L40;
+    L41:
+        r16.n = r11;
+        r4.p = 1;
+        if (r2.b(r11, r4) == r5) goto L44;
+        return r1;
+    L44:
+        return r5;
+    L40:
+        if (h12.c(r17, r11) == false) goto L41;
+        return r1;
+    L31:
+        r4 = new fs0(this, r12);
+        goto L32
     }
 
-    public gs0(q81 q81Var, jx3 jx3Var) {
-        this.o = q81Var;
-        this.p = jx3Var;
+    public gs0(q81 r2, jx3 r3) {
+        this.n = 1;
+        this.o = r2;
+        this.p = r3;
     }
 }

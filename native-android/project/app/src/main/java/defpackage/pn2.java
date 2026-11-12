@@ -16,10 +16,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 /* JADX INFO: loaded from: classes.dex */
 public final class pn2 extends Service {
     public bq4 n;
-    public final pz1 o = new pz1(5, this);
-    public final oj2 p = new oj2(this, "android.media.session.MediaController", -1, -1, null);
-    public final ArrayList q = new ArrayList();
-    public final oi r = new oi(0);
+    public final pz1 o;
+    public final oj2 p;
+    public final ArrayList q;
+    public final oi r;
     public oj2 s;
     public final zk t;
     public pr2 u;
@@ -29,156 +29,174 @@ public final class pn2 extends Service {
     public final si1 y;
     public final tn2 z;
 
-    public pn2(tn2 tn2Var) {
-        Looper looperMyLooper = Looper.myLooper();
-        looperMyLooper.getClass();
-        zk zkVar = new zk(looperMyLooper);
-        zkVar.b = this;
-        this.t = zkVar;
-        this.v = hg3.E(tn2Var.f);
-        this.w = tn2Var;
-        this.x = new na4(tn2Var);
-        this.z = tn2Var;
+    public pn2(tn2 r9) {
+        this.o = new pz1(5, this);
+        this.p = new oj2(this, "android.media.session.MediaController", -1, -1, null);
+        this.q = new ArrayList();
+        this.r = new oi(0);
+        Looper r0 = Looper.myLooper();
+        r0.getClass();
+        zk r8 = new zk(r0);
+        r8.b = this;
+        this.t = r8;
+        this.v = hg3.E(r9.f);
+        this.w = r9;
+        this.x = new na4(r9);
+        this.z = r9;
         this.y = new si1(9, this);
     }
 
-    public static lb4 a(pn2 pn2Var, m92 m92Var) {
-        Object obj;
-        rr2.s(m92Var, "LibraryResult must not be null");
-        lb4 lb4Var = new lb4();
-        if (m92Var.a != 0 || (obj = m92Var.c) == null) {
-            lb4Var.l(null);
-            return lb4Var;
-        }
-        yw1 yw1Var = (yw1) obj;
-        if (yw1Var.isEmpty()) {
-            lb4Var.l(new ArrayList());
-            return lb4Var;
-        }
-        ArrayList arrayList = new ArrayList();
-        ws1 ws1Var = new ws1(16, lb4Var, arrayList);
-        gq0 gq0Var = gq0.n;
-        lb4Var.f(ws1Var, gq0Var);
-        t6 t6Var = new t6(pn2Var, new AtomicInteger(0), yw1Var, arrayList, lb4Var);
-        for (int i = 0; i < yw1Var.size(); i++) {
-            byte[] bArr = ((gn2) yw1Var.get(i)).d.k;
-            if (bArr == null) {
-                arrayList.add(null);
-                t6Var.run();
-            } else {
-                ic2 ic2VarJ = pn2Var.z.m.j(bArr);
-                arrayList.add(ic2VarJ);
-                ((k91) ic2VarJ).f(t6Var, gq0Var);
-            }
-        }
-        return lb4Var;
+    public static lb4 a(pn2 r8, m92 r9) {
+        rr2.s(r9, "LibraryResult must not be null");
+        lb4 r6 = new lb4();
+        if (r9.a != 0) goto L20;
+        Object r10 = r9.c;
+        if (r10 == null) goto L20;
+        yw1 r4 = (yw1) r10;
+        if (r4.isEmpty() == false) goto L11;
+        r6.l(new ArrayList());
+        return r6;
+    L11:
+        ArrayList r5 = new ArrayList();
+        ws1 r11 = new ws1(16, r6, r5);
+        gq0 r0 = gq0.n;
+        r6.f(r11, r0);
+        int r12 = 0;
+        t6 r1 = new t6(r8, new AtomicInteger(0), r4, r5, r6);
+    L13:
+        if (r12 >= r4.size()) goto L19;
+        byte[] r13 = ((gn2) r4.get(r12)).d.k;
+        if (r13 != null) goto L17;
+        r5.add(null);
+        r1.run();
+    L18:
+        r12 = r12 + 1;
+        goto L13
+    L17:
+        ic2 r14 = r8.z.m.j(r13);
+        r5.add(r14);
+        ((k91) r14).f(r1, r0);
+        goto L18
+    L19:
+        return r6;
+    L20:
+        r6.l(null);
+        return r6;
     }
 
     public final fr2 b() {
-        bq4 bq4Var = this.n;
-        bq4Var.getClass();
-        return this.x.w(bq4Var.j());
+        bq4 r0 = this.n;
+        r0.getClass();
+        ms2 r1 = r0.j();
+        return this.x.w(r1);
     }
 
-    public final void c(pr2 pr2Var) {
+    public final void c(pr2 r5) {
         attachBaseContext(this.w.f);
         onCreate();
-        if (pr2Var == null) {
-            kf2.n("Session token may not be null");
-            return;
-        }
-        if (this.u != null) {
-            kf2.o("The session token has already been set");
-            return;
-        }
-        this.u = pr2Var;
-        bq4 bq4Var = this.n;
-        bq4Var.getClass();
-        ((pn2) bq4Var.q).t.b(new lg1(bq4Var, pr2Var, false, 19));
+        if (r5 != null) goto L5;
+        kf2.n("Session token may not be null");
+        return;
+    L5:
+        if (this.u != null) goto L8;
+        this.u = r5;
+        bq4 r4 = this.n;
+        r4.getClass();
+        boolean r3 = false;
+        ((pn2) r4.q).t.b(new lg1(r4, r5, r3, 19));
+        return;
+    L8:
+        kf2.o("The session token has already been set");
     }
 
-    public final void d(String str, uj2 uj2Var, Bundle bundle) {
-        fr2 fr2VarB = b();
-        if (fr2VarB == null) {
-            uj2Var.f(null);
-            return;
-        }
-        if (!TextUtils.isEmpty(str)) {
-            uj2Var.a();
-            f35.W(this.z.l, new mr(this, fr2VarB, uj2Var, bundle, str));
-        } else {
-            l93.q0("MLSLegacyStub", "onLoadChildren(): Ignoring empty parentId from " + fr2VarB);
-            uj2Var.f(null);
-        }
+    public final void d(String r8, uj2 r9, Bundle r10) {
+        fr2 r2 = b();
+        if (r2 != null) goto L7;
+        r9.f(null);
+        return;
+    L7:
+        if (TextUtils.isEmpty(r8) == false) goto L10;
+        l93.q0("MLSLegacyStub", "onLoadChildren(): Ignoring empty parentId from " + r2);
+        r9.f(null);
+        return;
+    L10:
+        r9.a();
+        f35.W(this.z.l, new mr(this, r2, r9, r10, r8));
     }
 
     @Override // android.app.Service
-    public final void dump(FileDescriptor fileDescriptor, PrintWriter printWriter, String[] strArr) {
+    public final void dump(FileDescriptor r1, PrintWriter r2, String[] r3) {
     }
 
-    public final void e(String str, uj2 uj2Var) {
-        fr2 fr2VarB = b();
-        if (fr2VarB == null) {
-            uj2Var.f(null);
-            return;
-        }
-        if (!TextUtils.isEmpty(str)) {
-            uj2Var.a();
-            f35.W(this.z.l, new v6(this, fr2VarB, uj2Var, str));
-        } else {
-            l93.q0("MLSLegacyStub", "Ignoring empty itemId from " + fr2VarB);
-            uj2Var.f(null);
-        }
+    public final void e(String r4, uj2 r5) {
+        fr2 r0 = b();
+        if (r0 != null) goto L7;
+        r5.f(null);
+        return;
+    L7:
+        if (TextUtils.isEmpty(r4) == false) goto L10;
+        l93.q0("MLSLegacyStub", "Ignoring empty itemId from " + r0);
+        r5.f(null);
+        return;
+    L10:
+        r5.a();
+        f35.W(this.z.l, new v6(this, r0, r5, r4));
     }
 
-    public final void f(String str) {
-        fr2 fr2VarB = b();
-        if (fr2VarB == null) {
-            return;
-        }
-        if (!TextUtils.isEmpty(str)) {
-            f35.W(this.z.l, new v6(this, fr2VarB, str, 27));
-            return;
-        }
-        l93.q0("MLSLegacyStub", "onUnsubscribe(): Ignoring empty id from " + fr2VarB);
+    public final void f(String r5) {
+        fr2 r0 = b();
+        if (r0 != null) goto L6;
+        return;
+    L6:
+        if (TextUtils.isEmpty(r5) == false) goto L9;
+        l93.q0("MLSLegacyStub", "onUnsubscribe(): Ignoring empty id from " + r0);
+        return;
+    L9:
+        f35.W(this.z.l, new v6(this, r0, r5, 27));
     }
 
-    public final void g(String str, oj2 oj2Var, Bundle bundle, Bundle bundle2) {
-        mj2 mj2Var = new mj2(this, str, oj2Var, str, bundle, bundle2);
-        this.s = oj2Var;
-        if (bundle == null) {
-            d(str, mj2Var, null);
-        } else {
-            d(str, mj2Var, bundle);
-        }
+    public final void g(String r8, oj2 r9, Bundle r10, Bundle r11) {
+        mj2 r0 = new mj2(this, r8, r9, r8, r10, r11);
+        this.s = r9;
+        if (r10 != null) goto L5;
+        d(r8, r0, null);
+    L6:
         this.s = null;
-        if (mj2Var.b()) {
-            return;
-        }
-        nz2.y("onLoadChildren must call detach() or sendResult() before returning for package=", oj2Var.a, " id=", str);
+        if (r0.b() == false) goto L9;
+        return;
+    L9:
+        nz2.y("onLoadChildren must call detach() or sendResult() before returning for package=", r9.a, " id=", r8);
+        return;
+    L5:
+        d(r8, r0, r10);
+        goto L6
     }
 
     @Override // android.app.Service
-    public final IBinder onBind(Intent intent) {
-        bq4 bq4Var = this.n;
-        bq4Var.getClass();
-        qj2 qj2Var = (qj2) bq4Var.o;
-        qj2Var.getClass();
-        return qj2Var.onBind(intent);
+    public final IBinder onBind(Intent r1) {
+        bq4 r0 = this.n;
+        r0.getClass();
+        qj2 r2 = (qj2) r0.o;
+        r2.getClass();
+        return r2.onBind(r1);
     }
 
     @Override // android.app.Service
     public final void onCreate() {
         super.onCreate();
-        int i = Build.VERSION.SDK_INT;
-        if (i >= 28) {
-            this.n = new tj2(this);
-        } else if (i >= 26) {
-            this.n = new sj2(this);
-        } else {
-            this.n = new bq4(this);
-        }
+        int r0 = Build.VERSION.SDK_INT;
+        if (r0 < 28) goto L6;
+        this.n = new tj2(this);
+    L9:
         this.n.r();
+        return;
+    L6:
+        if (r0 < 26) goto L8;
+        this.n = new sj2(this);
+        goto L9
+    L8:
+        this.n = new bq4(this);
+        goto L9
     }
 
     @Override // android.app.Service

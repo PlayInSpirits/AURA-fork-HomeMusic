@@ -6,18 +6,18 @@ public final class r54 implements m54 {
     public final /* synthetic */ wf1 n;
     public final /* synthetic */ if1 o;
 
-    public r54(wf1 wf1Var, if1 if1Var) {
-        this.n = wf1Var;
-        this.o = if1Var;
+    public r54(wf1 r1, if1 r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // defpackage.m54
-    public final Object f(Object obj) {
-        return this.o.invoke(obj);
+    public final Object f(Object r1) {
+        return this.o.invoke(r1);
     }
 
     @Override // defpackage.m54
-    public final Object h(t44 t44Var, Object obj) {
-        return this.n.invoke(t44Var, obj);
+    public final Object h(t44 r1, Object r2) {
+        return this.n.invoke(r1, r2);
     }
 }

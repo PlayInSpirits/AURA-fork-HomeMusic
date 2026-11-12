@@ -12,17 +12,16 @@ public final class pl extends ContentObserver {
     public final Uri b;
     public final /* synthetic */ ql c;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public pl(ql qlVar, Handler handler, ContentResolver contentResolver, Uri uri) {
-        super(handler);
-        this.c = qlVar;
-        this.a = contentResolver;
-        this.b = uri;
+    public pl(ql r1, Handler r2, ContentResolver r3, Uri r4) {
+        this.c = r1;
+        super(r2);
+        this.a = r3;
+        this.b = r4;
     }
 
     @Override // android.database.ContentObserver
-    public final void onChange(boolean z) {
-        ql qlVar = this.c;
-        qlVar.a(nl.b(qlVar.a, qlVar.i, qlVar.h));
+    public final void onChange(boolean r3) {
+        ql r2 = this.c;
+        r2.a(nl.b(r2.a, r2.i, r2.h));
     }
 }

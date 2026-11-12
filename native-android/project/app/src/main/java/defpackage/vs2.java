@@ -6,21 +6,25 @@ public final /* synthetic */ class vs2 implements it2 {
     public final /* synthetic */ int n;
     public final /* synthetic */ gn2 o;
 
-    public /* synthetic */ vs2(int i, gn2 gn2Var) {
-        this.n = i;
-        this.o = gn2Var;
+    public /* synthetic */ vs2(int r1, gn2 r2) {
+        this.n = r1;
+        this.o = r2;
     }
 
     @Override // defpackage.it2
-    public final Object h(tn2 tn2Var, fr2 fr2Var, int i) {
-        int i2 = this.n;
-        gn2 gn2Var = this.o;
-        switch (i2) {
-            case 0:
-                break;
-            case 1:
-                break;
-        }
-        return tn2Var.o(fr2Var, yw1.o(gn2Var));
+    public final Object h(tn2 r1, fr2 r2, int r3) {
+        int r4 = this.n;
+        gn2 r0 = this.o;
+        switch(r4) {
+            case 0: goto L9;
+            case 1: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return r1.o(r2, yw1.o(r0));
+    L7:
+        return r1.o(r2, yw1.o(r0));
+    L9:
+        return r1.o(r2, yw1.o(r0));
     }
 }

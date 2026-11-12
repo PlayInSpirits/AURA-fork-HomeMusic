@@ -14,78 +14,78 @@ public final class oz3 {
     public final Map e;
     public ix f;
 
-    public oz3(nz3 nz3Var) {
-        gr1 gr1Var = nz3Var.a;
-        if (gr1Var == null) {
-            kf2.o("url == null");
-            throw null;
-        }
-        this.a = gr1Var;
-        this.b = nz3Var.b;
-        this.c = nz3Var.c.c();
-        this.d = nz3Var.d;
-        this.e = lg2.a0(nz3Var.e);
+    public oz3(nz3 r2) {
+        gr1 r0 = r2.a;
+        if (r0 == null) goto L6;
+        this.a = r0;
+        this.b = r2.b;
+        this.c = r2.c.c();
+        this.d = r2.d;
+        this.e = lg2.a0(r2.e);
+        return;
+    L6:
+        kf2.o("url == null");
+        throw null;
     }
 
     public final nz3 a() {
-        nz3 nz3Var = new nz3();
-        Map linkedHashMap = v01.n;
-        nz3Var.e = linkedHashMap;
-        nz3Var.a = this.a;
-        nz3Var.b = this.b;
-        nz3Var.d = this.d;
-        Map map = this.e;
-        if (!map.isEmpty()) {
-            linkedHashMap = new LinkedHashMap(map);
-        }
-        nz3Var.e = linkedHashMap;
-        nz3Var.c = this.c.d();
-        return nz3Var;
+        nz3 r0 = new nz3();
+        Map r1 = v01.n;
+        r0.e = r1;
+        r0.a = this.a;
+        r0.b = this.b;
+        r0.d = this.d;
+        Map r2 = this.e;
+        if (r2.isEmpty() == true) goto L6;
+        r1 = new LinkedHashMap(r2);
+    L6:
+        r0.e = r1;
+        r0.c = this.c.d();
+        return r0;
     }
 
     public final String toString() {
-        StringBuilder sb = new StringBuilder("Request{method=");
-        sb.append(this.b);
-        sb.append(", url=");
-        sb.append(this.a);
-        tl1 tl1Var = this.c;
-        if (tl1Var.size() != 0) {
-            sb.append(", headers=[");
-            Iterator it = tl1Var.iterator();
-            int i = 0;
-            while (true) {
-                x0 x0Var = (x0) it;
-                if (!x0Var.hasNext()) {
-                    sb.append(']');
-                    break;
-                }
-                Object next = x0Var.next();
-                int i2 = i + 1;
-                if (i < 0) {
-                    gb.c0();
-                    throw null;
-                }
-                kd3 kd3Var = (kd3) next;
-                String str = (String) kd3Var.n;
-                String str2 = (String) kd3Var.o;
-                if (i > 0) {
-                    sb.append(", ");
-                }
-                sb.append(str);
-                sb.append(':');
-                if (xe5.l(str)) {
-                    str2 = "██";
-                }
-                sb.append(str2);
-                i = i2;
-            }
-        }
-        Map map = this.e;
-        if (!map.isEmpty()) {
-            sb.append(", tags=");
-            sb.append(map);
-        }
-        sb.append('}');
-        return sb.toString();
+        StringBuilder r0 = new StringBuilder("Request{method=");
+        r0.append(this.b);
+        r0.append(", url=");
+        r0.append(this.a);
+        tl1 r1 = this.c;
+        if (r1.size() == 0) goto L19;
+        r0.append(", headers=[");
+        Iterator r2 = r1.iterator();
+        int r3 = 0;
+    L5:
+        x0 r4 = (x0) r2;
+        if (r4.hasNext() == false) goto L18;
+        Object r5 = r4.next();
+        int r6 = r3 + 1;
+        if (r3 < 0) goto L16;
+        kd3 r7 = (kd3) r5;
+        String r8 = (String) r7.n;
+        String r9 = (String) r7.o;
+        if (r3 <= 0) goto L12;
+        r0.append(", ");
+    L12:
+        r0.append(r8);
+        r0.append(':');
+        if (xe5.l(r8) == false) goto L15;
+        r9 = "██";
+    L15:
+        r0.append(r9);
+        r3 = r6;
+        goto L5
+    L16:
+        gb.c0();
+        throw null;
+    L18:
+        r0.append(']');
+    L19:
+        Map r10 = this.e;
+        if (r10.isEmpty() == true) goto L22;
+        r0.append(", tags=");
+        r0.append(r10);
+    L22:
+        r0.append('}');
+        return r0.toString();
     }
 }

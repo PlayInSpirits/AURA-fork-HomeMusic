@@ -7,15 +7,14 @@ public final class ev0 extends wd0 {
     public final /* synthetic */ z64 o;
     public int p;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public ev0(z64 z64Var, wd0 wd0Var) {
-        super(wd0Var);
-        this.o = z64Var;
+    public ev0(z64 r1, wd0 r2) {
+        this.o = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.n = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.n = r2;
         this.p |= Integer.MIN_VALUE;
         return z64.t0(this.o, this);
     }

@@ -9,15 +9,14 @@ public final class z24 extends wd0 {
     public final /* synthetic */ t24 q;
     public int r;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public z24(t24 t24Var, wd0 wd0Var) {
-        super(wd0Var);
-        this.q = t24Var;
+    public z24(t24 r1, wd0 r2) {
+        this.q = r1;
+        super(r2);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        this.p = obj;
+    public final Object invokeSuspend(Object r2) {
+        this.p = r2;
         this.r |= Integer.MIN_VALUE;
         return t24.l(this.q, this);
     }

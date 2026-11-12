@@ -9,20 +9,21 @@ public final class l8 extends rw3 {
     public final /* synthetic */ int a;
     public final /* synthetic */ NestedScrollView b;
 
-    public /* synthetic */ l8(NestedScrollView nestedScrollView, int i) {
-        this.a = i;
-        this.b = nestedScrollView;
+    public /* synthetic */ l8(NestedScrollView r1, int r2) {
+        this.a = r2;
+        this.b = r1;
     }
 
     @Override // defpackage.rw3
-    public final void b(RecyclerView recyclerView, int i, int i2) {
-        switch (this.a) {
-            case 0:
-                this.b.scrollBy(0, i2);
-                break;
-            default:
-                this.b.scrollBy(0, i2);
-                break;
-        }
+    public final void b(RecyclerView r1, int r2, int r3) {
+        switch(this.a) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        this.b.scrollBy(0, r3);
+        return;
+    L6:
+        this.b.scrollBy(0, r3);
     }
 }

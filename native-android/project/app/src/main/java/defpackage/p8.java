@@ -12,7 +12,6 @@ import com.eddyizm.tempus.subsonic.models.SubsonicResponse;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,123 +22,180 @@ public final class p8 implements Callback {
     public final /* synthetic */ int n;
     public final /* synthetic */ k03 o;
 
-    public /* synthetic */ p8(k03 k03Var, int i) {
-        this.n = i;
-        this.o = k03Var;
+    public /* synthetic */ p8(k03 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
-    private final void a(Call call, Throwable th) {
+    private final void a(Call r1, Throwable r2) {
     }
 
-    private final void b(Call call, Throwable th) {
+    private final void b(Call r1, Throwable r2) {
     }
 
-    private final void c(Call call, Throwable th) {
+    private final void c(Call r1, Throwable r2) {
     }
 
-    private final void d(Call call, Throwable th) {
-    }
-
-    @Override // retrofit2.Callback
-    public final void onFailure(Call call, Throwable th) {
-        int i = this.n;
-        k03 k03Var = this.o;
-        switch (i) {
-            case 1:
-                k03Var.k(null);
-                break;
-            case 2:
-                k03Var.k(kb4.L(null));
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                Log.e("QueueRepository", "Failed to get play queue", th);
-                k03Var.k(null);
-                break;
-        }
+    private final void d(Call r1, Throwable r2) {
     }
 
     @Override // retrofit2.Callback
-    public final void onResponse(Call call, Response response) {
-        int i = this.n;
-        k03 k03Var = this.o;
-        switch (i) {
-            case 0:
-                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse().getAlbum() != null) {
-                    k03Var.k(((ApiResponse) response.body()).getSubsonicResponse().getAlbum());
-                    break;
-                }
-                break;
-            case 1:
-                ApiResponse apiResponse = (ApiResponse) response.body();
-                if (!response.isSuccessful() || apiResponse == null || apiResponse.getSubsonicResponse() == null) {
-                    k03Var.k(null);
-                } else {
-                    SubsonicResponse subsonicResponse = apiResponse.getSubsonicResponse();
-                    ArtistWithAlbumsID3 artist = subsonicResponse.getArtist();
-                    if (ResponseStatus.OK.equals(subsonicResponse.getStatus()) && artist != null) {
-                        k03Var.k(artist);
-                    } else {
-                        k03Var.k(null);
-                    }
-                }
-                break;
-            case 2:
-                if (!response.isSuccessful() || response.body() == null || ((ApiResponse) response.body()).getSubsonicResponse().getMusicFolders() == null) {
-                    k03Var.k(kb4.L(null));
-                } else {
-                    k03Var.k(kb4.L(((ApiResponse) response.body()).getSubsonicResponse().getMusicFolders().getMusicFolders()));
-                }
-                break;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                if (!response.isSuccessful() || response.body() == null || ((ApiResponse) response.body()).getSubsonicResponse() == null || ((ApiResponse) response.body()).getSubsonicResponse().getPlayQueue() == null) {
-                    Log.d("QueueRepository", "Server returned no play queue");
-                    k03Var.k(null);
-                } else {
-                    PlayQueue playQueue = ((ApiResponse) response.body()).getSubsonicResponse().getPlayQueue();
-                    StringBuilder sb = new StringBuilder("Server returned play queue with ");
-                    sb.append(playQueue.getEntries() != null ? playQueue.getEntries().size() : 0);
-                    sb.append(" items");
-                    Log.d("QueueRepository", sb.toString());
-                    k03Var.k(playQueue);
-                }
-                break;
-            case 4:
-                ArrayList arrayList = new ArrayList();
-                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse().getSearchResult3() != null) {
-                    if (((ApiResponse) response.body()).getSubsonicResponse().getSearchResult3().getArtists() != null) {
-                        Iterator<ArtistID3> it = ((ApiResponse) response.body()).getSubsonicResponse().getSearchResult3().getArtists().iterator();
-                        while (it.hasNext()) {
-                            arrayList.add(it.next().getName());
-                        }
-                    }
-                    if (((ApiResponse) response.body()).getSubsonicResponse().getSearchResult3().getAlbums() != null) {
-                        Iterator<AlbumID3> it2 = ((ApiResponse) response.body()).getSubsonicResponse().getSearchResult3().getAlbums().iterator();
-                        while (it2.hasNext()) {
-                            arrayList.add(it2.next().getName());
-                        }
-                    }
-                    if (((ApiResponse) response.body()).getSubsonicResponse().getSearchResult3().getSongs() != null) {
-                        Iterator<Child> it3 = ((ApiResponse) response.body()).getSubsonicResponse().getSearchResult3().getSongs().iterator();
-                        while (it3.hasNext()) {
-                            arrayList.add(it3.next().getTitle());
-                        }
-                    }
-                    k03Var.k(new ArrayList(new LinkedHashSet(arrayList)));
-                    break;
-                }
-                break;
-            case 5:
-                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse().getShares() != null && ((ApiResponse) response.body()).getSubsonicResponse().getShares().getShares() != null) {
-                    k03Var.k(((ApiResponse) response.body()).getSubsonicResponse().getShares().getShares());
-                    break;
-                }
-                break;
-            default:
-                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse().getLyrics() != null) {
-                    k03Var.k(((ApiResponse) response.body()).getSubsonicResponse().getLyrics().getValue());
-                    break;
-                }
-                break;
-        }
+    public final void onFailure(Call r3, Throwable r4) {
+        int r5 = this.n;
+        k03 r2 = this.o;
+        switch(r5) {
+            case 0: goto L11;
+            case 1: goto L9;
+            case 2: goto L7;
+            case 3: goto L5;
+            case 4: goto L4;
+            case 5: goto L4;
+            default: goto L4;
+        };
+    L4:
+        return;
+    L5:
+        Log.e("QueueRepository", "Failed to get play queue", r4);
+        r2.k(null);
+        return;
+    L7:
+        r2.k(kb4.L(null));
+        return;
+    L9:
+        r2.k(null);
+        return;
+    }
+
+    @Override // retrofit2.Callback
+    public final void onResponse(Call r3, Response r4) {
+        int r5 = this.n;
+        k03 r2 = this.o;
+        switch(r5) {
+            case 0: goto L85;
+            case 1: goto L72;
+            case 2: goto L64;
+            case 3: goto L49;
+            case 4: goto L22;
+            case 5: goto L13;
+            default: goto L5;
+        };
+    L22:
+        ArrayList r6 = new ArrayList();
+        if (r4.isSuccessful() == true) goto L25;
+        return;
+    L25:
+        if (r4.body() != null) goto L27;
+        return;
+    L27:
+        if (((ApiResponse) r4.body()).getSubsonicResponse().getSearchResult3() != null) goto L29;
+        return;
+    L29:
+        if (((ApiResponse) r4.body()).getSubsonicResponse().getSearchResult3().getArtists() == null) goto L35;
+        Iterator<ArtistID3> r0 = ((ApiResponse) r4.body()).getSubsonicResponse().getSearchResult3().getArtists().iterator();
+    L32:
+        if (r0.hasNext() == false) goto L35;
+        r6.add(r0.next().getName());
+    L35:
+        if (((ApiResponse) r4.body()).getSubsonicResponse().getSearchResult3().getAlbums() == null) goto L41;
+        Iterator<AlbumID3> r1 = ((ApiResponse) r4.body()).getSubsonicResponse().getSearchResult3().getAlbums().iterator();
+    L38:
+        if (r1.hasNext() == false) goto L41;
+        r6.add(r1.next().getName());
+    L41:
+        if (((ApiResponse) r4.body()).getSubsonicResponse().getSearchResult3().getSongs() == null) goto L46;
+        Iterator<Child> r7 = ((ApiResponse) r4.body()).getSubsonicResponse().getSearchResult3().getSongs().iterator();
+    L44:
+        if (r7.hasNext() == false) goto L46;
+        r6.add(r7.next().getTitle());
+    L46:
+        r2.k(new ArrayList(new LinkedHashSet(r6)));
+        return;
+    L72:
+        ApiResponse r8 = (ApiResponse) r4.body();
+        if (r4.isSuccessful() == false) goto L82;
+        if (r8 == null) goto L82;
+        if (r8.getSubsonicResponse() == null) goto L82;
+        SubsonicResponse r9 = r8.getSubsonicResponse();
+        ArtistWithAlbumsID3 r10 = r9.getArtist();
+        if (ResponseStatus.OK.equals(r9.getStatus()) == false) goto L81;
+        if (r10 == null) goto L81;
+        r2.k(r10);
+        return;
+    L81:
+        r2.k(null);
+        return;
+    L82:
+        r2.k(null);
+        return;
+    L5:
+        if (r4.isSuccessful() == true) goto L7;
+        return;
+    L7:
+        if (r4.body() != null) goto L9;
+        return;
+    L9:
+        if (((ApiResponse) r4.body()).getSubsonicResponse().getLyrics() == null) goto L97;
+        r2.k(((ApiResponse) r4.body()).getSubsonicResponse().getLyrics().getValue());
+        return;
+    L97:
+        return;
+    L13:
+        if (r4.isSuccessful() == true) goto L15;
+        return;
+    L15:
+        if (r4.body() != null) goto L17;
+        return;
+    L17:
+        if (((ApiResponse) r4.body()).getSubsonicResponse().getShares() != null) goto L19;
+        return;
+    L19:
+        if (((ApiResponse) r4.body()).getSubsonicResponse().getShares().getShares() == null) goto L101;
+        r2.k(((ApiResponse) r4.body()).getSubsonicResponse().getShares().getShares());
+        return;
+    L101:
+        return;
+    L49:
+        if (r4.isSuccessful() == true) goto L51;
+    L61:
+        Log.d("QueueRepository", "Server returned no play queue");
+        r2.k(null);
+        return;
+    L51:
+        if (r4.body() == null) goto L61;
+        if (((ApiResponse) r4.body()).getSubsonicResponse() == null) goto L61;
+        if (((ApiResponse) r4.body()).getSubsonicResponse().getPlayQueue() == null) goto L61;
+        PlayQueue r11 = ((ApiResponse) r4.body()).getSubsonicResponse().getPlayQueue();
+        StringBuilder r12 = new StringBuilder("Server returned play queue with ");
+        if (r11.getEntries() == null) goto L59;
+        int r13 = r11.getEntries().size();
+    L60:
+        r12.append(r13);
+        r12.append(" items");
+        Log.d("QueueRepository", r12.toString());
+        r2.k(r11);
+        return;
+    L59:
+        r13 = 0;
+        goto L60
+    L64:
+        if (r4.isSuccessful() == true) goto L66;
+    L70:
+        r2.k(kb4.L(null));
+        return;
+    L66:
+        if (r4.body() == null) goto L70;
+        if (((ApiResponse) r4.body()).getSubsonicResponse().getMusicFolders() == null) goto L70;
+        r2.k(kb4.L(((ApiResponse) r4.body()).getSubsonicResponse().getMusicFolders().getMusicFolders()));
+        return;
+    L85:
+        if (r4.isSuccessful() == true) goto L87;
+        return;
+    L87:
+        if (r4.body() != null) goto L89;
+        return;
+    L89:
+        if (((ApiResponse) r4.body()).getSubsonicResponse().getAlbum() == null) goto L111;
+        r2.k(((ApiResponse) r4.body()).getSubsonicResponse().getAlbum());
+        return;
     }
 }

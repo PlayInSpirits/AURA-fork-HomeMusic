@@ -9,11 +9,11 @@ public final class qp3 extends ex3 {
     public final dx3 t;
     public final ar u;
 
-    public qp3(RecyclerView recyclerView) {
-        super(recyclerView);
+    public qp3(RecyclerView r3) {
+        super(r3);
         this.t = this.r;
         this.u = new ar(7, this);
-        this.s = recyclerView;
+        this.s = r3;
     }
 
     @Override // defpackage.ex3

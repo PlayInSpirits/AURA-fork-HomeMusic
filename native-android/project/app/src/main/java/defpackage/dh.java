@@ -13,36 +13,44 @@ public final class dh extends au0 {
     public final /* synthetic */ WeakReference I;
     public final /* synthetic */ ih J;
 
-    public dh(ih ihVar, int i, int i2, WeakReference weakReference) {
-        this.J = ihVar;
-        this.G = i;
-        this.H = i2;
-        this.I = weakReference;
+    public dh(ih r1, int r2, int r3, WeakReference r4) {
+        this.J = r1;
+        this.G = r2;
+        this.H = r3;
+        this.I = r4;
     }
 
     @Override // defpackage.au0
-    public final void M(int i) {
+    public final void M(int r1) {
     }
 
     @Override // defpackage.au0
-    public final void N(Typeface typeface) {
-        int i;
-        if (Build.VERSION.SDK_INT >= 28 && (i = this.G) != -1) {
-            typeface = hh.a(typeface, i, (this.H & 2) != 0);
-        }
-        ih ihVar = this.J;
-        if (ihVar.m) {
-            ihVar.l = typeface;
-            TextView textView = (TextView) this.I.get();
-            if (textView != null) {
-                boolean zIsAttachedToWindow = textView.isAttachedToWindow();
-                int i2 = ihVar.j;
-                if (zIsAttachedToWindow) {
-                    textView.post(new eh(textView, typeface, i2, 0));
-                } else {
-                    textView.setTypeface(typeface, i2);
-                }
-            }
-        }
+    public final void N(Typeface r4) {
+        if (Build.VERSION.SDK_INT < 28) goto L11;
+        int r1 = this.G;
+        if (r1 == (-1)) goto L11;
+        if ((this.H & 2) == 0) goto L9;
+        boolean r0 = true;
+    L10:
+        r4 = hh.a(r4, r1, r0);
+        goto L11
+    L9:
+        r0 = false;
+    L11:
+        ih r2 = this.J;
+        if (r2.m == false) goto L21;
+        r2.l = r4;
+        TextView r3 = (TextView) this.I.get();
+        if (r3 == null) goto L22;
+        boolean r5 = r3.isAttachedToWindow();
+        int r6 = r2.j;
+        if (r5 == false) goto L19;
+        r3.post(new eh(r3, r4, r6, 0));
+        return;
+    L19:
+        r3.setTypeface(r4, r6);
+        return;
+    L22:
+        return;
     }
 }

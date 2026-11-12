@@ -6,22 +6,23 @@ public final class j24 extends q42 implements if1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ k24 o;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ j24(k24 k24Var, int i) {
+    public /* synthetic */ j24(k24 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
         super(1);
-        this.n = i;
-        this.o = k24Var;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object obj) {
-        int i = this.n;
-        k24 k24Var = this.o;
-        switch (i) {
-            case 0:
-                return Double.valueOf(k24Var.n.b(gb.k(((Number) obj).doubleValue(), k24Var.e, k24Var.f)));
-            default:
-                return Double.valueOf(gb.k(k24Var.k.b(((Number) obj).doubleValue()), k24Var.e, k24Var.f));
-        }
+    public final Object invoke(Object r9) {
+        int r0 = this.n;
+        k24 r8 = this.o;
+        switch(r0) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return Double.valueOf(gb.k(r8.k.b(((Number) r9).doubleValue()), r8.e, r8.f));
+    L7:
+        return Double.valueOf(r8.n.b(gb.k(((Number) r9).doubleValue(), r8.e, r8.f)));
     }
 }

@@ -7,9 +7,9 @@ public final class me1 {
     public final boolean b;
     public final int c;
 
-    public me1(int i, long j, boolean z) {
-        this.a = j;
-        this.b = z;
-        this.c = i;
+    public me1(int r1, long r2, boolean r4) {
+        this.a = r2;
+        this.b = r4;
+        this.c = r1;
     }
 }

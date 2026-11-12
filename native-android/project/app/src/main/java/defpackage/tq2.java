@@ -10,48 +10,57 @@ public final class tq2 extends wq2 {
     public final ArrayList w;
     public final oi x;
 
-    public tq2(vq2 vq2Var, String str, String str2) {
-        super(vq2Var, str, str2, false);
+    public tq2(vq2 r2, String r3, String r4) {
+        super(r2, r3, r4, false);
         this.w = new ArrayList();
         this.x = new oi(0);
     }
 
     public final boolean m() {
         yq2.b();
-        ui1 ui1VarC = yq2.c();
-        ui1VarC.getClass();
-        ArrayList arrayList = new ArrayList();
-        Iterator it = ui1VarC.i.values().iterator();
-        if (it.hasNext()) {
-            throw xa3.d(it);
-        }
-        return arrayList.contains(this);
+        ui1 r0 = yq2.c();
+        r0.getClass();
+        ArrayList r1 = new ArrayList();
+        Iterator r2 = r0.i.values().iterator();
+        if (r2.hasNext() == true) goto L7;
+        return r1.contains(this);
+    L7:
+        throw xa3.d(r2);
     }
 
-    public final boolean n(wq2 wq2Var) {
-        mq2 mq2Var = (mq2) this.x.get(wq2Var.c);
-        return mq2Var != null && mq2Var.d;
+    public final boolean n(wq2 r1) {
+        mq2 r0 = (mq2) this.x.get(r1.c);
+        if (r0 != null) goto L5;
+        return false;
+    L5:
+        if (r0.d == false) goto L10;
+        return true;
+    L10:
+        return false;
     }
 
-    public final void o(Collection collection) {
+    public final void o(Collection r6) {
         this.v.clear();
-        ArrayList arrayList = this.w;
-        arrayList.clear();
-        oi oiVar = this.x;
-        oiVar.clear();
-        Iterator it = collection.iterator();
-        while (it.hasNext()) {
-            mq2 mq2Var = (mq2) it.next();
-            wq2 wq2VarA = this.a.a(mq2Var.a.d());
-            if (wq2VarA != null) {
-                arrayList.add(wq2VarA);
-                oiVar.put(wq2VarA.c, mq2Var);
-                int i = mq2Var.b;
-                if (i == 2 || i == 3) {
-                    this.v.add(wq2VarA);
-                }
-            }
-        }
+        ArrayList r0 = this.w;
+        r0.clear();
+        oi r1 = this.x;
+        r1.clear();
+        Iterator r7 = r6.iterator();
+    L4:
+        if (r7.hasNext() == false) goto L13;
+        mq2 r2 = (mq2) r7.next();
+        String r3 = r2.a.d();
+        wq2 r4 = this.a.a(r3);
+        if (r4 == null) goto L4;
+        r0.add(r4);
+        r1.put(r4.c, r2);
+        int r5 = r2.b;
+        if (r5 == 2) goto L12;
+        if (r5 != 3) goto L4;
+    L12:
+        this.v.add(r4);
+        goto L4
+    L13:
         yq2.c().a.b(259, this);
     }
 }

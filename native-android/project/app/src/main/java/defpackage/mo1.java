@@ -12,16 +12,15 @@ public final class mo1 extends cx3 {
     public final TextView w;
     public final /* synthetic */ q7 x;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public mo1(q7 q7Var, ConstraintLayout constraintLayout, ImageView imageView, TextView textView, TextView textView2) {
-        super(constraintLayout);
-        constraintLayout.getClass();
-        this.x = q7Var;
-        this.u = imageView;
-        this.v = textView;
-        this.w = textView2;
-        textView.setSelected(true);
-        constraintLayout.setOnClickListener(new j8(10, q7Var, this));
-        constraintLayout.setOnLongClickListener(new i8(2, q7Var, this));
+    public mo1(q7 r1, ConstraintLayout r2, ImageView r3, TextView r4, TextView r5) {
+        r2.getClass();
+        this.x = r1;
+        super(r2);
+        this.u = r3;
+        this.v = r4;
+        this.w = r5;
+        r4.setSelected(true);
+        r2.setOnClickListener(new j8(10, r1, this));
+        r2.setOnLongClickListener(new i8(2, r1, this));
     }
 }

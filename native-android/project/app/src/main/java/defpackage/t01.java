@@ -6,10 +6,14 @@ import java.util.NoSuchElementException;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class t01 implements ListIterator, x32 {
-    public static final t01 n = new t01();
+    public static final t01 n = null;
+
+    static {
+        n = new t01();
+    }
 
     @Override // java.util.ListIterator
-    public final /* bridge */ /* synthetic */ void add(Object obj) {
+    public final /* bridge */ /* synthetic */ void add(Object r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -49,7 +53,7 @@ public final class t01 implements ListIterator, x32 {
     }
 
     @Override // java.util.ListIterator
-    public final /* bridge */ /* synthetic */ void set(Object obj) {
+    public final /* bridge */ /* synthetic */ void set(Object r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 }

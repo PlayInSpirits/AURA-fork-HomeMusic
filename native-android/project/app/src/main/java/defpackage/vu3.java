@@ -5,19 +5,28 @@ package defpackage;
 public final class vu3 implements ll4, p81, jg1 {
     public final /* synthetic */ nl4 n;
 
-    public vu3(nl4 nl4Var) {
-        this.n = nl4Var;
+    public vu3(nl4 r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.p81
-    public final Object a(q81 q81Var, vd0 vd0Var) {
-        this.n.a(q81Var, vd0Var);
+    public final Object a(q81 r1, vd0 r2) {
+        this.n.a(r1, r2);
         return xe0.n;
     }
 
     @Override // defpackage.jg1
-    public final p81 c(ne0 ne0Var, int i, wv wvVar) {
-        return (((i < 0 || i >= 2) && i != -2) || wvVar != wv.o) ? g12.o(this, ne0Var, i, wvVar) : this;
+    public final p81 c(ne0 r2, int r3, wv r4) {
+        if (r3 < 0) goto L7;
+        if (r3 >= 2) goto L7;
+    L9:
+        if (r4 != wv.o) goto L12;
+        return this;
+    L12:
+        return g12.o(this, r2, r3, r4);
+    L7:
+        if (r3 != (-2)) goto L12;
+        goto L9
     }
 
     @Override // defpackage.ll4

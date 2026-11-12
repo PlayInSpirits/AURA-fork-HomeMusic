@@ -7,220 +7,257 @@ import java.nio.ByteBuffer;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class di1 {
+    public final byte[] a;
     public ByteBuffer b;
     public ci1 c;
-    public final byte[] a = new byte[256];
-    public int d = 0;
+    public int d;
+
+    public di1() {
+        this.a = new byte[256];
+        this.d = 0;
+    }
 
     public final boolean a() {
-        return this.c.b != 0;
+        if (this.c.b == 0) goto L6;
+        return true;
+    L6:
+        return false;
     }
 
     public final ci1 b() {
-        byte[] bArr;
-        if (this.b == null) {
-            kf2.o("You must call setData() before parseHeader()");
-            return null;
-        }
-        if (a()) {
-            return this.c;
-        }
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 6; i++) {
-            sb.append((char) c());
-        }
-        boolean zStartsWith = sb.toString().startsWith("GIF");
-        ci1 ci1Var = this.c;
-        if (zStartsWith) {
-            ci1Var.f = this.b.getShort();
-            this.c.g = this.b.getShort();
-            int iC = c();
-            ci1 ci1Var2 = this.c;
-            ci1Var2.h = (iC & 128) != 0;
-            ci1Var2.i = (int) Math.pow(2.0d, (iC & 7) + 1);
-            this.c.j = c();
-            ci1 ci1Var3 = this.c;
-            c();
-            ci1Var3.getClass();
-            if (this.c.h && !a()) {
-                ci1 ci1Var4 = this.c;
-                ci1Var4.a = e(ci1Var4.i);
-                ci1 ci1Var5 = this.c;
-                ci1Var5.k = ci1Var5.a[ci1Var5.j];
-            }
-        } else {
-            ci1Var.b = 1;
-        }
-        if (!a()) {
-            boolean z = false;
-            while (!z && !a() && this.c.c <= Integer.MAX_VALUE) {
-                int iC2 = c();
-                if (iC2 == 33) {
-                    int iC3 = c();
-                    if (iC3 == 1) {
-                        f();
-                    } else if (iC3 == 249) {
-                        this.c.d = new yh1();
-                        c();
-                        int iC4 = c();
-                        yh1 yh1Var = this.c.d;
-                        int i2 = (iC4 & 28) >> 2;
-                        yh1Var.g = i2;
-                        if (i2 == 0) {
-                            yh1Var.g = 1;
-                        }
-                        yh1Var.f = (iC4 & 1) != 0;
-                        short s = this.b.getShort();
-                        if (s < 2) {
-                            s = 10;
-                        }
-                        yh1 yh1Var2 = this.c.d;
-                        yh1Var2.i = s * 10;
-                        yh1Var2.h = c();
-                        c();
-                    } else if (iC3 == 254) {
-                        f();
-                    } else if (iC3 != 255) {
-                        f();
-                    } else {
-                        d();
-                        StringBuilder sb2 = new StringBuilder();
-                        int i3 = 0;
-                        while (true) {
-                            bArr = this.a;
-                            if (i3 >= 11) {
-                                break;
-                            }
-                            sb2.append((char) bArr[i3]);
-                            i3++;
-                        }
-                        if (sb2.toString().equals("NETSCAPE2.0")) {
-                            do {
-                                d();
-                                if (bArr[0] == 1) {
-                                    byte b = bArr[1];
-                                    byte b2 = bArr[2];
-                                    this.c.getClass();
-                                }
-                                if (this.d <= 0) {
-                                    break;
-                                }
-                            } while (!a());
-                        } else {
-                            f();
-                        }
-                    }
-                } else if (iC2 == 44) {
-                    ci1 ci1Var6 = this.c;
-                    if (ci1Var6.d == null) {
-                        ci1Var6.d = new yh1();
-                    }
-                    ci1Var6.d.a = this.b.getShort();
-                    this.c.d.b = this.b.getShort();
-                    this.c.d.c = this.b.getShort();
-                    this.c.d.d = this.b.getShort();
-                    int iC5 = c();
-                    boolean z2 = (iC5 & 128) != 0;
-                    int iPow = (int) Math.pow(2.0d, (iC5 & 7) + 1);
-                    yh1 yh1Var3 = this.c.d;
-                    yh1Var3.e = (iC5 & 64) != 0;
-                    if (z2) {
-                        yh1Var3.k = e(iPow);
-                    } else {
-                        yh1Var3.k = null;
-                    }
-                    this.c.d.j = this.b.position();
-                    c();
-                    f();
-                    if (!a()) {
-                        ci1 ci1Var7 = this.c;
-                        ci1Var7.c++;
-                        ci1Var7.e.add(ci1Var7.d);
-                    }
-                } else if (iC2 != 59) {
-                    this.c.b = 1;
-                } else {
-                    z = true;
-                }
-            }
-            ci1 ci1Var8 = this.c;
-            if (ci1Var8.c < 0) {
-                ci1Var8.b = 1;
-            }
-        }
+        if (this.b != null) goto L5;
+        kf2.o("You must call setData() before parseHeader()");
+        return null;
+    L5:
+        if (a() == true) goto L7;
+        StringBuilder r0 = new StringBuilder();
+        int r3 = 0;
+    L10:
+        if (r3 >= 6) goto L12;
+        r0.append((char) c());
+        r3 = r3 + 1;
+        goto L10
+    L12:
+        boolean r1 = r0.toString().startsWith("GIF");
+        ci1 r4 = this.c;
+        if (r1 == true) goto L15;
+        r4.b = 1;
+    L25:
+        if (a() == true) goto L100;
+        boolean r2 = false;
+    L27:
+        if (r2 == true) goto L96;
+        if (a() == true) goto L96;
+        if (this.c.c > Integer.MAX_VALUE) goto L96;
+        int r5 = c();
+        if (r5 != 33) goto L35;
+        int r6 = c();
+        if (r6 != 1) goto L62;
+        f();
+        goto L27
+    L62:
+        if (r6 != 249) goto L64;
+        this.c.d = new yh1();
+        c();
+        int r7 = c();
+        yh1 r8 = this.c.d;
+        int r9 = (r7 & 28) >> 2;
+        r8.g = r9;
+        if (r9 != 0) goto L88;
+        r8.g = 1;
+    L88:
+        if ((r7 & 1) == 0) goto L90;
+        boolean r10 = true;
+    L91:
+        r8.f = r10;
+        short r11 = this.b.getShort();
+        if (r11 >= 2) goto L94;
+        r11 = 10;
+    L94:
+        yh1 r12 = this.c.d;
+        r12.i = r11 * 10;
+        r12.h = c();
+        c();
+        goto L27
+    L90:
+        r10 = false;
+        goto L91
+    L64:
+        if (r6 != 254) goto L66;
+        f();
+        goto L27
+    L66:
+        if (r6 != 255) goto L67;
+        d();
+        StringBuilder r13 = new StringBuilder();
+        int r14 = 0;
+    L69:
+        byte[] r15 = this.a;
+        if (r14 >= 11) goto L73;
+        r13.append((char) r15[r14]);
+        r14 = r14 + 1;
+        goto L69
+    L73:
+        if (r13.toString().equals("NETSCAPE2.0") == true) goto L74;
+        f();
+    L74:
+        d();
+        if (r15[0] != 1) goto L78;
+        byte r16 = r15[1];
+        byte r17 = r15[2];
+        this.c.getClass();
+    L78:
+        if (this.d <= 0) goto L27;
+        if (a() == false) goto L74;
+    L67:
+        f();
+        goto L27
+    L35:
+        if (r5 != 44) goto L37;
+        ci1 r18 = this.c;
+        if (r18.d != null) goto L43;
+        r18.d = new yh1();
+    L43:
+        r18.d.a = this.b.getShort();
+        this.c.d.b = this.b.getShort();
+        this.c.d.c = this.b.getShort();
+        this.c.d.d = this.b.getShort();
+        int r19 = c();
+        if ((r19 & 128) == 0) goto L46;
+        boolean r20 = true;
+    L47:
+        int r21 = (int) Math.pow(2.0d, (r19 & 7) + 1);
+        yh1 r22 = this.c.d;
+        if ((r19 & 64) == 0) goto L50;
+        boolean r23 = true;
+    L51:
+        r22.e = r23;
+        if (r20 == false) goto L54;
+        r22.k = e(r21);
+    L55:
+        this.c.d.j = this.b.position();
+        c();
+        f();
+        if (a() == true) goto L27;
+        ci1 r24 = this.c;
+        r24.c++;
+        r24.e.add(r24.d);
+        goto L27
+    L54:
+        r22.k = null;
+        goto L55
+    L50:
+        r23 = false;
+        goto L51
+    L46:
+        r20 = false;
+        goto L47
+    L37:
+        if (r5 != 59) goto L38;
+        r2 = true;
+        goto L27
+    L38:
+        this.c.b = 1;
+    L96:
+        ci1 r25 = this.c;
+        if (r25.c >= 0) goto L100;
+        r25.b = 1;
+    L100:
+        return this.c;
+    L15:
+        r4.f = this.b.getShort();
+        this.c.g = this.b.getShort();
+        int r26 = c();
+        ci1 r27 = this.c;
+        if ((r26 & 128) == 0) goto L18;
+        boolean r28 = true;
+    L19:
+        r27.h = r28;
+        r27.i = (int) Math.pow(2.0d, (r26 & 7) + 1);
+        this.c.j = c();
+        ci1 r29 = this.c;
+        c();
+        r29.getClass();
+        if (this.c.h == false) goto L25;
+        if (a() == true) goto L25;
+        ci1 r30 = this.c;
+        r30.a = e(r30.i);
+        ci1 r31 = this.c;
+        r31.k = r31.a[r31.j];
+        goto L25
+    L18:
+        r28 = false;
+        goto L19
+    L7:
         return this.c;
     }
 
     public final int c() {
-        try {
-            return this.b.get() & 255;
-        } catch (Exception unused) {
-            this.c.b = 1;
-            return 0;
-        }
+        return this.b.get() & 255;
+    L5:
+        this.c.b = 1;
+        return 0;
     }
 
     public final void d() {
-        int iC = c();
-        this.d = iC;
-        if (iC <= 0) {
-            return;
-        }
-        int i = 0;
-        int i2 = 0;
-        while (true) {
-            try {
-                int i3 = this.d;
-                if (i >= i3) {
-                    return;
-                }
-                i2 = i3 - i;
-                this.b.get(this.a, i, i2);
-                i += i2;
-            } catch (Exception e) {
-                if (Log.isLoggable("GifHeaderParser", 3)) {
-                    StringBuilder sbT = b11.t("Error Reading Block n: ", " count: ", i, i2, " blockSize: ");
-                    sbT.append(this.d);
-                    Log.d("GifHeaderParser", sbT.toString(), e);
-                }
-                this.c.b = 1;
-                return;
-            }
-        }
+        int r0 = c();
+        this.d = r0;
+        if (r0 <= 0) goto L18;
+        int r1 = 0;
+        int r2 = 0;
+    L15:
+        int r3 = this.d;     // Catch: Exception -> L9
+        if (r1 >= r3) goto L19;
+        r2 = r3 - r1;     // Catch: Exception -> L9
+        this.b.get(this.a, r1, r2);     // Catch: Exception -> L9
+        r1 = r1 + r2;
+        goto L15
+    L19:
+        return;
+    L9:
+        e = move-exception;
+        if (Log.isLoggable("GifHeaderParser", 3) == false) goto L13;
+        StringBuilder r4 = b11.t("Error Reading Block n: ", " count: ", r1, r2, " blockSize: ");
+        r4.append(this.d);
+        Log.d("GifHeaderParser", r4.toString(), e);
+    L13:
+        this.c.b = 1;
+        return;
     }
 
-    public final int[] e(int i) {
-        byte[] bArr = new byte[i * 3];
-        int[] iArr = null;
-        try {
-            this.b.get(bArr);
-            iArr = new int[256];
-            int i2 = 0;
-            int i3 = 0;
-            while (i2 < i) {
-                int i4 = bArr[i3] & 255;
-                int i5 = i3 + 2;
-                int i6 = bArr[i3 + 1] & 255;
-                i3 += 3;
-                int i7 = i2 + 1;
-                iArr[i2] = (i6 << 8) | (i4 << 16) | (-16777216) | (bArr[i5] & 255);
-                i2 = i7;
-            }
-            return iArr;
-        } catch (BufferUnderflowException e) {
-            if (Log.isLoggable("GifHeaderParser", 3)) {
-                Log.d("GifHeaderParser", "Format Error Reading Color Table", e);
-            }
-            this.c.b = 1;
-            return iArr;
-        }
+    public final int[] e(int r10) {
+        byte[] r0 = new byte[r10 * 3];
+        int[] r1 = null;
+        this.b.get(r0);     // Catch: BufferUnderflowException -> L7
+        r1 = new int[256];     // Catch: BufferUnderflowException -> L7
+        int r2 = 0;
+        int r3 = 0;
+    L4:
+        if (r2 >= r10) goto L9;
+        int r5 = r0[r3] & 255;     // Catch: BufferUnderflowException -> L7
+        int r6 = r3 + 2;     // Catch: BufferUnderflowException -> L7
+        int r4 = r0[r3 + 1] & 255;     // Catch: BufferUnderflowException -> L7
+        r3 = r3 + 3;     // Catch: BufferUnderflowException -> L7
+        int r7 = r2 + 1;     // Catch: BufferUnderflowException -> L7
+        r1[r2] = ((r4 << 8) | ((r5 << 16) | (-16777216))) | (r0[r6] & 255);     // Catch: BufferUnderflowException -> L7
+        r2 = r7;
+        goto L4
+    L9:
+        return r1;
+    L7:
+        e = move-exception;
+        if (Log.isLoggable("GifHeaderParser", 3) == false) goto L13;
+        Log.d("GifHeaderParser", "Format Error Reading Color Table", e);
+    L13:
+        this.c.b = 1;
+        return r1;
     }
 
     public final void f() {
-        int iC;
-        do {
-            iC = c();
-            this.b.position(Math.min(this.b.position() + iC, this.b.limit()));
-        } while (iC > 0);
+    L2:
+        int r0 = c();
+        int r1 = Math.min(this.b.position() + r0, this.b.limit());
+        this.b.position(r1);
+        if (r0 > 0) goto L2;
     }
 }

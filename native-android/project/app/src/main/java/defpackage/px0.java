@@ -8,10 +8,10 @@ public final class px0 {
     public final int[] c;
     public final int[] d;
 
-    public px0(int i, int[] iArr, int[] iArr2, int[] iArr3) {
-        this.a = i;
-        this.b = iArr;
-        this.c = iArr2;
-        this.d = iArr3;
+    public px0(int r1, int[] r2, int[] r3, int[] r4) {
+        this.a = r1;
+        this.b = r2;
+        this.c = r3;
+        this.d = r4;
     }
 }

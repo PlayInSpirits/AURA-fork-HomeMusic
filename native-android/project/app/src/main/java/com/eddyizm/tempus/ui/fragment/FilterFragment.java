@@ -41,66 +41,63 @@ public class FilterFragment extends kc1 {
     public lv4 m0;
     public f71 n0;
 
+    public FilterFragment() {
+    }
+
     @Override // defpackage.kc1
-    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        this.l0 = (MainActivity) e();
-        View viewInflate = layoutInflater.inflate(R.layout.fragment_filter, viewGroup, false);
-        int i = R.id.app_bar_layout;
-        AppBarLayout appBarLayout = (AppBarLayout) uo.s(viewInflate, R.id.app_bar_layout);
-        if (appBarLayout != null) {
-            i = R.id.filter_container;
-            NestedScrollView nestedScrollView = (NestedScrollView) uo.s(viewInflate, R.id.filter_container);
-            if (nestedScrollView != null) {
-                i = R.id.filters_chips_group;
-                ChipGroup chipGroup = (ChipGroup) uo.s(viewInflate, R.id.filters_chips_group);
-                if (chipGroup != null) {
-                    i = R.id.finish_filtering_text_view_clickable;
-                    Button button = (Button) uo.s(viewInflate, R.id.finish_filtering_text_view_clickable);
-                    if (button != null) {
-                        i = R.id.genre_filter_info_sector;
-                        ConstraintLayout constraintLayout = (ConstraintLayout) uo.s(viewInflate, R.id.genre_filter_info_sector);
-                        if (constraintLayout != null) {
-                            i = R.id.loading_progress_bar;
-                            ProgressBar progressBar = (ProgressBar) uo.s(viewInflate, R.id.loading_progress_bar);
-                            if (progressBar != null) {
-                                i = R.id.toolbar;
-                                MaterialToolbar materialToolbar = (MaterialToolbar) uo.s(viewInflate, R.id.toolbar);
-                                if (materialToolbar != null) {
-                                    LinearLayout linearLayout = (LinearLayout) viewInflate;
-                                    this.m0 = new lv4(linearLayout, appBarLayout, nestedScrollView, chipGroup, button, constraintLayout, progressBar, materialToolbar);
-                                    nc1 nc1VarX = X();
-                                    e75 e75VarD = nc1VarX.d();
-                                    b75 b75VarR = gh0.r(nc1VarX);
-                                    bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
-                                    i30 i30VarA = kx3.a(f71.class);
-                                    String strB = i30VarA.b();
-                                    if (strB == null) {
-                                        kf2.n("Local and anonymous classes can not be ViewModels");
-                                        return null;
-                                    }
-                                    this.n0 = (f71) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
-                                    Bundle bundleH = b11.h("MEDIA_BY_GENRES", "MEDIA_BY_GENRES");
-                                    bundleH.putStringArrayList("filters_list", this.n0.d);
-                                    bundleH.putStringArrayList("filter_name_list", this.n0.e);
-                                    ((Button) this.m0.q).setOnClickListener(new j8(9, this, bundleH));
-                                    this.l0.o((MaterialToolbar) this.m0.t);
-                                    if (this.l0.n() != null) {
-                                        this.l0.n().f0(true);
-                                        this.l0.n().g0();
-                                    }
-                                    ((MaterialToolbar) this.m0.t).setNavigationOnClickListener(new p6(14, this));
-                                    ((AppBarLayout) this.m0.n).a(new u7(4, this));
-                                    this.n0.c.getClass();
-                                    y41.j(-1, false).e(v(), new d8(10, this));
-                                    return linearLayout;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i)));
+    public final View H(LayoutInflater r11, ViewGroup r12, Bundle r13) {
+        this.l0 = (MainActivity) l();
+        View r14 = r11.inflate(R.layout.fragment_filter, r12, false);
+        int r15 = R.id.app_bar_layout;
+        AppBarLayout r3 = (AppBarLayout) uo.s(r14, R.id.app_bar_layout);
+        if (r3 == null) goto L25;
+        r15 = R.id.filter_container;
+        NestedScrollView r4 = (NestedScrollView) uo.s(r14, R.id.filter_container);
+        if (r4 == null) goto L25;
+        r15 = R.id.filters_chips_group;
+        ChipGroup r5 = (ChipGroup) uo.s(r14, R.id.filters_chips_group);
+        if (r5 == null) goto L25;
+        r15 = R.id.finish_filtering_text_view_clickable;
+        Button r6 = (Button) uo.s(r14, R.id.finish_filtering_text_view_clickable);
+        if (r6 == null) goto L25;
+        r15 = R.id.genre_filter_info_sector;
+        ConstraintLayout r7 = (ConstraintLayout) uo.s(r14, R.id.genre_filter_info_sector);
+        if (r7 == null) goto L25;
+        r15 = R.id.loading_progress_bar;
+        ProgressBar r8 = (ProgressBar) uo.s(r14, R.id.loading_progress_bar);
+        if (r8 == null) goto L25;
+        r15 = R.id.toolbar;
+        MaterialToolbar r9 = (MaterialToolbar) uo.s(r14, R.id.toolbar);
+        if (r9 == null) goto L25;
+        LinearLayout r2 = (LinearLayout) r14;
+        this.m0 = new lv4(r2, r3, r4, r5, r6, r7, r8, r9);
+        nc1 r16 = X();
+        e75 r17 = r16.d();
+        b75 r1 = gh0.r(r16);
+        bq4 r10 = new bq4(r17, r1, b11.e(r16, r1));
+        i30 r18 = kx3.a(f71.class);
+        String r19 = r18.b();
+        if (r19 == null) goto L23;
+        this.n0 = (f71) r10.l(r18, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r19));
+        Bundle r110 = b11.h("MEDIA_BY_GENRES", "MEDIA_BY_GENRES");
+        r110.putStringArrayList("filters_list", this.n0.d);
+        r110.putStringArrayList("filter_name_list", this.n0.e);
+        ((Button) this.m0.q).setOnClickListener(new j8(9, this, r110));
+        this.l0.o((MaterialToolbar) this.m0.t);
+        if (this.l0.n() == null) goto L21;
+        this.l0.n().f0(true);
+        this.l0.n().g0();
+    L21:
+        ((MaterialToolbar) this.m0.t).setNavigationOnClickListener(new p6(14, this));
+        ((AppBarLayout) this.m0.n).a(new u7(4, this));
+        this.n0.c.getClass();
+        y41.j(-1, false).e(v(), new d8(10, this));
+        return r2;
+    L23:
+        kf2.n("Local and anonymous classes can not be ViewModels");
+        return null;
+    L25:
+        nz2.n("Missing required view with ID: ".concat(r14.getResources().getResourceName(r15)));
         return null;
     }
 

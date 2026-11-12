@@ -8,23 +8,29 @@ public final class ck0 extends cx2 implements rv0 {
     public boolean D;
     public boolean E;
 
-    public ck0(rm2 rm2Var) {
-        this.B = rm2Var;
+    public ck0(rm2 r1) {
+        this.B = r1;
     }
 
     @Override // defpackage.rv0
-    public final void S(e72 e72Var) {
-        e72Var.a();
-        mz mzVar = e72Var.n;
-        if (this.C) {
-            sv0.l(e72Var, x40.b(x40.b, 0.3f), mzVar.P(), 122);
-        } else if (this.D || this.E) {
-            sv0.l(e72Var, x40.b(x40.b, 0.1f), mzVar.P(), 122);
-        }
+    public final void S(e72 r9) {
+        r9.a();
+        mz r2 = r9.n;
+        if (this.C == false) goto L7;
+        sv0.l(r9, x40.b(x40.b, 0.3f), r2.P(), 122);
+        return;
+    L7:
+        if (this.D == false) goto L9;
+    L12:
+        sv0.l(r9, x40.b(x40.b, 0.1f), r2.P(), 122);
+        return;
+    L9:
+        if (this.E == true) goto L12;
     }
 
     @Override // defpackage.cx2
     public final void i0() {
-        fu.G(e0(), null, null, new ac0(this, null, 1), 3);
+        vd0 r3 = null;
+        fu.G(e0(), null, null, new ac0(this, r3, 1), 3);
     }
 }

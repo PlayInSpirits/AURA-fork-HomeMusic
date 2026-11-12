@@ -24,7 +24,7 @@ public final class od extends Drawable.ConstantState {
     }
 
     @Override // android.graphics.drawable.Drawable.ConstantState
-    public final Drawable newDrawable(Resources resources) {
+    public final Drawable newDrawable(Resources r1) {
         throw new IllegalStateException("No constant state support for SDK < 24.");
     }
 }

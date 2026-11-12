@@ -6,22 +6,23 @@ public final /* synthetic */ class bo0 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ co0 o;
 
-    public /* synthetic */ bo0(co0 co0Var, int i) {
-        this.n = i;
-        this.o = co0Var;
+    public /* synthetic */ bo0(co0 r1, int r2) {
+        this.n = r2;
+        this.o = r1;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int i = this.n;
-        co0 co0Var = this.o;
-        switch (i) {
-            case 0:
-                co0.b(co0Var);
-                break;
-            default:
-                co0.c(co0Var);
-                break;
-        }
+        int r0 = this.n;
+        co0 r1 = this.o;
+        switch(r0) {
+            case 0: goto L6;
+            default: goto L4;
+        };
+    L4:
+        co0.c(r1);
+        return;
+    L6:
+        co0.b(r1);
     }
 }

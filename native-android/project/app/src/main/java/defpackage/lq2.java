@@ -24,6 +24,7 @@ import app.homemusic.R;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -75,26 +76,28 @@ public final class lq2 extends dg {
         Log.isLoggable("MediaRouteCtrlDialog", 3);
     }
 
-    /* JADX WARN: Illegal instructions before constructor call */
-    public lq2(Context context) {
-        boolean z = false;
-        ContextThemeWrapper contextThemeWrapperO = fu.o(context, false);
-        int iB = fu.B(contextThemeWrapperO, R.attr.mediaRouteTheme);
-        super(contextThemeWrapperO, iB == 0 ? fu.z(contextThemeWrapperO) : iB);
+    public lq2(Context r3) {
+        boolean r0 = false;
+        ContextThemeWrapper r4 = fu.o(r3, false);
+        int r1 = fu.B(r4, R.attr.mediaRouteTheme);
+        if (r1 != 0) goto L5;
+        r1 = fu.z(r4);
+    L5:
+        super(r4, r1);
         this.v = rq2.c;
         this.x = new ArrayList();
         this.y = new ArrayList();
         this.z = new ArrayList();
         this.A = new ArrayList();
         this.F = new zk(7, this);
-        Context context2 = getContext();
-        this.B = context2;
-        this.t = yq2.d(context2);
-        if (yq2.c != null) {
-            yq2.c().getClass();
-            z = true;
-        }
-        this.f0 = z;
+        Context r5 = getContext();
+        this.B = r5;
+        this.t = yq2.d(r5);
+        if (yq2.c == null) goto L9;
+        yq2.c().getClass();
+        r0 = true;
+    L9:
+        this.f0 = r0;
         this.u = new ap2(this, 4);
         yq2.b();
         this.w = yq2.c().g();
@@ -102,156 +105,229 @@ public final class lq2 extends dg {
         k();
     }
 
-    public final void i(List list) {
-        for (int size = list.size() - 1; size >= 0; size--) {
-            wq2 wq2Var = (wq2) list.get(size);
-            if (wq2Var.d() || !wq2Var.g || !wq2Var.h(this.v) || this.w == wq2Var) {
-                list.remove(size);
-            }
-        }
+    public final void i(List r4) {
+        int r0 = r4.size() - 1;
+    L3:
+        if (r0 < 0) goto L15;
+        wq2 r1 = (wq2) r4.get(r0);
+        if (r1.d() == false) goto L7;
+    L13:
+        r4.remove(r0);
+    L14:
+        r0 = r0 - 1;
+        goto L3
+    L7:
+        if (r1.g == false) goto L13;
+        if (r1.h(this.v) == false) goto L13;
+        if (this.w == r1) goto L13;
     }
 
     public final void j() {
-        MediaDescriptionCompat mediaDescriptionCompat = this.Y;
-        Bitmap bitmap = mediaDescriptionCompat == null ? null : mediaDescriptionCompat.r;
-        Uri uri = mediaDescriptionCompat != null ? mediaDescriptionCompat.s : null;
-        cq2 cq2Var = this.Z;
-        Bitmap bitmap2 = cq2Var == null ? this.a0 : cq2Var.a;
-        Uri uri2 = cq2Var == null ? this.b0 : cq2Var.b;
-        if (bitmap2 != bitmap || (bitmap2 == null && !Objects.equals(uri2, uri))) {
-            cq2 cq2Var2 = this.Z;
-            if (cq2Var2 != null) {
-                cq2Var2.cancel(true);
-            }
-            cq2 cq2Var3 = new cq2(this);
-            this.Z = cq2Var3;
-            cq2Var3.execute(new Void[0]);
-        }
+        MediaDescriptionCompat r0 = this.Y;
+        Uri r1 = null;
+        if (r0 != null) goto L5;
+        Bitmap r2 = null;
+    L6:
+        if (r0 == null) goto L9;
+        r1 = r0.s;
+    L9:
+        cq2 r3 = this.Z;
+        if (r3 != null) goto L12;
+        Bitmap r4 = this.a0;
+    L13:
+        if (r3 != null) goto L15;
+        Uri r5 = this.b0;
+    L16:
+        if (r4 != r2) goto L21;
+        if (r4 == null) goto L19;
+        return;
+    L19:
+        if (Objects.equals(r5, r1) == false) goto L21;
+        return;
+    L21:
+        cq2 r6 = this.Z;
+        if (r6 == null) goto L24;
+        r6.cancel(true);
+    L24:
+        cq2 r7 = new cq2(this);
+        this.Z = r7;
+        r7.execute(new Void[0]);
+        return;
+    L15:
+        r5 = r3.b;
+        goto L16
+    L12:
+        r4 = r3.a;
+        goto L13
+    L5:
+        r2 = r0.r;
+        goto L6
     }
 
     public final void k() {
     }
 
-    public final void l(rq2 rq2Var) {
-        if (rq2Var == null) {
-            kf2.n("selector must not be null");
-            return;
-        }
-        if (this.v.equals(rq2Var)) {
-            return;
-        }
-        this.v = rq2Var;
-        if (this.D) {
-            yq2 yq2Var = this.t;
-            ap2 ap2Var = this.u;
-            yq2Var.e(ap2Var);
-            yq2Var.a(rq2Var, ap2Var, 1);
-            o();
-        }
+    public final void l(rq2 r4) {
+        if (r4 != null) goto L4;
+        kf2.n("selector must not be null");
+        return;
+    L4:
+        if (this.v.equals(r4) == true) goto L11;
+        this.v = r4;
+        if (this.D == false) goto L12;
+        yq2 r0 = this.t;
+        ap2 r1 = this.u;
+        r0.e(r1);
+        r0.a(r4, r1, 1);
+        o();
+        return;
+    L12:
+        return;
     }
 
     public final void m() {
-        Context context = this.B;
-        getWindow().setLayout(!context.getResources().getBoolean(R.bool.is_tablet) ? -1 : xl.p(context), context.getResources().getBoolean(R.bool.is_tablet) ? -2 : -1);
+        Context r0 = this.B;
+        int r3 = -1;
+        if (r0.getResources().getBoolean(R.bool.is_tablet) == true) goto L5;
+        int r1 = -1;
+    L7:
+        if (r0.getResources().getBoolean(R.bool.is_tablet) == false) goto L10;
+        r3 = -2;
+    L10:
+        getWindow().setLayout(r1, r3);
         this.a0 = null;
         this.b0 = null;
         j();
         n();
         p();
+        return;
+    L5:
+        r1 = xl.p(r0);
+        goto L7
     }
 
     public final void n() {
-        Bitmap bitmap;
-        if ((this.K != null || this.M) ? true : !this.C) {
-            this.O = true;
-            return;
-        }
+        if (this.K == null) goto L5;
+    L8:
+        boolean r0 = true;
+    L9:
+        if (r0 == false) goto L12;
+        this.O = true;
+        return;
+    L12:
         this.O = false;
-        if (!this.w.g() || this.w.d()) {
-            dismiss();
-        }
-        if (!this.c0 || (((bitmap = this.d0) != null && bitmap.isRecycled()) || this.d0 == null)) {
-            Bitmap bitmap2 = this.d0;
-            if (bitmap2 != null && bitmap2.isRecycled()) {
-                Log.w("MediaRouteCtrlDialog", "Can't set artwork image with recycled bitmap: " + this.d0);
-            }
-            this.T.setVisibility(8);
-            this.S.setVisibility(8);
-            this.R.setImageBitmap(null);
-        } else {
-            this.T.setVisibility(0);
-            this.T.setImageBitmap(this.d0);
-            this.T.setBackgroundColor(this.e0);
-            this.S.setVisibility(0);
-            Bitmap bitmap3 = this.d0;
-            RenderScript renderScriptCreate = RenderScript.create(this.B);
-            Allocation allocationCreateFromBitmap = Allocation.createFromBitmap(renderScriptCreate, bitmap3);
-            Allocation allocationCreateTyped = Allocation.createTyped(renderScriptCreate, allocationCreateFromBitmap.getType());
-            ScriptIntrinsicBlur scriptIntrinsicBlurCreate = ScriptIntrinsicBlur.create(renderScriptCreate, Element.U8_4(renderScriptCreate));
-            scriptIntrinsicBlurCreate.setRadius(10.0f);
-            scriptIntrinsicBlurCreate.setInput(allocationCreateFromBitmap);
-            scriptIntrinsicBlurCreate.forEach(allocationCreateTyped);
-            Bitmap bitmapCopy = bitmap3.copy(bitmap3.getConfig(), true);
-            allocationCreateTyped.copyTo(bitmapCopy);
-            allocationCreateFromBitmap.destroy();
-            allocationCreateTyped.destroy();
-            scriptIntrinsicBlurCreate.destroy();
-            renderScriptCreate.destroy();
-            this.R.setImageBitmap(bitmapCopy);
-        }
+        if (this.w.g() == true) goto L15;
+    L16:
+        dismiss();
+    L17:
+        CharSequence r3 = null;
+        if (this.c0 == false) goto L27;
+        Bitmap r2 = this.d0;
+        if (r2 == null) goto L25;
+        if (r2.isRecycled() == true) goto L27;
+    L25:
+        if (this.d0 == null) goto L27;
+        this.T.setVisibility(0);
+        this.T.setImageBitmap(this.d0);
+        this.T.setBackgroundColor(this.e0);
+        this.S.setVisibility(0);
+        Bitmap r4 = this.d0;
+        RenderScript r5 = RenderScript.create(this.B);
+        Allocation r6 = Allocation.createFromBitmap(r5, r4);
+        Allocation r7 = Allocation.createTyped(r5, r6.getType());
+        ScriptIntrinsicBlur r8 = ScriptIntrinsicBlur.create(r5, Element.U8_4(r5));
+        r8.setRadius(10.0f);
+        r8.setInput(r6);
+        r8.forEach(r7);
+        Bitmap r1 = r4.copy(r4.getConfig(), true);
+        r7.copyTo(r1);
+        r6.destroy();
+        r7.destroy();
+        r8.destroy();
+        r5.destroy();
+        this.R.setImageBitmap(r1);
+    L33:
         this.c0 = false;
         this.d0 = null;
         this.e0 = 0;
-        MediaDescriptionCompat mediaDescriptionCompat = this.Y;
-        CharSequence charSequence = mediaDescriptionCompat == null ? null : mediaDescriptionCompat.o;
-        boolean zIsEmpty = TextUtils.isEmpty(charSequence);
-        MediaDescriptionCompat mediaDescriptionCompat2 = this.Y;
-        CharSequence charSequence2 = mediaDescriptionCompat2 != null ? mediaDescriptionCompat2.p : null;
-        boolean zIsEmpty2 = TextUtils.isEmpty(charSequence2);
-        TextView textView = this.U;
-        if (zIsEmpty) {
-            textView.setText(this.W);
-        } else {
-            textView.setText(charSequence);
-        }
-        TextView textView2 = this.V;
-        if (zIsEmpty2) {
-            textView2.setVisibility(8);
-        } else {
-            textView2.setText(charSequence2);
-            this.V.setVisibility(0);
-        }
+        MediaDescriptionCompat r9 = this.Y;
+        if (r9 != null) goto L36;
+        CharSequence r10 = null;
+    L37:
+        boolean r11 = TextUtils.isEmpty(r10);
+        MediaDescriptionCompat r12 = this.Y;
+        if (r12 == null) goto L41;
+        r3 = r12.p;
+    L41:
+        boolean r13 = TextUtils.isEmpty(r3);
+        TextView r14 = this.U;
+        if (r11 == true) goto L44;
+        r14.setText(r10);
+    L45:
+        TextView r15 = this.V;
+        if (r13 == true) goto L49;
+        r15.setText(r3);
+        this.V.setVisibility(0);
+        return;
+    L49:
+        r15.setVisibility(8);
+        return;
+    L44:
+        r14.setText(this.W);
+        goto L45
+    L36:
+        r10 = r9.o;
+    L27:
+        Bitmap r16 = this.d0;
+        if (r16 != null) goto L30;
+    L32:
+        this.T.setVisibility(8);
+        this.S.setVisibility(8);
+        this.R.setImageBitmap(null);
+        goto L33
+    L30:
+        if (r16.isRecycled() == false) goto L32;
+        Log.w("MediaRouteCtrlDialog", "Can't set artwork image with recycled bitmap: " + this.d0);
+        goto L32
+    L15:
+        if (this.w.d() == false) goto L17;
+    L5:
+        if (this.M == true) goto L8;
+        r0 = !this.C;
+        goto L9
     }
 
     public final void o() {
-        ArrayList arrayList = this.x;
-        arrayList.clear();
-        ArrayList arrayList2 = this.y;
-        arrayList2.clear();
-        ArrayList arrayList3 = this.z;
-        arrayList3.clear();
-        arrayList.addAll(Collections.unmodifiableList(this.w.v));
-        tq2 tq2VarA = this.w.a();
-        if (tq2VarA != null) {
-            vq2 vq2Var = this.w.a;
-            vq2Var.getClass();
-            yq2.b();
-            for (wq2 wq2Var : Collections.unmodifiableList(vq2Var.b)) {
-                if (tq2VarA.n(wq2Var)) {
-                    arrayList2.add(wq2Var);
-                }
-                mq2 mq2Var = (mq2) tq2VarA.x.get(wq2Var.c);
-                if (mq2Var != null && mq2Var.e) {
-                    arrayList3.add(wq2Var);
-                }
-            }
-        }
-        i(arrayList2);
-        i(arrayList3);
-        ca1 ca1Var = ca1.s;
-        Collections.sort(arrayList, ca1Var);
-        Collections.sort(arrayList2, ca1Var);
-        Collections.sort(arrayList3, ca1Var);
+        ArrayList r0 = this.x;
+        r0.clear();
+        ArrayList r1 = this.y;
+        r1.clear();
+        ArrayList r2 = this.z;
+        r2.clear();
+        r0.addAll(Collections.unmodifiableList(this.w.v));
+        tq2 r3 = this.w.a();
+        if (r3 == null) goto L15;
+        vq2 r4 = this.w.a;
+        r4.getClass();
+        yq2.b();
+        Iterator r5 = Collections.unmodifiableList(r4.b).iterator();
+    L6:
+        if (r5.hasNext() == false) goto L15;
+        wq2 r6 = (wq2) r5.next();
+        if (r3.n(r6) == false) goto L10;
+        r1.add(r6);
+    L10:
+        mq2 r7 = (mq2) r3.x.get(r6.c);
+        if (r7 == null) goto L6;
+        if (r7.e == false) goto L6;
+        r2.add(r6);
+    L15:
+        i(r1);
+        i(r2);
+        ca1 r8 = ca1.s;
+        Collections.sort(r0, r8);
+        Collections.sort(r1, r8);
+        Collections.sort(r2, r8);
         this.H.s();
     }
 
@@ -259,31 +335,36 @@ public final class lq2 extends dg {
     public final void onAttachedToWindow() {
         super.onAttachedToWindow();
         this.D = true;
-        this.t.a(this.v, this.u, 1);
+        rq2 r1 = this.v;
+        ap2 r2 = this.u;
+        this.t.a(r1, r2, 1);
         o();
-        ui1 ui1Var = yq2.c;
+        ui1 r0 = yq2.c;
         k();
     }
 
     @Override // defpackage.dg, defpackage.n70, android.app.Dialog
-    public final void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
+    public final void onCreate(Bundle r6) {
+        super.onCreate(r6);
         setContentView(R.layout.mr_cast_dialog);
-        View decorView = getWindow().getDecorView();
-        Context context = this.B;
-        decorView.setBackgroundColor(context.getColor(fu.D(context) ? R.color.mr_dynamic_dialog_background_light : R.color.mr_dynamic_dialog_background_dark));
-        ImageButton imageButton = (ImageButton) findViewById(R.id.mr_cast_close_button);
-        this.P = imageButton;
-        imageButton.setColorFilter(-1);
+        View r7 = getWindow().getDecorView();
+        Context r0 = this.B;
+        if (fu.D(r0) == false) goto L5;
+        int r1 = R.color.mr_dynamic_dialog_background_light;
+    L6:
+        r7.setBackgroundColor(r0.getColor(r1));
+        ImageButton r8 = (ImageButton) findViewById(R.id.mr_cast_close_button);
+        this.P = r8;
+        r8.setColorFilter(-1);
         this.P.setOnClickListener(new bq2(this, 0));
-        Button button = (Button) findViewById(R.id.mr_cast_stop_button);
-        this.Q = button;
-        button.setTextColor(-1);
+        Button r9 = (Button) findViewById(R.id.mr_cast_stop_button);
+        this.Q = r9;
+        r9.setTextColor(-1);
         this.Q.setOnClickListener(new bq2(this, 1));
         this.H = new jq2(this);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.mr_cast_list);
-        this.G = recyclerView;
-        recyclerView.setAdapter(this.H);
+        RecyclerView r10 = (RecyclerView) findViewById(R.id.mr_cast_list);
+        this.G = r10;
+        r10.setAdapter(this.H);
         this.G.setLayoutManager(new LinearLayoutManager(1));
         this.I = new kq2(0, this);
         this.J = new HashMap();
@@ -291,15 +372,19 @@ public final class lq2 extends dg {
         this.R = (ImageView) findViewById(R.id.mr_cast_meta_background);
         this.S = findViewById(R.id.mr_cast_meta_black_scrim);
         this.T = (ImageView) findViewById(R.id.mr_cast_meta_art);
-        TextView textView = (TextView) findViewById(R.id.mr_cast_meta_title);
-        this.U = textView;
-        textView.setTextColor(-1);
-        TextView textView2 = (TextView) findViewById(R.id.mr_cast_meta_subtitle);
-        this.V = textView2;
-        textView2.setTextColor(-1);
-        this.W = context.getResources().getString(R.string.mr_cast_dialog_title_view_placeholder);
+        TextView r11 = (TextView) findViewById(R.id.mr_cast_meta_title);
+        this.U = r11;
+        r11.setTextColor(-1);
+        TextView r12 = (TextView) findViewById(R.id.mr_cast_meta_subtitle);
+        this.V = r12;
+        r12.setTextColor(-1);
+        this.W = r0.getResources().getString(R.string.mr_cast_dialog_title_view_placeholder);
         this.C = true;
         m();
+        return;
+    L5:
+        r1 = R.color.mr_dynamic_dialog_background_dark;
+        goto L6
     }
 
     @Override // android.app.Dialog, android.view.Window.Callback
@@ -312,32 +397,45 @@ public final class lq2 extends dg {
     }
 
     public final void p() {
-        if (this.D) {
-            if (SystemClock.uptimeMillis() - this.E < 300) {
-                zk zkVar = this.F;
-                zkVar.removeMessages(1);
-                zkVar.sendEmptyMessageAtTime(1, this.E + 300);
-                return;
-            }
-            if ((this.K != null || this.M) ? true : !this.C) {
-                this.N = true;
-                return;
-            }
-            this.N = false;
-            if (!this.w.g() || this.w.d()) {
-                dismiss();
-            }
-            this.E = SystemClock.uptimeMillis();
-            this.H.r();
-        }
+        if (this.D == true) goto L5;
+        return;
+    L5:
+        if ((SystemClock.uptimeMillis() - this.E) >= 300) goto L7;
+        zk r0 = this.F;
+        r0.removeMessages(1);
+        r0.sendEmptyMessageAtTime(1, this.E + 300);
+        return;
+    L7:
+        if (this.K == null) goto L9;
+    L12:
+        boolean r1 = true;
+    L13:
+        if (r1 == false) goto L16;
+        this.N = true;
+        return;
+    L16:
+        this.N = false;
+        if (this.w.g() == true) goto L19;
+    L20:
+        dismiss();
+    L21:
+        this.E = SystemClock.uptimeMillis();
+        this.H.r();
+        return;
+    L19:
+        if (this.w.d() == false) goto L21;
+    L9:
+        if (this.M == true) goto L12;
+        r1 = !this.C;
+        goto L13
     }
 
     public final void q() {
-        if (this.N) {
-            p();
-        }
-        if (this.O) {
-            n();
-        }
+        if (this.N == false) goto L6;
+        p();
+    L6:
+        if (this.O == false) goto L9;
+        n();
+        return;
     }
 }

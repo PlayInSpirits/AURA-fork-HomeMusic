@@ -1,5 +1,6 @@
 package defpackage;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,122 +12,169 @@ import java.util.Locale;
 /* JADX INFO: loaded from: classes.dex */
 public final class nt0 {
     public static volatile nt0 l;
+    public final Object a;
     public final boolean b;
-    public final Object a = new Object();
-    public int c = 0;
-    public int d = 0;
-    public int e = 0;
-    public int f = 0;
-    public long g = 0;
-    public long h = 0;
-    public long i = 0;
-    public float j = 0.0f;
-    public volatile String k = null;
+    public int c;
+    public int d;
+    public int e;
+    public int f;
+    public long g;
+    public long h;
+    public long i;
+    public float j;
+    public volatile String k;
 
-    public nt0(boolean z) {
-        this.b = z;
-    }
-
-    public final void a(Context context) {
-        int i = this.d + this.e + this.f;
-        int i2 = this.c;
-        if (i < i2 || i2 <= 0) {
-            d(context);
-            return;
-        }
-        if (this.b) {
-            NotificationManager notificationManager = (NotificationManager) context.getSystemService("notification");
-            notificationManager.cancel(1012);
-            StringBuilder sb = new StringBuilder();
-            StringBuilder sb2 = new StringBuilder();
-            int i3 = this.d;
-            if (i3 > 0 && this.e == 0) {
-                sb.append(context.getString(R.string.notification_downloads_complete));
-                Resources resources = context.getResources();
-                int i4 = this.d;
-                sb2.append(resources.getQuantityString(R.plurals.notification_tracks_saved, i4, Integer.valueOf(i4)));
-            } else if (i3 > 0) {
-                sb.append(context.getString(R.string.notification_downloads_complete));
-                sb2.append(context.getString(R.string.notification_download_mixed_saved, Integer.valueOf(this.d), Integer.valueOf(this.e)));
-            } else if (this.e > 0) {
-                sb.append(context.getString(R.string.notification_download_failed));
-                Resources resources2 = context.getResources();
-                int i5 = this.e;
-                sb2.append(resources2.getQuantityString(R.plurals.notification_tracks_failed, i5, Integer.valueOf(i5)));
-            }
-            s63 s63Var = new s63(context, "download_channel");
-            s63Var.e = s63.b(sb.toString());
-            s63Var.f = s63.b(sb2.toString());
-            s63Var.v.icon = (this.e <= 0 || this.d != 0) ? R.drawable.ic_check_circle : R.drawable.ic_error;
-            s63Var.c(2, false);
-            s63Var.c(16, false);
-            s63Var.w = true;
-            s63Var.i = 0;
-            s63Var.c(8, true);
-            notificationManager.notify(1013, s63Var.a());
-        }
+    public nt0(boolean r3) {
+        this.a = new Object();
         this.c = 0;
         this.d = 0;
         this.e = 0;
         this.f = 0;
-        this.g = 0L;
-        this.h = 0L;
+        this.g = 0;
+        this.h = 0;
+        this.i = 0;
+        this.j = 0.0f;
+        this.k = null;
+        this.b = r3;
+    }
+
+    public final void a(Context r9) {
+        int r0 = (this.d + this.e) + this.f;
+        int r1 = this.c;
+        if (r0 < r1) goto L27;
+        if (r1 <= 0) goto L27;
+        if (this.b == false) goto L25;
+        NotificationManager r2 = (NotificationManager) r9.getSystemService("notification");
+        r2.cancel(1012);
+        StringBuilder r3 = new StringBuilder();
+        StringBuilder r4 = new StringBuilder();
+        int r5 = this.d;
+        if (r5 > 0) goto L11;
+    L13:
+        if (r5 <= 0) goto L16;
+        r3.append(r9.getString(R.string.notification_downloads_complete));
+        r4.append(r9.getString(R.string.notification_download_mixed_saved, new Object[]{Integer.valueOf(this.d), Integer.valueOf(this.e)}));
+    L18:
+        s63 r6 = new s63(r9, "download_channel");
+        r6.e = s63.b(r3.toString());
+        r6.f = s63.b(r4.toString());
+        if (this.e > 0) goto L21;
+    L23:
+        int r10 = R.drawable.ic_check_circle;
+    L24:
+        r6.v.icon = r10;
+        r6.c(2, false);
+        r6.c(16, false);
+        r6.w = true;
+        r6.i = 0;
+        r6.c(8, true);
+        r2.notify(1013, r6.a());
+        goto L25
+    L21:
+        if (this.d != 0) goto L23;
+        r10 = R.drawable.ic_error;
+        goto L24
+    L16:
+        if (this.e <= 0) goto L25;
+        r3.append(r9.getString(R.string.notification_download_failed));
+        Resources r7 = r9.getResources();
+        int r8 = this.e;
+        r4.append(r7.getQuantityString(R.plurals.notification_tracks_failed, r8, new Object[]{Integer.valueOf(r8)}));
+        goto L18
+    L11:
+        if (this.e != 0) goto L13;
+        r3.append(r9.getString(R.string.notification_downloads_complete));
+        Resources r11 = r9.getResources();
+        int r12 = this.d;
+        r4.append(r11.getQuantityString(R.plurals.notification_tracks_saved, r12, new Object[]{Integer.valueOf(r12)}));
+    L25:
+        this.c = 0;
+        this.d = 0;
+        this.e = 0;
+        this.f = 0;
+        this.g = 0;
+        this.h = 0;
         this.i = SystemClock.elapsedRealtime();
         this.j = 0.0f;
         this.k = null;
+        return;
+    L27:
+        d(r9);
     }
 
-    public final void b(Context context) {
-        synchronized (this.a) {
-            this.e++;
-            a(context.getApplicationContext());
-        }
+    public final void b(Context r3) {
+        Object r0 = this.a;
+        monitor-enter(r0);
+        this.e++;     // Catch: Throwable -> L7
+        a(r3.getApplicationContext());     // Catch: Throwable -> L7
+        monitor-exit(r0);     // Catch: Throwable -> L7
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
-    public final void c(Context context) {
-        synchronized (this.a) {
-            this.f++;
-            a(context.getApplicationContext());
-        }
+    public final void c(Context r3) {
+        Object r0 = this.a;
+        monitor-enter(r0);
+        this.f++;     // Catch: Throwable -> L7
+        a(r3.getApplicationContext());     // Catch: Throwable -> L7
+        monitor-exit(r0);     // Catch: Throwable -> L7
+        return;
+    L7:
+        th = move-exception;
+        throw th;
     }
 
-    public final void d(Context context) {
-        String string;
-        String strConcat;
-        String str;
-        if (this.b) {
-            int i = this.d + this.e + this.f;
-            int i2 = this.c;
-            String string2 = this.k != null ? context.getString(R.string.notification_downloading_title, this.k) : context.getString(R.string.notification_downloading);
-            if (i2 > 0) {
-                StringBuilder sbI = xa3.i(context.getString(R.string.notification_download_progress_format, Integer.valueOf(i), Integer.valueOf(i2)));
-                float f = this.j;
-                if (f > 0.0f) {
-                    if (f >= 1000000.0f) {
-                        str = String.format(Locale.US, "%.1f MB/s", Float.valueOf(f / 1000000.0f));
-                    } else {
-                        str = f >= 1000.0f ? String.format(Locale.US, "%.0f KB/s", Float.valueOf(f / 1000.0f)) : String.format(Locale.US, "%.0f B/s", Float.valueOf(f));
-                    }
-                    strConcat = " • ".concat(str);
-                } else {
-                    strConcat = " • ? KB/s";
-                }
-                sbI.append(strConcat);
-                string = sbI.toString();
-            } else {
-                string = context.getString(R.string.notification_processing);
-            }
-            s63 s63Var = new s63(context, "download_channel");
-            s63Var.e = s63.b(string2);
-            s63Var.f = s63.b(string);
-            s63Var.v.icon = R.drawable.ic_download;
-            s63Var.m = i2;
-            s63Var.n = i;
-            s63Var.c(2, true);
-            s63Var.w = true;
-            s63Var.i = -1;
-            s63Var.c(8, true);
-            ((NotificationManager) context.getSystemService("notification")).notify(1012, s63Var.a());
-        }
+    public final void d(Context r7) {
+        if (this.b == true) goto L5;
+        return;
+    L5:
+        int r0 = (this.d + this.e) + this.f;
+        int r1 = this.c;
+        if (this.k == null) goto L8;
+        String r2 = r7.getString(R.string.notification_downloading_title, new Object[]{this.k});
+    L9:
+        if (r1 <= 0) goto L22;
+        StringBuilder r3 = xa3.i(r7.getString(R.string.notification_download_progress_format, new Object[]{Integer.valueOf(r0), Integer.valueOf(r1)}));
+        float r6 = this.j;
+        if (r6 > 0.0f) goto L13;
+        String r8 = " • ? KB/s";
+    L21:
+        r3.append(r8);
+        String r9 = r3.toString();
+    L23:
+        s63 r4 = new s63(r7, "download_channel");
+        r4.e = s63.b(r2);
+        r4.f = s63.b(r9);
+        r4.v.icon = R.drawable.ic_download;
+        r4.m = r1;
+        r4.n = r0;
+        r4.c(2, true);
+        r4.w = true;
+        r4.i = -1;
+        r4.c(8, true);
+        Notification r10 = r4.a();
+        ((NotificationManager) r7.getSystemService("notification")).notify(1012, r10);
+        return;
+    L13:
+        if (r6 < 1000000.0f) goto L16;
+        String r11 = String.format(Locale.US, "%.1f MB/s", new Object[]{Float.valueOf(r6 / 1000000.0f)});
+    L19:
+        r8 = " • ".concat(r11);
+        goto L21
+    L16:
+        if (r6 < 1000.0f) goto L18;
+        r11 = String.format(Locale.US, "%.0f KB/s", new Object[]{Float.valueOf(r6 / 1000.0f)});
+        goto L19
+    L18:
+        r11 = String.format(Locale.US, "%.0f B/s", new Object[]{Float.valueOf(r6)});
+        goto L19
+    L22:
+        r9 = r7.getString(R.string.notification_processing);
+        goto L23
+    L8:
+        r2 = r7.getString(R.string.notification_downloading);
+        goto L9
     }
 }

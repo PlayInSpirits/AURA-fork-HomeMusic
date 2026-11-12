@@ -9,22 +9,24 @@ public final class lq1 extends q42 implements gf1 {
     public final /* synthetic */ int o;
     public final /* synthetic */ int p;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public lq1(rq1 rq1Var, int i, int i2) {
+    public lq1(rq1 r1, int r2, int r3) {
+        this.n = r1;
+        this.o = r2;
+        this.p = r3;
         super(0);
-        this.n = rq1Var;
-        this.o = i;
-        this.p = i2;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        rq1 rq1Var = this.n;
-        try {
-            rq1Var.J.s(this.o, this.p, true);
-        } catch (IOException e) {
-            rq1Var.f(e);
-        }
+        rq1 r0 = this.n;
+        int r1 = this.o;
+        int r4 = this.p;
+        r0.J.s(r1, r4, true);     // Catch: IOException -> L5
+    L8:
         return j15.a;
+    L5:
+        e = move-exception;
+        r0.f(e);
+        goto L8
     }
 }

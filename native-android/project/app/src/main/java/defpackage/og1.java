@@ -5,8 +5,8 @@ package defpackage;
 public final class og1 implements vy3 {
     public final pg1 n;
 
-    public og1(pg1 pg1Var) {
-        this.n = pg1Var;
+    public og1(pg1 r1) {
+        this.n = r1;
     }
 
     @Override // defpackage.vy3

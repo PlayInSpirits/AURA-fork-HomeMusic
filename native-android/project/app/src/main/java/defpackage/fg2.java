@@ -14,9 +14,9 @@ public final class fg2 implements Map, x32 {
     public r11 p;
     public mn4 q;
 
-    public fg2(w03 w03Var) {
-        w03Var.getClass();
-        this.n = w03Var;
+    public fg2(w03 r1) {
+        r1.getClass();
+        this.n = r1;
     }
 
     @Override // java.util.Map
@@ -25,55 +25,58 @@ public final class fg2 implements Map, x32 {
     }
 
     @Override // java.util.Map
-    public final Object compute(Object obj, BiFunction biFunction) {
+    public final Object compute(Object r1, BiFunction r2) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final Object computeIfAbsent(Object obj, Function function) {
+    public final Object computeIfAbsent(Object r1, Function r2) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final Object computeIfPresent(Object obj, BiFunction biFunction) {
+    public final Object computeIfPresent(Object r1, BiFunction r2) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final boolean containsKey(Object obj) {
-        return this.n.c(obj);
+    public final boolean containsKey(Object r1) {
+        return this.n.c(r1);
     }
 
     @Override // java.util.Map
-    public final boolean containsValue(Object obj) {
-        return this.n.d(obj);
+    public final boolean containsValue(Object r1) {
+        return this.n.d(r1);
     }
 
     @Override // java.util.Map
     public final Set entrySet() {
-        r11 r11Var = this.o;
-        if (r11Var != null) {
-            return r11Var;
-        }
-        r11 r11Var2 = new r11(this.n, 0);
-        this.o = r11Var2;
-        return r11Var2;
+        r11 r0 = this.o;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        r11 r1 = new r11(this.n, 0);
+        this.o = r1;
+        return r1;
     }
 
     @Override // java.util.Map
-    public final boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || fg2.class != obj.getClass()) {
-            return false;
-        }
-        return h12.c(this.n, ((fg2) obj).n);
+    public final boolean equals(Object r3) {
+        if (this != r3) goto L5;
+        return true;
+    L5:
+        if (r3 != null) goto L7;
+        return false;
+    L7:
+        if (fg2.class == r3.getClass()) goto L10;
+        return false;
+    L10:
+        return h12.c(this.n, ((fg2) r3).n);
     }
 
     @Override // java.util.Map
-    public final Object get(Object obj) {
-        return this.n.g(obj);
+    public final Object get(Object r1) {
+        return this.n.g(r1);
     }
 
     @Override // java.util.Map
@@ -88,47 +91,47 @@ public final class fg2 implements Map, x32 {
 
     @Override // java.util.Map
     public final Set keySet() {
-        r11 r11Var = this.p;
-        if (r11Var != null) {
-            return r11Var;
-        }
-        r11 r11Var2 = new r11(this.n, 1);
-        this.p = r11Var2;
-        return r11Var2;
+        r11 r0 = this.p;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        r11 r1 = new r11(this.n, 1);
+        this.p = r1;
+        return r1;
     }
 
     @Override // java.util.Map
-    public final Object merge(Object obj, Object obj2, BiFunction biFunction) {
+    public final Object merge(Object r1, Object r2, BiFunction r3) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final Object put(Object obj, Object obj2) {
+    public final Object put(Object r1, Object r2) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final void putAll(Map map) {
+    public final void putAll(Map r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final Object putIfAbsent(Object obj, Object obj2) {
+    public final Object putIfAbsent(Object r1, Object r2) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final Object remove(Object obj) {
+    public final Object remove(Object r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final Object replace(Object obj, Object obj2) {
+    public final Object replace(Object r1, Object r2) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final void replaceAll(BiFunction biFunction) {
+    public final void replaceAll(BiFunction r1) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -143,22 +146,22 @@ public final class fg2 implements Map, x32 {
 
     @Override // java.util.Map
     public final Collection values() {
-        mn4 mn4Var = this.q;
-        if (mn4Var != null) {
-            return mn4Var;
-        }
-        mn4 mn4Var2 = new mn4(this.n);
-        this.q = mn4Var2;
-        return mn4Var2;
+        mn4 r0 = this.q;
+        if (r0 == null) goto L5;
+        return r0;
+    L5:
+        mn4 r1 = new mn4(this.n);
+        this.q = r1;
+        return r1;
     }
 
     @Override // java.util.Map
-    public final boolean remove(Object obj, Object obj2) {
+    public final boolean remove(Object r1, Object r2) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Map
-    public final boolean replace(Object obj, Object obj2, Object obj3) {
+    public final boolean replace(Object r1, Object r2, Object r3) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 }

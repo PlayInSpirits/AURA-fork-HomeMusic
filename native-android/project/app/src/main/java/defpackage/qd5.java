@@ -10,92 +10,101 @@ public final class qd5 extends ep4 implements wf1 {
     public int p;
     public final /* synthetic */ td5 q;
 
-    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
-    public /* synthetic */ qd5(td5 td5Var, vd0 vd0Var, int i) {
-        super(2, vd0Var);
-        this.o = i;
-        this.q = td5Var;
+    public /* synthetic */ qd5(td5 r1, vd0 r2, int r3) {
+        this.o = r3;
+        this.q = r1;
+        super(2, r2);
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object obj, vd0 vd0Var) {
-        int i = this.o;
-        td5 td5Var = this.q;
-        switch (i) {
-            case 0:
-                return new qd5(td5Var, vd0Var, 0);
-            default:
-                return new qd5(td5Var, vd0Var, 1);
-        }
+    public final vd0 create(Object r2, vd0 r3) {
+        int r4 = this.o;
+        td5 r1 = this.q;
+        switch(r4) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return new qd5(r1, r3, 1);
+    L7:
+        return new qd5(r1, r3, 0);
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        int i = this.o;
-        j15 j15Var = j15.a;
-        we0 we0Var = (we0) obj;
-        vd0 vd0Var = (vd0) obj2;
-        switch (i) {
-            case 0:
-                break;
-        }
-        return ((qd5) create(we0Var, vd0Var)).invokeSuspend(j15Var);
+    public final Object invoke(Object r3, Object r4) {
+        int r0 = this.o;
+        j15 r1 = j15.a;
+        we0 r5 = (we0) r3;
+        vd0 r6 = (vd0) r4;
+        switch(r0) {
+            case 0: goto L7;
+            default: goto L5;
+        };
+    L5:
+        return ((qd5) create(r5, r6)).invokeSuspend(r1);
+    L7:
+        return ((qd5) create(r5, r6)).invokeSuspend(r1);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object obj) {
-        Object md5Var;
-        int i = this.o;
-        xe0 xe0Var = xe0.n;
-        td5 td5Var = this.q;
-        vd0 vd0Var = null;
-        switch (i) {
-            case 0:
-                int i2 = this.p;
-                if (i2 == 0) {
-                    kb4.X(obj);
-                    this.p = 1;
-                    Object objA = td5.a(td5Var, this);
-                    return objA == xe0Var ? xe0Var : objA;
-                }
-                if (i2 == 1) {
-                    kb4.X(obj);
-                    return obj;
-                }
-                kf2.o("call to 'resume' before 'invoke' with coroutine");
-                return null;
-            default:
-                int i3 = this.p;
-                try {
-                    if (i3 == 0) {
-                        kb4.X(obj);
-                        t22 t22Var = td5Var.m;
-                        qd5 qd5Var = new qd5(td5Var, vd0Var, 0);
-                        this.p = 1;
-                        obj = fu.P(t22Var, qd5Var, this);
-                        if (obj == xe0Var) {
-                            return xe0Var;
-                        }
-                    } else {
-                        if (i3 != 1) {
-                            kf2.o("call to 'resume' before 'invoke' with coroutine");
-                            return null;
-                        }
-                        kb4.X(obj);
-                    }
-                    md5Var = (pd5) obj;
-                    break;
-                } catch (WorkerStoppedException e) {
-                    md5Var = new od5(e.n);
-                } catch (CancellationException unused) {
-                    md5Var = new md5();
-                } catch (Throwable th) {
-                    cx.f().e(ud5.a, "Unexpected error in WorkerWrapper", th);
-                    md5Var = new md5();
-                }
-                Object objR = td5Var.h.r(new ei0(4, md5Var, td5Var));
-                objR.getClass();
-                return objR;
-        }
+    public final Object invokeSuspend(Object r7) {
+        int r0 = this.o;
+        xe0 r2 = xe0.n;
+        td5 r4 = this.q;
+        vd0 r5 = null;
+        switch(r0) {
+            case 0: goto L25;
+            default: goto L4;
+        };
+    L4:
+        int r1 = this.p;
+        if (r1 == 0) goto L14;
+        if (r1 != 1) goto L13;
+        kb4.X(r7);     // Catch: Throwable -> L9 WorkerStoppedException -> L11 CancellationException -> L21
+    L18:
+        Object r8 = (pd5) r7;     // Catch: Throwable -> L9 WorkerStoppedException -> L11 CancellationException -> L21
+    L23:
+        Object r3 = r4.h.r(new ei0(4, r8, r4));
+        r3.getClass();
+        return r3;
+    L13:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L14:
+        kb4.X(r7);
+        t22 r9 = r4.m;     // Catch: Throwable -> L9 WorkerStoppedException -> L11 CancellationException -> L21
+        qd5 r6 = new qd5(r4, r5, 0);     // Catch: Throwable -> L9 WorkerStoppedException -> L11 CancellationException -> L21
+        this.p = 1;     // Catch: Throwable -> L9 WorkerStoppedException -> L11 CancellationException -> L21
+        r7 = fu.P(r9, r6, this);     // Catch: Throwable -> L9 WorkerStoppedException -> L11 CancellationException -> L21
+        if (r7 != r2) goto L18;
+        return r2;
+    L11:
+        e = move-exception;
+        r8 = new od5(e.n);
+    L21:
+        r8 = new md5();
+    L9:
+        th = move-exception;
+        String r10 = ud5.a;
+        cx.f().e(r10, "Unexpected error in WorkerWrapper", th);
+        r8 = new md5();
+        goto L23
+    L25:
+        int r11 = this.p;
+        if (r11 == 0) goto L30;
+        if (r11 != 1) goto L29;
+        kb4.X(r7);
+        return r7;
+    L29:
+        kf2.o("call to 'resume' before 'invoke' with coroutine");
+        return null;
+    L30:
+        kb4.X(r7);
+        this.p = 1;
+        Object r12 = td5.a(r4, this);
+        if (r12 == r2) goto L33;
+        return r12;
+    L33:
+        return r2;
     }
 }

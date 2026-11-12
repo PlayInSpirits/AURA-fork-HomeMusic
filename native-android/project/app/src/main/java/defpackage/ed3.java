@@ -3,28 +3,36 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class ed3 {
-    public static final dd3 a;
-    public static final qc3 b;
+    public static final dd3 a = null;
+    public static final qc3 b = null;
 
     static {
-        dd3 dd3Var = new dd3(0);
-        a = dd3Var;
-        int i = 0;
-        int i2 = 0;
-        int i3 = 0;
-        int i4 = 0;
-        b = new qc3(i, i2, i3, i4, 0, 0, rv2.C, new cd3(), te5.a(q01.n), dd3Var, qc0.b(0, 0, 15));
+        dd3 r10 = new dd3(0);
+        a = r10;
+        int r5 = 0;
+        int r6 = 0;
+        int r1 = 0;
+        int r2 = 0;
+        int r3 = 0;
+        int r4 = 0;
+        b = new qc3(r1, r2, r3, r4, r5, r6, rv2.C, new cd3(), te5.a(q01.n), r10, qc0.b(0, 0, 15));
     }
 
-    public static final long a(qc3 qc3Var, int i) {
-        int i2 = qc3Var.c;
-        long j = (((((long) i) * ((long) (qc3Var.b + i2))) + ((long) (-qc3Var.f))) + ((long) qc3Var.d)) - ((long) i2);
-        int i3 = (int) (qc3Var.e == hb3.o ? qc3Var.i() >> 32 : qc3Var.i() & 4294967295L);
-        qc3Var.n.getClass();
-        long jM = j - ((long) (i3 - gb.m(0, 0, i3)));
-        if (jM < 0) {
-            return 0L;
-        }
-        return jM;
+    public static final long a(qc3 r6, int r7) {
+        int r0 = r6.c;
+        long r2 = (((((long) r7) * ((long) (r6.b + r0))) + ((long) (-r6.f))) + ((long) r6.d)) - ((long) r0);
+        if (r6.e != hb3.o) goto L6;
+        long r1 = r6.i() >> 32;
+    L5:
+        int r8 = (int) r1;
+        r6.n.getClass();
+        long r3 = r2 - ((long) (r8 - gb.m(0, 0, r8)));
+        if (r3 >= 0) goto L10;
+        return 0;
+    L10:
+        return r3;
+    L6:
+        r1 = r6.i() & 4294967295L;
+        goto L5
     }
 }
