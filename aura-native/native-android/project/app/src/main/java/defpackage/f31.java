@@ -499,9 +499,9 @@ public final class f31 {
                 byte[] bytes = "FUJIFILMCCD-RAW".getBytes(Charset.defaultCharset());
                 for (int i8 = 0; i8 < bytes.length; i8++) {
                     byte b = bArr4[i8];
-                    ?? r7 = bytes[i8];
+                    byte r7 = bytes[i8];
                     if (b != r7) {
-                        ?? r4 = 0;
+                        int r4 = 0;
                         a31 a31Var4 = null;
                         a31 a31Var5 = null;
                         a31 a31Var6 = null;
