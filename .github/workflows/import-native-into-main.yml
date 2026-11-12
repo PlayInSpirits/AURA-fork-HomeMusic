@@ -68,11 +68,11 @@ jobs:
           TOO_LARGE="$(find aura-native -type f -size +99M -print || true)"
           if [ -n "$TOO_LARGE" ]; then
             echo "::error::GitHub rejects individual files around 100 MB; oversized files need Git LFS:"
-            printf '%s\\n' "$TOO_LARGE"
+            printf '%s\n' "$TOO_LARGE"
             exit 1
           fi
 
-          printf 'Imported from branch: native-v0.10.1\\nSource commit: %s\\nDestination: main/aura-native/\\nOriginal native-v0.10.1 branch is preserved.\\n' "$SOURCE_SHA" > aura-native/IMPORT-SOURCE.txt
+          printf 'Imported from branch: native-v0.10.1\nSource commit: %s\nDestination: main/aura-native/\nOriginal native-v0.10.1 branch is preserved.\n' "$SOURCE_SHA" > aura-native/IMPORT-SOURCE.txt
           git add -f --all -- aura-native
           if git diff --cached --quiet; then
             echo "The current copy is already present; no changes to commit."
