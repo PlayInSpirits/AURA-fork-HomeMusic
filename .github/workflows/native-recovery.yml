@@ -97,7 +97,7 @@ jobs:
           from hashlib import sha256
           from pathlib import Path
           expected = {
-              "HomeMusic-1.14.7.apk": "72176dcf191cdbf5f5ea8e99ecc1cb2017fbaf842386ab2ae1436b5537d9a852",
+              "HomeMusic-1.14.7.apk": "72176dcf191cdbf5a5ea8e99ecc1cb2017fbaf842386ab2ae1436b5537d9a852",
               "AURA-0.30.2.apk": "a568eef8504892850f5415e03106e0fb8246810168b923f1522761c12587413a",
               "AURA-0.75.1.apk": "887052749b5410f474aa9001c9a352000aeceed999d289a18c337de0327c0871",
           }
