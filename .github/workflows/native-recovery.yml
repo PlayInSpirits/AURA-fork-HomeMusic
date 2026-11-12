@@ -285,14 +285,48 @@ jobs:
           import re, json, shutil
           project=Path("native-android/project")
 
-          # Use JADX's linear/simple Java output for compilation repair; retain the normal-mode export separately.
+          # Compile the normal structured Java export. JADX simple-mode output is retained as a
+          # forensic reference only because it can emit goto-based pseudocode for hard methods.
+          structured_sources=Path("recovery/gradle-export-aura-0751/app/src/main/java")
           simple_sources=Path("recovery/jadx-aura-0751-simple/sources")
+          if not structured_sources.is_dir() or not any(structured_sources.rglob("*.java")):
+              raise SystemExit("Structured JADX Java sources are missing.")
           if not simple_sources.is_dir() or not any(simple_sources.rglob("*.java")):
-              raise SystemExit("JADX simple-mode sources are missing.")
+              raise SystemExit("JADX simple-mode reference sources are missing.")
           app_sources=project/"app/src/main/java"
           if app_sources.exists():
               shutil.rmtree(app_sources)
-          shutil.copytree(simple_sources,app_sources)
+          shutil.copytree(structured_sources,app_sources)
+
+          # Restore four local type-inference failures directly from their control flow and Smali.
+          def patch_source(relative, replacements):
+              path=app_sources/relative
+              if not path.is_file():
+                  raise SystemExit(f"Source required for Smali-backed repair is missing: {relative}")
+              content=path.read_text(encoding="utf-8")
+              for before,after,count in replacements:
+                  actual=content.count(before)
+                  if actual != count:
+                      raise SystemExit(f"Unexpected source shape in {relative}: expected {count} occurrence(s) of {before!r}, found {actual}.")
+                  content=content.replace(before,after,count)
+              path.write_text(content,encoding="utf-8",newline="\n")
+              print("Repaired JADX type inference:",relative)
+
+          patch_source("com/eddyizm/tempus/homemusic/WaveSession.java",[
+              ("?? I0;","List I0;",1)
+          ])
+          patch_source("com/eddyizm/tempus/homemusic/MixOfflineWorker.java",[
+              ("?? arrayList;","List<Child> arrayList;",1),
+              ("arrayList = 0;","arrayList = null;",1),
+              ("arrayList == 0","arrayList == null",1)
+          ])
+          patch_source("com/eddyizm/tempus/lan/LanReceiverService.java",[
+              ("import java.util.Iterator;","import java.util.Iterator;\nimport java.util.List;",1),
+              ("final ?? arrayList;","final List arrayList;",1)
+          ])
+          patch_source("com/eddyizm/tempus/ui/fragment/IndexFragment.java",[
+              ("?? arrayList;","List arrayList;",1)
+          ])
 
           # Android framework API stubs emitted by JADX are placeholders, not app sources.
           android_root=app_sources/"android"
