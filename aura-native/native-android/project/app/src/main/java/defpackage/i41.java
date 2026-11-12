@@ -126,7 +126,7 @@ public final class i41 extends fq implements ExoPlayer {
         MediaService mediaService = o31Var.a;
         int i2 = 0;
         Integer num = 0;
-        ?? fqVar = new fq();
+        fq fqVar = new fq();
         fqVar.e = new q90();
         try {
             l93.K("ExoPlayerImpl", "Init " + Integer.toHexString(System.identityHashCode(fqVar)) + " [AndroidXMedia3/1.9.2] [" + f35.a + "]");
