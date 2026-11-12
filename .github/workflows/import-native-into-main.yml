@@ -31,8 +31,8 @@ jobs:
           [ "$GITHUB_REF" = "refs/heads/main" ] || { echo "::error::Import must target main."; exit 1; }
 
           AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\r\n')"
-          MAIN_DIR="$RUNNER_TEMP/aura-import-main"
-          SOURCE_DIR="$RUNNER_TEMP/aura-import-source"
+          MAIN_DIR="$(cygpath -u "$RUNNER_TEMP")/aura-import-main"
+          SOURCE_DIR="$(cygpath -u "$RUNNER_TEMP")/aura-import-source"
           rm -rf "$MAIN_DIR" "$SOURCE_DIR"
           mkdir -p "$MAIN_DIR" "$SOURCE_DIR"
 
@@ -50,19 +50,19 @@ jobs:
           echo "Source commit: $(git -C "$SOURCE_DIR" rev-parse HEAD)"
           echo "Exact branch fetch completed without broad ref patterns."
 
-      - name: Copy and verify every tracked file
+      - name: Copy and verify the complete source tree
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          MAIN_DIR="$RUNNER_TEMP/aura-import-main"
-          SOURCE_DIR="$RUNNER_TEMP/aura-import-source"
+          MAIN_DIR="$(cygpath -u "$RUNNER_TEMP")/aura-import-main"
+          SOURCE_DIR="$(cygpath -u "$RUNNER_TEMP")/aura-import-source"
           AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\r\n')"
 
           SOURCE_SHA="$(git -C "$SOURCE_DIR" rev-parse HEAD)"
+          TRACKED_COUNT="$(git -C "$SOURCE_DIR" ls-files | wc -l | tr -d ' ')"
           echo "Source branch: native-v0.10.1"
           echo "Source commit: $SOURCE_SHA"
-          TRACKED_COUNT="$(git -C "$SOURCE_DIR" ls-files | wc -l | tr -d ' ')"
           echo "Tracked source files: $TRACKED_COUNT"
 
           rm -rf "$MAIN_DIR/aura-native"
@@ -70,20 +70,16 @@ jobs:
           cp -a "$SOURCE_DIR"/. "$MAIN_DIR/aura-native"/
           rm -rf "$MAIN_DIR/aura-native/.git"
 
-          VERIFIED_COUNT=0
-          while IFS= read -r -d '' FILE; do
-            if [ ! -e "$MAIN_DIR/aura-native/$FILE" ] && [ ! -L "$MAIN_DIR/aura-native/$FILE" ]; then
-              echo "::error::Missing copied file: $FILE"
-              exit 1
-            fi
-            if ! cmp -s "$SOURCE_DIR/$FILE" "$MAIN_DIR/aura-native/$FILE"; then
-              echo "::error::Content mismatch: $FILE"
-              exit 1
-            fi
-            VERIFIED_COUNT=$((VERIFIED_COUNT + 1))
-          done < <(git -C "$SOURCE_DIR" ls-files -z)
-          echo "Verified byte-identical tracked files: $VERIFIED_COUNT"
-          [ "$VERIFIED_COUNT" -eq "$TRACKED_COUNT" ] || { echo "::error::Tracked file count mismatch."; exit 1; }
+          DIFF_LOG="$(cygpath -u "$RUNNER_TEMP")/aura-native-import-diff.txt"
+          if ! diff -qr --exclude=.git "$SOURCE_DIR" "$MAIN_DIR/aura-native" > "$DIFF_LOG"; then
+            echo "::error::Source and destination trees differ. First differences:"
+            sed -n '1,80p' "$DIFF_LOG"
+            exit 1
+          fi
+          COPIED_COUNT="$(find "$MAIN_DIR/aura-native" -type f -o -type l | wc -l | tr -d ' ')"
+          echo "Directory comparison passed: all source files match."
+          echo "Copied filesystem entries: $COPIED_COUNT"
+          [ "$COPIED_COUNT" -ge "$TRACKED_COUNT" ] || { echo "::error::Copied entry count is below the tracked source file count."; exit 1; }
 
           TOO_LARGE="$(find "$MAIN_DIR/aura-native" -type f -size +99M -print || true)"
           if [ -n "$TOO_LARGE" ]; then
@@ -98,13 +94,20 @@ jobs:
             echo "The current copy is already present; no changes to commit."
             exit 0
           fi
+
           git -C "$MAIN_DIR" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Import complete native-v0.10.1 project under aura-native"
-          git -C "$MAIN_DIR" -c http.extraheader="$AUTH_HEADER" push origin HEAD:refs/heads/main
+
+          if ! git -C "$MAIN_DIR" -c http.extraheader="$AUTH_HEADER" push origin HEAD:refs/heads/main; then
+            echo "Main advanced during the copy. Rebasing the import commit on the latest main and retrying once."
+            git -C "$MAIN_DIR" -c http.extraheader="$AUTH_HEADER" fetch --no-tags --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+            GIT_EDITOR=true GIT_SEQUENCE_EDITOR=true git -C "$MAIN_DIR" rebase refs/remotes/origin/main
+            git -C "$MAIN_DIR" -c http.extraheader="$AUTH_HEADER" push origin HEAD:refs/heads/main
+          fi
 
       - name: Verify imported tree from the resulting checkout
         run: |
           set -euo pipefail
-          MAIN_DIR="$RUNNER_TEMP/aura-import-main"
+          MAIN_DIR="$(cygpath -u "$RUNNER_TEMP")/aura-import-main"
           test -f "$MAIN_DIR/aura-native/IMPORT-SOURCE.txt"
           test -f "$MAIN_DIR/aura-native/native-android/project/app/build.gradle"
           test -f "$MAIN_DIR/aura-native/.github/workflows/native-build.yml"
