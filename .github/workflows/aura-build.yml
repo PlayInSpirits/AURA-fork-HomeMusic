@@ -5,6 +5,10 @@ name: Build AURA Android
     branches: [main]
     paths-ignore:
       - 'aura-android/**'
+      - 'aura-native/**'
+      - 'aura-native-import.trigger'
+      - '.github/workflows/aura-native-build.yml'
+      - '.github/workflows/import-native-into-main.yml'
       - 'app/latest.json'
   workflow_dispatch:
 
