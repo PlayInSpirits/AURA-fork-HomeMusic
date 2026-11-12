@@ -1250,7 +1250,7 @@ public final class kc0 extends jc0 {
                                                                 if (iMax2 > i()) {
                                                                     H(iMax2);
                                                                     r21[r9] = r9;
-                                                                    r4 = r9;
+                                                                    r4 = true;
                                                                     z10 = r4;
                                                                 } else {
                                                                     r0 = r17;
@@ -1264,8 +1264,8 @@ public final class kc0 extends jc0 {
                                                                             this.D0 = true;
                                                                             r21[0] = r9;
                                                                             K(i);
-                                                                            ?? r10 = r9;
-                                                                            z13 = r10 == true ? 1 : 0;
+                                                                            boolean r10 = true;
+                                                                            z13 = r10;
                                                                             r3 = r10;
                                                                         }
                                                                     }
@@ -1398,7 +1398,7 @@ public final class kc0 extends jc0 {
                                                             if (iMax2 > i()) {
                                                                 H(iMax2);
                                                                 r21[r9] = r9;
-                                                                r4 = r9;
+                                                                r4 = true;
                                                                 z10 = r4;
                                                             } else {
                                                                 r0 = r17;
@@ -1412,8 +1412,8 @@ public final class kc0 extends jc0 {
                                                                         this.D0 = true;
                                                                         r21[0] = r9;
                                                                         K(i);
-                                                                        ?? r11 = r9;
-                                                                        z13 = r11 == true ? 1 : 0;
+                                                                        boolean r11 = true;
+                                                                        z13 = r11;
                                                                         r3 = r11;
                                                                     }
                                                                 }
@@ -1565,7 +1565,7 @@ public final class kc0 extends jc0 {
                                                         if (iMax2 > i()) {
                                                             H(iMax2);
                                                             r21[r9] = r9;
-                                                            r4 = r9;
+                                                            r4 = true;
                                                             z10 = r4;
                                                         } else {
                                                             r0 = r17;
@@ -1579,8 +1579,8 @@ public final class kc0 extends jc0 {
                                                                     this.D0 = true;
                                                                     r21[0] = r9;
                                                                     K(i);
-                                                                    ?? r13 = r9;
-                                                                    z13 = r13 == true ? 1 : 0;
+                                                                    boolean r13 = true;
+                                                                    z13 = r13;
                                                                     r3 = r13;
                                                                 }
                                                             }
@@ -1727,7 +1727,7 @@ public final class kc0 extends jc0 {
                                                             if (iMax2 > i()) {
                                                                 H(iMax2);
                                                                 r21[r9] = r9;
-                                                                r4 = r9;
+                                                                r4 = true;
                                                                 z10 = r4;
                                                             } else {
                                                                 r0 = r17;
@@ -1741,8 +1741,8 @@ public final class kc0 extends jc0 {
                                                                         this.D0 = true;
                                                                         r21[0] = r9;
                                                                         K(i);
-                                                                        ?? r14 = r9;
-                                                                        z13 = r14 == true ? 1 : 0;
+                                                                        boolean r14 = true;
+                                                                        z13 = r14;
                                                                         r3 = r14;
                                                                     }
                                                                 }
@@ -1908,7 +1908,7 @@ public final class kc0 extends jc0 {
                                 if (iMax2 > i()) {
                                     H(iMax2);
                                     r21[r9] = r9;
-                                    r4 = r9;
+                                    r4 = true;
                                     z10 = r4;
                                 } else {
                                     r0 = r17;
@@ -1922,8 +1922,8 @@ public final class kc0 extends jc0 {
                                             this.D0 = true;
                                             r21[0] = r9;
                                             K(i);
-                                            ?? r15 = r9;
-                                            z13 = r15 == true ? 1 : 0;
+                                            boolean r15 = true;
+                                            z13 = r15;
                                             r3 = r15;
                                         }
                                     }
@@ -2199,7 +2199,7 @@ public final class kc0 extends jc0 {
                                 if (iMax2 > i()) {
                                     H(iMax2);
                                     r21[r9] = r9;
-                                    r4 = r9;
+                                    r4 = true;
                                     z10 = r4;
                                 } else {
                                     r0 = r17;
@@ -2213,8 +2213,8 @@ public final class kc0 extends jc0 {
                                             this.D0 = true;
                                             r21[0] = r9;
                                             K(i);
-                                            ?? r16 = r9;
-                                            z13 = r16 == true ? 1 : 0;
+                                            boolean r16 = true;
+                                            z13 = r16;
                                             r3 = r16;
                                         }
                                     }
@@ -2453,7 +2453,7 @@ public final class kc0 extends jc0 {
                             if (iMax2 > i()) {
                                 H(iMax2);
                                 r21[r9] = r9;
-                                r4 = r9;
+                                r4 = true;
                                 z10 = r4;
                             } else {
                                 r0 = r17;
@@ -2467,8 +2467,8 @@ public final class kc0 extends jc0 {
                                         this.D0 = true;
                                         r21[0] = r9;
                                         K(i);
-                                        ?? r18 = r9;
-                                        z13 = r18 == true ? 1 : 0;
+                                        boolean r18 = true;
+                                        z13 = r18;
                                         r3 = r18;
                                     }
                                 }
@@ -2700,7 +2700,7 @@ public final class kc0 extends jc0 {
             if (iMax2 > i()) {
                 H(iMax2);
                 r21[r9] = r9;
-                r4 = r9;
+                r4 = true;
                 z10 = r4;
             } else {
                 r0 = r17;
@@ -2714,8 +2714,8 @@ public final class kc0 extends jc0 {
                         this.D0 = true;
                         r21[0] = r9;
                         K(i);
-                        ?? r19 = r9;
-                        z13 = r19 == true ? 1 : 0;
+                        boolean r19 = true;
+                        z13 = r19;
                         r3 = r19;
                     }
                 }
