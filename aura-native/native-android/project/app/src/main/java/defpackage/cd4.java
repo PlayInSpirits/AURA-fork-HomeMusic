@@ -66,68 +66,43 @@ jg1 {
      * Lifted jumps to return sites
      */
     @Override
-    public final Object b(Object object, vd0 object2) {
-        void var1_11;
-        xe0 xe02;
-        void var1_8;
-        void var2_18;
-        void var1_14;
-        vd0[] vd0Array;
-        cz cz5;
-        block15: {
-            void var2_15;
-            if (this.q(object)) {
-                return j15.a;
-            }
-            cz5 = new cz(1, ya4.x((vd0)var2_15));
-            cz5.u();
-            vd0Array = bu.a;
-            // MONITORENTER : this
-            boolean bl5 = this.r(object);
-            if (!bl5) break block15;
-            try {
-                cz5.resumeWith(j15.a);
-                vd0[] vd0Array2 = this.n(vd0Array);
-                Object var2_16 = null;
-            }
-            catch (Throwable throwable) {
-                throw var1_14;
+    public final Object b(Object value, vd0 continuation) {
+        if (this.q(value)) {
+            return j15.a;
+        }
+
+        cz waiter = new cz(1, ya4.x(continuation));
+        waiter.u();
+        vd0[] resumptions = bu.a;
+        Object pendingNode = null;
+
+        synchronized (this) {
+            if (this.r(value)) {
+                waiter.resumeWith(j15.a);
+                resumptions = this.n(resumptions);
+            } else {
+                long sequence = this.o() + (long) (this.x + this.y);
+                ad4 node = new ad4(this, sequence, value, waiter);
+                this.m(node);
+                this.y++;
+                if (this.s == 0) {
+                    resumptions = this.n(resumptions);
+                }
+                pendingNode = node;
             }
         }
-        long l16 = this.o();
-        int n16 = this.x;
-        int n17 = this.y++;
-        long l17 = n16 + n17;
-        try {
-            ad4 ad42 = new ad4(this, l16 + l17, object, cz5);
-            this.m(ad42);
-            vd0[] vd0Array3 = vd0Array;
-            if (this.s == 0) {
-                vd0[] vd0Array4 = this.n(vd0Array);
+
+        if (pendingNode != null) {
+            waiter.x(new wy(2, pendingNode));
+        }
+        for (vd0 resume : resumptions) {
+            if (resume != null) {
+                resume.resumeWith(j15.a);
             }
         }
-        catch (Throwable throwable) {
-            throw var1_14;
-        }
-        if (var2_18 != null) {
-            cz5.x(new wy(2, var2_18));
-        }
-        for (void var2_20 : var1_8) {
-            if (var2_20 == null) continue;
-            var2_20.resumeWith(j15.a);
-        }
-        Object object3 = cz5.q();
-        if (object3 != (xe02 = xe0.n)) {
-            j15 j152 = j15.a;
-        }
-        if (var1_11 != xe02) return j15.a;
-        return var1_11;
-        catch (Throwable throwable) {
-            throw var1_14;
-        }
-        catch (Throwable throwable) {
-            throw var1_14;
-        }
+
+        Object result = waiter.q();
+        return result == xe0.n ? result : j15.a;
     }
 
     @Override
