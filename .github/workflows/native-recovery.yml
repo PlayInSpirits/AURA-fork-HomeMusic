@@ -139,7 +139,7 @@ jobs:
             apk_win="$(cygpath -w "$apk")"
             output_win="$(cygpath -w "$output")"
             echo "Decompiling $apk"
-            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --show-bad-code --no-res -d '$output_win' '$apk_win'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }"
+            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --show-bad-code --no-res -d '$output_win' '$apk_win'; if (\$LASTEXITCODE -ne 0) { exit \$LASTEXITCODE }"
           }
           decompile "recovery/downloads/HomeMusic-1.14.7.apk" "recovery/jadx-original"
           decompile "recovery/downloads/AURA-0.30.2.apk" "recovery/jadx-aura-0302"
