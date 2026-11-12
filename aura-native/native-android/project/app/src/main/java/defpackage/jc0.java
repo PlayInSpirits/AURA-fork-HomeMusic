@@ -682,8 +682,8 @@ public class jc0 {
         ai4 ai4Var2;
         ai4 ai4Var3;
         boolean z10;
-        ?? r3;
-        ?? r4;
+        int r3;
+        int r4;
         int i21;
         ai4 ai4Var4;
         ai4 ai4Var5;
@@ -695,7 +695,7 @@ public class jc0 {
         ai4 ai4Var7;
         int i25;
         float f2;
-        ?? r27;
+        int r27;
         w45 w45Var;
         boolean z12;
         up1 up1Var;
@@ -802,9 +802,8 @@ public class jc0 {
                     }
                 }
                 if (this.k && this.l) {
-                    ?? r12 = i;
-                    this.k = r12;
-                    this.l = r12;
+                    this.k = false;
+                    this.l = false;
                     return;
                 }
             }
@@ -1242,12 +1241,12 @@ public class jc0 {
                                 ai4 ai4VarK20 = jc0Var6 != null ? eb2Var2.k(jc0Var6.J) : null;
                                 jc0 jc0Var7 = this.S;
                                 ai4 ai4VarK21 = jc0Var7 != null ? eb2Var2.k(jc0Var7.H) : null;
-                                ?? r5 = i6;
+                                int r5 = i6;
                                 i21 = i17;
                                 z10 = z3;
                                 boolean z21 = z20;
                                 ai4Var = ai4VarK;
-                                ?? r6 = i5;
+                                int r6 = i5;
                                 ai4Var2 = ai4VarK2;
                                 hb0Var4 = hb0Var;
                                 ai4Var3 = ai4VarK5;
@@ -1344,7 +1343,7 @@ public class jc0 {
                                 float f3 = this.d0;
                                 int i45 = iArr[i40];
                                 boolean z23 = z11 ? 1 : 0;
-                                ?? r18 = z11;
+                                int r18 = z11 ? 1 : 0;
                                 if (i45 != 3) {
                                     r18 = i40;
                                 }
@@ -2370,9 +2369,8 @@ public class jc0 {
                 }
             }
             if (this.k) {
-                ?? r13 = i;
-                this.k = r13;
-                this.l = r13;
+                this.k = false;
+                this.l = false;
                 return;
             }
         } else {
@@ -2419,9 +2417,8 @@ public class jc0 {
                 }
             }
             if (this.k) {
-                ?? r14 = i;
-                this.k = r14;
-                this.l = r14;
+                this.k = false;
+                this.l = false;
                 return;
             }
         }
