@@ -20,6 +20,7 @@ jobs:
     runs-on: [self-hosted, windows, x64]
     defaults:
       run:
+        working-directory: native
         shell: 'C:\PROGRA~1\Git\bin\bash.exe --noprofile --norc -eo pipefail {0}'
 
     steps:
@@ -27,7 +28,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: native-v0.10.1
-          fetch-depth: 0
+          path: native
+          fetch-depth: 1
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -54,7 +56,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: aura-native-recovery
-          path: recovery-input
+          path: native/recovery-input
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: PlayInSpirits/AURA-fork-HomeMusic
           run-id: 43147516314
@@ -325,8 +327,8 @@ jobs:
         with:
           name: aura-native-repaired-debug
           path: |
-            native-android/project/app/build/outputs/apk/debug/*.apk
-            build-diagnostics/
+            native/native-android/project/app/build/outputs/apk/debug/*.apk
+            native/build-diagnostics/
           if-no-files-found: warn
           compression-level: 3
           retention-days: 30
