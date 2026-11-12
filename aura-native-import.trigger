@@ -1,1 +1,1 @@
-Retry import using isolated Git repos and exact refs only.
+Retry complete import after concurrency-safe rebase and accelerated full-tree comparison.
