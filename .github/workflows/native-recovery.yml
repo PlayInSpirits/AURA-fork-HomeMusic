@@ -196,6 +196,24 @@ jobs:
           mkdir -p recovery/gradle-export-aura-0751
           powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --show-bad-code --export-gradle --export-gradle-type android-app -d '$OUT_WIN' '$APK_WIN'; if (\$LASTEXITCODE -ne 0) { Write-Warning 'JADX Gradle export reported decompilation errors; preserving generated files.' }"
 
+      - name: Generate compile-oriented Java with JADX simple mode
+        run: |
+          set -euo pipefail
+          JADX_BAT="$(cygpath -w "$PWD/recovery/tools/jadx/bin/jadx.bat")"
+          APK_WIN="$(cygpath -w "$PWD/recovery/downloads/AURA-0.75.1.apk")"
+          OUT_WIN="$(cygpath -w "$PWD/recovery/jadx-aura-0751-simple")"
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --decompilation-mode simple --show-bad-code --no-res -d '$OUT_WIN' '$APK_WIN'; if (\$LASTEXITCODE -ne 0) { Write-Warning 'JADX simple mode reported per-method errors; preserving generated Java for compile test.' }"
+          "$AURA_PYTHON" - <<'PY'
+          from pathlib import Path
+          root=Path("recovery/jadx-aura-0751-simple/sources")
+          files=list(root.rglob("*.java")) if root.is_dir() else []
+          if not files:
+              raise SystemExit("JADX simple mode did not produce Java sources.")
+          print("JADX simple-mode Java files:",len(files))
+          bad=sum(p.read_text(encoding="utf-8",errors="replace").count("??") for p in files)
+          print("Remaining '??' markers:",bad)
+          PY
+
       - name: Decode latest AURA resources and Smali with Apktool
         run: |
           set -euo pipefail
@@ -264,8 +282,41 @@ jobs:
           cp -a recovery/gradle-export-aura-0751/. native-android/project/
           "$AURA_PYTHON" - <<'PY'
           from pathlib import Path
-          import re, json
+          import re, json, shutil
           project=Path("native-android/project")
+
+          # Use JADX's linear/simple Java output for compilation repair; retain the normal-mode export separately.
+          simple_sources=Path("recovery/jadx-aura-0751-simple/sources")
+          if not simple_sources.is_dir() or not any(simple_sources.rglob("*.java")):
+              raise SystemExit("JADX simple-mode sources are missing.")
+          app_sources=project/"app/src/main/java"
+          if app_sources.exists():
+              shutil.rmtree(app_sources)
+          shutil.copytree(simple_sources,app_sources)
+
+          # Android framework API stubs emitted by JADX are placeholders, not app sources.
+          android_root=app_sources/"android"
+          if android_root.is_dir():
+              for child in list(android_root.iterdir()):
+                  if child.name != "support":
+                      if child.is_dir():
+                          shutil.rmtree(child)
+                      else:
+                          child.unlink()
+
+          # AndroidX and Material are distributed as Maven artifacts; use their packaged versions
+          # instead of compiling decompiled copies of those libraries.
+          androidx_root=app_sources/"androidx"
+          if androidx_root.is_dir():
+              shutil.rmtree(androidx_root)
+          material_root=app_sources/"com/google/android/material"
+          if material_root.is_dir():
+              shutil.rmtree(material_root)
+
+          # ExoPlayer's decompiled interface contains a JVM class initializer that Java forbids in interfaces.
+          exoplayer=app_sources/"androidx/media3/exoplayer/ExoPlayer.java"
+          if exoplayer.exists():
+              exoplayer.unlink()
           build=project/"app/build.gradle"
           if not build.is_file():
               raise SystemExit(f"Gradle application file is missing: {build}")
@@ -285,6 +336,46 @@ jobs:
               raise SystemExit("Could not update recovered Android Gradle Plugin to 9.4.0 for compileSdk 37.")
           root_build.write_text(root_updated,encoding="utf-8",newline="\n")
 
+          # Reconstruct AndroidX/Material dependencies from the embedded META-INF version markers.
+          meta=project/"app/src/main/META-INF"
+          dependencies=[]
+          seen=set()
+          if meta.is_dir():
+              for marker in sorted(meta.glob("*.version")):
+                  stem=marker.name[:-len(".version")]
+                  version=marker.read_text(encoding="utf-8",errors="replace").strip()
+                  if not re.fullmatch(r"[0-9]+(?:\.[0-9A-Za-z-]+){1,4}",version):
+                      continue
+                  if stem.startswith("androidx."):
+                      group,artifact=stem.split("_",1)
+                  elif stem.startswith("com.google.android.material_"):
+                      group,artifact=stem.split("_",1)
+                  elif stem.startswith("kotlinx_coroutines_"):
+                      group="org.jetbrains.kotlinx"
+                      artifact=stem[len("kotlinx_coroutines_"):]
+                  else:
+                      continue
+                  if (group,artifact) in seen or artifact == "viewbinding":
+                      continue
+                  seen.add((group,artifact))
+                  dependencies.append((group,artifact,version))
+          # Media3 has no embedded *.version marker in this APK; keep its recovered source package for now.
+          media3=Path("recovery/gradle-export-aura-0751/app/src/main/java/androidx/media3")
+          media3_target=app_sources/"androidx/media3"
+          if media3.is_dir():
+              shutil.copytree(media3,media3_target,dirs_exist_ok=True)
+          app_build=project/"app/build.gradle"
+          build_text=app_build.read_text(encoding="utf-8")
+          dep_block="dependencies {\n"
+          for group,artifact,version in sorted(dependencies):
+              dep_block += f"    implementation '{group}:{artifact}:{version}'\n"
+          dep_block += "}\n"
+          build_text,nsub=re.subn(r"(?s)dependencies\s*\{.*?\}",lambda _:dep_block,build_text,count=1)
+          if nsub != 1:
+              raise SystemExit("Could not replace the empty recovered Gradle dependency block.")
+          app_build.write_text(build_text,encoding="utf-8",newline="\n")
+          print("Reconstructed Maven dependencies from embedded metadata:",len(dependencies))
+
           manifest=project/"app/src/main/AndroidManifest.xml"
           if not manifest.is_file():
               raise SystemExit("Recovered AndroidManifest.xml is missing.")
@@ -302,8 +393,8 @@ jobs:
               p.unlink()
           notice = (
               "# Recovered Android source baseline\n\n"
-              "This is a JADX 1.5.6 Gradle export from the AURA 0.75.1 APK, not the original author's source tree. "
-              "Some methods were only partially decompiled and must be cross-checked against the accompanying Apktool Smali reference.\n\n"
+              "This is a recovered Android project built from AURA 0.75.1 using JADX 1.5.6 simple-mode Java and Apktool resources; it is not the original author's source tree. "
+              "Some methods may be partially decompiled and must be cross-checked against the accompanying Apktool Smali reference. AndroidX and Material sources are restored as Maven dependencies using embedded version markers.\n\n"
               "The application ID is preserved as app.homemusic; display version is v0.10.1 and versionCode is 7502. "
               "Do not publish a release from this baseline until Gradle builds, signature compatibility, data migration, and Hub/Navidrome acceptance tests pass.\n"
           )
@@ -403,13 +494,14 @@ jobs:
           echo "$BUILD_EXIT" > recovery/gradle-build-exit-code.txt
           cat recovery/gradle-build.log
           if [ "$BUILD_EXIT" -ne 0 ]; then
-            echo "::warning::The recovered Gradle project is not compiling yet. The exact compiler/configuration errors were saved in recovery/gradle-build.log."
-          else
-            echo "Gradle debug APK build succeeded."
-            find native-android/project/app/build/outputs/apk -type f -name '*.apk' -print
+            echo "::error::The recovered Gradle project did not compile. Exact errors are saved in recovery/gradle-build.log."
+            exit 1
           fi
+          echo "Gradle debug APK build succeeded."
+          find native-android/project/app/build/outputs/apk -type f -name '*.apk' -print
 
       - name: Upload native recovery inputs and decompiled source
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: aura-native-recovery
@@ -418,6 +510,7 @@ jobs:
             recovery/jadx-original/
             recovery/jadx-aura-0302/
             recovery/jadx-aura-0751/
+            recovery/jadx-aura-0751-simple/
             recovery/apktool-aura-0751/
             recovery/gradle-export-aura-0751/
             recovery/recovery-inventory.json
