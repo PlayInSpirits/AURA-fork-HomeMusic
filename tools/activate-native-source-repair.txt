@@ -1,2 +1,3 @@
 One-time source repair: re-apply the saved AURA 0.75.1 JADX+CFR sources from Actions run 43147516314 after the CFR merge, then run :app:assembleDebug. Retry with isolated native/ checkout.
 Use runner-installed JDK 17 and persistent Python 3.12 without setup-java/setup-python.
+Fix recovery inventory path variable shadowing.
