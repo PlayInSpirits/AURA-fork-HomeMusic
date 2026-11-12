@@ -526,8 +526,8 @@ public abstract class gh0 {
             if ((((cx2) c72VarO.Q.g).q & 262144) != 0) {
                 while (cx2Var2 != null) {
                     if ((cx2Var2.p & 262144) != 0) {
-                        ?? C = cx2Var2;
-                        ?? f13Var = 0;
+                        cx2 C = cx2Var2;
+                        f13 f13Var = null;
                         while (C != 0) {
                             boolean zBooleanValue = true;
                             if (C instanceof rx4) {
@@ -635,8 +635,8 @@ public abstract class gh0 {
                 while (true) {
                     if (cx2Var4 != null && cx2Var4.A) {
                         if ((cx2Var4.p & 262144) != 0) {
-                            ?? C = cx2Var4;
-                            ?? f13Var2 = 0;
+                            cx2 C = cx2Var4;
+                            f13 f13Var2 = null;
                             while (C != 0) {
                                 if (C instanceof rx4) {
                                     rx4 rx4Var2 = (rx4) C;
