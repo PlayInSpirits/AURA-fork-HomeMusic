@@ -288,7 +288,7 @@ public final class ri2 {
     public final boolean l(gf1 gf1Var) {
         boolean z;
         cx2 cx2Var;
-        ?? C;
+        cx2 C;
         boolean z2;
         c72 c72Var;
         boolean z3;
@@ -392,9 +392,9 @@ public final class ri2 {
             cx2 cx2VarD0 = iz1Var.D0(zF);
             while (cx2VarD0 != null && (cx2VarD0.q & 4194304) != 0) {
                 if ((cx2VarD0.p & 4194304) != 0) {
-                    ?? r12 = cx2VarD0;
-                    ?? f13Var2 = 0;
-                    while (r12 != 0) {
+                    cx2 r12 = cx2VarD0;
+                    f13 f13Var2 = null;
+                    while (r12 != null) {
                         if (r12 instanceof o62) {
                             ((o62) r12).e((iz1) w12Var.d);
                         } else {
@@ -410,12 +410,12 @@ public final class ri2 {
                                             f13Var2 = f13Var2;
                                             C = cx2Var2;
                                         } else {
-                                            if (f13Var2 == 0) {
+                                            if (f13Var2 == null) {
                                                 f13Var2 = new f13(new cx2[16]);
                                             }
-                                            if (C != 0) {
+                                            if (C != null) {
                                                 f13Var2.b(C);
-                                                C = 0;
+                                                C = null;
                                             }
                                             f13Var2.b(cx2Var2);
                                         }
@@ -552,8 +552,8 @@ public final class ri2 {
             for (cx2 cx2VarD0 = iz1Var.D0(zF); cx2VarD0 != null && (cx2VarD0.q & 4194304) != 0; cx2VarD0 = cx2VarD0.s) {
                 if ((cx2VarD0.p & 4194304) != 0) {
                     ?? C = cx2VarD0;
-                    ?? f13Var2 = 0;
-                    while (C != 0) {
+                    f13 f13Var2 = null;
+                    while (C != null) {
                         if (C instanceof o62) {
                             ((o62) C).e((iz1) w12Var.d);
                         } else if ((C.p & 4194304) != 0 && (C instanceof fo0)) {
@@ -568,12 +568,12 @@ public final class ri2 {
                                         f13Var2 = f13Var2;
                                         C = cx2Var2;
                                     } else {
-                                        if (f13Var2 == 0) {
+                                        if (f13Var2 == null) {
                                             f13Var2 = new f13(new cx2[16]);
                                         }
-                                        if (C != 0) {
+                                        if (C != null) {
                                             f13Var2.b(C);
-                                            C = 0;
+                                            C = null;
                                         }
                                         f13Var2.b(cx2Var2);
                                     }
