@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'aura-native/native-android/project/**'
+      - '.github/workflows/aura-native-build.yml'
   workflow_dispatch:
 
 permissions:
