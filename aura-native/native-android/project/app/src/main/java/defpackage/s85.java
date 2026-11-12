@@ -72,7 +72,7 @@ public final class s85 extends im4 {
                 this.r = zz1.C(be3Var, true, true);
             } else {
                 int i2 = be3Var.c;
-                ?? r8 = new byte[i2];
+                byte[] r8 = new byte[i2];
                 System.arraycopy(be3Var.a, 0, r8, 0, i2);
                 int i3 = wy2Var.a;
                 int i4 = 5;
@@ -342,7 +342,7 @@ public final class s85 extends im4 {
         int iPow = (int) Math.pow(2.0d, iA3 & 15);
         int iPow2 = (int) Math.pow(2.0d, (iA3 & 240) >> 4);
         be3Var.A();
-        ?? CopyOf = Arrays.copyOf(be3Var.a, be3Var.c);
+        byte[] copyOf = Arrays.copyOf(be3Var.a, be3Var.c);
         wy2 wy2Var3 = new wy2();
         wy2Var3.a = iA2;
         wy2Var3.b = iS;
@@ -350,7 +350,7 @@ public final class s85 extends im4 {
         wy2Var3.d = i66;
         wy2Var3.e = iPow;
         wy2Var3.f = iPow2;
-        wy2Var3.g = CopyOf;
+        wy2Var3.g = copyOf;
         this.q = wy2Var3;
         ew4Var = null;
         this.n = ew4Var;
