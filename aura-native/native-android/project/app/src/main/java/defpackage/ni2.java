@@ -236,17 +236,17 @@ public final class ni2 implements k51 {
         int i2;
         int i3;
         String str;
-        ?? r4;
+        int r4;
         int i4;
         int iA;
-        ?? r1;
+        l51 r1;
         boolean z2;
-        ?? r2;
+        l51 r2;
         int i5;
         byte b;
         List listSingletonList;
         int iC;
-        ?? r3;
+        byte r3;
         int i6;
         ArrayList arrayList;
         RuntimeException runtimeException;
@@ -290,22 +290,22 @@ public final class ni2 implements k51 {
         boolean z4 = true;
         boolean z5 = true;
         while (z5 && !ni2Var.N) {
-            ?? r7 = ni2Var.a;
-            ?? r8 = r7.c;
+            mk0 r7 = ni2Var.a;
+            k35 r8 = r7.c;
             ArrayDeque arrayDeque = r7.b;
             r7.d.getClass();
             while (true) {
                 lk0 lk0Var = (lk0) arrayDeque.peek();
                 if (lk0Var == null || l51Var.getPosition() < lk0Var.b) {
-                    boolean z6 = z3 ? 1 : 0;
-                    ?? r5 = l51Var;
+                    int z6 = z3 ? 1 : 0;
+                    l51 r5 = l51Var;
                     if (r7.e == 0) {
                         int i15 = 4;
                         long jB = r8.b(r5, true, z6, 4);
                         if (jB == -2) {
                             byte[] bArr2 = r7.a;
                             r5.k();
-                            ?? r6 = z6;
+                            int r6 = z6;
                             while (true) {
                                 r5.n(bArr2, r6, i15);
                                 byte b2 = bArr2[r6];
@@ -348,7 +348,7 @@ public final class ni2 implements k51 {
                         r7.g = r8.b(r5, false, z, 8);
                         r7.e = 2;
                     }
-                    ?? r0 = r7.d;
+                    hg3 r0 = r7.d;
                     int i17 = r7.f;
                     Object obj2 = r0.o;
                     switch (i17) {

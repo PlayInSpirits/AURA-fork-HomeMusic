@@ -41,7 +41,7 @@ public final /* synthetic */ class o implements if1 {
     /* JADX WARN: Type inference failed for: r8v11, types: [si1] */
     @Override // defpackage.if1
     public final Object invoke(Object obj) throws Exception {
-        ?? arrayList;
+        List arrayList;
         Integer numValueOf;
         int i;
         long jA;

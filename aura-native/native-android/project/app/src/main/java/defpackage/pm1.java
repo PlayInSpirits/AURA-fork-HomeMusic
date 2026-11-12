@@ -287,7 +287,7 @@ public final class pm1 implements no2, gn1 {
         Object[] objArr4;
         Object[] objArr5;
         int i6;
-        ?? r30;
+        int r30;
         int[] iArr3 = new int[t41VarArr.length];
         int[] iArr4 = new int[t41VarArr.length];
         int i7 = 0;
@@ -336,7 +336,7 @@ public final class pm1 implements no2, gn1 {
         Object[] objArr7 = q44VarArr2;
         while (i10 < this.G.length) {
             int i12 = length2;
-            ?? r7 = z4;
+            int r7 = z4;
             Object[] objArr8 = objArr6;
             while (true) {
                 objArr = objArr8;
@@ -358,7 +358,7 @@ public final class pm1 implements no2, gn1 {
             ln1Var3.v();
             int i14 = ln1Var3.R;
             Object[] objArr9 = objArr7;
-            ?? r8 = z4;
+            int r8 = z4;
             while (r8 < length4) {
                 hn1 hn1Var = (hn1) objArr9[r8];
                 if (hn1Var == null || (t41VarArr2[r8] != null && zArr[r8])) {
@@ -376,7 +376,7 @@ public final class pm1 implements no2, gn1 {
                         ln1Var4.a0[i16] = z4;
                         hn1Var.p = -1;
                     }
-                    objArr9[r30 == true ? 1 : 0] = null;
+                    objArr9[r30] = null;
                 }
                 t41VarArr2 = t41VarArr2;
                 r8 = r30 + 1;
@@ -404,10 +404,10 @@ public final class pm1 implements no2, gn1 {
             t41 t41Var2 = km1Var2.r;
             boolean z7 = z;
             t41 t41Var3 = t41Var2;
-            ?? r9 = z4;
+            int r9 = z4;
             while (r9 < length4) {
-                ?? r31 = r9;
-                t41 t41Var4 = t41VarArr3[r31 == true ? 1 : 0];
+                int r31 = r9;
+                t41 t41Var4 = t41VarArr3[r31];
                 if (t41Var4 == null) {
                     i6 = length4;
                 } else {

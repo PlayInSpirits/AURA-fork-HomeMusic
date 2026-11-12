@@ -172,23 +172,23 @@ public final class mv1 extends zz1 {
     public static nv1 T(int i, be3 be3Var, boolean z, int i2, kv1 kv1Var) throws Throwable {
         int iE;
         int i3;
-        ?? r1;
+        int r1;
         boolean z2;
         boolean z3;
         boolean z4;
         boolean z5;
         boolean z6;
-        ?? r9;
+        int r9;
         int i4;
         int i5;
-        ?? r2;
+        be3 r2;
         Throwable th;
-        ?? r3;
-        ?? r12;
-        ?? r10;
-        ?? r11;
+        be3 r3;
+        nv1 r12;
+        int r10;
+        int r11;
         be3 be3Var2;
-        Object ksVar;
+        nv1 ksVar;
         int i6 = i;
         int iA = be3Var.A();
         int iA2 = be3Var.A();
@@ -297,14 +297,14 @@ public final class mv1 extends zz1 {
                                             try {
                                                 ksVar = Q(be3Var, i3, i6, z, i2, kv1Var);
                                                 i6 = i;
-                                                r1 = be3Var;
+                                                be3Var2 = be3Var;
                                             } catch (Exception e) {
                                                 e = e;
                                                 i6 = i;
                                                 r2 = be3Var;
                                                 r9 = r11;
                                                 r2.N(i7);
-                                                r12 = th;
+                                                r12 = null;
                                                 r10 = r9;
                                             } catch (OutOfMemoryError e2) {
                                                 e = e2;
@@ -332,19 +332,19 @@ public final class mv1 extends zz1 {
                                                     i6 = i;
                                                     be3 be3Var3 = be3Var;
                                                     ksVar = R(be3Var3, i3, i6, z, i2, kv1Var);
-                                                    r1 = be3Var3;
+                                                    be3Var2 = be3Var3;
                                                 } else {
                                                     i6 = i;
                                                     be3Var2 = be3Var;
                                                     if (r11 != 77 && iI0 == 76 && i4 == 76 && i5 == 84) {
                                                         ksVar = V(i3, be3Var2);
-                                                        r1 = be3Var2;
+                                                        be3Var2 = be3Var2;
                                                     } else {
-                                                        String strF0 = f0(i6, r11 == true ? 1 : 0, iI0, i4, i5);
+                                                        String strF0 = f0(i6, r11, iI0, i4, i5);
                                                         byte[] bArr = new byte[i3];
                                                         be3Var2.k(bArr, 0, i3);
                                                         ksVar = new ks(strF0, bArr);
-                                                        r1 = be3Var2;
+                                                        be3Var2 = be3Var2;
                                                     }
                                                 }
                                             } catch (Exception e3) {
@@ -388,13 +388,13 @@ public final class mv1 extends zz1 {
                                                     byte[] bArr2 = new byte[i3];
                                                     be3Var2.k(bArr2, 0, i3);
                                                     ksVar = new ks(strF1, bArr2);
-                                                    r1 = be3Var2;
+                                                    be3Var2 = be3Var2;
                                                 } else {
                                                     String strF2 = f0(i6, r11 == true ? 1 : 0, iI0, i4, i5);
                                                     byte[] bArr3 = new byte[i3];
                                                     be3Var2.k(bArr3, 0, i3);
                                                     ksVar = new ks(strF2, bArr3);
-                                                    r1 = be3Var2;
+                                                    be3Var2 = be3Var2;
                                                 }
                                             } else {
                                                 i6 = i;
@@ -404,13 +404,13 @@ public final class mv1 extends zz1 {
                                                     byte[] bArr4 = new byte[i3];
                                                     be3Var2.k(bArr4, 0, i3);
                                                     ksVar = new ks(strF3, bArr4);
-                                                    r1 = be3Var2;
+                                                    be3Var2 = be3Var2;
                                                 } else {
                                                     String strF4 = f0(i6, r11 == true ? 1 : 0, iI0, i4, i5);
                                                     byte[] bArr5 = new byte[i3];
                                                     be3Var2.k(bArr5, 0, i3);
                                                     ksVar = new ks(strF4, bArr5);
-                                                    r1 = be3Var2;
+                                                    be3Var2 = be3Var2;
                                                 }
                                             }
                                         } else {
@@ -428,13 +428,13 @@ public final class mv1 extends zz1 {
                                                     byte[] bArr6 = new byte[i3];
                                                     be3Var2.k(bArr6, 0, i3);
                                                     ksVar = new ks(strF5, bArr6);
-                                                    r1 = be3Var2;
+                                                    be3Var2 = be3Var2;
                                                 } else {
                                                     String strF6 = f0(i6, r11 == true ? 1 : 0, iI0, i4, i5);
                                                     byte[] bArr7 = new byte[i3];
                                                     be3Var2.k(bArr7, 0, i3);
                                                     ksVar = new ks(strF6, bArr7);
-                                                    r1 = be3Var2;
+                                                    be3Var2 = be3Var2;
                                                 }
                                             } else {
                                                 i6 = i;
@@ -444,18 +444,18 @@ public final class mv1 extends zz1 {
                                                     byte[] bArr8 = new byte[i3];
                                                     be3Var2.k(bArr8, 0, i3);
                                                     ksVar = new ks(strF7, bArr8);
-                                                    r1 = be3Var2;
+                                                    be3Var2 = be3Var2;
                                                 } else {
                                                     String strF8 = f0(i6, r11 == true ? 1 : 0, iI0, i4, i5);
                                                     byte[] bArr9 = new byte[i3];
                                                     be3Var2.k(bArr9, 0, i3);
                                                     ksVar = new ks(strF8, bArr9);
-                                                    r1 = be3Var2;
+                                                    be3Var2 = be3Var2;
                                                 }
                                             }
                                         }
                                     }
-                                    if (r12 == 0) {
+                                    if (r12 == null) {
                                         l93.r0("Id3Decoder", "Failed to decode frame: id=" + f0(i6, r10, iI0, i4, i5) + ", frameSize=" + i3, e);
                                     }
                                     return r12;
@@ -467,7 +467,7 @@ public final class mv1 extends zz1 {
                                 r11 = r1;
                                 i4 = iA3;
                                 i5 = iA4;
-                                r1 = be3Var;
+                                be3Var2 = be3Var;
                             } catch (Exception e5) {
                                 e = e5;
                                 int i13 = iI0;
@@ -502,7 +502,7 @@ public final class mv1 extends zz1 {
                                 return r12;
                             }
                         }
-                        r1.N(i7);
+                        be3Var2.N(i7);
                         r12 = ksVar;
                         e = th;
                         r10 = r11;
@@ -519,7 +519,7 @@ public final class mv1 extends zz1 {
                 r11 = r1;
                 i4 = iA3;
                 i5 = iA4;
-                r1 = be3Var;
+                be3Var2 = be3Var;
                 th = null;
                 r1.N(i7);
                 r12 = ksVar;

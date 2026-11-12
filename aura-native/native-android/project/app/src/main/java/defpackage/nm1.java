@@ -212,7 +212,7 @@ public final class nm1 extends s20 {
         long jU;
         jw jwVar;
         iu4 iu4Var;
-        ?? oe1Var;
+        k51 oe1Var;
         boolean zC;
         om0 om0Var;
         boolean z2;
@@ -323,7 +323,7 @@ public final class nm1 extends s20 {
                     i6++;
                 }
                 rk0Var2.s = 0;
-                ?? r19 = rk0Var;
+                k51 r19 = null;
                 int i8 = 0;
                 while (true) {
                     int size = arrayList.size();
