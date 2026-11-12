@@ -404,22 +404,20 @@ jobs:
           exoplayer=media3_target/"exoplayer/ExoPlayer.java"
           if exoplayer.is_file():
               exo_source=exoplayer.read_text(encoding="utf-8")
-              illegal_block=(
-                  "    public static final int a;\n\n"
-                  "    static {\n"
-                  "        String str = f35.a;\n"
-                  "        String strU = rr2.U(Build.DEVICE);\n"
-                  "        a = (strU.contains(\\"emulator\\") || strU.contains(\\"emu64a\\") || strU.contains(\\"emu64x\\") || strU.contains(\\"generic\\")) ? 30000 : 10000;\n"
-                  "    }"
-              )
-              legal_block=(
-                  "    int a = getDefaultBufferSize();\n\n"
-                  "    static int getDefaultBufferSize() {\n"
-                  "        String str = f35.a;\n"
-                  "        String strU = rr2.U(Build.DEVICE);\n"
-                  "        return (strU.contains(\\"emulator\\") || strU.contains(\\"emu64a\\") || strU.contains(\\"emu64x\\") || strU.contains(\\"generic\\")) ? 30000 : 10000;\n"
-                  "    }"
-              )
+              illegal_block = '''    public static final int a;
+
+    static {
+        String str = f35.a;
+        String strU = rr2.U(Build.DEVICE);
+        a = (strU.contains("emulator") || strU.contains("emu64a") || strU.contains("emu64x") || strU.contains("generic")) ? 30000 : 10000;
+    }'''
+              legal_block = '''    int a = getDefaultBufferSize();
+
+    static int getDefaultBufferSize() {
+        String str = f35.a;
+        String strU = rr2.U(Build.DEVICE);
+        return (strU.contains("emulator") || strU.contains("emu64a") || strU.contains("emu64x") || strU.contains("generic")) ? 30000 : 10000;
+    }'''
               if illegal_block not in exo_source:
                   raise SystemExit("Could not locate ExoPlayer interface initializer for safe Java repair.")
               exoplayer.write_text(exo_source.replace(illegal_block,legal_block,1),encoding="utf-8",newline="\n")
