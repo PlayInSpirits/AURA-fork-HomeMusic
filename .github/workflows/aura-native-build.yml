@@ -1,0 +1,145 @@
+name: Build AURA recovered native project
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'aura-native/native-android/project/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: aura-native-main-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Compile imported native AURA project
+    runs-on: [self-hosted, windows, x64]
+    defaults:
+      run:
+        shell: 'C:\\PROGRA~1\\Git\\bin\\bash.exe --noprofile --norc -eo pipefail {0}'
+
+    steps:
+      - name: Fetch exact main ref without wildcard refs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          MAIN_DIR="$(cygpath -u "$RUNNER_TEMP")/aura-native-main"
+          rm -rf "$MAIN_DIR"
+          mkdir -p "$MAIN_DIR"
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\r\n')"
+          git -C "$MAIN_DIR" init -q
+          git -C "$MAIN_DIR" remote add origin "https://github.com/$GITHUB_REPOSITORY"
+          git -C "$MAIN_DIR" -c http.extraheader="$AUTH_HEADER" fetch --no-tags --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+          git -C "$MAIN_DIR" checkout -q -B main refs/remotes/origin/main
+          PROJECT="$MAIN_DIR/aura-native/native-android/project"
+          test -f "$PROJECT/settings.gradle"
+          test -f "$PROJECT/app/build.gradle"
+          echo "Fetched main commit: $(git -C "$MAIN_DIR" rev-parse HEAD)"
+          echo "Native project: $PROJECT"
+
+      - name: Configure JDK 17 and Android SDK API 37
+        run: |
+          set -euo pipefail
+
+          if [ -n "${JAVA_HOME:-}" ]; then
+            JAVA_HOME_UNIX="$(cygpath -u "$JAVA_HOME")"
+          else
+            JAVA_EXE="$(command -v java.exe || command -v java || true)"
+            [ -n "$JAVA_EXE" ] || { echo "::error::JDK was not found on runner PATH."; exit 1; }
+            JAVA_EXE_UNIX="$(cygpath -u "$JAVA_EXE" 2>/dev/null || printf '%s' "$JAVA_EXE")"
+            JAVA_HOME_UNIX="$(cd "$(dirname "$JAVA_EXE_UNIX")/.." && pwd -P)"
+          fi
+          JAVA_RUNTIME="$JAVA_HOME_UNIX/bin/java.exe"
+          [ -f "$JAVA_RUNTIME" ] || JAVA_RUNTIME="$JAVA_HOME_UNIX/bin/java"
+          [ -f "$JAVA_RUNTIME" ] || { echo "::error::Java executable is missing under JAVA_HOME."; exit 1; }
+          "$JAVA_RUNTIME" -version
+          JAVA_SPEC="$("$JAVA_RUNTIME" -XshowSettings:properties -version 2>&1 | sed -n 's/^[[:space:]]*java.specification.version = //p' | head -n 1)"
+          JAVA_MAJOR="${JAVA_SPEC%%.*}"
+          [ -n "$JAVA_MAJOR" ] && [ "$JAVA_MAJOR" -ge 17 ] || { echo "::error::JDK 17+ required; found ${JAVA_SPEC:-unknown}."; exit 1; }
+
+          SDK_ROOT_UNIX=""
+          for candidate in "${ANDROID_SDK_ROOT:-}" "${ANDROID_HOME:-}" "${LOCALAPPDATA:-}/Android/Sdk" "${USERPROFILE:-}/AppData/Local/Android/Sdk" "C:/Android/Sdk"; do
+            [ -n "$candidate" ] || continue
+            p="$(cygpath -u "$candidate" 2>/dev/null || printf '%s' "$candidate")"
+            if [ -d "$p/platforms" ] && [ -d "$p/build-tools" ]; then
+              SDK_ROOT_UNIX="$(cd "$p" && pwd -P)"
+              break
+            fi
+          done
+          [ -n "$SDK_ROOT_UNIX" ] || { echo "::error::Android SDK root with platforms/build-tools not found."; exit 1; }
+
+          PLATFORM_DIR="$(find "$SDK_ROOT_UNIX/platforms" -mindepth 1 -maxdepth 1 -type d -name 'android-37*' | sort -V | tail -n 1)"
+          [ -n "$PLATFORM_DIR" ] && [ -f "$PLATFORM_DIR/android.jar" ] || { echo "::error::Android API 37 platform is not installed."; exit 1; }
+          BUILD_TOOLS_DIR="$(find "$SDK_ROOT_UNIX/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
+          [ -n "$BUILD_TOOLS_DIR" ] || { echo "::error::Android build-tools are missing."; exit 1; }
+
+          printf 'JAVA_HOME=%s\n' "$(cygpath -w "$JAVA_HOME_UNIX")" >> "$GITHUB_ENV"
+          printf 'ANDROID_HOME=%s\n' "$(cygpath -w "$SDK_ROOT_UNIX")" >> "$GITHUB_ENV"
+          printf 'ANDROID_SDK_ROOT=%s\n' "$(cygpath -w "$SDK_ROOT_UNIX")" >> "$GITHUB_ENV"
+          printf 'AURA_AAPT=%s\n' "$(cygpath -w "$BUILD_TOOLS_DIR/aapt.exe")" >> "$GITHUB_ENV"
+          echo "Using platform $(basename "$PLATFORM_DIR"), build-tools $(basename "$BUILD_TOOLS_DIR")."
+
+      - name: Bootstrap verified Gradle 9.6.0
+        run: |
+          set -euo pipefail
+          GRADLE_VERSION="9.6.0"
+          [ -n "${RUNNER_TOOL_CACHE:-}" ] || { echo "::error::RUNNER_TOOL_CACHE is not set."; exit 1; }
+          TOOL_CACHE="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          GRADLE_HOME="$TOOL_CACHE/aura-gradle-$GRADLE_VERSION"
+          GRADLE_LAUNCHER="$GRADLE_HOME/bin/gradle.bat"
+          if [ ! -f "$GRADLE_LAUNCHER" ]; then
+            DOWNLOAD_UNIX="$(cygpath -u "$RUNNER_TEMP")/aura-gradle-download"
+            mkdir -p "$TOOL_CACHE" "$DOWNLOAD_UNIX"
+            ZIP_UNIX="$(cygpath -u "$RUNNER_TEMP")/gradle-$GRADLE_VERSION-bin.zip"
+            SHA_UNIX="$(cygpath -u "$RUNNER_TEMP")/gradle-$GRADLE_VERSION-bin.zip.sha256"
+            curl.exe -fL --retry 3 "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip" -o "$(cygpath -w "$ZIP_UNIX")"
+            curl.exe -fL --retry 3 "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip.sha256" -o "$(cygpath -w "$SHA_UNIX")"
+            EXPECTED="$(awk '{print $1}' "$SHA_UNIX" | tr 'A-F' 'a-f')"
+            ACTUAL="$(sha256sum "$ZIP_UNIX" | awk '{print $1}')"
+            [ "$EXPECTED" = "$ACTUAL" ] || { echo "::error::Gradle SHA-256 mismatch."; exit 1; }
+            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$(cygpath -w "$ZIP_UNIX")' -DestinationPath '$(cygpath -w "$DOWNLOAD_UNIX")' -Force; New-Item -ItemType Directory -Force -Path '$(cygpath -w "$GRADLE_HOME")' | Out-Null; Copy-Item -Path '$(cygpath -w "$DOWNLOAD_UNIX")\gradle-$GRADLE_VERSION\*' -Destination '$(cygpath -w "$GRADLE_HOME")' -Recurse -Force"
+          fi
+          [ -f "$GRADLE_LAUNCHER" ] || { echo "::error::Gradle launcher is missing."; exit 1; }
+          printf 'AURA_GRADLE_BAT=%s\n' "$(cygpath -w "$GRADLE_LAUNCHER")" >> "$GITHUB_ENV"
+
+      - name: Compile :app:assembleDebug from aura-native
+        run: |
+          set -euo pipefail
+          MAIN_DIR="$(cygpath -u "$RUNNER_TEMP")/aura-native-main"
+          PROJECT="$MAIN_DIR/aura-native/native-android/project"
+          OUTPUT="$(cygpath -u "$GITHUB_WORKSPACE")/aura-native-build-output"
+          mkdir -p "$OUTPUT"
+          PROJECT_WIN="$(cygpath -w "$PROJECT")"
+          LOG_WIN="$(cygpath -w "$OUTPUT/gradle-build.log")"
+          set +e
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$AURA_GRADLE_BAT' --no-daemon --stacktrace -p '$PROJECT_WIN' :app:assembleDebug *> '$LOG_WIN'; exit \$LASTEXITCODE"
+          BUILD_EXIT=$?
+          set -e
+          echo "$BUILD_EXIT" > "$OUTPUT/gradle-build-exit-code.txt"
+          cat "$OUTPUT/gradle-build.log"
+          if [ "$BUILD_EXIT" -ne 0 ]; then
+            echo "::error::Native Java/Gradle compilation failed. Full compiler log is attached."
+            exit 1
+          fi
+
+          APK="$(find "$PROJECT/app/build/outputs/apk/debug" -maxdepth 1 -type f -name '*.apk' | head -n 1)"
+          [ -n "$APK" ] || { echo "::error::Build succeeded but debug APK is missing."; exit 1; }
+          cp "$APK" "$OUTPUT/"
+          AAPT_UNIX="$(cygpath -u "$AURA_AAPT")"
+          "$AAPT_UNIX" dump badging "$APK" | tee "$OUTPUT/apk-badging.txt"
+          grep -F "package: name='app.homemusic' versionCode='7502' versionName='v0.10.1'" "$OUTPUT/apk-badging.txt"
+
+      - name: Upload native APK and build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aura-native-main-build
+          path: aura-native-build-output/
+          if-no-files-found: warn
+          compression-level: 3
+          retention-days: 30
