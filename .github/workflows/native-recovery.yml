@@ -90,15 +90,21 @@ jobs:
           set -euo pipefail
           mkdir -p recovery/downloads recovery/jadx-original recovery/jadx-aura-0302 recovery/jadx-aura-0751 recovery/apktool-aura-0751 recovery/tools
           curl.exe -fL --retry 3 --retry-delay 2 "https://github.com/justman-1/HomeMusic-public/releases/download/v1.14.7/HomeMusic.apk" -o recovery/downloads/HomeMusic-1.14.7.apk
-          curl.exe -fL --retry 3 --retry-delay 2 "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/v0.30.2/AURA-0.30.apk" -o recovery/downloads/AURA-0.30.2.apk
-          curl.exe -fL --retry 3 --retry-delay 2 "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/v0.75.1/AURA-0.75.apk" -o recovery/downloads/AURA-0.75.1.apk
+          curl.exe -fL --retry 3 --retry-delay 2 "https://github.com/PlayInSpirits/AURA-fork-HomeMusic/releases/download/v0.30.2/AURA-0.30.apk" -o recovery/downloads/AURA-0.30.2.apk
+          curl.exe -fL --retry 3 --retry-delay 2 "https://github.com/PlayInSpirits/AURA-fork-HomeMusic/releases/download/v0.75.1/AURA-0.75.apk" -o recovery/downloads/AURA-0.75.1.apk
+          curl.exe -fL --retry 3 "https://api.github.com/repos/PlayInSpirits/AURA-fork-HomeMusic/releases/tags/v0.75.1" -o recovery/downloads/release-v0.75.1.json
           "$AURA_PYTHON" - <<'PY'
           from hashlib import sha256
           from pathlib import Path
+          import json
+          release=json.loads(Path("recovery/downloads/release-v0.75.1.json").read_text(encoding="utf-8"))
+          asset=next((x for x in release.get("assets",[]) if x.get("name")=="AURA-0.75.apk"),None)
+          if not asset or not str(asset.get("digest","")).startswith("sha256:"):
+              raise SystemExit("GitHub release does not publish a SHA-256 digest for AURA-0.75.apk")
           expected = {
               "HomeMusic-1.14.7.apk": "72176dcf191cdbf5a5ea8e99ecc1cb2017fbaf842386ab2ae1436b5537d9a852",
               "AURA-0.30.2.apk": "a568eef8504892850f5415e03106e0fb8246810168b923f1522761c12587413a",
-              "AURA-0.75.1.apk": "887052749b5410f474aa9001c9a352000aeceed999d289a18c337de0327c0871",
+              "AURA-0.75.1.apk": asset["digest"].removeprefix("sha256:"),
           }
           root = Path("recovery/downloads")
           for name, wanted in expected.items():
@@ -108,6 +114,7 @@ jobs:
               if actual != wanted:
                   raise SystemExit(f"SHA-256 mismatch for {name}: actual={actual!r} expected={wanted!r} actual_len={len(actual)} expected_len={len(wanted)}")
               print(f"Verified {name}: {actual} ({p.stat().st_size} bytes)")
+          print("AURA 0.75.1 digest source: GitHub release asset metadata")
           PY
 
       - name: Download and verify JADX 1.5.6
