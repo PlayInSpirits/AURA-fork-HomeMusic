@@ -145,6 +145,15 @@ jobs:
           decompile "recovery/downloads/AURA-0.30.2.apk" "recovery/jadx-aura-0302"
           decompile "recovery/downloads/AURA-0.75.1.apk" "recovery/jadx-aura-0751"
 
+      - name: Export a Gradle Android project from AURA 0.75.1
+        run: |
+          set -euo pipefail
+          JADX_BAT="$(cygpath -w "$PWD/recovery/tools/jadx/bin/jadx.bat")"
+          APK_WIN="$(cygpath -w "$PWD/recovery/downloads/AURA-0.75.1.apk")"
+          OUT_WIN="$(cygpath -w "$PWD/recovery/gradle-export-aura-0751")"
+          mkdir -p recovery/gradle-export-aura-0751
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --show-bad-code --export-gradle --export-gradle-type android-app -d '$OUT_WIN' '$APK_WIN'; if (\$LASTEXITCODE -ne 0) { Write-Warning 'JADX Gradle export reported decompilation errors; preserving generated files.' }"
+
       - name: Decode latest AURA resources and Smali with Apktool
         run: |
           set -euo pipefail
@@ -182,6 +191,22 @@ jobs:
                   "other_files":other_count
               }
           result["apktool_smali"]=sum(1 for p in (root/"apktool-aura-0751").rglob("*.smali"))
+          gradle=root/"gradle-export-aura-0751"
+          gradle_java=sum(1 for p in gradle.rglob("*.java"))
+          gradle_manifests=sum(1 for p in gradle.rglob("AndroidManifest.xml"))
+          gradle_resources=sum(1 for p in gradle.rglob("res") if p.is_dir())
+          gradle_files={p.relative_to(gradle).as_posix() for p in gradle.rglob("*") if p.is_file()}
+          required={"settings.gradle","build.gradle","app/build.gradle"}
+          root_gradle=required.issubset(gradle_files)
+          result["gradle_export_aura_0751"]={
+              "java_files":gradle_java,
+              "manifest_files":gradle_manifests,
+              "resource_directories":gradle_resources,
+              "root_gradle_files_present":root_gradle,
+              "key_gradle_files":sorted(p for p in gradle_files if p.endswith(".gradle") or p.endswith(".gradle.kts"))
+          }
+          if gradle_java == 0 or not root_gradle:
+              raise SystemExit("JADX Gradle export is incomplete; refusing to upload a non-project.")
           (root/"recovery-inventory.json").write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           lines=["AURA native recovery inventory","",json.dumps(result,ensure_ascii=False,indent=2),"",
                  "JADX output is a reconstruction aid, not pristine upstream source.",
@@ -200,6 +225,7 @@ jobs:
             recovery/jadx-aura-0302/
             recovery/jadx-aura-0751/
             recovery/apktool-aura-0751/
+            recovery/gradle-export-aura-0751/
             recovery/recovery-inventory.json
             recovery/RECOVERY-README.txt
           if-no-files-found: error
