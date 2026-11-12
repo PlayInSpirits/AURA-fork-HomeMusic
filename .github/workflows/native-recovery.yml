@@ -304,6 +304,7 @@ jobs:
           PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config core.longpaths true
           git add native-android/project
           if ! git diff --cached --quiet; then
             git commit -m "Import recovered AURA 0.75.1 Gradle source baseline"
