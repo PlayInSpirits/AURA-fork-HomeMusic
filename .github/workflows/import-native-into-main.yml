@@ -1,0 +1,85 @@
+name: Import native-v0.10.1 into main/aura-native
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'aura-native-import.trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aura-native-initial-import
+  cancel-in-progress: false
+
+jobs:
+  import-native:
+    name: Copy complete native-v0.10.1 project into main
+    runs-on: [self-hosted, windows, x64]
+    defaults:
+      run:
+        shell: 'C:\\PROGRA~1\\Git\\bin\\bash.exe --noprofile --norc -eo pipefail {0}'
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Checkout native-v0.10.1 source
+        uses: actions/checkout@v4
+        with:
+          ref: native-v0.10.1
+          path: source-native
+          fetch-depth: 0
+
+      - name: Copy the complete source tree
+        run: |
+          set -euo pipefail
+          [ "$GITHUB_REF" = "refs/heads/main" ] || { echo "::error::Import must target main."; exit 1; }
+          SOURCE_SHA="$(git -C source-native rev-parse HEAD)"
+          echo "Source branch: native-v0.10.1"
+          echo "Source commit: $SOURCE_SHA"
+          TRACKED_COUNT="$(git -C source-native ls-files | wc -l | tr -d ' ')"
+          echo "Tracked source files: $TRACKED_COUNT"
+          mkdir -p aura-native
+          cp -a source-native/. aura-native/
+          rm -rf aura-native/.git
+          ACTUAL_COUNT="$(find aura-native -type f | wc -l | tr -d ' ')"
+          echo "Copied regular files: $ACTUAL_COUNT"
+          if [ "$ACTUAL_COUNT" -lt "$TRACKED_COUNT" ]; then
+            echo "::error::Copied file count is below the tracked file count."
+            exit 1
+          fi
+          TOO_LARGE="$(find aura-native -type f -size +99M -print || true)"
+          if [ -n "$TOO_LARGE" ]; then
+            echo "::error::GitHub rejects individual files around 100 MB; oversized files were not committed:"
+            printf '%s\\n' "$TOO_LARGE"
+            exit 1
+          fi
+          cat > aura-native/IMPORT-SOURCE.txt <<EOF
+          Imported from branch: native-v0.10.1
+          Source commit: $SOURCE_SHA
+          Destination: main/aura-native/
+          Import method: complete checkout copy; Git metadata excluded.
+          Original native-v0.10.1 branch is preserved.
+          EOF
+          git add --all -- aura-native
+          if git diff --cached --quiet; then
+            echo "::error::No files were staged for import."
+            exit 1
+          fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Import complete native-v0.10.1 project under aura-native"
+          git push origin HEAD:refs/heads/main
+
+      - name: Verify imported tree
+        if: success()
+        run: |
+          set -euo pipefail
+          test -f aura-native/IMPORT-SOURCE.txt
+          test -d aura-native/native-android/project
+          test -f aura-native/.github/workflows/native-build.yml
+          echo "Imported project structure verified."
