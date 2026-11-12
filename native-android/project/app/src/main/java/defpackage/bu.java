@@ -528,7 +528,7 @@ public abstract class bu {
         int i = 0;
         if (b2 == 8) {
             int i2 = dataInputStream.readInt();
-            ?? r0 = new Boolean[i2];
+            Boolean[] r0 = new Boolean[i2];
             while (i < i2) {
                 r0[i] = Boolean.valueOf(dataInputStream.readBoolean());
                 i++;
@@ -537,7 +537,7 @@ public abstract class bu {
         }
         if (b2 == 9) {
             int i3 = dataInputStream.readInt();
-            ?? r1 = new Byte[i3];
+            Byte[] r1 = new Byte[i3];
             while (i < i3) {
                 r1[i] = Byte.valueOf(dataInputStream.readByte());
                 i++;
@@ -546,7 +546,7 @@ public abstract class bu {
         }
         if (b2 == 10) {
             int i4 = dataInputStream.readInt();
-            ?? r2 = new Integer[i4];
+            Integer[] r2 = new Integer[i4];
             while (i < i4) {
                 r2[i] = Integer.valueOf(dataInputStream.readInt());
                 i++;
@@ -555,7 +555,7 @@ public abstract class bu {
         }
         if (b2 == 11) {
             int i5 = dataInputStream.readInt();
-            ?? r3 = new Long[i5];
+            Long[] r3 = new Long[i5];
             while (i < i5) {
                 r3[i] = Long.valueOf(dataInputStream.readLong());
                 i++;
@@ -564,7 +564,7 @@ public abstract class bu {
         }
         if (b2 == 12) {
             int i6 = dataInputStream.readInt();
-            ?? r4 = new Float[i6];
+            Float[] r4 = new Float[i6];
             while (i < i6) {
                 r4[i] = Float.valueOf(dataInputStream.readFloat());
                 i++;
@@ -573,7 +573,7 @@ public abstract class bu {
         }
         if (b2 == 13) {
             int i7 = dataInputStream.readInt();
-            ?? r5 = new Double[i7];
+            Double[] r5 = new Double[i7];
             while (i < i7) {
                 r5[i] = Double.valueOf(dataInputStream.readDouble());
                 i++;
@@ -585,7 +585,7 @@ public abstract class bu {
             return null;
         }
         int i8 = dataInputStream.readInt();
-        ?? r6 = new String[i8];
+        String[] r6 = new String[i8];
         while (i < i8) {
             String utf = dataInputStream.readUTF();
             if (h12.c(utf, "androidx.work.Data-95ed6082-b8e9-46e8-a73f-ff56f00f5d9d")) {

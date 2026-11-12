@@ -262,7 +262,7 @@ extends ViewGroup {
         throw new IllegalStateException("Decompilation failed");
     }
 
-    public final int getAutoClearFocusBehavior-4UtRPd4() {
+    public final int getAutoClearFocusBehavior_4UtRPd4() {
         Object object = this.getTag(2131362053);
         object = object instanceof on ? (on)object : null;
         if (object != null) {
@@ -377,7 +377,7 @@ extends ViewGroup {
         }
     }
 
-    public final void setAutoClearFocusBehavior-17tfJxM(int n16) {
+    public final void setAutoClearFocusBehavior_17tfJxM(int n16) {
         this.setTag(2131362053, new on(n16));
     }
 
