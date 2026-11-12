@@ -51,18 +51,19 @@ jobs:
             PYTHON_BIN_UNIX="$(cygpath -u "$PYTHON_CMD" 2>/dev/null || printf '%s' "$PYTHON_CMD")"
           else
             echo "Bootstrapping portable Python 3.12.10 with Windows PowerShell archive extraction."
-            PYTHON_DIR="$RUNNER_TEMP/aura-python-3.12.10"
+            PYTHON_DIR="$AURA_RUNNER_CACHE_ROOT/python-3.12.10"
             PYTHON_ZIP="$RUNNER_TEMP/python-3.12.10-embed-amd64.zip"
-            PYTHON_DIR="$(cygpath -u "$PYTHON_DIR")"
             PYTHON_ZIP="$(cygpath -u "$PYTHON_ZIP")"
             mkdir -p "$PYTHON_DIR"
-            curl.exe -fL --retry 3 "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip" -o "$(cygpath -w "$PYTHON_ZIP")"
-            PYTHON_DIR_WIN="$(cygpath -w "$PYTHON_DIR")"
-            PYTHON_ZIP_WIN="$(cygpath -w "$PYTHON_ZIP")"
-            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$PYTHON_ZIP_WIN' -DestinationPath '$PYTHON_DIR_WIN' -Force; Add-Content -LiteralPath '$PYTHON_DIR_WIN\python312._pth' -Value 'import site'"
+            if [ ! -f "$PYTHON_DIR/python.exe" ]; then
+              aura_cache_fetch "tools/python-3.12.10-embed-amd64.zip" "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip" "fe8ef205f2e9c3ba44d0cf9954e1abd3" "$(cygpath -w "$PYTHON_ZIP")" md5
+              PYTHON_DIR_WIN="$(cygpath -w "$PYTHON_DIR")"
+              PYTHON_ZIP_WIN="$(cygpath -w "$PYTHON_ZIP")"
+              powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$PYTHON_ZIP_WIN' -DestinationPath '$PYTHON_DIR_WIN' -Force; Add-Content -LiteralPath '$PYTHON_DIR_WIN\python312._pth' -Value 'import site'"
+            fi
             PYTHON_BIN_UNIX="$PYTHON_DIR/python.exe"
             [ -f "$PYTHON_BIN_UNIX" ] || { echo "::error::Portable Python extraction failed."; exit 1; }
-            printf '%s\n' "$PYTHON_DIR_WIN" >> "$GITHUB_PATH"
+            printf '%s\n' "$(cygpath -w "$PYTHON_DIR")" >> "$GITHUB_PATH"
           fi
           "$PYTHON_BIN_UNIX" -c 'import sys; print(sys.version); raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'
           printf 'AURA_PYTHON=%s\n' "$PYTHON_BIN_UNIX" >> "$GITHUB_ENV"
@@ -639,30 +640,23 @@ jobs:
           SDK_ROOT_WIN="$(cygpath -w "$SDK_ROOT_UNIX")"
           SDK_MANAGER="$SDK_ROOT_UNIX/cmdline-tools/latest/bin/sdkmanager.bat"
 
-          echo "Installing current official Android command-line tools (SDK XML v4 support)."
-          CMDLINE_TEMP="$RUNNER_TEMP/aura-commandline-tools"
-          CMDLINE_ZIP="$RUNNER_TEMP/commandlinetools-win-15859902_latest.zip"
-          CMDLINE_TEMP="$(cygpath -u "$CMDLINE_TEMP")"
-          CMDLINE_ZIP="$(cygpath -u "$CMDLINE_ZIP")"
-          mkdir -p "$CMDLINE_TEMP" "$SDK_ROOT_UNIX/cmdline-tools"
-          curl.exe -fL --retry 3 "https://dl.google.com/android/repository/commandlinetools-win-15859902_latest.zip" -o "$(cygpath -w "$CMDLINE_ZIP")"
-          "$AURA_PYTHON" - "$CMDLINE_ZIP" <<'PY'
-          from hashlib import sha256
-          from pathlib import Path
-          import sys
-          p=Path(sys.argv[1])
-          actual=sha256(p.read_bytes()).hexdigest()
-          expected="90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a"
-          if actual != expected:
-              raise SystemExit(f"Android command-line tools SHA-256 mismatch: {actual}")
-          print("Verified current Android command-line tools:",actual)
-          PY
-          CMDLINE_TEMP_WIN="$(cygpath -w "$CMDLINE_TEMP")"
-          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$(cygpath -w "$CMDLINE_ZIP")' -DestinationPath '$CMDLINE_TEMP_WIN' -Force"
-          rm -rf "$SDK_ROOT_UNIX/cmdline-tools/latest"
-          mkdir -p "$SDK_ROOT_UNIX/cmdline-tools/latest"
-          cp -a "$CMDLINE_TEMP/cmdline-tools/." "$SDK_ROOT_UNIX/cmdline-tools/latest/"
-          SDK_MANAGER="$SDK_ROOT_UNIX/cmdline-tools/latest/bin/sdkmanager.bat"
+          # Keep SDK command-line tools in the installed Android SDK. Do not download the
+          # 150 MB archive again when the SDK manager is already present on this runner.
+          if [ ! -f "$SDK_MANAGER" ]; then
+            source tools/aura-runner-cache.sh
+            CMDLINE_TEMP="$RUNNER_TEMP/aura-commandline-tools"
+            CMDLINE_ZIP="$RUNNER_TEMP/commandlinetools-win-15859902_latest.zip"
+            CMDLINE_TEMP="$(cygpath -u "$CMDLINE_TEMP")"
+            CMDLINE_ZIP="$(cygpath -u "$CMDLINE_ZIP")"
+            mkdir -p "$CMDLINE_TEMP" "$SDK_ROOT_UNIX/cmdline-tools"
+            aura_cache_fetch "tools/commandlinetools-win-15859902_latest.zip" "https://dl.google.com/android/repository/commandlinetools-win-15859902_latest.zip" "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a" "$CMDLINE_ZIP"
+            CMDLINE_TEMP_WIN="$(cygpath -w "$CMDLINE_TEMP")"
+            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$(cygpath -w "$CMDLINE_ZIP")' -DestinationPath '$CMDLINE_TEMP_WIN' -Force"
+            rm -rf "$SDK_ROOT_UNIX/cmdline-tools/latest"
+            mkdir -p "$SDK_ROOT_UNIX/cmdline-tools/latest"
+            cp -a "$CMDLINE_TEMP/cmdline-tools/." "$SDK_ROOT_UNIX/cmdline-tools/latest/"
+            SDK_MANAGER="$SDK_ROOT_UNIX/cmdline-tools/latest/bin/sdkmanager.bat"
+          fi
 
           if [ ! -f "$SDK_ROOT_UNIX/platforms/android-37.0/android.jar" ]; then
             SDK_MANAGER_WIN="$(cygpath -w "$SDK_MANAGER")"
@@ -673,34 +667,11 @@ jobs:
           [ -f "$SDK_ROOT_UNIX/platforms/android-37.0/android.jar" ] || { echo "::error::Android SDK Platform 37.0 installation did not produce android.jar."; exit 1; }
 
           GRADLE_VERSION="9.6.0"
-          GRADLE_DIR="$PWD/recovery/tools/gradle-$GRADLE_VERSION"
-          GRADLE_ZIP="$PWD/recovery/tools/gradle-$GRADLE_VERSION-bin.zip"
-          GRADLE_SHA="$GRADLE_ZIP.sha256"
-          mkdir -p recovery/tools
+          TOOL_CACHE="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          GRADLE_DIR="$TOOL_CACHE/aura-gradle-$GRADLE_VERSION"
+          GRADLE_BAT="$GRADLE_DIR/bin/gradle.bat"
+          [ -f "$GRADLE_BAT" ] || { echo "::error::Gradle $GRADLE_VERSION is not in persistent RUNNER_TOOL_CACHE. Run native-build.yml once to bootstrap it."; exit 1; }
 
-          curl.exe -fL --retry 3 "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip" -o "$GRADLE_ZIP"
-          curl.exe -fL --retry 3 "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip.sha256" -o "$GRADLE_SHA"
-          "$AURA_PYTHON" - <<'PY'
-          from hashlib import sha256
-          from pathlib import Path
-          from zipfile import ZipFile
-          import re
-          archive=Path("recovery/tools/gradle-9.6.0-bin.zip")
-          checksum_file=Path(str(archive)+".sha256")
-          expected=checksum_file.read_text(encoding="ascii").strip().split()[0].lower()
-          actual=sha256(archive.read_bytes()).hexdigest()
-          if not re.fullmatch(r"[0-9a-f]{64}",expected) or actual != expected:
-              raise SystemExit(f"Gradle 9.6.0 SHA-256 check failed: actual={actual}, expected={expected}")
-          target=Path("recovery/tools")
-          with ZipFile(archive) as z:
-              z.extractall(target)
-          gradle=target/"gradle-9.6.0/bin/gradle.bat"
-          if not gradle.is_file():
-              raise SystemExit(f"Gradle launcher missing after extraction: {gradle}")
-          print("Verified Gradle 9.6.0:",actual)
-          PY
-
-          GRADLE_BAT="$(cygpath -w "$GRADLE_DIR/bin/gradle.bat")"
           PROJECT_WIN="$(cygpath -w "$PWD/native-android/project")"
           LOG_WIN="$(cygpath -w "$PWD/recovery/gradle-build.log")"
           echo "Starting :app:assembleDebug using JDK 17, AGP 9.4.0, Gradle 9.6.0 and SDK API 37."
