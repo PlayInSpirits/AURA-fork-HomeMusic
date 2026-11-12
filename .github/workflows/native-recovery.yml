@@ -323,15 +323,14 @@ jobs:
           SDK_ROOT_WIN="$(cygpath -w "$SDK_ROOT_UNIX")"
           SDK_MANAGER="$SDK_ROOT_UNIX/cmdline-tools/latest/bin/sdkmanager.bat"
 
-          if [ ! -f "$SDK_MANAGER" ]; then
-            echo "Android command-line tools are missing; bootstrapping official Windows SDK tools."
-            CMDLINE_TEMP="$RUNNER_TEMP/aura-commandline-tools"
-            CMDLINE_ZIP="$RUNNER_TEMP/commandlinetools-win-15859902_latest.zip"
-            CMDLINE_TEMP="$(cygpath -u "$CMDLINE_TEMP")"
-            CMDLINE_ZIP="$(cygpath -u "$CMDLINE_ZIP")"
-            mkdir -p "$CMDLINE_TEMP" "$SDK_ROOT_UNIX/cmdline-tools/latest"
-            curl.exe -fL --retry 3 "https://dl.google.com/android/repository/commandlinetools-win-15859902_latest.zip" -o "$(cygpath -w "$CMDLINE_ZIP")"
-            "$AURA_PYTHON" - "$CMDLINE_ZIP" <<'PY'
+          echo "Installing current official Android command-line tools (SDK XML v4 support)."
+          CMDLINE_TEMP="$RUNNER_TEMP/aura-commandline-tools"
+          CMDLINE_ZIP="$RUNNER_TEMP/commandlinetools-win-15859902_latest.zip"
+          CMDLINE_TEMP="$(cygpath -u "$CMDLINE_TEMP")"
+          CMDLINE_ZIP="$(cygpath -u "$CMDLINE_ZIP")"
+          mkdir -p "$CMDLINE_TEMP" "$SDK_ROOT_UNIX/cmdline-tools"
+          curl.exe -fL --retry 3 "https://dl.google.com/android/repository/commandlinetools-win-15859902_latest.zip" -o "$(cygpath -w "$CMDLINE_ZIP")"
+          "$AURA_PYTHON" - "$CMDLINE_ZIP" <<'PY'
           from hashlib import sha256
           from pathlib import Path
           import sys
@@ -342,10 +341,12 @@ jobs:
               raise SystemExit(f"Android command-line tools SHA-256 mismatch: {actual}")
           print("Verified current Android command-line tools:",actual)
           PY
-            CMDLINE_TEMP_WIN="$(cygpath -w "$CMDLINE_TEMP")"
-            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$(cygpath -w "$CMDLINE_ZIP")' -DestinationPath '$CMDLINE_TEMP_WIN' -Force"
-            cp -a "$CMDLINE_TEMP/cmdline-tools/." "$SDK_ROOT_UNIX/cmdline-tools/latest/"
-          fi
+          CMDLINE_TEMP_WIN="$(cygpath -w "$CMDLINE_TEMP")"
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$(cygpath -w "$CMDLINE_ZIP")' -DestinationPath '$CMDLINE_TEMP_WIN' -Force"
+          rm -rf "$SDK_ROOT_UNIX/cmdline-tools/latest"
+          mkdir -p "$SDK_ROOT_UNIX/cmdline-tools/latest"
+          cp -a "$CMDLINE_TEMP/cmdline-tools/." "$SDK_ROOT_UNIX/cmdline-tools/latest/"
+          SDK_MANAGER="$SDK_ROOT_UNIX/cmdline-tools/latest/bin/sdkmanager.bat"
 
           if [ ! -f "$SDK_ROOT_UNIX/platforms/android-37/android.jar" ]; then
             SDK_MANAGER_WIN="$(cygpath -w "$SDK_MANAGER")"
