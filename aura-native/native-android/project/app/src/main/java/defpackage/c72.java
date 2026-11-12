@@ -834,9 +834,9 @@ public final class c72 implements u70, vb3, e80 {
         if ((cx2Var.q & 16) != 0) {
             while (cx2Var != null) {
                 if ((cx2Var.p & 16) != 0) {
-                    ?? C = cx2Var;
-                    ?? f13Var = 0;
-                    while (C != 0) {
+                    cx2 C = cx2Var;
+                    f13 f13Var = null;
+                    while (C != null) {
                         if (C instanceof rn3) {
                             ((rn3) C).Z();
                         } else if ((C.p & 16) != 0 && (C instanceof fo0)) {
@@ -851,12 +851,12 @@ public final class c72 implements u70, vb3, e80 {
                                         f13Var = f13Var;
                                         C = cx2Var2;
                                     } else {
-                                        if (f13Var == 0) {
+                                        if (f13Var == null) {
                                             f13Var = new f13(new cx2[16]);
                                         }
-                                        if (C != 0) {
+                                        if (C != null) {
                                             f13Var.b(C);
-                                            C = 0;
+                                            C = null;
                                         }
                                         f13Var.b(cx2Var2);
                                     }
