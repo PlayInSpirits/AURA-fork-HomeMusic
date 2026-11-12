@@ -266,7 +266,7 @@ jobs:
           JAR_WIN="$(cygpath -w "$PWD/$DEX2JAR_JAR")"
           LOG_WIN="$(cygpath -w "$PWD/recovery/dex2jar-conversion.log")"
           set +e
-          cmd.exe /d /c "\"$D2J_BAT_WIN\" -f -o \"$JAR_WIN\" \"$APK_WIN\" > \"$LOG_WIN\" 2>&1"
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$D2J_BAT_WIN' -f -o '$JAR_WIN' '$APK_WIN' *> '$LOG_WIN'; exit \$LASTEXITCODE"
           D2J_EXIT=$?
           set -e
           if [ "$D2J_EXIT" -ne 0 ]; then
@@ -454,6 +454,19 @@ jobs:
           if nagp != 1:
               raise SystemExit("Could not update recovered Android Gradle Plugin to 9.4.0 for compileSdk 37.")
           root_build.write_text(root_updated,encoding="utf-8",newline="\n")
+
+          # The recovered project has thousands of decompiled classes. Raise the heap and
+          # serialize Gradle workers to avoid D8 heap exhaustion on this 16 GB Windows runner.
+          gradle_properties=project/"gradle.properties"
+          gradle_properties.write_text(
+              "org.gradle.jvmargs=-Xmx5g -XX:MaxMetaspaceSize=1g -Dfile.encoding=UTF-8\\n"
+              "org.gradle.workers.max=1\\n"
+              "org.gradle.parallel=false\\n"
+              "android.useAndroidX=true\\n"
+              "android.nonTransitiveRClass=true\\n",
+              encoding="utf-8"
+          )
+          print("Configured Gradle heap=5g and single-worker compilation.")
 
           # Reconstruct AndroidX/Material dependencies from the embedded META-INF version markers.
           meta=project/"app/src/main/META-INF"
