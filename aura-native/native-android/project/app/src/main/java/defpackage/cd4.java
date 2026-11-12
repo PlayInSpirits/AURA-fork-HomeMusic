@@ -26,28 +26,79 @@ jg1 {
         this.t = wv5;
     }
 
-    /*
-     * Exception decompiling
-     */
-    public static void k(cd4 var0, q81 var1_1, vd0 var2_2) {
-        /*
-         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-         * 
-         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [1 : 185->190)] java.lang.Throwable
-         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op02WithProcessedDataAndRefs.insertExceptionBlocks(Op02WithProcessedDataAndRefs.java:2283)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:415)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
-         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
-         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
-         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
-         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
-         *     at org.benf.cfr.reader.Driver.doJarVersionTypes(Driver.java:257)
-         *     at org.benf.cfr.reader.Driver.doJar(Driver.java:139)
-         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:76)
-         *     at org.benf.cfr.reader.Main.main(Main.java:54)
-         */
-        throw new IllegalStateException("Decompilation failed");
+    public static void k(cd4 channel, q81 collector, vd0 continuation) {
+        bd4 state;
+        if (continuation instanceof bd4) {
+            state = (bd4) continuation;
+            if ((state.t & Integer.MIN_VALUE) != 0) {
+                state.t -= Integer.MIN_VALUE;
+            } else {
+                state = new bd4(channel, continuation);
+            }
+        } else {
+            state = new bd4(channel, continuation);
+        }
+
+        Object result = state.r;
+        int label = state.t;
+        dd4 waiter;
+        s22 job = null;
+
+        if (label == 0) {
+            kb4.X(result);
+            waiter = (dd4) channel.d();
+        } else if (label == 1) {
+            waiter = state.p;
+            collector = state.o;
+            channel = state.n;
+            kb4.X(result);
+        } else if (label == 2 || label == 3) {
+            job = state.q;
+            waiter = state.p;
+            collector = state.o;
+            channel = state.n;
+            kb4.X(result);
+        } else {
+            kf2.o("call to 'resume' before 'invoke' with coroutine");
+            return;
+        }
+
+        try {
+            if (label == 0 || label == 1) {
+                job = (s22) state.getContext().K(fz0.h0);
+            }
+
+            while (true) {
+                Object value = channel.t(waiter);
+                if (value == g12.e) {
+                    state.n = channel;
+                    state.o = collector;
+                    state.p = waiter;
+                    state.q = job;
+                    state.t = 2;
+                    if (channel.i(waiter, state) == xe0.n) {
+                        return;
+                    }
+                    continue;
+                }
+
+                if (job != null && !job.b()) {
+                    throw job.q();
+                }
+
+                state.n = channel;
+                state.o = collector;
+                state.p = waiter;
+                state.q = job;
+                state.t = 3;
+                if (collector.b(value, state) == xe0.n) {
+                    return;
+                }
+            }
+        } catch (Throwable throwable) {
+            channel.g(waiter);
+            cd4.<RuntimeException>throwUnchecked(throwable);
+        }
     }
 
     @Override
@@ -442,6 +493,11 @@ jg1 {
          *     at org.benf.cfr.reader.Main.main(Main.java:54)
          */
         throw new IllegalStateException("Decompilation failed");
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <E extends Throwable> void throwUnchecked(Throwable throwable) throws E {
+        throw (E) throwable;
     }
 }
 
