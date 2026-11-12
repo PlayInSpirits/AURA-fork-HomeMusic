@@ -130,14 +130,22 @@ jobs:
           JAVA_HOME_UNIX="$(cygpath -u "$JAVA_HOME")"
           JAVA_RUNTIME="$JAVA_HOME_UNIX/bin/java.exe"
           "$JAVA_RUNTIME" -jar "$APKSIGNER_JAR" verify --verbose --print-certs recovery/downloads/AURA-0.75.1.apk > recovery/aura-0751-signature.txt
+          cat recovery/aura-0751-signature.txt
           "$AURA_PYTHON" - <<'PY'
           from pathlib import Path
           import re
           apk=Path("recovery/aura-0751-signature.txt").read_text(encoding="utf-8",errors="replace")
-          match=re.search(r"Signer #1 certificate SHA-256 digest:\s*([0-9a-fA-F:]+)",apk)
-          if not match:
-              raise SystemExit("Unable to read APK signing certificate SHA-256 fingerprint.")
-          actual=match.group(1).replace(":","").lower()
+          fingerprints=[]
+          for line in apk.splitlines():
+              if "certificate SHA-256 digest" not in line:
+                  continue
+              value=line.split(":",1)[-1]
+              match=re.search(r"(?i)([0-9a-f]{2}(?::[0-9a-f]{2}){31}|[0-9a-f]{64})",value)
+              if match:
+                  fingerprints.append(match.group(1).replace(":","").lower())
+          if len(set(fingerprints)) != 1:
+              raise SystemExit(f"Expected exactly one APK signer certificate SHA-256 fingerprint, found: {fingerprints!r}")
+          actual=fingerprints[0]
           expected="af6f72bc95bc3f8b0141410333b7f754e5afbb4ff04c918ac9ce0d8b29f63874"
           if actual != expected:
               raise SystemExit(f"AURA 0.75.1 signing certificate differs from the verified permanent AURA release: {actual}")
