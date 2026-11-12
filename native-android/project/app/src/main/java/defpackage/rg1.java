@@ -140,18 +140,14 @@ public final class rg1 {
                                         } else {
                                             z80 z80Var = rg1Var2.h;
                                             synchronized (z80Var.q) {
+                                                z80Var.p();
+                                                w03 w03Var = z80Var.A;
+                                                z80Var.A = te5.i();
                                                 try {
-                                                    z80Var.p();
-                                                    w03 w03Var = z80Var.A;
-                                                    z80Var.A = te5.i();
-                                                    try {
-                                                        z80Var.I.X(w03Var);
-                                                    } catch (Throwable th) {
-                                                        z80Var.A = w03Var;
-                                                        throw th;
-                                                    }
-                                                } catch (Throwable th2) {
-                                                    throw th2;
+                                                    z80Var.I.X(w03Var);
+                                                } catch (Throwable th) {
+                                                    z80Var.A = w03Var;
+                                                    throw th;
                                                 }
                                             }
                                             w00 w00Var = new w00();
@@ -180,8 +176,8 @@ public final class rg1 {
                                                                 }
                                                                 k80Var.b = w00Var2;
                                                                 hg4Var.c();
-                                                            } catch (Throwable th3) {
-                                                                th = th3;
+                                                            } catch (Throwable th2) {
+                                                                th = th2;
                                                                 k80Var.b = w00Var2;
                                                                 throw th;
                                                             }
@@ -190,18 +186,18 @@ public final class rg1 {
                                                         }
                                                         k80Var.b = w00Var2;
                                                         hg4Var.c();
-                                                    } catch (Throwable th4) {
-                                                        th = th4;
+                                                    } catch (Throwable th3) {
+                                                        th = th3;
                                                         hg4Var.c();
                                                         throw th;
                                                     }
                                                     i5 = 0;
-                                                } catch (Throwable th5) {
-                                                    th = th5;
+                                                } catch (Throwable th4) {
+                                                    th = th4;
                                                     hg4Var = hg4VarD;
                                                 }
-                                            } catch (Throwable th6) {
-                                                th = th6;
+                                            } catch (Throwable th5) {
+                                                th = th5;
                                                 hg4Var = hg4VarD;
                                             }
                                         }
