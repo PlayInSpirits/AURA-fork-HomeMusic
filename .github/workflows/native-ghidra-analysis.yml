@@ -47,15 +47,16 @@ jobs:
         run: |
           set -euo pipefail
           TOOL_CACHE="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          RUNNER_TEMP_UNIX="$(cygpath -u "$RUNNER_TEMP")"
           GHIDRA_HOME="$TOOL_CACHE/ghidra-12.1.4"
           if [ ! -f "$GHIDRA_HOME/support/analyzeHeadless.bat" ]; then
-            ZIP="$RUNNER_TEMP/ghidra_12.1.4_PUBLIC_20260921.zip"
+            ZIP="$RUNNER_TEMP_UNIX/ghidra_12.1.4_PUBLIC_20260921.zip"
             ZIP_WIN="$(cygpath -w "$ZIP")"
             curl.exe -fL --retry 3 "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.4_build/ghidra_12.1.4_PUBLIC_20260921.zip" -o "$ZIP_WIN"
             ACTUAL="$(sha256sum "$ZIP" | awk '{print $1}')"
             EXPECTED="ddac49f903da9d5bac833e5cc79395098b9c33cfd3279be5f31bd00387d2d4db"
             [ "$ACTUAL" = "$EXPECTED" ] || { echo "::error::Ghidra SHA-256 mismatch: $ACTUAL"; exit 1; }
-            EXTRACT="$RUNNER_TEMP/ghidra-extract"
+            EXTRACT="$RUNNER_TEMP_UNIX/ghidra-extract"
             mkdir -p "$EXTRACT" "$GHIDRA_HOME"
             EXTRACT_WIN="$(cygpath -w "$EXTRACT")"
             powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$ZIP_WIN' -DestinationPath '$EXTRACT_WIN' -Force"
@@ -72,14 +73,15 @@ jobs:
           set -euo pipefail
           APK="$PWD/recovery-input/recovery/downloads/AURA-0.75.1.apk"
           [ -f "$APK" ] || { echo "::error::AURA 0.75.1 APK is missing."; exit 1; }
-          mkdir -p build-diagnostics/ghidra "$RUNNER_TEMP/aura-ghidra-project"
-          DEX="$RUNNER_TEMP/aura-0751-classes.dex"
+          RUNNER_TEMP_UNIX="$(cygpath -u "$RUNNER_TEMP")"
+          mkdir -p build-diagnostics/ghidra "$RUNNER_TEMP_UNIX/aura-ghidra-project"
+          DEX="$RUNNER_TEMP_UNIX/aura-0751-classes.dex"
           unzip -p "$APK" classes.dex > "$DEX"
           [ -s "$DEX" ] || { echo "::error::classes.dex is empty."; exit 1; }
 
           GHIDRA_HOME_UNIX="$(cygpath -u "$GHIDRA_HOME")"
           GHIDRA_BAT="$GHIDRA_HOME_UNIX/support/analyzeHeadless.bat"
-          PROJECT_WIN="$(cygpath -w "$RUNNER_TEMP/aura-ghidra-project")"
+          PROJECT_WIN="$(cygpath -w "$RUNNER_TEMP_UNIX/aura-ghidra-project")"
           DEX_WIN="$(cygpath -w "$DEX")"
           SCRIPT_WIN="$(cygpath -w "$PWD/tools/ghidra-scripts")"
           OUTPUT_WIN="$(cygpath -w "$PWD/build-diagnostics/ghidra/aura-dex-decompilation.txt")"
