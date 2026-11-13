@@ -185,177 +185,115 @@ public final class dk2 {
     /* JADX WARN: Code duplicated, block: B:72:0x011a  */
     /* JADX WARN: Code duplicated, block: B:91:0x013c A[ADDED_TO_REGION, REMOVE, SYNTHETIC] */
     /* JADX WARN: Instruction removed from duplicated block: B:17:0x004e, please report this as an issue */
-    public final boolean c(Context context, tb1 tb1Var, boolean z) {
-        int iIntValue;
-        int iIntValue2;
-        boolean zEquals;
-        String str;
-        MediaCodecInfo.CodecCapabilities codecCapabilities;
-        MediaCodecInfo.CodecProfileLevel[] codecProfileLevelArr;
-        int length;
-        int i;
-        MediaCodecInfo.CodecProfileLevel codecProfileLevel;
-        int maxInputChannelCount;
-        int i2;
-        MediaCodecInfo.CodecProfileLevel[] codecProfileLevelArr2;
-        MediaCodecInfo.AudioCapabilities audioCapabilities;
-        Pair pairB = i40.b(tb1Var);
-        String str2 = tb1Var.n;
-        String str3 = this.c;
-        if (str2 != null && str2.equals("video/mv-hevc")) {
-            String strM = lw2.m(str3);
-            if (!strM.equals("video/mv-hevc")) {
-                if (strM.equals("video/hevc")) {
-                    HashMap map = jk2.a;
-                    String strQ = uc5.q(tb1Var.q);
-                    if (strQ == null) {
-                        pairB = null;
-                    } else {
-                        String strTrim = strQ.trim();
-                        String str4 = f35.a;
-                        pairB = i40.c(strQ, strTrim.split("\\.", -1), tb1Var.D);
-                    }
-                }
-                if (pairB != null) {
-                    iIntValue = ((Integer) pairB.first).intValue();
-                    iIntValue2 = ((Integer) pairB.second).intValue();
-                    zEquals = "video/dolby-vision".equals(str2);
-                    str = this.b;
-                    if (zEquals) {
-                        str.getClass();
-                        switch (str) {
-                            case "video/av01":
-                            case "video/hevc":
-                                iIntValue = 2;
-                                break;
-                            case "video/avc":
-                                iIntValue = 8;
-                                break;
-                        }
-                        iIntValue2 = 0;
-                    }
-                    if (this.i) {
-                        codecCapabilities = this.d;
-                        if (codecCapabilities != null) {
-                            codecProfileLevelArr = new MediaCodecInfo.CodecProfileLevel[0];
-                        } else {
-                            codecProfileLevelArr = new MediaCodecInfo.CodecProfileLevel[0];
-                        }
-                        if (str.equals("audio/ac4")) {
-                            if (codecCapabilities != null) {
-                                maxInputChannelCount = 2;
-                            } else {
-                                maxInputChannelCount = 2;
-                            }
-                            if (maxInputChannelCount > 18) {
-                            }
-                            if (context.getPackageManager().hasSystemFeature("android.hardware.type.automotive")) {
-                                codecProfileLevelArr2 = new MediaCodecInfo.CodecProfileLevel[]{jk2.b(1026, i2)};
-                            } else {
-                                codecProfileLevelArr2 = new MediaCodecInfo.CodecProfileLevel[]{jk2.b(257, i2), jk2.b(513, i2), jk2.b(514, i2), jk2.b(1026, i2), jk2.b(1028, i2)};
-                            }
-                            codecProfileLevelArr = codecProfileLevelArr2;
-                        }
-                        length = codecProfileLevelArr.length;
-                        for (i = 0; i < length; i++) {
-                            codecProfileLevel = codecProfileLevelArr[i];
-                            if (codecProfileLevel.profile != iIntValue) {
-                            }
-                        }
-                        h("codec.profileLevel, " + tb1Var.k + ", " + str3);
-                        return false;
-                    }
-                    codecCapabilities = this.d;
-                    if (codecCapabilities != null) {
-                        codecProfileLevelArr = new MediaCodecInfo.CodecProfileLevel[0];
-                    } else {
-                        codecProfileLevelArr = new MediaCodecInfo.CodecProfileLevel[0];
-                    }
-                    if (str.equals("audio/ac4")) {
-                        if (codecCapabilities != null) {
-                            maxInputChannelCount = 2;
-                        } else {
-                            maxInputChannelCount = 2;
-                        }
-                        if (maxInputChannelCount > 18) {
-                        }
-                        if (context.getPackageManager().hasSystemFeature("android.hardware.type.automotive")) {
-                            codecProfileLevelArr2 = new MediaCodecInfo.CodecProfileLevel[]{jk2.b(1026, i2)};
-                        } else {
-                            codecProfileLevelArr2 = new MediaCodecInfo.CodecProfileLevel[]{jk2.b(257, i2), jk2.b(513, i2), jk2.b(514, i2), jk2.b(1026, i2), jk2.b(1028, i2)};
-                        }
-                        codecProfileLevelArr = codecProfileLevelArr2;
-                    }
-                    length = codecProfileLevelArr.length;
-                    while (i < length) {
-                        codecProfileLevel = codecProfileLevelArr[i];
-                        if (codecProfileLevel.profile != iIntValue) {
-                        }
-                    }
-                    h("codec.profileLevel, " + tb1Var.k + ", " + str3);
-                    return false;
-                }
+    /**
+     * Checks whether this decoder exposes a profile/level suitable for the supplied format.
+     * Recovered from the APK Smali control flow and checked against Ghidra's DEX output.
+     */
+    public final boolean c(Context context, tb1 format, boolean requireLevel) {
+        Pair<Integer, Integer> profileLevel = i40.b(format);
+        String sampleMimeType = format.n;
+        String codecMimeType = this.b;
+
+        // Multi-view HEVC may be decoded by a native MV-HEVC decoder, or by a
+        // regular HEVC decoder after parsing the codec-specific profile string.
+        if (sampleMimeType != null && sampleMimeType.equals("video/mv-hevc")) {
+            String normalizedCodecMimeType = lw2.m(this.c);
+            if (normalizedCodecMimeType.equals("video/mv-hevc")) {
+                return true;
             }
-        } else if (pairB != null) {
-            iIntValue = ((Integer) pairB.first).intValue();
-            iIntValue2 = ((Integer) pairB.second).intValue();
-            zEquals = "video/dolby-vision".equals(str2);
-            str = this.b;
-            if (zEquals) {
-                str.getClass();
-                switch (str) {
-                    case -1662735862:
-                        if (str.equals("video/av01")) {
-                        }
-                        break;
-                    case -1662541442:
-                        if (str.equals("video/hevc")) {
-                        }
-                        break;
-                    case 1331836730:
-                        if (str.equals("video/avc")) {
-                        }
-                        break;
+            if (normalizedCodecMimeType.equals("video/hevc")) {
+                String codecString = uc5.q(format.q);
+                if (codecString == null) {
+                    profileLevel = null;
+                } else {
+                    String trimmedCodecString = codecString.trim();
+                    profileLevel = i40.c(
+                            codecString,
+                            trimmedCodecString.split("\\.", -1),
+                            format.D);
                 }
-                /*  JADX ERROR: Method code generation error
-                    java.lang.NullPointerException: Switch insn not found in header
-                    	at java.base/java.util.Objects.requireNonNull(Objects.java:235)
-                    	at jadx.core.codegen.RegionGen.makeSwitch(RegionGen.java:246)
-                    	at jadx.core.dex.regions.SwitchRegion.generate(SwitchRegion.java:90)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.codegen.RegionGen.makeRegionIndent(RegionGen.java:83)
-                    	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:126)
-                    	at jadx.core.dex.regions.conditions.IfRegion.generate(IfRegion.java:90)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.codegen.RegionGen.makeRegionIndent(RegionGen.java:83)
-                    	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:126)
-                    	at jadx.core.codegen.RegionGen.connectElseIf(RegionGen.java:157)
-                    	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:136)
-                    	at jadx.core.dex.regions.conditions.IfRegion.generate(IfRegion.java:90)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                    	at jadx.core.codegen.MethodGen.addRegionInsns(MethodGen.java:291)
-                    	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:270)
-                    	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:420)
-                    	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:345)
-                    	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$3(ClassGen.java:299)
-                    	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-                    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-                    	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-                    	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-                    */
-                /*
-                    Method dump skipped, instruction units count: 372
-                    To view this dump add '--comments-level debug' option
-                */
-                throw new UnsupportedOperationException("Method not decompiled: defpackage.dk2.c(android.content.Context, tb1, boolean):boolean");
             }
         }
+
+        if (profileLevel == null) {
+            return true;
+        }
+
+        int profile = profileLevel.first.intValue();
+        int level = profileLevel.second.intValue();
+
+        // Dolby Vision codec strings describe a Dolby Vision profile. The
+        // decoder capability check must instead use the base-layer profile.
+        if ("video/dolby-vision".equals(sampleMimeType)) {
+            if ("video/hevc".equals(codecMimeType)
+                    || "video/av01".equals(codecMimeType)) {
+                profile = 2;
+                level = 0;
+            } else if ("video/avc".equals(codecMimeType)) {
+                profile = 8;
+                level = 0;
+            }
+        }
+
+        // For ordinary codecs, profile-level validation is only needed for
+        // audio AC-4 or the special AAC xHE-AAC profile 42 case.
+        if (!this.i && !"audio/ac4".equals(codecMimeType) && profile != 42) {
+            return true;
+        }
+
+        MediaCodecInfo.CodecCapabilities capabilities = this.d;
+        MediaCodecInfo.CodecProfileLevel[] supportedProfiles =
+                capabilities == null || capabilities.profileLevels == null
+                        ? new MediaCodecInfo.CodecProfileLevel[0]
+                        : capabilities.profileLevels;
+
+        // AC-4 devices may omit profileLevels altogether. Reconstruct the
+        // platform's expected AC-4 profile list in that case.
+        if ("audio/ac4".equals(codecMimeType) && supportedProfiles.length == 0) {
+            MediaCodecInfo.AudioCapabilities audioCapabilities =
+                    capabilities == null ? null : capabilities.getAudioCapabilities();
+            int maxInputChannels = audioCapabilities == null
+                    ? 2
+                    : audioCapabilities.getMaxInputChannelCount();
+            int ac4Level = maxInputChannels > 18 ? 16 : 8;
+
+            if (context.getPackageManager()
+                    .hasSystemFeature("android.hardware.type.automotive")) {
+                supportedProfiles = new MediaCodecInfo.CodecProfileLevel[]{
+                        jk2.b(0x402, ac4Level)
+                };
+            } else {
+                supportedProfiles = new MediaCodecInfo.CodecProfileLevel[]{
+                        jk2.b(0x101, ac4Level),
+                        jk2.b(0x201, ac4Level),
+                        jk2.b(0x202, ac4Level),
+                        jk2.b(0x402, ac4Level),
+                        jk2.b(0x404, ac4Level)
+                };
+            }
+        }
+
+        for (MediaCodecInfo.CodecProfileLevel supported : supportedProfiles) {
+            if (supported.profile != profile) {
+                continue;
+            }
+            if (requireLevel && supported.level < level) {
+                continue;
+            }
+
+            // Work around the Android HEVC Main-10 report on the original
+            // Pixel devices: these decoders advertise the profile but cannot
+            // actually play the corresponding stream reliably.
+            if ("video/hevc".equals(codecMimeType)
+                    && profile == 2
+                    && ("sailfish".equals(Build.DEVICE) || "marlin".equals(Build.DEVICE))) {
+                continue;
+            }
+            return true;
+        }
+
+        h("codec.profileLevel, " + format.k + ", " + this.c);
+        return false;
     }
 
     public final boolean d(tb1 tb1Var) {
