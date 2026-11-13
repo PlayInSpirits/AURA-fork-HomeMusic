@@ -57,21 +57,24 @@ jobs:
           APK="$PWD/recovery-input/recovery/downloads/AURA-0.75.1.apk"
           [ -f "$APK" ] || { echo "::error::AURA 0.75.1 recovery APK is missing: $APK"; exit 1; }
 
-          JAR_WIN="$(cygpath -w "$RUNNER_TEMP/jadx-headless-mcp-0.7.1-all.jar")"
+          RUNNER_TEMP_UNIX="$(cygpath -u "$RUNNER_TEMP")"
+          JAR="$RUNNER_TEMP_UNIX/jadx-headless-mcp-0.7.1-all.jar"
+          JAR_WIN="$(cygpath -w "$JAR")"
           curl.exe -fL --retry 3 "https://github.com/1013503897/jadx-headless-mcp/releases/download/v0.7.1/jadx-headless-mcp-0.7.1-all.jar" -o "$JAR_WIN"
-          ACTUAL="$(sha256sum "$RUNNER_TEMP/jadx-headless-mcp-0.7.1-all.jar" | awk '{print $1}')"
+          ACTUAL="$(sha256sum "$JAR" | awk '{print $1}')"
           EXPECTED="6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75"
           [ "$ACTUAL" = "$EXPECTED" ] || { echo "::error::JADX provider SHA-256 mismatch: $ACTUAL"; exit 1; }
 
           export REA_JADX_MCP_JAR="$JAR_WIN"
           export JAVA_HOME
-          "$JAVA_HOME/bin/java.exe" -version
+          JAVA_HOME_UNIX="$(cygpath -u "$JAVA_HOME")"
+          "$JAVA_HOME_UNIX/bin/java.exe" -version
           node --version
           npm.cmd --version
           npx.cmd --yes rea-agents@6.9.0 --version
 
           APK_WIN="$(cygpath -w "$APK")"
-          REPORT_DIR="$(cygpath -w "$PWD/build-diagnostics/rea")"
+          REPORT_DIR="$PWD/build-diagnostics/rea"
           run_rea() {
             local label="$1"
             shift
