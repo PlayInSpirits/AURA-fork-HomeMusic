@@ -1,0 +1,111 @@
+import aura.build.ApiJar
+import aura.build.DexInjector
+import aura.build.SmaliAssembler
+
+plugins {
+    id 'com.android.application'
+}
+
+def prebuiltSmali = file('src/main/smali')
+def prebuiltDex = layout.buildDirectory.file('aura/prebuilt/prebuilt.dex')
+def prebuiltApi = layout.buildDirectory.file('aura/prebuilt/prebuilt-api.jar')
+
+android {
+    namespace = 'app.homemusic'
+    compileSdk = 37
+
+    defaultConfig {
+        applicationId = 'app.homemusic'
+        minSdk = 24
+        targetSdk = 37
+        versionCode = 7502
+        versionName = 'v0.10-1'
+    }
+
+    buildTypes {
+        release {
+            // The code is already R8-optimised; the prebuilt smali part relies on exact names.
+            minifyEnabled = false
+            shrinkResources = false
+        }
+        debug {
+            minifyEnabled = false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+        encoding = 'UTF-8'
+    }
+
+    androidResources {
+        // Keep every resource id identical to HomeMusic 1.14.7: the prebuilt code has the ids inlined.
+        additionalParameters += ['--stable-ids', file('stable-ids.txt').absolutePath]
+        noCompress += ['arsc', 'dex', 'png', 'so']
+    }
+
+    packaging {
+        jniLibs {
+            useLegacyPackaging = false
+            keepDebugSymbols += ['**/*.so']
+        }
+    }
+
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
+
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-nowarn', '-Xmaxerrs', '100000']
+    options.warnings = false
+}
+
+def assemblePrebuiltDex = tasks.register('assemblePrebuiltDex') {
+    description = 'Assembles src/main/smali (code kept in smali form) into one dex.'
+    inputs.dir(prebuiltSmali)
+    outputs.file(prebuiltDex)
+    doLast {
+        SmaliAssembler.assemble(prebuiltSmali, prebuiltDex.get().asFile, 24)
+    }
+}
+
+def prebuiltApiJar = tasks.register('prebuiltApiJar') {
+    description = 'Builds the compile-only API jar of the smali part for javac.'
+    dependsOn assemblePrebuiltDex
+    inputs.file(prebuiltDex)
+    outputs.file(prebuiltApi)
+    doLast {
+        ApiJar.make(prebuiltDex.get().asFile, prebuiltApi.get().asFile,
+                layout.buildDirectory.dir('aura/prebuilt/api-classes').get().asFile)
+    }
+}
+
+dependencies {
+    compileOnly files(prebuiltApi).builtBy(prebuiltApiJar)
+}
+
+// assembleRelease -> app-release-unsigned.apk, then auraApk adds the prebuilt dex as classesN.dex.
+['Release', 'Debug'].each { variant ->
+    def v = variant.toLowerCase()
+    def inject = tasks.register("aura${variant}Apk") {
+        description = "Builds the unsigned ${v} APK including the prebuilt dex."
+        dependsOn "assemble${variant}", assemblePrebuiltDex
+        def outApk = layout.buildDirectory.file("outputs/aura/AURA-native-${v}-unsigned.apk")
+        outputs.file(outApk)
+        doLast {
+            def dir = layout.buildDirectory.dir("outputs/apk/${v}").get().asFile
+            def apk = fileTree(dir).matching { include '*.apk' }.files.find { !it.name.contains('aura') }
+            if (apk == null) throw new GradleException("APK not found in ${dir}")
+            def name = DexInjector.inject(apk, prebuiltDex.get().asFile, outApk.get().asFile)
+            logger.lifecycle("Injected prebuilt dex as ${name} -> ${outApk.get().asFile}")
+        }
+    }
+}

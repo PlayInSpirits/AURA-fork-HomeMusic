@@ -1,0 +1,24 @@
+package defpackage;
+
+import java.util.LinkedHashMap;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public abstract class tf0 {
+    public final LinkedHashMap a = new LinkedHashMap();
+
+    public final boolean equals(Object obj) {
+        if (obj instanceof tf0) {
+            return h12.c(this.a, ((tf0) obj).a);
+        }
+        return false;
+    }
+
+    public final int hashCode() {
+        return this.a.hashCode();
+    }
+
+    public final String toString() {
+        return "CreationExtras(extras=" + this.a + ")";
+    }
+}

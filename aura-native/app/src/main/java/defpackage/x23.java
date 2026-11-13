@@ -1,0 +1,17 @@
+package defpackage;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public final class x23 {
+    public boolean a;
+    public boolean b;
+    public boolean d;
+    public boolean e;
+    public int c = -1;
+    public int f = -1;
+    public int g = -1;
+
+    public final y23 a() {
+        return new y23(this.a, this.b, this.c, this.d, this.e, this.f, this.g, -1, -1);
+    }
+}

@@ -1,0 +1,27 @@
+package defpackage;
+
+import java.util.Arrays;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public final class lr4 implements le {
+    public lr4() {
+        super();
+    }
+
+    public static final lr4 n = new lr4();
+
+    public final boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj instanceof lr4) {
+            return au0.n(null, null);
+        }
+        return false;
+    }
+
+    public final int hashCode() {
+        return Arrays.hashCode(new Object[]{null});
+    }
+}

@@ -1,0 +1,11 @@
+.class public final Landroidx/media3/datasource/HttpDataSource$CleartextNotPermittedException;
+.super Landroidx/media3/datasource/HttpDataSource$HttpDataSourceException;
+.source "r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189"
+
+.method public constructor <init>(ILjava/io/IOException;Ljava/lang/String;)V
+    .registers 4
+
+    invoke-direct/range {p0 .. p3}, Landroidx/media3/datasource/HttpDataSource$HttpDataSourceException;-><init>(ILjava/io/IOException;Ljava/lang/String;)V
+
+    return-void
+.end method

@@ -1,0 +1,26 @@
+package defpackage;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public final class z10 extends k {
+    public z10(android.os.Parcelable a0) {
+        super(a0);
+    }
+
+    public static final Parcelable.Creator<z10> CREATOR = new yd3(2);
+    public boolean p;
+
+    public z10(Parcel parcel, ClassLoader classLoader) {
+        super(parcel, classLoader);
+        this.p = parcel.readInt() == 1;
+    }
+
+    @Override // defpackage.k, android.os.Parcelable
+    public final void writeToParcel(Parcel parcel, int i) {
+        super.writeToParcel(parcel, i);
+        parcel.writeInt(this.p ? 1 : 0);
+    }
+}

@@ -1,0 +1,201 @@
+name: Release AURA-native
+
+"on":
+  push:
+    branches: [release/aura-native]
+    paths:
+      - 'aura-native/**'
+      - '.github/workflows/aura-native-release.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aura-native-release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  AURA_NATIVE_VERSION_NAME: v0.10-1
+  AURA_NATIVE_VERSION_CODE: '7502'
+  AURA_NATIVE_TAG: aura-native-v0.10-1
+  AURA_NATIVE_APK: AURA-native v0.10-1.apk
+
+jobs:
+  release:
+    name: Build, sign with the AURA key and publish pre-release
+    runs-on: [self-hosted, windows, x64]
+    defaults:
+      run:
+        shell: 'C:\\PROGRA~1\\Git\\bin\\bash.exe --noprofile --norc -eo pipefail {0}'
+
+    steps:
+      - name: Fetch exact ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          SRC="$(cygpath -u "$RUNNER_TEMP")/aura-native-src"
+          rm -rf "$SRC"
+          mkdir -p "$SRC"
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\r\n')"
+          git -C "$SRC" init -q
+          git -C "$SRC" config core.longpaths true
+          git -C "$SRC" config core.autocrlf false
+          git -C "$SRC" remote add origin "https://github.com/$GITHUB_REPOSITORY"
+          git -C "$SRC" -c http.extraheader="$AUTH_HEADER" fetch --no-tags --depth=1 origin "$GITHUB_SHA"
+          git -C "$SRC" checkout -q --detach FETCH_HEAD
+          test -f "$SRC/aura-native/settings.gradle"
+          echo "AURA_SRC=$SRC" >> "$GITHUB_ENV"
+          echo "Source commit: $(git -C "$SRC" rev-parse HEAD)"
+
+      - name: Configure JDK 17+ and Android SDK API 37
+        run: |
+          set -euo pipefail
+          if [ -n "${JAVA_HOME:-}" ]; then
+            JAVA_HOME_UNIX="$(cygpath -u "$JAVA_HOME")"
+          else
+            JAVA_EXE="$(command -v java.exe || command -v java || true)"
+            [ -n "$JAVA_EXE" ] || { echo "::error::JDK was not found on runner PATH."; exit 1; }
+            JAVA_EXE_UNIX="$(cygpath -u "$JAVA_EXE" 2>/dev/null || printf '%s' "$JAVA_EXE")"
+            JAVA_HOME_UNIX="$(cd "$(dirname "$JAVA_EXE_UNIX")/.." && pwd -P)"
+          fi
+          JAVA_RUNTIME="$JAVA_HOME_UNIX/bin/java.exe"
+          [ -f "$JAVA_RUNTIME" ] || JAVA_RUNTIME="$JAVA_HOME_UNIX/bin/java"
+          "$JAVA_RUNTIME" -version
+          SDK_ROOT_UNIX=""
+          for candidate in "${ANDROID_SDK_ROOT:-}" "${ANDROID_HOME:-}" "${LOCALAPPDATA:-}/Android/Sdk" "${USERPROFILE:-}/AppData/Local/Android/Sdk" "C:/Android/Sdk"; do
+            [ -n "$candidate" ] || continue
+            p="$(cygpath -u "$candidate" 2>/dev/null || printf '%s' "$candidate")"
+            if [ -d "$p/platforms" ] && [ -d "$p/build-tools" ]; then SDK_ROOT_UNIX="$(cd "$p" && pwd -P)"; break; fi
+          done
+          [ -n "$SDK_ROOT_UNIX" ] || { echo "::error::Android SDK root not found."; exit 1; }
+          PLATFORM_DIR="$(find "$SDK_ROOT_UNIX/platforms" -mindepth 1 -maxdepth 1 -type d -name 'android-37*' | sort -V | tail -n 1)"
+          [ -n "$PLATFORM_DIR" ] || { echo "::error::Android API 37 platform is not installed."; exit 1; }
+          BUILD_TOOLS_DIR="$(find "$SDK_ROOT_UNIX/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
+          printf 'JAVA_HOME=%s\n' "$(cygpath -w "$JAVA_HOME_UNIX")" >> "$GITHUB_ENV"
+          printf 'ANDROID_HOME=%s\n' "$(cygpath -w "$SDK_ROOT_UNIX")" >> "$GITHUB_ENV"
+          printf 'ANDROID_SDK_ROOT=%s\n' "$(cygpath -w "$SDK_ROOT_UNIX")" >> "$GITHUB_ENV"
+          printf 'AURA_BUILD_TOOLS=%s\n' "$BUILD_TOOLS_DIR" >> "$GITHUB_ENV"
+          echo "Using platform $(basename "$PLATFORM_DIR"), build-tools $(basename "$BUILD_TOOLS_DIR")."
+
+      - name: Bootstrap verified Gradle 9.6.0
+        run: |
+          set -euo pipefail
+          GRADLE_VERSION="9.6.0"
+          TOOL_CACHE="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          GRADLE_HOME="$TOOL_CACHE/aura-gradle-$GRADLE_VERSION"
+          GRADLE_LAUNCHER="$GRADLE_HOME/bin/gradle.bat"
+          if [ ! -f "$GRADLE_LAUNCHER" ]; then
+            DOWNLOAD_UNIX="$(cygpath -u "$RUNNER_TEMP")/aura-gradle-download"
+            mkdir -p "$TOOL_CACHE" "$DOWNLOAD_UNIX"
+            ZIP_UNIX="$(cygpath -u "$RUNNER_TEMP")/gradle-$GRADLE_VERSION-bin.zip"
+            SHA_UNIX="$(cygpath -u "$RUNNER_TEMP")/gradle-$GRADLE_VERSION-bin.zip.sha256"
+            curl.exe -fL --retry 3 "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip" -o "$(cygpath -w "$ZIP_UNIX")"
+            curl.exe -fL --retry 3 "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip.sha256" -o "$(cygpath -w "$SHA_UNIX")"
+            EXPECTED="$(awk '{print $1}' "$SHA_UNIX" | tr 'A-F' 'a-f')"
+            ACTUAL="$(sha256sum "$ZIP_UNIX" | awk '{print $1}')"
+            [ "$EXPECTED" = "$ACTUAL" ] || { echo "::error::Gradle SHA-256 mismatch."; exit 1; }
+            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$(cygpath -w "$ZIP_UNIX")' -DestinationPath '$(cygpath -w "$DOWNLOAD_UNIX")' -Force; New-Item -ItemType Directory -Force -Path '$(cygpath -w "$GRADLE_HOME")' | Out-Null; Copy-Item -Path '$(cygpath -w "$DOWNLOAD_UNIX")\gradle-$GRADLE_VERSION\*' -Destination '$(cygpath -w "$GRADLE_HOME")' -Recurse -Force"
+          fi
+          printf 'AURA_GRADLE_BAT=%s\n' "$(cygpath -w "$GRADLE_LAUNCHER")" >> "$GITHUB_ENV"
+
+      - name: Build unsigned APK (Java sources + smali part)
+        run: |
+          set -euo pipefail
+          PROJECT="$AURA_SRC/aura-native"
+          OUTPUT="$(cygpath -u "$GITHUB_WORKSPACE")/aura-native-output"
+          rm -rf "$OUTPUT"; mkdir -p "$OUTPUT"
+          set +e
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$AURA_GRADLE_BAT' --no-daemon --stacktrace -p '$(cygpath -w "$PROJECT")' :app:auraReleaseApk *> '$(cygpath -w "$OUTPUT/gradle-build.log")'; exit \$LASTEXITCODE"
+          BUILD_EXIT=$?
+          set -e
+          tail -n 300 "$OUTPUT/gradle-build.log"
+          [ "$BUILD_EXIT" -eq 0 ] || { echo "::error::Gradle build failed (see gradle-build.log artifact)."; exit 1; }
+          cp "$PROJECT/app/build/outputs/aura/AURA-native-release-unsigned.apk" "$OUTPUT/unsigned.apk"
+          "$AURA_BUILD_TOOLS/zipalign.exe" -f -p 4 "$OUTPUT/unsigned.apk" "$OUTPUT/aligned.apk"
+          "$AURA_BUILD_TOOLS/aapt.exe" dump badging "$OUTPUT/aligned.apk" | tee "$OUTPUT/badging-unsigned.txt"
+          grep -F "package: name='app.homemusic' versionCode='$AURA_NATIVE_VERSION_CODE' versionName='$AURA_NATIVE_VERSION_NAME'" "$OUTPUT/badging-unsigned.txt"
+
+      - name: Download AURA v0.75-1 for certificate comparison
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+            const { data: rel } = await github.rest.repos.getReleaseByTag({ owner, repo, tag: 'v0.75.1' });
+            const asset = rel.assets.find(a => a.name === 'AURA-0.75.apk');
+            if (!asset) throw new Error('AURA-0.75.apk not found in release v0.75.1');
+            const res = await github.request('GET /repos/{owner}/{repo}/releases/assets/{asset_id}', {
+              owner, repo, asset_id: asset.id, headers: { accept: 'application/octet-stream' }
+            });
+            fs.writeFileSync('aura-native-output/AURA-0.75.apk', Buffer.from(res.data));
+
+      - name: Sign with the permanent AURA key (same as aura-0.75-1)
+        env:
+          AURA_KEYSTORE_BASE64: ${{ secrets.AURA_KEYSTORE_BASE64 }}
+          AURA_KEYSTORE_PASSWORD: ${{ secrets.AURA_KEYSTORE_PASSWORD }}
+          AURA_KEY_ALIAS: ${{ secrets.AURA_KEY_ALIAS }}
+          AURA_KEY_PASSWORD: ${{ secrets.AURA_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [ -z "$AURA_KEYSTORE_BASE64" ] || [ -z "$AURA_KEYSTORE_PASSWORD" ] || [ -z "$AURA_KEY_ALIAS" ]; then
+            echo "::error::AURA signing secrets are missing; refusing to sign with any other key."
+            exit 1
+          fi
+          OUTPUT="$(cygpath -u "$GITHUB_WORKSPACE")/aura-native-output"
+          KS="$(cygpath -u "$RUNNER_TEMP")/aura-release.jks"
+          echo "$AURA_KEYSTORE_BASE64" | base64 --decode > "$KS"
+          KEY_PASS="${AURA_KEY_PASSWORD:-$AURA_KEYSTORE_PASSWORD}"
+          APKSIGNER_JAR="$AURA_BUILD_TOOLS/lib/apksigner.jar"
+          java -jar "$APKSIGNER_JAR" sign --ks "$(cygpath -w "$KS")" --ks-pass "pass:$AURA_KEYSTORE_PASSWORD" --key-pass "pass:$KEY_PASS" --ks-key-alias "$AURA_KEY_ALIAS" --out "$(cygpath -w "$OUTPUT/signed.apk")" "$(cygpath -w "$OUTPUT/aligned.apk")"
+          rm -f "$KS"
+          java -jar "$APKSIGNER_JAR" verify --verbose --print-certs "$(cygpath -w "$OUTPUT/signed.apk")" | tee "$OUTPUT/signature.txt"
+          # The certificate must be the one that signed AURA v0.75-1.
+          java -jar "$APKSIGNER_JAR" verify --print-certs "$(cygpath -w "$OUTPUT/AURA-0.75.apk")" | grep -F 'certificate SHA-256 digest' | head -n 1 > "$OUTPUT/cert-0.75.txt"
+          grep -F 'certificate SHA-256 digest' "$OUTPUT/signature.txt" | head -n 1 > "$OUTPUT/cert-native.txt"
+          cat "$OUTPUT/cert-0.75.txt" "$OUTPUT/cert-native.txt"
+          cmp -s "$OUTPUT/cert-0.75.txt" "$OUTPUT/cert-native.txt" || { echo "::error::Signing certificate differs from AURA v0.75-1."; exit 1; }
+          rm -f "$OUTPUT/AURA-0.75.apk"
+          cp "$OUTPUT/signed.apk" "$OUTPUT/$AURA_NATIVE_APK"
+
+      - name: Upload build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aura-native-release-build
+          path: |
+            aura-native-output/*.txt
+            aura-native-output/*.log
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Publish pre-release
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+            const tag = process.env.AURA_NATIVE_TAG;
+            const assetName = process.env.AURA_NATIVE_APK;
+            let release;
+            try {
+              ({ data: release } = await github.rest.repos.getReleaseByTag({ owner, repo, tag }));
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              ({ data: release } = await github.rest.repos.createRelease({
+                owner, repo, tag_name: tag, target_commitish: context.sha,
+                name: 'AURA-native v0.10-1', body: '', draft: false, prerelease: true
+              }));
+            }
+            await github.rest.repos.updateRelease({ owner, repo, release_id: release.id, name: 'AURA-native v0.10-1', body: '', draft: false, prerelease: true });
+            const existing = await github.paginate(github.rest.repos.listReleaseAssets, { owner, repo, release_id: release.id, per_page: 100 });
+            for (const a of existing) {
+              await github.rest.repos.deleteReleaseAsset({ owner, repo, asset_id: a.id });
+            }
+            const data = fs.readFileSync(`aura-native-output/${assetName}`);
+            const { data: uploaded } = await github.rest.repos.uploadReleaseAsset({
+              owner, repo, release_id: release.id, name: assetName, label: assetName, data,
+              headers: { 'content-type': 'application/vnd.android.package-archive', 'content-length': data.length }
+            });
+            core.info(`Uploaded ${uploaded.name} (${data.length} bytes): ${uploaded.browser_download_url}`);

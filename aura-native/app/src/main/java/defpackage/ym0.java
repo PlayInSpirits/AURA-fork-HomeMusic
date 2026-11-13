@@ -1,0 +1,17 @@
+package defpackage;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public final class ym0 implements de {
+    public ym0() {
+        super();
+    }
+
+    public static final ym0 n = new ym0();
+    public static final d81 o = new d81(1500.0f);
+
+    @Override // defpackage.de
+    public final c81 get(int i) {
+        return o;
+    }
+}

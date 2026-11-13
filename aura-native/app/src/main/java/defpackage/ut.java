@@ -1,0 +1,14 @@
+package defpackage;
+
+import android.view.View;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public abstract class ut {
+    public abstract void b(View view, float f);
+
+    public abstract void c(View view, int i);
+
+    public void a(View view) {
+    }
+}

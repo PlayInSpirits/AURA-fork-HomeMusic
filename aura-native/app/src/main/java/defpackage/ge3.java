@@ -1,0 +1,180 @@
+package defpackage;
+
+import java.io.File;
+import java.util.ArrayList;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public final class ge3 implements Comparable {
+    public static final String o;
+    public final yw n;
+
+    static {
+        String str = File.separator;
+        str.getClass();
+        o = str;
+    }
+
+    public ge3(yw ywVar) {
+        ywVar.getClass();
+        this.n = ywVar;
+    }
+
+    public final ArrayList a() {
+        ArrayList arrayList = new ArrayList();
+        int a = f.a(this);
+        yw ywVar = this.n;
+        if (a == -1) {
+            a = 0;
+        } else if (a < ywVar.d() && ywVar.i(a) == 92) {
+            a++;
+        }
+        int d = ywVar.d();
+        int i = a;
+        while (a < d) {
+            if (ywVar.i(a) == 47 || ywVar.i(a) == 92) {
+                arrayList.add(ywVar.n(i, a));
+                i = a + 1;
+            }
+            a++;
+        }
+        if (i < ywVar.d()) {
+            arrayList.add(ywVar.n(i, ywVar.d()));
+        }
+        return arrayList;
+    }
+
+    public final ge3 b() {
+        yw ywVar = f.d;
+        yw ywVar2 = this.n;
+        if (h12.c(ywVar2, ywVar)) {
+            return null;
+        }
+        yw ywVar3 = f.a;
+        if (h12.c(ywVar2, ywVar3)) {
+            return null;
+        }
+        yw ywVar4 = f.b;
+        if (h12.c(ywVar2, ywVar4)) {
+            return null;
+        }
+        yw ywVar5 = f.e;
+        ywVar2.getClass();
+        ywVar5.getClass();
+        int d = ywVar2.d();
+        byte[] bArr = ywVar5.n;
+        if (ywVar2.m(d - bArr.length, ywVar5, bArr.length) && (ywVar2.d() == 2 || ywVar2.m(ywVar2.d() - 3, ywVar3, 1) || ywVar2.m(ywVar2.d() - 3, ywVar4, 1))) {
+            return null;
+        }
+        int k = yw.k(ywVar2, ywVar3);
+        if (k == -1) {
+            k = yw.k(ywVar2, ywVar4);
+        }
+        if (k == 2 && e() != null) {
+            if (ywVar2.d() == 3) {
+                return null;
+            }
+            return new ge3(yw.o(ywVar2, 0, 3, 1));
+        }
+        if (k == 1) {
+            ywVar4.getClass();
+            if (ywVar2.m(0, ywVar4, ywVar4.d())) {
+                return null;
+            }
+        }
+        if (k != -1 || e() == null) {
+            return k == -1 ? new ge3(ywVar) : k == 0 ? new ge3(yw.o(ywVar2, 0, 1, 1)) : new ge3(yw.o(ywVar2, 0, k, 1));
+        }
+        if (ywVar2.d() == 2) {
+            return null;
+        }
+        return new ge3(yw.o(ywVar2, 0, 2, 1));
+    }
+
+    public final ge3 c(ge3 ge3Var) {
+        ge3Var.getClass();
+        yw ywVar = ge3Var.n;
+        int a = f.a(this);
+        yw ywVar2 = this.n;
+        ge3 ge3Var2 = a == -1 ? null : new ge3(ywVar2.n(0, a));
+        int a2 = f.a(ge3Var);
+        if (!h12.c(ge3Var2, a2 == -1 ? null : new ge3(ywVar.n(0, a2)))) {
+            nz2.v("Paths of different roots cannot be relative to each other: ", this, " and ", ge3Var);
+            return null;
+        }
+        ArrayList a3 = a();
+        ArrayList a4 = ge3Var.a();
+        int min = Math.min(a3.size(), a4.size());
+        int i = 0;
+        while (i < min && h12.c(a3.get(i), a4.get(i))) {
+            i++;
+        }
+        if (i == min && ywVar2.d() == ywVar.d()) {
+            return tv1.z(".");
+        }
+        if (a4.subList(i, a4.size()).indexOf(f.e) != -1) {
+            nz2.v("Impossible relative path to resolve: ", this, " and ", ge3Var);
+            return null;
+        }
+        tv tvVar = new tv();
+        yw c = f.c(ge3Var);
+        if (c == null && (c = f.c(this)) == null) {
+            c = f.f(o);
+        }
+        int size = a4.size();
+        for (int i2 = i; i2 < size; i2++) {
+            tvVar.X(f.e);
+            tvVar.X(c);
+        }
+        int size2 = a3.size();
+        while (i < size2) {
+            tvVar.X((yw) a3.get(i));
+            tvVar.X(c);
+            i++;
+        }
+        return f.d(tvVar, false);
+    }
+
+    @Override // java.lang.Comparable
+    public final int compareTo(Object obj) {
+        ge3 ge3Var = (ge3) obj;
+        ge3Var.getClass();
+        return this.n.compareTo(ge3Var.n);
+    }
+
+    public final ge3 d(String str) {
+        str.getClass();
+        tv tvVar = new tv();
+        tvVar.d0(str);
+        return f.b(this, f.d(tvVar, false), false);
+    }
+
+    public final Character e() {
+        yw ywVar = f.a;
+        yw ywVar2 = this.n;
+        if (yw.g(ywVar2, ywVar) != -1 || ywVar2.d() < 2 || ywVar2.i(1) != 58) {
+            return null;
+        }
+        char i = (char) ywVar2.i(0);
+        if (('a' > i || i >= '{') && ('A' > i || i >= '[')) {
+            return null;
+        }
+        return Character.valueOf(i);
+    }
+
+    public final boolean equals(Object obj) {
+        return (obj instanceof ge3) && h12.c(((ge3) obj).n, this.n);
+    }
+
+    public final int hashCode() {
+        return this.n.hashCode();
+    }
+
+    public final File toFile() {
+        return new File(this.n.q());
+    }
+
+    public final String toString() {
+        return this.n.q();
+    }
+}

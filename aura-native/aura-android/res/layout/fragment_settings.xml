@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/aura_home_background">
-    <com.google.android.material.appbar.MaterialToolbar android:id="@id/settings_toolbar" android:background="?colorSurface" android:layout_width="match_parent" android:layout_height="?actionBarSize" app:layout_collapseMode="pin" app:navigationIcon="@drawable/ic_arrow_back" app:title="@string/menu_settings_button" />
-    <FrameLayout android:id="@id/settings_container" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0" />
-</LinearLayout>

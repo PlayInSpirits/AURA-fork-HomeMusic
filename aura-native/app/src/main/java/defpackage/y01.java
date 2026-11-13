@@ -1,0 +1,28 @@
+package defpackage;
+
+import java.util.Iterator;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public final class y01 implements aa4, gx0 {
+    public y01() {
+        super();
+    }
+
+    public static final y01 a = new y01();
+
+    @Override // defpackage.gx0
+    public final /* bridge */ /* synthetic */ aa4 a(int i) {
+        return a;
+    }
+
+    @Override // defpackage.gx0
+    public final /* bridge */ /* synthetic */ aa4 b(int i) {
+        return a;
+    }
+
+    @Override // defpackage.aa4
+    public final Iterator iterator() {
+        return t01.n;
+    }
+}

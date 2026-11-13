@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/hub_root" android:background="?colorSurface" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?colorSurface" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageButton android:id="@id/hub_menu_button" android:background="?selectableItemBackgroundBorderless" android:visibility="gone" android:layout_width="48.0dp" android:layout_height="48.0dp" android:src="@drawable/ic_homemusic_menu" android:contentDescription="@string/homemusic_open_menu" android:layout_marginStart="4.0dp" />
+        <com.google.android.material.tabs.TabLayout android:id="@id/hub_tabs" android:background="?colorSurface" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" app:tabGravity="center" app:tabIndicatorColor="?colorPrimary" app:tabMode="auto" app:tabPaddingEnd="8.0dp" app:tabPaddingStart="8.0dp" app:tabSelectedTextColor="?colorOnSurface" app:tabTextColor="?colorOnSurfaceVariant" app:tabUnboundedRipple="false" />
+    </LinearLayout>
+    <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@id/hub_progress" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:indeterminate="true" app:indicatorColor="?colorPrimary" app:trackThickness="2.0dp" />
+    <FrameLayout android:id="@id/hub_web_container" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hub_error" android:padding="32.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:textSize="15.0sp" android:textColor="?colorOnSurface" android:gravity="center" android:id="@id/hub_error_text" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <com.google.android.material.button.MaterialButton android:id="@id/hub_retry_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:text="@string/homemusic_retry" />
+            <com.google.android.material.button.MaterialButton android:id="@id/hub_settings_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/homemusic_open_settings" style="@style/Widget.Material3.Button.TextButton" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

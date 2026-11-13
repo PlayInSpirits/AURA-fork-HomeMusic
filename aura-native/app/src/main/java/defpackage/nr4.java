@@ -1,0 +1,25 @@
+package defpackage;
+
+import android.text.Layout;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public abstract class nr4 {
+    public static final Layout.Alignment a;
+    public static final Layout.Alignment b;
+
+    static {
+        Layout.Alignment[] values = Layout.Alignment.values();
+        Layout.Alignment alignment = Layout.Alignment.ALIGN_NORMAL;
+        Layout.Alignment alignment2 = alignment;
+        for (Layout.Alignment alignment3 : values) {
+            if (h12.c(alignment3.name(), "ALIGN_LEFT")) {
+                alignment = alignment3;
+            } else if (h12.c(alignment3.name(), "ALIGN_RIGHT")) {
+                alignment2 = alignment3;
+            }
+        }
+        a = alignment;
+        b = alignment2;
+    }
+}

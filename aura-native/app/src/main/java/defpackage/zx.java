@@ -1,0 +1,17 @@
+package defpackage;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public final class zx {
+    public zx() {
+        super();
+    }
+
+    public static final pa c = new pa(26);
+    public Object a;
+    public int b;
+
+    public final String toString() {
+        return "CachedItem(key=" + this.a + ", mainAxisSize=" + this.b + ")";
+    }
+}

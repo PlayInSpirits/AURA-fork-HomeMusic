@@ -1,0 +1,30 @@
+package com.eddyizm.tempus.subsonic.models;
+
+import defpackage.ka4;
+import java.util.List;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public final class Index {
+    public static final int $stable = 8;
+
+    @ka4("artist")
+    private List<Artist> artists;
+    private String name;
+
+    public final List<Artist> getArtists() {
+        return this.artists;
+    }
+
+    public final String getName() {
+        return this.name;
+    }
+
+    public final void setArtists(List<Artist> list) {
+        this.artists = list;
+    }
+
+    public final void setName(String str) {
+        this.name = str;
+    }
+}

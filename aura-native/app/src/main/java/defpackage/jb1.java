@@ -1,0 +1,21 @@
+package defpackage;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public final class jb1 extends wd0 {
+    public jb1(defpackage.vd0 a0) {
+        super(a0);
+    }
+
+    public hp4 n;
+    public ln3 o;
+    public /* synthetic */ Object p;
+    public int q;
+
+    @Override // defpackage.jp
+    public final Object invokeSuspend(Object obj) {
+        this.p = obj;
+        this.q |= Integer.MIN_VALUE;
+        return xl.f(null, null, this);
+    }
+}

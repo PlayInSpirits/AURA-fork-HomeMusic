@@ -1,0 +1,16 @@
+package defpackage;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public final class n63 implements q81 {
+    public n63() {
+        super();
+    }
+
+    public static final n63 n = new n63();
+
+    @Override // defpackage.q81
+    public final Object b(Object obj, vd0 vd0Var) {
+        return j15.a;
+    }
+}

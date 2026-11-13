@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    // Google's smali assembler (same engine Apktool uses) for the prebuilt smali part.
+    implementation 'com.android.tools.smali:smali:3.0.9'
+    // dex2jar: produces the compile-time API jar of the prebuilt part.
+    implementation 'de.femtopedia.dex2jar:dex-translator:2.4.32'
+    implementation 'org.ow2.asm:asm:9.8'
+}

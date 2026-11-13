@@ -1,0 +1,37 @@
+.class public final Landroidx/credentials/playservices/HiddenActivity$Companion;
+.super Ljava/lang/Object;
+.source "r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/credentials/playservices/HiddenActivity;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "Companion"
+.end annotation
+
+
+# direct methods
+.method private constructor <init>()V
+    .locals 0
+
+    .line 5
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Ldefpackage/xj0;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Landroidx/credentials/playservices/HiddenActivity$Companion;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method

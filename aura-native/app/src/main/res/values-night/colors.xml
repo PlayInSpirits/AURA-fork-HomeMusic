@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dividerColor">#404040</color>
+    <color name="homemusic_danger">#f26b63</color>
+    <color name="lyricsTextColor">#dadada</color>
+    <color name="shadowsLyricsTextColor">#606060</color>
+    <color name="subtitleTextColor">#9b9b9b</color>
+    <color name="titleTextColor">#dadada</color>
+    <color name="widget_bg">#cc000000</color>
+    <color name="widget_icon_tint">#ffffffff</color>
+    <color name="widget_subtitle">#b3ffffff</color>
+    <color name="widget_title">#ffffffff</color>
+</resources>

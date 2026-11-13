@@ -1,0 +1,13 @@
+package defpackage;
+
+/* compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* loaded from: classes.dex */
+public abstract class c44 {
+    public static final xf1 a;
+
+    static {
+        b44 b44Var = b44.n;
+        jz4.j(3, b44Var);
+        a = b44Var;
+    }
+}
