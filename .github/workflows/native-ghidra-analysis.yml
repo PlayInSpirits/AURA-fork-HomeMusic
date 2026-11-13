@@ -66,7 +66,8 @@ jobs:
           fi
           [ -f "$GHIDRA_HOME/support/analyzeHeadless.bat" ] || { echo "::error::Cached Ghidra installation is incomplete."; exit 1; }
           printf 'GHIDRA_HOME=%s\n' "$(cygpath -w "$GHIDRA_HOME")" >> "$GITHUB_ENV"
-          "$JAVA_HOME/bin/java.exe" -version
+          JAVA_HOME_UNIX="$(cygpath -u "$JAVA_HOME")"
+          "$JAVA_HOME_UNIX/bin/java.exe" -version
 
       - name: Extract classes.dex and export selected methods
         run: |
