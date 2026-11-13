@@ -2,3 +2,4 @@ Run Ghidra 12.1.4 with JDK 21 on recovered AURA 0.75.1 classes.dex; export pseud
 Retry after normalizing Windows runner paths and SHA-256 input.
 Retry after Java path normalization for the JDK 21 check.
 Include all thirteen classes reported by javac, including the five additional classes found from the complete diagnostic paths.
+Use hosted Windows runner for APK reverse-engineering; Android compile stays on the self-hosted runner.
