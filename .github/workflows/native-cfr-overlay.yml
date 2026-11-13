@@ -53,7 +53,7 @@ jobs:
 
       - name: Check persistent recovery-artifact cache
         id: artifact_cache
-        shell: pwsh
+        shell: powershell
         run: |
           $cache = Join-Path $env:RUNNER_TOOL_CACHE 'aura-native-v0.10.1\recovery36'
           if (Test-Path (Join-Path $cache 'cfr-aura-0751')) {
@@ -76,7 +76,7 @@ jobs:
 
       - name: Persist recovery artifact outside the checkout
         if: steps.artifact_cache.outputs.hit != 'true'
-        shell: pwsh
+        shell: powershell
         run: |
           $source = Join-Path $env:GITHUB_WORKSPACE 'native\recovery-input\recovery'
           $destination = Join-Path $env:RUNNER_TOOL_CACHE 'aura-native-v0.10.1\recovery36'
