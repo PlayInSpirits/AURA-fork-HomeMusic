@@ -4,3 +4,4 @@ Retry after Java path normalization for the JDK 21 check.
 Include all thirteen classes reported by javac, including the five additional classes found from the complete diagnostic paths.
 Use hosted Windows runner for APK reverse-engineering; Android compile stays on the self-hosted runner.
 Use Bash as the GitHub-hosted Windows shell for this analysis job.
+Run hosted analysis in a dedicated concurrency group to bypass stale self-hosted queue.
