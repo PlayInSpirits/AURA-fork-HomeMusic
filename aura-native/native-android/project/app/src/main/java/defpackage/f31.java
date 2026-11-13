@@ -436,40 +436,156 @@ public final class f31 {
         	at jadx.core.dex.visitors.regions.PostProcessRegions.process(PostProcessRegions.java:21)
         	at jadx.core.dex.visitors.regions.RegionMakerVisitor.visit(RegionMakerVisitor.java:31)
         */
-    public final void e(defpackage.a31 r23, int r24, int r25) throws java.io.IOException {
-        /*
-            Method dump skipped, instruction units count: 492
-            To view this dump add '--comments-level debug' option
-        */
-        throw new UnsupportedOperationException("Method not decompiled: defpackage.f31.e(a31, int, int):void");
+    /**
+     * Reads JPEG marker segments and extracts Exif, XMP, comments and image dimensions.
+     *
+     * Reconstructed from AURA 0.75.1 Smali (La31;/Lb31;/Lf31; fields) and checked
+     * against the corresponding AndroidX ExifInterface JPEG segment reader.
+     */
+    public final void e(a31 input, int offsetToJpeg, int imageType) throws IOException {
+        if (l) {
+            Log.d("ExifInterface", "getJpegAttributes starting with: " + input);
+        }
+
+        input.o = ByteOrder.BIG_ENDIAN;
+        int bytesRead = 2;
+
+        byte marker = input.readByte();
+        if (marker != (byte) 0xFF) {
+            throw new IOException("Invalid marker: " + Integer.toHexString(marker & 0xFF));
+        }
+
+        marker = input.readByte();
+        if (marker != (byte) 0xD8) {
+            throw new IOException("Invalid marker: " + Integer.toHexString(0xFF));
+        }
+
+        while (true) {
+            byte markerPrefix = input.readByte();
+            if (markerPrefix != (byte) 0xFF) {
+                throw new IOException(
+                        "Invalid marker:" + Integer.toHexString(markerPrefix & 0xFF));
+            }
+
+            marker = input.readByte();
+            if (l) {
+                Log.d("ExifInterface",
+                        "Found JPEG segment indicator: " + Integer.toHexString(marker & 0xFF));
+            }
+            bytesRead += 4;
+
+            // End Of Image and Start Of Scan terminate metadata parsing.
+            if (marker == (byte) 0xD9 || marker == (byte) 0xDA) {
+                input.o = this.f;
+                return;
+            }
+
+            int segmentLength = input.readUnsignedShort();
+            int remaining = segmentLength - 2;
+            if (l) {
+                Log.d("ExifInterface", "JPEG segment: "
+                        + Integer.toHexString(marker & 0xFF)
+                        + " (length: " + segmentLength + ")");
+            }
+            if (remaining < 0) {
+                throw new IOException("Invalid length");
+            }
+
+            int markerCode = marker & 0xFF;
+            if (markerCode == 0xE1) {
+                // APP1 may contain either the Exif TIFF payload or an XMP packet.
+                int segmentStart = bytesRead;
+                byte[] segment = new byte[remaining];
+                input.readFully(segment);
+                int segmentEnd = bytesRead + remaining;
+                remaining = 0;
+
+                byte[] exifPrefix = M;
+                boolean isExif = exifPrefix != null && segment.length >= exifPrefix.length;
+                if (isExif) {
+                    for (int i = 0; i < exifPrefix.length; i++) {
+                        if (segment[i] != exifPrefix[i]) {
+                            isExif = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (isExif) {
+                    byte[] exifData = Arrays.copyOfRange(
+                            segment, exifPrefix.length, segment.length);
+                    this.h = offsetToJpeg + segmentStart + exifPrefix.length;
+                    this.r(imageType, exifData);
+                    this.u(new a31(exifData));
+                } else {
+                    byte[] xmpPrefix = N;
+                    boolean isXmp = xmpPrefix != null && segment.length >= xmpPrefix.length;
+                    if (isXmp) {
+                        for (int i = 0; i < xmpPrefix.length; i++) {
+                            if (segment[i] != xmpPrefix[i]) {
+                                isXmp = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (isXmp && this.b("Xmp") == null) {
+                        byte[] xmpData = Arrays.copyOfRange(
+                                segment, xmpPrefix.length, segment.length);
+                        this.d[0].put("Xmp", new b31(
+                                (long) segmentStart + xmpPrefix.length,
+                                xmpData,
+                                1,
+                                xmpData.length));
+                    }
+                }
+
+                // The entire APP1 segment has already been consumed.
+                bytesRead = segmentEnd;
+            } else if (markerCode == 0xFE) {
+                // JPEG COM segment: expose its content as the Exif UserComment tag.
+                byte[] commentBytes = new byte[remaining];
+                int read = input.read(commentBytes);
+                if (read != remaining) {
+                    throw new IOException("Invalid exif");
+                }
+                if (this.b("UserComment") == null) {
+                    String comment = new String(commentBytes, L).concat("\u0000");
+                    byte[] encodedComment = comment.getBytes(L);
+                    this.d[1].put("UserComment",
+                            new b31(encodedComment, 1, encodedComment.length));
+                }
+                remaining = 0;
+            } else if (isJpegStartOfFrame(markerCode)) {
+                // SOF payload begins with sample precision, followed by height and width.
+                input.b(1);
+                long imageLength = input.readUnsignedShort();
+                long imageWidth = input.readUnsignedShort();
+                HashMap attributes = this.d[imageType];
+                boolean thumbnail = imageType == 4;
+                attributes.put(
+                        thumbnail ? "ThumbnailImageLength" : "ImageLength",
+                        b31.a(imageLength, this.f));
+                attributes.put(
+                        thumbnail ? "ThumbnailImageWidth" : "ImageWidth",
+                        b31.a(imageWidth, this.f));
+                remaining -= 5;
+            }
+
+            if (remaining < 0) {
+                throw new IOException("Invalid length");
+            }
+            input.b(remaining);
+            bytesRead += remaining;
+        }
     }
 
-    /* JADX WARN: Code duplicated, block: B:109:0x013f A[RETURN] */
-    /* JADX WARN: Code duplicated, block: B:111:0x0142  */
-    /* JADX WARN: Code duplicated, block: B:114:0x0149  */
-    /* JADX WARN: Code duplicated, block: B:119:0x0156  */
-    /* JADX WARN: Code duplicated, block: B:122:0x015d A[LOOP:3: B:117:0x0151->B:122:0x015d, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:126:0x0167  */
-    /* JADX WARN: Code duplicated, block: B:129:0x0171 A[LOOP:4: B:124:0x0162->B:129:0x0171, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:132:0x0177 A[LOOP:2: B:112:0x0144->B:132:0x0177, LOOP_END] */
-    /* JADX WARN: Code duplicated, block: B:136:0x017f  */
-    /* JADX WARN: Code duplicated, block: B:152:0x010e A[EXC_TOP_SPLITTER, SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:163:0x017a A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:164:0x014f A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:165:0x0160 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:166:0x0170 A[EDGE_INSN: B:166:0x0170->B:128:0x0170 BREAK  A[LOOP:3: B:117:0x0151->B:122:0x015d], SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:167:0x0174 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:168:0x0170 A[EDGE_INSN: B:168:0x0170->B:128:0x0170 BREAK  A[LOOP:3: B:117:0x0151->B:122:0x015d], SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:64:0x00ca A[Catch: all -> 0x0065, TRY_LEAVE, TryCatch #1 {all -> 0x0065, blocks: (B:14:0x0039, B:19:0x005a, B:30:0x0076, B:33:0x007c, B:34:0x0082, B:38:0x008c, B:44:0x009b, B:47:0x00a5, B:62:0x00c6, B:64:0x00ca), top: B:145:0x0034 }] */
-    /* JADX WARN: Code duplicated, block: B:71:0x00e9  */
-    /* JADX WARN: Code duplicated, block: B:75:0x00f1  */
-    /* JADX WARN: Code duplicated, block: B:89:0x010c A[RETURN] */
-    /* JADX WARN: Code duplicated, block: B:96:0x0124  */
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r4v5 */
-    /* JADX WARN: Type inference failed for: r4v6, types: [java.io.InputStream] */
-    /* JADX WARN: Type inference failed for: r4v7 */
-    /* JADX WARN: Type inference failed for: r7v0 */
+    private static boolean isJpegStartOfFrame(int markerCode) {
+        return (markerCode >= 0xC0 && markerCode <= 0xC3)
+                || (markerCode >= 0xC5 && markerCode <= 0xC7)
+                || (markerCode >= 0xC9 && markerCode <= 0xCB)
+                || (markerCode >= 0xCD && markerCode <= 0xCF);
+    }
+
     public final int f(BufferedInputStream bufferedInputStream) throws Throwable {
         int i;
         a31 a31Var;
