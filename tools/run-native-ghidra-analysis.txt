@@ -1,0 +1,1 @@
+Run Ghidra 12.1.4 with JDK 21 on recovered AURA 0.75.1 classes.dex; export pseudocode and signatures for obfuscated problem classes, HomeMusic wave models, and AURA custom classes to the Actions artifact.
