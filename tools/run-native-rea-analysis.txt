@@ -2,3 +2,4 @@ Run pinned REA 6.9.0 Android analysis against the recovered AURA 0.75.1 APK; ins
 Retry after normalizing Windows runner paths and SHA-256 input.
 Use hosted Windows runner for APK reverse-engineering; Android compile stays on the self-hosted runner.
 Use Bash as the GitHub-hosted Windows shell for this analysis job.
+Run hosted analysis in a dedicated concurrency group to bypass stale self-hosted queue.
