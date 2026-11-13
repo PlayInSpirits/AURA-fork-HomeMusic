@@ -1,487 +1,378 @@
 package defpackage;
 
-/*
- * Decompiled with CFR 0.152.
- * 
- * Could not load the following classes:
- *  android.util.Log
- */
 import android.util.Log;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
+/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* JADX INFO: loaded from: classes.dex */
 public final class b31 {
     public final int a;
     public final int b;
     public final long c;
     public final byte[] d;
 
-    public b31(long l16, byte[] byArray, int n16, int n17) {
-        this.a = n16;
-        this.b = n17;
-        this.c = l16;
-        this.d = byArray;
+    public b31(long j, byte[] bArr, int i, int i2) {
+        this.a = i;
+        this.b = i2;
+        this.c = j;
+        this.d = bArr;
     }
 
-    public b31(byte[] byArray, int n16, int n17) {
-        this(-1L, byArray, n16, n17);
+    public static b31 a(long j, ByteOrder byteOrder) {
+        long[] jArr = {j};
+        ByteBuffer byteBufferWrap = ByteBuffer.wrap(new byte[f31.C[4]]);
+        byteBufferWrap.order(byteOrder);
+        byteBufferWrap.putInt((int) jArr[0]);
+        return new b31(byteBufferWrap.array(), 4, 1);
     }
 
-    public static b31 a(long l16, ByteOrder byteOrder) {
-        ByteBuffer byteBuffer = ByteBuffer.wrap(new byte[f31.C[4]]);
-        byteBuffer.order(byteOrder);
-        byteBuffer.putInt((int)(new long[]{l16})[0]);
-        return new b31(byteBuffer.array(), 4, 1);
+    public static b31 b(d31 d31Var, ByteOrder byteOrder) {
+        ByteBuffer byteBufferWrap = ByteBuffer.wrap(new byte[f31.C[5]]);
+        byteBufferWrap.order(byteOrder);
+        d31 d31Var2 = new d31[]{d31Var}[0];
+        byteBufferWrap.putInt((int) d31Var2.a);
+        byteBufferWrap.putInt((int) d31Var2.b);
+        return new b31(byteBufferWrap.array(), 5, 1);
     }
 
-    public static b31 b(d31 d312, ByteOrder byteOrder) {
-        ByteBuffer byteBuffer = ByteBuffer.wrap(new byte[f31.C[5]]);
-        byteBuffer.order(byteOrder);
-        d312 = (new d31[]{d312})[0];
-        byteBuffer.putInt((int)d312.a);
-        byteBuffer.putInt((int)d312.b);
-        return new b31(byteBuffer.array(), 5, 1);
+    public static b31 c(int i, ByteOrder byteOrder) {
+        ByteBuffer byteBufferWrap = ByteBuffer.wrap(new byte[f31.C[3]]);
+        byteBufferWrap.order(byteOrder);
+        byteBufferWrap.putShort((short) new int[]{i}[0]);
+        return new b31(byteBufferWrap.array(), 3, 1);
     }
 
-    public static b31 c(int n16, ByteOrder byteOrder) {
-        ByteBuffer byteBuffer = ByteBuffer.wrap(new byte[f31.C[3]]);
-        byteBuffer.order(byteOrder);
-        byteBuffer.putShort((short)(new int[]{n16})[0]);
-        return new b31(byteBuffer.array(), 3, 1);
-    }
-
-    public final double d(ByteOrder object) {
-        if ((object = this.g((ByteOrder)object)) != null) {
-            if (object instanceof String) {
-                return Double.parseDouble((String)object);
+    public final double d(ByteOrder byteOrder) throws Throwable {
+        Object objG = g(byteOrder);
+        if (objG == null) {
+            throw new NumberFormatException("NULL can't be converted to a double value");
+        }
+        if (objG instanceof String) {
+            return Double.parseDouble((String) objG);
+        }
+        if (objG instanceof long[]) {
+            long[] jArr = (long[]) objG;
+            if (jArr.length == 1) {
+                return jArr[0];
             }
-            if (object instanceof long[]) {
-                if (((Object)(object = (Object)((long[])object))).length == 1) {
-                    return (double)object[0];
-                }
-                throw new NumberFormatException("There are more than one component");
+            throw new NumberFormatException("There are more than one component");
+        }
+        if (objG instanceof int[]) {
+            int[] iArr = (int[]) objG;
+            if (iArr.length == 1) {
+                return iArr[0];
             }
-            if (object instanceof int[]) {
-                if (((Object)(object = (Object)((int[])object))).length == 1) {
-                    return (double)object[0];
-                }
-                throw new NumberFormatException("There are more than one component");
+            throw new NumberFormatException("There are more than one component");
+        }
+        if (objG instanceof double[]) {
+            double[] dArr = (double[]) objG;
+            if (dArr.length == 1) {
+                return dArr[0];
             }
-            if (object instanceof double[]) {
-                if (((Object)(object = (Object)((double[])object))).length == 1) {
-                    return (double)object[0];
-                }
-                throw new NumberFormatException("There are more than one component");
-            }
-            if (object instanceof d31[]) {
-                if (((d31[])(object = (d31[])object)).length == 1) {
-                    object = object[0];
-                    return (double)object.a / (double)object.b;
-                }
-                throw new NumberFormatException("There are more than one component");
-            }
+            throw new NumberFormatException("There are more than one component");
+        }
+        if (!(objG instanceof d31[])) {
             throw new NumberFormatException("Couldn't find a double value");
         }
-        throw new NumberFormatException("NULL can't be converted to a double value");
+        d31[] d31VarArr = (d31[]) objG;
+        if (d31VarArr.length != 1) {
+            throw new NumberFormatException("There are more than one component");
+        }
+        d31 d31Var = d31VarArr[0];
+        return d31Var.a / d31Var.b;
     }
 
-    public final int e(ByteOrder object) {
-        if ((object = this.g((ByteOrder)object)) != null) {
-            if (object instanceof String) {
-                return Integer.parseInt((String)object);
+    public final int e(ByteOrder byteOrder) {
+        Object objG = g(byteOrder);
+        if (objG == null) {
+            throw new NumberFormatException("NULL can't be converted to a integer value");
+        }
+        if (objG instanceof String) {
+            return Integer.parseInt((String) objG);
+        }
+        if (objG instanceof long[]) {
+            long[] jArr = (long[]) objG;
+            if (jArr.length == 1) {
+                return (int) jArr[0];
             }
-            if (object instanceof long[]) {
-                if (((Object)(object = (Object)((long[])object))).length == 1) {
-                    return (int)object[0];
-                }
-                throw new NumberFormatException("There are more than one component");
-            }
-            if (object instanceof int[]) {
-                if (((Object)(object = (Object)((int[])object))).length == 1) {
-                    return (int)object[0];
-                }
-                throw new NumberFormatException("There are more than one component");
-            }
+            throw new NumberFormatException("There are more than one component");
+        }
+        if (!(objG instanceof int[])) {
             throw new NumberFormatException("Couldn't find a integer value");
         }
-        throw new NumberFormatException("NULL can't be converted to a integer value");
-    }
-
-    public final String f(ByteOrder object) {
-        Object object2 = this.g((ByteOrder)object);
-        if (object2 != null) {
-            if (object2 instanceof String) {
-                return (String)object2;
-            }
-            object = new StringBuilder();
-            boolean bl5 = object2 instanceof long[];
-            int n16 = 0;
-            int n17 = 0;
-            int n18 = 0;
-            int n19 = 0;
-            if (bl5) {
-                object2 = (long[])object2;
-                n17 = n19;
-                while (n17 < ((Object)object2).length) {
-                    ((StringBuilder)object).append((long)object2[n17]);
-                    n17 = n18 = n17 + 1;
-                    if (n18 == ((d31[])object2).length) continue;
-                    ((StringBuilder)object).append(",");
-                    n17 = n18;
-                }
-                return ((StringBuilder)object).toString();
-            }
-            if (object2 instanceof int[]) {
-                object2 = (int[])object2;
-                n17 = n16;
-                while (n17 < ((Object)object2).length) {
-                    ((StringBuilder)object).append((int)object2[n17]);
-                    n17 = n18 = n17 + 1;
-                    if (n18 == ((d31[])object2).length) continue;
-                    ((StringBuilder)object).append(",");
-                    n17 = n18;
-                }
-                return ((StringBuilder)object).toString();
-            }
-            if (object2 instanceof double[]) {
-                object2 = (double[])object2;
-                while (n17 < ((Object)object2).length) {
-                    ((StringBuilder)object).append((double)object2[n17]);
-                    n17 = n18 = n17 + 1;
-                    if (n18 == ((d31[])object2).length) continue;
-                    ((StringBuilder)object).append(",");
-                    n17 = n18;
-                }
-                return ((StringBuilder)object).toString();
-            }
-            if (object2 instanceof d31[]) {
-                object2 = object2;
-                n17 = n18;
-                while (n17 < ((d31[])object2).length) {
-                    ((StringBuilder)object).append(object2[n17].a);
-                    ((StringBuilder)object).append('/');
-                    ((StringBuilder)object).append(object2[n17].b);
-                    n17 = n18 = n17 + 1;
-                    if (n18 == ((d31[])object2).length) continue;
-                    ((StringBuilder)object).append(",");
-                    n17 = n18;
-                }
-                return ((StringBuilder)object).toString();
-            }
+        int[] iArr = (int[]) objG;
+        if (iArr.length == 1) {
+            return iArr[0];
         }
-        return null;
+        throw new NumberFormatException("There are more than one component");
     }
 
-    /*
-     * WARNING - Removed back jump from a try to a catch block - possible behaviour change.
-     * Unable to fully structure code
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public final Serializable g(ByteOrder var1_1) {
-        block65: {
-            block67: {
-                block66: {
-                    var15_7 /* !! */  = this.d;
-                    var13_8 = null;
-                    var13_8 = var14_14 = new a31(var15_7 /* !! */ );
-                    var14_14.o = var1_1;
-                    var13_8 = var14_14;
-                    var12_16 = this.a;
-                    var4_17 = 0;
-                    var8_18 = 0;
-                    var7_19 = 0;
-                    var10_20 = 0;
-                    var9_21 = 0;
-                    var6_22 = 0;
-                    var5_23 = 0;
-                    var3_24 = 0;
-                    var2_25 = 0;
-                    var11_26 = this.b;
-                    switch (var12_16) {
-                        default: {
-                            try {
-                                var14_14.close();
-                                return null;
-                            }
-                            catch (IOException var1_2) {
-                                Log.e((String)"ExifInterface", (String)"IOException occurred while closing InputStream", (Throwable)var1_2);
-                                return null;
-                            }
-                        }
-                        case 12: {
-                            var13_8 = var14_14;
-                            var15_7 /* !! */  = (byte[])new double[var11_26];
-                            while (true) {
-                                var1_1 = var15_7 /* !! */ ;
-                                if (var2_25 < var11_26) {
-                                    var13_8 = var14_14;
-                                    var15_7 /* !! */ [var2_25] = (byte)var14_14.readDouble();
-                                    ++var2_25;
-                                    continue;
-                                }
-                                ** GOTO lbl130
-                                break;
-                            }
-                        }
-                        case 11: {
-                            var13_8 = var14_14;
-                            var15_7 /* !! */  = (byte[])new double[var11_26];
-                            var2_25 = var4_17;
-                            while (true) {
-                                var1_1 = var15_7 /* !! */ ;
-                                if (var2_25 < var11_26) {
-                                    var13_8 = var14_14;
-                                    var15_7 /* !! */ [var2_25] = (byte)var14_14.readFloat();
-                                    ++var2_25;
-                                    continue;
-                                }
-                                ** GOTO lbl130
-                                break;
-                            }
-                        }
-                        case 10: {
-                            var13_8 = var14_14;
-                            var15_7 /* !! */  = (byte[])new d31[var11_26];
-                            var2_25 = var8_18;
-                            while (true) {
-                                var1_1 = var15_7 /* !! */ ;
-                                if (var2_25 < var11_26) {
-                                    var13_8 = var14_14;
-                                    var15_7 /* !! */ [var2_25] = (byte)new d31(var14_14.readInt(), var14_14.readInt());
-                                    ++var2_25;
-                                    continue;
-                                }
-                                ** GOTO lbl130
-                                break;
-                            }
-                        }
-                        case 9: {
-                            var13_8 = var14_14;
-                            var15_7 /* !! */  = (byte[])new int[var11_26];
-                            var2_25 = var7_19;
-                            while (true) {
-                                var1_1 = var15_7 /* !! */ ;
-                                if (var2_25 < var11_26) {
-                                    var13_8 = var14_14;
-                                    var15_7 /* !! */ [var2_25] = var14_14.readInt();
-                                    ++var2_25;
-                                    continue;
-                                }
-                                ** GOTO lbl130
-                                break;
-                            }
-                        }
-                        case 8: {
-                            var13_8 = var14_14;
-                            var15_7 /* !! */  = (byte[])new int[var11_26];
-                            var2_25 = var10_20;
-                            while (true) {
-                                var1_1 = var15_7 /* !! */ ;
-                                if (var2_25 < var11_26) {
-                                    var13_8 = var14_14;
-                                    var15_7 /* !! */ [var2_25] = var14_14.readShort();
-                                    ++var2_25;
-                                    continue;
-                                }
-                                ** GOTO lbl130
-                                break;
-                            }
-                        }
-                        case 5: {
-                            var13_8 = var14_14;
-                            var15_7 /* !! */  = (byte[])new d31[var11_26];
-                            var2_25 = var9_21;
-                            while (true) {
-                                var1_1 = var15_7 /* !! */ ;
-                                if (var2_25 < var11_26) {
-                                    var13_8 = var14_14;
-                                    var15_7 /* !! */ [var2_25] = (byte)new d31((long)var14_14.readInt() & 0xFFFFFFFFL, (long)var14_14.readInt() & 0xFFFFFFFFL);
-                                    ++var2_25;
-                                    continue;
-                                }
-                                ** GOTO lbl130
-                                break;
-                            }
-                        }
-                        case 4: {
-                            var13_8 = var14_14;
-                            var15_7 /* !! */  = (byte[])new long[var11_26];
-                            var2_25 = var6_22;
-                            while (true) {
-                                var1_1 = var15_7 /* !! */ ;
-                                if (var2_25 < var11_26) {
-                                    var13_8 = var14_14;
-                                    var15_7 /* !! */ [var2_25] = (byte)((long)var14_14.readInt() & 0xFFFFFFFFL);
-                                    ++var2_25;
-                                    continue;
-                                }
-                                ** GOTO lbl130
-                                break;
-                            }
-                        }
-                        case 3: {
-                            var13_8 = var14_14;
-                            var15_7 /* !! */  = (byte[])new int[var11_26];
-                            var2_25 = var5_23;
-                            while (true) {
-                                var1_1 = var15_7 /* !! */ ;
-                                if (var2_25 >= var11_26) break;
-                                var13_8 = var14_14;
-                                var15_7 /* !! */ [var2_25] = var14_14.readUnsignedShort();
-                                ++var2_25;
-                            }
-lbl130:
-                            // 8 sources
-
-                            try {
-                                var14_14.close();
-                                return var1_1;
-                            }
-                            catch (IOException var13_10) {
-                                Log.e((String)"ExifInterface", (String)"IOException occurred while closing InputStream", (Throwable)var13_10);
-                                return var1_1;
-                            }
-                        }
-                        case 2: 
-                        case 7: {
-                            var13_8 = var14_14;
-                            var2_25 = var3_24;
-                            if (var11_26 >= f31.D.length) {
-                                var2_25 = 0;
-                                break block65;
-                            }
-                            ** GOTO lbl208
-                        }
-                        case 1: 
-                        case 6: 
-                    }
-                    var13_8 = var14_14;
-                    ** try [egrp 17[TRYBLOCK] [60, 59 : 729->736)] { 
-lbl148:
-                    // 1 sources
-
-                    if (var15_7 /* !! */ .length == 1 && (var2_25 = var15_7 /* !! */ [0]) >= 0 && var2_25 <= 1) {
-                        var13_8 = var14_14;
-                        var1_1 = new String(new char[]{(char)(var2_25 + 48)});
-                        try {
-                            var14_14.close();
-                            return var1_1;
-                        }
-                        catch (IOException var13_12) {
-                            Log.e((String)"ExifInterface", (String)"IOException occurred while closing InputStream", (Throwable)var13_12);
-                            return var1_1;
-                        }
-                    }
-                    var13_8 = var14_14;
-                    try {
-                        var1_1 = new String(var15_7 /* !! */ , f31.L);
-                        ** break;
-                        catch (Throwable var1_4) {
-                            break block66;
-                        }
-                        catch (IOException var14_15) {
-                            var1_1 = null;
-                            break block67;
-                        }
-                    }
-lbl169:
-                    // 13 sources
-
-                    catch (Throwable var1_3) {}
-                }
-                if (var13_8 == null) throw var1_6;
-                try {
-                    var13_8.close();
-                    throw var1_6;
-                }
-                catch (IOException var13_13) {
-                    Log.e((String)"ExifInterface", (String)"IOException occurred while closing InputStream", (Throwable)var13_13);
-                }
-                throw var1_6;
-lbl179:
-                // 13 sources
-
-                catch (IOException var13_9) {
-                    var1_1 = var14_14;
-                    var14_14 = var13_9;
-                }
-            }
-            var13_8 = var1_1;
-            Log.w((String)"ExifInterface", (String)"IOException occurred during reading a value", (Throwable)var14_14);
-            if (var1_1 == null) return null;
-            try {
-                var1_1.close();
-                return null;
-            }
-            catch (IOException var1_5) {
-                Log.e((String)"ExifInterface", (String)"IOException occurred while closing InputStream", (Throwable)var1_5);
-            }
+    public final String f(ByteOrder byteOrder) throws Throwable {
+        Object objG = g(byteOrder);
+        if (objG == null) {
             return null;
         }
-        while (true) {
-            block68: {
-                var13_8 = var14_14;
-                var1_1 = f31.D;
-                var13_8 = var14_14;
-                if (var2_25 >= ((Object)var1_1).length) break;
-                if (var15_7 /* !! */ [var2_25] == var1_1[var2_25]) break block68;
-                var2_25 = var3_24;
-                ** GOTO lbl208
-            }
-            ++var2_25;
+        if (objG instanceof String) {
+            return (String) objG;
         }
-        var13_8 = var14_14;
-        {
-            var2_25 = ((Object)var1_1).length;
-lbl208:
-            // 3 sources
-
-            var13_8 = var14_14;
-            var13_8 = var14_14;
-            var1_1 = new StringBuilder();
-        }
-        while (var2_25 < var11_26 && (var3_24 = var15_7 /* !! */ [var2_25]) != 0) {
-            if (var3_24 < 32) ** GOTO lbl217
-            var13_8 = var14_14;
-            {
-                block69: {
-                    var1_1.append((char)var3_24);
-                    break block69;
-lbl217:
-                    // 1 sources
-
-                    var13_8 = var14_14;
-                    var1_1.append('?');
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        if (objG instanceof long[]) {
+            long[] jArr = (long[]) objG;
+            while (i < jArr.length) {
+                sb.append(jArr[i]);
+                i++;
+                if (i != jArr.length) {
+                    sb.append(",");
                 }
-                ++var2_25;
+            }
+            return sb.toString();
+        }
+        if (objG instanceof int[]) {
+            int[] iArr = (int[]) objG;
+            while (i < iArr.length) {
+                sb.append(iArr[i]);
+                i++;
+                if (i != iArr.length) {
+                    sb.append(",");
+                }
+            }
+            return sb.toString();
+        }
+        if (objG instanceof double[]) {
+            double[] dArr = (double[]) objG;
+            while (i < dArr.length) {
+                sb.append(dArr[i]);
+                i++;
+                if (i != dArr.length) {
+                    sb.append(",");
+                }
+            }
+            return sb.toString();
+        }
+        if (!(objG instanceof d31[])) {
+            return null;
+        }
+        d31[] d31VarArr = (d31[]) objG;
+        while (i < d31VarArr.length) {
+            sb.append(d31VarArr[i].a);
+            sb.append('/');
+            sb.append(d31VarArr[i].b);
+            i++;
+            if (i != d31VarArr.length) {
+                sb.append(",");
             }
         }
-        var13_8 = var14_14;
-        {
-            var1_1 = var1_1.toString();
-        }
-lbl225:
-        // 2 sources
+        return sb.toString();
+    }
 
+    /* JADX WARN: Code duplicated, block: B:103:0x0134 A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Multi-variable type inference failed */
+    /* JADX WARN: Not initialized variable reg: 4, insn: 0x0032: MOVE (r3 I:??[OBJECT, ARRAY]) = (r4 I:??[OBJECT, ARRAY]) (LINE:51), block:B:17:0x0032 */
+    /* JADX WARN: Type inference failed for: r13v14, types: [int[]] */
+    /* JADX WARN: Type inference failed for: r13v15, types: [long[]] */
+    /* JADX WARN: Type inference failed for: r13v16, types: [d31[]] */
+    /* JADX WARN: Type inference failed for: r13v17, types: [int[]] */
+    /* JADX WARN: Type inference failed for: r13v18, types: [int[]] */
+    /* JADX WARN: Type inference failed for: r13v19, types: [d31[]] */
+    /* JADX WARN: Type inference failed for: r13v20, types: [double[]] */
+    /* JADX WARN: Type inference failed for: r13v21, types: [java.io.Serializable] */
+    /* JADX WARN: Type inference failed for: r13v22, types: [double[]] */
+    public final Serializable g(ByteOrder byteOrder) throws Throwable {
+        a31 a31Var;
+        InputStream inputStream;
+        String str;
+        byte b;
+        ?? r13;
+        byte[] bArr = this.d;
+        InputStream inputStream2 = null;
         try {
-            var14_14.close();
-            return var1_1;
-        }
-        catch (IOException var13_11) {
-            Log.e((String)"ExifInterface", (String)"IOException occurred while closing InputStream", (Throwable)var13_11);
-            return var1_1;
+            try {
+                a31Var = new a31(bArr);
+                try {
+                    a31Var.o = byteOrder;
+                    int i = this.a;
+                    int length = 0;
+                    int i2 = this.b;
+                    switch (i) {
+                        case 1:
+                        case 6:
+                            if (bArr.length != 1 || (b = bArr[0]) < 0 || b > 1) {
+                                str = new String(bArr, f31.L);
+                                try {
+                                    a31Var.close();
+                                    return str;
+                                } catch (IOException e) {
+                                    Log.e("ExifInterface", "IOException occurred while closing InputStream", e);
+                                    return str;
+                                }
+                            }
+                            String str2 = new String(new char[]{(char) (b + 48)});
+                            try {
+                                a31Var.close();
+                                return str2;
+                            } catch (IOException e2) {
+                                Log.e("ExifInterface", "IOException occurred while closing InputStream", e2);
+                                return str2;
+                            }
+                        case 2:
+                        case 7:
+                            if (i2 >= f31.D.length) {
+                                int i3 = 0;
+                                while (true) {
+                                    byte[] bArr2 = f31.D;
+                                    if (i3 >= bArr2.length) {
+                                        length = bArr2.length;
+                                    } else if (bArr[i3] == bArr2[i3]) {
+                                        i3++;
+                                    }
+                                }
+                            }
+                            StringBuilder sb = new StringBuilder();
+                            while (length < i2) {
+                                byte b2 = bArr[length];
+                                if (b2 == 0) {
+                                    str = sb.toString();
+                                    a31Var.close();
+                                    return str;
+                                }
+                                if (b2 >= 32) {
+                                    sb.append((char) b2);
+                                } else {
+                                    sb.append('?');
+                                }
+                                length++;
+                            }
+                            str = sb.toString();
+                            a31Var.close();
+                            return str;
+                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                            r13 = new int[i2];
+                            while (length < i2) {
+                                r13[length] = a31Var.readUnsignedShort();
+                                length++;
+                            }
+                            try {
+                                a31Var.close();
+                                return r13;
+                            } catch (IOException e3) {
+                                Log.e("ExifInterface", "IOException occurred while closing InputStream", e3);
+                                return r13;
+                            }
+                        case 4:
+                            r13 = new long[i2];
+                            while (length < i2) {
+                                r13[length] = ((long) a31Var.readInt()) & 4294967295L;
+                                length++;
+                            }
+                            a31Var.close();
+                            return r13;
+                        case 5:
+                            r13 = new d31[i2];
+                            while (length < i2) {
+                                r13[length] = new d31(((long) a31Var.readInt()) & 4294967295L, ((long) a31Var.readInt()) & 4294967295L);
+                                length++;
+                            }
+                            a31Var.close();
+                            return r13;
+                        case 8:
+                            r13 = new int[i2];
+                            while (length < i2) {
+                                r13[length] = a31Var.readShort();
+                                length++;
+                            }
+                            a31Var.close();
+                            return r13;
+                        case 9:
+                            r13 = new int[i2];
+                            while (length < i2) {
+                                r13[length] = a31Var.readInt();
+                                length++;
+                            }
+                            a31Var.close();
+                            return r13;
+                        case 10:
+                            r13 = new d31[i2];
+                            while (length < i2) {
+                                r13[length] = new d31(a31Var.readInt(), a31Var.readInt());
+                                length++;
+                            }
+                            a31Var.close();
+                            return r13;
+                        case 11:
+                            r13 = new double[i2];
+                            while (length < i2) {
+                                r13[length] = a31Var.readFloat();
+                                length++;
+                            }
+                            a31Var.close();
+                            return r13;
+                        case 12:
+                            r13 = new double[i2];
+                            while (length < i2) {
+                                r13[length] = a31Var.readDouble();
+                                length++;
+                            }
+                            a31Var.close();
+                            return r13;
+                        default:
+                            try {
+                                a31Var.close();
+                                return null;
+                            } catch (IOException e4) {
+                                Log.e("ExifInterface", "IOException occurred while closing InputStream", e4);
+                                return null;
+                            }
+                    }
+                } catch (IOException e5) {
+                    e = e5;
+                    Log.w("ExifInterface", "IOException occurred during reading a value", e);
+                    if (a31Var != null) {
+                        try {
+                            a31Var.close();
+                        } catch (IOException e6) {
+                            Log.e("ExifInterface", "IOException occurred while closing InputStream", e6);
+                        }
+                    }
+                    return null;
+                }
+            } catch (Throwable th) {
+                th = th;
+                inputStream2 = inputStream;
+                if (inputStream2 != null) {
+                    try {
+                        inputStream2.close();
+                    } catch (IOException e7) {
+                        Log.e("ExifInterface", "IOException occurred while closing InputStream", e7);
+                    }
+                }
+                throw th;
+            }
+        } catch (IOException e8) {
+            e = e8;
+            a31Var = null;
+        } catch (Throwable th2) {
+            th = th2;
+            if (inputStream2 != null) {
+                inputStream2.close();
+            }
+            throw th;
         }
     }
 
     public final String toString() {
-        StringBuilder stringBuilder = new StringBuilder("(");
-        stringBuilder.append(f31.B[this.a]);
-        stringBuilder.append(", data length:");
-        return f34.i(stringBuilder, this.d.length, ")");
+        StringBuilder sb = new StringBuilder("(");
+        sb.append(f31.B[this.a]);
+        sb.append(", data length:");
+        return f34.i(sb, this.d.length, ")");
+    }
+
+    public b31(byte[] bArr, int i, int i2) {
+        this(-1L, bArr, i, i2);
     }
 }
-
