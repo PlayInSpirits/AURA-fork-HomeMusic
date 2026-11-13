@@ -474,28 +474,27 @@ public abstract class e35 {
         }
     }
 
-    /*
-     * Exception decompiling
+    /**
+     * Parses a JSON value while temporarily enabling lenient reader mode.
+     *
+     * Reconstructed from the AURA DEX exception table and verified against
+     * e35.M in Ghidra. The reader's original lenient flag is restored on
+     * every exit path, including parser errors and VM-level parse failures.
      */
-    public static h32 M(l32 var0) {
-        /*
-         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-         * 
-         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 1[TRYBLOCK] [3 : 27->70)] java.lang.Throwable
-         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op02WithProcessedDataAndRefs.insertExceptionBlocks(Op02WithProcessedDataAndRefs.java:2283)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:415)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
-         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
-         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
-         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
-         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
-         *     at org.benf.cfr.reader.Driver.doJarVersionTypes(Driver.java:257)
-         *     at org.benf.cfr.reader.Driver.doJar(Driver.java:139)
-         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:76)
-         *     at org.benf.cfr.reader.Main.main(Main.java:54)
-         */
-        throw new IllegalStateException("Decompilation failed");
+    public static h32 M(l32 reader) {
+        boolean wasLenient = reader.o;
+        reader.o = true;
+        try {
+            return fh0.q(reader);
+        } catch (OutOfMemoryError error) {
+            throw new com.google.gson.JsonParseException(
+                    "Failed parsing JSON source: " + reader + " to Json", error);
+        } catch (StackOverflowError error) {
+            throw new com.google.gson.JsonParseException(
+                    "Failed parsing JSON source: " + reader + " to Json", error);
+        } finally {
+            reader.o = wasLenient;
+        }
     }
 
     public static h32 N(String object) {
