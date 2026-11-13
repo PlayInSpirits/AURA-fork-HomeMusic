@@ -93,10 +93,24 @@ jobs:
           }
 
           run_rea package inspect-android-package "$APK_WIN"
+
+          # Classes from the first javac diagnostics: inspect their real APK method tables.
           run_rea class-a0 inspect-android-class "$APK_WIN" a0
           run_rea method-a0-run inspect-android-method "$APK_WIN" a0 run
+          for CLASS in ad3 b31 c72 cd4 dk2 e35 en1 ey f22 f31 f35 f63; do
+            run_rea "class-$CLASS" inspect-android-class "$APK_WIN" "$CLASS"
+          done
+
+          # Wave models and client paths used by the real HomeMusic APIs.
+          run_rea class-wave-session inspect-android-class "$APK_WIN" com.eddyizm.tempus.homemusic.WaveSession
+          run_rea class-wave-out inspect-android-class "$APK_WIN" com.eddyizm.tempus.homemusic.WaveOut
+          run_rea class-wave-next-in inspect-android-class "$APK_WIN" com.eddyizm.tempus.homemusic.WaveNextIn
+          run_rea class-play-event inspect-android-class "$APK_WIN" com.eddyizm.tempus.homemusic.PlayEvent
           run_rea class-mix-offline inspect-android-class "$APK_WIN" com.eddyizm.tempus.homemusic.MixOfflineWorker
-          run_rea method-mix-offline inspect-android-method "$APK_WIN" com.eddyizm.tempus.homemusic.MixOfflineWorker doWork
+          run_rea method-mix-offline-d inspect-android-method "$APK_WIN" com.eddyizm.tempus.homemusic.MixOfflineWorker d
+          run_rea method-mix-offline-e inspect-android-method "$APK_WIN" com.eddyizm.tempus.homemusic.MixOfflineWorker e
+          run_rea class-hub-fragment inspect-android-class "$APK_WIN" com.eddyizm.tempus.homemusic.HubFragment
+          run_rea class-media-service inspect-android-class "$APK_WIN" com.eddyizm.tempus.service.MediaService
           run_rea search-wave search-android-classes "$APK_WIN" Wave
 
           echo "REA reports:"
