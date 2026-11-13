@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: aura-native-rea-analysis
+  group: aura-native-rea-analysis-hosted
   cancel-in-progress: false
 
 jobs:
