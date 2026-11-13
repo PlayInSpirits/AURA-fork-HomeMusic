@@ -17,6 +17,7 @@ import java.util.Set;
 public class DumpAuraDex extends GhidraScript {
     private static final Set<String> TARGETS = new HashSet<>(Arrays.asList(
         "a0", "ad3", "b31", "c72", "cd4", "dk2", "e35", "en1", "ey", "f22", "f31", "f35", "f63",
+        "w12", "g63", "bx2", "h60", "cx2", "dx2", "b63", "sq4", "f63", "if1", "w62",
         "MixOfflineWorker", "WaveSession", "WaveOut", "WaveNextIn",
         "PlayEvent", "AURAWavePlaybackListener", "AURAWaveToggleClickListener",
         "AURAWaveCircleTouchListener", "AURAHomeAnimation", "AURAVersion"
