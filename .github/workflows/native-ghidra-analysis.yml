@@ -1,0 +1,105 @@
+name: Ghidra Dalvik DEX analysis
+
+on:
+  push:
+    branches: [native-v0.10.1]
+    paths:
+      - 'tools/run-native-ghidra-analysis.txt'
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: aura-native-ghidra-analysis
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    name: Decompile selected AURA DEX methods with Ghidra
+    runs-on: [self-hosted, windows, x64]
+    defaults:
+      run:
+        shell: 'C:\\PROGRA~1\\Git\\bin\\bash.exe --noprofile --norc -eo pipefail {0}'
+
+    steps:
+      - name: Checkout native migration branch
+        uses: actions/checkout@v4
+        with:
+          ref: native-v0.10.1
+
+      - name: Configure JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Download verified recovery APK archive
+        uses: actions/download-artifact@v4
+        with:
+          name: aura-native-recovery
+          path: recovery-input
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: PlayInSpirits/AURA-fork-HomeMusic
+          run-id: 43147516314
+
+      - name: Download, verify and cache Ghidra 12.1.4
+        run: |
+          set -euo pipefail
+          TOOL_CACHE="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          GHIDRA_HOME="$TOOL_CACHE/ghidra-12.1.4"
+          if [ ! -f "$GHIDRA_HOME/support/analyzeHeadless.bat" ]; then
+            ZIP="$RUNNER_TEMP/ghidra_12.1.4_PUBLIC_20260921.zip"
+            ZIP_WIN="$(cygpath -w "$ZIP")"
+            curl.exe -fL --retry 3 "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.4_build/ghidra_12.1.4_PUBLIC_20260921.zip" -o "$ZIP_WIN"
+            ACTUAL="$(sha256sum "$ZIP" | awk '{print $1}')"
+            EXPECTED="ddac49f903da9d5bac833e5cc79395098b9c33cfd3279be5f31bd00387d2d4db"
+            [ "$ACTUAL" = "$EXPECTED" ] || { echo "::error::Ghidra SHA-256 mismatch: $ACTUAL"; exit 1; }
+            EXTRACT="$RUNNER_TEMP/ghidra-extract"
+            mkdir -p "$EXTRACT" "$GHIDRA_HOME"
+            EXTRACT_WIN="$(cygpath -w "$EXTRACT")"
+            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$ZIP_WIN' -DestinationPath '$EXTRACT_WIN' -Force"
+            SOURCE="$EXTRACT/ghidra_12.1.4_PUBLIC"
+            [ -f "$SOURCE/support/analyzeHeadless.bat" ] || { echo "::error::Ghidra extraction did not produce analyzeHeadless.bat"; exit 1; }
+            cp -a "$SOURCE/." "$GHIDRA_HOME/"
+          fi
+          [ -f "$GHIDRA_HOME/support/analyzeHeadless.bat" ] || { echo "::error::Cached Ghidra installation is incomplete."; exit 1; }
+          printf 'GHIDRA_HOME=%s\n' "$(cygpath -w "$GHIDRA_HOME")" >> "$GITHUB_ENV"
+          "$JAVA_HOME/bin/java.exe" -version
+
+      - name: Extract classes.dex and export selected methods
+        run: |
+          set -euo pipefail
+          APK="$PWD/recovery-input/recovery/downloads/AURA-0.75.1.apk"
+          [ -f "$APK" ] || { echo "::error::AURA 0.75.1 APK is missing."; exit 1; }
+          mkdir -p build-diagnostics/ghidra "$RUNNER_TEMP/aura-ghidra-project"
+          DEX="$RUNNER_TEMP/aura-0751-classes.dex"
+          unzip -p "$APK" classes.dex > "$DEX"
+          [ -s "$DEX" ] || { echo "::error::classes.dex is empty."; exit 1; }
+
+          GHIDRA_HOME_UNIX="$(cygpath -u "$GHIDRA_HOME")"
+          GHIDRA_BAT="$GHIDRA_HOME_UNIX/support/analyzeHeadless.bat"
+          PROJECT_WIN="$(cygpath -w "$RUNNER_TEMP/aura-ghidra-project")"
+          DEX_WIN="$(cygpath -w "$DEX")"
+          SCRIPT_WIN="$(cygpath -w "$PWD/tools/ghidra-scripts")"
+          OUTPUT_WIN="$(cygpath -w "$PWD/build-diagnostics/ghidra/aura-dex-decompilation.txt")"
+          GHIDRA_BAT_WIN="$(cygpath -w "$GHIDRA_BAT")"
+
+          set +e
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$GHIDRA_BAT_WIN' '$PROJECT_WIN' AURA0751 -import '$DEX_WIN' -scriptPath '$SCRIPT_WIN' -postScript DumpAuraDex.java '$OUTPUT_WIN'; exit \$LASTEXITCODE"
+          GHIDRA_EXIT=$?
+          set -e
+          echo "$GHIDRA_EXIT" > build-diagnostics/ghidra/ghidra-exit-code.txt
+          [ "$GHIDRA_EXIT" -eq 0 ] || { echo "::error::Ghidra headless DEX analysis failed."; exit 1; }
+          [ -s build-diagnostics/ghidra/aura-dex-decompilation.txt ] || { echo "::error::Ghidra did not produce a decompilation report."; exit 1; }
+          tail -n 30 build-diagnostics/ghidra/aura-dex-decompilation.txt
+
+      - name: Upload Ghidra DEX decompilation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aura-native-ghidra-analysis
+          path: build-diagnostics/ghidra/
+          if-no-files-found: warn
+          compression-level: 3
+          retention-days: 30
