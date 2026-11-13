@@ -58,8 +58,6 @@ public final /* synthetic */ class a0 implements Runnable {
     @Override // java.lang.Runnable
     public final void run() {
         Object obj;
-        Object r4;
-        Object r3;
         af4 af4Var;
         int i = this.n;
         int i2 = 2;
@@ -78,47 +76,44 @@ public final /* synthetic */ class a0 implements Runnable {
                 }
                 Handler handler = n5.g;
                 Method method = n5.f;
-                Application application = Build.VERSION.SDK_INT;
-                if (application >= 28) {
+                int sdkVersion = Build.VERSION.SDK_INT;
+                if (sdkVersion >= 28) {
                     activity.recreate();
                     return;
                 }
-                m5 m5Var = 27;
-                if (((application != 26 && application != 27) || method != null) && (n5.e != null || n5.d != null)) {
+                if (((sdkVersion != 26 && sdkVersion != 27) || method != null)
+                        && (n5.e != null || n5.d != null)) {
                     try {
-                        Object obj3 = n5.c.get(activity);
-                        if (obj3 != null && (obj = n5.b.get(activity)) != null) {
-                            application = activity.getApplication();
-                            m5Var = new m5(activity);
-                            application.registerActivityLifecycleCallbacks(m5Var);
-                            handler.post(new lg1(i2, m5Var, obj3));
-                            if (application != 26 && application != 27) {
-                                z = false;
-                            }
-                            try {
-                                if (z) {
+                        Object activityToken = n5.c.get(activity);
+                        if (activityToken != null) {
+                            Object activityThread = n5.b.get(activity);
+                            if (activityThread != null) {
+                                Application application = activity.getApplication();
+                                m5 lifecycleCallbacks = new m5(activity);
+                                application.registerActivityLifecycleCallbacks(lifecycleCallbacks);
+                                handler.post(new lg1(i2, lifecycleCallbacks, activityToken));
+
+                                if (sdkVersion == 26 || sdkVersion == 27) {
+                                    Boolean falseValue = Boolean.FALSE;
                                     try {
-                                        Boolean bool = Boolean.FALSE;
-                                        method.invoke(obj, obj3, null, null, 0, bool, null, null, bool, bool);
-                                    } catch (Throwable th) {
-                                        th = th;
-                                        r3 = application;
-                                        r4 = m5Var;
-                                        handler.post(new lg1(i3, (Object) r3, (Object) r4));
-                                        throw th;
+                                        method.invoke(activityThread, activityToken, null, null,
+                                                Integer.valueOf(0), falseValue, null, null,
+                                                falseValue, falseValue);
+                                    } catch (Throwable failure) {
+                                        handler.post(new lg1(i3, application, lifecycleCallbacks));
+                                        a0.<RuntimeException>sneakyThrow(failure);
+                                        return;
                                     }
                                 } else {
                                     activity.recreate();
                                 }
-                                handler.post(new lg1(i3, application, m5Var));
+
+                                handler.post(new lg1(i3, application, lifecycleCallbacks));
                                 return;
-                            } catch (Throwable th2) {
-                                th = th2;
-                                r3 = application;
-                                r4 = m5Var;
                             }
                         }
-                    } catch (Throwable unused) {
+                    } catch (Throwable ignored) {
+                        // Match the APK's fallback path: recreate if reflection-based recreation fails.
                     }
                 }
                 activity.recreate();
@@ -446,6 +441,11 @@ public final /* synthetic */ class a0 implements Runnable {
                     return;
                 }
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T extends Throwable> void sneakyThrow(Throwable throwable) throws T {
+        throw (T) throwable;
     }
 
     public /* synthetic */ a0(int i, Object obj) {
