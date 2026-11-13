@@ -1,0 +1,110 @@
+name: REA Android reverse-engineering analysis
+
+on:
+  push:
+    branches: [native-v0.10.1]
+    paths:
+      - 'tools/run-native-rea-analysis.txt'
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: aura-native-rea-analysis
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    name: Inspect AURA APK with REA and pinned JADX bridge
+    runs-on: [self-hosted, windows, x64]
+    defaults:
+      run:
+        shell: 'C:\\PROGRA~1\\Git\\bin\\bash.exe --noprofile --norc -eo pipefail {0}'
+
+    steps:
+      - name: Checkout native migration branch
+        uses: actions/checkout@v4
+        with:
+          ref: native-v0.10.1
+
+      - name: Configure Node.js 24 and JDK 21
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Download verified recovery APK archive
+        uses: actions/download-artifact@v4
+        with:
+          name: aura-native-recovery
+          path: recovery-input
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: PlayInSpirits/AURA-fork-HomeMusic
+          run-id: 43147516314
+
+      - name: Install REA and run Android analysis
+        env:
+          REA_JADX_HEAP_MIB: '6144'
+          REA_JADX_ACTIVE_PROCESSOR_COUNT: '2'
+          REA_JADX_OPERATION_TIMEOUT_MS: '900000'
+        run: |
+          set -euo pipefail
+          mkdir -p build-diagnostics/rea
+          APK="$PWD/recovery-input/recovery/downloads/AURA-0.75.1.apk"
+          [ -f "$APK" ] || { echo "::error::AURA 0.75.1 recovery APK is missing: $APK"; exit 1; }
+
+          JAR_WIN="$(cygpath -w "$RUNNER_TEMP/jadx-headless-mcp-0.7.1-all.jar")"
+          curl.exe -fL --retry 3 "https://github.com/1013503897/jadx-headless-mcp/releases/download/v0.7.1/jadx-headless-mcp-0.7.1-all.jar" -o "$JAR_WIN"
+          ACTUAL="$(sha256sum "$RUNNER_TEMP/jadx-headless-mcp-0.7.1-all.jar" | awk '{print $1}')"
+          EXPECTED="6e5eacf500b64292bfb73c49797c1958f6ee44646e43e868039ae7feb573ff75"
+          [ "$ACTUAL" = "$EXPECTED" ] || { echo "::error::JADX provider SHA-256 mismatch: $ACTUAL"; exit 1; }
+
+          export REA_JADX_MCP_JAR="$JAR_WIN"
+          export JAVA_HOME
+          "$JAVA_HOME/bin/java.exe" -version
+          node --version
+          npm.cmd --version
+          npx.cmd --yes rea-agents@6.9.0 --version
+
+          APK_WIN="$(cygpath -w "$APK")"
+          REPORT_DIR="$(cygpath -w "$PWD/build-diagnostics/rea")"
+          run_rea() {
+            local label="$1"
+            shift
+            echo "=== REA: $label ==="
+            set +e
+            npx.cmd --yes rea-agents@6.9.0 "$@" --json > "$REPORT_DIR/$label.json" 2> "$REPORT_DIR/$label.stderr"
+            local rc=$?
+            set -e
+            printf '%s\n' "$rc" > "$REPORT_DIR/$label.exit-code.txt"
+            if [ "$rc" -ne 0 ]; then
+              echo "REA command $label failed with exit code $rc"
+              cat "$REPORT_DIR/$label.stderr"
+            else
+              echo "REA command $label succeeded."
+            fi
+          }
+
+          run_rea package inspect-android-package "$APK_WIN"
+          run_rea class-a0 inspect-android-class "$APK_WIN" a0
+          run_rea method-a0-run inspect-android-method "$APK_WIN" a0 run
+          run_rea class-mix-offline inspect-android-class "$APK_WIN" com.eddyizm.tempus.homemusic.MixOfflineWorker
+          run_rea method-mix-offline inspect-android-method "$APK_WIN" com.eddyizm.tempus.homemusic.MixOfflineWorker doWork
+          run_rea search-wave search-android-classes "$APK_WIN" Wave
+
+          echo "REA reports:"
+          ls -lah "$PWD/build-diagnostics/rea"
+
+      - name: Upload REA evidence and diagnostic reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aura-native-rea-analysis
+          path: build-diagnostics/rea/
+          if-no-files-found: warn
+          compression-level: 3
+          retention-days: 30
