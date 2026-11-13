@@ -263,7 +263,7 @@ public final class f31 {
         HashMap[] mapArr = this.d;
         if (strB != null && b("DateTime") == null) {
             HashMap map = mapArr[0];
-            byte[] bytes = strB.concat("\u0000").getBytes(L);
+            byte[] bytes = strB.concat(String.valueOf((char) 0)).getBytes(L);
             map.put("DateTime", new b31(bytes, 2, bytes.length));
         }
         if (b("ImageWidth") == null) {
