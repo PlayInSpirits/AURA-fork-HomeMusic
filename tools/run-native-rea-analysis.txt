@@ -3,3 +3,4 @@ Retry after normalizing Windows runner paths and SHA-256 input.
 Use hosted Windows runner for APK reverse-engineering; Android compile stays on the self-hosted runner.
 Use Bash as the GitHub-hosted Windows shell for this analysis job.
 Run hosted analysis in a dedicated concurrency group to bypass stale self-hosted queue.
+Re-run REA with class tables for all javac blockers, Wave models, MixOfflineWorker.d/e, HubFragment and MediaService.
