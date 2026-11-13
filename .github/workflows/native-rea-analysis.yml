@@ -17,7 +17,7 @@ concurrency:
 jobs:
   analyze:
     name: Inspect AURA APK with REA and pinned JADX bridge
-    runs-on: [self-hosted, windows, x64]
+    runs-on: windows-latest
     defaults:
       run:
         shell: 'C:\\PROGRA~1\\Git\\bin\\bash.exe --noprofile --norc -eo pipefail {0}'
