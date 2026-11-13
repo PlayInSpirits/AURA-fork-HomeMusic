@@ -53,16 +53,18 @@ jobs:
 
       - name: Check persistent recovery-artifact cache
         id: artifact_cache
-        shell: powershell
         run: |
-          $cache = Join-Path $env:RUNNER_TOOL_CACHE 'aura-native-v0.10.1\recovery36'
-          if (Test-Path (Join-Path $cache 'cfr-aura-0751')) {
-            "hit=true" >> $env:GITHUB_OUTPUT
-            Write-Host "Recovery artifact cache hit: $cache"
-          } else {
-            "hit=false" >> $env:GITHUB_OUTPUT
-            Write-Host "Recovery artifact cache miss."
-          }
+          set -euo pipefail
+          TOOL_CACHE="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          CACHE_ROOT="$TOOL_CACHE/aura-native-v0.10.1/recovery36"
+          OUTPUT_FILE="$(cygpath -u "$GITHUB_OUTPUT")"
+          if [ -d "$CACHE_ROOT/cfr-aura-0751" ]; then
+            printf 'hit=true\n' >> "$OUTPUT_FILE"
+            echo "Recovery artifact cache hit: $CACHE_ROOT"
+          else
+            printf 'hit=false\n' >> "$OUTPUT_FILE"
+            echo "Recovery artifact cache miss."
+          fi
 
       - name: Download saved recovery artifact (only on cache miss)
         if: steps.artifact_cache.outputs.hit != 'true'
@@ -76,16 +78,16 @@ jobs:
 
       - name: Persist recovery artifact outside the checkout
         if: steps.artifact_cache.outputs.hit != 'true'
-        shell: powershell
         run: |
-          $source = Join-Path $env:GITHUB_WORKSPACE 'native\recovery-input\recovery'
-          $destination = Join-Path $env:RUNNER_TOOL_CACHE 'aura-native-v0.10.1\recovery36'
-          if (-not (Test-Path (Join-Path $source 'cfr-aura-0751'))) {
-            throw "CFR source directory is missing from the downloaded artifact."
-          }
-          New-Item -ItemType Directory -Force -Path $destination | Out-Null
-          Copy-Item -Path (Join-Path $source '*') -Destination $destination -Recurse -Force
-          Write-Host "Cached recovery artifact at $destination"
+          set -euo pipefail
+          WORKSPACE="$(cygpath -u "$GITHUB_WORKSPACE")"
+          TOOL_CACHE="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          SOURCE="$WORKSPACE/native/recovery-input/recovery"
+          DESTINATION="$TOOL_CACHE/aura-native-v0.10.1/recovery36"
+          [ -d "$SOURCE/cfr-aura-0751" ] || { echo "::error::CFR source directory is missing from the downloaded artifact."; exit 1; }
+          mkdir -p "$DESTINATION"
+          cp -a "$SOURCE/." "$DESTINATION/"
+          echo "Cached recovery artifact at $DESTINATION"
 
       - name: Apply only the eight clean CFR classes
         run: |
