@@ -239,12 +239,171 @@ public final class w12 {
         	at jadx.core.dex.visitors.regions.maker.RegionMaker.makeMthRegion(RegionMaker.java:49)
         	at jadx.core.dex.visitors.regions.RegionMakerVisitor.visit(RegionMakerVisitor.java:25)
         */
-    public void f(int r32, defpackage.q03 r33, defpackage.q03 r34, defpackage.cx2 r35, boolean r36) {
-        /*
-            Method dump skipped, instruction units count: 968
-            To view this dump add '--comments-level debug' option
-        */
-        throw new UnsupportedOperationException("Method not decompiled: defpackage.w12.f(int, q03, q03, cx2, boolean):void");
+    /**
+     * Reconciles the existing Modifier.Node chain with the flattened next modifier list.
+     *
+     * This is the source-level recovery of the APK's diff routine. It preserves nodes whose
+     * modifier elements are equal or have the same class, updates those whose values changed,
+     * and applies the minimum insert/remove sequence for the remaining elements. The DEX uses
+     * a linear-space Myers implementation; this equivalent LCS form makes the same reuse
+     * decisions while keeping the node/coordinator lifecycle operations explicit.
+     */
+    public void f(int offset, q03 before, q03 after, cx2 tail, boolean shouldAttachOnInsert) {
+        yk differ = (yk) this.k;
+        if (differ == null) {
+            differ = new yk(this, tail, offset, before, after, shouldAttachOnInsert);
+        } else {
+            differ.q = tail;
+            differ.o = offset;
+            differ.r = before;
+            differ.s = after;
+            differ.p = shouldAttachOnInsert;
+        }
+
+        // The scratch comparator is borrowed while the diff is running and returned afterwards.
+        this.k = null;
+
+        int oldCount = before.b - offset;
+        int newCount = after.b - offset;
+        if (oldCount < 0 || newCount < 0) {
+            throw new IndexOutOfBoundsException("Invalid Modifier diff offset " + offset);
+        }
+
+        // yk.d() implements the APK's actionForModifiers rule:
+        // equal elements are reused; same-class elements are reused and updated;
+        // different classes are replaced.
+        int[][] lcs = new int[oldCount + 1][newCount + 1];
+        for (int oldIndex = oldCount - 1; oldIndex >= 0; oldIndex--) {
+            for (int newIndex = newCount - 1; newIndex >= 0; newIndex--) {
+                if (differ.d(oldIndex, newIndex)) {
+                    lcs[oldIndex][newIndex] = lcs[oldIndex + 1][newIndex + 1] + 1;
+                } else {
+                    lcs[oldIndex][newIndex] = Math.max(
+                            lcs[oldIndex + 1][newIndex],
+                            lcs[oldIndex][newIndex + 1]);
+                }
+            }
+        }
+
+        // Reconstruct the ordered set of retained old/new element pairs.
+        int matchCount = lcs[0][0];
+        int[] matchedOld = new int[matchCount];
+        int[] matchedNew = new int[matchCount];
+        int oldIndex = 0;
+        int newIndex = 0;
+        int matchIndex = 0;
+        while (oldIndex < oldCount && newIndex < newCount) {
+            if (differ.d(oldIndex, newIndex)
+                    && lcs[oldIndex][newIndex] == lcs[oldIndex + 1][newIndex + 1] + 1) {
+                matchedOld[matchIndex] = oldIndex;
+                matchedNew[matchIndex] = newIndex;
+                matchIndex++;
+                oldIndex++;
+                newIndex++;
+            } else if (lcs[oldIndex + 1][newIndex] >= lcs[oldIndex][newIndex + 1]) {
+                oldIndex++;
+            } else {
+                newIndex++;
+            }
+        }
+
+        int oldCursor = 0;
+        int newCursor = 0;
+        cx2 cursor = tail;
+
+        for (int match = 0; match <= matchCount; match++) {
+            int oldMatch = match < matchCount ? matchedOld[match] : oldCount;
+            int newMatch = match < matchCount ? matchedNew[match] : newCount;
+
+            // Remove old nodes that are not retained by the diff.
+            while (oldCursor < oldMatch) {
+                cx2 nodeToRemove = cursor.s;
+                if (nodeToRemove == null) {
+                    throw new IllegalStateException("Modifier chain ended before removal");
+                }
+
+                // A layout modifier owns a coordinator. Unlink that coordinator before
+                // detaching the node and propagate the child coordinator through non-layout
+                // modifier nodes up to the next layout node or the chain sentinel.
+                if ((nodeToRemove.p & 2) != 0) {
+                    f63 removedCoordinator = nodeToRemove.u;
+                    removedCoordinator.getClass();
+                    f63 previousCoordinator = removedCoordinator.J;
+                    f63 childCoordinator = removedCoordinator.I;
+                    childCoordinator.getClass();
+                    if (previousCoordinator != null) {
+                        previousCoordinator.I = childCoordinator;
+                    }
+                    childCoordinator.J = previousCoordinator;
+                    w12.a(this, cursor, childCoordinator);
+                }
+
+                cursor = w12.c(nodeToRemove);
+                oldCursor++;
+            }
+
+            // Insert new nodes that are not paired with an old node.
+            while (newCursor < newMatch) {
+                bx2 element = (bx2) after.f(offset + newCursor);
+                cx2 insertedNode = w12.b(element, cursor);
+                cursor = insertedNode;
+
+                if (!shouldAttachOnInsert) {
+                    insertedNode.v = true;
+                } else {
+                    cx2 child = insertedNode.s;
+                    child.getClass();
+                    f63 childCoordinator = child.u;
+                    childCoordinator.getClass();
+
+                    u62 layoutModifier = j51.j(insertedNode);
+                    if (layoutModifier != null) {
+                        w62 layoutCoordinator = new w62((c72) this.b, layoutModifier);
+                        insertedNode.p0(layoutCoordinator);
+                        w12.a(this, insertedNode, layoutCoordinator);
+
+                        // Insert the new layout coordinator immediately outside the existing
+                        // child coordinator, preserving the outer/inner coordinator links.
+                        layoutCoordinator.J = childCoordinator.J;
+                        layoutCoordinator.I = childCoordinator;
+                        childCoordinator.J = layoutCoordinator;
+                    } else {
+                        insertedNode.p0(childCoordinator);
+                    }
+
+                    insertedNode.g0();
+                    insertedNode.m0();
+                    g63.a(insertedNode, -1, 1);
+                }
+                newCursor++;
+            }
+
+            // Retained nodes stay in place. Update only when the modifier value changed.
+            if (match < matchCount) {
+                cursor = cursor.s;
+                if (cursor == null) {
+                    throw new IllegalStateException("Modifier chain ended before retained node");
+                }
+                bx2 oldElement = (bx2) before.f(offset + oldCursor);
+                bx2 newElement = (bx2) after.f(offset + newCursor);
+                if (!h12.c(oldElement, newElement)) {
+                    w12.h(oldElement, newElement, cursor);
+                }
+                oldCursor++;
+                newCursor++;
+            }
+        }
+
+        // Return the comparator to the reusable slot and recalculate aggregate modifier kinds.
+        this.k = differ;
+        cx2 node = ((sq4) this.f).r;
+        int aggregateKinds = 0;
+        b63 sentinel = (b63) this.c;
+        while (node != null && node != sentinel) {
+            aggregateKinds |= node.p;
+            node.q = aggregateKinds;
+            node = node.r;
+        }
     }
 
     public void g() {
