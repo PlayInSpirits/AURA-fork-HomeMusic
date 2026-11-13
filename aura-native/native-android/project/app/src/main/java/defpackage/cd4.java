@@ -463,28 +463,122 @@ jg1 {
     /*
      * Exception decompiling
      */
-    public final vd0[] v(long var1_1) {
-        /*
-         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-         * 
-         * org.benf.cfr.reader.util.ConfusedCFRException: Statement already marked as first in another block
-         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.markFirstStatementInBlock(Op03SimpleStatement.java:461)
-         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Misc.markWholeBlock(Misc.java:251)
-         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.ConditionalRewriter.considerAsSimpleIf(ConditionalRewriter.java:673)
-         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.ConditionalRewriter.identifyNonjumpingConditionals(ConditionalRewriter.java:56)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:760)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
-         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
-         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
-         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
-         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
-         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
-         *     at org.benf.cfr.reader.Driver.doJarVersionTypes(Driver.java:257)
-         *     at org.benf.cfr.reader.Driver.doJar(Driver.java:139)
-         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:76)
-         *     at org.benf.cfr.reader.Main.main(Main.java:54)
-         */
-        throw new IllegalStateException("Decompilation failed");
+    /**
+     * Advances the shared-flow buffer after a collector releases or advances its slot.
+     *
+     * Reconstructed from the AURA 0.75.1 DEX control flow in Ghidra and checked against
+     * kotlinx.coroutines 1.9.0 SharedFlowImpl.updateCollectorIndexLocked.
+     */
+    public final vd0[] v(long oldIndex) {
+        // A non-minimal collector cannot change the shared buffer.
+        if (oldIndex > this.w) {
+            return bu.a;
+        }
+
+        long head = this.o();
+        long newMinCollectorIndex = head + (long) this.x;
+        int bufferCapacity = this.s;
+
+        // Synchronous shared flows keep one queued emitter as the rendezvous point.
+        if (bufferCapacity == 0 && this.y > 0) {
+            newMinCollectorIndex++;
+        }
+
+        // Find the lowest index of all active collectors.
+        n2[] slots = this.n;
+        if (this.o != 0 && slots != null) {
+            for (n2 slot : slots) {
+                if (slot == null) {
+                    continue;
+                }
+                dd4 collectorSlot = (dd4) slot;
+                long slotIndex = collectorSlot.a;
+                if (slotIndex >= 0L && slotIndex < newMinCollectorIndex) {
+                    newMinCollectorIndex = slotIndex;
+                }
+            }
+        }
+
+        // Nothing can be released until the minimum collector index advances.
+        if (this.w >= newMinCollectorIndex) {
+            return bu.a;
+        }
+
+        long oldBufferEndIndex = head + (long) this.x;
+        int queuedEmitterCount = this.y;
+        int maxResumeCount;
+
+        if (this.o > 0) {
+            int newBufferSize = (int) (oldBufferEndIndex - newMinCollectorIndex);
+            maxResumeCount = Math.min(queuedEmitterCount, bufferCapacity - newBufferSize);
+        } else {
+            // With no collectors, all queued emitters can be resumed.
+            maxResumeCount = queuedEmitterCount;
+        }
+
+        long newQueueEndIndex = oldBufferEndIndex + (long) queuedEmitterCount;
+        long newBufferEndIndex = oldBufferEndIndex;
+        vd0[] resumptions = bu.a;
+
+        if (maxResumeCount > 0) {
+            resumptions = new vd0[maxResumeCount];
+            Object[] buffer = this.u;
+            buffer.getClass();
+
+            int resumedCount = 0;
+            for (long queueIndex = oldBufferEndIndex; queueIndex < newQueueEndIndex; queueIndex++) {
+                int queueOffset = (int) queueIndex & (buffer.length - 1);
+                Object queued = buffer[queueOffset];
+
+                // A cancelled emitter is marked with NO_VALUE and is skipped.
+                if (queued == g12.e) {
+                    continue;
+                }
+
+                ad4 emitter = (ad4) queued;
+                resumptions[resumedCount++] = emitter.q;
+
+                // Remove the emitter from the queue and move its value into the buffer.
+                g12.d(buffer, queueIndex, g12.e);
+                g12.d(buffer, newBufferEndIndex, emitter.p);
+                newBufferEndIndex++;
+
+                if (resumedCount >= maxResumeCount) {
+                    break;
+                }
+            }
+        }
+
+        // After the last collector leaves, the new minimum index is the buffer end.
+        if (this.o == 0) {
+            newMinCollectorIndex = newBufferEndIndex;
+        }
+
+        int newBufferSize = (int) (newBufferEndIndex - head);
+        long newReplayIndex = Math.max(
+                this.v,
+                newBufferEndIndex - (long) Math.min(this.r, newBufferSize));
+
+        // Preserve the synchronous rendezvous marker when a queued emitter was cancelled.
+        if (bufferCapacity == 0 && newReplayIndex < newQueueEndIndex) {
+            Object[] buffer = this.u;
+            buffer.getClass();
+            int replayOffset = (int) newReplayIndex & (buffer.length - 1);
+            if (buffer[replayOffset] == g12.e) {
+                newBufferEndIndex++;
+                newReplayIndex++;
+            }
+        }
+
+        // Commit all buffer indices atomically while the caller holds this monitor.
+        this.u(newReplayIndex, newMinCollectorIndex, newBufferEndIndex, newQueueEndIndex);
+        this.j();
+
+        // Newly resumed emitters may make additional collectors ready.
+        if (resumptions.length != 0) {
+            resumptions = this.n(resumptions);
+        }
+        return resumptions;
     }
 
     @SuppressWarnings("unchecked")
