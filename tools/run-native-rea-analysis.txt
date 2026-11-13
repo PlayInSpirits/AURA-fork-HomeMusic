@@ -1,0 +1,1 @@
+Run pinned REA 6.9.0 Android analysis against the recovered AURA 0.75.1 APK; inspect the DEX class and Smali fallback for a0.run and MixOfflineWorker.doWork; save all JSON evidence as the aura-native-rea-analysis Actions artifact.
