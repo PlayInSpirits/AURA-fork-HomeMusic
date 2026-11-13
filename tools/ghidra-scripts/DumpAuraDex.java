@@ -37,7 +37,7 @@ public class DumpAuraDex extends GhidraScript {
         if (TARGETS.contains(ns)) return true;
         for (String target : TARGETS) {
             if (ns.equals(target) || ns.endsWith("." + target) ||
-                ns.contains("." + target + "$") || function.contains(target)) {
+                ns.contains("." + target + "$") || ns.endsWith("$" + target)) {
                 return true;
             }
         }
@@ -91,8 +91,8 @@ public class DumpAuraDex extends GhidraScript {
                 }
                 writer.println();
                 writer.flush();
-                if (matched >= 240) {
-                    writer.println("[TRUNCATED] matched function limit 240 reached.");
+                if (matched >= 2000) {
+                    writer.println("[TRUNCATED] matched function limit 2000 reached.");
                     break;
                 }
             }
