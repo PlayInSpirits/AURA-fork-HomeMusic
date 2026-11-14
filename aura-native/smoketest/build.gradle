@@ -103,6 +103,8 @@ def bootAll = tasks.register('bootAll')
                 files(aarJarsDir.map { it.asFileTree.matching { include '*.jar' } }) +
                 files(base.map { it.dir('jars').asFileTree.matching { include '*.jar' } })
         maxHeapSize = '4g'
+        // dex2jar output has no StackMapTable frames; the JVM verifier would reject it.
+        jvmArgs '-XX:-BytecodeVerificationRemote', '-XX:-BytecodeVerificationLocal'
         ignoreFailures = true
         reports.html.outputLocation = layout.buildDirectory.dir("reports/${variant}")
         reports.junitXml.outputLocation = layout.buildDirectory.dir("results/${variant}")
