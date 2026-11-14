@@ -9,6 +9,8 @@ name: Build AURA Android
       - 'aura-native-import.trigger'
       - '.github/workflows/aura-native-build.yml'
       - '.github/workflows/import-native-into-main.yml'
+      - '.github/workflows/aura-native-robodeps.yml'
+      - '.github/workflows/aura-native-release.yml'
       - 'app/latest.json'
   workflow_dispatch:
 
