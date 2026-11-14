@@ -97,6 +97,15 @@ dependencies {
     compileOnly files(prebuiltApi).builtBy(prebuiltApiJar)
 }
 
+// The decompiled code already contains kotlin-stdlib (and every other library) as classes;
+// AGP 9's built-in Kotlin support would add a second copy to the APK.
+configurations.configureEach {
+    if (name.endsWith('RuntimeClasspath') || name.endsWith('CompileClasspath')) {
+        exclude group: 'org.jetbrains.kotlin'
+        exclude group: 'org.jetbrains', module: 'annotations'
+    }
+}
+
 // assembleRelease -> app-release-unsigned.apk, then aura<Variant>Apk adds the prebuilt dex as classesN.dex.
 ['Release', 'Debug'].each { variant ->
     def v = variant.toLowerCase()
