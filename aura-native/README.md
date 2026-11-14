@@ -18,7 +18,7 @@
 | `app/src/main/smali` | Классы, которые не удалось честно перевести в Java (в основном библиотеки: Compose, Media3, coroutines и т. п.). Собираются в dex тем же ассемблером smali, что использует Apktool |
 | `app/src/main/res`, `assets`, `jniLibs`, `resources` | Ресурсы, ассеты, нативные библиотеки (FFmpeg) и Java-ресурсы из APK |
 | `app/stable-ids.txt` | ID всех 7549 ресурсов оригинала: R8 вписал их в код числами, поэтому они обязаны совпадать |
-| `buildSrc` | Шаги сборки: smali → dex, API-jar для javac, вставка dex в APK |
+| `auratools` | Шаги сборки (запускаются через JavaExec): smali → dex, API-jar для javac, вставка dex в APK |
 | `SOURCES.tsv` | Какой декомпилятор дал каждый Java-файл |
 | `tools/decompile` | Скрипты, которыми получен проект (повторяемо) |
 

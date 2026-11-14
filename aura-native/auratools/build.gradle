@@ -2,10 +2,9 @@ plugins {
     id 'java'
 }
 
-repositories {
-    google()
-    mavenCentral()
-}
+// Build-time helpers (smali -> dex, compile-only API jar, dex injection).
+// Kept in a separate project and run through JavaExec so that their dependencies
+// (smali/dex2jar pull an older Guava) never leak into the Android Gradle Plugin classloader.
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17

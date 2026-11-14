@@ -1,8 +1,7 @@
 .gradle/
 /build/
 /app/build/
-/buildSrc/build/
-/buildSrc/.gradle/
+/auratools/build/
 local.properties
 *.jks
 *.keystore

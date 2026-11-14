@@ -1,10 +1,9 @@
-import aura.build.ApiJar
-import aura.build.DexInjector
-import aura.build.SmaliAssembler
-
 plugins {
     id 'com.android.application'
 }
+
+// The build helpers live in :auratools; its source sets must exist before the tasks below are configured.
+evaluationDependsOn(':auratools')
 
 def prebuiltSmali = file('src/main/smali')
 def prebuiltDex = layout.buildDirectory.file('aura/prebuilt/prebuilt.dex')
@@ -68,44 +67,53 @@ tasks.withType(JavaCompile).configureEach {
     options.warnings = false
 }
 
-def assemblePrebuiltDex = tasks.register('assemblePrebuiltDex') {
+def auraTools = project(':auratools')
+def auraToolsClasspath = auraTools.sourceSets.main.runtimeClasspath
+
+def assemblePrebuiltDex = tasks.register('assemblePrebuiltDex', JavaExec) {
     description = 'Assembles src/main/smali (code kept in smali form) into one dex.'
+    dependsOn ':auratools:classes'
     inputs.dir(prebuiltSmali)
     outputs.file(prebuiltDex)
-    doLast {
-        SmaliAssembler.assemble(prebuiltSmali, prebuiltDex.get().asFile, 24)
-    }
+    classpath = auraToolsClasspath
+    mainClass = 'aura.build.Main'
+    maxHeapSize = '3g'
+    args 'smali', prebuiltSmali.absolutePath, prebuiltDex.get().asFile.absolutePath, '24'
 }
 
-def prebuiltApiJar = tasks.register('prebuiltApiJar') {
+def prebuiltApiJar = tasks.register('prebuiltApiJar', JavaExec) {
     description = 'Builds the compile-only API jar of the smali part for javac.'
-    dependsOn assemblePrebuiltDex
+    dependsOn assemblePrebuiltDex, ':auratools:classes'
     inputs.file(prebuiltDex)
     outputs.file(prebuiltApi)
-    doLast {
-        ApiJar.make(prebuiltDex.get().asFile, prebuiltApi.get().asFile,
-                layout.buildDirectory.dir('aura/prebuilt/api-classes').get().asFile)
-    }
+    classpath = auraToolsClasspath
+    mainClass = 'aura.build.Main'
+    maxHeapSize = '3g'
+    args 'apijar', prebuiltDex.get().asFile.absolutePath, prebuiltApi.get().asFile.absolutePath,
+            layout.buildDirectory.dir('aura/prebuilt/api-classes').get().asFile.absolutePath
 }
 
 dependencies {
     compileOnly files(prebuiltApi).builtBy(prebuiltApiJar)
 }
 
-// assembleRelease -> app-release-unsigned.apk, then auraApk adds the prebuilt dex as classesN.dex.
+// assembleRelease -> app-release-unsigned.apk, then aura<Variant>Apk adds the prebuilt dex as classesN.dex.
 ['Release', 'Debug'].each { variant ->
     def v = variant.toLowerCase()
-    def inject = tasks.register("aura${variant}Apk") {
+    tasks.register("aura${variant}Apk", JavaExec) {
         description = "Builds the unsigned ${v} APK including the prebuilt dex."
-        dependsOn "assemble${variant}", assemblePrebuiltDex
+        dependsOn "assemble${variant}", assemblePrebuiltDex, ':auratools:classes'
+        def apkDir = layout.buildDirectory.dir("outputs/apk/${v}")
         def outApk = layout.buildDirectory.file("outputs/aura/AURA-native-${v}-unsigned.apk")
         outputs.file(outApk)
-        doLast {
-            def dir = layout.buildDirectory.dir("outputs/apk/${v}").get().asFile
+        classpath = auraToolsClasspath
+        mainClass = 'aura.build.Main'
+        doFirst {
+            def dir = apkDir.get().asFile
             def apk = fileTree(dir).matching { include '*.apk' }.files.find { !it.name.contains('aura') }
             if (apk == null) throw new GradleException("APK not found in ${dir}")
-            def name = DexInjector.inject(apk, prebuiltDex.get().asFile, outApk.get().asFile)
-            logger.lifecycle("Injected prebuilt dex as ${name} -> ${outApk.get().asFile}")
+            outApk.get().asFile.parentFile.mkdirs()
+            args 'inject', apk.absolutePath, prebuiltDex.get().asFile.absolutePath, outApk.get().asFile.absolutePath
         }
     }
 }

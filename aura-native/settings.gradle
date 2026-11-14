@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = 'AURA-native'
-include ':app'
+include ':app', ':auratools'
