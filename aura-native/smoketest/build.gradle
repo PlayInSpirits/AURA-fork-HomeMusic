@@ -77,6 +77,28 @@ def bootAll = tasks.register('bootAll')
             maxHeapSize = '3g'
             doFirst { jar.get().asFile.parentFile.mkdirs() }
             args '-f', '-n', '-o', jar.get().asFile.absolutePath, dex.get().asFile.absolutePath
+            // dex2jar emits no StackMapTable frames. Marking the classes as Java 6 (major 50) lets the JVM
+            // fall back to the type-inferring verifier instead of rejecting (or, unverified, crashing on) them.
+            doLast {
+                def f = jar.get().asFile
+                def tmp = new File(f.path + '.tmp')
+                new java.util.zip.ZipInputStream(new FileInputStream(f)).withCloseable { zin ->
+                    new java.util.zip.ZipOutputStream(new FileOutputStream(tmp)).withCloseable { zout ->
+                        java.util.zip.ZipEntry e
+                        while ((e = zin.nextEntry) != null) {
+                            byte[] b = zin.readAllBytes()
+                            if (e.name.endsWith('.class') && b.length > 8 && ((b[6] & 0xff) << 8 | (b[7] & 0xff)) > 50) {
+                                b[6] = 0; b[7] = 50
+                            }
+                            zout.putNextEntry(new java.util.zip.ZipEntry(e.name))
+                            zout.write(b)
+                            zout.closeEntry()
+                        }
+                    }
+                }
+                f.delete()
+                tmp.renameTo(f)
+            }
         }
     }
 
@@ -103,8 +125,6 @@ def bootAll = tasks.register('bootAll')
                 files(aarJarsDir.map { it.asFileTree.matching { include '*.jar' } }) +
                 files(base.map { it.dir('jars').asFileTree.matching { include '*.jar' } })
         maxHeapSize = '4g'
-        // dex2jar output has no StackMapTable frames; the JVM verifier would reject it.
-        jvmArgs '-XX:+UnlockDiagnosticVMOptions', '-XX:-BytecodeVerificationRemote', '-XX:-BytecodeVerificationLocal'
         ignoreFailures = true
         reports.html.outputLocation = layout.buildDirectory.dir("reports/${variant}")
         reports.junitXml.outputLocation = layout.buildDirectory.dir("results/${variant}")
