@@ -1,0 +1,85 @@
+plugins {
+    id 'java'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+configurations {
+    d2j
+}
+
+dependencies {
+    testImplementation 'org.robolectric:robolectric:4.14.1'
+    testImplementation 'junit:junit:4.13.2'
+    d2j 'de.femtopedia.dex2jar:dex-tools:2.4.32'
+}
+
+def manifestSrc = file('../app/src/main/AndroidManifest.xml')
+def bootAll = tasks.register('bootAll')
+
+[native: findProperty('nativeApk'), orig: findProperty('origApk')].each { variant, apkPath ->
+    if (!apkPath) return
+    def apk = file(apkPath)
+    def base = layout.buildDirectory.dir("apps/${variant}")
+
+    def unpack = tasks.register("unpack_${variant}", Copy) {
+        from(zipTree(apk)) { include 'classes*.dex' }
+        into base.map { it.dir('dex') }
+    }
+
+    def convs = (1..4).collect { i ->
+        def dexName = i == 1 ? 'classes' : "classes${i}"
+        tasks.register("dex2jar_${variant}_${dexName}", JavaExec) {
+            dependsOn unpack
+            def dex = base.map { it.file("dex/${dexName}.dex") }
+            def jar = base.map { it.file("jars/${dexName}.jar") }
+            onlyIf { dex.get().asFile.exists() }
+            classpath = configurations.d2j
+            mainClass = 'com.googlecode.dex2jar.tools.Dex2jarCmd'
+            maxHeapSize = '3g'
+            doFirst { jar.get().asFile.parentFile.mkdirs() }
+            args '-f', '-n', '-o', jar.get().asFile.absolutePath, dex.get().asFile.absolutePath
+        }
+    }
+
+    def config = tasks.register("config_${variant}") {
+        def dir = base.map { it.dir('config') }
+        outputs.dir(dir)
+        doLast {
+            def m = new File(dir.get().asFile, 'AndroidManifest.xml')
+            m.parentFile.mkdirs()
+            m.text = manifestSrc.text.replaceFirst('<manifest ', '<manifest package="app.homemusic" ')
+            def p = new File(dir.get().asFile, 'com/android/tools/test_config.properties')
+            p.parentFile.mkdirs()
+            p.text = "android_merged_manifest=${m.absolutePath.replace('\\', '/')}\n" +
+                    "android_resource_apk=${apk.absolutePath.replace('\\', '/')}\n" +
+                    "android_custom_package=app.homemusic\n"
+        }
+    }
+
+    def boot = tasks.register("boot_${variant}", Test) {
+        dependsOn convs, config, 'testClasses'
+        description = "Boots App + MainActivity of the ${variant} APK under Robolectric."
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath + files(base.map { it.dir('config') }) +
+                files(base.map { it.dir('jars').asFileTree.matching { include '*.jar' } })
+        maxHeapSize = '4g'
+        ignoreFailures = true
+        reports.html.outputLocation = layout.buildDirectory.dir("reports/${variant}")
+        reports.junitXml.outputLocation = layout.buildDirectory.dir("results/${variant}")
+        systemProperty 'aura.variant', variant
+        testLogging {
+            events 'passed', 'failed', 'skipped', 'standard_out', 'standard_error'
+            exceptionFormat = 'full'
+            showStackTraces = true
+            showCauses = true
+            showExceptions = true
+        }
+    }
+    bootAll.configure { dependsOn boot }
+}
+
+tasks.named('test') { enabled = false }

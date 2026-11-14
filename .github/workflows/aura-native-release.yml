@@ -16,10 +16,10 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  AURA_NATIVE_VERSION_NAME: v0.10-1
-  AURA_NATIVE_VERSION_CODE: '7502'
-  AURA_NATIVE_TAG: aura-native-v0.10-1
-  AURA_NATIVE_APK: AURA-native v0.10-1.apk
+  AURA_NATIVE_VERSION_NAME: v0.10-2
+  AURA_NATIVE_VERSION_CODE: '7503'
+  AURA_NATIVE_TAG: aura-native-v0.10-2
+  AURA_NATIVE_APK: AURA-native v0.10-2.apk
 
 jobs:
   release:

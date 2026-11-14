@@ -3,7 +3,7 @@
 Собираемый Gradle-проект, полученный декомпиляцией `HomeMusic.apk` 1.14.7
 (<https://github.com/justman-1/HomeMusic-public/releases/tag/v1.14.7>, SHA-256
 `72176dcf191cdbf5a5ea8e99ecc1cb2017fbaf842386ab2ae1436b5537d9a852`).
-Из проекта собирается APK **AURA-native v0.10-1** (`app.homemusic`, versionCode 7502, versionName `v0.10-1`),
+Из проекта собирается APK **AURA-native v0.10-2** (`app.homemusic`, versionCode 7503, versionName `v0.10-2`),
 который подписывается тем же ключом, что и AURA v0.75-1, и ставится поверх неё как обновление.
 
 Изменения относительно оригинала: только версия и название приложения (`AURA`). Сетевая логика, авторизация
@@ -24,8 +24,8 @@
 
 Счётчики (из 7195 классов оригинального `classes.dex`):
 
-* 4652 класса собираются из Java-исходников (4640 файлов: jadx 4321, CFR 265, jadx + автоправки 54);
-* 2543 класса собираются из smali;
+* 4650 классов собираются из Java-исходников (4638 файлов: jadx 4319, CFR 265, jadx + автоправки 54);
+* 2545 классов собираются из smali;
 * из 221 файла собственных классов приложения (`com.eddyizm.tempus.*`, включая `homemusic.*`) в Java 144.
 
 ## Почему не «просто взять исходники Tempus»
@@ -65,7 +65,7 @@
 ./gradlew :app:auraReleaseApk
 # → app/build/outputs/aura/AURA-native-release-unsigned.apk
 zipalign -f -p 4 AURA-native-release-unsigned.apk aligned.apk
-apksigner sign --ks aura-release.jks --out "AURA-native v0.10-1.apk" aligned.apk
+apksigner sign --ks aura-release.jks --out "AURA-native v0.10-2.apk" aligned.apk
 ```
 
 В CI это делает `.github/workflows/aura-native-release.yml` на self-hosted Windows-раннере: подписывает

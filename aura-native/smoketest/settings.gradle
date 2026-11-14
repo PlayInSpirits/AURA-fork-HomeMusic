@@ -1,0 +1,9 @@
+// Standalone boot smoke test for AURA-native (not part of the app build).
+// Usage: gradle -p aura-native/smoketest -PnativeApk=<apk> [-PorigApk=<HomeMusic.apk>] bootAll
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = 'aura-native-smoketest'

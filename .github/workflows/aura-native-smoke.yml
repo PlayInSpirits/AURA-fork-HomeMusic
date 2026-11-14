@@ -1,0 +1,124 @@
+name: AURA-native boot smoke test
+
+# Builds AURA-native from the selected ref and boots its Application + MainActivity
+# under Robolectric next to the original HomeMusic 1.14.7, printing any startup crash.
+"on":
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: aura-native-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    name: Boot AURA-native under Robolectric
+    runs-on: [self-hosted, windows, x64]
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: 'C:\\PROGRA~1\\Git\\bin\\bash.exe --noprofile --norc -eo pipefail {0}'
+
+    steps:
+      - name: Fetch exact ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          SRC="$(cygpath -u "$RUNNER_TEMP")/aura-native-src"
+          rm -rf "$SRC"
+          mkdir -p "$SRC"
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\r\n')"
+          git -C "$SRC" init -q
+          git -C "$SRC" config core.longpaths true
+          git -C "$SRC" config core.autocrlf false
+          git -C "$SRC" remote add origin "https://github.com/$GITHUB_REPOSITORY"
+          git -C "$SRC" -c http.extraheader="$AUTH_HEADER" fetch --no-tags --depth=1 origin "$GITHUB_SHA"
+          git -C "$SRC" checkout -q --detach FETCH_HEAD
+          test -f "$SRC/aura-native/settings.gradle"
+          echo "AURA_SRC=$SRC" >> "$GITHUB_ENV"
+          echo "Source commit: $(git -C "$SRC" rev-parse HEAD)"
+
+      - name: Configure JDK 17+ and Android SDK API 37
+        run: |
+          set -euo pipefail
+          if [ -n "${JAVA_HOME:-}" ]; then
+            JAVA_HOME_UNIX="$(cygpath -u "$JAVA_HOME")"
+          else
+            JAVA_EXE="$(command -v java.exe || command -v java || true)"
+            [ -n "$JAVA_EXE" ] || { echo "::error::JDK was not found on runner PATH."; exit 1; }
+            JAVA_EXE_UNIX="$(cygpath -u "$JAVA_EXE" 2>/dev/null || printf '%s' "$JAVA_EXE")"
+            JAVA_HOME_UNIX="$(cd "$(dirname "$JAVA_EXE_UNIX")/.." && pwd -P)"
+          fi
+          JAVA_RUNTIME="$JAVA_HOME_UNIX/bin/java.exe"
+          [ -f "$JAVA_RUNTIME" ] || JAVA_RUNTIME="$JAVA_HOME_UNIX/bin/java"
+          "$JAVA_RUNTIME" -version
+          SDK_ROOT_UNIX=""
+          for candidate in "${ANDROID_SDK_ROOT:-}" "${ANDROID_HOME:-}" "${LOCALAPPDATA:-}/Android/Sdk" "${USERPROFILE:-}/AppData/Local/Android/Sdk" "C:/Android/Sdk"; do
+            [ -n "$candidate" ] || continue
+            p="$(cygpath -u "$candidate" 2>/dev/null || printf '%s' "$candidate")"
+            if [ -d "$p/platforms" ] && [ -d "$p/build-tools" ]; then SDK_ROOT_UNIX="$(cd "$p" && pwd -P)"; break; fi
+          done
+          [ -n "$SDK_ROOT_UNIX" ] || { echo "::error::Android SDK root not found."; exit 1; }
+          PLATFORM_DIR="$(find "$SDK_ROOT_UNIX/platforms" -mindepth 1 -maxdepth 1 -type d -name 'android-37*' | sort -V | tail -n 1)"
+          [ -n "$PLATFORM_DIR" ] || { echo "::error::Android API 37 platform is not installed."; exit 1; }
+          BUILD_TOOLS_DIR="$(find "$SDK_ROOT_UNIX/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
+          printf 'JAVA_HOME=%s\n' "$(cygpath -w "$JAVA_HOME_UNIX")" >> "$GITHUB_ENV"
+          printf 'ANDROID_HOME=%s\n' "$(cygpath -w "$SDK_ROOT_UNIX")" >> "$GITHUB_ENV"
+          printf 'ANDROID_SDK_ROOT=%s\n' "$(cygpath -w "$SDK_ROOT_UNIX")" >> "$GITHUB_ENV"
+          printf 'AURA_BUILD_TOOLS=%s\n' "$BUILD_TOOLS_DIR" >> "$GITHUB_ENV"
+          echo "Using platform $(basename "$PLATFORM_DIR"), build-tools $(basename "$BUILD_TOOLS_DIR")."
+
+      - name: Bootstrap verified Gradle 9.6.0
+        run: |
+          set -euo pipefail
+          GRADLE_VERSION="9.6.0"
+          TOOL_CACHE="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          GRADLE_HOME="$TOOL_CACHE/aura-gradle-$GRADLE_VERSION"
+          GRADLE_LAUNCHER="$GRADLE_HOME/bin/gradle.bat"
+          if [ ! -f "$GRADLE_LAUNCHER" ]; then
+            DOWNLOAD_UNIX="$(cygpath -u "$RUNNER_TEMP")/aura-gradle-download"
+            mkdir -p "$TOOL_CACHE" "$DOWNLOAD_UNIX"
+            ZIP_UNIX="$(cygpath -u "$RUNNER_TEMP")/gradle-$GRADLE_VERSION-bin.zip"
+            SHA_UNIX="$(cygpath -u "$RUNNER_TEMP")/gradle-$GRADLE_VERSION-bin.zip.sha256"
+            curl.exe -fL --retry 3 "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip" -o "$(cygpath -w "$ZIP_UNIX")"
+            curl.exe -fL --retry 3 "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip.sha256" -o "$(cygpath -w "$SHA_UNIX")"
+            EXPECTED="$(awk '{print $1}' "$SHA_UNIX" | tr 'A-F' 'a-f')"
+            ACTUAL="$(sha256sum "$ZIP_UNIX" | awk '{print $1}')"
+            [ "$EXPECTED" = "$ACTUAL" ] || { echo "::error::Gradle SHA-256 mismatch."; exit 1; }
+            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$(cygpath -w "$ZIP_UNIX")' -DestinationPath '$(cygpath -w "$DOWNLOAD_UNIX")' -Force; New-Item -ItemType Directory -Force -Path '$(cygpath -w "$GRADLE_HOME")' | Out-Null; Copy-Item -Path '$(cygpath -w "$DOWNLOAD_UNIX")\gradle-$GRADLE_VERSION\*' -Destination '$(cygpath -w "$GRADLE_HOME")' -Recurse -Force"
+          fi
+          printf 'AURA_GRADLE_BAT=%s\n' "$(cygpath -w "$GRADLE_LAUNCHER")" >> "$GITHUB_ENV"
+
+      - name: Build unsigned APK
+        run: |
+          set -euo pipefail
+          PROJECT="$AURA_SRC/aura-native"
+          OUTPUT="$(cygpath -u "$RUNNER_TEMP")/aura-native-smoke"
+          rm -rf "$OUTPUT"; mkdir -p "$OUTPUT"
+          echo "SMOKE_OUT=$OUTPUT" >> "$GITHUB_ENV"
+          set +e
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$AURA_GRADLE_BAT' --no-daemon -p '$(cygpath -w "$PROJECT")' :app:auraReleaseApk *> '$(cygpath -w "$OUTPUT/gradle-build.log")'; exit \$LASTEXITCODE"
+          BUILD_EXIT=$?
+          set -e
+          tail -n 60 "$OUTPUT/gradle-build.log" | iconv -f UTF-16LE -t UTF-8 2>/dev/null || tail -n 60 "$OUTPUT/gradle-build.log"
+          [ "$BUILD_EXIT" -eq 0 ] || { echo "::error::Gradle build failed."; exit 1; }
+          cp "$PROJECT/app/build/outputs/aura/AURA-native-release-unsigned.apk" "$OUTPUT/native.apk"
+          curl.exe -fsSL --retry 3 https://github.com/justman-1/HomeMusic-public/releases/download/v1.14.7/HomeMusic.apk -o "$(cygpath -w "$OUTPUT/HomeMusic.apk")"
+
+      - name: Boot under Robolectric (AURA-native and original HomeMusic)
+        run: |
+          set -euo pipefail
+          PROJECT="$AURA_SRC/aura-native"
+          set +e
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$AURA_GRADLE_BAT' --no-daemon --continue -p '$(cygpath -w "$PROJECT/smoketest")' bootAll '-PnativeApk=$(cygpath -w "$SMOKE_OUT/native.apk")' '-PorigApk=$(cygpath -w "$SMOKE_OUT/HomeMusic.apk")' *> '$(cygpath -w "$SMOKE_OUT/smoke.log")'; exit \$LASTEXITCODE"
+          SMOKE_EXIT=$?
+          set -e
+          (iconv -f UTF-16LE -t UTF-8 "$SMOKE_OUT/smoke.log" 2>/dev/null || cat "$SMOKE_OUT/smoke.log") | tr -d '\r' > "$SMOKE_OUT/smoke-utf8.log"
+          echo "===== SUMMARY ====="
+          grep -E "BootTest > .* (PASSED|FAILED|SKIPPED)|APPLICATION OK|MAIN ACTIVITY OK" "$SMOKE_OUT/smoke-utf8.log" || true
+          echo "===== FULL LOG ====="
+          cat "$SMOKE_OUT/smoke-utf8.log"
+          [ "$SMOKE_EXIT" -eq 0 ] || { echo "::error::Smoke test Gradle run failed."; exit 1; }

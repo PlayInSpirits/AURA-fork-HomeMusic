@@ -17,8 +17,8 @@ android {
         applicationId = 'app.homemusic'
         minSdk = 24
         targetSdk = 37
-        versionCode = 7502
-        versionName = 'v0.10-1'
+        versionCode = 7503
+        versionName = 'v0.10-2'
     }
 
     buildTypes {
