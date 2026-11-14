@@ -9,12 +9,33 @@ java {
 
 configurations {
     d2j
+    aars { transitive = false }
 }
 
 dependencies {
     testImplementation 'org.robolectric:robolectric:4.14.1'
     testImplementation 'junit:junit:4.13.2'
     d2j 'de.femtopedia.dex2jar:dex-tools:2.4.32'
+    // Robolectric needs these AndroidX test libraries at runtime; a plain Java project
+    // cannot consume AARs, so their classes.jar is unpacked below.
+    aars 'androidx.test:monitor:1.7.2@aar'
+    aars 'androidx.test.espresso:espresso-idling-resource:3.6.1@aar'
+    aars 'androidx.tracing:tracing:1.1.0@aar'
+}
+
+def aarJarsDir = layout.buildDirectory.dir('aar-jars')
+def unpackAars = tasks.register('unpackAars') {
+    inputs.files(configurations.aars)
+    outputs.dir(aarJarsDir)
+    doLast {
+        def out = aarJarsDir.get().asFile
+        out.mkdirs()
+        configurations.aars.files.each { aar ->
+            def entry = zipTree(aar).matching { include 'classes.jar' }.singleFile
+            def dest = new File(out, aar.name.replace('.aar', '.jar'))
+            dest.bytes = entry.bytes
+        }
+    }
 }
 
 // Android API stubs only for compiling the test; at runtime Robolectric supplies the real framework.
@@ -75,10 +96,11 @@ def bootAll = tasks.register('bootAll')
     }
 
     def boot = tasks.register("boot_${variant}", Test) {
-        dependsOn convs, config, 'testClasses'
+        dependsOn convs, config, unpackAars, 'testClasses'
         description = "Boots App + MainActivity of the ${variant} APK under Robolectric."
         testClassesDirs = sourceSets.test.output.classesDirs
         classpath = sourceSets.test.runtimeClasspath + files(base.map { it.dir('config') }) +
+                files(aarJarsDir.map { it.asFileTree.matching { include '*.jar' } }) +
                 files(base.map { it.dir('jars').asFileTree.matching { include '*.jar' } })
         maxHeapSize = '4g'
         ignoreFailures = true
