@@ -9,12 +9,15 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
+import org.robolectric.annotation.ConscryptMode;
 import org.robolectric.shadows.ShadowLog;
 import org.robolectric.shadows.ShadowLooper;
 
 /** Starts the Application and the launcher activity exactly like a cold app start. */
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = 34)
+// Robolectric's bundled Conscrypt clashes with the app's own org.conscrypt stubs (affects the original HomeMusic too).
+@ConscryptMode(ConscryptMode.Mode.OFF)
 public class BootTest {
     private static final String MAIN = "com.eddyizm.tempus.ui.activity.MainActivity";
 
