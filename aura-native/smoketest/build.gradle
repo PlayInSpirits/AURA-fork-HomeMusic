@@ -23,7 +23,11 @@ if (sdkDir) {
     def platformJars = fileTree("${sdkDir}/platforms") { include 'android-3*/android.jar' }
     def newest = platformJars.files.sort { it.parentFile.name }.reverse().find { true }
     if (newest != null) {
-        dependencies { testCompileOnly files(newest) }
+        dependencies {
+            testCompileOnly files(newest)
+            // JUnit reads @Config (which references android.app.Application) outside the sandbox.
+            testRuntimeOnly files(newest)
+        }
     }
 }
 
