@@ -7,6 +7,10 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+sourceSets {
+    tools
+}
+
 configurations {
     d2j
     aars { transitive = false }
@@ -16,6 +20,7 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:4.14.1'
     testImplementation 'junit:junit:4.13.2'
     d2j 'de.femtopedia.dex2jar:dex-tools:2.4.32'
+    toolsImplementation 'org.ow2.asm:asm:9.8'
     // Robolectric needs these AndroidX test libraries at runtime; a plain Java project
     // cannot consume AARs, so their classes.jar is unpacked below.
     aars 'androidx.test:monitor:1.7.2@aar'
@@ -40,10 +45,12 @@ def unpackAars = tasks.register('unpackAars') {
 
 // Android API stubs only for compiling the test; at runtime Robolectric supplies the real framework.
 def sdkDir = System.getenv('ANDROID_HOME') ?: System.getenv('ANDROID_SDK_ROOT')
+def androidJar = null
 if (sdkDir) {
     def platformJars = fileTree("${sdkDir}/platforms") { include 'android-3*/android.jar' }
     def newest = platformJars.files.sort { it.parentFile.name }.reverse().find { true }
     if (newest != null) {
+        androidJar = newest
         dependencies {
             testCompileOnly files(newest)
             // JUnit reads @Config (which references android.app.Application) outside the sandbox.
@@ -77,27 +84,24 @@ def bootAll = tasks.register('bootAll')
             maxHeapSize = '3g'
             doFirst { jar.get().asFile.parentFile.mkdirs() }
             args '-f', '-n', '-o', jar.get().asFile.absolutePath, dex.get().asFile.absolutePath
-            // dex2jar emits no StackMapTable frames. Marking the classes as Java 6 (major 50) lets the JVM
-            // fall back to the type-inferring verifier instead of rejecting (or, unverified, crashing on) them.
-            doLast {
-                def f = jar.get().asFile
-                def tmp = new File(f.path + '.tmp')
-                new java.util.zip.ZipInputStream(new FileInputStream(f)).withCloseable { zin ->
-                    new java.util.zip.ZipOutputStream(new FileOutputStream(tmp)).withCloseable { zout ->
-                        java.util.zip.ZipEntry e
-                        while ((e = zin.nextEntry) != null) {
-                            byte[] b = zin.readAllBytes()
-                            if (e.name.endsWith('.class') && b.length > 8 && ((b[6] & 0xff) << 8 | (b[7] & 0xff)) > 50) {
-                                b[6] = 0; b[7] = 50
-                            }
-                            zout.putNextEntry(new java.util.zip.ZipEntry(e.name))
-                            zout.write(b)
-                            zout.closeEntry()
-                        }
-                    }
-                }
-                f.delete()
-                tmp.renameTo(f)
+        }
+    }
+
+    def frames = (1..4).collect { i ->
+        def dexName = i == 1 ? 'classes' : "classes${i}"
+        tasks.register("frames_${variant}_${dexName}", JavaExec) {
+            dependsOn convs, 'toolsClasses'
+            def raw = base.map { it.file("jars/${dexName}.jar") }
+            def framed = base.map { it.file("framed/${dexName}.jar") }
+            onlyIf { raw.get().asFile.exists() }
+            classpath = sourceSets.tools.runtimeClasspath
+            mainClass = 'aura.smoke.Frames'
+            maxHeapSize = '3g'
+            doFirst {
+                framed.get().asFile.parentFile.mkdirs()
+                def libs = base.get().dir('jars').asFileTree.matching { include '*.jar' }.files.collect { it.absolutePath }
+                if (androidJar != null) libs << androidJar.absolutePath
+                args([framed.get().asFile.absolutePath, raw.get().asFile.absolutePath] + libs)
             }
         }
     }
@@ -118,12 +122,12 @@ def bootAll = tasks.register('bootAll')
     }
 
     def boot = tasks.register("boot_${variant}", Test) {
-        dependsOn convs, config, unpackAars, 'testClasses'
+        dependsOn frames, config, unpackAars, 'testClasses'
         description = "Boots App + MainActivity of the ${variant} APK under Robolectric."
         testClassesDirs = sourceSets.test.output.classesDirs
         classpath = sourceSets.test.runtimeClasspath + files(base.map { it.dir('config') }) +
                 files(aarJarsDir.map { it.asFileTree.matching { include '*.jar' } }) +
-                files(base.map { it.dir('jars').asFileTree.matching { include '*.jar' } })
+                files(base.map { it.dir('framed').asFileTree.matching { include '*.jar' } })
         maxHeapSize = '4g'
         ignoreFailures = true
         reports.html.outputLocation = layout.buildDirectory.dir("reports/${variant}")
