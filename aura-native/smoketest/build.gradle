@@ -129,6 +129,9 @@ def bootAll = tasks.register('bootAll')
                 files(aarJarsDir.map { it.asFileTree.matching { include '*.jar' } }) +
                 files(base.map { it.dir('framed').asFileTree.matching { include '*.jar' } })
         maxHeapSize = '4g'
+        // dex2jar types registers loosely (and R8 code calls grandparent constructors, which ART allows);
+        // the JVM verifier rejects such code although it runs correctly, so app classes are not verified.
+        jvmArgs '-XX:+UnlockDiagnosticVMOptions', '-XX:-BytecodeVerificationRemote', '-XX:+ShowCodeDetailsInExceptionMessages'
         ignoreFailures = true
         reports.html.outputLocation = layout.buildDirectory.dir("reports/${variant}")
         reports.junitXml.outputLocation = layout.buildDirectory.dir("results/${variant}")
