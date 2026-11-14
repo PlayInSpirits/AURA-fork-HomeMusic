@@ -51,13 +51,12 @@ jobs:
       - name: Attach to draft release
         env:
           GH_TOKEN: ${{ github.token }}
+        shell: powershell
         run: |
-          set -euo pipefail
-          API="https://api.github.com/repos/$GITHUB_REPOSITORY"
-          AUTH="Authorization: Bearer $GH_TOKEN"
-          ID="$(curl.exe -sS -H "$AUTH" "$API/releases?per_page=100" | python -c "import json,sys; print(next((str(r['id']) for r in json.load(sys.stdin) if r.get('name')=='ci-robolectric-deps'),''))" 2>/dev/null || true)"
-          if [ -z "$ID" ]; then
-            ID="$(curl.exe -sS -X POST -H "$AUTH" -H "Content-Type: application/json" "$API/releases" -d '{"tag_name":"ci-robolectric-deps","name":"ci-robolectric-deps","draft":true,"body":""}' | python -c "import json,sys; print(json.load(sys.stdin)['id'])")"
-          fi
-          curl.exe -sS -f -X POST -H "$AUTH" -H "Content-Type: application/zip" --data-binary "@$(cygpath -w "$DEPS_ZIP")" "https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$ID/assets?name=robolectric-deps-$GITHUB_RUN_ID.zip" > /dev/null
-          echo "Uploaded to draft release $ID"
+          $ErrorActionPreference = 'Stop'
+          $h = @{ Authorization = "Bearer $env:GH_TOKEN"; Accept = 'application/vnd.github+json' }
+          $body = @{ tag_name = "ci-robolectric-deps-$env:GITHUB_RUN_ID"; name = 'ci-robolectric-deps'; draft = $true; body = '' } | ConvertTo-Json
+          $rel = Invoke-RestMethod -Method Post -Headers $h -ContentType 'application/json' -Body $body -Uri "https://api.github.com/repos/$env:GITHUB_REPOSITORY/releases"
+          $zip = (& 'C:\Program Files\Git\usr\bin\cygpath.exe' -w $env:DEPS_ZIP)
+          Invoke-RestMethod -Method Post -Headers $h -ContentType 'application/zip' -InFile $zip -Uri "https://uploads.github.com/repos/$env:GITHUB_REPOSITORY/releases/$($rel.id)/assets?name=robolectric-deps.zip" | Out-Null
+          Write-Host "Uploaded to draft release $($rel.id)"
