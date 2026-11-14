@@ -17,6 +17,16 @@ dependencies {
     d2j 'de.femtopedia.dex2jar:dex-tools:2.4.32'
 }
 
+// Android API stubs only for compiling the test; at runtime Robolectric supplies the real framework.
+def sdkDir = System.getenv('ANDROID_HOME') ?: System.getenv('ANDROID_SDK_ROOT')
+if (sdkDir) {
+    def platformJars = fileTree("${sdkDir}/platforms") { include 'android-3*/android.jar' }
+    def newest = platformJars.files.sort { it.parentFile.name }.reverse().find { true }
+    if (newest != null) {
+        dependencies { testCompileOnly files(newest) }
+    }
+}
+
 def manifestSrc = file('../app/src/main/AndroidManifest.xml')
 def bootAll = tasks.register('bootAll')
 
